@@ -3,12 +3,11 @@ title: DOD etkisi düzey 4 şema örneği
 description: Blueımpprint yapıt parametresi ayrıntıları dahil olmak üzere DOD etkisi düzeyi 4 şema örneği için adımları dağıtın.
 ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 2dc6c4ae70ce18a75f277495665ed5afdce2713c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-ms.translationtype: MT
+ms.openlocfilehash: bb2599399284b2be5a9a7f88ef1d0244812ec4b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800418"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044983"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>DOD etkisi düzeyi 4 şema örneğini dağıtma
 
@@ -91,7 +90,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Description|
+|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |İzin verilen konumlar|İlke Ataması|İzin Verilen Konumlar|Bu ilke, kuruluşunuzun kaynakları dağıtırken belirleyebileceği konumları kısıtlamanıza olanak verir. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz.|
 |Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin Verilen Konumlar|Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz.|
@@ -109,7 +108,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Yöneticiler yerel grubuna eklenecek Üyeler|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Yöneticiler yerel grubunda dışlanması gereken Üyeler|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
-|\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Azure SQL veritabanları için uzun vadeli coğrafi olarak yedekli yedeklemenin etkinleştirilmesi gerekir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
@@ -128,7 +127,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
-|\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için [Azure Ilke efektlerini anlama] (.. /.. /.. /Policy/Concepts/efektts.
+|\[Önizleme \] : DOD etki düzeyi 4|İlke ataması|MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

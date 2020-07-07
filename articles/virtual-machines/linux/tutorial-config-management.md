@@ -15,12 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239297"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027605"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Linux sanal makinesini güncelleştirme
 
@@ -29,7 +28,7 @@ Azure [değişiklik izleme](../../automation/change-tracking.md) , değişiklikl
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Windows güncelleştirmelerini yönetme
+> * Linux güncelleştirmelerini yönetme
 > * Değişiklikleri ve sayımı izleme
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
@@ -113,7 +112,7 @@ Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağ
 
 | Özellik | Açıklama |
 | --- | --- |
-| Adı |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
+| Name |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
 |İşletim Sistemi| Linux veya Windows|
 | Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md)|
 | Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |

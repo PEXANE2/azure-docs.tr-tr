@@ -3,12 +3,11 @@ title: ISO 27001 Ao/SQL iş yükü şeması örnek denetimleri
 description: ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneği Azure Ilkesi ve RBAC için denetim eşlemesi.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6311d5090c884c70bded7fcf754bc968a5b47b32
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: 518c6b86ac658273d428a328b433b35d667d7056
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918609"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044762"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 AKEN/SQL iş yükü şeması örneğinin denetim eşlemesi
 
@@ -28,7 +27,7 @@ Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez.
 
 ## <a name="a821-classification-of-information"></a>A. 8.2.1 bilgi sınıflandırması
 
-Azure 'un [SQL güvenlik açığı değerlendirme hizmeti](/azure/sql-database/sql-vulnerability-assessment) , veritabanlarınızda depolanan hassas verileri bulmanıza yardımcı olabilir ve bu verileri sınıflandırmaya yönelik öneriler içerir. Bu şema, SQL güvenlik açığı değerlendirme taraması sırasında tanımlanan güvenlik açıklarını denetlemek için bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Azure 'un [SQL güvenlik açığı değerlendirme hizmeti](../../../../azure-sql/database/sql-vulnerability-assessment.md) , veritabanlarınızda depolanan hassas verileri bulmanıza yardımcı olabilir ve bu verileri sınıflandırmaya yönelik öneriler içerir. Bu şema, SQL güvenlik açığı değerlendirme taraması sırasında tanımlanan güvenlik açıklarını denetlemek için bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - \[Önizleme \] : Azure Güvenlik Merkezi 'NDE SQL güvenlik açığı değerlendirmesi sonuçlarını izleme
 

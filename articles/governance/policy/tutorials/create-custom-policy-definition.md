@@ -3,12 +3,11 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: bff5596049a141f06f5c189f2e5673efed1ed6bf
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
-ms.translationtype: MT
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970833"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044626"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -31,7 +30,7 @@ ms.locfileid: "85970833"
 > - Hangi etkiyi kullanacağınızı belirleme
 > - İlke tanımını oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -66,7 +65,7 @@ Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu ö�
 
 ### <a name="arm-templates"></a>ARM şablonları
 
-Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) bakmak için birkaç yol vardır.
+Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) bakmak için birkaç yol vardır.
 
 #### <a name="existing-resource-in-the-portal"></a>Portalda mevcut kaynak
 
@@ -163,7 +162,7 @@ Kaynak özelliği tanımlandık, ancak bu özelliği bir [diğer adla](../concep
 Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu öğretici için her birine bakacağız:
 
 - VS Code için Azure İlkesi uzantısı
-- Azure CLI’si
+- Azure CLI
 - Azure PowerShell
 - Azure Kaynak Grafiği
 
@@ -174,7 +173,7 @@ VS Code uzantısının Azure Ilke uzantısı, kaynaklarınıza gözatmayı ve [d
 > [!NOTE]
 > VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı 'da, `az provider` komut grubu kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
 

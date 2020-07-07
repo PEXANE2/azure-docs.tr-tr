@@ -7,18 +7,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 60248d1326d872734a49a93a689625cf2603f929
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601709"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024868"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
-Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanı ile iletişim kurmak için, Hafif Dizin Erişim Protokolü (LDAP) kullanılır. Varsayılan olarak, LDAP trafiği şifrelenmez, bu da birçok ortamda bir güvenlik konusudur. Azure AD DS ile, yönetilen etki alanını güvenli basit Dizin Erişim Protokolü (LDAPS) kullanacak şekilde yapılandırabilirsiniz. Güvenli LDAP kullandığınızda trafik şifrelenir. Güvenli LDAP, Güvenli Yuva Katmanı (SSL)/Aktarım Katmanı Güvenliği (TLS) üzerinden LDAP olarak da bilinir.
+Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanı ile iletişim kurmak için, Hafif Dizin Erişim Protokolü (LDAP) kullanılır. Varsayılan olarak, LDAP trafiği şifrelenmez, bu da birçok ortamda bir güvenlik konusudur.
+
+Azure AD DS ile, yönetilen etki alanını güvenli basit Dizin Erişim Protokolü (LDAPS) kullanacak şekilde yapılandırabilirsiniz. Güvenli LDAP kullandığınızda trafik şifrelenir. Güvenli LDAP, Güvenli Yuva Katmanı (SSL)/Aktarım Katmanı Güvenliği (TLS) üzerinden LDAP olarak da bilinir.
 
 Bu öğreticide, Azure AD DS yönetilen bir etki alanı için LDAPS 'nin nasıl yapılandırılacağı gösterilmektedir.
 
@@ -32,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -68,7 +69,11 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, TLS sunucu kimlik doğrulaması için geçerli olmalıdır.
 
-OpenSSL, Keytool, MakeCert, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet gibi otomatik olarak imzalanan sertifika oluşturmak için kullanabileceğiniz çeşitli araçlar vardır. Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
+OpenSSL, Keytool, MakeCert, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet vb. gibi otomatik olarak imzalanan sertifika oluşturmak için kullanabileceğiniz çeşitli araçlar vardır.
+
+Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım.
+
+**Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -108,7 +113,9 @@ Güvenli LDAP kullanmak için ağ trafiği, ortak anahtar altyapısı (PKI) kull
     * Bu ortak anahtar, Güvenli LDAP trafiğini *şifrelemek* için kullanılır. Ortak anahtar istemci bilgisayarlara dağıtılabilir.
     * Özel anahtarı olmayan Sertifikalar ' i kullanır *. CER* dosya biçimi.
 
-Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların birbirleriyle başarıyla iletişim kurabildiğinden emin olun. Ortak bir CA veya kuruluş CA 'sı kullanıyorsanız, özel anahtarı içeren ve yönetilen bir etki alanına uygulanabilen bir sertifikayla birlikte vermiş olursunuz. Ortak anahtar, istemci bilgisayarlar tarafından zaten bilinen ve güvenilen olmalıdır. Bu öğreticide, özel anahtarla kendinden imzalı bir sertifika oluşturdunuz, bu nedenle uygun özel ve ortak bileşenleri dışarı aktarmanız gerekir.
+Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların birbirleriyle başarıyla iletişim kurabildiğinden emin olun. Ortak bir CA veya kuruluş CA 'sı kullanıyorsanız, özel anahtarı içeren ve yönetilen bir etki alanına uygulanabilen bir sertifikayla birlikte vermiş olursunuz. Ortak anahtar, istemci bilgisayarlar tarafından zaten bilinen ve güvenilen olmalıdır.
+
+Bu öğreticide, özel anahtarla kendinden imzalı bir sertifika oluşturdunuz, bu nedenle uygun özel ve ortak bileşenleri dışarı aktarmanız gerekir.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Azure AD DS için bir sertifika dışarı aktarma
 
@@ -148,7 +155,9 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
 ### <a name="export-a-certificate-for-client-computers"></a>İstemci bilgisayarlar için bir sertifika dışarı aktarma
 
-İstemci bilgisayarların, LDAPS kullanarak yönetilen etki alanına başarıyla bağlanabilmek için Güvenli LDAP sertifikasını verene güvenmesi gerekir. İstemci bilgisayarların, Azure AD DS tarafından şifresi çözülen verileri başarıyla şifreleyebilmesi için bir sertifikaya ihtiyacı vardır. Ortak CA kullanıyorsanız, bilgisayar bu sertifika verenler için otomatik olarak güvenmeli ve karşılık gelen bir sertifikaya sahip olmalıdır. Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki adımda özel anahtarı içeren bir sertifika oluşturmuş olursunuz. Şimdi, otomatik olarak imzalanan sertifikayı dışarı aktarıp istemci bilgisayardaki güvenilir sertifika deposuna yükleyelim:
+İstemci bilgisayarların, LDAPS kullanarak yönetilen etki alanına başarıyla bağlanabilmek için Güvenli LDAP sertifikasını verene güvenmesi gerekir. İstemci bilgisayarların, Azure AD DS tarafından şifresi çözülen verileri başarıyla şifreleyebilmesi için bir sertifikaya ihtiyacı vardır. Ortak CA kullanıyorsanız, bilgisayar bu sertifika verenler için otomatik olarak güvenmeli ve karşılık gelen bir sertifikaya sahip olmalıdır.
+
+Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki adımda özel anahtarı içeren bir sertifika oluşturmuş olursunuz. Şimdi, otomatik olarak imzalanan sertifikayı dışarı aktarıp istemci bilgisayardaki güvenilir sertifika deposuna yükleyelim:
 
 1. *Sertifikalar (yerel bilgisayar) IÇIN MMC ' > kişisel > sertifikaları* deposu ' na geri dönün. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
 1. **Sertifika dışarı aktarma sihirbazında** **İleri**' yi seçin.
@@ -186,7 +195,10 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
 1. Yanındaki klasör simgesini seçin **. Güvenli LDAP sertifikası olan PFX dosyası**. Yoluna gidin *. PFX* dosyası, ardından özel anahtarı içeren önceki bir adımda oluşturulan sertifikayı seçin.
 
-    Sertifika gereksinimlerinin önceki bölümünde belirtildiği gibi, varsayılan *. onmicrosoft.com* etki alanı ile genel bir CA 'dan bir sertifika kullanamazsınız. Microsoft, *. onmicrosoft.com* etki alanına sahipdir, bu nedenle ortak CA bir sertifika vermez. Sertifikanızın uygun biçimde olduğundan emin olun. Aksi takdirde, Azure platformu, Güvenli LDAP 'yi etkinleştirdiğinizde sertifika doğrulama hataları oluşturur.
+    > [!IMPORTANT]
+    > Sertifika gereksinimlerinin önceki bölümünde belirtildiği gibi, varsayılan *. onmicrosoft.com* etki alanı ile genel bir CA 'dan bir sertifika kullanamazsınız. Microsoft, *. onmicrosoft.com* etki alanına sahipdir, bu nedenle ortak CA bir sertifika vermez.
+    >
+    > Sertifikanızın uygun biçimde olduğundan emin olun. Aksi takdirde, Azure platformu, Güvenli LDAP 'yi etkinleştirdiğinizde sertifika doğrulama hataları oluşturur.
 
 1. **Şifresini çözmek Için parolayı girin. **Sertifika bir ' a aktarıldığında önceki bir adımda ayarlanan pfx dosyası *. PFX* dosyası.
 1. Güvenli LDAP özelliğini etkinleştirmek için **Kaydet** ' i seçin.
@@ -195,7 +207,9 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
 Yönetilen etki alanı için Güvenli LDAP 'nin yapılandırılmakta olduğu bir bildirim görüntülenir. Bu işlem tamamlanana kadar, yönetilen etki alanının diğer ayarlarını değiştiremezsiniz.
 
-Yönetilen etki alanınız için Güvenli LDAP 'nin etkinleştirilmesi birkaç dakika sürer. Sağladığınız Güvenli LDAP sertifikası gerekli ölçütlere uymuyorsa, yönetilen etki alanı için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur. Hata için bazı yaygın nedenler, etki alanı adı yanlış veya sertifikanın süresi yakında dolar veya zaten süresi dolmuşsa olur. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
+Yönetilen etki alanınız için Güvenli LDAP 'nin etkinleştirilmesi birkaç dakika sürer. Sağladığınız Güvenli LDAP sertifikası gerekli ölçütlere uymuyorsa, yönetilen etki alanı için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur.
+
+Hata için bazı yaygın nedenler, etki alanı adı yanlış veya sertifikanın süresi yakında dolar veya zaten süresi dolmuşsa olur. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>İnternet üzerinden güvenli LDAP erişimini kilitleme
 
@@ -204,7 +218,7 @@ Yönetilen etki alanınızı Internet üzerinden güvenli LDAP erişimini etkinl
 Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen güvenli LDAP erişimine izin vermek için bir kural oluşturalım. Varsayılan bir *denyall* kuralı, internet 'ten gelen diğer tüm trafik için geçerlidir; bu nedenle, yalnızca belirtilen adresler, Güvenli LDAP kullanarak yönetilen etki alanınız ile iletişime geçebilirler.
 
 1. Azure portal sol taraftaki gezinmede *kaynak grupları* ' nı seçin.
-1. Kaynak grubunu, *Myresourcegroup*gibi seçin ve ardından *aaads-NSG*gibi ağ güvenlik grubunuzu seçin.
+1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve ardından *aaads-NSG*gibi ağ güvenlik grubunuzu seçin.
 1. Mevcut gelen ve giden güvenlik kurallarının listesi görüntülenir. Ağ güvenlik grubu pencerelerinin sol tarafında, **ayarlar > gelen güvenlik kuralları**' nı seçin.
 1. **Ekle**' yi seçin ve *TCP* bağlantı noktası *636*' e izin vermek için bir kural oluşturun Gelişmiş güvenlik için, kaynağı *IP adresleri* olarak seçin ve ardından KURULUŞUNUZUN geçerli IP adresini veya aralığını belirtin.
 
@@ -269,7 +283,7 @@ Belirli bir kapsayıcıyı doğrudan sorgulamak için, **görünüm > ağaç** m
 Bu öğreticinin bağlantısını test etmek için bilgisayarınızın yerel Hosts dosyasına bir DNS girişi eklediyseniz, bu girişi kaldırın ve DNS bölgenize bir resmi kayıt ekleyin. Girişi yerel hosts dosyasından kaldırmak için aşağıdaki adımları izleyin:
 
 1. Yerel makinenizde, yönetici olarak *Not defteri* 'ni açın
-1. *C:\Windows\System32\drivers\etc* dosyasına gidin ve dosyayı açın
+1. *C:\Windows\system32\drivers\etc\hosts* dosyasına göz atın ve dosyayı açın
 1. Eklediğiniz kaydın satırını silin, örneğin`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,22 +7,21 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733424"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024613"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
 Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bu yönetilen etki alanını, şirket içi Active Directory Domain Services etki alanı ile aynı Uzak Sunucu Yönetim Araçları (RSAT) kullanarak yönetebilirsiniz. Azure AD DS yönetilen bir hizmet olduğundan, etki alanı denetleyicilerine bağlanmak için Uzak Masaüstü Protokolü (RDP) kullanma gibi, gerçekleştiremeyecek bazı yönetim görevleri vardır.
 
-Bu öğreticide, Azure 'da bir Windows Server VM oluşturma ve Azure AD DS yönetilen bir etki alanını yönetmek için gerekli araçları nasıl yükleyeceğiniz gösterilmektedir.
+Bu öğreticide, Azure 'da bir Windows Server VM 'sinin nasıl yapılandırılacağı ve Azure AD DS yönetilen bir etki alanını yönetmek için gerekli araçların nasıl yükleneceği gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanındaki kullanılabilir yönetim görevlerini anlayın
@@ -75,7 +74,7 @@ Yönetilen etki alanı kilitlidir, bu nedenle etki alanında belirli yönetim g�
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Windows Server VM 'de oturum açma
 
-Önceki öğreticide, bir Windows Server VM oluşturulup yönetilen etki alanına katıldı. Yönetim araçlarını yüklemek için bu VM 'yi kullanalım. Gerekirse, [bir Windows Server VM 'si oluşturup yönetilen bir etki alanına katmak için öğreticideki adımları izleyin][create-join-windows-vm].
+Önceki öğreticide, bir Windows Server VM oluşturulup yönetilen etki alanına katıldı. Yönetim araçlarını yüklemek için bu VM 'yi kullanın. Gerekirse, [bir Windows Server VM 'si oluşturup yönetilen bir etki alanına katmak için öğreticideki adımları izleyin][create-join-windows-vm].
 
 > [!NOTE]
 > Bu öğreticide, Azure 'da yönetilen etki alanına katılmış bir Windows Server VM kullanırsınız. Yönetilen etki alanına katılmış Windows 10 gibi bir Windows istemcisi de kullanabilirsiniz.
@@ -97,7 +96,7 @@ Gerekirse, Web tarayıcınızın görüntülenecek savunma bağlantısı için a
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory Yönetim Araçları 'nı yükler
 
-Yönetilen etki alanları, Active Directory Yönetim Merkezi (ADAC) veya AD PowerShell gibi şirket içi AD DS ortamlarıyla aynı yönetim araçları kullanılarak yönetilir. Bu araçlar Windows Server ve istemci bilgisayarlarda Uzak Sunucu Yönetim Araçları (RSAT) özelliğinin bir parçası olarak yüklenebilir. *AAD DC yöneticileri* grubunun üyeleri, yönetilen etki alanına katılmış bir BILGISAYARDAN bu ad yönetim araçlarını kullanarak, yönetilen etki alanlarını uzaktan yönetebilir.
+Yönetilen bir etki alanında, Active Directory Yönetim Merkezi (ADAC) veya AD PowerShell gibi şirket içi AD DS ortamlar olarak aynı yönetim araçlarını kullanırsınız. Bu araçlar Windows Server ve istemci bilgisayarlarda Uzak Sunucu Yönetim Araçları (RSAT) özelliğinin bir parçası olarak yüklenebilir. *AAD DC yöneticileri* grubunun üyeleri, yönetilen etki alanına katılmış bir BILGISAYARDAN bu ad yönetim araçlarını kullanarak, yönetilen etki alanlarını uzaktan yönetebilir.
 
 Etki alanına katılmış bir VM 'ye Active Directory Yönetim Araçları 'nı yüklemek için aşağıdaki adımları izleyin:
 
@@ -125,7 +124,7 @@ Yönetim Araçları yüklüyken, yönetilen etki alanını yönetmek için bunla
     ![Sunucuda yüklü yönetim araçlarının listesi](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **Active Directory Yönetim Merkezi**seçin.
-1. Yönetilen etki alanını araştırmak için sol bölmedeki *aaddscontoso.com*gibi etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
+1. Yönetilen etki alanını araştırmak için, sol bölmedeki ( *aaddscontoso*gibi) etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
 
     ![Yönetilen etki alanının kullanılabilir kapsayıcılar bölümünü listeleyin](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,7 +134,7 @@ Yönetim Araçları yüklüyken, yönetilen etki alanını yönetmek için bunla
 
     ![Active Directory Yönetim Merkezi Azure AD DS etki alanı kullanıcılarının listesini görüntüleyin](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. Yönetilen etki alanına katılmış bilgisayarları görmek için **Aaddc bilgisayarları** kapsayıcısını seçin. Geçerli sanal makine için *Myvm*gibi bir giriş listelenir. Yönetilen etki alanına katılmış tüm bilgisayarlar için bilgisayar hesapları, bu *Aaddc bilgisayarları* kapsayıcısında depolanır.
+1. Yönetilen etki alanına katılmış bilgisayarları görmek için **Aaddc bilgisayarları** kapsayıcısını seçin. Geçerli sanal makine için *Myvm*gibi bir giriş listelenir. Yönetilen etki alanına katılmış tüm cihazlar için bilgisayar hesapları, bu *Aaddc bilgisayarları* kapsayıcısında depolanır.
 
 Kullanıcı hesabı parolasını sıfırlama veya grup üyeliğini yönetme gibi genel Active Directory Yönetim Merkezi eylemler kullanılabilir. Bu eylemler yalnızca doğrudan yönetilen etki alanında oluşturulan kullanıcılar ve gruplar için geçerlidir. Kimlik bilgileri yalnızca Azure AD *'Den* Azure AD DS eşitlenir. Azure AD DS 'den Azure AD 'ye geri yazma yok. Azure AD 'den eşitlenen kullanıcılar için parolaları veya yönetilen grup üyeliklerini değiştiremezsiniz ve bu değişiklikleri geri eşitlenmiş olacak şekilde değiştirebilirsiniz.
 
@@ -150,7 +149,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Windows Server VM 'ye Active Directory Yönetim Araçları 'nı yükler
 > * Ortak görevleri gerçekleştirmek için Active Directory Yönetim Merkezi kullanın
 
-Yönetilen etki alanınız ile güvenli bir şekilde etkileşimde bulunmak için güvenli basit Dizin Erişimi Protokolü 'Nü (LDAPS) etkinleştirin.
+Diğer uygulamalardan yönetilen etki alanı ile güvenli bir şekilde etkileşimde bulunmak için güvenli basit Dizin Erişimi Protokolü 'Nü (LDAPS) etkinleştirin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen etki alanınız için Güvenli LDAP yapılandırma](tutorial-configure-ldaps.md)

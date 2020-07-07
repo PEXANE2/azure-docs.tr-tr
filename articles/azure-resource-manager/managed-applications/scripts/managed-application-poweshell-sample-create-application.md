@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a2687e9c943df8454ff42a17f44866dcdb7f4730
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650173"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055894"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>PowerShell ile bir hizmet kataloğu için yönetilen bir uygulama dağıtma
 
@@ -33,10 +32,10 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutu kullanır.
 
 | Komut | Notlar |
 |---|---|
-| [New-Azmanagedadpplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
+| [New-Azmanagedadpplication](/powershell/module/az.resources/new-azmanagedapplication) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Azure Yönetilen Uygulamalara genel bakış](../overview.md) konusunu inceleyin.
-* PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/get-started-azureps).

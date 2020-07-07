@@ -6,12 +6,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 346ea59209bc2f74970e708c947f5caa158a0338
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0c2fc3dc4e76f295dff94ebda71d54bad425b621
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650068"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056149"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Azure CLI ile hizmet kataloğu için bir yönetilen uygulamayı dağıtma
 
@@ -33,10 +32,10 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutu kullanır.
 
 | Komut | Notlar |
 |---|---|
-| [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-create) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
+| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Azure Yönetilen Uygulamalara genel bakış](../overview.md) konusunu inceleyin.
-* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).

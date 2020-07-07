@@ -3,12 +3,11 @@ title: ISO 27001 şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil tek başına ISO 27001 şema örneği için adımları dağıtın.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922516"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044660"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğini dağıtma
 
@@ -99,25 +98,25 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[Önizleme\]: Linux VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
-|\[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma|İlke ataması|Linux VM 'Ler için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
-|\[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)|İlke ataması|Windows VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[Önizleme\]: Windows VM Ölçek kümeleri Için Log Analytics Aracısı DAĞıTMA (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
-|\[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
-|\[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma|İlke ataması|Linux VM 'Ler için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Windows VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme \] : WINDOWS VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Larının listesi|Depolama hesapları için belirtilebilecek SKU 'ların listesi.|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|İzin verilen sanal makine SKU 'Larının listesi|Sanal makineler için belirtilebilecek SKU 'ların listesi.|
-|ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 ISO 27001 şema örneğini dağıtma adımlarını gözden geçirdiğinize göre, mimari ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 şema-genel bakış](./index.md)
-> [ISO 27001 şema-Control Mapping](./control-mapping.md)
+> [ISO 27001 şema-genel bakış](./index.md) 
+>  [ISO 27001 şema-Control eşleme](./control-mapping.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

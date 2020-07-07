@@ -5,12 +5,11 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 2bc160418df7cb2d68f474da541f8f81ebb819fc
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250341"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054772"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonlarıyla SQL BACPAC dosyalarını Içeri aktarma
 
@@ -112,8 +111,8 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
     Şablonda iki kaynak tanımlanmış:
 
-   * `Microsoft.Sql/servers`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL.servers/databases`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Bkz. [şablon başvurusu](/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Bkz. [şablon başvurusu](/azure/templates/microsoft.sql/servers/databases).
 
         Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
 1. Dosyanın **File**  >  bir kopyasını yerel bilgisayarınıza *azuredeploy.js*adı ile kaydetmek için dosya**farklı kaydet** ' i seçin.
@@ -194,7 +193,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
         ![SQL veritabanı uzantısı olan şablon](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        Kaynak tanımını anlamak için bkz. [SQL Veritabanı uzantısı başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Önemli öğeler şunlardır:
+        Kaynak tanımını anlamak için bkz. [SQL Veritabanı uzantısı başvurusu](/azure/templates/microsoft.sql/servers/databases/extensions). Önemli öğeler şunlardır:
 
         * **Bağımlıdson**: uzantı kaynağı veritabanı oluşturulduktan sonra oluşturulmalıdır.
         * **storageKeyType**: kullanılacak depolama anahtarının türünü belirtin. Değer `StorageAccessKey` veya `SharedAccessKey` olabilir. `StorageAccessKey`Bu öğreticide kullanın.

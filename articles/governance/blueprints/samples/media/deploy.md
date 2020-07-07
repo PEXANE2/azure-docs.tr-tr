@@ -3,12 +3,11 @@ title: Media şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Media şema örneği için adımları dağıtın.
 ms.date: 02/25/2020
 ms.topic: sample
-ms.openlocfilehash: f4eb93d3e03b9a0e59a7d53304c19c371d42ea6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7c107c49a5ab5ec8c64b2d2deadb2531e8a67f3a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201902"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042807"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>Medya şeması örneğini dağıtma
 
@@ -93,15 +92,15 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma |İlke ataması |Linux VM 'Ler için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
-|\[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:`[]` |
-|\[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:`[]` |
-|\[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma |İlke ataması |Windows VM 'Leri için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
-|\[Önizleme\]: denetim gereksinimlerini desteklemek için medya denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI |Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID). |
-|\[Önizleme\]: denetim gereksinimlerini desteklemek için medya denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi |Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir. |
-|\[Önizleme\]: denetim gereksinimlerini desteklemek için medya denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Yöneticiler grubu |Grubu. Örnek: `Administrator; myUser1; myUser2` |
-|\[Önizleme\]: denetim gereksinimlerini desteklemek için medya denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi |Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Örnek: `Administrator; myUser1; myUser2` |
-|Depolama hesaplarında Gelişmiş tehdit koruması dağıtma |İlke ataması |Etki |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md). |
+|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma |İlke ataması |Linux VM 'Ler için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:`[]` |
+|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:`[]` |
+|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma |İlke ataması |Windows VM 'Leri için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için medya denetimlerini denetleme ve belırlı VM uzantılarını dağıtma |İlke ataması |VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI |Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID). |
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için medya denetimlerini denetleme ve belırlı VM uzantılarını dağıtma |İlke ataması |Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi |Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir. |
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için medya denetimlerini denetleme ve belırlı VM uzantılarını dağıtma |İlke ataması |Yöneticiler grubu |Grubu. Örnek: `Administrator; myUser1; myUser2` |
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için medya denetimlerini denetleme ve belırlı VM uzantılarını dağıtma |İlke ataması |Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi |Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Örnek: `Administrator; myUser1; myUser2` |
+|Depolama hesaplarında Gelişmiş tehdit koruması dağıtma |İlke ataması |Efekt |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md). |
 |SQL Server 'lar üzerinde denetim dağıtma |İlke ataması |Bekletme döneminin gün cinsinden değer (0 sınırsız saklama anlamına gelir) |Bekletme günleri (belirtilmemişse, _180_ gün) |
 |SQL Server 'lar üzerinde denetim dağıtma |İlke ataması |SQL Server denetimi için depolama hesabının kaynak grubu adı |Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılan bir SQL Server oluşturulduğu her bölgede oluşturulur). Önemli-denetimin düzgün çalışması için kaynak grubunu veya depolama hesaplarını silmeyin veya yeniden adlandırmayın. |
 |Ağ güvenlik grupları için tanılama ayarlarını dağıtma |İlke ataması |Ağ güvenlik grubu Tanılama için depolama hesabı öneki |Bu ön ek, oluşturulan depolama hesabı adını biçimlendirmek için ağ güvenlik grubu konumuyla birleştirilir. |
@@ -112,8 +111,8 @@ Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 Medya örneğini dağıtma adımlarını gözden geçirdiğinize göre, genel bakış ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Medya şemaları-genel bakış](./index.md)
-> [medya şemaları-denetim eşleme](./control-mapping.md)
+> [Medya şemaları-genel bakış](./index.md) 
+>  [Medya şemaları-denetim eşleme](./control-mapping.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

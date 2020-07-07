@@ -10,12 +10,11 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801119"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025684"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +38,7 @@ Container Instances, iş akışını test etmek ve anlamak için harika bir çö
 
 Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından klonlanan *öğreticiler/Image-Classification-mnist-Data* klasöründe *img-Classification-part2-Deploy. ipynb* Not defterini açın.
 
-Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve `matplotlib` `scikit-learn` ortamınızda yüklü olduğundan emin olun. 
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve ortamınızda yüklü olduğundan emin olun `matplotlib` `scikit-learn` . 
 
 > [!Important]
 > Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
@@ -128,7 +127,7 @@ Tahmini tamamlanma süresi: **yaklaşık 2-5 dakika**
 
 Görüntüyü yapılandırın ve dağıtın. Aşağıdaki kod şu adımlardan geçer:
 
-1. Eğitim sırasında kaydedilen ortamı (`tutorial-env`) kullanarak modelin gerektirdiği bağımlılıkları içeren ortam nesnesi oluşturun.
+1. Eğitim sırasında kaydedilen ortamı () kullanarak modelin gerektirdiği bağımlılıkları içeren ortam nesnesi oluşturun `tutorial-env` .
 1. Modeli bir Web hizmeti olarak dağıtmak için gereken çıkarım yapılandırması oluşturma şunu kullanarak:
    * Puanlama dosyası (`score.py`)
    * önceki adımda oluşturulan ortam nesnesi
@@ -235,18 +234,19 @@ print('Overall accuracy:', np.average(y_hat == y_test))
 
 Çıkış, karışıklık matrisini gösterir:
 
-    [[ 960    0    1    2    1    5    6    3    1    1]
-     [   0 1112    3    1    0    1    5    1   12    0]
-     [   9    8  920   20   10    4   10   11   37    3]
-     [   4    0   17  921    2   21    4   12   20    9]
-     [   1    2    5    3  915    0   10    2    6   38]
-     [  10    2    0   41   10  770   17    7   28    7]
-     [   9    3    7    2    6   20  907    1    3    0]
-     [   2    7   22    5    8    1    1  950    5   27]
-     [  10   15    5   21   15   27    7   11  851   12]
-     [   7    8    2   13   32   13    0   24   12  898]]
-    Overall accuracy: 0.9204
-   
+```output
+[[ 960    0    1    2    1    5    6    3    1    1]
+ [   0 1112    3    1    0    1    5    1   12    0]
+ [   9    8  920   20   10    4   10   11   37    3]
+ [   4    0   17  921    2   21    4   12   20    9]
+ [   1    2    5    3  915    0   10    2    6   38]
+ [  10    2    0   41   10  770   17    7   28    7]
+ [   9    3    7    2    6   20  907    1    3    0]
+ [   2    7   22    5    8    1    1  950    5   27]
+ [  10   15    5   21   15   27    7   11  851   12]
+ [   7    8    2   13   32   13    0   24   12  898]]
+Overall accuracy: 0.9204
+```
 
 Karışıklık matrisini grafik olarak görüntülemek için `matplotlib` kullanın. Bu grafikte X ekseni asıl değerleri, Y ekseni de tahmini değerleri gösterir. Her kılavuzun rengi, hata oranını gösterir. Renk ne kadar açıksa hata oranı da o kadar yüksektir. Örneğin, birçok 5 yanlışlıkla 3 olarak sınıflandırılmıştır. Bu nedenle, (5, 3) üzerinde parlak bir ızgara görürsünüz.
 

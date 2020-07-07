@@ -6,12 +6,11 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800554"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028250"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -64,9 +63,11 @@ Azure Cosmos öykünücüsünü [Microsoft Indirme merkezi](https://aka.ms/cosmo
 
 Azure Cosmos öykünücüsü 'nü başlatmak için Başlat düğmesini seçin veya Windows tuşuna basın. **Azure Cosmos öykünücüsü**yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin.
 
-![Başlat düğmesini seçin veya Windows tuşuna basın, * * Azure Cosmos öykünücüsü * * yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
 
-Öykünücü çalıştırıldığında, Windows görev çubuğu bildirim alanında bir simge görürsünüz. ![Yerel öykünücü Azure Cosmos DB görev çubuğu bildirimi](./media/local-emulator/database-local-emulator-taskbar.png)
+Öykünücü çalıştırıldığında, Windows görev çubuğu bildirim alanında bir simge görürsünüz. 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Yerel öykünücü Azure Cosmos DB görev çubuğu bildirimi":::
 
 Azure Cosmos öykünücüsü, bağlantı noktası 8081 ' ü dinleyen yerel makinede ("localhost") varsayılan olarak çalışır.
 
@@ -222,7 +223,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 Windows Sertifika Deposu ile tümleştirilmeyen çalışma zamanları ve dillerle kullanmak üzere bir sertifika edinmek için Windows Sertifika Yöneticisi’ni kullanarak bunu dışarı aktarmanız gerekir. Bunu, Certlm. msc dosyasını çalıştırarak başlatabilir veya [Azure Cosmos öykünücü sertifikalarını dışarı aktarma](./local-emulator-export-ssl-certificates.md)konusundaki adım adım yönergeleri izleyebilirsiniz. Sertifika yöneticisi çalıştırıldıktan sonra aşağıda gösterildiği gibi Kişisel Sertifikaları açın ve sertifikayı BASE-64 kodlu X.509 (.cer) dosyası olarak "DocumentDBEmulatorCertificate" kolay adıyla dışarı aktarın.
 
-![Yerel öykünücü TLS/SSL sertifikası Azure Cosmos DB](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="Yerel öykünücü TLS/SSL sertifikası Azure Cosmos DB":::
 
 X.509 sertifikası, [Java CA Sertifika Deposuna Sertifika Ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeler izlenerek Java sertifika deposuna içeri aktarılabilir. Sertifika sertifika deposuna alındıktan sonra, SQL ve Azure Cosmos DB 's API istemcilerinin MongoDB için olan istemcileri Azure Cosmos öykünücüsünde bağlantı kurabiliyor.
 
@@ -470,7 +471,7 @@ Linux üzerinde çalışıyorsanız, doğrulama yapmak için OpenSSL üzerinde .
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
 

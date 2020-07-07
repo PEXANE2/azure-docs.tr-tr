@@ -6,12 +6,11 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 80692cce114b18148340cfbe9070123c6990b708
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185056"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055792"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Öğretici: Kaynak Yöneticisi şablonu başvurusunu kullanma
 
@@ -42,7 +41,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
 
-1. Visual Studio Code **Dosya**>**Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
 1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -50,7 +49,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 
 1. Dosyayı açmak için **Aç**’ı seçin.
-1. Dosyayı yerel bilgisayarınıza **azuredeploy. JSON** olarak kaydetmek için **Dosya**>**farklı kaydet** ' i seçin.
+1. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
 
 ## <a name="understand-the-schema"></a>Şemayı anlama
 
@@ -75,7 +74,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="find-the-template-reference"></a>Şablon başvurusunu bulma
 
-1. [Azure şablon başvurusuna](https://docs.microsoft.com/azure/templates/)gidin.
+1. [Azure şablon başvurusuna](/azure/templates/)gidin.
 1. **Başlığa göre filtrele** kutusuna **depolama hesapları**' nı girin ve **başvuru > depolama**alanındaki ilk **depolama hesaplarını** seçin.
 
     ![Resource Manager şablon başvurusu depolama hesabı](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)

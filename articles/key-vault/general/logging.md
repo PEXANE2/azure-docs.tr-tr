@@ -10,12 +10,11 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2ac68f1cab6958c0fc79fa6518c61417e75c0a70
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480618"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043011"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -105,15 +104,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 Çıktı şöyle görünür:
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 Bu çıktı, günlük kaydının anahtar kasanız için etkin olduğunu onaylar ve depolama hesabınıza bilgi kaydeder.
 
@@ -317,7 +318,7 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | **SecretList** |[Bir kasadaki gizli anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Bir gizli anahtarın sürümlerini listeleme](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure İzleyici günlüklerini kullanma
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Izleyici günlüklerini kullanma
 
 Key Vault **auditevent** günlüklerini gözden geçirmek Için Azure izleyici günlüklerinde Key Vault çözümünü kullanabilirsiniz. Azure Izleyici günlüklerinde, verileri analiz etmek ve ihtiyacınız olan bilgileri almak için günlük sorgularını kullanırsınız. 
 

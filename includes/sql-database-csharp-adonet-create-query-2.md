@@ -4,12 +4,11 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67188449"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050445"
 ---
 ## <a name="c-program-example"></a>C# program örneği
 
@@ -24,33 +23,33 @@ Bu makalenin sonraki bölümlerinde Transact-SQL (T-SQL) deyimlerini SQL veritab
 
 ### <a name="entity-relationship-diagram-erd"></a>Varlık Ilişkisi diyagramı (ERD)
 
-`CREATE TABLE` Deyimler iki tablo arasında *yabancı anahtar* (FK) ilişkisi oluşturmak için **Başvurular** anahtar sözcüğünü içerir. *Tempdb*kullanıyorsanız, bir dizi baştaki tire kullanarak `--REFERENCES` anahtar sözcüğü not edin.
+`CREATE TABLE`Deyimler iki tablo arasında *yabancı anahtar* (FK) Ilişkisi oluşturmak için **Başvurular** anahtar sözcüğünü içerir. *Tempdb*kullanıyorsanız, `--REFERENCES` bir dizi baştaki tire kullanarak anahtar sözcüğü not edin.
 
 ERD iki tablo arasındaki ilişkiyi görüntüler. **TabEmployee. DepartmentCode** *alt* sütunundaki değerler, **tabdepartment. DepartmentCode** *üst* sütunundaki değerlerle sınırlıdır.
 
 ![Yabancı anahtarı gösteren ERD](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> T-SQL ' i, tablo adlarına bir lider `#` eklemek için, bunları *tempdb*'de geçici tablolar olarak oluşturan bir seçenek olacak şekilde düzenleyebilirsiniz. Bu, kullanılabilir test veritabanı olmadığında tanıtım amacıyla faydalıdır. Yabancı anahtarlara yapılan herhangi bir başvuru, kullanımları sırasında zorlanmaz ve geçici tablolar, programın çalışması bittikten sonra bağlantı kapandığında otomatik olarak silinir.
+> T-SQL ' i, tablo adlarına bir lider eklemek için, `#` bunları *tempdb*'de geçici tablolar olarak oluşturan bir seçenek olacak şekilde düzenleyebilirsiniz. Bu, kullanılabilir test veritabanı olmadığında tanıtım amacıyla faydalıdır. Yabancı anahtarlara yapılan herhangi bir başvuru, kullanımları sırasında zorlanmaz ve geçici tablolar, programın çalışması bittikten sonra bağlantı kapandığında otomatik olarak silinir.
 
 ### <a name="to-compile-and-run"></a>Derlemek ve çalıştırmak için
 
 C# programı mantıksal olarak bir. cs dosyasıdır ve her bir bloğun anlaşılması daha kolay anlamak için fiziksel olarak birçok kod bloğuna bölünmüştür. Programı derlemek ve çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Visual Studio 'da bir C# projesi oluşturun. Proje türü **Şablonlar** > **Visual C#** > **Windows Masaüstü** > **konsol uygulaması (.NET Framework)** altında bulunan bir *konsol*olmalıdır.
+1. Visual Studio 'da bir C# projesi oluşturun. Proje türü *Console* **Şablonlar**  >  **Visual C#**  >  **Windows Masaüstü**  >  **konsol uygulaması (.NET Framework)** altında bulunan bir konsol olmalıdır.
 
 1. *Program.cs*dosyasında, kod başlangıç satırları ' nı aşağıdaki adımlarla değiştirin:
 
     1. Aşağıdaki kod bloklarını kopyalayıp, sunulan aynı sırada kopyalayıp yapıştırın, bkz. [veritabanına Bağlan](#cs_1_connect), [T-SQL oluştur](#cs_2_return)ve [veritabanına gönder](#cs_3_submit).
 
-    1. `Main` Yönteminde aşağıdaki değerleri değiştirin:
+    1. Yönteminde aşağıdaki değerleri değiştirin `Main` :
 
         - *CB. DataSource*
         - *CB. UserID*
         - *CB. Parolayı*
-        - *CB. InitialCatalog*
+        - *TialCatalogcb.Ini*
 
-1. Bütünleştirilmiş kod *System. Data. dll* dosyasına başvurulduğunu doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesinde **Başvurular** düğümünü genişletin.
+1. *System.Data.dll* bütünleştirilmiş koda başvurulduğunu doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesinde **Başvurular** düğümünü genişletin.
 
 1. Visual Studio 'dan programı derlemek ve çalıştırmak için **Başlat** düğmesini seçin. Rapor çıktısı bir program penceresinde görüntülenir, ancak GUID değerleri test çalıştırmaları arasında farklılık gösterir.
 

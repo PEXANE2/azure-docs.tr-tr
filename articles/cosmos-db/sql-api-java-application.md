@@ -8,12 +8,11 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: d29f97bf421804fb234ce8d86c66c12b01854681
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 6dcfdc63946bcc2a9ffe4c5c767e81ca3b32107b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85113815"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025293"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -90,7 +89,7 @@ JSP uygulaması oluşturmak için:
 
 1. 2 adımda bir hedef çalışma zamanı ayarlarsanız **Proje**'ye ve ardından **Çalıştır**'a tıklayıp JSP uygulamanızı yerel olarak çalıştırabilirsiniz:
 
-  ![Hello World - Java Uygulaması Öğreticisi](./media/sql-api-java-application/image12.png)
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World - Java Uygulaması Öğreticisi":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>SQL Java SDK 'sını yükler
 

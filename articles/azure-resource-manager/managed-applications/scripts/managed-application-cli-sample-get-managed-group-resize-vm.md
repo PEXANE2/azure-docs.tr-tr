@@ -6,12 +6,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f119fe4b4547bda8249a3620baf938dd8b83c235
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650061"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056057"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Azure CLI ile bir yönetilen kaynak grubundaki kaynakları alma ve VM’leri yeniden boyutlandırma
 
@@ -33,12 +32,12 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutları kullan
 
 | Komut | Notlar |
 |---|---|
-| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | Yönetilen uygulamaları listeler. Sonuçlara odaklanmak için sorgu değerleri sağlar. |
-| [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve sorgu değerleri sağlar. |
-| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Sanal makinenin boyutunu güncelleştirir. |
+| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | Yönetilen uygulamaları listeler. Sonuçlara odaklanmak için sorgu değerleri sağlar. |
+| [az resource list](/cli/azure/resource#az-resource-list) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve sorgu değerleri sağlar. |
+| [az vm resize](/cli/azure/vm#az-vm-resize) | Sanal makinenin boyutunu güncelleştirir. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Azure Yönetilen Uygulamalara genel bakış](../overview.md) konusunu inceleyin.
-* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).

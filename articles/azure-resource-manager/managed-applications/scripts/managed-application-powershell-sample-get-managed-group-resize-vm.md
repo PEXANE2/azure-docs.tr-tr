@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 695023f4700370cbe5e9b345f513e38d1cf1fc0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 602aaeb67ca081ebac71ca1d6d24a2de3c020603
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650187"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055996"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Yönetilen bir kaynak grubundaki kaynakları edinme ve VM 'Leri PowerShell ile yeniden boyutlandırma
 
@@ -32,12 +31,12 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutları kullan
 
 | Komut | Notlar |
 |---|---|
-| [Get-Azmanagedadpplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Yönetilen uygulamaları listeler. Sonuçları odaklamak için kaynak grubu adı belirtin. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve kaynak türü sağlayın. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Sanal makinenin boyutunu güncelleştirir. |
+| [Get-Azmanagedadpplication](/powershell/module/az.resources/get-azmanagedapplication) | Yönetilen uygulamaları listeler. Sonuçları odaklamak için kaynak grubu adı belirtin. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve kaynak türü sağlayın. |
+| [Update-AzVM](/powershell/module/az.compute/update-azvm) | Sanal makinenin boyutunu güncelleştirir. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Azure Yönetilen Uygulamalara genel bakış](../overview.md) konusunu inceleyin.
-* PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/get-started-azureps).

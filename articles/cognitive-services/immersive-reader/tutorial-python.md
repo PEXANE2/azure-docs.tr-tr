@@ -4,23 +4,22 @@ titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python uygulaması oluşturacaksınız.
 services: cognitive-services
 author: dylankil
-manager: nitinme
+manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: tracking-python
-ms.openlocfilehash: fb95e21f9df5cf5eded03ea51f56bab86bbbecb3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: ea9e6e1f06bacd28a4e9894039de824c3a5b4af4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609140"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044949"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma
 
-[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python web uygulamasının nasıl oluşturulacağı ele alınmaktadır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python web uygulamasının nasıl oluşturulacağı ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek bir proje kullanarak PIP, Flask, Jınja ve virtualalenv ile bir Python web uygulaması oluşturma
@@ -29,7 +28,7 @@ ms.locfileid: "84609140"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/)
@@ -217,7 +216,7 @@ sudo nano /etc/paths
 - Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin örn `PATH=$PATH:/usr/local/bin` ..
 - Çıkmak için Control-x ' i vurun.
 - `Y`Değiştirilen arabelleği kaydetmek için girin.
-- Hepsi bu! Test etmek için yeni Terminal penceresinde şunu yazın: `echo $PATH` .
+- İşte bu kadar! Test etmek için yeni Terminal penceresinde şunu yazın: `echo $PATH` .
 
 Flask 'yi yükler.
 

@@ -11,12 +11,11 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918930"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027860"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verilerinde anomali algılama
 
@@ -41,11 +40,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!Note]
 > * Bu öğretici, anomali algılayıcı API 'SI için önerilen [çözüm mimarisini](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) uygulamaya yönelik bir yaklaşım sunar.
-> * Bu öğretici anomali algılayıcısı API 'SI için ücretsiz bir deneme ile tamamlanamaz veya Azure Databricks. 
+> * `F0`Anomali algılayıcı API 'si veya Azure Databricks için ücretsiz katman () aboneliğiyle Bu öğretici tamamlanamaz. 
 
 Hesabınız yoksa bir [Azure aboneliği](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Event Hubs ad alanı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) ve Olay Hub 'ı.
 
@@ -151,7 +150,7 @@ Kitaplık sayfasında, kitaplığı kullanmak istediğiniz kümeyi seçin ve ard
 
 Bu öğreticide, Azure bilişsel [Hizmetler anomali algılayıcı API 'lerini](../overview.md) kullanarak, neredeyse gerçek zamanlı olarak KAG 'lerin bir akışında anomali algılama işlemini gerçekleştirebilirsiniz. API 'Leri kullanmadan önce Azure 'da bir anomali algılayıcı kaynağı oluşturmanız ve anomali algılayıcı API 'Lerini kullanmak için bir erişim anahtarı almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **+ Kaynak oluştur**’u seçin.
 
@@ -161,7 +160,7 @@ Bu öğreticide, Azure bilişsel [Hizmetler anomali algılayıcı API 'lerini](.
 
 4. **Oluştur** iletişim kutusunda aşağıdaki değerleri sağlayın:
 
-    |Değer |Description  |
+    |Değer |Açıklama  |
     |---------|---------|
     |Name     | Anomali algılayıcı kaynağı için bir ad.        |
     |Abonelik     | Kaynağın ilişkilendirileceği Azure aboneliği.        |

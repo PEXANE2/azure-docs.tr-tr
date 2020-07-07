@@ -4,14 +4,13 @@ description: Bazı yaygın App Service senaryolarından bazılarına yönelik Az
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254506"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054551"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service için CLı örnekleri
 
@@ -25,7 +24,8 @@ Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyala
 | [GitHub 'dan sürekli dağıtım ile uygulama oluşturma](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Sahip olduğunuz bir GitHub deposundan sürekli yayımlamaya sahip bir App Service uygulaması oluşturur. |
 | [Yerel bir git deposundan uygulama oluşturma ve kod dağıtma](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Bir App Service uygulaması oluşturur ve yerel bir git deposundan kod gönderimi yapılandırır. |
 | [Bir uygulama oluşturma ve hazırlama ortamına kod dağıtma](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Hazırlama kodu değişiklikleri için dağıtım yuvası olan bir App Service uygulaması oluşturur. |
-| [Docker kapsayıcısında ASP.NET Core uygulaması oluşturma](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Linux üzerinde bir App Service uygulaması oluşturur ve Docker Hub 'ından bir Docker görüntüsü yükler. |
+| [Docker kapsayıcısında ASP.NET Core uygulaması oluşturma](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | Linux üzerinde bir App Service uygulaması oluşturur ve Docker Hub 'ından bir Docker görüntüsü yükler. |
+| [Bir uygulama oluşturun ve özel bir uç noktayla sunun](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | Bir App Service uygulaması ve özel bir uç nokta oluşturur |
 |**Uygulama yapılandırma**||
 | [Özel bir etki alanını uygulamayla eşleme](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Bir App Service uygulaması oluşturur ve buna özel bir etki alanı adı eşleştirir. |
 | [Uygulamaya özel bir TLS/SSL sertifikası bağlama](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Bir App Service uygulaması oluşturur ve özel bir etki alanı adının TLS/SSL sertifikasını buna bağlar. |

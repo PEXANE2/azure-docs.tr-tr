@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 08649a537ac8f9de5f444ca3e4fe5ed509910294
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618366"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045850"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: Azure Time Series Insights önizleme ortamı ayarlama
 
@@ -120,7 +119,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
    [![Oluşturulan IoT Hub 'ını bir olay kaynağı olarak yapılandırın.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     [![Oluştur düğmesi ile, ve oluştur sayfasını gözden geçirin.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -204,7 +203,7 @@ Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-ins
 
 ## <a name="define-and-apply-a-model"></a>Model tanımlama ve uygulama
 
-Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Modeli tamamlayabilmeniz için türler, hiyerarşiler ve örnekler tanımlarsınız. Veri modelleme hakkında daha fazla bilgi edinmek için [zaman serisi modelini](./time-series-insights-update-tsm.md)okuyun.
+Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Modeli tamamlayabilmeniz için türler, hiyerarşiler ve örnekler tanımlarsınız. Veri modelleme hakkında daha fazla bilgi edinmek için [zaman serisi modelini](./concepts-model-overview.md)okuyun.
 
 1. Gezgin 'de **model** sekmesini seçin:
 
@@ -226,8 +225,8 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Adı** | **Ort sıcaklık**girin. |
-    | **Denetlenmesi** | **Sayısal** seçin |
-    | **Deeri** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Tip** | **Sayısal** seçin |
+    | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
     | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
     **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve aşağıdaki değerleri ayarlayın:
@@ -235,8 +234,8 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Adı** | **Ortalama titreşim**girin. |
-    | **Denetlenmesi** | **Sayısal** seçin |
-    | **Deeri** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Tip** | **Sayısal** seçin |
+    | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
     | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
     **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
@@ -244,16 +243,16 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Adı** | **Kat**girin. |
-    | **Denetlenmesi** | **Kategorik** seçin |
-    | **Deeri** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
-    | **Kategoriler** | <span style="text-decoration: underline">Etiket </span>   -  <span style="text-decoration: underline">değerleri</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
+    | **Tip** | **Kategorik** seçin |
+    | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Kategoriler** | <span style="text-decoration: underline">Etiketi</span>   -  <span style="text-decoration: underline">Değerler</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
     | **Varsayılan kategori** | **Bilinmeyen** girin |
 
     [![Tür değişkenleri ekleyin.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     **Uygula**’yı seçin.
 
-1. **Kaydet**’i seçin. Üç değişken oluşturulur ve görüntülenir.
+1. **Kaydet**'i seçin. Üç değişken oluşturulur ve görüntülenir.
 
     [![Tür eklendikten sonra Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -266,7 +265,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
    | **Adı** | **Konum hiyerarşisini**girin. |
    |**Düzeyler**| **Ülkeyi** ilk düzeyin adı olarak girin <br> **+ Düzey Ekle** seçeneğini belirleyin <br> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
-   **Kaydet**’i seçin.
+   **Kaydet**'i seçin.
 
    [![Yeni hiyerarşinizi Model görünümünde görüntüleyin.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -287,7 +286,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Şehir** | **Seattle** girin |
     | **Oluşturma** | **Space iğne** girin |
 
-    **Kaydet**’i seçin.
+    **Kaydet**'i seçin.
 
 1. Aşağıdaki değerleri kullanırken önceki adımı diğer iki örnek ile tekrarlayın:
 
@@ -349,15 +348,15 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 Şimdi kendi Azure Time Series Insights önizleme ortamınızı oluşturmayı bildiğinize göre, Azure Time Series Insights temel kavramlar hakkında daha fazla bilgi edinin.
 
-Azure Time Series Insights depolama yapılandırması hakkında bilgi edinin:
+Azure Time Series Insights alımı hakkında bilgi edinin::
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights önizleme depolama ve giriş](./time-series-insights-update-storage-ingress.md)
+> [Azure Time Series Insights veri alımı genel bakış](./concepts-ingestion-overview.md)
 
 Zaman serisi modelleri hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Preview veri modelleme](./time-series-insights-update-tsm.md)
+> [Azure Time Series Insights Preview veri modelleme](./concepts-model-overview.md)
 
 Ortamınızı Power BI bağlama hakkında daha fazla bilgi edinin
 

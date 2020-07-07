@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: cd71789d6c2fb54007f3d6623ba8d14f98383b5a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Öğretici: Shopify Plus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -139,11 +138,31 @@ Bu bölümde, Shopify Plus 'a erişim vererek Azure çoklu oturum açma özelli�
 
 ## <a name="configure-shopify-plus-sso"></a>Shopify Plus SSO 'yu yapılandırma
 
-**Shopify Plus** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'sini** [Shopify Plus Destek ekibine](mailto:plus-user-management@shopify.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Tüm adımları görüntülemek için, [Shopify 'un SAML tümleştirmelerini ayarlama hakkında](https://help.shopify.com/en/manual/shopify-plus/saml)bölümüne bakın.
+
+**Shopify Plus** tarafında çoklu oturum açmayı yapılandırmak için Azure Active Directory 'Den **uygulama Federasyon meta veri URL 'sini** kopyalayın. Ardından, [Kuruluş Yöneticisi](https://shopify.plus) ' nde oturum açın ve **Kullanıcılar**  >  **güvenlik**' e gidin. **Yapılandırma ayarla**' yı seçin ve ardından **kimlik sağlayıcısı meta veri URL** 'Si bölümüne uygulamanızın Federasyon meta veri URL 'sini yapıştırın. Bu adımı gerçekleştirmek için **Ekle** ' yi seçin.
 
 ### <a name="create-shopify-plus-test-user"></a>Shopify Plus test kullanıcısı oluşturma
 
-Bu bölümde, Shopify Plus içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Shopify Plus platformunda kullanıcıları eklemek için [Shopify ve destek ekibi](mailto:plus-user-management@shopify.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Shopify Plus içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. **Kullanıcılar** bölümüne dönün ve e-postalarını ve izinlerini girerek bir kullanıcı ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+
+### <a name="enforce-saml-authentication"></a>SAML kimlik doğrulamasını zorla
+
+> [!NOTE]
+> Büyük ölçüde uygulamadan önce bireysel kullanıcıları kullanarak tümleştirmeyi test etmenizi öneririz.
+
+Bireysel kullanıcılar:
+1. Azure AD tarafından yönetilen bir e-posta etki alanı ile Shopify ve Shopify Plus ' de doğrulanan tek bir kullanıcının sayfasına gidin.
+1. SAML kimlik doğrulaması bölümünde **Düzenle**' yi seçin, **gerekli**' ı seçin ve ardından **Kaydet**' i seçin.
+1. Bu kullanıcının IDP tarafından başlatılan ve SP tarafından başlatılan akışlar aracılığıyla başarıyla oturum açmasını test edebilirsiniz.
+
+Bir e-posta etki alanı altındaki tüm kullanıcılar için:
+1. **Güvenlik** sayfasına dönün.
+1. SAML kimlik doğrulaması ayarınız için **gerekli** ' yi seçin. Bu, Shopify Plus genelindeki e-posta etki alanına sahip tüm kullanıcılar için SAML 'yi zorlar.
+1. **Kaydet**'i seçin.
+
+> [!IMPORTANT]
+> Bir e-posta etki alanı altındaki tüm kullanıcılar için SAML 'nin etkinleştirilmesi, bu uygulamayı kullanan tüm kullanıcıları etkiler. Kullanıcılar, normal oturum açma sayfasını kullanarak oturum açamaz. Yalnızca Azure Active Directory aracılığıyla uygulamaya erişebilecekler. Shopify, kullanıcıların normal kullanıcı adını ve parolasını kullanarak oturum açmasını sağlayan bir yedekleme oturum açma URL 'SI sağlamaz. Gerekirse SAML 'yi kapatmak için Shopify desteğine başvurabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -155,7 +174,7 @@ Erişim panelinde Shopify Plus kutucuğuna tıkladığınızda, SSO 'yu ayarlad�
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -14,12 +14,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8e5c03876de8ca078c6e89b8ca101602e4e4cf52
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460452"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045748"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makineleri için Azure sanal ağlarını yönetme
 
@@ -38,7 +37,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 ## <a name="vm-networking-overview"></a>VM ağına genel bakış
 
-Azure sanal ağları, sanal makineler ile İnternet ve Azure SQL veritabanı gibi diğer Azure hizmetleri arasında güvenli ağ bağlantıları kurulmasını sağlar. Sanal ağlar, alt ağ adı verilen mantıksal segmentlere ayrılır. Alt ağlar, ağ akışını denetlemek için ve güvenlik sınırı olarak kullanılır. Bir VM dağıtılırken, genellikle bir alt ağa eklenmiş sanal ağ arabirimine sahiptir.
+Azure sanal ağları, sanal makineler, internet ve Azure SQL veritabanı gibi diğer Azure hizmetleri arasında güvenli ağ bağlantıları sağlar. Sanal ağlar, alt ağ adı verilen mantıksal segmentlere ayrılır. Alt ağlar, ağ akışını denetlemek için ve güvenlik sınırı olarak kullanılır. Bir VM dağıtılırken, genellikle bir alt ağa eklenmiş sanal ağ arabirimine sahiptir.
 
 Öğreticiyi tamamlarken, aşağıdaki sanal ağ kaynakları oluşturulur:
 

@@ -8,23 +8,22 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014919"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045306"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
-Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile bir Azure SQL veritabanı 'na yüklersiniz.
+Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile Azure SQL veritabanı 'na yüklersiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Verileri bir HDInsight kümesine ayıklayın ve karşıya yükleyin.
 > * Apache Hive kullanarak verileri dönüştürün.
-> * Sqoop kullanarak verileri bir Azure SQL veritabanına yükleyin.
+> * Sqoop kullanarak verileri Azure SQL veritabanı 'na yükleyin.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -38,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
     Bkz. [hızlı başlangıç: Azure HDInsight 'ta Azure Portal kullanarak Apache Hadoop ve Apache Hive ile çalışmaya başlama](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL veritabanı**: BIR Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
+* **Azure SQL veritabanı**: Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
 
 * **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -224,7 +223,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
 
 ## <a name="create-a-sql-database-table"></a>SQL veritabanı tablosu oluşturma
 
-Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
+Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com)gidin.
 

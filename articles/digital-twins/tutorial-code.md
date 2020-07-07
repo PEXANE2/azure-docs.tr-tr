@@ -7,12 +7,11 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bf200a8c7da6910f9d844c9b72e926e8103df6bc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391800"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027881"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Leri ile kodlama
 
@@ -285,6 +284,7 @@ Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **d
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 Ardından, `Main` Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
@@ -315,7 +315,7 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-İlişkiler oluşturabilmek için `using` SDK 'daki ilişki temel türü için bir ifade ekleyin:
+İlişkiler oluşturabilmek için `using` SDK 'daki ilişki temel türü için bir ifade ekleyin: zaten eklendiyse bunu atlayın.
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```

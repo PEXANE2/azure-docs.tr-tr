@@ -5,12 +5,11 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d770632958e046eb2b3494999d564bb4a6956b04
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82183849"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054483"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma
 
@@ -37,15 +36,15 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
 
-1. Visual Studio Code **Dosya**>**Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı yerel bilgisayarınıza **azuredeploy. JSON** olarak kaydetmek için **Dosya**>**farklı kaydet** ' i seçin.
+4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
+5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

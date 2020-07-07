@@ -3,12 +3,11 @@ title: NIST SP 800-53 R4 şema örneğine genel bakış
 description: NIST SP 800-53 R4 şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli NIST SP 800-53 R4 denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: e7ad29904b87a20f59d2867d277d806331614461
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 20ea6e81746a07db85a00a0881744340b2a24d1f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740352"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042671"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 şema örneği
 
@@ -99,10 +98,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Description|
+|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN NıST SP 800-53 R4 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
-|\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN NıST SP 800-53 R4 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN NıST SP 800-53 R4 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN NıST SP 800-53 R4 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan hariç tutulması gereken kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN NıST SP 800-53 R4 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|

@@ -4,12 +4,11 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76989102"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050327"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
@@ -131,7 +130,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     f. Kullanıcı adını girin.
 
-    g. Kullanıcı adı için ile ilişkili parolayı girin.
+    örneğin: Kullanıcı adı için ile ilişkili parolayı girin.
 
     h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Test**’i seçin. Bağlantı başarılı olursa yeşil bir onay işareti görürsünüz. Bağlantı başarılı olmazsa bir hata iletisi görürsünüz. Sorunları giderin ve tümleştirme çalışma zamanının SQL Server’a bağlanabildiğinden emin olun.    
 

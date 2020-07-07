@@ -2,19 +2,18 @@
 title: 'Öğretici: desenler-LUSıS'
 description: Bu öğreticide daha az örnek Aralık sağlarken amacı ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimi içeren bir şablon söylenişi örneği olarak sağlanır.
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592925"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039509"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: tahminleri geliştirmek için ortak desen şablonu söylenişi biçimleri ekleme
 
 Bu öğreticide, daha az örnek elde etmenizi sağlayan amaç ve varlık tahminini artırmak için desenleri kullanın. Bu desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimi içeren bir amaca atanan bir şablon utterine atanır.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Desen oluşturma
@@ -39,12 +38,10 @@ Bir model metin eşleştirme ve makine öğrenmesinin birleşimi olarak uygulan�
 
 Aşağıdaki adımları kullanın:
 
-1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)indirip kaydedin.
+1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)indirip kaydedin.
 
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
-1. JSON 'ı yeni bir uygulamaya bir [halin portalına](https://www.luis.ai)aktarın. **Uygulamalarım** sayfasında, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktar**' ı seçin. Önceki adımda indirdiğiniz dosyayı seçin.
-
-1. **Yönet** bölümünün **sürümler** sekmesinde etkin sürümü seçin ve ardından **Kopyala**' yı seçin. Kopyalanmış sürümü adlandırın `patterns` . Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+1. JSON 'ı yeni bir uygulamaya bir [halin portalına](https://www.luis.ai)aktarın. **Uygulamalarım** sayfasında, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktar**' ı seçin. Önceki adımda indirdiğiniz dosyayı seçin, uygulamayı adlandırın `Patterns tutorial` .
 
 ## <a name="create-new-intents-and-their-utterances"></a>Yeni amaçları ve konuşmalarını oluşturma
 
@@ -67,8 +64,6 @@ Aşağıdaki adımları kullanın:
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    Amacın konuşmalarında employee varlığı yerine keyPhrase varlığı etiketlenmişse endişelenmeyin. İkisi de uç noktanın Test bölmesinde doğru şekilde tahmin edilir.
 
 1. Sol gezinti bölmesinden **Intents** (Amaçlar) öğesini seçin.
 
@@ -109,50 +104,50 @@ Aşağıdaki adımları kullanın:
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +166,9 @@ Aşağıdaki adımları kullanın:
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,32 +185,28 @@ Aşağıdaki adımları kullanın:
     }
     ```
 
-İki üst amaca ait puanlar kapalı, ancak en yüksek amaç önemli ölçüde yüksek değil (%60 üzerinde) ve bir sonraki amaç puanı üzerinde yeterince fazla değil.
+Doğru en iyi amaç tahmin edildi, `OrgChart-Manager` ancak puan %70 üzerinde değil ve en yüksek bir sonraki amaç üzerinde yeterince fazla değil. Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha yüksek ve uzak hale getirmek için desenleri kullanın.
 
-LUSıS eğitimi her seferinde tam olarak aynı olmadığından (bir dizi değişim vardır), bu en üstteki iki puan sonraki eğitim döngüsünün üzerine çevirebilirsiniz. Sonuç olarak yanlış amaç döndürülebilir.
-
-Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha yüksek ve uzak hale getirmek için desenleri kullanın.
-
-Bu ikinci tarayıcı penceresini açık bırakın. Öğreticinin sonraki bölümlerinde kullanacaksınız.
+Bu ikinci tarayıcı penceresini açık bırakın. Öğreticide daha sonra bir kez kullanacaksınız.
 
 ## <a name="template-utterances"></a>Konuşma şablonları
-Insan kaynakları konu etki alanının doğası gereği, kuruluşlardaki çalışan ilişkilerini sormanın bazı yaygın yolları vardır. Örnek:
+Insan kaynakları konu etki alanının doğası gereği, kuruluşlardaki çalışan ilişkilerini sormanın bazı yaygın yolları vardır. Örneğin:
 
 |Konuşmalar|
 |--|
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-Bu konuşmalar birbirine çok yakın olduğundan bağlam açısından farklarını belirlemek için birden fazla konuşma örneği sağlamanız gerekir. Amaç için bir desen eklediğinizde LUIS, bir amaç için sık kullanılan konuşma desenlerini çok sayıda konuşma örneği eklemeden öğrenir.
+Bu söyleyler, _pek çok_ söylenişi örneği sağlamadan her birinin bağlamsal benzersizliğini belirlemede çok yakın. Bir amaç için bir desen ekleyerek, çok sayıda daha fazla söylenişi örneği sağlamaya gerek kalmadan bir amaç için yaygın olarak kullanılan bir desenler öğreniyor.
 
 Bu amaç için bazı konuşma şablonu örnekleri şunlardır:
 
 |Konuşma şablonu örnekleri|söz dizimini anlamı|
 |--|--|
-|`Who does {Employee} report to[?]`|değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
-|`Who reports to {Employee}[?]`|değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|değiştirilebilir`{EmployeeListEntity}`<br>Yoksay`[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|değiştirilebilir`{EmployeeListEntity}`<br>Yoksay`[?]`|
 
-`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı sözdizimi, `[?]` , kelime veya [noktalama](luis-reference-application-settings.md#punctuation-normalization) işareti isteğe bağlıdır. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
+`{EmployeeListEntity}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı sözdizimi, `[?]` , kelime veya [noktalama](luis-reference-application-settings.md#punctuation-normalization) işareti isteğe bağlıdır. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
 
 Sözdizimi bir normal ifade gibi göründüğünden, normal bir ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
 
@@ -233,25 +224,25 @@ Bir düzenin bir söylenişi ile eşleşmesi için, _ilk_ olarak, bir desen içi
 
     |Konuşma şablonları|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    Bu şablon, küme ayracı gösterimine sahip **çalışan** varlığını içerir.
+    Bu şablon, küme ayracı gösterimine sahip **Employeelistentity** varlığını içerir.
 
 1. Desenler sayfasında, **kuruluş şeması-raporlar** hedefini seçin, sonra aşağıdaki şablon utslerini girin:
 
     |Konuşma şablonları|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Desenler kullanıldığında uç noktayı sorgulama
 
@@ -261,7 +252,7 @@ Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zam
 
 1. Yayımlama işlemi tamamlandıktan sonra, tarayıcı sekmelerini uç nokta URL 'SI sekmesine geri geçirin.
 
-1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile değiştirin:`Who is the boss of Jill Jones?`
+1. Adres çubuğunda URL 'nin sonuna gidin ve sorgunuzun hala `Who is the boss of Jill Jones?` Yeni bir tahmin için URL 'yi göndereceğini doğrulayın.
 
     ```json
     {
@@ -270,50 +261,50 @@ Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zam
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +323,9 @@ Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zam
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +342,7 @@ Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zam
     }
     ```
 
-Amaç tahmini artık önemli ölçüde daha önemlidir ve bir sonraki en yüksek amaç puanı önemli ölçüde düşüktür. Bu iki amaç, eğitim sırasında-flop ' i çevirmez.
+Amaç tahmini artık önemli ölçüde daha önemlidir ve bir sonraki en yüksek amaç puanı çok düşüktür. Bu iki amaç, eğitim sırasında-flop ' i çevirmez.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>İsteğe bağlı metin ve önceden oluşturulmuş varlıklarla çalışma
 
@@ -372,8 +363,8 @@ Bu isteğe bağlı bilgilere izin veren örnek şablon örnekleri:
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe bağlı metnin konuşma şablonuna eklenmesini kolaylaştırır, ikinci düzeye kadar iç içe yerleştirilebilir `[[]]` ve varlık ya da metin içerebilir.
@@ -383,9 +374,10 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
 
 **Soru: March 3 (Mart 3) hem sayı `3` hem de tarih `March 3` olarak tahmin ediliyorsa konuşma şablonunun sayı bölümü neden önceden oluşturulmuş durumda değil?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.
 
-**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz.
+**Soru: `Who will {EmployeeListEntity}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz.
 
-**Unutmayın: Önce varlıklar bulunur, ardından desen eşleştirilir.**
+> [!CAUTION]
+> **Unutmayın: Önce varlıklar bulunur, ardından desen eşleştirilir.**
 
 ### <a name="add-new-pattern-template-utterances"></a>Yeni konuşma şablonu deseni ekleme
 
@@ -393,9 +385,9 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
 
     |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
@@ -403,7 +395,7 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
 
 4. Desenin eşleştirildiğini ve amaç puanının oldukça yüksek olduğunu doğrulamak için birkaç test konuşması girin.
 
-    İlk konuşmayı girdikten sonra tüm tahmin sonuçlarını görebilmek için sonucun altındaki **Inspect** (İncele) öğesini seçin. Her bir söylemeye, **kuruluş şeması Yöneticisi** amacına sahip olmalıdır ve çalışanların ve datetimeV2 varlıkların değerlerini ayıklamalıdır.
+    İlk konuşmayı girdikten sonra tüm tahmin sonuçlarını görebilmek için sonucun altındaki **Inspect** (İncele) öğesini seçin. Her bir söylemeye, **Kuruluş Yöneticisi** amacına sahip olmalıdır ve ve varlıklarının değerlerini ayıklamalıdır `EmployeeListEntity` `datetimeV2` .
 
     |İfade|
     |--|
@@ -425,18 +417,21 @@ Belirtilen desenlerin kullanımı:
 
 Önceki şablon dıklıları çok yakın. **group** `()` **OR** `|` Şablon Uttaslarını azaltmak için grubunu ve veya sözdizimini kullanın.
 
-Aşağıdaki 2 desenleri, Grup `()` ve veya söz dizimini kullanarak tek bir desen içinde birleştirilebilir `|` .
+Aşağıdaki iki desen, Grup `()` ve veya söz dizimini kullanarak tek bir düzende birleştirilebilir `|` .
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 Yeni şablon söylenişi şu şekilde olacaktır:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 Bu, gerekli **group** fiil zaman hali ve isteğe bağlı `in` ve aralarında `on` bir **veya** dikey çizgi etrafında bir grup kullanır.
+
+> [!NOTE]
+> _Or_ sembolünü `|` (pipe) kullanırken, kanal sembolünü örnek şablonda ve sonra gelen bir boşluk ile ayırdığınızdan emin olun.
 
 1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. Öğesini arayarak listeyi daraltın `manager` .
 
@@ -444,7 +439,7 @@ Bu, gerekli **group** fiil zaman hali ve isteğe bağlı `in` ve aralarında `on
 
 1. Konuşma şablonunu şu şekilde değiştirin: 
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
@@ -493,7 +488,7 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Yalnızca b
 
 1. Sol gezinti panelinden **Entities** (Varlıklar) öğesini seçin.
 
-1. **+ Oluştur**' u seçin, adı girin `FormName` ve **model. herhangi bir** tür olarak seçin. **Oluştur**’u seçin.
+1. **+ Oluştur**' u seçin, adı girin `FormName` ve **model. herhangi bir** tür olarak seçin. **Oluştur**'u seçin.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any kullanan bir desen ekleme
 

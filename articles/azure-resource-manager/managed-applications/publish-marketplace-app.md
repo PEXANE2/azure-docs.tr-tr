@@ -5,12 +5,11 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79473005"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054500"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Öğretici: market 'te Azure yönetilen uygulamaları yayımlama
 
@@ -44,7 +43,7 @@ Yönetilen uygulamaya yönelik teklif, bir yayımcının ürün teklifi sınıf�
 
 1. [Bulut İş Ortağı portalında](https://cloudpartner.azure.com/) oturum açın.
 
-1. Sol taraftaki Gezinti bölmesinde **+ yeni teklif** > **Azure uygulamaları**' nı seçin.
+1. Sol taraftaki Gezinti bölmesinde **+ yeni teklif**  >  **Azure uygulamaları**' nı seçin.
 
 1. **Düzenleyici** görünümünde gereken formları görürsünüz. Her bir form, bu makalenin ilerleyen kısımlarında tanımlanmaktadır.
 
@@ -70,7 +69,7 @@ SKU, bir teklife ilişkin en küçük satın alınabilir birimdir. Şunlar aras�
 
 SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başına satın alınabilir varlık olarak görünür.
 
-1. **SKU 'ları** > **Yeni SKU 'yu**seçin.
+1. **SKU 'ları**  >  **Yeni SKU 'yu**seçin.
 
 1. Bir **SKU Kimliği** girin. SKU Kimliği, teklif içindeki SKU’ya yönelik bir benzersiz tanıtıcıdır. Bu kimlik; ürün URL’leri, Kaynak Yöneticisi şablonları ve faturalandırma raporlarında görünürdür. Yalnızca küçük harfli alfasayısal karakterler veya tirelerden (-) oluşabilir. Kimlik tire ile bitemez ve en fazla 50 karakterle sınırlıdır. Teklif yayımlandıktan sonra bu alan kilitlenir. Bir teklif içinde birden çok SKU’ya sahip olabilirsiniz. Yayımlamayı planladığınız her bir resim için bir SKU seçmeniz gerekir.
 
@@ -96,7 +95,7 @@ SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başı
    * **İzin verilen müşteri eylemleri özelleştirsin mi?**: müşterilerin yönetilen kaynaklarda hangi eylemlerin gerçekleştirebileceği belirtmek için **Evet** ' i seçin.
    * **Izin verilen müşteri eylemleri**: önceki ayar için **Evet** ' i seçerseniz, [Azure kaynakları için atamaları Reddet](../../role-based-access-control/deny-assignments.md)' i kullanarak hangi eylemlerin tüketicilere izin verileceğini belirtebilirsiniz.
 
-     Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için izin verilen `Microsoft.Compute/virtualMachines/restart/action` eylemlere ekleyin. Bu `*/read` ayarı eklemeniz gerekmiyorsa eyleme otomatik olarak izin verilir.
+     Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin. `*/read`Bu ayarı eklemeniz gerekmiyorsa eyleme otomatik olarak izin verilir.
    * **PrincipalId**: Bu özellik, müşterinin aboneliğindeki kaynaklara erişimin sağlandığı kullanıcı, kullanıcı grubu veya uygulamalanın Azure Active Directory (Azure AD) tanıtıcısıdır. Rol Tanımı izinleri açıklar.
    * **Rol Tanımı**: Bu özellik, Azure AD tarafından sağlanan tüm yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rollerinin bir listesidir. Müşteri adına kaynakları yönetmek için kullanılması en uygun olan rolü seçebilirsiniz.
    * **İlke Ayarları**: Dağıtılan çözümlerde uyumluluk gereksinimlerini belirtmek için, yönetilen uygulamanıza bir [Azure İlkesi](../../governance/policy/overview.md) uygulayın. Kullanılabilir seçenekler arasından uygulanacak ilkeleri seçin. **İlke Parametreleri** için, parametre değerleriyle bir JSON dizesi sağlayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../../governance/policy/samples/index.md).
@@ -131,7 +130,7 @@ Yönetilen uygulamanıza yönelik **Planlar + Fiyatlandırma** sekmesi aşağıd
 
 ![Market planları](./media/publish-marketplace-app/publishvm15.png)
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 Yönetilen uygulamanızın özeti aşağıdaki alanları gösterir:
 
@@ -172,6 +171,6 @@ Tüm bölümleri doldurduktan sonra teklifinizi müşterilerin kullanımına sun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* **Yayımla**' ya tıkladıktan sonra ne olacağı hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifini yayımlama](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+* **Yayımla**' ya tıkladıktan sonra ne olacağı hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifini yayımlama](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 * Yönetilen uygulamalara giriş için [Yönetilen uygulamalara genel bakış](overview.md) konusunu inceleyin.
 * Bir Hizmet Kataloğu yönetilen uygulaması yayımlama hakkında bilgi için bkz. [Hizmet kataloğu uygulaması oluşturma ve yayımlama](publish-service-catalog-app.md).

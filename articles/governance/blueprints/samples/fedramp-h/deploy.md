@@ -3,12 +3,11 @@ title: Fedrampa yüksek şema örneği dağıt
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere fedrampa yüksek şema örneği için adımları dağıtın.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 96b033c153789b3edbfb6a197981fe3d56f12076
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
-ms.translationtype: MT
+ms.openlocfilehash: c4b2915222bc2d1772a2772c719d5d6cc4b59657
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517143"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044813"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>Fedrampa yüksek şema örneğini dağıtma
 
@@ -91,10 +90,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Description|
+|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek için, Fedrampa yüksek denetimleri ve belırlı VM uzantılarını dağıtın|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
-|\[Önizleme \] : denetim gereksinimlerini desteklemek için, Fedrampa yüksek denetimleri ve belırlı VM uzantılarını dağıtın|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : denetim gereksinimlerini desteklemek için, Fedrampa yüksek denetimleri ve belırlı VM uzantılarını dağıtın|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek için, Fedrampa yüksek denetimleri ve belırlı VM uzantılarını dağıtın|İlke ataması|Windows VM Yöneticileri grubundan hariç tutulması gereken kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek için, Fedrampa yüksek denetimleri ve belırlı VM uzantılarını dağıtın|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|

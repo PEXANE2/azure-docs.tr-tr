@@ -3,12 +3,11 @@ title: 'Öğretici: makine öğrenimi varlığı ile yapılandırılmış verile
 description: Makine öğrenimi varlığını kullanarak bir noktadan yapılandırılmış verileri ayıklayın. Ayıklama doğruluğunu artırmak için, özelliklerle alt varlıklar ekleyin.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611025"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045612"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içinde makine öğrenimi varlıkları ile Kullanıcı aradıklarından yapılandırılmış verileri Ayıkla
 
@@ -108,7 +107,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. Sol menüden **varlıkları** seçin ve **+ Oluştur**' u seçin.
 
-1. Varlık adını, `SizeListentity` önceki bölümde oluşturulan ile karşılaştırıldığında tanımlanması kolay olacak şekilde ayarlayın `SizePhraselist` .
+1. Varlık adını olarak ayarlayın `SizeListentity` ve bir önceki bölümde oluşturulan ile karşılaştırıldığında tanımlanması kolay olacak şekilde türü **liste** olarak ayarlayın `SizePhraselist` .
 
 1. İstemci uygulamanın beklediği boyutları ekleyin: `Small` , `Medium` , `Large` ve `XLarge` ardından her biri için eş anlamlılar ekleyin. Eş anlamlılar, kullanıcının sohbet bot 'a girdiği terimler olmalıdır. Varlık, normalleştirilmiş değer veya eş anlamlıya tam olarak eşleştiğinde bir liste varlığı ile ayıklanır.
 

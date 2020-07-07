@@ -7,20 +7,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734682"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024936"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
 Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Azure AD DS yönetilen bir etki alanıyla, Azure 'daki sanal makinelere (VM 'Ler) etki alanına ekleme özellikleri ve yönetimi sağlayabilirsiniz. Bu öğreticide, bir Windows Server sanal makinesi oluşturma ve ardından bunu yönetilen bir etki alanına katma gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows Server VM oluşturma
@@ -72,7 +71,7 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
     | Kullanıcı adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
     | Parola             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
 
-1. Varsayılan olarak, Azure 'da oluşturulan VM 'Ler, RDP kullanarak Internet 'ten erişilebilir. RDP etkinleştirildiğinde otomatik oturum açma saldırılarına neden olmuş olabilir. Bu, birden çok başarısız oturum açma denemesi nedeniyle *yönetici* veya *yönetici* gibi ortak adlara sahip hesapları devre dışı bırakabilen bir durum olabilir.
+1. Varsayılan olarak, Azure 'da oluşturulan VM 'Ler, RDP kullanarak Internet 'ten erişilebilir. RDP etkinleştirildiğinde otomatik oturum açma saldırıları meydana gelir. Bu, birden çok başarısız oturum açma girişimi nedeniyle *yönetici* veya *yönetici* gibi ortak adlara sahip hesapları devre dışı bırakabilen bir durum olabilir.
 
     RDP yalnızca gerektiğinde etkinleştirilmelidir ve bir yetkili IP aralığı kümesiyle sınırlıdır. Bu yapılandırma, sanal makinenin güvenliğini artırmaya yardımcı olur ve olası saldırı için alanı azaltır. Ya da yalnızca TLS üzerinden Azure portal erişim sağlayan bir Azure savunma ana bilgisayarı oluşturup kullanın. Bu öğreticinin bir sonraki adımında, sanal makineye güvenli bir şekilde bağlanmak için bir Azure savunma ana bilgisayarı kullanırsınız.
 
@@ -110,7 +109,7 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
 
 1. Alt ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra alt ağ penceresini kapatmak için *X* ' i seçin.
 1. **Ağ** bölmesine geri döndüğünüzde, bir VM oluşturmak için, *Yönetim*gibi açılan menüden oluşturduğunuz alt ağı seçin. Yine, doğru alt ağı seçtiğinizden ve VM 'nizi yönetilen etki alanı ile aynı alt ağda dağıttığınızdan emin olun.
-1. **Genel IP**için, yönetime bağlanmak üzere Azure savunma 'yı kullandığınızda ve genel bir IP adresi atanması gerekmiyorsa, açılan menüden *hiçbiri* ' ni seçin.
+1. **Genel IP**için, açılan menüden *hiçbiri* ' ni seçin. Bu öğreticide Azure savunma 'yı kullanarak yönetime bağlandığınızda, VM 'ye atanmış bir genel IP adresine ihtiyacınız yoktur.
 1. Diğer seçenekleri varsayılan değerler olarak bırakın ve sonra **Yönetim**' i seçin.
 1. **Önyükleme tanılamayı** *kapalı*olarak ayarlayın. Diğer seçenekleri varsayılan değerler olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
 1. VM ayarlarını gözden geçirin ve ardından **Oluştur**' u seçin.
@@ -121,7 +120,7 @@ VM 'nin oluşturulması birkaç dakika sürer. Azure portal dağıtımın durumu
 
 ## <a name="connect-to-the-windows-server-vm"></a>Windows Server VM 'ye bağlanma
 
-Sanal makinelerinize güvenli bir şekilde bağlanmak için bir Azure savunma Konağı kullanın. Azure savunma sayesinde, yönetilen bir konak sanal ağınıza dağıtılır ve VM 'lere Web tabanlı RDP veya SSH bağlantıları sağlar. VM 'Ler için genel IP adresi gerekmez ve dış uzak trafik için ağ güvenlik grubu kuralları açmanız gerekmez. Web tarayıcınızdan Azure portal kullanarak VM 'lere bağlanırsınız.
+Sanal makinelerinize güvenli bir şekilde bağlanmak için bir Azure savunma Konağı kullanın. Azure savunma sayesinde, yönetilen bir konak sanal ağınıza dağıtılır ve VM 'lere Web tabanlı RDP veya SSH bağlantıları sağlar. VM 'Ler için genel IP adresi gerekmez ve dış uzak trafik için ağ güvenlik grubu kuralları açmanız gerekmez. Web tarayıcınızdan Azure portal kullanarak VM 'lere bağlanırsınız. Gerekirse, [bir Azure savunma ana bilgisayarı oluşturun][azure-bastion].
 
 Sanal makinenize bağlanmak için bir savunma ana bilgisayarı kullanmak üzere aşağıdaki adımları izleyin:
 
@@ -152,7 +151,9 @@ Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP
 
     ![Katılacak yönetilen etki alanını belirtin](./media/join-windows-vm/join-domain.png)
 
-1. Etki alanına katılacak etki alanı kimlik bilgilerini girin. Yönetilen etki alanının bir parçası olan bir kullanıcının kimlik bilgilerini kullanın. Hesap, yönetilen etki alanının veya Azure AD kiracısı 'nin bir parçası olmalıdır. Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz. Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
+1. Etki alanına katılacak etki alanı kimlik bilgilerini girin. Yönetilen etki alanının bir parçası olan bir kullanıcının kimlik bilgilerini sağlayın. Hesap, yönetilen etki alanının veya Azure AD kiracısı 'nin bir parçası olmalıdır. Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz.
+
+    Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
 
     * **UPN biçimi** (önerilir)-Kullanıcı hesabı IÇIN Azure AD 'de yapılandırıldığı şekilde Kullanıcı asıl adı (UPN) sonekini girin. Örneğin, *contosoadmin* kullanıcısının UPN son eki olacaktır `contosoadmin@aaddscontoso.onmicrosoft.com` . UPN biçiminin *sAMAccountName* biçimi yerine etki alanında oturum açmak için güvenilir bir şekilde kullanılabilecek, yaygın olarak kullanılan birkaç kullanım durumu vardır:
         * Bir kullanıcının UPN öneki uzunsa ( *deehasareallylongname*gibi), *sAMAccountName* otomatik olarak oluşturulabilir.
@@ -180,7 +181,7 @@ Windows Server VM yeniden başlatıldıktan sonra, yönetilen etki alanında uyg
 
 Sonraki öğreticide, yönetilen etki alanını yönetmenize olanak sağlayan yönetim araçlarını yüklemek için bu Windows Server VM 'sini kullanırsınız. Bu öğretici serisinde devam etmek istemiyorsanız, [VM 'yi silmek](#delete-the-vm)için aşağıdaki Temizleme adımlarını gözden geçirin. Aksi takdirde, [sonraki öğreticiye geçin](#next-steps).
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>VM 'yi yönetilen etki alanından Kaldır
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>VM 'nin yönetilen etki alanından ayrılma
 
 VM 'yi yönetilen etki alanından kaldırmak için adımları tekrar izleyerek [VM 'yi bir etki alanına katın](#join-the-vm-to-the-managed-domain). Yönetilen etki alanına katılmak yerine, varsayılan *çalışma grubu*gibi bir çalışma grubuna katılmayı seçin. VM yeniden başlatıldıktan sonra, bilgisayar nesnesi yönetilen etki alanından kaldırılır.
 
@@ -220,7 +221,7 @@ Bu sorun giderme adımlarını her bir kez denemeden sonra, Windows Server VM 'y
 * Belirttiğiniz kullanıcı hesabının yönetilen etki alanına ait olduğundan emin olun.
 * Hesabın yönetilen etki alanının veya Azure AD kiracısı 'nin bir parçası olduğundan emin olun. Azure AD kiracınızla ilişkilendirilen dış dizinlerden hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz.
 * Gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin `contosoadmin@aaddscontoso.onmicrosoft.com` . Kiracınızda aynı UPN ön ekine sahip çok sayıda kullanıcı varsa veya UPN ön eki aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu durumlarda, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
-* Yönetilen etki alanınız için [parola eşitlemesini etkinleştirmiş][password-sync] olup olmadığınızı denetleyin. Bu yapılandırma adımı olmadan, oturum açma girişiminizi doğru bir şekilde doğrulamak için, yönetilen etki alanında gerekli parola karmaları mevcut olmayacaktır.
+* Yönetilen etki alanınız için [parola eşitlemesini etkinleştirmiş][password-sync] olup olmadığınızı denetleyin. Bu yapılandırma adımı olmadan, oturum açma girişiminizi doğru bir şekilde doğrulamak için, yönetilen etki alanında gerekli parola karmaları yok.
 * Parola eşitlemesinin tamamlanmasını bekleyin. Bir kullanıcı hesabının parolası değiştirildiğinde Azure AD 'den otomatik bir arka plan eşitlemesi Azure AD DS parolasını güncelleştirir. Parolanın, etki alanına katılması için kullanılabilir olması biraz zaman alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
