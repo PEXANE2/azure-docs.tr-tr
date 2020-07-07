@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81380684"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights veri saklama süresini anlama
@@ -90,7 +90,7 @@ Etkilenen Event Hubs, Time Series Insights ' de duraklatma girişi gerçekleşti
 
 [![Olay Hub 'ı ileti bekletme.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Olay kaynağında (`timeStampPropertyName`) bir özellik yapılandırılmamışsa, Time Series Insights varsayılan olarak, Olay Hub 'ında X ekseni olarak gelen varışı zaman damgasına. `timeStampPropertyName` , Başka bir şey olacak şekilde yapılandırıldıysa, bu ortam, olaylar ayrıştırıldığında `timeStampPropertyName` veri paketinde yapılandırılmış öğesine bakar.
+Olay kaynağında () bir özellik yapılandırılmamışsa `timeStampPropertyName` , Time Series Insights varsayılan olarak, Olay Hub 'ında X ekseni olarak gelen varışı zaman damgasına. , `timeStampPropertyName` Başka bir şey olacak şekilde yapılandırıldıysa, bu ortam, `timeStampPropertyName` Olaylar ayrıştırıldığında veri paketinde yapılandırılmış öğesine bakar.
 
 Ortamınızı ek kapasiteye uyum sağlayacak şekilde ölçeklendirmek veya saklama süresini artırmak için [Time Series Insights ortamınızı nasıl ölçeklendirebileceğiniz hakkında](time-series-insights-how-to-scale-your-environment.md) bilgi edinin.
 

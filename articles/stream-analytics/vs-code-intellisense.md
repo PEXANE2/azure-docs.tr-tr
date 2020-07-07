@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394403"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code için Azure Stream Analytics araçlarında IntelliSense
@@ -21,9 +21,9 @@ IntelliSense, [vs Code için Azure Stream Analytics araçlarında](https://marke
 
 ## <a name="intellisense-features"></a>IntelliSense özellikleri
 
-VS Code için Stream Analytics araçlarındaki IntelliSense özellikleri bir dil hizmeti tarafından desteklenir. Bir dil hizmeti, kaynak kodunuzu analiz eder ve dil semantiğine göre akıllı kod tamamlama sağlar. Bir dil hizmetinin olası tamamlamalar varsa, IntelliSense önerileri siz yazarken açılır. Yazmaya devam ederseniz, değişkenler ve yöntemler gibi üyelerin listesi yalnızca yazdığınız karakterleri içeren üyeleri içerecek şekilde filtrelenir. `Tab` Veya `Enter` tuşlarına bastığınızda, IntelliSense seçtiğiniz üyeyi ekler.
+VS Code için Stream Analytics araçlarındaki IntelliSense özellikleri bir dil hizmeti tarafından desteklenir. Bir dil hizmeti, kaynak kodunuzu analiz eder ve dil semantiğine göre akıllı kod tamamlama sağlar. Bir dil hizmetinin olası tamamlamalar varsa, IntelliSense önerileri siz yazarken açılır. Yazmaya devam ederseniz, değişkenler ve yöntemler gibi üyelerin listesi yalnızca yazdığınız karakterleri içeren üyeleri içerecek şekilde filtrelenir. Veya tuşlarına bastığınızda `Tab` `Enter` , IntelliSense seçtiğiniz üyeyi ekler.
 
-Nokta karakteri `.`gibi bir tetikleyici karakteri yazarak herhangi bir düzenleyici penceresinde IntelliSense 'i tetikleyebilirsiniz.
+Nokta karakteri gibi bir tetikleyici karakteri yazarak herhangi bir düzenleyici penceresinde IntelliSense 'i tetikleyebilirsiniz `.` .
 
 ![IntelliSense otomatik tamamlama](./media/vs-code-intellisense/auto-completion.gif)
 
@@ -36,7 +36,7 @@ VS Code IntelliSense için Stream Analytics araçları, dil sunucusu önerileri,
 
 |       |         |       |
 | ----- | ------- | ----- |
-| Anahtar Sözcükler | `keyword`
+| Anahtar sözcükler | `keyword`
 | İşlevler | `build-in function`, `user defined function`  |
 | Veri kümesi adı| `input`, `output`, `intermediate result set`|
 | Veri kümesi sütun adı|`input`, `intermediate result set`|

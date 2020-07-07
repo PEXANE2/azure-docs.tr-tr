@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: e41b7222ca89976674973e1eb700d62765b306f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311323"
 ---
 # <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
@@ -119,7 +119,7 @@ Aşağıdaki tablo IoT güvenlik aracıları için Azure Güvenlik Merkezi 'nin 
 
 Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
 
-| Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Description |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.|
@@ -130,7 +130,7 @@ Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da u
 
 ### <a name="supported-security-events"></a>Desteklenen güvenlik olayları
 
-|Olay adı| ÖzellikAdı | Varsayılan Değer| Anlık görüntü olayı| Ayrıntılar durumu  |
+|Olay adı| ÖzellikAdı | Varsayılan değer| Anlık görüntü olayı| Ayrıntılar durumu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |Tanılama olayı|eventPriorityDiagnostic| Kapalı| False| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.|
 |Yapılandırma hatası |eventPriorityConfigurationError |Düşük |False |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.|
@@ -141,7 +141,7 @@ Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da u
 |İşlem sonlandır|eventPriorityProcessTerminate |Düşük |False |Cihazdaki işlem sonlandırmasını denetler.|
 |Sistem bilgileri |Eventprioritysystemınformation |Düşük |True |Sistem bilgilerinin bir anlık görüntüsü (örneğin: OS veya CPU).|
 |Yerel kullanıcılar| eventPriorityLocalUsers |Yüksek |True|Sistem içindeki kayıtlı yerel kullanıcıların anlık görüntüsü. |
-|Oturum Aç|  eventPriorityLogin |Yüksek|False|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
+|Oturum aç|  eventPriorityLogin |Yüksek|False|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
 |Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|False|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
 |Güvenlik duvarı yapılandırması| eventPriorityFirewallConfiguration|Düşük|True|Cihaz Güvenlik Duvarı yapılandırmasının (güvenlik duvarı kuralları) anlık görüntüsü. |
 |İşletim sistemi temeli| eventPriorityOSBaseline| Düşük|True|Cihaz işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|

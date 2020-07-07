@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414770"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
@@ -50,7 +50,7 @@ Bu şablon (*şablon adı: AWS S3 'ten gelen geçmiş verileri Azure Data Lake S
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun değiştirilen dosyaları yalnızca Amazon S3 konumundan Azure Data Lake Storage 2. kopyalaması için
 
-Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta verileri kopyalama*), yeni veya güncelleştirilmiş dosyaları yalnızca AWS S3 'ten Azure 'a kopyalamak için her bir dosyanın LastModifiedTime kullanır. Dosya veya klasörlerinizin AWS S3 (örneğin,/yyyy/mm/dd/File.exe) üzerindeki dosya veya klasör adının bir parçası olarak timeslice bilgileri ile bölümlenmiş olması durumunda, artımlı yeni dosya yüklemeye yönelik daha ayrıntılı bir yaklaşım edinmek için bu [öğreticiye](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gidebilirsiniz. Bu şablon, Azure SQL veritabanı 'nda bir dış denetim tablosunda bir bölüm listesi yazmış olduğunuzu varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak için bir *arama* etkinliği kullanır, her bölüm üzerinde yineleme yapar ve her ADF kopyalama işi aynı anda bir bölüm kopyalayacaktır. Her bir kopyalama işi dosyaları AWS S3 'ten kopyalamaya başladığında, yalnızca yeni veya güncelleştirilmiş dosyaları tanımlamak ve kopyalamak için LastModifiedTime özelliğini kullanır. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bir bölümü kopyalama durumunu güncelleştirmek için *saklı yordam* etkinliğini kullanır.
+Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta verileri kopyalama*), yeni veya güncelleştirilmiş dosyaları yalnızca AWS S3 'ten Azure 'a kopyalamak için her bir dosyanın LastModifiedTime kullanır. Dosya veya klasörlerinizin AWS S3 (örneğin,/yyyy/mm/dd/file.csv) üzerindeki dosya veya klasör adının bir parçası olarak timeslice bilgileri ile bölümlenmiş olması durumunda, artımlı yükleme yeni dosyaları için daha fazla performans yaklaşımı sağlamak üzere bu [öğreticiye](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gidebilirsiniz. Bu şablon, Azure SQL veritabanı 'nda bir dış denetim tablosunda bir bölüm listesi yazmış olduğunuzu varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak için bir *arama* etkinliği kullanır, her bölüm üzerinde yineleme yapar ve her ADF kopyalama işi aynı anda bir bölüm kopyalayacaktır. Her bir kopyalama işi dosyaları AWS S3 'ten kopyalamaya başladığında, yalnızca yeni veya güncelleştirilmiş dosyaları tanımlamak ve kopyalamak için LastModifiedTime özelliğini kullanır. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bir bölümü kopyalama durumunu güncelleştirmek için *saklı yordam* etkinliğini kullanır.
 
 Şablon yedi etkinlik içerir:
 - **Arama** , bir dış denetim tablosundan bölümleri alır. Tablo adı *s3_partition_delta_control_table* ve tablodaki verileri yüklemeye yönelik sorgu *"S3_partition_delta_control_table 'Den farklı PartitionPrefix Seç"* dir.

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81381009"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yanıp sönme 'yi yapılandırma
@@ -31,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi otomatik olarak sağlamak ve devre dışı
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -54,7 +54,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="setup-blink-for-provisioning"></a>Sağlama için kurulum yanıp sönme
 
-1. Bir [destek talebi](https://support.joinblink.com) veya e-posta **yanıp sönme desteğini** bir SCIM belirteci istemek support@joinblink.com için günlüğe kaydedin. .
+1. Bir [destek talebi](https://support.joinblink.com) veya e-posta **yanıp sönme desteğini** support@joinblink.com bir SCIM belirteci istemek için günlüğe kaydedin. .
 
 2.  **SCIM kimlik doğrulama belirtecini**kopyalayın. Bu değer, Azure portal yanıp sönen uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 

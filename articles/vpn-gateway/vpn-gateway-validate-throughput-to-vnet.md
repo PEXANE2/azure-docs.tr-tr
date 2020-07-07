@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631781"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
@@ -67,7 +67,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
  > [!NOTE]
  > Bu makalede ele alınan üçüncü taraf ürünleri, Microsoft 'tan bağımsız şirketler tarafından üretilmektedir. Microsoft bu ürünlerin performansı hakkında zımni ya da başka türlü hiçbir garanti vermez.
 
-### <a name="run-iperf-iperf3exe"></a>Iperf (iperf3. exe) Çalıştır
+### <a name="run-iperf-iperf3exe"></a>Iperf (iperf3.exe) Çalıştır
 
 1. Trafiğe izin veren bir NSG/ACL kuralını etkinleştirin (Azure VM 'de genel IP adresi testi için).
 
@@ -85,9 +85,9 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Azure Linux görüntülerinin izin veren güvenlik duvarları vardır. Bir bağlantı noktasında dinleme yapan bir uygulama varsa, trafiğe izin verilir. Güvenli hale getirilen özel görüntülerin, açıkça açılan bağlantı noktalarına ihtiyacı olabilir. Ortak Linux işletim sistemi katmanı güvenlik duvarları `iptables`, `ufw`, veya `firewalld`içerir.
+   **Azure Linux:** Azure Linux görüntülerinin izin veren güvenlik duvarları vardır. Bir bağlantı noktasında dinleme yapan bir uygulama varsa, trafiğe izin verilir. Güvenli hale getirilen özel görüntülerin, açıkça açılan bağlantı noktalarına ihtiyacı olabilir. Ortak Linux işletim sistemi katmanı güvenlik duvarları `iptables` , `ufw` , veya içerir `firewalld` .
 
-1. Sunucu düğümünde, iperf3. exe ' nin ayıklandığı dizine geçin. Ardından sunucu modunda Iperf komutunu çalıştırın ve aşağıdaki komutlar olarak 5001 numaralı bağlantı noktasını dinlemek üzere ayarlayın:
+1. Sunucu düğümünde iperf3.exe ayıklandığı dizine geçin. Ardından sunucu modunda Iperf komutunu çalıştırın ve aşağıdaki komutlar olarak 5001 numaralı bağlantı noktasını dinlemek üzere ayarlayın:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -123,27 +123,27 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
 ## <a name="test-vms-running-windows"></a>Windows çalıştıran VM 'Leri test etme
 
-### <a name="load-latteexe-onto-the-vms"></a>Yük Lat. exe ' yi VM 'lere yükleme
+### <a name="load-latteexe-onto-the-vms"></a>VM 'lere Latte.exe yükleme
 
-[Latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) ' nin en son sürümünü indirin
+En son [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) sürümünü indirin
 
-Latte. exe ' yi ayrı bir klasöre yerleştirmeyi düşünün, örneğin`c:\tools`
+Latte.exe gibi ayrı bir klasöre yerleştirmeyi düşünün.`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Windows Güvenlik Duvarı aracılığıyla latte. exe ' ye izin ver
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Windows Güvenlik Duvarı üzerinden Latte.exe izin ver
 
-Alıcı üzerinde, latte. exe trafiğinin gelmesini sağlamak için Windows güvenlik duvarında bir Izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine, tüm latte. exe programının adına göre kullanılmasına izin vermek en kolay yoldur.
+Alıcı üzerinde, Latte.exe trafiğinin gelmesini sağlamak için Windows güvenlik duvarında bir Izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine Latte.exe programın tamamının ada göre izin vermek en kolay yoldur.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Bu şekilde Windows Güvenlik Duvarı aracılığıyla latte. exe ' ye izin ver
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Bu şekilde Windows Güvenlik Duvarı üzerinden Latte.exe izin ver
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Örneğin, latte. exe ' yi "c:\Tools" klasörüne kopyaladıysanız, bu komut şu şekilde olur:
+Örneğin, latte.exe "c:\Tools" klasörüne kopyaladıysanız, bu komut şu şekilde olur:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Gecikme testleri çalıştırma
 
-ALıCı üzerinde latte. exe dosyasını başlatın (PowerShell 'den değil, CMD 'den çalıştırın):
+ALıCı üzerinde latte.exe başlatın (PowerShell 'den değil, CMD 'den çalıştırın):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -155,7 +155,7 @@ VM 'nin IP adresi 10.0.0.4 ise, bu şöyle görünür
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Gönderen üzerinde latte. exe dosyasını başlatın (PowerShell 'den değil, CMD 'den Çalıştır)
+GÖNDERENDEN latte.exe başlatın (PowerShell 'den değil, CMD 'den Çalıştır)
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -225,7 +225,7 @@ Yüklemeyi hızlı yapın
 
 Önceki adımlarla (Iperf/NTTTCP/vb.) birlikte değerlendirilen genel aktarım hızı iyi olsa bile, Windows Gezgini 'ni kullanırken veya bir RDP oturumunu sürükleyip bırakarak yavaş dosya kopyalama işlemi yaşayabilirsiniz. Bu sorun, normalde aşağıdaki faktörlerden biri veya her ikisi nedeniyle oluşur:
 
-* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **eylem** > **kopyalama seçenekleri** > **dosya kopyalama**' ya tıklayın.
+* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **eylem**  >  **kopyalama seçenekleri**  >  **dosya kopyalama**' ya tıklayın.
 
    ![Yavaş dosya kopyalama sorunları](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -253,7 +253,7 @@ Aşağıdaki araçları kullanarak gecikme süresini kontrol edebilirsiniz:
 
 * WinMTR
 * Tcpizleme Oute
-* `ping`Ayrıca `psping` (Bu araçlar, RTT için iyi bir tahmin sağlayabilir, ancak her durumda kullanılamaz.)
+* `ping``psping`Ayrıca (Bu araçlar, RTT için iyi bir tahmin sağlayabilir, ancak her durumda kullanılamaz.)
 
 ![Gecikme süresini denetle](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

@@ -7,17 +7,17 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631466"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS üzerinde OpenFaaS kullanma
 
 [Openfaas][open-faas] , kapsayıcıların kullanımı aracılığıyla sunucusuz işlevler oluşturmaya yönelik bir çerçevedir. Açık kaynak proje olarak, topluluk içinde büyük ölçekli benimseme kazanımıştır. Bu belge, Azure Kubernetes Service (AKS) kümesine OpenFaas yükleme ve kullanma ayrıntılarını inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
@@ -28,7 +28,7 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>OpenFaaS Held grafik deposu ekleme
 
-Tarayıcınızda Azure Cloud Shell [https://shell.azure.com](https://shell.azure.com) açmak için bölümüne gidin.
+[https://shell.azure.com](https://shell.azure.com)Tarayıcınızda Azure Cloud Shell açmak için bölümüne gidin.
 
 OpenFaaS, en son değişikliklerle güncel kalmasını sağlamak için kendi hele grafiklerini saklar.
 
@@ -58,7 +58,7 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-Gizli dizi değerini ile `echo $PASSWORD`edinebilirsiniz.
+Gizli dizi değerini ile edinebilirsiniz `echo $PASSWORD` .
 
 Burada oluşturduğumuz parola, bir bulut yük dengeleyici aracılığıyla Internet 'e sunulan OpenFaaS ağ geçidinde temel kimlik doğrulamasını etkinleştirmek için helk grafiği tarafından kullanılacaktır.
 
@@ -108,7 +108,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-OpenFaaS sistemini test etmek için, bu örnekte 8080 `http://52.186.64.52:8080` numaralı bağlantı NOKTASıNDAKI dış IP adresine gidin. Oturum açmanız istenir. Parolanızı getirmek için girin `echo $PASSWORD`.
+OpenFaaS sistemini test etmek için, bu örnekte 8080 numaralı bağlantı noktasındaki dış IP adresine gidin `http://52.186.64.52:8080` . Oturum açmanız istenir. Parolanızı getirmek için girin `echo $PASSWORD` .
 
 ![OpenFaaS Kullanıcı arabirimi](media/container-service-serverless/openfaas.png)
 
@@ -118,7 +118,7 @@ Son olarak, OpenFaaS CLı 'yı yükler. Bu örnek Brew kullandı, daha fazla se�
 brew install faas-cli
 ```
 
-Yukarıda `$OPENFAAS_URL` bulunan genel IP 'ye ayarlayın.
+`$OPENFAAS_URL`Yukarıda bulunan genel IP 'ye ayarlayın.
 
 Azure CLı ile oturum açın:
 
@@ -162,7 +162,7 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 az group create --name serverless-backing --location eastus
 ```
 
-Türünün `MongoDB`cosmosdb örneğini dağıtın. Örneğin benzersiz bir adı olmalıdır ve ortamınıza özgü `openfaas-cosmos` bir öğe için güncelleştirin.
+Türünün CosmosDB örneğini dağıtın `MongoDB` . Örneğin benzersiz bir adı olmalıdır ve `openfaas-cosmos` ortamınıza özgü bir öğe için güncelleştirin.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
@@ -170,7 +170,7 @@ az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --
 
 Cosmos veritabanı bağlantı dizesini alın ve bir değişkende depolayın.
 
-`--resource-group` Bağımsız değişkeninin değerini kaynak grubunuzun adı ve `--name` bağımsız değişkeni Cosmos db adı olarak güncelleştirin.
+`--resource-group`Bağımsız değişkeninin değerini kaynak grubunuzun adı ve `--name` bağımsız değişkeni Cosmos db adı olarak güncelleştirin.
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Artık Cosmos DB test verileriyle doldurun. Aşağıdaki JSON içinde adlı `plans.json` bir dosya oluşturun ve kopyalayın.
+Artık Cosmos DB test verileriyle doldurun. Aşağıdaki JSON içinde adlı bir dosya oluşturun `plans.json` ve kopyalayın.
 
 ```json
 {
@@ -215,7 +215,7 @@ mongoimport --uri=$COSMOS -c plans < plans.json
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-İşlevi oluşturmak için aşağıdaki komutu çalıştırın. `-g` Bağımsız değişkenin değerini OpenFaaS ağ geçidi adresinizle güncelleştirin.
+İşlevi oluşturmak için aşağıdaki komutu çalıştırın. `-g`Bağımsız değişkenin değerini OpenFaaS ağ geçidi adresinizle güncelleştirin.
 
 ```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS

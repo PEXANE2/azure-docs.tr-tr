@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81007844"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama istek dosyasını oluşturma
@@ -46,7 +46,7 @@ Ardından, uygulamanızı Apple 'a kaydedin, anında iletme bildirimlerini etkin
 
 Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanızı Apple 'a kaydedin ve anında iletme bildirimleri için kaydolun.  
 
-1. Uygulamanızı henüz kaydetmediyseniz, Apple Geliştirici Merkezi ' nde [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456) ' na gidin. Apple KIMLIĞINIZLE portalda oturum açın ve **tanımlayıcılar**' ı seçin. Sonra yeni **+** bir uygulama kaydetmeyi seçin.
+1. Uygulamanızı henüz kaydetmediyseniz, Apple Geliştirici Merkezi ' nde [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456) ' na gidin. Apple KIMLIĞINIZLE portalda oturum açın ve **tanımlayıcılar**' ı seçin. Sonra **+** Yeni bir uygulama kaydetmeyi seçin.
 
     ![iOS Hazırlama Portalı Uygulama Kimlikleri sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -138,7 +138,7 @@ Yeni yaklaşım, [APNs Için belirteç tabanlı (http/2) kimlik doğrulaması](h
    > [!NOTE]
    > **APNs**için yapılandırılmış bir anahtarınız zaten varsa, oluşturulduktan hemen sonra indirdiğiniz. P8 sertifikasını yeniden kullanabilirsiniz. Bu durumda **3** ile **5**arasındaki adımları yoksayabilirsiniz.
 
-3. Yeni bir **+** anahtar oluşturmak için düğmeye tıklayın (veya **anahtar oluştur** düğmesi).
+3. **+** Yeni bir anahtar oluşturmak için düğmeye tıklayın (veya **anahtar oluştur** düğmesi).
 4. Uygun bir **anahtar adı** değeri sağlayın, ardından **Apple Anında İletilen Bildirim hizmeti (APNs)** seçeneğini işaretleyin ve ardından **devam**' a ve ardından bir sonraki ekrana **Kaydol** ' a tıklayın.
 5. **İndir** ' e tıklayın ve ardından **. p8** dosyasını ( *AuthKey_* ön eki) güvenli bir yerel dizine taşıyın ve **bitti**' ye tıklayın.
 
@@ -167,7 +167,7 @@ Bu adımların sonunda, [Bildirim Hub 'ınızı APNs bilgileriyle yapılandırma
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Uygulama için bir sağlama profili oluşturun
 
-1. [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456)' na dönün, **sertifikalar, tanımlayıcılar & profiller**' i seçin, sol menüden **profiller** ' i seçin ve ardından **+** yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
+1. [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456)' na dönün, **sertifikalar, tanımlayıcılar & profiller**' i seçin, sol menüden **profiller** ' i seçin ve ardından **+** Yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
 
 1. Sağlama profili türü olarak **geliştirme** bölümünde **iOS uygulama geliştirmeyi** seçin ve ardından **devam**' ı seçin.
 
@@ -183,10 +183,10 @@ Bu adımların sonunda, [Bildirim Hub 'ınızı APNs bilgileriyle yapılandırma
     2. **Yazılım** bölümünde **Apple geliştirme**' yi seçin. Daha sonra **Devam** seçeneğini belirleyin.
     3. **Yeni sertifika oluştur** ekranında **Dosya Seç**' i seçin.
     4. Daha önce oluşturduğunuz **sertifika Imzalama isteği** sertifikasına gidin, seçin ve sonra **Aç**' ı seçin.
-    5. **Devam**'ı seçin.
+    5. **Devam**’ı seçin.
     6. Geliştirme sertifikasını indirin ve kaydedildiği konumu unutmayın.
 
-1. **Sertifikalar, tanımlayıcılar & profiller** sayfasına dönün, sol menüden **profiller** ' i seçin ve ardından yeni bir profil oluşturmak **+** için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
+1. **Sertifikalar, tanımlayıcılar & profiller** sayfasına dönün, sol menüden **profiller** ' i seçin ve ardından **+** Yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
 
 1. **Sertifika seç** penceresinde, az önce oluşturduğunuz geliştirme sertifikasını seçin. Daha sonra **Devam** seçeneğini belirleyin.
 
@@ -237,7 +237,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
     - **Anahtar KIMLIĞI**
     - **Paket Kimliği**
     - **Takım KIMLIĞI**
-    - **Simgesinde** 
+    - **Belirteç** 
 
 1. **Korumalı alan** seçin
 1. **Kaydet**’i seçin. 

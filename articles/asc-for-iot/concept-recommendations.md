@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311555"
 ---
 # <a name="security-recommendations"></a>Güvenlik önerileri
@@ -33,7 +33,7 @@ Bu makalede, IoT Hub ve/veya IoT cihazlarınızda tetiklenebilecek önerilerin b
 
 Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Severity | Adı                                                      | veri kaynağı | Açıklama                                                                                                                                                                                           |
+| Severity | Name                                                      | veri kaynağı | Description                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Orta   | Cihazda bağlantı noktalarını açma                                      | Aracı       | Cihazda bir dinleme uç noktası bulundu.                                                                                                                                                        |
 | Orta   | Zincirden birinde izin veren güvenlik duvarı ilkesi bulundu. | Aracı       | İzin verilen güvenlik duvarı ilkesi bulundu (GIRIŞ/çıkış). Güvenlik duvarı ilkesi varsayılan olarak tüm trafiği reddetmelidir ve cihaza/cihazdan gerekli iletişime izin vermek için kurallar tanımlar.                               |
@@ -45,7 +45,7 @@ Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve �
 
 İşletimsel öneriler, güvenlik Aracısı yapılandırmasını geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Severity | Adı                                    | veri kaynağı | Açıklama                                                                       |
+| Severity | Name                                    | veri kaynağı | Description                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Düşük      | Aracı unutilized iletileri gönderiyor          | Aracı       | Son 24 saat boyunca 10 KB veya daha fazla güvenlik iletisi 4 KB 'tan daha küçük.  |
 | Düşük      | Güvenlik ikizi yapılandırması en uygun değil | Aracı       | Güvenlik ikizi yapılandırması en uygun değildir.                                        |
@@ -56,7 +56,7 @@ Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve �
 
 Öneri uyarıları, ortamınızın güvenlik duruşunu iyileştirecek eylemler için Öngörüler ve öneriler sağlar.
 
-| Severity | Adı                                                     | veri kaynağı | Açıklama                                                                                                                                                                                                             |
+| Severity | Name                                                     | veri kaynağı | Description                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yüksek     | Birden çok cihaz tarafından kullanılan özdeş kimlik doğrulama kimlik bilgileri | IoT Hub     | IoT Hub kimlik doğrulama kimlik bilgileri birden çok cihaz tarafından kullanılır. Bu, meşru bir cihazın kimliğine bürünerek uygun bir cihaz olduğunu gösterebilir. Yinelenen kimlik bilgileri kullanımı, kötü niyetli bir aktör tarafından cihaz kimliğe bürünme riskini artırır. |
 | Orta   | Varsayılan IP filtresi ilkesi reddetme olmalıdır                  | IoT Hub     | IP filtresi yapılandırması, izin verilen trafik için tanımlı kurallara sahip olmalıdır ve varsayılan olarak tüm diğer trafiği varsayılan olarak reddeder.                                                                                                     |

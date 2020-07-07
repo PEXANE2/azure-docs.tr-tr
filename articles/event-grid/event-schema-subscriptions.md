@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393221"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure aboneliği
@@ -20,11 +20,11 @@ Bu makalede, Azure abonelik olayları için özellikler ve şema sağlanmaktadı
 
 Azure abonelikleri ve kaynak grupları aynı olay türlerini yayar. Olay türleri, kaynak değişiklikleri veya eylemlerle ilgilidir. Birincil fark, kaynak gruplarının kaynak grubundaki kaynakların olaylarını yaymış olması ve Azure aboneliklerinin, abonelik genelindeki kaynakların olaylarını yaymanızdır.
 
-Kaynak olayları, öğesine `management.azure.com`gönderilen put, Patch, post ve DELETE işlemleri için oluşturulur. GET işlemleri olay oluşturmaz. Veri düzlemine gönderilen işlemler (gibi `myaccount.blob.core.windows.net`) olay oluşturmaz. Eylem olayları, bir kaynağın anahtarlarını listeleme gibi işlemler için olay verileri sağlar.
+Kaynak olayları, öğesine gönderilen PUT, PATCH, POST ve DELETE işlemleri için oluşturulur `management.azure.com` . GET işlemleri olay oluşturmaz. Veri düzlemine gönderilen işlemler (gibi `myaccount.blob.core.windows.net` ) olay oluşturmaz. Eylem olayları, bir kaynağın anahtarlarını listeleme gibi işlemler için olay verileri sağlar.
 
 Bir Azure aboneliği için olaylara abone olduğunuzda, uç noktanız bu abonelik için tüm olayları alır. Olaylar, bir sanal makineyi güncelleştirme, ancak sizin için önemli olmayan olayları (örneğin, dağıtım geçmişinde yeni bir giriş yazma gibi) de içerebilir. Uç noktanıza tüm olayları alabilir ve işlemek istediğiniz olayları işleyen kodu yazabilirsiniz. Ya da olay aboneliği oluştururken bir filtre ayarlayabilirsiniz.
 
-Olayları programlı bir şekilde işlemek için, `operationName` değere bakarak olayları sıralayabilirsiniz. Örneğin, olay uç noktanız yalnızca veya `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write`' ye eşit olan işlemlere yönelik olayları işleyebilir.
+Olayları programlı bir şekilde işlemek için, değere bakarak olayları sıralayabilirsiniz `operationName` . Örneğin, olay uç noktanız yalnızca veya ' ye eşit olan işlemlere yönelik olayları işleyebilir `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write` .
 
 Olay konusu, işlemin hedefi olan kaynağın kaynak KIMLIĞIDIR. Bir kaynağın olaylarını filtrelemek için, olay aboneliğini oluştururken bu kaynak KIMLIĞINI sağlayın. Bir kaynak türüne göre filtrelemek için aşağıdaki biçimde bir değer kullanın:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
@@ -35,7 +35,7 @@ Olay konusu, işlemin hedefi olan kaynağın kaynak KIMLIĞIDIR. Bir kaynağın 
 
 Azure abonelikleri, bir VM oluşturulduğunda veya bir depolama hesabı silindiğinde, yönetim olaylarını Azure Resource Manager.
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. resources. ResourceActionCancel | Kaynak üzerinde eylem iptal edildiğinde tetiklenir. |
 | Microsoft. resources. ResourceActionFailure | Kaynak üzerinde eylem başarısız olduğunda tetiklenir. |
@@ -49,7 +49,7 @@ Azure abonelikleri, bir VM oluşturulduğunda veya bir depolama hesabı silindi�
 
 ### <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnekte bir **Resourcewritesuccess** olayının şeması gösterilmektedir. Aynı şema **Resourcewritefailure** ve için `eventType`farklı değerlere sahip **resourcewritecancel** olayları için de kullanılır.
+Aşağıdaki örnekte bir **Resourcewritesuccess** olayının şeması gösterilmektedir. Aynı şema **Resourcewritefailure** ve için farklı değerlere sahip **resourcewritecancel** olayları için de kullanılır `eventType` .
 
 ```json
 [{
@@ -109,7 +109,7 @@ Aşağıdaki örnekte bir **Resourcewritesuccess** olayının şeması gösteril
 }]
 ```
 
-Aşağıdaki örnekte bir **Resourcedeletesuccess** olayının şeması gösterilmektedir. Aynı şema **Resourcedeletefailure** ve için `eventType`farklı değerlere sahip **resourcedeletecancel** olayları için kullanılır.
+Aşağıdaki örnekte bir **Resourcedeletesuccess** olayının şeması gösterilmektedir. Aynı şema **Resourcedeletefailure** ve için farklı değerlere sahip **resourcedeletecancel** olayları için kullanılır `eventType` .
 
 ```json
 [{
@@ -175,7 +175,7 @@ Aşağıdaki örnekte bir **Resourcedeletesuccess** olayının şeması gösteri
 }]
 ```
 
-Aşağıdaki örnekte bir **Resourceactionsuccess** olayının şeması gösterilmektedir. Aynı şema **Resourceactionfailure** için, için `eventType`farklı değerlere sahip **resourceactioncancel** olayları için de kullanılır.
+Aşağıdaki örnekte bir **Resourceactionsuccess** olayının şeması gösterilmektedir. Aynı şema **Resourceactionfailure** için, için farklı değerlere sahip **resourceactioncancel** olayları için de kullanılır `eventType` .
 
 ```json
 [{   
@@ -235,25 +235,25 @@ Aşağıdaki örnekte bir **Resourceactionsuccess** olayının şeması gösteri
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | Abonelik olay verileri. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | Abonelik olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| yetkilendirme | object | İşlem için istenen yetkilendirme. |
-| belirt | object | Taleplerin özellikleri. Daha fazla bilgi için bkz. [JWT belirtimi](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| yetkilendirme | nesne | İşlem için istenen yetkilendirme. |
+| belirt | nesne | Taleplerin özellikleri. Daha fazla bilgi için bkz. [JWT belirtimi](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | Sorun giderme için bir işlem KIMLIĞI. |
-| httpRequest | object | İşlemin ayrıntıları. Bu nesne yalnızca var olan bir kaynağı güncelleştirirken veya bir kaynağı silerken dahil edilir. |
+| httpRequest | nesne | İşlemin ayrıntıları. Bu nesne yalnızca var olan bir kaynağı güncelleştirirken veya bir kaynağı silerken dahil edilir. |
 | resourceProvider | string | İşlemin kaynak sağlayıcısı. |
 | resourceUri | string | İşlemdeki kaynağın URI 'SI. |
 | operationName | string | Gerçekleştirilen işlem. |

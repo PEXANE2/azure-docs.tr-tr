@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81413688"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi düzleştirme
@@ -68,7 +68,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 | Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| mallar. müşteriler | Hiçbiri | ad <br> Müşteri = mallar. müşteri |
+| mallar. müşteriler | Hiçbiri | name <br> Müşteri = mallar. müşteri |
 
 #### <a name="output"></a>Çıktı
 
@@ -86,7 +86,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 | Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| mallar. Orders. sevkedildi. OrderItems | Hiçbiri | ad <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
+| mallar. Orders. sevkedildi. OrderItems | Hiçbiri | name <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
 #### <a name="output"></a>Çıktı
 
@@ -107,7 +107,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 | Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| mallar. siparişler | mallar. siparişler | ad <br> mallar. Orders. sevkedildi. OrderItems. ItemName <br> mallar. müşteriler <br> location |
+| mallar. siparişler | mallar. siparişler | name <br> mallar. Orders. sevkedildi. OrderItems. ItemName <br> mallar. müşteriler <br> location |
 
 #### <a name="output"></a>Çıktı
 
@@ -123,7 +123,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 | Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| mallar. Orders. sevkedildi. OrderItem | mallar. siparişler |ad <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
+| mallar. Orders. sevkedildi. OrderItem | mallar. siparişler |name <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
 #### <a name="output"></a>Çıktı
 
@@ -141,7 +141,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

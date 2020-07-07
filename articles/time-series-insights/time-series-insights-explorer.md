@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382774"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
@@ -37,7 +37,7 @@ Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip anali
 >[!NOTE]
 >Yukarıdaki <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Azure IoT çözüm Hızlandırıcısını kullanarak Time Series Insights</a> kullanmaya başlama" videosunu yürütün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
@@ -71,7 +71,7 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
       - **Koşul**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için koşulunu kullanın. Veya öğesini seçerek bir arama yaparsanız, koşul otomatik olarak bu aramaya göre güncelleştirilir. Desteklenen işlenen türleri şunlardır:
 
-         |İşlem  |Desteklenen türler  |Notlar  |
+         |Çalışma  |Desteklenen türler  |Notlar  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
          |**=**, **!=**,**<>**     | **Dize**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
@@ -112,7 +112,7 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
 1. Olayları araştırdığınızda veya sağ tıkladıktan sonra **Olaylar** paneli kullanılabilir hale getirilir. Burada, tüm ham olaylarınızı gözden geçirebilir ve olaylarınızı JSON veya CSV dosyaları olarak dışarı aktarabilirsiniz. Time Series Insights tüm ham verileri depolar.
 
-    [![Olaylar](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
+    [![Ekinlikler](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Desenleri ve sütun istatistiklerini göstermek için olayları araştırdıktan sonra **İstatistikler** sekmesini seçin.
 

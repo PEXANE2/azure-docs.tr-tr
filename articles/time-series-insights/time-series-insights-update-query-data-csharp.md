@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81379824"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>C kullanarak Azure Time Series Insights Preview ortamından veri sorgulama #
@@ -23,7 +23,7 @@ ms.locfileid: "81379824"
 Bu C# örneği, Azure Time Series Insights Preview ortamlarındaki veri [erişimi API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/preview) verilerin nasıl sorgulanacağını gösterir.
 
 > [!TIP]
-> Preview C# kod örneklerini adresinde [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)görüntüleyin.
+> Preview C# kod örneklerini adresinde görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
 ## <a name="summary"></a>Özet
 
@@ -31,7 +31,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 * [Azure otomatik Rest](https://github.com/Azure/AutoRest)'ten SDK otomatik oluşturma desteği.
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)kullanarak Azure Active Directory aracılığıyla erişim belirteci alma.
-* Bu alınan erişim belirtecini sonraki veri erişimi API isteklerinin `Authorization` üst bilgisinde geçirme. 
+* Bu alınan erişim belirtecini `Authorization` sonraki veri ERIŞIMI API isteklerinin üst bilgisinde geçirme. 
 * Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren bir konsol arabirimi sağlar:
 
     * [Önizleme ortamları API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
@@ -50,10 +50,10 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 1. [Bir önizleme Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
 1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. 
-1. Time Series Insights Preview istemci bağımlılıklarını oluşturmak için [README.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) Içinde belirtilen [GenerateCode. bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) dosyasını çalıştırın.
-1. `TSIPreviewDataPlaneclient.sln` Çözümü açın ve Visual Studio `DataPlaneClientSampleApp` 'da varsayılan proje olarak ayarlayın.
-1. [Aşağıda](#project-dependencies) açıklanan adımları kullanarak gerekli proje bağımlılıklarını yükler ve örneği yürütülebilir `.exe` bir dosyaya derleyin.
-1. `.exe` Dosyayı çift tıklayarak çalıştırın.
+1. Time Series Insights Preview istemci bağımlılıklarını oluşturmak için [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) , [README.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) içinde belirtilen şekilde çalıştırın.
+1. Çözümü açın `TSIPreviewDataPlaneclient.sln` ve `DataPlaneClientSampleApp` Visual Studio 'da varsayılan proje olarak ayarlayın.
+1. [Aşağıda](#project-dependencies) açıklanan adımları kullanarak gerekli proje bağımlılıklarını yükler ve örneği yürütülebilir bir `.exe` dosyaya derleyin.
+1. `.exe`Dosyayı çift tıklayarak çalıştırın.
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
@@ -61,11 +61,11 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -sürüm 16.4.2 +
 
-Örnek kodun, [Packages. config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) dosyasında görüntülenebilen birkaç gerekli bağımlılığı vardır.
+Örnek kodun, [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) dosyasında görüntülenebilen birkaç zorunlu bağımlılığı vardır.
 
-**Build** > **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin. 
+**Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin. 
 
-Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örnek:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
 ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414564"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource ve Azure Marketi karşılaştırması
@@ -28,7 +28,7 @@ Bir storefront seçmek için öncelikle teklifiniz için hedef kitleyi belirleyi
 
 Aşağıdaki tabloda, storefront kullanmanın avantajları açıklanmaktadır:
 
-| Avantajlar | Azure Market | AppSource |
+| Yararları | Azure Market | AppSource |
 |:--- |:--- | :--- |
 | **Faturalandırma esnekliği** | Azure Marketi, ücretsiz, deneme, KLG ve Transact teklif türlerini destekler. Transact teklifleri, tüketim tabanlı ya da abonelik tabanlıdır. Tüketim tabanlı teklifler saatlik kullanım ile faturalandırılır ve ilk ücretsiz dönemi sağlayabilir. Abonelik tabanlı hizmetler aylık veya yıllık olarak bilgisayar başına veya sabit fiyat üzerinden faturalandırılır.| AppSource, ücretsiz, deneme, KLG ve Transact teklif türlerini destekler. Transact teklifleri, her bilgisayar veya sabit fiyat için aylık veya yıllık olarak faturalandırılması gereken abonelik tabanlı SaaS ürünlerdir. |
 |**Diğer iş ortaklarıyla bağlantılar**  | Şu anda teklifinizle bir hizmet sağlayıcı veya teslim iş ortakları bağlayamazsınız. | Bağımsız yazılım satıcıları, sistem tümleştiricileri ve yönetilen hizmet sağlayıcılarını belirli uygulama senaryolarına bağlar. Yeni müşterilere işbirliği yapabilirsiniz. |

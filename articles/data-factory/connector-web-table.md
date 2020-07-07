@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410210"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Web tablosundan veri kopyalama
@@ -43,7 +43,7 @@ Web tablosu veritabanından desteklenen herhangi bir havuz veri deposuna veri ko
 
 Özellikle, bu Web tablosu Bağlayıcısı **HTML sayfasından tablo içeriğini ayıklamayı**destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Web tablosu bağlayıcısını kullanmak için, kendinden konak Integration Runtime ayarlamanız gerekir. Ayrıntılar için bkz. [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesi.
 
@@ -59,12 +59,12 @@ Web tablosu bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
+| tür | Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
 | url | Web kaynağının URL 'SI |Yes |
 | authenticationType | İzin verilen değer: **Anonymous**. |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -91,11 +91,11 @@ Web tablosundan veri kopyalamak için veri kümesinin Type özelliğini **Webtab
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Webtable** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Webtable** olarak ayarlanmalıdır | Yes |
 | yol |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
 | dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Yes |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -123,7 +123,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 Web tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Websource**olarak ayarlayın, ek özellikler desteklenmez.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -162,7 +162,7 @@ Web tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 2. Araç çubuğunda **Yeni sorgu** ' ya tıklayın, **diğer kaynaklardan** üzerine gelin ve **Web 'den**' ye tıklayın.
 
     ![Power Query menüsü](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin, veri kümesi için belirttiğiniz yolun https://en.wikipedia.org/wiki/) yanı da (örneğin: AFI% 27s_100_Years... 100_Movies) ve **Tamam**' a tıklayın.
+3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin, https://en.wikipedia.org/wiki/) veri kümesi için belirttiğiniz yolun yanı da (örneğin: AFI% 27s_100_Years... 100_Movies) ve **Tamam**' a tıklayın.
 
     ![Web iletişim kutusundan](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 

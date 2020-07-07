@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407205"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory
@@ -36,11 +36,11 @@ Davet e-postaları, Azure AD 'de B2B işbirliği kullanıcıları olarak iş ort
 
 E-postanın konusu bu düzene uyar:
 
-&lt;Kullanıcı&gt; adı, BT 'yi kuruluşlarındaki uygulamalara erişmeye davet etti.
+&lt;Kullanıcı adı &gt; , BT 'yi kuruluşlarındaki uygulamalara erişmeye davet etti.
 
 ### <a name="from-address"></a>Kimden adresi
 
-Kimden adresi için LinkedIn benzeri bir model kullanıyoruz. Bu düzen, e-postanın kaynağından invites@microsoft.comgeldiğinden, davetin başka bir kuruluştan geldiğinden emin olmak için bunu temizlemelidir. Biçim: Microsoft <invites@microsoft.com> davetleri veya Microsoft davetleri, &lt;TenantName&gt; <invites@microsoft.com>adına. 
+Kimden adresi için LinkedIn benzeri bir model kullanıyoruz. Bu düzen, e-postanın kaynağından geldiğinden invites@microsoft.com , davetin başka bir kuruluştan geldiğinden emin olmak için bunu temizlemelidir. Biçim: Microsoft davetleri  <invites@microsoft.com> veya Microsoft davetleri, &lt; TenantName adına &gt;  <invites@microsoft.com> . 
 
 ### <a name="reply-to"></a>Yanıtla
 

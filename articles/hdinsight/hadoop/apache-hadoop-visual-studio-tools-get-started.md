@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 7504826f267d717f30c5e88621578412c744e5f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383518"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Visual Studio için Data Lake araçları 'nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma
@@ -26,7 +26,7 @@ Apache Storm bağlanma hakkında daha fazla bilgi için bkz. [Data Lake araçlar
 
 Visual Studio için Data Lake Araçlarını hem Azure Data Lake Analytics’e hem de HDInsight’a erişmek için kullanabilirsiniz. Data Lake Araçları hakkında bilgi için bkz. [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayıp Visual Studio için Data Lake araçları 'nı kullanmak için aşağıdaki öğeler gereklidir:
 
@@ -42,7 +42,7 @@ Visual Studio sürümünüze yönelik Data Lake araçları yüklemek için uygun
 
     Visual Studio yüklemesi sırasında, **Azure geliştirme** iş yükü veya **veri depolama ve işleme** iş yükünü dahil ettiğinizden emin olun.  
 
-    Mevcut Visual Studio yüklemeleri için IDE menü çubuğuna gidin ve Visual Studio yükleyicisi açmak için Araçlar**ve Özellikler al** ' **ı seçin.** >  **Iş yükleri** sekmesinde en az **Azure geliştirme** iş yükü ( **Web & bulutu**altında) seçeneğini belirleyin. Veya **veri depolama ve işleme** iş yükünü ( **diğer araç kümeleri**altında) seçin.
+    Mevcut Visual Studio yüklemeleri için IDE menü çubuğuna gidin ve **Tools**  >  Visual Studio yükleyicisi açmak için Araçlar**ve Özellikler al** ' ı seçin. **Iş yükleri** sekmesinde en az **Azure geliştirme** iş yükü ( **Web & bulutu**altında) seçeneğini belirleyin. Veya **veri depolama ve işleme** iş yükünü ( **diğer araç kümeleri**altında) seçin.
 
   ![İş yükü seçimi, Visual Studio Yükleyicisi](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
@@ -58,7 +58,7 @@ Daha sonra, Data Lake araçlarını en son sürüme güncelleştirdiğinizden em
 
 2. **Başlangıç** penceresinde, **kod olmadan devam et**' i seçin.
 
-3. Visual Studio IDE menü çubuğunda **Uzantılar** > **Yönet uzantılar**' ı seçin.
+3. Visual Studio IDE menü çubuğunda **Uzantılar**  >  **Yönet uzantılar**' ı seçin.
 
 4. **Uzantıları Yönet** Iletişim kutusunda **güncelleştirmeler** düğümünü genişletin.
 
@@ -88,9 +88,9 @@ Azure aboneliğinize bağlanmak için:
 
 2. **Başlangıç** penceresinde, **kod olmadan devam et**' i seçin.
 
-3. IDE menü çubuğunda**Sunucu Gezgini** **görüntüle** > ' yi seçin.
+3. IDE menü çubuğunda Sunucu Gezgini **görüntüle**' yi seçin  >  **Server Explorer**.
 
-4. **Sunucu Gezgini**' de **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan**' ı seçin ve kimlik doğrulama işlemini doldurun. **Sunucu Gezgini**, var olan HDInsight kümelerinin bir listesini görüntülemek için **Azure** > **HDInsight** ' ı genişletin.
+4. **Sunucu Gezgini**' de **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan**' ı seçin ve kimlik doğrulama işlemini doldurun. **Sunucu Gezgini**, **Azure**  >  var olan HDInsight kümelerinin bir listesini görüntülemek için Azure**HDInsight** ' ı genişletin.
 
 5. Herhangi bir kümeniz yoksa, Azure portal, Azure PowerShell veya HDInsight SDK kullanarak bir tane oluşturun. Daha fazla bilgi için bkz. [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -104,7 +104,7 @@ Azure aboneliğinize bağlandıktan sonra aşağıdaki görevleri gerçekleştir
 
 Visual Studio'dan Azure portalına bağlanmak için:
 
-1. **Sunucu Gezgini**' de, **Azure** > **HDInsight** ' ı genişletin ve kümenizi seçin.
+1. **Sunucu Gezgini**' de, **Azure**  >  **HDInsight** ' ı genişletin ve kümenizi seçin.
 
 2. Bir HDInsight kümesine sağ tıklayın ve **Azure Portal kümeyi Yönet**' i seçin.
 
@@ -112,7 +112,7 @@ Visual Studio'dan Azure portalına bağlanmak için:
 
 Visual Studio 'dan soru sormak ve geri bildirim sağlamak için:
 
-1. Sunucu Gezgini **Azure** > **HDInsight**' ı seçin.
+1. Sunucu Gezgini **Azure**  >  **HDInsight**' ı seçin.
 
 2. **HDInsight** ' a sağ tıklayın ve soru sormak Için **MSDN Forumu** ' nu seçin ya da geri bildirimde bulunmak için **geri bildirimde** bulunun.
 
@@ -125,11 +125,11 @@ Bir HDInsight kümesini bağlamak için:
 
 1. HDInsight ' **a** **sağ tıklayın ve**ardından HDInsight kümesi bağla iletişim kutusunu göstermek Için **bir HDInsight kümesi bağla** ' yı seçin.
 
-2. Forma `https://CLUSTERNAME.azurehdinsight.net`bir **bağlantı URL 'si** girin. Başka bir alana gittiğinizde **küme adı** URL 'nizin küme adı bölümüyle otomatik olarak doldurulur. Ardından bir **Kullanıcı adı** ve **parola**girin ve **İleri**' yi seçin.
+2. Forma bir **bağlantı URL 'si** girin `https://CLUSTERNAME.azurehdinsight.net` . Başka bir alana gittiğinizde **küme adı** URL 'nizin küme adı bölümüyle otomatik olarak doldurulur. Ardından bir **Kullanıcı adı** ve **parola**girin ve **İleri**' yi seçin.
 
     ![Bir kümeyi bağlama, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. **Son**' u seçin. Küme bağlama başarılı olursa, küme **HDInsight** düğümü altında listelenir.
+3. **Son**'u seçin. Küme bağlama başarılı olursa, küme **HDInsight** düğümü altında listelenir.
 
 Bağlı bir kümeyi güncelleştirmek için kümeye sağ tıklayın ve **Düzenle**' yi seçin. Daha sonra küme bilgilerini güncelleştirebilirsiniz.
 
@@ -156,19 +156,19 @@ Kapsayıcıya sağ tıklayın ve kapsayıcının içeriğini görüntülemek iç
 
 Ayrıca, bir Hive işinin içinde neler olduğunu görmek için Visual Studio için Data Lake araçları 'nı kullanabilirsiniz. Visual Studio için Data Lake Araçları bazı Hive işlerinin Yarn günlüklerini toplar ve yüzeye çıkarır.
 
-**Sunucu Gezgini** **Azure** > **HDInsight** ' ı seçin ve kümenizi seçin.  Bu düğüm, Bölüm izlemek için **Sunucu Gezgini** başlangıç noktasıdır.
+**Sunucu Gezgini** **Azure**  >  **HDInsight** ' ı seçin ve kümenizi seçin.  Bu düğüm, Bölüm izlemek için **Sunucu Gezgini** başlangıç noktasıdır.
 
 ### <a name="view-hivesampletable"></a>hivesampletable öğesini görüntüleme
 
-Tüm HDInsight kümelerinin varsayılan bir örnek Hive tablosu adı `hivesampletable`vardır.  
+Tüm HDInsight kümelerinin varsayılan bir örnek Hive tablosu adı vardır `hivesampletable` .  
 
-Kümenizde **Hive veritabanları** > **varsayılan** > **hivesampletable**öğesini seçin.
+Kümenizde **Hive veritabanları**  >  **varsayılan**  >  **hivesampletable**öğesini seçin.
 
-* `hivesampletable` Şemayı görüntülemek için:
+* Şemayı görüntülemek için `hivesampletable` :
 
-    **Hivesampletable**öğesini genişletin. `hivesampletable` Sütunların adları ve veri türleri gösterilir.
+    **Hivesampletable**öğesini genişletin. Sütunların adları ve veri türleri `hivesampletable` gösterilir.
 
-* `hivesampletable` Verileri görüntülemek için:
+* Verileri görüntülemek için `hivesampletable` :
 
     **Hivesampletable**öğesine sağ tıklayın ve **Ilk 100 satırı görüntüle**' yi seçin. 100 sonuçlarının listesi **Hive tablosu: hivesampletable** penceresinde görünür. Bu eylem, Hive ODBC sürücüsünü kullanarak aşağıdaki Hive sorgusunu çalıştırmaya eşdeğerdir:
 
@@ -180,7 +180,7 @@ Kümenizde **Hive veritabanları** > **varsayılan** > **hivesampletable**öğes
 
 Bir Hive tablosu oluşturmak için GUI’yi ya da Hive sorgularını kullanabilirsiniz. Hive sorguları kullanma hakkında daha fazla bilgi için bkz. [Hive sorguları oluşturma ve çalıştırma](#create-and-run-hive-queries).
 
-1. Kümeinizden **Hive veritabanı** > **Varsayılanı**' nı seçin.
+1. Kümeinizden **Hive veritabanı**  >  **Varsayılanı**' nı seçin.
 
 2. **Varsayılan**' a sağ tıklayın ve **tablo oluştur**' u seçin.
 
@@ -205,7 +205,7 @@ Geçici sorgu oluşturmak ve çalıştırmak için:
 
 2. Hive sorgusu girin.
 
-    Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, yazarsanız `SELECT * FROM`, IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler.
+    Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, yazarsanız `SELECT * FROM` , IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler.
 
     ![IntelliSense örnek 1, Hive geçici sorgu, HDInsight kümesi, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
 
@@ -248,7 +248,7 @@ Geçici sorgu oluşturmak ve çalıştırmak için:
 
 Hive çözümü oluşturmak ve çalıştırmak için:
 
-1. Menü çubuğundan **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Menü çubuğundan **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 2. **Yeni proje oluştur** penceresinde, arama kutusunu seçin ve **Hive**yazın. Ardından **Hive uygulaması** ' nı seçin ve **İleri**' yi seçin.
 
@@ -310,11 +310,11 @@ Hive işlerini görüntülemek için:
 
 ## <a name="run-apache-pig-scripts"></a>Apache Pig betiklerini çalıştır
 
-1. Menü çubuğundan **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Menü çubuğundan **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 2. **Başlangıç** penceresinde arama kutusunu seçin ve **Pig**girin. Sonra **Pig uygulamasını** seçin ve **İleri**' yi seçin.
 
-3. **Yeni projenizi yapılandırın** penceresinde bir **Proje adı**girin ve proje için bir **konum** seçin veya oluşturun. Ardından **Oluştur**’u seçin.
+3. **Yeni projenizi yapılandırın** penceresinde bir **Proje adı**girin ve proje için bir **konum** seçin veya oluşturun. Ardından **Oluştur**'u seçin.
 
 4. IDE **Çözüm Gezgini** bölmesinde, Script **. Pig** öğesine çift tıklayarak betiği açın.
 

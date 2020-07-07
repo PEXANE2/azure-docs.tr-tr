@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407540"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
@@ -28,7 +28,7 @@ Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Time Series Insights ortamınızı bulun. Arama `Time Series` kutusuna girin **Search** . Arama sonuçlarındaki **zaman serisi ortamlarını** seçin.
+1. Time Series Insights ortamınızı bulun. `Time Series` **Arama** kutusuna girin. Arama sonuçlarındaki **zaman serisi ortamlarını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 
 ## <a name="grant-data-access"></a>Veri erişim izni verme
@@ -63,7 +63,7 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Başka bir Azure AD kiracısından konuk erişimi sağlama
 
-`Guest` Rol bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
+`Guest`Rol bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
 
 Başka bir kiracıdan bir Azure AD kullanıcısına Time Series Insights ortamına konuk erişimi sağlamak için aşağıdaki adımları izleyin.
 

@@ -12,10 +12,10 @@ manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
 ms.openlocfilehash: 5d74cd0fcd524f00d79eb3fbab386c602a413766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414208"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini sona Ekle
@@ -26,10 +26,10 @@ Bir Data Factory işlem hattında tanımlanmış var olan bir dizi değişkenine
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-ad | İşlem hattının etkinlik adı | Yes
+name | İşlem hattının etkinlik adı | Yes
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
-type | Etkinlik türü AppendVariable | evet
-value | Belirtilen değişkene eklemek için kullanılan dize sabiti veya ifade nesnesi değeri | evet
+tür | Etkinlik türü AppendVariable | evet
+değer | Belirtilen değişkene eklemek için kullanılan dize sabiti veya ifade nesnesi değeri | evet
 variableName | Etkinliğe göre değiştirilecek değişkenin adı, değişkenin ' Array ' türünde olması gerekir | evet
 
 ## <a name="next-steps"></a>Sonraki adımlar

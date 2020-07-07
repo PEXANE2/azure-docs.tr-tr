@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408632"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
@@ -42,7 +42,7 @@ Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleşti
 
 İzinleri yönetmek için, portalda Anahtar Kasası kaynağına gidin. Kullanıcı için gerekli izinleri ekleyin. Aşağıdaki örnek, kaynak bölgedeki Anahtar Kasası *ContosoWeb2Keyvault*için izinlerin nasıl etkinleştirileceğini gösterir.
 
-1. **Giriş** > **keyvaults** > **ContosoWeb2KeyVault > erişim ilkeleri**' ne gidin.
+1. **Giriş**  >  **keyvaults**  >  **ContosoWeb2KeyVault > erişim ilkeleri**' ne gidin.
 
    ![Anahtar Kasası izinleri penceresi](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -60,9 +60,9 @@ Olağanüstü durum kurtarma (DR) etkinleştiren kullanıcının anahtarları ko
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>PowerShell betiğini kullanarak disk şifreleme anahtarlarını DR bölgesine kopyalama
 
 1. ["CopyKeys" ham betik kodunu açın](https://aka.ms/ade-asr-copy-keys-code).
-2. Betiği bir dosyaya kopyalayın ve **Copy-Keys. ps1**olarak adlandırın.
+2. Betiği bir dosyaya kopyalayın ve **Copy-keys.ps1**olarak adlandırın.
 3. Windows PowerShell uygulamasını açın ve dosyayı kaydettiğiniz klasöre gidin.
-4. Copy-Keys. ps1 yürütün.
+4. Copy-keys.ps1 yürütün.
 5. Oturum açmak için Azure kimlik bilgilerini sağlayın.
 6. Sanal makinelerinizin **Azure aboneliğini** seçin.
 7. Kaynak gruplarının yüklenmesini bekleyin ve ardından sanal makinelerinizin **kaynak grubunu** seçin.
@@ -86,7 +86,7 @@ Bu örnekte, birincil Azure Bölgesi Doğu Asya ve ikincil bölge Güney Doğu A
     - **Kaynak aboneliği**: kaynak sanal makinelerinizin ait olduğu abonelik. Kurtarma Hizmetleri kasasıyla aynı Azure Active Directory kiracısındaki herhangi bir abonelik olabilir.
     - **Kaynak grubu**: kaynak sanal makinelerinizin ait olduğu kaynak grubu. Seçilen kaynak grubundaki tüm VM 'Ler, bir sonraki adımda koruma için listelenir.
 
-3. Sanal **makineler** > ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**' ı seçin.
+3. Sanal **makineler**  >  ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**' ı seçin.
 
 4. **Ayarlar**' da, aşağıdaki hedef site ayarlarını yapılandırabilirsiniz.
 
@@ -118,7 +118,7 @@ Site Recovery varsayılan hedef ayarlarını değiştirmek için aşağıdaki ad
    - **Hedef disk şifreleme anahtar kasası**için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef disk şifreleme anahtarı kasasını seçin.
    - **Hedef anahtar şifreleme anahtar kasası**için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef anahtar şifreleme anahtar kasasını seçin.
 
-3. **Hedef kaynağı** > oluşturma**çoğaltmasını etkinleştir**' i seçin.
+3. **Hedef kaynağı oluşturma**  >  **çoğaltmasını etkinleştir**' i seçin.
 4. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler**altında VM 'lerin sistem durumunu kontrol edebilirsiniz.
 
 >[!NOTE]
@@ -129,7 +129,7 @@ Aşağıdaki senaryolarda, hedef VM şifreleme ayarlarını güncelleştirmeniz 
   - VM 'de çoğaltma Site Recovery etkinleştirdiniz. Daha sonra, kaynak VM 'de disk şifrelemeyi etkinleştirdiniz.
   - VM 'de çoğaltma Site Recovery etkinleştirdiniz. Daha sonra, kaynak VM 'deki disk şifreleme anahtarını veya anahtar şifreleme anahtarını değiştirmiş olursunuz.
 
-Şifreleme anahtarlarını hedef bölgeye kopyalamak için [bir komut dosyası](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) kullanabilir ve ardından **Kurtarma Hizmetleri Kasası** > *çoğaltılan öğe* > **özellikleri** > **işlem ve ağ**' daki hedef şifreleme ayarlarını güncelleştirebilirsiniz.
+Şifreleme anahtarlarını hedef bölgeye kopyalamak için [bir komut dosyası](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) kullanabilir ve ardından **Kurtarma Hizmetleri Kasası**  >  *çoğaltılan öğe*  >  **özellikleri**  >  **işlem ve ağ**' daki hedef şifreleme ayarlarını güncelleştirebilirsiniz.
 
 ![ADE ayarları iletişim kutusu penceresini Güncelleştir](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -141,7 +141,7 @@ Azure Site Recovery, parolayı okumak ve hedef bölge anahtar kasasına kopyalam
 **Nasıl düzeltilir:** Abonelik Yöneticisi olup olmadığından bağımsız olarak, anahtar kasasında izin al izninizin olması önemlidir.
 
 1. Bu örnekte "ContososourceKeyvault" > **erişim ilkeleri** olan kaynak bölgesi Anahtar Kasası 'na gidin 
-2. **Asıl seçin** altında Kullanıcı adınızı ekleyin örneğin: "dradmin@contoso.com"
+2. **Asıl seçin** altında Kullanıcı adınızı ekleyin örneğin: " dradmin@contoso.com "
 3. **Anahtar izinleri** altında Al ' ı seçin. 
 4. **Gizli izinler** altında Al ' ı seçin. 
 5. Erişim ilkesini kaydetme
@@ -153,7 +153,7 @@ Kaynak bölgesi Anahtar Kasası üzerinde tüm izinleriniz vardır. Ancak koruma
 
 [Hedef Anahtar Kasası](#required-user-permissions) 'nda izin gerekli
 
-**Nasıl düzeltilir:** **Giriş** > **Anahtar kasaları** > **contosotargetkeykasası** > **erişim ilkelerine** gidin ve uygun izinleri ekleyin.
+**Nasıl düzeltilir:** **Giriş**  >  **Anahtar kasaları**  >  **contosotargetkeykasası**  >  **erişim ilkelerine** gidin ve uygun izinleri ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

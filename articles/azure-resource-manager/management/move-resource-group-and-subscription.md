@@ -4,10 +4,10 @@ description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631497"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni kaynak grubuna veya aboneliğe taşıma
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-202 durum kodu, doğrulama isteğinin kabul edildiğini gösterir, ancak taşıma işleminin başarılı olup olmayacağını henüz belirlemiştir. `location` Değer, uzun süre çalışan işlemin durumunu denetlemek için KULLANDıĞıNıZ bir URL içerir.  
+202 durum kodu, doğrulama isteğinin kabul edildiğini gösterir, ancak taşıma işleminin başarılı olup olmayacağını henüz belirlemiştir. `location`Değer, uzun süre çalışan işlemin durumunu denetlemek için kullandığınız BIR URL içerir.  
 
 Durumu denetlemek için aşağıdaki isteği gönderin:
 
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-İşlem çalışmaya devam ederken, 202 durum kodunu almaya devam edersiniz. Yeniden denemeden önce `retry-after` değerde belirtilen saniye sayısını bekleyin. Taşıma işlemi başarıyla doğrulanırsa, 204 durum kodunu alırsınız. Taşıma doğrulaması başarısız olursa, şöyle bir hata iletisi alırsınız:
+İşlem çalışmaya devam ederken, 202 durum kodunu almaya devam edersiniz. Yeniden denemeden önce değerde belirtilen saniye sayısını bekleyin `retry-after` . Taşıma işlemi başarıyla doğrulanırsa, 204 durum kodunu alırsınız. Taşıma doğrulaması başarısız olursa, şöyle bir hata iletisi alırsınız:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Yeni bir aboneliğe geçmek için `DestinationSubscriptionId` parametresi için bir değer ekleyin.
+Yeni bir aboneliğe geçmek için parametresi için bir değer ekleyin `DestinationSubscriptionId` .
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 
-Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) komutunu kullanın. Taşınacak kaynakların kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids` Parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
+Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) komutunu kullanın. Taşınacak kaynakların kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids`Parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

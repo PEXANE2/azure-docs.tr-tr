@@ -4,10 +4,10 @@ description: Durum bilgisi olan Service Fabric hizmetler, yüksek oranda kullan�
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81398424"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric durum bilgisi olan hizmetlerde güvenilir koleksiyonlara giriş
@@ -35,7 +35,7 @@ Daha zayıf tutarlılık elde etmek için, uygulamalar zaman uyumsuz tamamlama d
 Güvenilir koleksiyonlar API 'Leri, eşzamanlı koleksiyonlar API 'lerinin bir gelişmidir ( **System. Collections. eşzamanlı** ad alanında bulunur):
 
 * Zaman uyumsuz: eşzamanlı koleksiyonların aksine, işlemler çoğaltılmakta ve kalıcı hale getirilir.
-* Out parametresi yok: Out `ConditionalValue<T>` parametreleri yerine bir `bool` ve değeri döndürmek için kullanılır. `ConditionalValue<T>`gibidir `Nullable<T>` , ancak T 'nin bir struct olması gerekmez.
+* Out parametresi yok: `ConditionalValue<T>` `bool` out parametreleri yerine bir ve değeri döndürmek için kullanılır. `ConditionalValue<T>`gibidir, `Nullable<T>` ancak T 'nin bir struct olması gerekmez.
 * İşlemler: kullanıcının eylemleri bir işlemde birden çok güvenilir koleksiyonda grupkullanmasını sağlamak için bir işlem nesnesi kullanır.
 
 Günümüzde **Microsoft. ServiceFabric. Data. Collections** üç koleksiyon vardır:

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 68e17ba1dd5981e565e56d6c8137f77d33ad755b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393506"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Envoy yapılandırma
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Envoy 
 > * Envoy 'de grupları ve grup üyeliklerini sağlama
 > * Envoy için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -44,12 +44,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * [Bir Envoy kiracısı](https://envoy.com/pricing/).
 * Yönetici izinlerine sahip bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD ve Envoy arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Envoy 'yi yapılandırma
+## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Envoy 'yi yapılandırma
 
 1. [Envoy Yönetici konsolunuza](https://dashboard.envoy.com/login)oturum açın. **Tümleştirmeler**' e tıklayın.
 
@@ -136,7 +136,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |ad. biçimlendirildi|Dize|
    |phoneNumbers [tür EQ "mobil"]. değer|Dize|
    |phoneNumbers [tür EQ "iş"]. değer|Dize|
-   |yerel ayar|Dize|
+   |locale|Dize|
 
 10. **Eşlemeler** bölümünde **Azure Active Directory grupları eşitlemeyi**seçin.
 
