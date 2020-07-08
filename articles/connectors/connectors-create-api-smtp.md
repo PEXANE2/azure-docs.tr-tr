@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656995"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps ile SMTP hesabınızdan e-posta gönderin
@@ -43,7 +42,7 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 1. SMTP eylemi eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
-   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Arama kutusuna filtreniz olarak "SMTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
@@ -51,10 +50,10 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Bağlantı adı** | Yes | SMTP sunucunuza bağlantı için bir ad | 
-   | **SMTP sunucu adresi** | Yes | SMTP sunucunuzun adresi | 
-   | **Kullanıcı adı** | Yes | SMTP hesabınız için Kullanıcı adınız | 
-   | **Parola** | Yes | SMTP hesabınız için parolanız | 
+   | **Bağlantı adı** | Evet | SMTP sunucunuza bağlantı için bir ad | 
+   | **SMTP sunucu adresi** | Evet | SMTP sunucunuzun adresi | 
+   | **Kullanıcı adı** | Evet | SMTP hesabınız için Kullanıcı adınız | 
+   | **Parola** | Evet | SMTP hesabınız için parolanız | 
    | **SMTP sunucusu bağlantı noktası** | Hayır | SMTP sunucunuzda kullanmak istediğiniz belirli bir bağlantı noktası | 
    | **SSL etkinleştirilsin mi?** | Hayır | TLS/SSL şifrelemesini açın veya kapatın. | 
    |||| 

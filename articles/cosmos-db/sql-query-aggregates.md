@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79464470"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
 
-Toplama işlevleri, `SELECT` yan tümcesindeki bir değer kümesi üzerinde bir hesaplama gerçekleştirir ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu, `Families` kapsayıcı içindeki öğelerin sayısını döndürür:
+Toplama işlevleri, yan tümcesindeki bir değer kümesi üzerinde bir hesaplama gerçekleştirir `SELECT` ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu, kapsayıcı içindeki öğelerin sayısını döndürür `Families` :
 
 ## <a name="examples"></a>Örnekler
 
@@ -45,7 +44,7 @@ Sonuçlar:
     [ 2 ]
 ```
 
-Toplamaları filtreler ile de birleştirebilirsiniz. Örneğin, aşağıdaki sorgu, adres durumu olan öğe sayısını döndürür `WA`.
+Toplamaları filtreler ile de birleştirebilirsiniz. Örneğin, aşağıdaki sorgu, adres durumu olan öğe sayısını döndürür `WA` .
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -61,7 +60,7 @@ Sonuçlar:
 
 ## <a name="types-of-aggregate-functions"></a>Toplama işlevlerinin türleri
 
-SQL API aşağıdaki toplama işlevlerini destekler. `SUM`ve `AVG` sayı, dize, Boole değerleri `COUNT`ve `MIN`null değerler `MAX` üzerinde çalışır.
+SQL API aşağıdaki toplama işlevlerini destekler. `SUM`ve sayı `AVG` `COUNT` `MIN` `MAX` , dize, Boole değerleri ve null değerler üzerinde çalışır.
 
 | İşlev | Açıklama |
 |-------|-------------|
@@ -78,7 +77,7 @@ Ayrıca, bir dizi yinelemesi sonuçlarının üzerine toplayabilirsiniz.
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu toplama sistemi işlevleri, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır. Bir `COUNT`özelliği, `SUM` `MIN` `MAX`,,, veya `AVG` bir özelliğinde yapmanız beklendiğinde, [Dizin oluşturma ilkesine ilgili yolu dahil](index-policy.md#includeexclude-strategy)etmelisiniz.
+Bu toplama sistemi işlevleri, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır. Bir özelliği,,,, veya bir özelliğinde yapmanız beklendiğinde, `COUNT` `SUM` `MIN` `MAX` `AVG` [Dizin oluşturma ilkesine ilgili yolu dahil](index-policy.md#includeexclude-strategy)etmelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

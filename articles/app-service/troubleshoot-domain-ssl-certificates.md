@@ -9,10 +9,9 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80668019"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve TLS/SSL sertifikası sorunlarını giderme
@@ -88,9 +87,9 @@ Bu sorun, aşağıdakilerden herhangi biri nedeniyle oluşabilir:
 
     **Çözüm**: sertifika sahtekarlık olarak işaretlenmişse ve 24 saat sonra çözümlenmiyorsa, şu adımları izleyin:
 
-    1. [Azure Portal](https://portal.azure.com) oturum açın.
+    1. [Azure portalında](https://portal.azure.com) oturum açın.
     2. **App Service sertifikalar**' a gidin ve sertifikayı seçin.
-    3. **Sertifika yapılandırma** > **Adım 2:** > **etki alanı doğrulamayı**doğrulama. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
+    3. **Sertifika yapılandırma**  >  **Adım 2:**  >  **etki alanı doğrulamayı**doğrulama. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
 
 ## <a name="custom-domain-problems"></a>Özel etki alanı sorunları
 
@@ -120,7 +119,7 @@ Internet tarayıcısı, etki alanınız için eski IP adresini önbelleğe almay
 
 **Neden 2 için çözüm**
 
-Tarayıcıyı temizleyin. Windows cihazları için komutunu `ipconfig /flushdns`çalıştırabilirsiniz. Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın. 
+Tarayıcıyı temizleyin. Windows cihazları için komutunu çalıştırabilirsiniz `ipconfig /flushdns` . Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın. 
 
 ### <a name="you-cant-add-a-subdomain"></a>Alt etki alanı ekleyemezsiniz 
 
@@ -190,7 +189,7 @@ App Service, sertifikanızı 48 saat içinde otomatik olarak eşitler. Bir serti
 
 Sertifikanın eşitlenmesini zorunlu hale getirebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
 2. Yeniden **anahtarlama ve eşitleme**' yi seçin ve ardından **Eşitle**' yi seçin. Eşitlemenin tamamlaması biraz zaman alır. 
 3. Eşitleme tamamlandığında, şu bildirimi görürsünüz: "tüm kaynaklar en son sertifika ile başarıyla güncelleştirildi."
 
@@ -213,7 +212,7 @@ Alternatif olarak, etki alanınızı el ile doğrulamak için HTML Web sayfası 
 3.  Bu dosyayı, etki alanınızı barındıran Web sunucusunun köküne yükleyin.
 4.  Sertifika durumunu denetlemek için **Yenile** ' yi seçin. Doğrulamanın tamamlanması birkaç dakika sürebilir.
 
-Örneğin, etki alanı doğrulama belirteci 1234abcd ile azure.com için standart bir sertifika satın aldıysanız, ' ye https://azure.com/1234abcd.html yapılan bir Web isteği, 1234abcd döndürmelidir. 
+Örneğin, etki alanı doğrulama belirteci 1234abcd ile azure.com için standart bir sertifika satın aldıysanız, ' ye yapılan bir Web isteği, https://azure.com/1234abcd.html 1234abcd döndürmelidir. 
 
 > [!IMPORTANT]
 > Bir sertifika sırasının, etki alanı doğrulama işlemini tamamlaması için yalnızca 15 gün vardır. 15 gün sonra, sertifika yetkilisi sertifikayı reddeder ve sertifika için ücretlendirilirsiniz. Bu durumda, bu sertifikayı silip yeniden deneyin.

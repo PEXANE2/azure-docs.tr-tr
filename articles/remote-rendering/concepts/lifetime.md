@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681876"
 ---
 # <a name="object-and-resource-lifetime"></a>Nesne ve kaynak ömrü
@@ -20,7 +19,7 @@ Azure uzaktan Işleme iki tür arasında ayrım yapar: **nesneler** ve **kaynakl
 
 *Nesneler* , kullanıcının kendi takdirine göre oluşturabileceğiniz, değiştirebileceği ve yok edileceği şeyler olarak değerlendirilir. Nesneler serbestçe yinelenebilir ve her örnek zaman içinde zaman içinde olabilir. Sonuç olarak, [varlıklar](entities.md) ve [Bileşenler](components.md) nesnelerdir.
 
-Nesnelerin ömrü, Kullanıcı denetimi altında tamamen yapılır. Ancak, istemci tarafı gösteriminin yaşam süresi ile ilgili değildir. Ve `Entity` `Component` gibi sınıflar, uzak `Destroy` işleme konağındaki nesneyi serbest bırakmak için çağrılması gereken bir işleve sahiptir. Ayrıca, `Entity.Destroy()` varlığı, alt öğelerini ve söz konusu hiyerarşideki tüm bileşenleri yok eder.
+Nesnelerin ömrü, Kullanıcı denetimi altında tamamen yapılır. Ancak, istemci tarafı gösteriminin yaşam süresi ile ilgili değildir. Ve gibi sınıflar, `Entity` `Component` `Destroy` Uzak işleme konağındaki nesneyi serbest bırakmak için çağrılması gereken bir işleve sahiptir. Ayrıca, `Entity.Destroy()` varlığı, alt öğelerini ve söz konusu hiyerarşideki tüm bileşenleri yok eder.
 
 ## <a name="resource-lifetime"></a>Kaynak ömrü
 
@@ -32,7 +31,7 @@ Kaynakların çoğu, genellikle bir dosyadan yükleyerek dolaylı olarak oluştu
 
 ### <a name="built-in-resources"></a>Yerleşik kaynaklar
 
-Azure uzaktan Işleme, çağrısı `builtin://` sırasında ilgili tanımlayıcılarını önceden bekleyen bir şekilde `AzureSession.Actions.LoadXYZAsync()`yüklenebilecek bazı yerleşik kaynaklar içerir. Kullanılabilir yerleşik kaynaklar ilgili her özellik için belgelerde listelenmiştir. Örneğin, [Sky bölümü](../overview/features/sky.md) yerleşik gök dokularını listeler.
+Azure uzaktan Işleme, çağrısı sırasında ilgili tanımlayıcılarını önceden bekleyen bir şekilde yüklenebilecek bazı yerleşik kaynaklar içerir `builtin://` `AzureSession.Actions.LoadXYZAsync()` . Kullanılabilir yerleşik kaynaklar ilgili her özellik için belgelerde listelenmiştir. Örneğin, [Sky bölümü](../overview/features/sky.md) yerleşik gök dokularını listeler.
 
 ## <a name="general-lifetime"></a>Genel ömür
 

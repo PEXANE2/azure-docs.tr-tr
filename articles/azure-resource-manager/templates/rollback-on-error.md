@@ -4,10 +4,9 @@ description: Başarısız bir dağıtımın başarılı bir dağıtıma geri dö
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460152"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Başarılı dağıtımda hata durumunda geri al
@@ -33,7 +32,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollbackToLastDeployment
 ```
 
-Belirli bir dağıtımı yeniden dağıtmak için `-RollBackDeploymentName` parametresini kullanın ve dağıtımın adını sağlayın. Belirtilen dağıtım başarılı olmalıdır.
+Belirli bir dağıtımı yeniden dağıtmak için parametresini kullanın `-RollBackDeploymentName` ve dağıtımın adını sağlayın. Belirtilen dağıtım başarılı olmalıdır.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -55,7 +54,7 @@ az deployment group create \
   --rollback-on-error
 ```
 
-Belirli bir dağıtımı yeniden dağıtmak için `--rollback-on-error` parametresini kullanın ve dağıtımın adını sağlayın. Belirtilen dağıtım başarılı olmalıdır.
+Belirli bir dağıtımı yeniden dağıtmak için parametresini kullanın `--rollback-on-error` ve dağıtımın adını sağlayın. Belirtilen dağıtım başarılı olmalıdır.
 
 ```azurecli-interactive
 az deployment group create \

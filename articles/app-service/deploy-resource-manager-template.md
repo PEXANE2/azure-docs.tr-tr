@@ -7,10 +7,9 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637920"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Web uygulamalarını dağıtma Kılavuzu
@@ -45,7 +44,7 @@ Kaynakları aşağıdaki sırayla dağıtabilirsiniz:
 
 **Katman 4**
 * App Service sertifikası--varsa, kaynak denetimine veya MSDeploy 'a bağımlıdır. Aksi halde, Web uygulamasına bağlıdır.
-* Yapılandırma ayarları (bağlantı dizeleri, Web. config değerleri, uygulama ayarları)--varsa, kaynak denetimine veya MSDeploy 'a bağımlıdır. Aksi halde, Web uygulamasına bağlıdır.
+* Yapılandırma ayarları (bağlantı dizeleri, web.config değerleri, uygulama ayarları)--varsa kaynak denetimine veya MSDeploy 'a bağımlıdır. Aksi halde, Web uygulamasına bağlıdır.
 
 **Katman 5**
 * Ana bilgisayar adı bağlamaları--varsa sertifikaya bağlıdır. Aksi halde, daha üst düzey bir kaynağa bağlıdır.
@@ -90,7 +89,7 @@ Kaynak Yöneticisi şablonunuz MSDeploy kullanıyorsa, dağıtım hata iletileri
 
 1. Sitenin [kudu konsoluna](https://github.com/projectkudu/kudu/wiki/Kudu-console)gidin.
 2. D:\home\logfiles\siteextensions\msdeploykonumundaki klasöre göz atın.
-3. AppManagerStatus. xml ve appManagerLog. xml dosyalarını arayın. İlk dosya durumu günlüğe kaydeder. İkinci dosya hatayla ilgili bilgileri günlüğe kaydeder. Hata sizin için açık değilse, [forumda](https://docs.microsoft.com/answers/topics/azure-webapps.html)yardım isteyip istemediğiniz zaman ekleyebilirsiniz.
+3. appManagerStatus.xml ve appManagerLog.xml dosyalarını arayın. İlk dosya durumu günlüğe kaydeder. İkinci dosya hatayla ilgili bilgileri günlüğe kaydeder. Hata sizin için açık değilse, [forumda](https://docs.microsoft.com/answers/topics/azure-webapps.html)yardım isteyip istemediğiniz zaman ekleyebilirsiniz.
 
 ## <a name="choose-a-unique-web-app-name"></a>Benzersiz bir Web uygulaması adı seçin
 
@@ -127,7 +126,7 @@ Key Vault **Sertifikalar** ' ı seçin ve sertifikayı karşıya yüklemek için
 
 ![Sertifikayı içeri aktarma](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Şablonunuzda, için sertifikanın adını belirtin `keyVaultSecretName`.
+Şablonunuzda, için sertifikanın adını belirtin `keyVaultSecretName` .
 
 Örnek bir şablon için bkz. [Key Vault gizli alanından Web uygulaması sertifikası dağıtma ve SSL bağlaması oluşturmak için bunu kullanma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 

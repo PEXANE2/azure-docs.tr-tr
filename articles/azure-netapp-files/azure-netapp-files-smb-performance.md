@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460458"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files için SMB performansı hakkında SSS
@@ -44,7 +43,7 @@ En iyi performansı etkinleştirmek için Windows 2012 ' den itibaren çok kanal
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Azure Sanal makinem RSS 'yi destekliyor mu?
 
-Azure sanal makinenizin NIC 'lerinin RSS 'yi desteklemesini sağlamak için komutu `Get-SmbClientNetworkInterface` aşağıdaki gibi çalıştırın ve alanı `RSS Capable`kontrol edin: 
+Azure sanal makinenizin NIC 'lerinin RSS 'yi desteklemesini sağlamak için komutu `Get-SmbClientNetworkInterface` aşağıdaki gibi çalıştırın ve alanı kontrol edin `RSS Capable` : 
 
 ![Azure sanal makinesi için RSS desteği](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
@@ -60,7 +59,7 @@ Hayır, Azure NetApp Files doğrudan erişimli SMB desteklemez.
 
 Hayır. SMB istemcisi, SMB sunucusu tarafından döndürülen NIC sayısıyla eşleştirecektir.  Her depolama birimine bir ve yalnızca bir depolama uç noktasından erişilebilir.  Bu, belirli bir SMB ilişkisi için yalnızca bir NIC 'nin kullanılacağı anlamına gelir.  
 
-`Get-SmbClientNetworkInterace` Aşağıdaki çıktıda gösterildiği gibi, sanal makinenin iki ağ arabirimi vardır--15 ve 12.  Aşağıda gösterildiği gibi `Get-SmbMultichannelConnection`, iki RSS özellikli NIC olsa da, yalnızca SMB paylaşımıyla bağlantılı olarak arabirim 12 kullanılır; 15. arabirim kullanımda değil.
+Aşağıdaki çıktıda gösterildiği gibi `Get-SmbClientNetworkInterace` , sanal makinenin iki ağ arabirimi vardır--15 ve 12.  Aşağıda gösterildiği gibi `Get-SmbMultichannelConnection` , ıkı RSS özellıklı NIC olsa da, yalnızca SMB paylaşımıyla bağlantılı olarak arabirim 12 kullanılır; arabirim 15 kullanımda değildir.
 
 ![RSS özellikli NIC 'ler](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
@@ -74,9 +73,9 @@ Aşağıdaki testler ve grafiklerde, tek örnekli iş yükleri üzerinde çok ka
 
 ### <a name="random-io"></a>Rastgele g/ç  
 
-İstemcide çok kanallı SMB devre dışı bırakıldığında, FIO ve 40-GiB çalışma kümesi kullanılarak saf 8-KiB okuma ve yazma testleri gerçekleştirildi.  SMB paylaşımının her `1`bir`4``8``16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`test arasında ayrılması,,,,,,,,,,,,,,,,,,,,,,,,,, Testler, g/ç yoğunluklu iş yükleri `4` için varsayılan ayarının yeterli olduğunu gösterir; `8` ile `16` arttırılarak hiçbir etkisi yoktur. 
+İstemcide çok kanallı SMB devre dışı bırakıldığında, FIO ve 40-GiB çalışma kümesi kullanılarak saf 8-KiB okuma ve yazma testleri gerçekleştirildi.  SMB paylaşımının her bir test arasında ayrılması,,,,,,,,,,,,,,,,,,,,,, `1` ,,, `4` , `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` Testler, varsayılan ayarının `4` g/ç yoğunluklu iş yükleri için yeterli olduğunu gösterir; ile arttırılarak `8` `16` hiçbir etkisi yoktur. 
 
-Bu komut `netstat -na | findstr 445` , `1` ile arasında `4` `8` ve arasında yapılan artışlarla daha fazla bağlantı kurulmasını sağlar `16`.  Her test sırasında her bir sınama `Per Processor Network Activity Cycles` sırasında SMB IÇIN dört CPU çekirdeği tam olarak kullanıldı (Bu makaleye dahil değildir.)
+Bu komut, `netstat -na | findstr 445` ile arasında ve arasında yapılan artışlarla daha fazla bağlantı kurulmasını sağlar `1` `4` `8` `16` .  Her test sırasında her bir sınama sırasında SMB için dört CPU çekirdeği tam olarak kullanıldı `Per Processor Network Activity Cycles` (Bu makaleye dahil değildir.)
 
 ![Rastgele g/ç testleri](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 

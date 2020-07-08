@@ -4,10 +4,9 @@ description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nası
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672816"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
@@ -50,17 +49,17 @@ Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.c
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Sanal makineler için Azure Backup kaynak grubu
 
-Yedekleme hizmeti, geri yükleme noktası koleksiyonunu (RPC) depolamak için VM 'nin kaynak grubundan farklı olan ayrı bir kaynak grubu (RG) oluşturur. RPC, yönetilen sanal makinelerin anlık kurtarma noktalarını barındırır. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun varsayılan adlandırma biçimi: `AzureBackupRG_<Geo>_<number>`. Örneğin: *AzureBackupRG_northeurope_1*. Artık Azure Backup tarafından oluşturulan kaynak grubu adını özelleştirebilirsiniz.
+Yedekleme hizmeti, geri yükleme noktası koleksiyonunu (RPC) depolamak için VM 'nin kaynak grubundan farklı olan ayrı bir kaynak grubu (RG) oluşturur. RPC, yönetilen sanal makinelerin anlık kurtarma noktalarını barındırır. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun varsayılan adlandırma biçimi: `AzureBackupRG_<Geo>_<number>` . Örneğin: *AzureBackupRG_northeurope_1*. Artık Azure Backup tarafından oluşturulan kaynak grubu adını özelleştirebilirsiniz.
 
 Şunlara işaret eder:
 
 1. RG varsayılan adını kullanabilir veya Şirket gereksinimlerinize göre düzenleyebilirsiniz.
-2. VM yedekleme ilkesi oluşturma sırasında RG Name modelini girdi olarak sağlarsınız. RG adı şu biçimde olmalıdır: `<alpha-numeric string>* n <alpha-numeric string>`. ' n ', (1 ' den başlayarak) bir tamsayı ile değiştirilmiştir ve ilk RG dolduğunda ölçeği genişletmek için kullanılır. Bir RG bugün en fazla 600 RPC olabilir.
+2. VM yedekleme ilkesi oluşturma sırasında RG Name modelini girdi olarak sağlarsınız. RG adı şu biçimde olmalıdır: `<alpha-numeric string>* n <alpha-numeric string>` . ' n ', (1 ' den başlayarak) bir tamsayı ile değiştirilmiştir ve ilk RG dolduğunda ölçeği genişletmek için kullanılır. Bir RG bugün en fazla 600 RPC olabilir.
               ![İlke oluştururken ad seçin](./media/backup-during-vm-creation/create-policy.png)
 3. Bu model, aşağıdaki RG adlandırma kurallarını izlemelidir ve Toplam uzunluk izin verilen maksimum RG ad uzunluğunu aşmamalıdır.
     1. Kaynak grubu adları yalnızca alfasayısal karakter, nokta, alt çizgi, kısa çizgi ve parantezlere izin verir. Nokta ile bitmemelidir.
     2. Kaynak grubu adları, RG ve suffix 'un adı da dahil olmak üzere en fazla 74 karakter içerebilir.
-4. `<alpha-numeric-string>` İkincisi, ' n ' sonra isteğe bağlı iken zorunludur. Bu, yalnızca özelleştirilmiş bir ad vermeniz durumunda geçerlidir. Herhangi bir metin kutusunda hiçbir şey girmezseniz, varsayılan ad kullanılır.
+4. İkincisi, `<alpha-numeric-string>` ' n ' sonra isteğe bağlı iken zorunludur. Bu, yalnızca özelleştirilmiş bir ad vermeniz durumunda geçerlidir. Herhangi bir metin kutusunda hiçbir şey girmezseniz, varsayılan ad kullanılır.
 5. Gerektiğinde ilkeyi değiştirerek RG 'nin adını düzenleyebilirsiniz. Ad deseninin değişmesi durumunda yeni bir RG yeni RPs oluşturulur. Ancak, eski RPs 'Ler hala eski RG 'de yer alır ve RP koleksiyonu kaynak taşımayı desteklemediği için taşınmaz. Bu süre sonunda, noktaların süre dolduğunda RPs atık olarak toplanır.
 ![İlkeyi değiştirirken adı Değiştir](./media/backup-during-vm-creation/modify-policy.png)
 6. Yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemeniz önerilir.

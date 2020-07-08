@@ -10,15 +10,14 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: c473be25907eb3a761fbccd598bb9b732e5be5b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80802357"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Haritaya bir çizgi katmanı ekleyin
 
-Bir çizgi katmanı, haritada yollar veya rotalar `LineString` olarak `MultiLineString` işlemek ve özellikleri oluşturmak için kullanılabilir. Bir çizgi katmanı, `Polygon` ve `MultiPolygon` özelliklerinin anahatlarını işlemek için de kullanılabilir. Veri kaynağı, işlenecek verileri sağlamak için bir çizgi katmanına bağlanır. 
+Bir çizgi katmanı `LineString` `MultiLineString` , haritada yollar veya rotalar olarak işlemek ve özellikleri oluşturmak için kullanılabilir. Bir çizgi katmanı, ve özelliklerinin anahatlarını işlemek için de kullanılabilir `Polygon` `MultiPolygon` . Veri kaynağı, işlenecek verileri sağlamak için bir çizgi katmanına bağlanır. 
 
 > [!TIP]
 > Çizgi katmanları, varsayılan olarak çokgenler koordinatlarını ve bir veri kaynağındaki satırları de işler. Katmanı yalnızca, LineString özelliklerinin, `filter` katman özelliğini olarak ayarlayın `['==', ['geometry-type'], 'LineString']` veya `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` çok kanallı dize özelliklerini de dahil etmek istiyorsanız, bu katmanı sınırlamak için.
@@ -44,7 +43,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Haritaya çizgi ekleme' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/qomaKv/'>bir haritaya çizgi ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Haritaya çizgi ekleme' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/qomaKv/'>bir haritaya çizgi ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Çizgi katmanları, [Linelayeroptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) kullanılarak biçimlendirilebilir ve [veri odaklı stil ifadeleri kullanabilir](data-driven-style-expressions-web-sdk.md).
@@ -56,7 +55,7 @@ Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini g�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Oku çizgi üzerinde göster" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile birlikte, kalemin <a href='https://codepen.io/azuremaps/pen/drBJwX/'>göster okuna</a> bakın.
+Codepen üzerinde Azure Maps () ile birlikte, kalemin <a href='https://codepen.io/azuremaps/pen/drBJwX/'>göster okuna</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -66,12 +65,12 @@ Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini g�
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Çizgiye vuruş gradyanı ekleme
 
-Bir çizgiye tek bir kontur rengi uygulayabilirsiniz. Ayrıca, bir çizgi segmentinden sonraki satır segmentine geçişi göstermek için bir renkler degradeyle bir çizgi doldurabilirsiniz. Örneğin, çizgi degradeleri zaman ve mesafe üzerinde yapılan değişiklikleri veya bağlı bir nesne satırındaki farklı sıcaklıkları temsil etmek için kullanılabilir. Bu özelliği bir satıra uygulamak için veri kaynağı `lineMetrics` seçeneğinin true olarak ayarlanmış olması gerekir ve ardından çizgi `strokeColor` seçeneğine bir renk gradyanı ifadesi geçirilebilir. Vuruş gradyanı ifadesi, hesaplanan satır ölçümlerini ifade `['line-progress']` eden veri ifadesine başvurmalıdır.
+Bir çizgiye tek bir kontur rengi uygulayabilirsiniz. Ayrıca, bir çizgi segmentinden sonraki satır segmentine geçişi göstermek için bir renkler degradeyle bir çizgi doldurabilirsiniz. Örneğin, çizgi degradeleri zaman ve mesafe üzerinde yapılan değişiklikleri veya bağlı bir nesne satırındaki farklı sıcaklıkları temsil etmek için kullanılabilir. Bu özelliği bir satıra uygulamak için veri kaynağı `lineMetrics` seçeneğinin true olarak ayarlanmış olması gerekir ve ardından çizgi seçeneğine bir renk gradyanı ifadesi geçirilebilir `strokeColor` . Vuruş gradyanı ifadesi, `['line-progress']` hesaplanan satır ölçümlerini ifade eden veri ifadesine başvurmalıdır.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Kontur degradesi olan çizgi" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>vuruş degradesi ile kalem hattına</a> bakın.
+Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>vuruş degradesi Ile kalem hattına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="customize-a-line-layer"></a>Çizgi katmanını özelleştirme
@@ -80,7 +79,7 @@ Bir çizgiye tek bir kontur rengi uygulayabilirsiniz. Ayrıca, bir çizgi segmen
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Çizgi katmanı seçenekleri' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>çizgisi katmanı seçeneklerine</a> bakın.
+<iframe height='700' scrolling='no' title='Çizgi katmanı seçenekleri' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>çizgisi katmanı seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

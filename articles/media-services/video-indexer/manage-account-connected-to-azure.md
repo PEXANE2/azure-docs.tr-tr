@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499660"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı Video Indexer hesabını yönetme
@@ -58,8 +57,8 @@ Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında 
 |---|---|
 |Azure abonelik KIMLIĞI|Abonelik KIMLIĞI Azure portal elde edilebilir. Sol panelde **tüm hizmetler** ' e tıklayın ve "abonelikler" i arayın. **Abonelikler** ' i seçin ve aboneliklerinizin LISTESINDEN istediğiniz kimliği seçin.|
 |Azure Media Services kaynak grubu adı|Media Services hesabı oluşturduğunuz kaynak grubunun adı.|
-|Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu** -> **Azure AD uygulaması**Media Services API 'sine Bağlan ' ı seçin. İlgili parametreleri kopyalayın.|
-|Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin.  ->  **Hizmet sorumlusu ile Media Services API 'sine Bağlan**' ı seçerek gizli dizileri &**uygulama** -> **sertifikalarını**yönetin. İlgili parametreleri kopyalayın.|
+|Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu Azure AD uygulaması Media Services API 'sine Bağlan**' ı seçin  ->  **Azure AD App**. İlgili parametreleri kopyalayın.|
+|Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu ile Media Services API 'sine Bağlan**' ı seçerek  ->  gizli dizileri &**uygulama**  ->  **sertifikalarını**yönetin. İlgili parametreleri kopyalayın.|
 
 ## <a name="autoscale-reserved-units"></a>Otomatik ölçeklendirme ayrılmış birimleri
 
@@ -75,7 +74,7 @@ Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında 
 
 * EventGrid
 
-    Azure portal kullanarak EventGrid kaynak sağlayıcısını kaydetmeniz gerekir. [Azure Portal](https://portal.azure.com/) **abonelikler** ' e gidin > [abonelik] > **resourceproviders** > **Microsoft. eventgrid**. **Kayıtlı** durumda değilse, **Kaydet**' i seçin. Kaydolmak birkaç dakika sürer.
+    Azure portal kullanarak EventGrid kaynak sağlayıcısını kaydetmeniz gerekir. [Azure Portal](https://portal.azure.com/) **abonelikler** ' e gidin > [abonelik] > **resourceproviders**  >  **Microsoft. eventgrid**. **Kayıtlı** durumda değilse, **Kaydet**' i seçin. Kaydolmak birkaç dakika sürer.
 
 * Akış uç noktası
 

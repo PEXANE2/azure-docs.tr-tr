@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653777"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication NPS uzantısı için gelişmiş yapılandırma seçenekleri
@@ -28,9 +27,9 @@ NPS uzantısı hem şirket içi hem de bulut dizinlerinize bağlandığından, �
 
 NPS uzantısı içinde, Azure Multi-Factor Authentication için UPN yerine kullanılacak bir Active Directory özniteliği belirleyebilirsiniz. Bu, şirket içi UPN 'larınızı değiştirmeden şirket içi kaynaklarınızı iki adımlı doğrulamayla korumanıza olanak sağlar. 
 
-Alternatif oturum açma kimliklerini yapılandırmak için aşağıdaki kayıt `HKLM\SOFTWARE\Microsoft\AzureMfa` defteri değerlerini adresine gidin ve düzenleyin:
+Alternatif oturum açma kimliklerini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerlerini adresine gidin ve düzenleyin:
 
-| Adı | Tür | Varsayılan değer | Açıklama |
+| Name | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](https://msdn.microsoft.com/library/ms675090.aspx) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
 | LDAP_FORCE_GLOBAL_CATALOG | boole | False | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
@@ -42,16 +41,16 @@ Alternatif oturum açma kimlikleriyle ilgili sorunları gidermek için, [Alterna
 
 Sunucu kullanılabilirliğini izlemeniz gerekiyorsa, yük dengeleyiciler, iş yüklerini göndermeden önce hangi sunucuların çalıştığını doğruladıktan sonra bu denetimlerin doğrulama istekleri tarafından engellenmesini istemezsiniz. Bunun yerine, hizmet hesapları tarafından kullanıldığını bildiğiniz IP adreslerinin bir listesini oluşturun ve bu liste için Multi-Factor Authentication gereksinimleri devre dışı bırakın.
 
-IP izin verilen listesini yapılandırmak için aşağıdaki kayıt defteri `HKLM\SOFTWARE\Microsoft\AzureMfa` değerini adresine gidin ve yapılandırın:
+IP izin verilen listesini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerini adresine gidin ve yapılandırın:
 
-| Adı | Tür | Varsayılan değer | Açıklama |
+| Name | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
 > [!NOTE]
 > Bu kayıt defteri anahtarı yükleyici tarafından varsayılan olarak oluşturulmaz ve hizmet yeniden başlatıldığında AuthZOptCh günlüğünde bir hata görünür. Günlükteki bu hata yoksayılabilir, ancak bu kayıt defteri anahtarı oluşturulup boş bırakılırsa, hata iletisi döndürmez.
 
-Bir istek içinde bulunan bir IP adresinden geldiğinde `IP_WHITELIST`, iki adımlı doğrulama atlanır. IP listesi, RADIUS isteğinin *Clientnasıpaddress* ÖZNITELIĞINDE belirtilen IP adresiyle karşılaştırılır. Bir RADIUS isteği, bir Ginasıpaddress özniteliği olmadan geliyorsa, şu uyarı günlüğe kaydedilir: "P_WHITE_LIST_WARNING:: IP beyaz listesi, Nasıpaddress özniteliğinde RADIUS isteğindeki kaynak IP eksik olduğu için yok sayılıyor."
+Bir istek içinde bulunan bir IP adresinden geldiğinde `IP_WHITELIST` , iki adımlı doğrulama atlanır. IP listesi, RADIUS isteğinin *Clientnasıpaddress* ÖZNITELIĞINDE belirtilen IP adresiyle karşılaştırılır. Bir RADIUS isteği, bir Ginasıpaddress özniteliği olmadan geliyorsa, şu uyarı günlüğe kaydedilir: "P_WHITE_LIST_WARNING:: IP beyaz listesi, Nasıpaddress özniteliğinde RADIUS isteğindeki kaynak IP eksik olduğu için yok sayılıyor."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

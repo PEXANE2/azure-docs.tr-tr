@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499322"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri istek özelliklerinin Özeti
+# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
 
 Azure IoT Hub, kurumsal müşterileri hedefleyen, milyonlarca cihaz ve bölümlenmiş bir Azure hizmeti arasında güvenli, çift yönlü iletişim sağlayan REST API tabanlı bir bulut hizmetidir.
 

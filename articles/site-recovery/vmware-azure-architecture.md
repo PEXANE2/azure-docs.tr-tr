@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632515"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi
@@ -23,7 +22,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanar
 
 Aşağıdaki tablo ve grafik, Azure 'da VMware olağanüstü durum kurtarma için kullanılan bileşenlerin üst düzey bir görünümünü sağlar.
 
-**Bileşen** | **Gereksinim** | **Bilgileri**
+**Bileşen** | **Gereksinim** | **Ayrıntılar**
 --- | --- | ---
 **Azure** | Bir Azure aboneliği, önbellek, yönetilen disk ve Azure ağı için Azure depolama hesabı. | Şirket içi VM 'lerden çoğaltılan veriler Azure depolama 'da depolanır. Şirket içinden Azure 'a yük devretme gerçekleştirdiğinizde, çoğaltılan verilerle Azure VM 'Ler oluşturulur. Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
 **Yapılandırma sunucusu makinesi** | Tek bir şirket içi makine. Bunu, indirilen bir OVF şablonundan dağıtılabilecek bir VMware VM olarak çalıştırmanızı öneririz.<br/><br/> Makine, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır. | **Yapılandırma sunucusu**: Şirket Içi ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir.<br/><br/> **İşlem sunucusu**: yapılandırma sunucusunda varsayılan olarak yüklenir. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir; ve bunu Azure depolama 'ya gönderir. İşlem sunucusu aynı zamanda çoğaltmak istediğiniz VM’lere Azure Site Recovery Mobility Hizmetini yükler ve şirket içi makinelerinin otomatik olarak bulunmasını sağlar. Dağıtımınız büyüdükçe, daha büyük hacimli çoğaltma trafiğini işlemek için ek ve ayrı işlem sunucuları ekleyebilirsiniz.<br/><br/> **Ana hedef sunucusu**: yapılandırma sunucusunda varsayılan olarak yüklenir. Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler. Büyük dağıtımlar için yeniden çalışma için ek ve ayrı bir ana hedef sunucu ekleyebilirsiniz.

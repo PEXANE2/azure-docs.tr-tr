@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
 ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461053"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
@@ -54,7 +53,7 @@ Daha fazla bilgi için bkz.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
  
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure Media Services hesabınıza gidin.
 1. Sol bölmede, **akış uç noktaları**' nı seçin.
 1. Başlatmak istediğiniz akış uç noktasını seçin ve ardından **Başlat**' ı seçin.

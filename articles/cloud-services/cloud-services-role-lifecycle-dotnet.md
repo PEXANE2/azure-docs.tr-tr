@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652086"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET ' te bir Web veya çalışan rolünün yaşam döngüsünü özelleştirme
@@ -72,7 +71,7 @@ Rol örneğiniz için uzun süre çalışan bir iş parçacığı uygulamak üze
 **Run** yönteminin geçersiz kılınması gerekli değildir; Varsayılan uygulama, sonsuza kadar uykudaki bir iş parçacığını başlatır. **Run** yöntemini geçersiz kılarsınız, kodunuz süresiz olarak engellenmelidir. **Run** yöntemi döndürürse, rol otomatik olarak düzgün şekilde geri dönüştürülür; diğer bir deyişle, Azure **durdurma** olayını yükseltir ve **OnStop** metodunu çağırarak, bu sayede, rol çevrimdışına alınmadan önce kapalı olması gerekir.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Web rolü için ASP.NET yaşam döngüsü yöntemlerini uygulama
-Bir Web rolü için başlatma ve kapalı dizileri yönetmek üzere **Roleentrypoint** sınıfı tarafından sağlananlara ek olarak ASP.net yaşam döngüsü yöntemlerini kullanabilirsiniz. Mevcut bir ASP.NET uygulamasını Azure 'a taşırken bu, uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **Roleentrypoint** yöntemlerinin içinden çağırılır. **\_Uygulama başlatma** yöntemi **roleentrypoint. OnStart** yöntemi bittikten sonra çağrılır. **\_Uygulama End** yöntemi **roleentrypoint. OnStop** yöntemi çağrılmadan önce çağrılır.
+Bir Web rolü için başlatma ve kapalı dizileri yönetmek üzere **Roleentrypoint** sınıfı tarafından sağlananlara ek olarak ASP.net yaşam döngüsü yöntemlerini kullanabilirsiniz. Mevcut bir ASP.NET uygulamasını Azure 'a taşırken bu, uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **Roleentrypoint** yöntemlerinin içinden çağırılır. **Uygulama \_ başlatma** yöntemi **roleentrypoint. OnStart** yöntemi bittikten sonra çağrılır. **Uygulama \_ End** yöntemi **roleentrypoint. OnStop** yöntemi çağrılmadan önce çağrılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bulut hizmeti paketi oluşturmayı](cloud-services-model-and-package.md)öğrenin.

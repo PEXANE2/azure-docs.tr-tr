@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471481"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL yeniden yazma (özel iletme yolu)
@@ -30,24 +29,24 @@ Aşağıdaki ön uç konakları ve yapılandırılmış yolların bulunduğu bir
 
 | Ana bilgisayarlar      | Yollar       |
 |------------|-------------|
-| www\.contoso.com | /\*         |
+| www \. contoso.com | /\*         |
 |            | /foo        |
 |            | foo\*     |
 |            | /ç/Bar/\* |
 
 Aşağıdaki tablonun ilk sütununda gelen istek örnekleri gösterilmektedir ve ikinci sütun "en özel" eşleşen yol ' Path ' olarak gösterilir.  Tablonun ilk satırının üçüncü ve sonraki sütunları yapılandırılmış **özel Iletme yolları**örneğidir ve bu sütunlarda, iletilen istek yolunun söz konusu satırdaki istekle eşleşmesi durumunda ne tür bir örnek olduğunu temsil eder.
 
-Örneğin, ikinci satırda okuduk, gelen istek `www.contoso.com/sub`için özel iletme yolu `/`ise, iletilen yolun ne olduğunu söyledi. `/sub` Özel iletme yolu olsaydı `/fwd/`, iletilen yol olur. `/fwd/sub` Daha sonra, kalan sütunlar için. Aşağıdaki yolların **vurgulanmış** kısımları, joker karakter eşleşmesi kapsamında olan bölümleri temsil eder.
+Örneğin, ikinci satırda okuduk, gelen istek için `www.contoso.com/sub` özel iletme yolu ise, iletilen yolun ne olduğunu söyledi `/` `/sub` . Özel iletme yolu `/fwd/` olsaydı, iletilen yol olur `/fwd/sub` . Daha sonra, kalan sütunlar için. Aşağıdaki yolların **vurgulanmış** kısımları, joker karakter eşleşmesi kapsamında olan bölümleri temsil eder.
 
 
 | Gelen istek       | En özel eşleşme yolu | /          | /FWD/          | foo          | /ç/Bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www\.contoso.com/            | /\*                      | /          | /FWD/          | foo          | /ç/Bar/          |
-| www\.contoso.com/**Sub**     | /\*                      | /**alt**   | /FWD/**Sub**   | **/alt/alt**   | /alt/bar/**alt**   |
-| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /FWD/**a/b/c** | /k/**a/b/c** | /ç/Bar/**a/b/c** |
-| www\.contoso.com/foo         | /foo                     | /          | /FWD/          | foo          | /ç/Bar/          |
-| www\.contoso.com/foo/        | foo\*                  | /          | /FWD/          | foo          | /ç/Bar/          |
-| www\.contoso.com/foo/**çubuğu** | foo\*                  | /**çubuktaki**   | /FWD/**Bar**   | /Altbilgi/**çubuk**   | /ç/Bar/**çubuk**   |
+| www \. contoso.com/            | /\*                      | /          | /FWD/          | foo          | /ç/Bar/          |
+| www \. contoso.com/**Sub**     | /\*                      | /**alt**   | /FWD/**Sub**   | **/alt/alt**   | /alt/bar/**alt**   |
+| www \. contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /FWD/**a/b/c** | /k/**a/b/c** | /ç/Bar/**a/b/c** |
+| www \. contoso.com/foo         | /foo                     | /          | /FWD/          | foo          | /ç/Bar/          |
+| www \. contoso.com/foo/        | foo\*                  | /          | /FWD/          | foo          | /ç/Bar/          |
+| www \. contoso.com/foo/**çubuğu** | foo\*                  | /**çubuktaki**   | /FWD/**Bar**   | /Altbilgi/**çubuk**   | /ç/Bar/**çubuk**   |
 
 
 ## <a name="optional-settings"></a>İsteğe bağlı ayarlar

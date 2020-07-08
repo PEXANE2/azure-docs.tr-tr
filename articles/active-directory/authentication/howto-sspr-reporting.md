@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652148"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
@@ -53,7 +52,7 @@ Azure portal deneyiminde, parola sıfırlama ve parola sıfırlama kayıt etkinl
 
 ### <a name="converged-registration-preview"></a>Yakınsama kaydı (Önizleme)
 
-Yakınsama kaydının genel önizlemesine katılımını yapıyorsanız, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik** > **kimlik doğrulama yöntemleri**altında bulunur.
+Yakınsama kaydının genel önizlemesine katılımını yapıyorsanız, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure portal rapor sütunlarının açıklaması
 

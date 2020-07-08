@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79454032"
 ---
 # <a name="filter-events-for-event-grid"></a>Olayları Event Grid filtrele
@@ -22,9 +21,9 @@ Bu makalede, Event Grid aboneliği oluştururken olayların nasıl filtrelenece�
 
 ## <a name="filter-by-event-type"></a>Olay türüne göre filtrele
 
-Event Grid bir abonelik oluştururken, hangi [olay türlerinin](event-schema.md) uç noktaya gönderileceğini belirtebilirsiniz. Bu bölümdeki örnekler, bir kaynak grubu için olay abonelikleri oluşturur ancak `Microsoft.Resources.ResourceWriteFailure` ve ' `Microsoft.Resources.ResourceWriteSuccess`a gönderilen olayları sınırlandırır. Olayları olay türlerine göre filtrelerken daha fazla esneklik gerekiyorsa bkz. filtre gelişmiş işleçler ve veri alanları.
+Event Grid bir abonelik oluştururken, hangi [olay türlerinin](event-schema.md) uç noktaya gönderileceğini belirtebilirsiniz. Bu bölümdeki örnekler, bir kaynak grubu için olay abonelikleri oluşturur ancak ve ' a gönderilen olayları sınırlandırır `Microsoft.Resources.ResourceWriteFailure` `Microsoft.Resources.ResourceWriteSuccess` . Olayları olay türlerine göre filtrelerken daha fazla esneklik gerekiyorsa bkz. filtre gelişmiş işleçler ve veri alanları.
 
-PowerShell için, aboneliği oluştururken `-IncludedEventType` parametresini kullanın.
+PowerShell için, `-IncludedEventType` aboneliği oluştururken parametresini kullanın.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -81,7 +80,7 @@ Kaynak Yöneticisi şablonu için `includedEventTypes` özelliğini kullanın.
 
 Olayları olay verilerinde konuya göre filtreleyebilirsiniz. Konunun başlangıcı veya bitişi için eşleştirilecek bir değer belirtebilirsiniz. Olayları konuya göre filtrelerken daha fazla esneklik gerekiyorsa bkz. Gelişmiş Operatörler ve veri alanlarına göre filtreleme.
 
-Aşağıdaki PowerShell örneğinde, konusunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. Belirli bir kaynaktaki `-SubjectBeginsWith` olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
+Aşağıdaki PowerShell örneğinde, konusunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. `-SubjectBeginsWith`Belirli bir kaynaktaki olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +92,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-Sonraki PowerShell örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
+Sonraki PowerShell örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg` .
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +104,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-Aşağıdaki Azure CLı örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. Belirli bir kaynaktaki `--subject-begins-with` olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
+Aşağıdaki Azure CLı örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. `--subject-begins-with`Belirli bir kaynaktaki olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +116,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-Sonraki Azure CLı örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
+Sonraki Azure CLı örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg` .
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +128,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturursunuz. Belirli bir kaynaktaki `subjectBeginsWith` olayları sınırlamak için özelliğini kullanın. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
+Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturursunuz. `subjectBeginsWith`Belirli bir kaynaktaki olayları sınırlamak için özelliğini kullanın. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```json
 "resources": [
@@ -155,7 +154,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başlangıcına g�
 ]
 ```
 
-Sonraki Kaynak Yöneticisi şablonu örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
+Sonraki Kaynak Yöneticisi şablonu örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg` .
 
 ```json
 "resources": [

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653510"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication Sunucusunu AD FS 2.0 ile çalışacak şekilde yapılandırma
@@ -39,10 +38,10 @@ Ara sunucu ile AD FS 2.0’ı güvenli hale getirmek için ADFS ara sunucusuna A
 
    ![MFA sunucusu IIS kimlik doğrulama penceresi](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, otomatik yapılandırma form tabanlı `https://sso.contoso.com/adfs/ls`Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
+4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://sso.contoso.com/adfs/ls` otomatik yapılandırma form tabanlı Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
 5. Tüm kullanıcılar Sunucu’ya aktarılmışsa ya da aktarılacaksa ve iki aşamalı doğrulamaya tabi olacaksa **Azure Multi-Factor Authentication kullanıcılarının eşleşmesini gerektir** kutusunu işaretleyin. Sunucu’ya henüz aktarılmamış ve/veya iki aşamalı doğrulamadan muaf tutulacak çok sayıda kullanıcı varsa kutunun işaretini kaldırın.
 6. Sayfa değişkenleri otomatik olarak algılanamadığından **El Ile belirt...** öğesine tıklayın. Web Sitesi iletişim kutusunda Elle Belirt düğmesine tıklayın.
-7. Form tabanlı Web sitesi Ekle iletişim kutusunda URL Gönder alanına AD FS oturum açma sayfasına URL girin (gibi `https://sso.contoso.com/adfs/ls`) ve bir uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
+7. Form tabanlı Web sitesi Ekle iletişim kutusunda URL Gönder alanına AD FS oturum açma sayfasına URL girin (gibi `https://sso.contoso.com/adfs/ls` ) ve bir uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
 8. Istek biçimini **Post veya Get**olarak ayarlayın.
 9. Kullanıcı adı değişkeni (ctl00$ContentPlaceHolder1$UsernameTextBox) ve Parola değişkenini (ctl00$ContentPlaceHolder1$PasswordTextBox) girin. Form tabanlı oturum açma sayfanız bir etki alanı metin kutusu görüntülerse, Etki alanı değişkenini de girin. Oturum açma sayfasında girdi kutularının adlarını bulmak için, bir web tarayıcısında oturum açma sayfasına gidin, sayfaya sağ tıklayın ve **Kaynağı Görüntüle**’yi seçin.
 10. Tüm kullanıcılar Sunucu’ya aktarılmışsa ya da aktarılacaksa ve iki aşamalı doğrulamaya tabi olacaksa **Azure Multi-Factor Authentication kullanıcılarının eşleşmesini gerektir** kutusunu işaretleyin. Sunucu’ya henüz aktarılmamış ve/veya iki aşamalı doğrulamadan muaf tutulacak çok sayıda kullanıcı varsa kutunun işaretini kaldırın.
@@ -99,7 +98,7 @@ AD FS ara sunucusu kullanılmadığında AD FS’yi güvenli hale getirebilirsin
 1. Azure Multi-Factor Authentication Sunucusu’nun soldaki menüsünde **IIS Kimlik Doğrulaması** simgesine tıklayın.
 2. **HTTP** sekmesine tıklayın.
 3. **Ekle**'ye tıklayın.
-4. Taban URL 'SI Ekle iletişim kutusunda, ana URL alanına HTTP kimlik doğrulamasının gerçekleştirildiği (gibi `https://sso.domain.com/adfs/ls/auth/integrated`) AD FS Web sitesinin URL 'sini girin. Ardından bir uygulama adı (isteğe bağlı) girin. Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
+4. Taban URL 'SI Ekle iletişim kutusunda, ana URL alanına HTTP kimlik doğrulamasının gerçekleştirildiği (gibi) AD FS Web sitesinin URL 'sini girin `https://sso.domain.com/adfs/ls/auth/integrated` . Ardından bir uygulama adı (isteğe bağlı) girin. Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
 5. İsterseniz, Boşta kalma zaman aşımı ve Maksimum oturum sürelerini ayarlayın.
 6. Tüm kullanıcılar Sunucu’ya aktarılmışsa ya da aktarılacaksa ve iki aşamalı doğrulamaya tabi olacaksa **Azure Multi-Factor Authentication kullanıcılarının eşleşmesini gerektir** kutusunu işaretleyin. Sunucu’ya henüz aktarılmamış ve/veya iki aşamalı doğrulamadan muaf tutulacak çok sayıda kullanıcı varsa kutunun işaretini kaldırın.
 7. İsterseniz tanımlama bilgisi önbellek kutusunu işaretleyin.

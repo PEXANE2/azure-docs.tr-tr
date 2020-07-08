@@ -7,10 +7,9 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480887"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
@@ -84,7 +83,7 @@ ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](https
 
 Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performansını izlemek için yapay işlemler kullanır. Performans Izleyicisi ve hizmet bağlantısı Izleyicisi yeteneklerini izlemek için protokol olarak TCP ve ıCMP arasında seçim yapabilirsiniz. ExpressRoute Izleyicisi için izleme protokolü olarak yalnızca TCP kullanılabilir. Güvenlik duvarının, seçtiğiniz protokolde izleme için kullanılan Log Analytics aracıları arasında iletişime izin verdiğinden emin olun. 
 
-* **TCP protokolü**: izleme için protokol olarak TCP ' yi seçerseniz, aracıların birbirlerine bağlanabildiğinizden emin olmak için ağ performansı İzleyicisi ve ExpressRoute İzleyicisi için kullanılan aracılarda güvenlik duvarı bağlantı noktasını açın. Bağlantı noktasını açmak için, yönetim ayrıcalıklarına sahip bir PowerShell penceresinde herhangi bir parametre olmadan [Enablerules. ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın.
+* **TCP protokolü**: izleme için protokol olarak TCP ' yi seçerseniz, aracıların birbirlerine bağlanabildiğinizden emin olmak için ağ performansı İzleyicisi ve ExpressRoute İzleyicisi için kullanılan aracılarda güvenlik duvarı bağlantı noktasını açın. Bağlantı noktasını açmak için, yönetici ayrıcalıklarına sahip bir PowerShell penceresinde herhangi bir parametre olmadan [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın.
 
     Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarların değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. 
 
@@ -92,7 +91,7 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
     > Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Bir ağ güvenlik duvarınız varsa, Ağ Performansı İzleyicisi tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiğinden emin olun.
 
     >[!NOTE]
-    > Hizmet bağlantısı Izleyicisi için [Enablerules. ps1](https://aka.ms/npmpowershellscript ) PowerShell betiğini çalıştırmanız gerekmez.
+    > Hizmet bağlantısı Izleyicisi için [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell betiğini çalıştırmanız gerekmez.
 
     
 
@@ -155,7 +154,7 @@ Bir aracısının yüklü olduğu tüm düğümler **düğümler** sekmesinde li
 
 1. İzlemek veya izlemeyi durdurmak istediğiniz düğümleri seçin veya temizleyin. 
 2. **İzleme Için kullan**' ı seçin veya uygun şekilde temizleyin. 
-3. **Kaydet**’i seçin. 
+3. **Kaydet**'i seçin. 
 
 
 İstediğiniz özellikleri yapılandırın:
@@ -280,7 +279,7 @@ Bildirimler, [Azure izleyici fiyatlandırma sayfasında her bildirim fiyatlandı
 
 Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing-faq.md)olarak sunulmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma 
+## <a name="provide-feedback"></a>Geribildirim gönderme 
 
 * **UserVoice:** Üzerinde çalışmamızı istediğiniz Ağ Performansı İzleyicisi özellikler için fikirlerinizi gönderebilirsiniz. [UserVoice sayfasını](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)ziyaret edin. 
 

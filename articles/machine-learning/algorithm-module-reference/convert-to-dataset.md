@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456599"
 ---
 # <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
@@ -46,9 +45,9 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
     - **Replacevalues**: başka bir tam değer ile değiştirilmeleri için tek bir tam değer belirtmek için bu seçeneği kullanın. Eksik değerleri veya özel değerleri **değiştirme** yöntemini ayarlayarak değiştirebilirsiniz:
 
       - **Eksik**: giriş veri kümesindeki eksik değerleri değiştirmek için bu seçeneği belirleyin. **Yeni değer**için eksik değerleri ile değiştirecek değeri girin.
-      - **Özel**: giriş veri kümesindeki özel değerleri değiştirmek için bu seçeneği belirleyin. **Özel değer**için bulmak istediğiniz değeri girin. Örneğin, verileriniz eksik değerler için yer tutucu olarak `obs` kullanılan dizeyi içeriyorsa, girersiniz `obs`. **Yeni değer**için, özgün dizeyi ile değiştirilecek yeni değeri girin.
+      - **Özel**: giriş veri kümesindeki özel değerleri değiştirmek için bu seçeneği belirleyin. **Özel değer**için bulmak istediğiniz değeri girin. Örneğin, verileriniz `obs` eksik değerler için yer tutucu olarak kullanılan dizeyi içeriyorsa, girersiniz `obs` . **Yeni değer**için, özgün dizeyi ile değiştirilecek yeni değeri girin.
   
-    **Replacevalues** işleminin yalnızca tam eşleşmeler için geçerli olduğunu unutmayın. Örneğin, bu dizeler etkilenmemelidir: `obs.`,. `obsolete`  
+    **Replacevalues** işleminin yalnızca tam eşleşmeler için geçerli olduğunu unutmayın. Örneğin, bu dizeler etkilenmemelidir: `obs.` , `obsolete` .  
  
   
 5.  İşlem hattını gönderme.  

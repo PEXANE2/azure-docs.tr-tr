@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681655"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürmesi için Azure Blob depolamayı kullanma
@@ -27,7 +26,7 @@ ms.locfileid: "80681655"
 
 Depolama hesabı ve BLOB kapsayıcıları oluşturma, aşağıdaki araçlardan biriyle yapılabilir:
 
-- [Azure portal](https://portal.azure.com)
+- [Azure portalındaki](https://portal.azure.com)
 - [az komut satırı](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
 - SDK 'lar (C#, Python...)
@@ -57,7 +56,7 @@ Bir SAS URI 'SI aşağıdakilerden biri kullanılarak oluşturulabilir:
   - "paylaşılan erişim Imzasını al" kapsayıcısına sağ tıklama (okuma, giriş kapsayıcısı için erişimi listeleme, çıkış kapsayıcısı için yazma erişimi)
 - SDK 'lar (C#, Python...)
 
-Varlık dönüştürmesinde paylaşılan erişim Imzalarının kullanılmasına bir örnek, [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)dönüştürme. ps1 içinde gösterilir.
+Varlık dönüştürmesinde paylaşılan erişim Imzalarının kullanılmasına bir örnek, [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1 gösterilmektedir.
 
 ## <a name="upload-an-input-model"></a>Giriş modelini karşıya yükleme
 
@@ -70,7 +69,7 @@ Bir modeli dönüştürmeye başlamak için, aşağıdaki seçeneklerden birini 
 - [Depolama SDK 'sını kullanma (Python, C#...)](https://docs.microsoft.com/azure/storage/)
 - [Azure depolama REST API 'Lerini kullanma](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-Dönüştürme için verileri karşıya yükleme hakkında bir örnek için [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)dönüştürme. ps1 adresine bakın.
+Dönüştürme için verileri karşıya yükleme hakkında bir örnek için [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1 bakın.
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>Dönüştürülen model için SAS URI 'SI al
 

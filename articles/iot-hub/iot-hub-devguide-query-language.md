@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632939"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül ikizleri, işler ve mesaj yönlendirmesi için IoT Hub sorgu dili
@@ -112,7 +111,7 @@ SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Belirli bir özelliği içeren tüm cihaz TWINS 'i tanımlamak genellikle gereklidir. IoT Hub, bu amaçla `is_defined()` işlevi destekler. Örneğin, `connectivity` özelliği tanımlayan cihaz TWINS 'i almak için aşağıdaki sorguyu kullanın:
+Belirli bir özelliği içeren tüm cihaz TWINS 'i tanımlamak genellikle gereklidir. IoT Hub, `is_defined()` Bu amaçla işlevi destekler. Örneğin, özelliği tanımlayan cihaz TWINS 'i almak için `connectivity` aşağıdaki sorguyu kullanın:
 
 ```SQL
 SELECT * FROM devices
@@ -201,9 +200,9 @@ while (query.HasMoreResults)
 
 Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak birden çok **sonraki** değeri kullanıma sunar. Örneğin, cihaz ikizi veya iş nesneleri ya da projeksiyonlar kullanılırken düz JSON.
 
-### <a name="nodejs-example"></a>Node. js örneği
+### <a name="nodejs-example"></a>Node.js örneği
 
-Sorgu işlevselliği, **kayıt defteri** nesnesindeki [Node. js için Azure IoT hizmeti SDK 'sı](iot-hub-devguide-sdks.md) tarafından sunulur.
+Sorgu işlevselliği, **kayıt defteri** nesnesindeki [Node.jsiçin Azure IoT hizmeti SDK 'sı](iot-hub-devguide-sdks.md) tarafından sunulur.
 
 Basit bir sorgu örneği aşağıda verilmiştir:
 
@@ -273,7 +272,7 @@ Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak bi
 Şu anda, bu koleksiyon IoT Hub sorgu dilinde **Devices.Jobs** olarak sorgulanabilir.
 
 > [!IMPORTANT]
-> Şu anda, Device TWINS sorgulanırken işler özelliği hiçbir zaman döndürülmez. Diğer bir deyişle, ' FROM devices ' içeren sorgular. Jobs özelliğine yalnızca kullanan `FROM devices.jobs`sorgularla doğrudan erişilebilir.
+> Şu anda, Device TWINS sorgulanırken işler özelliği hiçbir zaman döndürülmez. Diğer bir deyişle, ' FROM devices ' içeren sorgular. Jobs özelliğine yalnızca kullanan sorgularla doğrudan erişilebilir `FROM devices.jobs` .
 >
 >
 
@@ -392,7 +391,7 @@ GROUP BY <group_by_element>
 Şu anda GROUP BY yan tümcesi yalnızca cihaz ikizleri sorgulanırken desteklenir.
 
 > [!IMPORTANT]
-> Bu terim `group` Şu anda sorgularda özel bir anahtar sözcük olarak kabul edilir. Bu durumda, özellik adınız `group` olarak kullanın, hataları önlemek için çift ayraçlarla çevrelemeyi düşünün, örneğin, `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+> Bu terim `group` Şu anda sorgularda özel bir anahtar sözcük olarak kabul edilir. Bu durumda, `group` özellik adınız olarak kullanın, hataları önlemek için çift ayraçlarla çevrelemeyi düşünün, örneğin, `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'` .
 >
 
 ## <a name="expressions-and-conditions"></a>İfadeler ve koşullar
@@ -441,7 +440,7 @@ Yüksek düzeyde, bir *ifade*:
 | function_name| [İşlevler](#functions) bölümünde listelenen herhangi bir işlev. |
 | decimal_literal |Ondalık gösteriminde ifade edilen bir float. |
 | hexadecimal_literal |' 0x ' dizesinin ardından onaltılık basamak dizesi tarafından ifade edilen bir sayı. |
-| string_literal |Dize sabit değerleri, sıfır veya daha fazla Unicode karakter ya da kaçış dizileri tarafından temsil edilen Unicode dizeleridir. Dize sabit değerleri tek tırnak veya çift tırnak içine alınır. İzin verilen kaçış: `\'` `\"` `\\`,,, `\uXXXX` 4 onaltılık basamakla tanımlanan Unicode karakterler için. |
+| string_literal |Dize sabit değerleri, sıfır veya daha fazla Unicode karakter ya da kaçış dizileri tarafından temsil edilen Unicode dizeleridir. Dize sabit değerleri tek tırnak veya çift tırnak içine alınır. İzin verilen kaçış:,,, `\'` `\"` `\\` `\uXXXX` 4 onaltılık basamakla tanımlanan Unicode karakterler için. |
 
 ### <a name="operators"></a>İşleçler
 
@@ -459,7 +458,7 @@ TWINS ve işleri sorgularken yalnızca desteklenen işlev şunlardır:
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| IS_DEFINED (özellik) | Özelliğin bir değer atandığını (dahil `null`) belirten bir Boole değeri döndürür. |
+| IS_DEFINED (özellik) | Özelliğin bir değer atandığını (dahil) belirten bir Boole değeri döndürür `null` . |
 
 Rotalar koşullarında aşağıdaki matematik işlevleri desteklenir:
 
@@ -478,14 +477,14 @@ Yollar koşullarında, aşağıdaki tür denetimi ve atama işlevleri destekleni
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop`Giriş bir sayı ise, `Undefined` dize bir sayıyı temsil etmez.|
+| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop`Giriş bir sayı ise, `Undefined`dize bir sayıyı temsil etmez.|
 | IS_ARRAY | Belirtilen ifadenin türünün bir dizi olup olmadığını gösteren bir Boole değeri döndürür. |
 | IS_BOOL | Belirtilen ifadenin türünün bir Boolean olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_DEFINED | Özelliğe bir değer atanıp atanmadığını gösteren bir Boole değeri döndürür. Bu yalnızca değer temel bir tür olduğunda desteklenir. İlkel türler String, Boolean, numeric veya `null`içerir. DateTime, nesne türleri ve diziler desteklenmez. |
+| IS_DEFINED | Özelliğe bir değer atanıp atanmadığını gösteren bir Boole değeri döndürür. Bu yalnızca değer temel bir tür olduğunda desteklenir. İlkel türler String, Boolean, numeric veya içerir `null` . DateTime, nesne türleri ve diziler desteklenmez. |
 | IS_NULL | Belirtilen ifadenin türünün null olup olmadığını gösteren bir Boole değeri döndürür. |
 | IS_NUMBER | Belirtilen ifadenin türünün bir sayı olup olmadığını gösteren bir Boole değeri döndürür. |
 | IS_OBJECT | Belirtilen ifadenin türünün bir JSON nesnesi olup olmadığını gösteren bir Boole değeri döndürür. |
-| IS_PRIMITIVE | Belirtilen ifadenin türünün bir ilkel öğe (dize, Boolean, sayısal veya `null`) olduğunu gösteren bir Boole değeri döndürür. |
+| IS_PRIMITIVE | Belirtilen ifadenin türünün bir ilkel öğe (dize, Boolean, sayısal veya) olduğunu gösteren bir Boole değeri döndürür `null` . |
 | IS_STRING | Belirtilen ifadenin türünün bir dize olup olmadığını gösteren bir Boole değeri döndürür. |
 
 Yollar koşullarında aşağıdaki dize işlevleri desteklenir:

@@ -7,10 +7,9 @@ description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kub
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637941"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
@@ -109,14 +108,14 @@ Ayrıca, çekme yaptığınız değişikliklerin bir en alt alanda çalışması
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni dal oluştur
 
-`BikeSharingApp/` ' A gidin ve *Bisiklet görüntüleri*adlı yeni bir dal oluşturun.
+`BikeSharingApp/`' A gidin ve *Bisiklet görüntüleri*adlı yeni bir dal oluşturun.
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-232 ve 233 satırlarını kaldırmak için [Bisiklet/Server. js][bikes-server-js] ' i düzenleyin:
+232 ve 233 satırlarını kaldırmak için [Bisiklet/server.js][bikes-server-js] düzenleme:
 
 ```javascript
     // Hard code image url *FIX ME*
@@ -131,7 +130,7 @@ Bölüm şu şekilde görünmelidir:
     delete theBike._id;
 ```
 
-Dosyayı kaydedin ve sonra değişikliklerinizi `git add` hazırlamak `git commit` için ve kullanın.
+Dosyayı kaydedin `git add` ve sonra `git commit` değişikliklerinizi hazırlamak için ve kullanın.
 
 ```cmd
 git add Bikes/server.js 
@@ -140,7 +139,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 
 ## <a name="push-your-changes"></a>Değişikliklerinizi gönderin
 
-Yeni `git push` dalınızı, kullanılan deponuza göndermek için kullanın:
+`git push`Yeni dalınızı, kullanılan deponuza göndermek için kullanın:
 
 ```cmd
 git push origin bike-images

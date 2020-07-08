@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656316"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility hizmeti anında yükleme sorunlarını giderme
@@ -41,7 +40,7 @@ Windows için (**hata 95107**), Kullanıcı hesabının kaynak bilgisayarda bir 
 * Uzaktan Kullanıcı erişimi denetimini devre dışı bırakan bir kayıt defteri anahtarını el ile eklemek için:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Yeni `DWORD`bir Ekle:`LocalAccountTokenFilterPolicy`
+  * Yeni bir Ekle `DWORD` :`LocalAccountTokenFilterPolicy`
   * Değeri olarak ayarlayın`1`
 
 * Kayıt defteri anahtarını eklemek için, bir komut isteminden aşağıdaki komutu çalıştırın:
@@ -51,10 +50,10 @@ Windows için (**hata 95107**), Kullanıcı hesabının kaynak bilgisayarda bir 
 Linux için (**hata 95108**), Mobility hizmeti aracısının başarıyla yüklenmesi için **kök** hesabı seçmeniz gerekir. Ayrıca, SSH Dosya Aktarım Protokolü (SFTP) hizmetlerinin çalışıyor olması gerekir. _Sshd_config_ dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için:
 
 1. **Kök** kullanıcı olarak oturum açın.
-1. _/Etc/ssh/sshd_config dosyasına_gidin, ile `PasswordAuthentication`başlayan satırı bulun.
-1. Satırın açıklamasını kaldırın ve değerini olarak `yes`değiştirin.
-1. İle `Subsystem`başlayan satırı bulun ve satırın açıklamasını kaldırın.
-1. `sshd` Hizmeti yeniden başlatın.
+1. _/Etc/ssh/sshd_config dosyasına_gidin, ile başlayan satırı bulun `PasswordAuthentication` .
+1. Satırın açıklamasını kaldırın ve değerini olarak değiştirin `yes` .
+1. İle başlayan satırı bulun `Subsystem` ve satırın açıklamasını kaldırın.
+1. Hizmeti yeniden başlatın `sshd` .
 
 Seçilen Kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [Bu yönergeleri](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)izleyin.
 
@@ -97,7 +96,7 @@ Bu hata, oturum açma sunucuları kaynak makinede kullanılabilir olmadığında
 
 Oturum açma hizmeti, kaynak makinenizde çalışmıyor ve oturum açma isteğinde başarısız oldu. Mobility Aracısı yüklenemiyor. Hatayı gidermek için aşağıdaki yöntemlerden birini kullanarak `Netlogon` hizmeti kaynak makinede başlatın:
 
-* `Netlogon` Hizmeti bir komut isteminden başlatmak için komutunu `net start Netlogon`çalıştırın.
+* `Netlogon`Hizmeti bir komut isteminden başlatmak için komutunu çalıştırın `net start Netlogon` .
 * Görev Yöneticisi 'nde `Netlogon` hizmeti başlatın.
 
 ## <a name="connectivity-failure-errorid-95117--97118"></a>Bağlantı hatası (errorID: 95117 & 97118)
@@ -108,7 +107,7 @@ Hatayı gidermek için:
 
 * Kaynak makinenize yapılandırma sunucusundan ping atabiliyor olduğunuzdan emin olun. Çoğaltmayı etkinleştir sırasında genişleme işlem sunucusu ' nu seçtiyseniz, kaynak makinenize işlem sunucusundan ping atadığınızı doğrulayın.
 
-* Aşağıdaki komutta gösterildiği gibi, kaynak sunucu makinesi komut `Telnet` SATıRıNDAN, HTTPS bağlantı noktası 135 üzerinde yapılandırma sunucusuna veya genişleme işlem sunucusuna ping çekmek için öğesini kullanın. Bu komut, ağ bağlantısı sorunları veya güvenlik duvarı bağlantı noktası engelleme sorunları olup olmadığını denetler.
+* Aşağıdaki komutta gösterildiği gibi, kaynak sunucu makinesi komut satırından, `Telnet` HTTPS bağlantı noktası 135 üzerinde yapılandırma sunucusuna veya genişleme işlem sunucusuna ping çekmek için öğesini kullanın. Bu komut, ağ bağlantısı sorunları veya güvenlik duvarı bağlantı noktası engelleme sorunları olup olmadığını denetler.
 
   `telnet <CS/ scale-out PS IP address> <135>`
 
@@ -118,10 +117,10 @@ Hatayı gidermek için:
   * SFTP hizmetlerinin çalışıyor olması gerekir. _Sshd_config_ dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için:
 
     1. **Kök** kullanıcı olarak oturum açın.
-    1. _/Etc/ssh/sshd_config_ dosyasına gidin, ile `PasswordAuthentication`başlayan satırı bulun.
-    1. Satırın açıklamasını kaldırın ve değerini olarak `yes`değiştirin.
-    1. İle `Subsystem`başlayan satırı bulun ve satırın açıklamasını kaldırın
-    1. `sshd` Hizmeti yeniden başlatın.
+    1. _/Etc/ssh/sshd_config_ dosyasına gidin, ile başlayan satırı bulun `PasswordAuthentication` .
+    1. Satırın açıklamasını kaldırın ve değerini olarak değiştirin `yes` .
+    1. İle başlayan satırı bulun `Subsystem` ve satırın açıklamasını kaldırın
+    1. Hizmeti yeniden başlatın `sshd` .
 
 * Bir süre sonra uygun yanıt yoksa bir bağlantı girişimi başarısız olmuş olabilir veya bağlı bir konak yanıt veremediği için kurulan bir bağlantı başarısız olabilir.
 * Bağlantı/ağ/etki alanı ile ilgili bir sorun olabilir. Bunun nedeni, DNS adı sorunu çözme veya TCP bağlantı noktası tükenmesi sorunu da olabilir. Etki alanında bilinen herhangi bir sorun olup olmadığını denetleyin.
@@ -137,13 +136,13 @@ Bir bağlantı denetiminden sonra, sanal makinenizde dosya ve yazıcı paylaşı
 **Windows 2008 R2 ve önceki sürümler**için:
 
 * Windows Güvenlik Duvarı aracılığıyla dosya ve yazdırma paylaşımını etkinleştirmek için
-  1. **Denetim Masası** > **sistem ve güvenlik** > **Windows Güvenlik Duvarı**'nı açın. Sol bölmede, konsol ağacındaki **Gelişmiş ayarlar** > **gelen kuralları** ' nı seçin.
+  1. **Denetim Masası**  >  **sistem ve güvenlik**  >  **Windows Güvenlik Duvarı**'nı açın. Sol bölmede, konsol ağacındaki **Gelişmiş ayarlar**  >  **gelen kuralları** ' nı seçin.
   1. Kurallar dosya ve yazıcı paylaşımı (NB-oturum-ın) ve dosya ve yazıcı paylaşımı (SMB-ın) konumunu bulun.
   1. Her kural için kurala sağ tıklayın ve **kuralı etkinleştir**' e tıklayın.
 
 * Grup ilkesi ile dosya paylaşımını etkinleştirmek için:
-  1. **Başlat**' a gidin, `gpmc.msc` yazın ve arama yapın.
-  1. Gezinti bölmesinde, aşağıdaki klasörleri açın:**Windows bileşenleri** > **ağ paylaşımı****Yönetim Şablonları** >  **Yerel bilgisayar ilkesi** > **Kullanıcı Yapılandırması** > .
+  1. **Başlat**' a gidin, yazın `gpmc.msc` ve arama yapın.
+  1. Gezinti bölmesinde, aşağıdaki klasörleri açın: **Local Computer Policy**  >  **User Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **ağ paylaşımı**Yönetim Şablonları yerel bilgisayar ilkesi Kullanıcı Yapılandırması.
   1. Ayrıntılar bölmesinde, **kullanıcıların profilleri içinde dosya paylaşmasını engelle**' ye çift tıklayın.
 
      Grup ilkesi ayarı devre dışı bırakmak ve kullanıcının dosya paylaşma özelliğini etkinleştirmek için **devre dışı**' yı seçin.
@@ -160,7 +159,7 @@ Dosya ve Yazıcı Hizmetleri denetimini tamamladıktan sonra, güvenlik duvarı 
 
 WMI 'yi etkinleştirmek için:
 
-1. **Denetim Masası** > **güvenliği** ' ne gidin ve **Windows Güvenlik Duvarı**' nı seçin.
+1. **Denetim Masası**  >  **güvenliği** ' ne gidin ve **Windows Güvenlik Duvarı**' nı seçin.
 1. **Ayarları Değiştir** ' i seçin ve ardından **özel durumlar** sekmesini seçin.
 1. **Özel durumlar** penceresinde, güvenlik DUVARı üzerinden WMI trafiğini etkinleştirmek için WINDOWS YÖNETIM araçları (WMI) onay kutusunu seçin.
 
@@ -221,7 +220,7 @@ Genel Birleşik önyükleme yükleyicisi (GRUB) yapılandırma dosyaları (_/boo
 
 Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
 
-1. Komutu `blkid \<device name>`YÜRÜTEREK cihazın UUID 'sini bulun.
+1. Komutu yürüterek cihazın UUID 'sini bulun `blkid \<device name>` .
 
    Örneğin:
 
@@ -232,7 +231,7 @@ Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Şimdi, cihaz adını, benzer `root=UUID=\<UUID>`biçimde UUID ile değiştirin. Örneğin, _/Boot/GRUB2/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_ dosyalarında belirtilen kök ve yenıden başlatma parametresi için cihaz adlarını UUID ile değiştirmek, dosyalardaki satırlar aşağıdaki satıra benzer şekilde görünür:
+1. Şimdi, cihaz adını, benzer biçimde UUID ile değiştirin `root=UUID=\<UUID>` . Örneğin, _/Boot/GRUB2/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_ dosyalarında belirtilen kök ve yenıden başlatma parametresi için cihaz adlarını UUID ile değiştirmek, dosyalardaki satırlar aşağıdaki satıra benzer şekilde görünür:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -250,7 +249,7 @@ Site Recovery Mobility hizmetinde, biri filtre sürücüsü olarak adlandırıla
 
 ## <a name="lvm-support-from-920-version"></a>9,20 sürümünden LVM desteği
 
-9,20 sürümünden önce mantıksal birim Yöneticisi (LVM) yalnızca veri diskleri için desteklenmelidir. `/boot` Bölüm bir LVM birimi değil disk bölümünde olmalıdır.
+9,20 sürümünden önce mantıksal birim Yöneticisi (LVM) yalnızca veri diskleri için desteklenmelidir. `/boot`Bölüm BIR LVM birimi değil disk bölümünde olmalıdır.
 
 [9,20 sürümünden](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)başlayarak, [LVM 'deki işletim sistemi diski](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) desteklenir.
 
@@ -291,7 +290,7 @@ Bir hata olduğunda, bir virüsten koruma programının veya diğer hizmetlerin 
 
 ### <a name="vss-exit-code-806"></a>VSS çıkış kodu 806
 
-Bu hata, yükleme için kullanılan Kullanıcı hesabının `CSScript` komutunu yürütmek için izinlere sahip olmadığı durumlarda oluşur. Betiği yürütmek için Kullanıcı hesabına gerekli izinleri sağlayın ve işlemi yeniden deneyin.
+Bu hata, yükleme için kullanılan Kullanıcı hesabının komutunu yürütmek için izinlere sahip olmadığı durumlarda oluşur `CSScript` . Betiği yürütmek için Kullanıcı hesabına gerekli izinleri sağlayın ve işlemi yeniden deneyin.
 
 ### <a name="other-vss-errors"></a>Diğer VSS hataları
 
@@ -301,7 +300,7 @@ Bir komut isteminden aşağıdaki komutu çalıştırarak VSS sağlayıcısı hi
 
 ## <a name="vss-error---0x8004e00f"></a>VSS hatası-0x8004E00F
 
-Bu hata genellikle, içindeki `DCOM` sorunlar nedeniyle ve `DCOM` kritik bir durumda olduğundan Mobility aracısının yüklenmesi sırasında oluşur.
+Bu hata genellikle, içindeki sorunlar nedeniyle `DCOM` ve kritik bir durumda olduğundan Mobility aracısının yüklenmesi sırasında oluşur `DCOM` .
 
 Hatanın nedenini öğrenmek için aşağıdaki yordamı kullanın.
 
@@ -321,7 +320,7 @@ Hatanın nedenini öğrenmek için aşağıdaki yordamı kullanın.
     - Exit code: 802
     ```
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 DCOM sorununu çözme hakkında yardım almak için [Microsoft Windows platformu ekibine](https://aka.ms/Windows_Support) başvurun.
 
@@ -358,17 +357,17 @@ Azure Site Recovery VSS sağlayıcısı yüklemesini atlamak ve Azure Site Recov
 
 ## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Küme hizmeti küme dışı makinede etkinleştirildiğinden VSS sağlayıcısı yüklemesi başarısız oluyor
 
-Bu sorun, Azure Site Recovery VSS sağlayıcısı yüklemesi sırasında Azure Site Recovery Mobility Aracısı yüklemesinin başarısız olmasına neden olur. Hata, VSS sağlayıcısı yüklemesinin önlediği bir sorun `COM+` nedeniyle oluşur.
+Bu sorun, Azure Site Recovery VSS sağlayıcısı yüklemesi sırasında Azure Site Recovery Mobility Aracısı yüklemesinin başarısız olmasına neden olur. Hata, `COM+` VSS sağlayıcısı yüklemesinin önlediği bir sorun nedeniyle oluşur.
 
 ### <a name="to-identify-the-issue"></a>Sorunu belirlemek için
 
-Configuration Server 'da _C:\programdata\asrsetuplogs\uploadedlogs\<tarih-saat>UA_InstallLogFile. log dosyasına_ gidin ve aşağıdaki özel durumu bulacaksınız:
+Configuration Server 'da _C:\programdata\asrsetuplogs\uploadedlogs yolunda bulunan günlükte \<date-time> UA_InstallLogFile. log dosyasına_ aşağıdaki özel durumu bulacaksınız:
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 1. Bu makinenin küme dışı bir makine olduğunu ve küme bileşenlerinin kullanılmadığını doğrulayın.
 1. Bileşenler kullanılmıyorsa, küme bileşenlerini makineden kaldırın.
@@ -377,11 +376,11 @@ Sorunu çözmek için:
 
 Mobility Aracısı yüklemesi başarısız olursa, bazı denetim kümelerinde gerekli sürücülerden bazılarının eksik olup olmadığını öğrenmek için _C:\programdata\asrsetuplogs_ altındaki günlükleri inceleyin.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
-1. Gibi bir kayıt defteri Düzenleyicisi `regedit.msc`kullanarak kayıt defterini açın.
-1. `HKEY_LOCAL_MACHINE\SYSTEM` Düğümünü açın.
-1. `SYSTEM` Düğümünde denetim kümelerini bulun.
+1. Gibi bir kayıt defteri Düzenleyicisi kullanarak `regedit.msc` kayıt defterini açın.
+1. Düğümünü açın `HKEY_LOCAL_MACHINE\SYSTEM` .
+1. `SYSTEM`Düğümünde denetim kümelerini bulun.
 1. Her bir denetim kümesini açın ve aşağıdaki Windows sürücülerinin mevcut olduğunu doğrulayın:
 
    * ATAPI

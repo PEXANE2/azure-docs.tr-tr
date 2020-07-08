@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477468"
 ---
 # <a name="smote"></a>SMOTE
@@ -42,10 +41,10 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
 
 ||Sınıf 0|Sınıf 1|toplam|  
 |-|-------------|-------------|-----------|  
-|Özgün veri kümesi<br /><br /> ( **Smote yüzde** = **0**ile eşdeğer)|570<br /><br /> %76|178<br /><br /> 24|748|  
-|**Smote yüzdesi** = **100**|570<br /><br /> %62|356<br /><br /> %38|926|  
-|**Smote yüzdesi** = **200**|570<br /><br /> %52|534<br /><br /> %48|1.104|  
-|**Smote yüzdesi** = **300**|570<br /><br /> %44|712<br /><br /> %56|1.282|  
+|Özgün veri kümesi<br /><br /> ( **Smote yüzdesine**  =  eşdeğer **0**)|570<br /><br /> %76|178<br /><br /> 24|748|  
+|**Smote yüzdesi**  =  **100**|570<br /><br /> %62|356<br /><br /> %38|926|  
+|**Smote yüzdesi**  =  **200**|570<br /><br /> %52|534<br /><br /> %48|1.104|  
+|**Smote yüzdesi**  =  **300**|570<br /><br /> %44|712<br /><br /> %56|1.282|  
   
 > [!WARNING]
 > Daha doğru modeller oluşturmak için, SMOTE kullanılarak durum sayısının artırılması garanti edilmez. Farklı yüzdeleri, farklı özellik kümelerini ve farklı sayıda komşu komşular ile ardışık düzen oluşturmayı deneyerek, servis taleplerinin modelinizi nasıl etkilediğini görün.  

@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757267"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager uç nokta izleme
@@ -40,7 +39,7 @@ Uç nokta izlemeyi yapılandırmak için Traffic Manager profilinizde aşağıda
 
 ## <a name="how-endpoint-monitoring-works"></a>Uç nokta izlemenin çalışması
 
-İzleme Protokolü HTTP veya HTTPS olarak ayarlandıysa, Traffic Manager araştırma Aracısı, verilen protokol, bağlantı noktası ve göreli yolu kullanarak uç noktaya bir GET isteği yapar. 200-OK yanıtını veya **beklenen durum kodu \*aralıklarında**yapılandırılan yanıtlardan herhangi birini geri alırsa, bu uç nokta sağlıklı olarak değerlendirilir. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir. 
+İzleme Protokolü HTTP veya HTTPS olarak ayarlandıysa, Traffic Manager araştırma Aracısı, verilen protokol, bağlantı noktası ve göreli yolu kullanarak uç noktaya bir GET isteği yapar. 200-OK yanıtını veya **beklenen durum kodu \* aralıklarında**yapılandırılan yanıtlardan herhangi birini geri alırsa, bu uç nokta sağlıklı olarak değerlendirilir. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir. 
 
 İzleme protokolü TCP ise, Traffic Manager araştırma Aracısı belirtilen bağlantı noktasını kullanarak bir TCP bağlantı isteği başlatır. Uç nokta, bağlantıyı kurmak için bir Yanıt ile isteğe yanıt verirse, bu sistem durumu denetimi başarılı olarak işaretlenir ve Traffic Manager araştırma Aracısı TCP bağlantısını sıfırlar. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir.
 
@@ -87,7 +86,7 @@ Profil izleyici durumu, yapılandırılmış profil durumunun ve tüm uç noktal
 
 | Profil durumu (yapılandırıldığı gibi) | Uç nokta izleyici durumu | Profil izleyici durumu | Notlar |
 | --- | --- | --- | --- |
-| Devre dışı |&lt;tanımlı&gt; uç noktaları olmayan herhangi bir veya bir profil. |Devre dışı |Profil devre dışı bırakıldı. |
+| Devre dışı |&lt;&gt;tanımlı uç noktaları olmayan herhangi bir veya bir profil. |Devre dışı |Profil devre dışı bırakıldı. |
 | Etkin |En az bir uç noktanın durumu düşürülmüş olur. |Düzeyi düşürüldü |Hangi uç noktaların daha fazla dikkat gerektirdiğini öğrenmek için tek uç nokta durumu değerlerini gözden geçirin. |
 | Etkin |En az bir uç noktanın durumu çevrimiçi. Hiçbir uç nokta düşürülmüş bir duruma sahip değil. |Çevrimiçi |Hizmet trafiği kabul ediyor. Başka bir eylem gerekli değildir. |
 | Etkin |En az bir uç noktanın durumu CheckingEndpoint olur. Çevrimiçi veya düşürülmüş durumunda hiçbir uç nokta yok. |CheckingEndpoints |Bu geçiş durumu, oluşturulduğunda veya etkinleştirildiğinde bir profil oluşur. Uç nokta sistem durumu ilk kez denetlenir. |

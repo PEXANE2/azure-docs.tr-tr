@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471362"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
@@ -66,13 +65,13 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive Ayrıca, karmaşık veya Iris olarak yapılandırılmış veriler için özel **seri hale getirici/Desericiler (serde)** destekler Daha fazla bilgi için bkz. [HDInsight ile özel JSON SerDe kullanımı](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) belgesi.
 
-Hive tarafından desteklenen dosya biçimleri hakkında daha fazla bilgi için bkz. [dil el kitabıhttps://cwiki.apache.org/confluence/display/Hive/LanguageManual) (](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Hive tarafından desteklenen dosya biçimleri hakkında daha fazla bilgi için bkz. [dil el kitabı https://cwiki.apache.org/confluence/display/Hive/LanguageManual) (](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Hive iç tabloları ve dış tablolar
 
 Hive ile oluşturabileceğiniz iki tür tablo vardır:
 
-* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, kümenin varsayılan depolama `/hive/warehouse/` alanında bulunur.
+* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, `/hive/warehouse/` kümenin varsayılan depolama alanında bulunur.
 
     Aşağıdaki koşullardan biri geçerli olduğunda iç tabloları kullanın:
 
@@ -106,11 +105,11 @@ Hive, **Kullanıcı tanımlı işlevler (UDF)** aracılığıyla da genişletile
 
 ## <a name="example-data"></a>Örnek veriler
 
-HDInsight 'ta Hive adlı `hivesampletable`bir iç tabloyla önceden yüklenmiş olarak gelir. HDInsight, Hive ile kullanılabilecek örnek veri kümeleri de sağlar. Bu veri kümeleri `/example/data` ve `/HdiSamples` dizinlerinde depolanır. Bu dizinler, kümenizin varsayılan depolamada bulunur.
+HDInsight 'ta Hive adlı bir iç tabloyla önceden yüklenmiş olarak gelir `hivesampletable` . HDInsight, Hive ile kullanılabilecek örnek veri kümeleri de sağlar. Bu veri kümeleri `/example/data` ve `/HdiSamples` dizinlerinde depolanır. Bu dizinler, kümenizin varsayılan depolamada bulunur.
 
 ## <a name="example-hive-query"></a>Örnek Hive sorgusu
 
-Aşağıdaki HiveQL deyimleri `/example/data/sample.log` dosyası üzerine proje sütunları:
+Aşağıdaki HiveQL deyimleri dosyası üzerine proje sütunları `/example/data/sample.log` :
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -136,7 +135,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |TABLOYU BıRAK|Tablo zaten varsa, silin.|
 |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.|
 |SATıR BIÇIMI|Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
-|TEXTFILE KONUMU OLARAK DEPOLANDı|Hive verilerinin nerede depolandığını ( `example/data` dizin) ve metin olarak depolandığını söyler. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.|
+|TEXTFILE KONUMU OLARAK DEPOLANDı|Hive verilerinin nerede depolandığını ( `example/data` Dizin) ve metin olarak depolandığını söyler. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.|
 |SELECT|**T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu değer içeren üç satır olduğundan, bu ifade **3** değerini döndürür.|
 |'%. Log ' gıbı INPUT__FILE__NAME|Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardan veri döndürmemiz gerektiğini söyler.|
 

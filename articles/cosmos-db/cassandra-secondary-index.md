@@ -8,10 +8,9 @@ ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
 ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80758033"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API ikincil dizin oluşturma
@@ -51,7 +50,7 @@ insert into sampleks.t1(user_id,lastname) values (8, 'Theo');
 insert into sampleks.t1(user_id,lastname) values (9, 'jagan');
 ```
 
-Aşağıdaki ifadeyi yürütmeyi denerseniz, şunu kullanmanızı `ALLOW FILTERING`isteyen bir hata ile karşılaşacaktır: 
+Aşağıdaki ifadeyi yürütmeyi denerseniz, şunu kullanmanızı isteyen bir hata ile karşılaşacaktır `ALLOW FILTERING` : 
 
 ```shell
 select user_id, lastname from sampleks.t1 where lastname='nishu';
@@ -62,10 +61,10 @@ Cassandra API, önceki bölümde belirtildiği gibi FILTRELEMEYE izin vermeyi de
 ```shell
 CREATE INDEX ON sampleks.t1 (lastname);
 ```
-"LastName" alanında bir dizin oluşturduktan sonra, artık önceki sorguyu başarıyla çalıştırabilirsiniz. Azure Cosmos DB Cassandra API, bir dizin adı sağlamanız gerekmez. Biçim `tablename_columnname_idx` içeren bir varsayılan dizin kullanılır. Örneğin, ` t1_lastname_idx` önceki tablonun Dizin adıdır.
+"LastName" alanında bir dizin oluşturduktan sonra, artık önceki sorguyu başarıyla çalıştırabilirsiniz. Azure Cosmos DB Cassandra API, bir dizin adı sağlamanız gerekmez. Biçim içeren bir varsayılan dizin `tablename_columnname_idx` kullanılır. Örneğin, ` t1_lastname_idx` Önceki tablonun Dizin adıdır.
 
 ## <a name="dropping-the-index"></a>Dizin bırakılıyor 
-Dizin adının dizini bırakma ne olduğunu bilmeniz gerekir. Tablonuzun açıklamasını `desc schema` almak için komutunu çalıştırın. Bu komutun çıktısı dizin adını biçiminde `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`içerir. Ardından, aşağıdaki örnekte gösterildiği gibi dizin adını kullanarak dizini bırakabilirsiniz:
+Dizin adının dizini bırakma ne olduğunu bilmeniz gerekir. `desc schema`Tablonuzun açıklamasını almak için komutunu çalıştırın. Bu komutun çıktısı dizin adını biçiminde içerir `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)` . Ardından, aşağıdaki örnekte gösterildiği gibi dizin adını kullanarak dizini bırakabilirsiniz:
 
 ```shell
 drop index sampleks.t1_lastname_idx;

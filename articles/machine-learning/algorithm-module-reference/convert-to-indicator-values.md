@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477672"
 ---
 # <a name="convert-to-indicator-values"></a>Gösterge Değerlerine dönüştürme
@@ -63,7 +62,7 @@ Dönüştürmenin nasıl çalıştığı aşağıda verilmiştir:
 
 -   Riski açıklayan **başarısızlık puanı** sütununda yalnızca üç olası değer vardır (yüksek, orta ve düşük) ve eksik değer yoktur. Bu nedenle, tam olarak üç yeni sütun oluşturulur.  
 
--   Yeni gösterge sütunları, bu model kullanılarak kaynak sütunun sütun başlıklarına ve değerlerine göre adlandırılır: * \<kaynak sütun>- \<veri değeri>*.  
+-   Yeni gösterge sütunları, bu model kullanılarak kaynak sütunun sütun başlıklarına ve değerlerine göre adlandırılır: *\<source column>- \<data value>* .  
 
 -   Her sunucunun yalnızca bir risk derecelendirmesi olduğundan, tam olarak bir gösterge sütununda 1 ve diğer tüm gösterge sütunlarında 0 olmalıdır.  
 
@@ -98,13 +97,13 @@ Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yan
 
 -   Yalnızca kategorik olarak işaretlenen sütunlar gösterge sütunlarına dönüştürülebilir. Aşağıdaki hatayı görürseniz, seçtiğiniz sütunlardan biri kategorik değildir:  
 
-     Hata 0056: ad \<sütunu adı> olan sütun izin verilen bir kategoride değil.  
+     Hata 0056: adı olan sütun \<column name> izin verilen bir kategoride değil.  
 
      Varsayılan olarak, çoğu dize sütunu dize özellikleri olarak işlenir, bu nedenle bunları doğrudan [düzenleme meta verilerini](edit-metadata.md)kullanarak kategorik olarak işaretlemeniz gerekir.  
 
 -   Gösterge sütunlarına dönüştürebileceğiniz sütun sayısı için bir sınır yoktur. Ancak, her bir değer sütunu birden çok gösterge sütunu sağlayabildiğinden, tek seferde yalnızca birkaç sütunu dönüştürüp gözden geçirmek isteyebilirsiniz.  
 
--   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla ayrı bir gösterge sütunu oluşturulur: * \<kaynak sütun>-eksik*  
+-   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla ayrı bir gösterge sütunu oluşturulur: * \<source column> -eksik*  
 
 -   Gösterge değerlerine dönüştürdüğünüz sütun sayı içeriyorsa, bunların diğer özellik sütunları gibi kategorik olarak işaretlenmesi gerekir. Bunu yaptıktan sonra, sayılar ayrık değerler olarak değerlendirilir. Örneğin, yaklaşık olarak 25 ile 30 arasında değişen bir sayısal sütununuz varsa, her ayrık değer için yeni bir gösterge sütunu oluşturulur:  
 

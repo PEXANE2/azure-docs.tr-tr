@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480292"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
@@ -72,7 +71,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Korumalı durum kayıtlarını sinyal kayıtlarıyla Eşleştir
 
 Bu örnek, hem bilgisayar hem de zaman ile eşleşen ilgili koruma durum kayıtlarını ve sinyal kayıtlarını bulur.
-Zaman alanı en yakın dakikaya yuvarlanır. Bunu yapmak için çalışma zamanı küme hesaplamasını kullandık `round_time=bin(TimeGenerated, 1m)`:.
+Zaman alanı en yakın dakikaya yuvarlanır. Bunu yapmak için çalışma zamanı küme hesaplamasını kullandık: `round_time=bin(TimeGenerated, 1m)` .
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Etkinlik KIMLIĞINE göre güvenlik olaylarını say
 
 
-Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<kimlik\>-\<adı\>.
+Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<ID\> - \<Name\> .
 **Etkinlik** değerini iki yeni sütuna ayrıştırır ve her bir **ActivityId**'nin oluşma sayısını sayar.
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Ayrıştırma etkinliği adı ve KIMLIĞI
-Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına \<dayanır: kimlik\>-\<adı\>. İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
+Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına dayanır: \<ID\> - \<Name\> . İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
 
 ```Kusto
 SecurityEvent
@@ -375,7 +374,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Kullanım
 
-`Usage` Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
+`Usage`Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
 
 #### <a name="data-volume-by-solution"></a>Çözüme göre veri hacmi
 
@@ -389,7 +388,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Yan tümcesinin `where IsBillable = true` , alma ücreti olmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın.  Ayrıca, ile `TimeGenerated` yan tümcesi yalnızca Azure Portal içindeki sorgu deneyiminin varsayılan 24 saatin ötesine geri baktığından emin olmak içindir. Kullanım verileri türünü kullanırken `StartTime` ve `EndTime` sonuçların sunulduğu zaman demetlerini temsil eder. 
+Yan tümcesinin, `where IsBillable = true` alma ücreti olmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın.  Ayrıca, ile yan tümcesi `TimeGenerated` yalnızca Azure Portal içindeki sorgu deneyiminin varsayılan 24 saatin ötesine geri baktığından emin olmak içindir. Kullanım verileri türünü kullanırken `StartTime` ve `EndTime` sonuçların sunulduğu zaman demetlerini temsil eder. 
 
 #### <a name="data-volume-by-type"></a>Türe göre veri hacmi
 

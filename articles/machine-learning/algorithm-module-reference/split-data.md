@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455902"
 ---
 # <a name="split-data-module"></a>Veri modülünü Böl
@@ -87,7 +86,7 @@ Aşağıdaki örneklerde, bir veri kümesinin **normal ifade** seçeneği kullan
 
 ### <a name="single-whole-word"></a>Tek bir tam kelime 
 
-Bu örnek, sütundaki `Gryphon` `Text`metni içeren tüm satırları ilk veri kümesine yerleştirir. Diğer satırları **bölünen verilerin**ikinci çıktısına yerleştirir.
+Bu örnek, sütundaki metni içeren tüm satırları ilk veri kümesine yerleştirir `Gryphon` `Text` . Diğer satırları **bölünen verilerin**ikinci çıktısına yerleştirir.
 
 ```text
     \"Text" Gryphon  
@@ -101,7 +100,7 @@ Bu örnek, veri kümesinin ikinci sütunundaki herhangi bir konumda belirtilen d
 (\1) ^[a-f]
 ```
 
-İlk sonuç veri kümesi, Dizin sütununun şu karakterlerden biriyle başladığı tüm satırları `a`içerir:, `b`, `c`, `d`, `e`,. `f` Diğer tüm satırlar ikinci çıktıya yönlendirilir.
+İlk sonuç veri kümesi, Dizin sütununun şu karakterlerden biriyle başladığı tüm satırları içerir: `a` , `b` ,, `c` `d` , `e` , `f` . Diğer tüm satırlar ikinci çıktıya yönlendirilir.
 
 ## <a name="select-a-relative-expression"></a>Göreli bir ifade seçin
 
@@ -114,12 +113,12 @@ Bu örnek, veri kümesinin ikinci sütunundaki herhangi bir konumda belirtilen d
    **Sayısal sütun**için:
    - Sütun, tarih ve saat veri türleri dahil olmak üzere herhangi bir sayısal veri türü sayı içerir.
    - İfade, en fazla bir sütun adına başvurabilir.
-   - VE işlemi için ve işareti `&`karakterini kullanın. VEYA işlemi için kanal karakterini `|`kullanın.
-   - Aşağıdaki işleçler desteklenir `<`:, `>`, `<=`, `>=`, `==`,. `!=`
-   - Ve `(` `)`kullanarak işlemleri gruplayabilirsiniz.
+   - `&`Ve işlemi için ve işareti karakterini kullanın. `|`Veya işlemi için kanal karakterini kullanın.
+   - Aşağıdaki işleçler desteklenir: `<` ,,, `>` `<=` `>=` , `==` , `!=` .
+   - Ve kullanarak işlemleri gruplayabilirsiniz `(` `)` .
    
    **Dize sütunu**için:
-   - Aşağıdaki işleçler desteklenir: `==`,. `!=`
+   - Aşağıdaki işleçler desteklenir: `==` , `!=` .
 
 1. İşlem hattını gönderme.
 
@@ -129,7 +128,7 @@ Aşağıdaki örneklerde, **bölünmüş veri** modülündeki **göreli ifade** 
 
 ### <a name="calendar-year"></a>Takvim yılı
 
-Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifade, sütunundaki `Year` değerlerin büyük olduğu tüm satırları seçer. `2010`
+Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifade, sütunundaki değerlerin büyük olduğu tüm satırları seçer `Year` `2010` .
 
 ```text
 \"Year" > 2010
@@ -137,7 +136,7 @@ Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifa
 
 Tarih ifadesi, veri sütununa dahil edilen tüm tarih bölümlerinin dikkate alınmalıdır. Veri sütunundaki tarihlerin biçimi tutarlı olmalıdır. 
 
-Örneğin, biçimini `mmddyyyy`kullanan bir tarih sütununda, ifadesi şuna benzer olmalıdır:
+Örneğin, biçimini kullanan bir tarih sütununda `mmddyyyy` , ifadesi şuna benzer olmalıdır:
 
 ```text
 \"Date" > 1/1/2010

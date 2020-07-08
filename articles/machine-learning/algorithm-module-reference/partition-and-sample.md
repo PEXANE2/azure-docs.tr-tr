@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477519"
 ---
 # <a name="partition-and-sample-module"></a>Bölüm ve örnek modül
@@ -75,7 +74,7 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
 
 1. **Örnekleme oranı**: 0 ile 1 arasında bir değer girin. Bu değer, kaynak veri kümesinden çıktı veri kümesine dahil edilecek satırların yüzdesini belirtir.
 
-   Örneğin, özgün veri kümesinin yalnızca yarısını istiyorsanız örnekleme hızının yüzde 50 olması gerektiğini `0.5` belirtmek için girin.
+   Örneğin, özgün veri kümesinin yalnızca yarısını istiyorsanız `0.5` örnekleme hızının yüzde 50 olması gerektiğini belirtmek için girin.
 
    Giriş veri kümesinin satırları, belirtilen oranına göre karıştırılmış ve çıktı veri kümesine seçmeli olarak yerleştirildi.
 

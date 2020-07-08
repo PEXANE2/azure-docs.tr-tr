@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653624"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication Kullanıcı verisi koleksiyonu
@@ -136,16 +135,16 @@ Değişiklikler (Kullanıcı değişikliklerini MFA sunucusu veya Azure AD ile e
 MFA sunucusu sürüm 8,0 veya üzeri için aşağıdaki işlem, yöneticilerin kullanıcılar için tüm verileri dışarı aktaralmasına izin verir:
 
 - MFA sunucunuzda oturum açın, **Kullanıcılar** sekmesine gidin, söz konusu kullanıcıyı seçin ve **Düzenle** düğmesine tıklayın. Kullanıcıya geçerli MFA ayarlarını sağlamak için her sekmenin ekran görüntülerini (alt-PrtScn) alın.
-- MFA sunucusunun komut satırından, JSON biçimli bir dosya oluşturmak için yolu yüklemenize `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` göre değiştirerek aşağıdaki komutu çalıştırın.
+- MFA sunucusunun komut satırından, `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` JSON biçimli bir dosya oluşturmak için yolu yüklemenize göre değiştirerek aşağıdaki komutu çalıştırın.
 - Yöneticiler, belirli bir kullanıcı için toplanan veya daha büyük bir raporlama çözümüne dahil olan tüm MFA bulut hizmeti bilgilerini dışarı aktarma seçeneği olarak Web hizmeti SDK GetUserGdpr işlemini de kullanabilir.
-- Eklenen `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` veya değiştirilen Kullanıcı kaydının tüm\<örneklerini bulmak için "Kullanıcı adı>" için yedekleme ve tüm yedeklemeler (aramada tırnak işareti dahil) arayın.
+- `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` \<username> Eklenen veya değiştirilen Kullanıcı kaydının tüm örneklerini bulmak için, "" için yedekleme ve tüm yedeklemeler (aramada tırnak işareti dahil) arayın.
    - Bu kayıtlar MFA sunucusu UX, günlük bölümü, günlük dosyaları sekmesindeki **"Kullanıcı değişikliklerini günlüğe kaydet"** seçeneğinin işaretini kaldırarak sınırlı olabilir (ancak ortadan kaldırılamaz).
    - Syslog yapılandırıldıysa ve **"Kullanıcı değişikliklerini günlüğe kaydet"** , MFA sunucusu UX, günlük bölümü, syslog sekmesinde işaretlenirse, bunun yerine günlük girdileri Syslog 'dan toplanabilir.
-- MultiFactorAuthSvc. log ve kimlik doğrulama girişimleriyle ilgili diğer MFA sunucusu günlük dosyalarındaki Kullanıcı adının diğer örnekleri, işletimsel kabul edilir ve MultiFactorAuthGdpr. exe Export veya Web Service SDK GetUserGdpr kullanılarak verilen bilgilere göre işlenir.
+- MultiFactorAuthSvc. log ve kimlik doğrulama girişimleriyle ilgili diğer MFA sunucusu günlük dosyalarındaki Kullanıcı adının diğer oluşumları işletimsel kabul edilir ve MultiFactorAuthGdpr.exe Export veya Web Service SDK GetUserGdpr kullanılarak verilen bilgilere sahiptir.
 
 ## <a name="delete-data-from-mfa-server"></a>MFA sunucusundan verileri silme
 
-MFA sunucusunun komut satırından, bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için yolu, yüklemenize `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` göre değiştirerek aşağıdaki komutu çalıştırın.
+MFA sunucusunun komut satırından, `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` bu kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmek için yolu, yüklemenize göre değiştirerek aşağıdaki komutu çalıştırın.
 
 - Dışarı aktarmaya dahil edilen veriler gerçek zamanlı olarak silinir, ancak işlemsel veya yinelenen verilerin tamamen kaldırılması 30 güne kadar sürebilir.
 - Yöneticiler, belirli bir kullanıcı için toplanan veya daha büyük bir raporlama çözümüne dahil olan tüm MFA bulut hizmeti bilgilerini silme seçeneği olarak Web hizmeti SDK DeleteUserGdpr işlemini de kullanabilir.

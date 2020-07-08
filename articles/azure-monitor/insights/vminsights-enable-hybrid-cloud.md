@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480751"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Karma ortam için VM'ler için Azure İzleyici etkinleştirme
@@ -41,7 +40,7 @@ Bu görevi tamamlamaya yönelik adımlar şu şekilde özetlenmiştir:
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows 'a bağımlılık Aracısı 'nı yükler
 
-' I çalıştırarak `InstallDependencyAgent-Windows.exe`, Windows bilgisayarlarına bağımlılık aracısını el ile yükleyebilirsiniz. Bu yürütülebilir dosyayı herhangi bir seçenek olmadan çalıştırırsanız, aracı etkileşimli olarak yüklemek için izleyebileceğiniz bir Kurulum Sihirbazı başlatılır.
+' I çalıştırarak, Windows bilgisayarlarına bağımlılık aracısını el ile yükleyebilirsiniz `InstallDependencyAgent-Windows.exe` . Bu yürütülebilir dosyayı herhangi bir seçenek olmadan çalıştırırsanız, aracı etkileşimli olarak yüklemek için izleyebileceğiniz bir Kurulum Sihirbazı başlatılır.
 
 >[!NOTE]
 >Aracıyı yüklemek veya kaldırmak için *yönetici* ayrıcalıkları gerekir.
@@ -53,7 +52,7 @@ Aşağıdaki tabloda, komut satırından aracının kurulumu tarafından destekl
 | /? | Komut satırı seçeneklerinin bir listesini döndürür. |
 | Sn | Kullanıcı etkileşimi olmadan sessiz yükleme gerçekleştirir. |
 
-Örneğin, yükleme programını `/?` parametresiyle çalıştırmak için, **InstallDependencyAgent-Windows. exe/?** girin.
+Örneğin, yükleme programını parametresiyle çalıştırmak için `/?` **InstallDependencyAgent-Windows.exe/?** girin.
 
 Windows bağımlılık aracısının dosyaları varsayılan olarak *C:\Program Files\Microsoft Dependency Agent* 'e yüklenir. Kurulum tamamlandıktan sonra bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
 
@@ -71,9 +70,9 @@ Bağımlılık Aracısı, kendi kendine ayıklanan ikiliye sahip bir kabuk beti�
 | -s | Kullanıcıdan bilgi istenmeden sessiz yükleme gerçekleştirir. |
 | --denetle | İzinleri ve işletim sistemini denetleyin, ancak aracıyı yüklemeyin. |
 
-Örneğin, yükleme programını `-help` parametresiyle çalıştırmak için, **InstallDependencyAgent-linux64. bin-Help**girin.
+Örneğin, yükleme programını parametresiyle çalıştırmak için `-help` , **InstallDependencyAgent-linux64. bin-Help**girin.
 
-Komutunu `sh InstallDependencyAgent-Linux64.bin`çalıştırarak Linux bağımlılık aracısını kök olarak yükler.
+Komutunu çalıştırarak Linux bağımlılık aracısını kök olarak yükler `sh InstallDependencyAgent-Linux64.bin` .
 
 Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur.
 
@@ -156,7 +155,7 @@ Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, 
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Şablon oluşturma ve yürütme
 
@@ -206,7 +205,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
     }
     ```
 
-1. Bu dosyayı *ınstallsolutionsforvminsıghts. JSON* olarak yerel bir klasöre kaydedin.
+1. Bu dosyayı yerel bir klasöre *installsolutionsforvminsights.js* olarak kaydedin.
 
 1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. *Çalışmaadı* değeri, Log Analytics çalışma alanınızın adıdır. *WorkspaceLocation* değeri, çalışma alanının tanımlandığı bölgedir.
 
@@ -229,7 +228,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
 
 Bağımlılık aracısı yüklemeniz başarılı oldu, ancak bilgisayarınızı haritada görmüyorsanız, bu adımları izleyerek sorunu tanılayın.
 
-1. Bağımlılık Aracısı başarıyla yüklendi mi? Hizmetin yüklü ve çalışır olup olmadığını denetleyerek bunu doğrulayabilirsiniz.
+1. Bağımlılık aracısı başarıyla yüklendi mi? Bunu doğrulamak için hizmetin yüklü ve çalışır durumda olup olmadığını kontrol edebilirsiniz.
 
     **Windows**: "Microsoft bağımlılık Aracısı" adlı hizmeti arayın.
 
@@ -243,13 +242,13 @@ Bağımlılık aracısı yüklemeniz başarılı oldu, ancak bilgisayarınızı 
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Bir veya daha fazla sonuç döndürüyor mu? Veriler son zamanlarda mı? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve hizmetle iletişim kuruyor. Aksi takdirde, sunucunuzdaki aracıyı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
+    Bir veya daha fazla sonuç döndürüyor mu? Veriler güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve hizmetle iletişim kuruyor. Aksi takdirde, sunucunuzdaki aracıyı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Bilgisayar haritada görünüyor ancak işleme sahip değil
 
 Sunucunuzu haritada görürseniz, ancak bir işlem veya bağlantı verisi yoksa, bağımlılık aracısının yüklü olduğunu ve çalıştığını, ancak çekirdek sürücüsünün yüklenmediğini belirtir.
 
-C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log dosyasını (Windows) veya/var/seçenek/Microsoft/Dependency-Agent/log/Service.log dosyasını (Linux) denetleyin. Dosyanın son satırları, çekirdeğin neden yüklenmediğini göstermelidir. Örneğin, çekirdeğini güncelleştirdiyseniz, çekirdek Linux üzerinde desteklenmeyebilir.
+C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log dosyasını (Windows) veya /var/opt/microsoft/dependency-agent/log/service.log doyasını (Linux) kontrol edin. Dosyanın son satırları, çekirdeğin neden yüklenmediğini göstermelidir. Örneğin çekirdeğinizi güncelleştirdiyseniz yeni çekirdek için Linux desteği sunulmuyor olabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

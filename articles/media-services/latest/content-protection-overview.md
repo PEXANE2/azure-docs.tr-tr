@@ -16,10 +16,9 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461121"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
@@ -70,7 +69,7 @@ Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine,
 
 2. Şifrelenmiş varlığı akışa almak için yapılandırılmış bir [akış Bulucu](streaming-locators-concept.md) oluşturun.
   
-   Akış bulucunun bir [akış ilkesiyle](streaming-policy-concept.md)ilişkilendirilmesi vardır. Örnekte, "Predefined_MultiDrmCencStreaming" ilkesine `StreamingLocator.StreamingPolicyName` ayarlanıyoruz.
+   Akış bulucunun bir [akış ilkesiyle](streaming-policy-concept.md)ilişkilendirilmesi vardır. Örnekte, `StreamingLocator.StreamingPolicyName` "Predefined_MultiDrmCencStreaming" ilkesine ayarlanıyoruz.
 
    PlayReady ve Widevine şifrelemeleri uygulanır ve anahtar, yapılandırılmış DRM lisanslarına göre kayıttan yürütme istemcisine gönderilir. Akışınızı CIBH (FairPlay) ile şifrelemek istiyorsanız "Predefined_MultiDrmStreaming" ilkesini kullanın.
 
@@ -78,10 +77,10 @@ Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine,
 
 3. Bir test belirteci oluşturun.
 
-   Yöntemi `GetTokenAsync` , bir test belirtecinin nasıl oluşturulacağını gösterir.
+   `GetTokenAsync`Yöntemi, bir test belirtecinin nasıl oluşturulacağını gösterir.
 4. Akış URL 'sini oluşturun.
 
-   Yöntemi `GetDASHStreamingUrlAsync` , AKıŞ URL 'sinin nasıl oluşturulacağını gösterir. Bu durumda, URL DASH içeriğini akışlar.
+   `GetDASHStreamingUrlAsync`Yöntemi, akış URL 'sinin nasıl oluşturulacağını gösterir. Bu durumda, URL DASH içeriğini akışlar.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>AES veya DRM istemcisiyle oynatıcı
 
@@ -184,14 +183,14 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 
 ### <a name="token-replay-prevention"></a>Belirteç yeniden yürütme engellemesi
 
-*Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Müşteri, belirtecin bir lisans ya da anahtar `urn:microsoft:azure:mediaservices:maxuses` almak için kaç kez kullanılabileceğini, belirteçte bir tür talep ekleyebilir. Anahtar teslimine aynı belirtece sahip sonraki tüm istekler, yetkisiz bir yanıt verecektir. Bkz. isteği [DRM örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)ekleme.
+*Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Müşteri, `urn:microsoft:azure:mediaservices:maxuses` belirtecin bir lisans ya da anahtar almak için kaç kez kullanılabileceğini, belirteçte bir tür talep ekleyebilir. Anahtar teslimine aynı belirtece sahip sonraki tüm istekler, yetkisiz bir yanıt verecektir. Bkz. isteği [DRM örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)ekleme.
  
-#### <a name="considerations"></a>Dikkat edilmesi gerekenler
+#### <a name="considerations"></a>Önemli noktalar
 
 * Müşterilerin belirteç oluşturma üzerinde denetimi olmalıdır. Talebin kendisini belirtece yerleştirilmesi gerekir.
 * Bu özellik kullanılırken, zaman aşımı süresi, isteğin alındığı zamandan bir saatten fazla olan istekleri yetkisiz bir Yanıtla reddedilir.
 * Belirteçler, imzaları tarafından benzersiz şekilde tanımlanır. Yükte yapılan herhangi bir değişiklik (örneğin, sona erme saati veya talebin güncelleştirilmesi) belirtecin imzasını değiştirir ve anahtar tesliminin daha önce geldiği yeni bir belirteç olarak sayılır.
-* Belirteç müşteri tarafından ayarlanan `maxuses` değeri aşarsa kayıttan yürütme başarısız olur.
+* Belirteç müşteri tarafından ayarlanan değeri aşarsa kayıttan yürütme başarısız olur `maxuses` .
 * Bu özellik, var olan tüm korumalı içerik (yalnızca verilen belirtecin değiştirilmesi gerekir) için kullanılabilir.
 * Bu özellik hem JWT hem de SWT ile birlikte kullanılabilir.
 
@@ -242,7 +241,7 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`istenen anahtarın bir değeri vardır. İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz `AlternativeMediaId` . Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
+`ContentKeyId`istenen anahtarın bir değeri vardır. `AlternativeMediaId`İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz. Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
 
 Özel lisans/anahtar alma URL 'Leri kullanan REST örnekleri için bkz. [akış ilkeleri-oluştur](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
@@ -251,9 +250,9 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Hatayı alırsanız uygun akış ilkesini belirttiğinizden emin olun.
+`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`Hatayı alırsanız uygun akış ilkesini belirttiğinizden emin olun.
 
-İle `_NOT_SPECIFIED_IN_URL`biten hatalar alırsanız, URL 'de şifreleme biçimini belirttiğinizden emin olun. `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` bunun bir örneğidir. Bkz. [akış protokolleri ve şifreleme türleri](#streaming-protocols-and-encryption-types).
+İle biten hatalar alırsanız `_NOT_SPECIFIED_IN_URL` , URL 'de şifreleme biçimini belirttiğinizden emin olun. `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` bunun bir örneğidir. Bkz. [akış protokolleri ve şifreleme türleri](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 

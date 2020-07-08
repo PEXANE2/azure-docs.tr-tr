@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652576"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory akıllı kilitleme
@@ -56,7 +55,7 @@ Akıllı kilitleme karma dağıtımlarla tümleştirilebilir, şirket içi Activ
 
 1. Grup ilkesi yönetim aracını açın.
 2. Kuruluşunuzun hesap kilitleme ilkesini (örneğin, **varsayılan etki alanı ilkesi**) içeren Grup ilkesini düzenleyin.
-3. **Bilgisayar yapılandırma** > **ilkeleri** > **Windows ayarları** > **güvenlik ayarları** > **hesap ilkeleri** > **Hesap kilitleme ilkesi**' ne gidin.
+3. **Bilgisayar yapılandırma**  >  **ilkeleri**  >  **Windows ayarları**  >  **güvenlik ayarları**  >  **hesap ilkeleri**  >  **Hesap kilitleme ilkesi**' ne gidin.
 4. **Hesap kilitleme eşikinizi** doğrulayın ve değerlerden **sonra hesap kilitleme sayacını sıfırlayın** .
 
 ![Şirket içi Active Directory hesabı kilitleme ilkesini değiştirme](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,8 +66,8 @@ Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin öz
 
 Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. *Azure Active Directory*'yi bulun ve seçin. **Güvenlik** > **kimlik doğrulama yöntemleri** > **parola korumasını**seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. *Azure Active Directory*'yi bulun ve seçin. **Güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **parola korumasını**seçin.
 1. İlk kilitlenmeden önce bir hesapta kaç tane başarısız oturum açma izni verileceğini temel alarak **kilitleme eşiğini**ayarlayın. Varsayılan değer 10 ' dur.
 1. **Kilitleme süresini saniye cinsinden**, her kilitin saniye cinsinden uzunluğu olarak ayarlayın. Varsayılan değer 60 saniyedir (bir dakika).
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477502"
 ---
 # <a name="preprocess-text"></a>Metni Ön İşleme
@@ -51,7 +50,7 @@ Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kulla
 
 1. **Cümleleri Algıla**: modülün analiz gerçekleştirirken bir cümle sınır işareti eklemesini istiyorsanız bu seçeneği belirleyin.
 
-    Bu modül, cümle sonlandırıcıyı temsil etmek için `|||` üç kanal karakter serisi kullanır.
+    Bu modül `|||` , cümle sonlandırıcıyı temsil etmek için üç kanal karakter serisi kullanır.
 
 1. Normal ifadeler kullanarak isteğe bağlı bulma ve değiştirme işlemleri gerçekleştirin.
 
@@ -70,18 +69,18 @@ Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kulla
     
     * **Yinelenen karakterleri kaldır**: iki kez tekrarlanacak herhangi bir dizilerden fazla karakter kaldırmak için bu seçeneği belirleyin. Örneğin, "aaaaa" gibi bir sıra "AA" olarak düşürülür.
     
-    * **E-posta adreslerini kaldır**: biçimin `<string>@<string>`herhangi bir dizisini kaldırmak için bu seçeneği belirleyin.  
-    * **URL 'Leri kaldır**: aşağıdaki URL öneklerini içeren herhangi bir sırayı kaldırmak için bu seçeneği belirleyin: `http`, `https`, `ftp`,`www`
+    * **E-posta adreslerini kaldır**: biçimin herhangi bir dizisini kaldırmak için bu seçeneği belirleyin `<string>@<string>` .  
+    * **URL 'Leri kaldır**: aşağıdaki URL öneklerini içeren herhangi bir sırayı kaldırmak için bu seçeneği belirleyin: `http` , `https` , `ftp` ,`www`
     
 1. **Fiil kodlamalarını Genişlet**: Bu seçenek yalnızca fiil kodlamalarını kullanan diller için geçerlidir; Şu anda yalnızca Ingilizce. 
 
     Örneğin, bu seçeneği belirleyerek "hiçbir zaman" *kalmazın* "olmaz" ifadesini " *Not*edin" olarak değiştirebilirsiniz.
 
-1. **Ters eğik çizgileri eğik çizgiyle Normalleştir**: tüm örneklerini `\\` öğesine `/`eşlemek için bu seçeneği belirleyin.
+1. **Ters eğik çizgileri eğik çizgiyle Normalleştir**: tüm örneklerini öğesine eşlemek için bu seçeneği belirleyin `\\` `/` .
 
-1. **Belirteçleri özel karakterlere Böl**: `&`, `-`, vb. karakterler üzerinde sözcükler kesmek istiyorsanız bu seçeneği belirleyin. Bu seçenek ayrıca, iki kez yinelendiğinde özel karakterleri de azaltabilir. 
+1. **Belirteçleri özel karakterlere Böl**:,, vb. karakterler üzerinde sözcükler kesmek istiyorsanız bu seçeneği belirleyin `&` `-` . Bu seçenek ayrıca, iki kez yinelendiğinde özel karakterleri de azaltabilir. 
 
-    `MS---WORD` Örneğin, dize üç `MS`belirtece ayrılmıştır,, `-`, ve. `WORD`
+    Örneğin, dize `MS---WORD` üç belirtece ayrılmıştır,, `MS` `-` , ve `WORD` .
 
 1. İşlem hattını gönderme.
 

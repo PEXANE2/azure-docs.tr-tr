@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471039"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda hazırlama ortamı ayarlama
@@ -67,10 +66,10 @@ Azure portal hizmet örneğinize gidin ve tüm dağıtımları görüntülemek i
 
 >[!TIP]
 > * CSS dosyasının doğru bir şekilde yüklendiğinden emin olmak için, test uç noktanızın eğik çizgiyle (/) bitdiğini doğrulayın.  
-> * Tarayıcınızda sayfayı görüntülemek için oturum açma kimlik bilgilerini girmeniz gerekiyorsa, test uç noktanızın kodunu çözmek için [URL kodunu çöz](https://www.urldecoder.org/) kullanın. URL kod çözme, "https://\<username>:\<Password> @\<Cluster-Name>. test.azureapps.io/Gateway/Green" biçiminde bir URL döndürür.  Uç noktanıza erişmek için bu formu kullanın.
+> * Tarayıcınızda sayfayı görüntülemek için oturum açma kimlik bilgilerini girmeniz gerekiyorsa, test uç noktanızın kodunu çözmek için [URL kodunu çöz](https://www.urldecoder.org/) kullanın. URL kod çözme "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green" biçiminde bir URL döndürür.  Uç noktanıza erişmek için bu formu kullanın.
 
 >[!NOTE]    
-> Yapılandırma sunucusu ayarları hem hazırlama ortamınız hem de üretim için geçerlidir. Örneğin, yapılandırma sunucusundaki uygulama ağ geçidiniz için bağlam`server.servlet.context-path`yolunu () *somepath*olarak ayarlarsanız, yeşil dağıtımınızın yolu "https://\<username>:\<password> @\<Cluster-Name>. test.azureapps.io/Gateway/Green/somepath/..." olarak değişir.
+> Yapılandırma sunucusu ayarları hem hazırlama ortamınız hem de üretim için geçerlidir. Örneğin, `server.servlet.context-path` yapılandırma sunucusundaki uygulama ağ geçidiniz için bağlam yolunu () bir *somepath*olarak ayarlarsanız, yeşil dağıtımınızın yolu "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green/somepath/..." olarak değişir.
  
  Bu noktada herkese açık uygulama ağ geçidinizi ziyaret ederseniz, eski sayfayı yeni değiştirmeksizin görmeniz gerekir.
     

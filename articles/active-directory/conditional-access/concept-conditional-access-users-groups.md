@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80755277"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
@@ -36,7 +35,7 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
    - B2B konukları dahil dizinde bulunan tüm kullanıcılar.
 - Kullanıcıları ve grupları seçme
    - Tüm konuk ve dış kullanıcılar
-      - Bu seçim, `user type` özniteliği olarak `guest`ayarlanmış herhangi bir Kullanıcı dahIl olmak üzere tüm B2B konukları ve harici kullanıcıları içerir. Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
+      - Bu seçim, özniteliği olarak ayarlanmış herhangi bir kullanıcı dahil olmak üzere tüm B2B konukları ve harici kullanıcıları içerir `user type` `guest` . Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
    - Dizin rolleri
       - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir.
    - Kullanıcılar ve gruplar
@@ -52,7 +51,7 @@ Kuruluşların her ikisi de bir kullanıcıyı veya grubu dahil ve hariç tutdı
 Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler dışarıda tutulacak.
 
 - Tüm konuk ve dış kullanıcılar
-   - Bu seçim, `user type` özniteliği olarak `guest`ayarlanmış herhangi bir Kullanıcı dahIl olmak üzere tüm B2B konukları ve harici kullanıcıları içerir. Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
+   - Bu seçim, özniteliği olarak ayarlanmış herhangi bir kullanıcı dahil olmak üzere tüm B2B konukları ve harici kullanıcıları içerir `user type` `guest` . Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
 - Dizin rolleri
    - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir.
 - Kullanıcılar ve gruplar

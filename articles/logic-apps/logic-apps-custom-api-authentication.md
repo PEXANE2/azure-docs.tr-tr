@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656228"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'ten özel API çağrıları için güvenliği artırma
@@ -51,9 +50,9 @@ Mantıksal uygulamanız Azure AD kimlik doğrulaması için bu Azure AD uygulama
 2. Web uygulamanızın veya API uygulamanızın bulunduğu dizinde olduğunuzdan emin olun.
 
    > [!TIP]
-   > Dizinleri değiştirmek için profilinizi seçin ve başka bir dizin seçin. Ya da **genel bakış** > **anahtar dizini**' ni seçin.
+   > Dizinleri değiştirmek için profilinizi seçin ve başka bir dizin seçin. Ya da **genel bakış**  >  **anahtar dizini**' ni seçin.
 
-3. Dizin menüsünde, **Yönet**altında, **uygulama kayıtları** > **Yeni uygulama kaydı**' nı seçin.
+3. Dizin menüsünde, **Yönet**altında, **uygulama kayıtları**  >  **Yeni uygulama kaydı**' nı seçin.
 
    > [!TIP]
    > Varsayılan olarak, uygulama kayıt listesi, dizininizdeki tüm uygulama kayıtlarını gösterir. Yalnızca uygulama kayıtlarınızı görüntülemek için arama kutusunun yanındaki **uygulamalarım**' ı seçin. 
@@ -152,7 +151,7 @@ Web uygulamanız veya API uygulamanız zaten dağıtılmışsa, kimlik doğrulam
 
 Web uygulamanız veya API uygulamanız için mantıksal uygulamanızın uygulama kimliğinden farklı bir Azure AD uygulama kimliği oluşturmanız gerekir. Uygulama kimliğini oluşturmak için, Azure portal 2. Kısım 2 ' de önceki adımları izleyin. 
 
-Ayrıca Bölüm 1 ' deki adımları da izleyebilirsiniz, ancak **oturum açma URL** 'Si ve **uygulama kimliği URI**'si IÇIN Web uygulamanızı veya `https://{URL}` API uygulamanızın gerçek değerini kullandığınızdan emin olun. Bu adımlardan, hem istemci KIMLIĞINI hem de kiracı KIMLIĞINI uygulamanızın dağıtım şablonunda kullanmak için ve ayrıca Bölüm 3 için kaydetmeniz gerekir.
+Ayrıca Bölüm 1 ' deki adımları da izleyebilirsiniz, ancak `https://{URL}` **oturum açma URL** 'SI ve **uygulama kimliği URI**'SI için Web uygulamanızı veya API uygulamanızın gerçek değerini kullandığınızdan emin olun. Bu adımlardan, hem istemci KIMLIĞINI hem de kiracı KIMLIĞINI uygulamanızın dağıtım şablonunda kullanmak için ve ayrıca Bölüm 3 için kaydetmeniz gerekir.
 
 > [!NOTE]
 > Web uygulamanız veya API uygulamanız için Azure AD uygulama kimliğini oluşturduğunuzda PowerShell değil Azure portal kullanmanız gerekir. PowerShell komutu, kullanıcıları bir Web sitesinde imzalamak için gerekli izinleri ayarmıyor.
@@ -199,11 +198,11 @@ Mantıksal uygulama tanımınızı kod görünümünde açın, **http** eylem ta
 
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| Kiracı | Yes | Azure AD kiracısı için GUID | 
-| grubu | Yes | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
-| clientId | Yes | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
-| gizli dizi | Yes | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
-| type | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
+| Kiracı | Evet | Azure AD kiracısı için GUID | 
+| grubu | Evet | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
+| clientId | Evet | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
+| gizli dizi | Evet | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
+| tür | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth` . | 
 |||| 
 
 Örneğin:
@@ -250,9 +249,9 @@ Mantıksal uygulamanızdan gelen istekleri Web uygulamanıza veya API uygulaman�
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| `type` | Yes | Kimlik doğrulama türü. TLS/SSL istemci sertifikaları için değer olmalıdır `ClientCertificate`. |
+| `type` | Evet | Kimlik doğrulama türü. TLS/SSL istemci sertifikaları için değer olmalıdır `ClientCertificate` . |
 | `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişim parolası |
-| `pfx` | Yes | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) |
+| `pfx` | Evet | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +272,9 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| type | Yes | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer olmalıdır `Basic`. | 
-| kullanıcı adı | Yes | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
-| password | Yes | Kimlik doğrulaması için kullanmak istediğiniz parola | 
+| tür | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer olmalıdır `Basic` . | 
+| kullanıcı adı | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
+| password | Evet | Kimlik doğrulaması için kullanmak istediğiniz parola | 
 |||| 
 
 <a name="azure-ad-code"></a>

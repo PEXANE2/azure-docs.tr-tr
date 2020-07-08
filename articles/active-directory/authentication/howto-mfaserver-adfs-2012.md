@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653362"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication Sunucusunu Windows Server’da AD FS ile çalışacak şekilde yapılandırma
@@ -84,8 +83,8 @@ Bu noktada Multi-Factor Authentication Sunucusu, AD FS ile birlikte kullanım am
 MultiFactorAuthenticationAdfsAdapter.config dosyasını düzenlemek için aşağıdaki adımları izleyin:
 
 1. **UseWebServiceSdk** düğümünü **true** olarak ayarlayın.  
-2. **WebServiceSdkUrl** değerini Multi-Factor Authentication Web Hizmeti SDK URL’sine ayarlayın. Örneğin: *https\/\/: contoso.com/\<CertificateName>/multifactorauthwebservicesdk/pfwssdk.asmx*, burada * \<CertificateName>* , sertifikanızın adıdır.  
-3. Komutun sonuna ekleyerek `-ConfigurationFilePath &lt;path&gt;` Register-MultiFactorAuthenticationAdfsAdapter. ps1 betiğini düzenleyin, burada * &lt;yol&gt; * MultiFactorAuthenticationAdfsAdapter. config dosyasının tam yoludur. `Register-AdfsAuthenticationProvider`
+2. **WebServiceSdkUrl** değerini Multi-Factor Authentication Web Hizmeti SDK URL’sine ayarlayın. Örneğin: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, burada *\<certificatename>* sertifikanızın adıdır.  
+3. Komutun sonuna ekleyerek Register-MultiFactorAuthenticationAdfsAdapter.ps1 betiğini düzenleyin `-ConfigurationFilePath &lt;path&gt;` `Register-AdfsAuthenticationProvider` , burada * &lt; &gt; yol* MultiFactorAuthenticationAdfsAdapter.config dosyasının tam yoludur.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Web Hizmeti SDK’sını bir kullanıcı adı ve parola kullanarak yapılandırma
 
@@ -122,7 +121,7 @@ Bir kullanıcı adı ve parola kullanmak istemiyorsanız Web Hizmeti SDK’sın�
 22. .pfx dosyasını yerel bilgisayar kişisel sertifika deposuna aktarın.  
 23. Sağ tıklayıp **Özel Anahtarları Yönet**’i seçin ve ardından AD FS hizmetinde oturum açmak için kullandığınız hesaba okuma erişimi verin.  
 24. İstemci sertifikasını açın ve **Ayrıntılar** sekmesinden parmak izini kopyalayın.  
-25. MultiFactorAuthenticationAdfsAdapter. config dosyasında, **Webservicesdkcertificatethumbprint** değerini önceki adımda kopyaladığınız dizeye ayarlayın.  
+25. MultiFactorAuthenticationAdfsAdapter.config dosyasında, **Webservicesdkcertificatethumbprint** değerini önceki adımda kopyaladığınız dizeye ayarlayın.  
 
 Son olarak, bağdaştırıcıyı kaydetmek için PowerShell’de \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 betiğini çalıştırın. Bağdaştırıcı WindowsAzureMultiFactorAuthentication olarak kaydedilir. Kaydın etkili olması için AD FS hizmetini yeniden başlatın.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480462"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
@@ -44,7 +43,7 @@ Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici d
 
 Çalışma kitabı, bağımsız olarak düzenlenebilir grafiklerden, tablolardan, metinden ve giriş denetimlerinden oluşan bölümlerden oluşur. Çalışma kitaplarını daha iyi anlamak için, bir şablon açıp özel bir çalışma kitabı oluşturmaya ilerleyerek başlayalım. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Sanal makineleri**seçin.
 
@@ -100,7 +99,7 @@ Diğer Log Analytics çalışma alanlarından veya **çalışma alanı** tanıml
 
 ### <a name="advanced-analytic-query-settings"></a>Gelişmiş analitik sorgu ayarları
 
-Her bölümde kendi gelişmiş ayarları vardır. Bu ayarlar ![, **Parametreler Ekle** düğmesinin sağında bulunan denetim çalışma kitapları](media/vminsights-workbooks/006-settings.png) bölümü denetimleri Düzenle simgesi aracılığıyla erişilebilir.
+Her bölümde kendi gelişmiş ayarları vardır. Bu ayarlar, ![ ](media/vminsights-workbooks/006-settings.png) **Parametreler Ekle** düğmesinin sağında bulunan denetim çalışma kitapları bölümü denetimleri Düzenle simgesi aracılığıyla erişilebilir.
 
 ![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/007-settings-expanded.png)
 
@@ -147,7 +146,7 @@ Aşağıda, bir çalışma kitabına eklenen ve CPU performansının kılavuz bi
 
 Çalışma kitabı parametreleri, sorgu veya metin bölümlerini el ile düzenlemeniz gerekmeden çalışma kitabındaki değerleri değiştirmenize izin verir. Bu, temel analiz sorgu dilini anlamaya gerek gereksinimini ortadan kaldırır ve çalışma kitabı tabanlı raporlamanın potansiyel kitlelerini büyük ölçüde genişletir.
 
-Parametre değerleri, gibi ``{parameterName}``küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde değişir. Parametre adları, JavaScript tanımlayıcıları, alfabetik karakterler veya alt çizgiler, ardından alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlıdır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
+Parametre değerleri, gibi küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde değişir ``{parameterName}`` . Parametre adları, JavaScript tanımlayıcıları, alfabetik karakterler veya alt çizgiler, ardından alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlıdır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
 
 Parametreler doğrusal, bir çalışma kitabının üstünden başlayıp daha sonraki adımlara akar.  Daha sonra bir çalışma kitabında bildirildiği parametreler, daha önce belirtilen parametreleri geçersiz kılabilir. Bu Ayrıca, daha önce tanımlanan parametrelerden değerlere erişmek için sorgular kullanan parametrelere izin verir. Bir parametrenin adımının kendisi içinde, parametreler aynı adımda daha önce belirtilen bir parametreye bağlı olabileceği gibi, parametreler de doğrusal, soldan sağa doğru yapılır.
  

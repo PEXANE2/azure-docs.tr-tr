@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652630"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını etkinleştir
@@ -32,7 +31,7 @@ Bu makalede, şirket içi ortamınız için Azure AD parola korumasının nasıl
 
 ## <a name="enable-on-premises-password-protection"></a>Şirket içi parola korumasını etkinleştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve**güvenlik** > **kimlik doğrulama yöntemleri** > **parola korumasına** **Azure Active Directory** > gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**  >  **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **parola korumasına**Azure Active Directory gidin.
 1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Evet*olarak ayarlayın.
 
     Bu ayar *Hayır*olarak ayarlandığında, tüm DAĞıTıLAN Azure AD parola koruma DC aracıları tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Doğrulama etkinliği gerçekleştirilmez ve denetim olayları oluşturulmaz.

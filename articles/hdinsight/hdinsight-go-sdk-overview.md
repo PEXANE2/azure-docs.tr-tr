@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479595"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>Go için HDInsight SDK (Önizleme)
@@ -36,7 +35,7 @@ GOPATH konumundan şunu çalıştırın`go get github.com/Azure/azure-sdk-for-go
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Önce SDK 'nın Azure aboneliğinizle doğrulanması gerekir.  Hizmet sorumlusu oluşturmak için aşağıdaki örneği izleyin ve kimlik doğrulaması için kullanın. Bu yapıldıktan sonra, yönetim işlemleri gerçekleştirmek için kullanılabilecek çok sayıda işlev `ClustersClient`(aşağıdaki bölümlerde özetlenen) içeren bir örneğine sahip olacaksınız.
+Önce SDK 'nın Azure aboneliğinizle doğrulanması gerekir.  Hizmet sorumlusu oluşturmak için aşağıdaki örneği izleyin ve kimlik doğrulaması için kullanın. Bu yapıldıktan sonra, `ClustersClient` yönetim işlemleri gerçekleştirmek için kullanılabilecek çok sayıda işlev (aşağıdaki bölümlerde özetlenen) içeren bir örneğine sahip olacaksınız.
 
 > [!NOTE]  
 > Aşağıdaki örnekte, gereksinimlerinize daha uygun olabilecek büyük olasılıkla kimlik doğrulamanın başka yolları vardır. Tüm işlevler burada özetlenmiştir: [Go için Azure SDK kimlik doğrulama işlevleri](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -100,7 +99,7 @@ Hizmet sorumlusu bilgileri JSON olarak görüntülenir.
 }
 ```
 
-Aşağıdaki kod parçacığını kopyalayın ve hizmet sorumlusu `TENANT_ID`oluşturmak `CLIENT_ID`için `CLIENT_SECRET`komutunu çalıştırdıktan `SUBSCRIPTION_ID` sonra döndürülen JSON 'daki dizeleri kullanarak,, ve öğesini girin.
+Aşağıdaki kod parçacığını kopyalayın ve `TENANT_ID` `CLIENT_ID` `CLIENT_SECRET` `SUBSCRIPTION_ID` hizmet sorumlusu oluşturmak için komutunu çalıştırdıktan sonra döndürülen JSON 'daki dizeleri kullanarak,, ve öğesini girin.
 
 ```golang
 package main
@@ -136,11 +135,11 @@ func main() {
 ## <a name="cluster-management"></a>Küme yönetimi
 
 > [!NOTE]  
-> Bu bölümde, önceden kimlik doğrulamasından geçen ve bir `ClusterClient` örnek oluşturmuş olduğunuz ve adlı `client`bir değişkende depoladığınız varsayılmaktadır. Kimlik doğrulaması ve alma `ClusterClient` yönergeleri yukarıdaki kimlik doğrulama bölümünde bulunabilir.
+> Bu bölümde, önceden kimlik doğrulamasından geçen ve bir örnek oluşturmuş olduğunuz ve `ClusterClient` adlı bir değişkende depoladığınız varsayılmaktadır `client` . Kimlik doğrulaması ve alma yönergeleri `ClusterClient` Yukarıdaki kimlik doğrulama bölümünde bulunabilir.
 
 ### <a name="create-a-cluster"></a>Küme oluşturma
 
-Çağırarak `client.Create()`yeni bir küme oluşturulabilir. 
+Çağırarak yeni bir küme oluşturulabilir `client.Create()` . 
 
 #### <a name="example"></a>Örnek
 
@@ -263,7 +262,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>Örnek
 
-Kümenizi başarıyla oluşturduğdığınızı doğrulamak için ' i kullanabilirsiniz `get` .
+`get`Kümenizi başarıyla oluşturduğdığınızı doğrulamak için ' i kullanabilirsiniz.
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -296,7 +295,7 @@ client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> Hem `List()` hem `ListByResourceGroup()` de bir `ClusterListResultPage` struct döndürün. Sonraki sayfayı almak için çağırabilirsiniz `Next()`. Bu, aşağıdaki örnekte gösterildiği `ClusterListResultPage.NotDone()` gibi `false`dönüşene kadar tekrarlanabilir.
+> Hem hem de `List()` `ListByResourceGroup()` bir `ClusterListResultPage` struct döndürün. Sonraki sayfayı almak için çağırabilirsiniz `Next()` . Bu `ClusterListResultPage.NotDone()` `false` , aşağıdaki örnekte gösterildiği gibi dönüşene kadar tekrarlanabilir.
 
 #### <a name="example"></a>Örnek
 
@@ -352,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 HDInsight Yönetim SDK 'Sı, Operations Management Suite (OMS) aracılığıyla kümelerinizde izlemeyi yönetmek için de kullanılabilir.
 
-Yönetim işlemleri için kullanmak üzere `ClusterClient` oluşturduğunuz şekilde, izleme işlemleri için kullanmak üzere bir `ExtensionClient` oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra, şöyle bir `ExtensionClient` şekilde oluşturabilirsiniz:
+`ClusterClient`Yönetim işlemleri için kullanmak üzere oluşturduğunuz şekilde, `ExtensionClient` izleme işlemleri için kullanmak üzere bir oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra, `ExtensionClient` şöyle bir şekilde oluşturabilirsiniz:
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -360,7 +359,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Aşağıdaki izleme örnekleri, zaten çağrılan bir `ExtensionClient` adı `extClient` başlattığını ve yukarıda gösterildiği `Authorizer` gibi ayarlamış olduğunu varsayar.
+> Aşağıdaki izleme örnekleri, zaten `ExtensionClient` çağrılan bir adı başlattığını `extClient` ve `Authorizer` yukarıda gösterildiği gibi ayarlamış olduğunu varsayar.
 
 ### <a name="enable-oms-monitoring"></a>OMS izlemeyi etkinleştir
 
@@ -405,7 +404,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-' Betik eylemini Sil ' ve ' kalıcı betik eylemlerini Listele ' işlemleri için, yönetim işlemleri için kullanmak üzere nasıl `ScriptActionsClient`oluşturduğunuza `ClusterClient` benzer şekilde bir oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra şöyle bir `ScriptActionsClient` oluşturabilirsiniz:
+' Betik eylemini Sil ' ve ' kalıcı betik eylemlerini Listele ' işlemleri için, `ScriptActionsClient` `ClusterClient` yönetim işlemleri için kullanmak üzere nasıl oluşturduğunuza benzer şekilde bir oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra şöyle bir oluşturabilirsiniz `ScriptActionsClient` :
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -413,7 +412,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Aşağıdaki betik eylemleri örnekleri, zaten bir `ScriptActionsClient` çağrılmış `scriptActionsClient` olduğunu varsayar ve yukarıda gösterildiği `Authorizer` gibi ayarlayın.
+> Aşağıdaki betik eylemleri örnekleri, zaten bir çağrılmış olduğunu varsayar `ScriptActionsClient` `scriptActionsClient` ve `Authorizer` yukarıda gösterildiği gibi ayarlayın.
 
 ### <a name="delete-script-action"></a>Betik eylemini Sil
 
@@ -426,7 +425,7 @@ scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Clus
 ### <a name="list-persisted-script-actions"></a>Kalıcı betik eylemlerini listeleme
 
 > [!NOTE]  
-> Her `ListByCluster()` ikisi de `ScriptActionsListPage` bir struct döndürür. Sonraki sayfayı almak için çağırabilirsiniz `Next()`. Bu, aşağıdaki örnekte gösterildiği `ClusterListResultPage.NotDone()` gibi `false`dönüşene kadar tekrarlanabilir.
+> Her ikisi de `ListByCluster()` bir `ScriptActionsListPage` struct döndürür. Sonraki sayfayı almak için çağırabilirsiniz `Next()` . Bu `ClusterListResultPage.NotDone()` `false` , aşağıdaki örnekte gösterildiği gibi dönüşene kadar tekrarlanabilir.
 
 Belirtilen küme için tüm kalıcı betik eylemlerini listelemek için:
 ```golang
@@ -453,7 +452,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>Tüm betiklerin yürütme geçmişini Listele
 
-Bu işlem için, yönetim işlemleri için kullanmak üzere `ScriptExecutionHistoryClient`nasıl oluşturduğunuza `ClusterClient` benzer şekilde, oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra şöyle bir `ScriptActionsClient` oluşturabilirsiniz:
+Bu işlem için, `ScriptExecutionHistoryClient` `ClusterClient` yönetim işlemleri için kullanmak üzere nasıl oluşturduğunuza benzer şekilde, oluşturmanız gerekir. Yukarıdaki kimlik doğrulama bölümünü tamamladıktan sonra şöyle bir oluşturabilirsiniz `ScriptActionsClient` :
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -461,7 +460,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Aşağıda, zaten bir `ScriptExecutionHistoryClient` çağrılan `scriptExecutionHistoryClient` ve ' ın yukarıda gösterildiği `Authorizer` gibi ayarlamış olduğunuz varsayılmaktadır.
+> Aşağıda, zaten bir `ScriptExecutionHistoryClient` çağrılan `scriptExecutionHistoryClient` ve ' ın `Authorizer` yukarıda gösterildiği gibi ayarlamış olduğunuz varsayılmaktadır.
 
 Belirtilen küme için tüm betiklerin yürütme geçmişini listelemek için:
 

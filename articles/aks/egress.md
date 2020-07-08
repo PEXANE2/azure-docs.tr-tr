@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803391"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de çıkış trafiği için statik bir genel IP adresi kullanın
@@ -22,13 +21,13 @@ Bu makalede, bir AKS kümesinde çıkış trafiği ile kullanmak üzere statik b
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Çıkış trafiğine genel bakış
 
-Bir AKS kümesinden giden trafik [Azure Load Balancer kuralları][outbound-connections]izler. Türündeki `LoadBalancer` Ilk Kubernetes hizmeti oluşturulmadan önce, BIR aks kümesindeki aracı düğümleri hiçbir Azure Load Balancer havuzunun parçası değildir. Bu yapılandırmada, düğümlerin örnek düzeyi genel IP adresi yok. Azure, giden akışı, yapılandırılamaz veya belirleyici olmayan bir ortak kaynak IP adresine çevirir.
+Bir AKS kümesinden giden trafik [Azure Load Balancer kuralları][outbound-connections]izler. Türündeki ilk Kubernetes hizmeti oluşturulmadan önce `LoadBalancer` , BIR AKS kümesindeki aracı düğümleri hiçbir Azure Load Balancer havuzunun parçası değildir. Bu yapılandırmada, düğümlerin örnek düzeyi genel IP adresi yok. Azure, giden akışı, yapılandırılamaz veya belirleyici olmayan bir ortak kaynak IP adresine çevirir.
 
-Türü `LoadBalancer` bir Kubernetes hizmeti oluşturulduktan sonra, aracı düğümleri bir Azure Load Balancer havuzuna eklenir. Giden akış için, Azure onu yük dengeleyicide yapılandırılan ilk genel IP adresine çevirir. Bu genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes LoadBalancer hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
+Türü bir Kubernetes hizmeti oluşturulduktan sonra `LoadBalancer` , aracı düğümleri bir Azure Load Balancer havuzuna eklenir. Giden akış için, Azure onu yük dengeleyicide yapılandırılan ilk genel IP adresine çevirir. Bu genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes LoadBalancer hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
 
 ## <a name="create-a-static-public-ip"></a>Statik genel IP oluşturma
 
@@ -73,7 +72,7 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-with-the-static-ip"></a>Statik IP ile bir hizmet oluşturma
 
-Statik genel IP adresine sahip bir hizmet oluşturmak için, `loadBalancerIP` özelliği ve STATIK genel IP adresinin değerini YAML bildirimine ekleyin. Aşağıdaki YAML 'de `egress-service.yaml` adlı bir dosya oluşturun ve kopyalayın. Önceki adımda oluşturulan kendi genel IP adresinizi sağlayın.
+Statik genel IP adresine sahip bir hizmet oluşturmak için, `loadBalancerIP` özelliği ve statik genel IP adresinin değerini YAML bildirimine ekleyin. `egress-service.yaml`Aşağıdaki YAML 'de adlı bir dosya oluşturun ve kopyalayın. Önceki adımda oluşturulan kendi genel IP adresinizi sağlayın.
 
 ```yaml
 apiVersion: v1
@@ -87,7 +86,7 @@ spec:
   - port: 80
 ```
 
-`kubectl apply` Komutuyla hizmeti ve dağıtımı oluşturun.
+Komutuyla hizmeti ve dağıtımı oluşturun `kubectl apply` .
 
 ```console
 kubectl apply -f egress-service.yaml
@@ -97,7 +96,7 @@ Bu hizmet Azure Load Balancer yeni bir ön uç IP 'yi yapılandırır. Yapıland
 
 ## <a name="verify-egress-address"></a>Çıkış adresini doğrula
 
-Statik ortak IP adresinin kullanıldığını doğrulamak için, gibi DNS arama hizmeti kullanabilirsiniz `checkip.dyndns.org`.
+Statik ortak IP adresinin kullanıldığını doğrulamak için, gibi DNS arama hizmeti kullanabilirsiniz `checkip.dyndns.org` .
 
 Başlangıç ve temel bir *deni* Pod 'a iliştirme:
 
@@ -105,7 +104,7 @@ Başlangıç ve temel bir *deni* Pod 'a iliştirme:
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
-Kapsayıcının içinden bir Web sitesine erişmek için, kapsayıcıya yüklemek `apt-get` `curl` için kullanın.
+Kapsayıcının içinden bir Web sitesine erişmek için, `apt-get` kapsayıcıya yüklemek için kullanın `curl` .
 
 ```console
 apt-get update && apt-get install curl -y

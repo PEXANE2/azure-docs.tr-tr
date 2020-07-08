@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653113"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>En son Azure Multi-Factor Authentication Sunucusu’na yükseltme
@@ -53,13 +52,13 @@ Adımları bir bakışta yükseltin:
 
 Bu bölüme geçmeden önce MFA sunucularınızın yükseltmesini doldurun.
 
-1. Kullanıcı Portalı yükleme konumunun sanal dizininde bulunan Web. config dosyasının yedeklemesini oluşturun (örneğin, C:\inetpub\wwwroot\MultiFactorAuth). Varsayılan Temada herhangi bir değişiklik yapılırsa, App_Themes \Default klasörünü de yedekleyin. Varsayılan bir klasörün bir kopyasını oluşturmak ve varsayılan temayı değiştirmek için yeni bir tema oluşturmak daha iyidir.
+1. Kullanıcı Portalı yükleme konumunun sanal dizininde bulunan web.config dosyasının yedeğini alın (örneğin, C:\inetpub\wwwroot\MultiFactorAuth). Varsayılan Temada herhangi bir değişiklik yapılırsa, App_Themes \Default klasörünü de yedekleyin. Varsayılan bir klasörün bir kopyasını oluşturmak ve varsayılan temayı değiştirmek için yeni bir tema oluşturmak daha iyidir.
 2. Kullanıcı Portalı diğer MFA sunucu bileşenleriyle aynı sunucuda çalışıyorsa, MFA sunucusu yüklemesi Kullanıcı portalını güncelleştirmenizi ister. İstemi kabul edin ve Kullanıcı Portalı güncelleştirmesini yükler. Sanal Dizin adının önceden yüklü olan sanal dizinle eşleşip eşleşmediğini denetleyin (örneğin, MultiFactorAuth).
-3. Kullanıcı Portalı kendi sunucusahibiyseniz, MultiFactorAuthenticationUserPortalSetup64. msi dosyasını MFA sunucularından birinin install konumundan kopyalayın ve Kullanıcı Portalı Web sunucusuna yerleştirin. Yükleyiciyi çalıştırın.
+3. Kullanıcı Portalı kendi sunucusahibiyseniz, MultiFactorAuthenticationUserPortalSetup64.msi dosyasını MFA sunucularından birinin install konumundan kopyalayın ve Kullanıcı Portalı Web sunucusuna yerleştirin. Yükleyiciyi çalıştırın.
 
    Bir hata oluşursa, "Microsoft Visual C++ 2015 yeniden dağıtılabilir güncelleştirme 1 veya daha yüksek bir sürümü gerekir," en son güncelleştirme paketini [Microsoft Indirme merkezi](https://www.microsoft.com/download/)' nden indirin ve yükleyin. Hem x86 hem de x64 sürümlerini yükler.
 
-4. Güncelleştirilmiş Kullanıcı Portalı yazılımı yüklendikten sonra, adım 1 ' de yaptığınız Web. config yedeklemesini yeni Web. config dosyasıyla karşılaştırın. Yeni Web. config dosyasında yeni bir öznitelik yoksa, yeni birinin üzerine yazmak için Backup Web. config dosyanızı sanal dizine kopyalayın. Diğer bir seçenek de, appSettings değerlerini ve Web hizmeti SDK URL 'sini yedekleme dosyasından yeni Web. config dosyasına kopyalayıp yapıştırmaktır.
+4. Güncelleştirilmiş Kullanıcı Portalı yazılımı yüklendikten sonra, 1. adımda yaptığınız web.config yedeklemesini yeni web.config dosyası ile karşılaştırın. Yeni web.config yeni bir öznitelik yoksa, yeni dosyanın üzerine yazmak için yedekleme web.config sanal dizine kopyalayın. Diğer bir seçenek de, appSettings değerlerini ve Web hizmeti SDK URL 'sini yedekleme dosyasından yeni web.config kopyalayıp yapıştırmaktır.
 
 Birden çok sunucu üzerinde Kullanıcı Portalı varsa, bu yüklemeyi tümünde tekrarlayın.
 
@@ -76,7 +75,7 @@ Bu bölüme geçmeden önce MFA sunucularınızın ve Kullanıcı portalının y
 
 Bu yönergeler yalnızca Multi-Factor Authentication Sunucusu AD FS sunucularınızdan ayrı olarak çalıştırırsanız geçerlidir. Her iki hizmet aynı sunucuda çalışıyorsa, bu bölümü atlayın ve yükleme adımlarına gidin. 
 
-1. AD FS kayıtlı olan MultiFactorAuthenticationAdfsAdapter. config dosyasının bir kopyasını kaydedin veya şu PowerShell komutunu kullanarak yapılandırmayı dışarı aktarın: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Daha önce yüklenen sürüme bağlı olarak bağdaştırıcı adı "bağdaştırıcı windowsazuremultifactorauthentication" veya "AzureMfaServerAuthentication" olur.
+1. AD FS kayıtlı MultiFactorAuthenticationAdfsAdapter.config dosyanın bir kopyasını kaydedin veya şu PowerShell komutunu kullanarak yapılandırmayı dışarı aktarın: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]` . Daha önce yüklenen sürüme bağlı olarak bağdaştırıcı adı "bağdaştırıcı windowsazuremultifactorauthentication" veya "AzureMfaServerAuthentication" olur.
 2. Aşağıdaki dosyaları MFA sunucusu yükleme konumundan AD FS sunucularına kopyalayın:
 
    * MultiFactorAuthenticationAdfsAdapterSetup64.msi
@@ -84,9 +83,9 @@ Bu yönergeler yalnızca Multi-Factor Authentication Sunucusu AD FS sunucuların
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. `Register-AdfsAuthenticationProvider` Komutun sonuna ekleyerek `-ConfigurationFilePath [path]` Register-MultiFactorAuthenticationAdfsAdapter. ps1 betiğini düzenleyin. *[Path]* öğesini MultiFactorAuthenticationAdfsAdapter. config dosyasının tam yoluyla veya önceki adımda aktarılmış yapılandırma dosyası ile değiştirin.
+3. Komutun sonuna ekleyerek Register-MultiFactorAuthenticationAdfsAdapter.ps1 betiğini düzenleyin `-ConfigurationFilePath [path]` `Register-AdfsAuthenticationProvider` . *[Path]* öğesini MultiFactorAuthenticationAdfsAdapter.config dosyanın tam yoluyla veya önceki adımda aktarılmış yapılandırma dosyası ile değiştirin.
 
-   Eski yapılandırma dosyasıyla eşleşip eşleşseler görmek için yeni MultiFactorAuthenticationAdfsAdapter. config içindeki öznitelikleri denetleyin. Yeni sürümde herhangi bir öznitelik eklendiyse veya kaldırılırsa, eski yapılandırma dosyasından öznitelik değerlerini yeni bir dosyaya kopyalayın veya eski yapılandırma dosyasını eşleşecek şekilde değiştirin.
+   Eski yapılandırma dosyasıyla eşleşip eşleşseler görmek için yeni MultiFactorAuthenticationAdfsAdapter.config öznitelikleri denetleyin. Yeni sürümde herhangi bir öznitelik eklendiyse veya kaldırılırsa, eski yapılandırma dosyasından öznitelik değerlerini yeni bir dosyaya kopyalayın veya eski yapılandırma dosyasını eşleşecek şekilde değiştirin.
 
 ### <a name="install-new-ad-fs-adapters"></a>Yeni AD FS bağdaştırıcıları 'nı yükler
 
@@ -94,19 +93,19 @@ Bu yönergeler yalnızca Multi-Factor Authentication Sunucusu AD FS sunucuların
 > Bu bölümün 3-8 adımında kullanıcılarınız iki aşamalı doğrulama gerçekleştirmek zorunda olmayacaktır. Birden çok kümede yapılandırılmış AD FS varsa, kapalı kalma süresini önlemek için gruptaki her kümeyi diğer kümelerden bağımsız olarak kaldırabilir, yükseltebilir ve geri yükleyebilirsiniz.
 
 1. Bazı AD FS sunucularını gruptan kaldırın. Diğerleri çalışmaya devam ederken bu sunucuları güncelleştirin.
-2. Yeni AD FS bağdaştırıcısını AD FS grubundan kaldırılan her sunucuya yükler. MFA sunucusu her bir AD FS sunucusunda yüklüyse, MFA sunucusu yönetim UX aracılığıyla güncelleştirme yapabilirsiniz. Aksi takdirde, MultiFactorAuthenticationAdfsAdapterSetup64. msi dosyasını çalıştırarak güncelleştirin.
+2. Yeni AD FS bağdaştırıcısını AD FS grubundan kaldırılan her sunucuya yükler. MFA sunucusu her bir AD FS sunucusunda yüklüyse, MFA sunucusu yönetim UX aracılığıyla güncelleştirme yapabilirsiniz. Aksi takdirde, MultiFactorAuthenticationAdfsAdapterSetup64.msi çalıştırarak güncelleştirin.
 
    Bir hata oluşursa, "Microsoft Visual C++ 2015 yeniden dağıtılabilir güncelleştirme 1 veya daha yüksek bir sürümü gerekir," en son güncelleştirme paketini [Microsoft Indirme merkezi](https://www.microsoft.com/download/)' nden indirin ve yükleyin. Hem x86 hem de x64 sürümlerini yükler.
 
-3. **AD FS** > **kimlik doğrulama ilkeleri** > **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **Bağdaştırıcı windowsazuremultifactorauthentication** veya **AzureMFAServerAuthentication** işaretini kaldırın (yüklü olan geçerli sürüme bağlı olarak).
+3. **AD FS**  >  **kimlik doğrulama ilkeleri**  >  **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **Bağdaştırıcı windowsazuremultifactorauthentication** veya **AzureMFAServerAuthentication** işaretini kaldırın (yüklü olan geçerli sürüme bağlı olarak).
 
    Bu adım tamamlandıktan sonra, bu AD FS kümesinde MFA sunucusu üzerinden iki adımlı doğrulama, 8. adımı tamamlayana kadar kullanılamaz.
 
-4. Unregister-MultiFactorAuthenticationAdfsAdapter. ps1 PowerShell betiğini çalıştırarak AD FS bağdaştırıcısının eski sürümünün kaydını kaldırın. *-Name* parametresinin ("bağdaştırıcı windowsazuremultifactorauthentication" veya "AzureMFAServerAuthentication") adım 3 ' te görüntülenen adla eşleştiğinden emin olun. Bu, merkezi bir yapılandırma olduğundan aynı AD FS kümesindeki tüm sunucular için geçerlidir.
-5. Register-MultiFactorAuthenticationAdfsAdapter. ps1 PowerShell betiğini çalıştırarak yeni AD FS bağdaştırıcısını kaydettirin. Bu, merkezi bir yapılandırma olduğundan aynı AD FS kümesindeki tüm sunucular için geçerlidir.
+4. Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell betiğini çalıştırarak AD FS bağdaştırıcısının eski sürümünün kaydını kaldırın. *-Name* parametresinin ("bağdaştırıcı windowsazuremultifactorauthentication" veya "AzureMFAServerAuthentication") adım 3 ' te görüntülenen adla eşleştiğinden emin olun. Bu, merkezi bir yapılandırma olduğundan aynı AD FS kümesindeki tüm sunucular için geçerlidir.
+5. Yeni AD FS bağdaştırıcısını Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell betiğini çalıştırarak kaydettirin. Bu, merkezi bir yapılandırma olduğundan aynı AD FS kümesindeki tüm sunucular için geçerlidir.
 6. AD FS grubundan kaldırılan her sunucuda AD FS hizmetini yeniden başlatın.
 7. Güncelleştirilmiş sunucuları AD FS grubuna geri ekleyin ve diğer sunucuları gruptan kaldırın.
-8. **AD FS** > **kimlik doğrulama ilkeleri** > **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **AzureMfaServerAuthentication**denetleyin.
+8. **AD FS**  >  **kimlik doğrulama ilkeleri**  >  **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **AzureMfaServerAuthentication**denetleyin.
 9. AD FS grubundan kaldırılan sunucuları güncelleştirmek için 2. adımı tekrarlayın ve bu sunuculardaki AD FS hizmetini yeniden başlatın.
 10. Bu sunucuları AD FS grubuna geri ekleyin.
 

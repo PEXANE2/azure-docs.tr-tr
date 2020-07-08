@@ -4,10 +4,9 @@ description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı 
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656777"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
@@ -25,7 +24,7 @@ IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilend
 
 Her işlev uygulamasının tek bir gelen IP adresi vardır. Bu IP adresini bulmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
 3. **Platform özellikleri**'ni seçin.
 4. **Özellikler**' i seçin ve **sanal IP adresı**altında gelen IP adresi görüntülenir.
@@ -38,10 +37,10 @@ Bir işlev uygulaması için kullanılabilir giden IP adreslerini bulmak için:
 
 1. [Azure Kaynak Gezgini](https://resources.azure.com)oturum açın.
 2. **Microsoft. Web > siteleri > > {aboneliğiniz} > sağlayıcıları**' nı seçin.
-3. JSON panelinde, işlev uygulamanızın adında sonlanan bir `id` özelliği olan siteyi bulun.
-4. Bkz `outboundIpAddresses` . `possibleOutboundIpAddresses`ve. 
+3. JSON panelinde, `id` işlev uygulamanızın adında sonlanan bir özelliği olan siteyi bulun.
+4. Bkz `outboundIpAddresses` `possibleOutboundIpAddresses` . ve. 
 
-Kümesi `outboundIpAddresses` Şu anda işlev uygulaması için kullanılabilir. Kümesi yalnızca işlev `possibleOutboundIpAddresses` uygulaması [diğer fiyatlandırma katmanlarına ÖLÇEKLENIRKEN](#outbound-ip-address-changes)kullanılabilir olacak IP adreslerini içerir.
+Kümesi `outboundIpAddresses` Şu anda işlev uygulaması için kullanılabilir. Kümesi `possibleOutboundIpAddresses` yalnızca işlev uygulaması [diğer fiyatlandırma katmanlarına ölçeklenirken](#outbound-ip-address-changes)kullanılabilir olacak IP adreslerini içerir.
 
 Kullanılabilir giden IP adreslerini bulmanın alternatif bir yolu [Cloud Shell](../cloud-shell/quickstart.md)kullanmaktır:
 
@@ -95,7 +94,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 Bir işlev uygulaması için kullanılabilir giden IP adresleri kümesi şunları yaptığınızda değişebilir:
 
 * Gelen IP adresini değiştirecek herhangi bir işlem yapın.
-* App Service planı fiyatlandırma katmanınızı değiştirin. Uygulamanızın kullanabileceği tüm olası giden IP adreslerinin listesi, tüm fiyatlandırma katmanları için `possibleOutboundIPAddresses` özellikte yer alabilir. Bkz. [giden IP 'Leri bulma](#find-outbound-ip-addresses).
+* App Service planı fiyatlandırma katmanınızı değiştirin. Uygulamanızın kullanabileceği tüm olası giden IP adreslerinin listesi, tüm fiyatlandırma katmanları için özellikte yer alabilir `possibleOutboundIPAddresses` . Bkz. [giden IP 'Leri bulma](#find-outbound-ip-addresses).
 
 İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile giden IP adresi de değişebilir.
 
@@ -115,7 +114,7 @@ Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](..
 
 İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
 3. **Genel Bakış** sekmesini seçin.
 4. App Service planı katmanı **App Service plan/fiyatlandırma katmanı**altında görünür. App Service Ortamı fiyatlandırma katmanı **yalıtılmıştır**.
@@ -126,7 +125,7 @@ Alternatif olarak, [Cloud Shell](../cloud-shell/quickstart.md)kullanabilirsiniz:
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service Ortamı `sku` `Isolated`.
+App Service Ortamı `sku` `Isolated` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

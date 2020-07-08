@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672967"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki JSON ve veri yapıları ile çalışma
@@ -23,7 +22,7 @@ ms.locfileid: "80672967"
 İç içe geçmiş nesneler, bir dizideki diğer nesneleri veya anahtar-değer çiftlerinin haritasını içeren nesnelerdir. Bu nesneler JSON dizeleri olarak temsil edilir. Bu makalede, JSON 'ın verileri almak ve iç içe nesneleri çözümlemek için nasıl kullanıldığı açıklanmaktadır.
 
 ## <a name="working-with-json-strings"></a>JSON dizeleriyle çalışma
-Bilinen `extractjson` bir yoldaki belırlı bir JSON öğesine erişmek için kullanın. Bu işlev, aşağıdaki kuralları kullanan bir yol ifadesi gerektirir.
+`extractjson`Bilinen bir yoldaki belirli BIR JSON öğesine erişmek için kullanın. Bu işlev, aşağıdaki kuralları kullanan bir yol ifadesi gerektirir.
 
 - _$_ kök klasöre başvurmak için
 - Aşağıdaki örneklerde gösterildiği gibi dizin ve öğelere başvurmak için köşeli ayracı veya nokta gösterimini kullanın.
@@ -57,7 +56,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Nesneler ile çalışma
 
 ### <a name="parsejson"></a>parseJSON
-JSON yapınız içindeki birden çok öğeye erişmek için, dinamik bir nesne olarak erişmek daha kolay olur. Metin `parsejson` verilerini dinamik bir nesneye dönüştürmek için kullanın. Dinamik bir türe dönüştürüldükten sonra, verileri çözümlemek için ek işlevler kullanılabilir.
+JSON yapınız içindeki birden çok öğeye erişmek için, dinamik bir nesne olarak erişmek daha kolay olur. `parsejson`Metin verilerini dinamik bir nesneye dönüştürmek için kullanın. Dinamik bir türe dönüştürüldükten sonra, verileri çözümlemek için ek işlevler kullanılabilir.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -68,7 +67,7 @@ print hosts_object
 
 
 ### <a name="arraylength"></a>arraylength
-Dizideki `arraylength` öğelerin sayısını saymak için kullanın:
+`arraylength`Dizideki öğelerin sayısını saymak için kullanın:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -77,7 +76,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Bir `mvexpand` nesnenin özelliklerini ayrı satırlara bölmek için kullanın.
+`mvexpand`Bir nesnenin özelliklerini ayrı satırlara bölmek için kullanın.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -88,7 +87,7 @@ print hosts_object
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
-Bir `buildschema` nesnenin tüm değerlerini admits şemayı almak için kullanın:
+`buildschema`Bir nesnenin tüm değerlerini admits şemayı almak için kullanın:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');

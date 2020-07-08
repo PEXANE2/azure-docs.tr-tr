@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681486"
 ---
 # <a name="override-materials-during-model-conversion"></a>Model dönüştürme sırasında malzemeleri geçersiz kılma
@@ -38,7 +37,7 @@ Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturul
 ]
 ```
 
-`box_materials_override.json` Dosya, giriş kapsayıcısına yerleştirilir ve `ConversionSettings.json` `box.fbx`üzerine, geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
+`box_materials_override.json`Dosya, giriş kapsayıcısına yerleştirilir ve `ConversionSettings.json` üzerine, `box.fbx` geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
 
 ```json
 {
@@ -52,7 +51,7 @@ Model dönüştürüldüğünde yeni ayarlar uygulanır.
 
 [Renk malzemesi](../../overview/features/color-materials.md) modeli ışıklanmaya bağımsız olan sürekli gölgeli bir yüzey tanımlar.
 Bu, örneğin, Photogrammetri algoritmalarının yaptığı varlıklar için yararlıdır.
-Malzeme geçersiz kılma dosyalarında, bir malzeme, olarak `unlit` `true`ayarlanarak bir renk malzemesi olarak bildirilebilecek.
+Malzeme geçersiz kılma dosyalarında, bir malzeme, olarak ayarlanarak bir renk malzemesi olarak bildirilebilecek `unlit` `true` .
 
 ```json
 [
@@ -71,7 +70,7 @@ Malzeme geçersiz kılma dosyalarında, bir malzeme, olarak `unlit` `true`ayarla
 
 Bazen dönüştürme işleminin belirli doku eşlemelerini yoksaymasını isteyebilirsiniz. Bu, modelinize göre doğru anlaşılmayan özel eşlemeler üreten bir araç tarafından oluşturulduysa, bu durum olabilir. Örneğin, opaklık dışında bir şeyi tanımlamak için kullanılan bir "OpacityMap" veya "NormalMap" in "Tampmap" olarak depolandığı bir model. (İkinci durumda, "NormalMap" olarak dönüştürücünün "NormalMap" olarak kullanılmasına neden olacak "NormalMap" öğesini yok sayabilirsiniz.)
 
-İlke basittir. Yalnızca adlı `ignoreTextureMaps` bir özellik ekleyin ve yoksaymak istediğiniz doku haritasını ekleyin:
+İlke basittir. Yalnızca adlı bir özellik ekleyin `ignoreTextureMaps` ve yoksaymak istediğiniz doku haritasını ekleyin:
 
 ```json
 [
@@ -86,7 +85,7 @@ Göz ardı ettiğiniz doku eşlemelerinin tam listesi için aşağıdaki JSON ş
 
 ## <a name="json-schema"></a>JSON şeması
 
-Malzemeler dosyaları için tam JSON şeması burada verilmiştir. `unlit` Ve `ignoreTextureMaps`dışında, kullanılabilir özellikler, [renk malzemesi](../../overview/features/color-materials.md) ve [PBR malzeme](../../overview/features/pbr-materials.md) modelleriyle ilgili bölümlerde açıklanan özelliklerin bir alt kümesidir.
+Malzemeler dosyaları için tam JSON şeması burada verilmiştir. `unlit`Ve dışında `ignoreTextureMaps` , kullanılabilir özellikler, [renk malzemesi](../../overview/features/color-materials.md) ve [PBR malzeme](../../overview/features/pbr-materials.md) modelleriyle ilgili bölümlerde açıklanan özelliklerin bir alt kümesidir.
 
 ```json
 {

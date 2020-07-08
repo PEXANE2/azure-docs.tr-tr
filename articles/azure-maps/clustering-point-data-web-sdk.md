@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen
 ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804580"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
@@ -26,7 +25,7 @@ Haritada çok sayıda veri noktasını görselleştirirken, veri noktaları birb
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Veri kaynağında kümeleme etkinleştiriliyor
 
-Seçeneğini true olarak ayarlayarak `DataSource` sınıfta kümelendirmeyi etkinleştirin. `cluster` Yakın `ClusterRadius` noktaları seçecek şekilde ayarlayın ve bunları bir kümede birleştirir. Değeri piksel cinsinden `ClusterRadius` olur. Kümeleme `clusterMaxZoom` mantığının devre dışı bırakılacağı yakınlaştırma düzeyini belirtmek için kullanın. Veri kaynağında kümelemenin nasıl etkinleştirileceği hakkında bir örnek aşağıda verilmiştir.
+`DataSource`Seçeneğini true olarak ayarlayarak sınıfta kümelendirmeyi etkinleştirin `cluster` . `ClusterRadius`Yakın noktaları seçecek şekilde ayarlayın ve bunları bir kümede birleştirir. Değeri `ClusterRadius` piksel cinsinden olur. `clusterMaxZoom`Kümeleme mantığının devre dışı bırakılacağı yakınlaştırma düzeyini belirtmek için kullanın. Veri kaynağında kümelemenin nasıl etkinleştirileceği hakkında bir örnek aşağıda verilmiştir.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,15 +43,15 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> İki veri noktası arka planda yakınsa, kullanıcının ne kadar yakın yakınlaştırılmadığına bakılmaksızın kümenin hiçbir şekilde hiçbir şekilde kesintiye uğramaması mümkündür. Bunu çözmek için, kümeleme mantığını devre dışı `clusterMaxZoom` bırakma ve her şeyi görüntüleme seçeneğini belirleyebilirsiniz.
+> İki veri noktası arka planda yakınsa, kullanıcının ne kadar yakın yakınlaştırılmadığına bakılmaksızın kümenin hiçbir şekilde hiçbir şekilde kesintiye uğramaması mümkündür. Bunu çözmek için, `clusterMaxZoom` kümeleme mantığını devre dışı bırakma ve her şeyi görüntüleme seçeneğini belirleyebilirsiniz.
 
-`DataSource` Sınıfın kümeleme için sağladığı ek yöntemler şunlardır:
+`DataSource`Sınıfın kümeleme için sağladığı ek yöntemler şunlardır:
 
 | Yöntem | Dönüş türü | Açıklama |
 |--------|-------------|-------------|
-| getClusterChildren (Clusterıd: Number) | Promise&lt;dizi&lt;özelliği&lt;geometrisi, herhangi&gt; \| bir şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
-| getClusterExpansionZoom (Clusterıd: Number) | Promise&lt;numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
-| Getclusteryaprakları (Clusterıd: Number, limit: Number, kayması: Number) | Promise&lt;dizi&lt;özelliği&lt;geometrisi, herhangi&gt; \| bir şekil&gt;&gt; | Kümedeki tüm noktaları alır. ' İ `limit` , noktaların bir alt kümesini döndürecek şekilde ayarlayın ve ' ı `offset` noktaları üzerinden kullanın. |
+| getClusterChildren (Clusterıd: Number) | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
+| getClusterExpansionZoom (Clusterıd: Number) | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
+| Getclusteryaprakları (Clusterıd: Number, limit: Number, kayması: Number) | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Kümedeki tüm noktaları alır. `limit`' İ, noktaların bir alt kümesini döndürecek şekilde ayarlayın ve ' ı `offset` noktaları üzerinden kullanın. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Balon bir katman kullanarak kümeleri görüntüleme
 
@@ -63,29 +62,29 @@ Kabarcığun üzerine kümenin boyutunu göstermek için, metinle birlikte bir s
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Temel kabarcık katmanı Kümelemesi" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>temel balon katmanı kümelemesine</a> bakın.
+Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>temel balon katmanı kümelemesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>Sembol katmanı kullanarak kümeleri görüntüleme
 
-Veri noktalarını görselleştirirken sembol katmanı, temizleyici bir kullanıcı arabirimi sağlamak için birbirleriyle çakışan sembolleri otomatik olarak gizler. Haritada veri noktaları yoğunluğunu göstermek istiyorsanız bu varsayılan davranış istenmeyen bir durum olabilir. Ancak, bu ayarlar değiştirilebilir. Tüm sembolleri göstermek için sembol katmanları `allowOverlap` `iconOptions` özelliğinin seçeneğini olarak `true`ayarlayın. 
+Veri noktalarını görselleştirirken sembol katmanı, temizleyici bir kullanıcı arabirimi sağlamak için birbirleriyle çakışan sembolleri otomatik olarak gizler. Haritada veri noktaları yoğunluğunu göstermek istiyorsanız bu varsayılan davranış istenmeyen bir durum olabilir. Ancak, bu ayarlar değiştirilebilir. Tüm sembolleri göstermek için `allowOverlap` sembol katmanları `iconOptions` özelliğinin seçeneğini olarak ayarlayın `true` . 
 
 Temiz bir kullanıcı arabirimi tutarken veri noktaları yoğunluğunu göstermek için kümeleme kullanın. Aşağıdaki örnekte, sembol katmanını kullanarak özel semboller ekleme ve kümeleri ve bireysel veri noktalarını temsil etme adımları gösterilmektedir.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Kümelenmiş sembol katmanı" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından kullanılan kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>kümelenmiş sembol katmanını</a> görüntüleyin.
+Codepen üzerinde Azure Maps () tarafından kullanılan kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>kümelenmiş sembol katmanını</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>Kümeleme ve ısı haritaları katmanı
 
-Isı haritaları haritadaki verilerin yoğunluğunu görüntülemenin harika bir yoludur. Bu görselleştirme yöntemi, kendi başına çok sayıda veri noktasını işleyebilir. Veri noktaları kümelenir ve küme boyutu ısı haritasının ağırlığı olarak kullanılıyorsa, ısı haritası daha da fazla veri işleyebilir. Bu seçeneği başarmak için, ısı haritası `weight` katmanının seçeneğini olarak `['get', 'point_count']`ayarlayın. Küme yarıçapı küçük olduğunda, ısı haritası kümelenmemiş veri noktalarını kullanarak bir ısı haritası ile neredeyse özdeş olacaktır, ancak çok daha iyi işlem yapar. Ancak, küme yarıçapı ne kadar küçükse, ısı haritası daha doğru olacaktır, ancak daha az performans avantajları olur.
+Isı haritaları haritadaki verilerin yoğunluğunu görüntülemenin harika bir yoludur. Bu görselleştirme yöntemi, kendi başına çok sayıda veri noktasını işleyebilir. Veri noktaları kümelenir ve küme boyutu ısı haritasının ağırlığı olarak kullanılıyorsa, ısı haritası daha da fazla veri işleyebilir. Bu seçeneği başarmak için, `weight` ısı haritası katmanının seçeneğini olarak ayarlayın `['get', 'point_count']` . Küme yarıçapı küçük olduğunda, ısı haritası kümelenmemiş veri noktalarını kullanarak bir ısı haritası ile neredeyse özdeş olacaktır, ancak çok daha iyi işlem yapar. Ancak, küme yarıçapı ne kadar küçükse, ısı haritası daha doğru olacaktır, ancak daha az performans avantajları olur.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme ağırlıklı ısı haritası" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>kümesi ağırlıklı ısı haritasını</a> inceleyin.
+Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>kümesi ağırlıklı ısı haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="mouse-events-on-clustered-data-points"></a>Kümelenmiş veri noktalarında fare olayları
@@ -95,36 +94,36 @@ Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğ
 | Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemleriyle kullanılabilecek benzersiz bir kimlik. |
-| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
-| `point_count_abbreviated` | string  | Long ise `point_count` değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
+| `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
+| `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
+| `point_count_abbreviated` | string  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
 
-Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabarcık katmanı alır. Click olayı tetiklendiğinde, kod, kümenin parçalama yaptığı sonraki yakınlaştırma düzeyine kadar olan eşlemeyi hesaplar ve büyütür. Bu işlev, `getClusterExpansionZoom` `DataSource` sınıfının yöntemi ve tıklanan kümelenmiş veri noktasının `cluster_id` özelliği kullanılarak uygulanır.
+Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabarcık katmanı alır. Click olayı tetiklendiğinde, kod, kümenin parçalama yaptığı sonraki yakınlaştırma düzeyine kadar olan eşlemeyi hesaplar ve büyütür. Bu işlev, `getClusterExpansionZoom` `DataSource` sınıfının yöntemi ve `cluster_id` tıklanan kümelenmiş veri noktasının özelliği kullanılarak uygulanır.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile Ilgili <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Getclusterexpansionzoom kalem kümesine</a> bakın.
+Codepen 'da Azure Maps () ile ilgili <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom kalem kümesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="display-cluster-area"></a>Küme alanını görüntüle 
 
-Bir kümenin temsil ettiği nokta verileri bir alanın üzerine yayılır. Bu örnekte, fare bir kümenin üzerine gelindiğinde iki ana davranış oluşur. İlk olarak, kümede bulunan bireysel veri noktaları, bir convex hull hesaplamak için kullanılacaktır. Ardından, convex kabuk, bir alanı göstermek için haritada görüntülenir.  Bir convex kabuk, esnek bant gibi bir dizi noktayı sarmalayan ve `atlas.math.getConvexHull` yöntemi kullanılarak hesaplanabilecek bir çokgen. Bir kümede yer alan tüm noktaları, `getClusterLeaves` yöntemi kullanılarak veri kaynağından alınabilir.
+Bir kümenin temsil ettiği nokta verileri bir alanın üzerine yayılır. Bu örnekte, fare bir kümenin üzerine gelindiğinde iki ana davranış oluşur. İlk olarak, kümede bulunan bireysel veri noktaları, bir convex hull hesaplamak için kullanılacaktır. Ardından, convex kabuk, bir alanı göstermek için haritada görüntülenir.  Bir convex kabuk, esnek bant gibi bir dizi noktayı sarmalayan ve yöntemi kullanılarak hesaplanabilecek bir çokgen `atlas.math.getConvexHull` . Bir kümede yer alan tüm noktaları, yöntemi kullanılarak veri kaynağından alınabilir `getClusterLeaves` .
 
 <br/>
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı convex kabuk" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın.
+Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="aggregating-data-in-clusters"></a>Kümelerdeki verileri toplama
 
-Genellikle kümeler, küme içindeki noktaların sayısıyla birlikte bir sembol kullanılarak temsil edilir. Ancak bazen ek ölçümler içeren kümelerin stilini özelleştirmek tercih edilir. Küme toplamaları ile özel özellikler bir [toplama ifadesi](data-driven-style-expressions-web-sdk.md#aggregate-expression) hesaplaması kullanılarak oluşturulabilir ve doldurulabilir.  Küme toplamaları, `clusterProperties` `DataSource`seçeneğinde tanımlanabilir.
+Genellikle kümeler, küme içindeki noktaların sayısıyla birlikte bir sembol kullanılarak temsil edilir. Ancak bazen ek ölçümler içeren kümelerin stilini özelleştirmek tercih edilir. Küme toplamaları ile özel özellikler bir [toplama ifadesi](data-driven-style-expressions-web-sdk.md#aggregate-expression) hesaplaması kullanılarak oluşturulabilir ve doldurulabilir.  Küme toplamaları `clusterProperties` , seçeneğinde tanımlanabilir `DataSource` .
 
 Aşağıdaki örnek bir toplama ifadesi kullanır. Kod, bir kümedeki her bir veri noktasının varlık türü özelliğini temel alarak bir sayıyı hesaplar. Kullanıcı bir kümeye tıkladığında bir açılan pencerede, kümeyle ilgili ek bilgiler içeren bir açılır pencere görüntülenir.
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamaları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin.
+Codepen 'da Azure Maps () ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

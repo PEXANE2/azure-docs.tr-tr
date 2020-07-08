@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681252"
 ---
 # <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
 Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum*oluşturmanız gerekir. Her oturum, Azure 'da ayrılan bir sanal makineye (VM) karşılık gelir ve bir istemci cihazının bağlanmasını bekliyor. Bir cihaz bağlandığı zaman, VM istenen verileri işler ve sonucu bir video akışı olarak sunar. Oturum oluşturma sırasında, hangi tür sunucuyu çalıştırmak istediğinizi tercih edersiniz ve bu da fiyatlandırmayı belirler. Oturum artık gerekmiyorsa, durdurulmalıdır. El ile durdurulmamışsa, oturumun *kira süresi* sona erdiğinde otomatik olarak kapatılır.
 
-Hizmetimizin kullanımını gösteren *Renderingsession. ps1*adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
+*RenderingSession.ps1*adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > Bu sayfada listelenen PowerShell komutları birbirini tamamlamak için tasarlanmıştır. Tüm komut dosyalarını aynı PowerShell komut isteminde sırayla çalıştırırsanız, bunların üzerine inşa edilir.
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>Ortak istek üstbilgileri
 
-* *Yetkilendirme* üst bilgisi "`Bearer TOKEN`" değerine sahip olmalıdır, burada "`TOKEN`" [güvenli belirteç hizmeti tarafından döndürülen](tokens.md)kimlik doğrulama belirtecidir.
+* *Yetkilendirme* üst bilgisi "" değerine sahip olmalıdır `Bearer TOKEN` , burada " `TOKEN` " [güvenli belirteç hizmeti tarafından döndürülen](tokens.md)kimlik doğrulama belirtecidir.
 
 ### <a name="example-script-request-a-token"></a>Örnek betik: belirteç ISTEME
 
@@ -77,7 +76,7 @@ Bu komut bir oturum oluşturur. Yeni oturumun KIMLIĞINI döndürür. Tüm diğe
 
 **Lerinde**
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 202 | -SessionID: GUID | Başarılı |
 
@@ -134,7 +133,7 @@ Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir 
 
 **Lerinde**
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 200 | | Başarılı |
 
@@ -170,7 +169,7 @@ Bu komut, etkin oturumların bir listesini döndürür.
 
 **Lerinde**
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 200 | -Sessions: oturum özellikleri dizisi | oturum özelliklerinin açıklaması için bkz. "oturum özelliklerini al" bölümü |
 
@@ -213,7 +212,7 @@ Bu komut, sanal makine ana bilgisayar adı gibi bir oturumla ilgili bilgileri d�
 
 **Lerinde**
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 200 | -Message: String<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: dize<br/>-SessionID: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: sabit listesi<br/>-sessionStatus: Enum | Enum sessionStatus {başlatılıyor, hazırlanıyor, durduruluyor, durduruldu, zaman aşımına uğradı, hata}<br/>Durum ' Error ' veya ' dolmuşsa ' ise, ileti daha fazla bilgi içerir |
 
@@ -256,7 +255,7 @@ Bu komut bir oturumu sonlandırır. Ayrılan VM kısa bir süre sonra geri kazan
 
 **Lerinde**
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 204 | | Başarılı |
 

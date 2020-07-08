@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456752"
 ---
 # <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
@@ -72,7 +71,7 @@ Bu modülün her örneği aynı anda yalnızca bir işlem türü gerçekleştire
 1.  Hesaplamanın gerçekleştirileceği bir veya daha fazla kaynak sütun seçin.   
   
     - Seçtiğiniz herhangi bir sütun sayısal bir veri türü olmalıdır. 
-    - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve değeriyle sonuçlanır `NaN`.
+    - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve değeriyle sonuçlanır `NaN` .
   
 1.  Gerçekleştirilecek matematik işleminin **türünü** seçmek için **Kategori** ' ye tıklayın.
     
@@ -142,7 +141,7 @@ Y = x * 2<sup>t</sup> için çözüm olan bağımsız değişkenlerin taban 2 ü
 
 **Exp2** için ikinci bir bağımsız değişken x belirtebilirsiniz ve bu değer bir sabit ya da başka bir sütun olabilir. **İkinci bağımsız değişken türünde**, x çarpanını bir sabit olarak veya bir sütunda bir değer sağlayıp sağlamadığını belirtin.  
 
-Örneğin, hem çarpanı hem de üs için değerleri {0,1,2,3,4,5} olan bir sütun seçerseniz, işlev {0, 2, 8, 24, 64 160) döndürür.  
+Örneğin, {0,1,2,3,4,5} hem çarpanı hem de üs için değerleri olan bir sütun seçerseniz, işlev {0, 2, 8, 24, 64 160) döndürür.  
 
 ### <a name="expminus1"></a>ExpMinus1 
 
@@ -251,14 +250,14 @@ Temel aritmetik işlemleri içerir: toplama ve çıkarma, bölme ve çarpma.  Ç
 
 Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebilir; Ancak, sonuçların anlaşılması daha kolay hale getirmek için, sütun başlığı işlem adını ve sütunların kullanıldığı sırayı sağlar.
 
-İşlem|Num1|Num2|Sonuç sütunu|Sonuç değeri|
+Çalışma|Num1|Num2|Sonuç sütunu|Sonuç değeri|
 ----|----|----|----|----
 |Toplama|1|5|Ekle (Num2_Num1)| 4|
 |Çarpma|1|5|Birden çok (Num2_Num1)|5|
 |Çıkarma|1|5|Çıkart (Num2_Num1)|4|
 |Çıkarma|0|1|Çıkart (Num2_Num1)|0|
-|Bölme|1|5|Böl (Num2_Num1)|5|
-|Bölme|0|1|Böl (Num2_Num1)|Sonsuz|
+|Bölüm|1|5|Böl (Num2_Num1)|5|
+|Bölüm|0|1|Böl (Num2_Num1)|Sonsuz|
 
 ### <a name="add"></a>Ekle
 
@@ -286,7 +285,7 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 - Veri kümenizdeki her satır için farklı bir duyarlık değeri kullanmak istiyorsanız **duyarlık türünü** **ColumnSet**olarak ayarlayın ve ardından uygun duyarlık değerlerini içeren sütunu seçin.  
 
-### <a name="ceiling"></a>Üst sınır
+### <a name="ceiling"></a>Ceiling
 
 **Sütun kümesindeki**değerler için tavan döndürür.  
 

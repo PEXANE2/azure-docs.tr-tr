@@ -4,10 +4,9 @@ description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki yedeklenen A
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757100"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşımlarını geri yükleme
@@ -138,7 +137,7 @@ Kurtarmak istediğiniz öğeler için aşağıdaki parametreleri belirtin:
 
 Belirli dosyaları veya klasörleri özgün konumlarına geri yüklemek için, geri yükleme modu ile [az Backup Restore restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet 'ini, *originallocation* olarak ayarlayın.
 
-Aşağıdaki örnek, *Restoretest. txt* dosyasını özgün konumuna geri yükler: *azurefiles* dosya paylaşma.
+Aşağıdaki örnek, *RestoreTest.txt* dosyasını özgün konumuna geri yükler: *azurefiles* dosya paylaşma.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
@@ -160,7 +159,7 @@ Belirli dosya veya klasörleri alternatif bir konuma geri yüklemek için, [az B
 * **--target-File-Share**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
 * **--target-Folder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasörün değerini boş bir dize olarak verin.
 
-Aşağıdaki örnek, *azurefiles* dosya paylaşımında özgün olarak bulunan *restoretest. txt* dosyasını alternatif bir konuma geri yükler: *afaccount1* depolama hesabında barındırılan *azurefiles1* dosya paylaşımındaki *restoredata* klasörü.
+Aşağıdaki örnek, *azurefiles* dosya paylaşımında bulunan *RestoreTest.txt* dosyayı alternatif bir konuma geri yükler: *afaccount1* depolama hesabında barındırılan *azurefiles1* dosya paylaşımındaki *restoredata* klasörü.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -178,7 +177,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 Birden çok öğe için geri yükleme gerçekleştirmek için, **kaynak-dosya yolu** parametresinin değerini, geri yüklemek istediğiniz tüm dosya ve klasörlerin **boşlukla ayrılmış** yolları olarak geçirin.
 
-Aşağıdaki örnek *restore. txt* ve *AFS test Report. docx* dosyalarını özgün konumlarına geri yükler.
+Aşağıdaki örnek, *Restore.txt* ve *AFS test Report.docx* dosyalarını özgün konumlarına geri yükler.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table

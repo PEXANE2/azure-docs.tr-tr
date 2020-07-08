@@ -12,21 +12,20 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01decb99a9eb24ae60250f83f1f961b4c1690bc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652855"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Azure MFA sunucusu ve üçüncü taraf VPN çözümleriyle gelişmiş senaryolar
 
-Azure Multi-Factor Authentication Sunucusu (Azure MFA sunucusu), çeşitli üçüncü taraf VPN çözümleriyle sorunsuz bir şekilde bağlanmak için kullanılabilir. Bu makalede Cisco&reg; asa VPN gereci, Citrix NetScaler SSL VPN gereci ve Juniper Networks güvenli erişim/Pulse Secure Connect GÜVENLI SSL VPN gereci ele alınmaktadır. Bu üç ortak gereçi ele almak için yapılandırma kılavuzlarını oluşturduk. Azure MFA sunucusu, AD FS için RADIUS, LDAP, IIS veya talep tabanlı kimlik doğrulaması kullanan diğer sistemlerle de tümleştirilebilir. Daha fazla ayrıntı için [Azure MFA sunucu yapılandırmalarında](howto-mfaserver-deploy.md#next-steps)daha fazla bilgi bulabilirsiniz.
+Azure Multi-Factor Authentication Sunucusu (Azure MFA sunucusu), çeşitli üçüncü taraf VPN çözümleriyle sorunsuz bir şekilde bağlanmak için kullanılabilir. Bu makalede Cisco &reg; asa VPN gereci, Citrix NetScaler SSL VPN gereci ve Juniper Networks güvenli erişim/Pulse Secure Connect GÜVENLI SSL VPN gereci ele alınmaktadır. Bu üç ortak gereçi ele almak için yapılandırma kılavuzlarını oluşturduk. Azure MFA sunucusu, AD FS için RADIUS, LDAP, IIS veya talep tabanlı kimlik doğrulaması kullanan diğer sistemlerle de tümleştirilebilir. Daha fazla ayrıntı için [Azure MFA sunucu yapılandırmalarında](howto-mfaserver-deploy.md#next-steps)daha fazla bilgi bulabilirsiniz.
 
 > [!IMPORTANT]
 > 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN gereci ve Azure MFA sunucusu
-Azure MFA sunucusu, Cisco AnyConnect&reg; &reg; VPN oturumu açma ve Portal erişimi için ek güvenlik sağlamak üzere Cisco ASA VPN gereci ile tümleşir.  LDAP ya da RADIUS protokolünü kullanabilirsiniz.  Ayrıntılı adım adım yapılandırma kılavuzlarını indirmek için aşağıdakilerden birini seçin.
+Azure MFA sunucusu, &reg; Cisco AnyConnect &reg; VPN oturumu açma ve Portal erişimi için ek güvenlik sağlamak üzere CISCO asa VPN gereci ile tümleşir.  LDAP ya da RADIUS protokolünü kullanabilirsiniz.  Ayrıntılı adım adım yapılandırma kılavuzlarını indirmek için aşağıdakilerden birini seçin.
 
 | Yapılandırma Kılavuzu | Açıklama |
 | --- | --- |

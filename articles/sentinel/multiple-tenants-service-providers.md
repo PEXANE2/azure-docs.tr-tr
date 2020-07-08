@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476024"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Azure Sentinel 'de birden çok kiracı ile çalışma 
@@ -27,7 +26,7 @@ Yönetilen bir güvenlik hizmeti sağlayıcısıysanız (MSSP) ve müşterilerin
 
 ## <a name="prerequisites"></a>Ön koşullar
 - [Azure ışıklı kullanımı](../lighthouse/how-to/onboard-customer.md)
-- Bunun düzgün çalışması için kiracınızın Azure Sentinel kaynak sağlayıcısına en az bir abonelikte kayıtlı olması gerekir. Kiracınızda kayıtlı bir Azure Sentinel varsa, kullanmaya başlamak için hazırlanın. Aksi takdirde, Azure portal **abonelikler** ' i ve ardından **kaynak sağlayıcıları**' nı seçin.  Ardından, **SOC kaynak sağlayıcıları** ekranından, ve `Microsoft.OperationalInsights` `Microsoft.SecurityInsights`' ı arayıp seçin ve **Kaydet**' i seçin.
+- Bunun düzgün çalışması için kiracınızın Azure Sentinel kaynak sağlayıcısına en az bir abonelikte kayıtlı olması gerekir. Kiracınızda kayıtlı bir Azure Sentinel varsa, kullanmaya başlamak için hazırlanın. Aksi takdirde, Azure portal **abonelikler** ' i ve ardından **kaynak sağlayıcıları**' nı seçin.  Ardından, **SOC kaynak sağlayıcıları** ekranından, ve ' ı arayıp seçin ve `Microsoft.OperationalInsights` `Microsoft.SecurityInsights` **Kaydet**' i seçin.
    ![Kaynak sağlayıcılarını denetleme](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Diğer kiracılardan Azure Sentinel 'e erişme
 1. **Dizin + abonelik**altında, temsilcili dizinler ve müşterinizin Azure Sentinel çalışma alanlarının bulunduğu abonelikler ' i seçin.

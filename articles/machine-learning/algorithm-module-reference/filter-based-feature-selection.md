@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477604"
 ---
 # <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
@@ -40,7 +39,7 @@ Filtre tabanlı özellik seçimi modülü, her sütunda bilgi değerini değerle
 
 -   **Pearson bağıntı**  
 
-    Pearson 'un bağıntı istatistiği veya Pearson 'un bağıntı katsayısı, `r` değer olarak istatistiksel modellerle de bilinir. Her iki değişken için de bağıntı gücünü gösteren bir değer döndürür.
+    Pearson 'un bağıntı istatistiği veya Pearson 'un bağıntı katsayısı, değer olarak istatistiksel modellerle de bilinir `r` . Her iki değişken için de bağıntı gücünü gösteren bir değer döndürür.
 
     Pearson 'un bağıntı katsayısı, iki değişkenin kovaryansını alarak ve standart sapmalarının çarpımı ile ayırarak hesaplanır. İki değişkendeki ölçek değişikliği, katsayısı etkilemez.  
 
@@ -120,7 +119,7 @@ Bir sayısal özellikte ve kategorik bir etikette Pearson bağıntı kullanırsa
 
 -   Yöntemi tarafından desteklenmeyen bir veri türü sütunuyla bir Puanlama yöntemi kullanmaya çalışırsanız, modül bir hata oluşturacak. Ya da sütuna sıfır puanı atanır.  
 
--   Bir sütun mantıksal (true/false) değerler içeriyorsa, ve `True = 1` `False = 0`olarak işlenir.  
+-   Bir sütun mantıksal (true/false) değerler içeriyorsa, ve olarak işlenir `True = 1` `False = 0` .  
 
 -   Bir sütun **etiket** veya **puan**olarak belirlendiyse bir özellik olamaz.  
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456259"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
@@ -39,7 +38,7 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 
 Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
 
-|Terim (bigram)|Frequency|
+|Terim (bigram)|Sıklık|
 |------------|---------------|
 |Bu kitap|3|
 |Sevdim|1|
@@ -48,7 +47,7 @@ Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin,
 
 N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
 
-|Terim (tek gram)|Frequency|
+|Terim (tek gram)|Sıklık|
 |------------|---------------|
 |Kitap|3|
 |I|3|

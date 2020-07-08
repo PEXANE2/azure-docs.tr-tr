@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477689"
 ---
 # <a name="convert-to-csv-module"></a>CSV modülüne Dönüştür
@@ -50,7 +49,7 @@ Bir veri kümesini CSV 'ye dönüştürdüğünüzde, CSV Azure ML çalışma al
 
 + **Veri kümesini kaydet**: simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
 
- + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak Data. csv dosyasını indirmek için yönergeleri izleyin.
+ + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak data.csv dosyasını indirmek için yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

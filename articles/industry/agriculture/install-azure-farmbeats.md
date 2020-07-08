@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479568"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats'i yükleme
@@ -124,9 +123,9 @@ PowerShell ortamını kullanarak bir Cloud Shell örneğinde aşağıdaki adıml
 
 4. Betik aşağıdaki üç girişi ister:
 
-    - **Farmtts Web sitesi adı**: Bu, farmtts Web UYGULAMANıZıN benzersiz URL önekidir. Ön ek zaten alınmış olması durumunda, betik hata vermez. Yüklendikten sonra, Farmtts dağıtımınıza https://\<farmınts-website-Name>. azurewebsites.net ve Swagger apı 'leri https://\<farmınts-website-Name>-api.azurewebsites.net konumunda olacak.
+    - **Farmtts Web sitesi adı**: Bu, farmtts Web UYGULAMANıZıN benzersiz URL önekidir. Ön ek zaten alınmış olması durumunda, betik hata vermez. Yüklendikten sonra, https://. azurewebsites.net adresinden Farmtts dağıtımına erişilebilecektir \<FarmBeats-website-name> ve Swagger API 'leri https:// \<FarmBeats-website-name> -api.azurewebsites.net olacaktır
 
-    - **Azure oturum açma kimliği**: Farmof 'lar Yöneticisi olarak eklenmesini istediğiniz kullanıcı için Azure oturum açma kimliği sağlayın. Bu Kullanıcı daha sonra, diğer kullanıcılara Farmtempts Web uygulamasına erişim izni verebilir. Oturum açma KIMLIĞI genellikle formdan john.doe@domain.comoluşur. Azure UPN de desteklenir.
+    - **Azure oturum açma kimliği**: Farmof 'lar Yöneticisi olarak eklenmesini istediğiniz kullanıcı için Azure oturum açma kimliği sağlayın. Bu Kullanıcı daha sonra, diğer kullanıcılara Farmtempts Web uygulamasına erişim izni verebilir. Oturum açma KIMLIĞI genellikle formdan oluşur john.doe@domain.com . Azure UPN de desteklenir.
 
     - **ABONELIK kimliği**: Bu, Azure Farmtts 'yi yüklemek ISTEDIĞINIZ aboneliğin kimliğidir
 
@@ -152,7 +151,7 @@ Artık Farmtempts 'yi yüklemeye hazırsınız. Yüklemeyi başlatmak için aşa
 
 2. Portal 'da Azure Marketi ' ne gidin ve Market 'te **Azure Farmtempts** 'yi arayın.
 
-3. Azure Farmtts 'ye genel bakış içeren yeni bir pencere görüntülenir. **Oluştur**’u seçin.
+3. Azure Farmtts 'ye genel bakış içeren yeni bir pencere görüntülenir. **Oluştur**'u seçin.
 
 4. Yeni bir pencere görüntülenir. Azure Farmtts 'yi yüklemek istediğiniz doğru aboneliği, kaynak grubunu ve konumu seçerek kaydolma işlemini tamamlayabilirsiniz.
 
@@ -168,9 +167,9 @@ Artık Farmtempts 'yi yüklemeye hazırsınız. Yüklemeyi başlatmak için aşa
 
 8. Girilen Ayrıntılar doğrulandıktan sonra **Tamam**' ı seçin. Kullanım koşulları sayfası görüntülenir. Koşulları gözden geçirin ve yüklemeyi başlatmak için **Oluştur** ' u seçin. Yükleme ilerlemesini izleyebileceğiniz sayfaya yönlendirilirsiniz.
 
-Yükleme tamamlandıktan sonra, yükleme sırasında verdiğiniz web sitesi adına giderek, yüklemeyi doğrulayabilirsiniz ve Farmtempts portalını kullanmaya başlayabilirsiniz: https://\<farmtts-website-Name>. azurewebsites.net. Gruplar oluşturma seçeneği ile Farmtempts Kullanıcı arabirimini görmeniz gerekir.
+Yükleme tamamlandıktan sonra, yükleme sırasında verdiğiniz web sitesi adına giderek, yüklemeyi doğrulayabilirsiniz ve Farmtempts portalını kullanmaya başlayabilirsiniz: https:// \<FarmBeats-website-name> . azurewebsites.net. Gruplar oluşturma seçeneği ile Farmtempts Kullanıcı arabirimini görmeniz gerekir.
 
-**Datahub** , https://\<farmtts-website-Name>-api.azurewebsites.net/Swagger adresinde bulunabilir. Burada, farklı Farmtts API nesneleri ve API 'lerde REST işlemleri gerçekleştirmeniz gerekir.
+**Datahub** , https:// \<FarmBeats-website-name> -api.azurewebsites.net/Swagger adresinde bulunabilir. Burada, farklı Farmtts API nesneleri ve API 'lerde REST işlemleri gerçekleştirmeniz gerekir.
 
 ## <a name="upgrade"></a>Yükseltme
 
@@ -196,9 +195,9 @@ Kullanıcılardan önce bir abonelik seçmesi ve bir depolama hesabı oluşturma
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-İnput. json dosyasının yolu isteğe bağlıdır. Belirtilmezse, betik tüm gerekli girişleri ister. Yükseltmenin yaklaşık 30 dakika içinde tamamlanmalıdır.
+Dosyadaki input.jsyolu isteğe bağlıdır. Belirtilmezse, betik tüm gerekli girişleri ister. Yükseltmenin yaklaşık 30 dakika içinde tamamlanmalıdır.
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 Azure Farmrets veri hub 'ını veya hızlandırıcıyı kaldırmak için aşağıdaki adımları izleyin:
 

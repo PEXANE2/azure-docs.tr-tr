@@ -7,10 +7,9 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657133"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
@@ -39,7 +38,7 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 * Dosya Sistemi
 * IBM DB2  
 * IBM Informix
-* ıBM MQ
+* IBM MQ
 * MySQL
 * Oracle Veritabanı
 * PostgreSQL
@@ -79,11 +78,11 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
    ![Veri ağ geçidi için yeni Azure kaynağı ekleme](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. **Bağlantı ağ geçidi oluştur**altında, ağ geçidi kaynağınız için bu bilgileri sağlayın. İşiniz bittiğinde **Oluştur**’u seçin.
+1. **Bağlantı ağ geçidi oluştur**altında, ağ geçidi kaynağınız için bu bilgileri sağlayın. İşiniz bittiğinde **Oluştur**'u seçin.
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Kaynak adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa`-`çizgi (), alt çizgi (`_`), parantez (`(`, `)`) veya nokta (`.`) içeren bir ad sağlayın. |
+   | **Kaynak adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) veya nokta ( `.` ) içeren bir ad sağlayın. |
    | **Abonelik** | Ağ geçidi yüklemesi için kullanılan Azure hesabı için Azure aboneliğini seçin. Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır. |
    | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) |
    | **Konum** | Ağ [geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulutu hizmeti için seçilen bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **yükleme adı** listesinde görünmez. Mantıksal uygulama konumunuz, ağ geçidi kaynak konumunuzda farklılık gösterebilir. |
@@ -121,7 +120,7 @@ Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla i
 
    ![Mantıksal uygulama ve veri ağ geçidi arasında bağlantı oluşturma](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. İşiniz bittiğinde **Oluştur**’u seçin.
+1. İşiniz bittiğinde **Oluştur**'u seçin.
 
 Ağ Geçidi bağlantınız artık mantıksal uygulamanızın kullanması için hazırdır.
 
@@ -140,7 +139,7 @@ Bir ağ geçidi bağlantısının ayarlarını güncelleştirmek için bağlant�
 
 Azure aboneliğinizle ilişkili tüm API bağlantılarını bulmak için:
 
-* Azure Portal menüsünde, **tüm hizmetler** > **Web** > **API bağlantıları**' nı seçin.
+* Azure Portal menüsünde, **tüm hizmetler**  >  **Web**  >  **API bağlantıları**' nı seçin.
 * Ya da Azure portal menüsünde **tüm kaynaklar**' ı seçin. **Tür** filtresini **API bağlantısı**olarak ayarlayın.
 
 <a name="change-delete-gateway-resource"></a>

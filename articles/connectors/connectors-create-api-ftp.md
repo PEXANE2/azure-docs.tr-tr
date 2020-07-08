@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656343"
 ---
-# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyaları oluşturun, izleyin ve yönetin
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyalarını oluşturma, izleme ve yönetme
 
 Azure Logic Apps ve FTP Bağlayıcısı sayesinde, FTP sunucusundaki hesabınız aracılığıyla dosya oluşturan, izleyen, gönderen ve alan otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
@@ -45,8 +44,8 @@ FTP Tetikleyicileri, FTP dosya sistemini yoklayarak ve Son yoklamadan bu yana de
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler** > **Tercihler** > **Edit****Transfer** > **Disable** **Preserve timestamp**aktarım düzenleme > zaman damgası devre dışı bırak ' a gidin >  |
-| FileZilla | **Aktarım** > ' a > git**aktarılan dosyaların zaman damgalarını koru****devre dışı bırak** |
+| WinSCP | **Seçenekler**  >  **Tercihler**  >  **Aktarım**  >  **düzenleme**  >  **zaman damgası**  >  **devre dışı bırak** ' a gidin |
+| FileZilla | **Aktarım**' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
@@ -69,13 +68,13 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak girin `ftp` . **Tetikleyiciler** listesinden istediğiniz tetikleyiciyi seçin.
+1. Boş Logic Apps için, arama kutusuna `ftp` filtreniz olarak girin. **Tetikleyiciler** listesinden istediğiniz tetikleyiciyi seçin.
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin ve ardından **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak yazın `ftp` . **Eylemler** listesinden istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin ve ardından **Eylem Ekle**' yi seçin. Arama kutusuna `ftp` filtreniz olarak yazın. **Eylemler** listesinden istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Bağlantı bilgilerinizi girip **Oluştur**' u seçin.
 
@@ -95,7 +94,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak girin `ftp` . Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosyalanmış eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
+1. Boş Logic Apps için, arama kutusuna `ftp` filtreniz olarak girin. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosyalanmış eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
 
    ![FTP tetikleyicisini bul ve Seç](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
@@ -105,7 +104,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    ![FTP sunucusuna bağlantı oluştur](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. **Klasör** kutusunda, bir listenin görünmesi için klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, doğru açılı oku (**>**) seçin, bu klasöre gidin ve sonra klasörü seçin.
+1. **Klasör** kutusunda, bir listenin görünmesi için klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, doğru açılı oku ( **>** ) seçin, bu klasöre gidin ve sonra klasörü seçin.
 
    ![İzlenecek klasörü bul ve Seç](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
@@ -125,7 +124,7 @@ Artık mantıksal uygulamanızın bir tetikleyicisi olduğuna göre, mantıksal 
 
 1. Tetikleyici veya başka herhangi bir eylem altında **yeni adım**' ı seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `ftp` . Eylemler listesi altında şu eylemi seçin: **dosya meta verilerini al**
+1. Arama kutusuna `ftp` filtreniz olarak yazın. Eylemler listesi altında şu eylemi seçin: **dosya meta verilerini al**
 
    !["Dosya meta verilerini al" eylemini seçin](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 

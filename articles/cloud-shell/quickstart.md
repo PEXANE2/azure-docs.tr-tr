@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458078"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Bash için hızlı başlangıç Azure Cloud Shell
@@ -35,7 +34,7 @@ Bu belge [Azure portal](https://ms.portal.azure.com/)Azure Cloud Shell Bash 'in 
 > Azure CLı için her oturumda otomatik olarak kimliğiniz doğrulanır.
 
 ### <a name="select-the-bash-environment"></a>Bash ortamını seçin
-Ortam açılan pencerenin sol tarafındaki ortamın açılır penceresinin olduğunu kontrol edin `Bash`. <br>
+Ortam açılan pencerenin sol tarafındaki ortamın açılır penceresinin olduğunu kontrol edin `Bash` . <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Aboneliğinizi ayarlama
@@ -50,7 +49,7 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Aboneliğiniz, kullanılarak `/home/<user>/.azure/azureProfile.json`gelecekteki oturumlarınız için hatırlanır.
+> Aboneliğiniz, kullanılarak gelecekteki oturumlarınız için hatırlanır `/home/<user>/.azure/azureProfile.json` .
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 WestUS içinde "MyRG" adlı yeni bir kaynak grubu oluşturun.
@@ -66,16 +65,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Kullanarak `--generate-ssh-keys` , sanal makinenizde ve `$Home` dizininizde ortak ve özel anahtarlar OLUŞTURUP ayarlamak için Azure CLI bildirir. Varsayılan olarak anahtarlar `/home/<user>/.ssh/id_rsa` ve `/home/<user>/.ssh/id_rsa.pub`' de Cloud Shell yerleştirilir. `.ssh` Klasörünüz, bağlı dosya paylaşımınızda kalıcı olarak kullanılan 5 GB resimde kalıcıdır `$Home`.
+> Kullanarak `--generate-ssh-keys` , sanal makinenizde ve dizininizde ortak ve özel anahtarlar oluşturup ayarlamak Için Azure CLI bildirir `$Home` . Varsayılan olarak anahtarlar ve ' de Cloud Shell yerleştirilir `/home/<user>/.ssh/id_rsa` `/home/<user>/.ssh/id_rsa.pub` . `.ssh`Klasörünüz, bağlı dosya paylaşımınızda kalıcı olarak kullanılan 5 GB resimde kalıcıdır `$Home` .
 
-Bu VM 'deki Kullanıcı adınız, Cloud Shell ($User@Azure:) ' de kullanılan Kullanıcı adınız olacaktır.
+Bu VM 'deki Kullanıcı adınız, Cloud Shell ($) ' de kullanılan Kullanıcı adınız olacaktır User@Azure: .
 
 ### <a name="ssh-into-your-linux-vm"></a>Linux sanal makinenize SSH
 1. Azure portal arama çubuğunda VM adınızı arayın.
 2. VM adınızı ve genel IP adresini almak için "Bağlan" a tıklayın. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. `ssh` Cmd ile sanal makinenize SSH.
+3. Cmd ile sanal makinenize SSH `ssh` .
    ```
    ssh username@ipaddress
    ```

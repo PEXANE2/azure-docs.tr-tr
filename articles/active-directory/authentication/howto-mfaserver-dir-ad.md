@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480989"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Sunucusu ile Active Directory arasında dizin tümleştirme
@@ -56,7 +55,7 @@ LDAP yapılandırması ayarları aşağıdaki tabloda açıklanmaktadır.
 | Sorgu boyutu sınırı |Bir dizin araması tarafından döndürülen en fazla kullanıcı sayısı için boyut sınırını belirtin.  Bu sınır LDAP dizinindeki yapılandırmayla eşleşmelidir.  Disk belleğinin desteklenmediği büyük aramalar için, içeri aktarma ve eşitleme işlemleri kullanıcıları toplu olarak almayı dener.  Burada belirtilen boyut sınırı LDAP dizininde yapılandırılan sınırdan daha büyükse, bazı kullanıcılar eksik olabilir. |
 | Test düğmesi |LDAP sunucusuna bağlamayı test etmek için **Test et** düğmesine tıklayın.  <br><br>Bağlamayı test etmek için **LDAP kullan** seçeneğini belirlemeniz gerekmez. Bu, LDAP yapılandırması kullanılmadan önce bağlamanın test edilmesini sağlar. |
 
-## <a name="filters"></a>FilTReleri
+## <a name="filters"></a>Filtreler
 
 Filtreler, dizin araması yaparken kayıtları nitelemek üzere ölçüt belirlemenizi sağlar.  Filtreyi ayarlayarak eşitlemek istediğiniz nesnelerin kapsamını belirleyebilirsiniz.  
 
@@ -80,7 +79,7 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | --- | --- |
 | Benzersiz tanımlayıcı |Kapsayıcı, güvenlik grubu ve kullanıcı kayıtlarının benzersiz tanımlayıcısı olarak hizmet eden özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle objectGUID’dir. Diğer LDAP uygulamaları entryUUID veya benzerini kullanabilir.  ObjectGUID varsayılandır. |
 | Benzersiz tanımlayıcı türü |Benzersiz tanımlayıcı özniteliği türünü seçin.  Active Directory'de objectGUID özniteliğinin türü GUID’dir. Diğer LDAP uygulamaları ASCII Bayt Dizisi ya da Dize türü kullanabilir.  GUID varsayılandır. <br><br>Eşitleme Öğeleri’ne Benzersiz Tanımlayıcısı ile başvurulduğundan, bu türü doğru ayarlamanız önemlidir. Nesnenin dizinde doğrudan bulunabilmesi için Benzersiz Tanımlayıcı Türü kullanılır.  Dizin değeri aslında ASCII bayt dizisi olarak depolanıyorsa bu türün Dize olarak ayarlanması eşitlemenin düzgün çalışmasını engeller. |
-| Ayırt edici ad |Her bir kaydın ayırt edici adını içeren özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle distinguishedName’dir. Diğer LDAP uygulamaları entryDN veya benzerini kullanabilir.  distinguishedName varsayılandır. <br><br>Yalnızca ayırt edici adı içeren bir öznitelik yoksa, ads path özniteliği kullanılabilir.  Yolun "LDAP://\<server\>/" kısmı, nesnenin yalnızca ayırt edici adı bırakılarak otomatik olarak çıkarılır. |
+| Ayırt edici ad |Her bir kaydın ayırt edici adını içeren özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle distinguishedName’dir. Diğer LDAP uygulamaları entryDN veya benzerini kullanabilir.  distinguishedName varsayılandır. <br><br>Yalnızca ayırt edici adı içeren bir öznitelik yoksa, ads path özniteliği kullanılabilir.  Yolun "LDAP:// \<server\> /" kısmı, nesnenin yalnızca ayırt edici adı bırakılarak otomatik olarak çıkarılır. |
 | Kapsayıcı adı |Kapsayıcı kaydındaki adı içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri, Active Directory’den içeri aktarılırken ya da eşitleme öğeleri eklenirken Kapsayıcı Hiyerarşisi’nde görüntülenir.  Varsayılan addır. <br><br>Farklı kapsayıcılar kendi adları için farklı öznitelikler kullanıyorsa, birden çok kapsayıcı adı özniteliğini ayırmak için noktalı virgül kullanın.  Bir kapsayıcı nesnesinde bulunan ilk kapsayıcı adı özniteliği, nesnenin adını görüntülemek için kullanılır. |
 | Güvenlik grubu adı |Güvenlik grubu kaydındaki adı içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri, Active Directory’den içeri aktarılırken ya da eşitleme öğeleri eklenirken Güvenlik Grubu listesinde görüntülenir.  Varsayılan addır. |
 | Kullanıcı adı |Kullanıcı kaydındaki kullanıcı adını içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri Multi-Factor Auth Sunucusu kullanıcı adı olarak kullanılır.  Birinciye yedek olarak ikinci bir öznitelik belirtilebilir.  İkinci öznitelik, yalnızca ilk öznitelik kullanıcı için bir değer içermiyorsa kullanılır.  userPrincipalName ve sAMAccountName varsayılanlardır. |

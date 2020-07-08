@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681707"
 ---
 # <a name="rendering-modes"></a>İşleme modları
@@ -38,7 +37,7 @@ Ayrıca, bu modda her parça saydam bir malzemeye geçiş yapılabilir veya [Hie
 
 Her tek GPU, MSAA 'yi AntiAlias yerel içeriğine kullanır. Ancak, farklı GPU 'Ların kenarları arasında devralınmış bir diğer ad olabilir. Bu efekt, son görüntünün işlenmesine karşı azalmakta, ancak MSAA kalitesi, **Tilebasedcomposition** modundan daha kötüleşmektedir.
 
-MSAA yapıtları şu görüntüde gösterilmiştir: ![MSAA 'Da, DepthBasedComposition](./media/service-render-mode-balanced.png)
+MSAA yapıtları şu görüntüde gösterilmiştir: ![ MSAA 'da, DepthBasedComposition](./media/service-render-mode-balanced.png)
 
 Her iki bölüm de aynı GPU 'da işlendiği için, düzgünleştirme, Sculpture ve curma arasında düzgün şekilde çalışmaktadır. Diğer taraftan, bu iki bölüm ayrı GPU 'Larda oluşturulduğundan, curle ve duvardaki kenar bazı diğer adlar gösterir.
 
@@ -50,7 +49,7 @@ Her iki mod için performans özellikleri, kullanım örneğine göre farklılı
 
 ## <a name="setting-the-render-mode"></a>Oluşturma modunu ayarlama
 
-Bir uzaktan Işleme sanal makinesinde kullanılan işleme modu `AzureSession.ConnectToRuntime` aracılığıyla belirtilir. `ConnectToRuntimeParams`
+Bir uzaktan Işleme sanal makinesinde kullanılan işleme modu `AzureSession.ConnectToRuntime` aracılığıyla belirtilir `ConnectToRuntimeParams` .
 
 ```cs
 async void ExampleConnect(AzureSession session)

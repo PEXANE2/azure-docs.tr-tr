@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680082"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector inceleme aracı
@@ -20,20 +19,20 @@ ArrInspector, çalışan bir Azure uzaktan Işleme oturumu denetlemek için kull
 
 ## <a name="connecting-to-the-arrinspector"></a>ArrInspector 'e bağlanma
 
-ARR sunucunuzun ana bilgisayar adını (bitiş `mixedreality.azure.com`) edindikten sonra, [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)kullanarak bağlanın. Bu işlev, uygulamanın `StartArrInspector.html` çalıştığı cihazda bir oluşturur. ArrInspector başlatmak için, bu dosyayı bir BILGISAYARDAKI tarayıcıyla (Edge, Firefox veya Chrome) açın. Dosya yalnızca 24 saat için geçerlidir.
+ARR sunucunuzun ana bilgisayar adını (bitiş `mixedreality.azure.com` ) edindikten sonra, [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)kullanarak bağlanın. Bu işlev, `StartArrInspector.html` uygulamanın çalıştığı cihazda bir oluşturur. ArrInspector başlatmak için, bu dosyayı bir BILGISAYARDAKI tarayıcıyla (Edge, Firefox veya Chrome) açın. Dosya yalnızca 24 saat için geçerlidir.
 
-Çağıran `ConnectToArrInspectorAsync` uygulama zaten bir bilgisayarda çalışıyorsa:
+Çağıran uygulama `ConnectToArrInspectorAsync` zaten BIR bilgisayarda çalışıyorsa:
 
 * Unity tümleştirmesi kullanıyorsanız, sizin için otomatik olarak başlatılabilir.
-* Aksi takdirde, dosyayı *Kullanıcı klasörleri\\LocalAppData\\[your_app]\\AC\\geçici*bölümünde bulabilirsiniz.
+* Aksi takdirde, dosyayı *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici*bölümünde bulabilirsiniz.
 
 Uygulama bir HoloLens üzerinde çalışıyorsa:
 
 1. [Windows cihaz portalını](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens 'e erişin.
 1. *System > dosya Gezgini*' ne gidin.
-1. *Kullanıcı klasörleri\\LocalAppData\\[your_app]\\AC\\geçici*öğesine gidin.
-1. *Startarrınspector. html* dosyasını bilgisayarınıza kaydedin.
-1. Oturumun ArrInspector yüklemek için *Startarrınspector. html* dosyasını açın.
+1. *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici*öğesine gidin.
+1. *StartArrInspector.html* 'yi bilgisayarınıza kaydedin.
+1. Oturumun ArrInspector yüklemek için *StartArrInspector.html* 'yi açın.
 
 ## <a name="the-performance-panel"></a>Performans paneli
 
@@ -57,14 +56,14 @@ Dikey Aralık varsayılan olarak, şu anda görüntülenen değerlere göre hesa
 
 Günlük panelinde sunucu tarafında oluşturulan günlük iletilerinin bir listesi gösterilir. Bağlantıda, en fazla 200 önceki günlük iletisi görüntülenir ve bunlar, olduğu gibi yeni olanları yazdıracaktır.
 
-Üstteki düğmeleri kullanarak listeyi günlük türüne `[Error/Warning/Info/Debug]` göre filtreleyebilirsiniz.
+Üstteki düğmeleri kullanarak listeyi günlük türüne göre filtreleyebilirsiniz `[Error/Warning/Info/Debug]` .
 ![Günlük Filtresi düğmeleri](./media/log-filter.png)
 
 ## <a name="the-timing-data-capture-panel"></a>Zamanlama verileri yakalama paneli
 
 ![Zamanlama verileri yakalama](./media/timing-data-capture.png)
 
-Bu panel, sunucudan zamanlama bilgilerini yakalamak ve indirmek için kullanılır. Dosya [Chrome Izleme JSON biçimini](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)kullanır. Verileri incelemek için, URL `Chrome://tracing` 'de Chrome ' u açın ve indirilen dosyayı sayfaya sürükleyip bırakın. Zamanlama verileri, sabit boyutlu bir halka arabelleğinde sürekli olarak toplanır. Bu sırada, yakalama yalnızca anında geçmiş hakkında bilgiler içerir ve birkaç dakika bekleyin.
+Bu panel, sunucudan zamanlama bilgilerini yakalamak ve indirmek için kullanılır. Dosya [Chrome Izleme JSON biçimini](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)kullanır. Verileri incelemek için, URL 'de Chrome ' u açın `Chrome://tracing` ve indirilen dosyayı sayfaya sürükleyip bırakın. Zamanlama verileri, sabit boyutlu bir halka arabelleğinde sürekli olarak toplanır. Bu sırada, yakalama yalnızca anında geçmiş hakkında bilgiler içerir ve birkaç dakika bekleyin.
 
 ## <a name="the-scene-inspection-panel"></a>Sahne Incelemesi bölmesi
 
@@ -113,7 +112,7 @@ Canlı güncelleştirme yeniden etkinleştirildiğinde tüm paneller sıfırlan�
 
 Araç varsayılan olarak, ArrInspector hizmet veren ana bilgisayarda çalışan ARR sunucusuna bağlanır. Ancak, araç noktası açık olan bir ARR örneği çalıştırdığı varsayıldığında, başka bir sunucuyu incelemek üzere yapılandırabilirsiniz.
 
-Bunu yapmak için, üst bilgi çubuğunun solundaki ana menüye erişin ve *konak yapılandırması*' nı seçin. **Yeni konak Ekle**' ye tıklayın ve adı ve ana bilgisayar adını girin. *Ana bilgisayar* adı için yalnızca içinde `.mixedreality.azure.com`biten ana bilgisayar adını kullanın `http://` , bir bağlantı noktası eklemeyin.
+Bunu yapmak için, üst bilgi çubuğunun solundaki ana menüye erişin ve *konak yapılandırması*' nı seçin. **Yeni konak Ekle**' ye tıklayın ve adı ve ana bilgisayar adını girin. *Ana bilgisayar* adı için yalnızca içinde biten ana bilgisayar adını kullanın `.mixedreality.azure.com` , `http://` bir bağlantı noktası eklemeyin.
 
 ![Konak yapılandırması](./media/host-configuration.png)
 

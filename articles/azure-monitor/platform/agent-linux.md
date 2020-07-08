@@ -7,10 +7,9 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
 ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637514"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Izleyici 'ye bağlama
@@ -29,7 +28,7 @@ Desteklenen yapılandırmayı anlamak için [desteklenen Linux işletim sistemle
 
 ## <a name="agent-install-package"></a>Aracı yüklemesi paketi
 
-Linux için Log Analytics Aracısı birden çok paketten oluşur. Yayın dosyası, Shell paketi şu `--extract` parametreyle çalıştırılarak kullanılabilir olan aşağıdaki paketleri içerir:
+Linux için Log Analytics Aracısı birden çok paketten oluşur. Yayın dosyası, Shell paketi şu parametreyle çalıştırılarak kullanılabilir olan aşağıdaki paketleri içerir `--extract` :
 
 **Paket** | **Sürüm** | **Açıklama**
 ----------- | ----------- | --------------
@@ -46,10 +45,10 @@ Docker-cimprov | 1.0.0 | OMı için Docker sağlayıcısı. Yalnızca Docker alg
 Linux paketleri için Log Analytics aracısını yükledikten sonra, aşağıdaki ek sistem genelinde yapılandırma değişiklikleri uygulanır. Omsagent paketi kaldırıldığında bu yapıtlar kaldırılır.
 
 * Ayrıcalıklı olmayan bir Kullanıcı adlı: `omsagent` oluşturulur. Daemon bu kimlik bilgisi altında çalışır. 
-* İçinde `/etc/sudoers.d/omsagent`bir sudoers *içerme* dosyası oluşturulur. Bu, `omsagent` Syslog ve omsagent Daemon 'ları 'ı yeniden başlatmayı yetkilendirir. Sudo *ekleme* yönergeleri, sudo 'ın yüklü sürümünde desteklenmiyorsa, bu girişlerin üzerine `/etc/sudoers`yazılır.
+* İçinde bir sudoers *içerme* dosyası oluşturulur `/etc/sudoers.d/omsagent` . Bu `omsagent` , syslog ve omsagent Daemon 'ları 'ı yeniden başlatmayı yetkilendirir. Sudo *ekleme* yönergeleri, sudo 'ın yüklü sürümünde desteklenmiyorsa, bu girişlerin üzerine yazılır `/etc/sudoers` .
 * Syslog yapılandırması bir olay alt kümesini aracıya iletecek şekilde değiştirilir. Daha fazla bilgi için bkz. [Syslog veri toplamayı yapılandırma](data-sources-syslog.md).
 
-İzlenen bir Linux bilgisayarında aracı olarak `omsagent`listelenir. `omsconfig`, Linux yapılandırma aracısına yönelik Log Analytics aracısıdır ve her 5 dakikada bir yeni Portal tarafı yapılandırmasını arar. Yeni ve güncelleştirilmiş yapılandırma konumunda `/etc/opt/microsoft/omsagent/conf/omsagent.conf`bulunan aracı yapılandırma dosyalarına uygulanır.
+İzlenen bir Linux bilgisayarında aracı olarak listelenir `omsagent` . `omsconfig`, Linux yapılandırma aracısına yönelik Log Analytics aracısıdır ve her 5 dakikada bir yeni Portal tarafı yapılandırmasını arar. Yeni ve güncelleştirilmiş yapılandırma konumunda bulunan aracı yapılandırma dosyalarına uygulanır `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
 
 ## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
 
@@ -78,16 +77,16 @@ Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir b
 
 1. SCP/SFTP kullanarak uygun paketi (x64 veya x86) Linux sanal makinenize veya fiziksel bilgisayarınıza [indirin](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) ve aktarın.
 
-2. `--install` Bağımsız değişkenini kullanarak paketi yükler. Yükleme sırasında bir Log Analytics çalışma alanına eklemek için, daha önce `-w <WorkspaceID>` kopyalanmış `-s <workspaceKey>` olan ve parametreleri sağlayın.
+2. Bağımsız değişkenini kullanarak paketi yükler `--install` . Yükleme sırasında bir Log Analytics çalışma alanına eklemek için, `-w <WorkspaceID>` `-s <workspaceKey>` daha önce kopyalanmış olan ve parametreleri sağlayın.
 
     >[!NOTE]
-    >Linux için System Center Operations Manager `--upgrade` Aracısı zaten yüklüyse, OMI, SCX, omsmsconfig veya daha eski sürümleri gibi bağımlı paketler yüklüyse bağımsız değişkenini kullanmanız gerekir. 
+    >`--upgrade`Linux için System Center Operations Manager Aracısı zaten yüklüyse, OMI, SCX, omsmsconfig veya daha eski sürümleri gibi bağımlı paketler yüklüyse bağımsız değişkenini kullanmanız gerekir. 
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. Linux aracısını, bir Log Analytics ağ geçidi aracılığıyla bir Log Analytics çalışma alanına yüklemek ve bağlanmak üzere yapılandırmak için, proxy, çalışma alanı KIMLIĞI ve çalışma alanı anahtarı parametrelerini sağlayan aşağıdaki komutu çalıştırın. Bu yapılandırma, öğesini ekleyerek `-p [protocol://][user:password@]proxyhost[:port]`komut satırında belirtilebilir. *Proxyhost* özelliği, Log Analytics ağ geçidi sunucusunun tam etki alanı adını veya IP adresini kabul eder.  
+3. Linux aracısını, bir Log Analytics ağ geçidi aracılığıyla bir Log Analytics çalışma alanına yüklemek ve bağlanmak üzere yapılandırmak için, proxy, çalışma alanı KIMLIĞI ve çalışma alanı anahtarı parametrelerini sağlayan aşağıdaki komutu çalıştırın. Bu yapılandırma, öğesini ekleyerek komut satırında belirtilebilir `-p [protocol://][user:password@]proxyhost[:port]` . *Proxyhost* özelliği, Log Analytics ağ geçidi sunucusunun tam etki alanı adını veya IP adresini kabul eder.  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -121,7 +120,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 
 Aşağıdaki adımlar, GitHub 'da barındırılan aracıyı indirmek ve aracıyı yüklemek için doğrudan veya bir proxy sunucusu üzerinden iletişim kurabilen Linux bilgisayarları için sarmalayıcı betiği kullanarak Azure ve Azure Kamu Bulutu 'nda Log Analytics için aracının kurulumunu yapılandırır.  
 
-Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, bu yapılandırma komut satırında dahil `-p [protocol://][user:password@]proxyhost[:port]`ederek belirlenebilir. *Protocol* özelliği, veya `http` `https`kabul eder ve *proxyhost* ÖZELLIĞI proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
+Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, bu yapılandırma komut satırında dahil ederek belirlenebilir `-p [protocol://][user:password@]proxyhost[:port]` . *Protocol* özelliği `http` , veya kabul eder `https` ve *proxyhost* özelliği proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
 
 Örneğin, `https://proxy01.contoso.com:30443`
 
@@ -133,7 +132,7 @@ Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parol
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Aşağıdaki komut proxy parametresini ve `-p` kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -145,7 +144,7 @@ Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parol
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Aşağıdaki komut proxy parametresini ve `-p` kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
@@ -158,7 +157,7 @@ Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parol
 
 ## <a name="upgrade-from-a-previous-release"></a>Önceki sürümden yükseltme
 
-Önceki sürümden yükseltme, 1.0.0-47 sürümünden başlayarak her sürümde desteklenir. Aracının tüm bileşenlerini en son `--upgrade` sürüme yükseltmek için parametresiyle birlikte yüklemeyi gerçekleştirin.
+Önceki sürümden yükseltme, 1.0.0-47 sürümünden başlayarak her sürümde desteklenir. `--upgrade`Aracının tüm bileşenlerini en son sürüme yükseltmek için parametresiyle birlikte yüklemeyi gerçekleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

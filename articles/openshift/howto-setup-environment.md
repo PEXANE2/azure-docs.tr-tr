@@ -8,10 +8,9 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477043"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
@@ -19,7 +18,7 @@ ms.locfileid: "79477043"
 Microsoft Azure Red Hat OpenShift uygulamalarını derlemek ve çalıştırmak için şunları yapmanız gerekir:
 
 * Azure CLı 'nın sürüm 2.0.65 (veya üzeri) sürümünü (veya Azure Cloud Shell kullanın).
-* `AROGA` Özellik ve ilişkili kaynak sağlayıcılarına kaydolun.
+* `AROGA`Özellik ve ilişkili kaynak sağlayıcılarına kaydolun.
 * Azure Active Directory (Azure AD) kiracısı oluşturun.
 * Bir Azure AD uygulama nesnesi oluşturun.
 * Bir Azure AD kullanıcısı oluşturun.
@@ -34,7 +33,7 @@ Azure Red Hat OpenShift, Azure CLı 'nin sürüm 2.0.65 veya üstünü gerektiri
 az --version
 ```
 
-Çıktının ilk satırı CLı sürümüne sahip olacaktır, örneğin `azure-cli (2.0.65)`.
+Çıktının ilk satırı CLı sürümüne sahip olacaktır, örneğin `azure-cli (2.0.65)` .
 
 Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda verilmiştir.
 
@@ -42,7 +41,7 @@ Alternatif olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-sh
 
 ## <a name="register-providers-and-features"></a>Sağlayıcıları ve özellikleri kaydetme
 
-İlk `Microsoft.ContainerService AROGA` Azure Red `Microsoft.Solutions`hat `Microsoft.Compute`OpenShift kümenizi dağıtmadan önce, özelliği `Microsoft.Storage`,,, `Microsoft.KeyVault` ve `Microsoft.Network` sağlayıcılarının aboneliğinize el ile kaydedilmesi gerekir.
+`Microsoft.ContainerService AROGA` `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` İlk Azure Red Hat OpenShift kümenizi dağıtmadan önce, özelliği,,, ve sağlayıcılarının aboneliğinize el ile kaydedilmesi gerekir.
 
 Bu sağlayıcıları ve özellikleri el ile kaydetmek için, CLı 'yı yüklediyseniz veya Azure portal Azure Cloud Shell (Bash) oturumunda, bir bash kabuğundan aşağıdaki yönergeleri kullanın:
 

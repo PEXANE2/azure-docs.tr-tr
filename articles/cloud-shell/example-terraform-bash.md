@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458163"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell Bash 'ten Terrayform ile dağıtma
@@ -62,7 +61,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 Dosyanızı kaydedin ve metin düzenleyicinizde çıkın.
 
 ### <a name="terraform-init"></a>Terrayform init
-' İ çalıştırarak `terraform init`başlayın.
+' İ çalıştırarak başlayın `terraform init` .
 
 ```
 justin@Azure:~$ terraform init
@@ -90,10 +89,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Terrayform [başlatma komutu](https://www.terraform.io/docs/commands/init.html) , teraform yapılandırma dosyalarını içeren bir çalışma dizinini başlatmak için kullanılır. `terraform init` Komut, yeni bir Teraform yapılandırması yazdıktan veya sürüm denetiminden var olan bir yapılandırma oluşturulduktan sonra çalıştırılması gereken ilk komuttur. Bu komutu birden çok kez çalıştırmak güvenlidir.
+Terrayform [başlatma komutu](https://www.terraform.io/docs/commands/init.html) , teraform yapılandırma dosyalarını içeren bir çalışma dizinini başlatmak için kullanılır. `terraform init`Komut, yeni bir Teraform yapılandırması yazdıktan veya sürüm denetiminden var olan bir yapılandırma oluşturulduktan sonra çalıştırılması gereken ilk komuttur. Bu komutu birden çok kez çalıştırmak güvenlidir.
 
 ### <a name="terraform-plan"></a>Terraform plan
-Terrayform şablonu tarafından oluşturulacak kaynakları ile `terraform plan`önizleyin.
+Terrayform şablonu tarafından oluşturulacak kaynakları ile önizleyin `terraform plan` .
 
 ```
 justin@Azure:~$ terraform plan
@@ -129,7 +128,7 @@ can't guarantee that exactly these actions will be performed if
 [terraform plan komutu](https://www.terraform.io/docs/commands/plan.html), yürütme planı oluşturmak için kullanılır. Terrayform, açıkça devre dışı bırakılmadığı takdirde yenileme gerçekleştirir ve ardından yapılandırma dosyalarında belirtilen istenen duruma ulaşmak için hangi eylemlerin gerekli olduğunu belirler. Plan,-Out kullanılarak kaydedilebilir ve sonra yalnızca ön planlı eylemlerin yürütülmesini sağlamak için terrayform 'a sağlanır.
 
 ### <a name="terraform-apply"></a>Terraform apply
-İle `terraform apply`Azure kaynaklarını sağlayın.
+İle Azure kaynaklarını sağlayın `terraform apply` .
 
 ```
 justin@Azure:~$ terraform apply
@@ -145,7 +144,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 [Terrayform Apply komutu](https://www.terraform.io/docs/commands/apply.html) , yapılandırmanın istenen durumuna ulaşmak için gereken değişiklikleri uygulamak için kullanılır.
 
 ### <a name="verify-deployment-with-azure-cli"></a>Azure CLı ile dağıtımı doğrulama
-Kaynağın `az group show -n myRgName` başarıyla sağlanması gerektiğini doğrulamak için öğesini çalıştırın.
+`az group show -n myRgName`Kaynağın başarıyla sağlanması gerektiğini doğrulamak için öğesini çalıştırın.
 
 ```azurecli-interactive
 az group show -n myRgName

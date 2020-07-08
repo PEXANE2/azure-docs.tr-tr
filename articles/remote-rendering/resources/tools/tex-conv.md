@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680030"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-doku dönüştürme aracı
 
 TexConv, PNG, TGA, JPEG ve DDS gibi tipik giriş biçimlerinden, çalışma zamanı tüketimine yönelik iyileştirilmiş biçimlere kadar dokuları işlemek için bir komut satırı aracıdır.
-En yaygın senaryo, tek bir giriş dosyasını `A.xxx` iyileştirilmiş bir biçime `B.yyy`dönüştürirken, araç gelişmiş kullanımlar için birçok ek seçeneğe sahiptir.
+En yaygın senaryo, tek bir giriş dosyasını iyileştirilmiş bir biçime dönüştürirken, `A.xxx` `B.yyy` araç gelişmiş kullanımlar için birçok ek seçeneğe sahiptir.
 
 ## <a name="command-line-help"></a>Komut satırı yardımı
 
-`--help` Parametresi Ile texconv. exe ' yi çalıştırmak, tüm kullanılabilir seçenekleri listeler. Ayrıca, TexConv, ne yaptığını anlamanıza yardımcı olmak için, çalıştırıldığında kullanılan seçenekleri yazdırır. Ayrıntılar için bu çıkışa bakın.
+Parametresi ile TexConv.exe çalıştırmak, `--help` tüm kullanılabilir seçenekleri listeler. Ayrıca, TexConv, ne yaptığını anlamanıza yardımcı olmak için, çalıştırıldığında kullanılan seçenekleri yazdırır. Ayrıntılar için bu çıkışa bakın.
 
 ## <a name="general-usage"></a>Genel kullanım
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>Birden çok giriş dosyası
 
-Birden çok giriş dosyasındaki çıktıyı birleştirmek için, her giriş dosyasını artan bir sayıyla birlikte `-in` kullanarak belirtin:
+Birden çok giriş dosyasındaki çıktıyı birleştirmek için, her giriş dosyasını `-in` artan bir sayıyla birlikte kullanarak belirtin:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-`-right`2B dokulardan bir küp harita montajı sırasında, birisi, `-left` `-top` `-bottom`,,, `-front`, `-back` `-px` `-nx` `-py` `-ny` `-pz` `-nz`,,,,,,,,,,,,,,,
+2B dokulardan bir küp harita montajı sırasında, birisi,,, `-right` , `-left` `-top` `-bottom` `-front` , `-back` `-px` `-nx` `-py` `-ny` `-pz` `-nz` ,,,,,,,,,,,,,,,
 
 Bu girişleri çıkış dosyasına eşlemek için uygun bir kanal eşleştirmesi gerekir.
 
@@ -67,7 +66,7 @@ Her kanal için eşlemenin belirtilmesi, en büyük esnekliği sağlar. Daha kol
 
 Aşağıdaki kanal eşleme seçenekleri kullanılabilir:
 
-- `-r``-b`, `-g`,, `-a` : Bu tek kanal atamalarını belirtir
+- `-r`,,, `-g` `-b` `-a` : Bu tek kanal atamalarını belirtir
 - `-rg`: Kırmızı ve yeşil kanal atamalarını belirtin.
 - `-rgb`: Kırmızı, yeşil ve mavi kanal atamalarını belirtin.
 - `-rgba`: Dört kanal atamasını belirtir.
@@ -89,7 +88,7 @@ Ayrıca, kanalları siyah ya da beyazla doldurabilir.
 
 ## <a name="common-options"></a>Ortak seçenekler
 
-En ilginç seçenekler aşağıda listelenmiştir. Daha fazla seçenek tarafından `TexConv --help`listelenmiştir.
+En ilginç seçenekler aşağıda listelenmiştir. Daha fazla seçenek tarafından listelenmiştir `TexConv --help` .
 
 ### <a name="output-type"></a>Çıkış türü
 
@@ -111,7 +110,7 @@ Varsayılan olarak, TexConv çıkış biçimi onu desteklediğinde, msunucudan m
 
 ### <a name="usage-srgb--gamma-correction"></a>Kullanım (sRGB/Gamma düzeltme)
 
-Bu `-usage` seçenek, çıktının amacını belirtir ve bu nedenle, giriş ve çıkış dosyalarına gama düzeltmesinin uygulanıp uygulanamayacağını belirten texconv öğesine söyler. Kullanım yalnızca RGB kanallarını etkiler. Alfa kanalı her zaman ' doğrusal ' değerler içerecek şekilde değerlendirilir. Kullanım belirtilmemişse, ' Auto ' modu, ilk giriş görüntüsünün biçiminden ve dosya adından kullanımı algılamaya çalışır. Örneğin, tek ve çift kanal çıkış biçimleri her zaman doğrusal değildir. Hangi karar TexConv yaptığını görmek için çıktıyı kontrol edin.
+Bu `-usage` seçenek, çıktının amacını belirtir ve bu nedenle, giriş ve çıkış dosyalarına gama düzeltmesinin uygulanıp uygulanamayacağını belirten TexConv öğesine söyler. Kullanım yalnızca RGB kanallarını etkiler. Alfa kanalı her zaman ' doğrusal ' değerler içerecek şekilde değerlendirilir. Kullanım belirtilmemişse, ' Auto ' modu, ilk giriş görüntüsünün biçiminden ve dosya adından kullanımı algılamaya çalışır. Örneğin, tek ve çift kanal çıkış biçimleri her zaman doğrusal değildir. Hangi karar TexConv yaptığını görmek için çıktıyı kontrol edin.
 
 - `-usage Linear`: Çıkış resmi, renkleri temsil eden değerler içeriyor. Bu genellikle metalik ve kabalık dokuların yanı sıra tüm maske türlerini kullanır.
 
