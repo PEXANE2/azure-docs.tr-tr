@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
-ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 467d14e1f00e88999e130d28ee0e5a00dac47825
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74769770"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120968"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’na yönelik Azure CLI örnekleri 
 Aşağıdaki tablo, MySQL için Azure Veritabanı’na yönelik örnek Azure CLI betikleri bağlantılarını içerir.
 
-| |  |
+| Örnek bağlantı | Description  |
 |---|---|
 |**Sunucu oluşturma**||
 | [Sunucu ve güvenlik duvarı kuralı oluşturma](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Tek bir MySQL için Azure Veritabanı sunucusu oluşturan ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandıran Azure CLI betiği. |
