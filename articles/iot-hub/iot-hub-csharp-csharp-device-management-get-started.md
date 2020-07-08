@@ -11,10 +11,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733466"
 ---
 # <a name="get-started-with-device-management-net"></a>Cihaz yönetimini kullanmaya başlama (.NET)
@@ -65,7 +64,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
 
 1. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** proje şablonunu bulup seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, projeyi *triggerreboot*olarak adlandırın ve .NET Framework Version 4.5.1 veya üstünü seçin. **Oluştur**’u seçin.
+1. **Yeni projenizi yapılandırın**bölümünde, projeyi *triggerreboot*olarak adlandırın ve .NET Framework Version 4.5.1 veya üstünü seçin. **Oluştur**'u seçin.
 
     ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -84,7 +83,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu `{iot hub connection string}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. `{iot hub connection string}`Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
    ```csharp
    static RegistryManager registryManager;
@@ -129,7 +128,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
    Console.ReadLine();
    ```
 
-1.  > Yapı**Yapı çözümünü** **seçin.**
+1. Yapı **Build**  >  **Yapı çözümünü**seçin.
 
 > [!NOTE]
 > Bu öğreticide, cihazın bildirilen özellikleri için yalnızca tek bir sorgu gerçekleştirilir. Üretim kodunda, bildirilen özelliklerde yapılan değişiklikleri algılamayı yoklamayı öneririz.
@@ -146,15 +145,15 @@ Bu bölümde şunları yapacaksınız:
 
 Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
 
-1. Visual Studio 'da, zaten oluşturduğunuz triggerreboot çözümünde **Dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** proje şablonunu bulup seçin ve ardından **İleri**' yi seçin.
+1. Visual Studio 'da, zaten oluşturduğunuz triggerreboot çözümünde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** proje şablonunu bulup seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, projeyi *SimulateManagedDevice*olarak adlandırın ve **çözüm**için **çözüme Ekle**' yi seçin. **Oluştur**’u seçin.
+1. **Yeni projenizi yapılandırın**bölümünde, projeyi *SimulateManagedDevice*olarak adlandırın ve **çözüm**için **çözüme Ekle**' yi seçin. **Oluştur**'u seçin.
 
     ![Projeyi adlandırın ve çözüme ekleyin](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
 1. Çözüm Gezgini, yeni **SimulateManagedDevice** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **Araştır**' ı seçin, ardından **Microsoft. Azure. Devices. Client**öğesini arayıp seçin. **Yükle**’yi seçin.
+1. **Araştır**' ı seçin, ardından **Microsoft. Azure. Devices. Client**öğesini arayıp seçin. **Yükle**'yi seçin.
 
     ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
@@ -167,7 +166,7 @@ Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu `{device connection string}` değerini, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. `{device connection string}`Yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -237,9 +236,9 @@ Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
 
 1. Çözüm Gezgini, çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler** > **Başlangıç projesi**için **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesi**için **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 
-1.  > Yapı**Yapı çözümünü** **seçin.**
+1. Yapı **Build**  >  **Yapı çözümünü**seçin.
 
 > [!NOTE]
 > Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)bölümünde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.

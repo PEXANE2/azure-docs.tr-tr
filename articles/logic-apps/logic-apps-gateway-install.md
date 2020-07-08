@@ -7,15 +7,14 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659263"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
-[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ Geçidi, şirket içi ve mantıksal uygulamalarınızın veri kaynakları arasında hızlı veri aktarımı ve şifreleme sağlayan bir köprü olarak çalışmaktadır. Aynı ağ geçidi yüklemesini Power BI, güç otomatikleştirme, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
+[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ geçidi, şirket içindeki veri kaynaklarıyla mantıksal uygulamalarınız arasında hızlı veri aktarımı ve şifreleme gerçekleştiren bir köprü gibi çalışır. Aynı ağ geçidi yüklemesini Power BI, güç otomatikleştirme, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
 * [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
 * [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
@@ -26,7 +25,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -262,7 +261,7 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 ## <a name="faq-and-troubleshooting"></a>SSS ve sorun giderme
 
 * [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Şirket içi veri ağ geçidi sorunlarını giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Ağ geçidi performansını izleme ve en iyi duruma getirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar

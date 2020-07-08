@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732510"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
@@ -169,7 +168,7 @@ Her bir özelliğin ayrıntılı açıklaması için, bkz. [IoT Hub için olay �
 
 IoT Hub olay abonelikleri olayları, cihaz adı olan olay türüne, veri içeriğine ve konuya göre filtreleyebilir.
 
-Event Grid olay türlerinde, konularla ve veri içeriklerinde [filtrelemeye](../event-grid/event-filtering.md) izin vermez. Event Grid aboneliğini oluştururken, seçili IoT olaylarına abone olmayı seçebilirsiniz. Event Grid iş (ön ek) **Ile başlayan** ve (son ek) **ile biten** konu filtreleri. Filtre bir `AND` işleç kullanır, bu nedenle hem önek hem de sonek ile eşleşen bir konuya sahip olaylar aboneye teslim edilir.
+Event Grid olay türlerinde, konularla ve veri içeriklerinde [filtrelemeye](../event-grid/event-filtering.md) izin vermez. Event Grid aboneliğini oluştururken, seçili IoT olaylarına abone olmayı seçebilirsiniz. Event Grid iş (ön ek) **Ile başlayan** ve (son ek) **ile biten** konu filtreleri. Filtre bir işleç kullanır `AND` , bu nedenle hem önek hem de sonek ile eşleşen bir konuya sahip olaylar aboneye teslim edilir.
 
 IoT olaylarının konusu şu biçimi kullanır:
 

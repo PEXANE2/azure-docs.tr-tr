@@ -16,10 +16,9 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763219"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
@@ -63,7 +62,7 @@ Aşağıdaki iki bölüm, bu adımları gerçekleştirmenize yardımcı olur.
 1. **Yeni sertifika**' yı seçin. Sertifika listesinin altında, sona erme tarihi varsayılan olarak geçerli tarihten üç yıl sonra olacak şekilde yeni bir satır görüntülenir. (Değişiklikleriniz henüz kaydedilmedi, bu nedenle süre sonu tarihini değiştirebilirsiniz.)
 1. Yeni sertifika satırında, sona erme tarihi sütununun üzerine gelin ve **Tarih Seç** simgesini (Takvim) seçin. Yeni satırın geçerli sona erme tarihi için bir ayın günlerini görüntüleyen bir Takvim denetimi görünür.
 1. Takvim denetimini kullanarak yeni bir tarih ayarlayın. Geçerli tarih ile üç yıl arasında herhangi bir tarihi geçerli tarihten sonra ayarlayabilirsiniz.
-1. **Kaydet**’i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
+1. **Kaydet**'i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
 1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasına dönmek için **X** işaretini seçin.
 
 ### <a name="upload-and-activate-a-certificate"></a>Sertifika yükleme ve etkinleştirme
@@ -88,7 +87,7 @@ Azure AD, SAML sertifikasının süresi dolmadan 60, 30 ve 7 gün önce bir e-po
 1. Son e-posta adresinin altına, sertifikanın süre sonu bildirimini alması gereken e-posta adresini yazın ve ardından ENTER tuşuna basın.
 1. Eklemek istediğiniz her e-posta adresi için önceki adımı tekrarlayın.
 1. Silmek istediğiniz her e-posta adresi için, e-posta adresinin yanındaki **Sil** simgesini (çöp kutusu) seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Bildirim e-postasını buradan alacaksınız aadnotification@microsoft.com . E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
 

@@ -8,12 +8,11 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920063"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
 Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerinin bazı örnekleri verilmiştir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir. 
@@ -51,23 +50,23 @@ Değişkenler, dağıtım hakkındaki bir şeye başvurmak için [geçerli bir A
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>IIS başlangıcını AppCmd. exe ile yapılandırma
-[Appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) komut satırı aracı, Azure 'DA başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *Appcmd. exe* , Azure 'da başlangıç görevlerinde kullanmak için yapılandırma ayarlarına uygun, komut satırı erişimi sağlar. Web sitesi ayarları, *Appcmd. exe*' yi kullanarak, uygulamalar ve siteler için eklenebilir, değiştirilebilir veya kaldırılabilir.
+## <a name="configure-iis-startup-with-appcmdexe"></a>AppCmd.exe ile IIS başlatmasını yapılandırma
+[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) komut satırı aracı, Azure 'DA başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *AppCmd.exe* , Azure 'da başlangıç görevlerinde kullanmak için yapılandırma ayarlarına uygun, komut satırı erişimi sağlar. *AppCmd.exe*kullanarak, uygulamalar ve siteler için Web sitesi ayarları eklenebilir, değiştirilebilir veya kaldırılabilir.
 
-Bununla birlikte, bir başlangıç görevi olarak *Appcmd. exe* ' nin kullanımı için birkaç şey izlemeniz gerekir:
+Ancak, bir başlangıç görevi olarak *AppCmd.exe* kullanımı için birkaç şey daha vardır:
 
 * Başlangıç görevleri, yeniden başlatmalar arasında birden çok kez çalıştırılabilir. Örneğin, bir rol geri dönüştürüldüğünde.
-* *Appcmd. exe* eylemi birden çok kez gerçekleştirilirse bir hata oluşturabilir. Örneğin, bir bölümü *Web. config* 'e iki kez eklemeye çalışmak bir hata oluşturabilir.
-* Başlangıç görevleri sıfır olmayan bir çıkış kodu veya **ERRORLEVEL**döndürmeleri durumunda başarısız olur. Örneğin, *Appcmd. exe* bir hata oluşturduğunda.
+* Bir *AppCmd.exe* eylemi birden çok kez gerçekleştirilirse bir hata oluşturabilir. Örneğin, *Web.config* iki kez bir bölüm eklemeye çalışmak bir hata oluşturabilir.
+* Başlangıç görevleri sıfır olmayan bir çıkış kodu veya **ERRORLEVEL**döndürmeleri durumunda başarısız olur. Örneğin, *AppCmd.exe* bir hata oluşturduğunda.
 
-*Appcmd. exe ' ye* *yapılan çağrıyı* bir *. cmd* dosyasıyla sarıyorsanız, bu **sayede, bu** işlemi kolay bir şekilde kontrol etmeniz iyi bir uygulamadır. Bilinen bir **ERRORLEVEL** yanıtı tespit ederseniz, bunu yoksayabilirsiniz veya geri geçirebilirsiniz.
+Bir *. cmd* dosyası ile *AppCmd.exe* çağrısını sarıyorsanız kolayca yapılacak *AppCmd.exe*çağrıldıktan sonra **ERRORLEVEL** 'ı denetlemek iyi bir uygulamadır. Bilinen bir **ERRORLEVEL** yanıtı tespit ederseniz, bunu yoksayabilirsiniz veya geri geçirebilirsiniz.
 
-*Appcmd. exe* tarafından döndürülen ERRORLEVEL, Winerror. h dosyasında listelenir ve [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)'de de görülebilir.
+*AppCmd.exe* tarafından döndürülen ERRORLEVEL Winerror. h dosyasında listelenir ve [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)'de de görülebilir.
 
 ### <a name="example-of-managing-the-error-level"></a>Hata düzeyini yönetme örneği
-Bu örnek, hata işleme ve günlüğe kaydetme ile JSON için bir sıkıştırma bölümü ve *Web. config* dosyasına bir sıkıştırma girişi ekler.
+Bu örnek, hata işleme ve günlüğe kaydetme ile, JSON için bir sıkıştırma bölümü ve *Web.config* dosyasına bir sıkıştırma girişi ekler.
 
-[Service Definition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) `elevated` *Web. config* dosyasındaki ayarları değiştirmek için, appcmd özniteliği için, *Appcmd. exe* ' nin yeterli izinleri vermesini içerir:
+[ServiceDefinition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir ve bu, [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) `elevated` *Web.config* dosyasındaki ayarları değiştirmek için *AppCmd.exe* izinleri vermek üzere ExecutionContext özniteliğini ' ye ayarlamayı içerir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +79,7 @@ Bu örnek, hata işleme ve günlüğe kaydetme ile JSON için bir sıkıştırma
 </ServiceDefinition>
 ```
 
-*Startup. cmd* toplu iş dosyası, *Web. config* dosyasına BIR sıkıştırma bölümü ve JSON için bir sıkıştırma girdisi eklemek için *Appcmd. exe* ' yi kullanır. VERIFY 183 için beklenen **ERRORLEVEL** , VERIFY kullanılarak sıfır olarak ayarlanmıştır. EXE komut satırı programı. Beklenmeyen errorlevels, StartupErrorLog. txt dosyasına kaydedilir.
+*Startup. cmd* toplu iş dosyası, bir sıkıştırma bölümü ve JSON için *Web.config* dosyasına bir sıkıştırma girişi eklemek için *AppCmd.exe* kullanır. VERIFY.EXE komut satırı programı kullanılarak 183 için beklenen **ERRORLEVEL** 0 olarak ayarlanır. StartupErrorLog.txt için beklenmeyen errorlevels günlüğe kaydedilir.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -151,9 +150,9 @@ EXIT /B %errorlevel%
 ```
 
 ## <a name="block-a-specific-ip-address"></a>Belirli bir IP adresini engelle
-IIS **Web. config** dosyanızı değiştirerek, belırlı bir IP adresi kümesine yönelik bir Azure Web rolü erişimini kısıtlayabilirsiniz. Ayrıca **ApplicationHost. config** dosyasının **ipsecurity** bölümünün kilidini açarak bir komut dosyası kullanmanız gerekir.
+IIS **web.config** dosyanızı değiştirerek, belırlı bir IP adresi kümesine yönelik bir Azure Web rolü erişimini kısıtlayabilirsiniz. Ayrıca, **ApplicationHost.config** dosyasının **IPSecurity** bölümünün kilidini açarak bir komut dosyası kullanmanız gerekir.
 
-**ApplicationHost. config** dosyasının **ipsecurity** bölümünün kilidini açmak için, rol başlangıcında çalışan bir komut dosyası oluşturun. **Başlangıç** olarak adlandırılan Web rolünüzün kök düzeyinde bir klasör oluşturun ve bu klasör içinde, **Startup. cmd**adlı bir toplu iş dosyası oluşturun. Bu dosyayı Visual Studio projenize ekleyin ve paketinize eklendiğinden emin olmak için özellikleri **her zaman Kopyala** olarak ayarlayın.
+**ApplicationHost.config** dosyasının **ipsecurity** bölümünün kilidini açmak için, rol başlangıcında çalışan bir komut dosyası oluşturun. **Başlangıç** olarak adlandırılan Web rolünüzün kök düzeyinde bir klasör oluşturun ve bu klasör içinde, **Startup. cmd**adlı bir toplu iş dosyası oluşturun. Bu dosyayı Visual Studio projenize ekleyin ve paketinize eklendiğinden emin olmak için özellikleri **her zaman Kopyala** olarak ayarlayın.
 
 Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
@@ -180,7 +179,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Bu görev, Web rolü her başlatıldığında **Startup. cmd** toplu iş dosyasının çalıştırılmasını sağlar ve gerekli **IPI** bölümünün kilidinin açık olmasını sağlar.
 
-Son olarak, aşağıdaki örnekte gösterildiği gibi, erişim verilen IP adreslerinin bir listesini eklemek için Web rolünüzün **Web. config** dosyasındaki [System. webserver bölümünü](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) değiştirin:
+Son olarak, aşağıdaki örnekte gösterildiği gibi, erişim verilen IP adreslerinin bir listesini eklemek için, Web rolünüzün **web.config** dosyası olan [System. webserver bölümünü](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) değiştirin:
 
 Bu örnek yapılandırma, her bir IP 'nin sunucuya her iki tanımlı dışında erişmesine **izin verir**
 
@@ -272,7 +271,7 @@ Başlangıç görevinde yerel bir depolama kaynağı kullanmak için, yerel depo
 </ServiceDefinition>
 ```
 
-Örnek olarak, bu **Başlangıç. cmd** toplu iş dosyası yerel depolama konumunda **MyTest. txt** dosyasını oluşturmak için **pathtostartupstorage** ortam değişkenini kullanır.
+Örnek olarak, bu **Başlangıç. cmd** toplu iş dosyası yerel depolama konumunda **MyTest.txt** dosya oluşturmak için **pathtostartupstorage** ortam değişkenini kullanır.
 
 ```cmd
 REM   Create a simple text file.
@@ -377,15 +376,13 @@ EXIT /B 0
 Web veya çalışan rolünüzün görevini yapılandırırken izlemeniz gereken bazı en iyi uygulamalar aşağıda verilmiştir.
 
 ### <a name="always-log-startup-activities"></a>Başlangıç etkinliklerini her zaman günlüğe kaydet
-Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı sağlamaz, bu yüzden toplu iş dosyaları işleminde mümkün olduğunca çok veri almanız iyi bir işlemdir. **Stdout** ve **stderr**toplu iş dosyalarının çıkışını günlüğe kaydetmek, toplu iş dosyalarını ayıklamaya ve gidermeye çalışırken önemli bilgiler verebilir. **Stdout** ve **stderr** ' i **% Temp%** ortam değişkeni tarafından işaret edilen dizindeki startuplog. txt dosyasına kaydetmek için, metni `>>  "%TEMP%\\StartupLog.txt" 2>&1` günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **% PathToApp1Install%** dizininde Setup. exe dosyasını yürütmek için:
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı sağlamaz, bu yüzden toplu iş dosyaları işleminde mümkün olduğunca çok veri almanız iyi bir işlemdir. **Stdout** ve **stderr**toplu iş dosyalarının çıkışını günlüğe kaydetmek, toplu iş dosyalarını ayıklamaya ve gidermeye çalışırken önemli bilgiler verebilir. **Stdout** ve **stderr** 'i **% Temp%** ortam değişkeni tarafından işaret edilen dizindeki StartupLog.txt dosyasına kaydetmek için, metni `>>  "%TEMP%\\StartupLog.txt" 2>&1` günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **% PathToApp1Install%** dizininde setup.exe yürütmek için:`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 XML 'nizi basitleştirmek için, tüm başlangıç görevlerinizi günlük kaydıyla birlikte çağıran bir sarmalayıcı *cmd* dosyası oluşturabilir ve her bir alt görevin aynı ortam değişkenlerini paylarını sağlayabilirsiniz.
 
-Her bir başlangıç görevinin sonunda kullanımı sinir bozucu olabilir `>> "%TEMP%\StartupLog.txt" 2>&1` . Günlüğe kaydetmeyi işleyen bir sarmalayıcı oluşturarak görev günlüğünü uygulayabilirsiniz. Bu sarmalayıcı, çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki tüm çıktılar *Startuplog. txt* dosyasına yönlendirilir.
+Her bir başlangıç görevinin sonunda kullanımı sinir bozucu olabilir `>> "%TEMP%\StartupLog.txt" 2>&1` . Günlüğe kaydetmeyi işleyen bir sarmalayıcı oluşturarak görev günlüğünü uygulayabilirsiniz. Bu sarmalayıcı, çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki tüm çıktılar *Startuplog.txt* dosyasına yönlendirilir.
 
-Aşağıdaki örnekte, tüm çıktının bir başlangıç toplu iş dosyasından nasıl yeniden yönlendirileceği gösterilmektedir. Bu örnekte, ServerDefinition. csdef dosyası *logwrap. cmd*' yi çağıran bir başlangıç görevi oluşturur. *logwrap. cmd* , tüm çıktıyı **% Temp% \\ startuplog. txt**dosyasına yönlendirerek *Startup2. cmd*' yi çağırır.
+Aşağıdaki örnekte, tüm çıktının bir başlangıç toplu iş dosyasından nasıl yeniden yönlendirileceği gösterilmektedir. Bu örnekte, ServerDefinition. csdef dosyası *logwrap. cmd*' yi çağıran bir başlangıç görevi oluşturur. *logwrap. cmd* *Startup2. cmd*öğesini çağırır, tüm çıktıyı **% Temp% \\StartupLog.txt**olarak yeniden yönlendiriyor.
 
 ServiceDefinition. cmd:
 
@@ -447,7 +444,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-**Startuplog. txt** dosyasındaki örnek çıktı:
+**StartupLog.txt** dosyasında örnek çıkış:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -459,7 +456,7 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **Startuplog. txt** dosyası *c:\resources\temp \\ {rol tanımlayıcısı} \roletemp* klasöründe bulunur.
+> **StartupLog.txt** dosyası *c:\resources\temp \\ {rol tanımlayıcısı} \roletemp* klasöründe bulunur.
 > 
 > 
 
@@ -468,7 +465,7 @@ Başlangıç göreviyle ilgili ayrıcalıkları uygun şekilde ayarlayın. Bazen
 
 [ExecutionContext][görev] özniteliği başlangıç görevinin ayrıcalık düzeyini ayarlar. Kullanımı, `executionContext="limited"` Başlangıç görevinin rolle aynı ayrıcalık düzeyine sahip olduğu anlamına gelir. Kullanımı `executionContext="elevated"` , başlangıç görevinin yönetici ayrıcalıklarına sahip olduğu anlamına gelir ve bu, başlangıç görevinin rolünüze yönetici ayrıcalıkları vermeden yönetici görevleri gerçekleştirmesini sağlar.
 
-Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 'yi yapılandırmak için **Appcmd. exe** ' yi kullanan bir başlangıç görevidir. **Appcmd. exe** gerekli `executionContext="elevated"` .
+Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 'yi yapılandırmak için **AppCmd.exe** kullanan bir başlangıç görevidir. **AppCmd.exe** gerekir `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Uygun taskType 'ı kullanın
 [TaskType][görev] özniteliği başlangıç görevinin yürütülme şeklini belirler. Üç değer vardır: **basit**, **arka plan**ve **ön plan**. Arka plan ve ön plan görevleri zaman uyumsuz olarak başlatılır ve basit görevler tek seferde bir kez yürütülür.

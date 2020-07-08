@@ -10,13 +10,12 @@ ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680996"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Worker sorunlarını giderme
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
 Bu makalede, Azure Otomasyonu karma runbook çalışanları ile ilgili sorun giderme ve sorunları çözme hakkında bilgi sağlanır. Genel bilgi için bkz. [karma Runbook Worker genel bakış](../automation-hybrid-runbook-worker.md).
 
@@ -234,17 +233,17 @@ Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandbox
 
 Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj gönderme gibi runbook [çıkışlarını ve Iletileri](../automation-runbook-output-and-messages.md) Azure Otomasyonu 'na gönderir. Ayrıntılı ve Ilerleme akışlarını runbook 'lar için yaptığınız gibi etkinleştirebilirsiniz.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Senaryo: Orchestrator. Sandbox. exe, proxy üzerinden Office 365 'e bağlanamıyor
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Senaryo: Orchestrator.Sandbox.exe proxy ile Office 365 'e bağlanamıyor
 
 #### <a name="issue"></a>Sorun
 
 Windows karma Runbook Worker üzerinde çalışan bir betik, bir Orchestrator korumalı alanı üzerinde Office 365 ' e istendiği şekilde bağlanamaz. Betik, bağlantı için [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
 
-Proxy ve atlama listesini ayarlamak için **Orchestrator. Sandbox. exe. config** ' i ayarlarsanız, korumalı alan hala düzgün şekilde bağlanmaz. Aynı ara sunucu ve atlama listesi ayarlarına sahip bir **Powershell_ise. exe. config** dosyası, beklendiği gibi çalışır. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri ara sunucu ile ilgili herhangi bir bilgi sağlamaz.
+Proxy 'yi ve atlama listesini ayarlamak için **Orchestrator.Sandbox.exe.config** ayarlarsanız, korumalı alan hala düzgün şekilde bağlanmaz. Aynı ara sunucu ve atlama listesi ayarlarına sahip bir **Powershell_ise.exe.config** dosyası, beklendiği gibi çalışıyor gibi çalışır. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri ara sunucu ile ilgili herhangi bir bilgi sağlamaz.
 
 #### <a name="cause"></a>Nedeni
 
-Sunucu üzerindeki Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağlantısı proxy 'yi atlayamaz. Bir PowerShell korumalı alanının, oturum açmış kullanıcı olarak çalıştığını unutmayın. Ancak, bir Orchestrator korumalı alanı yoğun bir şekilde özelleştirilir ve **Orchestrator. Sandbox. exe. config** dosya ayarlarını yok sayabilir. Makine veya Log Analytics Aracısı proxy ayarlarını işlemek için özel koda sahiptir, ancak diğer özel proxy ayarlarını işlemeye yönelik değildir. 
+Sunucu üzerindeki Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağlantısı proxy 'yi atlayamaz. Bir PowerShell korumalı alanının, oturum açmış kullanıcı olarak çalıştığını unutmayın. Ancak, bir Orchestrator korumalı alanı yoğun bir şekilde özelleştirilir ve **Orchestrator.Sandbox.exe.config** dosya ayarlarını yok sayabilir. Makine veya Log Analytics Aracısı proxy ayarlarını işlemek için özel koda sahiptir, ancak diğer özel proxy ayarlarını işlemeye yönelik değildir. 
 
 #### <a name="resolution"></a>Çözüm
 

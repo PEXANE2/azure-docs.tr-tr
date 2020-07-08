@@ -16,10 +16,9 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022599"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
@@ -370,7 +369,7 @@ Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak,
 
 Birden çok bağlı disk üzerinde bir birimin şeridi oluşturma, daha önce [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı açısından önemli](dbms_guide_general.md)bir şekilde ele alınmıştır. 
 
-#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Diğer konular
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Diğer önemli noktalar
 Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanlarda Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)açıklanmaktadır.  SAP MaxDB veritabanına sahip VM dağıtımları için.
 Diğer SAP MaxDB 'ye özgü ayarlar Azure VM 'lerine saydamdır ve SAP Note [767598] ve bu SAP notlarında listelenen farklı belgelerde açıklanmıştır:
 
@@ -412,7 +411,7 @@ SAP liveCache yoğun bir şekilde hesaplama gücü kullandığından, üretken b
 #### <a name="backup-and-restore-for-livecache-in-azure"></a>Azure 'da liveCache için yedekleme ve geri yükleme
 performans konuları da dahil olmak üzere yedekleme ve geri yükleme bu belgedeki ilgili SAP MaxDB bölümünde zaten açıklanmıştır. 
 
-#### <a name="other-considerations"></a>Diğer konular
+#### <a name="other-considerations"></a>Diğer önemli noktalar
 Diğer tüm genel bölgeler, ilgili SAP MaxDB bölümünde zaten açıklanmıştır. 
 
 ## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Azure 'da Windows üzerinde SAP Içerik sunucusu dağıtımının özellikleri

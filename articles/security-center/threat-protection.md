@@ -8,14 +8,13 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267163"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037197"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -106,36 +105,18 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Azure kapsayıcıları için tehdit koruması<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Kapsayıcılar için tehdit koruması<a name="azure-containers"></a>
 
-> [!NOTE]
-> Bu hizmet şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
+### <a name="availability"></a>Kullanılabilirlik
 
-Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
+- Yayın durumu: **genel kullanılabilirlik**
+- Gerekli roller: **Güvenlik Yöneticisi** , uyarıları kapatabilir. **Güvenlik okuyucusu** bulguları görüntüleyebilir.
+- Larının<br>
+    Ticari bulutlar ✔<br>
+    ✘ US Gov<br>
+    ✘ Çin gov, diğer gov
 
-Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar: 
-
-* **Ana bilgisayar düzeyi** -Güvenlik Merkezi 'nin Aracısı (Standart katmanda mevcuttur. Ayrıntılar için [fiyatlandırma](security-center-pricing.md) ) Linux 'u şüpheli etkinlikler için izler. Aracı, düğüm veya üzerinde çalışan bir kapsayıcıdan kaynaklanan şüpheli etkinlikler için uyarıları tetikler. Web kabuğu algılama ve bilinen şüpheli IP adresleriyle bağlantı gibi etkinliklere örnek olarak verilebilir.
-
-    Kapsayıcılı ortamınızın güvenliğine daha ayrıntılı bir bakış için, aracı kapsayıcıya özgü Analizi izler. Ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi olaylar için uyarı tetikleyecektir.
-
-    >[!IMPORTANT]
-    > Aracıları konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alırsınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
-
-    Konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-containerhost)bakın.
-
-
-* **Aks kümesi düzeyinde**tehdit koruması, Kubernetes 'ın denetim günlüklerini çözümlemeye dayalıdır. **Aracısız** izlemeyi etkinleştirmek Için, **fiyatlandırma & ayarları** sayfasından Kubernetes seçeneğini aboneliğinize ekleyin (bkz. [fiyatlandırma](security-center-pricing.md)). Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir.
-
-    >[!NOTE]
-    > Güvenlik Merkezi, Azure Kubernetes hizmet eylemleri ve abonelik ayarlarında Kubernetes seçeneği etkinleştirildikten sonra gerçekleşen dağıtımlar için güvenlik uyarıları oluşturur. 
-
-    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-akscluster)bakın.
-
-Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
-
-> [!TIP]
-> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)ait yönergeleri izleyerek kapsayıcı uyarılarının benzetimini yapabilirsiniz.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,7 +131,7 @@ Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için ol
 
 Şüpheli veritabanı etkinlikleri, olası güvenlik açıkları veya SQL ekleme saldırıları ve anormal veritabanı erişimi ve sorgu desenleri olduğunda uyarılar görürsünüz.
 
-Azure SQL veritabanı ve SQL için Gelişmiş tehdit koruması, Azure SQL veritabanları, Azure SQL veritabanı yönetilen örnekleri, Azure SQL veri ambarı veritabanları ve Azure sanal makinelerinde SQL Server 'lar kapsayan gelişmiş SQL güvenlik özelliklerine yönelik [Gelişmiş veri güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Birleşik paketinin bir parçasıdır.
+Azure SQL veritabanı ve SQL için Gelişmiş tehdit koruması, Azure SQL veritabanı, Azure SQL yönetilen örnekleri, Azure SQL veri ambarı veritabanları ve Azure sanal makinelerinde SQL Server 'lar kapsayan gelişmiş SQL güvenlik özelliklerine yönelik [Gelişmiş veri güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Birleşik paketinin bir parçasıdır.
 
 Daha fazla bilgi için bkz.
 
@@ -162,15 +143,44 @@ Daha fazla bilgi için bkz.
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure depolama için tehdit koruması<a name="azure-storage"></a>
 
-Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri algılar. Bu koruma katmanı, güvenlik uzmanı olmanıza gerek kalmadan tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur. 
+### <a name="availability"></a>Kullanılabilirlik
 
-Güvenlik uyarıları, depolama hesabınızda şüpheli etkinlikler olduğunda veya anormal davranış algılandığında tetiklenir. Şüpheli etkinlikler, bir blob 'un kötü amaçlı yazılımdan şüphelenildiği bir blob karşıya yüklenmesini içerebilir. Anormal davranış uyarıları, bir depolama hesabına erişim deseninin değişikliklerini içerir.
+- Yayın durumu:
+    - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
+    - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme)
+    - [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Önizleme)
+- Larının<br>
+    Ticari bulutlar ✔<br>
+    ✔ US Gov<br>
+    ✘ Çin gov, diğer gov
+
+### <a name="whats-protected"></a>Ne korumalıdır?
+
+Azure depolama için tehdit koruması, Azure depolama hesaplarınızdaki zararlı olabilecek etkinlikleri algılar. Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir.
+
+Bu koruma katmanı, güvenlik uzmanı olmanıza gerek *kalmadan* tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
+
+Depolama hesaplarınız korunuyor 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure Storage için tehdit koruması ne tür uyarılar sağlar?
+
+Güvenlik uyarıları şunları yaparken tetiklenir:
+
+- **Şüpheli etkinlik** -Örneğin, depolama hesabına Tor 'ın etkin çıkış düğümü olarak BILINEN bir IP adresinden başarıyla erişildi
+- **Anormal davranış** ; Örneğin, erişim düzenindeki bir depolama hesabına yapılan değişiklikler
+- **Karşıya yüklenen olası kötü amaçlı yazılım** -karma saygınlığı Analizi karşıya yüklenen bir dosyanın kötü amaçlı
 
 Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir.
 
-Azure depolama için tehdit koruması Şu anda yalnızca [BLOB depolama alanı](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. 
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>Kötü amaçlı yazılım için karma saygınlığı analizi nedir?
 
-Bu hizmet tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak başka bir egeign veya Azure Kamu bulut bölgesi yoktur. 
+Karşıya yüklenen bir dosyanın şüpheli olup olmadığını öğrenmek için Azure depolama için tehdit koruması, [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684)tarafından desteklenen karma saygınlığı analizini kullanır. Tehdit koruması araçları karşıya yüklenen dosyaları taramaz, böylece depolama günlüklerini inceler ve yeni yüklenen dosyaların karmalarını, bilinen virüsler, Truva atları, casus yazılım ve fidye ile karşılaştırın. 
+
+Bir dosyanın kötü amaçlı yazılım içermesi şüpheli olduğu durumlarda, güvenlik merkezi bir uyarı görüntüler ve isteğe bağlı olarak, şüpheli dosyayı silmek üzere depolama sahibini onay için e-posta ile gönderebilir. Karma saygınlığı analizinin kötü amaçlı yazılım içerdiğini gösterdiği dosyaların bu otomatik olarak kaldırılmasını ayarlamak için, ["depolama hesabına yüklenen potansiyel kötü amaçlı yazılımlar" içeren uyarılarda tetiklemek üzere bir iş akışı Otomasyonu](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)dağıtın.
+
+
+
+### <a name="next-steps"></a>Sonraki adımlar 
 
 30 günlük ücretsiz deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -178,9 +188,13 @@ Daha fazla bilgi için bkz.
 
 * [Azure depolama için Gelişmiş tehdit koruması 'nı etkinleştirme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure depolama için tehdit koruması uyarılarının listesi](alerts-reference.md#alerts-azurestorage)
+* [Microsoft 'un tehdit bilgileri özellikleri](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)ilişkin yönergeleri Izleyerek Azure Storage uyarılarının benzetimini yapabilirsiniz.
+> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)ait yönergeleri izleyerek depolama uyarılarının benzetimini yapabilirsiniz.
+
+
+
 
 
 
@@ -228,14 +242,17 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 >[!NOTE]
 > Yukarıdaki analizler Microsoft Cloud App Security tarafından desteklenmektedir. Bu analizlerden yararlanmak için bir Cloud App Security lisansını etkinleştirmeniz gerekir. Cloud App Security lisansınız varsa, bu uyarılar varsayılan olarak etkinleştirilir. Uyarıları devre dışı bırakmak için:
 >
-> 1. **Güvenlik Merkezi** dikey penceresinde **güvenlik ilkesi**' ni seçin. Değiştirmek istediğiniz abonelik için **Ayarları Düzenle**' yi seçin.
-> 2. **Tehdit algılamayı**seçin.
-> 3. **Tümleştirmelere**izin ver ' in altında, **verilerinize erişim Microsoft Cloud App Security izin ver**' i temizleyin ve **Kaydet**' i seçin
+> 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
+> 1. Değiştirmek istediğiniz aboneliği seçin.
+> 1. **Tehdit algılamayı**seçin.
+> 1. **Verilerinize erişmek için Microsoft Cloud App Security Izin ver**' i temizleyin ve **Kaydet**' i seçin.
 
 >[!NOTE]
 >Güvenlik Merkezi, güvenlikle ilgili müşteri verilerini kaynakla aynı coğrafi bölgede depolar. Microsoft, kaynak coğrafi bölgede henüz Güvenlik Merkezi dağıtmamışsa, verileri Birleşik Devletler depolar. Cloud App Security etkinleştirildiğinde, bu bilgiler Cloud App Security coğrafi konum kurallarına uygun olarak depolanır. Daha fazla bilgi için bkz. [bölgesel olmayan hizmetler Için veri depolama](https://azuredatacentermap.azurewebsites.net/).
 
+1. Aracıyı yüklemekte olduğunuz çalışma alanını ayarlayın. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
 
+1. Standart fiyatlandırma katmanını ayarlayın ve **Kaydet**' i seçin.
 
 
 

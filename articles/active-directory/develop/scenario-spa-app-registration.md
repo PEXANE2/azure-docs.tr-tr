@@ -13,19 +13,18 @@ ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682402"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
-Microsoft Identity platformunda tek sayfalı uygulama (SPA) kaydetmek için aşağıdaki adımları izleyin. Kayıt adımları, örtük verme akışını destekleyen MSAL. js 1,0 ve PKCE ile yetkilendirme kodu akışını destekleyen MSAL. js 2,0 arasında farklılık gösterir.
+Microsoft Identity platformunda tek sayfalı uygulama (SPA) kaydetmek için aşağıdaki adımları izleyin. Kayıt adımları, örtük verme akışını destekleyen MSAL.js 1,0 arasında farklılık gösterir ve PKCE ile yetkilendirme kodu akışını destekleyen MSAL.js 2,0 ' dir.
 
 ## <a name="create-the-app-registration"></a>Uygulama kaydını oluşturma
 
-Hem MSAL. js 1,0 hem de 2,0 tabanlı uygulamalar için, ilk uygulama kaydını oluşturmak için aşağıdaki adımları tamamlayarak öğesini başlatın.
+MSAL.js 1,0 ve 2,0 tabanlı uygulamalarda, ilk uygulama kaydını oluşturmak için aşağıdaki adımları tamamlayarak öğesini başlatın.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınız birden çok kiracıya erişebilirse, üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından oluşturmak üzere olduğunuz uygulama kaydını içermesi gereken kiracıyı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
@@ -33,14 +32,14 @@ Hem MSAL. js 1,0 hem de 2,0 tabanlı uygulamalar için, ilk uygulama kaydını o
 1. **Yeni kayıt**' ı seçin, uygulama Için bir **ad** girin ve uygulama için **Desteklenen hesap türlerini** seçin. **Yeniden yönlendirme URI 'si** **girmeyin.** Farklı hesap türlerinin açıklaması için, [Azure Portal kullanarak yeni bir uygulama kaydetme](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)konusuna bakın.
 1. Uygulama kaydını oluşturmak için **Kaydet** ' i seçin.
 
-Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile birlikte yeniden yönlendirdiğini belirtmek için bir **yeniden yönlendirme URI 'si** ile uygulama kaydını yapılandırın. Uygulamanızda kullanmakta olduğunuz MSAL. js sürümüne uygun adımları kullanın:
+Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile birlikte yeniden yönlendirdiğini belirtmek için bir **yeniden yönlendirme URI 'si** ile uygulama kaydını yapılandırın. Uygulamanızda kullanmakta olduğunuz MSAL.js sürümü için uygun olan adımları kullanın:
 
-- [AUTH Code Flow Ile msal. js 2,0](#redirect-uri-msaljs-20-with-auth-code-flow) (önerilir)
-- [Örtük Flow ile MSAL. js 1,0](#redirect-uri-msaljs-10-with-implicit-flow)
+- [AUTH Code Flow ileMSAL.js 2,0](#redirect-uri-msaljs-20-with-auth-code-flow) (önerilir)
+- [Örtük Flow ileMSAL.js 1,0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>URI: MSAL. js 2,0 kimlik doğrulama kod akışı ile yeniden yönlendirme
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Yeniden yönlendirme URI 'SI: MSAL.js 2,0, auth Code Flow
 
-MSAL. js 2,0 veya üstünü kullanan bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL. js 2.0 +, [tarayıcı üçüncü taraf tanımlama bilgisi kısıtlamalarına](reference-third-party-cookies-spas.md)yanıt olarak PKCE ve CORS ile yetkilendirme kodu akışını destekler. Örtük verme akışı, MSAL. js 2.0 + içinde desteklenmez.
+MSAL.js 2,0 veya sonraki bir sürümü kullanan bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 2.0 +, [tarayıcı üçüncü taraf tanımlama bilgisi kısıtlamalarına](reference-third-party-cookies-spas.md)yanıt olarak pkce ve CORS ile yetkilendirme kodu akışını destekler. Örtük izin akışı MSAL.js 2.0 + içinde desteklenmez.
 
 1. Azure portal, [uygulama kaydını oluşturma](#create-the-app-registration)bölümünde daha önce oluşturduğunuz uygulama kaydını seçin.
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin ve ardından **Platform Ekle**' yi seçin.
@@ -50,9 +49,9 @@ MSAL. js 2,0 veya üstünü kullanan bir uygulama için yeniden yönlendirme URI
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Platform Ekle** bölmesindeki **tek sayfalı uygulama** kutucuğunu kullanarak yeniden yönlendirme URI 'sini yapılandırarak, uygulama kaydınız, PKI CE ve CORS ile yetkilendirme kodu akışını destekleyecek şekilde yapılandırılır.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Dolaylı akışa sahip URI: MSAL. js 1,0
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Yeniden yönlendirme URI 'SI: MSAL.js 1,0 örtük akışla
 
-MSAL. js 1,3 veya önceki bir sürümünü ve örtük izin akışını kullanan tek sayfalı bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL. js 1,3 veya önceki sürümlerini kullanan uygulamalar, kimlik doğrulama kod akışını desteklemez.
+MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek sayfalı bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 1,3 veya önceki bir sürümü kullanan uygulamalar, kimlik doğrulama kod akışını desteklemez.
 
 1. Azure portal, [uygulama kaydını oluşturma](#create-the-app-registration)bölümünde daha önce oluşturduğunuz uygulama kaydını seçin.
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin ve ardından **Platform Ekle**' yi seçin.
@@ -67,11 +66,11 @@ Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin
 
 ## <a name="note-about-authorization-flows"></a>Yetkilendirme akışları hakkında
 
-Varsayılan olarak, tek sayfalı uygulama platformu yapılandırması kullanılarak oluşturulan bir uygulama kaydı, yetkilendirme kodu akışına izin vermez. Bu akıştan faydalanmak için uygulamanızın MSAL. js 2,0 veya üstünü kullanması gerekir.
+Varsayılan olarak, tek sayfalı uygulama platformu yapılandırması kullanılarak oluşturulan bir uygulama kaydı, yetkilendirme kodu akışına izin vermez. Bu akıştan faydalanmak için uygulamanızın MSAL.js 2,0 veya üzeri bir sürümü kullanması gerekir.
 
-Daha önce bahsedildiği gibi, MSAL. js 1,3 kullanan tek sayfalı uygulamalar örtük izin akışı ile kısıtlıdır. Geçerli [OAuth 2,0 en iyi uygulamaları](v2-oauth2-auth-code-flow.md) , Spas için örtük akış yerine yetkilendirme kodu akışının kullanılmasını önerir. Sınırlı ömür yenileme belirteçlerinin olması, uygulamanızın Safari IP gibi [modern tarayıcı tanımlama bilgisi gizlilik kısıtlamalarına](reference-third-party-cookies-spas.md)uyum sağlamasına de yardımcı olur.
+Daha önce bahsedildiği gibi, MSAL.js 1,3 kullanan tek sayfalı uygulamalar örtük izin akışı ile kısıtlıdır. Geçerli [OAuth 2,0 en iyi uygulamaları](v2-oauth2-auth-code-flow.md) , Spas için örtük akış yerine yetkilendirme kodu akışının kullanılmasını önerir. Sınırlı ömür yenileme belirteçlerinin olması, uygulamanızın Safari IP gibi [modern tarayıcı tanımlama bilgisi gizlilik kısıtlamalarına](reference-third-party-cookies-spas.md)uyum sağlamasına de yardımcı olur.
 
-Bir uygulama kaydı tarafından temsil edilen tüm üretim tek sayfalı uygulamalarınız, MSAL. js 2,0 ve yetkilendirme kodu akışını kullanıyorsa, Azure portal uygulama kaydının **kimlik doğrulama** bölmesinin örtük olarak izin verme ayarlarını kaldırın. MSAL. js 1. x ve örtük akış kullanan uygulamalar çalışmaya devam edebilir, ancak örtük akışı etkin bırakırsanız (işaretli).
+Bir uygulama kaydı tarafından temsil edilen tüm üretim tek sayfalı uygulamalarınız MSAL.js 2,0 ' i ve yetkilendirme kodu akışını kullanıyorsa, örtülü izin ayarları ' nın Azure portal uygulama kaydının **kimlik doğrulama** Bölmesi ' ni kaldırın. MSAL.js 1. x ve örtük akış kullanan uygulamalar çalışmaya devam edebilir, ancak örtük akışı etkin bırakırsanız (işaretli).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

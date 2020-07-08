@@ -10,10 +10,9 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982671"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Değişiklik gizliliği ve Whitenoıse paketini kullanarak veri gizliliğini koruma
@@ -63,7 +62,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel fa
 
 Çekirdek kitaplık, farklı bir özel sistem uygulamak için aşağıdaki Gizlilik mekanizmalarını içerir:
 
-|Bileşen  |Description  |
+|Bileşen  |Açıklama  |
 |---------|---------|
 |Analiz     | Rastgele hesaplamaların grafik açıklaması. |
 |Doğrulayıcı     | Bir çözümlemenin farklı bir şekilde özel olması için gerekli koşulları denetlemeye ve türetmede kullanılabilecek bir araç kümesi içeren bir Rust kitaplığı.          |
@@ -74,7 +73,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel fa
 
 Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşağıdaki araçları ve hizmetleri sağlar:
 
-|Bileşen  |Description  |
+|Bileşen  |Açıklama  |
 |---------|---------|
 |Veri Erişimi     | SQL sorgularını karşılar ve işleyen ve rapor üreten kitaplık. Bu kitaplık Python 'da uygulanır ve aşağıdaki ODBC ve DBAPı veri kaynaklarını destekler:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandas</li></ul>|
 |Hizmet     | Paylaşılan veri kaynaklarına karşı istekleri veya sorguları sunan bir REST uç noktası sağlayan yürütme hizmeti. Hizmet, heterojen istekler olarak da bilinen farklı Delta ve Epsilon değerleri içeren isteklerde çalışan değişiklik gizlilik modüllerinin bulunmasına olanak tanımak üzere tasarlanmıştır. Bu başvuru, bağıntılı verilere ilişkin sorgulardan daha fazla etki için uygulama hesaplar. |

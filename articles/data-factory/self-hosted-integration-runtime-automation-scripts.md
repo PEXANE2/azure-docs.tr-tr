@@ -12,16 +12,15 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
 ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664385"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Yerel PowerShell betikleri kullanarak şirket içinde barındırılan tümleştirme çalışma zamanı yüklemesini otomatikleştirme
 Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesini otomatik hale getirmek için (Bunun yerine Kaynak Yöneticisi şablonundan yararlandığımız Azure sanal makineleri dışında), yerel PowerShell betiklerini kullanabilirsiniz. Bu makalede, kullanabileceğiniz iki komut dosyası tanıtılmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel makinenizde PowerShell 'i başlatın. Betikleri çalıştırmak için **yönetici olarak çalıştır**' ı seçmeniz gerekir.
 * Şirket içinde barındırılan tümleştirme çalışma zamanı yazılımını [indirin](https://www.microsoft.com/download/details.aspx?id=39717) . İndirilen dosyanın bulunduğu yolu kopyalayın. 
@@ -34,9 +33,9 @@ Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesi
 > Bu betikler, şirket içinde barındırılan tümleştirme çalışma zamanındaki [belgelenen komut satırı yardımcı programı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell) kullanılarak oluşturulur. Gerekirse, bu betikleri Otomasyon ihtiyaçlarına uygun şekilde özelleştirebilir.
 > Betiklerin düğüm başına uygulanması gerekir, bu nedenle yüksek kullanılabilirlik kurulumu (2 veya daha fazla düğüm) durumunda tüm düğümlerde çalıştırıldığınızdan emin olun.
 
-* Kurulumu otomatik hale getirmek için: **[ınstallgatewayonlocalmachine. ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** kullanarak şirket içinde barındırılan yeni bir tümleştirme çalışma zamanı düğümü yükleme ve kaydetme-betik, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü yüklemek ve bir kimlik doğrulama anahtarıyla kaydetmek için kullanılabilir. Komut dosyası, **önce** şirket içinde [barındırılan tümleştirme çalışma zamanının](https://www.microsoft.com/download/details.aspx?id=39717) konumunu yerel bir diskte belirterek, **ikinci** olarak **kimlik doğrulama anahtarını** belirten (Şirket içinde barındırılan IR düğümünü kaydetmek için) iki bağımsız değişkeni kabul eder.
+* Kurulumu otomatik hale getirmek için: **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** kullanarak yeni bir şirket içinde barındırılan tümleştirme çalışma zamanı düğümü yükleme ve kaydetme-betik, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü yüklemek ve bir kimlik doğrulama anahtarına kaydetmek için kullanılabilir. Komut dosyası, **önce** şirket içinde [barındırılan tümleştirme çalışma zamanının](https://www.microsoft.com/download/details.aspx?id=39717) konumunu yerel bir diskte belirterek, **ikinci** olarak **kimlik doğrulama anahtarını** belirten (Şirket içinde barındırılan IR düğümünü kaydetmek için) iki bağımsız değişkeni kabul eder.
 
-* El ile güncelleştirmelerin otomatikleştirilmesi için: şirket içinde barındırılan IR düğümünü belirli bir sürümle veya en son sürüm **[Script-Update-Gateway. ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** ile güncelleştirin; otomatik güncelleştirmeyi kapatmış olmanız veya güncelleştirmeler üzerinde daha fazla denetime sahip olmak istiyorsanız bu da desteklenir. Komut dosyası, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü en son sürüme veya belirtilen daha yüksek bir sürüme (düşürme çalışmıyor) güncelleştirmek için kullanılabilir. Sürüm numarası belirtmek için bir bağımsız değişken kabul eder (örnek:-Version 3.13.6942.1). Sürüm belirtilmediğinde, her zaman kendiliğinden konak IR 'yi [indirmelerde](https://www.microsoft.com/download/details.aspx?id=39717)bulunan en son sürüme güncelleştirir.
+* El ile güncelleştirmelerin otomatikleştirilmesi için: şirket içinde barındırılan IR düğümünü belirli bir sürümle veya en son sürüm **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** güncelleştirme-bu, otomatik güncelleştirmeyi kapatmış olmanız veya güncelleştirmeler üzerinde daha fazla denetime sahip olmanız durumunda da desteklenir. Komut dosyası, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü en son sürüme veya belirtilen daha yüksek bir sürüme (düşürme çalışmıyor) güncelleştirmek için kullanılabilir. Sürüm numarası belirtmek için bir bağımsız değişken kabul eder (örnek:-Version 3.13.6942.1). Sürüm belirtilmediğinde, her zaman kendiliğinden konak IR 'yi [indirmelerde](https://www.microsoft.com/download/details.aspx?id=39717)bulunan en son sürüme güncelleştirir.
     > [!NOTE]
     > Yalnızca son 3 sürüm belirtilebilir. İdeal olarak, mevcut bir düğümü en son sürüme güncelleştirmek için kullanılır. **kayıtlı BIR kendı kendıne BARıNDıRıLAN IR olduğunu varsayar**. 
 
@@ -44,7 +43,7 @@ Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesi
 
 ### <a name="for-automating-setup"></a>Kurulumu otomatikleştirme için
 1. Şirket içinde barındırılan IR 'yi [buradan](https://www.microsoft.com/download/details.aspx?id=39717)indirin. 
-1. Yukarıdaki indirilen SHIR MSI 'nin (yükleme dosyası) bulunduğu yolu belirtin. Örneğin, yol *C:\users\username\downloads\ IntegrationRuntime_4.7.7368.1. msi*ise, bu görev için PowerShell komut satırı örneğini aşağıdaki şekilde kullanabilirsiniz:
+1. Yukarıdaki indirilen SHIR MSI 'nin (yükleme dosyası) bulunduğu yolu belirtin. Örneğin, yol *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*ise, bu görev için PowerShell komut satırı örneğini aşağıdaki şekilde kullanabilirsiniz:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"
@@ -53,7 +52,7 @@ Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesi
     > [!NOTE]
     > IR 'nizi kaydetmek için [key] öğesini kimlik doğrulama anahtarıyla değiştirin.
     > "Username" değerini kullanıcı adınızla değiştirin.
-    > Betiği çalıştırırken "ınstallgatewayonlocalmachine. ps1" dosyasının konumunu belirtin. Bu örnekte, bunu masaüstünde depoladık.
+    > Betiği çalıştırırken "InstallGatewayOnLocalMachine.ps1" dosyasının konumunu belirtin. Bu örnekte, bunu masaüstünde depoladık.
 
 1. Makinenizde önceden yüklenmiş bir otomatik olarak barındırılan IR varsa, komut dosyası otomatik olarak kaldırır ve yeni bir tane yapılandırır. Şu pencerenin ölçeğini görürsünüz: ![ Integration Runtime 'ı yapılandırma](media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png)
 

@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664994"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Windows Önyükleme Yöneticisi hata sorunlarını giderme-0xC0000225 "durum bulunamadı"
@@ -108,11 +107,11 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
 1. Dosyaya sağ tıklayın, **Özellikler**' i seçin ve ardından dosya hakkındaki bilgileri görmek için **Ayrıntılar** sekmesini seçin.
    1. Aşağıdaki görüntüde gösterildiği gibi dosyanın sürümünü aklınızda bulabilirsiniz:
 
-      ![Dosya sürümü vurgulanmış olarak ' CNG. sys ' dosyasının Özellikler penceresi.](./media/troubleshoot-boot-error-status-not-found/5.png)
+      ![Dosya sürümü vurgulanmış olarak ' cng.sys ' dosyasının Özellikler penceresi.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Dosyayı< BINARY olarak yeniden adlandırın **. SYS >. old**, **< ikilisini değiştiriyor. SYS >** dosyanın adı.
+1. Dosyayı **< BINARY.SYS >. old**olarak yeniden adlandırın ve **< BINARY.SYS >** dosyasını dosyanın adıyla değiştirin.
 
-   Yukarıdaki adımdaki görüntüde, **CNG. sys** dosyası **CNG. sys. old** olarak yeniden adlandırılacak
+   Yukarıdaki adımdaki görüntüde, dosya **cng.sys** **cng.sys. old** olarak yeniden adlandırılacak
 
    > [!NOTE]
    > Dosyayı yeniden adlandırmaya ve "dosya bozuk ve okunamaz" iletisini almaya çalışırsanız, bu çözüm çalışmamakta olduğundan [Yardım için desteğe başvurun](https://azure.microsoft.com/support/create-ticket/).
@@ -127,7 +126,7 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
 
       Bu komut, dosyanın sahip olduğu tüm dosya sürümlerini listelecektir ve size bu bileşenin yol geçmişini verir.
       
-      Örneğin, **dır CNG. sys** **Dizin CNG. sys/s** olarak yeniden adlandırılır
+      Örneğin, **dir cng.sys** **dir cng.sys/s** olarak yeniden adlandırılır
 
    1. Listedeki dosyanın en son sürümünü (veya dilediğiniz herhangi birini) seçin ve önceki yolu ve aşağıdaki komutu kullanarak dosyayı **Windows\System32** klasörüne kopyalayın:
 
@@ -136,9 +135,9 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
       > [!NOTE]
       > En son ikili işe yaramazsa, önce bir sürümü veya bir düzeltme ekiyle önceki sürüm gibi kararlı bir dosya olduğunu bildiğiniz bir sürümü deneyin.
 
-      Örneğin, aradığınız ikili **CMII ext. sys**ise, hatalı sürücü **F:** sürücüsüdür ve yalnızca en son sürüm için bir arama çalıştırdıysanız, komut isteminde bir sorgunun `dir cmim* /s` CMII ext. sys dosyasının en son sürümünü bulacağından aşağıdaki görüntüyü görürsünüz.
+      Örneğin, aradığınız ikili **cmimcext.sys**, hatalı sürücü **F:** sürücüsüdür ve yalnızca en son sürüm için bir arama çalıştırdıysanız, komut isteminde bir sorgunun `dir cmim* /s` cmimcext.sys dosyasının en son sürümünü bulacağı aşağıdaki görüntüyü görürsünüz.
 
-      ![Cmıta ext. sys dosyasının en son sürümünü bulmak için "dir cmım */s" komut isteminde bir sorgu.](./media/troubleshoot-boot-error-status-not-found/6.png)
+      ![cmimcext.sys dosyasının en son sürümünü bulmak için "dir cmım */s" komut isteminde bir sorgu.](./media/troubleshoot-boot-error-status-not-found/6.png)
 
       Yukarıdaki örnek görüntüde sorgu **C:**' de gerçekleştirildi, ancak sürücü harfi, onarım VM 'sinde bir veri diski olarak eklenmiş işletim sistemi diski olan **F:** hatalı sürücüde olmalıdır.
 
@@ -160,7 +159,7 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
 
    ![Tanıtıcı özniteliği vurgulanmış şekilde, 1. nesil bir VM 'de gösterilen Windows önyükleme yükleyicisi. Vurgulanan tanımlayıcı özniteliği benzersiz bir alfasayısal dize gösterir.](./media/troubleshoot-boot-error-status-not-found/7.png)
 
-   Yolu **\windows\system32\wınload.exe**olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
+   Yolu **\windows\system32\winload.exe**olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
 
 1. 2. nesil VM 'Ler için, işletim sistemi diskinin çevrimiçi olduğunu ve bölüm sürücü harflerinin atandığını doğrulayın. Bu doğrulandığında, önyükleme kurulum bilgilerini toplayın.
    1. **Windows Search**'Te **disk yönetimi** yazın ve disk yönetimi konsolunu açın. Bu konsolu, onarım sanal makinenize bağlı disk numarasını ve BCD deposunu tutan Genişletilebilir Bellenim Arabirimi (EFı) bölümünü belirlemek için kullanın.

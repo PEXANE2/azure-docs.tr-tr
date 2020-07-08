@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 41c29e55f04f9edf06ba375ad4539e5fb3f82c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733428"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>IoT Hub (.NET) ile buluttan cihazınıza ileti gönderme
@@ -80,15 +79,15 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazda
     }
    ```
 
-1. Aşağıdaki yöntemi, `Console.ReadLine()` satırın hemen öncesine, **Main** yöntemine ekleyin:
+1. Aşağıdaki yöntemi, satırın hemen öncesine, **Main** yöntemine ekleyin `Console.ReadLine()` :
 
    ```csharp
    ReceiveC2dAsync();
    ```
 
-`ReceiveAsync` Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirli bir zaman aşımı süresinden sonra *null* değerini döndürür. Bu örnekte, bir dakikalık varsayılan değer kullanılır. Uygulama *null*aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, `if (receivedMessage == null) continue` çizginin nedenidir.
+`ReceiveAsync`Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirli bir zaman aşımı süresinden sonra *null* değerini döndürür. Bu örnekte, bir dakikalık varsayılan değer kullanılır. Uygulama *null*aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, çizginin nedenidir `if (receivedMessage == null) continue` .
 
-' A yapılan `CompleteAsync()` çağrı, iletinin başarıyla işlendiğini IoT Hub bildirir. İleti, cihaz sırasından güvenle kaldırılabilir. Cihaz uygulamasının ileti işlemeyi tamamlamasını önleyen bir sorun oluştuysa, IoT Hub yeniden teslim eder. Aynı iletiyi birden çok kez almak aynı sonucu ürettiğinden, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır.
+' A yapılan çağrı, `CompleteAsync()` iletinin başarıyla işlendiğini IoT Hub bildirir. İleti, cihaz sırasından güvenle kaldırılabilir. Cihaz uygulamasının ileti işlemeyi tamamlamasını önleyen bir sorun oluştuysa, IoT Hub yeniden teslim eder. Aynı iletiyi birden çok kez almak aynı sonucu ürettiğinden, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır.
 
 Bir uygulama bir iletiyi geçici olarak iptal edebilir ve bu da IoT Hub 'ı, gelecekteki tüketim için kuyruktaki iletiyi korur. Ya da uygulama, iletiyi sıradan kalıcı olarak kaldıran bir iletiyi reddedebilirler. Buluttan cihaza ileti yaşam döngüsü hakkında daha fazla bilgi için, bkz. [D2C and C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
 
@@ -106,7 +105,7 @@ Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-te
 
 Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uygulaması yazarsınız.
 
-1. Geçerli Visual Studio çözümünde **Dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
+1. Geçerli Visual Studio çözümünde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
 1. Projeyi *Sendcloudtodevice*olarak adlandırın. **Çözüm**altında **çözüme Ekle** ' yi seçin ve .NET Framework en son sürümünü kabul edin. Projeyi oluşturmak için **Oluştur**'u seçin.
 
@@ -118,7 +117,7 @@ Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uy
 
    Bu adım, [Azure IoT hizmeti SDK 'Sı NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices/)'ni indirir, yükler ve buna bir başvuru ekler.
 
-1. **Program.cs** dosyasının en `using` üstüne aşağıdaki ifadeyi ekleyin.
+1. `using` **Program.cs** dosyasının en üstüne aşağıdaki ifadeyi ekleyin.
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -142,7 +141,7 @@ Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uy
    }
    ```
 
-   Bu yöntem, cihaza, `myFirstDevice`kimliğine sahip yeni bir buluttan cihaza ileti gönderir. Bu parametreyi yalnızca [bir cihazdan IoT Hub 'ına Telemetriyi göndermek için](quickstart-send-telemetry-dotnet.md)kullanılan bir cihazdan değiştirdiyseniz değiştirin.
+   Bu yöntem, cihaza, KIMLIĞINE sahip yeni bir buluttan cihaza ileti gönderir `myFirstDevice` . Bu parametreyi yalnızca [bir cihazdan IoT Hub 'ına Telemetriyi göndermek için](quickstart-send-telemetry-dotnet.md)kullanılan bir cihazdan değiştirdiyseniz değiştirin.
 
 1. Son olarak, aşağıdaki satırları **Main** yöntemine ekleyin.
 
@@ -158,7 +157,7 @@ Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uy
 
 1. Çözüm Gezgini 'nde çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler** > **Başlangıç projesinde** **birden çok başlangıç**projesi ' ni seçin ve ardından **readdevicetocloudmessages**, **SimulatedDevice**ve **sendcloudtodevice**için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç**projesi ' ni seçin ve ardından **readdevicetocloudmessages**, **SimulatedDevice**ve **sendcloudtodevice**için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 
 1. **F5**tuşuna basın. Üç uygulamanın tümünün başlaması gerekir. **Sendcloudtodevice** pencerelerini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi görmeniz gerekir.
 
@@ -195,13 +194,13 @@ Bu bölümde, **Sendcloudtodevice** uygulamasını, geri bildirim Isteyecek ve I
 
     Bu alma deseninin, cihaz uygulamasından gelen buluttan cihaza iletileri almak için kullandığı aynı olduğunu göz önünde bir şekilde yapın.
 
-1. **Main** yöntemine hemen sonra `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`aşağıdaki satırı ekleyin.
+1. **Main** yöntemine hemen sonra aşağıdaki satırı ekleyin `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` .
 
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-1. Buluttan cihaza iletinizin teslimine ilişkin geri bildirim istemek için **Sendcloudtodevicemessageasync** yönteminde bir özellik belirtmeniz gerekir. Aşağıdaki satırı, `var commandMessage = new Message(...);` satırdan hemen sonra ekleyin.
+1. Buluttan cihaza iletinizin teslimine ilişkin geri bildirim istemek için **Sendcloudtodevicemessageasync** yönteminde bir özellik belirtmeniz gerekir. Aşağıdaki satırı, satırdan hemen sonra ekleyin `var commandMessage = new Message(...);` .
 
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;

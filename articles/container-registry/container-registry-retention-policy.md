@@ -4,10 +4,9 @@ description: Tanımlı bir dönemden sonra etiketlenmemiş bildirimlerin otomati
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683448"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Etiketlenmemiş bildirimler için bekletme ilkesi ayarlama
@@ -88,14 +87,14 @@ Ayrıca, [Azure Portal](https://portal.azure.com)bir kayıt defterinin bekletme 
 
 1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
 1. **Durum**' da **etkin**' i seçin.
-1. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı seçin. **Kaydet**’i seçin.
+1. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı seçin. **Kaydet**'i seçin.
 
 ![Azure portal bir bekletme ilkesi etkinleştirme](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
 ### <a name="disable-a-retention-policy"></a>Bekletme ilkesini devre dışı bırakma
 
 1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
-1. **Durum**' da **devre dışı**' yı seçin. **Kaydet**’i seçin.
+1. **Durum**' da **devre dışı**' yı seçin. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

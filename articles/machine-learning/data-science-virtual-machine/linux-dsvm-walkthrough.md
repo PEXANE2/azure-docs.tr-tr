@@ -10,10 +10,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682485"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
@@ -24,7 +23,7 @@ Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedi
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -313,7 +312,7 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>Jupi Terhub
 
-DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://dsvm DNS adına veya IP adresine göre yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın \< \> : 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
+DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://adresinden yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın \<DSVM DNS name or IP address\> : 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
 
 > [!NOTE]
 > `pip`Geçerli çekirdekte bir Jupyter Notebook Python paket yöneticisini (komutu aracılığıyla) kullanmak için, kod hücresinde bu komutu kullanın:
@@ -508,7 +507,7 @@ Yerel sunucuyla bağlantı kurmak için:
 1. Kullanıcı adınızı ve parolanızı girin.
 1. **Tamam**’ı seçin.
 1. **Bağlantı** penceresini açmak Için, **istenmeyen posta veritabanı** diğer adına çift tıklayın.
-1. **Bağlan**’ı seçin.
+1. **Bağlan**'ı seçin.
 
 Bazı sorguları çalıştırmak için:
 

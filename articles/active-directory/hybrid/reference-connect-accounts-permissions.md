@@ -18,10 +18,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681756"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
@@ -102,7 +101,7 @@ Aşağıda, Hızlı Yükleme Sihirbazı sayfalarının bir özeti, toplanan kiml
 
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
-| Yok |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
+| YOK |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
 | Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
 | AD DS'ye Bağlanma |Şirket içi Active Directory kimlik bilgileri |Active Directory 'de Enterprise Admins (EA) grubunun üyesi |<li>Active Directory AD DS bağlayıcı hesabı oluşturur ve buna izin verir. Bu oluşturulan hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır.</li> |
 
@@ -119,7 +118,7 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
-| Yok |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
+| YOK |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
 | Eşitleme hizmetlerini, hizmet hesabı seçeneğini yükler |AD veya yerel kullanıcı hesabı kimlik bilgileri |Kullanıcı, izinler Yükleme Sihirbazı tarafından verilir |Yönetici bir hesap belirtiyorsa, bu hesap eşitleme hizmeti için hizmet hesabı olarak kullanılır. |
 | Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
 | Dizinlerinizi bağlama |Azure AD 'ye bağlı her bir ormanın şirket içi Active Directory kimlik bilgileri |İzinler, etkinleştirdiğiniz özelliklere ve AD DS Bağlayıcısı hesabını oluşturma bölümünde bulunabilir. |Bu hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır. |
@@ -141,7 +140,7 @@ Ayrıca gerekli izinleri verilmiş olmalıdır. Yükleme Sihirbazı izinleri do�
 
 Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıdır. Birden çok etki alanı varsa, ormandaki tüm etki alanları için izinler verilmelidir. Bu özelliklerden herhangi birini etkinleştirmezseniz, varsayılan **etki alanı kullanıcı** izinleri yeterlidir.
 
-| Öne çıkan özelliği | İzinler |
+| Özellik | İzinler |
 | --- | --- |
 | ms-DS-ımlarımguıd özelliği |Tasarım kavramları bölümünde belgelenen ms-DS-ımıbu GUID özniteliğine yazma izinleri [-MS-DS-ımıbu GUID kaynağını Sourcetutturucu olarak kullanma](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Parola karması eşitleme |<li>Dizin Değişikliklerini Çoğalt</li>  <li>Dizin değişikliklerini çoğaltma |
@@ -151,7 +150,7 @@ Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıd
 | Cihaz geri yazma |[Cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde açıklandığı şekilde bir PowerShell betiğine izin verildi. |
 | Grup geri yazma |**Office 365 gruplarını** Exchange yüklü bir ormana geri almanıza olanak sağlar.|
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Yükseltme
 Bir Azure AD Connect sürümünden yeni bir sürüme yükselttiğinizde, aşağıdaki izinlere sahip olmanız gerekir:
 
 >[!IMPORTANT]

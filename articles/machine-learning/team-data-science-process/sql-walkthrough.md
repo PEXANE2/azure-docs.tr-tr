@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027486"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Ekip veri bilimi Işlemi işlem içinde: SQL Server kullanma
 Bu öğreticide, SQL Server ve genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) kullanarak makine öğrenimi modeli oluşturma ve dağıtma sürecini adım adım ilerleyebilirsiniz. Yordam standart bir veri bilimi iş akışını izler: verileri alma ve araştırma, eğitim kolaylaştırmak ve bir model derlemek ve dağıtmak için mühendislik özellikleri.
@@ -26,20 +25,31 @@ NYC TAXI seyahat verileri, 173.000.000 ' den fazla ayrı ve her seyahat için ö
 
 1. ' Trip_data ' CSV, pasmacılar, toplama ve açılan noktaların sayısı, seyahat süresi ve seyahat uzunluğu gibi seyahat ayrıntılarını içerir. Aşağıda birkaç örnek kayıt verilmiştir:
    
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+    `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+    `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 2. ' Trip_fare ' CSV, ödeme türü, tarifeli havayolu miktarı, ek ücret, vergiler, ipuçları ve Tolls ve ödenen toplam miktar gibi her seyahat için ödenen tarifeli havayolu ayrıntılarını içerir. Aşağıda birkaç örnek kayıt verilmiştir:
    
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+    `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+    `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ alanlardan oluşur: medtalon, Hack \_ Lisans ve Pickup \_ DateTime.
 
@@ -48,12 +58,17 @@ Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar 
 
 * İkili sınıflandırma: bir ucun seyahat için ödenip ödenmediğini tahmin edin, diğer bir deyişle, $0 'den büyük bir *tıp \_ * miktarı pozitif bir örnektir, ancak $0 olan bir tıp * \_ miktarı* negatif bir örnektir.
 * Birden çok Lass sınıflandırması: seyahat için ödenen ipucu aralığını tahmin etmek Için. *İpucu \_ miktarını* beş bölmeye veya sınıfa böyoruz:
-   
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+
+   `Class 0 : tip_amount = $0`
+
+   `Class 1 : tip_amount > $0 and tip_amount <= $5`
+
+   `Class 2 : tip_amount > $5 and tip_amount <= $10`
+
+   `Class 3 : tip_amount > $10 and tip_amount <= $20`
+
+   `Class 4 : tip_amount > $20`
+
 * Regresyon görevi: seyahat için ödenen ipucu miktarını tahmin etmek Için.  
 
 ## <a name="setting-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Gelişmiş analiz için Azure veri bilimi ortamını ayarlama
@@ -89,9 +104,11 @@ AzCopy kullanarak verileri kopyalamak için:
 1. Sanal makinenizde (VM) oturum açın
 2. VM 'nin veri diskinde yeni bir dizin oluşturun (Not: VM ile birlikte gelen geçici diski bir veri diski olarak kullanmayın).
 3. Komut Istemi penceresinde, aşağıdaki AzCopy komut satırını çalıştırın, <path_to_data_folder> ' de oluşturulan veri klasörünüzle değiştirin (2):
-   
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
-   
+
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
+
     AzCopy tamamlandığında, toplam 24 daraltılmış CSV dosyası (seyahat verileri için 12 \_ ve seyahat tarifeli havayolu için 12 \_ ) veri klasöründe olmalıdır.
 4. İndirilen dosyaları sıkıştırmayı açın. Sıkıştırılmamış dosyaların bulunduğu klasörü aklınızda edin. Bu klasör, veri dosyalarının <yolu olarak adlandırılacaktır \_ \_ \_ \> .
 
@@ -157,77 +174,87 @@ Bu bölümde, verileri ayıklamak ve örneklemek için son sorguyu kaydedecağı
 
 Daha önce paralel toplu içeri aktarma kullanılarak doldurulmuş tablolardaki satır ve sütun sayısı hakkında hızlı bir doğrulama için
 
-    -- Report number of rows in table nyctaxi_trip without table scan
-    SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')
-
-    -- Report number of columns in table nyctaxi_trip
-    SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
+- Tablo taraması yapılmadan tablodaki nyctaxi_trip satır sayısını rapor edin:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- Tablodaki sütun sayısını rapor nyctaxi_trip:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Araştırma: medtalon tarafından seyahat dağılımı
 Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalon (TAXI numaraları) tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
 
-    SELECT medallion, COUNT(*)
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    GROUP BY medallion
-    HAVING COUNT(*) > 100
+```sql
+SELECT medallion, COUNT(*)
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+GROUP BY medallion
+HAVING COUNT(*) > 100
+```
 
 #### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Araştırma: medtalon ve hack_license ile seyahat dağılımı
-    SELECT medallion, hack_license, COUNT(*)
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
-    GROUP BY medallion, hack_license
-    HAVING COUNT(*) > 100
+
+```sql
+SELECT medallion, hack_license, COUNT(*)
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
+GROUP BY medallion, hack_license
+HAVING COUNT(*) > 100
+```
 
 #### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Veri kalitesi değerlendirmesi: yanlış boylam ve/veya enlem ile kayıtları doğrulama
 Bu örnekte araştırır, boylam ve/veya enlem alanlarından herhangi biri geçersiz bir değer içeriyorsa (radyana bir derece-90 ile 90 arasında olmalıdır) veya (0, 0) koordinatlara sahip olur.
 
-    SELECT COUNT(*) FROM nyctaxi_trip
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    (pickup_longitude = '0' AND pickup_latitude = '0')
-    OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```sql
+SELECT COUNT(*) FROM nyctaxi_trip
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
+OR    (pickup_longitude = '0' AND pickup_latitude = '0')
+OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```
 
 #### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Araştırma: eğimli ve eğimli dönüşler dağıtımı
 Bu örnek, belirli bir süre içinde (veya tam yılı kapsauyorsa tam veri kümesinde) eğimli olarak eğimli olan gidiş 'lerin sayısını bulur. Bu dağıtım, ikili sınıflandırma modellemesi için daha sonra kullanılmak üzere ikili etiket dağıtımını yansıtır.
 
-    SELECT tipped, COUNT(*) AS tip_freq FROM (
-      SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
-      FROM nyctaxi_fare
-      WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tipped
+```sql
+SELECT tipped, COUNT(*) AS tip_freq FROM (
+  SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
+  FROM nyctaxi_fare
+  WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tipped
+```
 
 #### <a name="exploration-tip-classrange-distribution"></a>Araştırma: tip sınıfı/Aralık dağılımı
 Bu örnek, belirli bir dönemdeki (veya tam yılı kapsadıysanız tam veri kümesindeki) Tıp aralıklarının dağıtımını hesaplar. Bu etiket sınıflarının dağıtımı, daha sonra çok sınıflı sınıflandırma modelleme için kullanılacaktır.
 
-    SELECT tip_class, COUNT(*) AS tip_freq FROM (
-        SELECT CASE
-            WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tip_class
+```sql
+SELECT tip_class, COUNT(*) AS tip_freq FROM (
+    SELECT CASE
+        WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tip_class
+```
 
 #### <a name="exploration-compute-and-compare-trip-distance"></a>Araştırma: Işlem ve karşılaştırma gidiş uzaklığı
 Bu örnek, toplama ve, boylam ve enlem 'yi SQL Coğrafya noktalarına dönüştürür, SQL Coğrafya noktaları farkını kullanarak seyahat mesafesini hesaplar ve karşılaştırma sonuçlarının rastgele bir örneğini döndürür. Örnek, sonuçları geçerli koordinatlara yalnızca daha önce kapsanan veri kalitesi değerlendirmesi sorgusunu kullanarak sınırlandırır.
 
-    SELECT
-    pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
-    ,dropoff_location=geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326)
-    ,trip_distance
-    ,computedist=round(geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326).STDistance(geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326))/1000, 2)
-    FROM nyctaxi_trip
-    tablesample(0.01 percent)
-    WHERE CAST(pickup_latitude AS float) BETWEEN -90 AND 90
-    AND   CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
-    AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```sql
+SELECT
+pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
+,dropoff_location=geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326)
+,trip_distance
+,computedist=round(geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326).STDistance(geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326))/1000, 2)
+FROM nyctaxi_trip
+tablesample(0.01 percent)
+WHERE CAST(pickup_latitude AS float) BETWEEN -90 AND 90
+AND   CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
+AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 #### <a name="feature-engineering-in-sql-queries"></a>SQL sorgularında Özellik Mühendisliği
 Etiket oluşturma ve Coğrafya dönüştürme araştırması sorguları, sayım bölümünü kaldırarak Etiketler/özellikler oluşturmak için de kullanılabilir. Ek özellik Mühendisliği SQL örnekleri, [IPython Not defteri 'Ndeki veri araştırma ve özellik Mühendisliği](#ipnb) bölümünde verilmiştir. Özellik oluşturma sorgularını tam veri kümesinde veya doğrudan SQL Server veritabanı örneğinde çalışan SQL sorgularını kullanarak büyük bir alt kümesinde çalıştırmak daha etkilidir. Sorgular **SQL Server Management Studio**, IPython Not defteri 'nde veya veritabanına yerel olarak veya uzaktan erişebilen herhangi bir geliştirme aracında veya ortamda çalıştırılabilir.
@@ -235,21 +262,22 @@ Etiket oluşturma ve Coğrafya dönüştürme araştırması sorguları, sayım 
 #### <a name="preparing-data-for-model-building"></a>Model oluşturma için veriler hazırlanıyor
 Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir %1 rastgele örnek ayıklar. Bu sorgu, doğrudan Azure 'daki SQL Server veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio](https://studio.azureml.net) [veri alma][import-data] modülüne doğrudan yapıştırılabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
 
-    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
-        CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
-        CASE WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM nyctaxi_trip t, nyctaxi_fare f
-    TABLESAMPLE (1 percent)
-    WHERE t.medallion = f.medallion
-    AND   t.hack_license = f.hack_license
-    AND   t.pickup_datetime = f.pickup_datetime
-    AND   pickup_longitude != '0' AND dropoff_longitude != '0'
-
+```sql
+SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
+    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
+    CASE WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM nyctaxi_trip t, nyctaxi_fare f
+TABLESAMPLE (1 percent)
+WHERE t.medallion = f.medallion
+AND   t.hack_license = f.hack_license
+AND   t.pickup_datetime = f.pickup_datetime
+AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython not defterinde veri araştırması ve özellik Mühendisliği
 Bu bölümde, daha önce oluşturulan SQL Server veritabanında hem Python hem de SQL sorguları kullanarak veri keşif ve özellik oluşturma işlemi gerçekleştireceğiz. **Machine-Learning-Data-Science-Process-SQL-öykü. ipynb** adlı örnek bir IPython Not defteri, **örnek IPython Not defterleri** klasöründe verilmiştir. Bu not defteri [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)'da da kullanılabilir.
@@ -272,53 +300,64 @@ Aşağıda, bazı veri araştırması, veri görselleştirme ve özellik Mühend
 #### <a name="initialize-database-credentials"></a>Veritabanı kimlik bilgilerini Başlat
 Aşağıdaki değişkenlerde veritabanı bağlantı ayarlarınızı başlatın:
 
-    SERVER_NAME=<server name>
-    DATABASE_NAME=<database name>
-    USERID=<user name>
-    PASSWORD=<password>
-    DB_DRIVER = <database server>
+```sql
+SERVER_NAME=<server name>
+DATABASE_NAME=<database name>
+USERID=<user name>
+PASSWORD=<password>
+DB_DRIVER = <database server>
+```
 
 #### <a name="create-database-connection"></a>Veritabanı bağlantısı oluştur
-    CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
-    conn = pyodbc.connect(CONNECTION_STRING)
+
+```sql
+CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
+conn = pyodbc.connect(CONNECTION_STRING)
+```
 
 #### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Tablodaki satır ve sütun sayısını rapor nyctaxi_trip
-    nrows = pd.read_sql('''
-        SELECT SUM(rows) FROM sys.partitions
-        WHERE object_id = OBJECT_ID('nyctaxi_trip')
-    ''', conn)
 
-    print 'Total number of rows = %d' % nrows.iloc[0,0]
+```sql
+nrows = pd.read_sql('''
+    SELECT SUM(rows) FROM sys.partitions
+    WHERE object_id = OBJECT_ID('nyctaxi_trip')
+''', conn)
 
-    ncols = pd.read_sql('''
-        SELECT COUNT(*) FROM information_schema.columns
-        WHERE table_name = ('nyctaxi_trip')
-    ''', conn)
+print 'Total number of rows = %d' % nrows.iloc[0,0]
 
-    print 'Total number of columns = %d' % ncols.iloc[0,0]
+ncols = pd.read_sql('''
+    SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_name = ('nyctaxi_trip')
+''', conn)
+
+print 'Total number of columns = %d' % ncols.iloc[0,0]
+```
 
 * Toplam satır sayısı = 173179759  
 * Toplam sütun sayısı = 14
 
 #### <a name="read-in-a-small-data-sample-from-the-sql-server-database"></a>SQL Server veritabanından küçük bir veri örneğini okuyun
-    t0 = time.time()
 
-    query = '''
-        SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
-            f.tolls_amount, f.total_amount, f.tip_amount
-        FROM nyctaxi_trip t, nyctaxi_fare f
-        TABLESAMPLE (0.05 PERCENT)
-        WHERE t.medallion = f.medallion
-        AND   t.hack_license = f.hack_license
-        AND   t.pickup_datetime = f.pickup_datetime
-    '''
+```sql
+t0 = time.time()
 
-    df1 = pd.read_sql(query, conn)
+query = '''
+    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
+        f.tolls_amount, f.total_amount, f.tip_amount
+    FROM nyctaxi_trip t, nyctaxi_fare f
+    TABLESAMPLE (0.05 PERCENT)
+    WHERE t.medallion = f.medallion
+    AND   t.hack_license = f.hack_license
+    AND   t.pickup_datetime = f.pickup_datetime
+'''
 
-    t1 = time.time()
-    print 'Time to read the sample table is %f seconds' % (t1-t0)
+df1 = pd.read_sql(query, conn)
 
-    print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+t1 = time.time()
+print 'Time to read the sample table is %f seconds' % (t1-t0)
+
+print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+```
 
 Örnek tablonun okunacağı süre 6,492000 saniyedir  
 Alınan satır ve sütun sayısı = (84952, 21)
@@ -326,52 +365,68 @@ Alınan satır ve sütun sayısı = (84952, 21)
 #### <a name="descriptive-statistics"></a>Açıklayıcı Istatistikler
 Şimdi örneklenmiş verileri keşfetmeye hazır. **Seyahat \_ mesafesi** (veya diğer) alanları için açıklayıcı istatistiklere bakmaya başlıyoruz:
 
-    df1['trip_distance'].describe()
+```sql
+df1['trip_distance'].describe()
+```
 
 #### <a name="visualization-box-plot-example"></a>Görselleştirme: kutu çizimi örneği
 Daha sonra, ücretlerini görselleştirmek için seyahat mesafesinin kutu çizilmesine baktık
 
-    df1.boxplot(column='trip_distance',return_type='dict')
+```sql
+df1.boxplot(column='trip_distance',return_type='dict')
+```
 
 ![#1 çiz][1]
 
 #### <a name="visualization-distribution-plot-example"></a>Görselleştirme: dağıtım çizimi örneği
-    fig = plt.figure()
-    ax1 = fig.add_subplot(1,2,1)
-    ax2 = fig.add_subplot(1,2,2)
-    df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
-    df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+
+```sql
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
+df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+```
 
 ![#2 Çiz][2]
 
 #### <a name="visualization-bar-and-line-plots"></a>Görselleştirme: çubuk ve çizgi çizimleri
 Bu örnekte, seyahat mesafesini beş bölmeye dönüştürür ve atma sonuçlarını görselleştirin.
 
-    trip_dist_bins = [0, 1, 2, 4, 10, 1000]
-    df1['trip_distance']
-    trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
-    trip_dist_bin_id
+```sql
+trip_dist_bins = [0, 1, 2, 4, 10, 1000]
+df1['trip_distance']
+trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
+trip_dist_bin_id
+```
 
 Yukarıdaki bin dağılımını aşağıda gösterildiği gibi bir çubukta veya çizgi çiziminde çiziyoruz
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```
 
 ![#3 çiz][3]
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
-
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
+```
 ![#4 çiz][4]
 
 #### <a name="visualization-scatterplot-example"></a>Görselleştirme: dağınık Terçiz örneği
 Bir bağıntı olup olmadığını görmek için **seyahat \_ süresi ile \_ \_ saniye cinsinden** seyahat ** \_ mesafesini** gösteren dağılım çizimi gösteriliyor
 
-    plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```sql
+plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```
 
 ![#6 çiz][6]
 
 Benzer şekilde, **oran \_ kodu** ve **seyahat \_ mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
 
-    plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```sql
+plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```
 
 ![#8 çiz][8]
 
@@ -383,47 +438,55 @@ Bu bölümde, Örneklenmiş ve uygulanan verileri tutacak yeni bir tablo oluştu
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Örnek tablo oluşturun ve birleştirilmiş tabloların %1 ' iyle doldurun. Varsa tabloyu önce bırakın.
 Bu bölümde, **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu**tablolarına katılıyoruz, %1 rastgele bir örnek ayıkladık ve örneklenen verileri yeni bir tablo adında kalıcı olarak ** \_ bir \_ yüzde nyctaxi**:
 
-    cursor = conn.cursor()
+```sql
+cursor = conn.cursor()
 
-    drop_table_if_exists = '''
-        IF OBJECT_ID('nyctaxi_one_percent', 'U') IS NOT NULL DROP TABLE nyctaxi_one_percent
-    '''
+drop_table_if_exists = '''
+    IF OBJECT_ID('nyctaxi_one_percent', 'U') IS NOT NULL DROP TABLE nyctaxi_one_percent
+'''
 
-    nyctaxi_one_percent_insert = '''
-        SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount
-        INTO nyctaxi_one_percent
-        FROM nyctaxi_trip t, nyctaxi_fare f
-        TABLESAMPLE (1 PERCENT)
-        WHERE t.medallion = f.medallion
-        AND   t.hack_license = f.hack_license
-        AND   t.pickup_datetime = f.pickup_datetime
-        AND   pickup_longitude <> '0' AND dropoff_longitude <> '0'
-    '''
+nyctaxi_one_percent_insert = '''
+    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount
+    INTO nyctaxi_one_percent
+    FROM nyctaxi_trip t, nyctaxi_fare f
+    TABLESAMPLE (1 PERCENT)
+    WHERE t.medallion = f.medallion
+    AND   t.hack_license = f.hack_license
+    AND   t.pickup_datetime = f.pickup_datetime
+    AND   pickup_longitude <> '0' AND dropoff_longitude <> '0'
+'''
 
-    cursor.execute(drop_table_if_exists)
-    cursor.execute(nyctaxi_one_percent_insert)
-    cursor.commit()
+cursor.execute(drop_table_if_exists)
+cursor.execute(nyctaxi_one_percent_insert)
+cursor.commit()
+```
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython not defterindeki SQL sorguları kullanılarak veri araştırması
 Bu bölümde, yukarıda oluşturduğumuz yeni tabloda kalıcı olan 1% örneklenmiş verileri kullanarak veri dağıtımlarını araştırıyoruz. Benzer araştırmalar, özgün tablolar kullanılarak, isteğe bağlı olarak, araştırma örneğini sınırlamak için Ise kullanılarak veya SQL Server bölümündeki veri araştırması [ve özellik Mühendisliği](#dbexplore) bölümünde gösterildiği gibi, zaman değeri **alma \_ Tarih** **bölümleri kullanılarak sonuçları** belirli bir zaman süresiyle sınırlayarak gerçekleştirilebilir.
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Araştırma: günlük gidiş dağıtımı
-    query = '''
-        SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
-        FROM nyctaxi_one_percent
-        GROUP BY CONVERT(date, dropoff_datetime)
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
+    FROM nyctaxi_one_percent
+    GROUP BY CONVERT(date, dropoff_datetime)
+'''
+
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-distribution-per-medallion"></a>Araştırma: her bir ınınon için seyahat dağıtımı
-    query = '''
-        SELECT medallion,count(*) AS c
-        FROM nyctaxi_one_percent
-        GROUP BY medallion
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT medallion,count(*) AS c
+    FROM nyctaxi_one_percent
+    GROUP BY medallion
+'''
+
+pd.read_sql(query,conn)
+```
 
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>IPython not defterindeki SQL sorguları kullanılarak Özellik oluşturma
 Bu bölümde, önceki bölümde oluşturduğumuz 1% örnek tablosunda çalışan SQL sorgularını kullanarak doğrudan yeni Etiketler ve Özellikler üretecağız.
@@ -433,116 +496,127 @@ Aşağıdaki örnekte, modelleme için kullanılacak iki etiket kümesi oluştur
 
 1. İkili sınıf etiketleri **eğimli** (bir ipucu verildiyse tahmin edilir)
 2. Birden çok Lass etiketleri **İpucu \_ sınıfı** (İpucu kutusu veya aralığını tahmin etme)
+
+```sql   
+    nyctaxi_one_percent_add_col = '''
+        ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
+    '''
    
-        nyctaxi_one_percent_add_col = '''
-            ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
-        '''
+    cursor.execute(nyctaxi_one_percent_add_col)
+    cursor.commit()
    
-        cursor.execute(nyctaxi_one_percent_add_col)
-        cursor.commit()
+    nyctaxi_one_percent_update_col = '''
+        UPDATE nyctaxi_one_percent
+        SET
+           tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
+           tip_class = CASE WHEN (tip_amount = 0) THEN 0
+                            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+                            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+                            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+                            ELSE 4
+                        END
+    '''
    
-        nyctaxi_one_percent_update_col = '''
-            UPDATE nyctaxi_one_percent
-            SET
-               tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
-               tip_class = CASE WHEN (tip_amount = 0) THEN 0
-                                WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-                                WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-                                WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-                                ELSE 4
-                            END
-        '''
-   
-        cursor.execute(nyctaxi_one_percent_update_col)
-        cursor.commit()
+    cursor.execute(nyctaxi_one_percent_update_col)
+    cursor.commit()
+```
 
 #### <a name="feature-engineering-count-features-for-categorical-columns"></a>Özellik Mühendisliği: kategorik sütunlar için sayı özellikleri
 Bu örnek, her bir kategoriyi verilerdeki oluşumlarının sayısıyla değiştirerek kategorik bir alanı sayısal bir alana dönüştürür.
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        WITH B AS
-        (
-            SELECT medallion, hack_license,
-                SUM(CASE WHEN vendor_id = 'cmt' THEN 1 ELSE 0 END) AS cmt_count,
-                SUM(CASE WHEN vendor_id = 'vts' THEN 1 ELSE 0 END) AS vts_count
-            FROM nyctaxi_one_percent
-            GROUP BY medallion, hack_license
-        )
+nyctaxi_one_percent_update_col = '''
+    WITH B AS
+    (
+        SELECT medallion, hack_license,
+            SUM(CASE WHEN vendor_id = 'cmt' THEN 1 ELSE 0 END) AS cmt_count,
+            SUM(CASE WHEN vendor_id = 'vts' THEN 1 ELSE 0 END) AS vts_count
+        FROM nyctaxi_one_percent
+        GROUP BY medallion, hack_license
+    )
 
-        UPDATE nyctaxi_one_percent
-        SET nyctaxi_one_percent.cmt_count = B.cmt_count,
-            nyctaxi_one_percent.vts_count = B.vts_count
-        FROM nyctaxi_one_percent A INNER JOIN B
-        ON A.medallion = B.medallion AND A.hack_license = B.hack_license
-    '''
+    UPDATE nyctaxi_one_percent
+    SET nyctaxi_one_percent.cmt_count = B.cmt_count,
+        nyctaxi_one_percent.vts_count = B.vts_count
+    FROM nyctaxi_one_percent A INNER JOIN B
+    ON A.medallion = B.medallion AND A.hack_license = B.hack_license
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Özellik Mühendisliği: sayısal sütunlara yönelik bin özellikleri
 Bu örnek, sürekli bir sayısal alanı önceden ayarlanmış kategori aralıklarına dönüştürür, diğer bir deyişle sayısal alanı bir kategorik alana dönüştürür.
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS
-        (
-            SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs,
-            NTILE(5) OVER (ORDER BY trip_time_in_secs) AS BinNumber from nyctaxi_one_percent
-        )
+nyctaxi_one_percent_update_col = '''
+    WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS
+    (
+        SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs,
+        NTILE(5) OVER (ORDER BY trip_time_in_secs) AS BinNumber from nyctaxi_one_percent
+    )
 
-        UPDATE nyctaxi_one_percent
-        SET trip_time_bin = B.BinNumber
-        FROM nyctaxi_one_percent A INNER JOIN B
-        ON A.medallion = B.medallion
-        AND A.hack_license = B.hack_license
-        AND A.pickup_datetime = B.pickup_datetime
-    '''
+    UPDATE nyctaxi_one_percent
+    SET trip_time_bin = B.BinNumber
+    FROM nyctaxi_one_percent A INNER JOIN B
+    ON A.medallion = B.medallion
+    AND A.hack_license = B.hack_license
+    AND A.pickup_datetime = B.pickup_datetime
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Özellik Mühendisliği: ondalık Enlem/Boylam konumundaki konum özelliklerini Ayıkla
 Bu örnek, bir enlem ve/veya boylam alanının ondalık temsilini, ülke/bölge, şehir, şehir, blok vb. gibi farklı ayrıntı düzeyi alanlarının birden çok bölge alanına ayırır. Yeni coğrafi alanlar gerçek konumlara eşlenmedi. Kodlamayı konumlarını eşleme hakkında bilgi için bkz. [Bing Haritalar Rest Hizmetleri](https://msdn.microsoft.com/library/ff701710.aspx).
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent
-        ADD l1 varchar(6), l2 varchar(3), l3 varchar(3), l4 varchar(3),
-            l5 varchar(3), l6 varchar(3), l7 varchar(3)
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent
+    ADD l1 varchar(6), l2 varchar(3), l3 varchar(3), l4 varchar(3),
+        l5 varchar(3), l6 varchar(3), l7 varchar(3)
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        UPDATE nyctaxi_one_percent
-        SET l1=round(pickup_longitude,0)
-            , l2 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 1 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),1,1) ELSE '0' END     
-            , l3 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 2 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),2,1) ELSE '0' END     
-            , l4 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 3 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),3,1) ELSE '0' END     
-            , l5 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 4 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),4,1) ELSE '0' END     
-            , l6 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 5 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),5,1) ELSE '0' END     
-            , l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END
-    '''
+nyctaxi_one_percent_update_col = '''
+    UPDATE nyctaxi_one_percent
+    SET l1=round(pickup_longitude,0)
+        , l2 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 1 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),1,1) ELSE '0' END     
+        , l3 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 2 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),2,1) ELSE '0' END     
+        , l4 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 3 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),3,1) ELSE '0' END     
+        , l5 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 4 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),4,1) ELSE '0' END     
+        , l6 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 5 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),5,1) ELSE '0' END     
+        , l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="verify-the-final-form-of-the-featurized-table"></a>Korlanmış tablonun son formunu doğrulama
-    query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
+pd.read_sql(query,conn)
+```
 
 Artık [Azure Machine Learning](https://studio.azureml.net)' de model oluşturma ve model dağıtımına devam etmeye hazırsınız. Veriler, daha önce tanımlanan tahmin sorunlarından herhangi biri için hazırlanıyor, yani:
 

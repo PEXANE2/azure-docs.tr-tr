@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701905"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
@@ -42,7 +41,7 @@ Application Insights portalının yeteneklerini daha ayrıntılı incelemek içi
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow ile Application Insights yapılandırma
 
-Olayları toplamak için EventFlow kullanıyorsanız, NuGet paketini içeri aktardığınızdan emin olun `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` . *Eventflowconfig. JSON*' ın *çıktılar* bölümünde aşağıdaki kod gereklidir:
+Olayları toplamak için EventFlow kullanıyorsanız, NuGet paketini içeri aktardığınızdan emin olun `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` . Aşağıdaki kod, *üzerindeeventFlowConfig.js* *çıktılar* bölümünde gereklidir:
 
 ```json
 "outputs": [

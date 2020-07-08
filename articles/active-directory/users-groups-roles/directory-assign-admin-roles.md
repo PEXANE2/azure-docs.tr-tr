@@ -14,12 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c477d0d293e896bc92cd3bd6047135a56cb4ad
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
-ms.translationtype: MT
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85105983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921746"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -1349,8 +1348,7 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | --- | --- |
 | Microsoft. Commerce. faturalandırma/iş ortakları/okuma | O365 faturalandırması 'nın iş ortağı özelliğini okuyun. |
 | Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Toplu Lisanslama hizmeti Merkezi 'nin tüm yönlerini yönetin. |
-| Microsoft. Directory/kuruluş/temel/güncelleştirme | Azure Active Directory 'da kuruluştaki temel özellikleri güncelleştirin. |
-| Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. Supportbilet/allEntities/allTasks | Kendi Office 365 destek biletlerini oluşturun ve görüntüleyin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 

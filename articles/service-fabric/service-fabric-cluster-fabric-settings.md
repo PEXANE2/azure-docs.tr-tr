@@ -4,14 +4,13 @@ description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yüks
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682999"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
-Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
+Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
 
 Üç farklı yükseltme ilkesi vardır:
 
@@ -320,7 +319,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Maxpercentdeltaunhealthyınodes|int, varsayılan değer 10 ' dur|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: kümenin sağlıklı olması için izin verilen Delta düğümlerinin en yüksek yüzdesi |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, varsayılan değer 15 ' tir|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: bir yükseltme etki alanında, kümenin sağlıklı olması için izin verilen en fazla sağlıksız düğüm Delta yüzdesi |
 
-## <a name="hosting"></a>Barındırma
+## <a name="hosting"></a>Hosting
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
@@ -338,8 +337,8 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Containerservicelogdosyaadıöneki|dize, varsayılan değer "sfcontainerlogs"|Statik|Docker kapsayıcıları tarafından oluşturulan günlük dosyaları için dosya adı öneki.  Yalnızca Windows.|
 |ContainerServiceLogFileRetentionCount|int, varsayılan değer 10 ' dur|Statik|Günlük dosyalarının üzerine yazılmadan önce Docker kapsayıcıları tarafından oluşturulan günlük dosyalarının sayısı.  Yalnızca Windows.|
 |CreateFabricRuntimeTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (120)|Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Sync FabricCreateRuntime çağrısı için zaman aşımı değeri |
-|DefaultContainerRepositoryAccountName|dize, varsayılan değer ""|Statik|ApplicationManifest. xml dosyasında belirtilen kimlik bilgileri yerine varsayılan kimlik bilgileri kullanıldı |
-|Defaultcontainerdepotorpassword|dize, varsayılan değer ""|Statik|ApplicationManifest. xml dosyasında belirtilen kimlik bilgileri yerine varsayılan parola kimlik bilgileri kullanıldı|
+|DefaultContainerRepositoryAccountName|dize, varsayılan değer ""|Statik|ApplicationManifest.xml ' de belirtilen kimlik bilgileri yerine varsayılan kimlik bilgileri kullanıldı |
+|Defaultcontainerdepotorpassword|dize, varsayılan değer ""|Statik|ApplicationManifest.xml ' de belirtilen kimlik bilgileri yerine varsayılan parola kimlik bilgileri kullanıldı|
 |Defaultcontainerdepotorpasswordtype|dize, varsayılan değer ""|Statik|Boş dize olmadığında, değer "şifrelenen" veya "SecretsStoreRef" olabilir.|
 |Defaultdnssearchsonlt boş|bool, varsayılan değer FALSE|Statik|Varsayılan olarak, hizmet adı kapsayıcı Hizmetleri için SF DNS adına eklenir. Bu özellik, çözüm patika içinde varsayılan olarak SF DNS adına hiçbir şey eklenmediğinden bu davranışı sonlandırır.|
 |DeploymentMaxFailureCount|int, varsayılan değer 20 ' dir| Dinamik|Uygulama dağıtımı, bu uygulamanın düğümde dağıtılması başarısız olmadan önce DeploymentMaxFailureCount süreleri için yeniden denenecek.| 
@@ -647,7 +646,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 ## <a name="security"></a>Güvenlik
 | **Parametre** | **İzin Verilen Değerler** |**Yükseltme Ilkesi**| **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us/ {0} /FederationMetadata/2007-06/federationmetadata.xml" gibi varsayılan olmayan ortamlar için belirtilen varsayılan Azure Commercial AAD CERT uç nokta biçimi |
+|AADCertEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us/ {0} /FederationMetadata/2007-06/federationmetadata.xml" gibi varsayılan olmayan ortamlar IÇIN belirtilen AAD CERT uç nokta biçimi, varsayılan Azure Commercial |
 |AADClientApplication|dize, varsayılan değer ""|Statik|Yapı Istemcilerini temsil eden yerel Istemci uygulama adı veya KIMLIĞI |
 |AADClusterApplication|dize, varsayılan değer ""|Statik|Kümeyi temsil eden Web API 'SI uygulama adı veya KIMLIĞI |
 |AADLoginEndpoint|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us" gibi varsayılan olmayan ortamlar için BELIRTILEN AAD oturum açma uç noktası, varsayılan Azure Commercial |
@@ -656,19 +655,19 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Adminclientcertparmak Izleri|dize, varsayılan değer ""|Dinamik|Yönetici rolünde istemciler tarafından kullanılan sertifikaların parmak izleri. Bu, virgülle ayrılmış bir ad listesidir. |
 |AADTokenEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https: \/ /login.microsoftonline.us/" gibi varsayılan olmayan ortamlar için BELIRTILEN AAD belirteci uç noktası, varsayılan Azure Commercial {0} |
 |Adminclientclaim|dize, varsayılan değer ""|Dinamik|Yönetici istemcilerinden beklenen tüm olası talepler; Clientclaim ile aynı biçim; Bu liste, Clientclaim 'e dahili olarak eklenir; Bu nedenle, aynı girdileri Clientclaim 'e de eklemeniz gerekmez. |
-|Adminclienentidentities|dize, varsayılan değer ""|Dinamik|Yönetici rolünde doku istemcilerinin Windows kimlikleri; ayrıcalıklı yapı işlemlerine yetki vermek için kullanılır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; Fabric. exe ' yi çalıştıran hesaba otomatik olarak yönetici rolü atanır; Bu nedenle, Grup hizmeti Fabricadministrators. |
+|Adminclienentidentities|dize, varsayılan değer ""|Dinamik|Yönetici rolünde doku istemcilerinin Windows kimlikleri; ayrıcalıklı yapı işlemlerine yetki vermek için kullanılır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; fabric.exe çalıştıran hesaba otomatik olarak yönetici rolü atanır; Bu nedenle, Grup hizmeti Fabricadministrators. |
 |AppRunAsAccountGroupX509Folder|dize, varsayılan değer/Home/sfuser/sfusercerts |Statik|AppRunAsAccountGroup x509 sertifikalarının ve özel anahtarların bulunduğu klasör |
 |Certificateexpıryıetetymargin|TimeSpan, varsayılan:: TimeSpan:: FromMinutes (43200)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Sertifika süre sonu için güvenlik kenar boşluğu; süre sonu bundan daha yakınsa, sertifika durumu raporu durumu Tamam iken uyarı olarak değişir. Varsayılan değer 30 gündür. |
 |Certificatehealthreportingınterval|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (3600 * 8)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Sertifika sistem durumu raporlaması için aralığı belirtin; Varsayılan olarak 8 saat; 0 olarak ayarlandığında sertifika sistem durumu raporlaması devre dışı bırakılır |
 |Clientcertparmak Izleri|dize, varsayılan değer ""|Dinamik|İstemciler tarafından kümeyle konuşmak için kullanılan sertifikaların parmak izleri; küme, bu gelen bağlantıyı Yetkilendir bağlantısını kullanır. Bu, virgülle ayrılmış bir ad listesidir. |
 |ClientClaimAuthEnabled|bool, varsayılan değer FALSE|Statik|İstemcilerde talep tabanlı kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini belirtir; Bu true ayarı açıkça Clienentrotaenabled olarak ayarlanır. |
 |Clientclaim|dize, varsayılan değer ""|Dinamik|Ağ geçidine bağlanmak için istemcilerden beklenen tüm olası talepler. Bu bir ' veya ' listesidir: ClaimsEntry \| \| claimsentry \| \| claimsentry... Her ClaimsEntry bir "ve" listesidir: ClaimType = ClaimValue && ClaimType = ClaimValue && ClaimType = ClaimValue... |
-|Clienentidentities|dize, varsayılan değer ""|Dinamik|FabricClient Windows kimlikleri; ad ağ geçidi, gelen bağlantıları yetkilendirmek için bunu kullanır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; Fabric. exe ' yi çalıştıran hesaba otomatik olarak izin verilir; Bu nedenle, Grup ServiceFabricAllowedUsers ve ServiceFabricAdministrators ' dir. |
+|Clienentidentities|dize, varsayılan değer ""|Dinamik|FabricClient Windows kimlikleri; ad ağ geçidi, gelen bağlantıları yetkilendirmek için bunu kullanır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır. Kolaylık sağlaması için; fabric.exe çalıştıran hesaba otomatik olarak izin verilir; Bu nedenle, Grup ServiceFabricAllowedUsers ve ServiceFabricAdministrators ' dir. |
 |Clienentrolet etkin|bool, varsayılan değer FALSE|Statik|İstemci rolünün etkinleştirilip etkinleştirilmediğini belirtir; true olarak ayarlandığında; istemcilere kimliklerine göre roller atanır. V2 için; Bunun etkinleştirilmesi AdminClientCommonNames/Adminclienentidentities içinde olmayan istemcinin yalnızca salt okuma işlemlerini yürütebileceği anlamına gelir. |
 |Clustercertparmak Izleri|dize, varsayılan değer ""|Dinamik|Kümeye katılmasına izin verilen sertifikaların parmak izleri; virgülle ayrılmış bir ad listesi. |
 |ClusterCredentialType|dize, varsayılan değer "none"|Izin verilmiyor|Kümenin güvenliğini sağlamak için kullanılacak güvenlik kimlik bilgilerinin türünü belirtir. Geçerli değerler "none/x509/Windows" |
 |Kümekimlikleri|dize, varsayılan değer ""|Dinamik|Küme düğümlerinin Windows kimlikleri; küme üyeliği yetkilendirmesi için kullanılır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır |
-|Kümespn|dize, varsayılan değer ""|Izin verilmiyor|Kümenin hizmet sorumlusu adı; doku tek bir etki alanı kullanıcısı (gMSA/etki alanı kullanıcı hesabı) olarak çalıştırıldığında. Fabric. exe ' de kiralama dinleyicileri ve dinleyicilerinin SPN 'si vardır: Federasyon dinleyicileri; iç çoğaltma dinleyicileri; çalışma zamanı hizmeti dinleyicisi ve adlandırma ağ geçidi dinleyicisi. Doku makine hesapları olarak çalıştırıldığında bu, boş bırakılmalıdır; Bu durumda, yan işlem dinleyicisi SPN 'si dinleyici aktarım adresinden bağlanıyor. |
+|Kümespn|dize, varsayılan değer ""|Izin verilmiyor|Kümenin hizmet sorumlusu adı; doku tek bir etki alanı kullanıcısı (gMSA/etki alanı kullanıcı hesabı) olarak çalıştırıldığında. fabric.exe: Federasyon dinleyicileri; kira dinleyicileri ve dinleyicilerinin SPN 'si. iç çoğaltma dinleyicileri; çalışma zamanı hizmeti dinleyicisi ve adlandırma ağ geçidi dinleyicisi. Doku makine hesapları olarak çalıştırıldığında bu, boş bırakılmalıdır; Bu durumda, yan işlem dinleyicisi SPN 'si dinleyici aktarım adresinden bağlanıyor. |
 |CrlCheckingFlag|uint, varsayılan değer 0x40000000|Dinamik|Varsayılan sertifika zinciri doğrulama bayrağı; bileşene özgü bayrak tarafından geçersiz kılınabilir. Örneğin, Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ayarı 0 olarak ayarlandığında, desteklenen değerlerin tam listesini devre dışı bırakır, Certgetcertificatezincirinin dwFlags ile belgelenmiştir:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|TimeSpan, varsayılan:: TimeSpan:: FromMinutes (15)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Çevrimdışı hatayla karşılaşıldığında, belirli bir sertifika için CRL denetlemesi ne kadar devre dışı bırakılır? CRL çevrimdışı hatası yoksayılabilir. |
 |CrlOfflineHealthReportTtl|TimeSpan, varsayılan:: TimeSpan:: FromMinutes (1440)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. |

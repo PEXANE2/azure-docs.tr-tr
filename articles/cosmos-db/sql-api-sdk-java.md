@@ -9,15 +9,14 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391987"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
@@ -43,7 +42,7 @@ Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos D
 |**SDK Indirmesi**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API belgeleri**|[Java API başvuru belgeleri](/java/api/com.microsoft.azure.documentdb)|
 |**SDK 'ya katkıda bulunma**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Kullanmaya başlayın**|[Java SDK 'sını kullanmaya başlama](sql-api-java-get-started.md)|
+|**Kullanmaya başlama**|[Java SDK 'sını kullanmaya başlama](sql-api-java-get-started.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-java-application.md)|
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 

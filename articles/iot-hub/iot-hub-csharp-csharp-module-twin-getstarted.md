@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733385"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub Module kimliği ve modülü ikizi (.NET) ile çalışmaya başlama
@@ -54,11 +53,11 @@ Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
 Bu bölümde, modül ikizi tarafından raporlanan özelliklerini güncelleştiren simülasyon cihazınızda bir .NET konsol uygulaması oluşturursunuz.
 
-Başlamadan önce modül Bağlantı dizenizi alın. [Azure Portal](https://portal.azure.com/) oturum açın. Hub 'ınıza gidip **IoT cihazları**' nı seçin. **Myfirstdevice**bul. Dosyayı açmak için **Myfirstdevice** ' ı seçin ve ardından dosyayı açmak Için **myfirstmodule** ' ü seçin. **Modül kimliği ayrıntıları**' nda, aşağıdaki yordamda gerektiğinde **bağlantı dizesini (birincil anahtar)** kopyalayın.
+Başlamadan önce modül Bağlantı dizenizi alın. [Azure portalında](https://portal.azure.com/) oturum açın. Hub 'ınıza gidip **IoT cihazları**' nı seçin. **Myfirstdevice**bul. Dosyayı açmak için **Myfirstdevice** ' ı seçin ve ardından dosyayı açmak Için **myfirstmodule** ' ü seçin. **Modül kimliği ayrıntıları**' nda, aşağıdaki yordamda gerektiğinde **bağlantı dizesini (birincil anahtar)** kopyalayın.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçerek çözümünüze yeni bir proje ekleyin. Yeni proje oluştur ' da **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçerek çözümünüze yeni bir proje ekleyin. Yeni proje oluştur ' da **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 
 1. Projeye *UpdateModuleTwinReportedProperties* adını verin. **Çözüm**Için **çözüme Ekle**' yi seçin. .NET Framework sürümünün 4.6.1 veya sonraki bir sürüm olduğundan emin olun.
 
@@ -66,7 +65,7 @@ Başlamadan önce modül Bağlantı dizenizi alın. [Azure Portal](https://porta
 
 1. Projenizi oluşturmak için **Oluştur** ' u seçin.
 
-1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **çözüm için NuGet Paketlerini Yönet**' i açın. **Gözat** sekmesini seçin.
+1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet**' i açın. **Gözat** sekmesini seçin.
 
 1. Arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin ve ardından **Install**' u seçin.
 
@@ -152,7 +151,7 @@ Başlamadan önce modül Bağlantı dizenizi alın. [Azure Portal](https://porta
 
     Bu kod örneği, AMQP protokolüyle raporlanan özellikleri güncelleştirme ve modül ikizini alma işlemini nasıl yapacağınızı gösterir. Genel önizleme aşamasında, modül ikizi işlemleri için yalnızca AMQP’yi destekleriz.
 
-1. İsteğe bağlı olarak, bu deyimleri modülünden IoT Hub bir olay göndermek için **Main** yöntemine ekleyebilirsiniz. Bu satırları `try catch` bloğunun altına yerleştirin.
+1. İsteğe bağlı olarak, bu deyimleri modülünden IoT Hub bir olay göndermek için **Main** yöntemine ekleyebilirsiniz. Bu satırları bloğunun altına yerleştirin `try catch` .
 
     ```csharp
     Byte[] bytes = new Byte[2];

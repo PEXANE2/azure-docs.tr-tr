@@ -16,10 +16,9 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 742e1b54499e51fc791a659baaf7072272ef43a6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021424"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
@@ -1260,7 +1259,7 @@ Microsoft .NET Framework 3,5, Windows Server 2012 R2 'de otomatik olarak etkinle
 
   _**Şekil 40:** Rol ve Özellik Ekleme Sihirbazı 'Nı kullanarak .NET Framework 3,5 yüklediğinizde yükleme ilerleme çubuğu_
 
-- Dism. exe komut satırı aracını kullanın. Bu yükleme türü için, Windows yükleme medyasında SxS dizinine erişmeniz gerekir. Yükseltilmiş bir komut isteminde şunu yazın:
+- dism.exe komut satırı aracını kullanın. Bu yükleme türü için, Windows yükleme medyasında SxS dizinine erişmeniz gerekir. Yükseltilmiş bir komut isteminde şunu yazın:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

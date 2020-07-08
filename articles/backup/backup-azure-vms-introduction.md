@@ -4,10 +4,9 @@ description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nası
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322918"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
@@ -82,15 +81,15 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
 **Kilitlenme ile tutarlı** | Kilitlenme tutarlı anlık görüntüler genellikle bir Azure VM yedekleme sırasında kapatılırsa oluşur. Yalnızca yedekleme sırasında diskte bulunan veriler yakalanır ve yedeklenir. | , Bozulma hatalarını gidermeye yönelik bir disk denetimi tarafından sanal makine önyükleme işlemiyle başlar. Kilitlenme kaybolmadan önce diske aktarılmayan bellek içi veriler veya yazma işlemleri kaybedilir. Uygulamalar kendi veri doğrulamasını uygular. Örneğin, bir veritabanı uygulaması doğrulama için işlem günlüğünü kullanabilir. İşlem günlüğünde veritabanında bulunmayan girişler varsa, veritabanı yazılımı veriler tutarlı olana kadar işlemleri geri kaydeder. | VM kapalı (durdurulmuş/serbest bırakıldı) durumunda.
 
-## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konuları
+## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konusunda dikkat edilmesi gerekenler
 
 **Dikkate Alınacak Nokta** | **Ayrıntılar**
 --- | ---
 **Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
-**Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM 'Lerin yedeklenmesi aynı anda trafik jams oluşmasına neden olur.
-**Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısını yüklemeyi veya güncelleştirmeyi, yedekleme çizelgesine göre bir anlık görüntüyü tetiklemeyi içerir.
-**Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Artımlı yedeklemede, Azure Backup bloğun sağlama toplamını hesaplayarak değişiklikleri belirler. Bir blok değiştirilirse, kasaya aktarım için işaretlenir. Hizmet, aktarılacak veri miktarını daha aza indirmeye çalışacak şekilde tanımlanan blokları analiz eder. Değiştirilen tüm blokları değerlendirdikten sonra Azure Backup değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntü alma ve kasaya kopyalama arasında bir gecikme olabilir. Yoğun zamanlarda, anlık görüntülerin kasaya aktarılması sekiz saate kadar sürebilir. Bir VM için yedekleme zamanı, günlük yedekleme için 24 saatten daha az olacaktır.
-**İlk yedekleme** | Artımlı yedeklemeler için toplam Yedekleme süresi 24 saatten daha az olsa da, ilk yedekleme için bu durum olmayabilir. İlk yedekleme için gereken süre, verilerin boyutuna ve yedeklemenin işlendiği zamana bağlı olarak değişir.
+**Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM'lerin aynı anda yedeklenmesi trafik yoğunluğuna neden olur.
+**Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısının yüklenmesi veya güncelleştirilmesi ve yedekleme zamanlamasına göre bir anlık görüntünün tetiklenmesi adımlarını kapsar.
+**Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Azure Backup, artımlı yedekleme sırasında değişiklikleri belirlemek için bloğun sağlama toplamını hesaplar. Değiştirilen bloklar kasaya aktarılmak üzere işaretlenir. Hizmet, aktarılacak veri miktarını en aza indirmek için belirlenen blokları analiz eder. Azure Backup, değiştirilen tüm blokları değerlendirdikten sonra değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntünün alınması ile kasaya kopyalanması arasında bir gecikme olabilir. Yoğun zamanlarda, anlık görüntülerin kasaya aktarılması sekiz saate kadar sürebilir. Günlük yedeklemeler için bir VM'nin yedeklenme süresi 24 saatten kısa olacaktır.
+**İlk yedekleme** | Artımlı yedeklemeler için toplam yedekleme süresi 24 saatten daha az olsa da aynı durum ilk yedekleme için geçerli olmayabilir. İlk yedekleme için gereken süre, verilerin boyutuna ve yedekleme işleminin gerçekleştirildiği zamana bağlıdır.
 **Geri yükleme kuyruğu** | Azure Backup işlemler birden çok depolama hesabından aynı anda geri yüklenir ve geri yükleme isteklerini bir sıraya koyar.
 **Kopyayı geri yükle** | Geri yükleme işlemi sırasında veriler kasadan depolama hesabına kopyalanır.<br/><br/> Toplam geri yükleme süresi, saniye başına g/ç işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır.<br/><br/> Kopyalama süresini azaltmak için, diğer uygulama yazmaları ve okumaları ile yüklenmeyen bir depolama hesabı seçin.
 
@@ -103,14 +102,14 @@ Bu yaygın senaryolar toplam yedekleme süresini etkileyebilir:
 - **Disk karmaşıklığı:** Artımlı yedekleme yapılmakta olan korumalı diskler 200 GB 'tan fazla günlük bir dalgalanma sahip olursa, yedekleme işleminin tamamlanması uzun zaman alabilir (sekiz saatten fazla).
 - **Yedekleme sürümleri:** Yedeklemenin en son sürümü (anında geri yükleme sürümü olarak bilinir), değişiklikleri belirlemek için sağlama toplamı karşılaştırmasından daha iyileştirilmiş bir işlem kullanır. Ancak anlık geri yükleme kullanıyorsanız ve bir yedek anlık görüntüsünü sildiyseniz yedekleme, sağlama toplamı karşılaştırmasına geçer. Bu durumda, yedekleme işlemi 24 saati (veya başarısız) aşacaktır.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
-VM yedeklemelerini yapılandırırken, aşağıdaki yöntemleri takip ederiz:
+VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız önerilir:
 
-- Bir ilkede ayarlanan varsayılan zamanlama sürelerini değiştirin. Örneğin, ilkedeki varsayılan süre 12:00 ise, kaynakların en iyi şekilde kullanılması için zamanlamayı birkaç dakikaya kadar artırın.
+- Bir ilkede bulunan varsayılan zamanları değiştirin. Örneğin ilkedeki varsayılan saat 00:00 ise kaynakların en uygun şekilde kullanılması için birkaç dakika ileri atın.
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
-- Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
-- Depolama hesabı başına disk sayısı sınırı, diskler hizmet olarak altyapı (IaaS) VM 'sinde çalışan uygulamalar tarafından ne kadar yoğun erişildiğine bağlıdır. Genel bir uygulama olarak, tek bir depolama hesabında 5 ila 10 disk veya daha fazlası varsa, bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengeleyin.
+- Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra yapılacak yedekleme işlemleri için %50 boş alan gereksinimi yoktur
+- Depolama hesabı başına disk sayısı sınırı, disklere hizmet olarak altyapı (IaaS) VM üzerinde çalışan uygulamalar tarafından hangi düzeyde erişim sağlandığına göre değişir. Genellikle tek bir depolama hesabında 5-10 arası veya daha fazla disk varsa bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengelemeniz önerilir.
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 

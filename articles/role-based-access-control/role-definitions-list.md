@@ -15,10 +15,9 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982501"
 ---
 # <a name="list-azure-role-definitions"></a>Azure rol tanımlarını listeleyin
@@ -356,7 +355,7 @@ Rol tanımlarını listelemek için, [rol tanımları-liste](/rest/api/authoriza
 1. *{Filter}* değerini, rol tanımı listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Description |
+    > | Filtre | Açıklama |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Belirtilen kapsam ve tüm alt kapsamlar için rol tanımlarını listeler. |
     > | `$filter=type+eq+'{type}'` | Belirtilen türdeki rol tanımlarını listeler. Rol türü `CustomRole` veya olabilir `BuiltInRole` . |

@@ -4,10 +4,9 @@ description: Azure geçişi ile VMware VM değerlendirmesi ve geçişi için bul
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770399"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM 'Leri için bulma kapsamını ayarlama

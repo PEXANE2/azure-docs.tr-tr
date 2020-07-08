@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732947"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
@@ -24,9 +23,9 @@ Burada listelenmeyen bir sorunla karşılaşırsanız [GitHub](https://github.co
 
 Bu dll 'Lerden herhangi biri bin dizininde mevcutsa, izleme başarısız olabilir:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Bu dll 'Lerden bazıları, uygulamanız tarafından kullanılmasa bile Visual Studio varsayılan uygulama şablonlarına dahildir.
 Sentomatik davranışını görmek için sorun giderme araçları 'nı kullanabilirsiniz:
@@ -42,7 +41,7 @@ Sentomatik davranışını görmek için sorun giderme araçları 'nı kullanabi
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- IISReset ve uygulama yükü (telemetri olmadan). Sysinternals ile araştır (Handle. exe ve ListDLLs. exe):
+- IISReset ve uygulama yükü (telemetri olmadan). Sysinternals ile araştır (Handle.exe ve ListDLLs.exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -60,7 +59,7 @@ HttpModule bu paylaşılan yapılandırmaya eklenemez.
 Her bir Web sunucusunda, DLL 'yi her bir sunucunun GAC 'sine yüklemek için Etkinleştir komutunu çalıştırın.
 
 Etkinleştir komutunu çalıştırdıktan sonra şu adımları uygulayın:
-1. Paylaşılan yapılandırma dizinine gidin ve applicationHost. config dosyasını bulun.
+1. Paylaşılan yapılandırma dizinine gidin ve applicationHost.config dosyasını bulun.
 2. Bu satırı yapılandırmanızın modüller bölümüne ekleyin:
     ```
     <modules>
@@ -86,16 +85,16 @@ Bu sorunu [burada](https://github.com/microsoft/ApplicationInsights-Home/issues/
 ### <a name="troubleshooting-powershell"></a>PowerShell sorunlarını giderme
 
 #### <a name="determine-which-modules-are-available"></a>Hangi modüllerin kullanılabilir olduğunu belirleme
-Hangi modüllerin yükleneceğini öğrenmek `Get-Module -ListAvailable` için komutunu kullanabilirsiniz.
+`Get-Module -ListAvailable`Hangi modüllerin yükleneceğini öğrenmek için komutunu kullanabilirsiniz.
 
 #### <a name="import-a-module-into-the-current-session"></a>Geçerli oturuma bir modül içeri aktar
-Bir modül bir PowerShell oturumuna yüklenmediyse, `Import-Module <path to psd1>` komutunu kullanarak el ile yükleyebilirsiniz.
+Bir modül bir PowerShell oturumuna yüklenmediyse, komutunu kullanarak el ile yükleyebilirsiniz `Import-Module <path to psd1>` .
 
 
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Application Insights Aracısı modülü sorunlarını giderme
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Application Insights Aracısı modülünde kullanılabilen komutları listeleyin
-Kullanılabilir komutları almak `Get-Command -Module Az.ApplicationMonitor` için komutunu çalıştırın:
+`Get-Command -Module Az.ApplicationMonitor`Kullanılabilir komutları almak için komutunu çalıştırın:
 
 ```
 CommandType     Name                                               Version    Source
@@ -111,7 +110,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Application Insights Aracısı modülünün geçerli sürümünü belirleme
-Modülüyle ilgili `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` aşağıdaki bilgileri göstermek için komutunu çalıştırın:
+`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`Modülüyle ilgili aşağıdaki bilgileri göstermek için komutunu çalıştırın:
    - PowerShell modülü sürümü
    - Application Insights SDK sürümü
    - PowerShell modülünün dosya yolları
@@ -124,7 +123,7 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 Tüm dll 'Lerin yüklenip yüklenmediğini anlamak için, Araçlı bilgisayardaki süreçler inceleyebilirsiniz.
 İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Dll 'Leri `Get-ApplicationInsightsMonitoringStatus -InspectProcess` denetlemek için komutunu kullanın.
+`Get-ApplicationInsightsMonitoringStatus -InspectProcess`DLL 'leri denetlemek için komutunu kullanın.
 
 Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için [API başvurusunu](status-monitor-v2-api-reference.md) gözden geçirin.
 
@@ -133,8 +132,8 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 
 #### <a name="setup"></a>Kurulum
 
-1. PerfView. exe ve PerfView64. exe dosyasını [GitHub](https://github.com/Microsoft/perfview/releases)'dan indirin.
-2. PerfView64. exe ' yi başlatın.
+1. [GitHub](https://github.com/Microsoft/perfview/releases)'dan PerfView.exe ve PerfView64.exe indirin.
+2. PerfView64.exe başlatın.
 3. **Gelişmiş Seçenekler**' i genişletin.
 4. Şu onay kutularını temizleyin:
     - **Zip**
@@ -145,9 +144,9 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 
 #### <a name="collecting-logs"></a>Günlükleri toplama
 
-1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi ve `iisreset /stop` tüm Web uygulamalarını devre dışı bırakmak için komutunu çalıştırın.
+1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, `iisreset /stop` IIS 'yi ve tüm Web uygulamalarını devre dışı bırakmak için komutunu çalıştırın.
 2. PerfView içinde **toplamayı Başlat**' ı seçin.
-3. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi başlatmak `iisreset /start` için komutunu çalıştırın.
+3. Yönetici ayrıcalıklarına sahip bir komut konsolunda, `iisreset /start` IIS 'yi başlatmak için komutunu çalıştırın.
 4. Uygulamanıza gözatmayı deneyin.
 5. Uygulamanız yüklendikten sonra PerfView ' a dönüp **toplamayı durdur**' u seçin.
 

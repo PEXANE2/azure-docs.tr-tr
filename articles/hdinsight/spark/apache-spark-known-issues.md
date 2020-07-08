@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494521"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037503"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar
 
@@ -30,13 +29,17 @@ Sorunu geçici olarak çözmek için aşağıdaki yordamı kullanın:
 
 2. Livy ile başlatılan etkileşimli işlerin uygulama kimliklerini bulmak için aşağıdaki komutu çalıştırın.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     İşlerin açık adı olmayan bir etkileşimli oturumla başlatılmış olması halinde varsayılan iş adları kesin olur. [Jupyter Notebook](https://jupyter.org/)tarafından başlatılan bir oturum için iş adı ile başlar `remotesparkmagics_*` .
 
 3. Bu işleri sonlandırmak için aşağıdaki komutu çalıştırın.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Yeni işler çalışmaya başladı.
 

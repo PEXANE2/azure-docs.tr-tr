@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603919"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
 Azure Active Directory (Azure AD) oturum açma sayfalarınızda tutarlı bir görünüm sağlamak için kuruluşunuzun logosu ve özel renk düzenlerini kullanın. Kullanıcılar, kimlik sağlayıcınız olarak Azure AD kullanan Office 365 gibi, kuruluşunuzun Web tabanlı uygulamalarında oturum açtığında oturum açma sayfalarınız görüntülenir.
@@ -113,7 +112,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
 3. **Şirket markasını Yapılandır** sayfasında, bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümünde yer alan açıklamalara göre bilgileri ekleyin, kaldırın veya değiştirin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
    Oturum açma sayfası markasında yaptığınız değişikliklerin görünmesi bir saate kadar sürebilir.
 
@@ -130,7 +129,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
 3. **Şirket markasını Yapılandır** sayfasında, dilinizi (örneğin, Fransızca) seçin ve ardından bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümündeki açıklamalara göre çevrilmiş bilgilerinizi ekleyin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
     **Contoso – Company marka** sayfası, yeni Fransızca yapılandırmanızı gösterecek şekilde güncelleştirilir.
 
@@ -139,7 +138,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 ## <a name="add-your-custom-branding-to-pages"></a>Sayfalarınıza özel markalarınızı ekleme
 URL 'nin sonunu bir metinle değiştirerek özel markanızı sayfalara ekleyin `?whr=yourdomainname` . Bu değişiklik Multi-Factor Authentication (MFA) kurulum sayfası, self servis parola sıfırlama (SSPR) kurulum sayfası ve oturum açma sayfası dahil olmak üzere çeşitli sayfalarda çalışmaktadır.
 
-**Örnekler**
+**Örnekler:**
 
 **Özgün URL:**https://aka.ms/MFASetup<br>
 **Özel URL:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`

@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763967"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portalı tercihlerinizi ayarlama
@@ -29,7 +28,7 @@ Kendi tercihlerinizi karşılamak için Azure portal varsayılan ayarlarını de
 
 ## <a name="change-general-portal-settings"></a>Genel Portal ayarlarını değiştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Genel sayfa üstbilgisindeki **ayarları** seçin.
 
     ![Ayarlar vurgulanmış olarak genel sayfa üst bilgi simgelerini gösteren ekran görüntüsü](./media/set-preferences/header-settings.png)

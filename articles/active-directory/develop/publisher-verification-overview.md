@@ -13,13 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682431"
 ---
-# <a name="publisher-verification-preview"></a>Yayımcı doğrulaması (Önizleme)
+# <a name="publisher-verification-preview"></a>Yayımcı doğrulaması (önizleme)
 
 Yayımcı doğrulaması (Önizleme), yöneticilerin ve son kullanıcıların Microsoft Identity platformu ile tümleştirerek uygulama geliştiricilerinin orijinalliğini anlamalarına yardımcı olur. Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcının [doğrulama](/partner-center/verification-responses) işlemini tamamlamış bir [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership) hesabı kullanarak kimliğini DOĞRULADıĞıNı ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini anlamına gelir. 
 
@@ -27,7 +26,7 @@ Azure AD onay istemi ve diğer ekranlarda mavi "doğrulanan" bir rozet görünü
 
 Bu özellik, birincil olarak, OAuth 2,0 'den yararlanan çok kiracılı uygulamalar oluşturan geliştiriciler ve [Microsoft Identity platformu](v2-overview.md)Ile [OpenID Connect 'e](active-directory-v2-protocols.md) yöneliktir. Bu uygulamalar, OpenID Connect kullanarak kullanıcıları imzalayabilirler veya [Microsoft Graph](https://developer.microsoft.com/graph/)gibi API 'leri kullanarak verilere erişim Istemek için OAuth 2,0 kullanabilirler.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 Yayımcı doğrulaması aşağıdaki avantajları sağlar:
 - **Müşteriler Için daha fazla saydamlık ve risk azaltma**-bu özellik, müşterilerin kuruluşlarında kullanılan uygulamaları öğrendikleri geliştiriciler tarafından yayımlandığını anlamalarına yardımcı olur. 
 

@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 229c1307559c0bd452e95a4f833bc68b66bc6299
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261316"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027768"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -28,7 +27,7 @@ Müşteri tarafından yönetilen anahtarları [Azure Key Vault](../key-vault/gen
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın, Azure aboneliğinize gidin ve **Ayarlar** sekmesinde **kaynak sağlayıcıları** ' nı seçin:
 
-   ![Sol menüden "kaynak sağlayıcıları" girdisi](./media/how-to-setup-cmk/portal-rp.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Sol menüden kaynak sağlayıcıları girişi":::
 
 1. **Microsoft.DocumentDB** kaynak sağlayıcısını arayın. Kaynak sağlayıcının zaten kayıtlı olarak işaretlendiğinden emin olun. Aksi takdirde, kaynak sağlayıcısını seçip **Kaydet**' i seçin:
 
@@ -51,7 +50,7 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
 1. Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Sol menüden **erişim ilkeleri** ' ni seçin:
 
-   ![Sol menüden "erişim ilkeleri"](./media/how-to-setup-cmk/portal-akv-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Sol menüden erişim ilkeleri":::
 
 1. **+ Erişim Ilkesi Ekle**' yi seçin.
 
@@ -69,7 +68,7 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
 1. Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Ardından, sol menüden **anahtarlar** ' ı seçin:
 
-   ![Sol menüden "anahtarlar" girdisi](./media/how-to-setup-cmk/portal-akv-keys.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Sol menüden anahtarlar girdisi":::
 
 1. **Oluştur/al**' ı seçin, yeni anahtar için bir ad girin ve bir RSA anahtar boyutu seçin. En iyi güvenlik için en az 3072 önerilir. Sonra **Oluştur**' u seçin.
 

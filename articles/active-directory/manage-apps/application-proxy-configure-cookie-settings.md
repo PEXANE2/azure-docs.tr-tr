@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764902"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory içindeki şirket içi uygulamalara erişim için tanımlama bilgisi ayarları
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD), uygulama proxy 'Si aracılığıyla şirket i
 
 [Uygulama proxy 'si](application-proxy.md) aşağıdaki erişim ve oturum tanımlama bilgisi ayarlarını kullanır.
 
-| Tanımlama bilgisi ayarı | Varsayılan | Description | Öneriler |
+| Tanımlama bilgisi ayarı | Varsayılan | Açıklama | Öneriler |
 | -------------- | ------- | ----------- | --------------- |
 | Yalnızca HTTP tanımlama bilgisini kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde HTTPOnly bayrağını içermesini sağlar. Bu bayrak ek güvenlik avantajları sağlar, örneğin, istemci tarafı komut dosyasının (CSS) tanımlama bilgilerini kopyalamasını veya değiştirmesini engeller.<br></br><br></br>Yalnızca HTTP ayarını destekliyoruz, uygulama proxy 'Si, değişikliklere karşı koruma sağlamak için güvenli bir TLS kanalı üzerinden şifrelenmiş ve iletilen tanımlama bilgilerini. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.<br></br><br></br>Oturum tanımlama bilgisine erişmesi gereken istemciler veya kullanıcı aracıları için **Hayır** kullanın. Örneğin, uygulama proxy 'Si aracılığıyla bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanan bir RDP veya MTSC istemcisi için **Hayır** ' ı kullanın.|
 | Güvenli tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde güvenli bayrağını içermesini sağlar. Güvenli tanımlama bilgileri, HTTPS gibi bir TLS güvenli kanalı üzerinden tanımlama bilgilerini ileterek güvenliği geliştirir. Bu, tanımlama bilgisinin şifresiz taraflar tarafından gösterilmesini engeller. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.|
@@ -48,7 +47,7 @@ Ayrıca, arka uç uygulamanızın bir üçüncü taraf bağlamında kullanılabi
 ## <a name="set-the-cookie-settings---azure-portal"></a>Tanımlama bilgisi ayarlarını ayarla-Azure portal
 Azure portal kullanarak tanımlama bilgisi ayarlarını yapmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. **Azure Active Directory**   >  **Kurumsal uygulamalar**   >  **tüm uygulamalar**' a gidin.
 3. Tanımlama bilgisi ayarını etkinleştirmek istediğiniz uygulamayı seçin.
 4. **Uygulama proxy 'si**' ne tıklayın.

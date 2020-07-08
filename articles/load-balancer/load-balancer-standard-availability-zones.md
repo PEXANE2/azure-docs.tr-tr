@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888485"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027571"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
@@ -105,7 +104,7 @@ Bu sanal makineye erişebilen diğer bölgeler, sanal makineyi ilgili ön uçlar
 
 Yük dengeleyici, kullanılabilirlik alanları bağlamında esnektir. Bölgelere hizalamayı veya her kural için bölgeye yedekli olmasını seçebilirsiniz. Artan kullanılabilirlik, artan karmaşıklık fiyatına göre gelebilir. En iyi performans için kullanılabilirlik tasarımı.
 
-### <a name="automatic-zone-redundancy"></a>Otomatik bölge-artıklık
+### <a name="zone-redundancy"></a>Bölge artıklığı
 
 Load Balancer, bölge yedekli ön uç olarak tek bir IP 'nin olmasını kolaylaştırır. Bölgesel olarak yedekli bir IP adresi, herhangi bir bölgede bir bölgesel kaynağı sunabilir.  Bir bölge bölgede sağlıklı kaldığı sürece IP bir veya daha fazla bölge hatasını daha fazla sürebilir.  Bunun yerine, bir bölgesel ön ucu hizmetin tek bir bölgeye bir azalmasıyla birlikte Fate 'yı ilgili bölge ile paylaşır.
 

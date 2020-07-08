@@ -8,18 +8,17 @@ ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603902"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında Lisans atama veya kaldırma
 
@@ -37,7 +36,7 @@ Azure AD hizmeti için aşağıdakiler de dahil olmak üzere birkaç lisans plan
 
 Her lisans planı ve ilgili lisanslama ayrıntıları hakkında belirli bilgiler için bkz. [Hangi lisansa ihtiyacım var?](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir gruba atanabilmesi için önce tüm Üyeler için **kullanım konumunu** belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; &gt; kullanıcıları profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
+Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir gruba atanabilmesi için önce tüm Üyeler için **kullanım konumunu** belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 
 ## <a name="view-license-plans-and-plan-details"></a>Lisans planlarını ve plan ayrıntılarını görüntüleme
 
@@ -82,7 +81,7 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
     Bir kullanıcının seçili olduğunu ve atamaların yapılandırıldığını göstermek için **Lisans ata** sayfası güncellenir.
 
     > [!NOTE]
-    > Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir kullanıcıya atanabilmesi için önce **kullanım konumunu**belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; &gt; kullanıcıları profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
+    > Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir kullanıcıya atanabilmesi için önce **kullanım konumunu**belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 
 1. **Ata**'yı seçin.
 

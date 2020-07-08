@@ -7,22 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603970"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme
 
-Her yeni Azure AD kiracısı, * \<* bir ilk etki alanı adı olan DomainName>. onmicrosoft.com ile gelir. İlk etki alanı adını değiştiremez veya silemezsiniz, ancak kuruluşunuzun adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza alışkın olduğunuz *\@contoso.com*gibi kullanıcı adları oluşturmanıza yardımcı olur.
+Her yeni Azure AD kiracısı, bir ilk etki alanı adı olan * \<domainname> . onmicrosoft.com*ile gelir. İlk etki alanı adını değiştiremez veya silemezsiniz, ancak kuruluşunuzun adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza alışkın olduğunuz * \@ contoso.com*gibi kullanıcı adları oluşturmanıza yardımcı olur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -50,7 +49,7 @@ Dizininizi oluşturduktan sonra, özel etki alanı adınızı ekleyebilirsiniz.
 
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com/) oturum açın.
 
-1. Herhangi bir sayfadan *Azure Active Directory* arayın ve seçin. Ardından özel **etki alanı adları** > **özel etki alanı Ekle**' yi seçin.
+1. Herhangi bir sayfadan *Azure Active Directory* arayın ve seçin. Ardından özel **etki alanı adları**  >  **özel etki alanı Ekle**' yi seçin.
 
     ![Özel etki alanı adları sayfası, gösterilen özel etki alanı Ekle](media/add-custom-domain/add-custom-domain.png)
 

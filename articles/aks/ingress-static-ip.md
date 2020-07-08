@@ -4,13 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adresi ile NGıNX giriş denetleyicisi yüklemeyi ve yapılandırmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: a44a41806af30479f06ec4daba936c7aa71ef5d7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.date: 07/02/2020
+ms.openlocfilehash: f10bed46f93af3579f07e04d9940fc98eef67826
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920303"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -53,22 +52,25 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 Giriş denetleyicisinin hem giriş denetleyicisi hizmetine ayrılacak yük dengeleyicinin statik IP adresini hem de genel IP adresi kaynağına uygulanmakta olan DNS adı etiketini bilmesi için, helk sürümüne iki ek parametre geçirmeniz gerekir. HTTPS sertifikalarının düzgün çalışması için, giriş denetleyicisi IP adresi için bir FQDN yapılandırmak üzere bir DNS ad etiketi kullanılır.
 
-1. `--set controller.service.loadBalancerIP` Parametresini ekleyin. Önceki adımda oluşturulan kendi genel IP adresini belirtin.
-1. `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` Parametresini ekleyin. Önceki adımda oluşturulan genel IP adresine uygulanacak bir DNS ad etiketi belirtin.
+1. Parametresini ekleyin `--set controller.service.loadBalancerIP` . Önceki adımda oluşturulan kendi genel IP adresini belirtin.
+1. Parametresini ekleyin `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` . Önceki adımda oluşturulan genel IP adresine uygulanacak bir DNS ad etiketi belirtin.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
+> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 Aşağıdaki betiği, giriş denetleyicinizin **IP adresi** ve FQDN öneki için kullanmak istediğiniz benzersiz bir **ad** ile güncelleştirin:
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
@@ -105,7 +107,7 @@ Giriş denetleyicisine artık IP adresi veya FQDN üzerinden erişilebilir.
 NGINX giriş denetleyicisi, TLS sonlandırmayı destekler. HTTPS için birçok farklı sertifika alma ve yapılandırma yöntemi vardır. Bu makalede, sertifika oluşturma ve yönetim işlevlerinin [şifrelenmesi][lets-encrypt] için otomatik olarak sağlanan [CERT-Manager][cert-manager]kullanımı gösterilmektedir.
 
 > [!NOTE]
-> Bu makalede, `staging` şifreleme için ortamı kullanılmaktadır. Üretim dağıtımlarında, kaynak `letsencrypt-prod` tanımlarında `https://acme-v02.api.letsencrypt.org/directory` ve, Held grafiğini yüklerken öğesini kullanın.
+> Bu makalede, `staging` şifreleme için ortamı kullanılmaktadır. Üretim dağıtımlarında, `letsencrypt-prod` `https://acme-v02.api.letsencrypt.org/directory` kaynak tanımlarında ve, Held grafiğini yüklerken öğesini kullanın.
 
 CERT-Manager denetleyicisini RBAC özellikli bir kümeye yüklemek için aşağıdaki `helm install` komutu kullanın:
 
@@ -136,7 +138,7 @@ CERT Manager yapılandırması hakkında daha fazla bilgi için bkz. [CERT-Manag
 
 Sertifikaların verilebilmesi için, CERT Manager bir [veren][cert-manager-issuer] veya [clusterıssuer][cert-manager-cluster-issuer] kaynağı gerektirir. Bu Kubernetes kaynakları işlevselliklerde aynıdır, ancak `Issuer` tek bir ad alanında çalışarak ve `ClusterIssuer` tüm ad alanları üzerinde çalışmaktadır. Daha fazla bilgi için bkz. [CERT-Manager veren][cert-manager-issuer] belgeleri.
 
-Aşağıdaki örnek bildirimini kullanarak gibi bir küme `cluster-issuer.yaml`veren oluşturun. E-posta adresini kuruluşunuzdaki geçerli bir adresle güncelleştirin:
+Aşağıdaki örnek bildirimini kullanarak gibi bir küme veren oluşturun `cluster-issuer.yaml` . E-posta adresini kuruluşunuzdaki geçerli bir adresle güncelleştirin:
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -167,7 +169,7 @@ clusterissuer.cert-manager.io/letsencrypt-staging created
 
 Bir giriş denetleyicisi ve bir sertifika yönetimi çözümü yapılandırıldı. Şimdi AKS kümenizde iki tanıtım uygulaması çalıştıralım. Bu örnekte, HELI basit bir ' Hello World ' uygulamasının iki örneğini dağıtmak için kullanılır.
 
-Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, basit bir `kubectl apply` *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
+Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, `kubectl apply` basit bir *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
 
 Bir *aks-HelloWorld. YAML* dosyası oluşturun ve aşağıdaki örnekte bulunan YAML 'yi kopyalayın:
 
@@ -245,7 +247,7 @@ spec:
     app: ingress-demo
 ```
 
-Kullanarak `kubectl apply`iki demo uygulamayı çalıştırın:
+Kullanarak iki demo uygulamayı çalıştırın `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -254,11 +256,11 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 
 ## <a name="create-an-ingress-route"></a>Giriş yolu oluşturma
 
-Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar türünde `ClusterIP`bir hizmetle yapılandırılmış. Bu nedenle, uygulamalara internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
+Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar türünde bir hizmetle yapılandırılmış `ClusterIP` . Bu nedenle, uygulamalara internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
 
-Aşağıdaki örnekte, adrese `https://demo-aks-ingress.eastus.cloudapp.azure.com/` olan trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` giden trafik `ingress-demo` hizmete yönlendirilir. *Ana bilgisayarları* ve *ana bilgisayarı* , önceki adımda oluşturduğunuz DNS adına güncelleştirin.
+Aşağıdaki örnekte, adrese `https://demo-aks-ingress.eastus.cloudapp.azure.com/` olan trafik adlı hizmete yönlendirilir `aks-helloworld` . Adrese giden trafik `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` `ingress-demo` hizmete yönlendirilir. *Ana bilgisayarları* ve *ana bilgisayarı* , önceki adımda oluşturduğunuz DNS adına güncelleştirin.
 
-Adlı `hello-world-ingress.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın.
+Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -288,7 +290,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-`kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` Komutunu kullanarak giriş kaynağını oluşturun.
+Komutunu kullanarak giriş kaynağını oluşturun `kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` .
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
@@ -348,13 +350,13 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test etme
 
-Kubernetes giriş denetleyicinizin FQDN 'sine bir Web tarayıcısı açın (örneğin,) *`https://demo-aks-ingress.eastus.cloudapp.azure.com`*.
+Kubernetes giriş denetleyicinizin FQDN 'sine bir Web tarayıcısı açın (örneğin,) *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* .
 
-Bu örneklerde kullanırken `letsencrypt-staging`, verilen TLS/SSL sertifikasına tarayıcı tarafından güvenilmiyor. Uygulamanıza devam etmek için uyarı isteğini kabul edin. Sertifika bilgileri, bu *sahte bir ara x1* sertifikasının, Şifreleyebilmesine göre verildiğini gösterir. Bu sahte sertifika, `cert-manager` isteğin doğru bir şekilde işlendiğini ve sağlayıcıdan bir sertifika alındığını gösterir:
+Bu örneklerde kullanırken `letsencrypt-staging` , VERILEN TLS/SSL sertifikasına tarayıcı tarafından güvenilmiyor. Uygulamanıza devam etmek için uyarı isteğini kabul edin. Sertifika bilgileri, bu *sahte bir ara x1* sertifikasının, Şifreleyebilmesine göre verildiğini gösterir. Bu sahte sertifika `cert-manager` , isteğin doğru bir şekilde işlendiğini ve sağlayıcıdan bir sertifika alındığını gösterir:
 
 ![Hazırlama sertifikasını şifreleyelim](media/ingress/staging-certificate.png)
 
-Yerine kullanmak `prod` Için şifreleyelim `staging`' i değiştirirseniz, aşağıdaki örnekte gösterildiği gibi, şifreleyebilmesine göre verilen güvenilir bir sertifika kullanılır:
+Yerine kullanmak için şifreleyelim `prod` `staging` ' i değiştirirseniz, aşağıdaki örnekte gösterildiği gibi, şifreleyebilmesine göre verilen güvenilir bir sertifika kullanılır:
 
 ![Sertifikayı şifreleyelim](media/ingress/certificate.png)
 
@@ -362,7 +364,7 @@ Demo uygulaması Web tarayıcısında gösterilir:
 
 ![Uygulama örneği bir](media/ingress/app-one.png)
 
-Şimdi */Hello-World-iki* yolunu FQDN 'sine ekleyin, örneğin *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`*. Özel başlığa sahip ikinci demo uygulaması gösterilir:
+Şimdi */Hello-World-iki* yolunu FQDN 'sine ekleyin, örneğin *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* . Özel başlığa sahip ikinci demo uygulaması gösterilir:
 
 ![Uygulama örneği iki](media/ingress/app-two.png)
 
@@ -387,7 +389,7 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-Şimdi `helm list` komutunu kullanarak Held sürümlerini listeleyin. Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* ve *CERT-Manager* adlı grafikleri arayın:
+Şimdi komutunu kullanarak Held sürümlerini listeleyin `helm list` . Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* ve *CERT-Manager* adlı grafikleri arayın:
 
 ```
 $ helm list --all-namespaces
@@ -397,7 +399,7 @@ nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.4541
 cert-manager            ingress-basic   1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
 ```
 
-`helm uninstall` Komutuyla yayınları kaldırın. Aşağıdaki örnek NGıNX giriş dağıtımı ve Sertifika Yöneticisi dağıtımlarını kaldırır.
+Komutuyla yayınları kaldırın `helm uninstall` . Aşağıdaki örnek NGıNX giriş dağıtımı ve Sertifika Yöneticisi dağıtımlarını kaldırır.
 
 ```
 $ helm uninstall nginx-ingress cert-manager -n ingress-basic
@@ -413,7 +415,7 @@ kubectl delete -f aks-helloworld.yaml --namespace ingress-basic
 kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 ```
 
-Kendi ad alanını silin. `kubectl delete` Komutunu kullanın ve ad alanı adınızı belirtin:
+Kendi ad alanını silin. Komutunu kullanın `kubectl delete` ve ad alanı adınızı belirtin:
 
 ```console
 kubectl delete namespace ingress-basic

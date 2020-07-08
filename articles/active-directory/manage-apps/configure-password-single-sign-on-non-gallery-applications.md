@@ -12,10 +12,9 @@ ms.date: 07/10/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763508"
 ---
 # <a name="configure-password-single-sign-on"></a>Parola çoklu oturum açmayı yapılandırma
@@ -58,7 +57,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
    ![Parola tabanlı çoklu oturum açma](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. **Kaydet**’i seçin. Azure AD, Kullanıcı adı girişi ve parola girişi için oturum açma sayfasını ayrıştırmaya çalışır. Deneme başarılı olursa işiniz bitti demektir. 
+8. **Kaydet**'i seçin. Azure AD, Kullanıcı adı girişi ve parola girişi için oturum açma sayfasını ayrıştırmaya çalışır. Deneme başarılı olursa işiniz bitti demektir. 
  
 > [!NOTE]
 > Sonraki adımınız, [uygulamaya Kullanıcı veya grup atamak](methods-for-assigning-users-and-groups.md)olur. Kullanıcılar ve gruplar atadıktan sonra, uygulamada oturum açtıklarında Kullanıcı adına kullanılacak kimlik bilgilerini sağlayabilirsiniz. **Kullanıcılar ve gruplar**' ı seçin, kullanıcının veya grubun satırı için onay kutusunu işaretleyin ve ardından **kimlik bilgilerini güncelleştir**' e tıklayın. Ardından Kullanıcı veya Grup adına kullanılacak kullanıcı adını ve parolayı girin. Aksi takdirde, kullanıcılardan başlatma sırasında kimlik bilgilerini girmesi istenir.

@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361345"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027401"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -81,12 +80,12 @@ Sonra, Active Directory (AD) kimlik doğrulamasını etkinleştirmeniz gerekir. 
 
 Depolama hesabında bulunan FSLogix profillerine sahip olması gereken tüm kullanıcılara depolama dosyası veri SMB paylaşımının katkıda bulunan rolü atanmalıdır.
 
-Windows Sanal Masaüstü oturumunda oturum açan kullanıcıların, dosya paylaşımınıza erişmek için erişim izinleri olması gerekir. Bir Azure dosya paylaşımının erişimine izin verilmesi, izinleri hem paylaşma düzeyinde hem de NTFS düzeyinde geleneksel bir Windows paylaşımıyla aynı şekilde yapılandırmayı içerir.
+Windows Sanal Masaüstü oturum konaklarında oturum açan kullanıcılar, dosya paylaşımınıza erişmek için gerekli erişim izinlerine sahip olmalıdır. Bir Azure dosya paylaşımına erişim izni vermek için izinlerin geleneksel Windows paylaşımlarında olduğu gibi hem paylaşım düzeyinde hem de NTFS düzeyinde verilmesi gerekir.
 
 Paylaşma düzeyi izinlerini yapılandırmak için, her kullanıcıya uygun erişim izinlerine sahip bir rol atayın. İzinler, bireysel kullanıcılara veya bir Azure AD grubuna atanabilir. Daha fazla bilgi için bkz. [bir kimliğe erişim Izinleri atama](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
 
 >[!NOTE]
->İzinleri atadığınız hesapların veya grupların etki alanında oluşturulmuş ve Azure AD ile eşitlenmiş olması gerekir. Azure AD 'de oluşturulan hesaplar çalışmayacak.
+>İzinleri atadığınız hesapların veya grupların etki alanında oluşturulmuş ve Azure AD ile eşitlenmiş olması gerekir. Azure AD'de oluşturulan hesaplar kullanılamaz.
 
 Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
@@ -94,19 +93,21 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
-3. **Access Control (IAM)** seçeneğini belirleyin.
+3. **Dosya paylaşımları**' nı seçin ve ardından kullanmayı planladığınız dosya paylaşımının adını seçin.
 
-4. **Rol ataması Ekle**' yi seçin.
+4. **Access Control (IAM)** seçeneğini belirleyin.
 
-5. **Rol ataması Ekle** sekmesinde, yönetici hesabı Için **depolama dosyası veri SMB paylaşma yükseltilmiş katılımcısı** ' ı seçin.
+5. **Rol ataması Ekle**' yi seçin.
 
-     FSLogix profillerine Kullanıcı izinleri atamak için, aynı yönergeleri izleyin. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
+6. **Rol ataması Ekle** sekmesinde, yönetici hesabı Için **depolama dosyası veri SMB paylaşma yükseltilmiş katılımcısı** ' ı seçin.
 
-6. **Kaydet**’i seçin.
+     Aynı yönergeleri izleyerek kullanıcılara FSLogix profilleri için gerekli izinleri atayın. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
+
+7. **Kaydet**'i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
-Kullanıcılarınıza RBAC izinleri atadıktan sonra, bir sonraki adımda NTFS izinlerini yapılandırmanız gerekir.
+Kullanıcılarınıza RBAC izinlerini atadıktan sonra NTFS izinlerini yapılandırmanız gerekir.
 
 Başlamak için Azure portal iki şey bilmeniz gerekir:
 
@@ -151,7 +152,7 @@ NTFS izinlerinizi yapılandırmak için:
 
 1. Etki alanına katılmış bir VM 'de bir komut istemi açın.
 
-2. Azure dosya paylaşımından bağlamak ve bir sürücü harfi atamak için aşağıdaki cmdlet 'i çalıştırın:
+2. Azure dosya paylaşımını bağlamak ve sürücü harfi atamak için şu cmdlet'i çalıştırın: 
 
      ```powershell
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
@@ -192,15 +193,15 @@ NTFS izinlerinizi yapılandırmak için:
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Oturum Ana bilgisayar VM 'lerinde FSLogix yapılandırma
 
-Bu bölümde, bir VM 'nin FSLogix ile nasıl yapılandırılacağı gösterilir. Her oturum konağını yapılandırırken bu yönergeleri izlemeniz gerekir. Yapılandırmaya başlamadan önce, [FSLogix indirme ve yükleme](/fslogix/install-ht)bölümündeki yönergeleri izleyin. Kayıt defteri anahtarlarının tüm oturum konaklarında ayarlanmış olduğundan emin olmak için birkaç seçenek mevcuttur. Bu seçenekleri bir görüntüde ayarlayabilir veya bir grup ilkesi yapılandırabilirsiniz.
+Bu bölümde VM'de FSLogix yapılandırması adımları gösterilmiştir. Oturum konağı yapılandırdığınızda bu yönergeleri izlemeniz gerekir. Yapılandırmaya başlamadan önce, [FSLogix indirme ve yükleme](/fslogix/install-ht)bölümündeki yönergeleri izleyin. Kayıt defteri anahtarlarının tüm oturum konaklarında ayarlandığından emin olmak için kullanılabilecek birçok seçenek vardır. Bu seçenekleri bir görüntüde ayarlayabilir veya bir grup ilkesi yapılandırabilirsiniz.
 
-Oturum Ana bilgisayar sanal makinenizde FSLogix yapılandırmak için:
+Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 1. Windows sanal masaüstü konak havuzunun oturum ana bilgisayar VM 'sine RDP.
 
 2. [FSLogix indirin ve yükleyin](/fslogix/install-ht).
 
-5. [Profil kapsayıcısı kayıt defteri ayarlarını yapılandırma](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings)bölümündeki yönergeleri izleyin:
+5. [Profil kapsayıcı kayıt defteri ayarlarını yapılandırma](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings) sayfasındaki yönergeleri izleyin:
 
     - **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix**sayfasına gidin.
 

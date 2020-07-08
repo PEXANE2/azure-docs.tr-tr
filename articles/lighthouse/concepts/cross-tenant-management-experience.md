@@ -3,12 +3,11 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
-ms.translationtype: MT
+ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920599"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -33,9 +32,9 @@ Azure Temsilcili kaynak yönetimi, farklı kiracılarda farklı hesaplarda oturu
 
 Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim araçlarını kullanarak (Azure CLı ve Azure PowerShell) yönetim görevleri gerçekleştirebilirsiniz. Tüm mevcut API 'Ler, işlevsellik çapraz Kiracı Yönetimi için desteklendiği ve Kullanıcı uygun izinlere sahip olduğu sürece, temsilcili kaynaklarla çalışırken kullanılabilir.
 
-[Get-AzSubscription cmdlet 'i](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) , her abonelik Için **tenantıd** 'yi gösterir, bu da bir döndürülen aboneliğin hizmet sağlayıcı kiracınıza veya yönetilen bir müşteri kiracısına ait olup olmadığını tanımlamanızı sağlar. Azure PowerShell
+[Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) , her abonelik Için **tenantıd** 'yi gösterir, bu da bir döndürülen aboneliğin hizmet sağlayıcı kiracınıza veya yönetilen bir müşteri kiracısına ait olup olmadığını tanımlamanızı sağlar. Azure PowerShell
 
-Benzer şekilde, [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir.
+Benzer şekilde, [az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir.
 
 > [!TIP]
 > Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .

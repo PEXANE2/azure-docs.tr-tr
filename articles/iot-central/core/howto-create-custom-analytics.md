@@ -10,10 +10,9 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660134"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
@@ -136,7 +135,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Küme modu | Standart |
 | Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python sürümü | 3 |
-| Otomatik ölçeklendirmeyi etkinleştir | No |
+| Otomatik ölçeklendirmeyi etkinleştir | Hayır |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
 | Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |

@@ -4,10 +4,9 @@ description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanm
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021101"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında

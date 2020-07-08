@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763491"
 ---
 # <a name="configure-linked-sign-on"></a>Bağlantılı oturum açmayı yapılandırma
@@ -45,7 +44,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
  
 1. Uygulamaya kullanıcılar ve gruplar atayabilirsiniz, bu da uygulamanın [Office 365 uygulama başlatıcısı](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) 'nda veya bu kullanıcılar IÇIN [Azure AD erişim panelinde](end-user-experiences.md) görünmesine neden olur.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921529"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 Kuruluşların her gün büyümeye devam eden karmaşık verilerin doğru analizi için veri hazırlama ve denetimi yapması gerekir. Kuruluşların verileri çeşitli iş süreçlerinde kullanabilmesi ve değerin süresini azaltabilmesi için veri hazırlama gereklidir.
 
@@ -25,6 +25,9 @@ Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod iç
 Wrangling veri akışı, Power Query çevrimiçi karma düzenleyici tarafından oluşturulan M 'yi bulut ölçek yürütmesi için Spark koduna çevirir.
 
 Wrangling veri akışları, özellikle veri mühendisleri veya ' vatandaşlık veri tümleştiricileri ' için faydalıdır.
+
+> [!NOTE]
+> Wrangling veri akışı şu anda genel önizlemede bir avılamaz
 
 ## <a name="use-cases"></a>Uygulama alanları
 

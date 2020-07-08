@@ -11,10 +11,9 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324409"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
@@ -28,7 +27,7 @@ Her Azure SQL veritabanı hizmet düzeyinde günlük oluşturma oranı sınırla
 
 Aşağıdaki bekleme türleri ( [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)' de), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
 
-|Bekleme türü    |Description                         |
+|Bekleme türü    |Açıklama                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Bir hiper ölçek veritabanı birincil işlem düğümü günlük oluşturma hızı, sayfa sunucusunda gecikmeli günlük kullanımı nedeniyle kısıtlanmakta olduğunda gerçekleşir.         |
 |RBIO_RG_DESTAGE        | Bir hiper ölçek veritabanı işlem düğüm günlüğü oluşturma hızı, uzun süreli günlük depolama tarafından Gecikmeli günlük tüketimine karşı kısıtlanmakta olduğunda gerçekleşir.         |
@@ -58,7 +57,7 @@ Birkaç dinamik yönetilen görünüm (DMVs) ve genişletilmiş olaylar, bir say
   - scan_stopped
   - query_store_begin_persist_runtime_stat
   - sorgu-store_execution_runtime_info
-- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örnek:
+- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örneğin:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 

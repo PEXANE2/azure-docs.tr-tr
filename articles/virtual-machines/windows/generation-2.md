@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659887"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
@@ -78,7 +77,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Öne çıkan özelliği | 1. nesil | 2. nesil |
+| Özellik | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
@@ -110,7 +109,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. **Kaynak oluştur**’u seçin.
 1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
 1. Gen2 destekleyen bir görüntü seçin.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
 1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.

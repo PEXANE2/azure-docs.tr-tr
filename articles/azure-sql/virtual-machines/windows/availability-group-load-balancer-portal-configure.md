@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c527ef9767d7b88e956bb1b3354b3067847857d9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921690"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma
 
@@ -203,8 +202,10 @@ Aşağıdaki adımları uygulayarak bağlantıyı test edin:
 1. Aynı sanal ağdaki bir SQL Server örneğine bağlanmak için Uzak Masaüstü Protokolü (RDP) kullanın, ancak çoğaltmaya sahip değildir. Bu sunucu, kümedeki diğer SQL Server örneği olabilir.
 
 2. Bağlantıyı sınamak için **sqlcmd** yardımcı programını kullanın. Örneğin, aşağıdaki komut dosyası, Windows kimlik doğrulaması ile dinleyici aracılığıyla birincil çoğaltmaya bir **sqlcmd** bağlantısı kurar:
-   
-        sqlcmd -S <listenerName> -E
+
+    ```console
+    sqlcmd -S <listenerName> -E
+    ```
 
 SQLCMD bağlantısı, birincil çoğaltmayı barındıran SQL Server örneğine otomatik olarak bağlanır. 
 
@@ -254,7 +255,7 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdaki a
     |**Arka uç bağlantı noktası** |**Bağlantı noktası**ile aynı değeri kullanın.
     |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
     |**Durum yoklaması** |Oluşturduğunuz araştırmayı seçin.
-    |**Oturum kalıcılığı** |Yok
+    |**Oturum kalıcılığı** |Hiçbiri
     |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
     |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 
@@ -303,7 +304,7 @@ Bir kullanılabilirlik grubu Dağıtılmış kullanılabilirlik grubuna katılı
    |**Arka uç bağlantı noktası** | 5022- **bağlantı noktası**ile aynı değeri kullanın.
    |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
    |**Durum yoklaması** |Oluşturduğunuz araştırmayı seçin.
-   |**Oturum kalıcılığı** |Yok
+   |**Oturum kalıcılığı** |Hiçbiri
    |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
    |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
 ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322524"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Işlevleri için Microsoft Graph bağlamaları
@@ -75,7 +74,7 @@ Kimlik doğrulama belirteci girişi bağlama, belirli bir kaynak için bir Azure
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#auth-token---example)
+* [Örnek](#auth-token---example)
 * [Öznitelikler](#auth-token---attributes)
 * [Yapılandırma](#auth-token---configuration)
 * [Kullanım](#auth-token---usage)
@@ -91,7 +90,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnekte Kullanıcı profili bilgileri alınır.
 
-*Function. JSON* dosyası bir belirteç girişi bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , belirteç girişi bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -138,7 +137,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 
 Aşağıdaki örnekte Kullanıcı profili bilgileri alınır.
 
-*Function. JSON* dosyası bir belirteç girişi bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , belirteç girişi bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -203,9 +202,9 @@ module.exports = function (context, req) {
 
 ### <a name="auth-token---configuration"></a>Kimlik doğrulama belirteci-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Token` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Token` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan bir kimlik doğrulama belirteci girişi bağlama kullanma](#token-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `token` .|
@@ -233,7 +232,7 @@ Excel tablo girişi bağlama, OneDrive 'da depolanan bir Excel tablosunun içeri
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#excel-input---example)
+* [Örnek](#excel-input---example)
 * [Öznitelikler](#excel-input---attributes)
 * [Yapılandırma](#excel-input---configuration)
 * [Kullanım](#excel-input---usage)
@@ -247,7 +246,7 @@ Dile özgü örneğe bakın:
 
 #### <a name="excel-input---c-script-example"></a>Excel girişi-C# betik örneği
 
-Aşağıdaki *function. JSON* dosyası bir Excel giriş bağlaması ile http tetikleyicisi tanımlar:
+Aşağıdaki *function.js* dosyası bir Excel giriş bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -292,7 +291,7 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 
 #### <a name="excel-input---javascript-example"></a>Excel girişi-JavaScript örneği
 
-Aşağıdaki *function. JSON* dosyası bir Excel giriş bağlaması ile http tetikleyicisi tanımlar:
+Aşağıdaki *function.js* dosyası bir Excel giriş bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -338,9 +337,9 @@ module.exports = function (context, req) {
 
 ### <a name="excel-input---configuration"></a>Excel girişi-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Required-Excel tablosu için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo girişi bağlama kullanma](#excel-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
@@ -382,7 +381,7 @@ Excel çıkış bağlaması, OneDrive 'da depolanan bir Excel tablosunun içeri�
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#excel-output---example)
+* [Örnek](#excel-output---example)
 * [Öznitelikler](#excel-output---attributes)
 * [Yapılandırma](#excel-output---configuration)
 * [Kullanım](#excel-output---usage)
@@ -398,7 +397,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, bir Excel tablosuna satır ekler.
 
-*Function. JSON* dosyası bir Excel çıkış bağlaması ile http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , bir Excel çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -452,7 +451,7 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 
 Aşağıdaki örnek, bir Excel tablosuna satır ekler.
 
-*Function. JSON* dosyası bir Excel çıkış bağlaması ile http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , bir Excel çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -500,9 +499,9 @@ module.exports = function (context, req) {
 
 ### <a name="excel-output---configuration"></a>Excel çıkışı-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo çıkış bağlamayı kullanma](#excel-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
@@ -526,7 +525,7 @@ Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 - String [] []
-- Newtonsoft. JSON. LINQ. JObject
+- Üzerinde Newtonsoft.Js. LINQ. JObject
 - Microsoft. Graph. WorkbookTable
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
@@ -541,7 +540,7 @@ OneDrive dosya girişi bağlama, OneDrive 'da depolanan bir dosyanın içeriğin
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#file-input---example)
+* [Örnek](#file-input---example)
 * [Öznitelikler](#file-input---attributes)
 * [Yapılandırma](#file-input---configuration)
 * [Kullanım](#file-input---usage)
@@ -557,7 +556,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, OneDrive 'da depolanan bir dosyayı okur.
 
-*Function. JSON* dosyası, OneDrive dosya girişi bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , OneDrive dosya girişi bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -601,7 +600,7 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 
 Aşağıdaki örnek, OneDrive 'da depolanan bir dosyayı okur.
 
-*Function. JSON* dosyası, OneDrive dosya girişi bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , OneDrive dosya girişi bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -646,9 +645,9 @@ module.exports = function (context, req) {
 
 ### <a name="file-input---configuration"></a>Dosya girişi-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya girişi bağlama kullanma](#onedrive-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `onedrive` .|
@@ -685,7 +684,7 @@ OneDrive dosyası çıkış bağlaması, OneDrive 'da depolanan bir dosyanın i�
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#file-output---example)
+* [Örnek](#file-output---example)
 * [Öznitelikler](#file-output---attributes)
 * [Yapılandırma](#file-output---configuration)
 * [Kullanım](#file-output---usage)
@@ -701,7 +700,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, OneDrive 'da depolanan bir dosyaya yazar.
 
-*Function. JSON* dosyası bir OneDrive çıkış bağlaması ile http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , OneDrive çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -729,7 +728,7 @@ Aşağıdaki örnek, OneDrive 'da depolanan bir dosyaya yazar.
 }
 ```
 
-C# betik kodu, sorgu dizesinden metin alır ve çağıranın OneDrive kökündeki bir metin dosyasına (önceki örnekte tanımlandığı şekilde FunctionsTest. txt) Yazar:
+C# betik kodu, sorgu dizesinden metin alır ve çağıranın OneDrive kökündeki bir metin dosyasına (önceki örnekte tanımlanan FunctionsTest.txt) Yazar:
 
 ```csharp
 using System.Net;
@@ -751,7 +750,7 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 
 Aşağıdaki örnek, OneDrive 'da depolanan bir dosyaya yazar.
 
-*Function. JSON* dosyası bir OneDrive çıkış bağlaması ile http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , OneDrive çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -779,7 +778,7 @@ Aşağıdaki örnek, OneDrive 'da depolanan bir dosyaya yazar.
 }
 ```
 
-JavaScript kodu, sorgu dizesinden metin alır ve çağıranın OneDrive kökündeki bir metin dosyasına (yukarıdaki yapılandırmaya göre tanımlanan FunctionsTest. txt) yazar.
+JavaScript kodu, sorgu dizesinden metin alır ve çağıranın OneDrive kökündeki metin dosyasına (yukarıdaki yapılandırma içinde tanımlanan FunctionsTest.txt) yazar.
 
 ```js
 module.exports = function (context, req) {
@@ -794,9 +793,9 @@ module.exports = function (context, req) {
 
 ### <a name="file-output---configuration"></a>Dosya çıkışı-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya çıkış bağlamayı kullanma](#onedrive-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `onedrive` .|
@@ -832,7 +831,7 @@ Outlook ileti çıkış bağlaması Outlook aracılığıyla bir posta iletisi g
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#outlook-output---example)
+* [Örnek](#outlook-output---example)
 * [Öznitelikler](#outlook-output---attributes)
 * [Yapılandırma](#outlook-output---configuration)
 * [Kullanım](#outlook-output---usage)
@@ -848,7 +847,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek Outlook aracılığıyla bir e-posta gönderir.
 
-*Function. JSON* dosyası bir Outlook ileti çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , Outlook ileti çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -903,7 +902,7 @@ public class Recipient {
 
 Aşağıdaki örnek Outlook aracılığıyla bir e-posta gönderir.
 
-*Function. JSON* dosyası bir Outlook ileti çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , Outlook ileti çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -945,9 +944,9 @@ module.exports = function (context, req) {
 
 ### <a name="outlook-output---configuration"></a>Outlook çıkışı-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Outlook` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Outlook` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `outlook` .|
@@ -967,7 +966,7 @@ Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 - Microsoft. Graph. Message
-- Newtonsoft. JSON. LINQ. JObject
+- Üzerinde Newtonsoft.Js. LINQ. JObject
 - string
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
@@ -997,7 +996,7 @@ Microsoft Graph Web kancası tetikleyicisi, bir işlevin Microsoft Graph gelen b
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#webhook-trigger---example)
+* [Örnek](#webhook-trigger---example)
 * [Öznitelikler](#webhook-trigger---attributes)
 * [Yapılandırma](#webhook-trigger---configuration)
 * [Kullanım](#webhook-trigger---usage)
@@ -1013,7 +1012,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, gelen Outlook iletileri için Web kancalarını işler. Bir Web kancası tetikleyicisi kullanmak için [bir abonelik oluşturun](#webhook-output---example)ve aboneliğin süresinin dolmasını engellemek için [aboneliğinizi yenileyebilirsiniz](#webhook-subscription-refresh) .
 
-*Function. JSON* dosyası bir Web kancası tetikleyicisi tanımlıyor:
+*function.js* dosyadaki bir Web kancası tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1052,7 +1051,7 @@ public static async Task Run(Message msg, ILogger log)
 
 Aşağıdaki örnek, gelen Outlook iletileri için Web kancalarını işler. Bir Web kancası tetikleyicisi kullanmak için [bir abonelik oluşturun](#webhook-output---example)ve aboneliğin süresinin dolmasını engellemek için [aboneliğinizi yenileyebilirsiniz](#webhook-subscription-refresh) .
 
-*Function. JSON* dosyası bir Web kancası tetikleyicisi tanımlıyor:
+*function.js* dosyadaki bir Web kancası tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1088,9 +1087,9 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---configuration"></a>Web kancası tetikleyicisi-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhook` .|
@@ -1116,7 +1115,7 @@ Microsoft Graph Web kancası giriş bağlaması, bu işlev uygulaması tarafınd
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#webhook-input---example)
+* [Örnek](#webhook-input---example)
 * [Öznitelikler](#webhook-input---attributes)
 * [Yapılandırma](#webhook-input---configuration)
 * [Kullanım](#webhook-input---usage)
@@ -1132,7 +1131,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, çağıran kullanıcı için tüm abonelikleri alır ve siler.
 
-*Function. JSON* dosyası bir abonelik girişi bağlaması ve silme eylemini kullanan bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , abonelik giriş bağlaması Ile bir http tetikleyicisi ve silme eylemini kullanan bir abonelik çıkış bağlaması tanımlar:
 
 ```json
 {
@@ -1186,7 +1185,7 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 
 Aşağıdaki örnek, çağıran kullanıcı için tüm abonelikleri alır ve siler.
 
-*Function. JSON* dosyası bir abonelik girişi bağlaması ve silme eylemini kullanan bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , abonelik giriş bağlaması Ile bir http tetikleyicisi ve silme eylemini kullanan bir abonelik çıkış bağlaması tanımlar:
 
 ```json
 {
@@ -1240,9 +1239,9 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---configuration"></a>Web kancası girişi-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|
@@ -1254,7 +1253,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladı�
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 - String []
 - Özel nesne türü dizileri
-- Newtonsoft. JSON. LINQ. JObject []
+- Üzerinde Newtonsoft.Js. LINQ. JObject []
 - Microsoft. Graph. Subscription []
 
 
@@ -1267,7 +1266,7 @@ Web kancası aboneliği çıkış bağlaması, Microsoft Graph Web kancası abon
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örneğinde](#webhook-output---example)
+* [Örnek](#webhook-output---example)
 * [Öznitelikler](#webhook-output---attributes)
 * [Yapılandırma](#webhook-output---configuration)
 * [Kullanım](#webhook-output---usage)
@@ -1283,7 +1282,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek bir abonelik oluşturur. [Aboneliği,](#webhook-subscription-refresh) süresinin dolmasını engellemek için yenileyebilirsiniz.
 
-*Function. JSON* dosyası, oluşturma eylemini kullanarak bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , oluşturma eylemini kullanarak bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1333,7 +1332,7 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 
 Aşağıdaki örnek bir abonelik oluşturur. [Aboneliği,](#webhook-subscription-refresh) süresinin dolmasını engellemek için yenileyebilirsiniz.
 
-*Function. JSON* dosyası, oluşturma eylemini kullanarak bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
+Dosyadaki *function.js* , oluşturma eylemini kullanarak bir abonelik çıkış bağlaması Ile bir http tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1381,9 +1380,9 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---configuration"></a>Web kancası çıkışı-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|
@@ -1428,7 +1427,7 @@ Dile özgü örneğe bakın:
 
 Aşağıdaki örnek, bir aboneliği yenilemek için uygulama kimliğini kullanır.
 
-*Function. JSON* , bir abonelik girişi bağlaması ve bir abonelik çıkış bağlaması ile bir Zamanlayıcı tetikleyicisi tanımlar:
+*function.js* , abonelik girişi bağlaması ve abonelik çıkış bağlaması ile bir Zamanlayıcı tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1479,7 +1478,7 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 
 Aşağıdaki örnek, bir aboneliği yenilemek için uygulama kimliğini kullanır.
 
-*Function. JSON* , bir abonelik girişi bağlaması ve bir abonelik çıkış bağlaması ile bir Zamanlayıcı tetikleyicisi tanımlar:
+*function.js* , abonelik girişi bağlaması ve abonelik çıkış bağlaması ile bir Zamanlayıcı tetikleyicisi tanımlar:
 
 ```json
 {
@@ -1529,7 +1528,7 @@ module.exports = function (context) {
 
 Aşağıdaki örnek, bir aboneliği yenilemek için Kullanıcı kimliğini kullanır.
 
-*Function. JSON* dosyası bir Zamanlayıcı tetikleyicisi tanımlar ve işlev koduna abonelik girişi bağlamasını erteler:
+Dosyadaki *function.js* bir Zamanlayıcı tetikleyicisi tanımlar ve işlev koduna abonelik girişi bağlamasını erteler:
 
 ```json
 {

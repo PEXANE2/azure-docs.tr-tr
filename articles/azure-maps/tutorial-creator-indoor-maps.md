@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93827e4d5f6bcf66191ae78c18adac71b5dd0a22
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255186"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027865"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -109,6 +108,8 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+    >[!IMPORTANT]
+    > Bu belgedeki API URL 'lerinin, Oluşturucu kaynağınızın konumuna göre ayarlanması gerekebilir. Daha fazla ayrıntı için bkz. [creator hizmetlerine erişim](how-to-manage-creator.md#access-to-creator-services).
 
 3. **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin ve **konum** anahtarını bulun. Dönüştürme isteği için olan **konum** anahtarının değerini kopyalayın `status URL` .
 

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684715"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
@@ -52,7 +51,7 @@ Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıd
 
 1. **Başlarken**' e tıklayın.
 
-1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydol**' a tıklayın.
+1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet**’e tıklayın.
 
 Bu noktada, uygulamanız uygulama izleme için ayarlanır. Bu, tüm sayfa yüklemelerinin varsayılan ölçümlerle izlendiği anlamına gelir. Önceki adımlar hakkında daha fazla bilgi için bkz. [sunucu tarafı telemetrisini Application Insights etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -70,7 +69,7 @@ Sunucu tarafı telemetrisi, uygulama katmanında ölçümleri, örneğin bulutta
 
 **C# kullanma**
 
-C# için, Eğer projeniz ASP.NET ise, (appSettings. JSON gibi) uygulama yapılandırmanızda **ınstrumentationkey** bulunur. Anahtar konumundan emin değilseniz kayıt yönergelerine geri bakın.
+C# için, ASP.NET ise, uygulama yapılandırmanızda **ınstrumentationkey** bulunur (örneğin, projeniz için appsettings.js). Anahtar konumundan emin değilseniz kayıt yönergelerine geri bakın.
 
 ```csharp
 private static TelemetryClient _telemetryClient;

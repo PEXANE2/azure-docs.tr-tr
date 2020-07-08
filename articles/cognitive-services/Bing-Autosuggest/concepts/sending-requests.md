@@ -10,12 +10,11 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921146"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>İstekleri Bing Otomatik Öneri API'si gönderiliyor.
 
@@ -25,9 +24,9 @@ Uygulamanız Bing Arama API'leri herhangi birine sorgu gönderiyorsa, kullanıc�
 
 **Bing otomatik öneri API'si** , kısmi bir arama teriminden önerilen sorguların listesini döndüren bir uç nokta içerir.
 
-Bing API 'yi kullanarak önerilen sorguları almak için aşağıdaki uç noktaya `GET` bir istek gönderin. Daha fazla belirtim tanımlamak için üstbilgiler ve URL parametreleri kullanın.
+Bing API 'yi kullanarak önerilen sorguları almak için `GET` aşağıdaki uç noktaya bir istek gönderin. Daha fazla belirtim tanımlamak için üstbilgiler ve URL parametreleri kullanın.
 
-**Uç nokta:** Arama önerilerini kullanıcının tarafından `?q=""`tanımlanan GIRIŞLE ilgili JSON sonuçları olarak döndürür.
+**Uç nokta:** Arama önerilerini kullanıcının tarafından tanımlanan girişle ilgili JSON sonuçları olarak döndürür `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -64,19 +63,25 @@ Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üstbilgiler](http
 > [!NOTE]
 > JavaScript 'ten Bing Otomatik Öneri API'si çağırdığınızda, tarayıcınızın yerleşik güvenlik özellikleri bu üstbilgilerin değerlerine erişmenizi engelleyebilir.
 
-Bu sorunu çözmek için, bir CORS proxy üzerinden Bing Otomatik Öneri API'si isteği yapabilirsiniz. Bu tür bir ara sunucudan yanıt, yanıt `Access-Control-Expose-Headers` üstbilgilerini beyaz listeleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
+Bu sorunu çözmek için, bir CORS proxy üzerinden Bing Otomatik Öneri API'si isteği yapabilirsiniz. Bu tür bir ara sunucudan yanıt, `Access-Control-Expose-Headers` yanıt üstbilgilerini beyaz listeleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
 
 [Öğretici uygulamamız](../tutorials/autosuggest.md) , isteğe bağlı istemci üst bilgilerine erişmesine izin vermek IÇIN bir CORS proxy yüklemek kolaydır. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Sonra bir komut isteminde aşağıdaki komutu girin.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Sonra, HTML dosyasındaki Bing Otomatik Öneri API'si uç noktasını şu şekilde değiştirin:
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```http
+http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```
 
 Son olarak, aşağıdaki komutla CORS ara sunucusunu başlatın:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Öğretici uygulamasını kullanırken komut penceresini açık bırakın; pencere kapatılırsa ara sunucu durdurulur. Arama sonuçlarının altındaki genişletilebilir HTTP Üst Bilgileri bölümünde artık `X-MSEdge-ClientID` üst bilgisini (diğerleriyle birlikte) görebilir ve bunun her istekte aynı olduğunu doğrulayabilirsiniz.
 
@@ -95,11 +100,11 @@ Aşağıdaki örnekte, *sail* için önerilen sorgu dizelerini döndüren bir is
 
 Bing API'lerinden birini ilk kez çağırıyorsanız istemci kimliği üst bilgisini eklemeyin. İstemci kimliği üst bilgisini yalnızca önceden bir Bing API'sini çağırdıysanız ve Bing, kullanıcı ve cihaz birleşimi için bir istemci kimliği döndürdüyse dahil edin.
 
-Aşağıdaki Web önerisi grubu, yukarıdaki isteğin bir yanıtı. Grup `displayText`, her öneri, `query`ve `url` alanı dahil olmak üzere arama sorgu önerilerinin bir listesini içerir.
+Aşağıdaki Web önerisi grubu, yukarıdaki isteğin bir yanıtı. Grup, her öneri `displayText` , ve alanı dahil olmak üzere arama sorgu önerilerinin bir listesini içerir `query` `url` .
 
 `displayText` alanı, arama kutunuzun açılır listesini doldurmak için kullandığınız önerilen sorguyu içerir. Yanıtın içerdiği tüm önerileri, verilen sırada görüntülemeniz gerekir.  
 
-Kullanıcı aşağı açılan listeden bir sorgu seçerse, [Bing Arama API'leri](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) birini çağırmak ve sonuçları kendiniz göstermek veya döndürülen `url` alanı kullanarak kullanıcıyı Bing sonuçları sayfasına göndermek için kullanabilirsiniz.
+Kullanıcı aşağı açılan listeden bir sorgu seçerse, [Bing Arama API'leri](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) birini çağırmak ve sonuçları kendiniz göstermek veya döndürülen alanı kullanarak kullanıcıyı Bing sonuçları sayfasına göndermek için kullanabilirsiniz `url` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

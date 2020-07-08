@@ -4,12 +4,11 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124996"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027174"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -182,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 
 RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID disk adı yerine birim adını kullanın.
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 ### <a name="for-windows-os"></a>Windows işletim sistemi için
 
@@ -247,9 +246,9 @@ Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasın
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
 
-Bu bölümde, 16 ' dan fazla diske sahip Azure sanal makinelerinin yedeklemelerinden dosya kurtarmanın nasıl yapılacağı ve her disk boyutunun 32 TB 'den büyük olması açıklanmaktadır.
+Bu bölümde, 16 ' dan fazla diske sahip Azure sanal makinelerinin yedeklemelerinden dosya kurtarmanın nasıl gerçekleştirileceği veya her disk boyutunun 4 TB 'den büyük olması açıklanmaktadır.
 
-Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (>16) veya büyük diskler (> 32 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
+Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (>16) veya büyük diskler (her biri > 4 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
 
 - Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bunu yalnızca dosya kurtarma için kullanabilir ve gerekli olmadığında kapatabilirsiniz. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
 - Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.

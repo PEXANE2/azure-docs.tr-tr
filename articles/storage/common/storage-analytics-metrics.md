@@ -10,10 +10,9 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83675909"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Depolama Analizi ölçümleri (klasik)
@@ -74,7 +73,7 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
 1. **Durumun** **Açık**olarak ayarlandığından emin olun.
 1. İzlemek istediğiniz hizmetler için ölçümleri seçin.
 1. Ölçüm ve günlük verilerinin ne kadar süreyle saklanacağını göstermek için bir bekletme ilkesi belirtin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 [Azure Portal](https://portal.azure.com) Şu anda depolama hesabınızda dakika ölçümlerini yapılandırmanıza izin vermez. PowerShell veya program aracılığıyla dakika ölçümlerini etkinleştirmeniz gerekir.
 
@@ -148,7 +147,7 @@ Daha uzun vadeli depolama için ölçümleri indirmek veya yerel olarak analiz e
 
 ||||  
 |-|-|-|  
-|**Metrics** (Ölçümler)|**Tablo adları**|**Notlar**|  
+|**Ölçümler**|**Tablo adları**|**Notlar**|  
 |Saatlik ölçümler|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|15 Ağustos 2013 ' den önceki sürümlerde bu tablolar şu şekilde bilinmektedir:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Dosya hizmeti ölçümleri 5 Nisan 2015 sürümünden itibaren kullanılabilir.|  
 |Dakikalık ölçümler|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Yalnızca PowerShell veya programlı programlama kullanılarak etkinleştirilebilir.<br /><br /> Dosya hizmeti ölçümleri 5 Nisan 2015 sürümünden itibaren kullanılabilir.|  
 |Kapasite|$MetricsCapacityBlob|Yalnızca blob hizmeti.|  
