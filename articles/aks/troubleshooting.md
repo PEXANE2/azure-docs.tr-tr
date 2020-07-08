@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125438"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054398"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -31,11 +31,34 @@ Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla dü�
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
 
-Azure CNı Network eklentisini kullanırken AKS, düğüm başına "--Max-pods" temelinde IP adreslerini ayırır. Alt ağ boyutu, düğüm başına en fazla düğüm sayısı ayarı kadar düğüm sayısından büyük olmalıdır. Aşağıdaki denklem bunu özetler:
+Bu hata, bir küme için kullanımda olan bir alt ağın, başarılı bir kaynak ataması için CıDR içindeki IP 'Leri artık kullanmadığını gösterir. Kubenet kümeleri için, gereksinim kümedeki her düğüm için yeterli bir IP alanıdır. Azure CNı kümeleri için, gereksinim her düğüm ve kümedeki pod için yeterli IP alanı olur.
+[Azure CNI tasarımı](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)hakkında daha fazla bilgi edinmek için IP 'lere IP atama.
 
-Alt ağ boyutu > kümedeki düğümlerin sayısı (gelecekteki ölçekleme gereksinimlerinin dikkate alınması) * düğüm başına en fazla düğüm kümesi.
+Bu hatalar, yetersiz alt ağ boyutu gibi sorunları proaktif olarak sunan [aks tanılamasında](https://docs.microsoft.com/azure/aks/concepts-diagnostics) de ortaya çıkmış olur.
 
-Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
+Aşağıdaki üç (3) durum, yetersiz alt ağ boyutu hatasına neden olur:
+
+1. AKS ölçeği veya AKS Nodepool ölçeği
+   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of new nodes requested` .
+   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of nodes requested times (*) the node pool's --max-pod value` .
+
+1. AKS Upgrade veya AKS Nodepool yükseltmesi
+   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade` .
+   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+   
+   Varsayılan olarak AKS kümeleri, bir (1) bir en fazla dalgalanma (yükseltme arabelleği) değeri ayarladı, ancak bu yükseltme davranışı bir [düğüm havuzunun en fazla dalgalanma değeri](upgrade-cluster.md#customize-node-surge-upgrade-preview) ayarlanarak özelleştirilebilir ve bu da bir yükseltmeyi tamamlaması gereken IP sayısını artırır.
+
+1. AKS Nodepool Add veya AKS oluştur
+   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of nodes requested for the node pool` .
+   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of nodes requested times (*) the node pool's --max-pod value` .
+
+Yeni alt ağlar oluşturularak aşağıdaki hafifletme uygulanabilir. Var olan bir alt ağın CıDR aralığını güncelleştirememesi nedeniyle, risk azaltma için yeni bir alt ağ oluşturma izni gerekir.
+
+1. İşlem hedefleri için yeterince daha büyük bir CıDR aralığıyla yeni bir alt ağ oluşturun:
+   1. Yeni bir istenen çakışmayan aralığa sahip yeni bir alt ağ oluşturun.
+   1. Yeni alt ağda yeni bir nodepool oluşturun.
+   1. Eskisinin değiştirilmesini sağlamak için eski alt ağda bulunan eski nodepool boşallar.
+   1. Eski alt ağı ve eski nodepool silin.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmalıyım?
 
@@ -126,6 +149,7 @@ Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulan�
 * AKS düğümü/*Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
 * *Dnspredüzeltmesini* alfasayısal değerlerle başlamalı ve bitmeli ve 1-54 karakter arasında olmalıdır. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 * AKS düğüm havuzu adları küçük harfle yazılmalıdır ve Linux düğüm havuzları için 1-11 karakter ve Windows düğüm havuzları için 1-6 karakter olmalıdır. Ad bir harf ile başlamalı ve yalnızca harf ve rakam olmak üzere yalnızca izin verilen karakterler olmalıdır.
+* Linux düğümleri için yönetici kullanıcı adını ayarlayan *Yönetici-Kullanıcı adı*, bir harfle başlamalıdır, yalnızca harf, sayı, kısa çizgi ve alt çizgi içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
 
@@ -193,7 +217,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | Yok |
+| 1,12 ve üzeri | YOK |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -250,7 +274,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -269,7 +293,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -378,7 +402,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | Yok |
+| 1,14 ve üzeri | YOK |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 

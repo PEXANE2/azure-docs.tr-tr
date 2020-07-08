@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76715678"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054534"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Bildirimleri olan Azure yönetilen uygulamalar
 
@@ -20,7 +20,7 @@ Azure yönetilen uygulama bildirimleri, yayımcıların yönetilen uygulama örn
 Yönetilen uygulamaları almaya başlamak için genel bir HTTPS uç noktası başlatın ve hizmet kataloğu uygulama tanımı veya Azure Market Teklifini yayımladığınızda bunu belirtin.
 
 Hızlıca kullanmaya başlamak için önerilen adımlar aşağıda verilmiştir:
-1. Gelen POST isteklerini günlüğe kaydeden ve döndüren `200 OK`BIR genel HTTPS uç noktası çalıştırın.
+1. Gelen POST isteklerini günlüğe kaydeden ve döndüren bir genel HTTPS uç noktası çalıştırın `200 OK` .
 2. Bu makalenin ilerleyen kısımlarında açıklandığı gibi, uç noktayı Service Catalog uygulama tanımına veya Azure Marketi teklifine ekleyin.
 3. Uygulama tanımına veya Azure Market teklifine başvuran bir yönetilen uygulama örneği oluşturun.
 4. Bildirimlerin alındığını doğrulayın.
@@ -36,7 +36,7 @@ Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](
 #### <a name="rest-api"></a>REST API
 
 > [!NOTE]
-> Şu anda, uygulama tanımı özelliklerinde yalnızca bir uç nokta `notificationEndpoints` sağlayabilirsiniz.
+> Şu anda, uygulama tanımı özelliklerinde yalnızca bir uç nokta sağlayabilirsiniz `notificationEndpoints` .
 
 ``` JSON
     {
@@ -61,7 +61,7 @@ Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketi yönetilen uygulama bildirimleri ekleme
-Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
+Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
 ![Azure portal Azure Marketi yönetilen uygulama bildirimleri](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Olay tetikleyicileri
@@ -69,12 +69,12 @@ Aşağıdaki tabloda, EventType ve ProvisioningState 'in tüm olası birleşimle
 
 Olay türü | ProvisioningState | Bildirim için Tetikle
 ---|---|---
-PUT | Accepted | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
+PUT | Kabul edildi | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
 PUT | Başarılı oldu | Yönetilen uygulamanın tam olarak sağlanması, bir KONDUKTAN sonra başarılı oldu.
 PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlamayı YERLEŞTIRME hatası.
 DÜZELTMESI | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
-DELETE | Silinmesinden | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
-DELETE | Silme | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
+DELETE | Siliniyor | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
+DELETE | Silindi | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
 DELETE | Başarısız | Silme işlemini engelleyen kaldırma işlemi sırasında herhangi bir hatadan sonra.
 ## <a name="notification-schema"></a>Bildirim şeması
 Bildirimleri işlemek için Web kancası uç noktanızı başlattığınızda, daha sonra bildirim üzerine işlem yapmak için önemli özellikleri almak üzere yükü ayrıştırmalıdır. Hizmet kataloğu ve Azure Marketi yönetilen uygulama bildirimleri, aynı özelliklerin çoğunu sağlar. İki küçük fark, örnekleri takip eden tabloda özetlenmiştir.
@@ -189,9 +189,9 @@ billingDetails | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar iç
 
 ## <a name="endpoint-authentication"></a>Uç nokta kimlik doğrulaması
 Web kancası uç noktasını güvenli hale getirmek ve bildirimin orijinalliğini sağlamak için:
-1. Web kancası URI 'sinin üstünde şu şekilde bir sorgu parametresi sağlayın: https\://Your-Endpoint.com? SIG = GUID. Her bildirimle, sorgu parametresinin `sig` beklenen değere `Guid`sahip olup olmadığını denetleyin.
+1. Web kancası URI 'sinin üstünde şu şekilde bir sorgu parametresi sağlayın: https \: //Your-Endpoint.com? SIG = GUID. Her bildirimle, sorgu parametresinin `sig` beklenen değere sahip olup olmadığını denetleyin `Guid` .
 2. ApplicationId kullanarak yönetilen uygulama örneğinde bir GET verme. Tutarlılık sağlamak için provisioningState 'in bildirimin provisioningState ile eşleştiğini doğrulayın.
 
 ## <a name="notification-retries"></a>Bildirim yeniden denemeleri
 
-Yönetilen uygulama bildirim hizmeti, Web kancası `200 OK` uç noktasından bildirime yanıt bekliyor. Web kancası uç 500 noktası, 429 hata kodu döndürürse veya uç nokta geçici olarak ulaşılamaz durumdaysa, bildirim hizmeti yeniden dener. Web kancası uç noktası 10 saat içinde kullanılabilir olmaz, bildirim iletisi bırakılır ve yeniden denemeler durdurulur.
+Yönetilen uygulama bildirim hizmeti, `200 OK` Web kancası uç noktasından bildirime yanıt bekliyor. Web kancası uç 500 noktası, 429 hata kodu döndürürse veya uç nokta geçici olarak ulaşılamaz durumdaysa, bildirim hizmeti yeniden dener. Web kancası uç noktası 10 saat içinde kullanılabilir olmaz, bildirim iletisi bırakılır ve yeniden denemeler durdurulur.

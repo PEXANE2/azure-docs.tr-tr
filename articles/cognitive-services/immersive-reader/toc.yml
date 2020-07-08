@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
+    - name: Tam Ekran Okuyucu’yu Başlatma (Android)
+      href: tutorial-android.md
+    - name: Tam Ekran Okuyucu’yu Başlatma (iOS)
+      href: tutorial-ios.md
     - name: Tam Ekran Okuyucu’yu Başlatma (Python)
       href: tutorial-python.md
     - name: Birden çok Tam Ekran Okuyucu kaynağı kullanma

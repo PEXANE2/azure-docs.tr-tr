@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines-windows
 author: rothja
 manager: craigg
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c7d312910c6d38c54b291da34bfb827246c7dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79504325"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050440"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV tümleştirmesi için hazırlanma
 SQL Server VM yapılandırmak üzere Azure Key Vault tümleştirmesini kullanmak için birkaç önkoşul vardır: 
@@ -56,9 +56,11 @@ Sonra, bir uygulamayı AAD ile kaydedin. Bu size, sanal makinenizin ihtiyaç duy
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Anahtar Kasası oluşturma
 SANAL makinenizde şifreleme için kullanacağınız anahtarları depolamak üzere Azure Key Vault kullanmak için bir anahtar kasasına erişmeniz gerekir. Anahtar kasanızı henüz yüklemediyseniz [Azure Key Vault kullanmaya](../articles/key-vault/key-vault-overview.md) başlama makalesindeki adımları izleyerek bir tane oluşturun. Bu adımları tamamlamadan önce, bu ayarlama sırasında, daha sonra SQL VM 'niz üzerinde Azure Key Vault tümleştirmesinin etkinleştirilmesi için gereken bazı bilgiler vardır.
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```
 
-Anahtar Kasası oluşturma adımını aldığınızda, Anahtar Kasası URL 'SI olan döndürülen **Vaulturi** özelliğini aklınızda bulabilirsiniz. Bu adımda verilen örnekte, aşağıda gösterildiği gibi, Anahtar Kasası adı Contosokeykasadır, bu nedenle Anahtar Kasası URL 'SI olur https://contosokeyvault.vault.azure.net/.
+Anahtar Kasası oluşturma adımını aldığınızda, Anahtar Kasası URL 'SI olan döndürülen **Vaulturi** özelliğini aklınızda bulabilirsiniz. Bu adımda verilen örnekte, aşağıda gösterildiği gibi, Anahtar Kasası adı Contosokeykasadır, bu nedenle Anahtar Kasası URL 'SI olur https://contosokeyvault.vault.azure.net/ .
 
 Anahtar Kasası URL 'SI daha sonra Azure Key Vault tümleştirmesini etkinleştirmek için PowerShell betiğindeki **$akvURL** parametresine atanır.
 

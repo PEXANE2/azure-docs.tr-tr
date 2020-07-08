@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f6bd574c83d309ce6d6f54fdb1c7d23cb713420d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 196dfdc045fd60e4a253857087177f478f50ea24
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73182297"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050498"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Bir sanal makineyi şablonlar aracılığıyla etiketleme
 İlk olarak, şablonlar aracılığıyla etiketleme konusuna bakalım. [Bu şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) şu kaynaklara Etiketler koyar: Işlem (sanal makine), depolama (depolama hesabı) ve ağ (genel IP adresi, sanal ağ ve ağ arabirimi). Bu şablon bir Windows sanal makinesi içindir, ancak Linux VM 'Ler için uyarlanmıştır.
@@ -24,10 +24,12 @@ Bu şablon şu etiketleri içerir: *Departman*, *uygulama*ve *tarafından oluşt
 
 Görebileceğiniz gibi, Etiketler bir iki nokta (:) ile ayrılmış olarak anahtar/değer çiftleri olarak tanımlanır. Etiketlerin bu biçimde tanımlanması gerekir:
 
-        "tags": {
-            "Key1" : "Value1",
-            "Key2" : "Value2"
-        }
+```config
+"tags": {
+    "Key1" : "Value1",
+    "Key2" : "Value2"
+}
+```
 
 Şablon dosyasını, istediğiniz etiketlerle düzenledikten sonra kaydedin.
 

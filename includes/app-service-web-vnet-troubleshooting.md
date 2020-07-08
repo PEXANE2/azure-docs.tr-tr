@@ -4,25 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419533"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050316"
 ---
-Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar** > **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar** > **konsolu**' na gidin.
+Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu**' na gidin.
 
 #### <a name="tools"></a>Araçlar
-**Ping**, **nslookup**ve **tracert** araçları, güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için, **nameresolver. exe**adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
+**Ping**, **nslookup**ve **tracert** araçları, güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe**adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
 
-    nameresolver.exe hostname [optional: DNS Server]
+```console
+nameresolver.exe hostname [optional: DNS Server]
+```
 
 Uygulamanızın bağımlı olduğu ana bilgisayar adlarını denetlemek için nameresolver kullanabilirsiniz. Bu şekilde, DNS 'niz ile yapılandırılmış herhangi bir şey varsa veya belki DNS sunucunuza erişiminiz yoksa test edebilirsiniz. WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ortam değişkenlerine bakarak uygulamanızın konsolunda kullandığı DNS sunucusunu görebilirsiniz.
 
 Bir konak ve bağlantı noktası birleşimine TCP bağlantısını test etmek için bir sonraki aracı kullanabilirsiniz. Bu araca, **tcma** adı verilir ve sözdizimi şöyledir:
 
-    tcpping.exe hostname [optional: port]
+```console
+tcpping.exe hostname [optional: port]
+```
 
 **Tcter** yardımcı programı, belirli bir konağa ve bağlantı noktasına ulaşabilseniz size bildirir. Yalnızca konak ve bağlantı noktası birleşimini dinleyen bir uygulama varsa ve uygulamanızdan belirtilen konağa ve bağlantı noktasına ağ erişimi varsa, bu başarılı olabilir.
 
@@ -62,7 +66,9 @@ Ek hata ayıklama adımları şunlardır:
 
 * Sanal ağınızdaki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Söz dizimi aşağıdaki gibidir:
 
-      test-netconnection hostname [optional: -Port]
+```powershell
+test-netconnection hostname [optional: -Port]
+```
 
 * Bir VM üzerinde bir uygulama açın ve **tcup**kullanarak konsolundan konsoldan bu konağa ve bağlantı noktasına erişimi test edin.
 

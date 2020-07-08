@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: Bölümleme ve yatay ölçeklendirme
           href: partition-data.md
-        - name: Yapay bölüm anahtarı oluşturma
+        - name: Yapay bölüm anahtarı
           href: synthetic-partition-keys.md
     - name: Sağlanan aktarım hızı
       items:

@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/26/2020
-ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 7/6/2020
+ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506710"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045969"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Sunucusuz, tek bir Azure SQL veritabanı için, bir saniyede kullanılan işlem miktarına göre işlem yükünü otomatik olarak ölçeklendiren bir işlem katmandır. Sunucusuz bilgi işlem katmanı Ayrıca, yalnızca depolama faturalandırılırken etkin olmayan dönemler sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür.
+Sunucusuz, Azure SQL veritabanı 'nda, bir saniyede kullanılan işlem miktarı için iş yükü talebi ve reçeteleri temel alınarak işlem yaparak otomatik olarak ölçeklendirilen tek veritabanlarına yönelik bir işlem katmandır. Sunucusuz bilgi işlem katmanı Ayrıca, yalnızca depolama faturalandırılırken etkin olmayan dönemler sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür.
 
 ## <a name="serverless-compute-tier"></a>Sunucusuz işlem katmanı
 
@@ -88,9 +88,9 @@ Sunucusuz veritabanları için bellek, sağlanan işlem veritabanlarından daha 
 
 #### <a name="cache-reclamation"></a>Önbellek geri kazanma
 
-Sağlanan işlem veritabanlarının aksine, CPU veya önbellek kullanımı düşük olduğunda SQL önbelleğinden alınan bellek sunucusuz bir veritabanından geri kazanılır.
+Sağlanan işlem veritabanlarının aksine, CPU veya etkin önbellek kullanımı düşük olduğunda SQL önbelleğinden alınan bellek sunucusuz bir veritabanından geri kazanılır.  CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım düzenine bağlı olarak yüksek kalabileceğini ve bellek geri kazanma engel olabileceğini unutmayın.
 
-- En son kullanılan önbellek girişlerinin toplam boyutu bir süre eşiğinin altına düştüğünde önbellek kullanımı düşük kabul edilir.
+- En son kullanılan önbellek girişlerinin toplam boyutu bir süre eşiğinin altına düştüğünde etkin önbellek kullanımı düşük kabul edilir.
 - Cache geri kazanma tetiklendiğinde, hedef önbellek boyutu artımlı olarak önceki boyutunun bir kesirine düşürülür ve geri kazanma yalnızca kullanım düşük kalırsa devam eder.
 - Cache geri kazanma gerçekleştiğinde, çıkarmak için önbellek girdileri seçme ilkesi, bellek baskısı yüksek olduğunda sağlanan işlem veritabanları için aynı seçim ilkesidir.
 - Önbellek boyutu, yapılandırılabilecek minimum sanal çekirdekler tarafından tanımlanan en düşük bellek sınırının altına hiç düşürülmez.
@@ -112,7 +112,7 @@ Aşağıdaki koşulların tümü, oto duraklatma gecikmesi süresince doğru olu
 
 İstenirse, oto duraklamayı devre dışı bırakmak için bir seçenek sağlanır.
 
-Aşağıdaki özellikler, oto duraklamayı desteklemez.  Diğer bir deyişle, aşağıdaki özelliklerden herhangi biri kullanılırsa veritabanı, etkinlik dışı kalma süresi ne olursa olsun çevrimiçi kalır:
+Aşağıdaki özellikler otomatik duraklamayı desteklemez, ancak otomatik ölçeklendirmeyi destekler.  Diğer bir deyişle, aşağıdaki özelliklerden herhangi biri kullanılırsa veritabanı, etkinlik dışı kalma süresi ne olursa olsun çevrimiçi kalır:
 
 - Coğrafi çoğaltma (etkin coğrafi çoğaltma ve otomatik yük devretme grupları).
 - Uzun süreli yedek saklama (LTR).
@@ -127,7 +127,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulama ve yetkilendirme|Oturum aç|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -145,7 +145,7 @@ Yukarıda listelenen işlemlerden herhangi birini gerçekleştirerek izleme, yö
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
-### <a name="connectivity"></a>Bağlanabilirlik
+### <a name="connectivity"></a>Bağlantı
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
