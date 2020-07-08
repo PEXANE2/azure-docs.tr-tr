@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921593"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure’da Cloud Services dağıtımı sırasında oluşan ayırma hatalarını giderme
 ## <a name="summary"></a>Özet
@@ -41,7 +41,7 @@ Bir ayırma isteği bir kümeye sabitlendiğinde, kullanılabilir kaynak havuzu 
 ### <a name="error-message"></a>Hata İletisi
 Aşağıdaki hata iletisini görebilirsiniz:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> "' {Operation ID} ' adlı Azure işlemi, kod Işlem. ConstrainedAllocationFailed ile başarısız oldu. Ayrıntılar: ayırma başarısız oldu; istekteki kısıtlamalar karşılayamadı. İstenen yeni hizmet dağıtımı bir Benzeşim Grubuna bağlı veya bir Sanal Ağı hedefliyor ya da bu barındırılan hizmetin altında mevcut bir dağıtım var. Bu koşullardan herhangi biri, yeni dağıtımı belirli Azure kaynaklarına kısıtlar. Lütfen daha sonra yeniden deneyin veya sanal makine boyutunu ya da rol örneği sayısını azaltmayı deneyin. Alternatif olarak, mümkünse, belirtilen kısıtlamaları kaldırın veya farklı bir bölgeye dağıtımı deneyin. "
 
 ### <a name="common-issues"></a>Genel Sorunlar
 Bir ayırma isteğinin tek bir kümeye sabitlenememesine neden olan ortak ayırma senaryoları aşağıda verilmiştir.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 940c6d6d96c5c1aa062397d21ea96dace2c09bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee384d6095ccbf25225a435fe8afe4281c5d62df
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921495"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure SYNAPSE Studio 'da SQL betiği kullanma (Önizleme)
 
@@ -23,69 +23,66 @@ Azure SYNAPSE Studio (Önizleme), SQL sorgularını yazmak için bir SQL komut d
 
 SQL komut dosyasında yazma deneyimini başlatmak için birkaç yol vardır. Aşağıdaki yöntemlerden birini kullanarak yeni bir SQL betiği oluşturabilirsiniz.
 
-1. "+" Simgesini seçin ve SQL betiği ' ni seçin.
+1. Geliştir menüsünde, **"+"** simgesini seçin ve **SQL betiği**' ni seçin.
 
-    > [!div class="mx-imgBorder"] 
-    >![newsqlscript](./media/author-sql-script/newsqlscript.png)
+    ![newsqlscript](media/author-sql-script/newsqlscript.png)
 
-2. SQL betikleri geliştirme altındaki Eylemler menüsünde, SQL betikleri geliştirme altında "eylemler" menüsünden "yeni SQL betiği" seçeneğini belirleyin. 
+2. **Eylemler** menüsünden **Yeni SQL betiği**' ni seçin.
+    
+    ![newsqlscript2actions](media/author-sql-script/newsqlscript2actions.png)
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscript2actions.png)
+Alternatif olarak şunları yapabilirsiniz: 
 
-or 
-
-3. SQL betikleri geliştirme altında "eylemler" menüsünden "Içeri aktar" seçeneğini belirleyin ve yerel depoınızdan mevcut bir SQL betiğini seçin.
-
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscript3actions.png)
+3. SQL betikleri geliştirme altındaki **Eylemler** menüsünden **içeri aktar** ' ı seçin ve yerel DEPOıNıZDAN mevcut bir SQL betiğini seçin.
+ 
+    ![newsqlscript3actions](media/author-sql-script/newsqlscript3actions.png)
 
 ## <a name="create-your-sql-script"></a>SQL komut dosyanızı oluşturma
 
-1. "Özellik" düğmesini seçerek ve SQL betiğine atanan varsayılan adı değiştirerek SQL komutlarınız için bir ad seçin.
+1. **Özellik** düğmesini seçerek ve SQL betiğine atanan varsayılan adı değiştirerek SQL komutlarınız için bir ad seçin.
+  
+    ![newsqlscriptrename](media/author-sql-script/newsqlscriptrename.png)
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscriptrename.png)
+2. **Bağlan** açılan menüsünde belirli SQL havuzunu veya Isteğe bağlı SQL ' i seçin. Ya da gerekirse veritabanını **kullan**' ı seçin.
+ 
+    ![newsqlchoosepool](media/author-sql-script/newsqlchoosepool.png)
 
-1. Belirli SQL havuzunu veya "Bağlan" açılan menüsünden SQL isteğe bağlı ' yı seçin. Ya da gerekirse "veritabanını kullan" ' dan veritabanını seçin.
+3. IntelliSense özelliğini kullanarak SQL komut dosyanızı yazmaya başlayın.
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlchoosepool.png)
-
-1. IntelliSense özelliğini kullanarak SQL komut dosyanızı yazmaya başlayın.
-
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlintellisense.png)
+    ![newsqlintellisense](media/author-sql-script/newsqlintellisense.png)
 
 ## <a name="run-your-sql-script"></a>SQL komut dosyanızı çalıştırın
 
-SQL betiğinizi yürütmek için "Çalıştır" düğmesini seçin. Sonuçlar bir tabloda varsayılan olarak görüntülenir.
+SQL betiğinizi yürütmek için **Çalıştır** düğmesini seçin. Sonuçlar bir tabloda varsayılan olarak görüntülenir.
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newsqlscriptresultstable.png)
+![newsqlscriptresultstable](media/author-sql-script/newsqlscriptresultstable.png)
 
 ## <a name="export-your-results"></a>Sonuçlarınızı dışarı aktarın
 
 "Sonuçları dışarı aktar" seçeneğini belirleyerek ve uzantıyı seçerek, sonuçları yerel depolama verilerinize farklı biçimlerde (CSV, Excel, JSON, XML dahil) aktarabilirsiniz.
 
-Ayrıca, "grafik" düğmesini seçerek SQL betiği sonuçlarını bir grafik ile görselleştirebilirsiniz. "Grafik türü" ve "Kategori sütunu" nı seçin. "Görüntü olarak Kaydet" i seçerek grafiği bir resme dışarı aktarabilirsiniz. 
+Ayrıca, **grafik** düğmesini seçerek BIR grafikteki SQL betiği sonuçlarını görselleştirebilirsiniz. "Grafik türü" ve **Kategori sütununu**seçin. Resim **olarak kaydet**' i seçerek grafiği bir resme dışarı aktarabilirsiniz. 
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newsqlscriptresultschart.png)
+![newsqlscriptresultschart](media/author-sql-script/newsqlscriptresultschart.png)
 
-## <a name="explore-data-from-a-parquet-file"></a>Bir Parquet dosyasından verileri araştırma.
+## <a name="explore-data-from-a-parquet-file"></a>Bir Parquet dosyasından verileri araştırma
 
-Dosya içeriğini önizlemek için SQL betiği kullanarak bir depolama hesabındaki Parquet dosyalarını inceleyebilirsiniz. 
+Dosya içeriğini önizlemek için SQL betiği kullanarak bir depolama hesabındaki Parquet dosyalarını inceleyebilirsiniz.
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newscriptsqlodparquet.png)
+![newscriptsqlodparquet](media/author-sql-script/newscriptsqlodparquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL tabloları, dış tablolar, görünümler
 
-Veriler altındaki "eylemler" menüsünü seçerek, "yeni SQL betiği", "en üstteki 1000 satırları Seç", "Oluştur", "bırak ve oluştur" gibi çeşitli eylemleri seçebilirsiniz. SQL havuzunun düğümlerine ve isteğe bağlı SQL 'e sağ tıklayıp kullanılabilir hareketi araştırın.
+Veriler ' in altındaki **Eylemler** menüsünü seçerek, şöyle çeşitli eylemler seçebilirsiniz:
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newscriptdatabase.png)
+- Yeni SQL betiği
+- En üstteki 1000 satırları seçin
+- OLUŞTURMA
+- BıRAKMA ve oluşturma 
+ 
+SQL havuzunun düğümlerine ve isteğe bağlı SQL 'e sağ tıklayıp kullanılabilir hareketi araştırın.
+ 
+![newscriptdatabase](media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
