@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168208"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API: Indirme ve sürüm notları
@@ -27,8 +26,8 @@ ms.locfileid: "84168208"
 |   |   |
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Örnekli**|[Cosmos DB Tablo API'si .NET örneği](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Hızlı başlangıç**|[Hızlı başlangıç](create-table-dotnet.md)|
+|**Örnek**|[Cosmos DB Tablo API'si .NET örneği](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Hızlı Başlangıç**|[Hızlı Başlangıç](create-table-dotnet.md)|
 |**Öğretici**|[Öğretici](tutorial-develop-table-dotnet.md)|
 |**Desteklenen geçerli çerçeve**|[Microsoft .NET Standart 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Sorun bildir**|[Sorun bildir](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -40,10 +39,10 @@ ms.locfileid: "84168208"
 * Cosmos DB uç noktası için performans iyileştirmeleri ve ad alanı birleştirme ile [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)bağımlılığını alan 2.0.0 tablo SDK 'sının ilk önizlemesi. Ortak API aynı kalır.
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 serisi için sürüm notları
-1.0.0 Series, [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)'a bağımlılığı alır.
+1.0.0 serisi [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)'a bağımlılığı alır.
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
-* Tablo SDK varsayılan izleme düzeyini, App. config aracılığıyla kabul edilebilir SourceLevels. off olarak ayarlayarak performans iyileştirmesi
+* Tablo SDK varsayılan izleme düzeyini SourceLevels. off olarak ayarlayarak performans iyileştirmesi app.config aracılığıyla kabul edilebilir
 
 ### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Cosmos DB Tablo API'si iletişim kurmak için REST yürütücüsü kullanmak üzere TableClientConfiguration altında yeni yapılandırma tanıtın
@@ -91,12 +90,12 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 Bu platformlar arası .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) , [Microsoft. Azure. cosmosdb. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).NET Framework kitaplığının yerini alır.
 
 ### <a name="200-series"></a>2.0.0 serisi
-| Sürüm | Yayın Tarihi | Emeklilik tarihi |
+| Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [2.0.0-Önizleme](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 serisi
-| Sürüm | Yayın Tarihi | Emeklilik tarihi |
+| Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |13 Eylül 2019 |--- |
 | [1.0.5-Önizleme](#1.0.5-preview) |Auguest 20, 2019 |--- |

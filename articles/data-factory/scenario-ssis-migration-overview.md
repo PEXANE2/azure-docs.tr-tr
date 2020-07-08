@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
 ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84116398"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Şirket içi SSIS iş yüklerini ADF 'de SSIS 'ye geçirme
@@ -83,7 +82,7 @@ Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-pack
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Veritabanı Geçiş Yardımcısı](https://docs.microsoft.com/sql/dma/dma-overview)
 - [SSIS iş yüklerini buluta yükselt ve Kaydır](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [SSIS paketlerini Azure SQL yönetilen örneği 'ne geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [SSIS paketlerini Azure SQL Yönetilen Örnek’e geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Paketleri Azure SQL veritabanı 'na yeniden dağıtın](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>Sonraki adımlar

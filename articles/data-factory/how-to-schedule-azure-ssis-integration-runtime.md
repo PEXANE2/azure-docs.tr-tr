@@ -14,10 +14,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84117901"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
@@ -72,7 +71,7 @@ Her gün gece yarısı çalışacak ve üçüncü işlem hattı ile ilişkili ol
 6. **Sürüm**için **v2** 'yi seçin.
 7. **Konum**için, açılır listeden ADF oluşturma için desteklenen konumlardan birini seçin.
 8. **Panoya sabitle**’yi seçin.     
-9. **Oluştur**' a tıklayın.
+9. **Oluştur**'a tıklayın.
 10. Azure panosu 'nda şu durum ile şu kutucuğu görürsünüz: **dağıtım Data Factory**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -230,7 +229,7 @@ Zaten bir Azure Otomasyonu hesabınız yoksa, bu adımdaki yönergeleri izleyere
     4. **Konum**Için, Azure Otomasyonu hesabınız için bir konum seçin. 
     5. **Azure farklı çalıştır hesabı oluşturmayı** **Evet**olarak onaylayın. Azure Active Directory bir hizmet sorumlusu oluşturulur ve Azure aboneliğinizde **katkıda bulunan** bir rol atanır.
     6. Azure panosu 'nda kalıcı olarak göstermek için **panoya sabitle ' yi** seçin. 
-    7. **Oluştur**’u seçin. 
+    7. **Oluştur**'u seçin. 
 
    ![New-> İzleme ve Yönetim-> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -268,7 +267,7 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
 
     1. **Ad**için **StartStopAzureSsisRuntime**girin.
     2. **Runbook türü**için **PowerShell**' i seçin.
-    3. **Oluştur**’u seçin.
+    3. **Oluştur**'u seçin.
     
    ![Runbook ekleme düğmesi](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -367,7 +366,7 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
     4. İçin **,** geçerli zamandan birkaç dakika geçmiş bir saat girin. 
     5. **Yinelenme**için **yineleme**' yi seçin. 
     6. **Her yineleme**için **1** girin ve **günü**seçin. 
-    7. **Oluştur**’u seçin. 
+    7. **Oluştur**'u seçin. 
 
    ![Azure SSIS IR başlangıç zamanlaması](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     

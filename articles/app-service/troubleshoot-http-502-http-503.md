@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170809"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service 'de "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" HTTP hatalarında sorun giderme
@@ -99,7 +98,7 @@ Ayrıca, uygulamanızı birden fazla örnekte çalıştırmayı seçebilirsiniz.
 Ölçeklendirmeyi El Ile veya otomatik olarak ayarlayabilirsiniz.
 
 #### <a name="use-autoheal"></a>Oto Heal kullanma
-Oto Heal, seçtiğiniz ayarlara göre (yapılandırma değişiklikleri, istekler, bellek tabanlı sınırlar veya bir isteği yürütmek için gereken süre gibi) uygulamanızın çalışan işlemini geri dönüştürür. Çoğu zaman, bir sorunu kurtarmanın en hızlı yoludur. Uygulamayı her zaman doğrudan Azure portalından yeniden başlatabilseniz de, Otomatik Heal bunu sizin için otomatik olarak kullanacaktır. Yapmanız gereken tek şey, uygulamanız için kök Web. config dosyasında bazı Tetikleyiciler eklemektir. Bu ayarların, uygulamanız .NET One olmasa bile aynı şekilde çalıştığını unutmayın.
+Oto Heal, seçtiğiniz ayarlara göre (yapılandırma değişiklikleri, istekler, bellek tabanlı sınırlar veya bir isteği yürütmek için gereken süre gibi) uygulamanızın çalışan işlemini geri dönüştürür. Çoğu zaman, bir sorunu kurtarmanın en hızlı yoludur. Uygulamayı her zaman doğrudan Azure portalından yeniden başlatabilseniz de, Otomatik Heal bunu sizin için otomatik olarak kullanacaktır. Yapmanız gereken tek şey, uygulamanız için kök web.config bazı Tetikleyiciler eklemektir. Bu ayarların, uygulamanız .NET One olmasa bile aynı şekilde çalıştığını unutmayın.
 
 Daha fazla bilgi için bkz. [Otomatik Düzeltme Azure Web siteleri](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

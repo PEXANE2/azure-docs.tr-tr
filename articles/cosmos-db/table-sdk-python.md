@@ -9,10 +9,9 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167970"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Python için Tablo API'si SDK Azure Cosmos DB: sürüm notları ve kaynakları
@@ -51,7 +50,7 @@ Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya ekle
 
 <br/>
 
-| Sürüm | Yayın Tarihi | Emeklilik tarihi |
+| Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 Kasım 2017 |--- |
 | [0.37.1](#0.37.1) |05 Ekim 2017 |--- |

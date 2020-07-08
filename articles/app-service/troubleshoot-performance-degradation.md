@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170775"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
@@ -152,7 +151,7 @@ Ayrıca, uygulamanızı birden fazla örnekte çalıştırmayı seçebilirsiniz.
 Ölçeklendirmeyi El Ile veya otomatik olarak ayarlayabilirsiniz.
 
 #### <a name="use-autoheal"></a>Oto Heal kullanma
-Oto Heal, seçtiğiniz ayarlara göre (yapılandırma değişiklikleri, istekler, bellek tabanlı sınırlar veya bir isteği yürütmek için gereken süre gibi) uygulamanızın çalışan işlemini geri dönüştürür. Çoğu zaman, bir sorunu kurtarmanın en hızlı yoludur. Uygulamayı her zaman doğrudan Azure portal içinden yeniden başlatabilseniz de, Otomatik Heal bunu sizin için otomatik olarak yapar. Yapmanız gereken tek şey, uygulamanız için kök Web. config dosyasında bazı Tetikleyiciler eklemektir. Bu ayarlar, uygulamanız .NET uygulaması olmasa bile aynı şekilde çalışır.
+Oto Heal, seçtiğiniz ayarlara göre (yapılandırma değişiklikleri, istekler, bellek tabanlı sınırlar veya bir isteği yürütmek için gereken süre gibi) uygulamanızın çalışan işlemini geri dönüştürür. Çoğu zaman, bir sorunu kurtarmanın en hızlı yoludur. Uygulamayı her zaman doğrudan Azure portal içinden yeniden başlatabilseniz de, Otomatik Heal bunu sizin için otomatik olarak yapar. Yapmanız gereken tek şey, uygulamanız için kök web.config bazı Tetikleyiciler eklemektir. Bu ayarlar, uygulamanız .NET uygulaması olmasa bile aynı şekilde çalışır.
 
 Daha fazla bilgi için bkz. [Otomatik Düzeltme Azure Web siteleri](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9bc7a5405309e35a36b15f44a1b136b899afbb55
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84119313"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
@@ -33,7 +32,7 @@ Devamlılık belirtecine veya zaman aralığına göre Chaos olaylarının sonra
 
 Chaos olaylarının bir sonraki segmentini almak için ContinuationToken ' ı belirtebilirsiniz. Yeni bir Chaos olayları segmentinin başlamasını sağlamak için StartTimeUtc ve EndTimeUtc aracılığıyla zaman aralığını belirtebilirsiniz. Aynı çağrıda ContinuationToken ve zaman aralığı belirtemezsiniz. 100 ' den fazla Chaos olayı olduğunda, Chaos olayları, bir segmentin en fazla 100 Chaos olayı içerdiği ve sonraki segmenti devam belirteciyle bu API 'ye bir çağrı yaptığınız birden fazla kesimde döndürülür.
 
-### <a name="arguments"></a>Bağımsız değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -58,7 +57,7 @@ Chaos durumunu alır.
 
 Chaos 'ın çalışıp çalışmadığını gösteren Chaos 'in durumunu, Chaos 'i çalıştırmak için kullanılan Chaos parametrelerini ve Chaos zamanlamasının durumunu öğrenin.
 
-### <a name="arguments"></a>Bağımsız değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -79,7 +78,7 @@ Kümede Chaos 'ı başlatır.
 
 Chaos kümede zaten çalıştırılmamakta değilse, geçirilen Chaos parametreleriyle birlikte Chaos başlatılır. Bu çağrı yapıldığında Chaos zaten çalışıyorsa, çağrı FABRIC_E_CHAOS_ALREADY_RUNNING hata kodu ile başarısız olur. Daha fazla ayrıntı için [Service Fabric kümelerinde yer alarak denetlenen Chaos](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos) makalesine başvurun.
 
-### <a name="arguments"></a>Bağımsız değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -112,7 +111,7 @@ Kümede çalışıyorsa, Chaos 'yi durdurulur ve Chaos zamanlamasını durdurulm
 
 Chaos 'in yeni hata yürütmesini durduruyor. Uçuş hatası, tamamlanana kadar yürütmeye devam eder. Geçerli Chaos zamanlaması durdurulmuş bir duruma konur. Bir zamanlama durdurulduktan sonra, durdurulmuş durumda kalır ve Chaos 'in yeni çalıştırmalarını çizelgelemek için kullanılmaz. Zamanlamayı sürdürmesini sağlamak için yeni bir Chaos zamanlaması ayarlanmalıdır.
 
-### <a name="arguments"></a>Bağımsız değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

@@ -4,10 +4,9 @@ description: Windows Server 2003 sunucularının Azure geçişi ile geçiş içi
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172287"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 makinelerini geçiş için hazırlama
@@ -38,7 +37,7 @@ Geçişten önce, Hyper-V tümleştirme hizmetlerinin yüklü olup olmadığın�
 3. Yükleme klasörünü VMware VM 'ye kopyalayın.
 4. VM 'deki komut satırından komutunu çalıştırın ```gpedit.msc``` .
 5. **Bilgisayar yapılandırması**  >  **Windows ayarları**  >  **betikleri (başlatma/kapatır)** öğesini açın.
-6. **Başlangıç**  >  **Add**  >  **betik adı**Ekle ' de Setup. exe adresini yazın.
+6. **Başlangıç**  >  **Add**  >  **betik adı**Ekle ' de setup.exe adresini yazın.
 7. Azure 'a geçişten sonra betik, Azure VM ilk kez başlatıldığında çalışır.
 8. Azure VM 'yi el ile yeniden başlatın. Önyükleme tanılamasında bir yeniden başlatmanın gerekli olduğunu belirten bir açılır pencere vardır.
 9. Betiği çalıştıktan ve Azure VM 'de Hyper-V Tümleştirme Hizmetleri yüklendikten sonra, betiği başlangıçtan kaldırabilirsiniz.

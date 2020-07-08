@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172371"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
@@ -171,8 +170,8 @@ Aşağıdaki tabloda, genel bir IP 'nin en üst düzey bir kaynakla ve olası ay
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Evet |Evet |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
+| Sanal makine |Ağ arabirimi |Yes |Evet |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Evet |
 | VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
 | Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
 

@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84148353"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
@@ -169,7 +168,7 @@ Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
 
 1. Profil oluşturucu komut satırındaki Ikey 'in doğru olduğundan emin olun. 
 
-1. Önceki *config. JSON* dosyasında bulunan yolu kullanarak, **bootstrapn. log**adlı Profil Oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
+1. Dosyadaki önceki *config.js* bulunan yolu kullanarak, **bootstrapn. log**adlı Profil Oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
 
     VM 'Ler için dosya genellikle şu şekildedir:
     ```

@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
 ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170075"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure portal bir sanal makineye bağlantı noktaları açma
@@ -25,7 +24,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. VM için kaynak grubunu arayıp seçin, **Ekle**' yi seçin ve **ağ güvenlik grubu**' nu arayıp seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     **Ağ güvenlik grubu oluştur** penceresi açılır.
 

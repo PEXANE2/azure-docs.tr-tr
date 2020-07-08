@@ -5,15 +5,14 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84117842"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
 
-Azure Resource Manager, dağıtım geçmişinizi görüntülemenize olanak sağlar. Geçmiş dağıtımlarda belirli işlemleri inceleyebilir ve hangi kaynakların dağıtıldığını görebilirsiniz. Bu geçmiş hatalar hakkında bilgi içerir.
+Azure Resource Manager, dağıtım geçmişinizi görüntülemenize olanak sağlar. Önceki dağıtımlarda gerçekleştirilen işlemleri inceleyerek dağıtılan kaynakları görebilirsiniz. Bu geçmiş hatalar hakkında bilgi içerir.
 
 Bir kaynak grubunun dağıtım geçmişi 800 dağıtım ile sınırlıdır. Sınıra yaklaştıklarında, dağıtımlar geçmişten otomatik olarak silinir. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
 

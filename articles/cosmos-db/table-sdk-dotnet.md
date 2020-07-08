@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168157"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API 'SI: Indirme ve sürüm notları
@@ -27,7 +26,7 @@ ms.locfileid: "84168157"
 |   |   |
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Hızlı başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si ile uygulama derleme](create-table-dotnet.md)|
+|**Hızlı Başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si ile uygulama derleme](create-table-dotnet.md)|
 |**Öğretici**|[Azure Cosmos DB: .NET’te Tablo API’si ile geliştirme](tutorial-develop-table-dotnet.md)|
 |**Desteklenen geçerli çerçeve**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -50,11 +49,11 @@ ms.locfileid: "84168157"
 ### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Çok bölgeli yazma desteği eklendi
-* Microsoft. Azure. DocumentDB, Microsoft. OData. Core, Microsoft. OData. Edm, Microsoft. uzamsal ile ilgili NuGet paketi bağımlılıkları düzeltildi
+* Microsoft.Azure.DocumentDB, Microsoft. OData. Core, Microsoft. OData. Edm, Microsoft. uzamsal üzerinde NuGet paketi bağımlılıkları düzeltildi
 
 ### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
-* Microsoft. Azure. Storage. Common ve Microsoft. Azure. DocumentDB 'de düzeltilen NuGet paketi bağımlılıkları.
+* Microsoft. Azure. Storage. Common ve Microsoft.Azure.DocumentDB üzerinde düzeltilen NuGet paketi bağımlılıkları.
 * JsonConvert. DefaultSettings yapılandırıldığında tablo serileştirmesine yönelik hata düzeltmeleri.
 
 ### <a name="111"></a><a name="1.1.1"></a>1.1.1
@@ -87,7 +86,7 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler hizmet tarafından reddedilir.
 <br/>
 
-| Sürüm | Yayın Tarihi | Emeklilik tarihi |
+| Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16 Eylül 2019| |
 | [2.1.0](#2.1.0) |22 Ocak 2019|01 Nisan 2020 |

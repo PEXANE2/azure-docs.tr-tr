@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188299"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
@@ -180,8 +179,8 @@ Ağ Geçidi, bulut hizmetine bağlanmak için proxy sunucusunu kullanır. İlk k
 Üç yapılandırma seçeneği vardır:
 
 * **Proxy kullanma**: ağ geçidi, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
-* **Sistem proxy 'Si kullan**: ağ geçidi, diahost. exe. config ve diawp. exe. config içinde yapılandırılan proxy ayarını kullanır. Diahost. exe. config ve diawp. exe. config dosyasında yapılandırılmış bir proxy yoksa, ağ geçidi doğrudan proxy 'ye geçmeden bulut hizmetine bağlanır.
-* **Özel ara sunucu kullan**: diahost. exe. config ve diawp. exe. config içinde yapılandırma kullanmak yerine, ağ geçidi IÇIN kullanılacak http proxy ayarını yapılandırın. Adres ve bağlantı noktası gereklidir. Kullanıcı adı ve parola, proxy 'nizin kimlik doğrulama ayarına bağlı olarak isteğe bağlıdır. Tüm ayarlar, ağ geçidinin kimlik bilgisi sertifikasıyla şifrelenir ve ağ geçidi ana makinesinde yerel olarak depolanır.
+* **Sistem proxy 'Si kullan**: ağ geçidi, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. diahost.exe.config ve diawp.exe.config içinde yapılandırılmış bir proxy yoksa, ağ geçidi, proxy 'ye geçmeden doğrudan bulut hizmetine bağlanır.
+* **Özel proxy kullan**: diahost.exe.config ve diawp.exe.config yapılandırma kullanmak yerine, ağ geçidi IÇIN kullanılacak http proxy ayarını yapılandırın. Adres ve bağlantı noktası gereklidir. Kullanıcı adı ve parola, proxy 'nizin kimlik doğrulama ayarına bağlı olarak isteğe bağlıdır. Tüm ayarlar, ağ geçidinin kimlik bilgisi sertifikasıyla şifrelenir ve ağ geçidi ana makinesinde yerel olarak depolanır.
 
 Güncelleştirilmiş proxy ayarlarını kaydettikten sonra veri yönetimi ağ geçidi konak hizmeti otomatik olarak yeniden başlatılır.
 
@@ -202,10 +201,10 @@ Configuration Manager aracını kullanarak HTTP proxy 'sini görüntüleyebilir 
 >
 
 ### <a name="configure-proxy-server-settings"></a>Proxy sunucusu ayarlarını yapılandırma
-HTTP proxy için **sistem proxy ayarını kullan** ' ı seçerseniz, ağ geçidi diahost. exe. config ve diawp. exe. config dosyasındaki proxy ayarını kullanır. Diahost. exe. config ve diawp. exe. config dosyasında bir proxy belirtilmemişse, ağ geçidi doğrudan proxy 'ye geçmeden bulut hizmetine bağlanır. Aşağıdaki yordam diahost. exe. config dosyasını güncelleştirmek için yönergeler sağlar.
+HTTP proxy için **sistem proxy ayarını kullan** ' ı seçerseniz, ağ geçidi diahost.exe.config ve diawp.exe.config ara sunucu ayarını kullanır. diahost.exe.config ve diawp.exe.config hiçbir proxy belirtilmemişse, ağ geçidi, proxy 'ye geçmeden doğrudan bulut hizmetine bağlanır. Aşağıdaki yordam diahost.exe.config dosyasını güncelleştirmek için yönergeler sağlar.
 
-1. Dosya Gezgini 'nde, özgün dosyayı yedeklemek için *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ paylaşılan \\ diahost. exe. config* ' in güvenli bir kopyasını oluşturun.
-2. Yönetici olarak çalışan Notepad. exe ' yi başlatın ve metin dosyası *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ paylaşılan \\ diahost. exe. config*dosyasını açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
+1. Dosya Gezgini 'nde, özgün dosyayı yedeklemek için *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared \\diahost.exe.config* güvenli bir kopyasını oluşturun.
+2. Yönetici olarak çalışan Notepad.exe başlatın ve metin dosyası *C: \\ \\ Program dosyaları \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared \\diahost.exe.config*' nı açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
 
     ```
     <system.net>
@@ -231,7 +230,7 @@ HTTP proxy için **sistem proxy ayarını kullan** ' ı seçerseniz, ağ geçidi
 3. Yapılandırma dosyasını özgün konumuna kaydedin, sonra değişiklikleri sağlayan Veri Yönetimi ağ geçidi ana bilgisayar hizmetini yeniden başlatın. Hizmeti yeniden başlatmak için: Denetim Masası 'ndaki hizmetler uygulamasını kullanın veya **veri yönetimi ağ geçidi Configuration Manager** > **hizmeti Durdur** düğmesine tıklayın ve ardından **Başlat hizmetine**tıklayın. Hizmet başlamazsa, düzenlenmiş uygulama yapılandırma dosyasına yanlış bir XML etiketi söz dizimi eklenmiş olabilir.
 
 > [!IMPORTANT]
-> Hem diahost. exe. config hem **de** diawp. exe. config ' i güncelleştirmeyi unutmayın.
+> Hem diahost.exe.config hem **de** diawp.exe.config güncelleştirmeyi unutmayın.
 
 Bu noktalara ek olarak, Microsoft Azure şirketinizin beyaz listesinde olduğundan emin olmanız gerekir. Geçerli Microsoft Azure IP adresleri listesi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=41653)' nden indirilebilir.
 
@@ -309,7 +308,7 @@ Aşağıdaki adımları uygulayarak otomatik güncelleştirme özelliğini devre
 Ağ geçidini yükledikten sonra, aşağıdaki yollarla Veri Yönetimi ağ geçidi Configuration Manager başlatabilirsiniz:
 
 1. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın.
-2. Şu klasörde çalıştırılabilir *configmanager. exe* dosyasını çalıştırın: *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared*.
+2. Yürütülebilir *ConfigManager.exe* şu klasörde çalıştırın: *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Giriş sayfası
 Giriş sayfası aşağıdaki eylemleri yapmanıza olanak sağlar:
@@ -364,7 +363,7 @@ Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların aç�
 
 İzleme özelliği | Açıklama
 :------------------ | :----------
-Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü.
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur).
 Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
@@ -388,7 +387,7 @@ Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından f
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır.
 
-Durum | Açıklamalar
+Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
 Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
@@ -510,7 +509,7 @@ Bu bölümde, Azure PowerShell cmdlet 'lerini kullanarak bir ağ geçidinin nas�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell ' de klasöre geçin: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\ *. Aşağıdaki komutta gösterildiği gibi **$Key** yerel değişkenle Ilişkili *registergateway. ps1* komutunu çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
+1. Azure PowerShell ' de klasöre geçin: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\ *. Aşağıdaki komutta gösterildiği gibi, yerel değişken **$Key** ilişkili *RegisterGateway.ps1* çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

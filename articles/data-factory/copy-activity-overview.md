@@ -12,17 +12,16 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
 ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84187677"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-data-movement-activities.md)
-> * [Geçerli sürüm](copy-activity-overview.md)
+> * [Güncel sürüm](copy-activity-overview.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -75,7 +74,7 @@ Genel olarak, Azure Data Factory kopyalama etkinliğini kullanmak için şunlar�
 2. **Kaynak ve havuz için veri kümeleri oluşturun.** Yapılandırma bilgileri ve desteklenen özellikler için kaynak ve havuz bağlayıcı makalelerinin "veri kümesi özellikleri" bölümlerine bakın.
 3. **Kopyalama etkinliğiyle bir işlem hattı oluşturun.** Sonraki bölümde bir örnek sağlanmaktadır.
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kapsamlı bir listesini içerir. Senaryonuza uygun olanları belirtin.
 

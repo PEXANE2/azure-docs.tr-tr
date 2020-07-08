@@ -1,18 +1,17 @@
 ---
-title: Sahne aydınlatma
+title: Sahne aydınlatması
 description: Hafif kaynak açıklaması ve özellikleri
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022155"
 ---
-# <a name="scene-lighting"></a>Sahne aydınlatma
+# <a name="scene-lighting"></a>Sahne aydınlatması
 
 Varsayılan olarak, uzaktan işlenen nesneler bir [gök ışığı](sky.md)kullanılarak aydınlatılır. Çoğu uygulama için bu zaten yeterlidir, ancak sahneye daha açık kaynaklar ekleyebilirsiniz.
 

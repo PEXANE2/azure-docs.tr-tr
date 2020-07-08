@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118152"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Bir sanal ağa katılması için bir Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı (IR) yapılandırma
@@ -94,11 +93,11 @@ Bir Azure-SSIS IR katılmayı denemeden önce bir sanal ağı yapılandırmak i�
 
    1. Aboneliğinizi seçin.
 
-   1. Sol tarafta **kaynak sağlayıcıları**' nı seçin ve **Microsoft. Batch** ' in kayıtlı bir sağlayıcı olduğunu onaylayın.
+   1. Sol tarafta **kaynak sağlayıcıları**' nı seçin ve **Microsoft.Batch** 'in kayıtlı bir sağlayıcı olduğunu onaylayın.
 
    !["Kayıtlı" durumunun onayı](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   Listede **Microsoft. Batch** ' i görmüyorsanız, kaydetmek için aboneliğinizde [boş bir Azure Batch hesabı oluşturun](../batch/batch-account-create-portal.md) . Daha sonra silebilirsiniz.
+   Listede **Microsoft.Batch** görmüyorsanız, bunu kaydetmek için aboneliğinizde [boş bir Azure Batch hesabı oluşturun](../batch/batch-account-create-portal.md) . Daha sonra silebilirsiniz.
 
 ## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Azure-SSIS IR bir sanal ağa ekleyin
 
