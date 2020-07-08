@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672217"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana 'de Azure hizmetlerinizi izleyin
@@ -42,7 +41,7 @@ Yerel bir Grafana sunucusu kurmak için [yerel ortamınıza Grafana indirip yük
 
 ## <a name="sign-in-to-grafana"></a>Grafana 'de oturum açın
 
-1. Sunucunuzun IP adresini kullanarak, *http://\<IP adresi\>: 3000* veya tarayıcınızda * \<DnsName>\:3000* konumundaki oturum açma sayfasını açın. Varsayılan bağlantı noktası 3000 iken, kurulum sırasında farklı bir bağlantı noktası seçmiş olabilirsiniz. Oluşturduğunuz Grafana sunucusu için bir oturum açma sayfası görmeniz gerekir.
+1. Sunucunuzun IP adresini kullanarak, *http:// \<IP address\> : 3000* veya tarayıcınızda * \<DNSName> \: 3000* konumundaki oturum açma sayfasını açın. Varsayılan bağlantı noktası 3000 iken, kurulum sırasında farklı bir bağlantı noktası seçmiş olabilirsiniz. Oluşturduğunuz Grafana sunucusu için bir oturum açma sayfası görmeniz gerekir.
 
     ![Grafana oturum açma ekranı](./media/grafana-plugin/grafana-login-screen.png)
 

@@ -8,10 +8,9 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77649373"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
@@ -71,7 +70,7 @@ Aşağıdaki örnek, *RequestUri* değişkeninin değeri olarak */promosyon* ile
 
 ## <a name="configure-a-security-policy"></a>Güvenlik ilkesi yapılandırma
 
-Kullanarak `Get-AzureRmResourceGroup`ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
+Kullanarak ön kapı profilini içeren kaynak grubunun adını bulun `Get-AzureRmResourceGroup` . Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
 
 Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır.
 

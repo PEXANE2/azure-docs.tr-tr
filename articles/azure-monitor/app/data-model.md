@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671891"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetri veri modeli
@@ -30,11 +29,11 @@ Aşağıdaki telemetri türleri uygulamanızın yürütülmesini izlemek için k
 
     **İşlem** , bir isteği işleyen yürütmenin iş parçacıklarından oluşur. Ayrıca, verileri düzenli aralıklarla işleyen bir Web işinde "uyandırma" gibi diğer işlem türlerini izlemek için de [kod yazabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) .  Her işlemin bir KIMLIĞI vardır. Bu KIMLIK, uygulamanız isteği işlerken oluşturulan tüm Telemetriyi [gruplandırmak](../../azure-monitor/app/correlation.md) için kullanılabilir. Her işlem başarılı olur ya da başarısız olur ve bir süre süresi vardır.
 * [**Özel durum**](data-model-exception-telemetry.md) -genellikle bir işlemin başarısız olmasına neden olan bir özel durumu temsil eder.
-* [**Bağımlılık**](data-model-dependency-telemetry.md) -uygulamanızdan bir REST API veya SQL gibi bir dış hizmete veya depoya olan çağrıyı temsil eder. ASP.NET ' de, SQL 'e bağımlılık çağrıları tarafından `System.Data`tanımlanır. HTTP uç noktalarına yapılan çağrılar tarafından `System.Net`tanımlanır. 
+* [**Bağımlılık**](data-model-dependency-telemetry.md) -uygulamanızdan bir REST API veya SQL gibi bir dış hizmete veya depoya olan çağrıyı temsil eder. ASP.NET ' de, SQL 'e bağımlılık çağrıları tarafından tanımlanır `System.Data` . HTTP uç noktalarına yapılan çağrılar tarafından tanımlanır `System.Net` . 
 
 Application Insights özel telemetri için üç ek veri türü sağlar:
 
-* [Trace](data-model-trace-telemetry.md) -size `Log4Net` tanıdık bir izleme çerçevesi kullanarak tanılama günlüğü uygulamak için doğrudan veya bir bağdaştırıcı aracılığıyla kullanılır `System.Diagnostics`.
+* [Trace](data-model-trace-telemetry.md) -size tanıdık bir izleme çerçevesi kullanarak tanılama günlüğü uygulamak için doğrudan veya bir bağdaştırıcı aracılığıyla kullanılır `Log4Net` `System.Diagnostics` .
 * [Olay](data-model-event-telemetry.md) -genellikle kullanım düzenlerini çözümlemek için hizmetinize yönelik kullanıcı etkileşimini yakalamak için kullanılır.
 * [Ölçüm](data-model-metric-telemetry.md) -düzenli skaler ölçümleri raporlamak için kullanılır.
 

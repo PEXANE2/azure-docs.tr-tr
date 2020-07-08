@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77624130"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio'yu kullanarak Service Fabric uygulamanızda hata ayıklama
@@ -23,7 +22,7 @@ ms.locfileid: "77624130"
 Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde dağıtarak ve hata ayıkladıktan sonra zamandan ve paradan tasarruf edebilirsiniz. Visual Studio 2019 veya 2015, uygulamayı yerel kümeye dağıtabilir ve hata ayıklayıcıyı otomatik olarak uygulamanızın tüm örneklerine bağlayın. Hata ayıklayıcıya bağlanmak için Visual Studio 'Nun yönetici olarak çalıştırılması gerekir.
 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
-2. **F5** tuşuna basın veya **hata** > **ayıklamayı Başlat**' a tıklayın.
+2. **F5** tuşuna basın veya **hata**  >  **ayıklamayı Başlat**' a tıklayın.
    
     ![Bir uygulamada hata ayıklamayı başlatma][startdebugging]
 3. Kodunuzda kesme noktaları ayarlayın ve **Hata Ayıkla** menüsündeki komutlar ' a tıklayarak uygulamada gezinin.
@@ -56,7 +55,7 @@ Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde 
 ### <a name="running-a-script-as-part-of-debugging"></a>Hata ayıklamanın bir parçası olarak komut dosyası çalıştırma
 Belirli senaryolarda hata ayıklama oturumu başlatma işleminin parçası olarak bir komut dosyası çalıştırmanız gerekebilir (örn. varsayılan hizmetler kullanmıyorsanız).
 
-Visual Studio 'da, Service Fabric uygulama projesinin (. sfproj) **Scripts** klasöründe **Start-Service. ps1** adlı bir dosya ekleyebilirsiniz. Bu betik, uygulama yerel kümede oluşturulduktan sonra çağrılacaktır.
+Visual Studio 'da, Service Fabric uygulama projesinin (. sfproj) **betikler** klasörüne **Start-Service.ps1** adlı bir dosya ekleyebilirsiniz. Bu betik, uygulama yerel kümede oluşturulduktan sonra çağrılacaktır.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

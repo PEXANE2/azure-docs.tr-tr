@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662187"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularında gelişmiş toplamalar
@@ -23,7 +22,7 @@ ms.locfileid: "77662187"
 Bu makalede, Azure Izleyici sorguları için kullanabileceğiniz daha gelişmiş toplama seçeneklerinden bazıları açıklanmaktadır.
 
 ## <a name="generating-lists-and-sets"></a>Listeler ve kümeler oluşturma
-Verileri, belirli `makelist` bir sütundaki değerlerin sırasına göre özet yapmak için kullanabilirsiniz. Örneğin, makinelerinizde en sık kullanılan sıra olaylarını incelemek isteyebilirsiniz. Temel olarak verileri her bir makinedeki EventID 'Ler sırasına göre özetleyebilirsiniz. 
+`makelist`Verileri, belirli bir sütundaki değerlerin sırasına göre özet yapmak için kullanabilirsiniz. Örneğin, makinelerinizde en sık kullanılan sıra olaylarını incelemek isteyebilirsiniz. Temel olarak verileri her bir makinedeki EventID 'Ler sırasına göre özetleyebilirsiniz. 
 
 ```Kusto
 Event
@@ -38,9 +37,9 @@ Event
 | BİLGİSAYAR2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-`makelist`verilerin kendisine geçirildiği sırada bir liste oluşturur. Olayları en eskiden en eskiye sıralamak için yerine order `asc` ifadesinde kullanın `desc`. 
+`makelist`verilerin kendisine geçirildiği sırada bir liste oluşturur. Olayları en eskiden en eskiye sıralamak için `asc` yerine Order ifadesinde kullanın `desc` . 
 
-Yalnızca benzersiz değerlerin bir listesini oluşturmak da yararlıdır. Bu bir _küme_ olarak adlandırılır ve şu şekilde `makeset`oluşturulabilir:
+Yalnızca benzersiz değerlerin bir listesini oluşturmak da yararlıdır. Bu bir _küme_ olarak adlandırılır ve şu şekilde oluşturulabilir `makeset` :
 
 ```Kusto
 Event
@@ -55,10 +54,10 @@ Event
 | BİLGİSAYAR2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-Benzer `makelist`şekilde `makeset` , sıralı verilerle de çalışır ve buna geçirilen satırların sırasına göre dizileri oluşturur.
+Benzer şekilde `makelist` , `makeset` sıralı verilerle de çalışır ve buna geçirilen satırların sırasına göre dizileri oluşturur.
 
 ## <a name="expanding-lists"></a>Listeleri genişletme
-`makelist` `makeset` Ya `mvexpand`da bir değer listesini ayrı satırlara genişleten ters işlemi. Bu, hem JSON hem de dizi olmak üzere herhangi bir sayıda dinamik sütunda genişleyebilir. Örneğin, son bir saat içinde sinyal gönderen bilgisayarlardan veri gönderen çözümlerin *sinyal* tablosunu kontrol edebilirsiniz:
+`makelist`Ya da `makeset` `mvexpand` bir değer listesini ayrı satırlara genişleten ters işlemi. Bu, hem JSON hem de dizi olmak üzere herhangi bir sayıda dinamik sütunda genişleyebilir. Örneğin, son bir saat içinde sinyal gönderen bilgisayarlardan veri gönderen çözümlerin *sinyal* tablosunu kontrol edebilirsiniz:
 
 ```Kusto
 Heartbeat
@@ -73,7 +72,7 @@ Heartbeat
 | computer3 | "kötü amaçlı yazılımdan koruma", "changeTracking" |
 | ... | ... |
 
-Her `mvexpand` değeri, virgülle ayrılmış bir liste yerine ayrı bir satırda göstermek için kullanın:
+`mvexpand`Her değeri, virgülle ayrılmış bir liste yerine ayrı bir satırda göstermek için kullanın:
 
 ```Kusto
 Heartbeat
@@ -94,7 +93,7 @@ Heartbeat
 | ... | ... |
 
 
-Daha sonra öğeleri birlikte `makelist` gruplandırmak için yeniden kullanabilirsiniz ve bu kez çözüm başına bilgisayar listesini görebilirsiniz:
+Daha sonra `makelist` öğeleri birlikte gruplandırmak için yeniden kullanabilirsiniz ve bu kez çözüm başına bilgisayar listesini görebilirsiniz:
 
 ```Kusto
 Heartbeat
@@ -130,7 +129,7 @@ Heartbeat
 | Doğrudan aracı | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-Bu sonuçlarda, bu saat için herhangi bir sinyal verisi olmadığından "2017-06-06T19:00:00Z" ile ilişkili demet yok. Boş demetlere varsayılan değer atamak için `make-series` işlevini kullanın. Bu, biri değerler için, diğeri de eşleşen zaman demetleri için olmak üzere iki ek dizi sütunu olan her bir kategori için bir satır oluşturur:
+Bu sonuçlarda, bu saat için herhangi bir sinyal verisi olmadığından "2017-06-06T19:00:00Z" ile ilişkili demet yok. `make-series`Boş demetlere varsayılan değer atamak için işlevini kullanın. Bu, biri değerler için, diğeri de eşleşen zaman demetleri için olmak üzere iki ek dizi sütunu olan her bir kategori için bir satır oluşturur:
 
 ```Kusto
 Heartbeat
@@ -142,7 +141,7 @@ Heartbeat
 | Doğrudan aracı | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-*Count_* dizisinin üçüncü öğesi beklendiği gibi 0 ' dır ve _TimeGenerated_ dizisinde "2017-06-06T19:00:00.0000000 z" ile eşleşen bir zaman damgası vardır. Bu dizi biçimi de okunması zordur. Dizileri `mvexpand` genişletmek ve tarafından `summarize`oluşturulan biçim çıkışını oluşturmak için kullanın:
+*Count_* dizisinin üçüncü öğesi beklendiği gibi 0 ' dır ve _TimeGenerated_ dizisinde "2017-06-06T19:00:00.0000000 z" ile eşleşen bir zaman damgası vardır. Bu dizi biçimi de okunması zordur. `mvexpand`Dizileri genişletmek ve tarafından oluşturulan biçim çıkışını oluşturmak için kullanın `summarize` :
 
 ```Kusto
 Heartbeat
@@ -163,7 +162,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Sonuçları bir dizi öğe için daraltma: `let`, `makeset`,, `toscalar``in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Sonuçları bir dizi öğe için daraltma: `let` , `makeset` , `toscalar` ,`in`
 Yaygın bir senaryo, bazı belirli varlıkların adlarını bir dizi ölçüte göre seçmek ve sonra farklı bir veri kümesini bu varlık kümesine göre filtrelemenize olanak sağlar. Örneğin, eksik güncelleştirmeleri olduğunu bildiğiniz ve bu bilgisayarların şu şekilde çağırdığı IP 'Leri tanımlayan bilgisayarları bulabilirsiniz:
 
 

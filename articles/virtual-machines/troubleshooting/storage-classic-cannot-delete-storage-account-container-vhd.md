@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915046"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Klasik depolama kaynağı silme hatalarıyla ilgili sorunları giderme
@@ -97,8 +96,8 @@ Portalda, silinmek üzere seçilen blob 'ların listesine bağlı olarak iki den
 
 
 2. "Kiralık" ve "kullanılabilir" bloblarının bir karışımı seçilirse, "Sil" düğmesi görüntülenir. Ancak "Sil" işlemi, üzerinde disk kirası olan sayfa bloblarının arkasında kalacak. 
-![Kapsayıcı blobu "liste" bölmesine sahip portalın ekran görüntüsü, seçili blob "](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![Sil" bölmesi açık olan portalın ekran görüntüsü açık](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Kapsayıcı blobu "liste" bölmesine sahip portalın ekran görüntüsü ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ , seçili blob "Sil" bölmesi açık olan portalın ekran görüntüsü açık](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Kullanıcı PowerShell 'i kullanarak silmeyi seçerse, bu hata aşağıdaki hataya neden olur. 
@@ -114,7 +113,7 @@ Kullanıcı PowerShell 'i kullanarak silmeyi seçerse, bu hata aşağıdaki hata
 Azure portal şu adımları uygulayın:
 1.  [Azure portalına](https://portal.azure.com) gidin.
 2.  Disklere (klasik) gidin. 
-3.  Diskler sekmesine tıklayın. ![kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Diskler sekmesine tıklayın. ![ Kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Veri diskinizi seçin ve Diski Sil’e tıklayın.
  ![Kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)

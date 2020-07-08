@@ -6,10 +6,9 @@ author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671418"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
@@ -30,7 +29,7 @@ Bu sorunu çözmezse, aşağıdaki el ile sorun giderme adımlarına bakın.
 
 ## <a name="verify-the-instrumentation-key"></a>İzleme anahtarını doğrulama
 
-Yayımlanmış uygulamanızda doğru izleme anahtarını kullandığınızdan emin olun. Genellikle, izleme anahtarı ApplicationInsights. config dosyasından okunurdur. Değerin portalda gördüğünüz Application Insights kaynağı için izleme anahtarıyla aynı olduğunu doğrulayın.
+Yayımlanmış uygulamanızda doğru izleme anahtarını kullandığınızdan emin olun. Genellikle, izleme anahtarı ApplicationInsights.config dosyasından okunurdur. Değerin portalda gördüğünüz Application Insights kaynağı için izleme anahtarıyla aynı olduğunu doğrulayın.
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core 'un önizleme sürümleri
 Uygulama .NET Core 'un önizleme sürümünü kullanıyorsa ve Snapshot Debugger portalda [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aracılığıyla etkinleştirildiyse Snapshot Debugger başlatılamayabilir. [Diğer ortamlar için Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) bölümündeki yönergeleri izleyerek, [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirmenin ***yanı sıra*** [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamaya ekleyin.
@@ -42,7 +41,7 @@ Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-app
 
 ## <a name="check-the-uploader-logs"></a>Uploader günlüklerini denetleyin
 
-Bir anlık görüntü oluşturulduktan sonra, diskte bir mini döküm dosyası (. dmp) oluşturulur. Ayrı bir Uploader işlemi, bu mini döküm dosyasını oluşturur ve Snapshot Debugger depolama Application Insights için ilişkili tüm pdb 'leri birlikte karşıya yükler. Mini döküm başarıyla karşıya yüklendikten sonra diskten silinir. Uploader işleminin günlük dosyaları diskte tutulur. App Service ortamında bu günlükleri ' de `D:\Home\LogFiles`bulabilirsiniz. Bu günlük dosyalarını bulmak için App Service kudu yönetim sitesini kullanın.
+Bir anlık görüntü oluşturulduktan sonra, diskte bir mini döküm dosyası (. dmp) oluşturulur. Ayrı bir Uploader işlemi, bu mini döküm dosyasını oluşturur ve Snapshot Debugger depolama Application Insights için ilişkili tüm pdb 'leri birlikte karşıya yükler. Mini döküm başarıyla karşıya yüklendikten sonra diskten silinir. Uploader işleminin günlük dosyaları diskte tutulur. App Service ortamında bu günlükleri ' de bulabilirsiniz `D:\Home\LogFiles` . Bu günlük dosyalarını bulmak için App Service kudu yönetim sitesini kullanın.
 
 1. App Service uygulamanızı Azure portal açın.
 2. **Gelişmiş Araçlar**' a tıklayın veya **kudu**araması yapın.
@@ -50,7 +49,7 @@ Bir anlık görüntü oluşturulduktan sonra, diskte bir mini döküm dosyası (
 4. **Hata ayıklama konsolu** aşağı açılan liste kutusunda **cmd**' yi seçin.
 5. **Günlük dosyaları**' na tıklayın.
 
-`Uploader_` `SnapshotUploader_` Veya `.log` uzantısıyla başlayan en az bir dosya görmeniz gerekir. Herhangi bir günlük dosyasını indirmek veya bir tarayıcıda açmak için uygun simgeye tıklayın.
+Veya uzantısıyla başlayan en az bir dosya görmeniz gerekir `Uploader_` `SnapshotUploader_` `.log` . Herhangi bir günlük dosyasını indirmek veya bir tarayıcıda açmak için uygun simgeye tıklayın.
 Dosya adı, App Service örneğini tanımlayan benzersiz bir sonek içerir. App Service örneğiniz birden fazla makinede barındırılıyorsa, her makine için ayrı günlük dosyaları vardır. Uploader yeni bir mini döküm dosyası algıladığında, günlük dosyasına kaydedilir. İşte başarılı bir anlık görüntü ve karşıya yükleme örneği:
 
 ```
@@ -81,10 +80,10 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 > [!NOTE]
 > Yukarıdaki örnek, Microsoft. ApplicationInsights. SnapshotCollector NuGet paketinin 1.2.0 sürümüdür. Önceki sürümlerde, Uploader işlemi çağrılır `MinidumpUploader.exe` ve günlük daha az ayrıntılıdır.
 
-Önceki örnekte, izleme anahtarı olur `c12a605e73c44346a984e00000000000`. Bu değer, uygulamanız için izleme anahtarıyla eşleşmelidir.
-Mini döküm, KIMLIĞI `139e411a23934dc0b9ea08a626db16c5`olan bir anlık görüntü ile ilişkilendirilir. Application Insights Analytics 'te ilişkili özel durum telemetrisini bulmak için bu KIMLIĞI daha sonra kullanabilirsiniz.
+Önceki örnekte, izleme anahtarı olur `c12a605e73c44346a984e00000000000` . Bu değer, uygulamanız için izleme anahtarıyla eşleşmelidir.
+Mini döküm, KIMLIĞI olan bir anlık görüntü ile ilişkilendirilir `139e411a23934dc0b9ea08a626db16c5` . Application Insights Analytics 'te ilişkili özel durum telemetrisini bulmak için bu KIMLIĞI daha sonra kullanabilirsiniz.
 
-Yükleyici, 15 dakikada bir daha yeni pdb 'leri tarar. Bir örneği aşağıda verilmiştir:
+Yükleyici, 15 dakikada bir daha yeni pdb 'leri tarar. İşte bir örnek:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -107,14 +106,14 @@ En az iki eşzamanlı anlık görüntüye izin verin.
 Örneğin, uygulamanız 1 GB toplam çalışma kümesi kullanıyorsa, anlık görüntüleri depolamak için en az 2 GB disk alanı olduğundan emin olun.
 Bulut hizmeti rolünüzü anlık görüntüler için ayrılmış bir yerel kaynakla yapılandırmak için bu adımları izleyin.
 
-1. Bulut hizmeti tanımı (. csdef) dosyasını düzenleyerek bulut hizmetinize yeni bir yerel kaynak ekleyin. Aşağıdaki örnek, 5 GB boyutunda adlı `SnapshotStore` bir kaynağı tanımlar.
+1. Bulut hizmeti tanımı (. csdef) dosyasını düzenleyerek bulut hizmetinize yeni bir yerel kaynak ekleyin. Aşağıdaki örnek, 5 GB boyutunda adlı bir kaynağı tanımlar `SnapshotStore` .
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. `SnapshotStore` Yerel kaynağa işaret eden bir ortam değişkeni eklemek için rolünüzün başlangıç kodunu değiştirin. Çalışan rolleri için, kod rolün `OnStart` yöntemine eklenmelidir:
+2. Yerel kaynağa işaret eden bir ortam değişkeni eklemek için rolünüzün başlangıç kodunu değiştirin `SnapshotStore` . Çalışan rolleri için, kod rolün `OnStart` yöntemine eklenmelidir:
    ```csharp
    public override bool OnStart()
    {
@@ -140,7 +139,7 @@ Bulut hizmeti rolünüzü anlık görüntüler için ayrılmış bir yerel kayna
    }
    ```
 
-3. Rolün ApplicationInsights. config dosyasını, tarafından kullanılan geçici klasör konumunu geçersiz kılmak üzere güncelleştirin`SnapshotCollector`
+3. Rolün ApplicationInsights.config dosyasını, tarafından kullanılan geçici klasör konumunu geçersiz kılmak üzere güncelleştirin`SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -163,13 +162,13 @@ Snapshot Collector, iyi bilinen birkaç Konumu kontrol eder ve anlık görüntü
 
 Uygun bir klasör bulunamazsa, _"uygun bir gölge kopya klasörü bulunamadı_ " hatası bildiren bir hata raporlar Snapshot Collector.
 
-Kopyalama başarısız olursa, Snapshot Collector bir `ShadowCopyFailed` hata bildirir.
+Kopyalama başarısız olursa, Snapshot Collector bir hata bildirir `ShadowCopyFailed` .
 
-Uploader başlatılamaz Snapshot Collector bir `UploaderCannotStartFromShadowCopy` hata bildirir. İletinin gövdesi genellikle içerir `System.UnauthorizedAccessException`. Bu hata genellikle uygulama daha düşük izinlere sahip bir hesap altında çalıştığı için oluşur. Hesabın, gölge kopya klasörüne yazma izni var, ancak kodu yürütme izni yok.
+Uploader başlatılamaz Snapshot Collector bir `UploaderCannotStartFromShadowCopy` hata bildirir. İletinin gövdesi genellikle içerir `System.UnauthorizedAccessException` . Bu hata genellikle uygulama daha düşük izinlere sahip bir hesap altında çalıştığı için oluşur. Hesabın, gölge kopya klasörüne yazma izni var, ancak kodu yürütme izni yok.
 
 Bu hatalar genellikle başlangıç sırasında gerçekleşdiğinden, genellikle `ExceptionDuringConnect` _"Uploader başlatılamadı"_ hatası ortaya çıkar.
 
-Bu hataları geçici olarak çözmek için, `ShadowCopyFolder` yapılandırma seçeneği aracılığıyla gölge kopya klasörünü el ile belirtebilirsiniz. Örneğin, ApplicationInsights. config kullanımı:
+Bu hataları geçici olarak çözmek için, yapılandırma seçeneği aracılığıyla gölge kopya klasörünü el ile belirtebilirsiniz `ShadowCopyFolder` . Örneğin, ApplicationInsights.config kullanarak:
 
    ```xml
    <TelemetryProcessors>
@@ -181,7 +180,7 @@ Bu hataları geçici olarak çözmek için, `ShadowCopyFolder` yapılandırma se
    </TelemetryProcessors>
    ```
 
-Veya, .NET Core uygulaması ile appSettings. JSON kullanıyorsanız:
+Ya da bir .NET Core uygulamasıyla üzerinde appsettings.jskullanıyorsanız:
 
    ```json
    {
@@ -196,11 +195,11 @@ Veya, .NET Core uygulaması ile appSettings. JSON kullanıyorsanız:
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Anlık görüntülerle özel durumları bulmak için Application Insights arama kullanın
 
-Bir anlık görüntü oluşturulduğunda, oluşturan özel durum bir anlık görüntü KIMLIĞIYLE etiketlenir. Özel durum telemetrisi Application Insights olarak bildirildiğinde bu anlık görüntü KIMLIĞI özel bir özellik olarak dahil edilir. Application Insights **arama** kullanarak, `ai.snapshot.id` özel özellik ile tüm telemetrileri bulabilirsiniz.
+Bir anlık görüntü oluşturulduğunda, oluşturan özel durum bir anlık görüntü KIMLIĞIYLE etiketlenir. Özel durum telemetrisi Application Insights olarak bildirildiğinde bu anlık görüntü KIMLIĞI özel bir özellik olarak dahil edilir. Application Insights **arama** kullanarak, özel özellik ile tüm telemetrileri bulabilirsiniz `ai.snapshot.id` .
 
 1. Azure portal Application Insights kaynağına gidin.
 2. **Ara**’ya tıklayın.
-3. Arama `ai.snapshot.id` metin kutusuna yazın ve ENTER tuşuna basın.
+3. `ai.snapshot.id`Arama metin kutusuna yazın ve ENTER tuşuna basın.
 
 ![Portalda anlık görüntü KIMLIĞIYLE telemetri arama](./media/snapshot-debugger/search-snapshot-portal.png)
 
@@ -212,7 +211,7 @@ Yükleyici günlüklerinden belirli bir anlık görüntü KIMLIĞINI aramak içi
 
 2. Uploader günlüğünden zaman damgasını kullanarak, aramanın zaman aralığı filtresini bu zaman aralığını kapsayacak şekilde ayarlayın.
 
-Bu anlık görüntü KIMLIĞIYLE ilgili bir özel durum görmüyorsanız, özel durum telemetrisi Application Insights bildirilmemiştir. Bu durum, uygulamanız anlık görüntüyü aldıktan sonra, ancak özel durum telemetrisini bildirdikten sonra kilitlenirse meydana gelebilir. Bu durumda, beklenmeyen yeniden başlatmalar veya işlenmemiş özel `Diagnose and solve problems` durumlar olup olmadığını görmek için altındaki App Service günlüklerini denetleyin.
+Bu anlık görüntü KIMLIĞIYLE ilgili bir özel durum görmüyorsanız, özel durum telemetrisi Application Insights bildirilmemiştir. Bu durum, uygulamanız anlık görüntüyü aldıktan sonra, ancak özel durum telemetrisini bildirdikten sonra kilitlenirse meydana gelebilir. Bu durumda, `Diagnose and solve problems` beklenmeyen yeniden başlatmalar veya işlenmemiş özel durumlar olup olmadığını görmek için altındaki App Service günlüklerini denetleyin.
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Ağ ara sunucusunu veya güvenlik duvarı kurallarını Düzenle
 

@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658753"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Tasarımcıyı çalışma kitaplarına göre dönüştürme ortak görevleri
@@ -40,7 +39,7 @@ Kenar çubuğu menüsünde, **parametre adı** metin kutusuna *timerange*yazın.
 
 Parametreyi kenar çubuğu menüsünün sol üst köşesine kaydedin. Açılan listeyi varsayılan olarak *ayarı* varsayılan olarak bırakır veya *24 saat*gibi varsayılan bir **timerange** değeri seçebilirsiniz. **Düzenle**seçeneğini belirleyin.
 
-Parametreler, parametre adınızın çevresine küme ayraçları {} ekleyerek sorgularda kullanılabilir. Parametreler hakkında daha fazla ayrıntı, [Parametreler hakkında çalışma kitapları belgelerinde](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)bulunabilir.
+Parametreler, parametre adınızın çevresine küme ayraçları ekleyerek sorgularda kullanılabilir {} . Parametreler hakkında daha fazla ayrıntı, [Parametreler hakkında çalışma kitapları belgelerinde](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)bulunabilir.
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>TimeRange parametresiyle sorguları güncelleştirme
 
@@ -50,7 +49,7 @@ Parametreler, parametre adınızın çevresine küme ayraçları {} ekleyerek so
 
 ### <a name="option-2-update-your-log-queries"></a>2. seçenek: günlük sorgularınızı güncelleştirme
 
-Sorgunuzda aşağıdaki örnekte `| where TimeGenerated {TimeRange}` olduğu gibi satırı ekleyin:
+Sorgunuzda `| where TimeGenerated {TimeRange}` Aşağıdaki örnekte olduğu gibi satırı ekleyin:
 
 Özgün sorgu
 ```KQL
@@ -118,7 +117,7 @@ search *
 
 Tablonuzu bir mini grafik içerecek şekilde güncelleştirmek için ayarları kaydedin ve sorguyu yeniden çalıştırın.
 
-Elde edilen kılavuz şuna benzer: ![mini grafik örneği](media/view-designer-conversion-tasks/sparkline-example.png)
+Elde edilen kılavuz şuna benzer: ![ mini grafik örneği](media/view-designer-conversion-tasks/sparkline-example.png)
 
 ## <a name="advanced-cell-settings"></a>Gelişmiş hücre ayarları
 Görünüm tasarımcısını yansıtmak için, çalışma kitabı hücrelerinin boyutunu değiştirme veya PIN 'ler ile dış bağlantıları günlüğe ekleme gibi görevleri gerçekleştirebilirsiniz.

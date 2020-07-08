@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671979"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Ölçüm telemetrisi: Application Insights veri modeli
@@ -33,7 +32,7 @@ Sistem ve işlem sayaçlarını temsil eden ölçüm:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | İş devam ediyor... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | ortalama istek yürütme süresi
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | İş devam ediyor... | [Requestsınqueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Kuyruktaki işlemeyi bekleyen istek sayısı
 
-## <a name="name"></a>Adı
+## <a name="name"></a>Name
 
 Application Insights portalında ve Kullanıcı arabiriminde görmek istediğiniz ölçümün adı. 
 
@@ -59,7 +58,7 @@ Toplu ölçümün standart sapması. Ölçüm için ayarlanmamalıdır.
 
 ## <a name="custom-properties"></a>Özel Özellikler
 
-Ölçümün Windows performans sayacını temsil `CustomPerfCounter` ettiğini göstermek `true` için özel özellik ayarlanmış ölçüm. Bu ölçümler performanceCounters tablosuna yerleştirildi. Customölçümler içinde değil. Ayrıca, bu ölçümün adı kategori, sayaç ve örnek adlarını ayıklamak için ayrıştırılır.
+`CustomPerfCounter` `true` Ölçümün Windows performans sayacını temsil ettiğini göstermek için özel özellik ayarlanmış ölçüm. Bu ölçümler performanceCounters tablosuna yerleştirildi. Customölçümler içinde değil. Ayrıca, bu ölçümün adı kategori, sayaç ve örnek adlarını ayıklamak için ayrıştırılır.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 

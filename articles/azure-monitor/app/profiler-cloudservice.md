@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671673"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights ile canlı Azure Cloud Services profili
@@ -18,7 +17,7 @@ ms.locfileid: "77671673"
 Ayrıca, bu hizmetlerde Application Insights Profiler dağıtabilirsiniz:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric uygulamaları](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure sanal makineleri](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Sanal Makineler](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler, Azure Tanılama uzantısıyla yüklenir. Profil oluşturucuyu yüklemek ve Application Insights kaynağına profil göndermek için Azure Tanılama yapılandırmanız yeterlidir.
 
@@ -43,7 +42,7 @@ Application Insights Profiler, Azure Tanılama uzantısıyla yüklenir. Profil o
 
       Dosyayı bulamıyorsanız bkz. [Azure Cloud Services için tanılamayı ayarlama ve sanal makineler](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Aşağıdaki `SinksConfig` bölümü öğesinin `WadCfg`bir alt öğesi olarak ekleyin:  
+    b. Aşağıdaki `SinksConfig` bölümü öğesinin bir alt öğesi olarak ekleyin `WadCfg` :  
 
       ```xml
       <WadCfg>
@@ -63,7 +62,7 @@ Application Insights Profiler, Azure Tanılama uzantısıyla yüklenir. Profil o
     > * ApplicationInsights havuzu tarafından kullanılan anahtar. 
     > * Applicationınsightsprofiler havuzu tarafından kullanılan anahtar. 
     >
-    > ServiceConfiguration içinde `ApplicationInsights` havuz tarafından kullanılan gerçek izleme anahtarı değerini bulabilirsiniz *.\* cscfg* dosyaları. 
+    > `ApplicationInsights`ServiceConfiguration içinde havuz tarafından kullanılan gerçek izleme anahtarı değerini bulabilirsiniz *. \* cscfg* dosyaları. 
     > Visual Studio 15,5 Azure SDK sürümünden sonra, yalnızca uygulama ve Applicationınsightsprofiler havuzunun kullandığı izleme anahtarlarının birbirleriyle eşleşmesi gerekir.
 
 1. Hizmetinizi yeni tanılama yapılandırmasıyla dağıtın ve Application Insights Profiler hizmetinize çalışacak şekilde yapılandırılır.

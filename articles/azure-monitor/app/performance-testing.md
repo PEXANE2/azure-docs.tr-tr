@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669871"
 ---
 # <a name="performance-testing"></a>Performansı test etme
@@ -22,7 +21,7 @@ Application Insights, Web siteleriniz için yük testleri oluşturmanıza olanak
 
 Bir performans testi oluşturmak için önce bir Application Insights kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız bir sonraki bölüme ilerleyin.
 
-Azure Portal **kaynak** > oluştur**Geliştirici Araçları** > **Application Insights** ve bir Application Insights kaynağı oluştur ' u seçin.
+Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights** ve bir Application Insights kaynağı oluştur ' u seçin.
 
 ## <a name="configure-performance-testing"></a>Performans testini yapılandırma
 

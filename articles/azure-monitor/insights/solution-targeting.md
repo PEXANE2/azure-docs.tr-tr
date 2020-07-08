@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663241"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Izleyici 'de izleme çözümlerini hedefleme (Önizleme)
@@ -62,7 +61,7 @@ Aşağıdaki işlemi kullanarak bir kapsam yapılandırması uygulayın.
 - Çözüm hedefleme yalnızca Microsoft tarafından sunulan çözümler için geçerlidir.  [Kendi veya iş ortakları tarafından oluşturulan](solutions-creating.md)çözümlere uygulanmaz.
 - Yalnızca Azure Izleyici 'ye doğrudan bağlanan aracıları filtreleyebilirsiniz.  Çözümler, bir kapsam yapılandırmasına dahil edilip edilmeksizin bağlı Operations Manager yönetim grubunun parçası olan aracılara otomatik olarak dağıtılır.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 Çözüm hedefleme, belirtilen ölçütlere uygun olsa da aşağıdaki çözümlerle kullanılamaz.
 
 - Aracı Durumu değerlendirmesi

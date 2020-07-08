@@ -17,10 +17,9 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657172"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
@@ -38,7 +37,7 @@ Azure sayesinde, şu şekilde güvenliğe yönelik gelişmiş, uyumlu çözümle
 * Tehditleri belirleyip algılayın.
 * Uyumluluk gereksinimlerini karşılayın.  
 
-## <a name="antimalware"></a>Korunma
+## <a name="antimalware"></a>Kötü amaçlı yazılımdan koruma
 
 Azure ile Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur.
 
@@ -57,14 +56,14 @@ Sanal makinelerinizi korumaya yardımcı olmak için kötü amaçlı yazılımda
 
 Daha da güçlü koruma için, [Windows Defender Gelişmiş tehdit koruması](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)'nı kullanmayı göz önünde bulundurun. Windows Defender ATP ile şunları alırsınız:
 
-* [Saldırı yüzeyi azaltma](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Saldırı yüzeyini azaltma](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Yeni nesil koruma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection ve yanıt](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Otomatik araştırma ve düzeltme](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
 * [Güvenlik puanı](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [Gelişmiş arama](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Yönetim ve API 'Ler](/windows/security/threat-protection/windows-defender-atp/management-apis)
-* [Microsoft tehdit koruması](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+* [Microsoft Tehdit Koruması](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
 Daha fazla bilgi edinin:
 

@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658635"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Izleyici Görünüm Tasarımcısı kutucuk dönüştürmeleri
@@ -23,13 +22,13 @@ ms.locfileid: "77658635"
 Çalışma kitaplarında halka & listesi kutucuğunu yeniden oluşturmak iki ayrı görselleştirmeyi içerir. Halka bölümü için iki seçenek vardır.
 Her iki başlatma için de **Sorgu Ekle** ' ye ve özgün sorguyu görünüm tasarımcısından hücreye yapıştırın.
 
-**Seçenek 1:** **Görselleştirme** açılan menüsünde ![ **pasta grafik** seçin: pasta grafik görselleştirme menüsü](media/view-designer-conversion-tiles/pie-chart.png)
+**Seçenek 1:** **Görselleştirme** açılan menüsünde **pasta grafik** seçin: ![ pasta grafik görselleştirme menüsü](media/view-designer-conversion-tiles/pie-chart.png)
 
 **Seçenek 2:** **Görselleştirme** açılan menüsünde **sorguya göre ayarla** ' yı seçin ve `| render piechart` sorguya ekleyin:
 
  ![Görselleştirme menüsü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Örneğinde**
+**Örnek**
 
 Özgün sorgu
 ```KQL
@@ -79,7 +78,7 @@ search *
 
  ![Görselleştirme menüsü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Örneğinde**
+**Örnek**
 
 ```KQL
 search * 
@@ -146,7 +145,7 @@ search *
 
 Sorguyu çubuk grafik olarak görselleştirmeye yönelik iki seçenek vardır:
 
-**Seçenek 1:** **Görselleştirme** açılan menüsünde **çubuk grafik** ' i seçin ![: bargrafik görselleştirmesi](media/view-designer-conversion-tiles/bar-visualization.png)
+**Seçenek 1:** **Görselleştirme** açılan menüsünde **çubuk grafik** ' i seçin: ![ bargrafik görselleştirmesi](media/view-designer-conversion-tiles/bar-visualization.png)
  
 **Seçenek 2:** **Görselleştirme** açılan menüsünde **sorguya göre ayarla** ' yı seçin ve `| render barchart` sorguya ekleyin:
 

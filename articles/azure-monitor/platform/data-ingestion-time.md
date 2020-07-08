@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666646"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
@@ -60,7 +59,7 @@ Koleksiyon sıklığını belirlemede her çözüm için belgelere bakın.
 Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](log-standard-properties.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
 
 ### <a name="new-custom-data-types-provisioning"></a>Yeni özel veri türleri sağlama
-[Özel bir günlük](data-sources-custom-logs.md) veya [Veri Toplayıcı API](data-collector-api.md)'sinden yeni bir tür özel veri oluşturulduğunda, sistem ayrılmış bir depolama kapsayıcısı oluşturur. Bu, yalnızca bu veri türünün ilk görünümünde gerçekleşen tek seferlik bir ek yüktür.
+[Özel bir günlük](data-sources-custom-logs.md) veya [Veri Toplayıcı API](data-collector-api.md)'sinden yeni bir tür özel veri oluşturulduğunda, sistem ayrılmış bir depolama kapsayıcısı oluşturur. Ek süre gerektiren bu tek seferlik işlem yalnızca bu veri türüyle ilk kez karşılaşıldığında gerçekleştirilir.
 
 ### <a name="surge-protection"></a>Aşırı gerilim koruma
 Azure Izleyici 'nin en üst önceliği, hiçbir müşteri verisinin kaybolmamasını sağlamaktır, bu nedenle sistemin veri dalgalanmalarına yönelik yerleşik koruması vardır. Bu, Immense yükünün altında bile olsa, sistemin çalışmaya devam etmesini sağlamak için arabellekleri içerir. Normal yük altında, bu denetimler bir dakikadan kısa bir süre içinde, ancak aşırı koşullarda ve hatalarda verilerin güvende olmasını sağlarken önemli bir zaman ekleyebilecekleri hatalara göre daha az zaman ekleyebilirler.
@@ -75,11 +74,11 @@ Bu işlem şu anda düşük miktarda veri hacmi olduğunda yaklaşık 5 dakika s
 ## <a name="checking-ingestion-time"></a>Alma süresi denetleniyor
 Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebilir. Ortamınızdaki belirli davranışları belirlemek için günlük sorgularını kullanabilirsiniz. Aşağıdaki tabloda, bir kaydın oluşturulduğu ve Azure Izleyici 'ye gönderildiği gibi farklı zamanları nasıl belirleyebilmeniz gerektiğini belirtir.
 
-| Adım | Özellik veya Işlev | Açıklamalar |
+| Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
 | Veri kaynağında oluşturulan kayıt | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
 | Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri
 [İngestion_time ()](/azure/kusto/query/ingestiontimefunction) Işlevinin sonucunu _TimeGenerated_ özelliği ile karşılaştırarak belirli bir kaydın gecikmesini ölçebilirsiniz. Bu veriler, alma gecikmesini nasıl davranacağını bulmak için çeşitli toplamalar ile birlikte kullanılabilir. Büyük miktarda veri için Öngörüler elde etmek üzere alma süresinin bazı yüzdelerini inceleyin. 
@@ -95,7 +94,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Önceki yüzdebirlik denetimleri, gecikme süresi içinde genel eğilimleri bulmak için iyi bir seçimdir. Gecikme süresi içinde kısa süreli bir ani artış belirlemek için maksimum (`max()`) kullanımı daha etkili olabilir.
+Önceki yüzdebirlik denetimleri, gecikme süresi içinde genel eğilimleri bulmak için iyi bir seçimdir. Gecikme süresi içinde kısa süreli bir ani artış belirlemek için maksimum () kullanımı `max()` daha etkili olabilir.
 
 Belirli bir bilgisayar için belirli bir süre içinde alım zamanında detaya gitmek isterseniz, bir grafikteki son günden verileri görselleştirerek aşağıdaki sorguyu kullanın: 
 

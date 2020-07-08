@@ -7,10 +7,9 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655659"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Işlevleri 'nin desteklediği özellikler için Application Insights
@@ -27,27 +26,27 @@ Application Insights uyumlu sürümleri hakkında daha fazla bilgi için bkz. [B
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **Otomatik toplama**        |                 |                   |               
-| &bull;İstekleri                     | Yes             | Yes               | 
-| &bull;Larý                   | Yes             | Yes               | 
-| &bull;Performans sayaçları         | Yes             | Yes               |
+| &bull;İstekleri                     | Evet             | Evet               | 
+| &bull;Larý                   | Evet             | Evet               | 
+| &bull;Performans sayaçları         | Evet             | Evet               |
 | &bull;Bağlantılıdır                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Evet               | 
+| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Evet               | 
+| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Evet               | 
+| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Evet               | 
 | | | | 
 | **Desteklenen özellikler**                |                   |                   |               
-| &bull;QuickPulse/Liveölçümleri       | Yes             | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Güvenli denetim kanalı|                 | Yes               | 
-| &bull;Aşağıdakine                     | Yes             | Yes               | 
-| &bull;Sinyal                   |                 | Yes               | 
+| &bull;QuickPulse/Liveölçümleri       | Evet             | Evet               | 
+| &nbsp;&nbsp;&nbsp;&mdash;Güvenli denetim kanalı|                 | Evet               | 
+| &bull;Aşağıdakine                     | Evet             | Evet               | 
+| &bull;Sinyal                   |                 | Evet               | 
 | | | | 
 | **Bağıntı**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Yes               | 
-| &bull;EventHub                       |                   | Yes               | 
+| &bull;ServiceBus                     |                   | Evet               | 
+| &bull;EventHub                       |                   | Evet               | 
 | | | | 
 | **Yapılandırılabilir**                      |                   |                   |           
-| &bull;Tamamen yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Yes                   | 
+| &bull;Tamamen yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Evet                   | 
 
 
 ## <a name="performance-counters"></a>Performans Sayaçları

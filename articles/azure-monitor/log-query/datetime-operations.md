@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655387"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki tarih saat değerleriyle çalışma
@@ -38,7 +37,7 @@ Timespans bir Decimal ve ardından bir zaman birimi tarafından ifade edilir:
 |mikrosaniye ölçeğinde | mikrosaniye ölçeğinde  |
 |sayaç        | nanosaniyelik   |
 
-DateTimeS `todatetime` işleci kullanılarak bir dize atama ile oluşturulabilir. Örneğin, belirli bir zaman diliminde gönderilen VM sinyallerini gözden geçirmek için `between` işlecini kullanarak bir zaman aralığı belirtin.
+DateTimeS işleci kullanılarak bir dize atama ile oluşturulabilir `todatetime` . Örneğin, belirli bir zaman diliminde gönderilen VM sinyallerini gözden geçirmek için `between` işlecini kullanarak bir zaman aralığı belirtin.
 
 ```Kusto
 Heartbeat
@@ -58,7 +57,7 @@ Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
-En kısa ve en okunabilir Yöntem `ago` işleci kullanıyor olsa da:
+En kısa ve en okunabilir Yöntem işleci kullanıyor olsa da `ago` :
 ```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
@@ -84,7 +83,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-`timeAgo` Sütun, şöyle bir değer tutar: "00:09:31.5118992", yani hh: mm: ss. fffffff olarak biçimlendirilir. Başlangıç zamanından bu yana bu değerleri dakika olarak `numver` biçimlendirmek isterseniz, bu değeri "1 dakika" olarak bölün:
+`timeAgo`Sütun, şöyle bir değer tutar: "00:09:31.5118992", yani hh: mm: ss. fffffff olarak biçimlendirilir. Başlangıç zamanından bu yana bu değerleri dakika olarak biçimlendirmek isterseniz `numver` , bu değeri "1 dakika" olarak bölün:
 
 ```Kusto
 Event
@@ -117,7 +116,7 @@ Bu sorgu aşağıdaki tabloyu üretir:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-Sonuç demetlerini oluşturmanın başka bir yolu da, işlevleri kullanmaktır `startofday`:
+Sonuç demetlerini oluşturmanın başka bir yolu da, işlevleri kullanmaktır `startofday` :
 
 ```Kusto
 Event

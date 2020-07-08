@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671622"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights ile canlı Azure Service Fabric uygulamaları profilini yayınlama
@@ -18,7 +17,7 @@ ms.locfileid: "77671622"
 Ayrıca, bu hizmetlerde Application Insights Profiler dağıtabilirsiniz:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure sanal makineleri](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Sanal Makineler](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Ortam dağıtım tanımını ayarlama
 
@@ -30,7 +29,7 @@ Ortamınızı ayarlamak için aşağıdaki işlemleri gerçekleştirin:
 
 1. Dağıtım şablonu dosyasında [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) uzantısını arayın.
 
-1. Aşağıdaki `SinksConfig` bölümü öğesinin `WadCfg`bir alt öğesi olarak ekleyin. `ApplicationInsightsProfiler` Özellik değerini kendi Application Insights izleme anahtarınızla değiştirin:  
+1. Aşağıdaki `SinksConfig` bölümü öğesinin bir alt öğesi olarak ekleyin `WadCfg` . `ApplicationInsightsProfiler`Özellik değerini kendi Application Insights izleme anahtarınızla değiştirin:  
 
       ```json
       "SinksConfig": {

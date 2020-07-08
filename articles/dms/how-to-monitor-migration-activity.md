@@ -12,10 +12,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77648521"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanarak geçiş etkinliğini izleme
@@ -63,7 +62,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
       <td>DMS işlem hattı çalışıyor ve geçiş gerçekleştiriyor.</td>
     </tr>
     <tr>
-      <td>Complete</td>
+      <td>Tamamla</td>
       <td>Geçiş tamamlandı.</td>
     </tr>
     <tr>
@@ -93,7 +92,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Süre</strong></td>
-      <td>Yok</td>
+      <td>YOK</td>
       <td>Geçiş etkinliğinin başlatıldığı veya geçişinin hatalı olarak başlatıldığı toplam süre.</td>
     </tr>
      </tbody>

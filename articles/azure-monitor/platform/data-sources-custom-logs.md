@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670602"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure İzleyici'deki özel günlükler
@@ -46,15 +45,15 @@ Toplanacak günlük dosyaları aşağıdaki ölçütlere uymalıdır.
 ## <a name="defining-a-custom-log"></a>Özel bir günlük tanımlama
 Özel bir günlük dosyası tanımlamak için aşağıdaki yordamı kullanın.  Özel günlük ekleme örneğine ilişkin bir anlatım için bu makalenin sonuna gidin.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>1. Adım. Özel günlük Sihirbazı 'Nı açın
+### <a name="step-1-open-the-custom-log-wizard"></a>Adım 1. Özel günlük Sihirbazı 'Nı açın
 Özel günlük Sihirbazı Azure portal çalışır ve toplanacak yeni bir özel günlük tanımlamanızı sağlar.
 
 1. Azure portal, **Gelişmiş ayarlar**> çalışma alanınız > **Log Analytics çalışma alanları** ' nı seçin.
-2. **Veri** > **özel günlükleri**' ne tıklayın.
+2. **Veri**  >  **özel günlükleri**' ne tıklayın.
 3. Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir. Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.
 4. Özel günlük Sihirbazı 'Nı açmak için **Ekle +** ' ye tıklayın.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>2. Adım Örnek günlük yükleme ve ayrıştırma
+### <a name="step-2-upload-and-parse-a-sample-log"></a>Adım 2. Örnek günlük yükleme ve ayrıştırma
 Özel günlüğün bir örneğini karşıya yükleyerek başlayabilirsiniz.  Sihirbaz, doğrulamanız için bu dosyadaki girişleri ayrıştırır ve görüntüler.  Azure Izleyici, her bir kaydı tanımlamak için belirttiğiniz sınırlayıcıyı kullanır.
 
 **Yeni satır** varsayılan sınırlayıcıdır ve her satırda tek bir girişi olan günlük dosyaları için kullanılır.  Satır, kullanılabilir biçimlerden birindeki tarih ve saat ile başlıyorsa, birden fazla satıra yayılan girdileri destekleyen bir **zaman damgası** sınırlayıcısı belirtebilirsiniz.
@@ -70,16 +69,16 @@ Zaman damgası sınırlayıcısı kullanılıyorsa, Azure Izleyici 'de depolanan
 ### <a name="step-3-add-log-collection-paths"></a>3. Adım Günlük koleksiyonu yolları Ekle
 Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalısınız.  Günlük dosyası için belirli bir yol ve ad sağlayabilir ya da ad için joker karakter içeren bir yol belirtebilirsiniz. Bu, her gün yeni bir dosya oluşturan uygulamaları veya bir dosya belirli bir boyuta ulaştığında destekler. Tek bir günlük dosyası için birden çok yol da sağlayabilirsiniz.
 
-Örneğin, bir uygulama, log20100316. txt ' de olduğu gibi ada dahil edilen tarihle her gün bir günlük dosyası oluşturabilir. Bu tür bir günlük için bir düzen, uygulamanın adlandırma düzenini takip eden herhangi bir günlük dosyasına uygulanacak *\*log. txt* olabilir.
+Örneğin, bir uygulama, her gün log20100316.txt olarak ada dahil edilen tarihi içeren bir günlük dosyası oluşturabilir. Bu tür bir günlük için bir düzen, uygulamanın adlandırma düzenini takip eden herhangi bir günlük dosyasına uygulanacak *log \* . txt* olabilir.
 
 Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenlerin örnekleri verilmiştir.
 
 | Açıklama | Yol |
 |:--- |:--- |
-| *C:\logs* içindeki tüm dosyalar Windows aracısında. txt uzantısıyla |C:\logs\\\*. txt |
-| *C:\logs* içindeki tüm dosyalar, Windows aracısında log ve. txt uzantısıyla başlayan bir ada sahip. |C:\Logs\log\*. txt |
+| *C:\logs* içindeki tüm dosyalar Windows aracısında. txt uzantısıyla |C:\Logs \\ \* . txt |
+| *C:\logs* içindeki tüm dosyalar, Windows aracısında log ve. txt uzantısıyla başlayan bir ada sahip. |C:\Logs\log \* . txt |
 | Linux aracısında. txt uzantısıyla */var/log/Audit* içindeki tüm dosyalar |/var/log/Audit/*. txt |
-| */Var/log/Audit* içindeki tüm dosyalar, log ve Linux aracısında bir. txt uzantısıyla başlayan bir ada sahip. |/var/log/Audit/Log\*. txt |
+| */Var/log/Audit* içindeki tüm dosyalar, log ve Linux aracısında bir. txt uzantısıyla başlayan bir ada sahip. |/var/log/Audit/Log \* . txt |
 
 1. Hangi yol biçimini ekleyecekseniz belirlemek için Windows veya Linux ' u seçin.
 2. Yolu yazın ve **+** düğmesine tıklayın.
@@ -88,7 +87,7 @@ Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenl
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. Adım. Günlük için bir ad ve açıklama girin
 Belirttiğiniz ad, yukarıda açıklandığı gibi, günlük türü için kullanılacaktır.  Bu, özel bir günlük olarak tanımlamak için _CL her zaman sona acaktır.
 
-1. Günlük için bir ad yazın.  CL son eki otomatik olarak sağlanır. ** \_**
+1. Günlük için bir ad yazın.  ** \_ CL** son eki otomatik olarak sağlanır.
 2. İsteğe bağlı bir **Açıklama**ekleyin.
 3. Özel günlük tanımını kaydetmek için **İleri** ' ye tıklayın.
 
@@ -122,7 +121,7 @@ Günlük girişinin tüm içeriği **rawData**adlı tek bir özelliğe yazılır
 | TimeGenerated |Kaydın Azure Izleyici tarafından toplandığı tarih ve saat.  Günlük zaman tabanlı bir sınırlayıcı kullanıyorsa, bu, girdiden toplanan süredir. |
 | SourceSystem |Kaydın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlantı veya System Center Operations Manager <br> Linux – tüm Linux aracıları |
 | RawData |Toplanan girişin tam metni. Büyük olasılıkla, [Bu verileri tek tek özelliklerde ayrıştırmaya](../log-query/parse-text.md)isteyeceksiniz. |
-| ManagementGroupName |System Center Işlemleri için yönetim grubunun adı aracıları yönetme.  Diğer aracılar için bu, AOI-\<Workspace kimliğidir\> |
+| ManagementGroupName |System Center Işlemleri için yönetim grubunun adı aracıları yönetme.  Diğer aracılar için, bu AOI 'dir\<workspace ID\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Özel günlük ekleme hakkında örnek yönergeler
@@ -140,7 +139,7 @@ Günlük dosyalarından birini sağlıyoruz ve bunların toplanacağı olayları
 ![Örnek günlük yükleme ve ayrıştırma](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Günlük koleksiyonu yolları Ekle
-Günlük dosyaları *C:\uygulama\logs*' de yer alır.  *AppYYYYMMDD. log*deseninin tarihini içeren bir ada sahip her gün yeni bir dosya oluşturulur.  Bu günlük için yeterli bir model *c:\myapp\logs\\\*. log*olacaktır.
+Günlük dosyaları *C:\uygulama\logs*' de yer alır.  *AppYYYYMMDD. log*deseninin tarihini içeren bir ada sahip her gün yeni bir dosya oluşturulur.  Bu günlük için yeterli bir model *C:\myapp\logs \\ \* . log*olacaktır.
 
 ![Günlük toplama yolu](media/data-sources-custom-logs/collection-path.png)
 

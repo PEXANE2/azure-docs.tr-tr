@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
 ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661679"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery kullanarak müşteri tarafından yönetilen siteler arasında (VMM ile) olağanüstü durum kurtarmayı kullanımdan kaldırma
@@ -57,7 +56,7 @@ Bu, senaryonun kullanım dışı olduktan sonra DR stratejilerinin etkilenmemesi
 
 Hyper-V çoğaltmasını kullanma seçeneği 2 ' yi seçerek, aşağıdaki adımları yürütün:
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+1. **Korunan öğeler**  >  **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 2. **Çoğaltmayı devre dışı bırak**' da **Kaldır**' ı seçin.
 
     Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma yapılandırması temizlenmeyecektir.** 

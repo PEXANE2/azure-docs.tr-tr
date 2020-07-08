@@ -5,21 +5,20 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671928"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Bağımlılık telemetrisi: Application Insights veri modeli
 
 Bağımlılık telemetrisi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), IZLENEN bileşenin SQL veya HTTP uç noktası gibi uzak bir bileşenle bir etkileşimini temsil eder.
 
-## <a name="name"></a>Adı
+## <a name="name"></a>Name
 
 Bu bağımlılık çağrısıyla başlatılan komutun adı. Düşük kardinalite değeri. Örnekler, saklı yordam adı ve URL yolu şablonudur.
 
-## <a name="id"></a>Kimlik
+## <a name="id"></a>ID
 
 Bağımlılık çağrı örneğinin tanımlayıcısı. Bu bağımlılık çağrısına karşılık gelen istek telemetrisi öğesiyle bağıntı için kullanılır. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
 
@@ -37,7 +36,7 @@ Bağımlılık çağrısının hedef sitesi. Örnek olarak sunucu adı, ana bilg
 
 ## <a name="duration"></a>Süre
 
-Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM`. Gün sayısından `1000` az olmalıdır.
+Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM` . Gün sayısından az olmalıdır `1000` .
 
 ## <a name="result-code"></a>Sonuç kodu
 

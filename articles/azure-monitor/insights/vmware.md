@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664788"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
@@ -40,10 +39,10 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
    ![Syslog akışı](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
-1. VSphere için Syslog iletmeyi ayarlayın. Syslog iletmeyi ayarlamaya yardımcı olacak ayrıntılı bilgiler için, bkz. [ESXi 5,0 ve üzeri için Syslog yapılandırma (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). **ESXi ana bilgisayar yapılandırması** > **yazılım** > **Gelişmiş ayarlar** > **Syslog**' a gidin.
+1. VSphere için Syslog iletmeyi ayarlayın. Syslog iletmeyi ayarlamaya yardımcı olacak ayrıntılı bilgiler için, bkz. [ESXi 5,0 ve üzeri için Syslog yapılandırma (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). **ESXi ana bilgisayar yapılandırması**  >  **yazılım**  >  **Gelişmiş ayarlar**  >  **Syslog**' a gidin.
    ![vspburconfig](./media/vmware/vsphere1.png)  
 1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514` olabilir.
-1. Syslog için ESXi ana bilgisayar güvenlik duvarını açın. **ESXi ana bilgisayar yapılandırması** > **yazılım** > **güvenlik profili** > **güvenlik duvarı** ve açık **Özellikler**.  
+1. Syslog için ESXi ana bilgisayar güvenlik duvarını açın. **ESXi ana bilgisayar yapılandırması**  >  **Yazılım**  >  **Güvenlik profili**  >  **Güvenlik duvarı** ve açık **Özellikler**.  
 
     ![vsizefw](./media/vmware/vsphere2.png)  
 
@@ -56,17 +55,17 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Çalıştırarak `sudo /opt/microsoft/omsagent/bin/service_control restart`Linux için Log Analytics aracısını yeniden başlatın.
-1. ESXi konağındaki `nc` komutunu kullanarak Linux sunucusu Ile ESXi Konağı arasındaki bağlantıyı test edin. Örneğin:
+1. Çalıştırarak Linux için Log Analytics aracısını yeniden başlatın `sudo /opt/microsoft/omsagent/bin/service_control restart` .
+1. ESXi konağındaki komutunu kullanarak Linux sunucusu ile ESXi Konağı arasındaki bağlantıyı test edin `nc` . Örneğin:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Azure portal için `VMware_CL`bir günlük sorgusu gerçekleştirin. Azure Izleyici Syslog verilerini toplarken Syslog biçimini korur. Portalda, *ana bilgisayar* adı ve *ProcessName*gibi bazı belirli alanlar yakalanır.  
+1. Azure portal için bir günlük sorgusu gerçekleştirin `VMware_CL` . Azure Izleyici Syslog verilerini toplarken Syslog biçimini korur. Portalda, *ana bilgisayar* adı ve *ProcessName*gibi bazı belirli alanlar yakalanır.  
 
-    ![type](./media/vmware/type.png)  
+    ![tür](./media/vmware/type.png)  
 
     Görünüm günlüğü arama sonuçlarınız yukarıdaki görüntüyle benzerdir VMware İzleme çözüm panosunu kullanmak üzere ayarlanır.  
 
@@ -131,7 +130,7 @@ Tek bir ESXi ana bilgisayarı, işlemlerine bağlı olarak birden çok günlük 
 
 Bir ESXi konağına veya bir olay türüne tıklayarak daha fazla ayrıntıya gidebilirsiniz.
 
-Bir ESXi ana bilgisayar adına tıkladığınızda, bu ESXi ana bilgisayarındaki bilgileri görüntüleyebilirsiniz. Olay türü ile sonuçları daraltmak istiyorsanız, arama sorgusuna ekleyin `“ProcessName_s=EVENT TYPE”` . Arama filtresinde **ProcessName** seçeneğini belirleyebilirsiniz. Bu, bilgileri sizin için daraltır.
+Bir ESXi ana bilgisayar adına tıkladığınızda, bu ESXi ana bilgisayarındaki bilgileri görüntüleyebilirsiniz. Olay türü ile sonuçları daraltmak istiyorsanız, `“ProcessName_s=EVENT TYPE”` arama sorgusuna ekleyin. Arama filtresinde **ProcessName** seçeneğini belirleyebilirsiniz. Bu, bilgileri sizin için daraltır.
 
 ![incelemek](./media/vmware/eventhostdrilldown.png)
 
@@ -186,9 +185,9 @@ Birden çok neden olabilir:
 * Log Analytics aracısına sahip VM doğru ayarlanmadı. Bunu test etmek için aşağıdaki adımları gerçekleştirin:
 
   1. Log Analytics 1514 numaralı bağlantı noktasını dinler. Açık olduğunu doğrulamak için şu komutu çalıştırın:`netstat -a | grep 1514`
-  1. Açık bağlantı noktasını `1514/tcp` görmeniz gerekir. Bunu yapmazsanız, omsagent 'ın doğru bir şekilde yüklendiğinden emin olun. Bağlantı noktası bilgilerini görmüyorsanız, VM 'de Syslog bağlantı noktası açık değildir.
+  1. Açık bağlantı noktasını görmeniz gerekir `1514/tcp` . Bunu yapmazsanız, omsagent 'ın doğru bir şekilde yüklendiğinden emin olun. Bağlantı noktası bilgilerini görmüyorsanız, VM 'de Syslog bağlantı noktası açık değildir.
 
-    a. Kullanarak `ps -ef | grep oms`Log Analytics aracısının çalıştığını doğrulayın. Çalışmıyorsa, komutunu çalıştırarak işlemi başlatın`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Kullanarak Log Analytics aracısının çalıştığını doğrulayın `ps -ef | grep oms` . Çalışmıyorsa, komutunu çalıştırarak işlemi başlatın`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` dosyasını açın.
 

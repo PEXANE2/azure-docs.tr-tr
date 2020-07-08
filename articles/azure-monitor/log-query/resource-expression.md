@@ -7,22 +7,21 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665708"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusunda Resource () ifadesi
 
-İfade `resource` , diğer kaynaklardan verileri almak için [kaynak kapsamındaki](scope.md#query-scope) bir Azure izleyici sorgusunda kullanılır. 
+`resource`İfade, diğer kaynaklardan verileri almak için [kaynak kapsamındaki](scope.md#query-scope) bir Azure izleyici sorgusunda kullanılır. 
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 `resource(`*Tanımlayıcısını*`)`
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 - *Tanımlayıcı*: bir KAYNAĞıN kaynak kimliği.
 

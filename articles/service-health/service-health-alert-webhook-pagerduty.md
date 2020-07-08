@@ -4,10 +4,9 @@ description: Pagerharcı örneğiniz için hizmet sistem durumu olayları hakkı
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654078"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Web kancalarını kullanarak Pagerharcı ile Azure hizmet durumu uyarıları gönderme
@@ -27,7 +26,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 
     a. **Tümleştirme türü**: Microsoft Azure
 
-    b. **Tümleştirme adı**: \<ad\>
+    b. **Tümleştirme adı**:\<Name\>
 
     ![Pagerharcı 'de "tümleştirme ayarları"](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -80,7 +79,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 
     BODY        <service health payload>
     ```
-1. "Olay KIMLIĞINIZI" `202 Accepted` içeren bir ileti içeren bir iletisi almalısınız.
+1. `202 Accepted`"Olay kimliğinizi" içeren bir ileti içeren bir iletisi almalısınız.
 
 1. Tümleştirmenin başarıyla ayarlandığını onaylamak için [Pagerharcı](https://www.pagerduty.com/) 'e gidin.
 

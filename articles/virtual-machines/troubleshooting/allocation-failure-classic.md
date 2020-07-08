@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913387"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Klasik dağıtım modelindeki ayırma hatası senaryolarına özgü sorun giderme adımları
@@ -50,7 +49,7 @@ Upgrade_VMSizeNotSupported veya GeneralError
 
 Bir VM 'yi yeniden boyutlandırma veya var olan bir bulut hizmetine bir VM veya rol örneği ekleme isteği, var olan bulut hizmetini barındıran orijinal kümede denenmelidir. Yeni bir bulut hizmeti oluşturmak, Azure platformunun ücretsiz kaynakları olan veya istediğiniz VM boyutunu destekleyen başka bir küme bulmasına olanak tanır.
 
-**Sorunu**
+**Geçici çözüm**
 
 Hata Upgrade_VMSizeNotSupported * ise farklı bir VM boyutu deneyin. Farklı bir VM boyutu kullanmak bir seçenek değilse, ancak farklı bir sanal IP adresi (VIP) kullanmayı kabul ediyorsanız, yeni VM 'yi barındırmak için yeni bir bulut hizmeti oluşturun ve yeni bulut hizmetini mevcut VM 'Lerin çalıştığı bölgesel sanal ağa ekleyin. Mevcut bulut hizmetiniz bölgesel bir sanal ağ kullanmıyorsa, yeni bulut hizmeti için yeni bir sanal ağ oluşturmaya devam edebilir ve ardından [var olan sanal ağınızı yeni sanal ağa](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)bağlayabilirsiniz. [Bölgesel sanal ağlar](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)hakkında daha fazla bilgi için bkz..
 
@@ -65,7 +64,7 @@ GeneralError *
 
 Kısmi olarak ayırmayı kaldırma, bir bulut hizmetindeki bir veya daha fazla VM 'yi değil, bir veya daha fazla sanal makineyi durdurduysanız (serbest bırakılır) Bir VM 'yi durdurduğunuzda (serbest bırakma), ilişkili kaynaklar serbest bırakılır. Bu durdurulan (serbest bırakıldı) VM 'nin yeniden başlatılması bu nedenle yeni bir ayırma isteğidir. VM 'lerin kısmen serbest bırakılmış bir bulut hizmetinde yeniden başlatılması, mevcut bir bulut hizmetine VM ekleme ile eşdeğerdir. Ayırma isteğinin, var olan bulut hizmetini barındıran orijinal kümede denenmelidir. Farklı bir bulut hizmeti oluşturmak, Azure platformunun boş kaynak içeren başka bir kümeyi bulmasını veya istediğiniz VM boyutunu desteklediğini sağlar.
 
-**Sorunu**
+**Geçici çözüm**
 
 Farklı bir VIP kullanmayı kabul ediyorsanız, durdurulmuş (serbest bırakılmış) VM 'Leri silin (ancak ilişkili diskleri tutun) ve VM 'Leri farklı bir bulut hizmeti aracılığıyla geri ekleyin. Bulut hizmetlerinizi bağlamak için bölgesel bir sanal ağ kullanın:
 
@@ -81,7 +80,7 @@ GeneralError *
 
 Tam kaldırma, bir bulut hizmetindeki tüm sanal makineleri durdurduğunuzun (serbest bırakıldığı) anlamına gelir. Bu VM 'Leri yeniden başlatmaya yönelik ayırma isteklerinin, bulut hizmetini barındıran orijinal kümede denenmelidir. Yeni bir bulut hizmeti oluşturmak, Azure platformunun ücretsiz kaynakları olan veya istediğiniz VM boyutunu destekleyen başka bir küme bulmasına olanak tanır.
 
-**Sorunu**
+**Geçici çözüm**
 
 Farklı bir VIP kullanmayı kabul ediyorsanız, özgün durdurulmuş (serbest bırakılmış) VM 'Leri silin (ancak ilişkili diskleri tutun) ve ilgili bulut hizmetini silin (VM 'Leri durdurduysanız (serbest bırakıldığında), ilişkili işlem kaynakları zaten serbest bırakıldı. VM 'Leri yeniden eklemek için yeni bir bulut hizmeti oluşturun.
 
@@ -94,7 +93,7 @@ New_General * veya New_VMSizeNotSupported *
 
 Bir bulut hizmetinin hazırlama dağıtımı ve üretim dağıtımı aynı kümede barındırılır. İkinci dağıtımı eklediğinizde, karşılık gelen ayırma isteği, ilk dağıtımı barındıran kümede denenir.
 
-**Sorunu**
+**Geçici çözüm**
 
 İlk dağıtımı ve özgün bulut hizmetini silin ve bulut hizmetini yeniden dağıtın. Bu eylem, her iki dağıtımda veya istediğiniz VM boyutlarını destekleyen bir kümede yeterli boş kaynağa sahip olan bir kümedeki ilk dağıtımı gösterebilir.
 
@@ -107,7 +106,7 @@ New_General * veya New_VMSizeNotSupported *
 
 Benzeşim grubuna atanan tüm işlem kaynakları tek bir kümeye bağlıdır. Bu benzeşim grubundaki yeni işlem kaynağı istekleri, mevcut kaynakların barındırıldığı kümede denenir. Bu, yeni kaynakların yeni bir bulut hizmeti veya var olan bir bulut hizmeti aracılığıyla oluşturulup oluşturulmayacağı için geçerlidir.
 
-**Sorunu**
+**Geçici çözüm**
 
 Benzeşim grubu gerekli değilse, benzeşim grubu kullanmayın veya işlem kaynaklarınızı birden çok benzeşim grubuna gruplandırın.
 
@@ -120,7 +119,7 @@ New_General * veya New_VMSizeNotSupported *
 
 Bölgesel sanal ağların tanıtılmasından önce, bir sanal ağı bir benzeşim grubuyla ilişkilendirmeniz gerekiyordu. Sonuç olarak, bir benzeşim grubuna yerleştirilmiş işlem kaynakları yukarıdaki "ayırma senaryosu: benzeşim grubu (VM/hizmet yakınlığı)" bölümünde açıklanan kısıtlamalar ile bağlanır. İşlem kaynakları bir kümeye bağlıdır.
 
-**Sorunu**
+**Geçici çözüm**
 
 Benzeşim grubuna ihtiyacınız yoksa, eklemekte olduğunuz yeni kaynaklar için yeni bir bölgesel sanal ağ oluşturun ve ardından [mevcut sanal ağınızı yeni sanal ağa bağlayın](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). [Bölgesel sanal ağlar](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)hakkında daha fazla bilgi için bkz..
 

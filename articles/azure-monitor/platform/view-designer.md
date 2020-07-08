@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658498"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
@@ -101,7 +100,7 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
 | Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
-| İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
+| İçeri Aktar      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
 | Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

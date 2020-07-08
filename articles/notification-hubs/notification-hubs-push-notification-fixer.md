@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657592"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs 'da bırakılan bildirimleri tanılama
@@ -116,7 +115,7 @@ Bir anında iletme bildirimi hizmeti bir bildirim sunmaya çalışır, ancak cih
 
 Her uygulama yalnızca bir son bildirimi depolar. Bir cihaz çevrimdışıyken birden çok bildirim gönderiliyorsa, her yeni bildirim son birinin atılmasına neden olur. Yalnızca en yeni bildirimin tutulması, APNs 'de *birleştirme* ve FCM 'de *daraltma* olarak adlandırılır. (FCM daraltma anahtarını kullanır.) Cihaz uzun bir süre çevrimdışı kaldığında, cihaz için depolanan bildirimler atılır. Daha fazla bilgi için bkz. [APNs genel bakış] ve [FCM iletileri hakkında].
 
-Notification Hubs, genel SendNotification API 'sini kullanarak bir HTTP üst bilgisi aracılığıyla birleştirme anahtarını geçirebilirsiniz. Örneğin, .NET SDK için kullanacaksınız `SendNotificationAsync`. SendNotification API 'SI, karşılık gelen anında iletme bildirimi hizmetine gönderilen HTTP üstbilgilerini de alır.
+Notification Hubs, genel SendNotification API 'sini kullanarak bir HTTP üst bilgisi aracılığıyla birleştirme anahtarını geçirebilirsiniz. Örneğin, .NET SDK için kullanacaksınız `SendNotificationAsync` . SendNotification API 'SI, karşılık gelen anında iletme bildirimi hizmetine gönderilen HTTP üstbilgilerini de alır.
 
 ## <a name="self-diagnosis-tips"></a>Kendi kendine tanılama ipuçları
 
@@ -199,7 +198,7 @@ Bildirim istemci cihazına ulaşmazsa, Notification Hubs bunu anında iletme bil
 
 Anında iletme bildirimi hizmeti hatalarıyla ilgili bilgi almak için [Enabletestsend] özelliğini kullanabilirsiniz. Portalda veya Visual Studio istemcisinden test iletileri gönderdiğinizde bu özellik otomatik olarak etkinleştirilir. Ayrıntılı hata ayıklama bilgilerini ve API 'Leri kullanarak da bu özelliği kullanabilirsiniz. Şu anda bunu .NET SDK 'da kullanabilirsiniz. Bu, sonunda tüm istemci SDK 'larına eklenecektir.
 
-`EnableTestSend` Özelliği Rest çağrısıyla birlikte kullanmak için, gönder çağrınızın sonuna *Test* adlı bir sorgu dizesi parametresi ekleyin. Örneğin:
+`EnableTestSend`ÖZELLIĞI Rest çağrısıyla birlikte kullanmak için, gönder çağrınızın sonuna *Test* adlı bir sorgu dizesi parametresi ekleyin. Örneğin:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -215,9 +214,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Yürütmenin sonunda `result.State` yalnızca durumlar `Enqueued`olur. Sonuçlar, anında iletme bildiriğinize ne olduğunu gösteren bir öngörü sağlamaz.
+Yürütmenin sonunda `result.State` yalnızca durumlar olur `Enqueued` . Sonuçlar, anında iletme bildiriğinize ne olduğunu gösteren bir öngörü sağlamaz.
 
-Sonra, `EnableTestSend` Boolean özelliğini kullanabilirsiniz. Bildirim gönderildiğinde `EnableTestSend` oluşan anında iletme bildirimi `NotificationHubClient` hizmeti hataları hakkında ayrıntılı bir durum almak için başlatılırken özelliğini kullanın. Gönderme çağrısı, bildirimi anında iletme bildirimi hizmetine teslim etmek için Notification Hubs ihtiyaç duyduğundan ek süre dönmesi daha fazla zaman alır.
+Sonra, `EnableTestSend` Boolean özelliğini kullanabilirsiniz. `EnableTestSend` `NotificationHubClient` Bildirim gönderildiğinde oluşan anında iletme bildirimi hizmeti hataları hakkında ayrıntılı bir durum almak için başlatılırken özelliğini kullanın. Gönderme çağrısı, bildirimi anında iletme bildirimi hizmetine teslim etmek için Notification Hubs ihtiyaç duyduğundan ek süre dönmesi daha fazla zaman alır.
 
 ```csharp
     bool enableTestSend = true;
@@ -244,7 +243,7 @@ The Token obtained from the Token Provider is wrong
 Bu ileti Notification Hubs ' de yapılandırılan kimlik bilgilerinin geçersiz olduğunu veya hub 'daki kayıtlarla ilgili bir sorun olduğunu gösterir. Bu kaydı silin ve iletiyi göndermeden önce istemcinin kaydı yeniden oluşturmasını sağlayın.
 
 > [!NOTE]
-> `EnableTestSend` Özelliği kullanımı yoğun bir şekilde kısıtlanıyor. Bu seçeneği yalnızca bir geliştirme/test ortamında ve sınırlı sayıda kayıt kümesiyle kullanın. Hata ayıklama bildirimleri yalnızca 10 cihaza gönderilir. Ayrıca, dakikada 10, hata ayıklama gönderme için bir sınır de vardır.
+> Özelliği kullanımı yoğun bir şekilde `EnableTestSend` kısıtlanıyor. Bu seçeneği yalnızca bir geliştirme/test ortamında ve sınırlı sayıda kayıt kümesiyle kullanın. Hata ayıklama bildirimleri yalnızca 10 cihaza gönderilir. Ayrıca, dakikada 10, hata ayıklama gönderme için bir sınır de vardır.
 
 ### <a name="review-telemetry"></a>Telemetriyi İnceleme
 
@@ -288,7 +287,7 @@ Programlı erişim hakkında daha fazla bilgi için bkz. [programlı erişim](ht
 <!-- LINKS -->
 [Notification Hubs genel bakış]: notification-hubs-push-notification-overview.md
 [Azure Notification Hubs kullanmaya başlama]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Şablondan]: https://msdn.microsoft.com/library/dn530748.aspx
+[Şablonlar]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNs genel bakış]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [FCM iletileri hakkında]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx

@@ -4,10 +4,9 @@ description: ServiceNow örneğiniz için hizmet sistem durumu olayları hakkın
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654112"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web kancalarını kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
@@ -26,7 +25,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
  
     ![ServiceNow 'daki "yeni komut dosyalı REST API" düğmesi](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  REST API bir **ad** ekleyin ve **API kimliğini** olarak `azureservicehealth`ayarlayın.
+1.  REST API bir **ad** ekleyin ve **API kimliğini** olarak ayarlayın `azureservicehealth` .
 
 1.  **Gönder**’i seçin.
 
@@ -36,12 +35,12 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
     ![ServiceNow içindeki "kaynak sekmesi"](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  Yeni kaynağınızı **adlandırın** `event` ve **http yöntemini** olarak `POST`değiştirin.
+1.  Yeni kaynağınızı **adlandırın** `event` ve **http yöntemini** olarak değiştirin `POST` .
 
 1.  **Betik** bölümünde aşağıdaki JavaScript kodunu ekleyin:
 
     >[!NOTE]
-    >Aşağıdaki betikte `<secret>`,`<group>`ve `<email>` değerini güncelleştirmeniz gerekir.
+    >`<secret>` `<group>` Aşağıdaki betikte, ve değerini güncelleştirmeniz gerekir `<email>` .
     >* `<secret>`GUID gibi bir rastgele dize olmalıdır
     >* `<group>`olayı atamak istediğiniz ServiceNow grubu olmalıdır
     >* `<email>`olayı atamak istediğiniz belirli kişi olmalıdır (isteğe bağlı)
@@ -131,7 +130,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
     })(request, response);
     ```
 
-1.  Güvenlik sekmesinde **, onay işaretini** kaldırın ve **Gönder**' i seçin. Ayarladığınız `<secret>` ayarlar, bunun yerine bu API 'yi korur.
+1.  Güvenlik sekmesinde **, onay işaretini** kaldırın ve **Gönder**' i seçin. `<secret>`Ayarladığınız ayarlar, bunun yerine bu API 'yi korur.
 
     ![ServiceNow 'da "kimlik doğrulaması gerektirir" onay kutusu](./media/webhook-alerts/servicenow-resource-settings.png)
 
@@ -187,7 +186,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
     BODY        <service health payload>
     ```
-1. "Olay oluşturuldu" `200 OK` iletisiyle bir yanıt almanız gerekir.
+1. `200 OK`"Olay oluşturuldu" iletisiyle bir yanıt almanız gerekir.
 
 1. Tümleştirmenin başarıyla ayarlandığını onaylamak için [ServiceNow](https://www.servicenow.com/) 'a gidin.
 

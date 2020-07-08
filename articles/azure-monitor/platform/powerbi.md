@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
 ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659294"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Izleyici günlük verilerini Power BI içine aktarın
@@ -29,7 +28,7 @@ Azure Izleyici 'deki bir [Log Analytics çalışma alanındaki](manage-access.md
 Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük sorgusu](../log-query/log-query-overview.md) oluşturarak başlayın.  Daha sonra bu sorguyu, Power BI Desktop tarafından kullanılabilecek [Power Query (e) dile](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) dışarı aktarabilirsiniz.
 
 1. Veri kümenizin verilerini ayıklamak için [Log Analytics günlük sorgusu oluşturun](../log-query/get-started-portal.md) .
-2. **Dışarı aktarma** > **Power BI sorgusunu (d)** seçin.  Bu, sorguyu **Powerbiquery. txt**adlı bir metin dosyasına dışarı aktarır. 
+2. **Dışarı aktarma**  >  **Power BI sorgusunu (d)** seçin.  Bu, sorguyu **PowerBIQuery.txt**adlı bir metin dosyasına dışarı aktarır. 
 
     ![Günlük aramasını dışarı aktar](media/powerbi/export-analytics.png)
 
@@ -39,7 +38,7 @@ Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük
 Power BI Desktop, Power BI yayımlanmakta olabilecek veri kümeleri ve raporlar oluşturmanıza olanak sağlayan bir masaüstü uygulamasıdır.  Azure Izleyici 'den aktarılmış Power Query dilini kullanarak bir sorgu oluşturmak için de kullanabilirsiniz. 
 
 1. Henüz yoksa [Power BI Desktop](https://powerbi.microsoft.com/desktop/) yükleyip uygulamayı açın.
-2. Yeni bir sorgu açmak için **veri** > Al**boş sorgusu ' nu** seçin.  Sonra **Gelişmiş Düzenleyici** ' yi seçin ve ardından dosyaya aktarılmış dosyanın içeriğini sorguya yapıştırın. **Bitti**’ye tıklayın.
+2. **Get Data**  >  Yeni bir sorgu açmak için veri al**boş sorgusu ' nu** seçin.  Sonra **Gelişmiş Düzenleyici** ' yi seçin ve ardından dosyaya aktarılmış dosyanın içeriğini sorguya yapıştırın. **Bitti**’ye tıklayın.
 
     ![Power BI Desktop sorgu](media/powerbi/desktop-new-query.png)
 

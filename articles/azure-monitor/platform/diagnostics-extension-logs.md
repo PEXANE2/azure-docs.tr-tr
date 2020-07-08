@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672404"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Azure tanılama uzantılarından Azure Izleyici günlüklerine veri toplama
@@ -24,13 +23,13 @@ Azure tanılama uzantısı, verileri bir Azure depolama hesabında depolar. Bu v
 
 | Günlük Türü | Kaynak Türü | Konum |
 | --- | --- | --- |
-| IIS günlükleri |Virtual Machines <br> Web rolleri <br> Çalışan rolleri |WAD-IIS-LogFiles (BLOB depolama) |
-| Syslog |Virtual Machines |LinuxsyslogVer2v0 (tablo depolama) |
+| IIS günlükleri |Sanal Makineler <br> Web rolleri <br> Çalışan rolleri |WAD-IIS-LogFiles (BLOB depolama) |
+| Syslog |Sanal Makineler |LinuxsyslogVer2v0 (tablo depolama) |
 | Işlem olaylarını Service Fabric |Service Fabric düğümleri |WADServiceFabricSystemEventTable |
 | Güvenilir aktör olaylarını Service Fabric |Service Fabric düğümleri |WADServiceFabricReliableActorEventTable |
 | Güvenilir hizmet olaylarını Service Fabric |Service Fabric düğümleri |WADServiceFabricReliableServiceEventTable |
-| Windows olay günlükleri |Service Fabric düğümleri <br> Virtual Machines <br> Web rolleri <br> Çalışan rolleri |WADWindowsEventLogsTable (tablo depolama) |
-| Windows ETW günlükleri |Service Fabric düğümleri <br> Virtual Machines <br> Web rolleri <br> Çalışan rolleri |Wadelenebilir Venttable (tablo depolama) |
+| Windows olay günlükleri |Service Fabric düğümleri <br> Sanal Makineler <br> Web rolleri <br> Çalışan rolleri |WADWindowsEventLogsTable (tablo depolama) |
+| Windows ETW günlükleri |Service Fabric düğümleri <br> Sanal Makineler <br> Web rolleri <br> Çalışan rolleri |Wadelenebilir Venttable (tablo depolama) |
 
 ## <a name="data-types-not-supported"></a>Veri türleri desteklenmiyor
 

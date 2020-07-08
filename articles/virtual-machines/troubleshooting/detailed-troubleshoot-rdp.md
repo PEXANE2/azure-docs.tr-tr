@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920153"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure'daki Windows VM’lerine uzak masaüstü bağlantısı sorunlarında ayrıntılı sorun giderme adımları
@@ -114,7 +113,7 @@ Uç noktanın sorunun kaynağı olup olmadığını denetlemek için, geçerli u
 ## <a name="source-4-network-security-groups"></a>Kaynak 4: ağ güvenlik grupları
 Ağ güvenlik grupları izin verilen gelen ve giden trafik üzerinde daha ayrıntılı denetim sağlar. Bir Azure sanal ağında alt ağları ve bulut hizmetlerini kapsayan kurallar oluşturabilirsiniz.
 
-[IP akışı doğrulamayı](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) kullanarak Ağ Güvenlik Grubu’ndaki bir kuralın bir sanal makineye giden veya gelen trafiği engelleyip engellemediğini doğrulayın. Ayrıca, gelen "Izin ver" NSG kuralının mevcut olduğundan ve RDP bağlantı noktası (varsayılan 3389) için önceliklendirildiğinden emin olmak için etkin güvenlik grubu kurallarını gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [sanal makine trafiği akışı sorunlarını gidermek Için etkin güvenlik kurallarını kullanma](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Bir ağ güvenlik grubundaki bir kuralın bir sanal makineden gelen veya giden trafiği engelleyip engellemediğini onaylamak için [IP akışı doğrulama](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) kullanın. Ayrıca, gelen "Izin ver" NSG kuralının mevcut olduğundan ve RDP bağlantı noktası (varsayılan 3389) için önceliklendirildiğinden emin olmak için etkin güvenlik grubu kurallarını gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [sanal makine trafiği akışı sorunlarını gidermek Için etkin güvenlik kurallarını kullanma](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ## <a name="source-5-windows-based-azure-vm"></a>Kaynak 5: Windows tabanlı Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
@@ -131,11 +130,11 @@ Bilgisayarınızdan bağlantıyı yeniden deneyin. Hala uzak masaüstü aracıl�
 * Windows güvenlik duvarı veya başka bir yerel güvenlik duvarının uzak masaüstü trafiğini engelleyen bir giden kuralı vardır.
 * Azure sanal makinesinde çalışan yetkisiz giriş algılama veya ağ izleme yazılımı uzak masaüstü bağlantılarını engellemektedir.
 
-Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için Azure sanal makinesinde bir uzak Azure PowerShell oturumu kullanabilirsiniz. İlk olarak, sanal makinenin barındırma bulut hizmeti için bir sertifika yüklemeniz gerekir. [Azure sanal makinelerine güvenli uzak PowerShell erişimi yapılandırma](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) ' ya gidin ve **InstallWinRMCertAzureVM. ps1** komut dosyasını yerel bilgisayarınıza indirin.
+Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için Azure sanal makinesinde bir uzak Azure PowerShell oturumu kullanabilirsiniz. İlk olarak, sanal makinenin barındırma bulut hizmeti için bir sertifika yüklemeniz gerekir. [Azure sanal makinelerine güvenli uzak PowerShell erişimi yapılandırma](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) ' ya gidin ve **InstallWinRMCertAzureVM.ps1** betik dosyasını yerel bilgisayarınıza indirin.
 
 Daha önce yapmadıysanız Azure PowerShell ' yi yükleyebilirsiniz. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
 
-Sonra, bir Azure PowerShell komut istemi açın ve geçerli klasörü **InstallWinRMCertAzureVM. ps1** komut dosyasının konumuyla değiştirin. Bir Azure PowerShell Betiği çalıştırmak için doğru Yürütme ilkesini ayarlamanız gerekir. Geçerli ilke düzeyinizi öğrenmek için **Get-ExecutionPolicy** komutunu çalıştırın. Uygun düzeyi ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
+Sonra, bir Azure PowerShell komut istemi açın ve geçerli klasörü **InstallWinRMCertAzureVM.ps1** betik dosyasının konumuyla değiştirin. Bir Azure PowerShell Betiği çalıştırmak için doğru Yürütme ilkesini ayarlamanız gerekir. Geçerli ilke düzeyinizi öğrenmek için **Get-ExecutionPolicy** komutunu çalıştırın. Uygun düzeyi ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
 
 Ardından, Azure abonelik adınızı, bulut hizmeti adını ve sanal makine adınızı (< ve > karakterlerini kaldırarak) girin ve ardından bu komutları çalıştırın.
 

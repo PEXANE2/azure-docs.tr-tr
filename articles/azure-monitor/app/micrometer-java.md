@@ -6,17 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670075"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ölçer ve verileri en sevdiğiniz izleme sistemlerine aktarmanıza olanak tanır. Bu makale, hem Spring Boot hem de Spring Boot uygulamaları için Application Insights ile mikro ölçer 'i nasıl kullanacağınızı öğretir.
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5 x kullanma
-Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin: 
+Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin: 
 * [Application Insights Spring-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 veya üzeri
 * Mikro ölçüm Azure kayıt defteri 1.1.0 veya üzeri
 * [Mikro ölçüm yay eski](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 veya üzeri (Bu Işlem, Spring Framework içindeki otomatik yapılandırma kodunu geri barındırır).
@@ -24,7 +23,7 @@ Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
 
 Adımlar
 
-1. Spring Boot uygulamanızın pom. xml dosyasını güncelleştirin ve içine aşağıdaki bağımlılıkları ekleyin:
+1. Spring Boot uygulamanızın pom.xml dosyasını güncelleştirin ve şu bağımlılıkları içine ekleyin:
 
     ```XML
     <dependency>
@@ -54,7 +53,7 @@ Adımlar
 
 ## <a name="using-spring-2x"></a>Spring 2. x kullanma
 
-Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
+Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin:
 
 * Application Insights Spring-Boot-Starter 2.1.2 'yi veya üzeri
 * Azure-Spring-Boot-ölçümleri-Starters 2.0.7 veya üzeri
@@ -62,7 +61,7 @@ Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
 
 Adımlar:
 
-1. Spring Boot uygulamanızın Pod. xml dosyasını güncelleştirin ve aşağıdaki bağımlılığı ekleyin:
+1. Spring Boot uygulamanızın pom.xml dosyasını güncelleştirin ve buna aşağıdaki bağımlılığı ekleyin:
 
     ```XML
     <dependency> 
@@ -113,7 +112,7 @@ Otomatik ölçüm toplamayı devre dışı bırakma:
 
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Spring Boot Web uygulamalarıyla mikro ölçüm kullanın
 
-Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
+Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin:
 
 * Application Insights Web Auto 2.5.0 veya üzeri
 * Mikro ölçüm Azure kayıt defteri 1.1.0 veya üzeri
@@ -121,7 +120,7 @@ Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
 
 Adımlar:
 
-1. Pod. xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
+1. pom.xml veya Build. Gradle dosyanıza aşağıdaki bağımlılıkları ekleyin:
 
     ```XML
         <dependency>
@@ -137,7 +136,7 @@ Adımlar:
         </dependency>
      ```
 
-2. Dosyayı `ApplicationInsights.xml` kaynaklar klasörüne Yerleştir:
+2. `ApplicationInsights.xml`Dosyayı kaynaklar klasörüne Yerleştir:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

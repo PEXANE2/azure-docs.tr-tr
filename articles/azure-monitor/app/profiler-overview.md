@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671656"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
@@ -53,19 +52,19 @@ Microsoft hizmet profili Oluşturucu, uygulamanızın performansını analiz etm
 
 Zaman çizelgesi görünümünde görüntülenen çağrı yığını örnekleme ve izleme sonucudur. Her örnek iş parçacığının tüm çağrı yığınını yakaladığından, Microsoft .NET Framework 'ten ve başvurduğunuz diğer çerçevelerden kod içerir.
 
-### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Nesne ayırma (clr! JıT\_yeni veya clr! JıT\_Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Nesne ayırma (clr! JıT \_ Yeni veya clr! JıT \_ Newarr1)
 
-**clr! JıT\_yeni** ve **clr! JıT\_Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevlerdir. **clr! Bir\_nesne ayrıldığında JIT New** çağrılır. **clr! Bir\_** nesne dizisi ayrıldığında JIT Newarr1 çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT\_yeni** veya **clr! JıT\_Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
+**clr! JıT \_ Yeni** ve **clr! JıT \_ Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevlerdir. **clr! Bir nesne ayrıldığında JıT \_ New** çağrılır. **clr! Bir \_ ** nesne DIZISI ayrıldığında JIT Newarr1 çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT \_ Yeni** veya **clr! JıT \_ Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Kod yükleniyor (clr! ThePreStub)
 
 **clr! ThePreStub** , kodu ilk kez yürütmek üzere hazırlayan .NET Framework bir yardımcı işlevdir. Bu yürütme genellikle tam zamanında (JıT) derlemeyi içerir ancak bunlarla sınırlı değildir. Her C# yöntemi için **clr! **Bir işlem sırasında, ön saplama en fazla bir kez çağrılmalıdır.
 
-Eğer **clr! Ön saplama** bir istek için uzun bir süre sürer, istek bu yöntemi yürütmek için birinci bir yöntemdir. .NET Framework çalışma zamanının ilk yöntemi yüklemesi için zaman önemlidir. Kullanıcılarınızın erişemez veya yerel görüntü Oluşturucu (Ngen. exe) derlemelerinize çalıştırmayı düşünmeden önce kodun bu kısmını yürüten bir ısınma işlemi kullanmayı düşünebilirsiniz.
+Eğer **clr! Ön saplama** bir istek için uzun bir süre sürer, istek bu yöntemi yürütmek için birinci bir yöntemdir. .NET Framework çalışma zamanının ilk yöntemi yüklemesi için zaman önemlidir. Kullanıcılarınızın ona erişmeden önce kodun bu kısmını yürüten bir ısınma işlemi kullanmayı düşünebilirsiniz veya derlemelerinize yerel görüntü Oluşturucu (ngen.exe) çalıştırmayı göz önünde bulundurun.
 
-### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Kilit çakışması (clr! Jçekişme\_monçekişmesi veya clr! Jutil\_monenterworker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Kilit çakışması (clr! Jçekişme \_ monçekişmesi veya clr! Jutil \_ monenterworker)
 
-**clr! Jçekişme\_monçekişmesi** veya **clr! Jutil\_monenterworker** , geçerli iş parçacığının bir kilidin serbest bırakılacağını beklediğini gösterir. Bu metin genellikle bir C# **Lock** ifadesini yürüttüğünüzde, **Monitor. ENTER** metodunu çağırdığınızda veya **MethodImplOptions. eşitlenmiş** özniteliğiyle bir yöntemi çağırdığınızda görüntülenir. Kilit çakışması genellikle _iş parçacığı bir_ kilit aldığında ve _B_ _iş parçacığı BT tarafından serbest bırakmadan_ önce aynı kilidi almaya çalıştığında oluşur.
+**clr! Jçekişme \_ monçekişmesi** veya **clr! Jutil \_ monenterworker** , geçerli iş parçacığının bir kilidin serbest bırakılacağını beklediğini gösterir. Bu metin genellikle bir C# **Lock** ifadesini yürüttüğünüzde, **Monitor. ENTER** metodunu çağırdığınızda veya **MethodImplOptions. eşitlenmiş** özniteliğiyle bir yöntemi çağırdığınızda görüntülenir. Kilit çakışması genellikle _iş parçacığı bir_ kilit aldığında ve _B_ _iş parçacığı BT tarafından serbest bırakmadan_ önce aynı kilidi almaya çalıştığında oluşur.
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>Kod yükleniyor ([soğuk])
 
@@ -79,11 +78,11 @@ Kod yükleme bir istek için önemli miktarda zaman alıyorsa istek, metodun en 
 
 ### <a name="database-operation"></a><a id="sqlcommand"></a>Veritabanı işlemi
 
-**SqlCommand. Execute** gibi yöntemler, kodun bir veritabanı işleminin bitmesini beklediğini gösterir.
+**SqlCommand.Exeşirin** gibi yöntemler kodun bir veritabanı işleminin bitmesini beklediğini gösterir.
 
-### <a name="waiting-await_time"></a><a id="await"></a>Bekleniyor (AWAIT\_TIME)
+### <a name="waiting-await_time"></a><a id="await"></a>Bekleniyor (AWAIT \_ TIME)
 
-**AWAIT\_saati** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT**olduğunda, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT\_Time** deyimleri, görevin bitmesi için bekleyen engellenme süresini gösterir.
+**AWAIT \_ SÜRE** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT**olduğunda, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT \_ Time** deyimleri, görevin bitmesi için bekleyen engellenme süresini gösterir.
 
 ### <a name="blocked-time"></a><a id="block"></a>Engellenme süresi
 

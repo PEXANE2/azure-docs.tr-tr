@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670041"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
@@ -23,7 +22,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 * [URL ping testi](#create-a-url-ping-test): Azure portalında oluşturabileceğiniz basit bir test.
 * [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
-* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` yöntem sonuçları Application Insights göndermek için kullanılabilir.
+* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
 
 **Application Insights kaynak başına en çok 100 kullanılabilirlik testi oluşturabilirsiniz.**
 
@@ -31,7 +30,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 Bir kullanılabilirlik testi oluşturmak için önce bir Application Insights kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız, [URL ping testi oluşturmak](#create-a-url-ping-test)için sonraki bölüme ilerleyin.
 
-Azure Portal **kaynak** > **Oluştur geliştirici araçları** > **Application Insights** ve [bir Application Insights kaynağı oluştur](create-new-resource.md)' u seçin.
+Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights** ve [bir Application Insights kaynağı oluştur](create-new-resource.md)' u seçin.
 
 ## <a name="create-a-url-ping-test"></a>URL ping testi oluşturma
 
@@ -70,7 +69,7 @@ Azure Portal **kaynak** > **Oluştur geliştirici araçları** > **Application I
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile test konumlarından oluşan** **Uyarı konum eşiği** = sayısıdır-2.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **alert location threshold**  =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
 
 ## <a name="see-your-availability-test-results"></a>Kullanılabilirlik testi sonuçlarınızı görme
 

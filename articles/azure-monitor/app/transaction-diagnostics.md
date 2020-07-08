@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671146"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Birleştirilmiş çapraz bileşen işlem tanılaması
@@ -66,9 +65,9 @@ Bu daraltılabilir bölmede, filtre ölçütlerine uyan diğer sonuçlar göster
 
 [Application Insights profil oluşturucu](../../azure-monitor/app/profiler.md) veya [anlık görüntü hata ayıklayıcısı](snapshot-debugger.md) , performans ve başarısızlık sorunlarının kod düzeyinde tanılamada yardımcı olur. Bu deneyimle, tek bir tıklama ile herhangi bir bileşenden profil oluşturucu izlemelerini veya anlık görüntüleri görebilirsiniz.
 
-Profil oluşturucuyu çalışma konusunda alamazsanız lütfen **serviceprofilerhelp\@Microsoft.com** ile iletişime geçin
+Profil oluşturucuyu çalışma konusunda alamazsanız lütfen **serviceprofilerhelp \@ Microsoft.com** ile iletişime geçin
 
-Snapshot Debugger çalışalamazsanız, lütfen **anlık görüntüyle\@** ilgili iletişime geçin Microsoft.com
+Snapshot Debugger çalışalamazsanız, lütfen anlık görüntüyle ilgili iletişime geçin ** \@ Microsoft.com**
 
 ![Profil Oluşturucu tümleştirmesi](media/transaction-diagnostics/profilerTraces.png)
 

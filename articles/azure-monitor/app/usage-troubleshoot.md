@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670925"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 'de Kullanıcı davranışı analiz araçlarının sorunlarını giderme
@@ -32,17 +31,17 @@ Kullanıcı davranışı analiz araçları şu anda anonim kullanıcı KIMLIĞI,
 ## <a name="naming-events"></a>Olayları adlandırma
 **Uygulamamın binlerce farklı sayfa görünümü ve özel olay adı vardır. Aralarında ayrım yapmak zordur ve Kullanıcı davranışı analiz araçlarının çoğu zaman yanıt vermemeye başladı. Bu adlandırma sorunlarını nasıl giderebilirim?**
 
-Sayfa görünümü ve özel olay adları, Kullanıcı davranışı analiz araçları boyunca kullanılır. Bu araçlardan değer elde etmek için olayların adlandırılması iyi bir öneme sahiptir. Amaç çok az, fazla genel ada ("düğme tıklandı") sahip olmak ve çok fazla sayıda, aşırı özgü ada sahip olmak (http:\//www.contoso.com/index "Içinde" Düzenle düğmesi tıklandı ") arasında bir dengedir.
+Sayfa görünümü ve özel olay adları, Kullanıcı davranışı analiz araçları boyunca kullanılır. Bu araçlardan değer elde etmek için olayların adlandırılması iyi bir öneme sahiptir. Amaç çok az, fazla genel ada ("düğme tıklandı") sahip olmak ve çok fazla sayıda, aşırı özgü ada sahip olmak (http:/www.contoso.com/index "içinde" Düzenle düğmesi tıklandı ") arasında bir dengedir \/ .
 
 Uygulamanızın gönderdiği sayfa görünümünde ve özel olay adlarında herhangi bir değişiklik yapmak için uygulamanızın kaynak kodunu değiştirmeniz ve yeniden dağıtmanız gerekir. **Application Insights 'Deki tüm telemetri verileri 90 gün boyunca depolanır ve silinemez**, böylece olay adlarında yaptığınız değişiklikler, tam olarak bildirimde bulunur 90 gün sürer. Ad değişikliklerinden sonra 90 gün boyunca, hem eski hem de yeni olay adları telemetrinizde görünür, bu nedenle sorguları ayarlayın ve ekipleriniz içinde iletişim kurun.
 
 Uygulamanız çok fazla sayfa görünümü adı gönderiyorsa, Bu sayfa görünümü adlarının kodda el ile mi belirtilmediğini veya Application Insights JavaScript SDK 'Sı tarafından otomatik olarak gönderilip gönderilmediğini denetleyin:
 
-* Sayfa görünümü adları, [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)kullanılarak kodda el ile belirtilirse, adı daha az özel olacak şekilde değiştirin. URL 'YI Sayfa görünümünün adına yerleştirme gibi yaygın hatalardan kaçının. Bunun yerine, `trackPageView` API 'nin URL parametresini kullanın. Sayfa görünümü adından diğer ayrıntıları özel özelliklere taşıyın.
+* Sayfa görünümü adları, [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)kullanılarak kodda el ile belirtilirse, adı daha az özel olacak şekilde değiştirin. URL 'YI Sayfa görünümünün adına yerleştirme gibi yaygın hatalardan kaçının. Bunun yerine, API 'nin URL parametresini kullanın `trackPageView` . Sayfa görünümü adından diğer ayrıntıları özel özelliklere taşıyın.
 
-* Application Insights JavaScript SDK 'Sı otomatik olarak sayfa görünümü adlarını gönderiyorsa, sayfa görünüm adlarını el ile göndermek için sayfalarınızın başlıklarını veya anahtarını değiştirebilirsiniz. SDK, her sayfanın [başlığını](https://developer.mozilla.org/docs/Web/HTML/Element/title) varsayılan olarak sayfa görünümü adı olarak gönderir. Başlıklarınızı daha genel olacak şekilde değiştirebilirsiniz, ancak bu değişiklik, bu değişikliğin sahip olduğu diğer etkileri ve diğer etkileri de olabilir. Sayfa görünümü adlarını `trackPageView` API ile el ile belirtmek otomatik olarak toplanan adları geçersiz kılar, bu nedenle, sayfa başlıklarını değiştirmeden telemetri içinde daha fazla genel ad gönderebilirsiniz.   
+* Application Insights JavaScript SDK 'Sı otomatik olarak sayfa görünümü adlarını gönderiyorsa, sayfa görünüm adlarını el ile göndermek için sayfalarınızın başlıklarını veya anahtarını değiştirebilirsiniz. SDK, her sayfanın [başlığını](https://developer.mozilla.org/docs/Web/HTML/Element/title) varsayılan olarak sayfa görünümü adı olarak gönderir. Başlıklarınızı daha genel olacak şekilde değiştirebilirsiniz, ancak bu değişiklik, bu değişikliğin sahip olduğu diğer etkileri ve diğer etkileri de olabilir. Sayfa görünümü adlarını API ile el ile belirtmek `trackPageView` otomatik olarak toplanan adları geçersiz kılar, bu nedenle, sayfa başlıklarını değiştirmeden telemetri içinde daha fazla genel ad gönderebilirsiniz.   
 
-Uygulamanız çok fazla özel olay adı gönderiyorsa, koddaki adı daha az özel olacak şekilde değiştirin. Bu durumda, URL 'Leri ve diğer sayfa başına ya da dinamik bilgileri doğrudan özel olay adlarına yerleştirmekten kaçının. Bunun yerine, bu ayrıntıları `trackEvent` API ile özel olayın özel özelliklerine taşıyın. Örneğin, yerine `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, gibi `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`bir şey öneririz.
+Uygulamanız çok fazla özel olay adı gönderiyorsa, koddaki adı daha az özel olacak şekilde değiştirin. Bu durumda, URL 'Leri ve diğer sayfa başına ya da dinamik bilgileri doğrudan özel olay adlarına yerleştirmekten kaçının. Bunun yerine, bu ayrıntıları API ile özel olayın özel özelliklerine taşıyın `trackEvent` . Örneğin, yerine, `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` gibi bir şey öneririz `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

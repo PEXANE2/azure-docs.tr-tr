@@ -4,10 +4,9 @@ description: Docker performans sayaçları, olaylar ve özel durumlar, Kapsayıc
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669616"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights (kullanım dışı) Docker uygulamalarını izleme
@@ -54,7 +53,7 @@ Telemetriyi görüntülemenin bir yere sahip olduğunuza göre, onu toplayıp g�
 Docker Konağı başına yalnızca bir Application Insights görüntüsü gerekir. Uygulamanız birden çok Docker konağında dağıtılmışsa, komutu her konakta yineleyin.
 
 ## <a name="update-your-app"></a>Uygulamanızı güncelleştirme
-Uygulamanız [Java için Application Insights SDK 'sı](../../azure-monitor/app/java-get-started.md)ile birlikte işaretlenmiş ise, projenizdeki `<TelemetryInitializers>` ApplicationInsights. xml dosyasına aşağıdaki satırı ekleyin:
+Uygulamanız [Java için Application Insights SDK 'sı](../../azure-monitor/app/java-get-started.md)ile birlikte işaretlenmiş ise, aşağıdaki satırı projenizdeki ApplicationInsights.xml dosyasına ekleyin `<TelemetryInitializers>` :
 
 ```xml
 

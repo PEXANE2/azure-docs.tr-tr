@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918232"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM ile Uzak Masaüstü bağlantısı sık sık kesiliyor
@@ -90,8 +89,8 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
 2. İşletim sistemi diski kurtarma VM 'sine eklendikten sonra, diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 3. Eklediğiniz işletim sistemi diskinde, **\Windows\System32\Config** klasörüne gidin. Geri almanın gerekli olması durumunda bu klasördeki tüm dosyaları yedek olarak kopyalayın.
-4. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın.
-5. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya** > **yükleme Hive**: ' ı seçin.
+4. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın.
+5. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya**  >  **yükleme Hive**: ' ı seçin.
 6. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir. Ardından **HKEY_LOCAL_MACHINE** anahtarı altında **\windows\system32\config\software** yazılım kovanını yükleyin. Hive yazılımının adı için **Brokensoftware**' i girin. 
 7. Yükseltilmiş bir komut Istemi penceresi açın (**yönetici olarak çalıştır**) ve kalan adımlarda RDP yapılandırmalarının sıfırlanması için komutları çalıştırın. 
 8. Sunucu ve istemci arasındaki iletişimin yerel RDP şifrelemesini kullanması için RDP güvenlik katmanını 0 olarak düşürün:

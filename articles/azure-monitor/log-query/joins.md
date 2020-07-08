@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670211"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki birleşimler
@@ -39,10 +38,10 @@ SecurityEvent
 
 Bu örnekte, ilk veri kümesi tüm oturum açma olaylarına filtre uygular. Bu, tüm oturum kapatma olaylarını filtreleyen ikinci bir veri kümesiyle birleştirilir. Tasarlanan sütunlar _bilgisayar_, _Hesap_, _Targetlogonıd_ve _TimeGenerated_' dir. Veri kümeleri, bir paylaşılan sütunla bağıntılı, _Targetlogonıd_. Çıktı, bağıntı başına, oturum açma ve oturum kapatma zamanına sahip tek bir kayıttır.
 
-Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir. bu nedenle, sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve sağ taraftaki tablodaki değerlerle _TargetLogonId1_ gösterir. Bu durumda, ikinci _TargetLogonId1_ sütunu `project-away` işleci kullanılarak kaldırılmıştır.
+Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir. bu nedenle, sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve sağ taraftaki tablodaki değerlerle _TargetLogonId1_ gösterir. Bu durumda, ikinci _TargetLogonId1_ sütunu işleci kullanılarak kaldırılmıştır `project-away` .
 
 > [!NOTE]
-> Performansı artırmak için, `project` işlecini kullanarak yalnızca birleştirilmiş veri kümelerinin ilgili sütunlarını saklayın.
+> Performansı artırmak için, işlecini kullanarak yalnızca birleştirilmiş veri kümelerinin ilgili sütunlarını saklayın `project` .
 
 
 İki veri kümesini birleştirmek için aşağıdaki sözdizimini kullanın ve birleştirilmiş anahtar iki tablo arasında farklı bir ada sahiptir:
@@ -53,7 +52,7 @@ on $left.key1 == $right.key2
 ```
 
 ## <a name="lookup-tables"></a>Arama tabloları
-Birleşimlerin yaygın kullanımı, sonuçları daha edileni bir şekilde dönüştürmeye yardımcı `datatable` olabilecek, kullanılarak değerlerin statik eşlemesini kullanmaktır. Örneğin, güvenlik olay verilerini her olay KIMLIĞI için olay adıyla zenginleştirme.
+Birleşimlerin yaygın kullanımı, `datatable` sonuçları daha edileni bir şekilde dönüştürmeye yardımcı olabilecek, kullanılarak değerlerin statik eşlemesini kullanmaktır. Örneğin, güvenlik olay verilerini her olay KIMLIĞI için olay adıyla zenginleştirme.
 
 ```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
@@ -93,7 +92,7 @@ _Tür_ bağımsız değişkeniyle birlikte JOIN türünü belirtin. Her tür, a�
 En iyi performans için aşağıdaki noktaları göz önünde bulundurun:
 
 - JOIN için değerlendirilmesi gereken kayıtları azaltmak için her tabloda bir zaman filtresi kullanın.
-- Giriş `where` tablolarındaki `project` satır ve sütun sayılarını, birleşimden önce azaltmak için ve kullanın.
+- `where` `project` Giriş tablolarındaki satır ve sütun sayılarını, birleşimden önce azaltmak için ve kullanın.
 - Bir tablo her zaman diğerinin daha küçükse, bunu birleştirmenin sol tarafında kullanın.
 
 

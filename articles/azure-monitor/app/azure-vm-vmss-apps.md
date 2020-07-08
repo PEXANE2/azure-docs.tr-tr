@@ -4,10 +4,9 @@ description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama per
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661337"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
@@ -32,7 +31,7 @@ Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan u
 
     * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
         > [!NOTE]
-        > Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Java ve Node. js uygulamalarını işaretlemek için bir SDK kullanın.
+        > Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Java ve Node.js uygulamalarını işaretlemek için bir SDK kullanın.
 
 * SDK aracılığıyla **kod tabanlı**
 
@@ -168,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Azure sanal makinelerinde ve sanal makine ölçek kümelerinde çalışan .NET uygulamaları için Application Insights Izleme Aracısı uzantısı için sorun giderme ipuçları bulabilirsiniz.
 
 > [!NOTE]
-> .NET Core, Java ve Node. js uygulamaları yalnızca el ile SDK tabanlı araçlar aracılığıyla Azure sanal makinelerinde ve Azure sanal makine ölçek kümelerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
+> .NET Core, Java ve Node.js uygulamaları, el ile SDK tabanlı araçlar aracılığıyla yalnızca Azure sanal makinelerinde ve Azure sanal makine ölçek kümelerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
 
 Uzantı yürütme çıktısı, aşağıdaki dizinlerde bulunan dosyalara kaydedilir:
 ```Windows

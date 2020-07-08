@@ -9,17 +9,16 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925611"
 ---
 # <a name="linux-performance-troubleshooting"></a>Linux performans sorunlarını giderme
 
 Linux makinelerde kaynak tükenmesi, yaygın bir sorundur ve çok çeşitli belirtilerle bildirimde bulunabilir. Bu belge, bu tür sorunları tanılamaya yardımcı olmak için kullanılabilen araçlara yüksek düzeyde bir genel bakış sağlar.
 
-Bu araçların birçoğu, sıralı çıkış oluşturmak için bir aralığı kabul eder. Bu çıkış biçimi genellikle, biriktirme desenleri çok daha kolay hale gelir. Kabul edildiğinde, örnek çağırma dahil `[interval]`edilir.
+Bu araçların birçoğu, sıralı çıkış oluşturmak için bir aralığı kabul eder. Bu çıkış biçimi genellikle, biriktirme desenleri çok daha kolay hale gelir. Kabul edildiğinde, örnek çağırma dahil edilir `[interval]` .
 
 Bu araçların çoğunda kapsamlı bir geçmiş ve geniş bir yapılandırma seçenekleri kümesi vardır. Bu sayfa, yaygın sorunları vurgulamak için yalnızca basit bir çağırma alt kümesi sağlar. Kurallı bilgi kaynağı her bir araç için her zaman başvuru belgesidir. Bu belge, burada sağlandıklarınızın çok daha kapsamlı olacaktır.
 
@@ -31,7 +30,7 @@ Yaygın sorunlara ve bunları tanılamaya yönelik göstergelerine örnek olarak
 - IOPS daraltma: cihaz başına ıOPS 'yi ölçmek için Iostat kullanın. Tek bir diskin sınırının üzerinde olmadığından emin olun ve tüm disklerin toplamı, sanal makine limitinden daha düşük.
 - Bant genişliği azaltma: ıOPS için Iostat kullanın, ancak okuma/yazma verimini ölçmeye devam edin. Hem cihaz başına hem de toplam verimlilik bant genişliği sınırlarının altında olduğundan emin olun.
 - SNAT tükenmesi: Bu, çın 'de yüksek etkin (giden) bağlantılar olarak bildirimde bulunabilir. 
-- Paket kaybı: Bu, gönderilen/alınan sayımla ilişkili TCP yeniden aktarım sayısı aracılığıyla proxy ile ölçülebilir. `netstat` Her ikisi de `sar` bu bilgileri gösterebilir.
+- Paket kaybı: Bu, gönderilen/alınan sayımla ilişkili TCP yeniden aktarım sayısı aracılığıyla proxy ile ölçülebilir. Her ikisi de `sar` `netstat` Bu bilgileri gösterebilir.
 
 ## <a name="general"></a>Genel
 
@@ -84,7 +83,7 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
 - Bu durumda çoğunlukla boşta kalma süresini gösteren CPU kullanımı.
 - Toplam, ücretsiz ve kullanılan sistem belleği.
 
-`top`kısa süreli süreçler kaçırmayabilir; benzeri `htop` Yöntemler ve `atop` Bu eksiklikleri düzelterek benzer arabirimler sağlar.
+`top`kısa süreli süreçler kaçırmayabilir; benzeri yöntemler `htop` ve `atop` Bu eksiklikleri düzelterek benzer arabirimler sağlar.
 
 ## <a name="cpu"></a>CPU
 
@@ -119,11 +118,11 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`benzer bilgiler `mpstat` ve `top`, CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzde sayısını numaralandırma sağlar.
+`vmstat`benzer bilgiler `mpstat` ve `top` , CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzde sayısını numaralandırma sağlar.
 
 ## <a name="memory"></a>Bellek
 
-Bellek çok önemli ve takip etmek için çok daha kolay ve kaynak. Bazı araçlar, gibi `vmstat`CPU ve bellek rapor edebilir. Ancak, benzer `free` araçlar hızlı hata ayıklama için hala faydalı olabilir.
+Bellek çok önemli ve takip etmek için çok daha kolay ve kaynak. Bazı araçlar, gibi CPU ve bellek rapor edebilir `vmstat` . Ancak, benzer araçlar `free` hızlı hata ayıklama için hala faydalı olabilir.
 
 ### <a name="free"></a>serbest
 
@@ -157,21 +156,21 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`disk kullanımı hakkında ayrıntılı öngörüler sağlar. Bu çağrı, `-x` önyüklemeden bu yana ilk `-y` çıktıyı yazdırma sistem ortalamaları 'nı atlamak ve `1 1` bir çıkış blobundan sonra sona ermek üzere 1 saniyelik zaman aralığını belirtmek için genişletilmiş istatistikleri geçer. 
+`iostat`disk kullanımı hakkında ayrıntılı öngörüler sağlar. Bu çağrı, `-x` `-y` önyüklemeden bu yana ilk çıktıyı yazdırma sistem ortalamaları 'nı atlamak ve `1 1` bir çıkış blobundan sonra sona ermek üzere 1 saniyelik zaman aralığını belirtmek için genişletilmiş istatistikleri geçer. 
 
 `iostat`birçok yararlı istatistik sunar:
 
-- `r/s`ve `w/s` saniye başına okuma ve yazma işlemleri. Bu değerlerin toplamı ıOPS 'dir.
+- `r/s`ve saniye başına `w/s` okuma ve yazma işlemleri. Bu değerlerin toplamı ıOPS 'dir.
 - `rkB/s`ve `wkB/s` saniye başına kilobayt okuma/yazma. Bu değerlerin toplamı üretilen iş sayısıdır.
 - `await`, kuyruğa alınan istekler için milisaniye olarak ortalama ıowaıt süresi.
 - `avgqu-sz`, belirtilen Aralık üzerinde ortalama sıra boyutudur.
 
 Bir Azure VM 'de:
 
-- tek bir blok `r/s` cihaz `w/s` için ve toplamı, diskin SKU sınırları aşmayabilir.
-- tek bir blok `rkB/s` cihaz `wkB/s` için ve toplamı, diskin SKU sınırları aşmayabilir
-- tüm blok cihazları `r/s` için `w/s` ve toplamı, VM SKU 'sunun sınırlarını aşamaz.
-- tüm blok cihazlar `rkB/s` için ve ' wkb/s TOPLAMı, VM SKU 'sunun sınırlarını aşamaz.
+- `r/s` `w/s` tek bir blok cihaz için ve toplamı, diskin SKU sınırları aşmayabilir.
+- `rkB/s` `wkB/s` tek bir blok cihaz için ve toplamı, diskin SKU sınırları aşmayabilir
+- `r/s` `w/s` tüm blok cihazları için ve TOPLAMı, VM SKU 'sunun sınırlarını aşamaz.
+- `rkB/s`tüm blok cihazlar için ve ' wkB/s toplamı, VM SKU 'sunun sınırlarını aşamaz.
 
 İşletim sistemi diskinin, kapasitesine karşılık gelen en küçük SKU 'nun yönetilen diski olarak sayıldığını unutmayın. Örneğin, bir 1024GB işletim sistemi diski bir P30 diskine karşılık gelir. Kısa ömürlü işletim sistemi disklerinin ve geçici disklerin ayrı disk limitleri yoktur; Bunlar yalnızca tam VM limitleriyle sınırlıdır.
 
@@ -199,9 +198,9 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`, çok çeşitli analizler için güçlü bir araçtır. Bu örnekte ağ istatistiklerini ölçme özelliği kullanılırken, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek, `sar` `DEV` ( `-n` ağ aygıtı) anahtar sözcüğünü belirtmek için bayrağıyla çağırır ve ağ aktarım hızını cihaza göre görüntüler.
+`sar`, çok çeşitli analizler için güçlü bir araçtır. Bu örnekte ağ istatistiklerini ölçme özelliği kullanılırken, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek `sar` `-n` `DEV` , (ağ aygıtı) anahtar sözcüğünü belirtmek için bayrağıyla çağırır ve ağ aktarım hızını cihaza göre görüntüler.
 
-- `rxKb/s` Ve `txKb/s` toplamı, belirli bir cihaz için toplam aktarım hızı. Bu değer, sağlanan Azure NIC 'in sınırını aştığında, makinedeki iş yükleri daha fazla ağ gecikmesi yaşar.
+- Ve toplamı, `rxKb/s` `txKb/s` belirli bir cihaz için toplam aktarım hızı. Bu değer, sağlanan Azure NIC 'in sınırını aştığında, makinedeki iş yükleri daha fazla ağ gecikmesi yaşar.
 - `%ifutil`belirli bir cihaz için kullanımı ölçer. Bu değer %100 yaklaşırsa, iş yükleri artan ağ gecikmesi ile karşılaşacaktır.
 
 ```
@@ -221,9 +220,9 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-Bu çağırma, `sar` `TCP,ETCP` TCP bağlantılarını incelemek için anahtar kelimeleri kullanır. Son satırın üçüncü sütunu, "retrans", saniye başına TCP yeniden iletim sayısıdır. Bu alan için yüksek değerler, güvenilir olmayan bir ağ bağlantısını gösterir. İlk ve üçüncü satırlarda, "etkin" yerel cihazdan kaynaklanan bir bağlantı anlamına gelir, ancak "uzak" gelen bir bağlantıyı gösterir.  Azure 'daki yaygın bir sorun, algılamaya yardımcı `sar` olabilecek SNAT bağlantı noktası tükenmesi ' dır. Bu sorun yüksek oranda giden, yerel olarak başlatılmış bir TCP bağlantısı nedeniyle, SNAT bağlantı noktası tükenmesi yüksek "etkin" değerler olarak bildirimde bulunur.
+Bu çağırma `sar` , `TCP,ETCP` TCP bağlantılarını incelemek için anahtar kelimeleri kullanır. Son satırın üçüncü sütunu, "retrans", saniye başına TCP yeniden iletim sayısıdır. Bu alan için yüksek değerler, güvenilir olmayan bir ağ bağlantısını gösterir. İlk ve üçüncü satırlarda, "etkin" yerel cihazdan kaynaklanan bir bağlantı anlamına gelir, ancak "uzak" gelen bir bağlantıyı gösterir.  Azure 'daki yaygın bir sorun, algılamaya yardımcı olabilecek SNAT bağlantı noktası tükenmesi ' dır `sar` . Bu sorun yüksek oranda giden, yerel olarak başlatılmış bir TCP bağlantısı nedeniyle, SNAT bağlantı noktası tükenmesi yüksek "etkin" değerler olarak bildirimde bulunur.
 
-Bir `sar` Aralık alır, sıralı çıktıyı yazdırır ve sonra, çağrının ortalama sonucunu içeren son çıktı satırlarını yazdırır.
+`sar`Bir Aralık alır, sıralı çıktıyı yazdırır ve sonra, çağrının ortalama sonucunu içeren son çıktı satırlarını yazdırır.
 
 ### <a name="netstat"></a>Netstat
 

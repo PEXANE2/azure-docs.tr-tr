@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919915"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak
@@ -33,7 +32,7 @@ Symantec 'ten şirket içi bir çözüm için mevcut bir aboneliğiniz varsa, Az
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Mevcut bir VM 'ye Symantec Endpoint Protection 'yi yükler
 Başlamadan önce aşağıdakilere ihtiyacınız vardır:
 
-* İş bilgisayarınızdaki Azure PowerShell modülü, sürüm 0.8.2 veya üzeri. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | biçim-tablo sürümü** komutuyla kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır][PS]. Kullanarak `Add-AzureAccount`Azure aboneliğinizde oturum açın.
+* İş bilgisayarınızdaki Azure PowerShell modülü, sürüm 0.8.2 veya üzeri. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | biçim-tablo sürümü** komutuyla kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır][PS]. Kullanarak Azure aboneliğinizde oturum açın `Add-AzureAccount` .
 * Azure sanal makinesinde çalışan VM Aracısı.
 
 İlk olarak, VM aracısının sanal makinede zaten yüklü olduğunu doğrulayın. Bulut hizmeti adını ve sanal makine adını doldurup yönetici düzeyinde bir Azure PowerShell komut isteminde aşağıdaki komutları çalıştırın. < ve > karakterler dahil olmak üzere tırnak içindeki her şeyi değiştirin.

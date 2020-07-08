@@ -8,10 +8,9 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664924"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
@@ -180,7 +179,7 @@ browserTimings
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Tarayıcı özel durumları (özel durumlar/tarayıcı)
 
-Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum sayısını yansıtır. Ölçüsüne yalnızca bir ```trackException()``` Application Insights API çağrısıyla izlenen özel durumlar dahildir.
+Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum sayısını yansıtır. ```trackException()```Ölçüsüne yalnızca bir APPLICATION INSIGHTS API çağrısıyla izlenen özel durumlar dahildir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
@@ -423,7 +422,7 @@ requests
 | render timechart
 ```
 
-## <a name="usage-metrics"></a>Ölçümleri kullanma
+## <a name="usage-metrics"></a>Kullanım ölçümleri
 
 ### <a name="page-view-load-time-pageviewsduration"></a>Sayfa görünümü yükleme süresi (pageViews/Duration)
 

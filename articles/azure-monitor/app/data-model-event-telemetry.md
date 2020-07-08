@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671894"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Olay telemetrisi: Application Insights veri modeli
@@ -17,7 +16,7 @@ Uygulamanızda gerçekleşen bir olayı göstermek için olay telemetrisi öğel
 
 Anlamsal olarak olaylar, isteklerle bağıntılı olabilir veya olmayabilir. Ancak, düzgün şekilde kullanılırsa, olay telemetrisi isteklerden veya İzlemelerden daha önemlidir. Olaylar iş telemetrisini temsil eder ve ayrı, daha az agresif [örneklemeye](../../azure-monitor/app/api-filtering-sampling.md)tabi olmalıdır.
 
-## <a name="name"></a>Adı
+## <a name="name"></a>Name
 
 Olay adı. Doğru gruplandırılmasına ve yararlı ölçümlere izin vermek için uygulamanızı, az sayıda ayrı olay adı oluşturacak şekilde kısıtlayın. Örneğin, bir olayın oluşturulan her örneği için ayrı bir ad kullanmayın.
 

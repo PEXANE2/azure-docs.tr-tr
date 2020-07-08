@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919932"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak
@@ -57,7 +56,7 @@ Sihirbazın **Ayarlar** dikey penceresine geldiğinizde, aşağıdaki adımları
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Derin güvenlik aracısını var olan bir VM 'ye yükler
 Aracıyı var olan bir VM 'ye yüklemek için aşağıdaki öğeler gereklidir:
 
-* Yerel bilgisayarınızda yüklü olan Azure PowerShell modülü, sürüm 0.8.2 veya daha yeni bir sürüm. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | Format-Table sürümü** komutunu kullanarak kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). Kullanarak `Add-AzureAccount`Azure aboneliğinizde oturum açın.
+* Yerel bilgisayarınızda yüklü olan Azure PowerShell modülü, sürüm 0.8.2 veya daha yeni bir sürüm. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | Format-Table sürümü** komutunu kullanarak kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). Kullanarak Azure aboneliğinizde oturum açın `Add-AzureAccount` .
 * Hedef sanal makinede yüklü VM Aracısı.
 
 İlk olarak, VM aracısının zaten yüklü olduğunu doğrulayın. Bulut hizmeti adını ve sanal makine adını doldurup yönetici düzeyinde bir Azure PowerShell komut isteminde aşağıdaki komutları çalıştırın. < ve > karakterler dahil olmak üzere tırnak içindeki her şeyi değiştirin.

@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671588"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
@@ -87,7 +86,7 @@ Application Insights Profiler havuzunu portaldan ayarlamak için henüz bir yol 
 
     ![WAD uzantısının yüklenip yüklenmediğini denetle][wadextension]
 
-2. VM 'niz için VM tanılama uzantısını bulun. Adresine gidin [https://resources.azure.com](https://resources.azure.com). Kaynak grubunuzu, Microsoft. COMPUTE virtualMachines, sanal makine adı ve uzantıları ' nı genişletin.  
+2. VM 'niz için VM tanılama uzantısını bulun. Adresine gidin [https://resources.azure.com](https://resources.azure.com) . Kaynak grubunuzu, Microsoft. COMPUTE virtualMachines, sanal makine adı ve uzantıları ' nı genişletin.  
 
     ![Azure Kaynak Gezgini 'de WAD config 'e gidin][azureresourceexplorer]
 

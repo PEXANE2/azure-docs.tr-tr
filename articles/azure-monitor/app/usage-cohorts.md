@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671095"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
@@ -49,7 +48,7 @@ Takımınız, belirli bir ayda uygulamanızı beş veya daha fazla kez kullanan 
 
     Artık bu kohortu, geçmiş 28 ' de 5 ayrı gün içinde herhangi bir özel olay veya sayfa görünümüyle gönderilen tüm Kullanıcı kimliklerini temsil eder.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
    > [!TIP]
    > "Bağlı kullanıcılar (5 + gün)" gibi kohortu bir ad verin. Bu Application Insights kaynağına erişimi olan diğer kişilerin bu kohortu görmesini isteyip istemediğinize bağlı olarak, bu dosyayı "Raporlarım" veya "paylaşılan Raporlar" olarak kaydedin.

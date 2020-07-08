@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670313"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki toplamalar
@@ -20,7 +19,7 @@ ms.locfileid: "77670313"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Bu makalede, verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevleri açıklanmaktadır. Bu işlevler, giriş tablosunun toplanmış `summarize` sonuçlarını içeren bir tablo üreten işleçle çalışır.
+Bu makalede, verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevleri açıklanmaktadır. Bu işlevler `summarize` , giriş tablosunun toplanmış sonuçlarını içeren bir tablo üreten işleçle çalışır.
 
 ## <a name="counts"></a>Kapsam
 
@@ -55,7 +54,7 @@ Bu örnekteki çıktı, performans kayıt sayısı eğilim çizgisini 5 dakika o
 
 
 ### <a name="dcount-dcountif"></a>DCount, değersay
-Belirli `dcount` bir `dcountif` sütundaki farklı değerleri saymak için ve kullanın. Aşağıdaki sorgu, son bir saat içinde kaç farklı bilgisayarın sinyal gönderdiğini değerlendirir:
+`dcount` `dcountif` Belirli bir sütundaki farklı değerleri saymak için ve kullanın. Aşağıdaki sorgu, son bir saat içinde kaç farklı bilgisayarın sinyal gönderdiğini değerlendirir:
 
 ```Kusto
 Heartbeat 
@@ -63,7 +62,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Yalnızca sinyal gönderen Linux bilgisayarları saymak için şunu kullanın `dcountif`:
+Yalnızca sinyal gönderen Linux bilgisayarları saymak için şunu kullanın `dcountif` :
 
 ```Kusto
 Heartbeat 
@@ -82,14 +81,14 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|Amerika Birleşik Devletleri    | 19                  |
+|Birleşik Devletler    | 19                  |
 |Kanada           | 3                   |
 |İrlanda          | 0                   |
 |Birleşik Krallık   | 0                   |
 |Hollanda      | 2                   |
 
 
-Verilerinizin daha küçük alt grupları çözümlemek için `by` bölümüne ek sütun adları ekleyin. Örneğin, her bir ülke/bölgeden her OSType için ayrı bilgisayarları saymak isteyebilirsiniz:
+Verilerinizin daha küçük alt grupları çözümlemek için bölümüne ek sütun adları ekleyin `by` . Örneğin, her bir ülke/bölgeden her OSType için ayrı bilgisayarları saymak isteyebilirsiniz:
 
 ```Kusto
 Heartbeat 
@@ -98,10 +97,10 @@ Heartbeat
 ```
 
 ## <a name="percentiles-and-variance"></a>Yüzdebirlik değeri ve varyans
-Sayısal değerleri değerlendirirken, yaygın olarak kullanılan bir uygulama, kullanarak `summarize avg(expression)`bunları ortalama bir uygulamadır. Ortalamalar yalnızca birkaç durumu niteleyen Extreme değerlerinden etkilenir. Bu sorunu gidermek için, veya `median` `variance`gibi daha az hassas işlevler kullanabilirsiniz.
+Sayısal değerleri değerlendirirken, yaygın olarak kullanılan bir uygulama, kullanarak bunları ortalama bir uygulamadır `summarize avg(expression)` . Ortalamalar yalnızca birkaç durumu niteleyen Extreme değerlerinden etkilenir. Bu sorunu gidermek için, veya gibi daha az hassas işlevler kullanabilirsiniz `median` `variance` .
 
 ### <a name="percentile"></a>Özelliğindeki
-Ortanca değerini bulmak için, yüzdebirlik değerini belirtmek `percentile` için fonksiyonunu bir değerle kullanın:
+Ortanca değerini bulmak için, `percentile` yüzdebirlik değerini belirtmek için fonksiyonunu bir değerle kullanın:
 
 ```Kusto
 Perf

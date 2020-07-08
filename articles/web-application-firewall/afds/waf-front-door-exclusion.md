@@ -8,10 +8,9 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925936"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Ön kapı hizmeti dışlama listeleriyle Web uygulaması güvenlik duvarı (WAF) 
@@ -20,10 +19,10 @@ Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek is
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Dışlama listelerini Azure portal kullanarak yapılandırma
 Özel **durumları yönetme** işlemi, WAF portalından **yönetilen kurallar** altında erişilebilir
 
-![Dışlama](../media/waf-front-door-exclusion/exclusion1.png)
-![yönetme exclusion_add yönetme](../media/waf-front-door-exclusion/exclusion2.png)
+![Dışlama ](../media/waf-front-door-exclusion/exclusion1.png)
+ ![ yönetme exclusion_add yönetme](../media/waf-front-door-exclusion/exclusion2.png)
 
- Örnek bir dışlama listesi: ![Yönet exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
+ Örnek bir dışlama listesi: ![ yönet exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
 
 Bu örnek, *Kullanıcı* üstbilgisi alanındaki değeri dışlar. Geçerli bir istek, bir SQL ekleme kuralını tetikleyen bir dize içeren *Kullanıcı* alanı içerebilir. Bu durumda, WAF kuralının alanındaki herhangi bir şeyi değerlendirmemesi için *Kullanıcı* parametresini dışarıda bırakabilirsiniz.
 

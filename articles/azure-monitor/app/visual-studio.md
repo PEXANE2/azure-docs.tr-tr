@@ -8,10 +8,9 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670891"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio 'da Azure Application Insights ile uygulamalarınızın hatalarını ayıklama
@@ -81,7 +80,7 @@ Verilerinizdeki anormallikleri bulmak için "Görünüm Türü" açılır listes
 [Eğilimler hakkında daha fazla bilgi](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Yerel izleme
-(Visual Studio 2015 güncelleştirme 2 ' den) SDK 'Yı Application Insights portalına telemetri gönderecek şekilde yapılandırmadıysanız (ApplicationInsights. config dosyasında bir izleme anahtarı yoksa), tanılama penceresinde en son hata ayıklama oturumlarınızdan telemetri görüntülenir. 
+(Visual Studio 2015 güncelleştirme 2 ' den) SDK 'Yı Application Insights portalına telemetri gönderecek şekilde yapılandırmadıysanız (ApplicationInsights.config ' de bir izleme anahtarı yoksa), tanılama penceresinde en son hata ayıklama oturumlarınızdan telemetri görüntülenir. 
 
 Daha önce uygulamanızın önceki bir sürümünü yayımladıysanız bu iyi bir şeydir. Hata ayıklama oturumlarınızdan alınan telemetrinin, yayımlanan uygulamanın Application Insights portalındaki telemetriyle karışmasını istemezsiniz.
 
@@ -90,7 +89,7 @@ Telemetriyi portala göndermeden önce hatalarını ayıklamak istediğiniz [öz
 * *İlk olarak, portala telemetri göndermek için Application Insights tam olarak yapılandırdım. Ancak artık Telemetriyi yalnızca Visual Studio 'da görmek istiyorum.*
   
   * Arama penceresinin Ayarlar bölümünde, uygulamanız portala telemetri gönderiyor olsa bile yerel tanılamalarda arama seçeneği vardır.
-  * Telemetriyi portala göndermek için, ApplicationInsights. config dosyasındaki satırı `<instrumentationkey>...` açıklama olarak değerlendirin. Yeniden Telemetriyi portala göndermeye hazırsanız, açıklamayı kaldırın.
+  * Telemetriyi portala göndermek için ApplicationInsights.config satırı açıklama olarak doldurun `<instrumentationkey>...` . Yeniden Telemetriyi portala göndermeye hazırsanız, açıklamayı kaldırın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

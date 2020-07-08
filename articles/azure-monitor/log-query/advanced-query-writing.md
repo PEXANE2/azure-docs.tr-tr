@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670296"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Azure Izleyici 'de gelişmiş sorgular yazma
@@ -21,7 +20,7 @@ ms.locfileid: "77670296"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 ## <a name="reusing-code-with-let"></a>Kodu izin ile yeniden kullanma
-Bir `let` değişkene sonuçlar atamak ve bu sorguya daha sonra başvurmak için kullanın:
+`let`Bir değişkene sonuçlar atamak ve bu sorguya daha sonra başvurmak için kullanın:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -54,7 +53,7 @@ union FreeDiskSpace, FreeMemory
 Bu, sorguyu bir sonraki çalıştırışınızda bitiş zamanının başlangıcını değiştirmeyi kolaylaştırır.
 
 ### <a name="local-functions-and-parameters"></a>Yerel işlevler ve parametreler
-Aynı `let` Sorguda kullanılabilecek işlevler oluşturmak için deyimlerini kullanın. Örneğin, bir DateTime alanını alan (UTC biçiminde) bir işlev tanımlayın ve bunu standart ABD biçimine dönüştürür. 
+`let`Aynı sorguda kullanılabilecek işlevler oluşturmak için deyimlerini kullanın. Örneğin, bir DateTime alanını alan (UTC biçiminde) bir işlev tanımlayın ve bunu standart ABD biçimine dönüştürür. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -94,7 +93,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-Bir arama tablosu oluştururken DataTable yapıları de çok yararlı olur. Örneğin, _securityevent_ tablosundan olay kimlikleri gibi tablo verilerini başka bir yerde listelenen olay türlerine eşlemek için, kullanarak `datatable` olay türleriyle birlikte bir arama tablosu oluşturun ve bu DataTable 'ı _securityevent_ verileriyle birleştirin:
+Bir arama tablosu oluştururken DataTable yapıları de çok yararlı olur. Örneğin, _securityevent_ tablosundan olay kimlikleri gibi tablo verilerini başka bir yerde listelenen olay türlerine eşlemek için, kullanarak olay türleriyle birlikte bir arama tablosu oluşturun `datatable` ve bu DataTable 'ı _securityevent_ verileriyle birleştirin:
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)

@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671605"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights ile istekleri izlemek için kod yazma
@@ -31,7 +30,7 @@ Azure Cloud Services çalışan rolleri ve durum bilgisiz API 'Leri Service Fabr
         ```
       Bu genel izleme anahtarı yapılandırması hakkında daha fazla bilgi için bkz. [Application Insights ile Service Fabric kullanma](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. İşaretlemek istediğiniz kod parçaları için, aşağıdaki örnekte gösterildiği gibi, etrafında bir `StartOperation<RequestTelemetry>` **using** deyimleri ekleyin:
+  1. İşaretlemek istediğiniz kod parçaları için, `StartOperation<RequestTelemetry>` Aşağıdaki örnekte gösterildiği gibi, etrafında bir **using** deyimleri ekleyin:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -45,7 +44,7 @@ Azure Cloud Services çalışan rolleri ve durum bilgisiz API 'Leri Service Fabr
         }
         ```
 
-        Başka `StartOperation<RequestTelemetry>` bir `StartOperation<RequestTelemetry>` kapsam içinde çağrı desteklenmiyor. Bunun yerine iç `StartOperation<DependencyTelemetry>` içe kapsamda kullanabilirsiniz. Örneğin:  
+        `StartOperation<RequestTelemetry>`Başka bir kapsam içinde çağrı `StartOperation<RequestTelemetry>` desteklenmiyor. `StartOperation<DependencyTelemetry>`Bunun yerine iç içe kapsamda kullanabilirsiniz. Örneğin:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

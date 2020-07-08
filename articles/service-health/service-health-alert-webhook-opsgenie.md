@@ -4,10 +4,9 @@ description: OpsGenie örneğiniz için hizmet sistem durumu olayları hakkında
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654146"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları gönderme
@@ -29,7 +28,7 @@ Bu makalede, bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarı
 
 1.  **Alıcılar**, **etkin**ve **bildirimleri gösterme**gibi diğer alanları doldurun.
 
-1.  Hala sonuna `apiKey` eklenmiş olan **tümleştirme URL 'sini**kopyalayıp kaydedin.
+1.  Hala sonuna eklenmiş olan **tümleştirme URL 'sini**kopyalayıp kaydedin `apiKey` .
 
     ![OpsGenie içindeki "tümleştirme URL 'SI"](./media/webhook-alerts/opsgenie-integration-url.png)
 
@@ -78,7 +77,7 @@ Bu makalede, bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarı
 
     BODY        <service health payload>
     ```
-1. "Başarılı" durumunun `200 OK` iletisiyle bir yanıt almalısınız.
+1. `200 OK`"Başarılı" durumunun iletisiyle bir yanıt almalısınız.
 
 1. Tümleştirmenin başarıyla ayarlandığını doğrulamak için [OpsGenie](https://www.opsgenie.com/) 'ye gidin.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670143"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramadan Azure Izleyici günlüklerine geçiş
@@ -53,7 +52,7 @@ Günlük arama ' da, Özet sorgudaki bir satıra tıklayarak bu satırdaki ayrı
 
 ![Günlük araması ayrıntıya git](media/log-search-transition/drilldown-search.png)
 
-Azure Izleyici günlüklerinde, bu kayıtları döndürmek için sorguyu değiştirmeniz gerekir. Sonuçlarda bulunan satırlardan birini genişletin ve sorguya eklemek için değerin **+** yanına tıklayın. Ardından **özetleme** komutunu açýklama ve sorguyu yeniden çalıştırın.
+Azure Izleyici günlüklerinde, bu kayıtları döndürmek için sorguyu değiştirmeniz gerekir. Sonuçlarda bulunan satırlardan birini genişletin ve **+** sorguya eklemek için değerin yanına tıklayın. Ardından **özetleme** komutunu açýklama ve sorguyu yeniden çalıştırın.
 
 ![Azure Izleyici günlüklerine git](media/log-search-transition/drilldown-logs.png)
 

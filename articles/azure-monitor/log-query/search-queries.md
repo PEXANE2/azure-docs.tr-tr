@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660249"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde sorgu arama
@@ -29,7 +28,7 @@ search "error"
 Kullanımı kolay olsa da, yukarıda gösterilen gibi kapsamlı olmayan sorgular verimli değildir ve çok sayıda ilgisiz sonuç döndürebilir. İlgili tabloda veya hatta belirli bir sütunda arama yapmak daha iyi bir uygulamadır.
 
 ### <a name="table-scoping"></a>Tablo kapsamı
-Belirli bir tablodaki bir terimi aramak için, **arama** işlecinden `in (table-name)` hemen sonra ekleyin:
+Belirli bir tablodaki bir terimi aramak için, `in (table-name)` **arama** işlecinden hemen sonra ekleyin:
 
 ```Kusto
 search in (Event) "error"
@@ -51,10 +50,10 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> `==` Yerine kullanıyorsanız `:`, sonuçlar *kaynak* sütunun tam değeri "hata" olan ve bu tam durumda olduğu kayıtları içerir. ': ' Kullanılması, *kaynağın* "hata kodu 404" veya "hata" gibi değerlere sahip olduğu kayıtları içerecektir.
+> `==`Yerine kullanıyorsanız `:` , sonuçlar *kaynak* sütunun tam değeri "hata" olan ve bu tam durumda olduğu kayıtları içerir. ': ' Kullanılması, *kaynağın* "hata kodu 404" veya "hata" gibi değerlere sahip olduğu kayıtları içerecektir.
 
 ## <a name="case-sensitivity"></a>Büyük/küçük harf duyarlılığı
-Varsayılan olarak, terim arama büyük/küçük harfe duyarlıdır; bu nedenle "DNS" araması "DNS", "DNS" veya "DNS" gibi sonuçlar verebilir. Arama büyük/küçük harfe duyarlı yapmak için `kind` seçeneğini kullanın:
+Varsayılan olarak, terim arama büyük/küçük harfe duyarlıdır; bu nedenle "DNS" araması "DNS", "DNS" veya "DNS" gibi sonuçlar verebilir. Arama büyük/küçük harfe duyarlı yapmak için seçeneğini kullanın `kind` :
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -89,10 +88,10 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Yalnızca bir joker karakter kullanarak bir tablodaki her şeyi de alabilirsiniz: `search in (Event) *`, ancak bu, yalnızca `Event`yazma ile aynı olacaktır.
+Yalnızca bir joker karakter kullanarak bir tablodaki her şeyi de alabilirsiniz: `search in (Event) *` , ancak bu, yalnızca yazma ile aynı olacaktır `Event` .
 
 > [!TIP]
-> Her tablodaki her sütunu `search *` almak için kullanabilirsiniz, ancak sorgularınızın her zaman belirli tablolara kapsamını oluşturmanız önerilir. Kapsamlı olmayan sorguların tamamlanması biraz zaman alabilir ve çok fazla sonuç döndürebilir.
+> Her `search *` tablodaki her sütunu almak için kullanabilirsiniz, ancak sorgularınızın her zaman belirli tablolara kapsamını oluşturmanız önerilir. Kapsamlı olmayan sorguların tamamlanması biraz zaman alabilir ve çok fazla sonuç döndürebilir.
 
 ## <a name="add-and--or-to-search-queries"></a>Sorgu ekleme *ve* / *or* arama
 Birden çok terim içeren kayıtları aramak için **ve** kullanın:

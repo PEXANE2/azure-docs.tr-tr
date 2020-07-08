@@ -8,10 +8,9 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672438"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
@@ -21,7 +20,7 @@ Azure Izleyici 'de [Tanılama ayarları](diagnostic-settings.md) Azure kaynaklar
 > Diğer Azure kaynakları için Tanılama ayarları gibi PowerShell veya CLı kullanarak Azure etkinlik günlüğü için [bir tanılama ayarı oluşturamıyoruz](diagnostic-settings.md) , bu makaledeki bilgileri kullanarak etkinlik günlüğü için bir kaynak yöneticisi şablonu oluşturun ve şablonu POWERSHELL veya CLI kullanarak dağıtın.
 
 ## <a name="deployment-methods"></a>Dağıtım yöntemleri
-PowerShell ve CLı dahil geçerli herhangi bir yöntemi kullanarak Kaynak Yöneticisi şablonlarını dağıtabilirsiniz. Etkinlik günlüğü için tanılama ayarlarının CLı veya `az deployment create` `New-AzDeployment` PowerShell için kullanarak bir aboneliğe dağıtılması gerekir. Kaynak günlükleri için Tanılama ayarları, CLı veya `az group deployment create` `New-AzResourceGroupDeployment` PowerShell için kullanarak bir kaynak grubuna dağıtmalıdır.
+PowerShell ve CLı dahil geçerli herhangi bir yöntemi kullanarak Kaynak Yöneticisi şablonlarını dağıtabilirsiniz. Etkinlik günlüğü için tanılama ayarlarının CLı veya PowerShell için kullanarak bir aboneliğe dağıtılması gerekir `az deployment create` `New-AzDeployment` . Kaynak günlükleri için Tanılama ayarları, CLı veya PowerShell için kullanarak bir kaynak grubuna dağıtmalıdır `az group deployment create` `New-AzResourceGroupDeployment` .
 
 Ayrıntılar için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtma ve Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) ve [Kaynak Yöneticisi ŞABLONLARı ve Azure CLI ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md) . 
 
@@ -30,7 +29,7 @@ Ayrıntılar için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtm
 
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
-Kaynak günlükleri için, şablona türünde `<resource namespace>/providers/diagnosticSettings` bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. Toplamak istediğiniz `category` kaynak için `logs` geçerli kategorilerin her biri için bölümünde bir sağlar. Kaynak ölçümlerini `metrics` [destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliği ekleyin.
+Kaynak günlükleri için, şablona türünde bir kaynak ekleyin `<resource namespace>/providers/diagnosticSettings` . Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. Toplamak istediğiniz `category` `logs` kaynak için geçerli kategorilerin her biri için bölümünde bir sağlar. Kaynak ölçümlerini `metrics` [destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliği ekleyin.
 
 Aşağıda, belirli bir kaynak için bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına bir kaynak günlüğü kategorisi toplayan bir şablon verilmiştir.
 
@@ -144,7 +143,7 @@ Aşağıda, kaynak günlüklerinin bir olay hub 'ına, depolama hesabına ve Log
 ```
 
 ## <a name="activity-log"></a>Etkinlik günlüğü
-Azure etkinlik günlüğü için türünde `Microsoft.Insights/diagnosticSettings`bir kaynak ekleyin. Kullanılabilir Kategoriler, [etkinlik günlüğündeki kategorilerde](activity-log-view.md#categories-in-the-activity-log)listelenmiştir. Aşağıda, tüm etkinlik günlüğü kategorilerini bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına toplayan bir şablon verilmiştir.
+Azure etkinlik günlüğü için türünde bir kaynak ekleyin `Microsoft.Insights/diagnosticSettings` . Kullanılabilir Kategoriler, [etkinlik günlüğündeki kategorilerde](activity-log-view.md#categories-in-the-activity-log)listelenmiştir. Aşağıda, tüm etkinlik günlüğü kategorilerini bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına toplayan bir şablon verilmiştir.
 
 
 ```json

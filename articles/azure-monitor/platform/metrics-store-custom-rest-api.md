@@ -8,10 +8,9 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662273"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Bir Azure kaynağı için Azure Izleyici ölçüm deposuna bir REST API kullanarak özel ölçümler gönderme
@@ -46,7 +45,7 @@ Erişim belirtecini yanıttan kaydedin.
 
 ## <a name="emit-the-metric-via-the-rest-api"></a>Ölçümü REST API aracılığıyla yayma 
 
-1. Aşağıdaki JSON dosyasını bir dosyaya yapıştırın ve yerel bilgisayarınızda **custommetric. JSON** olarak kaydedin. JSON dosyasındaki zaman parametresini güncelleştirin: 
+1. Aşağıdaki JSON dosyasını bir dosyaya yapıştırın ve yerel bilgisayarınızda **custommetric.js** olarak kaydedin. JSON dosyasındaki zaman parametresini güncelleştirin: 
     
     ```json
     { 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658226"
 ---
 # <a name="workbook-parameters"></a>Çalışma kitabı parametreleri
@@ -54,7 +53,7 @@ Bu, çalışma kitabının "Pills" stilinde okuma modunda nasıl görüneceğine
 ## <a name="referencing-a-parameter"></a>Parametreye başvurma
 ### <a name="via-bindings"></a>Bağlamalar aracılığıyla
 1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
-2. _Zaman aralığı_ açılan öğesini açın ve alttaki parametreler bölümünden `Time Range` seçeneği belirleyin.
+2. _Zaman aralığı_ açılan öğesini açın ve `Time Range` alttaki parametreler bölümünden seçeneği belirleyin.
 3. Bu, zaman aralığı parametresini grafiğin zaman aralığına bağlar. Örnek sorgunun zaman kapsamı son 24 saattir.
 4. Sonuçları görmek için sorguyu çalıştırın
 
@@ -63,7 +62,7 @@ Bu, çalışma kitabının "Pills" stilinde okuma modunda nasıl görüneceğine
 ### <a name="in-kql"></a>KQL 'de
 1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
 2. KQL 'de, parametresini kullanarak bir zaman kapsamı filtresi girin:`| where timestamp {TimeRange}`
-3. Bu, parametresinin zaman aralığı değeri olan `| where timestamp > ago(1d)`sorgu değerlendirmesi süresini genişletir.
+3. Bu, `| where timestamp > ago(1d)` parametresinin zaman aralığı değeri olan sorgu değerlendirmesi süresini genişletir.
 4. Sonuçları görmek için sorguyu çalıştırın
 
     ![KQL 'de başvurulan zaman aralığını gösteren resim](./media/workbooks-parameters/time-in-code.png)
@@ -77,7 +76,7 @@ Bu, çalışma kitabının "Pills" stilinde okuma modunda nasıl görüneceğine
 ## <a name="parameter-options"></a>Parametre seçenekleri
 _In metin_ bölümü, `label` değeri yerine parametresinin değerini kullandı. Parametreler, türüne göre çeşitli seçenekler sunar. Örneğin, zaman aralığı seçiciler değer, etiket, sorgu, başlangıç, bitiş ve grede izin verir.
 
-Parametrgenizin seçeneklerini görmek için `Previews` _parametre Düzenle_ bölmesinin bölümünü kullanın:
+`Previews`Parametrgenizin seçeneklerini görmek Için _parametre Düzenle_ bölmesinin bölümünü kullanın:
 
 ![Zaman aralığı parametre seçeneklerini gösteren resim](./media/workbooks-parameters/time-previews.png)
 

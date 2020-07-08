@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77621525"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Insight4GRC yapılandırma
@@ -43,12 +42,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Yönetici izinlerine sahip Insight4GRC içinde bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD Ile Insight4GRC arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>2. Adım Insight4GRC 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
+## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>Adım 2. Insight4GRC 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
 Insight4GRC 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Insight4GRC üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
@@ -74,7 +73,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Azure AD 'de Insight4GRC için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -98,7 +97,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Insight4GRC olarak eşitler**' ı seçin.
 

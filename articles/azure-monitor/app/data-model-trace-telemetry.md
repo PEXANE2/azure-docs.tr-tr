@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671962"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>İzleme telemetrisi: Application Insights veri modeli
 
-İzleme telemetrisi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), metin `printf` arama olan stil izleme deyimlerini temsil eder. `Log4Net`, `NLog`ve diğer metin tabanlı günlük dosyası girdileri bu türdeki örneklere çevrilir. İzlemenin bir genişletilebilirlik olarak ölçümleri yoktur.
+İzleme telemetrisi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) `printf` , metin arama olan stil izleme deyimlerini temsil eder. `Log4Net`, `NLog` ve diğer metin tabanlı günlük dosyası girdileri bu türdeki örneklere çevrilir. İzlemenin bir genişletilebilirlik olarak ölçümleri yoktur.
 
 ## <a name="message"></a>İleti
 
@@ -23,7 +22,7 @@ Maksimum Uzunluk: 32768 karakter
 
 ## <a name="severity-level"></a>Önem derecesi
 
-Önem derecesi düzeyini izleyin. Değer `Verbose` `Information`, `Warning` `Critical`,,, vb. olabilir. `Error`
+Önem derecesi düzeyini izleyin. Değer,,,, vb `Verbose` `Information` . olabilir `Warning` `Error` `Critical` .
 
 ## <a name="custom-properties"></a>Özel Özellikler
 

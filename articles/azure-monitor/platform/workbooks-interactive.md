@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658288"
 ---
 # <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
@@ -70,12 +69,12 @@ Aşağıdaki görüntüde, aynı ilkelere bağlı olarak okuma modunda daha ayr�
 ![Kılavuz satırı tıklamalarını kullanarak etkileşimli bir deneyim oluşturmayı gösteren resim](./media/workbooks-interactive/grid-click-read-mode.png)
 
 ### <a name="exporting-the-contents-of-an-entire-row"></a>Tüm satırın içeriğini dışa aktarma
-Bazı durumlarda, yalnızca belirli bir sütun yerine seçili satırın tüm içeriğinin dışarı aktarılması tercih edilir. Bu gibi durumlarda, yukarıdaki 7,1 `Field to export` adımında özelliği ayarını yok olarak bırakın. Çalışma kitapları, tüm satır içeriğini parametresine JSON olarak dışa aktarır. 
+Bazı durumlarda, yalnızca belirli bir sütun yerine seçili satırın tüm içeriğinin dışarı aktarılması tercih edilir. Bu gibi durumlarda, `Field to export` yukarıdaki 7,1 adımında özelliği ayarını yok olarak bırakın. Çalışma kitapları, tüm satır içeriğini parametresine JSON olarak dışa aktarır. 
 
-Başvuran KQL denetiminde, JSON 'u ayrıştırmak ve `todynamic` ayrı sütunlara erişmek için işlevini kullanın.
+Başvuran KQL denetiminde, `todynamic` JSON 'u ayrıştırmak ve ayrı sütunlara erişmek için işlevini kullanın.
 
  ## <a name="grid-cell-clicks"></a>Izgara hücresi tıklamaları
-Çalışma kitapları, yazarlara, adlı özel bir `link renderer`ızgara sütun işleyicisi türü aracılığıyla etkileşim eklemesine olanak tanır. Bağlantı Oluşturucu, bir kılavuz hücresini hücrenin içeriğine göre köprüye dönüştürür. Çalışma kitapları, kaynak genel bakış dikey pencereleri, özellik paketi görüntüleyicileri, uygulama öngörüleri arama, kullanım, işlem izleme vb. gibi birçok bağlantı Oluşturucu türünü destekler.
+Çalışma kitapları, yazarlara, adlı özel bir ızgara sütun işleyicisi türü aracılığıyla etkileşim eklemesine olanak tanır `link renderer` . Bağlantı Oluşturucu, bir kılavuz hücresini hücrenin içeriğine göre köprüye dönüştürür. Çalışma kitapları, kaynak genel bakış dikey pencereleri, özellik paketi görüntüleyicileri, uygulama öngörüleri arama, kullanım, işlem izleme vb. gibi birçok bağlantı Oluşturucu türünü destekler.
 
 ### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Kılavuz hücre tıklamalarını kullanarak etkileşimi ayarlama
 1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
@@ -90,11 +89,11 @@ Başvuran KQL denetiminde, JSON 'u ayrıştırmak ve `todynamic` ayrı sütunlar
 5. `Run query`sonuçları görmek için
 6. Ayarlar bölmesini açmak için _sütun ayarları_ ' na tıklayın.
 7. _Sütunlar_ bölümünde, şunu ayarlayın:
-    1. _Örnek_ sütun Oluşturucu: `Link`, açılacak görünüm: `Cell Details`, bağlantı etiketi:`Sample`
-    2. _Count_ -Column işleyici: `Bar`, renk paleti: `Blue`, minimum değer:`0`
+    1. _Örnek_ sütun Oluşturucu: `Link` , açılacak görünüm: `Cell Details` , bağlantı etiketi:`Sample`
+    2. _Count_ -Column işleyici: `Bar` , renk paleti: `Blue` , minimum değer:`0`
     3. _İstek_ sütunu işleyici:`Automatic`
     4. Değişiklikleri uygulamak için _Kaydet ve Kapat_ ' a tıklayın
-8. Kılavuzdaki `Sample` bağlantılardan birine tıklayın. Bu, Örneklenmiş bir isteğin ayrıntılarıyla birlikte bir özellik bölmesi açar.
+8. `Sample`Kılavuzdaki bağlantılardan birine tıklayın. Bu, Örneklenmiş bir isteğin ayrıntılarıyla birlikte bir özellik bölmesi açar.
 
     ![Kılavuz hücre tıklamalarını kullanarak etkileşimli bir deneyim oluşturmayı gösteren resim](./media/workbooks-interactive/grid-cell-click-create.png)
 
@@ -116,7 +115,7 @@ Başvuran KQL denetiminde, JSON 'u ayrıştırmak ve `todynamic` ayrı sütunlar
 Çalışma kitabı, kullanıcıların belirli denetimleri parametre değerlerine göre görünmesine veya kaybolmasına olanak sağlar. Bu, yazarların, kullanıcı girişine veya telemetri durumuna göre raporların farklı görünmesini sağlar. Örnek, tüketicilere yalnızca bir Özet gösterir, ancak yanlış bir şeyler olduğunda tam ayrıntıları gösterir.
 
 ### <a name="setting-up-interactivity-using-conditional-visibility"></a>Koşullu görünürlük kullanarak etkileşim kurma
-1. İki etkileşimli denetim ayarlamak için `Setting up interactivity on grid row click` bölümündeki adımları izleyin.
+1. `Setting up interactivity on grid row click`İki etkileşimli denetim ayarlamak için bölümündeki adımları izleyin.
 2. En üste yeni bir parametre ekleyin:
     1. Ada`ShowDetails`
     2. Parametre türü:`Drop down`
@@ -127,16 +126,16 @@ Başvuran KQL denetiminde, JSON 'u ayrıştırmak ve `todynamic` ayrı sütunlar
 3. Parametre değerini ayarla`Yes`
 4. Alan grafiğinin sorgu denetiminde _Gelişmiş ayarlar_ simgesine (dişli simgesi) tıklayın
 5. Ayarı denetleyin`Make this item conditionally visible`
-    1. Bu öğe parametre değeri `ShowDetails` `equals` ise görünür`Yes`
+    1. Bu öğe `ShowDetails` parametre değeri `equals` ise görünür`Yes`
 6. Değişiklikleri uygulamak için _düzenlemeleri bitti_ ' ye tıklayın.
 7. Okuma moduna girmek için çalışma kitabı araç çubuğunda _Düzenle bitti_ ' ye tıklayın.
-8. Parametresinin `ShowDetails` değerini olarak `No`değiştirin. Aşağıdaki grafiğin kaybolduğuna dikkat edin.
+8. Parametresinin değerini `ShowDetails` olarak değiştirin `No` . Aşağıdaki grafiğin kaybolduğuna dikkat edin.
 
-Aşağıdaki görüntüde olduğu `ShowDetails` gibi görünen durum gösterilmektedir`Yes`
+Aşağıdaki `ShowDetails` görüntüde olduğu gibi görünen durum gösterilmektedir`Yes`
 
 ![Grafiğin görünür olduğu koşullu görünürlüğü gösteren resim](./media/workbooks-interactive/conditional-visibility.png)
 
-Aşağıdaki görüntüde nerede `ShowDetails` olduğu gizli durum gösterilmektedir`No`
+Aşağıdaki görüntüde nerede olduğu gizli durum gösterilmektedir `ShowDetails``No`
 
 ![Grafiğin gizli olduğu koşullu görünürlüğü gösteren resim](./media/workbooks-interactive/conditional-invisible.png)
 

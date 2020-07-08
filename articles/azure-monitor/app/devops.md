@@ -4,15 +4,14 @@ description: Application Insights devOps döngüsüne nasıl uyar
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669701"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights ile ayrıntılı web uygulaması ve hizmet tanılama
 ## <a name="why-do-i-need-application-insights"></a>Neden Application Insights gerekir?
-Application Insights çalışan Web uygulamanızı izler. Hataları ve performans sorunlarını size bildirir ve müşterilerin uygulamanızı nasıl kullandığını analiz etmenize yardımcı olur. Birçok platformda (ASP.NET, Java EE, Node. js,...) çalışan uygulamalar için çalışır ve bulutta ya da şirket içinde barındırılır. 
+Application Insights çalışan Web uygulamanızı izler. Hataları ve performans sorunlarını size bildirir ve müşterilerin uygulamanızı nasıl kullandığını analiz etmenize yardımcı olur. Birçok platformda (ASP.NET, Java EE, Node.js,...) çalışan uygulamalar için çalışır ve bulutta ya da şirket içinde barındırılır. 
 
 ![Web uygulamaları sunma karmaşıklığının yönleri](./media/devops/010.png)
 
@@ -158,6 +157,6 @@ Bir uyarı ortaya çıktığında Application Insights, iş izleme sisteminizde 
 Application Insights kullanmaya başlamak kolaydır. Ana Seçenekler şunlardır:
 
 * [Azure App Service](../../azure-monitor/app/app-insights-overview.md)Için de [IIS sunucuları](../../azure-monitor/app/monitor-performance-live-website-now.md).
-* Geliştirme sırasında projenizi işaretleyin. Bunu [ASP.net](../../azure-monitor/app/asp-net.md) veya [Java](../../azure-monitor/app/java-get-started.md) uygulamaları için, ayrıca [Node. js](../../azure-monitor/app/nodejs.md) ve [diğer türlerde](../../azure-monitor/app/platforms.md)bir konak için yapabilirsiniz. 
+* Geliştirme sırasında projenizi işaretleyin. Bunu [ASP.net](../../azure-monitor/app/asp-net.md) veya [Java](../../azure-monitor/app/java-get-started.md) uygulamaları için, [Node.js](../../azure-monitor/app/nodejs.md) ve [diğer türlerde](../../azure-monitor/app/platforms.md)bir konak için yapabilirsiniz. 
 * Kısa bir kod parçacığı ekleyerek [herhangi bir Web sayfasını](../../azure-monitor/app/javascript.md) işaretleyin.
 

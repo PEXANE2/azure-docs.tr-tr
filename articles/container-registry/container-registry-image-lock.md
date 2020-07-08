@@ -4,10 +4,9 @@ description: Bir Azure Container Registry 'de silinememesi veya üzerine yazılm
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659705"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme
@@ -69,7 +68,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Bir görüntüyü bildirim özetine göre kilitleme
 
-Bildirim Özeti (SHA-256 karması `sha256:...`) tarafından tanımlanan bir *myrepo/MyImage* görüntüsünü kilitlemek için aşağıdaki komutu çalıştırın. (Bir veya daha fazla görüntü etiketleriyle ilişkili bildirim özetini bulmak için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın.)
+Bildirim Özeti (SHA-256 karması) tarafından tanımlanan bir *myrepo/MyImage* görüntüsünü kilitlemek için `sha256:...` aşağıdaki komutu çalıştırın. (Bir veya daha fazla görüntü etiketleriyle ilişkili bildirim özetini bulmak için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın.)
 
 ```azurecli
 az acr repository update \

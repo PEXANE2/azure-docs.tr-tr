@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658039"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Izleyici çalışma kitabı görselleştirmeleri
@@ -69,7 +68,7 @@ Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılı
 | `Size` | Denetimin dikey boyutu | Küçük, orta, büyük veya tam |
 | `Color palette` | Grafikte kullanılacak renk paleti. Çok ölçümlü veya kesimli modda yoksayıldı. | Mavi, yeşil, kırmızı, vb. |
 | `Legend` | Gösterge için kullanılacak toplama işlevi | Değerlerin toplamı veya ortalaması ya da Max, min, First, Last değeri |
-| `Query` | Grafik görselleştirmesi tarafından beklenen biçimde veri döndüren herhangi bir KQL sorgusu | _\| -Series istek sayısı = count () varsayılan = 0, zaman damgasında önce (1D), şimdi (). Adım 1 sa_ |
+| `Query` | Grafik görselleştirmesi tarafından beklenen biçimde veri döndüren herhangi bir KQL sorgusu | _\|-Series istek sayısı = count () varsayılan = 0, zaman damgasında önce (1D), şimdi (). Adım 1 sa_ |
 
 ### <a name="adding-a-metric-chart"></a>Ölçüm grafiği ekleme
 
@@ -93,7 +92,7 @@ Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılı
 | `Visualization` | Kullanılacak görselleştirme | Alan, çubuk, çizgi, dağılım, kılavuz |
 | `Split By` | İsteğe bağlı olarak bir boyuttaki ölçüyü bölme | Coğrafi türe göre işlemler |
 | `Size` | Denetimin dikey boyutu | Küçük, orta veya büyük |
-| `Color palette` | Grafikte kullanılacak renk paleti. `Split by` Parametre kullanılıyorsa yoksayıldı | Mavi, yeşil, kırmızı, vb. |
+| `Color palette` | Grafikte kullanılacak renk paleti. `Split by`Parametre kullanılıyorsa yoksayıldı | Mavi, yeşil, kırmızı, vb. |
 
 ## <a name="grids"></a>Kılavuzlar
 
@@ -138,7 +137,7 @@ Kutucuklar, çalışma kitaplarında Özet verileri sunmak için çok faydalı b
 7. Ayarlar bölmesini açmak için **kutucuk ayarları** düğmesine tıklayın
 8. **Döşeme alanları**' nda, şunu ayarlayın:
     * Başlığın`name`
-    * Sol: `Requests`, işleyici: `Big Number`, renk paleti: `Green to Red`, en küçük değer:`0`
+    * Sol: `Requests` , işleyici: `Big Number` , renk paleti: `Green to Red` , en küçük değer:`0`
     * Aşağıya`appName`
 9. Bölmenin alt kısmındaki **Kaydet ve Kapat** düğmesine tıklayın.
 
@@ -182,7 +181,7 @@ Aşağıdaki örnekte, ağaç ızgarası olarak görselleştirilen kapsayıcı s
 8. Üstteki _sütunlar_ bölümünde, şunu ayarlayın:
     * _Kimlik_ sütunu işleyici:`Hidden`
     * _Üst kimlik_ -sütun Oluşturucu:`Hidden`
-    * _İstek_ sütunu işleyici: `Bar`, color: `Blue`, minimum değer:`0`
+    * _İstek_ sütunu işleyici: `Bar` , color: `Blue` , minimum değer:`0`
 9. Bölmenin alt kısmındaki _Kaydet ve Kapat_ düğmesine tıklayın.    
 
 ![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/tree-settings.png)
@@ -243,9 +242,9 @@ Aşağıdaki grafikte, dış bilgisayarlardan gelen/giden çeşitli bağlantı n
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
 10. En üstteki _düğüm biçimi ayarları_ ' nda, şunu ayarlayın:
-    * _Popüler içerik_-sütunu kullanın: `Name`, sütun Oluşturucu:`Text`
-    * _Center içeriği_-sütun kullanım: `Calls`, sütun Oluşturucu: `Big Number`, renk paleti:`None`
-    * _Alt içerik_-sütunu kullanın: `Kind`, sütun Oluşturucu:`Text`
+    * _Popüler içerik_-sütunu kullanın: `Name` , sütun Oluşturucu:`Text`
+    * _Center içeriği_-sütun kullanım: `Calls` , sütun Oluşturucu: `Big Number` , renk paleti:`None`
+    * _Alt içerik_-sütunu kullanın: `Kind` , sütun Oluşturucu:`Text`
 10. Bölmenin alt kısmındaki _Kaydet ve Kapat_ düğmesine tıklayın.
 
 ![Kutucuk Özet görünümünün ekran görüntüsü](./media/workbooks-visualizations/graph-settings.png)

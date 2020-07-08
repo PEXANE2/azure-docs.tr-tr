@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670330"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularından grafikler ve diyagramlar oluşturma
@@ -69,7 +68,7 @@ Perf
 ![Başvuru çizgisi](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Birden çok boyut
-Her değer birleşimi için `by` bir tane `summarize` olmak üzere sonuçlarda birden çok satır oluşturma yan tümcesindeki birden çok ifade.
+`by` `summarize` Her değer birleşimi için bir tane olmak üzere sonuçlarda birden çok satır oluşturma yan tümcesindeki birden çok ifade.
 
 ```Kusto
 SecurityEvent
@@ -77,7 +76,7 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Sonuçları bir grafik olarak görüntülediğinizde, `by` yan tümcesindeki ilk sütunu kullanır. Aşağıdaki örnek, _EventID_ kullanılarak yığılmış bir sütun grafiği gösterir. Boyutların `string` türünde olması gerekir, bu nedenle bu örnekte _EventID_ dizeye yayınlanmakta. 
+Sonuçları bir grafik olarak görüntülediğinizde, yan tümcesindeki ilk sütunu kullanır `by` . Aşağıdaki örnek, _EventID_ kullanılarak yığılmış bir sütun grafiği gösterir. Boyutların türünde olması gerekir `string` , bu nedenle bu örnekte _EventID_ dizeye yayınlanmakta. 
 
 ![Çubuk grafik olay kimliği](media/charts/charts-and-diagrams-multiDimension1.png)
 

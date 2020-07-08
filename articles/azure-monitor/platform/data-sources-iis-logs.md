@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670585"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Izleyici 'de IIS günlükleri toplama
@@ -43,7 +42,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 | csUserName |Sunucuya erişen kimliği doğrulanmış kullanıcının adı. Anonim kullanıcılar bir tire işaretiyle gösterilir. |
 | csUriStem |İsteğin hedefi bir Web sayfası. |
 | csUriQuery |Varsa, istemcisinin gerçekleştirmeye çalıştığı sorgu. |
-| ManagementGroupName |Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu, AOI-\<Workspace kimliğidir\> |
+| ManagementGroupName |Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için, bu AOI 'dir\<workspace ID\> |
 | RemoteIPCountry |İstemcinin IP adresinin ülkesi/bölgesi. |
 | RemoteIPLatitude |İstemci IP adresinin enlem. |
 | RemoteIPLongitude |İstemci IP adresinin boylam. |
@@ -65,7 +64,7 @@ Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının f
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scStatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |
 | W3CIISLog &#124;, CIP tarafından Count () özetleme |İstemci IP adresine göre IIS günlük girişi sayısı. |
-| W3CIISLog &#124;, csHost = = "www\.contoso.com" &#124; Count () öğesini csUriStem ile özetleme |Host www\.contoso.com için URL 'ye göre IIS günlük girişi sayısı. |
+| W3CIISLog &#124;, csHost = = "www \. contoso.com" &#124; Count () öğesini csUriStem ile özetleme |Host www contoso.com için URL 'ye göre IIS günlük girişi sayısı \. . |
 | W3CIISLog &#124; toplam (csBytes) bilgisayar &#124; 500000 al |Her IIS bilgisayarı tarafından alınan toplam bayt sayısı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

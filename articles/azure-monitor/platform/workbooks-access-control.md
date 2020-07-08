@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 20116ab105e4eb12875ba3cb279fb261eb5c70e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658430"
 ---
 # <a name="access-control"></a>Erişim denetimi
@@ -31,13 +30,13 @@ ms.locfileid: "77658430"
 
 [Izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) , kaynaklardan verileri okumak için izleme araçları (çalışma kitapları dahil) tarafından kullanılan standart/Read ayrıcalıklarını içerir.
 
-[Katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunanı izlemek `/write` , öğeleri kaydetmek için çeşitli izleme araçları tarafından kullanılan genel ayrıcalıkları `workbooks/write` içerir (paylaşılan çalışma kitaplarını kaydetme ayrıcalıkları dahil).
+[Katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunanı izlemek, `/write` öğeleri kaydetmek için çeşitli izleme araçları tarafından kullanılan genel ayrıcalıkları içerir ( `workbooks/write` paylaşılan çalışma kitaplarını kaydetme ayrıcalıkları dahil).
 "Çalışma kitapları katılımcısı" paylaşılan çalışma kitaplarını kaydetmek için bir nesneye "çalışma kitapları/yazma" ayrıcalıklarını ekler.
 Kullanıcıların yalnızca görebileceği özel çalışma kitaplarını kaydedebilmeleri için özel ayrıcalıklar gerekmez.
 
 Özel rol tabanlı erişim denetimi için:
 
-Paylaşılan `microsoft.insights/workbooks/write` çalışma kitaplarını kaydetmek için ekleyin. Daha ayrıntılı bilgi için bkz. [çalışma kitabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolü.
+`microsoft.insights/workbooks/write`Paylaşılan çalışma kitaplarını kaydetmek için ekleyin. Daha ayrıntılı bilgi için bkz. [çalışma kitabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolü.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

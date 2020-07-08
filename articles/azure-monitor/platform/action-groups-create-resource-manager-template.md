@@ -8,10 +8,9 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669089"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturma
@@ -27,7 +26,7 @@ Temel adımlar şunlardır:
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Eylem grubu için Kaynak Yöneticisi şablonları
 
-Kaynak Yöneticisi şablonu kullanarak bir eylem grubu oluşturmak için, türünde `Microsoft.Insights/actionGroups`bir kaynak oluşturursunuz. Ardından ilgili tüm özellikleri doldurursunuz. Bir eylem grubu oluşturan iki örnek şablon aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir eylem grubu oluşturmak için, türünde bir kaynak oluşturursunuz `Microsoft.Insights/actionGroups` . Ardından ilgili tüm özellikleri doldurursunuz. Bir eylem grubu oluşturan iki örnek şablon aşağıda verilmiştir.
 
 ```json
 {

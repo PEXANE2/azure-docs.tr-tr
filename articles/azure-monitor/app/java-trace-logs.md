@@ -4,10 +4,9 @@ description: Application Insights 'de Log4J veya Logback izlemeleri ara
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657223"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
@@ -18,9 +17,9 @@ ms.locfileid: "77657223"
 
 ## <a name="using-the-application-insights-java-agent"></a>Application Insights Java Aracısı 'nı kullanma
 
-Application Insights Java Aracısı, varsayılan olarak ve üzerinde gerçekleştirilen `WARN` günlüğü otomatik olarak yakalar.
+Application Insights Java Aracısı, varsayılan olarak ve üzerinde gerçekleştirilen günlüğü otomatik olarak yakalar `WARN` .
 
-`AI-Agent.xml` Dosya kullanılarak yakalanan günlüğe kaydetme eşiğini değiştirebilirsiniz:
+Dosya kullanılarak yakalanan günlüğe kaydetme eşiğini değiştirebilirsiniz `AI-Agent.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +32,7 @@ Application Insights Java Aracısı, varsayılan olarak ve üzerinde gerçekleş
 </ApplicationInsightsAgent>
 ```
 
-Şu `AI-Agent.xml` dosyayı kullanarak Java aracısının günlüğe kaydetme yakalamasını devre dışı bırakabilirsiniz:
+Şu dosyayı kullanarak Java aracısının günlüğe kaydetme yakalamasını devre dışı bırakabilirsiniz `AI-Agent.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -56,7 +55,7 @@ Daha önce yapmadıysanız, [Java için APPLICATION INSIGHTS SDK][java]'yı yük
 *Projeniz için uygun yolu seçin.*
 
 #### <a name="if-youre-using-maven"></a>Maven kullanıyorsanız...
-Projeniz zaten derleme için Maven kullanmak üzere ayarlandıysa, aşağıdaki kod parçacıklarıyla POTM. xml dosyanıza birleştirme yapın.
+Projeniz zaten derleme için Maven kullanmak üzere ayarlandıysa, aşağıdaki kod parçacıklarıyla pom.xml dosyanıza bir tane birleştirin.
 
 Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyin.
 
@@ -100,7 +99,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
 ```
 
 #### <a name="if-youre-using-gradle"></a>Gradle kullanıyorsanız...
-Projeniz zaten derleme için Gradle kullanmak üzere ayarlandıysa, yapı. Gradle dosyanızdaki `dependencies` gruba aşağıdaki satırlardan birini ekleyin:
+Projeniz zaten derleme için Gradle kullanmak üzere ayarlandıysa, `dependencies` yapı. Gradle dosyanızdaki gruba aşağıdaki satırlardan birini ekleyin:
 
 Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyin.
 
@@ -126,7 +125,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
 #### <a name="otherwise-"></a>Aksi taktirde...
 Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyin (Maven Merkezi sayfasına ulaşan bağlantı kurulduktan sonra) uygun bir uygulama için karşıdan yükleme bölümündeki ' jar ' bağlantısına tıklayın.
 
-| Medi | İndirme | Kitaplık |
+| Medi | İndir | Kitaplık |
 | --- | --- | --- |
 | Logback |[Logback uygulama jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-günlüğe kaydetme-logback |
 | Log4J v 2.0 |[Log4J v2 Ekleyici jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-günlüğe kaydetme-log4j2 |

@@ -7,10 +7,9 @@ ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671363"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric, bulut hizmeti ve sanal makinelerde .NET uygulamaları için Snapshot Debugger etkinleştirme
@@ -25,7 +24,7 @@ Uygulamanız Azure Service Fabric, bulut hizmeti, sanal makineler veya şirket i
 
 2. Uygulamanıza [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
 
-3. Gerekirse, [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasına eklenen Snapshot Debugger yapılandırması özelleştirilir. Varsayılan Snapshot Debugger yapılandırması çoğunlukla boştur ve tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
+3. Gerekirse, [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)eklenen Snapshot Debugger yapılandırma özelleştirildi. Varsayılan Snapshot Debugger yapılandırması çoğunlukla boştur ve tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
 
     ```xml
     <TelemetryProcessors>
@@ -71,19 +70,19 @@ Uygulamanız Azure Service Fabric, bulut hizmeti, sanal makineler veya şirket i
 
 2. Uygulamanıza [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
 
-3. Snapshot Collector telemetri işlemcisini eklemek `Startup` ve yapılandırmak için uygulamanızın sınıfını değiştirin.
-    1. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.5 veya üzeri kullanılıyorsa, aşağıdaki using deyimlerini öğesine `Startup.cs`ekleyin.
+3. `Startup`Snapshot Collector telemetri işlemcisini eklemek ve yapılandırmak için uygulamanızın sınıfını değiştirin.
+    1. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.5 veya üzeri kullanılıyorsa, aşağıdaki using deyimlerini öğesine ekleyin `Startup.cs` .
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       İçinde `Startup` `Startup.cs`sınıfındaki ConfigureServices yönteminin sonuna aşağıdakileri ekleyin.
+       İçinde sınıfındaki ConfigureServices yönteminin sonuna aşağıdakileri ekleyin `Startup` `Startup.cs` .
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.4 veya sonraki bir sürümü kullanılırsa, aşağıdaki using deyimlerini öğesine `Startup.cs`ekleyin.
+    2. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.4 veya sonraki bir sürümü kullanılırsa, aşağıdaki using deyimlerini öğesine ekleyin `Startup.cs` .
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -112,7 +111,7 @@ Uygulamanız Azure Service Fabric, bulut hizmeti, sanal makineler veya şirket i
            }
            ...
         ```
-        Başlangıç ardışık `SnapshotCollectorConfiguration` düzenine `SnapshotCollectorTelemetryProcessorFactory` ve hizmetlerini ekleyin:
+        `SnapshotCollectorConfiguration` `SnapshotCollectorTelemetryProcessorFactory` Başlangıç ardışık düzenine ve hizmetlerini ekleyin:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -129,7 +128,7 @@ Uygulamanız Azure Service Fabric, bulut hizmeti, sanal makineler veya şirket i
        }
        ```
 
-4. Gerekirse, appSettings. json ' a bir SnapshotCollectorConfiguration bölümü ekleyerek Snapshot Debugger yapılandırmasını özelleştirdiniz. Snapshot Debugger yapılandırmasındaki tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
+4. Gerekirse, appsettings.jsüzerine bir SnapshotCollectorConfiguration bölümü ekleyerek Snapshot Debugger yapılandırmasını özelleştirdiniz. Snapshot Debugger yapılandırmasındaki tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
 
    ```json
    {

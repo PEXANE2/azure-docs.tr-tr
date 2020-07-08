@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669055"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
@@ -23,7 +22,7 @@ Eylem grupları hakkında bilgi için bkz. [eylem grupları oluşturma](../../az
 
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
-Web kancası isteğe bağlı olarak, kimlik doğrulaması için belirteç tabanlı yetkilendirme kullanabilir. Web kancası URI 'SI, bir belirteç KIMLIĞIYLE (örneğin, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`) kaydedilir.
+Web kancası isteğe bağlı olarak, kimlik doğrulaması için belirteç tabanlı yetkilendirme kullanabilir. Web kancası URI 'SI, bir belirteç KIMLIĞIYLE (örneğin,) kaydedilir `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` .
 
 ## <a name="payload-schema"></a>Yük şeması
 POST işleminde yer alan JSON yükü, yükün Data. Context. activityLog. eventSource alanına göre farklılık gösterir.
@@ -260,14 +259,14 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | bağlam |Olayın bağlamı. |
 | resourceProviderName |Etkilenen kaynağın kaynak sağlayıcısı. |
 | ConditionType 'ı seçin |Always "Event." |
-| ad |Uyarı kuralının adı. |
-| id |Uyarının kaynak KIMLIĞI. |
+| name |Uyarı kuralının adı. |
+| kimlik |Uyarının kaynak KIMLIĞI. |
 | açıklama |Uyarı açıklaması, uyarı oluşturulduğunda ayarlanır. |
 | subscriptionId |Azure abonelik KIMLIĞI. |
 | timestamp |Olayın, isteği işleyen Azure hizmeti tarafından oluşturulduğu zaman. |
 | resourceId |Etkilenen kaynağın kaynak KIMLIĞI. |
 | resourceGroupName |Etkilenen kaynak için kaynak grubunun adı. |
-| properties |Olayla ilgili `<Key, Value>` ayrıntıları içeren çiftler (yani `Dictionary<String, String>`,) kümesi. |
+| properties |`<Key, Value>` `Dictionary<String, String>` Olayla ilgili ayrıntıları içeren çiftler (yani,) kümesi. |
 | event |Olay hakkında meta veriler içeren öğe. |
 | yetkilendirme |Etkinliğin rol tabanlı Access Control özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
 | category |Etkinliğin kategorisi. Desteklenen değerler arasında yönetim, uyarı, güvenlik, ServiceHealth ve öneri bulunur. |

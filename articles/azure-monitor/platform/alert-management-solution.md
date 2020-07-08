@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668392"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics Uyarı Yönetimi çözümü
@@ -49,7 +48,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 |:--- |:--- |:--- |
 | [Windows aracıları](agent-windows.md) | Hayır |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
 | [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
-| [System Center Operations Manager yönetim grubu](../../azure-monitor/platform/om-agents.md) |Yes |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
+| [System Center Operations Manager yönetim grubu](../../azure-monitor/platform/om-agents.md) |Evet |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
 
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
@@ -65,7 +64,7 @@ Uyarı Yönetimi çözümünü Log Analytics çalışma alanınıza eklediğiniz
 
 | Sütun | Açıklama |
 |:--- |:--- |
-| Kritik uyarılar |Uyarı adına göre gruplandırılmış kritik önem derecesine sahip tüm uyarılar.  Bu uyarının tüm kayıtlarını döndüren bir günlük araması çalıştırmak için bir uyarı adına tıklayın. |
+| Kritik Uyarılar |Uyarı adına göre gruplandırılmış kritik önem derecesine sahip tüm uyarılar.  Bu uyarının tüm kayıtlarını döndüren bir günlük araması çalıştırmak için bir uyarı adına tıklayın. |
 | Uyarı uyarıları |Uyarı adına göre gruplandırılmış bir uyarı önem derecesine sahip tüm uyarılar.  Bu uyarının tüm kayıtlarını döndüren bir günlük araması çalıştırmak için bir uyarı adına tıklayın. |
 | Etkin System Center Operations Manager uyarıları |Uyarıyı oluşturan kaynağa *kapalı* olarak gruplandırılmış dışında bir durum ile Operations Manager toplanan tüm uyarılar. |
 | Tüm etkin uyarılar |Uyarı adına göre gruplandırılan tüm önem derecesine sahip tüm uyarılar. Yalnızca *kapalı*dışında bir durum Operations Manager uyarıları içerir. |

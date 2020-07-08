@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672251"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Tanılama uzantısı (WAD) yapılandırma şeması sürümleri ve geçmişi
@@ -23,13 +22,13 @@ Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Wind
 |------------------|-------------------------------|------|  
 |'in               |1.0                            |eklenti|  
 |2,0-2,4         |1.0                            |eklenti|  
-|2,5               |1.2                            |uzantı|  
+|2.5               |1.2                            |uzantı|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
 |2.8               |1,5                            |"|  
 |2.9               |1.6                            |"|
 |2,96              |1.7                            |"|
-|2,96              |1,8                            |"|
+|2,96              |1.8                            |"|
 |2,96              |1.8.1                          |"|
 |2,96              |1.9                            |"|
 |2,96              |1,11                           |"|
@@ -48,7 +47,7 @@ Farklı Azure tanılama sürümleri farklı yapılandırma şemaları kullanır.
 Azure Izleyici havuzu için destek eklendi. Bu havuz yalnızca performans sayaçları için geçerlidir. VM, VMSS veya bulut hizmetinizde toplanan performans sayaçlarının özel ölçümler olarak Azure Izleyicisine gönderilmesini sağlar. Azure Izleyici havuzu şunları destekler:
 * Azure izleyici [ölçümleri API 'leri](https://docs.microsoft.com/rest/api/monitor/metrics/list) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarını alma.
 * Azure izleyici 'de yeni [birleşik uyarılar deneyimi](../../azure-monitor/platform/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
-* Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor. Örneğin, "MantıksalDisk (\*)/Diskwrites/SEC" sayacını topladıysanız, her mantıksal disk Için (C:, D:, vb.) disk yazma/sn üzerinde çizim yapmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
+* Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor. Örneğin, "MantıksalDisk ( \* )/Diskwrites/SEC" sayacını topladıysanız, her mantıksal disk için (C:, D:, vb.) disk yazma/sn üzerinde çizim yapmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
 
 Azure Izleyici 'yi tanılama uzantısı yapılandırmanızda yeni bir havuz olarak tanımlama
 ```json
@@ -160,14 +159,14 @@ Uygulama ve altyapı düzeyinin yanı sıra uygulamanızdaki sorunları tanılam
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 ve tanılama uzantısı 1,3
 Visual Studio 'da bulut hizmeti projeleri için aşağıdaki değişiklikler yapılmıştır. (Bu değişiklikler Azure SDK 'nın sonraki sürümleri için de geçerlidir.)
 
-* Yerel öykünücü artık tanılamayı desteklemektedir. Bu değişiklik, tanılama verilerini toplayabilmeniz ve Visual Studio 'da geliştirme ve test yaparken uygulamanızın doğru izlemeleri oluşturmasıdır. Bağlantı dizesi `UseDevelopmentStorage=true` , Azure depolama öykünücüsü 'Nü kullanarak Visual Studio 'da bulut hizmeti projenizi çalıştırırken tanılama veri toplamayı mümkün bir şekilde sunar. Tüm Tanılama verileri (geliştirme depolaması) depolama hesabında toplanır.
+* Yerel öykünücü artık tanılamayı desteklemektedir. Bu değişiklik, tanılama verilerini toplayabilmeniz ve Visual Studio 'da geliştirme ve test yaparken uygulamanızın doğru izlemeleri oluşturmasıdır. Bağlantı dizesi, `UseDevelopmentStorage=true` Azure depolama öykünücüsü 'nü kullanarak Visual Studio 'da bulut hizmeti projenizi çalıştırırken tanılama veri toplamayı mümkün bir şekilde sunar. Tüm Tanılama verileri (geliştirme depolaması) depolama hesabında toplanır.
 * Tanılama depolama hesabı bağlantı dizesi (Microsoft. WindowsAzure. eklenti. Diagnostics. ConnectionString), hizmet yapılandırma (. cscfg) dosyasında bir kez daha saklanır. Azure SDK 2,5 ' de tanılama depolama hesabı tanılama. wadcfgx dosyasında belirtilmiştir.
 
 Bağlantı dizesinin Azure SDK 2,4 ve önceki sürümlerde çalıştığı ve Azure SDK 2,6 ve sonrasında nasıl çalıştığı hakkında bazı önemli farklılıklar vardır.
 
 * Azure SDK 2,4 ve önceki sürümlerde bağlantı dizesi, tanılama günlüklerini aktarmaya yönelik depolama hesabı bilgilerini almak için tanılama eklentisi tarafından çalışma zamanında kullanıldı.
 * Azure SDK 2,6 ve sonraki sürümlerinde, Visual Studio tanılama uzantısını yayımlama sırasında uygun depolama hesabı bilgileriyle yapılandırmak için tanılama bağlantı dizesini kullanır. Bağlantı dizesi, Visual Studio 'Nun yayımlarken kullanacağı farklı hizmet yapılandırmalarına yönelik farklı depolama hesapları tanımlamanızı sağlar. Ancak, tanılama eklentisi artık kullanılamadığından (Azure SDK 2,5 ' den sonra),. cscfg dosyası kendisi için tanılama uzantısını etkinleştiremez. Uzantıyı Visual Studio veya PowerShell gibi araçlarla ayrı olarak etkinleştirmeniz gerekir.
-* PowerShell ile tanılama uzantısını yapılandırma işlemini basitleştirmek için, Visual Studio 'daki paket çıktısı her rolün tanılama uzantısının ortak yapılandırma XML 'sini de içerir. Visual Studio, genel yapılandırmadaki mevcut depolama hesabı bilgilerini doldurmak için tanılama bağlantı dizesini kullanır. Ortak yapılandırma dosyaları, uzantılar klasöründe oluşturulur ve bu stili `PaaSDiagnostics.<RoleName>.PubConfig.xml`izler. PowerShell tabanlı dağıtımlar, her yapılandırmayı bir role eşlemek için bu kalıbı kullanabilir.
+* PowerShell ile tanılama uzantısını yapılandırma işlemini basitleştirmek için, Visual Studio 'daki paket çıktısı her rolün tanılama uzantısının ortak yapılandırma XML 'sini de içerir. Visual Studio, genel yapılandırmadaki mevcut depolama hesabı bilgilerini doldurmak için tanılama bağlantı dizesini kullanır. Ortak yapılandırma dosyaları, uzantılar klasöründe oluşturulur ve bu stili izler `PaaSDiagnostics.<RoleName>.PubConfig.xml` . PowerShell tabanlı dağıtımlar, her yapılandırmayı bir role eşlemek için bu kalıbı kullanabilir.
 * . Cscfg dosyasındaki bağlantı dizesi, Azure portal tarafından, **izleme** sekmesinde görünebilmesi için tanılama verilerine erişmek üzere de kullanılır. Hizmeti portalda ayrıntılı izleme verilerini gösterecek şekilde yapılandırmak için bağlantı dizesi gerekir.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Projeleri Azure SDK 2,6 ve üzeri sürümlere geçirme
@@ -181,7 +180,7 @@ Azure SDK 2,5 ' den Azure SDK 2,6 veya sonraki bir sürüme geçiş yaparken,. w
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>"Geliştirme depolama bağlantı dizelerini güncelleştir..." onay kutusu yapılsın mı?
 **Microsoft Azure yayımlarken Microsoft Azure depolama hesabı kimlik bilgileriyle tanılama ve önbelleğe alma Için güncelleştirme geliştirme depolama bağlantı dizeleri** , yayımlama sırasında belirtilen Azure depolama hesabı ile herhangi bir geliştirme depolama hesabı bağlantı dizesini güncelleştirmek için kullanışlı bir yol sağlar.
 
-Örneğin, bu onay kutusunu seçtiğinizi ve tanılama bağlantı dizesinin gerektiğini `UseDevelopmentStorage=true`varsayın. Projeyi Azure 'da yayımladığınızda, Visual Studio tanılama bağlantı dizesini Yayımla sihirbazında belirttiğiniz depolama hesabıyla otomatik olarak güncelleştirir. Ancak, tanılama bağlantı dizesi olarak gerçek bir depolama hesabı belirtilmişse, bunun yerine bu hesap kullanılır.
+Örneğin, bu onay kutusunu seçtiğinizi ve tanılama bağlantı dizesinin gerektiğini varsayın `UseDevelopmentStorage=true` . Projeyi Azure 'da yayımladığınızda, Visual Studio tanılama bağlantı dizesini Yayımla sihirbazında belirttiğiniz depolama hesabıyla otomatik olarak güncelleştirir. Ancak, tanılama bağlantı dizesi olarak gerçek bir depolama hesabı belirtilmişse, bunun yerine bu hesap kullanılır.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Azure SDK 2,4 ve öncesi ile Azure SDK 2,5 ve üzeri arasındaki tanılama işlevselliği farkları
 Projenizi Azure SDK 2,5 2,4 veya sonraki bir sürüme yükseltiyorsanız, aşağıdaki tanılama işlevleri farklılıklarını göz önünde bulundurmanız gerekir.

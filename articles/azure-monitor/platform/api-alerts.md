@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665009"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
@@ -267,7 +266,7 @@ Bir zamanlama ile ilişkili bir eylem grubunu değiştirmek için Put yöntemini
 Varsayılan eylemler için standart şablonu ve bildirimler için biçimi izleyin. Ancak Kullanıcı, eylem grupları tarafından denetlenseler bile bazı eylemleri özelleştirebilir. Şu anda, e-posta konusu ve Web kancası yükü için özelleştirme mümkündür.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Eylem grubu için e-posta konusunu Özelleştir
-Varsayılan olarak, uyarılar için e-posta konusu: uyarı bildirimi `<AlertName>` `<WorkspaceName>`. Ancak bu, özel sözcüklere veya etiketlere yönelik olarak kolayca filtre kuralları kullanmanıza olanak tanımak için özelleştirilebilir. Aşağıdaki örnekte olduğu gibi, e-posta üst bilgisini Özelleştir ayrıntılarının ActionGroup ayrıntıları ile birlikte gönderilmesi gerekir.
+Varsayılan olarak, uyarılar için e-posta konusu: uyarı bildirimi `<AlertName>` `<WorkspaceName>` . Ancak bu, özel sözcüklere veya etiketlere yönelik olarak kolayca filtre kuralları kullanmanıza olanak tanımak için özelleştirilebilir. Aşağıdaki örnekte olduğu gibi, e-posta üst bilgisini Özelleştir ayrıntılarının ActionGroup ayrıntıları ile birlikte gönderilmesi gerekir.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

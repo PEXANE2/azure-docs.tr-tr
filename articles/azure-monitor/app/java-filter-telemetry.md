@@ -4,10 +4,9 @@ description: İzlemeniz gerekmeyen olayları filtreleyerek telemetri trafiğini 
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659926"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web uygulamanızda telemetri filtreleme
@@ -27,7 +26,7 @@ Kullanıma hazır filtreler şunları içerir:
 
 ## <a name="setting-filters"></a>Filtre ayarlama
 
-ApplicationInsights. xml dosyasında aşağıdaki örneğe benzer `TelemetryProcessors` bir bölüm ekleyin:
+ApplicationInsights.xml, `TelemetryProcessors` aşağıdaki örneğe benzer bir bölüm ekleyin:
 
 
 ```XML
@@ -190,7 +189,7 @@ Günlük izlemelerini filtreler ( [Tracktrace ()](../../azure-monitor/app/api-cu
 
 ### <a name="1-code-your-filter"></a>1. filtrenizi kodlayın
 
-Kodunuzda şunu uygulayan `TelemetryProcessor`bir sınıf oluşturun:
+Kodunuzda şunu uygulayan bir sınıf oluşturun `TelemetryProcessor` :
 
 ```Java
 
@@ -229,7 +228,7 @@ Kodunuzda şunu uygulayan `TelemetryProcessor`bir sınıf oluşturun:
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. yapılandırma dosyasında filtrenizi çağırma
 
-ApplicationInsights. xml dosyasında:
+ApplicationInsights.xml:
 
 ```XML
 
@@ -257,7 +256,7 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-Bu parametreleri özel Filtrenizle geçirmek için içinde `application.properties` kendi filtre parametrelerinizi oluşturmanız ve Spring Boot 'ın externalized Configuration Framework 'ü kullanmanız gerekir. 
+`application.properties`Bu parametreleri özel Filtrenizle geçirmek için içinde kendi filtre parametrelerinizi oluşturmanız ve Spring Boot 'ın externalized Configuration Framework 'ü kullanmanız gerekir. 
 
 
 ## <a name="troubleshooting"></a>Sorun giderme

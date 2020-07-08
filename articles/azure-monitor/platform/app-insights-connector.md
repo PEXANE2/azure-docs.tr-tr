@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665174"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
@@ -90,14 +89,14 @@ Aşağıdaki dikey pencereleri görmek için **Application Insights** panosunu a
 Pano, tabloda gösterilen dikey pencereleri içerir. Her dikey pencerede, dikey pencerenin belirtilen kapsam ve zaman aralığına yönelik ölçütleriyle eşleşen en fazla 10 öğe listelenir. Dikey pencerenin en altında bulunan **Tümünü göster** ' e tıkladığınızda veya dikey pencere başlığına tıkladığınızda tüm kayıtları döndüren bir günlük araması çalıştırabilirsiniz.
 
 
-| **Sütun** | **Açıklama** |
+| **Column** | **Açıklama** |
 | --- | --- |
 | Uygulamalar-uygulama sayısı | Uygulama kaynaklarındaki uygulamaların sayısını gösterir. Ayrıca uygulama adlarını ve her biri için uygulama kaydı sayısını listeler. Günlük araması çalıştırmak için sayıya tıklayın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Uygulama başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve tüm verileri türe göre (son güne göre) gösteren uygulama için bir uygulama adı ' na tıklayın. |
 | Veri hacmi – verileri gönderen konaklar | Veri gönderen bilgisayar ana bilgisayarlarının sayısını gösterir. Ayrıca, her bir konak için bilgisayar ana bilgisayarlarını ve kayıt sayısını listeler. Günlük araması çalıştırmak için sayıya tıklayın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Konak başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve tüm verileri türe göre (son güne göre) gösteren bir günlük araması çalıştırmak için bir bilgisayar adına tıklayın. |
 | Kullanılabilirlik – WebTest sonuçları | Pass veya fail belirten Web test sonuçları için halka grafiği gösterir. Günlük araması çalıştırmak için grafiğe tıklayın<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Sonuçlar tüm testler için geçen geçiş sayısını ve başarısızlığı gösterir. Son dakikadaki trafikle birlikte tüm Web Apps gösterir. Başarısız Web testlerinin ayrıntılarını gösteren bir günlük aramasını görüntülemek için bir uygulama adına tıklayın. |
-| Sunucu Istekleri – saat başına Istek | Çeşitli uygulamalar için saat başına sunucu isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik istekleri alan ilk 3 uygulamayı görmek için grafikteki bir çizginin üzerine gelin. Ayrıca, istek alan uygulama ve seçilen döneme ait istek sayısını gösteren bir liste gösterir. <br><br>Çeşitli uygulamalar için saat başına sunucu isteklerinin daha ayrıntılı <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br> İstek listesini, zaman içindeki isteklere yönelik grafikleri, istek süresini ve <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> istek yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listeden bir uygulamaya tıklayın.   |
-| Hata – saat başına başarısız istek | Saat başına başarısız uygulama isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik başarısız isteklere sahip ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için başarısız istek sayısı olan uygulamaların listesini gösterir. Başarısız uygulama isteklerinin daha ayrıntılı bir çizgi grafiğini gösteren <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br>Başarısız istekleri, zaman içinde başarısız isteklere yönelik grafikleri ve başarısız istek <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın. |
-| Özel durumlar – saat başına özel durumlar | Saat başına özel durumların çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik özel durumlarla ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için özel durum sayısına sahip uygulamaların listesini gösterir. Özel durumların daha ayrıntılı bir bağlantı grafiğini gösteren bir <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> günlük araması çalıştırmak için grafiğe tıklayın. <br><br>Bir özel durum listesi, zaman içinde özel durumlar ve başarısız istekler <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> için grafikler ve özel durum türlerinin bir listesi gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın.  |
+| Sunucu Istekleri – saat başına Istek | Çeşitli uygulamalar için saat başına sunucu isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik istekleri alan ilk 3 uygulamayı görmek için grafikteki bir çizginin üzerine gelin. Ayrıca, istek alan uygulama ve seçilen döneme ait istek sayısını gösteren bir liste gösterir. <br><br><code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>Çeşitli uygulamalar için saat başına sunucu isteklerinin daha ayrıntılı bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br> İstek <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> listesini, zaman içindeki isteklere yönelik grafikleri, istek süresini ve istek yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listeden bir uygulamaya tıklayın.   |
+| Hata – saat başına başarısız istek | Saat başına başarısız uygulama isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik başarısız isteklere sahip ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için başarısız istek sayısı olan uygulamaların listesini gösterir. <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>Başarısız uygulama isteklerinin daha ayrıntılı bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br><code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>Başarısız istekleri, zaman içinde başarısız isteklere yönelik grafikleri ve başarısız istek yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın. |
+| Özel durumlar – saat başına özel durumlar | Saat başına özel durumların çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik özel durumlarla ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için özel durum sayısına sahip uygulamaların listesini gösterir. <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>Özel durumların daha ayrıntılı bir bağlantı grafiğini gösteren bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br>Bir <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> özel durum listesi, zaman içinde özel durumlar ve başarısız istekler için grafikler ve özel durum türlerinin bir listesi gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>Günlük aramayla Application Insights perspektifini görüntüleme
 
@@ -161,7 +160,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 Çözüm, bağlı Application Insights uygulamalarınızdan aşağıdaki telemetri veri türlerini alır:
 
 - Kullanılabilirlik
-- Özel Durumlar
+- Özel durumlar
 - İstekler
 - Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
 - Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
@@ -190,7 +189,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | Şehir | İsteğin kaynaklandığı şehir veya kent |
 | Isyapay | İsteğin bir kullanıcı veya otomatik yöntem tarafından oluşturulup oluşturulmayacağını gösterir. True = otomatik Yöntem veya yanlış = Kullanıcı tarafından oluşturulan |
 | SamplingRate | Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
-| Örnekledcount | 100/(SamplingRate). Örneğin, 4 =&gt; %25 |
+| Örnekledcount | 100/(SamplingRate). Örneğin, 4 = &gt; %25 |
 | IsAuthenticated | True veya false |
 | OperationId | Aynı işlem KIMLIĞINE sahip öğeler portalda Ilgili öğeler olarak gösterilir. Genellikle istek KIMLIĞI |
 | Parentoperationıd | Üst işlemin KIMLIĞI |
@@ -207,11 +206,11 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | Kullanılabilirliği | Http isteğinin coğrafi kaynağı |
 | Kullanılabilirlik sonucu | Web testinin başarı sonucunu gösterir |
 | Kullanılabilirliği olan Bilitymessage | Web testine eklenen ileti |
-| Kullanılabilirlik sayısı | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| Kullanılabilirlik sayısı | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
 | DataSizeMetricValue | 1,0 veya 0,0 |
-| DataSizeMetricCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| DataSizeMetricCount | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
 | Kullanılabilirlik süresi | Web testi süresinin milisaniye cinsinden süresi |
-| AvailabilityDurationCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| AvailabilityDurationCount | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
 | Kullanılabilirlik değeri |   |
 | Kullanılabilirliği |   |
 | Kullanılabilirliği | Web testi için benzersiz GUID |
@@ -233,7 +232,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | ExceptionAssembly | Derleme, çerçeveyi ve sürümü ve ortak anahtar belirtecini içerir |
 | ExceptionGroup | Özel durumun türü |
 | ExceptionHandledAt | Özel durumu ele alan düzeyi gösterir |
-| ExceptionCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| ExceptionCount | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
 | ExceptionMessage | Özel durumun iletisi |
 | ExceptionStack | Özel durumun tam yığını |
 | ExceptionHasStack | Özel durumun bir yığını varsa doğru |
@@ -251,12 +250,12 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | RequestID | İsteği benzersiz olarak tanımlamak için KIMLIK |
 | RequestName | Al/postala + URL tabanı |
 | RequestDuration | İstek süresinin saniye cinsinden süresi |
-| URL'si | Konağın dahil olmadığı isteğin URL 'SI |
+| URL | Konağın dahil olmadığı isteğin URL 'SI |
 | Ana bilgisayar | Web sunucusu Konağı |
 | URL tabanı | İsteğin tam URL 'SI |
 | ApplicationProtocol | Uygulama tarafından kullanılan protokol türü |
-| Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
-| RequestDurationCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
+| RequestDurationCount | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
 | RequestDurationMin | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en düşük istek süresini (milisaniye) gösterir. |
 | RequestDurationMax | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en fazla istek süresini (milisaniye) gösterir |
 | RequestDurationStdDev | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için tüm istek süreleri (milisaniye) arasındaki standart sapmayı gösterir |
