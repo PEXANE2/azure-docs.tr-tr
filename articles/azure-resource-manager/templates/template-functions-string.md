@@ -3,12 +3,12 @@ title: Şablon işlevleri-dize
 description: Dizelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: a590e8102bce45e577f1a827c09e752eb0a13139
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676616"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962076"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM şablonları için dize işlevleri
 
@@ -55,9 +55,9 @@ Giriş dizesinin Base64 gösterimini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| InputString |Yes |string |Base64 temsili olarak döndürülecek değer. |
+| InputString |Evet |string |Base64 temsili olarak döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -120,9 +120,9 @@ Base64 gösterimini JSON nesnesine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Base64value değeri |Yes |string |JSON nesnesine dönüştürülecek Base64 temsili. |
+| Base64value değeri |Evet |string |JSON nesnesine dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -185,9 +185,9 @@ Base64 gösterimini dizeye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Base64value değeri |Yes |string |Dizeye dönüştürülecek Base64 temsili. |
+| Base64value değeri |Evet |string |Dizeye dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -250,10 +250,10 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür y
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dize veya dizi |Birleştirme için ilk dize veya dizi. |
-| ek bağımsız değişkenler |No |dize veya dizi |Birleştirme için sıralı sırada ek dizeler veya diziler. |
+| arg1 |Evet |dize veya dizi |Birleştirme için ilk dize veya dizi. |
+| ek bağımsız değişkenler |Hayır |dize veya dizi |Birleştirme için sıralı sırada ek dizeler veya diziler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir. Ancak, parametreleri için hem diziler hem de dizeler sağlayamıyoruz. Dizeler yalnızca diğer dizelerle birleştirilir.
 
@@ -332,7 +332,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | ---- | ---- | ----- |
 | return | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>içerir
+## <a name="contains"></a>şunu içerir
 
 `contains (container, itemToFind)`
 
@@ -340,10 +340,10 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -421,9 +421,9 @@ Bir değeri veri URI 'sine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |string |Bir veri URI 'sine dönüştürülecek değer. |
+| stringToConvert |Evet |string |Bir veri URI 'sine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -476,9 +476,9 @@ Veri URI 'SI biçimli değeri bir dizeye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |string |Dönüştürülecek veri URI değeri. |
+| dataUriToConvert |Evet |string |Dönüştürülecek veri URI değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -531,9 +531,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -596,10 +596,10 @@ Bir dizenin bir değer ile bitip bitmeyeceğini belirler. Karşılaştırma büy
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Yes |string |Bulunacak değer. |
+| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Evet |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -662,9 +662,9 @@ Dizenin ilk karakterini veya dizideki ilk öğeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -714,11 +714,11 @@ Giriş değerlerinden biçimli bir dize oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| formatString | Yes | string | Bileşik biçim dizesi. |
-| arg1 | Yes | dize, tamsayı veya Boole | Biçimlendirilen dizeye dahil edilecek değer. |
-| ek bağımsız değişkenler | No | dize, tamsayı veya Boole | Biçimlendirilen dizeye eklenecek ek değerler. |
+| formatString | Evet | string | Bileşik biçim dizesi. |
+| arg1 | Evet | dize, tamsayı veya Boole | Biçimlendirilen dizeye dahil edilecek değer. |
+| ek bağımsız değişkenler | Hayır | dize, tamsayı veya Boole | Biçimlendirilen dizeye eklenecek ek değerler. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -771,10 +771,10 @@ Parametre olarak belirtilen değerlere göre genel benzersiz tanımlayıcı biç
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |string |GUID oluşturmak için karma işlevde kullanılan değer. |
-| gerektiğinde ek parametreler |No |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
+| baseString |Evet |string |GUID oluşturmak için karma işlevde kullanılan değer. |
+| gerektiğinde ek parametreler |Hayır |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -842,10 +842,10 @@ Bir dize içindeki bir değerin ilk konumunu döndürür. Karşılaştırma büy
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Yes |string |Bulunacak değer. |
+| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Evet |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -903,9 +903,9 @@ Dizenin son karakterini veya dizideki son öğeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -955,10 +955,10 @@ Bir dize içindeki bir değerin son konumunu döndürür. Karşılaştırma büy
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Yes |string |Bulunacak değer. |
+| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Evet |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1016,9 +1016,9 @@ Bir dizedeki karakter sayısını, dizideki öğeleri veya bir nesnedeki kök d�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1191,11 +1191,11 @@ Belirtilen toplam uzunluğa ulaşana kadar sola karakter ekleyerek sağa hizalan
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |dize veya tamsayı |Sağa hizalamak için değer. |
-| Toplam uzunluğu |Yes |int |Döndürülen dizedeki toplam karakter sayısı. |
-| Doldurma Ingcharacter |No |tek karakter |Toplam uzunluğa ulaşılana kadar sol doldurma için kullanılacak karakter. Varsayılan değer bir alandır. |
+| valueToPad |Evet |dize veya tamsayı |Sağa hizalamak için değer. |
+| Toplam uzunluğu |Evet |int |Döndürülen dizedeki toplam karakter sayısı. |
+| Doldurma Ingcharacter |Hayır |tek karakter |Toplam uzunluğa ulaşılana kadar sol doldurma için kullanılacak karakter. Varsayılan değer bir alandır. |
 
 Özgün dize, doldurma karakteri sayısından uzunsa, hiçbir karakter eklenmez.
 
@@ -1241,11 +1241,11 @@ Başka bir dize tarafından değiştirilmiş bir dizenin tüm örneklerine sahip
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalString |Yes |string |Bir dizenin tüm örneklerine sahip olan değer başka bir dize tarafından değiştirildi. |
-| Eskidize |Yes |string |Özgün dizeden kaldırılacak dize. |
-| Yenidize |Yes |string |Kaldırılan dizenin yerine eklenecek dize. |
+| originalString |Evet |string |Bir dizenin tüm örneklerine sahip olan değer başka bir dize tarafından değiştirildi. |
+| Eskidize |Evet |string |Özgün dizeden kaldırılacak dize. |
+| Yenidize |Evet |string |Kaldırılan dizenin yerine eklenecek dize. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1294,10 +1294,10 @@ Belirtilen sayıda karakterden sonraki tüm karakterleri içeren bir dize veya b
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1362,10 +1362,10 @@ Belirtilen sınırlayıcılar tarafından ayrılan giriş dizesinin alt dizeleri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| InputString |Yes |string |Bölünecek dize. |
-| sınırlayıcı |Yes |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
+| InputString |Evet |string |Bölünecek dize. |
+| sınırlayıcı |Evet |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1421,10 +1421,10 @@ Bir dizenin bir değerle başlatılıp başlatılmayacağını belirler. Karşı
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Yes |string |Bulunacak değer. |
+| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Evet |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1487,9 +1487,9 @@ Belirtilen değeri bir dizeye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes | Herhangi biri |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
+| valueToConvert |Evet | Herhangi biri |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1558,11 +1558,11 @@ Belirtilen karakter konumunda başlayan ve belirtilen sayıda karakteri içeren 
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |string |Alt dizenin ayıklandığı özgün dize. |
-| startIndex |No |int |Alt dize için sıfır tabanlı başlangıç karakter konumu. |
-| length |No |int |Alt dize için karakter sayısı. Dize içindeki bir konuma başvurmalıdır. Sıfır veya daha büyük olmalıdır. |
+| stringToParse |Evet |string |Alt dizenin ayıklandığı özgün dize. |
+| startIndex |Hayır |int |Alt dize için sıfır tabanlı başlangıç karakter konumu. |
+| length |Hayır |int |Alt dize için karakter sayısı. Dize içindeki bir konuma başvurmalıdır. Sıfır veya daha büyük olmalıdır. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1619,10 +1619,10 @@ Dizenin başından itibaren belirtilen sayıda karaktere sahip bir dize veya diz
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1687,9 +1687,9 @@ Belirtilen dizeyi küçük harfe dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |string |Küçük harfe dönüştürülecek değer. |
+| stringToChange |Evet |string |Küçük harfe dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1738,9 +1738,9 @@ Belirtilen dizeyi büyük harfe dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |string |Büyük harfe dönüştürülecek değer. |
+| stringToChange |Evet |string |Büyük harfe dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1789,9 +1789,9 @@ Belirtilen dizeden tüm öndeki ve sondaki boşluk karakterlerini kaldırır.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Yes |string |Kırpılacak değer. |
+| stringToTrim |Evet |string |Kırpılacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1835,10 +1835,10 @@ Parametre olarak belirtilen değerlere göre belirleyici bir karma dize oluştur
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |string |Benzersiz bir dize oluşturmak için karma işlevde kullanılan değer. |
-| gerektiğinde ek parametreler |No |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
+| baseString |Evet |string |Benzersiz bir dize oluşturmak için karma işlevde kullanılan değer. |
+| gerektiğinde ek parametreler |Hayır |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -1846,7 +1846,7 @@ Bu işlev, bir kaynak için benzersiz bir ad oluşturmanız gerektiğinde faydal
 
 Döndürülen değer bir rastgele dize değil, bunun yerine karma işlevin sonucu. Döndürülen değer 13 karakter uzunluğundadır. Bu, genel olarak benzersiz değildir. Anlamlı bir ad oluşturmak için değeri adlandırma kuralınızdan bir ön ek ile birleştirmek isteyebilirsiniz. Aşağıdaki örnek döndürülen değerin biçimini gösterir. Gerçek değer, belirtilen parametrelere göre değişir.
 
-    tcvhiyu5h2o5o
+`tcvhiyu5h2o5o`
 
 Aşağıdaki örneklerde, yaygın olarak kullanılan düzeyler için benzersiz bir değer oluşturmak üzere uniqueString 'in nasıl kullanılacağı gösterilmektedir.
 
@@ -1913,10 +1913,10 @@ BaseUri ve relativeUri dizesini birleştirerek mutlak bir URI oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |string |Taban URI dizesi. Bu tabloda açıklandığı gibi sondaki eğik çizginin ('/') işlenmesiyle ilgili davranışı gözlemlemeye özen gösterin.  |
-| relativeUri |Yes |string |Taban URI dizesine eklenecek göreli URI dizesi. |
+| baseUri |Evet |string |Taban URI dizesi. Bu tabloda açıklandığı gibi sondaki eğik çizginin ('/') işlenmesiyle ilgili davranışı gözlemlemeye özen gösterin.  |
+| relativeUri |Evet |string |Taban URI dizesine eklenecek göreli URI dizesi. |
 
 * **BaseUri** bir sondaki eğik çizgiyle sonlanıyorsa, sonuç yalnızca **BaseUri** URI ve ardından **relativeUri**olur.
 
@@ -1993,9 +1993,9 @@ Bir URI 'yi kodlar.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |string |Kodlanacak değer. |
+| stringToEncode |Evet |string |Kodlanacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2048,9 +2048,9 @@ URI kodlamalı bir değer String döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Yes |string |Dizeye dönüştürülecek URI kodlamalı değer. |
+| uriEncodedString |Evet |string |Dizeye dönüştürülecek URI kodlamalı değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

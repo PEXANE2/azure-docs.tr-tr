@@ -3,12 +3,12 @@ title: Azure Batch havuzu oluşturma olayı
 description: Bir havuz oluşturulduktan sonra yayılan Batch havuzu oluşturma olayı için başvuru. Günlüğün içeriği, havuz hakkındaki genel bilgileri açığa çıkarır.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724046"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962501"
 ---
 # <a name="pool-create-event"></a>Havuz oluşturma olayı
 
@@ -53,7 +53,7 @@ ms.locfileid: "83724046"
 |-------------|----------|-----------|
 |`id`|Dize|Havuzun KIMLIĞI.|
 |`displayName`|Dize|Havuzun görünen adı.|
-|`vmSize`|Dize|Havuzdaki sanal makinelerin boyutu. Bir havuzdaki tüm sanal makineler aynı boyutta. <br/><br/> Cloud Services havuzlara yönelik sanal makinelerin kullanılabilir boyutları (cloudServiceConfiguration ile oluşturulan havuzlar) hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch, hariç tüm Cloud Services VM boyutlarını destekler `ExtraSmall` .<br/><br/> Sanal makineler Market 'teki görüntüleri kullanan Havuzların kullanılabilir VM boyutları hakkında bilgi için (virtualMachineConfiguration ile oluşturulan havuzlar [) bkz. sanal makinelerin (](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) Linux) veya [boyutlarının](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) boyutları. Batch `STANDARD_A0` ve premium depolama alanına sahip olanlar (`STANDARD_GS`, `STANDARD_DS` ve `STANDARD_DSV2` serisi) dışında tüm Azure sanal makinelerini destekler.|
+|`vmSize`|Dize|Havuzdaki sanal makinelerin boyutu. Bir havuzdaki tüm sanal makineler aynı boyutta. <br/><br/> Cloud Services havuzlara yönelik sanal makinelerin kullanılabilir boyutları (cloudServiceConfiguration ile oluşturulan havuzlar) hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Batch, hariç tüm Cloud Services VM boyutlarını destekler `ExtraSmall` .<br/><br/> Sanal makineler Market 'teki görüntüleri kullanan Havuzların kullanılabilir VM boyutları hakkında bilgi için (virtualMachineConfiguration ile oluşturulan havuzlar [) bkz. sanal makinelerin (](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) Linux) veya [boyutlarının](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows) boyutları. Batch `STANDARD_A0` ve premium depolama alanına sahip olanlar (`STANDARD_GS`, `STANDARD_DS` ve `STANDARD_DSV2` serisi) dışında tüm Azure sanal makinelerini destekler.|
 |`imageType`|Dize|Görüntü için dağıtım yöntemi. Desteklenen değerler `virtualMachineConfiguration` veya`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Karmaşık Tür|Havuzun bulut hizmeti yapılandırması.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Karmaşık Tür|Havuzun sanal makine yapılandırması.|
@@ -71,8 +71,8 @@ ms.locfileid: "83724046"
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`osFamily`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi ailesi.<br /><br /> Olası değerler şunlardır:<br /><br /> **2** – Işletim sistemi ailesi 2, Windows Server 2008 R2 SP1 ile eşdeğerdir.<br /><br /> **3** – OS ailesi 3, Windows Server 2012 ile eşdeğerdir.<br /><br /> **4** – Işletim sistemi ailesi 4, Windows Server 2012 R2 ile eşdeğerdir.<br /><br /> Daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|`targetOSVersion`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi sürümü.<br /><br /> Varsayılan değer, **\*** belirtilen aile için en son işletim sistemi sürümünü belirtir.<br /><br /> İzin verilen diğer değerler için bkz. [Azure Konuk işletim sistemi sürümleri](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|`osFamily`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi ailesi.<br /><br /> Olası değerler şunlardır:<br /><br /> **2** – Işletim sistemi ailesi 2, Windows Server 2008 R2 SP1 ile eşdeğerdir.<br /><br /> **3** – OS ailesi 3, Windows Server 2012 ile eşdeğerdir.<br /><br /> **4** – Işletim sistemi ailesi 4, Windows Server 2012 R2 ile eşdeğerdir.<br /><br /> Daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
+|`targetOSVersion`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi sürümü.<br /><br /> Varsayılan değer, **\*** belirtilen aile için en son işletim sistemi sürümünü belirtir.<br /><br /> İzin verilen diğer değerler için bkz. [Azure Konuk işletim sistemi sürümleri](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a>virtualMachineConfiguration
 

@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997052"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962271"
 ---
 # <a name="what-is-a-dictionary"></a>Sözlük nedir?
 
-Sözlük, deyimlerin veya Tümcelerin bir listesini ve bunlara karşılık gelen çevirileri belirten, hizalanmış bir belge çiftidir. Microsoft Translator 'ın, sözlükte sağladığınız çeviriyi kullanarak her zaman kaynak tümceciği veya cümle örneklerini çevirmesini istediğinizde, öğreticinizdeki bir sözlüğü kullanın. Sözlüklerde bazen ışlar veya terim tabanı denir. Sözlüğü, listenizin tüm terimleri için "Kopyala ve Değiştir" zorlaması olarak düşünebilirsiniz. Ayrıca, Microsoft özel çevirmen hizmeti, çevirisi kalitesini artırmak için kendi genel amaçlı sözlüklerini oluşturur ve kullanır. Bununla birlikte, bir müşteri tarafından sağlanmış sözlük bu şekilde görünür ve öncelikle kelimeleri veya cümleleri aramak için aranır.
+Sözlük, deyimlerin veya Tümcelerin bir listesini ve bunlara karşılık gelen çevirileri belirten, hizalanmış bir belge çiftidir. Çevirmenin, sözlükte sağladığınız çeviriyi kullanarak her zaman kaynak tümceciği veya cümle örneklerini çevirmesini istediğinizde, öğreticinizdeki bir sözlüğü kullanın. Sözlüklerde bazen ışlar veya terim tabanı denir. Sözlüğü, listenizin tüm terimleri için "Kopyala ve Değiştir" zorlaması olarak düşünebilirsiniz. Ayrıca, özel çevirmen özelliği, çevirisi kalitesini artırmak için kendi genel amaçlı sözlüklerini oluşturur ve kullanır. Bununla birlikte, bir müşteri tarafından sağlanmış sözlük bu şekilde görünür ve öncelikle kelimeleri veya cümleleri aramak için aranır.
 
 Sözlükler yalnızca kendi arkasındaki tam olarak desteklenen bir Microsoft genel sinir Network modeline sahip olan dil çiftlerindeki projeler için geçerlidir. [Dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 

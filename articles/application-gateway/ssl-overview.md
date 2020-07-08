@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: f9d55c3294cc28b6193371cdc6ede7ba1bc8167b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254812"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962110"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
@@ -111,7 +111,7 @@ Kimlik doğrulama sertifikaları kullanım dışı bırakılmıştır ve Applica
 
 - Kök sertifika eşleştirmesinin yanı sıra, Application Gateway v2, arka uç http ayarında belirtilen ana bilgisayar ayarının, arka uç sunucusunun TLS/SSL sertifikası tarafından sunulan ortak ad (CN) ile eşleşip eşleşmediğini da doğrular. Application Gateway v2, arka uca bir TLS bağlantısı kurmaya çalışırken, arka uç http ayarında belirtilen konağa Sunucu Adı Belirtme (SNı) uzantısını ayarlar.
 
-- Arka uç http ayarında konak alanı yerine **arka uç adresinden seçim ana bilgisayar adı** seçilirse, SNI üstbilgisi her zaman arka uç havuzu FQDN 'sine ayarlanır ve arka uç sunucusu TLS/SSL sertifikasındaki CN 'nın FQDN 'siyle eşleşmesi gerekir. Bu senaryoda, IP ile arka uç havuzu üyeleri desteklenmez.
+- Arka uç http ayarında konak alanı yerine **arka uç hedeften Seç Ana bilgisayar** seçilirse, SNI üstbilgisi her zaman arka uç havuzu FQDN 'sine ayarlanır ve arka uç sunucusu TLS/SSL sertifikasındaki CN 'nın FQDN 'siyle eşleşmesi gerekir. Bu senaryoda, IP ile arka uç havuzu üyeleri desteklenmez.
 
 - Kök sertifika, arka uç sunucu sertifikalarından gelen Base64 kodlamalı bir kök sertifikadır.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75658806"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962212"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme
 
@@ -37,23 +37,23 @@ Ayrıca eşleme için yığın dökümlerini etkinleştirebilir ve HDInsight tar
 
 Yığın dökümleri, bir hizmet başlatıldığında JVM 'ye seçenekleri (bazen opts veya parametreler olarak bilinir) geçirerek etkinleştirilir. Çoğu [Apache Hadoop](https://hadoop.apache.org/) hizmet için, bu seçenekleri geçirmek üzere hizmeti başlatmak için kullanılan kabuk betiğini değiştirebilirsiniz.
 
-Her betikte, JVM 'ye geçirilen seçenekleri içeren ** \* \_opts**'ler için bir dışarı aktarma işlemi vardır. Örneğin, **Hadoop-env.sh** betiğinde, ile `export HADOOP_NAMENODE_OPTS=` başlayan çizgi, süs Code hizmeti için seçenekleri içerir.
+Her betikte, JVM 'ye geçirilen seçenekleri içeren ** \* \_ opts**'ler için bir dışarı aktarma işlemi vardır. Örneğin, **Hadoop-env.sh** betiğinde, ile başlayan çizgi, `export HADOOP_NAMENODE_OPTS=` süs Code hizmeti için seçenekleri içerir.
 
-Bu işlemler MapReduce hizmetinin alt işlemi olduğundan, eşleme ve azaltma işlemleri biraz farklıdır. Her eşleme veya azaltma işlemi bir alt kapsayıcıda çalışır ve JVM seçeneklerini içeren iki giriş vardır. Hem **mapred-site. xml**içinde bulunur:
+Bu işlemler MapReduce hizmetinin alt işlemi olduğundan, eşleme ve azaltma işlemleri biraz farklıdır. Her eşleme veya azaltma işlemi bir alt kapsayıcıda çalışır ve JVM seçeneklerini içeren iki giriş vardır. Her ikisi de **mapred-site.xml**dahil:
 
 * **MapReduce. admin. Map. child. Java. opts**
 * **MapReduce. admin. küçültme. child. Java. opts**
 
 > [!NOTE]  
-> Ambarı işlerken, değişiklikleri kümedeki düğümlerde çoğaltarak, hem betikler hem de mapred-site. xml ayarlarını değiştirmek için [Apache ambarı](https://ambari.apache.org/) kullanmanızı öneririz. Belirli adımlar için [Apache ambarı 'Nı kullanma](#using-apache-ambari) bölümüne bakın.
+> Ambarı işlerken değişiklikleri kümedeki düğümlerde çoğaltarak, hem betikleri hem de mapred-site.xml ayarlarını değiştirmek için [Apache ambarı](https://ambari.apache.org/) kullanmanızı öneririz. Belirli adımlar için [Apache ambarı 'Nı kullanma](#using-apache-ambari) bölümüne bakın.
 
 ### <a name="enable-heap-dumps"></a>Yığın dökümlerini etkinleştirme
 
 Aşağıdaki seçenek bir OutOfMemoryError gerçekleştiğinde yığın dökümünü sunar:
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
-Bu **+** seçeneğin etkin olduğunu gösterir. Varsayılan olarak devre dışı seçeneği kullanılır.
+**+** Bu seçeneğin etkin olduğunu gösterir. Varsayılan olarak devre dışı seçeneği kullanılır.
 
 > [!WARNING]  
 > Döküm dosyaları büyük olduğu için varsayılan olarak HDInsight 'ta Hadoop Hizmetleri için yığın dökümleri etkinleştirilmemiştir. Sorun gidermeye izin vermek istiyorsanız, sorunu yeniden oluşturduktan ve döküm dosyalarını topladıktan sonra bunları devre dışı bırakmayı unutmayın.
@@ -62,26 +62,26 @@ Bu **+** seçeneğin etkin olduğunu gösterir. Varsayılan olarak devre dışı
 
 Döküm dosyasının varsayılan konumu geçerli çalışma dizinidir. Dosyanın nerede depolandığını aşağıdaki seçeneği kullanarak denetleyebilirsiniz:
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
-Örneğin, kullanma `-XX:HeapDumpPath=/tmp` , dökümleri/tmp dizininde depolanmasına neden olur.
+Örneğin, kullanma, `-XX:HeapDumpPath=/tmp` dökümleri/tmp dizininde depolanmasına neden olur.
 
 ### <a name="scripts"></a>Betikler
 
 Bir **OutOfMemoryError** gerçekleştiğinde de bir komut dosyası tetikleyebilirsiniz. Örneğin, hatanın oluştuğunu bilmeniz için bir bildirim tetikleniyor. Bir __OutOfMemoryError__üzerinde bir betik tetiklemek için aşağıdaki seçeneği kullanın:
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > Apache Hadoop Dağıtılmış bir sistem olduğundan, kullanılan tüm betiklerin, kümenin üzerinde çalıştığı kümedeki tüm düğümlere yerleştirilmesi gerekir.
 > 
-> Betik Ayrıca hizmetin çalıştığı hesap tarafından erişilebilen bir konumda olmalıdır ve yürütme izinleri sağlamalıdır. Örneğin, ' de `/usr/local/bin` betikleri depolamak ve okuma ve yürütme izinleri vermek `chmod go+rx /usr/local/bin/filename.sh` için kullanmak isteyebilirsiniz.
+> Betik Ayrıca hizmetin çalıştığı hesap tarafından erişilebilen bir konumda olmalıdır ve yürütme izinleri sağlamalıdır. Örneğin, ' de betikleri depolamak `/usr/local/bin` ve `chmod go+rx /usr/local/bin/filename.sh` okuma ve yürütme izinleri vermek için kullanmak isteyebilirsiniz.
 
 ## <a name="using-apache-ambari"></a>Apache ambarı 'nı kullanma
 
 Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları kullanın:
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
 2. Sol taraftaki listesini kullanarak, değiştirmek istediğiniz hizmet alanını seçin. Örneğin **, bir**. Orta alanda, **configs** sekmesini seçin.
 
@@ -91,7 +91,7 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
     ![Apache ambarı yapılandırması filtrelenmiş listesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için ** \_opts girişini bulun ve etkinleştirmek istediğiniz seçenekleri ekleyin. \*** Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP\_süs Yot\_opts** girdisine ekledik:
+4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için ** \* \_ opts** girişini bulun ve etkinleştirmek istediğiniz seçenekleri ekleyin. Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ süs Yot \_ opts** girdisine ekledik:
 
     ![Apache ambarı Hadoop-süs Yot-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
