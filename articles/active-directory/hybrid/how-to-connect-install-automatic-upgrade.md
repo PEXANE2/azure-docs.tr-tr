@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359016"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
@@ -71,7 +71,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Description |
+| Sonuç kodu öneki | Açıklama |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -79,7 +79,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Description |
+| Sonuç Iletisi | Açıklama |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |

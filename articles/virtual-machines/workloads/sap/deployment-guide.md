@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
 ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361396"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
@@ -1499,7 +1499,7 @@ Uzantıyı yeniden yüklemek için bu kılavuzdaki [SAP Için Azure uzantısın�
 
 Hatalar kaybdeğilse, [desteğe başvurun][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Destek birimine başvurma
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Desteğe başvurun
 
 Beklenmeyen bir hata veya bilinen bir çözüm yok. C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) veya/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) klasöründe bulunan AzureEnhancedMonitoring_service. log dosyasını toplayın ve daha fazla yardım için sap desteği ile iletişime geçin.
 

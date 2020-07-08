@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85358676"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect'i yükleme
@@ -31,7 +31,7 @@ Azure AD Connect en son sürümü sayesinde, veritabanının sağlanması artık
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu özelliği kullanmak için, birkaç hareketli parça olduğunu ve her birinin kuruluşunuzda farklı bir yöneticiyi içerebileceği hakkında fark etmeniz gerekir.  Aşağıdaki tabloda, bu özellik ile Azure AD Connect dağıtımı sırasında bireysel roller ve ilgili görevler özetlenmektedir.
 
-|Rol|Description|
+|Rol|Açıklama|
 |-----|-----|
 |Etki alanı veya orman AD Yöneticisi|Eşitleme hizmetini çalıştırmak için Azure AD Connect tarafından kullanılan etki alanı düzeyi hizmet hesabını oluşturur.  Hizmet hesapları hakkında daha fazla bilgi için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md).
 |SQL Yöneticisi|ADSync veritabanını oluşturur ve Azure AD Connect yöneticisine ve etki alanı/orman Yöneticisi tarafından oluşturulan hizmet hesabına oturum açma + dbo erişimi verir.|

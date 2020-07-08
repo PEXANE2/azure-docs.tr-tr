@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360104"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect kullanarak Azure AD ile AD FS güvenini yönetme
@@ -39,7 +39,7 @@ Azure AD Connect, şirket içi Active Directory Federasyon Hizmeti (AD FS) ve Az
 
 Azure AD Connect **yalnızca** Azure AD güveniyle ilgili ayarları yönetir. Azure AD Connect, AD FS diğer bağlı olan taraf güvenlerinde herhangi bir ayarı değiştirmez. Aşağıdaki tablo Azure AD Connect tarafından denetlenen ayarları gösterir.
 
-| Ayar | Description |
+| Ayar | Açıklama |
 | :--- | :--- |
 | Belirteç imzalama sertifikası | Azure AD Connect, Azure AD ile güveni sıfırlamak ve yeniden oluşturmak için kullanılabilir. Azure AD Connect, belirteç imzalama sertifikalarının AD FS ve Azure AD etki alanı Federasyon ayarlarını güncelleştiren bir kerelik anında geçiş yapar.|
 | Belirteç imzalama algoritması | Microsoft, belirteç imzalama algoritması olarak SHA-256 kullanmasını önerir. Azure AD Connect, belirteç imzalama algoritmasının SHA-256 ' den daha az güvenli bir değere ayarlandığını algılayabilir. Sonraki olası yapılandırma işleminde bu ayarı SHA-256 olarak güncelleştirir. Yeni belirteç imzalama sertifikasını kullanmak için diğer bağlı olan taraf güveni de güncelleştirilmeleri gerekir. |
@@ -56,15 +56,15 @@ Azure AD Connect, yapılandırma akışları sırasında Azure AD güveninin tü
 
 | Yürütme akışı | Etkilenen ayarlar |
 | :--- | :--- |
-| İlk geçiş yükleme (Express) | Yok |
+| İlk geçiş yükleme (Express) | Hiçbiri |
 | Yüklemeyi ilk geçir (yeni AD FS grubu) | Yeni bir AD FS grubu oluşturulur ve sıfırdan Azure AD ile bir güven oluşturulur. |
 | İlk geçiş yükleme (mevcut AD FS grubu, mevcut Azure AD güveni) | Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimliği (gerekliyse), otomatik meta veri güncelleştirmesi |
 | Azure AD güvenini sıfırlama | Belirteç imzalama sertifikası, belirteç imzalama algoritması, Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimlik (gerekliyse), otomatik meta veri güncelleştirmesi |
-| Federasyon sunucusu Ekle | Yok |
-| WAP sunucusu Ekle | Yok |
+| Federasyon sunucusu Ekle | Hiçbiri |
+| WAP sunucusu Ekle | Hiçbiri |
 | Cihaz seçenekleri | Verme dönüştürme kuralları, cihaz kaydı için ıWA |
 | Federasyon etki alanı Ekle | Etki alanı ilk kez eklendiyse, diğer bir deyişle, kurulum tek etki alanı federasyonunu birden çok etki alanı federasyona değiştiriyor – Azure AD Connect güveni sıfırdan yeniden oluşturur. Azure AD ile güven zaten birden çok etki alanı için yapılandırılmışsa, yalnızca verme dönüşüm kuralları değiştirilir |
-| TLS güncelleştirme | Yok |
+| TLS güncelleştirme | Hiçbiri |
 
 Tüm işlemler sırasında, herhangi bir ayar değiştirildiğinde, Azure AD Connect **%ProgramData%\aadconnect\adfs** konumundaki geçerli güven ayarlarının yedeklemesini yapar
 
@@ -77,7 +77,7 @@ Tüm işlemler sırasında, herhangi bir ayar değiştirildiğinde, Azure AD Con
 
 Azure AD Connect, Azure AD güveninin her zaman önerilen talep kuralları kümesiyle yapılandırıldığından emin olur. Microsoft, Azure AD güvenini yönetmek için Azure AD Connect 'in kullanılmasını önerir. Bu bölümde, verme dönüştürme kuralları kümesi ve bunların açıklaması listelenmektedir.
 
-| Kural adı | Description |
+| Kural adı | Açıklama |
 | --- | --- |
 | Sorun UPN 'si | Bu kural userPrincipalName değerini, userPrincipalName için eşitleme ayarları 'nda yapılandırılan öznitelikten farklı şekilde sorgular.|
 | Özel ImmutableID talebi için Objectguıd ve msdsıımıbu GUID sorgula | Bu kural, varsa Objectguıd ve MSDS, şifreli GUID değeri için işlem hattına geçici bir değer ekler |

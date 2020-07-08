@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d3e952d79698d128b5f2b7d9a8ac465c57754bc
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359254"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Uyarı kataloğunu Azure Active Directory Connect Health 
@@ -30,13 +30,13 @@ Başarılı bir koşulda Azure AD Connect Health uyarılar çözüldü. Azure AD
 
 ## <a name="general-alerts"></a>Genel uyarılar
 
-| Uyarı Adı | Description | Düzeltme |
+| Uyarı Adı | Açıklama | Düzeltme |
 | --- | --- | ----- |
 | Sistem sağlığı hizmeti verileri güncel değil | Bir veya daha fazla sunucuda çalışan sistem durumu aracıları Sistem Sağlığı Hizmeti bağlı değil ve Sistem Sağlığı Hizmeti bu sunucudan en son verileri almıyor. Sistem Sağlığı Hizmeti tarafından işlenen son veriler 2 saatten eski. | Sistem durumu aracılarının gerekli hizmet uç noktalarına giden bağlantısı olduğundan emin olun. [Daha fazla bilgi](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect için uyarılar (eşitleme)
 
-| Uyarı Adı | Description | Düzeltme |
+| Uyarı Adı | Açıklama | Düzeltme |
 | --- | --- | ----- |
 | Azure AD Connect Eşitleme Hizmeti çalışmıyor | Microsoft Azure AD Eşitleme Windows hizmeti çalışmıyor veya başlatılamadı. Sonuç olarak nesneler Azure Active Directory ile eşitlenmeyecek. | Microsoft Azure Active Directory Eşitleme Hizmetleri Başlat</b> <ol> <li><b>Başlat</b>' a tıklayın, <b>Çalıştır</b>' a tıklayın, <b>Services. msc</b>yazın ve ardından <b>Tamam</b>' a tıklayın.</li> <li><b>Microsoft Azure AD eşitleme hizmetini</b>bulun ve sonra hizmetin başlatılıp başlatılmayacağını denetleyin. Hizmet başlatılmazsa, sağ tıklayın ve ardından <b>Başlat</b>' a tıklayın. | 
 | Azure Active Directory'den içeri aktarılamadı | Azure Active Directory Bağlayıcısı'ndan içeri aktarma işlemi başarısız oldu. |  Diğer ayrıntılar için içeri aktarma işleminin olay günlüğü hatalarını inceleyin.  |
@@ -51,7 +51,7 @@ Başarılı bir koşulda Azure AD Connect Health uyarılar çözüldü. Azure AD
 | Azure Active Directory 'e aktarma durdu. Yanlışlıkla silme eşiğine ulaşıldı | Azure Active Directory için dışarı aktarma işlemi başarısız oldu. Yapılandırılan eşiğe göre silinecek daha fazla nesne vardı. Sonuç olarak, hiçbir nesne aktarılmadı. | <li> Silinmek üzere işaretlenen nesne sayısı, ayarlanan eşikten büyük. Bu sonucun istenen şekilde yapıldığından emin olun.</li> <li> Dışarı aktarmanın devam etmesine izin vermek için aşağıdaki adımları gerçekleştirin: <ol type="a"> <li>Disable-ADSyncExportDeletionThreshold komutunu çalıştırarak eşiği devre dışı bırakın</li> <li>Synchronization Service Manager Başlat</li> <li>Tür = Azure Active Directory bağlayıcı üzerinde dışarı aktarmayı Çalıştır</li> <li>Nesneleri başarıyla dışarı aktardıktan sonra, şu çalıştırarak eşiği etkinleştirin: Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory Federasyon Hizmetleri (AD FS) için uyarılar
-| Uyarı Adı | Description | Düzeltme |
+| Uyarı Adı | Açıklama | Düzeltme |
 | --- | --- | ----- |
 |Sınama kimlik doğrulama Isteği (yapay Işlem) bir belirteci alamadı | Bu sunucudan başlatılan test kimlik doğrulama istekleri (yapay Işlemler) 5 yeniden denemeden sonra bir belirteç alamadı. Bunun nedeni geçici ağ sorunlarından, AD DS etki alanı denetleyicisinin kullanılabilirliğinin veya yanlış yapılandırılmış bir AD FS sunucusunun olması olabilir.  Sonuç olarak, Federasyon Hizmeti tarafından işlenen kimlik doğrulama istekleri başarısız olabilir. Aracı Federasyon Hizmeti bir belirteç almak için yerel bilgisayar hesabı bağlamını kullanır. | Sunucunun sistem durumunu doğrulamak için aşağıdaki adımların yapıldığından emin olun.<ol><li>Grubunuzdaki bu veya diğer AD FS sunucular için çözümlenmemiş bir uyarı olmadığını doğrulayın.</li><li>Bu koşulun, https://{your_adfs_server_name}/adfs/ls/ıdpınitihtsignon.aspx konumunda bulunan AD FS oturum açma sayfasından bir test kullanıcısı ile oturum açarak geçici bir hata olduğunu doğrulayın</li><li>Adresine gidin <a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> ve ' office 365 ' sekmesini seçin. ' office 365 çoklu oturum açma testini ' yapın.</li><li>Bu sunucudaki bir komut isteminden aşağıdaki komutu yürüterek, AD FS hizmeti adınızın bu sunucudan çözümlenebildiğini doğrulayın. nslookup your_adfs_server_name</li></ol><p>Hizmet adı çözülemezse, bu sunucunun IP adresine sahip AD FS hizmetinize bir konak dosyası girişi ekleme yönergeleri için SSS bölümüne bakın. Bu, bu sunucuda çalışan yapay işlem modülünün belirteç istemesine izin verir</p> | 
 | Proxy sunucusu federasyon sunucusuna erişemiyor | Bu AD FS proxy sunucusu AD FS hizmetle bağlantı kuramıyor. Sonuç olarak, bu sunucu tarafından işlenen kimlik doğrulama istekleri başarısız olur. | Bu sunucu ve AD FS hizmeti arasındaki bağlantıyı doğrulamak için aşağıdaki adımları gerçekleştirin. <ol><li> Bu sunucu ve AD FS hizmeti arasındaki güvenlik duvarının doğru yapılandırıldığından emin olun. </li><li> AD FS hizmet adı için DNS çözümünün, şirket ağı içinde bulunan AD FS hizmetine uygun şekilde işaret ettiğini doğrulayın. Bu, çevre ağında bu sunucuya hizmet eden bir DNS sunucusu veya AD FS hizmet adı için HOSTS dosyalarındaki girişler aracılığıyla elde edilebilir. </li><li> Bu sunucuda tarayıcıyı açıp, Federasyon meta veri uç noktasına (' de) erişerek ağ bağlantısını doğrulayın.`https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
@@ -78,7 +78,7 @@ Başarılı bir koşulda Azure AD Connect Health uyarılar çözüldü. Azure AD
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Active Directory Domain Services için uyarılar
 
-| Uyarı Adı | Description | Düzeltme |
+| Uyarı Adı | Açıklama | Düzeltme |
 | --- | --- | ----- |
 | Etki alanı denetleyicisine LDAP pingi aracılığıyla ulaşılamıyor | Etki alanı denetleyicisine LDAP pingi aracılığıyla ulaşılamıyor. Bunun nedeni ağ sorunları veya makine sorunları olabilir. Sonuç olarak, LDAP pingler başarısız olur. |  <li>İlgili uyarılar için uyarı listesini inceleyin, örneğin: etki alanı denetleyicisi tanıtım değildir. </li><li>Etkilenen etki alanı denetleyicisinde yeterli disk alanı olduğundan emin olun. Boş alan tükenirse, DC 'nin kendisini LDAP sunucusu olarak tanıtmasını durduracaktır. </li><li> PDC 'yi bulma girişimi: çalıştırma <br> <i>Netdom query fsmo</i> </br> Etkilenen etki alanı denetleyicisinde. <li> Fiziksel ağın düzgün yapılandırıldığından/bağlı olduğundan emin olun. </li> |
 | Active Directory çoğaltma hatasıyla karşılaşıldı | Bu etki alanı denetleyicisi, çoğaltma durumu panosuna giderek bulunabilen çoğaltma sorunları yaşıyor. Çoğaltma hataları yanlış yapılandırma veya diğer ilgili sorunlardan kaynaklanıyor olabilir. Kabul edilmemiş çoğaltma hataları veri tutarsızlığına neden olabilir. | Etkilenen kaynak ve hedef DC 'lerin adları için ek ayrıntılara bakın. Çoğaltma durumu panosuna gidin ve etkilenen DC 'lerde etkin hataları arayın. Belirli bir hatayı düzeltme hakkında daha fazla ayrıntı içeren bir dikey pencere açmak için hataya tıklayın.| 

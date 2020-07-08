@@ -7,10 +7,10 @@ ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85363771"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Otomatik izleme veya kodsuz kullanacaksınız Attach-Azure izleyici Application Insights nedir?
@@ -26,11 +26,11 @@ Daha fazla ve daha fazla tümleştirme eklediğimiz için, otomatik izleme özel
 |Ortam/kaynak sağlayıcısı | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Windows üzerinde Azure App Service  | GA, OnBD *       | GA, kabul etme      | Özel Önizleme | Özel Önizleme |
-|Linux üzerinde Azure App Service    | Yok             | Desteklenmiyor   | Genel Önizleme  | Genel Önizleme  |
-|AKS üzerinde Azure App Service      | Yok             | Tasarımda       | Tasarımda       | Tasarımda       |
+|Linux üzerinde Azure App Service    | YOK             | Desteklenmiyor   | Genel Önizleme  | Genel Önizleme  |
+|AKS üzerinde Azure App Service      | YOK             | Tasarımda       | Tasarımda       | Tasarımda       |
 |Azure Işlevleri-temel       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
 |Azure Işlevleri-bağımlılıklar| Desteklenmiyor   | Desteklenmiyor   | Genel Önizleme  | Desteklenmiyor   |
-|Azure Kubernetes Service      | Yok             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
+|Azure Kubernetes Service      | YOK             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
 |Azure VM 'Leri Windows             | Genel Önizleme  | Desteklenmiyor   | Desteklenmiyor   | Desteklenmiyor   |
 |Şirket Içi VM 'Ler Windows       | GA, kabul etme      | Desteklenmiyor   | Aracı üzerinden   | Desteklenmiyor   |
 |Tek başına aracı-tüm env.   | Desteklenmiyor   | Desteklenmiyor   | Genel Önizleme  | Desteklenmiyor   |

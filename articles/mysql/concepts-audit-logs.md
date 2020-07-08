@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362134"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda denetim günlükleri
@@ -47,7 +47,7 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 
 ## <a name="access-audit-logs"></a>Denetim günlüklerine erişme
 
-Denetim günlükleri Azure Izleyici tanılama günlükleriyle tümleşiktir. MySQL sunucunuzda denetim günlüklerini etkinleştirdikten sonra, bunları Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yerleştirebilirsiniz. Azure portal tanılama günlüklerinin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)bakın.
+Denetim günlükleri Azure İzleyici Tanılama Günlükleri ile tümleştirilir. MySQL sunucunuzda denetim günlüklerini etkinleştirdikten sonra bunları Azure İzleyici günlüklerine, Event Hubs’a veya Azure Depolama’ya yerleştirebilirsiniz. Azure portal tanılama günlüklerinin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)bakın.
 
 ## <a name="diagnostic-logs-schemas"></a>Tanılama günlükleri şemaları
 
