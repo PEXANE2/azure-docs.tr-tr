@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması
+title: Kimlik Doğrulaması
 description: Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE Analytics 'te kimlik doğrulaması yapmayı öğrenin.
 services: synapse-analytics
 author: julieMSFT
@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
 ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85206742"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulama
@@ -49,7 +49,7 @@ Varsayılan olarak, bağlantınız Kullanıcı veritabanınıza değil *ana* ver
 
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kimlik doğrulaması, Azure Active Directory (Azure AD) KIMLIKLERI kullanılarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, Azure SYNAPSE kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 Azure Active Directory avantajları şunlardır:
 

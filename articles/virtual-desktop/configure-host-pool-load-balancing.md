@@ -9,10 +9,10 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204365"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
@@ -83,4 +83,4 @@ Yük dengelemeyi yapılandırmak için:
 4. Düzenlemek istediğiniz konak havuzunun adını seçin.
 5. **Özellikler**’i seçin.
 6. Alana **en fazla oturum sınırını** girin ve açılan menüde bu konak havuzu için istediğiniz **Yük Dengeleme algoritmasını** seçin.
-7. **Kaydet**’i seçin. Bu, yeni yük dengeleme ayarlarını uygular.
+7. **Kaydet**'i seçin. Bu, yeni yük dengeleme ayarlarını uygular.

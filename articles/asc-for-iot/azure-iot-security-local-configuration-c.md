@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85206946"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json dosyasını anlama - C aracısı
@@ -40,7 +40,7 @@ Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında
 | AgentId | GUID | Aracı benzersiz tanımlayıcısı |
 | TriggerdEventsInterval | ISO8601 dizesi | Tetiklenen olaylar koleksiyonu için Zamanlayıcı aralığı |
 | ConnectionTimeout | ISO8601 dizesi | Iothub bağlantısı zaman aşımına uğramadan önce geçen süre |
-| Kimlik doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
+| Kimlik Doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
 | Kimlik | "DPS", "SecurityModule", "cihaz" | Kimlik doğrulama kimliği-DPS, kimlik doğrulaması, cihaz kimlik bilgileriyle kimlik doğrulama yapılırsa güvenlik modülü kimlik bilgileri veya cihaz aracılığıyla yapılırsa SecurityModule |
 | AuthenticationMethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulaması için Kullanıcı parolası-gizli anahtar kullan seçeneği bir simetrik anahtaralıysa, sır otomatik olarak imzalanan bir sertifika ise, otomatik olarak imzalanan sertifika seçeneğini belirleyin  |
 | Null | Dosya yolu (dize) | Kimlik doğrulama parolasını içeren dosyanın yolu |

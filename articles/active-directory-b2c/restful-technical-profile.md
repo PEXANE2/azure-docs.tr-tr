@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203665"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
@@ -114,16 +114,16 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ServiceUrl | Yes | REST API uç noktasının URL 'SI. |
-| AuthenticationType | Yes | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` veya `ClientCertificate` . `None`Değer REST API anonim olmadığını gösterir. `Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
-| Allowınsecureauthınproduction| No| `AuthenticationType` `none` Uygulamasının üretim ortamında ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) olarak ayarlanmış veya belirtilmemiş) olarak ayarlanamayacağını gösterir `Production` . Olası değerler: true veya false (varsayılan). |
-| SendClaimsIn | No | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form` , `Header` , veya `QueryString` . `Body`Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form`Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header`Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString`Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. Her biri tarafından çağrılan HTTP fiilleri aşağıdaki gibidir:<br /><ul><li>`Body`: GÖNDERI</li><li>`Form`: GÖNDERI</li><li>`Header`: Al</li><li>`QueryString`: Al</li></ul> |
-| ClaimsFormat | No | Şu anda kullanılmıyor olabilir. |
-| ClaimUsedForRequestPayload| No | REST API gönderilecek yükü içeren bir dize talebinin adı. |
-| DebugMode | No | Teknik profili hata ayıklama modunda çalıştırır. Olası değerler: `true` , veya `false` (varsayılan). Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. [Hata Iletisi döndüren](#returning-validation-error-message) bölümüne bakın. |
-| IncludeClaimResolvingInClaimsHandling  | No | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
-| ResolveJsonPathsInJsonTokens  | No | Teknik profilin JSON yollarını çözümleyip çözmeyeceğini gösterir. Olası değerler: `true` , veya `false` (varsayılan). İç içe geçmiş bir JSON öğesinden veri okumak için bu meta verileri kullanın. Bir [Outputclaim](technicalprofiles.md#outputclaims)'de, öğesini `PartnerClaimType` ÇıKTıSıNı almak istediğiniz JSON yolu öğesine ayarlayın. Örneğin: `firstName.localized` , veya `data.0.to.0.email` .|
-| Useclaimasyatatoken| No| Taşıyıcı belirtecini içeren talebin adı.|
+| ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
+| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` veya `ClientCertificate` . `None`Değer REST API anonim olmadığını gösterir. `Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
+| Allowınsecureauthınproduction| Hayır| `AuthenticationType` `none` Uygulamasının üretim ortamında ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) olarak ayarlanmış veya belirtilmemiş) olarak ayarlanamayacağını gösterir `Production` . Olası değerler: true veya false (varsayılan). |
+| SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form` , `Header` , veya `QueryString` . `Body`Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form`Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header`Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString`Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. Her biri tarafından çağrılan HTTP fiilleri aşağıdaki gibidir:<br /><ul><li>`Body`: GÖNDERI</li><li>`Form`: GÖNDERI</li><li>`Header`: Al</li><li>`QueryString`: Al</li></ul> |
+| ClaimsFormat | Hayır | Şu anda kullanılmıyor olabilir. |
+| ClaimUsedForRequestPayload| Hayır | REST API gönderilecek yükü içeren bir dize talebinin adı. |
+| DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Olası değerler: `true` , veya `false` (varsayılan). Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. [Hata Iletisi döndüren](#returning-validation-error-message) bölümüne bakın. |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
+| ResolveJsonPathsInJsonTokens  | Hayır | Teknik profilin JSON yollarını çözümleyip çözmeyeceğini gösterir. Olası değerler: `true` , veya `false` (varsayılan). İç içe geçmiş bir JSON öğesinden veri okumak için bu meta verileri kullanın. Bir [Outputclaim](technicalprofiles.md#outputclaims)'de, öğesini `PartnerClaimType` ÇıKTıSıNı almak istediğiniz JSON yolu öğesine ayarlayın. Örneğin: `firstName.localized` , veya `data.0.to.0.email` .|
+| Useclaimasyatatoken| Hayır| Taşıyıcı belirtecini içeren talebin adı.|
 
 ## <a name="error-handling"></a>Hata işleme
 
@@ -131,10 +131,10 @@ Aşağıdaki meta veriler REST API hata durumunda görüntülenecek hata iletile
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DefaultUserMessageIfRequestFailed | No | Tüm REST API özel durumları için varsayılan özelleştirilmiş bir hata iletisi.|
-| Usermessageifbir ıtopen | No | REST API erişilebilir olmadığında hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. |
-| UserMessageIfDnsResolutionFailed | No | DNS çözümleme özel durumu için hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. | 
-| UserMessageIfRequestTimeout | No | Bağlantı zaman aşımına uğradığından hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. | 
+| DefaultUserMessageIfRequestFailed | Hayır | Tüm REST API özel durumları için varsayılan özelleştirilmiş bir hata iletisi.|
+| Usermessageifbir ıtopen | Hayır | REST API erişilebilir olmadığında hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. |
+| UserMessageIfDnsResolutionFailed | Hayır | DNS çözümleme özel durumu için hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. | 
+| UserMessageIfRequestTimeout | Hayır | Bağlantı zaman aşımına uğradığından hata iletisi. Belirtilmemişse, DefaultUserMessageIfRequestFailed döndürülür. | 
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -156,8 +156,8 @@ Kimlik doğrulaması türü olarak ayarlandıysa `Basic` , **Cryptographickeys**
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Yes | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
-| BasicAuthenticationPassword | Yes | Kimlik doğrulaması için kullanılan parola. |
+| BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
+| BasicAuthenticationPassword | Evet | Kimlik doğrulaması için kullanılan parola. |
 
 Aşağıdaki örnek, temel kimlik doğrulaması ile bir teknik profil gösterir:
 
@@ -181,7 +181,7 @@ Kimlik doğrulaması türü olarak ayarlandıysa `ClientCertificate` , **Cryptog
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClientCertificate | Yes | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
+| ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -202,7 +202,7 @@ Kimlik doğrulaması türü olarak ayarlandıysa `Bearer` , **Cryptographickeys*
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Yataya Authenticationtoken | No | OAuth 2,0 taşıyıcı belirteci. |
+| Yataya Authenticationtoken | Hayır | OAuth 2,0 taşıyıcı belirteci. |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -237,13 +237,13 @@ REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi dönd
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| sürüm | Yes | REST API sürümünüz. Örneğin: 1.0.1 |
-| durum | Yes | 409 olmalıdır |
-| kod | No | Etkin olduğunda görünen, RESTAN uç nokta sağlayıcısından bir hata kodu `DebugMode` . |
-| No | No | Etkinleştirildiğinde görünen, Restlen uç nokta sağlayıcısından gelen istek tanımlayıcısı `DebugMode` . |
-| userMessage | Yes | Kullanıcıya gösterilen bir hata iletisi. |
-| developerMessage | No | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini, `DebugMode` etkinleştirildiğinde görüntülenir. |
-| daha fazla bilgi | No | Etkinleştirildiğinde görüntülenen ek bilgilere işaret eden bir URI `DebugMode` . |
+| sürüm | Evet | REST API sürümünüz. Örneğin: 1.0.1 |
+| durum | Evet | 409 olmalıdır |
+| kod | Hayır | Etkin olduğunda görünen, RESTAN uç nokta sağlayıcısından bir hata kodu `DebugMode` . |
+| No | Hayır | Etkinleştirildiğinde görünen, Restlen uç nokta sağlayıcısından gelen istek tanımlayıcısı `DebugMode` . |
+| userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. |
+| developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini, `DebugMode` etkinleştirildiğinde görüntülenir. |
+| daha fazla bilgi | Hayır | Etkinleştirildiğinde görüntülenen ek bilgilere işaret eden bir URI `DebugMode` . |
 
 
 Aşağıdaki örnek, bir hata iletisi döndüren bir C# sınıfını göstermektedir:

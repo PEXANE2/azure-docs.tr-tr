@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: dd94811baddba3a40910b3a0c68eb4e1b2744b0b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201251"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 yetkilendirme kodu akışı
@@ -52,7 +52,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ```
 
 
-| Parametre | Gerekli mi? | Description |
+| Parametre | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 | ilkesinin | Gerekli | Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in` , `b2c_1_sign_up` , veya `b2c_1_edit_profile` . |
@@ -110,7 +110,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| Parametre | Gerekli mi? | Description |
+| Parametre | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 |ilkesinin| Gerekli| Yetkilendirme kodunu almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. |
@@ -176,7 +176,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parametre | Gerekli mi? | Description |
+| Parametre | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 |ilkesinin |Gerekli |Özgün yenileme belirtecini almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. |

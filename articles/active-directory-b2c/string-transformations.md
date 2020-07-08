@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203444"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
@@ -783,7 +783,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | ınputclaim | string | Arama yapılacak talep türü. |
-|InputParameter|içerir|string|Aranacak değer.|
+|InputParameter|şunu içerir|string|Aranacak değer.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizenin durumunu yoksayıp saymayacağını belirtir.|
 | OutputClaim | outputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Giriş talebi içinde alt dize gerçekleşirse Boole göstergesi. |
 

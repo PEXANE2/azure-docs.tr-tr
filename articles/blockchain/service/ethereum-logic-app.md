@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
 ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200741"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
@@ -59,7 +59,7 @@ Akıllı bir anlaşma olayı oluştuktan sonra bir mantıksal uygulamanın çal�
     | **Olay adı** | Denetlenecek akıllı sözleşme olayını seçin. Olay mantıksal uygulamayı tetikler. |
     | **Aralık** ve **Sıklık** | Olayı ne sıklıkta denetlemek istediğinizi seçin. |
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Mantıksal uygulamanızı tamamlayabilmeniz için Ethereum blok zinciri olay tetikleyicisine dayalı bir eylem gerçekleştiren yeni bir adım ekleyebilirsiniz. Örneğin, bir e-posta gönderin.
 
@@ -176,7 +176,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktas�
 
 **Azure portal kullanmak için:**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![İşlem düğümleri sayfası (varsayılan düğüm) seçimi](./media/ethereum-logic-app/transaction-nodes.png)

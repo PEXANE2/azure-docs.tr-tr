@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202577"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
@@ -28,7 +28,7 @@ Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
 |Oturum sağlayıcısı  |Kapsam  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Yok       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Hiçbiri       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C iç oturum Yöneticisi.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C ile OAuth1, OAuth2 veya OpenID Connect kimlik sağlayıcısı arasında.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Bir OAuth2 veya OpenID Connect bağlı olan taraf uygulaması ve Azure AD B2C.        |        
@@ -123,7 +123,7 @@ Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Fede
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | No | Şu anda kullanılmıyor olabilir. |
+| AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -165,8 +165,8 @@ Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| Includesessionındex | No | Şu anda kullanılmıyor olabilir.|
-| RegisterServiceProviders | No | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false` .|
+| Includesessionındex | Hayır | Şu anda kullanılmıyor olabilir.|
+| RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false` .|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

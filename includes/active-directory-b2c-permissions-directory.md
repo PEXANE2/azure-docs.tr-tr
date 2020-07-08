@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200167"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
@@ -36,5 +36,5 @@ ms.locfileid: "85200167"
     * **Tüm denetim günlüğü verilerini okuyun**: dizinin denetim günlüklerini okumak için bu izni seçin.
     * **Dizin verilerini okuma ve yazma**: Kullanıcı geçişi veya Kullanıcı yönetimi senaryoları için bu izni seçin.
     * **Kuruluşunuzun güven çerçevesi Ilkelerini okuyun ve yazın**: sürekli tümleştirme/sürekli teslım (CI/CD) senaryoları için bu izni seçin. Örneğin, Azure Pipelines ile özel ilke dağıtımı.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 1. **Izin ver**' i seçin ve ardından **Evet**' i seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.

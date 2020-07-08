@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204991"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
@@ -24,7 +24,7 @@ ms.locfileid: "85204991"
 
 ## <a name="workload-management"></a>İş yükü yönetimi
 
-| Kategori | Description | Maksimum |
+| Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir SQL Havuzu (veri ambarı) birimi için maksimum DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), DW5000c 'e kadar izin veren bir DTU kotasına sahiptir 54.000. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9,5 ' i çarpın. Örneğin:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW5000c x 9,5 = 47.500 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
@@ -36,7 +36,7 @@ ms.locfileid: "85204991"
 
 ## <a name="database-objects"></a>Veritabanı nesneleri
 
-| Kategori | Description | Maksimum |
+| Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | Veritabanı |En büyük boyut | Gen1:240 TB diskte sıkıştırılmış. Bu alan tempdb veya günlük alanından bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş columnstore sıkıştırması, 5X ile tahmin edilir.  Bu sıkıştırma, tüm tablolar kümelenmiş columnstore (varsayılan tablo türü) olduğunda veritabanının yaklaşık 1 PB 'e büyümesine izin verir. <br/><br/> Gen2: columnstore tabloları için sınırsız depolama alanı.  Veritabanının rowstore kısmı diskte hala 240 TB sıkıştırılmış ile sınırlıdır. |
 | Tablo |En büyük boyut |Columnstore tabloları için sınırsız boyut. <br>disk üzerinde sıkıştırılan rowstore tabloları için 60 TB. |
@@ -54,19 +54,19 @@ ms.locfileid: "85204991"
 | İstatistikler |İstatistik nesnesi başına sütun. |32 |
 | İstatistikler |Tablo başına sütunlarda oluşturulan istatistikler. |30.000 |
 | Saklı Yordamlar |En fazla iç içe geçme düzeyi. |8 |
-| Görünüm |Görünüm başına sütun |1.024 |
+| Görüntüle |Görünüm başına sütun |1.024 |
 ||||
 
 ## <a name="loads"></a>Sayfam
 
-| Kategori | Description | Maksimum |
+| Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/><br/> |
 ||||
 
 ## <a name="queries"></a>Sorgular
 
-| Kategori | Description | Maksimum |
+| Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | Sorgu |Kullanıcı tablolarında sıraya alınmış sorgular. |1000 |
 | Sorgu |Sistem görünümlerinde eşzamanlı sorgular. |100 |

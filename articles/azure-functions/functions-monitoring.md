@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207016"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
@@ -64,7 +64,7 @@ Application Insights kullanma hakkında daha fazla bilgi için [Application Insi
 
 Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
 
-| Araştır | Description |
+| Araştır | Açıklama |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
@@ -118,7 +118,7 @@ Application Insights, özel yapılandırma olmadan kullanabilirsiniz. Varsayıla
 
 Azure Işlevleri günlükçüsü, her günlük için bir *Kategori* içerir. Kategori, çalışma zamanı kodunun veya işlev kodunuzun günlüğü yazanın hangi kısmının olduğunu gösterir. Aşağıdaki grafikte, çalışma zamanının oluşturduğu günlüklerin ana kategorileri açıklanmaktadır. 
 
-| Kategori | Description |
+| Kategori | Açıklama |
 | ----- | ----- | 
 | Host.Results | Bu Günlükler Application Insights **istek** olarak gösterir. Bir işlevin başarısını veya başarısızlığını gösterir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
 | Host. toplayıcısı | Bu Günlükler, [yapılandırılabilir](#configure-the-aggregator) bir süre boyunca işlev çağırma sayısının sayısını ve ortalamasını sağlar. Varsayılan süre 30 saniye veya 1.000 sonuçdur, hangisi önce gelir. Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunabilir. Çalıştırma sayısı, başarı oranı ve süre örnekleri verilebilir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
@@ -143,7 +143,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Yok        | 6 |
+|Hiçbiri        | 6 |
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 

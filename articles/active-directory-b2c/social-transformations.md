@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203393"
 ---
 # <a name="social-accounts-claims-transformations"></a>Sosyal hesap talep dönüştürmeleri
@@ -43,7 +43,7 @@ Azure Active Directory çağrılarında kullanılabilecek kullanıcının Altern
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | key | string | Sosyal kimlik sağlayıcısı tarafından kullanılan benzersiz kullanıcı tanımlayıcısını belirten ClaimType. |
+| Inputclaim | anahtar | string | Sosyal kimlik sağlayıcısı tarafından kullanılan benzersiz kullanıcı tanımlayıcısını belirten ClaimType. |
 | Inputclaim | IdentityProvider | string | Facebook.com gibi sosyal hesap kimlik sağlayıcısı adını belirten ClaimType. |
 | OutputClaim | Alternativesecurityıd | string | Claimstrans, tarafından üretilen ClaimType çağrılır. Sosyal hesap kullanıcısının kimliği hakkındaki bilgileri içerir. **Veren** , `identityProvider` talebin değeridir. **Issueruserıd** , `key` talebin Base64 biçimindeki değeridir. |
 

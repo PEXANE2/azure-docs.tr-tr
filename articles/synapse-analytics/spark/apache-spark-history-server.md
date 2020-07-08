@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85195003"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
@@ -157,7 +157,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
 
 İş grafiği sekmesinde, aşamaların bir araç ipucu vardır ve aşağıdaki koşullara uyan görevler varsa küçük bir simge gösterilir:
 
-|Koşul|Description|
+|Koşul|Açıklama|
 |-|-|
 |Veri eğriltme|veri okuma boyutu > bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 ve veri okuma boyutu > 10 MB|
 |Zaman eğriltme|yürütme süresi > bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 ve yürütme süresi > 2 dakika|

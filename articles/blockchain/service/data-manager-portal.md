@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200690"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
@@ -32,7 +32,7 @@ Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işle
 
 Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız. Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Başka bir hedef eklemek için örneğe ek giden bağlantılar eklemeniz yeterlidir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Blok zinciri Veri Yöneticisi bağlamak istediğiniz Azure blok zinciri hizmeti üyesine gidin. **Blok zinciri veri Yöneticisi**seçin.
 1. **Ekle**'yi seçin.
 
@@ -40,7 +40,7 @@ Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği o
 
     Şu ayrıntıları girin:
 
-    Ayar | Description
+    Ayar | Açıklama
     --------|------------
     Name | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin. Blok zinciri Veri Yöneticisi adı küçük harf ve rakam içerebilir ve en fazla 20 karakter uzunluğunda olabilir.
     İşlem düğümü | Bir işlem düğümü seçin. Yalnızca okuma erişiminizin bulunduğu işlem düğümleri listelenir.
@@ -108,7 +108,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
     ![Depolama hesabı kapsayıcısı oluşturma](./media/data-manager-portal/create-container.png)
 
-    | Alan | Description |
+    | Alan | Açıklama |
     |-------|-------------|
     | Name  | Kapsayıcıya bir ad verin. Örneğin, *smartcontract* |
     | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
@@ -144,7 +144,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
     Blok zinciri uygulamasının adını ve akıllı sözleşme ABı ve bytecode URL 'Lerini girin.
 
-    Ayar | Description
+    Ayar | Açıklama
     --------|------------
     Name | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
     Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).

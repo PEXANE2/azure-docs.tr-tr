@@ -12,10 +12,10 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201421"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Application Insights teknik profil tanımlama
@@ -75,9 +75,9 @@ CryptographicKeys öğesi kullanılmıyor.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Instrumentationkey| Yes | Olayları günlüğe kaydetmek için kullanılacak Application Insights [izleme anahtarı](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key). | 
-| DeveloperMode| No | Geliştirici modunun etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan). Bu meta veriler, olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır.|  
-|Disabletelemetri |No |Telemetrinin etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan).| 
+| Instrumentationkey| Evet | Olayları günlüğe kaydetmek için kullanılacak Application Insights [izleme anahtarı](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key). | 
+| DeveloperMode| Hayır | Geliştirici modunun etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan). Bu meta veriler, olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır.|  
+|Disabletelemetri |Hayır |Telemetrinin etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan).| 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

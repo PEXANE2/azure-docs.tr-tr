@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201268"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -41,7 +41,7 @@ Bir talep sağlayıcı bir dizi [Teknik profil](technicalprofiles.md)içerir. He
 
 **Claimsproviders** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Çeşitli Kullanıcı yararlanılabilir olabilecek, acalacaklandırılan bir talep sağlayıcısı. |
 
@@ -49,7 +49,7 @@ Bir talep sağlayıcı bir dizi [Teknik profil](technicalprofiles.md)içerir. He
 
 **ClaimsProvider** öğesi aşağıdaki alt öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | Talep sağlayıcısı için etki alanı adını içeren bir dize. Örneğin, talep sağlayıcınız Facebook teknik profilini içeriyorsa, etki alanı adı Facebook.com olur. Bu etki alanı adı, teknik profil tarafından geçersiz kılınmadıkça talep sağlayıcısında tanımlanan tüm teknik profiller için kullanılır. Etki alanı adına bir **domain_hint**de başvurulabilir. Daha fazla bilgi için, [Azure Active Directory B2C kullanarak doğrudan oturum açma ayarlama](direct-signin.md)konusunun **sosyal sağlayıcıya yeniden yönlendirme** bölümüne bakın. |
 | DisplayName | 1:1 | Talep sağlayıcısının adını içeren bir dize. |

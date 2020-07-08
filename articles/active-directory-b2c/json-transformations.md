@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204379"
 ---
 # <a name="json-claims-transformations"></a>JSON talep dönüştürmeleri
@@ -230,7 +230,7 @@ JSON verilerinden ilk öğeyi alır.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | ınputjson | string | JSON verilerinden öğeyi almak için talep dönüştürmesi tarafından kullanılan ClaimTypes. |
-| OutputClaim | key | string | JSON 'daki ilk öğe anahtarı. |
+| OutputClaim | anahtar | string | JSON 'daki ilk öğe anahtarı. |
 | OutputClaim | değer | string | JSON 'daki ilk öğe değeri. |
 
 Aşağıdaki örnekte, talep dönüştürmesi JSON verilerinden ilk öğeyi (verilen ad) ayıklar.

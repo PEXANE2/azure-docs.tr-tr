@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203818"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Koşullar ve Predicatedoğrulamaları
@@ -36,7 +36,7 @@ Aşağıdaki diyagramda öğeler arasındaki ilişki gösterilmektedir:
 
 **Koşullar** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Koşulunda | 1: n | Koşulların listesi. |
 
@@ -44,26 +44,26 @@ Aşağıdaki diyagramda öğeler arasındaki ilişki gösterilmektedir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
-| Yöntem | Yes | Doğrulama için kullanılacak yöntem türü. Olası değerler: [ılengthrange](#islengthrange), [matchesregex](#matchesregex), [ıncludescharacters](#includescharacters)veya [ıdadterange](#isdaterange).  |
-| HelpText | No | Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. Bu dize, [dil özelleştirmesi](localization.md) kullanılarak yerelleştirilebilecek |
+| Kimlik | Evet | Koşul için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
+| Yöntem | Evet | Doğrulama için kullanılacak yöntem türü. Olası değerler: [ılengthrange](#islengthrange), [matchesregex](#matchesregex), [ıncludescharacters](#includescharacters)veya [ıdadterange](#isdaterange).  |
+| HelpText | Hayır | Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. Bu dize, [dil özelleştirmesi](localization.md) kullanılarak yerelleştirilebilecek |
 
 **Koşul** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Kullanım dışı Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. |
 | Parametreler | 1:1 | Dize doğrulamanın Yöntem türü için parametreler. |
 
 **Parameters** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Parametre | 1: n | Dize doğrulamanın Yöntem türü için parametreler. |
 
 **Parameter** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Kimlik | 1:1 | Parametrenin tanımlayıcısı. |
 
@@ -75,8 +75,8 @@ Ilengthrange yöntemi, bir dize talep değerinin uzunluğunun, belirtilen minimu
 
 | Parametre | Gerekli | Açıklama |
 | ------- | ----------- | ----------- |
-| Maksimum | Yes | Girilebilecek en fazla karakter sayısı. |
-| Minimum | Yes | Girilmesi gereken en az karakter sayısı. |
+| Maksimum | Evet | Girilebilecek en fazla karakter sayısı. |
+| Minimum | Evet | Girilmesi gereken en az karakter sayısı. |
 
 
 Aşağıdaki örnek, parametresine sahip bir ılengthrange yöntemi gösterir `Minimum` ve `Maximum` dizenin uzunluk aralığını belirtir:
@@ -96,7 +96,7 @@ MatchesRegex yöntemi bir dize talep değerinin bir normal ifadeyle eşleşip e�
 
 | Parametre | Gerekli | Açıklama |
 | ------- | ----------- | ----------- |
-| Cevap içerisinde RegularExpression | Yes | Eşleştirilecek normal ifade deseninin. |
+| Cevap içerisinde RegularExpression | Evet | Eşleştirilecek normal ifade deseninin. |
 
 Aşağıdaki örnek, bir `MatchesRegex` normal ifadeyi belirten parametresine sahip bir yöntemi gösterir `RegularExpression` :
 
@@ -114,7 +114,7 @@ Includescharacters yöntemi, bir dize talep değerinin bir karakter kümesi içe
 
 | Parametre | Gerekli | Açıklama |
 | ------- | ----------- | ----------- |
-| CharacterSet | Yes | Girilebilecek karakter kümesi. Örneğin, küçük harfli karakterler `a-z` , büyük harfler `A-Z` , rakamlar `0-9` veya gibi semboller listesi `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Evet | Girilebilecek karakter kümesi. Örneğin, küçük harfli karakterler `a-z` , büyük harfler `A-Z` , rakamlar `0-9` veya gibi semboller listesi `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 Aşağıdaki örnek, `IncludesCharacters` parametresini `CharacterSet` belirten ve karakter kümesini belirten bir yöntemi gösterir:
 
@@ -132,8 +132,8 @@ Isdadterange yöntemi, bir tarih talep değerinin belirtilen en düşük ve en f
 
 | Parametre | Gerekli | Açıklama |
 | ------- | ----------- | ----------- |
-| Maksimum | Yes | Girilebilecek en büyük olası tarih. Tarih ve `yyyy-mm-dd` kural biçimi `Today` . |
-| Minimum | Yes | Girilebilecek en küçük olası tarih. Tarih ve `yyyy-mm-dd` kural biçimi `Today` .|
+| Maksimum | Evet | Girilebilecek en büyük olası tarih. Tarih ve `yyyy-mm-dd` kural biçimi `Today` . |
+| Minimum | Evet | Girilebilecek en küçük olası tarih. Tarih ve `yyyy-mm-dd` kural biçimi `Today` .|
 
 Aşağıdaki örnek, `IsDateRange` `Minimum` `Maximum` ve biçimindeki tarih aralığını belirten ve parametrelerine sahip bir yöntemi gösterir `yyyy-mm-dd` `Today` .
 
@@ -172,7 +172,7 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 **Predicatedoğrulamaları** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Koşul doğrulama listesi. |
 
@@ -180,17 +180,17 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul doğrulama için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
+| Kimlik | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
 
 **Predicatevalidation** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Koşul gruplarının listesi. |
 
 **Predicategroups** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Koşulların listesi. |
 
@@ -198,11 +198,11 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul grubu için kullanılan bir tanımlayıcı.  |
+| Kimlik | Evet | Koşul grubu için kullanılan bir tanımlayıcı.  |
 
 **Predicategroup** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  Kullanıcıların hangi değeri yazdıklarından haberdar olmaları için yararlı olabilecek koşulun açıklaması. |
 | Predicatereferde | 1: n | Koşul başvurularının listesi. |
@@ -211,11 +211,11 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| MatchAtLeast | No | Değerin en azından, girişin kabul edileceği birçok koşul tanımına uyması gerektiğini belirtir. Belirtilmemişse, değer tüm koşul tanımlarına uymalıdır. |
+| MatchAtLeast | Hayır | Değerin en azından, girişin kabul edileceği birçok koşul tanımına uyması gerektiğini belirtir. Belirtilmemişse, değer tüm koşul tanımlarına uymalıdır. |
 
 **Predicatereferde** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Bir koşula başvuru. |
 
@@ -223,7 +223,7 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul doğrulama için kullanılan bir tanımlayıcı.  |
+| Kimlik | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı.  |
 
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma

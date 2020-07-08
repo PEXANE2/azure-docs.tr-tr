@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200471"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
@@ -79,7 +79,7 @@ az resource create \
 }
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 |---------|-------------|
 | location | İzleyici kaynağının oluşturulacağı bölge |
 | properties | İzleyici kaynağı oluşturulurken ayarlanacak Özellikler |
@@ -147,7 +147,7 @@ az resource create \
 }
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 |---------|-------------|
 | location | Giriş kaynağının oluşturulacağı bölge. |
 | InputType | Azure blok zinciri hizmeti üyesinin defter türü. Şu anda **Ethereum** destekleniyor. |
@@ -219,7 +219,7 @@ Adlı bir olay kılavuzu konusuna bağlı *Doğu ABD* bölgesinde bir çıkış 
 }
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 |---------|-------------|
 | location | Çıkış kaynağının oluşturulacağı bölge. |
 | #b2 | Çıkışın türü. Şu anda **Eventgrid** destekleniyor. |
@@ -301,7 +301,7 @@ Configuration JSON örneği, sözleşme ABı ve bytecode tarafından tanımlanan
 }
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 |---------|-------------|
 | location | Uygulama kaynağının oluşturulacağı bölge. |
 | artifactType | Uygulamanın türü. Şu anda **Ethereumsmartcontract** destekleniyor. |

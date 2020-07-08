@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202866"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -63,11 +63,11 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Bir içerik tanımı için tanımlayıcı. Değer, bu sayfanın ilerleyen kısımlarında bulunan **İçerik tanımı kimlikleri** bölümünde belirtilmiştir. |
+| Kimlik | Evet | Bir içerik tanımı için tanımlayıcı. Değer, bu sayfanın ilerleyen kısımlarında bulunan **İçerik tanımı kimlikleri** bölümünde belirtilmiştir. |
 
 **ContentDefinition** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
 | RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. Şu anda kullanılmıyor, değer olmalıdır `~/common/default_page_error.html` . |
@@ -79,7 +79,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version` . Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenmektedir.
 
-| Sayfa tanımlayıcısı | Description |
+| Sayfa tanımlayıcısı | Açıklama |
 | ----- | ----------- |
 | `globalexception` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
 | `providerselection`, `idpselection` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler.  |
@@ -131,7 +131,7 @@ Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD
 
 **Meta veri** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | İçerik tanımıyla ilgili meta veriler. |
 
@@ -139,7 +139,7 @@ Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Anahtar | Yes | Meta veri anahtarı.  |
+| Anahtar | Evet | Meta veri anahtarı.  |
 
 #### <a name="metadata-keys"></a>Meta veri anahtarları
 
@@ -147,13 +147,13 @@ Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD
 
 | Anahtar | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DisplayName | No | İçerik tanımının adını içeren bir dize. |
+| DisplayName | Hayır | İçerik tanımının adını içeren bir dize. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
@@ -161,8 +161,8 @@ Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Dil | Yes | Dilleri tanımlamak için RFC 5646-etiketleri başına ilke için desteklenen bir dil içeren bir dize. |
-| Localizedresourcesreferenceıd | Yes | **Localizedresources** öğesinin tanımlayıcısı. |
+| Dil | Evet | Dilleri tanımlamak için RFC 5646-etiketleri başına ilke için desteklenen bir dil içeren bir dize. |
+| Localizedresourcesreferenceıd | Evet | **Localizedresources** öğesinin tanımlayıcısı. |
 
 Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmeye yönelik bir başvuruya sahip kaydolma veya oturum açma içerik tanımı gösterilmektedir:
 
@@ -188,7 +188,7 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 
 **ContentDefinition** öğesinin ID özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğesi, özel bir HTML5/CSS şablonunun uygulanacağı bağlamı tanımlar. Aşağıdaki tabloda, kimlik deneyimi çerçevesi tarafından tanınan içerik tanımı kimlikleri ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rastgele bir KIMLIK ile kendi içerik tanımlarınızı oluşturabilirsiniz.
 
-| ID | Varsayılan şablon | Description |
+| ID | Varsayılan şablon | Açıklama |
 | -- | ---------------- | ----------- |
 | **api. Error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
 | **api. ıdpseçimlerin** | [ıdpselector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |

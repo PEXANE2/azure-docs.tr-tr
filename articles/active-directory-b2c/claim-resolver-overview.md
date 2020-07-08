@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201184"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
@@ -66,16 +66,16 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 | İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {OıDC: AuthenticationContextReferences} |`acr_values`Sorgu dizesi parametresi. | Yok |
+| {OıDC: AuthenticationContextReferences} |`acr_values`Sorgu dizesi parametresi. | YOK |
 | {OıDC: ClientID} |`client_id`Sorgu dizesi parametresi. | 00000000-0000-0000-0000-000000000000 |
 | {OıDC: Domainipucuyla} |`domain_hint`Sorgu dizesi parametresi. | facebook.com |
 | {OıDC: Loginipucu} |  `login_hint`Sorgu dizesi parametresi. | someone@contoso.com |
-| {OıDC: MaxAge} | `max_age`. | Yok |
+| {OıDC: MaxAge} | `max_age`. | YOK |
 | {OıDC: nonce} |`Nonce`Sorgu dizesi parametresi. | defaultNonce |
 | {OıDC: Password}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının parolasını akışa.| Parola1| 
 | {OıDC: Prompt} | `prompt`Sorgu dizesi parametresi. | oturum aç |
 | {OıDC: RedirectUri} |`redirect_uri`Sorgu dizesi parametresi. | https://jwt.ms |
-| {OıDC: kaynak} |`resource`Sorgu dizesi parametresi. | Yok |
+| {OıDC: kaynak} |`resource`Sorgu dizesi parametresi. | YOK |
 | {OıDC: scope} |`scope`Sorgu dizesi parametresi. | OpenID |
 | {OıDC: username}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının Kullanıcı adını Flow.| emily@contoso.com| 
 
@@ -106,13 +106,13 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {OAUTH-KV: kampanya Nkimliği} | Sorgu dizesi parametresi. | Hawaii |
 | {OAUTH-KV: app_session} | Sorgu dizesi parametresi. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Sorgu dizesi parametresi. | 1234 |
-| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | Yok |
+| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | YOK |
 
 ### <a name="oauth2"></a>OAuth2
 
 | İste | Açıklama | Örnek |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Erişim belirteci. | Yok |
+| {OAuth2: access_token} | Erişim belirteci. | YOK |
 
 
 ### <a name="saml"></a>SAML

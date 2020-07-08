@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure IoT Edge iş yüklerini dağıtma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193796"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge iş yüklerini dağıtma (Önizleme)

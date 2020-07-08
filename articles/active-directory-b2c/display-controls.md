@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202305"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
@@ -48,12 +48,12 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
-| Userınterfacecontroltype | Yes | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
+| Kimlik | Evet | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
+| Userınterfacecontroltype | Evet | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. |
 | DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. |
