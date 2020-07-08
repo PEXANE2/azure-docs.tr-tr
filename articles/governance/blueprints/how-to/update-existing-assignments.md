@@ -3,12 +3,12 @@ title: Portaldan mevcut bir atamayı güncelleştirme
 description: Azure 'da portaldan mevcut bir şema atamasını güncelleştirme mekanizması hakkında bilgi edinin.
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381798"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969473"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Mevcut bir şema atamasını güncelleştirme
 
@@ -50,18 +50,18 @@ Güncelleştirilmiş atamaların dağıtımı, bazı önemli kurallara uyar. Bu 
   - İlke atamasının tanımı değiştirilirse yeni bir ilke ataması oluşturulur.
     Daha önce dağıtılan ilke atamaları yerinde kalır.
   - İlke atama yapıtı Blueprint 'ten kaldırılırsa, dağıtılan ilke atamaları yerinde kalır.
-- Azure Resource Manager şablonları
+- Azure Resource Manager şablonları (ARM şablonları)
   - Şablon, Kaynak Yöneticisi aracılığıyla bir **PUT**olarak işlenir. Her kaynak türü bu eylemi farklı şekilde işlediğinde, bu eylemin, planlar tarafından çalıştırıldığında etkisini öğrenmek için dahil edilen her kaynak için belgeleri gözden geçirin.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Atamaları güncelleştirmede olası hatalar
 
-Atamaları güncelleştirirken, yürütüldüğünde kesen değişiklikler yapmak mümkündür. Bir örnek, daha önce dağıtıldıktan sonra kaynak grubunun konumunu değiştiriyor. [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) tarafından desteklenen herhangi bir değişiklik yapılabilir, ancak Azure Resource Manager üzerinden bir hatayla sonuçlanarak yapılan herhangi bir değişiklik atamanın başarısızlığının oluşmasına neden olur.
+Atamaları güncelleştirirken, yürütüldüğünde kesen değişiklikler yapmak mümkündür. Bir örnek, daha önce dağıtıldıktan sonra kaynak grubunun konumunu değiştiriyor. [Kaynak Yöneticisi](../../../azure-resource-manager/management/overview.md) tarafından desteklenen herhangi bir değişiklik yapılabilir, ancak Kaynak Yöneticisi üzerinden bir hatayla sonuçlanarak yapılan herhangi bir değişiklik atamanın başarısızlığının oluşmasına neden olur.
 
 Atamanın kaç kez güncelleştirilemeyebilir. Bir hata oluşursa, hatayı saptayın ve atamanın başka bir güncelleştirmesini yapın.  Örnek hata senaryoları:
 
 - Hatalı parametre
 - Zaten varolan bir nesne
-- Azure Resource Manager tarafından desteklenmeyen bir değişiklik
+- Kaynak Yöneticisi tarafından desteklenmeyen bir değişiklik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726443"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965289"
 ---
 # <a name="rendering-using-azure"></a>Azure ile işleme
 
@@ -48,7 +48,7 @@ Birçok nedenden dolayı işleme, Azure ve Azure Batch için mükemmel bir iş y
 
 En yaygın durum,, PipelineFX Quya, Royal render veya Thinkbox son tarihi gibi bir işleme yönetimi uygulaması tarafından yönetilmekte olan mevcut bir şirket içi oluşturma grubu olması içindir.  Gereksinim, Azure VM 'Leri kullanarak şirket içi işleme grubu kapasitesini genişletmelidir.
 
-İşleme yönetimi yazılımının Azure desteği yerleşik olarak bulunur veya Azure desteği ekleyen kullanılabilir eklentiler sunuyoruz. Desteklenen oluşturma yöneticileri ve işlevselliği hakkında daha fazla bilgi için, [oluşturma yöneticileri kullanma](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)makalesine bakın.
+İşleme yönetimi yazılımının Azure desteği yerleşik olarak bulunur veya Azure desteği ekleyen kullanılabilir eklentiler sunuyoruz. Desteklenen oluşturma yöneticileri ve işlevselliği hakkında daha fazla bilgi için, [oluşturma yöneticileri kullanma](./batch-rendering-render-managers.md)makalesine bakın.
 
 ### <a name="custom-rendering-workflow"></a>Özel işleme iş akışı
 
@@ -77,9 +77,9 @@ Azure Batch birçok iş yükü için kullanılır, ancak özellikle işleme iş 
 Azure Batch kullanmanın birkaç yolu vardır ve bunların tümü Azure Batch işleme için de geçerlidir.
 
 * API'ler:
-  * [Rest](https://docs.microsoft.com/rest/api/batchservice), [.net](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch)veya diğer desteklenen API 'leri kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.  Örneğin, [Autodesk Maya eklentisi](https://github.com/Azure/azure-batch-maya) Batch çağırmak, havuzları oluşturmak ve yönetmek, işleri ve görevleri göndermek ve durumu Izlemek Için Batch Python API 'sini kullanır.
+  * [Rest](/rest/api/batchservice), [.net](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch)veya diğer desteklenen API 'leri kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.  Örneğin, [Autodesk Maya eklentisi](https://github.com/Azure/azure-batch-maya) Batch çağırmak, havuzları oluşturmak ve yönetmek, işleri ve görevleri göndermek ve durumu Izlemek Için Batch Python API 'sini kullanır.
 * Komut satırı araçları:
-  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) , Batch kullanımına betik eklemek için kullanılabilir.
+  * [Azure komut satırı](/cli/azure/) veya [Azure PowerShell](/powershell/azure/overview) , Batch kullanımına betik eklemek için kullanılabilir.
   * Özellikle, Batch CLı şablonu desteği havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
 * Kullanıcı arabirimleri
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) , Batch hesaplarının yönetilmesine ve izlenmesine izin veren platformlar arası bir istemci aracıdır, ancak Azure Portal Kullanıcı arabirimine kıyasla daha zengin bazı yetenekler sağlar.  Desteklenen her uygulama için uyarlanmış bir havuz ve iş şablonları kümesi sağlanır ve kolayca havuzlar oluşturmak ve işleri göndermek için kullanılabilir.
@@ -95,9 +95,9 @@ Azure Batch kullanmanın birkaç yolu vardır ve bunların tümü Azure Batch i�
 
 Azure Batch işlemesini denemek için aşağıdaki giriş öğreticilerine bakın:
 
-* [Bir blender sahneyi işlemek için Batch Explorer kullanma](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Autodesk 3ds Max sahnesini işlemek için Batch CLı 'yi kullanma](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Bir blender sahneyi işlemek için Batch Explorer kullanma](./tutorial-rendering-batchexplorer-blender.md)
+* [Autodesk 3ds Max sahnesini işlemek için Batch CLı 'yi kullanma](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bu makaledeki](https://docs.microsoft.com/azure/batch/batch-rendering-applications)Azure Marketi VM görüntülerinde bulunan işleme uygulamalarının ve sürümlerinin listesini belirleme.
+[Bu makaledeki](./batch-rendering-applications.md)Azure Marketi VM görüntülerinde bulunan işleme uygulamalarının ve sürümlerinin listesini belirleme.

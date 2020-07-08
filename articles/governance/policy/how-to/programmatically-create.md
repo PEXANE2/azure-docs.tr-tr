@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682127"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969898"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makale, ilkeleri programlı olarak oluşturma ve yönetme konusunda size kıl
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -40,7 +40,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>PowerShell ile ilke tanımı oluşturma ve atama
 
-1. AuditStorageAccounts. JSON adlı bir JSON dosyası oluşturmak için aşağıdaki JSON kod parçacığını kullanın.
+1. AuditStorageAccounts.jsadında bir JSON dosyası oluşturmak için aşağıdaki JSON kod parçacığını kullanın.
 
    ```json
    {
@@ -63,7 +63,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
 
    İlke tanımı yazma hakkında daha fazla bilgi için bkz. [Azure Ilke tanımı yapısı](../concepts/definition-structure.md).
 
-1. AuditStorageAccounts. json dosyasını kullanarak bir ilke tanımı oluşturmak için aşağıdaki komutu çalıştırın.
+1. AuditStorageAccounts.jsdosyasını kullanarak bir ilke tanımı oluşturmak için aşağıdaki komutu çalıştırın.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
@@ -95,7 +95,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
    - Aboneliğiniz`/subscriptions/{subId}/`
    - Yönetim grubu-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Azure Resource Manager PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
+Kaynak Yöneticisi PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient kullanarak ilke tanımı oluşturma ve atama
 
