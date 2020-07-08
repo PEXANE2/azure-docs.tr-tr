@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74787345"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps sonraki eylemi çalıştırmayı geciktir
@@ -52,8 +51,8 @@ Bu eylemleri kullanmanın bazı örnek yolları aşağıda verilmiştir:
 
    | Özellik | JSON adı | Gerekli | Tür | Açıklama |
    |----------|-----------|----------|------|-------------|
-   | Sayı | count | Yes | Tamsayı | Geciktirime zaman birimi sayısı |
-   | Birim | unit | Yes | Dize | Zaman birimi, `Second`örneğin:, `Minute`, `Hour`, `Day`, veya `Week``Month` |
+   | Sayı | count | Evet | Tamsayı | Geciktirime zaman birimi sayısı |
+   | Birim | unit | Evet | Dize | Zaman birimi, örneğin: `Second` , `Minute` ,, `Hour` `Day` , `Week` veya`Month` |
    ||||||
 
 1. İş akışınızda çalıştırmak istediğiniz herhangi bir eylemi ekleyin.
@@ -78,7 +77,7 @@ Bu eylemleri kullanmanın bazı örnek yolları aşağıda verilmiştir:
 
    | Özellik | JSON adı | Gerekli | Tür | Açıklama |
    |----------|-----------|----------|------|-------------|
-   | Zaman damgası | timestamp | Yes | Dize | Şu biçimi kullanarak iş akışının sürdürülürken bitiş tarihi ve saati: <p>YYYY-MM-DDThh: mm: ssZ <p>Örneğin, 18 Eylül 2017, 2:00 PM 'de istiyorsanız, "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu zaman biçimi UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC boşluğu](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi olmadan sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. |
+   | Zaman damgası | timestamp | Evet | Dize | Şu biçimi kullanarak iş akışının sürdürülürken bitiş tarihi ve saati: <p>YYYY-MM-DDThh: mm: ssZ <p>Örneğin, 18 Eylül 2017, 2:00 PM 'de istiyorsanız, "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu zaman biçimi UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC boşluğu](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi olmadan sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. |
    ||||||
 
 1. İş akışınızda çalıştırmak istediğiniz herhangi bir eylemi ekleyin.

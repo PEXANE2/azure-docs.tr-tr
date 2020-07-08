@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873344"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL sorgularıyla çalışmaya başlama
@@ -23,7 +22,7 @@ Azure Cosmos DB SQL API hesapları, Yapılandırılmış Sorgu Dili (SQL) kullan
 
 ## <a name="upload-sample-data"></a>Örnek verileri karşıya yükle
 
-SQL API Cosmos DB hesabınızda adlı `Families`bir kapsayıcı oluşturun. Kapsayıcıda iki basit JSON öğesi oluşturun. Bu veri kümesini kullanarak Azure Cosmos DB sorgu docs ' de örnek sorguların çoğunu çalıştırabilirsiniz.
+SQL API Cosmos DB hesabınızda adlı bir kapsayıcı oluşturun `Families` . Kapsayıcıda iki basit JSON öğesi oluşturun. Bu veri kümesini kullanarak Azure Cosmos DB sorgu docs ' de örnek sorguların çoğunu çalıştırabilirsiniz.
 
 ### <a name="create-json-items"></a>JSON öğeleri oluşturma
 
@@ -52,7 +51,7 @@ Aşağıdaki kod, aileler hakkında iki basit JSON öğesi oluşturur. Andersen 
 }
 ```
 
-İkinci öğe `firstName` ve `lastName`yerine `givenName` ve `familyName` kullanır.
+İkinci öğe `givenName` `familyName` ve yerine ve kullanır `firstName` `lastName` .
 
 ```json
 {
@@ -88,7 +87,7 @@ Aşağıdaki kod, aileler hakkında iki basit JSON öğesi oluşturur. Andersen 
 
 Azure Cosmos DB SQL sorgu dilinin bazı önemli yönlerini anlamak için JSON verilerinde birkaç sorgu deneyin.
 
-Aşağıdaki sorgu, `id` alanın eşleştiği `AndersenFamily`öğeleri döndürür. `SELECT *` Sorgu olduğundan, sorgunun çıktısı tamamlanmış JSON öğesidir. Sözdizimi Seç hakkında daha fazla bilgi için bkz. [select deyimleri](sql-query-select.md). 
+Aşağıdaki sorgu, `id` alanın eşleştiği öğeleri döndürür `AndersenFamily` . `SELECT *`Sorgu olduğundan, sorgunun çıktısı tamamlanmış JSON öğesidir. Sözdizimi Seç hakkında daha fazla bilgi için bkz. [select deyimleri](sql-query-select.md). 
 
 ```sql
     SELECT *
@@ -118,7 +117,7 @@ Sorgu sonuçları şunlardır:
     }]
 ```
 
-Aşağıdaki sorgu JSON çıkışını farklı bir şekle yeniden biçimlendirir. Sorgu, seçili iki alana sahip `Family` yenı bir JSON nesnesi `Name` ve `City`adres şehri durum ile aynı olduğunda. "NY, NY" Bu durumda eşleşir.
+Aşağıdaki sorgu JSON çıkışını farklı bir şekle yeniden biçimlendirir. Sorgu, `Family` Seçili iki alana sahip yeni BIR JSON nesnesi `Name` ve `City` Adres şehri durum ile aynı olduğunda. "NY, NY" Bu durumda eşleşir.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -137,7 +136,7 @@ Sorgu sonuçları şunlardır:
     }]
 ```
 
-Aşağıdaki sorgu, aile içindeki alt öğelerin verilen tüm adlarını (şehre göre `id` sıralanmış `WakefieldFamily`olan) döndürür.
+Aşağıdaki sorgu, aile içindeki alt öğelerin verilen tüm adlarını ( `id` `WakefieldFamily` şehre göre sıralanmış olan) döndürür.
 
 ```sql
     SELECT c.givenName
@@ -160,7 +159,7 @@ Sonuçlar:
 
 Yukarıdaki örneklerde Cosmos DB sorgu dilinin çeşitli yönleri gösterilmektedir:  
 
-* SQL API 'SI JSON değerleri üzerinde çalıştığından, satırlar ve sütunlar yerine Ağaç şekilli varlıklarla ilgilenir. Ağaç düğümlerine, ANSI SQL `Node1.Node2.Node3…..Nodem` `<table>.<column>` ' in iki parçalı başvurusuna benzer şekilde herhangi bir rastgele derinlikte başvurabilirsiniz.
+* SQL API 'SI JSON değerleri üzerinde çalıştığından, satırlar ve sütunlar yerine Ağaç şekilli varlıklarla ilgilenir. Ağaç düğümlerine, `Node1.Node2.Node3…..Nodem` ANSI SQL ' in iki parçalı başvurusuna benzer şekilde herhangi bir rastgele derinlikte başvurabilirsiniz `<table>.<column>` .
 
 * Sorgu dili şeless verilerle çalıştığından, tür sistemi dinamik olarak bağlanmalıdır. Aynı ifade farklı öğelerde farklı türler sağlayabilir. Bir sorgunun sonucu geçerli bir JSON değeridir, ancak sabit bir şema olması garanti edilmez.  
 

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74766846"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
@@ -25,7 +24,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırın.
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portalındaki](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +37,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
 3. **Ölçüm uyarısı Ekle** (+ simgesi) seçeneğini belirleyin.
 
-4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gerekli bilgileri girin:
+4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gereken bilgileri doldurun:
 
    ![Ölçüm uyarısı formu Ekle](./media/howto-alert-on-metric/4-add-rule-form.png)
 

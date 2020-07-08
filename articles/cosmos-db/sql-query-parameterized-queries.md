@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870828"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB parametreli sorgular
@@ -19,7 +18,7 @@ Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip so
 
 ## <a name="examples"></a>Örnekler
 
-Örneğin, parametreleri `lastName` alan ve `address.state` olarak bir sorgu yazabilir ve kullanıcı girişine göre çeşitli değerleri `lastName` ve `address.state` bunları çalıştırabilirsiniz.
+Örneğin, parametreleri alan ve olarak bir sorgu yazabilir `lastName` `address.state` ve `lastName` Kullanıcı girişine göre çeşitli değerleri ve bunları çalıştırabilirsiniz `address.state` .
 
 ```sql
     SELECT *

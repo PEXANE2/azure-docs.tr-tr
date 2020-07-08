@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74782027"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight kümesi Yönetimi en iyi uygulamaları
@@ -58,7 +57,7 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 
 | Seçenek | Belgeler |
 |---|---|
-| Otomatik Ölçeklendirme | [Azure HDInsight kümelerini otomatik ölçeklendirme](./hdinsight-autoscale-clusters.md) |
+| Otomatik Ölçeklendirme | [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](./hdinsight-autoscale-clusters.md) |
 | El ile ölçeklendirme | [Azure HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md) |
 | Ambarı ile izleme| [Azure HDInsight 'ta küme performansını izleme](./hdinsight-key-scenarios-to-monitor.md) |
 | Azure Izleyici günlükleri ile izleme | [Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |

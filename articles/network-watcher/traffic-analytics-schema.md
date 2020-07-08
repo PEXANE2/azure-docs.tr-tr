@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666384"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Trafik Analizi şema ve veri toplama
@@ -96,7 +95,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 
 Şema içindeki alanlar ve bunların işaret ettikleri yer aşağıda listelenmiştir
 
-| Alan | Biçimlendir | Açıklamalar |
+| Alan | Biçim | Yorumlar |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Trafik Analizi verileri tablosu
 | SubType_s | FlowLog | Akış günlüklerinin alt türü. Yalnızca "FlowLog" kullanın, SubType_s diğer değerleri ürünün iç işleyişi içindir |
@@ -116,8 +115,8 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | L7Protocol_s  | Protokol adı | Hedef bağlantı noktasından türetilmiş |
 | FlowDirection_s | * I = gelen<br> * O = giden | Akış günlüğü başına NSG/çıkış akışı yönü |
 | FlowStatus_s  | * A = NSG kuralına Izin verilir <br> * D = NSG kuralı tarafından reddedildi  | Akış günlüğü başına NSG tarafından engellenen akışın durumu |
-| NSGList_s | \<SUBSCRIPTIONıD>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Flow ile ilişkili ağ güvenlik grubu (NSG) |
-| NSGRules_s | \<Dizin değeri 0) >\| \<NSG_RULENAME>\| \<akış yönü>\| \<Flow durumu>\| \<flowcount processedbyrule> |  Bu akışa izin verilen veya reddedilen NSG kuralı |
+| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Flow ile ilişkili ağ güvenlik grubu (NSG) |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  Bu akışa izin verilen veya reddedilen NSG kuralı |
 | NSGRule_s | NSG_RULENAME |  Bu akışa izin verilen veya reddedilen NSG kuralı |
 | NSGRuleType_s | * Kullanıcı tanımlı * varsayılan |   Akış tarafından kullanılan NSG kuralının türü |
 | MACAddress_s | MAC Adresi | Akışın yakalandığı NIC 'in MAC adresi |
@@ -127,23 +126,23 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | Region_s | Akıştaki IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin Azure bölgesi | Yalnızca FlowType = S2S, P2S, Azucumhuriyeti, ExternalPublic, MaliciousFlow ve UnknownPrivate akış türleri için geçerlidir (yalnızca bir tarafın Azure olduğu akış türleri) |
 | Region1_s | Azure Bölgesi | Akıştaki kaynak IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin Azure bölgesi |
 | Region2_s | Azure Bölgesi | Akıştaki hedef IP 'nin ait olduğu sanal ağın Azure bölgesi |
-| NIC_s | \<resourcegroup_Name>\/ \<networkarabirimadı> |  Trafiği gönderen veya alan VM ile ilişkilendirilen NIC |
-| NIC1_s | <resourcegroup_Name>/\<networkarabirimadı> | Akıştaki kaynak IP ile ilişkili NIC |
-| NIC2_s | <resourcegroup_Name>/\<networkarabirimadı> | Akıştaki hedef IP ile ilişkili NIC |
-| VM_s | <resourcegroup_Name>\/ \<networkarabirimadı> | Ağ arabirimiyle ilişkili sanal makine NIC_s |
-| VM1_s | <resourcegroup_Name>/\<virtualmachinename> | Akıştaki kaynak IP ile ilişkili sanal makine |
-| VM2_s | <resourcegroup_Name>/\<virtualmachinename> | Akıştaki hedef IP ile ilişkili sanal makine |
-| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetname> | NIC_s ilişkili alt ağ |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetname> | Akıştaki kaynak IP ile ilişkili alt ağ |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetname>    | Akıştaki hedef IP ile ilişkili alt ağ |
-| ApplicationGateway1_s | \<SubscriptionID>/\<resourcegroupname>/\<applicationgatewayname> | Akıştaki kaynak IP ile ilişkili uygulama ağ geçidi |
-| ApplicationGateway2_s | \<SubscriptionID>/\<resourcegroupname>/\<applicationgatewayname> | Akıştaki hedef IP ile ilişkili uygulama ağ geçidi |
-| LoadBalancer1_s | \<SubscriptionID>/\<resourcegroupname>/\<loadbalancername> | Akıştaki kaynak IP ile ilişkili yük dengeleyici |
-| LoadBalancer2_s | \<SubscriptionID>/\<resourcegroupname>/\<loadbalancername> | Akıştaki hedef IP ile ilişkili yük dengeleyici |
-| LocalNetworkGateway1_s | \<SubscriptionID>/\<resourcegroupname>/\<localnetworkgatewayname> | Akıştaki kaynak IP ile ilişkili yerel ağ geçidi |
-| LocalNetworkGateway2_s | \<SubscriptionID>/\<resourcegroupname>/\<localnetworkgatewayname> | Akıştaki hedef IP ile ilişkili yerel ağ geçidi |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  Trafiği gönderen veya alan VM ile ilişkilendirilen NIC |
+| NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Akıştaki kaynak IP ile ilişkili NIC |
+| NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Akıştaki hedef IP ile ilişkili NIC |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | Ağ arabirimiyle ilişkili sanal makine NIC_s |
+| VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | Akıştaki kaynak IP ile ilişkili sanal makine |
+| VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | Akıştaki hedef IP ile ilişkili sanal makine |
+| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | NIC_s ilişkili alt ağ |
+| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Akıştaki kaynak IP ile ilişkili alt ağ |
+| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Akıştaki hedef IP ile ilişkili alt ağ |
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Akıştaki kaynak IP ile ilişkili uygulama ağ geçidi |
+| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Akıştaki hedef IP ile ilişkili uygulama ağ geçidi |
+| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Akıştaki kaynak IP ile ilişkili yük dengeleyici |
+| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Akıştaki hedef IP ile ilişkili yük dengeleyici |
+| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Akıştaki kaynak IP ile ilişkili yerel ağ geçidi |
+| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Akıştaki hedef IP ile ilişkili yerel ağ geçidi |
 | ConnectionType_s | Olası değerler Vneteşleme, VpnGateway ve ExpressRoute şeklindedir |    Bağlantı Türü |
-| ConnectionName_s | \<SubscriptionID>/\<resourcegroupname>/\<connectionName> | Bağlantı adı. FlowType P2S için bu, _ olarak <gateway name>biçimlendirilir<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Bağlantı adı. FlowType P2S için bu, _ olarak biçimlendirilir <gateway name><VPN Client IP> |
 | ConnectingVNets_s | Sanal ağ adlarının boşlukla ayrılmış listesi | Hub ve bağlı bileşen topolojisi söz konusu olduğunda, hub sanal ağları buraya doldurulacak |
 | Country_s | İki harfli ülke kodu (ISO 3166-1 Alpha-2) | ExternalPublic akış türü için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri aynı ülke kodunu paylaşacaktır |
 | AzureRegion_s | Azure bölge konumları | Akış türü Azucumhuriyet için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri Azure bölgesini paylaşacaktır |
@@ -157,9 +156,9 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | InboundBytes_d |  NSG kuralının uygulandığı ağ arabiriminde yakalanan bayt alındı | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
 | OutboundBytes_d | NSG kuralının uygulandığı ağ arabiriminde yakalanan olarak gönderilen bayt sayısı | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
 | CompletedFlows_d  |  | Bu, yalnızca NSG akış günlüğü şemasının 2. sürümü için sıfır olmayan değer ile doldurulur |
-| PublicIPs_s | <PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS \| \<>OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS \| \<>OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS \| \<>OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Çubuklar ile ayrılmış girişler |
 
 ### <a name="notes"></a>Notlar
 
@@ -174,7 +173,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 1. MaliciousFlow-IP adreslerinden biri Azure sanal ağına aittir, diğer IP adresi Azure 'da olmayan bir genel IP ve bu, "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki işleme aralığı için Trafik Analizi tüketen ASC akışlarında kötü amaçlı olarak bildirilir.
 1. UnknownPrivate-IP adreslerinden biri Azure sanal ağına aittir, ancak diğer IP adresleri, RFC 1918 ' de tanımlandığı şekilde özel IP aralığına aittir ve müşterinin sahip olduğu bir siteye veya Azure sanal ağına Trafik Analizi tarafından eşlenemedi.
 1. Bilinmiyor – akışlardaki IP adreslerinden birinin Azure 'daki müşteri topolojisi ile şirket içi (site) arasında eşleme yapılamıyor.
-1. Bazı alan adları s veya \_ \_d ile eklenir. Bunlar kaynak ve hedefi işaret etmez ancak sırasıyla veri türleri dize ve ondalık olduğunu gösterir.
+1. Bazı alan adları \_ s veya d ile eklenir \_ . Bunlar kaynak ve hedefi işaret etmez ancak sırasıyla veri türleri dize ve ondalık olduğunu gösterir.
 
 ### <a name="next-steps"></a>Sonraki Adımlar
 Sık sorulan soruların yanıtlarını almak için bkz. [Traffic ANALYTICS SSS](traffic-analytics-faq.md) , işlevlerle ilgili ayrıntıları görmek için bkz. [Trafik Analizi belgeleri](traffic-analytics.md)

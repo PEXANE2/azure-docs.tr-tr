@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 43d9a6adc935010eab6e5e52d73f2019c8afcf5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887191"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Azure Media Services ile canlı akış sunma
@@ -30,7 +29,7 @@ Microsoft Azure Media Services, istekleri başlatma işlemlerine Media Services 
 Media Services .NET SDK, isteği gönderen ve işlemin tamamlanmasını bekleyen API 'Ler sağlar (dahili olarak, API 'Ler bazı aralıklarda işlem ilerlemesini yoklamaktadır). Örneğin, kanalı çağırdığınızda. Start (), yöntem kanal başlatıldıktan sonra döndürülür. Zaman uyumsuz sürüm: await kanalını da kullanabilirsiniz. StartAsync () (görev tabanlı zaman uyumsuz model hakkında bilgi için bkz. [tap](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). İşlem isteği gönderen ve sonra işlem tamamlanana kadar durum yoklama yapan API 'Ler "yoklama yöntemleri" olarak adlandırılır. Bu Yöntemler (özellikle zaman uyumsuz sürüm) zengin istemci uygulamaları ve/veya durum bilgisi olmayan hizmetler için önerilir.
 
 Uygulamanın uzun süre çalışan bir http isteğini bekleyemez ve işlem ilerlemesini el ile yoklamak isteyen senaryolar vardır. Tipik bir örnek, durum bilgisi olmayan bir Web hizmetiyle etkileşime geçen bir tarayıcı olabilir: tarayıcı bir kanal oluşturmak istediğinde, Web hizmeti uzun süre çalışan bir işlem başlatır ve işlem KIMLIĞINI tarayıcıya döndürür. Böylece tarayıcı, Web hizmetinden KIMLIĞE göre işlem durumunu almasını isteyebilir. Media Services .NET SDK, bu senaryo için yararlı olan API 'Ler sağlar. Bu API 'Ler "yoklama dışı Yöntemler" olarak adlandırılır.
-"Yoklama dışı Yöntemler" Şu adlandırma düzenine sahiptir: gönderme*OperationName*işlemi (örneğin, SendCreateOperation). *OperationName*işlem yöntemlerini gönder **IOperation** nesnesini döndürür; döndürülen nesne, işlemi izlemek için kullanılabilecek bilgiler içerir. *OperationName*işlemkimliği operationasync yöntemleri, **görev\<IOperation>** döndürür.
+"Yoklama dışı Yöntemler" Şu adlandırma düzenine sahiptir: gönderme*OperationName*işlemi (örneğin, SendCreateOperation). *OperationName*işlem yöntemlerini gönder **IOperation** nesnesini döndürür; döndürülen nesne, işlemi izlemek için kullanılabilecek bilgiler içerir. *OperationName*operationasync yöntemleri gönderme **görevi \<IOperation> **.
 
 Şu anda aşağıdaki sınıflar yoklama dışı yöntemleri destekler: **Channel**, **streamingendpoint**ve **Program**.
 
@@ -213,6 +212,6 @@ Console.WriteLine(channelId);
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

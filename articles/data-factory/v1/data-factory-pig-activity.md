@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703202"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
@@ -41,7 +40,7 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 > [!NOTE] 
 > Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```JSON
 {
@@ -84,13 +83,13 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad |Etkinliğin adı |Yes |
+| name |Etkinliğin adı |Evet |
 | açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| type |HDinsightPig |Yes |
+| tür |HDinsightPig |Evet |
 | girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
-| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Yes |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
-| betiğini çalıştırın |Pig betiğini satır içi olarak belirt |Hayır |
+| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Evet |
+| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
+| betik |Pig betiğini satır içi olarak belirt |Hayır |
 | scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
 | tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
 

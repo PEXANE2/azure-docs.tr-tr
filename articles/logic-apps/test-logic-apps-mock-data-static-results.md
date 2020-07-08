@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74790269"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statik sonuçlar ayarlayarak sahte verilerle mantıksal uygulamaları test edin
@@ -48,13 +47,13 @@ Logic Apps 'i sınarken, çeşitli nedenlerle uygulamalar, hizmetler ve sistemle
       | Özellik | Açıklama |
       |----------|-------------|
       | **Durum** | Döndürülecek eylemin durumu |
-      | **Durum Kodu** | Döndürülecek belirli durum kodu |
+      | **Durum kodu** | Döndürülecek belirli durum kodu |
       | **Üst bilgiler** | Döndürülecek üst bilgi içeriği |
       |||
 
       !["Statik sonucu etkinleştir" i seçin](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      JavaScript nesne gösterimi (JSON) biçiminde sahte verileri girmek için **JSON moduna geç** ' i seçin (!["JSON moduna geç"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)' i seçin).
+      JavaScript Nesne Gösterimi (JSON) biçiminde sahte verileri girmek için **JSON moduna geç** ' i seçin ( ![ "JSON moduna geç" ' i seçin ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ).
 
    1. İsteğe bağlı özellikler için **isteğe bağlı alanları Seç** listesini açın ve sonra da, kullanmak istediğiniz özellikleri seçin.
 
@@ -62,7 +61,7 @@ Logic Apps 'i sınarken, çeşitli nedenlerle uygulamalar, hizmetler ve sistemle
 
 1. Kaydetmeye hazırsanız **bitti**' yi seçin.
 
-   Eylemin sağ üst köşesinde bulunan başlık çubuğu artık statik sonuçları etkinleştirdiğini belirten bir test Beaker simgesi (![statik sonuçlar](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)simgesi) gösterir.
+   Eylemin sağ üst köşesinde bulunan başlık çubuğu artık ![ ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) statik sonuçları etkinleştirdiğini belirten bir test Beaker simgesi (statik sonuçlar simgesi) gösterir.
 
    ![Etkin statik sonuçları gösteren simge](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
@@ -90,7 +89,7 @@ Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa
 
 1. **Statik sonuç** kutusu açıldıktan sonra, iki adımdan birini seçin:
 
-   * Bir JSON nesnesini tamamen yapıştırmak için **JSON moduna geç** ' i seçin (!["JSON moduna geç"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)' i seçin):
+   * Bir JSON nesnesini tamamen yapıştırmak için **JSON moduna geç** ' i seçin ( ![ "JSON moduna geç" ' i seçin ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ):
 
      ![Tüm nesne için "JSON moduna geç" i seçin](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
@@ -102,7 +101,7 @@ Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa
 
    ![JSON modu](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. İşiniz bittiğinde **Bitti**'yi seçin. Ya da tasarımcıya dönmek için **Düzenleyici modunu değiştir** ' i seçin (!["Düzenleyici modunu değiştir"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)i seçin).
+1. İşiniz bittiğinde **Bitti**'yi seçin. Ya da tasarımcıya dönmek için **Düzenleyici modunu değiştir** ' i seçin ( ![ "Düzenleyici modunu değiştir" i seçin ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ).
 
 <a name="find-runs-mock-data"></a>
 
@@ -120,7 +119,7 @@ Mantıksal uygulamanızın çalışma geçmişi, eylemlerin statik sonuçlar kul
 
 1. Statik sonuçlar kullanan eylemleri görüntülemek için, **statik sonuçlar** sütununun **etkin**olarak ayarlandığı, istediğiniz çalıştırmayı seçin.
 
-   Statik sonuçlar kullanan eylemler, test Beaker (![statik sonuçlar](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)simgesi) simgesini gösterir, örneğin:
+   Statik sonuçlar kullanan eylemler, test Beaker ( ![ statik sonuçlar simgesi ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ) simgesini gösterir, örneğin:
 
    ![Çalıştırma geçmişi-statik sonuçlar kullanan eylemler](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
@@ -128,11 +127,11 @@ Mantıksal uygulamanızın çalışma geçmişi, eylemlerin statik sonuçlar kul
 
 Statik sonuçları kapatmak, son kurulumdan değerleri oluşturmaz. Bu nedenle, bir sonraki sefer statik sonuçları açtığınızda önceki değerlerinizi kullanmaya devam edebilirsiniz.
 
-1. Statik çıkışları devre dışı bırakmak istediğiniz eylemi bulun. Eylemin sağ üst köşesinde, test Beaker simgesini (![statik sonuçlar](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)simgesi) seçin.
+1. Statik çıkışları devre dışı bırakmak istediğiniz eylemi bulun. Eylemin sağ üst köşesinde, test Beaker simgesini ( ![ statik sonuçlar simgesi ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ) seçin.
 
    ![Statik sonuçları devre dışı bırak](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1.  >  **Statik sonucu devre dışı bırak**seçeneğini**belirleyin.**
+1. **Statik sonucu devre dışı bırak**seçeneğini belirleyin  >  **Done**.
 
    ![Statik sonuçları devre dışı bırak](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

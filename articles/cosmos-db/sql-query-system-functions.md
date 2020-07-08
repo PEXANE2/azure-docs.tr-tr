@@ -8,10 +8,9 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870539"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Sistem işlevleri (Azure Cosmos DB)
@@ -33,7 +32,7 @@ ms.locfileid: "74870539"
 
 ## <a name="built-in-versus-ansi-sql-functions"></a>Yerleşik ANSI SQL işlevleri
 
-Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB işlevlerin şemasız ve karışık şema verileri ile sorunsuz çalışacak şekilde tasarlandıkları bir çalışmadır. Örneğin, bir özellik eksikse veya gibi `unknown`sayısal olmayan bir değer varsa, öğe bir hata döndürmek yerine atlanır.
+Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB işlevlerin şemasız ve karışık şema verileri ile sorunsuz çalışacak şekilde tasarlandıkları bir çalışmadır. Örneğin, bir özellik eksikse veya gibi sayısal olmayan bir değer varsa `unknown` , öğe bir hata döndürmek yerine atlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

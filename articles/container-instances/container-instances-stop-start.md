@@ -4,13 +4,12 @@ description: Azure Container Instances bir kapsayıcı grubunu el ile durdurmay�
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74533418"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances kapsayıcıları el ile durdurma veya başlatma
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları el ile durdurma veya başlatma
 
 Bir kapsayıcı grubunun [yeniden başlatma ilkesi](container-instances-restart-policy.md) ayarı, kapsayıcı örneklerinin varsayılan olarak nasıl başlatılacağını veya durdurulacağını belirler. Bir kapsayıcı grubunu el ile durdurarak veya başlatarak varsayılan ayarı geçersiz kılabilirsiniz.
 
@@ -24,7 +23,7 @@ Kapsayıcılar geri dönüştürüldüğünde, [kaynak](container-instances-cont
 
 Kapsayıcı grubu zaten sonlandırılırsa (başarılı veya başarısız durumdaysa) durdurma eylemi etkisizdir. Örneğin, başarıyla çalışan bir kez çalıştırılan kapsayıcı görevi olan bir kapsayıcı grubu başarılı durumunda sonlandırılır. Bu durumda grubu durdurma girişimleri durumu değiştirmez. 
 
-## <a name="start"></a>Başlat
+## <a name="start"></a>Başlangıç
 
 Bir kapsayıcı grubu durdurulduğunda-kapsayıcılar kendi üzerinde sonlandırıldığı ya da grubu el ile durdurduğu için kapsayıcıları başlatabilirsiniz. Örneğin, gruptaki kapsayıcıları el ile başlatmak için [az Container start][az-container-start] komutunu veya Azure Portal kullanın. Herhangi bir kapsayıcının kapsayıcı görüntüsü güncelleştirilirse yeni bir görüntü çekilir. 
 
@@ -34,7 +33,7 @@ Bir kapsayıcı grubundaki tüm kapsayıcılar bu eylem tarafından başlatılı
 
 Bir kapsayıcı grubunu el ile başlattıktan veya yeniden başlattıktan sonra kapsayıcı grubu, yapılandırılan yeniden başlatma ilkesine göre çalışır.
   
-## <a name="restart"></a>Yeniden Başlatma
+## <a name="restart"></a>Yeniden başlat
 
 Bir kapsayıcı grubunu çalışırken yeniden başlatabilirsiniz; Örneğin, [az Container Restart][az-container-restart] komutunu kullanarak. Bu eylem kapsayıcı grubundaki tüm kapsayıcıları yeniden başlatır. Herhangi bir kapsayıcının kapsayıcı görüntüsü güncelleştirilirse yeni bir görüntü çekilir. 
 

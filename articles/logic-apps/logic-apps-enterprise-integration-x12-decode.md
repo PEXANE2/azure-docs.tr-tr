@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792361"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack Azure Logic Apps içindeki x12 iletilerinin kodunu çözme
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te X12 iletilerinin kodunu çözme
 
-Kod çözme x12 ileti Bağlayıcısı ile, bir ticaret ortağı anlaşmasıyla ilgili olarak zarfı doğrulayabilir, EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, değişiklikleri işlem kümelerine bölebilir veya işlenen işlemler için bildirimler oluşturabilirsiniz. Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
+Kod Çözme X12 ileti bağlayıcısıyla zarfı ticari ortak sözleşmesiyle doğrulayabilir, EDI ve iş ortağına özgü özellikleri doğrulayabilir, değişimleri işlem kümelerine ayırabilir veya değişimlerin tamamını koruyabilir ve yapılan işlemler için onaylar oluşturabilirsiniz. Bu bağlayıcıyı kullanmak için bunu mantıksal uygulamanızdaki tetikleyicilerden birine eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -71,7 +70,7 @@ Kod çözme x12 ileti Bağlayıcısı ile, bir ticaret ortağı anlaşmasıyla i
    >
 
 
-## <a name="x12-decode-details"></a>X12 kod çözme ayrıntıları
+## <a name="x12-decode-details"></a>X12 Kod Çözme Ayrıntıları
 
 X12 kod çözme Bağlayıcısı şu görevleri gerçekleştirir:
 
@@ -88,13 +87,13 @@ X12 kod çözme Bağlayıcısı şu görevleri gerçekleştirir:
   * İşlem kümesi denetim numarasını bu gruptaki diğer işlem kümesi denetim numaralarına karşı denetler.
 * Değişimi işlem kümelerine böler veya tüm değişimi korur:
   * Değişimi işlem kümeleri olarak Böl-hata durumunda işlem kümelerini askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  X12 kod çözme eylemi yalnızca doğrulama `badMessages`başarısız olan işlem kümelerini çıkış yapar ve kalan işlem kümelerini olarak `goodMessages`verir.
+  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi işlem kümeleri olarak Böl-hata durumunda değişimi askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak `badMessages`çıkarır.
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` .
   * Değiş tokuş etme-işlem kümelerini askıya alma hata durumunda: değişimi koruma ve toplu tüm değişimi işleme. 
-  X12 kod çözme eylemi yalnızca doğrulama `badMessages`başarısız olan işlem kümelerini çıkış yapar ve kalan işlem kümelerini olarak `goodMessages`verir.
+  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi koru-hata durumunda değişimi askıya al: değişimi koruma ve toplu tüm değişimi işleme. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak `badMessages`çıkarır. 
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` . 
 * Bir teknik ve/veya Işlevsel onay üretir (yapılandırıldıysa).
   * Teknik bildirim, üst bilgi doğrulamanın sonucu olarak oluşturulur. Teknik bildirim, bir değişim üst bilgisinin işleme durumunu ve adres alıcısının artbilgisini bildirir.
   * Işlevsel bir bildirim, gövde doğrulamanın sonucu olarak oluşturulur. Alınan belgeyi işlerken işlevsel bildirim, karşılaşılan her hatayı raporlar

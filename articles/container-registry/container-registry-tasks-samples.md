@@ -4,33 +4,32 @@ description: Kapsayıcı görüntülerini derlemek, çalıştırmak ve düzeltme
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456090"
 ---
 # <a name="acr-tasks-samples"></a>ACR görevleri örnekleri
 
-Bu makale, birkaç `task.yaml` [Azure Container Registry görevi](container-registry-tasks-overview.md) (ACR görevi) senaryosu için örnek dosyalara ve ilişkili dockerfiles 'a bağlantı sağlar. 
+Bu makale `task.yaml` , birkaç [Azure Container Registry görevi](container-registry-tasks-overview.md) (ACR görevi) senaryosu için örnek dosyalara ve Ilişkili dockerfiles 'a bağlantı sağlar. 
 
 Daha fazla örnek için bkz. [Azure örnekleri][task-examples] deposu.
 
 ## <a name="scenarios"></a>Senaryolar
 
-* **Build Image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Görüntü oluştur**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Kapsayıcıyı** - Çalıştır[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
+* **Kapsayıcıyı Çalıştır**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
 
-* **Derleme ve anında iletme görüntüsü** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* Görüntü oluşturma ve **gönderme**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Build ve Run Image** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* Görüntü oluşturma ve **çalıştırma**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Birden çok görüntü** -  oluşturun ve gönderin[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Birden çok görüntü**  -   oluşturma ve gönderme [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Paralel** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile) 'da görüntü oluşturma ve test etme
+* **Görüntüleri paralel**  -   olarak oluşturma ve test etme [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Birden çok kayıt defterlerine** - görüntü oluşturun ve bunları gönderin[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
+* **Birden çok kayıt defterlerine**  -  görüntü oluşturma ve gönderme [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

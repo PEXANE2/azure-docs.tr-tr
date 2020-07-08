@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74848655"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server Active Directory için Azure AD parola korumasını zorunlu tutma
@@ -87,7 +86,7 @@ Azure AD parola korumasının bir Active Directory ormanında dağıtılması i�
 
 Active Directory ormanı ve bir orman içindeki tüm dağıtılan proxy hizmetleri aynı kiracıya kaydedilmelidir. Bu ormanda farklı Azure AD kiracılarına Kaydolmakta olan bir Active Directory ormanı veya herhangi bir proxy hizmeti olması desteklenmez. Yanlış yapılandırılmış bir dağıtımın belirtileri, parola ilkelerini indirimeme ' yı içerir.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndir
 
 Azure AD parola koruması için gereken iki aracı yükleyicisi, [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nden edinilebilir.
 

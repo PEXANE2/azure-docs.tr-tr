@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792477"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack tümleştirme hesaplarında yapıt meta verilerini yönetme
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack ile tümleştirme hesaplarındaki yapıt meta verilerini yönetme
 
-Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve mantıksal uygulamanızın kullanması için çalışma zamanı sırasında bu meta verileri alabilirsiniz. Örneğin, iş ortakları, sözleşmeler, şemalar ve haritalar gibi yapılar için meta veriler, anahtar-değer çiftleri kullanarak tüm mağaza meta verileri sağlayabilirsiniz. 
+Tümleştirme hesaplarında yapıtlar için özel meta veriler tanımlayabilir ve bu meta verileri çalışma zamanında alarak mantıksal uygulamanızda kullanabilirsiniz. Örneğin, iş ortakları, sözleşmeler, şemalar ve haritalar gibi yapılar için meta veriler, anahtar-değer çiftleri kullanarak tüm mağaza meta verileri sağlayabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -26,7 +25,7 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 * Meta veri eklemek istediğiniz yapıtlara sahip temel bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , örneğin: 
 
   * [İş Ortağı](logic-apps-enterprise-integration-partners.md)
-  * [Öz](logic-apps-enterprise-integration-agreements.md)
+  * [Sözleşme](logic-apps-enterprise-integration-agreements.md)
   * [Şema](logic-apps-enterprise-integration-schemas.md)
   * [Harita](logic-apps-enterprise-integration-maps.md)
 
@@ -53,7 +52,7 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 
 1. Azure portal, istediğiniz tümleştirme hesabıyla bağlantılı mantıksal uygulamayı açın. 
 
-1. Mantıksal uygulama Tasarımcısı ' nda, iş akışındaki tetikleyici veya son eylem altında meta veri alma adımını ekliyorsanız **yeni adım** > **Eylem Ekle**' yi seçin. 
+1. Mantıksal uygulama Tasarımcısı ' nda, iş akışındaki tetikleyici veya son eylem altında meta veri alma adımını ekliyorsanız **yeni adım**  >  **Eylem Ekle**' yi seçin. 
 
 1. Arama kutusuna "tümleştirme hesabı" yazın. Arama kutusunda **Tümü**' ni seçin. Eylemler listesinden şu eylemi seçin: **tümleştirme hesabı yapıt arama-tümleştirme hesabı**
 
@@ -63,8 +62,8 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 
    | Özellik | Gerekli | Değer | Açıklama | 
    |----------|---------|-------|-------------| 
-   | **Yapıt türü** | Yes | **Şema**, **eşleme**, **iş ortağı**, **anlaşma**veya özel bir tür | İstediğiniz yapıtın türü | 
-   | **Yapıt adı** | Yes | <*yapıt-adı*> | İstediğiniz yapıt adı | 
+   | **Yapıt türü** | Evet | **Şema**, **eşleme**, **iş ortağı**, **anlaşma**veya özel bir tür | İstediğiniz yapıtın türü | 
+   | **Yapıt adı** | Evet | <*yapıt-adı*> | İstediğiniz yapıt adı | 
    ||| 
 
    Örneğin, bir ticaret ortağı yapıtı için meta verileri almak istediğinizi varsayalım:
@@ -81,14 +80,14 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 
    1. Yönetmek istediğiniz yapıt meta verileri için bilgi sağlayın. 
 
-      Örneğin, bu konunun önceki kısımlarında eklenen `routingUrl` meta verileri almak istediğinizi varsayalım. Belirtebileceğiniz özellik değerleri şunlardır: 
+      Örneğin, `routingUrl` Bu konunun önceki kısımlarında eklenen meta verileri almak istediğinizi varsayalım. Belirtebileceğiniz özellik değerleri şunlardır: 
 
       | Özellik | Gerekli | Değer | Açıklama | 
       |----------|----------|-------|-------------| 
-      | **Yöntem** | Yes | <*işlem-çalıştırma*> | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
-      | **URI** | Yes | <*meta veri-konum*> | Alınan yapıtın `routingUrl` meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Yöntem** | Evet | <*işlem-çalıştırma*> | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
+      | **URI** | Evet | <*meta veri-konum*> | `routingUrl`Alınan yapıtın meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **Üst bilgiler** | Hayır | <*üst bilgi-değerler*> | HTTP eylemine geçirmek istediğiniz tetikleyiciden gelen üst bilgi çıkışları. Örneğin, tetikleyicinin `headers` özellik değerini geçirmek için: bir ifade kullanabilirsiniz, örneğin: <p>`@triggeroutputs()['headers']` | 
-      | **Gövde** | Hayır | <*gövde-içerik*> | HTTP eyleminin `body` özelliğinden geçmesini istediğiniz diğer içerikler. Bu örnek, yapıt `properties` değerlerini HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması**altında **Özellikler**' i seçin. | 
+      | **Gövde** | Hayır | <*gövde-içerik*> | HTTP eyleminin özelliğinden geçmesini istediğiniz diğer içerikler `body` . Bu örnek, yapıt `properties` DEğERLERINI HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması**altında **Özellikler**' i seçin. | 
       |||| 
 
       Örneğin:

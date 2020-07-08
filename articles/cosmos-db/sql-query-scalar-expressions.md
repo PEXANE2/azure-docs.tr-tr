@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870743"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL sorgularında skaler ifadeler
 
 [Select yan tümcesi](sql-query-select.md) skaler ifadeleri destekler. Skaler bir ifade, tek bir değer elde etmek için değerlendirilebilen bir sembol ve işleç birleşimidir. Skalar ifade örnekleri şunlardır: sabitler, özellik başvuruları, dizi öğesi başvuruları, diğer ad başvuruları veya işlev çağrıları. Skalar ifadeler, işleçler kullanılarak karmaşık ifadelerle birleştirilebilir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql  
 <scalar_expression> ::=  
@@ -46,7 +45,7 @@ ms.locfileid: "74870743"
   
 ```
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 - `<constant>`  
   
@@ -54,7 +53,7 @@ ms.locfileid: "74870743"
   
 - `input_alias`  
   
-   `FROM` Yan tümcesinde `input_alias` tanıtılan tarafından tanımlanan bir değeri temsil eder.  
+   Yan tümcesinde tanıtılan tarafından tanımlanan bir değeri temsil eder `input_alias` `FROM` .  
   Bu değerin **tanımsız** olmaması garanti edilir – girişte**tanımsız** değerler atlanır.  
   
 - `<scalar_expression>.property_name`  
@@ -63,7 +62,7 @@ ms.locfileid: "74870743"
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Bir dizinin diziniyle `property_name` `array_index` birlikte Name veya Array öğesi olan bir özelliğin değerini temsil eder. Özellik/dizi dizini yoksa veya nesne/dizi olmayan bir değer üzerinde özelliğe/dizi dizinine başvuruluyorsa, ifade tanımsız değer olarak değerlendirilir.  
+   `property_name`Bir dizinin diziniyle birlikte Name veya Array öğesi olan bir özelliğin değerini temsil eder `array_index` . Özellik/dizi dizini yoksa veya nesne/dizi olmayan bir değer üzerinde özelliğe/dizi dizinine başvuruluyorsa, ifade tanımsız değer olarak değerlendirilir.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -95,7 +94,7 @@ ms.locfileid: "74870743"
   
 - `parameter_name`  
   
-   Belirtilen parametre adının bir değerini temsil eder. Parametre adlarının ilk karakter olarak tek \@ bir olması gerekir.  
+   Belirtilen parametre adının bir değerini temsil eder. Parametre adlarının ilk karakter olarak tek bir olması gerekir \@ .  
   
 ## <a name="remarks"></a>Açıklamalar
   
@@ -143,4 +142,4 @@ Sonuçlar:
 
 - [Azure Cosmos DB giriş](introduction.md)
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Alt](sql-query-subquery.md)
+- [Alt Sorgular](sql-query-subquery.md)

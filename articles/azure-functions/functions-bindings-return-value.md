@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74480582"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
@@ -20,13 +19,13 @@ Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functi
 
 * C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
 * Java 'da, çıkış bağlama ek açıklamasını Function yöntemine uygulayın.
-* Diğer dillerde, `name` *function. JSON* içindeki özelliğini olarak `$return`ayarlayın.
+* Diğer dillerde, `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` .
 
 Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
-C# ve C# komut dosyasında, çıkış bağlamalarına veri göndermenin alternatif yolları `out` parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
+C# ve C# komut dosyasında, çıkış bağlamalarına veri göndermenin alternatif yolları `out` Parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıda, bir çıkış bağlaması için dönüş değerini kullanan ve ardından zaman uyumsuz bir örnek olan C# kodu verilmiştir:
 
@@ -54,7 +53,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
+Dosyadaki *function.js* çıktı bağlaması aşağıda verilmiştir:
 
 ```json
 {
@@ -87,7 +86,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
+Dosyadaki *function.js* çıktı bağlaması aşağıda verilmiştir:
 
 ```json
 {
@@ -109,7 +108,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
+Dosyadaki *function.js* çıktı bağlaması aşağıda verilmiştir:
 
 ```json
 {
@@ -120,7 +119,7 @@ Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 }
 ```
 
-JavaScript 'te, dönüş değeri için `context.done`ikinci parametreye gider:
+JavaScript 'te, dönüş değeri için ikinci parametreye gider `context.done` :
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +131,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
+Dosyadaki *function.js* çıktı bağlaması aşağıda verilmiştir:
 
 ```json
 {

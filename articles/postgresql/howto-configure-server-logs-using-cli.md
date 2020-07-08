@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763581"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLı kullanarak sunucu günlüklerini yapılandırma ve erişme
@@ -25,7 +24,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Sunucuyu sorgu günlüklerine ve hata günlüklerine erişecek şekilde yapılandırabilirsiniz. Hata günlükleri otomatik vakum, bağlantı ve denetim noktası bilgilerine sahip olabilir.
 1. Günlüğe kaydetmeyi açın.
-2. Sorgu günlüğünü etkinleştirmek için **\_log ifadesini** ve **günlük\_\_min Duration\_ifadesini**güncelleştirin.
+2. Sorgu günlüğünü etkinleştirmek için **log \_ ifadesini** ve **günlük \_ Min \_ Duration \_ ifadesini**güncelleştirin.
 3. Güncelleştirme bekletme süresi.
 
 Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirme](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +32,7 @@ Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirm
 ## <a name="list-logs"></a>Günlükleri Listele
 Sunucunuzun kullanılabilir günlük dosyalarını listelemek için [az Postgres Server-Logs List](/cli/azure/postgres/server-logs) komutunu çalıştırın.
 
-Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük\_dosyaları\_List. txt**adlı bir metin dosyasına yönlendirin.
+Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük \_ dosyaları \_list.txt**adlı bir metin dosyasına yönlendirin.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

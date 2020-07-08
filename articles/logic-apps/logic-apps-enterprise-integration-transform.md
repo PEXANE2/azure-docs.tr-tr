@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792385"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps biçimler arasında XML dönüştüren haritalar oluşturma
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te XML biçimini dönüştüren eşlemeler oluşturma
 
-Enterprise Integration Transform Bağlayıcısı, verileri bir biçimden başka bir biçime dönüştürür. Örneğin, YearMonthDay biçimindeki geçerli tarihi içeren bir gelen iletiniz olabilir. Tarihleri MonthDayYear biçiminde olacak şekilde yeniden biçimlendirmek için bir dönüşüm kullanabilirsiniz.
+Kurumsal tümleştirme Dönüşüm bağlayıcısı, verileri bir biçimden başka bir biçime dönüştürür. Örneğin günün tarihini YearMonthDay biçiminde içeren bir gelen ileti olabilir. Dönüşüm kullanarak bu tarihin MonthDayYear biçiminde olmasını sağlayabilirsiniz.
 
 ## <a name="what-does-a-transform-do"></a>Dönüştürme ne yapar?
 Eşleme olarak da bilinen bir dönüşüm, kaynak XML şemasından (giriş) ve hedef XML şemasından (çıktı) oluşur. Dize işlemeleri, koşullu atamalar, aritmetik ifadeler, tarih saat formatları ve hatta döngü yapıları dahil olmak üzere verileri düzenlemeye veya denetlemeye yardımcı olması için farklı yerleşik işlevleri kullanabilirsiniz.
@@ -47,7 +46,7 @@ Artık önkoşulları karşıladığınıza göre, mantıksal uygulamanızı olu
 6. Dönüştürmek istediğiniz XML **içeriğini** ekleyin. HTTP isteğinde aldığınız XML verilerini **içerik**olarak kullanabilirsiniz. Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteğinin gövdesini seçin.
 
    > [!NOTE]
-   > **Transform XML** içeriğinin XML olduğundan emin olun. İçerik XML 'de değilse veya Base64 kodlamalı ise, içeriği işleyen bir ifade belirtmeniz gerekir. Örneğin, içeriği kod çözme veya ```@xml``` içeriği XML olarak ```@base64ToBinary``` işleme gibi [işlevleri](logic-apps-workflow-definition-language.md#functions)kullanabilirsiniz.
+   > **Transform XML** içeriğinin XML olduğundan emin olun. İçerik XML 'de değilse veya Base64 kodlamalı ise, içeriği işleyen bir ifade belirtmeniz gerekir. Örneğin, [functions](logic-apps-workflow-definition-language.md#functions) ```@base64ToBinary``` içeriği kod çözme veya ```@xml``` içeriği XML olarak işleme gibi işlevleri kullanabilirsiniz.
  
 
 7. Dönüştürmeyi gerçekleştirmek için kullanmak istediğiniz **haritanın** adını seçin. Eşleme, tümleştirme hesabınızda zaten olmalıdır. Önceki bir adımda, mantıksal uygulama erişiminizi eşlemenizi içeren tümleştirme hesabınıza zaten verdin.      
@@ -84,7 +83,7 @@ Dönüştürme eylemi, dış derlemeye yönelik başvuru ile haritaları veya d�
     * **ad** özel derleme adıdır.
     * **ad alanı** , derlemeinizdeki özel kodu içeren ad alanıdır.
 
-  Bu örnekte, "XslUtilitiesLib" adlı bir derlemeye başvuran ve derlemeden `circumreference` yöntemi çağıran bir harita gösterilmektedir.
+  Bu örnekte, "XslUtilitiesLib" adlı bir derlemeye başvuran ve derlemeden yöntemi çağıran bir harita gösterilmektedir `circumreference` .
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -111,7 +110,7 @@ Dönüştürme eylemi, dış derlemeye yönelik başvuru ile haritaları veya d�
 
 
 ### <a name="byte-order-mark"></a>Bayt sıra Işareti
-Varsayılan olarak, dönüşümden gelen yanıt bayt sıra Işaretiyle (BOM) başlar. Bu işlevselliğe yalnızca kod görünümü düzenleyicisinde çalışırken erişebilirsiniz. Bu işlevi devre dışı bırakmak için `disableByteOrderMark` , `transformOptions` özelliği için şunu belirtin:
+Varsayılan olarak, dönüşümden gelen yanıt bayt sıra Işaretiyle (BOM) başlar. Bu işlevselliğe yalnızca kod görünümü düzenleyicisinde çalışırken erişebilirsiniz. Bu işlevi devre dışı bırakmak için, `disableByteOrderMark` özelliği için şunu belirtin `transformOptions` :
 
 ```json
 "Transform_XML": {

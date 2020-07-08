@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74895785"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetri  
@@ -80,7 +79,7 @@ PartitionKey|{Hesap KIMLIĞI} _ {varlık KIMLIĞI}|e49bef329c29495f9b95709896820
 RowKey|{saniye-gece yarısı} _ {rastgele değer}|01688_00199<br/><br/>Satır anahtarı, bir bölüm içinde ilk n stil sorgusuna izin vermek için saniye cinsinden gece yarısına kadar başlar. Daha fazla bilgi için [bu makaleye](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) bakın. 
 Zaman damgası|Tarih/Saat|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Telemetri verileri sağlayan varlığın türü|Channel/StreamingEndpoint/Arşivi<br/><br/>Olay türü yalnızca bir dize değeridir.
-Adı|Telemetri olayının adı|Channelsinyal/StreamingEndpointRequestLog
+Name|Telemetri olayının adı|Channelsinyal/StreamingEndpointRequestLog
 ObservedTime|Telemetri olayının gerçekleştiği zaman (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Gözlemlenen zaman, telemetri gönderen varlık tarafından sağlanır (örneğin bir kanal). Bu değerin yaklaşık olması için bileşenler arasında zaman eşitleme sorunları olabilir
 ServiceId|{hizmet KIMLIĞI}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Varlığa özgü özellikler|Olay tarafından tanımlanan şekilde|StreamName: STREAM1, bit hızı 10123,...<br/><br/>Kalan özellikler, belirtilen olay türü için tanımlanmıştır. Azure tablo içeriği anahtar değer çiftleridir.  (diğer bir deyişle, tablodaki farklı satırların farklı özellik kümeleri vardır).
@@ -101,7 +100,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Streammingendpoint
-Adı|Adı|Streammingendpointrequestlog
+Name|Name|Streammingendpointrequestlog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Ana bilgisayar adı|Uç noktanın ana bilgisayar adı|builddemoserver.origin.mediaservices.windows.net
@@ -120,7 +119,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Kanal
-Adı|Adı|Channelsinyal
+Name|Name|Channelsinyal
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Video/ses/metin izleme türü|video/ses
@@ -145,7 +144,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Arşiv
-Adı|Adı|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Program URL 'si|varlık-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM
@@ -220,6 +219,6 @@ Telemetri sistemi, veri saklama yönetimi sağlamaz veya eski kayıtları otomat
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

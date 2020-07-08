@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703378"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory 'de Hadoop akışı etkinliğini kullanarak verileri dönüştürme
@@ -44,7 +43,7 @@ Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight
 > Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="json-sample"></a>JSON örneği
-HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır. 
+HDInsight kümesi, örnek programlarla (wc.exe ve cat.exe) ve verilerle (davinci.txt) otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır. 
 
 ```JSON
 {
@@ -96,11 +95,11 @@ Aşağıdaki noktalara dikkat edin:
 
 1. **Linkedservicename** ' i, akış MapReduce Işinin çalıştırıldığı HDInsight kümenize işaret eden bağlı hizmetin adı olarak ayarlayın.
 2. Etkinliğin türünü **hdınsightstreaming**olarak ayarlayın.
-3. **Eşleyici** özelliği için Eşleyici yürütülebilirinin adını belirtin. Örnekte, Cat. exe Eşleyici yürütülebilirdir.
-4. **Reducer** özelliği için Reducer yürütülebilir dosyasının adını belirtin. Örnekte, WC. exe, Reducer çalıştırılabilir.
-5. **Giriş** türü özelliği için Eşleyici için giriş dosyasını (konum dahil) belirtin. Örnek: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample blob kapsayıcısıdır, example/Data/Gutenberg klasörüdür ve DaVinci. txt blob olur.
+3. **Eşleyici** özelliği için Eşleyici yürütülebilirinin adını belirtin. Örnekte, cat.exe Eşleyici çalıştırılabilir dosyadır.
+4. **Reducer** özelliği için Reducer yürütülebilir dosyasının adını belirtin. Örnekte, Reducer çalıştırılabilir wc.exe.
+5. **Giriş** türü özelliği için Eşleyici için giriş dosyasını (konum dahil) belirtin. Örnek: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` : adfsample blob kapsayıcısıdır, example/Data/Gutenberg klasörüdür ve davinci.txt blob olur.
 6. **Çıktı** türü özelliği için, Reducer için çıkış dosyasını (konum dahil) belirtin. Hadoop akış işinin çıktısı, bu özellik için belirtilen konuma yazılır.
-7. **FilePaths** bölümünde Eşleyici ve Reducer Yürütülebilirler için yolları belirtin. Örnek: "adfsample/example/Apps/WC. exe", adfsample blob kapsayıcısıdır, örnek/uygulamalar klasördür ve WC. exe yürütülebilir bir dosyadır.
+7. **FilePaths** bölümünde Eşleyici ve Reducer Yürütülebilirler için yolları belirtin. Örnek: "adfsample/örnek/uygulamalar/wc.exe", adfsample blob kapsayıcısıdır, örnek/uygulamalar klasördür ve wc.exe çalıştırılabilir.
 8. **Filelinkedservice** özelliği Için, filePaths bölümünde belirtilen dosyaları içeren Azure depolama 'yı temsil eden Azure depolama bağlı hizmetini belirtin.
 9. **Arguments** özelliği için akış işinin bağımsız değişkenlerini belirtin.
 10. **GetDebugInfo** özelliği, isteğe bağlı bir öğedir. Hata olarak ayarlandığında Günlükler yalnızca hata durumunda indirilir. Her zaman olarak ayarlandığında, yürütme durumu ne olursa olsun Günlükler her zaman indirilir.
@@ -176,7 +175,7 @@ Bu örnekteki işlem hattı herhangi bir giriş yapmaz. HDInsight akış etkinli
 ### <a name="pipeline"></a>İşlem hattı
 Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: **hdınsightstreaming**. 
 
-HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır.  
+HDInsight kümesi, örnek programlarla (wc.exe ve cat.exe) ve verilerle (davinci.txt) otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır.  
 
 ```JSON
 {

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232750"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler sürüm oluşturma (Azure Işlevleri)
@@ -35,7 +34,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Bu uyarlaması işlevi, **foo** 'ın sonuçlarını alır ve **çubuğa**geçirir. Daha geniş bir sonuç değerini desteklemek için **foo** öğesinin dönüş değerini `bool` olarak `int` değiştirmemiz gerektiğini varsayalım. Sonuç şöyle görünür:
+Bu uyarlaması işlevi, **foo** 'ın sonuçlarını alır ve **çubuğa**geçirir. **Foo** `bool` `int` Daha geniş bir sonuç değerini desteklemek için foo öğesinin dönüş değerini olarak değiştirmemiz gerektiğini varsayalım. Sonuç şöyle görünür:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,9 +46,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Önceki C# örnekleri Dayanıklı İşlevler 2. x ' tir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı İşlevler 2. x ' tir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-Bu değişiklik Orchestrator işlevinin tüm yeni örnekleri için ince çalışır, ancak uçuş dışı örnekleri keser. Örneğin, bir düzenleme örneğinin adlı `Foo`bir işlevi çağırdığı, bir Boole değeri geri aldığı ve sonra kontrol noktalarının durumunu göz önünde bulundurun. Bu noktada imza değişikliği dağıtılırsa Checkpoint örneği, çağrısı devam ettiğinde ve yeniden yürütüldüğünde hemen başarısız olur `context.CallActivityAsync<int>("Foo")`. Bu hata, geçmiş tablosundaki sonuç, ancak yeni kod onu `bool` içine `int`serisini kaldırma girişiminde bulunduğu için oluşur.
+Bu değişiklik Orchestrator işlevinin tüm yeni örnekleri için ince çalışır, ancak uçuş dışı örnekleri keser. Örneğin, bir düzenleme örneğinin adlı bir işlevi çağırdığı `Foo` , bir Boole değeri geri aldığı ve sonra kontrol noktalarının durumunu göz önünde bulundurun. Bu noktada imza değişikliği dağıtılırsa Checkpoint örneği, çağrısı devam ettiğinde ve yeniden yürütüldüğünde hemen başarısız olur `context.CallActivityAsync<int>("Foo")` . Bu hata, geçmiş tablosundaki sonuç, `bool` ancak yeni kod onu içine serisini kaldırma girişiminde bulunduğu için oluşur `int` .
 
 Bu örnek, bir imza değişikliğinin varolan örnekleri bozulabileceği birçok farklı yönden yalnızca biridir. Genel olarak, bir Orchestrator 'ın bir işlevi çağırdığı şeklini değiştirmesi gerekiyorsa, değişikliğin sorunlu olması olasıdır.
 
@@ -85,9 +84,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Önceki C# örnekleri Dayanıklı İşlevler 2. x ' tir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı İşlevler 2. x ' tir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-Bu değişiklik, **foo** ve **Bar**arasında **SendNotification** öğesine yeni bir işlev çağrısı ekler. İmza değişikliği yok. Bu sorun, var olan bir örnek, **çubuğa**yapılan çağrıdan devam ettiğinde ortaya çıkar. Yeniden yürütme sırasında, **foo** öğesine yapılan özgün çağrı döndürülürse `true`, Orchestrator Replay, yürütme geçmişinde olmayan **SendNotification**öğesine çağrı yapılır. Sonuç olarak, dayanıklı görev çerçevesi, bir `NonDeterministicOrchestrationException` **çubuğa**çağrı görmediğinde **SendNotification** çağrısıyla karşılaştığından bir ile başarısız olur. , Vb. dahil `CreateTimer` `WaitForExternalEvent`olmak üzere "dayanıklı" API 'lerine çağrı eklenirken aynı tür bir sorun oluşabilir.
+Bu değişiklik, **foo** ve **Bar**arasında **SendNotification** öğesine yeni bir işlev çağrısı ekler. İmza değişikliği yok. Bu sorun, var olan bir örnek, **çubuğa**yapılan çağrıdan devam ettiğinde ortaya çıkar. Yeniden yürütme sırasında, **foo** öğesine yapılan özgün çağrı döndürülürse `true` , Orchestrator Replay, yürütme geçmişinde olmayan **SendNotification**öğesine çağrı yapılır. Sonuç olarak, dayanıklı görev çerçevesi, bir `NonDeterministicOrchestrationException` **çubuğa**çağrı görmediğinde **SendNotification** çağrısıyla karşılaştığından bir ile başarısız olur. , Vb. dahil olmak üzere "dayanıklı" API 'Lerine çağrı eklenirken aynı tür bir sorun oluşabilir `CreateTimer` `WaitForExternalEvent` .
 
 ## <a name="mitigation-strategies"></a>Risk azaltma stratejileri
 
@@ -116,11 +115,11 @@ Diğer bir seçenek de tüm uçuş örneklerini durdurmaktır. İç **Denetim ku
 
 * Tüm güncelleştirmeleri tamamen yeni işlevler olarak dağıtın ve var olan işlevleri olduğu gibi bırakın. Bu, yeni işlev sürümlerinin çağıranlarının aynı kurallara göre de güncelleştirilmeleri gerektiğinden, bu karmaşık olabilir.
 * Tüm güncelleştirmeleri, farklı bir depolama hesabıyla yeni bir işlev uygulaması olarak dağıtın.
-* İşlev uygulamasının yeni bir kopyasını aynı depolama hesabıyla, ancak güncelleştirilmiş `taskHub` bir adla dağıtın. Yan yana dağıtımlar önerilen tekniktir.
+* İşlev uygulamasının yeni bir kopyasını aynı depolama hesabıyla, ancak güncelleştirilmiş bir `taskHub` adla dağıtın. Yan yana dağıtımlar önerilen tekniktir.
 
 ### <a name="how-to-change-task-hub-name"></a>Görev hub 'ı adını değiştirme
 
-Görev hub 'ı *Host. JSON* dosyasında şu şekilde yapılandırılabilir:
+Görev hub 'ı dosyada *host.js* şu şekilde yapılandırılabilir:
 
 #### <a name="functions-1x"></a>İşlevler 1.x
 
@@ -144,7 +143,7 @@ Görev hub 'ı *Host. JSON* dosyasında şu şekilde yapılandırılabilir:
 }
 ```
 
-Dayanıklı İşlevler v1. x için varsayılan değer `DurableFunctionsHub`. Dayanıklı İşlevler v 2.0 'dan başlayarak, varsayılan görev hub 'ı adı, Azure 'daki işlev uygulama adı ile veya `TestHubName` Azure dışında çalışıyor.
+Dayanıklı İşlevler v1. x için varsayılan değer `DurableFunctionsHub` . Dayanıklı İşlevler v 2.0 'dan başlayarak, varsayılan görev hub 'ı adı, Azure 'daki işlev uygulama adı ile veya `TestHubName` Azure dışında çalışıyor.
 
 Tüm Azure depolama varlıkları `hubName` yapılandırma değerine göre adlandırılır. Görev merkezine yeni bir ad vererek uygulamanızın yeni sürümü için ayrı sıraların ve geçmiş tablosunun oluşturulmasını sağlarsınız. Ancak, işlev uygulaması, önceki görev hub 'ı adı altında oluşturulan düzenlemeler veya varlıklar için olayları işlemeyi durdurur.
 

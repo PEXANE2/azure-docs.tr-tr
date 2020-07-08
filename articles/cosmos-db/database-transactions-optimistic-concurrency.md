@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74806533"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>İşlemler ve iyimser eşzamanlılık denetimi
@@ -20,7 +19,7 @@ Veritabanı işlemleri, verilerdeki eşzamanlı değişikliklerle başa çıkmak
 
 Azure Cosmos DB veritabanı altyapısı, anlık görüntü yalıtımıyla tam ACID (Atomicity, tutarlılık, yalıtım, dayanıklılık) uyumlu işlemleri destekler. Bir kapsayıcının [mantıksal bölümünün](partition-data.md) kapsamındaki tüm veritabanı işlemleri, Bölüm çoğaltması tarafından barındırılan veritabanı altyapısında işlem içinde yürütülür. Bu işlemler hem yazma (mantıksal bölümün içindeki bir veya daha fazla öğeyi güncelleştirme) hem de okuma işlemlerini içerir. Aşağıdaki tabloda farklı işlemler ve işlem türleri gösterilmektedir:
 
-| **İşlem**  | **İşlem Türü** | **Tek veya çoklu öğe Işlemi** |
+| **İşlem**  | **İşlem türü** | **Tek veya çoklu öğe Işlemi** |
 |---------|---------|---------|
 | Ekle (ön/son tetikleyici olmadan) | Yazma | Tek öğe işlemi |
 | Insert (bir ön/son tetikleyici ile) | Yazma ve okuma | Çoklu öğe işlemi |
@@ -53,9 +52,9 @@ Doğrudan veritabanı altyapısının içinde JavaScript yürütme özelliği, b
 
 Bir öğenin eşzamanlı güncelleştirmeleri, Azure Cosmos DB 'in iletişim protokolü katmanına göre OCC ile tabi. Azure Cosmos veritabanı, güncelleştirdiğiniz (veya sildiğiniz) öğenin istemci tarafı sürümünün Azure Cosmos kapsayıcısındaki öğenin sürümüyle aynı olmasını sağlar. Bu, yazma işlemlerinin yanlışlıkla başkalarının üzerine yazılmasına karşı korunmasını sağlar ve tam tersi de geçerlidir. Çok kullanıcılı bir ortamda, iyimser eşzamanlılık denetimi bir öğenin yanlış sürümünü yanlışlıkla silmenizi veya güncelleştirmenizi önler. Bu nedenle, öğeler "kayıp güncelleştirme" veya "kayıp silme" sorunlarına karşı korunur.
 
-Azure Cosmos kapsayıcısında depolanan her öğenin sistem tarafından tanımlanan `_etag` bir özelliği vardır. Öğesinin değeri `_etag` , öğe her güncelleştirildiği zaman otomatik olarak oluşturulur ve sunucu tarafından güncelleştirilir. `_etag`, sunucunun bir öğenin koşullu olarak güncelleştirilip `if-match` güncelleştirilmediğini istemediğinize karar vermesini sağlamak için istemci tarafından sağlanan istek üst bilgisi ile birlikte kullanılabilir. `if-match` Üstbilginin değeri, sunucudaki değeri `_etag` ile eşleşir, öğe daha sonra güncelleştirilir. `if-match` İstek üstbilgisinin değeri artık geçerli değilse, sunucu IŞLEMI "http 412 Önkoşul hatası" Yanıt iletisiyle reddeder. İstemci daha sonra öğenin geçerli sürümünü elde etmek için öğeyi yeniden alabilir veya öğe için kendi `_etag` değeri ile sunucudaki öğenin sürümünü geçersiz kılabilir. Ayrıca, `_etag` bir kaynağın tekrar al gerekip gerekmediğini öğrenmek `if-none-match` için üst bilgiyle birlikte kullanılabilir.
+Azure Cosmos kapsayıcısında depolanan her öğenin sistem tarafından tanımlanan bir özelliği vardır `_etag` . Öğesinin değeri, `_etag` öğe her güncelleştirildiği zaman otomatik olarak oluşturulur ve sunucu tarafından güncelleştirilir. `_etag``if-match`, sunucunun bir öğenin koşullu olarak güncelleştirilip güncelleştirilmediğini istemediğinize karar vermesini sağlamak için istemci tarafından sağlanan istek üst bilgisi ile birlikte kullanılabilir. Üstbilginin değeri, `if-match` sunucudaki değeri ile eşleşir `_etag` , öğe daha sonra güncelleştirilir. `if-match`İstek üstbilgisinin değeri artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt iletisiyle reddeder. İstemci daha sonra öğenin geçerli sürümünü elde etmek için öğeyi yeniden alabilir veya öğe için kendi değeri ile sunucudaki öğenin sürümünü geçersiz kılabilir `_etag` . Ayrıca, `_etag` `if-none-match` bir kaynağın tekrar al gerekip gerekmediğini öğrenmek için üst bilgiyle birlikte kullanılabilir.
 
-Öğenin `_etag` değeri, öğe her güncellenmesinde değişir. Öğe değiştirme işlemleri için, `if-match` istek seçeneklerinin bir parçası olarak açıkça ifade edilmesi gerekir. Örnek için [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674)'daki örnek koda bakın. `_etag`değerler, saklı yordamın dokunmasıyla tüm yazılan öğeler için örtülü olarak denetlenir. Herhangi bir çakışma algılanırsa, saklı yordam işlemi geri alacak ve bir özel durum oluşturur. Bu yöntemle, saklı yordam içinde tüm veya yazma işlemleri otomatik olarak uygulanır. Bu, güncelleştirmeleri yeniden uygulamak ve özgün istemci isteğini yeniden denemek için uygulamaya yönelik bir sinyaldir.
+Öğenin değeri, `_etag` öğe her güncellenmesinde değişir. Öğe değiştirme işlemleri için, `if-match` istek seçeneklerinin bir parçası olarak açıkça ifade edilmesi gerekir. Örnek için [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674)'daki örnek koda bakın. `_etag`değerler, saklı yordamın dokunmasıyla tüm yazılan öğeler için örtülü olarak denetlenir. Herhangi bir çakışma algılanırsa, saklı yordam işlemi geri alacak ve bir özel durum oluşturur. Bu yöntemle, saklı yordam içinde tüm veya yazma işlemleri otomatik olarak uygulanır. Bu, güncelleştirmeleri yeniden uygulamak ve özgün istemci isteğini yeniden denemek için uygulamaya yönelik bir sinyaldir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

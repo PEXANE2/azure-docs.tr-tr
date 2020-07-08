@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74848587"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl kullanılır: Azure AD self servis parola sıfırlama
@@ -34,9 +33,9 @@ Bir kullanıcı parola sıfırlama portalına gittiğinde şunları öğrenmek i
 
 Parola sıfırlama sayfasının arkasındaki mantık hakkında bilgi edinmek için aşağıdaki adımları okuyun:
 
-1. Kullanıcı, **Hesap bağlantıhesabınıza erişemez** veya doğrudan öğesine [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)gidemeyeceğini seçer.
+1. Kullanıcı, **Hesap bağlantıhesabınıza erişemez** veya doğrudan öğesine gidemeyeceğini seçer [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) .
    * Tarayıcı yerel ayarlarına bağlı olarak deneyim uygun dilde işlenir. Parola sıfırlama deneyimi, Office 365 'nin desteklediği dillere yereldir.
-   * Parola sıfırlama portalını farklı bir yerelleştirilmiş dilde görüntülemek için, parola sıfırlama URL 'sinin sonuna "? Mkt =" ekleyerek Ispanyolca [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)olarak yerelleştirilmesi gereken örneği ekleyin.
+   * Parola sıfırlama portalını farklı bir yerelleştirilmiş dilde görüntülemek için, parola sıfırlama URL 'sinin sonuna "? Mkt =" ekleyerek Ispanyolca olarak yerelleştirilmesi gereken örneği ekleyin [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 2. Kullanıcı bir kullanıcı KIMLIĞI girer ve bir CAPTCHA geçirir.
 3. Azure AD, kullanıcının bu özelliği aşağıdaki denetimleri yaparak kullanabildiğini doğrular:
    * Kullanıcının bu özelliğin etkin olduğunu ve atanmış bir Azure AD lisansının olduğunu denetler.
@@ -92,10 +91,10 @@ Microsoft Authenticator uygulaması gibi bir mobil uygulama kullanırken, parola
 | :---: | :---: | :---: |
 | Mobil uygulama özellikleri kullanılabilir | Kod | Kod veya bildirim |
 
-Kullanıcılar, self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip değildir [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Kullanıcılar mobil [https://aka.ms/mfasetup](https://aka.ms/mfasetup)uygulamalarını tarihinde veya yeni güvenlik bilgileri kaydı önizlemesine kaydedebilirsiniz [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+Kullanıcılar, self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip değildir [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Kullanıcılar mobil uygulamalarını tarihinde [https://aka.ms/mfasetup](https://aka.ms/mfasetup) veya yeni güvenlik bilgileri kaydı önizlemesine kaydedebilirsiniz [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!WARNING]
-> Kullanıcıların yeni deneyimle erişebilmeleri için, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) Için yakınsama kaydını](concept-registration-mfa-sspr-converged.md) etkinleştirmeniz gerekir [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+> Kullanıcıların yeni deneyimle erişebilmeleri için, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) Için yakınsama kaydını](concept-registration-mfa-sspr-converged.md) etkinleştirmeniz gerekir [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
 > Kimlik doğrulayıcı uygulaması, bir 1-Gate ilkesi yapılandırılırken tek kimlik doğrulama yöntemi olarak seçilemez. Benzer şekilde, bir 2 kapıları ilkesi yapılandırılırken kimlik doğrulayıcı uygulaması ve yalnızca bir ek yöntem seçilemez.
@@ -132,7 +131,7 @@ Bu seçeneğin etkinleştirilmesi, kullanıcının Azure AD kullanan herhangi bi
 * Federasyon uygulamaları
 * Azure AD kullanarak özel uygulamalar
 
-Kayıt gereksinimi devre dışı bırakıldığında, kullanıcılar el ile kaydobilirler. Bunlar, erişim paneli [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 'ndeki **profil** sekmesinde bulunan **parola sıfırlama** bağlantısını ziyaret edebilir veya seçebilir.
+Kayıt gereksinimi devre dışı bırakıldığında, kullanıcılar el ile kaydobilirler. Bunlar, [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) erişim paneli 'Ndeki **profil** sekmesinde bulunan **parola sıfırlama** bağlantısını ziyaret edebilir veya seçebilir.
 
 > [!NOTE]
 > Kullanıcılar, **iptal** ' i seçerek veya pencereyi kapatarak parola sıfırlama kayıt portalını kapatabilir. Ancak kaydolmaları tamamlanana kadar her oturum açtıklarında kaydolmaları istenir.
@@ -198,7 +197,7 @@ Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırma
 * Self Servis kaydolma **ile kaydolan kullanıcılar** : bir kiracıya ulaşmak üzere [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, kendilerine kaydoldukları e-posta ile parolayı sıfırlayacağız.
 * **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../active-directory-b2b-what-is-azure-ad-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları, parolaları, davet işlemi sırasında kayıtlı olan e-postalarla sıfırlayabilecektir.
 
-Bu senaryoyu test etmek için, bu https://passwordreset.microsoftonline.com iş ortağı kullanıcılarından birine gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
+Bu senaryoyu test etmek için, https://passwordreset.microsoftonline.com Bu iş ortağı kullanıcılarından birine gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
 
 > [!NOTE]
 > Hotmail.com, Outlook.com veya diğer kişisel e-posta adreslerinden gelen Azure AD kiracınıza konuk erişimi verilen Microsoft hesapları Azure AD SSPR 'yi kullanamaz. Microsoft hesabı makalemize [oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içinde bulunan bilgileri kullanarak parolalarını sıfırlamaları gerekir.

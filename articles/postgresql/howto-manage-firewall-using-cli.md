@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74765656"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları oluşturma ve yönetme-tek sunucu
@@ -32,7 +31,7 @@ Mevcut sunucu güvenlik duvarı kurallarını listelemek için [az Postgres Serv
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-Çıktı, varsa, varsayılan olarak JSON biçiminde güvenlik duvarı kurallarını listeler. Anahtarı `--output table` , çıkış olarak daha okunabilir bir tablo biçimi için kullanabilirsiniz.
+Çıktı, varsa, varsayılan olarak JSON biçiminde güvenlik duvarı kurallarını listeler. Anahtarı, `--output table` çıkış olarak daha okunabilir bir tablo biçimi için kullanabilirsiniz.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```

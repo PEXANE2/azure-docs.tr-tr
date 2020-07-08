@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684141"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
@@ -143,7 +142,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Komutları, yazılım yüklemek, kaldırmak ve güncelleştirmek için kullanılabilir. Hataları gidermek için VM 'Lerle ilgili sorunları giderin.
 
 
-Lsblk komutunu yürütün ve/kurtarma işlemi şu an/ve/Rescue/Boot/Boot ![chkökü](./media/chroot-logical-volume-manager/chrooted.png)
+Lsblk komutunu yürütün ve/kurtarma işlemi şu an/ve/Rescue/Boot/Boot ![ chkökü](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Düzeltmeleri gerçekleştir
 
@@ -171,13 +170,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 **Grep** komutu, **grub. cfg** ' nin farkında olduğu çekirdekler 'leri listeler.
 ![Çekirdekler](./media/chroot-logical-volume-manager/kernels.png)
 
-**GRUB2-editenv listesi** , bir sonraki önyükleme ![çekirdeği varsayılanından hangi çekirdeğin yükleneceğini görüntüler](./media/chroot-logical-volume-manager/kernel-default.png)
+**GRUB2-editenv listesi** , bir sonraki önyükleme çekirdeği varsayılanından hangi çekirdeğin yükleneceğini görüntüler ![](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**GRUB2-set-varsayılan** bir çekirdek ![GRUB2 kümesine geçmek için kullanılır](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**GRUB2-set-varsayılan** bir çekirdek ![ GRUB2 kümesine geçmek için kullanılır](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**GRUB2-editenv** listesi, sonraki önyükleme ![yeni çekirdeğine hangi çekirdeğin yükleneceğini gösterir](./media/chroot-logical-volume-manager/kernel-new.png)
+**GRUB2-editenv** listesi, sonraki önyükleme yeni çekirdeğine hangi çekirdeğin yükleneceğini gösterir ![](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**GRUB2-mkconfig** gereken ![sürümleri kullanarak grub. cfg dosyasını yeniden oluşturur GRUB2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**GRUB2-mkconfig** gereken sürümleri kullanarak grub. cfg dosyasını yeniden oluşturur ![ GRUB2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
@@ -204,8 +203,8 @@ Yüklü **çekirdeği** sorgulama
 
 ![Gelişmiş](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-Gerekirse **çekirdek**
-![Gelişmiş ' i kaldırın veya yükseltin](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+Gerekirse **çekirdek** 
+ Gelişmiş ' i kaldırın veya yükseltin ![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Örnek 3-seri konsolu etkinleştir
@@ -252,15 +251,15 @@ umount /rescue
 
 Diski Kurtarma VM 'sinden ayırın ve bir disk takas işlemi gerçekleştirin.
 
-Portal **disklerinden** VM 'yi seçin ve diski **Ayır ayır**
-!['ı seçin](./media/chroot-logical-volume-manager/detach-disk.png) 
+Portal **disklerinden** VM 'yi seçin ve diski **Ayır ayır**'ı seçin 
+ ![](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Değişiklikleri ![Kaydet kaydetme ayır](./media/chroot-logical-volume-manager/save-detach.png) 
+Değişiklikleri Kaydet ![ kaydetme ayır](./media/chroot-logical-volume-manager/save-detach.png) 
 
 Artık disk, etkilenen VM 'nin orijinal işletim sistemi diski ile takas olmasına izin vermek için kullanılabilir hale gelir.
 
-Azure Portal başarısız olan sanal makineye gidin **ve disk** -> **değiştirme işletim sistemi diski**
-![takas diski ' ni seçin](./media/chroot-logical-volume-manager/swap-disk.png) 
+Azure Portal başarısız olan sanal makineye gidin **ve disk**  ->  **değiştirme işletim sistemi diski** 
+ ![ takas diski ' ni seçin](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 **Disk Seç** ' in, önceki adımda ayrılmış olan anlık görüntü diski olan alanları doldurun. Etkilenen VM 'nin VM adı da gereklidir ve ardından **Tamam** ' ı seçin.
 

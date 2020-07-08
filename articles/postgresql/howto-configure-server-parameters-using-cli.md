@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763632"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için sunucu yapılandırma parametrelerini özelleştirme-tek sunucu
@@ -32,22 +31,22 @@ az postgres server configuration list --resource-group myresourcegroup --server 
 ## <a name="show-server-configuration-parameter-details"></a>Sunucu yapılandırma parametresi ayrıntılarını göster
 Bir sunucu için belirli bir yapılandırma parametresi ayrıntılarını göstermek üzere [az Postgres Server Configuration Show](/cli/azure/postgres/server/configuration) komutunu çalıştırın.
 
-Bu örnekte, **myresourcegroup** kaynak grubu altında sunucu **mydemoserver.Postgres.Database.Azure.com** için **\_günlük Min\_iletileri** sunucu yapılandırma parametresinin ayrıntıları gösterilmektedir.
+Bu örnekte, **myresourcegroup** kaynak grubu altında sunucu **mydemoserver.Postgres.Database.Azure.com** için **günlük \_ Min \_ iletileri** sunucu yapılandırma parametresinin ayrıntıları gösterilmektedir.
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>Sunucu yapılandırma parametre değerini değiştir
 Ayrıca, PostgreSQL sunucu altyapısının temel yapılandırma değerini güncelleştiren belirli bir sunucu yapılandırma parametresinin değerini de değiştirebilirsiniz. Yapılandırmayı güncelleştirmek için [az Postgres Server Configuration set](/cli/azure/postgres/server/configuration) komutunu kullanın. 
 
-Mydemoserver.postgres.database.azure.com kaynak grubu altında Server **mydemoserver.postgres.database.azure.com** 'ın **günlük\_\_min iletileri** sunucu yapılandırma parametresini güncelleştirmek için **.**
+Mydemoserver.postgres.database.azure.com kaynak grubu altında Server **mydemoserver.postgres.database.azure.com** 'ın **günlük \_ Min \_ iletileri** sunucu yapılandırma parametresini güncelleştirmek için **.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
-Bir yapılandırma parametresinin değerini sıfırlamak istiyorsanız, isteğe bağlı `--value` parametreyi bırakmayı seçmeniz yeterlidir ve hizmet varsayılan değeri uygular. Yukarıdaki örnekte, şöyle görünür:
+Bir yapılandırma parametresinin değerini sıfırlamak istiyorsanız, isteğe bağlı parametreyi bırakmayı seçmeniz yeterlidir `--value` ve hizmet varsayılan değeri uygular. Yukarıdaki örnekte, şöyle görünür:
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Bu komut **günlük\_en\_düşük ileti** yapılandırmasını varsayılan değer **uyarısı**olarak sıfırlar. Sunucu yapılandırması ve izin verilen değerler hakkında daha fazla bilgi için bkz. [sunucu yapılandırmasındaki](https://www.postgresql.org/docs/9.6/static/runtime-config.html)PostgreSQL belgeleri.
+Bu komut **günlük \_ En düşük \_ ileti** yapılandırmasını varsayılan değer **uyarısı**olarak sıfırlar. Sunucu yapılandırması ve izin verilen değerler hakkında daha fazla bilgi için bkz. [sunucu yapılandırmasındaki](https://www.postgresql.org/docs/9.6/static/runtime-config.html)PostgreSQL belgeleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Bir sunucuyu yeniden başlatmayı öğrenin](howto-restart-server-cli.md)

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768478"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda performans önerileri-tek sunucu
@@ -47,7 +46,7 @@ PostgreSQL sunucunuz için Azure portal sayfasındaki menü çubuğunun **akıll
 ### <a name="drop-index-recommendations"></a>Dizin önerilerini bırak
 Eksik dizinlerin algılanmasının yanı sıra PostgreSQL için Azure veritabanı, mevcut dizinlerin performansını analiz eder. Bir dizin nadiren kullanılıyorsa veya yedekli ise, çözümleyici bunu bırakmayı önerir.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * [Okuma çoğaltmaları](concepts-read-replicas.md)Için performans önerileri kullanılamaz.
 ## <a name="next-steps"></a>Sonraki adımlar
 - PostgreSQL için Azure Veritabanı’nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

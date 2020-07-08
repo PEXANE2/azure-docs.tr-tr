@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792881"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Haziran 2016
@@ -21,7 +20,7 @@ Azure Logic Apps için [güncelleştirilmiş şema](https://schema.management.az
 
 * [Kapsamlar](#scopes) eylemleri bir dizi koleksiyon olarak gruplandırmasına veya yuvadeğiştirmenize olanak sağlar.
 * [Koşullar ve döngüler](#conditions-loops) artık birinci sınıf eylemlerdir.
-* `runAfter` Özelliği ile eylemleri çalıştırmaya yönelik daha kesin sıralama, değiştirme`dependsOn`
+* Özelliği ile eylemleri çalıştırmaya yönelik daha kesin sıralama `runAfter` , değiştirme`dependsOn`
 
 Logic Apps 'i 1 Ağustos 2015 Preview şemasından 1 Haziran 2016 şemasına yükseltmek için [Yükseltme bölümüne bakın](#upgrade-your-schema).
 
@@ -85,7 +84,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 ## <a name="runafter-property"></a>' runAfter ' özelliği
 
-`runAfter` Özelliği `dependsOn`, önceki eylemlerin durumuna göre eylemler için Çalıştırma sırasını belirttiğinizde daha fazla duyarlık sağlar. `dependsOn` Özelliği, "eylem çalıştı ve başarılı oldu" olarak, önceki eylemin başarılı, başarısız ya da bu eylemi çalıştırmak istediğiniz kaç kez atlanıp atlanmadığını belirtti. `runAfter` Özelliği, nesnenin çalıştıktan sonra tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik ayrıca tetikleyici olarak kabul edilebilir bir durumlar dizisini tanımlar. Örneğin, eylem başarılı olduktan sonra bir eylemin çalışmasını istiyorsanız ve ayrıca işlem başarılı veya başarısız olduktan sonra, bu `runAfter` özelliği ayarlayın:
+`runAfter`Özelliği `dependsOn` , önceki eylemlerin durumuna göre eylemler için Çalıştırma sırasını belirttiğinizde daha fazla duyarlık sağlar. `dependsOn`Özelliği, "eylem çalıştı ve başarılı oldu" olarak, önceki eylemin başarılı, başarısız ya da bu eylemi çalıştırmak istediğiniz kaç kez atlanıp atlanmadığını belirtti. `runAfter`Özelliği, nesnenin çalıştıktan sonra tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik ayrıca tetikleyici olarak kabul edilebilir bir durumlar dizisini tanımlar. Örneğin, eylem başarılı olduktan sonra bir eylemin çalışmasını istiyorsanız ve ayrıca işlem başarılı veya başarısız olduktan sonra, bu `runAfter` özelliği ayarlayın:
 
 ```json
 {
@@ -127,7 +126,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 ### <a name="mapping-conditions"></a>Eşleme koşulları
 
-Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olarak gruplandırmada en iyi çabayı yapar. Özellikle tasarımcı deseninin bir `@equals(actions('a').status, 'Skipped')` `else` eylem olarak görünmesi. Ancak araç tanınmayan desenler algılarsa, araç hem true hem de false dalı için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
+Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olarak gruplandırmada en iyi çabayı yapar. Özellikle tasarımcı deseninin `@equals(actions('a').status, 'Skipped')` bir eylem olarak görünmesi `else` . Ancak araç tanınmayan desenler algılarsa, araç hem true hem de false dalı için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
 
 #### <a name="foreach-loop-with-condition"></a>Condition ile ' foreach ' döngüsü
 
@@ -141,7 +140,7 @@ Yükseltmeden sonra kaynak etiketleri kaldırılır, bu nedenle bunları yüksel
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>' Manual ' tetikleyicisi ' Request ' tetikleyicisi olarak yeniden adlandırıldı
 
-`manual` Tetikleyici türü kullanımdan kaldırılmıştır ve türüyle `request` `http`olarak yeniden adlandırıldı. Bu değişiklik, tetikleyicinin derlemek için kullanılan model türü için daha fazla tutarlılık oluşturur.
+`manual`Tetikleyici türü kullanımdan kaldırılmıştır ve türüyle olarak yeniden adlandırıldı `request` `http` . Bu değişiklik, tetikleyicinin derlemek için kullanılan model türü için daha fazla tutarlılık oluşturur.
 
 ### <a name="new-filter-action"></a>Yeni ' filtre ' eylemi
 
@@ -149,11 +148,11 @@ Büyük bir diziyi daha küçük bir öğe kümesine filtrelemek için, yeni `fi
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>' Foreach ' ve ' Until ' eylemlerine yönelik kısıtlamalar
 
-`foreach` Ve `until` döngüsü tek bir eylemle kısıtlıdır.
+`foreach`Ve `until` döngüsü tek bir eylemle kısıtlıdır.
 
 ### <a name="new-trackedproperties-for-actions"></a>Eylemler için yeni ' trackedProperties '
 
-Eylemler artık `trackedProperties` `runAfter` ve `type` özelliklerine eşdüzey olan adlı ek bir özelliğe sahip olabilir. Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örneğin:
+Eylemler artık `trackedProperties` ve özelliklerine eşdüzey olan adlı ek bir özelliğe sahip olabilir `runAfter` `type` . Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örneğin:
 
 ``` json
 {

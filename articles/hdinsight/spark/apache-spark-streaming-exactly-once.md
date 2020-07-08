@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228983"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tam bir kez olay işleme ile Apache Spark akış işleri oluşturma
@@ -49,7 +48,7 @@ Spark akışında, Event Hubs ve Kafka gibi kaynaklarda *güvenilir alıcılar*v
 
 ### <a name="use-the-write-ahead-log"></a>Sonradan yazma günlüğünü kullanın
 
-Spark akışı, her alınan olayın hata toleranslı depolamada ilk olarak Spark 'ın denetim noktası dizinine yazıldığı ve dayanıklı bir dağıtılmış veri kümesinde (RDD) depolandığı bir yazma öncesi günlüğü kullanımını destekler. Azure 'da, hataya dayanıklı depolama, Azure Storage veya Azure Data Lake Storage tarafından desteklenir. Spark akış uygulamanızda, `spark.streaming.receiver.writeAheadLog.enable` yapılandırma ayarı olarak `true`ayarlanarak tüm alıcılar için yazma günlüğü etkinleştirilir. Sonradan yazma günlüğü, sürücü ve yürütmelerinden oluşan hatalara karşı hata toleransı sağlar.
+Spark akışı, her alınan olayın hata toleranslı depolamada ilk olarak Spark 'ın denetim noktası dizinine yazıldığı ve dayanıklı bir dağıtılmış veri kümesinde (RDD) depolandığı bir yazma öncesi günlüğü kullanımını destekler. Azure 'da, hataya dayanıklı depolama, Azure Storage veya Azure Data Lake Storage tarafından desteklenir. Spark akış uygulamanızda, yapılandırma ayarı olarak ayarlanarak tüm alıcılar için yazma günlüğü etkinleştirilir `spark.streaming.receiver.writeAheadLog.enable` `true` . Sonradan yazma günlüğü, sürücü ve yürütmelerinden oluşan hatalara karşı hata toleransı sağlar.
 
 Olay verilerine karşı görevleri çalıştıran çalışanlar için her bir RDD, her ikisi de birden fazla çalışan arasında çoğaltılır ve dağıtılır. Bir görev çöktüğü çalıştığı için başarısız olursa, görev olay verilerinin bir çoğaltmasını içeren başka bir çalışan üzerinde yeniden başlatılır, bu nedenle olay kaybedilmez.
 

@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74225314"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM 'Ler için DHCPv6 'yi yapılandırma
@@ -64,7 +63,7 @@ Lütfen yapılandırmanızda her Ethernet arabirimi için bir *dhcp6: true* ifad
             eno1:
               dhcp6: true
 
-Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN https://netplan.io/referenceile ilgili başvuru bilgileri için belirtilen ağ Daemon 'e cihazların denetimini bırakma
+Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN ile ilgili başvuru bilgileri Için belirtilen ağ Daemon 'e cihazların denetimini bırakma https://netplan.io/reference
  
 ## <a name="debian"></a>Debian
 
@@ -105,7 +104,7 @@ Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN 
 
 Azure 'daki son SUSE Linux Enterprise Server (SLES) ve openSUSE görüntüleri, DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik yapmanız gerekmez. Eski veya özel bir SUSE görüntüsünü temel alan bir VM varsa şunları yapın:
 
-1. Gerekirse `dhcp-client` paketi yüklemelisiniz:
+1. `dhcp-client`Gerekirse paketi yüklemelisiniz:
 
     ```bash
     sudo zypper install dhcp-client

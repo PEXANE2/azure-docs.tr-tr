@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666010"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-veri geçişi en iyi yöntemleri
@@ -61,7 +60,7 @@ Detcp, her bir kopyanın kabaca aynı bayt sayısına eşit olması için eşlem
 
 * Detcp 'nin en düşük ayrıntı düzeyi tek bir dosyadır. Kaynak dosya sayısından daha fazla sayıda Mapbir eşleme belirtmek yardım etmez ve kullanılabilir küme kaynaklarını boşa karşılacaktır.
 
-* Mapçların sayısını öğrenmek için kümede kullanılabilir Yarn belleğini göz önünde bulundurun. Her harita görevi bir Yarn kapsayıcısı olarak başlatılır. Kümede başka bir ağır iş yükünün çalışmadığını varsayarsak, Mapcontroller sayısı şu formül tarafından belirlenebilir: d = (her çalışan düğümü için çalışan \* düğüm sayısı)/Yarn kapsayıcı boyutu. Ancak, diğer uygulamalar bellek kullanıyorsa, DistCp işleri için yalnızca YARN belleğin bir kısmını kullanmayı seçin.
+* Mapçların sayısını öğrenmek için kümede kullanılabilir Yarn belleğini göz önünde bulundurun. Her harita görevi bir Yarn kapsayıcısı olarak başlatılır. Kümede başka bir ağır iş yükünün çalışmadığını varsayarsak, Mapcontroller sayısı şu formül tarafından belirlenebilir: d = ( \* her çalışan düğümü için çalışan düğüm sayısı)/Yarn kapsayıcı boyutu. Ancak, diğer uygulamalar bellek kullanıyorsa, DistCp işleri için yalnızca YARN belleğin bir kısmını kullanmayı seçin.
 
 ### <a name="use-more-than-one-distcp-job"></a>Birden fazla DistCp işi kullanın
 
@@ -73,15 +72,15 @@ Az sayıda büyük dosya varsa, daha fazla mapa ile daha fazla eşzamanlılık s
 
 ### <a name="use-the-strategy-command-line-parameter"></a>' Strateji ' komut satırı parametresini kullanın
 
-Komut satırında `strategy = dynamic` parametresini kullanmayı düşünün. `strategy` Parametresinin `uniform size`varsayılan değeri, her haritanın kabaca aynı sayıda bayt olarak kopyaladığı durumdur. Bu parametre olarak `dynamic`değiştirildiğinde, liste dosyası birkaç "öbek dosyası" olarak bölünür. Öbek dosyalarının sayısı, haritalar sayısının birden çok sayısıdır. Her eşleme görevi, öbek dosyalarından birine atanır. Bir öbekteki tüm yollar işlendikten sonra, geçerli öbek silinir ve yeni bir öbek elde edilir. İşlem, başka bir öbek kullanılabilir olana kadar devam eder. Bu "dinamik" yaklaşım daha hızlı eşleme görevlerinin daha yavaş yollardan daha fazla yol kullanmasına olanak sağlar. böylece, genel olarak DistCp işini hızlanın.
+`strategy = dynamic`Komut satırında parametresini kullanmayı düşünün. Parametresinin varsayılan değeri, `strategy` `uniform size` her haritanın kabaca aynı sayıda bayt olarak kopyaladığı durumdur. Bu parametre olarak değiştirildiğinde `dynamic` , liste dosyası birkaç "öbek dosyası" olarak bölünür. Öbek dosyalarının sayısı, haritalar sayısının birden çok sayısıdır. Her eşleme görevi, öbek dosyalarından birine atanır. Bir öbekteki tüm yollar işlendikten sonra, geçerli öbek silinir ve yeni bir öbek elde edilir. İşlem, başka bir öbek kullanılabilir olana kadar devam eder. Bu "dinamik" yaklaşım daha hızlı eşleme görevlerinin daha yavaş yollardan daha fazla yol kullanmasına olanak sağlar. böylece, genel olarak DistCp işini hızlanın.
 
 ### <a name="increase-the-number-of-threads"></a>İş parçacığı sayısını artırma
 
-`-numListstatusThreads` Parametrenin artırılması performansı artırdığından bkz.. Bu parametre, dosya listesi oluşturmak için kullanılacak iş parçacığı sayısını denetler ve 40 en büyük değerdir.
+`-numListstatusThreads`Parametrenin artırılması performansı artırdığından bkz.. Bu parametre, dosya listesi oluşturmak için kullanılacak iş parçacığı sayısını denetler ve 40 en büyük değerdir.
 
 ### <a name="use-the-output-committer-algorithm"></a>Çıkış komter algoritmasını kullanın
 
-Parametrenin `-Dmapreduce.fileoutputcommitter.algorithm.version=2` geçirilme performansını artırdığı konusunda bilgi için bkz.. Bu çıkış komter algoritması, çıkış dosyalarını hedefe yazma etrafında iyileştirmelere sahiptir. Aşağıdaki komut, farklı parametrelerin kullanımını gösteren bir örnektir:
+Parametrenin geçirilme performansını artırdığı konusunda bilgi için bkz `-Dmapreduce.fileoutputcommitter.algorithm.version=2` .. Bu çıkış komter algoritması, çıkış dosyalarını hedefe yazma etrafında iyileştirmelere sahiptir. Aşağıdaki komut, farklı parametrelerin kullanımını gösteren bir örnektir:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

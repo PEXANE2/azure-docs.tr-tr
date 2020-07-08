@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792171"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için XML 'i doğrulama
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te B2B kurumsal tümleştirme için XML doğrulama
 
 B2B senaryolarında genellikle, bir anlaşmada bulunan ticari iş ortaklarının, herhangi bir veri işleme başlamadan önce, değiş tokuş ettikleri iletilerin geçerli olduğundan emin olması gerekir. Enterprise Integration Pack ile kullanılabilen XML doğrulama eylemini kullanarak önceden tanımlanmış bir şemaya karşı belgeleri doğrulayabilirsiniz.
 
@@ -31,13 +30,13 @@ B2B senaryolarında genellikle, bir anlaşmada bulunan ticari iş ortaklarının
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Boş bir mantıksal uygulamanız varsa, mantıksal uygulama tasarımcısında, ara kutusuna filtreniz olarak girin `HTTP request` ve **bir http isteği alındığında** tetikleyiciyi seçin. Aksi halde, bir sonraki adıma devam edin.
+1. Boş bir mantıksal uygulamanız varsa, mantıksal uygulama tasarımcısında, ara kutusuna `HTTP request` filtreniz olarak girin ve **bir http isteği alındığında** tetikleyiciyi seçin. Aksi halde, bir sonraki adıma devam edin.
 
 1. İş akışınızın son adımında **yeni adım**' ı seçin.
 
-   Varolan adımlar arasında bir eylem eklemek için, işaretçinizi, artı işareti (**+**) görünecek şekilde bu adımları bağlayan oka taşıyın. Bu artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için, işaretçinizi, artı işareti () görünecek şekilde bu adımları bağlayan oka taşıyın **+** . Bu artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `xml validation` . Eylemler listesinden **XML doğrulaması**' nı seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `xml validation` filtreniz olarak yazın. Eylemler listesinden **XML doğrulaması**' nı seçin.
 
    !["XML doğrulaması" eylemini bul ve Seç](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 

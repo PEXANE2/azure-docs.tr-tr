@@ -12,17 +12,16 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74273194"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 'de B2B işbirliği Kullanıcı talepleri eşleme
 
 Azure Active Directory (Azure AD), B2B işbirliği kullanıcıları için SAML belirtecinde verilen talepleri özelleştirmeyi destekler. Kullanıcı uygulamanın kimliğini doğruladığında, Azure AD, uygulamayı benzersiz bir şekilde tanımlayan kullanıcı hakkında bilgi (veya talepler) içeren bir SAML belirteci yayınlar. Bu, varsayılan olarak kullanıcının Kullanıcı adını, e-posta adresini, adını ve soyadını içerir.
 
-[Azure Portal](https://portal.azure.com), SAML belirtecinde gönderilen talepleri uygulamaya görüntüleyebilir veya düzenleyebilirsiniz. Ayarlara erişmek için, çoklu oturum açma > **Çoklu oturum**açma için yapılandırılmış uygulamayı >**Kurumsal uygulamalar** **Azure Active Directory** > seçin. **Kullanıcı öznitelikleri** bölümünde SAML belirteci ayarları ' na bakın.
+[Azure Portal](https://portal.azure.com), SAML belirtecinde gönderilen talepleri uygulamaya görüntüleyebilir veya düzenleyebilirsiniz. Ayarlara erişmek için, çoklu oturum **Azure Active Directory**açma  >  > **Çoklu oturum**açma için yapılandırılmış uygulamayı >**Kurumsal uygulamalar** Azure Active Directory seçin. **Kullanıcı öznitelikleri** bölümünde SAML belirteci ayarları ' na bakın.
 
 ![Kullanıcı arabirimindeki SAML belirteci özniteliklerini gösterir](media/claims-mapping/view-claims-in-saml-token.png)
 

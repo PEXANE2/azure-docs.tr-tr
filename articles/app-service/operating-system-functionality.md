@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671618"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
@@ -33,7 +32,7 @@ App Service farklı katmanlar arasında sorunsuz ölçekleme deneyimini destekle
 ## <a name="development-frameworks"></a>Geliştirme çerçeveleri
 App Service fiyatlandırma katmanları, uygulamalar için kullanılabilir işlem kaynaklarının (CPU, disk depolama, bellek ve ağ çıkışı) miktarını denetler. Ancak, uygulamalar için kullanılabilir olan çerçeve işlevselliğinin sınırları, ölçekleme katmanlarından bağımsız olarak aynı kalır.
 
-App Service, IIS içindeki ASP.NET, klasik ASP, Node. js, PHP ve Python-All gibi çeşitli geliştirme çerçevelerini destekler. Güvenlik yapılandırmasını basitleştirecek ve normalleştirebilmek için App Service uygulamalar genellikle çeşitli geliştirme çerçevelerini varsayılan ayarlarıyla çalıştırır. Uygulamaları yapılandırmaya yönelik bir yaklaşım, her bir geliştirme çerçevesi için API Surface alanını ve işlevselliğini özelleştirmek zorunda olabilir. Bunun yerine App Service, uygulamanın geliştirme çerçevesinden bağımsız olarak ortak bir işletim sistemi işlevselliği temelini etkinleştirerek daha genel bir yaklaşım gerçekleştirir.
+App Service, IIS içindeki ASP.NET, klasik ASP, node.js, PHP ve Python-All gibi çeşitli geliştirme çerçevelerini destekler. Güvenlik yapılandırmasını basitleştirecek ve normalleştirebilmek için App Service uygulamalar genellikle çeşitli geliştirme çerçevelerini varsayılan ayarlarıyla çalıştırır. Uygulamaları yapılandırmaya yönelik bir yaklaşım, her bir geliştirme çerçevesi için API Surface alanını ve işlevselliğini özelleştirmek zorunda olabilir. Bunun yerine App Service, uygulamanın geliştirme çerçevesinden bağımsız olarak ortak bir işletim sistemi işlevselliği temelini etkinleştirerek daha genel bir yaklaşım gerçekleştirir.
 
 Aşağıdaki bölümlerde, App Service uygulamalar için kullanılabilen genel işletim sistemi işlevselliği türleri özetlenmektedir.
 
@@ -55,7 +54,7 @@ Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kot
 
 - Uygulama, diskte yeterli alan olmadığını belirten bir hata oluşturabilir.
 - Kudu konsoluna gözatarken disk hataları görebilirsiniz.
-- Azure DevOps veya Visual Studio 'dan dağıtım ile `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`başarısız olabilir.
+- Azure DevOps veya Visual Studio 'dan dağıtım ile başarısız olabilir `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` .
 - Uygulamanız performansı düşürebilir.
 
 <a id="NetworkDrives"></a>
@@ -76,7 +75,7 @@ Bir uygulamayı çalıştıran sanal makineye bağlı yerel sürücülerde App S
 
 App Service geçici yerel depolamayı nasıl kullandığını gösteren iki örnek, geçici ASP.NET dosyaları için dizin ve IIS sıkıştırılmış dosyalar için dizin. ASP.NET derleme sistemi, geçici bir derleme önbelleği konumu olarak "Temporary ASP.NET Files" dizinini kullanır. IIS, sıkıştırılmış yanıt çıkışını depolamak için "IIS Temporary Compressed Files" dizinini kullanır. Bu dosya kullanımı türlerinin her ikisi de (diğer bir deyişle diğerleri), uygulama başına geçici yerel depolama ile App Service eşleştirilir. Bu yeniden eşleme, işlevselliğin beklendiği gibi devam etmesini sağlar.
 
-App Service içindeki her uygulama, aşağıda açıklandığı gibi, "uygulama havuzu kimliği" olarak adlandırılan rastgele benzersiz bir düşük ayrıcalıklı çalışan işlem kimliği olarak çalışır: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Uygulama kodu, işletim sistemi sürücüsüne yönelik temel salt okuma erişimi için bu kimliği kullanır (D:\ sürücü). Bu, uygulama kodunun ortak dizin yapılarını listeme ve işletim sistemi sürücüsünde ortak dosyaları okuyabileceği anlamına gelir. Bu durum biraz geniş bir erişim düzeyi gibi görünse de, Azure 'da barındırılan bir hizmette çalışan rolü sağladığınızda ve sürücü içeriğini okurken aynı dizinlere ve dosyalara erişilebilir. 
+App Service içindeki her uygulama, aşağıda açıklandığı gibi, "uygulama havuzu kimliği" olarak adlandırılan rastgele benzersiz bir düşük ayrıcalıklı çalışan işlem kimliği olarak çalışır: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) . Uygulama kodu, işletim sistemi sürücüsüne yönelik temel salt okuma erişimi için bu kimliği kullanır (D:\ sürücü). Bu, uygulama kodunun ortak dizin yapılarını listeme ve işletim sistemi sürücüsünde ortak dosyaları okuyabileceği anlamına gelir. Bu durum biraz geniş bir erişim düzeyi gibi görünse de, Azure 'da barındırılan bir hizmette çalışan rolü sağladığınızda ve sürücü içeriğini okurken aynı dizinlere ve dosyalara erişilebilir. 
 
 <a name="multipleinstances"></a>
 
@@ -115,7 +114,7 @@ Uygulamalar için kullanılamayan tanılama günlüğü ve izleme alanlarının 
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Kayıt defteri erişimi
-Uygulamalar üzerinde çalıştıkları sanal makinenin kayıt defterine çok (hiç olmasa da) salt okuma erişimi vardır. Bu uygulamada, bu, yerel kullanıcılar grubuna salt okuma erişimine izin veren kayıt defteri anahtarlarının uygulamalar tarafından erişilebilmesini sağlar. Kayıt defterinin, şu anda okuma veya yazma erişimi için desteklenmeyen bir alanı HKEY\_geçerli\_Kullanıcı kovanına ait.
+Uygulamalar üzerinde çalıştıkları sanal makinenin kayıt defterine çok (hiç olmasa da) salt okuma erişimi vardır. Bu uygulamada, bu, yerel kullanıcılar grubuna salt okuma erişimine izin veren kayıt defteri anahtarlarının uygulamalar tarafından erişilebilmesini sağlar. Kayıt defterinin, şu anda okuma veya yazma erişimi için desteklenmeyen bir alanı HKEY \_ geçerli \_ Kullanıcı kovanına ait.
 
 Kullanıcı başına kayıt defteri anahtarlarına erişim de dahil olmak üzere kayıt defterine yazma erişimi engellenir. Uygulama açısından, uygulamaların farklı sanal makinelere geçirilmesi (ve yapması) için, uygulamanın perspektifinden, kayıt defterine yazma erişimi hiçbir şekilde Azure ortamında hiçbir şekilde güvenilmemelidir. Bir uygulama tarafından bağımlılaşabilecek tek kalıcı yazılabilir depolama, App Service UNC paylaşımlarında depolanan uygulama başına içerik dizini yapısıdır. 
 

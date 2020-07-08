@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74888504"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API 'sine bağlanma-Java
@@ -33,7 +32,7 @@ Bu makalede, örnek uygulamayı geliştirmek için Visual Studio Code kullanıl�
    - JDK
    - Apache Maven
    - Java Uzantı paketi
-- `JAVA_HOME` Ve `PATH` ortam değişkenlerini ayarladığınızdan emin olun.
+- `JAVA_HOME`Ve ortam değişkenlerini ayarladığınızdan emin olun `PATH` .
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
 - [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve daha sonraki bir adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
@@ -47,13 +46,13 @@ Ayrıca şunları gözden geçirin:
 
 ## <a name="create-a-maven-project"></a>Maven projesi oluşturma
 
-Bir komut satırı aracı açın ve `cd` projeyi oluşturmak istediğiniz dizine gidin.
+Bir komut satırı aracı açın ve `cd` Projeyi oluşturmak istediğiniz dizine gidin.
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-Komutunu `pom.xml` `App.java`çalıştırdığınızda,, ve diğer dosyalar oluşturulur. 
+Komutunu çalıştırdığınızda,, `pom.xml` `App.java` ve diğer dosyalar oluşturulur. 
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
@@ -81,7 +80,7 @@ Komutunu `pom.xml` `App.java`çalıştırdığınızda,, ve diğer dosyalar olu�
 
 ## <a name="connect-to-the-java-client"></a>Java istemcisine bağlanma
 
-1. Altındaki `App.java` `src\main\java\com\azure\ams` dosyayı açın ve paketinizin en üste eklendiğinden emin olun:
+1. `App.java`Altındaki dosyayı açın `src\main\java\com\azure\ams` ve paketinizin en üste eklendiğinden emin olun:
 
     ```java
     package com.azure.ams;
@@ -128,6 +127,6 @@ Komutunu `pom.xml` `App.java`çalıştırdığınızda,, ve diğer dosyalar olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık varlıkları ekleme `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` ve düzenleme ' ye başlayabilirsiniz.
+Artık `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` varlıkları ekleme ve düzenleme ' ye başlayabilirsiniz.
 
 Daha fazla kod örneği için bkz. [Java SDK örnek](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) deposu.

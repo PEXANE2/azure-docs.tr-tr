@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703146"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory 'den MapReduce programlarını çağırma
@@ -183,11 +182,11 @@ Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: HDI
 
 | Özellik | Notlar |
 |:--- |:--- |
-| type |Tür **HDInsightMapReduce**olarak ayarlanmalıdır. |
+| tür |Tür **HDInsightMapReduce**olarak ayarlanmalıdır. |
 | Sınıf |Sınıfın adı: **WORDCOUNT** |
 | jarFilePath |Sınıfını içeren jar dosyasının yolu. Aşağıdaki kodu kopyalayıp yapıştırırsanız, kümenin adını değiştirmeyi unutmayın. |
 | jarLinkedService |Jar dosyasını içeren Azure depolama bağlı hizmeti. Bu bağlı hizmet, HDInsight kümesiyle ilişkili depolamayı ifade eder. |
-| değişkenlerinden |WORDCOUNT programı iki bağımsız değişken alır, bir giriş ve çıkış. Giriş dosyası DaVinci. txt dosyasıdır. |
+| değişkenlerinden |WORDCOUNT programı iki bağımsız değişken alır, bir giriş ve çıkış. Giriş dosyası davinci.txt dosyasıdır. |
 | frequency/interval |Bu özelliklerin değerleri, çıkış veri kümesiyle eşleşir. |
 | linkedServiceName |daha önce oluşturduğunuz HDInsight bağlı hizmetini ifade eder. |
 

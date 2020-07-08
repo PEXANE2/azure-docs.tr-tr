@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792430"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps için tümleştirme hesaplarına ticari iş ortakları ekleyin
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps için tümleştirme hesaplarına ticari ortak ekleme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de, mantıksal uygulamalarınızla bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanarak otomatikleştirilmiş IŞLETMEDEN işletmeye (B2B) tümleştirme iş akışları oluşturabilirsiniz. Kuruluşunuzu ve diğerlerini temsil etmek için, tümleştirme hesabınıza yapıt olarak ticaret ortakları oluşturup eklersiniz. İş ortakları, B2B işlemlerine katılan ve birbirleriyle Exchange iletileri olan varlıklardır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de, mantıksal uygulamalarınızla bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanarak otomatikleştirilmiş IŞLETMEDEN işletmeye (B2B) tümleştirme iş akışları oluşturabilirsiniz. Kuruluşunuzu ve diğerlerini temsil etmek için, tümleştirme hesabınıza yapıt olarak ticaret ortakları oluşturup eklersiniz. İş ortakları, B2B işlemlerine katılan ve ileti alışverişinde bulunan varlıklardır.
 
 Bu iş ortaklarını oluşturmadan önce, diğer bilgilerin gönderdiği iletileri belirleme ve doğrulama hakkında iş ortaklarınız ile bilgileri tartışıp paylaştığınızdan emin olun. Bu ayrıntıları kabul ettikten sonra tümleştirme hesabınızda iş ortakları oluşturmaya hazırsınız demektir.
 
@@ -35,7 +34,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
 ## <a name="create-partner"></a>İş ortağı oluştur
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve **tümleştirme hesapları**' nı seçin.
 
@@ -55,9 +54,9 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Yes | Ortağın adı |
-   | **Leyicisini** | Yes | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)**. <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
-   | **Deeri** | Yes | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
+   | **Adı** | Evet | Ortağın adı |
+   | **Leyicisini** | Evet | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)**. <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
+   | **Değer** | Evet | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
    ||||
 
    > [!NOTE]

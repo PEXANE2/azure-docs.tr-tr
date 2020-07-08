@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789282"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
@@ -57,8 +56,8 @@ SFTP Tetikleyicileri, SFTP dosya sistemini yoklayarak ve Son yoklamadan bu yana 
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler** > **Tercihler** > **Edit****Transfer** > **Disable** **Preserve timestamp**aktarım düzenleme > zaman damgası devre dışı bırak ' a gidin >  |
-| FileZilla | **Aktarım** > ' a > git**aktarılan dosyaların zaman damgalarını koru****devre dışı bırak** |
+| WinSCP | **Seçenekler**  >  **Tercihler**  >  **Aktarım**  >  **düzenleme**  >  **zaman damgası**  >  **devre dışı bırak** ' a gidin |
+| FileZilla | **Aktarım**' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
@@ -75,7 +74,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "SFTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın.
 
@@ -84,13 +83,13 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
    > **SSH özel anahtar ÖZELLIĞINDE SSH** özel anahtarınızı girdiğinizde, bu özellik için tüm ve doğru değeri sağladığınızdan emin olmanıza yardımcı olan bu ek adımları izleyin. 
    > Geçersiz bir anahtar bağlantının başarısız olmasına neden olur.
 
-   Herhangi bir metin düzenleyicisini kullanabilseniz de, örnek olarak Notepad. exe ' yi kullanarak anahtarınızın doğru şekilde kopyalanıp yapıştırılacağını gösteren örnek adımlar aşağıda verilmiştir.
+   Herhangi bir metin düzenleyicisini kullanabilseniz de, bir örnek olarak Notepad.exe kullanarak anahtarınızı doğru şekilde kopyalamayı ve yapıştırmayı gösteren örnek adımlar aşağıda verilmiştir.
 
    1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak not defteri 'Ni kullanır.
 
    1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
 
-   1. Kopyayı **Düzenle** > **Copy**' yi seçin.
+   1. Kopyayı **Düzenle**' yi seçin  >  **Copy**.
 
    1. Eklediğiniz SFTP tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *bütün* anahtarı yapıştırın. Anahtarı ***yapıştırdığınızdan emin olun*** . ***Anahtarı el ile girmeyin veya düzenleyemezsiniz***.
 

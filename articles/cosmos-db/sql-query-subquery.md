@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870573"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB için SQL alt sorgu örnekleri
@@ -79,7 +78,7 @@ Etiketler dizisindeki yalnızca bir öğe filtreyle eşleşen ve hem nutristalar
 
 Alt sorgular, Kullanıcı tanımlı işlevler (UDF 'ler), karmaşık dizeler veya aritmetik ifadeler gibi pahalı ifadelerle sorguları iyileştirmenize yardımcı olabilir. İfadeyi bir kez değerlendirmek ve çok sayıda başvuru yapmak için bir JOIN ifadesiyle birlikte bir alt sorgu kullanabilirsiniz.
 
-Aşağıdaki sorgu UDF `GetMaxNutritionValue` 'i iki kez çalıştırır:
+Aşağıdaki sorgu UDF 'i `GetMaxNutritionValue` iki kez çalıştırır:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +108,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-Yaklaşım UDF 'ler ile sınırlı değildir. Potansiyel olarak pahalı olan herhangi bir ifade için geçerlidir. Örneğin, matematik işleviyle `avg`aynı yaklaşımı kullanabilirsiniz:
+Yaklaşım UDF 'ler ile sınırlı değildir. Potansiyel olarak pahalı olan herhangi bir ifade için geçerlidir. Örneğin, matematik işleviyle aynı yaklaşımı kullanabilirsiniz `avg` :
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -366,7 +365,7 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Alt sorgu, bir nesne içindeki seçili listedeki değerlerin listesini kapsar. Seçili listede değer yoksa, alt sorgu tek '{}' değerini döndürür. Bu değer tanımlanmıştır, bu yüzden var değeri true olarak değerlendirilir.
+Alt sorgu, bir nesne içindeki seçili listedeki değerlerin listesini kapsar. Seçili listede değer yoksa, alt sorgu tek ' ' değerini döndürür {} . Bu değer tanımlanmıştır, bu yüzden var değeri true olarak değerlendirilir.
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Örnek: ARRAY_CONTAINS yeniden yazma ve JOIN as EXISTS
 
@@ -388,7 +387,7 @@ WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 
 Ayrıca ARRAY_CONTAINS, yalnızca bir değerin dizideki herhangi bir öğeye eşit olup olmadığını kontrol edebilir. Dizi özelliklerinde daha karmaşık filtrelere ihtiyacınız varsa JOIN ' i kullanın.
 
-Dizideki birimlere ve `nutritionValue` özelliklere göre filtreleyen aşağıdaki sorguyu göz önünde bulundurun: 
+Dizideki birimlere ve özelliklere göre filtreleyen aşağıdaki sorguyu göz önünde bulundurun `nutritionValue` : 
 
 ```sql
 SELECT VALUE c.description

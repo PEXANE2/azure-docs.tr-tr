@@ -9,10 +9,9 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687627"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Kapsayıcılar için Web App ile sürekli dağıtım
@@ -23,7 +22,7 @@ Bu öğreticide, yönetilen [Azure Container Registry](https://azure.microsoft.c
 
 ![ACR Web kancasının ekran görüntüsü](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sayfanın sol tarafındaki **App Service** seçeneğini belirleyin.
 3. Sürekli dağıtımını yapılandırmak istediğiniz uygulamanın adını seçin.
 4. **Kapsayıcı ayarları** sayfasında, **tek kapsayıcı** ' yı seçin.
@@ -41,7 +40,7 @@ Container Registry Web kancaları ' na tıklayarak geçerli Web kancalarını g�
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Docker Hub ile sürekli dağıtımı etkinleştir (isteğe bağlı)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sayfanın sol tarafındaki **App Service** seçeneğini belirleyin.
 3. Sürekli dağıtımını yapılandırmak istediğiniz uygulamanın adını seçin.
 4. **Kapsayıcı ayarları** sayfasında, **tek kapsayıcı** ' yı seçin.

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74406166"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
@@ -47,7 +46,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Azure Resource Manager şablonu bu proje ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) için GitHub deposunda bulunur.
+    Azure Resource Manager şablonu bu proje () için GitHub deposunda bulunur [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) .
 
     Bu şablon aşağıdaki kaynakları oluşturur:
 
@@ -86,7 +85,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
 
 Bu belgede kullanılan proje verileri Cosmos DB depolar. Kodu çalıştırmadan önce, önce Cosmos DB Örneğinizde bir _veritabanı_ ve _koleksiyon_ oluşturmanız gerekir. Ayrıca, Cosmos DB yönelik isteklerin kimliğini doğrulamak için kullanılan belge uç noktasını ve _anahtarı_ da almalısınız.
 
-Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik adlı bir veritabanı `kafkadata` ve adlı `kafkacollection`bir koleksiyonu oluşturacaktır. Ardından birincil anahtarı döndürür.
+Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik adlı bir veritabanı `kafkadata` ve adlı bir koleksiyonu oluşturacaktır `kafkacollection` . Ardından birincil anahtarı döndürür.
 
 ```azurecli
 #!/bin/bash
@@ -128,7 +127,7 @@ Belge uç noktası ve birincil anahtar bilgileri aşağıdaki metne benzer:
 
 ## <a name="get-the-notebooks"></a>Not defterlerini al
 
-Bu belgede açıklanan örnek için kodu adresinde [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)bulabilirsiniz.
+Bu belgede açıklanan örnek için kodu adresinde bulabilirsiniz [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) .
 
 ## <a name="upload-the-notebooks"></a>Not defterlerini karşıya yükleme
 

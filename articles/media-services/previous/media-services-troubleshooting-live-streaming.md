@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74885611"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Canlı akış sorun giderme kılavuzu  
@@ -30,7 +29,7 @@ Bu bölümde, canlı kodlama için etkinleştirilmiş AMS kanallarına tek bir b
 ### <a name="problem-would-like-to-see-logs"></a>Sorun: günlükleri görmek Ister misiniz?
 * **Olası sorun**: hata ayıklama sorunlarında yardımcı olabilecek kodlayıcı günlükleri bulunamıyor.
   
-  * **Telestream kablolu dönüştürme**: genellikle, C:\Users\{Kullanıcı adı} \Appdata\roaming\kablo\ \ 
+  * **Telestream kablolu dönüştürme**: genellikle, C:\Users \{ Kullanıcı adı} \Appdata\roaming\kablo\ \ 
   * **Dinamik**kullanım: bulma, yönetim portalında günlüklere bağlantılar içeriyor. **İstatistikler**, ardından **Günlükler**' e tıklayın. **Günlük dosyaları** sayfasında, tüm liveevent öğeleri için günlüklerin bir listesini görürsünüz. geçerli oturumunuzla eşleşen bir tane seçin. 
   * **Flash Media Live Encoder**: **günlük dizinini** , **kodlama günlüğü** sekmesine giderek bulabilirsiniz.
 
@@ -55,6 +54,6 @@ Bu bölümde, canlı kodlama için etkinleştirilmiş AMS kanallarına tek bir b
 > 
 > 
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

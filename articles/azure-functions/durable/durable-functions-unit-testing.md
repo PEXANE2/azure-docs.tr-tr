@@ -4,10 +4,9 @@ description: Birim testi Dayanıklı İşlevler nasıl yapılacağını öğreni
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231218"
 ---
 # <a name="durable-functions-unit-testing"></a>Dayanıklı İşlevler birim testi
@@ -39,7 +38,7 @@ Mocking Dayanıklı İşlevler 1. x içinde üç soyut sınıf aracılığıyla 
 
 * `DurableActivityContextBase`
 
-Bu sınıflar,, ve `DurableOrchestrationClient` `DurableOrchestrationContext` `DurableActivityContext` düzenleme istemcisi, Orchestrator ve etkinlik yöntemlerini tanımlayan temel sınıflardır. Birim testin iş mantığını doğrulayabilmesi için, bu, taban sınıf yöntemleri için beklenen davranışı ayarlar. Orchestration Istemcisinde ve Orchestrator 'da iş mantığını birim testi için iki adımlı bir iş akışı vardır:
+Bu sınıflar,, `DurableOrchestrationClient` `DurableOrchestrationContext` ve `DurableActivityContext` düzenleme istemcisi, Orchestrator ve etkinlik yöntemlerini tanımlayan temel sınıflardır. Birim testin iş mantığını doğrulayabilmesi için, bu, taban sınıf yöntemleri için beklenen davranışı ayarlar. Orchestration Istemcisinde ve Orchestrator 'da iş mantığını birim testi için iki adımlı bir iş akışı vardır:
 
 1. Orchestration Client ve Orchestrator işlev imzalarını tanımlarken somut uygulama yerine temel sınıfları kullanın.
 2. Birim testlerinde, temel sınıfların davranışını ve iş mantığını doğrular.
@@ -52,16 +51,16 @@ Bu bölümde, birim testi yeni düzenlemeleri başlatmak için aşağıdaki HTTP
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Birim testi görevi, yanıt yükünde belirtilen `Retry-After` üstbilginin değerini doğrulamak olacaktır. Bu nedenle, birim testi tahmin edilebilir davranış `DurableOrchestrationClientBase` sağlamak için bazı yöntemleri sahte hale getirebilir.
+Birim testi görevi, `Retry-After` Yanıt yükünde belirtilen üstbilginin değerini doğrulamak olacaktır. Bu nedenle, birim testi `DurableOrchestrationClientBase` tahmin edilebilir davranış sağlamak için bazı yöntemleri sahte hale getirebilir.
 
-İlk olarak, temel sınıfın bir sahte olması gerekir `DurableOrchestrationClientBase`. Sahte, uygulayan `DurableOrchestrationClientBase`yeni bir sınıf olabilir. Ancak [moq](https://github.com/moq/moq4) gibi bir sahte işlem çerçevesinin kullanılması işlemi basitleştirir:
+İlk olarak, temel sınıfın bir sahte olması gerekir `DurableOrchestrationClientBase` . Sahte, uygulayan yeni bir sınıf olabilir `DurableOrchestrationClientBase` . Ancak [moq](https://github.com/moq/moq4) gibi bir sahte işlem çerçevesinin kullanılması işlemi basitleştirir:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Daha `StartNewAsync` sonra yöntem, iyi bilinen BIR örnek kimliği döndürecek şekilde yapılır.
+Daha sonra `StartNewAsync` Yöntem, iyi bilinen bir örnek kimliği döndürecek şekilde yapılır.
 
 ```csharp
     // Mock StartNewAsync method
@@ -70,7 +69,7 @@ Daha `StartNewAsync` sonra yöntem, iyi bilinen BIR örnek kimliği döndürecek
         ReturnsAsync(instanceId);
 ```
 
-Sonraki `CreateCheckStatusResponse` adımda her zaman boş bir http 200 yanıtı döndürülür.
+Sonraki adımda `CreateCheckStatusResponse` her zaman boş BIR HTTP 200 yanıtı döndürülür.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -168,11 +167,11 @@ Tüm adımları birleştirdikten sonra birim testi aşağıdaki koda sahip olur:
 
 Etkinlik işlevleri, birim tarafından, dayanıklı olmayan işlevlerle aynı şekilde test edilebilir.
 
-Bu bölümde, birim testi `E1_SayHello` etkinlik işlevinin davranışını doğrulayacaktır:
+Bu bölümde, birim testi etkinlik işlevinin davranışını doğrulayacaktır `E1_SayHello` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Ve birim testleri çıktının biçimini doğrular. Birim testleri doğrudan veya sahte `DurableActivityContextBase` sınıf parametre türlerini kullanabilir:
+Ve birim testleri çıktının biçimini doğrular. Birim testleri doğrudan veya sahte sınıf parametre türlerini kullanabilir `DurableActivityContextBase` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

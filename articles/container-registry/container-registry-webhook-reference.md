@@ -4,10 +4,9 @@ description: Web kancaları yapıt Push veya delete olayları için etkinleştir
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74455967"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Web kancası başvurusunu Azure Container Registry
@@ -22,11 +21,11 @@ Azure Container Registry 'niz için Web kancalarını yapılandırma hakkında d
 
 ### <a name="http-request"></a>HTTP isteği
 
-Tetiklenen bir Web kancası, Web `POST` kancasını YAPıLANDıRDıĞıNıZDA belirlediğiniz URL uç noktasına bir http isteği oluşturur.
+Tetiklenen bir Web kancası `POST` , Web kancasını yapılandırdığınızda BELIRLEDIĞINIZ URL uç noktasına BIR http isteği oluşturur.
 
 ### <a name="http-headers"></a>HTTP üstbilgileri
 
-Web kancası istekleri `Content-Type` , `application/json` Web kancası için `Content-Type` özel bir üst bilgi belirtminizi içerir.
+Web kancası istekleri `Content-Type` , `application/json` `Content-Type` Web kancası için özel bir üst bilgi belirtminizi içerir.
 
 İstek için Web kancası için belirtmiş olabileceğiniz özel üstbilgilerin ötesinde başka üst bilgi eklenmez.
 

@@ -4,10 +4,9 @@ description: Yerel Docker yapılandırması ve kayıt defteri bağlantısı dahi
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456429"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry 'nin sistem durumunu denetleme
@@ -18,7 +17,7 @@ Azure Container Registry kullanırken, zaman zaman sorunlarla karşılaşabilirs
 
 ## <a name="run-az-acr-check-health"></a>Çalıştır az ACR Check-Health
 
-Takip örnekleri, `az acr check-health` komutunu çalıştırmanın farklı yollarını gösterir.
+Takip örnekleri, komutunu çalıştırmanın farklı yollarını gösterir `az acr check-health` .
 
 > [!NOTE]
 > Komutu Azure Cloud Shell ' de çalıştırırsanız, yerel ortam denetlenmez. Ancak, bir hedef kayıt defterine erişimi denetleyebilirsiniz.
@@ -43,7 +42,7 @@ az acr check-health --name myregistry
 
 Komut, bilgileri standart çıktıya kaydeder. Bir sorun algılanırsa, bir hata kodu ve açıklaması sağlar. Kodlar ve olası çözümler hakkında daha fazla bilgi için bkz. [hata başvurusu](container-registry-health-error-reference.md).
 
-Varsayılan olarak, komut her bir hata bulduğunda yanıt vermez. Ayrıca, hatalar bulunsa bile, tüm sistem durumu denetimleri için çıkış sağlamak üzere komutunu çalıştırabilirsiniz. Aşağıdaki örneklerde `--ignore-errors` gösterildiği gibi parametresini ekleyin:
+Varsayılan olarak, komut her bir hata bulduğunda yanıt vermez. Ayrıca, hatalar bulunsa bile, tüm sistem durumu denetimleri için çıkış sağlamak üzere komutunu çalıştırabilirsiniz. `--ignore-errors`Aşağıdaki örneklerde gösterildiği gibi parametresini ekleyin:
 
 ```azurecli
 # Check environment only

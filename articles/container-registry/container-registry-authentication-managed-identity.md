@@ -4,10 +4,9 @@ description: Kullanıcı tarafından atanan veya sistem tarafından atanan yöne
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456499"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
@@ -66,7 +65,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLı tarafından `publicIpAddress` görüntülendiğine göz atın. VM 'ye SSH bağlantısı oluşturmak için bu adresi kullanın.
+VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, `publicIpAddress` Azure CLI tarafından görüntülendiğine göz atın. VM 'ye SSH bağlantısı oluşturmak için bu adresi kullanın.
 
 ### <a name="install-docker-on-the-vm"></a>SANAL makineye Docker 'ı yükler
 
@@ -160,19 +159,19 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Kimliğiyle yapılandırılmış Docker sanal makinesine SSH. VM 'de yüklü olan Azure CLı 'yı kullanarak aşağıdaki Azure CLı komutlarını çalıştırın.
 
-İlk olarak, VM 'de yapılandırdığınız kimliği kullanarak [az Login][az-login]Ile Azure CLI kimlik doğrulamasını yapın. İçin `<userID>`, önceki bir adımda ALDıĞıNıZ kimliğin kimliğini değiştirin. 
+İlk olarak, VM 'de yapılandırdığınız kimliği kullanarak [az Login][az-login]Ile Azure CLI kimlik doğrulamasını yapın. İçin `<userID>` , önceki bir adımda aldığınız KIMLIğIN kimliğini değiştirin. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda, CLı, oturumunuzu kapsayıcı kayıt defteriyle sorunsuzca kimlik doğrulamaya çalışırken `az login` oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını ile `sudo`çalıştırmanız gerekebilir.)
+Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda, CLı, `az login` oturumunuzu kapsayıcı kayıt defteriyle sorunsuzca kimlik doğrulamaya çalışırken oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını ile çalıştırmanız gerekebilir `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Bir `Login succeeded` ileti görmeniz gerekir. Ardından, kimlik bilgileri `docker` sağlamadan komutları çalıştırabilirsiniz. Örneğin, kayıt defterinizin [docker pull][docker-pull] oturum açma sunucusu adını `aci-helloworld:v1` belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve `.azurecr.io` ardından gelen ' `mycontainerregistry.azurecr.io`den oluşur.
+Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [docker pull][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -188,7 +187,7 @@ Aşağıdaki [az VM Identity Assign][az-vm-identity-assign] komutu, DOCKER VM 'n
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Sonraki adımlarda kullanmak üzere VM 'nin kimliğinin değerine `principalId` (HIZMET asıl kimliği) bir değişken ayarlamak için [az VM Show][az-vm-show] komutunu kullanın.
+Sonraki adımlarda kullanmak üzere VM 'nin kimliğinin değerine (hizmet asıl KIMLIĞI) bir değişken ayarlamak için [az VM Show][az-vm-show] komutunu kullanın `principalId` .
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
@@ -218,13 +217,13 @@ Kimliğiyle yapılandırılmış Docker sanal makinesine SSH. VM 'de yüklü ola
 az login --identity
 ```
 
-Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda, CLı, oturumunuzu kapsayıcı kayıt defteriyle sorunsuzca kimlik doğrulamaya çalışırken `az login` oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını ile `sudo`çalıştırmanız gerekebilir.)
+Ardından, [az ACR oturum açma][az-acr-login]ile kayıt defterine kimlik doğrulaması yapın. Bu komutu kullandığınızda, CLı, `az login` oturumunuzu kapsayıcı kayıt defteriyle sorunsuzca kimlik doğrulamaya çalışırken oluşturulan Active Directory belirtecini kullanır. (Sanal makinenizin kurulumuna bağlı olarak, bu komutu ve Docker komutlarını ile çalıştırmanız gerekebilir `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Bir `Login succeeded` ileti görmeniz gerekir. Ardından, kimlik bilgileri `docker` sağlamadan komutları çalıştırabilirsiniz. Örneğin, kayıt defterinizin [docker pull][docker-pull] oturum açma sunucusu adını `aci-helloworld:v1` belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve `.azurecr.io` ardından gelen ' `mycontainerregistry.azurecr.io`den oluşur.
+Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgileri sağlamadan komutları çalıştırabilirsiniz. Örneğin, [docker pull][docker-pull] `aci-helloworld:v1` kayıt defterinizin oturum açma sunucusu adını belirterek görüntüyü çekmek için Docker Pull çalıştırın. Oturum açma sunucusu adı, kapsayıcının kayıt defteri adınızın (tümü küçük harflerinden) ve ardından gelen ' den oluşur `.azurecr.io` `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1

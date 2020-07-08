@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74226732"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure İşlevleri Çalışma Zamanı Preview 2 ' i yükler
@@ -91,7 +90,7 @@ Azure İşlevleri Çalışma Zamanı yüklemesini gerçekleştirmek için, yapı
 
     ![Azure İşlevleri Çalışma Zamanı Preview Yapılandırması Tamam][12]
 
-1. **Azure işlevleri çalışma zamanı portalına** gidin `https://<machinename>.<domain>/`.
+1. **Azure işlevleri çalışma zamanı portalına** gidin `https://<machinename>.<domain>/` .
 
     ![Azure İşlevleri Çalışma Zamanı Preview Portal][13]
 
@@ -99,13 +98,13 @@ Azure İşlevleri Çalışma Zamanı yüklemesini gerçekleştirmek için, yapı
 
 Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturmak için
 
-1. Örneğin `https://mycomputer.mydomain.com` **Azure işlevleri çalışma zamanı portalına** `https://<machinename>.<domain>` gidin.
+1. Örneğin **Azure işlevleri çalışma zamanı portalına** gidin `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` .
 
 1. Bir etki alanında dağıtılmışsa etki alanı hesabınızın Kullanıcı adı ve parolasını kullanıyorsanız **oturum açmanız**istenir, aksi takdirde portalda oturum açmak için yerel hesap Kullanıcı adınızı ve parolanızı kullanın.
 
     ![Azure İşlevleri Çalışma Zamanı Preview Portal oturum açma][14]
 
-1. İşlev uygulamaları oluşturmak için bir abonelik oluşturmanız gerekir.  Portalın sol üst köşesinde, abonelikler ' in yanındaki **+** seçeneğe tıklayın.
+1. İşlev uygulamaları oluşturmak için bir abonelik oluşturmanız gerekir.  Portalın sol üst köşesinde, abonelikler ' in **+** yanındaki seçeneğe tıklayın.
 
     ![Azure İşlevleri Çalışma Zamanı Preview Portal abonelikleri][15]
 
@@ -123,7 +122,7 @@ Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturmak iç
 
     ![Azure İşlevleri Çalışma Zamanı önizleme şablonları][18]
 
-1. Zamanlayıcı tetikleyicisi işlevini seçin, sağ taraftaki açılır menüdeki işlevinizi adlandırın ve zamanlamayı olarak `*/5 * * * * *` değiştirin (bu cron ifadesi Zamanlayıcı işlevinizin beş saniyede bir yürütmesine neden olur) ve **Oluştur** ' a tıklayın.
+1. Zamanlayıcı tetikleyicisi işlevini seçin, sağ taraftaki açılır menüdeki işlevinizi adlandırın ve zamanlamayı olarak değiştirin `*/5 * * * * *` (bu cron ifadesi Zamanlayıcı işlevinizin beş saniyede bir yürütmesine neden olur) ve **Oluştur** ' a tıklayın.
 
     ![Yeni zamanlayıcı işlev yapılandırması Azure İşlevleri Çalışma Zamanı Önizleme][19]
 

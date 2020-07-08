@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887097"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services hata kodları
@@ -105,9 +104,9 @@ Sunucu şu anda istekleri alamıyor. Bu hata, hizmete aşırı istek oluşmasın
 
 Olası durum açıklamaları şunlardır:
 
-* "Sunucu meşgul. Bu istek türünün önceki çalıştırmaları saniyeden uzun {0} sürdü. "
-* "Sunucu meşgul. Saniye başına {0} istek sayısı daraltıldı. "
-* "Sunucu meşgul. Saniyeler içinde {0} {1} isteklerin daha fazlası kısıtlanacaktır. "
+* "Sunucu meşgul. Bu istek türünün önceki çalıştırmaları saniyeden uzun sürdü {0} . "
+* "Sunucu meşgul. {0}Saniye başına istek sayısı daraltıldı. "
+* "Sunucu meşgul. {0}Saniyeler içinde isteklerin daha fazlası {1} kısıtlanacaktır. "
 
 Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneririz. Yani, ardışık hata yanıtları için yeniden denemeler arasında giderek daha uzun süre bekler.  Daha fazla bilgi için bkz. [geçici hata Işleme uygulama bloğu](https://msdn.microsoft.com/library/hh680905.aspx).
 
@@ -122,6 +121,6 @@ Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneri
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

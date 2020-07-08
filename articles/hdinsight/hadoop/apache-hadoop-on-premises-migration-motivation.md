@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267321"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mosyon ve avantajlar
@@ -51,9 +50,9 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
 
 - **Üretkenlik** -tercih ettiğiniz geliştirme ortamınızda Hadoop ve Spark için çeşitli araçlar kullanabilirsiniz.
 
-- **Özel araçlar veya üçüncü taraf uygulamalarla genişletilebilirlik** -HDInsight kümeleri yüklü bileşenlerle genişletilebilir ve Azure Pazar yerinde [tek](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) tıklamayla dağıtımlar kullanılarak diğer büyük veri çözümleriyle de tümleştirilebilir.
+- **Özel araçlar veya üçüncü taraf uygulamalarla genişletilebilirlik** -HDInsight kümeleri yüklü bileşenlerle genişletilebilir ve Azure Pazar yerinde [tek](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)tıklamayla dağıtımlar kullanılarak diğer büyük veri çözümleriyle de tümleştirilebilir   .
 
-- **Kolay yönetim, yönetim ve izleme** -Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere [Azure izleyici günlükleri](../hdinsight-hadoop-oms-log-analytics-tutorial.md) ile tümleşir.
+- **Kolay yönetim, yönetim ve izleme** -Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere [Azure izleyici günlükleri](../hdinsight-hadoop-oms-log-analytics-tutorial.md)ile tümleşir   .
 
 - **Diğer Azure hizmetleriyle tümleştirme** -HDInsight, aşağıdakiler gibi diğer popüler Azure hizmetleriyle kolayca tümleştirilebilir:
 
@@ -87,7 +86,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 ### <a name="on-premises-deployment-questionnaire"></a>Şirket içi dağıtım Anketi
 
-| **Unuza** | **Örneğinde** | **Yanıtınıza** |
+| **Soru** | **Örnek** | **Yanıt** |
 |---|---|---|
 |**Konu**: **ortam**|||
 |Küme dağıtım sürümü|HDP 2.6.5, CDH 5,7|
@@ -101,7 +100,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Ana düğüm yapılandırması|d/y, CPU, disk vb.|
 |Veri düğümleri yapılandırması|d/y, CPU, disk vb.|
 |Kenar düğümleri yapılandırması|d/y, CPU, disk vb.|
-|Bu şifreleme?|Yes|
+|Bu şifreleme?|Evet|
 |Yüksek Kullanılabilirlik|, Metasha, meta veri deposu HA|
 |Olağanüstü durum kurtarma/yedekleme|Yedekleme kümesi mi?|  
 |Kümeye bağımlı sistemler|SQL Server, Teradata, Power BI, MongoDB|
@@ -119,7 +118,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 ### <a name="project-details-questionnaire"></a>Proje ayrıntıları Anketi
 
-|**Unuza**|**Örneğinde**|**Yanıtınıza**|
+|**Soru**|**Örnek**|**Yanıt**|
 |---|---|---|
 |**Konu başlığı**: **Iş yükleri ve sıklık**|||
 |MapReduce işleri|10 iş--iki kez günlük||
@@ -165,10 +164,10 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 |**Konu**: **altyapı** |||
 |---|---|---|
-|**Unuza**|**Örneğinde**|**Yanıtınıza**|
+|**Soru**|**Örnek**|**Yanıt**|
 | Tercih edilen bölge|ABD Doğu||
-|VNet tercih edildi mi?|Yes||
-|HA/DR gerekli mi?|Yes||
+|VNet tercih edildi mi?|Evet||
+|HA/DR gerekli mi?|Evet||
 |Diğer bulut hizmetleriyle tümleştirme yapılsın mı?|ADF, CosmosDB||
 |**Konu**: **veri taşıma**  |||
 |İlk yükleme tercihi|DistCp, Data Box, ADF, WANDisco||
@@ -177,25 +176,25 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |**Konu**: **izleme & uyarma** |||
 |Azure Izleme & uyarı, üçüncü taraf izlemeyi tümleştirme karşılaştırması|Azure Izleme & uyarma kullanma||
 |**Konu**: **Güvenlik tercihleri** |||
-|Özel ve korunan veri ardışık düzeni?|Yes||
-|Etki alanına katılmış küme (ESP)?|     Yes||
-|Şirket Içi AD Eşitleme buluta mı?|     Yes||
+|Özel ve korunan veri ardışık düzeni?|Evet||
+|Etki alanına katılmış küme (ESP)?|     Evet||
+|Şirket Içi AD Eşitleme buluta mı?|     Evet||
 |Eşitlenecek AD kullanıcılarının sayısı?|          100||
-|Parolalar buluta eşitlensin mi?|    Yes||
-|Yalnızca bulut kullanıcıları mı?|                 Yes||
+|Parolalar buluta eşitlensin mi?|    Evet||
+|Yalnızca bulut kullanıcıları mı?|                 Evet||
 |MFA gerekli mi?|                       Hayır|| 
-|Veri yetkilendirme gereksinimleri?|  Yes||
-|Rol tabanlı Access Control?|        Yes||
-|Denetim gerekli mi?|                  Yes||
-|Bekleyen veri şifrelemesi|          Yes||
-|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Yes||
+|Veri yetkilendirme gereksinimleri?|  Evet||
+|Rol tabanlı Access Control?|        Evet||
+|Denetim gerekli mi?|                  Evet||
+|Bekleyen veri şifrelemesi|          Evet||
+|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Evet||
 |**Konu**: **yeniden mimari tercihleri** |||
 |Tek küme, belirli küme türlerine karşı|Belirli küme türleri||
 |Birlikte bulunan depolama ve uzak depolama karşılaştırması|Uzak depolama||
 |Veriler uzaktan depolandığından daha küçük küme boyutu var mı?|Daha küçük küme boyutu||
 |Tek bir büyük küme yerine birden çok daha küçük küme kullanın mi?|Birden çok daha küçük küme kullanın||
-|Uzak bir meta veri deposu mı kullanıyorsunuz?|Yes||
-|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Yes||
+|Uzak bir meta veri deposu mı kullanıyorsunuz?|Evet||
+|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Evet||
 |İş yüklerini kaldırma|Hive işlerini Spark işleriyle değiştirme||
 |Veri düzenleme için ADF kullanılsın mı?|Hayır||
 

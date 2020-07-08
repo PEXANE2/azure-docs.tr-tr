@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847858"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD parola koruma Aracısı sürümü geçmişi
@@ -42,9 +41,9 @@ Yayın tarihi: 3/13/2019
   * Sunucu Çekirdeği sistemlerinde, başarılı olması için/q bayrağını .NET 4,7 yükleyicisine geçirmek gerekebilir.
 * Proxy hizmeti artık otomatik yükseltmeyi destekliyor. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak açık.
 * Set-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak otomatik yükseltme etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar Get-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak sorgulanabilir.
-* DC Aracısı hizmeti için hizmet ikilisi, AzureADPasswordProtectionDCAgent. exe olarak yeniden adlandırıldı.
-* Proxy hizmeti için hizmet ikilisi, AzureADPasswordProtectionProxy. exe olarak yeniden adlandırıldı. Bir üçüncü taraf güvenlik duvarı kullanımda olduğunda Güvenlik Duvarı kurallarının de değiştirilmesi gerekebilir.
-  * NOTE: bir http proxy yapılandırma dosyası önceki bir proxy yüklemede kullanılıyorsa, bu yükseltmeden sonra yeniden adlandırılması gerekir ( *ProxyService. exe. config* 'Den *Azureadpasswordprotectionproxy. exe. config*dosyasına).
+* DC Aracısı hizmeti için hizmet ikilisi AzureADPasswordProtectionDCAgent.exe olarak yeniden adlandırıldı.
+* Proxy hizmeti için hizmet ikilisi AzureADPasswordProtectionProxy.exe olarak yeniden adlandırıldı. Bir üçüncü taraf güvenlik duvarı kullanımda olduğunda Güvenlik Duvarı kurallarının de değiştirilmesi gerekebilir.
+  * NOTE: önceki bir proxy yüklemede bir http proxy yapılandırma dosyası kullanılıyorsa, bu yükseltmeden sonra yeniden adlandırılması gerekir ( *proxyservice.exe.config* *AzureADPasswordProtectionProxy.exe.config*).
 * Tüm zaman sınırlı işlevsellik denetimleri DC aracısından kaldırılmıştır.
 * Önemsiz hata düzeltmeleri ve günlüğe kaydetme geliştirmeleri.
 

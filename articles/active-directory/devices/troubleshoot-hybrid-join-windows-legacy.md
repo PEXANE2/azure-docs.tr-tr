@@ -12,17 +12,16 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74379114"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme 
 
 Bu makale yalnızca aşağıdaki cihazlarda geçerlidir: 
 
-- Windows 7 
+- Windows 7 
 - Windows 8.1 
 - Windows Server 2008 R2 
 - Windows Server 2012 
@@ -68,13 +67,13 @@ Cihaz karma Azure AD 'ye katılmış değilse, "katıl" düğmesine tıklayarak 
 
     ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Oto çalışma. exe, Azure AD 'de veya AD FS sessizce kimlik doğrulaması yapamıyor. Bunun nedeni, eksik veya yanlış yapılandırılmış AD FS (federe etki alanları için) veya eksik ya da yanlış yapılandırılmış Azure AD sorunsuz çoklu oturum açma (yönetilen etki alanları için) veya ağ sorunları olabilir. 
+   - Autoworkplace.exe, Azure AD veya AD FS ile sessizce kimlik doğrulaması yapamıyor. Bunun nedeni, eksik veya yanlış yapılandırılmış AD FS (federe etki alanları için) veya eksik ya da yanlış yapılandırılmış Azure AD sorunsuz çoklu oturum açma (yönetilen etki alanları için) veya ağ sorunları olabilir. 
    - Bu, Multi-Factor Authentication (MFA) özelliğinin etkinleştirilmesi/yapılandırılması ve WIAORMULTIAUTHN 'nin AD FS sunucuda yapılandırılmamış olması olabilir. 
-   - Diğer bir olasılık ise, giriş bölgesi bulma (HRD) sayfasının kullanıcı etkileşimini beklediği, bu da **oto çalışma. exe** ' nin sessizce bir belirteç isteğinde bulunmasını önlüyor.
+   - Diğer bir deyişle, giriş bölgesi bulma (HRD) sayfasının kullanıcı etkileşimini beklediği, bu da **autoworkplace.exe** sessizce bir belirteç istemekte engel olur.
    - AD FS ve Azure AD URL 'Lerinin istemci üzerindeki intranet bölgesinde eksik olması olabilir.
-   - Ağ bağlantısı sorunları, **oto çalışma. exe** ' nin AD FS veya Azure AD URL 'lerine ulaşmasını engelleyebilir. 
-   - **Oto çalışma. exe** , istemcinin istemciden kuruluşun ŞIRKET içi ad etki alanı denetleyicisine doğrudan bir görüş satırı olmasını gerektirir. Bu, karma Azure AD 'ye yalnızca istemci kuruluşun intranetine bağlıyken başarılı olduğu anlamına gelir.
-   - Kuruluşunuz Azure AD sorunsuz çoklu oturum açma 'yı `https://autologon.microsoftazuread-sso.com` kullanır veya `https://aadg.windows.net.nsatc.net` cihazın IE intranet ayarlarında mevcut değildir ve intranet bölgesi için **komut dosyası aracılığıyla durum çubuğundaki güncelleştirmelerin** etkin olmadığından izin vermez.
+   - Ağ bağlantısı sorunları, **autoworkplace.exe** AD FS veya Azure AD URL 'lerine ulaşmasını engelleyebilir. 
+   - **Autoworkplace.exe** istemcinin, istemciden kuruluşun ŞIRKET içi ad etki alanı denetleyicisine doğrudan bir görüş satırı olmasını gerektirir. Bu, karma Azure AD 'ye yalnızca istemci kuruluşun intranetine bağlıyken başarılı olduğu anlamına gelir.
+   - Kuruluşunuz Azure AD sorunsuz çoklu oturum açma 'yı kullanır `https://autologon.microsoftazuread-sso.com` veya `https://aadg.windows.net.nsatc.net` cihazın IE intranet ayarlarında mevcut değildir ve intranet bölgesi için **komut dosyası aracılığıyla durum çubuğundaki güncelleştirmelerin** etkin olmadığından izin vermez.
 - Bir etki alanı kullanıcısı olarak oturum açmadınız
 
    ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/03.png)

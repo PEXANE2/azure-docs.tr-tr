@@ -8,10 +8,9 @@ ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 7c4025e393c196fb98455bac26e94e5f252840b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687506"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Özel görüntü, çok Kapsayıcılı veya yerleşik platform görüntüsü?
@@ -31,7 +30,7 @@ Göz önünde bulundurulması gereken birincil etmenler şunlardır:
 - **Uygulama performansı**: redin gibi bir önbellek katmanını kullanarak çok Kapsayıcılı uygulamanızın performansını artırın. Bunu elde etmek için birden çok kapsayıcı seçin.
 - **Benzersiz çalışma zamanı gereksinimleri**: yerleşik platform görüntüleri, çoğu Web uygulamasının ihtiyaçlarını karşılayacak şekilde tasarlanmıştır, ancak bunların özelleştirme sınırlıdır. Uygulamanız, yerleşik görüntülerin sahip olduğu özellikleri aşan benzersiz bağımlılıklara veya diğer çalışma zamanı gereksinimlerine sahip olabilir.
 - **Derleme gereksinimleri**: [sürekli dağıtım](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)ile uygulamanızı Azure 'da doğrudan kaynak kodundan çalışır duruma getirebilirsiniz. Dış derleme veya yayın işlemi gerekli değildir. Ancak, [kudu](https://github.com/projectkudu/kudu/wiki) dağıtım altyapısında derleme araçlarının özelleştirme ve kullanılabilirliği için bir sınır vardır. Uygulamanız, bağımlılıklarında veya özel derleme mantığı için gereksinimlerde büyüdükçe kudu 'nin yeteneklerini daha fazla büyüyebilir.
-- **Disk okuma/yazma gereksinimleri**: tüm Web uygulamalarına Web içeriği için bir depolama birimi ayrılır. Azure depolama tarafından desteklenen bu birim, uygulamanın dosya sistemine bağlanır `/home` . Kapsayıcı dosya sisteminde bulunan dosyaların aksine, içerik birimindeki dosyalara bir uygulamanın tüm ölçek örneklerinde erişilebilir ve değişiklikler uygulama yeniden başlatmalarının üzerinde kalır. Ancak, içerik biriminin disk gecikmesi daha yüksektir ve yerel kapsayıcı dosya sistemi gecikmesinden daha yüksektir ve erişim platform yükseltmeleri, planlanmamış kapalı kalma süresi ve ağ bağlantısı sorunlarından etkilenebilir. İçerik dosyalarına ağır salt okuma erişimi gerektiren uygulamalar, dosyaları içerik birimi yerine görüntü dosya sistemine yerleştiren özel görüntü dağıtımından faydalanabilir.
+- **Disk okuma/yazma gereksinimleri**: tüm Web uygulamalarına Web içeriği için bir depolama birimi ayrılır. Azure depolama tarafından desteklenen bu birim, `/home` uygulamanın dosya sistemine bağlanır. Kapsayıcı dosya sisteminde bulunan dosyaların aksine, içerik birimindeki dosyalara bir uygulamanın tüm ölçek örneklerinde erişilebilir ve değişiklikler uygulama yeniden başlatmalarının üzerinde kalır. Ancak, içerik biriminin disk gecikmesi daha yüksektir ve yerel kapsayıcı dosya sistemi gecikmesinden daha yüksektir ve erişim platform yükseltmeleri, planlanmamış kapalı kalma süresi ve ağ bağlantısı sorunlarından etkilenebilir. İçerik dosyalarına ağır salt okuma erişimi gerektiren uygulamalar, dosyaları içerik birimi yerine görüntü dosya sistemine yerleştiren özel görüntü dağıtımından faydalanabilir.
 - **Derleme kaynak kullanımı**: bir uygulama kaynaktan dağıtıldığında, kudu tarafından çalıştırılan dağıtım betikleri, çalışan uygulamayla aynı App Service planı işlem ve depolama kaynaklarını kullanır. Büyük uygulama dağıtımları, istenenden daha fazla kaynak veya zaman tüketebilir. Özellikle, birçok dağıtım iş akışı, bu tür bir etkinlik için en iyi duruma getirilmeyen uygulama içerik biriminde ağır disk etkinliği oluşturur. Özel görüntü, tüm uygulamanızın dosyalarını ve bağımlılıklarını, ek dosya aktarımları veya dağıtım eylemleri yapmanıza gerek olmadan tek bir pakette Azure 'a sunar.
 - **Hızlı yineleme gereksinimi**: bir uygulamanın dockeri için ek derleme adımları gerekir. Değişikliklerin etkili olabilmesi için, yeni görüntünüzü her güncelleştirme ile bir depoya göndermeniz gerekir. Bu güncelleştirmeler daha sonra Azure ortamına çekilir. Yerleşik kapsayıcılardan biri uygulamanızın ihtiyaçlarını karşılıyorsa, kaynaktan dağıtım daha hızlı bir geliştirme iş akışı sunabilir.
 

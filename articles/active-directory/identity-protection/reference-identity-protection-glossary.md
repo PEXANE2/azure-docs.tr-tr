@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232352"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Kimlik Koruması sözlüğü
@@ -32,7 +31,7 @@ Risk algılamaları ve kuruluşun kimliklerini etkileyen olası güvenlik açık
 ### <a name="conditional-access"></a>Koşullu Erişim
 Kaynaklara erişimi güvenli hale getirmek için bir ilke. Koşullu erişim kuralları Azure Active Directory depolanır ve kaynağa erişim izni vermeden önce Azure AD tarafından değerlendirilir.  Örnek kurallar, Kullanıcı konumuna, cihaz durumuna veya Kullanıcı kimlik doğrulama yöntemine göre erişimi kısıtlamayı içerir.
 
-### <a name="credentials"></a>Kimlik Bilgileri
+### <a name="credentials"></a>Kimlik bilgileri
 Yerel ve ağ kaynaklarına erişim kazanmak için kullanılan tanımlama ve kimlik kanıtı bilgilerini içeren bilgiler. Kimlik bilgileri örnekleri Kullanıcı adları ve parolalar, akıllı kartlar ve sertifikalardır.
 
 ### <a name="event"></a>Olay
@@ -62,7 +61,7 @@ Geçerli Kullanıcı kimlik bilgileri (Kullanıcı adı ve parola), araştırmac
 ### <a name="mitigation"></a>Risk azaltma
 Bir saldırganın kimliği veya cihazı güvenli bir duruma geri yüklemeden güvenliği aşılmış bir kimlik veya cihazdan yararlanma yeteneğini sınırlamak veya ortadan kaldırmak için bir eylem. Risk azaltma, kimlik veya cihazla ilişkili önceki risk algılamalarını çözmez.
 
-### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
+### <a name="multi-factor-authentication"></a>Multi-factor authentication
 İki veya daha fazla kimlik doğrulama yöntemi gerektiren bir kimlik doğrulama yöntemi, örneğin bir sertifika, kullanıcının sahip olduğu bir şeyi içerebilir; Kullanıcı adları, parolalar veya geçiş ifadeleri gibi kullanıcıların bildiği bir şey; parmak izi gibi fiziksel öznitelikler; Kişisel imza gibi kişisel öznitelikleri.
 
 ### <a name="offline-detection"></a>Çevrimdışı algılama

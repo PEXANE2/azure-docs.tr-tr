@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74462621"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure portal kullanarak medyanızı çözümleyin 
@@ -60,7 +59,7 @@ Bu konuda, Azure portal kullanarak medyanızın Media Analytics medya işlemcile
 
 Bu biçimlerdeki kapalı açıklamalı altyazı (CC) dosyaları, ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilir.
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>Anahtar sözcükler
 Anahtar kelimeler XML dosyası oluşturmak istiyorsanız bu seçeneği belirleyin. Bu dosya, sıklık ve konum bilgileri ile konuşma içeriğinden ayıklanan anahtar sözcükler içerir.
 
 ### <a name="job-name"></a>İş adı
@@ -142,5 +141,5 @@ Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

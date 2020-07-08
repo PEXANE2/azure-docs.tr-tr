@@ -8,10 +8,9 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687252"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Ortamı v1 yapılandırma
@@ -125,13 +124,13 @@ Bir Ao 'da, tüm App Service planları adanmış App Service planlardır. Diğer
 ### <a name="settings"></a>Ayarlar
 ATıCı dikey penceresinde, birkaç önemli özelliği içeren bir **Ayarlar** bölümü vardır:
 
-**Ayarlar** > **özellikleri**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
+**Ayarlar**  >  **Özellikler**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
 
 ![Ayarlar dikey penceresi ve özellikleri][4]
 
-**Ayarlar** > **IP adresleri**: aşirde bir IP Güvenli Yuva Katmanı (SSL) uygulaması oluşturduğunuzda, bir IP SSL adresiniz olması gerekir. Bir tane elde etmek için, Ao 'un ayrılabileceği, sahip olduğu adreslere IP SSL gerekir. Bir Ao oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazla bilgi ekleyebilirsiniz. [App Service fiyatlandırması][AppServicePricing] (SSL bağlantıları üzerindeki bölümde) gösterildiği gibi ek IP SSL adresler için ücretlendirilir. Ek fiyat IP SSL fiyatıdır.
+**Ayarlar**  >  **IP adresleri**: Ao UYGULAMANıZDA bir IP GÜVENLI yuva KATMANı (SSL) uygulaması oluşturduğunuzda, bir IP SSL adresiniz olması gerekir. Bir tane elde etmek için, Ao 'un ayrılabileceği, sahip olduğu adreslere IP SSL gerekir. Bir Ao oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazla bilgi ekleyebilirsiniz. [App Service fiyatlandırması][AppServicePricing] (SSL bağlantıları üzerindeki bölümde) gösterildiği gibi ek IP SSL adresler için ücretlendirilir. Ek fiyat IP SSL fiyatıdır.
 
-**Ayarlar** > **ön uç havuzu** / **çalışan havuzları**: Bu kaynak havuzu dikey pencerelerinin her biri, bu kaynak havuzunu tamamen ölçeklendirmeye yönelik denetimler sağlamaya ek olarak, yalnızca ilgili kaynak havuzunda bilgi görme yeteneği sağlar.  
+**Ayarlar**  >  **Ön uç havuzu**  /  **Çalışan havuzları**: Bu kaynak havuzu dikey pencerelerinin her biri, kaynak havuzunu tamamen ölçeklendirmeye yönelik denetimler sağlamaya ek olarak, yalnızca o kaynak havuzundaki bilgileri görmenizi sağlar.  
 
 Her kaynak havuzu için temel dikey pencere, bu kaynak havuzu için ölçümleri olan bir grafik sağlar. Ao dikey penceresindeki grafiklerle tıpkı olduğu gibi, grafiğe gidebilir ve uyarıları istediğiniz gibi ayarlayabilirsiniz. Belirli bir kaynak havuzu için AKEN dikey penceresinden bir uyarı ayarlanması, kaynak havuzundan yaptığı gibi aynı şeyi yapar. Çalışan havuzu **ayarları** dikey penceresinde bu çalışan havuzunda çalışan tüm uygulamalara veya App Service planlara erişebilirsiniz.
 
@@ -154,7 +153,7 @@ AI dikey penceresinde ölçek işlemini kullanmak için kaydırıcıyı istediğ
 
 ![Ölçek Kullanıcı arabirimi][6]
 
-Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **Ayarlar** > **ön uç havuzu** / **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar** > **ölçeği** genişletme veya **ayarların** > **ölçeğini genişletme**bölümüne gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
+Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **Ayarlar**  >  **ön uç havuzu**  /  **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar**  >  **ölçeği** genişletme veya **ayarların**  >  **ölçeğini genişletme**bölümüne gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
 
 ![Ölçek ayarları kullanıcı arabirimi][7]
 

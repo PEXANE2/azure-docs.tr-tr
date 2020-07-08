@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456363"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI’yı kullanarak özel bir Dockler kapsayıcı kayıt defterine ilk görüntünüzü itme
@@ -36,10 +35,10 @@ az acr login --name myregistry
 docker login myregistry.azurecr.io
 ```
 
-Her iki komut `Login Succeeded` de tamamlandığında döndürülür.
+Her iki komut de `Login Succeeded` tamamlandığında döndürülür.
 
 > [!TIP]
-> `docker login` ' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.
+> `docker login`' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.
 
 ## <a name="pull-the-official-nginx-image"></a>Resmi NGINX görüntüsünü çekme
 
@@ -51,19 +50,19 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Kapsayıcıyı yerel olarak çalıştırma
 
-8080 numaralı bağlantı noktasında NGINX kapsayıcısının etkileşimli (`-it`) yerel bir örneğini başlatmak için aşağıdaki [Docker Run](https://docs.docker.com/engine/reference/run/) komutunu yürütün. `--rm` Bağımsız değişkeni kapsayıcıyı durdurduğunuzda kaldırılması gerektiğini belirtir.
+8080 numaralı bağlantı noktasında NGINX kapsayıcısının etkileşimli () yerel bir örneğini başlatmak için aşağıdaki [Docker Run](https://docs.docker.com/engine/reference/run/) komutunu yürütün `-it` . `--rm`Bağımsız değişkeni kapsayıcıyı durdurduğunuzda kaldırılması gerektiğini belirtir.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Çalışan kapsayıcıda `http://localhost:8080` NGINX tarafından sunulan varsayılan Web sayfasını görüntülemek için öğesine gidin. Aşağıdakine benzer bir sayfa görmeniz gerekir:
+`http://localhost:8080`Çalışan kapsayıcıda NGINX tarafından sunulan varsayılan Web sayfasını görüntülemek için öğesine gidin. Aşağıdakine benzer bir sayfa görmeniz gerekir:
 
 ![Yerel bilgisayarda Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Kapsayıcıyı ile `-it`etkileşimli olarak başlattığınız için, tarayıcınızda gezindikten sonra, komut satırında NGINX sunucusunun çıkışını görebilirsiniz.
+Kapsayıcıyı ile etkileşimli olarak başlattığınız `-it` için, tarayıcınızda gezindikten sonra, komut satırında NGINX sunucusunun çıkışını görebilirsiniz.
 
-Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control` + `C`.
+Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control` + `C` .
 
 ## <a name="create-an-alias-of-the-image"></a>Görüntünün diğer adını oluşturma
 
@@ -99,9 +98,9 @@ Kayıt defterinizden çekolduğunuz görüntüyü çalıştırmak için [Docker 
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Çalışan kapsayıcıyı `http://localhost:8080` görüntülemek için öğesine gidin.
+`http://localhost:8080`Çalışan kapsayıcıyı görüntülemek için öğesine gidin.
 
-Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control` + `C`.
+Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control` + `C` .
 
 ## <a name="remove-the-image-optional"></a>Görüntüyü kaldırma (isteğe bağlı)
 
@@ -111,7 +110,7 @@ Artık NGINX görüntüsüne ihtiyacınız yoksa [Docker rmi](https://docs.docke
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure Container Registry 'nizden görüntüleri kaldırmak için [az ACR Repository Delete](/cli/azure/acr/repository#az-acr-repository-delete)Azure CLI komutunu kullanabilirsiniz. Örneğin, aşağıdaki komut `samples/nginx:latest` etiket tarafından başvurulan bildirimi, tüm benzersiz katman verilerini ve bildirime başvuran diğer tüm etiketleri siler.
+Azure Container Registry 'nizden görüntüleri kaldırmak için [az ACR Repository Delete](/cli/azure/acr/repository#az-acr-repository-delete)Azure CLI komutunu kullanabilirsiniz. Örneğin, aşağıdaki komut etiket tarafından başvurulan bildirimi `samples/nginx:latest` , tüm benzersiz katman verilerini ve bildirime başvuran diğer tüm etiketleri siler.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

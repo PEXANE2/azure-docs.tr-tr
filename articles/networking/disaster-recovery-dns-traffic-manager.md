@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74483529"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma
@@ -72,7 +71,7 @@ Olağanüstü durum kurtarma için Azure DNS el ile yük devretme çözümü, ye
 
 Çözüm için yapılan varsayımlar şunlardır:
 - Birincil ve ikincil uç noktalarında, genellikle değişmeyen statik IP 'Ler vardır. Birincil site için IP 'nin 100.168.124.44 ve ikincil sitenin IP 'si 100.168.124.43.
-- Birincil ve ikincil site için bir Azure DNS bölgesi bulunur. Birincil site için bitiş noktası prod.contoso.com ve yedekleme sitesi için dr.contoso.com. Www\.contoso.com olarak bilinen ana uygulama IÇIN bir DNS kaydı da mevcuttur.   
+- Birincil ve ikincil site için bir Azure DNS bölgesi bulunur. Birincil site için bitiş noktası prod.contoso.com ve yedekleme sitesi için dr.contoso.com. Www contoso.com olarak bilinen ana uygulama için bir DNS kaydı \. da mevcuttur.   
 - TTL, kuruluşta ayarlanan RTO SLA 'nın altında veya altında. Örneğin, bir kuruluş uygulama olağanüstü durum yanıtının RTO 'ı 60 dakika olarak ayarladığında, TTL en az 60 dakika olmalıdır, tercihen daha iyi olur. 
   El ile yük devretme için Azure DNS aşağıdaki gibi ayarlayabilirsiniz:
 - DNS bölgesi oluşturma
@@ -80,7 +79,7 @@ Olağanüstü durum kurtarma için Azure DNS el ile yük devretme çözümü, ye
 - CNAME kaydını Güncelleştir
 
 ### <a name="step-1-create-a-dns"></a>1. Adım: DNS oluşturma
-Aşağıda gösterildiği gibi bir DNS bölgesi (örneğin,\.www contoso.com) oluşturun:
+Aşağıda gösterildiği gibi bir DNS bölgesi (örneğin, www \. contoso.com) oluşturun:
 
 ![Azure 'da bir DNS bölgesi oluşturma](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -88,13 +87,13 @@ Aşağıda gösterildiği gibi bir DNS bölgesi (örneğin,\.www contoso.com) ol
 
 ### <a name="step-2-create-dns-zone-records"></a>2. Adım: DNS bölge kayıtları oluşturma
 
-Bu bölge içinde, aşağıda göster olarak üç kayıt (örneğin\., www contoso.com, prod.contoso.com ve Dr.consoto.com) oluşturun.
+Bu bölge içinde, aşağıda göster olarak üç kayıt (örneğin \. , www contoso.com, prod.contoso.com ve Dr.consoto.com) oluşturun.
 
 ![DNS bölge kayıtları oluşturma](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Şekil-Azure 'da DNS bölge kayıtları oluşturma*
 
-Bu senaryoda www\.contoso.com, 30 DAKIKALıK bir TTL 'e sahiptir ve bu, belirtilen RTO 'nın altında iyi bir değer olan ve Prod.contoso.com üretim sitesini işaret ediyor. Bu yapılandırma normal iş işlemleri sırasında yapılır. Prod.contoso.com ve dr.contoso.com TTL değeri 300 saniye veya 5 dakika olarak ayarlanmıştır. Azure Izleyici veya Azure Application Insights gibi bir Azure izleme hizmeti ya da dynaTrace gibi herhangi bir iş ortağı izleme çözümü kullanarak, uygulama veya sanal altyapı düzeyindeki sorunları izleyebildiği veya algılayan ev büyüme çözümlerini de kullanabilirsiniz.
+Bu senaryoda www \. contoso.com, 30 dakikalık BIR TTL 'e sahiptir ve bu, belirtilen RTO 'nın altında iyi bir değer olan ve Prod.contoso.com üretim sitesini işaret ediyor. Bu yapılandırma normal iş işlemleri sırasında yapılır. Prod.contoso.com ve dr.contoso.com TTL değeri 300 saniye veya 5 dakika olarak ayarlanmıştır. Azure Izleyici veya Azure Application Insights gibi bir Azure izleme hizmeti ya da dynaTrace gibi herhangi bir iş ortağı izleme çözümü kullanarak, uygulama veya sanal altyapı düzeyindeki sorunları izleyebildiği veya algılayan ev büyüme çözümlerini de kullanabilirsiniz.
 
 ### <a name="step-3-update-the-cname-record"></a>3. Adım: CNAME kaydını güncelleştirme
 
@@ -104,7 +103,7 @@ Hata algılandıktan sonra, aşağıda gösterildiği gibi, kayıt değerini dr.
 
 *Şekil-Azure 'da CNAME kaydını güncelleştirme*
 
-30 dakika içinde, çoğu çözümleyiciler önbelleğe alınmış bölge dosyasını yenilediğinde, tüm www\.contoso.com sorgusu Dr.contoso.com 'e yönlendirilir.
+30 dakika içinde, çoğu çözümleyiciler önbelleğe alınmış bölge dosyasını yenilediğinde, tüm www \. contoso.com sorgusu Dr.contoso.com 'e yönlendirilir.
 CNAME değerini değiştirmek için aşağıdaki Azure CLı komutunu da çalıştırabilirsiniz:
  ```azurecli
    az network dns record-set cname set-record \

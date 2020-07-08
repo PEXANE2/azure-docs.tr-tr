@@ -4,10 +4,9 @@ description: Azure Active Directory hizmet sorumlusu kullanarak Azure Container 
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456511"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances Azure Container Registry ile kimlik doğrulama
@@ -28,7 +27,7 @@ Hizmet sorumluları, kayıt defteri [Yönetici kullanıcısı](container-registr
 
 ## <a name="authenticate-using-the-service-principal"></a>Hizmet sorumlusunu kullanarak kimlik doğrulama
 
-Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için KIMLIĞINI `--registry-username`ve parolasını belirtin. `--registry-password`
+Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için KIMLIĞINI `--registry-username` ve parolasını belirtin `--registry-password` .
 
 ```azurecli-interactive
 az container create \

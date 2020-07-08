@@ -12,15 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74271769"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğinde Kullanıcı belirteçlerini anlayın
 
-Bir B2B işbirliği kullanıcısına ait belirtecin nasıl göründüğünü anlamak isterseniz, kaynak kiracısında bir Azure Active Directory (Azure AD) konuğunu ve Microsoft hesabı konuğunu (tenantıd 04dcc6ab-388A-4559-B527-fbec656300ea) için taşıyıcı belirteç ayrıntıları ve belirteç içeriği aşağıda verilmiştir. JSON Web Token (JWT) içeriğini görmek için veya [https://jwt.io/](https://jwt.io/) [https://jwt.ms/](https://jwt.ms/)kullanın.
+Bir B2B işbirliği kullanıcısına ait belirtecin nasıl göründüğünü anlamak isterseniz, kaynak kiracısında bir Azure Active Directory (Azure AD) konuğunu ve Microsoft hesabı konuğunu (tenantıd 04dcc6ab-388A-4559-B527-fbec656300ea) için taşıyıcı belirteç ayrıntıları ve belirteç içeriği aşağıda verilmiştir. JSON Web Token (JWT) içeriğini görmek için [https://jwt.io/](https://jwt.io/) veya kullanın [https://jwt.ms/](https://jwt.ms/) .
 
 ## <a name="azure-ad-guest-token"></a>Azure AD Konuk belirteci
 ```

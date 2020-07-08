@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231267"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
@@ -54,17 +53,17 @@ Bu senaryoyu ayarlamak için aşağıdaki yordamı kullanın.
 
 1. Her yuva için, [AzureWebJobsStorage uygulama ayarını](../functions-app-settings.md#azurewebjobsstorage) paylaşılan bir depolama hesabının bağlantı dizesine ayarlayın. Bu depolama hesabı bağlantı dizesi, Azure Işlevleri çalışma zamanı tarafından kullanılır. Bu hesap, Azure Işlevleri çalışma zamanı tarafından kullanılır ve işlevin anahtarlarını yönetir.
 
-1. Her yuva için, örneğin, `DurableManagementStorage`yeni bir uygulama ayarı oluşturun. Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
+1. Her yuva için, örneğin, yeni bir uygulama ayarı oluşturun `DurableManagementStorage` . Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
 
-1. İşlev uygulamanızın [Host. json dosyasının durableTask bölümünde](durable-functions-bindings.md#hostjson-settings), adım 3 ' te oluşturduğunuz `azureStorageConnectionStringName` uygulama ayarının adı olarak belirtin.
+1. İşlev uygulamanızın [Dosya durableTask bölümündehost.js](durable-functions-bindings.md#hostjson-settings), `azureStorageConnectionStringName` Adım 3 ' te oluşturduğunuz uygulama ayarının adı olarak belirtin.
 
 Aşağıdaki diyagramda, dağıtım yuvaları ve depolama hesaplarının açıklanan yapılandırması gösterilmektedir. Bu potansiyel dağıtım senaryosunda, bir işlev uygulamasının 2. sürümü üretim yuvasında çalışmaktadır, 1. sürüm hazırlama yuvasında kalır.
 
 ![Dağıtım yuvaları ve depolama hesapları](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>Host. JSON örnekleri
+### <a name="hostjson-examples"></a>Örneklere host.js
 
-Aşağıdaki JSON parçaları, *Host. JSON* dosyasındaki bağlantı dizesi ayarına örnektir.
+Aşağıdaki JSON parçaları, *host.js* dosyadaki bağlantı dizesi ayarına örnektir.
 
 #### <a name="functions-20"></a>İşlevler 2,0
 
@@ -164,7 +163,7 @@ Yönlendirici 1.0.1 sürümündeki düzenlemeleri izler ve tüm düzenlemeler bi
 
 ### <a name="tracking-store-settings"></a>İzleme deposu ayarları
 
-Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Uygulamanızın tüm sürümlerindeki tüm organize edilecek örnekleri sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. [Ana bilgisayar. JSON ayarları](durable-functions-bindings.md#host-json) dosyasındaki ve `trackingStoreConnectionStringName` `trackingStoreNamePrefix` ayarlarını, hepsi aynı değerleri kullanacak şekilde yapılandırarak tabloları paylaşabilirsiniz.
+Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Uygulamanızın tüm sürümlerindeki tüm organize edilecek örnekleri sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. `trackingStoreConnectionStringName` `trackingStoreNamePrefix` [Settings dosyasındakihost.js](durable-functions-bindings.md#host-json) ve ayarlarını, tümünün aynı değerleri kullanabilmesi için yapılandırarak tabloları paylaşabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure 'da dayanıklı işlevler örnekleri yönetme](durable-functions-instance-management.md).
 

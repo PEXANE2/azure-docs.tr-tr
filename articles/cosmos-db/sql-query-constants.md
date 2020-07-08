@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873429"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
@@ -22,14 +21,14 @@ ms.locfileid: "74873429"
 |**Tür**|**Değerler sırası**|  
 |-|-|  
 |**Tanımlayan**|Tek değer: **tanımsız**|  
-|**Değer**|Tek değer: **null**|  
+|**Null**|Tek değer: **null**|  
 |**Boole**|Değerler: **false**, **true**.|  
-|**Sayısından**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
+|**Sayı**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
 |**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
 |**Dizi**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız**bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
 |**Nesne**|Sırasız bir sıfır veya daha fazla ad/değer çifti kümesi. Ad bir Unicode dizesidir, değer **tanımsız**olmayan herhangi bir skaler veri türünde olabilir.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Sözdizimi
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -107,7 +106,7 @@ ms.locfileid: "74873429"
 |-|-|-|  
 |\\'|kesme işareti (')|U + 0027|  
 |\\"|tırnak işareti (")|U + 0022|  
-|\\\ |ters eğik çizgi\\()|U + 005C|  
+|\\\ |ters eğik çizgi ( \\ )|U + 005C|  
 |\\/|eğik çizgi (/)|U + 002F|  
 |\b|geri al|U + 0008|  
 |\f|Form akışı|U + 000C|  

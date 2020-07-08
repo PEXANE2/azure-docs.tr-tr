@@ -4,10 +4,9 @@ description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izi
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74893493"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
@@ -30,7 +29,7 @@ Her zaman izin uygulandığında en iyi yöntem, bir kişiye veya hizmete bir g�
 
 ### <a name="cicd-solutions"></a>CI/CD çözümleri
 
-CI/ `docker build` CD çözümlerindeki komutları otomatikleştirmede yetenekler gerekir `docker push` . Bu gözetimsiz hizmet senaryolarında **Acrpush** rolünü atamayı öneririz. Bu rol, daha geniş **katkıda bulunan** rolünün aksine, hesabın diğer kayıt defteri işlemlerini gerçekleştirmesini veya Azure Resource Manager erişmesini önler.
+`docker build`CI/CD çözümlerindeki komutları otomatikleştirmede `docker push` yetenekler gerekir. Bu gözetimsiz hizmet senaryolarında **Acrpush** rolünü atamayı öneririz. Bu rol, daha geniş **katkıda bulunan** rolünün aksine, hesabın diğer kayıt defteri işlemlerini gerçekleştirmesini veya Azure Resource Manager erişmesini önler.
 
 ### <a name="container-host-nodes"></a>Kapsayıcı konak düğümleri
 
@@ -38,11 +37,11 @@ Benzer şekilde, Kapsayıcılarınızı çalıştıran düğümlerin **Acrpull**
 
 ### <a name="visual-studio-code-docker-extension"></a>Docker uzantısını Visual Studio Code
 
-Visual Studio Code [Docker uzantısı](https://code.visualstudio.com/docs/azure/docker)gibi araçlar için, kullanılabilir Azure Container kayıt defterlerini listelemek üzere ek kaynak sağlayıcısı erişimi gerekir. Bu durumda, kullanıcılarınıza **okuyucu** veya **katkıda bulunan** rolü erişimi sağlayın. Bu roller, `docker pull` `docker push` `az acr list` `az acr build`,, ve diğer yeteneklere izin verir. 
+Visual Studio Code [Docker uzantısı](https://code.visualstudio.com/docs/azure/docker)gibi araçlar için, kullanılabilir Azure Container kayıt defterlerini listelemek üzere ek kaynak sağlayıcısı erişimi gerekir. Bu durumda, kullanıcılarınıza **okuyucu** veya **katkıda bulunan** rolü erişimi sağlayın. Bu roller `docker pull` ,, `docker push` , `az acr list` `az acr build` ve diğer yeteneklere izin verir. 
 
 ## <a name="access-resource-manager"></a>Erişim Kaynak Yöneticisi
 
-[Azure CLI](/cli/azure/)ile Azure Portal ve kayıt defteri yönetimi için Azure Resource Manager erişim gerekir. Örneğin, `az acr list` komutunu kullanarak kayıt defterlerinin listesini almak için bu izin kümesine ihtiyacınız vardır. 
+[Azure CLI](/cli/azure/)ile Azure Portal ve kayıt defteri yönetimi için Azure Resource Manager erişim gerekir. Örneğin, komutunu kullanarak kayıt defterlerinin listesini almak için `az acr list` Bu izin kümesine ihtiyacınız vardır. 
 
 ## <a name="create-and-delete-registry"></a>Kayıt defteri oluştur ve Sil
 
@@ -54,7 +53,7 @@ Bir görüntü özelliği `docker push` veya bir Helu grafiği gibi [desteklenen
 
 ## <a name="pull-image"></a>Çekme resmi
 
-Bir kayıt defterinden `docker pull` , karantinaya alınmamış bir görüntü veya HELI grafiği gibi başka bir [desteklenen yapıt](container-registry-image-formats.md) çekme özelliği. Yetkili kimliği kullanarak kayıt defteriyle [kimlik doğrulaması](container-registry-authentication.md) gerektirir.
+`docker pull`Bir kayıt defterinden, karantinaya alınmamış bir görüntü veya HELI grafiği gibi başka bir [desteklenen yapıt](container-registry-image-formats.md) çekme özelliği. Yetkili kimliği kullanarak kayıt defteriyle [kimlik doğrulaması](container-registry-authentication.md) gerektirir.
 
 ## <a name="delete-image-data"></a>Görüntü verilerini sil
 
@@ -81,7 +80,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 Özel bir rol tanımlamak için bkz. [özel rol oluşturma adımları](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
 
 > [!IMPORTANT]
-> Özel bir rolde Azure Container Registry Şu anda tüm eşleşen eylemlere erişim veren `Microsoft.ContainerRegistry/*` veya `Microsoft.ContainerRegistry/registries/*` gibi joker karakterleri desteklememektedir. Rol içinde her türlü gerekli eylemi belirtin.
+> Özel bir rolde Azure Container Registry Şu anda `Microsoft.ContainerRegistry/*` `Microsoft.ContainerRegistry/registries/*` tüm eşleşen eylemlere erişim veren veya gibi joker karakterleri desteklememektedir. Rol içinde her türlü gerekli eylemi belirtin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

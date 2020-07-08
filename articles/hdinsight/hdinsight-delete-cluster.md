@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807145"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Tarayıcınızı, PowerShell 'i veya Azure CLı 'yı kullanarak bir HDInsight kümesini silme
@@ -24,9 +23,9 @@ HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme s
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Sol menüden **Tüm Service** > **Analytics** > **HDInsight kümelerine** gidin ve kümenizi seçin.
+2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin ve kümenizi seçin.
 
 3. Varsayılan görünümden **Sil** simgesini seçin. Kümenizi silmek için istemi izleyin.
 
@@ -34,7 +33,7 @@ HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme s
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Aşağıdaki `CLUSTERNAME` koddaki HDInsight kümenizin adıyla değiştirin. Bir PowerShell isteminden, kümeyi silmek için aşağıdaki komutu girin:
+`CLUSTERNAME`Aşağıdaki koddaki HDInsight kümenizin adıyla değiştirin. Bir PowerShell isteminden, kümeyi silmek için aşağıdaki komutu girin:
 
 ```powershell
 Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
@@ -42,7 +41,7 @@ Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
 
 ## <a name="azure-cli"></a>Azure CLI
 
-' `CLUSTERNAME` Yi HDInsight kümenizin adıyla ve `RESOURCEGROUP` kaynak grubunuzun adı ile aşağıdaki kodda olacak şekilde değiştirin.  Bir komut isteminden, kümeyi silmek için aşağıdakileri girin:
+`CLUSTERNAME`' Yi HDInsight kümenizin adıyla ve `RESOURCEGROUP` kaynak grubunuzun adı ile aşağıdaki kodda olacak şekilde değiştirin.  Bir komut isteminden, kümeyi silmek için aşağıdakileri girin:
 
 ```azurecli
 az hdinsight delete --name CLUSTERNAME --resource-group RESOURCEGROUP

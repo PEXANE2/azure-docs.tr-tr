@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74885645"
 ---
 # <a name="streaming-endpoints-overview"></a>Akış uç noktalarına genel bakış  
@@ -33,7 +32,7 @@ Azure Media Services şu özellikleri akış uç noktası varlığına ekledi: *
 Bir Azure Media Services hesabı oluşturduğunuzda, **durdurulmuş** durumda sizin için varsayılan standart akış uç noktası oluşturulur. Varsayılan akış uç noktasını silemezsiniz. Hedeflenen bölgedeki Azure CDN kullanılabilirliğine bağlı olarak, varsayılan olarak yeni oluşturulan varsayılan akış uç noktası, "StandardVerizon" CDN sağlayıcısı tümleştirmesini da içerir. 
                 
 > [!NOTE]
-> Azure CDN tümleştirme, akış uç noktası başlatılmadan önce devre dışı bırakılabilir. `hostname` Ve akış URL 'SI, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
+> Azure CDN tümleştirme, akış uç noktası başlatılmadan önce devre dışı bırakılabilir. `hostname`Ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
 
 Bu konu, akış uç noktaları tarafından sunulan ana işlevlere genel bir bakış sunar.
 
@@ -78,9 +77,9 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 |Tür|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasik|1.0|0|NA|Ücretsiz|
-|Standart akış uç noktası (Önizleme)|2,0|0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|1.0|>0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|2,0|>0|Yes|Ödenmemiş|
+|Standart akış uç noktası (Önizleme)|2.0|0|Evet|Ödenmemiş|
+|Premium Akış Birimleri|1.0|>0|Evet|Ödenmemiş|
+|Premium Akış Birimleri|2.0|>0|Evet|Ödenmemiş|
 
 ### <a name="features"></a>Özellikler
 
@@ -89,11 +88,11 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Yes|Yes
-Dinamik paketleme|Yes|Yes
+Dinamik şifreleme|Evet|Evet
+Dinamik paketleme|Evet|Evet
 Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek akış birimleri.
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
-Aşamalı indirme|Yes|Yes
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
+Aşamalı indirme|Evet|Evet
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım. 
 
 <sup>1</sup> yalnızca CDN bitiş noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
@@ -120,6 +119,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

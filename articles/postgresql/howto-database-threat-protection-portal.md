@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74776152"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması-tek sunucu
@@ -27,7 +26,7 @@ Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birle�
 > Bu özellik, Azure 'un PostgreSQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
 
 ## <a name="set-up-threat-detection"></a>Tehdit algılamayı ayarlama
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
+1. Üzerinde Azure portal başlatın [https://portal.azure.com](https://portal.azure.com) .
 2. Korumak istediğiniz PostgreSQL için Azure veritabanı sunucusu 'nun yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Gelişmiş tehdit koruması (Önizleme)** öğesini seçin.
 3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
 

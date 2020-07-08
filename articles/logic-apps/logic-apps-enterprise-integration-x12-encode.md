@@ -9,16 +9,15 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792355"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack iletileri Azure Logic Apps kodlama
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te X12 iletilerini kodlama
 
-Encode x12 ileti Bağlayıcısı ile EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, XML kodlu iletileri değişim içindeki EDI işlem kümelerine dönüştürebilir ve teknik bir onay, Işlevsel bildirim veya her ikisini de isteyebilirsiniz.
-Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
+Encode X12 ileti bağlayıcısını kullanarak EDI ve iş ortağına özgü özellikleri doğrulayabilir, XML kodlamalı iletileri değişim sırasında EDI işlem kümelerine dönüştürebilir ve Teknik Bilgi, İşlevsel Bilgi veya ikisi için birden talepte bulunabilirsiniz.
+Bu bağlayıcıyı kullanmak için bunu mantıksal uygulamanızdaki tetikleyicilerden birine eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -70,7 +69,7 @@ X12 iletilerini kimliklere göre kodlamayı seçerseniz, x12 sözleşmenizde yap
    
 ![Gönderen ve alıcı için kimlikler sağlayın, kodlanacak XML iletisini seçin](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12 kodlama ayrıntıları
+## <a name="x12-encode-details"></a>X12 ile kodlama ayrıntıları
 
 X12 encode Bağlayıcısı şu görevleri gerçekleştirir:
 

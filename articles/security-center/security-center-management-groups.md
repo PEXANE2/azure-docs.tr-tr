@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74559341"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde edin
@@ -39,8 +38,8 @@ Yönetim gruplarına ayrıntılı bir genel bakış için bkz. [Azure Yönetim g
 Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yönetim gruplarına uygulayabilirsiniz. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan ilkeleri devralır. Güvenlik Merkezi 'ni eklemek için yönetim grupları gerekli olmasa da, kök yönetim grubunun oluşturulması için en az bir yönetim grubu oluşturmanız önemle tavsiye edilir. Grup oluşturulduktan sonra, Azure AD kiracınız kapsamındaki tüm abonelikler buna bağlanır. PowerShell ve daha fazla bilgi için yönergeler için bkz. [kaynak ve kuruluş yönetimi için yönetim grupları oluşturma](../azure-resource-manager/management-groups-create.md).
 
  
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 3. Ana sayfada **yeni yönetim grubu** ' nu seçin. 
 
     ![Ana grup](./media/security-center-management-groups/main.png) 
@@ -49,10 +48,10 @@ Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yöneti
     - Görünen ad alanı Azure portal içinde görüntülenen addır. Ayrı bir görünen ad, yönetim grubu oluşturulurken isteğe bağlı bir alandır ve herhangi bir zamanda değiştirilebilir.  
 
       ![Oluştur](./media/security-center-management-groups/create_context_menu.png)  
-5.  **Kaydet** 'i seçin
+5.  **Kaydet**'i seçin
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Azure portal Yönetim gruplarını görüntüleme
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Yönetim gruplarını görüntülemek için Azure ana menüsünde **tüm hizmetler** ' i seçin.
 3. **Genel**altında **Yönetim grupları**' yi seçin.
 
@@ -93,7 +92,7 @@ Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticileri
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Kullanıcılara Azure portal aracılığıyla RBAC rolleri atama: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. Yönetim gruplarını görüntülemek için Azure ana menüsünde **tüm hizmetler** ' i seçin ve **Yönetim grupları**' yi seçin.
 1.  Bir yönetim grubu seçin ve **Ayrıntılar**' a tıklayın.
 
@@ -140,7 +139,7 @@ Tüm Aboneliklerle ilgili görünürlük elde etmek için, kiracı yöneticileri
 ### <a name="open-or-refresh-security-center"></a>Güvenlik merkezini aç veya Yenile
 Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm aboneliklerde görünürlük olduğunu doğrulamak için Azure Güvenlik Merkezi 'ni açın veya yenileyin. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Güvenlik Merkezi 'nde görüntülemek istediğiniz abonelik seçicisindeki tüm abonelikleri seçtiğinizden emin olun.
 
     ![Abonelik seçici ekran görüntüsü](./media/security-center-management-groups/subscription-selector.png)

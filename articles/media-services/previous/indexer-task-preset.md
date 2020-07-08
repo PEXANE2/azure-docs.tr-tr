@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 29753759af341f82429f12b6710ae9c32dcb4103
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896035"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer için görev önayarı 
@@ -30,9 +29,9 @@ Bu konuda, dizin oluşturma işinize geçirmeniz gereken görev ön ayarı açı
 
 Aşağıdaki tabloda, yapılandırma XML öğelerinin ve öznitelikleri açıklanmaktadır.
 
-|Adı|Gerektirme|Açıklama|
+|Name|Gerektirme|Açıklama|
 |---|---|---|
-|Girdi|true|Dizin eklemek istediğiniz varlık dosyaları.<br/>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.<br/><br/>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>```<input name="TestFile.wmv" />```<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/>-Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin.<br/>-Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin.<br/>-Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).<br/>-Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>```<input list="input.lst">```<br/><br/>**Note:** Bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur.|
+|Giriş|true|Dizin eklemek istediğiniz varlık dosyaları.<br/>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.<br/><br/>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>```<input name="TestFile.wmv" />```<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/>-Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin.<br/>-Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin.<br/>-Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).<br/>-Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>```<input list="input.lst">```<br/><br/>**Note:** Bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur.|
 |meta veriler|yanlış|Belirtilen varlık dosyalarının meta verileri.<br/>```<metadata key="..." value="..." />```<br/><br/>Önceden tanımlanmış anahtarlar için değerler sağlayabilirsiniz. <br/><br/>Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>**başlık** ve **Açıklama** -konuşma tanıma doğruluğunu artırmak için dil modelini güncelleştirmek üzere kullanılır.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**Kullanıcı adı** ve **parola** -http veya HTTPS aracılığıyla Internet dosyaları indirirken kimlik doğrulaması için kullanılır.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>Kullanıcı adı ve parola değerleri, giriş bildirimindeki tüm medya URL 'Leri için geçerlidir.|
 |özellikler<br/><br/>Sürüm 1,2 ' ye eklenmiştir. Şu anda desteklenen tek özellik konuşma tanıma ("ASR") ' dir.|yanlış|Konuşma tanıma özelliği aşağıdaki ayarlar anahtarlarına sahiptir:<br/><br/>Dil:<br/>-Multimedya dosyasında tanınmak için doğal dil.<br/>-İngilizce, Ispanyolca<br/><br/>CaptionFormats:<br/>-istenen çıkış resim yazısı biçimlerinin noktalı virgülle ayrılmış listesi (varsa)<br/>-ttml; WEBVTT<br/><br/><br/>GenerateKeywords:<br/>-Anahtar sözcüğünün XML dosyası gerekip gerekmediğini belirten bir Boole bayrağı.<br/>Değeri Yanlýþ.|
 

@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74408748"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Azure Linux Sanal Makineleri önyükleme hatalarında sorun giderme
@@ -40,7 +39,7 @@ Azure kullanarak bir kurtarma VM 'sine işletim sistemi diski ekleyerek Linux VM
 - [Bash kurtarma betikleri](https://github.com/sribs/azure-support-scripts)
 
 - [CLI](troubleshoot-recovery-disks-linux.md)
-- [Azure portal](troubleshoot-recovery-disks-portal-linux.md)
+- [Azure portalındaki](troubleshoot-recovery-disks-portal-linux.md)
 
 
 ## <a name="disk-swap-video"></a>Disk takas videosu:

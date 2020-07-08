@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807162"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN ile yüksek kullanılabilirliğe sahip Apache Spark akışı işleri oluşturma
@@ -71,8 +70,8 @@ Ancak, bir **sürücü** başarısız olursa, tüm ilişkili yürüticileri baş
 
 DStream checkişaret ile sürücüleri kurtarmak için:
 
-* Bu yapılandırma ayarıyla `yarn.resourcemanager.am.max-attempts`Yarn 'de otomatik sürücü yeniden başlatmayı yapılandırın.
-* İle `streamingContext.checkpoint(hdfsDirectory)`uyumlu bir dosya sisteminde denetim noktası dizini ayarlayın.
+* Bu yapılandırma ayarıyla YARN 'de otomatik sürücü yeniden başlatmayı yapılandırın `yarn.resourcemanager.am.max-attempts` .
+* İle uyumlu bir dosya sisteminde denetim noktası dizini ayarlayın `streamingContext.checkpoint(hdfsDirectory)` .
 * Kurtarma için denetim noktaları kullanmak üzere kaynak kodunu yeniden yapılandır, örneğin:
 
     ```scala
@@ -88,7 +87,7 @@ DStream checkişaret ile sürücüleri kurtarmak için:
         context.start()
     ```
 
-* Üzerine yazma öncesi günlüğü (WAL) `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`etkinleştirerek kayıp veri kurtarmayı yapılandırın ve Ile `StorageLevel.MEMORY_AND_DISK_SER`giriş DStreams için bellek içi çoğaltmayı devre dışı bırakın.
+* Üzerine yazma öncesi günlüğü (WAL) etkinleştirerek kayıp veri kurtarmayı yapılandırın `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")` ve ile giriş DStreams için bellek içi çoğaltmayı devre dışı bırakın `StorageLevel.MEMORY_AND_DISK_SER` .
 
 Denetim noktası + WAL + güvenilir alıcıları kullanarak özetlemek için, "en az bir kez" veri kurtarma sağlayabilirsiniz:
 
@@ -106,7 +105,7 @@ Denetim noktası + WAL + güvenilir alıcıları kullanarak özetlemek için, "e
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark ve Spark akış Kullanıcı arabirimi, yapılandırılabilir bir ölçüm sistemine sahiptir. Ayrıca, Graphite/Grafana gibi ek kitaplıkları da kullanabilirsiniz; örneğin ' sayı kaydı işlendi ', ' sürücü & yürüticilerine bellek/GC kullanımı ', ' Toplam gecikme ', ' küme kullanımı ' vb. Yapılandırılmış akış sürümü 2,1 veya üzeri bir sürümde ek ölçümler toplamak `StreamingQueryListener` için kullanabilirsiniz.
+* Spark ve Spark akış Kullanıcı arabirimi, yapılandırılabilir bir ölçüm sistemine sahiptir. Ayrıca, Graphite/Grafana gibi ek kitaplıkları da kullanabilirsiniz; örneğin ' sayı kaydı işlendi ', ' sürücü & yürüticilerine bellek/GC kullanımı ', ' Toplam gecikme ', ' küme kullanımı ' vb. Yapılandırılmış akış sürümü 2,1 veya üzeri bir sürümde `StreamingQueryListener` ek ölçümler toplamak için kullanabilirsiniz.
 
 * Uzun süre çalışan işleri segmentleyebilirsiniz.  Kümeye bir Spark akış uygulaması gönderildiğinde, işin çalıştırıldığı YARN kuyruğu tanımlanmalıdır. Yarı çalışan işleri ayrı sıralara göndermek için [Yarn kapasite zamanlayıcısını](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) kullanabilirsiniz.
 
