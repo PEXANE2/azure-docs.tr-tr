@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855910"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -43,11 +43,11 @@ Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra,
 
 | Araç          | Ayarlar | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -a (Eşleyici) | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar | [Bağlantısının](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantısının](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -a (Eşleyici) | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar | [Bağlantı](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -65,15 +65,11 @@ Bazen veri işlem hatları, çok sayıda küçük dosya içeren ham veriler üze
 
 Hive ve ADLA iş yükleri için, zaman serisi verilerinin bölümlenmesi, bazı sorguların verilerin yalnızca bir alt kümesini okumasına yardımcı olabilir ve bu da performansı geliştirir.
 
-Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için yapılandırılmış bir adlandırma ile yerleştirir. Şu tarihe göre yapılandırılmış veriler için görtiğimiz yaygın bir örnek aşağıda verilmiştir:
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için yapılandırılmış bir adlandırma ile yerleştirir. Aşağıda, Date: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. tsv*tarafından yapılandırılan veriler için görtiğimiz yaygın bir örnek verilmiştir.
 
 Tarih saat bilgilerinin hem klasör hem de dosya adında göründüğünü unutmayın.
 
-Tarih ve saat için aşağıdaki genel bir örüntü
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+Tarih ve saat için, aşağıdaki ortak bir örüntü: *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm. tsv*.
 
 Yine, klasör ve dosya kuruluşunda yaptığınız seçim, daha büyük dosya boyutları ve her klasörde makul sayıda dosya için iyileştirmelidir.
 

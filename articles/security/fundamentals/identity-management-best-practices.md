@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758631"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855894"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -167,7 +167,7 @@ Tüm kullanıcılarınız için iki aşamalı doğrulama gerektirmenizi öneriri
 * Tüm kullanıcılar için Microsoft Authenticator MFA sınaması gerektir
 * Eski kimlik doğrulama protokollerini kısıtla.
 
-Bu yöntem tüm lisanslama katmanlarında kullanılabilir ancak mevcut koşullu erişim ilkeleriyle karıştırılamaz. Azure AD güvenlik Varsayılanları ' nda daha fazla bilgi edinebilirsiniz
+Bu yöntem tüm lisanslama katmanlarında kullanılabilir ancak mevcut koşullu erişim ilkeleriyle karıştırılamaz. [Azure AD güvenlik Varsayılanları](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) ' nda daha fazla bilgi edinebilirsiniz
 
 **2. seçenek**: [kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirin](../../active-directory/authentication/howto-mfa-userstates.md).   
 **Avantaj**: Bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir. Hem bulutta hem de [azure Multi-Factor Authentication sunucusu birlikte çalışarak azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion). Bu yöntemin kullanılması, kullanıcıların her oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
@@ -189,7 +189,7 @@ Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en 
 Bu yöntem, tüm bulut uygulamaları için Kullanıcı ve oturum açma riskini temel alarak iki adımlı doğrulamanın gerekip gerekmediğini belirleme Azure AD Kimlik Koruması risk değerlendirmesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](/azure/active-directory/identity-protection/overview)bulabilirsiniz.
 
 > [!Note]
-> Seçenek 1, Kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirme, koşullu erişim ilkelerini geçersiz kılar. Seçenekler 2 ve 3 koşullu erişim ilkeleri kullandığından, 1 seçeneğini bunlarla birlikte kullanamazsınız.
+> Seçenek 2, Kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirme, koşullu erişim ilkelerini geçersiz kılar. Seçenekler 3 ve 4 koşullu erişim ilkeleri kullandığından, seçenek 2 ile birlikte kullanamazsınız.
 
 İki adımlı doğrulama gibi ek bir kimlik koruması katmanı eklememe kurumları, kimlik bilgisi hırsızlığı saldırısında daha açıktır. Kimlik bilgisi hırsızlığı saldırısı, verilerin güvenliğinin aşılmasına yol açabilir.
 

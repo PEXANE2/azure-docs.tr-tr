@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856137"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -30,17 +30,17 @@ Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını o
 
 Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](automation-update-management.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
 
-   Güncelleştirme Yönetimi özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Güncelleştirme Yönetimi özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
-    ```
+```
 
-   Değişiklik İzleme ve envanter özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Değişiklik İzleme ve envanter özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
-    ```
+```
 
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
@@ -82,11 +82,11 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 |Runbook türü | Destekleniyor |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Evet |
 |PowerShell |Evet<sup>1</sup> |
-|PowerShell İş Akışı |No |
-|Grafik |No |
-|Grafik PowerShell Iş akışı |No |
+|PowerShell İş Akışı |Hayır |
+|Grafik |Hayır |
+|Grafik PowerShell Iş akışı |Hayır |
 
 <sup>1</sup> PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

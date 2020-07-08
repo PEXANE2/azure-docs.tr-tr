@@ -3,12 +3,12 @@ title: DevTest Labs sanal makineniz için özel yapılar oluşturun | Microsoft 
 description: Azure DevTest Labs ile kullanmak için kendi yapılarınızı nasıl yazacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857020"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturma
 
@@ -24,52 +24,56 @@ Bir VM sağlamadıktan sonra, uygulamanızı dağıtmak ve ayarlamak için *yap�
 ## <a name="artifact-definition-file-format"></a>Yapıt tanım dosyası biçimi
 Aşağıdaki örnek, bir tanım dosyasının temel yapısını oluşturan bölümleri gösterir:
 
-    {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-      "title": "",
-      "description": "",
-      "iconUri": "",
-      "targetOsType": "",
-      "parameters": {
-        "<parameterName>": {
-          "type": "",
-          "displayName": "",
-          "description": ""
-        }
-      },
-      "runCommand": {
-        "commandToExecute": ""
+```json
+  {
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "",
+    "description": "",
+    "iconUri": "",
+    "targetOsType": "",
+    "parameters": {
+      "<parameterName>": {
+        "type": "",
+        "displayName": "",
+        "description": ""
       }
+    },
+    "runCommand": {
+      "commandToExecute": ""
     }
+  }
+```
 
 | Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-| $schema |No |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
-| başlık |Yes |Laboratuvarda görünen yapıt adı. |
-| açıklama |Yes |Laboratuvarda görünen yapının açıklaması. |
-| ıconuri |No |Laboratuvarda görünen simgenin URI 'SI. |
-| targetOsType |Yes |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
-| parametreler |No |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
-| Eylemine |Yes |Bir VM üzerinde yürütülen yapıt install komutu. |
+| $schema |Hayır |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
+| başlık |Evet |Laboratuvarda görünen yapıt adı. |
+| açıklama |Evet |Laboratuvarda görünen yapının açıklaması. |
+| ıconuri |Hayır |Laboratuvarda görünen simgenin URI 'SI. |
+| targetOsType |Evet |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
+| parametreler |Hayır |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
+| Eylemine |Evet |Bir VM üzerinde yürütülen yapıt install komutu. |
 
 ### <a name="artifact-parameters"></a>Yapıt parametreleri
 Tanım dosyasının parametreler bölümünde, bir kullanıcının bir yapıtı yüklediklerinde hangi değerlere giriş yapabilir olduğunu belirtin. Yapıt install komutunda bu değerlere başvurabilirsiniz.
 
 Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
 
-    "parameters": {
-      "<parameterName>": {
-        "type": "<type-of-parameter-value>",
-        "displayName": "<display-name-of-parameter>",
-        "description": "<description-of-parameter>"
-      }
+```json
+  "parameters": {
+    "<parameterName>": {
+      "type": "<type-of-parameter-value>",
+      "displayName": "<display-name-of-parameter>",
+      "description": "<description-of-parameter>"
     }
+  }
+```
 
 | Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-| tür |Yes |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
-| displayName |Yes |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |
-| açıklama |Yes |Laboratuvarda görüntülenen parametrenin açıklaması. |
+| tür |Evet |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
+| displayName |Evet |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |
+| açıklama |Evet |Laboratuvarda görüntülenen parametrenin açıklaması. |
 
 İzin verilen türler şunlardır:
 
@@ -115,12 +119,14 @@ Aşağıdaki listede yaygın işlevler gösterilmektedir:
 
 Aşağıdaki örnek, bir değer oluşturmak için ifadelerin ve işlevlerin nasıl kullanılacağını gösterir:
 
-    runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]"
-    }
+```json
+  runCommand": {
+      "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+  , ' -RawPackagesList ', parameters('packages')
+  , ' -Username ', parameters('installUsername')
+  , ' -Password ', parameters('installPassword'))]"
+  }
+```
 
 ## <a name="create-a-custom-artifact"></a>Özel yapıt oluşturma
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857006"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 İçeri/dışarı aktarma, redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, redsıs veritabanı (RDB) anlık görüntüsü için bir Azure önbelleğini bir Azure depolama hesabındaki bir Blobun içeri aktarıp dışarı aktararak redsıs için Azure Cache 'e içeri aktarıp dışarı aktarmanıza olanak tanır.
@@ -28,7 +28,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
 >
 >
 
-## <a name="import"></a>İçeri Aktarma
+## <a name="import"></a>İçeri Aktar
 İçeri aktarma, Linux, Windows veya Amazon Web Services ve diğer bulut sağlayıcılarından sonra, herhangi bir bulutta veya ortamda çalışan redin uyumlu RDB dosyalarını getirmek için kullanılabilir. Verilerin içeri aktarılması, önceden doldurulmuş verilerle bir önbellek oluşturmanın kolay bir yoludur. İçeri aktarma işlemi sırasında Redsıs için Azure önbelleği, RDB dosyalarını Azure depolama alanından belleğe yükler ve ardından anahtarları önbelleğe ekler.
 
 > [!NOTE]
@@ -55,7 +55,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
    >
    >
 
-    ![İçeri Aktarma](./media/cache-how-to-import-export-data/cache-import-blobs.png)
+    ![İçeri Aktar](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
     Azure portal bildirimlerini izleyerek veya [Denetim günlüğündeki](../azure-resource-manager/management/view-activity-logs.md)olayları görüntüleyerek içeri aktarma işleminin ilerlemesini izleyebilirsiniz.
 
@@ -124,11 +124,11 @@ Redsıs için Azure önbelleği, RDB sürüm 7 aracılığıyla RDB içeri aktar
 Evet, kümelenmiş bir önbellek ve kümelenmemiş bir önbellek arasında içeri/dışarı aktarma yapabilirsiniz. Redin kümesi [yalnızca 0 veritabanını desteklediğinden](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), 0 dışındaki veritabanlarındaki tüm veriler içeri aktarılmaz. Kümelenmiş önbellek verileri içeri aktarıldığında, anahtarlar kümenin parçaları arasında yeniden dağıtılır.
 
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Özel veritabanları ayarıyla Içeri/dışarı aktarma nasıl çalışır?
-Bazı fiyatlandırma katmanları farklı [veritabanları sınırlarına](cache-configure.md#databases)sahiptir, bu nedenle, önbellek oluşturma sırasında `databases` ayar için özel bir değer yapılandırdıysanız içeri aktarırken bazı hususlar vardır.
+Bazı fiyatlandırma katmanları farklı [veritabanları sınırlarına](cache-configure.md#databases)sahiptir, bu nedenle, `databases` önbellek oluşturma sırasında ayar için özel bir değer yapılandırdıysanız içeri aktarırken bazı hususlar vardır.
 
-* İçeri aktardığınız katmandan daha düşük `databases` bir sınır içeren bir fiyatlandırma katmanına aktarılırken:
-  * Tüm fiyatlandırma katmanları için 16 olan varsayılan sayısını `databases`kullanıyorsanız, hiçbir veri kaybolmaz.
-  * İçeri aktardığınız katmanın sınırları dahilinde `databases` olan özel bir sayı kullanıyorsanız hiçbir veri kaybı olmaz.
+* İçeri aktardığınız katmandan daha düşük bir sınır içeren bir fiyatlandırma katmanına aktarılırken `databases` :
+  * `databases`Tüm fiyatlandırma katmanları için 16 olan varsayılan sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
+  * `databases`İçeri aktardığınız katmanın sınırları dahilinde olan özel bir sayı kullanıyorsanız hiçbir veri kaybı olmaz.
   * Verdiğiniz veriler, yeni katmanın sınırlarını aşan bir veritabanında veri içeriyorsa, bu daha yüksek veritabanlarının verileri içeri aktarılmaz.
 
 ### <a name="how-is-importexport-different-from-redis-persistence"></a>Redsıs kalıcılığı 'nden Içeri/dışarı aktarma farkı nedir?
@@ -142,11 +142,13 @@ Evet, PowerShell yönergeleri için bkz. [redsıs Için Azure önbelleğini içe
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Içeri/dışarı aktarma işlemi sırasında bir zaman aşımı hatası aldım. Ne anlama geliyor?
 İşlemi başlatmadan önce **verileri Içeri aktar** veya **verileri dışarı aktar** dikey penceresinde 15 dakikadan daha uzun bir süre devam ederseniz, aşağıdaki örneğe benzer bir hata iletisiyle karşılaşırsınız:
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 Bu sorunu çözmek için, 15 dakikadan önce içeri aktarma veya dışarı aktarma işlemini başlatın.
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Verileri Azure Blob depolamaya verirken bir hata aldım. Ne oldu?
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Verileri Azure Blob depolamaya verirken bir hata aldım. Neler oldu?
 Dışarı aktarma yalnızca sayfa Blobları olarak depolanan RDB dosyaları ile birlikte kullanılabilir. Diğer blob türleri, sık ve seyrek katmanlara sahip BLOB depolama hesapları da dahil olmak üzere şu anda desteklenmemektedir. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar

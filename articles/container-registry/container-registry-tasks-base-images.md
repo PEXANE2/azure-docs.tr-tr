@@ -3,12 +3,12 @@ title: Temel görüntü güncelleştirmeleri-görevler
 description: Uygulama kapsayıcısı görüntülerinin temel görüntüleri ve temel görüntü güncelleştirmesinin Azure Container Registry görevi nasıl tetikleyebileceğinizi öğrenin.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918513"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR görevleri için temel görüntü güncelleştirmeleri hakkında
 
@@ -37,7 +37,14 @@ Bir Dockerfile dosyasındaki görüntü yapıları için ACR görevi aşağıdak
 * Docker Hub 'da ortak depo 
 * Microsoft Container Registry genel depo
 
-`FROM` Deyimde belirtilen temel görüntü bu konumlardan birinde bulunuyorsa, ACR görevi görüntünün tabanı güncelleştirildikten sonra yeniden oluşturulmasını sağlamak için bir kanca ekler.
+Deyimde belirtilen temel görüntü `FROM` bu konumlardan birinde bulunuyorsa, ACR görevi görüntünün tabanı güncelleştirildikten sonra yeniden oluşturulmasını sağlamak için bir kanca ekler.
+
+## <a name="base-image-notifications"></a>Temel görüntü bildirimleri
+
+Temel görüntünün güncelleştirildiği zaman ve bağımlı görevin tetiklenmesi arasındaki süre, temel görüntü konumuna bağlıdır:
+
+* **Docker Hub veya MCR 'deki genel depodan temel görüntüler** -genel depolardaki temel görüntüler için bir ACR görevi, görüntü güncelleştirmelerini 10 ila 60 dakika arasında rastgele bir aralıkta denetler. Bağımlı görevler buna göre çalışır.
+* **Bir Azure Container Registry 'Den temel** görüntüler-Azure Container kayıt defterlerinde temel görüntüler için bir ACR görevi, temel görüntüsü güncelleştirildiği zaman bir çalıştırmayı hemen tetikler. Temel görüntü, görevin çalıştığı ACR veya herhangi bir bölgedeki farklı bir ACR içinde olabilir.
 
 ## <a name="additional-considerations"></a>Diğer konular
 
@@ -51,7 +58,7 @@ Bir Dockerfile dosyasındaki görüntü yapıları için ACR görevi aşağıdak
 
 * **Bağımlılıkları izlemek Için Tetikle** -BIR ACR görevinin, kendi temel görüntüsünü içeren bir kapsayıcı görüntüsünün bağımlılıklarını belirlemesine ve izlemesine olanak tanımak için, önce görevi görüntüyü **en az bir kez**oluşturmak üzere tetiklemeniz gerekir. Örneğin, [az ACR Task Run][az-acr-task-run] komutunu kullanarak görevi el ile tetikleyin.
 
-* **Temel görüntü Için kararlı etiket** -temel görüntü güncelleştirmesinde bir görevi tetiklemek için, temel görüntünün gibi `node:9-alpine` *kararlı* bir etiketi olmalıdır. Bu etiketleme, işletim sistemi ve çerçeve düzeltme ekleriyle en son kararlı sürüme güncelleştirilmiş bir temel görüntü için tipik bir noktadır. Temel görüntü yeni bir sürüm etiketiyle güncelleştirilirse bir görevi tetiklemez. Görüntü etiketleme hakkında daha fazla bilgi için [en iyi yöntemler Kılavuzu](container-registry-image-tag-version.md)' na bakın. 
+* **Temel görüntü Için kararlı etiket** -temel görüntü güncelleştirmesinde bir görevi tetiklemek için, temel görüntünün gibi *kararlı* bir etiketi olmalıdır `node:9-alpine` . Bu etiketleme, işletim sistemi ve çerçeve düzeltme ekleriyle en son kararlı sürüme güncelleştirilmiş bir temel görüntü için tipik bir noktadır. Temel görüntü yeni bir sürüm etiketiyle güncelleştirilirse bir görevi tetiklemez. Görüntü etiketleme hakkında daha fazla bilgi için [en iyi yöntemler Kılavuzu](container-registry-image-tag-version.md)' na bakın. 
 
 * **Diğer görev Tetikleyicileri** -temel görüntü güncelleştirmeleri tarafından tetiklenen bir görevde, Tetikleyicileri [kaynak kodu işlemeye](container-registry-tutorial-build-task.md) veya [bir zamanlamaya](container-registry-tasks-scheduled.md)göre de etkinleştirebilirsiniz. Bir temel görüntü güncelleştirme, [çok adımlı bir görevi](container-registry-tasks-multi-step.md)de tetikleyebilir.
 

@@ -9,18 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/22/2019
+ms.date: 07/01/2020
 ms.author: diberry
-ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d15170e3785d8978b9cb21eae3b94b002f9172e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857172"
 ---
 # <a name="sentiment-analysis"></a>Yaklaşım analizi
 Yaklaşım Analizi yapılandırılırsa, LUSıS JSON yanıtı yaklaşım analizini içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
 
+LUSıS Metin Analizi v2 kullanır. 
 
 ## <a name="resolution-for-sentiment"></a>Yaklaşım için çözüm
 
@@ -28,7 +29,7 @@ Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' 
 
 #### <a name="english-language"></a>[İngilizce dili](#tab/english)
 
-Kültür `en-us`olduğunda yanıt şu şekilde olur:
+Kültür olduğunda `en-us` Yanıt şu şekilde olur:
 
 ```JSON
 "sentimentAnalysis": {

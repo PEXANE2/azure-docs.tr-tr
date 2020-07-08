@@ -13,23 +13,23 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71846543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856959"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure sanal makinelerinde 32 bit işletim sistemleri desteği
 
-Microsoft Azure artık kullanıcıların 32 bitlik Windows Işletim sistemlerini Azure 'a getirmelerini sağlar. Bu işletim sistemlerinden bazıları kendi yaşam süresi desteklenebilirliği anlaşmasıyla zaten ulaştığı için, Microsoft bu kullanıcılar için ek destek sunmayabilir. Ayrıca, Microsoft Azure bir sanal makinede (VM) çalışan Linux tabanlı veya Berkeley yazılım dağıtımı (BSD) tabanlı işletim sistemleri için de destek sunulmaz.
+Microsoft Azure artık kullanıcıların 32 bitlik Windows Işletim sistemlerini Azure 'a getirmelerini sağlar. Yalnızca özelleştirilmiş VHD 'ler desteklenir ve genelleştirilmiş görüntüler Azure 'da çalışmaz. Bu işletim sistemlerinden bazıları kendi yaşam süresi desteklenebilirliği anlaşmasıyla zaten ulaştığı için, Microsoft bu kullanıcılar için ek destek sunmayabilir. Ayrıca, Microsoft Azure bir sanal makinede (VM) çalışan Linux tabanlı veya Berkeley yazılım dağıtımı (BSD) tabanlı işletim sistemleri için de destek sunulmaz.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
 Azure sanal makinelerinde desteklenen işletim sistemleri hakkında daha fazla bilgi için aşağıdaki Microsoft Bilgi Bankası makalelerine bakın:
 
 * [Microsoft Azure sanal makineleri için Microsoft sunucu yazılımı desteği](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
-* [Azure 'da Linux ve açık kaynak teknolojisine yönelik destek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
+* [Azure’da Linux ve açık kaynak teknolojisi için destek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
 ## <a name="references"></a>Başvurular
 

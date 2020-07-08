@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855583"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -227,14 +227,14 @@ Linux VM oluştururken düz metin olarak SSH ortak anahtarlarını sağlayabilir
 linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
 --- | --- | --- | ---
 SSH | Hayır | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
-yol | Yes | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
-keyData | Yes | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
+yol | Evet | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
+keyData | Evet | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
 
 Bir örnek için bkz. [101-VM-sshkey GitHub hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>`Update-AzVmss`Aynı anahtar kasasından birden fazla sertifika ekledikten sonra çalıştırdığımda şu iletiyi görüyorum:
 
->Update-AzVmss: List Secret, izin verilmeyen/Subscriptions/ \< My-Subscription-id>/ResourceGroups/internal-RG-dev/Providers/Microsoft.keyvault/Vaults/internal-keyvault-dev yinelenen örneklerini içeriyor.
+>Update-AzVmss: LIST Secret, izin verilmeyen/Subscriptions//ResourceGroups/internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/internal-keyvault-dev örneklerinin yinelenen örneklerini içeriyor \<my-subscription-id> .
 
 Bu durum, mevcut kaynak Kasası için yeni bir kasa sertifikası kullanmak yerine aynı kasayı yeniden eklemeye çalışırsanız meydana gelebilir. `Add-AzVmssSecret`Ek gizli dizileri ekliyorsanız Komut düzgün çalışmaz.
 
@@ -338,7 +338,7 @@ Daha fazla bilgi için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com
 
 Evet. [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) ve [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)için Azure hızlı başlangıç şablonlarında bazı örnek MSI şablonlarına bakabilirsiniz.
 
-## <a name="deleting"></a>Silinmesinden
+## <a name="deleting"></a>Siliniyor
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Örnek silinirken, sanal makine ölçek kümesi örneklerine göre ayarlanan kilitler dikkate alınır mi?
 
@@ -671,7 +671,7 @@ Gerekli çalışma alanı kimliği ve workspaceKey ' nin Azure portal Log Analyt
 }
 ```
 
-Yeni bir VM oluşturulduğunda, sanal makinenin InstanceView özelliği, ekran görüntüsünün ayrıntılarını gösterir ve bu şekilde devam eder. Bir örneği aşağıda verilmiştir:
+Yeni bir VM oluşturulduğunda, sanal makinenin InstanceView özelliği, ekran görüntüsünün ayrıntılarını gösterir ve bu şekilde devam eder. İşte bir örnek:
 
 ```json
 "bootDiagnostics": {

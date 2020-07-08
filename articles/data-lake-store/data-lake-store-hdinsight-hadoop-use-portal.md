@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 225c67421a26edc52e06ee0cf0b6e1c965f52009
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856810"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
@@ -45,7 +45,7 @@ Bu bölümde, varsayılan veya ek depolama alanı olarak Data Lake Storage 1. he
 
 Varsayılan depolama hesabı olarak Data Lake Storage 1. hesabıyla bir HDInsight kümesi oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**' nün altında **Azure Data Lake Storage 1.**' yi seçin ve ardından aşağıdaki bilgileri girin:
 
@@ -64,7 +64,7 @@ Aşağıdaki yönergeler, varsayılan depolama alanı olarak Azure depolama hesa
 
 Ek depolama hesabı olarak Data Lake Storage 1. hesabıyla bir HDInsight kümesi oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**altında **Azure Storage**' ı seçin ve ardından aşağıdaki bilgileri girin:
 
@@ -170,7 +170,9 @@ Data Lake Storage 1. hesapta verilerle çalışırken, değiştirmek için birka
 
 Örneğin, ile oluşturduğunuz küme birincil depolama alanı olarak Data Lake Storage 1., verilerin yolu: *adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/Path/to/file*. Data Lake Storage 1. hesapta depolanan örnek verilerden tablo oluşturmak için bir Hive sorgusu aşağıdaki deyime benzer şekilde görünür:
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 Tanımlarını
 

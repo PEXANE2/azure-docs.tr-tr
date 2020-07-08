@@ -3,26 +3,26 @@ title: Sınırlar ve sınırlar-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma Bilgi Bankası ve hizmetinin bölümleri için meta sınırlara sahiptir. Test ve yayımlamak için bilgi bankanızı bu sınırlar dahilinde tutmanız önemlidir.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855551"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
-Aşağıda belirtilen Soru-Cevap Oluşturma limitleri [Azure bilişsel arama fiyatlandırma katmanı sınırlarının](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) ve [soru-cevap oluşturma fiyatlandırma katmanı sınırlarının](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)bir birleşimidir. Kaynak başına kaç bilgi tabanı oluşturabileceğiniz ve her bilgi tabanının ne kadar büyüeceği hakkında bilgi sahibi olmak için her iki limit kümesini de bilmeniz gerekir.
+Aşağıda belirtilen Soru-Cevap Oluşturma limitleri [Azure bilişsel arama fiyatlandırma katmanı sınırlarının](../../search/search-limits-quotas-capacity.md) ve [soru-cevap oluşturma fiyatlandırma katmanı sınırlarının](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)bir birleşimidir. Kaynak başına kaç bilgi tabanı oluşturabileceğiniz ve her bilgi tabanının ne kadar büyüeceği hakkında bilgi sahibi olmak için her iki limit kümesini de bilmeniz gerekir.
 
 ## <a name="knowledge-bases"></a>Bilgi Bankası tabanları
 
-En fazla bilgi Bankası sayısı, [Azure bilişsel arama katmanı sınırlarına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)göre belirlenir.
+En fazla bilgi Bankası sayısı, [Azure bilişsel arama katmanı sınırlarına](../../search/search-limits-quotas-capacity.md)göre belirlenir.
 
 |**Azure Bilişsel Arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |İzin verilen en fazla yayımlanan bilgi tabanı sayısı|2|14|49|199|199|2.999|
 
- Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin `testkb`, yazma ve test için tüm bilgi tabanları için kullanılır.
+ Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin, `testkb` yazma ve test için tüm bilgi tabanları için kullanılır.
 
 ## <a name="extraction-limits"></a>Ayıklama sınırları
 
@@ -37,7 +37,7 @@ Dosya adları aşağıdaki karakterleri içeremez:
 
 ### <a name="maximum-file-size"></a>En büyük dosya boyutu
 
-|Biçimlendir|En büyük dosya boyutu (MB)|
+|Biçim|En büyük dosya boyutu (MB)|
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -55,11 +55,11 @@ Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlant
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
-Meta veriler metin tabanlı anahtar olarak sunulur: gibi bir değer çifti `product:windows 10`. Daha küçük bir durumda depolanır ve karşılaştırılır.
+Meta veriler metin tabanlı anahtar olarak sunulur: gibi bir değer çifti `product:windows 10` . Daha küçük bir durumda depolanır ve karşılaştırılır.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Bilişsel Arama fiyatlandırma katmanına göre
 
-Bilgi Bankası başına en fazla meta veri alanı sayısı, **[Azure bilişsel arama katmanı limitlerinizi](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel alır.
+Bilgi Bankası başına en fazla meta veri alanı sayısı, **[Azure bilişsel arama katmanı limitlerinizi](../../search/search-limits-quotas-capacity.md)** temel alır.
 
 |**Azure Bilişsel Arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -85,7 +85,7 @@ Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
 * Dosya adı uzunluğu: 200
 * Desteklenen dosya biçimleri: ". tsv", ". pdf", ". txt", ". docx", ". xlsx".
 * Alternatif soruların maksimum sayısı: 300
-* En yüksek soru-cevap çifti sayısı: seçilen **[Azure bilişsel arama katmanına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** bağlıdır. Soru ve yanıt çifti, Azure Bilişsel Arama dizininde bulunan bir belgeyle eşlenir.
+* En yüksek soru-cevap çifti sayısı: seçilen **[Azure bilişsel arama katmanına](../../search/search-limits-quotas-capacity.md#document-limits)** bağlıdır. Soru ve yanıt çifti, Azure Bilişsel Arama dizininde bulunan bir belgeyle eşlenir.
 * URL/HTML sayfası: 1.000.000 karakter
 
 ## <a name="create-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırları oluşturma:

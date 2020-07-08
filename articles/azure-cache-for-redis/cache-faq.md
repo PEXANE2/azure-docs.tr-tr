@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856962"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -177,7 +177,7 @@ Azure için Azure önbelleğini Azure Kamu bulutu, Azure Çin 21Vianet bulutu ve
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange. Redsıs yapılandırma seçenekleri ne olur?
 StackExchange. redin birçok seçeneği vardır. Bu bölüm bazı yaygın ayarlardan bazılarıdır. StackExchange. Redu seçenekleri hakkında daha ayrıntılı bilgi için bkz. [StackExchange. redsıs yapılandırması](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Öneri |
+| ConfigurationOptions | Açıklama | Öneri |
 | --- | --- | --- |
 | AbortOnConnectFail |Doğru olarak ayarlandığında, ağ hatasından sonra bağlantı yeniden bağlanmaz. |False olarak ayarlayın ve StackExchange. redin otomatik olarak yeniden bağlanmasına izin verin. |
 | ConnectRetry |İlk bağlantı sırasında bağlantı denemelerinin yinelenme sayısı. |Rehberlik için aşağıdaki notlara bakın. |
@@ -213,22 +213,23 @@ Redin hakkında harika şeyler birçok farklı geliştirme dilini destekleyen ç
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yerel bir öykünücü var mı?
 [Redsıs](https://github.com/MSOpenTech/redis/releases/) Için Azure önbelleği için yerel bir öykünücü yoktur, ancak aşağıdaki örnekte gösterildiği gibi yerel bir önbellek öykünücüsünde benzer bir deneyim almak Için redis-server.exe MSOpenTech sürümünü yerel makinenizde çalıştırabilir ve buna bağlanabilirsiniz:
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+      lazyConnection = new Lazy<ConnectionMultiplexer>
+    (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+```
 
 İsterseniz redo [. conf](https://redis.io/topics/config) dosyasını redsıs Için çevrimiçi Azure önbelleğiniz için [varsayılan önbellek ayarlarıyla](cache-configure.md#default-redis-server-configuration) daha yakından eşleşecek şekilde yapılandırabilirsiniz.
 
@@ -366,10 +367,12 @@ Temel olarak, meşgul iş parçacıklarının sayısı en az iş parçacığınd
 
 StackExchange. Redsıs 'den bir örnek hata iletisi görüyoruz (derleme 1.0.450 veya sonrası), şimdi de iş parçacığı istatistiklerini (bkz. ıOCP ve çalışan ayrıntıları aşağıda verilmiştir) yazdıracaksınız.
 
+```output
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 Önceki örnekte, ıOCP iş parçacığında altı meşgul iş parçacığı olduğunu ve sistemin dört en düşük iş parçacığına izin verecek şekilde yapılandırıldığını görebilirsiniz. Bu durumda, 6 > 4 nedeniyle istemci muhtemelen 2 500 ms gecikme süresi görmüştür.
 

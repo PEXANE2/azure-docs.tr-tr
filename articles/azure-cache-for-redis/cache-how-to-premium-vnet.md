@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856847"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -59,24 +59,26 @@ VNet 'i yeni önbelleğiniz için yapılandırmak için, **yeni Azure önbelleğ
 
 VNet kullanırken Redsıs örneği için Azure önbelleğinize bağlanmak için aşağıdaki örnekte gösterildiği gibi bağlantı dizesinde önbelleğinizin ana bilgisayar adını belirtin:
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-    });
+```csharp
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Redsıs VNet için Azure önbelleği hakkında SSS
 Aşağıdaki liste, Redsıs ölçeklendirmesi için Azure önbelleği hakkında sık sorulan soruların yanıtlarını içerir.
 
 * Redsıs ve VNET 'ler için Azure önbelleğindeki bazı yaygın yanlış yapılandırma sorunları nelerdir?
-* [Önbelleğimin sanal ağ üzerinde çalıştığını nasıl doğrulayabilirim?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Önbelleğim VNET 'te çalıştığını nasıl doğrulayabilirim?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * Bir VNET 'te Redsıs için Azure Önbelleğim 'e bağlanmaya çalışırken, neden uzak sertifika geçersiz olduğunu belirten bir hata alıyorum?
 * [Standart veya temel önbellek ile sanal ağları kullanabilir miyim?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Bazı alt ağlardaki Reda için Azure önbelleği neden başarısız oluyor, ancak başkaları tarafından kullanılamaz mi?
@@ -128,11 +130,11 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Gelen |TCP |Redsıs ile istemci iletişimi, Azure Yük Dengeleme | (Redsıs alt ağı) | (Redsıs alt ağı), sanal ağ, Azure Load Balancer <sup>1</sup> |
 | 8443 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
-| 8500 |Gelen |TCP/UDP |Azure Yük Dengelemesi | (Redsıs alt ağı) |Azure Load Balancer |
+| 8500 |Gelen |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
 | 10221-10231 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı), Azure Load Balancer |
 | 13000-13999 |Gelen |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer |
 | 15000-15999 |Gelen |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi ve coğrafi çoğaltma | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer, (coğrafi çoğaltma eş alt ağı) |
-| 16001 |Gelen |TCP/UDP |Azure Yük Dengelemesi | (Redsıs alt ağı) |Azure Load Balancer |
+| 16001 |Gelen |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
 | 20226 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
 <sup>1</sup> NSG kurallarını yazmak Için ' AzureLoadBalancer ' (Kaynak Yöneticisi) hizmet etiketini (veya klasik için ' AZURE_LOADBALANCER ') kullanabilirsiniz.
@@ -146,7 +148,7 @@ Redsıs için Azure önbelleği için bir sanal ağda karşılanmamış olabilec
 * Sanal ağın DNS yapılandırması, önceki noktalarda bahsedilen tüm uç noktaları ve etki alanlarını çözebilme yeteneğine sahip olmalıdır. Bu DNS gereksinimleri, sanal ağ için yapılandırılmış ve korunan geçerli bir DNS altyapısının sağlanması sağlanarak karşılanacaktır.
 * Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
-### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Önbelleğimin sanal ağ üzerinde çalıştığını nasıl doğrulayabilirim?
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Önbelleğim VNET 'te çalıştığını nasıl doğrulayabilirim?
 
 >[!IMPORTANT]
 >VNET 'te barındırılan Redsıs örneği için bir Azure önbelleğine bağlanırken, önbellek istemcileriniz aynı VNET 'te veya aynı Azure bölgesinde sanal VNET eşlemesi etkinleştirilmiş bir sanal ağda olmalıdır. Genel Sanal Ağ Eşleme Şu anda desteklenmiyor. Buna tüm test uygulamaları veya tanılama ile ping araçları dahildir. İstemci uygulamasının nerede barındırıldığından bağımsız olarak, ağ güvenlik gruplarının, istemcinin ağ trafiğinin Redsıs örneğine erişmesine izin verilecek şekilde yapılandırılması gerekir.
@@ -161,7 +163,7 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı gibi yapı
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    `tcping` Araç, bağlantı noktasının açık olduğunu bildirirse, önbellek, VNET 'teki istemcilerden bağlantı için kullanılabilir.
+    Araç, `tcping` bağlantı noktasının açık olduğunu bildirirse, önbellek, VNET 'teki istemcilerden bağlantı için kullanılabilir.
 
   - Test etmenin başka bir yolu da, önbelleğe bağlanan ve önbellekten bazı öğeleri ekleyen ve alan bir test önbelleği istemcisi (StackExchange. Redsıs kullanan basit bir konsol uygulaması olabilir) oluşturmaktır. Örnek istemci uygulamasını, önbellek ile aynı VNET 'teki bir sanal makineye yükler ve önbelleğe bağlantıyı doğrulamak için çalıştırın.
 
@@ -180,7 +182,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemezseniz, bazı istemci kitaplıkları StackExchange. Redsıs istemcisi tarafından sağlanacak şekilde `sslHost` yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örneğin:
+DNS adını çözemezseniz, bazı istemci kitaplıkları `sslHost` StackExchange. redsıs istemcisi tarafından sağlanacak şekilde yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örneğin:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

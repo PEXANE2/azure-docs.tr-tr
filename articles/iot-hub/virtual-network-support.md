@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918761"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -69,8 +69,8 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 IoT Hub [IP filtresi](iot-hub-ip-filtering.md) , yerleşik uç noktaya genel erişimi de denetlemez. IoT Hub 'ınıza genel ağ erişimini tamamen engellemek için şunları yapmanız gerekir: 
 
 1. IoT Hub için özel uç nokta erişimini yapılandırma
-1. Tüm IP 'yi engellemek için IP filtresini kullanarak genel ağ erişimini devre dışı bırakın
-1. [Veri göndermemek üzere yönlendirme ayarlayarak](iot-hub-devguide-messages-d2c.md) yerleşik Olay Hub 'ı uç noktasını devre dışı bırakın
+1. [Ortak ağ erişimini devre dışı](iot-hub-public-network-access.md) BıRAKMA veya IP filtresini kullanarak tüm IP 'yi engelleme
+1. [Veri göndermemek üzere yönlendirme ayarlayarak](iot-hub-devguide-messages-d2c.md) yerleşik Olay Hub 'ı uç noktasını kullanmayı durdur
 1. [Geri dönüş yolunu](iot-hub-devguide-messages-d2c.md#fallback-route) kapat
 1. [Güvenilen Microsoft hizmetini](#egress-connectivity-from-iot-hub-to-other-azure-resources) kullanarak çıkış diğer Azure kaynaklarına yapılandırma
 

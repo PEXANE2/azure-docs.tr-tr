@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855768"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. Hive için performans ayarlama Kılavuzu
 
@@ -55,17 +55,15 @@ G/ç yoğunluklu iş yükleri, tez kapsayıcı boyutunu azaltarak daha paralelli
 
 Ya da paralellik çalıştıran, eşzamanlı görev sayısı toplam YARN bellekle sınırlı olacaktır.  YARN kapsayıcılarının sayısı, kaç tane eşzamanlı görevin çalıştırılacağını dikte eder.  Düğüm başına YARN belleği bulmak için, ambarı 'na gidebilirsiniz.  YARN 'ye gidin ve configs sekmesini görüntüleyin.  YARN belleği Bu pencerede görüntülenir.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> Toplam YARN bellek = düğüm * her düğüm için Yarn bellek sayısı/Yarn kapsayıcıları = toplam YARN bellek/tez kapsayıcı boyutu
+
 Data Lake Storage 1. kullanarak performansı iyileştirmeye yönelik anahtar, olabildiğince fazla eşzamanlılık artışı sağlar.  Tez, oluşturulması gereken görev sayısını otomatik olarak hesaplar, bu nedenle ayarlamanız gerekmez.   
 
 ## <a name="example-calculation"></a>Örnek hesaplama
 
 8 düğümlü bir D14 kümeniz olduğunu varsayalım.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Toplam YARN bellek = düğüm * her düğüm için YARN bellek toplam YARN bellek = 8 düğüm * 96GB = 768GB/Yarn kapsayıcı sayısı = 768/3072MB = 256
 
 ## <a name="limitations"></a>Sınırlamalar
 

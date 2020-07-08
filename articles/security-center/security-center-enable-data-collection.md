@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855950"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
@@ -42,7 +42,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
 3. **Veri toplamayı**seçin.
 4. Otomatik **sağlama altında,** otomatik sağlamayı etkinleştirmek için **Açık** ' ı seçin.
-5. **Kaydet**’i seçin. Aracı, 15 dakika içinde tüm VM 'Lere dağıtılır. 
+5. **Kaydet**'i seçin. Aracı, 15 dakika içinde tüm VM 'Lere dağıtılır. 
 
 >[!TIP]
 > Bir çalışma alanının sağlanması gerekiyorsa, aracı yüklemesi 25 dakikaya kadar sürebilir.
@@ -106,7 +106,7 @@ Mevcut bir Log Analytics çalışma alanını seçmek için:
    >
    >
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 4. **Kaydet**' i seçtikten sonra, daha önce varsayılan bir çalışma alanına bağlı olan Izlenen VM 'leri yeniden yapılandırmak isteyip istemediğiniz sorulur.
 
    - Yeni çalışma alanı ayarlarının yalnızca yeni VM 'Lere uygulanmasını istiyorsanız **Hayır** ' ı seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics Aracısı yüklü olmayan yeni bulunan VM 'Ler.
@@ -184,7 +184,7 @@ Her bir küme için güvenlik ve uygulama dolabı olay kimliklerinin tamamen bir
 
 Filtreleme ilkenizi seçmek için:
 1. **Veri toplama** sayfasında, **güvenlik olayları**altında filtreleme ilkenizi seçin.
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
    ![Filtreleme ilkesi seçin][5]
 
@@ -199,7 +199,7 @@ Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (G�
 <br>
 Linux makineler için, aracı çoklu barındırma henüz desteklenmiyor. bu nedenle, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama gerçekleşmez ve makinenin yapılandırması değiştirilmez.
 <br>
-Aboneliklerdeki mevcut makineler için eklendi Güvenlik Merkezi 'ne 2019-03-17 önce, var olan bir aracı algılandığında Log Analytics Aracısı uzantısı yüklenmez ve makine etkilenmeyecektir. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını gidermek için "makinelerinizdeki izleme Aracısı sistem durumu sorunlarını çözün" önerisine bakın.
+Aboneliklerdeki mevcut makineler için, eklendi Mart 2019 ' den önce, mevcut bir aracı algılandığında, Log Analytics Aracısı uzantısı yüklenmez ve makine etkilenmeyecektir. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını gidermek için "makinelerinizdeki izleme Aracısı sistem durumu sorunlarını çözün" önerisine bakın.
 
   
 - System Center Operations Manager Aracısı makineye yüklendi<br>
@@ -217,7 +217,7 @@ Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan o
 1. Güvenlik Merkezi ana menüsüne dönüp güvenlik ilkesi ' ni seçin.
 2. Otomatik sağlamayı devre dışı bırakmak istediğiniz aboneliğin satırındaki **Ayarları Düzenle** ' ye tıklayın.
 3. **Güvenlik ilkesi – veri toplama** sayfasında, **Otomatik sağlama** altında **kapalı**' yı seçin.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
    ![Otomatik sağlamayı devre dışı bırak][6]
 
@@ -237,58 +237,44 @@ Log Analytics aracısını el ile yüklemek için birkaç yol vardır. El ile y�
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM Uzantısı dağıtımı 
 
 Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmesi ve öneriler ve uyarılar sağlaması için Log Analytics aracısını el ile yükleyebilirsiniz.
-1. Otomatik sağlama – kapalı seçeneğini belirleyin.
-2. Log Analytics aracısını ayarlamak istediğiniz çalışma alanı için bir çalışma alanı oluşturun ve fiyatlandırma katmanını ayarlayın:
 
-   a.  Güvenlik Merkezi ana menüsünde **güvenlik ilkesi**' ni seçin.
-     
-   b.  Aracıyı bağlamayı planladığınız çalışma alanını seçin. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
-       ![Çalışma alanını seçme][8]
-3. Fiyatlandırma katmanını ayarlayın.
-   ![Fiyatlandırma katmanını seçin][9] 
-   >[!NOTE]
-   >Çalışma alanında zaten bir **güvenlik** veya **securitycenterücretsiz** çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. 
+1. Otomatik sağlamayı devre dışı bırakın.
+
+1. İsteğe bağlı olarak, bir çalışma alanı oluşturun.
+
+1. Log Analytics aracısını standart fiyatlandırma katmanına yüklemekte olduğunuz çalışma alanını ayarlayın:
+
+    1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
+
+    1. Aracıyı yüklemekte olduğunuz çalışma alanını ayarlayın. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
+
+    1. Standart fiyatlandırma katmanını ayarlayın ve **Kaydet**' i seçin.
+
+        ![Çalışma alanını standart fiyatlandırma katmanına ayarlama](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >Çalışma alanında zaten bir **güvenlik** veya **securitycenterücretsiz** çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. 
    > 
 
-4. Aracıları Kaynak Yöneticisi şablonu kullanarak yeni VM 'lerde dağıtmak istiyorsanız, OMS sanal makine uzantısını yükleyebilirsiniz:
+1. Aracıları Kaynak Yöneticisi şablonu kullanarak yeni VM 'lerde dağıtmak istiyorsanız, Log Analytics Aracısı 'nı yükleyebilirsiniz:
 
-   a.  [Windows için OMS sanal makine uzantısını yükler](../virtual-machines/extensions/oms-windows.md)
+   a.  [Windows için Log Analytics aracısını yükler](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [Linux için OMS sanal makine uzantısını yükler](../virtual-machines/extensions/oms-linux.md)
-5. Mevcut VM 'lerde uzantıları dağıtmak için [Azure sanal makineleri hakkında veri toplama](../azure-monitor/learn/quick-collect-azurevm.md)bölümündeki yönergeleri izleyin.
+   b.  [Linux için Log Analytics aracısını yükler](../virtual-machines/extensions/oms-linux.md)
+
+1. Mevcut VM 'lerde uzantıları dağıtmak için [Azure sanal makineleri hakkında veri toplama](../azure-monitor/learn/quick-collect-azurevm.md)bölümündeki yönergeleri izleyin.
 
    > [!NOTE]
    > **Olay ve performans verilerini topla** bölümü isteğe bağlıdır.
    >
-6. Uzantıyı dağıtmak üzere PowerShell 'i kullanmak için aşağıdaki PowerShell örneğini kullanın:
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. **Log Analytics** gidin ve **Gelişmiş ayarlar**' a tıklayın.
-    
-      ![Log Analytics 'i ayarlama][11]
 
-   2. Değerleri çalışma alanı **kimliği** ve **birincil anahtar**dışına kopyalayın.
-  
-      ![Değerleri Kopyala][12]
+1. Uzantıyı dağıtmak üzere PowerShell 'i kullanmak için, sanal makineler belgelerindeki yönergeleri kullanın:
 
-   3. Ortak yapılandırmayı ve özel yapılandırmayı şu değerlerle doldurun:
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Windows makineleri için](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Windows sanal makinesine yüklerken:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Bir Linux sanal makinesine yüklerken:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Linux makineleri için](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > PowerShell kullanarak güvenlik merkezi 'ni ekleme hakkında yönergeler için bkz. [PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik hale](security-center-powershell-onboarding.md)getirme.

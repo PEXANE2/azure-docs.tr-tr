@@ -3,12 +3,12 @@ title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
 ms.date: 03/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5bb299f85074675b1d02943ee623394a7deff000
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919138"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -73,7 +73,7 @@ Hizmet sorumlusu hesabınızı oluşturduktan ve kök kapsamda Izleme okuyucusu 
 
 Yönetim kiracınızın kök kapsamına yönelik Izleme okuyucusu erişimi ile yeni bir hizmet sorumlusu hesabı oluşturduktan sonra, kiracınızdaki yetkilendirme etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz. 
 
-[Bu Azure PowerShell betiği](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) , eklenen ya da Kaldırılan temsilci (veya başarılı olmayan denemeler) üzerinde etkinlik ve raporların Son 1 gününü sorgulamak için kullanılabilir. [Kiracı etkinlik günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, sonra eklenen veya kaldırılan temsilcileri raporlamak için aşağıdaki değerleri oluşturur:
+[Bu Azure PowerShell betiği](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) , eklenen ya da Kaldırılan temsilci (veya başarılı olmayan denemeler) üzerinde etkinlik ve raporların Son 1 gününü sorgulamak için kullanılabilir. [Kiracı etkinlik günlüğü](/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, sonra eklenen veya kaldırılan temsilcileri raporlamak için aşağıdaki değerleri oluşturur:
 
 - **Delegatedresourceıd**: atanan aboneliğin veya kaynak grubunun kimliği
 - **Customertenantıd**: MÜŞTERI Kiracı kimliği

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856824"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
 
@@ -23,7 +23,7 @@ Bu belgede, Microsoft 'un konuşmaya metin modeli veya özel modeliniz kalitesin
 
 ## <a name="what-is-word-error-rate-wer"></a>Word hata oranı (WER) nedir?
 
-Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan etiketli döküm dosyasında belirtilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
+Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan tarafından etiketlenmiş döküm betiğine (aşağıda N olarak gösterilmiştir) verilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
 
 ![WER formülü](./media/custom-speech/custom-speech-wer-formula.png)
 

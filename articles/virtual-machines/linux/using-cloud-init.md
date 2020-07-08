@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: c16343b412cd9164df84ea140e9bc5368890cc3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920186"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -46,38 +46,52 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' den Itibaren kaldırılır) | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
 |RedHat 7,7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | 7.7.20200416 | evet  | Evet-paket sürümünden destek: *18.5 -6. EL7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1-CI |8.1.2020042511 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
-|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
+|RedHat 8,1 (Gen1) |RHEL |8,1-CI |8.1.2020042511 | Evet (Note: Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 Ağustos 'Tan kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Evet (Note: Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 Ağustos 'Tan kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
 
-RedHat: RHEL 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak sağlanır.
+* Tüm RedHat: RHEL 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak sağlanır.
 
 ### <a name="centos"></a>CentOS
 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Bu bir önizleme görüntüsüdür ve tüm CentOS 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Evet-paket sürümünden destek:`18.5-3.el7.centos`|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
+|OpenLogic 7,7 |CentOS | 7,7 |7.7.2020062400 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS-HPC | 7_7-Gen2 |7.6.2020062601 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
+|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |evet | Evet-paket sürümünden destek:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS | 8_1-Gen2 |8.1.2020062401 |evet | Evet-paket sürümünden destek:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 |CentOS-HPC | 8_1 |8.1.2020062400 |evet | Evet-paket sürümünden destek:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1-Gen2 |8.1.2020062401 |evet | Evet-paket sürümünden destek:`18.5-7.el8_1.1`|
 
-* Cloud-init etkin olacak CentOS 7,7 görüntüleri, Haziran 2020 ' de burada güncelleştirilir 
-* CentOS 7,8 görüntüleri Cloud-init kullanılarak sağlanır.
-
+* Tüm OpenLogic: CentOS 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak sağlanır.
 
 ### <a name="oracle"></a>Oracle
 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Önizleme resmi (Bu bir önizleme görüntüsüdür ve tüm Oracle 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu adım 2020 ' den kaldırılacağına dikkat edilecek) | Hayır, önizleme aşamasında paket: *18.5-3.0.1. EL7*
+|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Önizleme resmi (unutmayın. Bu bir önizleme görüntüsüdür ve tüm Oracle 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu, 2020 ' nin kaldırılmasına, bildirim verilmeyecektir. | Hayır, önizleme aşamasında paket: *18.5-3.0.1. EL7*
 
 ### <a name="suse-sles"></a>SUSE SLES
-| Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-temel |Cloud-init-Önizleme| Ayrıntılar için bkz. [SUSE Cloud-init blogu](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) | Hayır, önizleme aşamasında. |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-temel |Gen2-Cloud-init-Önizleme| Ayrıntılar için bkz. [SUSE Cloud-init blogu](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) | Hayır, önizleme aşamasında. |
+Bu SLES görüntüleri Cloud-init kullanılarak sağlanacak şekilde güncelleştirilmiştir, Gen2 görüntü çeşitleri de güncelleştirilmiştir.
+* SUSE: SLES-15-SP1-{Basic/byos/HPC/HPC-byos/chost-byos}: Gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1: Gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1-byos: Gen1:2020.06.10
+* SUSE: Manager-proxy-4-byos: Gen1:2020.06.10
+* SUSE: Manager-Server-4-byos: Gen1:2020.06.10
+* SUSE: SLES-{byos/sap/sap-byos}: 15:2020.06.10
+* SUSE: SLES-12-SP5: Gen1:2020.06.10
+* SUSE: SLES-12-SP5 {-byos/Basic/HPC-byos/HPC}: Gen1:2020.06.10
+* SUSE: SLES-{byos/sap/sap-byos}: 12-SP4:2020.06.10
+* SUSE: SLES-{byos/sap/sap-byos}: 12-SP3:2020.06.10
+* SUSE: SLES-{byos/sap/sap-byos}: 12-SP2:2020.06.10
 
 
 ### <a name="debian"></a>Debian

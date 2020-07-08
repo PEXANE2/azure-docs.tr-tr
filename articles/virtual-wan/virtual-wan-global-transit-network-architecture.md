@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1cd5ead1604f47f07aa9d517f679850fcea8d897
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856367"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -47,7 +47,7 @@ Azure sanal WAN mimarisinde, sanal WAN hub 'ları, Dallarınızı, VNET 'leri ve
 
 En fazla sayıda bağlı bileşen (dal, VNet, Kullanıcı) ve daha sonra diğer bölgelerdeki alt dalları hub 'a bağlayarak bir sanal WAN 'ı oluşturabilirsiniz. Bu, kurumsal bir parmak izi genellikle birkaç uzak bağlı bileşen içeren bir bölgede olduğunda iyi bir seçenektir.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-hub bağlantısı (Önizleme)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub 'dan hub 'a bağlantı
 
 Kurumsal bulut alanı, birden fazla bulut bölgesine yayılabilir ve buluta, fiziksel siteleri ve kullanıcılarına en yakın bölgeden erişmek için idealdir (gecikme süresi). Genel aktarım ağı mimarisinin temel prensipinden biri, tüm bulut ve şirket içi ağ uç noktaları arasında bölgeler arası bağlantıyı etkinleştirmektir. Bu, bir bölgedeki buluta bağlı bir daldan gelen trafiğin, [Azure genel ağı](https://azure.microsoft.com/global-infrastructure/global-network/)tarafından etkinleştirilen hub-hub bağlantısını kullanarak farklı bir bölgedeki başka bir dala veya VNET 'e ulaşabileceği anlamına gelir.
 

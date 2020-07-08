@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855673"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak verilerin çevrimdışı kopyası Data Lake Storage 1.
 
@@ -31,17 +31,16 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 Içeri/dışarı aktarma hizmetini kullanmadan önce, boyutu **200 GB 'tan az olan kopyalara** aktarılacak veri dosyasını kesin. İçeri aktarma aracı 200 GB 'tan büyük dosyalarla çalışmaz. Bu makalede, dosyayı her biri 100 GB öbeklere böleceğiz. Bunu, [Cygwin](https://cygwin.com/install.html)kullanarak yapabilirsiniz. Cygwin, Linux komutlarını destekler. Bu durumda, aşağıdaki komutu kullanın:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 Bölünen işlem, aşağıdaki adlara sahip dosyaları oluşturur.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB. tsv-bölüm-AA*
+* *319GB. tsv-Bölüm-AB*
+* *319GB. tsv-bölüm-AC*
+* *319GB. tsv-bölüm-ad*
 
 ## <a name="get-disks-ready-with-data"></a>Verilerle çalışmaya yönelik diskleri Al
 

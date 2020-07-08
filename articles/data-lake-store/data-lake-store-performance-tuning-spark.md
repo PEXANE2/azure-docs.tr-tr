@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f604d1d054717e426fcb02271b3a2aa06c6489b6
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856916"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. Spark için performans ayarlama Kılavuzu
 
@@ -55,26 +55,30 @@ G/ç yoğun işleri için eşzamanlılık artırmanın birkaç genel yolu vardı
 
 **3. Adım: yürütücü-çekirdekleri ayarlama** – karmaşık işlemleri olmayan g/ç yoğunluklu iş yükleri için, yürütücü başına paralel görev sayısını artırmak için yüksek sayıda yürütücü çekirdeği ile başlamak iyi olur. Yürütücü-çekirdekleri 4 olarak ayarlamak iyi bir başlangıç.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 Yürütücü sayısının artırılması, farklı yürütücü çekirdekleriyle denemeler yapabilmeniz için size daha paralellik verir. Daha karmaşık işlemlere sahip işler için, yürütücü başına çekirdek sayısını azaltmalısınız. Yürütücü-çekirdekleri 4 ' ten yüksek ayarlandıysa, çöp toplama verimsiz hale gelebilir ve performans düşebilir.
 
 **4. Adım: kümede YARN bellek miktarını belirleme** – bu bilgiler, ambarı 'nda mevcuttur. YARN 'ye gidin ve Contigs sekmesini görüntüleyin. YARN belleği Bu pencerede görüntülenir.
 Göz atın, Ayrıca, varsayılan YARN kapsayıcı boyutunu da görebilirsiniz. YARN kapsayıcı boyutu, yürütücü parametresi başına bellek ile aynıdır.
 
-    Total YARN memory = nodes * YARN memory per node
+Toplam YARN bellek = düğüm * düğüm başına YARN bellek
+
 **5. Adım: sayı yürüticileri hesaplama**
 
 **Bellek kısıtlamasını hesapla** -NUM-eXecutors parametresi, bellek veya CPU tarafından sınırlandırılır. Bellek kısıtlaması, uygulamanız için kullanılabilir YARN bellek miktarına göre belirlenir. Toplam YARN belleği alın ve bunu yürütücü belleği ile ayırın. Kısıtlama, uygulama sayısına göre bölünebilmemiz için uygulamanın sayısı için de ölçeklendirilmesi gerekir.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+Bellek kısıtlaması = (Toplam YARN bellek/yürütücü belleği)/uygulama sayısı
+
 **CPU kısıtlaması hesapla** -CPU kısıtlaması, toplam sanal çekirdekler için, yürütücü başına çekirdek sayısı olarak hesaplanır. Her fiziksel çekirdek için 2 sanal çekirdek vardır. Bellek kısıtlamasına benzer şekilde, uygulama sayısına göre böleceğiz.
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+sanal çekirdekler = (kümedeki düğümler * 2 düğümündeki fiziksel çekirdek sayısı * 2) CPU kısıtlaması = (her yürütücü için toplam sanal çekirdek/çekirdek sayısı)/uygulama sayısı
+
 **Num-Yürüticileri ayarlama** – NUM-eXecutors parametresi, en az bellek KıSıTLAMASı ve CPU kısıtlaması alınarak belirlenir. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-Daha yüksek sayıda NUM yürüticilerinin ayarlanması performansı artırmayabilir. Daha fazla yürütme eklemenin, performansı düşürebilecek her ek yürütücü için ek yük eklemesini göz önünde bulundurmanız gerekir. Sayı yürüticileri, küme kaynaklarıyla sınırlıdır.
+sayı-yürüticileri = dk (her yürütücü için toplam sanal çekirdek/çekirdek sayısı, kullanılabilir YARN bellek/yürütücü-bellek) ayarı, daha yüksek sayıda NUM-yürüticideki, performansı artırmayabilir. Daha fazla yürütme eklemenin, performansı düşürebilecek her ek yürütücü için ek yük eklemesini göz önünde bulundurmanız gerekir. Sayı yürüticileri, küme kaynaklarıyla sınırlıdır.
 
 ## <a name="example-calculation"></a>Örnek hesaplama
 
@@ -84,30 +88,28 @@ Daha yüksek sayıda NUM yürüticilerinin ayarlanması performansı artırmayab
 
 **2. Adım: yürütücü-bellek ayarlama** – Bu örnek IÇIN, 6GB 'ın yoğun çalışan iş için yeterli olacağını belirledik.
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **3. Adım: yürütücü-çekirdekleri ayarlama** – bu bir g/ç yoğun iş olduğundan, her bir yürütücü için çekirdek sayısını dört olarak ayarlayabiliriz. Yürütücü başına çekirdekleri dörtten büyük olarak ayarlamak çöp toplama sorunlarına neden olabilir.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **4. Adım: kümede Yarn bellek miktarını belirleme** – her bir D4V2 'ıN Yarn belleği 25 GB sahip olduğunu öğrenmek için ambarı 'na gittik. 8 düğüm olduğundan, kullanılabilir YARN belleği 8 ile çarpılır.
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+Toplam YARN bellek = düğüm * YARN bellek * düğüm başına toplam YARN bellek = 8 düğüm * 25 GB = 200 GB
+
 **5. Adım: sayı Yürüticileri hesaplama** – NUM-eXecutors parametresi, bellek kısıtlamasının minimum değeri ve Spark üzerinde çalışan # of Apps tarafından ayrılmış CPU kısıtlaması alınarak belirlenir.
 
 **Bellek kısıtlamasını hesapla** – bellek kısıtlaması, her yürütücü için belleğe bölünen toplam Yarn belleği olarak hesaplanır.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**CPU kısıtlamasını hesapla** -CPU kısıtlaması, toplam Yarn çekirdeği, yürütücü başına çekirdek sayısına bölünen şekilde hesaplanır.
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+Bellek kısıtlaması = (Toplam YARN bellek/yürütücü belleği)/uygulama bellek kısıtlaması = (200 GB/6 GB)/2 Bellek kısıtlaması = 16 (yuvarlanmış) **CPU kısıtlamasını hesapla** -CPU kısıtlaması, toplam Yarn çekirdeği, yürütücü başına çekirdek sayısına bölünen şekilde hesaplanır.
+
+YARN çekirdekler = kümedeki düğümler * düğüm başına çekirdek sayısı * 2 YARN çekirdek = 8 düğüm * D14 * 2 = 128 CPU kısıtlaması = (Toplam YARN çekirdek/yürütücü başına çekirdek sayısı 128)/2 CPU kısıtlaması = 16
+
 **Sayı yürüticileri ayarlama**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+NUM-yürüticileri = dk (bellek kısıtlaması, CPU kısıtlaması) sayı-yürüticileri = dk (16, 16) NUM-yürüticileri = 16

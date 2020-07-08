@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856730"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -73,7 +73,7 @@ Bilişsel hizmetler, bir hizmet grubu olarak, eğitilen model için hiçbiri, ba
 
 ### <a name="no-additional-training-data-required"></a>Ek eğitim verileri gerekmez
 
-Tam eğitilen bir model sağlayan hizmetler _siyah kutu_olarak kabul edilebilir. Bunların nasıl çalıştığını veya bunları eğitede hangi verilerin kullanıldığını bilmeniz gerekmez. Tahmin almak için verilerinizi tamamen eğitilen bir modele taşıyın. 
+Tam eğitilen bir model sağlayan hizmetler _donuk bir kutu_olarak kabul edilebilir. Bunların nasıl çalıştığını veya bunları eğitede hangi verilerin kullanıldığını bilmeniz gerekmez. Tahmin almak için verilerinizi tamamen eğitilen bir modele taşıyın. 
 
 ### <a name="some-or-all-training-data-required"></a>Eğitim verilerinin bazıları veya tümü gereklidir
 
@@ -95,20 +95,20 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |Bing Arama |x|||
 |[Görüntü İşleme](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Özel Görüntü](./Custom-Vision-Service/home.md)||x||
-|[Yüz](./Face/Overview.md)|x|x||
+|[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
+|[Yüz Tanıma](./Face/Overview.md)|x|x||
 |[Form Tanıma](./form-recognizer/overview.md)||x||
 |[Tam Ekran Okuyucu](./immersive-reader/overview.md)|x|||
 |[Mürekkep Tanıma](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Kişiselleştirme](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
-|[Soru-Cevap Oluşturucu](./QnAMaker/Overview/overview.md)||x||
+|[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
 |[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
 |[Konuşma Çevirisi](speech-service/speech-translation.md)|x|||
 |[Metin Analizi](./text-analytics/overview.md)|x|||
-|[Çevirmen](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-özel çevirici](./translator/custom-translator/overview.md)||x||
 
 * Kişiselleştirici, ilkenizi ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalışırken) ihtiyaç duyuyor. Kişiselleştirici, ön veya Batch eğitimi için büyük geçmiş veri kümelerine gerek duyuyor. 
@@ -129,9 +129,9 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 
 |Bilişsel hizmet|Model bilgileri|
 |--|--|
-|[Özel Görüntü](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
+|[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/concept-deep-learning-vs-machine-learning.md)

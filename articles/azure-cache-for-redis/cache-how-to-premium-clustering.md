@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856320"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -98,7 +98,7 @@ Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık s
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Anahtarlar bir kümede nasıl dağıtılır?
 Redsıs [anahtarları dağıtım modeli](https://redis.io/topics/cluster-spec#keys-distribution-model) belgeleri: anahtar alanı 16384 yuvalara bölünür. Her anahtar karma hale getirilir ve kümenin düğümlerine dağıtılmış olan bu yuvalardan birine atanır. Karma Etiketler kullanılarak aynı parça içinde birden fazla anahtarın bulunduğundan emin olmak için anahtarın hangi kısmının karma hale getirilmiş olduğunu yapılandırabilirsiniz.
 
-* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü ve `{` `}`içinde yer alıyorsa, anahtarın karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki `{key}1`3 anahtar aynı `{key}2` `{key}3` `key` parça içinde bulunur:,, ve yalnızca adın parçası karma hale getirilmiş olduğundan. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü ve içinde yer alıyorsa, anahtarın `{` `}` karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki 3 anahtar aynı parça içinde bulunur: `{key}1` , `{key}2` , ve `{key}3` yalnızca `key` adın parçası karma hale getirilmiş olduğundan. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Karma etiketi olmayan anahtarlar-karma için tüm anahtar adı kullanılır. Bu, önbelleğin parçaları genelinde istatistiksel olarak eşit bir dağıtıma neden olur.
 
 En iyi performans ve verimlilik için anahtarları eşit olarak dağıtmanız önerilir. Bir karma etiketi ile anahtar kullanıyorsanız, anahtarların eşit şekilde dağıtılmasını sağlamak uygulamanın sorumluluğundadır.
@@ -123,17 +123,19 @@ Reddo kümeleme protokolü, her bir istemcinin her parçaya doğrudan kümeleme 
 Kümelemeye sahip olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları](cache-configure.md#properties), [bağlantı noktalarını](cache-configure.md#properties)ve [anahtarları](cache-configure.md#access-keys) kullanarak önbelleğinize bağlanabilirsiniz. Redsıs, arka uçta kümelendirmeyi yönetir, böylece istemciden yönetmeniz gerekmez.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Önbelleğim bireysel parçalara doğrudan bağlanabilir miyim?
-Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm, `-c` anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için bkz. [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial)üzerinde [https://redis.io](https://redis.io) [kümeyle yürütme](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) .
+Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm, anahtarla başlatıldığında temel desteği uygular `-c` . Daha fazla bilgi için bkz [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) . [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial)üzerinde kümeyle yürütme.
 
 TLS olmayan için aşağıdaki komutları kullanın.
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```bash
+Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
+...
+Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```
 
-TLS için ile `1500N`değiştirin `1300N` .
+TLS için ile değiştirin `1300N` `1500N` .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Daha önce oluşturulmuş bir önbellek için kümeleme yapılandırabilir miyim?
 Evet. İlk olarak, yoksa ölçeklendirmeye göre önbelleğinizin Premium olduğundan emin olun. Daha sonra, küme yapılandırma seçeneklerini, kümeyi etkinleştirme seçeneği de dahil olmak üzere görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümelemeyi ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.
@@ -151,7 +153,7 @@ Kümeleme yalnızca Premium önbellekler için kullanılabilir.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>StackExchange. reddo ve kümeleme kullanırken ne yapmam gerekir?
-Kümeleme kullanırken StackExchange. Redsıs kullanıyorsanız ve özel durumlar `MOVE` alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Kümeleme kullanırken StackExchange. Redsıs kullanıyorsanız ve `MOVE` özel durumlar alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla Premium önbellek özelliği kullanmayı öğrenin.

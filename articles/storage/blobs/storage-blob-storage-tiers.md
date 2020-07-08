@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919921"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -82,7 +82,7 @@ Blob düzeyi katmanlama [, blob](/rest/api/storageservices/put-blob) katmanı ve
 Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez. 
 
 > [!NOTE]
-> Arşiv depolama ve blob düzeyinde katman ayarlama, yalnızca blok bloblarını destekler. Ayrıca, anlık görüntülerine sahip bir blok blobunun katmanını değiştiremezsiniz.
+> Arşiv depolama ve blob düzeyinde katman ayarlama, yalnızca blok bloblarını destekler.
 
 ### <a name="blob-lifecycle-management"></a>Blob yaşam döngüsü yönetimi
 
@@ -118,10 +118,10 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | YOK                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
-| **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
-| **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün
+| **En düşük nesne boyutu**                   | YOK                       | YOK          | YOK                 | YOK               |
+| **En az depolama süresi**              | YOK                       | YOK          | 30 gün<sup>1</sup> | 180 gün
 | **Gecikme süresi** <br> **(İlk bayta kalan süre)** | Tek basamaklı milisaniye | milisaniye | milisaniye        | Saat<sup>2</sup> |
 
 GPv2 hesaplarındaki seyrek katmandaki <sup>1</sup> nesne en az 30 günlük saklama süresine sahiptir. BLOB depolama hesapları, seyrek erişimli katman için en düşük saklama süresine sahip değildir.
@@ -141,7 +141,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak g
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya blob depolama hesabındaki bir Blobun katmanını değiştirme
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 

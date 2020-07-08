@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f5a6180fa939699f752678271fbddfb8328a1afe
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920171"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN ile geliştirmeye başlama
 > [!div class="op_single_selector"]
@@ -44,7 +44,9 @@ CDN profillerimiz için bir kaynak grubu oluşturduğumuzdan ve bu grup içindek
 
 Uygulamanızı depolamak için bir klasör oluşturun.  Geçerli yolunuzda Node.js araçları olan bir konsolundan, geçerli konumunuzu bu yeni klasöre ayarlayın ve şunu yürüterek projenizi başlatın:
 
-    npm init
+```console
+npm init
+```
 
 Daha sonra projenizi başlatmak için bir dizi soru sunulacaktır.  **Giriş noktası**için bu öğretici *app.js*kullanır.  Aşağıdaki örnekte diğer seçimlerimi görebilirsiniz.
 
@@ -52,8 +54,10 @@ Daha sonra projenizi başlatmak için bir dizi soru sunulacaktır.  **Giriş nok
 
 Projemiz artık *packages.js* dosyası ile başlatılmış.  Projemiz NPM paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  Node.js (MS-Rest-Azure) için Azure Istemci çalışma zamanını ve Node.js için Azure CDN Istemci kitaplığını (Azure-ARM-CD) kullanacağız.  Projeye bağımlılıklar olarak ekleyelim.
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 Paketler yüklendikten sonra, dosyadaki *package.js* bu örneğe benzer görünmelidir (sürüm numaraları farklı olabilir):
 

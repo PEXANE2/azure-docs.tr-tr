@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74072107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856707"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT ayarlamak ve yönetmek için yönlendirici yapılandırma örnekleri
 
@@ -30,59 +30,71 @@ Bu sayfa, ExpressRoute ile çalışırken Cisco ASA ve Juniper SRX serisi yönle
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA güvenlik duvarları
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Müşteri ağından Microsoft 'a giden trafik için PAT yapılandırması
-    object network MSFT-PAT
-      range <SNAT-START-IP> <SNAT-END-IP>
+
+```console
+object network MSFT-PAT
+  range <SNAT-START-IP> <SNAT-END-IP>
 
 
-    object-group network MSFT-Range
-      network-object <IP> <Subnet_Mask>
+object-group network MSFT-Range
+  network-object <IP> <Subnet_Mask>
 
-    object-group network on-prem-range-1
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-1
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem-range-2
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-2
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem
-      network-object object on-prem-range-1
-      network-object object on-prem-range-2
+object-group network on-prem
+  network-object object on-prem-range-1
+  network-object object on-prem-range-2
 
-    nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+```
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Microsoft 'tan müşteri ağına giden trafik için PAT yapılandırması
 
 **Arabirimler ve yön:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+Kaynak arabirim (trafiğin ASA girdiği yer): iç hedef arabirim
 
 **Yapılandırmada**
 
 NAT havuzu:
 
-    object network outbound-PAT
-        host <NAT-IP>
+```console
+object network outbound-PAT
+    host <NAT-IP>
+```
 
 Hedef sunucu:
 
-    object network Customer-Network
-        network-object <IP> <Subnet-Mask>
+```console
+object network Customer-Network
+    network-object <IP> <Subnet-Mask>
+```
 
-Müşteri IP adresleri için nesne grubu
+Müşteri IP adresleri için nesne grubu:
 
-    object-group network MSFT-Network-1
-        network-object <MSFT-IP> <Subnet-Mask>
+```console
+object-group network MSFT-Network-1
+    network-object <MSFT-IP> <Subnet-Mask>
 
-    object-group network MSFT-PAT-Networks
-        network-object object MSFT-Network-1
+object-group network MSFT-PAT-Networks
+    network-object object MSFT-Network-1
+```
 
 NAT komutları:
 
-    nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```console
+nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX serisi yönlendiricileri
 ### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. küme için yedekli Ethernet arabirimleri oluşturun
+
+```console
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -112,17 +124,50 @@ NAT komutları:
             }
         }
     }
-
+```
 
 ### <a name="2-create-two-security-zones"></a>2. iki güvenlik bölgesi oluşturun
 * Dış ağa yönelik uç yönlendiriciler için iç ağ ve güvenilir olmayan bölge için güven bölgesi
 * Bölgelere uygun arabirimler atama
 * Arabirimlerde hizmetlere izin ver
 
-    Güvenlik {Zones {güvenlik-bölge güveni {Host-gelen-trafik {System-Services {PING;                   } [BGP; protokolleri                   }} arabirimleri {RETH 0.100;               }} Güvenlik-bölge güveni yok {ana bilgisayar-gelen-trafik {System-Services {ping;                   } [BGP; protokolleri                   }} arabirimleri {RETH 1.100;               }           }       }   }
+```console
+    security {
+        zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth0.100;
+                }
+            }
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth1.100;
+                }
+            }
+        }
+    }
+```
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3. bölgeler arasında güvenlik ilkeleri oluşturma
+
+```console
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -151,12 +196,13 @@ NAT komutları:
             }
         }
     }
-
+```
 
 ### <a name="4-configure-nat-policies"></a>4. NAT ilkelerini yapılandırma
 * İki NAT havuzu oluşturun. Bunlardan biri, Microsoft 'a giden ve diğer Microsoft ile müşteri arasındaki trafik için kullanılacaktır.
 * İlgili trafiğe NAT için kurallar oluşturma
-  
+
+```console
        security {
            nat {
                source {
@@ -211,11 +257,14 @@ NAT komutları:
                }
            }
        }
+```
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. her yönde seçmeli önekleri tanıtmak için BGP 'yi yapılandırın
 [Yönlendirme yapılandırma örnekleri](expressroute-config-samples-routing.md) sayfasındaki örneklere bakın.
 
 ### <a name="6-create-policies"></a>6. ilke oluşturma
+
+```console
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -309,6 +358,7 @@ NAT komutları:
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla ayrıntı için bkz. [ExpressRoute SSS](expressroute-faqs.md).

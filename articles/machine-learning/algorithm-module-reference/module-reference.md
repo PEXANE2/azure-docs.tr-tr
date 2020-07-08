@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: b85140d5a54d7447a80899f498dd63014bd11695
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1996f607d05cb84a80acbb105504ce0b5d3bb0c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856892"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için algoritma & modül başvurusu (Önizleme)
 
@@ -32,7 +32,7 @@ Algoritma seçme konusunda yardım için bkz.
 ## <a name="data-preparation-modules"></a>Veri hazırlama modülleri
 
 
-| İşlev | Description | Modül |
+| İşlev | Açıklama | Modül |
 | --- |--- | --- |
 | Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure Storage, SQL Database veya Hive 'e yazın, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama kullanın.  | [Verileri El ile Girme](enter-data-manually.md) <br/> [Verileri Dışarı Aktarma](export-data.md) <br/> [Verileri İçeri Aktarma](import-data.md) |
 | Veri dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekleme](add-columns.md) <br/> [Satır Ekleme](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri Kutulara Gruplama](group-data-into-bins.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
@@ -41,7 +41,7 @@ Algoritma seçme konusunda yardım için bkz.
 
 ## <a name="machine-learning-algorithms"></a>Makine öğrenmesi algoritmaları
 
-| İşlev | Description | Modül |
+| İşlev | Açıklama | Modül |
 | --- |--- | --- |
 | Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> |
 | Kümeleme | Verileri birlikte gruplandırın.| [K Ortalamaları Kümeleme](k-means-clustering.md)
@@ -49,13 +49,13 @@ Algoritma seçme konusunda yardım için bkz.
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Model oluşturma ve değerlendirme için modüller
 
-| İşlev | Description | Modül |
+| İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme Modeli Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md) <br/> [Pytorch modelini eğitme](train-pytorch-model.md) <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
+| Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme Modeli Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md) <br/> [PyTorch Modelini eğitme](train-pytorch-model.md) <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
 | Model Puanlama ve değerlendirme | Eğitilen modelin doğruluğunu ölçün. | [Dönüşüm Uygulama](apply-transformation.md) <br/> [Kümelere Veri Atama](assign-data-to-clusters.md) <br/> [Modeli Çapraz Doğrulama](cross-validate-model.md) <br/> [Modeli Değerlendirme](evaluate-model.md) <br/> [Görüntü Modelini Puanlama](score-image-model.md) <br/> [Modeli Puanlama](score-model.md) |
 | Python dili | Kod yazıp bir modüle katıştırın ve Python 'u işlem hattınızla tümleştirin. | [Python Modeli Oluşturma](create-python-model.md) <br/> [Python Betiği Yürütme](execute-python-script.md) |
 | R dili | Kod yazın ve bir modüle ekleyin ve bunu işlem hattınızla birlikte tümleştirin. | [R Betiği yürütme](execute-r-script.md) |
-| Metin Analizi | Yapılandırılmış ve yapılandırılmamış metinle çalışmak için özelleştirilmiş hesaplama araçları sağlar. |  [Sözcüğü Vektöre Dönüştürme](convert-word-to-vector.md) <br/> [Metinden N-Gram Özelliklerini Ayıklama](extract-n-gram-features-from-text.md) <br/> [Özellik Karma](feature-hashing.md) <br/> [Metni Ön İşleme](preprocess-text.md) <br/> [Görünmeyen Dirichlet Ayırması](latent-dirichlet-allocation.md) |
+| Metin Analizi | Yapılandırılmış ve yapılandırılmamış metinle çalışmak için özelleştirilmiş hesaplama araçları sağlar. |  [Sözcüğü Vektöre Dönüştürme](convert-word-to-vector.md) <br/> [Metinden N-Gram Özelliklerini Ayıklama](extract-n-gram-features-from-text.md) <br/> [Özellik Karma](feature-hashing.md) <br/> [Metni Ön İşleme](preprocess-text.md) <br/> [Görünmeyen Dirichlet Ayırması](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit Modelini Puanlama](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit Modelini Eğitme](train-vowpal-wabbit-model.md)|
 | Görüntü İşleme | Görüntü verileri ön işleme ve görüntü tanıma ile ilgili modüller. |  [Görüntü Dönüşümü Uygulama](apply-image-transformation.md) <br/> [Görüntü Dizinine Dönüştürme](convert-to-image-directory.md) <br/> [Init Görüntü Dönüşümü](init-image-transformation.md) <br/> [Görüntü Dizinini Bölme](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Öneri | Öneri modelleri oluşturun. | [Önereni Değerlendirme](evaluate-recommender.md) <br/> [SVD Önerenini Puanlama](score-svd-recommender.md) <br/> [Geniş ve Derin Öneren Puanlandırması](score-wide-and-deep-recommender.md)<br/> [SVD Önerenini Eğitme](train-SVD-recommender.md) <br/> [Geniş ve Derin Öneren Eğitme](train-wide-and-deep-recommender.md)|
 | Anomali Algılama | Anomali algılama modelleri oluşturun. | [PCA Tabanlı Anomali Algılama](pca-based-anomaly-detection.md) <br/> [Anomali Algılama Modeli Eğitme](train-anomaly-detection-model.md) |

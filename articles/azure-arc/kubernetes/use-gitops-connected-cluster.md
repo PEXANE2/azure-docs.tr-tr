@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856986"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Azure yay etkin bir yapılandırma (Önizleme) için Gilar 'ı kullanma
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 --Repository-URL parametresi değeri için desteklenen senaryolar aşağıda verilmiştir.
 
-| Senaryo | Biçimlendir | Açıklama |
+| Senaryo | Biçim | Açıklama |
 | ------------- | ------------- | ------------- |
 | Özel GitHub deposu-SSH | git@github.com:username/repo | Flox tarafından oluşturulan SSH anahtar çifti.  Kullanıcının GitHub hesabına ortak anahtarı dağıt anahtarı olarak eklemesi gerekir. |
 | Genel GitHub deposu | `http://github.com/username/repo`or git://github.com/username/repo   | Genel git deposu  |
 
 Bu senaryolar, akıcı x tarafından desteklenir, ancak sourceControlConfiguration tarafından desteklenmez. 
 
-| Senaryo | Biçimlendir | Açıklama |
+| Senaryo | Biçim | Açıklama |
 | ------------- | ------------- | ------------- |
 | Özel GitHub deposu-HTTPS | `https://github.com/username/repo` | Flox SSH anahtar çifti oluşturmaz.  [Yönergeler](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Özel Git Konağı | user@githost:path/to/repo | [Yönergeler](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -167,7 +167,7 @@ az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --c
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "complianceState": "Compliant",
+    "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
     "message": "...",
     "messageLevel": "3"
@@ -201,8 +201,8 @@ Oluşturulduğunda, `sourceControlConfiguration` çok sayıda şey meydana gelir
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 
 1. `complianceStatus` -> `Pending`: ilk ve devam eden durumları temsil eder
-1. `complianceStatus` -> `Compliant`: `config-agent` kümeyi başarıyla yapılandırıp dağıtım hatasız olarak dağıtabilecek `flux`
-1. `complianceStatus` -> `Noncompliant`: `config-agent` bir hata dağıtımıyla karşılaşıldı `flux` , Ayrıntılar `complianceStatus.message` yanıt gövdesinde kullanılabilir olmalıdır
+1. `complianceStatus` -> `Installed`: `config-agent` kümeyi başarıyla yapılandırıp dağıtım hatasız olarak dağıtabilecek `flux`
+1. `complianceStatus` -> `Failed`: `config-agent` bir hata dağıtımıyla karşılaşıldı `flux` , Ayrıntılar `complianceStatus.message` yanıt gövdesinde kullanılabilir olmalıdır
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Özel bir git deposundan yapılandırma Uygula
 
