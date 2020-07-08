@@ -7,18 +7,18 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391953"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027812"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 
 Azure Cosmos DB işleme hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi ölçümleri sağlar. Azure portalı bu ölçümlerin bir toplu görünümünü sağlar. Azure Cosmos DB ölçümlerini Azure İzleyici API'sinden de görüntüleyebilirsiniz. Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesine bakın. 
 
-Bu makalede, yaygın kullanım durumları ve bu sorunları çözümlemek ve hatalarını ayıklamak için Azure Cosmos DB ölçümlerinin nasıl kullanılabileceği anlatılmaktadır. Ölçümler her beş dakikada bir toplanır ve yedi gün boyunca tutulur.
+Bu makale yaygın kullanım örneklerinde yol gösterir ve Azure Cosmos DB ölçümlerinin bu sorunlarda analiz ve hata ayıklama işlemleri için nasıl kullanılabileceğini açıklar. Ölçümler her beş dakikada bir toplanır ve yedi gün boyunca tutulur.
 
 ## <a name="view-metrics-from-azure-portal"></a>Azure portal ölçümleri görüntüleme
 
@@ -56,7 +56,7 @@ En yaygın hata durum kodu 429 ' dir (hız sınırlandırma/azaltma). Bu hata, A
 
 Bölüm anahtarlarınızın iyi bir önemliliğine sahip olmak, ölçeklenebilir bir uygulama için gereklidir. Bölümlere göre ayrılmış herhangi bir bölümlenmiş kapsayıcının üretilen iş dağıtımını öğrenmek için [Azure Portal](https://portal.azure.com) **ölçümler dikey penceresine** gidin. **Aktarım hızı** sekmesinde, depolama dökümü **her bir fiziksel bölüm GRAFIĞININ en fazla ru/saniye** cinsinden gösterilir. Aşağıdaki grafik, en soldaki çarpıtılmış bölümde gösterildiği gibi verilerin yanlış dağıtımına ilişkin bir örnek gösterir.
 
-![Tek bölüm 3:05 PM 'de ağır kullanımı görüntüleme](media/use-metrics/metrics-17.png)
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Tek bölüm yoğun kullanımı görüntüleme":::
 
 Düzensiz bir üretilen iş dağıtımı, kısıtlanmış isteklere yol açabilecek ve yeniden bölümleme gerektirebilecek *etkin* bölümlere neden olabilir. Azure Cosmos DB bölümlendirme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB bölüm ve ölçek](./partition-data.md).
 

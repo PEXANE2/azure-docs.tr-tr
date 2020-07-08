@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658068"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027112"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -56,7 +56,7 @@ Bir yayımlama seçeneği seçmeden önce, ticari Market çözümleri, uygulamal
 **Azure Market** uygulamaları, Azure için yerleşik veya yerleşik olarak bulunan ve BT ya da geliştirici kitlesi için tasarlanan teknik "derleme bloğu" çözümleridir. Azure Market Danışmanlık Hizmetleri, müşterilerin Azure kullanımını kullanmaya veya hızlandırmasına yardımcı olan profesyonel hizmet teklifleridir.
 
 >[!Note]
->Çapraz listeleme (yalnızca SaaS uygulamaları için): bir liste veya deneme tabanlı teklif, hem teknik hem de iş kullanıcı kitlesi için ölçütlere uyduğunda, teklifiniz her iki stoporonte de listelenir. Aşağıdaki yayımlama seçenekleri hakkında daha fazla bilgi edinin.
+>"Çapraz listeleme" (yalnızca SaaS uygulamaları için): SaaS teklifiniz bir teknik hedef kitle (Azure Marketi) ve bir iş kitlesi (AppSource) için tasarlanıyorsa, Stoporonts için geçerli bir kategori ve/veya alt kategori seçebilirsiniz. Teklifinizin "çapraz listeleme" amacını, her iki hedef kitleye genişleten bir değer teklifini temel almalıdır. Her storefront için geçerli olan kategorileri görüntülemek için [buraya](./gtm-offer-listing-best-practices.md#categories) tıklayın.
 
 ## <a name="choose-a-publishing-option"></a>Yayımlama seçeneği seçin
 
@@ -64,7 +64,7 @@ Kullanılabilir yayımlama seçenekleri, müşteri adayı paylaşma ve [ticari M
 
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| **Listele** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** eylemi çağrısı yoluyla müşteriyle bağlantı kurma isteğinde bulunan basit listesi. |
+| **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** eylemi çağrısı yoluyla müşteriyle bağlantı kurma isteğinde bulunan basit listesi. |
 | **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan çağrı eylemi, **ücretsiz deneme** veya **test sürücüsü**olabilir. |
 | **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Eyleme çağrı **Şimdi**alınır.
 | **Transact** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Eyleme çağrı **Şimdi**alınır.|

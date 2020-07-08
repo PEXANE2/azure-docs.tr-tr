@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5504416d09cf6b3f75d02e29cc93b0278cc42386
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117140"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025837"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -122,7 +122,7 @@ Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesa
 
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Storage Services 'A giriş](../storage/common/storage-introduction.md#core-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Tüketim ve Premium planlar nasıl çalışır?
+## <a name="how-the-consumption-and-premium-plans-work"></a>Tüketim ve Premium plan türleri nasıl çalışır?
 
 Tüketim ve Premium planlarında, Azure Işlevleri altyapısı, işlevlerinin tetiklendiği olay sayısına göre Işlevler ana bilgisayarının ek örneklerini ekleyerek CPU ve bellek kaynaklarını ölçeklendirir. Tüketim planında Işlevlerin ana bilgisayarının her örneği 1,5 GB bellek ve bir CPU ile sınırlıdır.  Ana bilgisayarın bir örneği, bir işlev uygulamasının tüm işlevleri bir örnek içinde kaynak paylaşır ve aynı anda ölçeklendirin. Aynı tüketim planını paylaşan işlev uygulamaları bağımsız olarak ölçeklendirilir.  Premium planda, plan boyutunuz söz konusu örnekteki plandaki tüm uygulamalar için kullanılabilir bellek ve CPU 'YU tespit edecektir.  
 
@@ -175,7 +175,7 @@ Aşağıdaki karşılaştırma tablosu, Azure Işlevleri uygulama barındırma p
 | | |
 | --- | --- |  
 |**[Tüketim planı](#consumption-plan)**| Otomatik olarak ölçeklendirin ve işlevleriniz çalışırken yalnızca işlem kaynakları için ödeme yapın. Tüketim planında, Işlevler ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır.<br/> ✔ Varsayılan barındırma planı.<br/>✔ Yalnızca işlevleriniz çalışırken ödeyin.<br/>yüksek yük dönemlerinde bile otomatik olarak genişleme ✔.|  
-|**[Premium planı](#premium-plan)**|Talebe göre otomatik olarak ölçeklendirirken, boşta kaldıktan sonra gecikme olmadan uygulamaları çalıştırmak için önceden çarpımış çalışanları kullanın, daha güçlü örnekler üzerinde çalışır ve sanal ağlara bağlanın. App Service planının tüm özelliklerine ek olarak aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundurun: <br/>İşlev uygulamalarınızın sürekli veya neredeyse sürekli çalışmasını ✔.<br/>✔ Yüksek sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB ikinci faturanız vardır.<br/>✔ Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.<br/>Kodunuzun, tüketim planında izin verilen en uzun yürütme süresinden daha uzun süre çalışmasını ✔.<br/>✔ Yalnızca, sanal ağ bağlantısı gibi Premium bir planda kullanılabilen özellikler gerektirir.|  
+|**[Premium planı](#premium-plan)**|Talebe göre otomatik olarak ölçeklendirirken, boşta kaldıktan sonra gecikme olmadan uygulamaları çalıştırmak için önceden çarpımış çalışanları kullanın, daha güçlü örnekler üzerinde çalışır ve sanal ağlara bağlanın. App Service planının tüm özelliklerine ek olarak aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundurun: <br/>İşlev uygulamalarınızın sürekli veya neredeyse sürekli çalışmasını ✔.<br/>✔ Yüksek sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB ikinci faturanız vardır.<br/>✔ Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.<br/>Kodunuzun, tüketim planında izin verilen en uzun yürütme süresinden daha uzun süre çalışmasını ✔.<br/>✔ Yalnızca, sanal ağ bağlantısı gibi Premium bir planda kullanılabilir olan özellikler gerektirir.|  
 |**[Adanmış plan](#app-service-plan)**<sup>1</sup>|İşlevlerinizi düzenli App Service plan ücretlerindeki bir App Service planı içinde çalıştırın. Uzun süre çalışan işlemlere uygun, ayrıca daha tahmine dayalı ölçekleme ve maliyetlerin gerekli olduğu durumlarda iyi şekilde uyum sağlar. Aşağıdaki durumlarda bir App Service planı düşünün:<br/>Daha önce başka App Service örnekleri çalıştıran mevcut, az kullanılan VM 'Ler ✔.<br/>İşlevlerinizin çalıştırılacağı özel bir görüntü sağlamak ✔.|  
 |**[Ao](#app-service-plan)**<sup>1</sup>|App Service Ortamı (ASE), yüksek ölçekte App Service uygulamaları güvenli bir şekilde çalıştırmak için tam olarak yalıtılmış ve ayrılmış bir ortam sağlayan bir App Service özelliğidir. ASEs, gereken uygulama iş yükleri için uygundur: <br/>Çok yüksek ölçekli ✔.<br/>Yalıtım ve güvenli ağ erişimi ✔.<br/>✔ Yüksek bellek kullanımı.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes, Kubernetes platformunun üstünde çalışan tam yalıtılmış ve ayrılmış bir ortam sağlar.  Kubernetes şunları gerektiren uygulama iş yükleri için uygundur: <br/>Özel donanım gereksinimlerini ✔.<br/>Yalıtım ve güvenli ağ erişimi ✔.<br/>Karma veya çok bulut ortamında çalıştırmak ✔.<br/>✔, Mevcut Kubernetes uygulamaları ve hizmetleriyle birlikte çalışır.|  

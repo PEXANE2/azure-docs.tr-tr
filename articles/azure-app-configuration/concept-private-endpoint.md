@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205067"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026993"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için özel uç noktaları kullanma
 
@@ -24,7 +24,7 @@ Uygulama yapılandırma deponuzda özel uç noktalar kullanmak şunları yapman�
 - [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-locations.md) Ile özel eşleme ile sanal ağa bağlanan şirket içi ağlardan uygulama yapılandırma deposuna güvenli bir şekilde bağlanın.
 
 > [!NOTE]
-> Azure Uygulama yapılandırması, Özel uç noktaların genel önizleme olarak kullanılmasını sağlar. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.
+> Özel uç nokta işlevselliği artık Orta Hindistan *dışındaki* tüm bölgelerde genel kullanıma sunulmuştur. Azure Uygulama yapılandırması, **Orta Hindistan** bölgesinde genel önizleme olarak özel uç noktaların kullanımını sağlar. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.
 
 ## <a name="conceptual-overview"></a>Kavramsal genel bakış
 

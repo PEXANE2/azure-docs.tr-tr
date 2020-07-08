@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414292"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027690"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -43,14 +43,15 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
 
    | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
-   | Adı | Güncelleştirme Devemlak | Web uç noktasının adı. |
+   | Name | Güncelleştirme Devemlak | Web uç noktasının adı. |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Özel komut uygulamanızın konuştuğunu istediğiniz uç noktanın URL 'SI. |
    | Yöntem | POST | Uç noktanızla izin verilen etkileşimler (GET, POST gibi).|
-   | Üst bilgiler | Anahtar: uygulama, değer: uygulamanız için benzersiz bir ad | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
+   | Üst bilgiler | Anahtar: uygulama, değer: ApplicationId 'nizin ilk 8 basamağını alın | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
 
     > [!NOTE]
     > - TV ve fanı 'nin cihaz durumunu kaydeden veritabanı ile birlikte gelen [Azure işlevi](https://docs.microsoft.com/azure/azure-functions/)kullanılarak oluşturulan örnek Web uç noktası
     > - Önerilen üst bilgi yalnızca örnek uç nokta için gereklidir
+    > - Üstbilgi değerinin örnek uç noktanızda benzersiz olduğundan emin olmak için, ApplicationId 'nizin ilk 8 basamağını alın
     > - Gerçek dünyada Web uç noktası, cihazlarınızı yöneten [IoT Hub 'ına](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) ait uç nokta olabilir
 
 1. **Kaydet**’e tıklayın.
@@ -68,12 +69,14 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    | ------- | --------------- | ----------- |
    | Uç Noktalar | Güncelleştirme Devemlak | Bu eylemde çağırmak istediğiniz Web uç noktası. |
    | Sorgu parametreleri | Item = {SubjectDevice} &&değer = {OnOff} | Web uç noktası URL 'sine eklenecek sorgu parametreleri.  |
-   | Gövde içeriği | Yok | İsteğin gövde içeriği. |
+   | Gövde içeriği | YOK | İsteğin gövde içeriği. |
 
     > [!NOTE]
     > - Önerilen sorgu parametreleri yalnızca örnek uç nokta için gereklidir
 
 1. **Yürütmeye yönelik Işlemin başarılı**olması durumunda **konuşma yanıtı gönder**' i seçin.
+    
+    **Basit düzenleyicide**, girin `{SubjectDevice} is {OnOff}` .
    
    > [!div class="mx-imgBorder"]
    > ![Başarı durumunda Web uç noktaları çağrısı eylemi](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    > - Ayrıca, kullanarak HTTP yanıtındaki alanlara doğrudan erişebilirsiniz `{YourWebEndpointName.FieldName}` . Örneğin, `{UpdateDeviceState.TV}`
 
 1. **Yürütülmeye yönelik eylem sayfasında**, **konuşma yanıtı gönder** ' i seçin.
+
+    **Basit düzenleyicide**, girin `Sorry, {WebEndpointErrorMessage}` .
+
    > [!div class="mx-imgBorder"]
    > ![Hata durumunda Web uç noktaları çağrısı eylemi](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

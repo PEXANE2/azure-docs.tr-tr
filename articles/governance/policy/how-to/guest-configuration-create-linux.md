@@ -3,12 +3,12 @@ title: Linux için konuk yapılandırma ilkeleri oluşturma
 description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654871"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026721"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için konuk yapılandırma ilkeleri oluşturma
 
@@ -81,7 +81,7 @@ Linux ortamlarında bile, Konuk yapılandırması, Istenen durum yapılandırmas
 
 #### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
-Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Kaynak Yöneticisi şablonundaki Konuk atama adı aynı olmalıdır.
+Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Azure Resource Manager şablonundaki (ARM şablonu) Konuk atama adı aynı olmalıdır.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux üzerinde özel konuk yapılandırma yapılandırması
 
@@ -276,9 +276,9 @@ New-GuestConfigurationPolicy `
 
 Aşağıdaki dosyalar tarafından oluşturulmuştur `New-GuestConfigurationPolicy` :
 
-- **Auditınotexists. JSON**
-- **deployIfNotExists. JSON**
-- **Girişim. JSON**
+- **ÜzerindeauditIfNotExists.js**
+- **ÜzerindedeployIfNotExists.js**
+- **ÜzerindeInitiative.js**
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
 
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **Parametreler**adlı bir parametre ekleyin. Bu parametre, her bir parametre hakkında tüm ayrıntıları içeren bir Hashtable alır ve her bir Azure Ilke tanımını oluşturmak için kullanılan dosyaların tüm gerekli bölümlerini otomatik olarak oluşturur.
+Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **parametresi**adlı bir parametre ekleyin. Bu parametre, her bir parametre hakkında tüm ayrıntıları içeren bir Hashtable alır ve her bir Azure Ilke tanımını oluşturmak için kullanılan dosyaların tüm gerekli bölümlerini otomatik olarak oluşturur.
 
 Aşağıdaki örnek, bir dosya yolunu denetlemek için bir ilke tanımı oluşturur; burada Kullanıcı, ilke ataması sırasında yolu sağlar.
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

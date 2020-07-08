@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717650"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026075"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure’da SQL Server’daki örnek veriler
 
@@ -37,22 +37,29 @@ Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.micro
 ## <a name="using-sql"></a><a name="SQL"></a>SQL kullanma
 Bu bölümde, veritabanındaki verilere karşı basit rastgele örnekleme gerçekleştirmek için SQL kullanan çeşitli yöntemler açıklanmıştır. Veri boyutunuzu ve dağılımını temel alan bir yöntem seçin.
 
-Aşağıdaki iki öğe, örnekleme işlemini gerçekleştirmek için `newid` SQL Server ' de nasıl kullanılacağını göstermektedir. Seçtiğiniz yöntem, örneğin, örnek (Aşağıdaki örnek kodda pk_id, bir otomatik olarak oluşturulan birincil anahtar olarak kabul edilir) ne kadar rastgele olmasını istediğinize bağlıdır.
+Aşağıdaki iki öğe, `newid` örnekleme işlemini gerçekleştirmek için SQL Server ' de nasıl kullanılacağını göstermektedir. Seçtiğiniz yöntem, örneğin, örnek (Aşağıdaki örnek kodda pk_id, bir otomatik olarak oluşturulan birincil anahtar olarak kabul edilir) ne kadar rastgele olmasını istediğinize bağlıdır.
 
 1. Daha az sıkı rastgele örnek
-   
-        select  * from <table_name> where <primary_key> in 
-        (select top 10 percent <primary_key> from <table_name> order by newid())
+
+    ```sql
+    select  * from <table_name> where <primary_key> in 
+    (select top 10 percent <primary_key> from <table_name> order by newid())
+    ```
+
 2. Daha fazla rastgele örnek 
-   
-        SELECT * FROM <table_name>
-        WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+
+    ```sql
+    SELECT * FROM <table_name>
+    WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+    ```
 
 Can, verileri örneklemede de kullanılabilir. Bu seçenek, veri boyutunuz büyükse (farklı sayfalardaki verilerin bağıntılı olmadığı varsayıldığında) ve sorgunun makul bir süre içinde tamamlanacağı daha iyi bir yaklaşım olabilir.
 
-    SELECT *
-    FROM <table_name> 
-    TABLESAMPLE (10 PERCENT)
+```sql
+SELECT *
+FROM <table_name> 
+TABLESAMPLE (10 PERCENT)
+```
 
 > [!NOTE]
 > Yeni bir tabloda depolayarak bu örneklenmiş verilerden Özellikler araştırabilir ve oluşturabilirsiniz
@@ -67,16 +74,20 @@ Can, verileri örneklemede de kullanılabilir. Bu seçenek, veri boyutunuz büy�
 ## <a name="using-the-python-programming-language"></a><a name="python"></a>Python programlama dilini kullanma
 Bu bölümde, Python 'da bir SQL Server veritabanına ODBC bağlantısı kurmak için [pyodbc kitaplığı](https://code.google.com/p/pyodbc/) kullanılması gösterilmektedir. Veritabanı bağlantı dizesi şu şekildedir: (ServerName, dbname, username ve Password öğesini yapılandırmanızla değiştirin):
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 Python 'daki [Pandas](https://pandas.pydata.org/) kitaplığı, Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, Azure SQL veritabanındaki bir tablodaki verilerin% 0,1 örneğini bir Pandas verilerine okur:
 
-    import pandas as pd
+```python
+import pandas as pd
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+```
 
 Artık Pandas veri çerçevesindeki örneklenmiş verilerle çalışabilirsiniz. 
 
@@ -84,29 +95,35 @@ Artık Pandas veri çerçevesindeki örneklenmiş verilerle çalışabilirsiniz.
 Aşağıdaki örnek kodu kullanarak, aşağı örneklenir verileri bir dosyaya kaydedebilir ve bir Azure Blob 'una yükleyebilirsiniz. Blob 'daki veriler, [verileri Içeri aktarma][import-data] modülünü kullanarak doğrudan bir Azure Machine Learning denemesine okunabilir. Adımlar şu şekildedir: 
 
 1. Pandas veri çerçevesini yerel bir dosyaya yaz
-   
-        dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+
+    ```python
+    dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+    ```
+
 2. Yerel dosyayı Azure Blob 'a yükleme
-   
-        from azure.storage import BlobService
-        import tables
-   
-        STORAGEACCOUNTNAME= <storage_account_name>
-        LOCALFILENAME= <local_file_name>
-        STORAGEACCOUNTKEY= <storage_account_key>
-        CONTAINERNAME= <container_name>
-        BLOBNAME= <blob_name>
-   
-        output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
-        localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
-   
-        try:
-   
-        #perform upload
-        output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
-   
-        except:            
-            print ("Something went wrong with uploading blob:"+BLOBNAME)
+
+    ```python
+    from azure.storage import BlobService
+    import tables
+
+    STORAGEACCOUNTNAME= <storage_account_name>
+    LOCALFILENAME= <local_file_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
+
+    output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
+    localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
+
+    try:
+
+    #perform upload
+    output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
+
+    except:            
+        print ("Something went wrong with uploading blob:"+BLOBNAME)
+    ```
+
 3. Aşağıdaki ekranda gösterildiği gibi Azure Machine Learning [veri alma][import-data] modülünü kullanarak Azure Blob 'dan verileri okuyun:
 
 ![okuyucu blobu][2]

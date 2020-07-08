@@ -112,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Veri Şifrelemesi
               href: concepts-data-encryption-postgresql.md
+            - name: Altyapıyı çift şifreleme
+              href: concepts-infrastructure-double-encryption.md
             - name: Güvenlik temeli
               href: security-baseline.md
         - name: İş sürekliliği
@@ -307,6 +309,10 @@
               href: howto-data-encryption-cli.md
             - name: Veri şifreleme doğrulaması
               href: howto-data-encryption-validation.md
+        - name: Altyapıyı çift şifreleme
+          items:
+            - name: Altyapı çift şifrelemeyi yapılandırma
+              href: howto-double-encryption.md
         - name: Sunucuyu yeniden başlatma
           items:
             - name: Azure portal

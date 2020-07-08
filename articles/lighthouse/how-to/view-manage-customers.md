@@ -1,24 +1,24 @@
 ---
 title: Müşterileri ve temsilci olarak atanmış kaynakları görüntüleme ve yönetme
-description: Azure tarafından atanan kaynak yönetimini kullanan bir hizmet sağlayıcı olarak, tüm Temsilcili müşteri kaynaklarınızı ve aboneliklerinizi Azure portal müşterilerime giderek görüntüleyebilirsiniz.
-ms.date: 01/22/2020
+description: Azure açık Thouse hizmetini kullanan bir hizmet sağlayıcı olarak, tüm Temsilcili müşteri kaynaklarınızı ve aboneliklerinizi, Azure portal müşterilerime giderek görüntüleyebilirsiniz.
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 4b069c2e78021c31a85ea8fca005152e2d28231e
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636487"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026279"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve temsilci olarak atanmış kaynakları görüntüleme ve yönetme
 
-[Azure tarafından yetkilendirilen kaynak yönetimini](../concepts/azure-delegated-resource-management.md) kullanan hizmet sağlayıcıları, temsilcili müşteri kaynaklarını ve abonelikleri görüntülemek için [Azure Portal](https://portal.azure.com) **müşterilerim** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
+Azure açık Thouse kullanan hizmet sağlayıcıları, temsilcili müşteri kaynaklarını ve abonelikleri görüntülemek için [Azure Portal](https://portal.azure.com) **müşteriler** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
 Azure portal **müşterilerimiz** sayfasına erişmek Için, **tüm hizmetler**' i seçin, ardından **müşterilerimi** arayın ve seçin. Ayrıca, Azure portal üst kısmındaki arama kutusuna "My Customers" girerek de bulabilirsiniz.
 
-**Müşteriler** sayfasının en popüler **müşterileri** bölümünün yalnızca abonelik veya kaynak grupları için temsilci atanmış müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla) çalışıyorsanız, Azure tarafından atanan kaynak yönetimi için kaynaklarına eklendi sahip olmadığınız sürece **müşteriler** bölümünde bu müşterilerle ilgili bilgileri görmezsiniz.
+**Müşteriler** sayfasının en popüler **müşterileri** bölümünün yalnızca abonelik veya kaynak grupları için temsilci atanmış müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle (örneğin, [bulut çözümü sağlayıcısı programı](/partner-center/csp-overview)aracılığıyla) çalışıyorsanız, [Azure Temsilcili kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için kaynaklarına eklendi sahip olmadığınız sürece **müşteriler** bölümünde bu müşterilerle ilgili bilgileri görmezsiniz.
 
-Sayfada daha düşük olan **bulut çözümü sağlayıcısı (Önizleme)** adlı ayrı bir bölüm, [Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](https://docs.microsoft.com/partner-center/azure-plan-get-started)olan CSP müşterileriniz için faturalandırma bilgilerini ve kaynakları gösterir. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](../../billing/mpa-overview.md). Bu tür CSP müşterilerinin, Azure tarafından atanan kaynak yönetimi için de eklendi sahip olup olmadığına bakılmaksızın bu bölümde göründüğünü unutmayın. Benzer şekilde, bir CSP müşterisi, Azure tarafından atanan kaynak yönetimine yönelik olarak bunları eklemek için **müşterilerimin** **bulut çözümü sağlayıcısı (Önizleme)** bölümünde görünmesini gerektirmez.
+Sayfada daha düşük olan **bulut çözümü sağlayıcısı (Önizleme)** adlı ayrı bir bölüm, [Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan CSP müşterileriniz için faturalandırma bilgilerini ve kaynakları gösterir. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](../../billing/mpa-overview.md). Bu tür CSP müşterilerinin, Azure tarafından atanan kaynak yönetimi için de eklendi sahip olup olmadığına bakılmaksızın bu bölümde göründüğünü unutmayın. Benzer şekilde, bir CSP müşterisi, Azure tarafından atanan kaynak yönetimine yönelik olarak bunları eklemek için **müşterilerimin** **bulut çözümü sağlayıcısı (Önizleme)** bölümünde görünmesini gerektirmez.
 
 > [!NOTE]
 > Müşterileriniz, Azure portal hizmet **sağlayıcılarına** giderek hizmet sağlayıcılarıyla ilgili bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [hizmet sağlayıcılarını görüntüleme ve yönetme](view-manage-service-providers.md).
@@ -53,7 +53,6 @@ Her bir temsilciyle ilişkili kullanıcılar ve izinler, **rol atamaları** süt
 ### <a name="remove-delegations"></a>Temsilcileri kaldır
 
 Azure tarafından atanan kaynak yönetimi için bir müşteri eklerken [yönetilen hizmetler kayıt ataması silme rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip kullanıcılar eklediyseniz, bu kullanıcılar bu temsilcinin satırında görünen çöp kutusu simgesini seçerek bir temsilciyi kaldırabilir. Bunu yaparken, hizmet sağlayıcısının kiracısındaki hiçbir Kullanıcı daha önce atanmış kaynaklara erişemeyecektir.
-
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Temsilci atanmış bir abonelik bağlamında çalışın
 

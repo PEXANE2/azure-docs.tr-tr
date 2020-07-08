@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a80a2e2eb5522768c08a24535b0fb3f8d86a44
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261996"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027751"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak GitHub 'dan bir Web uygulamasıyla Azure Cosmos DB ve Azure App Service dağıtma
 
@@ -36,7 +36,7 @@ Elde edilen dağıtımda, Azure Cosmos DB uç nokta URL 'sini veya Azure portal 
 
 İlk olarak, bir özel dağıtım oluşturmak için Azure portal açmak üzere aşağıdaki **Azure 'A dağıt** düğmesini seçin. Azure [hızlı başlangıç şablonları galerisinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) Azure Kaynak Yönetimi şablonunu da görüntüleyebilirsiniz
 
-[![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure’a dağıtın":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
 
 Azure portal bir kez, dağıtmak istediğiniz aboneliği seçin ve yeni bir kaynak grubu seçin veya oluşturun. Ardından aşağıdaki değerleri girin.
 
@@ -64,7 +64,7 @@ Değerleri doldurduktan sonra, dağıtımı başlatmak için **Oluştur** düğm
 
 Şablon kaynakları dağıttıktan sonra, bunların her birini kaynak grubunuzda görebilirsiniz.
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="Kaynak grubu":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Kaynak Grubu":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB uç noktası ve anahtarları görüntüleme
 

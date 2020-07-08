@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362331"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026704"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -405,6 +405,12 @@ GitHub Azure Resource Manager şablonu çalıştırıyorsanız, Windows sanal ma
 - Kiracı Yönetici parolası: hizmet sorumlusu için oluşturduğunuz parola parolası
 - Isserviceprincipal: **true**
 - Aadtenantıd: oluşturduğunuz hizmet sorumlusunun Azure AD kiracı KIMLIĞI
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Hata: sanal ağları yapılandırırken vmSubnet kullanılamaz
+
+**Neden:** WVD Market şablonunda, Kullanıcı arabirimi yalnızca şablonda belirtilen toplam VM sayısı kadar en az sayıda IP adresi bulunan alt ağları görüntüler. Alt ağdaki kullanılabilir IP adreslerinin gerçek sayısının yalnızca dağıtılan yeni VM sayısına eşit olması gerekir, ancak bu geçerli kullanıcı arabirimi tarafından hesaplanamaz.
+
+**Çözüm:** Market Kullanıcı arabirimi kullanılarak eklenmekte olan VM sayısı kadar en az sayıda IP adresi bulunan bir alt ağ belirtebilirsiniz; Bu, [mevcut bir dağıtımı](expand-existing-host-pool-2019.md#redeploy-from-azure) yeniden [dağıtırken veya GitHub 'DAN temel alınan ARM şablonunu kullanarak dağıttığınızda](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool), "**existingsubnetname**" parametresindeki alt ağ adı belirtilerek yapılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

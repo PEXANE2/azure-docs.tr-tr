@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: db0addfbc2fc5b322c2f6dd9b51f3ace10935589
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261418"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026976"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -23,7 +23,7 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 * [IoT Edge cihazı kaydetme](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
-    * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Batı, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
+    * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
     * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir.
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Canlı video analizlerini kullanmak için Azure kaynaklarını yapılandırma
