@@ -4,10 +4,10 @@ description: Kaynaklarınızı aboneliğinizdeki bir kaynak grubuna dağıtmak i
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255271"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM şablonları ve Azure portal kaynak dağıtma
@@ -110,7 +110,7 @@ Bir dağıtımı yürütmek, ancak Market 'teki şablonlardan hiçbirini kullanm
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. **Kaydet**’i seçin. Artık portal şablonu dağıtım arabirimini görürsünüz. Şablonda tanımladığınız iki parametreye dikkat edin.
+1. **Kaydet**'i seçin. Artık portal şablonu dağıtım arabirimini görürsünüz. Şablonda tanımladığınız iki parametreye dikkat edin.
 1. Özellik değerlerini girin veya seçin:
 
     - **Abonelik**: bir Azure aboneliği seçin.

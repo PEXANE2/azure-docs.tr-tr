@@ -11,10 +11,10 @@ ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
 ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254064"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Uygulama geliştirmeye genel bakış-SQL veritabanı & SQL yönetilen örneği
@@ -29,7 +29,7 @@ Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için çeşitl
 
 [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/)gibi açık kaynaklı araçlardan yararlanabilirsiniz. Ayrıca, Azure SQL Veritabanı [Visual Studio](https://www.visualstudio.com/downloads/) ve [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) gibi Microsoft araçlarıyla birlikte çalışır. Ayrıca, Azure portal, PowerShell ve REST API 'Lerini kullanarak ek üretkenlik elde etmenize yardımcı olabilirsiniz.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure SQL veritabanı 'na erişim, oturum açmalar ve güvenlik duvarları ile korunmaktadır. Azure SQL veritabanı hem SQL Server hem de [Azure Active Directory kimlik doğrulama](authentication-aad-overview.md) kullanıcılarını ve oturum açmaları destekler. Azure Active Directory oturum açma işlemleri yalnızca SQL yönetilen örneği 'nde kullanılabilir. 
 

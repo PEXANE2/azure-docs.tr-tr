@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 2358cf57348b82975250d489ac95d6e0b35eed0e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254829"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid hatalarında sorun giderme
 Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerinin, açıklamalarının ve bu hataları aldığınızda gerçekleştirmeniz gereken önerilen eylemlerin bir listesini sağlar. 
 
 ## <a name="error-code-400"></a>Hata kodu: 400
-| Hata kodu | Hata iletisi | Description | Öneri |
+| Hata kodu | Hata iletisi | Açıklama | Öneri |
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode. BadRequest<br/>400 | Konu adı 3 ila 50 karakter uzunluğunda olmalıdır. | Özel konu adı uzunluğu 3 ila 50 karakter uzunluğunda olmalıdır. Konu adında yalnızca alfasayısal harfler, rakamlar ve '-' karakterine izin verilir. Ayrıca, ad aşağıdaki ayrılmış sözcüklerle başlamamalıdır: <ul><li>Microsoft</li><li>EventGrid</li><li>Sistem</li></ul> | Konu adı gereksinimlerine uygun olan farklı bir konu adı seçin. |
 | HttpStatusCode. BadRequest<br/>400 | Etki alanı adı 3 ila 50 karakter uzunluğunda olmalıdır. | Etki alanı adının uzunluğu 3 ila 50 karakter uzunluğunda olmalıdır. Konu adında yalnızca alfasayısal harfler, rakamlar ve '-' karakterine izin verilir. Ayrıca, ad aşağıdaki ayrılmış sözcüklerle başlamamalıdır:<ul><li>Microsoft</li><li>EventGrid</li><li>Sistem</li> | Etki alanı adı gereksinimlerine uygun farklı bir etki alanı adı seçin. |
 | HttpStatusCode. BadRequest<br/>400 | Geçersiz süre sonu zamanı. | Olay aboneliğinin sona erme saati, olay aboneliğinin ne zaman devre dışı olacağını belirler. Bu değer, gelecekte geçerli bir DateTime değeri olmalıdır.| Olay aboneliği zaman aşımı süresinin geçerli bir tarih saat biçiminde ve gelecekte olacak şekilde ayarlandığından emin olun. |
 
 ## <a name="error-code-409"></a>Hata kodu: 409
-| Hata kodu | Hata iletisi | Description | Önerilen eylem |
+| Hata kodu | Hata iletisi | Açıklama | Önerilen eylem |
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode. Conflict <br/>409 | Belirtilen ada sahip bir konu zaten var. Farklı bir konu adı seçin.   | Özel konu adı, doğru bir yayımlama işleminin sağlamak için tek bir Azure bölgesinde benzersiz olmalıdır. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Konu için farklı bir ad seçin. |
 | HttpStatusCode. Conflict <br/> 409 | Belirtilen etki alanı zaten var. Farklı bir etki alanı adı seçin. | Doğru bir yayımlama işlemi sağlamak için etki alanı adının tek bir Azure bölgesinde benzersiz olması gerekir. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Etki alanı için farklı bir ad seçin. |
@@ -33,7 +33,7 @@ Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerini
 
 ## <a name="error-code-403"></a>Hata kodu: 403
 
-| Hata kodu | Hata iletisi | Description | Önerilen eylem |
+| Hata kodu | Hata iletisi | Açıklama | Önerilen eylem |
 | ---------- | ------------- | ----------- | ------------------ |
 | HttpStatusCode. yasak <br/>403 | IPAddress filtreleme kuralları nedeniyle {IPAddress} istemcisinin {konu/etki alanı} öğesine yayımlanması reddedildi. | Konu veya etki alanında IP güvenlik duvarı kuralları yapılandırılmış ve erişim yalnızca yapılandırılan IP adresleriyle kısıtlıdır. | IP adresini IP güvenlik duvarı kurallarına ekleyin, bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md) |
 | HttpStatusCode. yasak <br/> 403 | Özel uç noktasından istek geldiği ve kaynak için eşleşen özel uç nokta bağlantısı bulunmadığından, istemci tarafından {topic/etki alanı} üzerinde yayımlama reddedildi. | Konu veya etki alanı için yapılandırılmış özel uç noktalar ve yayımlama isteği, yapılandırılmamış/onaylanmamış özel bir uç noktadan geldi. | Konu/etki alanı için özel bir uç nokta yapılandırın. [Özel uç noktaları yapılandırma](configure-private-endpoints.md) |

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255424"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Azure Stream Analytics işi oluşturma (Önizleme) 
@@ -39,7 +39,7 @@ Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış ak�
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Description |
+| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
@@ -202,7 +202,7 @@ Akış işi aşağıdaki durumlardan herhangi birine sahip olabilir:
 | Oluşturulan | Akış işi oluşturuldu, ancak henüz başlatılmadı. |
 | Başlatılıyor | Akış işi başlangıç aşamasındadır. |
 | Boş | Akış işi çalışıyor, ancak işlenecek giriş yok. |
-| İşleme | Akış işi çalışıyor ve girişleri işliyor. Bu durum, akış işi için sağlıklı bir durumu gösterir. |
+| İşleniyor | Akış işi çalışıyor ve girişleri işliyor. Bu durum, akış işi için sağlıklı bir durumu gösterir. |
 | Düzeyi düşürüldü | Akış işi çalışıyor, ancak giriş işlenirken önemli olmayan bazı hatalar oluştu. Giriş işi çalışmaya devam eder, ancak hatalarla karşılaşan girdileri de bırakacak. |
 | Durduruldu | Akış işi durduruldu. |
 | Başarısız | Akış işi başarısız oldu. Bu genellikle işlem sırasında önemli bir hatanın göstergesidir. |

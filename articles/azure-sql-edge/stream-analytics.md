@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254081"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>SQL Edge ile Azure Stream Analytics işleri kullanma
@@ -32,7 +32,7 @@ Azure SQL Edge, Stream Analytics çalışma zamanının yerel bir uygulamasına 
 }
 ```
 
-|Alan | Description |
+|Alan | Açıklama |
 |------|-------------|
 | SqlPackage | SQL veritabanı DAC paketini içeren *. zip dosyası için Azure Blob depolama URI 'SI.
 | Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI.
@@ -49,7 +49,7 @@ Azure SQL Edge, Stream Analytics çalışma zamanının yerel bir uygulamasına 
 
     **Çıktı**. Çıkış olarak SQL veritabanı ' nı seçin. **SQL veritabanı ayarlarını el Ile sağla**' yı seçin. Veritabanı ve tablo için yapılandırma ayrıntılarını sağlayın.
 
-    |Alan      | Description |
+    |Alan      | Açıklama |
     |---------------|-------------|
     |Çıktı diğer adı | Çıkış diğer adının adı.|
     |Veritabanı | Veritabanının adı. SQL Edge örneğinde bulunan bir veritabanının geçerli bir adı olması gerekir.|
@@ -118,7 +118,7 @@ Akış işini SQL Edge modülüne dağıtmak için SQL Edge modülü yapılandı
         }
     ```
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Modülleri ayarla** sayfasında, **İleri**' yi seçin.
 

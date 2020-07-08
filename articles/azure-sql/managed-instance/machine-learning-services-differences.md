@@ -13,13 +13,13 @@ ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
 ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254757"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL yönetilen örneği ve SQL Server Machine Learning Services arasındaki önemli farklılıklar
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Yönetilen Örneği ve SQL Server içindeki Machine Learning Services özellikleri arasındaki temel farklar
 
 [Azure SQL yönetilen örneği (Önizleme) içindeki Machine Learning Services](machine-learning-services-overview.md) işlevselliği, [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)ile neredeyse aynıdır. Aşağıda bazı önemli farklılıklar verilmiştir.
 
@@ -28,14 +28,14 @@ ms.locfileid: "85254757"
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-Önizleme sırasında hizmet aşağıdaki sınırlamalara sahiptir:
+Hizmet, önizleme aşamasında aşağıdaki sınırlamalara sahiptir:
 
 - Geri döngü bağlantıları çalışmıyor ( [Python veya R betiğindeki SQL Server geri döngü bağlantısına](/sql/machine-learning/connect/loopback-connection)bakın).
 - Dış kaynak havuzları desteklenmez.
 - Yalnızca Python ve R desteklenir. Java gibi dış diller eklenemez.
 - [Ileti geçirme arabirimini](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) (MPI) kullanan senaryolar desteklenmez.
 
-Hizmet düzeyi hedefi (SLO) güncelleştirmesi söz konusu olduğunda, lütfen SLO 'yu güncelleştirin ve R/Python için ayrılmış kaynak sınırlarını yeniden etkinleştirmek üzere bir destek bileti yükseltin.
+Hizmet Düzeyi Hedefi (SLO) güncelleştirmesi için lütfen SLO'yu güncelleştirin ve R/Python için ayrılmış kaynak sınırlarının yeniden etkinleştirilmesi amacıyla bir destek bileti oluşturun.
 
 ## <a name="language-support"></a>Dil desteği
 
@@ -66,17 +66,17 @@ Python ve R paketlerinin yönetilmesi hakkında daha fazla bilgi için bkz.:
 
 R kaynaklarını [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) ve dış kaynak havuzları aracılığıyla kısıtlamak mümkün değildir.
 
-Genel Önizleme sırasında, R kaynakları SQL yönetilen örnek kaynaklarının en fazla %20 ' si olarak ayarlanır ve seçtiğiniz hizmet katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure SQL veritabanı satın alma modelleri](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+Genel önizleme aşamasında R kaynakları SQL Yönetilen Örneği kaynaklarının en fazla %20'sine ulaşacak şekilde ayarlanır ve bu değer, seçtiğiniz hizmet katmanına göre değişir. Daha fazla bilgi için bkz. [Azure SQL veritabanı satın alma modelleri](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
 
 ### <a name="insufficient-memory-error"></a>Yetersiz bellek hatası
 
-R için yeterli kullanılabilir bellek yoksa bir hata iletisi alırsınız. Yaygın hata iletileri:
+R için yeterli bellek yoksa bir hata iletisiyle karşılaşırsınız. Yaygın hata iletileri:
 
-- İstek kimliği: * * * * * * * için ' R ' betiği için çalışma zamanıyla iletişim kurulamıyor. Lütfen ' R ' çalışma zamanının gereksinimlerini denetleyin
-- HRESULT 0x80004004 ile ' sp_execute_external_script ' yürütülmesi sırasında ' R ' betik hatası oluştu. ... dış betik hatası oluştu: ".. ' R_AllocStringBuffer ' "C işlevinde bellek (0 MB) ayrılamadı
+- İstek kimliği: * * * * * * * için ' R ' betiği için çalışma zamanıyla iletişim kurulamıyor. Lütfen "R" çalışma zamanının gereksinimlerini denetleyin
+- "sp_execute_external_script" yürütülürken "R" betiği hatası oluştu, HRESULT 0x80004004. ...bir dış betik hatası oluştu: "..."R_AllocStringBuffer" C işlevinde bellek ayrılamadı (0 Mb)"
 - Dış betik hatası oluştu: hata: boyutun vektörü ayrılamıyor.
 
-Bellek kullanımı, R betiklerinizde ne kadar kullanıldığına ve yürütülen paralel sorguların sayısına bağlıdır. Yukarıdaki hataları alıyorsanız, bu sorunu çözmek için veritabanınızı daha yüksek bir hizmet katmanına ölçeklendirebilirsiniz.
+Bellek kullanımı, R betiklerinizde kullanılan bellek miktarına ve yürütülen paralel sorgu sayısına göre değişir. Yukarıdaki hataları alıyorsanız, veritabanınızı daha yüksek bir hizmet katmanına ölçeklendirerek bu sorunu çözebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

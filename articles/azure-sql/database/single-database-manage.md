@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255015"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sunucular ve tek veritabanları oluşturma ve yönetme
@@ -65,7 +65,7 @@ Sunucular, tek ve havuza alınmış veritabanları ve Azure PowerShell ile sunuc
 > [!TIP]
 > PowerShell örnek betikleri için bkz. PowerShell kullanarak [SQL veritabanı 'nda veritabanı oluşturma ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırma](scripts/create-and-configure-database-powershell.md) ve [PowerShell kullanarak SQL veritabanı 'Nda bir veritabanını izleme ve ölçeklendirme](scripts/monitor-and-scale-database-powershell.md).
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Bir veritabanı oluşturur |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Bir veya daha fazla veritabanını alır|
@@ -90,7 +90,7 @@ Sunucular, tek ve havuza alınmış veritabanları ve Azure PowerShell ile sunuc
 > Azure CLı hızlı başlangıç için bkz. [Azure CLI kullanarak tek bir Azure SQL veritabanı oluşturma](az-cli-script-samples-content-guide.md). Azure CLı örnek betikleri için bkz. [CLI kullanarak Azure SQL veritabanında veritabanı oluşturma ve BIR SQL veritabanı güvenlik duvarı kuralı yapılandırma](scripts/create-and-configure-database-cli.md) ve [Azure SQL veritabanı 'nda bir veritabanını izlemek ve ölçeklendirmek için CLI](scripts/monitor-and-scale-database-cli.md)kullanma.
 >
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Bir veritabanı oluşturur|
 |[az SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Bir sunucudaki tüm veritabanlarını ve veri ambarlarını veya elastik havuzdaki tüm veritabanlarını listeler|
@@ -121,7 +121,7 @@ Transact-SQL ile sunucular, veritabanları ve güvenlik duvarları oluşturup y�
 > [!IMPORTANT]
 > Transact-SQL kullanarak sunucu oluşturamaz veya silemezsiniz.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[VERITABANı OLUŞTUR](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Yeni bir tek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Bir veritabanını veya elastik havuzu değiştirir. |
@@ -142,7 +142,7 @@ Transact-SQL ile sunucular, veritabanları ve güvenlik duvarları oluşturup y�
 
 Sunucuları, veritabanlarını ve güvenlik duvarlarını oluşturup yönetmek için, bu REST API isteklerini kullanın.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[Sunucular-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
 |[Sunucular-Sil](https://docs.microsoft.com/rest/api/sql/servers/delete)|Bir SQL sunucusunu siler.|

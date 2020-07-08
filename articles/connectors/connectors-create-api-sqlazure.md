@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255526"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak bir SQL veritabanı için iş akışlarını otomatikleştirme
@@ -71,7 +71,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 1. **Kimlik doğrulama türü**Için, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde gerekli ve etkinleştirilmiş olan kimlik doğrulamasını seçin:
 
-   | Kimlik doğrulaması | Description |
+   | Kimlik Doğrulaması | Açıklama |
    |----------------|-------------|
    | [**Azure AD Tümleşik**](../azure-sql/database/authentication-aad-overview.md) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-Azure Active Directory (Azure AD) içinde veritabanınıza erişimi olan geçerli bir kimlik gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p>- [Azure SQL güvenliğine genel bakış-kimlik doğrulama](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL kimlik doğrulaması ve yetkilendirmesi için veritabanı erişimini yetkilendir](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-Azure AD Tümleşik kimlik doğrulaması](../azure-sql/database/authentication-aad-overview.md) |
    | [**SQL Server Kimlik Doğrulaması**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-Veritabanınıza oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p>- [Azure SQL güvenliğine genel bakış-kimlik doğrulama](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL kimlik doğrulaması ve yetkilendirmesi için veritabanı erişimini yetkilendir](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
@@ -87,9 +87,9 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Sunucu adı** | Yes | SQL sunucunuzun adresi, örneğin,`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Veritabanı adı** | Yes | SQL veritabanınızın adı, örneğin`Fabrikam-Azure-SQL-DB` |
-   | **Tablo adı** | Yes | Kullanmak istediğiniz tablo, örneğin,`SalesLT.Customer` |
+   | **Sunucu adı** | Evet | SQL sunucunuzun adresi, örneğin,`Fabrikam-Azure-SQL.database.windows.net` |
+   | **Veritabanı adı** | Evet | SQL veritabanınızın adı, örneğin`Fabrikam-Azure-SQL-DB` |
+   | **Tablo adı** | Evet | Kullanmak istediğiniz tablo, örneğin,`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,7 +115,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 1. **Kimlik doğrulama türü**için, gerekli olan ve SQL Server etkin olan kimlik doğrulamasını seçin:
 
-   | Kimlik doğrulaması | Description |
+   | Kimlik Doğrulaması | Açıklama |
    |----------------|-------------|
    | [**Windows Kimlik Doğrulaması**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Çok kiracılı Azure veya bir ıSE kullanıp kullanmadığına bakılmaksızın, bağlantınız için daha önce Azure 'da oluşturulmuş bir veri ağ geçidi kaynağı gerektiren yalnızca ıSE SQL Server bağlayıcısını destekler. <p><p>-Windows hesabınız aracılığıyla kimliğinizi doğrulamak için geçerli bir Windows Kullanıcı adı ve parola gerektirir. <p>Daha fazla bilgi için bkz. [Windows kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
    | [**SQL Server Kimlik Doğrulaması**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-SQL Server oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için [SQL Server kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)konusuna bakın. |
@@ -129,10 +129,10 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **SQL Server adı** | Yes | SQL sunucunuzun adresi, örneğin,`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL veritabanı adı** | Yes | SQL Server veritabanınızın adı, örneğin`Fabrikam-Azure-SQL-DB` |
-   | **Nitelen** | Yes | SQL Server ve veritabanı için Kullanıcı adınız |
-   | **Parola** | Yes | SQL Server ve veritabanı için parolanız |
+   | **SQL Server adı** | Evet | SQL sunucunuzun adresi, örneğin,`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL veritabanı adı** | Evet | SQL Server veritabanınızın adı, örneğin`Fabrikam-Azure-SQL-DB` |
+   | **Nitelen** | Evet | SQL Server ve veritabanı için Kullanıcı adınız |
+   | **Parola** | Evet | SQL Server ve veritabanı için parolanız |
    | **Abonelik** |  Evet, Windows kimlik doğrulaması için | Daha önce Azure 'da oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliği |
    | **Bağlantı ağ geçidi** | Evet, Windows kimlik doğrulaması için | Daha önce Azure 'da oluşturduğunuz veri ağ geçidi kaynağının adı <p><p>**İpucu**: ağ geçidiniz listede görünmüyorsa, [ağ geçidinizin](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)doğru şekilde ayarlandığından emin olun. |
    |||
