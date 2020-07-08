@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,11 +9,11 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80343051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82204502"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -23,17 +23,17 @@ ms.locfileid: "80343051"
 
 ## <a name="cli"></a>CLI
 
-Azure CLI ile artımlı bir anlık görüntü oluşturabilirsiniz, Azure CLI'nin en son sürümüne ihtiyacınız olacaktır. 
+Azure CLı ile artımlı bir anlık görüntü oluşturabilirsiniz. Azure CLı 'nin en son sürümüne ihtiyacınız olacaktır. 
 
-Windows'da, aşağıdaki komut varolan yüklemenizi en son sürüme yükler veya günceller:
+Windows 'da aşağıdaki komut, mevcut yüklemenizi en son sürüme yükler veya güncelleştirir:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-Linux'ta, CLI kurulumu işletim sistemi sürümüne bağlı olarak değişir.  Bkz. Belirli Linux sürümünüz için [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+Linux 'ta CLı yüklemesi, işletim sistemi sürümüne bağlı olarak değişir.  Bkz. belirli Linux sürümünüz için [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-Artımlı anlık görüntü oluşturmak [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) için `--incremental` parametre ile az anlık görüntü oluşturma kullanın.
+Artımlı bir anlık görüntü oluşturmak için, parametresiyle [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) kullanın `--incremental` .
 
-Aşağıdaki örnek, artımlı bir anlık `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>`görüntü`<exampleDiskName>`oluşturur, değiştirin , , , ve `<exampleLocation>` kendi değerlerinizle, sonra örneği çalıştırın:
+Aşağıdaki örnek, artımlı bir anlık görüntü oluşturur,,,, `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>` `<exampleDiskName>` ve `<exampleLocation>` değerlerini kendi değerlerinizle değiştirin, ardından örneği çalıştırın:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -45,13 +45,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-Anlık görüntülerve `SourceResourceId` `SourceUniqueId` özellikleriyle aynı diskten artan anlık görüntüleri tanımlayabilirsiniz. `SourceResourceId`üst diskin Azure Kaynak Yöneticisi kaynak kimliğidir. `SourceUniqueId`diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski siler ve sonra aynı ada sahip yeni `UniqueId` bir disk oluşturursanız, özelliğin değeri değişir.
+Aynı diskten Artımlı anlık görüntüleri `SourceResourceId` ve `SourceUniqueId` anlık görüntülerin özelliklerini tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, `UniqueId` diskin özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğin değeri değişir.
 
-Belirli bir `SourceResourceId` `SourceUniqueId` diskle ilişkili tüm anlık görüntülerin listesini kullanabilir ve oluşturabilirsiniz. Aşağıdaki örnek, belirli bir diskle ilişkili tüm artımlı anlık görüntüleri listeletir, ancak bazı kurulum gerektirir.
+`SourceResourceId` `SourceUniqueId` Belirli bir diskle ilişkili tüm anlık görüntülerin listesini oluşturmak için ve kullanabilirsiniz. Aşağıdaki örnekte belirli bir diskle ilişkili tüm artımlı anlık görüntüler listelenir, ancak bazı ayarlar gereklidir.
 
-Bu örnek, verileri sorgulamak için jq kullanır. Örneği çalıştırmak için [jq yüklemeniz](https://stedolan.github.io/jq/download/)gerekir.
+Bu örnek, verileri sorgulamak için JQ kullanır. Örneği çalıştırmak için [JQ 'yı yüklemelisiniz](https://stedolan.github.io/jq/download/).
 
-`<yourResourceGroupNameHere>` Değiştirin `<exampleDiskName>` ve değerlerinizle birlikte, jq yüklediğiniz sürece varolan artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+`<yourResourceGroupNameHere>`Ve `<exampleDiskName>` değerlerinizle değiştirin, Ayrıca, JQ 'yi yüklediğiniz sürece mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -65,7 +65,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
 
-Artımlı anlık görüntü oluşturmak için Azure Kaynak Yöneticisi şablonlarını da kullanabilirsiniz. ApiVersion **2019-03-01** olarak ayarlanmış olduğundan ve artımlı özelliğin de doğru olduğundan emin olmanız gerekir. Aşağıdaki parçacık, Kaynak Yöneticisi şablonları ile artımlı anlık görüntü oluşturmanın bir örneğidir:
+Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablonlarını da kullanabilirsiniz. ApiVersion 'ın **2019-03-01** olarak ayarlandığından ve artımlı özelliğinin de true olarak ayarlandığından emin olmanız gerekir. Aşağıdaki kod parçacığı, Kaynak Yöneticisi şablonlarıyla artımlı bir anlık görüntü oluşturma örneğidir:
 
 ```json
 {
@@ -101,4 +101,4 @@ Artımlı anlık görüntü oluşturmak için Azure Kaynak Yöneticisi şablonla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET'i kullanarak artımlı anlık görüntünün diferansiyel yeteneğini gösteren örnek kodu görmek istiyorsanız, [Azure Yönetilen Diskleri yedeklemelerini artımlı anlık görüntü fark özelliğine sahip başka bir bölgeye](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)kopyalayın'a bakın.
+.NET kullanarak Artımlı anlık görüntülerin fark yeteneğini gösteren örnek kodu görmek isterseniz, bkz. [Azure yönetilen diskler yedeklemelerini, artımlı anlık görüntülerin fark yeteneği ile başka bir bölgeye kopyalama](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

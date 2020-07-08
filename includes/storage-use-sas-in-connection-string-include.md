@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188589"
 ---
 Bir depolama hesabındaki kaynaklara erişmenizi sağlayan bir paylaşılan erişim imzası (SAS) URL 'sine sahipseniz, SAS 'yi bir bağlantı dizesinde kullanabilirsiniz. SAS, isteğin kimliğini doğrulamak için gereken bilgileri içerdiğinden, SAS içeren bir bağlantı dizesi protokol, hizmet uç noktası ve kaynağa erişmek için gerekli kimlik bilgilerini sağlar.

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188603"
 ---
 Daha önce [bir Geçiş ad alanı oluşturduğunuzdan][namespace-how-to] emin olun.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Soldaki menüden **Tüm kaynaklar**'ı seçin.
 3. Karma bağlantıyı oluşturmak istediğiniz ad alanını seçin. Bu durumda **mynewns** seçeneğidir.  
 4. **Geçiş ad alanı** bölümünde **Karma Bağlantılar**'ı seçin.
@@ -26,6 +26,6 @@ Daha önce [bir Geçiş ad alanı oluşturduğunuzdan][namespace-how-to] emin ol
 6. **Karma Bağlantı Oluştur** bölümüne karma bağlantı adı girin. Diğer değerleri varsayılan şekilde bırakın.
    
     ![Yeni Seçme](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

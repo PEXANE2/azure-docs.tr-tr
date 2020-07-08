@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188575"
 ---
 Depolama öykünücüsü, paylaşılan anahtar kimlik doğrulaması için tek bir sabit hesabı ve iyi bilinen bir kimlik doğrulama anahtarını destekler. Bu hesap ve anahtar, depolama öykünücüsüyle kullanılmasına izin verilen tek paylaşılan anahtar kimlik bilgileridir. Bunlar:
@@ -25,7 +25,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Bir kısayol kullanarak öykünücü hesabına bağlanma
-Uygulamanızdan depolama öykünücüye bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında kısayola `UseDevelopmentStorage=true`başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app. config* dosyasında depolama öykünücüsüne yönelik bir bağlantı dizesi örneği aşağıda verilmiştir: 
+Uygulamanızdan depolama öykünücüye bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında kısayola başvuran bir bağlantı dizesi yapılandırmaktır `UseDevelopmentStorage=true` . Bir *app.config* dosyadaki depolama öykünücüsüne yönelik bağlantı dizesi örneği aşağıda verilmiştir: 
 
 ```xml
 <appSettings>
@@ -44,10 +44,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Bu değer yukarıda gösterilen kısayolla aynıdır `UseDevelopmentStorage=true`.
+Bu değer yukarıda gösterilen kısayolla aynıdır `UseDevelopmentStorage=true` .
 
 #### <a name="specify-an-http-proxy"></a>Bir HTTP proxy 'si belirtin
-Ayrıca, hizmetinizi depolama öykünücüsüyle test ederken kullanılacak bir HTTP proxy de belirtebilirsiniz. Bu, depolama hizmetlerine karşı işlemlerden hata ayıklarken HTTP isteklerini ve yanıtlarını gözlemlemek için yararlı olabilir. Bir proxy belirtmek için, bağlantı dizesine `DevelopmentStorageProxyUri` seçeneği ekleyin ve değerini proxy URI 'si olarak ayarlayın. Örneğin, depolama öykünücüsünü işaret eden ve bir HTTP proxy yapılandıran bağlantı dizesi aşağıda verilmiştir:
+Ayrıca, hizmetinizi depolama öykünücüsüyle test ederken kullanılacak bir HTTP proxy de belirtebilirsiniz. Bu, depolama hizmetlerine karşı işlemlerden hata ayıklarken HTTP isteklerini ve yanıtlarını gözlemlemek için yararlı olabilir. Bir proxy belirtmek için, `DevelopmentStorageProxyUri` bağlantı dizesine seçeneği ekleyin ve değerini proxy URI 'si olarak ayarlayın. Örneğin, depolama öykünücüsünü işaret eden ve bir HTTP proxy yapılandıran bağlantı dizesi aşağıda verilmiştir:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

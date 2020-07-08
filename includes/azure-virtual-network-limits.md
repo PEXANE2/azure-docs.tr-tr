@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: networking
 author: anavinahar
 ms.service: networking
@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82095890"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager
@@ -72,7 +72,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                           |
 | Ön uç IP yapılandırması              | 600                           |
 | Arka uç havuzu boyutu                       | 1.000 IP yapılandırması, tek bir sanal ağ |
-| Load Balancer <sup>1 başına arka uç kaynakları<sup> | 150                   |
+| Load Balancer 1 başına arka uç kaynakları <sup><sup> | 150                   |
 | Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1       |
 | Load Balancer başına giden kuralları        | 600                           |
 | [TCP boşta kalma zaman aşımı](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 dakika/30 dakika          |

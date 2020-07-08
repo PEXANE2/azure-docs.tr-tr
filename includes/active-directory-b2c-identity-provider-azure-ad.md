@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
 ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82925434"
 ---
 ## <a name="register-an-azure-ad-app"></a>Azure AD uygulamasını kaydetme
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -36,13 +36,13 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 
 ### <a name="configuring-optional-claims"></a>İsteğe bağlı talepler yapılandırılıyor
 
-Azure AD 'den `family_name` ve `given_name` taleplerini almak istiyorsanız, Azure Portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](/azure/active-directory/develop/active-directory-optional-claims).
+`family_name` `given_name` Azure AD 'den ve taleplerini almak istiyorsanız, Azure Portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](/azure/active-directory/develop/active-directory-optional-claims).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Azure Active Directory**'yi bulun ve seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
 1. **Yönet** bölümünde **belirteç yapılandırması**' nı seçin.
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. **Belirteç türü**için **kimlik**' i seçin.
-1. Eklemek için isteğe bağlı talepler ' i `family_name` seçin `given_name`.
+1. Eklemek için isteğe bağlı talepler ' i `family_name` seçin `given_name` .
 1. **Ekle**'ye tıklayın.

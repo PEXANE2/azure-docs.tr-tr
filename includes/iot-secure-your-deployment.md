@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76748876"
 ---
 Bu makalede, Azure IoT tabanlı Nesnelerin İnterneti (IoT) altyapısının güvenliğini sağlamaya yönelik bir sonraki ayrıntı düzeyi sunulmaktadır. Her bileşeni yapılandırmak ve dağıtmak için uygulama düzeyi ayrıntılarına bağlantı sağlar. Ayrıca, çeşitli rekabet yöntemleri arasında karşılaştırmalar ve seçimler de sağlar.
@@ -51,9 +51,9 @@ Her IoT Hub, hizmette yer alan ve cihaza yönelik buluttan cihaza iletileri içe
 
 [IoT Hub MQTT, AMQP ve http gibi protokolleri destekler](../articles//iot-hub/iot-hub-devguide-security.md). Bu protokollerin her biri, farklı IoT Hub için IoT cihazındaki güvenlik belirteçlerini kullanır:
 
-* AMQP: SASL PLAIN ve AMQP talep tabanlı güvenlik (`{policyName}@sas.root.{iothubName}` IoT Hub düzeyi belirteçleriyle) `{deviceId}` cihaz kapsamlı belirteçler ile).
+* AMQP: SASL PLAIN ve AMQP talep tabanlı güvenlik ( `{policyName}@sas.root.{iothubName}` IoT Hub düzeyi belirteçleriyle; `{deviceId}` cihaz kapsamlı belirteçlerle).
 
-* MQTT: Connect paketi, `{deviceId}` **Kullanıcı adı** alanında `{IoThubhostname}/{deviceId}` ve **parola** alanında bir SAS belirteci olarak `{ClientId}`kullanır.
+* MQTT: CONNECT paketi, `{deviceId}` `{ClientId}` `{IoThubhostname}/{deviceId}` **Kullanıcı adı** alanında ve **parola** alanında bir SAS belirteci olarak kullanır.
 
 * HTTP: geçerli belirteç, yetkilendirme isteği üst bilgisinde.
 
@@ -73,7 +73,7 @@ IoT Hub kimlik kayıt defteri, cihaz başına güvenlik kimlik bilgilerini ve er
 
 ### <a name="root-certificate-on-device"></a>Cihazdaki kök sertifika
 
-IoT Hub ile güvenli bir TLS bağlantısı kurarken, IoT cihazı, cihaz SDK 'sının bir parçası olan kök sertifikayı kullanarak IoT Hub doğrular. C istemcisi SDK 'sı için sertifika, deponun kökü altında "\\C\\CERT" klasörü altında bulunur. Bu kök sertifikalar uzun süreli olsa da, hala süreleri doluyor veya iptal edilebilir. Cihazdaki sertifikayı güncelleştirme yöntemi yoksa, cihaz daha sonra IoT Hub (veya başka bir bulut hizmeti) ile bağlantı kurabilmeyebilir. IoT cihazı dağıtıldığında, bu riski etkin bir şekilde azaltır ve kök sertifikayı güncelleştirmeniz anlamına gelir.
+IoT Hub ile güvenli bir TLS bağlantısı kurarken, IoT cihazı, cihaz SDK 'sının bir parçası olan kök sertifikayı kullanarak IoT Hub doğrular. C istemcisi SDK 'Sı için sertifika, \\ \\ deponun kökü altında "C CERT" klasörü altında bulunur. Bu kök sertifikalar uzun süreli olsa da, hala süreleri doluyor veya iptal edilebilir. Cihazdaki sertifikayı güncelleştirme yöntemi yoksa, cihaz daha sonra IoT Hub (veya başka bir bulut hizmeti) ile bağlantı kurabilmeyebilir. IoT cihazı dağıtıldığında, bu riski etkin bir şekilde azaltır ve kök sertifikayı güncelleştirmeniz anlamına gelir.
 
 ## <a name="securing-the-connection"></a>Bağlantının güvenliğini sağlama
 
@@ -91,7 +91,7 @@ Azure IoT Hub her güvenlik anahtarı için [erişim denetimi ilkelerinin](../ar
 
 * **Deviceconnect**. Cihaza yönelik uç noktalara erişim izni verir. Örneğin, cihazdan buluta iletiler gönderme ve buluttan cihaza iletileri alma izni verir. Bu izin cihazlar tarafından kullanılır.
 
-[Güvenlik belirteçleriyle](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)IoT Hub **deviceconnect** izinleri almanın iki yolu vardır: cihaz kimlik anahtarı veya paylaşılan erişim anahtarı kullanma. Üstelik, cihazlarından erişilebilen tüm işlevlerin ön `/devices/{deviceId}`uç noktalar üzerinde tasarım tarafından sunulduğunu aklınızda olmak önemlidir.
+[Güvenlik belirteçleriyle](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)IoT Hub **deviceconnect** izinleri almanın iki yolu vardır: cihaz kimlik anahtarı veya paylaşılan erişim anahtarı kullanma. Üstelik, cihazlarından erişilebilen tüm işlevlerin ön uç noktalar üzerinde tasarım tarafından sunulduğunu aklınızda olmak önemlidir `/devices/{deviceId}` .
 
 [Hizmet bileşenleri yalnızca](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) uygun izinleri veren paylaşılan erişim ilkeleri kullanılarak güvenlik belirteçleri oluşturabilir.
 
@@ -103,7 +103,7 @@ Azure IoT Hub tarafından alınan veriler Azure Stream Analytics ve Azure Blob d
 
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): bulutta, algılayıcılardan, altyapıdan ve uygulamalardan gerçek zamanlı içgörüler elde etmek için hızlı bir şekilde düşük maliyetli bir analiz çözümü geliştirmenize ve dağıtmanıza olanak tanıyan gerçek zamanlı akış işleme. Bu tam olarak yönetilen hizmetin verileri, yüksek aktarım hızı, düşük gecikme süresi ve dayanıklılık sağlarken herhangi bir birime ölçeklendirebilir.
 
-* [Azure Uygulama Hizmetleri](https://azure.microsoft.com/services/app-service/): her yerden verilere bağlanan güçlü web uygulamaları ve mobil uygulamalar oluşturmak için bir bulut platformudur; bulutta veya şirket içinde. İOS, Android ve Windows için ilgi çekici mobil uygulamalar oluşturun. Hizmet olarak yazılım (SaaS) ve kurumsal uygulamalarla, onlarca bulut tabanlı hizmetlere ve kurumsal uygulamalara yönelik kullanıma hazır bağlantı ile tümleştirin. Web uygulamaları ve API 'Leri her zamankinden daha hızlı derlemek için en sevdiğiniz dilde ve IDE 'de (.NET, Node. js, PHP, Python veya Java) kod.
+* [Azure Uygulama Hizmetleri](https://azure.microsoft.com/services/app-service/): her yerden verilere bağlanan güçlü web uygulamaları ve mobil uygulamalar oluşturmak için bir bulut platformudur; bulutta veya şirket içinde. İOS, Android ve Windows için ilgi çekici mobil uygulamalar oluşturun. Hizmet olarak yazılım (SaaS) ve kurumsal uygulamalarla, onlarca bulut tabanlı hizmetlere ve kurumsal uygulamalara yönelik kullanıma hazır bağlantı ile tümleştirin. Web uygulamaları ve API 'Leri her zamankinden daha hızlı derlemek için en sevdiğiniz dilde ve IDE 'de (.NET, Node.js, PHP, Python veya Java) kod.
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Azure App Service Logic Apps özelliği, IoT çözümünüzü mevcut iş kolu sistemlerinizle tümleştirmenize ve iş akışı süreçlerini otomatikleştirmenize yardımcı olur. Logic Apps, geliştiricilerin bir tetikleyiciden başlayan iş akışlarını tasarlamasına ve sonra iş süreçlerinizle tümleştirilecek güçlü bağlayıcılar kullanan kurallar ve eylemler yürütebilmesini sağlar. Logic Apps SaaS, bulut tabanlı ve şirket içi uygulamalarla büyük bir geniş ekosisteme kullanıma hazır bağlantı sunar.
 

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371792"
 ---
 Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
@@ -28,7 +28,7 @@ Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karş�
 
 Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, bir istemci cihaz tüneli yapılandırmak için aşağıdaki örnekleri kullanın:
 
-1. Aşağıdaki metni kopyalayın ve ***devicecert. ps1***olarak kaydedin.
+1. Aşağıdaki metni kopyalayın ve ***devicecert.ps1***olarak kaydedin.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve ***Vpnprofile. xml*** olarak, **devecert. ps1**ile aynı klasöre kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
+1. Aşağıdaki metni kopyalayın ve **devicecert.ps1**aynı klasöre ***VPNProfile.xml*** olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -124,7 +124,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ```
 
    ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. PowerShell 'de, **devicecert. ps1** ve **vpnprofile. xml** ' nin bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
+1. PowerShell 'de **devicecert.ps1** ve **VPNProfile.xml** bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest

@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 1a023475de1ce2891916807632d9ee15e382326c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81736278"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Linkerd linkerd istemci ikilisini indirin ve yükleyin
 
-Windows üzerinde PowerShell tabanlı bir kabukta, Linkerd sürümünü şu şekilde indirmek için kullanın `Invoke-WebRequest` :
+Windows üzerinde PowerShell tabanlı bir kabukta, `Invoke-WebRequest` Linkerd sürümünü şu şekilde indirmek için kullanın:
 
 ```powershell
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-İstemci `linkerd` ikili dosyası, istemci makinenizde çalışır ve Linkerd hizmet ağıyla etkileşime girebilmeniz için izin verir. Windows üzerinde PowerShell tabanlı bir kabuğa Linkerd `linkerd` istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `linkerd` istemci ikilisini bir Linkerd klasörüne kopyalar ve sonra (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) ile birlikte kullanılabilir hale `PATH`getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
+`linkerd`İstemci ikili dosyası, istemci makinenizde çalışır ve Linkerd hizmet ağıyla etkileşime girebilmeniz için izin verir. `linkerd`Windows üzerinde PowerShell tabanlı bir kabuğa Linkerd istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `linkerd` istemci ikilisini bir Linkerd klasörüne kopyalar ve sonra (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) ile birlikte kullanılabilir hale getirir `PATH` . Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84124336"
 ---
 Bu makalede, Azure 'da IaaS sanal makineleri (VM) ve disklerinin yedekleme ve olağanüstü durum kurtarma (DR) için nasıl planlanacağı açıklanmaktadır. Bu belgede hem yönetilen hem de yönetilmeyen diskler ele alınmaktadır.
@@ -233,7 +233,7 @@ Birden çok diski olan VM 'Ler için, aynı Eşgüdümlü geri yükleme noktası
 
 Bir VM 'de çalışan SQL Server, SQL Server veritabanınızı Azure Blob depolama alanına veya bir dosya paylaşımında yedeklemek için kendi yerleşik özelliklerine sahiptir. Depolama hesabı coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama ise, bu yedeklemelere, daha önce açıklanan kısıtlamalara sahip bir olağanüstü durum durumunda depolama hesabının ikincil veri merkezinde erişebilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için Yedekleme ve geri yükleme](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). [SQL Server AlwaysOn kullanılabilirlik grupları](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) , yedekleme ve geri yükleme özelliklerine ek olarak veritabanlarının ikincil çoğaltmalarını de koruyabilir. Bu özellik olağanüstü durum kurtarma süresini önemli ölçüde azaltır.
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 
 Bu makalede, olağanüstü durum kurtarmayı desteklemek ve verilerinizi kurtarmak için bu yedeklemeleri veya anlık görüntüleri kullanmak üzere sanal makinelerinizin ve disklerinin anlık görüntülerini nasıl yedekleyeceğiniz veya bunların anlık görüntülerinin ele alındığı ele alınmıştır. Azure Resource Manager modeliyle birçok kişi, Azure 'daki sanal makinelerini ve diğer altyapıları oluşturmak için şablonlar kullanır. Her seferinde aynı yapılandırmaya sahip bir VM oluşturmak için bir şablon kullanabilirsiniz. VM 'lerinizi oluşturmak için özel görüntüler kullanıyorsanız, görüntülerinizi depolamak için bir Okuma Erişimli Coğrafi olarak yedekli depolama hesabı kullanarak görüntülerinizin korunduğundan da emin olmanız gerekir.
 

@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188451"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure portal bağlantı dizesini alın
 İstemci programınızın Azure SQL veritabanı ile etkileşim kurması için gerekli olan bağlantı dizesini almak için [Azure Portal](https://portal.azure.com/) kullanın.
 
-1. **Tüm hizmetler** > **SQL veritabanlarını**seçin.
+1. **Tüm hizmetler**  >  **SQL veritabanlarını**seçin.
 
 2. **SQL veritabanları** dikey penceresinin sol üst kısmındaki filtre metin kutusuna veritabanınızın adını girin.
 
@@ -34,7 +34,7 @@ ms.locfileid: "67188451"
 
     ![Veritabanınız için ADO bağlantı dizesini kopyalayın][20-CopyAdoConnectionString]
 
-7. Bağlantı dizesini gerektiği gibi düzenleyin. Yani, parolayı bağlantı dizesine ekleyin veya Kullanıcı adı ya da sunucu adı çok&lt;uzunsa&gt;Kullanıcı adından "@ ServerName" öğesini kaldırın.
+7. Bağlantı dizesini gerektiği gibi düzenleyin. Yani, parolayı bağlantı dizesine ekleyin veya &lt; &gt; Kullanıcı adı ya da sunucu adı çok uzunsa Kullanıcı adından "@ ServerName" öğesini kaldırın.
 
 8. Tek bir biçimde veya başka bir biçimde, bağlantı dizesi bilgilerini istemci program kodunuza yapıştırın.
 

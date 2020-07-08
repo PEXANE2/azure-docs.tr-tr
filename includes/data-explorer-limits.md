@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
 ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548243"
 ---
 Aşağıdaki tabloda Azure Veri Gezgini kümelerine yönelik en fazla sınır açıklanmaktadır.
@@ -22,7 +22,7 @@ Aşağıdaki tabloda Azure Veri Gezgini kümelerine yönelik en fazla sınır a�
 
 Aşağıdaki tabloda, Azure Veri Gezgini kümelerinde gerçekleştirilen yönetim işlemlerinin sınırları açıklanmaktadır.
 
-| Kapsam | İşlem | Sınır |
+| Kapsam | Çalışma | Sınır |
 | --- | --- | --- |
 | Küme | Oku (örneğin, küme al) | 5 dakikada 500 |
 | Küme | yazma (örneğin, veritabanı oluşturma) | 1000/saat |

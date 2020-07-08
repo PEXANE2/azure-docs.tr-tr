@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: e26a2c214a03243d6507296c1e981706be8c56db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81736813"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl istemci ikilisini indirme ve yükleme
 
-Windows üzerinde PowerShell tabanlı bir kabukta, Istio `Invoke-WebRequest` sürümünü indirmek için kullanın ve ardından aşağıdaki gibi ile `Expand-Archive` ayıklayın:
+Windows üzerinde PowerShell tabanlı bir kabukta, `Invoke-WebRequest` Istio sürümünü indirmek için kullanın ve ardından aşağıdaki gibi ile ayıklayın `Expand-Archive` :
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-İstemci `istioctl` ikili dosyası, istemci makinenizde çalışır ve istio hizmeti ağıyla etkileşime girebilmeniz için sağlar. Windows üzerinde PowerShell tabanlı bir kabuğa Istio `istioctl` Client ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini bir istio klasörüne kopyalar ve sonra (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) ile birlikte kullanılabilir `PATH`hale getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
+`istioctl`İstemci ikili dosyası, istemci makinenizde çalışır ve Istio hizmeti ağıyla etkileşime girebilmeniz için sağlar. `istioctl`Windows üzerinde PowerShell tabanlı bir kabuğa Istio Client ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini bir istio klasörüne kopyalar ve sonra (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) ile birlikte kullanılabilir hale getirir `PATH` . Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
