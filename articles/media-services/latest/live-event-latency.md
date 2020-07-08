@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78199657"
 ---
 # <a name="live-event-low-latency-settings"></a>Canlı olay düşük gecikme süresi ayarları
@@ -27,7 +26,7 @@ Bu makalede, [canlı bir olayda](https://docs.microsoft.com/rest/api/media/livee
 Yeni **LowLatency** özelliğini kullanmak Için, **Streammoptionsflag** öğesini **liveevent**üzerinde **LowLatency** olarak ayarlarsınız. HLS kayıttan yürütme için [liveoutput](https://docs.microsoft.com/rest/api/media/liveoutputs) oluştururken [Liveoutput. Hls. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) değerini 1 olarak ayarlayın. Akış çalışır duruma getirildikten sonra, [Azure Media Player](https://ampdemo.azureedge.net/) (amp demo sayfası) kullanabilir ve kayıttan yürütme seçeneklerini "düşük gecikmeli buluşsal yöntemler profilini" kullanacak şekilde ayarlayabilirsiniz.
 
 > [!NOTE]
-> Şu anda Azure Media Player içindeki LowLatency HeuristicProfile, MPEG-DASH protokolünde, CSF veya CMAF biçimiyle (örneğin, `format=mdp-time-csf` ya `format=mdp-time-cmaf`da) birlikte akış çalmak için tasarlanmıştır. 
+> Şu anda Azure Media Player içindeki LowLatency HeuristicProfile, MPEG-DASH protokolünde, CSF veya CMAF biçimiyle (örneğin, ya da) birlikte akış çalmak için tasarlanmıştır `format=mdp-time-csf` `format=mdp-time-cmaf` . 
 
 Aşağıdaki .NET örneğinde, **Liveevent**üzerinde **LowLatency** ayarlama gösterilmektedir:
 

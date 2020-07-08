@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196935"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
@@ -27,7 +26,7 @@ Apache Hive için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 **Ranger Yönetici Arabirimine bağlanmak için**
 
-1. Bir tarayıcıdan, CLUSTERNAME 'in Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/Ranger/` yerde, Ranger yönetıcı Kullanıcı arabirimine gidin.
+1. Bir tarayıcıdan, `https://CLUSTERNAME.azurehdinsight.net/Ranger/` clustername 'in Kümenizin adı olduğu yerde, Ranger Yönetici Kullanıcı arabirimine gidin.
 
    > [!NOTE]  
    > Ranger Apache Hadoop kümeden farklı kimlik bilgileri kullanıyor. Önbelleğe alınmış Hadoop kimlik bilgilerini kullanan tarayıcıları engellemek için, Ranger Yönetici Kullanıcı arabirimine bağlanmak üzere yeni bir InPrivate tarayıcı penceresi kullanın.
@@ -103,7 +102,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. Excel’de yeni veya mevcut bir çalışma kitabını açın.
 
-1. **ODBC 'den** başlatmak için **veri** sekmesinden**ODBC 'den**  > **diğer kaynaklardan** >  **veri al**' a gidin.
+1. ODBC 'den başlatmak için **veri** sekmesinden **Get Data**  >  **From Other Sources**  >  **ODBC 'den** **From ODBC** diğer kaynaklardan veri al ' a gidin.
 
     ![Veri bağlantısı açma Sihirbazı](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
@@ -115,7 +114,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. **Hivesampletable**' ı seçin ve ardından **İleri**' yi seçin.
 
-1. **Son**' u seçin.
+1. **Son**'u seçin.
 
 1. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunu yapmak için **Özellikler**' i seçin. Bu işlem birkaç saniye sürebilir.
 
@@ -142,7 +141,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    yerine şunu yazın:
+    Yeni değer:
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 

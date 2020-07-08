@@ -8,22 +8,21 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296390"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
  Nesneye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 StringToObject(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr*  
    , JSON nesnesi ifadesi olarak ayrıştırılacak bir dize ifadesidir. İç içe geçmiş dize değerlerinin geçerli olması için çift tırnaklarla yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)  
@@ -34,7 +33,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, farklı türlerde `StringToObject` nasıl davrandığını gösterir. 
+  Aşağıdaki örnek, `StringToObject` farklı türlerde nasıl davrandığını gösterir. 
   
  Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -56,7 +55,7 @@ Sonuç kümesini burada bulabilirsiniz.
 ```
 
  Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
-Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki\\dizeler "{" a\\":\\" Str\\"}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
+Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki dizeler "{ \\ " a \\ ": \\ " Str \\ "}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
 
 Özellik adları çevreleyen tek tırnak geçerli bir JSON değil.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206563"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
@@ -61,20 +60,20 @@ Betik eylemini çalıştırmak için Azure portal kullanma hakkında yönergeler
 |Özellik |Değer |
 |---|---|
 |Betik türü|-Özel|
-|Adı| MCT 'yi yükler|
+|Name| MCT 'yi yükler|
 |Bash betiği URI 'SI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Düğüm türleri:|Baş, çalışan|
 |Parametreler|Hiçbiri|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Jupyter Not defterini Azure HDInsight Spark kümesine yükleme
 
-Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle birlikte kullanmak için, Jupyter Not defteri **CNTK_model_scoring_on_Spark_walkthrough. ipynb** not defterini Azure HDInsight Spark kümesine yüklemeniz gerekir. Bu not defteri, tarihinde [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)GitHub 'da kullanılabilir.
+Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle birlikte kullanmak için, Jupyter Not defteri **CNTK_model_scoring_on_Spark_walkthrough. ipynb** not defterini Azure HDInsight Spark kümesine yüklemeniz gerekir. Bu not defteri, tarihinde GitHub 'da kullanılabilir [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. İndirin ve sıkıştırmayı [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)açın.
+1. İndirin ve sıkıştırmayı açın [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/jupyter`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/jupyter` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Jupyter Not defterinden sağ üst köşedeki **karşıya** Yükle ' yi seçin ve ardından İndir ' e gidin ve dosyayı `CNTK_model_scoring_on_Spark_walkthrough.ipynb`seçin.
+1. Jupyter Not defterinden sağ üst köşedeki **karşıya** Yükle ' yi seçin ve ardından İndir ' e gidin ve dosyayı seçin `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
     ![Jupyter Not defterini Azure HDInsight Spark kümesine yükleme](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Not defterini Azure HDInsight Spark kümesine yükleme")
 

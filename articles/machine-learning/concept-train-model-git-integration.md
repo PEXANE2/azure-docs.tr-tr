@@ -10,10 +10,9 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402831"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
@@ -39,7 +38,7 @@ Git CLı 'nın nasıl kullanılacağına ilişkin bir kılavuz için [burada bur
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Git depolarından gelen kodu izleme
 
-Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git` Komut geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
+Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git`Komut geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
 | Özellik | Değeri almak için kullanılan git komutu | Açıklama |
 | ----- | ----- | ----- |
@@ -49,7 +48,7 @@ Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönder
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Çalışma gönderildiğinde etkin dal. |
 | `azureml.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
 | `mlflow.source.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
-| `azureml.git.dirty` | `git status --porcelain .` | `True`dal/COMMIT kirli ise; Aksi takdirde `false`,. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`dal/COMMIT kirli ise; Aksi takdirde, `false` . |
 
 Bu bilgiler, bir Estimator, Machine Learning işlem hattı veya betik çalıştırması kullanan çalıştırmalar için gönderilir.
 
@@ -62,7 +61,7 @@ Eğitim dosyalarınız geliştirme ortamınızda bir git deposunda bulunmuyorsa 
 > git --version
 > ```
 >
-> Yüklüyse ve yolunda şuna benzer bir yanıt alırsınız `git version 2.4.1`. Geliştirme ortamınıza git 'i yükleme hakkında daha fazla bilgi için [Git Web sitesine](https://git-scm.com/)bakın.
+> Yüklüyse ve yolunda şuna benzer bir yanıt alırsınız `git version 2.4.1` . Geliştirme ortamınıza git 'i yükleme hakkında daha fazla bilgi için [Git Web sitesine](https://git-scm.com/)bakın.
 
 ## <a name="view-the-logged-information"></a>Günlüğe kaydedilen bilgileri görüntüleyin
 
@@ -73,7 +72,7 @@ Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure po
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __ ### \_Azure__ile başlayan bağlantıyı seçin.
+1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __ ### \_ Azure__ile başlayan bağlantıyı seçin.
 
     ![Portalda # # #_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
@@ -98,7 +97,7 @@ Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
 ### <a name="python-sdk"></a>Python SDK'sı
 
-Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi döndürülür. Bu `properties` nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
+Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi döndürülür. `properties`Bu nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
 
 ```python
 run.properties['azureml.git.commit']
@@ -106,7 +105,7 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>CLI
 
-`az ml run` CLI komutu, bir çalıştırmanın özelliklerini almak için kullanılabilir. Örneğin, aşağıdaki komut adlı `train-on-amlcompute`deneyde son çalıştırmanın özelliklerini döndürür:
+`az ml run`CLI komutu, bir çalıştırmanın özelliklerini almak için kullanılabilir. Örneğin, aşağıdaki komut adlı deneyde son çalıştırmanın özelliklerini döndürür `train-on-amlcompute` :
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'

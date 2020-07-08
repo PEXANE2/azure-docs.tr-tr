@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255576"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
@@ -86,7 +85,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Onay `'ORACLE instance shut down'`için bekleyin.
+      Onay için bekleyin `'ORACLE instance shut down'` .
 
     * Yeni örneği başlatın ve veritabanını arşivlemeyi etkinleştirmek veya devre dışı bırakmak için şu komutu çalıştırın:
 
@@ -116,12 +115,12 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       SELECT log_mode FROM v$database;
       ```
 
-      Yanıt `'ARCHIVELOG'`almanız gerekir. Yanıt varsa `'NOARCHIVELOG'`, gereksinim karşılanmıyor.
+      Yanıt almanız gerekir `'ARCHIVELOG'` . Yanıt varsa `'NOARCHIVELOG'` , gereksinim karşılanmıyor.
 
   * Aşağıdaki seçeneklerden birini kullanarak, çoğaltma için ek günlüğe kaydetmeyi etkinleştirin.
 
     * **1. seçenek**.
-      PK ve benzersiz dizin içeren tüm tabloları kapsayacak şekilde veritabanı düzeyinde ek günlüğe kaydetme 'yi değiştirin. Algılama sorgusu döndürülür `'IMPLICIT'`.
+      PK ve benzersiz dizin içeren tüm tabloları kapsayacak şekilde veritabanı düzeyinde ek günlüğe kaydetme 'yi değiştirin. Algılama sorgusu döndürülür `'IMPLICIT'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -134,7 +133,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       ```
 
     * **Seçenek 2**.
-      Veritabanı düzeyinde ek günlüğe kaydetme işlemini tüm tabloları kapsayacak şekilde değiştirin ve algılama sorgusu geri döner `'YES'`.
+      Veritabanı düzeyinde ek günlüğe kaydetme işlemini tüm tabloları kapsayacak şekilde değiştirin ve algılama sorgusu geri döner `'YES'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -166,11 +165,11 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Yanıt `'YES'`almanız gerekir.
+    Yanıt almanız gerekir `'YES'` .
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Bir Oracle ile PostgreSQL için Azure veritabanı geçişi için çabayı değerlendirin
 
-Oracle 'dan PostgreSQL için Azure veritabanı 'na geçiş yapmak için gereken çabayı değerlendirmek için ora2pg kullanmanızı öneririz. Tüm Oracle `ora2pg -t SHOW_REPORT` nesnelerini, tahmini geçiş maliyetini (Geliştirici Günleri) ve dönüştürmenin bir parçası olarak özel dikkat gerektirebilecek belirli veritabanı nesnelerini listelemeyi sağlayan bir rapor oluşturmak için yönergesini kullanın.
+Oracle 'dan PostgreSQL için Azure veritabanı 'na geçiş yapmak için gereken çabayı değerlendirmek için ora2pg kullanmanızı öneririz. `ora2pg -t SHOW_REPORT`Tüm Oracle nesnelerini, tahmini geçiş maliyetini (Geliştirici Günleri) ve dönüştürmenin bir parçası olarak özel dikkat gerektirebilecek belirli veritabanı nesnelerini listelemeyi sağlayan bir rapor oluşturmak için yönergesini kullanın.
 
 Çoğu müşteri değerlendirme raporunu inceleyerek önemli bir miktar zaman harcayacak ve otomatik ve el ile dönüştürme çabalarının göz önünde bulunduracaktır.
 
@@ -178,7 +177,7 @@ Bir değerlendirme raporu oluşturmak için ora2pg yapılandırmak ve çalışt�
 
 ## <a name="export-the-oracle-schema"></a>Oracle şemasını dışarı aktarma
 
-Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, vb.) PostgreSQL için Azure veritabanı ile uyumlu bir şemaya dönüştürmek için ora2pg kullanmanızı öneririz. ora2pg, belirli veri türlerini önceden tanımlamanızı sağlayacak birçok yönergesi içerir. Örneğin, her SAYıYı (*, `DATA_TYPE` 0) sayısal (38) yerine bigint ile değiştirmek için yönergesini kullanabilirsiniz.
+Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, vb.) PostgreSQL için Azure veritabanı ile uyumlu bir şemaya dönüştürmek için ora2pg kullanmanızı öneririz. ora2pg, belirli veri türlerini önceden tanımlamanızı sağlayacak birçok yönergesi içerir. Örneğin, `DATA_TYPE` her sayıyı (*, 0) sayısal (38) yerine bigint ile değiştirmek için yönergesini kullanabilirsiniz.
 
 . SQL dosyalarındaki veritabanı nesnelerinin her birini dışarı aktarmak için ora2pg çalıştırabilirsiniz. Daha sonra, psql kullanarak PostgreSQL için Azure veritabanı 'na aktarmadan önce. SQL dosyalarını gözden geçirebilir veya çalıştırabilirsiniz. PgAdmin içindeki SQL betiği.
 
@@ -221,7 +220,7 @@ Azure veritabanı geçiş hizmeti ile veri hareketini başlatmadan önce ora2pg 
     ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Kaynak tablo adlarını farklı adlara sahip tablolarla eşlemeniz gerekiyorsa, e-posta [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) ile işlemi otomatik hale getirmek için bir betik sağlayabiliriz.
+> Kaynak tablo adlarını farklı adlara sahip tablolarla eşlemeniz gerekiyorsa, e-posta ile [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) işlemi otomatik hale getirmek için bir betik sağlayabiliriz.
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>PostgreSQL tablo şeması mevcut olmadığında
 
@@ -249,7 +248,7 @@ Başlamak için:
     | HR | targetHR.HR | "HR". " ÜLKELER "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Karışık durumlar eşlenemiyor |
 
-    * Hedef PostgreSQL 'te karışık Case şeması ve tablo adları oluşturmak için, iletişim [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)kurun. Hedef PostgreSQL veritabanında karma durum tablosu şeması ayarlamak için bir betik sağlayabiliriz.
+    * Hedef PostgreSQL 'te karışık Case şeması ve tablo adları oluşturmak için, iletişim kurun [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) . Hedef PostgreSQL veritabanında karma durum tablosu şeması ayarlamak için bir betik sağlayabiliriz.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
@@ -322,7 +321,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCı sürücüsünü karşıya yükle
 
-1. **Kaydet**' i seçin ve ardından, **OCI Sürücü Yükle** ekranında, Oracle hesabınızda oturum açın ve **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37.128.586 bayt) (SHA1 sağlama toplamı: 865082268) sürücüsünü [buradan](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)indirin.
+1. **Kaydet**' i seçin ve ardından **OCI Sürücü Yükle** ekranında Oracle hesabınızda oturum açın ve sürücü **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37.128.586 bayt) (SHA1 sağlama toplamı: 865082268) [buradan](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)indirin.
 2. Sürücüyü paylaşılan bir klasöre indirin.
 
    Klasörün, en düşük salt okuma erişimiyle belirttiğiniz kullanıcı adıyla paylaşıldığından emin olun. Azure veritabanı geçiş hizmeti, belirttiğiniz kullanıcı adını taklit ederek OCı sürücüsünü Azure 'a yüklemek için paylaşıma erişir ve paylaşımdan okur.

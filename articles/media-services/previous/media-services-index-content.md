@@ -16,10 +16,9 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78164007"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
@@ -145,13 +144,13 @@ Hiçbir yapılandırma dosyası belirtilmemişse, medya dosyasının tüm varsay
 ### <a name="output-files"></a><a id="output_files"></a>Çıkış dosyaları
 Varsayılan olarak, bir dizin oluşturma işi aşağıdaki çıkış dosyalarını oluşturur. Dosyalar ilk çıkış varlığı içinde depolanır.
 
-Birden fazla giriş medyası dosyası olduğunda, Dizin Oluşturucu, ' JobResult. txt ' adlı iş çıktıları için bir bildirim dosyası oluşturur. Her giriş medya dosyası için, elde edilen TTML, WebVTT ve anahtar sözcük dosyaları sırayla numaralandırılır ve "alias" kullanılarak adlandırılır.
+Birden fazla giriş medyası dosyası olduğunda, Dizin Oluşturucu, ' JobResult.txt ' adlı iş çıktıları için bir bildirim dosyası oluşturur. Her giriş medya dosyası için, elde edilen TTML, WebVTT ve anahtar sözcük dosyaları sırayla numaralandırılır ve "alias" kullanılarak adlandırılır.
 
 | Dosya adı | Açıklama |
 | --- | --- |
 | **Inputfilename. ttml**<br/>**Inputfilename. VTT** |TTML ve WebVTT biçimlerinde kapalı açıklamalı altyazı (CC) dosyaları.<br/><br/>Ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilirler.<br/><br/>Kapalı açıklamalı altyazı dosyaları, kaynak videodaki konuşmanın ne kadar tanındığını temel alarak bir dizin oluşturma işi gösteren <b>Recognizbilme</b> adlı bir etiket içerir.  Kullanılabilirlik için çıkış dosyalarını ekran için, <b>tanınan</b> bir değer kullanabilirsiniz. Düşük puan, ses kalitesi nedeniyle yetersiz dizin oluşturma sonuçları anlamına gelir. |
-| **Inputfilename. kW. xml<br/>InputFileName.info** |Anahtar sözcük ve bilgi dosyaları. <br/><br/>Anahtar sözcük dosyası, sıklık ve konum bilgileri ile konuşma içeriğinden ayıklanan anahtar sözcükleri içeren bir XML dosyasıdır. <br/><br/>Bilgi dosyası, tanınan her terim hakkında ayrıntılı bilgiler içeren bir düz metin dosyasıdır. İlk satır özeldir ve recognizme Puanını içerir. Sonraki her satır, şu verilerin sekmeyle ayrılmış bir listesidir: başlangıç zamanı, bitiş zamanı, sözcük/tümcecik, güven. Süreler saniye cinsinden verilir ve güven 0-1 ' dan bir sayı olarak verilir. <br/><br/>Örnek satır: "1,20 1,45 Word 0,67" <br/><br/>Bu dosyalar, konuşma analizlerini gerçekleştirmek için veya Bing, Google ya da Microsoft SharePoint gibi arama altyapılarına açık hale getirmek veya daha fazla ilgili reklamları sunmak için kullanılması gibi çeşitli amaçlarla kullanılabilir. |
-| **JobResult. txt** |Çıkış bildirimi, yalnızca birden çok dosya dizinlenirken bulunur ve aşağıdaki bilgileri içerir:<br/><br/><table border="1"><tr><th>Giriş</th><th>Diğer ad</th><th>Ortam uzunluğu</th><th>Hata</th></tr><tr><td>a. mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **InputFileName.kw.xml<br/> InputFileName.info** |Anahtar sözcük ve bilgi dosyaları. <br/><br/>Anahtar sözcük dosyası, sıklık ve konum bilgileri ile konuşma içeriğinden ayıklanan anahtar sözcükleri içeren bir XML dosyasıdır. <br/><br/>Bilgi dosyası, tanınan her terim hakkında ayrıntılı bilgiler içeren bir düz metin dosyasıdır. İlk satır özeldir ve recognizme Puanını içerir. Sonraki her satır, şu verilerin sekmeyle ayrılmış bir listesidir: başlangıç zamanı, bitiş zamanı, sözcük/tümcecik, güven. Süreler saniye cinsinden verilir ve güven 0-1 ' dan bir sayı olarak verilir. <br/><br/>Örnek satır: "1,20 1,45 Word 0,67" <br/><br/>Bu dosyalar, konuşma analizlerini gerçekleştirmek için veya Bing, Google ya da Microsoft SharePoint gibi arama altyapılarına açık hale getirmek veya daha fazla ilgili reklamları sunmak için kullanılması gibi çeşitli amaçlarla kullanılabilir. |
+| **JobResult.txt** |Çıkış bildirimi, yalnızca birden çok dosya dizinlenirken bulunur ve aşağıdaki bilgileri içerir:<br/><br/><table border="1"><tr><th>Giriş</th><th>Diğer ad</th><th>Ortam uzunluğu</th><th>Hata</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 Tüm giriş medyası dosyaları başarıyla dizinlenmezse, dizin oluşturma işi 4000 hata koduyla başarısız olur. Daha fazla bilgi için bkz. [hata kodları](#error_codes).
 
@@ -243,7 +242,7 @@ Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değer
 ### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
-| Adı | Gerektirme | Açıklama |
+| Name | Gerektirme | Açıklama |
 | --- | --- | --- |
 | **girişinin** |yanlış |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
 | **veriyi** |yanlış |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -252,7 +251,7 @@ Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön
 ### <a name="error-codes"></a><a id="error_codes"></a>Hata kodları
 Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
 
-| Kod | Adı | Olası nedenler |
+| Kod | Name | Olası nedenler |
 | --- | --- | --- |
 | 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
 | 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |
@@ -261,7 +260,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 | 2004 |Desteklenmeyen protokol |Medya URL 'SI protokolü desteklenmiyor. |
 | 2005 |Desteklenmeyen dosya türü |Giriş medya dosyası türü desteklenmiyor. |
 | 2006 |Çok fazla giriş dosyası |Giriş bildiriminde 10 ' dan fazla dosya vardır. |
-| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>or<br/> Bozuk medya dosyası <br/>or<br/> Giriş medyasında ses akışı yok. |
+| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>veya<br/> Bozuk medya dosyası <br/>veya<br/> Giriş medyasında ses akışı yok. |
 | 4000 |Toplu dizin oluşturma kısmen başarılı oldu |Bazı giriş medya dosyalarından dizin oluşturulamadı. Daha fazla bilgi için bkz. <a href="#output_files">çıkış dosyaları</a>. |
 | diğer |İç hatalar |Lütfen destek ekibine başvurun. indexer@microsoft.com |
 
@@ -271,7 +270,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

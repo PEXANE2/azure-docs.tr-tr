@@ -4,10 +4,9 @@ description: Bu öğreticide, bir veya daha fazla Zamanlayıcı tetikleyicisi ay
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402870"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
@@ -41,7 +40,7 @@ Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shel
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Zamanlayıcı tetikleyicisiyle görev oluşturma
 
-[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` Parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin.
+[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. Parametresini ekleyin `--schedule` ve Zamanlayıcı için bir cron ifadesi geçirin.
 
 Basit bir örnek olarak, aşağıdaki komut, `hello-world` görüntüyü Docker Hub 'dan her gün 21:00 UTC 'den çalıştırmayı tetikler. Görev, kaynak kodu bağlamı olmadan çalışır.
 
@@ -174,17 +173,17 @@ ACR görevleri cron ifadelerini yorumlamak için [Ncrontab](https://github.com/a
 Cron ifadeleriyle kullanılan saat dilimi Eşgüdümlü Evrensel Saat (UTC). Saatler 24 saat biçimindedir.
 
 > [!NOTE]
-> ACR görevleri cron ifadelerinde `{second}` veya `{year}` alanını desteklemez. Başka bir sistemde kullanılan bir cron ifadesini kopyalarsanız, kullanıldıkları takdirde bu alanları kaldırdığınızdan emin olun.
+> ACR görevleri `{second}` `{year}` cron ifadelerinde veya alanını desteklemez. Başka bir sistemde kullanılan bir cron ifadesini kopyalarsanız, kullanıldıkları takdirde bu alanları kaldırdığınızdan emin olun.
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saatte 5 dakikada bir saat geçti|
-|Tüm değerler (`*`)|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
-|Bir Aralık (`-` işleç)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
-|Bir değerler kümesi (`,` işleç)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
-|Bir Aralık değeri (`/` işleç)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
+|Tüm değerler ( `*` )|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
+|Bir Aralık ( `-` işleç)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
+|Bir değerler kümesi ( `,` işleç)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
+|Bir Aralık değeri ( `/` işleç)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 

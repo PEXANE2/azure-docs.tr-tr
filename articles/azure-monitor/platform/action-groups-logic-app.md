@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206245"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Izleyici uyarıları ile karmaşık eylemleri tetikleme
@@ -110,7 +109,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
 12. Microsoft ekipleri eylemini yapılandırın. **Logic Apps tasarımcı** , Office 365 hesabınızda kimlik doğrulaması belirtmenizi ister. İletinin gönderileceği **EKIP kimliğini** ve **Kanal kimliğini** seçin.
 
-13. Statik metin birleşimini ve dinamik içerikteki \<alanlara\> başvuruları kullanarak iletiyi yapılandırın. Aşağıdaki metni kopyalayıp **ileti** alanına yapıştırın:
+13. Statik metin birleşimini ve dinamik içerikte öğesine başvuruları kullanarak iletiyi yapılandırın \<fields\> . Aşağıdaki metni kopyalayıp **ileti** alanına yapıştırın:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
       resourceId: <resourceId>
     ```
 
-    Ardından, \<alanları\> arayıp aynı ada sahip dinamik içerik etiketleriyle değiştirin.
+    Ardından, öğesini arayın ve \<fields\> aynı ada sahip dinamik içerik etiketleri ile değiştirin.
 
     > [!NOTE]
     > **Durum**olarak adlandırılan iki dinamik alan vardır. Bu alanların her ikisini de iletiye ekleyin. **ActivityLog** Özellik paketinde bulunan alanını kullanın ve diğer alanı silin. Aşağıdaki ekran görüntüsünde gösterildiği gibi, tam alan başvurusunu görmek için imlecinizi **durum** alanının üzerine getirin:
@@ -195,7 +194,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 
    1. **Eğer doğruysa** , Microsoft ekipleri eylemini eklemek için [bir etkinlik günlüğü oluşturma uyarısında](#create-an-activity-log-alert-administrative) adım 11 ' den 13 ' e kadar olan yönergeleri izleyin.
 
-   1. Bir HTML ve dinamik içerik birleşimini kullanarak iletiyi tanımlayın. Aşağıdaki içeriği kopyalayıp **ileti** alanına yapıştırın. `[incidentType]` `[trackingID]`, `[title]`, Ve `[communication]` alanlarını aynı ada sahip dinamik içerik etiketleriyle değiştirin:
+   1. Bir HTML ve dinamik içerik birleşimini kullanarak iletiyi tanımlayın. Aşağıdaki içeriği kopyalayıp **ileti** alanına yapıştırın. ,, `[incidentType]` `[trackingID]` `[title]` Ve `[communication]` alanlarını aynı ada sahip dinamik içerik etiketleriyle değiştirin:
 
        ```html
        <p>
@@ -284,7 +283,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 
       !["Ölçüm uyarısı doğru koşulu gönderme eylemi"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Ölçüm uyarısı doğru koşulu gönderme eylemi")
 
-  1. **Eğer false** koşulunda, ölçüm uyarısının mantıksal uygulamanın beklentileriyle eşleşmediğinden iletişim kurmak Için bir Microsoft ekipleri eylemi tanımlayın. JSON yükünü dahil edin. `json()` İfadedeki `triggerBody` dinamik içeriğe nasıl başvurulacağını fark edin.
+  1. **Eğer false** koşulunda, ölçüm uyarısının mantıksal uygulamanın beklentileriyle eşleşmediğinden iletişim kurmak Için bir Microsoft ekipleri eylemi tanımlayın. JSON yükünü dahil edin. İfadedeki dinamik içeriğe nasıl başvurulacağını fark edin `triggerBody` `json()` .
 
       !["Ölçüm uyarısı yanlış koşulu gönderme eylemi"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Ölçüm uyarısı yanlış koşulu gönderme eylemi")
 

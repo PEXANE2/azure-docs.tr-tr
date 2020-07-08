@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296125"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
  Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (nokta, çokgen veya LineString) ikinci bağımsız değişkende GeoJSON (Işaret, çokgen veya LineString) içinde olup olmadığını gösteren bir Boole ifadesi döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ST_WITHIN (<spatial_expr>, <spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *spatial_expr*  
    Bir GeoJSON noktası, çokgen veya LineString nesne ifadesi.  
@@ -34,7 +33,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, kullanarak `ST_WITHIN`bir çokgen içindeki tüm aile belgelerinin nasıl bulunacağını gösterir.  
+  Aşağıdaki örnek, kullanarak bir çokgen içindeki tüm aile belgelerinin nasıl bulunacağını gösterir `ST_WITHIN` .  
   
 ```sql
 SELECT f.id

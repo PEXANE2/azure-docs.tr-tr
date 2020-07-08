@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271396"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Dosya düzeyinde Azure Backup SAP HANA
@@ -31,11 +30,11 @@ Yedekleme/geri yükleme 'yi dosya düzeyinde yönetmenin standart yolu, SAP HANA
 
 ![Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 
-Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir. Tür &quot;dosyası seçerken, dosyanın&quot; yedekleme dosyalarını SAP HANA yazdığı dosya sisteminde bir yol belirtmesi gerekir. Geri yükleme aynı şekilde çalışmaktadır.
+Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir. Tür dosyası seçerken &quot; , &quot; dosyanın yedekleme dosyalarını SAP HANA yazdığı dosya sisteminde bir yol belirtmesi gerekir. Geri yükleme aynı şekilde çalışmaktadır.
 
 Bu seçim basit ve düz ileri bir deyişle, bazı önemli noktalar vardır. Bir Azure VM 'nin iliştirilebilecek veri diski sayısı sınırlaması vardır. Veritabanının boyutuna ve birden çok veri diskinde yazılım şeritleme gerektirebilecek disk işleme gereksinimlerine bağlı olarak, SAP HANA yedekleme dosyalarını VM 'nin dosya sistemlerinde depolama kapasitesi olmayabilir. Bu yedekleme dosyalarını taşımaya yönelik çeşitli seçenekler ve terabayt veri işlerken dosya boyutu kısıtlamalarını ve performansı yönetme Bu makalede daha sonra verilmiştir.
 
-Toplam kapasiteye ilişkin daha fazla özgürlük sunan başka bir seçenek de Azure Blob Depolama ' dır. Tek bir blob da 1 TB ile sınırlandırıldığı sürece, tek bir blob kapsayıcısının toplam kapasitesi Şu anda 500 TB 'tır. Buna ek olarak, müşterilere maliyet avantajı olan seyrek erişimli &quot;&quot; BLOB depolama alanı olarak adlandırılan bir seçenek sunar. Seyrek Erişimli BLOB depolama hakkındaki ayrıntılar için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) .
+Toplam kapasiteye ilişkin daha fazla özgürlük sunan başka bir seçenek de Azure Blob Depolama ' dır. Tek bir blob da 1 TB ile sınırlandırıldığı sürece, tek bir blob kapsayıcısının toplam kapasitesi Şu anda 500 TB 'tır. Buna ek olarak, müşterilere &quot; &quot; maliyet avantajı olan seyrek erişimli BLOB depolama alanı olarak adlandırılan bir seçenek sunar. Seyrek Erişimli BLOB depolama hakkındaki ayrıntılar için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) .
 
 Ek güvenlik için, SAP HANA yedeklemeleri depolamak için coğrafi olarak çoğaltılan bir depolama hesabı kullanın. Depolama artıklığı ve depolama çoğaltması hakkındaki ayrıntılar için bkz. [Azure Storage yedekliği](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .
 
@@ -65,7 +64,7 @@ Beş bağlantılı Azure Standart depolama veri diski üzerinde şeritle aynı y
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA yedekleme dosyalarını Azure Blob depolamaya kopyalama
 Belirtilen performans numaraları, yedekleme süresi numaraları ve kopyalama süresi numaraları, Azure teknolojisinin en son durumunu temsil edemeyebilir. Microsoft, daha fazla verimlilik ve daha düşük gecikme süreleri sunmak için Azure Storage 'ı artmasıyla. Bu nedenle, sayılar yalnızca tanıtım amaçlıdır. Yöntemi, sizin için en uygun yöntem olan Azure bölgesinde bireysel gereksinimlerinize göre test etmeniz gerekir.
 
-SAP HANA yedekleme dosyalarını hızlı bir şekilde depolamak için başka bir seçenek Azure Blob Depolama ' dır. Tek bir blob kapsayıcısının 500 TB 'lik bir sınırı vardır. Bu, SAP HANA sistemleri için yeterli SAP HANA, M32ls, M64ls ve GS5 VM türlerini kullanarak yeterli yedeklemesi sağlar. Müşteriler, &quot;sık&quot; &quot;ve soğuk&quot; BLOB depolama (bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)) arasında seçim yapmış.
+SAP HANA yedekleme dosyalarını hızlı bir şekilde depolamak için başka bir seçenek Azure Blob Depolama ' dır. Tek bir blob kapsayıcısının 500 TB 'lik bir sınırı vardır. Bu, SAP HANA sistemleri için yeterli SAP HANA, M32ls, M64ls ve GS5 VM türlerini kullanarak yeterli yedeklemesi sağlar. Müşteriler &quot; &quot; , sık ve &quot; soğuk &quot; BLOB depolama (bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)) arasında seçim yapmış.
 
 Blobxfer aracı ile SAP HANA yedekleme dosyalarını doğrudan Azure Blob depolamaya kopyalamak kolaydır.
 

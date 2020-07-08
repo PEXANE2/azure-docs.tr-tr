@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196988"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Birden çok ortam için uygulamaları yönetme
@@ -40,9 +39,9 @@ Sağladığınız yapılandırma iki kategoride ayrılabilir:
 
 Service Fabric içinde adlandırılmış bir uygulama örnekleri oluştururken, parametreleri geçirme seçeneğiniz vardır. Bunu yapmanın yolu, uygulama örneğini oluşturma şeklinize bağlıdır.
 
-  - PowerShell 'de [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet, uygulama parametrelerini bir Hashtable olarak alır.
-  - Sfctl kullanarak, [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) komut parametreleri JSON dizesi olarak alır. İnstall.sh betiği sfctl kullanır.
-  - Visual Studio, uygulama projesindeki Parameters klasöründe parametre dosyaları kümesi sağlar. Bu parametre dosyaları, Visual Studio 'dan yayımlarken Azure DevOps Services veya Azure DevOps Server kullanılarak kullanılır. Visual Studio 'da parametre dosyaları Deploy-FabricApplication. ps1 betiğine geçirilir.
+  - PowerShell 'de cmdlet, [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) Uygulama parametrelerini bir Hashtable olarak alır.
+  - Sfctl kullanarak, [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) komut PARAMETRELERI JSON dizesi olarak alır. İnstall.sh betiği sfctl kullanır.
+  - Visual Studio, uygulama projesindeki Parameters klasöründe parametre dosyaları kümesi sağlar. Bu parametre dosyaları, Visual Studio 'dan yayımlarken Azure DevOps Services veya Azure DevOps Server kullanılarak kullanılır. Visual Studio 'da parametre dosyaları Deploy-FabricApplication.ps1 betiğe geçirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelerde, burada açıklanan kavramların bazılarını nasıl kullanabileceğiniz gösterilmektedir:

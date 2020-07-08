@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 27a26a0c8378f34794afd87cf11b6bb878f7b53c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78248414"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Rollbar yapılandırma
@@ -44,12 +43,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Kurumsal plana sahip [bir Rollbar kiracısı](https://rollbar.com/pricing/) .
 * Yönetim izinlerine sahip Rollbar içindeki bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD Ile Rollbar arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Rollbar 'ı yapılandırın
+## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Rollbar 'ı yapılandırın
 
 Azure AD ile otomatik Kullanıcı sağlama için Rollbar 'i yapılandırmadan önce, Rollbar üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
@@ -85,7 +84,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Azure AD 'de Rollbar için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -109,7 +108,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Rollbar olarak eşitler**' ı seçin.
 

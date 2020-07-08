@@ -10,10 +10,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399098"
 ---
 # <a name="monitoring-azure-machine-learning"></a>İzleme Azure Machine Learning
@@ -50,7 +49,7 @@ Azure Machine Learning tüm ölçümler, **Machine Learning hizmet çalışma**a
 
 ### <a name="filtering-and-splitting"></a>Filtreleme ve bölme
 
-Boyutları destekleyen ölçümler için bir boyut değeri kullanarak filtre uygulayabilirsiniz. Örneğin, bir **küme adı** Için `cpu-cluster` **etkin çekirdekleri** filtreleme. 
+Boyutları destekleyen ölçümler için bir boyut değeri kullanarak filtre uygulayabilirsiniz. Örneğin, bir **küme adı** Için **etkin çekirdekleri** filtreleme `cpu-cluster` . 
 
 Ayrıca, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için bir ölçümü boyuta göre ayırabilirsiniz. Örneğin, ardışık düzen **adım türünü** bölerek işlem hattında kullanılan adımların türlerin sayısını görebilirsiniz.
 

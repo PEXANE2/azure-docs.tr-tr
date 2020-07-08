@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163735"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
@@ -42,13 +41,13 @@ Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Bir döküm ve geri yükleme yerine içeri ve dışarı aktarma tekniklerini ne zaman kullanacağınızı belirleme
 Aşağıdaki senaryolarda bulunan veritabanlarını Azure MySQL veritabanına içeri ve dışarı aktarmak için MySQL araçlarını kullanın. Diğer senaryolarda, bunun yerine [döküm ve geri yükleme](concepts-migrate-dump-restore.md) yaklaşımını kullanmaktan faydalanabilirsiniz. 
 
-- Mevcut bir MySQL veritabanından Azure MySQL veritabanına içeri aktarmak için seçmeli olarak birkaç tablo seçmeniz gerektiğinde, bu, içeri ve dışarı aktarma tekniğinin kullanılması en iyisidir.  Bunu yaptığınızda, zaman ve kaynakları kazanmak için geçişten gereksiz tabloları atlayabilirsiniz. `--include-tables` Örneğin, [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) ile veya `--exclude-tables` anahtarını [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables)ile `--tables` anahtarla kullanın.
+- Mevcut bir MySQL veritabanından Azure MySQL veritabanına içeri aktarmak için seçmeli olarak birkaç tablo seçmeniz gerektiğinde, bu, içeri ve dışarı aktarma tekniğinin kullanılması en iyisidir.  Bunu yaptığınızda, zaman ve kaynakları kazanmak için geçişten gereksiz tabloları atlayabilirsiniz. Örneğin, `--include-tables` `--exclude-tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) ile veya anahtarını `--tables` [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables)ile anahtarla kullanın.
 - Tablo dışındaki veritabanı nesnelerini taşırken, bu nesneleri açıkça oluşturun. Kısıtlama (birincil anahtar, yabancı anahtar, dizinler), görünümler, işlevler, yordamlar, Tetikleyiciler ve geçirmek istediğiniz diğer veritabanı nesneleri dahil edin.
 - MySQL veritabanı dışındaki dış veri kaynaklarından veri geçirirken, düz dosyalar oluşturun ve [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)kullanarak içeri aktarın.
 
 MySQL için Azure veritabanı 'na veri yüklerken veritabanındaki tüm tabloların InnoDB Storage altyapısını kullanmasını sağlayın. MySQL için Azure veritabanı yalnızca InnoDB depolama altyapısını destekler, bu nedenle alternatif depolama altyapılarını desteklemez. Tablolarınız alternatif depolama motorları gerektiriyorsa, MySQL için Azure veritabanı 'na geçişten önce InnoDB Engine biçimini kullanmak üzere bunları dönüştürdiğinizden emin olun. 
 
-Örneğin, MyISAM altyapısını kullanan bir WordPress veya Web uygulamanız varsa, önce verileri InnoDB tablolarına geçirerek tabloları dönüştürün. Ardından MySQL için Azure veritabanı 'na geri yükleyin. Yan tümcesini `ENGINE=INNODB` kullanarak tablo oluşturma altyapısını ayarlayın ve ardından geçişten önce verileri uyumlu tabloya aktarın. 
+Örneğin, MyISAM altyapısını kullanan bir WordPress veya Web uygulamanız varsa, önce verileri InnoDB tablolarına geçirerek tabloları dönüştürün. Ardından MySQL için Azure veritabanı 'na geri yükleyin. Yan tümcesini kullanarak `ENGINE=INNODB` tablo oluşturma altyapısını ayarlayın ve ardından geçişten önce verileri uyumlu tabloya aktarın. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns

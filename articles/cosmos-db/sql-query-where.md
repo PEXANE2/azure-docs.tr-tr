@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898769"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
-İsteğe bağlı WHERE yan tümcesi`WHERE <filter_condition>`(), sorgu IÇIN kaynak JSON öğelerinin sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi, sonuç için göz önünde bulundurulması `true` için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
+İsteğe bağlı WHERE yan tümcesi ( `WHERE <filter_condition>` ), sorgu için kaynak JSON öğelerinin sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi `true` , sonuç için göz önünde bulundurulması için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql  
 WHERE <filter_condition>  
@@ -25,7 +24,7 @@ WHERE <filter_condition>
   
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
 
 - `<filter_condition>`  
   
@@ -37,13 +36,13 @@ WHERE <filter_condition>
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Belgenin döndürülmesi için filtre koşulu true olarak değerlendirilmelidir. Koşulu yalnızca Boole `true` değeri karşılanacak, diğer tüm değerler: tanımsız, null, yanlış, sayı, dizi veya nesne koşulu karşılamaz.
+  Belgenin döndürülmesi için filtre koşulu true olarak değerlendirilmelidir. Koşulu yalnızca Boole değeri `true` karşılanacak, diğer tüm değerler: tanımsız, null, yanlış, sayı, dizi veya nesne koşulu karşılamaz.
 
-  Bölüm anahtarınızı bir eşitlik filtresinin parçası olarak `WHERE` yan tümcesine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
+  Bölüm anahtarınızı `WHERE` bir eşitlik filtresinin parçası olarak yan tümcesine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki sorgu, `id` `AndersenFamily`değeri olan bir özelliği içeren öğeleri ister. Özelliği olmayan veya değeri eşleşmeyen `id` `AndersenFamily`herhangi bir öğeyi dışlar.
+Aşağıdaki sorgu, değeri olan bir özelliği içeren öğeleri ister `id` `AndersenFamily` . Özelliği olmayan veya değeri eşleşmeyen herhangi bir öğeyi dışlar `id` `AndersenFamily` .
 
 ```sql
     SELECT f.address
@@ -69,12 +68,12 @@ Sonuçlar:
 
 Aşağıdaki desteklenen ikili işleçleri kullanabilirsiniz:  
 
-|**İşleç türü**  | **Deðerler** |
+|**İşleç türü**  | **Değerler** |
 |---------|---------|
 |Tiğinin | +,-,*,/,% |
 |Operatörün    | \|, &, ^,  <<,  >>,  >>>  (sıfır dolgulu sağa kaydırma) |
 |Mantıksal    | VE, VEYA DEĞIL      |
-|Karşılaştırma | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Karşılaştırma | =,! =, &lt; , &gt; , &lt; =, &gt; =,  <> |
 |Dize     |  \|\|karakter |
 
 Aşağıdaki sorgular ikili işleçler kullanır:
@@ -105,7 +104,7 @@ Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli �
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE f.isRegistered` değerine eşit olan ÖZELLIĞI `isRegistered` içeren JSON öğesini döndürür. `true` `false`,,, `<number>`, `<string>`, `<object>`, Veya `null` `<array>`gibi `Undefined`herhangi bir değer, sonucu sonuçtan dışlar.
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, değerine `SELECT * FROM Families f WHERE f.isRegistered` eşit olan özelliği IÇEREN JSON öğesini döndürür `isRegistered` `true` . ,,,,,, Veya gibi herhangi bir değer, `false` `null` `Undefined` `<number>` `<string>` `<object>` `<array>` sonucu sonuçtan dışlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

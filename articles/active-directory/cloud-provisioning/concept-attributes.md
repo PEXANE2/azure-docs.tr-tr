@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299338"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD şemasını anlama
@@ -42,13 +41,13 @@ Kullanıcı gibi bir nesne Azure AD 'ye sağlandığında, Kullanıcı nesnesini
 
 Öznitelik eşitlemesi doğrudan, Azure AD 'deki değerin şirket içi özniteliğinin değerine doğrudan ayarlandığı bir biçimde olabilir. Ya da bir programlama ifadesi eşitlemeyi işleyebilir. Bir programlı ifade, değeri doldurmak için bazı Logic veya bir belirleme yapılması gereken durumlarda gereklidir.
 
-Örneğin, "john.smith@contoso.com" posta özniteliğine sahip olsaydıysanız ve "@contoso.comJohn. Smith" yalnızca "John. Smith" değerini bırakmak için gerekliyse, şöyle bir şey kullanırsınız:
+Örneğin, "" posta özniteliğine sahip olsaydıysanız john.smith@contoso.com ve " @contoso.com John. Smith" yalnızca "John. Smith" değerini bırakmak için gerekliyse, şöyle bir şey kullanırsınız:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (posta): "john.smith@contoso.com"
+* **Giriş** (posta): " john.smith@contoso.com "
 * **Çıkış**: "John. Smith"
 
 Özel ifadeler ve söz dizimi yazma hakkında daha fazla bilgi için, bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
@@ -61,7 +60,7 @@ Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşit
 |,|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
-|givenName|İfadeler|givenName|
+|givenName|Expression|givenName|
 |Objectguıd 'dir|Direct|sourceAnchorBinary|  
 |userprincipalName|Direct|userPrincipalName|
 |ProxyAdress|Direct|ProxyAddress|
@@ -75,8 +74,8 @@ Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşit
 1.  [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'a gidin.
 1.  Genel Yönetici hesabınızla oturum açın.
 1.  Sol tarafta **izinleri değiştir** ' i seçin ve **Directory. ReadWrite. All** *' ın onaylı olduğundan emin*olun.
-1.  Sorguyu `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`çalıştırın. Bu sorgu, hizmet sorumlularının filtrelenmiş bir listesini döndürür.
-1.  Değerini `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` bulup aklınızda bulun `"id"`.
+1.  Sorguyu çalıştırın `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` . Bu sorgu, hizmet sorumlularının filtrelenmiş bir listesini döndürür.
+1.  `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"`Değerini bulup aklınızda bulun `"id"` .
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşit
                 "passwordCredentials": []
             },
     ```
-1. Değerini `{Service Principal id}` ile değiştirin ve sorguyu `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`çalıştırın.
-1. Değerini `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` bulup aklınızda bulun `"id"`.
+1. `{Service Principal id}`Değerini ile değiştirin ve sorguyu çalıştırın `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` .
+1. `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"`Değerini bulup aklınızda bulun `"id"` .
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,11 +240,11 @@ Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşit
                 ]
             }
     ```
-1. Şimdi sorguyu `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`çalıştırın.
+1. Şimdi sorguyu çalıştırın `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` .
  
     Örnek: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   Ve `{Service Principal Id}` `{AD2ADD Provisioning Id}` değerlerini değerlerinizle değiştirin.
+   `{Service Principal Id}`Ve `{AD2ADD Provisioning Id}` değerlerini değerlerinizle değiştirin.
 
 1. Bu sorgu şemayı döndürür.
 

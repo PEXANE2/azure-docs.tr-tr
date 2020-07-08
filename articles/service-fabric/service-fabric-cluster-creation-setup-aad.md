@@ -4,10 +4,9 @@ description: Service Fabric kümeler için istemcilerin kimliğini doğrulamak �
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193398"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>İstemci kimlik doğrulaması için Azure Active Directory ayarlama
@@ -38,7 +37,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımla
 
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturmak üzere betikleri kullanacağız: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, [Service Fabric tarafından desteklenen roller](service-fabric-cluster-security-roles.md)için Kullanıcı oluşturacaksınız: salt okunurdur ve yönetici.
 
-Öğesini `SetupApplications.ps1`çalıştırın ve Kiracı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örneğin:
+`SetupApplications.ps1`Öğesini çalıştırın ve KIRACı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örneğin:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -47,20 +46,20 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 ```
 
 > [!NOTE]
-> Ulusal bulutlar için (örneğin, Azure Kamu, Azure Çin, Azure Almanya), `-Location` parametresini de belirtmeniz gerekir.
+> Ulusal bulutlar için (örneğin, Azure Kamu, Azure Çin, Azure Almanya), parametresini de belirtmeniz gerekir `-Location` .
 
-PowerShell komutunu `Get-AzureSubscription`yürüterek *tenantıd* 'nizi bulabilirsiniz. Bu komutun yürütülmesi, her abonelik için Tenantıd 'yi görüntüler.
+PowerShell komutunu yürüterek *Tenantıd* 'nizi bulabilirsiniz `Get-AzureSubscription` . Bu komutun yürütülmesi, her abonelik için Tenantıd 'yi görüntüler.
 
 *Clustername* , komut dosyası tarafından oluşturulan Azure AD uygulamalarının ön ekini almak için kullanılır. Gerçek küme adıyla tam olarak eşleşmesi gerekmez. Yalnızca Azure AD yapıtları ile kullanıldıkları Service Fabric kümeyle eşlemeyi kolaylaştırmak için tasarlanmıştır.
 
 *Webapplicationreplyurl 'si* , oturum açmayı tamamladıktan sonra Azure AD 'nin kullanıcılarınıza döndürdüğü varsayılan uç noktadır. Bu uç noktayı kümeniz için Service Fabric Explorer uç noktası olarak ayarlayın. Mevcut bir kümeyi temsil etmek için Azure AD uygulamaları oluşturuyorsanız, bu URL 'nin mevcut kümenizin bitiş noktasıyla eşleştiğinden emin olun. Yeni bir küme için uygulama oluşturuyorsanız, kümenizin sahip olacağı uç noktayı planlayın ve var olan bir kümenin uç noktasını kullanmadığından emin olun. Service Fabric Explorer uç noktası varsayılan olarak:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https:// &lt; cluster_domain &gt; : 19080/Explorer
 
 Azure AD kiracısı için yönetici ayrıcalıklarına sahip bir hesapta oturum açmanız istenir. Oturum açtıktan sonra betik, Service Fabric kümenizi temsil etmek üzere Web ve yerel uygulamalar oluşturur. [Azure Portal][azure-portal]kiracı uygulamalarına baktığınızda, iki yeni giriş görmeniz gerekir:
 
-   * *ClusterName*\_kümesi
-   * *ClusterName*\_Client
+   * *Clustername* \_ İçi
+   * *Clustername* \_ İstemcilerinin
 
 Betik, [AAD etkin kümenizi oluştururken](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)Azure Resource Manager şablonu IÇIN gereken JSON 'ı yazdırır, bu nedenle PowerShell penceresini açık tutmak iyi bir fikirdir.
 
@@ -81,11 +80,11 @@ Service Fabric Explorer ' de Azure AD 'de başarıyla oturum açtıktan sonra, t
 
 ![SFX sertifikası iletişim kutusu][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Kullanıcıya Azure AD küme uygulamasında bir rol atanmaz. Bu nedenle, Service Fabric kümesinde Azure AD kimlik doğrulaması başarısız olur. Service Fabric Explorer sertifika kimlik doğrulamasına geri döner.
 
 #### <a name="solution"></a>Çözüm
-Azure AD ayarlama ve Kullanıcı rolleri atama yönergelerini izleyin. Ayrıca, "uygulamaya erişmek için gereken kullanıcı ataması" nı olduğu gibi `SetupApplications.ps1` etkinleştirmenizi öneririz.
+Azure AD ayarlama ve Kullanıcı rolleri atama yönergelerini izleyin. Ayrıca, "uygulamaya erişmek için gereken kullanıcı ataması" nı olduğu gibi etkinleştirmenizi öneririz `SetupApplications.ps1` .
 
 ### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>PowerShell ile bağlantı, şu hata ile başarısız oluyor: "belirtilen kimlik bilgileri geçersiz"
 #### <a name="problem"></a>Sorun
@@ -96,11 +95,11 @@ Bu çözüm, önceki bir ile aynıdır.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer, oturum açtığınızda bir hata döndürür: "AADSTS50011"
 #### <a name="problem"></a>Sorun
-Service Fabric Explorer ' &lt;de Azure AD 'de oturum açmaya çalıştığınızda, sayfa bir hata döndürür: "AADSTS50011: yanıt adresi URL 'si&gt; uygulama için yapılandırılan yanıt adresleriyle eşleşmiyor: &lt;GUID&gt;."
+Service Fabric Explorer ' de Azure AD 'de oturum açmaya çalıştığınızda, sayfa bir hata döndürür: "AADSTS50011: yanıt adresi &lt; URL 'si &gt; uygulama için yapılandırılan yanıt adresleriyle eşleşmiyor: &lt; GUID &gt; ."
 
 ![SFX yanıt adresi eşleşmiyor][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Service Fabric Explorer temsil eden küme (Web) uygulaması Azure AD 'de kimlik doğrulaması yapmayı dener ve isteğin bir parçası olarak yeniden yönlendirme dönüş URL 'si sağlar. Ancak URL, Azure AD uygulama **yanıt URL 'si** listesinde listelenmez.
 
 #### <a name="solution"></a>Çözüm
@@ -110,13 +109,13 @@ Kümenizin Azure AD uygulama kaydı sayfasında **kimlik doğrulaması**' nı se
 
 ### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>PowerShell aracılığıyla Azure AD kimlik doğrulaması kullanarak kümeye bağlanma, oturum açtığınızda bir hata veriyor: "AADSTS50011"
 #### <a name="problem"></a>Sorun
-PowerShell aracılığıyla Azure AD kullanarak bir Service Fabric kümesine bağlanmaya çalıştığınızda, oturum açma sayfası bir hata döndürür: "AADSTS50011: istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: &lt;GUID&gt;."
+PowerShell aracılığıyla Azure AD kullanarak bir Service Fabric kümesine bağlanmaya çalıştığınızda, oturum açma sayfası bir hata döndürür: "AADSTS50011: istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: &lt; GUID &gt; ."
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Yukarıdaki soruna benzer şekilde, PowerShell, Azure AD uygulama **yanıt URL 'leri** listesinde listelenmeyen bir yeniden yönlendirme URL 'Si sağlayan Azure AD 'de kimlik doğrulamaya çalışır.  
 
 #### <a name="solution"></a>Çözüm
-Önceki sorundan itibaren aynı süreci kullanın, ancak URL 'nin `urn:ietf:wg:oauth:2.0:oob`, komut satırı kimlik doğrulaması için özel bir yeniden yönlendirme olarak ayarlanması gerekir.
+Önceki sorundan itibaren aynı süreci kullanın, ancak URL 'nin `urn:ietf:wg:oauth:2.0:oob` , komut satırı kimlik doğrulaması için özel bir yeniden yönlendirme olarak ayarlanması gerekir.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>PowerShell aracılığıyla Azure AD kimlik doğrulaması kullanarak kümeyi bağlama
 Service Fabric kümesine bağlanmak için aşağıdaki PowerShell komut örneğini kullanın:

@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672150"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
@@ -36,7 +35,7 @@ Event Grid konuları Azure kaynaklarıdır ve bir Azure kaynak grubuna yerleşti
 
 [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. 
 
-Aşağıdaki örnek, `<resource_group_name>` *westus* konumunda adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
+Aşağıdaki örnek `<resource_group_name>` , *westus* konumunda adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
@@ -44,7 +43,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
-Yapılandırma `<appconfig_name>` deponuzu için benzersiz bir adla ve `<resource_group_name>` daha önce oluşturduğunuz kaynak grubuyla değiştirin. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
+`<appconfig_name>`Yapılandırma deponuzu için benzersiz bir adla ve `<resource_group_name>` daha önce oluşturduğunuz kaynak grubuyla değiştirin. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
 
 ```azurecli-interactive
 az appconfig create \
@@ -97,7 +96,7 @@ Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olay�
 
 ## <a name="trigger-an-app-configuration-event"></a>Uygulama yapılandırma olayını tetikleme
 
-Şimdi, Event Grid’in iletiyi uç noktanıza nasıl dağıttığını görmek için bir olay tetikleyelim. `<appconfig_name>` Öğesinden daha önce kullanarak bir anahtar değeri oluşturun.
+Şimdi, Event Grid’in iletiyi uç noktanıza nasıl dağıttığını görmek için bir olay tetikleyelim. Öğesinden daha önce kullanarak bir anahtar değeri oluşturun `<appconfig_name>` .
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes

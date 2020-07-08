@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78192209"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
@@ -22,7 +21,7 @@ Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu gün
 * Çalışan bir uygulamayla **Azure Spring Cloud** örneği, örneğin [Spring Cloud App](./spring-cloud-quickstart-launch-app-cli.md).
 
 > [!NOTE]
->  ASC CLı uzantısı, 0.2.0 sürümünden 0.2.1 sürümüne güncelleştirilir. Bu değişiklik `az spring-cloud app log tail`, şu şekilde değiştirilecek olan günlük akışı komutunun sözdizimini etkiler: `az spring-cloud app logs`. Komut: `az spring-cloud app log tail` gelecek bir sürümde kullanım dışı olacaktır. Sürüm 0.2.0 kullanıyorsanız, 0.2.1 sürümüne yükseltebilirsiniz. İlk olarak, eski sürümü şu komutla kaldırın: `az extension remove -n spring-cloud`.  Sonra, 0.2.1 komutunu şu komutla yüklersiniz: `az extension add -n spring-cloud`.
+>  ASC CLı uzantısı, 0.2.0 sürümünden 0.2.1 sürümüne güncelleştirilir. Bu değişiklik, şu şekilde değiştirilecek olan günlük akışı komutunun sözdizimini etkiler: `az spring-cloud app log tail` `az spring-cloud app logs` . Komut: `az spring-cloud app log tail` gelecek bir sürümde kullanım dışı olacaktır. Sürüm 0.2.0 kullanıyorsanız, 0.2.1 sürümüne yükseltebilirsiniz. İlk olarak, eski sürümü şu komutla kaldırın: `az extension remove -n spring-cloud` .  Sonra, 0.2.1 komutunu şu komutla yüklersiniz: `az extension add -n spring-cloud` .
 
 ## <a name="use-cli-to-tail-logs"></a>Günlükleri kuyruk için CLı kullanma
 
@@ -50,7 +49,7 @@ Bu işlem günlükleri döndürür:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Birden çok örneğe sahip uygulama için kuyruk günlüğü
-Adlı `auth-service`uygulama için birden çok örnek varsa, `-i/--instance` seçeneğini kullanarak örnek günlüğünü görüntüleyebilirsiniz. 
+Adlı uygulama için birden çok örnek varsa `auth-service` , seçeneğini kullanarak örnek günlüğünü görüntüleyebilirsiniz `-i/--instance` . 
 
 İlk olarak, aşağıdaki komutla uygulama örneği adlarını alabilirsiniz.
 
@@ -66,7 +65,7 @@ auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
-Ardından, bir uygulama örneğinin günlüklerini seçenek `-i/--instance` seçeneğiyle akışla aktarabilirsiniz:
+Ardından, bir uygulama örneğinin günlüklerini seçenek seçeneğiyle akışla aktarabilirsiniz `-i/--instance` :
 
 ```
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb

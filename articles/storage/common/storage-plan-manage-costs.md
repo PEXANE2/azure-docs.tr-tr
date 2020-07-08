@@ -10,10 +10,9 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304530"
 ---
 # <a name="plan-and-manage-costs-for-azure-storage"></a>Azure depolama için maliyetleri planlayın ve yönetin
@@ -56,7 +55,7 @@ Maliyet analizini kullandığınızda, Azure depolama maliyetlerini grafik ve ta
 
 Azure depolama maliyetlerini maliyet analizi 'nde görüntülemek için:
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi**' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
 

@@ -8,22 +8,21 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304251"
 ---
 # <a name="trim-azure-cosmos-db"></a>Kırp (Azure Cosmos DB)
  Baştaki ve sondaki boşlukları kaldırdıktan sonra bir dize ifadesi döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 TRIM(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr*  
    Bir dize ifadesidir.  
@@ -34,7 +33,7 @@ TRIM(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir sorgunun içinde nasıl `TRIM` kullanılacağını gösterir.  
+  Aşağıdaki örnek, `TRIM` bir sorgunun içinde nasıl kullanılacağını gösterir.  
   
 ```sql
 SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4

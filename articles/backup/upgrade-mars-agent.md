@@ -4,10 +4,9 @@ description: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl yük
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672857"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükseltme
@@ -56,7 +55,7 @@ Azure Backup aracısının güncelleştirilmesi gereken sunucuları tanımladık
 
 1. Sunucunuzun veya sunucunuzun proxy 'sinin internet erişimi sınırlı ise, sunucu/ara sunucu üzerindeki güvenlik duvarı ayarlarının, kullanmakta olduğunuz Azure bulutuna uygun URL 'ye izin verecek şekilde yapılandırıldığından emin olun:
 
-    Azure bulutu | URL'si
+    Azure bulutu | URL
     -- | ---
     Azure bulutu (genel) |   `https://login.windows.net`
     Azure Çin 21Vianet bulutu   | `https://login.chinacloudapi.cn`

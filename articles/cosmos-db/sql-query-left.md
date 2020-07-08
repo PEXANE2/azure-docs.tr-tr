@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303758"
 ---
 # <a name="left-azure-cosmos-db"></a>Sol (Azure Cosmos DB)
  Belirtilen sayıda karakter içeren bir dizenin sol kısmını döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 LEFT(<str_expr>, <num_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr*  
    , Öğesinden karakter Ayıklanacak dize ifadesidir.  

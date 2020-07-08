@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78208551"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
@@ -55,7 +54,7 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\mpprovider\mpprovider.exe")** içeri aktarırken ve **amserviceenabled = false** Ile **Get-mprotcomputerstatus** sonuçları çalıştıran **"sanal makineye Endpoint Protection çözümlerini yükle** " önerilir
+* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** içeri aktarırken ve **amserviceenabled = false** Ile **Get-mprotcomputerstatus** sonuçlarını çalıştırırken " **Endpoint Protection çözümlerini sanal makineye yükle"** önerir.
 
 * Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 

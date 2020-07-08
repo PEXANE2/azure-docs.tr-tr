@@ -4,10 +4,9 @@ description: Azure Resource Manager ile kaynak dağıtımında SKU kullanılamı
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78942723"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Kullanılamayan SKU’larla ilgili hataları giderme
@@ -40,7 +39,7 @@ Bir bölgede/bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [G
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Sonuçlar, konum ve bu SKU için herhangi bir kısıtlama için SKU 'ların bir listesini içerir. SKU 'nun olarak `NotAvailableForSubscription`listelendiğine dikkat edin.
+Sonuçlar, konum ve bu SKU için herhangi bir kısıtlama için SKU 'ların bir listesini içerir. SKU 'nun olarak listelendiğine dikkat edin `NotAvailableForSubscription` .
 
 ```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
@@ -62,7 +61,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 ## <a name="solution-2---azure-cli"></a>Çözüm 2-Azure CLı
 
-Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için `az vm list-skus` komutunu kullanın. Kullandığınız konuma `--location` çıktıyı filtrelemek için parametresini kullanın. Kısmi bir `--size` boyut adına göre arama yapmak için parametresini kullanın.
+Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için `az vm list-skus` komutunu kullanın. `--location`Kullandığınız konuma çıktıyı filtrelemek için parametresini kullanın. `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table

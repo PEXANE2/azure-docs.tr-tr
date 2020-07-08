@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78250192"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Portal arabiriminizi test etme
 
-Yönetilen uygulamanız için [Createuıdefinition. json dosyasını](create-uidefinition-overview.md) oluşturduktan sonra, Kullanıcı deneyimini test etmeniz gerekir. Sınamayı basitleştirmek için, dosyanızı portala yükleyen bir korumalı alan ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Korumalı alan, Kullanıcı arabiriminizi geçerli, tam ekran portalı deneyiminde gösterir. Ya da, arabirimi test etmek için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmektedir. Korumalı alan, arabirimi önizlemek için önerilen yoldur.
+Yönetilen uygulamanız için [dosyada createUiDefinition.js](create-uidefinition-overview.md) oluşturduktan sonra, Kullanıcı deneyimini test etmeniz gerekir. Sınamayı basitleştirmek için, dosyanızı portala yükleyen bir korumalı alan ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Korumalı alan, Kullanıcı arabiriminizi geçerli, tam ekran portalı deneyiminde gösterir. Ya da, arabirimi test etmek için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmektedir. Korumalı alan, arabirimi önizlemek için önerilen yoldur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Createuıdefinition. JSON** dosyası. Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
+* Dosyadaki bir **createUiDefinition.js** . Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -28,7 +27,7 @@ Yönetilen uygulamanız için [Createuıdefinition. json dosyasını](create-uid
 
    ![Korumalı alanı göster](./media/test-createuidefinition/show-sandbox.png)
 
-1. Boş tanımı Createuıdefinition. JSON dosyanızın içeriğiyle değiştirin. **Önizleme**' yi seçin.
+1. Boş tanımı, dosyadaki createUiDefinition.jsiçeriğiyle değiştirin. **Önizleme**' yi seçin.
 
    ![Önizlemeyi seçin](./media/test-createuidefinition/select-preview.png)
 
@@ -54,9 +53,9 @@ Arabiriminizi portalda test etmek için aşağıdaki betiklerin birini yerel mak
 * [PowerShell dışarıdan yükleme betiği-Azure modülü](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Azure CLı dışarıdan yükleme betiği](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
-Arabirim dosyanızı portalda görmek için, indirilen komut dosyanızı çalıştırın. Betik, Azure aboneliğinizde bir depolama hesabı oluşturur ve Createuıdefinition. JSON dosyanızı depolama hesabına yükler. Depolama hesabı, betiği ilk kez çalıştırdığınızda veya depolama hesabı silinmişse oluşturulur. Depolama hesabı Azure aboneliğinizde zaten varsa, komut dosyası onu yeniden kullanır. Betik, portalı açar ve dosyanızı depolama hesabından yükler.
+Arabirim dosyanızı portalda görmek için, indirilen komut dosyanızı çalıştırın. Betik, Azure aboneliğinizde bir depolama hesabı oluşturur ve dosyayı createUiDefinition.jsdepolama hesabına yükler. Depolama hesabı, betiği ilk kez çalıştırdığınızda veya depolama hesabı silinmişse oluşturulur. Depolama hesabı Azure aboneliğinizde zaten varsa, komut dosyası onu yeniden kullanır. Betik, portalı açar ve dosyanızı depolama hesabından yükler.
 
-Depolama hesabı için bir konum sağlayın ve Createuıdefinition. JSON dosyanıza sahip klasörü belirtin.
+Depolama hesabı için bir konum sağlayın ve dosyada createUiDefinition.jsolan klasörü belirtin.
 
 PowerShell için şunu kullanın:
 
@@ -74,7 +73,7 @@ Azure CLI için şunu kullanın:
   -a .\100-Marketplace-Sample
 ```
 
-Createuıdefinition. JSON dosyanız komut dosyasıyla aynı klasörsdakiler ve depolama hesabını zaten oluşturduysanız, bu parametreleri sağlamanız gerekmez.
+createUiDefinition.jsdosyadaki dosyanız komut dosyasıyla aynı klasörsdakiler ve depolama hesabını zaten oluşturduysanız, bu parametreleri sağlamanız gerekmez.
 
 PowerShell için şunu kullanın:
 
@@ -100,7 +99,7 @@ Portal Özet ekranında askıda kalırsa, çıkış bölümünde bir hata olabil
 
 ## <a name="test-your-solution-files"></a>Çözüm dosyalarınızı test etme
 
-Portal Arabiriminizin beklendiği gibi çalıştığını doğruladığınıza göre, Createuıdefinition dosyanızın mainTemplate. JSON dosyanız ile düzgün bir şekilde tümleştirildiğini doğrulamanız zaman alabilir. Createuıdefinition dosyası dahil olmak üzere çözüm dosyalarınızın içeriğini test etmek için bir doğrulama betik testi çalıştırabilirsiniz. Betik JSON sözdizimini doğrular, metin alanlarındaki Regex ifadelerini denetler ve Portal arabiriminin çıkış değerlerinin şablonunuzun parametreleriyle eşleştiğinden emin olur. Bu betiği çalıştırma hakkında bilgi için bkz. [Şablonlar için statik doğrulama denetimlerini çalıştırma](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
+Portal Arabiriminizin beklendiği gibi çalıştığını doğruladığınıza göre, Createuıdefinition dosyanızın dosyadaki mainTemplate.jsuygun şekilde tümleştirildiğini doğrulamanız zaman alır. Createuıdefinition dosyası dahil olmak üzere çözüm dosyalarınızın içeriğini test etmek için bir doğrulama betik testi çalıştırabilirsiniz. Betik JSON sözdizimini doğrular, metin alanlarındaki Regex ifadelerini denetler ve Portal arabiriminin çıkış değerlerinin şablonunuzun parametreleriyle eşleştiğinden emin olur. Bu betiği çalıştırma hakkında bilgi için bkz. [Şablonlar için statik doğrulama denetimlerini çalıştırma](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

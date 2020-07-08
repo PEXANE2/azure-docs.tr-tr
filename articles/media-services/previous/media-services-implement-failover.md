@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78939228"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services V2 ile yük devretme akışını uygulama
@@ -62,8 +61,8 @@ Aşağıdaki noktalara dikkat edilmelidir:
 Bu bölümde, bir C# konsol uygulaması projesi oluşturup ayarlarsınız.
 
 1. C# konsol uygulaması projesini içeren yeni bir çözüm oluşturmak için Visual Studio 'Yu kullanın. Ad için **HandleRedundancyForOnDemandStreaming** girin ve ardından **Tamam**' a tıklayın.
-2. **HandleRedundancyForOnDemandStreaming. csproj** proje dosyasıyla aynı düzeyde **supportfiles** klasörünü oluşturun. **Supportfiles** klasörü altında, **OutputFiles** ve **MP4Files** klasörlerini oluşturun. Bir. mp4 dosyasını **MP4Files** klasörüne kopyalayın. (Bu örnekte, **menite. mp4** dosyası kullanılır.) 
-3. Media Services ile ilgili DLL 'lere başvurular eklemek için **NuGet** kullanın. **Visual Studio ana menüsünde** **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. Konsol penceresinde **Install-Package windowsazure. mediaservices**yazın ve ENTER tuşuna basın.
+2. **HandleRedundancyForOnDemandStreaming. csproj** proje dosyasıyla aynı düzeyde **supportfiles** klasörünü oluşturun. **Supportfiles** klasörü altında, **OutputFiles** ve **MP4Files** klasörlerini oluşturun. Bir. mp4 dosyasını **MP4Files** klasörüne kopyalayın. (Bu örnekte, **ignite.mp4** dosyası kullanılır.) 
+3. Media Services ile ilgili DLL 'lere başvurular eklemek için **NuGet** kullanın. **Visual Studio ana menüsünde** **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Konsol penceresinde **Install-Package windowsazure. mediaservices**yazın ve ENTER tuşuna basın.
 4. Bu proje için gereken diğer başvuruları ekleyin: System. Runtime. Serialization ve System. Web.
 5. **Programs.cs** dosyasına **eklenen deyimleri,** varsayılan olarak aşağıdakiler ile değiştirin:
 
@@ -763,6 +762,6 @@ Artık iki veri merkezi arasında istekleri yönlendirmek için bir Traffic Mana
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

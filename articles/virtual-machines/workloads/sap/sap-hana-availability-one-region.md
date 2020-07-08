@@ -16,10 +16,9 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255471"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
@@ -54,7 +53,7 @@ Bir sistem durumu denetimi işlevselliği, bir Azure Server konağında barınd�
 Azure tarafından sunulan konak ve VM izleme ile, ana bilgisayar sorunları yaşayan Azure VM 'Leri sağlıklı bir Azure ana bilgisayarında otomatik olarak yeniden başlatılır. 
 
 >[!IMPORTANT]
->Azure hizmeti düzeltme, Konuk işletim sisteminin bir çekirdek panik durumunda olduğu Linux VM 'lerini yeniden başlatmaz. Yaygın olarak kullanılan Linux yayınlarının varsayılan ayarları, Linux çekirdeğinin panik durumunda olduğu VM 'leri veya sunucuyu otomatik olarak yeniden başlatmamalıdır. Bunun yerine, varsayılan olarak, çözümlemek üzere bir çekirdek hata ayıklayıcısı iliştirebilmek için sistemi çekirdek panik durumunda tutmaya yönelik olarak görür. Azure, Konuk işletim sistemi olan bir VM 'yi böyle bir durumda otomatik olarak yeniden başlatmayana bu davranışı garanti ediyor. Varsayım, bu oluşumların son derece nadir bir durumdur. VM 'nin yeniden başlatılmasını sağlamak için varsayılan davranışın üzerine yazabilirsiniz. Varsayılan davranışı değiştirmek için,/etc/sysctl.exe içindeki ' Kernel. Panic ' parametresini etkinleştirin. Bu parametre için ayarladığınız zaman Saniyeler içinde. Bu parametre aracılığıyla yeniden başlatmayı tetiklemeden önce, sık önerilen değerler 20-30 saniye beklemeniz önerilir. Ayrıca <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>bkz..
+>Azure hizmeti düzeltme, Konuk işletim sisteminin bir çekirdek panik durumunda olduğu Linux VM 'lerini yeniden başlatmaz. Yaygın olarak kullanılan Linux yayınlarının varsayılan ayarları, Linux çekirdeğinin panik durumunda olduğu VM 'leri veya sunucuyu otomatik olarak yeniden başlatmamalıdır. Bunun yerine, varsayılan olarak, çözümlemek üzere bir çekirdek hata ayıklayıcısı iliştirebilmek için sistemi çekirdek panik durumunda tutmaya yönelik olarak görür. Azure, Konuk işletim sistemi olan bir VM 'yi böyle bir durumda otomatik olarak yeniden başlatmayana bu davranışı garanti ediyor. Varsayım, bu oluşumların son derece nadir bir durumdur. VM 'nin yeniden başlatılmasını sağlamak için varsayılan davranışın üzerine yazabilirsiniz. Varsayılan davranışı değiştirmek için,/etc/sysctl.exe içindeki ' Kernel. Panic ' parametresini etkinleştirin. Bu parametre için ayarladığınız zaman Saniyeler içinde. Bu parametre aracılığıyla yeniden başlatmayı tetiklemeden önce, sık önerilen değerler 20-30 saniye beklemeniz önerilir. Ayrıca bkz <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf> ..
 
 Bu senaryoda kullandığınız ikinci özellik, yeniden başlatılan bir VM 'de çalışan HANA hizmetinin VM yeniden başlatıldıktan sonra otomatik olarak başlayacağını bulmasıdır. Farklı HANA hizmetlerinin izleme hizmetleri aracılığıyla [Hana hizmetini otomatik yeniden başlatmayı](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) ayarlayabilirsiniz.
 

@@ -8,22 +8,21 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304268"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  Skaler ifadenin dize gösterimini döndürür. 
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ToString(<expr>)
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *ifadeyi*  
    Herhangi bir skaler ifadedir.  
@@ -34,7 +33,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, farklı türlerde `ToString` nasıl davrandığını gösterir.   
+  Aşağıdaki örnek, `ToString` farklı türlerde nasıl davrandığını gösterir.   
   
 ```sql
 SELECT 
@@ -57,7 +56,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- Aşağıdaki örnek, gibi `ToString` `CONCAT`diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir.   
+ Aşağıdaki örnek, `ToString` gibi diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir `CONCAT` .   
  
 ```sql
 SELECT 
@@ -78,7 +77,7 @@ Aşağıdaki girdi verildi.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-Aşağıdaki örnek, gibi `ToString` `REPLACE`diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir.   
+Aşağıdaki örnek, `ToString` gibi diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir `REPLACE` .   
 ```sql
 SELECT 
     n.id AS nutrientID,

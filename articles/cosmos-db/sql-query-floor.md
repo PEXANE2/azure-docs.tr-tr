@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303197"
 ---
 # <a name="floor-azure-cosmos-db"></a>KAT (Azure Cosmos DB)
  Belirtilen sayısal ifadeye eşit veya daha küçük olan en büyük tamsayıyı döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 FLOOR (<numeric_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *numeric_expr*  
    Sayısal bir ifadedir.  
@@ -34,7 +33,7 @@ FLOOR (<numeric_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `FLOOR` işlevi ile pozitif sayısal, negatif ve sıfır değerlerini gösterir.  
+  Aşağıdaki örnek, işlevi ile pozitif sayısal, negatif ve sıfır değerlerini gösterir `FLOOR` .  
   
 ```sql
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  

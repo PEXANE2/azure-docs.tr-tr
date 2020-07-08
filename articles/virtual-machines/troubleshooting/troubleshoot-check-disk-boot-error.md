@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
 ms.openlocfilehash: 86938c582745cb0759eda9cd0693f407471a0529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921496"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken "dosya sistemini denetleme" işlemini gösterir
@@ -26,7 +25,7 @@ Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyükledi�
 
 ## <a name="symptom"></a>Belirti 
 
-Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, disk denetleme işleminin (Chkdsk. exe) aşağıdaki iletilerden biriyle çalıştığını görürsünüz:
+Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, disk denetleme işleminin (chkdsk.exe) aşağıdaki iletilerden biriyle çalıştığını görürsünüz:
 
 - Sürücüyü tarama ve onarma (C:)
 - C üzerinde dosya sistemi denetleniyor:

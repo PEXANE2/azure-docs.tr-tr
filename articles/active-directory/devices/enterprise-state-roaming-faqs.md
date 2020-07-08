@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672386"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Ayarlar ve veri dolaşımı hakkında SSS
@@ -76,8 +75,8 @@ Windows 10 ' un Kasım 2015 veya sonraki sürümlerinde Enterprise State Roaming
 
 Farklı Azure AD kiracılarından birden çok Azure AD hesabı aynı cihazdan olduğunda, her bir Azure AD kiracısı için Azure Rights Management hizmetiyle iletişim kurmak üzere cihazın kayıt defterini güncelleştirmeniz gerekir.  
 
-1. Her Azure AD kiracısı için GUID 'ı bulun. Azure portal açın ve bir Azure AD kiracısı seçin. Kiracının GUID 'SI, seçilen kiracının (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) **dizin kimliği**etiketli) özellikler sayfasıdır. 
-2. GUID 'ye sahip olduktan sonra, **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<kiracı kimliği GUID>** kayıt defteri anahtarını eklemeniz gerekecektir.
+1. Her Azure AD kiracısı için GUID 'ı bulun. Azure portal açın ve bir Azure AD kiracısı seçin. Kiracının GUID 'SI, seçilen kiracının ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) **dizin kimliği**etiketli) özellikler sayfasıdır. 
+2. GUID 'ye sahip olduktan sonra, **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC \<tenant ID GUID> **kayıt defteri anahtarını eklemeniz gerekecektir.
    **KIRACı KIMLIĞI GUID** anahtarından, **Allowedrmsserverurls**adlı yeni bir çok dizeli değer (reg-Multi-SZ) oluşturun. Verileri için, cihazın eriştiği diğer Azure kiracılarının lisanslama dağıtım noktası URL 'Lerini belirtin.
 3. AADRM modülünden **Get-AadrmConfiguration** cmdlet 'ini çalıştırarak lisanslama dağıtım noktası URL 'lerini bulabilirsiniz. **Licensingıntranetdistributionpointurl** ve **LicensingExtranetDistributionPointUrl** değerleri farklıysa, her iki değeri de belirtin. Değerler aynıysa, değeri yalnızca bir kez belirtin.
 
@@ -112,7 +111,7 @@ Windows 10 ' da, tek bir uygulama için dolaşımı devre dışı bırakmak üze
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Dolaşımı nasıl etkinleştirebilir veya devre dışı bırakabilirim?
 
-**Ayarlar** uygulamasında **hesaplar** > **Ayarlar ' a**gidin. Bu sayfadan, ayarları dolaşırken hangi hesabın kullanıldığını görebilir ve tek tek ayar gruplarını, dolaşımda olacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz.
+**Ayarlar** uygulamasında **hesaplar**  >  **Ayarlar ' a**gidin. Bu sayfadan, ayarları dolaşırken hangi hesabın kullanıldığını görebilir ve tek tek ayar gruplarını, dolaşımda olacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Microsoft 'un Windows 10 ' da dolaşımını etkinleştirme önerisi nedir?
 

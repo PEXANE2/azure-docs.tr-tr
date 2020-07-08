@@ -5,15 +5,14 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403231"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlangıç: özel kapsayıcı kayıt defterinden olayları Event Grid gönder
 
-Azure Event Grid, yayımlama-abonelik modeli kullanarak Tekdüzen olay tüketimi sağlayan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu hızlı başlangıçta, Azure CLı kullanarak bir kapsayıcı kayıt defteri oluşturabilir, kayıt defteri olaylarına abone olur ve olayları almak için örnek bir Web uygulaması dağıtabilirsiniz. Son olarak, kapsayıcı görüntüsünü `push` ve `delete` olayları tetiklersiniz ve olay yükünü örnek uygulamada görüntüleyebilirsiniz.
+Azure Event Grid, yayımlama-abonelik modeli kullanarak Tekdüzen olay tüketimi sağlayan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu hızlı başlangıçta, Azure CLı kullanarak bir kapsayıcı kayıt defteri oluşturabilir, kayıt defteri olaylarına abone olur ve olayları almak için örnek bir Web uygulaması dağıtabilirsiniz. Son olarak, kapsayıcı görüntüsünü `push` ve olayları tetiklersiniz `delete` ve olay yükünü örnek uygulamada görüntüleyebilirsiniz.
 
 Bu makaledeki adımları tamamladıktan sonra, kapsayıcı Kayıt defterinizden Event Grid için gönderilen olaylar örnek Web uygulamasında görünür:
 
@@ -27,7 +26,7 @@ Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. Pow
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, farklı bir değere ayarlayın `RESOURCE_GROUP_NAME` .
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` farklı bir değere ayarlayın.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -37,7 +36,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Ardından, aşağıdaki komutlarla bir kapsayıcı kayıt defteri 'ni kaynak grubuna dağıtın. [Az ACR Create][az-acr-create] komutunu çalıştırmadan önce, kayıt defteriniz için `ACR_NAME` bir ad ayarlayın. Ad, Azure içinde benzersiz olmalıdır ve 5-50 alfasayısal karakterlerle kısıtlıdır.
+Ardından, aşağıdaki komutlarla bir kapsayıcı kayıt defteri 'ni kaynak grubuna dağıtın. [Az ACR Create][az-acr-create] komutunu çalıştırmadan önce, `ACR_NAME` kayıt defteriniz için bir ad ayarlayın. Ad, Azure içinde benzersiz olmalıdır ve 5-50 alfasayısal karakterlerle kısıtlıdır.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -73,7 +72,7 @@ Kayıt defteri oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir çı
 
 Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
 
-Örnek uygulamayı dağıtmak için, Web uygulamanız `SITE_NAME` için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
+Örnek uygulamayı dağıtmak için, `SITE_NAME` Web uygulamanız için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -194,13 +193,13 @@ Are you sure you want to continue? (y/n):
 
 ## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-Şimdi Kayıt defterinize bir görüntü gönderdi ve sonra dosyayı silmiş oldunuz. Event Grid Viewer Web uygulamanıza gidin ve hem hem de `ImageDeleted` `ImagePushed` olayları görmeniz gerekir. Ayrıca, [kayıt defteri olaylarına abone ol](#subscribe-to-registry-events) bölümünde komutunu yürüterek oluşturulan bir abonelik doğrulama olayı da görebilirsiniz.
+Şimdi Kayıt defterinize bir görüntü gönderdi ve sonra dosyayı silmiş oldunuz. Event Grid Viewer Web uygulamanıza gidin ve hem hem de olayları görmeniz gerekir `ImageDeleted` `ImagePushed` . Ayrıca, [kayıt defteri olaylarına abone ol](#subscribe-to-registry-events) bölümünde komutunu yürüterek oluşturulan bir abonelik doğrulama olayı da görebilirsiniz.
 
 Aşağıdaki ekran görüntüsünde, üç olayla örnek uygulama gösterilmektedir ve bu `ImageDeleted` olay, ayrıntılarını göstermek için genişletilir.
 
 ![Imageitilmiş ve ımagedeleted olayları ile örnek uygulamayı gösteren Web tarayıcısı][sample-app-03]
 
-Tebrikler! `ImagePushed` Ve `ImageDeleted` olaylarını görürseniz, kayıt defteriniz Event Grid olaylar gönderiyor ve Event Grid bu olayları Web uygulaması uç noktanıza iletiyor.
+Tebrikler! `ImagePushed`Ve `ImageDeleted` olaylarını görürseniz, kayıt defteriniz Event Grid olaylar gönderiyor ve Event Grid bu olayları Web uygulaması uç noktanıza iletiyor.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

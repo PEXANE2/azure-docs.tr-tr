@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303775"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
  Belirtilen ifadenin türünün bir dize olup olmadığını gösteren bir Boole değeri döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 IS_STRING(<expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *ifadeyi*  
    Herhangi bir ifadedir.  
@@ -34,7 +33,7 @@ IS_STRING(<expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `IS_STRING` IŞLEVINI kullanarak JSON Boole, sayı, dize, null, nesne, dizi ve tanımsız türlerin nesnelerini denetler.  
+  Aşağıdaki örnek, işlevini kullanarak JSON Boole, sayı, dize, null, nesne, dizi ve tanımsız türlerin nesnelerini denetler `IS_STRING` .  
   
 ```sql
 SELECT   

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78186735"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için çözümler ve eğitim
@@ -22,7 +21,7 @@ Azure Active Directory B2C (Azure AD B2C), kuruluşların müşterilerine bağla
 
 | Başlık | Açıklama |
 | ----- | ----------- |
-| [Azure AD B2C ile müşteri kimliği yönetimi](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | Bu hizmete genel bakış bölümünde, Azure AD B2C ekibinizdeki Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)), hizmetin nasıl çalıştığına ilişkin bir genel bakış sunar ve ayrıca B2C 'yi bir ASP.NET Core uygulamasına hızlı bir şekilde nasıl bağlayabileceğimizi gösterir. |
+| [Azure AD B2C ile müşteri kimliği yönetimi](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | Bu hizmete genel bakış bölümünde, Azure AD B2C ekibinizdeki Parakh Jain ( [@jainparakh](https://twitter.com/jainparakh) ), hizmetin nasıl çalıştığına ilişkin bir genel bakış sunar ve ayrıca B2C 'yi bir ASP.NET Core uygulamasına hızlı bir şekilde nasıl bağlayabileceğimizi gösterir. |
 | [Azure AD B2C kullanmanın avantajları](https://aka.ms/b2coverview) | Azure AD B2C avantajları ve genel senaryoları ve uygulamanızın bu CII hizmetini nasıl kullanabileceğini anlayın. |
 | [Azure AD B2C uzmanlığa sahip olmak: geliştiriciler için bir kurs](https://aka.ms/learnAADB2C) | Bu uçtan uca kurs, geliştiricilere kimlik doğrulama mekanizması olarak Azure AD B2C sahip uygulamalar geliştirmeye yönelik tam bir yolculuğa sahip bir yolculuğa götürür. Labs ile on ayrıntılı modüller, müşterilerinize yönelik olan bağlantıyı tanımlayan özel ilkeler oluşturmak için bir Azure aboneliği ayarlamalarından her şeyi kapsar. |
 | [Azure Active Directory ile iş ortakları, tedarikçiler ve müşterilerin uygulamalara erişmesini sağlama](https://aka.ms/aadexternalidentities) | Boyut, sektör veya uyumluluk ve güvenlik duruşlarından bağımsız olarak her kuruluşun başarısı, diğer kuruluşlara işbirliği yapıp müşterilerle bağlantı kurmak için kurumsal bir özellik kullanır.<br><br>Azure AD, Azure AD B2C ve Azure AD B2B Işbirliğiyle birlikte çalışarak, bu kılavuzda, çalışanlarınızın, iş ortaklarınızın ve tedarikçilerin ve müşterilerin içeriklerine özel olarak birleştirilmiş bir kimlik doğrulama deneyimi sağlayan bir uygulama veya Web deneyimi oluşturma konusunda bilgi verilmektedir. |

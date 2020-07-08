@@ -8,22 +8,21 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303112"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
  Belirtilen ifadede radyan cinsinden belirtilen açının trigonometrik sinüsünü döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 SIN(<numeric_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *numeric_expr*  
    Sayısal bir ifadedir.  

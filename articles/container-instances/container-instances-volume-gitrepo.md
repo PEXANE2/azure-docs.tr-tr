@@ -4,10 +4,9 @@ description: Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için gitRep
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252095"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances bir gitRepo birimi bağlama
@@ -25,15 +24,15 @@ Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç öze
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| `repository` | Yes | Klonlanacak git deposunun dahil `http://` olduğu `https://`tam URL.|
-| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "`..`" ile içermemelidir veya başlamamalıdır.  "`.`" Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
-| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` düzeltme klonlanır. |
+| `repository` | Evet | `http://` `https://` Klonlanacak git deposunun dahil olduğu tam URL.|
+| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "" ile içermemelidir veya başlamamalıdır `..` .  " `.` " Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
+| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` Düzeltme klonlanır. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo Volume bağlama: Azure CLı
 
-[Azure CLI](/cli/azure)ile kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, `--gitrepo-url` [az Container Create][az-container-create] komutuna ve `--gitrepo-mount-path` parametrelerini girin. İsteğe bağlı olarak, kopyalanacak birimin içindeki dizini (`--gitrepo-dir`) ve klonlanacak düzeltmenin COMMIT karmasını (`--gitrepo-revision`) belirtebilirsiniz.
+[Azure CLI](/cli/azure)ile kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, `--gitrepo-url` `--gitrepo-mount-path` [az Container Create][az-container-create] komutuna ve parametrelerini girin. İsteğe bağlı olarak, kopyalanacak birimin içindeki dizini ( `--gitrepo-dir` ) ve klonlanacak düzeltmenin COMMIT karmasını ( `--gitrepo-revision` ) belirtebilirsiniz.
 
-Bu örnek komut, Microsoft [aci-HelloWorld][aci-helloworld] örnek uygulamasını kapsayıcı örneğinde `/mnt/aci-helloworld` içine kopyalar:
+Bu örnek komut, Microsoft [aci-HelloWorld][aci-helloworld] örnek uygulamasını `/mnt/aci-helloworld` kapsayıcı örneğinde içine kopyalar:
 
 ```azurecli-interactive
 az container create \
@@ -63,7 +62,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>Bağlama gitRepo birimi: Kaynak Yöneticisi
 
-Bir [Azure Resource Manager şablonuyla](/azure/templates/microsoft.containerinstance/containergroups)kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, önce `volumes` dizinin kapsayıcı grubu `properties` bölümünde diziyi doldurun. Ardından, *gitRepo* birimini bağlamak istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, `volumeMounts` diziyi kapsayıcı tanımının `properties` bölümünde doldurun.
+Bir [Azure Resource Manager şablonuyla](/azure/templates/microsoft.containerinstance/containergroups)kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, önce `volumes` dizinin kapsayıcı grubu bölümünde diziyi doldurun `properties` . Ardından, *gitRepo* birimini bağlamak istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
 
 Örneğin, aşağıdaki Kaynak Yöneticisi şablonu tek bir kapsayıcıdan oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı, *gitRepo* birim blokları tarafından belirtilen iki GitHub deposu klonlar. İkinci birim, kopyalamak üzere bir dizin belirten ek özellikler ve kopyalamak için belirli bir düzeltmenin COMMIT karmasını içerir.
 
@@ -83,7 +82,7 @@ Azure Resource Manager şablonuyla kapsayıcı örneği dağıtımına bir örne
 
 Özel bir git deposu için bir gitRepo birimi bağlamak üzere depo URL 'sinde kimlik bilgilerini belirtin. Genellikle, kimlik bilgileri, depoya kapsamlı erişim veren bir Kullanıcı adı ve kişisel erişim belirteci (PAT) biçimindedir.
 
-Örneğin, özel bir GitHub deposu `--gitrepo-url` IÇIN Azure CLI parametresi aşağıdakine benzer şekilde görünür (burada "Gituser" GitHub kullanıcı adıdır ve "abcdef1234fdsa4321abcdef" kullanıcının kişisel erişim belirtecidir):
+Örneğin, `--gitrepo-url` özel bir GitHub deposu Için Azure CLI parametresi aşağıdakine benzer şekilde görünür (burada "gituser" GitHub kullanıcı adıdır ve "abcdef1234fdsa4321abcdef" kullanıcının kişisel erişim belirtecidir):
 
 ```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository

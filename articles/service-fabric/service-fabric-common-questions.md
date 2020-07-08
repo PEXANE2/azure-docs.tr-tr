@@ -5,10 +5,9 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78254898"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
@@ -64,7 +63,7 @@ Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az 5 düğüme sahi
 2. Her zaman düğüm başına bir hizmetin çoğaltmasını yerleştirdik, bu nedenle küme boyutu bir hizmetin (gerçekte bir bölümün) sahip olduğu kopyaların sayısı için üst sınırdır.
 3. Bir küme yükseltmesi en az bir düğüm getirecek olduğundan, en az bir düğüm için bir arabelleğe sahip olmak istiyoruz, bu nedenle bir üretim kümesinin en düşük düzeyde *ek* olarak en az iki düğüme sahip olmasını istiyoruz. En az, aşağıda açıklandığı gibi bir sistem hizmetinin çekirdek boyutudur.  
 
-Kümenin iki düğümden oluşan eşzamanlı hata durumunda kullanılabilmesini istiyoruz. Service Fabric kümesinin kullanılabilir olması için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve yük devretme Yöneticisi hizmeti gibi durum bilgisi olan sistem hizmetleri, kümeye hangi hizmetlerin dağıtıldığını ve şu anda barındırıldığını izleyen, güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, buna karşılık, belirtilen bir hizmet için bir çekirdeğin bir katı büyük çoğunluğunu (N/2 + 1) temsil ettiği bu hizmetlerin durumuna bir *çekirdek* alma özelliğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına karşı dayanıklı olması (Bu nedenle, bir sistem hizmetinin iki çoğaltmasının eşzamanlı kaybolması) için, en düşük boyutu beş olarak zorlayan ClusterSize-QuorumSize >= 2 olması gerekir. Bunu görmek için, kümenin N düğümü olduğunu ve her düğümde bir sistem hizmetinin N çoğaltmaları olduğunu düşünün. Bir sistem hizmeti için çekirdek boyutu (N/2 + 1). Yukarıdaki eşitsizlik, N-(N/2 + 1) >= 2 gibi görünüyor. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tekse. N çift ise, N = 2\*m, 5 >= 1 olduğunda, eşitsizlik 2\*m-(2\*m/2 + 1) >= 2 veya m >= 3 gibi görünür. N için en az 6 ve bu, e = 3 olduğunda elde edilir. Öte yandan, N tek ise, n =\*2 m + 1 (m >= 1), eşitsizlik ise 2\*m + 1-((2\*m + 1)/2 + 1) >= 2 veya 2\*m + 1-(m + 1) >= 2 veya m >= 2 ' dir. N için en düşük değer 5 ' tir ve bu, a = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize ' >= 2 ' yi karşılayan tüm N değerleri arasında en az 5 ' tir.
+Kümenin iki düğümden oluşan eşzamanlı hata durumunda kullanılabilmesini istiyoruz. Service Fabric kümesinin kullanılabilir olması için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve yük devretme Yöneticisi hizmeti gibi durum bilgisi olan sistem hizmetleri, kümeye hangi hizmetlerin dağıtıldığını ve şu anda barındırıldığını izleyen, güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, buna karşılık, belirtilen bir hizmet için bir çekirdeğin bir katı büyük çoğunluğunu (N/2 + 1) temsil ettiği bu hizmetlerin durumuna bir *çekirdek* alma özelliğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına karşı dayanıklı olması (Bu nedenle, bir sistem hizmetinin iki çoğaltmasının eşzamanlı kaybolması) için, en düşük boyutu beş olarak zorlayan ClusterSize-QuorumSize >= 2 olması gerekir. Bunu görmek için, kümenin N düğümü olduğunu ve her düğümde bir sistem hizmetinin N çoğaltmaları olduğunu düşünün. Bir sistem hizmeti için çekirdek boyutu (N/2 + 1). Yukarıdaki eşitsizlik, N-(N/2 + 1) >= 2 gibi görünüyor. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tekse. N çift ise, N = 2 m, 5 \* >= 1 olduğunda, eşitsizlik 2 \* m-(2 \* m/2 + 1) >= 2 veya m >= 3 gibi görünür. N için en az 6 ve bu, e = 3 olduğunda elde edilir. Öte yandan, N tek ise, n = 2 \* m + 1 (m >= 1), eşitsizlik ise 2 \* m + 1-((2 \* m + 1)/2 + 1) >= 2 veya 2 \* m + 1-(m + 1) >= 2 veya m >= 2 ' dir. N için en düşük değer 5 ' tir ve bu, a = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize ' >= 2 ' yi karşılayan tüm N değerleri arasında en az 5 ' tir.
 
 Yukarıdaki bağımsız değişkende, her düğümün bir sistem hizmeti kopyası olduğunu varsaydık, bu nedenle çekirdek boyutu kümedeki düğümlerin sayısına göre hesaplanır. Ancak, *Targetreplicasetsize* öğesini değiştirerek çekirdek boyutunu (N/2 + 1), bu durum 5 düğümden daha küçük bir küme olabilecek ve yine de çekirdek boyutunun üzerinde 2 ek düğüm bulunan bir duruma sahip olduğumuz izlenimi verebilir. Örneğin, 4 düğümlü bir kümede TargetReplicaSetSize öğesini 3 olarak ayarlarsanız, TargetReplicaSetSize 'yi temel alan çekirdek boyutu (3/2 + 1) veya 2 ' dir. bu nedenle, ClusterSize-QuorumSize = 4-2 >= 2 ' dir. Bununla birlikte, aynı anda herhangi bir çift düğümü kaybederseniz sistem hizmetinin çekirdekte veya üzerinde olacağını garanti edemeyiz; bu durumda, kaybedildiğimiz iki düğüm iki çoğaltma barındırıyor olabilir, bu nedenle sistem hizmeti çekirdek kaybına geçer (yalnızca tek bir kopya sola sahip olur) ve kullanılamaz hale gelir.
 
@@ -109,18 +108,18 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 
 | **Virüsten koruma hariç tutulan süreçler** |
 | --- |
-| Fabric. exe |
-| FabricHost. exe |
-| Fabricınstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| Imagebuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamamın gizli dizileri almak için Keykasada kimlik doğrulaması nasıl yapılır?
 Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:

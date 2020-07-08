@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, OpenShift, aquasn, twistlock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271371"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesinde ayrıcalıklı kapsayıcılar çalıştırma
@@ -29,9 +28,9 @@ Aşağıdaki ürüne özgü adımlarda bulunan bölüm başlıkları, satıcıla
 Çoğu güvenlik ürününün belgeleri, Küme Yöneticisi ayrıcalıklarına sahip olduğunuzu varsayar.
 Müşteri yöneticilerinin Azure Red Hat OpenShift 'de tüm ayrıcalıkları yoktur. Küme genelinde kaynakları değiştirmek için gereken izinler sınırlıdır.
 
-İlk olarak, kullanıcının kümede bir müşteri yöneticisi olarak oturum açtığından emin olun `oc get scc`. Müşteri Yöneticisi grubunun üyesi olan tüm kullanıcılar, kümedeki güvenlik bağlamı kısıtlamalarını (SCCs) görüntüleme iznine sahiptir.
+İlk olarak, kullanıcının kümede bir müşteri yöneticisi olarak oturum açtığından emin olun `oc get scc` . Müşteri Yöneticisi grubunun üyesi olan tüm kullanıcılar, kümedeki güvenlik bağlamı kısıtlamalarını (SCCs) görüntüleme iznine sahiptir.
 
-Sonra, `oc` ikili sürümün olduğundan `3.11.154`emin olun.
+Sonra, `oc` ikili sürümün olduğundan emin olun `3.11.154` .
 ```
 oc version
 oc v3.11.154
@@ -74,9 +73,9 @@ Adım 1 ' de kalan yönergeleri izleyerek devam edin.  Bu yönergeler, deniz mav
 ### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>2. Adım: deniz mavisi sunucu, veritabanı ve ağ geçidini dağıtma
 Deniz mavisi-Console. YAML 'yi yüklemek için, deniz mavisi belgelerde verilen adımları izleyin.
 
-Belirtilen `aqua-console.yaml`öğesini değiştirin.  `kind: ClusterRole` Ve `kind: ClusterRoleBinding`etiketli en üstteki iki nesneyi kaldırın.  Bu kaynaklar, müşteri yöneticisinin şu anda ve `ClusterRole` `ClusterRoleBinding` nesneleri değiştirmek için izne sahip olmadığından oluşturulmaz.
+Belirtilen öğesini değiştirin `aqua-console.yaml` .  Ve etiketli en üstteki iki nesneyi kaldırın `kind: ClusterRole` `kind: ClusterRoleBinding` .  Bu kaynaklar, müşteri yöneticisinin şu anda ve nesneleri değiştirmek için izne sahip olmadığından oluşturulmaz `ClusterRole` `ClusterRoleBinding` .
 
-İkinci değişiklik, `kind: Route` `aqua-console.yaml`öğesinin bölümünde olacaktır. `aqua-console.yaml` Dosyadaki `kind: Route` nesne için aşağıdaki YAML 'yi değiştirin.
+İkinci değişiklik `kind: Route` , öğesinin bölümünde olacaktır `aqua-console.yaml` . Dosyadaki nesne için aşağıdaki YAML 'yi değiştirin `kind: Route` `aqua-console.yaml` .
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -121,7 +120,7 @@ Enforcers dağıtımı sırasında aşağıdaki alanları ayarlayın:
 
 Değişiklik yaptığımız temel yönergeler [Prma bulutu dağıtım belgelerinde](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) bulunabilir.
 
-Aracı, `twistcli` "Przma bulutu yükleme" ve "przma bulut yazılımını indirme" bölümlerinde açıklandığı gibi yükleyerek başlayın.
+`twistcli`Aracı, "Przma bulutu yükleme" ve "Przma bulut yazılımını indirme" bölümlerinde açıklandığı gibi yükleyerek başlayın.
 
 Yeni bir OpenShift projesi oluştur
 ```
@@ -135,10 +134,10 @@ Aşağıda açıklanan düzeltmeleri uygularken resmi belgeleri takip edebilirsi
 
 ### <a name="install-console"></a>Konsolu yükler
 
-2 `oc create -f twistlock_console.yaml` . adım sırasında, ad alanını oluştururken bir hata alırsınız.
-Bu adı güvenle yoksayabilirsiniz, daha önce `oc new-project` komutuyla ad alanı oluşturulmuştur.
+`oc create -f twistlock_console.yaml`2. adım sırasında, ad alanını oluştururken bir hata alırsınız.
+Bu adı güvenle yoksayabilirsiniz, daha önce komutuyla ad alanı oluşturulmuştur `oc new-project` .
 
-Depolama `azure-disk` türü için kullanın.
+`azure-disk`Depolama türü için kullanın.
 
 ### <a name="create-an-external-route-to-console"></a>Konsola dış yol oluştur
 
@@ -177,7 +176,7 @@ Twistlock belgelerini izleyin.
 
 ### <a name="install-defender"></a>Defender 'ı yükler
 
-2 `oc create -f defender.yaml` . adım sırasında, küme rolünü ve küme rolü bağlamasını oluştururken hata alırsınız.
+`oc create -f defender.yaml`2. adım sırasında, küme rolünü ve küme rolü bağlamasını oluştururken hata alırsınız.
 Bunları yoksayabilirsiniz.
 
 Savunma işlemleri yalnızca işlem düğümlerinde dağıtılır. Bunları bir düğüm seçicisiyle sınırlandırmanıza gerek yoktur.

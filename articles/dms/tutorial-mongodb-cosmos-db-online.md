@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255613"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Öğretici: DMS kullanarak MongoDB 'yi Azure Cosmos DB için MongoDB online 'a geçirme
@@ -150,7 +149,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
      Ayrıca, Azure Storage 'daki tür dökümü bilgilerine göre aşağıdaki ayrıntıyı göz önünde bulundurun.
 
-     * BSON dökümler için, blob kapsayıcısı içindeki verilerin bsondump biçiminde olması gerekir, bu nedenle veri dosyaları koleksiyon. bSon biçiminde kapsayan veritabanlarının ardından adlandırılan klasörlere yerleştirilir. Meta veri dosyaları (varsa), *koleksiyon*. Metadata. JSON biçimi kullanılarak adlandırılmalıdır.
+     * BSON dökümler için, blob kapsayıcısı içindeki verilerin bsondump biçiminde olması gerekir, bu nedenle veri dosyaları koleksiyon. bSon biçiminde kapsayan veritabanlarının ardından adlandırılan klasörlere yerleştirilir. Meta veri dosyaları (varsa), üzerinde.metadata.jsbiçim *koleksiyonu* kullanılarak adlandırılmalıdır.
 
      * JSON dökümlerinde, blob kapsayıcısındaki dosyaların, kapsayan veritabanlarının ardından adlandırılan klasörlere yerleştirilmesi gerekir. Her veritabanı klasörü içinde, veri dosyalarının "Data" adlı bir alt klasöre yerleştirilmesi ve *Collection*. JSON biçimi kullanılarak adlandırılması gerekir. Meta veri dosyaları (varsa), "metadata" adlı bir alt klasöre yerleştirilmelidir ve aynı biçim olan *Collection*. JSON kullanılarak adlandırılmalıdır. Meta veri dosyaları MongoDB bsondump aracı tarafından oluşturulan biçimde olmalıdır.
 
@@ -165,7 +164,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Kaynak ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
    > [!NOTE]
    > Kaynak bir çoğaltma kümesi ise kaynak sunucu adresi birincil adresin adresi olmalıdır ve kaynak parçalı bir MongoDB kümeniz ise yönlendirici olur. Parçalı bir MongoDB kümesi için Azure veritabanı geçiş hizmeti, kümedeki ayrı parçalara bağlanabilmelidir, bu da daha fazla makinede güvenlik duvarının açılmasını gerektirebilir.
@@ -176,7 +175,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Hedef ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-target1.png)
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 ## <a name="map-to-target-databases"></a>Hedef veritabanlarıyla eşleyin
 
@@ -190,7 +189,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Hedef veritabanlarıyla eşleyin](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 3. **Koleksiyon ayarı** ekranında koleksiyonlar listesini genişletin ve geçirilecek koleksiyonların listesini gözden geçirin.
 
@@ -205,7 +204,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Koleksiyon tablolarını Seç](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 5. **Geçiş özeti** ekranının **Etkinlik adı** metin kutusunda geçiş etkinliği için bir ad belirtin.
 

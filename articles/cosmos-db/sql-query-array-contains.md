@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303486"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
 Dizinin belirtilen değeri içerip içermediğini gösteren bir Boole değeri döndürür. Komutu içinde Boole ifadesi kullanarak bir nesnenin kısmi veya tam eşleşmesini denetleyebilirsiniz. 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *arr_expr*  
    Aranacak dizi ifadesi.  
@@ -40,7 +39,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek kullanarak `ARRAY_CONTAINS`bir dizide üyelik denetleme.  
+  Aşağıdaki örnek kullanarak bir dizide üyelik denetleme `ARRAY_CONTAINS` .  
   
 ```sql
 SELECT   

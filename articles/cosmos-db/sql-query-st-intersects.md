@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303146"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
  Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (nokta, çokgen veya LineString), ikinci bağımsız değişkende GeoJSON (Point, çokgen veya LineString) kesişip kesişmediğini gösteren bir Boole ifadesi döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ST_INTERSECTS (<spatial_expr>, <spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *spatial_expr*  
    Bir GeoJSON noktası, çokgen veya LineString nesne ifadesi.  

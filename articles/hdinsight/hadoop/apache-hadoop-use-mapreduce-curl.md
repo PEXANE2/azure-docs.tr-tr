@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302721"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>REST kullanarak HDInsight üzerinde Apache Hadoop MapReduce işleri çalıştırma
@@ -57,7 +56,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
    * **-u**: isteğin kimliğini doğrulamak için kullanılan Kullanıcı adını ve parolayı belirtir
    * **-G**: Bu IŞLEMIN bir get isteği olduğunu belirtir
 
-   URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`'nin başlangıcı tüm istekler için aynıdır.
+   URI 'nin başlangıcı `https://CLUSTERNAME.azurehdinsight.net/templeton/v1` tüm istekler için aynıdır.
 
     Aşağıdaki JSON 'a benzer bir yanıt alırsınız:
 
@@ -87,7 +86,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
        job_1415651640909_0026
 
-1. İşin durumunu denetlemek için aşağıdaki komutu kullanın. Değerini, önceki adımda `JOBID` döndürülen **Gerçek** değer ile değiştirin. **JQ** 'ın yerini gereken şekilde gözden geçirin.
+1. İşin durumunu denetlemek için aşağıdaki komutu kullanın. Değerini, `JOBID` önceki adımda döndürülen **Gerçek** değer ile değiştirin. **JQ** 'ın yerini gereken şekilde gözden geçirin.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,7 +97,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
 ### <a name="powershell"></a>PowerShell
 
-1. Kullanım kolaylığı için aşağıdaki değişkenleri ayarlayın. Gerçek `CLUSTERNAME` küme adınızla değiştirin. Komutunu yürütün ve istendiğinde küme oturum açma parolasını girin.
+1. Kullanım kolaylığı için aşağıdaki değişkenleri ayarlayın. `CLUSTERNAME`Gerçek küme adınızla değiştirin. Komutunu yürütün ve istendiğinde küme oturum açma parolasını girin.
 
     ```powershell
     $clusterName="CLUSTERNAME"
@@ -167,9 +166,9 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
 ### <a name="both-methods"></a>Her iki yöntem
 
-1. İş tamamlandıysanız, döndürülen durum olur `SUCCEEDED`.
+1. İş tamamlandıysanız, döndürülen durum olur `SUCCEEDED` .
 
-1. İşin durumu olarak `SUCCEEDED`değiştirildiğinde, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla `statusdir` geçirilen parametre, çıkış dosyasının konumunu içerir. Bu örnekte, konum `/example/curl`. Bu adres, işin çıkışını konumundaki `/example/curl`küme varsayılan deposunda depolar.
+1. İşin durumu olarak değiştirildiğinde `SUCCEEDED` , Azure Blob depolamadan iş sonuçlarını alabilirsiniz. `statusdir`Sorguyla geçirilen parametre, çıkış dosyasının konumunu içerir. Bu örnekte, konum `/example/curl` . Bu adres, işin çıkışını konumundaki küme varsayılan deposunda depolar `/example/curl` .
 
 [Azure CLI](/cli/azure/install-azure-cli)kullanarak bu dosyaları listeleyebilir ve indirebilirsiniz. Azure Blob depolama ile çalışmak üzere Azure CLı kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure CLI ile Blobları oluşturma, indirme ve listeleme](../../storage/blobs/storage-quickstart-blobs-cli.md).
 

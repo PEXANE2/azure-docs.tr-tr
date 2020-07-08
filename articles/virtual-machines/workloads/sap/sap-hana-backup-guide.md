@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255249"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu
@@ -41,7 +40,7 @@ Azure 'da hangi SAP yazılımlarını desteklebileceğinize ilişkin bilgiler, [
 
 ## <a name="azure-backup-service"></a>Azure Backup hizmeti
 
-Gösterilen ilk senaryo, Azure Backup hizmetin bir SAP HANA veritabanından bir akış yedeklemesi gerçekleştirmek için SAP HANA `backint` arabirimini kullandığı bir senaryodur. Ya da uygulamayla tutarlı bir disk anlık görüntüsü oluşturmak ve bir tane Azure Backup hizmetine aktarıldıklarından Azure Backup hizmeti için daha genel bir yetenek kullanın.
+Gösterilen ilk senaryo, Azure Backup hizmetin bir `backint` SAP HANA veritabanından bir akış yedeklemesi gerçekleştirmek için SAP HANA arabirimini kullandığı bir senaryodur. Ya da uygulamayla tutarlı bir disk anlık görüntüsü oluşturmak ve bir tane Azure Backup hizmetine aktarıldıklarından Azure Backup hizmeti için daha genel bir yetenek kullanın.
 
 Azure Backup, [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)adlı özel SAP HANA arabirimini kullanarak SAP HANA için yedekleme çözümü olarak tümleştirilir ve sertifikalandırilmiştir. Çözüm hakkında daha fazla ayrıntı için, özellikleri ve kullanılabilir olduğu Azure bölgeleri, [Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi Için destek matrisi](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)makalesini okuyun. HANA için Azure Backup hizmeti hakkında ayrıntılar ve ilkeler için, [Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkındaki](https://docs.microsoft.com/azure/backup/sap-hana-db-about)makaleyi okuyun. 
 
@@ -116,12 +115,12 @@ Daha önce belirtildiği gibi, Azure Backup anlık görüntü yedekleme özellik
 > Birden çok veritabanı kapsayıcısının kullanıldığı dağıtımlarda SAP HANA için disk anlık görüntüsü tabanlı yedeklemeler, en düşük HANA 2,0 SP04 sürümünü gerektirir
 > 
 
-Azure depolama, anlık görüntü işlemi sırasında bir VM 'ye bağlı birden çok diskte veya birimde dosya sistemi tutarlılığı sağlamaz. Bu, anlık görüntü sırasında uygulama tutarlılığının uygulama tarafından teslim edilmesi gerektiği anlamına gelir, bu durumda SAP HANA. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) , depolama anlık görüntülerine göre SAP HANA yedeklemeleri hakkında önemli bilgiler içerir. Örneğin, XFS dosya sistemleri ile, uygulama tutarlılığı sağlamak üzere bir depolama anlık görüntüsü başlatmadan önce **\_XFS donması** 'nı çalıştırmak gerekir ( **\_XFS**donması hakkında ayrıntılar için bkz. [XFS\_dondurma (8)-Linux man sayfası](https://linux.die.net/man/8/xfs_freeze) ).
+Azure depolama, anlık görüntü işlemi sırasında bir VM 'ye bağlı birden çok diskte veya birimde dosya sistemi tutarlılığı sağlamaz. Bu, anlık görüntü sırasında uygulama tutarlılığının uygulama tarafından teslim edilmesi gerektiği anlamına gelir, bu durumda SAP HANA. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) , depolama anlık görüntülerine göre SAP HANA yedeklemeleri hakkında önemli bilgiler içerir. Örneğin, XFS dosya sistemleri ile, uygulama tutarlılığı sağlamak üzere bir depolama anlık görüntüsü başlatmadan önce **XFS \_ donması** 'nı çalıştırmak gerekir ( **XFS \_ **donması hakkında ayrıntılar için bkz. [XFS \_ dondurma (8)-Linux man sayfası](https://linux.die.net/man/8/xfs_freeze) ).
 
 Dört Azure sanal diski kapsayan bir XFS dosya sistemi olduğu varsayılarak, aşağıdaki adımlarda, HANA veri alanını temsil eden tutarlı bir anlık görüntü sağlanmıştır:
 
 1. HANA veri anlık görüntüsü hazırlama oluşturma
-1. Tüm disklerin/birimlerin dosya sistemlerini dondurun (örneğin, **XFS\_donması**kullanın)
+1. Tüm disklerin/birimlerin dosya sistemlerini dondurun (örneğin, **XFS \_ donması**kullanın)
 1. Tüm gerekli blob anlık görüntülerini Azure 'da oluşturun
 1. Dosya sistemini çöz
 1. HANA veri anlık görüntüsünü onaylayın (anlık görüntü silinir)
@@ -133,7 +132,7 @@ Aşağıdaki makalelerde HANA veri anlık görüntülerini oluşturma hakkında 
 - Adım #1 gerçekleştirme hakkında daha fazla ayrıntı, [veri anlık görüntüsü oluşturma (yerel SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) makalesinde bulunabilir 
 - [Veri anlık görüntüsü oluşturma (yerel SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) makalesinde #5 adımında Hana veri anlık görüntülerini onaylama/silme hakkında bilgi bulabilirsiniz 
 
-HANA anlık görüntüsünü doğrulamak önemlidir. &quot;Kopyalama-yazma nedeniyle,&quot; bu anlık görüntü hazırlama modundayken SAP HANA ek disk alanı gerektirmeyebilir. Bu&#39;, SAP HANA anlık görüntüsü onaylanana kadar yeni yedeklemeler başlatmak için de mümkün değildir.
+HANA anlık görüntüsünü doğrulamak önemlidir. &quot;Kopyalama-yazma nedeniyle, &quot; Bu anlık görüntü hazırlama modundayken SAP HANA ek disk alanı gerektirmeyebilir. Bu&#39;, SAP HANA anlık görüntüsü onaylanana kadar yeni yedeklemeler başlatmak için de mümkün değildir.
 
 
 ### <a name="sap-hana-backup-scheduling-strategy"></a>SAP HANA yedekleme zamanlama stratejisi

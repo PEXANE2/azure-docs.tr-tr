@@ -11,10 +11,9 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185667"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
@@ -49,21 +48,21 @@ Yeni bir iş hesabı eklediğinizde aşağıdaki yapılandırma ayarlarını gö
 
 Yeni bir iş hesabı oluşturmak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure portalındaki](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Kullanıcı profilini güncelleştirme
 
 Bir kullanıcının profilini güncelleştirmek için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure portalındaki](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Kullanıcı parolasını sıfırlama
 
 Bir kullanıcının parolasını sıfırlamak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure portalındaki](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Konuk Kullanıcı

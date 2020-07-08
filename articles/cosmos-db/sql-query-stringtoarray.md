@@ -8,22 +8,21 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302925"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Bir diziye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql  
 StringToArray(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr*  
    , JSON dizi ifadesi olarak ayrıştırılacak bir dize ifadesidir. 
@@ -37,7 +36,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, farklı türlerde `StringToArray` nasıl davrandığını gösterir. 
+  Aşağıdaki örnek, `StringToArray` farklı türlerde nasıl davrandığını gösterir. 
   
  Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -59,7 +58,7 @@ Sonuç kümesini burada bulabilirsiniz.
 Aşağıda, geçersiz giriş örneği verilmiştir. 
    
  Dizideki tek tırnak işaretleri geçerli bir JSON değil.
-Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesi içindeki dizeler "[\\"\\"]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
+Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesi içindeki dizeler "[ \\ " \\ "]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
 
 ```sql
 SELECT

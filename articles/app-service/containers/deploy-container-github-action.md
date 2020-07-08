@@ -7,10 +7,9 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78246965"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
@@ -21,15 +20,15 @@ ms.locfileid: "78246965"
 > GitHub eylemleri Şu anda beta aşamasındadır. GitHub hesabınızı kullanarak [önizlemeye katmak için önce kaydolmanız](https://github.com/features/actions) gerekir.
 > 
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
+Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
 Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
 |**Kimlik Doğrulaması** | 1. bir hizmet sorumlusu tanımlayın. <br /> 2. GitHub gizli dizisi oluşturun. |
-|**Yapı** | 1. ortamı ayarlayın. <br /> 2. kapsayıcı görüntüsünü oluşturun. |
-|**Dağıt** | 1. kapsayıcı görüntüsünü dağıtın. |
+|**Derleme** | 1. ortamı ayarlayın. <br /> 2. kapsayıcı görüntüsünü oluşturun. |
+|**Dağıtma** | 1. kapsayıcı görüntüsünü dağıtın. |
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -129,9 +128,9 @@ Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/web
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
 | **yansımasını** | Istenir Tam kapsayıcı görüntü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
 | **yapılandırma-dosya** | Seçim Docker-Compose dosyasının yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
-| **kapsayıcı-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename. dll |
+| **kapsayıcı-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename.dll |
 
-Aşağıda, bir Node. js uygulamasını derlemek ve App Service bir özel kapsayıcıya dağıtmak için örnek iş akışı verilmiştir.
+Aşağıda, App Service içindeki özel bir kapsayıcıya Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı verilmiştir.
 
 ```yaml
 on: [push]

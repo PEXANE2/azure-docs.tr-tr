@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921462"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
@@ -27,7 +26,7 @@ Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyükledi�
 
 Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](./boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
 
-- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için, https://windows.com/stopcodeadresini ziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: durdurma kodu: KRITIK HIZMET başarısız oldu " 
+- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için, adresini ziyaret edin https://windows.com/stopcode . Bir destek kişisi çağırırsanız, bu bilgileri verin: durdurma kodu: KRITIK HIZMET başarısız oldu " 
 - "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. Daha fazla bilgi edinmek istiyorsanız, daha sonra bu hata için çevrimiçi arama yapabilirsiniz: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Nedeni
@@ -107,15 +106,15 @@ Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izle
 
 1. İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin.
 2. Eklediğiniz işletim sistemi diskinde **\Windows\System32\Config**dosyasına gidin. Geri almanın gerekli olması durumunda tüm dosyaları yedekleme olarak kopyalayın.
-3. **Kayıt defteri Düzenleyicisi 'ni** (Regedit. exe) başlatın.
-4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya** > **yükleme Hive**' yi seçin.
+3. **Kayıt defteri Düzenleyicisi 'ni** (regedit.exe) başlatın.
+4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya**  >  **yükleme Hive**' yi seçin.
 5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
 6. **\ Brokensystem\controlset00x\control\crashcontrol HKEY_LOCAL_MACHINE** göz atın ve aşağıdaki değişiklikleri yapın:
 
     Oto yeniden başlatma = 0
 
     CrashDumpEnabled = 2
-7.  **Brokensistem**' i seçin. Menüden **Dosya** > **Kaldır Hive**' yi seçin.
+7.  **Brokensistem**' i seçin. Menüden **Dosya**  >  **Kaldır Hive**' yi seçin.
 8.  BCD kurulumunu hata ayıklama modunda önyüklenecek şekilde değiştirin. Yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
 
     ```cmd
@@ -135,7 +134,7 @@ Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izle
 9. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden ekleyin](troubleshoot-recovery-disks-portal-windows.md).
 10. Döküm analizini gösterir olup olmadığını görmek için VM 'yi önyükleyin. Yükleme başarısız olan dosyayı bulun. Bu dosyayı çalışan VM 'deki bir dosyayla değiştirmeniz gerekir. 
 
-    Aşağıda, döküm analizinin örneği verilmiştir. **Hatanın** filecrypt. sys dosyasında olduğunu görebilirsiniz: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
+    Aşağıda, döküm analizinin örneği verilmiştir. **Hatanın** filecrypt.sys olduğunu görebilirsiniz: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

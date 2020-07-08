@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78673390"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak Android öğeleri için geliştirme
@@ -49,7 +48,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Azure Cloud Shell ' de aşağıdaki komutları çalıştırın. Aşağıda `YourIoTHubName` , IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+2. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Azure Cloud Shell ' de aşağıdaki komutları çalıştırın. `YourIoTHubName`Aşağıda, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table

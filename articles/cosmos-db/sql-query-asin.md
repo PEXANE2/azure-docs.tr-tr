@@ -8,22 +8,21 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302704"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  Sinüsü belirtilen sayısal ifade olan radyan cinsinden açıyı döndürür. Buna ark sinüs da denir.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ASIN(<numeric_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *numeric_expr*  
    Sayısal bir ifadedir.  
@@ -34,7 +33,7 @@ ASIN(<numeric_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek-1 ' `ASIN` i döndürür.  
+  Aşağıdaki örnek `ASIN` -1 ' i döndürür.  
   
 ```sql
 SELECT ASIN(-1) AS asin  

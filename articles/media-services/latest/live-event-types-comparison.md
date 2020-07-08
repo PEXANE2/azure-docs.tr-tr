@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244636"
 ---
 # <a name="live-event-types-comparison"></a>Canlı olay türleri karşılaştırması
@@ -36,13 +35,13 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 
 | Özellik | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
 | Katkı akışı için maksimum video çözünürlüğü |4K (4096x2160/60 kare/sn) |1080p (1920x1088 üzerinde 30 kare/sn)|
 | Katkı akışında önerilen maksimum katman sayısı|12 ' ye kadar|Bir ses|
 | Çıktıda maksimum katman sayısı| Giriş ile aynı|6 ' ya kadar (aşağıdaki sistem önayarlarına bakın)|
-| Katkı akışı en fazla toplam bant genişliği|60 Mbps|Yok|
+| Katkı akışı en fazla toplam bant genişliği|60 Mbps|YOK|
 | Katkıdaki tek bir katman için maksimum bit hızı |20 Mbps|20 Mbps|
-| Birden çok dil sesi parçası desteği|Yes|Hayır|
+| Birden çok dil sesi parçası desteği|Evet|Hayır|
 | Desteklenen giriş video codec bileşenleri |H., ve AVC ve H. 265/HEVC|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen çıkış video codec bileşenleri|Giriş ile aynı|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen video bit derinliği, giriş ve çıkış|HDR 10/HLG dahil olmak üzere en fazla 10 bit|8 bit|
@@ -58,9 +57,9 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 | SLA ekleme desteği|Hayır|Hayır|
 | API aracılığıyla ad sinyali için destek| Hayır|Hayır|
 | Yerleşik olarak SCTE-35 iletileri aracılığıyla ad sinyali desteği|Yes|Yes|
-| Katkı akışındaki kısa yedeklerden kurtarma olanağı|Yes|Kısmi|
-| Tekdüzen olmayan giriş GOPs desteği|Yes|Hayır – girişte sabit GOP süresi olmalıdır|
-| Değişken çerçeve hızı girişi desteği|Yes|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
+| Katkı akışındaki kısa yedeklerden kurtarma olanağı|Evet|Kısmi|
+| Tekdüzen olmayan giriş GOPs desteği|Evet|Hayır – girişte sabit GOP süresi olmalıdır|
+| Değişken çerçeve hızı girişi desteği|Evet|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
 | Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|Hayır|12 saat sonra, çalışan bir canlı çıkış yoksa|
 
 ## <a name="system-presets"></a>Sistem önayarları

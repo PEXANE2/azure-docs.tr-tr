@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944586"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 'da OpenSUSE Linux çalıştıran bir sanal makineye MySQL 'i yükler
@@ -98,7 +97,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL parolası
 
-Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **\_MySQL güvenli\_yükleme** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
+Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **MySQL \_ güvenli \_ yükleme** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
 
 Sunucu yeniden başlatıldıktan sonra, sanal makineye SSH tekrar.
 

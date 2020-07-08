@@ -4,10 +4,9 @@ description: Bulutta kapsayıcı görüntüleri oluşturmak, test etmek ve düze
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399704"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR görevlerinde çok adımlı derleme, test ve düzeltme eki görevleri çalıştırma
@@ -24,7 +23,7 @@ ms.locfileid: "78399704"
 1. Web uygulaması test görüntüsü oluşturma
 1. Çalışan uygulama kapsayıcısına karşı testler gerçekleştiren Web uygulaması test kapsayıcısını çalıştırın
 1. Testler başarılı olursa bir Helu grafik arşiv paketi oluşturun
-1. Yeni Helmchart arşiv paketini kullanarak bir `helm upgrade` gerçekleştir
+1. `helm upgrade`Yeni helmchart arşiv paketini kullanarak bir gerçekleştir
 
 Tüm adımlar Azure 'da gerçekleştirilir, iş yükünü Azure 'un işlem kaynaklarına devrederek ve altyapıyı altyapı yönetiminden serbest bırakır. Azure Container Registry 'nizin yanı sıra, yalnızca kullandığınız kaynaklar için ödeme yaparsınız. Fiyatlandırma hakkında daha fazla bilgi için [Azure Container Registry fiyatlandırması][pricing]Içindeki **kapsayıcı derlemesi** bölümüne bakın.
 
@@ -43,9 +42,9 @@ Tüm adımlar Azure 'da gerçekleştirilir, iş yükünü Azure 'un işlem kayna
 
 ACR görevlerinde çok adımlı bir görev, YAML dosyası içindeki bir dizi adım olarak tanımlanır. Her adım bir veya daha fazla önceki adımın başarıyla tamamlanmasına ilişkin bağımlılıkları belirtebilir. Aşağıdaki görev adımı türleri kullanılabilir:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Tanıdık `docker build` sözdizimini kullanarak veya paralel olarak bir veya daha fazla kapsayıcı görüntüsü oluşturun.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Tanıdık sözdizimini kullanarak veya paralel olarak bir veya daha fazla kapsayıcı görüntüsü oluşturun `docker build` .
 * [`push`](container-registry-tasks-reference-yaml.md#push): Bir kapsayıcı kayıt defterine oluşturulan görüntüleri gönderin. Azure Container Registry gibi özel kayıt defterleri, genel Docker Hub olduğu gibi desteklenir.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Çalışan görevin bağlamı içinde işlev olarak çalışabilme gibi bir kapsayıcı çalıştırın. Parametreleri kapsayıcıya `[ENTRYPOINT]`geçirebilir ve env, detach ve diğer tanıdık `docker run` parametreler gibi özellikleri belirtebilirsiniz. `cmd` Adım türü, eşzamanlı kapsayıcı yürütmesi ile birim ve işlevsel teste olanak tanıyor.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Çalışan görevin bağlamı içinde işlev olarak çalışabilme gibi bir kapsayıcı çalıştırın. Parametreleri kapsayıcıya geçirebilir `[ENTRYPOINT]` ve env, detach ve diğer tanıdık parametreler gibi özellikleri belirtebilirsiniz `docker run` . `cmd`Adım türü, eşzamanlı kapsayıcı yürütmesi ile birim ve işlevsel teste olanak tanıyor.
 
 Aşağıdaki kod parçacıkları, bu görev adımı türlerinin nasıl birleştirileceğini gösterir. Çok adımlı görevler, bir Dockerfile 'dan tek bir görüntü oluşturup kayıt defterinize, aşağıdakine benzer bir YAML dosyası ile göndermek kadar basit olabilir:
 
@@ -87,13 +86,13 @@ Görevler, "hızlı çalışma" adı verilen ve git işlemesinde veya temel gör
 
 Bir görevi çalıştırmak için önce görevin adımlarını bir YAML dosyasında tanımlamanız, sonra da [az ACR Run][az-acr-run]Azure CLI komutunu yürütmeniz gerekir.
 
-Örnek bir görev YAML dosyası kullanarak bir görevi çalıştıran örnek bir Azure CLı komutu aşağıda verilmiştir. Adımları bir görüntü oluşturur ve ardından gönderir. Komutunu `\<acrName\>` çalıştırmadan önce kendi Azure Container Registry 'nizin adıyla güncelleştirin.
+Örnek bir görev YAML dosyası kullanarak bir görevi çalıştıran örnek bir Azure CLı komutu aşağıda verilmiştir. Adımları bir görüntü oluşturur ve ardından gönderir. `\<acrName\>`Komutunu çalıştırmadan önce kendi Azure Container Registry 'nizin adıyla güncelleştirin.
 
 ```azurecli
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-Görevi çalıştırdığınızda, çıktıda YAML dosyasında tanımlanan her adımın ilerleme durumu gösterilmelidir. Aşağıdaki çıktıda, adımlar ve `acb_step_0` `acb_step_1`olarak görünür.
+Görevi çalıştırdığınızda, çıktıda YAML dosyasında tanımlanan her adımın ilerleme durumu gösterilmelidir. Aşağıdaki çıktıda, adımlar ve olarak görünür `acb_step_0` `acb_step_1` .
 
 ```azurecli
 az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -153,7 +152,7 @@ Git işlemesinde veya temel görüntü güncelleştirmesinde otomatik yapılar h
 Çok adımlı görev başvurusunu ve örnekleri buradan bulabilirsiniz:
 
 * [Görev başvurusu](container-registry-tasks-reference-yaml.md) -görev adımı türleri, özellikleri ve kullanımı.
-* [Görev örnekleri](container-registry-tasks-samples.md) -çok `task.yaml` çeşitli senaryolar Için örnek ve Docker dosyaları, basit-karmaşık.
+* [Görev örnekleri](container-registry-tasks-samples.md) - `task.yaml` çok çeşitli senaryolar Için örnek ve Docker dosyaları, basit-karmaşık.
 * [Cmd deposu](https://github.com/AzureCR/cmd) -ACR görevleri için komut olarak kapsayıcı koleksiyonu.
 
 <!-- IMAGES -->

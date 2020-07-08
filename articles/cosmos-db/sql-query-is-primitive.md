@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303792"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
  Belirtilen ifadenin türünün ilkel (dize, Boole, sayısal veya null) olduğunu gösteren bir Boole değeri döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 IS_PRIMITIVE(<expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *ifadeyi*  
    Herhangi bir ifadedir.  
@@ -34,7 +33,7 @@ IS_PRIMITIVE(<expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `IS_PRIMITIVE` IŞLEVINI kullanarak JSON Boole, sayı, dize, null, nesne, dizi ve tanımsız türlerin nesnelerini denetler.  
+  Aşağıdaki örnek, işlevini kullanarak JSON Boole, sayı, dize, null, nesne, dizi ve tanımsız türlerin nesnelerini denetler `IS_PRIMITIVE` .  
   
 ```sql
 SELECT   

@@ -7,10 +7,9 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163769"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
@@ -40,7 +39,7 @@ PSFunctionApp
 
 Bu işlev uygulaması, [PowerShell hızlı](functions-create-first-function-powershell.md)başlangıcını tamamladığınızda aldığınız birine benzer.
 
-İçindeki `run.ps1` işlev kodu aşağıdaki komut dosyası gibi görünür:
+İçindeki işlev kodu `run.ps1` aşağıdaki komut dosyası gibi görünür:
 
 ```powershell
 param($Request)
@@ -64,9 +63,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ## <a name="set-the-attach-point"></a>İliştirme noktasını ayarlama
 
-Herhangi bir PowerShell işlevinde hata ayıklamak için, hata ayıklayıcının eklenmesi için işlevin durdurulması gerekir. `Wait-Debugger` Cmdlet yürütmeyi durduruyor ve hata ayıklayıcıyı bekler.
+Herhangi bir PowerShell işlevinde hata ayıklamak için, hata ayıklayıcının eklenmesi için işlevin durdurulması gerekir. `Wait-Debugger`Cmdlet yürütmeyi durduruyor ve hata ayıklayıcıyı bekler.
 
-Tüm yapmanız gereken, aşağıdaki gibi `Wait-Debugger` `if` deyimin hemen üzerindeki cmdlet 'ine bir çağrı eklemektir:
+Tüm yapmanız gereken `Wait-Debugger` `if` , aşağıdaki gibi deyimin hemen üzerindeki cmdlet 'ine bir çağrı eklemektir:
 
 ```powershell
 param($Request)
@@ -85,7 +84,7 @@ if($name) {
 
 Hata ayıklama `if` deyimden başlar. 
 
-`Wait-Debugger` Yerinde, artık Visual Studio Code veya PowerShell konsolunu kullanarak işlevlerde hata ayıklaması yapabilirsiniz.
+`Wait-Debugger`Yerinde, artık Visual Studio Code veya PowerShell konsolunu kullanarak işlevlerde hata ayıklaması yapabilirsiniz.
 
 ## <a name="debug-in-visual-studio-code"></a>Visual Studio Code hata ayıkla
 
@@ -104,7 +103,7 @@ Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri pro
 
 PowerShell Core, Windows PowerShell ile yan yana yüklenir. PowerShell uzantısını, Visual Studio Code için PowerShell Uzantısı ile kullanılacak PowerShell sürümü olarak ayarlayın.
 
-1. Komut paleti ' ni göstermek için F1 tuşuna basın ve arama `Session`yapın.
+1. Komut paleti ' ni göstermek için F1 tuşuna basın ve arama yapın `Session` .
 
 1. **PowerShell: oturum menüsünü göster**' i seçin.
 
@@ -114,7 +113,7 @@ Açık bir PowerShell dosyanız olduğunda, pencerenin sağ alt tarafında yeşi
 
 ### <a name="start-the-function-app"></a>İşlev uygulamasını başlatma
 
-`Wait-Debugger` Hata ayıklayıcıyı iliştirmek istediğiniz işlevde ayarlandığını doğrulayın.  `Wait-Debugger` Eklenmiş olarak, Visual Studio Code kullanarak işlev uygulamanızda hata ayıklaması yapabilirsiniz.
+`Wait-Debugger`Hata ayıklayıcıyı iliştirmek istediğiniz işlevde ayarlandığını doğrulayın.  `Wait-Debugger`Eklenmiş olarak, Visual Studio Code kullanarak işlev uygulamanızda hata ayıklaması yapabilirsiniz.
 
 **Hata Ayıkla** bölmesini seçin ve ardından **PowerShell işlevine ekleyin**.
 
@@ -124,8 +123,8 @@ Hata ayıklamayı başlatmak için F5 tuşuna da basabilirsiniz.
 
 Hata ayıklamayı Başlat işlemi aşağıdaki görevleri yapar:
 
-* , `func extensions install` İşlev uygulamanız tarafından Istenen tüm Azure işlevleri uzantılarını yüklemek için terminalde çalışır.
-* , `func host start` Işlev uygulamasını işlevler ana bilgisayarında başlatmak için terminalde çalışır.
+* `func extensions install`, İşlev uygulamanız tarafından istenen tüm Azure işlevleri uzantılarını yüklemek için terminalde çalışır.
+* , `func host start` İşlev uygulamasını işlevler ana bilgisayarında başlatmak için terminalde çalışır.
 * PowerShell hata ayıklayıcısını, Işlevler çalışma zamanı içindeki PowerShell çalışma alanına ekleyin.
 
 >[!NOTE]
@@ -141,21 +140,21 @@ Bir PowerShell konsolunda aşağıdaki komutu çalıştırın:
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Yanıtın hemen döndürülmeyeceğini fark edeceksiniz. Bunun nedeni `Wait-Debugger` , hata ayıklayıcıyı iliştirmiştir ve PowerShell yürütmesi, mümkün olan en kısa sürede kesme moduna geçti. Bunun nedeni, daha sonra açıklanacak olan [Breakall kavramıdır](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place). `continue` Düğmeye bastıktan sonra, hata ayıklayıcı hemen sonra `Wait-Debugger`satırı keser.
+Yanıtın hemen döndürülmeyeceğini fark edeceksiniz. `Wait-Debugger`Bunun nedeni, hata ayıklayıcıyı iliştirmiştir ve PowerShell yürütmesi, mümkün olan en kısa sürede kesme moduna geçti. Bunun nedeni, daha sonra açıklanacak olan [Breakall kavramıdır](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place). Düğmeye bastıktan sonra `continue` , hata ayıklayıcı hemen sonra satırı keser `Wait-Debugger` .
 
 Bu noktada, hata ayıklayıcı iliştirilir ve tüm normal hata ayıklayıcı işlemlerini yapabilirsiniz. Visual Studio Code hata ayıklayıcıyı kullanma hakkında daha fazla bilgi için [resmi belgelere](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)bakın.
 
 Devam ettikten ve komut dosyanızı tamamen çağırdığınızda şunu görürsünüz:
 
-* Bir sonuç döndüren PowerShell konsolu `Invoke-RestMethod`
+* `Invoke-RestMethod`Bir sonuç döndüren PowerShell konsolu
 * Visual Studio Code 'de PowerShell Tümleşik konsolu bir betiğin yürütülmesini bekliyor
 
-Daha sonra aynı işlevi çağırdığınızda, PowerShell uzantısında hata ayıklayıcı, `Wait-Debugger`öğesinden hemen sonra kesilir.
+Daha sonra aynı işlevi çağırdığınızda, PowerShell uzantısında hata ayıklayıcı, öğesinden hemen sonra kesilir `Wait-Debugger` .
 
 ## <a name="debugging-in-a-powershell-console"></a>PowerShell konsolunda hata ayıklama
 
 >[!NOTE]
-> Bu bölümde [Azure Functions Core Tools belgeleri](functions-run-local.md) okuduğunuzu ve işlev uygulamanızı başlatmak için `func host start` komutunun nasıl kullanılacağını bildiğiniz varsayılmaktadır.
+> Bu bölümde [Azure Functions Core Tools belgeleri](functions-run-local.md) okuduğunuzu ve `func host start` işlev uygulamanızı başlatmak için komutunun nasıl kullanılacağını bildiğiniz varsayılmaktadır.
 
 Bir konsolunu, `cd` işlev uygulamanızın dizinine açın ve şu komutu çalıştırın:
 
@@ -165,13 +164,13 @@ func host start
 
 İşlev uygulaması çalışır ve `Wait-Debugger` yerinde, işleme ekleyebilirsiniz. İki PowerShell konsolundan daha ihtiyacınız vardır.
 
-Konsollardan biri istemci gibi davranır. Bundan sonra, işlevini tetiklemek `Invoke-RestMethod` için öğesini çağırın. Örneğin, aşağıdaki komutu çalıştırabilirsiniz:
+Konsollardan biri istemci gibi davranır. Bundan sonra, `Invoke-RestMethod` işlevini tetiklemek için öğesini çağırın. Örneğin, aşağıdaki komutu çalıştırabilirsiniz:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Bunun sonucu olan bir yanıt döndürmediğine dikkat edin `Wait-Debugger`. PowerShell çalışma şimdi bir hata ayıklayıcının eklenmesini bekliyor. Şimdi bu iliştirilme.
+Bunun sonucu olan bir yanıt döndürmediğine dikkat edin `Wait-Debugger` . PowerShell çalışma şimdi bir hata ayıklayıcının eklenmesini bekliyor. Şimdi bu iliştirilme.
 
 Diğer PowerShell konsolunda aşağıdaki komutu çalıştırın:
 
@@ -194,7 +193,7 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Tablosundaki öğesi için, `ProcessId` `ProcessName` olarak `dotnet`öğesini, Bu işlem, işlev uygulamanız.
+`ProcessId`Tablosundaki öğesi için, olarak öğesini, `ProcessName` `dotnet` Bu işlem, işlev uygulamanız.
 
 Sonra, aşağıdaki kod parçacığını çalıştırın:
 
@@ -222,14 +221,14 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 
 Bu noktada, [PowerShell hata ayıklayıcısında](/powershell/module/microsoft.powershell.core/about/about_debuggers)bir kesme noktasında duruyoruz. Buradan, tüm olağan hata ayıklama işlemlerini, adım adım, adımla, devam etme, çıkış ve diğer diğer işlemleri yapabilirsiniz. Konsolda bulunan tüm hata ayıklama komutlarının bir kümesini görmek için, `h` veya `?` komutlarını çalıştırın.
 
-Bu düzeyde, `Set-PSBreakpoint` cmdlet 'ini kullanarak kesme noktaları da ayarlayabilirsiniz.
+Bu düzeyde, cmdlet 'ini kullanarak kesme noktaları da ayarlayabilirsiniz `Set-PSBreakpoint` .
 
 Devam edip komut dosyanızı tamamen çağırdığınızda şunu görürsünüz:
 
-* Yürüttüğünüz `Invoke-RestMethod` PowerShell konsolu şimdi bir sonuç döndürdü.
-* Yürüttüğünüz `Debug-Runspace` PowerShell konsolu bir betiğin yürütülmesini bekliyor.
+* Yürüttüğünüz PowerShell konsolu `Invoke-RestMethod` Şimdi bir sonuç döndürdü.
+* Yürüttüğünüz PowerShell konsolu `Debug-Runspace` bir betiğin yürütülmesini bekliyor.
 
-Aynı işlevi yeniden çağırabilirsiniz (örneğin kullanarak `Invoke-RestMethod` ) ve hata ayıklayıcı `Wait-Debugger` komutundan hemen sonra kesilir.
+Aynı işlevi yeniden çağırabilirsiniz ( `Invoke-RestMethod` Örneğin kullanarak) ve hata ayıklayıcı komutundan hemen sonra kesilir `Wait-Debugger` .
 
 ## <a name="considerations-for-debugging"></a>Hata ayıklama konuları
 
@@ -237,11 +236,11 @@ Işlev kodunuzda hata ayıklarken aşağıdaki sorunları aklınızda bulundurun
 
 ### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`hata ayıklayıcının beklenmedik bir yerde kesintiye neden olabilir
 
-PowerShell uzantısı ' nı `Debug-Runspace`kullanır; bu, sırasıyla PowerShell 'in `BreakAll` özelliğini kullanır. Bu özellik, PowerShell 'in yürütülen ilk komutta durmasını söyler. Bu davranış, hata ayıklanan çalışma alanı içinde kesme noktaları ayarlama fırsatı sağlar.
+PowerShell uzantısı `Debug-Runspace` ' nı kullanır; bu, sırasıyla PowerShell 'in `BreakAll` özelliğini kullanır. Bu özellik, PowerShell 'in yürütülen ilk komutta durmasını söyler. Bu davranış, hata ayıklanan çalışma alanı içinde kesme noktaları ayarlama fırsatı sağlar.
 
-Azure Işlevleri çalışma zamanı, komut dosyanızı `run.ps1` çağırmadan önce birkaç komut çalıştırır, bu nedenle hata ayıklayıcının `Microsoft.Azure.Functions.PowerShellWorker.psm1` veya `Microsoft.Azure.Functions.PowerShellWorker.psd1`içinde bölünmesi sona eriyor mümkündür.
+Azure Işlevleri çalışma zamanı, komut dosyanızı çağırmadan önce birkaç komut çalıştırır `run.ps1` , bu nedenle hata ayıklayıcının veya içinde bölünmesi sona eriyor mümkündür `Microsoft.Azure.Functions.PowerShellWorker.psm1` `Microsoft.Azure.Functions.PowerShellWorker.psd1` .
 
-Bu kesme gerçekleşmelidir, bu kesme `continue` noktasına `c` atlamak için veya komutunu çalıştırın. Ardından, beklenen kesme noktasında durursunuz.
+Bu kesme gerçekleşmelidir, `continue` `c` Bu kesme noktasına atlamak için veya komutunu çalıştırın. Ardından, beklenen kesme noktasında durursunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

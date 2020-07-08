@@ -5,10 +5,9 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252504"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
@@ -42,7 +41,7 @@ Evet. Her abonelik için kotalar şunlardır:
 
 Şu anda bir uygulamanın yaşam süresini iki güne sınırlandırdık. Bu, önizlemeye ayrılan ücretsiz çekirdekler kullanımını en üst düzeye çıkarmak için kullanılır. Sonuç olarak, belirli bir dağıtımı yalnızca 48 saat boyunca sürekli olarak çalıştırmaya izin verilir ve bu süre sonra kapatılacak.
 
-Bu durumla karşılaşırsanız, Azure CLı 'de `az mesh app show` komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. Döndüğünü görmek için işaretleyin`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Bu durumla karşılaşırsanız, `az mesh app show` Azure CLI 'de komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. Döndüğünü görmek için işaretleyin`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Örneğin: 
 
@@ -107,7 +106,7 @@ Bir kapsayıcıdan Service Fabric DNS hizmetine giden DNS sorguları bazı koşu
 
 - Temel kapsayıcı görüntünüz olarak Windows Fall Creators Update (sürüm 1709) veya üstünü kullanın.
 - Hizmet adı tek başına işe yaramazsa, tam adı şu şekilde deneyin: ServiceName. ApplicationName.
-- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma `EXPOSE <port>` sunuyoruz bağlantı noktası olduğu yere ekleyin. Örneğin:
+- Hizmetiniz için Docker dosyasında, `EXPOSE <port>` bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu yere ekleyin. Örneğin:
 
 ```Dockerfile
 EXPOSE 80
@@ -117,7 +116,7 @@ EXPOSE 80
 
 Hizmetleri yerel geliştirme kümenizde Azure ağı 'ndan farklı şekilde başvuru yapmanız gerekebilir.
 
-Yerel geliştirme kümenizin kullanımı `{serviceName}.{applicationName}`. Azure Service Fabric Ağı ' nda kullanın `{servicename}`. 
+Yerel geliştirme kümenizin kullanımı `{serviceName}.{applicationName}` . Azure Service Fabric Ağı ' nda kullanın `{servicename}` . 
 
 Azure ağı, şu anda uygulamalar genelinde DNS çözümlemesini desteklemez.
 
@@ -127,7 +126,7 @@ Windows 10 ' da Service Fabric geliştirme kümesi çalıştırmaya yönelik di�
 
 Service Fabric ağ NAT, uygulamanızı yerel makinenizde çalıştırmak kullanılırken kaybolabilir. Bunun yapılıp yapılmayacağını tanılamak için komut isteminden aşağıdaki komutu çalıştırın:
 
-`docker network ls`ve listelenmiş olup `servicefabric_nat` olmadığını aklınızda edin.  Aksi takdirde, aşağıdaki komutu çalıştırın:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`ve listelenmiş olup olmadığını aklınızda edin `servicefabric_nat` .  Aksi takdirde, aşağıdaki komutu çalıştırın:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Bu, uygulama zaten yerel olarak dağıtılmış ve sağlıksız bir durumda olsa bile sorunu ele alacak.
 
@@ -135,7 +134,7 @@ Bu, uygulama zaten yerel olarak dağıtılmış ve sağlıksız bir durumda olsa
 
 CPU kullanılabilirliği ve limitlerin tüm uygulamalarda düzeltilmesi ile karşılaşabilirsiniz. Azaltmak için:
 - Beş düğümlü bir küme oluşturun.
-- Dağıtılan uygulama genelinde hizmetlerde CPU kullanımını azaltın. Örneğin, hizmetinizin Service. YAML dosyasında, olarak değiştirin `cpu: 1.0``cpu: 0.5`
+- Dağıtılan uygulama genelinde hizmetlerde CPU kullanımını azaltın. Örneğin, hizmetinizin Service. YAML dosyasında, `cpu: 1.0` olarak değiştirin`cpu: 0.5`
 
 Birden çok uygulama tek düğümlü bir kümeye dağıtılamaz. Azaltmak için:
 - Birden çok uygulamayı yerel bir kümeye dağıttığınızda beş düğümlü bir küme kullanın.

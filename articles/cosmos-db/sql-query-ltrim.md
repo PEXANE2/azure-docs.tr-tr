@@ -8,22 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 08c069de70684a8562e86963ddb2e84ee889e7cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302262"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
  Baştaki boşlukları kaldırdıktan sonra bir dize ifadesi döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 LTRIM(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *str_expr*  
    Bir dize ifadesidir.  
@@ -34,7 +33,7 @@ LTRIM(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir sorgunun içinde nasıl `LTRIM` kullanılacağını gösterir.  
+  Aşağıdaki örnek, `LTRIM` bir sorgunun içinde nasıl kullanılacağını gösterir.  
   
 ```sql
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206291"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesine uzak işleri göndermek için Apache Spark REST API’sini kullanma
@@ -41,7 +40,7 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Jar dosya adını ve ClassName bir giriş dosyasının parçası olarak geçirmek istiyorsanız (Bu örnekte, input. txt)
+* Jar dosya adını ve ClassName bir giriş dosyasının parçası olarak geçirmek istiyorsanız (Bu örnekte, input.txt)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -77,7 +76,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Örnek
 
-Toplu iş KIMLIKLI `5`bir Batch işi siliniyor.
+Toplu iş KIMLIKLI bir Batch işi siliniyor `5` .
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
@@ -99,7 +98,7 @@ Bu bölümde, toplu işi göndermek, işin ilerlemesini izlemek ve sonra silmek 
 
 Aşağıdaki adımları uygulayın:
 
-1. Kullanım kolaylığı için ortam değişkenlerini ayarlayın. Bu örnek, bir Windows ortamını temel alır, ortamınız için gerektiğinde değişkenleri gözden geçirin. Ve `CLUSTERNAME` `PASSWORD` değerlerini uygun değerlerle değiştirin.
+1. Kullanım kolaylığı için ortam değişkenlerini ayarlayın. Bu örnek, bir Windows ortamını temel alır, ortamınız için gerektiğinde değişkenleri gözden geçirin. `CLUSTERNAME`Ve `PASSWORD` değerlerini uygun değerlerle değiştirin.
 
     ```cmd
     set clustername=CLUSTERNAME
@@ -128,13 +127,13 @@ Aşağıdaki adımları uygulayın:
 
     Çıktıda son satırın, çalışan toplu işlem olmayan **0**olarak nasıl göründüğünü fark edin.
 
-1. Şimdi bir toplu iş göndermemize izin verin. Aşağıdaki kod parçacığı, jar adını ve sınıf adını parametreler olarak geçirmek için bir giriş dosyası (Input. txt) kullanır. Bu adımları bir Windows bilgisayarından çalıştırıyorsanız, bir giriş dosyası kullanılması önerilen yaklaşımdır.
+1. Şimdi bir toplu iş göndermemize izin verin. Aşağıdaki kod parçacığı, jar adını ve sınıf adını parametreler olarak geçirmek için bir giriş dosyası (input.txt) kullanır. Bu adımları bir Windows bilgisayarından çalıştırıyorsanız, bir giriş dosyası kullanılması önerilen yaklaşımdır.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    **Input. txt** dosyasındaki parametreler aşağıdaki gibi tanımlanır:
+    Dosya **input.txt** parametreler aşağıdaki gibi tanımlanır:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -203,11 +202,11 @@ Aşağıdaki adımları uygulayın:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3,5 sürümünden başlayarak Livy yapılandırma güncelleştirmeleri
 
-HDInsight 3,5 kümeleri ve üzeri, varsayılan olarak, örnek veri dosyalarına veya jars 'e erişmek için yerel dosya yollarının kullanımını devre dışı bırakır. Kümeden jar dosyaları dışındaki veya örnek veri `wasbs://` dosyalarına erişmek için yolu kullanmanızı öneririz.
+HDInsight 3,5 kümeleri ve üzeri, varsayılan olarak, örnek veri dosyalarına veya jars 'e erişmek için yerel dosya yollarının kullanımını devre dışı bırakır. `wasbs://`Kümeden jar dosyaları dışındaki veya örnek veri dosyalarına erişmek için yolu kullanmanızı öneririz.
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki bir küme için Livy iş gönderme
 
-Bir Azure sanal ağının içinden bir HDInsight Spark kümesine bağlanıyorsanız, kümedeki Livy 'a doğrudan bağlanabilirsiniz. Böyle bir durumda, Livy uç noktasının URL 'SI `http://<IP address of the headnode>:8998/batches`. Burada **8998** , küme headnode üzerinde, Livy 'ın çalıştırıldığı bağlantı noktasıdır. Genel olmayan bağlantı noktalarında hizmetlere erişme hakkında daha fazla bilgi için bkz. [HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları](../hdinsight-hadoop-port-settings-for-services.md).
+Bir Azure sanal ağının içinden bir HDInsight Spark kümesine bağlanıyorsanız, kümedeki Livy 'a doğrudan bağlanabilirsiniz. Böyle bir durumda, Livy uç noktasının URL 'SI `http://<IP address of the headnode>:8998/batches` . Burada **8998** , küme headnode üzerinde, Livy 'ın çalıştırıldığı bağlantı noktasıdır. Genel olmayan bağlantı noktalarında hizmetlere erişme hakkında daha fazla bilgi için bkz. [HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

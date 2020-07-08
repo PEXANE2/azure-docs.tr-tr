@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78273632"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
@@ -51,11 +50,11 @@ Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) y
 
 ### <a name="new-patch-updates"></a>Yeni düzeltme eki güncelleştirmeleri
 
-.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node. js düzeltme eki güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
+.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node.js Patch güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
 
 ### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 
-Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve `package.json`gibi) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
+Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve gibi `package.json` ) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -77,11 +76,11 @@ Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalış
 
 | Bilgi | Nerede bulunacak | 
 |-|-|
-| Windows sürümü | Bkz `https://<appname>.scm.azurewebsites.net/Env.cshtml` . (sistem bilgisi altında) |
+| Windows sürümü | Bkz. `https://<appname>.scm.azurewebsites.net/Env.cshtml` (sistem bilgisi altında) |
 | .NET sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | .NET Core sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
 | PHP sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `php --version` |
-| Varsayılan Node. js sürümü | [Cloud Shell](../cloud-shell/overview.md), aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Varsayılan Node.js sürümü | [Cloud Shell](../cloud-shell/overview.md), aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `python --version` |  
 | Java sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `java -version` |  
 
