@@ -4,10 +4,10 @@ description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma ha
 ms.topic: troubleshooting
 ms.date: 06/25/2020
 ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391188"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle

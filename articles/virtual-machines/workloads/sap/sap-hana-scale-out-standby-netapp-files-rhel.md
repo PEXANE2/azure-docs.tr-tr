@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
 ms.openlocfilehash: a15741beae29bb11c2b50de18e0c6fb180456524
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414513"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
@@ -251,7 +251,7 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
     d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hana` .  
     
-    e. **Kaydet**’i seçin. 
+    e. **Kaydet**'i seçin. 
  
     f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde, **hanadb2** ve **hanadb3**).
  

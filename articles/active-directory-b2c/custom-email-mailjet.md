@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392955"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet ile özel e-posta doğrulama
@@ -38,7 +38,7 @@ Henüz bir tane yoksa, bir Mailjet hesabı ayarlayarak başlayın (Azure müşte
 
 Ardından, ilkelerinize başvurmak üzere Mailjet API anahtarını bir Azure AD B2C ilke anahtarında depolayın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Genel bakış** sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -162,7 +162,7 @@ Bir Mailjet hesabı oluşturulup Azure AD B2C ilke anahtarında depolanan Mailje
     1. **Konu**için, konu için varsayılan bir değer girin. API bir konu parametresi içermiyorsa mailjet bu değeri kullanır.
     1. **Ad**için şirketinizin adını yazın.
     1. **Adres**için e-posta adresinizi seçin
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
 1. Sağ üstten **kaydet & Yayımla**' yı seçin ve ardından **Evet, değişiklikleri Yayımla** ' yı seçin.
 1. Daha sonraki bir adımda kullanmak üzere oluşturduğunuz şablonun **şablon kimliğini** kaydedin. [Talep dönüşümünü eklediğinizde](#add-the-claims-transformation)bu kimliği belirtirsiniz.
 

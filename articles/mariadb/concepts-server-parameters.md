@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
 ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392735"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu parametreleri
@@ -84,8 +84,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|262144|128|268435455|
 |Genel Amaçlı|4|262144|128|536870912|
 |Genel Amaçlı|8|262144|128|1073741824|
@@ -133,8 +133,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|16777216|16384|268435455|
 |Genel Amaçlı|4|16777216|16384|536870912|
 |Genel Amaçlı|8|16777216|16384|1073741824|
@@ -155,8 +155,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|* * En büyük değer * *|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|0|0|16777216|
 |Genel Amaçlı|4|0|0|33554432|
 |Genel Amaçlı|8|0|0|67108864|
@@ -175,8 +175,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|524288|32768|4194304|
 |Genel Amaçlı|4|524288|32768|8388608|
 |Genel Amaçlı|8|524288|32768|16777216|
@@ -195,8 +195,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|16777216|1024|67108864|
 |Genel Amaçlı|4|16777216|1024|134217728|
 |Genel Amaçlı|8|16777216|1024|268435456|

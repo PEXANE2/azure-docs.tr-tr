@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
 ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391018"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
@@ -53,15 +53,15 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 |Özellik | Açıklama|
 |---|---|
 | Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Yes |
-| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
-| Otomatik yazılım düzeltme eki uygulama | Yes |
-| En son veritabanı altyapısı özellikleri | Yes |
+| Yönetilen otomatik yedeklemeler | Evet |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
+| Otomatik yazılım düzeltme eki uygulama | Evet |
+| En son veritabanı altyapısı özellikleri | Evet |
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
-| VNet-Azure Resource Manager dağıtımı | Yes |
-| VNet-klasik dağıtım modeli | No |
-| Portal desteği | Yes|
+| VNet-Azure Resource Manager dağıtımı | Evet |
+| VNet-klasik dağıtım modeli | Hayır |
+| Portal desteği | Evet|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Yerleşik raporlama hizmeti (SSRS) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
@@ -146,14 +146,14 @@ Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 |Dağıtım |Boş olmayan bir alt ağda (örneğin, gen 4 örneklerine sahip bir alt ağdaki ilk Gen 5 örneği) başka bir donanım oluşturma örneği|Sanal küme oluşturma *|işlemlerin %90 ' i 4 saat içinde tamamlanır.|
 |Dağıtım |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde tamamlanır.|
 |Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|işlemin %90 ' i 2,5 saat içinde tamamlanır.|
-|**Güncelleştir** |Örnek özelliği değişikliği (yönetici parolası, Azure AD oturum açma, Azure Hibrit Avantajı bayrağı)|Yok|En fazla 1 dakika.|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır.|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' i 2,5 saat içinde tamamlanır.|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 h 5 dakika içinde tamamlanır. * *|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 4 saat + saat içinde tamamlanır.|
-|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
+|**Güncelleştir** |Örnek özelliği değişikliği (yönetici parolası, Azure AD oturum açma, Azure Hibrit Avantajı bayrağı)|YOK|En fazla 1 dakika.|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır.|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' i 2,5 saat içinde tamamlanır.|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 h 5 dakika içinde tamamlanır. * *|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 4 saat + saat içinde tamamlanır.|
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
 |**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|%90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar. * * *|
 |Silme|Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|İşlem %90, en fazla 1,5 saat içinde tamamlanır.|
 
@@ -191,14 +191,14 @@ Aşağıdaki tablo belirli yönetim işlemlerini iptal etme ve genel toplam sür
 
 Kategori  |Çalışma  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |No |  |
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |No |  |
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Sil |Örnek silme |No |  |
-|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |No |  |
+|Dağıtım |Örnek oluşturma |Hayır |  |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Sil |Örnek silme |Hayır |  |
+|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
 
 Yönetim işlemini iptal etmek için genel bakış dikey penceresine gidin ve devam eden işlemin bildirim kutusu ' na tıklayın. Sağ taraftan, devam eden işlem içeren bir ekran görünür ve işlemi iptal etmek için bir düğme olacaktır. İlk tıkladıktan sonra yeniden tıklamalısınız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
 

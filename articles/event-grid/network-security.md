@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: vkukke
 ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414258"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
@@ -59,7 +59,7 @@ VNet 'iniz içindeki bir konu veya etki alanı için özel bir uç nokta oluştu
 
 Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışından çözdüğünde, hizmetin genel uç noktasına dönüşür. Özel uç noktasını barındıran **VNET dışından** çözümlendiğinde ' Topica ' için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                          | Tür      | Değer                                         |
+| Name                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -68,7 +68,7 @@ Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışınd
 
 Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, konu veya etki alanı uç noktası URL 'SI özel uç noktanın IP adresini çözümler. Özel uç noktasını barındıran **VNET 'in içinden** çözümlendiğinde ' Topica ' konusunun DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                          | Tür      | Değer                                         |
+| Name                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
@@ -85,10 +85,10 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 
 | Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
 | ------------------ | -------------------------------|
-| Onaylandı           | Yes                            |
-| Reddedildi           | No                             |
-| Beklemede            | No                             |
-| Bağlantı kesildi       | No                             |
+| Onaylandı           | Evet                            |
+| Reddedildi           | Hayır                             |
+| Beklemede            | Hayır                             |
+| Bağlantı kesildi       | Hayır                             |
 
 Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 

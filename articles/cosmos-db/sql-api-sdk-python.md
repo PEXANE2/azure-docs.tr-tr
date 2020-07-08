@@ -10,16 +10,16 @@ ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
 ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391919"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
@@ -39,7 +39,7 @@ ms.locfileid: "85391919"
 |**SDK 'Yı indir**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
-|**Kullanmaya başlayın**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
+|**Kullanmaya başlama**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Yayın geçmişi

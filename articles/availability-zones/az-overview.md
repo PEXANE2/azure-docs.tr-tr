@@ -8,10 +8,10 @@ ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413170"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
@@ -79,7 +79,7 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 | Bölge türü | Bölgesel olmayan | Temel | Temel | Özelleştirilmiş | Kullanılabilirlik Alanları | Veri yerleşimi |
 | --- | --- | --- | --- | --- | --- | --- |
 | Önerilen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | :heavy_check_mark: | :heavy_check_mark: |
-| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | Yok | :heavy_check_mark: |
+| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | YOK | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Kategoriye göre hizmetler
 
@@ -112,7 +112,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure Güvenlik Duvarı | Data Box Heavy |
 > | Service Fabric | Azure İşlevleri | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure HPC Önbelleği | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
+> | Sanal Makineler | Azure IoT Hub | Data Lake Analytics |
 > | Sanal makineler: AV2-Series | Azure Kubernetes Hizmeti (AKS) | Machine Learning Studio |
 > | Sanal makineler: BS serisi | Azure Machine Learning | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Özel Bağlantı | Remote Rendering |
@@ -133,7 +133,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: H serisi |
 > |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: LS Serisi |
 > |  | Container Instances | Sanal makineler: LSv2-Series |
-> |  | Container Kayıt Defteri | Sanal makineler: Mv2-Series |
+> |  | Container Registry | Sanal makineler: Mv2-Series |
 > |  | Data Factory | Sanal makineler: NC serisi |
 > |  | Event Grid | Sanal makineler: NCv2-Series |
 > |  | HDInsight | Sanal makineler: NCv3-Series |
