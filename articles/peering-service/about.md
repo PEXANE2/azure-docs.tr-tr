@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872039"
 ---
 # <a name="azure-peering-service-overview"></a>Azure eşleme hizmetine genel bakış
@@ -48,7 +48,7 @@ Eşleme hizmeti, Azure ExpressRoute veya bir VPN ürünü gibi özel bir bağlan
 > ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute belgeleri](https://docs.microsoft.com/azure/expressroute/).
 >
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 Office 365, Dynamics 365 ve diğer Microsoft SaaS Hizmetleri, birden fazla Microsoft veri merkezinde barındırılır ve herhangi bir coğrafi konumdan erişilebilir. Microsoft Global Network 'ün, hizmet sağlayıcıları aracılığıyla bir son kullanıcıya bağlanabildiği dünyanın her yerindeki Microsoft Edge varlık noktası (PoP) konumları vardır. 
 

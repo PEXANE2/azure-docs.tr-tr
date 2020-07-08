@@ -4,10 +4,10 @@ description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için 
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84816853"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
@@ -192,7 +192,7 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
 ### <a name="download-the-software-package"></a>Yazılım paketini indirin
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Zaten açık bir kurtarma hizmetleri Kasası varsa, bir sonraki adımla devam edin. Bir kurtarma hizmetleri Kasası açık değilse ancak Azure portal, ana menüde, **Araştır**' ı seçin.
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887715"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
@@ -84,7 +84,7 @@ Bu ölçümlerin amacı, önbellek verimliliğinin iyileşip artamayacağını g
   * Azaltılmış işletimsel maliyetler.
 * Daha fazla istek CDN 'den doğrudan sunulacak olduğundan, geliştirilmiş veri teslimi hızlandırma.
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | Önbellek verimliliği |Önbellekten sunulan aktarılan veri yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istek veripçilerine (ör. Web tarayıcısı) sunulduğunu ölçer. |
 | İsabet oranı |Önbellekten sunulan isteklerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istekçilere (ör. Web tarayıcısı) sunulduğunda ölçer. |
@@ -102,7 +102,7 @@ Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngö
 > 
 > 
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | Ortalama çıkış baytları |CDN 'den (uç sunuculardan) sunulan her istek için, istek sahibine (ör. Web tarayıcısı) aktarılan baytların ortalama sayısını belirtir. |
 | Önbellek yapılandırması bayt oranı yok |CDN 'den (uç sunuculardan) sunulan trafik yüzdesini, önbelleği atlama özelliği nedeniyle önbelleğe alınmayacak olan istek sahibine (ör. Web tarayıcısına) gösterir. |
@@ -114,7 +114,7 @@ Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngö
 #### <a name="performance-metrics"></a>Performans Ölçümleri
 Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemek içindir.
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | Aktarım hızı |İçeriğin CDN 'den istek sahibine aktarıldığı ortalama oranı gösterir. |
 | Süre |Bir varlığın bir istek sahibine (ör. Web tarayıcısı) teslim edilmesi için geçen milisaniye cinsinden ortalama süreyi belirtir. |
@@ -126,7 +126,7 @@ Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemek iç
 #### <a name="secure-traffic-metrics"></a>Güvenli trafik ölçümleri
 Bu ölçümlerin amacı, HTTPS trafiği için CDN performansını izlemek içindir.
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | Güvenli önbellek verimliliği |Önbellekten sunulan HTTPS istekleri için aktarılan verilerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü (ör. Web Browser) ile HTTPS üzerinden doğrudan istek üzerine (örn. Web tarayıcısı) sunulduğunu ölçer. |
 | Güvenli aktarım hızı |İçeriğin CDN 'den (uç sunuculardan), https üzerinden sahiplerini (ör. Web sunucuları) olarak aktarıldığı ortalama oranı gösterir. |

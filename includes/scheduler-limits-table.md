@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,10 +9,10 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75392311"
 ---
 Aşağıdaki tabloda, Azure Scheduler 'daki önemli kotalar, sınırlar, varsayılanlar ve kısıtlamaların her biri açıklanmaktadır.
@@ -29,7 +29,7 @@ Aşağıdaki tabloda, Azure Scheduler 'daki önemli kotalar, sınırlar, varsay�
 | **İstek URL 'SI boyutu** | İstek URL 'SI için en büyük boyut 2.048 karakter olur. |
 | **Üstbilgi sayısı** | Üst bilgi sayısı 50 üst bilgi. | 
 | **Toplam üst bilgi boyutu** | En büyük toplam üst bilgi boyutu 4.096 karakter. |
-| **Aş** | İstek zaman aşımı statiktir, diğer bir deyişle yapılandırılamaz. HTTP eylemleri için 60 saniyedir. Daha uzun süre çalışan işlemler için HTTP zaman uyumsuz protokollerini izleyin. Örneğin, hemen 202 döndürün, ancak arka planda çalışmaya devam edin. | 
+| **Zaman aşımı** | İstek zaman aşımı statiktir, diğer bir deyişle yapılandırılamaz. HTTP eylemleri için 60 saniyedir. Daha uzun süre çalışan işlemler için HTTP zaman uyumsuz protokollerini izleyin. Örneğin, hemen 202 döndürün, ancak arka planda çalışmaya devam edin. | 
 | **İş geçmişi** | İş geçmişinde depolanan en büyük yanıt gövdesi 2.048 bayttır. |
 | **İş geçmişi saklama** | İş geçmişi en fazla iki ay veya son 1.000 yürütmeler için tutulur. | 
 | **Tamamlanan ve hatalı iş bekletme** | Tamamlanan ve hatalı işler 60 gün boyunca tutulur. |

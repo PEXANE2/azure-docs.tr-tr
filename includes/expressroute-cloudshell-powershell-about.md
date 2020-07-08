@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75436931"
 ---
 Azure PowerShell veya CLı 'yi yerel olarak yüklemek yerine birçok PowerShell cmdlet 'ini ve CLı komutunu çalıştırmak için Azure Cloud Shell kullanabilirsiniz. Azure Cloud Shell, ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış, ücretsiz bir etkileşimli kabuktur.

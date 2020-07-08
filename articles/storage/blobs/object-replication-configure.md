@@ -10,10 +10,10 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888109"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
@@ -36,7 +36,7 @@ Başlamadan önce, aşağıdaki özellik önizlemeleri için kaydolduğunuzdan e
 - [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
 - [Azure Blob depolamada akış desteğini değiştirme (Önizleme)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun. Ayrıca, blob sürümü oluşturma ve kaynak hesapta akışı değiştirme ve hedef hesapta blob sürümü oluşturma 'yı etkinleştirme.
 
@@ -234,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal, PowerShell veya CLı kullanın.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 

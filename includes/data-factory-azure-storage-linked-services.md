@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75469342"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage Bağlı Hizmeti
@@ -16,12 +16,12 @@ ms.locfileid: "75469342"
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Yes |
-| Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Yes |
+| tür |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Evet |
+| Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Evet |
 
 Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
 
-**Örneğinde**  
+**Örnek:**  
 
 ```json
 {
@@ -49,10 +49,10 @@ Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan e
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Yes |
-| sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Yes |
+| tür |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Evet |
+| sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Evet |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {

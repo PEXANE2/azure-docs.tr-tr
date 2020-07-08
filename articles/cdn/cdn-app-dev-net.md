@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888429"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN ile geliştirmeye başlama
@@ -156,7 +156,7 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
 
 Artık programımızın temel yapısı yazıldığına göre, yöntemi tarafından çağrılan yöntemleri oluşturacağız `Main` .
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 Azure CDN yönetim kitaplığını kullanabilmeniz için, hizmet Sorumlumuza kimlik doğrulaması yapmanız ve bir kimlik doğrulama belirteci edinmeniz gerekir.  Bu yöntem, belirteci almak için ADAL kullanır.
 
 ```csharp

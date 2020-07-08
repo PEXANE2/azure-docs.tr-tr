@@ -10,10 +10,10 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888061"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
@@ -74,8 +74,8 @@ Kaynak ve hedef hesapların her ikisi de, nesne çoğaltmasını kullanmak için
 ### <a name="prerequisites-for-object-replication"></a>Nesne çoğaltma için önkoşullar
 
 Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir: 
-- [Akışı değiştirme](storage-blob-change-feed.md)
-- [Sürüm oluşturma](versioning-overview.md)
+- [Akışı Değiştir](storage-blob-change-feed.md)
+- [Sürüm Oluşturma](versioning-overview.md)
 
 Nesne çoğaltmasını yapılandırmadan önce, önkoşullarını etkinleştirin. Kaynak hesapta değişiklik akışı etkinleştirilmelidir ve hem kaynak hem de hedef hesapta blob sürümü oluşturma etkinleştirilmiş olmalıdır. Bu özellikleri etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 

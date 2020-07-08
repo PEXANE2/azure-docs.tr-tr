@@ -9,17 +9,17 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84902783"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
 
-## <a name="benefits"></a>Avantajlar 
+## <a name="benefits"></a>Yararları 
 
 Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
 
@@ -113,7 +113,7 @@ Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla b
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem Durumu   | Description       |
+| Sistem Durumu   | Açıklama       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |

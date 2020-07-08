@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013788"
 ---
 Depolama Gezgini 1.10.0, kullanıcıların yönetilen diskleri karşıya yüklemesi, indirmesi ve kopyalaması ve anlık görüntü oluşturma imkanı sağlar. Bu ek yetenekler nedeniyle, verileri Şirket içinden Azure 'a geçirmek ve Azure bölgelerine veri geçirmek için Depolama Gezgini kullanabilirsiniz.
@@ -50,7 +50,7 @@ Depolama Gezgini Azure 'a bağlı değilse, kaynakları yönetmek için kullanam
 
     ![Kaynak grubu 1 ' i seçin](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. **Karşıya yükle**' yi seçin.
+1. **Karşıya Yükle**'yi seçin.
 
     ![Karşıya yükleme seçme](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
@@ -120,7 +120,7 @@ Depolama Gezgini, bir sürücü içinde veya bölgeler arasında bir sürücü k
 
     ![Anlık görüntü oluşturma](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. **Anlık görüntü oluştur**' da, anlık görüntünün adını ve içinde oluşturmak istediğiniz kaynak grubunu belirtin. Ardından **Oluştur**’u seçin.
+1. **Anlık görüntü oluştur**' da, anlık görüntünün adını ve içinde oluşturmak istediğiniz kaynak grubunu belirtin. Ardından **Oluştur**'u seçin.
 
     ![Anlık görüntü oluştur iletişim kutusu](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

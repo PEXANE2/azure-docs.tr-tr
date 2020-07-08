@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888446"
 ---
-# <a name="core-reports-from-verizon"></a>Verizon 'dan çekirdek raporlar
+# <a name="core-reports-from-verizon"></a>Verizon Çekirdek Raporları
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
@@ -132,6 +132,6 @@ Bu rapor, ıPV4 vs ıPV6 'daki trafik kullanım dağıtımını gösterir.
 
 ![Aktarılan ıPV4/ıPV6 verileri](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 Raporlar yalnızca son 18 ay içinde oluşturulabilir.
 

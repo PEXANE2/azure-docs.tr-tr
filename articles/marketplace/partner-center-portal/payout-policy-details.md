@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887936"
 ---
 # <a name="payout-policy-details"></a>Ödeme ilkesi ayrıntıları
@@ -42,9 +42,9 @@ Aşağıdaki bölümlerde, ödeme sürecimiz açıklanır.
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\* |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2020 – 8/31/2020 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2020 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2020 – 9/7/2020 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2020 – 8/31/2020 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2020 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2020 – 9/7/2020 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme kazanmakta hesaplama | 9/4/2020 – 9/10/2020 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 10/5/2020 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 10/15/2020 | Işlem geçmişinde ve ödeme panosunun ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
@@ -59,10 +59,10 @@ Kredi kartı veya aylık fatura içeren tüm satın almalarda, fonların temizle
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2019 - 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Müşteri faturası toplandı | 9/7/2019 – 9/10/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2019 - 8/31/2019 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2019 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Müşteri faturası toplandı | 9/7/2019 – 9/10/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 9/8/2019 -9/12/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 11/5/2019\* | Ödeme panosundaki Işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 11/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
@@ -76,10 +76,10 @@ Bu tarihten önce oluşan tüm satın alımlar, Microsoft 'un müşterilerden ö
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2019 – 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Müşteri faturası toplandı | 12/1/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2019 – 8/31/2019 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2019 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Müşteri faturası toplandı | 12/1/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 12/5/2019 – 12/7/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 1/5/2019 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 1/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
@@ -101,10 +101,10 @@ Microsoft, aşağıdaki yöntemlerden birini kullanarak zaten ücretli olan tüm
 | --- | --- | --- |
 | Örnek ödeme tarihi | 10/15/2020 | Ödeme panosundaki Işlem geçmişi ve ödemeler bölümünde **gönderildi** olarak işaretlendi |
 | <font color="red">Müşteri Microsoft 'a ödeme yapmasa da</font> | 12/2/2020 – 12/5/2020 | Değişiklik yok, yukarıdaki ile aynı |
-| Müşteri ilk geç ödeme e-postasını alır | 12/6/2020 | Yok |
-| Müşteri, artan aciliyet e-postalarını alır | 12/7/2020 – 1/31/2021 | Yok |
+| Müşteri ilk geç ödeme e-postasını alır | 12/6/2020 | Hiçbiri |
+| Müşteri, artan aciliyet e-postalarını alır | 12/7/2020 – 1/31/2021 | Hiçbiri |
 | Yayımcı, yazma işlemi için büyük olasılıkla | 1/7/2021 | Müşteriye henüz ödeme gönderilmemiş olan e-posta bildirimi gönderilir. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
-| Müşteri sonlandırma bildirimini alır | 2/1/2021 | Yok |
+| Müşteri sonlandırma bildirimini alır | 2/1/2021 | Hiçbiri |
 | Toplama işleminin bitişi/fonları yazılır | 2/15/2021 | Fonların yazıldığı yayımcıya gönderilen e-posta bildirimi. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
 | Ödeme kesinti | 3/1/2021 | Yayımcı, Iş Ortağı Merkezi ödeme bildiriminde negatif işlem görür |
 | Ödeme stopaj uygulanan | 3/15/2021 | Gelecekteki ödemeler, Iş Ortağı Merkezi ödeme bildiriminde gösterilir. Bu, bakiye artık negatif olmadığından, ödeme ödemeyi almaz.  |

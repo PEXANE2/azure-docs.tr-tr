@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
 ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817992"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
@@ -604,13 +604,13 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Description | Son durum?
+| Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>İşlem örneği Web hizmeti (geliştirme/test)
 

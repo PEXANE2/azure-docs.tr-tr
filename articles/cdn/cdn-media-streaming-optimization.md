@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887599"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN ile medya akışı iyileştirmesi 
@@ -87,7 +87,7 @@ Uç noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosya
 |   | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
 --- | --- | --- | ---
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |365 gün | 365 gün   
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye | 1 saniye
+Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye | 1 saniye
  
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın  
 

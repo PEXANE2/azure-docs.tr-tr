@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74005573"
 ---
 Bu makalede, Azure Premium depolama kullanan yüksek performanslı uygulamalar oluşturmaya yönelik yönergeler sağlanmaktadır. Bu belgede sunulan yönergeleri, uygulamanız tarafından kullanılan teknolojiler için geçerli olan performans en iyi uygulamalarıyla birlikte kullanabilirsiniz. Yönergeleri göstermek için, bu belgenin tamamında bir örnek olarak Premium depolamada çalışan SQL Server kullandık.

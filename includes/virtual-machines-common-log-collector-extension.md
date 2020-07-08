@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085284"
 ---
 Microsoft Azure bulut hizmeti ile ilgili sorunları tanılamak, sorunlar oluşması durumunda hizmetin günlük dosyalarının sanal makinelerde toplanmasını gerektirir. Bir veya daha fazla bulut hizmeti sanal makinelerinden (her iki web rolünden ve çalışan rolünden) tek seferlik bir günlük koleksiyonu gerçekleştirmek ve toplanan dosyaları bir sanal makineye uzaktan oturum açmadan bir Azure depolama hesabına aktarmak için AzureLogCollector uzantısını isteğe bağlı olarak kullanabilirsiniz.
@@ -33,7 +33,7 @@ Her iki koleksiyon modunda, aşağıdaki yapının bir koleksiyonu kullanılarak
 
 * **Ad**: koleksiyonun adı, toplanan dosyalarla ZIP dosyasının içindeki alt klasörün adı olarak kullanılır.
 * **Konum**: sanal makinede toplanacak dosyaların bulunduğu klasörün yolu.
-* **Searchmodel**: toplanacak dosyaların adlarının kalıbı. Varsayılan değer "\*"
+* **Searchmodel**: toplanacak dosyaların adlarının kalıbı. Varsayılan değer " \* "
 * **Özyinelemeli**: toplanacak dosyalar belirtilen konumun altına özyinelemeli olarak konumlandırıldı.
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -129,7 +129,7 @@ AzureLogCollector 'i bir veya daha fazla bulut hizmeti örneğine veya seçili r
    ```
 
    > [!NOTE]
-   > Sabit bir sürücü kullanmasından bu yana rol kök sürücüsünü belirtmek için belirteci `%roleroot%` kullanabilirsiniz.
+   > `%roleroot%`Sabit bir sürücü kullanmasından bu yana rol kök sürücüsünü belirtmek için belirteci kullanabilirsiniz.
    > 
    > 
 4. Toplanan dosyaların yükleneceği Azure depolama hesabı adını ve anahtarını belirtin.
@@ -139,7 +139,7 @@ AzureLogCollector 'i bir veya daha fazla bulut hizmeti örneğine veya seçili r
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureServiceLogCollector. ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureServiceLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Azure PowerShell aboneliğinize bağlamak için yönergeleri izleyin.
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureVMLogCollector. ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureVMLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Aşağıda, Betiğe geçirilen parametrelerin tanımı verilmiştir. (Bu, aşağıda de kopyalanır.)
 
@@ -276,7 +276,7 @@ param (
   ```
 
 ## <a name="extention-powershell-script-files"></a>Uzantı PowerShell betik dosyaları
-### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector. ps1
+### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -385,7 +385,7 @@ $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
 
-### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector. ps1
+### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]

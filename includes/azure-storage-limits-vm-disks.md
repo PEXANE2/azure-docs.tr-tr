@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: c3028ed7629c41eece354dd2554ede9249bac4f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334964"
 ---
 Bir Azure sanal makinesine çok sayıda veri diski ekleyebilirsiniz. Bir sanal makinenin veri disklerinin ölçeklenebilirlik ve performans hedeflerine bağlı olarak, performans ve kapasite gereksinimlerinizi karşılamak için gereken disk sayısını ve türünü belirleyebilirsiniz.
@@ -22,12 +22,12 @@ Aşağıdaki tabloda, abonelik başına bölge başına düşen kaynak sayısı 
 
 > | Kaynak | Sınır |
 > | --- | --- |
-> | Standart yönetilen diskler | 50.000 |
-> | Standart SSD yönetilen diskler | 50.000 |
-> | Premium yönetilen diskler | 50.000 |
-> | Standard_LRS anlık görüntüler | 50.000 |
-> | Standard_ZRS anlık görüntüler | 50.000 |
-> | Yönetilen görüntü | 50.000 |
+> | Standart yönetilen diskler | 50,000 |
+> | Standart SSD yönetilen diskler | 50,000 |
+> | Premium yönetilen diskler | 50,000 |
+> | Standard_LRS anlık görüntüler | 50,000 |
+> | Standard_ZRS anlık görüntüler | 50,000 |
+> | Yönetilen görüntü | 50,000 |
 
 * **Standart depolama hesapları için:** Standart depolama hesabında en fazla 20.000 ıOPS toplam istek oranı vardır. Standart depolama hesabındaki tüm sanal makine disklerinizdeki toplam ıOPS, bu sınırı aşmamalıdır.
   

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
 ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817125"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
@@ -45,7 +45,7 @@ Python SDK ile yapılandırdığınız denemeleri için, korleştirme ayarını 
 
 Aşağıdaki tabloda, `featurization` [oto mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için kabul edilen ayarlar gösterilmektedir:
 
-|Korleştirme yapılandırması | Description|
+|Korleştirme yapılandırması | Açıklama|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme kapsamında, [veri guardı ve korleştirme adımlarının](#featurization) otomatik olarak yapılacağını belirtir. Bu varsayılan ayardır.|
 |`"featurization": 'off'`| Korturlama adımlarının otomatik olarak yapılmadığından emin olun.|
@@ -60,7 +60,7 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 > [!NOTE]
 > Bir [onnx modeline](concept-onnx.md), oto tarafından oluşturulan bir modellerinizi dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir yıldız işareti ("*") ile gösterilen fealeştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin.
 
-|Korturlama &nbsp; adımları| Description |
+|Korturlama &nbsp; adımları| Açıklama |
 | ------------- | ------------- |
 |**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
 |**Impute eksik değerler*** |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|

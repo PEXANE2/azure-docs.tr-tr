@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817709"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
@@ -99,7 +99,7 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır: 
 
-|Yönerge   |Description   |
+|Yönerge   |Açıklama   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Su ve toz koruması için         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |

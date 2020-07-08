@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 21ff3e456a587a7d676de379987c86f154878c61
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887648"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN'de web içeriğinin süre sonunu yönetme
@@ -66,7 +66,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
    Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 **Özel önbelleğe alma kurallarını kullanarak bir Web sunucusu dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
@@ -80,7 +80,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
     İlk özel önbelleğe alma kuralı, `/webfolder1` uç noktanız tarafından belirtilen kaynak sunucu üzerindeki klasörde bulunan tüm dosyalar için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca dosyanın ilk kuralını geçersiz kılar `file1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Cache-Control üst bilgilerini ayarlama

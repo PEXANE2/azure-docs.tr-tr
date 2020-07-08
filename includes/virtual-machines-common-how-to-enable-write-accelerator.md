@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566379"
 ---
 Yazma Hızlandırıcısı, yalnızca Azure yönetilen diskleri olan Premium depolamada bulunan, a serisi sanal makineler (VM) için bir disk özelliğidir. Ad olduğu gibi, işlevselliğin amacı, Azure Premium depolamada yazma işlemleri için g/ç gecikmesini geliştirmedir. Yazma Hızlandırıcısı, günlük dosyası güncelleştirmelerinin modern veritabanları için yüksek performanslı bir şekilde diskte kalıcı hale getirilmesi için gerekli olduğu idealdir.
@@ -112,7 +112,7 @@ Aşağıdaki bölümlerde gösterildiği gibi iki ana senaryo komut dosyası olu
 
 Bu betiği, sanal makinenize yeni bir disk eklemek için kullanabilirsiniz. Bu komut dosyasıyla oluşturulan Disk Yazma Hızlandırıcısı kullanır.
 
-Belirli `myVM`dağıtımınız `myWAVMs`için `log001`uygun değerler ile diskin yerini,,, boyutunu ve diskin ay kimliğini değiştirin.
+`myVM` `myWAVMs` `log001` Belirli dağıtımınız için uygun değerler ile diskin yerini,,, boyutunu ve diskin ay kimliğini değiştirin.
 
 ```powershell
 # Specify your VM Name
@@ -135,7 +135,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>PowerShell kullanarak var olan bir Azure diskinde Yazma Hızlandırıcısı etkinleştirme
 
-Bu betiği, mevcut bir diskte Yazma Hızlandırıcısı etkinleştirmek için kullanabilirsiniz. , `myVM` `myWAVMs`Ve `test-log001` değerlerini, belirli dağıtımınız için uygun değerlerle değiştirin. Betik, **$newStatus** değerinin ' $true ' olarak ayarlandığı mevcut bir diske yazma Hızlandırıcısı ekler. ' $False ' değerini kullanmak belirli bir diskte Yazma Hızlandırıcısı devre dışı bırakacak.
+Bu betiği, mevcut bir diskte Yazma Hızlandırıcısı etkinleştirmek için kullanabilirsiniz. `myVM`, `myWAVMs` Ve değerlerini, `test-log001` Belirli dağıtımınız için uygun değerlerle değiştirin. Betik, **$newStatus** değerinin ' $true ' olarak ayarlandığı mevcut bir diske yazma Hızlandırıcısı ekler. ' $False ' değerini kullanmak belirli bir diskte Yazma Hızlandırıcısı devre dışı bırakacak.
 
 ```powershell
 #Specify your VM Name
@@ -179,13 +179,13 @@ Azure REST API aracılığıyla dağıtmak için Azure armclient ' ı yüklemeni
 
 ### <a name="install-armclient"></a>Armclient 'ı yükler
 
-Armclient 'ı çalıştırmak için, Chocolatey aracılığıyla yüklemeniz gerekir. Cmd. exe veya PowerShell aracılığıyla yükleyebilirsiniz. Bu komutlar için yükseltilmiş hakları kullanın ("yönetici olarak çalıştır").
+Armclient 'ı çalıştırmak için, Chocolatey aracılığıyla yüklemeniz gerekir. cmd.exe veya PowerShell aracılığıyla yükleyebilirsiniz. Bu komutlar için yükseltilmiş hakları kullanın ("yönetici olarak çalıştır").
 
-Cmd. exe ' yi kullanarak şu komutu çalıştırın:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+cmd.exe kullanarak, aşağıdaki komutu çalıştırın:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
 Power Shell 'i kullanarak şu komutu çalıştırın:`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-Artık, cmd. exe veya PowerShell 'de aşağıdaki komutu kullanarak armclient 'ı yükleyebilirsiniz`choco install armclient`
+Artık cmd.exe veya PowerShell 'de aşağıdaki komutu kullanarak armclient 'ı yükleyebilirsiniz`choco install armclient`
 
 ### <a name="getting-your-current-vm-configuration"></a>Geçerli VM yapılandırmanızı alma
 

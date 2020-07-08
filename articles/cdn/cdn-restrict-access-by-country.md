@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
 ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887028"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN içeriğini ülkeye/bölgeye göre kısıtla
@@ -98,7 +98,7 @@ Bir kuralı silmek için, **coğrafi filtreleme** sayfasındaki listeden seçin 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 Ülke/bölge filtreleme kuralları tablosunda, bir kuralın yanındaki Sil simgesini veya değiştirmek için Düzenle simgesini seçin.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * Coğrafi filtreleme yapılandırmanızda yapılan değişiklikler hemen geçerli olmaz:
    * **Microsoft’tan Azure CDN Standart** profilleri için yayma işlemi genellikle 10 dakikada tamamlanır. 
    * **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 

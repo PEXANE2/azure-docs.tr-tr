@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887670"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN Azure Blob Storage 'ın kullanım süresini yönetme
@@ -70,7 +70,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
    Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
  
 **Özel önbelleğe alma kurallarını kullanarak bir blob dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
@@ -84,7 +84,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
     İlk özel önbelleğe alma kuralı, `/blobcontainer1` uç noktanız tarafından belirtilen kaynak sunucudaki klasördeki tüm blob dosyaları için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca blob dosyası için ilk kuralı geçersiz kılar `blob1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell kullanarak Cache-Control üst bilgilerini ayarlama
