@@ -6,10 +6,9 @@ ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
 ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834637"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Birden çok VM için güncelleştirmesini yönetme
@@ -76,9 +75,9 @@ Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı 
 
 | Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
+| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
 | Azure Storage hesabı |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı

@@ -4,10 +4,9 @@ description: Geliştirme, test ve üretim damgaları için farklı kaynaklara do
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773690"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
@@ -108,7 +107,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] MSBuild 'te Builınfo. config dosyasını otomatik olarak oluşturun. Bunu yapmak için dosyanıza birkaç satır ekleyin `.csproj` :
+* [ASP.NET] MSBuild 'te otomatik olarak BuildInfo.config oluşturun. Bunu yapmak için dosyanıza birkaç satır ekleyin `.csproj` :
 
     ```XML
 
@@ -117,7 +116,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     </PropertyGroup>
     ```
 
-    Bu, *yourprojectname*adlı bir dosya oluşturur. Builınfo. config. Yayımla işlemi onu Builınfo. config olarak yeniden adlandırır.
+    Bu, *yourprojectname*.BuildInfo.config adlı bir dosya oluşturur. Yayımla işlemi onu BuildInfo.config olarak yeniden adlandırır.
 
     Visual Studio ile derleme sırasında derleme etiketi bir yer tutucu (AutoGen_...) içerir. Ancak MSBuild ile birlikte kullanıldığında, doğru sürüm numarasıyla doldurulur.
 

@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827565"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğinden sorgu günlükleri
@@ -34,8 +33,8 @@ Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına
 |RunbookName | Runbook’un adını belirtir.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır|
 |StreamType | Olay türünü belirtir. Olası değerler şunlardır:<br>- Ayrıntılı<br>- Çıktı<br>- Hata<br>- Uyarı|
-|SubscriptionId | İşin abonelik kimliğini belirtir.
-|Zaman | Runbook işinin yürütüldüğü tarih ve saat.|
+|kaynak grubundaki | İşin abonelik kimliğini belirtir.
+|Saat | Runbook işinin yürütüldüğü tarih ve saat.|
 
 ## <a name="job-streams"></a>İş akışları
 
@@ -54,7 +53,7 @@ Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına
 |RunbookName | Runbook’un adı.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır.|
 |StreamType | İş akışı türü. Olası değerler şunlardır:<br>-İlerleme durumu<br>- Çıktı<br>- Uyarı<br>- Hata<br>- Hata ayıklama<br>- Ayrıntılı|
-|Zaman | Runbook işinin yürütüldüğü tarih ve saat.|
+|Saat | Runbook işinin yürütüldüğü tarih ve saat.|
 
 **Joblogs** veya **jobstreams**kategorisi kayıtlarını döndüren bir günlük araması gerçekleştirdiğinizde, arama tarafından döndürülen güncelleştirmeleri özetleyen bir kutucuk kümesi görüntüleyen **joblogs** veya **jobstreams** görünümünü seçebilirsiniz.
 

@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831033"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell modüllerini güncelleştirme
@@ -46,7 +45,7 @@ Bu runbook 'u bağımsız bulutlarında kullanmak için, `AzEnvironment` doğru 
 
 ## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Belirli bir modül sürümünü güncelleştirmek için güncelleştirme runbook 'unu kullanın
 
-PowerShell Galerisi kullanılabilir en son modül yerine belirli bir Azure PowerShell modülü sürümünü kullanmak istiyorsanız, bu sürümleri `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook 'unun isteğe bağlı parametresine geçirin. Örnekler için bkz. [Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook. Parametresinde bahsedilen Azure PowerShell modüller, `ModuleVersionOverrides` PowerShell Galerisi en son modül sürümleriyle güncellenir. Parametreye hiçbir şey geçirirseniz `ModuleVersionOverrides` , tüm modüller PowerShell Galerisi en son modül sürümleriyle güncellenir. Bu davranış, Azure portal **Azure modüllerini Güncelleştir** düğmesi için aynıdır.
+PowerShell Galerisi kullanılabilir en son modül yerine belirli bir Azure PowerShell modülü sürümünü kullanmak istiyorsanız, bu sürümleri `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook 'unun isteğe bağlı parametresine geçirin. Örnekler için bkz. runbook [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) . Parametresinde bahsedilen Azure PowerShell modüller, `ModuleVersionOverrides` PowerShell Galerisi en son modül sürümleriyle güncellenir. Parametreye hiçbir şey geçirirseniz `ModuleVersionOverrides` , tüm modüller PowerShell Galerisi en son modül sürümleriyle güncellenir. Bu davranış, Azure portal **Azure modüllerini Güncelleştir** düğmesi için aynıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

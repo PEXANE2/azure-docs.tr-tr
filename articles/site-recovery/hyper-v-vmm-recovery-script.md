@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826290"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Kurtarma planına VMM betiği ekleme
@@ -60,9 +59,9 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
 VMM kaynak siteniz varsa, VMM sunucusunda bir komut dosyası oluşturabilirsiniz. Ardından, betiği kurtarma planınıza dahil edin.
 
-1. Kitaplık paylaşımında yeni bir klasör oluşturun. Örneğin, \< VMM sunucu adı> \MSSCVMMLibrary\RPScripts. Klasörü kaynak ve hedef VMM sunucularına yerleştirin.
+1. Kitaplık paylaşımında yeni bir klasör oluşturun. Örneğin, \<VMM server name> \Msscvmmlibrary\rpscripts. Klasörü kaynak ve hedef VMM sunucularına yerleştirin.
 1. Betiği oluşturun. Örneğin, komut dosyası RPScript olarak adlandırın. Betiğin beklendiği gibi çalıştığını doğrulayın.
-1. Betiği, \< kaynak ve hedef VMM sunucularındaki VMM sunucu adı> \MSSCVMMLibrary klasörüne yerleştirin.
+1. Betiği \<VMM server name> kaynak ve hedef VMM sunucularındaki \Msscvmmlibrary klasörüne yerleştirin.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Betiği bir kurtarma planına ekleyin
 
@@ -71,7 +70,7 @@ Bir kurtarma planına VM 'Ler veya çoğaltma grupları ekledikten ve planı olu
 1. Kurtarma planını açın.
 1. **Adım** listesinde bir öğe seçin. Ardından, **komut dosyası** veya **el ile eylem**' i seçin.
 1. Seçili öğeden önce veya sonra betik ya da eylemin eklenip eklenmeyeceğini belirtin. Betiğin konumunu yukarı veya aşağı taşımak için **Yukarı taşı** ve **aşağı taşı** düğmelerini seçin.
-1. Bir VMM betiği eklerseniz, **VMM betiğine yük devretme**' yı seçin. **Betik yolu**' nda, paylaşımın göreli yolunu girin. Örneğin, **\Rpscripts\rpscript.exe. ps1**yazın.
+1. Bir VMM betiği eklerseniz, **VMM betiğine yük devretme**' yı seçin. **Betik yolu**' nda, paylaşımın göreli yolunu girin. Örneğin **\RPScripts\RPScript.PS1**girin.
 1. Bir Azure Otomasyonu runbook 'u eklerseniz, runbook 'un bulunduğu Otomasyon hesabını belirtin. Ardından, kullanmak istediğiniz Azure runbook betiğini seçin.
 1. Betiğin beklendiği gibi çalıştığından emin olmak için kurtarma planının yük devretmesini test edin.
 

@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771205"
 ---
-# <a name="what-is-a-primary-refresh-token"></a>Birincil yenileme belirteci nedir?
+# <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
 Birincil yenileme belirteci (PRT), Windows 10, iOS ve Android cihazlarda Azure AD kimlik doğrulamasının temel yapıtıdır. Bu cihazlarda kullanılan uygulamalarda çoklu oturum açma (SSO) özelliğini etkinleştirmek için, Microsoft ilk taraf belirteç aracılarına özel olarak verilen bir JSON Web Token (JWT). Bu makalede, Windows 10 cihazlarında bir PRT 'nin nasıl verildiği, kullanıldığı ve korunduğu hakkında ayrıntılı bilgi sağlıyoruz.
 

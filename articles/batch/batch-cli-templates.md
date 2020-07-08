@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83816005"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
@@ -133,7 +132,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
 }
 ```
 
-Şablon dosyası _Pool-FFmpeg. JSON_olarak adlandırıldıysa, şablonu aşağıdaki gibi çağırın:
+Şablon dosyası _pool-ffmpeg.js_olarak adlandırıldıysa, şablonu aşağıdaki gibi çağırın:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -152,7 +151,7 @@ CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrı
 }
 ```
 
-Parameters JSON dosyası *Pool-Parameters. JSON*olarak adlandırıldıysa, aşağıdaki gibi şablonu çağırın:
+Parameters JSON dosyası *pool-parameters.js*olarak adlandırıldıysa, şablonu aşağıdaki gibi çağırın:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -242,7 +241,7 @@ Aşağıda, FFmpeg ile iki alt çözünürlükte birine yönelik MP4 video dosya
 }
 ```
 
-Şablon dosyası _iş-FFmpeg. JSON_olarak adlandırıldıysa, şablonu aşağıdaki gibi çağırın:
+Şablon dosyası _job-ffmpeg.js_olarak adlandırıldıysa, şablonu aşağıdaki gibi çağırın:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json

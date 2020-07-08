@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830047"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook girdi parametrelerini yapılandırma
@@ -277,7 +276,7 @@ Bu bölümde, bir PowerShell betiğinin, bir PowerShell runbook 'unu başlatmak 
 
 ### <a name="create-the-json-file"></a>JSON dosyası oluşturma
 
-Aşağıdaki kodu bir metin dosyasına yazın ve bunu yerel bilgisayarınızda bir yere **test. JSON** olarak kaydedin.
+Aşağıdaki kodu bir metin dosyasına yazın ve **test.js** olarak yerel bilgisayarınızda bir yere kaydedin.
 
 ```json
 {

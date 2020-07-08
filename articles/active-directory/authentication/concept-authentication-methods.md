@@ -12,13 +12,12 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83770968"
 ---
-# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory hangi kimlik doğrulama ve doğrulama yöntemleri kullanılabilir?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
 Azure Active Directory (Azure AD) hesapları için oturum açma deneyiminin bir parçası olarak, bir kullanıcının kimliklerini doğrulayabilmesi için farklı yollar vardır. Kullanıcı adı ve parola, bir kullanıcının geçmişe ait kimlik bilgilerini sağlaması için en yaygın yoldur. Azure AD 'de Modern kimlik doğrulama ve güvenlik özellikleriyle, bu temel parola ek kimlik doğrulama yöntemleriyle takıma girebilir veya değiştirilebilir.
 
@@ -35,16 +34,16 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 
 | Yöntem | Birincil kimlik doğrulama | İkincil kimlik doğrulaması |
 | --- | --- | --- |
-| [Parola](#password) | Yes | |
+| [Parola](#password) | Evet | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
-| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
-| [OATH yazılım belirteçleri](#oath-software-tokens) | No | MFA |
-| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Yes | MFA |
+| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Evet | Yalnızca MFA |
+| [OATH yazılım belirteçleri](#oath-software-tokens) | Hayır | MFA |
+| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Evet | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
-| [Sesli arama](#phone-options) | No | MFA ve SSPR |
-| [Güvenlik soruları](#security-questions) | No | Yalnızca SSPR |
-| [E-posta adresi](#email-address) | No | Yalnızca SSPR |
-| [Uygulama parolaları](#app-passwords) | No | Yalnızca belirli durumlarda MFA |
+| [Sesli arama](#phone-options) | Hayır | MFA ve SSPR |
+| [Güvenlik soruları](#security-questions) | Hayır | Yalnızca SSPR |
+| [E-posta adresi](#email-address) | Hayır | Yalnızca SSPR |
+| [Uygulama parolaları](#app-passwords) | Hayır | Yalnızca belirli durumlarda MFA |
 
 Bu makalede, Azure AD 'de bulunan bu farklı kimlik doğrulama ve doğrulama yöntemleri ve belirli sınırlamalar veya kısıtlamalar özetlenmektedir.
 

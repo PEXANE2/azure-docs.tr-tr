@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: ramakk
 ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797427"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
@@ -27,7 +26,7 @@ Ağ mimarisi planlaması, herhangi bir uygulama altyapısını tasarlamanın tem
 
 Azure NetApp Files birimler, Azure sanal ağınız içinde [Temsilcili bir alt ağ](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) olarak adlandırılan özel bir amaç alt ağında yer almak üzere tasarlanmıştır. Bu nedenle, birimlere doğrudan sanal ağınızdan, aynı bölgedeki eşlenmiş VNET 'lerden veya bir sanal ağ geçidi üzerinden (ExpressRoute veya VPN Gateway) Şirket içinden erişebilirsiniz. Alt ağ Azure NetApp Files için ayrılmıştır ve diğer Azure hizmetleriyle veya Internet 'e yönelik bağlantı yoktur.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler  
+## <a name="considerations"></a>Önemli noktalar  
 
 Azure NetApp Files ağını planlarken bazı noktaları anlamanız gerekir.
 
@@ -55,13 +54,13 @@ Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri
 
 |    Topolojiler    |    Desteklenir    |     Geçici çözüm    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Yerel VNet 'teki birime bağlantı    |    Yes    |         |
-|    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Yes    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    No    |    Yok    |
-|    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Yes    |         |
-|    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Yes    |        |
-|    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Yes    |         |
-|    Şirket içinden VPN Gateway ve VNet eşlemesi ile ağ geçidi geçişi üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Yes    |         |
+|    Yerel VNet 'teki birime bağlantı    |    Evet    |         |
+|    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Evet    |         |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Hiçbiri    |
+|    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Evet    |         |
+|    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Evet    |        |
+|    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
+|    Şirket içinden VPN Gateway ve VNet eşlemesi ile ağ geçidi geçişi üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files birimleri için sanal ağ

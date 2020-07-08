@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829605"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Twitter 'ı izleyin ve yönetin
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps'i kullanarak Twitter'ı izleme ve yönetme
 
 Azure Logic Apps ve Twitter Bağlayıcısı sayesinde, sözgelimi Twitter, takiciler, kullanıcılar ve takip eden kullanıcılar, zaman çizelgeleri ve daha fazlası gibi diğer eylemlerle birlikte istediğiniz verileri izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
@@ -82,7 +81,7 @@ Bu eylem bir tweet nakleder, ancak bu eylemi, Tweet 'in daha önce açıklanan t
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/twitterconnector/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

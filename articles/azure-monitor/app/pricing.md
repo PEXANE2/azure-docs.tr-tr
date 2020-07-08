@@ -7,10 +7,9 @@ ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834433"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
@@ -18,7 +17,7 @@ ms.locfileid: "83834433"
 > [!NOTE]
 > Bu makalede, Application Insights maliyetlerinizi nasıl anlayacağınızı ve denetleyebileceğinizi açıklamaktadır.  [Kullanımı ve tahmini maliyetleri izleyen](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) ilgili bir makale, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceğini açıklar.
 
-Application Insights, Azure 'da veya şirket içinde barındırıldığından, Web uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izlemek için gereken her şeyi almak üzere tasarlanmıştır. Application Insights, .NET, Java ve Node. js gibi popüler dilleri ve çerçeveleri destekler ve Azure DevOps, Jira ve Pagerharcı gibi DevOps işlemleri ve araçları ile tümleşir. Uygulamalarınızı izlemenin maliyetlerinin ne olduğunu anlamak önemlidir. Bu makalede, uygulama izleme maliyetlerinizi ve bunları nasıl proaktif olarak izleyip denetleyebileceğinize ilişkin hangi sürücüleri gözden geçiyoruz.
+Application Insights, Azure 'da veya şirket içinde barındırıldığından, Web uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izlemek için gereken her şeyi almak üzere tasarlanmıştır. Application Insights, .NET, Java ve Node.js gibi popüler dilleri ve çerçeveleri destekler ve Azure DevOps, Jira ve Pagerharcı gibi DevOps işlemleri ve araçları ile tümleştirilir. Uygulamalarınızı izlemenin maliyetlerinin ne olduğunu anlamak önemlidir. Bu makalede, uygulama izleme maliyetlerinizi ve bunları nasıl proaktif olarak izleyip denetleyebileceğinize ilişkin hangi sürücüleri gözden geçiyoruz.
 
 Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorularınız varsa, [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-monitor.html)bir soru gönderebilirsiniz.
 
@@ -187,7 +186,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
 
 * **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](../../azure-monitor/app/javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
 
-* **Gereksiz modülleri devre dışı bırak**: gerekli olmayan koleksiyon modüllerini kapatmak Için [ApplicationInsights. config dosyasını düzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
+* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 
 * **Ön toplama ölçümleri**: uygulamanızda trackmetric çağrıları yerleştirirseniz, bir ölçüm toplu işinin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
  
@@ -197,7 +196,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
     
     Günlük Cap hakkındaki uyarı e-postaları, Application Insights kaynağınız için bu rollerin üyesi olan hesaba gönderilir: "ServiceAdmin", "AccountAdmin", "CoAdmin", "Owner".
 
-    Günlük ucunu ayarlarken dikkatli kullanın. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız*gerekir. Günlük üst sınıra ulaşırsanız, günün geri kalanı için verileri kaybeder ve uygulamanızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
+    Günlük sınırı ayarlarken dikkatli olun. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız*gerekir. Günlük sınıra ulaşırsanız günün geri kalanında veri kaybı yaşarsınız ve uygulamalarınızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
     
     Application Insights için kullanılamayacak kredi içeren bazı abonelik türlerinde kısıtlama kaldırdık. Daha önce, aboneliğin bir harcama limiti varsa, günlük sınır iletişim kutusunda harcama limitini kaldırma ve günlük ucunun 32,3 MB/gün dışında bir şekilde çıkarılması için yönergeler vardır.
     
@@ -333,7 +332,7 @@ Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uy
 
 ## <a name="automation"></a>Otomasyon
 
-Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl olduğunu öğrenin](powershell.md#price).
+Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl yapılacağını öğrenin](powershell.md#price).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

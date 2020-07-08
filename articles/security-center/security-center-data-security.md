@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
 ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772956"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi Veri Güvenliği
@@ -47,7 +46,7 @@ Azure Güvenlik Merkezi, güvenlik durumunuzu görüntüleme, güvenlik açıkla
 
 | VM'nin Bulunduğu Coğrafi Bölge                              | Çalışma Alanının Bulunduğu Coğrafi Bölge |
 |-------------------------------------|---------------|
-| Birleşik Devletler, Brezilya, Güney Afrika | Birleşik Devletler |
+| Birleşik Devletler, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
 | Kanada                              | Kanada        |
 | Avrupa (Birleşik Krallık hariç)   | Avrupa        |
 | Birleşik Krallık                      | Birleşik Krallık |

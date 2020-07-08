@@ -13,16 +13,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826126"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory'de veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-datasets.md)
-> * [Geçerli sürüm](concepts-datasets-linked-services.md)
+> * [Güncel sürüm](concepts-datasets-linked-services.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -72,10 +71,10 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
-tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
+tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Evet |
 yapı | Veri kümesinin şeması. Ayrıntılar için bkz. [DataSet şeması](#dataset-structure-or-schema). | Hayır |
-typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
+typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Evet |
 
 ### <a name="data-flow-compatible-dataset"></a>Veri akışı ile uyumlu veri kümesi
 
@@ -117,10 +116,10 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
-tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+name | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
+tür | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Evet |
 manızı | Veri kümesinin şeması. Ayrıntılar için bkz. [veri akışı ile uyumlu veri kümeleri](#dataset-type). | Hayır |
-typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
+typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Evet |
 
 
 ## <a name="dataset-example"></a>Veri kümesi örneği
@@ -183,7 +182,7 @@ Yapıdaki her sütun aşağıdaki özellikleri içerir:
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-name | Sütunun adı. | Yes
+name | Sütunun adı. | Evet
 tür | Sütunun veri türü. Data Factory, izin verilen değerler olarak şu veri türlerini destekler: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, Guid, DateTime, DateTimeOffset ve TimeSpan** | Hayır
 kültür | . Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset` . Varsayılan değer: `en-us`. | Hayır
 biçim | Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır

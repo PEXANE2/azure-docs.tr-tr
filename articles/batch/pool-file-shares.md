@@ -4,10 +4,9 @@ description: Azure Batch içindeki bir Linux veya Windows havuzundaki işlem dü
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780280"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Bir Batch havuzu ile Azure dosya paylaşma kullanma
@@ -39,8 +38,8 @@ Batch 'de, bir görev Windows düğümünde her çalıştırıldığında payla�
 
 Örneğin, `net use` her görev komut satırının bir parçası olarak dosya paylaşımının bağlanması için bir komut ekleyin. Dosya paylaşımının bağlanması için aşağıdaki kimlik bilgileri gereklidir:
 
-* **Kullanıcı adı**: Azure \\ \< storageAccountName \> , örneğin, Azure \\ *mystorageaccountname*
-* **Parola**: \< storageaccountkeytedhends in = =>, örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
+* **Kullanıcı adı**: Azure \\ \<storageaccountname\> , örneğin, Azure \\ *mystorageaccountname*
+* **Parola**: \<StorageAccountKeyWhichEnds in==> , örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
 
 Aşağıdaki komut, *mystorageaccountname* depolama hesabındaki bir *dosya paylaşımını* *S:* sürücüsü olarak takar:
 
@@ -116,8 +115,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Ardından, `mount` aşağıdaki kimlik bilgilerini sağlayarak dosya paylaşımının bağlanması için komutunu çalıştırın:
 
-* **Kullanıcı adı**: \< storageAccountName \> , örneğin, *mystorageaccountname*
-* **Parola**: \< storageaccountkeytedhends in = =>, örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
+* **Kullanıcı adı**: \<storageaccountname\> , örneğin, *mystorageaccountname*
+* **Parola**: \<StorageAccountKeyWhichEnds in==> , örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
 
 Aşağıdaki komut, */mnt/myazurefileshare*konumundaki *mystorageaccountname* depolama hesabındaki bir *dosya paylaşımını takar* : 
 

@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797744"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Application Insights ile Web uygulamaları için Kullanıcı bekletme Analizi
@@ -42,7 +41,7 @@ En kullanışlı bekletme analizini sağlamak için önemli iş etkinliklerini t
 
 Örneğin, birçok kullanıcı, görüntülediği oyunu oynamadan uygulamanızdaki bir sayfayı açabilir. Bu nedenle, yalnızca sayfa görünümlerini izlemek, daha önce oynadıktan sonra oyunu çalmak için kaç kişinin geri döndürdüğü kesin bir tahmin sağlar. Oyuncu iadelerinin açık bir görüntüsünü almak için, bir kullanıcı aslında yürütüldüğünde uygulamanız özel bir olay göndermelidir.  
 
-Önemli iş eylemlerini temsil eden özel olayları kodlayarak ve bunları bekletme analizinizi kullanacak şekilde kullanmak iyi bir uygulamadır. Oyunun sonucunu yakalamak için, Application Insights özel bir olay göndermek üzere bir kod satırı yazmanız gerekir. Web sayfası koduna veya Node. JS ' ye yazarsanız, şöyle görünür:
+Önemli iş eylemlerini temsil eden özel olayları kodlayarak ve bunları bekletme analizinizi kullanacak şekilde kullanmak iyi bir uygulamadır. Oyunun sonucunu yakalamak için, Application Insights özel bir olay göndermek üzere bir kod satırı yazmanız gerekir. Web sayfası kodunda veya Node.JS yazarsanız, şöyle görünür:
 
 ```JavaScript
     appinsights.trackEvent("won game");

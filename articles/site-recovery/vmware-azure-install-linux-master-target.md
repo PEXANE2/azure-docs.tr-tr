@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829792"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
@@ -244,7 +243,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
 
     ![Çok yollu KIMLIĞI](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Sürücüyü biçimlendirin ve ardından yeni sürücüde bir dosya sistemi oluşturun: **mkfs. ext4/dev/mapper/ \< bekletme diskinin çok yollu kimliği>**.
+3. Sürücüyü biçimlendirin ve ardından yeni sürücüde bir dosya sistemi oluşturun: **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **.
     
     ![Dosya sistemi](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +260,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
     
     Dosyayı düzenlemeyle başlamak için **Ekle** ' yi seçin. Yeni bir satır oluşturun ve ardından aşağıdaki metni ekleyin. Önceki komuttan vurgulanan çok yollu KIMLIĞE göre disk çok yollu KIMLIĞINI düzenleyin.
 
-    **/dev/mapper/ \< bekletme diskleri çok yollu kimlik>/mnt/bekletme ext4 rw 0 0**
+    **/dev/mapper/ \<Retention disks multipath id> /mnt/bekletme ext4 rw 0 0**
 
     **ESC**' yi seçin ve ardından düzenleyici penceresini kapatmak için **WQ** (yazma ve çıkış) yazın.
 
@@ -274,7 +273,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
 > [!NOTE]
 > Ana hedef sunucuyu yüklemeden önce, sanal makinedeki **/etc/hosts** dosyasında, yerel ana bilgisayar adını tüm ağ bağdaştırıcıları Ile ilişkili IP adreslerine eşleyen girişler bulunduğundan emin olun.
 
-1. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.exe** klasöründen parolayı kopyalayın. Ardından, aşağıdaki komutu çalıştırarak aynı yerel dizine **parolayı. txt** olarak kaydedin:
+1. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.exe** klasöründen parolayı kopyalayın. Sonra, aşağıdaki komutu çalıştırarak aynı yerel dizine **passphrase.txt** olarak kaydedin:
 
     `echo <passphrase> >passphrase.txt`
 

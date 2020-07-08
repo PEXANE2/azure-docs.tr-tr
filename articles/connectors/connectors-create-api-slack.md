@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826035"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps ile bolluğu izleyin ve yönetin
@@ -68,7 +67,7 @@ Bolluk hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı di
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/slack/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834501"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
@@ -21,7 +20,7 @@ Azure Logic Apps, mantıksal uygulama iş akışlarında kullanabileceğiniz [y�
 * Müşterilerin profesyonel veya kişisel görevleri yönetmek için hizmetinizi kullanmasına yardımcı olun.
 * Hizmetiniz için erişim, keşfedilebilirlik ve kullanım alanını genişletin.
 
-Temel olarak bağlayıcılar, eklenebilir arabirimler için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri değişim BIÇIMI olarak JSON kullanan Web API 'lardır. Bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz. API 'lerinizi, API barındırma için en iyi, en kolay ve en ölçeklenebilir yollarla bir hizmet olarak platform (PaaS) sunan [Azure App Service](../app-service/overview.md)de barındırabilirsiniz. 
+Temel olarak bağlayıcılar, eklenebilir arabirimler için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri değişim BIÇIMI olarak JSON kullanan Web API 'lardır. Bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, bağlayıcılar oluşturmak için .NET, Java, Python veya Node.js gibi herhangi bir dili kullanabilirsiniz. API 'lerinizi, API barındırma için en iyi, en kolay ve en ölçeklenebilir yollarla bir hizmet olarak platform (PaaS) sunan [Azure App Service](../app-service/overview.md)de barındırabilirsiniz. 
 
 Özel API 'Lerin Logic Apps ile çalışması için API 'niz mantıksal uygulama iş akışlarında belirli görevleri gerçekleştiren [*Eylemler*](./logic-apps-overview.md#logic-app-concepts) sağlayabilir. API 'niz Ayrıca, yeni veriler veya bir olay belirtilen bir koşulu karşıladığında bir mantıksal uygulama iş akışı Başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) işlevi görür. Bu konu, API 'nizin sağlamasını istediğiniz davranışa bağlı olarak API 'inizdeki eylemleri ve Tetikleyicileri oluşturmak için izleyebileceğiniz ortak desenleri açıklar.
 
@@ -41,7 +40,7 @@ API 'lerinizi, yüksek düzeyde ölçeklenebilir ve kolay API barındırma sağl
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Özel API 'Lerin özel bağlayıcılardan farkı nedir?
 
-Özel API 'ler ve [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) , eklenebilir ARABIRIMLER için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve VERI değişim biçimi olarak JSON kullanan Web API 'lerdedir. Bu API 'Ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, özel API 'Ler ve bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz.
+Özel API 'ler ve [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) , eklenebilir ARABIRIMLER için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve VERI değişim biçimi olarak JSON kullanan Web API 'lerdedir. Bu API 'Ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, özel API 'Ler ve bağlayıcılar oluşturmak için .NET, Java, Python veya Node.js gibi herhangi bir dili kullanabilirsiniz.
 
 Özel API 'ler, bağlayıcılar olmayan API 'Leri çağırmasına ve HTTP + Swagger, Azure API Management veya App Services ile çağırabilmeniz için uç noktalar sağlamanıza olanak tanır. Özel Bağlayıcılar özel API 'Ler gibi çalışır, ancak aynı zamanda şu özniteliklere sahiptir:
 
@@ -174,7 +173,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 | İstek şunları içerir `triggerState` ? | API yanıtı | 
 | -------------------------------- | -------------| 
 | Hayır | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
-| Yes | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
+| Evet | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
@@ -224,7 +223,7 @@ Kimlik doğrulamasını ayarladıktan sonra API 'niz için dağıtımı ayarlay�
 
 Özel API 'lerinizi Logic Apps, Power otomatikleştirmede ve Microsoft Power Apps 'teki tüm kullanıcılar için kullanılabilir hale getirmek için, güvenlik eklemeniz, API 'lerinizi Logic App bağlayıcıları olarak kaydetmeniz ve [Microsoft Azure Sertifikalı program](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)için bağlayıcılarınızı aday hale getirmeniz gerekir. 
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Özel API 'lerle ilgili belirli yardım için, ile iletişim kurun [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 

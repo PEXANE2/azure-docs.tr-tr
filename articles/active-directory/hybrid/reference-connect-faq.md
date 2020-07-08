@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827157"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
@@ -88,7 +87,7 @@ Aşağıda, mühendislik, destek ve danışmanlarımızın yıllarca geliştiril
     - Daha az karmaşıklık
     - Kaynakları SQL 'e atamanız ve Azure AD Connect ve işletim sistemi için ek yüke izin vermeniz gerekir
 - Tüm mümkünse proxy 'yi atla, proxy 'yi atlayadıysanız, zaman aşımı değerinin 5 dakikadan fazla olduğundan emin olmanız gerekir.
-- Proxy gerekliyse, proxy 'yi Machine. config dosyasına eklemeniz gerekir
+- Proxy gerekliyse, proxy 'yi machine.config dosyasına eklemeniz gerekir
 - Yerel SQL işlerinin ve bakımın yanı sıra Azure AD Connect-özellikle yeniden dizin oluşturma işlemlerini nasıl etkileyeceğini göz önünde bulundurun
 - DNS 'in dışarıdan çözümleyebileceğinden emin olun
 - Fiziksel veya sanal sunucuları kullanıp kullanmayacağınızı [sunucu belirtimlerinin](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) öneri başına olduğundan emin olun
@@ -203,7 +202,7 @@ Son yıl, belirli koşullar altında, sunucunuzdaki otomatik yükseltme özelli�
 
 PowerShell betiğini çalıştırmak için [betiği indirip](https://aka.ms/repairaadconnect) Azure AD Connect sunucunuzda bir yönetim PowerShell penceresinde çalıştırın. Betiği çalıştırmayı öğrenmek için [Bu kısa videoyu görüntüleyin](https://aka.ms/repairaadcau).
 
-El ile yükseltmek için AADConnect. msi dosyasının en son sürümünü indirmeniz ve çalıştırmanız gerekir.
+El ile yükseltmek için AADConnect.msi dosyasının en son sürümünü indirmeniz ve çalıştırmanız gerekir.
  
 -  Geçerli sürümünüz 1.1.750.0 ' den eskiyse, [en son sürüme indirip yükseltin](https://www.microsoft.com/download/details.aspx?id=47594).
 - Azure AD Connect sürümünüz 1.1.750.0 veya üzeri ise başka bir eylem gerekmez. Otomatik yükseltme düzeltmesini içeren sürümü zaten kullanıyorsunuz. 

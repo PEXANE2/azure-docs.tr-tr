@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83774349"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
@@ -126,7 +125,7 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
 
 4.  Değişiklik yapmadan önce, değişikliklerin geri alınması gerekli olduğunda \Windows\System32\Config klasörünün bir kopyasını oluşturun.
 
-5.  Sorun giderme VM 'sinde, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) başlatın. 
+5.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın (regedit.exe). 
 
 6.  Bu sorun giderme yordamı için, kovanları BROKENSYSTEM ve BROKENSOFTWARE olarak takıyoruz.
 

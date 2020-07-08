@@ -13,10 +13,9 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771868"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
@@ -27,7 +26,7 @@ Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyac�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, Evrensel Windows Platformu (UWP) hızlı başlangıcı veya macOS yerel uygulama hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 

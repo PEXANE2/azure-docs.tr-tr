@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830591"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Güncelleştirilmiş dosyaları izleyici göreviyle izleme
@@ -47,7 +46,7 @@ Bu öğretici, bir dizindeki yeni dosyaları aramak için **Watch-NewFile** adl�
 
 Bu içeri aktarma işlemi [PowerShell Galerisi](https://www.powershellgallery.com)aracılığıyla yapılabilir.
 
-1. [Watch-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)için Galeri sayfasına gidin.
+1. [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)için Galeri sayfasına gidin.
 2. **Azure Otomasyonu** sekmesi altında **Azure Otomasyonu 'na dağıt**' a tıklayın.
 
 Ayrıca, aşağıdaki adımları kullanarak bu runbook 'u portaldan Otomasyon hesabınıza aktarabilirsiniz.
@@ -74,7 +73,7 @@ Bir işlem runbook 'u, bir izleyici runbook 'tan kendisine geçirilen veriler ü
 
 Bir eylem runbook 'u oluşturmak için:
 
-1. [Process-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)için Galeri sayfasına gidin.
+1. [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)için Galeri sayfasına gidin.
 2. **Azure Otomasyonu** sekmesi altında **Azure Otomasyonu 'na dağıt**' a tıklayın.
 
 Ayrıca, bu runbook 'u Otomasyon hesabınıza Azure portal de aktarabilirsiniz:

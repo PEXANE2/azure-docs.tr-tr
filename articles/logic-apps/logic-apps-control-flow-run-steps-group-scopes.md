@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831594"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
@@ -77,12 +76,12 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
       | ------- | ----- | ----------- |
       | **Güzergah noktası 1** | <*başından*> | Yol başlangıcının kaynağını girin. | 
       | **Güzergah noktası 2** | <*erer*> | Yolun hedefini girin. | 
-      | **Kaçının** | Yok | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Kaçının** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **İyileştirme** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
-      | **Toplu Ulaşım Tarih-Saati** | Yok | Yalnızca aktarım modu için geçerlidir. | 
-      | **Transit Tarih-tür türü** | Yok | Yalnızca aktarım modu için geçerlidir. | 
+      | **Toplu Ulaşım Tarih-Saati** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
+      | **Transit Tarih-tür türü** | Hiçbiri | Yalnızca aktarım modu için geçerlidir. | 
       ||||  
 
 1. Geçerli seyahat zamanının trafik ile belirtilen bir süreyi aşıp aşmadığını denetleyen [bir koşul ekleyin](../logic-apps/logic-apps-control-flow-conditional-statement.md) . 
@@ -386,7 +385,7 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 },
 ```
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.

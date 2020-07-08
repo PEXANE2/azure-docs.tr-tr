@@ -8,10 +8,9 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: ee6800d2d0f589c43c96b240a74a86db488e0b46
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827803"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak Premium depolamaya geçiş
@@ -217,8 +216,8 @@ Sanal makineleri geçirmeye yönelik belirli senaryolar için aşağıdaki kayna
 
 Ayrıca, Azure depolama ve Azure sanal makineleri hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Azure depolama](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure sanal makineleri](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Azure Depolama](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

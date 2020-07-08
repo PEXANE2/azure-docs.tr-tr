@@ -4,10 +4,9 @@ description: Azure Batch havuzundaki işlem düğümlerinde SSH veya RDP bağlan
 ms.topic: how-to
 ms.date: 02/13/2018
 ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780301"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch havuzundaki işlem düğümlerine uzaktan erişimi yapılandırma veya devre dışı bırakma
@@ -21,7 +20,7 @@ Uç nokta yapılandırması, ön uç bağlantı noktalarının bir veya daha faz
 
 Her NAT havuzu yapılandırması bir veya daha fazla [ağ güvenlik grubu (NSG) kuralı](/rest/api/batchservice/pool/add#networksecuritygrouprule)içerir. Her NSG kuralı, uç nokta için belirli ağ trafiğine izin verir veya reddeder. Tüm trafiğe izin vermeyi veya reddetmeyi, bir [hizmet etiketiyle](../virtual-network/security-overview.md#service-tags) ("Internet" gibi) veya belirli IP adreslerinden veya alt ağlardan gelen trafiğe izin vermeyi veya vermemeyi seçebilirsiniz.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 * Havuz uç noktası yapılandırması, havuzun [ağ yapılandırmasının](/rest/api/batchservice/pool/add#networkconfiguration)bir parçasıdır. Ağ yapılandırması isteğe bağlı olarak, havuzun bir [Azure sanal ağına](batch-virtual-network.md)katılması için ayarları dahil edebilir. Havuzu bir sanal ağda ayarlarsanız, sanal ağdaki adres ayarlarını kullanan NSG kuralları oluşturabilirsiniz.
 * Bir NAT havuzunu yapılandırırken birden çok NSG kuralı yapılandırabilirsiniz. Kurallar öncelik sırasına göre denetlenir. Bir kural uygulandığı zaman eşleştirme için başka hiçbir kural test edilmez.
 

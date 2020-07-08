@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834467"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Önceden oluşturulmuş şablonlardan mantıksal uygulama iş akışları oluşturma
@@ -144,7 +143,7 @@ Tasarımcı araç çubuğunda **Kaydet**'i seçin.
 
 ![Mantıksal Uygulamanızı kaydetme ve yayımlama](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

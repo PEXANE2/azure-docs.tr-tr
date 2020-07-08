@@ -12,10 +12,9 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832801"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini ayarla
@@ -30,7 +29,7 @@ Bir Data Factory işlem hattında tanımlanmış dize, bool veya dizi türünde 
 name | İşlem hattının etkinlik adı | evet
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
 tür | **SetVariable** olarak ayarlanmalıdır | evet
-value | Değişkenin atandığı dize sabiti veya ifade nesnesi değeri | evet
+değer | Değişkenin atandığı dize sabiti veya ifade nesnesi değeri | evet
 variableName | Bu etkinlik tarafından ayarlanan değişkenin adı | evet
 
 ## <a name="incrementing-a-variable"></a>Bir değişkeni artırma

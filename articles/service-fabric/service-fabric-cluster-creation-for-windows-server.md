@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827973"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
@@ -55,9 +54,9 @@ Bu makalede oluşturulan küme güvenli değildir.  Herkes anonim olarak bağlan
 ### <a name="step-1-create-the-cluster"></a>1. Adım: kümeyi oluşturma
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Senaryo A: güvenli olmayan bir yerel geliştirme kümesi oluşturma
-Service Fabric, [örneklere](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)dahil olan *clusterConfig. güvensiz. devcluster. JSON* dosyası kullanılarak tek makineli bir geliştirme kümesine dağıtılabilir.
+Service Fabric, [örneklerimizde](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)bulunan *ClusterConfig.Unsecure.DevCluster.js* dosya kullanılarak tek makineli bir geliştirme kümesine dağıtılabilir.
 
-Tek başına paketin makinenize paketini açın, örnek yapılandırma dosyasını yerel makineye kopyalayın, sonra tek başına paket klasöründen bir yönetici PowerShell oturumu aracılığıyla *Createservicefabriccluster. ps1* betiğini çalıştırın.
+Tek başına paketin makinenize paketini açın, örnek yapılandırma dosyasını yerel makineye kopyalayın ve sonra tek başına paket klasöründen bir yönetici PowerShell oturumunda *CreateServiceFabricCluster.ps1* betiğini çalıştırın.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
@@ -97,7 +96,7 @@ Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici 
     Passed                     : True
     ```
 
-2. Küme oluşturma: Service Fabric kümesini yapılandırmadaki her makine arasında dağıtmak için *Createservicefabriccluster. ps1* betiğini çalıştırın. 
+2. Küme oluşturma: Service Fabric kümesini yapılandırmadaki her makineye dağıtmak için *CreateServiceFabricCluster.ps1* betiğini çalıştırın. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -115,7 +114,7 @@ Service Fabric çalışma zamanı paketi, küme oluşturma sırasında otomatik 
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-. *\Clusterconfig.exe* ve *.\MicrosoftAzureServiceFabric.cab* , sırasıyla küme yapılandırmasının ve Runtime. cab dosyasının yollarıdır.
+*.\ClusterConfig.js* ve *.\MicrosoftAzureServiceFabric.cab* , sırasıyla küme yapılandırmasına ve çalışma zamanı. cab dosyasına yönelik yollardır.
 
 ### <a name="step-2-connect-to-the-cluster"></a>2. Adım: kümeye bağlanma
 Kümenin çalıştığını ve kullanılabilir olduğunu doğrulamak için kümeye bağlanın. ServiceFabric PowerShell modülü çalışma zamanıyla birlikte yüklenir.  Kümeye küme düğümlerinden birinden veya Service Fabric çalışma zamanına sahip uzak bir bilgisayardan bağlanabilirsiniz.  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet’i, kümeyle bir bağlantı kurar.

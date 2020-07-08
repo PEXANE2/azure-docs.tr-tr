@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826613"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
@@ -39,7 +38,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
     - DontDisplayLastUserName, etkin veya 1 olarak ayarlandı
     - NoLockScreen, etkin veya 1 olarak ayarlandı
     - EnableLostMode, cihazda ayarlandı
-    - Explorer. exe, özel bir kabuğa göre değiştirilmiştir
+    - Explorer.exe bir özel kabuğa göre değiştirilmiştir
 - Aşağıdaki belirli üç ayarların birleşimi bu özelliğin çalışmamasına neden olabilir.
     - Etkileşimli oturum açma: CTRL + ALT + DEL = devre dışı isteme
     - DisableLockScreenAppNotifications = 1 veya etkin
@@ -128,8 +127,8 @@ Kullanıcılar bir Windows 10 cihazının oturum açma ekranından parolaların�
 
 #### <a name="silent-installation"></a>Sessiz yükleme
 
-- Sessiz yüklemesi için "msiexec/i SsprWindowsLogon. PROD. msi/QN" komutunu kullanın
-- Sessiz kaldırma için, "msiexec/x SsprWindowsLogon. PROD. msi/QN" komutunu kullanın
+- Sessiz yüklemesi için "msiexec/i SsprWindowsLogon.PROD.msi/QN" komutunu kullanın
+- Sessiz kaldırma için, "msiexec/x SsprWindowsLogon.PROD.msi/QN" komutunu kullanın
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama sorunlarını giderme
 

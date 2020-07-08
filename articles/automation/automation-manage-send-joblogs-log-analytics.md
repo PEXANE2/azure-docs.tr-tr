@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835265"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
@@ -75,7 +74,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | ResultDescription |Runbook işi sonuç durumu. Olası değerler şunlardır:<br>- İş başlatıldı<br>- İş Başarısız Oldu<br>- İş Tamamlandı |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |
@@ -97,7 +96,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | ResultDescription |Runbook 'tan çıkış akışını içeren açıklama. |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |

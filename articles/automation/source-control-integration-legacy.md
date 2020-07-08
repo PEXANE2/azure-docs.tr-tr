@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828942"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
@@ -38,7 +37,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
 2. GitHub hesabı ayrıntılarınızı yapılandırabileceğiniz kaynak denetimi sayfası açılır. Yapılandırılacak parametrelerin listesi aşağıdadır:  
 
-   | **Parametresinin** | **Açıklama** |
+   | **Parametre** | **Açıklama** |
    |:--- |:--- |
    | Kaynak seçin |Kaynağı seçin. Şu anda yalnızca **GitHub** desteklenir. |
    | Yetkilendirme |GitHub deponuza Azure Otomasyonu erişimi sağlamak için **Yetkilendir** düğmesine tıklayın. Zaten GitHub hesabınızda farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra sayfa, **yetkilendirme özelliği**altında GitHub Kullanıcı adınızı gösterir. |
@@ -60,15 +59,15 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
    * **Microsoft. Azure. Automation. SourceControl. Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
 
-     | **Parametresinin** | **Değer** |
+     | **Parametre** | **Değer** |
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Dize |
-     | `Value` |{"Dal": \< *Dal adınız*>, "runbookfolderpath": \< *runbook klasörü yolu*>, "providertype": \< *GitHub*>, "depo": \< *deponun adı*>, "Kullanıcı adı": \< *GitHub Kullanıcı adınız*>} |
+     | `Value` |{"Branch": \<*Your branch name*> , "runbookfolderpath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "depo": \<*Name of your repository*> , "kullanıcıadı": \<*Your GitHub user name*> } |
 
    * **Microsoft. Azure. Automation. SourceControl. OAuthToken**değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
 
-     |**Parametresinin**            |**Değer** |
+     |**Parametre**            |**Değer** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |

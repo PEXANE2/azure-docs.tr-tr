@@ -5,10 +5,9 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828993"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure otomatik ölçeklendirmeyi genel bakış
@@ -38,7 +37,7 @@ Sanal Makine Ölçek Kümeleri, Azure tanılama aracılarından telemetri verile
 ## <a name="custom-metrics"></a>Özel ölçümler
 Ayrıca, uygulamanızın yayılacağı özel ölçümlerinizi de kullanabilirsiniz. Uygulamanızı, Application Insights ölçümleri gönderecek şekilde yapılandırdıysanız, ölçeklendirip ölçeklenmeyeceğini kararlamak için bu ölçülerden yararlanabilirsiniz.
 
-## <a name="time"></a>Zaman
+## <a name="time"></a>Saat
 Zamanlama tabanlı kurallar UTC 'yi temel alır. Kurallarınızı ayarlarken saat diliminizi doğru ayarlamanız gerekir.  
 
 ## <a name="rules"></a>Kurallar
@@ -89,7 +88,7 @@ Buna karşılık dikey ölçeklendirme farklıdır. Aynı sayıda VM 'yi tutar, 
 ## <a name="methods-of-access"></a>Erişim yöntemleri
 Otomatik ölçeklendirmeyi kullanarak ayarlama
 
-* [Azure portal](autoscale-get-started.md)
+* [Azure portalındaki](autoscale-get-started.md)
 * [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformlar arası Komut Satırı Arabirimi (CLI)](../samples/cli-samples.md#autoscale)
 * [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931953.aspx)

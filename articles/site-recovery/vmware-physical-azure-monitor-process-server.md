@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835062"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
@@ -37,7 +36,7 @@ Genellikle işlem sunucusu performansını etkileyen bazı durumlar vardır. Per
 
 Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir. 
 
-**Neden?** Bir VM için bir kurtarma noktası oluşturmak, sanal makinenin tüm disklerinin ortak bir noktaya sahip olmasını gerektirir. Bir disk yüksek bir karmaşıklık hızına sahipse, çoğaltma yavaşsa veya işlem sunucusu en iyi durumda değilse, kurtarma noktalarının ne şekilde oluşturulduğunu etkiler.
+**Neden mi?** Bir VM için bir kurtarma noktası oluşturmak, sanal makinenin tüm disklerinin ortak bir noktaya sahip olmasını gerektirir. Bir disk yüksek bir karmaşıklık hızına sahipse, çoğaltma yavaşsa veya işlem sunucusu en iyi durumda değilse, kurtarma noktalarının ne şekilde oluşturulduğunu etkiler.
 
 ## <a name="monitor-proactively"></a>Proaktif izleme
 

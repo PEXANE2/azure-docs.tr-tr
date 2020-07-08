@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 5fc374cdb60d20896ef01c34f57897c902bbe532
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828874"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu'nda Runbook başlatma
@@ -18,12 +17,12 @@ Aşağıdaki tablo, belirli senaryonuz için en uygun olan Azure Otomasyonu 'nda
 
 | **Yöntem** | **Özellikler** |
 | --- | --- |
-| [Azure portal](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
+| [Azure portalındaki](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş bir özelliğe eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
 | [Azure Otomasyonu API 'SI](/rest/api/automation/) |<li>En esnek yöntem, ancak çoğu karmaşıktır.<br> <li>HTTP istekleri yapan herhangi bir özel koddan çağırın.<br> <li>Sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile kimlik doğrulaması iste.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın. *API 'yi kullanarak bir Python runbook 'u arıyorsanız JSON yükünün serileştirilmesi gerekir.*<br> <li>İş durumunu izleyin. |
 | [Web Kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
 | [Azure uyarısına yanıt verme](../log-analytics/log-analytics-alerts.md) |<li>Azure uyarısına yanıt olarak bir runbook başlatın.<br> <li>Runbook için Web kancasını yapılandırın ve uyarı bağlantısı yapın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı. |
-| [Zamanlama](automation-schedules.md) |<li>Runbook 'u saatlik, günlük, haftalık veya aylık zamanlamaya göre otomatik olarak başlatın.<br> <li>Azure portal, PowerShell cmdlet 'leri veya Azure API aracılığıyla zamanlamayı işleme.<br> <li>Zamanlamaya göre kullanılacak parametre değerlerini sağlayın. |
+| [Zamanla](automation-schedules.md) |<li>Runbook 'u saatlik, günlük, haftalık veya aylık zamanlamaya göre otomatik olarak başlatın.<br> <li>Azure portal, PowerShell cmdlet 'leri veya Azure API aracılığıyla zamanlamayı işleme.<br> <li>Zamanlamaya göre kullanılacak parametre değerlerini sağlayın. |
 | [Başka bir runbook 'tan](automation-child-runbooks.md) |<li>Runbook 'u başka bir runbook 'ta etkinlik olarak kullanın.<br> <li>Birden çok runbook tarafından kullanılan işlevsellik için faydalıdır.<br> <li>Alt runbook 'a parametre değerleri sağlayın ve üst runbook 'ta çıktıyı kullanın. |
 
 Aşağıdaki görüntüde, bir runbook 'un yaşam döngüsünde ayrıntılı adım adım işlem gösterilmektedir. Bu, bir runbook 'un Azure Otomasyonu 'nda başladığı farklı yollarını içerir. Bu, karma Runbook Worker için gereken bileşenleri Azure Otomasyonu runbook 'larını ve farklı bileşenler arasında etkileşimleri yürütmek için gereklidir. Veri merkezinizde Otomasyon Runbook 'larını yürütme hakkında bilgi edinmek için [karma runbook çalışanlarına](automation-hybrid-runbook-worker.md) bakın

@@ -4,10 +4,9 @@ description: Dosyalar ve dizinler hakkında bilgi edinin ve bunların bir geliş
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: e7babb7e2cfdbbe78f61be766c549c1e80cacf98
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83791123"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch dosya ve dizinler
@@ -18,7 +17,7 @@ Batch hizmeti bir düğümdeki dosya sisteminin bir bölümünü *kök dizin* ol
 
 Kök dizin aşağıdaki dizin yapısını içerir:
 
-! [İşlem düğümü dizin yapısı] [media\files-and-directories\node-Folder-Structure.exe]
+! [İşlem düğümü dizin yapısı] [media\files-and-directories\node-folder-structure.png]
 
 - **uygulamalar**: işlem düğümünde yüklü olan uygulama paketlerinin ayrıntıları hakkında bilgiler içerir. Görevler `AZ_BATCH_APP_PACKAGE` ortam değişkenine başvurarak bu dizine erişebilir.
 

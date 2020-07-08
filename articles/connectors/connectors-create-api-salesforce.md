@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 73aeef24fde9fe58b89f1aa7789970e77e985d50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834841"
 ---
-# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Salesforce kaynaklarını izleyin, oluşturun ve yönetin
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Salesforce kaynaklarınızı izleme, oluşturma ve yönetme
 
 Azure Logic Apps ve Salesforce Bağlayıcısı sayesinde, Salesforce kaynaklarınız için kayıtlar, işler ve nesneler gibi otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
@@ -58,7 +57,7 @@ Salesforce 'tan yanıt alan Salesforce tetikleyicilerini kullanabilir ve çıkt�
 
 Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/salesforce/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

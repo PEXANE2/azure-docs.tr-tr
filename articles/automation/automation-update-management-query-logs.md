@@ -6,10 +6,9 @@ ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830778"
 ---
 # <a name="query-update-management-logs"></a>Güncelleştirme Yönetimi günlüklerini sorgulama
@@ -74,7 +73,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | PublishedDate (UTC) | Güncelleştirmenin Windows Update indirilmeye ve yüklenmeye hazırlanma tarihi.  |
 | UpdateState | Güncelleştirmenin geçerli durumu. | 
 | Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
-| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. | 
+| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
 | ResourceGroup | Kaynağın ait olduğu kaynak grubunun adı. | 
 | ResourceProvider | Kaynak sağlayıcısı. | 
 | Kaynak | Kaynağın adı. | 
@@ -124,7 +123,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | SourceComputerId | Kaynak bilgisayarı temsil eden benzersiz tanımlayıcı. | 
 | SourceSystem | Kayıt için kaynak sistem. Değer `OperationsManager` . |
 | StartTime | Güncelleştirmenin yüklenmek üzere zamanlandığı zaman. |
-| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. | 
+| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
 | SucceededOnRetry | Güncelleştirme yürütmenin ilk denemede başarısız olup olmadığını ve geçerli işlemin yeniden deneme girişimi olduğunu gösteren değer. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
 | Başlık | Güncelleştirme başlığı. |
@@ -157,7 +156,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | SecurityUpdatesMissing | Geçerli olan eksik güvenlik güncelleştirmelerinin sayısı.| 
 | SourceComputerId | Sanal makine için benzersiz tanımlayıcı. |
 | SourceSystem | Kayıt için kaynak sistem. Değer `OpsManager` . | 
-| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. |
+| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
 | TotalUpdatesMissing | Geçerli olan eksik güncelleştirmelerin toplam sayısı. | 
 | Tür | Kayıt türü. Değer `UpdateSummary` . |

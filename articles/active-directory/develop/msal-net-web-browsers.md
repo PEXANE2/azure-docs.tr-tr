@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772055"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
@@ -45,15 +44,15 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 
 ### <a name="at-a-glance"></a>Bir bakışta
 
-| Framework        | Eklenen | Sistem | Varsayılan |
+| Framework        | Ekleme | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Yes | Evet ^ | Eklenen |
-| .NET Core     | No | Evet ^ | Sistem |
-| .NET Standard | No | Evet ^ | Sistem |
-| UWP | Yes | Hayır | Eklenen |
+| .NET klasik     | Evet | Evet ^ | Ekleme |
+| .NET Core     | Hayır | Evet ^ | Sistem |
+| .NET Standard | Hayır | Evet ^ | Sistem |
+| UWP | Evet | Hayır | Ekleme |
 | Xamarin.Android | Yes | Yes  | Sistem |
 | Xamarin.iOS | Yes | Yes  | Sistem |
-| Xamarin.Mac| Yes | Hayır | Eklenen |
+| Xamarin.Mac| Evet | Hayır | Ekleme |
 
 ^ " http://localhost " Yeniden yönlendirme URI 'si gerektirir
 
@@ -154,7 +153,7 @@ MSAL.NET ' de ekli Web görünümü ve sistem tarayıcısı arasında bazı gör
 
 ![Sistem tarayıcısı](media/msal-net-web-browsers/system-browser.png)
 
-### <a name="developer-options"></a>Geliştirici seçenekleri
+### <a name="developer-options"></a>Geliştirici Seçenekleri
 
 MSAL.NET kullanan bir geliştirici olarak, STS 'den etkileşimli iletişim kutusunu görüntülemek için çeşitli seçenekleriniz vardır:
 

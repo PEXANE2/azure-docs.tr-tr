@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831628"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
@@ -232,7 +231,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Hedef** | *\<e-posta adresi \@ etki alanı>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Hedef** | *\<email-address\@domain>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
       | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 
@@ -250,7 +249,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 | Özellik | Varsayılan değer | Açıklama | 
 | -------- | ------------- | ----------- | 
 | **Biriktirme** | 60 | Döngüden önce çalışan en yüksek döngü sayısı. Varsayılan değer 60 döngüdir. | 
-| **Aş** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 
+| **Zaman aşımı** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 
 |||| 
 
 Bu varsayılan sınırları değiştirmek için döngü eylemi şeklinin **Gelişmiş seçeneklerini göster** ' i seçin.
@@ -333,7 +332,7 @@ Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağı
 }
 ```
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Kullanıcı geri bildirim sitesini Azure Logic Apps](https://aka.ms/logicapps-wish).

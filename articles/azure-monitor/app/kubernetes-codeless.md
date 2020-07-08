@@ -6,16 +6,15 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/13/2020
 ms.openlocfilehash: 76f9f922697ef6be6c959ea7f9bafd0872dba6ff
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773767"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes---azure-monitor-application-insights"></a>Kubernetes için sıfır izleme uygulaması izlemesi-Azure Izleyici Application Insights
 
 > [!IMPORTANT]
->  Şu anda, kodunuzu kullanıma açmadan Kubernetes üzerinde çalışan Java uygulamalarınız için izlemeyi etkinleştirebilirsiniz- [Java tek başına aracısını](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)kullanın. Uygulama izlemeyi sorunsuz bir şekilde etkinleştirmeye yönelik çözüm diğer diller için çalışır durumda olsa da, AKS 'de çalışan uygulamalarınızı izlemek için SDK 'Ları kullanın: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)ve [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+>  Şu anda, kodunuzu kullanıma açmadan Kubernetes üzerinde çalışan Java uygulamalarınız için izlemeyi etkinleştirebilirsiniz- [Java tek başına aracısını](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)kullanın. Uygulama izlemeyi sorunsuz bir şekilde etkinleştirmeye yönelik çözüm diğer diller için çalışır durumda olsa da, AKS 'de çalışan uygulamalarınızı izlemek için SDK 'Ları kullanın: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)ve [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
 ## <a name="application-monitoring-without-instrumenting-the-code"></a>Kodu kaldırmadan uygulama izleme
 Şu anda yalnızca Java, kodu kaldırmadan uygulama izlemeyi etkinleştirmenizi sağlar. Diğer dillerdeki uygulamaları izlemek için SDK 'Ları kullanın. 

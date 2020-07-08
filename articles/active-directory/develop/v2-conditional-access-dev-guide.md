@@ -1,5 +1,5 @@
 ---
-title: Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
+title: Azure Active Directory Koşullu Erişimi için geliştirici kılavuzu
 titleSuffix: Microsoft identity platform
 description: Azure AD koşullu erişim ve Microsoft Identity platformu için Geliştirici Kılavuzu ve senaryoları.
 services: active-directory
@@ -15,17 +15,16 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771086"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu Erişimi için geliştirici kılavuzu
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Multi-factor authentication](../authentication/concept-mfa-howitworks.md)
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -49,7 +48,7 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 
 * Şirket adına akış gerçekleştiren uygulamalar
 * Birden çok hizmete/kaynağa erişen uygulamalar
-* MSAL. js kullanan tek sayfalı uygulamalar
+* MSAL.js kullanan tek sayfalı uygulamalar
 * Kaynak çağırma Web Apps
 
 Koşullu erişim ilkeleri uygulamaya uygulanabilir, ancak uygulamanızın eriştiği bir Web API 'sine de uygulanabilir. Koşullu erişim ilkesini yapılandırma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../conditional-access/app-based-mfa.md).
@@ -101,7 +100,7 @@ Aşağıdaki bilgiler yalnızca bu koşullu erişim senaryolarında geçerlidir:
 
 * Şirket adına akış gerçekleştiren uygulamalar
 * Birden çok hizmete/kaynağa erişen uygulamalar
-* MSAL. js kullanan tek sayfalı uygulamalar
+* MSAL.js kullanan tek sayfalı uygulamalar
 
 Aşağıdaki bölümlerde daha karmaşık olan yaygın senaryolar ele alınmaktadır. Çekirdek işletim ilkesi, koşullu erişim ilkeleri uygulanmış olan hizmet için belirtecin istendiği sırada değerlendirilir.
 
@@ -150,11 +149,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Uygulama MSAL kitaplığını kullanıyorsa, belirteci alma hatası her zaman etkileşimli olarak yeniden denenir. Bu etkileşimli istek gerçekleştiğinde, son kullanıcının koşullu erişime uyum sağlamak için bir fırsat vardır. İstek bir `AcquireTokenSilentAsync` veya bu `PromptBehavior.Never` durumda, uygulamanın ```AcquireToken``` son kullanıcıya ilkeyle uyum sağlaması için etkileşimli bir istek gerçekleştirmesi gereken durumlar bu şekilde geçerlidir.
 
-## <a name="scenario-single-page-app-spa-using-msaljs"></a>Senaryo: MSAL. js kullanan tek sayfalı uygulama (SPA)
+## <a name="scenario-single-page-app-spa-using-msaljs"></a>Senaryo: MSAL.js kullanarak tek sayfalı uygulama (SPA)
 
-Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için MSAL. js ' yi kullanarak tek sayfalı bir uygulama (SPA) olduğunda büyük/küçük harfe kılavuzluk ederiz. Bu basit bir mimaridir, ancak koşullu erişim konusunda geliştirme yaparken dikkate alınması gereken bazı nuslar vardır.
+Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için MSAL.js kullanarak tek sayfalı bir uygulama (SPA) olduğunda büyük/küçük harfe ilerliyoruz. Bu basit bir mimaridir, ancak koşullu erişim konusunda geliştirme yaparken dikkate alınması gereken bazı nuslar vardır.
 
-MSAL. js ' de, belirteçleri elde eden birkaç işlev vardır: `loginPopup()` ,, `acquireTokenSilent(...)` `acquireTokenPopup(…)` ve `acquireTokenRedirect(…)` .
+MSAL.js, belirteçleri elde eden birkaç işlev vardır: `loginPopup()` , `acquireTokenSilent(...)` , `acquireTokenPopup(…)` , ve `acquireTokenRedirect(…)` .
 
 * `loginPopup()`etkileşimli bir oturum açma isteği aracılığıyla bir KIMLIK belirteci edinir, ancak herhangi bir hizmet için (koşullu erişim korumalı Web API 'SI dahil) erişim belirteçleri almaz.
 * `acquireTokenSilent(…)`daha sonra, bir erişim belirtecini sessizce almak için kullanılabilir ve bu, herhangi bir koşulda Kullanıcı arabirimini göstermez.
@@ -176,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Uygulamamız için catch gerekmektedir `error=interaction_required` . Uygulama daha sonra aynı kaynakta ya da kullanabilir `acquireTokenPopup()` `acquireTokenRedirect()` . Kullanıcı çok faktörlü kimlik doğrulaması yapmak için zorlanır. Kullanıcı Multi-Factor Authentication 'ı tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci vermiş olur.
 
-Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA ile ilgili yönergeler için genel [angular. js kod örneğini](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) kullanıma alın
+Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA üzerinde rehberlik için genel [Angular.js kod örneğini](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) kullanıma alın
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

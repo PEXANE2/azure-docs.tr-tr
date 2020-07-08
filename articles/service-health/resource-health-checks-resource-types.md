@@ -4,10 +4,9 @@ description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83816107"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
@@ -23,7 +22,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>API Yönetimi hizmeti çalışır duruma mi çalışıyor?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Yürütülen denetimler|
 |---|
 |<ul><li>Batch hesabı çalışır duruma mi çalışıyor?</li><li>Bu Batch hesabı için havuz kotası aşıldı mi?</li></ul>|
@@ -104,7 +103,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>IoT Hub 'ı çalışır duruma mi çalışıyor?</li></ul>|
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Umentdb/databaseAccounts Microsoft.doc
 |Yürütülen denetimler|
 |---|
 |<ul><li>Bir Azure Cosmos DB hizmeti KULLANILAMAMASINDAN dolayı hiçbir veritabanı veya koleksiyon isteği yoktu mi?</li><li>Azure Cosmos DB hizmeti KULLANILAMAMASINDAN dolayı hiçbir belge isteği sunulmadı mu?</li></ul>|

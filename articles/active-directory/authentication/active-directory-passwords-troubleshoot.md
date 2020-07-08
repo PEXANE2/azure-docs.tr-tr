@@ -13,10 +13,9 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826528"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Self servis parolasını sıfırlama sorunlarını giderme

@@ -8,10 +8,9 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772845"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>App Service veya Azure Işlevleri uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
@@ -28,7 +27,7 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
 1. Azure portal [**uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gidin. Gerekirse Microsoft hesabı oturum açın.
 1. **Yeni kayıt**' ı seçin ve ardından bir uygulama adı girin.
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar** ' ı seçin
-1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından girin `https://<app-domain-name>/.auth/login/aad/callback` . * \< App-Domain-Name>* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
+1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından girin `https://<app-domain-name>/.auth/login/aad/callback` . *\<app-domain-name>* Uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
 
 1. **Kaydol**’u seçin.
 1. **Uygulama (istemci) kimliğini**kopyalayın. Buna daha sonra ihtiyacınız olacak.
@@ -52,7 +51,7 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
    > [!CAUTION]
    > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi, genel kullanıma açık bir giriş sayfasına sahip olan uygulamalar için istenmeyebilir. Bu tür uygulamalar için **anonim Isteklere Izin ver (eylem yok)** , uygulamanın kimlik doğrulamanın kendisini el ile başlattığı şekilde tercih edilebilir. Daha fazla bilgi için bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow).
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanmaya hazırsınız.
 
@@ -63,4 +62,4 @@ Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanma
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/

@@ -1,7 +1,7 @@
 ---
-title: Internet Explorer & Microsoft Edge 'deki sorunlar (MSAL. js) | Mavisi
+title: Internet Explorer & Microsoft Edge 'deki sorunlar (MSAL.js) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Internet Explorer ve Microsoft Edge tarayıcılarıyla JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanırken oluşan sorunları öğrenin.
+description: Internet Explorer ve Microsoft Edge tarayıcılarıyla JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanırken oluşan sorunları öğrenin.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,19 +14,18 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772089"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında ilgili bilinen sorunlar (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>Güvenlik bölgeleri nedeniyle oluşan sorunlar
 IE ve Microsoft Edge 'de kimlik doğrulamasıyla ilgili birçok sorun raporu sunuyoruz ( *Microsoft Edge tarayıcı sürümü 40.15063.0.0 ' e*güncelliyoruz). Bunları izliyor ve Microsoft Edge ekibinin bilgilendirilmesi yaptık. Microsoft Edge bir çözünürlükte çalışırken, sık karşılaşılan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.
 
 ### <a name="cause"></a>Nedeni
-Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depolama ve yerel depolama, Microsoft Edge tarayıcısında güvenlik bölgelerine göre bölümlendirilir. Microsoft Edge 'in bu sürümünde, uygulama bölgeler arasında yeniden yönlendirildiğinde, oturum depolama ve yerel depolama temizlenir. Özellikle, oturum depolama, normal tarayıcı gezinmede temizlenir ve hem oturum hem de yerel depolama, tarayıcının InPrivate modunda temizlenir. MSAL. js, oturum depolama alanındaki belirli durumları kaydeder ve kimlik doğrulama akışları sırasında bu durumu denetlemeye dayanır. Oturum depolama alanı kaldırıldığında, bu durum kaybedilir ve bu nedenle bozuk deneyimler oluşur.
+Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depolama ve yerel depolama, Microsoft Edge tarayıcısında güvenlik bölgelerine göre bölümlendirilir. Microsoft Edge 'in bu sürümünde, uygulama bölgeler arasında yeniden yönlendirildiğinde, oturum depolama ve yerel depolama temizlenir. Özellikle, oturum depolama, normal tarayıcı gezinmede temizlenir ve hem oturum hem de yerel depolama, tarayıcının InPrivate modunda temizlenir. MSAL.js, oturum depolama alanındaki belirli durumları kaydeder ve kimlik doğrulama akışları sırasında bu durumu denetlemeye bağımlıdır. Oturum depolama alanı kaldırıldığında, bu durum kaybedilir ve bu nedenle bozuk deneyimler oluşur.
 
 ### <a name="issues"></a>Sorunlar
 
@@ -36,12 +35,12 @@ Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depol
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- Açılan **pencere, kimlik doğrulaması Için açılan pencere aracılığıyla oturum açma kullanılırken kapanmaz veya takılmaz**. Microsoft Edge veya IE (InPrivate) üzerinde açılan pencere aracılığıyla kimlik doğrulaması yaparken, kimlik bilgilerini girdikten ve oturum açtıktan sonra, güvenlik bölgelerinde birden çok etki alanı gezinmede yer alıyorsa, MSAL. js açılan pencere için tanıtıcıyı kaybettiğinde açılan pencere kapanmaz.  
+- Açılan **pencere, kimlik doğrulaması Için açılan pencere aracılığıyla oturum açma kullanılırken kapanmaz veya takılmaz**. Microsoft Edge veya IE (InPrivate) üzerinde açılan pencere aracılığıyla kimlik doğrulaması yaparken, kimlik bilgilerini girdikten ve oturum açtıktan sonra, güvenlik bölgelerinde birden çok etki alanı gezinmede yer alıyorsa, MSAL.js açılan pencere için tutamacı kaybettiğinden açılan pencere kapanmaz.  
 
-### <a name="update-fix-available-in-msaljs-023"></a>Güncelleştirme: MSAL. js 0.2.3 'de çözüm kullanılabilir
-Kimlik doğrulama yönlendirme döngüsü sorunları için düzeltmeler [msal. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)içinde yayımlanmıştır. `storeAuthStateInCookie`Bu düzeltmeden faydalanmak IÇIN msal. js config içindeki bayrağı etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.
+### <a name="update-fix-available-in-msaljs-023"></a>Güncelleştirme: MSAL.js 0.2.3 'de çözüm kullanılabilir
+[MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)' de kimlik doğrulaması yeniden yönlendirme döngüsü sorunları için düzeltmeler yayınlandı. `storeAuthStateInCookie`Bu düzeltmeden yararlanmak için MSAL.js config 'de bayrağı etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.
 
-`storeAuthStateInCookie`Bayrak etkinleştirildiğinde, msal. js, kimlik doğrulama akışlarının doğrulanması için gereken istek durumunu depolamak üzere tarayıcı tanımlama bilgilerini kullanır.
+`storeAuthStateInCookie`Bayrak etkinleştirildiğinde MSAL.js, kimlik doğrulama akışlarının doğrulanması için gereken istek durumunu depolamak üzere tarayıcı tanımlama bilgilerini kullanır.
 
 > [!NOTE]
 > Bu düzelme henüz msal-angular ve msal-AngularJS sarmalayıcıları için kullanılamaz. Bu düzeltilme, açılan pencereler ile ilgili sorunu gidermez.
@@ -57,7 +56,7 @@ Bunu yapmak için şu adımları uygulayın:
     - **Güvenlik** sekmesini seçin
     - **Güvenilen siteler** seçeneğinin altında, **siteler** düğmesine tıklayın ve açılan iletişim kutusuna URL 'leri ekleyin.
 
-2. Daha önce belirtildiği gibi, normal gezinme sırasında yalnızca oturum depolama alanı temizlendiğinden, bunun yerine MSAL. js ' yi yerel depolamayı kullanacak şekilde yapılandırabilirsiniz. Bu, `cacheLocation` msal başlatılırken yapılandırma parametresi olarak ayarlanabilir.
+2. Daha önce belirtildiği gibi, normal gezinme sırasında yalnızca oturum depolama alanı temizlendiğinden, bunun yerine yerel depolamayı kullanmak üzere MSAL.js yapılandırabilirsiniz. Bu, `cacheLocation` msal başlatılırken yapılandırma parametresi olarak ayarlanabilir.
 
 Not, bu, hem oturum hem de yerel depolama olmadığından, InPrivate Gözatma sorununu çözmeyecektir.
 
@@ -68,4 +67,4 @@ IE veya Microsoft Edge 'de açılan pencereler engellendiğinde, örneğin [çok
 Geçici bir **çözüm**olarak, geliştiricilerin bu sorundan kaçınmak üzere uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge 'de açılan pencerelere izin vermesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Internet Explorer 'DA msal. js kullanma](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.
+[Internet Explorer 'da MSAL.js kullanma](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.
