@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509787"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
@@ -23,13 +23,13 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 | Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket içinde takılamaz |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server 2016 | SMB 3.0 | Yes | Yes |
-| Windows 8.1 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Windows Server 2019 | SMB 3.0 | Yes | Evet |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Evet |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Evet |
+| Windows Server 2016 | SMB 3.0 | Yes | Evet |
+| Windows 8.1 | SMB 3.0 | Yes | Evet |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Evet |
+| Windows Server 2012 | SMB 3.0 | Yes | Evet |
 | Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 
@@ -57,7 +57,7 @@ Azure portal, dosya paylaşımınızı doğrudan bir konağa bağlamak için kul
 
 Bu betiği almak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
 1. **Dosya paylaşımları**' nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.

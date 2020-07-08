@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508257"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
@@ -57,8 +57,8 @@ Her cihaz ve birim türü için sağlanan maksimum kapasite için aşağıdaki t
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Sanal cihazlar** | | |
-| 8010 |30 TB |Yok |
-| 8020 |64 TB |Yok |
+| 8010 |30 TB |YOK |
+| 8020 |64 TB |YOK |
 
 ## <a name="the-volumes-blade"></a>Birimler dikey penceresi
 

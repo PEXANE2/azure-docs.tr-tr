@@ -9,10 +9,10 @@ author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
 ms.openlocfilehash: 3e79f0498aa14bed1cda29148a6b3c7e1e9e2a3d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508478"
 ---
 # <a name="azure-resource-providers-operations"></a>Azure kaynak sağlayıcıları işlemleri
@@ -6535,7 +6535,7 @@ Azure hizmeti: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | --- | --- |
 > | Microsoft. VisualStudio/Register/ACTION | Azure aboneliğini Microsoft. VisualStudio sağlayıcısıyla kaydetme |
 > | Microsoft. VisualStudio/Account/Write | Hesabı ayarla |
-> | Microsoft. VisualStudio/Account/Delete | Hesabı Sil |
+> | Microsoft. VisualStudio/Account/Delete | Hesabı Silme |
 > | Microsoft. VisualStudio/Account/Read | Hesabı oku |
 > | Microsoft. VisualStudio/Account/EXTENSION/Read | Hesabı/uzantıyı oku |
 > | Microsoft. VisualStudio/Account/Project/Read | Hesabı/projeyi oku |

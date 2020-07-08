@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508929"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
@@ -93,7 +93,7 @@ Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için 
    
    | Sonuç sütunu | Açıklama |
    |:--- |:--- |
-   |  Adı |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
+   |  Name |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
    |  Cihaz |**Cihaz** sütunu, ana bilgisayara bağlı olan cihazın IP adresini içerir. |
    |  Cihaz birimi adı |**Cihaz birimi adı** sütunu, Seçilen birimin ait olduğu cihaz biriminin adını içerir. Bu, söz konusu birimin Azure portal tanımlanan birim adıdır. |
    |  Erişim yolları |**Erişim yolları** sütunu, birimin erişim yolunu görüntüler. Bu, birimin ana bilgisayar üzerinde erişilebilir olduğu sürücü harfi veya bağlama noktasıdır. |
