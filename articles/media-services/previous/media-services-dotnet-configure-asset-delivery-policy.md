@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974521"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>.NET SDK ile varlık teslim ilkelerini yapılandırma
@@ -54,7 +53,7 @@ MPEG DASH
 
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=mpd-time-csf)
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * AssetDeliveryPolicy öğesini silmeden önce varlıkla ilişkili tüm akış bulıcıları silmelisiniz. Daha sonra isterseniz yeni bir AssetDeliveryPolicy ile yeni akış Konumlandırıcı oluşturabilirsiniz.
 * Bir varlık dağıtım ilkesi ayarlanmamışsa, depolama ile şifrelenmiş bir varlık üzerinde bir akış Bulucu oluşturulamaz.  Varlık depolama şifreli değilse, sistem bir bulucu oluşturmanıza ve varlığı bir varlık teslim ilkesi olmadan net bir şekilde akışla oluşturmanıza izin verir.
 * Tek bir varlıkla ilişkili birden fazla varlık teslim ilkesi olabilir, ancak belirli bir AssetDeliveryProtocol öğesini işlemek için yalnızca bir yol belirtebilirsiniz.  Bu durum, sistem bir Kesintisiz Akış isteği yaptığında bir hata ile sonuçlanmayacak olan AssetDeliveryProtocol. Yumuşakan akış protokolünü belirten iki teslim ilkesini bağlamayı denerseniz ortaya bir hataya neden olur.
@@ -357,6 +356,6 @@ Aşağıdaki Enum, bir varlık teslim ilkesi için özel yapılandırma almak ü
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

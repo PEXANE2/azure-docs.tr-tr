@@ -15,10 +15,9 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896067"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma 
@@ -82,7 +81,7 @@ Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımla
 
 Aşağıdaki [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur. 
 
-Komutu, izleme seçimlerini temsil eden JSON içeren `--tracks` isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
+Komutu, `--tracks` izleme seçimlerini temsil eden JSON içeren isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
@@ -104,7 +103,7 @@ Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/a
 
 Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-Aşağıdaki CLı kodu, bir akış Bulucu oluşturma ve belirtme `filters`işlemlerinin nasıl yapılacağını gösterir. Bu, varlık filtresi adlarının ve/veya hesap filtresi adlarının boşlukla ayrılmış bir listesini alan isteğe bağlı bir özelliktir.
+Aşağıdaki CLı kodu, bir akış Bulucu oluşturma ve belirtme işlemlerinin nasıl yapılacağını gösterir `filters` . Bu, varlık filtresi adlarının ve/veya hesap filtresi adlarının boşlukla ayrılmış bir listesini alan isteğe bağlı bir özelliktir.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \

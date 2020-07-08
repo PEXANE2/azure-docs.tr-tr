@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931779"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory kopyalama etkinliğini kullanarak DB2 verilerini taşıyın
@@ -80,14 +79,14 @@ Aşağıdaki tabloda, bir DB2 bağlantılı hizmetine özgü JSON özellikleri l
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **OnPremisesDb2**olarak ayarlanmalıdır. |Yes |
-| **Server** |DB2 sunucusunun adı. |Yes |
-| **veritabanınızı** |DB2 veritabanının adı. |Yes |
+| **türüyle** |Bu özellik **OnPremisesDb2**olarak ayarlanmalıdır. |Evet |
+| **Server** |DB2 sunucusunun adı. |Evet |
+| **veritabanınızı** |DB2 veritabanının adı. |Evet |
 | **manızı** |DB2 veritabanındaki şemanın adı. Bu özellik büyük/küçük harfe duyarlıdır. |Hayır |
-| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
 | **nitelen** |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı hesabının adı. |Hayır |
 | **parola** |Kullanıcı hesabının parolası. |Hayır |
-| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Tüm veri kümesi türleri (Azure SQL, Azure Blob depolama, Azure Tablo depolama, vb.) için **Yapı**, **kullanılabilirlik**ve **ilke** gibi bölümler de benzerdir.
@@ -312,12 +311,12 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Kayan |Çift |
+| Float |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |
 | Tarih |DateTime |
-| Zaman |TimeSpan |
+| Saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Xml |Byte [] |
 | Char |Dize |
@@ -338,12 +337,12 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Kayan |Çift |
+| Float |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |
 | Tarih |DateTime |
-| Zaman |TimeSpan |
+| Saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Xml |Byte [] |
 | Char |Dize |

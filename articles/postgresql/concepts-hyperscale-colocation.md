@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74967346"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
@@ -68,7 +67,7 @@ Bu sorgunun [çalışma kümesi](https://en.wikipedia.org/wiki/Working_set) bell
 
 Tek sunuculu sorgular, kiracıların sayısı ve her kiracı için depolanan veriler büyüdükçe yavaşlamadan başlar. Çalışma kümesi, bellek içinde sığdırma işlemini durduruyor ve CPU bir performans sorunu haline geliyor.
 
-Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüme parçalayabilirsiniz. Dağıtım sütunu, parçalara ayırmaya karar verirken yapmanız gereken ilk ve en önemli seçenektir. Olay tablosu ve `event_id` `page_id` `page` tablo için bir Naïve seçimi ile başlayalım:
+Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüme parçalayabilirsiniz. Dağıtım sütunu, parçalara ayırmaya karar verirken yapmanız gereken ilk ve en önemli seçenektir. `event_id`Olay tablosu ve tablo için bir Naïve seçimi ile başlayalım `page_id` `page` :
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +108,7 @@ Veriler dağınık, bu nedenle sorgular paralelleştirilmiş olabilir. Yalnızca
 
 ### <a name="distribute-tables-by-tenant"></a>Tabloları kiracıya göre dağıtma
 
-Hiper ölçekte (Citus), aynı dağıtım sütunu değerine sahip satırların aynı düğümde olması garanti edilir. Sürümünden itibaren, tabloları dağıtım sütunu `tenant_id` olarak oluşturuyoruz.
+Hiper ölçekte (Citus), aynı dağıtım sütunu değerine sahip satırların aynı düğümde olması garanti edilir. Sürümünden itibaren, tabloları `tenant_id` dağıtım sütunu olarak oluşturuyoruz.
 
 ```sql
 -- co-locate tables by using a common distribution column

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348932"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors çerçevesinde çok biçimlilik
@@ -21,7 +20,7 @@ Reliable Actors Framework, aktör türü tarafından uygulanması için en az bi
 ![Şekil aktörleri için arabirim hiyerarşisi][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Türler
-Ayrıca, platform tarafından sunulan temel aktör sınıfından türetilmiş bir aktör türleri hiyerarşisi oluşturabilirsiniz. Şekiller söz konusu olduğunda, bir temel `Shape`(C#) veya `ShapeImpl`(Java) türü olabilir:
+Ayrıca, platform tarafından sunulan temel aktör sınıfından türetilmiş bir aktör türleri hiyerarşisi oluşturabilirsiniz. Şekiller söz konusu olduğunda, bir temel `Shape` (C#) veya `ShapeImpl` (Java) türü olabilir:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +39,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-`Shape`(C#) veya `ShapeImpl`(Java) alt türleri, temel alınan yöntemleri geçersiz kılabilir.
+`Shape`(C#) veya `ShapeImpl` (Java) alt türleri, temel alınan yöntemleri geçersiz kılabilir.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -83,7 +82,7 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Aktör türündeki `ActorService` özniteliği aklınızda edin. Bu öznitelik, güvenilir aktör çerçevesine, bu türden aktörlerin barındırılmasına yönelik otomatik olarak bir hizmet oluşturmasını söyler. Bazı durumlarda, yalnızca alt türlerine sahip işlevselliği paylaşmaya yönelik bir temel tür oluşturmak isteyebilirsiniz ve somut aktörlerin örneklendirilecek şekilde hiçbir zaman kullanılmaz. Bu durumlarda, bu tür temelinde hiçbir oyuncu `abstract` oluşturmayacağını belirtmek için anahtar sözcüğünü kullanmanız gerekir.
+`ActorService`Aktör türündeki özniteliği aklınızda edin. Bu öznitelik, güvenilir aktör çerçevesine, bu türden aktörlerin barındırılmasına yönelik otomatik olarak bir hizmet oluşturmasını söyler. Bazı durumlarda, yalnızca alt türlerine sahip işlevselliği paylaşmaya yönelik bir temel tür oluşturmak isteyebilirsiniz ve somut aktörlerin örneklendirilecek şekilde hiçbir zaman kullanılmaz. Bu durumlarda, `abstract` Bu tür temelinde hiçbir oyuncu oluşturmayacağını belirtmek için anahtar sözcüğünü kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Reliable Actors çerçevesinin güvenilirlik, ölçeklenebilirlik ve tutarlı durum sağlamak için [Service Fabric platformunu nasıl](service-fabric-reliable-actors-platform.md) kullandığını görün.

@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434709"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Simetrik anahtarlar kullanarak eski cihazları sağlama
@@ -63,7 +62,7 @@ SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyü
 
 2. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
+3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini parametre değeri olarak kullanın `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -73,7 +72,7 @@ SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyü
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. `azure-iot-sdk-c` Dizininden aşağıdaki komutları çalıştırın:
+4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. Dizininden aşağıdaki komutları çalıştırın `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -201,7 +200,7 @@ Cihazınız, sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama ge
 
 ## <a name="create-a-device-image-to-provision"></a>Sağlamak için bir cihaz görüntüsü oluşturma
 
-Bu bölümde, daha önce ayarladığınız Azure IoT C SDK 'sında **bulunan\_prov\_dev\_Client Sample** adlı bir sağlama örneğini güncelleşolursunuz. 
+Bu bölümde, daha önce ayarladığınız Azure IoT C SDK 'sında bulunan **prov \_ dev \_ Client \_ Sample** adlı bir sağlama örneğini güncelleşolursunuz. 
 
 Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, cihazın tanınmasına ve kayıt grubunda yapılandırdığınız IoT Hub 'ına atanmasına neden olur.
 
@@ -232,7 +231,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `prov_dev_set_symmetric_key_info()` **Prov\_dev\_Client\_Sample. c** ' de, açıklama eklenen çağrısını bulun.
+6. `prov_dev_set_symmetric_key_info()` **Prov \_ dev \_ Client \_ Sample. c** ' de, açıklama eklenen çağrısını bulun.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -250,7 +249,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
 
 7. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
-8. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama** > **olmadan Başlat** ' ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
+8. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
 
     Aşağıdaki çıkış, bir simülasyon cihazının başarıyla önyüklemesini yapma ve bir IoT hub’ına atanmak üzere sağlama Hizmeti örneğine bağlanma işlemlerinin bir örneğidir:
 

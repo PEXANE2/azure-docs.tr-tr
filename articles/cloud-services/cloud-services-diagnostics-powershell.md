@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
 ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386553"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme
@@ -37,7 +36,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Tanılama yapılandırma dosyası bir depolama hesabı adı `StorageAccount` olan bir öğe belirtiyorsa, `New-AzureServiceDiagnosticsExtensionConfig` cmdlet bu depolama hesabını otomatik olarak kullanacaktır. Bunun çalışması için, depolama hesabının dağıtılmakta olan bulut hizmeti ile aynı abonelikte olması gerekir.
+Tanılama yapılandırma dosyası bir `StorageAccount` depolama hesabı adı olan bir öğe belirtiyorsa, `New-AzureServiceDiagnosticsExtensionConfig` cmdlet bu depolama hesabını otomatik olarak kullanacaktır. Bunun çalışması için, depolama hesabının dağıtılmakta olan bulut hizmeti ile aynı abonelikte olması gerekir.
 
 Azure SDK 2,6 ' den itibaren, MSBuild yayımlama hedef çıktısı tarafından oluşturulan uzantı yapılandırma dosyaları, hizmet yapılandırma dosyasında (. cscfg) belirtilen tanılama yapılandırma dizesine göre depolama hesabı adını içerecektir. Aşağıdaki komut dosyası, bulut hizmetini dağıtma sırasında uzantı yapılandırma dosyalarını, hedef çıktısından Yayımla ve her rol için tanılama uzantısını yapılandırma ' yı nasıl ayrıştıracağınızı gösterir.
 
@@ -80,9 +79,9 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online, tanılama Uzantısı ile Cloud Services otomatik dağıtımları için benzer bir yaklaşım kullanır. Tüm örnek için bkz. [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
+Visual Studio Online, tanılama Uzantısı ile Cloud Services otomatik dağıtımları için benzer bir yaklaşım kullanır. [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) bir örnek için bkz..
 
-`StorageAccount` Tanılama yapılandırmasında belirtilmemişse, cmdlet 'e *storageAccountName* parametresini geçirmeniz gerekir. *StorageAccountName* parametresi belirtilmişse, cmdlet, her zaman parametresinde belirtilen depolama hesabını kullanır ve bu, tanılama yapılandırma dosyasında belirtilen bir değer değildir.
+`StorageAccount`Tanılama yapılandırmasında belirtilmemişse, cmdlet 'e *storageAccountName* parametresini geçirmeniz gerekir. *StorageAccountName* parametresi belirtilmişse, cmdlet, her zaman parametresinde belirtilen depolama hesabını kullanır ve bu, tanılama yapılandırma dosyasında belirtilen bir değer değildir.
 
 Tanılama depolama hesabı, bulut hizmetinden farklı bir abonelikte yer alıyorsa, cmdlet 'e *storageAccountName* ve *storageaccountkey* parametrelerini açıkça geçirmeniz gerekir. Tanılama depolama hesabı aynı abonelikte olduğunda *Storageaccountkey* parametresi gerekli değildir. cmdlet, tanılama uzantısını etkinleştirirken anahtar değerini otomatik olarak sorgulayabilir ve ayarlayabilir. Ancak, tanılama depolama hesabı farklı bir abonelikte ise, cmdlet anahtarı otomatik olarak alamaz ve anahtarı *Storageaccountkey* parametresi aracılığıyla açıkça belirtmeniz gerekir.
 

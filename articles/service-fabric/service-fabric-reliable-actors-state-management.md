@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348909"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors durum yönetimi
@@ -72,9 +71,9 @@ class MyActorImpl extends FabricActor implements MyActor
 Bu ayar yalnızca bellek içi bir durum sağlayıcısı kullanır ve çoğaltma sayısını 1 olarak ayarlar.
 
 ### <a name="defaults-and-generated-settings"></a>Varsayılanlar ve oluşturulan ayarlar
-`StatePersistence` Özniteliğini kullanırken, aktör hizmeti başladığında çalışma zamanında sizin için bir durum sağlayıcısı otomatik olarak seçilir. Ancak çoğaltma sayısı, Visual Studio aktör derleme araçları tarafından derleme sırasında ayarlanır. Yapı araçları, ApplicationManifest. xml dosyasında aktör hizmeti için otomatik olarak *varsayılan bir hizmet* oluşturur. **En az çoğaltma kümesi boyutu** ve **hedef çoğaltma kümesi boyutu**için parametreler oluşturulur.
+`StatePersistence`Özniteliğini kullanırken, aktör hizmeti başladığında çalışma zamanında sizin için bir durum sağlayıcısı otomatik olarak seçilir. Ancak çoğaltma sayısı, Visual Studio aktör derleme araçları tarafından derleme sırasında ayarlanır. Yapı araçları, ApplicationManifest.xml ' deki aktör hizmeti için otomatik olarak *varsayılan bir hizmet* oluşturur. **En az çoğaltma kümesi boyutu** ve **hedef çoğaltma kümesi boyutu**için parametreler oluşturulur.
 
-Bu parametreleri el ile değiştirebilirsiniz. Ancak, `StatePersistence` öznitelik her değiştirildiğinde parametreler seçili `StatePersistence` öznitelik için varsayılan çoğaltma kümesi boyut değerlerine ayarlanır ve önceki değerleri geçersiz kılar. Diğer bir deyişle, ServiceManifest. xml dosyasında ayarladığınız değerler *yalnızca* `StatePersistence` öznitelik değerini değiştirdiğinizde derleme zamanında geçersiz kılınır.
+Bu parametreleri el ile değiştirebilirsiniz. Ancak, öznitelik her `StatePersistence` değiştirildiğinde parametreler seçili öznitelik için varsayılan çoğaltma kümesi boyut değerlerine ayarlanır `StatePersistence` ve önceki değerleri geçersiz kılar. Diğer bir deyişle, ServiceManifest.xml ' de ayarladığınız değerler *yalnızca* öznitelik değerini değiştirdiğinizde derleme zamanında geçersiz kılınır `StatePersistence` .
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

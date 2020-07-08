@@ -13,10 +13,9 @@ ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422992"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory Avrupa müşterileri için kimlik veri depolaması
@@ -53,7 +52,7 @@ Azure AD DS, kullanıcı verilerini müşterinin seçtiği Azure Sanal Ağı ile
 Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz. [Federasyon: Exchange 2013 yardım](https://docs.microsoft.com/exchange/federation-exchange-2013-help) makalesi.
 
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 
 Azure AD ile tümleştirilen hizmet ve uygulamaların kimlik verilerine erişimi vardır. Kimlik verilerinin belirli bir hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her hizmeti ve uygulamayı değerlendirin.
 

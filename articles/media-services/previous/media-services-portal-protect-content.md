@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978211"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure portal kullanarak içerik koruma ilkelerini yapılandırma
@@ -38,7 +37,7 @@ Portalı kullanarak genel içerik korumasını Media Services hesabınızı kull
 
 1. [Portalda](https://portal.azure.com/)Media Services hesabınızı seçin.
 
-1. **Ayarlar** > **içerik koruması**' nı seçin.
+1. **Ayarlar**  >  **içerik koruması**' nı seçin.
 
     ![İçerik koruma](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -90,7 +89,7 @@ FairPlay şifrelemeyi etkinleştirmek için **Fairplay Configuration**' ı seçi
 Dinamik şifrelemenin avantajlarından yararlanmak için, kaynak dosyanızı Uyarlamalı bit hızı olan bir MP4 dosyası kümesine kodlayın.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Şifrelemek istediğiniz bir varlık seçin
-Tüm varlıklarınızı görmek için, **Ayarlar** > **varlıklar**' ı seçin.
+Tüm varlıklarınızı görmek için, **Ayarlar**  >  **varlıklar**' ı seçin.
 
 ![Varlıklar seçeneği](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
@@ -131,6 +130,6 @@ AES şifresiz anahtar şifrelemesi tüm akış protokollerinde etkinleştirilmi�
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

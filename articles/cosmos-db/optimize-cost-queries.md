@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445124"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de sorgu maliyetini iyileştirme
@@ -33,7 +32,7 @@ Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme s�
 
 Azure Cosmos kapsayıcılarınızda bazı verileri depoladıktan sonra, sorgularınızı oluşturmak ve çalıştırmak için Azure portal Veri Gezgini kullanabilirsiniz. Ayrıca, Veri Gezgini 'ni kullanarak sorguların maliyetini de alabilirsiniz. Bu yöntem, sisteminizin desteklediği tipik sorgular ve işlemlerle ilgili gerçek ücretler hakkında fikir verecektir.
 
-SDK 'Ları kullanarak, programlı bir şekilde sorgu maliyeti de alabilirsiniz. Oluşturma, güncelleştirme veya silme gibi herhangi bir işlemin ek yükünü ölçmek için REST API kullanırken `x-ms-request-charge` üstbilgiyi inceleyin. .NET veya Java SDK kullanıyorsanız, `RequestCharge` Özellik istek Ücretlendirisini almak için eşdeğer özelliktir ve bu özellik Resourceres, feedresponse içinde bulunur.
+SDK 'Ları kullanarak, programlı bir şekilde sorgu maliyeti de alabilirsiniz. Oluşturma, güncelleştirme veya silme gibi herhangi bir işlemin ek yükünü ölçmek için `x-ms-request-charge` REST API kullanırken üstbilgiyi inceleyin. .NET veya Java SDK kullanıyorsanız, `RequestCharge` özellik istek Ücretlendirisini almak için eşdeğer özelliktir ve bu özellik Resourceres, feedresponse içinde bulunur.
 
 ```csharp
 // Measure the performance (request units) of writes 

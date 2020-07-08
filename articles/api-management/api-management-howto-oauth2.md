@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430685"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
@@ -50,7 +49,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
     > [!NOTE]
     > Bu alanlar, OAuth 2,0 yetkilendirme sunucusunu geçerli API Management hizmet örneği içinde tanımlamak için kullanılır ve bunların değerleri OAuth 2,0 sunucusundan gelmiyor.
 
-3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların, hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder. Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com`.
+3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların, hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder. Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com` .
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -68,7 +67,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>` biçimi vardır. `yourapp.onmicrosoft.com`
+    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>` biçimi vardır `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -118,9 +117,9 @@ OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu 
 > [!NOTE]
 > Açılır pencereleri devre dışı bırakırsanız, tarayıcı tarafından etkinleştirmeniz istenir. Bunları etkinleştirdikten sonra, **yetkilendirme kodu** ' nu yeniden seçin ve oturum açma formu görüntülenir.
 
-![Oturum açma][api-management-oauth2-signin]
+![Oturum açın][api-management-oauth2-signin]
 
-Oturum açtıktan sonra, **istek üstbilgileri** isteği yetkilendiren bir `Authorization : Bearer` üstbilgiyle doldurulur.
+Oturum açtıktan sonra, **istek üstbilgileri** `Authorization : Bearer` isteği yetkilendiren bir üstbilgiyle doldurulur.
 
 ![İstek üst bilgisi belirteci][api-management-request-header-token]
 

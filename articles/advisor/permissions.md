@@ -4,10 +4,9 @@ description: Danışman izinleri ve bunların abonelikleri yapılandırma veya �
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422312"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Danışmanı izinleri
@@ -18,17 +17,17 @@ Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımını
 
 Aşağıdaki tabloda, Advisor içindeki roller ve erişim tanımları tanımlanmaktadır:
 
-| **Rol** | **Önerileri görüntüleme** | **Kuralları Düzenle** | **Abonelik yapılandırmasını düzenle** | **Kaynak grubu yapılandırmasını düzenle**| **Önerileri kapat ve ertele**|
+| **Role** | **Önerileri görüntüleme** | **Kuralları Düzenle** | **Abonelik yapılandırmasını düzenle** | **Kaynak grubu yapılandırmasını düzenle**| **Önerileri kapat ve ertele**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|Abonelik sahibi|**X**|**X**|**X**|**X**|**X**|
-|Abonelik Katılımcısı|**X**|**X**|**X**|**X**|**X**|
-|Abonelik okuyucusu|**X**|--|--|--|--|
-|Kaynak grubu sahibi|**X**|--|--|**X**|**X**|
-|Kaynak grubu Katılımcısı|**X**|--|--|**X**|**X**|
-|Kaynak grubu okuyucusu|**X**|--|--|--|--|
-|Kaynak sahibi|**X**|--|--|--|**X**|
-|Kaynak Katılımcısı|**X**|--|--|--|**X**|
-|Kaynak okuyucu|**X**|--|--|--|--|
+|Abonelik sahibi|**Sayı**|**Sayı**|**Sayı**|**Sayı**|**Sayı**|
+|Abonelik Katılımcısı|**Sayı**|**Sayı**|**Sayı**|**Sayı**|**Sayı**|
+|Abonelik okuyucusu|**Sayı**|--|--|--|--|
+|Kaynak grubu sahibi|**Sayı**|--|--|**Sayı**|**Sayı**|
+|Kaynak grubu Katılımcısı|**Sayı**|--|--|**Sayı**|**Sayı**|
+|Kaynak grubu okuyucusu|**Sayı**|--|--|--|--|
+|Kaynak sahibi|**Sayı**|--|--|--|**Sayı**|
+|Kaynak Katılımcısı|**Sayı**|--|--|--|**Sayı**|
+|Kaynak okuyucu|**Sayı**|--|--|--|--|
 
 > [!NOTE]
 > Görüntüleme önerilerine erişim, önerinin etkilenen kaynağına erişime bağımlıdır.

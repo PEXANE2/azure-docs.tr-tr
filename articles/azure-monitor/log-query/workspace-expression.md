@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364960"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusunda Workspace () ifadesi
@@ -18,11 +17,11 @@ ms.locfileid: "75364960"
 Bu `workspace` ifade, bir Azure izleyici sorgusunda aynı kaynak grubundaki belirli bir çalışma alanından, başka bir kaynak grubunda veya başka bir abonelikte veri almak için kullanılır. Bu, günlük verilerini bir Application Insights sorgusuna eklemek ve günlük sorgusunda birden çok çalışma alanındaki verileri sorgulamak için yararlıdır.
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 `workspace(`*Tanımlayıcısını*`)`
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 - *Tanımlayıcı*: aşağıdaki tablodaki biçimlerden birini kullanarak çalışma alanını tanımlar.
 
@@ -30,7 +29,7 @@ Bu `workspace` ifade, bir Azure izleyici sorgusunda aynı kaynak grubundaki beli
 |:---|:---|:---|
 | Kaynak Adı | Çalışma alanının okunabilir adı (DIĞER adıyla "bileşen adı") | çalışma alanı ("ContosoRetail") |
 | Tam ad | Şu biçimdeki çalışma alanının tam adı: "subscriptionName/resourceGroup/componentName" | çalışma alanı (' contoso/ContosoResource/ContosoWorkspace ') |
-| Kimlik | Çalışma alanının GUID 'SI | çalışma alanı ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| ID | Çalışma alanının GUID 'SI | çalışma alanı ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure Kaynak KIMLIĞI | Azure kaynağı için tanımlayıcı | çalışma alanı ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

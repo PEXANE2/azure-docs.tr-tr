@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975678"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtım sütunları seçin – hiper ölçek (Citus)
@@ -28,18 +27,18 @@ Bu makale, en yaygın iki hiper ölçek (Citus) senaryosu için dağıtım sütu
 
 Hiper ölçek (Citus), hangi kiracı KIMLIĞINI içerdikleri ve eşleşen tablo parçacısını bulan sorguları denetler. Sorguyu, parçayı içeren tek bir çalışan düğümüne yönlendirir. Aynı düğüme yerleştirilmiş tüm ilgili verilerle bir sorgu çalıştırmak birlikte bulundurma olarak adlandırılır.
 
-Aşağıdaki diyagramda, çok kiracılı veri modelindeki birlikte bulundurma gösterilmektedir. Her biri tarafından `account_id`dağıtılan iki tablo, hesap ve kampanya içerir. Gölgeli kutular parçaları temsil eder. Yeşil parçalar bir çalışan düğümünde birlikte depolanır ve mavi parçalar başka bir çalışan düğümünde depolanır. Her iki tablo da aynı hesap\_kimliğiyle sınırlandırıldığı zaman, hesaplar ve kampanyalar arasındaki JOIN sorgusunun tüm gerekli verileri tek bir düğümde nasıl bir araya vereceğini fark edebilirsiniz.
+Aşağıdaki diyagramda, çok kiracılı veri modelindeki birlikte bulundurma gösterilmektedir. Her biri tarafından dağıtılan iki tablo, hesap ve kampanya içerir `account_id` . Gölgeli kutular parçaları temsil eder. Yeşil parçalar bir çalışan düğümünde birlikte depolanır ve mavi parçalar başka bir çalışan düğümünde depolanır. Her iki tablo da aynı hesap kimliğiyle sınırlandırıldığı zaman, hesaplar ve kampanyalar arasındaki JOIN sorgusunun tüm gerekli verileri tek bir düğümde nasıl bir araya vereceğini fark edebilirsiniz \_ .
 
 ![Çok kiracılı birlikte bulundurma](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Bu tasarımı kendi şemanızda uygulamak için, uygulamanızda ne tür bir kiracı oluşturduğunu belirlemek için bu tasarımı yapın. Şirket, hesap, kuruluş veya müşteri ortak örnekleri içerir. Sütun adı veya `company_id` `customer_id`gibi bir şey olacaktır. Sorgularınızın her birini inceleyin ve sizinle aynı kiracı KIMLIĞINE sahip satırlara dahil olan tüm tabloları kısıtlamak için ek WHERE yan tümceleri varsa işe çalışırdı.
+Bu tasarımı kendi şemanızda uygulamak için, uygulamanızda ne tür bir kiracı oluşturduğunu belirlemek için bu tasarımı yapın. Şirket, hesap, kuruluş veya müşteri ortak örnekleri içerir. Sütun adı veya gibi bir şey olacaktır `company_id` `customer_id` . Sorgularınızın her birini inceleyin ve sizinle aynı kiracı KIMLIĞINE sahip satırlara dahil olan tüm tabloları kısıtlamak için ek WHERE yan tümceleri varsa işe çalışırdı.
 Çok kiracılı modeldeki sorgular bir kiracıya kapsamlıdır. Örneğin, satış veya envanterdeki sorgular belirli bir mağaza kapsamında kapsamlandırılır.
 
 #### <a name="best-practices"></a>En iyi uygulamalar
 
--   **Dağıtılmış tabloları ortak Kiracı\_kimliği sütunuyla bölümleme.** Örneğin, kiracıların şirketler olduğu bir SaaS uygulamasında, kiracı\_kimliğinin Şirket\_kimliği olması olasıdır.
+-   **Dağıtılmış tabloları ortak Kiracı \_ kimliği sütunuyla bölümleme.** Örneğin, kiracıların şirketler olduğu bir SaaS uygulamasında, kiracı \_ kimliğinin şirket kimliği olması olasıdır \_ .
 -   **Küçük bir çapraz kiracı tablolarını başvuru tablolarına dönüştürün.** Birden çok kiracı bir bilgi tablosunu paylaşıyorsa, onu başvuru tablosu olarak dağıtın.
--   **Tüm uygulama sorgularının kiracı\_kimliğine göre filtreleneceğini kısıtla.** Her sorgu tek seferde bir kiracı için bilgi istemelidir.
+-   **Tüm uygulama sorgularının kiracı kimliğine göre filtreleneceğini kısıtla \_ .** Her sorgu tek seferde bir kiracı için bilgi istemelidir.
 
 Bu tür bir uygulamanın nasıl oluşturulacağını gösteren bir örnek için [çok kiracılı öğreticiyi](./tutorial-design-database-hyperscale-multi-tenant.md) okuyun.
 

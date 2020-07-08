@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969149"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için castLabs kullanma 
@@ -68,7 +67,7 @@ Aşağıdaki tabloda AMS 'de JWT belirteci açıklanmaktadır.
 
 Aşağıdaki tabloda, Rolabs 'de JWT belirteci açıklanmaktadır. 
 
-| Adı | Açıklama |
+| Name | Açıklama |
 | --- | --- |
 | optData |Sizin hakkında bilgi içeren bir JSON dizesi. |
 | CRT |Varlık hakkındaki bilgileri, lisans bilgilerini ve kayıttan yürütme haklarını içeren bir JSON dizesi. |
@@ -84,7 +83,7 @@ Aşağıdaki tabloda, Rolabs 'de JWT belirteci açıklanmaktadır.
 
 Konsol uygulamasını kullanmak için:
 
-1. AMS kimlik bilgilerini, ROI Labs kimlik bilgilerini, STS yapılandırmasını ve paylaşılan anahtarı ayarlamak için App. config dosyasını değiştirin.
+1. AMS kimlik bilgilerini, ROI Labs kimlik bilgilerini, STS yapılandırmasını ve paylaşılan anahtarı ayarlamak için app.config değiştirin.
 2. Bir varlığı AMS 'ye yükleyin.
 3. Karşıya yüklenen varlığın UUID 'sini alın ve Program.cs dosyasında 32 satırını değiştirin:
    
@@ -96,7 +95,7 @@ Konsol uygulamasını kullanmak için:
 
 Web uygulamasını kullanmak için (STS):
 
-1. Web. config dosyasını Setup rolabs satıcı KIMLIĞI, STS yapılandırması ve paylaşılan anahtar olarak değiştirin.
+1. web.config, ROI Laboratuvarı ticari KIMLIĞI, STS yapılandırması ve paylaşılan anahtarı ayarlamak için değiştirin.
 2. Azure Web siteleri 'ne dağıtın.
 3. Web sitesine gidin.
 
@@ -122,6 +121,6 @@ Ortak şifreleme (PlayReady ve/veya Widevine) ile şifrelenmiş bir videoyu kay�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

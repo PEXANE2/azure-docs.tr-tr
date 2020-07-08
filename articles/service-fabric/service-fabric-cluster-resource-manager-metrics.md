@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451991"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
@@ -183,7 +182,7 @@ Hizmetle ilişkili ölçümlerin listesi ve bu ölçümlerin özellikleri, hizme
   - yalnızca kod dağıtıldıktan ve diğer mekanizmalar aracılığıyla doğrulandıktan sonra yeni bir ölçüm etkinleştiriliyor
   - gözlemlenen davranış ve tüketim temelinde bir hizmetin varsayılan yükünü değiştirme
 
-Ölçüm yapılandırmasını değiştirmek için ana API 'Ler C# `FabricClient.ServiceManagementClient.UpdateServiceAsync` ve `Update-ServiceFabricService` PowerShell içinde bulunur. Bu API 'lerle belirttiğiniz bilgiler, hizmet için mevcut ölçüm bilgilerinin hemen yerini alır. 
+Ölçüm yapılandırmasını değiştirmek için ana API 'Ler `FabricClient.ServiceManagementClient.UpdateServiceAsync` C# ve PowerShell içinde bulunur `Update-ServiceFabricService` . Bu API 'lerle belirttiğiniz bilgiler, hizmet için mevcut ölçüm bilgilerinin hemen yerini alır. 
 
 ## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Varsayılan yükleme değerlerini ve dinamik yükleme raporlarını karıştırma
 Varsayılan yükleme ve dinamik yüklemeler aynı hizmet için kullanılabilir. Bir hizmet hem varsayılan yükleme hem de dinamik yükleme raporlarını kullanırsa, dinamik raporların görünmesi için varsayılan yükleme tahmini olarak görev yapar. Varsayılan yükleme iyi bir şeydir çünkü kümeye birlikte çalışmak üzere Kaynak Yöneticisi. Varsayılan yükleme, Küme Kaynak Yöneticisi, hizmet nesnelerini oluşturuldukları sırada iyi konumlara yerleştirmesini sağlar. Varsayılan yükleme bilgisi sağlanmazsa, hizmetlerin yerleştirilmesi etkili bir şekilde rasgele olur. Yükleme raporları daha sonra geldiğinde ilk rastgele yerleştirme genellikle yanlıştır ve Küme Kaynak Yöneticisi Hizmetleri taşımak zorunda olur.

@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Azure Dev Spaces ile uygulama geliştirirken Kubernetes gizliliklerini çalışma veya oluşturma zamanında nasıl kullanacağınızı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438473"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure dev Space ile çalışırken gizli dizileri yönetme
@@ -18,14 +17,14 @@ Hizmetleriniz, veritabanları veya diğer güvenli Azure hizmetleri gibi belirli
 
 ## <a name="storing-and-using-runtime-secrets"></a>Çalışma zamanı gizli dizilerini depolama ve kullanma
 
-Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan Helu grafiklerde gizli dizileri depolamak için önerilen iki ve kolay seçenek sunar: `values.dev.yaml` dosyada, satır içinde doğrudan içinde. `azds.yaml` Gizli dizileri ' de `values.yaml`depolamak önerilmez.
+Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan Helu grafiklerde gizli dizileri depolamak için önerilen iki ve kolay seçenek sunar: `values.dev.yaml` dosyada, satır içinde doğrudan içinde `azds.yaml` . Gizli dizileri ' de depolamak önerilmez `values.yaml` .
 
 > [!NOTE]
 > Aşağıdaki yaklaşımlar, istemci araçları tarafından oluşturulan Held grafikleri için gizli dizileri nasıl depolayıp kullanacağınızı göstermektedir. Kendi hele grafiğinizi oluşturursanız, gizli dizileri yönetmek ve depolamak için HELI grafiğini doğrudan kullanabilirsiniz.
 
 ### <a name="using-valuesdevyaml"></a>Values. dev. YAML kullanma
 
-Azure Dev Spaces önceden hazırladığınız bir projede, gizli anahtar ve değerlerinizi tanımlamak `values.dev.yaml` `azds.yaml` için aynı klasörde bir dosya oluşturun. Örneğin:
+Azure Dev Spaces önceden hazırladığınız bir projede, `values.dev.yaml` `azds.yaml` gizli anahtar ve değerlerinizi tanımlamak için aynı klasörde bir dosya oluşturun. Örneğin:
 
 ```yaml
 secrets:
@@ -35,7 +34,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-Kullanarak `azds.yaml` dosya başvurularını `values.dev.yaml` isteğe bağlı olarak doğrulayın. `?` Örneğin:
+`azds.yaml`Kullanarak dosya başvurularını `values.dev.yaml` isteğe bağlı olarak doğrulayın `?` . Örneğin:
 
 ```yaml
 install:
@@ -54,24 +53,24 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Kullanarak `azds up`güncelleştirilmiş hizmetlerinizi çalıştırın.
+Kullanarak güncelleştirilmiş hizmetlerinizi çalıştırın `azds up` .
 
 ```console
 azds up
 ```
  
-Gizli `kubectl` dizilerinizi oluşturulmuş olduklarını doğrulamak için kullanın.
+`kubectl`Gizli dizilerinizi oluşturulmuş olduklarını doğrulamak için kullanın.
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
 > [!IMPORTANT]
-> Gizli dizileri kaynak denetiminde depolamak önerilmez. Git kullanıyorsanız, kaynak denetiminde `values.dev.yaml` gizli dizileri `.gitignore` yürütmeyi önlemek için dosyaya ekleyin.
+> Gizli dizileri kaynak denetiminde depolamak önerilmez. Git kullanıyorsanız, `values.dev.yaml` `.gitignore` kaynak denetiminde gizli dizileri yürütmeyi önlemek için dosyaya ekleyin.
 
 ### <a name="using-azdsyaml"></a>Azds. YAML kullanma
 
-Azure Dev Spaces önceden hazırladığınız bir projede, *Konfigürasyonlar. Install. Install. set* `azds.yaml`altında *$PlaceHolder* söz dizimini kullanarak gizli anahtar ve değer ekleyin. Örneğin:
+Azure Dev Spaces önceden hazırladığınız bir projede, *Konfigürasyonlar. Install. Install. set* altında *$PlaceHolder* söz dizimini kullanarak gizli anahtar ve değer `azds.yaml` ekleyin. Örneğin:
 
 ```yaml
 configurations:
@@ -87,9 +86,9 @@ configurations:
 ```
 
 > [!NOTE]
-> İçinde `azds.yaml` *$PlaceHolder* sözdizimini kullanmadan doğrudan gizli değerleri girebilirsiniz. Ancak, bu yaklaşım kaynak denetiminde depolandığından `azds.yaml` önerilmez.
+> İçinde *$PlaceHolder* sözdizimini kullanmadan doğrudan gizli değerleri girebilirsiniz `azds.yaml` . Ancak, bu yaklaşım `azds.yaml` kaynak denetiminde depolandığından önerilmez.
      
-$PLACEHOLDER değerlerinizi tanımlamak `.env` `azds.yaml` için aynı klasörde bir dosya oluşturun. *$PLACEHOLDER* Örneğin:
+`.env` `azds.yaml` *$PlaceHolder* değerlerinizi tanımlamak için aynı klasörde bir dosya oluşturun. Örneğin:
 
 ```
 REDIS_PORT=3333
@@ -98,7 +97,7 @@ REDIS_KEY=myrediskey
 ```
 
 > [!IMPORTANT]
-> Gizli dizileri kaynak denetiminde depolamak önerilmez. Git kullanıyorsanız, kaynak denetiminde `.env` gizli dizileri `.gitignore` yürütmeyi önlemek için dosyaya ekleyin.
+> Gizli dizileri kaynak denetiminde depolamak önerilmez. Git kullanıyorsanız, `.env` `.gitignore` kaynak denetiminde gizli dizileri yürütmeyi önlemek için dosyaya ekleyin.
 
 Hizmet bilgilerinizi, ortam değişkenleri olarak gizli dizilerinizdeki başvuruya göre güncelleştirin veya doğrulayın. Örneğin:
 
@@ -108,13 +107,13 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Kullanarak `azds up`güncelleştirilmiş hizmetlerinizi çalıştırın.
+Kullanarak güncelleştirilmiş hizmetlerinizi çalıştırın `azds up` .
 
 ```console
 azds up
 ```
  
-Gizli `kubectl` dizilerinizi oluşturulmuş olduklarını doğrulamak için kullanın.
+`kubectl`Gizli dizilerinizi oluşturulmuş olduklarını doğrulamak için kullanın.
 
 ```console
 kubectl get secret --namespace default -o yaml 
@@ -122,9 +121,9 @@ kubectl get secret --namespace default -o yaml
 
 ## <a name="using-secrets-as-build-arguments"></a>Derleme bağımsız değişkenleri olarak gizli dizileri kullanma
 
-Önceki bölümde, kapsayıcının çalışma zamanında kullanılmak üzere parolaların nasıl depolandığı ve kullanılacağı gösterildi. Ayrıca, kullanarak `azds.yaml`özel bir NuGet için parola gibi kapsayıcı oluşturma zamanında herhangi bir gizli dizi da kullanabilirsiniz.
+Önceki bölümde, kapsayıcının çalışma zamanında kullanılmak üzere parolaların nasıl depolandığı ve kullanılacağı gösterildi. Ayrıca, kullanarak özel bir NuGet için parola gibi kapsayıcı oluşturma zamanında herhangi bir gizli dizi da kullanabilirsiniz `azds.yaml` .
 
-İçinde `azds.yaml`, yapılandırmada derleme zamanı gizli dizilerini ayarlayın *. Build. Build. args* `<variable name>: ${secret.<secret name>.<secret key>}` sözdizimini kullanarak. Örneğin:
+İçinde `azds.yaml` , yapılandırmada derleme zamanı gizli dizilerini ayarlayın *. Build. Build. args* `<variable name>: ${secret.<secret name>.<secret key>}` sözdizimini kullanarak. Örneğin:
 
 ```yaml
 configurations:
@@ -140,7 +139,7 @@ configurations:
 Yukarıdaki örnekte, *mynugetsecret* var olan bir sır ve *pattoken* var olan bir anahtardır.
 
 >[!NOTE]
-> Gizli adlar ve anahtarlar `.` karakteri içerebilir. Gizli `\` dizileri yapı `.` bağımsız değişkenleri olarak geçirirken kaçış için kullanın. Örneğin, *belirteç*anahtarıyla `MYTOKEN: ${secret.foo\.bar.token}` *foo. Bar* adlı bir gizli anahtar geçirmek için:. Ayrıca, gizlilikler önek ve sonek metniyle değerlendirilebilir. Örneğin, `MYURL: eus-${secret.foo\.bar.token}-version1`. Ayrıca, üst ve alt üst alanlarda bulunan gizlilikler yapı bağımsız değişkenleri olarak geçirilebilir.
+> Gizli adlar ve anahtarlar `.` karakteri içerebilir. `\` `.` Gizli dizileri yapı bağımsız değişkenleri olarak geçirirken kaçış için kullanın. Örneğin, *belirteç*anahtarıyla *foo. Bar* adlı bir gizli anahtar geçirmek için: `MYTOKEN: ${secret.foo\.bar.token}` . Ayrıca, gizlilikler önek ve sonek metniyle değerlendirilebilir. Örneğin, `MYURL: eus-${secret.foo\.bar.token}-version1`. Ayrıca, üst ve alt üst alanlarda bulunan gizlilikler yapı bağımsız değişkenleri olarak geçirilebilir.
 
 Dockerfile 'da, parolayı kullanmak için *arg* yönergesini kullanın, daha sonra dockerfile içinde bu değişkeni kullanın. Örneğin:
 

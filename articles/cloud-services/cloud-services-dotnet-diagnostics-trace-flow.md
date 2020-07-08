@@ -11,17 +11,16 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
 ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386519"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Azure Tanılama bir Cloud Services uygulamasının akışını izleme
 İzleme, çalışırken uygulamanızın yürütülmesini izlemenize yönelik bir yoldur. Daha sonraki analize yönelik günlüklerde, metin dosyalarında veya diğer cihazlarda hatalar ve uygulama yürütme bilgilerini kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. Debug](/dotnet/api/system.diagnostics.debug)ve [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) sınıflarını kullanabilirsiniz. İzleme hakkında daha fazla bilgi için bkz. [uygulamaları izleme ve işaretleme](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Trace deyimlerini ve izleme anahtarlarını kullanma
-Uygulama yapılandırmasına [Diagnosticmonitortracelistener](/previous-versions/azure/reference/ee758610(v=azure.100)) ekleyerek ve uygulama kodunuzda System. Diagnostics. Trace veya System. Diagnostics. Debug için çağrılar yaparak Cloud Services uygulamanızda izlemeyi uygulayın. Çalışan rolleri için *app. config* yapılandırma dosyasını ve Web rolleri için *Web. config* ' i kullanın. Visual Studio şablonu kullanarak yeni bir barındırılan hizmet oluşturduğunuzda, Azure Tanılama projeye otomatik olarak eklenir ve DiagnosticMonitorTraceListener, eklediğiniz roller için uygun yapılandırma dosyasına eklenir.
+Uygulama yapılandırmasına [Diagnosticmonitortracelistener](/previous-versions/azure/reference/ee758610(v=azure.100)) ekleyerek ve uygulama kodunuzda System. Diagnostics. Trace veya System. Diagnostics. Debug için çağrılar yaparak Cloud Services uygulamanızda izlemeyi uygulayın. Çalışan rolleri için *app.config* yapılandırma dosyası ve Web rolleri için *web.config* kullanın. Visual Studio şablonu kullanarak yeni bir barındırılan hizmet oluşturduğunuzda, Azure Tanılama projeye otomatik olarak eklenir ve DiagnosticMonitorTraceListener, eklediğiniz roller için uygun yapılandırma dosyasına eklenir.
 
 Trace deyimlerini yerleştirme hakkında daha fazla bilgi için bkz. [nasıl yapılır: Trace deyimlerini uygulama koduna ekleme](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 
@@ -35,7 +34,7 @@ Aşağıdaki yordamı tamamlamadan önce Azure tanılama İzleyicisi 'ni başlat
 Visual Studio tarafından sunulan şablonları kullanırsanız, dinleyicinin yapılandırmasının sizin için otomatik olarak eklendiğini unutmayın.
 
 ### <a name="add-a-trace-listener"></a>İzleme dinleyicisi ekleme
-1. Rolünüzün Web. config veya App. config dosyasını açın.
+1. Rolünüz için web.config veya app.config dosyasını açın.
 2. Dosyasına aşağıdaki kodu ekleyin. Sürüm özniteliğini, başvurduğunuz derlemenin sürüm numarasını kullanacak şekilde değiştirin. Derleme sürümü, güncelleştirme olmadığı müddetçe her bir Azure SDK sürümü ile değişmeyebilir.
    
     ```
@@ -65,7 +64,7 @@ Dinleyiciler hakkında daha fazla bilgi için bkz. [Trace dinleyicileri](/dotnet
 Dinleyiciyi ekleme adımlarını tamamladıktan sonra, kodunuza Trace deyimlerini ekleyebilirsiniz.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>Kodunuza Trace ifadesini eklemek için
-1. Uygulamanız için bir kaynak dosyası açın. Örneğin, \<roleName, çalışan rolü veya Web rolü için. cs dosyası>.
+1. Uygulamanız için bir kaynak dosyası açın. Örneğin, \<RoleName> çalışan rolü veya Web rolü için. cs dosyası.
 2. Henüz eklenmemişse Aşağıdaki using yönergesini ekleyin:
     ```
         using System.Diagnostics;

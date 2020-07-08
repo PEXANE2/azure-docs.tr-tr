@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443564"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
@@ -24,7 +23,7 @@ ms.locfileid: "75443564"
 
 Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının kimlik koruması olan risk GEÇMIŞINI **Azure AD**'ye ayarlar.
 
-Kimlik koruması ' nda **Kullanıcı riskini kapat** kullanıcının ** \<\>dikey penceresine işaret eden bir köprüyle**, kimlik koruması 'ndaki kullanıcının risk geçmişini yönetici adına ayarlar.
+Kimlik koruması ' nda **Kullanıcı riskini kapat** kullanıcının kimlik koruması olan risk geçmişinde aktör olarak ayarlanır **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Kullanıcı riski geri ayırma akışında gecikmeye neden olan geçerli bir bilinen sorun var. "Kullanıcı risk ilkeniz" varsa, bu ilke "Kullanıcı riskini kapat" seçeneğine tıklanarak kapatılan kullanıcılara uygulamayı durdurur. Ancak, UX ile kapatılan kullanıcıların "risk durumunu" yenilemesinin bilinen gecikmeleri vardır. Geçici bir çözüm olarak, en son kullanıcıyı "risk durumu" görmek için tarayıcı düzeyindeki sayfayı yenileyin.
 
@@ -85,7 +84,7 @@ Tüm risk algılamaları, [risk](concept-identity-protection-risks.md#risk-types
 
 **Güvenli** ' i (oturum açma sırasında) onayla – oturum açma 'nın kimlik sahibi tarafından gerçekleştirildiğini Azure AD kimlik koruması ve bir uzlaşmaya Işaret olmadığını bildirir.
 
-- Bu geri bildirimin alınması sırasında, oturum açma (Kullanıcı değil) risk durumunu **onaylı güvenli** ve risk düzeyine taşıyacağız **-**.
+- Bu geri bildirimin alınması sırasında, oturum açma (Kullanıcı değil) risk durumunu **onaylı güvenli** ve risk düzeyine taşıyacağız **-** .
 
 - Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz.
 

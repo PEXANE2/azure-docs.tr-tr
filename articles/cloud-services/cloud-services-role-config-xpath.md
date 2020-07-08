@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386094"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Rol yapılandırma ayarlarını XPath ile bir ortam değişkeni olarak kullanıma sunma
@@ -24,7 +23,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@emulated" |
+| XPath |XPath = " /RoleEnvironment/Deployment/@emulated " |
 | Kod |var x = RoleEnvironment. ıstreamted; |
 
 ## <a name="deployment-id"></a>Dağıtım KIMLIĞI
@@ -32,7 +31,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@id" |
+| XPath |XPath = " /RoleEnvironment/Deployment/@id " |
 | Kod |var DeploymentId = RoleEnvironment. DeploymentId; |
 
 ## <a name="role-id"></a>Rol KIMLIĞI
@@ -40,7 +39,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@id" |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@id " |
 | Kod |var kimliği = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Etki alanını güncelleştirme
@@ -48,7 +47,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@updateDomain " |
 | Kod |var ud = RoleEnvironment. Currentrotaınstance. UpdateDomain; |
 
 ## <a name="fault-domain"></a>Hata etki alanı
@@ -56,7 +55,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@faultDomain " |
 | Kod |var FD = RoleEnvironment. Currentrotaınstance. FaultDomain; |
 
 ## <a name="role-name"></a>Rol adı
@@ -64,7 +63,7 @@ Uygulamanın öykünücüsünde çalıştığını gösterir.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@roleName " |
 | Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Yapılandırma ayarı
@@ -72,7 +71,7 @@ Belirtilen yapılandırma ayarının değerini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/Roleenvironment/currentınstance/ConfigurationSettings/configurationsetting [@name= ' Setting1 ']/@value" |
+| XPath |XPath = "/Roleenvironment/currentınstance/ConfigurationSettings/configurationsetting [ @name = ' Setting1 '] /@value " |
 | Kod |var Setting = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
 
 ## <a name="local-storage-path"></a>Yerel depolama yolu
@@ -80,7 +79,7 @@ Belirtilen yapılandırma ayarının değerini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/Roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@path" |
+| XPath |XPath = "/Roleenvironment/currentınstance/localresources/localresource [ @name = ' LocalStore1 '] /@path " |
 | Kod |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
 
 ## <a name="local-storage-size"></a>Yerel depolama boyutu
@@ -88,7 +87,7 @@ Belirtilen yapılandırma ayarının değerini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/Roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@sizeInMB" |
+| XPath |XPath = "/Roleenvironment/currentınstance/localresources/localresource [ @name = ' LocalStore1 '] /@sizeInMB " |
 | Kod |var Localresourcesizeınmb = RoleEnvironment. GetLocalResource ("LocalStore1"). Maximumsizeınmegabayt; |
 
 ## <a name="endpoint-protocol"></a>Uç nokta Protokolü
@@ -96,7 +95,7 @@ Belirtilen yapılandırma ayarının değerini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@protocol" |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@protocol " |
 | Kod |var Prot = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. Protocol |
 
 ## <a name="endpoint-ip"></a>Uç nokta IP 'si
@@ -104,7 +103,7 @@ Belirtilen bitiş noktasının IP adresini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@address" |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@address " |
 | Kod |var adresi = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Address |
 
 ## <a name="endpoint-port"></a>Uç nokta bağlantı noktası
@@ -112,11 +111,11 @@ Belirtilen bitiş noktasının IP adresini alır.
 
 | Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@port" |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@port " |
 | Kod |var bağlantı noktası = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Port; |
 
 ## <a name="example"></a>Örnek
-`TestIsEmulated` [Burada @emulated XPath değeri](#app-running-in-emulator)olarak ayarlanan adlı bir ortam değişkeni ile bir başlangıç görevi oluşturan bir çalışan rolü örneği verilmiştir. 
+Burada `TestIsEmulated` [ @emulated XPath değeri](#app-running-in-emulator)olarak ayarlanan adlı bir ortam değişkeni ile bir başlangıç görevi oluşturan bir çalışan rolü örneği verilmiştir. 
 
 ```xml
 <WorkerRole name="Role1">

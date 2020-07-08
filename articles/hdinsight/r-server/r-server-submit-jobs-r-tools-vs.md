@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435262"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
@@ -32,9 +31,9 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 3. SSH kimlik doğrulaması için ortak ve özel anahtarlara sahip olmanız gerekir.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Makinenize [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) ve `RxSpark` işlevlerini sağlar.
+4. Makinenize [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) ve işlevlerini sağlar `RxSpark` .
 
-5. Yerel istemcinizdeki işlevleri HDInsight kümenize çalıştırmak `RevoScaleR` için bir işlem bağlamı sağlamak üzere [Putty](https://www.putty.org/) ' i yükle.
+5. Yerel istemcinizdeki işlevleri HDInsight kümenize çalıştırmak için bir işlem bağlamı sağlamak üzere [Putty](https://www.putty.org/) ' i Yükle `RevoScaleR` .
 
 6. R araçları için çalışma alanınız için yeni bir düzen sağlayan Visual Studio ortamınıza Veri Bilimi Ayarları uygulama seçeneğiniz vardır.
    1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar**' ı seçin.
@@ -51,8 +50,8 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 1. HDInsight ML Hizmetleri kümenizi oluşturun.
 2. [Rtvs uzantısını](https://docs.microsoft.com/visualstudio/rtvs/installation)yükler.
 3. [Örnek ZIP dosyasını](https://github.com/Microsoft/RTVS-docs/archive/master.zip)indirin.
-4. Visual `examples/Examples.sln` Studio 'da çözümü başlatmak için öğesini açın.
-5. `1-Getting Started with R.R` Dosyayı `A first look at R` çözüm klasöründe açın.
+4. `examples/Examples.sln`Visual Studio 'da çözümü başlatmak için öğesini açın.
+5. `1-Getting Started with R.R`Dosyayı `A first look at R` çözüm klasöründe açın.
 6. Dosyanın en üstünden başlayarak, her satırı bir kez R Etkileşim penceresine göndermek için CTRL + ENTER tuşlarına basın. Bazı satırlar paketleri yükledikleri sürece biraz zaman alabilir.
     * Alternatif olarak, R dosyasındaki (CTRL + A) tüm satırları seçebilir, sonra tümünü yürütebilir (CTRL + ENTER) veya araç çubuğunda etkileşimli Yürüt simgesini seçebilirsiniz.
 
@@ -64,9 +63,9 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Bir HDInsight ML Hizmetleri kümesine iş gönderme
 
-PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microsoft R Client kullanarak, yerel istemcinizden HDInsight kümenize dağıtılmış `RevoScaleR` işlevleri çalıştıracak bir işlem bağlamı oluşturabilirsiniz. Kullanıcı `RxSpark` adınızı, Apache Hadoop kümesinin Edge DÜĞÜMÜNÜ, SSH anahtarlarını ve benzerlerini belirterek işlem bağlamını oluşturmak için kullanın.
+PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microsoft R Client kullanarak, `RevoScaleR` Yerel Istemcinizden HDInsight kümenize dağıtılmış işlevleri çalıştıracak bir işlem bağlamı oluşturabilirsiniz. `RxSpark`Kullanıcı adınızı, Apache Hadoop kümesinin Edge düğümünü, SSH anahtarlarını ve benzerlerini belirterek işlem bağlamını oluşturmak için kullanın.
 
-1. HDInsight `CLUSTERNAME-ed-ssh.azurehdinsight.net` `CLUSTERNAME` üzerindeki ml Hizmetleri kenar düğümü adresi, ml Hizmetleri kümenizin adıdır.
+1. HDInsight üzerindeki ML Hizmetleri kenar düğümü adresi, `CLUSTERNAME-ed-ssh.azurehdinsight.net` `CLUSTERNAME` ml Hizmetleri kümenizin adıdır.
 
 1. Aşağıdaki kodu Visual Studio 'daki R Etkileşim penceresine yapıştırarak, kurulum değişkenlerinin değerlerini ortamınızla eşleşecek şekilde değiştirerek.
 
@@ -108,8 +107,8 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
     Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    ![Başarılı bir RX komutu](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) yürütme a
-1. Dosyayı örnek veri `rxHadoopCopy` klasöründen yeni oluşturulan `/user/RevoShare/newUser` klasöre başarıyla kopyalamadığını doğrulayın: `people.json`
+    ![Başarılı bir RX komutu yürütme ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
+1. `rxHadoopCopy` `people.json` Dosyayı örnek veri klasöründen yeni oluşturulan klasöre başarıyla kopyalamadığını doğrulayın `/user/RevoShare/newUser` :
 
     1. Azure 'daki HDInsight ML Hizmetleri kümeniz bölmesinden, sol taraftaki menüden **depolama hesapları** ' nı seçin.
 
@@ -121,7 +120,7 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
         ![Azure HDInsight depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json` Dosya `newUser` klasöründe görüntülenmelidir.
+    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json`Dosya `newUser` klasöründe görüntülenmelidir.
 
         ![HDInsight dosya klasörü konumunu kopyaladı](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

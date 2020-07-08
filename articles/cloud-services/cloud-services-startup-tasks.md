@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360319"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma
@@ -27,7 +26,7 @@ Başlangıç görevleri, rolleriniz başlamadan önce uygulanan ve [Başlangıç
 
 Ortam değişkenleri bilgileri bir başlangıç görevine iletir ve yerel depolama alanı, bir başlangıç görevinin dışına bilgi geçirmek için kullanılabilir. Örneğin, bir ortam değişkeni yüklemek istediğiniz bir programın yolunu belirtebilir ve dosyalar daha sonra rolleriniz tarafından okunabilebileceği yerel depolamaya yazılabilir.
 
-Başlangıç göreviniz, bilgileri ve hataları **Temp** ortam değişkeni tarafından belirtilen dizine kaydedebilir. Başlangıç görevi sırasında, **Temp** ortam değişkeni *C:\\Resources\\temp\\[GUID] olarak çözümlenir. [ roleName]\\bulutta çalışırken roletemp* dizini.
+Başlangıç göreviniz, bilgileri ve hataları **Temp** ortam değişkeni tarafından belirtilen dizine kaydedebilir. Başlangıç görevi sırasında, **Temp** ortam değişkeni *C: \\ Resources \\ Temp \\ [GUID] olarak çözümlenir. [ roleName] bulutta çalışırken \\ roletemp* dizini.
 
 Başlangıç görevleri, yeniden başlatmalar arasında birçok defa da yürütülebilir. Örneğin, her rol döngüsünde başlangıç görevi çalıştırılır ve rol döngüleri her zaman yeniden başlatma içermeyebilir. Başlangıç görevleri, sorunsuz bir şekilde birkaç kez çalışmasına izin verecek şekilde yazılmalıdır.
 
@@ -68,7 +67,7 @@ Bu örnekte, başlangıç görevi için **Myversionnumber adlı**bir ortam deği
 </Startup>
 ```
 
-Aşağıdaki örnekte, **Startup. cmd** toplu iş dosyası, "geçerli sürüm 1.0.0.0" SATıRıNı, TEMP ortam değişkeni tarafından belirtilen dizindeki startuplog. txt dosyasına yazar. `EXIT /B 0` Satır, başlangıç görevinin sıfır **ERRORLEVEL** ile sona ermesini sağlar.
+Aşağıdaki örnekte, **Startup. cmd** toplu iş dosyası, "geçerli sürüm 1.0.0.0" satırını temp ortam değişkeni tarafından belirtilen dizindeki StartupLog.txt dosyasına yazar. `EXIT /B 0`Satır, başlangıç görevinin sıfır **ERRORLEVEL** ile sona ermesini sağlar.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +75,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> Visual Studio 'da, başlangıç toplu iş dosyanızın Azure 'da projenize doğru şekilde dağıtıldığından emin olmak için başlangıç toplu iş dosyanız için **Çıkış Dizinine Kopyala** özelliği **her zaman Kopyala** olarak ayarlanmalıdır. (Web rolleri için**AppRoot\\bin** **ve çalışan rolleri için AppRoot** ).
+> Visual Studio 'da, başlangıç toplu iş dosyanızın Azure 'da projenize doğru şekilde dağıtıldığından emin olmak için başlangıç toplu iş dosyanız için **Çıkış Dizinine Kopyala** özelliği **her zaman Kopyala** olarak ayarlanmalıdır. (Web rolleri için**AppRoot \\ bin** **ve çalışan rolleri için AppRoot** ).
 > 
 > 
 
@@ -87,7 +86,7 @@ Aşağıdaki, [ServiceDefinition. csdef] dosyasındaki **görev** öğesinin öz
 
 * Komutu, başlangıç görevini başlatan isteğe bağlı komut satırı parametreleriyle.
 * Bu, genellikle bir. cmd veya. bat toplu iş dosyasının dosya adıdır.
-* Görev, dağıtım için AppRoot\\bin klasörüne görelidir. Ortam değişkenleri, görevin yolunu ve dosyasını belirlemede genişletilmez. Ortam genişletmesi gerekliyse, başlangıç görevinizi çağıran küçük bir. cmd betiği oluşturabilirsiniz.
+* Görev, \\ dağıtım Için AppRoot bin klasörüne görelidir. Ortam değişkenleri, görevin yolunu ve dosyasını belirlemede genişletilmez. Ortam genişletmesi gerekliyse, başlangıç görevinizi çağıran küçük bir. cmd betiği oluşturabilirsiniz.
 * Bir konsol uygulaması veya [PowerShell betiği](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)Başlatan bir toplu iş dosyası olabilir.
 
 **ExecutionContext** -başlangıç görevinin ayrıcalık düzeyini belirtir. Ayrıcalık düzeyi sınırlı olabilir veya yükseltilebilir:
@@ -112,8 +111,8 @@ Aşağıdaki, [ServiceDefinition. csdef] dosyasındaki **görev** öğesinin öz
   > 
   > 
   
-    Toplu iş dosyanızın sıfır **ERRORLEVEL** ile bitdiğinden emin olmak için, Batch dosyası işleminizin sonunda `EXIT /B 0` komutunu yürütün.
-* **arka plan**  
+    Toplu iş dosyanızın sıfır **ERRORLEVEL** ile bitdiğinden emin olmak için, `EXIT /B 0` Batch dosyası işleminizin sonunda komutunu yürütün.
+* **background**  
   Görevler, rolün başlangıcında paralel olarak zaman uyumsuz olarak yürütülür.
 * **ön plan**  
   Görevler, rolün başlangıcında paralel olarak zaman uyumsuz olarak yürütülür. **Ön** plan ve **arka plan** görevi arasındaki önemli fark, bir ön plan görevinin, görev sonlanana kadar rolün geri dönüşümünü veya kapatılmasını önlediği bir **ön plana** sahip olur. **Arka plan** görevlerinde Bu kısıtlama yoktur.

@@ -7,10 +7,9 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428718"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Işlevleri 'ni ve Azure Service Bus kullanarak mantıksal uygulamaları çağırın veya tetikleyin
@@ -113,13 +112,13 @@ Sonra tetikleyici olarak davranan ve kuyruğu dinleyen işlevi oluşturun.
 
      ![Mevcut işlev uygulaması için şablon seçin](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. **Azure Service Bus kuyruğu tetikleyicisi** bölmesinde, Tetikleyiciniz için bir ad girin ve Azure Service Bus SDK `OnMessageReceive()` dinleyicisini kullanan sıra için **Service Bus bağlantısını** ayarlayın ve **Oluştur**' u seçin.
+1. **Azure Service Bus kuyruğu tetikleyicisi** bölmesinde, Tetikleyiciniz için bir ad girin ve Azure Service Bus SDK dinleyicisini kullanan sıra için **Service Bus bağlantısını** ayarlayın `OnMessageReceive()` ve **Oluştur**' u seçin.
 
 1. Kuyruk iletisini tetikleyici olarak kullanarak, önceden oluşturulmuş mantıksal uygulama uç noktasını çağırmak için temel bir işlev yazın. İşlevinizi yazmadan önce şu hususları gözden geçirin:
 
    * Bu örnek `application/json` ileti içerik türünü kullanır, ancak bu türü gerektiği gibi değiştirebilirsiniz.
    
-   * Eş zamanlı çalışan işlevlerin, yüksek birimlerin veya ağır yükün olması nedeniyle, [HttpClient sınıfının](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) `using` deyimle örneklemeyi ve istek başına HttpClient örnekleri oluşturmayı önleyin. Daha fazla bilgi için bkz. [Esnek http isteklerini uygulamak Için HttpClientFactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * Eş zamanlı çalışan işlevlerin, yüksek birimlerin veya ağır yükün olması nedeniyle, [HttpClient sınıfının](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) `using` deyimle örneklemeyi ve Istek başına HttpClient örnekleri oluşturmayı önleyin. Daha fazla bilgi için bkz. [Esnek http isteklerini uygulamak Için HttpClientFactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
    * Mümkünse, HTTP istemcilerinin örneğini yeniden kullanın. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](../azure-functions/manage-connections.md).
 

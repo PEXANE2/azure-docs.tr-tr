@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435716"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop ile MapReduce'u kullanma
@@ -21,13 +20,13 @@ HDInsight kümelerinde MapReduce işlerinin nasıl çalıştırılacağını ö�
 
 ## <a name="example-data"></a>Örnek veriler
 
-HDInsight, `/example/data` ve `/HdiSamples` dizininde depolanan çeşitli örnek veri kümeleri sağlar. Bu dizinler, kümeniz için varsayılan depolardır. Bu belgede, `/example/data/gutenberg/davinci.txt` dosyasını kullanırız. Bu dosya, Leonardo da Vinci not defterlerini içerir.
+HDInsight, ve dizininde depolanan çeşitli örnek veri kümeleri sağlar `/example/data` `/HdiSamples` . Bu dizinler, kümeniz için varsayılan depolardır. Bu belgede, `/example/data/gutenberg/davinci.txt` dosyasını kullanırız. Bu dosya, Leonardo da Vinci not defterlerini içerir.
 
 ## <a name="example-mapreduce"></a>Örnek MapReduce
 
-HDInsight kümenize örnek bir MapReduce sözcük sayısı uygulaması dahildir. Bu örnek, kümenizin varsayılan `/example/jars/hadoop-mapreduce-examples.jar` depolama alanında bulunur.
+HDInsight kümenize örnek bir MapReduce sözcük sayısı uygulaması dahildir. Bu örnek, `/example/jars/hadoop-mapreduce-examples.jar` kümenizin varsayılan depolama alanında bulunur.
 
-Aşağıdaki Java kodu, `hadoop-mapreduce-examples.jar` dosyasında bulunan MapReduce uygulamasının kaynağıdır:
+Aşağıdaki Java kodu, dosyasında bulunan MapReduce uygulamasının kaynağıdır `hadoop-mapreduce-examples.jar` :
 
 ```java
 package org.apache.hadoop.examples;

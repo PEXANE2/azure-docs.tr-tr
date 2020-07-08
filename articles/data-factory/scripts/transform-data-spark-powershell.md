@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74932060"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak buluttaki verileri dönüştürme
@@ -54,7 +53,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
     if __name__ == "__main__":
         main()
     ```
-2. ** &lt;StorageAccountName&gt; ** ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+2. ** &lt; StorageAccountName &gt; ** ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 3. Azure Blob depolama alanınızda henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 4. **Spark** adlı bir klasör oluşturun.
 5. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -63,7 +62,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
 
 ### <a name="upload-the-input-file"></a>Girdi dosyasını yükleme
 1. Bazı metinlerle **minecraftstory.txt** adlı bir dosya oluşturun. Spark programı bu metindeki sözcükleri sayar. 
-2. Blob kapsayıcısının `spark` klasöründe adlı `inputfiles` bir alt klasör oluşturun. 
+2. `inputfiles`BLOB kapsayıcısının klasöründe adlı bir alt klasör oluşturun `spark` . 
 3. `minecraftstory.txt` dosyasını `inputfiles` alt klasörüne yükleyin. 
 
 ## <a name="sample-script"></a>Örnek betik

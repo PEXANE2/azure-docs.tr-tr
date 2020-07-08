@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378441"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak OneDrive bağlayıcıdaki dosyalara erişin ve yönetin
@@ -38,7 +37,7 @@ Mantıksal uygulamanızın herhangi bir hizmete erişebilmesi için önce hizmet
 
 Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak için kullanılabilen bir olaydır. Hizmeti, istediğiniz zaman aralığında ve sıklıkta "yoklamayı" tetikler. [Tetikleyiciler hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Mantıksal uygulama Tasarımcısı ' nda, tetikleyicilerinin bir listesini almak için yazın `onedrive` :  
+1. Mantıksal uygulama Tasarımcısı ' nda, `onedrive` tetikleyicilerinin bir listesini almak için yazın:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +65,7 @@ Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen b
 
 2. **Eylem Ekle**' yi seçin.
 
-3. Tüm kullanılabilir eylemlerin listesini almak için `onedrive` arama kutusuna yazın.
+3. `onedrive`Tüm kullanılabilir eylemlerin listesini almak için arama kutusuna yazın.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

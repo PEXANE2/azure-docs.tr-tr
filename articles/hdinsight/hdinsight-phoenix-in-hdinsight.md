@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435490"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Phoenix
@@ -31,7 +30,7 @@ Apache Phoenix, HBase sorgularına birçok performans geliştirmesi ve özelliğ
 
 HBase 'in birincil satır anahtarında lexıgrafik olarak sıralanan tek bir dizini vardır. Bu kayıtlara yalnızca satır anahtarı üzerinden erişilebilir. Satır anahtarı dışında herhangi bir sütun aracılığıyla kayıtlara erişilmesi gereken filtre uygulanırken tüm verilerin taranmasını gerektirir. İkincil bir dizinde, dizine eklenen sütunlar veya ifadeler, bu dizinde aramalar ve Aralık taramalarına olanak sağlayan alternatif bir satır anahtarı oluşturur.
 
-`CREATE INDEX` Komutuyla ikincil dizin oluşturun:
+Komutuyla ikincil dizin oluşturun `CREATE INDEX` :
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
@@ -45,7 +44,7 @@ Phoenix görünümleri, yaklaşık 100 fiziksel tablo oluştururken performansı
 
 Phoenix görünümü oluşturmak, standart SQL görünümü sözdizimi kullanmaya benzer. Bunun farkı, kendi temel tablosundan devralınan sütunlara ek olarak görünümünizin sütunlarını tanımlayabilmeniz gerektiğidir. Ayrıca yeni `KeyValue` sütunlar ekleyebilirsiniz.
 
-Örneğin, aşağıdaki tanımla adlı `product_metrics` bir fiziksel tablo aşağıda verilmiştir:
+Örneğin, aşağıdaki tanımla adlı bir fiziksel tablo aşağıda verilmiştir `product_metrics` :
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -70,7 +69,7 @@ Daha sonra daha fazla sütun eklemek için, `ALTER VIEW` ifadesini kullanın.
 
 Atlama taraması, farklı değerleri bulmak için bileşik dizinin bir veya daha fazla sütununu kullanır. Bir Aralık taramasından farklı olarak, atlama taraması, satır içi tarama uygular ve [Gelişmiş performans](https://phoenix.apache.org/performance.html#Skip-Scan)sağlar. Tarama sırasında, sonraki değer bulunana kadar, eşleşen ilk değer dizinle birlikte atlanır.
 
-Bir atlama taraması HBase `SEEK_NEXT_USING_HINT` filtresinin sabit listesini kullanır. ' `SEEK_NEXT_USING_HINT`Yi kullanarak, atlama taraması, her sütunda hangi anahtar veya anahtar aralıklarının arandığını izler. Atlama taraması, filtre değerlendirmesi sırasında kendisine geçirilmiş bir anahtar alır ve birleşimlerden birinin olup olmadığını belirler. Aksi takdirde, atlama taraması, sonraki en yüksek anahtarı atlanacak şekilde değerlendirir.
+Bir atlama taraması `SEEK_NEXT_USING_HINT` HBase filtresinin sabit listesini kullanır. `SEEK_NEXT_USING_HINT`' Yi kullanarak, atlama taraması, her sütunda hangi anahtar veya anahtar aralıklarının arandığını izler. Atlama taraması, filtre değerlendirmesi sırasında kendisine geçirilmiş bir anahtar alır ve birleşimlerden birinin olup olmadığını belirler. Aksi takdirde, atlama taraması, sonraki en yüksek anahtarı atlanacak şekilde değerlendirir.
 
 ### <a name="transactions"></a>İşlemler
 
@@ -80,13 +79,13 @@ Geleneksel SQL işlemlerinde olduğu gibi, Phoenix Transaction Manager aracılı
 
 Phoenix işlemlerini etkinleştirmek için [Apache Phoenix işlem belgelerine](https://phoenix.apache.org/transactions.html)bakın.
 
-İşlemleri etkin olan yeni bir tablo oluşturmak için, `TRANSACTIONAL` özelliğini bir `true` `CREATE` ifadesinde olarak ayarlayın:
+İşlemleri etkin olan yeni bir tablo oluşturmak için, `TRANSACTIONAL` özelliğini `true` bir ifadesinde olarak ayarlayın `CREATE` :
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Mevcut bir tabloyu işlemsel olacak şekilde değiştirmek için, bir `ALTER` ifadede aynı özelliği kullanın:
+Mevcut bir tabloyu işlemsel olacak şekilde değiştirmek için, bir ifadede aynı özelliği kullanın `ALTER` :
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
@@ -99,7 +98,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 *Bölge sunucusu hotspool* , sıralı anahtarlarla HBase 'e sahip kayıtları yazarken meydana gelebilir. Kümenizde birden çok bölge sunucusu olsa da, yazmaların hepsi yalnızca bir tane üzerinde gerçekleşmiş olabilir. Bu yoğunlaşma, yazma iş yükünüzün tüm kullanılabilir bölge sunucularında dağıtılması yerine, yükü işleme sürecinde olan, en az bir sorun oluşturur. Her bölge önceden tanımlanmış en büyük boyuta sahip olduğundan, bir bölge bu boyut sınırına ulaştığında, iki küçük bölgeye ayrılır. Söz konusu olduğunda, bu yeni bölgelerden biri yeni etkin nokta haline gelir.
 
-Bu sorunu azaltmak ve tüm bölge sunucularının eşit olarak kullanılması için daha iyi bir performans, önceden bölünmüş tablolar elde etmek. Phoenix, belirli bir tablonun satır anahtarına saydam bir şekilde sallayan bayt ekleyerek, *sallanan tablolar*sağlar. Tablo, tablonun ilk aşamasında bölge sunucuları arasında eşit yük dağıtımına olanak sağlamak için, salt, anahtar bayt sınırlarına önceden bölünür. Bu yaklaşım, yazma iş yükünü tüm kullanılabilir bölge sunucularında dağıtır, yazma ve okuma performansını geliştirir. Bir tabloyu almak için tablo oluşturulduğunda `SALT_BUCKETS` tablo özelliğini belirtin:
+Bu sorunu azaltmak ve tüm bölge sunucularının eşit olarak kullanılması için daha iyi bir performans, önceden bölünmüş tablolar elde etmek. Phoenix, belirli bir tablonun satır anahtarına saydam bir şekilde sallayan bayt ekleyerek, *sallanan tablolar*sağlar. Tablo, tablonun ilk aşamasında bölge sunucuları arasında eşit yük dağıtımına olanak sağlamak için, salt, anahtar bayt sınırlarına önceden bölünür. Bu yaklaşım, yazma iş yükünü tüm kullanılabilir bölge sunucularında dağıtır, yazma ve okuma performansını geliştirir. Bir tabloyu almak için tablo `SALT_BUCKETS` oluşturulduğunda tablo özelliğini belirtin:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -124,7 +123,7 @@ CREATE TABLE Saltedweblogs (
 
 An HDInsight HBase kümesi, yapılandırma değişiklikleri yapmak için [ambarı Kullanıcı arabirimini](hdinsight-hadoop-manage-ambari.md) içerir.
 
-1. Phoenix 'i etkinleştirmek veya devre dışı bırakmak ve Phoenix 'in sorgu zaman aşımı ayarlarını denetlemek için, Hadoop Kullanıcı kimlik bilgilerinizi kullanarak ambarı`https://YOUR_CLUSTER_NAME.azurehdinsight.net`Web Kullanıcı arabiriminde () oturum açın.
+1. Phoenix 'i etkinleştirmek veya devre dışı bırakmak ve Phoenix 'in sorgu zaman aşımı ayarlarını denetlemek için, `https://YOUR_CLUSTER_NAME.azurehdinsight.net` Hadoop Kullanıcı kimlik bilgilerinizi kullanarak ambarı Web Kullanıcı arabiriminde () oturum açın.
 
 2. Sol taraftaki menüdeki hizmetler listesinden **HBase** ' i seçin, sonra da **configs** sekmesini seçin.
 

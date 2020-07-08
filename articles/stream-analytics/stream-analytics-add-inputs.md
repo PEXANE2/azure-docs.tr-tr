@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426426"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics için girişleri anlayın
@@ -21,7 +20,7 @@ Azure Stream Analytics işleri bir veya daha fazla veri girişi 'ne bağlanır. 
 Stream Analytics giriş olarak üç tür kaynakla birinci sınıf tümleştirmeye sahiptir:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
-- [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Blob Depolama](https://azure.microsoft.com/services/storage/blobs/) 
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 

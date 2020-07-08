@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360353"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Bulut hizmetini güncelleştirme
@@ -47,18 +46,18 @@ Aşağıdaki tabloda, bir güncelleştirme sırasında bir hizmette izin verilen
 
 | Barındırma, hizmetler ve rollere izin verilen değişiklikler | Yerinde güncelleştirme | Hazırlandı (VIP takas) | Sil ve yeniden Dağıt |
 | --- | --- | --- | --- |
-| İşletim sistemi sürümü |Yes |Yes |Yes |
-| .NET güven düzeyi |Yes |Yes |Yes |
-| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Yes |Yes |
-| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Yes |Yes |
-| Bir hizmette rol ekleme veya kaldırma |Yes |Yes |Yes |
-| Belirli bir rolün örnek sayısı |Yes |Yes |Yes |
-| Bir hizmet için uç nokta sayısı veya türü |Evet<sup>2</sup> |Hayır |Yes |
-| Yapılandırma ayarlarının adları ve değerleri |Yes |Yes |Yes |
-| Yapılandırma ayarlarının değerleri (ancak adları değil) |Yes |Yes |Yes |
-| Yeni sertifika ekle |Yes |Yes |Yes |
-| Mevcut sertifikaları Değiştir |Yes |Yes |Yes |
-| Yeni kod dağıtma |Yes |Yes |Yes |
+| İşletim sistemi sürümü |Evet |Yes |Yes |
+| .NET güven düzeyi |Evet |Yes |Yes |
+| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Evet |Yes |
+| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Evet |Yes |
+| Bir hizmette rol ekleme veya kaldırma |Evet |Yes |Yes |
+| Belirli bir rolün örnek sayısı |Evet |Yes |Yes |
+| Bir hizmet için uç nokta sayısı veya türü |Evet<sup>2</sup> |Hayır |Evet |
+| Yapılandırma ayarlarının adları ve değerleri |Evet |Yes |Yes |
+| Yapılandırma ayarlarının değerleri (ancak adları değil) |Evet |Yes |Yes |
+| Yeni sertifika ekle |Evet |Yes |Yes |
+| Mevcut sertifikaları Değiştir |Evet |Yes |Yes |
+| Yeni kod dağıtma |Evet |Yes |Yes |
 
 <sup>1</sup> Boyut değişikliği, bulut hizmeti için kullanılabilen boyutların alt kümesiyle sınırlıdır.
 
@@ -124,7 +123,7 @@ Azure, ilk güncelleştirme isteği Azure yapı denetleyicisi tarafından kabul 
 Sürmekte olan bir güncelleştirmenin geri alınması, dağıtımda aşağıdaki etkilere sahiptir:
 
 * Henüz güncelleştirilmemiş veya yeni sürüme yükseltilmemiş tüm rol örnekleri, bu örnekler hizmetin hedef sürümünü zaten çalıştırdığından, güncellenmez veya yükseltilmemiştir.
-* Hizmet paketi (\*. cspkg) dosyasının veya hizmet yapılandırma (\*. cscfg) dosyasının (ya da her iki dosyanın) yeni sürümüne zaten güncelleştirilmiş veya yükseltilmiş olan herhangi bir rol örneği, bu dosyaların yükseltme öncesi sürümüne geri döndürülür.
+* Hizmet paketi ( \* . cspkg) dosyasının veya hizmet yapılandırma ( \* . cscfg) dosyasının (ya da her iki dosyanın) yeni sürümüne zaten güncelleştirilmiş veya yükseltilmiş olan herhangi bir rol örneği, bu dosyaların yükseltme öncesi sürümüne geri döndürülür.
 
 Bu işlevsellik aşağıdaki özelliklerle sağlanır:
 

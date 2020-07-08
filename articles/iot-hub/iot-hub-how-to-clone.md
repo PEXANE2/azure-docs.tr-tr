@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429148"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT Hub 'ı başka bir bölgeye kopyalama
@@ -107,7 +106,7 @@ Bu bölüm, hub 'ı geçirmeye yönelik özel yönergeler sağlar.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Özgün hub 'ı bulun ve bir kaynak şablonuna dışarı aktarın.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 1. **Kaynak grupları** ' na gidin ve taşımak istediğiniz hub 'ı içeren kaynak grubunu seçin. Ayrıca **kaynaklar** ' a gidebilir ve bu şekilde hub 'ı bulabilirsiniz. Hub 'ı seçin.
 
@@ -121,7 +120,7 @@ Bu bölüm, hub 'ı geçirmeye yönelik özel yönergeler sağlar.
 
 ### <a name="view-the-template"></a>Şablonu görüntüleme 
 
-1. Indirmeler klasörüne (veya şablonu aktardığınızda kullandığınız klasöre) gidin ve ZIP dosyasını bulun. ZIP dosyasını açın ve adlı `template.json`dosyayı bulun. Bunu seçin, sonra şablonu kopyalamak için CTRL + C ' yi seçin. ZIP dosyasında olmayan farklı bir klasöre gidin ve dosyayı (Ctrl + V) yapıştırın. Artık düzenleme yapabilirsiniz.
+1. Indirmeler klasörüne (veya şablonu aktardığınızda kullandığınız klasöre) gidin ve ZIP dosyasını bulun. ZIP dosyasını açın ve adlı dosyayı bulun `template.json` . Bunu seçin, sonra şablonu kopyalamak için CTRL + C ' yi seçin. ZIP dosyasında olmayan farklı bir klasöre gidin ve dosyayı (Ctrl + V) yapıştırın. Artık düzenleme yapabilirsiniz.
  
     Aşağıdaki örnek, Yönlendirme yapılandırması olmayan bir genel hub içindir. **Westus**bölgesinde **ContosoTestHub29358** adlı bir S1 katman hub 'ı (1 birim ile). Aşağıda, aktarılmış şablon verilmiştir.
 
@@ -308,9 +307,9 @@ Yönlendirme yapılandırılmış bir hub için Kaynak Yöneticisi şablonu dı�
    "containerName": "fabrikamresults",
    ```
 
-1. Depolama hesabının hesap anahtarını aldıktan sonra, yıldız işareti yerine yan tümcedeki `AccountKey=****` şablona koyun. 
+1. Depolama hesabının hesap anahtarını aldıktan sonra, yıldız işareti yerine yan tümcedeki şablona koyun `AccountKey=****` . 
 
-1. Service Bus kuyrukları için, SharedAccessKeyName ile eşleşen paylaşılan erişim anahtarını alın. Bu anahtar ve JSON `SharedAccessKeyName` içinde:
+1. Service Bus kuyrukları için, SharedAccessKeyName ile eşleşen paylaşılan erişim anahtarını alın. Bu anahtar ve `SharedAccessKeyName` JSON içinde:
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -347,13 +346,13 @@ Artık, yönlendirmeyi işlemeye nasıl karar verdiğinize bağlı olarak, eski 
 
 Yeni bir yerde şablonu kullanarak yeni hub 'ı oluşturun. Taşıyacağınız yönlendirme kaynaklarınız varsa, kaynakların yeni konumda ayarlanması ve şablondaki başvuruların eşleşecek şekilde güncelleştirilmiş olması gerekir. Yönlendirme kaynaklarını taşıdıysanız, güncelleştirilmiş anahtarlarla şablonda olmaları gerekir.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **Kaynak oluştur**’u seçin. 
 
 1. Arama kutusuna "şablon dağıtımı" koyun ve ENTER ' u seçin.
 
-1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın)**. Bu, sizi Şablon dağıtımı bir ekrana götürür. **Oluştur**’u seçin. Şu ekranı görürsünüz:
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın)**. Bu, sizi Şablon dağıtımı bir ekrana götürür. **Oluştur**'u seçin. Şu ekranı görürsünüz:
 
    ![Kendi şablonunuzu oluşturma komutunu gösteren ekran görüntüsü](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -363,7 +362,7 @@ Yeni bir yerde şablonu kullanarak yeni hub 'ı oluşturun. Taşıyacağınız y
 
    ![Şablon dosyası yükleme komutunu gösteren ekran görüntüsü](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Düzenlediğiniz yeni şablona gözatıp seçin ve sonra **Aç**' ı seçin. Şablonu düzenleme penceresinde yükler. **Kaydet**’i seçin. 
+1. Düzenlediğiniz yeni şablona gözatıp seçin ve sonra **Aç**' ı seçin. Şablonu düzenleme penceresinde yükler. **Kaydet**'i seçin. 
 
    ![Şablonu yüklemeyi gösteren ekran görüntüsü](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
@@ -487,7 +486,7 @@ Artık SET komutlarıyla bir dosyada ortam değişkenlerine sahipsiniz ve komut 
 
 1. Bir komut istemi penceresi açın. Windows ' u seçin ve `command prompt` komut istemi penceresini almak için yazın.
 
-1. Ortam değişkenlerini ayarlanmış komutları tek seferde kopyalayın ve komut istemi penceresine yapıştırın ve ENTER ' u seçin. İşiniz bittiğinde, ortam değişkenlerinizi `SET` ve bunların değerlerini görmek için komut istemi penceresine yazın. Bunları komut istemi penceresine kopyaladıktan sonra, yeni bir komut istemi penceresi açmadığınız müddetçe bunları yeniden kopyalamanız gerekmez.
+1. Ortam değişkenlerini ayarlanmış komutları tek seferde kopyalayın ve komut istemi penceresine yapıştırın ve ENTER ' u seçin. İşiniz bittiğinde, `SET` ortam değişkenlerinizi ve bunların değerlerini görmek için komut istemi penceresine yazın. Bunları komut istemi penceresine kopyaladıktan sonra, yeni bir komut istemi penceresi açmadığınız müddetçe bunları yeniden kopyalamanız gerekmez.
 
 1. Komut istemi penceresinde, ' ın./ımportexportdevicessample (ımportexportdevicessample. csproj dosyasının bulunduğu yer). Ardından aşağıdaki komutu yazın ve komut satırı bağımsız değişkenlerinizi ekleyin.
 
@@ -549,7 +548,7 @@ Artık SET komutlarıyla bir dosyada ortam değişkenlerine sahipsiniz ve komut 
 
 1. [Azure Portal](https://portal.azure.com)kullanarak yeni hub 'a gidin. Hub 'ınızı seçip **IoT cihazları**' nı seçin. Eski hub 'dan kopyalanmış hub 'a kopyaladığınız cihazları görürsünüz. Klonlanan hub 'ın özelliklerini de görüntüleyebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com) Azure Storage hesabına giderek içeri/dışarı aktarma hatalarını denetleyin ve için `devicefiles` kapsayıcısına göz atın. `ImportErrors.log` Bu dosya boşsa (boyut 0 ise), hata yoktu. Aynı cihazı birden çok kez içeri aktarmaya çalışırsanız, cihazı ikinci kez reddeder ve günlük dosyasına bir hata iletisi ekler.
+1. [Azure Portal](https://portal.azure.com) Azure Storage hesabına giderek içeri/dışarı aktarma hatalarını denetleyin ve `devicefiles` için kapsayıcısına göz atın `ImportErrors.log` . Bu dosya boşsa (boyut 0 ise), hata yoktu. Aynı cihazı birden çok kez içeri aktarmaya çalışırsanız, cihazı ikinci kez reddeder ve günlük dosyasına bir hata iletisi ekler.
 
 ### <a name="committing-the-changes"></a>Değişiklikler yürütülüyor 
 

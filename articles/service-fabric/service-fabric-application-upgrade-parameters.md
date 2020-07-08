@@ -4,10 +4,9 @@ description: Gerçekleştirilecek durum denetimleri ve otomatik olarak yükseltm
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377982"
 ---
 # <a name="application-upgrade-parameters"></a>Uygulama yükseltme parametreleri
@@ -45,7 +44,7 @@ Monitortoredmanual | PS | Yükseltme modunun izlenmeyen el ile olduğunu göster
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
-Sistem durumu değerlendirme parametreleri isteğe bağlıdır. Bir yükseltme başladığında durum değerlendirme ölçütleri belirtilmemişse, Service Fabric uygulama örneğinin ApplicationManifest. xml dosyasında belirtilen uygulama sistem durumu ilkelerini kullanır.
+Sistem durumu değerlendirme parametreleri isteğe bağlıdır. Bir yükseltme başladığında durum değerlendirme ölçütleri belirtilmemişse, Service Fabric uygulama örneğinin ApplicationManifest.xml belirtilen uygulama sistem durumu ilkelerini kullanır.
 
 > [!div class="mx-tdBreakAll"]
 > | Parametre | Uygulanan Öğe | Açıklama |
@@ -80,7 +79,7 @@ Service Fabric CLı kullanarak uygulama yükseltmeleri Service Fabric, [sfctl uy
 
 | Parametre | Açıklama |
 | --- | --- |
-| Uygulama kimliği  |Yükseltilmekte olan uygulamanın KIMLIĞI. <br> Bu genellikle uygulamanın ' Fabric: ' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar '\~' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric:/MyApp/APP1 ' ise, uygulama kimliği önceki sürümlerde 6.0 + ve ' MyApp/\~APP1 ' içinde ' MyApp APP1 ' olur.|
+| Uygulama kimliği  |Yükseltilmekte olan uygulamanın KIMLIĞI. <br> Bu genellikle uygulamanın ' Fabric: ' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar ' \~ ' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric:/MyApp/APP1 ' ise, uygulama kimliği \~ önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp APP1 ' olur.|
 Uygulama sürümü |Yükseltmenin hedeflediği uygulama türünün sürümü.|
 parametreler  |Uygulamanın yükseltilmesi sırasında uygulanacak bir JSON kodlamalı uygulama parametresi listesi.|
 

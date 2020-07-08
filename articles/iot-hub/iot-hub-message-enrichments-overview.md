@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429116"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
@@ -29,7 +28,7 @@ Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
 * Zenginleştirme için uygulanması gereken bir veya daha fazla [uç nokta](iot-hub-devguide-endpoints.md) .
 
-**Anahtar** bir dizedir. Anahtar yalnızca alfasayısal karakterler veya şu özel karakterleri içerebilir: kısa çizgi (`-`), alt çizgi (`_`) ve nokta (`.`).
+**Anahtar** bir dizedir. Anahtar yalnızca alfasayısal karakterler veya şu özel karakterleri içerebilir: kısa çizgi ( `-` ), alt çizgi ( `_` ) ve nokta ( `.` ).
 
 **Değer** aşağıdaki örneklerden herhangi biri olabilir:
 
@@ -62,7 +61,7 @@ Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
 
 | **Yöntem** | **Komut** |
 | ----- | -----| 
-| Portal | [Azure portal](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
+| Portal | [Azure portalındaki](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
 | Azure CLI   | [az IoT Hub iletisi-zenginleştirme](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 

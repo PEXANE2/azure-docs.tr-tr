@@ -12,10 +12,9 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74926144"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Uyumsuz satırları atlayarak kopyalama etkinliğine hata toleransı ekleyin
@@ -37,7 +36,7 @@ Kopyalama etkinliği, uyumsuz verileri saptamak, atlamak ve günlüğe kaydetmek
 
 - **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk**
 
-    Örneğin: BLOB depolama alanındaki bir CSV dosyasından, üç **Int** tür sütunu içeren bir şema tanımına sahıp bir SQL veritabanına veri kopyalama. Gibi sayısal veriler `123,456,789` içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Ancak, gibi sayısal olmayan değerler `123,456,abc` içeren satırlar uyumsuz olarak algılanır ve atlanır.
+    Örneğin: BLOB depolama alanındaki bir CSV dosyasından, üç **Int** tür sütunu içeren bir şema tanımına sahıp bir SQL veritabanına veri kopyalama. Gibi sayısal veriler içeren CSV dosyası satırları `123,456,789` Havuz deposuna başarıyla kopyalanır. Ancak, gibi sayısal olmayan değerler içeren satırlar `123,456,abc` uyumsuz olarak algılanır ve atlanır.
 
 - **Kaynak ile havuz arasında sütun sayısı uyuşmazlığı**
 

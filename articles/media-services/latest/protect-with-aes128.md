@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974181"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Öğretici: AES-128 ile videoyu şifreleyin ve anahtar teslim hizmetini kullanın
@@ -30,7 +29,7 @@ Media Services, HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış 128 b
 
 Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine, FairPlay) ile şifreleyebilirsiniz. Birlikte kullanılabilecek türler hakkında bilgi almak için bkz. [Akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types). Ayrıca bkz. [DRM ile koruma](protect-with-drm.md).
 
-Bu makaleye örnek çıktısı, Azure Media Player, bildirim URL 'si ve içeriği kayıttan yürütmek için gereken AES belirtecinin URL 'sini içerir. Örnek, JSON Web Token (JWT) belirtecinin kullanım süresini 1 saat olarak ayarlar. Bir tarayıcı açabilir ve aşağıdaki biçimde doldurulmuş URL ve belirteç ile Azure Media Player Demo sayfasını başlatmak için elde edilen URL 'yi yapıştırabilirsiniz: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
+Bu makaleye örnek çıktısı, Azure Media Player, bildirim URL 'si ve içeriği kayıttan yürütmek için gereken AES belirtecinin URL 'sini içerir. Örnek, JSON Web Token (JWT) belirtecinin kullanım süresini 1 saat olarak ayarlar. Bir tarayıcı açabilir ve aşağıdaki biçimde doldurulmuş URL ve belirteç ile Azure Media Player Demo sayfasını başlatmak için elde edilen URL 'yi yapıştırabilirsiniz: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}``` .
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 

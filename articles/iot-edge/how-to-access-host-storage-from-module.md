@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434537"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
@@ -70,11 +69,11 @@ Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsin
 }
 ```
 
-Ve `<HostStoragePath>` ' `<ModuleStoragePath>` i konak ve modül depolama yolunuza göre değiştirin; Her iki değer de mutlak bir yol olmalıdır.
+`<HostStoragePath>`Ve ' i `<ModuleStoragePath>` konak ve modüllü depolama yolunuza göre değiştirin; her iki değer de mutlak bir yol olmalıdır.
 
-Örneğin, bir Linux sisteminde, `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` ana bilgisayar sisteminizdeki **/etc/ıotedge/Storage** dizini, kapsayıcıda **/iotedge/Storage/** dizinine eşlenmişse anlamına gelir. Bir Windows sisteminde, başka bir örnek olarak, `"Binds":["C:\\temp:C:\\contemp"]` ana bilgisayar sisteminizdeki **c:\\Temp** dizininin, kapsayıcıda **c\\: Contemp** dizinine eşlendiği anlamına gelir.
+Örneğin, bir Linux sisteminde, `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` ana bilgisayar sisteminizdeki **/etc/ıotedge/Storage** dizini, kapsayıcıda **/iotedge/Storage/** dizinine eşlenmişse anlamına gelir. Bir Windows sisteminde, başka bir örnek olarak, `"Binds":["C:\\temp:C:\\contemp"]` ana bilgisayar sisteminizdeki **c: \\ Temp** dizininin, kapsayıcıda **c: \\ Contemp** dizinine eşlendiği anlamına gelir.
 
-Ayrıca, Linux cihazlarda modülünüzün Kullanıcı profilinin konak sistem dizini için gereken okuma, yazma ve yürütme izinlerine sahip olduğundan emin olun. Cihazınızın yerel depolamasına iletileri depolamak üzere IoT Edge hub 'ı etkinleştirmeye yönelik daha önceki örneğe dönerek, Kullanıcı profili, UID 1000 için izin vermeniz gerekir. (IoT Edge Aracısı kök olarak çalışır, bu nedenle ek izin gerektirmez.) Linux sistemlerinde dizin izinlerini yönetmenin birkaç yolu vardır. Bu, `chown` Dizin sahibini değiştirmek ve sonra `chmod` izinleri değiştirmek için:
+Ayrıca, Linux cihazlarda modülünüzün Kullanıcı profilinin konak sistem dizini için gereken okuma, yazma ve yürütme izinlerine sahip olduğundan emin olun. Cihazınızın yerel depolamasına iletileri depolamak üzere IoT Edge hub 'ı etkinleştirmeye yönelik daha önceki örneğe dönerek, Kullanıcı profili, UID 1000 için izin vermeniz gerekir. (IoT Edge Aracısı kök olarak çalışır, bu nedenle ek izin gerektirmez.) Linux sistemlerinde dizin izinlerini yönetmenin birkaç yolu vardır `chown` . Bu, Dizin sahibini değiştirmek ve sonra `chmod` izinleri değiştirmek için:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

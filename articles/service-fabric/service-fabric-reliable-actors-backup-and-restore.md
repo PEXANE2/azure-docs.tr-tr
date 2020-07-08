@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75370468"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Yedekleme ve geri yükleme Reliable Actors uygulama
@@ -18,7 +17,7 @@ ms.locfileid: "75370468"
 > Microsoft, güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemesini yapılandırmak için [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) kullanmayı önerir. 
 > 
 
-Aşağıdaki örnekte, özel bir aktör hizmeti, ' de `ActorService`zaten mevcut olan uzaktan erişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunar:
+Aşağıdaki örnekte, özel bir aktör hizmeti, ' de zaten mevcut olan uzaktan erişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunar `ActorService` :
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +93,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Bu `IMyActorService` örnekte, (C#) `IService` ve `Service` (Java) uygulayan ve daha sonra tarafından `MyActorService`uygulanan bir uzaktan iletişim sözleşmesi. Bu uzaktan iletişim sözleşmesi eklendiğinde, üzerinde `IMyActorService` Yöntemler şu şekilde bir uzaktan iletişim proxy 'si oluşturularak bir istemci tarafından da kullanılabilir `ActorServiceProxy`:
+Bu örnekte, `IMyActorService` `IService` (C#) ve `Service` (Java) uygulayan ve daha sonra tarafından uygulanan bir uzaktan iletişim Sözleşmesi `MyActorService` . Bu uzaktan iletişim sözleşmesi eklendiğinde, üzerinde Yöntemler `IMyActorService` Şu şekilde bir uzaktan iletişim proxy 'si oluşturularak bir istemci tarafından da kullanılabilir `ActorServiceProxy` :
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

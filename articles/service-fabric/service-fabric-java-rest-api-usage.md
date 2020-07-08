@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451678"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java Istemci API 'Leri
@@ -62,7 +61,7 @@ Service Fabric Java istemci kodunu, oto Rest aracını kullanarak oluşturmak i�
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Aşağıdaki komut, belirtim ``servicefabric.json`` dosyasını girdi olarak alır ve ``java-rest-api-     code`` klasörde Java istemci kodu oluşturur ve kodu ``servicefabricrest`` ad alanına barındırır. Bu ``models``adımdan sonra iki klasör ``implementation`` ve ``ServiceFabricClientAPIs.java`` ``package-info.java`` ``java-rest-api-code`` klasörde oluşturulan iki dosya bulunur.
+   Aşağıdaki komut, ``servicefabric.json`` Belirtim dosyasını girdi olarak alır ve klasörde Java istemci kodu oluşturur ``java-rest-api-     code`` ve kodu ``servicefabricrest`` ad alanına barındırır. Bu adımdan sonra iki klasör ``models`` ``implementation`` ve klasörde oluşturulan iki dosya bulunur ``ServiceFabricClientAPIs.java`` ``package-info.java`` ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>Projenizde oluşturulan istemciyi ekleme ve kullanma
@@ -75,7 +74,7 @@ Service Fabric Java istemci kodunu, oto Rest aracını kullanarak oluşturmak i�
         Artifactid: client-runtime
         Version: 1.2.1
     ```
-    Örneğin, Maven derleme sistemi kullanıyorsanız ``pom.xml`` dosyanıza aşağıdakileri ekleyin:
+    Örneğin, Maven derleme sistemi kullanıyorsanız dosyanıza aşağıdakileri ekleyin ``pom.xml`` :
 
     ```xml
         <dependency>
@@ -114,14 +113,14 @@ Service Fabric Java istemci kodunu, oto Rest aracını kullanarak oluşturmak i�
         ```
 
 ## <a name="understanding-the-generated-code"></a>Oluşturulan kodu anlama
-Her API için, uygulamanın dört adet aşırı yüklemesini bulacaksınız. İsteğe bağlı parametreler varsa, bu isteğe bağlı parametreler dahil olmak üzere dört çeşitte daha bulabilirsiniz. Örneğin, API 'YI ``removeReplica``düşünün.
+Her API için, uygulamanın dört adet aşırı yüklemesini bulacaksınız. İsteğe bağlı parametreler varsa, bu isteğe bağlı parametreler dahil olmak üzere dört çeşitte daha bulabilirsiniz. Örneğin, API 'YI düşünün ``removeReplica`` .
  1. **public void removeReplica (dize düğ, UUID PartitionID, dize yineleme kimliği, Boole forceRemove, uzun zaman aşımı)**
     * Bu, removeReplica API çağrısının zaman uyumlu varyantıdır
- 2. **ortak ServiceFuture\<void> Removereperepasync (dize düğ, UUID PartitionID, dize yineleme kimliği, Boole forceRemove, uzun zaman aşımı,\<son ServiceCallback void> ServiceCallback)**
+ 2. **ortak ServiceFuture \<Void> removereperepasync (dize düğ, UUID PartitionID, dize yineleme kimliği, Boole forceRemove, uzun zaman aşımı, son ServiceCallback \<Void> ServiceCallback)**
     * Bu API çağrısı değişkeni, gelecekteki tabanlı zaman uyumsuz programlama kullanmak ve geri çağırmaları kullanmak istiyorsanız kullanılabilir
- 3. **Public observable\<void> Removereperepasync (dize düğ, UUID PartitionID, dize yineleme kimliği)**
+ 3. **Public observable \<Void> removereperepasync (dize düğ, UUID PartitionID, dize yineleme kimliği)**
     * Bu API çağrısı değişkeni, reaktif zaman uyumsuz programlama kullanmak istiyorsanız kullanılabilir
- 4. **Public observable\<ServiceResponse\<void>> removeReplicaWithServiceResponseAsync (dize düğ, UUID PartitionID, dize yineleme kimliği)**
+ 4. **Public observable \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (dize düğ, UUID PartitionID, dize yineleme kimliği)**
     * Bu API çağrısı değişkeni, reaktif zaman uyumsuz programlama kullanmak ve ham Rest yanıtıyla başa çıkmak istiyorsanız kullanılabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar

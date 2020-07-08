@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435925"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
@@ -21,7 +20,7 @@ HDInsight 'daki kullanıcıları ve rolleri Kurumsal Güvenlik Paketi (ESP) ve E
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Etki alanına katılmış kümeye bağlamak için VSCode kullanma
 
-Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir güvenlik Apache Hadoop kümesi de bağlayabilirsiniz.
+Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin:) kullanarak bir güvenlik Apache Hadoop kümesi de bağlayabilirsiniz `user1@contoso.com` .
 
 1. [Visual Studio Code](https://code.visualstudio.com/)açın. [Spark & Hive araçları](../hdinsight-for-vscode.md) uzantısının yüklü olduğundan emin olun.
 
@@ -29,7 +28,7 @@ Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağl
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Etki alanına katılmış kümeye bağlamak için IntelliJ kullanma
 
-Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz.
+Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin:) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz `user1@contoso.com` .
 
 1. IntelliJ IDEA’yı açın. Tüm [önkoşulların](../spark/apache-spark-intellij-tool-plugin.md#prerequisites) karşılandığından emin olun.
 
@@ -37,7 +36,7 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Etki alanına katılmış kümeye bağlamak için Eclipse kullanma
 
-Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz.
+Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin:) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz `user1@contoso.com` .
 
 1. Eclipse’i açın. Tüm [önkoşulların](../spark/apache-spark-eclipse-tool-plugin.md#prerequisites) karşılandığından emin olun.
 
@@ -87,7 +86,7 @@ Bir headnode 'un tam etki alanı adını bulmak için, ambarı REST API belgeler
 
 ESP olmayan bir HDInsight kümesi, küme oluşturma sırasında oluşturulan iki kullanıcı hesabına sahiptir:
 
-- **Ambarı Yöneticisi**: Bu hesap *Hadoop kullanıcısı* veya *http kullanıcısı*olarak da bilinir. Bu hesap, tarihinde `https://CLUSTERNAME.azurehdinsight.net`ambarı 'nda oturum açmak için kullanılabilir. Ayrıca, ambarı görünümlerinde sorguları çalıştırmak, dış araçlarla (örneğin, PowerShell, Temptaton, Visual Studio) işleri yürütmek ve Hive ODBC sürücüsü ve BI araçları (örneğin, Excel, Power BI veya Tableau) ile kimlik doğrulaması yapmak için de kullanılabilir.
+- **Ambarı Yöneticisi**: Bu hesap *Hadoop kullanıcısı* veya *http kullanıcısı*olarak da bilinir. Bu hesap, tarihinde ambarı 'nda oturum açmak için kullanılabilir `https://CLUSTERNAME.azurehdinsight.net` . Ayrıca, ambarı görünümlerinde sorguları çalıştırmak, dış araçlarla (örneğin, PowerShell, Temptaton, Visual Studio) işleri yürütmek ve Hive ODBC sürücüsü ve BI araçları (örneğin, Excel, Power BI veya Tableau) ile kimlik doğrulaması yapmak için de kullanılabilir.
 
 ESP içeren bir HDInsight kümesinde, ambarı yöneticisine ek olarak üç yeni kullanıcı vardır.
 
@@ -124,7 +123,7 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 
 ## <a name="open-the-ambari-management-ui"></a>Ambarı yönetimi Kullanıcı arabirimini açın
 
-1. CLUSTERNAME öğesinin `https://CLUSTERNAME.azurehdinsight.net/` Kümenizin adı olduğu yere gidin.
+1. `https://CLUSTERNAME.azurehdinsight.net/`Clustername öğesinin Kümenizin adı olduğu yere gidin.
 1. Küme Yöneticisi etki alanı Kullanıcı adı ve parolasını kullanarak, ambarı 'nda oturum açın.
 1. Sağ üst köşedeki **yönetici** açılan menüsünü seçin ve ardından **ambarı Yönet**' i seçin.
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378458"
 ---
 # <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak GitHub deponuzu izleyin ve yönetin
@@ -26,7 +25,7 @@ Bir mantıksal uygulamada GitHub bağlayıcısını kullanmak için, önce bir *
 
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| Belirteç | Yes | GitHub kimlik bilgilerinizi sağlayın. |
+| Belirteç | Evet | GitHub kimlik bilgilerinizi sağlayın. |
 
 Bağlantıyı oluşturduktan sonra, eylemleri yürütebilir ve bu makalede açıklanan Tetikleyicileri dinleyebilirsiniz.
 

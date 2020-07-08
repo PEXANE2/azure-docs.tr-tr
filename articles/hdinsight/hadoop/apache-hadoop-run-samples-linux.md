@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435744"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight 'ta bulunan MapReduce örneklerini çalıştırma
@@ -29,7 +28,7 @@ HDInsight üzerinde Apache Hadoop eklenen MapReduce örneklerini çalıştırmay
 
 ## <a name="the-mapreduce-examples"></a>MapReduce örnekleri
 
-Örnekler, adresindeki `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`HDInsight kümesinde bulunur. Bu örnekler için kaynak kodu, adresindeki `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`HDInsight kümesinde bulunur.
+Örnekler, adresindeki HDInsight kümesinde bulunur `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` . Bu örnekler için kaynak kodu, adresindeki HDInsight kümesinde bulunur `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` .
 
 Aşağıdaki örnekler bu arşivde yer alır:
 
@@ -60,7 +59,7 @@ Aşağıdaki örnekler bu arşivde yer alır:
 
 ## <a name="run-the-wordcount-example"></a>WORDCOUNT örneğini çalıştırma
 
-1. SSH kullanarak HDInsight 'a bağlanın. Kümenizin `CLUSTER` adıyla değiştirin ve aşağıdaki komutu girin:
+1. SSH kullanarak HDInsight 'a bağlanın. `CLUSTER`Kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
@@ -94,10 +93,10 @@ Aşağıdaki örnekler bu arşivde yer alır:
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Bu işin girişi öğesinden `/example/data/gutenberg/davinci.txt`okundu. Bu örneğin çıktısı içinde `/example/data/davinciwordcount`depolanır. Her iki yol da yerel dosya sistemi değil, küme için varsayılan depolamada bulunur.
+    Bu işin girişi öğesinden okundu `/example/data/gutenberg/davinci.txt` . Bu örneğin çıktısı içinde depolanır `/example/data/davinciwordcount` . Her iki yol da yerel dosya sistemi değil, küme için varsayılan depolamada bulunur.
 
    > [!NOTE]  
-   > WORDCOUNT örneği için yardım 'da belirtildiği gibi, birden çok giriş dosyası da belirtebilirsiniz. Örneğin, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` hem DaVinci. txt hem de Ulysses. txt dosyasındaki sözcükleri sayar.
+   > WORDCOUNT örneği için yardım 'da belirtildiği gibi, birden çok giriş dosyası da belirtebilirsiniz. Örneğin, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` hem davinci.txt hem de ulysses.txt sözcükleri sayar.
 
 5. İş tamamlandıktan sonra çıktıyı görüntülemek için aşağıdaki komutu kullanın:
 
@@ -119,10 +118,10 @@ Aşağıdaki örnekler bu arşivde yer alır:
 [Sudoku](https://en.wikipedia.org/wiki/Sudoku) , dokuz 3x3 ızgaradan oluşan bir Logic bulmaca. Kılavuzdaki bazı hücrelerde sayı bulunur, diğerleri boş kalır ve hedef hücre için çözülmektedir. Önceki bağlantı, bulmaca hakkında daha fazla bilgi içerir, ancak bu örneğin amacı boş hücreleri çözmelidir. Bu nedenle, girimiz aşağıdaki biçimde bir dosya olmalıdır:
 
 * Dokuz sütundan oluşan dokuz satır
-* Her sütun bir sayı ya `?` da (boş bir hücreyi gösterir) içerebilir
+* Her sütun bir sayı ya da `?` (boş bir hücreyi gösterir) içerebilir
 * Hücreler boşlukla ayrılır
 
-Sudoku bulmaca vs oluşturmak için belirli bir yol vardır. bir sütun veya satırdaki bir sayıyı yineleyemiyorum. HDInsight kümesinde düzgün şekilde oluşturulan bir örnek vardır. Konumunda `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` bulunur ve şu metni içerir:
+Sudoku bulmaca vs oluşturmak için belirli bir yol vardır. bir sütun veya satırdaki bir sayıyı yineleyemiyorum. HDInsight kümesinde düzgün şekilde oluşturulan bir örnek vardır. Konumunda bulunur `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` ve şu metni içerir:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -184,13 +183,13 @@ Bu örnek üç MapReduce programı kümesini kullanır:
 
 Veri oluşturmak, sıralamak ve sonra çıktıyı doğrulamak için aşağıdaki adımları kullanın:
 
-1. HDInsight kümesinin varsayılan depolama alanında depolanan 10 GB veri oluşturun `/example/data/10GB-sort-input`:
+1. HDInsight kümesinin varsayılan depolama alanında depolanan 10 GB veri oluşturun `/example/data/10GB-sort-input` :
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    Bu `-Dmapred.map.tasks` iş için kaç tane eşleme görevinin kullanılacağını Hadoop 'a söyler. Son iki parametre, işe 10 GB veri oluşturulmasını ve üzerinde `/example/data/10GB-sort-input`depolamayı yönlendirir.
+    `-Dmapred.map.tasks`Bu iş için kaç tane eşleme görevinin kullanılacağını Hadoop 'a söyler. Son iki parametre, işe 10 GB veri oluşturulmasını ve üzerinde depolamayı yönlendirir `/example/data/10GB-sort-input` .
 
 2. Verileri sıralamak için aşağıdaki komutu kullanın:
 

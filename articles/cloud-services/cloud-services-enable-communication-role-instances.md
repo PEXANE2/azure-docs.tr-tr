@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386349"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure 'da rol örnekleri için iletişimi etkinleştirme
@@ -255,7 +254,7 @@ Aşağıdaki kod örneğinde, önceki diyagramda gösterilen roller için rol ta
 
 Varsayılan olarak, bir iç uç nokta tanımlandıktan sonra, iletişim herhangi bir rolden herhangi bir kısıtlama olmadan bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki **ServiceDefinition** öğesine bir **NetworkTrafficRules** öğesi eklemeniz gerekir.
 
-### <a name="scenario-1"></a>Senaryo 1
+### <a name="scenario-1"></a>1\. Senaryo
 Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
 
 ```xml
@@ -274,7 +273,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>Senaryo 2
+### <a name="scenario-2"></a>2\. Senaryo
 Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ trafiğine izin verir.
 
 ```xml
@@ -293,7 +292,7 @@ Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ tra
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>3. Senaryo
+### <a name="scenario-3"></a>3\. Senaryo
 Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **trafiğine izin verir.**
 
 ```xml
@@ -322,7 +321,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **t
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>4. Senaryo
+### <a name="scenario-4"></a>4\. Senaryo
 Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **WorkerRole1** arasında ağ **trafiğine izin verir.**
 
 ```xml

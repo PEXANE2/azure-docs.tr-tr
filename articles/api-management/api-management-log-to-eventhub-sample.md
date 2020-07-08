@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75442537"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management, Event Hubs ve Moesif ile API 'lerinizi izleme
@@ -46,7 +45,7 @@ Event Hubs birden çok tüketici grubuna olay akışı yapabilme özelliğine sa
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Uygulama/http iletileri gönderme ilkesi
 Bir olay hub 'ı, olay verilerini basit bir dize olarak kabul eder. Bu dizenin içeriği size ait. Bir HTTP isteğini paketleyip Event Hubs 'e gönderebilmek için, dizeyi istek veya Yanıt bilgileriyle biçimlendirmemiz gerekir. Bunun gibi durumlarda, yeniden kullanabileceğiniz bir biçim varsa, kendi ayrıştırma kodumuzu yazmak zorunda kalmaz. Başlangıçta HTTP istekleri ve yanıtları göndermek için [har](http://www.softwareishard.com/blog/har-12-spec/) kullanmayı kabul ediyorum. Ancak, bu biçim bir dizi HTTP isteğini JSON tabanlı biçimde depolamak için iyileştirilmiştir. HTTP iletisini kablo üzerinden geçirme senaryosunda gereksiz karmaşıklık ekleyen bir dizi zorunlu öğe içeriyordu.
 
-Alternatif bir seçenek, HTTP belirtiminde `application/http` [RFC 7230](https://tools.ietf.org/html/rfc7230)' de açıklandığı gibi medya türünü kullanmaktır. Bu medya türü, gerçekte HTTP iletilerini kablo üzerinden göndermek için kullanılan biçimi kullanır, ancak tüm ileti başka bir HTTP isteğinin gövdesine yerleştirilebilir. Bizim örneğimizde, Event Hubs göndermek için İletimizin olarak gövdeyi kullanacağız. Kolayca, bu biçimi ayrıştırabilen ve bunu yerel `HttpRequestMessage` ve `HttpResponseMessage` nesnelere DÖNÜŞTÜREBILEN [Microsoft ASP.NET Web API 2,2 istemci](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kitaplıklarında bulunan bir Ayrıştırıcı vardır.
+Alternatif bir seçenek, `application/http` http belirtiminde [RFC 7230](https://tools.ietf.org/html/rfc7230)' de açıklandığı gibi medya türünü kullanmaktır. Bu medya türü, gerçekte HTTP iletilerini kablo üzerinden göndermek için kullanılan biçimi kullanır, ancak tüm ileti başka bir HTTP isteğinin gövdesine yerleştirilebilir. Bizim örneğimizde, Event Hubs göndermek için İletimizin olarak gövdeyi kullanacağız. Kolayca, bu biçimi ayrıştırabilen ve bunu yerel ve nesnelere dönüştürebilen [Microsoft ASP.NET Web apı 2,2 istemci](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kitaplıklarında bulunan bir Ayrıştırıcı vardır `HttpRequestMessage` `HttpResponseMessage` .
 
 Bu iletiyi oluşturabilmeniz için Azure API Management 'deki C# tabanlı [ilke ifadelerinden](/azure/api-management/api-management-policy-expressions) faydalanması gerekiyor. Azure Event Hubs HTTP istek iletisi gönderen ilke aşağıda verilmiştir.
 
@@ -83,13 +82,13 @@ Bu ilke ifadesiyle ilgili birkaç belirli şey vardır. Eventhub ile oturum açm
 İletilerimizin tüketicilere göre müşterilere teslim edilmesini sağlamak ve bölümlerin yük dağıtım özelliğinden yararlanmak için, bir bölüme HTTP istek iletileri ve HTTP yanıt iletilerini ikinci bir bölüme göndermek istiyorum. Bu, hatta yük dağıtımı sağlar ve tüm isteklerin sırayla tüketileceğini ve tüm yanıtların sırayla tüketildiğini garanti edebiliyoruz. Bir yanıt, karşılık gelen istekten önce tüketilebilir, ancak bu bir sorun değildir çünkü isteklerin yanıtlara karşı bağıntılandırması için farklı bir mekanizmaya sahip olduğumuz ve isteklerin her zaman yanıtlardan önce geldiğinden emin biliyoruz.
 
 ### <a name="http-payloads"></a>HTTP yükleri
-Oluşturduktan sonra `requestLine`, istek gövdesinin kesilme olup olmadığını kontrol ederiz. İstek gövdesi yalnızca 1024 olarak kesilir. Bu durum artırılabilir, ancak tek bir olay hub 'ı iletileri 256 KB ile sınırlıdır, bu nedenle bazı HTTP ileti gövdeleri tek bir iletiye sığmayacak olabilir. Günlüğe kaydetme ve analizler yaparken, yalnızca HTTP istek satırı ve üst bilgilerinden elde edilen önemli miktarda bilgi bulunabilir. Ayrıca, birçok API isteği yalnızca küçük gövdeleri geri döndürmesiyle büyük gövdeleri kesilerek bilgi kaybı, aktarım, işleme ve depolama maliyetlerinde azalmayla karşılaştırıldığında tüm gövde içeriklerini tutmak için oldukça düşüktür. Gövdeyi işlemeye yönelik bir son notta, gövde içeriğini okuduğumuz ve `true` Ayrıca arka `As<string>()` uç API 'sinin gövdesini okuyabilmesini sağlayan yönteme geçebilmemiz gerekir. Bu yönteme doğru geçirerek gövdenin ikinci kez okuyabilmesi için arabelleğe alınmasına neden olur. Büyük dosyaları karşıya yükleyen veya uzun yoklama kullanan bir API 'SI varsa, bunun farkında olmak önemlidir. Bu durumlarda, gövdenin tümünü okumaktan kaçınmak en iyisidir.
+Oluşturduktan sonra `requestLine` , istek gövdesinin kesilme olup olmadığını kontrol ederiz. İstek gövdesi yalnızca 1024 olarak kesilir. Bu durum artırılabilir, ancak tek bir olay hub 'ı iletileri 256 KB ile sınırlıdır, bu nedenle bazı HTTP ileti gövdeleri tek bir iletiye sığmayacak olabilir. Günlüğe kaydetme ve analizler yaparken, yalnızca HTTP istek satırı ve üst bilgilerinden elde edilen önemli miktarda bilgi bulunabilir. Ayrıca, birçok API isteği yalnızca küçük gövdeleri geri döndürmesiyle büyük gövdeleri kesilerek bilgi kaybı, aktarım, işleme ve depolama maliyetlerinde azalmayla karşılaştırıldığında tüm gövde içeriklerini tutmak için oldukça düşüktür. Gövdeyi işlemeye yönelik bir son notta, gövde `true` `As<string>()` içeriğini okuduğumuz ve ayrıca arka uç API 'sinin gövdesini okuyabilmesini sağlayan yönteme geçebilmemiz gerekir. Bu yönteme doğru geçirerek gövdenin ikinci kez okuyabilmesi için arabelleğe alınmasına neden olur. Büyük dosyaları karşıya yükleyen veya uzun yoklama kullanan bir API 'SI varsa, bunun farkında olmak önemlidir. Bu durumlarda, gövdenin tümünü okumaktan kaçınmak en iyisidir.
 
 ### <a name="http-headers"></a>HTTP üstbilgileri
 HTTP üstbilgileri, bir basit anahtar/değer çifti biçimindeki ileti biçimine aktarılabilir. Bazı güvenlik duyarlı alanları, kimlik bilgilerinin gereksiz yere sızmasını önlemek için seçtik. API anahtarlarının ve diğer kimlik bilgilerinin analiz amaçları doğrultusunda kullanılması düşüktür. Kullanıcı ve kullandıkları belirli bir ürün üzerinde analiz yapmak istiyoruz, bundan sonra bunu `context` nesnesinden alabilir ve iletiye ekleyebilirsiniz.
 
 ### <a name="message-metadata"></a>İleti meta verileri
-Olay Hub 'ına göndermek için tüm iletiyi oluştururken, ilk satır aslında `application/http` iletinin bir parçası değildir. İlk satır, iletinin istek ya da yanıt iletisi ve bir ileti KIMLIĞI olup olmadığını ve isteklerin yanıtlarla ilişkilendirilmesi için kullanılan ek meta verilerdir. İleti KIMLIĞI, aşağıdaki gibi görünen başka bir ilke kullanılarak oluşturulur:
+Olay Hub 'ına göndermek için tüm iletiyi oluştururken, ilk satır aslında iletinin bir parçası değildir `application/http` . İlk satır, iletinin istek ya da yanıt iletisi ve bir ileti KIMLIĞI olup olmadığını ve isteklerin yanıtlarla ilişkilendirilmesi için kullanılan ek meta verilerdir. İleti KIMLIĞI, aşağıdaki gibi görünen başka bir ilke kullanılarak oluşturulur:
 
 ```xml
 <set-variable name="message-id" value="@(Guid.NewGuid())" />
@@ -157,16 +156,16 @@ Yanıt HTTP iletisini gönderme ilkesi isteğe benzer ve tüm ilke yapılandırm
 </policies>
 ```
 
-`set-variable` İlke `log-to-eventhub` , `<inbound>` bölümündeki ilke ve `<outbound>` bölümünde erişilebilen bir değer oluşturur.
+`set-variable`İlke, `log-to-eventhub` `<inbound>` bölümündeki ilke ve bölümünde erişilebilen bir değer oluşturur `<outbound>` .
 
 ## <a name="receiving-events-from-event-hubs"></a>Event Hubs olayları alma
-Azure Olay Hub 'ından gelen olaylar [AMQP Protokolü](https://www.amqp.org/)kullanılarak alınır. Microsoft Service Bus ekibi, istemci kitaplıklarını tüketen olayları kolaylaştırmak için kullanılabilir hale yaptı. Desteklenen iki farklı yaklaşım vardır; biri *doğrudan tüketicidir* ve diğeri `EventProcessorHost` sınıfını kullanıyor. Bu iki yaklaşımın örnekleri [Event Hubs programlama kılavuzunda](../event-hubs/event-hubs-programming-guide.md)bulunabilir. Farkların kısa sürümü, size tamamen denetim `Direct Consumer` sağlar ve `EventProcessorHost` her bir tesisat işi sizin için çalışır, ancak bu olayları nasıl işleytiğimize ilişkin belirli varsayımlar yapar.
+Azure Olay Hub 'ından gelen olaylar [AMQP Protokolü](https://www.amqp.org/)kullanılarak alınır. Microsoft Service Bus ekibi, istemci kitaplıklarını tüketen olayları kolaylaştırmak için kullanılabilir hale yaptı. Desteklenen iki farklı yaklaşım vardır; biri *doğrudan tüketicidir* ve diğeri `EventProcessorHost` sınıfını kullanıyor. Bu iki yaklaşımın örnekleri [Event Hubs programlama kılavuzunda](../event-hubs/event-hubs-programming-guide.md)bulunabilir. Farkların kısa sürümü, `Direct Consumer` size tamamen denetim sağlar ve her `EventProcessorHost` bir tesisat işi sizin için çalışır, ancak bu olayları nasıl işleytiğimize ilişkin belirli varsayımlar yapar.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-Bu örnekte, basitlik `EventProcessorHost` için kullanıyoruz, ancak bu senaryo için en iyi seçim olmayabilir. `EventProcessorHost`, belirli bir olay işlemcisi sınıfında iş parçacığı sorunları hakkında endişelenmenize gerek olmadığından emin olun. Ancak, senaryolarımızda iletiyi başka bir biçime dönüştürmekte ve zaman uyumsuz bir yöntem kullanarak başka bir hizmete geçiriyoruz. Paylaşılan durumu güncelleştirme, dolayısıyla iş parçacığı oluşturma riski olmaması gerekmez. Çoğu senaryoda, `EventProcessorHost` büyük olasılıkla en iyi seçenektir ve kesinlikle daha kolay bir seçenektir.
+Bu örnekte, `EventProcessorHost` basitlik için kullanıyoruz, ancak bu senaryo için en iyi seçim olmayabilir. `EventProcessorHost`, belirli bir olay işlemcisi sınıfında iş parçacığı sorunları hakkında endişelenmenize gerek olmadığından emin olun. Ancak, senaryolarımızda iletiyi başka bir biçime dönüştürmekte ve zaman uyumsuz bir yöntem kullanarak başka bir hizmete geçiriyoruz. Paylaşılan durumu güncelleştirme, dolayısıyla iş parçacığı oluşturma riski olmaması gerekmez. Çoğu senaryoda, `EventProcessorHost` büyük olasılıkla en iyi seçenektir ve kesinlikle daha kolay bir seçenektir.
 
 ### <a name="ieventprocessor"></a>Ieventprocessor
-Kullanırken `EventProcessorHost` merkezi kavram, yöntemi `IEventProcessor` `ProcessEventAsync`içeren arabirimin bir uygulamasını oluşturmaktır. Bu yöntemin özünü burada gösterilmektedir:
+Kullanırken merkezi kavram, `EventProcessorHost` `IEventProcessor` yöntemi içeren arabirimin bir uygulamasını oluşturmaktır `ProcessEventAsync` . Bu yöntemin özünü burada gösterilmektedir:
 
 ```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -193,7 +192,7 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 EventData nesnelerinin bir listesi yöntemine geçirilir ve bu listenin üzerinde yineleme yapılır. Her yöntemin baytları bir HttpMessage nesnesine ayrıştırılır ve bu nesne bir ıhttpmessageprocessor örneğine geçirilir.
 
 ### <a name="httpmessage"></a>HttpMessage
-Örnek `HttpMessage` , üç veri parçası içerir:
+`HttpMessage`Örnek, üç veri parçası içerir:
 
 ```csharp
 public class HttpMessage
@@ -208,15 +207,15 @@ public class HttpMessage
 }
 ```
 
-Örnek `HttpMessage` , http isteğini `MessageId` karşılık gelen HTTP yanıtına ve nesnenin bir HttpRequestMessage ve HttpResponseMessage örneği içerip içermadığını belirleyen bir Boole değeri ile bağlantı kurmamızı sağlayan bir GUID içerir. İçindeki yerleşik HTTP sınıflarını kullanarak `System.Net.Http`, içinde `application/http` `System.Net.Http.Formatting`bulunan ayrıştırma kodundan faydalanabilir.  
+`HttpMessage`Örnek, `MessageId` http isteğini KARŞıLıK gelen HTTP yanıtına ve nesnenin bir HttpRequestMessage ve HttpResponseMessage örneği içerip içermadığını belirleyen bir Boole değeri ile bağlantı kurmamızı sağlayan bir GUID içerir. İçindeki yerleşik HTTP sınıflarını kullanarak `System.Net.Http` , `application/http` içinde bulunan ayrıştırma kodundan faydalanabilir `System.Net.Http.Formatting` .  
 
 ### <a name="ihttpmessageprocessor"></a>Ihttpmessageprocessor
-`HttpMessage` Örnek daha sonra uygulamasının uygulamasına iletilir `IHttpMessageProcessor`, bu, olayın Azure Event hub 'ından alınması ve yorumlanmasını ve gerçek işlemesini ayrıştırmak için oluşturduğum bir arabirimdir.
+`HttpMessage`Örnek daha sonra uygulamasının uygulamasına iletilir, bu, `IHttpMessageProcessor` olayın Azure Event hub 'ından alınması ve yorumlanmasını ve gerçek işlemesini ayrıştırmak için oluşturduğum bir arabirimdir.
 
 ## <a name="forwarding-the-http-message"></a>HTTP iletisini iletme
 Bu örnek için, HTTP Isteğini [Moesıt API](https://www.moesif.com)analizine göndermek ilginç olacağını kararlıyorum. Moesif, HTTP analizine ve hata ayıklamaya uzmanlaşmış bir bulut tabanlı hizmettir. Bunlar ücretsiz bir katmana sahiptir ve bu sayede kolayca denenecek ve API Management hizmetimiz aracılığıyla HTTP isteklerini gerçek zamanlı olarak görmemize olanak sağlar.
 
-Uygulama `IHttpMessageProcessor` şuna benzer.
+`IHttpMessageProcessor`Uygulama şuna benzer.
 
 ```csharp
 public class MoesifHttpMessageProcessor : IHttpMessageProcessor
@@ -294,12 +293,12 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-, `MoesifHttpMessageProcessor` Http olay verilerini hizmetine göndermeyi kolaylaştıran bir [moesif için C# API kitaplığı](https://www.moesif.com/docs/api?csharp#events) avantajlarından yararlanır. Moesif Toplayıcı API 'sine HTTP verileri göndermek için bir hesap ve uygulama kimliği gereklidir. [Moesif 'in Web sitesinde](https://www.moesif.com) bir hesap oluşturup _sağ üst menü_ -> _uygulama kurulumuna_giderek bir moesif uygulama kimliği alırsınız.
+, `MoesifHttpMessageProcessor` Http olay verilerini hizmetine göndermeyi kolaylaştıran bir [Moesif Için C# API kitaplığı](https://www.moesif.com/docs/api?csharp#events) avantajlarından yararlanır. Moesif Toplayıcı API 'sine HTTP verileri göndermek için bir hesap ve uygulama kimliği gereklidir. [Moesif 'in Web sitesinde](https://www.moesif.com) bir hesap oluşturup _sağ üst menü_  ->  _uygulama kurulumuna_giderek bir moesif uygulama kimliği alırsınız.
 
 ## <a name="complete-sample"></a>Tüm örnek
 Örnek için [kaynak kodu](https://github.com/dgilling/ApimEventProcessor) ve testler GitHub ' da bulunur. Örneği kendiniz çalıştırmak için bir [API Management hizmeti](get-started-create-service-instance.md), [bağlı bir olay hub](api-management-howto-log-event-hubs.md)'ı ve bir [depolama hesabı](../storage/common/storage-create-storage-account.md) gerekir.   
 
-Örnek, yalnızca Olay Hub 'ından gelen olayları dinleyen basit bir konsol uygulamasıdır, bunları bir Moesıya `EventRequestModel` ve `EventResponseModel` nesnelerine dönüştürür ve ardından onları MOESIF Collector API 'sine iletir.
+Örnek, yalnızca Olay Hub 'ından gelen olayları dinleyen basit bir konsol uygulamasıdır, bunları bir Moesıya `EventRequestModel` ve `EventResponseModel` nesnelerine dönüştürür ve ardından onları Moesif Collector API 'sine iletir.
 
 Aşağıdaki animasyonlu görüntüde, geliştirici portalındaki bir API 'ye yapılan bir istek, alınan, işlenen ve iletilen iletiyi gösteren konsol uygulaması, sonra da olay akışında gösterilen istek ve yanıt olduğunu görebilirsiniz.
 

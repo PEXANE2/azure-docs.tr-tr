@@ -4,10 +4,9 @@ description: Bu makalede, bir Service Fabric uygulamasının yükseltilme ve bun
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377931"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Uygulama yükseltme ile ilgili sorunları giderme
@@ -190,7 +189,7 @@ Yükseltme, son askıya alındığı yükseltme etki alanından devam eder ve da
 
 Olası neden 1:
 
-Service Fabric, tüm yüzdeleri sistem durumu değerlendirmesi için gerçek varlık numaralarına (örneğin çoğaltmalar, bölümler ve hizmetler) çevirir ve her zaman tüm varlıklara yuvarlanır. Örneğin, en fazla *Maxyüztunhealthyıreplicasperpartition* değeri %21 ise ve beş çoğaltma varsa Service Fabric, en fazla sağlıksız çoğaltmaya (yani,`Math.Ceiling (5*0.21)`) izin verir. Bu nedenle, sistem durumu ilkeleri uygun şekilde ayarlanmalıdır.
+Service Fabric, tüm yüzdeleri sistem durumu değerlendirmesi için gerçek varlık numaralarına (örneğin çoğaltmalar, bölümler ve hizmetler) çevirir ve her zaman tüm varlıklara yuvarlanır. Örneğin, en fazla *Maxyüztunhealthyıreplicasperpartition* değeri %21 ise ve beş çoğaltma varsa Service Fabric, en fazla sağlıksız çoğaltmaya (yani,) izin verir `Math.Ceiling (5*0.21)` . Bu nedenle, sistem durumu ilkeleri uygun şekilde ayarlanmalıdır.
 
 Olası neden 2:
 
@@ -200,7 +199,7 @@ Bununla birlikte, yükseltme sırasında C iyi durumda olduğunda D iyi hale gel
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Uygulama yükseltme için bir sistem durumu ilkesi belirtmedi, ancak hiçbir zaman belirtilmediği zaman aşımları için yükseltme yine de başarısız oluyor
 
-Durum ilkeleri yükseltme isteğine sağlanmazsa, geçerli uygulama sürümünün *ApplicationManifest. xml* dosyasından alınır. Örneğin, sürüm 1,0 ' den sürüm 2,0 ' ye yükseltme yapıyorsanız, sürüm 1,0 ' de için belirtilen uygulama sistem durumu ilkeleri kullanılır. Yükseltme için farklı bir sistem durumu ilkesi kullanılması gerekiyorsa, ilkenin uygulama yükseltme API 'SI çağrısının bir parçası olarak belirtilmesi gerekir. API çağrısının bir parçası olarak belirtilen ilkeler yalnızca yükseltme sırasında geçerlidir. Yükseltme tamamlandıktan sonra, *ApplicationManifest. xml* dosyasında belirtilen ilkeler kullanılır.
+Sistem durumu ilkeleri yükseltme isteğine sağlanmazsa, geçerli uygulama sürümünün *ApplicationManifest.xml* alınır. Örneğin, sürüm 1,0 ' den sürüm 2,0 ' ye yükseltme yapıyorsanız, sürüm 1,0 ' de için belirtilen uygulama sistem durumu ilkeleri kullanılır. Yükseltme için farklı bir sistem durumu ilkesi kullanılması gerekiyorsa, ilkenin uygulama yükseltme API 'SI çağrısının bir parçası olarak belirtilmesi gerekir. API çağrısının bir parçası olarak belirtilen ilkeler yalnızca yükseltme sırasında geçerlidir. Yükseltme tamamlandıktan sonra, *ApplicationManifest.xml* belirtilen ilkeler kullanılır.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Yanlış zaman aşımları belirtildi
 
@@ -212,9 +211,9 @@ Yükseltmenin tamamlanma süresi, belirtilen sistem durumu denetimlerine ve zama
 
 Aşağıda, zaman aşımının yükseltme süreleriyle nasıl etkileşime gireceğini gösteren hızlı bir yenileyici verilmiştir:
 
-Yükseltme etki alanına yönelik yükseltmeler *healthcheckwaitduration* + *healthcheckstableduration*'dan daha hızlı tamamlanamaz.
+Yükseltme etki alanına yönelik yükseltmeler *healthcheckwaitduration*  +  *healthcheckstableduration*'dan daha hızlı tamamlanamaz.
 
-Yükseltme hatası *healthcheckwaitduration* + *healthcheckretrytimeout*değerinden daha hızlı bir şekilde oluşamaz.
+Yükseltme hatası *healthcheckwaitduration*  +  *healthcheckretrytimeout*değerinden daha hızlı bir şekilde oluşamaz.
 
 Yükseltme etki alanı için yükseltme saati, *Upgradedomaintimeout*ile sınırlıdır.  *Healthcheckretrytimeout* ve *Healthcheckstableduration* her ikisi de sıfır değil ve uygulamanın sistem durumu geri ve ileri geçiş devam ederse, yükseltme son kez *upgradedomaintimeout*tarihinde zaman aşımına uğrar. Geçerli yükseltme etki alanı için yükseltme başladıktan sonra *Upgradedomaintimeout, bir süre sonra zaman aşımına uğramaya* başlar.
 

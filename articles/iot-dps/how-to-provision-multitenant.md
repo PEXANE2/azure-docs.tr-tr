@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434749"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
@@ -200,7 +199,7 @@ Bu bölümde, her VM 'de Azure IoT C SDK 'sını kopyalayacaksınız. SDK, her b
 
 1. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-1. [Azure IoT C SDK 'sını](https://github.com/Azure/azure-iot-sdk-c) her iki VM 'de klonlayın.  Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
+1. [Azure IoT C SDK 'sını](https://github.com/Azure/azure-iot-sdk-c) her iki VM 'de klonlayın.  Önceki adımda bulunan etiketini parametre değeri olarak kullanın `-b` :
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -304,7 +303,7 @@ Bu bölümde, Azure IoT C SDK 'sında her iki bölgesel VM için de bir sağlama
 
     ![Portal dikey penceresinden Cihaz Sağlama Hizmeti uç noktası bilgilerini ayıklama](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Her iki sanal makine üzerinde düzenlenmek üzere **\_~\_/Azure-iot-SDK-c/provisioning\_Client\_/Samples/\_prov\_dev\_Client Sample/prov dev Client Sample. c** öğesini açın.
+1. Her iki sanal makine üzerinde düzenlenmek üzere **~/Azure-iot-SDK-c/provisioning \_ Client/Samples/prov \_ dev \_ Client \_ Sample/prov \_ dev \_ Client \_ Sample. c** öğesini açın.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,7 +315,7 @@ Bu bölümde, Azure IoT C SDK 'sında her iki bölgesel VM için de bir sağlama
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Aynı dosyada `main()` işlevinin tanımını bulun. Değişkenin, `hsm_type` kayıt grubu kanıtlama yöntemiyle eşleşecek `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` şekilde aşağıda gösterildiği gibi ayarlandığından emin olun. 
+1. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type`Değişkenin, `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` kayıt grubu kanıtlama yöntemiyle eşleşecek şekilde aşağıda gösterildiği gibi ayarlandığından emin olun. 
 
     Her iki VM 'de bulunan dosyalarınıza yaptığınız değişiklikleri kaydedin.
 
@@ -327,7 +326,7 @@ Bu bölümde, Azure IoT C SDK 'sında her iki bölgesel VM için de bir sağlama
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Her iki VM 'de de, açıklama eklenen `prov_dev_set_symmetric_key_info()` **prov\_dev\_Client\_Sample. c** dosyasında öğesine yapılan çağrıyı bulun.
+1. Her iki VM 'de de, `prov_dev_set_symmetric_key_info()` Açıklama eklenen **prov \_ dev \_ Client \_ Sample. c** dosyasında öğesine yapılan çağrıyı bulun.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -357,7 +356,7 @@ Bu bölümde, Azure IoT C SDK 'sında her iki bölgesel VM için de bir sağlama
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Oluşturma başarılı olduktan sonra her bir bölgeden bir kiracı cihazının benzetimini yapmak için her iki VM 'de **prov\_dev\_Client\_Sample. exe** ' yi çalıştırın. Her cihazın, sanal cihazın bölgelerine en yakın kiracı IoT Hub 'ına ayrıldığına dikkat edin.
+1. Oluşturma başarılı olduktan sonra her bir bölgeden bir kiracı cihazının benzetimini yapmak için her iki VM 'de **prov \_ dev \_ Client \_sample.exe** çalıştırın. Her cihazın, sanal cihazın bölgelerine en yakın kiracı IoT Hub 'ına ayrıldığına dikkat edin.
 
     Simülasyonu çalıştırın:
     ```bash

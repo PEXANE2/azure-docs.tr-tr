@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349298"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors türü serileştirme notları
 Tüm yöntemlerin bağımsız değişkenleri, bir aktör arabirimindeki her bir yöntem tarafından döndürülen görevlerin sonuç türleri ve aktörün durum Yöneticisi 'nde depolanan nesneler, [seri hale getirilebilir veri sözleşmesi](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)olmalıdır. Bu, [aktör olay arabirimlerinde](service-fabric-reliable-actors-events.md)tanımlanan yöntemlerin bağımsız değişkenleri için de geçerlidir. (Aktör olay arabirimi yöntemleri her zaman void döndürür.)
 
 ## <a name="custom-data-types"></a>Özel veri türleri
-Bu örnekte, aşağıdaki aktör arabirimi adlı `VoicemailBox`özel bir veri türü döndüren bir yöntemi tanımlar:
+Bu örnekte, aşağıdaki aktör arabirimi adlı özel bir veri türü döndüren bir yöntemi tanımlar `VoicemailBox` :
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -32,7 +31,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Arabirim, bir `VoicemailBox` nesneyi depolamak için durum Yöneticisi 'ni kullanan bir aktör tarafından uygulanır:
+Arabirim, bir nesneyi depolamak için durum Yöneticisi 'ni kullanan bir aktör tarafından uygulanır `VoicemailBox` :
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

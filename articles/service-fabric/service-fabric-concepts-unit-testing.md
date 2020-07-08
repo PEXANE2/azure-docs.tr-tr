@@ -4,10 +4,9 @@ description: Durum bilgisi olan hizmetlerin Service Fabric birim testi kavramlar
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433921"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric 'de birim testi durum bilgisi olan hizmetler
@@ -40,13 +39,13 @@ Ayrıca, birden çok örneğe sahip olmak, testlerin bu örneklerin her birinin 
 Durum Yöneticisi uzak bir kaynak olarak kabul edilmelidir ve bu nedenle moclanmış. Durum Yöneticisi 'ni izlerken, okunabilmesi ve doğrulanabilmesi için durum yöneticisine nelerin kaydedildiğini izlemek üzere temeldeki bellek içi depolama alanı olması gerekir. Bunu gerçekleştirmenin basit bir yolu, güvenilir koleksiyonların her türünün sahte örneklerini oluşturmaktır. Bu moizler içinde, bu koleksiyonda gerçekleştirilen işlemlerle yakından hizalanan bir veri türü kullanın. Her güvenilir koleksiyon için önerilen bazı veri türleri aşağıda verilmiştir
 
 - Ireliabledictionary<TKey, TValue>-> System. Collections. eşzamanlı. ConcurrentDictionary<TKey, TValue>
-- Ireliablequeue\<t>-> System. Collections. Generic. Queue\<T>
-- Ireliableconcurrentqueue\<t>-> System. Collections. eşzamanlı. concurrentqueue\<t>
+- Ireliablequeue \<T> -> System. Collections. Generic. Queue\<T>
+- Ireliableconcurrentqueue \<T> -> System. Collections. eşzamanlı. ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Birçok durum Yöneticisi örneği, tek depolama
 Daha önce belirtildiği gibi, durum Yöneticisi ve güvenilir koleksiyonlar uzak bir kaynak olarak değerlendirilmelidir. Bu nedenle, bu kaynaklar, ve birim testlerinde mocize edilmelidir. Bununla birlikte, durum bilgisi olan bir hizmetin birden çok örneğini çalıştırırken, her bir çalışma durumu yöneticisinin farklı durum bilgisi olan hizmet örneklerinde eşitlenmiş olması zor olur. Durum bilgisi olan hizmet kümede çalıştığında, Service Fabric her bir ikincil çoğaltmanın durum yöneticisini birincil çoğaltmayla tutarlı tutma işlemini gerçekleştirir. Bu nedenle, testler rol değişikliklerinin benzetimini yapabilmesi için aynı şekilde davranmalıdır.
 
-Bu eşitlemenin kolay bir şekilde elde edilebileceği, her güvenilir koleksiyona yazılan verileri depolayan temel nesne için tek bir model kullanmaktır. Örneğin, durum bilgisi olan bir hizmet kullanıyorsa `IReliableDictionary<string, string>`. Sahte durum Yöneticisi 'nin bir türünü `IReliableDictionary<string, string>`döndürmesi gerekir. Bu sahte, yazılan anahtar `ConcurrentDictionary<string, string>` /değer çiftlerini izlemek için bir kullanabilir. , `ConcurrentDictionary<string, string>` Hizmete geçirilen durum yöneticilerinin tüm örnekleri tarafından bir tek kullanılmalıdır.
+Bu eşitlemenin kolay bir şekilde elde edilebileceği, her güvenilir koleksiyona yazılan verileri depolayan temel nesne için tek bir model kullanmaktır. Örneğin, durum bilgisi olan bir hizmet kullanıyorsa `IReliableDictionary<string, string>` . Sahte durum Yöneticisi 'nin bir türünü döndürmesi gerekir `IReliableDictionary<string, string>` . Bu sahte `ConcurrentDictionary<string, string>` , yazılan anahtar/değer çiftlerini izlemek için bir kullanabilir. , `ConcurrentDictionary<string, string>` Hizmete geçirilen durum yöneticilerinin tüm örnekleri tarafından bir tek kullanılmalıdır.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>İptal belirteçlerini takip edin
 İptal belirteçleri, durum bilgisi olan hizmetlerin önemli, yaygın olarak daha fazla bir yönüdür. Service Fabric, durum bilgisi olan bir hizmet için birincil çoğaltma başladığında bir iptal belirteci sağlanır. Bu iptal belirtecinin, kaldırıldığında hizmete işaret edilmesi veya farklı bir role indirgenmeye yönelik olması amaçlanmıştır. Durum bilgisi olan hizmet, Service Fabric uzun süre çalışan veya zaman uyumsuz işlemleri durdurup, bu sayede rol değişikliği iş akışını tamamlayabilmelidir.
@@ -68,7 +67,7 @@ Birim testleri, durum bilgisi olan hizmetin durumunu mümkün olduğunca değiş
     Then the request should should return the "John Smith" employee
 ```
 
-Bu test, birincil olarak yükseltildiğinde bir çoğaltmada yakalanan verilerin ikincil bir çoğaltma için kullanılabilir olduğunu onaylar. Güvenilir bir koleksiyonun çalışan verileri için yedekleme deposu olduğu varsayıldığında, bu test ile yakalanabilecek bir hata, uygulama kodunun yeni çalışanı kaydetmek için işlem üzerinde yürütülmediği `CommitAsync` kabul edilir. Bu durumda, çalışanları almaya yönelik ikinci istek ilk istek tarafından eklenen çalışanı döndürmez.
+Bu test, birincil olarak yükseltildiğinde bir çoğaltmada yakalanan verilerin ikincil bir çoğaltma için kullanılabilir olduğunu onaylar. Güvenilir bir koleksiyonun çalışan verileri için yedekleme deposu olduğu varsayıldığında, bu test ile yakalanabilecek bir hata, uygulama kodunun `CommitAsync` yeni çalışanı kaydetmek için işlem üzerinde yürütülmediği kabul edilir. Bu durumda, çalışanları almaya yönelik ikinci istek ilk istek tarafından eklenen çalışanı döndürmez.
 
 ### <a name="acting"></a>Makta
 #### <a name="mimic-service-fabric-replica-orchestration"></a>Çoğaltma düzenleme Service Fabric benzeme

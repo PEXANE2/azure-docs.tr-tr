@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377914"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
@@ -34,7 +33,7 @@ Azure Service Fabric 'de, güvenilir durum bilgisi olan güvenilir hizmetler ve 
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
+- `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -65,7 +64,7 @@ Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-`SampleApp` Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemelerin listesini döndürmek üzere REST API kullanmak Için bir PowerShell betiği yürütün. API, kullanılabilir yedeklemeleri listelemek için yedekleme depolama bilgileri gerektirir.
+Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemelerin listesini döndürmek üzere REST API kullanmak için bir PowerShell betiği yürütün `SampleApp` . API, kullanılabilir yedeklemeleri listelemek için yedekleme depolama bilgileri gerektirir.
 
 ```powershell
 $StorageInfo = @{
@@ -152,7 +151,7 @@ Restore API 'SI için _BackupID_ ve _BackupLocation_ ayrıntılarını sağlaman
 
 Ayrıca, [bölüm düzeninde](service-fabric-concepts-partitioning.md#get-started-with-partitioning)açıklandığı şekilde alternatif kümede bir hedef bölüm seçmeniz gerekir. Alternatif küme yedeklemesi, özgün kayıp kümeden bölüm düzeninde belirtilen bölüme geri yüklendi.
 
-Alternatif kümedeki bölüm KIMLIĞI ise `1c42c47f-439e-4e09-98b9-88b8f60800c6`, _sıralaştırılmış bölümlendirme (UniformInt64Partition)_ için yüksek anahtar ve düşük anahtarı KARŞıLAŞTıRARAK `974bd92a-b395-4631-8a7f-53bd4ae9cf22` özgün küme bölümü kimliğiyle eşleyebilirsiniz.
+Alternatif kümedeki bölüm KIMLIĞI ise `1c42c47f-439e-4e09-98b9-88b8f60800c6` , `974bd92a-b395-4631-8a7f-53bd4ae9cf22` _sıralaştırılmış bölümlendirme (UniformInt64Partition)_ için yüksek anahtar ve düşük anahtarı KARŞıLAŞTıRARAK özgün küme bölümü kimliğiyle eşleyebilirsiniz.
 
 _Adlandırılmış bölümlendirme_için ad değeri, alternatif kümede hedef bölümü tanımlamak üzere karşılaştırılır.
 
@@ -201,7 +200,7 @@ Service Fabric Explorer bir geri yükleme tetikleyebilirsiniz. Service Fabric Ex
 
     ![Bölüm geri yükleme dosya yüklemesini tetikleme][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Veri _bozulması_/veri_kaybı_ için veri geri yükleme
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Veri bozulması veri _data corruption_ / _kaybı_ için veri geri yükleme
 
 _Veri kaybı_ veya _veri bozulması_Için, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin yedeklenen bölümleri seçilen yedeklemelerin hiçbirine geri yüklenebilir.
 
@@ -209,7 +208,7 @@ Aşağıdaki örnek, [güvenilir durum bilgisi olan hizmet ve Reliable Actors i�
 
 [Getbackupapı](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)çıktısından bir yedekleme seçin. Bu senaryoda, yedekleme daha önceki ile aynı kümeden oluşturulur.
 
-Geri yüklemeyi tetiklemek için listeden bir yedekleme seçin. Geçerli _veri kaybı_/_verileri bozulması_için aşağıdaki yedeklemeyi seçin:
+Geri yüklemeyi tetiklemek için listeden bir yedekleme seçin. Geçerli _veri kaybı_ / _verileri bozulması_için aşağıdaki yedeklemeyi seçin:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4

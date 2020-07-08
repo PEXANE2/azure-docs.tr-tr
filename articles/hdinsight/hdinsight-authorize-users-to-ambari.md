@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435655"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
@@ -28,7 +27,7 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 ## <a name="access-the-ambari-management-page"></a>Ambarı yönetim sayfasına erişin
 
-[Apache ambarı Web Kullanıcı arabirimindeki](hdinsight-hadoop-manage-ambari.md) `https://CLUSTERNAME.azurehdinsight.net` **ambarı yönetim sayfasına** ulaşmak için, sayfasına gidin. Kümeyi oluştururken tanımladığınız küme yönetici kullanıcı adını ve parolasını girin. Ardından, ambarı panosundan **Yönetim** menüsünün altındaki **ambarı Yönet** ' i seçin:
+[Apache ambarı Web Kullanıcı arabirimindeki](hdinsight-hadoop-manage-ambari.md) **ambarı yönetim sayfasına** ulaşmak için, sayfasına gidin `https://CLUSTERNAME.azurehdinsight.net` . Kümeyi oluştururken tanımladığınız küme yönetici kullanıcı adını ve parolasını girin. Ardından, ambarı panosundan **Yönetim** menüsünün altındaki **ambarı Yönet** ' i seçin:
 
 ![Apache ambarı Pano Yönetimi](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +45,7 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 ### <a name="add-users-through-powershell"></a>PowerShell aracılığıyla Kullanıcı ekleme
 
-Aşağıdaki değişkenleri, ve `CLUSTERNAME` `NEWUSER` `PASSWORD` değerlerini uygun değerlerle değiştirerek düzenleyin.
+Aşağıdaki değişkenleri, `CLUSTERNAME` `NEWUSER` ve `PASSWORD` değerlerini uygun değerlerle değiştirerek düzenleyin.
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>Kıvrımlı aracılığıyla Kullanıcı ekleme
 
-, `CLUSTERNAME`, Ve `ADMINPASSWORD` `NEWUSER` `USERPASSWORD` değerlerini uygun değerlerle değiştirerek aşağıdaki değişkenleri düzenleyin. Betik, Bash ile yürütülecek şekilde tasarlanmıştır. Bir Windows komut istemi için küçük değişiklikler yapmanız gerekir.
+,, `CLUSTERNAME` `ADMINPASSWORD` `NEWUSER` Ve `USERPASSWORD` değerlerini uygun değerlerle değiştirerek aşağıdaki değişkenleri düzenleyin. Betik, Bash ile yürütülecek şekilde tasarlanmıştır. Bir Windows komut istemi için küçük değişiklikler yapmanız gerekir.
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -179,9 +178,9 @@ Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache
 
 3. Görünüm sayfasının alt kısmına doğru ilerleyin. *İzinler* bölümünde, etki alanı kullanıcılarının görünüme izinleri vermek için iki seçeneğiniz vardır:
 
-![Bu kullanıcılara bu kullanıcılara izin verme izni **ver**](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Bu kullanıcılara** ![ izin ver Bu kullanıcılara izin ver](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**Bu gruplara** ![izin ver bu gruplara izin ver](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Bu gruplara** ![ izin ver Bu gruplara izin ver](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Kullanıcı eklemek için **Kullanıcı Ekle** düğmesini seçin.
 

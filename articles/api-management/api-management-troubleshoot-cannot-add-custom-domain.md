@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430588"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>API Management hizmeti ana bilgisayar adları güncelleştirilemedi
@@ -28,7 +27,7 @@ Bu makalede, Azure API Management hizmeti için özel bir etki alanı eklediğin
 
 Azure Key Vault bir sertifika kullanarak API Management hizmetiniz için özel bir etki alanı eklemeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-- API Management hizmeti ana bilgisayar adları güncelleştirilemedi. 'https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0' Kaynağına yapılan istek, hata kodu ile başarısız oldu: RequestId:. Özel durum iletisi: Işlem geçersiz bir ' yasak ' durum kodu döndürdü.
+- API Management hizmeti ana bilgisayar adları güncelleştirilemedi. ' ' Kaynağına yapılan istek https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 , hata kodu ile başarısız oldu: RequestId:. Özel durum iletisi: Işlem geçersiz bir ' yasak ' durum kodu döndürdü.
 
 ## <a name="cause"></a>Nedeni
 

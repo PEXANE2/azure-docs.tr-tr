@@ -7,10 +7,9 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75441213"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Yapay bölüm anahtarı oluşturma
@@ -19,7 +18,7 @@ Yüzlerce veya binlerce gibi birçok farklı değere sahip bir bölüm anahtarı
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Bir öğenin birden çok özelliğini birleştirme
 
-Birden çok özellik değerini tek bir yapay `partitionKey` özellikte birleştirerek bölüm anahtarı oluşturabilirsiniz. Bu anahtarlara yapay anahtarlar denir. Örneğin, aşağıdaki örnek belgeyi göz önünde bulundurun:
+Birden çok özellik değerini tek bir yapay özellikte birleştirerek bölüm anahtarı oluşturabilirsiniz `partitionKey` . Bu anahtarlara yapay anahtarlar denir. Örneğin, aşağıdaki örnek belgeyi göz önünde bulundurun:
 
 ```JavaScript
 {
@@ -28,7 +27,7 @@ Birden çok özellik değerini tek bir yapay `partitionKey` özellikte birleşti
 }
 ```
 
-Önceki belge için bir seçenek, bölüm anahtarı olarak/DeviceID veya/Date olarak ayarlanmıştır. Kapsayıcınızı cihaz KIMLIĞI veya tarih temelinde bölümlemek istiyorsanız bu seçeneği kullanın. Diğer bir seçenek de bu iki değeri, bölüm anahtarı olarak `partitionKey` kullanılan yapay bir özellikte birleştirme.
+Önceki belge için bir seçenek, bölüm anahtarı olarak/DeviceID veya/Date olarak ayarlanmıştır. Kapsayıcınızı cihaz KIMLIĞI veya tarih temelinde bölümlemek istiyorsanız bu seçeneği kullanın. Diğer bir seçenek de bu iki değeri `partitionKey` , bölüm anahtarı olarak kullanılan yapay bir özellikte birleştirme.
 
 ```JavaScript
 {
@@ -44,15 +43,15 @@ Gerçek zamanlı senaryolarda, veritabanında binlerce öğe olabilir. Yapay ana
 
 İş yükünü daha eşit bir şekilde dağıtmak için bir başka olası strateji, bölüm anahtarı değerinin sonuna rastgele bir sayı eklemedir. Öğeleri bu şekilde dağıttığınızda, bölümler arasında paralel yazma işlemleri gerçekleştirebilirsiniz.
 
-Bir bölüm anahtarı bir tarihi temsil ediyorsa, örnek bir örnektir. 1 ile 400 arasında rastgele bir sayı seçebilir ve bu dosyayı Tarih soneki olarak birleştirebilirsiniz. Bu yöntem,,, vb. gibi `2018-08-09.1`bölüm`2018-08-09.2`anahtarı değerleri ile `2018-08-09.400`sonuçlanır. Bölüm anahtarını rastgele kullanıma aldığınız için, her gün kapsayıcı üzerindeki yazma işlemleri birden çok bölüme eşit olarak yayılır. Bu yöntem, daha iyi paralellik ve genel daha yüksek verimlilik elde ediyor.
+Bir bölüm anahtarı bir tarihi temsil ediyorsa, örnek bir örnektir. 1 ile 400 arasında rastgele bir sayı seçebilir ve bu dosyayı Tarih soneki olarak birleştirebilirsiniz. Bu yöntem,,, vb. gibi bölüm anahtarı değerleri  `2018-08-09.1` `2018-08-09.2` ile sonuçlanır  `2018-08-09.400` . Bölüm anahtarını rastgele kullanıma aldığınız için, her gün kapsayıcı üzerindeki yazma işlemleri birden çok bölüme eşit olarak yayılır. Bu yöntem, daha iyi paralellik ve genel daha yüksek verimlilik elde ediyor.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Önceden hesaplanmış soneklerle bölüm anahtarı kullanma 
 
 Rastgele sonek stratejisi, yazma verimini büyük ölçüde iyileştirebilirler, ancak belirli bir öğeyi okumak zordur. Öğeyi yazdığınızda kullanılan sonek değerini bilemezsiniz. Tek tek öğeleri okumayı kolaylaştırmak için önceden hesaplanmış son ekler stratejisini kullanın. Öğeleri bölümler arasında dağıtmak için rastgele bir sayı kullanmak yerine, sorgulamak istediğiniz bir şeye göre hesaplanmış bir sayı kullanın.
 
-Bir kapsayıcının bölüm anahtarı olarak bir tarih kullandığı önceki örneği göz önünde bulundurun. Şimdi, her bir öğenin erişmek istediğimiz `Vehicle-Identification-Number` bir`VIN`() özniteliği olduğunu varsayalım. Ayrıca, tarihe göre `VIN`öğeleri bulmak için genellikle sorguları çalıştırdığınızı varsayalım. Uygulamanız öğeyi kapsayıcıya yazmadan önce, can 'ı temel alan bir karma sonek hesaplayabilir ve bölüm anahtarı tarihine ekleyebilirsiniz. Hesaplama, eşit olarak dağıtılan 1 ile 400 arasında bir sayı oluşturabilir. Bu sonuç, rastgele sonek strateji yöntemi tarafından üretilen sonuçlara benzerdir. Bölüm anahtarı değeri, hesaplanan sonuçla birleştirilmiş bir tarihtir.
+Bir kapsayıcının bölüm anahtarı olarak bir tarih kullandığı önceki örneği göz önünde bulundurun. Şimdi, her bir öğenin  `Vehicle-Identification-Number` `VIN` erişmek istediğimiz bir () özniteliği olduğunu varsayalım. Ayrıca, tarihe göre öğeleri bulmak için genellikle sorguları çalıştırdığınızı varsayalım `VIN` . Uygulamanız öğeyi kapsayıcıya yazmadan önce, can 'ı temel alan bir karma sonek hesaplayabilir ve bölüm anahtarı tarihine ekleyebilirsiniz. Hesaplama, eşit olarak dağıtılan 1 ile 400 arasında bir sayı oluşturabilir. Bu sonuç, rastgele sonek strateji yöntemi tarafından üretilen sonuçlara benzerdir. Bölüm anahtarı değeri, hesaplanan sonuçla birleştirilmiş bir tarihtir.
 
-Bu stratejiyle, yazma işlemleri bölüm anahtarı değerleri ve bölümler arasında eşit olarak yayılır. Belirli bir öğeyi ve tarihi kolayca okuyabilir, çünkü belirli `Vehicle-Identification-Number`bir için bölüm anahtarı değerini hesaplayabilirsiniz. Bu yöntemin avantajı, tek bir sıcak bölüm anahtarı (yani, tüm iş yükünü alan bir bölüm anahtarı) oluşturmaktan kaçınmanızı sağlar. 
+Bu stratejiyle, yazma işlemleri bölüm anahtarı değerleri ve bölümler arasında eşit olarak yayılır. Belirli bir öğeyi ve tarihi kolayca okuyabilir, çünkü belirli bir için bölüm anahtarı değerini hesaplayabilirsiniz `Vehicle-Identification-Number` . Bu yöntemin avantajı, tek bir sıcak bölüm anahtarı (yani, tüm iş yükünü alan bir bölüm anahtarı) oluşturmaktan kaçınmanızı sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

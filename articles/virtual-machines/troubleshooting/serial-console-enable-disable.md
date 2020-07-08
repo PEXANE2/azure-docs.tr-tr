@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451298"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Azure seri konsolu 'Nu etkinleştirme ve devre dışı bırakma
@@ -34,7 +33,7 @@ Seri konsol, önyükleme tanılaması ayarı devre dışı bırakılarak belirli
 ## <a name="subscription-level-enabledisable"></a>Abonelik düzeyi etkinleştir/devre dışı bırak
 
 > [!NOTE]
-> Bu komutu çalıştırmadan önce doğru bulutta olduğunuzdan emin olun (Azure genel bulutu, Azure ABD kamu bulutu). İle `az cloud list` denetim yapabilir ve bulutunuzu ile `az cloud set -n <Name of cloud>`ayarlayabilirsiniz.
+> Bu komutu çalıştırmadan önce doğru bulutta olduğunuzdan emin olun (Azure genel bulutu, Azure ABD kamu bulutu). İle denetim yapabilir `az cloud list` ve bulutunuzu ile ayarlayabilirsiniz `az cloud set -n <Name of cloud>` .
 
 ### <a name="azure-cli"></a>Azure CLI
 

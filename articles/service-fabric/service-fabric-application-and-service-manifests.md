@@ -4,19 +4,18 @@ description: Service Fabric uygulamaları ve hizmetleri anlatmak için bildiriml
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349974"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Uygulama ve hizmet bildirimlerini Service Fabric
-Bu makalede, Service Fabric uygulamalarının ve hizmetlerin ApplicationManifest. xml ve ServiceManifest. xml dosyaları kullanılarak nasıl tanımlandığı ve sürümü oluşturulduğu açıklanmaktadır.  Daha ayrıntılı örnekler için bkz. [uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md).  Bu bildirim dosyaları için XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
+Bu makalede, ApplicationManifest.xml ve ServiceManifest.xml dosyalarını kullanarak uygulama ve hizmetlerin Service Fabric nasıl tanımlandığı ve sürümü oluşturulduğu açıklanmaktadır.  Daha ayrıntılı örnekler için bkz. [uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md).  Bu bildirim dosyaları için XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
 
 > [!WARNING]
 > Manifest XML dosya şeması alt öğelerin doğru sıralamasını zorlar.  Kısmi bir geçici çözüm olarak, Service Fabric bildirimlerini yazarken veya değiştirirken Visual Studio 'da "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" dosyasını açın. Bu, alt öğelerin sıralamasını kontrol etmeniz ve ıntellı bir fikir sağlar.
 
-## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest. xml ' de bir hizmeti açıkla
+## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest.xml bir hizmeti açıkla
 Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hizmet türü, sistem durumu özellikleri, Yük Dengeleme ölçümleri, hizmet ikili dosyaları ve yapılandırma dosyaları gibi hizmet meta verilerini belirtir.  Başka bir yöntem de, bir veya daha fazla hizmet türünü desteklemek üzere bir hizmet paketi oluşturan kod, yapılandırma ve veri paketlerini açıklar. Bir hizmet bildirimi, bağımsız olarak sürümlü birden çok kod, yapılandırma ve veri paketleri içerebilir. Aşağıda, [Oylama örnek uygulamasının](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) ASP.NET Core Web ön uç hizmeti için bir hizmet bildirimi verilmiştir (ve [daha ayrıntılı örnekler](service-fabric-manifest-examples.md)aşağıda verilmiştir):
 
 ```xml
@@ -65,16 +64,16 @@ Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hiz
 
 **Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örneğin:
 
-* Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Bu, yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin, NPM. exe ' nin bir Node. js uygulamasını dağıtmak için yapılandırılmış bazı ortam değişkenlerine ihtiyacı vardır.
+* Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Bu, yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
 
 SetupEntryPoint yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için Ilkeyi yapılandırma](service-fabric-application-runas-security.md)
 
-**EnvironmentVariables** (önceki örnekte ayarlı değil), bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. Farklı hizmet örnekleri için farklı değerler sağlamak `ApplicationManifest.xml` üzere öğesinde ortam değişkenleri geçersiz kılınabilir. 
+**EnvironmentVariables** (önceki örnekte ayarlı değil), bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. `ApplicationManifest.xml`Farklı hizmet örnekleri için farklı değerler sağlamak üzere öğesinde ortam değişkenleri geçersiz kılınabilir. 
 
 **DataPackage** (önceki örnekte ayarlı değil), çalışma zamanında işlem tarafından tüketilen rastgele statik verileri içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir.
 
-**Configpackage** , bir *Settings. xml* dosyası içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir. Ayarlar dosyası, Kullanıcı tanımlı, anahtar-değer çifti ayarlarının, işlemin çalışma zamanında geri okuduğu bölümler içerir. Yükseltme sırasında, yalnızca **Configpackage** **sürümü** değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Örnek bir *Settings. xml* dosyası aşağıda verilmiştir:
+**Configpackage** , bir *Settings.xml* dosyası içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir. Ayarlar dosyası, Kullanıcı tanımlı, anahtar-değer çifti ayarlarının, işlemin çalışma zamanında geri okuduğu bölümler içerir. Yükseltme sırasında, yalnızca **Configpackage** **sürümü** değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Aşağıda bir örnek *Settings.xml* dosyası verilmiştir:
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -101,7 +100,7 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## <a name="describe-an-application-in-applicationmanifestxml"></a>ApplicationManifest. xml dosyasında bir uygulamayı açıkla
+## <a name="describe-an-application-in-applicationmanifestxml"></a>ApplicationManifest.xml bir uygulamayı açıkla
 Uygulama bildiriminde, uygulama türü ve sürümü bildirimli olarak açıklanmaktadır. Kararlı adlar, bölümleme şeması, örnek sayısı/çoğaltma faktörü, güvenlik/yalıtım ilkesi, yerleştirme kısıtlamaları, yapılandırma geçersiz kılmaları ve bileşen hizmet türleri gibi hizmet oluşturma meta verilerini belirtir. Uygulamanın yerleştirildiği Yük Dengeleme etki alanları da açıklanır.
 
 Bu nedenle, uygulama bildirimi uygulama düzeyindeki öğeleri açıklar ve bir uygulama türü oluşturmak için bir veya daha fazla hizmet bildirimine başvurur. Burada, [Oylama örnek uygulaması](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) için uygulama bildirimi verilmiştir (ve [daha ayrıntılı örnekler](service-fabric-manifest-examples.md)aşağıda verilmiştir):
@@ -151,7 +150,7 @@ Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dize
 
 **Parametreler** , uygulama bildirimi boyunca kullanılan parametreleri tanımlar. Uygulama örneği oluşturulduğunda ve uygulama veya hizmet yapılandırma ayarlarını geçersiz kılabildiğinden, bu parametrelerin değerleri sağlanabilir.  Varsayılan parametre değeri, uygulama örneği oluşturma sırasında değer değiştirilmez kullanılır. Ayrı ortamlar için farklı uygulama ve hizmet parametrelerinin nasıl korunmasını öğrenmek için bkz. [birden çok ortam için uygulama parametrelerini yönetme](service-fabric-manage-multiple-environment-app-configuration.md).
 
-**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, ServiceManifest. XML dosyalarındaki Settings. xml ve ortam değişkenlerinin yapılandırma değerlerini geçersiz kılarsınız. **Policies** Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
+**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, Settings.xml ve ortam değişkenlerinin yapılandırma değerlerini ServiceManifest.xml dosyalardaki geçersiz kılabilirsiniz. **Policies** Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
 
 **DefaultServices** , bu uygulama türüne karşı her uygulama oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Varsayılan hizmetler, yalnızca bir kolaydır ve oluşturulduktan sonra her bakımdan normal hizmetler gibi davranır. Bunlar, uygulama örneğindeki diğer hizmetlerle birlikte yükseltilecektir ve de kaldırılabilir. Bir uygulama bildiriminde birden çok varsayılan hizmet bulunabilir.
 

@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422940"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
@@ -127,7 +126,7 @@ Kuruluşunuzda, kimlik güvenli puandaki değişiklikleri izlemek için şu anda
 
 Microsoft, hizmette çeşitli değişiklikleri, gereken yapılandırma güncelleştirmelerini ve yönetici müdahalesini gerektiren hataları bilgilendirmek için yöneticilere e-posta iletişimleri gönderir. Müşterilerin bildirim e-posta adreslerini, bildirimlerin tüm bildirimleri kabul edebilen ve üzerinde işlem yapacak uygun takım üyelerine gönderilmesi önemlidir. [Office 365 Ileti merkezine](https://docs.microsoft.com/office365/admin/manage/message-center) birden çok alıcı eklemenizi ve bu bildirimlerin (Azure AD Connect Health bildirimleri dahil) bir dağıtım listesine veya paylaşılan posta kutusuna gönderilmesini istemeniz önerilir. Yalnızca bir e-posta adresi olan bir genel yönetici hesabınız varsa, en az iki e-posta özellikli hesabı yapılandırmayı unutmayın.
 
-Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.microsoft.com>Office 365 İleti Merkezi bildirimleri gönderir; ve <azure-noreply@microsoft.com>ile ilgili bildirimleri gönderen:
+Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.microsoft.com> Office 365 Ileti merkezi bildirimleri gönderen ve ile <azure-noreply@microsoft.com> ilgili bildirimleri gönderen:
 
 - [Azure AD erişim Incelemeleri](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
@@ -166,9 +165,9 @@ Active Directory Yönetim Katmanı modeli, ortamın tam denetimi (Katman 0) ve s
 
 [Katman modeli](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) üç düzeyden oluşur ve standart Kullanıcı hesapları yerine yalnızca yönetim hesapları içerir.
 
-- **Katman 0** -ortamdaki kurumsal kimliklerin doğrudan denetim. Katman 0 Active Directory ormanının, etki alanlarının veya etki alanı denetleyicilerinin ve içindeki tüm varlıkların doğrudan ya da dolaylı yönetimsel denetimine sahip hesapları, grupları ve diğer varlıkları içerir. Tüm Katman 0 varlıkları birbirlerini etkin bir şekilde denetlediği için güvenlik açısından hassasiyetleri denktir.
-- **Katman 1** -kurumsal sunucuların ve uygulamaların denetimi. Katman 1 varlıklarına sunucu işletim sistemleri, bulut hizmetleri ve kuruluş uygulamaları dahildir. Katman 1 yönetim hesapları, bu varlıklar üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Yaygın olarak kullanılan bir rol örneği, bu işletim sistemlerinin bakımını yapan ve tüm kuruluş hizmetlerini etkileme imkanına sahip olan sunucu yöneticileridir.
-- **Katman 2** -Kullanıcı iş istasyonları ve cihazların denetimi. Katman 2 yönetim hesapları, kullanıcı iş istasyonları ve cihazları üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Örnek olarak neredeyse tüm kullanıcı verilerinin bütünlüğünü etkileyebilecek Yardım Masası ve bilgisayar destek yöneticileri verilebilir.
+- **Katman 0**   -Ortamdaki kurumsal kimliklerin doğrudan denetimi. Katman 0 Active Directory ormanının, etki alanlarının veya etki alanı denetleyicilerinin ve içindeki tüm varlıkların doğrudan ya da dolaylı yönetimsel denetimine sahip hesapları, grupları ve diğer varlıkları içerir. Tüm Katman 0 varlıkları birbirlerini etkin bir şekilde denetlediği için güvenlik açısından hassasiyetleri denktir.
+- **Katman 1**   -Kuruluş sunucularının ve uygulamalarının denetimi. Katman 1 varlıklarına sunucu işletim sistemleri, bulut hizmetleri ve kuruluş uygulamaları dahildir. Katman 1 yönetim hesapları, bu varlıklar üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Yaygın olarak kullanılan bir rol örneği, bu işletim sistemlerinin bakımını yapan ve tüm kuruluş hizmetlerini etkileme imkanına sahip olan sunucu yöneticileridir.
+- **Katman 2**   -Kullanıcı iş istasyonları ve cihazların denetimi. Katman 2 yönetim hesapları, kullanıcı iş istasyonları ve cihazları üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Örnek olarak neredeyse tüm kullanıcı verilerinin bütünlüğünü etkileyebilecek Yardım Masası ve bilgisayar destek yöneticileri verilebilir.
 
 Azure AD Connect, AD FS ve SQL Hizmetleri gibi şirket içi kimlik bileşenlerine erişimi, etki alanı denetleyicilerle aynı şekilde kilitleyin.
 

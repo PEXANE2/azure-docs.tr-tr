@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426236"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Jeo-uzamsal işlevlere Stream Analytics giriş
@@ -30,9 +29,9 @@ Stream Analytics sorgu dili yedi yerleşik Jeo uzamsal işlevlere sahiptir: **Cr
 
 ## <a name="createlinestring"></a>CreateLineString
 
-`CreateLineString` İşlev noktaları kabul eder ve bir haritada çizgi olarak çizilebilen bir geojson LineString döndürür. LineString oluşturmak için en az iki noktanız olmalıdır. LineString noktaları sırayla bağlanır.
+`CreateLineString`İşlev noktaları kabul eder ve bir haritada çizgi olarak çizilebilen bir GeoJSON LineString döndürür. LineString oluşturmak için en az iki noktanız olmalıdır. LineString noktaları sırayla bağlanır.
 
-Aşağıdaki sorgu, üç `CreateLineString` noktayı kullanarak bir LineString oluşturmak için kullanır. İlk nokta akış girişi verilerinden oluşturulur, diğer ikisi el ile oluşturulur.
+Aşağıdaki sorgu, `CreateLineString` üç noktayı kullanarak bir LineString oluşturmak için kullanır. İlk nokta akış girişi verilerinden oluşturulur, diğer ikisi el ile oluşturulur.
 
 ```SQL 
 SELECT  
@@ -44,7 +43,7 @@ FROM input
   
 |En|MIN|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği  
@@ -57,9 +56,9 @@ Daha fazla bilgi edinmek için [Createlinestring](https://docs.microsoft.com/str
 
 ## <a name="createpoint"></a>CreatePoint
 
-`CreatePoint` İşlevi bir enlem ve Boylam kabul eder ve bir haritada çizilebilen bir geojson noktası döndürür. Latitudes ve Longitudes bir **float** veri türü olmalıdır.
+`CreatePoint`İşlevi bir enlem ve Boylam kabul eder ve bir haritada çizilebilen bir GeoJSON noktası döndürür. Latitudes ve Longitudes bir **float** veri türü olmalıdır.
 
-Aşağıdaki örnek sorgu, akış `CreatePoint` girişi verilerinden Latitudes ve Longitudes kullanarak bir nokta oluşturmak için kullanır.
+Aşağıdaki örnek sorgu, `CreatePoint` akış girişi verilerinden Latitudes ve Longitudes kullanarak bir nokta oluşturmak için kullanır.
 
 ```SQL 
 SELECT  
@@ -71,7 +70,7 @@ FROM input
   
 |En|MIN|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği
@@ -84,9 +83,9 @@ Daha fazla bilgi için, [Createpoint](https://docs.microsoft.com/stream-analytic
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-`CreatePolygon` İşlev noktaları kabul eder ve geojson Çokgen kaydını döndürür. Noktaların sırası sağ halka yönüne veya saat yönünde sayaca uymalıdır. Bildirdikleri sırada bir noktadan diğerine yürüyen düşünün. Çokgenin ortası, tüm saatin solunda olacaktır.
+`CreatePolygon`İşlev noktaları kabul eder ve GeoJSON Çokgen kaydını döndürür. Noktaların sırası sağ halka yönüne veya saat yönünde sayaca uymalıdır. Bildirdikleri sırada bir noktadan diğerine yürüyen düşünün. Çokgenin ortası, tüm saatin solunda olacaktır.
 
-Aşağıdaki örnek sorgu üç noktadan `CreatePolygon` bir çokgen oluşturmak için kullanır. İlk iki nokta el ile oluşturulur ve son nokta giriş verilerinden oluşturulur.
+Aşağıdaki örnek sorgu `CreatePolygon` üç noktadan bir çokgen oluşturmak için kullanır. İlk iki nokta el ile oluşturulur ve son nokta giriş verilerinden oluşturulur.
 
 ```SQL 
 SELECT  
@@ -98,7 +97,7 @@ FROM input
   
 |En|MIN|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği  
@@ -111,9 +110,9 @@ Daha fazla bilgi edinmek için [Createçokgen](https://docs.microsoft.com/stream
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-İşlevi `ST_DISTANCE` , ölçü cinsinden iki işaret arasındaki mesafeyi döndürür. 
+`ST_DISTANCE`İşlevi, ölçü cinsinden iki işaret arasındaki mesafeyi döndürür. 
 
-Aşağıdaki sorgu, bir `ST_DISTANCE` gaz istasyonu arabadan 10 km 'tan az olduğunda bir olay oluşturmak için kullanır.
+Aşağıdaki sorgu, `ST_DISTANCE` bir gaz istasyonu arabadan 10 km 'tan az olduğunda bir olay oluşturmak için kullanır.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -124,9 +123,9 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Daha fazla bilgi edinmek için [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) başvurusunu ziyaret edin.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS` İşlev iki poligonu karşılaştırır. Çokgenler çakışırsa, işlev bir 1 döndürür. Çokgenler çakışmazsa işlev 0 döndürür. 
+`ST_OVERLAPS`İşlev iki poligonu karşılaştırır. Çokgenler çakışırsa, işlev bir 1 döndürür. Çokgenler çakışmazsa işlev 0 döndürür. 
 
-Aşağıdaki sorgu, bir `ST_OVERLAPS` derleme olası bir taşması bölgesi içindeyse bir olay oluşturmak için kullanır.
+Aşağıdaki sorgu, `ST_OVERLAPS` bir derleme olası bir taşması bölgesi içindeyse bir olay oluşturmak için kullanır.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -145,9 +144,9 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Daha fazla bilgi edinmek için [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) başvurusunu ziyaret edin.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS` Işlevi Iki LineString 'i karşılaştırır. LineString kesiştiğinde, işlev 1 değerini döndürür. LineString kesişmezseniz işlev 0 döndürür.
+`ST_INTERSECTS`İşlevi Iki LineString 'i karşılaştırır. LineString kesiştiğinde, işlev 1 değerini döndürür. LineString kesişmezseniz işlev 0 döndürür.
 
-Aşağıdaki örnek sorgu, bir `ST_INTERSECTS` geçen yolun bir kir yolunda kesişip kesişmediğine yönelik olarak kullanılır.
+Aşağıdaki örnek sorgu, `ST_INTERSECTS` bir geçen yolun bir kir yolunda kesişip kesişmediğine yönelik olarak kullanılır.
 
 ```SQL 
 SELECT  
@@ -171,9 +170,9 @@ FROM input
 Daha fazla bilgi edinmek için [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) başvurusunu ziyaret edin.
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN` İşlevi bir noktanın veya çokgenin çokgen içinde olup olmadığını belirler. Çokgen nokta veya Çokgen içeriyorsa, işlev 1 döndürür. Nokta veya Çokgen, belirtilen çokgen içinde yer alıyorsa işlev 0 döndürür.
+`ST_WITHIN`İşlevi bir noktanın veya çokgenin çokgen içinde olup olmadığını belirler. Çokgen nokta veya Çokgen içeriyorsa, işlev 1 döndürür. Nokta veya Çokgen, belirtilen çokgen içinde yer alıyorsa işlev 0 döndürür.
 
-Aşağıdaki örnek sorgu, teslim `ST_WITHIN` hedef noktasının belirtilen ambar çokgen içinde olup olmadığını belirlemede kullanır.
+Aşağıdaki örnek sorgu, `ST_WITHIN` teslim hedef noktasının belirtilen ambar çokgen içinde olup olmadığını belirlemede kullanır.
 
 ```SQL 
 SELECT  

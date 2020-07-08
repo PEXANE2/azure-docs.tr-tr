@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75371811"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
@@ -27,9 +26,9 @@ Azure depolama 'ya güvenli ve uyumlu bir bağlantı sağlamak için, Azure depo
 
 ## <a name="enable-tls-12-in-net-client"></a>.NET istemcisinde TLS 1.2'yi etkinleştirme
 
-İstemcisinin TLS 1,2 anlaşmasına sahip olması için, işletim sisteminin ve .NET Framework sürümünün her ikisi de TLS 1,2 ' i desteklemelidir. [TLS 1,2 desteğiyle ilgili](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)daha fazla ayrıntı görüntüleyin.
+İstemcinin TLS 1.2 anlaşması gerçekleştirebilmesi için hem işletim sisteminin hem de .NET Framework sürümünün TLS 1.2 desteğine sahip olması gerekir. [TLS 1,2 desteğiyle ilgili](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)daha fazla ayrıntı görüntüleyin.
 
-Aşağıdaki örnekte, .NET istemcisinde TLS 1,2 nasıl etkinleştirileceği gösterilmektedir.
+Aşağıdaki örnekte TLS 1.2'yi .NET istemcinizde etkinleştirme adımları gösterilmiştir.
 
 ```csharp
 

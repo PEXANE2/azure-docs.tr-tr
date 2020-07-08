@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: e99d72a0bce51d5d61e5f248f5ba279afe13a405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74970134"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Statik paketleme görevlerini gerçekleştirmek için Azure Medya Paketleyiciyi kullanma  
@@ -83,7 +82,7 @@ MP4 dosyalarınızı Media Services paketleyip doğrulamak için kendi bildirim 
 
 Uyarlamalı bit hızı ile MP4 ayarladıysanız, dinamik paketleme özelliğinden yararlanabilirsiniz. Dinamik paketleme, daha fazla paketleme yapmadan, belirtilen protokolde akış sunmanıza olanak tanır. Daha fazla bilgi için bkz. [dinamik paketleme](media-services-dynamic-packaging-overview.md).
 
-Aşağıdaki kod örneği Azure Media Services .NET SDK uzantılarını kullanır.  Kodu, giriş MP4 dosyalarınızın ve. ISM dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca, MediaPackager_ValidateTask. XML dosyanızın bulunduğu konum. Bu XML dosyası, [Azure Media Paketleyici Için görev ön ayarı](https://msdn.microsoft.com/library/azure/hh973635.aspx) makalesinde tanımlanmıştır.
+Aşağıdaki kod örneği Azure Media Services .NET SDK uzantılarını kullanır.  Kodu, giriş MP4 dosyalarınızın ve. ISM dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca, MediaPackager_ValidateTask.xml dosyanızın bulunduğu konum. Bu XML dosyası, [Azure Media Paketleyici Için görev ön ayarı](https://msdn.microsoft.com/library/azure/hh973635.aspx) makalesinde tanımlanmıştır.
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -272,9 +271,9 @@ Media Services artık Microsoft PlayReady lisanslarını sunmaya yönelik bir hi
 
 Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun.
 
-Ayrıca, MediaPackager_MP4ToSmooth. xml ve MediaEncryptor_PlayReadyProtection. xml dosyalarınızın bulunduğu yer. MediaPackager_MP4ToSmooth. xml, [Azure Medya paketleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973635.aspx) 'nda tanımlanmıştır ve MediaEncryptor_PlayReadyProtection. xml, [Azure Medya Şifreleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973610.aspx) 'nda tanımlanmıştır. 
+Ayrıca MediaPackager_MP4ToSmooth.xml ve MediaEncryptor_PlayReadyProtection.xml dosyalarınızın bulunduğu yer. MediaPackager_MP4ToSmooth.xml, [Azure Medya paketleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973635.aspx) 'nda tanımlanmıştır ve MediaEncryptor_PlayReadyProtection.xml [Azure Medya Şifreleyicisi 'Nin görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973610.aspx) 'nda tanımlanmıştır. 
 
-Örnek, MediaEncryptor_PlayReadyProtection. xml dosyasını dinamik olarak güncelleştirmek için kullanabileceğiniz UpdatePlayReadyConfigurationXMLFile yöntemini tanımlar. Anahtar tohum kullanılabilirse, keySeedValue ve keyId değerlerine göre içerik anahtarını oluşturmak için CommonEncryption. GeneratePlayReadyContentKey yöntemini kullanabilirsiniz.
+Örnek, MediaEncryptor_PlayReadyProtection.xml dosyasını dinamik olarak güncelleştirmek için kullanabileceğiniz UpdatePlayReadyConfigurationXMLFile yöntemini tanımlar. Anahtar tohum kullanılabilirse, keySeedValue ve keyId değerlerine göre içerik anahtarını oluşturmak için CommonEncryption. GeneratePlayReadyContentKey yöntemini kullanabilirsiniz.
 
 ```csharp
     using System;
@@ -716,12 +715,12 @@ HLS 'yi AES-128 ile şifrelemek istiyorsanız dinamik şifrelemeyi (önerilen se
 
 > [!NOTE]
 > İçeriğinizi HLS 'ye dönüştürmek için öncelikle içeriğinizi dönüştürmeniz/kodlamanız gerekir Kesintisiz Akış.
-> Ayrıca, HLS 'nin AES ile şifrelenmesini sağlamak için MediaPackager_SmoothToHLS. xml dosyanızda aşağıdaki özellikleri ayarladığınızdan emin olun: Encrypt özelliğini true olarak ayarlayın, anahtar değerini ve keyuri değerini authentication\authorization sunucunuza işaret edin.
+> Ayrıca, HLS 'nin AES ile şifrelenmesini sağlamak için MediaPackager_SmoothToHLS.xml dosyanızda aşağıdaki özellikleri ayarladığınızdan emin olun: Encrypt özelliğini true olarak ayarlayın, anahtar değerini ve keyuri değerini authentication\authorization sunucunuza işaret edin.
 > Media Services bir anahtar dosyası oluşturur ve varlık kapsayıcısına koyar. /Asset-containerguid/*. Key dosyasını sunucunuza kopyalamanız (veya kendi anahtar dosyanızı oluşturmanız) ve ardından varlık kapsayıcısından *. Key dosyasını silmeniz gerekir.
 > 
 > 
 
-Bu bölümdeki örnek, bir Mezzanine dosyasını (Bu durumda MP4) çoklu bit hızı MP4 dosyalarına kodluyor ve sonra MP4 'leri paketlerini Kesintisiz Akış. Daha sonra, Gelişmiş Şifreleme Standardı (AES) 128 bit akış şifrelemesi ile şifrelenmiş HTTP Canlı Akışı (HLS) Kesintisiz Akış paketler. Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca, MediaPackager_MP4ToSmooth. xml ve MediaPackager_SmoothToHLS. xml yapılandırma dosyalarınızın bulunduğu yer. Bu dosyalar için tanımı, [Azure Media Paketleyici Için görev ön ayarı](https://msdn.microsoft.com/library/azure/hh973635.aspx) makalesinde bulabilirsiniz.
+Bu bölümdeki örnek, bir Mezzanine dosyasını (Bu durumda MP4) çoklu bit hızı MP4 dosyalarına kodluyor ve sonra MP4 'leri paketlerini Kesintisiz Akış. Daha sonra, Gelişmiş Şifreleme Standardı (AES) 128 bit akış şifrelemesi ile şifrelenmiş HTTP Canlı Akışı (HLS) Kesintisiz Akış paketler. Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca MediaPackager_MP4ToSmooth.xml ve MediaPackager_SmoothToHLS.xml yapılandırma dosyalarınızın bulunduğu yerdir. Bu dosyalar için tanımı, [Azure Media Paketleyici Için görev ön ayarı](https://msdn.microsoft.com/library/azure/hh973635.aspx) makalesinde bulabilirsiniz.
 
 ```csharp
     using System;
@@ -1009,7 +1008,7 @@ Bu bölümdeki örnek, bir Mezzanine dosyasını (Bu durumda MP4) çoklu bit hı
 
 Media Services artık Microsoft PlayReady lisanslarını sunmaya yönelik bir hizmet sağlıyor. Bu makaledeki örnekte, Media Services PlayReady lisans teslimat hizmetinin nasıl yapılandırılacağı gösterilmektedir (aşağıdaki kodda tanımlanan **Configurelicensedeliveryservice** yöntemine bakın). 
 
-Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca, MediaPackager_MP4ToSmooth. xml, MediaPackager_SmoothToHLS. xml ve MediaEncryptor_PlayReadyProtection. xml dosyalarınızın bulunduğu yer. MediaPackager_MP4ToSmooth. xml ve MediaPackager_SmoothToHLS. xml, [Azure Medya paketleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973635.aspx) 'nda tanımlanmıştır ve MediaEncryptor_PlayReadyProtection. xml, [Azure Medya Şifreleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973610.aspx) 'nda tanımlanmıştır.
+Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek için güncelleştirdiğinizden emin olun. Ayrıca MediaPackager_MP4ToSmooth.xml, MediaPackager_SmoothToHLS.xml ve MediaEncryptor_PlayReadyProtection.xml dosyalarınızın bulunduğu yer. MediaPackager_MP4ToSmooth.xml ve MediaPackager_SmoothToHLS.xml, [Azure Medya paketleyicisi Için görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973635.aspx) 'nda tanımlanmıştır ve MediaEncryptor_PlayReadyProtection.xml [Azure Medya Şifreleyicisi 'Nin görev ön ayarları](https://msdn.microsoft.com/library/azure/hh973610.aspx) 'nda tanımlanmıştır.
 
 ```csharp
     using System;
@@ -1486,6 +1485,6 @@ Aşağıdaki kodu, giriş MP4 dosyanızın bulunduğu klasörü işaret etmek i�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

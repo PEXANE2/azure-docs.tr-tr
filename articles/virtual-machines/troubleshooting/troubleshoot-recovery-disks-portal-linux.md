@@ -13,14 +13,13 @@ ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
 ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75374650"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux VM sorunlarını giderme
-Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de `/etc/fstab` geçersiz bir giriş olabilir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Linux VM 'sine bağlamak üzere Azure portal kullanımı ve ardından özgün VM 'nizi yeniden oluşturmanız için Ayrıntılar açıklanır.
+Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek `/etc/fstab` , VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de geçersiz bir giriş olabilir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Linux VM 'sine bağlamak üzere Azure portal kullanımı ve ardından özgün VM 'nizi yeniden oluşturmanız için Ayrıntılar açıklanır.
 
 ## <a name="recovery-process-overview"></a>Kurtarma işlemine genel bakış
 Sorun giderme işlemi aşağıdaki gibidir:
@@ -37,7 +36,7 @@ Sorun giderme işlemi aşağıdaki gibidir:
 > Bu makale, yönetilmeyen disk içeren VM için geçerlidir.
 
 ## <a name="determine-boot-issues"></a>Önyükleme sorunlarını belirleme
-SANAL makinenizin neden doğru şekilde önyüklenemediğini öğrenmek için önyükleme tanılamayı ve VM ekran görüntüsünü inceleyin. Ortak bir örnek içinde `/etc/fstab`geçersiz bir giriş veya silinmekte veya taşınmakta olan temel bir sanal sabit disk olabilir.
+SANAL makinenizin neden doğru şekilde önyüklenemediğini öğrenmek için önyükleme tanılamayı ve VM ekran görüntüsünü inceleyin. Ortak bir örnek içinde geçersiz bir giriş `/etc/fstab` veya silinmekte veya taşınmakta olan temel bir sanal sabit disk olabilir.
 
 Portalda VM 'nizi seçin ve sonra da **destek + sorun giderme** bölümüne gidin. VM 'nizden akan konsol iletilerini görüntülemek için **önyükleme tanılama** ' ya tıklayın. VM 'nin neden bir sorunla karşılaşacağını tespit edebilir olup olmadığınızı görmek için konsol günlüklerini gözden geçirin. Aşağıdaki örnekte, el ile etkileşim gerektiren bakım modunda takılmış bir VM gösterilmektedir:
 
@@ -107,7 +106,7 @@ Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız.
 > [!NOTE]
 > Aşağıdaki örneklerde bir Ubuntu VM 'de gereken adımlar ayrıntılı olarak verilmiştir. Red Hat Enterprise Linux veya SUSE gibi farklı bir Linux kaldırı kullanıyorsanız, günlük dosyası konumları ve `mount` komutları biraz farklı olabilir. Komutlarınıza ilişkin uygun değişiklikler için özel olarak verilen belgelere başvurun.
 
-1. Uygun kimlik bilgilerini kullanarak sorun giderme sanal makinesine SSH. Bu disk, sorun giderme sanal makinesine bağlı ilk veri diskidir, büyük olasılıkla bağlı demektir `/dev/sdc`. Eklenen `dmseg` diskleri listelemek için kullanın:
+1. Uygun kimlik bilgilerini kullanarak sorun giderme sanal makinesine SSH. Bu disk, sorun giderme sanal makinesine bağlı ilk veri diskidir, büyük olasılıkla bağlı demektir `/dev/sdc` . `dmseg`Eklenen diskleri listelemek için kullanın:
 
     ```bash
     dmesg | grep SCSI
@@ -122,22 +121,22 @@ Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız.
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    Yukarıdaki örnekte, işletim sistemi diski `/dev/sda` ve her sanal makine için belirtilen geçici disk ' dir. `/dev/sdb` Birden çok veri diskine sahipseniz,, vb. olmaları gerekir `/dev/sdd` `/dev/sde`.
+    Yukarıdaki örnekte, işletim sistemi diski `/dev/sda` ve her sanal makine için belirtilen geçici disk ' dir `/dev/sdb` . Birden çok veri diskine sahipseniz,, vb. olmaları gerekir `/dev/sdd` `/dev/sde` .
 
-2. Var olan sanal sabit diskinizi bağlamak için bir dizin oluşturun. Aşağıdaki örnek adlı `troubleshootingdisk`bir dizin oluşturur:
+2. Var olan sanal sabit diskinizi bağlamak için bir dizin oluşturun. Aşağıdaki örnek adlı bir dizin oluşturur `troubleshootingdisk` :
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Var olan sanal sabit diskinizde birden çok bölüm varsa, gerekli bölümü bağlayın. Aşağıdaki örnek, konumundaki `/dev/sdc1`ilk birincil bölümü bağlar:
+3. Var olan sanal sabit diskinizde birden çok bölüm varsa, gerekli bölümü bağlayın. Aşağıdaki örnek, konumundaki ilk birincil bölümü bağlar `/dev/sdc1` :
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > En iyi yöntem, sanal sabit diskin evrensel benzersiz tanımlayıcısını (UUID) kullanarak Azure 'daki VM 'Lere veri disklerini bağlamasıdır. Bu kısa sorun giderme senaryosunda, UUID 'yi kullanarak sanal sabit diski bağlama gerekli değildir. Ancak, normal kullanım altında, sanal `/etc/fstab` sabıt disklerin UUID yerine cihaz adı kullanılarak bağlanması için düzenlemenin başarısız olması VM 'nin önyüklenememesine neden olabilir.
+    > En iyi yöntem, sanal sabit diskin evrensel benzersiz tanımlayıcısını (UUID) kullanarak Azure 'daki VM 'Lere veri disklerini bağlamasıdır. Bu kısa sorun giderme senaryosunda, UUID 'yi kullanarak sanal sabit diski bağlama gerekli değildir. Ancak, normal kullanım altında, `/etc/fstab` sanal sabit DISKLERIN UUID yerine cihaz adı kullanılarak bağlanması için düzenlemenin başarısız olması VM 'nin önyüklenememesine neden olabilir.
 
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Özgün sanal sabit diskteki sorunları çözme
@@ -152,7 +151,7 @@ Hatalar çözümlendikten sonra, var olan sanal sabit diski sorun giderme sanal 
     cd /
     ```
 
-    Şimdi var olan sanal sabit diski çıkarın. Aşağıdaki örnek, cihazı şu adreste `/dev/sdc1`kaldırır:
+    Şimdi var olan sanal sabit diski çıkarın. Aşağıdaki örnek, cihazı şu adreste kaldırır `/dev/sdc1` :
 
     ```bash
     sudo umount /dev/sdc1

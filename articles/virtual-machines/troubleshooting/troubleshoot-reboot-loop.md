@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443593"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 'de Windows yeniden başlatma döngüsü
@@ -62,7 +61,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 4. Kurtarma VM 'sinde, Windows kayıt defteri Düzenleyicisi 'Ni (regedit) açın.
 
-5. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden **Dosya** > **yükleme Hive** ' yi seçin.
+5. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden **Dosya**  >  **yükleme Hive** ' yi seçin.
 
 6. **\Windows\system32\config** klasöründeki sistem dosyasına gidin.
 
@@ -86,7 +85,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. **Brokensystem** anahtarını seçin ve menüden **Dosya** > **Kaldır Hive** öğesini seçin.
+13. **Brokensystem** anahtarını seçin ve menüden **Dosya**  >  **Kaldır Hive** öğesini seçin.
 
 14. İşletim sistemi diskini sorun giderme VM 'sinden ayırın.
 
@@ -94,7 +93,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 16. [İşletim sistemi diskinden yeni BIR VM oluşturun](../windows/create-vm-specialized.md).
 
-17. Sorun giderilirse, [Rdadgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) 'ı (waappagent. exe) yeniden yüklemeniz gerekebilir.
+17. Sorun giderilirse, [Rdadgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) 'ı (WaAppAgent.exe) yeniden yüklemeniz gerekebilir.
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 

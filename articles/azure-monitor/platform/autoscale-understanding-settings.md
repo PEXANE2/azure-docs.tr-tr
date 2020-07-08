@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364314"
 ---
 # <a name="understand-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarını anlama
@@ -87,12 +86,12 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
 
 | Section | Öğe adı | Açıklama |
 | --- | --- | --- |
-| Ayar | Kimlik | Otomatik ölçeklendirme ayarının kaynak KIMLIĞI. Otomatik ölçeklendirme ayarları bir Azure Resource Manager kaynağıdır. |
-| Ayar | ad | Otomatik ölçeklendirme ayarı adı. |
+| Ayar | ID | Otomatik ölçeklendirme ayarının kaynak KIMLIĞI. Otomatik ölçeklendirme ayarları bir Azure Resource Manager kaynağıdır. |
+| Ayar | name | Otomatik ölçeklendirme ayarı adı. |
 | Ayar | location | Otomatik ölçeklendirme ayarının konumu. Bu konum, ölçeklendirilen kaynağın konumundan farklı olabilir. |
 | properties | targetResourceUri | Ölçeklendirilen kaynağın kaynak KIMLIĞI. Kaynak başına yalnızca bir otomatik ölçeklendirme ayarınız olabilir. |
 | properties | lerinize | Otomatik ölçeklendirme ayarı bir veya daha fazla profilden oluşur. Otomatik ölçeklendirme altyapısının her çalıştırılışında, bir profili yürütür. |
-| profil | ad | Profilin adı. Profili tanımanıza yardımcı olacak herhangi bir ad seçebilirsiniz. |
+| profil | name | Profilin adı. Profili tanımanıza yardımcı olacak herhangi bir ad seçebilirsiniz. |
 | profil | Kapasite. maksimum | İzin verilen maksimum kapasite. Otomatik ölçeklendirme, bu profili yürütürken kaynağı bu sayının üzerinde ölçeklendirmez olmasını sağlar. |
 | profil | Kapasite. en az | İzin verilen en düşük kapasite. Otomatik ölçeklendirme, bu profili yürütürken kaynağı bu sayının altında ölçeklendirmez olmasını sağlar. |
 | profil | Kapasite. varsayılan | Kaynak ölçüsünü (Bu durumda, "vmss1" CPU 'SU) okurken bir sorun varsa ve geçerli kapasite varsayılan değer altında olursa otomatik ölçeklendirme varsayılan olarak ölçeği ölçeklendirir. Bu, kaynağın kullanılabilirliğini sağlamaktır. Geçerli kapasite varsayılan kapasiteden daha yüksekse, otomatik ölçeklendirme ölçeklendirme yapmaz. |
@@ -106,7 +105,7 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
 | metricTrigger | timeAggregation | Örneklenmiş ölçümleri toplamak için kullanılan toplama yöntemi. Örneğin, **timeaggregate = "Average"** , ortalama değeri alarak örneklenmiş ölçümleri toplamalıdır. Önceki durumda, 1 dakikalık örnekleri alın ve bunları ortalama yapın. |
 | kurallar | scaleAction | Kuralın metricTrigger değeri tetiklendiğinde gerçekleştirilecek eylem. |
 | scaleAction | yön | Ölçeği genişletmek için "Artır" veya "azalt".|
-| scaleAction | value | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |
+| scaleAction | değer | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |
 | scaleAction | cooldown | Ölçeklendirmeden önce bir ölçek işleminden sonra beklenecek süre. Örneğin, **coolI = "PT10M"** ise otomatik ölçeklendirme, başka 10 dakika boyunca yeniden ölçeklendirmeye çalışmaz. Coolaşağı, örneklerin ekleme veya kaldırma işleminden sonra ölçümlerin sabitlerine izin vermektedir. |
 
 ## <a name="autoscale-profiles"></a>Otomatik ölçeklendirme profilleri
@@ -301,7 +300,7 @@ Otomatik ölçeklendirme, bu kuralların her birinin **ScaleAction** tarafından
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki öğesine başvurarak otomatik ölçeklendirme hakkında daha fazla bilgi edinin:
 
-* [Otomatik ölçeklendirmeyi genel bakış](../../azure-monitor/platform/autoscale-overview.md)
+* [Otomatik ölçeklendirmeye genel bakış](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure Izleyici otomatik ölçeklendirme ortak ölçümleri](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [En iyi Azure İzleyici otomatik ölçeklendirme yöntemleri](../../azure-monitor/platform/autoscale-best-practices.md)
 * [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../../azure-monitor/platform/autoscale-webhook-email.md)

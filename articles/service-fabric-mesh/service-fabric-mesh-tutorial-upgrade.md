@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351711"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
@@ -39,33 +38,33 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric bir kafes hizmetini yükseltme
 
-Bu makalede bir uygulamanın içindeki bir mikro hizmetin nasıl yükseltileceğini gösterir. Bu örnekte, `WebFrontEnd` hizmeti bir görev kategorisi görüntüleyecek ve verilen CPU miktarını artıracak şekilde değiştireceksiniz. Sonra dağıtılan hizmeti yükseltiyoruz.
+Bu makalede bir uygulamanın içindeki bir mikro hizmetin nasıl yükseltileceğini gösterir. Bu örnekte, `WebFrontEnd` hizmeti bir görev kategorisi görüntüleyecek ve VERILEN CPU miktarını artıracak şekilde değiştireceksiniz. Sonra dağıtılan hizmeti yükseltiyoruz.
 
 ## <a name="modify-the-config"></a>Yapılandırmayı değiştirme
 
 Service Fabric bir kafes uygulaması oluşturduğunuzda, Visual Studio her dağıtım ortamı (bulut ve yerel) için bir **Parameters. YAML** dosyası ekler. Bu dosyalarda, Service. YAML veya Network. YAML gibi ağ *. YAML dosyalarından başvurulabilen parametreleri ve değerlerini tanımlayabilirsiniz.  Visual Studio, hizmetin ne kadar CPU kullanabileceği gibi bazı değişkenler sağlar.
 
-**Web ön uç** hizmetinin `WebFrontEnd_cpu` daha yoğun bir şekilde `1.5` kullanılması için CPU kaynaklarını olasılığına olarak güncelleştirmek üzere parametresini güncelleştireceğiz.
+`WebFrontEnd_cpu` `1.5` **Web ön uç** hizmetinin daha yoğun bir şekilde kullanılması için CPU kaynaklarını olasılığına olarak güncelleştirmek üzere parametresini güncelleştireceğiz.
 
-1. **Todolistapp** projesinde, **ortamlar** > **bulutu**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak `1.5`değiştirin. Parametre adı, farklı hizmetlere uygulanan aynı ada sahip parametrelerden `WebFrontEnd_` ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
+1. **Todolistapp** projesinde, **ortamlar**  >  **bulutu**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak değiştirin `1.5` . Parametre adı, `WebFrontEnd_` farklı hizmetlere uygulanan aynı ada sahip parametrelerden ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Webön **uç** > **hizmeti kaynakları**altında **webön uç** projesinin **Service. YAML** dosyasını açın.
+2. Webön **uç**hizmeti kaynakları altında **webön uç** projesinin **Service. YAML** dosyasını açın  >  **Service Resources**.
 
-    İçindeki `resources:` bölümünün `cpu:` olarak ayarlandığını unutmayın `"[parameters('WebFrontEnd_cpu')]"`. Proje bulut için derleniyorsa, için `'WebFrontEnd_cpu` değeri,**bulut** > **parametreleri. YAML** dosyası **ortamlarından** > alınır ve olur. `1.5` Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar** > **Yerel** > **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
+    İçindeki `resources:` bölümünün olarak `cpu:` ayarlandığını unutmayın `"[parameters('WebFrontEnd_cpu')]"` . Proje bulut için derleniyorsa, için değeri, `'WebFrontEnd_cpu` **Environments**  >  **bulut**  >  **parametreleri. YAML** dosyası ortamlarından alınır ve olur `1.5` . Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar**  >  **Yerel**  >  **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
 
 > [!Tip]
 > Varsayılan olarak, profile. YAML dosyasının bir eşi olan parametre dosyası, bu profile. YAML dosyasının değerlerini sağlamak için kullanılacaktır.
 > Örneğin, bulut > parametreleri > ortamlar. YAML, bulut > profili. YAML > ortamları için parametre değerleri sağlar.
 >
-> Bunu profile. YAML dosyasına aşağıdakileri ekleyerek geçersiz kılabilirsiniz:`parametersFilePath=”relative or full path to the parameters file”` örneğin veya `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”``parametersFilePath=”..\CommonParameters.yaml”`
+> Bunu profile. YAML dosyasına aşağıdakileri ekleyerek geçersiz kılabilirsiniz: `parametersFilePath=”relative or full path to the parameters file”` Örneğin `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` veya`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Modeli değiştirme
 
-Bir kod değişikliği tanıtmak için, `Category` `ToDoItem` `ToDoItem.cs` dosyadaki sınıfına bir özellik ekleyin.
+Bir kod değişikliği tanıtmak için, `Category` dosyadaki sınıfına bir özellik ekleyin `ToDoItem` `ToDoItem.cs` .
 
 ```csharp
 public class ToDoItem
@@ -75,7 +74,7 @@ public class ToDoItem
 }
 ```
 
-Sonra, kategoriyi `Load()` varsayılan bir dizeye ayarlamak için aynı dosyada yöntemi güncelleştirin:
+Sonra, `Load()` kategoriyi varsayılan bir dizeye ayarlamak için aynı dosyada yöntemi güncelleştirin:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -93,7 +92,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Hizmeti değiştirme
 
-`WebFrontEnd` Proje, yapılacaklar listesi öğelerini gösteren bir Web sayfası olan ASP.NET Core bir uygulamadır. `WebFrontEnd` Projede, görevin kategorisini göstermek `Index.cshtml` için aşağıda gösterildiği gibi aşağıdaki iki satırı açın ve ekleyin:
+Proje, yapılacaklar `WebFrontEnd` listesi öğelerini gösteren bir Web sayfası olan ASP.NET Core bir uygulamadır. `WebFrontEnd`Projede, `Index.cshtml` görevin kategorisini göstermek için aşağıda gösterildiği gibi aşağıdaki iki satırı açın ve ekleyin:
 
 ```HTML
 <div>
@@ -127,7 +126,7 @@ Bir kod yükseltmesi veya bir yapılandırma yükseltmesi yapıyor musunuz (Bu d
 
 Ardından **Service Fabric Uygulamasını Yayımla** iletişim kutusunu göreceksiniz.
 
-Bu dağıtım için kullanılacak profile. YAML dosyasını seçmek için **hedef profili** açılan listesini kullanın. Uygulamayı bulutta yükseltiyoruz, bu nedenle açılan menüde, bu dosyada tanımlanan 1,0 `WebFrontEnd_cpu` değerini kullanacak olan **Cloud. YAML** 'yi seçeceğiz.
+Bu dağıtım için kullanılacak profile. YAML dosyasını seçmek için **hedef profili** açılan listesini kullanın. Uygulamayı bulutta yükseltiyoruz, bu nedenle açılan menüde, bu dosyada tanımlanan 1,0 değerini kullanacak olan **Cloud. YAML** 'yi seçeceğiz `WebFrontEnd_cpu` .
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
