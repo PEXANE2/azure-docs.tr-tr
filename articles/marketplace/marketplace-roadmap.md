@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800637"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963300"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Microsoft ticari Market kaynakları
 
@@ -28,9 +28,8 @@ Microsoft Commercial Market 'teki son yayınlar ve diğer güncelleştirmeler ha
 * [Iş Ortağı Merkezi 'nde ticari Market için analiz](./partner-center-portal/analytics.md)
 * [Microsoft Build Market blogu](https://aka.ms/marketplacebuildblog)
 * [Market, blog güncelleştirmelerini alabilir](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* İş Ortağı Merkezi: [Hesap oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)-  /  cpp hesap[Manage Account](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)  /  [geçişini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc) yönetme
-* İş Ortağı Merkezi: [SaaS teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)  /  [yayımlama durumu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-)  /  [güncelleştirme mevcut teklif](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)  /  [teklifi analizlerini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) Güncelleştir
-* [Iş Ortağı Merkezi 'nde Market desteği alın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* İş Ortağı Merkezi: [Hesap oluşturma](partner-center-portal/create-account.md)-  /  cpp hesap[Manage Account](partner-center-portal/manage-account.md)  /  [geçişini](partner-center-portal/account-migration-from-cpp-to-pc.md) yönetme
+* İş Ortağı Merkezi: [SaaS teklifi](partner-center-portal/create-new-saas-offer.md)  /  [yayımlama durumu](partner-center-portal/publishing-status.md) oluşturma/ [mevcut teklif](partner-center-portal/update-existing-offer.md)  /  [teklifi analizlerini](partner-center-portal/analytics.md) güncelleştirme
+* [Iş Ortağı Merkezi 'nde Market desteği alın](partner-center-portal/support.md)
 
 Önerilerinizi duymaktan mutluluk duyarız! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.

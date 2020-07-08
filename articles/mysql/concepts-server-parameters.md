@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e147e896966f88f05f60732da9d85308b8e4bd0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389641"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963215"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -28,6 +28,32 @@ MySQL için Azure veritabanı, iş yükünüzün ihtiyaçlarına uygun [Azure Po
 Desteklenen sunucu parametrelerinin listesi sürekli olarak büyüyordur. Tam listeyi görüntülemek ve sunucu parametreleri değerlerini yapılandırmak için Azure portal sunucu parametreleri sekmesini kullanın.
 
 Yaygın olarak güncellenen çeşitli sunucu parametrelerinin sınırları hakkında daha fazla bilgi edinmek için aşağıdaki bölümlere bakın. Sınırlar, sunucunun fiyatlandırma katmanı ve sanal çekirdekleri tarafından belirlenir.
+
+### <a name="thread-pools"></a>İş parçacığı havuzları
+
+MySQL, her istemci bağlantısı için geleneksel olarak bir iş parçacığı atar. Eşzamanlı kullanıcıların sayısı arttıkça, buna karşılık gelen bir bir bırakma performansı vardır. Birçok etkin iş parçacığı, artan bağlam değiştirme, iş parçacığı çekişmesi ve CPU önbellekleri için bozuk konum nedeniyle performansı önemli ölçüde etkileyebilir.
+
+Sunucu tarafı özelliği olan ve bağlantı havuzundan farklı olan iş parçacığı havuzları, sunucuda çalışan etkin iş parçacıklarının sayısını sınırlandırmak ve iş parçacığı karmaşıklığını en aza indirmek için kullanılabilen bir dizi çalışan iş parçacığının dinamik bir havuzunu sunarak performansı en üst düzeye çıkarır. Bu, bir bağlantı patlaması sunucunun yetersiz bellek hatası ile kaynakların kaynak veya kilitlenme olmasına neden olmamasını sağlamaya yardımcı olur. İş parçacığı havuzları kısa sorgular ve CPU yoğunluklu iş yükleri için en verimli şekilde OLTP iş yükleri gibi etkindir.
+
+İş parçacığı havuzları hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı 'nda iş parçacığı havuzlarına giriş](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
+
+> [!NOTE]
+> İş parçacığı havuzu özelliği MySQL 5,6 sürümü için desteklenmiyor. 
+
+### <a name="configuring-the-thread-pool"></a>İş parçacığı havuzunu yapılandırma
+İş parçacığı havuzunu etkinleştirmek için `thread_handling` sunucu parametresini "iş parçacıkları havuzu" olarak güncelleştirin. Varsayılan olarak, bu parametre olarak ayarlanır, bu da `one-thread-per-connection` MySQL her yeni bağlantı için yeni bir iş parçacığı oluşturur. Bunun statik bir parametre olduğunu ve uygulamak için sunucunun yeniden başlatılmasını gerektirdiğini lütfen unutmayın.
+
+Aşağıdaki sunucu parametrelerini ayarlayarak havuzdaki en yüksek ve en düşük iş parçacığı sayısını da yapılandırabilirsiniz: 
+- `thread_pool_max_threads`: Bu değer, havuzdaki bu sayıda iş parçacığından daha fazla olmamasını sağlar.
+- `thread_pool_min_threads`: Bu değer, bağlantılar kapatıldıktan sonra bile ayrılacak iş parçacığı sayısını ayarlar.
+
+İş parçacığı havuzundaki kısa sorguların performans sorunlarını artırmak için, MySQL için Azure veritabanı, bir Sorgu yürütüldükten hemen sonra iş parçacığı havuzuna geri dönmek yerine toplu yürütmeyi etkinleştirmenizi sağlar, iş parçacıkları Bu bağlantı aracılığıyla bir sonraki sorguyu beklemek için kısa bir süre etkin kalır. İş parçacığı daha sonra sorguyu hızlı bir şekilde yürütür ve tamamlandıktan sonra, bu işlemin genel zaman tüketimi bir eşiği aşana kadar bir sonraki için bekler. Toplu yürütme davranışı aşağıdaki sunucu parametreleri kullanılarak belirlenir:  
+
+-  `thread_pool_batch_wait_timeout`: Bu değer bir iş parçacığının başka bir sorgunun işlemesini bekleyeceği süreyi belirtir.
+- `thread_pool_batch_max_time`: Bu değer, bir iş parçacığının sorgu yürütme döngüsünü yineleneceği ve sonraki sorgu için beklerken en uzun süreyi belirler.
+
+> [!IMPORTANT]
+> Lütfen üretim ortamında açmadan önce iş parçacığı havuzunu test edin. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -84,8 +110,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|262144|128|268435455|
 |Genel Amaçlı|4|262144|128|536870912|
 |Genel Amaçlı|8|262144|128|1073741824|
@@ -133,8 +159,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|16777216|16384|268435455|
 |Genel Amaçlı|4|16777216|16384|536870912|
 |Genel Amaçlı|8|16777216|16384|1073741824|
@@ -158,8 +184,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|* * En büyük değer * *|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|0|0|16777216|
 |Genel Amaçlı|4|0|0|33554432|
 |Genel Amaçlı|8|0|0|67108864|
@@ -178,8 +204,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|524288|32768|4194304|
 |Genel Amaçlı|4|524288|32768|8388608|
 |Genel Amaçlı|8|524288|32768|16777216|
@@ -198,8 +224,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
-|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
 |Genel Amaçlı|2|16777216|1024|67108864|
 |Genel Amaçlı|4|16777216|1024|134217728|
 |Genel Amaçlı|8|16777216|1024|268435456|

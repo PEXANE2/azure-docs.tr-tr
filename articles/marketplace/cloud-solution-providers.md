@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798142"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964218"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
-Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market Web stokileri](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)aracılığıyla tekliflerinizi yayımlamaya ek olarak, programın sunduğu milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
+Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market Web stokileri](comparing-appsource-azure-marketplace.md)aracılığıyla tekliflerinizi yayımlamaya ek olarak, programın sunduğu milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
 
 CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan yeni veya mevcut teklifleri CSP programında kullanılabilir olarak yapılandırabilirsiniz.
 
@@ -191,7 +191,7 @@ Bulut İş Ortağı Portalı içinde CSP kanalını kabul ettiyseniz, yayımcıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Marketi ve AppSource yayımcı kılavuzunu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)ziyaret edin.
+[Azure Marketi ve AppSource yayımcı kılavuzunu](marketplace-publishers-guide.md)ziyaret edin.
 
 Market GTM Hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
 

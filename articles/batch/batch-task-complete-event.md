@@ -3,12 +3,12 @@ title: Azure Batch görev tamamlanma olayı
 description: Batch görevi tamamlanma olayı başvurusu. Bu olay, çıkış kodundan bağımsız olarak bir görev tamamlandıktan sonra yayınlanır.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 5e3959a34b96ef4cebdbedadf736418d08cb2746
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 42860836e294780649616b0843db6ba19718dd64
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726375"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965187"
 ---
 # <a name="task-complete-event"></a>Görev tamamlama olayı
 
@@ -50,7 +50,7 @@ ms.locfileid: "83726375"
 |`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir. Bu olay iş hazırlama görevleri, iş bırakma görevleri veya başlangıç görevleri için yayınlanmaz.|
 |`systemTaskVersion`|Int32|Bu, bir görevde iç yeniden deneme sayacıdır. Toplu olarak Batch hizmeti, geçici sorunlar için bir görevi hesaba yeniden deneyebilir. Bu sorunlar, iç zamanlama hataları içerebilir veya işlem düğümlerinden hatalı bir durumda kurtarmaya çalışır.|
 |[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)Ayrıntılar için bkz..|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)Ayrıntılar için bkz..|
 |[`constraints`](#constraints)|Karmaşık Tür|Bu görev için uygulanan yürütme kısıtlamaları.|
 |[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
 

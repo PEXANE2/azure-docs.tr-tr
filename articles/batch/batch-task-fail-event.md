@@ -3,12 +3,12 @@ title: Azure Batch görev başarısız olayı
 description: Batch görevi hata olayı için başvuru. Bu olay, görev tamamlanma olayına ek olarak yayınlanacaktır ve bir görevin başarısız olduğunu algılamak için kullanılabilir.
 ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: 54a6965fbefeaf502372c611c2b3152dc43b0efe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fbd0e5f2397fffce654d64a0e95a115b861db680
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726358"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965170"
 ---
 # <a name="task-fail-event"></a>Görev başarısızlık olayı
 
@@ -50,7 +50,7 @@ ms.locfileid: "83726358"
 |`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir. Bu olay iş hazırlama görevleri, iş bırakma görevleri veya başlangıç görevleri için yayınlanmaz.|
 |`systemTaskVersion`|Int32|Bu, bir görevde iç yeniden deneme sayacıdır. Toplu olarak Batch hizmeti, geçici sorunlar için bir görevi hesaba yeniden deneyebilir. Bu sorunlar, iç zamanlama hataları içerebilir veya işlem düğümlerinden hatalı bir durumda kurtarmaya çalışır.|
 |[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)Ayrıntılar için bkz..|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)Ayrıntılar için bkz..|
 |[`constraints`](#constraints)|Karmaşık Tür|Bu görev için uygulanan yürütme kısıtlamaları.|
 |[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
 

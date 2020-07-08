@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412490"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964643"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -49,7 +49,7 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
 * **Geliştirici** ISE: Bu SKU, ölçek artırma, hizmet düzeyi sözleşmesi (SLA) ve yayımlanmış sınır olmadan hiçbir özelliğe sahip değildir. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
 
-Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenekler için sabit bir [aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps) ödeyin:
+Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenekler için sabit bir [Fiyat](https://azure.microsoft.com/pricing/details/logic-apps) (kullanım başına ödeme) ödeyin:
 
 * [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler
 
@@ -57,7 +57,7 @@ Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenek
 
 * İstediğiniz kadar kurumsal bağlantınız olmasına olanak sağlayan [Standart](../connectors/apis-list.md#managed-connectors) bağlayıcılar ve [Kurumsal](../connectors/apis-list.md#enterprise-connectors) bağlayıcılar
 
-   **Ise** etiketini görüntüleyen standart ve kurumsal bağlayıcılar, Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe dışı bağlayıcılar ortak, "genel", çok kiracılı Logic Apps hizmetinde çalışır. Sabit aylık fiyatlandırma Ayrıca, çok kiracılı hizmette çalışan ve bunları bir ıSE 'de çalışan Logic Apps ile kullandığınızda bağlayıcı için de geçerlidir.
+   **Ise** etiketini görüntüleyen standart ve kurumsal bağlayıcılar, Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe dışı bağlayıcılar ortak, "genel", çok kiracılı Logic Apps hizmetinde çalışır. Sabit fiyatlandırma Ayrıca, bunları bir ıSE 'de çalışan Logic Apps ile kullandığınızda çok kiracılı hizmette çalışan bağlayıcılar için de geçerlidir.
 
 * [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alarak, ek ücret ödemeden [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
 

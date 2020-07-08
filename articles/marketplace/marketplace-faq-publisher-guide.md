@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 985a8ac83d48de11ac134bc9a942c766e4ff5d32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340479"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963606"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -67,7 +67,7 @@ Müşterilerin ticari Market teklifinizi kullanma yolları, teklifleri nasıl ol
 
 Kaydolduktan ve yayımcı anlaşmasını kabul ettikten sonra, Iş Ortağı Merkezi 'nde ticari Market sayfasına erişebilirsiniz. Bu, teklifleri oluşturduğunuz ve yönettiğiniz ve analiz raporlarını görüntülediğiniz yerdir. Microsoft 365 uygulamalar için Iş Ortağı Merkezi 'nde Office Mağazası programını da etkinleştirmeniz gerekir.
 
-Daha fazla bilgi için bkz. [ticari Market 'e hoş geldiniz](https://docs.microsoft.com/azure/marketplace/) ve [Microsoft Commercial market aracılığıyla Office 365 eklentilerinizi Monaya](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)dönüştürme.
+Daha fazla bilgi için bkz. [ticari Market 'e hoş geldiniz](index.yml) ve [Microsoft Commercial market aracılığıyla Office 365 eklentilerinizi Monaya](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)dönüştürme.
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Ticari Market için destek yardımına Nasıl yaparım? misiniz?
 
@@ -77,7 +77,7 @@ En iyi yöntemler ve bilgi paylaşma hakkında bilgi edinmek için [etkin toplul
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Kuruluşumun ticari Market 'ten hangi analizler mevcuttur?
 
-Ticari marketimiz dahilinde tekliflerinizi raporlamak istiyoruz. Müşteriler, siparişler, mağaza ile ilgili verilere erişmek ve daha fazlasını yapmak için [Iş Ortağı Merkezi 'nde ticari Market](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)analizine gidin.
+Ticari marketimiz dahilinde tekliflerinizi raporlamak istiyoruz. Müşteriler, siparişler, mağaza ile ilgili verilere erişmek ve daha fazlasını yapmak için [Iş Ortağı Merkezi 'nde ticari Market](partner-center-portal/analytics.md)analizine gidin.
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft 'un müşterilerle olan ilişkisi nedir?
 
@@ -89,7 +89,7 @@ Yayımcı olarak, yazılım çözümünüz için kullanım koşulları 'nı, mü
 
 Tüm müşterilere uygulanan değişiklikler oluşturabilir veya belirli müşterilere özel değişiklikler yapabilirsiniz. Ayrıca hüküm ve koşullarınızı tam olarak özelleştirerek bir metin kutusuna girilebilir veya Web adresi olarak gösterilecek bir Web sitesinde barınabilir.
 
-Daha fazla bilgi edinmek için bkz. [Microsoft ticari Market Için standart sözleşme](https://docs.microsoft.com/azure/marketplace/standard-contract).
+Daha fazla bilgi edinmek için bkz. [Microsoft ticari Market Için standart sözleşme](standard-contract.md).
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Azure Marketi Azure Kamu 'da kullanılabilir mi?
 
@@ -126,7 +126,7 @@ Bir satın almayı çok düşük bir fiyatla tamamlayabilmeniz için, tek başı
 
 Müşteriler Microsoft AppSource ve Azure Market stokileri için tekliflerinizi kullanırken bilgiler yakalanır. Müşteriler yeterli ilgi gösterdikten sonra bir müşteri adayı oluşturulur ve tercih ettiğiniz sisteme bir fırsat gönderilir. Ticari Market 'te başarılı olan yayımcılar genellikle müşteri adaylarına, ilişki geliştirebilir ve ilgi çekici bir şekilde ilgileniyor.
 
-Daha fazla bilgi için bkz. [Market teklifinizin müşteri adayları](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads).
+Daha fazla bilgi için bkz. [Market teklifinizin müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Değişikliklerim neden Microsoft AppSource veya Azure Market 'teki teklifte yansıtılmıyor?
 
@@ -146,7 +146,7 @@ Microsoft AppSource, iş ve sektör çözümlerinin hedefi ve Azure Marketi BT v
 
 Küresel satıcılarımız, bulut çözümü sağlayıcısı programı 'nda yer alan on binlerce kuruluş içerir. CSP programı, kuruluşların ürünlerimiz ve tekliflerimizi ticari Market 'ten yeniden satmalarını sağlar ve BT 'yi başarıyla yapması için araçlar verir.
 
-Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](cloud-solution-providers.md).
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>Ortaklıklar oluşturmak için satıcıları nasıl bulabilirim?
 
@@ -156,7 +156,7 @@ Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://docs.mi
 
 Evet, bulut çözümü sağlayıcısı programındaki tüm satıcıların veya yalnızca sizin belirttiğiniz kişilere sunulan teklifleri kullanılabilir hale getirebilirsiniz.
 
-Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](cloud-solution-providers.md).
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>Satıcıların marjına nasıl ödeme yapabilirim?
 
@@ -229,7 +229,7 @@ Kullanıcı hesabının Azure aboneliğinde *sahip* veya *katkıda bulunan* izin
 
 Müşteriler dünyanın dört bir yanındaki 141 konumlarda ticari Market 'ten çözüm alabilir.
 
-Konumların listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)gidin.
+Konumların listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](partner-center-portal/tax-details-paid-transactions.md)gidin.
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Ticari Market ile hangi para birimleri destekleniyor?
 
@@ -252,7 +252,7 @@ Konumların listesini gözden geçirmek için [ticari Market yayımcılarının 
 - TWD
 - USD
 
-Para birimi listesini gözden geçirmek için [ticari Market Için coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)' ne gidin.
+Para birimi listesini gözden geçirmek için [ticari Market Için coğrafi kullanılabilirlik ve para birimi desteği](marketplace-geo-availability-currencies.md)' ne gidin.
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>Müşteriler, abonelikleri veya lisans birimlerini orta dönemde değiştirebilir mi?
 
@@ -274,32 +274,32 @@ Müşteriler, genellikle önceki fatura döngüsündeki tüm Satınalmalar için
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Ticari Market aracılığıyla satışa ne sıklıkta ödeme alabilirim?
 
-Ödemeler aylık gerçekleşir. Ödeme zamanlamalarıyla ilgili ayrıntılar için, Iş Ortağı Merkezi 'nde yaklaşan ödemelerden ve müşteri ödemesiz müşterilere nasıl uğradığımızda bulabilirsiniz. ödeme [Ilkesi ayrıntılarına](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details)bakın.
+Ödemeler aylık gerçekleşir. Ödeme zamanlamalarıyla ilgili ayrıntılar için, Iş Ortağı Merkezi 'nde yaklaşan ödemelerden ve müşteri ödemesiz müşterilere nasıl uğradığımızda bulabilirsiniz. ödeme [Ilkesi ayrıntılarına](partner-center-portal/payout-policy-details.md)bakın.
 
 - Müşterinin bir Kurumsal Anlaşma kullandığı işlemler için, ödemeler sonraki ödeme ömrü 30 günlük Müşteri faturasında verilir. 
 - Müşterinin kredi kartı kullandığı işlemler için, fon 'nin net olmasını sağlamak ve geri ödeme veya şüpheli Sahtekarlık olmaması için ödeme aldıktan sonra ek 30 günlük bir emanet süresi vardır.
 
 Ödemeler yalnızca, satış en düşük $50,00 Birleşik değerine eriştiğinde verilir.
 
-Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
+Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](partner-center-portal/payment-thresholds-methods-timeframes.md).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Hangi ülkelerde/bölgelerde vergi, sizin adınıza yönetiliyor?
 
 Müşteriler dünyanın dört bir yanındaki ticari Market 'ten çözümler bulabilir ve birçok konumdaki vergileri yönetiyoruz. 
 
-Konumların tam listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)gidin.
+Konumların tam listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](partner-center-portal/tax-details-paid-transactions.md)gidin.
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Ticari Market için ödeme raporumu nereden bulabilirim?
 
 Iş Ortağı Merkezi 'nde, *sahip* veya *finansal katkıda bulunan* izinleri olan bir Kullanıcı, ödeme raporlamasını görüntüleyebilir. Bu kullanıcılar, bir faturayı bir el ile gösteren simgeyi seçerek sağ üstteki raporlara erişebilir.
 
-Daha fazla bilgi için bkz. [ödeme raporlaması](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary).
+Daha fazla bilgi için bkz. [ödeme raporlaması](partner-center-portal/payout-summary.md).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Nasıl yaparım? ödeme yönteminizi ve hedefini yapılandırmak mi istiyorsunuz?
 
 Iş Ortağı Merkezi ile *sahip* olan kullanıcılar, ödeme hesabı ve vergi formlarını ayarlayabilir. Kullanıcılar bunu, sağ üst köşedeki **Ayarlar** düğmesini (dişli simgesi) seçerek yapabilir.
 
-Daha fazla bilgi için, [ödeme hesabı ve vergi formları](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms)' na gidin.
+Daha fazla bilgi için, [ödeme hesabı ve vergi formları](partner-center-portal/set-up-your-payout-account-tax-forms.md)' na gidin.
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Ticari Market ile desteklenen dönüşler ve para iadesi mi?
 
@@ -313,7 +313,7 @@ Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
 - [Microsoft ticari Market 'e giriş](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft ticari Market İş Ortağı Merkezi](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Ticari markete hoş geldiniz](https://docs.microsoft.com/azure/marketplace/)
+- [Ticari markete hoş geldiniz](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Microsoft ve diğer iş ortaklarıyla nasıl etkileşime geçebilirim?
 
@@ -325,7 +325,7 @@ Başlamak için bazı kaynaklar aşağıda verilmiştir:
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Iş Ortağı Merkezi hakkında nereden daha fazla bilgi edinebilirim?
 
 - [İş Ortağı Merkezi belgeleri](https://docs.microsoft.com/partner-center/)
-- [Ticari markete hoş geldiniz](https://docs.microsoft.com/azure/marketplace/)
+- [Ticari markete hoş geldiniz](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Microsoft Yönetim Merkezi hakkında nereden daha fazla bilgi edinebilirim?
 
@@ -333,14 +333,14 @@ Microsoft Yönetim Merkezi hakkında daha fazla bilgi için bkz. [Kuruluşunuz i
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Azure Faturalandırma hakkında nereden daha fazla bilgi edinebilirim?
 
-- [Azure Maliyet Yönetimi ve Faturalandırma belgeleri](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Azure faturanızda Azure Marketi ücretlerini anlayın](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [Azure aboneliğini fatura ödemesine Dönüştür](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Azure Maliyet Yönetimi ve Faturalandırma belgeleri](../cost-management-billing/index.yml)
+- [Azure faturanızda Azure Marketi ücretlerini anlayın](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [Azure aboneliğini fatura ödemesine Dönüştür](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Azure Kamu ve Azure Kamu marketi hakkında nereden bilgi edinebilirim?
 
 - [Azure Devlet Kurumları](https://azure.microsoft.com/global-infrastructure/government)
 - [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center)
-- [Azure Kamu belgeleri](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Kamu marketi](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Azure Kamu uyumluluğu](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Azure Kamu belgeleri](../azure-government/index.yml)
+- [Azure Kamu marketi](../azure-government/documentation-government-manage-marketplace.md)
+- [Azure Kamu uyumluluğu](../azure-government/documentation-government-plan-compliance.md)

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 7db83535b7e6257159e0a0eb363e6d05c5e916b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047912"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963657"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Coğrafi geri yükleme veya yük devretme için Azure SQL veritabanı güvenliğini yapılandırma ve yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,15 +55,19 @@ Hedef sunucuda oturum açma ayarları aşağıda belirtilen üç adımdan oluşu
 
 Yalnızca sunucu yöneticisi veya **loginmanager** sunucu rolünün bir üyesi, kaynak sunucudaki oturum AÇMALARı aşağıdaki SELECT ifadesiyle belirleyebilir.
 
-    SELECT [name], [sid]
-    FROM [sys].[sql_logins]
-    WHERE [type_desc] = 'SQL_Login'
+```sql
+SELECT [name], [sid]
+FROM [sys].[sql_logins]
+WHERE [type_desc] = 'SQL_Login'
+```
 
 Yalnızca db_owner veritabanı rolünün bir üyesi, dbo kullanıcısı veya Sunucu Yöneticisi, birincil veritabanındaki tüm veritabanı kullanıcı sorumlularını tespit edebilir.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 #### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Adım 1 ' de tanımlanan oturum açma SID 'sini bulun
 
@@ -71,9 +75,11 @@ Yalnızca db_owner veritabanı rolünün bir üyesi, dbo kullanıcısı veya Sun
 
 Aşağıdaki sorgu, tüm kullanıcı sorumlularını ve bunların SID 'Lerini bir veritabanında görmek için kullanılabilir. Bu sorguyu yalnızca db_owner veritabanı rolü veya Sunucu Yöneticisi üyesi çalıştırabilir.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 > [!NOTE]
 > **INFORMATION_SCHEMA** ve **sys** kullanıcıları *null* SID 'lere sahiptir ve **Konuk** SID değeri **0x00**olur. Veritabanı Oluşturucu **DBManager**üyesi yerine sunucu yöneticisi ise, **dbo** SID 'si *0x01060000000001648000000000048454*ile başlayabilir.
@@ -82,9 +88,11 @@ Aşağıdaki sorgu, tüm kullanıcı sorumlularını ve bunların SID 'Lerini bi
 
 Son adım hedef sunucuya veya sunuculara gidececektir ve uygun SID 'Ler ile oturum açmaları oluşturacaktır. Temel sözdizimi aşağıdaki gibidir.
 
-    CREATE LOGIN [<login name>]
-    WITH PASSWORD = <login password>,
-    SID = <desired login SID>
+```sql
+CREATE LOGIN [<login name>]
+WITH PASSWORD = <login password>,
+SID = <desired login SID>
+```
 
 > [!NOTE]
 > Birincil sunucuya kullanıcı erişimi vermek, ancak birinciye değil ise, birincil sunucudaki kullanıcı oturum açma bilgilerini aşağıdaki sözdizimini kullanarak değiştirerek bunu yapabilirsiniz.

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726409"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965255"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch işleme kullanma
 
@@ -19,8 +19,8 @@ Azure Batch işleme kullanmanın birkaç yolu vardır:
 * API'ler:
   * Batch API 'Lerinden herhangi birini kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.
 * Komut satırı araçları:
-  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [PowerShell](https://docs.microsoft.com/powershell/azure/overview) , toplu kullanım betiği için kullanılabilir.
-  * Özellikle, [Batch CLI şablonu desteği](https://docs.microsoft.com/azure/batch/batch-cli-templates) havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
+  * [Azure komut satırı](/cli/azure/) veya [PowerShell](/powershell/azure/overview) , toplu kullanım betiği için kullanılabilir.
+  * Özellikle, [Batch CLI şablonu desteği](./batch-cli-templates.md) havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
 * Batch Explorer kullanıcı arabirimi:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) , Batch hesaplarının yönetilmesini ve izlenmesini sağlayan platformlar arası bir istemci aracıdır.
   * İşleme uygulamalarının her biri için, kolayca havuzlar oluşturmak ve işleri göndermek üzere kullanılabilecek bir dizi havuz ve iş şablonu sağlanır.  Şablonlar kümesi, şablon dosyaları GitHub 'dan erişildiği şekilde uygulama kullanıcı arabiriminde listelenir.
@@ -32,7 +32,7 @@ Geliştirici olmayan ve Azure uzmanlarından sorumlu olmayan son kullanıcılar 
 
 ## <a name="using-batch-explorer"></a>Batch Explorer kullanma
 
-İşleme gerçekleştirmek için Batch Explorer kullanmaya yönelik adım adım bir öğretici için, bkz. [blender öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+İşleme gerçekleştirmek için Batch Explorer kullanmaya yönelik adım adım bir öğretici için, bkz. [blender öğreticisi](./tutorial-rendering-batchexplorer-blender.md).
 
 ### <a name="download-and-install"></a>İndir ve yükle
 
@@ -65,5 +65,5 @@ Eklentiler, bazı istemci uygulamaları için kullanılabilir.  Eklentiler, havu
 
 Toplu işleme örnekleri için iki öğreticiyi deneyin:
 
-* [Azure CLı kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Batch Explorer'ı kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Azure CLı kullanarak işleme](./tutorial-rendering-cli.md)
+* [Batch Explorer'ı kullanarak işleme](./tutorial-rendering-batchexplorer-blender.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "61244238"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964762"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Media Encoder Standard ve .NET kullanarak küçük resim oluşturma 
 
@@ -408,9 +408,12 @@ Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media 
 * Bir kodlama işi oluşturun.
 * Media Encoder Standard Kodlayıcısı için bir başvuru alın.
 * Kodlama ön ayarını ve küçük resim oluşturmak için gereken bilgileri içeren [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) 'yi yükleyin. Bu [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) dosyasını bir dosyaya kaydedebilir ve dosyayı yüklemek için aşağıdaki kodu kullanabilirsiniz.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * İşe tek bir kodlama görevi ekleyin. 
 * Kodlanacak giriş varlığını belirtin.
 * Kodlanmış varlığı içeren bir çıkış varlığı oluşturun.
@@ -545,7 +548,7 @@ namespace EncodeAndGenerateThumbnails
 }
 ```
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 Aşağıdaki noktalara dikkat edilmelidir:
 
 * Başlangıç/adım/Aralık için açık zaman damgalarının kullanımı, giriş kaynağının en az 1 dakika uzunluğunda olduğunu varsayar.
@@ -568,7 +571,7 @@ Kodlama işi beklenirken [işin ilerlemesini](media-services-check-job-progress.
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e850f719f64d1d845ca11ccefeefea2c8dc7fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195664"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963878"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
 
 Batch için Azure Güvenlik taban çizgisi, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
-Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
+Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 
-Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Ağ Güvenliği
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruyun
 
@@ -140,7 +140,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
-**Rehberlik**: Azure ilkesiyle Azure Batch havuzlarınızla ilişkili ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Batch havuzlarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Batch" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın.
+**Rehberlik**: Azure ilkesiyle Azure Batch havuzlarınızla ilişkili ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Batch havuzlarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.Batch" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın.
 
 Azure Ilkesini yapılandırma ve yönetme:
 
@@ -188,7 +188,7 @@ Azure Izleyici 'de uyarı oluşturma:https://docs.microsoft.com/azure/azure-moni
 
 ## <a name="logging-and-monitoring"></a>Günlüğe Kaydetme ve İzleme
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
 
@@ -312,7 +312,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 ## <a name="identity-and-access-control"></a>Kimlik ve Erişim Denetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tut
 
@@ -510,7 +510,7 @@ Desteklenen Müşteri Kasası hizmetleri listesi:https://docs.microsoft.com/azur
 
 ## <a name="data-protection"></a>Veri Koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
@@ -656,7 +656,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ## <a name="vulnerability-management"></a>Güvenlik Açığı Yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
@@ -704,7 +704,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve Varlık Yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure varlık bulmayı kullanma
 
@@ -871,11 +871,11 @@ Bu, Azure Batch havuzlarının kullanıcıları (yönetici olmayanlar) işleri �
 
 ## <a name="secure-configuration"></a>Güvenli Yapılandırma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Rehberlik**: Azure Batch hesaplarınızın ve havuzlarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. Batch" ad alanındaki Azure ilke diğer adlarını kullanın.
+**Rehberlik**: Azure Batch hesaplarınız ve havuzlarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.Batch" ad alanındaki Azure ilke diğer adlarını kullanın.
 
 Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:
 
@@ -958,7 +958,7 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
 
-**Rehberlik**: yerleşik Azure ilke tanımlarını kullanarak Azure Batch ilgili kaynak yapılandırmasını uyarır, denetleyebilir ve zorunlu kılabilirsiniz.  Azure Batch hesaplarınız ve havuzlarınız için özel ilkeler oluşturmak üzere "Microsoft. Batch" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
+**Rehberlik**: yerleşik Azure ilke tanımlarını kullanarak Azure Batch ilgili kaynak yapılandırmasını uyarır, denetleyebilir ve zorunlu kılabilirsiniz.  Azure Batch hesaplarınız ve havuzlarınız için özel ilkeler oluşturmak üzere "Microsoft.Batch" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
 Azure Ilkesini yapılandırma ve yönetme:
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Azure hizmetleri için otomatik yapılandırma Izlemeyi uygulayın
 
-**Rehberlik**: Azure Batch örneğinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. Batch" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, Azure Batch için özel olarak oluşturulan yerleşik ilkeleri veya Azure Batch tarafından kullanılan kaynakları da kullanabilirsiniz; örneğin:
+**Rehberlik**: Azure Batch örneğinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.Batch" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, Azure Batch için özel olarak oluşturulan yerleşik ilkeleri veya Azure Batch tarafından kullanılan kaynakları da kullanabilirsiniz; örneğin:
 
 - Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir
 
@@ -1047,7 +1047,7 @@ Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/h
 
 ## <a name="malware-defense"></a>Kötü Amaçlı Yazılımdan Koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
 
@@ -1083,7 +1083,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 ## <a name="data-recovery"></a>Veri Kurtarma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
 
@@ -1143,7 +1143,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: olay yanıtı oluştur Kılavuzu
 
@@ -1175,7 +1175,7 @@ NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alışt
 
 **Sorumluluk**: müşteri
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: güvenlik olaylarına ilişkin Iletişim ayrıntılarını sağlayın ve güvenlik olayları &nbsp;Için uyarı bildirimleri yapılandırın
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: güvenlik olaylarına ilişkin Iletişim ayrıntılarını sağlayın ve &nbsp; güvenlik olayları Için uyarı bildirimleri yapılandırın
 
 **Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır.
 
@@ -1217,7 +1217,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma Testleri ve Red Team Alıştırmaları
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini yapın ve tüm kritik güvenlik bulgularını 60 gün içinde düzeltdiğinizden emin olun.
 
@@ -1235,5 +1235,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

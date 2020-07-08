@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 6c1cc8c08fa4dc09d033cf4752a81f01419e8f2c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 361e35aea90a9817e365d66014faf5f23433c1dc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694935"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964796"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Market ölçülen faturalandırma API 'Leri-SSS
 
@@ -76,7 +76,7 @@ Tek özel durum, SaaS aboneliğinin iptalinden önceki süre için raporlama kul
 
 ### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Etkin ve aboneliği kaldırma abonelikleri dahil olmak üzere tüm SaaS aboneliklerinin bir listesini alabilir misiniz?
 
-Evet, tüm SaaS aboneliklerinin bir listesini içerdiği için [abonelikleri al LISTE API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#subscription-api) 'sini çağırdığınızda. Her bir SaaS aboneliğine yönelik yanıttaki durum alanı, aboneliğin etkin veya aboneliği kaldırma olduğunu yakalar.
+Evet, tüm SaaS aboneliklerinin bir listesini içerdiği için [abonelikleri al LISTE API](pc-saas-fulfillment-api-v2.md#subscription-apis) 'sini çağırdığınızda. Her bir SaaS aboneliğine yönelik yanıttaki durum alanı, aboneliğin etkin veya aboneliği kaldırma olduğunu yakalar.
 
 ### <a name="are-the-start-and-end-dates-of-saas-subscription-term-and-overage-usage-emission-connected"></a>SaaS Abonelik döneminin başlangıç ve bitiş tarihleri ve fazla kullanım kullanımı emismidir?
 

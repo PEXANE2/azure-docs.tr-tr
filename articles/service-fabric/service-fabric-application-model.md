@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama modeli
 description: Uygulama ve hizmet bildirim dosyalarını kullanarak Azure Service Fabric uygulamaları ve Hizmetleri modelleme ve açıklama.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75551888"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963742"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Service Fabric bir uygulama modelleme
 Bu makalede, Azure Service Fabric uygulama modeline genel bir bakış ve bildirim dosyaları aracılığıyla bir uygulama ve hizmetin tanımlanması sunulmaktadır.
@@ -20,9 +20,9 @@ Uygulama, belirli bir işlevi veya işlevleri gerçekleştiren bir Bileşen Hizm
 
 Uygulama türü, bir uygulamanın kategorileştirdayalıdır ve bir hizmet türü paketinden oluşur. Hizmet türü bir hizmetin kategorileştirsahiptir. Kategori farklı ayarlara ve yapılandırmalara sahip olabilir, ancak çekirdek işlevsellik aynı kalır. Bir hizmetin örnekleri aynı hizmet türünün farklı hizmet yapılandırması çeşitlemelerdir.  
 
-Uygulama ve hizmetlerin sınıfları (veya "türleri"), XML dosyaları (uygulama bildirimleri ve hizmet bildirimleri) aracılığıyla açıklanır.  Bildirimler, uygulamaları ve Hizmetleri anlatmaktadır ve kümenin görüntü deposundan hangi uygulamaların örneklenebilir şablonlardır.  Bildirimler, [uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)ayrıntılı olarak ele alınmıştır. ServiceManifest. xml ve ApplicationManifest. xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir. XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
+Uygulama ve hizmetlerin sınıfları (veya "türleri"), XML dosyaları (uygulama bildirimleri ve hizmet bildirimleri) aracılığıyla açıklanır.  Bildirimler, uygulamaları ve Hizmetleri anlatmaktadır ve kümenin görüntü deposundan hangi uygulamaların örneklenebilir şablonlardır.  Bildirimler, [uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)ayrıntılı olarak ele alınmıştır. ServiceManifest.xml ve ApplicationManifest.xml dosyası için şema tanımı, Service Fabric SDK 'Sı ve *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*araçları ile birlikte yüklenir. XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
 
-Farklı uygulama örneklerinin kodu, aynı Service Fabric düğümü tarafından barındırıldığında bile ayrı süreçler olarak çalışır. Ayrıca, her bir uygulama örneğinin yaşam döngüsü bağımsız olarak yönetilebilir (örneğin, yükseltilebilir). Aşağıdaki diyagramda, uygulama türlerinin hizmet türlerinden nasıl oluşturulduğu gösterilir. Bu, sırasıyla kod, yapılandırma ve veri paketlerinden oluşur. Diyagramı basitleştirmek için, yalnızca için `ServiceType4` kod/yapılandırma/veri paketleri gösterilir, ancak her hizmet türü bu paket türlerini içerebilir.
+Farklı uygulama örneklerinin kodu, aynı Service Fabric düğümü tarafından barındırıldığında bile ayrı süreçler olarak çalışır. Ayrıca, her bir uygulama örneğinin yaşam döngüsü bağımsız olarak yönetilebilir (örneğin, yükseltilebilir). Aşağıdaki diyagramda, uygulama türlerinin hizmet türlerinden nasıl oluşturulduğu gösterilir. Bu, sırasıyla kod, yapılandırma ve veri paketlerinden oluşur. Diyagramı basitleştirmek için, yalnızca için kod/yapılandırma/veri paketleri `ServiceType4` gösterilir, ancak her hizmet türü bu paket türlerini içerebilir.
 
 ![Uygulama türlerini ve hizmet türlerini Service Fabric][cluster-imagestore-apptypes]
 
@@ -33,7 +33,7 @@ Aşağıdaki diyagramda uygulamalar ve hizmet örnekleri, bölümler ve çoğalt
 ![Bir hizmet içindeki bölümler ve çoğaltmalar][cluster-application-instances]
 
 > [!TIP]
-> Http://&lt;yourclusteraddress&gt;: 19080/Explorer adresinde bulunan Service Fabric Explorer aracını kullanarak bir kümedeki uygulamaların yerleşimini görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Service Fabric Explorer kümeniz görselleştirme](service-fabric-visualizing-your-cluster.md).
+> Http:// &lt; yourclusteraddress &gt; : 19080/Explorer adresinde bulunan Service Fabric Explorer aracını kullanarak bir kümedeki uygulamaların yerleşimini görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Service Fabric Explorer kümeniz görselleştirme](service-fabric-visualizing-your-cluster.md).
 > 
 > 
 

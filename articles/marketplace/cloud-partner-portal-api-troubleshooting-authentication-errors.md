@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: ffabfe55ee01adc08414d04f8c82a1daca4d9f95
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 7684e097118fce4dcd471257ec0d9d476ce342be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516378"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964932"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>Yaygın kimlik doğrulama hatalarında sorun giderme
 
@@ -23,7 +23,7 @@ Bu makalede, Bulut İş Ortağı Portalı API 'Leri kullanılırken ortak kimlik
 
 ## <a name="unauthorized-error"></a>Yetkisiz hata
 
-Sürekli `401 unauthorized` olarak hata alırsanız, geçerli bir erişim belirteciniz olduğunu doğrulayın.  Daha önce yapmadıysanız, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümünde açıklandığı gibi temel bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturun. Daha sonra, erişimi doğrulamak için uygulamayı veya basit bir HTTP POST isteğini kullanın.  Aşağıdaki görüntüde gösterildiği gibi, erişim belirtecini almak için kiracı KIMLIĞI, uygulama KIMLIĞI, nesne KIMLIĞI ve gizli anahtarı dahil edersiniz:
+Sürekli `401 unauthorized` olarak hata alırsanız, geçerli bir erişim belirteciniz olduğunu doğrulayın.  Daha önce yapmadıysanız, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](../active-directory/develop/howto-create-service-principal-portal.md)bölümünde açıklandığı gibi temel bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturun. Daha sonra, erişimi doğrulamak için uygulamayı veya basit bir HTTP POST isteğini kullanın.  Aşağıdaki görüntüde gösterildiği gibi, erişim belirtecini almak için kiracı KIMLIĞI, uygulama KIMLIĞI, nesne KIMLIĞI ve gizli anahtarı dahil edersiniz:
 
 ![401 hatası sorunlarını giderme](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 

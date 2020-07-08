@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804597"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964524"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>PostgreSQL için Azure veritabanı – Hyperscale (Citus) yapılandırma seçenekleri
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804597"
  
 İşlem ve depolama ayarlarını, çalışan düğümleri ve bir hiper ölçek (Citus) sunucu grubundaki düzenleyici düğümü için bağımsız olarak seçebilirsiniz.  İşlem kaynakları, temel alınan donanımın mantıksal CPU 'sunu temsil eden sanal çekirdekler olarak sağlanır. Sağlama için depolama boyutu, Hiperscale (Citus) sunucu grubunuzdaki düzenleyici ve çalışan düğümlerinin kullanabildiği kapasiteyi ifade eder. Depolama veritabanı dosyalarını, geçici dosyaları, işlem günlüklerini ve Postgres sunucu günlüklerini içerir.
  
-|                       | Çalışan düğümü           | Düzenleyici düğümü      |
+| Kaynak              | Çalışan düğümü           | Düzenleyici düğümü      |
 |-----------------------|-----------------------|-----------------------|
 | İşlem, sanal çekirdekler       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | VCore başına bellek, GiB | 8                     | 4                     |
@@ -73,7 +73,7 @@ Tüm Hiperscale (Citus) kümesi için, toplanan ıOPS aşağıdaki değerlere g�
 ## <a name="regions"></a>Bölgeler
 Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanılabilir:
 
-* Kuzey ve Güney Amerika: 
+* Kuzey
     * Orta Kanada
     * Orta ABD
     * Doğu ABD
@@ -91,6 +91,33 @@ Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanı
     * Batı Avrupa
 
 Bu bölgelerden bazıları başlangıçta tüm Azure aboneliklerinde etkinleştirilmemiş olabilir. Yukarıdaki listeden bir bölge kullanmak ve bunu aboneliğinizde görmezseniz veya bu listede olmayan bir bölge kullanmak istiyorsanız, bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açın.
+
+## <a name="limits-and-limitations"></a>Sınırlar ve sınırlamalar
+
+Aşağıdaki bölümde, hiper ölçek (Citus) hizmetindeki kapasite ve işlevsel sınırlar açıklanmaktadır.
+
+### <a name="maximum-connections"></a>En fazla bağlantı sayısı
+
+Her PostgreSQL bağlantısı (hatta boş olanlar) en az 10 MB bellek kullanır, bu nedenle eşzamanlı bağlantıların sınırlandırması önemlidir. Düğümlerin sağlıklı kalmasını sağlamak için seçtiğimiz sınırlar şunlardır:
+
+* Düzenleyici düğümü
+   * En fazla bağlantı: 300
+   * En fazla kullanıcı bağlantısı: 297
+* Çalışan düğümü
+   * En fazla bağlantı: 600
+   * En fazla kullanıcı bağlantısı: 597
+
+Bu limitlerin ötesine bağlanma denemeleri hata vererek başarısız olur. Sistem, izleme düğümleri için üç bağlantı ayırır. bu nedenle, bağlantı toplamı, Kullanıcı sorguları için en az üç bağlantı mevcuttur.
+
+Yeni bağlantıların kurulması zaman alır. Bu, çok sayıda kısa süreli bağlantı isteyen birçok uygulama için geçerlidir. Boştaki işlemleri azaltmak ve var olan bağlantıları yeniden kullanmak için hem bağlantı havuzlayıcı kullanılması önerilir. Daha fazla bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)ziyaret edin.
+
+### <a name="storage-scaling"></a>Depolama Ölçeklendirmesi
+
+Düzenleyici ve çalışan düğümlerinde depolamanın ölçeği ölçeklendirilebilir (artırılabilir), ancak ölçeği azalabilir (azaltılmış).
+
+### <a name="storage-size"></a>Depolama boyutu
+
+Koordinatör ve çalışan düğümlerinde en fazla 2 TiB depolama desteklenir. Düğüm ve küme boyutları için [Yukarıdaki](#compute-and-storage) kullanılabilir depolama SEÇENEKLERINE ve IOPS hesaplamasına bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/).

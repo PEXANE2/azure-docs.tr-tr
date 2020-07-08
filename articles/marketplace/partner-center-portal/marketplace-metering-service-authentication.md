@@ -7,19 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 0f8078c52945b52a27144c1f73ea4a136bf536d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783410"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963164"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
 Market ölçüm hizmeti iki kimlik doğrulama stratejisi destekler:
 
-* [Azure AD güvenlik belirteci](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Azure AD güvenlik belirteci](../../active-directory/develop/access-tokens.md)
+* [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Market ölçüm hizmetini kullanarak özel ölçümleri güvenli bir şekilde göndermek için farklı kimlik doğrulama stratejilerinin ne zaman ve nasıl kullanılacağını açıklayacağız.
 
@@ -38,7 +38,7 @@ Yönetilen uygulama planına sahip Azure uygulamaları için, aşağıdaki durum
 
 Uygulamanızı kaydettikten sonra programlı bir şekilde Azure AD güvenlik belirteci isteyebilirsiniz. Yayımcının bu belirteci kullanması ve bunu çözmek için bir istek yapması beklenmektedir.
 
-Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](../../active-directory/develop/access-tokens.md).
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Azure AD uygulaması 'nı temel alan bir belirteç alın
 
@@ -106,17 +106,17 @@ Bu yaklaşımın kullanılması, dağıtılan kaynak kimliğinin özel ölçüm 
 >[!Note]
 >Yayımcı, kullanımı yayan kaynakların kilitli olduğundan emin olmalıdır, bu nedenle değişiklik yapılmayacaktır.
 
-Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kaynak türleri içerebilir.  Farklı hizmetler için Yönetilen kimlikler kullanarak kimlik doğrulaması yapma hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources).
+Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kaynak türleri içerebilir.  Farklı hizmetler için Yönetilen kimlikler kullanarak kimlik doğrulaması yapma hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler kullanma](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources).
 
 Örneğin, bir Windows VM kullanarak kimlik doğrulamak için aşağıdaki adımları izleyin.
 
 1. Yönetilen kimliğin yöntemlerden birini kullanarak yapılandırıldığından emin olun:
-    * [Azure portal Kullanıcı arabirimi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure SDK’ları](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure portal Kullanıcı arabirimi](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Azure SDK’ları](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. Market ölçüm hizmeti uygulama KIMLIĞI ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) için sistem kimliğini, VM 'nın RDP 'sini kullanarak bir erişim belirteci alın, PowerShell konsolunu açın ve aşağıdaki komutu çalıştırın
 

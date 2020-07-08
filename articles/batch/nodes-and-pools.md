@@ -3,12 +3,12 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888361"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964051"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -80,7 +80,7 @@ Cloud Services dahilindeki çalışan rollerinde olduğu gibi bir *İşletim Sis
 
 ### <a name="node-agent-skus"></a>Düğüm Aracısı SKU 'Ları
 
-Havuz oluştururken VHD'nizin temel görüntüsünün işletim sistemine bağlı olarak uygun **nodeAgentSkuId** değerini seçmeniz gerekir. [Desteklenen düğüm Aracısı SKU 'Larını Listele](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) işlemini çağırarak, Işletim sistemi görüntüsü başvurularına kullanılabilir düğüm Aracısı SKU kimliklerinin eşlemesini alabilirsiniz.
+Havuz oluştururken VHD'nizin temel görüntüsünün işletim sistemine bağlı olarak uygun **nodeAgentSkuId** değerini seçmeniz gerekir. [Desteklenen düğüm Aracısı SKU 'Larını Listele](/rest/api/batchservice/list-supported-node-agent-skus) işlemini çağırarak, Işletim sistemi görüntüsü başvurularına kullanılabilir düğüm Aracısı SKU kimliklerinin eşlemesini alabilirsiniz.
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Sanal Makine havuzları için özel görüntüler
 
@@ -129,7 +129,7 @@ Bir [otomatik ölçeklendirme formülü](batch-automatic-scaling.md#automatic-sc
 - **Kaynak ölçümleri** CPU kullanımı, bant genişliği kullanımı, bellek kullanımı ve düğüm sayısını temel alır.
 - **Görev ölçümleri**; *Etkin* (kuyruğa alınmış) *Çalışıyor* veya *Tamamlandı* gibi görev durumlarını temel alır.
 
-Otomatik ölçeklendirme bir havuzdaki işlem düğümlerinin sayısını azalttığında, azaltma işlemi sırasında çalışan görevlerin nasıl ele alınacağını göz önünde bulundurmanız gerekir. Toplu Işlem buna uyum sağlamak için formüllerinize dahil ettiğiniz [*düğüm ayırmayı kaldırma seçeneğini*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) sağlar. Örneğin, çalışmakta olan görevlerin hemen durdurulacağını, ardından başka bir düğüm üzerinde yeniden kuyruğa alınacağını veya düğüm havuzdan kaldırılmadan önce bitmesine izin verileceğini belirtebilirsiniz. Düğüm ayırmayı kaldırma seçeneğini olarak ayarlamanın `taskcompletion` veya `retaineddata` Tüm görevler tamamlanana kadar havuz yeniden boyutlandırma işlemlerini önlemesine veya sırasıyla tüm görev saklama dönemlerinin süresi dolmaya engel olacağını unutmayın.
+Otomatik ölçeklendirme bir havuzdaki işlem düğümlerinin sayısını azalttığında, azaltma işlemi sırasında çalışan görevlerin nasıl ele alınacağını göz önünde bulundurmanız gerekir. Toplu Işlem buna uyum sağlamak için formüllerinize dahil ettiğiniz [*düğüm ayırmayı kaldırma seçeneğini*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) sağlar. Örneğin, çalışmakta olan görevlerin hemen durdurulacağını, ardından başka bir düğüm üzerinde yeniden kuyruğa alınacağını veya düğüm havuzdan kaldırılmadan önce bitmesine izin verileceğini belirtebilirsiniz. Düğüm ayırmayı kaldırma seçeneğini olarak ayarlamanın `taskcompletion` veya `retaineddata` Tüm görevler tamamlanana kadar havuz yeniden boyutlandırma işlemlerini önlemesine veya sırasıyla tüm görev saklama dönemlerinin süresi dolmaya engel olacağını unutmayın.
 
 Bir uygulamayı otomatik olarak ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure Batch havuzunda işlem düğümlerini otomatik olarak ölçeklendirme](batch-automatic-scaling.md).
 
@@ -189,7 +189,7 @@ Birleşik yaklaşım genellikle bir değişkeni işlemek için kullanılır, anc
 
 [Azure Depolama hesabı](accounts.md#azure-storage-accounts) anahtarı gibi, görevler için hassas bilgileri şifrelerken ya da bunların şifrelerini çözerken genelde sertifikalar kullanmanız gerekir. Bunu desteklemek için düğümlere sertifikalar yükleyebilirsiniz. Şifrelenmiş parolalar komut satırı parametreleri aracılığıyla düğümlere geçirilir ya da görev kaynaklarından birine eklenir ve yüklü sertifikalar bunların şifrelerini çözmek için kullanılabilir.
 
-Batch hesabına bir sertifika eklemek için [Sertifika ekle](https://docs.microsoft.com/rest/api/batchservice/certificate/add) işlemini (Batch REST) ya da [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) yöntemini (Batch .NET) kullanırsınız. Sonra sertifikayı yeni ya da mevcut bir havuzla ilişkilendirebilirsiniz.
+Batch hesabına bir sertifika eklemek için [Sertifika ekle](/rest/api/batchservice/certificate/add) işlemini (Batch REST) ya da [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) yöntemini (Batch .NET) kullanırsınız. Sonra sertifikayı yeni ya da mevcut bir havuzla ilişkilendirebilirsiniz.
 
 Sertifika bir havuzla ilişkilendirildiğinde, Batch hizmeti havuzdaki her düğüme sertifikayı yükler. Batch hizmeti, düğüm başlatıldığında uygun sertifikaları ( [Başlangıç görevi](jobs-and-tasks.md#start-task) ve [İş Yöneticisi görevi](jobs-and-tasks.md#job-manager-task)dahil) başlatmadan önce yüklenir.
 

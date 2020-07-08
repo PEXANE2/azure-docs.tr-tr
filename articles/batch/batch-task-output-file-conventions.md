@@ -4,12 +4,12 @@ description: Batch görevinin & iş çıktısını Azure depolama 'ya kalıcı h
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726341"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965204"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET için batch dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'ya kalıcı hale getirme
 
@@ -153,7 +153,7 @@ using (ITrackedSaveOperation stdout =
 
 Açıklamalı bölüm, `Code to process data and produce output file(s)` görevin normalde gerçekleştirdiği kod için bir yer tutucudur. Örneğin, Azure depolama 'dan verileri indiren ve üzerinde dönüştürme veya hesaplama gerçekleştiren bir kodunuz olabilir. Bu kod parçacığının önemli bölümü, bir `using` dosyayı [Savetrackedadsync][net_savetrackedasync]ile düzenli aralıklarla güncelleştirmek için bir blokta bu tür kodları nasıl kaydırabileceğinizi gösterir.
 
-Düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. `Task.Delay` `using` Düğüm aracısının, düğüm üzerindeki stdout. txt dosyasına standart içeriği Temizleme zamanına sahip olduğundan emin olmak için bu bloğun sonunda çağrı gereklidir. Bu gecikme olmadan çıktının son birkaç saniyesini kaçırmak mümkündür. Bu gecikme tüm dosyalar için gerekli olmayabilir.
+Düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. `Task.Delay` `using` Düğüm aracısının, düğümdeki stdout.txt dosyasına standart içeriğini temizleme zamanı olduğundan emin olmak için bu bloğun sonunda çağrı gereklidir. Bu gecikme olmadan çıktının son birkaç saniyesini kaçırmak mümkündür. Bu gecikme tüm dosyalar için gerekli olmayabilir.
 
 > [!NOTE]
 > Dosya izlemeyi **Savetrackedadsync**ile etkinleştirdiğinizde, yalnızca izlenen dosyaya *ekler* Azure Storage 'da kalıcı hale getirilir. Bu yöntemi yalnızca, geri dönüş olmayan günlük dosyalarını veya dosyanın sonuna ekleme işlemleri ile öğesine yazılan diğer dosyaları izlemek için kullanın.
@@ -198,7 +198,7 @@ Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek iç
 [Persistoutkoyar][github_persistoutputs] örnek proje, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya kalıcı hale getirmek için Azure Batch dosya kuralları kitaplığının nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Projeyi **Visual Studio 2019**' de açın.
-2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.
+2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft.Azure.Batch. Samples. Common projesindeki **accountsettings. Settings** ' e ekleyin.
 3. Çözümü **oluşturun** (ancak çalıştırmayın). İstenirse tüm NuGet paketlerini geri yükleyin.
 4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe`. Zip paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
 5. **Persistoutkoyar** projesini **başlatın** (çalıştırın).
@@ -208,7 +208,7 @@ Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek iç
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET için toplu Işlem dosya kuralları kitaplığını alın
 
-.NET için batch dosya kuralları kitaplığı, [NuGet][nuget_package]üzerinde kullanılabilir. Kitaplık [Cloudjob][net_cloudjob] ve [cloudtask][net_cloudtask] sınıflarını yeni yöntemlerle genişletir. Ayrıca, dosya kuralları kitaplığı için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) bakın.
+.NET için batch dosya kuralları kitaplığı, [NuGet][nuget_package]üzerinde kullanılabilir. Kitaplık [Cloudjob][net_cloudjob] ve [cloudtask][net_cloudtask] sınıflarını yeni yöntemlerle genişletir. Ayrıca, dosya kuralları kitaplığı için [başvuru belgelerine](/dotnet/api/microsoft.azure.batch.conventions.files) bakın.
 
 Dosya kuralları Kitaplığı [kaynak kodu][github_file_conventions] , .NET için Microsoft Azure SDK deposundaki GitHub 'da kullanılabilir. 
 
@@ -222,20 +222,20 @@ Dosya kuralları Kitaplığı [kaynak kodu][github_file_conventions] , .NET içi
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

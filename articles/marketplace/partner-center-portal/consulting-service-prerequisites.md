@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: mingshen
-ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 42bf538ebb78b6b0786a985ed6a32a312db44992
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996369"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964405"
 ---
 # <a name="consulting-service-prerequisites"></a>Danışmanlık hizmeti önkoşulları
 
-Danışmanlık hizmeti teklifi hakkında daha fazla bilgi için, bu teklif türüne yönelik gereksinimler de dahil olmak üzere [Microsoft AppSource ve Azure Market Için danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)bölümüne bakın. Aşağıdaki tabloda, belirli danışmanlık hizmeti türleri için ek gereksinimler gösterilmektedir.
+Danışmanlık hizmeti teklifi hakkında daha fazla bilgi için, bu teklif türüne yönelik gereksinimler de dahil olmak üzere [Microsoft AppSource ve Azure Market Için danışmanlık hizmetleri](../consulting-services.md)bölümüne bakın. Aşağıdaki tabloda, belirli danışmanlık hizmeti türleri için ek gereksinimler gösterilmektedir.
 
 | Danışmanlık hizmeti konusu | Iş Ortağı Merkezi 'nde seçilecek birincil ürün | Gereksinim |
 |---------|---------|---------|

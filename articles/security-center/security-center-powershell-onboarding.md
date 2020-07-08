@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ca5cdcb0410d52f40e28c66a839bddcb34cc8a8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435489"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963368"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik olarak ekleme
 
@@ -45,54 +45,55 @@ Bu örnekte, KIMLIĞI: d07c0080-170c-4c24-861d-9c817742786c olan bir abonelikte 
 
 Güvenlik Merkezi cmdlet 'lerini çalıştırmadan önce Bu adımlar gerçekleştirilmelidir:
 
-1.  PowerShell 'i yönetici olarak çalıştırın.
-2.  PowerShell 'de aşağıdaki komutları çalıştırın:
+1. PowerShell 'i yönetici olarak çalıştırın.
+
+1. PowerShell 'de aşağıdaki komutları çalıştırın:
       
-        Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Install-Module -Name Az.Security -Force
+    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+
+    ```Install-Module -Name Az.Security -Force```
 
 ## <a name="onboard-security-center-using-powershell"></a>PowerShell kullanarak güvenlik merkezi 'ni ekleme
 
-1.  Aboneliklerinizi Güvenlik Merkezi kaynak sağlayıcısına kaydedin:
+1. Aboneliklerinizi Güvenlik Merkezi kaynak sağlayıcısına kaydedin:
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-2.  İsteğe bağlı: aboneliklerin kapsam düzeyini (Fiyatlandırma Katmanı) ayarlayın (tanımlı değilse, fiyatlandırma katmanı boş olarak ayarlanır):
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+1. İsteğe bağlı: aboneliklerin kapsam düzeyini (Fiyatlandırma Katmanı) ayarlayın (tanımlı değilse, fiyatlandırma katmanı boş olarak ayarlanır):
 
-3.  Aracıların rapor alacak bir Log Analytics çalışma alanı yapılandırın. Zaten oluşturduğunuz bir Log Analytics çalışma alanınızın olması gerekir, aboneliğin VM 'lerinin rapor alınacaktır. Aynı çalışma alanına raporlamak için birden çok abonelik tanımlayabilirsiniz. Tanımlı değilse, varsayılan çalışma alanı kullanılacaktır.
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
-        "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
 
-4.  Log Analytics aracısını Azure VM 'lerinize otomatik sağlama:
+1. Aracıların rapor alacak bir Log Analytics çalışma alanı yapılandırın. Zaten oluşturduğunuz bir Log Analytics çalışma alanınızın olması gerekir, aboneliğin VM 'lerinin rapor alınacaktır. Aynı çalışma alanına raporlamak için birden çok abonelik tanımlayabilirsiniz. Tanımlı değilse, varsayılan çalışma alanı kullanılacaktır.
+
+    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+
+1. Log Analytics aracısını Azure VM 'lerinize otomatik sağlama:
     
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
-        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
 
     > [!NOTE]
     > Azure sanal makinelerinizin Azure Güvenlik Merkezi tarafından otomatik olarak korunduğundan emin olmak için otomatik sağlamayı etkinleştirmeniz önerilir.
     >
 
-5.  İsteğe bağlı: seçtiğiniz abonelikler için güvenlik iletişim ayrıntılarını tanımlamanız önerilir ve bu, Güvenlik Merkezi tarafından oluşturulan uyarıların ve bildirimlerin alıcıları olarak kullanılacaktır:
+1. İsteğe bağlı: seçtiğiniz abonelikler için güvenlik iletişim ayrıntılarını tanımlamanız önerilir ve bu, Güvenlik Merkezi tarafından oluşturulan uyarıların ve bildirimlerin alıcıları olarak kullanılacaktır:
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
 
-6.  Varsayılan güvenlik merkezi ilkesi girişim atamasını yapın:
+1. Varsayılan güvenlik merkezi ilkesi girişim atamasını yapın:
 
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-Artık Azure Güvenlik Merkezi 'Ni PowerShell ile başarıyla eklendi!
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+
+Azure Güvenlik Merkezi 'Ni PowerShell ile başarıyla eklendi.
 
 Artık bu PowerShell cmdlet 'lerini, abonelikler ve kaynaklar arasında programlı bir şekilde yinelemek için Otomasyon betikleriyle kullanabilirsiniz. Bu, zamandan tasarruf eder ve insan hatası olasılığını azaltır. Bu [örnek betiği](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) başvuru olarak kullanabilirsiniz.
-
-
 
 
 
@@ -100,7 +101,7 @@ Artık bu PowerShell cmdlet 'lerini, abonelikler ve kaynaklar arasında programl
 ## <a name="see-also"></a>Ayrıca bkz.
 Güvenlik Merkezi 'ne ekleme işlemini otomatikleştirmek için PowerShell 'i nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
-* [Az. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [Az. Security](https://docs.microsoft.com/powershell/module/az.security)
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 

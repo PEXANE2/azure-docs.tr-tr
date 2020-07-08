@@ -3,18 +3,18 @@ title: Batch hizmeti iş akışı ve kaynakları
 description: Batch hizmetinin özellikleri ve bir geliştirme açısından üst düzey iş akışı hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835929"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965221"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch hizmeti iş akışı ve kaynakları
 
 Azure Batch hizmetinin temel bileşenlerine ilişkin bu genel bakışta, Batch geliştiricilerinin büyük ölçekli paralel işlem çözümleri oluşturmak için kullandığı üst düzey iş akışını ve kullanılan birincil hizmet kaynaklarını tartıştık.
 
-Dağıtılmış bir Işlem uygulaması veya doğrudan [REST API](https://docs.microsoft.com/rest/api/batchservice/) çağrıları veren bir hizmet geliştirirken ya da [Batch SDK](batch-apis-tools.md#batch-service-apis)'larından başka birini kullanıyorsanız, burada ele alınan kaynak ve özelliklerin birçoğunu kullanırsınız.
+Dağıtılmış bir Işlem uygulaması veya doğrudan [REST API](/rest/api/batchservice/) çağrıları veren bir hizmet geliştirirken ya da [Batch SDK](batch-apis-tools.md#batch-service-apis)'larından başka birini kullanıyorsanız, burada ele alınan kaynak ve özelliklerin birçoğunu kullanırsınız.
 
 > [!TIP]
 > Batch hizmetine daha yüksek düzeyde bir giriş için bkz. [Azure Batch temel bilgileri](batch-technical-overview.md). Ayrıca en son [Toplu İşlem hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=batch)’ne bakın.
@@ -47,4 +47,4 @@ Aşağıdaki konularda, dağıtılmış hesaplama senaryolarınızı etkinleşti
 - Batch çözümleri oluşturmak için kullanılabilen [Batch API’leri ve araçları](batch-apis-tools.md) hakkında bilgi alın.
 - [Batch .NET istemci kitaplığı](quick-run-dotnet.md) veya [Python](quick-run-python.md) kullanarak Batch özellikli bir uygulama geliştirmenin temellerini öğrenin. Bu hızlı başlangıçlar, bir iş yükünü birden fazla işlem düğümünde yürütmek üzere Batch hizmetini kullanan örnek uygulamalar konusunda size rehberlik sağlamanın yanı sıra, iş yükü dosyası hazırlama ve alma işlemleri için Azure Depolama kullanma ile ilgili bilgiler de içerir.
 - Batch çözümlerinizi geliştirirken kullanmak üzere [Batch Explorer](https://azure.github.io/BatchExplorer/) uygulamasını indirin ve yükleyin. Batch Explorer; Azure uygulamalarıyla ilgili oluşturma, hata ayıklama ve izleme işlemlerinde yardımcı olabilir.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [Batch community deposunun](https://github.com/Azure/Batch)ve [Azure Batch forumunu](https://docs.microsoft.com/answers/topics/azure-batch.html)içeren topluluk kaynaklarına bakın.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [Batch community deposunun](https://github.com/Azure/Batch)ve [Azure Batch forumunu](/answers/topics/azure-batch.html)içeren topluluk kaynaklarına bakın.

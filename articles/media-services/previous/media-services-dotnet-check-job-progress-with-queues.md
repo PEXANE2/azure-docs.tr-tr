@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "64868096"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962688"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure kuyruk depolamayı kullanma 
 
@@ -34,7 +34,7 @@ Media Services bildirimleri dinlemek için bir yaygın senaryo, bir kodlama işi
 
 Bu makalede, kuyruk depolamadaki bildirim iletilerinin nasıl alınacağı gösterilmektedir.  
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 Sıra depolamayı kullanan Media Services uygulamalar geliştirilirken aşağıdakileri göz önünde bulundurun:
 
 * Kuyruk depolama, ilk ilk çıkar (FıFO) sıralı teslimin garantisi sağlamaz. Daha fazla bilgi için bkz. [Azure kuyrukları ve Azure Service Bus kuyrukları karşılaştırması ve](https://msdn.microsoft.com/library/azure/hh767287.aspx)benzerlikler.
@@ -47,13 +47,16 @@ Sıra depolamayı kullanan Media Services uygulamalar geliştirilirken aşağıd
 Bu bölümdeki kod örneği şunları yapar:
 
 1. Bildirim iletisi biçimiyle eşlenen **EncodingJobMessage** sınıfını tanımlar. Kod, kuyruktan alınan iletileri **EncodingJobMessage** türünün nesnelerine serileştirir.
-2. App. config dosyasından Media Services ve depolama hesabı bilgilerini yükler. Kod örneği, **Cloudmediacontext** ve **cloudqueue** nesnelerini oluşturmak için bu bilgileri kullanır.
+2. app.config dosyasından Media Services ve depolama hesabı bilgilerini yükler. Kod örneği, **Cloudmediacontext** ve **cloudqueue** nesnelerini oluşturmak için bu bilgileri kullanır.
 3. Kodlama işiyle ilgili bildirim iletilerini alan kuyruğu oluşturur.
 4. Kuyrukla eşlenen bildirim uç noktasını oluşturur.
 5. Bildirim uç noktasını işe iliştirir ve kodlama işini gönderir. Bir işe eklenmiş birden fazla bildirim uç noktası olabilir.
 6. **Notificationjobstate. FinalStatesOnly** öğesini **AddNew** yöntemine geçirir. (Bu örnekte, yalnızca iş işlemenin son durumlarıyla ilgileniyoruz.)
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. **Notificationjobstate. All**geçirirseniz, şu durum değişikliği bildirimlerinin tümünü alırsınız: sıraya alınmış, zamanlanmış, işleme ve bitti. Ancak, daha önce belirtildiği gibi, kuyruk depolaması sipariş teslimini garanti etmez. İletileri sıralamak için, **zaman damgası** özelliğini kullanın (aşağıdaki örnekte **EncodingJobMessage** türünde tanımlanmıştır). Yinelenen iletiler mümkündür. Yinelemeleri denetlemek için **ETag özelliğini** kullanın ( **EncodingJobMessage** türü üzerinde tanımlanmıştır). Bazı durum değişikliği bildirimlerinin atlanması da mümkündür.
 8. Her 10 saniyede bir kuyruğu denetleyerek işin tamamlanmış duruma gelmesini bekler. İşlendikten sonra iletileri siler.
 9. Kuyruğu ve bildirim uç noktasını siler.
@@ -344,36 +347,37 @@ namespace JobNotification
 
 Yukarıdaki örnek aşağıdaki çıktıyı üretti: değerlerinizin farklılık göstermesi gerekir.
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>Sonraki adım
 Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

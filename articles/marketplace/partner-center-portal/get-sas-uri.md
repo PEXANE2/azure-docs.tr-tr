@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725882"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964677"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
 
@@ -124,6 +124,6 @@ Aşağıdakileri doğrulamak için aşağıdaki denetim listesini kullanarak olu
 
 ## <a name="next-step"></a>Sonraki adım
 
-SAS URI 'SI oluşturma zorluklarına sahipseniz bkz. [genel SAS URL 'si sorunları](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues). Aksi takdirde, SAS URI 'leri daha sonra kullanmak üzere güvenli bir konuma kaydedin. VM teklifinizi Iş Ortağı Merkezi 'nde yayımlamak için ihtiyacınız olacak.
+SAS URI 'SI oluşturma zorluklarına sahipseniz bkz. [genel SAS URL 'si sorunları](common-sas-uri-issues.md). Aksi takdirde, SAS URI 'leri daha sonra kullanmak üzere güvenli bir konuma kaydedin. VM teklifinizi Iş Ortağı Merkezi 'nde yayımlamak için ihtiyacınız olacak.
 
-* [Azure Sanal Makine teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Azure sanal makine teklifi oluşturma](azure-vm-create-offer.md)

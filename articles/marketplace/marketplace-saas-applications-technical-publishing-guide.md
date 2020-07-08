@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657815"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963844"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulaması teklifi yayımlama kılavuzu
 
@@ -28,9 +28,9 @@ SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  H
 
 | SaaS uygulamaları teklifi | İş gereksinimleri | Teknik gereksinimler |  
 | --- | --- | --- |  
-| **Bize Ulaşın** | Yes | Hayır |  
-| **Power BI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
-| **SaaS uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
+| **Bizimle iletişime geçin** | Evet | Hayır |  
+| **Power BI/Dynamics** | Evet | Evet (Azure AD tümleştirmesi) |  
+| **SaaS uygulamaları**| Evet | Evet (Azure AD tümleştirmesi) |     
 
 ## <a name="saas-list"></a>SaaS listesi
 
@@ -62,11 +62,9 @@ Başlamak için, Azure Market yayımlaması için adanmış bir aboneliğiniz ol
 
 En iyi Azure Active Directory belge, örnek ve kılavuz aşağıdaki sitelerde bulunur: 
 
-* [Geliştirici Kılavuzu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Geliştirici Kılavuzu Azure Active Directory](../active-directory/develop/index.yml)
 
-* [Azure Active Directory ile tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
-
-* [Uygulamaları Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [Azure Active Directory ile tümleştirme](../active-directory/develop/active-directory-how-to-integrate.md)
 
 * [Azure yol haritası-güvenlik ve kimlik](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -90,7 +88,7 @@ Ayrıca, Azure Active Directory hizmet güncelleştirmelerini denetlemek için b
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Denemeleri etkinleştirmek için Azure Active Directory kullanma  
 
-Microsoft, tüm Market kullanıcılarının kimliğini Azure AD ile doğrular. bu nedenle, kimliği doğrulanmış bir Kullanıcı Market 'teki deneme listesini tıklatır ve deneme ortamınıza yeniden yönlendiriliyorsa, ek bir oturum açma adımı gerekmeden kullanıcıyı doğrudan bir denemeye sağlayabilirsiniz. Kimlik doğrulama sırasında uygulamanızın Azure AD 'den aldığı belirteç, uygulamanızda bir kullanıcı hesabı oluşturmak için kullanabileceğiniz değerli Kullanıcı bilgilerini, sağlama deneyimini otomatikleştirmenizi ve dönüştürme olasılığını artırmanızı sağlar. Belirteç hakkında daha fazla bilgi için bkz. [örnek belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft, tüm Market kullanıcılarının kimliğini Azure AD ile doğrular. bu nedenle, kimliği doğrulanmış bir Kullanıcı Market 'teki deneme listesini tıklatır ve deneme ortamınıza yeniden yönlendiriliyorsa, ek bir oturum açma adımı gerekmeden kullanıcıyı doğrudan bir denemeye sağlayabilirsiniz. Kimlik doğrulama sırasında uygulamanızın Azure AD 'den aldığı belirteç, uygulamanızda bir kullanıcı hesabı oluşturmak için kullanabileceğiniz değerli Kullanıcı bilgilerini, sağlama deneyimini otomatikleştirmenizi ve dönüştürme olasılığını artırmanızı sağlar. Belirteç hakkında daha fazla bilgi için bkz. [örnek belirteçleri](../active-directory/develop/active-directory-token-and-claims.md) .
 
 1 ' i etkinleştirmek için Azure AD kullanma-uygulamanıza kimlik doğrulaması veya deneme sürümü şunları yapar:  
 * Müşteri deneyimini Market 'ten deneme sürümüne kadar kolaylaştırın.  
@@ -106,15 +104,15 @@ Uygulamanızın tek kiracılı veya çok kiracılı olmasına ve Azure AD Federa
 
 Zaten Azure AD 'yi destekliyorsa şunları yapın:
 1.    Uygulamanızı Azure portal kaydetme
-2.    ' Tek tıklamayla ' deneme deneyimi almak için Azure AD 'de çok kiracılı destek özelliğini etkinleştirin. Daha ayrıntılı bilgi [burada](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bulunabilir.  
+2.    ' Tek tıklamayla ' deneme deneyimi almak için Azure AD 'de çok kiracılı destek özelliğini etkinleştirin. Daha ayrıntılı bilgi [burada](../active-directory/develop/active-directory-integrating-applications.md)bulunabilir.  
 
 Azure AD Federasyon SSO 'yu yeni kullanıyorsanız şunları yapın: 
 1.  Uygulamanızı Azure portal kaydetme
-2.  [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) veya [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)kullanarak Azure AD ile SSO geliştirin.
-3.  AAD 'de çok kiracılı destek özelliğini etkinleştirme ' tek tıklamayla ' deneme deneyimini almak için [burada](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)daha fazla bilgi bulabilirsiniz.  
+2.  [OpenID Connect](../active-directory/develop/active-directory-protocols-openid-connect-code.md) veya [OAuth 2,0](../active-directory/develop/active-directory-protocols-oauth-code.md)kullanarak Azure AD ile SSO geliştirin.
+3.  AAD 'de çok kiracılı destek özelliğini etkinleştirme ' tek tıklamayla ' deneme deneyimini almak için [burada](../active-directory/develop/active-directory-devhowto-appsource-certified.md)daha fazla bilgi bulabilirsiniz.  
 
 **Tek kiracılı uygulama için aşağıdaki seçeneklerden herhangi birini kullanın:**  
-* [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) kullanarak dizininize Konuk Kullanıcı olarak Kullanıcı ekleme
+* [Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) kullanarak dizininize Konuk Kullanıcı olarak Kullanıcı ekleme
 * ' Benimle Iletişim kurun ' kullanarak müşteriler için denemeleri el ile sağlayın
 * Müşteri başına ' test sürücüsü ' geliştirin
 * SSO ile çok kiracılı örnek Tanıtım uygulaması oluşturma

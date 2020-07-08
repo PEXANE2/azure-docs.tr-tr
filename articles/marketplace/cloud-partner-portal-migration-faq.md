@@ -1,156 +1,173 @@
 ---
-title: Iş Ortağı Merkezi 'ne geçişle ilgili sık sorulan sorular-Microsoft ticari Market
-description: Bulut İş Ortağı Portalı tekliflerini Iş ortağı merkezine geçirme hakkında sık sorulan soruların yanıtları.
+title: Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçme hakkında sık sorulan sorular-Microsoft ticari Market
+description: Bulut İş Ortağı Portalı tekliflerini Iş ortağı merkezine geçme hakkında sık sorulan soruların yanıtları.
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/29/2020
 ms.author: mingshen
-ms.openlocfilehash: c4fdde94ea703d194e2de27a8df429f62ea374f4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 349306a8bcdffda8511436540acde92129ff8662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727672"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964949"
 ---
-# <a name="common-questions-about-migrating-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçirme hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
-Bu makalede, Bulut İş Ortağı Portalı tekliflerinin Iş Ortağı Merkezi 'ne geçirilmesi hakkında sıkça sorulan sorular ele alınmaktadır.
+Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçti. İş Ortağı Merkezi, yeni teklifleri [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Market](https://azuremarketplace.microsoft.com/) 'te yayımlamak için ve bulut iş ortağı portalı geçirilmiş mevcut teklifleri yönetmek için kolaylaştırılmış ve tümleşik bir deneyim sunar. Bulut İş Ortağı Portalı tüm işlevleri Iş Ortağı Merkezi 'nde kullanılabilir. Bu makalede bunun hakkında sık sorulan sorular ele alınmaktadır.
 
-## <a name="what-does-offer-migration-mean"></a>Geçiş teklifi ne anlama geliyor?
+## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Iş Ortağı Merkezi 'ne geçiş benim için ne anlama geliyor?
 
-Teklif verilerini, teklif yayımlama ve yönetim deneyimindeki değişikliklerle Iş ortağı merkezine Bulut İş Ortağı Portalı taşıdık.
+İş Ortağı Merkezi 'nde her zamanki gibi iş yapmaya devam edebilirsiniz:
 
-| Alan  | Değişiklikler  |
-|-------|----------|
-| **Yayımlama ve teklif yönetimi deneyimi** | Iş Ortağı Merkezi 'nde sezgisel bir arabirim ile geliştirilmiş bir kullanıcı deneyimi görürsünüz. Daha fazla ayrıntı için bkz [. Iş ortağı merkezi ve bulut iş ortağı portalı arasındaki farklar nelerdir?](#what-are-the-differences-between-partner-center-and-the-cloud-partner-portal) |
-| **Market 'teki tekliflerinizin kullanılabilirliği** | Değişiklik yok. Teklifiniz Market 'te canlı ise, geçiş işlemi tamamlandıktan sonra ve sonrasında canlı olmaya devam edecektir. |
-| **Yeni satın almalar ve dağıtımlar** | Değişiklik yok. Müşterileriniz, kesintiler olmadan tekliflerinizi satın alıp dağıtmaya devam eder. |
-| **Ödemeler** | Geçiş sırasında veya sonrasında gerçekleşen tüm satın almalar ve dağıtımlar sizin için normal olarak ücretlendirilecektir. |
-|**Mevcut [bulut iş ortağı portalı API 'leri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ile API tümleştirmeleri** | Mevcut Bulut İş Ortağı Portalı API 'Leri geçişten sonra desteklenecek ve mevcut tümleştirmeleriniz çalışmaya devam edecektir. Daha fazla ayrıntı için [bulut iş ortağı PORTALı REST API 'lerinin geçiş sonrası desteklenecek mi?](#will-the-cloud-partner-portal-rest-apis-be-supported-post-migration) |
-| | |
+| Alan<img src="" width=200px> | Değişiklikler |
+| --- | --- |
+| Hesap | Yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez; Hesabınızı, kullanıcılarınızı, izinlerinizi ve faturanızı yönettiğiniz Iş Ortağı Merkezi 'Nde oturum açmak için mevcut Bulut İş Ortağı Portalı kimlik bilgilerinizi kullanabilirsiniz. Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza geçirilir, bu da tüm ödeme profili bilgileri, Kullanıcı hesapları ve izinleri ve etkin tekliflerdir. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](partner-center-portal/manage-account.md)hakkında daha fazla bilgi edinin. |
+| Teklif yayımlama ve teklif yönetimi deneyimi | Teklif verilerinizi Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Artık, gelişmiş bir kullanıcı deneyimi ve sezgisel arabirim sunan Iş Ortağı Merkezi 'nde tekliflerinizi erişirsiniz. [Ticari Market 'te mevcut bir teklifi güncelleştirmeyi](partner-center-portal/update-existing-offer.md)öğrenin. |
+| Ticari Market 'teki tekliflerinizin kullanılabilirliği | Değişiklik yok. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam edecektir. |
+| Yeni satın almalar ve dağıtımlar | Değişiklik yok. Müşterileriniz, kesintiler olmadan tekliflerinizi satın alıp dağıtmaya devam edebilir. |
+| Ödemeler | Tüm Satınalmalar ve dağıtımlar sizin için normal olarak ücretlendirilecektir. [Ticari Market 'te ücretli](partner-center-portal/get-paid.md)edinme hakkında daha fazla bilgi edinin. |
+| Mevcut [bulut iş ortağı portalı API 'leri](cloud-partner-portal-api-overview.md) ile API tümleştirmeleri | Mevcut Bulut İş Ortağı Portalı API 'Leri hala destekleniyor ve mevcut tümleştirmeleriniz hala çalışıyor. [Bulut iş ortağı PORTALı REST API 'lerinin desteklenecek](#are-the-cloud-partner-portal-rest-apis-still-supported) daha fazla bilgi |
+| Analiz | Iş Ortağı Merkezi 'nde analizler ' i görüntüleyerek satışları izlemeye, performansı değerlendirmeye ve ticari Market 'teki tekliflerinizi iyileştirmeye devam edebilirsiniz. [Iş Ortağı Merkezi 'nde ticari Market 'e ilişkin analitik raporlara](partner-center-portal/analytics.md)daha fazla bilgi edinin. |
+|||
 
-## <a name="can-i-still-access-the-cloud-partner-portal-and-manage-my-offers-during-migration"></a>Bulut İş Ortağı Portalı erişip geçiş sırasında tekliflerimi yönetebilirim miyim?
+## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>Iş Ortağı Merkezi 'nde tekliflerimi yönetmek için yeni bir hesap oluşturmak mı gerekiyor?
 
-Tüm teklifler Iş Ortağı Merkezi 'ne geçirildi. Her teklifin geçiş süresi 24 saatten az olmalıdır. Teklifiniz geçirildikten sonra bir e-posta bildirimi almış olmanız gerekir.
-
-Tekliflerinizi geçirdikten sonra, Bulut İş Ortağı Portalı **sınırlı bir süre için** salt okuma modunda olacaktır. Bu durumda "Iş Ortağı Merkezi 'ne taşınır" görüntülenir ve aşağıdaki ekran görüntülerinde gösterildiği gibi Iş Ortağı Merkezi 'nde teklifinizin bir bağlantısını içerir. Bu noktada, tüm tekliflerinizin güncelleştirmelerini yönetecek veya özel olarak Iş Ortağı Merkezi aracılığıyla yeni teklifler oluşturacaksınız.
-
-:::image type="content" source="media/migration-faq/all-offers-2.png" alt-text="Iş Ortağı Merkezi 'ne geçirilmiş teklifler için verilen iletiyi gösterir":::
-
-:::image type="content" source="media/migration-faq/offer-has-moved.png" alt-text="Geçirilmiş bir teklifin Bulut İş Ortağı Portalı sayfasını gösterir.":::
-
-## <a name="how-will-i-create-new-offers"></a>Yeni teklifleri nasıl oluşturabilirim?
-
-Bulut İş Ortağı Portalı, Iş Ortağı Merkezi 'nde yeni teklifler oluşturmaya yönlendirilirsiniz
-
-:::image type="content" source="media/migration-faq/create-new-offer-1.png" alt-text="Bulut İş Ortağı Portalı yeni teklif oluşturma menüsünü gösterir":::
-
-Yeni bir teklif seçtikten sonra, aşağıdaki gibi bir ileti görürsünüz.
-
-:::image type="content" source="media/migration-faq/create-new-offer-2.png" alt-text="CPP içinde yeni bir teklif oluşturulurken alınan iletiyi gösterir":::
-
-## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>Iş Ortağı Merkezi 'nde teklifleri yönetmek için yeni bir hesap oluşturmak mı gerekiyor?
-
-Hayır. Temel hesabınız korunacaktır ve Iş Ortağı Merkezi 'nde zaten yönetiyorsunuz. Yani, mevcut bir iş ortağıysanız, Iş ortağı merkezi geçiş sonrasında oturum açmak için mevcut Bulut İş Ortağı Portalı hesabı kimlik bilgilerinizi kullanabilirsiniz. Yalnızca teklifler ve ilişkili yönetim deneyimi Bulut İş Ortağı Portalı Iş ortağı merkezine taşınıyor. Tekliflerinizin yeni hesapla ilişkilendirilmeyeceği yeni hesap oluşturmayacağız.
-
-## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>Hesabımı etkinleştirmek için Bulut İş Ortağı Portalı bir ileti görüyorum, bu ne anlama geliyor?
-
-Hesabınızı Iş ortağı merkezine doğru bir şekilde geçirmek ve teklif geçişi tamamlandıktan sonra Iş Ortağı Merkezi 'nde tekliflerinizi yönetmenizi sağlamak için daha fazla ayrıntı yapmanız gerekir. Hesap etkinleştirme hakkında daha fazla bilgi için bkz. [bulut iş ortağı portalı 'Dan Iş ortağı merkezine hesap geçişi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
-
-Hesap etkinleştirmeyi tamamlaması için gereken adımlar, hesap rolünüze göre farklılık gösterir.
-
-| Hesap rolü | Etkinleştirme adımları |
-|--------------|----------------|
-|Sahip | Bulut İş Ortağı Portalı [Yayımcı profili](https://cloudpartner.azure.com/#profile) sayfasına gidin ve sonra etkinleştirmek için başlıktaki bağlantıya tıklayın. Hesap etkinleştirmeyi tamamlaması için Iş Ortağı Merkezi 'ne yönlendirilirsiniz. |
-| Katılımcı | Hesabı yalnızca sahip rolü olan bir Kullanıcı etkinleştirebilir. Hesap etkinleştirmeyi tamamlayacak hesap sahipleriyle iletişim kurun. Hesap sahiplerinizin başlık iletisinde listelenmesi gerekir. |
-| | |
-
-## <a name="im-having-trouble-logging-in-to-my-account-and-opening-a-support-ticket"></a>Hesabım 'da oturum açarken ve bir destek bileti açarken sorun yaşıyorum
-
-Hesabınızda oturum açamazsınız bir [destek bileti](https://partner.microsoft.com/support/v2/?stage=1)açabilirsiniz.
-
-## <a name="where-can-i-find-documentation-on-the-new-partner-center-publishing-experience"></a>Yeni Iş Ortağı Merkezi yayımlama deneyimiyle ilgili belgeleri nereden bulabilirim?
-
-[Ticari Market belgelerine](https://docs.microsoft.com/azure/marketplace/)gidin. Ardından, **iş ortağı merkezi 'nde ticari Market Portalı '** nı genişletin   >  , her bir teklif türünü oluşturmaya yönelik yardım konularını görmek için**Yeni bir teklif oluşturun** .
-
-:::image type="content" source="media/migration-faq/marketplace-help-topics.png" alt-text="Iş Ortağı Merkezi için yardım konularını gösterir":::
-
-### <a name="what-are-the-differences-between-partner-center-and-the-cloud-partner-portal"></a>Iş ortağı merkezi ve Bulut İş Ortağı Portalı arasındaki farklar nelerdir?
-
-Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasında aşağıdaki farklılıklar olduğunu fark edebilirsiniz.
-
-### <a name="modular-publishing-capabilities"></a>Modüler yayımlama özellikleri
-
-İş Ortağı Merkezi, tüm güncelleştirmeleri her zaman tek seferde yayımlamak yerine yayımlamak istediğiniz değişiklikleri seçmenizi sağlayan modüler bir yayımlama seçeneği sunar. Örneğin, aşağıdaki ekran görüntüsünde, **özelliklerin** ve **teklif listelemesi**için yapılan değişiklikler aşağıda verilmiştir.
-
-:::image type="content" source="media/migration-faq/review-and-publish-migration.png" alt-text="Önizleme ve yayımlama sayfasını gösterir":::
-
-Yayımlayacağınız güncelleştirmeler taslak olarak kaydedilir. Teklifinizi herkese açık hale getirmeden önce teklifinizin doğrulanması için size devam edin.
-
-### <a name="rich-text-format"></a>Zengin metin biçimi
-
-Teklif listesi ve plan listeleme sayfasında zengin metin Düzenleyicisi 'Ni kullanarak teklif ve plan açıklamanızı geliştirin.
-
-:::image type="content" source="media/migration-faq/rich-text-editor-migration.png" alt-text="Zengin metin düzenleyicisini gösterir":::
-
-### <a name="enhanced-preview-options"></a>Gelişmiş önizleme seçenekleri
-
-İş Ortağı Merkezi, Gelişmiş filtreleme seçenekleriyle bir [karşılaştırma özelliği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#compare-changes-to-marketplace-offers) içerir. Bu, teklifin önizleme ve canlı sürümleriyle karşılaştırmanıza olanak sağlar.
-
-:::image type="content" source="media/migration-faq/enhanced-preview.png" alt-text="Karşılaştırma özelliğini gösterir":::
-
-### <a name="branding-and-navigation-changes"></a>Marka ve gezinti değişiklikleri
-
-Bazı marka değişiklikleri olduğunu fark edeceksiniz. Örneğin, "SKU 'Lar" Iş Ortağı Merkezi 'nde "planlar" olarak markalı değildir.
-
-:::image type="content" source="media/migration-faq/plan-overview-migration.png" alt-text="Plana genel bakış gösterir.":::
-
-Ayrıca, Bulut İş Ortağı Portalı **Market** veya S**torefront Ayrıntılar** (danışmanlık hizmeti, Power BI uygulaması) sayfalarında sağladığınız bilgiler, Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır.
-
-:::image type="content" source="media/migration-faq/offer-listing-migration.png" alt-text="Teklif listesi sayfasını gösterir.":::
-
-Bulut İş Ortağı Portalı tek bir sayfada SKU 'Lar için sağlamak üzere kullandığınız bilgiler artık Iş Ortağı Merkezi 'nin çeşitli sayfalarında toplanabilir:
-
-* Plan ayarlama sayfası
-* Plan listeleme sayfası
-* Plan kullanılabilirlik sayfası
-* Bu ekran görüntüsünde gösterildiği gibi teknik yapılandırma planlayın sayfası.
-
-:::image type="content" source="media/migration-faq/tech-config-migration.png" alt-text="Teknik yapılandırma planı sayfasını gösterir.":::
-
-Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor.
-
-:::image type="content" source="media/migration-faq/offer-id-offer-overview.png" alt-text="Teklif KIMLIĞIYLE birlikte sol gezinti menüsünü gösterir.":::
-
-### <a name="stop-selling-an-offer"></a>Teklif satışı durdur
-
-Market 'teki bir teklifi doğrudan Iş Ortağı Merkezi portalından [satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) yönelik istek yapabilirsiniz. Bu seçenek, teklifiniz için **teklif genel bakış** sayfasında bulunur.
-
-:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="Satışı Durdur seçeneğinin bulunduğu teklif genel bakış sayfasını gösterir.":::
+Hayır, hesabınız korunacaktır. Yani, mevcut bir iş ortağıysanız, Iş Ortağı Merkezi 'nde oturum açmak için mevcut Bulut İş Ortağı Portalı hesabı kimlik bilgilerinizi kullanabilirsiniz. Yeni bir hesap veya Bulut İş Ortağı Portalı oluşturulan herhangi bir teklif oluşturmayın ve Iş Ortağı Merkezi 'ne taşınmayacağız.
 
 ## <a name="what-pages-in-partner-center-correspond-to-pages-i-used-in-the-cloud-partner-portal"></a>Iş Ortağı Merkezi 'ndeki sayfalar Bulut İş Ortağı Portalı kullandığım sayfalara karşılık geliyor?
 
-Aşağıdaki tabloda, iki Portal arasındaki karşılık gelen bağlantılar gösterilmektedir.
+Aşağıda, Bulut İş Ortağı Portalı yaygın olarak kullanılan sayfalar için Iş Ortağı Merkezi bağlantıları verilmiştir. Bulut İş Ortağı Portalı bağlantılarını yer işareti olarak kaydettiyseniz, bunları güncellemek isteyeceksiniz.
 
-| Sayfa | Bulut İş Ortağı Portalı bağlantısı | İş Ortağı Merkezi bağlantısı |
-|------|---------------------------|---------------------|
-| **Tüm teklifler sayfası** | https://cloudpartner.azure.com/#alloffers | https://partner.microsoft.com/dashboard/commercial-marketplace/overview |
-| **Tüm yayımcılar sayfası** | https://cloudpartner.azure.com/#publishers | https://partner.microsoft.com/dashboard/account/v3/publishers/list |
-| **Yayımcı profili** | https://cloudpartner.azure.com/#profile | https://partner.microsoft.com/dashboard/account/management |
-| **Kullanıcılar sayfası** | https://cloudpartner.azure.com/#users | https://partner.microsoft.com/dashboard/account/usermanagement |
-| **Geçmiş sayfası** | https://cloudpartner.azure.com/#history | Geçmiş özelliği henüz Iş Ortağı Merkezi 'nde desteklenmiyor. |
-| **Öngörüler panosu** | https://cloudpartner.azure.com/#insights | https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary |
-| **Ödeme raporu** | https://cloudpartner.azure.com/#insights/payout | https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| | |
+| Bulut İş Ortağı Portalı sayfası <img src="" width=100px>| Bulut İş Ortağı Portalı sayfa bağlantısı | İş Ortağı Merkezi sayfa bağlantısı |
+| --- | --- | --- |
+| Tüm teklifler sayfası | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
+| Tüm yayımcılar sayfası | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
+| Yayımcı profili | [https://cloudpartner.azure.com/#profile](https://cloudpartner.azure.com/#profile) | [https://partner.microsoft.com/dashboard/account/management](https://partner.microsoft.com/dashboard/account/management) |
+| Kullanıcılar sayfası | [https://cloudpartner.azure.com/#users](https://cloudpartner.azure.com/#users) | [https://partner.microsoft.com/dashboard/account/usermanagement](https://partner.microsoft.com/dashboard/account/usermanagement) |
+| Geçmiş sayfası | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | Geçmiş özelliği henüz Iş Ortağı Merkezi 'nde desteklenmiyor. |
+| Öngörüler panosu | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) |
+| Ödeme raporu | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+|||
 
-## <a name="will-the-cloud-partner-portal-rest-apis-be-supported-post-migration"></a>Bulut İş Ortağı Portalı REST API 'Leri geçiş sonrası desteklenecek mi?
+## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı hangi teklifleri yayımladım?
 
-Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için aşağıdaki tablodaki değişiklikleri gözden geçirin.
+Teklifler Iş Ortağı Merkezi 'ne taşındı ve, Iş Ortağı Merkezi 'nde oturum açtıktan sonra, Dynamics NAV yönetilen hizmeti ve Cortana Intelligence teklifleri dışında, size erişilebilecektir. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam eder ve müşterileriniz kesintiye girmeden bu uygulamayı satın alıp dağıtabmaya devam eder. Daha fazla ayrıntı için bkz. bir sonraki soru, **Iş Ortağı Merkezi 'Ne ne tür öneriler taşındı?**.
 
-| **API** | **Açıklamayı Değiştir** | **Etki** |
-| ------- | ---------------------- | ---------- |
-| Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birini gönderirken, teklifin geçiş durumuna bağlı olarak konum üstbilgisi iki biçimden birine sahip olur:<ul><li>Geçirilmeyen teklifler<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilmiş teklifler<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| Işlemi al | Yanıtta daha önce ' bildirim-e-posta ' alanının desteklendiği teklifler için, bu alan kullanım dışı bırakılır ve artık geçirilmiş teklifler için döndürülmez. | Geçirilmiş teklifleriniz için, isteklerde belirtilen e-posta listesine artık bildirim gönderemeyecektir. Bunun yerine, API hizmeti, e-posta göndermek için Iş Ortağı Merkezi 'nde bildirim e-postası işlemiyle hizalanır. Özellikle, işlem ilerleme durumunu bildirmek için Iş ortağı merkezindeki hesap ayarlarınızın satıcı iletişim bilgileri bölümünde bulunan e-posta adresine bildirim gönderilir.<br><br>Bildirimler için doğru e-postanın sağlandığından emin olmak için Iş Ortağı Merkezi 'ndeki [Hesap ayarları](https://partner.microsoft.com/dashboard/account/management) bölümündeki satıcı iletişim bilgileri bölümünde bulunan e-posta adresini gözden geçirin.  |
-| | | |
+## <a name="what-offers-were-moved-to-partner-center"></a>Iş Ortağı Merkezi 'ne hangi teklifler taşındı?
+
+Daha önce Bulut İş Ortağı Portalı desteklenen tüm teklif türleri, Iş Ortağı Merkezi 'nde, Dynamics NAV yönetilen hizmeti ve Cortana Intelligence teklifleri dışında desteklenmektedir.
+
+Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, durumlarına bakılmaksızın taşındı; taslak, de listede ve yalnızca önizleme teklifleri de taşınır.
+
+| Teklif türü <img src="" width=150px>| Iş Ortağı Merkezi 'ne taşındı mi? <img src="" width=100px>| Sonraki adımlar |
+| --- | --- | --- |
+| SaaS | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market 'te yeni bir SaaS teklifi oluşturma](partner-center-portal/create-new-saas-offer.md)hakkında daha fazla bilgi edinin. |
+| Sanal Makine | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Azure [Market 'Te Azure sanal makine teklifi oluşturma hakkında](partner-center-portal/azure-vm-create-offer.md)daha fazla bilgi edinin. |
+| Azure uygulaması | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](partner-center-portal/create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
+| Dynamics 365 Business Central | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
+| PowerApps & müşteri katılımı için Dynamics 365 | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 for Operations teklifini oluşturma](partner-center-portal/create-new-operations-offer.md)hakkında daha fazla bilgi edinin. |
+| Power BI App | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [AppSource için Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)hakkında daha fazla bilgi edinin. |
+| IoT Edge modülü | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama](partner-center-portal/azure-iot-edge-module-creation.md)hakkında daha fazla bilgi edinin. |
+| Kapsayıcı | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
+| Danışmanlık Hizmetleri | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
+| Yönetilen hizmet | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
+| Dynamics NAV yönetilen hizmeti | Hayır | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
+| Cortana Intelligence | Hayır | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](hhttps://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](partner-center-portal/offer-creation-checklist.md)hakkında daha fazla bilgi edinin. |
+
+## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Iş Ortağı Merkezi 'nde Bulut İş Ortağı Portalı tekliflerimi bulamıyorum
+
+Iş Ortağı Merkezi 'nde gördükleriniz, kaydettiğiniz programlara, ait olduğunuz hesaplara ve atadığınız kullanıcı rollerine ve izinlerine bağlıdır. Birçok Iş Ortağı Merkezi programı mevcuttur ve birden çok programda kayıtlı olabilirsiniz. Aynı kullanıcı kimlik bilgilerine sahip birden çok hesaba erişiminizin olması de gerekebilir.
+
+Bulut İş Ortağı Portalı ' da oluşturduğunuz teklifler, **ticari Market** programı altında ve teklifleri oluşturmak için kullanılan hesap altında Iş Ortağı Merkezi ' nde bulunur. Doğru programı ve doğru hesabı görüntülediğinizden emin olmak için aşağıdaki adımları izleyin. Diğer sorun giderme ipuçları için bkz. [Iş Ortağı Merkezi hesabınızı yönetme](https://docs.microsoft.com/partner-center/partner-center-account-setup).
+
+### <a name="access-the-right-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde doğru programa erişin
+
+1. Bulut İş Ortağı Portalı oturum açmak için kullanılan kimlik bilgileriyle [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 'nde oturum açın. Sol taraftaki Gezinti bölmesi, kaydettiğiniz programlarla ilişkili seçenekleri görüntüler.
+
+    Örnek: Bu üç programa erişiminiz olduğunu varsayın: MPN programı, başvuru programı ve ticari Market programı. Iş Ortağı Merkezi 'nde oturum açtığınızda, bu üç programı gezinti bölmesinde görürsünüz.
+
+2. Tekliflerinizi erişmek için **ticari Market**  >  **'e genel bakış ' ı** seçin.
+
+    Soldaki gezinti bölmesinde bulunan ticari Market programını görmüyorsanız yanlış hesapta olabilirsiniz. Doğru hesaba erişmek için sonraki bölümdeki adımları izleyin.
+
+    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+
+### <a name="access-the-right-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde doğru hesaba erişin
+
+Birden çok hesabın parçasıysa, Iş Ortağı Merkezi ' nde, sol taraftaki gezinti menüsünde iki ok ile işaretlenmiş bir hesap seçici düğmesi görürsünüz. Ait olduğunuz tüm hesapların bir listesini görüntülemek için hesap Seçicisi düğmesini seçin. Listede geçiş yapmak ve bu hesapla ilgili tüm programları ve bilgileri görmek için listedeki herhangi bir hesabı seçin. Gezinti menüsünde bir hesap seçici düğmesi görmüyorsanız, tek bir hesaba üye olursunuz.
+
+[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+
+## <a name="how-do-i-create-new-offers"></a>Nasıl yaparım? yeni teklifler mi oluşturulsun?
+
+Yeni teklifler oluşturmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde ticari Market programına erişin. Genel Bakış sayfasında **+ yeni teklif**' i seçin.
+
+[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+
+## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>Oturum açamıyorum ve bir destek bileti açmanız gerekiyor
+
+Hesabınızda oturum açamazsınız, burada bir [destek bileti](https://partner.microsoft.com/support/v2/?stage=1) açabilirsiniz.
+
+## <a name="where-are-instructions-for-using-partner-center"></a>Iş ortağı merkezi kullanımı için yönergeler nerede?
+
+[Ticari Market belgelerine](index.yml)gidip **iş ortağı Merkezi ' nde ticari Market portalı**' nı genişletin. Iş Ortağı Merkezi 'nde teklif oluşturmaya yönelik yardım makalelerini görmek için **yeni teklif oluştur**' u genişletin.
+
+## <a name="what-are-the-publishing-and-offer-management-differences"></a>Yayımlama ve teklif yönetimi farkları nelerdir?
+
+Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasındaki bazı farklılıklar aşağıda verilmiştir.
+
+### <a name="modular-publishing-capabilities"></a>Modüler yayımlama özellikleri
+
+İş Ortağı Merkezi, tüm güncelleştirmeleri her zaman tek seferde yayımlamak yerine yayımlamak istediğiniz değişiklikleri seçmenizi sağlayan modüler bir yayımlama seçeneği sunar. Örneğin, aşağıdaki ekranda yalnızca yayımlanacak değişikliklerin **Özellikler** ve **teklif listesi**değişiklikleri olduğunu gösterilmektedir. Önizleme sayfasında yaptığınız değişiklikler yayımlanmaz.
+
+[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+
+Yayımlayacağınız güncelleştirmeler taslak olarak kaydedilir. Teklifinizi herkese açık hale getirmeden önce teklifinizin doğrulanması için size devam edin.
+
+### <a name="enhanced-preview-options"></a>Gelişmiş önizleme seçenekleri
+
+İş Ortağı Merkezi, Gelişmiş filtreleme seçenekleriyle bir [karşılaştırma özelliği](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) içerir. Bu, teklifin önizleme ve canlı sürümleriyle karşılaştırmanıza olanak sağlar.
+
+[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+
+### <a name="branding-and-navigation-changes"></a>Marka ve gezinti değişiklikleri
+
+Bazı marka değişiklikleri olduğunu fark edeceksiniz. Örneğin, *SKU 'Lar* Iş Ortağı Merkezi 'nde *plan* olarak markalı değildir:
+
+[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+
+Ayrıca, daha önce **Market** veya **storefront details** (danışmanlık hizmeti, Power BI uygulaması) bulut iş ortağı portalı sayfalarında önceden verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır:
+
+[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+
+SKU 'Lar için daha önce Bulut İş Ortağı Portalı tek bir sayfada verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nin çeşitli sayfalarında toplanabilecek:
+
+- Plan ayarlama sayfası
+- Plan listeleme sayfası
+- Plan kullanılabilirlik sayfası
+- Teknik yapılandırma sayfasını burada gösterildiği gibi planlayın: ![ ! [] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+
+Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor:
+
+![Iş Ortağı Merkezi teklif KIMLIĞI konumunu gösterir](media/cpp-pc-faq/offer-id.png)
+
+### <a name="stop-selling-an-offer"></a>Teklif satışı durdur
+
+Market 'teki bir teklifi doğrudan Iş Ortağı Merkezi portalından [satmaya](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan) yönelik istek yapabilirsiniz. Bu seçenek, teklifiniz için **teklif genel bakış** sayfasında bulunur.
+
+[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+<br><br>
+
+## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>Bulut İş Ortağı Portalı REST API 'Leri hala destekleniyor mu?
+
+Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve çalışmaya devam edecektir. Iş Ortağı Merkezi 'ne geçiş küçük değişiklikler sunar. Kodunuzun iş ortağı merkezi 'nde çalışmaya devam ettiğinden emin olmak için aşağıdaki tabloyu gözden geçirin.
+
+| API <img src="" width=100px>| Açıklamayı Değiştir | Etki |
+| --- | --- | --- |
+| Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birine gönderim yaparken, konum üst bilgisi teklifin geçiş durumuna bağlı olarak iki biçimden birine sahip olur: <ul><li>Geçirilmeyen teklifler:`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilen teklifler:`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+| Işlemi al | Daha önce yanıtta bir ' bildirim-e-posta ' alanını destekleyen teklifler için, bu alan kullanım dışı bırakılır ve artık geçirilmiş teklifler için döndürülmez. | Geçirilmiş teklifleriniz için, isteklerde belirtilen e-posta listesine artık bildirim gönderemeyecektir. Bunun yerine, API hizmeti, e-posta göndermek için Iş Ortağı Merkezi 'nde bildirim e-postası işlemiyle hizalanır. Özellikle, işlem ilerleme durumu bildirimleri Iş Ortağı Merkezi 'nde hesap ayarlarınızın satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresine gönderilir.<br><br>Iş Ortağı Merkezi 'ndeki [Hesap ayarları](https://partner.microsoft.com/dashboard/account/management) bölümündeki satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresinin bildirimleri almak için doğru olduğundan emin olun. |
+|||

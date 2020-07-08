@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726511"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964881"
 ---
 # <a name="rendering-applications"></a>Uygulamaları işleme
 
-İşleme uygulamaları toplu işler ve görevler oluşturularak kullanılır. Görev komut satırı özelliği uygun komut satırını ve parametreleri belirtir.  İş görevlerini oluşturmanın en kolay yolu, [Bu makalede](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)belirtildiği gibi Batch Explorer şablonlarını kullanmaktır.  Şablonlar görüntülenebilir ve gerekirse oluşturulan sürümler değiştirilebilir.
+İşleme uygulamaları toplu işler ve görevler oluşturularak kullanılır. Görev komut satırı özelliği uygun komut satırını ve parametreleri belirtir.  İş görevlerini oluşturmanın en kolay yolu, [Bu makalede](./batch-rendering-using.md#using-batch-explorer)belirtildiği gibi Batch Explorer şablonlarını kullanmaktır.  Şablonlar görüntülenebilir ve gerekirse oluşturulan sürümler değiştirilebilir.
 
 Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakkında kısa bir açıklama sunulmaktadır.
 
@@ -31,7 +31,7 @@ Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakk�
 
 `3dsmaxcmdio.exe`Bir havuz düğümünde komut satırı oluşturmayı gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yol üzerinde bulunur. `3dsmaxcmdio.exe`Uygulama, uygulama ile aynı kullanılabilir parametrelere sahiptir `3dsmaxcmd.exe` ve bu, [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (işleme |) belgelenmiştir. Komut satırı Işleme bölümü).
 
-Örnek:
+Örneğin:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

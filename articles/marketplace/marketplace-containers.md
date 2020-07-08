@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: fae11343332fe741301016d4871d098b0214c7f5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160469"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964456"
 ---
 # <a name="publishing-guide-for-container-offers"></a>Kapsayıcı teklifleri için Yayımlama Kılavuzu
 
@@ -34,7 +34,7 @@ Microsoft şu anda ücretsiz ve kendi lisansını getir (KLG) lisanslama modelle
 |:--- |:--- |  
 | Faturalandırma ve ölçüm | Ücretsiz veya KLG faturalandırma modelini destekler.<br><br> |  
 | Dockerfile dosyasından oluşturulan resim | Kapsayıcı görüntülerinin Docker görüntü belirtimine dayalı olması ve Dockerfile 'dan oluşturulması gerekir.<br> <br>Docker görüntülerini oluşturma hakkında daha fazla bilgi için [Dockerfile başvurusunun](https://docs.docker.com/engine/reference/builder/#usage)"kullanım" bölümüne bakın.<br><br> |  
-| Azure Container Registry deposunda barındırma | Kapsayıcı görüntülerinin bir Azure Container Registry deposunda barındırılması gerekir.<br> <br>Azure Container Registry ile çalışma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).<br><br> |  
+| Azure Container Registry deposunda barındırma | Kapsayıcı görüntülerinin bir Azure Container Registry deposunda barındırılması gerekir.<br> <br>Azure Container Registry ile çalışma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-portal.md).<br><br> |  
 | Resim etiketleme | Kapsayıcı görüntülerinin en az bir etiket içermesi gerekir (en fazla etiket sayısı: 16).<br><br>Bir görüntüyü etiketleme hakkında daha fazla bilgi için `docker tag` [Docker belgeleri](https://docs.docker.com/engine/reference/commandline/tag) sitesindeki sayfasına bakın.<br><br> |  
 
 ## <a name="next-steps"></a>Sonraki adımlar

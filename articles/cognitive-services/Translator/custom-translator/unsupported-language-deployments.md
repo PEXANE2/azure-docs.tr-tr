@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996372"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964694"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
 
@@ -47,7 +47,7 @@ Gönderildikten sonra, model artık **istenmeyen insanlar** sekmesinde kullanıl
 
 ## <a name="whats-next"></a>Sırada ne var?
 
-Dağıtım için seçtiğiniz modeller, hub kullanımdan çıkarıldı ve tüm modeller dağıtıldıktan sonra kaydedilir.  Desteklenmeyen modellerin dağıtımına yönelik istekleri göndermek 24 Mayıs 'a kadar.  Bu modelleri 15 Haziran 'da, Translator v3 API aracılığıyla erişilebilecek bir noktada dağıtacağız.  Bunlara ek olarak, 1 Temmuz 'dan itibaren v2 API 'SI üzerinden de kullanılabilir.  
+Dağıtım için seçtiğiniz modeller, hub kullanımdan çıkarıldı ve tüm modeller dağıtıldıktan sonra kaydedilir.  Desteklenmeyen modellerin dağıtımına yönelik istekleri göndermek 24 Mayıs 'a kadar.  Bu modelleri 15 Haziran 'da, Translator v3 aracılığıyla erişilebilen bir noktada dağıtacağız.  Bunlara ek olarak, 1 Temmuz 'dan itibaren Translator v2 üzerinden de kullanılabilir.  
 
 Hub 'ın kullanımdan kaldırılması sırasında önemli tarihler hakkında daha fazla bilgi için [buraya](https://www.microsoft.com/translator/business/hub/)bakın.
 Dağıtıldıktan sonra, normal barındırma ücretleri uygulanır.  Ayrıntılar için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  

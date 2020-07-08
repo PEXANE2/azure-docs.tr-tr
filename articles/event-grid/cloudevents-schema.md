@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: femila
-ms.openlocfilehash: 54bdf8bc0837a3188dd01ac621e92b27342f53d4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 734ab15819437266b7bf12e3adfc960f7480325a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560711"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963402"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması kullanma
 Azure Event Grid, [varsayılan olay şemasına](event-schema.md)ek olarak, [cloudevents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [http protokol bağlamasının](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları yerel olarak destekler. [Cloudevents](https://cloudevents.io/) , olay verilerini tanımlamaya yönelik [açık bir belirtimdir](https://github.com/cloudevents/spec/blob/v1.0/spec.md) .
@@ -188,7 +188,7 @@ Bir HTTP tetikleyicisi için aşağıdaki örnek JavaScript kodu, Event Grid tet
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     
-    if (req.method == "OPTIONS) {
+    if (req.method == "OPTIONS") {
         // If the request is for subscription validation, send back the validation code
         
         context.log('Validate request received');
@@ -214,5 +214,5 @@ module.exports = function (context, req) {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Olay teslimatlarını izleme hakkında bilgi için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
-* CloudEvents üzerinde test, yorum ve [katkıda bulunmanızı](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) öneririz.
+* CloudEvents üzerinde test, yorum ve [katkıda bulunmanızı](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md) öneririz.
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c0e4d281880b3870c81352efca146ece7100be74
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67059212"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964320"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure Web kancalarını kullanın 
 
@@ -61,10 +61,10 @@ Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılac
 
 [Uygulama ayarları](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) bölümü, bu makalede tanımlanan Web kancasında kullanılan parametreleri tanımlar. Ayrıca uygulama ayarlarına aşağıdaki parametreleri ekleyin. 
 
-|Adı|Tanım|Örnek| 
+|Name|Tanım|Örnek| 
 |---|---|---|
 |SigningKey |Bir imzalama anahtarı.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|Web kancası uç noktası | Web kancası uç noktası adresi. Web kancası işleviniz oluşturulduktan sonra, **işlev URL 'Sini al** bağlantısından URL 'yi kopyalayabilirsiniz. | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|
+|Web kancası uç noktası | Web kancası uç noktası adresi. Web kancası işleviniz oluşturulduktan sonra, **işlev URL 'Sini al** bağlantısından URL 'yi kopyalayabilirsiniz. | https: \/ /juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 
@@ -77,13 +77,13 @@ Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılac
 
 ### <a name="files"></a>Dosyalar
 
-Azure işleviniz, bu bölümde açıklanan kod dosyaları ve diğer dosyalarla ilişkilidir. Varsayılan olarak, bir işlev **function. JSON** ve **Run. CSX** (C#) dosyalarıyla ilişkilidir. **Project. JSON** dosyası eklemeniz gerekiyor. Bu bölümün geri kalanında bu dosyalar için tanımlar gösterilmektedir.
+Azure işleviniz, bu bölümde açıklanan kod dosyaları ve diğer dosyalarla ilişkilidir. Varsayılan olarak, bir işlev **function.json** ve **Run. CSX** (C#) dosyaları ile ilişkilendirilir. Dosyasına bir **project.js** eklemeniz gerekir. Bu bölümün geri kalanında bu dosyalar için tanımlar gösterilmektedir.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
-Function. JSON dosyası, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. 
+Dosyadaki function.js, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. 
 
 ```json
 {
@@ -106,7 +106,7 @@ Function. JSON dosyası, işlev bağlamalarını ve diğer yapılandırma ayarla
 
 #### <a name="projectjson"></a>project.json
 
-Project. JSON dosyası bağımlılıklar içeriyor. 
+project.jsdosya bağımlılıkları içerir. 
 
 ```json
 {
@@ -354,25 +354,27 @@ internal sealed class NotificationMessage
 
 Web kancası tetiklendikten sonra yukarıdaki örnek aşağıdaki çıktıyı üretir, değerlerinizin farklılık gösterecektir.
 
-    C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
-    Request Body = 
-    {
-      "MessageVersion": "1.1",
-      "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
-      "EventType": 4,
-      "TimeStamp": "2017-02-16T03:59:53.3041122Z",
-      "Properties": {
-        "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
-        "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
-        "NewState": "Finished",
-        "OldState": "Processing",
-        "AccountName": "mediapkeewmg5c3peq",
-        "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
-        "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
-      }
-    }
-    
-    URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```output
+C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/otification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
+Request Body = 
+{
+  "MessageVersion": "1.1",
+  "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
+  "EventType": 4,
+  "TimeStamp": "2017-02-16T03:59:53.3041122Z",
+  "Properties": {
+    "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
+    "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
+    "NewState": "Finished",
+    "OldState": "Processing",
+    "AccountName": "mediapkeewmg5c3peq",
+    "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
+    "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
+  }
+}
+
+URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```
 
 ## <a name="add-a-webhook-to-your-encoding-task"></a>Kodlama görevinizdeki bir Web kancası ekleyin
 
@@ -380,7 +382,7 @@ Bu bölümde, bir göreve Web kancası bildirimi ekleyen kod gösterilir. Ayrıc
 
 1. Visual Studio’da yeni bir C# Konsol Uygulaması oluşturun. Ad, Konum ve Çözüm adı değerlerini girip Tamam’a tıklayın.
 2. Azure Media Services yüklemek için [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) kullanın.
-3. App. config dosyasını uygun değerlerle güncelleştir: 
+3. App.config dosyayı uygun değerlerle güncelleştir: 
     
    * Azure Media Services bağlantı bilgileri, 
    * bildirimleri almayı bekleyen Web kancası URL 'SI 
@@ -520,5 +522,5 @@ Bu bölümde, bir göreve Web kancası bildirimi ekleyen kod gösterilir. Ayrıc
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892453"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963458"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights Kullanıcı Akışları Kullanıcı gezinti desenlerini analiz etme
 
-![Application Insights Kullanıcı Akışları aracı](./media/usage-flows/00001-flows.png)
+![Application Insights Kullanıcı Akışları aracı](./media/usage-flows/flows.png)
 
 Kullanıcı Akışları Araç, kullanıcıların sitenizin sayfaları ve özellikleri arasında nasıl gezineceğini görselleştirir. Şunun gibi sorulara yanıt vermek harika olur:
 
@@ -33,7 +33,7 @@ Kullanıcı Akışları Aracı, belirttiğiniz ilk sayfa görünümü, özel ola
 
 ## <a name="start-by-choosing-an-initial-event"></a>İlk olay seçerek başlayın
 
-![Kullanıcı Akışları için bir başlangıç olayı seçin](./media/usage-flows/00002-flows-initial-event.png)
+![Kullanıcı Akışları için bir başlangıç olayı seçin](./media/usage-flows/initial-event.png)
 
 Kullanıcı Akışları aracı ile soruları cevaplamak için, görselleştirme için başlangıç noktası olarak kullanılacak bir başlangıç sayfası görünümü, özel olay veya özel durum seçin:
 
@@ -58,7 +58,7 @@ Görselleştirmede daha fazla adım görmek isterseniz, **önceki adımları** v
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Bir sayfa veya özelliği ziyaret ettikten sonra kullanıcılar nerede gider ve neleri tıklasın?
 
-![Kullanıcıların nerede tıkladığınızı anlamak için Kullanıcı Akışları kullanın](./media/usage-flows/00003-flows-one-step.png)
+![Kullanıcıların nerede tıkladığınızı anlamak için Kullanıcı Akışları kullanın](./media/usage-flows/one-step.png)
 
 İlk olaylarınız bir sayfa görünümsüzsa, görselleştirmenin ilk sütunu ("Adım 1"), kullanıcıların sayfayı ziyaret ettikten hemen sonra ne olduğunu anlamak için hızlı bir yoldur. Sitenizi Kullanıcı Akışları görselleştirmenin yanındaki bir pencerede açmayı deneyin. Kullanıcıların sayfayla nasıl etkileşime gireceğini, "Adım 1" sütunundaki olay listesine göre karşılaştırın. Genellikle, sayfada ekibiniz için önemli olan bir kullanıcı arabirimi öğesi, sayfada en çok kullanılan öğe arasında olabilir. Sitenize yönelik tasarım geliştirmeleri için harika bir başlangıç noktası olabilir.
 

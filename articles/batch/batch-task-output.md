@@ -4,12 +4,12 @@ description: Batch görevleri ve işlerinin kalıcı çıktı verilerine yöneli
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726307"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965119"
 ---
 # <a name="persist-job-and-task-output"></a>İş ve görev çıktılarını kalıcı hale getirme
 
@@ -35,7 +35,7 @@ Aşağıdaki bölümlerde her yaklaşımın yanı sıra kalıcı çıktıya yön
 
 ### <a name="use-the-batch-service-api"></a>Batch hizmeti API 'sini kullanma
 
-Batch hizmeti, [bir işe görev eklediğinizde](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) veya bir [işe görevler koleksiyonu eklediğinizde](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)görev verileri için Azure Storage 'da çıkış dosyaları belirtmeyi destekler.
+Batch hizmeti, [bir işe görev eklediğinizde](/rest/api/batchservice/add-a-task-to-a-job) veya bir [işe görevler koleksiyonu eklediğinizde](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)görev verileri için Azure Storage 'da çıkış dosyaları belirtmeyi destekler.
 
 Batch hizmeti API 'SI ile kalıcı görev çıktısı hakkında daha fazla bilgi için bkz. [Batch hizmeti API 'si Ile Azure depolama 'ya görev verilerini kalıcı hale](batch-task-output-files.md)getirme.
 

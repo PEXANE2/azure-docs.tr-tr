@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 856555008f5edb04c167e00f3db49abc9e5e6402
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b83b6fc0da6a8b2016676d7fb748fc87880868f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740011"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964575"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Ölçülen faturalandırma için anomali algılama hizmeti
 
-[Market ölçüm hizmeti](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis-faq) , ticari Market programında standart olmayan birimlere göre ücretlendirilen teklifler oluşturmanıza imkan tanır. Tarifeli faturalandırma sayesinde, müşterinizin kullanımı için kullanım olaylarını Microsoft 'a gönderirsiniz ve bu kullanımı temel alarak faturalandırmayı hazırlarız.
+[Market ölçüm hizmeti](marketplace-metering-service-apis-faq.md) , ticari Market programında standart olmayan birimlere göre ücretlendirilen teklifler oluşturmanıza imkan tanır. Tarifeli faturalandırma sayesinde, müşterinizin kullanımı için kullanım olaylarını Microsoft 'a gönderirsiniz ve bu kullanımı temel alarak faturalandırmayı hazırlarız.
 
 Hatalı kullanım verileri, hata, tüketim izlemeinizdeki yanlış yapılandırma veya sahtekarlık gibi çeşitli nedenlerden gelebilir. Hatalı kullanım verileri, müşteri ücretleri ve faturalandırma anlaşmazlıklarına neden olur.
 
@@ -74,8 +74,8 @@ Bilet göndermek için:
     - **Ticari Market**  >  **Ölçülen faturalandırma**  >  **SaaS teklifi Için yanlış kullanım gönderildi**
 3. Bir **sonraki adımda**, bir destek bileti göndermek Için Iş Ortağı Merkezi 'nde oturum açmak üzere yönlendirilmek üzere **çözüm gözden geçir** düğmesini seçin.
 
-Daha fazla yayımcı desteği seçeneği için bkz. [Iş Ortağı Merkezi 'nde ticari Market programı desteği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Daha fazla yayımcı desteği seçeneği için bkz. [Iş Ortağı Merkezi 'nde ticari Market programı desteği](support.md).
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Market ölçüm hizmeti API 'si](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis)hakkında bilgi edinin.
+- [Market ölçüm hizmeti API 'si](marketplace-metering-service-apis.md)hakkında bilgi edinin.

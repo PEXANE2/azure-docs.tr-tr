@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992955"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962960"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -27,7 +27,7 @@ Ayarlar sayfasına erişmek için:
 
     ![Ayar bağlantısı](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator aboneliğini ilişkilendirme
+## <a name="associating-translator-subscription"></a>Translator aboneliğini ilişkilendirme
 
 Modelleri eğitmek veya dağıtmak için çalışma alanınız ile ilişkili bir Translator abonelik anahtarına sahip olmanız gerekir.
 

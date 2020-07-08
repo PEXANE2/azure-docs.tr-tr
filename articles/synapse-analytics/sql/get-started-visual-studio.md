@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658138"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962995"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio '
 > [!NOTE]
 > SQL isteğe bağlı (Önizleme) SSDT tarafından desteklenmiyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 
 * Mevcut bir SQL Havuzu. Bir tane yoksa, bu önkoşulu gerçekleştirmek için bkz. [SQL havuzu oluşturma](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .

@@ -5,47 +5,43 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: b149757ccfc41587aa3ea6c5d18717fdecaba656
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 07/05/2020
+ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656637"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963674"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
-Bazen mantıksal uygulamalarınızın sanal makineler (VM) ve diğer sistemler veya hizmetler gibi bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md)içindeki güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için [bir *tümleştirme hizmeti ortamı* (ISE) oluşturabilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE, adanmış kaynakları kullanan ve "küresel" çok kiracılı Logic Apps hizmetinden ayrı olarak çalıştırılan Logic Apps hizmetin adanmış bir örneğidir.
+Bazen mantıksal uygulamalarınızın, sanal makineler (VM 'Ler) ve diğer sistemler veya hizmetler gibi bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md)içinde veya bağlı olan güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için [bir *tümleştirme hizmeti ortamı* (ISE) oluşturabilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE, adanmış kaynakları kullanan ve "küresel" çok kiracılı Logic Apps hizmetinden ayrı olarak çalıştırılan Logic Apps hizmetin bir örneğidir.
 
-Mantıksal uygulamaları kendi ayrı ayrılmış Örneğinizde çalıştırmak, diğer Azure kiracılarının ["gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinen uygulamalarınızın performansı üzerinde sahip olabileceği etkiyi azaltmaya yardımcı olur. ISE Ayrıca bu avantajları sağlar:
-
-* Çoklu kiracı hizmetindeki Logic Apps tarafından paylaşılan statik IP adreslerinden ayrı olan kendi statik IP adresleriniz. Hedef sistemlerle iletişim kurmak için tek bir genel, statik ve öngörülebilir giden IP adresi de ayarlayabilirsiniz. Bu şekilde, her bir ıSE için bu hedef sistemlerde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
-
-* Çalışma süresi, depolama tutma, aktarım hızı, HTTP isteği ve yanıt zaman aşımları, ileti boyutları ve özel bağlayıcı istekleri için artan sınırlar. Daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md).
-
-> [!NOTE]
-> Azure depolama, Azure Cosmos DB veya Azure SQL veritabanı, iş ortağı hizmetleri veya Azure 'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için bazı Azure sanal ağları özel uç noktalar ([Azure özel bağlantı](../private-link/private-link-overview.md)) kullanır. Mantıksal uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir ıSE içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
+Örneğin, Azure depolama, Azure Cosmos DB veya Azure SQL veritabanı, iş ortağı hizmetleri veya Azure 'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için Azure [özel bağlantısı](../private-link/private-link-overview.md)aracılığıyla ayarlayabileceğiniz özel uç noktalar, bazı Azure sanal ağı tarafından kullanılır. Mantıksal uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir ıSE içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
 
 Bir ıSE oluşturduğunuzda, Azure bu ıSE 'yi Azure sanal ağınıza *çıkartır* veya dağıtır. Daha sonra bu ıSE 'yi, erişmesi gereken Logic Apps ve tümleştirme hesaplarının konumu olarak kullanabilirsiniz.
 
 ![Tümleştirme hizmeti ortamını seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Logic Apps, mantıksal uygulamalarınızla aynı ıSE çalıştıran bu öğeleri kullanarak sanal ağınıza ait veya bağlı olan kaynaklara erişebilir:
+Bu genel bakış, [BIR ıSE 'yi nasıl kullanmak istediğinizle](#benefits)ilgili daha fazla bilgi, [adanmış ve çok kiracılı Logic Apps hizmeti arasındaki farkları](#difference)ve Azure sanal ağınızda bulunan veya bağlı kaynaklara doğrudan erişme hakkında daha fazla bilgi sağlar.
 
-* HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
-* Bu sistem veya hizmet için **Ise**etiketli bağlayıcı
-* Özel bir bağlayıcı
+<a name="benefits"></a>
 
-Ayrıca, ıSE 'de Logic Apps ile **çekirdek** veya **Ise** etiketi olmayan bağlayıcılar da kullanabilirsiniz. Bu bağlayıcılar bunun yerine çok kiracılı Logic Apps hizmetinde çalışır. Daha fazla bilgi için aşağıdaki bölümlere bakın:
+## <a name="why-use-an-ise"></a>Neden bir ıSE kullanılmalıdır?
 
-* [Adanmış ve çok kiracılı](#difference)
-* [Tümleştirme hizmeti ortamından Bağlan](../connectors/apis-list.md#integration-service-environment)
-* [ISE bağlayıcıları](../connectors/apis-list.md#ise-connectors)
+Mantıksal uygulamaları kendi ayrı ayrılmış Örneğinizde çalıştırmak, diğer Azure kiracılarının ["gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinen uygulamalarınızın performansı üzerinde sahip olabileceği etkiyi azaltmaya yardımcı olur. ISE Ayrıca bu avantajları sağlar:
 
-> [!IMPORTANT]
-> Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#fixed-pricing). Fiyatlandırma ayrıntıları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
+* Sanal ağınıza doğrudan veya bağlı olan kaynaklara doğrudan erişim
 
-Bu genel bakışta, bir ıSE 'nin Logic Apps 'in Azure sanal ağınıza doğrudan erişimine nasıl verdiği hakkında daha fazla bilgi açıklanmakta ve bir ıSE ile çok kiracılı Logic Apps hizmeti arasındaki farkları karşılaştırılmaktadır.
+  Bir ıSE içinde oluşturduğunuz ve çalıştırdığınız Logic Apps, [özel olarak tasarlanmış ve çalışır durumda çalışan bağlayıcılar](../connectors/apis-list.md#ise-connectors)kullanabilir. Şirket içi bir sistem veya veri kaynağı için ıSE Bağlayıcısı varsa, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanmak zorunda kalmadan doğrudan bağlanabilirsiniz. Daha fazla bilgi için, bu konunun ilerleyen kısımlarında, [adanmış ve çok kiracılı](#difference) ve [Şirket içi sistemlere erişim](#on-premises) bölümüne bakın.
+
+* Sanal ağınıza bağlı olan veya olmayan kaynaklara devam eden erişim
+
+  Bir ıSE içinde oluşturduğunuz ve çalıştırdığınız Logic Apps, Işe özel bir bağlayıcı kullanılamadığında çok kiracılı Logic Apps hizmetinde çalışan bağlayıcıları kullanmaya devam edebilir. Daha fazla bilgi için bkz. [adanmış ve çok kiracılı](#difference).
+
+* Çoklu kiracı hizmetindeki Logic Apps tarafından paylaşılan statik IP adreslerinden ayrı olan kendi statik IP adresleriniz. Hedef sistemlerle iletişim kurmak için tek bir genel, statik ve öngörülebilir giden IP adresi de ayarlayabilirsiniz. Bu şekilde, her bir ıSE için bu hedef sistemlerde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
+
+* Çalışma süresi, depolama tutma, aktarım hızı, HTTP isteği ve yanıt zaman aşımları, ileti boyutları ve özel bağlayıcı istekleri için artan sınırlar. Daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md).
 
 <a name="difference"></a>
 
@@ -55,38 +51,43 @@ Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı 
 
 ![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
-* Yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler. Bunlar her zaman mantıksal uygulamanız ile aynı ıSE çalıştırırlar. **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, mantıksal UYGULAMANıZLA aynı Ise içinde de çalışır.
+* Yerleşik Tetikleyiciler ve HTTP gibi eylemler, **çekirdek** etiketi görüntüler ve mantıksal uygulamanız ile aynı çalışma alanında çalışır.
 
-  Örneğin, ıSE sürümlerini sunan bazı bağlayıcılar aşağıda verilmiştir:
+* **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, özel olarak TASE için tasarlanmıştır ve *mantıksal uygulamanızla aynı çalışma alanında çalışır*. Örneğin, [Ise sürümlerini sunan bazı bağlayıcılar](../connectors/apis-list.md#ise-connectors)aşağıda verilmiştir:<p>
 
   * Azure Blob depolama, dosya depolama ve tablo depolama
-  * Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
-  * FTP ve SFTP-SSH
+  * Azure Service Bus, Azure kuyrukları, Azure Event Hubs
+  * Azure Otomasyonu, Azure Key Vault, Azure Event Grid ve Azure Izleyici günlükleri
+  * FTP, SFTP-SSH, dosya sistemi ve SMTP
+  * SAP, IBM MQ, IBM DB2 ve IBM 3270
   * SQL Server, Azure SQL veri ambarı Azure Cosmos DB
   * AS2, x12 ve EDIOLGU
 
-* Her zaman çok kiracılı Logic Apps hizmetinde herhangi bir ek etiket görüntülememe yönetilen bağlayıcılar, ancak bu bağlayıcıları ıSE barındırılan bir mantıksal uygulamada kullanmaya devam edebilirsiniz.
+  Nadir özel durumlar sayesinde, şirket içi sistem veya veri kaynağı için ıSE Bağlayıcısı varsa, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanmadan doğrudan bağlanabilirsiniz. Daha fazla bilgi için bu konunun ilerleyen kısımlarında yer [alan şirket içi sistemlere erişim](#on-premises) bölümüne bakın.
+
+* **Ise** etiketini görüntülememeyen yönetilen bağlayıcılar, BIR Ise içindeki Logic Apps için çalışmaya devam eder. Bu bağlayıcılar her zaman ıSE 'de değil *çok kiracılı Logic Apps hizmetinde çalışır*.
+
+* *BIR Ise dışında*oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar. Ancak, *BIR ıSE içinde* oluşturduğunuz özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Daha fazla bilgi için bkz. Şirket [içi sistemlere erişim](#on-premises).
 
 <a name="on-premises"></a>
 
-### <a name="access-to-on-premises-systems"></a>Şirket içi sistemlere erişim
+## <a name="access-to-on-premises-systems"></a>Şirket içi sistemlere erişim
 
-Bir Azure sanal ağına bağlı şirket içi sistemlere veya veri kaynaklarına erişmek için, bir ıSE içindeki Logic Apps şu öğeleri kullanabilir:
+Bir ıSE içinde çalışan Logic Apps, bu öğeleri kullanarak bir Azure sanal ağı içinde veya içinde bulunan şirket içi sistemlere ve veri kaynaklarına doğrudan erişebilir:<p>
 
-* HTTP eylemi
+* **Çekirdek** etıketı görüntüleyen http tetikleyicisi veya eylemi
 
-* O sistem için ıSE etiketli bağlayıcı
+* Şirket içi sistem veya veri kaynağı için varsa **Ise** Bağlayıcısı
 
-  > [!NOTE]
-  > Windows kimlik doğrulamasını bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)SQL Server Bağlayıcısı ile kullanmak için, Şirket [içi veri ağ geçidiyle](../logic-apps/logic-apps-gateway-install.md)bağlayıcının Ise sürümünü kullanın. ISE etiketli sürüm Windows kimlik doğrulamasını desteklemez.
+  ISE Bağlayıcısı varsa, [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan sisteme veya veri kaynağına doğrudan erişebilirsiniz. Ancak, bir ıSE 'den SQL Server erişmeniz ve Windows kimlik doğrulaması kullanmanız gerekiyorsa, bağlayıcının ıSE sürümü ve şirket içi veri ağ geçidi kullanmanız gerekir. Bağlayıcının ıSE sürümü Windows kimlik doğrulamasını desteklemez. Daha fazla bilgi için bkz. [Ise bağlayıcıları](../connectors/apis-list.md#ise-connectors) ve [bir tümleştirme hizmeti ortamından bağlanma](../connectors/apis-list.md#integration-service-environment).
 
-* Özel bağlayıcı
+* Özel bir bağlayıcı
 
-  * Şirket içi veri ağ geçidini gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları bir ıSE dışında oluşturduysanız, bir ıSE içindeki Logic Apps de bu bağlayıcıları kullanabilir.
+  * *BIR Ise dışında*oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar.
 
-  * Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, ıSE 'yi barındıran sanal ağa bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
+  * *BIR ıSE içinde* oluşturduğunuz özel bağlayıcılar, şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, şirket içi sistemlere ve şirket içinde bulunan ya da bağlı olan sanal ağ üzerindeki veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps genellikle bu kaynaklara erişirken veri ağ geçidine gerek kalmaz.
 
-Bir sanal ağa bağlı olmayan veya ıSE etiketli bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
+ISE bağlayıcıları olmayan, sanal ağınızın dışında olan veya sanal ağınıza bağlı olmayan şirket içi sistemlere ve veri kaynaklarına erişmek için, hala şirket içi veri ağ geçidini kullanmanız gerekir. Bir ıSE içindeki Logic Apps, **çekirdek** veya **Ise** etiketi olmayan bağlayıcılar kullanmaya devam edebilir. Bu bağlayıcılar, ıSE yerine çok kiracılı Logic Apps hizmetinde çalışır. 
 
 <a name="ise-level"></a>
 
@@ -123,6 +124,12 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
 ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar**' ın altında **Özellikler**' i seçin ve **erişim uç noktası** özelliğini bulun:
 
 ![ISE erişim uç noktası bul](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
+
+<a name="pricing-model"></a>
+
+## <a name="pricing-model"></a>Fiyatlandırma modeli
+
+Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı olan sabit bir fiyatlandırma planı kullanır. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#fixed-pricing). Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 <a name="create-integration-account-environment"></a>
 

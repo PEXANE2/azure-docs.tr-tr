@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 6dbadee427abfa82fb32ebb7db85adf627dd5e0a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800214"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964847"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -128,7 +128,7 @@ Bir ürünü bir şablon kullanarak dağıtırsanız ve hem Azure Marketi hem de
 
 Raporlama, iş ortağı değeri (Microsoft Iş ortağı KIMLIĞI) ve GUID 'Ler tarafından yapılır. Ayrıca, bu GUID 'Leri teklifiniz içindeki her plana göre daha ayrıntılı bir düzeyde izleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme SSS](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
+Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle izleme hakkında SSS](../azure-partner-customer-usage-attribution.md#faq)).
 
 ## <a name="create-a-billing-profile"></a>Faturalandırma profili oluşturma
 
@@ -138,7 +138,7 @@ Faturalandırma adresi yasal varlığınızdan önceden doldurulur ve bu adresi 
 
 ## <a name="multi-user-account-management"></a>Çok kullanıcılı hesap yönetimi
 
-İş Ortağı Merkezi, çok kullanıcılı hesap erişimi ve yönetimi için [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) kullanır. Kuruluşunuzun Azure AD, kayıt işleminin bir parçası olarak Iş Ortağı Merkezi hesabınızla otomatik olarak ilişkilendirilir.
+İş Ortağı Merkezi, çok kullanıcılı hesap erişimi ve yönetimi için [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) kullanır. Kuruluşunuzun Azure AD, kayıt işleminin bir parçası olarak Iş Ortağı Merkezi hesabınızla otomatik olarak ilişkilendirilir.
 
 ## <a name="manage-users"></a>Kullanıcıları yönetme
 
@@ -164,11 +164,11 @@ Tüm Iş ortağı merkezi kullanıcılarının (gruplar ve Azure AD uygulamalar�
 * Iş Ortağı Merkezi hesabınıza eklemek için birden fazla kullanıcı seçerseniz, bunlara aynı rol veya özel izinler kümesi atamanız gerekir. Farklı rollere/izinlere sahip birden fazla kullanıcı eklemek için, bu adımları her bir rol veya özel izinler kümesi için tekrarlayın.
 3. Kullanıcıları seçmeyi tamamladığınızda **Seçili Ekle**' ye tıklayın.
 4. Roller bölümünde, seçili kullanıcılar için **rolleri** veya özelleştirilmiş izinleri belirtin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="create-new-users"></a>Yeni Kullanıcı Oluştur
 
-Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) izinlerine sahip bir hesabınız olması gerekir. 
+Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesabınız olması gerekir. 
 
 1. **Kullanıcılara** ( **Hesap ayarları**altında) gidin, **Kullanıcı Ekle**' yi seçin ve ardından **Yeni Kullanıcı oluştur**' u seçin.
 1. Her yeni kullanıcı için bir ad, son ad ve Kullanıcı adı girin. 
@@ -176,18 +176,18 @@ Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](https://docs
 1. **Bu kullanıcıya genel yönetici yapma**kutusunu işaretlenirse, gerekirse parolasını kurtarmak için **parola kurtarma e-postası** sağlamanız gerekir.
 1. **Grup üyeliği** bölümünde, yeni kullanıcının ait olmasını istediğiniz grupları seçin.
 1. **Roller** bölümünde, Kullanıcı için rol (ler) veya özelleştirilmiş izinleri belirtin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 İş Ortağı Merkezi 'nde yeni bir kullanıcı oluşturmak, oturum açtığınız iş hesabındaki (Azure AD kiracısı) bu kullanıcı için bir hesap de oluşturur. Iş ortağı merkezindeki bir kullanıcının adında değişiklik yapmak, kuruluşunuzun iş hesabında (Azure AD kiracısı) aynı değişiklikleri yapar.
 
 ### <a name="invite-new-users-by-email"></a>Yeni kullanıcıları e-posta ile davet et
 
-Şirket iş hesabınızın (Azure AD kiracısı) bir parçası olmayan kullanıcıları e-posta ile davet etmek için, [**genel yönetici**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) izinlerine sahip bir hesabınız olmalıdır.
+Şirket iş hesabınızın (Azure AD kiracısı) bir parçası olmayan kullanıcıları e-posta ile davet etmek için, [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesabınız olmalıdır.
 
 1. **Kullanıcılara** ( **Hesap ayarları**altında) gidin, **Kullanıcı Ekle**' yi seçin ve ardından **kullanıcıları e-postayla davet et**' i seçin
 2. Virgülle veya noktalı virgülle ayırarak bir veya daha fazla e-posta adresi (en fazla on) girin.
 3. **Roller** bölümünde, Kullanıcı için rol (ler) veya özelleştirilmiş izinleri belirtin.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 Davet ettiğiniz kullanıcılar, Iş Ortağı Merkezi hesabınıza katılması için bir e-posta daveti alacak. İş hesabınızda (Azure AD kiracısı) yeni bir Konuk Kullanıcı hesabı oluşturulacaktır. Hesabınıza erişebilmek için her kullanıcının davetini kabul etmesi gerekir.
 
@@ -202,7 +202,7 @@ Bir kullanıcıyı iş hesabınızdan (Azure AD kiracısı) kaldırmak için **k
 
 ### <a name="change-a-user-password"></a>Kullanıcı parolasını değiştirme
 
-Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı hesabı oluştururken **parola kurtarma e-postası** sağlanmışsa, bunları kendileri yapabilir. Ayrıca, aşağıdaki adımları izleyerek bir kullanıcının parolasını güncelleştirebilirsiniz. Şirket iş hesabınızdaki (Azure AD kiracısı) bir kullanıcının parolasını değiştirmek için, [**genel yönetici**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) izinlerine sahip bir hesapta oturum açmış olmanız gerekir. Bunun, Azure AD kiracınızdaki Kullanıcı parolasını, Iş Ortağı Merkezi 'ne erişmek için kullandıkları parolayı değiştirecek şekilde değiştirdiğine unutmayın.
+Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı hesabı oluştururken **parola kurtarma e-postası** sağlanmışsa, bunları kendileri yapabilir. Ayrıca, aşağıdaki adımları izleyerek bir kullanıcının parolasını güncelleştirebilirsiniz. Şirket iş hesabınızdaki (Azure AD kiracısı) bir kullanıcının parolasını değiştirmek için, [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesapta oturum açmış olmanız gerekir. Bunun, Azure AD kiracınızdaki Kullanıcı parolasını, Iş Ortağı Merkezi 'ne erişmek için kullandıkları parolayı değiştirecek şekilde değiştirdiğine unutmayın.
 
 1. **Kullanıcılar** sayfasından ( **Hesap ayarları**altında), düzenlemek istediğiniz kullanıcı hesabının adını seçin.
 2. Sayfanın alt kısmındaki **Parolayı Sıfırla** düğmesini seçin.
@@ -221,7 +221,7 @@ Kuruluşunuzun iş hesabında (Azure AD kiracısı) zaten mevcut olan bir grubu 
 Iş Ortağı Merkezi hesabınıza eklemek için birden fazla grup seçerseniz, bunları aynı rol veya özel izinler kümesi atamanız gerekir. Farklı rollere/izinlere sahip birden çok grup eklemek için, bu adımları her bir rol veya özel izinler kümesi için tekrarlayın.
 3. Grupları seçmeyi tamamladığınızda **Seçili Ekle**' ye tıklayın.
 4. Roller bölümünde, Seçili gruplar için **rolleri** veya özelleştirilmiş izinleri belirtin. Grubun tüm üyeleri Iş Ortağı Merkezi hesabınıza, bireysel hesabıyla ilişkili roller ve izinler ne olursa olsun, gruba uyguladığınız izinlerle erişebilecektir.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 Var olan bir grubu eklediğinizde, bu grubun üyesi olan her Kullanıcı, Iş Ortağı Merkezi hesabınıza, grubun atanan rolüyle ilişkili izinlerle erişebilecek.
 
@@ -235,7 +235,7 @@ Iş Ortağı Merkezi hesabınıza yepyeni bir grup eklemek için:
 4. Grup için rol (ler) veya özelleştirilmiş izinleri belirtin. Grubun tüm üyeleri, bireysel hesabıyla ilişkili rollerden/izinlerden bağımsız olarak, burada uyguladığınız izinlerle Iş Ortağı Merkezi Hesabınıza erişebilecektir.
 5. Görüntülenen listeden yeni grup için Kullanıcı seçin. Belirli kullanıcıları aramak için arama kutusunu kullanabilirsiniz.
 6. Kullanıcıları seçmeyi tamamladığınızda, yeni gruba eklemek için **Seçili Ekle** ' ye tıklayın.
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 Bu yeni Grup, kuruluşunuzun iş hesabında (Azure AD kiracısı) ve yalnızca Iş Ortağı Merkezi hesabınızda oluşturulacaktır.
 
@@ -255,7 +255,7 @@ Bu yeni Grup, kuruluşunuzun iş hesabında (Azure AD kiracısı) ve yalnızca I
 2. Görüntülenen listeden bir veya daha fazla Azure AD uygulaması seçin. Belirli Azure AD uygulamalarını aramak için arama kutusunu kullanabilirsiniz. Iş Ortağı Merkezi hesabınıza eklemek için birden fazla Azure AD uygulaması seçerseniz, bunlara aynı rol veya özel izin kümesi atamanız gerekir. Farklı rollere/izinlere sahip birden çok Azure AD uygulaması eklemek için, bu adımları her bir rol veya özel izin kümesi için tekrarlayın.
 3. Azure AD uygulamaları seçimini tamamladıktan sonra **Seçili Ekle**' ye tıklayın.
 4. **Roller** bölümünde, SEÇILI Azure AD uygulamaları için rol (ler) veya özelleştirilmiş izinleri belirtin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="add-new-azure-ad-applications"></a>Yeni Azure AD uygulamaları ekleme
 
@@ -264,9 +264,9 @@ Yeni bir Azure AD uygulama hesabına Iş ortağı merkezi erişimi vermek istiyo
 1. **Kullanıcılar** sayfasından ( **Hesap ayarları**altında) **Azure AD uygulamaları Ekle**' yi seçin.
 2. Sonraki sayfada, **yeni Azure AD uygulaması**' nı seçin.
 3. Yeni Azure AD uygulamasının **yanıt URL 'sini** girin. Bu URL, kullanıcıların oturum açmak ve Azure AD uygulamanızı kullanabilmesi (bazen uygulama URL 'SI veya oturum açma URL 'SI olarak da bilinir). **Yanıt URL 'si** 256 karakterden uzun olamaz ve dizininiz içinde benzersiz olmalıdır.
-4. Yeni Azure AD uygulaması için **uygulama KIMLIĞI URI** 'sini girin. Bu, Azure AD 'ye çoklu oturum açma isteği gönderildiğinde sunulan Azure AD uygulaması için mantıksal bir tanıtıcıdır. **Uygulama kimliği URI 'sinin** dizininizdeki her BIR Azure AD uygulaması için benzersiz olması gerektiğini unutmayın. Bu KIMLIK 256 karakterden daha uzun olamaz. Uygulama KIMLIĞI URI 'SI hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
+4. Yeni Azure AD uygulaması için **uygulama KIMLIĞI URI** 'sini girin. Bu, Azure AD 'ye çoklu oturum açma isteği gönderildiğinde sunulan Azure AD uygulaması için mantıksal bir tanıtıcıdır. **Uygulama kimliği URI 'sinin** dizininizdeki her BIR Azure AD uygulaması için benzersiz olması gerektiğini unutmayın. Bu KIMLIK 256 karakterden daha uzun olamaz. Uygulama KIMLIĞI URI 'SI hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory Ile tümleştirme](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
 5. **Roller** bölümünde, Azure AD uygulaması için rol (ler) veya özelleştirilmiş izinleri belirtin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 Bir Azure AD uygulaması ekledikten veya oluşturduktan sonra, **Kullanıcı** bölümüne dönüp Kiracı kimliği, istemci kimliği, yanıt URL 'si ve uygulama kimliği URI 'si de dahil olmak üzere uygulamanın ayarlarını gözden geçirmek için uygulama adını seçebilirsiniz.
 
@@ -328,7 +328,7 @@ Iş Ortağı Merkezi hesabınızla yeni bir Azure AD kiracısı oluşturmak içi
 3. Yeni etki alanı ve hesap bilgilerini onaylamak için **Oluştur** ' u seçin.
 4. [Kullanıcı eklemeye ve yönetmeye](#manage-users)başlamak Için yenı Azure AD Genel Yönetici Kullanıcı adı ve parolasıyla oturum açın.
 
-Azure portal içinde Iş Ortağı Merkezi portalı yerine yeni kiracılar oluşturma hakkında daha fazla bilgi için, [Azure Active Directory yeni bir kiracı oluşturma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)makalesine bakın.
+Azure portal içinde Iş Ortağı Merkezi portalı yerine yeni kiracılar oluşturma hakkında daha fazla bilgi için, [Azure Active Directory yeni bir kiracı oluşturma](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)makalesine bakın.
 
 ### <a name="remove-a-tenant"></a>Kiracı kaldırma
 

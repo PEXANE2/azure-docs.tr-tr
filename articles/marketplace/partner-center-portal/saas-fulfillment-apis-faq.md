@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792913"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963759"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
 
@@ -46,11 +46,11 @@ Azure kullanıcısı giriş sayfasına yeniden yönlendirildiğinde sorgu URL 's
 
 ![Müşteri aboneliği akışı](media/saas-metering-service-integration-flow-a.png)
 
-SaaS teklifinin yaşam döngüsünde Transact senaryolarını işlemeye yönelik API sözleşmesi hakkında daha fazla bilgi için bkz. [SaaS karşılama API 'si](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+SaaS teklifinin yaşam döngüsünde Transact senaryolarını işlemeye yönelik API sözleşmesi hakkında daha fazla bilgi için bkz. [SaaS karşılama API 'si](pc-saas-fulfillment-api-v2.md).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Kullanıcının Azure 'da abone olduğu SaaS teklifini nasıl anlarsınız?
 
-`Resolve` API 'ye yapılan yanıt, SaaS aboneliğiyle ilişkili teklif ve plan bilgilerini içerir.
+API 'ye yapılan yanıt, `Resolve` SaaS aboneliğiyle ilişkili teklif ve plan bilgilerini içerir.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Azure kullanıcısı bu Azure aboneliğiyle ilişkili planı nasıl değiştirebilir?
 

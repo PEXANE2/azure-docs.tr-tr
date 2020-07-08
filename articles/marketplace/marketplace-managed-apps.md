@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 5bd89e406c3067585595479dc1d8351e9ea7eea8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a4b788749e6178c49010b153fb5caae35b79abf9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856107"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963589"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Yayımlama Kılavuzu
 
@@ -34,7 +34,7 @@ Aşağıdaki koşullarda yönetilen uygulama teklifi türünü kullanın:
 |---------|---------|
 |Bir Azure aboneliği | Yönetilen uygulamalar bir müşterinin aboneliğine dağıtılmalıdır, ancak üçüncü taraf tarafından yönetilebilir. |
 |Faturalandırma ve ölçüm    |  Kaynaklar bir müşterinin Azure aboneliğinde sağlanır. Kullandıkça Öde ödeme modelini kullanan VM 'Ler, müşteri ile Microsoft aracılığıyla işlem yapar ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Kendi lisansını getir VM 'Leri için, Microsoft, müşteri aboneliğinde oluşan tüm altyapı maliyetlerini faturalandırır, ancak müşteriyle doğrudan Transact yazılım lisanslama ücretleri.        |
-|Azure ile uyumlu bir sanal sabit disk (VHD)    |   VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır.<br><br>Linux VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da desteklenen Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).<br><br>Windows VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](./partner-center-portal/create-new-azure-apps-offer.md). |
+|Azure ile uyumlu bir sanal sabit disk (VHD)    |   VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır.<br><br>Linux VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da desteklenen Linux dağıtımları](../virtual-machines/linux/endorsed-distros.md).<br><br>Windows VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](./partner-center-portal/create-new-azure-apps-offer.md). |
 
 ---
 

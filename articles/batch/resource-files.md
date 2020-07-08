@@ -3,12 +3,12 @@ title: Kaynak dosyalarını oluşturma ve kullanma
 description: Çeşitli giriş kaynaklarından Batch kaynak dosyaları oluşturmayı öğrenin. Bu makalede, bunları bir VM 'ye oluşturma ve bunlara yerleştirme hakkında bazı yaygın yöntemler ele alınmaktadır.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723468"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964031"
 ---
 # <a name="creating-and-using-resource-files"></a>Kaynak dosyalarını oluşturma ve kullanma
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > Kapsayıcı erişimi için hem hem de izinlerinizin olması gerekir, ancak bu, `Read` `List` BLOB erişimi ile yalnızca izninizin olması gerekir `Read` .
 
-İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak ile bir kaynak dosyası oluşturun [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
+İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak ile bir kaynak dosyası oluşturun [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Her görevin bu görev için benzersiz çok sayıda dosyası varsa, kaynak dosya
 
 Bir görevde birden fazla yüz kaynak dosyası belirtilmişse toplu Işlem, görevi çok büyük olarak reddedebilir. Görevin kendisinde kaynak dosyalarının sayısını en aza indirerek görevlerinizi küçük tutmanız en iyisidir.
 
-Görevin ihtiyaç duyacağı dosya sayısını en aza indirmenin bir yolu yoksa, kaynak dosyalarının depolama kapsayıcısına başvuran tek bir kaynak dosyası oluşturarak görevi iyileştirebilirsiniz. Bunu yapmak için, kaynak dosyalarınızı bir Azure depolama kapsayıcısına koyun ve kaynak dosyaları için farklı "kapsayıcı" [yöntemlerini](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) kullanın. Görevleriniz için indirilecek dosya koleksiyonlarını belirtmek için blob öneki seçeneklerini kullanın.
+Görevin ihtiyaç duyacağı dosya sayısını en aza indirmenin bir yolu yoksa, kaynak dosyalarının depolama kapsayıcısına başvuran tek bir kaynak dosyası oluşturarak görevi iyileştirebilirsiniz. Bunu yapmak için, kaynak dosyalarınızı bir Azure depolama kapsayıcısına koyun ve kaynak dosyaları için farklı "kapsayıcı" [yöntemlerini](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) kullanın. Görevleriniz için indirilecek dosya koleksiyonlarını belirtmek için blob öneki seçeneklerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Business Applications bağımsız yazılım satıcısı (ISV) bağlama programı ekleme Kılavuzu
+title: Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 description: Business Applications ISV Connect programına nasıl ekleneceği aşağıda açıklanmaktadır.
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80288980"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964898"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications bağımsız yazılım satıcısı (ISV) bağlama programı ekleme Kılavuzu
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 
 [Business Applications ISV Connect program](https://partner.microsoft.com/solutions/business-applications/isv-overview) amaçlar, *Dynamics 365 müşteri katılımı ve PowerApps* ("Dynamics CE teklifleri") veya *Dynamics 365 finans ve işlemler* ("Dynamics Ops teklifleri") ile modern, bulut tabanlı, iş kolu (LOB) çözümleri oluşturma sürecini hızlandırmakta. Burada nasıl bir parçası olacak.
 
@@ -43,7 +43,7 @@ Dynamics CE veya Dynamics Ops tekliflerini zaten yayımladıysanız, büyük ola
 1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)' de **Yayımcı profili** sayfanızda oturum açın.
 2. Hesap ayarlarınızın Iş Ortağı Merkezi 'ne geçirildiğini gösteren bir başlık görürseniz bir sonraki bölüme geçin. Aksi takdirde, Iş Ortağı Merkezi hesabınızı etkinleştirmek isteyip istemediğinizi soran başlığı seçin.
 
-Daha fazla bilgi için bkz. [bulut iş ortağı portalı 'Dan Iş ortağı merkezine hesap geçişi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
+Daha fazla bilgi için bkz. [bulut iş ortağı portalı 'Dan Iş ortağı merkezine hesap geçişi](../partner-center-portal/account-migration-from-cpp-to-pc.md).
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>Business Applications ISV program eki 'ni kabul edin
 
@@ -88,7 +88,7 @@ Yukarıdaki adımları tamamladıktan sonra, mevcut Dynamics CE ve Dynamics Ops 
 Business Applications ISV Connect programında kayıt için son adım, mevcut uygulamalarınızın yeniden belirlenir.
 
 1. Uygulamanızı AppSource 'a geri yüklemek için [Bu adımları izleyin](https://partner.microsoft.com/solutions/business-applications/isv-publish) .
-2. [Yeni bir teklif oluşturun ve yayımlayın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Bu teklif tamamen yeni bir teklif olacak ve mevcut bir tane yerine geçmez.
+2. [Yeni bir teklif oluşturun ve yayımlayın](../partner-center-portal/create-new-customer-engagement-offer.md). Bu teklif tamamen yeni bir teklif olacak ve mevcut bir tane yerine geçmez.
 
 ## <a name="further-info"></a>Daha fazla bilgi
 

@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114250"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964592"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 
 Tamamen yönetilen bir bulutta yerel veritabanı hizmeti olarak, Azure Cosmos DB yalnızca sağlanan aktarım hızı ve tüketilen depolama alanı için ücretlendirme yaparak faturalandırmayı basitleştirir. Şirket içi veya IaaS ile barındırılan diğer yöntemler ile karşılaştırıldığında ek lisans ücretleri, donanım, yardımcı program maliyetleri veya tesis maliyetleri yoktur. Azure Cosmos DB çoklu bölge yeteneklerini dikkate aldığınızda, veritabanı hizmeti mevcut şirket içi veya IaaS çözümleriyle karşılaştırıldığında maliyetlerde önemli bir düşüş sağlar.
 
-Azure Cosmos DB, sağlanan verimlilik ve tüketilen depolama alanı temelinde saatlik olarak faturalandırılırsınız. Sağlanan aktarım hızı için, faturalandırma birimi saat başına 100 RU/sn, standart genel fiyatlandırmayı kabul eden bir saatte $0,008 ile ücretlendirilir, [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın. Tüketilen depolama alanı için aylık $0,25 GB depolama alanı üzerinden faturalandırılırsınız, [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın. 
+Azure Cosmos DB, sağlanan verimlilik ve tüketilen depolama alanı temelinde saatlik olarak faturalandırılırsınız. Sağlanan verimlilik için, faturalandırma birimi saat başına 100 RU/sn 'dir ve en son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. Tüketilen depolama için ayda 1 GB depolama alanı başına faturalandırılırsınız, en son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
-Bu makale, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı olacak örnekleri içerir. Azure Cosmos kapsayıcılarınızda farklı miktarda aktarım hızı sağlandıysa, bunları birden fazla bölgeye yaydıysanız veya farklı bir öğe için bir aydan daha fazla süre boyunca çalışıyorlarsa örneklerde gösterilen sayılar farklı olabilir.
+Bu makale, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı olacak örnekleri içerir. Azure Cosmos kapsayıcılarınızda farklı miktarda aktarım hızı sağlandıysa, bunları birden fazla bölgeye yaydıysanız veya farklı bir öğe için bir aydan daha fazla süre boyunca çalışıyorlarsa örneklerde gösterilen sayılar farklı olabilir. Bu makaledeki tüm örneklerde, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cosmos-db/) gösterilen fiyatlandırma bilgilerine göre fatura hesaplanır.
 
 > [!NOTE]
-> Faturalandırma, 60 dakikalık bir süre değil, bir duvar saati saatinin herhangi bir bölümü için tasarlanmıştır.
+> Faturalandırma, 60 dakikalık bir süre değil, bir duvar saati saatinin herhangi bir bölümü için tasarlanmıştır. Bu belgede gösterilen tüm örnekler, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azure Cosmos hesabının fiyatını temel alır. Fiyatlandırma ve hesaplama, kullandığınız bölgeye bağlı olarak farklılık gösterir, en son fiyatlandırma bilgileri için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
 ## <a name="billing-examples"></a>Faturalandırma örnekleri
 
@@ -234,19 +234,18 @@ Bu örnek, 1 Aralık 2019 ' den sonra oluşturulan hesaplar için [çok yönetic
 
 Daha sonra faturanızı ayın sonundan önce önceden tahmin etmek istediğiniz başka bir örneği ele alalım. Faturanızı şu şekilde tahmin edebilirsiniz:
 
-|**Depolama maliyeti** | |
-|----|----|
-|Ort kayıt boyutu (KB) |1 |
-|Kayıt sayısı  |100.000.000  |
-|Toplam depolama alanı (GB)  |100 |
-|GB başına aylık maliyet  |$0,25  |
-|Depolama için beklenen aylık maliyet   |$25,00  |
+**Depolama maliyeti**
 
-<br>
+* Ort kayıt boyutu (KB) = 1 
+* Kayıt sayısı = 100.000.000 
+* Toplam depolama alanı (GB) = 100 
+* Aylık maliyet/GB = $0,25 
+* Depolama için beklenen aylık maliyet = $25,00 
 
-|**Verimlilik maliyeti** | | | |
-|----|----|----|----|
+**Verimlilik maliyeti**
+
 |İşlem türü| İstek/sn| Ort. RU/istek| RUs gerekli|
+|----|----|----|----|
 |Yazma| 100 | 5 | 500|
 |Okuma| 400| 1| 400|
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658294"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965068"
 ---
 # <a name="workbook-drop-down-parameters"></a>Çalışma kitabı açılan parametreleri
 
@@ -31,7 +31,7 @@ Açılan bir liste belirtmek için en kolay yol, parametre ayarında bir statik 
     1. Parametre adı:`Environment`
     2. Parametre türü:`Drop down`
     3. Gerekli:`checked`
-    4. İzin `multiple selection`ver:`unchecked`
+    4. İzin ver `multiple selection` :`unchecked`
     5. Veri al:`JSON`
 5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
     ```json
@@ -41,14 +41,16 @@ Açılan bir liste belirtmek için en kolay yol, parametre ayarında bir statik 
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. Mavi `Update` düğmesine basın.
+6. Mavi düğmesine basın `Update` .
 7. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
 8. Ortam parametresi, üç değere sahip bir açılan liste olacaktır.
 
     ![Statik bir Drown oluşturmayı gösteren resim](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Öğe gruplarıyla statik bir açılan menü oluşturma
+
 Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer grupları görüntülenir. Yukarıdaki örneği izleyin, ancak bunun yerine aşağıdaki JSON kullanın:
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![Gruplanmış bir açılan menü örneğini gösteren resim](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Dinamik açılan parametre oluşturma
@@ -70,7 +73,7 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
     1. Parametre adı:`RequestName`
     2. Parametre türü:`Drop down`
     3. Gerekli:`checked`
-    4. İzin `multiple selection`ver:`unchecked`
+    4. İzin ver `multiple selection` :`unchecked`
     5. Veri al:`Query`
 5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
 
@@ -79,13 +82,14 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
         | summarize by name
         | order by name asc
     ```
-1. Mavi `Run Query` düğmesine basın.
+1. Mavi düğmesine basın `Run Query` .
 2. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
 3. RequestName parametresi, uygulamadaki tüm isteklerin adlarını açılan bir liste olacaktır.
 
     ![Dinamik açılan bir liste oluşturmayı gösteren resim](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>Açılan parametreye başvuruluyor
+
 ### <a name="in-kql"></a>KQL 'de
 1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
 2. KQL düzenleyicisinde, bu kod parçacığını girin
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![Değer, etiket, seçim ve grup seçeneklerini kullanarak bir açılan parametreyi gösteren resim](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>Açılan parametre seçenekleri
@@ -133,11 +138,11 @@ dependencies
 | `{DependencyName:value}` | Seçili değer | Fabrikamaccount al |
 
 ## <a name="multiple-selection"></a>Çoklu seçim
-Örnek olarak, bir parametreyi doğrudan açılan kutuda yalnızca bir değer seçmek üzere ayarlamaya yönelik örnekler. Açılan parametreler de desteklenir `multiple selection` -Bu seçenek, `Allow multiple selection` seçeneğini denetlemek kadar basittir. 
+Örnek olarak, bir parametreyi doğrudan açılan kutuda yalnızca bir değer seçmek üzere ayarlamaya yönelik örnekler. Açılan parametreler de desteklenir `multiple selection` -Bu seçenek, seçeneğini denetlemek kadar basittir `Allow multiple selection` . 
 
-Kullanıcı ayrıca, `delimiter` ve `quote with` ayarları aracılığıyla sonuç kümesinin biçimini belirtme seçeneğine sahiptir. Varsayılan değer Şu biçimdeki değerleri bir koleksiyon olarak döndürür: ' a ', ' b ', ' c '. Ayrıca, seçimlerin sayısını sınırlama seçeneği de vardır.
+Kullanıcı ayrıca, ve ayarları aracılığıyla sonuç kümesinin biçimini belirtme seçeneğine sahiptir `delimiter` `quote with` . Varsayılan değer Şu biçimdeki değerleri bir koleksiyon olarak döndürür: ' a ', ' b ', ' c '. Ayrıca, seçimlerin sayısını sınırlama seçeneği de vardır.
 
-Parametreye başvuran KQL 'in, sonucun biçimiyle çalışacak şekilde değiştirilmesi gerekir. Bunu etkinleştirmenin en yaygın yolu `in` işleç aracılığıyla yapılır.
+Parametreye başvuran KQL 'in, sonucun biçimiyle çalışacak şekilde değiştirilmesi gerekir. Bunu etkinleştirmenin en yaygın yolu işleç aracılığıyla yapılır `in` .
 
 ```kusto
 dependencies

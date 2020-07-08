@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: 0201ea7b207b7d4c0eaa56de1ee062ea405f0bbb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119248"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963725"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
@@ -20,13 +20,13 @@ Bu makalede, Microsoft [Azure Portal](https://portal.azure.com/) kullanarak bir 
 
 Azure Marketi, SaaS hizmetinizin son kullanıcılar için kullandığı kimlik doğrulama yönteminde herhangi bir kısıtlama uygulamaz. Aşağıdaki akış yalnızca Azure Marketi 'nde SaaS hizmetinin kimlik doğrulaması için gereklidir.
 
-Azure AD (Active Directory) hakkında daha fazla bilgi için bkz. [kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)nedir?
+Azure AD (Active Directory) hakkında daha fazla bilgi için bkz. [kimlik doğrulaması](../../active-directory/develop/authentication-scenarios.md)nedir?
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD ile güvenli bir uygulamayı kaydetme
 
 Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD kiracısı olarak kaydedilmelidir. Bu kayıt işlemi, uygulamanız hakkında Azure AD bazı ayrıntıları vermeyi içerir. Azure portal kullanarak yeni bir uygulama kaydetmek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
 
@@ -36,10 +36,10 @@ Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD ki
     -   **Ad**: anlamlı bir uygulama adı girin
     -   **Uygulama türü**:  
         
-        Güvenli bir sunucuda yüklü olan [istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) ve [kaynak/API uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) IÇIN **Web uygulaması/API** ' yi seçin. Bu ayar, OAuth gizli [Web istemcileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) ve genel [Kullanıcı Aracısı tabanlı istemciler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)için kullanılır.
+        Güvenli bir sunucuda yüklü olan [istemci uygulamaları](../../active-directory/develop/active-directory-dev-glossary.md#client-application)için **Web uygulaması/API** 'LERI ve [kaynak/API uygulamaları](../../active-directory/develop/active-directory-dev-glossary.md#resource-server)' nı seçin. Bu ayar, OAuth gizli [Web istemcileri](../../active-directory/develop/active-directory-dev-glossary.md#web-client)için ve genel [Kullanıcı Aracısı tabanlı istemciler](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client)için kullanılır).
         Aynı uygulama gerek bir istemciyi, gerekse kaynağı/API'yi sunabilir.
 
-        Belirli Web uygulamalarına örnek olarak, [Azure AD geliştiricileri Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/)' nu [kullanmaya başlama](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) bölümünde bulunan hızlı başlangıç destekli kurulumları inceleyin.
+        Belirli Web uygulamalarına örnek olarak, [Azure AD geliştiricileri Kılavuzu](../../active-directory/develop/index.yml)' nu [kullanmaya başlama](../../active-directory/develop/quickstart-create-new-tenant.md) bölümünde bulunan hızlı başlangıç destekli kurulumları inceleyin.
 
 5. İşiniz bittiğinde **Kaydet**' e tıklayın.  Azure AD, yeni uygulamanıza benzersiz bir *uygulama kimliği* atar. Yalnızca API 'ye ve tek bir kiracıya erişen bir uygulamanın kaydolmalarını öneririz.
 
@@ -54,7 +54,7 @@ Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD ki
 
 Uygulamanızı kaydettikten sonra, program aracılığıyla yayımcının yetkilendirme belirtecini (Azure AD v1 uç noktasını kullanarak Azure AD erişim belirteci) isteyebilirsiniz. Yayımcının çeşitli SaaS karşılama API 'Lerini çağırırken bu belirteci kullanması gerekir. Bu belirteç yalnızca bir saat için geçerlidir. 
 
-Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).  Aşağıdaki akışta v1 uç noktası belirtecinin kullanıldığını unutmayın.
+Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](../../active-directory/develop/access-tokens.md).  Aşağıdaki akışta v1 uç noktası belirtecinin kullanıldığını unutmayın.
 
 ### <a name="get-the-token-with-an-http-post"></a>Belirteci bir HTTP GÖNDERIMIYLE al
 

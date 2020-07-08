@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837847"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964660"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI uygulama oluşturmaya genel bakış
 
@@ -66,16 +66,16 @@ Ticari Market 'te yayınlanmak üzere Power BI uygulama teklifinizin aşağıdak
 2. Power BI ' de uygulamanızı oluşturun ve test edin.
 3. Uygulama yükleme Web adresini aldığınızda, Iş Ortağı Merkezi 'nde **Teknik yapılandırma** sayfasına ekleyin.
 
-Uygulamanız Power BI ' de oluşturulup test edildikten sonra, uygulama yükleme Web adresini kaydedin. Bu, [bir Power BI uygulama teklifi oluşturmak](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)için ihtiyaç duyacağınız bir uygulamadır.
+Uygulamanız Power BI ' de oluşturulup test edildikten sonra, uygulama yükleme Web adresini kaydedin. Bu, [bir Power BI uygulama teklifi oluşturmak](create-power-bi-app-offer.md)için ihtiyaç duyacağınız bir uygulamadır.
 
 ### <a name="business-requirements"></a>İş gereksinimleri
 
 İş gereksinimleri, yordamsal, sözleşmeli ve yasal yükümlülükleri içerir. Şunları yapmanız gerekir:
 
-- Kayıtlı bir ticari Market yayımcısı olun. Kaydolmadıysanız, [ticari Market yayımcısı haline](https://docs.microsoft.com/azure/marketplace/become-publisher)gelen adımları izleyin.
+- Kayıtlı bir ticari Market yayımcısı olun. Kaydolmadıysanız, [Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma](create-account.md)bölümündeki adımları izleyin.
 - Önerinizi AppSource 'ta listelenecek ölçütlere uyan içeriği sağlayın. Daha fazla bilgi için bkz. [AppSource 'ta bir uygulamayı listelemek için mi? İşte](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - [Microsoft gizlilik bildirimi](https://privacy.microsoft.com/privacystatement)'ni kabul edin ve izleyin.
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Iş Ortağı Merkezi 'nde Power BI uygulama teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Iş Ortağı Merkezi 'nde Power BI uygulama teklifi oluşturma](create-power-bi-app-offer.md)

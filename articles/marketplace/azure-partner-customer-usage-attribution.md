@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7a48da25c60eb2db3b918ebe9523440c49ed9693
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295635"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963810"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -66,7 +66,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. [Ticari Market yayımcısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
 
-   * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
+   * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](become-publisher.md)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
    * İş ortakları birden çok GUID kaydedebilir.
    * İş ortakları, Market olmayan çözüm şablonları ve teklifleri için GUID 'Leri kaydedebilir.
 
@@ -74,7 +74,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. **Hesap ayarları sayfasında**, **Izleme GUID 'si Ekle** ' yi seçin.
 
-1. **GUID** kutusuna izleme GUID 'nizi girin. **PID** ön eki olmadan yalnızca GUID girin. **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
+1. **GUID** kutusuna izleme GUID 'nizi girin. Ön ek olmadan yalnızca GUID girin `pid-` . **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
@@ -85,7 +85,7 @@ Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılara
 
 > [!NOTE]
 > Çözüm şablonları oluşturma ve yayımlama hakkında daha fazla bilgi için bkz.
-> * [İlk kaynak yöneticisi şablonunuzu oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+> * [İlk kaynak yöneticisi şablonunuzu oluşturun ve dağıtın](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 >* [Azure Uygulama teklifi](./partner-center-portal/create-new-azure-apps-offer.md).
 >* Video: [Azure Marketi Için çözüm şablonları ve yönetilen uygulamalar oluşturma](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
@@ -96,9 +96,9 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 
 1. Kaynak Yöneticisi şablonunu açın.
 
-1. Ana şablon dosyasına yeni bir kaynak ekleyin. Kaynak, iç içe veya bağlı şablonlarda değil yalnızca **Maintemplate. JSON** veya **azuredeploy. JSON** dosyasında olmalıdır.
+1. Ana şablon dosyasına yeni bir kaynak ekleyin. Kaynağın herhangi bir iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** veya **azuredeploy.jsaçık** olması gerekir.
 
-1. **PID** ön ekiyle (örn., pid-eb7927c8-dd66-43e1-b0cf-c346a422063) sonra GUID değerini girin.
+1. Önekden sonra GUID değerini girin `pid-` (örneğin, pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. Şablonda hata olup olmadığını denetleyin.
 
@@ -109,7 +109,7 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 ### <a name="sample-resource-manager-template-code"></a>Örnek Kaynak Yöneticisi Şablon kodu
 
 Şablonunuz için izleme kaynaklarını etkinleştirmek üzere kaynaklar bölümüne aşağıdaki ek kaynağı eklemeniz gerekir. Lütfen ana şablon dosyasına eklediğinizde aşağıdaki örnek kodu kendi girdunuzla değiştirdiğinizden emin olun.
-Kaynak, iç içe veya bağlı şablonlarda değil yalnızca **Maintemplate. JSON** veya **azuredeploy. JSON** dosyasına eklenmelidir.
+Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** ya da **azuredeploy.js** eklenmelidir.
 
 ```
 // Make sure to modify this sample code with your own inputs where applicable
@@ -137,12 +137,12 @@ Kaynak Yöneticisi şablonu kullanıyorsanız, daha önce açıklanan yönergele
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Kaynak Yöneticisi API 'Leriyle bir dağıtımı etiketleme
 
-Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı tasarlarken, istekteki Kullanıcı Aracısı başlığına bir GUID ekleyin. Her teklif veya SKU için GUID 'YI ekleyin. Dizeyi **PID** ön ekiyle biçimlendirin ve iş ortağı tarafından oluşturulan GUID 'yi ekleyin. Kullanıcı aracısına eklemek için GUID biçimine bir örnek aşağıda verilmiştir:
+Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı tasarlarken, istekteki Kullanıcı Aracısı başlığına bir GUID ekleyin. Her teklif veya SKU için GUID 'YI ekleyin. Dizeyi `pid-` önekiyle biçimlendirin ve iş ortağı tarafından oluşturulan GUID 'yi ekleyin. Kullanıcı aracısına eklemek için GUID biçimine bir örnek aşağıda verilmiştir:
 
 ![Örnek GUID biçimi](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> Dizenin biçimi önemlidir. **PID** ön eki dahil edilmemişse, verileri sorgulamak mümkün değildir. Farklı SDK 'lar farklı şekilde izler. Bu yöntemi uygulamak için tercih ettiğiniz Azure SDK 'niz için destek ve izleme yaklaşımını gözden geçirin.
+> Dizenin biçimi önemlidir. `pid-`Ön ek dahil edilmemişse, verileri sorgulamak mümkün değildir. Farklı SDK 'lar farklı şekilde izler. Bu yöntemi uygulamak için tercih ettiğiniz Azure SDK 'niz için destek ve izleme yaklaşımını gözden geçirin.
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK 'Sı
 
@@ -168,7 +168,7 @@ GUID 'nizi eklemek için Azure CLı kullandığınızda **AZURE_HTTP_USER_AGENT*
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Daha fazla bilgi için bkz. [Go için Azure SDK](https://docs.microsoft.com/azure/go/).
+Daha fazla bilgi için bkz. [Go için Azure SDK](https://docs.microsoft.com/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terrayform kullanma
 
@@ -251,13 +251,13 @@ Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kayna
 
 \<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 Karşılaştığınız sorunlara bağlı olarak iki destek kanalı vardır.
 
 Iş Ortağı Merkezi 'nde müşteri kullanımı attributıon raporunu görmek veya oturum açmak gibi herhangi bir sorunla karşılaşırsanız, Iş ortağı merkezi destek ekibi ile bir destek isteği oluşturun:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![Destek alma sayfasının ekran görüntüsü](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Müşteri kullanımı attribuini ayarlama gibi Market ekleme ve/veya müşteri kullanım atısyonu için yardıma ihtiyacınız varsa, aşağıdaki adımları izleyin:
 
@@ -332,7 +332,7 @@ Azure depolama 'nın GUID Oluşturucu formu, gerekli biçimdeki bir GUID oluştu
 
 **Azure Marketi 'nde bir çözüm şablonu teklifi için özel, özel bir VHD kullanabilir miyim?**
 
-Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .:.
+Hayır, şu yapılamıyor. Sanal makine görüntüsünün Azure Marketi 'nden gelmesi gerekir, bkz: [Azure Marketi 'nde sanal makine teklifleri Için Yayımlama Kılavuzu](marketplace-virtual-machines.md).
 
 Özel VHD 'nizi kullanarak Market 'te bir VM teklifi oluşturabilir ve bunu hiçbir kimse görememesi için özel olarak işaretleyebilirsiniz. Sonra çözüm şablonunuzda bu VM 'ye başvurun.
 

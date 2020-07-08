@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670568"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963249"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -28,16 +28,16 @@ MySQL OMı sağlayıcısı, MySQL örneğinden performans ve sistem durumu bilgi
 
 Linux için Log Analytics aracısının yüklenmesi sırasında MySQL OMı sağlayıcısı, bağlama adresi ve bağlantı noktası için MySQL My. cnf yapılandırma dosyalarını (varsayılan konumlar) tarar ve MySQL OMı kimlik doğrulama dosyasını kısmen ayarlar.
 
-MySQL kimlik doğrulama dosyası konumunda `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`depolanır.
+MySQL kimlik doğrulama dosyası konumunda depolanır `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` .
 
 
 ### <a name="authentication-file-format"></a>Kimlik doğrulama dosyası biçimi
 Aşağıda MySQL OMı kimlik doğrulama dosyasının biçimi verilmiştir
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Bağlantı noktası] = [bağ-adresi], [Kullanıcı adı], [Base64 kodlamalı parola]  
+> (Bağlantı noktası) = (bağ-adres), (Kullanıcı adı), (Base64 kodlamalı parola)  
+> (Bağlantı noktası) = (bağ-adres), (Kullanıcı adı), (Base64 kodlamalı parola)  
+> Otomatik güncelleştirme = [true | false]  
 
 Kimlik doğrulama dosyasındaki girişler aşağıdaki tabloda açıklanmıştır.
 
@@ -63,14 +63,14 @@ Aşağıdaki tabloda örnek örnek ayarları vardır
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMı kimlik doğrulama dosyası programı
 MySQL OMı sağlayıcısı 'nın yüklenmesiyle birlikte, MySQL OMI kimlik doğrulama dosyasını düzenlemek için kullanılabilen bir MySQL OMı kimlik doğrulama dosyası programıdır. Kimlik doğrulama dosyası programı aşağıdaki konumda bulunabilir.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > Kimlik bilgileri dosyası omsagent hesabı tarafından okunabilir olmalıdır. Mycimprovauth komutunu omsgent olarak çalıştırmak önerilir.
 
 Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrıntılı bilgi verilmektedir.
 
-| İşlem | Örnek | Açıklama
+| Çalışma | Örnek | Açıklama
 |:--|:--|:--|
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
@@ -81,15 +81,18 @@ Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrı
 
 Aşağıdaki örnek komutlar, localhost üzerinde MySQL sunucusu için varsayılan bir kullanıcı hesabı tanımlar.  Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 kodlanacak
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL performans sayaçları için gereken veritabanı Izinleri
 MySQL kullanıcısının MySQL Server performans verilerini toplamak için aşağıdaki sorgulara erişmesi gerekir. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 MySQL kullanıcısı aynı zamanda aşağıdaki varsayılan tablolara erişim ' i de gerektirir.
 
@@ -98,9 +101,10 @@ MySQL kullanıcısı aynı zamanda aşağıdaki varsayılan tablolara erişim ' 
 
 Aşağıdaki verme komutları çalıştırılarak bu ayrıcalıklar verilebilir.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > MySQL izleme kullanıcısına izin vermek için, veren kullanıcının ' ızın verme ' ayrıcalığının yanı sıra verilen ayrıcalığa sahip olması gerekir.
@@ -132,12 +136,14 @@ Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şe
 
 ## <a name="apache-http-server"></a>Apache HTTP sunucusu 
 Omsagent paketi yüklendiğinde bilgisayarda Apache HTTP sunucusu algılanırsa, Apache HTTP sunucusu için bir performans izleme sağlayıcısı otomatik olarak yüklenir. Bu sağlayıcı, performans verilerine erişmek için Apache HTTP sunucusuna yüklenmesi gereken bir Apache modülünü kullanır. Modül aşağıdaki komutla yüklenebilir:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Apache izleme modülünü kaldırmak için aşağıdaki komutu çalıştırın:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

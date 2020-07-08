@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 63f18556847a717322b00092b973f59877102a1d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726154"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963912"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure sanal makinesi (VM) görüntü sertifikası
 
@@ -188,7 +188,7 @@ Bir Azure Key Vault ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azu
 | $postfix | Dağıtım tanımlayıcılarına eklenen rastgele sayısal dize. |
 | $rgName | Oluşturulacak Azure Kaynak grubu (RG) adı. |
 | $location | Azure Standart coğrafi konumlarından biri. |
-| $kvTemplateJson | Anahtar Kasası için Kaynak Yöneticisi şablonu içeren dosyanın yolu (keykasa. JSON). |
+| $kvTemplateJson | Anahtar Kasası için Kaynak Yöneticisi şablonu içeren dosyanın yolu (keyvault.js). |
 | $kvname | Yeni anahtar kasasının adı.|
 |   |   |
 
@@ -320,7 +320,7 @@ Bu bölümde, yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş b
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu hazırlama
 
-VHD dağıtımı için aşağıdaki Azure Resource Manager şablonunu Vhdtoımage. JSON adlı yerel bir dosyaya kopyalayın. Sonraki betik bu JSON 'ı kullanmak için yerel makinede konum ister.
+VHD dağıtımı için aşağıdaki Azure Resource Manager şablonunu, VHDtoImage.jsadlı yerel bir dosyaya kopyalayın. Sonraki betik bu JSON 'ı kullanmak için yerel makinede konum ister.
 
 ```JSON
 {
@@ -560,7 +560,7 @@ Bu parametrelerin değerlerini sağlamak için bu dosyayı düzenleyin:
 | **Parametre** | **Açıklama** |
 | --- | --- |
 | ResourceGroupName | Mevcut Azure Kaynak grubu adı. Genellikle, anahtar kasanız ile aynı RG 'yi kullanın. |
-| TemplateFile | Vhdtoımage. json dosyasının tam yol adı. |
+| TemplateFile | VHDtoImage.jsdosyanın tam yol adı. |
 | userStorageAccountName | Depolama hesabının adı. |
 | Snameforpublicıp | Genel IP için DNS adı; küçük harfle yazılmalıdır. |
 | subscriptionId | Azure abonelik tanımlayıcısı. |
@@ -649,4 +649,4 @@ Son olarak, yürütülen test çalışmalarının test sonuçlarını ve günlü
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Her VHD için bir Tekdüzen Kaynak tanımlayıcısı (URI) oluştur](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Ortak SAS URI sorunları ve düzeltmeleri](common-sas-uri-issues.md)

@@ -4,12 +4,12 @@ description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kal�
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726324"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965136"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 
@@ -32,7 +32,7 @@ Senaryolarınız yukarıda listelenenlerden farklıysa, farklı bir yaklaşım d
 
 ## <a name="create-a-container-in-azure-storage"></a>Azure depolama 'da kapsayıcı oluşturma
 
-Görev çıktısını Azure depolama 'ya kalıcı hale getirmek için, çıkış dosyalarınız için hedef olarak hizmet veren bir kapsayıcı oluşturmanız gerekir. İşinizi göndermeden önce, tercihen hesabınızı çalıştırmadan önce kapsayıcıyı oluşturun. Kapsayıcıyı oluşturmak için uygun Azure depolama istemci kitaplığını veya SDK 'sını kullanın. Azure depolama API 'Leri hakkında daha fazla bilgi için bkz. [Azure depolama belgeleri](https://docs.microsoft.com/azure/storage/).
+Görev çıktısını Azure depolama 'ya kalıcı hale getirmek için, çıkış dosyalarınız için hedef olarak hizmet veren bir kapsayıcı oluşturmanız gerekir. İşinizi göndermeden önce, tercihen hesabınızı çalıştırmadan önce kapsayıcıyı oluşturun. Kapsayıcıyı oluşturmak için uygun Azure depolama istemci kitaplığını veya SDK 'sını kullanın. Azure depolama API 'Leri hakkında daha fazla bilgi için bkz. [Azure depolama belgeleri](../storage/index.yml).
 
 Örneğin, uygulamanızı C# dilinde yazıyorsanız [.net Için Azure Storage istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage/)' nı kullanın. Aşağıdaki örnek, bir kapsayıcının nasıl oluşturulacağını gösterir:
 
@@ -61,7 +61,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 ## <a name="specify-output-files-for-task-output"></a>Görev çıktısı için çıkış dosyalarını belirtin
 
-Bir görevin çıkış dosyalarını belirtmek için, bir [ÇıktıDosyası](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) nesnelerinin koleksiyonunu oluşturun ve görevi oluştururken [Cloudtask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) özelliğine atayın.
+Bir görevin çıkış dosyalarını belirtmek için, bir [ÇıktıDosyası](/dotnet/api/microsoft.azure.batch.outputfile) nesnelerinin koleksiyonunu oluşturun ve görevi oluştururken [Cloudtask. OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) özelliğine atayın.
 
 Aşağıdaki C# kod örneği, adlı bir dosyaya rastgele sayılar yazan bir görev oluşturur `output.txt` . Örnek, kapsayıcısına yazılacak bir çıkış dosyası oluşturur `output.txt` . Örnek ayrıca dosya düzeniyle eşleşen tüm günlük dosyaları için çıktı dosyaları oluşturur `std*.txt` (_örn._ `stdout.txt` ve `stderr.txt` ). Kapsayıcı URL 'SI, kapsayıcısı için daha önce oluşturulmuş SAS gerektirir. Batch hizmeti, kapsayıcıya erişimin kimliğini doğrulamak için SAS kullanır:
 
@@ -91,7 +91,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Eşleştirme için bir dosya kalıbı belirtin
 
-Bir çıkış dosyası belirttiğinizde, eşleşen bir dosya kalıbı belirtmek için [ÇıktıDosyası. filemodel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) özelliğini kullanabilirsiniz. Dosya deseninin sıfır dosya, tek bir dosya veya görev tarafından oluşturulan bir dosya kümesiyle eşleşmesi gerekebilir.
+Bir çıkış dosyası belirttiğinizde, eşleşen bir dosya kalıbı belirtmek için [ÇıktıDosyası. filemodel](/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) özelliğini kullanabilirsiniz. Dosya deseninin sıfır dosya, tek bir dosya veya görev tarafından oluşturulan bir dosya kümesiyle eşleşmesi gerekebilir.
 
 **Filemodel** özelliği, `*` (özyinelemeli olmayan eşleşmeler için) ve `**` (özyinelemeli eşleşmeler için) gibi standart dosya sistemi joker karakterlerini destekler. Örneğin, yukarıdaki kod örneği, yinelemeli olmayan eşleştirilecek dosya modelini belirtir `std*.txt` :
 
@@ -103,19 +103,19 @@ Tek bir dosyayı karşıya yüklemek için joker karakter içermeyen bir dosya k
 
 ### <a name="specify-an-upload-condition"></a>Karşıya yükleme koşulu belirtin
 
-[Outputfileupler. UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) özelliği, çıkış dosyalarının koşullu karşıya yüklenmesine izin verir. Yaygın bir senaryo, görev başarılı olursa bir dosya kümesini karşıya yüklemek ve başarısız olursa farklı bir dosya kümesi yüklemedir. Örneğin, ayrıntılı günlük dosyalarını yalnızca görev başarısız olduğunda ve sıfır dışında bir çıkış koduyla çıkarken karşıya yüklemek isteyebilirsiniz. Benzer şekilde, görev başarısız olursa, sonuç dosyalarını yalnızca görev başarılı olursa karşıya yüklemek isteyebilirsiniz.
+[Outputfileupler. UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) özelliği, çıkış dosyalarının koşullu karşıya yüklenmesine izin verir. Yaygın bir senaryo, görev başarılı olursa bir dosya kümesini karşıya yüklemek ve başarısız olursa farklı bir dosya kümesi yüklemedir. Örneğin, ayrıntılı günlük dosyalarını yalnızca görev başarısız olduğunda ve sıfır dışında bir çıkış koduyla çıkarken karşıya yüklemek isteyebilirsiniz. Benzer şekilde, görev başarısız olursa, sonuç dosyalarını yalnızca görev başarılı olursa karşıya yüklemek isteyebilirsiniz.
 
 Yukarıdaki kod örneği, **Uploadcondition** özelliğini **taskcompletion**olarak ayarlar. Bu ayar, çıkış kodunun değerinden bağımsız olarak, görevler tamamlandıktan sonra dosyanın karşıya yükleneceğini belirtir.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Diğer ayarlar için [Outputfileuploadcondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enum bölümüne bakın.
+Diğer ayarlar için [Outputfileuploadcondition](/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enum bölümüne bakın.
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Aynı ada sahip dosyaları Kesinleştirme
 
 Bir işteki görevler aynı ada sahip dosyalar üretebilir. Örneğin, `stdout.txt` ve `stderr.txt` bir işte çalışan her görev için oluşturulur. Her görev kendi bağlamında çalıştığından, bu dosyalar düğümün dosya sisteminde çakışmaz. Ancak, birden çok görevden paylaşılan bir kapsayıcıya dosya yüklediğinizde, aynı ada sahip dosyaları kesinleştirmeniz gerekir.
 
-[Outputfileblobcontainerdestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) özelliği, çıkış dosyaları için hedef Blobu veya sanal dizini belirtir. Blob veya sanal dizini aynı ada sahip çıkış dosyalarının Azure depolama 'da benzersiz olarak adlandırılması için, bu **yolu** kullanarak blob veya sanal dizine ad verebilirsiniz. Yoldaki görev KIMLIĞINI kullanmak, benzersiz adlar sağlamak ve dosyaları kolayca belirlemek için iyi bir yoldur.
+[Outputfileblobcontainerdestination. Path](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) özelliği, çıkış dosyaları için hedef Blobu veya sanal dizini belirtir. Blob veya sanal dizini aynı ada sahip çıkış dosyalarının Azure depolama 'da benzersiz olarak adlandırılması için, bu **yolu** kullanarak blob veya sanal dizine ad verebilirsiniz. Yoldaki görev KIMLIĞINI kullanmak, benzersiz adlar sağlamak ve dosyaları kolayca belirlemek için iyi bir yoldur.
 
 **Filemodel** özelliği bir joker ifadesi olarak ayarlandıysa, düzeniyle eşleşen tüm dosyalar **Path** özelliği tarafından belirtilen sanal dizine yüklenir. Örneğin, kapsayıcı, `mycontainer` görev kimliği `mytask` ve dosya örüntü Ise, `..\std*.txt` Azure Storage 'daki çıkış dosyalarına yönelik mutlak URI 'ler şuna benzer olacaktır:
 
@@ -139,7 +139,7 @@ Azure depolama 'daki sanal dizinler hakkında daha fazla bilgi için bkz. [bir k
 
 ## <a name="diagnose-file-upload-errors"></a>Karşıya dosya yükleme hatalarını tanılama
 
-Çıktı dosyalarını Azure depolama 'ya yüklemek başarısız olursa, görev **tamamlandı** durumuna gider ve [taskexecutionınformation. FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) özelliği ayarlanır. Hangi hatanın oluştuğunu belirlemek için **FailureInformation** özelliğini inceleyin. Örneğin, kapsayıcı bulunamazsa dosya yükleme sırasında oluşan bir hata aşağıda verilmiştir:
+Çıktı dosyalarını Azure depolama 'ya yüklemek başarısız olursa, görev **tamamlandı** durumuna gider ve [taskexecutionınformation. FailureInformation](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) özelliği ayarlanır. Hangi hatanın oluştuğunu belirlemek için **FailureInformation** özelliğini inceleyin. Örneğin, kapsayıcı bulunamazsa dosya yükleme sırasında oluşan bir hata aşağıda verilmiştir:
 
 ```
 Category: UserError
@@ -163,7 +163,7 @@ C# dilinde geliştiriyorsanız, [.net Için toplu Işlem dosya kuralları kitapl
 string containerName = job.OutputStorageContainerName();
 ```
 
-Kapsayıcıya yazmak için kullanılan bir paylaşılan erişim imzası (SAS) URL 'SI döndürmek için [Cloudjobextensions. GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) yöntemini kullanabilirsiniz. Daha sonra bu SAS 'yi [Outputfileblobcontainerdestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) oluşturucusuna geçirebilirsiniz.
+Kapsayıcıya yazmak için kullanılan bir paylaşılan erişim imzası (SAS) URL 'SI döndürmek için [Cloudjobextensions. GetOutputStorageContainerUrl](/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) yöntemini kullanabilirsiniz. Daha sonra bu SAS 'yi [Outputfileblobcontainerdestination](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) oluşturucusuna geçirebilirsiniz.
 
 C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kendiniz uygulamanız gerekir.
 
@@ -172,7 +172,7 @@ C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kend
 [Persistoutkoyar][github_persistoutputs] örnek proje, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya devam ettirmek için .NET için Batch istemci kitaplığı 'nın nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Projeyi **Visual Studio 2019**' de açın.
-2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.
+2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft.Azure.Batch. Samples. Common projesindeki **accountsettings. Settings** ' e ekleyin.
 3. Çözümü **oluşturun** (ancak çalıştırmayın). İstenirse tüm NuGet paketlerini geri yükleyin.
 4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe`. Zip paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
 5. **Persistoutkoyar** projesini **başlatın** (çalıştırın).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050495"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963946"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve C++ kullanarak SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ Azure SQL veritabanınız sağlandıktan sonra bağlantı bilgilerini belirlemen
 
 ![ODBCConnectionStringProps](./media/develop-cplusplus-simple/dbconnection.png)
 
-**ODBC içeriğini (node. js içerir) [SQL Authentication]** dizesini kopyalayın. Bu dizeyi daha sonra C++ ODBC komut satırı yorumlayıcımızdan bağlanmak için kullanıyoruz. Bu dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar.
+ODBC içeriğini kopyalayın **(Node.js) [SQL Authentication] dizesini içerir** . Bu dizeyi daha sonra C++ ODBC komut satırı yorumlayıcımızdan bağlanmak için kullanıyoruz. Bu dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar.
 
 ## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>3. Adım: IP 'nizi güvenlik duvarına ekleme
 
@@ -91,12 +91,14 @@ Bu öğreticide, bir Ubuntu 16,04 Linux dağıtımının ayarlanmış olduğunu 
 
 Aşağıdaki adımlarda, uygulamanız için SQL ve ODBC için gereken kitaplıklar yüklenir:
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Visual Studio’yu başlatın. Araçlar-> Seçenekler altında > platformlar arası > bağlantı Yöneticisi ' ne, Linux kutuya bir bağlantı ekleyin:
 
@@ -109,11 +111,13 @@ SSH üzerinden bağlantı kurulduktan sonra boş bir proje (Linux) şablonu olu�
 Daha sonra [Yeni bir C kaynak dosyası ekleyebilir ve bu içeriği değiştirebilirsiniz](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). ODBC API 'Leri SQLAllocHandle, SQLSetConnectAttr ve SQLDriverConnect kullanarak, veritabanınıza bir bağlantı başlatabilir ve bir bağlantı kurabilirsiniz.
 Windows ODBC örneğinde olduğu gibi, SQLDriverConnect çağrısını, daha önce Azure portal kopyaladığınız veritabanı bağlantı dizesi parametrelerinizin ayrıntıları ile değiştirmeniz gerekir.
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 Derleme öncesinde yapmanız gereken son şey, **ODBC** 'yi bir kitaplık bağımlılığı olarak eklemektir:
 

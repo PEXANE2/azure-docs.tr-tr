@@ -7,20 +7,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 6a5335a1048adaa50344e75662b4ad593955f34d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694952"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963181"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
 
 Yayımcı, Iş Ortağı Merkezi 'nde yayımlanacak bir teklif için özel ölçüm boyutları oluşturduğunda ölçülen faturalandırma API 'Leri kullanılmalıdır. Kullanım olaylarını yaymaya yönelik özel boyutları olan bir veya daha fazla planı olan satın alınan tüm teklifler için ölçülen faturalandırma API 'Leri ile tümleştirme gereklidir.
 
-SaaS için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/saas-metered-billing).
+SaaS için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](saas-metered-billing.md).
 
-Yönetilen bir uygulama planına sahip bir Azure uygulaması teklifi için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için, [yeni Azure uygulamaları oluşturma teklifinin teknik yapılandırma bölümüne](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer#technical-configuration-managed-application-plans-only)bakın.
+Yönetilen bir uygulama planına sahip bir Azure uygulaması teklifi için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için, [yeni Azure uygulamaları oluşturma teklifinin teknik yapılandırma bölümüne](create-new-azure-apps-offer.md#technical-configuration)bakın.
 
 ## <a name="enforcing-tls-12-note"></a>TLS 1,2 zorlama
 
@@ -38,14 +38,14 @@ Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım o
 
 *Sorgu parametreleri:*
 
-|            |          |
+| Parametresi | Öneri          |
 | ---------- | ---------------------- |
 | `ApiVersion` | 2018-08-31 kullanın. |
 | | |
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json`    |
+| İçerik türü       | `application/json` kullan  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
@@ -151,13 +151,13 @@ Toplu kullanım olayı API 'SI, birden fazla satın alınan kaynağın kullanım
 
 *Sorgu parametreleri:*
 
-|            |     |
+| Parametre  | Öneri     |
 | ---------- | -------------------- |
 | `ApiVersion` | 2018-08-31 kullanın. |
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json`       |
+| İçerik türü       | `application/json` kullan       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |

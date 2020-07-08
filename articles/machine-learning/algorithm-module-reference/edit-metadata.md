@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669979"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965017"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
 
@@ -55,8 +55,8 @@ Tipik meta veri değişiklikleri şunları içerebilir:
     + Meta verileri düzenleme işlemini gerçekleştirdikten sonra sütun türü ve değerler değişecektir. Sütun veri türünü sıfırlamak için meta verileri Düzenle ' i kullanarak, özgün veri türünü dilediğiniz zaman kurtarabilirsiniz.  
 
     > [!NOTE]
-        > **DateTime biçimi** [Python yerleşik tarih saat biçimini](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)izler.  
-        > Herhangi bir sayı türünü **DateTime** türüne değiştirirseniz, **DateTime biçim** alanını boş bırakın. Şu anda hedef veri biçimini belirtmek mümkün değildir.
+    > **DateTime biçimi** [Python yerleşik tarih saat biçimini](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)izler.  
+    > Herhangi bir sayı türünü **DateTime** türüne değiştirirseniz, **DateTime biçim** alanını boş bırakın. Şu anda hedef veri biçimini belirtmek mümkün değildir.
 
 1. Seçili olan sütunlardaki değerlerin kategori olarak değerlendirilip değerlendirilmeyeceğini belirtmek için **kategorik** seçeneğini belirleyin.
 
