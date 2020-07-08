@@ -4,10 +4,9 @@ description: Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77117744"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances bir emptyDir birimi bağlama
@@ -35,7 +34,7 @@ Linux *Emptydir* biriminin en büyük boyutu 50 GB 'dir.
 
 Bir dizin birimini bir kapsayıcı örneğine bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), [YAML dosyası](container-instances-reference-yaml.md)ya da bir kapsayıcı grubunu dağıtmak için diğer programlı yöntemler kullanarak dağıtabilirsiniz.
 
-İlk olarak, dosyanın `volumes` kapsayıcı grubu `properties` bölümünde diziyi doldurun. Ardından, `volumeMounts` *Dizin birimini bağlamak* istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, diziyi kapsayıcı tanımının `properties` bölümünde doldurun.
+İlk olarak, `volumes` dosyanın kapsayıcı grubu bölümünde diziyi doldurun `properties` . Ardından, Dizin *birimini bağlamak* istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
 
 Örneğin, aşağıdaki Kaynak Yöneticisi şablonu, her biri *Emptydir* birimini bağlayan iki kapsayıcıyı içeren bir kapsayıcı grubu oluşturur:
 

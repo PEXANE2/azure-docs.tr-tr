@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083139"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Şirket içi VMware iş yükleri için bir olağanüstü durum kurtarma sitesi olarak CloudSimple özel bulutu ayarlama
@@ -41,7 +40,7 @@ Aşağıdaki şekilde, Zerto çözümünün mimarisi gösterilmektedir.
 
 Aşağıdaki bölümlerde özel bulutunuzda Zerto sanal çoğaltmasını kullanarak bir DR çözümünün nasıl dağıtılacağı açıklanır.
 
-1. [Ön koşullar](#prerequisites)
+1. [Önkoşullar](#prerequisites)
 2. [CloudSimple özel bulutu 'nda isteğe bağlı yapılandırma](#optional-configuration-on-your-private-cloud)
 3. [CloudSimple özel bulutu üzerinde ZVM ve VRA 'yi ayarlama](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [Sanal koruma grubunu ayarla](#set-up-zerto-virtual-protection-group)
@@ -51,7 +50,7 @@ Aşağıdaki bölümlerde özel bulutunuzda Zerto sanal çoğaltmasını kullana
 Şirket içi ortamınızdan özel bulutunuzun sanal çoğaltmasını etkinleştirmek için aşağıdaki önkoşulları doldurun.
 
 1. Şirket [içi ağınız ve CloudSimple özel bulutunuz arasında siteden sıteye VPN bağlantısı kurun](set-up-vpn.md).
-2. [Özel bulut yönetimi bileşenlerinizin özel bulut DNS sunucularına iletilmesi IÇIN DNS aramasını ayarlayın](on-premises-dns-setup.md).  DNS aramasının iletilmesini etkinleştirmek için, şirket içi DNS sunucunuzda CloudSimple DNS sunucularına yönelik `*.cloudsimple.io` bir iletme bölgesi girişi oluşturun.
+2. [Özel bulut yönetimi bileşenlerinizin özel bulut DNS sunucularına iletilmesi IÇIN DNS aramasını ayarlayın](on-premises-dns-setup.md).  DNS aramasının iletilmesini etkinleştirmek için, şirket içi DNS sunucunuzda CloudSimple DNS sunucularına yönelik bir iletme bölgesi girişi oluşturun `*.cloudsimple.io` .
 3. Şirket içi vCenter bileşenlerinin şirket içi DNS sunucularına iletilmesi için DNS aramasını ayarlayın.  Siteden siteye VPN üzerinden CloudSimple özel bulutunuzda DNS sunucularına ulaşılamamalıdır. Yardım almak için aşağıdaki bilgileri sağlayarak bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz.  
 
     * Şirket içi DNS etki alanı adı

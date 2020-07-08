@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162812"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark kabuğu 'ndan Apache Spark çalıştırma
@@ -59,7 +58,7 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. Bir CSV dosyasını sorgulayın. Aşağıdaki dilin ve `spark-shell` `pyspark`için çalışıp çalışmadığını aklınızda bulabilirsiniz.
+1. Bir CSV dosyasını sorgulayın. Aşağıdaki dilin ve için çalışıp çalışmadığını aklınızda bulabilirsiniz `spark-shell` `pyspark` .
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
@@ -87,7 +86,7 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     data.select("BuildingID", "Country").show(10)
     ```
 
-1. Çık
+1. Çıkış
 
     ```spark-shell
     :q
@@ -101,17 +100,17 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
 
 Spark kabuğunu çalıştırdığınızda varsayılan olarak, sizin için otomatik olarak Mini oturum ve parlak bağlam örnekleri oluşturulur.
 
-Mini erişimli oturum örneğine erişmek için girin `spark`. Mini bağlam örneğine erişmek için girin `sc`.
+Mini erişimli oturum örneğine erişmek için girin `spark` . Mini bağlam örneğine erişmek için girin `sc` .
 
 ## <a name="important-shell-parameters"></a>Önemli kabuk parametreleri
 
-Spark Shell komutu (`spark-shell`veya `pyspark`) birçok komut satırı parametresini destekler. Parametrelerin tam listesini görmek için Spark kabuğunu anahtarla `--help`başlatın. Bu parametrelerden bazıları yalnızca Spark kabuğu 'nun sarmaladığı için `spark-submit`geçerlidir.
+Spark Shell komutu ( `spark-shell` veya `pyspark` ) birçok komut satırı parametresini destekler. Parametrelerin tam listesini görmek için Spark kabuğunu anahtarla başlatın `--help` . Bu parametrelerden bazıları yalnızca `spark-submit` Spark kabuğu 'nun sarmaladığı için geçerlidir.
 
 | switch | açıklama | örnek |
 | --- | --- | --- |
-| --Master MASTER_URL | Ana URL 'YI belirtir. HDInsight 'ta bu değer her zaman `yarn`olur. | `--master yarn`|
+| --Master MASTER_URL | Ana URL 'YI belirtir. HDInsight 'ta bu değer her zaman olur `yarn` . | `--master yarn`|
 | --jars JAR_LIST | Sürücü ve yürütücü Sınıfyoluna dahil etmek için yerel jar dosyaları dışındaki 'ın virgülle ayrılmış listesi. HDInsight 'ta, bu liste Azure Storage veya Data Lake Storage varsayılan dosya sistemine yönelik yollardan oluşur. | `--jars /path/to/examples.jar` |
-| --paketler MAVEN_COORDS | Sürücü ve yürütücü Sınıfyoluna dahil etmek için jar dosyaları dışındaki 'ın Maven koordinatlarının virgülle ayrılmış listesi. Yerel Maven depolarında, Maven orta, ve ile `--repositories`belirtilen diğer uzak depolarda arama yapar. Koordinatlar için biçim *GroupID*:*ArtifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --paketler MAVEN_COORDS | Sürücü ve yürütücü Sınıfyoluna dahil etmek için jar dosyaları dışındaki 'ın Maven koordinatlarının virgülle ayrılmış listesi. Yerel Maven depolarında, Maven orta, ve ile belirtilen diğer uzak depolarda arama yapar `--repositories` . Koordinatlar için biçim *GroupID*:*ArtifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --Kopyala-Dosyalar LISTESI | Yalnızca Python için, PYTHONPATH üzerine yerleştirilecek. zip,. yumurg veya. Kopyala dosyalarının virgülle ayrılmış bir listesi. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162574"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Azure portal ile çoklu bit hızına sahip akışlar oluşturmak için Media Services kullanarak canlı akış gerçekleştirme  
@@ -185,7 +184,7 @@ Varlıklarınızı yönetmek için, **Ayar**’ı seçin ve **Varlıklar**’a t
 
 ![Varlıklar](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. Daha uzun bir süre için bir Kanal çalıştırmanız gerekiyorsa lütfen amshelp@microsoft.com adresine başvurun.
 * İçerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumunda olduğundan emin olun.
 
@@ -194,6 +193,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77186871"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
@@ -201,7 +200,7 @@ public Dictionary<string, Object> stormConf { get; set; }
 public Dictionary<string, Object> pluginConf { get; set; }  
 ```
 
-**Stormconf** bölümü, fırtınası tarafından tanımlanan parametrelerdir ve **PLUGINCONF** bölümü SCP tarafından tanımlanan parametrelerdir. Bir örneği aşağıda verilmiştir:
+**Stormconf** bölümü, fırtınası tarafından tanımlanan parametrelerdir ve **PLUGINCONF** bölümü SCP tarafından tanımlanan parametrelerdir. İşte bir örnek:
 
 ```csharp
 public class Constants
@@ -217,7 +216,7 @@ public class Constants
 }
 ```
 
-**Topologyıcontext** türü topoloji bağlamını alır. Birden çok paralel bileşen için en yararlı seçenektir. Bir örneği aşağıda verilmiştir:
+**Topologyıcontext** türü topoloji bağlamını alır. Birden çok paralel bileşen için en yararlı seçenektir. İşte bir örnek:
 
 ```csharp
 //demo how to get TopologyContext info
@@ -357,7 +356,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-**Simplemode** **true**olarak ayarlandığında, **COMMIT** yöntemi ZooKeeper içinde karşılık gelen znode 'u siler. Aksi takdirde, yöntemi geçerli ZNode 'u siler ve KAYDEDILMIŞ\_yola yeni bir düğüm ekler.
+**Simplemode** **true**olarak ayarlandığında, **COMMIT** yöntemi ZooKeeper içinde karşılık gelen znode 'u siler. Aksi takdirde, yöntemi geçerli ZNode 'u siler ve KAYDEDILMIŞ yola yeni bir düğüm ekler \_ .
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -540,7 +539,7 @@ SCP.NET, özelleştirilmiş bir gruplama yöntemi ekler ve gruplandırmayı yapm
 Önceki belirtim dosyasında:
 
 * `scp-field-group`gruplandırmanın SCP tarafından uygulanan özelleştirilmiş bir alan gruplandırması olduğunu belirtir.
-* `:tx`ya `:non-tx` da topolojinin işlem olup olmadığını belirtir. Başlangıç dizini işlem ve işlem dışı topolojiler arasında farklı olduğundan, bu bilgiye ihtiyacınız vardır.
+* `:tx`ya da `:non-tx` topolojinin işlem olup olmadığını belirtir. Başlangıç dizini işlem ve işlem dışı topolojiler arasında farklı olduğundan, bu bilgiye ihtiyacınız vardır.
 * `[0,1]`sıfır ile başlayan bir alan kimliği karma kümesi belirtir.
 
 ### <a name="hybrid-topology"></a>Karma topolojisi
@@ -549,7 +548,7 @@ Yerel fırtınası kodu Java 'da yazılmıştır. SCP.NET, iş mantığınızı 
 
 ### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Bir belirtim dosyasında Java Spout/Ruli belirtme
 
-Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spout** ve **SCP-sürgüsü** kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
+Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spout** ve **SCP-sürgüsü** kullanabilirsiniz. İşte bir örnek:
 
 ```csharp
 (spout-spec 
@@ -557,11 +556,11 @@ Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spo
   :p 1)
 ```
 
-Java `microsoft.scp.example.HybridTopology.Generator` Spout sınıfının adı aşağıda verilmiştir.
+`microsoft.scp.example.HybridTopology.Generator`Java Spout sınıfının adı aşağıda verilmiştir.
 
 ### <a name="specify-the-java-classpath-in-a-runspec-command"></a>RunSpec komutunda Java sınıfyolunu belirtme
 
-Java spotları veya cıvataları içeren topoloji göndermek istiyorsanız, ilk olarak bunları JAR dosyaları oluşturacak şekilde derleyin. Ardından, topolojiyi gönderdiğinizde JAR dosyalarını içeren Java sınıf yolunu belirtin. Bir örneği aşağıda verilmiştir:
+Java spotları veya cıvataları içeren topoloji göndermek istiyorsanız, ilk olarak bunları JAR dosyaları oluşturacak şekilde derleyin. Ardından, topolojiyi gönderdiğinizde JAR dosyalarını içeren Java sınıf yolunu belirtin. İşte bir örnek:
 
 ```csharp
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
@@ -668,7 +667,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 ## <a name="scp-host-mode"></a>SCP ana bilgisayar modu
 
-Bu modda, kodunuzu bir DLL olarak derleyebilir ve bir topoloji göndermek için SCP tarafından sağlandığı SCPHost. exe ' yi kullanabilirsiniz. Bir belirtim dosyası şu kod gibi görünür:
+Bu modda, kodunuzu bir DLL olarak derleyebilir ve bir topoloji göndermek için SCP tarafından sağlandığı SCPHost.exe kullanabilirsiniz. Bir belirtim dosyası şu kod gibi görünür:
 
 ```csharp
 (scp-spout
@@ -679,10 +678,10 @@ Bu modda, kodunuzu bir DLL olarak derleyebilir ve bir topoloji göndermek için 
   })
 ```
 
-Burada, `"plugin.name"` SCP SDK 'sı `"SCPHost.exe"`tarafından sunulan olarak belirtilir. SCPHost. exe aşağıdaki sırada üç parametreyi kabul eder:
+Burada, `"plugin.name"` `"SCPHost.exe"` SCP SDK 'sı tarafından sunulan olarak belirtilir. SCPHost.exe aşağıdaki sırada üç parametre kabul eder:
 
-1. Bu örnekteki DLL adı `"HelloWorld.dll"` .
-1. Bu örnekteki sınıf adı `"Scp.App.HelloWorld.Generator"` .
+1. `"HelloWorld.dll"`Bu ÖRNEKTEKI dll adı.
+1. `"Scp.App.HelloWorld.Generator"`Bu örnekteki sınıf adı.
 1. Bir genel statik yöntemin adı, bu, bir **SCC, SCC**'in bir örneğini almak için çağrılabilir.
 
 Ana bilgisayar modunda, SCP platformu tarafından çağrılması için kodunuzu bir DLL olarak derleyin. Platform daha sonra işlem mantığının tamamına tam denetim gönderebildiğinden, topolojiyi SCP ana bilgisayar modunda göndermeniz önerilir. Bunun yapılması geliştirme deneyimini basitleştirir. Ayrıca, daha fazla esneklik ve daha sonraki sürümlerde daha iyi uyumluluk sağlar.
@@ -693,7 +692,7 @@ Ana bilgisayar modunda, SCP platformu tarafından çağrılması için kodunuzu 
 
 Aşağıdaki basit HelloWorld örneği, SCP.NET bir listesini gösterir. **Oluşturucu** adlı ve **Splitter** ve **sayaç**olarak adlandırılan iki cıvam ile birlikte işlem dışı bir topoloji kullanır. **Generator** Spout, cümleleri rastgele oluşturur ve bu cümleleri **bölümlendiriciye**yayar. **Bölümlendirici** , cümleleri sözcüklere böler ve bu sözcükleri **sayaç** sürgüsü 'a yayar. **Sayaç** sürgüsü, her sözcüğün oluşumunu kaydetmek için bir sözlük kullanır.
 
-Bu örnek iki belirtim dosyasına sahiptir: HelloWorld. spec ve HelloWorld\_enableack. spec. C# kodu, `pluginConf` nesneyi Java tarafında alarak onay yapılıp yapılmayacağını bulabilir.
+Bu örnek iki belirtim dosyasına sahiptir: HelloWorld. spec ve HelloWorld \_ enableack. spec. C# kodu, nesneyi Java tarafında alarak onay yapılıp yapılmayacağını bulabilir `pluginConf` .
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -704,7 +703,7 @@ if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK)
 Context.Logger.Info("enableAck: {0}", enableAck);
 ```
 
-Spout 'de onay etkinse, sözlük, kabul edilmemiş olan tanımlama gruplarını önbelleğe alır. `Fail` Çağrılırsa, başarısız kayıt düzeni yeniden yürütülür.
+Spout 'de onay etkinse, sözlük, kabul edilmemiş olan tanımlama gruplarını önbelleğe alır. `Fail`Çağrılırsa, başarısız kayıt düzeni yeniden yürütülür.
 
 ```csharp
 public void Fail(long seqId, Dictionary<string, Object> parms)
@@ -728,7 +727,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>Merhaba Worldtx
 
-Aşağıdaki HelloWorldTx örneği, işlem topolojisinin nasıl uygulanacağını gösterir. Örnek, **Oluşturucu**adlı bir Spout, **kısmi sayı**olarak adlandırılan bir yığın işareti ve **Count-Sum**adlı bir COMMIT sürgüsü içerir. Örnek ayrıca üç tane var metin dosyasına sahiptir: DataSource0. txt, DataSource1. txt ve DataSource2. txt.
+Aşağıdaki HelloWorldTx örneği, işlem topolojisinin nasıl uygulanacağını gösterir. Örnek, **Oluşturucu**adlı bir Spout, **kısmi sayı**olarak adlandırılan bir yığın işareti ve **Count-Sum**adlı bir COMMIT sürgüsü içerir. Örnekte ayrıca üç mevcut metin dosyası vardır: DataSource0.txt, DataSource1.txt ve DataSource2.txt.
 
 Her işlemde, **Oluşturucu** Spout var olan üç dosyadan rastgele iki dosya seçer ve iki dosya adını **kısmi sayı** sürgüüne yayar. **Kısmi sayı** sürgüsü:
 
@@ -763,7 +762,7 @@ public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-`FinishBatch` Çağrıldığında, `lastCommittedTxId` yeniden yürütülmüş bir işlem yoksa güncelleştirilir.
+`FinishBatch`Çağrıldığında, `lastCommittedTxId` yeniden yürütülmüş bir işlem yoksa güncelleştirilir.
 
 ```csharp
 public void FinishBatch(Dictionary<string, Object> parms)
@@ -783,11 +782,11 @@ public void FinishBatch(Dictionary<string, Object> parms)
 
 ### <a name="hybridtopology"></a>HybridTopology
 
-Bu topoloji bir Java Spout ve C# sürgüsü içerir. SCP platformu tarafından belirtilen varsayılan serileştirme ve seri kaldırma uygulamasını kullanır. Belirtim dosyası ayrıntıları için bkz. örnek\\hybridtopology klasöründe hybridtopology. spec dosyasına bakın. Ayrıca bkz., Java sınıfyolunu belirtme için SubmitTopology. bat.
+Bu topoloji bir Java Spout ve C# sürgüsü içerir. SCP platformu tarafından belirtilen varsayılan serileştirme ve seri kaldırma uygulamasını kullanır. \\Belirtim dosyası ayrıntıları için bkz. örnek hybridtopology klasöründe hybridtopology. spec dosyasına bakın. Ayrıca bkz. Java sınıfyolunu belirtme SubmitTopology.bat.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 
-Bu örnek, HelloWorld ile aynı özbir örnektir. Tek fark, kodunuzun DLL olarak derlenmesi ve topoloji SCPHost. exe kullanılarak gönderilir. Daha ayrıntılı bir açıklama için SCP konak modu bölümüne bakın.
+Bu örnek, HelloWorld ile aynı özbir örnektir. Tek fark, kodunuzun DLL olarak derlenmesi ve topoloji SCPHost.exe kullanılarak gönderilir. Daha ayrıntılı bir açıklama için SCP konak modu bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086616"
 ---
 # <a name="persist-state-in-windows"></a>Windows 'da durumu kalıcı yap
@@ -75,7 +74,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     1. Sağ tıklayın ve ardından **Özellikler**' i seçin.
     1. **Güvenlik**’i seçin.
     1. Grup veya Kullanıcı adları altında **Düzenle**' yi seçin.
-    1. **Ekle**' `Users`yi seçin, **adları denetle**' yi seçin ve **Tamam**' ı seçin.
+    1. **Ekle**' yi seçin, `Users` **adları denetle**' yi seçin ve **Tamam**' ı seçin.
     1. *Kullanıcılar Için izinler*altında **Değiştir**' i seçin ve **Tamam**' ı seçin.
 1. Bu birimi bağlamak ve Azure portal Event Grid modülünü yeniden dağıtmak için **bağlamalar** kullanın
 
@@ -112,7 +111,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     ```
 
    >[!IMPORTANT]
-   >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C:\\\\App metadatadb**olmalıdır.
+   >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
 
 
     Örneğin,
@@ -176,7 +175,7 @@ Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir v
     ```
 
     >[!IMPORTANT]
-    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C:\\\\App metadatadb**olmalıdır.
+    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
 
     Örneğin,
 
@@ -220,7 +219,7 @@ Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
 * Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
 * Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak büyük ölçekte yalnızca fark edilebilir hale gelir.
 
-Olay aboneliğindeki olay kalıcılığını etkinleştirmek için şu şekilde `persistencePolicy` `true`ayarlayın:
+Olay aboneliğindeki olay kalıcılığını etkinleştirmek için şu `persistencePolicy` şekilde ayarlayın `true` :
 
  ```json
         {

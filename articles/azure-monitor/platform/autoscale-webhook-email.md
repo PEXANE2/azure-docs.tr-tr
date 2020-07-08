@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77120695"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma
@@ -64,10 +63,10 @@ REST API veya Kaynak Yöneticisi şablonunu kullanırken, aşağıdaki seçenekl
 | Customepostaları |evet |değer null [] veya e-postaların dize dizisi olabilir |
 | Web kancaları |evet |değer null veya geçerli bir URI olabilir |
 | serviceUri |evet |geçerli bir HTTPS URI 'Si |
-| properties |evet |değer boş {} olmalı veya anahtar-değer çiftleri içerebilir |
+| properties |evet |değer boş olmalı {} veya anahtar-değer çiftleri içerebilir |
 
 ## <a name="authentication-in-webhooks"></a>Web kancalarında kimlik doğrulama
-Web kancası, belirteç kimliği URI 'sini bir sorgu parametresi olarak bir belirteç kimliğiyle kaydettiğiniz belirteç tabanlı kimlik doğrulaması kullanarak kimlik doğrulaması yapabilir. Örneğin, https:\//mysamplealert/webcallback? tokenId = sometokenıd&someparameter = someValue
+Web kancası, belirteç kimliği URI 'sini bir sorgu parametresi olarak bir belirteç kimliğiyle kaydettiğiniz belirteç tabanlı kimlik doğrulaması kullanarak kimlik doğrulaması yapabilir. Örneğin, https: \/ /mysamplealert/webcallback? tokenId = sometokenıd&someparameter = someValue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Otomatik ölçeklendirme bildirimi Web kancası yük şeması
 Otomatik ölçeklendirme bildirimi oluşturulduğunda aşağıdaki meta veriler Web kancası yüküne dahil edilir:
@@ -105,16 +104,16 @@ Otomatik ölçeklendirme bildirimi oluşturulduğunda aşağıdaki meta veriler 
 | çalışmasını |evet |Örneklerin artması için, "ölçeği genişletme" ve örneklerde bir azalma için "ölçeklendirilmesi" olacaktır. |
 | bağlam |evet |Otomatik ölçeklendirme eylemi bağlamı |
 | timestamp |evet |Otomatik ölçeklendirme eyleminin tetiklendiği zaman damgası |
-| id |Yes |Otomatik ölçeklendirme ayarının Kaynak Yöneticisi KIMLIĞI |
-| ad |Yes |Otomatik ölçeklendirme ayarının adı |
-| bilgileri |Yes |Otomatik ölçeklendirme hizmetinin aldığı eylemin açıklaması ve örnek sayısında değişiklik |
-| subscriptionId |Yes |Ölçeklendirilen hedef kaynağın abonelik KIMLIĞI |
-| resourceGroupName |Yes |Ölçeklendirilen hedef kaynağın kaynak grubu adı |
-| resourceName |Yes |Ölçeklendirilen hedef kaynağın adı |
-| resourceType |Yes |Desteklenen üç değer: "Microsoft. classiccompute/DomainNames/yuvalar/roller"-bulut hizmeti rolleri, "Microsoft. COMPUTE/virtualmachinescalesets"-sanal makine ölçek kümeleri ve "Microsoft. Web/sunucugrupları"-Web uygulaması |
-| resourceId |Yes |Ölçeklendirilen hedef kaynağın Kaynak Yöneticisi KIMLIĞI |
-| Portal bağlantısı |Yes |Hedef kaynağın özet sayfasına Azure portal bağlantı |
-| oldCapacity |Yes |Otomatik ölçeklendirme bir ölçeklendirme eylemi gerçekleştirirse geçerli (eski) örnek sayısı |
-| newCapacity |Yes |Otomatik olarak kaynağı ölçeklendirilen yeni örnek sayısı |
+| kimlik |Evet |Otomatik ölçeklendirme ayarının Kaynak Yöneticisi KIMLIĞI |
+| name |Evet |Otomatik ölçeklendirme ayarının adı |
+| bilgileri |Evet |Otomatik ölçeklendirme hizmetinin aldığı eylemin açıklaması ve örnek sayısında değişiklik |
+| subscriptionId |Evet |Ölçeklendirilen hedef kaynağın abonelik KIMLIĞI |
+| resourceGroupName |Evet |Ölçeklendirilen hedef kaynağın kaynak grubu adı |
+| resourceName |Evet |Ölçeklendirilen hedef kaynağın adı |
+| resourceType |Evet |Desteklenen üç değer: "Microsoft. classiccompute/DomainNames/yuvalar/roller"-bulut hizmeti rolleri, "Microsoft. COMPUTE/virtualmachinescalesets"-sanal makine ölçek kümeleri ve "Microsoft. Web/sunucugrupları"-Web uygulaması |
+| resourceId |Evet |Ölçeklendirilen hedef kaynağın Kaynak Yöneticisi KIMLIĞI |
+| Portal bağlantısı |Evet |Hedef kaynağın özet sayfasına Azure portal bağlantı |
+| oldCapacity |Evet |Otomatik ölçeklendirme bir ölçeklendirme eylemi gerçekleştirirse geçerli (eski) örnek sayısı |
+| newCapacity |Evet |Otomatik olarak kaynağı ölçeklendirilen yeni örnek sayısı |
 | properties |Hayır |İsteğe bağlı. <anahtar, değer> çiftleri (örneğin, sözlük <dizesi, dize>) kümesi. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabiriminde veya mantıksal uygulama tabanlı iş akışında, yük kullanılarak geçirilebilecek anahtar ve değerleri girebilirsiniz. Özel özellikleri giden Web kancası çağrısına geri geçirmenin alternatif bir yolu, Web kancası URI 'sinin kendisini kullanmaktır (sorgu parametreleri olarak) |
 

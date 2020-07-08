@@ -14,21 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167038"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows komutları-CMD ve PowerShell
 
 Bu bölüm, RDP bağlantı hatalarıyla ilgili sorunları gidermeniz gerektiğinde olduğu gibi, Windows sanal makinenize erişmek için SAC kullanmanız gerekebilecek senaryolarda yaygın görevleri gerçekleştirmeye yönelik örnek komutlar içerir.
 
-SAC, Windows Server 2003 ' den beri tüm Windows sürümlerine eklenmiştir ancak varsayılan olarak devre dışıdır. SAC `sacdrv.sys` çekirdek sürücüsünü, `Special Administration Console Helper` hizmeti (`sacsvr`) ve `sacsess.exe` işlemi kullanır. Daha fazla bilgi için bkz. [acil durum Yönetim Hizmetleri araçları ve ayarları](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+SAC, Windows Server 2003 ' den beri tüm Windows sürümlerine eklenmiştir ancak varsayılan olarak devre dışıdır. SAC `sacdrv.sys` çekirdek sürücüsünü, `Special Administration Console Helper` hizmeti ( `sacsvr` ) ve `sacsess.exe` işlemi kullanır. Daha fazla bilgi için bkz. [acil durum Yönetim Hizmetleri araçları ve ayarları](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
-SAC, çalışan işletim sistemine seri bağlantı noktası aracılığıyla bağlanmanızı sağlar. SAC 'yi SAC 'den başlattığınızda, `sacsess.exe` çalışan işletim `cmd.exe` sistemi içinde başlatılır. VM 'niz için aynı anda sanal makinenizde RDP 'niz varsa, seri konsol özelliği aracılığıyla da SAC 'ye bağlı olursunuz. SAC aracılığıyla erişebileceğiniz CMD, RDP ile bağlıyken kullandığınız `cmd.exe` aynıdır. Aynı komutların ve araçların tümü, bu CMD örneğinden PowerShell 'i başlatma özelliği de dahil olmak üzere kullanılabilir. Bu, sac ile Windows kurtarma ortamı (WinRE) arasında büyük bir farklılık olduğunu ve bu, WinRE 'nin farklı ve en az bir işletim sistemi üzerinde önyüklemesinde çalışan işletim sistemini yönetmenize olanak sağlar. Azure VM 'Leri, seri konsol özelliği ile WinRE 'ye erişme özelliğini desteklemediğinden, Azure VM 'Leri SAC aracılığıyla yönetilebilir.
+SAC, çalışan işletim sistemine seri bağlantı noktası aracılığıyla bağlanmanızı sağlar. SAC 'yi SAC 'den başlattığınızda, `sacsess.exe` `cmd.exe` çalışan işletim sistemi içinde başlatılır. VM 'niz için aynı anda sanal makinenizde RDP 'niz varsa, seri konsol özelliği aracılığıyla da SAC 'ye bağlı olursunuz. SAC aracılığıyla erişebileceğiniz CMD, `cmd.exe` RDP ile bağlıyken kullandığınız aynıdır. Aynı komutların ve araçların tümü, bu CMD örneğinden PowerShell 'i başlatma özelliği de dahil olmak üzere kullanılabilir. Bu, sac ile Windows kurtarma ortamı (WinRE) arasında büyük bir farklılık olduğunu ve bu, WinRE 'nin farklı ve en az bir işletim sistemi üzerinde önyüklemesinde çalışan işletim sistemini yönetmenize olanak sağlar. Azure VM 'Leri, seri konsol özelliği ile WinRE 'ye erişme özelliğini desteklemediğinden, Azure VM 'Leri SAC aracılığıyla yönetilebilir.
 
-SAC geri kaydırma yapmadan bir 80x24 ekran arabelleği ile sınırlı olduğundan, çıktıyı tek seferde `| more` göstermek için komutlara ekleyin. Sonraki `<spacebar>` sayfayı görmek veya `<enter>` sonraki satırı görmek için kullanın.
+SAC geri kaydırma yapmadan bir 80x24 ekran arabelleği ile sınırlı olduğundan, `| more` çıktıyı tek seferde göstermek için komutlara ekleyin. `<spacebar>`Sonraki sayfayı görmek veya `<enter>` sonraki satırı görmek için kullanın.
 
 `SHIFT+INSERT`, seri konsol penceresi için yapıştırma kısayoludur.
 
@@ -62,7 +61,7 @@ Eşittir işaretinden sonra bir boşluk gereklidir.
 ### <a name="set-service-start-type"></a>Hizmet başlatma türünü ayarla
 `sc config termservice start= demand`
 
-Eşittir işaretinden sonra bir boşluk gereklidir. Olası başlangıç değerleri şunlardır `boot` `system` `auto` `demand`,,,, `disabled`, `delayed-auto`.
+Eşittir işaretinden sonra bir boşluk gereklidir. Olası başlangıç değerleri şunlardır,,,, `boot` `system` `auto` `demand` `disabled` , `delayed-auto` .
 ### <a name="set-service-dependencies"></a>Hizmet bağımlılıklarını ayarlama
 `sc config termservice depend= RPCSS`
 
@@ -70,13 +69,13 @@ Eşittir işaretinden sonra bir boşluk gereklidir.
 ### <a name="start-service"></a>Hizmeti Başlat
 `net start termservice`
 
-or
+veya
 
 `sc start termservice`
 ### <a name="stop-service"></a>Hizmeti durdur
 `net stop termservice`
 
-or
+veya
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>Ağ özelliklerini yönetme
@@ -91,7 +90,7 @@ or
 ### <a name="set-nic-to-use-dhcp"></a>NIC 'yi DHCP kullanacak şekilde ayarlama
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Hakkında `netsh`daha fazla bilgi için [buraya tıklayın](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Hakkında daha fazla bilgi `netsh` için [buraya tıklayın](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı yine de DHCP 'yi kullanarak statik IP 'yi VM 'ye verir.
 ### <a name="ping"></a>Ping
@@ -128,7 +127,7 @@ Windows Güvenlik Duvarı 'nı geçici olarak kurala göre sorun giderirken bu k
 ### <a name="verify-user-account-is-enabled"></a>Kullanıcı hesabının etkin olduğunu doğrulama
 `net user <username> | find /i "active"`
 
-Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator`.
+Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator` .
 ### <a name="enable-user-account"></a>Kullanıcı hesabını etkinleştir
 `net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>Kullanıcı hesabı özelliklerini görüntüle
@@ -154,7 +153,7 @@ Yerel yönetici hesabından ilgilendiğiniz örnek satırlar:
 ### <a name="query-event-log-errors"></a>Olay günlüğü hatalarını sorgula
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
-Döndürülecek `/c:10` olay sayısı olarak değiştirin veya filtreyle eşleşen tüm olayları döndürmek için taşıyın.
+`/c:10`Döndürülecek olay sayısı olarak değiştirin veya filtreyle eşleşen tüm olayları döndürmek için taşıyın.
 ### <a name="query-event-log-by-event-id"></a>Olay KIMLIĞINE göre olay günlüğünü sorgula
 `wevtutil qe system /c:1 /f:text /q:"Event[System[EventID=11]]" | more`
 ### <a name="query-event-log-by-event-id-and-provider"></a>Olay KIMLIĞI ve sağlayıcıya göre olay günlüğünü sorgula
@@ -162,24 +161,24 @@ Döndürülecek `/c:10` olay sayısı olarak değiştirin veya filtreyle eşleş
 ### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Son 24 saat için olay KIMLIĞINE ve sağlayıcıya göre olay günlüğünü sorgula
 `wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11 and TimeCreated[timediff(@SystemTime) <= 86400000]]]"`
 
-24 `604800000` saat yerine 7 gün geri bakmak için kullanın.
+`604800000`24 saat yerine 7 gün geri bakmak için kullanın.
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Son 7 günde olay KIMLIĞI, sağlayıcı ve EventData 'a göre olay günlüğünü sorgula
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
 ## <a name="view-or-remove-installed-applications"></a>Yüklü uygulamaları görüntüleme veya kaldırma
 ### <a name="list-installed-applications"></a>Yüklü uygulamaları listeleme
 `wmic product get Name,InstallDate | sort /r | more`
 
-Son `sort /r` zamanlarda nelerin yüklendiğini görmeyi kolaylaştırmak için yükleme tarihine göre azalan düzende sıralanır. Sonraki `<spacebar>` çıkış sayfasına ilerlemek veya `<enter>` bir satır ilerlemek için kullanın.
+`sort /r`Son zamanlarda nelerin yüklendiğini görmeyi kolaylaştırmak için yükleme tarihine göre azalan düzende sıralanır. `<spacebar>`Sonraki çıkış sayfasına ilerlemek veya `<enter>` bir satır ilerlemek için kullanın.
 ### <a name="uninstall-an-application"></a>Bir uygulamayı kaldırma
 `wmic path win32_product where name="<name>" call uninstall`
 
-Kaldırmak `<name>` istediğiniz uygulamanın Yukarıdaki komutta döndürülen adla değiştirin.
+`<name>`Kaldırmak istediğiniz uygulamanın Yukarıdaki komutta döndürülen adla değiştirin.
 
 ## <a name="file-system-management"></a>Dosya sistemi yönetimi
 ### <a name="get-file-version"></a>Dosya sürümünü al
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
-Bu örnek, Windows sürümüne bağlı olarak netvsc. sys, netvsc63. sys veya netvsc60. sys olan sanal NIC sürücüsünün dosya sürümünü döndürür.
+Bu örnek, Windows sürümüne bağlı olarak netvsc.sys, netvsc63.sys veya netvsc60.sys olan sanal NIC sürücüsünün dosya sürümünü döndürür.
 ### <a name="scan-for-system-file-corruption"></a>Sistem dosyası bozukluğunu Tara
 `sfc /scannow`
 
@@ -195,7 +194,7 @@ Ayrıca bkz. [Windows görüntüsünü onarma](https://docs.microsoft.com/window
 ### <a name="restore-file-permissions-from-acl-file"></a>Dosya izinlerini ACL dosyasından geri yükle
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-Kullanmanın `/restore` , kullanırken belirttiğiniz klasörün üst klasörü olması gerekir `/save`. Bu örnekte, `\RSA` Yukarıdaki `\MachineKeys` `/save` örnekte belirtilen klasörün üst öğesidir.
+Kullanmanın, kullanırken `/restore` belirttiğiniz klasörün üst klasörü olması gerekir `/save` . Bu örnekte, `\RSA` `\MachineKeys` Yukarıdaki örnekte belirtilen klasörün üst öğesidir `/save` .
 ### <a name="take-ntfs-ownership-of-a-folder"></a>Bir klasörün NTFS sahipliğini al
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>Yinelemeli olarak bir klasöre NTFS izinleri verme
@@ -210,11 +209,11 @@ Kullanmanın `/restore` , kullanırken belirttiğiniz klasörün üst klasörü 
 ### <a name="show-os-version"></a>İşletim sistemi sürümünü göster
 `ver`
 
-or
+veya
 
 `wmic os get caption,version,buildnumber /format:list`
 
-or
+veya
 
 `systeminfo  find /i "os name"`
 
@@ -222,7 +221,7 @@ or
 ### <a name="view-os-install-date"></a>İşletim sistemi yüklemesi tarihini görüntüleme
 `systeminfo | find /i "original"`
 
-or
+veya
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>Son önyükleme zamanını görüntüle
@@ -230,7 +229,7 @@ or
 ### <a name="view-time-zone"></a>Saat dilimini görüntüle
 `systeminfo | find /i "time zone"`
 
-or
+veya
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>Windows 'u yeniden Başlat
@@ -280,11 +279,11 @@ Yukarıdaki komut PSReadLine modülü sürümünü döndürürse, kaldırmak iç
 ### <a name="set-service-logon-account"></a>Hizmet oturum açma hesabını ayarla
 `(get-wmiobject win32_service -filter "name='termservice'").Change($null,$null,$null,$null,$null,$false,'NT Authority\NetworkService')`
 
-, `NT AUTHORITY\LocalService` `NT AUTHORITY\NetworkService`Veya `LocalSystem`dışında bir hizmet hesabı kullanırken, hesap adından sonraki son (sekizinci) bağımsız değişken olarak hesap parolasını belirtin.
+, Veya dışında bir hizmet hesabı kullanırken, hesap `NT AUTHORITY\LocalService` `NT AUTHORITY\NetworkService` `LocalSystem` adından sonraki son (sekizinci) bağımsız değişken olarak hesap parolasını belirtin.
 ### <a name="set-service-startup-type"></a>Hizmet başlatma türünü ayarla
 `set-service termservice -startuptype Manual`
 
-`Set-service`Başlangıç `Automatic`türünü `Manual`,, `Disabled` veya kabul eder.
+`Set-service``Automatic` `Manual` Başlangıç türünü,, veya kabul eder `Disabled` .
 ### <a name="set-service-dependencies"></a>Hizmet bağımlılıklarını ayarlama
 `Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\TermService' -Name DependOnService -Value @('RPCSS','TermDD')`
 ### <a name="start-service"></a>Hizmeti Başlat
@@ -295,42 +294,42 @@ Yukarıdaki komut PSReadLine modülü sürümünü döndürürse, kaldırmak iç
 ### <a name="show-nic-properties"></a>NIC özelliklerini göster
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-or
+veya
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
-`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı `Get-WmiObject`için kullanılabilir.
+`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
 ### <a name="show-ip-properties"></a>IP özelliklerini göster
 `get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'" |  format-list DNSHostName,IPAddress,DHCPEnabled,IPSubnet,DefaultIPGateway,MACAddress,DHCPServer,DNSServerSearchOrder`
 ### <a name="enable-nic"></a>NIC 'yi etkinleştir
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-or
+veya
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
-`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı `Get-WmiObject`için kullanılabilir.
+`Get-NetAdapter`2012 + ' de, 2008R2 kullanımı için kullanılabilir `Get-WmiObject` .
 ### <a name="set-nic-to-use-dhcp"></a>NIC 'yi DHCP kullanacak şekilde ayarlama
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | Set-NetIPInterface -DHCP Enabled`
 
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
-`Get-NetAdapter`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject`. Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı hala IP 'yi VM 'ye vermek için DHCP kullanır.
+`Get-NetAdapter`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı hala IP 'yi VM 'ye vermek için DHCP kullanır.
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
 > [!NOTE]
-> Write-Progress cmdlet 'i bu komutla çalışmayabilir. Risk azaltma olarak, ilerleme çubuğunu devre `$ProgressPreference = "SilentlyContinue"` dışı bırakmak için PowerShell 'de çalıştırabilirsiniz.
+> Write-Progress cmdlet 'i bu komutla çalışmayabilir. Risk azaltma olarak, `$ProgressPreference = "SilentlyContinue"` ilerleme çubuğunu devre dışı bırakmak Için PowerShell 'de çalıştırabilirsiniz.
 
-or
+veya
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
-`Test-Netconnection`Hiçbir parametre olmadan ping `internetbeacon.msedge.net`göndermeye çalışır. 2012 + ' de kullanılabilir. 2008R2 için ikinci `Get-WmiObject` örnekte olduğu gibi kullanın.
+`Test-Netconnection`Hiçbir parametre olmadan ping göndermeye çalışır `internetbeacon.msedge.net` . 2012 + ' de kullanılabilir. 2008R2 için `Get-WmiObject` ikinci örnekte olduğu gibi kullanın.
 ### <a name="port-ping"></a>Bağlantı noktası ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
-or
+veya
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -338,17 +337,17 @@ or
 ### <a name="test-dns-name-resolution"></a>Test DNS ad çözümlemesi
 `resolve-dnsname bing.com`
 
-or
+veya
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
-`Resolve-DnsName`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `System.Net.DNS`.
+`Resolve-DnsName`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `System.Net.DNS` .
 ### <a name="show-windows-firewall-rule-by-name"></a>Windows güvenlik duvarı kuralını ada göre göster
 `get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>Windows güvenlik duvarı kuralını bağlantı noktasına göre göster
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-or
+veya
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -356,41 +355,41 @@ or
 ### <a name="disable-windows-firewall"></a>Windows güvenlik duvarını devre dışı bırak
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
-`Set-NetFirewallProfile`, 2012 + ' da kullanılabilir. 2008R2 için yukarıdaki `netsh advfirewall` cmd bölümünde başvurulan olarak kullanın.
+`Set-NetFirewallProfile`, 2012 + ' da kullanılabilir. 2008R2 için `netsh advfirewall` YUKARıDAKI cmd bölümünde başvurulan olarak kullanın.
 ## <a name="manage-users-and-groups"></a>Kullanıcıları ve Grupları Yönetme
 ### <a name="create-local-user-account"></a>Yerel Kullanıcı hesabı oluştur
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>Kullanıcı hesabının etkin olduğunu doğrulama
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-or
+veya
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject`. Bu örnekte, her zaman SID 'SI `S-1-5-21-*-500`olan yerleşik yerel yönetici hesabı gösterilmektedir. Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator`.
+`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` . Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator` .
 ### <a name="add-local-user-to-local-group"></a>Yerel gruba yerel kullanıcı ekleme
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>Yerel Kullanıcı hesabını etkinleştir
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
-Bu örnek, her zaman SID 'SI `S-1-5-21-*-500`olan yerleşik yerel yönetici hesabını sunar. Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator`.
+Bu örnek, her zaman SID 'SI olan yerleşik yerel yönetici hesabını sunar `S-1-5-21-*-500` . Genelleştirilmiş görüntüden oluşturulan Azure VM 'lerinin yerel yönetici hesabı, VM sağlama sırasında belirtilen adla yeniden adlandırılacaktır. Bu nedenle, genellikle olmayacaktır `Administrator` .
 ### <a name="view-user-account-properties"></a>Kullanıcı hesabı özelliklerini görüntüle
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-or
+veya
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject`. Bu örnekte, her zaman SID 'SI `S-1-5-21-*-500`olan yerleşik yerel yönetici hesabı gösterilmektedir.
+`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` . Bu örnekte, her zaman SID 'SI olan yerleşik yerel yönetici hesabı gösterilmektedir `S-1-5-21-*-500` .
 ### <a name="view-local-groups"></a>Yerel grupları görüntüle
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
-`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject`.
+`Get-LocalUser`, 2012 + ' da kullanılabilir. 2008R2 için kullanım `Get-WmiObject` .
 ## <a name="manage-the-windows-event-log"></a>Windows olay günlüğü 'Nü yönetme
 ### <a name="query-event-log-errors"></a>Olay günlüğü hatalarını sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
-Döndürülecek `/c:10` olay sayısı olarak değiştirin veya filtreyle eşleşen tüm olayları döndürmek için taşıyın.
+`/c:10`Döndürülecek olay sayısı olarak değiştirin veya filtreyle eşleşen tüm olayları döndürmek için taşıyın.
 ### <a name="query-event-log-by-event-id"></a>Olay KIMLIĞINE göre olay günlüğünü sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[EventID=11]]" | more`
 ### <a name="query-event-log-by-event-id-and-provider"></a>Olay KIMLIĞI ve sağlayıcıya göre olay günlüğünü sorgula
@@ -398,7 +397,7 @@ Döndürülecek `/c:10` olay sayısı olarak değiştirin veya filtreyle eşleş
 ### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Son 24 saat için olay KIMLIĞINE ve sağlayıcıya göre olay günlüğünü sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11 and TimeCreated[timediff(@SystemTime) <= 86400000]]]"`
 
-24 `604800000` saat yerine 7 gün geri bakmak için kullanın. |
+`604800000`24 saat yerine 7 gün geri bakmak için kullanın. |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Son 7 günde olay KIMLIĞI, sağlayıcı ve EventData 'a göre olay günlüğünü sorgula
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
 ## <a name="view-or-remove-installed-applications"></a>Yüklü uygulamaları görüntüleme veya kaldırma
@@ -410,11 +409,11 @@ Döndürülecek `/c:10` olay sayısı olarak değiştirin veya filtreyle eşleş
 ### <a name="get-file-version"></a>Dosya sürümünü al
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
-Bu örnek, Windows sürümüne bağlı olarak netvsc. sys, netvsc63. sys veya netvsc60. sys adlı sanal NIC sürücüsünün dosya sürümünü döndürür.
+Bu örnek, Windows sürümüne bağlı olarak netvsc.sys, netvsc63.sys veya netvsc60.sys adlı sanal NIC sürücüsünün dosya sürümünü döndürür.
 ### <a name="download-and-extract-file"></a>Dosya indir ve Ayıkla
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
-Bu örnek, bir `c:\bin` klasör oluşturur, ardından bu araç paketini indirip ayıklar `c:\bin`.
+Bu örnek, bir `c:\bin` klasör oluşturur, ardından bu araç paketini indirip ayıklar `c:\bin` .
 ## <a name="miscellaneous-tasks"></a>Çeşitli görevler
 ### <a name="show-os-version"></a>İşletim sistemi sürümünü göster
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
@@ -425,7 +424,7 @@ Bu örnek, bir `c:\bin` klasör oluşturur, ardından bu araç paketini indirip 
 ### <a name="view-windows-uptime"></a>Windows çalışma süresini görüntüleyin
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-Örneğin `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` `49:16:48:00.00`, çalışma süresini döndürür.
+Örneğin, çalışma süresini döndürür `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` `49:16:48:00.00` .
 ### <a name="restart-windows"></a>Windows 'u yeniden Başlat
 `restart-computer`
 

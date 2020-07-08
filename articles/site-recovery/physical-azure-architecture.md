@@ -4,10 +4,9 @@ description: Bu makalede, şirket içi fiziksel sunucuların olağanüstü durum
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162846"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fiziksel sunucudan Azure'a olağanüstü durum kurtarma mimarisi
@@ -18,7 +17,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanar
 
 Aşağıdaki tablo ve grafik, Azure 'a fiziksel sunucu çoğaltması için kullanılan bileşenlerin üst düzey bir görünümünü sağlar.
 
-| **Bileşen** | **Gereksinim** | **Bilgileri** |
+| **Bileşen** | **Gereksinim** | **Ayrıntılar** |
 | --- | --- | --- |
 | **Azure** | Bir Azure aboneliği ve bir Azure ağı. | Şirket içi fiziksel makinelerden çoğaltılan veriler Azure yönetilen disklerinde depolanır. Şirket içinden Azure 'a yük devretme gerçekleştirdiğinizde, çoğaltılan verilerle Azure VM 'Ler oluşturulur. Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır. |
 | **İşlem sunucusu** | Yapılandırma sunucusu ile birlikte varsayılan olarak yüklenir. | Çoğaltma ağ geçidi olarak davranır. Çoğaltma verilerini alıp bu verileri önbelleğe alma, sıkıştırma ve şifreleme işlemleriyle iyileştirir ve Azure depolama alanına gönderir.<br/><br/> İşlem sunucusu Ayrıca, çoğaltmak istediğiniz sunuculara Mobility hizmetini de yüklüyor.<br/><br/> Dağıtımınız büyüdükçe, daha büyük hacimli çoğaltma trafiğini işlemek için ek ve ayrı işlem sunucuları ekleyebilirsiniz. |

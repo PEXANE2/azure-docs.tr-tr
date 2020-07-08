@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167009"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
@@ -46,7 +45,7 @@ Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](../wi
 
 - Linux dağıtımlarına özgü ayarlar için bkz. [Linux dağıtım kullanılabilirliği seri konsol](#serial-console-linux-distribution-availability).
 
-- VM 'niz veya sanal makine ölçek kümesi örneğinizin tarihinde `ttys0`seri çıkış için yapılandırılması gerekir. Bu, Azure görüntüleri için varsayılandır, ancak bunu özel görüntülerde çift denetlemek isteyeceksiniz. Ayrıntılar [aşağıda](#custom-linux-images)verilmiştir.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin tarihinde seri çıkış için yapılandırılması gerekir `ttys0` . Bu, Azure görüntüleri için varsayılandır, ancak bunu özel görüntülerde çift denetlemek isteyeceksiniz. Ayrıntılar [aşağıda](#custom-linux-images)verilmiştir.
 
 
 > [!NOTE]
@@ -70,11 +69,11 @@ SUSE        | Azure 'da kullanılabilen yeni SLES görüntülerine, varsayılan 
 Oracle Linux        | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
 
 ### <a name="custom-linux-images"></a>Özel Linux görüntüleri
-Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde `ttyS0`bir Terminal çalıştırın. Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Ayrıca ttyS0 üzerinde bir Getty oluşturmanız gerekebilir. Bu, ile `systemctl start serial-getty@ttyS0.service`yapılabilir.
+Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde bir Terminal çalıştırın `ttyS0` . Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Ayrıca ttyS0 üzerinde bir Getty oluşturmanız gerekebilir. Bu, ile yapılabilir `systemctl start serial-getty@ttyS0.service` .
 
 Ayrıca, seri çıkış için hedef olarak ttyS0 eklemek isteyeceksiniz. Özel bir görüntünün seri konsoluyla çalışacak şekilde yapılandırılması hakkında daha fazla bilgi için bkz. [Azure 'da bir LINUX VHD oluşturma ve yükleme](https://aka.ms/createuploadvhd#general-linux-system-requirements)konusunda genel sistem gereksinimleri.
 
-Özel bir çekirdek oluşturuyorsanız, bu çekirdek bayraklarını etkinleştirmeyi göz önünde bulundurun: `CONFIG_SERIAL_8250=y` ve. `CONFIG_MAGIC_SYSRQ_SERIAL=y` Yapılandırma dosyası genellikle */Boot/* Path içinde bulunur.
+Özel bir çekirdek oluşturuyorsanız, bu çekirdek bayraklarını etkinleştirmeyi göz önünde bulundurun: `CONFIG_SERIAL_8250=y` ve `CONFIG_MAGIC_SYSRQ_SERIAL=y` . Yapılandırma dosyası genellikle */Boot/* Path içinde bulunur.
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Seri konsoluna erişmek için yaygın senaryolar
 
@@ -108,13 +107,13 @@ Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](htt
 Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı sanal makineye erişim isteğinde bulunursa, ilk kullanıcının bağlantısı kesilir ve ikinci Kullanıcı aynı oturuma bağlanır.
 
 > [!CAUTION]
-> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturum açma zorlaması yapma yeteneği, hala yol haritası üzerinde. Windows için özel yönetim konsolunda (SAC) etkin bir otomatik zaman aşımı vardır; Ancak, Linux için Terminal zaman aşımı ayarını yapılandırabilirsiniz. Bunu yapmak için, konsolunda `export TMOUT=600` oturum açmak üzere kullandığınız kullanıcının *. bash_profile* veya *. Profile* dosyasına ekleyin. Bu ayar 10 dakika sonra oturumu zaman aşımına uğrar.
+> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturum açma zorlaması yapma yeteneği, hala yol haritası üzerinde. Windows için özel yönetim konsolunda (SAC) etkin bir otomatik zaman aşımı vardır; Ancak, Linux için Terminal zaman aşımı ayarını yapılandırabilirsiniz. Bunu yapmak için, `export TMOUT=600` konsolunda oturum açmak üzere kullandığınız kullanıcının *. bash_profile* veya *. Profile* dosyasına ekleyin. Bu ayar 10 dakika sonra oturumu zaman aşımına uğrar.
 
 ## <a name="accessibility"></a>Erişilebilirlik
 Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun tam olarak erişilebilir olduğunu umuyoruz.
 
 ### <a name="keyboard-navigation"></a>Klavye ile gezinme
-Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL**+**F6** tuşuna basın.
+Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL** + **F6** tuşuna basın.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Bir ekran okuyucuyla seri konsol kullanma
 Seri konsolunda yerleşik ekran okuyucusu desteği vardır. Bir ekran okuyucusu açıkken dolaşma, ekran okuyucu tarafından şu anda seçili olan düğme için alternatif metnin yüksek sesle okunmasıyla izin verir.
@@ -124,21 +123,21 @@ Seri konsol ve VM 'nin işletim sistemi ile ilgili bazı sorunları fark ediyoru
 
 Sorun                           |   Risk azaltma
 :---------------------------------|:--------------------------------------------|
-Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | GRUB doğru şekilde yapılandırılmamış olabilir. Şu komutları çalıştırın: `grub2-mkconfig -o /etc/grub2-efi.cfg` ve/veya. `grub2-mkconfig -o /etc/grub2.cfg` Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu sorun, Linux 'un seri bağlantı noktasına bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya GRUB yapılandırması çalıştırıyorsanız oluşabilir.
-Seri konsol metin yalnızca ekran boyutunun bir kısmını kaplar (genellikle bir metin düzenleyicisi kullanarak). | Seri konsolları, pencere boyutu ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) üzerinde anlaşmaya varılanır, yani güncelleştirme ekranı boyutuna gönderilen SIGWINCH sinyali yoktur ve VM 'nin terminalin boyutuyla ilgili hiçbir bilgisi olmayacaktır. Size `resize` komutu sağlamak için xterm veya benzer bir yardımcı program yükleyip komutunu çalıştırın `resize`.
+Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | GRUB doğru şekilde yapılandırılmamış olabilir. Şu komutları çalıştırın: `grub2-mkconfig -o /etc/grub2-efi.cfg` ve/veya `grub2-mkconfig -o /etc/grub2.cfg` . Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu sorun, Linux 'un seri bağlantı noktasına bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya GRUB yapılandırması çalıştırıyorsanız oluşabilir.
+Seri konsol metin yalnızca ekran boyutunun bir kısmını kaplar (genellikle bir metin düzenleyicisi kullanarak). | Seri konsolları, pencere boyutu ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) üzerinde anlaşmaya varılanır, yani güncelleştirme ekranı boyutuna gönderilen SIGWINCH sinyali yoktur ve VM 'nin terminalin boyutuyla ilgili hiçbir bilgisi olmayacaktır. Size komutu sağlamak için xterm veya benzer bir yardımcı program yükleyip `resize` komutunu çalıştırın `resize` .
 Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini engellemek için, terminale yapıştırılan dizelerin uzunluğunu 2048 karakter olarak sınırlandırır.
-SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca sporadolarak tanınıyor. | Bu, Plymouth paketiyle ilgili bir sorundur. Plymouth, Azure 'da çalıştırılmamalıdır ve bir giriş ekranına gerek kalmaz ve Plymouth 'in seri konsolu kullanma yeteneğini kesintiye uğratır. Plymouth öğesini `sudo zypper remove plymouth` ve ardından yeniden başlatın. Alternatif olarak, çizginin sonuna ekleyerek `plymouth.enable=0` , grub yapılandırmasının çekirdek satırını değiştirebilirsiniz. Bunu önyükleme [sırasında önyükleme girdisini düzenleyerek](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)veya ' de `/etc/default/grub`GRUB_CMDLINE_LINUX satırı düzenleyerek, grub ile `grub2-mkconfig -o /boot/grub2/grub.cfg`yeniden başlatarak ve sonra yeniden başlatarak yapabilirsiniz.
+SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca sporadolarak tanınıyor. | Bu, Plymouth paketiyle ilgili bir sorundur. Plymouth, Azure 'da çalıştırılmamalıdır ve bir giriş ekranına gerek kalmaz ve Plymouth 'in seri konsolu kullanma yeteneğini kesintiye uğratır. Plymouth `sudo zypper remove plymouth` öğesini ve ardından yeniden başlatın. Alternatif olarak, çizginin sonuna ekleyerek, GRUB yapılandırmasının çekirdek satırını değiştirebilirsiniz `plymouth.enable=0` . Bunu önyükleme [sırasında önyükleme girdisini düzenleyerek](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)veya ' de GRUB_CMDLINE_LINUX satırı düzenleyerek `/etc/default/grub` , grub ile yeniden başlatarak `grub2-mkconfig -o /boot/grub2/grub.cfg` ve sonra yeniden başlatarak yapabilirsiniz.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 **S. nasıl geri bildirim gönderebilirim?**
 
-A. Üzerinde https://aka.ms/serialconsolefeedbackbir GitHub sorunu oluşturarak geri bildirim sağlayın. Alternatif olarak (daha az tercih edilen), uygulamasının azserialhelp@microsoft.com https://feedback.azure.comsanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz.
+A. Üzerinde bir GitHub sorunu oluşturarak geri bildirim sağlayın https://aka.ms/serialconsolefeedback . Alternatif olarak (daha az tercih edilen), azserialhelp@microsoft.com uygulamasının sanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz https://feedback.azure.com .
 
 **S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
-A. Evet. Terminale kopyalayıp yapıştırmak için **CTRL**+**SHIFT**+**C** ve **CTRL**+**SHIFT**+**V** kullanın.
+A. Evet. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + Terminale kopyalayıp yapıştırmak için CTRL SHIFT C ve CTRL SHIFT**V** kullanın.
 
 **Soru-cevap, SSH bağlantısı yerine seri konsol kullanabilir miyim?**
 

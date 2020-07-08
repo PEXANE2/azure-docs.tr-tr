@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77084061"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android için ADAL MSAL geçiş kılavuzu
@@ -40,19 +39,19 @@ Desteklememektedir
 MSAL genel API 'SI aşağıdakiler dahil olmak üzere önemli değişiklikler sunar:
 
 - Belirteçlere erişmek için yeni bir model:
-  - ADAL, sunucuyu temsil eden ile `AuthenticationContext`belirteçlere erişim sağlar. MSAL, `PublicClientApplication`istemciyi temsil eden ile belirteçleri erişim sağlar. İstemci geliştiricilerinin, ile etkileşimde bulunmaları gereken `PublicClientApplication` her yetkili için yeni bir örnek oluşturmalarına gerek yoktur. Yalnızca bir `PublicClientApplication` yapılandırma gerekiyor.
+  - ADAL, sunucuyu temsil eden ile belirteçlere erişim sağlar `AuthenticationContext` . MSAL, istemciyi temsil eden ile belirteçleri erişim sağlar `PublicClientApplication` . İstemci geliştiricilerinin `PublicClientApplication` , ile etkileşimde bulunmaları gereken her yetkili için yeni bir örnek oluşturmalarına gerek yoktur. Yalnızca bir `PublicClientApplication` yapılandırma gerekiyor.
   - Kaynak tanımlayıcılarına ek olarak kapsamları kullanarak erişim belirteçleri isteme desteği.
   - Artımlı izin desteği. Kullanıcılar, uygulama kaydı sırasında dahil olmayanlar dahil olmak üzere uygulamada daha fazla ve daha fazla işlevselliğe eriştiği için kapsamlar talep edebilir.
   - Yetkililer artık çalışma zamanında doğrulanmaz. Bunun yerine, geliştirici geliştirme sırasında ' bilinen yetkililer ' listesi bildirir.
 - Belirteç API 'SI değişiklikleri:
-  - ADAL içinde, `AcquireToken()` önce sessiz bir istek yapar. Bu, etkileşimli bir istek yapar. Bu davranış, yalnızca üzerinde `AcquireToken`bağlı olan bazı geliştiricilerle sonuçlanır, bu da kullanıcının kimlik bilgilerini zaman içinde beklenmedik şekilde sorulmasıyla sonuçlandı. MSAL, kullanıcı ARABIRIMI istemi aldığında geliştiricilerin kasıtlı olarak bir şekilde yapılmasını gerektirir.
+  - ADAL içinde, `AcquireToken()` önce sessiz bir istek yapar. Bu, etkileşimli bir istek yapar. Bu davranış, yalnızca üzerinde bağlı olan bazı geliştiricilerle sonuçlanır, bu da `AcquireToken` kullanıcının kimlik bilgilerini zaman içinde beklenmedik şekilde sorulmasıyla sonuçlandı. MSAL, kullanıcı ARABIRIMI istemi aldığında geliştiricilerin kasıtlı olarak bir şekilde yapılmasını gerektirir.
     - `AcquireTokenSilent`her zaman başarılı ya da başarısız olan sessiz bir istek ile sonuçlanır.
     - `AcquireToken`her zaman kullanıcıdan kullanıcı ARABIRIMI aracılığıyla istemde bulunan bir istek ile sonuçlanır.
 - MSAL, varsayılan tarayıcıdan veya katıştırılmış bir Web görünümünden oturum açmayı destekler:
   - Varsayılan olarak, cihazdaki varsayılan tarayıcı kullanılır. Bu, MSAL 'in bir veya daha fazla oturum açmış hesap için zaten mevcut olabilecek kimlik doğrulama durumunu (tanımlama bilgileri) kullanmasına izin verir. Kimlik doğrulama durumu yoksa, MSAL aracılığıyla yetkilendirme sırasında kimlik doğrulaması, aynı tarayıcıda kullanılacak diğer Web uygulamalarının avantajı için oluşturulan kimlik doğrulama durumu (tanımlama bilgileri) ile sonuçlanır.
 - Yeni özel durum modeli:
   - Özel durumlar, oluşan hata türünü ve geliştiricinin bunu çözmek için yapması gereken şeyi daha açık bir şekilde tanımlar.
-- MSAL, ve `AcquireTokenSilent` çağrıları için `AcquireToken` parametre nesnelerini destekler.
+- MSAL, ve çağrıları için parametre nesnelerini destekler `AcquireToken` `AcquireTokenSilent` .
 - MSAL, için bildirim temelli yapılandırmayı destekler:
   - İstemci KIMLIĞI, yeniden yönlendirme URI 'SI.
   - Gömülü vs varsayılan tarayıcı
@@ -65,7 +64,7 @@ MSAL kullanmak için mevcut uygulama kaydınızı değiştirmeniz gerekmez. Art�
 
 Portalda uygulamanızın kaydında bir **API izinleri** sekmesi görürsünüz. Bu, uygulamanızın Şu anda erişim isteyecek şekilde yapılandırıldığı API 'lerin ve izinlerin (kapsamların) bir listesini sağlar. Ayrıca, her API izniyle ilişkili kapsam adlarının bir listesini gösterir.
 
-### <a name="user-consent"></a>Kullanıcı izni
+### <a name="user-consent"></a>Kullanıcı onayı
 
 ADAL ve AAD v1 uç noktası ile, kendilerine ait oldukları kaynaklara yönelik kullanıcı onayı ilk kullanım için verilir. MSAL ve Microsoft Identity platformu ile, izin artımlı olarak istenebilir. Artımlı onay, bir kullanıcının yüksek ayrıcalığa göz önünde bulundurabilecek izinler için yararlıdır veya iznin neden gerekli olduğuna ilişkin açık bir açıklama ile sağlanmayan durumlarda soru alabilir. ADAL 'da, bu izinler kullanıcının uygulamanızda oturum açmasını terk ediyor olabilir.
 
@@ -83,10 +82,10 @@ Kuruluş yöneticileri, uygulamanızın tüm üyelerinin adına gereksinim duydu
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>İlk kullanımda olan tüm izinler için kimlik doğrulaması ve yetkilendirme iste
 
-Şu anda ADAL kullanıyorsanız ve artımlı onay kullanmanıza gerek duymuyorsanız, MSAL kullanmaya başlamanın en kolay yolu, yeni `acquireToken` `AcquireTokenParameter` nesneyi kullanarak bir Istek yapmak ve kaynak kimliği değerini ayarlamadır.
+Şu anda ADAL kullanıyorsanız ve artımlı onay kullanmanıza gerek duymuyorsanız, MSAL kullanmaya başlamanın en kolay yolu, `acquireToken` yeni nesneyi kullanarak bir istek yapmak `AcquireTokenParameter` ve kaynak kimliği değerini ayarlamadır.
 
 > [!CAUTION]
-> Hem kapsamları hem de bir kaynak kimliğini ayarlamak mümkün değildir. Her ikisini de ayarlamaya çalışmak, bir `IllegalArgumentException`ile sonuçlanır.
+> Hem kapsamları hem de bir kaynak kimliğini ayarlamak mümkün değildir. Her ikisini de ayarlamaya çalışmak, bir ile sonuçlanır `IllegalArgumentException` .
 
  Bu, kullandığınız v1 davranışına neden olur. Uygulama kaydınızdan istenen tüm izinler kullanıcıdan ilk etkileşimi sırasında istenir.
 
@@ -108,15 +107,15 @@ MSAL için istekte bulunan Parameters nesnesi şunları destekler:
 
 ### <a name="constructing-publicclientapplication"></a>PublicClientApplication oluşturma
 
-MSAL kullandığınızda bir `PublicClientApplication`örneğini örnekleyebilirsiniz. Bu nesne, uygulama kimliğinizi modelleyen ve bir veya daha fazla yetkililere istek yapmak için kullanılır. Bu nesneyle, istemci kimliğinizi, yeniden yönlendirme URI 'sini, varsayılan yetkilinizi, cihaz tarayıcısı ile ekli Web görünümü, günlük düzeyi ve daha fazlasını kullanacak şekilde yapılandıracaksınız.
+MSAL kullandığınızda bir örneğini örnekleyebilirsiniz `PublicClientApplication` . Bu nesne, uygulama kimliğinizi modelleyen ve bir veya daha fazla yetkililere istek yapmak için kullanılır. Bu nesneyle, istemci kimliğinizi, yeniden yönlendirme URI 'sini, varsayılan yetkilinizi, cihaz tarayıcısı ile ekli Web görünümü, günlük düzeyi ve daha fazlasını kullanacak şekilde yapılandıracaksınız.
 
 Bu nesneyi, bir dosya olarak ya da APK 'niz içinde kaynak olarak sağladığınız JSON ile bildirimli olarak yapılandırabilirsiniz.
 
-Bu nesne tek olmamakla birlikte, dahili olarak hem etkileşimli hem de `Executors` sessiz istekler için paylaşılan kullanır.
+Bu nesne tek olmamakla birlikte, dahili olarak `Executors` hem etkileşimli hem de sessiz istekler için paylaşılan kullanır.
 
 ### <a name="business-to-business"></a>İşletmeden Işletmeye
 
-ADAL içinde, erişim belirteçleri istediğiniz her kuruluş için `AuthenticationContext`ayrı bir örneği gerekir. MSAL içinde, bu artık bir gereklilik değildir. Sessiz veya etkileşimli isteğiniz kapsamında belirteç istemek istediğiniz yetkiyi belirtebilirsiniz.
+ADAL içinde, erişim belirteçleri istediğiniz her kuruluş için ayrı bir örneği gerekir `AuthenticationContext` . MSAL içinde, bu artık bir gereklilik değildir. Sessiz veya etkileşimli isteğiniz kapsamında belirteç istemek istediğiniz yetkiyi belirtebilirsiniz.
 
 ### <a name="migrate-from-authority-validation-to-known-authorities"></a>Yetkili doğrulamadan bilinen yetkililere geçiş yapma
 
@@ -125,7 +124,7 @@ MSAL, yetkilendirme doğrulamasını etkinleştirmek veya devre dışı bırakma
 > [!TIP]
 > Bir Azure Işletmeden tüketici (B2C) kullanıcısı kullanıyorsanız, bu, artık yetkili doğrulamasını devre dışı bırakmanız gerekmediği anlamına gelir. Bunun yerine, desteklenen Azure AD B2C ilkelerinin her birini MSAL yapılandırmanızda yetkililer olarak dahil edin.
 
-Microsoft tarafından bilinmeyen ve yapılandırmanıza dahil olmayan bir yetkiyi kullanmaya çalışırsanız, bir `UnknownAuthorityException`alırsınız.
+Microsoft tarafından bilinmeyen ve yapılandırmanıza dahil olmayan bir yetkiyi kullanmaya çalışırsanız, bir alırsınız `UnknownAuthorityException` .
 
 ### <a name="logging"></a>Günlüğe Kaydetme
 Artık, aşağıdaki gibi, yapılandırmanızın bir parçası olarak günlük kaydını bildirimli olarak yapılandırabilirsiniz:
@@ -140,25 +139,25 @@ Artık, aşağıdaki gibi, yapılandırmanızın bir parçası olarak günlük k
 
 ## <a name="migrate-from-userinfo-to-account"></a>UserInfo 'dan hesaba geçiş
 
-ADAL içinde, `AuthenticationResult` kimliği doğrulanmış hesap `UserInfo` hakkında bilgi almak için kullanılan bir nesne sağlar. Bir insan veya yazılım Aracısı olan "Kullanıcı" terimi, bazı uygulamaların birden çok hesabı olan tek bir kullanıcıyı (insan veya yazılım Aracısı) desteklediği şekilde iletişim kurmayı zorlaştırır.
+ADAL içinde, `AuthenticationResult` `UserInfo` kimliği doğrulanmış hesap hakkında bilgi almak için kullanılan bir nesne sağlar. Bir insan veya yazılım Aracısı olan "Kullanıcı" terimi, bazı uygulamaların birden çok hesabı olan tek bir kullanıcıyı (insan veya yazılım Aracısı) desteklediği şekilde iletişim kurmayı zorlaştırır.
 
 Bir banka hesabı değerlendirin. Birden fazla mali kurum üzerinde birden fazla hesabınız olabilir. Bir hesabı açtığınızda, size (Kullanıcı), her hesap için bakiyeniz, faturanızda ve bu gibi durumlarda kullanılan bir ATM kartı & PIN kodu gibi kimlik bilgileri verilir. Bu kimlik bilgileri, yalnızca bunları veren finans kurumda kullanılabilir.
 
 Benzerleme vurguladı tarafından finansal bir kurumdaki hesaplar gibi, Microsoft Identity platformunda hesaplara kimlik bilgileri kullanılarak erişilir. Bu kimlik bilgileri, Microsoft tarafından kaydedilir veya tarafından verilir. Ya da bir kuruluş adına Microsoft tarafından.
 
-Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. Bir örneği aşağıda verilmiştir:
+Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. İşte bir örnek:
 
 Sam, Contoso.com için geçerlidir ancak Fabrikam.com 'e ait olan Azure sanal makinelerini yönetir. Sam 'nin fabrikam 'ın sanal makinelerini yönetmesi için onlara erişim yetkisi olması gerekir. Bu erişim, Sam hesabı Fabrikam.com 'ye eklenerek ve hesabına sanal makinelerle çalışmasına izin veren bir rol verilerek verilebilir. Bu işlem Azure portal yapılır.
 
 Fabrikam.com üyesi olarak Sam Contoso.com hesabını eklemek, fabrikam. com ' un Sam için Azure Active Directory yeni bir kayıt oluşturulmasına neden olur. Sam Azure Active Directory içindeki kayıt, Kullanıcı nesnesi olarak bilinir. Bu durumda, bu kullanıcı nesnesi Contoso.com içinde Sam kullanıcı nesnesine geri işaret edecektir. Sam 'ın fabrikam Kullanıcı nesnesi, Sam 'ın yerel gösterimidir ve Fabrikam.com bağlamında Sam ile ilişkili hesap hakkındaki bilgileri depolamak için kullanılır. Contoso.com ' de, Sam 'nin başlığı, üst düzey DevOps danışmanıdır. Fabrikam ' ta, Sam 'nin başlığı yüklenici-sanal makinelerdir. Contoso.com ' de, sanal makineleri yönetmek için Sam sorumlu değildir ve yetkilendirilir. Fabrikam.com ' de, bu tek iş işlevidir. Hala Sam, Contoso.com tarafından verilen kimlik bilgileri olan ve izlemek için yalnızca bir kimlik bilgileri kümesine sahip.
 
-Başarılı `acquireToken` bir çağrı yapıldıktan sonra, sonraki `IAccount` `acquireTokenSilent` isteklerde kullanılabilecek bir nesneye bir başvuru görürsünüz.
+Başarılı bir `acquireToken` çağrı yapıldıktan sonra, `IAccount` sonraki isteklerde kullanılabilecek bir nesneye bir başvuru görürsünüz `acquireTokenSilent` .
 
 ### <a name="imultitenantaccount"></a>Iultitenantaccount
 
-Hesabın gösterdiği her kiracıdan bir hesap hakkında taleplere erişen bir uygulamanız varsa, `IAccount` nesneleri öğesine `IMultiTenantAccount`atayabilirsiniz. Bu arabirim `ITenantProfiles`, geçerli hesaba göreli olarak, bir belirteci istediğiniz kiracıların her birinde hesaba ait olan taleplere erişmenizi sağlayan Kiracı kimliği tarafından anahtarlanan bir haritasını sağlar.
+Hesabın gösterdiği her kiracıdan bir hesap hakkında taleplere erişen bir uygulamanız varsa, `IAccount` nesneleri öğesine atayabilirsiniz `IMultiTenantAccount` . Bu arabirim `ITenantProfiles` , geçerli hesaba göreli olarak, bir belirteci istediğiniz kiracıların her birinde hesaba ait olan taleplere erişmenizi sağlayan KIRACı kimliği tarafından anahtarlanan bir haritasını sağlar.
 
-`IAccount` Ve ' `IMultiTenantAccount` nin kökündeki talepler, her zaman giriş kiracısından gelen talepleri içerir. Ana Kiracıdaki bir belirteç için henüz bir istek yapmadıysanız, bu koleksiyon boş olur.
+Ve ' nin kökündeki talepler, `IAccount` `IMultiTenantAccount` her zaman giriş kiracısından gelen talepleri içerir. Ana Kiracıdaki bir belirteç için henüz bir istek yapmadıysanız, bu koleksiyon boş olur.
 
 ## <a name="other-changes"></a>Diğer değişiklikler
 
@@ -235,7 +234,7 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>Yeni özel durumlara geçiş yap
 
-ADAL içinde, `ADALError` sabit listesi değerini alma yöntemi içeren bir `AuthenticationException`tür özel durum vardır.
+ADAL içinde, `AuthenticationException` sabit listesi değerini alma yöntemi içeren bir tür özel durum vardır `ADALError` .
 MSAL ' de, özel durumların bir hiyerarşisi vardır ve her biri kendi ilişkili özel hata kodları kümesine sahiptir.
 
 MSAL özel durumlarının listesi

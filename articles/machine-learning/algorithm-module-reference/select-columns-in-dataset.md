@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153783"
 ---
 # <a name="select-columns-in-dataset-module"></a>Veri kümesi modülündeki sütunları seçme
@@ -40,7 +39,7 @@ Modülde ada göre sütun seçmek için birden çok seçenek vardır:
 
     Zaten doldurulmuş bir veri kümesini bağladıysanız, kullanılabilir sütunların bir listesi görünmelidir. Hiçbir sütun görünmezse, sütun listesini görüntülemek için yukarı akış modüllerini çalıştırmanız gerekebilir.
 
-    Listeyi filtrelemek için, arama kutusuna yazın. Örneğin, arama kutusuna harfi `w` yazarsanız liste, harfi `w`içeren sütun adlarını gösterecek şekilde filtrelenir.
+    Listeyi filtrelemek için, arama kutusuna yazın. Örneğin, arama kutusuna harfi yazarsanız liste, `w` harfi içeren sütun adlarını gösterecek şekilde filtrelenir `w` .
 
     Sütunlar ' ı seçin ve sağ taraftaki bölmedeki seçili sütunları listeye taşımak için sağ ok düğmesine tıklayın.
 
@@ -79,7 +78,7 @@ Modülde ada göre sütun seçmek için birden çok seçenek vardır:
 
 + **Sütun yok** seçeneğini belirlerseniz, sütun listesi boş olarak başlar. Daha sonra listeye sütun *eklemek* için koşulları belirtirsiniz. 
 
-    Birden çok kural uygularsanız, her koşul **eklenebilir**. Örneğin, herhangi bir sütun olmadan başlamanızı ve sonra tüm sayısal sütunları almak için bir kural eklemenizi söyleyin. Otomobil fiyat veri kümesinde, 16 sütun sonucu oluşur. Ardından, yeni bir koşul **+** eklemek için işaretine tıklayın ve **tüm özellikleri dahil et**' i seçin. Elde edilen veri kümesi, bazı dize özelliği sütunları da dahil olmak üzere tüm sayısal sütunları ve tüm özellik sütunlarını içerir.
+    Birden çok kural uygularsanız, her koşul **eklenebilir**. Örneğin, herhangi bir sütun olmadan başlamanızı ve sonra tüm sayısal sütunları almak için bir kural eklemenizi söyleyin. Otomobil fiyat veri kümesinde, 16 sütun sonucu oluşur. Ardından, **+** Yeni bir koşul eklemek için işaretine tıklayın ve **tüm özellikleri dahil et**' i seçin. Elde edilen veri kümesi, bazı dize özelliği sütunları da dahil olmak üzere tüm sayısal sütunları ve tüm özellik sütunlarını içerir.
 
 ### <a name="choose-by-column-index"></a>Sütun dizinine göre seçin
 
@@ -87,7 +86,7 @@ Sütun dizini, özgün veri kümesindeki sütunun sırasını ifade eder.
 
 + Sütunlar 1 ' den başlayarak ardışık olarak numaralandırılır.  
 + Bir dizi sütun almak için kısa çizgi kullanın. 
-+ Veya `1-` `-3` gibi açık uçlu belirtimlerde izin verilmez.
++ Veya gibi açık uçlu belirtimlerde `1-` `-3` izin verilmez.
 + Yinelenen Dizin değerlerine (veya sütun adlarına) izin verilmez ve bir hata oluşmasına neden olabilir.
 
 Örneğin, veri kümenizin en az sekiz sütunu olduğu varsayıldığında, birden çok bitişik olmayan sütun döndürmek için aşağıdaki örneklerden herhangi birini yapıştırabilirsiniz: 
@@ -96,7 +95,7 @@ Sütun dizini, özgün veri kümesindeki sütunun sırasını ifade eder.
 + `1,3-8`
 + `1,3-6,4` 
 
-Son örnek bir hatayla sonuçlanmaz; Ancak, sütunun `4`tek bir örneğini döndürür.
+Son örnek bir hatayla sonuçlanmaz; Ancak, sütunun tek bir örneğini döndürür `4` .
 
 
 

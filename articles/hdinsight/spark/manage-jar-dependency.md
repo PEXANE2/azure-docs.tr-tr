@@ -9,15 +9,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77135739"
 ---
 # <a name="jar-dependency-management-best-practices"></a>JAR bağımlılığı yönetimi en iyi uygulamaları
 
-HDInsight kümelerine yüklenen bileşenlerin üçüncü taraf kitaplıklara bağımlılıkları vardır. Genellikle guava gibi yaygın modüllerin belirli bir sürümüne bu yerleşik bileşenler tarafından başvurulur. Bir uygulamayı bağımlılıklarıyla birlikte gönderdiğinizde, aynı modülün farklı sürümleri arasında çakışmaya neden olabilir. İlk olarak sınıflara başvuruda bulunan bileşen sürümü varsa, yerleşik bileşenler sürüm uyumsuzluğu nedeniyle özel durumlar oluşturabilir. Ancak, yerleşik bileşenler bağımlılıklarını ilk olarak Sınıfyoluna ekler, uygulamanız gibi `NoSuchMethod`hatalar oluşturabilir.
+HDInsight kümelerine yüklenen bileşenlerin üçüncü taraf kitaplıklara bağımlılıkları vardır. Genellikle guava gibi yaygın modüllerin belirli bir sürümüne bu yerleşik bileşenler tarafından başvurulur. Bir uygulamayı bağımlılıklarıyla birlikte gönderdiğinizde, aynı modülün farklı sürümleri arasında çakışmaya neden olabilir. İlk olarak sınıflara başvuruda bulunan bileşen sürümü varsa, yerleşik bileşenler sürüm uyumsuzluğu nedeniyle özel durumlar oluşturabilir. Ancak, yerleşik bileşenler bağımlılıklarını ilk olarak Sınıfyoluna ekler, uygulamanız gibi hatalar oluşturabilir `NoSuchMethod` .
 
 Sürüm çakışmasını önlemek için uygulama bağımlılıklarınızı gölgelendirmeyi göz önünde bulundurun.
 
@@ -32,9 +31,9 @@ Uber-jar, hem uygulama jar 'i hem de onun bağımlılıklarını içeren tek bir
 ### <a name="shade-package-using-maven"></a>Maven kullanarak paket gölgelendir
 Maven, hem Java hem de Scala 'da yazılmış uygulamalar oluşturabilir. Maven-gölge-eklentisi, gölgeli bir Uber-jar kolay bir şekilde oluşturmanıza yardımcı olabilir.
 
-Aşağıdaki örnekte, Maven- `pom.xml` gölge-eklentisini kullanarak bir paketi gölgelendirmek üzere güncelleştirilmiş bir dosya gösterilmektedir.  XML bölümü `<relocation>…</relocation>` , ilgili jar dosyası girişlerini `com.google.guava` taşıyarak ve `com.google.shaded.guava` etkilenen bytecode 'u yeniden yazarak, sınıfları paketten pakete taşır.
+Aşağıdaki örnekte, `pom.xml` Maven-gölge-eklentisini kullanarak bir paketi gölgelendirmek üzere güncelleştirilmiş bir dosya gösterilmektedir.  XML bölümü, `<relocation>…</relocation>` `com.google.guava` `com.google.shaded.guava` ilgili jar dosyası girişlerini taşıyarak ve etkilenen bytecode 'u yeniden yazarak, sınıfları paketten pakete taşır.
 
-' Yi `pom.xml`değiştirdikten sonra, gölgeli `mvn package` Uber-jar 'yi oluşturmak için çalıştırabilirsiniz.
+`pom.xml`' Yi değiştirdikten sonra, `mvn package` gölgeli Uber-jar 'yi oluşturmak için çalıştırabilirsiniz.
 
 ```xml
   <build>
@@ -65,9 +64,9 @@ Aşağıdaki örnekte, Maven- `pom.xml` gölge-eklentisini kullanarak bir paketi
 ```
 
 ### <a name="shade-package-using-sbt"></a>SBT kullanarak paket gölgelendir
-SBT Ayrıca Scala ve Java için bir yapı aracıdır. SBT 'nin Maven-gölge-eklentisi gibi bir gölge eklentisi yok. Dosyayı gölge paketleri `build.sbt` olarak değiştirebilirsiniz. 
+SBT Ayrıca Scala ve Java için bir yapı aracıdır. SBT 'nin Maven-gölge-eklentisi gibi bir gölge eklentisi yok. `build.sbt`Dosyayı gölge paketleri olarak değiştirebilirsiniz. 
 
-Örneğin, gölgelendirmek `com.google.guava`için aşağıdaki komutu `build.sbt` dosyasına ekleyebilirsiniz:
+Örneğin, gölgelendirmek için `com.google.guava` aşağıdaki komutu `build.sbt` dosyasına ekleyebilirsiniz:
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,7 +74,7 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-Ardından, ve ' `sbt clean` `sbt assembly` yi çalıştırarak gölgeli jar dosyasını oluşturabilirsiniz. 
+Ardından, `sbt clean` ve ' yi çalıştırarak `sbt assembly` gölgeli jar dosyasını oluşturabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

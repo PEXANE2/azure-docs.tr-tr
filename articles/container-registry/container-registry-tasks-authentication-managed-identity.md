@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77111774"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR görevlerinde Azure tarafından yönetilen bir kimlik kullanma 
@@ -50,9 +49,9 @@ Yalnızca sistem tarafından atanan bir kimlik kullanmayı planlıyorsanız, bu 
 
 ### <a name="2-enable-identity-on-an-acr-task"></a>2. bir ACR görevinde kimliği etkinleştirin
 
-Bir ACR görevi oluşturduğunuzda, isteğe bağlı olarak Kullanıcı tarafından atanan bir kimlik, sistem tarafından atanan bir kimlik veya her ikisini de etkinleştirin. Örneğin, Azure CLı 'de `--assign-identity` [az ACR Task Create][az-acr-task-create] komutunu çalıştırdığınızda parametresini geçirin.
+Bir ACR görevi oluşturduğunuzda, isteğe bağlı olarak Kullanıcı tarafından atanan bir kimlik, sistem tarafından atanan bir kimlik veya her ikisini de etkinleştirin. Örneğin, `--assign-identity` Azure CLI 'de [az ACR Task Create][az-acr-task-create] komutunu çalıştırdığınızda parametresini geçirin.
 
-Sistem tarafından atanan bir kimliği etkinleştirmek için değeri veya `--assign-identity` `assign-identity [system]`olmadan geçirin. Aşağıdaki örnek komut, `hello-world` görüntüyü oluşturan ve sistem tarafından atanan bir yönetilen kimlik sağlayan ortak bir GitHub deposundan bir Linux görevi oluşturur:
+Sistem tarafından atanan bir kimliği etkinleştirmek için `--assign-identity` değeri veya olmadan geçirin `assign-identity [system]` . Aşağıdaki örnek komut, `hello-world` görüntüyü oluşturan ve sistem tarafından atanan bir yönetilen kimlik sağlayan ortak bir GitHub deposundan bir Linux görevi oluşturur:
 
 ```azurecli
 az acr task create \
@@ -64,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-Kullanıcı tarafından atanan bir kimliği etkinleştirmek için, kimliğin `--assign-identity` *kaynak kimliği* değeriyle geçiş yapın. Aşağıdaki örnek komut, `hello-world` görüntüyü oluşturan ve Kullanıcı tarafından atanan yönetilen bir kimlik sağlayan ortak bir GitHub deposundan bir Linux görevi oluşturur:
+Kullanıcı tarafından atanan bir kimliği etkinleştirmek için, `--assign-identity` kimliğin *kaynak kimliği* değeriyle geçiş yapın. Aşağıdaki örnek komut, `hello-world` görüntüyü oluşturan ve Kullanıcı tarafından atanan yönetilen bir kimlik sağlayan ortak bir GitHub deposundan bir Linux görevi oluşturur:
 
 ```azurecli
 az acr task create \
@@ -84,7 +83,7 @@ Daha [az Identity Show][az-identity-show] komutunu çalıştırarak KIMLIğIN ka
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. diğer Azure kaynaklarına erişmek için kimlik izinleri verin
 
-Görevin gereksinimlerine bağlı olarak, diğer Azure kaynaklarına erişmek için kimlik izinlerini verin. Örneklere şunlar dahildir:
+Görevin gereksinimlerine bağlı olarak, diğer Azure kaynaklarına erişmek için kimlik izinlerini verin. Örnekler arasında şunlar yer almaktadır:
 
 * Azure 'da bir hedef kapsayıcı kayıt defterine çekme, gönderme ve çekme veya diğer izinlerle yönetilen kimliğe bir rol atayın. Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md). 
 * Bir Azure anahtar kasasındaki gizli dizileri okumak için yönetilen kimliğe bir rol atayın.
@@ -103,9 +102,9 @@ az role assignment create \
 
 ### <a name="4-optional-add-credentials-to-the-task"></a>4. (isteğe bağlı) göreve kimlik bilgileri ekleyin
 
-Görevin başka bir özel kayıt defterine görüntü çekmek veya göndermek için kimlik bilgileri gerekiyorsa veya diğer kaynaklara erişmek için, göreve kimlik bilgileri ekleyin. Kimlik bilgilerini eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] komutunu çalıştırın ve kimliğin kimlik bilgilerine `--use-identity` erişemeyeceğini belirtmek için parametresini geçirin. 
+Görevin başka bir özel kayıt defterine görüntü çekmek veya göndermek için kimlik bilgileri gerekiyorsa veya diğer kaynaklara erişmek için, göreve kimlik bilgileri ekleyin. Kimlik bilgilerini eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] komutunu çalıştırın ve `--use-identity` kimliğin kimlik bilgilerine erişemeyeceğini belirtmek için parametresini geçirin. 
 
-Örneğin, Azure Container Registry *targetregistry*ile kimlik doğrulaması yapmak için sistem tarafından atanan bir kimliğin kimlik bilgilerini eklemek için şunu geçirin `use-identity [system]`:
+Örneğin, Azure Container Registry *targetregistry*ile kimlik doğrulaması yapmak için sistem tarafından atanan bir kimliğin kimlik bilgilerini eklemek için şunu geçirin `use-identity [system]` :
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +114,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Kayıt defteri *targetregistry*ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için `use-identity` , kimliğin *istemci kimliği* değeriyle geçirin. Örneğin:
+Kayıt defteri *targetregistry*ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için, `use-identity` kimliğin *istemci kimliği* değeriyle geçirin. Örneğin:
 
 ```azurecli
 az acr task credential add \
@@ -125,7 +124,7 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-Daha [az Identity Show][az-identity-show] komutunu çalıştırarak KIMLIğIN istemci kimliğini alabilirsiniz. İstemci KIMLIĞI, formun `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`BIR GUID 'sidir.
+Daha [az Identity Show][az-identity-show] komutunu çalıştırarak KIMLIğIN istemci kimliğini alabilirsiniz. İstemci KIMLIĞI, formun bir GUID 'sidir `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
 
 ### <a name="5-run-the-task"></a>5. görevi çalıştırın
 

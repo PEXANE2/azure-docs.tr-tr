@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087133"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma
@@ -37,7 +36,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
-4. **Kullanıcılar**’ı seçin.
+4. **Kullanıcıları**seçin.
 5. **VPN yapılandırması 'Nı indir** 'e tıklayın
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
@@ -57,7 +56,7 @@ Aşağıdaki örnekte, **viscosity istemcisi**kullanılarak bağlantı içeri ak
 
 2. Bilgisayarınızda viscosity 'yi açın.
 
-3. **+** Simgeye tıklayın ve **bağlantıyı** > **dosyadan**içeri aktar ' ı seçin.
+3. Simgeye tıklayın **+** ve bağlantıyı dosyadan **içeri aktar**' ı seçin  >  **From File**.
 
     ![VPN yapılandırmasını dosyadan içeri aktar](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ Noktadan siteye VPN bağlantısı, oluşturduğunuz ilk özel bulutun DNS adlar�
 
 1. [Cloudsimple portalını](access-cloudsimple-portal.md)başlatın.
 
-2. **Kaynaklar** > **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
+2. **Kaynaklar**  >  **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
 3. Özel bulutun **Özet** sayfasında, **temel bilgi**altında özel bulut DNS sunucusu IP adresini kopyalayın.
 
@@ -97,7 +96,7 @@ Noktadan siteye VPN bağlantısı, oluşturduğunuz ilk özel bulutun DNS adlar�
 
     ![VPN bağlantısını Düzenle](media/viscosity-edit-connection.png)
 
-7. **Ağ** sekmesine tıklayın ve virgülle veya alana ve etki alanına göre ayrılmış özel bulut DNS sunucusu IP adreslerini girin ```cloudsimple.io```.  **VPN sunucusu tarafından GÖNDERILEN DNS ayarlarını yoksay**' ı seçin.
+7. **Ağ** sekmesine tıklayın ve virgülle veya alana ve etki alanına göre ayrılmış özel bulut DNS sunucusu IP adreslerini girin ```cloudsimple.io``` .  **VPN sunucusu tarafından GÖNDERILEN DNS ayarlarını yoksay**' ı seçin.
 
     ![VPN ağı](media/viscosity-edit-connection-networking.png)
 

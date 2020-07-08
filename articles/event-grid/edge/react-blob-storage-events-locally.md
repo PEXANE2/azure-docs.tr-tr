@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086610"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
@@ -134,16 +133,16 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
 
    > [!IMPORTANT]
    > - Blob Storage modülü, HTTPS ve HTTP kullanarak olayları yayımlayabilir. 
-   > - EventGrid için istemci tabanlı kimlik doğrulamasını etkinleştirdiyseniz, EVENTGRID_ENDPOINT değerini https 'ye izin vermek için şu şekilde güncelleştirdiğinizden emin olun: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
-   > - Ayrıca yukarıdaki JSON 'a başka `AllowUnknownCertificateAuthority=true` bir ortam değişkeni de ekleyin. HTTP üzerinden EventGrid ile görüşülürken, **Allowunknowncertificateauthority** depolama modülünün otomatik olarak Imzalanan eventgrid sunucu sertifikalarına güvenmesini sağlar.
+   > - EventGrid için istemci tabanlı kimlik doğrulamasını etkinleştirdiyseniz, EVENTGRID_ENDPOINT değerini https 'ye izin vermek için şu şekilde güncelleştirdiğinizden emin olun: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` .
+   > - Ayrıca yukarıdaki JSON 'a başka bir ortam değişkeni de ekleyin `AllowUnknownCertificateAuthority=true` . HTTP üzerinden EventGrid ile görüşülürken, **Allowunknowncertificateauthority** depolama modülünün otomatik olarak Imzalanan eventgrid sunucu sertifikalarına güvenmesini sağlar.
 
 4. Aşağıdaki bilgilerle kopyaladığınız JSON 'yi güncelleştirin:
 
-   - Hatırlayabileceğiniz bir adla değiştirin `<your storage account name>` . Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
+   - `<your storage account name>`Hatırlayabileceğiniz bir adla değiştirin. Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
 
-   - 64 `<your storage account key>` baytlık bir Base64 anahtarıyla değiştirin. [Generateplus](https://generate.plus/en/base64?gp_base64_base[length]=64)gibi araçlarla bir anahtar oluşturabilirsiniz. Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
+   - `<your storage account key>`64 baytlık bir Base64 anahtarıyla değiştirin. [Generateplus](https://generate.plus/en/base64?gp_base64_base[length]=64)gibi araçlarla bir anahtar oluşturabilirsiniz. Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-   - Event Grid `<event grid module name>` modülünüzün adıyla değiştirin.
+   - `<event grid module name>`Event Grid modülünüzün adıyla değiştirin.
    - Öğesini `<storage mount>` kapsayıcı işletim sisteminize göre değiştirin.
      - Linux kapsayıcıları için, **My-Volume:/blobroot**
      - Windows kapsayıcıları için,**My-Volume: C:/BlobRoot**
@@ -199,7 +198,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
     > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, **Microsoftstorage** konusu için bir Event Grid aboneliği oluşturmanız gerekir.
-    1. Aşağıdaki içerikle blobsubscription. JSON oluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
+    1. Aşağıdaki içerikle birlikte blobsubscription.jsoluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
 
        ```json
         {
@@ -217,7 +216,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
        >[!NOTE]
        > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure Işlev örneğine karşılık gelir.
 
-    2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK`.
+    2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK` .
 
        ```sh
        curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -332,8 +331,8 @@ Desteklenen olay özelliklerinin listesi ve bunların türleri ve açıklamalar�
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | BLOB depolama olay verileri. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -341,14 +340,14 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| API | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve`PutBlockList`</li><li>Blobdeleted-izin verilen değerler `DeleteBlob`, `DeleteAfterUpload` ve `AutoDelete`. <p>DeleteAfterUpload istenen özelliği true olarak ayarlandığından, `DeleteAfterUpload` blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete`Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
+| API | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve`PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete`Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
 | Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek KIMLIĞI. Bu KIMLIK, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. Ayrıntılar için bkz. [günlük biçimi](/rest/api/storageservices/storage-analytics-log-format). |
 | No | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek KIMLIĞI. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
 | Özelliği | string | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |
 | contentType | string | Blob için belirtilen içerik türü. |
 | contentLength | integer | Blobun bayt cinsinden boyutu. |
 | blobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
-| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa URL 'nin bu yapıya sahip olması gerekir: * \<Storage-Account-\>Name. blob.Core.Windows.net/\<kapsayıcı-ad\>/\<dosya-adı\>*. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<depolama-\>hesap-adı. DFS.Core.Windows.net/\<dosya-sistem adı\>/\<dosya-\>* adı. |
+| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

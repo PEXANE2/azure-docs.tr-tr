@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086712"
 ---
 # <a name="createuidefinition-elements"></a>Createuıdefinition öğeleri
@@ -35,14 +34,14 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| ad | Yes | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının `outputs`en yaygın kullanımı, belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin `defaultValue` çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz. |
-| type | Yes | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
-| etiket | Yes | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
+| name | Evet | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, `outputs` belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz `defaultValue` . |
+| tür | Evet | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
+| etiket | Evet | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
 | Değerinin | Hayır | Öğesinin varsayılan değeri. Bazı öğe türleri karmaşık varsayılan değerleri destekler, bu yüzden değer bir nesne olabilir. |
-| Ipucuna | Hayır | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label`, bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
+| Ipucuna | Hayır | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label` , bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
 | kısıtlamaları | Hayır | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
-| seçenekler | Hayır | Öğesinin davranışını özelleştiren ek özellikler. Benzer şekilde `constraints`, desteklenen özellikler öğe türüne göre farklılık gösterir. |
-| görüne | Hayır | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true`, öğesi ve ilgili alt öğeleri görüntülenir. Varsayılan değer: `true`. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
+| seçenekler | Hayır | Öğesinin davranışını özelleştiren ek özellikler. Benzer şekilde `constraints` , desteklenen özellikler öğe türüne göre farklılık gösterir. |
+| görüne | Hayır | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true` , öğesi ve ilgili alt öğeleri görüntülenir. Varsayılan değer: `true`. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
 
 ## <a name="elements"></a>Öğeler
 

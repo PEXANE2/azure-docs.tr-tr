@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190789"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
@@ -119,7 +118,7 @@ Tüm SAP uygulaması sanal makinelerini Azure olağanüstü durum kurtarma veri 
 
 ## <a name="networking-configuration"></a>Ağ yapılandırması
 
-Statik bir IP adresi kullanırsanız, sanal makinenin kullanmasını istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları** > **ağ arabirimi kartına**gidin.
+Statik bir IP adresi kullanırsanız, sanal makinenin kullanmasını istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **ağ arabirimi kartına**gidin.
 
 ![Site Recovery ağ arabirimi kartı bölmesinde özel IP adresi ayarlamayı gösteren ekran görüntüsü](./media/site-recovery-sap/sap-static-ip.png)
 

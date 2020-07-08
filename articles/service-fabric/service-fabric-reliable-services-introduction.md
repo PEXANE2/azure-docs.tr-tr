@@ -7,10 +7,9 @@ ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083509"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services özelliğine genel bakış
@@ -68,13 +67,13 @@ Reliable Services modelinin hem durum bilgisi olmayan hem de durum bilgisi olan 
 
 Örneğin, belleği olmayan bir Hesaplayıcı düşünün ve aynı anda gerçekleştirilecek tüm hüküm ve işlemleri alır.
 
-Bu durumda, hizmetin yapması `RunAsync()` gereken arka plan görev `runAsync()` işlemesi olmadığından hizmetin (C#) veya (Java) boş olabilir. Hesaplayıcı hizmeti oluşturulduğunda, bazı bağlantı noktaları üzerinde bir `ICommunicationListener` dinleme uç noktası açan `CommunicationListener` bir (C#) veya (Java) (örneğin, [Web API](service-fabric-reliable-services-communication-webapi.md)) döndürür. Bu dinleme uç noktası, farklı hesaplama yöntemlerine (örneğin, "Ekle (N1, N2)") kadar ana bilgisayarın ortak API 'sini tanımlar.
+Bu durumda, hizmetin `RunAsync()` `runAsync()` yapması gereken arka plan görev işlemesi olmadığından hizmetin (C#) veya (Java) boş olabilir. Hesaplayıcı hizmeti oluşturulduğunda, `ICommunicationListener` `CommunicationListener` bazı bağlantı noktaları üzerinde bir dinleme uç noktası açan bir (C#) veya (Java) (örneğin, [Web API](service-fabric-reliable-services-communication-webapi.md)) döndürür. Bu dinleme uç noktası, farklı hesaplama yöntemlerine (örneğin, "Ekle (N1, N2)") kadar ana bilgisayarın ortak API 'sini tanımlar.
 
 İstemciden bir çağrı yapıldığında, uygun yöntem çağrılır ve Hesaplayıcı hizmeti, belirtilen verilerde işlemleri gerçekleştirir ve sonucu döndürür. Herhangi bir durum depolamaz.
 
 Herhangi bir iç durumu depolamamadan Bu örnek Hesaplayıcı basit hale gelir. Ancak hizmetlerin çoğu gerçekten durum bilgisiz değildir. Bunun yerine, diğer mağazalarına durumlarını externalize. (Örneğin, oturum durumunu bir yedekleme deposunda veya önbellekte tutmaya bağlı olan herhangi bir Web uygulaması durum bilgisiz değildir.)
 
-Bir Web uygulaması için genel kullanıma yönelik API 'YI kullanıma sunan bir ön uç olarak, durum bilgisi olmayan hizmetlerin Service Fabric nasıl kullanıldığına ilişkin yaygın bir örnek. Ön uç hizmeti, bir Kullanıcı isteğini tamamlamaya yönelik bir durum bilgisi olan hizmetlerden daha fazla konuşuyor. Bu durumda, istemcilerden gelen çağrılar, durum bilgisi olmayan hizmetin dinlediği 80 gibi bilinen bir bağlantı noktasına yönlendirilir. Bu durum bilgisiz hizmeti, çağrıyı alır ve çağrının güvenilen bir taraftan mı yoksa hedeflenen hizmetten mi olduğunu belirler.  Ardından, durum bilgisi olmayan hizmet çağrıyı durum bilgisiz hizmetin doğru bölümüne iletir ve bir yanıt bekler. Durum bilgisi olmayan hizmet bir yanıt aldığında, özgün istemciye yanıt verir. Bu tür bir hizmete örnek olarak, söz konusu depodaki diğer Service Fabric örnekleri arasında *Service Fabric* Başlarken örneği ([C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)) bulunur.
+Bir Web uygulaması için genel kullanıma yönelik API 'YI kullanıma sunan bir ön uç olarak, durum bilgisi olmayan hizmetlerin Service Fabric nasıl kullanıldığına ilişkin yaygın bir örnek. Ön uç hizmeti, bir Kullanıcı isteğini tamamlamaya yönelik bir durum bilgisi olan hizmetlerden daha fazla konuşuyor. Bu durumda, istemcilerden gelen çağrılar, durum bilgisi olmayan hizmetin dinlediği 80 gibi bilinen bir bağlantı noktasına yönlendirilir. Bu durum bilgisiz hizmeti, çağrıyı alır ve çağrının güvenilen bir taraftan mı yoksa hedeflenen hizmetten mi olduğunu belirler.  Ardından, durum bilgisi olmayan hizmet çağrıyı durum bilgisiz hizmetin doğru bölümüne iletir ve bir yanıt bekler. Durum bilgisi olmayan hizmet bir yanıt aldığında, özgün istemciye yanıt verir. Bu tür bir hizmete örnek olarak,[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)söz *Service Fabric Getting Started*  /  konusu depodaki diğer Service Fabric örnekleri arasında Service Fabric Başlarken örneği (C#[Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)) bulunur.
 
 ### <a name="stateful-reliable-services"></a>Durum bilgisi olan Reliable Services
 
@@ -82,11 +81,11 @@ Durum *bilgisi* olan bir hizmet, hizmetin çalışması için tutarlı ve mevcut
 
 Dış mağaza bu durum için güvenilirlik, kullanılabilirlik, ölçeklenebilirlik ve tutarlılık sağlar. Service Fabric, hizmetlerinin durumlarını dışarıdan depolaması için gerekli değildir. Service Fabric, bu gereksinimlerin her ikisi de hizmet kodu ve hizmet durumu için ele alınır.
 
-Görüntüleri işleyen bir hizmet yazmak istiyoruz. Bunu yapmak için, hizmet bir görüntüyü ve bu görüntüde gerçekleştirilecek dönüştürme dizilerini alır. Bu hizmet, gibi `ConvertImage(Image i, IList<Conversion> conversions)`bir API 'yi kullanıma sunan bir iletişim dinleyicisi (bir WebAPI olduğunu varsayalım) döndürür. Bir istek aldığında, hizmet onu bir içinde depolar ve isteği izleyebilmek `IReliableQueue`için ISTEMCIYE bir kimlik döndürür.
+Görüntüleri işleyen bir hizmet yazmak istiyoruz. Bunu yapmak için, hizmet bir görüntüyü ve bu görüntüde gerçekleştirilecek dönüştürme dizilerini alır. Bu hizmet, gibi bir API 'YI kullanıma sunan bir iletişim dinleyicisi (bir WebAPI olduğunu varsayalım) döndürür `ConvertImage(Image i, IList<Conversion> conversions)` . Bir istek aldığında, hizmet onu bir içinde depolar `IReliableQueue` ve isteği izleyebilmek için istemciye BIR kimlik döndürür.
 
-Bu hizmette `RunAsync()` daha karmaşık olabilir. Hizmetin, isteklerini aldığı `RunAsync()` `IReliableQueue` ve istenen dönüştürmeleri gerçekleştiren içindeki bir döngüsü vardır. Sonuçlar, istemci geri geldiğinde dönüştürülen `IReliableDictionary` görüntülerini elde ettikleri zaman içinde depolanır. Görüntü kaybolmamasını sağlamak için, bu güvenilir hizmet sıradan çıkar, dönüşümleri gerçekleştirir ve sonucu tek bir işlemde depolar. Bu durumda, ileti kuyruktan kaldırılır ve sonuçlar yalnızca dönüştürmeler tamamlandığında sonuç sözlüğünde depolanır. Alternatif olarak, hizmet, görüntüyü kuyruktan çekerek ve bir uzak depoda hemen depolayabileceği. Bu, hizmetin yönetmesi gereken durum miktarını azaltır, ancak hizmetin, uzak mağazayı yönetmek için gerekli meta verileri tutması gerektiğinden karmaşıklığı artırır. Her iki yaklaşım da, ortadaki bir hata başarısız olursa, istek işlenmek üzere bekleyen kuyrukta kalır.
+Bu hizmette `RunAsync()` daha karmaşık olabilir. Hizmetin, `RunAsync()` isteklerini aldığı `IReliableQueue` ve istenen dönüştürmeleri gerçekleştiren içindeki bir döngüsü vardır. Sonuçlar, `IReliableDictionary` istemci geri geldiğinde dönüştürülen görüntülerini elde ettikleri zaman içinde depolanır. Görüntü kaybolmamasını sağlamak için, bu güvenilir hizmet sıradan çıkar, dönüşümleri gerçekleştirir ve sonucu tek bir işlemde depolar. Bu durumda, ileti kuyruktan kaldırılır ve sonuçlar yalnızca dönüştürmeler tamamlandığında sonuç sözlüğünde depolanır. Alternatif olarak, hizmet, görüntüyü kuyruktan çekerek ve bir uzak depoda hemen depolayabileceği. Bu, hizmetin yönetmesi gereken durum miktarını azaltır, ancak hizmetin, uzak mağazayı yönetmek için gerekli meta verileri tutması gerektiğinden karmaşıklığı artırır. Her iki yaklaşım da, ortadaki bir hata başarısız olursa, istek işlenmek üzere bekleyen kuyrukta kalır.
 
-Bu hizmet tipik bir .NET hizmeti gibi gelse de aradaki fark, kullanılan veri yapılarının (`IReliableQueue` ve `IReliableDictionary`) Service Fabric tarafından sağlandığı ve yüksek oranda güvenilir, kullanılabilir ve tutarlı olması gerektiğidir.
+Bu hizmet tipik bir .NET hizmeti gibi gelse de aradaki fark, kullanılan veri yapılarının ( `IReliableQueue` ve `IReliableDictionary` ) Service Fabric tarafından sağlandığı ve yüksek oranda güvenilir, kullanılabilir ve tutarlı olması gerektiğidir.
 
 ## <a name="when-to-use-reliable-services-apis"></a>Reliable Services API 'Leri ne zaman kullanılır
 

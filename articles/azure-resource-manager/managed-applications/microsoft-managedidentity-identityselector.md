@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087550"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. Managedıdentity. ıdentityselector Kullanıcı arabirimi öğesi
@@ -69,7 +68,7 @@ Seçili kimlikler tabloda görüntülenir. Kullanıcı bu tablodan öğe ekleyeb
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Sistem tarafından atanan kimlik seçenekleri denetimi için bir başlangıç değeri ayarlamak üzere **DefaultValue. Systemassignedıdentity** kullanın. Varsayılan değer **kapalıdır**. Aşağıdaki değerlere izin verilir:
+- Sistem tarafından atanan kimlik seçenekleri denetimi için bir başlangıç değeri ayarlamak için **defaultValue.sysTemassignedıdentity** kullanın. Varsayılan değer **kapalıdır**. Aşağıdaki değerlere izin verilir:
   - **Açık** – kaynağa bir sistem tarafından atanan kimlik atanır.
   - **Off** : sisteme atanan bir kimlik kaynağa atanmaz.
   - **Ononly** : kaynağa bir sistem tarafından atanan kimlik atanır. Kullanıcılar bu değeri dağıtım sırasında düzenleyemez.

@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064230"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Tableau online 'ı yapılandırma
@@ -83,7 +82,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Azure AD 'de Tableau Online için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **Tableau çevrimiçi**' yı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Tableau çevrimiçi**' yı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Tableau çevrimiçi bildirim e-postası](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Tableau olarak eşitler**' ı seçin.
 

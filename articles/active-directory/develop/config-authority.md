@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77085215"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Nasıl yapılır: iOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak şekilde yapılandırma
@@ -26,7 +25,7 @@ Bu makalede, iOS ve MacOS için Microsoft kimlik doğrulama kitaplığı uygulam
 
 ## <a name="default-authority-configuration"></a>Varsayılan yetkili yapılandırması
 
-`MSALPublicClientApplication``https://login.microsoftonline.com/common`, en çok Azure ACTIVE DIRECTORY (AAD) senaryosu için uygun olan varsayılan bir yetkili URL 'si ile yapılandırılır. Ulusal bulutlar gibi gelişmiş senaryolar uygulamadıysanız veya B2C ile çalışmadığınız takdirde, bunu değiştirmeniz gerekmez.
+`MSALPublicClientApplication``https://login.microsoftonline.com/common`, en çok Azure Active Directory (AAD) senaryosu için uygun olan varsayılan bir yetkili URL 'si ile yapılandırılır. Ulusal bulutlar gibi gelişmiş senaryolar uygulamadıysanız veya B2C ile çalışmadığınız takdirde, bunu değiştirmeniz gerekmez.
 
 > [!NOTE]
 > Kimlik sağlayıcısı (ADFS) olarak Active Directory Federasyon Hizmetleri (AD FS) modern kimlik doğrulaması desteklenmez (Ayrıntılar için bkz. [geliştiriciler Için ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). ADFS, Federasyon aracılığıyla desteklenir.
@@ -37,9 +36,9 @@ Bu makalede, iOS ve MacOS için Microsoft kimlik doğrulama kitaplığı uygulam
 
 ### <a name="b2c"></a>B2C
 
-B2C ile çalışmak için, [Microsoft kimlik doğrulama kitaplığı (msal)](reference-v2-libraries.md) farklı bir yetki yapılandırması gerektirir. MSAL, tek bir yetkili URL biçimini kendi B2C olarak tanır. Örneğin `https://<host>/tfp/<tenant>/<policy>` `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`, tanınan B2C yetkilisinin biçimi. Bununla birlikte, yetkiyi B2C yetkilisi olarak açıkça bildirerek desteklenen herhangi bir B2C yetkilisi URL 'sini de kullanabilirsiniz.
+B2C ile çalışmak için, [Microsoft kimlik doğrulama kitaplığı (msal)](reference-v2-libraries.md) farklı bir yetki yapılandırması gerektirir. MSAL, tek bir yetkili URL biçimini kendi B2C olarak tanır. Örneğin, tanınan B2C yetkilisinin biçimi `https://<host>/tfp/<tenant>/<policy>` `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy` . Bununla birlikte, yetkiyi B2C yetkilisi olarak açıkça bildirerek desteklenen herhangi bir B2C yetkilisi URL 'sini de kullanabilirsiniz.
 
-B2C için rastgele bir URL biçimi desteklemek amacıyla, `MSALB2CAuthority` aşağıdaki gibi rastgele bir URL ile ayarlanabilir:
+B2C için rastgele bir URL biçimi desteklemek amacıyla, aşağıdaki `MSALB2CAuthority` gibi rastgele BIR URL ile ayarlanabilir:
 
 Objective-C
 ```objc
@@ -76,7 +75,7 @@ b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 
 Uygulamanız yeni bir ilke istediğinde, yetkili URL her ilke için farklı olduğundan, yetkili URL 'sinin değiştirilmesi gerekir. 
 
-B2C uygulamasını yapılandırmak `@property MSALAuthority *authority` için, oluşturmadan `MSALB2CAuthority` `MSALPublicClientApplicationConfig` `MSALPublicClientApplication`önce ' ın bir örneği ile ayarlayın, örneğin:
+B2C uygulamasını yapılandırmak için, `@property MSALAuthority *authority` oluşturmadan önce ' ın bir örneği ile ayarlayın `MSALB2CAuthority` `MSALPublicClientApplicationConfig` , örneğin `MSALPublicClientApplication` :
 
 Objective-C
 ```ObjC
@@ -129,7 +128,7 @@ do{
 
 ### <a name="sovereign-clouds"></a>Bağımsız bulutlar
 
-Uygulamanız bir sogeign bulutu 'nda çalışıyorsa, `MSALPublicClientApplication`içindeki yetkili URL 'sini değiştirmeniz gerekebilir. Aşağıdaki örnek, bir yetkili URL 'YI Almanya AAD bulutu ile çalışacak şekilde ayarlar:
+Uygulamanız bir sogeign bulutu 'nda çalışıyorsa, içindeki yetkili URL 'sini değiştirmeniz gerekebilir `MSALPublicClientApplication` . Aşağıdaki örnek, bir yetkili URL 'YI Almanya AAD bulutu ile çalışacak şekilde ayarlar:
 
 Objective-C
 ```objc
@@ -174,13 +173,13 @@ do{
 }
 ```
 
-Her bir bağımsız bulutuna farklı kapsamlar geçirmeniz gerekebilir. Hangi kapsamların gönderileceği, kullanmakta olduğunuz kaynağa bağlıdır. Örneğin, dünya çapındaki bulutta ve `"https://graph.microsoft.com/user.read"` `"https://graph.microsoft.de/user.read"` Almanya bulutu 'nda kullanabilirsiniz.
+Her bir bağımsız bulutuna farklı kapsamlar geçirmeniz gerekebilir. Hangi kapsamların gönderileceği, kullanmakta olduğunuz kaynağa bağlıdır. Örneğin, `"https://graph.microsoft.com/user.read"` dünya çapındaki bulutta ve `"https://graph.microsoft.de/user.read"` Almanya bulutu 'nda kullanabilirsiniz.
 
 ### <a name="signing-a-user-into-a-specific-tenant"></a>Kullanıcıyı belirli bir kiracıya imzalama
 
-Yetkili URL 'SI olarak `"login.microsoftonline.com/common"`ayarlandığında, Kullanıcı kendi giriş kiracısında oturum açacaktır. Ancak bazı uygulamaların kullanıcı farklı bir kiracıda oturum açması gerekebilir ve bazı uygulamalar yalnızca tek bir kiracı ile çalışır.
+Yetkili URL 'SI olarak ayarlandığında `"login.microsoftonline.com/common"` , Kullanıcı kendi giriş kiracısında oturum açacaktır. Ancak bazı uygulamaların kullanıcı farklı bir kiracıda oturum açması gerekebilir ve bazı uygulamalar yalnızca tek bir kiracı ile çalışır.
 
-Kullanıcıyı belirli bir kiracıda imzalamak için belirli bir yetkiliyle yapılandırın `MSALPublicClientApplication` . Örneğin:
+Kullanıcıyı belirli bir kiracıda imzalamak için `MSALPublicClientApplication` belirli bir yetkiliyle yapılandırın. Örneğin:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
@@ -232,19 +231,19 @@ do{
 
 ### <a name="msalauthority"></a>MSALAuthority
 
-`MSALAuthority` Sınıfı, msal Authority sınıfları için temel soyut sınıftır. Veya `alloc` `new`kullanarak örneğini oluşturmayı denemeyin. Bunun yerine, alt sınıflarından birini doğrudan (`MSALAADAuthority`, `MSALB2CAuthority`) oluşturun ya da bir yetkili URL 'si `authorityWithURL:error:` kullanarak alt sınıflar oluşturmak için Factory yöntemini kullanın.
+`MSALAuthority`Sınıfı, msal Authority sınıfları için temel soyut sınıftır. Veya kullanarak örneğini oluşturmayı denemeyin `alloc` `new` . Bunun yerine, alt sınıflarından birini doğrudan ( `MSALAADAuthority` ,) oluşturun `MSALB2CAuthority` ya da `authorityWithURL:error:` bir yetkili URL 'si kullanarak alt sınıflar oluşturmak için Factory yöntemini kullanın.
 
-Normalleştirilmiş bir `url` yetkilendirme URL 'si almak için özelliğini kullanın. Ek parametreler ve yol bileşenleri veya yetkilinin parçası olmayan parçalar döndürülen normalleştirilmiş yetkilendirme URL 'sinde olmayacaktır.
+`url`Normalleştirilmiş bir yetkilendirme URL 'si almak için özelliğini kullanın. Ek parametreler ve yol bileşenleri veya yetkilinin parçası olmayan parçalar döndürülen normalleştirilmiş yetkilendirme URL 'sinde olmayacaktır.
 
-Aşağıda, kullanmak istediğiniz yetkiliye `MSALAuthority` bağlı olarak örneklenebilen alt sınıfları verilmiştir.
+Aşağıda, `MSALAuthority` kullanmak istediğiniz yetkiliye bağlı olarak örneklenebilen alt sınıfları verilmiştir.
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`bir AAD yetkilisini temsil eder. Yetkili URL 'sinin aşağıdaki biçimde olması gerekir; burada `<port>` , isteğe bağlıdır:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority`bir AAD yetkilisini temsil eder. Yetkili URL 'sinin aşağıdaki biçimde olması gerekir; burada, `<port>` isteğe bağlıdır:`https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`bir B2C yetkilisini temsil eder. Varsayılan olarak, B2C yetkilisi URL 'si aşağıdaki biçimde olmalıdır; burada `<port>` isteğe bağlıdır:. `https://<host>:<port>/tfp/<tenant>/<policy>` Ancak, MSAL diğer isteğe bağlı B2C yetkilendirme biçimlerini de destekler.
+`MSALB2CAuthority`bir B2C yetkilisini temsil eder. Varsayılan olarak, B2C yetkilisi URL 'si aşağıdaki biçimde olmalıdır; burada `<port>` isteğe bağlıdır: `https://<host>:<port>/tfp/<tenant>/<policy>` . Ancak, MSAL diğer isteğe bağlı B2C yetkilendirme biçimlerini de destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

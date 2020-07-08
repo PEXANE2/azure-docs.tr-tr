@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086660"
 ---
 # <a name="persist-state-in-linux"></a>Linux 'ta durumu kalıcı yap
@@ -25,7 +24,7 @@ Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar, daha iyi perf
 Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getirme adımları sağlanmaktadır.
 
 > [!NOTE]
->Event Grid modülü UID `2000` ve Name `eventgriduser`ile düşük ayrıcalıklı bir kullanıcı olarak çalışır.
+>Event Grid modülü UID ve Name ile düşük ayrıcalıklı bir kullanıcı olarak çalışır `2000` `eventgriduser` .
 
 ## <a name="persistence-via-volume-mount"></a>Birim bağlama aracılığıyla Kalıcılık
 
@@ -170,7 +169,7 @@ Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
 * Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
 * Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak genellikle büyük ölçekte fark edilebilir hale gelir.
 
-Olay aboneliğindeki olay kalıcılığını etkinleştirmek için şu şekilde `persistencePolicy` `true`ayarlayın:
+Olay aboneliğindeki olay kalıcılığını etkinleştirmek için şu `persistencePolicy` şekilde ayarlayın `true` :
 
  ```json
         {

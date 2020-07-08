@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121726"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
@@ -42,7 +41,7 @@ Daha fazla bilgi için [Azure DNS SLA sayfasına](https://azure.microsoft.com/su
 
 Etki alanı, etki alanı adı sisteminde benzersiz bir addır. Örneğin: contoso.com.
 
-DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Örneğin, contoso.com etki alanı birkaç DNS kaydı içerebilir. Kayıtlar bir posta sunucusu için mail.contoso.com ve bir Web sitesi için\.www contoso.com içerebilir. Bu kayıtlar, DNS bölgesi contoso.com içinde barındırılır.
+DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Örneğin, contoso.com etki alanı birkaç DNS kaydı içerebilir. Kayıtlar bir posta sunucusu için mail.contoso.com ve \. bir Web sitesi için www contoso.com içerebilir. Bu kayıtlar, DNS bölgesi contoso.com içinde barındırılır.
 
 Bir etki alanı adı *yalnızca bir addır*. DNS bölgesi, bir etki alanı adı için DNS kayıtlarını içeren bir veri kaynağıdır. Azure DNS’yi kullanarak bir DNS bölgesi barındırabilir ve Azure'da bir etki alanının DNS kayıtlarını yönetebilirsiniz. Ayrıca, DNS sorgularını Internet 'ten yanıtlamak için DNS ad sunucuları sağlar.
 
@@ -96,7 +95,7 @@ Evet. Azure DNS, TXT kayıt kümeleri için genişletilmiş ASCII kodlama kümes
 
 Örneğin, genişletilmiş ASCII karakteri \ 128 olan bir TXT kaydı değeri olarak bir dize sağlayabilirsiniz. Örnek, "abcd\128efgh." şeklindedir. Azure DNS, bu karakterin iç temsilinde 128 olan byte değerini kullanır. DNS çözümlemesi sırasında, yanıtta bu bayt değeri döndürülür. Ayrıca, "abc" ve "\ 097 \ 098 \ 099" ' nin çözüm açısından çok farklı şekilde değiştirilebilecek olduğunu unutmayın. 
 
-TXT kayıtları için [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) bölge dosyası ana biçim kaçış kurallarını izliyoruz. Örneğin, `\` artık RFC başına her şeyi yok eder. TXT kayıt değeri `A\B` olarak belirtirseniz, yalnızca `AB`olarak temsil edilir ve çözümlenir. Aslında TXT kaydının `A\B` çözümlenme durumunda olmasını istiyorsanız, `\` tekrar kaçış yapmanız gerekir. Örnek olarak, öğesini belirtin `A\\B`.
+TXT kayıtları için [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) bölge dosyası ana biçim kaçış kurallarını izliyoruz. Örneğin, `\` artık RFC başına her şeyi yok eder. `A\B`Txt kayıt değeri olarak belirtirseniz, yalnızca olarak temsil edilir ve çözümlenir `AB` . Aslında TXT kaydının çözümlenme durumunda olmasını istiyorsanız, `A\B` tekrar kaçış yapmanız gerekir `\` . Örnek olarak, öğesini belirtin `A\\B` .
 
 Bu destek şu anda Azure portal oluşturulan TXT kayıtları için kullanılamaz.
 

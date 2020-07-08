@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162761"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
@@ -157,6 +156,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

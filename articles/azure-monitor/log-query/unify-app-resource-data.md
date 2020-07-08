@@ -8,10 +8,9 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77137489"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Birden çok Azure Izleyici Application Insights kaynağını bütünleştirme 
@@ -24,12 +23,12 @@ Bu örnek, birden çok Application Insights kaynağını nasıl izleyebileceğin
 
 Uygulama listesiyle birlikte UNION işlecini kullanarak bir işlev oluşturun, sonra sorguyu çalışma alanınıza, *Applicationsscoping*diğer adı ile işlev olarak kaydedin. 
 
-Çalışma alanınızda sorgu Gezgini ' ne gidip, Düzenle ve sonra kaydetme işlevini seçerek veya `SavedSearch` PowerShell cmdlet 'ini kullanarak, listelenen uygulamaları portalda dilediğiniz zaman değiştirebilirsiniz. 
+Çalışma alanınızda sorgu Gezgini ' ne gidip, Düzenle ve sonra kaydetme işlevini seçerek veya PowerShell cmdlet 'ini kullanarak, listelenen uygulamaları portalda dilediğiniz zaman değiştirebilirsiniz `SavedSearch` . 
 
 >[!NOTE]
 >Çalışma alanları ve uygulamalar dahil olmak üzere uyarı kuralı kaynaklarının erişim doğrulaması uyarı oluşturma sırasında gerçekleştirildiğinden, bu yöntem günlük uyarıları ile kullanılamaz. Uyarı oluşturulduktan sonra işleve yeni kaynaklar eklemek desteklenmez. Günlük uyarılarında kaynak kapsamı için işlev kullanmayı tercih ederseniz, kapsamdaki kaynakları güncelleştirmek için portalda veya bir Kaynak Yöneticisi şablonuyla uyarı kuralını düzenlemeniz gerekir. Alternatif olarak, günlük uyarısı sorgusuna kaynak listesini de ekleyebilirsiniz.
 
-`withsource= SourceApp` Komut, günlüğü gönderen uygulamayı atayan sonuçlara bir sütun ekler. Parse işleci Bu örnekte isteğe bağlıdır ve SourceApp özelliğinden uygulama adını ayıklamak için kullanır. 
+`withsource= SourceApp`Komut, günlüğü gönderen uygulamayı atayan sonuçlara bir sütun ekler. Parse işleci Bu örnekte isteğe bağlıdır ve SourceApp özelliğinden uygulama adını ayıklamak için kullanır. 
 
 ```
 union withsource=SourceApp 
@@ -72,8 +71,8 @@ Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema far
 | Kullanılabilirlik süresi | süre |
 | Kullanılabilirliği olan Bilitymessage | message |
 | Kullanılabilirliği | location |
-| Kullanılabilirliği | id |
-| Kullanılabilirliği olan Bilitytestname | ad |
+| Kullanılabilirliği | kimlik |
+| Kullanılabilirliği olan Bilitytestname | name |
 | Kullanılabilirlik zaman damgası | timestamp |
 | Tarayıcı | client_browser |
 | Şehir | client_city |
@@ -82,32 +81,32 @@ Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema far
 | Ülke | client_CountryOrRegion | 
 | CustomEventCount | ItemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | ad | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | ItemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| Türü | type |
+| Türü | tür |
 | OperationId | operation_id |
 | ThrottledRequests | operation_Name | 
 | İşletim Sistemi | client_OS | 
 | PageViewCount | ItemCount |
 | PageViewDuration | süre | 
-| PageViewName | ad | 
+| PageViewName | name | 
 | Parentoperationıd | operation_Id | 
 | Istek sayısı | ItemCount | 
 | RequestDuration | süre | 
-| RequestID | id | 
-| RequestName | ad | 
+| RequestID | kimlik | 
+| RequestName | name | 
 | RequestSuccess | başarılı | 
 | Yanıt kodu | resultCode | 
 | Rol | cloud_RoleName |
 | Roleınstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
-| URL'si | url |
+| TelemetryTYpe | tür |
+| URL | url |
 | Useraccountıd | user_AccountId |
 
 ## <a name="next-steps"></a>Sonraki adımlar

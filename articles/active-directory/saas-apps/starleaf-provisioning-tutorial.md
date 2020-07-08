@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064315"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
@@ -54,11 +53,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan önce, Staryaprak 'da SCıM sağlamasını yapılandırmanız gerekir:
 
-1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** > gidin**tümleştirme Ekle**.
+1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere**gidin  >  **tümleştirme Ekle**.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**’ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**'ya tıklayın.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -91,7 +90,7 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryaprak 'da kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

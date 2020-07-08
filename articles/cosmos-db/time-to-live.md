@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77188712"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB'de Yaşam Süresi (TTL) 
@@ -24,7 +23,7 @@ Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Is
 
 Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değiştirilme zamanından Delta olarak yorumlanır. Bir kapsayıcıda veya kapsayıcı içindeki bir öğede yaşam süresi ayarlayabilirsiniz:
 
-1. **Kapsayıcıda yaşam süresi** (kullanılarak `DefaultTimeToLive`ayarlanır):
+1. **Kapsayıcıda yaşam süresi** (kullanılarak ayarlanır `DefaultTimeToLive` ):
 
    - Eksik (veya null olarak ayarlandıysa), öğelerin otomatik olarak zaman aşımına ermez.
 
@@ -32,11 +31,11 @@ Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değişti
 
    - Varsa ve değer bir sayı *"n"* olarak ayarlanırsa, son değiştirilme zamanından sonra öğelerin süresi *"n"* saniye dolacak.
 
-2. **Bir öğe üzerinde yaşam süresi** (kullanılarak `ttl`ayarlanır):
+2. **Bir öğe üzerinde yaşam süresi** (kullanılarak ayarlanır `ttl` ):
 
-   - Bu özellik yalnızca `DefaultTimeToLive` varsa ve üst kapsayıcı için null olarak ayarlanmamışsa geçerlidir.
+   - Bu özellik yalnızca varsa `DefaultTimeToLive` ve üst kapsayıcı için null olarak ayarlanmamışsa geçerlidir.
 
-   - Varsa, üst kapsayıcının `DefaultTimeToLive` değerini geçersiz kılar.
+   - Varsa, `DefaultTimeToLive` üst kapsayıcının değerini geçersiz kılar.
 
 ## <a name="time-to-live-configurations"></a>Canlı yapılandırmaların süresi
 

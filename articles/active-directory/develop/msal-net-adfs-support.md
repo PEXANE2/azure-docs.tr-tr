@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77160769"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
@@ -35,7 +34,7 @@ MSAL.NET, yönetilen kullanıcılar (Azure AD 'de yönetilen kullanıcılar) vey
 Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#authority) , her zamanki yetkilinin (yetkili ana bilgisayar adı + kiracı, ortak veya kuruluşlar).
 
 ### <a name="acquiring-a-token-interactively"></a>Bir belirteci etkileşimli olarak alma
-`AcquireTokenInteractive` Yöntemini çağırdığınızda, Kullanıcı deneyimi genellikle şu şekilde olur:
+`AcquireTokenInteractive`Yöntemini çağırdığınızda, Kullanıcı deneyimi genellikle şu şekilde olur:
 
 1. Kullanıcı hesap KIMLIĞINI girer.
 2. Azure AD, "kuruluşunuzun sayfasına yönlendirilme" iletisini kısaca görüntüler.
@@ -44,10 +43,10 @@ Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#
 Bu Federasyon senaryosunda desteklenen AD FS sürümleri AD FS v2, AD FS v3 (Windows Server 2012 R2) ve AD FS v4 (AD FS 2016).
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiretokenbyıntegratedaduthentication veya AcquireTokenByUsernamePassword kullanarak bir belirteç alınıyor
-`AcquireTokenByIntegratedAuthentication` Veya `AcquireTokenByUsernamePassword` yöntemlerini kullanarak bir belirteç edinilirken, msal.NET Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır.  MSAL.NET, kimlik sağlayıcısıyla iletişim kurduktan sonra bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır.  MSAL.NET ardından, SAML belirtecini bir JWT geri almak için Kullanıcı Onayı (örneğin, [akışa](msal-authentication-flows.md#on-behalf-of)benzer) olarak Azure AD 'ye sağlar.
+Veya yöntemlerini kullanarak bir belirteç edinilirken `AcquireTokenByIntegratedAuthentication` `AcquireTokenByUsernamePassword` , msal.NET Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır.  MSAL.NET, kimlik sağlayıcısıyla iletişim kurduktan sonra bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır.  MSAL.NET ardından, SAML belirtecini bir JWT geri almak için Kullanıcı Onayı (örneğin, [akışa](msal-authentication-flows.md#on-behalf-of)benzer) olarak Azure AD 'ye sağlar.
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL AD FS doğrudan bağlanır
-MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekler ve PKI ve kapsamları anlamıştır. Bu destek, Windows Server 'a bir hizmet paketi [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) uygulanmasını gerektirir. AD FS doğrudan bağlanırken, uygulamanızı derlemek için kullanmak istediğiniz yetkili buna benzer `https://mysite.contoso.com/adfs/`.
+MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekler ve PKI ve kapsamları anlamıştır. Bu destek, Windows Server 'a bir hizmet paketi [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) uygulanmasını gerektirir. AD FS doğrudan bağlanırken, uygulamanızı derlemek için kullanmak istediğiniz yetkili buna benzer `https://mysite.contoso.com/adfs/` .
 
 Şu anda, ile doğrudan bağlantıyı desteklemeye yönelik bir plan yoktur:
 
