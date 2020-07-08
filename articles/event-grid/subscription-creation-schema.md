@@ -8,10 +8,9 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: femila
 ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558972"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid abonelik şeması
@@ -32,21 +31,21 @@ Olay abonelik adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-Z,
  
 ## <a name="event-subscription-properties"></a>Olay aboneliği özellikleri
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | hedef | nesne | Uç noktasını tanımlayan nesne. |
 | filtre | nesne | Olay türlerini filtrelemek için isteğe bağlı bir alan. |
 
 ### <a name="destination-object"></a>hedef nesne
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | endpointType | string | Abonelik için uç nokta türü (Web kancası/HTTP, Olay Hub 'ı veya kuyruğu). | 
 | endpointUrl | string | Bu olay aboneliğindeki olaylar için hedef URL. | 
 
 ### <a name="filter-object"></a>filtre nesnesi
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Olay iletisindeki olay türü, bu olay türü adlarından biriyle tam olarak eşleşiyorsa eşleşir. Olay adı olay kaynağı için kayıtlı olay türü adlarıyla eşleşmediği zaman bir hata oluşturur. Varsayılan değer tüm olay türleriyle eşleşir. |
 | subjectBeginsWith | string | Olay iletisindeki Konu alanı için bir önek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. | 

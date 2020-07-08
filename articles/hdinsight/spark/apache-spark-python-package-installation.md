@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
 ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84607321"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
@@ -23,7 +22,7 @@ ms.locfileid: "84607321"
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Müşterilerin Python ortamını özelleştirmesi gerekebilir. Dış Python paketleri veya başka bir Python sürümü yükleme gibi. Burada, HDInsight 'ta Apache Spark kümeleri için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight üzerinde zaten bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 

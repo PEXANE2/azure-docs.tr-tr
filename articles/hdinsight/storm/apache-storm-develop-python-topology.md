@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
 ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608783"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight 'ta Python kullanarak Apache Storm topolojileri geliştirme
@@ -22,7 +21,7 @@ Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topol
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, HDInsight 3,6 ' de fırtınası kullanılarak test edilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 

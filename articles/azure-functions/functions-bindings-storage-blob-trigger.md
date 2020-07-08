@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559989"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
@@ -59,9 +58,9 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan kod içindeki bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Aşağıdaki örnek, birfunction.jsdosya ve bağlamayı kullanan kod *üzerindeki* bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -80,7 +79,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 `{name}`BLOB tetikleyici yolundaki dize, `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+Dosya özellikleriyle ilgili *function.js* hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
 Aşağıda bir öğesine bağlanan C# betik kodu verilmiştir `Stream` :
 
@@ -106,9 +105,9 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [JavaScript kodu](functions-reference-node.md) içindeki bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` .
+Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` .
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -127,7 +126,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Java
 
 `{name}`BLOB tetikleyici yolundaki dize, `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+Dosya özellikleriyle ilgili *function.js* hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
 JavaScript kodu aşağıda verilmiştir:
 
@@ -140,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Python kodu](functions-reference-python.md) içindeki bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [Python kodundaki](functions-reference-python.md) bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -162,7 +161,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Pyth
 
 `{name}`BLOB tetikleyici yolundaki dize, `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+Dosya özellikleriyle ilgili *function.js* hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
 Python kodu aşağıda verilmiştir:
 
@@ -273,9 +272,9 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `BlobTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `BlobTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `blobTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
@@ -297,7 +296,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladı�
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Blob verilerine `context.bindings.<NAME>` `<NAME>` , WHERE, *function. JSON*içinde tanımlanan değerle eşleşen verileri erişin.
+`context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js*tanımlanan değerle eşleşen blob verilerine erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -311,7 +310,7 @@ Blob verilerine [InputStream](https://docs.microsoft.com/python/api/azure-functi
 
 ## <a name="blob-name-patterns"></a>Blob adı desenleri
 
-`path` *Function. JSON* içinde veya öznitelik oluşturucusunda özelliğinde bir blob adı stili belirtebilirsiniz `BlobTrigger` . Ad stili bir [filtre veya bağlama ifadesi](./functions-bindings-expressions-patterns.md)olabilir. Aşağıdaki bölümlerde örnekler sağlanmaktadır.
+Öğesinde `path` veya öznitelik oluşturucusunda *function.js* özelliğinde bir blob adı stili belirtebilirsiniz `BlobTrigger` . Ad stili bir [filtre veya bağlama ifadesi](./functions-bindings-expressions-patterns.md)olabilir. Aşağıdaki bölümlerde örnekler sağlanmaktadır.
 
 ### <a name="get-file-name-and-extension"></a>Dosya adı ve uzantısını al
 
@@ -321,7 +320,7 @@ Aşağıdaki örnek, blob dosya adına ve uzantısına ayrı olarak nasıl bağl
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Blob *Original-Blob1. txt*olarak adlandırılmışsa, `blobname` ve `blobextension` işlev kodundaki değişkenlerin değerleri *özgün-Blob1* ve *txt*' dir.
+Blob *original-Blob1.txt*adlandırılmış ise, `blobname` ve `blobextension` işlev kodundaki değişkenlerin değerleri *özgün-Blob1* ve *txt*' dir.
 
 ### <a name="filter-on-blob-name"></a>Blob adını filtrele
 
@@ -331,7 +330,7 @@ Aşağıdaki örnek yalnızca `input` kapsayıcıda "özgün-" dizesiyle başlay
 "path": "input/original-{name}",
 ```
 
-Blob adı *Original-Blob1. txt*ise, `name` işlev kodundaki değişkenin değeri olur `Blob1` .
+Blob adı *original-Blob1.txt*ise, `name` işlev kodundaki değişkenin değeri olur `Blob1` .
 
 ### <a name="filter-on-file-type"></a>Dosya türünü filtrele
 
@@ -349,9 +348,9 @@ Dosya adlarında küme ayraçları aramak için, iki küme ayracı kullanarak k�
 "path": "images/{{20140101}}-{name}",
 ```
 
-Blob, * {20140101} -soundfile. mp3*olarak adlandırılmışsa, `name` işlev kodundaki değişken değeri *soundfile. mp3*olur.
+Blob * {20140101}-soundfile.mp3*adlandırılmışsa, `name` işlev kodundaki değişken değeri *soundfile.mp3*.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -408,7 +407,7 @@ Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure
 
 ## <a name="concurrency-and-memory-usage"></a>Eşzamanlılık ve bellek kullanımı
 
-Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle maksimum eşzamanlı işlev çağırma sayısı, [Host. JSON içindeki kuyruklar yapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılık, 24 çağırma ile sınırlıdır. Bu sınır, blob tetikleyicisi kullanan her bir işleve ayrı olarak uygulanır.
+Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle eşzamanlı işlev çağırma sayısı üst sınırı, [host.jsüzerinde bulunan kuyruklar yapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılık, 24 çağırma ile sınırlıdır. Bu sınır, blob tetikleyicisi kullanan her bir işleve ayrı olarak uygulanır.
 
 [Tüketim planı](functions-scale.md#how-the-consumption-and-premium-plans-work) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
 

@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
 ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628285"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
@@ -60,13 +59,13 @@ Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen �
 
 |**Linux dosyaları**|**Windows dosyaları**|**Windows kayıt defteri anahtarları**|
 |:----|:----|:----|
-|/bin/login|C:\oto Exec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/bin/passwd|C:\Boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ 603Bcc1f-4b59-4e08-b724-d2c6297ef351}|
-|/etc/*. conf|C:\Config.sys|HKLM\SOFTWARE\Microsoft\Windows Nt\currentversion\inidosyasımapping\system.ın\boot|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ 603Bcc1f-4b59-4e08-b724-d2c6297ef351}|
+|/etc/*. conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini \Boot|
 |/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
 |/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell klasörleri|
-|/sbin|C:\windows\system32\userınit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User kabuk klasörleri|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User kabuk klasörleri|
 |/Boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
 |/usr/local/bin|C:\Program Files\Microsoft Security Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
 |/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
@@ -74,7 +73,7 @@ Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen �
 |/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
 |/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ 603Bcc1f-4b59-4e08-b724-d2c6297ef351}|
-|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows Nt\currentversion\ınıfilemapping\system.ini\boot|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini \Boot|
 |/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
 |/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell klasörleri|

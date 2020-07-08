@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604703"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Örnek: Python kullanarak özel bir yetenek oluşturma
@@ -22,7 +21,7 @@ Bu Azure Bilişsel Arama Beceri örneğinde, Python ve Visual Studio Code kullan
 
 Özel beceri tasarım tarafından basittir (iki dizeyi birleştirir), böylece Python 'da özel beceri geliştirme için kullanılan araçlara ve teknolojilere odaklanırsınız. Basit bir beceriyle başarılı olduktan sonra daha karmaşık senaryolara sahip olabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Özel bir yeteneğin uygulanması gereken giriş/çıkış arabirimine giriş için [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) gözden geçirin.
 

@@ -13,10 +13,9 @@ ms.reviewer: maghan
 manager: anandsub
 ms.custom: tracking-python
 ms.openlocfilehash: 6ae42c9cb68b28e5d2f0b5a2ba3cf7eab74a74b4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84561116"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks bir Python etkinliği çalıştırarak verileri dönüştürme
@@ -66,11 +65,11 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |---|---|---|
-|name|İşlem hattındaki etkinliğin adı.|Yes|
+|name|İşlem hattındaki etkinliğin adı.|Evet|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
-|tür|Databricks Python etkinliği için etkinlik türü Databricksmini Python ' dır.|Yes|
-|linkedServiceName|Python etkinliğinin çalıştırıldığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md)   makalesi.|Yes|
-|pythonFile|Yürütülecek Python dosyasının URI 'SI. Yalnızca DBFS yolları desteklenir.|Yes|
+|tür|Databricks Python etkinliği için etkinlik türü Databricksmini Python ' dır.|Evet|
+|linkedServiceName|Python etkinliğinin çalıştırıldığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md)   makalesi.|Evet|
+|pythonFile|Yürütülecek Python dosyasının URI 'SI. Yalnızca DBFS yolları desteklenir.|Evet|
 |parametreler|Python dosyasına geçirilecek komut satırı parametreleri. Bu bir dizeler dizisidir.|Hayır|
 |kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. <dize, nesne> dizisi olabilir|Hayır|
 

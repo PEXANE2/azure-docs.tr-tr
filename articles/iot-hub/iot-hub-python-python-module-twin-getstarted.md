@@ -10,10 +10,9 @@ ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: tracking-python
 ms.openlocfilehash: f324b04dd87f84a07c07394f2ee7c3efdc30c3e1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84607083"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub Module kimliği ve modülü ikizi (Python) ile çalışmaya başlama
@@ -34,7 +33,7 @@ Bu öğreticinin sonunda üç Python uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 

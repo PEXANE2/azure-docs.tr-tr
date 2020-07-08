@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609939"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
@@ -34,11 +33,11 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
 
 4. Depolama hesabı için statik Web sitesi barındırmayı etkinleştirmek üzere **etkin** ' i seçin.
 
-5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *Index. html*) belirtin. 
+5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *index.html*) belirtin. 
 
    Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
 
-6. **Hata belgesi yolu** alanında varsayılan bir hata sayfası (örneğin: *404. html*) belirtin. 
+6. **Hata belgesi yolu** alanında, varsayılan bir hata sayfası (örneğin: *404.html*) belirtin. 
 
    Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
 
@@ -72,7 +71,7 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
 
    * `<error-document-name>`Yer tutucusunu, sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
 
-   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
+   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index.html" dir.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -124,7 +123,7 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
 
    * `<error-document-name>`Yer tutucusunu, sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
 
-   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
+   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index.html" dir.
 
 ---
 

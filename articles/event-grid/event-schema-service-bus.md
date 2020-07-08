@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559490"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Service Bus
@@ -24,7 +23,7 @@ Bu makalede Service Bus olayları için özellikler ve şema sağlanmaktadır.Ol
 
 Service Bus aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Bir kuyrukta veya abonelikte etkin iletiler olduğunda ve hiçbir alıcı dinlemeden oluşturulur. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Sahipsiz bir kuyrukta etkin iletiler olduğunda ve etkin dinleyici olmadığında tetiklenir. |
@@ -86,7 +85,7 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | BLOB depolama olay verileri. |
+| veriler | nesne | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 

@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560013"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama çıkış bağlaması
@@ -78,9 +77,9 @@ public class ResizeImages
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnek, bağlamaları kullanan bir *function. JSON* dosyası ve [C# betiği (. CSX)](functions-reference-csharp.md) kodunda blob giriş ve çıkış bağlamalarını gösterir. İşlevi, bir metin blobunun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnekte, bağlamaları kullanan dosya ve [C# betiği (. CSX)](functions-reference-csharp.md) kodundaki *function.js* blob giriş ve çıkış bağlamaları gösterilmektedir. İşlevi, bir metin blobunun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
+Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
 ```json
 {
@@ -127,9 +126,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnek, blob giriş ve çıkış bağlamalarını bir *function. JSON* dosyası ve bağlamaları kullanan [JavaScript kodu](functions-reference-node.md) gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [JavaScript kodundaki](functions-reference-node.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
+Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
 ```json
 {
@@ -176,9 +175,9 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnekte, bir *function. JSON* dosyası ve bağlamaları kullanan [Python kodu](functions-reference-python.md) içindeki blob girişi ve çıkış bağlamaları gösterilmektedir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [Python kodundaki](functions-reference-python.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
+Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
 ```json
 {
@@ -348,9 +347,9 @@ Tüm örnek için bkz. [çıkış örneği](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Blob` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Blob` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `blob` . |
 |**Görünüm** | yok | `out`Çıkış bağlaması için olarak ayarlanmalıdır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |

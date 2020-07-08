@@ -13,10 +13,9 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634651"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
@@ -120,7 +119,7 @@ Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanl�
 * Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Yalnızca rapor olarak etki alanına katılmayı gerektiren bir ilke yapılandırma olarak, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedekleme olarak.
 * [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
 * Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure AD self servis parola sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) ve [Azure AD parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) dağıtın.
-* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örnek:
+* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
   * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
   * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
 * Kesintilerinizi bir kesinti sırasında bulmanın kolay olduğundan emin olmak için ilkelerinizi adlandırın. İlke adına aşağıdaki öğeleri ekleyin:

@@ -10,10 +10,9 @@ ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
 ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606896"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
@@ -625,7 +624,7 @@ Runbook veya uygulamanız bir Azure korumalı alanında çalışmayı denediğin
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, Azure korumalı alanlar tüm işlem dışı COM sunucularına erişimi engellediği için ortaya çıkabilir. Örneğin, korumalı bir uygulama veya Runbook Windows Yönetim Araçları (WMI) veya Windows Installer hizmetine (msiserver. exe) çağrı yapamıyor. 
+Bu sorun, Azure korumalı alanlar tüm işlem dışı COM sunucularına erişimi engellediği için ortaya çıkabilir. Örneğin, korumalı bir uygulama veya Runbook Windows Yönetim Araçları (WMI) veya Windows Installer hizmetine (msiserver.exe) çağıramaz. 
 
 ### <a name="resolution"></a>Çözüm
 

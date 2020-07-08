@@ -9,17 +9,16 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
 ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608596"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal Azure Data Box için kendi kendine yönetilen dağıtımı kullanın
 
 Bu makalede, bir Azure Data Box cihazının sıralaması, çekilmesi ve kapatılması için kendi kendine yönetilen sevkıyat görevleri açıklanmaktadır. Data Box cihazını Azure portal kullanarak yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure Data Box sipariş](data-box-deploy-ordered.md)ettiğinizde kendi kendine yönetilen sevkıyat bir seçenek olarak kullanılabilir. Otomatik olarak yönetilen kargo yalnızca aşağıdaki bölgelerde kullanılabilir:
 

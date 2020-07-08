@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559968"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
@@ -41,9 +40,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [C# betiği (. CSX)](functions-reference-csharp.md) kodunda bir http tetikleyicisi bağlamayı gösterir. İşlevi, alınan her HTTP isteği için bir **Customqueuemessage** nesne yüküne sahip bir kuyruk öğesi oluşturur.
+Aşağıdaki örnek, bağlamayı kullanan dosya ve [C# betiği (. CSX)](functions-reference-csharp.md) kodundaki *function.js* bir http tetikleyici bağlamayı gösterir. İşlevi, alınan her HTTP isteği için bir **Customqueuemessage** nesne yüküne sahip bir kuyruk öğesi oluşturur.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -102,9 +101,9 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
+Aşağıdaki örnek, bir *function.js* DOSYADAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -153,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, Depolama kuyruklarına tek ve birden çok değerin nasıl alınacağını gösterir. *Function. JSON* için gereken yapılandırma her iki yoldan de aynıdır.
+Aşağıdaki örnek, Depolama kuyruklarına tek ve birden çok değerin nasıl alınacağını gösterir. *function.js* için gereken yapılandırma her iki yoldan de aynıdır.
 
-Bir depolama kuyruğu bağlaması, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `queue` .
+Bir depolama kuyruğu bağlama, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `queue` .
 
 ```json
 {
@@ -313,11 +312,11 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Queue` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Queue` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**tür** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**türüyle** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Adı** |**Adı** | Kuyruğun adı. |
@@ -345,7 +344,7 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Function. JSON*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
+Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Üzerindefunction.js*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
 * JSON olarak seri hale getirilebilir bir nesne
 * `string`
@@ -361,13 +360,13 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Çıkış kuyruğu öğesi, `context.bindings.<NAME>` `<NAME>` *function. JSON*içinde tanımlanan adla eşleşen bir ile kullanılabilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
+Çıkış kuyruğu öğesine, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*tanımlanan adla eşleşen WHERE aracılığıyla erişilebilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *function. JSON* içindeki özelliği olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
+- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
 
 - **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` kuyruk depolama iletisi olarak kalıcıdır.
 
@@ -391,12 +390,12 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Host. JSON ayarları
+## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -413,7 +412,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |Maxpollingınterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
 |visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |

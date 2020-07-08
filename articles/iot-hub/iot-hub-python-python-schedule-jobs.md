@@ -10,10 +10,9 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: tracking-python
 ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606471"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>İşleri zamanlama ve yayınlama (Python)
@@ -54,7 +53,7 @@ Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 

@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558556"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
@@ -26,7 +25,7 @@ Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğ
 
 Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Description
+  MSAL kitaplığı | Açıklama
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
@@ -57,7 +56,7 @@ Yapılandırma dosyası şunları tanımlar:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[.NET Core konsol Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneğinden [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) .
+[.NET Core konsol Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneğinden [appsettings.js](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) .
 
 ```json
 {
@@ -73,7 +72,7 @@ Ya da a sağlarsınız `ClientSecret` `CertificateName` . Bu ayarlar dışlamal�
 
 # <a name="python"></a>[Python](#tab/python)
 
-İstemci gizli dizileri ile gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) yapılandırma dosyası aşağıdaki gibidir:
+İstemci gizli dizileri ile gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki yapılandırma dosyasında [parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) aşağıdaki gibidir:
 
 ```Json
 {
@@ -85,7 +84,7 @@ Ya da a sağlarsınız `ClientSecret` `CertificateName` . Bu ayarlar dışlamal�
 }
 ```
 
-Sertifikalarla gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) yapılandırma dosyası aşağıdaki gibidir:
+Sertifikalarla gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki yapılandırma dosyası [parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) aşağıdaki gibidir:
 
 ```Json
 {

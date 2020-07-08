@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559907"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
@@ -44,9 +43,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [C# betiği (. CSX)](functions-reference-csharp.md) kodunda bir sıra tetikleyicisi bağlamasını gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
+Aşağıdaki örnek, bağlamayı kullanan dosya ve [C# betiği (. CSX)](functions-reference-csharp.md) kodundaki *function.js* bir sıra tetikleyicisi bağlamasını gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -95,13 +94,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-[Kullanım](#usage) bölümü `myQueueItem` , `name` function. JSON içindeki özelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
+[Kullanım](#usage) bölümü `myQueueItem` , `name` üzerinde function.jsözelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -140,13 +139,13 @@ module.exports = async function (context, message) {
 };
 ```
 
-[Kullanım](#usage) bölümü `myQueueItem` , `name` function. JSON içindeki özelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
+[Kullanım](#usage) bölümü `myQueueItem` , `name` üzerinde function.jsözelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, bir tetikleyici aracılığıyla işleve geçirilen bir sıra iletisinin nasıl okunacağını gösterir.
 
-Bir depolama kuyruğu tetikleyicisi, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `queueTrigger` .
+Depolama kuyruğu tetikleyicisi, *türünün türü* olarak ayarlandığı *function.js* tanımlanır `queueTrigger` .
 
 ```json
 {
@@ -309,12 +308,12 @@ public class QueueTriggerDemo {
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `QueueTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `QueueTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok| Olarak ayarlanmalıdır `queueTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**Görünüm**| yok | Yalnızca *function. JSON* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**Görünüm**| yok | Yalnızca *function.js* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
 |**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
 |**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
@@ -336,7 +335,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` *Function. JSON*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
+Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` *Üzerindefunction.js*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
 * Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
@@ -347,7 +346,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *function. JSON*içinde tanımlanan adla eşleşen ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
+Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -363,9 +362,9 @@ Sıra iletisine [queuemessage](https://docs.microsoft.com/python/api/azure-funct
 
 Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
 
-|Özellik|Tür|Description|
+|Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *function. JSON*içindeki özelliği tarafından adlandırılan değişkenle aynı değere sahip olur.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *üzerindefunction.js*özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
 |`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
 |`Id`|`string`|Kuyruk ileti KIMLIĞI.|
@@ -388,7 +387,7 @@ Algoritma aşağıdaki mantığı kullanır:
 - Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti arar
 - Hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler.
 - Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder.
-- En uzun bekleme süresi, `maxPollingInterval` [Host. JSON dosyasındaki](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
+- En uzun bekleme süresi, `maxPollingInterval` [dosyadakihost.js](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
 
 Yerel geliştirme için en fazla yoklama aralığı varsayılan olarak iki saniyedir.
 
@@ -398,13 +397,13 @@ Faturalandırmayla ilgili olarak, çalışma zamanı tarafından yoklama harcana
 
 Bekleyen birden çok kuyruk iletisi olduğunda, kuyruk tetikleyicisi bir toplu ileti alır ve işlev örneklerini işlemek için eşzamanlı olarak çağırır. Varsayılan olarak, toplu iş boyutu 16 ' dır. İşlenen sayı 8 ' e iniyorsa, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, bir sanal makinede (VM) işlev başına işlenen en fazla eşzamanlı ileti sayısı 24 ' dir. Bu sınır, her bir sanal makinenin her bir sıraya göre tetiklenen işleve ayrı olarak uygulanır. İşlev uygulamanız birden çok VM 'ye ölçeklenirken, her sanal makine Tetikleyicileri bekler ve işlevleri çalıştırmaya çalışır. Örneğin, bir işlev uygulaması 3 VM 'ye ölçekleniyorsa, bir sıra tetiklenen işlevin varsayılan en fazla eşzamanlı örneği 72 ' dir.
 
-Toplu iş boyutu ve yeni bir toplu işlem alma eşiği, [Host. json dosyasında](functions-host-json.md#queues)yapılandırılabilir. Bir işlev uygulamasındaki Queue-tetiklenen işlevler için paralel yürütmeyi en aza indirmek isterseniz, toplu iş boyutunu 1 olarak ayarlayabilirsiniz. Bu ayar, yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. 
+Toplu iş boyutu ve yeni bir toplu iş alma eşiği [host.jsdosya üzerinde](functions-host-json.md#queues)yapılandırılabilir. Bir işlev uygulamasındaki Queue-tetiklenen işlevler için paralel yürütmeyi en aza indirmek isterseniz, toplu iş boyutunu 1 olarak ayarlayabilirsiniz. Bu ayar, yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. 
 
 Sıra tetikleyicisi, bir işlevin bir sıra iletisini birden çok kez işlemesini otomatik olarak önler; işlevlerin ıdempotent olarak yazılması gerekmez.
 
-## <a name="hostjson-properties"></a>Host. JSON özellikleri
+## <a name="hostjson-properties"></a>host.jsözelliklerde
 
-[Host. JSON](functions-host-json.md#queues) dosyası, sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [Host. JSON ayarları](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
+Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ayarlarıhost.js](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

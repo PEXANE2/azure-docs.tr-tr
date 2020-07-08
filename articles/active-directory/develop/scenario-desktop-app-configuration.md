@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558839"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API 'Lerini çağıran masaüstü uygulaması: kod yapılandırması
@@ -26,14 +25,14 @@ Uygulamanızı oluşturduğunuza göre, kodun uygulamanın koordinatlarıyla nas
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplıkları (MSALs) masaüstü uygulamalarını destekler.
 
-  Microsoft Authentication Library | Description
+  Microsoft Authentication Library | Açıklama
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | , Linux, Windows ve macOS gibi birden çok platformda masaüstü uygulaması oluşturmayı destekler.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler.
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler.
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Yalnızca macOS 'ta çalışan masaüstü uygulamalarını destekler.
 
-## <a name="public-client-application"></a>Ortak istemci uygulaması
+## <a name="public-client-application"></a>Genel istemci uygulaması
 
 Bir görünüm noktasından, masaüstü uygulamaları ortak istemci uygulamalardır. Yapılandırma etkileşimli kimlik doğrulaması kullanmanıza bakılmaksızın bir bit farklı olacaktır.
 

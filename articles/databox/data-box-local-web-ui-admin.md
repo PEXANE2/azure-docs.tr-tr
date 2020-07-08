@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608256"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
@@ -100,13 +99,13 @@ Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamlad
 
     |Dosya adı  |Azure depolama türü  |Kullanılan bağlantı protokolü |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob. txt     |Blok blobları         |SMB/NFS         |
-    |databoxe2etest_PageBlob. txt     |Sayfa blobları         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM. txt    |Azure Dosyaları         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM. txt     |Sayfa blobları         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM. txt    |Blok blobları         |REST         |
-    |mydbmdrg1_MDisk-BOM. txt    |Yönetilen Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM. txt     |Yönetilen Disk         |SMB/NFS         |
+    |databoxe2etest_BlockBlob.txt     |Blok blobları         |SMB/NFS         |
+    |databoxe2etest_PageBlob.txt     |Sayfa blobları         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyaları         |SMB/NFS         |
+    |databoxe2etest_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
+    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Yönetilen Disk         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Yönetilen Disk         |SMB/NFS         |
 
 Data Box Azure veri merkezine döndüğünde Azure Storage hesabına yüklenen dosyaları doğrulamak için bu listeyi kullanın. Örnek bir bildirim dosyası aşağıda gösterilmiştir.
 

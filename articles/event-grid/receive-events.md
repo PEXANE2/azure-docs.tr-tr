@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: femila
 ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558464"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
@@ -32,7 +31,7 @@ HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız va
 
 Diğer dillere yönelik SDK 'lar, [SDK 'Ları Yayımla](./sdk-overview.md#data-plane-sdks) başvurusu aracılığıyla kullanılabilir. Bu paketler,, ve gibi yerel olay türleri için modeller `EventGridEvent` vardır `StorageBlobCreatedEventData` `EventHubCaptureFileCreatedEventData` .
 
-Azure işlevinizdeki "dosyaları görüntüle" bağlantısına tıklayın (Azure işlevleri portalındaki en sağdaki bölme) ve Project. JSON adlı bir dosya oluşturun. Aşağıdaki içeriği `project.json` dosyaya ekleyin ve kaydedin:
+Azure işlevinizdeki "dosyaları görüntüle" bağlantısına tıklayın (Azure işlevleri portalındaki en sağdaki bölme) ve project.jsadlı bir dosya oluşturun. Aşağıdaki içeriği `project.json` dosyaya ekleyin ve kaydedin:
 
  ```json
 {

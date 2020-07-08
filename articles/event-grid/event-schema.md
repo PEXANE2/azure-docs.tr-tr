@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: femila
 ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559425"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid olay şeması
@@ -83,18 +82,18 @@ Tüm olaylar en üst düzey verilere sahiptir:
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | -------- | ----------- |
 | konu başlığı | string | Hayır, ancak dahil ediliyorsa, KIMLIK Azure Resource Manager Event Grid konusuyla aynı olmalıdır. Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Yes | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| kimlik | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | Hayır | Kaynak sağlayıcısına özel olay verileri. |
+| Konu | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Türü | string | Evet | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Evet | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| kimlik | string | Evet | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | Hayır | Kaynak sağlayıcısına özel olay verileri. |
 | dataVersion | string | Hayır, ancak boş bir değerle damgalı olacak. | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Gerekli değildir, ancak dahil ise Event Grid şeması ile `metadataVersion` tam olarak eşleşmelidir (Şu anda yalnızca `1` ). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesindeki özellikler hakkında bilgi edinmek için bkz. olay kaynağı:
 
 * [Azure abonelikleri (yönetim işlemleri)](event-schema-subscriptions.md)
-* [Container Kayıt Defteri](event-schema-container-registry.md)
+* [Container Registry](event-schema-container-registry.md)
 * [BLOB depolama](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub’ı](event-schema-iot-hub.md)

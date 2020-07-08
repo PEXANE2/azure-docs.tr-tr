@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558930"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
@@ -74,7 +73,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java hızlı başlangıç bölümünde, oturum açma düğmesi [Main/Resources/Templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) dosyasında bulunur.
+Java hızlı başlangıç bölümünde, oturum açma düğmesi [ana/kaynak/şablonlar/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) dosyasında bulunur.
 
 ```html
 <!DOCTYPE html>
@@ -291,7 +290,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java hızlı başlangıç bölümünde, oturum kapatma düğmesi main/resources/templates/auth_page.html dosyasında bulunur.
+Java hızlı başlangıç bölümünde, oturum kapatma düğmesi ana/kaynak/şablonlar/auth_page.html dosyasında bulunur.
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +305,7 @@ Java hızlı başlangıç bölümünde, oturum kapatma düğmesi main/resources/
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python hızlı başlangıçta, oturum kapatma düğmesi [Şablonlar/index. html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) dosyasında bulunur.
+Python hızlı başlangıçta, oturum kapatma düğmesi [Templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) dosyasında bulunur.
 
 ```html
 <!DOCTYPE html>
@@ -335,7 +334,7 @@ ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web 
 - Çağrı `Signout()` , OpenID Connect ara yazılım Microsoft Identity platform uç noktasıyla bağlantı sağlar `logout` . Bitiş noktası bundan sonra:
 
   - Oturum tanımlama bilgisini tarayıcıdan temizler.
-  - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI, oturum açılan görünüm sayfasını [Signeout. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)olarak görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
+  - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml), imzalanmış görünüm sayfasını görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -418,11 +417,11 @@ public class AccountController : Controller
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java hızlı penceresinde, oturum kapatma sonrası yeniden yönlendirme URI 'SI yalnızca index. html sayfasını görüntüler.
+Java hızlı penceresinde, kapatma sonrası yeniden yönlendirme URI 'SI yalnızca index.html sayfasını görüntüler.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python hızlı başlangıcı ' nda, oturum kapatma sonrası yeniden yönlendirme URI 'SI yalnızca index. html sayfasını görüntüler.
+Python hızlı başlangıcı ' nda, oturum kapatma sonrası yeniden yönlendirme URI 'SI yalnızca index.html sayfasını görüntüler.
 
 ---
 
@@ -433,4 +432,4 @@ Oturum kapatma hakkında daha fazla bilgi edinmek istiyorsanız, [Açık kimlik 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-web-app-sign-user-production.md)
+> [Üretime taşı](scenario-web-app-sign-user-production.md)

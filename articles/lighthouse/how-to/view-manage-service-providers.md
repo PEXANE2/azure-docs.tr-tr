@@ -4,10 +4,9 @@ description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı tekl
 ms.date: 04/24/2020
 ms.topic: how-to
 ms.openlocfilehash: 8b48fb9c92cf6922cea62fe04943ae76d3d3b590
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636470"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme

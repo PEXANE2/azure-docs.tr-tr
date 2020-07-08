@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
 ms.openlocfilehash: ae61f58f2ac44db77db496dd5d3e38fad268129f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84613057"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanma
@@ -54,7 +53,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -93,7 +92,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MariaDB sunucusu için Azure veritabanı

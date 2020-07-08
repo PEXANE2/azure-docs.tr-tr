@@ -12,17 +12,16 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558757"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Tek sayfalı uygulama: oturum açma ve oturum kapatma
 
 Tek sayfalı uygulamanız için koda oturum açma eklemeyi öğrenin.
 
-Uygulamanızdaki API 'Lere erişim belirteçleri alabilmeniz için önce kimliği doğrulanmış bir Kullanıcı bağlamına ihtiyacınız vardır. MSAL. js ' de uygulamanızdaki kullanıcılara iki şekilde oturum açabilirsiniz:
+Uygulamanızdaki API 'Lere erişim belirteçleri alabilmeniz için önce kimliği doğrulanmış bir Kullanıcı bağlamına ihtiyacınız vardır. Kullanıcılara iki şekilde MSAL.js, uygulamanızda oturum açabilirsiniz:
 
 * [Açılır pencere](#sign-in-with-a-pop-up-window), `loginPopup` yöntemini kullanarak
 * Yöntemini kullanarak [yeniden yönlendirin](#sign-in-with-redirect) `loginRedirect`
@@ -30,7 +29,7 @@ Uygulamanızdaki API 'Lere erişim belirteçleri alabilmeniz için önce kimliğ
 İsteğe bağlı olarak, kullanıcının oturum açma sırasında izin vermesini gerektiren API 'lerin kapsamlarını da geçirebilirsiniz.
 
 > [!NOTE]
-> Uygulamanızın kimliği doğrulanmış bir Kullanıcı bağlamına veya KIMLIK belirtecine zaten erişimi varsa, oturum açma adımını atlayabilir ve belirteçleri doğrudan elde edebilirsiniz. Ayrıntılar için bkz. [msal. js oturum açma olmadan SSO](msal-js-sso.md#sso-without-msaljs-login).
+> Uygulamanızın kimliği doğrulanmış bir Kullanıcı bağlamına veya KIMLIK belirtecine zaten erişimi varsa, oturum açma adımını atlayabilir ve belirteçleri doğrudan elde edebilirsiniz. Ayrıntılar için bkz. [MSAL.js oturum açma olmadan SSO](msal-js-sso.md#sso-without-msaljs-login).
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Bir açılır pencere veya yeniden yönlendirme deneyimi arasında seçim yapma
 

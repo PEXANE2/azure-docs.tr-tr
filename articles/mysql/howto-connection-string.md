@@ -1,6 +1,6 @@
 ---
 title: Bağlantı dizeleri-MySQL için Azure veritabanı
-description: Bu belgede, ADO.NET (C#), JDBC, Node. js, ODBC, PHP, Python ve Ruby dahil olmak üzere MySQL için Azure veritabanı 'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizeleri listelenmektedir.
+description: Bu belgede, ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python ve Ruby dahil olmak üzere MySQL için Azure veritabanı 'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizeleri listelenmektedir.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559206"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına nasıl uygulama bağlanır

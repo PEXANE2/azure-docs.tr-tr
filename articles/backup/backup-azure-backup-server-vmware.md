@@ -4,10 +4,9 @@ description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM '
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628466"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
@@ -62,7 +61,7 @@ Güvenli bir kanalı aşağıdaki şekilde ayarlayın:
 
 4. Dosyayı bir. zip uzantısıyla Azure Backup Sunucusu makineye kaydedin.
 
-5. **İndir. zip**  >  **Tümünü Ayıkla**öğesine sağ tıklayın. . Zip dosyası, içeriğini içeren **CERT** klasörüne ayıklar:
+5. **download.zip**  >  **Tümünü Ayıkla**' ya sağ tıklayın. . Zip dosyası, içeriğini içeren **CERT** klasörüne ayıklar:
    - .0 ve. 1 gibi numaralandırılmış bir diziyle başlayan bir uzantıya sahip kök sertifika dosyası.
    - CRL dosyası. R0 veya. R1 gibi bir sırayla başlayan bir uzantıya sahiptir. CRL dosyası bir sertifikayla ilişkilendirilir.
 
@@ -136,7 +135,7 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 
 | VCenter 6,7 Kullanıcı hesabı ayrıcalıkları                     | VCenter 6,5 Kullanıcı hesabı ayrıcalıkları                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Veri deposu kümesi. Datatstore kümesi yapılandırma            | Veri deposu kümesi. Datatstore kümesi yapılandırma            |
+| Veri deposu bir datatstore kümesini cluster.Config            | Veri deposu bir datatstore kümesini cluster.Config            |
 | DataStore. AllocateSpace                                      | DataStore. AllocateSpace                                      |
 | Veri deposu. veri deposuna gözatamazsınız                                   | Veri deposu. veri deposuna gözatamazsınız                                   |
 | Veri deposu. alt düzey dosya işlemleri                          | Veri deposu. alt düzey dosya işlemleri                          |
@@ -152,15 +151,15 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 | vApp. sanal makine Ekle                                     | vApp. sanal makine Ekle                                     |
 | vApp. assign kaynak havuzu                                    | vApp. assign kaynak havuzu                                    |
 | vApp. Unregister                                              | vApp. Unregister                                              |
-| VirtualMachine. Configuration. Cihaz Ekle veya Kaldır          | VirtualMachine. Configuration. Cihaz Ekle veya Kaldır          |
-| Sanal makine. Yapılandırma. disk kirası al            | Sanal makine. Yapılandırma. disk kirası                     |
-| Sanal makine. Yapılandırma. yeni disk Ekle                   | Sanal makine. Yapılandırma. yeni disk Ekle                   |
-| Sanal makine. Yapılandırma. Gelişmiş yapılandırma        | Sanal makine. Yapılandırma. Gelişmiş                       |
-| Sanal makine. Yapılandırma. disk değiştirme izlemeyi Değiştir   | Sanal makine. Yapılandırma. disk değişiklik izleme          |
-| Sanal makine. Yapılandırma. konak USB cihazını yapılandırın     | Sanal makine. Configuration. Host USB cihazı               |
-| Sanal makine. Yapılandırma. sanal diski Genişlet           | Sanal makine. Yapılandırma. sanal diski Genişlet           |
-| Sanal makine. Configuration. sahip olmayan dosyaları sorgula           | Sanal makine. Configuration. sahip olmayan dosyaları sorgula           |
-| Sanal makine. Yapılandırma. Swapfile yerleşimini değiştirme     | Sanal makine. Configuration. Swapfile yerleşimi            |
+| VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır          | VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır          |
+| Sanal machine.Configurlama. Disk kirası al            | Sanal machine.Configurlama. Disk kirası                     |
+| Sanal machine.Configurlama. Yeni Disk Ekle                   | Sanal machine.Configurlama. Yeni Disk Ekle                   |
+| Sanal machine.Configurlama. Gelişmiş yapılandırma        | Sanal machine.Configurlama. İleri                       |
+| Sanal machine.Configurlama. Disk değişiklik izlemeyi Değiştir   | Sanal machine.Configurlama. Disk değişiklik izleme          |
+| Sanal machine.Configuration.Configure USB cihazı     | Sanal machine.Configurlama. Konak USB cihazı               |
+| Sanal machine.Configurlama. Sanal diski Genişlet           | Sanal machine.Configurlama. Sanal diski Genişlet           |
+| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula           | Sanal machine.Configurlama. Sahip olunan dosyaları sorgula           |
+| Sanal machine.Configurlama. Swapfile yerleşimini değiştirme     | Sanal machine.Configurlama. Swapfile yerleşimi            |
 | Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme | Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme |
 | Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri | Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri |
 | Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları    | Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları    |
@@ -184,16 +183,16 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 | ---------------------------------------------------------- | ------------------------------------------- |
 | DataStore. AllocateSpace                                    | Network. assign                              |
 | Global. Manage özel öznitelikler                           | DataStore. AllocateSpace                     |
-| Global. set özel özniteliği                               | VirtualMachine. config. ChangeTracking        |
+| Global. set özel özniteliği                               | VirtualMachine.Config. Değişiklik izleme dosyanız        |
 | Ana bilgisayar. yerel işlemler. Sanal makine oluştur              | VirtualMachine. State. RemoveSnapshot         |
 | Network.  Ağ ata                                   | VirtualMachine. State. CreateSnapshot         |
 | Kaynak.  Sanal makineyi kaynak havuzuna ata         | VirtualMachine. sağlama. DiskRandomRead  |
-| Sanal makine. Yapılandırma. yeni disk Ekle                | VirtualMachine. etkileşim. PowerOff            |
-| Sanal makine. Yapılandırma. Gelişmiş                    | VirtualMachine. Inventory. Create             |
-| Sanal makine. Yapılandırma. disk değişiklik izleme        | VirtualMachine. config. AddNewDisk            |
-| Sanal makine. Configuration. Host USB cihazı             | VirtualMachine. config. HostUSBDevice         |
-| Sanal makine. Configuration. sahip olmayan dosyaları sorgula         | VirtualMachine. config. AdvancedConfig        |
-| Sanal makine. Configuration. Swapfile yerleşimi          | VirtualMachine. config. Swapyerleştirmesini         |
+| Sanal machine.Configurlama. Yeni Disk Ekle                | VirtualMachine. etkileşim. PowerOff            |
+| Sanal machine.Configurlama. İleri                    | VirtualMachine. Inventory. Create             |
+| Sanal machine.Configurlama. Disk değişiklik izleme        | VirtualMachine.Config. AddNewDisk            |
+| Sanal machine.Configurlama. Konak USB cihazı             | VirtualMachine.Config. HostUSBDevice         |
+| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula         | VirtualMachine.Config. AdvancedConfig        |
+| Sanal machine.Configurlama. Swapfile yerleşimi          | VirtualMachine.Config. Swapyerleştirmesini         |
 | Sanal makine. Etkileşim. güç kapalı                     | Global. ManageCustomFields                   |
 | Sanal makine. Envanteri. Yeni oluştur                     |                                             |
 | Sanal makine. Sağlama. disk erişimine Izin ver            |                                             |
@@ -422,7 +421,7 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > Bu özellik MABS v3 UR1 için geçerlidir.
 
-MABS v3 UR1 ile, belirli bir diski VMware VM yedeğinden dışlayabilirsiniz. **Excludedisk. ps1** yapılandırma betiği içinde bulunur `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+MABS v3 UR1 ile, belirli bir diski VMware VM yedeğinden dışlayabilirsiniz. Yapılandırma betiği **ExcludeDisk.ps1** içinde bulunur `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
 
 Disk dışlamayı yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -479,7 +478,7 @@ Disk dışlamayı yapılandırmak için VMware VM 'sinin koruma için yapıland�
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. Diski dışlamak için, `Bin` klasöre gidin ve şu parametrelerle *excludedisk. ps1* betiğini çalıştırın:
+  4. Diski dışlamak için `Bin` klasöre gidin ve aşağıdaki parametrelerle *ExcludeDisk.ps1* betiği çalıştırın:
 
         > [!NOTE]
         > Bu komutu çalıştırmadan önce, MABS sunucusunda DPMRA hizmetini durdurun. Aksi halde, komut dosyası başarı döndürür, ancak dışlama listesini güncelleştirmez. Hizmeti durdurmadan önce devam eden bir iş bulunmadığından emin olun.

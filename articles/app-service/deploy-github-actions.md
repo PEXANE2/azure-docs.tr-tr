@@ -8,10 +8,9 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: tracking-python
 ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559585"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
@@ -194,7 +193,7 @@ Kodunuzu bir App Service uygulamasına dağıtmak için `azure/webapps-deploy@v2
 
 ### <a name="deploy-using-publish-profile"></a>Yayımlama profili kullanarak dağıtma
 
-Aşağıda, yayımlama profili kullanarak bir Node. js uygulamasını derlemek ve Azure 'a dağıtmak için örnek iş akışı verilmiştir.
+Aşağıda yayımlama profili kullanılarak Azure 'da bir Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı verilmiştir.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -228,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Azure hizmet sorumlusu kullanarak dağıtma
 
-Bir Azure hizmet sorumlusu kullanarak bir Node. js uygulamasını derlemek ve Azure 'a dağıtmak için örnek iş akışı aşağıda verilmiştir.
+Azure hizmet sorumlusu kullanarak Azure 'da Node.js uygulaması derlemek ve dağıtmak için örnek iş akışı aşağıda verilmiştir.
 
 ```yaml
 on: [push]

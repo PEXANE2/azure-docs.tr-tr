@@ -10,10 +10,9 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, tracking-python
 ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559567"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps yönelik açık kaynaklı teknolojiler SSS
@@ -31,8 +30,8 @@ PHP günlüğünü açmak için:
 3. **Site** klasörünü seçin.
 4. **Wwwroot** klasörünü seçin.
 5. Simgeyi seçin **+** ve ardından **yeni dosya**' yı seçin.
-6. Dosya adını **. User. ini**olarak ayarlayın.
-7. **. User. ini dosyasının**yanındaki kurşun kalem simgesini seçin.
+6. Dosya adını **.user.ini**olarak ayarlayın.
+7. **.user.ini**yanındaki kurşun kalem simgesini seçin.
 8. Dosyasında şu kodu ekleyin:`log_errors=on`
 9. **Kaydet**'i seçin.
 10. **Wp-config. php**' nin yanındaki kurşun kalem simgesini seçin.
@@ -48,31 +47,31 @@ Daha fazla bilgi için bkz. [WordPress hata günlüklerini etkinleştirme](https
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>App Service barındırılan uygulamalarda Python uygulama hatalarını günlüğe Nasıl yaparım?.
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Nasıl yaparım? App Service barındırılan Node. js uygulamasının sürümü değiştirilsin mi?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>App Service barındırılan Node.js uygulamasının sürümünü değiştirmek Nasıl yaparım?.
 
-Node. js uygulamasının sürümünü değiştirmek için aşağıdaki seçeneklerden birini kullanabilirsiniz:
+Node.js uygulamasının sürümünü değiştirmek için aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
 * Azure portal, **uygulama ayarlarını**kullanın.
   1. Azure portal web uygulamanıza gidin.
   2. **Ayarlar** dikey penceresinde **uygulama ayarları**' nı seçin.
-  3. **Uygulama ayarları**' nda, anahtar olarak WEBSITE_NODE_DEFAULT_VERSION ve değer olarak istediğiniz Node. js sürümünü ekleyebilirsiniz.
+  3. **Uygulama ayarları**' nda, anahtar olarak WEBSITE_NODE_DEFAULT_VERSION ve istediğiniz Node.js sürümünü değer olarak dahil edebilirsiniz.
   4. **Kudu konsolunuza** () gidin `https://*yourwebsitename*.scm.azurewebsites.net` .
-  5. Node. js sürümünü denetlemek için aşağıdaki komutu girin:  
+  5. Node.js sürümünü denetlemek için aşağıdaki komutu girin:  
      ```
      node -v
      ```
-* Iısnode. yıml dosyasını değiştirin. Iısnode. yıml dosyasındaki Node. js sürümünün değiştirilmesi yalnızca ıısnode 'un kullandığı çalışma zamanı ortamını ayarlar. Kudu cmd 'niz ve diğerleri, Azure portal **uygulama ayarlarında** ayarlanan Node. js sürümünü kullanmaya devam etmektedir.
+* Iısnode. yıml dosyasını değiştirin. Iısnode. yıml dosyasındaki Node.js sürümünün değiştirilmesi yalnızca ıısnode 'un kullandığı çalışma zamanı ortamını ayarlar. Kudu cmd 'niz ve diğerleri, Azure portal **uygulama ayarları** 'nda ayarlanan Node.js sürümünü kullanmaya devam eder.
 
   Iısnode. yıml 'yi el ile ayarlamak için, uygulama kök klasörünüzde bir ıısnode. yıml dosyası oluşturun. Dosyasında, aşağıdaki satırı ekleyin:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Kaynak denetimi dağıtımı sırasında ıisnode. yıml dosyasını Package. JSON kullanarak ayarlayın.
+* Kaynak denetimi dağıtımı sırasında package.jskullanarak ıısnode. yıml dosyasını ayarlayın.
   Azure Kaynak denetimi dağıtım işlemi aşağıdaki adımları içerir:
   1. İçeriği Azure Web uygulamasına taşıın.
   2. Web uygulaması kök klasöründe bir tane (Deploy. cmd,. Deployment Files) yoksa varsayılan bir dağıtım betiği oluşturur.
-  3. Package. JSON Dosya > altyapısında Node. js sürümünü bahsettiğinizde bir ıısnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Dosya > altyapısında package.jsNode.js sürümden bahsettiğiniz bir ıısnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır`"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Iısnode. yml dosyası aşağıdaki kod satırına sahiptir:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -89,11 +88,11 @@ Günlükler etkinleştirildiğinde, hata yeniden oluşturun ve sonra bağlantı 
 
 Debug. log veya php_errors. log dosyalarında bu hatayı görürseniz, uygulamanız bağlantı sayısını aşıyorsunuz. ClearDB üzerinde barındırıyorsanız, [hizmet planınızda](https://www.cleardb.com/pricing.view)bulunan bağlantı sayısını doğrulayın.
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>App Service barındırılan bir Node. js uygulamasında hata ayıklayın Nasıl yaparım??
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>App Service barındırılan bir Node.js uygulamasında hata ayıklama Nasıl yaparım??
 
 1.  **Kudu konsolunuza** () gidin `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` .
 2.  Uygulama günlükleri klasörünüze gidin (D:\home\LogFiles\Application).
-3.  Logging_errors. txt dosyasında içerik ' i kontrol edin.
+3.  logging_errors.txt dosyasında, içerik ' i kontrol edin.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Yerel Python modüllerini bir App Service Web uygulamasına veya API uygulamasına Nasıl yaparım?.
 
@@ -138,7 +137,7 @@ Hatayı gidermek için:
 
 1. Sqljdbc*. jar dosyasını App/lib klasörünüzden kaldırın.
 2. Özel Tomcat veya Azure Market Tomcat Web sunucusunu kullanıyorsanız, bu. jar dosyasını Tomcat lib klasörüne kopyalayın.
-3. Java 'yı Azure Portal ( **Java 1,8**  >  **Tomcat Server**seçin) ' ten etkinleştirirseniz, Sqljdbc. * jar dosyasını uygulamanıza paralel klasöre kopyalayın. Ardından, aşağıdaki sınıf yolu ayarını Web. config dosyasına ekleyin:
+3. Java 'yı Azure Portal ( **Java 1,8**  >  **Tomcat Server**seçin) ' ten etkinleştirirseniz, Sqljdbc. * jar dosyasını uygulamanıza paralel klasöre kopyalayın. Sonra, web.config dosyasına aşağıdaki Sınıfyolu ayarını ekleyin:
 
     ```xml
     <httpPlatform>
@@ -206,7 +205,7 @@ WordPress için en iyi güvenlik yöntemleri hakkında bilgi edinmek için bkz. 
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>PHPMyAdmin kullanmaya çalışıyorum ve "erişim engellendi" iletisini görüyorum. Bu sorunu nasıl çözebilirim?
 
-Uygulama içi MySQL özelliği henüz bu App Service örneğinde çalışmıyorsa bu sorunla karşılaşabilirsiniz. Sorunu çözmek için, Web sitenize erişmeyi deneyin. Bu, uygulama içi MySQL işlemi dahil olmak üzere gerekli işlemleri başlatır. Uygulama içi MySQL çalıştığını doğrulamak için, Işlem Gezgini 'nde, mysqld. exe ' nin işlemlerde listelendiğinden emin olun.
+Uygulama içi MySQL özelliği henüz bu App Service örneğinde çalışmıyorsa bu sorunla karşılaşabilirsiniz. Sorunu çözmek için, Web sitenize erişmeyi deneyin. Bu, uygulama içi MySQL işlemi dahil olmak üzere gerekli işlemleri başlatır. Uygulama içi MySQL çalıştığını doğrulamak için, Işlem Gezgini 'nde mysqld.exe işlemlerde listelendiğinden emin olun.
 
 Uygulama içi MySQL çalıştığından emin olduktan sonra PHPMyAdmin kullanmayı deneyin.
 

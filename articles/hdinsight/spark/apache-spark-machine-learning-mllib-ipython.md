@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
 ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608426"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
@@ -38,7 +37,7 @@ Lojistik regresyon, sınıflandırma için kullandığınız algoritmadır. Spar
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Yiyecek İnceleme verilerinde tahmine dayalı analiz örneği
 
-Bu örnekte, yemek İnceleme verileri (**Food_Inspections1. csv**) üzerinde bazı tahmine dayalı analiz yapmak için Spark 'ı kullanırsınız. [Chicago veri portalının şehri](https://data.cityofchicago.org/)aracılığıyla elde edilen veriler. Bu veri kümesi, Chicago 'da yürütülen yiyecek kurma incelemeleri hakkında bilgiler içerir. Her bir oluşturma hakkında bilgi, (varsa) ve inceleme sonuçları dahil olmak üzere. CSV veri dosyası, **/Hdisamples/hdisamples/es\dinspectiondata/Food_Inspections1. csv**konumundaki kümeyle ilişkili depolama hesabında zaten kullanılabilir.
+Bu örnekte, yemek İnceleme verileri (**Food_Inspections1.csv**) üzerinde bazı tahmine dayalı analiz yapmak için Spark 'ı kullanırsınız. [Chicago veri portalının şehri](https://data.cityofchicago.org/)aracılığıyla elde edilen veriler. Bu veri kümesi, Chicago 'da yürütülen yiyecek kurma incelemeleri hakkında bilgiler içerir. Her bir oluşturma hakkında bilgi, (varsa) ve inceleme sonuçları dahil olmak üzere. CSV veri dosyası, **/Hdisamples/hdisamples/es\dinspectiondata/Food_Inspections1.csv**konumundaki kümeyle ilişkili depolama hesabında zaten kullanılabilir.
 
 Aşağıdaki adımlarda, bir yiyecek incelemesini geçirmek veya başarısız kılmak için ne olduğunu görmek üzere bir model geliştirirsiniz.
 
@@ -252,7 +251,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Başka bir veri kümesi kullanarak modeli değerlendirme
 
-Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının nasıl olacağını *tahmin* edebilirsiniz. Tahminler, gözlemlenen ihlallere göre yapılır. Bu modeli **Food_Inspections1. csv**veri kümesi üzerinde eğitinolursunuz. Yeni verilerde bu modelin gücünü *değerlendirmek* için, **Food_Inspections2. csv**ikinci bir veri kümesi kullanabilirsiniz. Bu ikinci veri kümesi (**Food_Inspections2. csv**), kümeyle ilişkili varsayılan depolama kapsayıcısıdır.
+Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının nasıl olacağını *tahmin* edebilirsiniz. Tahminler, gözlemlenen ihlallere göre yapılır. Bu modeli, veri kümesinde **Food_Inspections1.csv**eğitildi. Yeni verilerde bu modelin gücünü *değerlendirmek* için, **Food_Inspections2.csv**ikinci bir veri kümesi kullanabilirsiniz. Bu ikinci veri kümesi (**Food_Inspections2.csv**), kümeyle ilişkili varsayılan depolama kapsayıcısıdır.
 
 1. Model tarafından oluşturulan tahmini içeren **predictionsDf** yeni bir veri çerçevesi oluşturmak için aşağıdaki kodu çalıştırın. Kod parçacığı Ayrıca veri çerçevesini temel alan **tahminler** adlı geçici bir tablo oluşturur.
 

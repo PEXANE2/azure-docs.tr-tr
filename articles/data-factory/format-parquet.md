@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84611076"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory içinde Parquet biçimi
@@ -29,8 +28,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **Parquet**olarak ayarlanmalıdır. | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
+| tür             | Veri kümesinin Type özelliği **Parquet**olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Evet      |
 | compressionCodec | Parquet dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Parquet dosyalarından okurken, veri fabrikaları dosya meta verilerine göre otomatik olarak sıkıştırma codec bileşenini otomatik olarak belirlenir.<br>Desteklenen türler şunlardır "**none**", "**gzip**", "**Snappy**" (varsayılan) ve "**LZO**". Şu anda kopyalama etkinliği, okuma/yazma Parquet dosyalarını okurken LZO 'yi desteklemez. | Hayır       |
 
 > [!NOTE]
@@ -70,7 +69,7 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsource**olarak ayarlanmalıdır. | Yes      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsource**olarak ayarlanmalıdır. | Evet      |
 | storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ### <a name="parquet-as-sink"></a>Havuz olarak Parquet
@@ -79,7 +78,7 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsink**olarak ayarlanmalıdır. | Yes      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **Parquetsink**olarak ayarlanmalıdır. | Evet      |
 | storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
@@ -92,7 +91,7 @@ Aşağıdaki tabloda bir Parquet kaynağı tarafından desteklenen özellikler l
 
 | Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`parquet` | evet | `parquet` | biçim |
+| Biçim | Biçim olmalıdır`parquet` | evet | `parquet` | biçim |
 | Joker karakter yolları | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | hayır | String [] | Yavaya Cardyolları |
 | Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır | Dize | Partitionrootyolu |
 | Dosya listesi | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır | `true` veya `false` | Si |
@@ -121,7 +120,7 @@ Aşağıdaki tabloda bir Parquet kaynağı tarafından desteklenen özellikler l
 
 | Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`parquet` | evet | `parquet` | biçim |
+| Biçim | Biçim olmalıdır`parquet` | evet | `parquet` | biçim |
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
 | Dosya adı seçeneği | Yazılan verilerin adlandırma biçimi. Varsayılan olarak, biçimdeki bölüm başına bir dosya`part-#####-tid-<guid>` | hayır | Model: dize <br> Bölüm başına: dize [] <br> Sütunda veri olarak: dize <br> Tek dosyaya çıkış:`['<fileName>']` | filePattern <br> Partitionbir dosya adı <br> rowUrlColumn <br> Partitionbir dosya adı |
 
@@ -156,7 +155,7 @@ Parquet karmaşık veri türleri şu anda desteklenmiyor (örn. MAP, LIST, STRUC
 Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR üzerinde çalışan kopya için, ADF, bir JRE için kayıt defterini denetleyerek, *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* OpenJDK için sistem değişkenini belirterek, Java çalışma zamanını konumlandırır *`JAVA_HOME`* .
 
 - **JRE 'yi kullanmak için**: 64 bit ır, 64 BIT JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsiniz.
-- **OpenJDK 'yi kullanmak için**: ır sürüm 3,13 ' den itibaren desteklenmektedir. JVM. dll dosyasını, OpenJDK 'nin diğer tüm gerekli Derlemeleriyle şirket içinde barındırılan IR makinesine paketleyin ve sistem ortam değişkeni JAVA_HOME uygun şekilde ayarlayın.
+- **OpenJDK 'yi kullanmak için**: ır sürüm 3,13 ' den itibaren desteklenmektedir. OpenJDK 'nin diğer tüm gerekli Derlemeleriyle jvm.dll, şirket içinde barındırılan IR makinesine paketleyin ve sistem ortam değişkeni JAVA_HOME uygun şekilde ayarlayın.
 - **Visual C++ 2010 yeniden dağıtılabilir paketini yüklemek için**: Visual C++ 2010 yeniden dağıtılabilir paketi, şirket IÇINDE barındırılan IR yüklemeleri ile birlikte yüklenmez. [Buradan](https://www.microsoft.com/download/details.aspx?id=14632)bulabilirsiniz.
 
 > [!TIP]

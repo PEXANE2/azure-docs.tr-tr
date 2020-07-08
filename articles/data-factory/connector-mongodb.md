@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558157"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama
@@ -50,9 +49,9 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **MongoDbV2** olarak ayarlanmalıdır |Yes |
-| Dizisi |MongoDB bağlantı dizesini belirtin, örn. `mongodb://[username:password@]host[:port][/[database][?options]]` . Daha fazla ayrıntı için [bağlantı dizesinde MongoDB kılavuzuna](https://docs.mongodb.com/manual/reference/connection-string/) bakın. <br/><br /> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve  `password`   yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. |Yes |
-| database | Erişmek istediğiniz veritabanının adı. | Yes |
+| tür |Type özelliği: **MongoDbV2** olarak ayarlanmalıdır |Evet |
+| Dizisi |MongoDB bağlantı dizesini belirtin, örn. `mongodb://[username:password@]host[:port][/[database][?options]]` . Daha fazla ayrıntı için [bağlantı dizesinde MongoDB kılavuzuna](https://docs.mongodb.com/manual/reference/connection-string/) bakın. <br/><br /> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve  `password`   yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. |Evet |
+| database | Erişmek istediğiniz veritabanının adı. | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
@@ -80,8 +79,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **MongoDbV2Collection** olarak ayarlanmalıdır | Yes |
-| Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
+| tür | DataSet 'in Type özelliği: **MongoDbV2Collection** olarak ayarlanmalıdır | Evet |
+| Ma |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
 
@@ -112,7 +111,7 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **MongoDbV2Source** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **MongoDbV2Source** olarak ayarlanmalıdır | Evet |
 | filtre | Sorgu işleçlerini kullanarak seçim filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için, bu parametreyi atlayın veya boş bir belge () geçirin {} . | Hayır |
 | cursorMethods. Project | Projeksiyon için belgelere döndürülecek alanları belirtir. Eşleşen belgelerdeki tüm alanları döndürmek için bu parametreyi atlayın. | Hayır |
 | cursorMethods. Sort | Sorgunun eşleşen belgeleri döndürdüğü sırayı belirtir. [İmleç. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)öğesine bakın. | Hayır |

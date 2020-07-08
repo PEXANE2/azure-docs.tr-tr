@@ -7,10 +7,9 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559949"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
@@ -148,9 +147,9 @@ CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [A
 
 ### <a name="one-entity"></a>Bir varlık
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [C# betik](functions-reference-csharp.md) kodundaki tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
+Aşağıdaki örnek, bağlama kullanan bir *function.js* dosya ve [C# betik](functions-reference-csharp.md) kodundaki tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
 
-*Function. JSON* dosyası bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
+Dosya *function.js* , bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```json
 {
@@ -197,9 +196,9 @@ public class Person
 
 ### <a name="iqueryable"></a>IQueryable
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [C# betik](functions-reference-csharp.md) kodundaki tablo girişi bağlamasını gösterir. İşlevi, bir kuyruk iletisinde belirtilen bölüm anahtarı için varlıkları okur.
+Aşağıdaki örnek, bağlama kullanan bir *function.js* dosya ve [C# betik](functions-reference-csharp.md) kodundaki tablo girişi bağlamasını gösterir. İşlevi, bir kuyruk iletisinde belirtilen bölüm anahtarı için varlıkları okur.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -313,9 +312,9 @@ CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [A
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
+Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) bir tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
 
-*Function. JSON* dosyası bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
+Dosya *function.js* , bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```json
 {
@@ -553,9 +552,9 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 ## <a name="input---configuration"></a>Giriş-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
@@ -575,11 +574,11 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladı�
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
@@ -588,11 +587,11 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladı�
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. `T`uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
@@ -644,9 +643,9 @@ public class TableStorage
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [C# betik](functions-reference-csharp.md) kodundaki tablo çıkış bağlamasını gösterir. İşlev birden çok tablo varlığı yazar.
+Aşağıdaki örnek, bağlama kullanan bir *function.js* dosya ve [C# betik](functions-reference-csharp.md) kodundaki tablo çıkış bağlamasını gösterir. İşlev birden çok tablo varlığı yazar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -699,9 +698,9 @@ public class Person
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tablo çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev birden çok tablo varlığı yazar.
+Aşağıdaki örnekte, bir *function.js* dosyadaki bir tablo çıkış bağlaması ve bağlamayı kullanan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir. İşlev birden çok tablo varlığı yazar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -746,7 +745,7 @@ module.exports = function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, tablo depolama çıkış bağlamasının nasıl kullanılacağını göstermektedir. `table`Bağlama,,, ve ' a değerler atanarak,,, ve ' a değer atayarak *. JSON* içinde yapılandırılır `name` `tableName` `partitionKey` `connection` :
+Aşağıdaki örnek, tablo depolama çıkış bağlamasının nasıl kullanılacağını göstermektedir. Bağlama,,, ve ' a `table` değer atayarak *üzerindefunction.js* yapılandırılır `name` `tableName` `partitionKey` `connection` :
 
 ```json
 {
@@ -940,9 +939,9 @@ Tam bir örnek için bkz. [output-C# örneği](#output).
 
 ## <a name="output---configuration"></a>Çıkış-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
@@ -964,19 +963,19 @@ Alternatif olarak, `CloudTable` Azure Storage SDK kullanarak tabloya yazmak içi
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Bir yöntem parametresi kullanarak çıkış tablosu varlığına erişin `ICollector<T> paramName` veya `IAsyncCollector<T> paramName` `T` , `PartitionKey` ve `RowKey` özelliklerini içerir. Bu özellikler genellikle uygulama `ITableEntity` veya devralma ile birlikte sunulur `TableEntity` . `paramName`Değer, `name` *function. JSON*özelliğinde belirtilir.
+Bir yöntem parametresi kullanarak çıkış tablosu varlığına erişin `ICollector<T> paramName` veya `IAsyncCollector<T> paramName` `T` , `PartitionKey` ve `RowKey` özelliklerini içerir. Bu özellikler genellikle uygulama `ITableEntity` veya devralma ile birlikte sunulur `TableEntity` . `paramName`Değer, `name` *üzerindefunction.js*özelliğinde belirtilir.
 
 Alternatif olarak, `CloudTable` Azure Storage SDK kullanarak tabloya yazmak için bir yöntem parametresi kullanabilirsiniz. ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Output olayına, `context.bindings.<name>` `<name>` `name` *function. JSON*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
+Çıkış olayına, `context.bindings.<name>` `<name>` `name` *üzerindefunction.js*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden tablo depolama satırı iletisi çıktısı için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *function. JSON* içindeki özelliği olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
+- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 
 - **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
 

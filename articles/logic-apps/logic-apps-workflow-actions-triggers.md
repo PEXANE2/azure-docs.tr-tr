@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609429"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
@@ -338,7 +337,7 @@ Mantıksal uygulamanızla iyi bir şekilde çalışmak için uç noktanın belir
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
+| Durum kodu | Evet | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
 | Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı |
 | Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. |
 |||| 
@@ -820,7 +819,7 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 |-------------|-------------| 
 | [**Oluştur**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**İşlev**](#function-action) | Bir Azure Işlevi çağırır. | 
+| [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
 | [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
@@ -854,7 +853,7 @@ Bu eylemler, iş akışı yürütmeyi denetlemenize ve diğer eylemleri dahil et
 | [**ForEach**](#foreach-action) | Bir dizideki her öğe için aynı eylemleri döngüde çalıştırın. | 
 | [**Kullandıysanız**](#if-action) | Belirtilen koşulun doğru veya yanlış olduğunu temel alarak eylemleri çalıştırın. | 
 | [**Kapsam**](#scope-action) | Eylemler kümesinden grup durumuna göre eylemleri çalıştırın. | 
-| [**Değiştirebilirsiniz**](#switch-action) | Deyimlerden, nesnelerden veya belirteçlerdeki değerlerin her bir durum tarafından belirtilen değerlerle eşleşmesi durumunda durumları düzenlenmiş eylemler çalıştırın. | 
+| [**Anahtar**](#switch-action) | Deyimlerden, nesnelerden veya belirteçlerdeki değerlerin her bir durum tarafından belirtilen değerlerle eşleşmesi durumunda durumları düzenlenmiş eylemler çalıştırın. | 
 | [**Until**](#until-action) | Belirtilen koşul true olana kadar eylemleri bir döngüde çalıştırın. | 
 |||  
 

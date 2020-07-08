@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604992"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory avro biçimi
@@ -29,8 +28,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **avro**olarak ayarlanmalıdır. | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
+| tür             | Veri kümesinin Type özelliği **avro**olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Evet      |
 | avroCompressionCodec | Avro dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Avro dosyalarından okurken, dosya meta verileri temelinde sıkıştırma codec bileşenini otomatik olarak belirleme Data Factory.<br>Desteklenen türler şunlardır "**none**" (varsayılan), "**söndür**", "**Snappy**". Şu anda kopyalama etkinliği, okuma/yazma avro dosyaları sırasında Snappy 'yi desteklemez. | Hayır       |
 
 > [!NOTE]
@@ -70,7 +69,7 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosource**olarak ayarlanmalıdır. | Yes      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosource**olarak ayarlanmalıdır. | Evet      |
 | storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ### <a name="avro-as-sink"></a>Avro as havuzu
@@ -79,7 +78,7 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosink**olarak ayarlanmalıdır. | Yes      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosink**olarak ayarlanmalıdır. | Evet      |
 | storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 

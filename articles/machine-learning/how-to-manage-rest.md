@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560170"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
@@ -271,7 +270,7 @@ Başarılı bir istek bir yanıt alır `201 Created` , ancak bu yanıtın sağla
 
 ### <a name="create-an-experimental-run"></a>Deneysel çalıştırma oluşturma
 
-Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve ilgili dosyaları içeren bir ZIP klasörü ve bir çalıştırma tanımı JSON dosyası gerekir. ZIP klasörü, kök dizininde Python giriş dosyasına sahip olmalıdır. Örnek olarak, aşağıdaki gibi bir önemsiz Python programını **eğitme. zip**adlı bir klasöre ekleyin.
+Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve ilgili dosyaları içeren bir ZIP klasörü ve bir çalıştırma tanımı JSON dosyası gerekir. ZIP klasörü, kök dizininde Python giriş dosyasına sahip olmalıdır. Örnek olarak, aşağıdaki gibi, **train.zip**adlı bir klasör gibi, önemsiz bir Python programını ZIP.
 
 ```python
 # hello.py
@@ -279,7 +278,7 @@ Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve 
 print("Hello, REST!")
 ```
 
-Bu sonraki kod parçacığını **tanım. JSON**olarak kaydedin. "Komut dosyası" değerinin, yeni sıkıştırdığınız Python dosyası adıyla eşleştiğinden emin olun. "Hedef" değerinin kullanılabilir bir işlem kaynağı adıyla eşleştiğini doğrulayın. 
+Bu sonraki kod parçacığını **definition.js**olarak kaydedin. "Komut dosyası" değerinin, yeni sıkıştırdığınız Python dosyası adıyla eşleştiğinden emin olun. "Hedef" değerinin kullanılabilir bir işlem kaynağı adıyla eşleştiğini doğrulayın. 
 
 ```json
 {

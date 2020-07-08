@@ -13,17 +13,16 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/09/2020
 ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609259"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS kullanarak RDS MySQL 'i MySQL için Azure veritabanı 'na geçirme
 
 Azure veritabanı geçiş hizmeti 'ni, kaynak veritabanı geçiş sırasında çevrimiçi kaldığı sürece bir RDS MySQL örneğinden [MySQL Için Azure veritabanı](https://docs.microsoft.com/azure/mysql/) 'na geçirmek için kullanabilirsiniz. Diğer bir deyişle, geçişe uygulamanın en az kapalı kalma süresi ile ulaşılabilecek. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak **çalışanlar** örnek VERITABANıNı bir RDS MySQL örneğinden MySQL Için Azure veritabanı 'na geçireceğiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Mysqldump ve MySQL yardımcı programlarını kullanarak örnek şemayı geçirin.
@@ -42,7 +41,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Bu makalede, bir RDS MySQL örneğinden MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirme işlemi açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

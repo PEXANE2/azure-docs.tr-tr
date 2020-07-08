@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: has-adal-ref, tracking-python
 ms.date: 04/03/2020
 ms.openlocfilehash: 5260da53ac7b65b68be58046ac6cb20e66c213c6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84605502"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
@@ -23,7 +22,7 @@ Kafka REST proxy, HTTP üzerinden bir REST API aracılığıyla Kafka kümeniz i
 
 Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Rest Proxy API başvurusu](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 ![Kafka REST ara sunucu tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
 
@@ -45,7 +44,7 @@ REST proxy uç noktası istekleri için, istemci uygulamaların bir OAuth belirt
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Ağ güvenlik grupları ile Kafka REST proxy
 Kendi VNet 'nizi getirip ağ güvenlik grupları ile ağ trafiğini denetlemeniz durumunda, bağlantı noktası 443 ' e ek olarak **9400** numaralı bağlantı noktasında **gelen** trafiğe izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Bir uygulamayı Azure AD'ye kaydedin. Kafka REST proxy ile etkileşimde bulunmak için yazdığınız istemci uygulamaları, Azure 'da kimlik doğrulaması yapmak için bu uygulamanın KIMLIĞINI ve parolasını kullanacaktır.
 

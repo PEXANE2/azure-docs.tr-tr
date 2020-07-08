@@ -4,10 +4,9 @@ description: Azure VMware Çözüm (AVS) önizleme özel bulutlarındaki anahtar
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604125"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware çözümü (AVS) önizleme depolama kavramları
@@ -21,7 +20,7 @@ Her küme konağındaki yerel depolama alanı bir vSAN veri deposunun parçası 
 Küme ana bilgisayarlarındaki yerel depolama alanı, küme genelinde vSAN veri deposunda kullanılır. Tüm veri depoları özel bulut dağıtımının bir parçası olarak oluşturulur ve hemen kullanılabilir. Cloudadmin kullanıcısı ve CloudAdmin grubundaki tüm kullanıcılar, bu vSAN ayrıcalıklarıyla veri depolarını yönetebilir:
 - DataStore. AllocateSpace
 - Datastore.Browse
-- DataStore. config
+- Datastore.Config
 - DataStore. DeleteFile
 - DataStore. FileManagement
 - DataStore. UpdateVirtualMachineMetadata

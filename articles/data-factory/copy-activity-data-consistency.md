@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610245"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Kopyalama etkinliğinde veri tutarlılığı doğrulama (Önizleme)
@@ -149,7 +148,7 @@ Bir günlük dosyası örneği aşağıdaki gibidir:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-Yukarıdaki günlük dosyasından, kaynak ve hedef depo arasında tutarlı bir şekilde doğrulanamadığı için SAMPLE1. csv dosyasının atlandığını görebilirsiniz. SAMPLE1. csv ' nin tutarsız hale geldiği hakkında daha fazla ayrıntı için, ADF kopyalama etkinliği aynı anda kopyalanırken diğer uygulamalar tarafından değiştirilmekte. 
+Yukarıdaki günlük dosyasından, kaynak ve hedef depo arasında tutarlı olarak doğrulanamadığı için sample1.csv atlandığını görebilirsiniz. sample1.csv tutarsız hale geldiği hakkında daha fazla ayrıntı alabilirsiniz çünkü ADF kopyalama etkinliği aynı anda kopyalanırken diğer uygulamalar tarafından değiştirilmekte. 
 
 
 

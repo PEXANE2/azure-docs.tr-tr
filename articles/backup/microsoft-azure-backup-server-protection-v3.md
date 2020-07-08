@@ -4,10 +4,9 @@ description: Bu makalede, v3 RTM korumalarına Azure Backup tüm iş yükleri, v
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84632090"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Sunucusu v3 RTM koruma matrisi

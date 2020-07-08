@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558668"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
@@ -126,7 +125,7 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Örnek oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de (JavaScript) günlük kaydını etkinleştirin `UserAgentApplication` . Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
+ Örnek oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL.js (JavaScript) oturumunu etkinleştirin `UserAgentApplication` . Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
 - `localCallback`: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
 - `level`(isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error` , `Warning` , `Info` , ve `Verbose` . Varsayılan değer: `Info`.
@@ -210,7 +209,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
-|Düzey  |Description |
+|Düzey  |Açıklama |
 |---------|---------|
 | `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
 | `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
@@ -287,7 +286,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
-|Düzey  |Description |
+|Düzey  |Açıklama |
 |---------|---------|
 | `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
 | `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |

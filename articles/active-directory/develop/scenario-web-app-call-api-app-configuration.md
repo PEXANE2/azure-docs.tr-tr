@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558801"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
@@ -31,7 +30,7 @@ Web uygulaması, kullanıcılar senaryosunda oturum [açan Web](scenario-web-app
 
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar, Web Apps için yetkilendirme kod akışını destekler:
 
-| MSAL kitaplığı | Description |
+| MSAL kitaplığı | Açıklama |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, Microsoft. Identity. Web adlı daha yüksek düzey bir kitaplıkta kapsüllenir|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Python için MSAL | Python web uygulamaları için destek. |
@@ -95,7 +94,7 @@ Microsoft. Identity. Web, doğru OpenID Connect ayarlarını ayarlayarak, alına
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar aynı zamanda ASP.NET Core de benzerdir, ancak ASP.NET içinde, `RedirectUri` [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)içinde belirtmeniz gerekir. Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
+ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar aynı zamanda ASP.NET Core de benzerdir, ancak ASP.NET içinde, `RedirectUri` [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)içinde belirtmeniz gerekir. Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
 
 Startup.Auth.cs için kod şöyledir:
 

@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558175"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama (eski)
@@ -57,11 +56,11 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Yes |
-| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| tür |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Evet |
+| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 27017) |
-| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
-| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Yes |
+| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
+| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Evet |
 | kullanıcı adı |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | password |Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |Hayır. Temel kimlik doğrulaması için varsayılan olarak yönetici hesabı ve databaseName özelliği kullanılarak belirtilen veritabanı kullanılır. |
@@ -100,8 +99,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Yes |
-| Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
+| tür | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Evet |
+| Ma |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
 
@@ -131,7 +130,7 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Evet |
 | sorgu |Verileri okumak için özel SQL-92 sorgusunu kullanın. Örneğin: select * from MyTable. |Hayır (veri kümesinde "collectionName" belirtilmişse) |
 
 **Örnek:**

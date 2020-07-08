@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604244"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Not defterini bilgisayarınıza yükleyip HDInsight üzerinde Apache Spark bağlanın
@@ -28,7 +27,7 @@ Jupyıter yükleme ve HDInsight üzerinde Apache Spark bağlanma konusunda dört
 
 Özel çekirdekler ve Spark Magic hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark Linux kümeleri olan Jupyter Not defterleri için sunulan çekirdekler](apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). Yerel Not defteri HDInsight kümesine bağlanır.
 
@@ -100,7 +99,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     exit()
     ```
 
-3. Klasörü içinde `.sparkmagic` , **config. JSON** adlı bir dosya oluşturun ve içine aşağıdaki JSON kod parçacığını ekleyin.  
+3. Klasörü içinde `.sparkmagic` , **üzerindeconfig.js** adlı bir dosya oluşturun ve içine aşağıdaki JSON kod parçacığını ekleyin.  
 
     ```json
     {
@@ -135,7 +134,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     |{BASE64ENCODEDPASSWORD}|Gerçek parolanız için Base64 olarak kodlanmış bir parola.  ' De Base64 parolası oluşturabilirsiniz [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
     |`"livy_server_heartbeat_timeout_seconds": 60`|Kullanılıyorsa koruyun `sparkmagic 0.12.7` (kümeler v 3.5 ve v 3.6).  Kullanıyorsanız `sparkmagic 0.2.3` (kümeler v 3.4), ile değiştirin `"should_heartbeat": true` .|
 
-    [Örnek config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)dosyasında tam bir örnek dosyası görebilirsiniz.
+    [Üzerinde örnek config.js](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)tam bir örnek dosya görebilirsiniz.
 
    > [!TIP]  
    > Sinyaller, oturumların sızmasını sağlamak için gönderilir. Bir bilgisayar uyku moduna geçtiğinde veya kapatıldığında, sinyal gönderilmez ve bu da oturum temizlenmelidir. Kümeler v 3.4 için, bu davranışı devre dışı bırakmak istiyorsanız, Savy yapılandırmasını, `livy.server.interactive.heartbeat.timeout` `0` ambarı kullanıcı arabiriminden olarak ayarlayabilirsiniz. Kümeler v 3.5 için, yukarıdaki 3,5 yapılandırmasını ayarlanmamışsa oturum silinmez.
@@ -164,7 +163,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
     Çıktıyı başarıyla alabiliyorsanız, HDInsight kümesiyle olan bağlantınız test edilir.
 
-    Not defteri yapılandırmasını farklı bir kümeye bağlanacak şekilde güncelleştirmek istiyorsanız, config. json dosyasını yukarıdaki adım 3 ' te gösterildiği gibi yeni değerler kümesiyle güncelleştirin.
+    Not defteri yapılandırmasını farklı bir kümeye bağlanacak şekilde güncelleştirmek istiyorsanız, yukarıdaki adım 3 ' te gösterildiği gibi yeni değerler kümesiyle config.jsgüncelleştirin.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Neden Bilgisayarıma Jupyıter yüklemeliyim?
 

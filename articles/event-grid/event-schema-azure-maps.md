@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: f015bf682d7ce3475aba5baa73ab72b1426691fe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560684"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure haritalar Event Grid kaynak olarak
@@ -24,7 +23,7 @@ Bu makalede, Azure Maps olayları için özellikler ve şema sağlanmaktadır. O
 
 Azure haritalar hesabı aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge sınırı 'ın içinden içine arasında taşındığında tetiklenir |
 | Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
@@ -104,20 +103,20 @@ Aşağıdaki örnek **GeofenceResult** için şemayı gösterir
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | Bölge sınırlaması olay verileri. |
+| veriler | nesne | Bölge sınırlaması olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | apiCategory | string | Etkinliğin API kategorisi. |
 | apiName | string | Etkinliğin API adı. |
@@ -127,13 +126,13 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Maps API 'sinde bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |Bu nesne, Haritalar API 'sinde bir hata oluştuğunda döndürülür  |
 
 Maps API 'sinde bir hata oluştuğunda ErrorDetails nesnesi döndürülür. ErrorDetails veya nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kod | string | HTTP durum kodu. |
 | message | string | Kullanılabiliyorsa, hatanın okunabilir bir açıklaması. |

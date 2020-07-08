@@ -12,10 +12,9 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560197"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Python 'da öngörülere & ML modellerini açıklamak için yorumlamalar paketini kullanın
@@ -304,7 +303,7 @@ Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anla
 
 Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
 
-|ZF|Description|
+|ZF|Açıklama|
 |----|-----------|
 |Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
 |Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
@@ -318,7 +317,7 @@ Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla b
 
 Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
 
-|ZF|Description|
+|ZF|Açıklama|
 |----|-----------|
 |Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|

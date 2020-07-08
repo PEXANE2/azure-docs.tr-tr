@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608698"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
@@ -68,7 +67,7 @@ $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 - Windows VM aracısının, .NET Framework 4,0 ile en az Windows Server 2008 (64-bit) çalıştırması gerekir. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
@@ -107,14 +106,14 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>El ile algılama
 
-Bir Windows VM 'de oturum açıldığında, çalışan işlemlerin incelenmesi için Görev Yöneticisi kullanılabilir. Azure VM aracısını denetlemek için, Görev Yöneticisi 'ni açın, *Ayrıntılar* sekmesine tıklayın ve bir Işlem adı **WindowsAzureGuestAgent. exe**' yi arayın. Bu işlemin varlığı, VM aracısının yüklü olduğunu gösterir.
+Bir Windows VM 'de oturum açıldığında, çalışan işlemlerin incelenmesi için Görev Yöneticisi kullanılabilir. Azure VM aracısını denetlemek için, Görev Yöneticisi 'ni açın, *Ayrıntılar* sekmesine tıklayın ve **WindowsAzureGuestAgent.exe**bir işlem adı arayın. Bu işlemin varlığı, VM aracısının yüklü olduğunu gösterir.
 
 
 ## <a name="upgrade-the-vm-agent"></a>VM aracısını yükseltme
 Windows için Azure VM Aracısı otomatik olarak yükseltilir. Yeni VM 'Ler Azure 'a dağıtıldığında, sanal makine sağlama zamanında en son VM aracısını alırlar. Özel VM görüntülerinin görüntü oluşturma zamanına yeni VM aracısını içerecek şekilde el ile güncelleştirilmeleri gerekir.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows Konuk Aracısı otomatik Günlükler koleksiyonu
-Windows Konuk Aracısı, bazı günlükleri otomatik olarak toplamak için bir özelliğe sahiptir. Bu özellik, CollectGuestLogs. exe işlemi tarafından denetleyici 'dir. Hem PaaS Cloud Services hem de IaaS sanal makineleri ve hedefi &, bir VM 'den bazı tanılama günlüklerini otomatik olarak toplamaktır ve bu nedenle çevrimdışı analizler için kullanılabilirler. Toplanan Günlükler olay günlüklerdir, işletim sistemi günlükleri, Azure günlükleri ve bazı kayıt defteri anahtarlarıdır. VM 'nin konağa aktarılan bir ZIP dosyası üretir. Bu ZIP dosyası daha sonra mühendislik ekiplerine ve destek uzmanlarına bakarak VM 'ye sahip olan müşterinin isteğiyle ilgili sorunları araştırmak için göz ardı edilebilir.
+Windows Konuk Aracısı, bazı günlükleri otomatik olarak toplamak için bir özelliğe sahiptir. Bu özellik CollectGuestLogs.exe işlem tarafından denetleyici 'dir. Hem PaaS Cloud Services hem de IaaS sanal makineleri ve hedefi &, bir VM 'den bazı tanılama günlüklerini otomatik olarak toplamaktır ve bu nedenle çevrimdışı analizler için kullanılabilirler. Toplanan Günlükler olay günlüklerdir, işletim sistemi günlükleri, Azure günlükleri ve bazı kayıt defteri anahtarlarıdır. VM 'nin konağa aktarılan bir ZIP dosyası üretir. Bu ZIP dosyası daha sonra mühendislik ekiplerine ve destek uzmanlarına bakarak VM 'ye sahip olan müşterinin isteğiyle ilgili sorunları araştırmak için göz ardı edilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 VM uzantıları hakkında daha fazla bilgi için bkz. [Azure sanal makine uzantılarına ve özelliklerine genel bakış](overview.md).

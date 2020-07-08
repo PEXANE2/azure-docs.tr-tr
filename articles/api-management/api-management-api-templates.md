@@ -15,10 +15,9 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
 ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559331"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management API şablonları
@@ -90,7 +89,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`apis`|[API Özet](api-management-template-data-model-reference.md#APISummary) varlıklarının koleksiyonu.|Geçerli kullanıcıya görünür olan API 'Ler.|  
   

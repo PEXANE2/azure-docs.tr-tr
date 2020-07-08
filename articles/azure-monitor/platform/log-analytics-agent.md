@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608375"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
@@ -188,10 +187,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Giden|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |
+|*.azure-automation.net |Bağlantı noktası 443 |Giden|Evet |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 

@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634510"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub Power BI kullanarak gerçek zamanlı algılayıcı verilerini görselleştirin
@@ -36,7 +35,7 @@ Power BI kullanarak Azure IoT Hub 'ınızın aldığı gerçek zamanlı algılay
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [Node. js Ile Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md). Bu makaleler aşağıdaki gereksinimleri kapsar:
+* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [node.jsRaspberry Pi ](iot-hub-raspberry-pi-kit-node-get-started.md). Bu makaleler aşağıdaki gereksinimleri kapsar:
   
   * Etkin bir Azure aboneliği.
   * Aboneliğiniz kapsamındaki bir Azure IoT Hub 'ı.

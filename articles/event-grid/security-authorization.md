@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: femila
 ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559020"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişimi yetkilendirme
@@ -112,7 +111,7 @@ Yerleşik rollerden farklı izinleri belirtmeniz gerekiyorsa, özel roller oluş
 
 Aşağıda, kullanıcıların farklı eylemler yapmasına izin veren örnek Event Grid rol tanımları verilmiştir. Bu özel roller, yalnızca olay aboneliklerinden daha geniş erişim verdiklerinden, yerleşik rollerden farklıdır.
 
-**Eventgridreadonlyrole. JSON**: yalnızca salt okuma işlemlerine izin verir.
+**EventGridReadOnlyRole.js**:: yalnızca salt okuma işlemlerine izin verin.
 
 ```json
 {
@@ -131,7 +130,7 @@ Aşağıda, kullanıcıların farklı eylemler yapmasına izin veren örnek Even
 }
 ```
 
-**Eventgridnodeletelistkeysrole. JSON**: kısıtlı gönderi eylemlerine izin verin ancak silme eylemlerine izin vermeyin.
+**EventGridNoDeleteListKeysRole.js**: kısıtlanmış gönderme eylemlerine izin ver, ancak silme eylemlerine izin verme.
 
 ```json
 {
@@ -154,7 +153,7 @@ Aşağıda, kullanıcıların farklı eylemler yapmasına izin veren örnek Even
 }
 ```
 
-**EventGridContributorRole. JSON**: tüm olay Kılavuzu eylemlerine izin verir.
+**EventGridContributorRole.js**: tüm olay Kılavuzu eylemlerine izin verir.
 
 ```json
 {
