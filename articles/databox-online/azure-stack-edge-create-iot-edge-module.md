@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339901"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Dosyaları Azure Stack Edge üzerinde taşımak için C# IoT Edge modülünü geliştirme
@@ -41,7 +40,7 @@ Azure Stack Edge cihazınız, IoT Edge modülleri dağıtabilir ve çalıştıra
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -64,7 +63,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**' a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
@@ -116,7 +115,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     ![Yeni çözüm oluştur 4](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Daha önce oluşturduğunuz **EdgeSolution** klasörüne gidin ve bu klasöre gelin. VS Code pencere, IoT Edge çözüm çalışma alanınızı beş üst düzey bileşeni ile yükler. . **Vscode** klasörünü,. **gitignore** dosyasını, **. env** dosyasını ve **dağıtım. Template. JSON** dosyasını bu makalede düzenleyemezsiniz.
+5. Daha önce oluşturduğunuz **EdgeSolution** klasörüne gidin ve bu klasöre gelin. VS Code pencere, IoT Edge çözüm çalışma alanınızı beş üst düzey bileşeni ile yükler. . **Vscode** klasörünü,. **gitignore** dosyasını, **. env** dosyasını ve bu makaledeki **deployment.template.js** düzenleyemezsiniz.
     
     Değiştirdiğiniz tek bileşen modüller klasörüdür. Bu klasörde modülünüzü kapsayıcı görüntüsü olarak derlemek için modülünüzün ve Docker dosyalarınızın C# kodu bulunur.
 
@@ -256,7 +255,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 2. Parola istendiğinde parolayı girin. Ayrıca, oturum açma sunucusu, Kullanıcı adı ve parola değerlerini, Azure portal kapsayıcı kayıt defterinizde **erişim tuşlarından** alabilirsiniz.
  
-3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini ' nde, **Module. JSON** dosyasına sağ tıklayın ve **IoT Edge çözümü oluştur ve Gönder**' i seçin.
+3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya **üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
 
     ![IoT Edge çözümü oluşturun ve gönderin](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
@@ -273,7 +272,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     *Program. cs (77, 44): uyarı CS1998: Bu zaman uyumsuz yöntemde ' await ' işleçleri yok ve zaman uyumlu olarak çalışacak. Engelleyici olmayan API çağrılarını beklemek için ' await ' işlecini veya bir arka plan iş parçacığında CPU 'ya bağlı çalışma yapmak için ' await Task. Run (...) ' kullanmayı düşünün.*
 
-4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, Module. JSON dosyasındaki biçimdeki bilgilerden oluşturulur `<repository>:<version>-<platform>` . Bu makalede, şöyle görünmelidir `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
+4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, dosyadaki module.jsbiçimdeki bilgilerden oluşturulur `<repository>:<version>-<platform>` . Bu makalede, şöyle görünmelidir `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

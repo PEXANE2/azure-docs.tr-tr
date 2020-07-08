@@ -9,10 +9,9 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212471"
 ---
 # <a name="connect-with-the-web-client"></a>Web istemcisiyle bağlanma
@@ -36,7 +35,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
-| Apple Safari      | Mac OS                            |                     |
+| Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
 ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345062"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
@@ -138,7 +137,7 @@ az aks get-versions --location eastus --output table
 
 **Bir müşteri bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örnek:
+*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örneğin:
 
 - Desteklenen en eski AKS sürümü *1.13. a* ve *1.12. b* veya daha eski bir sürümse, destek dışında olursunuz.
 - *1.12. b* 'den *1.13* 'e yükseltme işlemi başarılı olursa, destek ilkilerimizin içine geri dönebilirsiniz.

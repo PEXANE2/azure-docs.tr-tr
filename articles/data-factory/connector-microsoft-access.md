@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
 ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513360"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access 'ten veri kopyalama
@@ -54,15 +53,15 @@ Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Yes |
-| Dizisi | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve  `password`   yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz.Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)inceleyin   .| Yes |
-| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Yes |
-| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | No |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
-| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | No |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
+| tür | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Evet |
+| Dizisi | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve  `password`   yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz.Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)inceleyin   .| Evet |
+| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Evet |
+| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -94,7 +93,7 @@ Verileri Microsoft Access 'ten kopyalamak için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Yes |
+| tür | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Evet |
 | tableName | Microsoft Access 'teki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
@@ -125,10 +124,10 @@ Verileri Microsoft Access 'ten kopyalamak için, etkinlik **kaynağını** kopya
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -166,12 +165,12 @@ Verileri Microsoft Access 'e kopyalamak için, kopyalama etkinliği **havuzu** b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun Type özelliği: **Microsoftaccesssink** olarak ayarlanmalıdır | Yes |
-| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |No |
+| tür | Kopyalama etkinliği havuzunun Type özelliği: **Microsoftaccesssink** olarak ayarlanmalıdır | Evet |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler.<br/>İzin verilen değerler: Integer (satır sayısı). |Hayır (varsayılan 0-otomatik olarak algılanır) |
-| Ön Copyscrıpt |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |No |
+| Ön Copyscrıpt |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

@@ -16,10 +16,9 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84338416"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent uzantısı (klasik) ile Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
@@ -37,13 +36,13 @@ SQL Server IaaS Aracısı uzantısı (SQLIaaSAgent), yönetim görevlerini otoma
 ## <a name="supported-services"></a>Desteklenen hizmetler
 SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekler:
 
-| Yönetim özelliği | Description |
+| Yönetim özelliği | Açıklama |
 | --- | --- |
 | **SQL Otomatik Yedekleme** |VM 'deki SQL Server varsayılan örneği için tüm veritabanları için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makineler 'de SQL Server Için otomatik yedekleme (klasik)](../classic/sql-automated-backup.md). |
 | **SQL Otomatik Düzeltme Eki Uygulama** |VM 'niz için önemli Windows güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (klasik)](../classic/sql-automated-patching.md). |
-| **Azure Key Vault tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure VM 'lerde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)](../classic/ps-sql-keyvault.md). |
+| **Azure Anahtar Kasası Tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure VM 'lerde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)](../classic/ps-sql-keyvault.md). |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanma gereksinimleri:
 
 ### <a name="operating-system"></a>İşletim Sistemi:

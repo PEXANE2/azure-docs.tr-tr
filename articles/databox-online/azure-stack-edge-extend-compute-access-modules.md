@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84342995"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzda işlem ağını etkinleştirin
@@ -27,7 +26,7 @@ Ağı yapılandırmak için aşağıdaki adımları uygulayın:
 
 Bu öğreticide, senaryoyu göstermek için bir Web sunucusu uygulama modülünü kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 

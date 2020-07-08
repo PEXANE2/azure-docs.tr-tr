@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84342009"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları-Azure SQL veritabanı
@@ -39,7 +38,7 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | Maks. DTU | 5 |
 | Dahil edilen depolama alanı (GB) | 2 |
 | En fazla depolama seçimi (GB) | 2 |
-| Maks. bellek içi OLTP depolama alanı (GB) |Yok |
+| Maks. bellek içi OLTP depolama alanı (GB) |YOK |
 | Maksimum eş zamanlı çalışan (istek) | 30 |
 | Maks. eş zamanlı oturum | 300 |
 |||
@@ -57,7 +56,7 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | Maks. DTU | 10 | 20 | 50 | 100 |
 | Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 |
 | En fazla depolama seçimi (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |
+| Maks. bellek içi OLTP depolama alanı (GB) | YOK | YOK | YOK | YOK |
 | Maksimum eş zamanlı çalışan (istek)| 60 | 90 | 120 | 200 |
 | Maks. eş zamanlı oturum |600 | 900 | 1200 | 2400 |
 ||||||
@@ -75,7 +74,7 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | Maks. DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 | 250 |
 | En fazla depolama seçimi (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |Yok |
+| Maks. bellek içi OLTP depolama alanı (GB) | YOK | YOK | YOK | YOK |YOK |
 | Maksimum eş zamanlı çalışan (istek)| 400 | 800 | 1600 | 3200 |6000 |
 | Maks. eş zamanlı oturum |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
