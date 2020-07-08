@@ -4,10 +4,9 @@ description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İ
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 5aae60900a61c28f6c53f89b8e273daccb047eef
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83116204"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service planında Linux üzerinde bir işlev uygulaması oluşturma
@@ -37,12 +36,12 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
-    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
+    | **[Kaynak Grubu](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşlev Uygulaması adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-` .  |
     |**Yayımlama**| **Kod** (varsayılan) | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F # işlevleri için **.NET Core** ' u seçin. |
     |**Sürüm**| Sürüm numarası | Yüklü çalışma zamanının sürümünü seçin.  |
-    |**Bölge**| Tercih edilen bölge | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    |**Geli**| Tercih edilen bölge | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Temel bilgiler sayfası":::
 

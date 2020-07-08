@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982964"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma
@@ -60,15 +59,15 @@ Windows 'da SAP ASCS/SCS örneği SAP Merkezi Hizmetleri, SAP ileti sunucusu, s�
 SAP ASCS/SCS örneği aşağıdaki bileşenlere sahiptir:
 
 * SAP Merkezi Hizmetleri:
-    * İki işlem, bir ileti ve sıraya alma sunucusu ve bu \<iki işleme erişmek için kullanılan bir ascs/SCS sanal ana bilgisayar adı>.
-    * Dosya yapısı: s:\usr\sap\\&lt;SID&gt;\ Ass/SCS\<örnek numarası\>
+    * İki işlem, bir ileti ve sıraya alma sunucusu ve \<ASCS/SCS virtual host name> Bu iki işleme erişmek için kullanılan bir.
+    * Dosya yapısı: S:\usr\sap \\ &lt; SID &gt; \ Ass/SCS\<instance number\>
 
 
 * SAP Küresel Ana bilgisayar dosyaları:
-  * Dosya yapısı: s:\usr\sap\\&lt;SID&gt;\sys\...
-  * Bu genel s:\usr\sap\\&lt;SID&gt;\sys\.dosyasına erişim sağlayan sapmnt dosya paylaşma. Aşağıdaki UNC yolunu kullanarak dosyalar:
+  * Dosya yapısı: S:\usr\sap \\ &lt; SID &gt; \sys \. ..
+  * Aşağıdaki UNC yolunu kullanarak bu genel S:\usr\sap \\ &lt; SID &gt; \sys \. .. Files öğesine erişim sağlayan sapmnt dosya paylaşma:
 
-    \\\\<ascs/SCS sanal ana bilgisayar\>adı \\\&lt;sapmnt&gt;SID \\.sys..
+    \\\\<ASCS/SCS sanal ana bilgisayar adı \> \ sapmnt \\ &lt; SID &gt; \ sys \. ..
 
 
 ![Şekil 2: bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**Şekil 3:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
 > [!IMPORTANT]
 > Bu iki bileşen aynı SAP yoks/SCS örneği altında çalışır:
->* Aynı \<yoks/SCS sanal ana bilgisayar adı>, SAP iletisi ve sıraya alma sunucu IŞLEMLERINE ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için kullanılır.
+>* Aynı, \<ASCS/SCS virtual host name> SAP iletisi ve sıraya alma sunucu işlemlerine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için de kullanılır.
 >* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.
 >
 

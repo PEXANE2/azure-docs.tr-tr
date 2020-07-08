@@ -11,10 +11,9 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996332"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
@@ -103,9 +102,9 @@ Ayrıca, bir abonelik içindeki her çalışma alanı için, [VM ailesine göre 
 Bazı durumlarda, eğitim çalıştırmalarını süreleri sınırlamak veya erkenden sona erdirmek için yapılandırmanız gerekir. Örneğin, Azure Machine Learning yerleşik hiper parametre ayarlama veya otomatik makine öğrenimi kullanırken.
 
 İşte kullanabileceğiniz birkaç seçenek:
-* Bir çalıştırmanın seçtiğiniz işlem `max_run_duration_seconds` için (yerel veya uzak bulut işlem) üzerinde genişletileceği en uzun süreyi denetlemek Için RunConfiguration uygulamanızda çağrılan bir parametre tanımlayın.
-* [Hiper parametre ayarlama](how-to-tune-hyperparameters.md#early-termination)için, bir bandıt ilkesinden erken sonlandırma Ilkesi, ortanca durdurma Ilkesi veya kesme seçim ilkesi tanımlayın. Hiper parametre sweeps 'yi daha fazla denetlemek için `max_total_runs` veya `max_duration_minutes`gibi parametreleri kullanın.
-* [Otomatik makine öğrenimi](how-to-configure-auto-train.md#exit)için `enable_early_stopping` bayrağını kullanarak benzer sonlandırma ilkeleri ayarlayın. Ayrıca, `iteration_timeout_minutes` ve bir çalıştırmanın en `experiment_timeout_minutes` uzun süresini denetlemek için veya tüm denemeler için ve gibi özellikleri kullanın.
+* `max_run_duration_seconds`Bir çalıştırmanın seçtiğiniz işlem için (yerel veya uzak bulut işlem) üzerinde genişletileceği en uzun süreyi denetlemek Için RunConfiguration uygulamanızda çağrılan bir parametre tanımlayın.
+* [Hiper parametre ayarlama](how-to-tune-hyperparameters.md#early-termination)için, bir bandıt ilkesinden erken sonlandırma Ilkesi, ortanca durdurma Ilkesi veya kesme seçim ilkesi tanımlayın. Hiper parametre sweeps 'yi daha fazla denetlemek için veya gibi parametreleri `max_total_runs` kullanın `max_duration_minutes` .
+* [Otomatik makine öğrenimi](how-to-configure-auto-train.md#exit)için bayrağını kullanarak benzer sonlandırma ilkeleri ayarlayın `enable_early_stopping` . Ayrıca, `iteration_timeout_minutes` ve `experiment_timeout_minutes` bir çalıştırmanın en uzun süresini denetlemek için veya tüm denemeler için ve gibi özellikleri kullanın.
 
 ## <a name="use-low-priority-vms"></a>Düşük öncelikli VM’ler kullanma
 
@@ -117,7 +116,7 @@ SANAL makinenizin önceliğini şu yollarla ayarlayın:
 
 * Studio 'da, bir VM oluştururken **düşük öncelik** ' i seçin.
 
-* Python SDK ile, sağlama yapılandırmanızda `vm_priority` özniteliğini ayarlayın.  
+* Python SDK ile, `vm_priority` sağlama yapılandırmanızda özniteliğini ayarlayın.  
 
     ```python
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
@@ -125,7 +124,7 @@ SANAL makinenizin önceliğini şu yollarla ayarlayın:
                                                                max_nodes=4)
     ```
 
-* CLı 'yi kullanarak şunları ayarlayın `vm-priority`:
+* CLı 'yi kullanarak şunları ayarlayın `vm-priority` :
 
     ```azurecli-interactive
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority

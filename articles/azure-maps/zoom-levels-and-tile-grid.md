@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123913"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
@@ -167,7 +166,7 @@ Son olarak, `quadkeys` genellıkle XY alanındaki kutucukların yakınlığını
 
 Aşağıdaki örnek kod, bu belgede açıklanan işlevlerin nasıl uygulanacağını gösterir. Bu işlevler, gerektiğinde diğer programlama dillerine kolayca çevrilebilir.
 
-#### <a name="c"></a>[, #](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;

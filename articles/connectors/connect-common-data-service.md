@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997106"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme
@@ -51,9 +50,9 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ortam** | Yes | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Varlık adı** | Yes | İzlenecek varlık, örneğin "müşteri adayları" |
-   | **Kapsam** | Yes | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
+   | **Ortam** | Evet | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](https://docs.microsoft.com/power-platform/admin/environments-overview). |
+   | **Varlık adı** | Evet | İzlenecek varlık, örneğin "müşteri adayları" |
+   | **Kapsam** | Evet | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service eylem Ekle
@@ -72,8 +71,8 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kuruluş adı** | Yes | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
-   | **Varlık adı** | Yes | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
+   | **Kuruluş adı** | Evet | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
+   | **Varlık adı** | Evet | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
    | **Konu** | Evet, bu örnekte seçilen varlığa göre | Bu görevin hedefi hakkında kısa bir açıklama |
    ||||
 
@@ -126,7 +125,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    ![Kayıtları filtrelemek için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-Sistem sorgu seçenekleri hakkında `$filter` daha fazla bilgi için bkz. [Common Data Service-filtre sonuçları](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$filter` bkz. [Common Data Service-filtre sonuçları](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Kayıtları bir sıraya göre listeleme
 
@@ -140,7 +139,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    ![Kayıtları sıralamak için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-Sistem sorgu seçenekleri hakkında `$orderby` daha fazla bilgi için bkz. [Common Data Service-Order results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$orderby` bkz. [Common Data Service-Order results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Alan veri türleri
 
@@ -153,14 +152,14 @@ Bu tabloda bazı alan türleri ve bu alanların değerleri için gereken veri t�
 | Metin alanı | Tek satırlı metin | Metin veri türüne sahip tek satırlık bir metin veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Açıklaması** <br>- **Alan** |
 | Tamsayı alanı | Tam sayı | Tamsayı veri türüne sahip bir tamsayı veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Tamamlanma yüzdesi** <br>- **Sürenin** |
 | Tarih alanı | Tarih ve Saat | AA/gg/YYY biçiminde veya tarih veri türüne sahip dinamik içerikte bir tarih gerektirir, örneğin, bu özellikler: <p><p>- **Oluşturulma tarihi** <br>- **Başlangıç tarihi** <br>- **Gerçek başlangıç** <br>- **Gerçek bitiş** <br>- **Son Tarih** |
-| Başka bir varlık kaydına başvuran alan | Birincil anahtar | GUID gibi bir kayıt KIMLIĞI ve bir arama türü gerektirir, bu da dinamik içerik listesindeki değerlerin, örneğin, bu özellikler gibi çalışmadıkları anlamına gelir: <p><p>- **Sahip**: geçerli BIR kullanıcı kimliği veya bir takım kayıt kimliği olmalıdır. <br>- **Sahip türü**: sırasıyla `systemusers` veya `teams`gibi bir arama türü olmalıdır. <p><p>- **İlgili**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Ilgili tür**: sırasıyla `accounts` veya `contacts`gibi bir arama türü olmalıdır. <p><p>- **Müşteri**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Müşteri türü**: sırasıyla `accounts` veya `contacts`gibi arama türü olmalıdır. |
+| Başka bir varlık kaydına başvuran alan | Birincil anahtar | GUID gibi bir kayıt KIMLIĞI ve bir arama türü gerektirir, bu da dinamik içerik listesindeki değerlerin, örneğin, bu özellikler gibi çalışmadıkları anlamına gelir: <p><p>- **Sahip**: geçerli BIR kullanıcı kimliği veya bir takım kayıt kimliği olmalıdır. <br>- **Sahip türü**: sırasıyla veya gibi bir arama türü olmalıdır `systemusers` `teams` . <p><p>- **İlgili**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Ilgili tür**: sırasıyla veya gibi bir arama türü olmalıdır `accounts` `contacts` . <p><p>- **Müşteri**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Müşteri türü**: sırasıyla veya gibi arama türü olmalıdır `accounts` `contacts` . |
 ||||
 
 Bu örnek, yeni bir **kayıt oluşturma** eyleminin diğer varlık kayıtlarıyla, özellikle de bir kullanıcı kaydıyla ve bir hesap kaydıyla ilişkili yeni bir "görevler" kaydı nasıl oluşturduğunu gösterir. Eylem, ilgili özellikler için beklenen veri türleriyle eşleşen değerleri kullanarak bu varlık kayıtlarının kimliklerini ve arama türlerini belirtir.
 
-* Bir kullanıcı KIMLIĞI belirten **Owner** özelliği ve `systemusers` arama türünü belirten **Owner türü** özelliği temel alınarak, eylem yeni "görevler" kaydını belirli bir kullanıcıyla ilişkilendirir.
+* Bir kullanıcı KIMLIĞI belirten **Owner** özelliği ve arama türünü belirten **Owner türü** özelliği temel alınarak `systemusers` , eylem yeni "görevler" kaydını belirli bir kullanıcıyla ilişkilendirir.
 
-* Bir kayıt KIMLIĞI belirten **ilgili** özelliğine ve `accounts` arama türünü belirten **ilgili tür** özelliğine dayalı olarak, eylem yeni "görevler" kaydını belirli bir hesapla ilişkilendirir.
+* Bir kayıt KIMLIĞI belirten **ilgili** özelliğine ve arama türünü belirten **ilgili tür** özelliğine dayalı olarak, `accounts` eylem yeni "görevler" kaydını belirli bir hesapla ilişkilendirir.
 
 ![Kimlikler ve arama türleriyle ilişkili "görevler" kaydını oluştur](./media/connect-common-data-service/create-new-record-task-properties.png)
 

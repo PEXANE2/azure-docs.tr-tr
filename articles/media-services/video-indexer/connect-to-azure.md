@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005939"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
@@ -131,7 +130,7 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
     2. [Hizmet sorumlusu kimlik doğrulama yöntemini](../previous/media-services-portal-get-started-with-aad.md)seçin.
     3. İstemci KIMLIĞINI ve gizli anahtarı al
 
-        **Ayarlar**->**anahtarlar**' ı seçtikten sonra, **Açıklama**ekleyin, **Kaydet**' e basın ve anahtar değeri doldurulur.
+        **Ayarlar** -> **anahtarlar**' ı seçtikten sonra, **Açıklama**ekleyin, **Kaydet**' e basın ve anahtar değeri doldurulur.
 
         Anahtarın süresi dolarsa, hesap sahibinin anahtarı yenilemek için Video Indexer desteğe başvurması gerekecektir.
 
@@ -163,7 +162,7 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 > [!NOTE]
 > İçerik her bir hesaptan yalnızca bir kez içeri aktarılabilir.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 

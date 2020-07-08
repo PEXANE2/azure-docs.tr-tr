@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006332"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
@@ -74,7 +73,7 @@ Yapıt dışarı aktarma için kullanılan kaynak depolama hesabındaki kapsayı
 
 *Önerilen belirteç izinleri*: okuma, yazma, listeleme, ekleme. 
 
-Aşağıdaki örnekte, komut çıktısı, '? ' karakteri ön eki olan EXPORT_SAS ortam değişkenine atanır. Ortamınız için `--expiry` değeri güncelleştirin:
+Aşağıdaki örnekte, komut çıktısı, '? ' karakteri ön eki olan EXPORT_SAS ortam değişkenine atanır. `--expiry`Ortamınız için değeri güncelleştirin:
 
 ```azurecli
 EXPORT_SAS=?$(az storage container generate-sas \
@@ -103,7 +102,7 @@ Yapıt içeri aktarması için kullanılan hedef depolama hesabındaki kapsayıc
 
 *Önerilen belirteç izinleri*: okuma, silme, listeleme
 
-Aşağıdaki örnekte, komut çıktısı, '? ' karakteri ön eki olan IMPORT_SAS ortam değişkenine atanır. Ortamınız için `--expiry` değeri güncelleştirin:
+Aşağıdaki örnekte, komut çıktısı, '? ' karakteri ön eki olan IMPORT_SAS ortam değişkenine atanır. `--expiry`Ortamınız için değeri güncelleştirin:
 
 ```azurecli
 IMPORT_SAS=?$(az storage container generate-sas \
@@ -132,7 +131,7 @@ Azure Resource Manager şablonu dağıtımını kullanarak kaynak kapsayıcısı
 
 ExportPipeline Kaynak Yöneticisi [şablon dosyalarını](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines) yerel bir klasöre kopyalayın.
 
-Dosyasına `azuredeploy.parameters.json`aşağıdaki parametre değerlerini girin:
+Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.json` :
 
 |Parametre  |Değer  |
 |---------|---------|
@@ -144,7 +143,7 @@ Dosyasına `azuredeploy.parameters.json`aşağıdaki parametre değerlerini giri
 
 ### <a name="export-options"></a>Dışarı aktarma seçenekleri
 
-Dışa `options` aktarma işlem hatları özelliği, isteğe bağlı Boole değerlerini destekler. Aşağıdaki değerler önerilir:
+`options`Dışa aktarma işlem hatları özelliği, isteğe bağlı Boole değerlerini destekler. Aşağıdaki değerler önerilir:
 
 |Parametre  |Değer  |
 |---------|---------|
@@ -162,7 +161,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Komut çıkışında, işlem hattının kaynak KIMLIĞINI (`id`) göz önünde edin. Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -178,7 +177,7 @@ Azure Resource Manager şablonu dağıtımını kullanarak hedef kapsayıcı kay
 
 Importpipeline Kaynak Yöneticisi [şablon dosyalarını](https://github.com/Azure/acr/tree/master/docs/image-transfer/ImportPipelines) yerel bir klasöre kopyalayın.
 
-Dosyasına `azuredeploy.parameters.json`aşağıdaki parametre değerlerini girin:
+Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.json` :
 
 Parametre  |Değer  |
 |---------|---------|
@@ -190,7 +189,7 @@ Parametre  |Değer  |
 
 ### <a name="import-options"></a>İçeri aktarma seçenekleri
 
-İçeri `options` aktarma işlem hattının özelliği, isteğe bağlı Boole değerlerini destekler. Aşağıdaki değerler önerilir:
+`options`İçeri aktarma işlem hattının özelliği, isteğe bağlı Boole değerlerini destekler. Aşağıdaki değerler önerilir:
 
 |Parametre  |Değer  |
 |---------|---------|
@@ -208,7 +207,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI (`id`) göz önünde bulabilirsiniz. Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -224,7 +223,7 @@ Azure Resource Manager şablonu dağıtımını kullanarak kaynak kapsayıcısı
 
 Ardışık düzen eylemsizlik Kaynak Yöneticisi [şablon dosyalarını](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) yerel bir klasöre kopyalayın.
 
-Dosyasına `azuredeploy.parameters.json`aşağıdaki parametre değerlerini girin:
+Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.json` :
 
 |Parametre  |Değer  |
 |---------|---------|
@@ -268,13 +267,13 @@ azcopy copy \
 
 ## <a name="trigger-importpipeline-resource"></a>Importpipeline kaynağını Tetikle
 
-Importpipeline (varsayılan `sourceTriggerStatus` değer) parametresini etkinleştirdiyseniz, işlem hattı, blob hedef depolama hesabına kopyalandıktan sonra tetiklenir. Yapıtların içeri aktarılması birkaç dakika sürebilir. İçeri aktarma işlemi başarıyla tamamlandığında, hedef kapsayıcı kayıt defterindeki depoları listeleyerek yapıt içeri aktarma işlemini doğrulayın. Örneğin, [az ACR Repository List][az-acr-repository-list]' i çalıştırın:
+`sourceTriggerStatus`Importpipeline (varsayılan değer) parametresini etkinleştirdiyseniz, işlem hattı, blob hedef depolama hesabına kopyalandıktan sonra tetiklenir. Yapıtların içeri aktarılması birkaç dakika sürebilir. İçeri aktarma işlemi başarıyla tamamlandığında, hedef kapsayıcı kayıt defterindeki depoları listeleyerek yapıt içeri aktarma işlemini doğrulayın. Örneğin, [az ACR Repository List][az-acr-repository-list]' i çalıştırın:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
 ```
 
-İçeri aktarma işlem hattının `sourceTriggerStatus` parametresini etkinleştirmediyseniz, aşağıdaki bölümde gösterildiği gibi ımportpipeline kaynağını el ile çalıştırın. 
+`sourceTriggerStatus`İçeri aktarma işlem hattının parametresini etkinleştirmediyseniz, aşağıdaki bölümde gösterildiği gibi ımportpipeline kaynağını el ile çalıştırın. 
 
 ## <a name="create-pipelinerun-for-import-with-resource-manager-optional"></a>Kaynak Yöneticisi içe aktarma için ardışık düzen eylemsizlik oluştur (isteğe bağlı) 
  
@@ -282,7 +281,7 @@ Ayrıca, hedef kapsayıcı Kayıt defterinize yapıt için bir ımportpipeline t
 
 Ardışık düzen eylemsizlik Kaynak Yöneticisi [şablon dosyalarını](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import) yerel bir klasöre kopyalayın.
 
-Dosyasına `azuredeploy.parameters.json`aşağıdaki parametre değerlerini girin:
+Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.json` :
 
 |Parametre  |Değer  |
 |---------|---------|
@@ -327,7 +326,7 @@ az deployment group delete \
 ## <a name="troubleshooting"></a>Sorun giderme
 
 * **Hata veya hata Şablon dağıtımı**
-  * Bir işlem hattı çalıştırması başarısız olursa, çalışma kaynağı `pipelineRunErrorMessage` özelliğine bakın.
+  * Bir işlem hattı çalıştırması başarısız olursa, `pipelineRunErrorMessage` çalışma kaynağı özelliğine bakın.
   * Ortak şablon dağıtım hataları için bkz. [ARM şablon dağıtımları sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
 * **Depolama bloblarını dışa aktarma veya içeri aktarma sorunları**
   * SAS belirtecinin geçerliliği, belirtilen dışarı aktarma veya içeri aktarma çalıştırması için yeterli izinlere sahip olmayabilir.

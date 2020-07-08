@@ -4,10 +4,9 @@ description: Her birinin ne zaman kullanılacağı hakkında rehberlik dahil olm
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996363"
 ---
 # <a name="actor-timers-and-reminders"></a>Aktör zamanlayıcılar ve anımsatıcıları
@@ -16,7 +15,7 @@ Aktör, zamanlayıcılar veya anımsatıcılar kaydederek kendi üzerinde düzen
 ## <a name="actor-timers"></a>Aktör zamanlayıcılar
 Aktör zamanlayıcılar, aktör çalışma zamanının sağladığı, geri çağırma yöntemlerinin, çift yönlü eşzamanlılık garantisi sağladığından emin olmak için bir .NET veya Java süreölçerinin etrafında basit bir sarmalayıcı sağlar.
 
-Aktör, `RegisterTimer`zamanlayıcılarını kaydetmek ve kaydını silmek `registerTimer`için temel sınıfında ( `UnregisterTimer`c#) veya ( `unregisterTimer`Java) ve (c#) veya (Java) yöntemlerini kullanabilir. Aşağıdaki örnekte Zamanlayıcı API 'Lerinin kullanımı gösterilmektedir. API 'Ler .NET Zamanlayıcı veya Java zamanlayıcıya çok benzerdir. Bu örnekte, Zamanlayıcının süresi dolduğunda, aktör çalışma zamanı `MoveObject`(C#) veya `moveObject`(Java) yöntemini çağırır. Yöntemi, çift tabanlı eşzamanlılık açısından garanti edilir. Yani bu geri çağırma işlemi tamamlanana kadar başka bir aktör yöntemi veya zamanlayıcı/anımsatıcı geri çağırma işlemleri yapılmaz.
+Aktör, `RegisterTimer` `registerTimer` `UnregisterTimer` `unregisterTimer` zamanlayıcılarını kaydetmek ve kaydını silmek için temel sınıfında (c#) veya (Java) ve (c#) veya (Java) yöntemlerini kullanabilir. Aşağıdaki örnekte Zamanlayıcı API 'Lerinin kullanımı gösterilmektedir. API 'Ler .NET Zamanlayıcı veya Java zamanlayıcıya çok benzerdir. Bu örnekte, Zamanlayıcının süresi dolduğunda, aktör çalışma zamanı `MoveObject` (C#) veya `moveObject` (Java) yöntemini çağırır. Yöntemi, çift tabanlı eşzamanlılık açısından garanti edilir. Yani bu geri çağırma işlemi tamamlanana kadar başka bir aktör yöntemi veya zamanlayıcı/anımsatıcı geri çağırma işlemleri yapılmaz.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -120,17 +119,17 @@ Süreölçerin bir sonraki dönemi, geri çağırma yürütmeyi tamamladıktan s
 
 Aktör çalışma zamanı, geri çağırma tamamlandığında aktörün durum yöneticisine yapılan değişiklikleri kaydeder. Durumu kaydederken bir hata oluşursa, bu aktör nesnesi devre dışı bırakılır ve yeni bir örnek etkinleştirilir.
 
-[Anımsatıcılardan](#actor-reminders)farklı olarak, zamanlayıcılar güncelleştirilemiyor. `RegisterTimer` Yeniden çağrılırsa, yeni bir Zamanlayıcı kaydedilir.
+[Anımsatıcılardan](#actor-reminders)farklı olarak, zamanlayıcılar güncelleştirilemiyor. `RegisterTimer`Yeniden çağrılırsa, yeni bir Zamanlayıcı kaydedilir.
 
 Aktör çöp toplama işleminin parçası olarak devre dışı bırakıldığında tüm zamanlayıcılar durdurulur. Sonrasında hiçbir süreölçer geri çağırma çağrılmaz. Ayrıca, aktör çalışma zamanı devre dışı bırakmadan önce çalışmakta olan zamanlayıcılar hakkındaki bilgileri korumaz. Bu, gelecekte yeniden etkinleştirildiğinde ihtiyacı olan tüm zamanlayıcıları kaydetmek için aktöre kadar. Daha fazla bilgi için [aktör çöp toplamanın](service-fabric-reliable-actors-lifecycle.md)bölümüne bakın.
 
 ## <a name="actor-reminders"></a>Aktör anımsatıcıları
-Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Ayrıca, zamanlayıcılar aksine, var olan anımsatıcılar, kayıt yöntemi (`RegisterReminderAsync`), aynı uyarı *adı*kullanılarak tekrar çağırarak güncelleştirilemeyebilir.
+Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Ayrıca, zamanlayıcılar aksine, var olan anımsatıcılar, kayıt yöntemi ( `RegisterReminderAsync` ), aynı uyarı *adı*kullanılarak tekrar çağırarak güncelleştirilemeyebilir.
 
 > [!NOTE]
 > Anımsatıcıların güvenilirliği, aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi ile bağlantılıdır. Bu, durum kalıcılığı *yok*olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir.
 
-Bir anımsatıcıyı kaydetmek için bir aktör, aşağıdaki örnekte [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
+Bir anımsatıcıyı kaydetmek için bir aktör, [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) Aşağıdaki örnekte gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -161,9 +160,9 @@ protected CompletableFuture onActivateAsync()
 }
 ```
 
-Bu örnekte, `"Pay cell phone bill"` anımsatıcı adıdır. Bu, aktörün bir anımsatıcıyı benzersiz şekilde tanımlamak için kullandığı bir dizedir. `BitConverter.GetBytes(amountInDollars)`(C#), anımsatıcı ile ilişkili bağlamıdır. Anımsatıcı geri çağırması için bir bağımsız değişken olarak aktör 'e geçirilir, yani `IRemindable.ReceiveReminderAsync`(C#) veya `Remindable.receiveReminderAsync`(Java).
+Bu örnekte, `"Pay cell phone bill"` Anımsatıcı adıdır. Bu, aktörün bir anımsatıcıyı benzersiz şekilde tanımlamak için kullandığı bir dizedir. `BitConverter.GetBytes(amountInDollars)`(C#), anımsatıcı ile ilişkili bağlamıdır. Anımsatıcı geri çağırması için bir bağımsız değişken olarak aktör 'e geçirilir, yani `IRemindable.ReceiveReminderAsync` (C#) veya `Remindable.receiveReminderAsync` (Java).
 
-Anımsatıcıları kullanan aktörlerin, aşağıdaki `IRemindable` örnekte gösterildiği gibi arabirimi uygulaması gerekir.
+Anımsatıcıları kullanan aktörlerin, `IRemindable` Aşağıdaki örnekte gösterildiği gibi arabirimi uygulaması gerekir.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -204,11 +203,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Bir anımsatıcı tetiklendiğinde, Reliable Actors çalışma zamanı aktör üzerinde `ReceiveReminderAsync`(C#) veya `receiveReminderAsync`(Java) yöntemini çağırır. Aktör birden çok anımsatıcı kaydedebilir ve `ReceiveReminderAsync`(C#) veya `receiveReminderAsync`(Java) yöntemi bu anımsatıcıları tetiklendiğinde çağrılır. Aktör, hangi anımsatıcının tetiklendiğini anlamak için `ReceiveReminderAsync`(C#) veya `receiveReminderAsync`(Java) yöntemine geçirilen anımsatıcı adını kullanabilir.
+Bir anımsatıcı tetiklendiğinde, Reliable Actors çalışma zamanı `ReceiveReminderAsync` aktör üzerinde (C#) veya `receiveReminderAsync` (Java) yöntemini çağırır. Aktör birden çok anımsatıcı kaydedebilir ve `ReceiveReminderAsync` (C#) veya `receiveReminderAsync` (Java) yöntemi bu anımsatıcıları tetiklendiğinde çağrılır. Aktör, `ReceiveReminderAsync` `receiveReminderAsync` hangi anımsatıcının tetiklendiğini anlamak için (C#) veya (Java) yöntemine geçirilen anımsatıcı adını kullanabilir.
 
-Aktör çalışma zamanı, `ReceiveReminderAsync`(C#) veya `receiveReminderAsync`(Java) çağrısı tamamlandığında aktör durumunu kaydeder. Durumu kaydederken bir hata oluşursa, bu aktör nesnesi devre dışı bırakılır ve yeni bir örnek etkinleştirilir.
+Aktör çalışma zamanı, `ReceiveReminderAsync` (C#) veya `receiveReminderAsync` (Java) çağrısı tamamlandığında aktör durumunu kaydeder. Durumu kaydederken bir hata oluşursa, bu aktör nesnesi devre dışı bırakılır ve yeni bir örnek etkinleştirilir.
 
-Bir anımsatıcının kaydını silmek için, bir aktör aşağıdaki `UnregisterReminderAsync`örneklerde gösterildiği gibi ( `unregisterReminderAsync`C#) veya (Java) yöntemini çağırır.
+Bir anımsatıcının kaydını silmek için, bir aktör `UnregisterReminderAsync` `unregisterReminderAsync` Aşağıdaki örneklerde gösterildiği gibi (C#) veya (Java) yöntemini çağırır.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -219,7 +218,7 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Yukarıda gösterildiği gibi `UnregisterReminderAsync`, (c#) veya `unregisterReminderAsync`(Java) yöntemi bir `IActorReminder`(c#) veya `ActorReminder`(Java) arabirimini kabul eder. Aktör temel sınıfı, (c# `GetReminder`) veya `ActorReminder`(Java `getReminder`) arabirimini anımsatıcı adına geçirerek almak `IActorReminder`için kullanılabilecek bir (c#) veya (Java) yöntemini destekler. `IActorReminder`Aktör (c#) veya `ActorReminder` `RegisterReminder` `registerReminder`(Java) yöntem çağrısından döndürülen (c#) veya (Java) arabirimini kalıcı hale getirmek zorunda olmadığından, bu kullanışlıdır.
+Yukarıda gösterildiği gibi, `UnregisterReminderAsync` (c#) veya ( `unregisterReminderAsync` Java) yöntemi bir `IActorReminder` (c#) veya `ActorReminder` (Java) arabirimini kabul eder. Aktör temel sınıfı, (c#) `GetReminder` `getReminder` veya ( `IActorReminder` `ActorReminder` Java) arabirimini anımsatıcı adına geçirerek almak için kullanılabilecek bir (c#) veya (Java) yöntemini destekler. Aktör (c#) `IActorReminder` `ActorReminder` `RegisterReminder` veya `registerReminder` (Java) yöntem çağrısından döndürülen (c#) veya (Java) arabirimini kalıcı hale getirmek zorunda olmadığından, bu kullanışlıdır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Güvenilir aktör olayları ve yeniden giriş hakkında bilgi edinin:

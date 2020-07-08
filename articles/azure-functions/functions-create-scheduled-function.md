@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123505"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure’da bir zamanlayıcı tarafından tetiklenen bir işlev oluşturma
@@ -49,7 +48,7 @@ Yeni işlev uygulamanız kullanıma hazırlanıyor. Ardından, yeni işlev uygul
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
     | **Adı** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
-    | **Zamanlama** | 0 \* /1 \* \* \*\* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#ncrontab-expressions). |
+    | **Zamanla** | 0 \* /1 \* \* \*\* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#ncrontab-expressions). |
 
 ## <a name="test-the-function"></a>İşlevi test etme
 

@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123896"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure haritalar yönlendirme kapsamı
@@ -23,7 +22,7 @@ Bu makalede Azure haritalar yönlendirmesi için kapsam bilgileri sağlanmaktad�
 [**Trafik**](traffic-coverage.md)için kapsama göz atın.  
 [**İşleme**](render-coverage.md)için kapsama göz atın.
 <br>  
-**Deki**
+**Gösterge**
 
 | Sembol             | Anlamı                                |
 |--------------------|----------------------------------------|
@@ -57,7 +56,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Gambiya                         |        ✓       |                       |             |
 | Gana                          |        ✓       |                       |             |
 | Kenya                          |        ✓       |         ✓            |             |
-| Lesoto                        |        Ø        |         ✓            |             |
+| Lesotho                        |        Ø        |         ✓            |             |
 | Malavi                         |        ✓       |                       |              |
 | Mali                           |        ✓       |                       |             |
 | Moritanya                     |        ✓       |                       |             |
@@ -67,7 +66,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Namibya                        |        ✓       |                       |             |
 | Nijer                          |        ✓       |                       |             |
 | Nijerya                        |        ✓       |         ✓            |             |
-| Rwanda                         |        ✓       |                       |             |
+| Ruanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
 | Seyşeller                     |        ✓       |                       |             |
 | Güney Afrika                   |        ✓       ||         ✓            |             |
@@ -88,7 +87,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Antigua ve Barbuda            |        ✓       |                      |             |
 | Bahamalar                        |        ✓       |                      |             |
 | Barbados                       |        ✓       |                      |             |
-| Beliz                         |        ✓       |                      |             |
+| Belize                         |        ✓       |                      |             |
 | Brezilya                         |        ✓       |         ✓            |     ✓       | 
 | Kanada                         |        ✓       |         ✓            |     ✓      |
 | Şili                          |        ✓       |         ✓            |     ✓      |
@@ -99,7 +98,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Dominik Cumhuriyeti             |        ✓       |                      |             |
 | Ekvador                        |        ✓       |                      |             |
 | El Salvador                    |        ✓       |                      |             |
-| Fransız Ginesi                  |        ✓       |                      |             |
+| Fransız Guyanası                  |        ✓       |                      |             |
 | Grenada                        |        ✓       |                      |             |
 | Guatemala                      |        ✓       |                      |             |
 | Guyana                         |        ✓       |                      |             |
@@ -116,7 +115,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | St. Vincent & Grenadinler       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
 | Trinidad & Tobago              |        ✓       |                      |             |
-| Amerika Birleşik Devletleri                  |        ✓       |         ✓            |     ✓      | 
+| Birleşik Devletler                  |        ✓       |         ✓            |     ✓      | 
 | + Amerikan Samoası                |        ✓       |                      |             |
 | + Kuzey Mariana Adaları      |        ✓       |                      |             |
 | + Porto Riko                   |        ✓       |                      |             |
@@ -187,7 +186,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | İtalya                          |        ✓       |         ✓            |     ✓      | 
 | Jersey                         |        ✓       |                      |             |
 | Letonya                         |        ✓       |         ✓            |     ✓      | 
-| Lihtenştayn                  |        ✓       |         ✓            |             |
+| Liechtenstein                  |        ✓       |         ✓            |             |
 | Litvanya                      |        ✓       |         ✓            |     ✓      | 
 | Lüksemburg                     |        ✓       |         ✓            |     ✓      | 
 | Kuzey Makedonya                |        ✓       |                      |             |
@@ -222,7 +221,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | + Gibraltar                     |        ✓       |         ✓            |             | 
 | + Montserrat                    |        ✓       |                      |             |
 | + Turks ve Caicos Adaları      |        ✓       |                      |             |
-| Vatikan şehri                   |        ✓       |         ✓            |             |
+| Vatikan                   |        ✓       |         ✓            |             |
 | Man Adası                    |        ✓       |                      |             |
 
 

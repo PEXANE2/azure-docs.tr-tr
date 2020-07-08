@@ -10,10 +10,9 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124066"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için örnek koruması
@@ -54,7 +53,7 @@ Bu makalede, ölçek kümesi örnekleriyle farklı örnek koruma özelliklerini 
 1. Korumak istediğiniz örneğin adını seçin.
 1. **Koruma ilkesi** sekmesini seçin.
 1. **Koruma ilkesi** dikey penceresinde, **ölçeğe karşı koru** seçeneğini belirleyin.
-1. **Kaydet**’i seçin. 
+1. **Kaydet**'i seçin. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -122,7 +121,7 @@ Bir örneği ölçek kümesi eylemlerden korumak aynı zamanda örneği otomatik
 1. Korumak istediğiniz örneğin adını seçin.
 1. **Koruma ilkesi** sekmesini seçin.
 1. **Koruma ilkesi** dikey penceresinde **Ölçek kümesini koru eylemleri** seçeneğini belirleyin.
-1. **Kaydet**’i seçin. 
+1. **Kaydet**'i seçin. 
 
 ### <a name="rest-api"></a>REST API
 

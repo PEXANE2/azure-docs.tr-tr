@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122281"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure Işlevleri 'nde PowerShell ile karma ortamları yönetme ve App Service Karma Bağlantılar
@@ -59,7 +58,7 @@ App Service Karma Bağlantılar özelliği yalnızca temel, standart ve yalıtı
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
-    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
+    | **[Kaynak Grubu](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşlev Uygulaması adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-` .  |
     |**Yayımlama**| Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | PowerShell Core ' u seçin. |
@@ -213,7 +212,7 @@ Karma bağlantılar, işlev uygulamasının ağ bölümünde yapılandırılır:
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="PowerShell kodunu değiştirin ve HTTP tetikleyici işlevini kaydedin." border="true":::
 

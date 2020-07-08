@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995889"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
@@ -90,7 +89,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 | --- | --- | 
 | Media Services hesap başına [akış uç noktaları](streaming-endpoint-concept.md) (durdurulmuş veya çalışıyor)|2 |
 | [Dinamik Bildirim Filtreleri](filters-dynamic-manifest-overview.md)|100|
-| [Akış İlkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
+| [Akış Ilkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Tek seferde bir varlıkla ilişkili benzersiz [akış Konumlandırıcı](streaming-locators-concept.md) | 100<sup>(7)</sup> (Sabit) |
 
 <sup>6</sup> özel bir [akış Ilkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
@@ -110,4 +109,4 @@ Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#bla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](media-services-overview.md)
+[Genel Bakış](media-services-overview.md)

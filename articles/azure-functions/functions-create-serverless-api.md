@@ -7,15 +7,14 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122791"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
 
-Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure Işlevleri, Node. js, C# ve daha fazlasını içeren çeşitli dillerde bir uç nokta yazmayı kolaylaştıran yerleşik HTTP Tetikleyicileri ve bağlamaları koleksiyonuyla birlikte gelir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştireceksiniz. Ayrıca, Azure İşlev Proxy'leri ile tümleştirerek ve sahte API 'Ler ayarlayarak API 'nizi büyümeye hazırlarsınız. Bu görevler, Işlevlerin sunucusuz işlem ortamının üzerinde gerçekleştirilir. bu nedenle, kaynakları ölçeklendirmeniz gerekmez; API mantığınıza odaklanmanız yeterlidir.
+Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure Işlevleri, Node.js, C# ve daha fazlasını içeren çeşitli dillerde bir uç nokta yazmayı kolaylaştıran yerleşik HTTP Tetikleyicileri ve bağlamaları koleksiyonuyla birlikte gelir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştireceksiniz. Ayrıca, Azure İşlev Proxy'leri ile tümleştirerek ve sahte API 'Ler ayarlayarak API 'nizi büyümeye hazırlarsınız. Bu görevler, Işlevlerin sunucusuz işlem ortamının üzerinde gerçekleştirilir. bu nedenle, kaynakları ölçeklendirmeniz gerekmez; API mantığınıza odaklanmanız yeterlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
@@ -45,7 +44,7 @@ Varsayılan olarak HTTP tetikleyici işleviniz herhangi bir HTTP yöntemini kabu
 
     `/api`Genel bir ayar tarafından işlendiği için yol şablonuna temel yol öneki dahil etmediniz.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 HTTP işlevlerinin özelleştirilmesi hakkında daha fazla bilgi için bkz. [Azure IŞLEVLERI http bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
 
@@ -95,7 +94,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
     > [!NOTE] 
     > Proxy için sabit olarak yazılmış ortam bağımlılığı oluşmasını önleme amacıyla ana bilgisayar yapılandırması için uygulama ayarlarının kullanılması önerilir. Uygulama ayarlarını kullanarak proxy yapılandırmasını birden fazla ortamda kullanabilirsiniz ve bu durumda ortama özgü uygulama ayarları geçerli olur.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Ön uçta proxy oluşturma
 
@@ -128,7 +127,7 @@ Bu sahte API 'yi oluşturmak için, bu kez [App Service Düzenleyicisi](https://
 
 Sol gezinti bölmesinden `proxies.json` öğesini seçin. Bu dosya, tüm proxy 'lerinizin yapılandırmasını depolar. [İşlevlerden birini dağıtım yöntemlerinden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)birini kullanırsanız, bu dosyayı kaynak denetiminde koruursunuz. Bu dosya hakkında daha fazla bilgi için bkz. [Gelişmiş proxy yapılandırması](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
-Şu ana kadar ilerlediyseniz, proxy 'ler. JSON 'niz şöyle görünmelidir:
+Şimdiye kadar ilerlediyseniz, üzerinde proxies.jsaşağıdaki gibi görünmelidir:
 
 ```json
 {
@@ -144,7 +143,7 @@ Sol gezinti bölmesinden `proxies.json` öğesini seçin. Bu dosya, tüm proxy '
 }
 ```
 
-Bundan sonra, sahte API 'nizi ekleyeceksiniz. Proxy. JSON dosyanızı aşağıdaki kodla değiştirin:
+Bundan sonra, sahte API 'nizi ekleyeceksiniz. proxies.jsdosyadaki aşağıdaki kodla değiştirin:
 
 ```json
 {

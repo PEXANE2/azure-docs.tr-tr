@@ -16,10 +16,9 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995519"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>iOS için Çevrimdışı FairPlay Akışı 
@@ -134,7 +133,7 @@ FPS 'nin çevrimdışı mod desteği yalnızca iOS 10 ve üzeri sürümlerde kul
 
 Bu adımlarda çalışan bir iOS yürütücüsünün nasıl ayarlanacağı gösterilmektedir. FPS sunucu SDK 'Sı 4.0.1 sürümündeki HLSCatalog örneğinden başlattığınız varsayılarak aşağıdaki kod değişikliklerini yapın:
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kullanarak yöntemini `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` aşağıdaki kodu kullanarak yöntemini uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +166,7 @@ Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kull
     return ckcData
 ```
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini `requestApplicationCertificate()`uygulayın. Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini uygulayın `requestApplicationCertificate()` . Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -212,11 +211,11 @@ Aşağıdaki sık sorulan sorular, sorun giderme konusunda yardım sağlar:
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saniye ile çevrimdışı kiralama süresini temsil eder.
-- **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys` Klasör, indirilen fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. Klasör `.movpkg` , ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, Boot. xml, `.movpkg` klasör içeriğinin tamamının bir açıklamasını sağlar. 
+- **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys`Klasör, INDIRILEN fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. `.movpkg`Klasör, ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, boot.xml klasör içeriğinin tamamını açıklama sağlar `.movpkg` . 
 
 ![Çevrimdışı FairPlay iOS örnek uygulama dosyası yapısı](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
-Örnek bir Boot. xml dosyası:
+Örnek bir boot.xml dosyası:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">

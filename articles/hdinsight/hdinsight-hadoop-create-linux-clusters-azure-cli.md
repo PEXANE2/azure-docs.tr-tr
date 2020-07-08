@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82994173"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLı kullanarak HDInsight kümeleri oluşturma
@@ -46,12 +45,12 @@ Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi
 
     |Parametre | Açıklama |
     |---|---|
-    |`--workernode-count`| Kümedeki çalışan düğümlerinin sayısı. Bu makalede, değişkeni `clusterSizeInNodes` geçirildiği değer olarak kullanılır. `--workernode-count` |
-    |`--version`| HDInsight kümesi sürümü. Bu makalede, değişkeni `clusterVersion` geçirildiği değer olarak kullanılır. `--version` Ayrıca bkz: [desteklenen HDInsight sürümleri](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| HDInsight kümesinin türü, örneğin: Hadoop, ınteractivehive, HBase, Kafka, fırtınası, Spark, Rserver, mlservices.  Bu makalede, değişkeni `clusterType` geçirildiği değer olarak kullanılır. `--type` Ayrıca bkz: [küme türleri ve yapılandırması](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|' Component = Version ' biçimindeki, boşlukla ayrılmış sürümlerde çeşitli Hadoop bileşenlerinin sürümleri. Bu makalede, değişkeni `componentVersion` geçirildiği değer olarak kullanılır. `--component-version` Ayrıca bkz: [Hadoop bileşenleri](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
+    |`--workernode-count`| Kümedeki çalışan düğümlerinin sayısı. Bu makalede, değişkeni `clusterSizeInNodes` geçirildiği değer olarak kullanılır `--workernode-count` . |
+    |`--version`| HDInsight kümesi sürümü. Bu makalede, değişkeni `clusterVersion` geçirildiği değer olarak kullanılır `--version` . Ayrıca bkz: [desteklenen HDInsight sürümleri](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| HDInsight kümesinin türü, örneğin: Hadoop, ınteractivehive, HBase, Kafka, fırtınası, Spark, Rserver, mlservices.  Bu makalede, değişkeni `clusterType` geçirildiği değer olarak kullanılır `--type` . Ayrıca bkz: [küme türleri ve yapılandırması](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
+    |`--component-version`|' Component = Version ' biçimindeki, boşlukla ayrılmış sürümlerde çeşitli Hadoop bileşenlerinin sürümleri. Bu makalede, değişkeni `componentVersion` geçirildiği değer olarak kullanılır `--component-version` . Ayrıca bkz: [Hadoop bileşenleri](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
-    `STORAGEACCOUNTNAME` `PASSWORD` `RESOURCEGROUPNAME` `LOCATION`,,, Ve değerlerini istenen değerlerle değiştirin. `CLUSTERNAME` Diğer değişkenlerin değerlerini istediğiniz şekilde değiştirin. Ardından CLı komutlarını girin.
+    ,,, `RESOURCEGROUPNAME` `LOCATION` `CLUSTERNAME` `STORAGEACCOUNTNAME` Ve `PASSWORD` değerlerini istenen değerlerle değiştirin. Diğer değişkenlerin değerlerini istediğiniz şekilde değiştirin. Ardından CLı komutlarını girin.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +75,7 @@ Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi
         --name $resourceGroupName
     ```
 
-    Geçerli konumların bir listesi için `az account list-locations` komutunu kullanın ve sonra `name` değerden birini kullanın.
+    Geçerli konumların bir listesi için `az account list-locations` komutunu kullanın ve sonra değerden birini kullanın `name` .
 
 4. Aşağıdaki komutu girerek [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) :
 

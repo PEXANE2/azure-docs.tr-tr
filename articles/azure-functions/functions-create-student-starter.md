@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: alkarche
 ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122910"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Öğrenciler için Azure başlangıç kullanarak bir işlev oluşturma
@@ -89,7 +88,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     * Tüm giriş ve çıkış bağlamaları desteklenir! [Tam listeye buradan bakın.](functions-triggers-bindings.md)
 * Desteklenen Diller: 
     * C# (.NET Core 2)
-    * JavaScript (node. js 8 & 10)
+    * JavaScript (Node.js 8 & 10)
     * F # (.NET Core 2)
     * [Daha yüksek planlarda desteklenen dillere bakın](supported-languages.md)
 * Windows desteklenen tek işletim sistemidir.

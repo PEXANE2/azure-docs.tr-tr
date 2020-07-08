@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005333"
 ---
-# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack kullanarak Azure Logic Apps düz dosyaları kodlama ve kodunu çözme
+# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack'i kullanarak Azure Logic Apps'te düz dosyaları kodlama ve kodunu çözme
 
 İşletmeden işletmeye (B2B) senaryosunda bir iş ortağına XML içeriği göndermeden önce, önce bu içeriği kodlamak isteyebilirsiniz. Bir mantıksal uygulama oluşturarak, düz **Dosya** bağlayıcısını kullanarak düz dosyaları kodlayabilir ve kod çözme yapabilirsiniz. Mantıksal uygulamanız, Istek tetikleyicisi, başka bir uygulama veya [Azure Logic Apps tarafından desteklenen diğer bağlayıcılar](../connectors/apis-list.md)gibi çeşitli kaynaklardan gelen bu XML içeriğini alabilir. Daha fazla bilgi için bkz. [Azure Logic Apps](logic-apps-overview.md)nedir?
 
@@ -31,16 +30,16 @@ ms.locfileid: "83005333"
 
 * Tümleştirme hesabınızda zaten tanımlamış olduğunuz en az iki [ticari iş ortağı](logic-apps-enterprise-integration-partners.md)
 
-## <a name="add-flat-file-encode-action"></a>Düz dosya kodlama eylemi Ekle
+## <a name="add-flat-file-encode-action"></a>Düz dosya kodlama eylemi ekleme
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım** > **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
+1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
 
    > [!TIP]
    > JSON şeması sağlamak isteğe bağlıdır. Gelen istekten bir örnek yüküyle karşılaşırsanız, **şema oluşturmak için örnek yük kullan**' ı seçin, örnek yükü girin ve **bitti**' yi seçin. Şema, **Istek GÖVDESI JSON şeması** kutusunda görünür.
 
-1. **Eylem seçin**altında girin `flat file`. Eylemler listesinden şu eylemi seçin: **düz dosya kodlama**
+1. **Eylem seçin**altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kodlama**
 
    !["Düz dosya kodlaması" eylemini seçin](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -63,16 +62,16 @@ ms.locfileid: "83005333"
 
 Artık düz dosya kodlama eyleminizi ayarlamaya hazırsınız. Gerçek bir dünya uygulamasında, kodlanmış verileri Salesforce gibi bir iş kolu (LOB) uygulamasında depolamak isteyebilirsiniz. Ya da kodlanmış verileri bir ticaret ortağına gönderebilirsiniz. Kodlama eyleminden çıktıyı Salesforce 'a veya ticari iş ortağınıza göndermek için [Azure Logic Apps bulunan diğer bağlayıcıları](../connectors/apis-list.md)kullanın.
 
-## <a name="add-flat-file-decode-action"></a>Düz dosya kod çözme eylemi Ekle
+## <a name="add-flat-file-decode-action"></a>Düz dosya kod çözme eylemi ekleme
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım** > **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
+1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
 
    > [!TIP]
    > JSON şeması sağlamak isteğe bağlıdır. Gelen istekten bir örnek yüküyle karşılaşırsanız, **şema oluşturmak için örnek yük kullan**' ı seçin, örnek yükü girin ve **bitti**' yi seçin. Şema, **Istek GÖVDESI JSON şeması** kutusunda görünür.
 
-1. **Eylem seçin**altında girin `flat file`. Eylemler listesinden şu eylemi seçin: **düz dosya kod çözme**
+1. **Eylem seçin**altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kod çözme**
 
    !["Düz dosya kod çözme" eylemini seçin](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

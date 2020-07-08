@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/09/2020
 tags: connectors
 ms.openlocfilehash: 00bf8ea2b783e09711a95f203bdfcce0e6b90b2c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82994323"
 ---
 # <a name="create-and-manage-records-in-dynamics-365-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Dynamics 365 ' de kayıt oluşturma ve yönetme
@@ -19,9 +18,9 @@ ms.locfileid: "82994323"
 Dynamics 365 [Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro)kullanır. Dynamics 365 bağlantılarında [Common Data Service bağlayıcısını](https://docs.microsoft.com/connectors/commondataservice/)kullanın.
 
 > [!IMPORTANT]
-> [Dynamics 365 Bağlayıcısı](https://docs.microsoft.com/connectors/dynamicscrmonline/) kullanım dışıdır, ancak kaldırılana kadar çalışmaya devam eder. Yeni Logic Apps için Dynamics 365 bağlayıcısını kullanmayın. Dynamics 365 bağlayıcısının kaldırılması için zaman çizelgesi henüz duyurulmadı. Mevcut mantıksal uygulamaları Common Data Service bağlayıcıya veya diğer planlı yeni bağlayıcıya dönüştürmeniz gerekmez, ancak bağlayıcı kaldırıldığında mantıksal uygulamalarınızı dönüştürmeniz gerekir. Daha fazla bilgi için bkz. [Dynamics 365 Bağlayıcısı kullanım dışıdır](https://docs.microsoft.com/power-platform/important-changes-coming).
+> [Dynamics 365 Bağlayıcısı](https://docs.microsoft.com/connectors/dynamicscrmonline/) kullanım dışıdır, ancak kaldırılana kadar çalışmaya devam eder. Yeni Logic Apps için Dynamics 365 bağlayıcısını kullanmayın. Dynamics 365 bağlayıcısının kaldırılması için zaman çizelgesi henüz duyurulmadı. Var olan mantıksal uygulamaları Common Data Service bağlayıcısına veya planlanan diğer yeni bağlayıcılarına dönüştürmenize gerek yoktur ancak bağlayıcı kaldırıldığında mantıksal uygulamalarınızı dönüştürmeniz gerekecektir. Daha fazla bilgi için bkz. [Dynamics 365 Bağlayıcısı kullanım dışıdır](https://docs.microsoft.com/power-platform/important-changes-coming).
 >
-> [Common Data Service Bağlayıcısı](https://docs.microsoft.com/connectors/commondataservice/) kullanım dışı Dynamics 365 Bağlayıcısı ile aynı özellikleri sağlar, ancak güvenilirliği artıran iyileştirmeler içerir. Logic Apps 'te Common Data Service bağlayıcısını kullanma hakkında daha fazla bilgi için, bkz. [Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme](../connectors/connect-common-data-service.md).
+> [Common Data Service bağlayıcısı](https://docs.microsoft.com/connectors/commondataservice/), kullanım dışı bırakılan Dynamics 365 bağlayıcısıyla aynı özelliklere sahiptir ancak güvenilirliği artıran iyileştirmeler yapılmıştır. Common Data Service bağlayıcısını mantıksal uygulamalarda kullanma hakkında daha fazla bilgi için bkz. [Azure Logic Apps'i kullanarak Common Data Service kaydı oluşturma ve yönetme](../connectors/connect-common-data-service.md).
 
 Common Data Service hakkında daha fazla bilgi için şu konulara bakın:
 

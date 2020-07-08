@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
 ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995816"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
@@ -31,9 +30,9 @@ Canlı bir olay ve canlı çıkışları arasındaki ilişki geleneksel TV yayı
 
 Bu bölümde, ' geri sarma ' için akışın hangi bölümlerinin kullanılabileceğini denetlemek üzere bir olay sırasında bir DVR 'ın nasıl kullanılacağı açıklanmaktadır.
 
-Değer `archiveWindowLength` , bir görüntüleyicinin geçerli canlı konumdan ne kadar geri gidebileceğini belirler. `archiveWindowLength` Değer Ayrıca, istemci bildirimlerinin ne kadar büyüyeceğini de belirler.
+`archiveWindowLength`Değer, bir görüntüleyicinin geçerli canlı konumdan ne kadar geri gidebileceğini belirler. `archiveWindowLength`Değer Ayrıca, istemci bildirimlerinin ne kadar büyüyeceğini de belirler.
 
-Bir futbol oyunu akışını ve yalnızca 30 dakikalık bir `ArchiveWindowLength` oyun olduğunu varsayalım. Oyun başladıktan sonra olayınızı 45 dakika izlemeye başlayan bir görüntüleyici, 15 dakikalık bir işaret üzerinden geri arama yapabilir. Canlı olay durduruluncaya kadar oyunun canlı çıktıları devam edecektir. ArchiveWindowLength dışında kalan içerikler sürekli olarak depolamadan atılır ve kurtarılamaz olur. Bu örnekte, olayın başlangıcı ve 15 dakikalık işaret arasındaki video, DVR 'ınızdan ve varlık için BLOB depolama alanındaki kapsayıcıdan temizlenir. Arşiv kurtarılabilir değildir ve Azure Blob depolama alanındaki kapsayıcıdan kaldırılır.
+Bir futbol oyunu akışını ve yalnızca 30 dakikalık bir oyun olduğunu varsayalım `ArchiveWindowLength` . Oyun başladıktan sonra olayınızı 45 dakika izlemeye başlayan bir görüntüleyici, 15 dakikalık bir işaret üzerinden geri arama yapabilir. Canlı olay durduruluncaya kadar oyunun canlı çıktıları devam edecektir. ArchiveWindowLength dışında kalan içerikler sürekli olarak depolamadan atılır ve kurtarılamaz olur. Bu örnekte, olayın başlangıcı ve 15 dakikalık işaret arasındaki video, DVR 'ınızdan ve varlık için BLOB depolama alanındaki kapsayıcıdan temizlenir. Arşiv kurtarılabilir değildir ve Azure Blob depolama alanındaki kapsayıcıdan kaldırılır.
 
 Canlı bir olay, en fazla üç eşzamanlı çalışan canlı çıkışı destekler (aynı anda bir Canlı akıştan en fazla 3 kayıt/arşiv oluşturabilirsiniz). Bu destek, gerektiğinde bir olayın farklı parçalarını yayımlamanıza ve arşivlemenize olanak tanır. 7/24 canlı bir doğrusal akış yayınlamalı ve müşterilere, yakalama için isteğe bağlı içerik olarak sunmak üzere gün boyunca farklı programların "kayıtlarını" oluşturmanız gerektiğini varsayalım. Bu senaryo için, ilk olarak 1 saat veya daha kısa bir arşiv penceresi ile birincil bir canlı çıktı oluşturursunuz; bu, görüntüleyicilerinizin ayarlayacağından asıl canlı akışdır. Bu canlı çıktı için bir akış Bulucu oluşturur ve bunu uygulamanızda veya Web sitenizde "canlı" akış olarak yayımlayabilirsiniz. Canlı olay çalışırken programın başlangıcında (veya daha sonra kırpmak için bazı tutamaçlar sağlamak için 5 dakika erken), programlı olarak ikinci bir eşzamanlı canlı çıktı oluşturabilirsiniz. Bu ikinci canlı çıktı, program bittikten 5 dakika sonra silinebilir. Bu ikinci varlıkla, bu programı uygulamanızın kataloğunda isteğe bağlı bir varlık olarak yayımlamak üzere yeni bir akış Bulucu oluşturabilirsiniz. Bu işlemi, isteğe bağlı videolar olarak paylaşmak istediğiniz diğer program sınırları veya vurguları için birden çok kez yineleyebilirsiniz, ancak ilk canlı çıktının "canlı" akışı, doğrusal akışın yayınlanmaya devam eder.
 

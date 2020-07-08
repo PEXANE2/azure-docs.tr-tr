@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983083"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
@@ -28,7 +27,7 @@ WAF günlüklerinin amacı, WAF tarafından eşlenen veya engellenen her isteği
 
 Örneğin, WAF 'niz üzerinden geçirmek istediğiniz *1 = 1* dizesini içeren yasal bir trafiğinizin olduğunu varsayalım. İsteği denerseniz, WAF herhangi bir parametre veya alanda *1 = 1* dizenizi içeren trafiği engeller. Bu bir SQL ekleme saldırısından genellikle ilişkili bir dizedir. Günlüklere bakabilir ve isteğin zaman damgasını ve engellenen/eşleştirilen kuralları görebilirsiniz.
 
-Aşağıdaki örnekte, aynı istek sırasında (TransactionId alanı kullanılarak) dört kuralın tetiklendiğini görebilirsiniz. Kullanıcı istek için bir sayısal/IP URL 'SI kullandığından, bir uyarı olduğundan, anomali puanı üç kez arttığı için Birincisi onu eşleştirdiğini söyler. Eşleşen bir sonraki kural, aradığınız bir sonraki kuraldır 942130 ' dir. `details.data` Alanda *1 = 1* ' i görebilirsiniz. Bu, aynı zamanda bir uyarı olduğundan anomali Puanını üç kez daha arttırır. Genellikle, eylemi **eşleşen** her kural anomali Puanını arttırır ve bu noktada anomali puanı altı olur. Daha fazla bilgi için bkz. [anomali Puanlama modu](ag-overview.md#anomaly-scoring-mode).
+Aşağıdaki örnekte, aynı istek sırasında (TransactionId alanı kullanılarak) dört kuralın tetiklendiğini görebilirsiniz. Kullanıcı istek için bir sayısal/IP URL 'SI kullandığından, bir uyarı olduğundan, anomali puanı üç kez arttığı için Birincisi onu eşleştirdiğini söyler. Eşleşen bir sonraki kural, aradığınız bir sonraki kuraldır 942130 ' dir. Alanda *1 = 1* ' i görebilirsiniz `details.data` . Bu, aynı zamanda bir uyarı olduğundan anomali Puanını üç kez daha arttırır. Genellikle, eylemi **eşleşen** her kural anomali Puanını arttırır ve bu noktada anomali puanı altı olur. Daha fazla bilgi için bkz. [anomali Puanlama modu](ag-overview.md#anomaly-scoring-mode).
 
 En son iki günlük girdisi, anomali puanı yeterince yüksek olduğu için isteğin engellendiğini gösterir. Bu girişlerin diğer iki farklı eylemi vardır. Bunlar, isteği gerçekten *engellediği* gibi gösterir. Bu kurallar zorunludur ve devre dışı bırakılamaz. Bunlar kural olarak düşünülmemelidir, ancak WAF iç yapısının çekirdek altyapısı olarak daha fazla.
 
@@ -182,7 +181,7 @@ Bu, dışarıda bırakabilmeniz için bir alandır. Dışlama listeleri hakkınd
 
 Ayrıca, dışlama listesine eklemek için gerekenleri görmek üzere bilgileri almak için güvenlik duvarı günlüklerini inceleyebilirsiniz. Günlüğe kaydetmeyi etkinleştirmek için, bkz. [Application Gateway Için arka uç sistem durumu, kaynak günlükleri ve ölçümler](../../application-gateway/application-gateway-diagnostics.md).
 
-Güvenlik Duvarı günlüğünü inceleyin ve denetlemek istediğiniz isteğin gerçekleştiği saat için PT1H. json dosyasını görüntüleyin.
+Güvenlik Duvarı günlüğünü inceleyin ve denetlemek istediğiniz isteğin gerçekleştiği saat için dosyadaki PT1H.jsgörüntüleyin.
 
 Bu örnekte, aynı TransactionId ile dört kuralın olduğunu ve tümünün tam olarak aynı anda gerçekleştiğini görebilirsiniz:
 
@@ -301,7 +300,7 @@ Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçt�
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama >**Geliştirici Araçları** **İnceleme** -> ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
+İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama > **Inspect**  ->  **Geliştirici Araçları**İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

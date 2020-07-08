@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997262"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight için Kurumsal Güvenlik Paketi
@@ -64,4 +63,4 @@ Kurumsal Güvenlik Paketi için fiyatlandırma ve SLA hakkında daha fazla bilgi
 * [HDInsight üzerinde Apache Hadoop, Spark ve daha fazlası için küme kurulumu](hdinsight-hadoop-provision-linux-clusters.md)
 * [Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop çalışma](hdinsight-hadoop-windows-tools.md)
 * [Azure HDInsight sürümleriyle ilişkili hortonçalışmalar sürüm notları](./hortonworks-release-notes.md)
-* [HDInsight 'ta Apache bileşenleri](./hdinsight-component-versioning.md)
+* [HDInsight üzerindeki Apache bileşenleri](./hdinsight-component-versioning.md)

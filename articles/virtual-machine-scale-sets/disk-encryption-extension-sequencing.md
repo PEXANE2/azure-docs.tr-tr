@@ -10,10 +10,9 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117266"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Sanal makine ölçek kümesi uzantısı sıralaması ile Azure disk şifrelemesini kullanma
@@ -155,7 +154,7 @@ Aşağıda, Windows tabanlı bir Azure VM 'de izleme ve tanılama özellikleri s
 ```
 
 Daha ayrıntılı bir şablon için bkz.:
-* Diski biçimlendiren özel bir kabuk betikten sonra Azure disk şifrelemesi uzantısını uygulama (Linux): [Deploy-extseq-Linux-Ade-After-CustomScript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* Diski biçimlendiren özel bir kabuk betikten sonra Azure disk şifrelemesi uzantısını uygulama (Linux): [deploy-extseq-linux-ADE-after-customscript.js](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

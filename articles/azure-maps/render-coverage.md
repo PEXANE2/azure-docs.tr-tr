@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123947"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure haritalar işleme kapsamı
@@ -21,7 +20,7 @@ Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vekt�
 
 Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolar her bölge için işleyebilmeniz için bilgi düzeyini ayrıntılandırır.
 
-## <a name="legend"></a>Açıklama
+## <a name="legend"></a>Gösterge
 
 | Sembol | Anlamı |
 |--------|---------|
@@ -58,7 +57,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Gine                           | ✓ | Ø |
 | Gine-Bissau                    | ✓ | Ø |
 | Kenya                            | ✓ | ✓ |
-| Lesoto                          | ✓ | ✓ |
+| Lesotho                          | ✓ | ✓ |
 | Liberya                          | ✓ | Ø |
 | Libya                            | ✓ | Ø |
 | Madagaskar                       | ✓ | Ø |
@@ -73,7 +72,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Nijer                            | ✓ | ✓ |
 | Nijerya                          | ✓ | ✓ |
 | Reunion                          | ✓ | ✓ |
-| Rwanda                           | ✓ | ✓ |
+| Ruanda                           | ✓ | ✓ |
 | Saint Helena, Ascension ve Tristan da Cunha | ✓ | Ø |
 | Sao Tome ve Principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
@@ -100,13 +99,13 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Aruba                     | ✓ | ✓ |
 | Bahamalar                   | ✓ | ✓ |
 | Barbados                  | ✓ | ✓ |
-| Beliz                    | ✓ | ✓ |
+| Belize                    | ✓ | ✓ |
 | Bermuda                   | ✓ | ✓ |
 | Bolivya 'nın plurinsel durumu | ✓ | ✓ |
 | Bonaire, Sint Eustatius ve Saba | ✓ | ✓ |
 | Brezilya                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
-| Kayman Adaları            | ✓ | ✓ |
+| Cayman Adaları            | ✓ | ✓ |
 | Şili                     | ✓ | ✓ |
 | Kolombiya                  | ✓ | ✓ |
 | Kosta Rika                | ✓ | ✓ |
@@ -116,16 +115,16 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Dominik Cumhuriyeti        | ✓ | ✓ |
 | Ekvador                   | ✓ | ✓ |
 | Falkland Adaları (Malvinas) | ✓ | ✓ |
-| Fransız Ginesi             | ✓ | ✓ |
+| Fransız Guyanası             | ✓ | ✓ |
 | Grönland                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
-| Guadalupe                | ✓ | ✓ |
+| Guadeloupe                | ✓ | ✓ |
 | Guatemala                 | ✓ | ✓ |
 | Guyana                    | ✓ | ✓ |
 | Haiti                     | ✓ | ✓ |
 | Honduras                  | ✓ | ✓ |
 | Jamaika                   | ✓ | ✓ |
-| Martinik                | ✓ | ✓ |
+| Martinique                | ✓ | ✓ |
 | Meksika                    | ✓ | ✓ |
 | Montserrat                | ✓ | ✓ |
 | Nikaragua                 | ✓ | ✓ |
@@ -146,7 +145,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Surinam                  | ✓ | ✓ |
 | Trinidad ve Tobago       | ✓ | ✓ |
 | Turks ve Caicos Adaları  | ✓ | ✓ |
-| Amerika Birleşik Devletleri             | ✓ | ✓ |
+| Birleşik Devletler             | ✓ | ✓ |
 | Uruguay                   | ✓ | ✓ |
 | Venezuela                 | ✓ | ✓ |
 | Virgin Adaları, İngiliz   | ✓ | ✓ |
@@ -270,7 +269,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Jan Mayen                 | ✓ | ✓ |
 | Jersey                    | ✓ | ✓ |
 | Letonya                    | ✓ | ✓ |
-| Lihtenştayn             | ✓ | ✓ |
+| Liechtenstein             | ✓ | ✓ |
 | Litvanya                 | ✓ | ✓ |
 | Lüksemburg                | ✓ | ✓ |
 | Kuzey Makedonya           | ✓ | ✓ |
@@ -296,7 +295,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Türkiye                    | ✓ | ✓ |
 | Ukrayna                   | ✓ | ✓ |
 | Birleşik Krallık            | ✓ | ✓ |
-| Vatikan şehri              | ✓ | ✓ |
+| Vatikan              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

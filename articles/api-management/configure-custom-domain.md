@@ -13,15 +13,14 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83004737"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
-Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alanını `azure-api.net` (örneğin, `apim-service-name.azure-api.net`) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
+Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alanını `azure-api.net` (örneğin, `apim-service-name.azure-api.net` ) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
 
 > [!IMPORTANT]
 > API Management, yalnızca varsayılan etki alanı adı veya yapılandırılmış özel etki alanı adlarından eşleşen [ana bilgisayar üstbilgi](https://tools.ietf.org/html/rfc2616#section-14.23) değerlerine sahip istekleri kabul eder.
@@ -49,11 +48,11 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 
     Özel bir etki alanı adı atayabilmeniz için birkaç uç nokta vardır. Şu anda aşağıdaki uç noktalar kullanılabilir:
 
-    - **Ağ geçidi** (varsayılan: `<apim-service-name>.azure-api.net`),
-    - **Portal** (varsayılan: `<apim-service-name>.portal.azure-api.net`),
-    - **Yönetim** (varsayılan: `<apim-service-name>.management.azure-api.net`),
-    - **SCM** (varsayılan: `<apim-service-name>.scm.azure-api.net`),
-    - **Newportal** (varsayılan: `<apim-service-name>.developer.azure-api.net`).
+    - **Ağ geçidi** (varsayılan: `<apim-service-name>.azure-api.net` ),
+    - **Portal** (varsayılan: `<apim-service-name>.portal.azure-api.net` ),
+    - **Yönetim** (varsayılan: `<apim-service-name>.management.azure-api.net` ),
+    - **SCM** (varsayılan: `<apim-service-name>.scm.azure-api.net` ),
+    - **Newportal** (varsayılan: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Yalnızca **ağ geçidi** uç noktası, tüketim katmanında yapılandırma için kullanılabilir.
@@ -68,7 +67,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     - **Sertifikada**Key Vault bir sertifika seçin. Geçerli bir de yükleyebilirsiniz. Sertifika bir parolayla korunuyorsa PFX dosyası ve **parolasını**girin.
 
     > [!NOTE]
-    > Joker karakter etki alanı adları, `*.contoso.com` örn. tüketim katmanı hariç tüm katmanlarda desteklenir.
+    > Joker karakter etki alanı adları, örn. `*.contoso.com` Tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
     > Sertifikaları yönetmek ve bunları autorenew olarak ayarlamak [için Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) kullanmanızı öneririz.
@@ -78,7 +77,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     >
     > Sertifika autorenew olarak ayarlandıysa API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
 
-1. Uygula ' ya tıklayın.
+1. Uygula'ya tıklayın.
 
     > [!NOTE]
     > Sertifikayı atama işlemi, dağıtımın boyutuna bağlı olarak 15 dakika veya daha fazla sürebilir. Geliştirici SKU 'SU kapalı, temel ve daha yüksek SKU 'Ların kapalı kalma süresi yoktur.

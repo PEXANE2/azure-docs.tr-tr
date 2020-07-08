@@ -16,10 +16,9 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83120972"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure 'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
@@ -70,7 +69,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 
 **Neden 1:** Küme, istenen VM boyutunu desteklemez.
 
-**1. Çözüm:**
+**Çözüm 1:**
 
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
@@ -81,7 +80,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 
 **Neden 2:** Kümede boş kaynak yok.
 
-**2. Çözüm:**
+**Çözüm 2:**
 
 * İsteği daha sonra yeniden deneyin.
 * Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilir

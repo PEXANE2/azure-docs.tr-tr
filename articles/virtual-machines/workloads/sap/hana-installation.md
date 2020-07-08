@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117130"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
@@ -144,8 +143,8 @@ Depolama birimlerinin adlandırma kuralları aşağıdaki tabloda listelenmişti
 
 | Depolama alanı kullanımı | Bağlama adı | Birim adı | 
 | --- | --- | ---|
-| HANA verileri | /Hana/Data/SID/mnt0000 \< a> | Depolama IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA günlüğü | /Hana/log/SID/mnt0000 \< a> | Depolama IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA verileri | /Hana/Data/SID/mnt0000\<m> | Depolama IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA günlüğü | /Hana/log/SID/mnt0000\<m> | Depolama IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA günlük yedeklemesi | /Hana/log/Backups | Depolama IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA paylaşılan | /hana/shared/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /Usr/SAP/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ Ayrıca, hdbparam çerçevesini kullanarak SAP HANA veritabanı yüklemesinden s
 HANA büyük örneklerde kullanılan depolamanın dosya boyutu sınırlaması vardır. [Boyut sınırlaması dosya başına 16 TB 'tır](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) . EXT3 dosya sistemlerindeki dosya boyutu sınırlamalarından farklı olarak, HANA, HANA büyük örnekler depolaması tarafından zorlanan depolama sınırlamasını açıkça bilmez. Sonuç olarak, 16 TB dosya boyutu sınırına ulaşıldığında HANA otomatik olarak yeni bir veri dosyası oluşturmaz. HANA, 16 TB 'ın ötesinde dosyayı büyümeye çalışır, HANA hataları rapor eder ve dizin sunucusu sonda çökecektir.
 
 > [!IMPORTANT]
-> HANA büyük örnek depolama alanının 16 TB 'lık dosya boyutu sınırının ötesinde veri dosyalarını büyümeye çalışmasını engellemek için SAP HANA Global. ini yapılandırma dosyasında aşağıdaki parametreleri ayarlamanız gerekir
+> HANA büyük örnek depolama alanının 16 TB 'lık dosya boyutu sınırının ötesinde veri dosyalarını büyümeye çalışmasını engellemek için SAP HANA global.ini yapılandırma dosyasında aşağıdaki parametreleri ayarlamanız gerekir
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

@@ -8,10 +8,9 @@ ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117572"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
@@ -113,7 +112,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
 1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*içerik uzunluğu*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
@@ -124,7 +123,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Konum** | Dize | Yes | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **Konum** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
 3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
@@ -133,7 +132,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
      |---------------------------------|-------|------|-------------|
      | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
      | **İçerik türü** | <*içerik türü*> | Dize | Öbekli içerik türü |
@@ -144,7 +143,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralığı** | Dize | Yes | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
+   | **Aralığı** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 

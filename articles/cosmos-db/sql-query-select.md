@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005946"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB yan tümce SEÇIN
 
-Her sorgu, ANSI SQL `SELECT` standartlarına göre her bir yan tümce ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, `FROM` yan tümcesindeki kaynak numaralandırılır ve `WHERE` yan tümce, JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. `SELECT` Yan tümcesi daha sonra seçim LISTESINDE istenen JSON değerlerini projeler.
+Her sorgu `SELECT` , ANSI SQL standartlarına göre her bir yan tümce ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, `FROM` yan tümcesindeki kaynak numaralandırılır ve `WHERE` yan TÜMCE, JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. `SELECT`Yan tümcesi daha sonra seçim listesinde Istenen JSON değerlerini projeler.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
 
 ```sql
 SELECT <select_specification>  
@@ -31,7 +30,7 @@ SELECT <select_specification>
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
   
 - `<select_specification>`  
 
@@ -47,7 +46,7 @@ SELECT <select_specification>
   
 - `VALUE`  
 
-  Tüm JSON nesnesi yerine JSON değerinin alınması gerektiğini belirtir. Bu, aksine `<property_list>` , bir nesnedeki öngörülen değeri sarmaz.  
+  Tüm JSON nesnesi yerine JSON değerinin alınması gerektiğini belirtir. Bu, aksine, `<property_list>` bir nesnedeki öngörülen değeri sarmaz.  
 
 - `DISTINCT`
   
@@ -59,9 +58,9 @@ SELECT <select_specification>
 
 ## <a name="remarks"></a>Açıklamalar
 
-`SELECT *` SÖZDIZIMI yalnızca from yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`yansıtma gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıdığında geçerlidir.  
+`SELECT *`Sözdizimi yalnızca from yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`yansıtma gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıdığında geçerlidir.  
   
-`SELECT *` Hem hem de `SELECT <select_list>` "sözdizimsel cukr" ve AŞAĞıDA gösterildiği gibi basit select deyimleri kullanılarak ifade edilebilir.  
+Hem hem de `SELECT <select_list>` `SELECT *` "sözdizimsel cukr" ve aşağıda gösterildiği gıbı basit select deyimleri kullanılarak ifade edilebilir.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -77,7 +76,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>Örnekler
 
-`address` Aşağıdaki SELECT sorgusu örneği, `Families` `id` eşleşmelerin `AndersenFamily`döndürdüğü örnekleri:
+Aşağıdaki SELECT sorgusu örneği, `address` eşleşmelerin döndürdüğü `Families` örnekleri `id` `AndersenFamily` :
 
 ```sql
     SELECT f.address

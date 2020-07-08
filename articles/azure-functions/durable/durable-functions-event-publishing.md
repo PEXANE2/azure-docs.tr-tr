@@ -4,10 +4,9 @@ description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamay�
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124321"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
@@ -22,7 +21,7 @@ Bu özelliğin yararlı olduğu bazı senaryolar aşağıda verilmiştir:
 
 * **Uzun süre çalışan arka plan etkinliği**: uzun süre çalışan bir arka plan etkinliği için dayanıklı işlevler kullanıyorsanız, bu özellik geçerli durumu bilmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Dayanıklı İşlevler projenize [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 'ı yükler.
 * [Azure depolama öykünücüsünü](../../storage/common/storage-use-emulator.md) (yalnızca Windows) veya mevcut bir Azure Depolama hesabını kullanın.
@@ -101,7 +100,7 @@ Dayanıklı İşlevler projenizde `host.json` dosyasını bulun.
 }
 ```
 
-Olası Azure Event Grid yapılandırma özellikleri [Host. JSON belgelerinde](../functions-host-json.md#durabletask)bulunabilir. Dosyayı yapılandırdıktan sonra `host.json` , işlev uygulamanız yaşam döngüsü olaylarını Event Grid konusuna gönderir. Bu eylem, işlev uygulamanızı yerel olarak ve Azure 'da çalıştırdığınızda başlatılır.
+Olası Azure Event Grid yapılandırma özellikleri [host.jsbelgelerinde](../functions-host-json.md#durabletask)bulunabilir. Dosyayı yapılandırdıktan sonra `host.json` , işlev uygulamanız yaşam döngüsü olaylarını Event Grid konusuna gönderir. Bu eylem, işlev uygulamanızı yerel olarak ve Azure 'da çalıştırdığınızda başlatılır.
 
 İşlev Uygulaması ve içindeki konu anahtarı için uygulama ayarını ayarlayın `local.settings.json` . Aşağıdaki JSON, `local.settings.json` yerel hata ayıklama için bir örnektir. `<topic_key>`Konu anahtarıyla değiştirin.  
 
@@ -182,7 +181,7 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. Aboneliği seçin. Ardından, Event Grid konusu için oluşturduğunuz kaynak grubunu ve kaynağı seçin. 
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid aboneliği oluşturun." border="true":::
 

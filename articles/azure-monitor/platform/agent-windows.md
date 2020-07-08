@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996417"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
@@ -60,9 +59,9 @@ Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](htt
 
 Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
 
-1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
 2. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun.  
-3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
+3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ . NETFramework\v4.0.30319**.  
 4. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun. 
 5. Ayarların etkili olması için sistemi yeniden başlatın. 
 
@@ -103,7 +102,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 |OPINSIGHTS_PROXY_USERNAME               | Kimliği doğrulanmış bir ara sunucuya erişmek için Kullanıcı adı |
 |OPINSIGHTS_PROXY_PASSWORD               | Kimliği doğrulanmış bir ara sunucuya erişmek için parola |
 
-1. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar.  Alternatif olarak, bağımsız değişkenleri `MMASetup-<platform>.exe /c /t:<Full Path>`geçirerek yolu belirtebilirsiniz.  
+1. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar.  Alternatif olarak, bağımsız değişkenleri geçirerek yolu belirtebilirsiniz `MMASetup-<platform>.exe /c /t:<Full Path>` .  
 2. Aracıyı sessizce yüklemek ve Azure ticari bulutundaki bir çalışma alanına raporlamak üzere yapılandırmak için, kurulum dosyalarını ayıkladığınız klasörden şunu yazın: 
    
      ```dos
@@ -122,7 +121,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 
 Aracıyı Azure Automation DSC kullanarak yüklemek için aşağıdaki betik örneğini kullanabilirsiniz.   Bir Otomasyon hesabınız yoksa, Automation DSC kullanmadan önce gerekli bir Otomasyon hesabı oluşturmaya yönelik gereksinimleri ve adımları anlamak için bkz. [Azure Otomasyonu ile çalışmaya başlama](/azure/automation/) .  Automation DSC hakkında bilgi sahibi değilseniz [Automation DSC kullanmaya](../../automation/automation-dsc-getting-started.md)başlama konusunu inceleyin.
 
-Aşağıdaki örnek, `URI` değeri tarafından tanımlanan 64 bitlik aracıyı yüklenmektedir. Ayrıca, URI değerini değiştirerek 32 bit sürümünü de kullanabilirsiniz. Her iki sürümün URI 'Leri şunlardır:
+Aşağıdaki örnek, değeri tarafından tanımlanan 64 bitlik aracıyı yüklenmektedir `URI` . Ayrıca, URI değerini değiştirerek 32 bit sürümünü de kullanabilirsiniz. Her iki sürümün URI 'Leri şunlardır:
 
 - Windows 64-bit Aracısı-https://go.microsoft.com/fwlink/?LinkId=828603
 - Windows 32-bit Aracısı-https://go.microsoft.com/fwlink/?LinkId=828604
@@ -131,13 +130,13 @@ Aşağıdaki örnek, `URI` değeri tarafından tanımlanan 64 bitlik aracıyı y
 >[!NOTE]
 >Bu yordam ve betik örneği, bir Windows bilgisayarına zaten dağıtılan aracının yükseltilmesini desteklemez.
 
-Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir ve yayımlanan yeni sürümler de benzersiz bir değer içermelidir.  Ürün kodu, bir uygulamanın veya ürünün asıl kimliği olan ve Windows Installer **ProductCode** özelliği tarafından temsil EDILEN bir GUID 'dir.  `ProductId` **Mmagent. ps1** betiğinin değeri, 32-bit veya 64 bit aracı yükleyicisi paketindeki ürün koduyla eşleşmelidir.
+Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir ve yayımlanan yeni sürümler de benzersiz bir değer içermelidir.  Ürün kodu, bir uygulamanın veya ürünün asıl kimliği olan ve Windows Installer **ProductCode** özelliği tarafından temsil EDILEN bir GUID 'dir.  `ProductId` **MMAgent.ps1** betikteki değerin ürün kodu 32-bit veya 64-bit aracı yükleyicisi paketinden eşleşmelidir.
 
-Ürün kodunu aracı yüklemesi paketinden doğrudan almak için, Windows yazılım geliştirme seti 'nin bir bileşeni olan veya Microsoft değerli profesyonel (MVP) tarafından yazılmış [örnek bir betikten](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) sonra PowerShell kullanan [Windows Installer geliştiriciler Için Windows SDK bileşenlerinden](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) Orca. exe ' yi kullanabilirsiniz.  Her iki yaklaşım için, önce MMASetup yükleme paketinden **MOMAgent. msi** dosyasını ayıklamanız gerekir.  Bu, [komut satırını kullanarak aracıyı Install](#install-the-agent-using-the-command-line)bölümünün altındaki ilk adımda gösterilmektedir.  
+Ürün kodunu aracı yüklemesi paketinden doğrudan almak için, Windows yazılım geliştirme seti 'nin bir bileşeni olan Windows Installer geliştiricilerin veya Microsoft değerli bir profesyonel (MVP) tarafından yazılmış [örnek bir betikten](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) sonra PowerShell kullanarak [Windows SDK bileşenlerinden](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) Orca.exe kullanabilirsiniz.  Her iki yaklaşım için, önce MMASetup yükleme paketinden **MOMagent.msi** dosyasını ayıklamanız gerekir.  Bu, [komut satırını kullanarak aracıyı Install](#install-the-agent-using-the-command-line)bölümünün altındaki ilk adımda gösterilmektedir.  
 
-1. XPSDesiredStateConfiguration DSC modülünü Azure Automation [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 'a aktarın.  
+1. XPSDesiredStateConfiguration DSC modülünü [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation 'a aktarın.  
 2.    *OPSINSIGHTS_WS_ID* ve *OPSINSIGHTS_WS_KEY*için Azure Otomasyonu değişken varlıkları oluşturun. *OPSINSIGHTS_WS_ID* Log Analytics çalışma alanı kimliğinize ayarlayın ve *OPSINSIGHTS_WS_KEY* çalışma alanınızın birincil anahtarına ayarlayın.
-3.    Betiği kopyalayın ve MMAgent. ps1 olarak kaydedin.
+3.    Betiği kopyalayın ve MMAgent.ps1 olarak kaydedin.
 
 ```powershell
 Configuration MMAgent
@@ -175,8 +174,8 @@ Configuration MMAgent
 
 ```
 
-4. Komut dosyasındaki `ProductId` değeri, daha önce önerilen yöntemleri kullanarak aracı yüklemesi paketinin en son sürümünden ayıklanan ürün koduyla güncelleştirin. 
-5. [MMAgent. ps1 yapılandırma betiğini](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 
+4. `ProductId`Komut dosyasındaki değeri, daha önce önerilen yöntemleri kullanarak aracı yüklemesi paketinin en son sürümünden ayıklanan ürün koduyla güncelleştirin. 
+5. [MMAgent.ps1 yapılandırma betiğini](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 
 6. Yapılandırmaya [bir Windows bilgisayarı veya düğüm atayın](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration) . 15 dakika içinde düğüm yapılandırmasını denetler ve aracı düğümüne gönderilir.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Log Analytics için aracı bağlantısını doğrula

@@ -11,21 +11,20 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005809"
 ---
 # <a name="common-parameters-and-headers"></a>Ortak parametreler ve üst bilgiler
 
 Aşağıdaki bilgiler Key Vault kaynaklarıyla ilgili yapabileceğiniz tüm işlemler için ortaktır:
 
-- HTTP `Host` üst bilgisi her zaman bulunmalı ve kasa ana bilgisayar adının belirtilmesi gerekir. Örnek: `Host: contoso.vault.azure.net`. İstemci teknolojilerinin `Host` üst bilgisini URI 'den doldurtiğine unutmayın. `GET https://contoso.vault.azure.net/secrets/mysecret{...}` Örneğin, `Host` olarak `contoso.vault.azure.net`ayarlanır. Bu, gibi `GET https://10.0.0.23/secrets/mysecret{...}`ham IP adresini kullanarak Key Vault eriştiğinizde, `Host` üstbilginin otomatik değeri yanlış olur ve `Host` üst bilginin kasa ana bilgisayar adını içerdiğini el ile oluşturmanız gerekir.
-- URI `{api-version}` 'deki api sürümü ile değiştirin.
-- URI `{subscription-id}` 'deki abonelik tanımlayıcın ile değiştirin
-- Kaynak `{resource-group-name}` grubuyla değiştirin. Daha fazla bilgi için bkz. Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma.
-- URI `{vault-name}` 'deki Anahtar Kasası adınızla değiştirin.
+- HTTP `Host` üst bilgisi her zaman bulunmalı ve kasa ana bilgisayar adının belirtilmesi gerekir. Örnek: `Host: contoso.vault.azure.net`. İstemci teknolojilerinin `Host` üst BILGISINI URI 'den doldurtiğine unutmayın. Örneğin, `GET https://contoso.vault.azure.net/secrets/mysecret{...}` `Host` olarak ayarlanır `contoso.vault.azure.net` . Bu, gibi ham IP adresini kullanarak Key Vault eriştiğinizde `GET https://10.0.0.23/secrets/mysecret{...}` , üstbilginin otomatik değeri `Host` yanlış olur ve `Host` üst bilginin kasa ana bilgisayar adını içerdiğini el ile oluşturmanız gerekir.
+- `{api-version}`URI 'deki api sürümü ile değiştirin.
+- `{subscription-id}`URI 'deki abonelik tanımlayıcın ile değiştirin
+- `{resource-group-name}`Kaynak grubuyla değiştirin. Daha fazla bilgi için bkz. Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma.
+- `{vault-name}`URI 'deki Anahtar Kasası adınızla değiştirin.
 - Content-Type üst bilgisini Application/JSON olarak ayarlayın.
 - Yetkilendirme üst bilgisini Azure Active Directory (AAD) tarafından aldığınız JSON Web Token ayarlayın. Daha fazla bilgi için bkz. [kimlik doğrulama Azure Resource Manager](authentication-requests-and-responses.md) istekleri.
 
