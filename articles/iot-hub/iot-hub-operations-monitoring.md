@@ -10,10 +10,9 @@ ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732230"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub işlemleri izleme (kullanım dışı)
@@ -43,7 +42,7 @@ IoT Hub altı olay kategorisini izler:
 
     ![Portalda erişim işlemleri izleme yapılandırması](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet**' e tıklayın. Olaylar, **İzleme ayarlarında**listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents`.
+3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet**' e tıklayın. Olaylar, **İzleme ayarlarında**listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents` .
 
     ![IoT Hub 'ınızda işlem izlemeyi yapılandırma](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 

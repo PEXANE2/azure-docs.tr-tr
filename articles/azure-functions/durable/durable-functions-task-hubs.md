@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81604608"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler görev hub 'ları (Azure Işlevleri)
@@ -41,9 +40,9 @@ Görev hub 'ları, bu kurallara uyan bir ad tarafından tanımlanır:
 * Bir harfle başlar
 * En az 3 karakter uzunluğunda, en fazla 45 karakter uzunluğunda
 
-Görev hub 'ı adı, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosyasında belirtilir:
+Aşağıdaki örnekte gösterildiği gibi, görev hub 'ı adı dosyada *host.js* olarak belirtilir:
 
-### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Işlevler 2,0)
 
 ```json
 {
@@ -56,7 +55,7 @@ Görev hub 'ı adı, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosy
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>Host. JSON (Işlevler 1. x)
+### <a name="hostjson-functions-1x"></a>host.json (Işlevler 1. x)
 
 ```json
 {
@@ -66,9 +65,9 @@ Görev hub 'ı adı, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosy
 }
 ```
 
-Görev hub 'ları, aşağıdaki `host.json` örnek dosyada gösterildiği gibi uygulama ayarları kullanılarak da yapılandırılabilir:
+Görev hub 'ları, aşağıdaki örnek dosyada gösterildiği gibi uygulama ayarları kullanılarak da yapılandırılabilir `host.json` :
 
-### <a name="hostjson-functions-10"></a>Host. JSON (Işlevler 1,0)
+### <a name="hostjson-functions-10"></a>host.json (Işlevler 1,0)
 
 ```json
 {
@@ -78,7 +77,7 @@ Görev hub 'ları, aşağıdaki `host.json` örnek dosyada gösterildiği gibi u
 }
 ```
 
-### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
+### <a name="hostjson-functions-20"></a>host.json (Işlevler 2,0)
 
 ```json
 {
@@ -91,7 +90,7 @@ Görev hub 'ları, aşağıdaki `host.json` örnek dosyada gösterildiği gibi u
 }
 ```
 
-Görev hub 'ı adı, `MyTaskHub` uygulama ayarının değerine ayarlanır. Aşağıda `local.settings.json` , `MyTaskHub` ayarın nasıl tanımlanacağı gösterilmektedir `samplehubname`:
+Görev hub 'ı adı, `MyTaskHub` uygulama ayarının değerine ayarlanır. Aşağıda, `local.settings.json` ayarın nasıl tanımlanacağı gösterilmektedir `MyTaskHub` `samplehubname` :
 
 ```json
 {
@@ -104,7 +103,7 @@ Görev hub 'ı adı, `MyTaskHub` uygulama ayarının değerine ayarlanır. Aşa�
 
 Aşağıdaki kod, bir uygulama ayarı olarak yapılandırılmış bir görev hub 'ı ile çalışmak üzere [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanan bir işlevin nasıl yazılacağını göstermektedir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -125,11 +124,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Önceki C# örneği Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`function.json` Dosyadaki görev hub 'ı özelliği uygulama ayarı aracılığıyla ayarlanır:
+Dosyadaki görev hub 'ı özelliği `function.json` uygulama ayarı aracılığıyla ayarlanır:
 
 ```json
 {
@@ -146,13 +145,13 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 
 | Dayanıklı uzantı sürümü | Varsayılan görev hub 'ı adı |
 | - | - |
-| 2.x | Azure 'da dağıtıldığında, görev hub 'ı adı _işlev uygulamasının_adından türetilir. Azure dışında çalışırken, varsayılan görev hub 'ı adı olur `TestHubName`. |
-| 'in | Tüm ortamların varsayılan görev hub 'ı adı `DurableFunctionsHub`. |
+| 2.x | Azure 'da dağıtıldığında, görev hub 'ı adı _işlev uygulamasının_adından türetilir. Azure dışında çalışırken, varsayılan görev hub 'ı adı olur `TestHubName` . |
+| 'in | Tüm ortamların varsayılan görev hub 'ı adı `DurableFunctionsHub` . |
 
 Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 > [!NOTE]
-> Ad, paylaşılan bir depolama hesabında birden çok görev hub 'ı olduğunda, bir görev hub 'ını diğerinden farklılaştırır. Paylaşılan bir depolama hesabını paylaşan birden çok işlev uygulamanız varsa, *Host. JSON* dosyalarındaki her bir görev hub 'ı için farklı adlar açıkça yapılandırmanız gerekir. Aksi halde, birden çok işlev uygulaması iletiler için birbirleriyle rekabet eder ve bu da, `Pending` veya `Running` durumunda beklenmedik şekilde "takılmalar" gibi, tanımsız davranışa neden olabilir.
+> Ad, paylaşılan bir depolama hesabında birden çok görev hub 'ı olduğunda, bir görev hub 'ını diğerinden farklılaştırır. Paylaşılan bir depolama hesabını paylaşan birden çok işlev uygulamanız varsa, dosyalardaki *host.js* her bir görev hub 'ı için farklı adlar açıkça yapılandırmanız gerekir. Aksi halde, birden çok işlev uygulaması iletiler için birbirleriyle rekabet eder ve bu da, veya durumunda beklenmedik şekilde "takılmalar" gibi, tanımsız davranışa neden olabilir `Pending` `Running` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

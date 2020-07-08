@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727274"
 ---
 # <a name="api"></a>API #
@@ -19,7 +18,7 @@ Azure Media Player API 'SI, tarayıcıda HTML5 video, Flash, Silverlight veya di
 
 ## <a name="referencing-the-player"></a>Yürütücüye başvurma ##
 
-API işlevlerini kullanmak için oynatıcı nesnesine erişmeniz gerekir. Yağckily, kolayca alınır. Yalnızca video etiketinizdeki bir KIMLIĞE sahip olduğundan emin olmanız gerekir. Örnek ekleme kodunun KIMLIĞI vardır `vid1`. Bir sayfada birden çok video varsa, her video etiketinin benzersiz bir KIMLIĞE sahip olduğundan emin olun.
+API işlevlerini kullanmak için oynatıcı nesnesine erişmeniz gerekir. Yağckily, kolayca alınır. Yalnızca video etiketinizdeki bir KIMLIĞE sahip olduğundan emin olmanız gerekir. Örnek ekleme kodunun KIMLIĞI vardır `vid1` . Bir sayfada birden çok video varsa, her video etiketinin benzersiz bir KIMLIĞE sahip olduğundan emin olun.
 
 `var myPlayer = amp('vid1');`
 

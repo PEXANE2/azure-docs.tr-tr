@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683822"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
@@ -47,9 +46,9 @@ Bir JSON cihaz tanımı dosyası ve bir JavaScript dosyası kümesi kullanarak b
 
 Tipik bir cihaz modeli şunları içerir:
 
-* Her cihaz modeli için bir JSON dosyası (örneğin, Asansör. JSON).
-* Her cihaz modeli için bir JavaScript davranış betik dosyası (örneğin, Elevator-State. js)
-* Her cihaz yöntemi için bir JavaScript Yöntem betik dosyası (örneğin, Elevator-Go-Down. js)
+* Her cihaz modeli için bir JSON dosyası (örneğin, elevator.js).
+* Her cihaz modeli için bir JavaScript davranış betik dosyası (örneğin, elevator-state.js)
+* Her cihaz yöntemi için bir JavaScript Yöntem betik dosyası (örneğin, elevator-go-down.js)
 
 > [!NOTE]
 > Tüm cihaz modelleri Yöntemler tanımlamıyor. Bu nedenle bir cihaz modelinde Yöntem betikleri olabilir veya bulunmayabilir. Ancak, tüm cihaz modellerinin bir davranış betiği olmalıdır.
@@ -187,7 +186,7 @@ Sanal cihazlar ayrıca yöntem çağrılarına yanıt verebilir, bu durumda baz�
 
 Bu nasıl yapılır kılavuzunda, bir drone için cihaz modeli oluşturma hakkında bilgi alabilirsiniz. Drone, konum ve yüksekliği değiştiren bir ilk koordinat kümesini rastgele bir şekilde hareket edecektir.
 
-Aşağıdaki JSON 'ı bir metin düzenleyicisine kopyalayın ve **drone. JSON**olarak kaydedin.
+Aşağıdaki JSON 'ı bir metin düzenleyicisine kopyalayın ve **drone.js**olarak kaydedin.
 
 ### <a name="device-definition-json-example"></a>Cihaz tanımı JSON örneği
 
@@ -277,7 +276,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Davranış betik dosyası oluşturma
 
-Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **drone-State. js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **drone-state.js**olarak kaydedin.
 
 ### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 
@@ -406,7 +405,7 @@ Yöntem betikleri davranış betiklerine benzer. Belirli bir buluta cihaz yönte
 
 Drone geri çekme betiği, DRA 'nın, ana giriş döndüren kurutanın benzetimini yapmak için, kurutun koordinatlarını sabit bir noktaya ayarlar.
 
-Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **droneRecall-method. js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **droneRecall-method.js**olarak kaydedin.
 
 ### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 

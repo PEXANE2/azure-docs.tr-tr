@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682040"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD kimlik doğrulaması ile Azure Media Services API’sine erişme  
@@ -79,13 +78,13 @@ Yukarıdaki diyagramda, sayılar isteklerin kronolojik sırada akışını temsi
        Kiracı bilgileri Azure portal elde edilebilir. İmlecinizi sağ üst köşedeki oturum açmış kullanıcının adının üzerine getirin.
    * Kaynak URI 'sini Media Services. 
 
-       Bu URI aynı Azure ortamındaki Media Services hesapları için aynıdır (örneğin, https:\//Rest.Media.Azure.net).
+       Bu URI aynı Azure ortamındaki Media Services hesapları için aynıdır (örneğin, https: \/ /rest.Media.Azure.net).
 
    * Media Services (yerel) uygulama istemci KIMLIĞI.
    * Media Services (yerel) uygulama yeniden yönlendirme URI 'SI.
    * REST Media Services için kaynak URI 'SI.
         
-       URI REST API uç noktasını temsil eder (örneğin, https://test03.restv2.westus.media.azure.net/api/).
+       URI REST API uç noktasını temsil eder (örneğin, https://test03.restv2.westus.media.azure.net/api/) .
 
      Bu parametrelerin değerlerini almak için, bkz. Kullanıcı kimlik doğrulama seçeneğini kullanarak [Azure AD kimlik doğrulaması ayarlarına erişmek için Azure Portal kullanma](media-services-portal-get-started-with-aad.md) .
 
@@ -121,11 +120,11 @@ Yukarıdaki şekilde, sayılar isteklerin akışını kronolojik sırada temsil 
        Kiracı bilgileri Azure portal elde edilebilir. İmlecinizi sağ üst köşedeki oturum açmış kullanıcının adının üzerine getirin.
    * Kaynak URI 'sini Media Services. 
 
-       Bu URI aynı Azure ortamında bulunan Media Services hesapları için aynıdır (örneğin, https:\//Rest.Media.Azure.net).
+       Bu URI aynı Azure ortamında bulunan Media Services hesapları için aynıdır (örneğin, https: \/ /rest.Media.Azure.net).
 
    * REST Media Services için kaynak URI 'SI.
 
-       URI REST API uç noktasını temsil eder (örneğin, https://test03.restv2.westus.media.azure.net/api/).
+       URI REST API uç noktasını temsil eder (örneğin, https://test03.restv2.westus.media.azure.net/api/) .
 
    * Azure AD uygulama değerleri: istemci KIMLIĞI ve istemci parolası.
     

@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683739"
 ---
 # <a name="understand-the-device-model-schema"></a>Cihaz modeli şemasını anlama
@@ -78,13 +77,13 @@ Aşağıdaki tabloda en üst düzey şema girdileri açıklanmaktadır:
 | `Version` | Cihaz modelinin sürümünü tanımlar. |
 | `Name` | Cihaz modeli için kolay bir ad. |
 | `Description` | Cihaz modelinin açıklaması. |
-| `Protocol` | Cihazın kullandığı bağlantı protokolü. `AMQP`, `MQTT`Ve `HTTP`' den biri olabilir. |
+| `Protocol` | Cihazın kullandığı bağlantı protokolü. , Ve ' den biri olabilir `AMQP` `MQTT` `HTTP` . |
 
 Aşağıdaki bölümlerde JSON şemasındaki diğer bölümler açıklanır:
 
 ## <a name="simulation"></a>Benzetim
 
-`Simulation` Bölümünde, sanal cihazın iç durumunu tanımlarsınız. Cihaz tarafından gönderilen telemetri değerlerinin bu cihaz durumunun bir parçası olması gerekir.
+`Simulation`Bölümünde, sanal cihazın iç durumunu tanımlarsınız. Cihaz tarafından gönderilen telemetri değerlerinin bu cihaz durumunun bir parçası olması gerekir.
 
 Cihaz durumunun tanımında iki öğe vardır:
 
@@ -115,11 +114,11 @@ Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanım�
 }
 ```
 
-Simülasyon hizmeti, cihaz durumunu güncelleştirmek için her beş saniyede bir **Chiller-01-State. js** dosyasını çalıştırır. GitHub 'daki [betikler klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan sanal cihazların JavaScript dosyalarını görebilirsiniz. Kurala göre, bu JavaScript dosyaları Yöntem davranışlarını uygulayan dosyalardan ayırt edilebilmesi için sonek **durumundadır** .
+Simülasyon hizmeti, cihaz durumunu güncelleştirmek için her beş saniyede bir **chiller-01-state.js** dosyasını çalıştırır. GitHub 'daki [betikler klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan sanal cihazların JavaScript dosyalarını görebilirsiniz. Kurala göre, bu JavaScript dosyaları Yöntem davranışlarını uygulayan dosyalardan ayırt edilebilmesi için sonek **durumundadır** .
 
 ## <a name="properties"></a>Özellikler
 
-Şemanın `Properties` bölümü, cihazın çözüme rapor bildirdiği özellik değerlerini tanımlar. Örneğin:
+`Properties`Şemanın bölümü, cihazın çözüme rapor bildirdiği özellik değerlerini tanımlar. Örneğin:
 
 ```json
 "Properties": {
@@ -130,13 +129,13 @@ Simülasyon hizmeti, cihaz durumunu güncelleştirmek için her beş saniyede bi
 }
 ```
 
-Çözüm başladığında, Kullanıcı arabiriminde kullanılacak `Type` değerlerin bir listesini oluşturmak için tüm sanal cihazları sorgular. Çözüm, `Latitude` Pano 'daki haritaya `Longitude` cihaz konumunu eklemek için ve özelliklerini kullanır.
+Çözüm başladığında, `Type` Kullanıcı arabiriminde kullanılacak değerlerin bir listesini oluşturmak için tüm sanal cihazları sorgular. Çözüm, `Latitude` `Longitude` Pano 'daki haritaya cihaz konumunu eklemek için ve özelliklerini kullanır.
 
 ## <a name="telemetry"></a>Telemetri
 
-`Telemetry` Dizi, sanal cihazın çözüme gönderdiği tüm telemetri türlerini listeler.
+`Telemetry`Dizi, sanal cihazın çözüme gönderdiği tüm telemetri türlerini listeler.
 
-Aşağıdaki örnek `floor`, `vibration`, ve `temperature` Asansör sensörlerinden alınan verileri her 10 saniyede bir JSON telemetri iletisi gönderir:
+Aşağıdaki örnek `floor` ,, `vibration` ve `temperature` Asansör sensörlerinden alınan verileri her 10 saniyede bir JSON telemetri iletisi gönderir:
 
 ```json
 "Telemetry": [
@@ -158,7 +157,7 @@ Aşağıdaki örnek `floor`, `vibration`, ve `temperature` Asansör sensörlerin
 ]
 ```
 
-`MessageTemplate`sanal cihaz tarafından gönderilen JSON iletisinin yapısını tanımlar. İçindeki `MessageTemplate` yer tutucular, `${NAME}` [cihaz durumu nesnesinden](#simulation)bir anahtar `NAME` olan söz dizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar olmamalıdır.
+`MessageTemplate`sanal cihaz tarafından gönderilen JSON iletisinin yapısını tanımlar. İçindeki yer tutucular, `MessageTemplate` `${NAME}` `NAME` [cihaz durumu nesnesinden](#simulation)bir anahtar olan söz dizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar olmamalıdır.
 
 `MessageSchema`sanal cihaz tarafından gönderilen iletinin şemasını tanımlar. İleti şeması, arka uç uygulamalarının gelen telemetrileri yorumlamak için bilgileri yeniden kullanmasına olanak tanımak üzere IoT Hub de yayımlanır.
 
@@ -172,7 +171,7 @@ Aşağıdaki örnek `floor`, `vibration`, ve `temperature` Asansör sensörlerin
 * Çift
 * DateTime
 
-Farklı aralıklarda telemetri iletileri göndermek için, `Telemetry` diziye birden çok telemetri türü ekleyin. Aşağıdaki örnek, her 10 saniyede bir sıcaklık ve nem verisi ve her dakika ışığın durumunu gönderir:
+Farklı aralıklarda telemetri iletileri göndermek için, diziye birden çok telemetri türü ekleyin `Telemetry` . Aşağıdaki örnek, her 10 saniyede bir sıcaklık ve nem verisi ve her dakika ışığın durumunu gönderir:
 
 ```json
 "Telemetry": [
@@ -206,7 +205,7 @@ Farklı aralıklarda telemetri iletileri göndermek için, `Telemetry` diziye bi
 
 ## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-Sanal cihaz, bir IoT Hub 'ından çağrılan buluttan cihaza yöntemlere yanıt verebilir. Cihaz `CloudToDeviceMethods` modeli şema dosyasındaki bölümü:
+Sanal cihaz, bir IoT Hub 'ından çağrılan buluttan cihaza yöntemlere yanıt verebilir. `CloudToDeviceMethods`Cihaz modeli şema dosyasındaki bölümü:
 
 * Sanal cihazın yanıt verebildiği yöntemleri tanımlar.
 * Yürütülecek mantığı içeren JavaScript dosyasını tanımlar.

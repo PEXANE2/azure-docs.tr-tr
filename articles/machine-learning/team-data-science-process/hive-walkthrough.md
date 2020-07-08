@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677470"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip veri bilimi Işlemi sürüyor: Azure HDInsight Hadoop kümelerini kullanma
@@ -45,16 +44,16 @@ NYC TAXI seyahat verileri yaklaşık 20 GB sıkıştırılmış virgülle ayrıl
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Seyahat\_verilerine ve seyahat\_tarifeli havayolu katılacak benzersiz anahtar alanlardan oluşur: medtalon, Hack\_lisansı ve toplama\_tarih saati. Belirli bir yolculuğa uygun tüm ayrıntıları almak için bu üç anahtardan birine katılmanız yeterlidir.
+Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ alanlardan oluşur: medtalon, Hack \_ lisansı ve toplama \_ tarih saati. Belirli bir yolculuğa uygun tüm ayrıntıları almak için bu üç anahtardan birine katılmanız yeterlidir.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Tahmin görevlerinin örnekleri
-Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analizinden göre yapmak istediğiniz tahmine yönelik türü belirleme. İşte bu kılavuzda, tüm *tıp\_miktarına*bağlı olarak ele aldığımız tahmin sorunlarına yönelik üç örnek verilmiştir:
+Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analizinden göre yapmak istediğiniz tahmine yönelik türü belirleme. İşte bu kılavuzda, tüm *tıp \_ miktarına*bağlı olarak ele aldığımız tahmin sorunlarına yönelik üç örnek verilmiştir:
 
-- **İkili sınıflandırma**: bir tıp bir seyahat için ödenip ödenmediğini tahmin edin. Diğer bir deyişle, $0 'den büyük bir *İpucu\_miktarı* pozitif bir örnektir, ancak bir $0 *İpucu\_miktarı* negatif bir örnektir.
+- **İkili sınıflandırma**: bir tıp bir seyahat için ödenip ödenmediğini tahmin edin. Diğer bir deyişle, $0 'den büyük bir *İpucu \_ miktarı* pozitif bir örnektir, ancak bir $0 *İpucu \_ miktarı* negatif bir örnektir.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu tutarlarının aralığını tahmin edin. *İpucu\_miktarını* beş sınıfa bölyoruz:
+- **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu tutarlarının aralığını tahmin edin. *İpucu \_ miktarını* beş sınıfa bölyoruz:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
@@ -88,11 +87,11 @@ Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analiz
 
 Burada, AzCopy kullanarak verileri içeren dosyaları nasıl aktaracağımız açıklanmıştır. AzCopy indirmek ve yüklemek için [AzCopy komut satırı yardımcı programı ile çalışmaya](../../storage/common/storage-use-azcopy.md)başlama bölümündeki yönergeleri izleyin.
 
-1. Komut istemi penceresinde, aşağıdaki AzCopy komutlarını çalıştırarak * \<path_to_data_folder>* istenen hedefle değiştirin:
+1. Komut istemi penceresinde, aşağıdaki AzCopy komutlarını çalıştırarak *\<path_to_data_folder>* istenen hedefle değiştirin:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Kopyalama tamamlandığında, seçilen veri klasöründe toplam 24 daraltılmış dosya görürsünüz. İndirilen dosyaları yerel makinenizde aynı dizine ayıklayın. Sıkıştırılmamış dosyaların bulunduğu klasörü bir yere göz önünde alın. Bu klasör, aşağıdaki * \<\_\_\_unzipped_data\> dosyaların yolu* olarak adlandırılır.
+1. Kopyalama tamamlandığında, seçilen veri klasöründe toplam 24 daraltılmış dosya görürsünüz. İndirilen dosyaları yerel makinenizde aynı dizine ayıklayın. Sıkıştırılmamış dosyaların bulunduğu klasörü bir yere göz önünde alın. Bu klasöre aşağıda gösterildiği gibi başvurulur *\<path\_to\_unzipped_data\_files\>* .
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>HDInsight Hadoop kümesinin varsayılan kapsayıcısına verileri yükleme
 > [!NOTE]
@@ -102,10 +101,10 @@ Burada, AzCopy kullanarak verileri içeren dosyaları nasıl aktaracağımız a�
 
 Aşağıdaki AzCopy komutlarında, aşağıdaki parametreleri Hadoop kümesini oluştururken belirttiğiniz gerçek değerlerle değiştirin ve veri dosyalarının sıkıştırmasını geri gönderin.
 
-* *** \<path_to_data_folder>*** Makinenizde, ZIP üzerinde olmayan veri dosyalarını içeren dizin (yol ile birlikte).  
-* ***Hadoop kümesi>depolama hesabı adı \<*** HDInsight kümeniz ile ilişkili depolama hesabı.
-* ***Hadoop kümesi>varsayılan kapsayıcısı \<*** Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcının adı genellikle kümenin kendisiyle aynı addır. Örneğin, küme "abc123.azurehdinsight.net" olarak adlandırıldıysanız, varsayılan kapsayıcı abc123 olur.
-* depolama hesabı anahtarı>*** \<*** Kümeniz tarafından kullanılan depolama hesabı için anahtar.
+* ***\<path_to_data_folder>*** Makinenizde, ZIP üzerinde olmayan veri dosyalarını içeren dizin (yol ile birlikte).  
+* ***\<storage account name of Hadoop cluster>*** HDInsight kümeniz ile ilişkili depolama hesabı.
+* ***\<default container of Hadoop cluster>*** Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcının adı genellikle kümenin kendisiyle aynı addır. Örneğin, küme "abc123.azurehdinsight.net" olarak adlandırıldıysanız, varsayılan kapsayıcı abc123 olur.
+* ***\<storage account key>*** Kümeniz tarafından kullanılan depolama hesabı için anahtar.
 
 Bir komut isteminden veya bir Windows PowerShell penceresinde aşağıdaki iki AzCopy komutunu çalıştırın.
 
@@ -157,7 +156,7 @@ Hive Dizin isteminde, Hive veritabanını ve tablolarını oluşturan baş düğ
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Burada, **Nyctaxidb**Hive veritabanını oluşturan **\_DB\_ve\_Tables\_. HQL\_** dosyasının içeriği ve **seyahat** ve **tarifeli havayolu**tabloları oluşturulur.
+Burada, **Nyctaxidb**Hive veritabanını oluşturan ** \_ \_ \_ DB \_ ve \_ Tables. HQL** dosyasının içeriği ve **seyahat** ve **tarifeli havayolu**tabloları oluşturulur.
 
     create database if not exists nyctaxidb;
 
@@ -215,7 +214,7 @@ NYC TAXI veri kümesinde, daha hızlı işleme ve sorgu sürelerini etkinleştir
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-**Sample\_Hive\_, Partitions\_.\_HQL dosyasına göre\_yükleme verileri** aşağıdaki **yükleme** komutlarını içerir:
+**Sample \_ Hive, \_ \_ \_ \_ partitions. HQL dosyasına göre yükleme verileri** aşağıdaki **yükleme** komutlarını içerir:
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
@@ -382,11 +381,11 @@ Her iki tablodaki kayıtların toplam sayısı aynı zamanda, verilerin doğru �
 > 
 > 
 
-Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalons (TAXI numaraları) tanımlar. Bölümlenmiş tablo erişiminizden sorgu avantajları, Bölüm değişkeninin **aya**göre belirlenir. Sorgu sonuçları, ' de `C:\temp` baş düğümdeki querbir yerel dosyaya, **quergı put. tsv**dosyasına yazılır.
+Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalons (TAXI numaraları) tanımlar. Bölümlenmiş tablo erişiminizden sorgu avantajları, Bölüm değişkeninin **aya**göre belirlenir. Sorgu sonuçları, ' de baş düğümdeki querbir yerel dosyaya, **quergı put. tsv**dosyasına yazılır `C:\temp` .
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-İnceleme için **medtalon. HQL\_dosyasına\_göre\_\_örnek\_Hive seyahat sayısı** içeriği aşağıda verilmiştir.
+İnceleme için ** \_ \_ \_ \_ \_ medtalon. HQL dosyasına göre örnek Hive seyahat sayısı** içeriği aşağıda verilmiştir.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -397,7 +396,7 @@ Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalon
 
 NYC TAXI veri kümesindeki medalon, benzersiz bir cab tanımlıyor. Belirli bir süre içinde belirli sayıda gidiş 'tan daha fazlasını yaptığını isteyerek hangi Cabs 'nin karşılaştırılanmasının ne olduğunu belirleyebilirsiniz. Aşağıdaki örnek, ilk üç ayda yüz 'dan fazla bir dönüşten daha fazla olan Cabs 'yi tanımlar ve sorgu sonuçlarını **C:\temp\quer47put.exe**yerel dosyasına kaydeder.
 
-İnceleme için **medtalon. HQL\_dosyasına\_göre\_\_örnek\_Hive seyahat sayısı** içeriği aşağıda verilmiştir.
+İnceleme için ** \_ \_ \_ \_ \_ medtalon. HQL dosyasına göre örnek Hive seyahat sayısı** içeriği aşağıda verilmiştir.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -418,7 +417,7 @@ Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
 Bir veri kümesini araştırırken, genellikle değer gruplarının dağıtımlarını incelemek istiyoruz. Bu bölüm, cab ve sürücüler için bu çözümlemenin nasıl yapılacağını gösteren bir örnek sağlar.
 
-License. **hack_license**HQL dosyası tarafından **medallion** **\_\_\_\_\_, tarifeli havayolu veri kümesini ve hack_license ve her birleşimin sayısını döndüren örnek Hive seyahat sayısı.\_** İçerik şu şekildedir:
+** \_ \_ \_ \_ \_ \_ License. HQL dosyası tarafından** , tarifeli havayolu veri kümesini ve **hack_license** **ve her** birleşimin sayısını döndüren örnek Hive seyahat sayısı. İçerik şu şekildedir:
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -443,7 +442,7 @@ Sorgu sonuçları, **C:\temp\quer, put.exe**adlı yerel bir dosyaya yazılır.
 
 Araştırmacı veri analizinin ortak amacı, geçersiz veya hatalı kayıtları almak için kullanılır. Bu bölümdeki örnek, Boylam ya da Enlem alanlarının NYC alanının dışından bir değer içerip içermediğini belirler. Bu tür kayıtlar hatalı Boylam-Enlem değerine sahip olduğundan, bunları modelleme için kullanılacak verilerden ortadan kaldırmak istiyoruz.
 
-İnceleme için **örnek\_Hive\_Quality\_Assessment. HQL** dosyasının içeriği aşağıda verilmiştir.
+İnceleme için **örnek \_ Hive \_ Quality \_ Assessment. HQL** dosyasının içeriği aşağıda verilmiştir.
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -467,10 +466,10 @@ Bu komutta yer alan *-S* bağımsız değişkeni Hive harita/azaltma işlerinin 
 
 [Tahmin görevleri örnekleri](hive-walkthrough.md#mltasks) bölümünde özetlenen ikili sınıflandırma sorunu için, bir ipucunun verilip verilmediğini bilmemiz yararlı olur. Bu ipuçlarının dağıtımı ikili bir değer:
 
-* İpucu verildi (sınıf 1, ipucu\_miktarı > $0)  
-* İpucu yok (Sınıf 0, ipucu\_tutarı = $0)
+* İpucu verildi (sınıf 1, ipucu \_ miktarı > $0)  
+* İpucu yok (Sınıf 0, ipucu \_ tutarı = $0)
 
-Aşağıdaki **örnek\_Hive\_eğimli\_frekansları. HQL** dosyası çalıştırılacak komutu gösterir:
+Aşağıdaki **örnek \_ Hive \_ eğimli \_ frekansları. HQL** dosyası çalıştırılacak komutu gösterir:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -491,7 +490,7 @@ Hive Dizin isteminde şunu çalıştırın:
 > 
 > 
 
-[Tahmin görevleri örnekleri](hive-walkthrough.md#mltasks) bölümünde özetlenen birden çok Lass sınıflandırma sorunu için, bu veri kümesi aynı zamanda verilen ipuçlarının miktarını tahmin etmek için kendisini doğal bir sınıflandırmayla da özetler. Sorgudaki tıp aralıklarını tanımlamak için depo gözleri kullanabiliriz. Çeşitli tıp aralıklarına yönelik sınıf dağıtımlarını almak için, **\_örnek Hive\_İpucu\_aralığı\_frekansları. HQL** dosyasını kullanın. İçeriği burada bulabilirsiniz.
+[Tahmin görevleri örnekleri](hive-walkthrough.md#mltasks) bölümünde özetlenen birden çok Lass sınıflandırma sorunu için, bu veri kümesi aynı zamanda verilen ipuçlarının miktarını tahmin etmek için kendisini doğal bir sınıflandırmayla da özetler. Sorgudaki tıp aralıklarını tanımlamak için depo gözleri kullanabiliriz. Çeşitli tıp aralıklarına yönelik sınıf dağıtımlarını almak için, **örnek \_ Hive \_ İpucu \_ aralığı \_ frekansları. HQL** dosyasını kullanın. İçeriği burada bulabilirsiniz.
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -548,13 +547,13 @@ Hive Dizin isteminde şunu çalıştırın:
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-Sorgu sonuçları, Hadoop kümesinin varsayılan kapsayıcısı altında dokuz Azure Blob 'a (**quer0,0,putdir/000000 yazın\_0-quer0,0,putdir** **/000008\_0**) yazılır.
+Sorgu sonuçları, Hadoop kümesinin varsayılan kapsayıcısı altında dokuz Azure Blob 'a (**quer0,0,putdir/000000 yazın \_ 0-quer0,0,putdir** **/000008 \_ 0**) yazılır.
 
 Ayrı Blobların boyutunu görmek için Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-Belirli bir dosyanın içeriğini görmek için, **000000 yazın\_0**deyin, Hadoop 'ın `copyToLocal` komutunu kullanın.
+Belirli bir dosyanın içeriğini görmek için, **000000 yazın \_ 0**deyin, Hadoop 'ın `copyToLocal` komutunu kullanın.
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
@@ -574,11 +573,11 @@ Bu verilerin bir Azure blobuna sahip olmasının önemli bir avantajı, [veriler
 Araştırmacı veri analizi aşamasından sonra, Machine Learning model oluşturmaya yönelik verileri şimdi kullanıma hazır hale getirdik. Bu bölümde, verileri aşağı örneklemek için Hive sorgusunun nasıl kullanılacağını göstereceğiz. Machine Learning [verileri Içeri aktarma][import-data] modülünden erişir.
 
 ### <a name="down-sampling-the-data"></a>Verileri aşağı örnekleme
-Bu yordamda iki adım vardır. İlk olarak, **nyctaxidb. seyahat** ve **nyctaxidb. tarifeli havayolu** tablolarını tüm kayıtlarda bulunan üç anahtara katıyoruz: **medtalon**, **Hack\_lisansı**ve **toplama\_tarih saati**. Daha sonra bir ikili sınıflandırma etiketi, **eğimli**ve çok sınıflı bir sınıflandırma etiketi, **tıp\_sınıfı**oluşturacağız.
+Bu yordamda iki adım vardır. İlk olarak, **nyctaxidb. seyahat** ve **nyctaxidb. tarifeli havayolu** tablolarını tüm kayıtlarda bulunan üç anahtara katıyoruz: **medtalon**, **Hack \_ lisansı**ve **toplama \_ tarih saati**. Daha sonra bir ikili sınıflandırma etiketi, **eğimli**ve çok sınıflı bir sınıflandırma etiketi, **tıp \_ sınıfı**oluşturacağız.
 
 Machine Learning ' deki [verileri Içeri aktarma][import-data] modülünden doğrudan örnek olarak kullanabilmek için, önceki sorgunun sonuçlarını bir iç Hive tablosuna depolamanız gerekir. Aşağıdaki şekilde, bir iç Hive tablosu oluşturur ve içeriğini birleştirilmiş ve aşağı örneklenir verilerle doldurduk.
 
-Sorgu, **\_toplama tarih/** saati alanından aşağıdaki zaman parametrelerini oluşturmak için standart Hive işlevlerini doğrudan uygular:
+Sorgu, **toplama \_ Tarih/** saati alanından aşağıdaki zaman parametrelerini oluşturmak için standart Hive işlevlerini doğrudan uygular:
 - Günün saati
 - yılın haftası
 - hafta içi (' 1 ' Pazartesi için gelir ve ' 7 ' Pazar günü temsil eder)
@@ -587,7 +586,7 @@ Sorgu ayrıca, çekme ve açılan konumlar arasında doğrudan mesafe oluşturur
 
 Sorgu daha sonra sorgu sonuçlarının Azure Machine Learning Studio sığması için verileri aşağı örnekler. Özgün veri kümesinin yalnızca yüzde 1 ' i Studio 'ya aktarılır.
 
-Machine Learning ' de model oluşturmaya yönelik verileri hazırlayan **\_AML\_Full\_. HQL\_\_** dosyasının içeriği aşağıda verilmiştir:
+Machine Learning ' de model oluşturmaya yönelik verileri hazırlayan ** \_ \_ \_ \_ AML \_ Full. HQL** dosyasının içeriği aşağıda verilmiştir:
 
         set R = 3959;
         set pi=radians(180);
@@ -721,7 +720,7 @@ Machine Learning [veri Içeri aktarma][import-data] modülünde Hive sorguları 
 
 [Veri Içeri aktarma][import-data] modülü ve giriş için parametreler hakkında bazı ayrıntılar aşağıda verilmiştir:
 
-**Hcatalog sunucusu URI 'si**: küme adı **abc123**ise, şunu kullanın: https:\//abc123.azurehdinsight.net.
+**Hcatalog sunucusu URI 'si**: küme adı **abc123**ise, şunu kullanın: https: \/ /abc123.azurehdinsight.net.
 
 **Hadoop Kullanıcı hesabı adı**: küme için seçilen Kullanıcı adı (Uzaktan Erişim Kullanıcı adı değil).
 
@@ -750,7 +749,7 @@ Hive sorgusunun ve [veri Içeri aktarma][import-data] modülünün bir ekran gö
 
 ![Veri Içeri aktarma modülünün Hive sorgusunun ekran görüntüsü](./media/hive-walkthrough/1eTYf52.png)
 
-Aşağı örneklerimizin verileri varsayılan kapsayıcıda bulunduğundan, Machine Learning elde edilen Hive sorgusu basittir. Yalnızca bir **select * from nyctaxidb. nyctaxi\_downörneklenmiş\_veri**.
+Aşağı örneklerimizin verileri varsayılan kapsayıcıda bulunduğundan, Machine Learning elde edilen Hive sorgusu basittir. Yalnızca bir **select * from nyctaxidb. nyctaxi \_ downörneklenmiş \_ veri**.
 
 Veri kümesi artık Machine Learning modelleri oluşturmak için başlangıç noktası olarak kullanılabilir.
 
@@ -761,7 +760,7 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
 
   **Öğrenner:** İki sınıf Lojistik gerileme
 
-  a. Bu sorun için, hedef (veya sınıf) etiketi **eğimli**olur. Orijinal aşağı örneklenir veri kümesinde, bu sınıflandırma denemesi için hedef sızıntı olan birkaç sütun vardır. Özellikle, **\_tıp sınıfı**, **tıp\_miktarı**ve **Toplam\_tutar** , test sırasında kullanılamayan hedef etiketle ilgili bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seçme][select-columns] modülünde kullanarak göz önünde çıkardık.
+  a. Bu sorun için, hedef (veya sınıf) etiketi **eğimli**olur. Orijinal aşağı örneklenir veri kümesinde, bu sınıflandırma denemesi için hedef sızıntı olan birkaç sütun vardır. Özellikle, **tıp \_ sınıfı**, **tıp \_ miktarı**ve **Toplam \_ tutar** , test sırasında kullanılamayan hedef etiketle ilgili bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seçme][select-columns] modülünde kullanarak göz önünde çıkardık.
 
   Aşağıdaki diyagramda, belirli bir seyahat için bir ipucunun ödenip ödenmediğini tahmin etmeye yönelik denediğimiz bir ipucu gösterilmektedir:
 
@@ -781,7 +780,7 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
 
   **Öğrenner:** Birden çok Lass Lojistik gerileme
 
-  a. Bu sorun için, hedef (veya sınıf) etiketimiz **\_, beş**değerden birini (0, 1, 2, 3, 4) alabilir. İkili sınıflandırma durumunda olduğu gibi, bu deneme için hedef sızıntı olan birkaç sütunumuz vardır. Özellikle, **eğimli**, **tıp\_miktarı**ve **Toplam\_tutar** , test sırasında kullanılamayan hedef etiketle ilgili bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seç][select-columns] modülünde kullanarak kaldırdık.
+  a. Bu sorun için, hedef (veya sınıf) etiketimiz, **beş \_ **değerden birini (0, 1, 2, 3, 4) alabilir. İkili sınıflandırma durumunda olduğu gibi, bu deneme için hedef sızıntı olan birkaç sütunumuz vardır. Özellikle, **eğimli**, **tıp \_ miktarı**ve **Toplam \_ tutar** , test sırasında kullanılamayan hedef etiketle ilgili bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seç][select-columns] modülünde kullanarak kaldırdık.
 
   Aşağıdaki diyagramda, bir ipucunun ne kadar ağır olduğunu tahmin etmeye yönelik deneme gösterilmektedir. Sepetler: Sınıf 0: İpucu = $0, sınıf 1: İpucu > $0 ve ipucu <= $5, sınıf 2: İpucu > $5 ve ipucu <= $10, Class 3: İpucu > $10 ve ipucu <= $20 ve sınıf 4: İpucu > $20.
 
@@ -801,7 +800,7 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
 
   **Öğrenner:** Artırılmış karar ağacı
 
-  a. Bu sorun için, hedef (veya sınıf) etiketi **tıp\_miktarıdır**. Bu durumda hedef sızıntıları: **eğimli**, **tıp\_sınıfı**ve **Toplam\_miktar**. Tüm bu değişkenler, genellikle test sırasında kullanılamayan ipucu miktarı hakkındaki bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seç][select-columns] modülünde kullanarak kaldırdık.
+  a. Bu sorun için, hedef (veya sınıf) etiketi **tıp \_ miktarıdır**. Bu durumda hedef sızıntıları: **eğimli**, **tıp \_ sınıfı**ve **Toplam \_ Miktar**. Tüm bu değişkenler, genellikle test sırasında kullanılamayan ipucu miktarı hakkındaki bilgileri açığa çıkarır. Bu sütunları, [veri kümesindeki sütunları seç][select-columns] modülünde kullanarak kaldırdık.
 
   Aşağıdaki diyagramda verilen ipucunun miktarını tahmin etmeye yönelik deneme gösterilmektedir:
 
@@ -819,7 +818,7 @@ Artık [Machine Learning](https://studio.azureml.net)' de model oluşturma ve mo
 > 
 
 ## <a name="license-information"></a>Lisans bilgileri
-Bu örnek adım adım ve ilgili betikler, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla bilgi için GitHub 'daki örnek kodun dizinindeki **LICENSE. txt** dosyasına bakın.
+Bu örnek adım adım ve ilgili betikler, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla bilgi için GitHub 'daki örnek kodun dizinindeki **LICENSE.txt** dosyasına bakın.
 
 ## <a name="references"></a>Başvurular
 • [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  

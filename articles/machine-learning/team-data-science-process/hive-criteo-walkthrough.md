@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677594"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
@@ -75,13 +74,13 @@ Bağlantı kümesine tıklayarak, kullanım koşullarını kabul ederek ve bir a
 
 Veri kümesi ve kullanılabilirliği hakkında daha fazla bilgi için **indirmek Için devam** ' a tıklayın.
 
-Veriler bir [Azure Blob depolama](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) konumunda bulunuyor: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "SLA b", Azure Blob depolama konumunu ifade eder.
+Veriler bir [Azure Blob depolama](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) konumunda bulunuyor: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . "SLA b", Azure Blob depolama konumunu ifade eder.
 
 1. Bu Azure Blob depolama alanındaki veriler, daraltılmış verilerin üç alt grubundan oluşur.
 
-   1. *Ham/Count/* alt klasörü,\_00 ila gün\_20 ' nin ilk 21 günü veri içerir
-   2. *Ham/eğit* /bir günden oluşan alt klasör, gün\_21
-   3. *Ham/test/* alt klasörü iki günden oluşur, gün\_22 ve gün 23\_
+   1. *Ham/Count/* alt klasörü, \_ 00 ila gün 20 ' nin ilk 21 günü veri içerir \_
+   2. *Ham/eğit* /bir günden oluşan alt klasör, gün \_ 21
+   3. *Ham/test/* alt klasörü iki günden oluşur, gün \_ 22 ve gün \_ 23
 2. Ham gzip verileri, *RAW/* as day_NN. gz ana klasöründe de mevcuttur, burada nn 00 ile 23 arasında gider.
 
 Herhangi bir yerel indirme gerektirmeyen bu verileri erişmek, araştırmak ve modellemek için alternatif bir yaklaşım, Hive tabloları oluştururken bu izlenecek yolda açıklanacaktır.
@@ -115,9 +114,9 @@ Hive REPL bir "Hive >" işareti ile görüntülendikten sonra, sorguyu yürütme
 
 Aşağıdaki kod, "Criteo" veritabanını oluşturur ve ardından dört tablo oluşturur:
 
-* gün\_00 ile\_20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* ,
-* 21. günde\_oluşturulan *eğitme veri kümesi olarak kullanılacak bir tablo* ve
-* için iki tablo, sırasıyla\_22 ve gün\_23 gün içinde oluşturulmuş *test veri kümeleri olarak kullanılacak* .
+* gün 00 ile 20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* \_ \_ ,
+* 21 *. günde oluşturulan eğitme veri kümesi olarak kullanılacak bir tablo* \_ ve
+* için iki tablo, sırasıyla 22 ve gün 23 gün içinde oluşturulmuş *test veri kümeleri olarak kullanılacak* \_ \_ .
 
 Her gün bir tatil olduğundan, test veri kümesini iki farklı tabloya ayırın. Amaç, modelin tatil ve tatil arasındaki farkları tıklama oranlarından algılamamasını belirlemektir.
 
@@ -222,7 +221,7 @@ Her zamanki gibi, komutu vererek Hive bin/Dizin isteminden betiği de çağırab
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Son olarak, test veri kümesindeki test örneklerinin sayısını 23. gün\_temelinde inceleyebilirsiniz.
+Son olarak, test veri kümesindeki test örneklerinin sayısını 23. gün temelinde inceleyebilirsiniz \_ .
 
 Bunu yapmak için komut, [gösterilenle benzerdir (örnek&#95;hive&#95;count&#95;Criteo&#95;test&#95;günü&#95;23&#95;örnek. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
@@ -247,7 +246,7 @@ Bu, etiket dağılımını verir:
 Pozitif etiketlerin yüzdesi% 3,3 ' dir (özgün veri kümesiyle tutarlıdır).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Tren veri kümesindeki bazı sayısal değişkenlerin histogram dağıtımları
-Sayısal değişkenlerin dağılımının ne şekilde göründüğünü öğrenmek için\_Hive 'nin yerel "histogram sayısal" işlevini kullanabilirsiniz. [Örnek&#95;hive&#95;Criteo&#95;histogram&#95;sayısal. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql)içeriğini burada bulabilirsiniz:
+\_Sayısal değişkenlerin dağılımının ne şekilde göründüğünü öğrenmek Için Hive 'nin yerel "histogram sayısal" işlevini kullanabilirsiniz. [Örnek&#95;hive&#95;Criteo&#95;histogram&#95;sayısal. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql)içeriğini burada bulabilirsiniz:
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -284,7 +283,7 @@ Bu, aşağıdakileri verir:
 Hive içindeki yan yana görünümü-aç kombinasyonu, her zamanki liste yerine SQL benzeri bir çıkış üretmeye çalışır. Bu tabloda, ilk sütun bin merkezine ve ikincisi de bin frekansına karşılık gelir.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Tren veri kümesindeki bazı sayısal değişkenlerin yaklaşık yüzdebirlik değeri
-Sayısal değişkenlerle ilgili Ayrıca, yaklaşık yüzdebirlik değeri hesaplama. Hive 'in yerel "yüzdebirlik\_yaklaşık" değeri bizim için bunu yapar. [Örnek&#95;hive&#95;Criteo&#95;yaklaşık&#95;yüzdebirlik değeri. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) ' nin içerikleri şunlardır:
+Sayısal değişkenlerle ilgili Ayrıca, yaklaşık yüzdebirlik değeri hesaplama. Hive 'in yerel "yüzdebirlik \_ yaklaşık" değeri bizim için bunu yapar. [Örnek&#95;hive&#95;Criteo&#95;yaklaşık&#95;yüzdebirlik değeri. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) ' nin içerikleri şunlardır:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -365,7 +364,7 @@ Bu şunları verir:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-Betik [örneği&#95;hive&#95;Criteo&#95;aşağı örnek&#95;test&#95;gün&#95;22&#95;veri kümesi. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) bu dosyayı test verileri, 22.\_gün için yapar:
+Betik [örneği&#95;hive&#95;Criteo&#95;aşağı örnek&#95;test&#95;gün&#95;22&#95;veri kümesi. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) bu dosyayı test verileri, 22. gün için yapar \_ :
 
         --- Now for test data (day_22)
 
@@ -383,7 +382,7 @@ Bu şunları verir:
         Time taken: 317.66 seconds
 
 
-Son olarak, komut dosyası [örneği&#95;hive&#95;Criteo&#95;aşağı örnek&#95;test&#95;gün&#95;23&#95;veri kümesi. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) bunu test verileri, 23\_. gün için yapar:
+Son olarak, komut dosyası [örneği&#95;hive&#95;Criteo&#95;aşağı örnek&#95;test&#95;gün&#95;23&#95;veri kümesi. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) bunu test verileri, 23. gün için yapar \_ :
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -424,7 +423,7 @@ Model oluşturma sürecimiz Azure Machine Learning şu adımları izler:
 Artık Azure Machine Learning Studio 'da model oluşturmaya hazırsınız. Aşağı örneklenmiş verilerimiz, kümeye Hive tabloları olarak kaydedilir. Bu verileri okumak için Azure Machine Learning **veri alma** modülünü kullanın. Bu kümenin depolama hesabına erişmek için gereken kimlik bilgileri aşağıda verilmiştir.
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>1. Adım: verileri Içeri aktarma modülünü kullanarak Hive Azure Machine Learning tablolarından veri alma ve makine öğrenimi denemesi için seçme
-**Yeni** -> bir**deneme** -> **boş deneme**seçerek başlayın. Ardından, sol üstteki **arama** kutusundan "verileri içeri aktar" ifadesini aratın. Veri erişimi modülünü kullanmak için **veri Içeri aktarma** modülünü deneme tuvaline (ekranın orta bölümü) sürükleyin ve bırakın.
+**Yeni**bir  ->  **deneme**  ->  **boş deneme**seçerek başlayın. Ardından, sol üstteki **arama** kutusundan "verileri içeri aktar" ifadesini aratın. Veri erişimi modülünü kullanmak için **veri Içeri aktarma** modülünü deneme tuvaline (ekranın orta bölümü) sürükleyin ve bırakın.
 
 Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünür:
 
@@ -433,8 +432,8 @@ Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünü
 **Veri Içeri aktarma** modülü için, grafikte sunulan parametrelerin değerleri, sağlamanız gereken değer sıralamasına yalnızca örnektir. **Veri Içeri aktarma** modülünün parametre kümesini doldurmaya ilişkin bazı genel yönergeler aşağıda verilmiştir.
 
 1. **Veri kaynağı** Için "Hive sorgusu" seçin
-2. **Hive veritabanı sorgu** kutusunda,\_veritabanınızın\_adını <basit bir seçim *.\_tablo\_adı>-yeterlidir.
-3. **Hcatalog sunucusu URI 'si**: kümeniz "abc" ise, bu yalnızca: https:\//ABC.azurehdinsight.net
+2. **Hive veritabanı sorgu** kutusunda, veritabanınızın adını <basıt bir seçim * \_ \_ . \_ tablo \_ adı>-yeterlidir.
+3. **Hcatalog sunucusu URI 'si**: kümeniz "abc" ise, bu yalnızca: https: \/ /ABC.azurehdinsight.net
 4. **Hadoop Kullanıcı hesabı adı**: kümeyi komisyonlama sırasında seçilen Kullanıcı adı. (Uzaktan Erişim Kullanıcı adı DEĞIL!)
 5. **Hadoop Kullanıcı hesabı parolası**: kümeyi komisyonlama sırasında seçilen kullanıcı adının parolası. (Uzaktan erişim parolası DEĞIL!)
 6. **Çıkış verilerinin konumu**: "Azure" seçeneğini belirleyin
@@ -477,8 +476,8 @@ Büyük veri kümelerinin bazı kategorik özellikleri için milyonlarca benzers
 ##### <a name="building-counting-transforms"></a>Sayım dönüşümleri oluşturma
 Sayım özellikleri oluşturmak için Azure Machine Learning ' de kullanılabilen **derleme sayım dönüştürme** modülünü kullanın. Modül şuna benzer:
 
-![Derleme sayım dönüştürme modülü özellikleri](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![derleme sayım dönüştürme modülü](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![Derleme sayım dönüştürme modülü özellikleri ](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+ ![ derleme sayım dönüştürme modülü](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT]
 > **Sütunları say** kutusunda, üzerinde sayım yapmak istediğiniz sütunları girin. Genellikle, bunlar (belirtildiği gibi) yüksek boyutlu kategorik sütunlardır. Criteo DataSet 'in 26 kategorik sütun olduğunu unutmayın: Col15 to Col40. Burada, bunların tümünde sayımını yapın ve dizinlerini verin (gösterildiği gibi, 15 ile 40 arasında ayırarak).
@@ -518,7 +517,7 @@ Bu R betiği, sütunlarımızı "Sütun1" adlarıyla "Col40" olarak yeniden adla
 
 ![İkinci R betiği](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-Bu basit R betiğinde, pozitif ve negatif\_sınıflar\_arasındaki bakiye miktarını ayarlamak için "POS neg oranı" kullanılır. Bu, sınıf kullanımının çarpılacağı sınıflandırma sorunları için genellikle performans avantajlarının (Bu durumda,% 3,3 pozitif sınıfa ve% 96,7 ' e sahip olduğunuz), bu durum için önemlidir.
+Bu basit R betiğinde, \_ \_ pozitif ve negatif sınıflar arasındaki bakiye miktarını ayarlamak için "POS neg oranı" kullanılır. Bu, sınıf kullanımının çarpılacağı sınıflandırma sorunları için genellikle performans avantajlarının (Bu durumda,% 3,3 pozitif sınıfa ve% 96,7 ' e sahip olduğunuz), bu durum için önemlidir.
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>Verilerimizde Count dönüşümünü uygulama
 Son olarak, eğdiğimiz ve test veri kümelerinde sayı dönüşümleri uygulamak için **dönüştürme modülünü Uygula** ' yı kullanabilirsiniz. Bu modül, kaydedilen sayıyı bir giriş olarak, eğitme veya test veri kümelerini diğer girdi olarak alır ve sayı özelliklerine sahip verileri döndürür. Burada gösterilmektedir:

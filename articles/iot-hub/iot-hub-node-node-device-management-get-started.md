@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub cihaz yönetimini kullanmaya başlama (node) | Microsoft Docs
-description: Uzak cihaz yeniden başlatma işlemini başlatmak için IoT Hub cihaz yönetimi 'ni kullanma. Doğrudan yöntemini çağıran bir doğrudan yöntem ve bir hizmet uygulaması içeren bir sanal cihaz uygulaması uygulamak için Node. js için Azure IoT SDK 'sını kullanın.
+description: Uzak cihaz yeniden başlatma işlemini başlatmak için IoT Hub cihaz yönetimi 'ni kullanma. Doğrudan yöntemini çağıran bir doğrudan yöntem ve bir hizmet uygulaması içeren bir sanal cihaz uygulaması uygulamak için Node.js için Azure IoT SDK 'sını kullanırsınız.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732340"
 ---
-# <a name="get-started-with-device-management-nodejs"></a>Cihaz yönetimini kullanmaya başlama (node. js)
+# <a name="get-started-with-device-management-nodejs"></a>Cihaz yönetimini kullanmaya başlama (Node.js)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
@@ -26,17 +25,17 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 * Bu cihazı yeniden yükleyen doğrudan bir yöntem içeren bir sanal cihaz uygulaması oluşturun. Doğrudan Yöntemler buluttan çağrılır.
 
-* IoT Hub 'ınız aracılığıyla sanal cihaz uygulamasındaki önyükleme doğrudan yöntemini çağıran bir Node. js konsol uygulaması oluşturun.
+* IoT Hub 'ınız aracılığıyla sanal cihaz uygulamasındaki önyükleme doğrudan yöntemini çağıran bir Node.js konsol uygulaması oluşturun.
 
-Bu öğreticinin sonunda iki Node. js konsol uygulaması vardır:
+Bu öğreticinin sonunda iki Node.js konsol uygulamanız vardır:
 
-* daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **dmpatterns_getstarted_device. js**, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
+* Daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **dmpatterns_getstarted_device.js**, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
 
-* sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **dmpatterns_getstarted_service. js**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
+* Sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **dmpatterns_getstarted_service.js**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
+* Node.js 10.0. x veya üzeri sürümü. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
@@ -72,9 +71,9 @@ Bu bölümde şunları yapacaksınız:
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak, **manageddevice** klasöründe bir **dmpatterns_getstarted_device. js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak, **manageddevice** klasöründe bir **dmpatterns_getstarted_device.js** dosyası oluşturun.
 
-4. **Dmpatterns_getstarted_device. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
+4. **dmpatterns_getstarted_device.js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
 
     ```javascript
     'use strict';
@@ -83,7 +82,7 @@ Bu bölümde şunları yapacaksınız:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  Yer tutucu `{yourdeviceconnectionstring}` değerini, daha önce, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)kopyaladığınız cihaz bağlantı dizesiyle değiştirin.  
+5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  `{yourdeviceconnectionstring}`Yer tutucu değerini, daha önce, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)kopyaladığınız cihaz bağlantı dizesiyle değiştirin.  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -145,7 +144,7 @@ Bu bölümde şunları yapacaksınız:
     });
     ```
 
-8. **Dmpatterns_getstarted_device. js** dosyasını kaydedin ve kapatın.
+8. **dmpatterns_getstarted_device.js** dosyasını kaydedin ve kapatın.
 
 > [!NOTE]
 > Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
@@ -158,9 +157,9 @@ Bu bölümde şunları yapacaksınız:
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Doğrudan bir yöntem kullanarak cihazda Uzaktan yeniden başlatma tetikleyin
 
-Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden başlatma işlemini başlatan bir Node. js konsol uygulaması oluşturacaksınız. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
+Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden başlatma işlemini başlatan bir Node.js konsol uygulaması oluşturacaksınız. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
 
-1. **Triggerrebootondevice**adlı boş bir klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **triggerrebootondevice** klasöründe bir Package. JSON dosyası oluşturun. Tüm varsayılanları kabul edin:
+1. **Triggerrebootondevice**adlı boş bir klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **triggerrebootondevice** klasöründe package.jsbir dosya oluşturun. Tüm varsayılanları kabul edin:
 
     ```cmd/sh
     npm init
@@ -172,9 +171,9 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     npm install azure-iothub --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak **triggerrebootondevice** klasöründe bir **dmpatterns_getstarted_service. js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak **triggerrebootondevice** klasöründe **dmpatterns_getstarted_service.js** bir dosya oluşturun.
 
-4. **Dmpatterns_getstarted_service. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
+4. **dmpatterns_getstarted_service.js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
 
     ```javascript
     'use strict';
@@ -243,7 +242,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     setInterval(queryTwinLastReboot, 2000);
     ```
 
-9. **Dmpatterns_getstarted_service. js** dosyasını kaydedin ve kapatın.
+9. **dmpatterns_getstarted_service.js** dosyasını kaydedin ve kapatın.
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 

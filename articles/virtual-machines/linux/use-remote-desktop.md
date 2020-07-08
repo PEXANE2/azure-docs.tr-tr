@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605196"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
@@ -34,7 +33,7 @@ Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bi
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux sanal makinenize masaüstü ortamı yükler
 Azure 'daki Linux VM 'lerinin çoğunda varsayılan olarak bir masaüstü ortamı yüklü değildir. Linux VM 'Ler, masaüstü ortamı yerine genellikle SSH bağlantıları kullanılarak yönetilir. Linux 'ta seçebileceğiniz çeşitli masaüstü ortamları vardır. Masaüstü ortamınız seçiminize bağlı olarak, bir ila 2 GB disk alanı tüketebilir ve gerekli tüm paketleri yüklemek ve yapılandırmak için 5 ila 10 dakika sürebilir.
 
-Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir `yum` (örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` KURALLARı yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
+Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir ( `yum` Örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` kuralları yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
 
 İlk olarak, sanal makinenize SSH. Aşağıdaki örnek, *azureuser*Kullanıcı adı ile *myvm.westus.cloudapp.Azure.com* adlı sanal makineye bağlanır. Kendi değerlerinizi kullanın:
 
@@ -44,7 +43,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 Windows kullanıyorsanız ve SSH kullanma hakkında daha fazla bilgiye ihtiyacınız varsa bkz. [Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
 
-Ardından, aşağıdaki gibi kullanarak `apt` Xfce 'yi yazın:
+Ardından, aşağıdaki gibi kullanarak Xfce 'yi yazın `apt` :
 
 ```bash
 sudo apt-get update
@@ -106,7 +105,7 @@ Yerel RDP istemciniz ağ düzeyinde kimlik doğrulaması (NLA) kullanıyorsa, bu
 
 
 ## <a name="troubleshoot"></a>Sorun giderme
-Linux VM 'nize bir uzak masaüstü istemcisi kullanarak bağlanamıyorsanız, sanal makinenizin RDP bağlantılarını dinlediğini doğrulamak için Linux sanal makinenizde aşağıdaki gibi kullanın `netstat` :
+Linux VM 'nize bir uzak masaüstü istemcisi kullanarak bağlanamıyorsanız, `netstat` sanal MAKINENIZIN RDP bağlantılarını dinlediğini doğrulamak Için LINUX sanal makinenizde aşağıdaki gibi kullanın:
 
 ```bash
 sudo netstat -plnt | grep rdp

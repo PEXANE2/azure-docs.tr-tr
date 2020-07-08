@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606526"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi
@@ -45,12 +44,12 @@ Her toplama ifadesi en az bir toplama işlevi içermelidir.
 
 Toplam dönüşümler SQL toplama seçme sorgularıyla benzerdir. Group by yan tümcesine veya toplama işlevlerine dahil olmayan sütunlar, toplu dönüşümünüzün çıkışına kadar akmaz. Toplanan çıkışındaki diğer sütunları eklemek istiyorsanız aşağıdaki yöntemlerden birini yapın:
 
-* Bu ek sütunu eklemek için `last()` veya `first()` gibi bir toplama işlevi kullanın.
+* `last()` `first()` Bu ek sütunu eklemek için veya gibi bir toplama işlevi kullanın.
 * [Kendi kendine JOIN modelini](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)kullanarak sütunları çıkış akışla yeniden katın.
 
 ## <a name="removing-duplicate-rows"></a>Yinelenen satırları kaldırma
 
-Toplama dönüşümünün ortak kullanımı, kaynak verilerde yinelenen girdileri kaldırıyor veya tanımlıyor. Bu işlem yinelenenleri kaldırma olarak bilinir. Anahtarlar tarafından bir grup grubuna göre, hangi yinelenen satırın tutulacağını belirlemek için seçtiğiniz bir buluşsal yöntemi kullanın. Ortak buluşsal yöntemler `first()`, `last()` `max()`, ve `min()`. Gruplandırma sütunları hariç her sütuna kuralı uygulamak için [sütun desenleri](concepts-data-flow-column-pattern.md) kullanın.
+Toplama dönüşümünün ortak kullanımı, kaynak verilerde yinelenen girdileri kaldırıyor veya tanımlıyor. Bu işlem yinelenenleri kaldırma olarak bilinir. Anahtarlar tarafından bir grup grubuna göre, hangi yinelenen satırın tutulacağını belirlemek için seçtiğiniz bir buluşsal yöntemi kullanın. Ortak buluşsal yöntemler `first()` , `last()` , `max()` ve `min()` . Gruplandırma sütunları hariç her sütuna kuralı uygulamak için [sütun desenleri](concepts-data-flow-column-pattern.md) kullanın.
 
 ![Yinelenenleri kaldırma](media/data-flow/agg-dedupe.png "Yinelenenleri kaldırma")
 
@@ -60,7 +59,7 @@ Veri doğrulama senaryolarında, `count()` işlevi kaç tane yineleme olduğunu 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -81,7 +80,7 @@ Veri doğrulama senaryolarında, `count()` işlevi kaç tane yineleme olduğunu 
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen bir akışı `MoviesYear` alır ve satırları sütuna `year`göre gruplandırır. Dönüştürme, sütun `Rating`ortalamasını değerlendiren bir `avgrating` toplama sütunu oluşturur. Bu toplama dönüştürmesi olarak adlandırılmıştır `AvgComedyRatingsByYear`.
+Aşağıdaki örnek, gelen bir akışı alır `MoviesYear` ve satırları sütuna göre gruplandırır `year` . Dönüştürme, sütun ortalamasını değerlendiren bir toplama sütunu oluşturur `avgrating` `Rating` . Bu toplama dönüştürmesi olarak adlandırılmıştır `AvgComedyRatingsByYear` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
@@ -100,7 +99,7 @@ MoviesYear aggregate(
 
 ![Veri akışı betiği topla](media/data-flow/aggdfs1.png "Veri akışı betiği topla")
 
-```MoviesYear```: Yıl ve Başlık sütunlarını ```AvgComedyRatingByYear```tanımlayan türetilmiş sütun: yıla ```avgrating```göre gruplanmış ortalama Comedies derecelendirmesi için toplam dönüşüm: toplanan değeri tutmak için oluşturulan yeni sütunun adı
+```MoviesYear```: Yıl ve Başlık sütunlarını tanımlayan türetilmiş sütun ```AvgComedyRatingByYear``` : yıla göre gruplanmış ortalama Comedies derecelendirmesi için toplam dönüşüm ```avgrating``` : toplanan değeri tutmak için oluşturulan yeni sütunun adı
 
 ```
 MoviesYear aggregate(groupBy(year),

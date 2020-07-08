@@ -4,10 +4,9 @@ description: Application Insights için CollectD eklentisi ile Java Web sitenizi
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537534"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights Linux performans ölçümleri
@@ -29,8 +28,8 @@ Linux sunucu makinelerinizde:
 
 1. [Toplanan](https://collectd.org/) sürüm 5.4.0 veya üstünü yükler.
 2. [Application Insights toplanan yazıcı eklentisini](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)indirin. Sürüm numarasını aklınızda yapın.
-3. Eklenti JAR dosyasını içine `/usr/share/collectd/java`kopyalayın.
-4. Düzenle `/etc/collectd/collectd.conf`:
+3. Eklenti JAR dosyasını içine kopyalayın `/usr/share/collectd/java` .
+4. Düzenle `/etc/collectd/collectd.conf` :
    * [Java eklentisinin](https://collectd.org/wiki/index.php/Plugin:Java) etkinleştirildiğinden emin olun.
    * Aşağıdaki JAR 'yi dahil etmek için Java. Class. Path için JVMArg 'yi güncelleştirin. Sürüm numarasını indirdiğiniz bir sürümle eşleşecek şekilde güncelleştirin:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
@@ -92,12 +91,12 @@ Varsayılan olarak, Application Insights eklentisi tüm etkin toplanan ' okuma '
 Belirli eklentilerden veya veri kaynaklarından veri dışlamak için:
 
 * Yapılandırma dosyasını düzenleyin. 
-* İçinde `<Plugin ApplicationInsightsWriter>`, aşağıdaki gibi yönerge satırları ekleyin:
+* İçinde `<Plugin ApplicationInsightsWriter>` , aşağıdaki gibi yönerge satırları ekleyin:
 
-| Deki | Etki |
+| Deki | Efekt |
 | --- | --- |
-| `Exclude disk` |`disk` Eklenti tarafından toplanan tüm verileri Dışla |
-| `Exclude disk:read,write` |Ve `read` `write` adlı kaynakları `disk` eklentiden hariç tutun. |
+| `Exclude disk` |Eklenti tarafından toplanan tüm verileri Dışla `disk` |
+| `Exclude disk:read,write` |Ve adlı kaynakları eklentiden hariç tutun `read` `write` `disk` . |
 
 Yönergeleri bir yeni satır ile ayırın.
 
@@ -106,7 +105,7 @@ Yönergeleri bir yeni satır ile ayırın.
 
 * Ham olayların ulaşıp ulaşmadığını görmek için [arama][diagnostic] ' yı açın. Bazen Ölçüm Gezgini 'nde görünmesi daha uzun sürer.
 * [Giden veriler için güvenlik duvarı özel durumları ayarlamanız](../../azure-monitor/app/ip-addresses.md) gerekebilir
-* Application Insights eklentisinde izlemeyi etkinleştirin. Bu satırı içine `<Plugin ApplicationInsightsWriter>`ekleyin:
+* Application Insights eklentisinde izlemeyi etkinleştirin. Bu satırı içine ekleyin `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Raporlama yaptığı sorunları görmek için bir Terminal açın ve toplanan 'yi ayrıntılı modda başlatın:
   * `sudo collectd -f`

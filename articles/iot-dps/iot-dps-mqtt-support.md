@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680686"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak DPS ile iletişim kurma
@@ -44,11 +43,11 @@ Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üze
 
 * **ClientID** alanı Için, **RegistrationId**kullanın.
 
-* **Kullanıcı adı** alanı için,, `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, DPS `{idScope}` 'nin [ıdscope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) değeri olan öğesini kullanın.
+* **Kullanıcı adı** alanı için, `{idScope}/registrations/{registration_id}/api-version=2019-03-31` ,, `{idScope}` DPS 'nin [ıdscope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) değeri olan öğesini kullanın.
 
 * **Parola** alanı IÇIN bir SAS belirteci kullanın. SAS belirtecinin biçimi hem HTTPS hem de AMQP protokolleriyle aynıdır:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI, biçiminde `{idScope}/registrations/{registration_id}`olmalıdır. İlke adı olmalıdır `registration`.
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI, biçiminde olmalıdır `{idScope}/registrations/{registration_id}` . İlke adı olmalıdır `registration` .
 
   > [!NOTE]
   > X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız SAS belirteç parolaları gerekmez.
@@ -68,17 +67,17 @@ MQTT protokolünü doğrudan kullanmak için, istemciniz TLS 1,2 *üzerinden ba�
 
 ## <a name="registering-a-device"></a>Cihaz kaydetme
 
-Bir cihazı DPS 'e kaydetmek için bir cihaz, **Konu filtresi**olarak `$dps/registrations/res/#` kullanarak abone olmalıdır. Konu filtresindeki çok düzeyli joker `#` karakter yalnızca cihazın konu adında ek özellikler almasına izin vermek için kullanılır. DPS, `#` alt konuların filtrelenmesi için veya `?` joker karakterlerinden kullanılmasına izin vermez. DPS genel amaçlı bir yayın-Sub mesajlaşma Aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
+Bir cihazı DPS 'e kaydetmek için bir cihaz, `$dps/registrations/res/#` **Konu filtresi**olarak kullanarak abone olmalıdır. Konu filtresindeki çok düzeyli joker karakter `#` Yalnızca cihazın konu adında ek özellikler almasına izin vermek için kullanılır. DPS, alt `#` `?` konuların filtrelenmesi için veya joker karakterlerinden kullanılmasına izin vermez. DPS genel amaçlı bir yayın-Sub mesajlaşma Aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
 
 Cihaz, `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **Konu adı**olarak kullanarak DPS 'e bir Register iletisi yayımlamalıdır. Yük, JSON biçiminde [cihaz kayıt](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) nesnesini içermelidir.
 Başarılı bir senaryoda cihaz, bu `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` konuda x 'in yeniden deneme-sonraki değeri saniye olarak olduğu konu adı üzerinde bir yanıt alır. Yanıtın yükü, JSON biçiminde [Registrationoperationstatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) nesnesini içerecektir.
 
 ## <a name="polling-for-registration-operation-status"></a>Kayıt işlemi durumu için yoklama
 
-Cihaz, cihaz kayıt işleminin sonucunu almak için hizmeti düzenli aralıklarla yoklamalıdır. Yukarıda belirtildiği gibi, cihazın `$dps/registrations/res/#` konuya zaten abone olduğu varsayılırsa, `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` konu adına bir get OperationStatus iletisi yayımlayabilir. Bu iletideki işlem KIMLIĞI, önceki adımda bulunan RegistrationOperationStatus yanıt iletisinde alınan değer olmalıdır. Başarılı durumda, hizmet `$dps/registrations/res/200/?$rid={request_id}` konuya yanıt verir. Yanıtın yükü RegistrationOperationStatus nesnesini içerecektir. Yanıt kodu, yeniden deneme dönemine eşit bir gecikmeden sonra 202 ise, cihaz hizmeti yoklamaya devam etmelidir. Hizmet bir 200 durum kodu döndürürse cihaz kayıt işlemi başarılı olur.
+Cihaz, cihaz kayıt işleminin sonucunu almak için hizmeti düzenli aralıklarla yoklamalıdır. Yukarıda belirtildiği gibi, cihazın konuya zaten abone olduğu varsayılırsa `$dps/registrations/res/#` , konu adına bir get OperationStatus iletisi yayımlayabilir `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` . Bu iletideki işlem KIMLIĞI, önceki adımda bulunan RegistrationOperationStatus yanıt iletisinde alınan değer olmalıdır. Başarılı durumda, hizmet konuya yanıt verir `$dps/registrations/res/200/?$rid={request_id}` . Yanıtın yükü RegistrationOperationStatus nesnesini içerecektir. Yanıt kodu, yeniden deneme dönemine eşit bir gecikmeden sonra 202 ise, cihaz hizmeti yoklamaya devam etmelidir. Hizmet bir 200 durum kodu döndürürse cihaz kayıt işlemi başarılı olur.
 
 ## <a name="connecting-over-websocket"></a>WebSocket üzerinden bağlanma
-WebSocket üzerinden bağlanılırken, alt protokolü olarak `mqtt`belirtin. [RFC 6455](https://tools.ietf.org/html/rfc6455)' i izleyin.
+WebSocket üzerinden bağlanılırken, alt protokolü olarak belirtin `mqtt` . [RFC 6455](https://tools.ietf.org/html/rfc6455)' i izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

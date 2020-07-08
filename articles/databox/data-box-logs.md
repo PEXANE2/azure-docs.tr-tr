@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676402"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
@@ -26,7 +25,7 @@ Aşağıdaki tabloda Data Box veya Data Box Heavy sipariş adımlarının bir ö
 | Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
 | Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
-| Cihaza veri kopyalama        | Veri kopyası için [ *Error. xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
+| Cihaza veri kopyalama        | Veri kopyası için [ *error.xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
 | Göndermeye hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
 | Azure 'a veri yükleme       | Azure veri merkezinde karşıya veri yükleme sırasında oluşan hataları [kopyalama günlüklerini gözden geçirme](#review-copy-log-during-upload-to-azure)                         |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
@@ -64,7 +63,7 @@ Siparişinizi Azure portal ve sevkiyat taşıyıcısı Web sitesi aracılığıy
 
 - Data Box, şirket içinde kilitli bir durumda ulaşır. Azure portal için kullanılabilir cihaz kimlik bilgilerini siparişiniz için kullanabilirsiniz.  
 
-    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntıları > kimlik bilgileri** dikey penceresine erişimi içeren herhangi bir eylem etkinlik günlüklerine eylem olarak `ListCredentials` kaydedilir.
+    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntıları > kimlik bilgileri** dikey penceresine erişimi içeren herhangi bir eylem etkinlik günlüklerine eylem olarak kaydedilir `ListCredentials` .
 
     ![Etkinlik günlüklerini sorgulama](media/data-box-logs/query-activity-log-1.png)
 
@@ -74,14 +73,14 @@ Siparişinizi Azure portal ve sevkiyat taşıyıcısı Web sitesi aracılığıy
 
 Data Box veya Data Box Heavy veri kopyalama sırasında, kopyalandığı verilerle ilgili herhangi bir sorun varsa bir hata dosyası oluşturulur.
 
-### <a name="errorxml-file"></a>Error. xml dosyası
+### <a name="errorxml-file"></a>Error.xml dosyası
 
 Kopyalama işlerinin hatasız bitdiğinizden emin olun. Kopyalama işlemi sırasında hatalar varsa, **Bağlan ve Kopyala** sayfasından günlükleri indirin.
 
 - 512 bayt olmayan bir dosyayı Data Box bir yönetilen disk klasörüne kopyaladıysanız, dosya hazırlama depolama hesabınıza Sayfa Blobu olarak yüklenmeyecektir. Günlüklerde bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalı bir dosyayı kopyalayın.
 - Bir VHDX veya bir Dinamik VHD veya bir fark kayıt VHD 'SI (Bu dosyalar desteklenmiyorsa) kopyaladıysanız günlüklerde bir hata görürsünüz.
 
-Yönetilen disklere kopyalarken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Yönetilen disklere kopyalarken farklı hatalara yönelik *error.xml* bir örneği aşağıda verilmiştir.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +89,7 @@ Yönetilen disklere kopyalarken farklı hatalar için *Error. xml* örneği aşa
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Sayfa bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Sayfa bloblarına kopyalanırken farklı hatalara yönelik *error.xml* bir örneği aşağıda verilmiştir.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +100,7 @@ Sayfa bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aş
 ```
 
 
-Blok bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Blok bloblarına kopyalanırken farklı hatalara yönelik *error.xml* bir örneği aşağıda verilmiştir.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +128,7 @@ Blok bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşa
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Azure dosyalarına kopyalanırken farklı hatalar için *Error. xml* dosyasının bir örneği aşağıda verilmiştir.
+Azure dosyalarına kopyalanırken farklı hatalara yönelik *error.xml* bir örneği aşağıda verilmiştir.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -203,7 +202,7 @@ Azure 'a veri yükleme sırasında bir kopyalama günlüğü oluşturulur.
 
 Azure 'a yükleme sırasında Döngüsel artıklık denetimi (CRC) hesaplaması yapılır. Veri kopyalama işleminden sonra ve veri karşıya yüklemeden sonra CRCs 'Ler karşılaştırılır. CRC uyumsuzluğu, karşılık gelen dosyaların karşıya yüklenemediğini belirtir.
 
-Varsayılan olarak, Günlükler adlı `copylog`bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
+Varsayılan olarak, Günlükler adlı bir kapsayıcıya yazılır `copylog` . Günlükler aşağıdaki adlandırma kuralına göre saklanır:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272704"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
@@ -37,14 +36,14 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 
 | Ölçüm | Kaynak türü | Açıklama | Önerilen toplama |
 | --- | --- | --- | --- |
-| Veri yolu kullanılabilirliği | Ortak ve iç yük dengeleyici | Standart Load Balancer, bir bölgedeki veri yolunu yük dengeleyici ön ucuna, VM 'nizi destekleyen SDN yığınına kadar her zaman bir şekilde alıştırın. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da onaylanır. Ölçüm, uygulamanız için görünmez ve diğer işlemleri engellemez.| Ortalama |
-| Durum araştırma durumu | Ortak ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her bir örnek uç noktasının toplam veya uç nokta başına filtrelenmiş bir görünümünü sağlar. Durum araştırma yapılandırmanızla gösterildiği gibi, uygulamanızın sistem durumunu nasıl görüntülemelerini Load Balancer görebilirsiniz. |  Ortalama |
-| SYN (Synchronize) paketleri | Ortak ve iç yük dengeleyici | Standart Load Balancer, Iletim Denetim Protokolü (TCP) bağlantılarını sonlandırır veya TCP veya UDP paket akışlarıyla etkileşime girmez. Akışlar ve bunların el sıkışmaları her zaman kaynak ve sanal makine örneği arasındadır. TCP protokol senaryolarınızı daha iyi gidermek için, kaç TCP bağlantı denemesi yapıldığını anlamak üzere SYN paketleri sayaçlarını kullanabilirsiniz. Ölçüm, alınan TCP SYN paketlerinin sayısını bildirir.| Ortalama |
-| SNAT bağlantıları | Ortak yük dengeleyici |Standart Load Balancer, genel IP adresi ön ucuna bağlı olan giden akış sayısını raporlar. Kaynak ağ adresi çevirisi (SNAT) bağlantı noktaları, tüketilülmüş bir kaynaktır. Bu ölçüm, uygulamanızın giden kaynaklı akışlar için SNAT 'ye ne kadar yoğun bir şekilde bağlı olduğunu belirten bir gösterge verebilir. Başarılı ve başarısız giden SNAT akışları için sayaçlar raporlanır ve giden akışlarınızın durumunu gidermek ve anlamak için kullanılabilir.| Ortalama |
-| Ayrılan SNAT bağlantı noktaları | Ortak yük dengeleyici | Standart Load Balancer, arka uç örneği başına ayrılan SNAT bağlantı noktalarının sayısını raporlar | Ortalama. |
-| Kullanılan SNAT bağlantı noktaları | Ortak yük dengeleyici | Standart Load Balancer, arka uç örneği başına kullanılan SNAT bağlantı noktalarının sayısını raporlar. | Ortalama | 
-| Bayt sayaçları |  Ortak ve iç yük dengeleyici | Standart Load Balancer, ön uç başına işlenen verileri raporlar. Baytların arka uç örnekleri arasında eşit olarak dağıtılmadığını fark edebilirsiniz. Azure 'un Load Balancer algoritması akışlara dayalı olduğu için bu beklenmektedir | Ortalama |
-| Paket sayaçları |  Ortak ve iç yük dengeleyici | Standart Load Balancer, ön uç başına işlenen paketleri raporlar.| Ortalama |
+| Veri yolu kullanılabilirliği | Genel ve iç yük dengeleyici | Standart Load Balancer bir bölgedeki veri yolunu sürekli olarak yük dengeleyicinin ön ucuna (VM’nizi destekleyen SDN yığınına kadar) aktarır. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçümler uygulamanızda görünmez ve diğer işlemleri engellemez.| Ortalama |
+| Sistem durumu yoklama durumu | Genel ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her örnek uç noktası için toplu veya uç noktası başına filtrelenmiş bir görünüm sunar. Durum yoklaması yapılandırmanızın belirttiği gibi Load Balancer’ın uygulamanızın durumunu nasıl görüntülediğini görebilirsiniz. |  Ortalama |
+| SYN (eşitleme) paketleri | Genel ve iç yük dengeleyici | Standart Load Balancer, İletim Denetimi Protokolü (TCP) bağlantılarını sonlandırmaz veya TCP ya da UDP paket akışlarıyla etkileşime geçmez. Akışlar ve el sıkışmaları her zaman kaynak ve VM örneği arasında gerçekleşir. TCP protokolü senaryolarınızdaki sorunları daha iyi şekilde gidermek amacıyla kaç tane TCP bağlantısı denemesinin yapıldığını öğrenmek için SYN paketi sayaçlarını kullanabilirsiniz. Ölçüm alınan TCP SYN paketi sayısını bildirir.| Ortalama |
+| SNAT bağlantıları | Genel yük dengeleyici |Standart Load Balancer, farklı bir kimlikle Genel IP adresi uç noktasına aktarılan giden akış sayısını bildirir. Kaynak ağ adresi çevirisi (SNAT) bağlantı noktaları tükenebilen kaynaklardır. Bu ölçüm, uygulamanızın kaynak alınan giden akışlar için SNAT’ye ne kadar bağlı olduğunu belirtebilir. Başarılı ve başarısız giden SNAT akışlarına yönelik sayaçlar bildirilir. Bu sayaçlar, giden akışlarınızda sorun gidermek ve bunların durumunu anlamak için kullanılabilir.| Ortalama |
+| Ayrılan SNAT bağlantı noktaları | Genel yük dengeleyici | Standart Load Balancer, arka uç örneği başına ayrılan SNAT bağlantı noktalarının sayısını raporlar | Ortalama. |
+| Kullanılan SNAT bağlantı noktaları | Genel yük dengeleyici | Standart Load Balancer, arka uç örneği başına kullanılan SNAT bağlantı noktalarının sayısını raporlar. | Ortalama | 
+| Bayt sayaçları |  Genel ve iç yük dengeleyici | Standart Load Balancer, her uç noktasının işlediği veri miktarını bildirir. Baytların arka uç örneklerinde eşit olarak dağıtılmadığını görebilirsiniz. Azure 'un Load Balancer algoritması akışlara dayalı olduğu için bu beklenmektedir | Ortalama |
+| Paket sayaçları |  Genel ve iç yük dengeleyici | Standart Load Balancer, her ön ucun işlediği paket sayısını bildirir.| Ortalama |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Yük dengeleyici ölçülerinizi Azure portal görüntüleyin
 
@@ -231,7 +230,7 @@ Grafik, müşterilerin, diğer sorunların oluşup oluşmadığını tahmin etme
 Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu**altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir.
 
 Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
-1. **Hizmet durumunu** **İzle** > ' yi seçin.
+1. **Monitor**  >  **Hizmet durumunu**İzle ' yi seçin.
 
    ![Sayfayı izle](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
@@ -254,7 +253,7 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 | Kaynak sistem durumu | Açıklama |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
-| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. **Azure izleyici** > **ölçümleri**' ni seçerek sistem durumunu tanılayın.<br>(*Kullanılamayan* durum, kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.) |
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. **Azure izleyici**ölçümleri ' ni seçerek sistem durumunu tanılayın  >  **Metrics**.<br>(*Kullanılamayan* durum, kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.) |
 | Bilinmiyor | Standart yük dengeleyici kaynağınız için kaynak sistem durumu henüz güncelleştirilmemiş.<br>(*Bilinmeyen* durum da kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına gelebilir.)  |
 
 ## <a name="next-steps"></a>Sonraki adımlar

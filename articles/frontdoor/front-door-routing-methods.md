@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687801"
 ---
 # <a name="front-door-routing-methods"></a>Ön kapı yönlendirme yöntemleri
@@ -80,8 +79,8 @@ Front Door şu an için yalnızca oturum tanımlama bilgisini desteklediğinden 
 > [!NOTE]
 > Ortak proxy 'ler oturum benzeşimine engel olabilir. Bunun nedeni, bir oturumun oluşturulması için ön kapıların, aynı kaynağı isteyen diğer istemcilerin tanımlama bilgilerini kesintiye uğradığı için, yanıt önbelleklenebilir bir oturum benzeşimi tanımlama bilgisi eklemesi gerektirmesidir. Buna karşı korunmak için, arka uç, **not** bu denendiğinde önbelleklenebilir bir yanıt gönderirse oturum benzeşimi kurulmaz. Oturum zaten kurulduysa, arka ucun yanıtının önbelleklenebilir olup olmadığı önemi yoktur.
 > Yanıt bir HTTP 304 durum koduna sahip **olmadığı takdirde** , oturum benzeşimi aşağıdaki koşullarda kurulacaktır:
-> - Yanıtta, "özel" veya mağaza yok ```Cache-Control``` "gibi, önbelleğe alma işlemini önleyen üst bilgi için ayarlanan belirli değerler vardır.
-> - Yanıt, süresi dolmayan bir ```Authorization``` üst bilgi içeriyor.
+> - Yanıtta ```Cache-Control``` , "özel" veya mağaza yok "gibi, önbelleğe alma işlemini önleyen üst bilgi için ayarlanan belirli değerler vardır.
+> - Yanıt, ```Authorization``` süresi dolmayan bir üst bilgi içeriyor.
 > - Yanıtta bir HTTP 302 durum kodu vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

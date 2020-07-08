@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81729154"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub fiyatlandırma bilgileri
@@ -26,7 +25,7 @@ ms.locfileid: "81729154"
 
 ## <a name="charges-per-operation"></a>İşlem başına ücretler
 
-| İşlem | Fatura bilgileri | 
+| Çalışma | Fatura bilgileri | 
 | --------- | ------------------- |
 | Kimlik kayıt defteri işlemleri <br/> (oluşturma, alma, listeleme, güncelleştirme, silme) | Ücretlendirilmedi. |
 | Cihazdan buluta iletiler | Başarıyla gönderilen iletiler, IoT Hub giriş sırasında 4 KB 'lık öbeklere göre ücretlendirilir. Örneğin, 6 KB 'lik bir ileti, 2 ileti olarak ücretlendirilir. |

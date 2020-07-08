@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727170"
 ---
 # <a name="options"></a>Seçenekler #
@@ -30,12 +29,12 @@ Son olarak, Player kurulumunu tetiklemek için Data-Setup özniteliğini kullanm
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> Oluşturucudaki seçenekler, kaynak ayarlamadan önce yalnızca ilk başlatma üzerinde ayarlanır.  Aynı başlatılmış Azure Media Player öğesindeki seçenekleri değiştirmek istiyorsanız, kaynağı değiştirmeden önce seçenekleri güncelleştirmeniz gerekir. JavaScript 'teki seçenekleri kullanarak `myPlayer.options({/*updated options*/});`güncelleştirebilirsiniz. Yalnızca değiştirilen seçeneklerin etkileneceğini, diğer tüm daha önceden ayarlanan seçeneklerin kalıcı olacağını unutmayın.
+> Oluşturucudaki seçenekler, kaynak ayarlamadan önce yalnızca ilk başlatma üzerinde ayarlanır.  Aynı başlatılmış Azure Media Player öğesindeki seçenekleri değiştirmek istiyorsanız, kaynağı değiştirmeden önce seçenekleri güncelleştirmeniz gerekir. JavaScript 'teki seçenekleri kullanarak güncelleştirebilirsiniz `myPlayer.options({/*updated options*/});` . Yalnızca değiştirilen seçeneklerin etkileneceğini, diğer tüm daha önceden ayarlanan seçeneklerin kalıcı olacağını unutmayın.
 
 ## <a name="individual-options"></a>Bireysel seçenekler ##
 
 > [!NOTE]
->Video etiketi öznitelikleri yalnızca true veya false (Boolean) olabilir, bunu açmak için özniteliği (eşittir işareti olmadan) dahil edin veya devre dışı bırakmak için hariç tutun. Örneğin, denetimleri açmak için: `<video controls="true" ...>` `<video controls ...>` en büyük sorunun en büyük olması, bu değerleri yanlış olarak doğru olarak ayarlayan (ör. Controls = "false") değer olarak false olarak ayarlamaya çalışıyor ve öznitelik hala dahil edildiğinden değeri true olarak ayartı.
+>Video etiketi öznitelikleri yalnızca true veya false (Boolean) olabilir, bunu açmak için özniteliği (eşittir işareti olmadan) dahil edin veya devre dışı bırakmak için hariç tutun. Örneğin, denetimleri açmak için: en `<video controls="true" ...>` `<video controls ...>` büyük sorunun en büyük olması, bu değerleri yanlış olarak doğru olarak ayarlayan (ör. Controls = "false") değer olarak false olarak ayarlamaya çalışıyor ve öznitelik hala dahil edildiğinden değeri true olarak ayartı.
 
 ### <a name="controls"></a>denetimler ###
 
@@ -79,7 +78,7 @@ Eklenti geliştirme ve kullanımı hakkında daha fazla bilgi için bkz. eklenti
 
 ### <a name="other-options"></a>diğer seçenekler ###
 
-Diğer seçenekler JSON alan `<video>` `data-setup` parametresi kullanılarak etiketinde ayarlanabilir.
+Diğer Seçenekler `<video>` JSON alan parametresi kullanılarak etiketinde ayarlanabilir `data-setup` .
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
@@ -92,16 +91,16 @@ Bu seçeneği gerçek video öğesine ayarlayarak, Ana kapsayıcının tam geni�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`seçenek açık `width` ve `height` ayarları geçersiz kılar. Bu seçenek yalnızca Azure Media Player sürümünde `2.0.0` ve sonrasında kullanılabilir.
+`fluid`seçenek açık `width` ve ayarları geçersiz kılar `height` . Bu seçenek yalnızca Azure Media Player sürümünde `2.0.0` ve sonrasında kullanılabilir.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`seçenek, Kullanıcı için kullanılabilir playbackSpeed denetimini ve kayıttan yürütme hızı ayarlarını denetler. `playbackSpeed`bir nesnesi alır. Denetim çubuğunda kayıttan yürütme hızı denetimini etkinleştirmek için nesnenin özelliğinin `enabled` true olarak ayarlanması gerekir. Biçimlendirme sırasında kayıttan yürütme hızını etkinleştirmeye bir örnek:
+`playbackSpeed`seçenek, Kullanıcı için kullanılabilir playbackSpeed denetimini ve kayıttan yürütme hızı ayarlarını denetler. `playbackSpeed`bir nesnesi alır. Denetim çubuğunda kayıttan yürütme hızı denetimini etkinleştirmek için `enabled` nesnenin özelliğinin true olarak ayarlanması gerekir. Biçimlendirme sırasında kayıttan yürütme hızını etkinleştirmeye bir örnek:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-`playbackSpeed` Ayarın diğer özellikleri [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) nesnesi tarafından verilir.
+Ayarın diğer özellikleri `playbackSpeed` [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) nesnesi tarafından verilir.
 
 JavaScript 'te kayıttan yürütme hızı seçeneklerini ayarlama örneği:
 
@@ -130,7 +129,7 @@ Bu seçenek yalnızca Azure Media Player Version 2.0.0 ve üzeri sürümlerde ku
 
 ### <a name="staledatatimelimitinsec"></a>Staledatatimelimitınsec ###
 
-Bu `staleDataTimeLimitInSec` seçenek, MediaSource arabelleklerinde tutmak istediğiniz kaç saniyelik eski verinin sayısını yapılandırmanıza imkan tanıyan bir iyileştirmedir. Bu, varsayılan olarak devre dışıdır.
+`staleDataTimeLimitInSec`Bu seçenek, mediaSource arabelleklerinde tutmak istediğiniz kaç saniyelik eski verinin sayısını yapılandırmanıza imkan tanıyan bir iyileştirmedir. Bu, varsayılan olarak devre dışıdır.
 
 ### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 

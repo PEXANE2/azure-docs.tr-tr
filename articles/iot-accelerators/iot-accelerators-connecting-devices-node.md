@@ -1,6 +1,6 @@
 ---
-title: Node. js-Azure 'da cihazları uzaktan Izlemeye sağlama | Microsoft Docs
-description: Node. js ' de yazılmış bir uygulamayı kullanarak bir cihazın uzaktan Izleme çözüm hızlandırıcısına nasıl bağlanacağını açıklar.
+title: Node.js-Azure 'da uzak Izlemeye cihaz sağlama | Microsoft Docs
+description: Node.js ' de yazılmış bir uygulama kullanarak bir cihazı uzaktan Izleme çözümü hızlandırıcısına bağlamayı açıklar.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,25 +10,24 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683983"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Cihazınızı uzaktan Izleme çözümü hızlandırıcısına bağlama (node. js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Cihazınızı uzaktan Izleme çözümü hızlandırıcısına bağlama (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Bu öğreticide, gerçek bir cihazın uzaktan Izleme çözüm hızlandırıcısına nasıl bağlanacağı gösterilmektedir. Bu öğreticide, en az kaynak kısıtlamalarına sahip ortamlar için iyi bir seçenek olan Node. js ' yi kullanırsınız.
+Bu öğreticide, gerçek bir cihazın uzaktan Izleme çözüm hızlandırıcısına nasıl bağlanacağı gösterilmektedir. Bu öğreticide, en az kaynak kısıtlamalarına sahip ortamlar için iyi bir seçenek olan Node.js kullanırsınız.
 
 Bir cihazın benzetimini yapmayı tercih ediyorsanız, bkz. [Yeni bir sanal cihaz oluşturma ve test](iot-accelerators-remote-monitoring-create-simulated-device.md)etme.
 
-## <a name="create-a-nodejs-solution"></a>Node. js çözümü oluşturma
+## <a name="create-a-nodejs-solution"></a>Node.js çözümü oluşturma
 
-Geliştirme makinenizde [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üstünün yüklü olduğundan emin olun. Sürümü denetlemek için `node --version` komut satırından çalıştırabilirsiniz.
+Geliştirme makinenizde [Node.js](https://nodejs.org/) Version 4.0.0 veya üzeri sürümünün yüklü olduğundan emin olun. `node --version`Sürümü denetlemek için komut satırından çalıştırabilirsiniz.
 
-1. Geliştirme makinenizde adlı `remotemonitoring` bir klasör oluşturun. Komut satırı ortamınızda bu klasöre gidin.
+1. Geliştirme makinenizde adlı bir klasör oluşturun `remotemonitoring` . Komut satırı ortamınızda bu klasöre gidin.
 
 1. Örnek uygulamayı doldurmanız için gereken paketleri indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
 
@@ -37,9 +36,9 @@ Geliştirme makinenizde [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üst�
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. `remotemonitoring` Klasöründe **remote_monitoring. js**adlı bir dosya oluşturun. Bu dosyayı bir metin düzenleyicisinde açın.
+1. `remotemonitoring`Klasöründe **remote_monitoring.js**adlı bir dosya oluşturun. Bu dosyayı bir metin düzenleyicisinde açın.
 
-1. **Remote_monitoring. js** dosyasında aşağıdaki `require` deyimleri ekleyin:
+1. **remote_monitoring.js** dosyasında aşağıdaki `require` deyimleri ekleyin:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -48,7 +47,7 @@ Geliştirme makinenizde [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üst�
     var async = require('async');
     ```
 
-1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini `{device connection string}` , uzaktan izleme çözümünde sağladığınız cihaz için not ettiğiniz değerle değiştirin:
+1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini, `{device connection string}` Uzaktan izleme çözümünde sağladığınız cihaz için not ettiğiniz değerle değiştirin:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -329,7 +328,7 @@ Geliştirme makinenizde [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üst�
       });
       ```
 
-1. **Remote_monitoring. js** dosyasına değişiklikleri kaydedin.
+1. **remote_monitoring.js** dosyadaki değişiklikleri kaydedin.
 
 1. Örnek uygulamayı başlatmak için komut isteminde aşağıdaki komutu çalıştırın:
 

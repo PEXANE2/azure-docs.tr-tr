@@ -7,15 +7,14 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727261"
 ---
 # <a name="error-codes"></a>Hata kodları #
 
-Kayıttan yürütme başlayamaz veya durdurulduğunda bir hata olayı tetiklenir ve uygulama geliştiricisinin daha fazla ayrıntı `error()` almasını sağlamak için işlev bir kod ve isteğe bağlı bir ileti döndürür. `error().message`kullanıcıya görüntülenmeyen ileti değildir.  Kullanıcıya gösterilecek ileti, BITS 27-20 ' i temel `error().code` alır, aşağıdaki tabloya bakın.
+Kayıttan yürütme başlayamaz veya durdurulduğunda bir hata olayı tetiklenir ve `error()` uygulama geliştiricisinin daha fazla ayrıntı almasını sağlamak için işlev bir kod ve isteğe bağlı bir ileti döndürür. `error().message`kullanıcıya görüntülenmeyen ileti değildir.  Kullanıcıya gösterilecek ileti, `error().code` bıts 27-20 ' i temel alır, aşağıdaki tabloya bakın.
 
 ```javascript
 
@@ -49,7 +48,7 @@ Hatanın ayrıntılarını açıklama, BITS 27-20 yüksek düzeyde sağlama, BIT
 | **MEDIA_ERR_ABORTED hata aralığı (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Genel iptal hatası |
 | abortedErrNotImplemented | 0x0100001 | İptal hatası, uygulanmadı |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | İptal hatası, karışık içerik engellendi-bir `http://` `https://` sayfadan akış yüklenirken genellikle gerçekleşir |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | İptal hatası, karışık içerik engellendi- `http://` bir sayfadan akış yüklenirken genellikle gerçekleşir `https://` |
 | **MEDIA_ERR_NETWORK hatası başlangıç değeri (0x0200000-0x02FFFFF)** | | |
 | Networkerrunbilinen | 0x0200000 | Genel ağ hatası |
 | networkErrHttpBadUrlFormat | 0x0200190 | Http 400 hata yanıtı |

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81262443"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yanlış yazım ve yazım hatalarını düzeltmek için belirsiz arama
@@ -21,7 +20,7 @@ Azure Bilişsel Arama, giriş dizesinde yazım hatası ve yanlış yazılmış t
 
 ## <a name="what-is-fuzzy-search"></a>Benzer arama nedir?
 
-Benzer bir bileşim içeren koşullara uyan bir eşleşme üreten bir genişletme alıştırmada. Benzer bir arama belirtildiğinde motor, sorgudaki tüm şartlar için benzer şekilde oluşturulmuş terimlerin bir grafiğini ( [belirleyici olarak sonlu](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)bir değer temelinde) oluşturur. Örneğin, sorgunuz üç terim olan "İstanbul University" içeriyorsa, sorgudaki `search=university~ of~ washington~` her terim için bir grafik oluşturulur (benzer aramada durdur-sözcük kaldırma yoktur, bu nedenle "/" bir grafik alır).
+Benzer bir bileşim içeren koşullara uyan bir eşleşme üreten bir genişletme alıştırmada. Benzer bir arama belirtildiğinde motor, sorgudaki tüm şartlar için benzer şekilde oluşturulmuş terimlerin bir grafiğini ( [belirleyici olarak sonlu](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)bir değer temelinde) oluşturur. Örneğin, sorgunuz üç terim olan "İstanbul University" içeriyorsa, sorgudaki her terim için bir grafik oluşturulur `search=university~ of~ washington~` (benzer aramada durdur-sözcük kaldırma yoktur, bu nedenle "/" bir grafik alır).
 
 Grafik, her bir terimin 50 genişleme veya permütasyon 'ten oluşur ve her iki durumda da hem doğru hem de hatalı varyantlar yakalanıyor. Daha sonra motor, yanıtta en üstteki ilgili eşleşmeleri döndürür. 
 
@@ -33,7 +32,7 @@ Azure Bilişsel Arama 'de:
 
 + Benzer sorgu tüm şartlar için geçerlidir, ancak ve kurulumlarını aracılığıyla tümcecikleri destekleyebilirsiniz. Örneğin, "Unviersty ~ of ~" Wshington ~ "," University of Washington "ile eşleşir.
 
-+ Bir düzenlemenin varsayılan uzaklığı 2 ' dir. Değeri, genişlemesiz bir değer `~0` belirtir (yalnızca tam terim eşleşme olarak kabul edilir), ancak bir derece veya `~1` bir düzenleme için belirtebilirsiniz. 
++ Bir düzenlemenin varsayılan uzaklığı 2 ' dir. Değeri, `~0` genişlemesiz bir değer belirtir (yalnızca tam terim eşleşme olarak kabul edilir), ancak `~1` bir derece veya bir düzenleme için belirtebilirsiniz. 
 
 + Benzer bir sorgu, 50 ek PERMÜTASYONA kadar bir terim genişletebilir. Bu sınır yapılandırılamaz, ancak düzenleme mesafesini 1 ' i azaltarak genişletmeleri sayısını etkili bir şekilde azaltabilirsiniz.
 
@@ -58,13 +57,13 @@ Bununla birlikte, test sorguları, beklediğinizi eşleştirmelere neden oluştu
 
 Benzer sorgular tam Lucene sorgu söz dizimi kullanılarak oluşturulur ve bu, [Lucene sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)çağırır.
 
-1. Sorguda (`queryType=full`) tam bir Lucene ayrıştırıcısı ayarlayın.
+1. Sorguda () tam bir Lucene ayrıştırıcısı ayarlayın `queryType=full` .
 
-1. İsteğe bağlı olarak, bu parametreyi kullanarak isteği belirli alanlara kapsamını (`searchFields=<field1,field2>`) kullanın. 
+1. İsteğe bağlı olarak, bu parametreyi kullanarak isteği belirli alanlara kapsamını ( `searchFields=<field1,field2>` ) kullanın. 
 
-1. Tüm terimin sonuna (`~``search=<string>~`) tilde () işlecini ekleyin.
+1. `~`Tüm terimin sonuna () tilde () işlecini ekleyin `search=<string>~` .
 
-   Düzenleme mesafesini (`~1`) belirtmek istiyorsanız, isteğe bağlı bir parametre, 0 ile 2 (varsayılan) arasında bir sayı ekleyin. Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
+   Düzenleme mesafesini () belirtmek istiyorsanız, isteğe bağlı bir parametre, 0 ile 2 (varsayılan) arasında bir sayı ekleyin `~1` . Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
 
 Azure Bilişsel Arama, dönemin ve uzaklığın yanı sıra (en fazla 2) sorgu üzerinde ayarlanacak ek parametre yoktur.
 
@@ -82,7 +81,7 @@ Sonuçlar belirsiz olduğunda, [isabet vurgulaması](search-pagination-page-layo
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Örnek 1: tam terimle belirsiz arama
 
-Arama belgesinde bir `"Description"` alanda aşağıdaki dizenin bulunduğunu varsayın:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Arama belgesinde bir alanda aşağıdaki dizenin bulunduğunu varsayın `"Description"` :`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 "Özel" üzerinde benzer bir aramayla başlayın ve Açıklama alanına isabet vurgusu ekleyin:
 

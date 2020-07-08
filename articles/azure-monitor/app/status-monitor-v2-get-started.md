@@ -6,17 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537449"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights Aracısı 'nı kullanmaya başlama
 
 Bu makale, çoğu ortam için çalışması beklenen hızlı başlangıç komutlarını içerir.
 Yönergeler, güncelleştirmeleri dağıtmak için PowerShell Galerisi bağımlıdır.
-Bu komutlar PowerShell `-Proxy` parametresini destekler.
+Bu komutlar PowerShell parametresini destekler `-Proxy` .
 
 Bu komutların açıklaması, özelleştirme yönergeleri ve sorun giderme hakkında bilgi için bkz. [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md).
 

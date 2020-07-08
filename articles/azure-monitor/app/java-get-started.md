@@ -6,10 +6,9 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537517"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
@@ -25,7 +24,7 @@ Application Insights, web geliştiricileri için canlı uygulamanızın performa
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights izleme anahtarı edinme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portalındabir Application Insights kaynağı oluşturun. Uygulama türünü Java web uygulaması olarak ayarlayın.
 
 3. Yeni kaynağın izleme anahtarını bulun. Bu anahtarı hemen kod projenize yapıştırmalısınız.
@@ -38,7 +37,7 @@ Application Insights, web geliştiricileri için canlı uygulamanızın performa
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-Projeniz zaten derleme için Maven kullanmak üzere ayarlandıysa, aşağıdaki kodu *POTM. xml* dosyanıza birleştirin.
+Projeniz zaten derleme için Maven kullanmak üzere ayarlandıysa, *pom.xml* dosyanıza aşağıdaki kodu birleştirin.
 
 Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yenileyin.
 
@@ -75,7 +74,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
 ---
 
 ### <a name="questions"></a>Sorular
-* *`-web` Ve `-core` bileşenleri arasındaki `-web-auto`ilişki nedir?*
+* *Ve bileşenleri arasındaki ilişki nedir `-web-auto` `-web` `-core` ?*
   * `applicationinsights-web-auto`, çalışma zamanında Application Insights servlet filtresini otomatik olarak kaydederek HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar.
   * `applicationinsights-web`Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
   * `applicationinsights-core`, örneğin, uygulamanız servlet tabanlı değilse yalnızca tam API 'yi sağlar.
@@ -86,8 +85,8 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
   * Bağımlılıkları el ile yönetiyorsanız...
     * En son [Java için Application Insights SDK’si](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)’ni indirin ve eskilerle değiştirin. Değişiklikler [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) açıklanmıştır.
 
-## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights. xml* dosyası Ekle
-Projenizdeki Resources klasörüne *ApplicationInsights. xml* dosyasını ekleyin veya projenizin dağıtım sınıfı yoluna eklendiğinden emin olun. Aşağıdaki XML dosyasını buraya kopyalayın.
+## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* dosyası Ekle
+Projenizdeki Resources klasörüne *ApplicationInsights.xml* ekleyin veya projenizin dağıtım sınıfı yoluna eklendiğinden emin olun. Aşağıdaki XML dosyasını buraya kopyalayın.
 
 İzleme anahtarını, Azure portal aldığınız bir ile değiştirin.
 
@@ -118,7 +117,7 @@ Projenizdeki Resources klasörüne *ApplicationInsights. xml* dosyasını ekleyi
 </ApplicationInsights>
 ```
 
-İsteğe bağlı olarak, yapılandırma dosyası uygulamanız tarafından erişilebilen herhangi bir konumda olabilir.  System özelliği `-Dapplicationinsights.configurationDirectory` , *ApplicationInsights. xml*dosyasını içeren dizini belirtir. Örneğin, `E:\myconfigs\appinsights\ApplicationInsights.xml` konumunda bulunan bir yapılandırma dosyası, `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` özelliği ile yapılandırılır.
+İsteğe bağlı olarak, yapılandırma dosyası uygulamanız tarafından erişilebilen herhangi bir konumda olabilir.  System özelliği `-Dapplicationinsights.configurationDirectory` *ApplicationInsights.xml*içeren dizini belirtir. Örneğin, `E:\myconfigs\appinsights\ApplicationInsights.xml` konumunda bulunan bir yapılandırma dosyası, `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` özelliği ile yapılandırılır.
 
 * İzleme anahtarı telemetrinin her öğesiyle birlikte gönderilir ve Application Insights’ın bunu kaynağınızda görüntülemesini isteyin.
 * HTTP isteği bileşeni isteğe bağlıdır. İstek ve yanıt süreleri hakkında telemetriyi otomatik olarak portala gönderir.
@@ -129,7 +128,7 @@ Application Insights SDK’sı anahtarı şu sırayla arar:
 
 1. Sistem özelliği:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
 2. Ortam değişkeni: APPINSIGHTS_INSTRUMENTATIONKEY
-3. Yapılandırma dosyası: *ApplicationInsights. xml*
+3. Yapılandırma dosyası: *ApplicationInsights.xml*
 
 Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -188,13 +187,13 @@ Artık uygulamanızı sunucuya yayımlayın, herkesin kullanmasını sağlayın 
 
 * Windows sunucularda yüklenecekler:
 
-  * [Microsoft Visual C++ Yeniden Dağıtılabilir](https://www.microsoft.com/download/details.aspx?id=40784)
+  * [Microsoft Visual C++ Redistributable](https://www.microsoft.com/download/details.aspx?id=40784)
 
     (Bu bileşen, performans sayaçlarını etkinleştirir.)
 
 ## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring Boot)
 
-Windows üzerinde çalışan Spring Boot uygulamaları, Azure Uygulama Hizmetleri 'nde çalışması için ek yapılandırma gerektirir. **Web. config** 'i değiştirin ve aşağıdaki yapılandırmayı ekleyin:
+Windows üzerinde çalışan Spring Boot uygulamaları, Azure Uygulama Hizmetleri 'nde çalışması için ek yapılandırma gerektirir. **web.config** değiştirin ve aşağıdaki yapılandırmayı ekleyin:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -225,7 +224,7 @@ Application Insights Java SDK 'Sı artık [W3C dağıtılmış izlemeyi](https:/
 
 Gelen SDK yapılandırması daha fazla [bağıntı](correlation.md)makalesinde açıklanmıştır.
 
-Giden SDK yapılandırması [AI-Agent. xml](java-agent.md) dosyasında tanımlanmıştır.
+Giden SDK yapılandırması [AI-Agent.xml](java-agent.md) dosyasında tanımlanmıştır.
 
 ## <a name="performance-counters"></a>Performans sayaçları
 Bir dizi performans sayacını görmek için **Araştır**, **ölçümler**' i açın.
@@ -233,7 +232,7 @@ Bir dizi performans sayacını görmek için **Araştır**, **ölçümler**' i a
 ![İşlem özel baytları seçiliyken ölçüm bölmesinin ekran görüntüsü](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Performans sayacı koleksiyonunu özelleştirme
-Standart performans sayaçları kümesinin toplanmasını devre dışı bırakmak için, *ApplicationInsights. xml* dosyasının kök düğümünün altına aşağıdaki kodu ekleyin:
+Standart performans sayaçları kümesinin toplanmasını devre dışı bırakmak için, *ApplicationInsights.xml* dosyanın kök düğümünün altına aşağıdaki kodu ekleyin:
 
 ```XML
     <PerformanceCounters>

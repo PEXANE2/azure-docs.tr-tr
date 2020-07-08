@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676428"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Tanılama uzantısı şeması
@@ -119,7 +118,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Iıslogs**|Bu öğenin yapılandırmasına dahil edilmesi, IIS günlüklerinin toplanmasını sunar:<br /><br /> **ContainerName** -IIS günlüklerini depolamak Için kullanılacak Azure Depolama hesabınızdaki blob kapsayıcısının adı.|   
-|**FailedRequestLogs**|Bu öğenin yapılandırmasına dahil edilmesi, bir IIS sitesine veya uygulamasına başarısız istekler hakkında günlüklerin toplanmasını sağlar. Ayrıca sistem altında izleme seçeneklerini etkinleştirmeniz gerekir **. ** **Web. config 'de Web**sunucusu.|  
+|**FailedRequestLogs**|Bu öğenin yapılandırmasına dahil edilmesi, bir IIS sitesine veya uygulamasına başarısız istekler hakkında günlüklerin toplanmasını sağlar. Ayrıca sistem altında izleme seçeneklerini etkinleştirmeniz gerekir **. ** **Web.config**sürümünde Web sunucusu.|  
 |**Kaynağı**|İzlenecek dizinlerin listesi.|
 
 
@@ -189,7 +188,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  Hızlı sorgular için iyileştirilmiş bir performans sayacı tablosu oluşturmanıza olanak sağlar. **PerformanceCounters** öğesinde tanımlanan her performans sayacı, performans sayacı tablosuna ek olarak ölçümler tablosunda depolanır.  
 
- **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. **Ada\><****kaynak gruplarına**  ->  **gözatamıyorum** -> ' ı seçin. **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
+ **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. **Browse**  ->  **Resource Groups**  ->  ** Ada \><** kaynak gruplarına gözatamıyorum ' ı seçin. **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
 
 |Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
@@ -208,7 +207,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Aşağıdaki öznitelikler gereklidir:<br /><br /> - **onay belirticisi** -performans sayacının adı. Örneğin, `\Processor(_Total)\% Processor Time`. Ana bilgisayarınızdaki performans sayaçlarının listesini almak için komutunu `typeperf`çalıştırın.<br /><br /> - **örnekler,** sayacın ne sıklıkta örnekleneceği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Unit** -sayacın ölçü birimi. Değerler [UnitType sınıfında](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) kullanılabilir |
+|**PerformanceCounterConfiguration**|Aşağıdaki öznitelikler gereklidir:<br /><br /> - **onay belirticisi** -performans sayacının adı. Örneğin, `\Processor(_Total)\% Processor Time`. Ana bilgisayarınızdaki performans sayaçlarının listesini almak için komutunu çalıştırın `typeperf` .<br /><br /> - **örnekler,** sayacın ne sıklıkta örnekleneceği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Unit** -sayacın ölçü birimi. Değerler [UnitType sınıfında](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) kullanılabilir |
 |**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Azure Izleyici veya Event Hubs.|    
 
 
@@ -248,7 +247,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öğe Adı|Açıklama|  
 |------------------|-----------------|  
-|**İstatistikler**|Sisteme Docker kapsayıcıları için istatistikler toplamasını söyler|  
+|**STA**|Sisteme Docker kapsayıcıları için istatistikler toplamasını söyler|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig öğesi  
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig*
@@ -284,7 +283,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öğe|Tür|Açıklama|  
 |-------------|----------|-----------------|  
-|**Kanalla**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
+|**Kanal**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 
 ## <a name="channel-element"></a>Channel öğesi
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels-Channel*
@@ -316,7 +315,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 ## <a name="isenabled-element"></a>IsEnabled öğesi  
  *Ağaç: root-DiagnosticsConfiguration-IsEnabled*
 
- Boolean. Tanılamayı `true` etkinleştirmek veya `false` tanılamayı devre dışı bırakmak için kullanın.
+ Boolean. `true`Tanılamayı etkinleştirmek veya `false` tanılamayı devre dışı bırakmak için kullanın.
 
 ## <a name="example-configuration"></a>Örnek yapılandırma
  Aşağıda, hem JSON hem de XML 'de gösterilen Windows Tanılama uzantısı için örnek bir yapılandırma verilmiştir.

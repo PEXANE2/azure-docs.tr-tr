@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676909"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle ASM ayarlama  
@@ -60,7 +59,7 @@ Aşağıdaki örnek, her biri 50 GB 'lık dört bağlı veri diskine sahip bir S
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler görüntüler. Değerini aklınızda yapın `publicIpAddress`. Bu adresi sanal makineye erişmek için kullanırsınız.
+VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler görüntüler. Değerini aklınızda yapın `publicIpAddress` . Bu adresi sanal makineye erişmek için kullanırsınız.
 
    ```output
    {
@@ -77,7 +76,7 @@ VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler g�
 
 ### <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-VM ile bir SSH oturumu oluşturmak ve ek ayarları yapılandırmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin `publicIpAddress` değeri ile değiştirin.
+VM ile bir SSH oturumu oluşturmak ve ek ayarları yapılandırmak için aşağıdaki komutu kullanın. IP adresini, `publicIpAddress` sanal makinenizin değeri ile değiştirin.
 
 ```bash
 ssh <publicIpAddress>
@@ -202,8 +201,8 @@ Bu öğretici için varsayılan kullanıcı *kılavuza* ve varsayılan grup *asm
    - Yeni bölüm için *n*
    - birincil bölüm için *p*
    - *1* ilk bölümü seçmek için
-   - Varsayılan `enter` ilk silindir için bas
-   - Varsayılan `enter` son silindir için bas
+   - `enter`varsayılan ilk silindir için bas
+   - `enter`Varsayılan son silindir için bas
    - bölüm tablosuna değişiklikleri yazmak için *w* tuşuna basın  
 
    ```bash
@@ -246,7 +245,7 @@ Bu öğretici için varsayılan kullanıcı *kılavuza* ve varsayılan grup *asm
    Syncing disks.
    ```
 
-4. , `/dev/sde`Ve `/dev/sdf`için `fdisk` `/dev/sdd`önceki komutu tekrarlayın.
+4. `fdisk`, Ve için önceki komutu `/dev/sdd` tekrarlayın `/dev/sde` `/dev/sdf` .
 
 5. Disk yapılandırmasını denetleyin:
 
@@ -385,31 +384,31 @@ Oracle Grid altyapı yazılımını indirmek ve hazırlamak için aşağıdaki a
    sudo chown -R grid:oinstall /opt/grid
    ```
 
-6. Yapılandırılmış değiştirme alanını güncelleştir. Oracle Grid bileşenlerinde, Grid 'i yüklemek için en az 6,8 GB takas alanı gerekir. Azure 'daki Oracle Linux görüntüleri için varsayılan takas dosyası boyutu yalnızca 20 48MB 'tır. Güncelleştirilmiş ayarların etkili olabilmesi `ResourceDisk.SwapSizeMB` için `/etc/waagent.conf` dosyada artırmanız ve walınuxagent hizmetini yeniden başlatmanız gerekir. Salt okunurdur bir dosya olduğundan, yazma erişimini etkinleştirmek için dosya izinlerini değiştirmeniz gerekir.
+6. Yapılandırılmış değiştirme alanını güncelleştir. Oracle Grid bileşenlerinde, Grid 'i yüklemek için en az 6,8 GB takas alanı gerekir. Azure 'daki Oracle Linux görüntüleri için varsayılan takas dosyası boyutu yalnızca 20 48MB 'tır. `ResourceDisk.SwapSizeMB` `/etc/waagent.conf` Güncelleştirilmiş ayarların etkili olabilmesi için dosyada artırmanız ve Walınuxagent hizmetini yeniden başlatmanız gerekir. Salt okunurdur bir dosya olduğundan, yazma erişimini etkinleştirmek için dosya izinlerini değiştirmeniz gerekir.
 
    ```bash
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
 
-   `ResourceDisk.SwapSizeMB` Değerini arayıp **8192**olarak değiştirin. Ekleme moduna girmek için tuşuna `insert` basmanız gerekir, **8192** değerini yazın ve ardından komut moduna dönmek için ' ye `esc` basın. Değişiklikleri yazmak ve dosyadan çıkmak için yazın `:wq` ve ENTER tuşuna basın. `enter`
+   Değerini arayıp `ResourceDisk.SwapSizeMB` **8192**olarak değiştirin. `insert`Ekleme moduna girmek için tuşuna basmanız gerekir, **8192** değerini yazın ve ardından `esc` komut moduna dönmek için ' ye basın. Değişiklikleri yazmak ve dosyadan çıkmak için yazın `:wq` ve ENTER tuşuna basın `enter` .
    
    > [!NOTE]
-   > En iyi performansı elde etmek için her `WALinuxAgent` zaman yerel geçici diskte (geçici disk) oluşturulan değiştirme alanını yapılandırmak için her zaman kullanmanızı öneririz. Hakkında daha fazla bilgi için bkz. [Linux Azure sanal makinelerinde takas dosyası ekleme](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines).
+   > `WALinuxAgent`En iyi performansı elde etmek için her zaman yerel geçici diskte (geçici disk) oluşturulan değiştirme alanını yapılandırmak için her zaman kullanmanızı öneririz. Hakkında daha fazla bilgi için bkz. [Linux Azure sanal makinelerinde takas dosyası ekleme](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines).
 
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>X11 çalıştırmak için yerel istemcinizi ve sanal makineyi hazırlama
 Oracle ASM 'nin yapılandırılması, yüklemeyi ve yapılandırmayı tamamlamaya yönelik bir grafik arabirimi gerektirir. Bu yüklemeyi kolaylaştırmak için X11 protokolünü kullanıyoruz. Zaten X11 özellikleri etkinleştirilmiş ve yapılandırılmış olan bir istemci sistemi (Mac veya Linux) kullanıyorsanız, bu yapılandırmayı atlayıp Windows makinelerine özel olarak ayarlayabilirsiniz. 
 
 1. [PuTTY 'Yi indirin](https://www.putty.org/) ve Windows bilgisayarınıza [indirin](https://xming.en.softonic.com/) . Devam etmeden önce bu uygulamaların her ikisinin yüklemesini varsayılan değerlerle doldurmanız gerekir.
 
-2. PuTTY 'yı yükledikten sonra bir komut istemi açın, PuTTY klasörünü (örneğin, C:\Program Files\PuTTY) değiştirin ve bir anahtar oluşturmak için çalıştırın `puttygen.exe` .
+2. PuTTY 'yı yükledikten sonra bir komut istemi açın, PuTTY klasörünü (örneğin, C:\Program Files\PuTTY) değiştirin ve `puttygen.exe` bir anahtar oluşturmak için çalıştırın.
 
 3. PuTTY anahtar Oluşturucu:
    
-   1. `Generate` Düğmeyi seçerek bir anahtar oluşturun.
+   1. Düğmeyi seçerek bir anahtar oluşturun `Generate` .
    2. Anahtarın içeriğini kopyalayın (CTRL + C).
    3. `Save private key` düğmesini seçin.
-   4. Anahtarı bir parola ile güvenli hale getirme uyarısını yoksayın ve sonra öğesini seçin `OK`.
+   4. Anahtarı bir parola ile güvenli hale getirme uyarısını yoksayın ve sonra öğesini seçin `OK` .
 
    ![PuTTY anahtar oluşturucusunun ekran görüntüsü](./media/oracle-asm/puttykeygen.png)
 
@@ -424,18 +423,18 @@ Oracle ASM 'nin yapılandırılması, yüklemeyi ve yapılandırmayı tamamlamay
 5. `authorized_keys` adlı bir dosya oluşturun. Anahtarın içeriğini bu dosyaya yapıştırın ve dosyayı kaydedin.
 
    > [!NOTE]
-   > Anahtarın dizeyi `ssh-rsa`içermesi gerekir. Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
+   > Anahtarın dizeyi içermesi gerekir `ssh-rsa` . Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
    >  
 
-6. İstemci sisteminizde PuTTY ' ı başlatın. **Kategori** bölmesinde **bağlantı** > **SSH** > **kimlik doğrulaması**' na gidin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
+6. İstemci sisteminizde PuTTY ' ı başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması**' na gidin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
 
    ![SSH kimlik doğrulaması seçeneklerinin ekran görüntüsü](./media/oracle-asm/setprivatekey.png)
 
-7. **Kategori** bölmesinde **bağlantı** > **SSH** > **X11**' a gidin. **X11 Iletmeyi etkinleştir** onay kutusunu seçin.
+7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11**' a gidin. **X11 Iletmeyi etkinleştir** onay kutusunu seçin.
 
    ![SSH X11 iletme seçeneklerinin ekran görüntüsü](./media/oracle-asm/enablex11.png)
 
-8. **Kategori** bölmesinde **oturum**' a gidin. Konak adı iletişim kutusuna Oracle `<publicIPaddress>` asm VM 'nizi girin, yeni `Saved Session` bir ad girin ve ardından açık `Save`' a tıklayın.  Kaydedildikten sonra, Oracle ASM `open` sanal makinenize bağlanmak için üzerine tıklayın.  İlk bağlandığınız zaman, uzak sistem kayıt defterinizde önbelleğe alınmamış uyarılardır. Eklemek `yes` için tıklayın ve devam edin.
+8. **Kategori** bölmesinde **oturum**' a gidin. Konak adı iletişim kutusuna Oracle ASM VM 'nizi girin `<publicIPaddress>` , yeni bir `Saved Session` ad girin ve ardından açık ' a tıklayın `Save` .  Kaydedildikten sonra, `open` Oracle asm sanal makinenize bağlanmak için üzerine tıklayın.  İlk bağlandığınız zaman, uzak sistem kayıt defterinizde önbelleğe alınmamış uyarılardır. `yes`Eklemek için tıklayın ve devam edin.
 
    ![PuTTY oturum seçeneklerinin ekran görüntüsü](./media/oracle-asm/puttysession.png)
 
@@ -472,13 +471,13 @@ Oracle Grid altyapısını yüklemek için aşağıdaki adımları izleyin:
 
    ![Yükleyicinin ASM parolasını belirt sayfasının ekran görüntüsü](./media/oracle-asm/install04.png)
 
-6. **Yönetim seçeneklerini belirtin** sayfasında em bulut denetimini yapılandırma seçeneğiniz vardır. Bu seçeneği atlıyoruz ve devam etmek `next` için tıklayın. 
+6. **Yönetim seçeneklerini belirtin** sayfasında em bulut denetimini yapılandırma seçeneğiniz vardır. Bu seçeneği atlıyoruz ve `next` devam etmek için tıklayın. 
 
-7. **Ayrıcalıklı Işletim sistemi grupları** sayfasında, varsayılan ayarları kullanın. Devam `next` etmek için tıklayın.
+7. **Ayrıcalıklı Işletim sistemi grupları** sayfasında, varsayılan ayarları kullanın. `next`Devam etmek için tıklayın.
 
-8. **Yükleme konumunu belirtin** sayfasında, varsayılan ayarları kullanın. Devam `next` etmek için tıklayın.
+8. **Yükleme konumunu belirtin** sayfasında, varsayılan ayarları kullanın. `next`Devam etmek için tıklayın.
 
-9. **Envanter oluştur** sayfasında, envanter dizinini olarak `/u01/app/grid/oraInventory`değiştirin. Devam `next` etmek için tıklayın.
+9. **Envanter oluştur** sayfasında, envanter dizinini olarak değiştirin `/u01/app/grid/oraInventory` . `next`Devam etmek için tıklayın.
 
    ![Yükleyicinin envanter Oluştur sayfasının ekran görüntüsü](./media/oracle-asm/install08.png)
 
@@ -488,21 +487,21 @@ Oracle Grid altyapısını yüklemek için aşağıdaki adımları izleyin:
 
 11. **Önkoşul denetimleri gerçekleştir** sayfasında, geçerli kurulum hatalarla başarısız olur. Bu beklenen bir davranıştır. `Fix & Check Again` öğesini seçin.
 
-12. **Düzeltme betiği** iletişim kutusunda, öğesine tıklayın `OK`.
+12. **Düzeltme betiği** iletişim kutusunda, öğesine tıklayın `OK` .
 
-13. **Özet** sayfasında, seçtiğiniz ayarları gözden geçirin ve ardından öğesine tıklayın `Install`.
+13. **Özet** sayfasında, seçtiğiniz ayarları gözden geçirin ve ardından öğesine tıklayın `Install` .
 
     ![Yükleyicinin özet sayfasının ekran görüntüsü](./media/oracle-asm/install12.png)
 
-14. Yapılandırma komut dosyalarının ayrıcalıklı kullanıcı olarak çalıştırılması gerektiğini bildiren bir uyarı iletişim kutusu görüntülenir. Devam `Yes` etmek için tıklayın.
+14. Yapılandırma komut dosyalarının ayrıcalıklı kullanıcı olarak çalıştırılması gerektiğini bildiren bir uyarı iletişim kutusu görüntülenir. `Yes`Devam etmek için tıklayın.
 
-15. **Son** sayfasında, yüklemeyi sona bırakmak `Close` için ' ı tıklatın.
+15. **Son** sayfasında, `Close` yüklemeyi sona bırakmak için ' ı tıklatın.
 
 ## <a name="set-up-your-oracle-asm-installation"></a>Oracle ASM yüklemenizi ayarlama
 
 Oracle ASM yüklemenizi ayarlamak için aşağıdaki adımları izleyin:
 
-1. X11 oturumunuzda hala **kılavuz**olarak oturum açtığınızdan emin olun. Terminale bir daha dönmek `enter` için isabet etmeniz gerekebilir. Ardından Oracle otomatik depolama yönetimi yapılandırma yardımcısını başlatın:
+1. X11 oturumunuzda hala **kılavuz**olarak oturum açtığınızdan emin olun. Terminale bir daha dönmek için isabet etmeniz gerekebilir `enter` . Ardından Oracle otomatik depolama yönetimi yapılandırma yardımcısını başlatın:
 
    ```bash
    cd /u01/app/grid/product/12.1.0/grid/bin
@@ -511,19 +510,19 @@ Oracle ASM yüklemenizi ayarlamak için aşağıdaki adımları izleyin:
 
    Oracle ASM yapılandırma Yardımcısı açılır.
 
-2. **ASM: disk grupları Yapılandır** iletişim kutusunda, `Create` düğmesine tıklayın ve ardından öğesine tıklayın `Show Advanced Options`.
+2. **ASM: disk grupları Yapılandır** iletişim kutusunda, `Create` düğmesine tıklayın ve ardından öğesine tıklayın `Show Advanced Options` .
 
 3. **Disk grubu oluştur** iletişim kutusunda:
 
    - Disk grubu adı **verilerini**girin.
    - **Üye disklerini Seç**' in altında **ORCL_DATA** ve **ORCL_DATA1**' yi seçin.
    - **Ayırma birimi boyutu**altında **4**' ü seçin.
-   - Disk `ok` grubunu oluşturmak için tıklayın.
-   - Onay `ok` penceresini kapatmak için tıklayın.
+   - `ok`Disk grubunu oluşturmak için tıklayın.
+   - `ok`Onay penceresini kapatmak için tıklayın.
 
    ![Disk grubu oluştur iletişim kutusunun ekran görüntüsü](./media/oracle-asm/asm02.png)
 
-4. **ASM: disk grupları Yapılandır** iletişim kutusunda, `Create` düğmesine tıklayın ve ardından öğesine tıklayın `Show Advanced Options`.
+4. **ASM: disk grupları Yapılandır** iletişim kutusunda, `Create` düğmesine tıklayın ve ardından öğesine tıklayın `Show Advanced Options` .
 
 5. **Disk grubu oluştur** iletişim kutusunda:
 
@@ -531,8 +530,8 @@ Oracle ASM yüklemenizi ayarlamak için aşağıdaki adımları izleyin:
    - **Artıklık**altında **dış (yok)** seçeneğini belirleyin.
    - **Üye disklerini Seç**' in altında **ORCL_FRA**' yi seçin.
    - **Ayırma birimi boyutu**altında **4**' ü seçin.
-   - Disk `ok` grubunu oluşturmak için tıklayın.
-   - Onay `ok` penceresini kapatmak için tıklayın.
+   - `ok`Disk grubunu oluşturmak için tıklayın.
+   - `ok`Onay penceresini kapatmak için tıklayın.
 
    ![Disk grubu oluştur iletişim kutusunun ekran görüntüsü](./media/oracle-asm/asm04.png)
 
@@ -554,7 +553,7 @@ Oracle veritabanı yazılımı zaten Azure Market görüntüsüne yüklenmiş. B
 
    Veritabanı yapılandırma Yardımcısı açılır.
 
-2. **Veritabanı işlemi** sayfasında, öğesine tıklayın `Create Database`.
+2. **Veritabanı işlemi** sayfasında, öğesine tıklayın `Create Database` .
 
 3. **Oluşturma modu** sayfasında:
 
@@ -563,14 +562,14 @@ Oracle veritabanı yazılımı zaten Azure Market görüntüsüne yüklenmiş. B
    - **Veritabanı dosyaları konumu**IÇIN varsayılan ASM Önerilen konumunu kullanın.
    - **Hızlı kurtarma alanı**IÇIN varsayılan ASM Önerilen konumunu kullanın.
    - **yönetici parolası** yazın ve **parolayı onaylayın**.
-   - emin `create as container database` olun.
-   - bir `pluggable database name` değer yazın.
+   - emin olun `create as container database` .
+   - bir değer yazın `pluggable database name` .
 
-4. **Özet** sayfasında, seçtiğiniz ayarları gözden geçirin ve ardından veritabanını oluşturmak için öğesine `Finish` tıklayın.
+4. **Özet** sayfasında, seçtiğiniz ayarları gözden geçirin ve ardından `Finish` veritabanını oluşturmak için öğesine tıklayın.
 
    ![Özet sayfasının ekran görüntüsü](./media/oracle-asm/createdb03.png)
 
-5. Veritabanı oluşturuldu. **Son** sayfasında, bu veritabanını kullanmak ve parolaları değiştirmek için ek hesapların kilidini açma seçeneğiniz vardır. Bunu yapmak istiyorsanız, **parola yönetimi** ' ni seçin, yoksa açık `close`' a tıklayın.
+5. Veritabanı oluşturuldu. **Son** sayfasında, bu veritabanını kullanmak ve parolaları değiştirmek için ek hesapların kilidini açma seçeneğiniz vardır. Bunu yapmak istiyorsanız, **parola yönetimi** ' ni seçin, yoksa açık ' a tıklayın `close` .
 
 ## <a name="delete-the-vm"></a>VM’yi silin
 

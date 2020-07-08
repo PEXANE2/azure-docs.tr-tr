@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605847"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için ücretli veya lisanslı özel bileşenleri yükleme
@@ -41,9 +40,9 @@ Aşağıdaki diyagramda, bu yeni değişkenleri kullanan üçüncü taraf bileş
 ![Lisanslı bileşenleri yükleme](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Yönergeler
-1. ISV 'Ler, lisanslı bileşenlerini çeşitli SKU 'Lara veya katmanlara sunabilir (örneğin, tek düğüm, en fazla 5 düğüm, en fazla 10 düğüm vb.). ISV, müşteriler bir ürün satın alırken buna karşılık gelen ürün anahtarını sağlar. ISV, bir ISV kurulum betiği ve ilişkili dosyaları içeren bir Azure Storage blob kapsayıcısı da sağlayabilir. Müşteriler bu dosyaları kendi depolama kapsayıcılarına kopyalayabilir ve kendi ürün anahtarıyla değiştirebilir (örneğin, çalıştırarak `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Müşteriler daha sonra kapsayıcının SAS URI 'sini parametre olarak Azure-SSIS IR sağlayabilir veya yeniden yapılandırabilir. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirmesi çalışma zamanı için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md).
+1. ISV 'Ler, lisanslı bileşenlerini çeşitli SKU 'Lara veya katmanlara sunabilir (örneğin, tek düğüm, en fazla 5 düğüm, en fazla 10 düğüm vb.). ISV, müşteriler bir ürün satın alırken buna karşılık gelen ürün anahtarını sağlar. ISV, bir ISV kurulum betiği ve ilişkili dosyaları içeren bir Azure Storage blob kapsayıcısı da sağlayabilir. Müşteriler bu dosyaları kendi depolama kapsayıcılarına kopyalayabilir ve kendi ürün anahtarıyla değiştirebilir (örneğin, çalıştırarak `IsvSetup.exe -pid xxxx-xxxx-xxxx` ). Müşteriler daha sonra kapsayıcının SAS URI 'sini parametre olarak Azure-SSIS IR sağlayabilir veya yeniden yapılandırabilir. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirmesi çalışma zamanı için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-2. Azure-SSIS IR sağlandığında veya yeniden yapılandırdığınızda, ISV kurulumu Windows ortam değişkenlerini sorgulamak için her düğümde çalışır `SSIS_CLUSTERID` ve. `SSIS_CLUSTERNODECOUNT` Ardından Azure-SSIS IR, bir etkinleştirme anahtarı oluşturmak için, lisanslı ürün için küme KIMLIĞINI ve ürün anahtarını ISV etkinleştirme sunucusuna gönderir.
+2. Azure-SSIS IR sağlandığında veya yeniden yapılandırdığınızda, ISV kurulumu Windows ortam değişkenlerini sorgulamak için her düğümde çalışır `SSIS_CLUSTERID` ve `SSIS_CLUSTERNODECOUNT` . Ardından Azure-SSIS IR, bir etkinleştirme anahtarı oluşturmak için, lisanslı ürün için küme KIMLIĞINI ve ürün anahtarını ISV etkinleştirme sunucusuna gönderir.
 
 3. Etkinleştirme anahtarını aldıktan sonra, ISV kurulumu anahtarı her düğümde yerel olarak saklayabilir (örneğin, kayıt defterinde).
 

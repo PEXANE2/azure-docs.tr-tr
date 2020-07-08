@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641114"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
@@ -51,7 +50,7 @@ Media Services 2,10 sürümü ile başlayarak, bir kanal oluşturduğunuzda, kan
 > 
 
 ## <a name="billing-implications"></a>Faturalandırma etkileri
-Canlı bir kodlama kanalı, API aracılığıyla "çalışıyor" durumuna geçiş yaptığı sürece faturalandırmaya başlar.   Ayrıca, Azure portal veya Azure Media Services Gezgini aracında (https://aka.ms/amse).
+Canlı bir kodlama kanalı, API aracılığıyla "çalışıyor" durumuna geçiş yaptığı sürece faturalandırmaya başlar.   Ayrıca, Azure portal veya Azure Media Services Gezgini aracında ( https://aka.ms/amse) .
 
 Aşağıdaki tabloda, kanal durumlarının API ve Azure portal fatura durumlarıyla nasıl eşlenme gösterilmektedir. Durumlar, API ve Portal UX arasında biraz farklıdır. Kanal, API aracılığıyla "çalışıyor" durumunda veya Azure portal "Ready" veya "streaming" durumunda olduğunda faturalandırma etkin olur.
 Kanalın daha fazla faturalandırmasını engellemek için, API 'yi API aracılığıyla veya Azure portal durdurmanız gerekir.
@@ -71,7 +70,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | BT faturalandırma mı? |
 | --- | --- | --- |
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışıyor |Ready (çalışan program yok)<br/>or<br/>Akış (en az bir çalışan program) |EVET |
+| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
 | Durduruldu |Durduruldu |Hayır |
 
@@ -158,7 +157,7 @@ Dikkat edilmesi gerekenler:
 
 [Tek bit hızı RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP)ile aynıdır.
 
-#### <a name="other-considerations"></a>Diğer konular
+#### <a name="other-considerations"></a>Diğer önemli noktalar
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Gelen video akışı için en yüksek çözünürlük 1920x1080 ve en fazla 60 alan/saniye, titreşimli ise 30 kare/saniye olur.
 
@@ -313,7 +312,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışıyor |Ready (çalışan program yok)<br/>or<br/>Akış (en az bir çalışan program) |Yes |
+| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Evet |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
 | Durduruldu |Durduruldu |Hayır |
 
@@ -322,7 +321,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a><a id="Considerations"></a>Önemli noktalar
 * **Standart** kodlama türünde bir kanal giriş kaynağı/katkı akışı kaybı yaşadığında, kaynak videoyu/sesi bir hata kurşun ekranı ve sessizlik ile değiştirerek bunu dengeleyerek dengeler. Kanal, giriş/katkı akışı sürdürülene kadar bir tablet görüntüsü almaya devam edecektir. Canlı bir kanalın, 2 saatten uzun süre boyunca böyle bir durumda kalmamalıdır. Bu noktanın ötesinde, giriş yeniden bağlantı üzerindeki kanalın davranışı garanti edilmez, bu durum sıfırlama komutuna yanıt olarak değildir. Kanalı durdurmanız, silmeniz ve yeni bir tane oluşturmanız gerekir.
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Gerçek zamanlı kodlayıcıyı her yeniden yapılandırdığınızda, kanalda **Reset** yöntemini çağırın. Kanalı sıfırlamadan önce programı durdurmanız gerekir. Kanalı sıfırladıktan sonra programı yeniden başlatın.
@@ -350,7 +349,7 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

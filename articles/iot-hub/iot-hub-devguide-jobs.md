@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730098"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Birden fazla cihazda işleri zamanlama
@@ -30,7 +29,7 @@ Bir cihaz kümesi üzerinde aşağıdaki etkinliklerden herhangi birini zamanlam
 
 ## <a name="job-lifecycle"></a>İş yaşam döngüsü
 
-İşler, çözüm arka ucu tarafından başlatılır ve IoT Hub tarafından sürdürülür. Hizmete yönelik bir URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) aracılığıyla bir işi başlatabilir ve bir HIZMET temelli URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) aracılığıyla yürütülen iş üzerinde ilerleme durumunu sorgulayın. İş başlatıldığında çalışan işlerin durumunu yenilemek için bir iş sorgusu çalıştırın.
+İşler, çözüm arka ucu tarafından başlatılır ve IoT Hub tarafından sürdürülür. Hizmete yönelik bir URI () aracılığıyla bir işi başlatabilir ve bir `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` hizmet TEMELLI URI () aracılığıyla yürütülen iş üzerinde ilerleme durumunu sorgulayın `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` . İş başlatıldığında çalışan işlerin durumunu yenilemek için bir iş sorgusu çalıştırın.
 
 > [!NOTE]
 > Bir iş başlattığınızda, özellik adları ve değerleri yalnızca ABD-ASCII yazdırılabilir alfasayısal içerebilir (aşağıdaki küme dışında):`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
@@ -122,7 +121,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin* özelliği geçerli bir ETag eşleşmesi gerektirir; Örneğin, `etag="*"`.
+> *UpdateTwin* özelliği geçerli bir ETag eşleşmesi gerektirir; Örneğin, `etag="*"` .
 
 Aşağıdaki kod parçacığında, contoso-hub-1 ' deki test cihazının cihaz ikizi özelliklerini güncelleştirmek üzere zamanlanan bir iş için istek ve yanıt gösterilmektedir:
 

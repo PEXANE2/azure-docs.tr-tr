@@ -1,5 +1,5 @@
 ---
-title: Raspberry PI 'yi Bulutta Azure IoT Hub bağlama (node. js)
+title: Raspberry PI 'yi Bulutta Azure IoT Hub bağlama (Node.js)
 description: Bu öğreticide Azure Cloud Platform 'a veri göndermek üzere Raspberry PI 'yi ayarlamayı ve Azure IoT Hub için Azure 'a bağlamayı öğrenin.
 author: wesmc7777
 manager: eliotgra
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
 ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640525"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure IoT Hub 'ye bağlama (node. js)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure 'a bağlama IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -116,9 +115,9 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
 1. PI 'yi monitöre, klavyeye ve fareye bağlayın.
 
-2. PI 'yi başlatın ve Kullanıcı adı ve `pi` `raspberry` parola olarak kullanarak Raspbian 'de oturum açın.
+2. PI 'yi başlatın ve `pi` Kullanıcı adı ve parola olarak kullanarak Raspbian 'de oturum açın `raspberry` .
 
-3. **Preferences** > **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
+3. **Preferences**  >  **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
 
    ![Raspbian Tercihler menüsü](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -179,20 +178,20 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    **Mac ve Ubuntu kullanıcıları**
 
-   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. PI 'yi SSH aracılığıyla bağlamak `ssh pi@<ip address of pi>` için çalıştırmanız gerekebilir.
+   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. `ssh pi@<ip address of pi>`PI 'YI SSH aracılığıyla bağlamak için çalıştırmanız gerekebilir.
 
    > [!NOTE]
-   > Varsayılan Kullanıcı adı `pi` ve parola ' dır `raspberry`.
+   > Varsayılan Kullanıcı adı `pi` ve parola ' dır `raspberry` .
 
-2. Node. js ve NPM 'yi PI 'nize yükler.
+2. Node.js ve NPM 'yi Pi 'nize.
 
-   Önce Node. js sürümünüzü kontrol edin.
+   İlk olarak Node.js sürümünüzü kontrol edin.
 
    ```bash
    node -v
    ```
 
-   Sürüm 10. x 'den düşükse veya PI 'ağınızda Node. js yoksa, en son sürümü yükler.
+   Sürüm 10. x 'den düşükse veya PI 'ağınızda Node.js yoksa, en son sürümü yükler.
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -225,11 +224,11 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    ![Yapılandırma dosyası](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, buluta gönderilen `interval`iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan bir değer. İkinci bir değer `simulatedData`, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeridir.
+   Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, `interval` buluta gönderilen iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan bir değer. İkinci bir `simulatedData` değer, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeridir.
 
-   **Sensöre sahip**değilseniz, örnek uygulamanın benzetimli `simulatedData` algılayıcı verileri `true` oluşturması ve kullanması için değerini olarak ayarlayın.
+   **Sensöre sahip**değilseniz, `simulatedData` `true` örnek uygulamanın benzetimli algılayıcı verileri oluşturması ve kullanması için değerini olarak ayarlayın.
 
-   *Note: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için Raspberry Pi üzerinde `sudo i2cdetect -y 1` bir kabukta çalıştırın*
+   *Note: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için `sudo i2cdetect -y 1` Raspberry Pi üzerinde bir kabukta çalıştırın*
 
 2. Control-O > yazarak kaydedip çıkış yapın ve > Control-X yazın.
 

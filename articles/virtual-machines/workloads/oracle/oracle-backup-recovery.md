@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687013"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve kurtarma
@@ -38,7 +37,7 @@ Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bil
 
 ### <a name="step-2-connect-to-the-vm"></a>2. Adım: VM 'ye bağlanma
 
-*   VM ile Secure Shell (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar adı birleşimini, sanal makinenizin `publicIpAddress` değeriyle değiştirin.
+*   VM ile Secure Shell (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar adı birleşimini, `publicIpAddress` sanal makinenizin değeriyle değiştirin.
 
     ```bash
     ssh <publicIpAddress>
@@ -141,7 +140,7 @@ Uygulamayla tutarlı yedeklemeler Azure Backup yeni bir özelliktir. VM anlık g
 
 1. JSON dosyasını indirin.
 
-    VMSnapshotScriptPluginConfig. json ' dan https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigindirin. Dosya içerikleri aşağıdakine benzer şekilde görünür:
+    VMSnapshotScriptPluginConfig.jsadresinden indirin https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig . Dosya içerikleri aşağıdakine benzer şekilde görünür:
 
     ```output
     {
@@ -168,11 +167,11 @@ Uygulamayla tutarlı yedeklemeler Azure Backup yeni bir özelliktir. VM anlık g
 
 3. JSON dosyasını kopyalayın.
 
-    VMSnapshotScriptPluginConfig. json dosyasını makinelerdeki/etc/Azure klasörüne kopyalayın.
+    VMSnapshotScriptPluginConfig.js, makinelerdeki/etc/Azure klasörüne kopyalayın.
 
 4. JSON dosyasını düzenleyin.
 
-    `PreScriptLocation` Ve `PostScriptlocation` parametrelerini dahil etmek için VMSnapshotScriptPluginConfig. json dosyasını düzenleyin. Örneğin:
+    Dosyasındaki VMSnapshotScriptPluginConfig.jsve parametrelerini içerecek şekilde düzenleyin `PreScriptLocation` `PostScriptlocation` . Örneğin:
 
     ```output
     {
@@ -508,7 +507,7 @@ VM geri yüklendikten sonra genel IP adresini ayarlayın.
 
     ![Genel IP adresleri listesi](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  **Genel IP adresleri** dikey penceresinde **Ekle**' ye tıklayın. **Genel IP adresi oluştur** dikey penceresinde, **ad**için genel IP adını seçin. **Kaynak grubu** olarak **Var olanı kullan**’ı seçin. Sonra **Oluştur**' a tıklayın.
+2.  **Genel IP adresleri** dikey penceresinde **Ekle**' ye tıklayın. **Genel IP adresi oluştur** dikey penceresinde, **ad**için genel IP adını seçin. **Kaynak grubu** olarak **Var olanı kullan**’ı seçin. Ardından, **Oluştur**'u tıklatın.
 
     ![IP adresi oluştur](./media/oracle-backup-recovery/create_ip_01.png)
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606235"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Data Factory pencere dönüştürmesi
@@ -24,12 +23,12 @@ Pencere dönüştürmesi, veri akışlarınızın pencere tabanlı toplamaların
 ![Pencere seçenekleri](media/data-flow/windows1.png "Windows 1")
 
 ## <a name="over"></a>Avantajları
-Pencere dönüştürmelerinizin sütun verilerinin bölümlenmesini ayarlayın. SQL eşdeğeri, SQL 'deki ```Partition By``` Over yan tümcesinde bulunur. Bölümleme için kullanmak üzere bir hesaplama oluşturmak veya bir ifade oluşturmak isterseniz, bunu sütun adının üzerine gelerek ve "hesaplanan sütun" seçeneğini belirleyerek yapabilirsiniz.
+Pencere dönüştürmelerinizin sütun verilerinin bölümlenmesini ayarlayın. SQL eşdeğeri, ```Partition By``` SQL 'Deki Over yan tümcesinde bulunur. Bölümleme için kullanmak üzere bir hesaplama oluşturmak veya bir ifade oluşturmak isterseniz, bunu sütun adının üzerine gelerek ve "hesaplanan sütun" seçeneğini belirleyerek yapabilirsiniz.
 
 ![Pencere seçenekleri](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Sırala
-Over yan tümcesinin başka bir bölümü öğesini ayarlanıyor ```Order By```. Bu, veri sıralama sıralamasını ayarlar. Ayrıca, bu sütun alanında sıralama için bir hesaplama değeri için bir ifade oluşturabilirsiniz.
+Over yan tümcesinin başka bir bölümü öğesini ayarlanıyor ```Order By``` . Bu, veri sıralama sıralamasını ayarlar. Ayrıca, bu sütun alanında sıralama için bir hesaplama değeri için bir ifade oluşturabilirsiniz.
 
 ![Pencere seçenekleri](media/data-flow/windows5.png "Windows 5")
 
@@ -45,7 +44,7 @@ Son olarak, SıRALAMA, sayı, MIN, MAX, yoğun sıra, müşteri adayı, GECIKME,
 
 ![Pencere seçenekleri](media/data-flow/windows7.png "Windows 7")
 
-Veri akışı Oluşturucu aracılığıyla ADF veri akışı Ifade dilinde kullanabileceğiniz toplama ve analitik işlevlerin tam listesi burada listelenmiştir: https://aka.ms/dataflowexpressions.
+Veri akışı Oluşturucu aracılığıyla ADF veri akışı Ifade dilinde kullanabileceğiniz toplama ve analitik işlevlerin tam listesi burada listelenmiştir: https://aka.ms/dataflowexpressions .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

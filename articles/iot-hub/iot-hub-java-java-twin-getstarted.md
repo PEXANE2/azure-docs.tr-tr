@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732447"
 ---
 # <a name="get-started-with-device-twins-java"></a>Cihaz ikizlerini kullanmaya başlama (Java)
@@ -67,7 +66,7 @@ Bu bölümde, konum meta verilerini **Mydeviceıd**ile ilişkili IoT Hub cihaz i
 
 3. Komut istemindeki **Add-Tags-Query** klasörüne gidin.
 
-4. Bir metin düzenleyicisi kullanarak, **Add-Tags-Query** klasöründeki **Pod. xml** dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
+4. Bir metin düzenleyicisi kullanarak, **Add-Tags-Query** klasöründeki **pom.xml** dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
@@ -124,7 +123,7 @@ Bu bölümde, konum meta verilerini **Mydeviceıd**ile ilişkili IoT Hub cihaz i
     public static final String plant = "Redmond43";
     ```
 
-10. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+10. **Ana** yöntem imzasını aşağıdaki yan tümceyi içerecek şekilde güncelleştirin `throws` :
 
     ```java
     public static void main( String[] args ) throws IOException
@@ -150,7 +149,7 @@ Bu bölümde, konum meta verilerini **Mydeviceıd**ile ilişkili IoT Hub cihaz i
     }
     ```
 
-13. Device ikizi içindeki **Region** ve **bitki** cihazı ikizi etiketlerini güncelleştirmek için, `try` bloğa aşağıdaki kodu ekleyin:
+13. Device ikizi içindeki **Region** ve **bitki** cihazı ikizi etiketlerini güncelleştirmek için, bloğa aşağıdaki kodu ekleyin `try` :
 
     ```java
     // Get the device twin from IoT Hub
@@ -179,7 +178,7 @@ Bu bölümde, konum meta verilerini **Mydeviceıd**ile ilişkili IoT Hub cihaz i
     System.out.println(device);
     ```
 
-14. IoT Hub 'ında cihaz ikizlerini sorgulamak için, önceki adımda eklediğiniz koddan sonra aşağıdaki kodu `try` bloğa ekleyin. Kod iki sorgu çalıştırır. Her sorgu en fazla 100 cihaz döndürür.
+14. IoT Hub 'ında cihaz ikizlerini sorgulamak için, `try` önceki adımda eklediğiniz koddan sonra aşağıdaki kodu bloğa ekleyin. Kod iki sorgu çalıştırır. Her sorgu en fazla 100 cihaz döndürür.
 
     ```java
     // Query the device twins in IoT Hub
@@ -228,7 +227,7 @@ Bu bölümde, IoT Hub gönderilen bildirilen bir özellik değerini ayarlayan bi
 
 2. Komut istemindeki **sanal cihaz** klasörüne gidin.
 
-3. Bir metin düzenleyicisi kullanarak, **sanal cihaz** klasöründe **polım. xml** dosyasını açın ve aşağıdaki bağımlılıkları **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar.
+3. Bir metin düzenleyicisi kullanarak, **sanal cihaz** klasöründeki **pom.xml** dosyasını açın ve aşağıdaki bağımlılıkları **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar.
 
     ```xml
     <dependency>

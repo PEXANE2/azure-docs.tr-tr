@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687132"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımla
@@ -27,7 +26,7 @@ Aşağıdaki [kılavuz ve sınırlamalar](#guidelines-and-limitations) bölümü
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturma sırasında otomatik dil tanımlamayı seçme
 
-API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `auto detect` `sourceLanguage` parametresindeki seçeneği belirleyin.
+API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `auto detect` parametresindeki seçeneği belirleyin `sourceLanguage` .
 
 Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfasında **Hesap videolarınıza** gidin ve yeniden dizinlemek istediğiniz videonun adının üzerine gelin. Sağ alt köşede yeniden dizin düğmesine tıklayın. **Yeniden dizin videosu** iletişim kutusunda, **video kaynak dili** açılır listesinden *Otomatik Algıla* ' yı seçin.
 
@@ -35,9 +34,9 @@ Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfa
 
 ## <a name="model-output"></a>Model çıkışı
 
-Video Indexer söz konusu dilin güvenilirliği ise, `> 0.6`videoyu en olası dile göre. Dil güvenle tanımlanamıyorsa, konuşulan dilin Ingilizce olduğunu varsayar. 
+Video Indexer söz konusu dilin güvenilirliği ise, videoyu en olası dile göre `> 0.6` . Dil güvenle tanımlanamıyorsa, konuşulan dilin Ingilizce olduğunu varsayar. 
 
-Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kullanılabilir (kök/videolar/Öngörüler altında). Karşılık gelen bir güven puanı `sourceLanguageConfidence` özniteliği altında da kullanılabilir.
+Model baskın dil, Öngörüler JSON 'da öznitelik olarak kullanılabilir `sourceLanguage` (kök/videolar/Öngörüler altında). Karşılık gelen bir güven puanı özniteliği altında da kullanılabilir `sourceLanguageConfidence` .
 
 ```json
 "insights": {
@@ -58,7 +57,7 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
     İngilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Mandarin, Japonca, Rusça ve Portekizce (Brezilya).
 * Video Indexer, Arapça (modern standart ve Levantine), Hintçe ve Korece 'yi desteklese de bu diller KAPAPLANDA desteklenmez.
 * Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
-* Video Indexer, yüksek oranda güvenilirlikli (`>0.6`) dili tanımlayamıyor, geri dönüş dili İngilizce olur.
+* Video Indexer, yüksek oranda güvenilirlikli () dili tanımlayamıyor `>0.6` , geri dönüş dili İngilizce olur.
 * Karma diller ses içeren dosya için geçerli destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmedik olur. 
 * Düşük kaliteli ses, model sonuçlarını etkileyebilir.
 * Model, sese en az bir dakikalık konuşma gerektirir.
@@ -66,5 +65,5 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Genel bakış](video-indexer-overview.md)
+* [Genel Bakış](video-indexer-overview.md)
 * [Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md)

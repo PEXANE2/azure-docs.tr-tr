@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605505"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
@@ -58,7 +57,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 - **Kimlik doğrulama yöntemi**için **hesap anahtarı**, **SAS URI 'si**veya **hizmet sorumlusu**' nı seçin.  
 
     >[!TIP]
-    >**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için [Azure Blob depolama Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties)' na bakın.
+    >**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı*   rolü verin. Daha fazla bilgi için [Azure Blob depolama Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties)' na bakın.
 
 ![Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -78,7 +77,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 
    1. **Hazırlama yolu** kutusunda, seçili Azure Blob depolama hesabınızda bir blob kapsayıcısı belirtin veya hazırlama için varsayılan bir tane kullanmak üzere boş bırakın.
 
-   1. **Devam**'ı seçin.
+   1. **Devam**’ı seçin.
 
    ![Şirket içinde barındırılan IR ile gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -118,7 +117,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS paketlerini proxy ile bağlanacak şekilde etkinleştir
 
-Visual Studio veya tek başına yükleyici için SSIS projeleri Uzantısı ile en son SSDT 'yi kullanarak, OLEDB veya düz dosya bağlantı yöneticilerine `ConnectByProxy` eklenen yeni bir özellik bulabilirsiniz.
+Visual Studio veya tek başına yükleyici için SSIS projeleri Uzantısı ile en son SSDT 'yi kullanarak, `ConnectByProxy` OLEDB veya düz dosya bağlantı yöneticilerine eklenen yeni bir özellik bulabilirsiniz.
 * [Visual Studio için SSIS projeleri Uzantısı ile SSDT 'yi indirin](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Tek başına yükleyiciyi indirme](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
@@ -135,11 +134,11 @@ Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane i
   
   ![ConnectByProxy property3 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **Seçenek B:** SSIS IR 'niz üzerinde çalışmak üzere bu paketlerin bulunduğu projeyi yeniden dağıtın. Daha sonra özellik `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`yolunu sağlayarak özelliği etkinleştirebilir ve paketleri SSMS 'Den çalıştırırken **paket Çalıştır** açılır penceresinin **Gelişmiş** sekmesinde özellik geçersiz kılma olarak *true* olarak ayarlayabilirsiniz.
+- **Seçenek B:** SSIS IR 'niz üzerinde çalışmak üzere bu paketlerin bulunduğu projeyi yeniden dağıtın. Daha sonra özellik yolunu sağlayarak özelliği etkinleştirebilir `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` ve paketleri SSMS 'den çalıştırırken **paket Çalıştır** açılır penceresinin **Gelişmiş** sekmesinde özellik geçersiz kılma olarak *true* olarak ayarlayabilirsiniz.
 
   ![ConnectByProxy property4 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Ayrıca, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`özellik yolunu sağlayarak özelliği etkinleştirebilir ve Data Factory işlem hatlarında paket çalıştırırken [SSIS paketi yürütme etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **geçersiz** kılınması sekmesinde özellik geçersiz kılma olarak true olarak *ayarlanır* .
+  Ayrıca, özellik yolunu sağlayarak özelliği etkinleştirebilir `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` ve Data Factory işlem hatlarında paket ÇALıŞTıRıRKEN [SSIS paketi yürütme etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **geçersiz** kılınması sekmesinde özellik geçersiz kılma olarak *true olarak ayarlanır* .
   
   ![ConnectByProxy Property5 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,7 +152,7 @@ Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane i
 
 Şirket içinde barındırılan IR 'de hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Hazırlama görevleriniz, şirket içinde barındırılan IR Hizmeti hesabıyla (varsayılan olarak*NT SERVICE\DIAHostService*) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilir. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde **yerel güvenlik ilkesi** > **Yerel ilkeler** > **Kullanıcı hakları ataması**' na gidin ve ardından aşağıdakileri yapın:
+Hazırlama görevleriniz, şirket içinde barındırılan IR Hizmeti hesabıyla (varsayılan olarak*NT SERVICE\DIAHostService*) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilir. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde **yerel güvenlik ilkesi**  >  **Yerel ilkeler**  >  **Kullanıcı hakları ataması**' na gidin ve ardından aşağıdakileri yapın:
 
 1. *Bir işlem için bellek kotalarını ayarlama* ve *bir işlem düzeyi belirteç* ILKELERINI şirket içinde barındırılan IR Hizmeti hesabıyla değiştirme. Bu, kendi kendine barındırılan IR 'yi varsayılan hizmet hesabıyla yüklediğinizde otomatik olarak gerçekleşir. Değilse, bu ilkeleri el ile atayın. Farklı bir hizmet hesabı kullanıyorsanız, buna aynı ilkeleri atayın.
 
@@ -165,7 +164,7 @@ Hazırlama görevleriniz, şirket içinde barındırılan IR Hizmeti hesabıyla 
 
 Azure-SSIS IR çalışan ikinci hazırlama görevleri ayrı olarak faturalandırılmaz, ancak çalıştırdığınız Azure-SSIS IR [Azure-SSIS IR fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/ssis/) makalesinde belirtilen şekilde faturalandırılır.
 
-## <a name="enabling-tls-12"></a>TLS 1,2 etkinleştiriliyor
+## <a name="enabling-tls-12"></a>TLS 1.2'yi etkinleştirme
 
 Güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanmanız ve şirket içinde barındırılan IR 'de eski SSL/TLS sürümlerini devre dışı bırakmanız gerekirse, genel önizleme kapsayıcımız için *Customsetupscript/Usersenaryolar/tls 1,2* klasöründe bulunan *Main. cmd* betiğini indirebilir ve çalıştırabilirsiniz.  [Azure Depolama Gezgini](https://storageexplorer.com/)kullanarak, aşağıdaki SAS URI 'sini girerek genel önizleme kapsayıcımıza bağlanabilirsiniz:
 

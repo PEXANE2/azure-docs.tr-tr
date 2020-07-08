@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688091"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub cihaz yönetimi için Visual Studio Code Azure IoT araçları 'nı kullanma
@@ -48,7 +47,7 @@ Geliştirme makinenizde çeşitli yönetim seçenekleriyle Visual Studio Code i�
 * Etkin bir Azure aboneliği.
 * Aboneliğiniz kapsamındaki bir Azure IoT Hub 'ı.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Vs Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya bu URL 'yi kopyalayıp bir tarayıcı penceresine yapıştırırsınız:`vscode:extension/vsciot-vscode.azure-iot-tools`.
+* [Vs Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya bu URL 'yi kopyalayıp bir tarayıcı penceresine yapıştırırsınız: `vscode:extension/vsciot-vscode.azure-iot-tools` .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>IoT Hub 'ınıza erişmek için oturum açın
 
@@ -71,19 +70,19 @@ Geliştirme makinenizde çeşitli yönetim seçenekleriyle Visual Studio Code i�
 
 2. Giriş kutusuna yöntem adını ve yükünü girin.
 
-3. Sonuçlar, **Çıkış** > **Azure IoT Hub** görünümünde gösterilir.
+3. Sonuçlar, **Çıkış**  >  **Azure IoT Hub** görünümünde gösterilir.
 
 ## <a name="read-device-twin"></a>Cihaz ikizi okuma
 
 1. Cihazınıza sağ tıklayın ve **cihaz Ikizi Düzenle**' yi seçin. 
 
-2. Bir **Azure-IoT-Device-ikizi. JSON** dosyası, Device ikizi içeriğiyle açılacak.
+2. **azure-iot-device-twin.js** bir dosya, Device ikizi içeriğiyle açılır.
 
 ## <a name="update-device-twin"></a>Cihaz ikizi Güncelleştir
 
 1. **Etiket** veya özelliklerde bazı düzenlemeler yapın **. istenen** alan.
 
-2. **Azure-IoT-Device-ikizi. JSON** dosyasına sağ tıklayın.
+2. Dosyadaki **azure-iot-device-twin.js** sağ tıklayın.
 
 3. Cihaz ikizi güncelleştirmek için **cihaz Ikizi Güncelleştir** ' i seçin.
 
@@ -95,7 +94,7 @@ IoT Hub 'ından cihazınıza bir ileti göndermek için şu adımları izleyin:
 
 2. Giriş kutusuna iletiyi girin.
 
-3. Sonuçlar, **Çıkış** > **Azure IoT Hub** görünümünde gösterilir.
+3. Sonuçlar, **Çıkış**  >  **Azure IoT Hub** görünümünde gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

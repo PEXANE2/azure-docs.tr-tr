@@ -4,10 +4,9 @@ description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geç
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538265"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
@@ -33,8 +32,8 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 
 ## <a name="download-the-ova-template"></a>OVA şablonunu indirin
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  > Makinelerde **bulunan makinelerde****makineler sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet 'e**tıklayın.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet 'e**tıklayın.
 3. .OVA şablon dosyasını indirmek için **İndir**’e tıklayın.
 
   ![OVA dosyasını indirme seçimleri](./media/tutorial-assess-vmware/download-ova.png)
@@ -55,7 +54,7 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 
 İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
 
-1. VSphere istemci konsolunda,**ovf şablonu** **Dosya** > Dağıt ' a tıklayın.
+1. VSphere istemci konsolunda, **File**  >  **ovf şablonu dosya dağıt**' a tıklayın.
 ![OVF şablonu dağıtmak için menü komutu](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
@@ -84,7 +83,7 @@ Gereci ilk kez ayarlayın. Gereci bir OVA şablonu yerine bir komut dosyası kul
 4. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
+        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. Bulmanın düzgün çalışması için gerecin Internet saatine eşit olması gerekir.
@@ -102,7 +101,7 @@ Gereci ilk kez ayarlayın. Gereci bir OVA şablonu yerine bir komut dosyası kul
 3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
 2. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
 3. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-4. **Kaydol**' a tıklayın.
+4. **Kaydet**’e tıklayın.
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>vCenter Server ve VM kimlik bilgilerini sağlayarak sürekli bulmayı Başlat

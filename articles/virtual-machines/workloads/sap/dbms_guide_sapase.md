@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273214"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
@@ -50,7 +49,7 @@ Bellek üzerindeki kilit sayfaları, SAP Ao veritabanı arabelleğinin sayfalanm
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Linux işletim sistemine özgü ayarlar
-Linux VM 'lerde, profil `saptune` SAP ile ÇALıŞTıRıN-Ao Linux büyük sayfaları varsayılan olarak etkinleştirilmelidir ve komutla doğrulanabilir  
+Linux VM 'lerde, `saptune` PROFIL SAP ile çalıştırın-Ao Linux büyük sayfaları varsayılan olarak etkinleştirilmelidir ve komutla doğrulanabilir  
 
 `cat /proc/meminfo` 
 
@@ -61,7 +60,7 @@ Sayfa boyutu genellikle 2048 KB 'tır. Ayrıntılar için bkz. [Linux 'ta çok b
 
 SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) inceleyin ve bir performans testi çalıştırmayı deneyin.  
 Yazma Hızlandırıcısı yalnızca işlem günlüğü diski için tasarlanmıştır. Disk düzeyi önbelleği NONE olarak ayarlanmalıdır. Azure Yazma Hızlandırıcısı diğer DBMS ile benzer iyileştirmeler göstermezse şaşırmayın. SAP ATıCı 'in işlem günlüğüne yazdığı yönteme bağlı olarak, Azure Yazma Hızlandırıcısı tarafından hiçbir hızlandırma olmaması olabilir.
-Veri cihazları ve günlük cihazları için ayrı diskler önerilir.  Sistem veritabanları sybgüvenlik ve `saptools` adanmış diskler gerektırmez ve SAP veritabanı verilerini ve günlük cihazlarını içeren disklere yerleştirilebilecek 
+Veri cihazları ve günlük cihazları için ayrı diskler önerilir.  Sistem veritabanları sybgüvenlik ve `saptools` adanmış diskler gerektirmez ve SAP veritabanı verilerini ve günlük cihazlarını içeren disklere yerleştirilebilecek 
 
 ![SAP ATıCı için depolama yapılandırması](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
@@ -80,10 +79,10 @@ Aşağıda verilen örnekler tanım amaçlıdır ve bireysel gereksinimlere gör
 
 SAP Solution Manager gibi 50 GB – 250 GB arasında bir veritabanı boyutu içeren küçük bir SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
 
-| Yapılandırma | Windows | Linux | Açıklamalar |
+| Yapılandırma | Windows | Linux | Yorumlar |
 | --- | --- | --- | --- |
 | VM türü | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| Hızlandırılmış Ağ | Etkinleştir | Etkinleştir | ---|
 | SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
 | veri cihazlarının sayısı | 4 | 4 | ---|
 | günlük cihazlarının sayısı | 1 | 1 | --- |
@@ -101,10 +100,10 @@ SAP Solution Manager gibi 50 GB – 250 GB arasında bir veritabanı boyutu içe
 
 Daha küçük bir SAP Business Suite sistemi gibi 250 GB – 750 GB arasında bir veritabanı boyutu olan orta SAP AAS DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
 
-| Yapılandırma | Windows | Linux | Açıklamalar |
+| Yapılandırma | Windows | Linux | Yorumlar |
 | --- | --- | --- | --- |
 | VM türü | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| Hızlandırılmış Ağ | Etkinleştir | Etkinleştir | ---|
 | SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
 | veri cihazlarının sayısı | 8 | 8 | ---|
 | günlük cihazlarının sayısı | 1 | 1 | --- |
@@ -121,10 +120,10 @@ Daha küçük bir SAP Business Suite sistemi gibi 250 GB – 750 GB arasında bi
 
 Daha büyük bir SAP Business Suite sistemi gibi 750 GB – 2000 GB arasında bir veritabanı boyutu içeren küçük bir SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
 
-| Yapılandırma | Windows | Linux | Açıklamalar |
+| Yapılandırma | Windows | Linux | Yorumlar |
 | --- | --- | --- | --- |
 | VM türü | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| Hızlandırılmış Ağ | Etkinleştir | Etkinleştir | ---|
 | SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
 | veri cihazlarının sayısı | 16 | 16 | ---|
 | günlük cihazlarının sayısı | 1 | 1 | --- |
@@ -142,10 +141,10 @@ Daha büyük bir SAP Business Suite sistemi gibi 750 GB – 2000 GB arasında bi
 
 Daha büyük bir genel olarak kullanılan SAP Business Suite sistemi gibi bir veritabanı boyutu 2 TB + olan küçük SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
 
-| Yapılandırma | Windows | Linux | Açıklamalar |
+| Yapılandırma | Windows | Linux | Yorumlar |
 | --- | --- | --- | --- |
 | VM türü | A serisi (1,0-4,0 TB RAM)  | A serisi (1,0-4,0 TB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| Hızlandırılmış Ağ | Etkinleştir | Etkinleştir | ---|
 | SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
 | veri cihazlarının sayısı | 32 | 32 | ---|
 | günlük cihazlarının sayısı | 1 | 1 | --- |
@@ -211,7 +210,7 @@ SAP yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını �
 - Doğru dizili boyut ve dosya sistemi ile Windows depolama alanları veya Linux LVM2 kullanarak diskleri toplama
 - Veri, günlük, geçici ve yedekleme amacıyla yeterli sayıda cihaz oluşturun
 - X-büyük sistemler için UltraDisk kullanmayı düşünün 
-- Linux `saptune` işletim sisteminde SAP-Ao çalıştırma 
+- `saptune`LINUX işletim sisteminde SAP-Ao çalıştırma 
 - Veritabanını DB şifrelemesiyle güvenli hale getirme-anahtarları Azure Key Vault el ile depolayın 
 - [Azure 'Da SAP 'yi doldurun denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
 - Günlük yedeklemesini ve tam yedeklemeyi yapılandırma 
@@ -221,7 +220,7 @@ SAP yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını �
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>Veritabanı örneklerini izlemek için Dbakokpit kullanma
 Veritabanı platformu olarak SAP AAS kullanan SAP sistemleri için Dbakokpit, işlem Dbakokpit veya WebDynpro olarak katıştırılmış tarayıcı pencereleri olarak erişilebilir. Ancak, veritabanını izlemeye ve yönetmeye yönelik tüm işlevler yalnızca Dbakokpit 'ın WebDynpro uygulamasında kullanılabilir.
 
-Şirket içi sistemlerde olduğu gibi, Dbakokpitinin WebDynpro uygulamasının kullandığı tüm SAP NetWeaver işlevlerini etkinleştirmek için birkaç adım gerekir. Web dynprofesyonelleri kullanımını etkinleştirmek ve gerekli olanları oluşturmak için [sap destek not#1245200](https://launchpad.support.sap.com/#/notes/1245200) izleyin. Yukarıdaki notlardaki yönergeleri izleyerek, Internet Iletişim Yöneticisi 'Ni (`ICM`) http ve HTTPS bağlantıları için kullanılacak bağlantı noktalarıyla birlikte da yapılandırırsınız. Http için varsayılan ayar şöyle görünür:
+Şirket içi sistemlerde olduğu gibi, Dbakokpitinin WebDynpro uygulamasının kullandığı tüm SAP NetWeaver işlevlerini etkinleştirmek için birkaç adım gerekir. Web dynprofesyonelleri kullanımını etkinleştirmek ve gerekli olanları oluşturmak için [sap destek not#1245200](https://launchpad.support.sap.com/#/notes/1245200) izleyin. Yukarıdaki notlardaki yönergeleri izleyerek, Internet Iletişim Yöneticisi 'Ni ( `ICM` ) http ve HTTPS bağlantıları için kullanılacak bağlantı noktalarıyla birlikte da yapılandırırsınız. Http için varsayılan ayar şöyle görünür:
 
 > ICM/server_port_0 = PROT = HTTP, bağlantı noktası = 8000, PROCTIMEOUT = 600, zaman AŞıMı = 600
 > 
@@ -231,17 +230,17 @@ Veritabanı platformu olarak SAP AAS kullanan SAP sistemleri için Dbakokpit, i�
 
 ve işlem Dbakokpit içinde oluşturulan bağlantılar şuna benzer:
 
-> https:\//\<fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ / \<fullyqualifiedhostname> : 44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//\<fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ / \<fullyqualifiedhostname> : 8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
 SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. ICM 'nin profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse ICM/host_name_full parametresini ayarlama hakkında bilgi edinmek için bkz. [sap destek notunun #773830](https://launchpad.support.sap.com/#/notes/773830) .
 
-VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve bir `domainlabel`tanımlamanız gerekir. VM 'nin Genel DNS adının biçimi şöyle görünür:
+VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve bir tanımlamanız gerekir `domainlabel` . VM 'nin Genel DNS adının biçimi şöyle görünür:
 
-> `<custom domainlabel`>. `<azure region`>. cloudapp.Azure.com
+> `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 
 > 
 
@@ -249,9 +248,9 @@ DNS adıyla ilgili daha fazla ayrıntı [burada] [sanal-makineler-azurerd-ve-azu
 
 SAP profili parametresini ICM/host_name_full olarak ayarlama, bağlantının şuna benzeyebilir:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ /mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ /mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 
 Bu durumda şunları yapmanız gerekir:
 

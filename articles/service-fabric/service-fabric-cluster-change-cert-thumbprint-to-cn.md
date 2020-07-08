@@ -4,10 +4,9 @@ description: Sertifika parmak izlerini kullanarak sertifika ortak adını kullan
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272636"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Kümeyi sertifika parmak izinden ortak ada değiştirme
@@ -118,7 +117,7 @@ Sonra, şablon dosyasını bir metin düzenleyicisinde açın ve sertifika ortak
 
     Ayrıca, *certificateThumbprint*öğesini kaldırmayı da düşünün, bu, artık kaynak yöneticisi şablonunda başvurulmayabilir.
 
-2. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**Extensions**->**Özellikler**->**settings**ayarları->**sertifikası**, Ekle `"commonNames": ["[parameters('certificateCommonName')]"],` ve Kaldır `"thumbprint": "[parameters('certificateThumbprint')]",`' da.
+2. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile** -> **extensionprofile** -> **Extensions** -> **Özellikler** -> **ayarları** -> **sertifikası**, Ekle `"commonNames": ["[parameters('certificateCommonName')]"],` ve Kaldır `"thumbprint": "[parameters('certificateThumbprint')]",` ' da.
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

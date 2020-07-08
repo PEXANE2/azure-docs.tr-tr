@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687077"
 ---
 # <a name="get-service-access-tokens"></a>Hizmet erişim belirteçlerini alma
@@ -24,7 +23,7 @@ Henüz yoksa bir [ARR hesabı oluşturun](create-an-account.md).
 
 ## <a name="token-service-rest-api"></a>Belirteç hizmeti REST API
 
-Erişim belirteçleri oluşturmak için, *güvenli belirteç hizmeti* tek bir REST API sağlar. ARR STS hizmeti URL 'SI: https:\//STS.mixedreality.Azure.com.
+Erişim belirteçleri oluşturmak için, *güvenli belirteç hizmeti* tek bir REST API sağlar. ARR STS hizmeti URL 'SI: https: \/ /STS.mixedreality.Azure.com.
 
 ### <a name="get-token-request"></a>' Belirteci Al ' isteği
 
@@ -40,7 +39,7 @@ Erişim belirteçleri oluşturmak için, *güvenli belirteç hizmeti* tek bir RE
 
 ### <a name="get-token-response"></a>' Belirteci Al ' yanıtı
 
-| Durum kodu | JSON yükü | Açıklamalar |
+| Durum kodu | JSON yükü | Yorumlar |
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: dize | Başarılı |
 

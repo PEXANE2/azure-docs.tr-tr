@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641721"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
@@ -23,7 +22,7 @@ Kullandığınız ad çözümlemesi türü, sanal makinelerinizin ve rol örnekl
 
 Aşağıdaki tabloda senaryolar ve ilgili ad çözümleme çözümleri gösterilmektedir:
 
-| **Senaryo** | **Çözümden** | **Önekini** |
+| **Senaryo** | **Çözüm** | **Önekini** |
 | --- | --- | --- |
 | Aynı sanal ağdaki rol örnekleri veya sanal makineler arasında ad çözümlemesi |Azure 'un sağladığı ad çözümlemesi |Ana bilgisayar adı veya tam etki alanı adı (FQDN) |
 | Farklı sanal ağlardaki rol örnekleri veya sanal makineler arasında ad çözümlemesi |Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten, müşteri tarafından yönetilen DNS sunucuları (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server). |Yalnızca FQDN |
@@ -119,7 +118,7 @@ DNS iletimi, sanal ağlar arasında DNS çözümlemesini de sağlar ve şirket i
 
 Azure 'un sağladığı ad çözümlemesini kullandığınızda, iç DNS son eki, her bir sanal makineye DHCP kullanılarak sağlanır. Kendi ad çözümleme çözümünüzü kullandığınızda, bu sonek sanal makinelere sağlanmaz çünkü son ek diğer DNS mimarilerini kesintiye uğratır. Makinelere FQDN ile başvurmak veya sanal makinelerinizde son eki yapılandırmak için, soneki belirtmek üzere PowerShell 'i veya API 'yi kullanabilirsiniz:
 
-* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, NIC 'in FQDN `azure network public-ip show <resource group> <pip name>` 'sini IÇEREN genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
+* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, `azure network public-ip show <resource group> <pip name>` NIC 'ın FQDN 'sini içeren genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
 
 Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir.  DNS çözümünüzün şunları yapması gerekir:
 

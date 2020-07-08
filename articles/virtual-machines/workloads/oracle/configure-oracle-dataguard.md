@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676762"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama 
@@ -71,7 +70,7 @@ az vm availability-set create \
 
 [Az VM Create](/cli/azure/vm) komutunu kullanarak bir VM oluşturun. 
 
-Aşağıdaki örnek, ve `myVM1` `myVM2`adlı iki sanal makine oluşturur. Varsayılan anahtar konumunda zaten mevcut değilse, SSH anahtarları da oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, ve adlı iki sanal makine oluşturur `myVM1` `myVM2` . Varsayılan anahtar konumunda zaten mevcut değilse, SSH anahtarları da oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 MyVM1 oluştur (birincil):
 ```azurecli
@@ -85,7 +84,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler gösterir. Değerini aklınızda edin `publicIpAddress`. Bu adresi sanal makineye erişmek için kullanırsınız.
+VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler gösterir. Değerini aklınızda edin `publicIpAddress` . Bu adresi sanal makineye erişmek için kullanırsınız.
 
 ```output
 {
@@ -113,7 +112,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-MyVM2 `publicIpAddress` oluşturduktan sonra değerini aklınızda edin.
+`publicIpAddress`MyVM2 oluşturduktan sonra değerini aklınızda edin.
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açın
 
@@ -162,7 +161,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
 
-Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin `publicIpAddress` değeri ile değiştirin.
+Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, `publicIpAddress` sanal makinenizin değeri ile değiştirin.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -282,7 +281,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Flashback 'ı etkinleştirin (Bu, kurtarmayı çok daha kolay hale getirir) ve\_bekleme\_dosya yönetimini otomatik olarak ayarlar. Bundan sonra SQL * Plus 'den çıkın.
+Flashback 'ı etkinleştirin (Bu, kurtarmayı çok daha kolay hale getirir) ve bekleme \_ Dosya \_ yönetimini otomatik olarak ayarlar. Bundan sonra SQL * Plus 'den çıkın.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -554,7 +553,7 @@ Oracle Data Guard kurulumunu tamamladınız. Sonraki bölümde, bağlantının n
 
 İstemci makinenizde tnsnames. ora dosyasını güncelleştirin veya oluşturun. Bu dosya genellikle $ORACLE _HOME \network\admin.
 
-MyVM1 ve myVM2 için IP adreslerini `publicIpAddress` değerlerinizle değiştirin:
+`publicIpAddress`MyVM1 ve myVM2 IÇIN IP adreslerini değerlerinizle değiştirin:
 
 ```bash
 cdb1=

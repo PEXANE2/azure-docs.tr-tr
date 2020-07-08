@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537245"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 'da anahtar geçişi imzalanıyor
@@ -37,7 +36,7 @@ Uygulamanızın anahtar rollover 'ı nasıl işleyeceği, uygulamanın türü ve
 * [Kaynakları koruyan ve Azure Uygulama Hizmetleri kullanılarak oluşturulan Web uygulamaları/API 'Leri](#appservices)
 * [.NET OWIN OpenID Connect, WS-beslenir veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri](#owin)
 * [.NET Core OpenID Connect veya Jwtyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri](#owincore)
-* [Node. js Passport ile kaynakları koruyan Web uygulamaları/API 'Ler-Azure-ad modülü](#passport)
+* [Node.js Passport-Azure-ad modülü kullanarak kaynakları koruyan Web uygulamaları/API 'Leri](#passport)
 * [Kaynakları koruyan ve Visual Studio 2015 veya üzeri ile oluşturulan Web uygulamaları/API 'Leri](#vs2015)
 * [Kaynakları koruyan ve Visual Studio 2013 ile oluşturulan Web uygulamaları](#vs2013)
 * Kaynakları koruyan ve Visual Studio 2013 ile oluşturulan Web API 'Leri
@@ -110,10 +109,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Node. js Passport ile kaynakları koruyan Web uygulamaları/API 'Ler-Azure-ad modülü
-Uygulamanız Node. js Passport-ad modülünü kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
+### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Node.js Passport-Azure-ad modülü kullanarak kaynakları koruyan Web uygulamaları/API 'Leri
+Uygulamanız Node.js Passport-ad modülünü kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
 
-Uygulamanızın App. js dosyasında aşağıdaki kod parçacığını arayarak uygulamanızın Passport-ad ' ınızı doğrulayabilirsiniz.
+Uygulamanızın Passport-ad ' i, uygulamanızın app.js aşağıdaki kod parçacığını arayarak doğrulayabilirsiniz
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -129,7 +128,7 @@ Uygulamanız, Visual Studio 2015 veya sonraki sürümlerde bir Web uygulaması �
 Çözümünüze el ile kimlik doğrulaması eklediyseniz, uygulamanız gerekli anahtar geçiş mantığına sahip olmayabilir. Kendiniz yazmanız veya [diğer kitaplıkları kullanarak Web uygulamalarında/API 'lerde bulunan adımları izlemeniz veya desteklenen protokollerden herhangi birini el ile](#other)uygulamanız gerekecektir.
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Kaynakları koruyan ve Visual Studio 2013 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2013 bir Web uygulaması şablonu kullanılarak oluşturulmuşsa ve **kimlik doğrulama** menüsünden **Kurumsal hesaplar** ' ı seçtiyseniz, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır. Bu mantık, kuruluşunuzun benzersiz tanımlayıcısını ve imza anahtarı bilgilerini projeyle ilişkili iki veritabanı tablosu halinde depolar. Veritabanının bağlantı dizesini projenin Web. config dosyasında bulabilirsiniz.
+Uygulamanız Visual Studio 2013 bir Web uygulaması şablonu kullanılarak oluşturulmuşsa ve **kimlik doğrulama** menüsünden **Kurumsal hesaplar** ' ı seçtiyseniz, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır. Bu mantık, kuruluşunuzun benzersiz tanımlayıcısını ve imza anahtarı bilgilerini projeyle ilişkili iki veritabanı tablosu halinde depolar. Veritabanının bağlantı dizesini projenin Web.config dosyasında bulabilirsiniz.
 
 Çözümünüze el ile kimlik doğrulaması eklediyseniz, uygulamanız gerekli anahtar geçiş mantığına sahip olmayabilir. Kendiniz yazmanız veya [diğer kitaplıkları kullanarak Web uygulamalarında/API 'lerde bulunan veya desteklenen protokollerden herhangi birini elle uygulayan](#other)adımları izlemeniz gerekecektir.
 
@@ -239,7 +238,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Kaynakları koruyan ve Visual Studio 2012 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Azure AD) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web. config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
+Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Azure AD) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
 
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenecek yol belgelerinden birini kullanarak oluşturduysanız, anahtar aktarma mantığı projenize zaten dahil edilmiştir. Aşağıdaki kodun projenizde zaten var olduğunu fark edeceksiniz. Uygulamanızda zaten bu mantık yoksa, eklemek ve düzgün çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
@@ -269,11 +268,11 @@ Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenece
    }
    ```
 
-Bu adımları izledikten sonra, uygulamanızın Web. config dosyası, en son anahtarlar dahil olmak üzere federasyon meta veri belgesinden en son bilgilerle güncelleştirilir. Bu güncelleştirme, uygulama havuzunuzun IIS 'de her geri dönüştürüldüğünde oluşur; Varsayılan olarak IIS, uygulamaları her 29 saatte bir geri dönüştürmek üzere ayarlanmıştır.
+Bu adımları izledikten sonra, uygulamanızın Web.config en son anahtarlar dahil olmak üzere federasyon meta veri belgesinden en son bilgilerle güncelleştirilir. Bu güncelleştirme, uygulama havuzunuzun IIS 'de her geri dönüştürüldüğünde oluşur; Varsayılan olarak IIS, uygulamaları her 29 saatte bir geri dönüştürmek üzere ayarlanmıştır.
 
 Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
-1. Uygulamanızın yukarıdaki kodu kullandığını doğruladıktan sonra, **Web. config** dosyasını açın ve özellikle aşağıdaki birkaç satırı arayarak ** \<ıssuernameregstreams>** bloğuna gidin:
+1. Uygulamanızın yukarıdaki kodu kullandığını doğruladıktan sonra, **Web.config** dosyasını açın ve **\<issuerNameRegistry>** özellikle aşağıdaki birkaç satırı arayarak bloğa gidin:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -281,7 +280,7 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. ** \<Parmak izi Ekle = "" >** ayarında, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
+2. **\<add thumbprint="">** Ayarında, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
 3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Azure AD makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>.NET 3,5 için kaynakları koruyan ve Visual Studio 2008 ya da 2010 ve Windows Identity Foundation (WıF) v 1.0 ile oluşturulan Web uygulamaları

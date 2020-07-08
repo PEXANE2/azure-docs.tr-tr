@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5e3f4f4aedb0bc3fb1f8ea11001b08daa57aafc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732479"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>İşleri zamanlama ve yayınlama (Java)
@@ -98,7 +97,7 @@ Uygulamayı oluşturmak için:
 
 3. Komut istemindeki **zamanlama işleri** klasörüne gidin.
 
-4. Bir metin düzenleyicisi kullanarak, **Schedule-Jobs** klasöründeki **Pod. xml** dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
+4. Bir metin düzenleyicisi kullanarak, **zamanlama işleri** klasöründeki **pom.xml** dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
@@ -261,7 +260,7 @@ Uygulamayı oluşturmak için:
     }
     ```
 
-14. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+14. **Ana** yöntem imzasını aşağıdaki yan tümceyi içerecek şekilde güncelleştirin `throws` :
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -314,7 +313,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
 
 2. Komut istemindeki **sanal cihaz** klasörüne gidin.
 
-3. Bir metin düzenleyicisi kullanarak, **sanal cihaz** klasöründe **polım. xml** dosyasını açın ve aşağıdaki bağımlılıkları **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar:
+3. Bir metin düzenleyicisi kullanarak, **sanal cihaz** klasöründeki **pom.xml** dosyasını açın ve aşağıdaki bağımlılıkları **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
@@ -370,7 +369,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     import java.util.Scanner;
     ```
 
-9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. Daha `{yourdeviceconnectionstring}` önce, [IoT Hub 'da yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}`Daha önce, [IoT Hub 'da yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -428,7 +427,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-13. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+13. **Ana** yöntem imzasını aşağıdaki yan tümceyi içerecek şekilde güncelleştirin `throws` :
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException

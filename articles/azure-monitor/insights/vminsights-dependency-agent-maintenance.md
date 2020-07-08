@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617852"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>VM'ler için Azure İzleyici bağımlılık aracısını yükseltme
@@ -29,7 +28,7 @@ Windows ve Linux 'un bağımlılık Aracısı en son sürüme el ile veya makine
 
 ## <a name="upgrade-windows-agent"></a>Windows aracısını yükselt 
 
-Bir Windows VM 'deki aracıyı, bağımlılık Aracısı VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut Istemi, komut dosyası veya başka bir Otomasyon çözümünden ya da InstallDependencyAgent-Windows. exe Kurulum Sihirbazı ' nı kullanarak komutunu çalıştırın.  
+Bir Windows sanal makinesi üzerindeki aracıyı, bağımlılık Aracısı VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için komut Istemi, komut dosyası veya başka bir Otomasyon çözümünden veya InstallDependencyAgent-Windows.exe Kurulum Sihirbazı ' nı kullanarak çalıştırırsınız.  
 
 Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyagentwindows)indirebilirsiniz.
 
@@ -37,7 +36,7 @@ Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyage
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum sihirbazını başlatmak için **InstallDependencyAgent-Windows. exe** ' yi yürütün.
+2. Kurulum sihirbazını başlatmak için **InstallDependencyAgent-Windows.exe** yürütün.
    
 3. Bağımlılık aracısının önceki sürümünü kaldırmak ve sonra en son sürümü yüklemek için **Dependency Agent kurulum** Sihirbazı ' nı izleyin.
 
@@ -52,9 +51,9 @@ Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyage
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    `/RebootMode=manual` Parametresi, bazı süreçler önceki sürümden dosya kullanıyorsa ve bunlara bir kilit varsa, yükseltmenin makinenin otomatik olarak yeniden başlatılmasını önler. 
+    `/RebootMode=manual`Parametresi, bazı süreçler önceki sürümden dosya kullanıyorsa ve bunlara bir kilit varsa, yükseltmenin makinenin otomatik olarak yeniden başlatılmasını önler. 
 
-3. Yükseltmenin başarılı olduğunu doğrulamak için ayrıntılı kurulum bilgilerini inceleyin `install.log` . Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
+3. Yükseltmenin başarılı olduğunu doğrulamak için `install.log` ayrıntılı kurulum bilgilerini inceleyin. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
 
 ## <a name="upgrade-linux-agent"></a>Linux aracısını yükselt 
 
@@ -64,7 +63,7 @@ Linux aracısının en son sürümünü [buradan](https://aka.ms/dependencyagent
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aşağıdaki komutu kök`sh InstallDependencyAgent-Linux64.bin -s`olarak çalıştırın. 
+2. Aşağıdaki komutu kök olarak çalıştırın `sh InstallDependencyAgent-Linux64.bin -s` . 
 
 Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur. 
 

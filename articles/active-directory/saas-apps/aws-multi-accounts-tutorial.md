@@ -16,10 +16,9 @@ ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81603837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Services (AWS) ile Azure Active Directory tümleştirme (eski öğretici)
@@ -126,7 +125,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -148,7 +147,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'Sini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -212,7 +211,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     a. **Anahtar** metin kutusuna, Ex: Azureadtest için anahtar adını girin.
 
-    b. **Değer (isteğe bağlı)** metin kutusuna aşağıdaki biçimi `accountname-aws-admin`kullanarak anahtar değerini girin. Hesap adı tamamen küçük harfle yazılmalıdır.
+    b. **Değer (isteğe bağlı)** metin kutusuna aşağıdaki biçimi kullanarak anahtar değerini girin `accountname-aws-admin` . Hesap adı tamamen küçük harfle yazılmalıdır.
 
     c. **İleri**' ye tıklayın.
 
@@ -220,7 +219,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     ![Çoklu oturum açma Incelemesini yapılandırma][34]
 
-    a. **Rol adı** metin kutusuna aşağıdaki düzende `accountname-aws-admin`bulunan değeri girin.
+    a. **Rol adı** metin kutusuna aşağıdaki düzende bulunan değeri girin `accountname-aws-admin` .
 
     b. **Rol açıklaması** metin kutusunda, rol adı için kullandığınız değeri girin.
 
@@ -283,7 +282,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. Hizmet sorumlusu nesnesinden appRoles özelliğini ayıklayın.
+    örneğin: Hizmet sorumlusu nesnesinden appRoles özelliğini ayıklayın.
 
     ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 

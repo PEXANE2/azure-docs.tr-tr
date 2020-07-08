@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641286"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON şekli
@@ -97,16 +96,16 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
    | deviceId | Ileti | deviceLocation |
    | --- | --- | --- |
-   | FXXX | SATıR\_verileri | AB |
-   | FYYY | SATıR\_verileri | ABD |
+   | FXXX | SATıR \_ verileri | AB |
+   | FYYY | SATıR \_ verileri | ABD |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Ileti | deviceLocation | timestamp | ilerindeki. Akış oranı ft3/sn | ilerindeki. Motor yağ basıncı psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | SATıR\_verileri | AB | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | SATıR\_verileri | AB | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | SATıR\_verileri | ABD | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | SATıR \_ verileri | AB | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | SATıR \_ verileri | AB | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | SATıR \_ verileri | ABD | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - **DeviceID** sütunu, bir Fleet içindeki çeşitli cihazlar için sütun üst bilgisi görevi görür. **DeviceID** değerinin kendi özellik adı, diğer beş sütunlu ile toplam cihazları 595 (S1 ortamları için) veya 795 (S2 ortamları için) olarak sınırlar.
@@ -165,23 +164,23 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 * Anahtar özellikleri **DeviceID** ve **Series. TagId**olan başvuru verileri tablosu:
 
-   | deviceId | Series. TagId | Ileti | deviceLocation | type | unit |
+   | deviceId | Series. TagId | Ileti | deviceLocation | tür | unit |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s |
-   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi |
-   | FYYY | porate oranı | SATıR\_verileri | ABD | Akış hızı | ft3/s |
-   | FYYY | Oilbasınç | SATıR\_verileri | ABD | Motor yağ basıncı | psi |
+   | FXXX | porate oranı | SATıR \_ verileri | AB | Akış hızı | ft3/s |
+   | FXXX | Oilbasınç | SATıR \_ verileri | AB | Motor yağ basıncı | psi |
+   | FYYY | porate oranı | SATıR \_ verileri | ABD | Akış hızı | ft3/s |
+   | FYYY | Oilbasınç | SATıR \_ verileri | ABD | Motor yağ basıncı | psi |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | Series. TagId | Ileti | deviceLocation | type | unit | timestamp | Series. Value |
+   | deviceId | Series. TagId | Ileti | deviceLocation | tür | unit | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | porate oranı | SATıR\_verileri | ABD | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | Oilbasınç | SATıR\_verileri | ABD | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | porate oranı | SATıR \_ verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | Oilbasınç | SATıR \_ verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | porate oranı | SATıR \_ verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | Oilbasınç | SATıR \_ verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | porate oranı | SATıR \_ verileri | ABD | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | Oilbasınç | SATıR \_ verileri | ABD | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - **DeviceID** ve **Series. TagId** sütunları, bir Fleet içindeki çeşitli cihazlar ve Etiketler için sütun üst bilgileri olarak görev yapar. Her birinin kendi özniteliği olarak kullanılması, sorguyu 594 (S1 ortamları için) veya 794 (S2 ortamları için) ile diğer altı sütunlu toplam cihaz sayısını sınırlar.

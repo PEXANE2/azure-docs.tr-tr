@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687337"
 ---
 # <a name="workbook-text-parameters"></a>Çalışma kitabı metin parametreleri
@@ -40,7 +39,7 @@ Metin kutularının yaygın kullanımı, diğer çalışma kitabı denetimleri t
 ![Okuma modundaki bir metin parametresini gösteren resim](./media/workbooks-text/text-readmode.png)
 
 ## <a name="referencing-a-text-parameter"></a>Bir metin parametresine başvurma
-1. Mavi `Add query` bağlantıyı seçerek çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
+1. Mavi bağlantıyı seçerek çalışma kitabına bir sorgu denetimi ekleyin `Add query` ve bir Application Insights kaynağı seçin.
 2. KQL kutusunda şu kod parçacığını ekleyin:
     ```kusto
     requests
@@ -60,7 +59,7 @@ Metin kutularının yaygın kullanımı, diğer çalışma kitabı denetimleri t
     ![KQL 'de başvurulan metin parametresini gösteren resim](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> Yukarıdaki örnekte, `{SlowRequestThreshold}` bir tamsayı değeri temsil eder. Gibi `{ComputerName}` bir dizeyi sorguluyorsanız, parametre alanı için tırnak işareti olmadan kabul etme girişine tırnak `"{ComputerName}"` eklemek üzere kusto sorgunuzu değiştirmeniz gerekir.
+> Yukarıdaki örnekte, `{SlowRequestThreshold}` bir tamsayı değeri temsil eder. Gibi bir dizeyi sorguluyorsanız, `{ComputerName}` `"{ComputerName}"` parametre alanı için tırnak işareti olmadan kabul etme girişine tırnak eklemek üzere kusto sorgunuzu değiştirmeniz gerekir.
 
 ## <a name="setting-default-values"></a>Varsayılan değerler ayarlanıyor
 1. Düzenleme modunda boş bir çalışma kitabıyla başlayın.

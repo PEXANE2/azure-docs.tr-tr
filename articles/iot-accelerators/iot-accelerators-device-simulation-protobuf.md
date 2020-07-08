@@ -12,10 +12,9 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81684000"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
@@ -65,14 +64,14 @@ GitHub 'dan [Uzaktan Izleme mikro hizmetlerini](https://github.com/Azure/remote-
 
 Visual Studio Code, **Remote-Monitoring-Services-DotNet-master\storage-Adapter** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-**. Vscode/Launch. JSON** dosyasını açın ve Cosmos DB Bağlantı dizenizi **PC\_storageadapter\_DOCUMENTDB\_connString** ortam değişkenine atayın.
+Dosya **üzerinde. vscode/launch.js** açın ve Cosmos DB Bağlantı dizenizi **PC \_ storageadapter \_ DOCUMENTDB \_ connString** ortam değişkenine atayın.
 
 > [!NOTE]
 > Mikro hizmeti makinenizde yerel olarak çalıştırdığınızda yine de Azure 'da bir Cosmos DB örneğinin düzgün şekilde çalışmasını gerektirir.
 
-Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırmak için hata ayıklama **başlatma \> hata ayıkla**' ya tıklayın.
+Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırmak için hata ayıklama ** \> başlatma hata ayıkla**' ya tıklayın.
 
-Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: <http://127.0.0.1:9022/v1/status>. Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: <http://127.0.0.1:9022/v1/status> . Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
 
 Aşağıdaki adımları tamamladıktan sonra, depolama bağdaştırıcısı mikro hizmetini bu Visual Studio Code örneğinde çalışır durumda bırakın.
 
@@ -82,9 +81,9 @@ Yeni bir Visual Studio Code örneğinde GitHub 'dan indirdiğiniz **cihaz benzet
 
 Bu nasıl yapılır kılavuzunda, bir varlık İzleyicisi için yeni bir cihaz modeli oluşturursunuz:
 
-1. **Services\data\devicemodeller** klasöründe **assettracker-01. JSON** adlı yeni bir cihaz modeli dosyası oluşturun.
+1. **Services\data\devicemodeller** klasöründe **assettracker-01.js** adlı yeni bir cihaz modeli dosyası oluşturun.
 
-1. Cihaz işlevselliğini, **assettracker-01. JSON** dosyasındaki cihaz modelini tanımlayın. Prototipli cihaz modelinin telemetri bölümü şu şekilde olmalıdır:
+1. Cihaz modeli **assettracker-01.js** dosyadaki cihaz işlevselliğini tanımlayın. Prototipli cihaz modelinin telemetri bölümü şu şekilde olmalıdır:
 
    * Cihazınız için oluşturduğunuz Protoarabellek sınıfının adını ekleyin. Aşağıdaki bölümde bu sınıfın nasıl oluşturulacağı gösterilmektedir.
    * İleti biçimi olarak Protoarabellek belirtin.
@@ -147,7 +146,7 @@ Cihazınızın nasıl davranacağını tanımlayan davranış betiğini yazın. 
 
 Bir cihaz modeliniz varsa ve ileti biçiminizi belirledikten sonra bir **proto** dosyası oluşturabilirsiniz. **Proto** dosyasında şunu ekleyin:
 
-* Cihaz `csharp_namespace` modelinizdeki **ClassName** özelliği ile eşleşen bir.
+* `csharp_namespace`Cihaz modelinizdeki **ClassName** özelliği ile eşleşen bir.
 * Seri hale getirilecek her veri yapısına yönelik bir ileti.
 * İletideki her alan için bir ad ve tür.
 
@@ -168,7 +167,7 @@ Bir cihaz modeliniz varsa ve ileti biçiminizi belirledikten sonra bir **proto**
     }
     ```
 
-`=1`Her öğe `=2` üzerindeki işaretçiler, alanın ikili kodlamada kullandığı benzersiz bir etiket belirtir. 1-15 numaraları, daha fazla sayıdan kodlamak için bir daha az bayt gerektirir.
+`=1` `=2` Her öğe üzerindeki işaretçiler, alanın ikili kodlamada kullandığı benzersiz bir etiket belirtir. 1-15 numaraları, daha fazla sayıdan kodlamak için bir daha az bayt gerektirir.
 
 ## <a name="generate-the-protobuf-class"></a>Prototiparabelleği oluşturma
 
@@ -190,19 +189,19 @@ Bu bölümde, önceki bölümlerde oluşturduğunuz varlık izleyici cihazını 
 
 ### <a name="run-the-device-simulation-microservice"></a>Cihaz benzetimi mikro hizmetini çalıştırma
 
-**. Vscode/Launch. JSON** dosyasını açın ve aşağıdakileri atayın:
+Dosyasında **. vscode/launch.js** açın ve aşağıdakileri atayın:
 
-* **Bilgisayar\_\_ıothub connstring** ortam değişkenine bağlantı dizesi IoT Hub.
-* **Bilgisayar\_\_Azure depolama\_hesabı** ortam değişkenine depolama hesabı bağlantı dizesi.
-* **Bilgisayar\_storageadapter\_\_DOCUMENTDB connString** ortam değişkenine bağlantı dizesi Cosmos DB.
+* **Bilgisayar \_ ıothub \_ connString** ortam değişkenine bağlantı dizesi IoT Hub.
+* **Bilgisayar \_ Azure \_ depolama \_ hesabı** ortam değişkenine depolama hesabı bağlantı dizesi.
+* **Bilgisayar \_ storageadapter \_ DOCUMENTDB \_ connString** ortam değişkenine bağlantı dizesi Cosmos DB.
 
-**WebService/Properties/launchSettings. JSON** dosyasını açın ve aşağıdakileri atayın:
+Dosya **üzerinde Web hizmeti/Özellikler/launchSettings.js** açın ve aşağıdakileri atayın:
 
-* **Bilgisayar\_\_ıothub connstring** ortam değişkenine bağlantı dizesi IoT Hub.
-* **Bilgisayar\_\_Azure depolama\_hesabı** ortam değişkenine depolama hesabı bağlantı dizesi.
-* **Bilgisayar\_storageadapter\_\_DOCUMENTDB connString** ortam değişkenine bağlantı dizesi Cosmos DB.
+* **Bilgisayar \_ ıothub \_ connString** ortam değişkenine bağlantı dizesi IoT Hub.
+* **Bilgisayar \_ Azure \_ depolama \_ hesabı** ortam değişkenine depolama hesabı bağlantı dizesi.
+* **Bilgisayar \_ storageadapter \_ DOCUMENTDB \_ connString** ortam değişkenine bağlantı dizesi Cosmos DB.
 
-**Webservice\appsettings.ini** dosyasını açın ve ayarları aşağıdaki gibi değiştirin:
+**WebService\appsettings.ini** dosyasını açın ve ayarları aşağıdaki gibi değiştirin:
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Çözümü yeni cihaz modeli dosyalarınızı içerecek şekilde yapılandırın
 
@@ -219,7 +218,7 @@ Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına
 </None>
 ```
 
-Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **başlatma \> hata ayıkla**' ya tıklayın.
+Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama ** \> başlatma hata ayıkla**' ya tıklayın.
 
 Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetten alınan çıkış gösterilmektedir.
 
@@ -249,9 +248,9 @@ Postman 'yi ayarlamak için:
 
 1. Yerel makinenizde Postman 'yi açın.
 
-1. ** \> Dosya içeri aktar**' a tıklayın. Ardından **dosyaları seç**' e tıklayın.
+1. **Dosya \> içeri aktar**' a tıklayın. Ardından **dosyaları seç**' e tıklayın.
 
-1. **Azure IoT cihaz simülasyonu Çözüm Hızlandırıcısı. Postman\_koleksiyonu** ve **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı. Postman\_ortamı** ' nı seçin ve **Aç**' a tıklayın.
+1. **Azure IoT cihaz simülasyonu Çözüm Hızlandırıcısı. Postman \_ koleksiyonu** ve **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı. Postman \_ ortamı** ' nı seçin ve **Aç**' a tıklayın.
 
 1. Gönderebileceğiniz istekleri görüntülemek için **Azure IoT cihaz benzetimi çözüm Hızlandırıcısını** genişletin.
 
@@ -269,7 +268,7 @@ Benzetimi durdurmak için Postman 'daki **Benzetim Isteğini durdur** ' u seçin
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Visual Studio Code örneklerinde yerel olarak çalışan iki mikro hizmeti durdurabilirsiniz (**hata \> ayıklama durdurma hata ayıklaması**).
+Visual Studio Code örneklerinde yerel olarak çalışan iki mikro hizmeti durdurabilirsiniz (**hata ayıklama \> durdurma hata ayıklaması**).
 
 Artık IoT Hub ve Cosmos DB örneklerine ihtiyacınız yoksa, gereksiz ücretlerden kaçınmak için Azure aboneliğinizden silin.
 

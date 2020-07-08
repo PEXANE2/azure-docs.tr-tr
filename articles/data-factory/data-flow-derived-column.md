@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606495"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
@@ -42,7 +41,7 @@ Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -59,7 +58,7 @@ Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için 
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `CleanData` `MoviesYear` alan ve iki türetilmiş sütun oluşturan adlı bir türetilmiş sütundur. İlk türetilmiş sütun, sütunun, `Rating` derecelendirme değeri olan sütunu bir tamsayı türü olarak değiştirir. İkinci türetilmiş sütun, adı ' Filmler ' ile başlayan her sütunla eşleşen bir modeldir. Eşleşen her sütun için, ' movie_ ' önekli `movie` eşleşen sütunun değerine eşit olan bir sütun oluşturur. 
+Aşağıdaki örnek, `CleanData` gelen akış alan `MoviesYear` ve iki türetilmiş sütun oluşturan adlı bir türetilmiş sütundur. İlk türetilmiş sütun, sütunun `Rating` , derecelendirme değeri olan sütunu bir tamsayı türü olarak değiştirir. İkinci türetilmiş sütun, adı ' Filmler ' ile başlayan her sütunla eşleşen bir modeldir. Eşleşen her sütun için, `movie` ' movie_ ' önekli eşleşen sütunun değerine eşit olan bir sütun oluşturur. 
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

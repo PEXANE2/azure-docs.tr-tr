@@ -11,10 +11,9 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680033"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName popülasyonu
@@ -25,20 +24,20 @@ UserPrincipalName özniteliği değeri, Kullanıcı hesapları için Azure AD ku
 ## <a name="upn-terminology"></a>UPN terminolojisi
 Bu makalede aşağıdaki terminoloji kullanılmıştır:
 
-|Sözleşme Dönemi|Açıklama|
+|Terim|Açıklama|
 |-----|-----|
 |İlk etki alanı|Azure AD kiracısındaki varsayılan etki alanı (onmicrosoft.com). Örneğin, contoso.onmicrosoft.com.|
-|Microsoft çevrimiçi e-posta yönlendirme adresi (MOERA)|Azure AD, Azure AD Mailtakma ad özniteliği ve Azure AD &lt;başlangıç etki alanındaki ilk etki alanı&gt;&#64;&lt;ilk etki alanı&gt;olan MOERA 'ı hesaplar.|
+|Microsoft çevrimiçi e-posta yönlendirme adresi (MOERA)|Azure AD, Azure AD Mailtakma ad özniteliği ve Azure AD başlangıç etki alanındaki ilk etki alanı &lt; &gt;&#64;&lt; ilk etkı alanı olan MOERA 'ı hesaplar &gt; .|
 |Şirket içi Mailrumuz özniteliği|Bir Exchange kuruluşunda bir kullanıcının diğer adını temsil eden, Active Directory bir özniteliği.|
 |Şirket içi posta özniteliği|Active Directory bir özniteliği, bir kullanıcının e-posta adresini temsil eden değeridir|
-|Birincil SMTP Adresi|Bir Exchange alıcı nesnesinin birincil e-posta adresi. Örneğin, SMTP: user\@contoso.com.|
+|Birincil SMTP Adresi|Bir Exchange alıcı nesnesinin birincil e-posta adresi. Örneğin, SMTP: user \@ contoso.com.|
 |Alternatif oturum açma KIMLIĞI|Oturum açma için kullanılan posta özniteliği gibi UserPrincipalName dışında bir şirket içi özniteliği.|
 
 ## <a name="what-is-userprincipalname"></a>UserPrincipalName nedir?
 UserPrincipalName, Internet standart [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)' i temel alan bir kullanıcı için Internet stili bir oturum açma adı olan bir özniteliktir. 
 
 ### <a name="upn-format"></a>UPN biçimi
-UPN, bir UPN öneki (Kullanıcı hesabı adı) ve bir UPN soneki (bir DNS etki alanı adı) içerir. Önek, "\@" simgesi kullanılarak soneke katılır. Örneğin, "birisi\@example.com". Bir UPN, bir Dizin ormanı içindeki tüm güvenlik sorumlusu nesneleri arasında benzersiz olmalıdır. 
+UPN, bir UPN öneki (Kullanıcı hesabı adı) ve bir UPN soneki (bir DNS etki alanı adı) içerir. Önek, "" simgesi kullanılarak soneke katılır \@ . Örneğin, "birisi \@ example.com". Bir UPN, bir Dizin ormanı içindeki tüm güvenlik sorumlusu nesneleri arasında benzersiz olmalıdır. 
 
 ## <a name="upn-in-azure-ad"></a>Azure AD 'de UPN 
 UPN, kullanıcıların oturum açmasını sağlamak için Azure AD tarafından kullanılır.  Kullanıcı tarafından kullanılabilecek UPN, etki alanının doğrulanıp doğrulanmadığına bağlıdır.  Etki alanı doğrulandıysa, bu sonekine sahip bir kullanıcının Azure AD 'de oturum açmasına izin verilir.  
@@ -59,7 +58,7 @@ Azure AD ile alternatif oturum açma KIMLIĞINI etkinleştirmek için Azure AD C
 Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) ve [Azure AD oturum açma yapılandırması](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 
 ## <a name="non-verified-upn-suffix"></a>Doğrulanmamış UPN soneki
-Şirket içi UserPrincipalName özniteliği/alternatif oturum açma KIMLIĞI soneki Azure AD kiracısı ile doğrulanmıyorsa, Azure AD UserPrincipalName özniteliği değeri MOERA olarak ayarlanır. Azure AD, Azure AD Mailtakma ad özniteliğinden ve Azure AD &lt;başlangıç etki alanındaki ilk etki alanı&gt;&#64;&lt;ilk etki&gt;alanındaki MOERA 'ı hesaplar.
+Şirket içi UserPrincipalName özniteliği/alternatif oturum açma KIMLIĞI soneki Azure AD kiracısı ile doğrulanmıyorsa, Azure AD UserPrincipalName özniteliği değeri MOERA olarak ayarlanır. Azure AD, Azure AD Mailtakma ad özniteliğinden ve Azure AD başlangıç etki alanındaki &lt; &gt; &lt; ilk etki alanı&#64;Ilk etkı alanındaki MOERA 'ı hesaplar &gt; .
 
 ## <a name="verified-upn-suffix"></a>Doğrulanan UPN soneki
 Şirket içi UserPrincipalName özniteliği/alternatif oturum açma KIMLIĞI soneki Azure AD kiracısı ile doğrulanırsa, Azure AD UserPrincipalName özniteliği değeri şirket içi UserPrincipalName özniteliği/alternatif oturum açma KIMLIĞI değeriyle aynı olacaktır.
@@ -90,14 +89,14 @@ Aşağıda, UPN 'nin verilen senaryoya göre nasıl hesaplanmasının örnek sen
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
 Şirket Içi Kullanıcı nesnesi:
-- Mailtakma ad &lt;: ayarlanmadı&gt;
-- proxyAddresses: {SMTP:us1@contoso.com}
+- Mailtakma ad: &lt; ayarlanmadı&gt;
+- proxyAddresses: { SMTP:us1@contoso.com }
 - -us2@contoso.com
 - userPrincipalNameus3@contoso.com
 
 Kullanıcı nesnesi Azure AD kiracısı ile ilk kez eşitlendi
 - Azure AD Mailrumuz özniteliğini birincil SMTP adresi ön eki olarak ayarlayın.
-- &lt;MOERA 'ı mailtakma ad&gt;&#64;&lt;ilk etki&gt;alanı olarak ayarlayın.
+- MOERA 'ı &lt; mailtakma ad &gt;&#64;&lt; ilk etki alanı olarak ayarlayın &gt; .
 - Azure AD UserPrincipalName özniteliğini MOERA olarak ayarlayın.
 
 Azure AD Kiracı Kullanıcı nesnesi:
@@ -111,7 +110,7 @@ Azure AD Kiracı Kullanıcı nesnesi:
 
 Şirket Içi Kullanıcı nesnesi:
 - Mailtakma ad: US4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - -us2@contoso.com
 - userPrincipalNameus3@contoso.com
 
@@ -129,13 +128,13 @@ Azure AD Kiracı Kullanıcı nesnesi:
 
 Şirket Içi Kullanıcı nesnesi:
 - Mailtakma ad: US4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - -us2@contoso.com
 - userPrincipalNameus5@contoso.com
 
 Şirket içi userPrincipalName özniteliğinde güncelleştirmeyi Azure AD kiracısına eşitler
 - Şirket içi userPrincipalName özniteliğinde güncelleştirme, MOERA ve Azure AD UserPrincipalName özniteliğinin yeniden hesaplanmasını tetikler.
-- &lt;MOERA 'ı mailtakma ad&gt;&#64;&lt;ilk etki&gt;alanı olarak ayarlayın.
+- MOERA 'ı &lt; mailtakma ad &gt;&#64;&lt; ilk etki alanı olarak ayarlayın &gt; .
 - Azure AD UserPrincipalName özniteliğini MOERA olarak ayarlayın.
 
 Azure AD Kiracı Kullanıcı nesnesi:
@@ -148,7 +147,7 @@ Azure AD Kiracı Kullanıcı nesnesi:
 
 Şirket Içi Kullanıcı nesnesi:
 - Mailtakma ad: US4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - -us7@contoso.com
 - userPrincipalNameus5@contoso.com
 
@@ -165,7 +164,7 @@ Azure AD Kiracı Kullanıcı nesnesi:
 
 Şirket Içi Kullanıcı nesnesi:
 - Mailtakma ad: US4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - -us7@contoso.com
 - userPrincipalNameus5@verified.contoso.com
 

@@ -4,10 +4,9 @@ description: Stream Analytics, Application Insights dışarı aktarma yaptığı
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536888"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
@@ -107,7 +106,7 @@ Bu örnekte:
 > 
 
 ## <a name="add-new-output"></a>Yeni çıkış Ekle
-Şimdi işle > **çıkışlarını** > **Ekle**' yi seçin.
+Şimdi işle > **çıkışlarını**  >  **Ekle**' yi seçin.
 
 ![](./media/export-stream-analytics/SA006.png)
 

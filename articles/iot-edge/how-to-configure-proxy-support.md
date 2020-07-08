@@ -9,10 +9,9 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687193"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
@@ -53,7 +52,7 @@ Proxy URL 'Leri şu biçimi alır: **protokol**://**proxy_host**:**proxy_port**.
 
 * **Protokol** http ya da https olur. Docker Daemon, kapsayıcı kayıt defteri ayarlarınıza bağlı olarak her iki protokolü de kullanabilir, ancak IoT Edge Daemon ve Runtime kapsayıcıları, proxy 'ye bağlanmak için her zaman HTTP 'yi kullanmalıdır.
 
-* **Proxy_host** , proxy sunucu için bir adrestir. Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, kimlik bilgilerinizi proxy konağının bir parçası olarak aşağıdaki biçimde sağlayabilirsiniz: **User**:**Password**\@**proxy_host**.
+* **Proxy_host** , proxy sunucu için bir adrestir. Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, kimlik bilgilerinizi proxy konağının bir parçası olarak aşağıdaki biçimde sağlayabilirsiniz: **User**:**Password** \@ **proxy_host**.
 
 * **Proxy_port** , proxy 'nin ağ trafiğine verdiği ağ bağlantı noktasıdır.
 
@@ -69,7 +68,7 @@ IoT Edge çalışma zamanını bir Linux cihazına yüklüyorsanız, paket yöne
 
 IoT Edge çalışma zamanını bir Windows cihazına yüklüyorsanız, proxy sunucusu üzerinden iki kez gitmeniz gerekir. İlk bağlantı yükleyici betik dosyasını indirir ve ikinci bağlantı yükleme sırasında gerekli bileşenleri indirmek için kullanılır. Windows ayarları 'nda ara sunucu bilgilerini yapılandırabilir veya proxy bilgilerinizi doğrudan PowerShell komutlarına dahil edebilirsiniz.
 
-Aşağıdaki adımlarda, `-proxy` bağımsız değişkenini kullanarak bir Windows yüklemesinin örneği gösterilmektedir:
+Aşağıdaki adımlarda, bağımsız değişkenini kullanarak bir Windows yüklemesinin örneği gösterilmektedir `-proxy` :
 
 1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için ara sunucu bilgilerine sahip olmalıdır. Ardından, dağıtım-ıotedge komutunun yükleme dosyalarını indirmesi için proxy bilgilerine ihtiyacı vardır.
 
@@ -83,7 +82,7 @@ Aşağıdaki adımlarda, `-proxy` bağımsız değişkenini kullanarak bir Windo
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Proxy sunucusu için URL 'ye dahil olmayan karmaşık kimlik bilgileriniz varsa, içindeki `-ProxyCredential` `-InvokeWebRequestParameters`parametresini kullanın. Örneğin,
+Proxy sunucusu için URL 'ye dahil olmayan karmaşık kimlik bilgileriniz varsa, `-ProxyCredential` içindeki parametresini kullanın `-InvokeWebRequestParameters` . Örneğin,
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -122,7 +121,7 @@ IoT Edge Daemon 'ı yapılandırmak için terminalde bir düzenleyici açın.
 sudo systemctl edit iotedge
 ```
 
-Proxy ** \<URL 'sini>** proxy sunucu adresiniz ve bağlantı noktasıyla değiştirerek aşağıdaki metni girin. Sonra Kaydet ve çık.
+Aşağıdaki metni girerek **\<proxy URL>** proxy sunucu adresiniz ve bağlantı noktasıyla değiştirin. Sonra Kaydet ve çık.
 
 ```ini
 [Service]
@@ -149,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Yönetici olarak bir PowerShell penceresi açın ve yeni ortam değişkeniyle kayıt defterini düzenlemek için aşağıdaki komutu çalıştırın. ** \<Proxy URL 'sini>** proxy sunucu adresiniz ve bağlantı noktasıyla değiştirin.
+Yönetici olarak bir PowerShell penceresi açın ve yeni ortam değişkeniyle kayıt defterini düzenlemek için aşağıdaki komutu çalıştırın. **\<proxy url>** Ara sunucu adresiniz ve bağlantı noktasıyla değiştirin.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -167,7 +166,7 @@ IoT Edge Aracısı, herhangi bir IoT Edge cihazında başlatılacak ilk modüld�
 
 Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir.
 
-1. IoT Edge cihazınızda config. YAML dosyasını açın. Linux sistemlerinde, bu dosya **/etc/iotedge/config.exe**yolunda bulunur. Windows sistemlerinde bu dosya **C:\programdata\iotedge\config.exe**yolunda bulunur. Yapılandırma dosyası korunuyor, bu nedenle ona erişmek için yönetim ayrıcalıklarına sahip olmanız gerekir. Linux sistemlerinde, dosyayı tercih ettiğiniz `sudo` metin düzenleyicisinde açmadan önce komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın.
+1. IoT Edge cihazınızda config. YAML dosyasını açın. Linux sistemlerinde, bu dosya **/etc/iotedge/config.exe**yolunda bulunur. Windows sistemlerinde bu dosya **C:\programdata\iotedge\config.exe**yolunda bulunur. Yapılandırma dosyası korunuyor, bu nedenle ona erişmek için yönetim ayrıcalıklarına sahip olmanız gerekir. Linux sistemlerinde, `sudo` dosyayı tercih ettiğiniz metin düzenleyicisinde açmadan önce komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın.
 
 2. Config. YAML dosyasında **Edge Aracısı modülü belirtimi** bölümünü bulun. IoT Edge Aracısı tanımı, ortam değişkenleri ekleyebileceğiniz bir **env** parametresi içerir.
 

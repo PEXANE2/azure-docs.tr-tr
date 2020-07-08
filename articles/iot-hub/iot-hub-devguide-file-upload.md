@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.custom: mqtt
 ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730289"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub ile dosyaları karşıya yükleme
@@ -42,7 +41,7 @@ IoT Hub nasıl yapılır [kılavuzlarıyla cihazınızdan buluta dosya yükleme]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 'ları, SAS URI 'sini alma, dosyayı karşıya yükleme ve tamamlanan karşıya yükleme IoT Hub bildirme konusunda otomatik olarak işler.
 
 ## <a name="initialize-a-file-upload"></a>Karşıya dosya yüklemeyi Başlat
-IoT Hub, özellikle cihazların bir dosyayı karşıya yüklemek için bir SAS URI 'SI istemesine yönelik bir uç nokta içerir. Dosya karşıya yükleme işlemini başlatmak için, cihaz aşağıdaki JSON gövdesiyle öğesine `{iot hub}.azure-devices.net/devices/{deviceId}/files` bir post isteği gönderir:
+IoT Hub, özellikle cihazların bir dosyayı karşıya yüklemek için bir SAS URI 'SI istemesine yönelik bir uç nokta içerir. Dosya karşıya yükleme işlemini başlatmak için, cihaz `{iot hub}.azure-devices.net/devices/{deviceId}/files` AŞAĞıDAKI JSON gövdesiyle öğesine BIR post isteği gönderir:
 
 ```json
 {
@@ -67,7 +66,7 @@ IoT Hub, cihazın dosyayı karşıya yüklemek için kullandığı aşağıdaki 
 > [!NOTE]
 > Bu bölümde, IoT Hub bir SAS URI 'SI alma için kullanım dışı bırakılan işlevsellik açıklanmaktadır. Daha önce açıklanan POST metodunu kullanın.
 
-IoT Hub dosya yüklemeyi desteklemek için iki REST uç noktası vardır, biri depolama için SAS URI 'sini almak ve diğeri ise tamamlanan bir karşıya yüklemenin IoT Hub 'ına bildirimde bulunur. Cihaz, konumundaki `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`IoT Hub 'ıNA bir get göndererek dosya yükleme işlemini başlatır. IoT Hub 'ı şunu döndürür:
+IoT Hub dosya yüklemeyi desteklemek için iki REST uç noktası vardır, biri depolama için SAS URI 'sini almak ve diğeri ise tamamlanan bir karşıya yüklemenin IoT Hub 'ına bildirimde bulunur. Cihaz, konumundaki IoT Hub 'ına bir GET göndererek dosya yükleme işlemini başlatır `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` . IoT Hub 'ı şunu döndürür:
 
 * Karşıya yüklenecek dosyaya özel bir SAS URI 'SI.
 
@@ -75,7 +74,7 @@ IoT Hub dosya yüklemeyi desteklemek için iki REST uç noktası vardır, biri d
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Tamamlanmış bir dosyayı karşıya yükleme IoT Hub bildirme
 
-Cihaz, Azure Storage SDK 'larını kullanarak dosyayı depolamaya yükler. Karşıya yükleme tamamlandığında, cihaz aşağıdaki JSON gövdesiyle öğesine `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` bir post isteği gönderir:
+Cihaz, Azure Storage SDK 'larını kullanarak dosyayı depolamaya yükler. Karşıya yükleme tamamlandığında, cihaz `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` AŞAĞıDAKI JSON gövdesiyle öğesine BIR post isteği gönderir:
 
 ```json
 {
@@ -86,7 +85,7 @@ Cihaz, Azure Storage SDK 'larını kullanarak dosyayı depolamaya yükler. Karş
 }
 ```
 
-Değeri, dosyanın `isSuccess` başarıyla karşıya yüklenip yüklenmediğini belirten bir Boole değeridir. İçin `statusCode` durum kodu, dosyanın depolamaya yüklemesinin durumudur ve öğesine `statusDescription` karşılık gelir. `statusCode`
+Değeri, `isSuccess` dosyanın başarıyla karşıya yüklenip yüklenmediğini belirten bir Boole değeridir. İçin durum kodu, `statusCode` dosyanın depolamaya yüklemesinin durumudur ve `statusDescription` öğesine karşılık gelir `statusCode` .
 
 ## <a name="reference-topics"></a>Başvuru konuları:
 

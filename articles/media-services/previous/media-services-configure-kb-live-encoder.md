@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641691"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Tek bit hızlı canlı akış göndermek için Haivision KB Live Encoder kullanın  
@@ -83,7 +82,7 @@ Müzik
     ![9.33.17 saatinde ekran görüntüsü 2017-08-14](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  İleri ' ye ve ardından bitti ' ye tıklayın.
 9.  Kodlayıcı kanalını başlatmak için **Oynat düğmesine** tıklayın.  
-    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
+    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Kayıttan yürütmeyi test etme
 AML aracına gidin ve test edilecek kanala sağ tıklayın. Menüden önizlemeyi kayıttan yürütme üzerine gelin ve Azure Media Player seçin.

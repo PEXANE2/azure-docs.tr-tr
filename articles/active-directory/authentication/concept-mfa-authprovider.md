@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81309896"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication sağlayıcısı ne zaman kullanılır?
@@ -48,11 +47,11 @@ MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse veya yeni MFA sa
 > [!CAUTION]
 > Bir kimlik doğrulama sağlayıcısı silinirken hiçbir onay yok. **Sil** seçildiğinde kalıcı bir işlemdir.
 
-Kimlik doğrulama sağlayıcıları **Azure Portal** > **Azure Active Directory** > **güvenlik** > **MFA** > **sağlayıcıları**'nda bulunabilir. Söz konusu sağlayıcıyla ilişkili ayrıntıları ve konfigürasyonları görmek için listelenen sağlayıcılar ' a tıklayın.
+Kimlik doğrulama sağlayıcıları **Azure Portal**  >  **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **sağlayıcıları**'nda bulunabilir. Söz konusu sağlayıcıyla ilişkili ayrıntıları ve konfigürasyonları görmek için listelenen sağlayıcılar ' a tıklayın.
 
 Bir kimlik doğrulama sağlayıcısını kaldırmadan önce, sağlayıcınızda yapılandırılmış tüm özelleştirilmiş ayarları göz önüne alın. Sağlayıcınızdan hangi ayarların genel MFA ayarlarına geçirilmesi gerektiğine ve bu ayarların geçişini tamamlamaya karar verin. 
 
-Sağlayıcılara bağlı Azure MFA sunucularının, **Azure Portal** > **Azure Active Directory** > **Security** > **MFA** > **sunucu ayarları**altında oluşturulan kimlik bilgileri kullanılarak yeniden etkinleştirilmesi gerekir. Yeniden etkinleştirmeden önce, aşağıdaki dosyaların ortamınızdaki Azure MFA sunucularındaki `\Program Files\Multi-Factor Authentication Server\Data\` dizininden silinmesi gerekir:
+Sağlayıcılara bağlı Azure MFA sunucularının, **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **sunucu ayarları**altında oluşturulan kimlik bilgileri kullanılarak yeniden etkinleştirilmesi gerekir. Yeniden etkinleştirmeden önce, aşağıdaki dosyaların `\Program Files\Multi-Factor Authentication Server\Data\` ortamınızdaki Azure MFA sunucularındaki dizininden silinmesi gerekir:
 
 - caCert
 - cert
@@ -64,7 +63,7 @@ Sağlayıcılara bağlı Azure MFA sunucularının, **Azure Portal** > **Azure A
 
 ![Azure portal bir kimlik doğrulama sağlayıcısını silme](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Tüm ayarların geçirildiğini onayladığınızda, **Azure Portal** > **Azure Active Directory** > **güvenlik** > **MFA** > **sağlayıcıları** ' na gidebilir ve üç nokta **...** simgesini seçip **Sil**' i seçebilirsiniz.
+Tüm ayarların geçirildiğini onayladığınızda, **Azure Portal**  >  **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **sağlayıcıları** ' na gidebilir ve üç nokta **...** simgesini seçip **Sil**' i seçebilirsiniz.
 
 > [!WARNING]
 > Bir kimlik doğrulama sağlayıcısı silindiğinde, bu sağlayıcı ile ilişkili tüm raporlama bilgileri silinir. Sağlayıcınızı silmeden önce etkinlik raporlarını kaydetmek isteyebilirsiniz.

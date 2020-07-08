@@ -11,10 +11,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606167"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Enterprise Edition sağlama
@@ -48,7 +47,7 @@ Bu özelliklerden bazıları, Azure-SSIS IR özelleştirmek için ek bileşenler
 
 1.  [Azure PowerShell](/powershell/azure/install-az-ps)indirin ve yükleyin.
 
-2.  PowerShell ile Azure-SSIS IR sağladığınızda veya yeniden yapılandırdığınızda, Azure-SSIS IR başlamadan önce `Set-AzDataFactoryV2IntegrationRuntime` **Sürüm** parametresinin değeri olarak **Enterprise** ile çalıştırın. Örnek bir betik aşağıda verilmiştir:
+2.  PowerShell ile Azure-SSIS IR sağladığınızda veya yeniden yapılandırdığınızda, `Set-AzDataFactoryV2IntegrationRuntime` Azure-SSIS IR başlamadan önce **Sürüm** parametresinin değeri olarak **Enterprise** ile çalıştırın. Örnek bir betik aşağıda verilmiştir:
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"

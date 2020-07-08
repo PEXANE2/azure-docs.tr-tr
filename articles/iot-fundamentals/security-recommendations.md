@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5dd09988d37982c41b761688492bd2dc3642b2db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81728990"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure Nesnelerin İnterneti (IoT) dağıtımı için güvenlik önerileri
@@ -30,7 +29,7 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 
 ## <a name="general"></a>Genel
 
-| Öneri | Açıklamalar | ASC tarafından desteklenir |
+| Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Güncel kalın | Desteklenen platformlar, programlama dilleri, protokoller ve çerçeveler için en son sürümleri kullanın. | - |
 | Kimlik doğrulama anahtarlarını güvenli tut | Dağıtımdan sonra cihaz kimliklerini ve kimlik doğrulama anahtarlarını fiziksel olarak güvende tutun. Bu, kayıtlı bir cihaz olarak kötü amaçlı cihaz maskeli olarak bir maske oluşmasını önler. | - |
@@ -38,14 +37,14 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi 
 
-| Öneri | Açıklamalar | ASC tarafından desteklenir |
+| Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Hub için erişim denetimi tanımlama | İşlevlere göre her bir bileşenin IoT Hub çözümünüzde sahip olacağı [erişim türünü anlayın ve tanımlayın](iot-security-deployment.md#securing-the-cloud) . İzin verilen izinler *kayıt defteri okuma*, *registryreadwrite*, *serviceconnect*ve *deviceconnect*' dir. [IoT Hub 'ınızdaki varsayılan paylaşılan erişim ilkeleri](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) , rolüne göre her bir bileşen için izinleri tanımlamaya da yardımcı olabilir. | - |
 | Arka uç hizmetleri için erişim denetimi tanımlama | IoT Hub çözümünüz tarafından alınan veriler [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [App Service](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)ve [BLOB depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)gibi diğer Azure hizmetleri tarafından tüketilebilir. Bu hizmetler için belgelendiği şekilde, uygun erişim izinlerini anladığınızdan ve bunlara izin verdiğinizden emin olun. | - |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Öneri | Açıklamalar | ASC tarafından desteklenir |
+| Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Güvenli cihaz kimlik doğrulaması | Her bir cihaz için [benzersiz bir kimlik anahtarı veya güvenlik belirteci](iot-security-deployment.md#iot-hub-security-tokens)ya da bir [cihaz içi X. 509.440 Sertifikası](iot-security-deployment.md#x509-certificate-based-device-authentication) kullanarak cihazlarınız ve IoT Hub 'ınız arasında güvenli iletişimin sağlanmasına emin olun. [Seçilen protokole (MQTT, AMQP veya https) göre güvenlik belirteçlerini kullanmak](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)için uygun yöntemi kullanın. | - |
 | Güvenli cihaz iletişimi | IoT Hub, 1,2 ve 1,0 sürümlerini destekleyen Aktarım Katmanı Güvenliği (TLS) standardını kullanarak cihazlara bağlantı sağlar. En yüksek güvenliği sağlamak için [TLS 1,2](https://tools.ietf.org/html/rfc5246) kullanın. | - |
@@ -53,14 +52,14 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 
 ## <a name="networking"></a>Ağ
 
-| Öneri | Açıklamalar | ASC tarafından desteklenir |
+| Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Cihazlarınıza erişimi koruma | İstenmeyen erişimleri önlemek için cihazlarınızda donanım bağlantı noktalarını en düşük düzeyde tutun. Ayrıca, cihazın fiziksel olarak değiştirilmesini önlemeye veya algılamaya yönelik mekanizmalar oluşturun. Ayrıntılar için [IoT güvenlik en iyi yöntemlerini](iot-security-best-practices.md) okuyun. | - |
 | Güvenli donanım oluşturma | Cihazları ve altyapıyı daha güvenli tutmak için şifrelenmiş depolama veya Güvenilir Platform Modülü (TPM) gibi güvenlik özellikleri ekleyin. Cihaz işletim sistemi ve sürücülerini en son sürümlere yükseltmez ve alan izin veriyorsa virüsten koruma ve kötü amaçlı yazılımdan koruma özellikleri yükler. Bunun çeşitli güvenlik tehditlerini azaltmaya nasıl yardımcı olduğunu anlamak için [IoT güvenlik mimarisini](iot-security-architecture.md) okuyun. | - |
 
 ## <a name="monitoring"></a>İzleme
 
-| Öneri | Açıklamalar | ASC tarafından desteklenir |
+| Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Cihazlarınıza yetkisiz erişimi izleme |  Cihazın veya bağlantı noktalarından herhangi bir güvenlik ihlallerinin veya fiziksel olarak değiştirilmesini izlemek için cihazınızın işletim sisteminizin günlüğe kaydetme özelliğini kullanın. | - |
 | IoT çözümünüzü buluttan izleyin | [Azure izleyici 'de ölçümleri](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)kullanarak IoT Hub çözümünüzün genel durumunu izleyin. | - |

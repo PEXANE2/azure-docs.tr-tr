@@ -1,6 +1,6 @@
 ---
-title: Raspberry PI 'yi uzaktan Izleme çözümüne bağlama-Node. js-Azure | Microsoft Docs
-description: Node. js ' de yazılmış bir uygulamayı kullanarak bir Raspberry PI cihazını uzaktan Izleme çözümü hızlandırıcısına bağlamayı açıklar.
+title: Raspberry PI 'yi uzaktan Izleme çözümüne bağlama-Node.js-Azure | Microsoft Docs
+description: Node.js yazılmış bir uygulama kullanarak bir Raspberry PI cihazını uzaktan Izleme çözümü hızlandırıcısına bağlamayı açıklar.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,17 +10,16 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683953"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry PI cihazınızı uzaktan Izleme çözüm hızlandırıcısına bağlama (node. js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry PI cihazınızı uzaktan Izleme çözüm hızlandırıcısına bağlama (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Bu öğreticide, gerçek bir cihazın uzaktan Izleme çözüm hızlandırıcısına nasıl bağlanacağı gösterilmektedir. Bu öğreticide, en az kaynak kısıtlamalarına sahip ortamlar için iyi bir seçenek olan Node. js ' yi kullanırsınız.
+Bu öğreticide, gerçek bir cihazın uzaktan Izleme çözüm hızlandırıcısına nasıl bağlanacağı gösterilmektedir. Bu öğreticide, en az kaynak kısıtlamalarına sahip ortamlar için iyi bir seçenek olan Node.js kullanırsınız.
 
 Bir cihazın benzetimini yapmayı tercih ediyorsanız, bkz. [Yeni bir sanal cihaz oluşturma ve test](iot-accelerators-remote-monitoring-create-simulated-device.md)etme.
 
@@ -44,9 +43,9 @@ Raspberry PI 'deki komut satırına uzaktan erişmenizi sağlamak için masaüst
 
 ### <a name="required-raspberry-pi-software"></a>Gerekli Raspberry PI yazılımı
 
-Daha önce yapmadıysanız, Raspberry Pi 'nize Node. js sürüm 4.0.0 veya üstünü yükleyebilirsiniz. Aşağıdaki adımlarda, Raspberry PI 'nize Node. js V6 'nin nasıl yükleneceği gösterilmektedir:
+Daha önce yapmadıysanız, Raspberry Pi 'nize Node.js Version 4.0.0 veya üstünü yükleyebilirsiniz. Aşağıdaki adımlarda, Raspberry Pi 'nize Node.js V6 'nin nasıl yükleneceği gösterilmektedir:
 
-1. Kullanarak `ssh`Raspberry PI 'nize bağlanın. Daha fazla bilgi için [Raspberry PI Web sitesinde](https://www.raspberrypi.org/) [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) bölümüne bakın.
+1. Kullanarak Raspberry PI 'nize bağlanın `ssh` . Daha fazla bilgi için [Raspberry PI Web sitesinde](https://www.raspberrypi.org/) [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) bölümüne bakın.
 
 1. Raspberry PI 'nizi güncelleştirmek için aşağıdaki komutu kullanın:
 
@@ -54,7 +53,7 @@ Daha önce yapmadıysanız, Raspberry Pi 'nize Node. js sürüm 4.0.0 veya üst�
     sudo apt-get update
     ```
 
-1. Raspberry PI 'ınızdan Node. js ' nin var olan herhangi bir yüklemesini kaldırmak için aşağıdaki komutları kullanın:
+1. Raspberry PI 'ınızdan mevcut Node.js yüklemesini kaldırmak için aşağıdaki komutları kullanın:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,24 +61,24 @@ Daha önce yapmadıysanız, Raspberry Pi 'nize Node. js sürüm 4.0.0 veya üst�
     sudo apt-get remove npm  -y
     ```
 
-1. Raspberry PI 'nize Node. js V6 indirmek ve yüklemek için aşağıdaki komutu kullanın:
+1. Raspberry PI 'nize Node.js V6 indirmek ve yüklemek için aşağıdaki komutu kullanın:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. Node. js v 6.11.4 başarıyla yüklendiğini doğrulamak için şu komutu kullanın:
+1. Node.js v 6.11.4 başarıyla yüklendiğini doğrulamak için aşağıdaki komutu kullanın:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Node. js çözümü oluşturma
+## <a name="create-a-nodejs-solution"></a>Node.js çözümü oluşturma
 
-Raspberry Pi 'nize olan `ssh` bağlantıyı kullanarak aşağıdaki adımları uygulayın:
+Raspberry Pi 'nize olan bağlantıyı kullanarak aşağıdaki adımları uygulayın `ssh` :
 
-1. Raspberry Pi üzerinde giriş `remotemonitoring` klasörünüzde adlı bir klasör oluşturun. Komut satırlarınızın içindeki bu klasöre gidin:
+1. `remotemonitoring`Raspberry Pi üzerinde giriş klasörünüzde adlı bir klasör oluşturun. Komut satırlarınızın içindeki bu klasöre gidin:
 
     ```sh
     cd ~
@@ -93,9 +92,9 @@ Raspberry Pi 'nize olan `ssh` bağlantıyı kullanarak aşağıdaki adımları u
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. `remotemonitoring` Klasöründe **remote_monitoring. js**adlı bir dosya oluşturun. Bu dosyayı bir metin düzenleyicisinde açın. Raspberry PI 'de `nano` veya `vi` metin düzenleyicilerini kullanabilirsiniz.
+1. `remotemonitoring`Klasöründe **remote_monitoring.js**adlı bir dosya oluşturun. Bu dosyayı bir metin düzenleyicisinde açın. Raspberry PI 'de `nano` veya `vi` metin düzenleyicilerini kullanabilirsiniz.
 
-1. **Remote_monitoring. js** dosyasında aşağıdaki `require` deyimleri ekleyin:
+1. **remote_monitoring.js** dosyasında aşağıdaki `require` deyimleri ekleyin:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,7 +103,7 @@ Raspberry Pi 'nize olan `ssh` bağlantıyı kullanarak aşağıdaki adımları u
     var async = require('async');
     ```
 
-1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini `{device connection string}` , uzaktan izleme çözümünde sağladığınız cihaz için not ettiğiniz değerle değiştirin:
+1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini, `{device connection string}` Uzaktan izleme çözümünde sağladığınız cihaz için not ettiğiniz değerle değiştirin:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -385,7 +384,7 @@ Raspberry Pi 'nize olan `ssh` bağlantıyı kullanarak aşağıdaki adımları u
       });
       ```
 
-1. **Remote_monitoring. js** dosyasına değişiklikleri kaydedin.
+1. **remote_monitoring.js** dosyadaki değişiklikleri kaydedin.
 
 1. Örnek uygulamayı başlatmak için, Raspberry PI 'de komut isteminizdeki aşağıdaki komutu çalıştırın:
 

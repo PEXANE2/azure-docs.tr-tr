@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261780"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için TLS şifrelemesini ve kimlik doğrulamasını ayarlama
@@ -20,7 +19,7 @@ ms.locfileid: "81261780"
 Bu makalede, daha önce Güvenli Yuva Katmanı (SSL) şifrelemesi olarak bilinen ve Apache Kafka istemcileri ile Apache Kafka aracıları arasında Aktarım Katmanı Güvenliği (TLS) şifrelemesini ayarlama konusu gösterilmektedir. Ayrıca, istemcilerin kimlik doğrulamasının nasıl ayarlanacağını gösterir (bazen iki yönlü TLS olarak adlandırılır).
 
 > [!Important]
-> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca Java istemcisi `ProducerConsumer.java` hem üretim hem de kullanma için TLS kullanabilir. Konsol üreticisi istemcisi `console-producer.sh` TLS ile çalışmıyor.
+> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca Java istemcisi `ProducerConsumer.java` hem üretim hem de kullanma IÇIN TLS kullanabilir. Konsol üreticisi istemcisi `console-producer.sh` TLS ile çalışmıyor.
 
 > [!Note]
 > HDInsight Kafka konsol üreticisi sürüm 1,1 ile SSL 'yi desteklemez.
@@ -52,7 +51,7 @@ Aracı Kurulum işleminin Özeti aşağıdaki gibidir:
 Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri kullanın:
 
 > [!Important]
-> Aşağıdaki kod parçacıklarında wnx, üç çalışan düğümünden birine yönelik bir kısaltmadır ve yerine `wn0` `wn1` veya `wn2` uygun şekilde olmalıdır. `WorkerNode0_Name`ve `HeadNode0_Name` ilgili makinelerin adlarıyla yerine gelmelidir.
+> Aşağıdaki kod parçacıklarında wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve yerine `wn0` `wn1` veya `wn2` uygun şekilde olmalıdır. `WorkerNode0_Name`ve `HeadNode0_Name` ilgili makinelerin adlarıyla yerine gelmelidir.
 
 1. HDInsight için, sertifika yetkilisinin (CA) rolünü dolduracağı baş düğüm 0 ' da ilk kurulumu gerçekleştirin.
 
@@ -133,7 +132,7 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. **Özel Kafka-Broker** altında **SSL. Client. auth** özelliğini olarak `required`ayarlayın. Bu adım yalnızca kimlik doğrulaması ve şifrelemeyi ayarlıyorsanız gereklidir.
+1. **Özel Kafka-Broker** altında **SSL. Client. auth** özelliğini olarak ayarlayın `required` . Bu adım yalnızca kimlik doğrulaması ve şifrelemeyi ayarlıyorsanız gereklidir.
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -297,7 +296,7 @@ Her adımın ayrıntıları aşağıda verilmiştir.
     keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. İstemci makinesinde bir `client-ssl-auth.properties` dosya oluşturun (hn1). Aşağıdaki satırlara sahip olmalıdır:
+1. İstemci makinesinde bir dosya oluşturun `client-ssl-auth.properties` (hn1). Aşağıdaki satırlara sahip olmalıdır:
 
     ```bash
     security.protocol=SSL
@@ -323,13 +322,13 @@ Bu adımları istemci makinesinde çalıştırın.
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. Konsol üreticisi ' ni başlatın ve üretici için `client-ssl-auth.properties` bir yapılandırma dosyası olarak yolunu sağlayın.
+1. Konsol üreticisi ' ni başlatın ve `client-ssl-auth.properties` üretici için bir yapılandırma dosyası olarak yolunu sağlayın.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1. İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve tüketicinin bir yapılandırma `client-ssl-auth.properties` dosyası olarak yolunu sağlayın.
+1. İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve `client-ssl-auth.properties` tüketicinin bir yapılandırma dosyası olarak yolunu sağlayın.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -349,7 +348,7 @@ Bu adımları istemci makinesinde çalıştırın.
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-1. İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve tüketicinin bir yapılandırma `client-ssl-auth.properties` dosyası olarak yolunu sağlayın.
+1. İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve `client-ssl-auth.properties` tüketicinin bir yapılandırma dosyası olarak yolunu sağlayın.
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

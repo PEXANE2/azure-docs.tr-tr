@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682509"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cihazınız ile IoT Hub arasında ileti göndermek ve almak için Azure IoT araçları 'nı kullanın Visual Studio Code
@@ -64,7 +63,7 @@ Cihazınızdan IoT Hub 'ınıza gönderilen iletileri izlemek için şu adımlar
 
 1. Cihazınıza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını**seçin.
 
-2. İzlenen iletiler **Çıkış** > **Azure IoT Hub** görünümünde gösterilir.
+2. İzlenen iletiler **Çıkış**  >  **Azure IoT Hub** görünümünde gösterilir.
 
 3. İzlemeyi durdurmak için, **Çıkış** görünümüne sağ tıklayın ve **Izlemeyi durdur yerleşik olay uç noktası**' nı seçin.
 
@@ -76,7 +75,7 @@ IoT Hub 'ından cihazınıza bir ileti göndermek için şu adımları izleyin:
 
 2. Giriş kutusuna iletiyi girin.
 
-3. Sonuçlar, **Çıkış** > **Azure IoT Hub** görünümünde gösterilir.
+3. Sonuçlar, **Çıkış**  >  **Azure IoT Hub** görünümünde gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,9 @@ description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritaban
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537313"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
@@ -38,7 +37,7 @@ Günlük yedeklemeleri her 15 dakikada bir gerçekleştiğinden, izleme yedeklem
 
 Veritabanı yedekleme uyarılarını izlemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Kasa panosunda **Uyarılar ve olaylar**' ı seçin.
 
@@ -142,7 +141,7 @@ Yedekleme sıklığını veya bekletme aralığını değiştirmek için ilkeyi 
 > [!NOTE]
 > Saklama döneminde yapılan herhangi bir değişiklik, yeni olanlar da içinde olmak üzere daha eski kurtarma noktalarına daha geriye dönük olarak uygulanır.
 
-Kasa panosunda,**yedekleme ilkelerini** **Yönet** > ' e gidin ve düzenlemek istediğiniz ilkeyi seçin.
+Kasa panosunda, yedekleme ilkelerini **Yönet**' e gidin  >  **Backup Policies** ve düzenlemek istediğiniz ilkeyi seçin.
 
   ![Yedekleme ilkesini Yönet](./media/backup-azure-sql-database/modify-backup-policy.png)
 

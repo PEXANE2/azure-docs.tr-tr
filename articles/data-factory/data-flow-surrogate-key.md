@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606290"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Eşleme veri akışında vekil anahtar dönüşümü 
@@ -47,7 +46,7 @@ Kaynağınızdan MAX () ' i seçmek için bir SQL sorgu seçeneği kullanın. Ö
 
 #### <a name="file-sources"></a>Dosya kaynakları
 
-Önceki en büyük değer bir dosya içinde ise, önceki en büyük `max()` değeri almak için toplu dönüşümde işlevini kullanın:
+Önceki en büyük değer bir dosya içinde ise, `max()` önceki en büyük değeri almak için toplu dönüşümde işlevini kullanın:
 
 ![Vekil anahtar dosyası](media/data-flow/sk008.png "Vekil anahtar dosyası")
 
@@ -57,7 +56,7 @@ Her iki durumda da, gelen yeni verilerinizi önceki maksimum değeri içeren kay
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream> 

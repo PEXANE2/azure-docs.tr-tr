@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641824"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
@@ -69,7 +68,7 @@ Mantıksal uygulama şablonu için öncelikle bu şablon nesneleriyle çalışı
 
 Mantıksal uygulama şablonunuz bu dosya adı biçimini kullanır:
 
-**<*Logic-App-adı*>. JSON**
+**<*Logic-app-name* # C0.js**
 
 > [!IMPORTANT]
 > Şablon sözdizimi büyük/küçük harfe duyarlıdır, bu nedenle tutarlı büyük harf kullandığınızdan emin olun. 
@@ -78,13 +77,13 @@ Mantıksal uygulama şablonunuz bu dosya adı biçimini kullanır:
 
 ## <a name="template-parameters"></a>Şablon parametreleri
 
-Mantıksal uygulama şablonunda, farklı düzeylerde `parameters` bulunan ve farklı işlevler gerçekleştiren birden fazla nesne vardır. Örneğin, en üst düzeyde, Azure 'da kaynak oluştururken ve dağıttığınızda dağıtım sırasında kabul edilecek ve kullanılacak değerler için [şablon parametreleri](../azure-resource-manager/templates/template-syntax.md#parameters) bildirebilirsiniz, örneğin:
+Mantıksal uygulama şablonunda, `parameters` farklı düzeylerde bulunan ve farklı işlevler gerçekleştiren birden fazla nesne vardır. Örneğin, en üst düzeyde, Azure 'da kaynak oluştururken ve dağıttığınızda dağıtım sırasında kabul edilecek ve kullanılacak değerler için [şablon parametreleri](../azure-resource-manager/templates/template-syntax.md#parameters) bildirebilirsiniz, örneğin:
 
 * Mantıksal uygulamanız
 * Mantığınızın [yönetilen bağlayıcılar](../connectors/apis-list.md) aracılığıyla diğer hizmetlere ve sistemlere erişmek için kullandığı bağlantılar
 * Mantıksal uygulamanızın dağıtım için ihtiyaç duyacağı diğer kaynaklar
 
-  Örneğin, mantıksal uygulamanız işletmeden işletmeye (B2B) senaryolar için bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanıyorsa, şablonun en üst düzey `parameters` nesnesi bu tümleştirme hesabının kaynak kimliğini kabul eden parametreyi bildirir.
+  Örneğin, mantıksal uygulamanız işletmeden işletmeye (B2B) senaryolar için bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanıyorsa, şablonun en üst düzey `parameters` nesnesi bu TÜMLEŞTIRME hesabının kaynak kimliğini kabul eden parametreyi bildirir.
 
 [Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#parameters)tarafından tam olarak açıklanan bir parametre tanımının genel yapısı ve sözdizimi aşağıda verilmiştir:
 
@@ -155,7 +154,7 @@ Diğer şablon nesneleri genellikle şablon parametrelerine başvurur, böylece 
 
 * [Şablonunuzun kaynak nesnesi](#template-resources), bu konunun ilerleyen kısımlarında açıklanan Azure 'da, [mantıksal uygulamanızın kaynak tanımı](#logic-app-resource-definition)gibi, oluşturmak ve dağıtmak istediğiniz her kaynağı tanımlar. Bu kaynaklar genellikle mantıksal uygulamanızın adı ve konumu ile bağlantı bilgileri gibi şablon parametre değerlerini kullanır.
 
-* Mantıksal uygulamanızın kaynak tanımında daha derin bir düzeyde, [iş akışı tanımınızın Parameters nesnesi](#workflow-definition-parameters) mantıksal uygulamanızın çalışma zamanında kullanılacak değerler için parametreler bildirir. Örneğin, bir HTTP tetikleyicisinin kimlik doğrulaması için kullandığı Kullanıcı adı ve parola için iş akışı Tanım parametrelerini bildirebilirsiniz. İş akışı tanımı parametrelerinin değerlerini belirtmek için, iş akışı tanımınızın `parameters` *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *olan* nesnesini kullanın. Bu dış `parameters` nesnede, daha önce belirtilen şablon parametrelerine başvurabilir, bu da bir parametre dosyasından dağıtımda değerleri kabul edebilir.
+* Mantıksal uygulamanızın kaynak tanımında daha derin bir düzeyde, [iş akışı tanımınızın Parameters nesnesi](#workflow-definition-parameters) mantıksal uygulamanızın çalışma zamanında kullanılacak değerler için parametreler bildirir. Örneğin, bir HTTP tetikleyicisinin kimlik doğrulaması için kullandığı Kullanıcı adı ve parola için iş akışı Tanım parametrelerini bildirebilirsiniz. İş akışı tanımı parametrelerinin değerlerini belirtmek için, `parameters` iş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *inside* olan nesnesini kullanın. Bu dış `parameters` nesnede, daha önce belirtilen şablon parametrelerine başvurabilir, bu da bir parametre dosyasından dağıtımda değerleri kabul edebilir.
 
 Parametrelere başvurulduğunda, şablon ifadeleri ve işlevleri farklı sözdizimi kullanır ve iş akışı Tanım ifadelerinden ve işlevlerinden farklı şekilde davranır. Bu farklılıklar hakkında daha fazla bilgi için, bu konunun ilerleyen kısımlarında [parametrelere başvurular](#parameter-references) bölümüne bakın.
 
@@ -185,8 +184,8 @@ Daha fazla şablon en iyi uygulamaları için bkz. [şablon parametreleri Için 
 
 Şablon parametrelerinin değerlerini sağlamak için bu değerleri bir [Parametreler dosyasında](../azure-resource-manager/templates/parameter-files.md)depolayın. Bu şekilde, dağıtım gereksinimlerinize göre farklı parametre dosyalarını kullanabilirsiniz. Kullanılacak dosya adı biçimi aşağıda verilmiştir:
 
-* Mantıksal uygulama şablonu dosya adı: ** < *Logic-app-name*>. JSON**
-* Parametreler dosya adı: ** < *Logic-app-name*>. Parameters. JSON**
+* Mantıksal uygulama şablonu dosya adı: ** < *Logic-app-name* # C0.json**
+* Parametreler dosya adı: ** < *Logic-app-name* # C0.parameters.json**
 
 Aşağıda, [Azure Key Vault ile güvenli bir parametre değeri geçirmek](../azure-resource-manager/templates/key-vault-parameter.md)için bir Anahtar Kasası başvurusu içeren parametreler dosyasının içindeki yapısı verilmiştir:
 
@@ -237,7 +236,7 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 ## <a name="template-resources"></a>Şablon kaynakları
 
-Şablonunuz, `resources` [mantıksal uygulamanızın kaynak tanımı](#logic-app-resource-definition), herhangi bir [bağlantı kaynak](#connection-resource-definitions)tanımı ve mantıksal uygulamanızın dağıtım için Ihtiyaç duyacağı diğer tüm kaynaklar gibi Azure 'da oluşturulacak ve dağıtılacak her kaynak için tanımları içeren bir nesnesidir.
+Şablonunuz, `resources` [mantıksal uygulamanızın kaynak tanımı](#logic-app-resource-definition), herhangi bir [bağlantı kaynak](#connection-resource-definitions)tanımı ve mantıksal uygulamanızın dağıtım için ihtiyaç duyacağı diğer tüm kaynaklar gibi Azure 'da oluşturulacak ve dağıtılacak her kaynak için tanımları içeren bir nesnesidir.
 
 ```json
 {
@@ -274,12 +273,12 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 ### <a name="logic-app-resource-definition"></a>Mantıksal uygulama kaynak tanımı
 
-Mantıksal uygulamanızın kaynak tanımı, bu bilgileri içeren `properties` nesnesiyle başlar:
+Mantıksal uygulamanızın kaynak tanımı, `properties` Bu bilgileri içeren nesnesiyle başlar:
 
 * Dağıtım sırasında mantıksal uygulamanızın durumu
 * Mantıksal uygulamanız tarafından kullanılan herhangi bir tümleştirme hesabının KIMLIĞI
 * Mantıksal uygulamanızın iş akışı tanımı
-* Çalışma `parameters` zamanında kullanılacak değerleri ayarlayan nesne
+* `parameters`Çalışma zamanında kullanılacak değerleri ayarlayan nesne
 * Mantıksal uygulamanız hakkındaki ad, tür, konum ve benzeri diğer kaynak bilgileri
 
 ```json
@@ -319,12 +318,12 @@ Mantıksal uygulamanızın kaynak tanımı, bu bilgileri içeren `properties` ne
 
 Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 
-| Öznitelik | Gerekli | Tür | Açıklama |
+| Öznitelik | Gerekli | Tür | Description |
 |-----------|----------|------|-------------|
-| `state` | Yes | Dize | Mantıksal uygulamanızın dağıtım `Enabled` sırasındaki durumu, mantıksal uygulamanızın etkin olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelir. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
-| `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne tümleştirme hesabının KIMLIĞINI belirten `id` özniteliğini içerir. |
-| `definition` | Yes | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında `parameters` nesne, mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
-| `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, çalışma zamanında kullanılacak `$connections` bağlantı değerlerini ayarlayan bir nesnesi içerir. |
+| `state` | Evet | Dize | Mantıksal uygulamanızın dağıtım sırasındaki durumu, mantıksal uygulamanızın `Enabled` etkin olduğu ve mantıksal uygulamanızın etkin olmadığı `Disabled` anlamına gelir. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
+| `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |
+| `definition` | Evet | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında nesne, `parameters` mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
+| `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, `$connections` çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir nesnesi içerir. |
 | `accessControl` | Hayır | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
@@ -334,13 +333,13 @@ Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özg�
 
 ## <a name="workflow-definition-and-parameters"></a>İş akışı tanımı ve parametreleri
 
-Mantıksal uygulamanızın iş akışı tanımı, mantıksal uygulamanızın kaynak `definition` tanımının içindeki `properties` nesnede görünen nesne içinde görüntülenir. Bu `definition` nesne, kod görünümünde görüntülenen ve [Iş akışı tanımlama dili için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) bölümünde tam olarak açıklanan nesnedir. İş akışı tanımınızda, çalışma `parameters` zamanında iş akışı tanımınızda kullanılan değerler için yeni veya mevcut parametreleri düzenleme oluşturabileceğiniz bir iç bildirim nesnesi bulunur. Daha sonra bu parametrelere iş akışınızda tetikleyici veya Eylemler içinde başvurabilirsiniz. Bu `parameters` nesne, mantıksal uygulamanız [yönetilen bağlayıcılar](../connectors/apis-list.md)aracılığıyla diğer hizmetlere ve sistemlere bağlantı oluşturmadığı için varsayılan olarak boştur.
+Mantıksal uygulamanızın iş akışı tanımı, `definition` `properties` mantıksal uygulamanızın kaynak tanımının içindeki nesnede görünen nesne içinde görüntülenir. Bu `definition` nesne, kod görünümünde görüntülenen ve [Iş akışı tanımlama dili için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) bölümünde tam olarak açıklanan nesnedir. İş akışı tanımınızda, `parameters` çalışma zamanında iş akışı tanımınızda kullanılan değerler için yeni veya mevcut parametreleri düzenleme oluşturabileceğiniz bir iç bildirim nesnesi bulunur. Daha sonra bu parametrelere iş akışınızda tetikleyici veya Eylemler içinde başvurabilirsiniz. Bu `parameters` nesne, mantıksal uygulamanız [yönetilen bağlayıcılar](../connectors/apis-list.md)aracılığıyla diğer hizmetlere ve sistemlere bağlantı oluşturmadığı için varsayılan olarak boştur.
 
-İş akışı tanımı parametrelerinin değerlerini ayarlamak için, iş akışı tanımınızın `parameters` *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *olan* nesnesini kullanın. Bu dış `parameters` nesnede, daha önce önceden tanımlanmış olan şablon parametrelerine başvurabilir, bu da bir parametre dosyasından dağıtımda değer kabul edebilir.
+İş akışı tanımı parametrelerinin değerlerini ayarlamak için, `parameters` iş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *inside* olan nesnesini kullanın. Bu dış `parameters` nesnede, daha önce önceden tanımlanmış olan şablon parametrelerine başvurabilir, bu da bir parametre dosyasından dağıtımda değer kabul edebilir.
 
 > [!TIP]
 >
-> En iyi uygulama olarak, iş akışı tanımının içinden dağıtımda değerlendirilen şablon parametrelerine doğrudan başvurmayın. Bunun yerine, daha sonra iş akışı `parameters` *tanımınızın* *dışında* , ancak mantıksal uygulamanızın kaynak tanımında yer alan nesnede ayarlayabileceğiniz bir iş akışı tanımı parametresi bildirin. Daha fazla bilgi için bkz. [parametrelere başvurular](#parameter-references).
+> En iyi uygulama olarak, iş akışı tanımının içinden dağıtımda değerlendirilen şablon parametrelerine doğrudan başvurmayın. Bunun yerine, daha sonra `parameters` iş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında yer alan nesnede ayarlayabileceğiniz bir iş akışı tanımı *inside* parametresi bildirin. Daha fazla bilgi için bkz. [parametrelere başvurular](#parameter-references).
 
 Bu söz dizimi, şablon ve iş akışı Tanım parametrelerine başvurarak bu parametre değerlerini ayarlayabileceğiniz ve hem şablonda hem de iş akışı Tanım düzeylerindeki parametreleri nerede bildirebileceğiniz gösterilmektedir:
 
@@ -409,9 +408,9 @@ Bu söz dizimi, şablon ve iş akışı Tanım parametrelerine başvurarak bu pa
 
 ### <a name="secure-workflow-definition-parameters"></a>Güvenli iş akışı Tanım parametreleri
 
-Çalışma zamanında gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir iş akışı tanımı parametresi için, `securestring` veya `secureobject` parametresi türünü kullanmak için parametresini bildirin veya düzenleyin. Bu parametreye, iş akışı tanımınızın tamamında ve içinde başvurabilirsiniz. Şablonun en üst düzeyinde, bu bilgileri dağıtımda işlemek için aynı türe sahip bir parametre bildirin.
+Çalışma zamanında gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir iş akışı tanımı parametresi için, `securestring` veya parametresi türünü kullanmak için parametresini bildirin veya düzenleyin `secureobject` . Bu parametreye, iş akışı tanımınızın tamamında ve içinde başvurabilirsiniz. Şablonun en üst düzeyinde, bu bilgileri dağıtımda işlemek için aynı türe sahip bir parametre bildirin.
 
-İş akışı tanımı parametresinin değerini ayarlamak için, iş akışı tanımınızın `parameters` *dışında* , ancak mantıksal uygulama kaynak tanımınızda hala *şablon* parametresine başvuracak olan nesneyi kullanın. Son olarak, dağıtım sırasında değeri şablon parametrıza geçirmek için bu değeri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) depolayın ve dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) anahtar kasasının başvurusunu yapın.
+İş akışı tanımı parametresinin değerini ayarlamak için, `parameters` iş akışı tanımınızın *dışında* , ancak mantıksal uygulama kaynak tanımınızda hala *inside* Şablon parametresine başvuracak olan nesneyi kullanın. Son olarak, dağıtım sırasında değeri şablon parametrıza geçirmek için bu değeri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) depolayın ve dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) anahtar kasasının başvurusunu yapın.
 
 Bu örnek şablon, değerlerini Azure Key Vault içinde depolayabilmeniz için gerektiğinde güvenli parametreleri tanımlayarak bu görevleri nasıl tamamlayakullanabileceğinizi gösterir:
 
@@ -650,9 +649,9 @@ Bağlantı kaynak tanımları, şablonun en üst düzey parametrelerine başvuru
 
 Mantıksal uygulamanızın kaynak tanımı ayrıca bağlantı kaynağı tanımlarına şu yollarla da çalışmaktadır:
 
-* İş akışı tanımınızda, `parameters` nesne, mantıksal uygulama `$connections` çalışma zamanında kullanılacak bağlantı değerleri için bir parametre bildirir. Ayrıca, bir bağlantı oluşturan tetikleyici veya eylem, bu `$connections` parametreyi geçen karşılık gelen değerleri kullanır.
+* İş akışı tanımınızda, `parameters` nesne, `$connections` mantıksal uygulama çalışma zamanında kullanılacak bağlantı değerleri için bir parametre bildirir. Ayrıca, bir bağlantı oluşturan tetikleyici veya eylem, bu parametreyi geçen karşılık gelen değerleri kullanır `$connections` .
 
-* İş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımı *içinde* , başka bir `parameters` nesne karşılık gelen şablon parametrelerine başvurarak `$connections` parametresi için çalışma zamanında kullanılacak değerleri ayarlar. Bu değerler, mantıksal uygulamanızdaki bağlantıların meta verilerini güvenli bir şekilde depolayan kaynaklara başvurmak için şablon ifadeleri kullanır.
+* İş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımı *içinde* , başka bir `parameters` nesne `$connections` karşılık gelen şablon parametrelerine başvurarak parametresi için çalışma zamanında kullanılacak değerleri ayarlar. Bu değerler, mantıksal uygulamanızdaki bağlantıların meta verilerini güvenli bir şekilde depolayan kaynaklara başvurmak için şablon ifadeleri kullanır.
 
   Örneğin, meta veriler, [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)depolayabileceğiniz bağlantı dizelerini ve erişim belirteçlerini içerebilir. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz. Başvuru parametrelerinin farklılıkları hakkında daha fazla bilgi için, bu konunun ilerleyen kısımlarında [parametrelere başvurular](#parameter-references) bölümüne bakın.
 
@@ -665,9 +664,9 @@ Mantıksal uygulamanızın kaynak tanımı ayrıca bağlantı kaynağı tanımla
   }
   ```
 
-* Mantıksal uygulamanızın kaynak tanımında, mantıksal uygulamanız tarafından `dependsOn` kullanılan bağlantıların bağımlılıklarını belirten bir nesne vardır.
+* Mantıksal uygulamanızın kaynak tanımında, `dependsOn` mantıksal uygulamanız tarafından kullanılan bağlantıların bağımlılıklarını belirten bir nesne vardır.
 
-Oluşturduğunuz her bağlantının Azure 'da benzersiz bir adı vardır. Aynı hizmet veya sisteme birden fazla bağlantı oluşturduğunuzda, her bağlantı adına her bir yeni bağlantı (örneğin `office365` `office365-1`,, vb.) ile bir sayı eklenir.
+Oluşturduğunuz her bağlantının Azure 'da benzersiz bir adı vardır. Aynı hizmet veya sisteme birden fazla bağlantı oluşturduğunuzda, her bağlantı adına her bir yeni bağlantı (örneğin,, vb.) ile bir sayı eklenir `office365` `office365-1` .
 
 Bu örnekte, mantıksal uygulamanızın kaynak tanımı ve Office 365 Outlook için bir bağlantı kaynak tanımı arasındaki etkileşimler gösterilmektedir:
 
@@ -746,7 +745,7 @@ Bu örnekte, mantıksal uygulamanızın kaynak tanımı ve Office 365 Outlook i�
 
 ### <a name="secure-connection-parameters"></a>Güvenli bağlantı parametreleri
 
-Gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir bağlantı parametresi için bağlantının kaynak tanımı, bu değerleri ad-değer `parameterValues` çifti biçiminde belirten bir nesne içerir. Bu bilgileri gizlemek için, `securestring` veya `secureobject` parametre türlerini kullanarak bu değerler için şablon parametreleri bildirebilir veya düzenleyebilirsiniz. Daha sonra bu bilgileri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)kaydedebilirsiniz. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz.
+Gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir bağlantı parametresi için bağlantının kaynak tanımı, `parameterValues` Bu değerleri ad-değer çifti biçiminde belirten bir nesne içerir. Bu bilgileri gizlemek için, `securestring` veya parametre türlerini kullanarak bu değerler için şablon parametreleri bildirebilir veya düzenleyebilirsiniz `secureobject` . Daha sonra bu bilgileri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)kaydedebilirsiniz. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz.
 
 Bir Azure Blob depolama bağlantısı için hesap adı ve erişim anahtarı sağlayan bir örnek aşağıda verilmiştir:
 
@@ -943,7 +942,7 @@ Bazı bağlantılar [, Azure AD 'de kayıtlı](../active-directory/develop/quick
 | `token:clientId` | Hizmet sorumlusu ile ilişkili uygulama veya istemci KIMLIĞI |
 | `token:clientSecret` | Hizmet sorumlusu ile ilişkili anahtar değeri |
 | `token:TenantId` | Azure AD kiracınız için dizin KIMLIĞI |
-| `token:grantType` | İstenen izin türü, olmalıdır `client_credentials`. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). |
+| `token:grantType` | İstenen izin türü, olmalıdır `client_credentials` . Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). |
 |||
 
 **Şablon parametre tanımları**
@@ -1017,7 +1016,7 @@ Hizmet sorumluları ile çalışma hakkında daha fazla bilgi için şu konulara
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-İş akışı tanımı parametrelerine başvurmak için, çalışma zamanında değerlendirilen [Iş akışı tanımlama dili ifadeleri ve işlevleri](../logic-apps/workflow-definition-language-functions-reference.md)kullanılır. Bazı şablon işlevleri ve iş akışı tanımı işlevlerinin aynı ada sahip olduğunu fark edebilirsiniz. İş akışı tanımı ifadeleri "at" simgesiyle başlar (**@**):
+İş akışı tanımı parametrelerine başvurmak için, çalışma zamanında değerlendirilen [Iş akışı tanımlama dili ifadeleri ve işlevleri](../logic-apps/workflow-definition-language-functions-reference.md)kullanılır. Bazı şablon işlevleri ve iş akışı tanımı işlevlerinin aynı ada sahip olduğunu fark edebilirsiniz. İş akışı tanımı ifadeleri "at" simgesiyle başlar ( **@** ):
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 
@@ -1029,7 +1028,7 @@ Bunun yerine, çalışma zamanında kullanmak üzere iş akışı Tanım paramet
 
 1. İş akışı tanımınızda, kabul edilecek ve çalışma zamanında kullanılacak değerlerin parametrelerini bildirin. Daha sonra bu değerlere, iş akışı tanımınızda ve içinde başvurabilirsiniz.
 
-1. İş akışı `parameters` tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *içinde* olan nesnede, karşılık gelen şablon parametrelerine başvurarak iş akışı Tanım parametrelerinizin değerlerini ayarlayın. Bu şekilde, şablon parametre değerlerini iş akışı Tanım parametrelerinizle geçirebilirsiniz.
+1. `parameters`İş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *içinde* olan nesnede, karşılık gelen şablon parametrelerine başvurarak iş akışı Tanım parametrelerinizin değerlerini ayarlayın. Bu şekilde, şablon parametre değerlerini iş akışı Tanım parametrelerinizle geçirebilirsiniz.
 
 1. Parametreler dosyasında, dağıtımda kullanılacak şablon değerlerini belirtin.
 

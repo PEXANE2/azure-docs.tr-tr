@@ -4,10 +4,9 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537602"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
@@ -70,7 +69,7 @@ Telemetriyi uygun kaynaklara göndermek için, yapı yapılandırmasına bağlı
 
 Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yapılandırması için ayrı bir küme oluşturmak isterseniz, bunların Application Insights portalında oluşturulması en kolay yoldur. Kaynakları çok büyük bir şekilde oluşturursanız, [işlemi otomatikleştirebilirsiniz](../../azure-monitor/app/powershell.md).
 
-1. [Azure Portal][portal] **Yeni** > **Geliştirici Hizmetleri** > **Application Insights**' ni seçin.  
+1. [Azure Portal][portal] **Yeni**  >  **Geliştirici Hizmetleri**  >  **Application Insights**' ni seçin.  
 
     ![Application Insights bölmesi](./media/cloudservices/01-new.png)
 
@@ -82,7 +81,7 @@ Her kaynak bir izleme anahtarı ile tanımlanır. SDK yapılandırmasını el il
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Her rol için Azure Tanılama ayarlama
 Uygulamanızı Application Insights ile izlemek için bu seçeneği ayarlayın. Web rolleri için bu seçenek performans izleme, uyarılar, Tanılamalar ve kullanım analizi sağlar. Diğer roller için, yeniden başlatma, performans sayaçları ve System. Diagnostics. Trace çağrıları gibi Azure Tanılama arayabilir ve izleyebilirsiniz. 
 
-1. Visual Studio Çözüm Gezgini, ** \<yourcloudservice>**  >  **rollerinin**altında her rolün özelliklerini açın.
+1. Visual Studio Çözüm Gezgini **\<YourCloudService>**  >  **Roller**altında her rolün özelliklerini açın.
 
 1. **Yapılandırma**bölümünde **tanılama verilerini Application Insights gönder** onay kutusunu seçin ve ardından daha önce oluşturduğunuz Application Insights kaynağını seçin.
 
@@ -90,7 +89,7 @@ Her derleme yapılandırması için ayrı bir Application Insights kaynağı kul
 
 ![Application Insights Yapılandır](./media/cloudservices/configure-azure-diagnostics.png)
 
-Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *.\* cscfg*. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
+Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *. \* cscfg*. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
 
 Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
 
@@ -124,7 +123,7 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
     * [Çalışan rolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Web sayfaları için](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. *ApplicationInsights. config* dosyasını her zaman çıkış dizinine kopyalanacak şekilde ayarlayın.
+1. *ApplicationInsights.config* dosyasını her zaman çıkış dizinine kopyalanacak şekilde ayarlayın.
 
    *. Config* dosyasındaki bir ileti, izleme anahtarını buraya yerleştirmenizi ister. Ancak, bulut uygulamaları için *. cscfg* dosyasından ayarlamak daha iyidir. Bu yaklaşım, rolün portalda doğru şekilde tanımlanmasını sağlar.
 
@@ -132,7 +131,7 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
 
 Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyorsanız gereklidir. 
 
-1. Şuna `\*.csdef` benzer her bir rol Için dosya ekleme [Başlangıç görevi](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) 
+1. `\*.csdef`Şuna benzer her bir rol için dosya ekleme [Başlangıç görevi](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) 
 
     ```xml
     <Startup>
@@ -147,7 +146,7 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
     </Startup>
     ```
     
-2. [Installagent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [ınstallagent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)indir, bunları her bir rol `AppInsightsAgent` projesindeki klasörüne yerleştirin. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
+2. [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)indirin, `AppInsightsAgent` her rol projesinde klasöre yerleştirin. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
 
 3. Tüm çalışan rollerinde, ortam değişkenleri ekleyin: 
 
@@ -204,7 +203,7 @@ Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri
 * [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 Çeşitli Web uygulaması türlerinden işlenmeyen özel durumları toplama hakkında daha fazla bilgi için bkz. [Application Insights özel durumları izleme](../../azure-monitor/app/asp-net-exceptions.md).
 
 Örnek web rolü, MVC5 ve Web API 2 denetleyicilerine sahiptir. Bu ikisinden toplanan işlenmemiş özel durumlar aşağıdaki işleyicilerle yakalanır:
@@ -233,7 +232,7 @@ Web rolleri için aşağıdaki sayaçlar da toplanır:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-[Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14) *ApplicationInsights. config dosyasını* düzenleyerek ek özel veya diğer Windows performans sayaçları belirtebilirsiniz.
+*ApplicationInsights.config* , [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)düzenleyerek ek özel veya diğer Windows performans sayaçları belirtebilirsiniz.
 
   ![Performans sayaçları](./media/cloudservices/002-servers.png)
 
@@ -242,11 +241,11 @@ Zengin bir tanılama deneyimi için, başarısız veya yüksek gecikme süresine
 
 Çalışan rolleri için bu görünümü elde etmek üzere, tüm telemetri için ortak bir Operation.Id bağlamı özniteliği ayarlamak üzere özel bir telemetri başlatıcısı kullanabilirsiniz. Bunun yapılması, gecikme veya hata sorununun bir bağımlılık ya da kodunuzun kaynaklanıp kaynaklanmadığını bir bakışta görüntülemenizi sağlar. 
 
-Bunu yapmak için:
+Aşağıdaki adımları uygulayın:
 
 * [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36), bağıntıkimliği öğesini bir CallContext olarak ayarlayın. Bu durumda, Istek KIMLIĞINI CorrelationId olarak kullanıyoruz.
 * Operation.Id öğesini daha önce ayarlanmış olan CorrelationId 'ye ayarlamak için özel bir Telemetryınitializer uygulamasını ekleyin. Bir örnek için bkz. [ıtemcorrelationtelemetryınitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Özel telemetri başlatıcısını ekleyin. Bunu, *ApplicationInsights. config* dosyasında veya [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)kodda yapabilirsiniz.
+* Özel telemetri başlatıcısını ekleyin. Bunu, [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) *ApplicationInsights.config* dosyasında veya kodda yapabilirsiniz.
 
 ## <a name="client-telemetry"></a>İstemci telemetrisi
 Sayfa görüntüleme sayısı, sayfa yükleme süreleri veya betik özel durumları gibi tarayıcı tabanlı telemetri almak ve sayfa betiklerinizde özel telemetri yazmak için, bkz. [Web sayfanıza JavaScript SDK 'Sı ekleme][client].

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640538"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry PI 'yi Azure 'a bağlama IoT Hub (C)
@@ -117,9 +116,9 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
 ### <a name="enable-ssh-and-spi"></a>SSH ve SPI 'yı etkinleştirme
 
-1. PI 'yi monitöre, klavye ve fareye bağlayın, PI 'yi başlatın ve Kullanıcı adı ve `pi` `raspberry` parola olarak kullanarak Raspbian 'de oturum açın.
+1. PI 'yi monitöre, klavye ve fareye bağlayın, PI 'yi başlatın ve `pi` Kullanıcı adı ve parola olarak kullanarak Raspbian 'de oturum açın `raspberry` .
  
-2. **Preferences** > **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
+2. **Preferences**  >  **Raspberry PI Configuration**> Raspberry simgesine tıklayın.
 
    ![Raspbian Tercihler menüsü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -178,9 +177,9 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    **Mac ve Ubuntu kullanıcıları**
 
-   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. PI 'yi SSH aracılığıyla bağlamak `ssh pi@<ip address of pi>` için çalıştırmanız gerekebilir.
+   Ubuntu veya macOS üzerinde yerleşik SSH istemcisini kullanın. `ssh pi@<ip address of pi>`PI 'YI SSH aracılığıyla bağlamak için çalıştırmanız gerekebilir.
    > [!NOTE]
-   > Varsayılan Kullanıcı adı ve `pi` parola ' dır `raspberry`.
+   > Varsayılan Kullanıcı adı `pi` ve parola ' dır `raspberry` .
 
 
 ### <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma

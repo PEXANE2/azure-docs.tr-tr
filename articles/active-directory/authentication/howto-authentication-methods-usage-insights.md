@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680196"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
@@ -38,12 +37,12 @@ Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure Multi-Fact
 Kimlik doğrulama yöntemi kullanımı ve öngörülerine erişmek için:
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-1. **Azure Active Directory** > **parola sıfırlama** > **kullanımı & öngörülerine**gidin.
+1. **Azure Active Directory**  >  **parola sıfırlama**  >  **kullanımı & öngörülerine**gidin.
 1. **Kayıt** veya **kullanım** genel bakışlarından, gereksinimlerinize göre filtrelemek için önceden filtrelenmiş raporları açmayı seçebilirsiniz.
 
 ![Kullanım & öngörülerine genel bakış](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Kullanım & öngörülerini doğrudan erişmek için adresine gidin [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Bu bağlantı sizi kayda genel bakış alanına getirir.
+Kullanım & öngörülerini doğrudan erişmek için adresine gidin [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) . Bu bağlantı sizi kayda genel bakış alanına getirir.
 
 Kayıtlı kullanıcılar, kullanıcılar etkin ve kullanıcılara uygun Kutucuklar, kullanıcılarınız için aşağıdaki kayıt verilerini gösterir:
 
@@ -65,7 +64,7 @@ Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verile
 
 Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Adı
+- Name
 - Kullanıcı adı
 - Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
 - Etkin durum (tümü, etkin, etkin değil)
@@ -80,7 +79,7 @@ Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntıların
 
 Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Adı
+- Name
 - Kullanıcı adı
 - Özellik (tümü, kayıt, sıfırlama)
 - Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)

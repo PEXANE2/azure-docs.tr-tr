@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682001"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Yeni bir sanal cihaz oluşturma ve test etme
@@ -31,7 +30,7 @@ Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelle
 
 *Özellikler*
 
-| Adı                     | Değerler                      |
+| Name                     | Değerler                      |
 | ------------------------ | --------------------------- |
 | Renk                    | Beyaz, kırmızı, mavi            |
 | Parlaklık               | 0-100                    |
@@ -41,7 +40,7 @@ Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelle
 
 Aşağıdaki tabloda, açık ampul 'in veri akışı olarak buluta rapor aldığı veriler gösterilmektedir:
 
-| Adı   | Değerler      |
+| Name   | Değerler      |
 | ------ | ----------- |
 | Durum | "açık", "kapalı" |
 | Sıcaklık | Derece F |
@@ -54,7 +53,7 @@ Aşağıdaki tabloda, açık ampul 'in veri akışı olarak buluta rapor aldığ
 
 Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 
-| Adı        |
+| Name        |
 | ----------- |
 | Geçiş yap   |
 | Geçiş kapalı  |
@@ -63,7 +62,7 @@ Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 
 Aşağıdaki tabloda cihazın ilk durumu gösterilmektedir:
 
-| Adı                     | Değerler |
+| Name                     | Değerler |
 | ------------------------ | -------|
 | İlk renk            | Beyaz  |
 | İlk parlaklık       | 75     |
@@ -108,11 +107,11 @@ GitHub 'dan [Uzaktan izleme mikro hizmetlerini](https://github.com/Azure/remote-
 
 Visual Studio Code 'de **Remote-Monitoring-Services-DotNet-master\storage-Adapter** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-**Storage-Adapter/WebService/appSettings. ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdbconnectionstring** değişkenine atayın.
+**Storage-Adapter/WebService/appsettings.ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdbconnectionstring** değişkenine atayın.
 
 Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **> hata ayıklamayı Başlat**' a tıklayın.
 
-Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) . Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
 
 Sonraki adımları tamamlayarak bu Visual Studio Code örneğinde depolama bağdaştırıcısı mikro hizmetini çalışır durumda bırakın.
 
@@ -126,14 +125,14 @@ Bu bölümde, var olan **Chiller** cihaz türüne yeni bir **iç sıcaklık** te
 
     | Kaynak | Hedef |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.exe | C:\temp\devicemodels\chiller-01.asp JSON |
-    | Services\data\devicemodels\scripts\chiller-01-State.exe | C:\temp\devicemodels\scripts\chiller-01-State.exe |
-    | Services\data\devicemodels\scripts\reboot-method.exe | C:\temp\devicemodels\scripts\reboot-method.exe |
-    | Services\data\devicemodels\scripts\firmwareupdate-method.exe | C:\temp\devicemodels\scripts\firmwareupdate-method.exe |
-    | Services\data\devicemodels\scripts\acil Gencyvalverelease-method.exe | C:\temp\devicemodels\scripts\acil. Gencyvalverelease-method.exe |
+    | Üzerinde Services\data\devicemodels\chiller-01.js | Üzerinde C:\temp\devicemodels\chiller-01.js |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. **C:\temp\devicemodels\chiller-01.exe JSON** dosyasını açın.
+1. C:\temp\devicemodels\chiller-01.jsdosya **üzerinde** açın.
 
 1. **InitialState** bölümünde aşağıdaki iki tanımı ekleyin:
 
@@ -159,9 +158,9 @@ Bu bölümde, var olan **Chiller** cihaz türüne yeni bir **iç sıcaklık** te
     },
     ```
 
-1. **C:\temp\devicemodels\chiller-01.exe JSON** dosyasını kaydedin.
+1. **C:\temp\devicemodels\chiller-01.js** dosyaya kaydedin.
 
-1. **C:\temp\devicemodels\scripts\chiller-01-State.exe** dosyasını açın.
+1. **C:\temp\devicemodels\scripts\chiller-01-state.js** dosyasını açın.
 
 1. **Durum** değişkenine aşağıdaki alanları ekleyin:
 
@@ -202,13 +201,13 @@ Bu bölümde, var olan **Chiller** cihaz türüne yeni bir **iç sıcaklık** te
     }
     ```
 
-1. **C:\temp\devicemodels\scripts\chiller-01-State.exe** dosyasını kaydedin.
+1. **C:\temp\devicemodels\scripts\chiller-01-state.js** dosyasını kaydedin.
 
 ## <a name="create-the-lightbulb"></a>Ampul oluşturma
 
 Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
 
-1. **C:\temp\devicemodels\lightbulb-01.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
+1. Üzerinde bir dosya **C:\temp\devicemodels\lightbulb-01.js** oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```json
     {
@@ -272,9 +271,9 @@ Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
     }
     ```
 
-    **C:\temp\devicemodels\lightbulb-01-JSON konumundaki**değişiklikleri kaydedin.
+    **C:\temp\devicemodels\lightbulb-01.jsüzerindeki**değişiklikleri kaydedin.
 
-1. **C:\temp\devicemodels\scripts\lightbulb-01-State.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\lightbulb-01-state.js** bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -361,9 +360,9 @@ Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
     }
     ```
 
-    **C:\temp\devicemodels\scripts\lightbulb-01-State.exe**içindeki değişiklikleri kaydedin.
+    Değişiklikleri **C:\temp\devicemodels\scripts\lightbulb-01-state.js**kaydedin.
 
-1. **C:\temp\devicemodels\scripts\switchon-method.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\SwitchOn-method.js** bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -387,9 +386,9 @@ Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
     }
     ```
 
-    **C:\temp\devicemodels\scripts\switchon-method.exe**içindeki değişiklikleri kaydedin.
+    Değişiklikleri **C:\temp\devicemodels\scripts\SwitchOn-method.js**kaydedin.
 
-1. **C:\temp\devicemodels\scripts\switchoff-method.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\SwitchOff-method.js** bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -413,7 +412,7 @@ Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
     }
     ```
 
-    **C:\temp\devicemodels\scripts\switchoff-method.exe**içindeki değişiklikleri kaydedin.
+    Değişiklikleri **C:\temp\devicemodels\scripts\SwitchOff-method.js**kaydedin.
 
 Artık, **chilcihaz** türünün özelleştirilmiş bir sürümünü oluşturdunuz ve yeni bir **lightampul** cihaz türü oluşturdunuz.
 
@@ -425,7 +424,7 @@ Bu bölümde, önceki bölümlerde oluşturduğunuz cihaz türlerini yerel olara
 
 Yeni bir Visual Studio Code örneğinde GitHub 'dan indirdiğiniz **cihaz benzetimi-DotNet-ana** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-**WebService/appSettings. ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdb_connstring** değişkenine atayın ve ayrıca ayarları aşağıdaki gibi değiştirin:
+**Web hizmeti/appsettings.ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdb_connstring** değişkenine atayın ve ayrıca ayarları aşağıdaki gibi değiştirin:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
