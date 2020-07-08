@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85296398"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure SYNAPSE Analytics veri tümleştirme iş ortakları
@@ -24,7 +24,7 @@ Azure SYNAPSE 'ın SYNAPSE SQL havuzu özelliğini kullanarak veri ambarı çöz
 
 ## <a name="data-integration-partners"></a>Veri tümleştirme iş ortakları
 
-| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma, veri ekiplerinin çeşitli veri silolarını gerçek zamanlı olarak bir Azure SYNAPSE veri ambarına tümleştirmesini, zenginleştirmesini ve akışını sağlayan bir ayıklama, dönüştürme ve yükleme (ETL) çözümüdür. |[Ürün sayfası](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer, geleneksel yaklaşımlardan tipik olarak değil, saatlerde daha derin Öngörüler elde eden, self servis veri analizine yönelik yinelenebilir bir iş akışı sağlar! Alteryx Designer, aynı sezgisel kullanıcı arabirimini kullanarak veri hazırlama, veri karıştırma ve analitik – tahmine dayalı, istatistiksel ve uzamsal bir şekilde veri analistlerine yardımcı olur. |[Ürün sayfası](https://www.alteryx.com/partners/microsoft/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|

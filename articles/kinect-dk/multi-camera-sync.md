@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, özellikler, donanım, DK, yetenekler, derinlik, renk, RGB, IMU, dizi, derinlik, çoklu, eşitleme
 ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277724"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Birden çok Azure Kinect DK cihazını eşitler
@@ -197,5 +197,5 @@ Eşitlenmiş cihazları ayarladıktan sonra, nasıl kullanacağınızı de öğr
 - [Azure Kinect DK donanım belirtimleri](hardware-specification.md) 
 - [Hızlı başlangıç: Azure Kinect DK 'yi ayarlama](set-up-azure-kinect-dk.md) 
 - [Azure Kinect DK bellenimini güncelleştirme](update-device-firmware.md) 
-- [Azure Kinect DK 'yi sıfırlama](reset-azure-kinect-dk.md) 
+- [Azure Kinect DK’yi sıfırlama](reset-azure-kinect-dk.md) 
 - [Azure Kinect Görüntüleyicisi](azure-kinect-viewer.md) 

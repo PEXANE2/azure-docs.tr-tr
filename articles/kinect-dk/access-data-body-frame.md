@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: gövde, çerçeve, Azure, Kinect, gövde, izleme, ipuçları
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277716"
 ---
 # <a name="access-data-in-body-frame"></a>Gövde çerçevesindeki verilere erişme
@@ -76,4 +76,4 @@ k4a_capture_release(input_capture);
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Azure Kinect gövde Izleme SDK 'Sı](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)
+>[Azure Kinect Gövde İzleme SDK’sı](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)

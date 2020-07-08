@@ -4,10 +4,10 @@ description: Windows Server 2019 güvenlik taban çizgisinden grup ilkesi bir il
 ms.date: 06/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 021e8cc4aa34a21f980363e71de1a4b9afbf3ec9
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85269111"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi tanımları oluşturma

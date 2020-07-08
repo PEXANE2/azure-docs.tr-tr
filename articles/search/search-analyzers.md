@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262166"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
@@ -44,7 +44,7 @@ Alan temelinde varsayılan ayarı geçersiz kılabilirsiniz. Alternatif çözüm
 
 Aşağıdaki listede Azure Bilişsel Arama 'de hangi çözümleyiciler kullanılabildiği açıklanmaktadır.
 
-| Kategori | Description |
+| Kategori | Açıklama |
 |----------|-------------|
 | [Standart Lucene Çözümleyicisi](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Varsayılan. Belirtim veya yapılandırma gerekli değildir. Bu genel amaçlı çözümleyici birçok dil ve senaryo için iyi bir performans uygular.|
 | Önceden tanımlanmış çözümleyiciler | Olduğu gibi kullanılması amaçlanan, tamamlanmış bir ürün olarak sunulur. <br/>İki tür vardır: özelleştirilmiş ve dil. Bunları "önceden tanımlanmış" olarak belirlemek, yapılandırma veya özelleştirme olmadan bunlara ada göre başvurmanıza neden olur. <br/><br/>[Özelleştirilmiş (dilden bağımsız) çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) , metin girdileri özel işlem veya minimum işleme gerektirdiğinde kullanılır. Dili olmayan önceden tanımlı çözümleyiciler, **Asciifolding**, **anahtar sözcük**, **model**, **Simple**, **stop**, **Whitespace**içerir.<br/><br/>[Dil Çözümleyicileri](index-add-language-analyzers.md) , tek tek diller için zengin dil desteği gerektiğinde kullanılır. Azure Bilişsel Arama, 35 Lucene dil Çözümleyicileri ve 50 Microsoft doğal dil işleme Çözümleyicileri destekler. |

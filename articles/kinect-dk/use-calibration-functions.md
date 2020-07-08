@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, algılayıcı, SDK, koordinat sistemi, ayarlama, işlevler, kamera, iç, extrinsic, proje, unproje, dönüşüm, RGB-d, nokta bulutu
 ms.openlocfilehash: a501765222154bde4ed35e878a9d18042893fca2
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277662"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>Azure Kinect ayarlama işlevlerini kullanma
@@ -58,7 +58,7 @@ Mercek deformasyonu üzerinde Açıklama: 2B koordinatlar her zaman SDK 'daki bo
 
 Kamera ayarlamayı artık öğrenirsiniz, ayrıca
 >[!div class="nextstepaction"]
->[Cihaz eşitlemesini yakala](capture-device-synchronization.md)
+>[Cihaz eşitlemesini yakalama](capture-device-synchronization.md)
 
 Ayrıca şunları gözden geçirebilirsiniz
 

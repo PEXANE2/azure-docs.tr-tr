@@ -4,10 +4,10 @@ description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298506"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için başvuru host.js 
@@ -145,7 +145,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 > [!NOTE]
 > Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir. Günlük örneklemeyi önlemek için `excludedTypes: "Request"` `samplingSettings` değere ekleyin.
 
-| Özellik | Varsayılan | Description |
+| Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | samplingSettings | yok | Bkz. [ApplicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | Enableliveölçümleri | true | Canlı ölçüm toplamayı etkin bir şekilde sunar. |
@@ -157,7 +157,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 ### <a name="applicationinsightssamplingsettings"></a>ApplicationInsights. samplingSettings
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | IsEnabled | true | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
 | maxTelemetryItemsPerSecond | 20 | Her bir sunucu konağında saniyede günlüğe kaydedilen telemetri öğelerinin hedef sayısı. Uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, genel hedef trafik hızında kalacak şekilde küçültün. | 
@@ -173,7 +173,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>ApplicationInsights. httpAutoCollectionOptions
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | Enablehttptriggerextendedınınfocollection | true | HTTP Tetikleyicileri için genişletilmiş HTTP isteği bilgilerini etkinleştirilir veya devre dışı bırakır: gelen istek bağıntı üstbilgileri, çok izleme anahtarları desteği, HTTP yöntemi, yol ve yanıt. |
 | enableW3CDistributedTracing | true | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). True ise varsayılan olarak etkindir `enableHttpTriggerExtendedInfoCollection` . `enableHttpTriggerExtendedInfoCollection`Yanlış ise, bu bayrak gelen isteklere değil yalnızca giden istekler için geçerlidir. |
@@ -183,7 +183,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarında özel durumlarla Ilgili hata ayıklama anlık görüntüleri](/azure/azure-monitor/app/snapshot-debugger) ve [Application Insights Snapshot Debugger veya anlık görüntüleri görüntüleme sorunlarını giderme](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | Tendtendpoint | null | Application Insights Snapshot Debugger hizmetine bağlanmak için kullanılan uç nokta. Null ise, varsayılan bir uç nokta kullanılır. |
 | captureSnapshotMemoryWeight | 0,5 | Anlık görüntü almak için yeterli bellek olup olmadığı denetlenirken geçerli işlem belleği boyutuna verilen ağırlık. Beklenen değer 0 ' dan büyük bir doğru kesenden (0 < CaptureSnapshotMemoryWeight < 1) fazla. |
@@ -275,7 +275,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -307,7 +307,7 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never` , `always` , `debugOnly` . |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
@@ -330,7 +330,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
@@ -374,7 +374,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 

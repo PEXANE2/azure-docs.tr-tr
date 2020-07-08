@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, algılayıcı, SDK, gövde, izleme, birleşme
 ms.openlocfilehash: 1b62022242144d5db51455a32ac04b67c3e5dd7a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277712"
 ---
-# <a name="get-body-tracking-results"></a>Gövde izleme sonuçlarını al
+# <a name="get-body-tracking-results"></a>Gövde izleme sonuçlarını alma
 
 Gövde Izleme SDK 'Sı, Azure Kinect DK yakalamalarını işlemek için bir gövde izleyici nesnesi kullanır ve gövde izleme sonuçları üretir. Ayrıca izleyici, işleme kuyrukları ve çıkış sırası genel durumunu da korur. Gövde izleyicisini kullanmanın üç adımı vardır:
 

@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
 ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263677"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çoklu yönetici yapılandırma
@@ -35,7 +35,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK V3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
 Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, `ApplicationRegion` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltılacağı konuma ayarlayın:
 

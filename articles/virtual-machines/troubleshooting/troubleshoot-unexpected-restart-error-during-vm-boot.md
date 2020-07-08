@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
 ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85269122"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>İşletim sistemi başlatma – bilgisayar beklenmedik şekilde yeniden başlatıldı veya beklenmeyen bir hatayla karşılaşıldı
@@ -37,7 +37,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ## <a name="cause"></a>Nedeni
 
-Makine [genelleştirilmiş bir görüntünün](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (unattend.xml) nedeniyle sorunlarla karşılaşıyor. Özel yanıt dosyaları Azure 'da desteklenmez. 
+Makine [genelleştirilmiş bir görüntünün](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (unattend.xml) nedeniyle sorunlarla karşılaşıyor. Özel yanıt dosyaları Azure'da desteklenmez. 
 
 Yanıt dosyası, bir Windows Server işletim sistemi yüklemesi sırasında otomatikleştirmek istediğiniz yapılandırma ayarları için tanımları ve değerleri içeren özel bir XML dosyasıdır. Yapılandırma seçenekleri, disklerin nasıl bölümleyeceğinize, yüklenecek Windows görüntüsünün nerede bulunacağını, uygulanacak ürün anahtarlarını ve çalıştırmak istediğiniz diğer komutları içerir.
 

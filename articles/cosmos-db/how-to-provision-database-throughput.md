@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263648"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında standart (el ile) aktarım hızı sağlama
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağla
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API'si
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 

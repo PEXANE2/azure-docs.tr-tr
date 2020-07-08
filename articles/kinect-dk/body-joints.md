@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, taşıma, gövde, izleme, Joint, Hierarchy, kemik, bağlantı
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277692"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect gövdesi izleme yukarı noktaları
@@ -77,4 +77,4 @@ Aşağıdaki tablo, standart Birleşik bağlantıları sıralar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Gövde izleme Dizin eşlemesi](body-index-map.md)
+[Gövde izleme dizin eşlemesi](body-index-map.md)

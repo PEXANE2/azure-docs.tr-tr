@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85299339"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure SYNAPSE Analytics Business Intelligence iş ortakları
@@ -23,7 +23,7 @@ ms.locfileid: "85299339"
 Azure SYNAPSE içinde SYNAPSE SQL havuzunu kullanarak tam veri ambarı çözümünüzü oluşturmak için, çok çeşitli sektör lideri araçlar arasından seçim yapabilirsiniz.  Bu makalede, Azure SQL veri ambarı 'nı destekleyen resmi iş zekası (BI) çözümlerine sahip Microsoft iş ortağı şirketleri vurgulanmaktadır.
 
 ## <a name="our-business-intelligence-partners"></a>İş zekası iş ortaklarımız
-| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Birde](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birde**<br>Bira, paylaşılan bir ortak analitik dokusunun en üstünde bulunan bir Interwoven sanallaştırılmış bı örnekleri ağı aracılığıyla kuruluşun tamamını bağlar|[Ürün sayfası](https://www.birst.com/)<br> |
 | ![Clearöykü verileri](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Clearöykü verileri (sürekli Iş öngörüleri)**<br>Clearöykü verileri, SYNAPSE SQL havuzunda depolanan farklı veriler arasında hızlı bir şekilde analizine izin verebilir. Clearöykü 'in tümleşik Spark tabanlı platform ve analiz uygulaması, farklı veri kümelerinin veri erişimini ve uyumunu hızlandırmayı hızlandırır. Bunlar, iş kullanıcılarını hızlı öngörüler elde etmek üzere kendi kendine bağlı hale getiren hızlı, işbirliğine dayalı araştırmayı etkinleştirir. |[Ürün sayfası](https://www.clearstorydata.com/product/continuous-insights/)<br> |
