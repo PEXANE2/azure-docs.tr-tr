@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678707"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
@@ -24,7 +23,7 @@ Azure Ilkesi ile oluşturulan tüm kaynaklar için yapılandırma gereksinimleri
 
 Azure Ilkesi, aşağıdaki tablodaki nesnelerden oluşur. Her birinin daha ayrıntılı açıklaması için bkz. [Azure ilke nesneleri](../../governance/policy/overview.md#azure-policy-objects) .
 
-| Öğe | Description |
+| Öğe | Açıklama |
 |:---|:---|
 | İlke tanımı | Kaynak uyumluluk koşullarını ve bir koşul karşılanırsa gerçekleştirilecek etkiyi açıklar. Bu, belirli bir türdeki veya yalnızca belirli özelliklerle eşleşen kaynakların tüm kaynakları olabilir. Etki, kaynağı uyumluluk veya ilgili bir kaynağı dağıtmaya yönelik olarak işaretlemek olabilir. İlke tanımları, [Azure ilke tanımı yapısı](../../governance/policy/concepts/definition-structure.md)bölümünde AÇıKLANDıĞı gibi JSON kullanılarak yazılır. Etkileri [Azure ilke efektlerini anlama](../../governance/policy/concepts/effects.md)bölümünde açıklanmaktadır.
 | İlke girişimi | Birlikte uygulanması gereken bir ilke tanımları grubu. Örneğin, kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için bir ilke tanımınız olabilir ve başka bir deyişle, kaynak günlüklerini Olay Hub 'larına gönderebilirsiniz. Her iki ilke tanımını da içeren bir girişim oluşturun ve bireysel ilke tanımları yerine girişimi kaynaklara uygulayın. Girişimler, [Azure ilke girişimi yapısında](../../governance/policy/concepts/initiative-definition-structure.md)AÇıKLANDıĞı şekilde JSON kullanılarak yazılır. |

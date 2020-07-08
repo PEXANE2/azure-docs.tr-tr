@@ -9,16 +9,15 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
 ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689360"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı ile ortaklık
 Bu makalede, Azure DDoS koruma standardı tarafından etkinleştirilen iş ortaklığı olanakları açıklanmaktadır. Bu makale, ürün yöneticilerinin ve iş geliştirme rollerinin yatırım yollarını anlamasına yardımcı olmak ve ortaklık değeri propositions hakkında Öngörüler sağlaması için tasarlanmıştır.
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamalarını buluta taşıyan müşterilere göre önemli kullanılabilirlik ve güvenlik sorunlarının biridir. DDoS saldırılarına maruz geçen yaygın savunma ve hacktivisk sayesinde, bu uygulamalar görece kolay ve yüksek EAP gibi tür, ölçek ve oluşma sıklığında sürekli olarak arttı.
 
 Azure DDoS koruması, Azure ağ oluşturma küresel ölçeğinden yararlanarak en gelişmiş DDoS tehditlerine karşı önlemler sağlar. Hizmet, sanal ağlarda dağıtılan uygulamalar ve kaynaklar için gelişmiş DDoS azaltma özellikleri sağlar.

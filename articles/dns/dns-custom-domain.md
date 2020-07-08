@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84693121"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS kullanma
@@ -38,7 +37,7 @@ Azure işlev uygulamaları için özel bir etki alanı yapılandırmak üzere, b
 
 DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
-|Özellik  |Değer  |Description  |
+|Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
 |Name     | myfunctionapp        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
@@ -63,7 +62,7 @@ Application Gateway, Load Balancer, bulut hizmeti, Kaynak Yöneticisi VM 'Ler ve
 DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
-|Özellik  |Değer  |Description  |
+|Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
 |Name     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | A        | Kaynak bir IP adresi olduğu için bir kayıt kullanın.        |
@@ -90,7 +89,7 @@ Aşağıdaki adımlarda, bir App Service Web uygulaması için özel bir etki al
 DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
-|Özellik  |Değer  |Description  |
+|Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
 |Name     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor. Kaynak bir IP adresi kullansaydı bir kayıt kullanılır.        |
@@ -126,7 +125,7 @@ Aşağıdaki adımlar, asverify metodunu kullanarak bir BLOB depolama hesabı i�
 DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
-|Özellik  |Değer  |Description  |
+|Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
 |Name     | asverify. mystorageaccount        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
@@ -154,7 +153,7 @@ Aşağıdaki adımlar, cdnverify metodunu kullanarak bir CDN uç noktası için 
 
 DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
-|Özellik  |Değer  |Description  |
+|Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
 |Name     | cdnverify. mycdnendpoint        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |

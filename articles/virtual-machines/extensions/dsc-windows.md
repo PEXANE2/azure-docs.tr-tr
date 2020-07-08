@@ -14,10 +14,9 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689495"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
@@ -106,7 +105,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
-| Name | Veri Türü | Description
+| Name | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | Settings. wmfVersion | string | Sanal makinenize yüklenmesi gereken Windows Management Framework sürümünü belirtir. Bu özelliğin ' en son ' olarak ayarlanması, WMF 'nin en güncel sürümünü yükler. Bu özellik için geçerli olası değerler şunlardır. ' 4,0 ', ' 5,0 ' ve ' Latest '. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer ' Latest '. |
 | settings.configacation. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings.configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. settings.configuration. Script ve/veya settings.configuration. Function tanımlanırsa bu özellik gereklidir.
@@ -120,7 +119,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="protected-settings-property-values"></a>Korumalı ayarlar özellik değerleri
 
-| Name | Veri Türü | Description
+| Name | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
 | protectedSettings.configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |

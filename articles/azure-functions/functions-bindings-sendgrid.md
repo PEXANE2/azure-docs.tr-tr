@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697366"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
@@ -354,16 +353,16 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 Aşağıdaki tabloda, dosyasında *function.js* bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
 
-| *function.js* özelliği | Öznitelik/ek açıklama özelliği | Description | İsteğe Bağlı |
+| *function.js* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
 |--------------------------|-------------------------------|-------------|----------|
-| tür |yok| Olarak ayarlanmalıdır `sendGrid` .| No |
-| yön |yok| Olarak ayarlanmalıdır `out` .| No |
-| name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | No |
-| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| No |
-| -| Alıcı | Alıcının e-posta adresi. | Yes |
-| Kaynak| Başlangıç | Gönderenin e-posta adresi. |  Yes |
-| Konu| Özne | E-postanın konusu. | Yes |
-| metin| Metin | E-posta içeriği. | Yes |
+| tür |yok| Olarak ayarlanmalıdır `sendGrid` .| Hayır |
+| yön |yok| Olarak ayarlanmalıdır `out` .| Hayır |
+| name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | Hayır |
+| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
+| -| Alıcı | Alıcının e-posta adresi. | Evet |
+| Kaynak| Başlangıç | Gönderenin e-posta adresi. |  Evet |
+| Konu| Özne | E-postanın konusu. | Evet |
+| metin| Metin | E-posta içeriği. | Evet |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.
 
@@ -389,7 +388,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```  
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 

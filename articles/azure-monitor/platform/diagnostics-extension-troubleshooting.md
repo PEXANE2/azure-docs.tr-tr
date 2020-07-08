@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84696975"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
@@ -165,7 +164,7 @@ ETW olaylarını tutan Azure Storage tablolarının tabloları aşağıdaki kod 
             tableName = "WAD" + eventDestination;
 ```
 
-Aşağıda bir örnek verilmiştir:
+Örnek aşağıda verilmiştir:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -228,7 +227,7 @@ Bulut hizmeti rolü için, yapılandırmayı diskten seçerseniz, veriler Base64
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Tanılama eklentisi çıkış kodları
 Eklenti aşağıdaki çıkış kodlarını döndürür:
 
-| Çıkış kodu | Description |
+| Çıkış kodu | Açıklama |
 | --- | --- |
 | 0 |Başarılı. |
 | -1 |Genel hata. |

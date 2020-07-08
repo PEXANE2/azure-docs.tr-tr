@@ -8,10 +8,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84686673"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
@@ -29,22 +28,22 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 
 ### <a name="windows-agents"></a>Windows aracıları
 
-| | Tanılama<br>Uzantı (WAD) | Log Analytics<br>Aracısı | Bağımlılık<br>Aracısı |
+| | Tanılama<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|
 | Desteklenen ortamlar | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
-| Aracı gereksinimleri  | Yok | Yok | Log Analytics Aracısı gerektirir |
+| Aracı gereksinimleri  | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | Toplanan veriler | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<IIS logs><br>Dosya tabanlı Günlükler<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| Gönderilen veriler | Azure Depolama<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
+| Gönderilen veriler | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
 
 
 ### <a name="linux-agents"></a>Linux aracıları
 
-| | Tanılama<br>Uzantı (LAD) | Telegraf<br>Aracısı | Log Analytics<br>Aracısı | Bağımlılık<br>Aracısı |
+| | Tanılama<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|
 | Desteklenen ortamlar | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
-| Aracı gereksinimleri  | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
+| Aracı gereksinimleri  | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | Toplanan veriler | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| Gönderilen veriler | Azure Depolama<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
+| Gönderilen veriler | Azure Storage<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
 
 ## <a name="log-analytics-agent"></a>Log Analytics aracısı
 

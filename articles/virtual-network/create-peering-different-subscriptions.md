@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
 ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84688822"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler ve Azure Active Directory kiracılar
@@ -60,7 +59,7 @@ Aşağıdaki adımlarda her abonelik için farklı hesaplar kullanılır. Her ik
 6. **Myvneta-Access Control (IAM)** altında **+ rol ataması Ekle**' yi seçin.
 7. **Rol** kutusunda **ağ katılımcısı** ' nı seçin.
 8. **Seç** kutusunda, *UserB*' yi seçin veya aramak için UserB 'nin e-posta adresini yazın.
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 10. **Myvneta-Access Control (IAM)** altında, sol taraftaki seçenekler dikey listesinden **Özellikler** ' i seçin. Daha sonraki bir adımda kullanılan **kaynak kimliğini**kopyalayın. Kaynak KIMLIĞI Şu örneğe benzer: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA` .
 11. Portaldan UserA olarak oturum açın, sonra UserB olarak oturum açın.
 12. Adım 2-3, aşağıdaki değerleri girerek veya seçerek 3. Adım:

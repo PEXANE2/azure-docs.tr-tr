@@ -18,10 +18,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84698606"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tasarım kavramları
@@ -119,7 +118,7 @@ Express yüklemesi tamamlandıktan sonra sihirbaz, kaynak bağlantısı öznitel
 
 ![Özel yükleme-Sourcetutturucu yapılandırması](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Ayar | Description |
+| Ayar | Açıklama |
 | --- | --- |
 | Kaynak bağlantısını benim için Azure yönetsin | Azure AD’nin sizin için özniteliği seçmesini istiyorsanız bu seçeneği belirleyin. Bu seçeneği belirlerseniz, Azure AD Connect Sihirbazı [hızlı yükleme sırasında kullanılan Sourcetutturucu öznitelik seçim mantığını](#express-installation)uygular. Hızlı yüklemeye benzer şekilde, sihirbaz özel yükleme tamamlandıktan sonra kaynak bağlantısı özniteliği olarak hangi özniteliğin çekilileceğini bildirir. |
 | Belirli bir öznitelik | SourceAnchor özniteliği olarak mevcut bir AD özniteliğini belirtmek istiyorsanız bu seçeneği belirleyin. |

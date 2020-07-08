@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84692572"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
@@ -19,7 +18,7 @@ Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](https
 ## <a name="performance-counters"></a>Performans sayaçları
 Güvenilir ServiceRemoting çalışma zamanı, aşağıdaki performans sayacı kategorilerini tanımlar:
 
-| Kategori | Description |
+| Kategori | Açıklama |
 | --- | --- |
 | Service Fabric hizmeti |Azure Service Fabric Service Remoting 'e özgü sayaçlar, örneğin, isteği işlemek için geçen ortalama süre |
 | Service Fabric hizmeti yöntemi |Service Fabric Remoting hizmeti tarafından uygulanan yöntemlere özgü sayaçlar, örneğin, bir hizmet yönteminin ne sıklıkla çağrıldığı. |
@@ -74,7 +73,7 @@ Yukarıdaki örnekte, `ivoicemailboxservice.leavemessageasync` Yöntem adı, `2`
 
 Güvenilir hizmet çalışma zamanı, hizmet yöntemlerinin yürütülmesi ile ilgili aşağıdaki performans sayaçlarını yayımlar.
 
-| Kategori adı | Sayaç adı | Description |
+| Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
 | Service Fabric hizmeti yöntemi |Saniyedeki çağırma sayısı |Hizmet yönteminin saniye başına çağrılme sayısı |
 | Service Fabric hizmeti yöntemi |Çağrı başına ortalama milisaniye |Hizmet yönteminin yürütülmesi için harcanan süre (milisaniye) |
@@ -83,7 +82,7 @@ Güvenilir hizmet çalışma zamanı, hizmet yöntemlerinin yürütülmesi ile i
 ### <a name="service-request-processing-performance-counters"></a>Hizmet isteği işleme performans sayaçları
 Bir istemci bir hizmet proxy nesnesi aracılığıyla bir yöntemi çağırdığında, ağ üzerinden uzaktan iletişim hizmetine bir istek iletisi gönderilmesine neden olur. Hizmet, istek iletisini işler ve istemciye geri yanıt gönderir. Güvenilir ServiceRemoting çalışma zamanı, hizmet isteği işlemeyle ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Description |
+| Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
 | Service Fabric hizmeti |bekleyen istek sayısı |Hizmette işlenmekte olan istek sayısı |
 | Service Fabric hizmeti |İstek başına ortalama milisaniye |Bir isteği işlemek için hizmete göre geçen süre (milisaniye cinsinden) |

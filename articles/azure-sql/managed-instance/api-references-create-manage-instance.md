@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 3f0eb2c1ecb26475b25cd5ca41c9c61d5e2b47a3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84695615"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için yönetilen API başvurusu
@@ -38,7 +37,7 @@ Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdak
 > [!TIP]
 > PowerShell örnek betikleri için bkz. [hızlı başlangıç betiği: PowerShell kitaplığı kullanarak yönetilen örnek oluşturma](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[New-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Yönetilen bir örnek oluşturur. |
 |[Get-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Yönetilen bir örnek hakkında bilgi döndürür.|
@@ -56,7 +55,7 @@ Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdak
 > [!TIP]
 > Azure CLı hızlı başlangıcı için bkz. [Azure CLI kullanarak SQL yönetilen örneği Ile çalışma](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[az SQL mı oluştur](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Yönetilen bir örnek oluşturur.|
 |[az SQL mı listesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Kullanılabilir yönetilen örnekleri listeler.|
@@ -78,7 +77,7 @@ Yönetilen örnek oluşturulduktan sonra örnek veritabanları oluşturup yapıl
 > [!IMPORTANT]
 > Transact-SQL ' y i kullanarak yönetilen bir örnek oluşturamaz veya silemezsiniz.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[VERITABANı OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|SQL yönetilen örneği 'nde yeni bir örnek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |SQL yönetilen örneğindeki bir örnek veritabanını değiştirir.|
@@ -87,7 +86,7 @@ Yönetilen örnek oluşturulduktan sonra örnek veritabanları oluşturup yapıl
 
 Yönetilen örnekler oluşturmak ve yapılandırmak için bu REST API isteklerini kullanın.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[Yönetilen örnekler-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Yönetilen bir örnek oluşturur veya güncelleştirir.|
 |[Yönetilen örnekler-Sil](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Yönetilen bir örneği siler.|

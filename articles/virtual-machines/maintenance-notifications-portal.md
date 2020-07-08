@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678741"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Portalı kullanarak planlı bakım bildirimlerini işleme
@@ -32,7 +31,7 @@ Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapa
 
    **Bakım durumu**: VM 'nin bakım durumunu gösterir. Olası değerler şunlardır:
       
-      | Değer | Description |
+      | Değer | Açıklama |
       |-------|-------------|
       | Şimdi başlat | VM, bakımı kendiniz başlatabilmenizi sağlayan self servis bakım penceresidir. VM 'niz üzerinde bakım başlatma hakkında bilgi için aşağıya bakın. | 
       | Zamanlanan | VM, size başlatma seçeneği sunulmayan bir bakım için zamanlanır. Bakım penceresini, bu görünümdeki bakım-zamanlanan pencereyi seçerek veya VM 'ye tıklayarak öğrenebilirsiniz. | 

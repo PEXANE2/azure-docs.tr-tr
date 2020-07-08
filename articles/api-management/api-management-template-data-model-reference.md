@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84690040"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management şablonu veri modeli başvurusu
@@ -127,7 +126,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 ##  <a name="comment"></a><a name="Comment"></a>Açıklamanın  
  `API`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`Id`|sayı|Açıklamanın KIMLIĞI.|  
 |`CommentText`|string|Açıklamanın gövdesi. HTML içerebilir.|  
@@ -184,7 +183,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP yanıtı  
  Bu bölümde temsil açıklanmaktadır `response` .  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`statusCode`|pozitif tamsayı|İşlem yanıtı durum kodu.|  
 |`description`|string|İşlem yanıtı açıklaması.|  
@@ -227,7 +226,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 ##  <a name="paging"></a><a name="Paging"></a>Sayfalamayı  
  `paging`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`Page`|sayı|Geçerli sayfa numarası.|  
 |`PageSize`|sayı|Tek bir sayfada görüntülenecek en fazla sonuç.|  
@@ -264,7 +263,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 ##  <a name="provider"></a><a name="Provider"></a>Sağlayıcısını  
  `provider`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`Properties`|dize sözlüğü|Bu kimlik doğrulama sağlayıcısının özellikleri.|  
 |`AuthenticationType`|string|Sağlayıcı türü. (Azure Active Directory, Facebook oturum açma, Google hesabı, Microsoft hesabı, Twitter).|  
@@ -346,7 +345,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Kullanıcı kaydı  
  `user sign up`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  

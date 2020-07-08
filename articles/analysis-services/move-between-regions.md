@@ -8,10 +8,9 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699439"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
@@ -68,9 +67,9 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak bir şablonu dışarı aktarmak için:
+Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar**' ı seçin ve ardından Analysis Services sunucunuzu seçin.
 
@@ -190,19 +189,19 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 1. Portalda **kaynak oluştur**' u seçin.
 
-2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
 
-3. **Şablon dağıtımı**'nı seçin.
+3. **Şablon dağıtımı**seçin.
 
 4. **Oluştur**'u seçin.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
 
 6. **Dosya Yükle**' yi seçin ve ardından, verdiğiniz ve değiştirdiğiniz dosyaya **template.js** yüklemek için yönergeleri izleyin.
 
 7. Şablon düzenleyicisinin yeni hedef sunucunuz için doğru özellikleri gösterdiğini doğrulayın.
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 9. Özellik değerlerini girin veya seçin:
 
