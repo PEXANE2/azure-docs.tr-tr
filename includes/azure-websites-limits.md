@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838910"
 ---
 | Kaynak | Ücretsiz | Shared | Temel | Standart | Premium (v2) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ ms.locfileid: "82844619"
 | Depolama<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> 250 GB 'tan fazla için bir destek isteği gönderebilirsiniz. |1 TB<sup>5</sup> <br/><br/> Kullanılabilir depolama kotası 999 GB 'dir. |
 | CPU süresi (5 dakika)<sup>6</sup> |3 dakika |3 dakika |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a>|
 | CPU süresi (gün)<sup>6</sup> |60 dakika |240 dakika |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |
-| Bellek (1 saat) |App Service plan başına 1.024 MB |Uygulama başına 1.024 MB |Yok |Yok |Yok |Yok |
+| Bellek (1 saat) |App Service plan başına 1.024 MB |Uygulama başına 1.024 MB |YOK |YOK |YOK |YOK |
 | Bant genişliği |165 MB |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |
 | Uygulama mimarisi |32 bit |32 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |
 | Örnek başına Web Yuvaları<sup>7</sup> |5 |35 |350 |Sınırsız |Sınırsız |Sınırsız |
@@ -45,7 +45,7 @@ ms.locfileid: "82844619"
 <sup>4</sup> İstek üzerine daha fazlasına izin verilir.  
 <sup>5</sup> Depolama sınırı, aynı App Service planındaki tüm uygulamalarda bulunan toplam içerik boyutudur. Tek bir kaynak grubundaki ve bölgedeki tüm App Service planları genelinde tüm uygulamaların toplam içerik boyutu 500GB ' i aşamaz.  
 <sup>6</sup> Bu kaynaklar, adanmış örneklerde (örnek boyutu ve örnek sayısı) fiziksel kaynaklar tarafından sınırlandırılır.  
-<sup>7</sup> Temel katmandaki bir uygulamayı iki örneğe ölçeklendirirseniz, iki örnek için 350 eş zamanlı bağlantınız vardır. Standart katman ve yukarıdaki sürümler için Web soketlerine teorik sınır yoktur, ancak diğer faktörler Web Yuvaları sayısını sınırlayabilir. Örneğin, izin verilen en fazla eşzamanlı istek (tarafından `maxConcurrentRequestsPerCpu`tanımlanır), her BIR küçük vm başına 7.500, orta düzey vm başına 15.000 (7.500 x 2 çekirdek) ve büyük vm başına 75.000 (18.750 x 4 çekirdek).  
+<sup>7</sup> Temel katmandaki bir uygulamayı iki örneğe ölçeklendirirseniz, iki örnek için 350 eş zamanlı bağlantınız vardır. Standart katman ve yukarıdaki sürümler için Web soketlerine teorik sınır yoktur, ancak diğer faktörler Web Yuvaları sayısını sınırlayabilir. Örneğin, izin verilen en fazla eşzamanlı istek (tarafından tanımlanır), her bir `maxConcurrentRequestsPerCpu` küçük VM başına 7.500, orta düzey VM başına 15.000 (7.500 x 2 çekirdek) ve büyük VM başına 75.000 (18.750 x 4 çekirdek).  
 <sup>8</sup> En fazla IP bağlantısı, örnek başına yapılır ve örnek boyutuna bağlıdır: B1/S1/P1V2 örneği başına 1.920, B2/S2/P2V2 örneği başına 3.968, B3/S3/P3V2 örneği başına 8.064.  
 <sup>9</sup> Abonelik başına App Service Sertifikası kota sınırı, en fazla 200 sınırına yönelik destek isteği aracılığıyla artırılabilir.  
 <sup>10</sup> App Service Yalıtılmış SKU 'Lar Azure Load Balancer ile dahili olarak yük dengeli (ıLB) olabilir, bu nedenle internet 'ten genel bağlantı yoktur. Sonuç olarak, ıLB yalıtılmış bir App Service bazı özelliklerinin ıLB ağ uç noktasına doğrudan erişimi olan makinelerden kullanılması gerekir.  

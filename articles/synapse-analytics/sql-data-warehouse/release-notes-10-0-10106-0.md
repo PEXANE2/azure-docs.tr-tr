@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6e2247d448807413d425dfec5d572fa895041938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831429"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -40,6 +40,13 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="july-2020"></a>Temmuz 2020
+| Hizmet geliştirmeleri | Ayrıntılar |
+| --- | --- |
+|**Sütun düzeyinde şifreleme (Genel Önizleme)**|Transact-SQL kullanarak bir veri sütununa simetrik şifreleme uygulayarak SYNAPSE SQL veri ambarınızdaki hassas bilgileri koruyun. Sütun düzeyinde şifreleme, bir sertifika, parola, simetrik anahtar veya asimetrik anahtarla daha fazla korunan simetrik anahtarlar kullanarak verileri şifrelemek için kullanabileceğiniz yerleşik işlevlere sahiptir. Daha fazla bilgi için lütfen [bir veri sütununu şifreleyin](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)' ı ziyaret edin.|
+|**Uyumluluk düzeyi desteği (GA)**|Bu sürümde, kullanıcılar artık bir veritabanının uyumluluk düzeyini, SYNAPSE SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için ayarlayabilir. Daha fazla bilgi için bkz. [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [alter database kapsamlıdır Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**Satır düzeyi güvenlik**|Bu sürüm, üzerinde RLS 'yi zorlanacak satırlarda güncelleştirme ve silme işlemlerine yönelik bir geliştirme içerir. Bu sürümde, iç işlevlerle ' is_rolemember ' gibi iç işlevler ile güncelleştirme ve silme işlemleri, iç işlem DML hedef tablosundaki herhangi bir sütuna başvurmadığında başarılı olur. Bu iyileştirmadan önce, bu işlemler temeldeki DML işlemlerinde sınırlama nedeniyle başarısız oldu.|
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -132,7 +139,7 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 |**Veri bulma & sınıflandırması**|Veri bulma & sınıflandırması artık SYNAPSE SQL için genel önizlemede kullanıma sunuldu. Hassas verileri ve müşterilerinizin gizliliğini korumak önemlidir. İş ve müşteri veri varlıklarınız büyüdükçe verilerinizi keşfetmek, sınıflandırmak ve korumak için yönetilemez hale gelir. SYNAPSE SQL ile yerel olarak tanıtıyoruz veri bulma ve sınıflandırma özelliği, verilerinizin korunmasını daha yönetilebilir hale getirir. Bu özelliğin genel avantajları şunlardır:<br/>&bull;&nbsp;Veri gizliliği standartları ve yasal uyumluluk gereksinimlerini karşılaın.<br/>&bull;&nbsp;Son derece hassas veriler içeren veri ambarlarının güvenliğine erişimi kısıtlama ve güvenliği artırma.<br/>&bull;&nbsp;Hassas verilere anormal erişim için izleme ve uyarı verme.<br/>&bull;&nbsp;Azure Portal bir merkezi panoda hassas verilerin görselleştirilmesi. </br></br>Veri bulma & sınıflandırması tüm Azure bölgelerinde kullanılabilir. Bu, güvenlik açığı değerlendirmesi ve tehdit algılama dahil olmak üzere gelişmiş veri güvenliği 'nin bir parçasıdır. Veri bulma & sınıflandırması hakkında daha fazla bilgi için, bkz. [blog gönderisi](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) ve çevrimiçi [Belgelerimiz](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).|
 |**TOPLAMA GÖRE GRUPLANDıR**|TOPLAMA artık desteklenen bir gruplama ölçütü seçeneğidir.   GROUP BY ROLLUP, her sütun ifadesi birleşimi için bir grup oluşturur. Ayrıca GRUPLANDıR, sonuçları alt toplamlar ve genel toplamlar olarak da "kaydeder". , Grup ve toplama işlemi tarafından oluşturulan sütun ifadelerinin sayısını azaltarak, işlev işlemlerine sağdan sola kadar gruplandırır.  Sütun sırası, toplama çıkışını etkiler ve sonuç kümesindeki satır sayısını etkileyebilir.<br/><br/>GROUP BY ROLLUP hakkında daha fazla bilgi için bkz. [Group By (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 |**Kullanılan DWU ve CPU portalı ölçümleri için geliştirilmiş doğruluk**|SYNAPSE SQL, Azure portal ölçü doğruluğunu önemli ölçüde geliştirir.  Bu sürüm, tüm işlem düğümlerinde iş yükünüzü doğru bir şekilde yansıtmak için CPU ve DWU tarafından kullanılan ölçüm tanımına yönelik bir çözüm içerir. Bu düzeltmeyle önce ölçüm değerleri eksik olarak bildirildi. Azure portal kullanılan DWU ve CPU ölçümlerinde bir artış görmeniz beklenir. |
-|**Satır Düzeyi Güvenlik**|Satır düzeyi güvenlik kapasitesini 2017 Kasım 'a geri sunuyoruz. Artık bu desteği dış tablolara da genişlettik. Ayrıca, bir güvenlik filtresi koşulu tanımlamak için gerekli olan satır içi tablo değerli işlevlerde (satır içi TVFs) belirleyici olmayan işlevler çağırma desteği ekledik. Bu ek, güvenlik filtresi koşulunda IS_ROLEMEMBER (), USER_NAME () vb. belirtmenize olanak tanır. Daha fazla bilgi için lütfen [satır düzeyi güvenlik belgelerindeki](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)örneklere bakın.|
+|**Satır düzeyi güvenlik**|Satır düzeyi güvenlik kapasitesini 2017 Kasım 'a geri sunuyoruz. Artık bu desteği dış tablolara da genişlettik. Ayrıca, bir güvenlik filtresi koşulu tanımlamak için gerekli olan satır içi tablo değerli işlevlerde (satır içi TVFs) belirleyici olmayan işlevler çağırma desteği ekledik. Bu ek, güvenlik filtresi koşulunda IS_ROLEMEMBER (), USER_NAME () vb. belirtmenize olanak tanır. Daha fazla bilgi için lütfen [satır düzeyi güvenlik belgelerindeki](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)örneklere bakın.|
 |**Ek T-SQL desteği**|SYNAPSE SQL için T-SQL dil yüzeyi alanı [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)desteğini kapsayacak şekilde genişletilmiştir.
 |**Sorgu Iyileştiricisi geliştirmeleri** |Sorgu iyileştirmesi, herhangi bir veritabanının kritik bir bileşenidir. Bir sorgunun en iyi şekilde yürütülmesi üzerinde en iyi seçimlerin yapılması, önemli iyileştirmeler elde edebilir.  Dağıtılmış bir ortamda karmaşık analitik sorgular yürütürken, önemli şekilde yürütülen işlem sayısı. Daha iyi kalite planları üreterek sorgu performansı geliştirilmiştir. Bu planlar, yinelenen alt sorgular gibi pahalı veri aktarım işlemlerini ve gereksiz hesaplamaları en aza indirir. Daha fazla bilgi için bu Azure SYNAPSE [blog gönderisine](https://azure.microsoft.com/blog/smarter-faster-safer-azure-sql-data-warehouse-is-simply-unmatched/)bakın.|
 | | |

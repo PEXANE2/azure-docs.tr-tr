@@ -4,18 +4,18 @@ description: Azure Notebooks Kullanıcı arabirimi ve doğrudan Terminal erişim
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: tracking-python
-ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834089"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
 
-Azure Notebooks önizlemede bulunan bir proje, temel olarak Jupyter Not defterlerinin çalıştığı ve bir dosya klasörüyle birlikte açıklayıcı meta verilerle birlikte temel alınan Linux sanal makinesinin bir yapılandırmadır. 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks önizlemede bulunan bir proje, temel olarak Jupyter Not defterlerinin çalıştığı ve bir dosya klasörüyle birlikte açıklayıcı meta verilerle birlikte temel alınan Linux sanal makinesinin bir yapılandırmadır. 
 
 Azure Notebooks içindeki proje panosu, dosyaları yönetmenizi ve proje özelliklerini yapılandırmanızı sağlar:
 
@@ -38,7 +38,7 @@ Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da
 
 Proje panosunda **proje ayarları**' nı seçin ve ardından aşağıdaki tabloda açıklandığı gibi projenin meta verilerini içeren **bilgi** sekmesini seçin. Proje meta verilerini dilediğiniz zaman değiştirebilirsiniz.
 
-| Ayar | Description |
+| Ayar | Açıklama |
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Python 'da Merhaba Dünya". |
 | Proje Kimliği | Projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı. Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](create-clone-jupyter-notebooks.md#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
@@ -57,9 +57,9 @@ Proje panosu, projenin klasör sisteminin içeriğini gösterir. Bu dosyaları y
 
 **+ New** komutu (klavye kısayolu: n) yeni dosya veya klasör oluşturur. Komutunu kullanırken öncelikle oluşturulacak öğe türünü seçin:
 
-| Öğe türü | Description | Komut davranışı |
+| Öğe türü | Açıklama | Komut davranışı |
 | --- | --- | --- |
-| **Not Defteri** | Jupyter Not defteri | Not defterinin dosya adını ve dilini belirttiğiniz bir açılan pencere görüntüler. |
+| **Not defteri** | Jupyter Not defteri | Not defterinin dosya adını ve dilini belirttiğiniz bir açılan pencere görüntüler. |
 | **Klasör** | Bir alt klasör | Projenin dosya listesinde klasör adını girdiğiniz bir düzenleme alanı oluşturur. |
 | **Boş dosya** | İçine metin, veri vb. gibi içerik depolayabilen bir dosya. | Projenin dosya listesinde dosya adını girdiğiniz bir düzenleme alanı oluşturur. |
 | **Markdown** | Bir Markaşağı dosyası. | Projenin dosya listesinde dosya adını girdiğiniz bir düzenleme alanı oluşturur. |
@@ -127,7 +127,7 @@ Bir adım eklemek için, önce **+ Ekle**' yi seçin ve ardından **işlem** aç
 
 Bundan sonra proje, seçtiğiniz işlem türüne bağlıdır:
 
-- **Requirements. txt**: ikinci açılan listede, projede zaten olan bir *requirements. txt* dosyası seçin. Ardından görüntülenen üçüncü açılan listeden bir Python sürümü seçin. Bir bir not defteri sunucusunu başlatırken Azure Notebooks, *requirements. txt* dosyası kullanarak, `pip install -r` *requirements. txt* dosyasıyla çalışır. Paketleri Not defterinin içinden açıkça yüklemeniz gerekmez.
+- **Requirements.txt**: ikinci açılan listede, projede zaten olan bir *requirements.txt* dosyası seçin. Ardından görüntülenen üçüncü açılan listeden bir Python sürümü seçin. Bir *requirements.txt* dosyası kullanarak Azure Notebooks `pip install -r` bir not defteri sunucusu başlatırken *requirements.txt* dosyası ile çalışır. Paketleri Not defterinin içinden açıkça yüklemeniz gerekmez.
 
 - **Kabuk betiği**: ikinci aşağı açılan listede, ortamı başlatmak için çalıştırmak istediğiniz komutları içeren, projede bir bash Shell betiği (genellikle *. sh* uzantılı bir dosya) seçin.
 

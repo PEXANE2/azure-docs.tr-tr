@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110500"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833596"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Metin Okuma sık sorulan sorular
 
@@ -59,7 +59,7 @@ Y **: modeller**yerel olarak indirilemez ve yürütülemez.
 
 **S: isteklerim kısıtlandı mı?**
 
-Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [metin okuma](text-to-speech.md)sayfalarımızda bulunabilir.
+Y **: REST API**standart abonelikler için istekleri 5 saniye başına 25 ' e sınırlandırır. Ücretsiz katman (F0) dakikada 20 istek ile sınırlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

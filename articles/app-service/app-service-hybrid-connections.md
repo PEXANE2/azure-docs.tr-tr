@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: d55d1c0d72f0122472813fc6e79ba021e8b86e89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831259"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Karma Bağlantılar
+# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrit Bağlantılar
 
 Karma Bağlantılar hem Azure 'daki bir hizmettir hem de Azure App Service bir özelliktir. Hizmet olarak, App Service ' de kullanılanların ötesinde kullanımı ve yetenekleri vardır. App Service dışında Karma Bağlantılar ve kullanımları hakkında daha fazla bilgi edinmek için bkz. [Azure Relay karma bağlantılar][HCService].
 
@@ -117,7 +117,7 @@ Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran a�
 
 Bu araç Windows Server 2012 ve üzeri sürümlerde çalışır. HCM bir hizmet olarak çalışır ve 443 numaralı bağlantı noktasında giden Azure Relay bağlanır.  
 
-HCM 'yi yükledikten sonra, aracı için Kullanıcı arabirimini kullanmak üzere HybridConnectionManagerUi. exe ' yi çalıştırabilirsiniz. Bu dosya Karma Bağlantı Yöneticisi yükleme dizininde bulunur. Windows 10 ' da, arama kutusunda yalnızca *karma bağlantı Yöneticisi Kullanıcı arabirimi* araması yapabilirsiniz.  
+HCM 'yi yükledikten sonra, aracı için Kullanıcı arabirimini kullanmak üzere HybridConnectionManagerUi.exe çalıştırabilirsiniz. Bu dosya Karma Bağlantı Yöneticisi yükleme dizininde bulunur. Windows 10 ' da, arama kutusunda yalnızca *karma bağlantı Yöneticisi Kullanıcı arabirimi* araması yapabilirsiniz.  
 
 ![Karma Bağlantı Yöneticisi ekran görüntüsü][7]
 
@@ -168,26 +168,30 @@ Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yönet
 
 Karma Bağlantılar için Azure CLı desteği vardır. Belirtilen komutlar hem uygulama hem de App Service plan düzeyinde çalışır.  Uygulama düzeyi komutları şunlardır:
 
-    az webapp hybrid-connection
+```azurecli
+az webapp hybrid-connection
 
-    Group
-        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        add    : Add a hybrid-connection to a webapp.
-        list   : List the hybrid-connections on a webapp.
-        remove : Remove a hybrid-connection from a webapp.
+Group
+    az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a hybrid-connection to a webapp.
+    list   : List the hybrid-connections on a webapp.
+    remove : Remove a hybrid-connection from a webapp.
+```
 
 App Service plan komutları, belirli bir karma bağlantının hangi anahtara kullanılacağını ayarlamanıza olanak sağlar. Her karma bağlantıda, birincil ve ikincil olmak üzere iki anahtar kümesi vardır. Aşağıdaki komutlarla birincil veya ikincil anahtarı kullanmayı tercih edebilirsiniz. Bu, anahtarlarınızı düzenli olarak yeniden oluşturmak istediğinizde için anahtarlar yapmanızı sağlar. 
 
-    az appservice hybrid-connection --help
+```azurecli
+az appservice hybrid-connection --help
 
-    Group
-        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
-                  connections in that appservice plan.
+Group
+    az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                connections in that appservice plan.
+```
 
 ## <a name="secure-your-hybrid-connections"></a>Karma Bağlantılar güvenli hale getirin ##
 

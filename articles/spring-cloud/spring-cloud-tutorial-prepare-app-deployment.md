@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 668406bb90e1f1e064adf01d7dbab42923fe30aa
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789285"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833392"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -39,6 +39,7 @@ Spring Boot sürümü | Yay bulutu sürümü
 ---|---
 2.1 | Greenwich. RELEASE
 2,2 | Hoxton. RELEASE
+2.3 | Hoxton. SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
 
@@ -91,7 +92,31 @@ Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosy
         </dependencies>
     </dependencyManagement>
 ```
+### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot sürüm 2,3 için bağımlılıklar
 
+Spring Boot sürüm 2,3 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure yay bulutu istemci bağımlılığı
 
 Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Azure Spring Cloud Service örneğiniz ile iletişime izin vermek için bağımlılıklarınızı Azure yay bulutu istemci Kitaplığı ' nı dahil edin.
@@ -102,6 +127,7 @@ Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
 2,2 | Hoxton. RELEASE | 2,2
+2.3 | Hoxton. SR5 | 2.3
 
 pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
 
@@ -113,7 +139,7 @@ Spring Boot sürüm 2,1 için aşağıdaki bağımlılığı uygulama Pod dosyas
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.1</version>
+        <version>2.1.2</version>
 </dependency>
 ```
 
@@ -125,7 +151,17 @@ Spring Boot sürüm 2,2 için aşağıdaki bağımlılığı uygulama Pod dosyas
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
+</dependency>
+```
+
+Spring Boot sürüm 2,3 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.3.0</version>
 </dependency>
 ```
 

@@ -4,11 +4,11 @@ description: Statik bağlantı istemcileri kullanarak Azure Işlevlerinde perfor
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846771"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Işlevlerinde bağlantıları yönetme
 
@@ -16,7 +16,7 @@ Bir işlev uygulamasındaki işlevler kaynakları paylaşır. Bu paylaşılan ka
 
 ## <a name="connection-limit"></a>Bağlantı sınırı
 
-Bir işlev uygulaması bir [korumalı alan ortamında](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)çalıştığından, kullanılabilir bağlantı sayısı kısmen sınırlıdır. Korumalı alanın kodunuzda hangi kısıtlamalardan biri, örnek başına 600 etkin (1.200 toplam) bağlantı olan giden bağlantı sayısı için bir sınırlamadır. Bu sınıra ulaştığınızda, işlevler çalışma zamanı şu iletiyi günlüklere Yazar: `Host thresholds exceeded: Connections`. Daha fazla bilgi için bkz. [işlevler hizmet limitleri](functions-scale.md#service-limits).
+Bir işlev uygulaması bir [korumalı alan ortamında](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)çalıştığından, kullanılabilir bağlantı sayısı kısmen sınırlıdır. Korumalı alanın kodunuzda hangi kısıtlamalardan biri, örnek başına 600 etkin (1.200 toplam) bağlantı olan giden bağlantı sayısı için bir sınırlamadır. Bu sınıra ulaştığınızda, işlevler çalışma zamanı şu iletiyi günlüklere Yazar: `Host thresholds exceeded: Connections` . Daha fazla bilgi için bkz. [işlevler hizmet limitleri](functions-scale.md#service-limits).
 
 Bu sınır örnek başına. Ölçek denetleyicisi daha fazla isteği işlemek için [işlev uygulama örnekleri eklerse](functions-scale.md#how-the-consumption-and-premium-plans-work) , her örneğin bağımsız bir bağlantı sınırı vardır. Bu, genel bağlantı sınırı olmadığı anlamına gelir ve tüm etkin örneklerde 600 ' den çok etkin bağlantınız olabilir.
 
@@ -52,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-.NET 'teki [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, bunları kullanarak işiniz bittiğinde uygulayan `IDisposable` nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
+.NET 'teki [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, `IDisposable` bunları kullanarak işiniz bittiğinde uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP Aracısı örnekleri (JavaScript)
 
-Daha iyi bağlantı yönetimi seçenekleri sağladığından, [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) `node-fetch` modül gibi yerel olmayan yöntemler yerine yerel sınıfı kullanmanız gerekir. Bağlantı parametreleri, `http.agent` sınıfındaki seçenekler aracılığıyla yapılandırılır. HTTP aracısında kullanılabilen ayrıntılı seçenekler için, bkz. [Yeni Aracı (\[Seçenekler\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Daha iyi bağlantı yönetimi seçenekleri sağladığından, [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) modül gibi yerel olmayan yöntemler yerine yerel sınıfı kullanmanız gerekir `node-fetch` . Bağlantı parametreleri, sınıfındaki seçenekler aracılığıyla yapılandırılır `http.agent` . HTTP aracısında kullanılabilen ayrıntılı seçenekler için, bkz. [Yeni Aracı ( \[ Seçenekler \] )](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-Tarafından `http.request()` kullanılan `http.globalAgent` genel sınıf, bu değerlerin tümünü kendi varsayılanlarına ayarlanmış olarak içerir. Işlevlerde bağlantı sınırlarını yapılandırmak için önerilen yöntem, genel olarak en yüksek sayıyı ayarlayamaktır. Aşağıdaki örnek, işlev uygulaması için maksimum yuva sayısını ayarlar:
+`http.globalAgent`Tarafından kullanılan genel sınıf, `http.request()` Bu değerlerin tümünü kendi varsayılanlarına ayarlanmış olarak içerir. Işlevlerde bağlantı sınırlarını yapılandırmak için önerilen yöntem, genel olarak en yüksek sayıyı ayarlayamaktır. Aşağıdaki örnek, işlev uygulaması için maksimum yuva sayısını ayarlar:
 
 ```js
 http.globalAgent.maxSockets = 200;
@@ -130,7 +130,7 @@ module.exports = async function (context) {
 ) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizde [yerel. Settings. json dosyasında](functions-run-local.md#local-settings-file) SQL veritabanı bağlantı dizelerini açıkça eklemeniz gerekir. İşlev kodunuzda [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
+> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizdeki [local.settings.jsdosyasına](functions-run-local.md#local-settings-file) açıkça SQL veritabanı bağlantı dizelerini eklemeniz gerekir. İşlev kodunuzda [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

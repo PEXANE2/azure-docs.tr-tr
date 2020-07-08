@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832568"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
-Bu makalede, Azure Işlevleri için otomatikleştirilmiş testlerin nasıl oluşturulacağı gösterilmektedir. 
+Bu makalede, Azure Işlevleri için otomatikleştirilmiş testlerin nasıl oluşturulacağı gösterilmektedir.
 
 Tüm kodun test edilmesi önerilir, ancak işlevin mantığını sarmalayarak ve Işlev dışında testler oluşturarak en iyi sonuçları elde edebilirsiniz. Soyutlama mantığı, Işlevin kod satırlarını kısıtlar ve Işlevin yalnızca diğer sınıfları veya modülleri çağırarak sorumlu olmasını sağlar. Ancak, bu makalede, HTTP ve Zamanlayıcı tarafından tetiklenen işlevlerde otomatikleştirilmiş testlerin nasıl oluşturulacağı gösterilmektedir.
 
@@ -38,7 +38,7 @@ Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağ�
 1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve **işlevleri** adlandırın
 2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve **myhttptrigger**olarak adlandırın.
 3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger**olarak adlandırın.
-4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve bunu **Functions. Tests**olarak adlandırın. 
+4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve bunu **Functions. Tests**olarak adlandırın.
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
 6. [*Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
@@ -127,7 +127,7 @@ namespace Functions.Tests
 }
 ```
 
-Bu numaralandırma, testler tarafından kullanılan günlükçü türünü belirtir. 
+Bu numaralandırma, testler tarafından kullanılan günlükçü türünü belirtir.
 
 Şimdi Işlevlerde yeni bir sınıf oluşturun *.* **TestFactory.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
 
@@ -314,7 +314,7 @@ module.exports = {
 
 Bu modül, `IsPastDue` özelliği tek başına sahte bir zamanlayıcı örneği olarak uygular. Test bandı yalnızca sonucu test etmek için işlevi çağırarak, NCRONTAB ifadeleri gibi Zamanlayıcı konfigürasyonları burada gerekli değildir.
 
-Ardından, [Yeni bir JAVASCRIPT http işlevi oluşturmak](/azure/javascript/tutorial-vscode-serverless-node-01) ve *httptrigger*olarak adlandırmak için vs Code işlevleri uzantısını kullanın. İşlev oluşturulduktan sonra, **index.test.js**adlı aynı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
+Ardından, [Yeni bir JAVASCRIPT http işlevi oluşturmak](/azure/developer/javascript/tutorial-vscode-serverless-node-01) ve *httptrigger*olarak adlandırmak için vs Code işlevleri uzantısını kullanın. İşlev oluşturulduktan sonra, **index.test.js**adlı aynı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
 
 ```javascript
 const httpFunction = require('./index');

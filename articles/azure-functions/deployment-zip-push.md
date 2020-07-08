@@ -3,12 +3,12 @@ title: Azure Işlevleri için ZIP Push dağıtımı
 description: Azure Işlevlerinizi yayımlamak için kudu dağıtım hizmetinin. zip dosya dağıtım olanaklarını kullanın.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833061"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure İşlevleri için zip dosyasıyla dağıtım
 
@@ -16,7 +16,7 @@ Bu makalede, işlev uygulaması proje dosyalarınızın bir. zip (sıkıştırı
 
 Azure Işlevleri, Azure App Service tarafından sunulan sürekli dağıtım ve tümleştirme seçeneklerinin eksiksiz aralığıdır. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md).
 
-Geliştirme sürecini hızlandırmak için, işlev uygulaması proje dosyalarınızı doğrudan bir. zip dosyasından dağıtmayı daha kolay bulabilirsiniz. . Zip dağıtım API 'SI bir. zip dosyasının içeriğini alır ve içeriği işlev uygulamanızın `wwwroot` klasörüne ayıklar. Bu. zip dosya dağıtımı, aşağıdakiler de dahil olmak üzere sürekli tümleştirme tabanlı dağıtımları destekleyen kudu hizmetini kullanır:
+Geliştirme sürecini hızlandırmak için, işlev uygulaması proje dosyalarınızı doğrudan bir. zip dosyasından dağıtmayı daha kolay bulabilirsiniz. . Zip dağıtım API 'SI bir. zip dosyasının içeriğini alır ve içeriği `wwwroot` işlev uygulamanızın klasörüne ayıklar. Bu. zip dosya dağıtımı, aşağıdakiler de dahil olmak üzere sürekli tümleştirme tabanlı dağıtımları destekleyen kudu hizmetini kullanır:
 
 + Önceki dağıtımlardan bırakılmış dosyaların silinmesi.
 + Dağıtım komut dosyalarını çalıştırma dahil dağıtım özelleştirmesi.
@@ -34,7 +34,7 @@ Gönderme dağıtımı için kullandığınız. zip dosyası, işlevinizi çalı
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Bir işlev uygulaması, `wwwroot` dizindeki tüm dosya ve klasörleri içerir. Bir. zip dosyası dağıtımı `wwwroot` dizinin içeriğini içerir, ancak dizinin kendisidir. C# sınıf kitaplığı projesi dağıtıldığında, derlenmiş kitaplık dosyalarını ve bağımlılıklarını. zip paketinizin bir `bin` alt klasöre eklemeniz gerekir.
+Bir işlev uygulaması, dizindeki tüm dosya ve klasörleri içerir `wwwroot` . Bir. zip dosyası dağıtımı dizinin içeriğini içerir `wwwroot` , ancak dizinin kendisidir. C# sınıf kitaplığı projesi dağıtıldığında, derlenmiş kitaplık dosyalarını ve bağımlılıklarını `bin` . zip paketinizin bir alt klasöre eklemeniz gerekir.
 
 ## <a name="download-your-function-app-files"></a>İşlev uygulaması dosyalarınızı indirin
 
@@ -54,11 +54,13 @@ Ancak, Azure portal düzenleyiciyi kullanarak işlevlerinizi oluşturmuş olabil
 
 + **REST API 'Leri kullanma:**
 
-    `<function_app>` Projenizden dosyaları indirmek için AŞAĞıDAKI DAĞıTıMı al API 'sini kullanın: 
+    Projenizden dosyaları indirmek için aşağıdaki dağıtımı al API 'sini kullanın `<function_app>` : 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
-    Dahil `/site/wwwroot/` olmak üzere, ZIP dosyanızın tüm siteyi değil yalnızca uygulama proje dosyalarını içerdiğinden emin olur. Zaten Azure 'da oturum açmadıysanız bunu yapmanız istenir.  
+    Dahil olmak üzere `/site/wwwroot/` , ZIP dosyanızın tüm siteyi değil yalnızca uygulama proje dosyalarını içerdiğinden emin olur. Zaten Azure 'da oturum açmadıysanız bunu yapmanız istenir.  
 
 Ayrıca, bir GitHub deposundan bir. zip dosyası indirebilirsiniz. Bir GitHub deposunu. zip dosyası olarak indirdiğinizde GitHub, dal için ek bir klasör düzeyi ekler. Bu ek klasör düzeyi, GitHub 'dan indirdiğiniz. zip dosyasını doğrudan dağıtabileceğiniz anlamına gelir. İşlev uygulamanızı sürdürmek için bir GitHub deposu kullanıyorsanız, uygulamanızı dağıtmak için [sürekli tümleştirme](functions-continuous-deployment.md) kullanmanız gerekir.  
 
@@ -66,7 +68,7 @@ Ayrıca, bir GitHub deposundan bir. zip dosyası indirebilirsiniz. Bir GitHub de
 
 Azure CLı 'yi bir anında iletme dağıtımı tetikleyebilmeniz için kullanabilirsiniz. [Az functionapp Deployment Source config-ZIP](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) komutunu kullanarak bir. zip dosyasını işlev uygulamanıza dağıtın. Bu komutu kullanmak için Azure CLı sürüm 2.0.21 veya sonraki bir sürümünü kullanmanız gerekir. Kullanmakta olduğunuz Azure CLı sürümünü görmek için `az --version` komutunu kullanın.
 
-Aşağıdaki komutta yer tutucusunu, `<zip_file_path>` . zip dosyanızın konumunun yolu ile değiştirin. Ayrıca, işlev `<app_name>` uygulamanızın benzersiz adıyla değiştirin ve öğesini kaynak grubunuzun adıyla değiştirin `<resource_group>` .
+Aşağıdaki komutta `<zip_file_path>` yer tutucusunu,. zip dosyanızın konumunun yolu ile değiştirin. Ayrıca, `<app_name>` işlev uygulamanızın benzersiz adıyla değiştirin ve öğesini `<resource_group>` kaynak grubunuzun adıyla değiştirin.
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \
@@ -81,9 +83,9 @@ Yerel bilgisayarınızda Azure CLı kullanırken, `<zip_file_path>` bilgisayarı
 
 ## <a name="run-functions-from-the-deployment-package"></a>Dağıtım paketinden işlevleri Çalıştır
 
-İşlevlerinizi doğrudan dağıtım paketi dosyasından çalıştırmayı da tercih edebilirsiniz. Bu yöntem, dosyaları paketten işlev uygulamanızın `wwwroot` dizinine kopyalama dağıtım adımını atlar. Bunun yerine, paket dosyası Işlevler çalışma zamanına göre bağlanır ve `wwwroot` dizinin içeriği salt okunurdur.  
+İşlevlerinizi doğrudan dağıtım paketi dosyasından çalıştırmayı da tercih edebilirsiniz. Bu yöntem, dosyaları paketten işlev uygulamanızın dizinine kopyalama dağıtım adımını atlar `wwwroot` . Bunun yerine, paket dosyası Işlevler çalışma zamanına göre bağlanır ve `wwwroot` dizinin içeriği salt okunurdur.  
 
-ZIP dağıtımı, işlev uygulaması ayarını `WEBSITE_RUN_FROM_PACKAGE` bir değerine ayarlayarak etkinleştirebileceğiniz bu özellikle tümleştirilir. `1` Daha fazla bilgi için bkz. [bir dağıtım paketi dosyasından Işlevlerinizi çalıştırma](run-functions-from-deployment-package.md).
+ZIP dağıtımı, işlev uygulaması ayarını bir değerine ayarlayarak etkinleştirebileceğiniz bu özellikle tümleştirilir `WEBSITE_RUN_FROM_PACKAGE` `1` . Daha fazla bilgi için bkz. [bir dağıtım paketi dosyasından Işlevlerinizi çalıştırma](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

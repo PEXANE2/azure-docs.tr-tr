@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833800"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -480,9 +480,9 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **tür** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
+| **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li><code>function</code>&mdash;İşleve özgü bir API anahtarı gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li><code>admin</code>&mdash;Ana anahtar gereklidir.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
@@ -498,7 +498,9 @@ Tetikleyici giriş türü `HttpRequest` ya da özel bir tür olarak bildirilmiş
 
 Varsayılan olarak, bir HTTP tetikleyicisi için bir işlev oluşturduğunuzda, işlev, formun bir yolu ile adreslenebilir:
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 Bu yolu `route` , http tetikleyicisinin giriş bağlamasındaki isteğe bağlı özelliği kullanarak özelleştirebilirsiniz. Örnek olarak, aşağıdaki *function.js* DOSYADAKI bir `route` http tetikleyicisi için bir özelliği tanımlar:
 
@@ -766,7 +768,9 @@ Anahtarlar, Azure 'daki işlev uygulamanızın bir parçası olarak depolanır v
 
 HTTP tetikleyici şablonlarının çoğu istekte bir API anahtarı gerektirir. Bu nedenle, HTTP isteğiniz normalde aşağıdaki URL gibi görünür:
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 Anahtar, yukarıdaki gibi adlı bir sorgu dizesi değişkenine dahil edilebilir `code` . Bir HTTP başlığına da dahil edilebilir `x-functions-key` . Anahtarın değeri, işlev için tanımlanan herhangi bir işlev anahtarı veya herhangi bir konak anahtarı olabilir.
 
@@ -809,6 +813,14 @@ Web kancası yetkilendirmesi, HTTP tetikleyicisinin bir parçası olan Web kanca
 
 * **Sorgu dizesi**: sağlayıcı, anahtar adını sorgu dizesi parametresinde (gibi) geçirir `clientid` `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` .
 * **İstek üst bilgisi**: sağlayıcı, üst bilgide anahtar adını geçirir `x-functions-clientid` .
+
+## <a name="content-types"></a>İçerik türleri
+
+İkili ve form verilerinin C olmayan bir işleve geçirilmesi, uygun Content-Type üst bilgisini kullanmanızı gerektirir. Desteklenen içerik türleri `octet-stream` ikili veriler ve [çok parçalı türler](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)için içerir.
+
+### <a name="known-issues"></a>Bilinen sorunlar
+
+C olmayan işlevlerde, içerik türü ile gönderilen istekler, `image/jpeg` `string` işleve geçirilen bir değerle sonuçlanır. Bunlar gibi durumlarda, `string` ham ikili verilere erişmek için değeri el ile bir bayt dizisine dönüştürebilirsiniz.
 
 ## <a name="limits"></a>Sınırlar
 

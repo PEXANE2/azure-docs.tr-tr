@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846599"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
 Reliable Actors Runtime, [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını ve [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
@@ -20,7 +20,7 @@ Reliable Actors Runtime için EventSource sağlayıcı adı "Microsoft-ServiceFa
 
 EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri şunlardır. [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md), [anlam günlüğü](https://msdn.microsoft.com/library/dn774980.aspx)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>Anahtar sözcükler
 Reliable Actors EventSource 'e ait olan tüm olaylar bir veya daha fazla anahtar sözcük ile ilişkilendirilir. Bu, toplanan olayların filtrelenmesini mümkün bir şekilde sunar. Aşağıdaki anahtar sözcük bitleri tanımlanmıştır.
 
 | Sürümleri | Açıklama |
@@ -46,22 +46,22 @@ Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Per
 Çok sayıda aktör hizmeti veya aktör hizmeti bölümü olan bir küme, çok sayıda aktör performans sayacı örneğine sahip olacaktır. Performans sayacı örneği adları, performans sayacı örneğinin ilişkilendirildiği belirli [bölümü](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) ve aktör yöntemini (varsa) tanımlamaya yardımcı olabilir.
 
 #### <a name="service-fabric-actor-category"></a>Aktör kategorisi Service Fabric
-Kategori `Service Fabric Actor`için, sayaç örneği adları aşağıdaki biçimdedir:
+Kategori için `Service Fabric Actor` , sayaç örneği adları aşağıdaki biçimdedir:
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-Aşağıda, `Service Fabric Actor` kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir:
+Aşağıda, kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir `Service Fabric Actor` :
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046`
 
-Yukarıdaki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` SERVICE fabrıc bölüm kimliğinin dize gösterimidir ve `635650083799324046` çalışma zamanının iç kullanımı IÇIN oluşturulan 64 bitlik kimliğidir.
+Yukarıdaki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` Service Fabric bölüm kimliğinin dize gösterimidir ve `635650083799324046` çalışma zamanının iç kullanımı için oluşturulan 64 bitlik kimliğidir.
 
 #### <a name="service-fabric-actor-method-category"></a>Service Fabric aktör yöntemi kategorisi
-Kategori `Service Fabric Actor Method`için, sayaç örneği adları aşağıdaki biçimdedir:
+Kategori için `Service Fabric Actor Method` , sayaç örneği adları aşağıdaki biçimdedir:
 
 `MethodName_ActorsRuntimeMethodId_ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
@@ -69,15 +69,15 @@ Kategori `Service Fabric Actor Method`için, sayaç örneği adları aşağıdak
 
 *Actorsruntimemethodıd* , iç kullanımı Için yapı aktör çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-Aşağıda, `Service Fabric Actor Method` kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir:
+Aşağıda, kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir `Service Fabric Actor Method` :
 
 `ivoicemailboxactor.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486`
 
-Yukarıdaki örnekte `ivoicemailboxactor.leavemessageasync` , yöntem adı `2` , çalışma zamanının iç kullanımı `89383d32-e57e-4a9b-a6ad-57c6792aa521` için oluşturulan 32 bitlik kimlik, Service Fabric bölüm kimliğinin dize gösterimidir ve `635650083804480486` çalışma zamanının iç kullanımı için oluşturulan 64 bit kimliğidir.
+Yukarıdaki örnekte, `ivoicemailboxactor.leavemessageasync` Yöntem adı, `2` çalışma zamanının iç kullanımı için oluşturulan 32 bitlik kimlik, `89383d32-e57e-4a9b-a6ad-57c6792aa521` Service Fabric bölüm kimliğinin dize gösterimidir ve `635650083804480486` çalışma zamanının iç kullanımı IÇIN oluşturulan 64 bit kimliğidir.
 
 ## <a name="list-of-events-and-performance-counters"></a>Olaylar ve performans sayaçları listesi
 ### <a name="actor-method-events-and-performance-counters"></a>Aktör yöntemi olayları ve performans sayaçları

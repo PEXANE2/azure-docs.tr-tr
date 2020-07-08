@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 17d135e9b250ba111cf2bd1a91a91d146221d69d
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833409"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET ile kapsayıcı özelliklerini ve meta verileri yönetme
 
@@ -25,14 +25,27 @@ Blob kapsayıcıları, içerdikleri verilere ek olarak sistem özelliklerini ve 
 
 - **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, bir BLOB depolama kaynağı için belirlediğiniz bir veya daha fazla ad-değer çiftinden oluşur. Kaynak ile ek değerleri depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amacınıza yöneliktir ve kaynağın nasıl davranacağını etkilemez.
 
+Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve bu nedenle HTTP üst bilgilerini yöneten tüm kısıtlamalara uymalıdır. Meta veri adları geçerli HTTP üst bilgisi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterler içerebilir ve büyük/küçük harfe duyarsız olarak değerlendirilmelidir. ASCII olmayan karakterler içeren meta veri değerleri Base64 kodlamalı veya URL kodlu olmalıdır.
+
+## <a name="retrieve-container-properties"></a>Kapsayıcı özelliklerini al
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+Kapsayıcı özelliklerini almak için aşağıdaki yöntemlerden birini çağırın:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+Aşağıdaki kod örneği bir kapsayıcının sistem özelliklerini getirir ve bazı özellik değerlerini konsol penceresine yazar:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 BLOB depolama kaynağı için özellik ve meta veri değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için, **Fetchattributes** veya **Fetchattributesasync** yöntemini çağırarak açıkça bunları almanız gerekir. Bu kuralın özel durumu **var ve mevcut** **tsasync** yöntemlerinin, kapsamakta olan uygun **fetchattributes** metodunu çağırmasını sağlar. Bu yöntemlerden birini çağırdığınızda, **Fetchattributes**' i de çağırmanız gerekmez.
 
 > [!IMPORTANT]
 > Bir depolama kaynağı için özellik veya meta veri değerlerinin doldurulmadığını fark ederseniz, kodunuzun **Fetchattributes** veya **Fetchattributesasync** yöntemini çağırmadığını kontrol edin.
-
-Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve bu nedenle HTTP üst bilgilerini yöneten tüm kısıtlamalara uymalıdır. Meta veri adları geçerli HTTP üst bilgisi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterler içerebilir ve büyük/küçük harfe duyarsız olarak değerlendirilmelidir. ASCII olmayan karakterler içeren meta veri değerleri Base64 kodlamalı veya URL kodlu olmalıdır.
-
-## <a name="retrieve-container-properties"></a>Kapsayıcı özelliklerini al
 
 Kapsayıcı özelliklerini almak için aşağıdaki yöntemlerden birini çağırın:
 
@@ -63,7 +76,33 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>Meta verileri ayarlama ve alma
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değer çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için, bir [IDictionary](/dotnet/api/system.collections.idictionary) nesnesine ad-değer çiftleri ekleyin ve ardından değerleri yazmak için aşağıdaki yöntemlerden birini çağırın:
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+Meta verilerinizin adı, C# tanımlayıcıları için adlandırma kurallarına uygun olmalıdır. Meta veri adları, oluşturulduğu durumu korur, ancak ayarlandığında veya okurken büyük/küçük harf duyarsız olur. Bir kaynak için aynı ada sahip iki veya daha fazla meta veri üstbilgisi gönderilirse, BLOB depolama alanı virgülle ayırın ve iki değeri ayırır ve HTTP yanıt kodu 200 (Tamam) döndürün.
+
+Aşağıdaki kod örneği bir kapsayıcıda meta verileri ayarlar.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+Meta verileri almak için aşağıdaki yöntemlerden birini çağırın:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync).
+
+Ardından, aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değer çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için kaynaktaki **meta veri** koleksiyonuna ad-değer çiftleri ekleyin ve ardından değerleri yazmak için aşağıdaki yöntemlerden birini çağırın:
 
@@ -125,6 +164,8 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

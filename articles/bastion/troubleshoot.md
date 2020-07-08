@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84744077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831939"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion sorunlarını giderme
 
@@ -28,7 +28,7 @@ Y **:** *AzureBastionSubnet*'e BIR NSG oluşturup uygularsanız, NSG 'nize aşa�
 2. Tanılama günlüğü ve diğerleri: 443 ' de Azurecyüksek 'ya giden trafik (Bu hizmet etiketi içindeki bölgesel Etiketler henüz desteklenmiyor.)
 3. Hedef VM – 3389 için giden ve 22-VirtualNetwork
 
-NSG kurallarına bir örnek [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)başvuru için kullanılabilir.
+NSG kurallarına bir örnek [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)başvuru için kullanılabilir.
 Daha fazla bilgi için bkz. [Azure Için NSG Kılavuzu](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure ile SSH anahtarımı kullanılamıyor

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833112"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Ortamı ile Iç Load Balancer kullanma
 
@@ -68,7 +68,7 @@ ILB Ao 'da bir uygulama oluşturmak, genellikle bir uygulama oluşturmak için d
 3. Aboneliğinizi seçin.
 4. Kaynak grubunu seçin veya oluşturun.
 5. App Service planı (ASP) seçin veya oluşturun. Yeni bir ASP oluşturuyorsanız, konum olarak ATıCı ' ı seçin ve ASP 'nizin oluşturulmasını istediğiniz çalışan havuzunu seçin. ASP 'yi oluşturduğunuzda, konum ve çalışan havuzu olarak ATıCı 'nizi seçersiniz. Uygulamanın adını belirttiğinizde, uygulama adınızın altındaki alt etki alanının, Ao 'nizin alt etki alanı ile değiştirildiğini görürsünüz. 
-6. **Oluştur**’u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
+6. **Oluştur**'u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
 
 ![][2]
 
@@ -118,9 +118,10 @@ Ek yönetim öğeleri sertifika yönetimi ve DNS yönetimi. ILB ASE oluşturuldu
 #### <a name="dns-configuration"></a>DNS Yapılandırması
 Dış VIP kullanılırken DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. Contoso.corp.net gibi belirli bir alt etki alanı için, için ıLB adresinizi işaret eden DNS A kayıtları oluşturmanız gerekir:
 
-    * 
-    *. SCM FTP Yayımlama 
-
+- \*
+- *. SCM
+- ftp
+- publish
 
 ## <a name="getting-started"></a>Başlarken
 App Service ortamları ile çalışmaya başlamak için bkz. [App Service ortamlarına giriş][WhatisASE]

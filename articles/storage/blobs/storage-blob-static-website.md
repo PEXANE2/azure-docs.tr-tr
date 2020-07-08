@@ -8,21 +8,22 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: f3dc7a051021c75c7e1ed6904096c43a27c3e05e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833355"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Depolama'da statik web sitesi barındırma
 
 *$Web*adlı bir depolama kapsayıcısından doğrudan statik IÇERIK (HTML, CSS, JavaScript ve resim dosyaları) hizmeti sağlayabilirsiniz. İçeriğinizi Azure Storage 'da barındırmak, [Azure işlevleri](/azure/azure-functions/functions-overview) ve diğer hizmet olarak platform (PaaS) hizmetlerini içeren sunucusuz mimariler kullanmanıza olanak sağlar.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > Siteniz sunucu tarafı koduna bağımlıysa bunun yerine [Azure App Service](/azure/app-service/overview) kullanın.
+Genel amaçlı v2 standart depolama hesabı oluşturduğunuzdan emin olun. Statik Web siteleri diğer depolama hesabı türleri için kullanılamaz.
 
 ## <a name="setting-up-a-static-website"></a>Statik Web sitesi ayarlama
 
@@ -46,7 +47,7 @@ Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi bar
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code uzantısı](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code uzantısı](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>İçeriği görüntüleme
 
@@ -63,11 +64,11 @@ Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin, URL `https://contosoblob
 
 Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
 
-Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net` ).
 
 ### <a name="secondary-endpoints"></a>İkincil uç noktalar
 
-[İkincil bir bölgede artıklık](../common/storage-redundancy.md#redundancy-in-a-secondary-region)ayarlarsanız, ikincil bir uç nokta kullanarak Web sitesi içeriğine de erişebilirsiniz. Veriler ikincil bölgelere zaman uyumsuz olarak çoğaltıldığından, ikincil uç noktada kullanılabilen dosyalar birincil uç noktada kullanılabilir dosyalarla her zaman eşitlenmemektedir. 
+[İkincil bir bölgede artıklık](../common/storage-redundancy.md#redundancy-in-a-secondary-region)ayarlarsanız, ikincil bir uç nokta kullanarak Web sitesi içeriğine de erişebilirsiniz. Veriler ikincil bölgelere zaman uyumsuz olarak çoğaltıldığından, ikincil uç noktada kullanılabilen dosyalar birincil uç noktada kullanılabilir dosyalarla her zaman eşitlenmemektedir.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web kapsayıcısının genel erişim düzeyini ayarlamanın etkisi
 
@@ -85,11 +86,11 @@ Bununla birlikte, birincil blob hizmeti uç noktasına genel erişim, `https://c
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Özel bir etki alanını statik bir Web sitesi URL 'siyle eşleme
 
-Statik Web sitenizi özel bir etki alanı aracılığıyla kullanılabilir hale getirebilirsiniz. 
+Statik Web sitenizi özel bir etki alanı aracılığıyla kullanılabilir hale getirebilirsiniz.
 
 Azure Storage tarafından yerel olarak desteklendiğinden, özel etki alanınız için HTTP erişimini etkinleştirmek daha kolay olur. HTTPS 'yi etkinleştirmek için, Azure Storage özel etki alanları ile HTTPS 'yi henüz yerel olarak desteklemediğinden Azure CDN kullanmanız gerekir. adım adım yönergeler için bkz. [özel bir etki alanını Azure Blob depolama uç noktasına eşleme](storage-custom-domain-name.md) .
 
-Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/storage-require-secure-transfer.md) şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir. 
+Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/storage-require-secure-transfer.md) şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir.
 
 > [!TIP]
 > Etki alanınızı Azure 'da barındırmayı düşünün. Daha fazla bilgi için bkz. [Azure DNS etki alanınızı barındırma](../../dns/dns-delegate-domain-azure-dns.md).

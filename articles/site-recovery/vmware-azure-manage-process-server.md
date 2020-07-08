@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846566"
 ---
 # <a name="manage-process-servers"></a>İşlem sunucularını yönetme
 
@@ -48,7 +48,7 @@ VM 'Leri aşağıdaki gibi iki işlem sunucusu arasında taşıyarak yükü deng
     ![LoadPS 'Ler](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. **Makine seç**' e tıklayın ve geçerli sunucudan hedef işlem sunucusuna taşımak istediğiniz makineleri seçin. Ortalama veri değişikliği ayrıntıları, her bir sanal makine için görüntülenir. Ardından **Tamam**'a tıklayın. 
-3. Kasada,**Site Recovery işleri** **izleme** > altında işin ilerlemesini izleyin.
+3. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
 
 Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir etki için [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
@@ -63,7 +63,7 @@ Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir et
 
     ![Anahtar](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. Kasada,**Site Recovery işleri** **izleme** > altında işin ilerlemesini izleyin.
+5. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
 
 Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir etki için [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 

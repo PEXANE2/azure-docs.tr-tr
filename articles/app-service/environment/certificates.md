@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831888"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Sertifikalar ve App Service Ortamı 
 
@@ -41,13 +41,16 @@ ASE 'yi oluşturamaz ve sertifikayı portalda tek bir eylem olarak veya bir şab
 
 Test için otomatik olarak imzalanan bir sertifika oluşturmak istiyorsanız aşağıdaki PowerShell bitini kullanabilirsiniz:
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 Kendinden imzalı bir sertifika oluştururken, konu adının CN = {ASE_NAME_HERE} _InternalLoadBalancingASE biçiminde olduğundan emin olmanız gerekir.
 
 ## <a name="application-certificates"></a>Uygulama sertifikaları 
@@ -80,15 +83,18 @@ Uygulamanızı kendi AŞIRINIZDEKI uygulamanıza yüklemek için:
 
 Sertifika, bu ayarı yapılandıran uygulamayla aynı App Service planındaki tüm uygulamalar tarafından kullanılabilir. Farklı bir App Service planındaki uygulamalar için kullanılabilir olması gerekiyorsa, bu App Service planındaki bir uygulamada uygulama ayarı işlemini tekrarlamanız gerekir. Sertifikanın ayarlandığını denetlemek için, kudu konsoluna gidin ve PowerShell hata ayıklama konsolunda aşağıdaki komutu verin:
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 Testi gerçekleştirmek için, otomatik olarak imzalanan bir sertifika oluşturabilir ve aşağıdaki PowerShell ile bir *. cer* dosyası oluşturabilirsiniz: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

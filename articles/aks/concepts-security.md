@@ -2,14 +2,16 @@
 title: Kavramlar-Azure Kubernetes hizmetlerinde güvenlik (AKS)
 description: Ana ve düğüm iletişimi, ağ ilkeleri ve Kubernetes gizli dizileri dahil olmak üzere Azure Kubernetes hizmeti 'nde (AKS) güvenlik hakkında bilgi edinin.
 services: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831548"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar ve kümeler için güvenlik kavramları
 
@@ -78,6 +80,8 @@ Bir Kubernetes *gizli anahtarı* , erişim kimlik bilgileri veya anahtarlar gibi
 
 Gizli dizi kullanımı, Pod veya hizmet YAML bildiriminde tanımlanan hassas bilgileri azaltır. Bunun yerine, Kubernetes API sunucusunda depolanan gizli anahtarı YAML bildiriminizde bir parçası olarak istemeniz gerekir. Bu yaklaşım yalnızca gizli dizi için özel Pod erişimi sağlar. Lütfen unutmayın: ham gizli bilgi bildirimi dosyaları gizli verileri Base64 biçiminde içerir (daha fazla ayrıntı için [resmi belgelere][secret-risks] bakın). Bu nedenle, bu dosya hassas bilgiler olarak kabul edilmelidir ve kaynak denetimine hiçbir şekilde uygulanmamalıdır.
 
+Kubernetes gizli dizileri, dağıtılmış anahtar-değer deposu olarak etcd 'de depolanır. Etcd deposu AKS tarafından tam olarak yönetilir ve [veriler Azure platformunda geri kalanında şifrelenir][encryption-atrest]. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 AKS kümelerinizi korumaya başlamak için bkz. [aks kümesini yükseltme][aks-upgrade-cluster].
@@ -96,6 +100,7 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

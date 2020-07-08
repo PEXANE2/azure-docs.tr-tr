@@ -3,22 +3,22 @@ title: Azure Notebooks önizlemede oturum açın
 description: Kullanıcı hesabınızı bir Microsoft hesabı veya iş/okul hesabı kullanarak Azure Notebooks için yapılandırın.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832194"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks önizlemesi için Kullanıcı hesabınız
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Kullanıcı hesabıyla oturum açmadan Azure Notebooks kullanabilirsiniz:
 
 - Oturum açmadan, not defterlerini oluşturup çalıştırabilir, ancak projelerin bir parçası olarak not defterlerini veya veri dosyalarını sürdüremezsiniz. Örneğin, bir Azure not defterine bağlantı alan kullanıcılar, oturum açmaya gerek kalmadan Not defterinin keyfini çıkarabilirsiniz.
 - Oturum açıldığında, Azure Notebooks tüm projelerinizi hesabınızla saklar. Oturum açan kullanıcıların, projelerini ve not defterlerini başkalarıyla paylaşmasına izin veren bir kullanıcı KIMLIĞI de vardır.
 - Azure Notebooks için kullanılan hesap aynı zamanda bir Azure aboneliğiyle ilişkilendirildiğinde, daha güçlü sunucularda Not defterleri çalıştırma, özel not defterleri oluşturma ve not defterlerine bireysel kullanıcılara izin verme gibi ek avantajlar elde edersiniz.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks oturum açmak için bir Microsoft hesabı ya da "Iş veya okul" hesabı gerekir. Not defterleri sayfasının sağ üst tarafındaki **oturum aç** komutunu seçerken hesabınız istenir:
 

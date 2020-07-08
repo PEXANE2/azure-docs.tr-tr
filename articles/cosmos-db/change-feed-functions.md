@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ce95e760dd9faf2130a81dff3f0611c27f99551d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834072"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
 
@@ -37,7 +37,7 @@ Sunucusuz bir olay tabanlı akış uygulamak için şunlar gerekir:
 Azure işlevinizi Cosmos DB için Azure Işlevleri tetikleyicisi ile oluşturmak artık tüm Azure Işlevleri IDE ve CLı tümleştirmeleri arasında desteklenmektedir:
 
 * Visual Studio kullanıcıları için [Visual Studio uzantısı](../azure-functions/functions-develop-vs.md) .
-* Visual Studio Code kullanıcılar için [Visual Studio Code uzantısı](/azure/javascript/tutorial-vscode-serverless-node-01) .
+* Visual Studio Code kullanıcılar için [Visual Studio Code uzantısı](/azure/developer/javascript/tutorial-vscode-serverless-node-01) .
 * Ve son olarak, platformlar arası IDE deneyimi için [temel CLI araçları](../azure-functions/functions-run-local.md#create-func) .
 
 ## <a name="run-your-trigger-locally"></a>Tetikleyiciyi yerel olarak çalıştırın

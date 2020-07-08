@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838938"
 ---
 Bu makale, Azure sanal makineler için güvenlik önerileri içerir. Paylaşılan sorumluluk için modelimizde açıklanan güvenlik yükümlülüklerinizi karşılamak üzere bu önerileri izleyin. Öneriler, Web uygulaması çözümleriniz için genel güvenliği iyileştirmenize de yardımcı olur. Hizmet sağlayıcı sorumluluklarını Microsoft 'un karşılama hakkında daha fazla bilgi için bkz. [bulut bilgi işlem Için paylaşılan sorumluluklar](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
@@ -23,7 +23,7 @@ Azure Güvenlik Merkezi hakkında genel bilgi için bkz. [Azure Güvenlik Merkez
 
 ## <a name="general"></a>Genel
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Özel VM görüntüleri oluştururken, en son güncelleştirmeleri uygulayın. | Görüntü oluşturmadan önce, işletim sistemi ve görüntünüzün bir parçası olacak tüm uygulamalar için en son güncelleştirmeleri yükleyebilirsiniz.  | - |
 | VM 'lerinizi güncel tutun. | Azure 'daki Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda [güncelleştirme yönetimi](../articles/automation/automation-update-management.md) çözümünü kullanabilirsiniz. | [Evet](../articles/security-center/security-center-apply-system-updates.md) |
@@ -33,29 +33,29 @@ Azure Güvenlik Merkezi hakkında genel bilgi için bkz. [Azure Güvenlik Merkez
 
 ## <a name="data-security"></a>Veri güvenliği
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | İşletim sistemi disklerini şifreleyin. | [Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md) , Windows ve Linux ıAAS VM disklerini şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içerikleri okunamaz. Disk şifrelemesi, depolanan verileri, aksi halde disk kopyalanırsa mümkün olmayan yetkisiz erişimlerden korur.| [Evet](../articles/security-center/security-center-apply-disk-encryption.md) |
 | Veri disklerini şifreleyin. | [Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md) , Windows ve Linux ıAAS VM disklerini şifrelemenize yardımcı olur. Gerekli anahtarlar olmadan, şifrelenmiş disklerin içerikleri okunamaz. Disk şifrelemesi, depolanan verileri, aksi halde disk kopyalanırsa mümkün olmayan yetkisiz erişimlerden korur.| -  |
 | Yüklü yazılımı sınırlayın. | Çözümünüzü başarıyla uygulamak için, yüklü yazılımları gerekli olan ile sınırlayın. Bu kılavuz, çözümünüzün saldırı yüzeyini azaltmaya yardımcı olur. | - |
-| Virüsten koruma veya kötü amaçlı yazılımdan koruma kullanın. | Azure 'da, Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur. Microsoft kötü amaçlı yazılımdan koruma uygulamasını uygulama iş yüklerinize göre dağıtabilirsiniz. Temel güvenli ya da gelişmiş özel yapılandırma kullanın. Daha fazla bilgi için bkz. [Azure Cloud Services Için Microsoft kötü amaçlı yazılımdan koruma ve sanal makineler](../articles/security/azure-security-antimalware.md). | - |
+| Virüsten koruma veya kötü amaçlı yazılımdan koruma kullanın. | Azure 'da, Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur. Microsoft kötü amaçlı yazılımdan koruma uygulamasını uygulama iş yüklerinize göre dağıtabilirsiniz. Microsoft kötü amaçlı yazılımdan koruma yalnızca Windows makineler için kullanılabilir. Temel güvenli ya da gelişmiş özel yapılandırma kullanın. Daha fazla bilgi için bkz. [Azure Cloud Services Için Microsoft kötü amaçlı yazılımdan koruma ve sanal makineler](../articles/security/azure-security-antimalware.md). | - |
 | Anahtarları ve gizli dizileri güvenli bir şekilde depolayın. | Güvenli ve merkezi olarak yönetilen bir seçeneğe sahip uygulama sahiplerinizi sağlayarak gizli dizi ve anahtarlarınızın yönetimini kolaylaştırın. Bu yönetim, yanlışlıkla bir uzlaşma veya sızıntı riskini azaltır. Azure Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 ' ye sertifikalı donanım güvenlik modüllerinde (HSM 'ler) güvenli bir şekilde saklayabilir. Anahtarlarınızı ve sırlarınızı depolamak için FIPS 140,2 düzey 3 ' ü kullanmanız gerekiyorsa [Azure ayrılmış HSM](../articles/dedicated-hsm/overview.md)'yi kullanabilirsiniz. | - |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi 
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | VM kimlik doğrulamasını merkezileştirme. | [Azure Active Directory kimlik doğrulaması](../articles/active-directory/develop/authentication-scenarios.md)kullanarak Windows ve Linux sanal makinelerinizin kimlik doğrulamasını merkezileştirebilirsiniz. | - |
 
 ## <a name="monitoring"></a>İzleme
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | VM 'lerinizi izleyin. | Azure VM 'lerinizin ve sanal makine ölçek kümelerinin durumunu izlemek için [VM'ler için Azure izleyici](../articles/azure-monitor/insights/vminsights-overview.md) kullanabilirsiniz. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. | - |
 
 ## <a name="networking"></a>Ağ
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Yönetim bağlantı noktalarına erişimi kısıtlayın. | Saldırganlar açık yönetim bağlantı noktaları için genel bulut IP aralıklarını tarar ve ortak parolalar ve bilinen düzeltme eki yüklenmemiş güvenlik açıkları gibi "kolay" saldırıları dener. [Tam zamanında (JIT) VM erişimi](../articles/security-center/security-center-just-in-time.md) 'Ni kullanarak Azure VM 'lerinize gelen trafiği kilitleyebilir, ancak gerektiğinde sanal makinelere kolay bağlantı sağlarken saldırılara maruz kalmayı azaltabilirsiniz. | - |
 | Ağ erişimini sınırlayın. | Ağ güvenlik grupları ağ erişimini kısıtlayıp açığa çıkarılan uç noktaların sayısını denetlemenizi sağlar. Daha fazla bilgi için bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](../articles/virtual-network/manage-network-security-group.md). | - |

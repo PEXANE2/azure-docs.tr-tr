@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832534"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -187,7 +187,7 @@ Görüntü karşıya yüklenmek üzere hazırlandıktan sonra, sanal makinenin k
 
 Bu bölüm yalnızca ana görüntü yerel olarak oluşturulduğunda geçerlidir.
 
-Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nasıl yükleyeceksiniz. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmak için [Bu makaledeki](/azure/javascript/tutorial-vscode-static-website-node-03) yönergeleri izleyin.
+Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nasıl yükleyeceksiniz. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmak için [Bu makaledeki](/azure/developer/javascript/tutorial-vscode-static-website-node-03) yönergeleri izleyin.
 
 1. Henüz yapmadıysanız VM görüntüsünü (VHD) sabit olarak dönüştürün. Görüntüyü Sabitsiz dönüştürmezseniz, görüntüyü başarıyla oluşturamazsınız.
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: c38854c8967d9cc4a5f8a58f7e068d5bfa556639
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833766"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redis için Azure Cache zaman aşımı sorunlarını giderme
 
@@ -32,7 +32,9 @@ Redsıs için Azure önbelleği, sağladığı yönetilen hizmet işlevselliğin
 
 StackExchange. Redo, `synctimeout` varsayılan 1000 ms değeri ile zaman uyumlu işlemler için adlı bir yapılandırma ayarı kullanır. Zaman uyumlu bir çağrı bu süre içinde tamamlanmazsa, StackExchange. Redsıs istemcisi aşağıdaki örneğe benzer bir zaman aşımı hatası oluşturur:
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 Bu hata iletisi, sorunun nedenine ve olası çözümüne işaret etmenize yardımcı olabilecek ölçümler içerir. Aşağıdaki tabloda hata iletisi ölçümleriyle ilgili ayrıntılar yer almaktadır.
 
@@ -73,7 +75,10 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
 
     Önbelleğin ve istemcisinin aynı Azure bölgesinde olması kesinlikle önerilir. Çapraz bölge çağrılarını içeren bir senaryonuz varsa, `synctimeout` bağlantı dizesine bir özellik ekleyerek aralığı varsayılan 1000-ms aralığından daha yüksek bir değere ayarlamanız gerekir `synctimeout` . Aşağıdaki örnek, 2000 MS ile redin için Azure önbelleği tarafından StackExchange için bir bağlantı dizesinin kod parçacığını gösterir `synctimeout` .
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. [StackExchange. Redsıs NuGet paketinin](https://www.nuget.org/packages/StackExchange.Redis/)en son sürümünü kullandığınızdan emin olun. En son sürüme sahip olacak şekilde, zaman aşımlarını daha sağlam hale getirmek için kodda sürekli olarak düzeltilen hatalar vardır.
 1. İstekleriniz sunucu veya istemcideki bant genişliği sınırlamalarına göre bağlanmışsa, tamamlanmaları daha uzun sürer ve zaman aşımları oluşmasına neden olabilir. Zaman aşımının sunucuda ağ bant genişliği olmasından dolayı olup olmadığını görmek için bkz. [sunucu tarafı bant genişliği sınırlaması](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Zaman aşımının istemci ağ bant genişliği nedeniyle olup olmadığını görmek için bkz. [istemci tarafı bant genişliği sınırlaması](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
 1. Sunucuda veya istemcide CPU 'ya bağlı mı?

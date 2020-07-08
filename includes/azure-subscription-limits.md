@@ -1,20 +1,7 @@
 ---
-title: include dosyası
-description: include dosyası
-services: billing
-author: rothja
-ms.service: cost-management-billing
-ms.topic: include
-ms.date: 05/18/2018
-ms.author: jroth
-ms.custom: include file
-ms.openlocfilehash: f49d91a2dffbd02067efd82b88963b5cb6eaa8b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76021301"
+ title: içerme dosyası açıklaması: içerme dosyası yazarı: rothja MS. Service: Azure-Resource-Manager MS. Topic: MS. Date: 05/18/2018 MS. Author: jroth MS. Custom: Include File
 ---
+
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | [abonelik](../articles/billing-buy-sign-up-azure-subscription.md)başına vCPU sayısı<sup>1</sup> |20 |10,000 |

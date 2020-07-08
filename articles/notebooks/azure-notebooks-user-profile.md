@@ -3,14 +3,16 @@ title: Azure Notebooks Preview ile kullanım için Kullanıcı profili ve KIMLI�
 description: Azure Notebooks ile Kullanıcı profilinizi ve Kullanıcı KIMLIĞINIZI oluşturma ve yönetme, paylaşılan not defterlerinin URL 'sinin bir parçası haline geliyor.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831361"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks önizlemesi için profiliniz ve Kullanıcı KIMLIĞINIZ
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks güçlü, işbirliğine dayalı alanı içinde Kullanıcı profiliniz, genel görüntünüzü başkalarına sunar:
 
@@ -23,8 +25,6 @@ Kullanıcı KIMLIĞINIZ, projeleri ve not defterlerini paylaşmak için kulland�
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Proje dosyaları.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Belirli bir projenin klonları.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Belirli bir not defteri veya dosyanın HTML önizlemesi.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Kullanıcı Kimliğiniz
 
@@ -45,7 +45,7 @@ Bir kullanıcı KIMLIĞI, dört ve altı harfli, sayı ve kısa çizgi arasında
 
 ## <a name="your-profile"></a>Profiliniz
 
-Profiliniz, URL 'deki genel olarak `https://notebooks.azure.com/<user_id>`görüntülenebilir bilgilerden oluşur. Profil sayfanız Ayrıca son kullanılan projelerinizi ve tüm yıldızlı projelerini gösterir.
+Profiliniz, URL 'deki genel olarak görüntülenebilir bilgilerden oluşur `https://notebooks.azure.com/<user_id>` . Profil sayfanız Ayrıca son kullanılan projelerinizi ve tüm yıldızlı projelerini gösterir.
 
 Profilinizi düzenlemek için profil sayfanızdaki **profil bilgilerini düzenle** komutunu kullanın. Profilinizin bölümleri aşağıdaki gibidir:
 
@@ -55,10 +55,10 @@ Profilinizi düzenlemek için profil sayfanızdaki **profil bilgilerini düzenle
 | Hesap Bilgileri | Görünen ad, Kullanıcı KIMLIĞI ve genel e-posta hesabı. Buradaki e-posta hesabı, diğer kullanıcılara sizinle iletişim kurmak için bir anlamı sağlar ve Azure Notebooks oturum açmak için kullandığınız [hesaptan](azure-notebooks-user-account.md) farklı olabilir. |
 | Profil bilgileri | Konumunuz, şirketiniz, iş unvanı, Web siteniz ve kendinize ait kısa bir açıklama. |
 | Sosyal profiller | Bunları paylaşmak istiyorsanız GItHub, Twitter ve Facebook kimlikleriniz. |
-| Gizlilik ayarları | İki komut sağlar:<ul><li>**Profilimi dışarı aktar**: fotoğraflarınızın, profil bilgilerinizin ve güvenlik günlüklerinin dahil Azure Notebooks kaydettiği tüm bilgileri içeren bir *. zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Notebooks depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
+| Gizlilik Ayarları | İki komut sağlar:<ul><li>**Profilimi dışarı aktar**: fotoğraflarınızın, profil bilgilerinizin ve güvenlik günlüklerinin dahil Azure Notebooks kaydettiği tüm bilgileri içeren bir *. zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Notebooks depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
 | Site özelliklerini etkinleştir | Azure Notebooks davranışının yönlerini denetlemenizi sağlar:<ul><li>**Not defterleri Için Birleşik ön uç**: daha hızlı ve daha iyi kalıcılık sağlar.</li><li>**Varsayılan olarak JupyterLab 'Da Çalıştır**: varsayılan olarak, Azure Notebooks çoğu kullanıcı için uygun olan basit bir kullanıcı arabirimi sağlar. Jupyıterlab, deneyimli kullanıcılar için daha zengin ancak daha karmaşık bir arabirim sağlar.</li><li>**VNext Web sitesi**: Bu belgede gösterilen, modernlanmış Web yerleşimini etkin hale sunar.</li></ul> |
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)

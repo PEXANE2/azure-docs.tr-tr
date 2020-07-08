@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846854"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management 'daki şablonları verme
 Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
@@ -92,7 +92,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```
   
 ### <a name="controls"></a>Denetimler  
- `Issue list` Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
+ `Issue list`Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   

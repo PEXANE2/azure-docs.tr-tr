@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a33d3e8b330f5ee8549f536bbfba958d96d8e59b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833987"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps için Azure Güvenlik temeli
 
@@ -238,7 +238,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
 
-**Kılavuz**: çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak Için Azure izleyici günlüklerini ayarlayıp kullanarak, olayları tetikleme, çalıştırma olayları ve Log Analytics çalışma alanında eylem olayları gibi çalışma zamanı verileri ve olayları hakkında bilgi kaydedebilirsiniz. Azure Izleyici, kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan günlük sorguları oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz.
+**Kılavuz**: çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak Için Azure izleyici günlüklerini ayarlayıp kullanarak, olayları tetikleme, çalıştırma olayları ve Log Analytics çalışma alanında eylem olayları gibi çalışma zamanı verileri ve olayları hakkında bilgi kaydedebilirsiniz. Azure İzleyici, bulut ve şirket içi ortamlarınızı izleyerek bunların kullanılabilirliğini ve performansını daha kolay korumanıza yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan günlük sorguları oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz.
 
 Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
@@ -254,7 +254,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Azure kaynakları için denetim günlüğünü etkinleştirme
 
-**Kılavuz**: çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak Için Azure izleyici günlüklerini ayarlayıp kullanarak, olayları tetikleme, çalıştırma olayları ve Log Analytics çalışma alanında eylem olayları gibi çalışma zamanı verileri ve olayları hakkında bilgi kaydedebilirsiniz. Azure Izleyici, kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan günlük sorguları oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz.
+**Kılavuz**: çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak Için Azure izleyici günlüklerini ayarlayıp kullanarak, olayları tetikleme, çalıştırma olayları ve Log Analytics çalışma alanında eylem olayları gibi çalışma zamanı verileri ve olayları hakkında bilgi kaydedebilirsiniz. Azure İzleyici, bulut ve şirket içi ortamlarınızı izleyerek bunların kullanılabilirliğini ve performansını daha kolay korumanıza yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan günlük sorguları oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz.
 
 Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
@@ -358,7 +358,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (ad) açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir kimlik (eski adıyla Yönetilen Hizmet Kimliği veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur.
+Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir kimlik (eski adıyla Yönetilen Hizmet Kimliği veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
 
 Bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL 'sinde bir paylaşılan erişim Imzasına (SAS) sahiptir. Diğer kişilerle istek tabanlı bir tetikleyici için uç nokta URL 'SI paylaşırsanız, belirli anahtarları kullanan ve sona erme tarihleri olan geri çağırma URL 'Leri oluşturabilirsiniz. Bu şekilde, belirli bir TimeSpan temelinde, mantıksal uygulamanızı tetikleyerek anahtarları sorunsuzca alabilir veya erişimi kısıtlayabilirsiniz.
 
@@ -483,9 +483,9 @@ Ayrıca, bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL '
 
 **Rehberlik**: Azure Logic Apps örneklerinizin merkezi kimlik doğrulaması ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-Logic Apps desteklendiği yerlerde, Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve kimlik bilgileri veya gizli dizileri yerine oturum açmadan kimliğinizi doğrulamak için yönetilen bir kimlik kullanın. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur.
+Logic Apps desteklendiği yerlerde, Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve kimlik bilgileri veya gizli dizileri yerine oturum açmadan kimliğinizi doğrulamak için yönetilen bir kimlik kullanın. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
 
-Azure Logic Apps hem sistem tarafından atanan hem de Kullanıcı tarafından atanan yönetilen kimlikleri destekler. Mantıksal uygulamanız, sistem tarafından atanan kimlik veya tek bir kullanıcı tarafından atanan kimlik kullanabilir, bu da bir Logic Apps grubu genelinde paylaşabilir, ancak ikisini birden kullanamazsınız. Şu anda yalnızca belirli yerleşik Tetikleyiciler ve Eylemler, yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
+Azure Logic Apps hem sistem tarafından atanan hem de Kullanıcı tarafından atanan yönetilen kimlikleri destekler. Mantıksal uygulamanız, sistem tarafından atanan kimliği veya tek bir kullanıcı tarafından atanan kimliği kullanabilir ve bunu aynı gruptaki mantıksal uygulamalar arasında paylaşabilirsiniz (ikisini birden paylaşmak mümkün değildir). Şu anda yalnızca belirli yerleşik Tetikleyiciler ve Eylemler, yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
 - HTTP
 - Azure İşlevleri
 - Azure API Management
@@ -573,7 +573,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 
 ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler.
 
-Ayrıca, ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz.
+Ayrıca, ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz.
 
 * [Logic Apps için bağlayıcıları anlayın](https://docs.microsoft.com/azure/connectors/apis-list)
 
@@ -615,7 +615,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 * [Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
 
-* [Azure Logic Apps 'den HTTP veya HTTPS üzerinden hizmet uç noktalarını çağır](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
 
 * [Azure ile iletim sırasında şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
@@ -1049,7 +1049,7 @@ Logic Apps 'i barındırmak için bir tümleştirme hizmeti ortamı (ıSE) oluş
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
-**Kılavuz**: Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir kimlik (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur.
+**Kılavuz**: Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir kimlik (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
 
 Şu anda yalnızca belirli yerleşik Tetikleyiciler ve Eylemler, yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
 - HTTP

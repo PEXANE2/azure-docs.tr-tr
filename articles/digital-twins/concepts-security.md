@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833173"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS güvenliği için, dağıtımınızdaki belirli veriler, kaynaklar ve eylemler üzerinde kesin erişim denetimi imkanı sunar. Bu, **rol tabanlı erişim denetimi (RBAC)** adlı ayrıntılı bir rol ve izin yönetimi stratejisi aracılığıyla yapılır. Azure için RBAC 'in genel ilkelerine [buradan](../role-based-access-control/overview.md)ulaşabilirsiniz.
 
@@ -51,6 +48,9 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
 * Azure dijital TWINS sahibi (Önizleme) – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
 * Azure dijital TWINS okuyucu (Önizleme) – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
+
+> [!TIP]
+> Azure dijital TWINS okuyucu (Önizleme) rolü artık gözatma ilişkilerini de destekliyor.
 
 Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [rol tanımlarını anlama](../role-based-access-control/role-definitions.md) . Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
 

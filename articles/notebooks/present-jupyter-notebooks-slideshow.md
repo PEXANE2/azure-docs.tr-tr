@@ -3,18 +3,18 @@ title: Azure Notebooks önizlemede slayt gösterisi olarak bir Jupyter Not defte
 description: Bir Jupyter Not defteri içinde slayt gösterisi modu için hücre yapılandırmayı ve ardından RISE uzantısını kullanarak slayt gösterisini sunmanızı öğrenin.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe337361436ecfc8eabf2855ad633b891db69d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834055"
 ---
 # <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede bir not defteri slayt gösterisi çalıştırma
 
-Azure Notebooks, doğrudan slayt gösterisi olarak bir not defteri sunmanıza olanak tanıyan Jupyter/IPython slayt gösterisi uzantısı (yüksemle) ile önceden yapılandırılmıştır. Bir slayt gösterisinde, genellikle büyük ekranlarda sunum yapmak için uygun bir yazı tipi boyutu kullanılarak birer birer görüntülenir ve ayrı bir demo bilgisayara geçiş yerine kodu çalıştırmaya devam edebilirsiniz.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks, doğrudan slayt gösterisi olarak bir not defteri sunmanıza olanak tanıyan Jupyter/IPython slayt gösterisi uzantısı (yüksemle) ile önceden yapılandırılmıştır. Bir slayt gösterisinde, genellikle büyük ekranlarda sunum yapmak için uygun bir yazı tipi boyutu kullanılarak birer birer görüntülenir ve ayrı bir demo bilgisayara geçiş yerine kodu çalıştırmaya devam edebilirsiniz.
 
 Aşağıdaki görüntüde, Markaşağı ve kod hücrelerini birlikte görebileceğiniz standart Not defteri görünümü gösterilmektedir:
 
@@ -34,7 +34,7 @@ Bir slayt için bir not defteri hazırlama iki birincil etkinlik içerir:
 
 Rastgele bir not defteri alıp bir slayt gösterisi için kullanıyorsanız, genellikle tüm hücrelerin bir arada olduğunu ve içeriğin büyük bir kısmını tarayıcı penceresinin alt tarafında gizlemiş olduğunu fark edersiniz. Etkili bir sunum yapmak için, slayt gösterisi hücresi araç çubuğunu kullanarak her hücreye bir slayt gösterisi türü atamanız gerekir:
 
-1. **Görünüm** menüsünde **hücre araç çubuğu** > **Slayt gösterisi**' ni seçin:
+1. **Görünüm** menüsünde **hücre araç çubuğu**  >  **Slayt gösterisi**' ni seçin:
 
     ![Hücre slayt gösterisi araç çubuğunu açma](media/slideshow/slideshow-view-cell-toolbar.png)
 
@@ -88,7 +88,7 @@ Slayt gösterisi, tüm madde işaretlerinin aynı hücrede olduğu tarihten daha
     ![Slayt gösterisinde kod hücresi çıkışı görüntülenir](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Hücre çıktısı, bir slayt gösterisinde hücrenin bir parçası olarak değerlendirilir. Bir hücreyi not defterinde veya slayt gösterisi görünümünde çalıştırırsanız, çıkış diğer görünümde de görüntülenir. Çıktıyı temizlemek için,**geçerli çıktılar** > **Temizle** komutunu **(geçerli hücre** > için) veya **hücre** > **tüm çıktılar** > **Temizle** ' yi (tüm hücreler için) kullanın.
+    > Hücre çıktısı, bir slayt gösterisinde hücrenin bir parçası olarak değerlendirilir. Bir hücreyi not defterinde veya slayt gösterisi görünümünde çalıştırırsanız, çıkış diğer görünümde de görüntülenir. Çıktıyı temizlemek **için,**  >  **geçerli çıktılar**  >  **Temizle** komutunu (geçerli hücre için) veya **hücre**  >  **tüm çıktılar**  >  **Temizle** ' yi (tüm hücreler için) kullanın.
 
 1. Slayt gösterisine işiniz bittiğinde, **X** ' i kullanarak not defteri görünümüne geri dönün.
 

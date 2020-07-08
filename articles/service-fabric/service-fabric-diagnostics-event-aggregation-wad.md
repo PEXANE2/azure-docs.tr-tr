@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846659"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -63,12 +63,12 @@ Azure Storage 'da olayları toplayarak, Azure izleyici günlüklerini Azure izle
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Tanılama Uzantısı ile küme oluşturma
 Kaynak Yöneticisi kullanarak bir küme oluşturmak için, tanılama yapılandırma JSON 'sini tam Kaynak Yöneticisi şablonuna eklemeniz gerekir. Kaynak Yöneticisi Şablon örneklerimizin bir parçası olarak, tanılama yapılandırması eklenmiş bir örnek beş VM kümesi Kaynak Yöneticisi şablonu sağlıyoruz. Azure örnekleri galerisinde şu konumda görebilirsiniz: [tanılama Kaynak Yöneticisi Şablon örneği Ile beş düğümlü küme](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
-Kaynak Yöneticisi şablonunda tanılama ayarını görmek için azuredeploy. json dosyasını açın ve **ıaasdiagnostics**' i arayın. Bu şablonu kullanarak bir küme oluşturmak için önceki bağlantıda bulunan **Azure 'A dağıt** düğmesini seçin.
+Kaynak Yöneticisi şablonunda tanılama ayarını görmek için dosya üzerinde azuredeploy.jsaçın ve **ıaasdiagnostics**' i arayın. Bu şablonu kullanarak bir küme oluşturmak için önceki bağlantıda bulunan **Azure 'A dağıt** düğmesini seçin.
 
-Alternatif olarak, Kaynak Yöneticisi örneğini indirebilir, üzerinde değişiklikler yapabilir ve bir Azure PowerShell penceresinde `New-AzResourceGroupDeployment` komutunu kullanarak değiştirilmiş şablonla bir küme oluşturabilirsiniz. Komutuna geçirdiğiniz parametreler için aşağıdaki koda bakın. PowerShell kullanarak bir kaynak grubu dağıtma hakkında ayrıntılı bilgi için, [Azure Resource Manager şablonuyla kaynak grubu dağıtma](../azure-resource-manager/templates/deploy-powershell.md)makalesine bakın.
+Alternatif olarak, Kaynak Yöneticisi örneğini indirebilir, üzerinde değişiklikler yapabilir ve `New-AzResourceGroupDeployment` bir Azure PowerShell penceresinde komutunu kullanarak değiştirilmiş şablonla bir küme oluşturabilirsiniz. Komutuna geçirdiğiniz parametreler için aşağıdaki koda bakın. PowerShell kullanarak bir kaynak grubu dağıtma hakkında ayrıntılı bilgi için, [Azure Resource Manager şablonuyla kaynak grubu dağıtma](../azure-resource-manager/templates/deploy-powershell.md)makalesine bakın.
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Tanılama uzantısını var olan bir kümeye ekle
-Tanılamayı dağıtmayan mevcut bir kümeniz varsa, küme şablonu aracılığıyla ekleyebilir veya güncelleştirebilirsiniz. Mevcut kümeyi oluşturmak için kullanılan Kaynak Yöneticisi şablonunu değiştirin ya da daha önce açıklandığı gibi portaldan şablonu indirin. Aşağıdaki görevleri gerçekleştirerek Template. json dosyasını değiştirin:
+Tanılamayı dağıtmayan mevcut bir kümeniz varsa, küme şablonu aracılığıyla ekleyebilir veya güncelleştirebilirsiniz. Mevcut kümeyi oluşturmak için kullanılan Kaynak Yöneticisi şablonunu değiştirin ya da daha önce açıklandığı gibi portaldan şablonu indirin. Aşağıdaki görevleri gerçekleştirerek dosyadaki template.jsdeğiştirin:
 
 Kaynaklar bölümüne ekleyerek şablona yeni bir depolama kaynağı ekleyin.
 
@@ -89,7 +89,7 @@ Kaynaklar bölümüne ekleyerek şablona yeni bir depolama kaynağı ekleyin.
 },
 ```
 
- Daha sonra, depolama hesabı tanımlarından hemen sonra parametreler bölümüne ekleyin `supportLogStorageAccountName`. Yer tutucu metin *depolama hesabı adının yerine buraya* , istediğiniz depolama hesabının adını girin.
+ Daha sonra, depolama hesabı tanımlarından hemen sonra parametreler bölümüne ekleyin `supportLogStorageAccountName` . Yer tutucu metin *depolama hesabı adının yerine buraya* , istediğiniz depolama hesabının adını girin.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -111,7 +111,7 @@ Kaynaklar bölümüne ekleyerek şablona yeni bir depolama kaynağı ekleyin.
       }
     },
 ```
-Ardından, Extensions dizisine `VirtualMachineProfile` aşağıdaki kodu ekleyerek Template. json dosyasının bölümünü güncelleştirin. Eklendiği yere bağlı olarak, başlangıca veya sonunda virgül eklediğinizden emin olun.
+Ardından, `VirtualMachineProfile` Uzantılar dizisine aşağıdaki kodu ekleyerek dosya template.jsbölümünü güncelleştirin. Eklendiği yere bağlı olarak, başlangıca veya sonunda virgül eklediğinizden emin olun.
 
 ```json
 {
@@ -177,7 +177,7 @@ Ardından, Extensions dizisine `VirtualMachineProfile` aşağıdaki kodu ekleyer
 }
 ```
 
-Template. json dosyasını açıklandığı şekilde değiştirdikten sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın. Şablon aktarılıyorsa, Deploy. ps1 dosyasını çalıştırmak şablonu ikinci olarak çalıştırır. Dağıttıktan sonra, **Provisioningstate** 'in **başarılı**olduğundan emin olun.
+Dosyadaki template.jsaçıklandığı gibi değiştirdikten sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın. Şablon aktarılmışsa, deploy.ps1 dosyayı çalıştırmak şablonu tekrar yayımlayan. Dağıttıktan sonra, **Provisioningstate** 'in **başarılı**olduğundan emin olun.
 
 > [!TIP]
 > Kümelerinize kapsayıcılar dağıtacaksanız WAD 'yi **Wadcfg > DiagnosticMonitorConfiguration** bölümüne ekleyerek Docker istatistiklerini seçmesini etkinleştirin.
@@ -193,7 +193,7 @@ Template. json dosyasını açıklandığı şekilde değiştirdikten sonra Kayn
 
 ### <a name="update-storage-quota"></a>Depolama kotasını güncelleştirme
 
-Uzantı tarafından doldurulan tablolar, kotaya ulaşılana kadar büyüdükçe, kota boyutunu azaltmasını isteyebilirsiniz. Varsayılan değer 50 GB 'tır ve altındaki `overallQuotaInMB` alanda şablonda yapılandırılabilir`DiagnosticMonitorConfiguration`
+Uzantı tarafından doldurulan tablolar, kotaya ulaşılana kadar büyüdükçe, kota boyutunu azaltmasını isteyebilirsiniz. Varsayılan değer 50 GB 'tır ve `overallQuotaInMB` altındaki alanda şablonda yapılandırılabilir`DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -229,7 +229,7 @@ Ek kanallara ait Günlükler koleksiyon için de kullanılabilir. Azure 'da çal
 >Bu kanalın çok yüksek bir olay hacmi vardır ve bu ayrıntılı kanaldan olay toplamanın etkinleştirilmesi, hızlı bir şekilde oluşturulan birçok izleme ile sonuçlanır ve depolama kapasitesini tüketebilir. Bunu yalnızca kesinlikle gerekliyse açın.
 
 
-**Temel Işlem kanalını** , en az gürültü `EtwManifestProviderConfiguration` `WadCfg` miktarı ile kapsamlı günlük için önerimizi etkinleştirmek üzere, şablonunuzda aşağıdaki gibi görünür:
+**Temel Işlem kanalını** , en az gürültü miktarı ile kapsamlı günlük için önerimizi etkinleştirmek üzere, `EtwManifestProviderConfiguration` `WadCfg` şablonunuzda aşağıdaki gibi görünür:
 
 ```json
   "WadCfg": {
@@ -282,7 +282,7 @@ Ek kanallara ait Günlükler koleksiyon için de kullanılabilir. Azure 'da çal
 
 Dağıtmak üzere olduğunuz yeni bir uygulamayı temsil eden yeni EventSource kanallarından günlükleri toplamak üzere tanılamayı güncelleştirmek için, var olan bir küme için tanılamayı ayarlama konusunda daha önce açıklanan adımları gerçekleştirin.
 
-PowerShell komutunu `EtwEventSourceProviderConfiguration` kullanarak yapılandırma güncelleştirmesini uygulamadan önce yeni EventSource kanallarının girdilerini eklemek için Template. JSON dosyasındaki bölümü güncelleştirin. `New-AzResourceGroupDeployment` Olay kaynağının adı, Visual Studio tarafından oluşturulan ServiceEventSource.cs dosyasındaki kodunuzun bir parçası olarak tanımlanır.
+`EtwEventSourceProviderConfiguration`PowerShell komutunu kullanarak yapılandırma güncelleştirmesini uygulamadan önce yeni EventSource kanallarının girdilerini eklemek için template.jsdosyadaki bölümünü güncelleştirin `New-AzResourceGroupDeployment` . Olay kaynağının adı, Visual Studio tarafından oluşturulan ServiceEventSource.cs dosyasındaki kodunuzun bir parçası olarak tanımlanır.
 
 Örneğin, olay kaynağınız My-EventSource olarak adlandırılmışsa, olayları MyDestinationTableName adlı bir tabloya yerleştirmek için aşağıdaki kodu ekleyin.
 
@@ -300,7 +300,7 @@ Performans sayaçlarını veya olay günlüklerini toplamak için, [bir Azure Re
 
 ## <a name="collect-performance-counters"></a>Performans sayaçlarını topla
 
-Kümenizdeki performans ölçümlerini toplamak için, kümenizin Kaynak Yöneticisi şablonunda performans sayaçlarını "WadCfg > DiagnosticMonitorConfiguration" dizinine ekleyin. Belirli performans sayaçlarını toplamak üzere ayarlarınızı `WadCfg` değiştirme adımları için bkz: [wad ile performans izleme](service-fabric-diagnostics-perf-wad.md) . Toplamayı önerdiğimiz performans sayaçlarının listesi için başvuru [Service Fabric performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) .
+Kümenizdeki performans ölçümlerini toplamak için, kümenizin Kaynak Yöneticisi şablonunda performans sayaçlarını "WadCfg > DiagnosticMonitorConfiguration" dizinine ekleyin. Belirli performans sayaçlarını toplamak üzere ayarlarınızı değiştirme adımları için bkz: [WAD Ile performans izleme](service-fabric-diagnostics-perf-wad.md) `WadCfg` . Toplamayı önerdiğimiz performans sayaçlarının listesi için başvuru [Service Fabric performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) .
   
 Aşağıdaki bölümde açıklandığı gibi bir Application Insights havuzu kullanıyorsanız ve bu ölçümlerin Application Insights gösterilmesini istiyorsanız, yukarıdaki gibi "Havuzlar" bölümüne havuz adını eklediğinizden emin olun. Bu işlem, Application Insights kaynağına ayrı ayrı yapılandırılmış performans sayaçlarını otomatik olarak gönderir.
 
@@ -324,7 +324,7 @@ Bir küme oluştururken, tanılama "açık" olarak ayarlandığında, Applicatio
 
 Kaynak Yöneticisi şablonunun "WadCfg" bölümünde, aşağıdaki iki değişikliği dahil ederek bir "havuz" ekleyin:
 
-1. Bildirimi `DiagnosticMonitorConfiguration` tamamlandıktan sonra havuz yapılandırmasını doğrudan ekleyin:
+1. Bildirimi tamamlandıktan sonra havuz yapılandırmasını doğrudan ekleyin `DiagnosticMonitorConfiguration` :
 
     ```json
     "SinksConfig": {
@@ -338,7 +338,7 @@ Kaynak Yöneticisi şablonunun "WadCfg" bölümünde, aşağıdaki iki değişik
 
     ```
 
-2. ' In öğesine aşağıdaki satırı `DiagnosticMonitorConfiguration` `DiagnosticMonitorConfiguration` ekleyerek havuzu içine ekleyin: `WadCfg` (bildirildiği Before `EtwProviders` ):
+2. ' In öğesine `DiagnosticMonitorConfiguration` aşağıdaki satırı ekleyerek havuzu içine ekleyin `DiagnosticMonitorConfiguration` `WadCfg` `EtwProviders` : (bildirildiği Before):
 
     ```json
     "sinks": "applicationInsights"

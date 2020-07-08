@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 17ae335fa40a71ed266211150df382404efbf61b
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 07/01/2020
+ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832823"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -17,7 +17,7 @@ Kaynakların yönetimini basitleştirmek için Azure aboneliğinizin düzeyindek
 > [!NOTE]
 > Abonelik düzeyi dağıtımında 800 farklı kaynak grubuna dağıtım yapabilirsiniz.
 
-Şablonları abonelik düzeyinde dağıtmak için Azure CLı, PowerShell veya REST API kullanın. Azure portal, abonelik düzeyinde dağıtımı desteklemez.
+Şablonları abonelik düzeyinde dağıtmak için Azure CLı, PowerShell veya REST API kullanın.
 
 ## <a name="supported-resources"></a>Desteklenen kaynaklar
 

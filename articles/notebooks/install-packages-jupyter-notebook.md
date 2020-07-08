@@ -3,20 +3,20 @@ title: Jupyıter not defterlerine paket yükler-Azure Notebooks önizlemesi
 description: 'Azure üzerinde çalışan bir Jupyter Not Defteri içinden Python, R ve F # paketleri yüklemeyi öğrenin.'
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646237"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831225"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>Azure Notebooks Preview içinden paket yüklemesi
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 [Not defteriniz için projeyi proje düzeyinde](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)yapılandırabilseniz de, paketleri doğrudan ayrı bir not defteri içinde yüklemek isteyebilirsiniz.
 
 Not defterinden yüklenen paketler yalnızca geçerli sunucu oturumu için geçerlidir. Sunucu kapatıldıktan sonra paket yüklemeleri kalıcı olmaz.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -32,7 +32,7 @@ Komut çıktısı, gereksinimin zaten karşılandığını gösteriyorsa, Azure 
 
 ## <a name="r"></a>R
 
-R 'deki paketler, `install.packages` bir kod hücresindeki işlevi kullanılarak Cran veya GitHub 'dan yüklenebilir:
+R 'deki paketler, `install.packages` bir kod hücresindeki işlevi kullanılarak CRAN veya GitHub 'dan yüklenebilir:
 
 ```r
 install.packages("package_name")

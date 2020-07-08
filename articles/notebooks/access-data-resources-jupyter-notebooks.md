@@ -4,22 +4,22 @@ description: Dosyalara, REST API 'Lerine, veritabanlarına ve farklı Azure depo
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319144"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833494"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Not defterinde bulut verilerine erişme
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bir Jupyter not defterinde ilgi çekici iş yapmak için veri gerekir. Veriler, aslında Not defterlerinin yaşam bir kan.
 
 Bir dosyayı doğrudan indirmek için bir not defteri içinde olan komutları kullanarak bile [bir projeye veri dosyalarını içeri aktarabilirsiniz](work-with-project-data-files.md) `curl` . Ancak REST API 'Leri, ilişkisel veritabanları ve Azure tabloları gibi bulut depolama alanı gibi dosya olmayan kaynaklardan kullanılabilen çok daha kapsamlı verilerle çalışmanız gerekir.
 
 Bu makale, bu farklı seçenekleri kısaca özetler. Veri erişiminin en iyi şekilde görüldüğü için, Azure Notebooks örneklerimizde çalıştırılabilir kodu bulabilirsiniz [-verilerinize erişebilirsiniz](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -48,7 +48,7 @@ SQL veritabanı veya SQL yönetilen örneğindeki veritabanlarına, pyodbc veya 
 
 [Azure SQL veritabanını sorgulamak Için Python 'U kullanarak](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) , SQL veritabanı 'nda AdventureWorks verilerini içeren bir veritabanı oluşturma ve bu verilerin nasıl sorgulanalınacağını gösteren yönergeler sağlar. Bu makalenin örnek not defterinde aynı kod gösterilir.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 Azure depolama, sahip olduğunuz veri türüne ve bu verilere nasıl erişmeniz gerektiği üzerine bağlı olarak, birden çok farklı türde ilişkisel olmayan depolama sağlar:
 

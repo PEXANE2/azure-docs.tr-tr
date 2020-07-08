@@ -3,18 +3,18 @@ title: Jupyıter not defterlerini oluşturma ve kopyalama-Azure Notebooks önizl
 description: Azure Notebooks Preview projeleri, başka bir kaynaktan yeni veya kopya oluşturabileceğiniz bir not defteri ve ilgili dosya koleksiyonunu yönetir.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831293"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede proje oluşturma ve kopyalama
 
-Azure Notebooks Jupyıter not defterlerinizi ve ilgili dosyaları *Projeler*adlı mantıksal gruplar halinde düzenler. Önce bir kapsayıcı olarak bir proje oluşturun, ardından diğer proje dosyalarının yanı sıra bir klasör içinde bir veya daha fazla not defteri oluşturun veya kopyalayın. (Bu işlem [öğreticide](tutorial-create-run-jupyter-notebook.md)gösterilmiştir.)
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks Jupyıter not defterlerinizi ve ilgili dosyaları *Projeler*adlı mantıksal gruplar halinde düzenler. Önce bir kapsayıcı olarak bir proje oluşturun, ardından diğer proje dosyalarının yanı sıra bir klasör içinde bir veya daha fazla not defteri oluşturun veya kopyalayın. (Bu işlem [öğreticide](tutorial-create-run-jupyter-notebook.md)gösterilmiştir.)
 
 Proje ayrıca, özel kurulum adımları ve paket yüklemesi dahil olmak üzere dizüstü bilgisayarların çalıştığı sunucuyu etkileyen meta verileri ve diğer yapılandırma ayarlarını da korur. Daha fazla bilgi için bkz. [projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md).
 
@@ -26,7 +26,7 @@ Proje ayrıca, özel kurulum adımları ve paket yüklemesi dahil olmak üzere d
 
 Panoda yapabilecekleriniz, Kullanıcı KIMLIĞININ sahibi olan hesapla oturum açmış olmanıza bağlı olarak değişir:
 
-| Komut | Kullanılabilir | Description |
+| Komut | Kullanılabilir | Açıklama |
 | --- | --- | --- |
 | **Çalıştır** | Sahip | Proje sunucusunu başlatır ve proje klasörünü Jupyıter içinde açar. (Daha yaygın olarak, önce bir proje klasörüne giderek sonra buradan bir not defteri başlatabilirsiniz.) |
 | **İndir** | Herkes | Seçili projenin bir kopyasını ZIP dosyası olarak indirir. |
@@ -57,7 +57,7 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 
 **+ Yeni proje** komutunu kullandığınızda Azure Notebooks **Yeni bir proje oluştur** açılır penceresi görüntüler. Bu açılan pencerede, aşağıdaki bilgileri girin ve ardından **Oluştur**' u seçin:
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Not Defterim projem". |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
@@ -84,7 +84,7 @@ Proje KIMLIĞI aynı zamanda bir projenin URL 'sinin parçası olduğundan, ad e
 
 Tüm genel GitHub deposunu, herhangi bir veri ve *README.MD* dosyası dahil olmak üzere proje olarak kolayca içeri aktarabilirsiniz. **GitHub depoyu karşıya yükle** komutunu kullanın, açılan pencerede aşağıdaki ayrıntıları sağlayın ve **içeri aktar**' ı seçin:
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | GitHub deposu | Github.com üzerindeki kaynak deponun adı. Örneğin, Azure bilişsel hizmetler için Jupyıter not defterlerini kopyalamak için [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) , "Microsoft/bilişsel hizmetler-not defterleri" yazın.  |
 | Yinelemeli olarak Kopyala | GitHub depoları birden çok alt depo içerebilir. Üst depoyu ve tüm alt öğelerini kopyalamak istiyorsanız bu seçeneği ayarlayın. Bir deponun çok sayıda alt öğesi olması mümkün olduğundan, ihtiyacınız olduğunu bilmiyorsanız bu seçeneği açık bırakın. |
