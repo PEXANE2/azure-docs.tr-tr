@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 729d863e0f7c9d183554cbc65e9a8410ff17359a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516877"
 ---
 | Kategori              | Veri deposu                                                   | [Kopyalama etkinliği](../articles/data-factory/copy-activity-overview.md) (kaynak/havuz) | [Eşleme veri akışı](../articles/data-factory/concepts-data-flow-overview.md) (kaynak/havuz) | [Arama Etkinliği](../articles/data-factory/control-flow-lookup-activity.md) | [Meta veri Al etkinliği](../articles/data-factory/control-flow-get-metadata-activity.md) / [Doğrulama etkinliği](../articles/data-factory/control-flow-validation-activity.md) | [Etkinliği sil](../articles/data-factory/delete-activity.md) |

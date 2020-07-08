@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550123"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -569,7 +569,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Adı                          | Access               | Uygulanan Öğe
+Tür     | Name                          | Access               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -901,18 +901,31 @@ CBool(
 ```
 
 * UserCertificate özniteliğinde sertifika değerlerini işlemek üzere eşitleme kuralı ifadeleri oluşturmak için aşağıdaki X509Certificate2 uyumlu işlevler kümesi eklendi:
-
-    ||||
-    | --- | --- | --- |
-    |CertSubject|Certısuer|Certkeyalgorithd|
-    |CertSubjectNameDN|Certısueroıd|Certnameınfo|
-    |Certsubjectnameoıd|Certısuerdn|IsCert|
-    |CertFriendlyName|Certparmak Izi|Certbu Sionıds|
-    |CertFormat|CertNotAfter|Certpublickeyoıd|
-    |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Şunu seçin:|
-    |CertKeyAlgorithmParams|CertHashString|Konum|
-    |||With|
+  * CertSubject 
+  * Certısuer
+  * Certkeyalgorithd
+  * CertSubjectNameDN
+  * Certısueroıd
+  * Certnameınfo
+  * Certsubjectnameoıd
+  * Certısuerdn
+  * IsCert
+  * CertFriendlyName
+  * Certparmak Izi
+  * Certbu Sionıds
+  * CertFormat
+  * CertNotAfter
+  * Certpublickeyoıd 
+  * CertSerialNumber
+  * CertNotBefore
+  * CertPublicKeyParametersOid
+  * CertVersion
+  * CertSignatureAlgorithmOid
+  * Şunu seçin:
+  * CertKeyAlgorithmParams
+  * CertHashString
+  * Konum
+  * With
 
 * Müşterilerin, Grup nesneleri için sAMAccountName, Domainnetbıos ve domainFQDN 'leri ve Kullanıcı nesneleri için distinguishedName 'dir akışını sağlamak üzere özel eşitleme kuralları oluşturmalarına olanak tanımak için aşağıdaki şema değişiklikleri sunulmuştur:
 

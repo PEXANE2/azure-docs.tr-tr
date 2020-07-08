@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/22/2020
+ms.date: 06/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550333"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
 
@@ -29,10 +29,8 @@ Bazı kuruluşlar aşağıdaki nedenlerden dolayı karma kimlik doğrulamasına 
 
 Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam*'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
 
-|     |
-| --- |
-| Diğer bir oturum açma KIMLIĞI olan Azure Active Directory genel önizleme özelliği olduğundan, Azure AD 'de e-posta ile oturum açın. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Diğer bir oturum açma KIMLIĞI olan Azure Active Directory genel önizleme özelliği olduğundan, Azure AD 'de e-posta ile oturum açın. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD oturum açma yaklaşımlarına genel bakış
 
@@ -45,6 +43,19 @@ Ancak, bazı kuruluşlarda şirket içi UPN, oturum açma adı olarak kullanılm
 Bu sorunun tipik geçici çözümü, Azure AD UPN 'yi kullanıcının oturum açmasını beklediği e-posta adresine ayarlamaya yönelik bir çözümdür. Bu yaklaşım işe yarar, ancak şirket içi AD ile Azure AD arasında farklı UPN 'ler ile sonuçlanır ve bu yapılandırma tüm Microsoft 365 iş yükleri ile uyumlu değildir.
 
 Farklı bir yaklaşım, Azure AD ve şirket içi UPN 'leri aynı değere eşitler ve ardından Azure AD 'yi, kullanıcıların Azure AD 'de doğrulanmış bir e-posta ile oturum açmalarına izin verecek şekilde yapılandırır. Bu özelliği sağlamak için, kullanıcının şirket içi dizinindeki *proxyAddresses* özniteliğinde bir veya daha fazla e-posta adresi tanımlarsınız. *ProxyAddresses* daha sonra Azure AD Connect KULLANıLARAK Azure AD ile otomatik olarak eşitlenir.
+
+## <a name="preview-limitations"></a>Önizleme sınırlamaları
+
+Geçerli önizleme durumunda, bir Kullanıcı başka bir oturum açma KIMLIĞI olarak UPN olmayan bir e-posta ile oturum açtığında aşağıdaki sınırlamalar geçerlidir:
+
+* Kullanıcılar UPN olmayan e-postalarıyla oturum açsa bile, UPN 'sini görebilirler. Aşağıdaki örnek davranış görünebilir:
+    * Kullanıcıdan Azure AD oturum açma 'ya yönlendirdiğinizde UPN ile oturum açması istenir `login_hint=<non-UPN email>` .
+    * Bir Kullanıcı UPN olmayan bir e-posta ile oturum açtığında ve yanlış bir parola girerse, UPN 'yi göstermek için *"parolanızı girin"* sayfası değişir.
+    * Ve Microsoft Office gibi bazı Microsoft sitelerinde ve uygulamalarda [https://portal.azure.com](https://portal.azure.com) , genellikle sağ üst köşede görüntülenen **Hesap Yöneticisi** denetimi, oturum açmak için kullanılan UPN olmayan e-posta yerine kullanıcının UPN 'sini görüntüleyebilir.
+
+* Bazı akışlar Şu anda UPN olmayan e-postayla uyumlu değildir, örneğin:
+    * Kimlik koruması Şu anda *sızdırılan kimlik bilgileri* riski algılama ile e-posta alternatif oturum açma kimlikleriyle eşleşmiyor Bu risk algılama, sızdırılan kimlik bilgileriyle eşleştirmek için UPN 'yi kullanır. Daha fazla bilgi için bkz. [risk algılama ve düzeltme Azure AD kimlik koruması][identity-protection].
+    * Alternatif bir oturum açma KIMLIĞI e-postasına gönderilen B2B davetleri tam olarak desteklenmez. Alternatif bir oturum açma KIMLIĞI olarak bir e-postaya gönderilen bir daveti kabul ettikten sonra, diğer e-posta ile oturum açma, kiralanan uç noktada Kullanıcı için çalışmayabilir.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Oturum açma e-posta adreslerini Azure AD ile eşitlemeyi
 
@@ -177,6 +188,7 @@ Karma kimlik işlemleri hakkında daha fazla bilgi için bkz. [Parola karması e
 [hybrid-overview]: ../hybrid/cloud-governed-management-for-on-premises.md
 [phs-overview]: ../hybrid/how-to-connect-password-hash-synchronization.md
 [pta-overview]: ../hybrid/how-to-connect-pta-how-it-works.md
+[identity-protection]: ../identity-protection/overview-identity-protection.md#risk-detection-and-remediation
 
 <!-- EXTERNAL LINKS -->
 [Install-Module]: /powershell/module/powershellget/install-module

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550670"
 ---
 # <a name="combined-security-information-registration-overview"></a>Birleşik güvenlik bilgileri kaydına genel bakış
 
@@ -34,11 +34,11 @@ Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkisi
 Azure AD Birleşik güvenlik bilgileri kaydı Şu anda Azure ABD Kamu, Azure Almanya veya Azure Çin 21Vianet gibi ulusal bulutlarda kullanılamaz.
 
 > [!IMPORTANT]
-> Hem özgün önizleme hem de geliştirilmiş Birleşik kayıt deneyimi için etkinleştirilen kullanıcılar yeni davranışı görür. Her iki deneyim için de etkinleştirilen kullanıcılar yalnızca yeni profil deneyimimi görecektir. Yeni profilim, Birleşik kaydın görünümü ve hissi ile hizalanır ve kullanıcılar için sorunsuz bir deneyim sağlar. Kullanıcılar profilimi öğesine [https://myprofile.microsoft.com](https://myprofile.microsoft.com)giderek görebilir.
+> Hem özgün önizleme hem de geliştirilmiş Birleşik kayıt deneyimi için etkinleştirilen kullanıcılar yeni davranışı görür. Her iki deneyim için de etkinleştirilen kullanıcılar yalnızca yeni profil deneyimimi görecektir. Yeni profilim, Birleşik kaydın görünümü ve hissi ile hizalanır ve kullanıcılar için sorunsuz bir deneyim sağlar. Kullanıcılar profilimi öğesine giderek görebilir [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 >
 > Güvenlik bilgisi seçeneğine erişmeye çalışırken bir hata iletisiyle karşılaşabilirsiniz. Örneğin, "Üzgünüz, oturumunuzu açamıyoruz". Bu durumda, Web tarayıcısında üçüncü taraf tanımlama bilgilerini engelleyen bir yapılandırma veya Grup İlkesi nesneniz olmadığından emin olun.
 
-Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı olarak yerelleştirilir. Microsoft, tarayıcı önbelleğinde kullanılan en son dili saklar, böylece sayfalara erişmeye yönelik sonraki denemeler kullanılan son dilde işlemeye devam eder. Önbelleği temizlerseniz sayfalar yeniden işlenir. Belirli bir dili zorlamak istiyorsanız URL 'nin sonuna ekleyebilirsiniz `?lng=<language>` ; burada `<language>` , işlemek istediğiniz dilin kodudur.
+Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı olarak yerelleştirilir. Microsoft, tarayıcı önbelleğinde kullanılan en son dili saklar, böylece sayfalara erişmeye yönelik sonraki denemeler kullanılan son dilde işlemeye devam eder. Önbelleği temizlerseniz sayfalar yeniden işlenir. Belirli bir dili zorlamak istiyorsanız `?lng=<language>` URL 'nin sonuna ekleyebilirsiniz; burada, `<language>` işlemek istediğiniz dilin kodudur.
 
 ![SSPR veya diğer güvenlik doğrulama yöntemlerini ayarlama](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,17 +46,17 @@ Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı ola
 
 Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri destekler:
 
-|   | Kaydettir | Değiştir | Sil |
+| Yöntem | Kaydol | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
-| Donanım belirteci | Hayır | Hayır | Yes |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
+| Donanım belirteci | Hayır | Hayır | Evet |
 | Telefon | Yes | Yes | Yes |
 | Alternatif telefon | Yes | Yes | Yes |
 | Ofis telefonu | Hayır | Hayır | Hayır |
 | E-posta | Yes | Yes | Yes |
-| Güvenlik soruları | Yes | Hayır | Yes |
-| Uygulama parolaları | Yes | Hayır | Yes |
+| Güvenlik soruları | Evet | Hayır | Evet |
+| Uygulama parolaları | Evet | Hayır | Evet |
 | FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Yes | Yes | Yes |
 
 > [!NOTE]
@@ -111,7 +111,7 @@ SSPR ilkesi, kullanıcıların güvenlik bilgilerini düzenli aralıklarla incel
 
 ### <a name="manage-mode"></a>Yönetim modu
 
-Kullanıcılar, Profilimin **güvenlik bilgilerini** seçerek veya [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ' ye giderek yönetme moduna erişebilir. Kullanıcılar buradan Yöntemler ekleyebilir, var olan yöntemleri silebilir veya değiştirebilir, varsayılan yöntemi değiştirebilir ve daha fazlasını yapabilir.
+Kullanıcılar, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) Profilimin **güvenlik bilgilerini** seçerek veya ' ye giderek yönetme moduna erişebilir. Kullanıcılar buradan Yöntemler ekleyebilir, var olan yöntemleri silebilir veya değiştirebilir, varsayılan yöntemi değiştirebilir ve daha fazlasını yapabilir.
 
 ## <a name="key-usage-scenarios"></a>Anahtar kullanımı senaryoları
 
@@ -125,15 +125,15 @@ Bir kullanıcı gerekli tüm güvenlik bilgilerini ayarlamadı ve Azure portal g
 
 Yönetici kaydı zormadı.
 
-Gerekli güvenlik bilgilerini henüz ayarlamış olan bir Kullanıcı öğesine [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gider. Kullanıcı sol bölmedeki **güvenlik bilgilerini** seçer. Buradan Kullanıcı bir yöntem eklemeyi seçer, kullanılabilir yöntemlerin birini seçer ve bu yöntemi ayarlama adımlarını izler. İşiniz bittiğinde, Kullanıcı güvenlik bilgileri sayfasında ayarlanmış olan yöntemi görür.
+Gerekli güvenlik bilgilerini henüz ayarlamış olan bir Kullanıcı öğesine gider [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . Kullanıcı sol bölmedeki **güvenlik bilgilerini** seçer. Buradan Kullanıcı bir yöntem eklemeyi seçer, kullanılabilir yöntemlerin birini seçer ve bu yöntemi ayarlama adımlarını izler. İşiniz bittiğinde, Kullanıcı güvenlik bilgileri sayfasında ayarlanmış olan yöntemi görür.
 
 ### <a name="delete-security-info-from-my-profile"></a>Profilimi güvenlik bilgilerini sil
 
-Daha önce en az bir yöntemi kuran bir Kullanıcı öğesine [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)gider. Kullanıcı önceden kaydedilmiş yöntemlerden birini silmeyi seçer. İşiniz bittiğinde, Kullanıcı artık güvenlik bilgileri sayfasında bu yöntemi görmediğini.
+Daha önce en az bir yöntemi kuran bir Kullanıcı öğesine gider [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Kullanıcı önceden kaydedilmiş yöntemlerden birini silmeyi seçer. İşiniz bittiğinde, Kullanıcı artık güvenlik bilgileri sayfasında bu yöntemi görmediğini.
 
 ### <a name="change-the-default-method-from-my-profile"></a>Varsayılan yöntemi profilimi değiştirme
 
-Daha önce Multi-Factor Authentication için kullanılabilecek en az bir yöntemi ayarlamış olan bir Kullanıcı ' A gider [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Kullanıcı geçerli varsayılan yöntemi farklı bir varsayılan yönteme geçirir. İşiniz bittiğinde, Kullanıcı, güvenlik bilgileri sayfasında yeni varsayılan yöntemi görür.
+Daha önce Multi-Factor Authentication için kullanılabilecek en az bir yöntemi ayarlamış olan bir Kullanıcı ' A gider [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Kullanıcı geçerli varsayılan yöntemi farklı bir varsayılan yönteme geçirir. İşiniz bittiğinde, Kullanıcı, güvenlik bilgileri sayfasında yeni varsayılan yöntemi görür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 2dc69299e69546da25e7e46cfc38b1f5741096fe
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516386"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
@@ -114,7 +114,7 @@ VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısın
 
 Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeler ve bunlara karşılık gelen para birimi kodları gösterilmektedir.
 
-| **Bölge** | **Adı**             | **Para birimi kodu** |
+| **Geli** | **Adı**             | **Para birimi kodu** |
 |------------|----------------------|-------------------|
 | DZ         | Cezayir              | DZD               |
 | AR         | Arjantin            | ARS               |

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa110dac1ede9c3ef46bafcca0f4a59d956e3ae9
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550313"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
@@ -90,7 +90,7 @@ Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft e
 
     Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
 
-    |  |  |
+    | Alt tür | Açıklama |
     | --- | --- |
     | Güvenlik | Kaynaklara erişim vermek için kullanılır. |
     | Dağıtım | Bir grup kişiye bildirim göndermek için kullanılır. |

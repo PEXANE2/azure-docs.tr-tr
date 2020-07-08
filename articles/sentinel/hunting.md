@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel 'de arama özellikleri | Microsoft Docs
-description: Bu makalede, Azure Sentinel arama yeteneklerini kullanma açıklanmaktadır.
+description: Verilerinize ilişkin sorunları bulmak için doğru soruları sormaya yardımcı olmak üzere Azure Sentinel 'in yerleşik arama sorgularını kullanın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552294"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel ile tehditler için Hunt
 
@@ -76,7 +76,7 @@ Azure Sentinel 'de arama, kusto sorgu dilini temel alır. Sorgu dili ve destekle
 
 ## <a name="sample-query"></a>Örnek sorgu
 
-Tipik bir sorgu, bir tablo adıyla başlar ve tarafından \|ayrılmış bir dizi işleç izler.
+Tipik bir sorgu, bir tablo adıyla başlar ve tarafından ayrılmış bir dizi işleç izler \| .
 
 Yukarıdaki örnekte, SecurityEvent adlı tablo adı ' nı başlatın ve gerektiği gibi, ifklu öğeler ekleyin.
 
@@ -84,7 +84,7 @@ Yukarıdaki örnekte, SecurityEvent adlı tablo adı ' nı başlatın ve gerekti
 
 2. Yalnızca olay KIMLIĞI 4688 ' i göstermek için sorguya bir filtre ekleyin.
 
-3. Komut satırında sorguya bir filtre ekleyerek yalnızca cscript. exe örnekleri bulunur.
+3. Yalnızca cscript.exe örneklerini içerecek şekilde CommandLine 'daki sorguya bir filtre ekleyin.
 
 4. Yalnızca araştırırken İlgilendiğiniz sütunları ve sonuçları 1000 olarak sınırlamak ve **Sorguyu Çalıştır**' a tıklayın.
 5. Yeşil üçgene tıklayıp sorguyu çalıştırın. Sorguyu test edebilir ve anormal davranışları aramak için çalıştırabilirsiniz.

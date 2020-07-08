@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 2f79dea4baaa2589333af4e15aece06c1d86b9c1
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516331"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API Başvurusu
@@ -50,7 +50,7 @@ Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakk
 - [Teklif oluşturma](./cloud-partner-portal-api-creating-offer.md)
 - [Teklif yayımlama](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>İşlemler
 
 - [İşlemleri alma](./cloud-partner-portal-api-retrieve-operations.md)
 - [İşlemleri iptal etme](./cloud-partner-portal-api-cancel-operations.md)

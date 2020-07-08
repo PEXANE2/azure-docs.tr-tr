@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550645"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
 Bu belge, **Azure AD 'ye katılmış** ve **hibrit Azure AD 'ye katılmış** Windows 10 cihazlarındaki ortamlar için, şirket içi kaynaklarda parolasız kimlik doğrulamanın etkinleştirilmesinde odaklanır. Bu işlevsellik, Microsoft uyumlu güvenlik anahtarlarını kullanarak şirket içi kaynaklara sorunsuz çoklu oturum açma (SSO) sağlar.
 
-|     |
-| --- |
-| FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 anahtarlarını kullanarak şirket içi kaynaklara SSO
 
@@ -81,7 +79,7 @@ Yöneticiler, şirket içi dizininizde bir Azure AD Kerberos sunucu nesnesi olu�
 1. Şirket içi Active Directory etki alanı ve Azure Active Directory kiracınızda yeni bir Azure AD Kerberos sunucu nesnesi oluşturmak için aşağıdaki PowerShell komutlarını çalıştırın.
 
 > [!NOTE]
-> Aşağıdaki `contoso.corp.com` örnekte yerine şirket içi Active Directory etki alanı adınızı koyun.
+> `contoso.corp.com`Aşağıdaki örnekte yerine şirket içi Active Directory etki alanı adınızı koyun.
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -113,7 +111,7 @@ Bu komut, Azure AD Kerberos sunucusunun özelliklerini verir. Her şeyin iyi sı
 
 | Özellik | Açıklama |
 | --- | --- |
-| Kimlik | AD DS DC nesnesinin benzersiz KIMLIĞI. Bu KIMLIK bazen "yuva" veya "dal KIMLIĞI" olarak adlandırılır. |
+| ID | AD DS DC nesnesinin benzersiz KIMLIĞI. Bu KIMLIK bazen "yuva" veya "dal KIMLIĞI" olarak adlandırılır. |
 | DomainDnsName | Active Directory Etki Alanı DNS etki alanı adı. |
 | Bilgisayar hesabı | Azure AD Kerberos Sunucusu nesnesinin (DC) bilgisayar hesabı nesnesi. |
 | UserAccount | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Azure AD Kerberos Sunucusu nesnesi, Azure AD 'de bir *KerberosDomain* nesnesi olarak temsil edilir. Her şirket içi Active Directory etki alanı, Azure AD 'de tek bir *KerberosDomain* nesnesi olarak temsil edilir.
 
-Örneğin, kuruluşunuzun iki etki alanı olan bir Active Directory ormanı vardır `contoso.com` ve. `fabrikam.com` Azure AD 'nin tüm orman için Kerberos TGT 'leri vermesine izin vermeyi seçerseniz, Azure AD 'de iki *KerberosDomain* nesnesi vardır. İçin bir *KerberosDomain* nesnesi `contoso.com`ve için `fabrikam.com`bir. Birden çok Active Directory ormanlarınız varsa her ormandaki her etki alanı için bir *KerberosDomain* nesnesi vardır.
+Örneğin, kuruluşunuzun iki etki alanı olan bir Active Directory ormanı vardır `contoso.com` ve `fabrikam.com` . Azure AD 'nin tüm orman için Kerberos TGT 'leri vermesine izin vermeyi seçerseniz, Azure AD 'de iki *KerberosDomain* nesnesi vardır. İçin bir *KerberosDomain* nesnesi `contoso.com` ve için bir `fabrikam.com` . Birden çok Active Directory ormanlarınız varsa her ormandaki her etki alanı için bir *KerberosDomain* nesnesi vardır.
 
 Kuruluşunuzda Azure AD kullanıcıları içeren her etki alanı ve ormanda [Kerberos sunucu nesnesi oluşturmak](#create-kerberos-server-object) için bu adımları çalıştırmanız gerekir.
 
@@ -192,12 +190,12 @@ Bu özelliğin genel kullanılabilirliği (GA) için bu özellik üzerinde çal�
 
 Karma Azure AD 'ye katılmış bir makineyi temiz yükleme, etki alanına katılma ve yeniden başlatma işleminden sonra bir parolayla oturum açmanız ve oturum açmak için FıDO 'ı kullanabilmeniz için ilkenin eşitlenmesini beklemeniz gerekir.
 
-- Bir komut `dsregcmd /status` penceresine yazarak geçerli durumunuzu denetleyin ve hem *Azureadkatılmış* hem de *domainkatılmış* ' in *Evet*' i göstermesini denetleyin.
+- Bir komut penceresine yazarak geçerli durumunuzu denetleyin `dsregcmd /status` ve hem *Azureadkatılmış* hem de *Domainkatılmış* ' in *Evet*' i göstermesini denetleyin.
 - Bu gecikme, etki alanına katılmış cihazlar için bilinen bir sınırlamadır ve FIDO 'a özgü değildir.
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>FIDO ile oturum açtıktan ve kimlik bilgisi istemi almaya çalıştıktan sonra NTLM ağ kaynaklarım için SSO alamıyorum
 
-Kaynak isteğinize hizmet vermek için, yeterli sayıda etki alanı denetleyicisinin yanıt vermesi için düzeltme eki uygulanmış olduğundan emin olun. Özelliği çalıştıran bir etki alanı denetleyicisi görüp görbir şekilde bakmak için çıkışını gözden geçirin `nltest /dsgetdc:contoso /keylist /kdc`.
+Kaynak isteğinize hizmet vermek için, yeterli sayıda etki alanı denetleyicisinin yanıt vermesi için düzeltme eki uygulanmış olduğundan emin olun. Özelliği çalıştıran bir etki alanı denetleyicisi görüp görbir şekilde bakmak için çıkışını gözden geçirin `nltest /dsgetdc:contoso /keylist /kdc` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

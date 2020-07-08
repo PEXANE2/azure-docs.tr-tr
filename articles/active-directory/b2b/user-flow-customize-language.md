@@ -11,18 +11,17 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 856338e6c5a2bac55fee57d3ea09575a1a4d14ed
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551151"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory dil özelleştirmesi (Önizleme)
-|     |
-| --- |
-| Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Active Directory (Azure AD) içindeki dil özelleştirmesi, Kullanıcı akışınızın kullanıcılarınızın ihtiyaçlarına uyacak şekilde farklı dillere uyum sağlamasına izin verir. Microsoft, [36 dil](#supported-languages)için Çeviriler sağlar. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile öznitelik koleksiyonu sayfasında öznitelik adlarını özelleştirebilirsiniz.
 
@@ -193,8 +192,8 @@ Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Az
 | Rusça               | ru            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | Slovakça                | sor            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | Slovence             | SL            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Sırpça-Kiril    | SR-cryıl-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Sırpça-Latin       | sr-Latn-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
+| Sırpça (Kiril)    | SR-cryıl-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
+| Sırpça (Latin)       | sr-Latn-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | İsveççe               | v            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | Tamil dili                 | dolu            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
 | Telugu dili                | ot            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
@@ -202,5 +201,5 @@ Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Az
 | Türkçe               | tr            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | Ukraynaca             | tr            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
 | Vietnamca            | v            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Çince-Basitleştirilmiş  | zh-Hans       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Çince-Geleneksel | zh-Hant       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
+| Basitleştirilmiş Çince  | zh-Hans       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
+| Geleneksel Çince | zh-Hant       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |

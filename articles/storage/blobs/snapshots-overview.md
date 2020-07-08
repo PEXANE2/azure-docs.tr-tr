@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26646ad5ae42d2fa301a7f894084a78a64c73bd4
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884676"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550972"
 ---
 # <a name="blob-snapshots"></a>Blob anlık görüntüleri
 
@@ -25,9 +25,9 @@ Anlık görüntü, bir Blobun zaman içinde alınmış bir salt okunurdur.
 
 ## <a name="about-blob-snapshots"></a>Blob anlık görüntüleri hakkında
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtmek için blob URI 'sine eklenmiş bir **Tarih saat** değeri olması dışında, kendi temel blobuna benzer. Örneğin, bir Sayfa Blobu URI 'SI ise `http://storagesample.core.blob.windows.net/mydrives/myvhd`, anlık görüntü URI 'si öğesine `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`benzerdir.
+Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtmek için blob URI 'sine eklenmiş bir **Tarih saat** değeri olması dışında, kendi temel blobuna benzer. Örneğin, bir Sayfa Blobu URI 'SI ise `http://storagesample.core.blob.windows.net/mydrives/myvhd` , anlık görüntü URI 'si öğesine benzerdir `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` .
 
 > [!NOTE]
 > Tüm anlık görüntüler, temel Blobun URI 'sini paylaşır. Temel blob ve anlık görüntü arasındaki tek ayrım, eklenen **Tarih saat** değeridir.
@@ -65,25 +65,25 @@ Ek ücretlerden kaçınmak için anlık görüntülerinizi dikkatle yönetmeniz 
 
 Aşağıdaki senaryolarda, giderlerin bir Blok Blobu ve anlık görüntüleri için nasıl tahakkuk olduğu gösterilmektedir.
 
-#### <a name="scenario-1"></a>Senaryo 1
+#### <a name="scenario-1"></a>1\. Senaryo
 
 Senaryo 1 ' de, anlık görüntü alındıktan sonra temel blob güncelleştirilmedi, bu nedenle ücretler yalnızca 1, 2 ve 3 benzersiz bloklar için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
-#### <a name="scenario-2"></a>Senaryo 2
+#### <a name="scenario-2"></a>2\. Senaryo
 
 Senaryo 2 ' de, temel blob güncelleştirildi, ancak anlık görüntü yok. 2. blok güncelleştirildi ve aynı verileri ve aynı KIMLIĞI içerse de, anlık görüntüde blok 3 ile aynı değildir. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
-#### <a name="scenario-3"></a>3. Senaryo
+#### <a name="scenario-3"></a>3\. Senaryo
 
 Senaryo 3 ' te, temel blob güncelleştirildi, ancak anlık görüntü yok. Blok 3, temel Blobun içindeki blok 4 ile değiştirilmiştir, ancak anlık görüntü hala blok 3 ' ü yansıtır. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
-#### <a name="scenario-4"></a>4. Senaryo
+#### <a name="scenario-4"></a>4\. Senaryo
 
 Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap tüm sekiz benzersiz blok için ücretlendirilir. Bu senaryo, [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] veya [Uploadfrombrivtearray] [dotnet_UploadFromByteArray] gibi bir güncelleştirme yöntemi kullanıyorsanız oluşabilir, çünkü bu yöntemler bir blob 'un tüm içeriğini değiştirir.
 

@@ -1,21 +1,21 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile bir değerlendirme oluşturma | Microsoft Docs
-description: Azure geçişi sunucu değerlendirmesi aracı ile nasıl değerlendirme oluşturulacağını açıklar
+title: Azure sunucu değerlendirmesi ile Azure VM değerlendirmesi oluşturma | Microsoft Docs
+description: Azure geçişi sunucu değerlendirmesi aracı ile Azure VM değerlendirmesi oluşturmayı açıklar
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68229108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549836"
 ---
-# <a name="create-an-assessment"></a>Değerlendirme oluşturma
+# <a name="create-an-azure-vm-assessment"></a>Azure VM değerlendirmesi oluşturma
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 'Leri veya Hyper-V VM 'Leri için nasıl değerlendirme oluşturulacağı açıklanır.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 'Leri veya Hyper-V VM 'Leri için Azure VM değerlendirmesi oluşturma açıklanır.
 
 [Azure geçişi](migrate-services-overview.md) , Azure 'a geçiş yapmanıza yardımcı olur. Azure geçişi, şirket içi altyapıyı, uygulamaları ve verileri Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için merkezi bir merkez sağlar. Hub, değerlendirme ve geçiş için Azure araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini sağlar. 
 
@@ -26,10 +26,10 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 
 - Bir değerlendirme oluşturmak için, [VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md)için bir Azure geçiş gereci ayarlamanız gerekir. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
 
 
-## <a name="assessment-overview"></a>Değerlendirmeye genel bakış
-Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
+## <a name="azure-vm-assessment-overview"></a>Azure VM değerlendirmesine genel bakış
+Azure geçişi: Sunucu değerlendirmesi kullanarak bir Azure VM değerlendirmesi oluşturmak için kullanabileceğiniz iki tür boyutlandırma ölçütü vardır.
 
-**Değerlendirme** | **Bilgileri** | **Veri**
+**Değerlendirme** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: ŞIRKET içi VM boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -45,33 +45,37 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme](./media/how-to-create-assessment/assess.png)
 
-2. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
-3. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
+3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VM" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
+
+    ![Değerlendirme temelleri](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
+4. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
 
     ![Değerlendirme özellikleri](./media/how-to-create-assessment//view-all.png)
 
-3. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
-4. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
-5. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
+5. **Değerlendirmek için makineleri seçmek**üzere **İleri** ' ye tıklayın. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+6. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
+7. Değerlendirme ayrıntılarını gözden geçirmek için **İleri** ' ye ve **değerlendirme oluştur** ' a tıklayın.
+8. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
 
     ![Değerlendirme oluşturma](./media/how-to-create-assessment//assessment-create.png)
 
-6. Değerlendirme oluşturulduktan sonra **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi** > **değerlendirmeleri**' nde görüntüleyin.
-7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
+9. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
+10. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 
 
-## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
+## <a name="review-an-azure-vm-assessment"></a>Azure VM değerlendirmesini gözden geçirme
 
-Bir değerlendirme şunları açıklar:
+Azure VM değerlendirmesi şunları açıklar:
 
 - **Azure hazırlığı**: VM 'lerin Azure 'a geçiş için uygun olup olmadığı.
 - **Aylık maliyet tahmini**: VM 'leri Azure 'da çalıştırmaya yönelik tahmini aylık işlem ve depolama maliyetleri.
 - **Aylık depolama maliyeti tahmini**: geçişten sonra disk depolaması için tahmini maliyetler.
 
-### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
+### <a name="view-an-azure-vm-assessment"></a>Azure VM değerlendirmesi görüntüleme
 
-1. **Geçiş hedefleri** >  **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
+1. **Geçiş hedefleri**  >   **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
     ![Değerlendirme özeti](./media/how-to-create-assessment/assessment-summary.png)
@@ -85,7 +89,7 @@ Bir değerlendirme şunları açıklar:
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Hazır olma durumu bilinmiyor**: veri kullanılabilirliği sorunları nedeniyle Azure geçişi hazırlığı değerlendiremez kullanılır.
 
-2. **Azure hazırlık** durumuna tıklayın. VM hazırlığı ayrıntılarını görüntüleyebilir ve işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+3. **Azure hazırlık** durumuna tıklayın. VM hazırlığı ayrıntılarını görüntüleyebilir ve işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
 
 

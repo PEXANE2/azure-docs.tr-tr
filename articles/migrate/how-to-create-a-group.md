@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68301693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549908"
 ---
 # <a name="create-a-group-for-assessment"></a>Değerlendirme için bir grup oluşturma
 
@@ -43,11 +43,11 @@ Bir değerlendirme oluşturma dışında el ile bir grup oluşturmak istiyorsan�
 
 2. **Grup** simgesine tıklayın.
 3. **Grup Oluştur**' da bir grup adı belirtin ve **Gereç adı**' nda makine bulma için kullandığınız Azure geçiş gerecini seçin.
-1. Makine listesinden, gruba eklemek istediğiniz makineleri seçin > **Oluştur**' a tıklayın.
+4. Makine listesinden, gruba eklemek istediğiniz makineleri seçin > **Oluştur**' a tıklayın.
 
     ![Grup oluşturma](./media/how-to-create-a-group/create-group.png)
 
-Bu grubu artık [bir değerlendirme oluştururken](how-to-create-assessment.md)kullanabilirsiniz.
+Artık bu grubu, [bir Azure VM değerlendirmesi](how-to-create-assessment.md) veya [bir Azure VMware çözümü (AVS) değerlendirmesi](how-to-create-azure-vmware-solution-assessment.md)oluştururken kullanabilirsiniz. Yalnızca VMware VM 'Leri olan gruplar üzerinde bir AVS değerlendirmesi oluşturabileceğiniz unutulmamalıdır. 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Bağımlılık eşleme ile bir grubu daraltın
 

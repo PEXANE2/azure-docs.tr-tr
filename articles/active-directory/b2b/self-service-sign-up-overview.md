@@ -11,18 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551322"
 ---
 # <a name="self-service-sign-up-preview"></a>Self servis kaydolma (Önizleme)
-|     |
-| --- |
-| Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir uygulamayı dış kullanıcılarla paylaşırken, uygulamaya erişmesi gereken her zaman önceden bilmiyor olabilirsiniz. Doğrudan kişilere davetiye göndermeye alternatif olarak, dış kullanıcıların Self Servis kaydolma 'yı etkinleştirerek belirli uygulamalara kaydolmalarına izin verebilirsiniz. Self Servis kaydolma Kullanıcı akışını özelleştirerek kişiselleştirilmiş bir kaydolma deneyimi oluşturabilirsiniz. Örneğin, Azure AD veya sosyal kimlik sağlayıcılarına kaydolmak ve kaydolma işlemi sırasında Kullanıcı hakkında bilgi toplamak için seçenekler sağlayabilirsiniz.
 

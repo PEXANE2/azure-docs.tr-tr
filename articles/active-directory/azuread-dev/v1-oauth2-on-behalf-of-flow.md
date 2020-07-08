@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551667"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
 
@@ -79,7 +79,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanız için izinleri yapılandırın. **API izinleri**' nde, **izin Ekle** ve sonra **API 'lerim**' i seçin.
 1. Metin alanına orta katman hizmetinin adını yazın.
-1. **Izinleri Seç** ' i seçin ve **ardından \<>erişim hizmeti adı **' nı seçin.
+1. **Izinleri Seç** ' i seçin ve **ardından \<service name> erişim **' i seçin.
 
 ### <a name="configure-known-client-applications"></a>Bilinen istemci uygulamalarını yapılandırma
 
@@ -105,7 +105,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre |  | Açıklama |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JSON Web Token (JWT) kullanır, bu nedenle değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan erişim belirtecinin değeri. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre |  | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JWT erişim belirteci kullanır, bu yüzden değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan belirtecin değeri. |
@@ -249,7 +249,7 @@ Bazı OAuth tabanlı Web hizmetlerinin, etkileşimli olmayan akışlarda SAML on
 
 SAML onaylama işlemi için hizmetten hizmete yönelik bir istek aşağıdaki parametreleri içerir:
 
-| Parametre |  | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | grant_type |gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan erişim belirtecinin değeri.|
@@ -283,9 +283,9 @@ Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - Kaynak`https://api.contoso.com`
-- access_token: \< SAML onaylama\>
+- access_token:\<SAML assertion\>
 - issued_token_type: urn: IETF: params: OAuth: Token-Type: SAML2
-- refresh_token: \< belirteci Yenile\>
+- refresh_token:\<Refresh token\>
 
 ## <a name="client-limitations"></a>İstemci sınırlamaları
 

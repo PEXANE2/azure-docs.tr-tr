@@ -1,22 +1,22 @@
 ---
 title: Kimlik doğrulama oturumu yönetimini Yapılandırma-Azure Active Directory
-description: Kullanıcı oturum açma sıklığı ve tarayıcı oturumu kalıcılığı dahil olmak üzere Azure AD kimlik doğrulaması oturumu yapılandırmasını özelleştirin.
+description: Kullanıcı oturum açma sıklığı ve tarayıcı oturumu kalıcılığı dahil olmak üzere Azure AD kimlik doğrulama oturumu yapılandırmasını özelleştirin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72cc876e2fd695e40b3b9cf7d9a52d34dea2387c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552123"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -39,7 +39,7 @@ Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) var
 
 Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
 
-Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte çalışarak. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
+Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte kullanılır. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 
 - Word, Excel, PowerPoint online
 - OneNote Online
@@ -51,15 +51,17 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 - Dynamics CRM Online
 - Azure portal
 
+Oturum açma sıklığı ayarı, SAML uygulamalarıyla birlikte çalışarak kendi tanımlama bilgilerini düşürülemez ve düzenli olarak kimlik doğrulaması için Azure AD 'ye yeniden yönlendirilir.
+
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Kullanıcı oturum açma sıklığı ve Multi-Factor Authentication
 
-Daha önce Azure AD 'ye katılmış olan, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda yalnızca birinci faktör kimlik doğrulamasına uygulanan oturum açma sıklığı. Müşterilerimizin bu cihazlarda Multi Factor Authentication 'ı (MFA) yeniden zorlaması için kolay bir yol yoktu. Müşteri geri bildirimlerine dayalı olarak oturum açma sıklığı, MFA için de geçerlidir.
+Daha önce Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda yalnızca birinci faktör kimlik doğrulamasına uygulanan oturum açma sıklığı. Müşterilerimizin bu cihazlarda Multi Factor Authentication 'ı (MFA) yeniden zorlaması için kolay bir yol yoktu. Müşteri geri bildirimlerine dayalı olarak oturum açma sıklığı, MFA için de geçerlidir.
 
 [![Oturum açma sıklığı ve MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Kullanıcı oturum açma sıklığı ve cihaz kimlikleri
 
-Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtlı cihazlara sahipseniz, bir kullanıcı cihazlarından veya etkileşimli olarak oturum açtığında bu olay, oturum açma sıklığı ilkesini de karşılar. Aşağıdaki 2 örnekte, Kullanıcı oturum açma sıklığı 1 saat olarak ayarlanır:
+Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtlı cihazlara sahipseniz, bir kullanıcı cihazlarından veya etkileşimli olarak oturum açtığında bu olay, oturum açma sıklığı ilkesini de karşılar. Aşağıdaki iki örnekte, Kullanıcı oturum açma sıklığı 1 saat olarak ayarlanır:
 
 Örnek 1:
 
@@ -103,7 +105,7 @@ Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. K
 
 ![Oturum açma sıklığı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak kabul edilir. Örneğin, Office uygulamaları için oturum açma sıklığını 24 saat olarak yapılandırdıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar cihazda oturum açarak oturum açma sıklığı ilkesini karşılar ve Office uygulamaları açılırken bir daha sorulmayacaktır.
+Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak kabul edilir. Örneğin, Office uygulamaları için oturum açma sıklığını 24 saate yapılandırdıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar cihazda oturum açarak oturum açma sıklığı ilkesini karşılar ve Office uygulamaları açılırken bir daha sorulmayacaktır.
 
 Aynı tarayıcı oturumunda çalışan farklı Web uygulamaları için farklı oturum açma sıklığı yapılandırdıysanız, aynı tarayıcı oturumunda çalışan tüm uygulamalar tek bir oturum belirtecini paylaştığından, her iki uygulama için de en katı ilkesi uygulanır.
 

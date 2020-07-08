@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a9026db19d453100971739dcf633629a3f06d43
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 394af855b7968d38bf99afada246ae661dc0459a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85388312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549489"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak kayıt ve Facebook hesabı ile oturum açma ayarlama
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Facebook hesabını [kimlik s
 1. **Ayarlar**  >  **temel**öğesini seçin.
 1. Örneğin, bir **Kategori**seçin `Business and Pages` . Bu değer Facebook için gereklidir, ancak Azure AD B2C için kullanılmaz.
 1. Sayfanın alt kısmındaki **Platform Ekle**' yi ve ardından **Web sitesi**' ni seçin.
-1. **Site URL 'si**' nde `https://your-tenant-name.b2clogin.com/` , `your-tenant-name` kiracınızın adıyla değiştirin yazın. **Gizlilik ILKESI URL**'si IÇIN bir URL girin, örneğin `http://www.contoso.com` . İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
+1. **Site URL 'si**' nde, Web sitenizin adresini girin, örneğin `https://contoso.com` . **Gizlilik ILKESI URL**'si IÇIN bir URL girin, örneğin `http://www.contoso.com/privacy` . İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
 1. **Değişiklikleri Kaydet**' i seçin.
 1. Sayfanın üst kısmında, **uygulama kimliği**değerini kopyalayın.
 1. **Göster** ' i seçin ve **uygulama gizli anahtarı**değerini kopyalayın. Facebook 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisini de kullanabilirsiniz. **Uygulama gizli anahtarı** önemli bir güvenlik kimlik bilgileridir.
@@ -50,4 +50,4 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Facebook hesabını [kimlik s
 1. Bir **ad**girin. Örneğin, *Facebook*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Facebook UYGULAMASıNıN uygulama kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.

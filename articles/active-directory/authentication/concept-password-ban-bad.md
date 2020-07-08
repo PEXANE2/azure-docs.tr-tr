@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550707"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Kuruluşunuzda kötü parolaları ortadan kaldırma
 
@@ -158,7 +158,7 @@ Normalleştirme sonrasında bu parola "contosoblankf9!" olur. Eşleşen işlem b
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 
-|   | Genel yasaklanmış parola listesiyle Azure AD parola koruması | Özel yasaklanmış parola listesiyle Azure AD parola koruması|
+| Kullanıcılar | Genel yasaklanmış parola listesiyle Azure AD parola koruması | Özel yasaklanmış parola listesiyle Azure AD parola koruması|
 | --- | --- | --- |
 | Yalnızca bulutta bulunan kullanıcılar | Azure AD Ücretsiz | Azure AD Premium P1 veya P2 |
 | Şirket içi Windows Server Active Directory eşitlenen kullanıcılar | Azure AD Premium P1 veya P2 | Azure AD Premium P1 veya P2 |

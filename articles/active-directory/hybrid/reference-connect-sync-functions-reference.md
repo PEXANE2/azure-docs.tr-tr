@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69900039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550183"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
 Azure AD Connect, işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
@@ -52,42 +52,100 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
 
 ## <a name="functions-reference"></a>İşlevler Başvurusu
 
-| İşlevlerin listesi |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **Sertifika** | | | | |
-| [Certbu Sionıds](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [Certısuer](#certissuer) |[Certısuerdn](#certissuerdn) |[Certısueroıd](#certissueroid) |[Certkeyalgorithd](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[Certnameınfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [Certpublickeyoıd](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[Certsubjectnameoıd](#certsubjectnameoid) |[Certparmak Izi](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **Dönüştürme** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **Tarih / Saat** | | | | |
-| [DateAdd](#dateadd) |[Tarih Fromnum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Sunuldu](#now) | |
-| [NumFromDate](#numfromdate) | | | | |
-| **Dizinden** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[Çıkar Edncomponent](#escapedncomponent) | | |
-| **Değerlendirmesinin** | | | | |
-| [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[Olmasına](#ispresent) | |
-| [Isstrıng](#isstring) | | | | |
-| **Matematik** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[Rasgelenum](#randomnum) | | |
-| **Çoklu değerli** | | | | |
-| [Vardır](#contains) |[Biriktirme](#count) |[Öğe](#item) |[Imornull](#itemornull) | |
-| [Katıl](#join) |[RemoveDuplicates](#removeduplicates) |[Ayırmayı](#split) | | |
-| **Program akışı** | | | | |
-| [Hata](#error) |[Mayan](#iif) |[Seç](#select) |[Değiştirebilirsiniz](#switch) | |
-| [Olmadığı](#where) |[Kullanılarak](#with) | | | |
-| **Metin** | | | | |
-| ['INI](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Tarafta](#left) |[Tepe](#len) |[LTrim](#ltrim) |[Orta](#mid) | |
-| [Asma sol](#padleft) |[Asma sağ](#padright) |[PCase](#pcase) |[Değiştirin](#replace) | |
-| [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Kırpma](#trim) | |
-| [UCase](#ucase) |[Word](#word) | | | |
+* **Sertifika**
+  * [Certbu Sionıds](#certextensionoids)
+  * [CertFormat](#certformat)
+  * [CertFriendlyName](#certfriendlyname)
+  * [CertHashString](#certhashstring)
+  * [Certısuer](#certissuer)
+  * [Certısuerdn](#certissuerdn)
+  * [Certısueroıd](#certissueroid)
+  * [Certkeyalgorithd](#certkeyalgorithm)
+  * [CertKeyAlgorithmParams](#certkeyalgorithmparams)
+  * [Certnameınfo](#certnameinfo)
+  * [CertNotAfter](#certnotafter)
+  * [CertNotBefore](#certnotbefore)
+  * [Certpublickeyoıd](#certpublickeyoid)
+  * [CertPublicKeyParametersOid](#certpublickeyparametersoid)
+  * [CertSerialNumber](#certserialnumber)
+  * [CertSignatureAlgorithmOid](#certsignaturealgorithmoid)
+  * [CertSubject](#certsubject)
+  * [CertSubjectNameDN](#certsubjectnamedn)
+  * [Certsubjectnameoıd](#certsubjectnameoid)
+  * [Certparmak Izi](#certthumbprint)
+  * [CertVersion](#certversion)
+  * [IsCert](#iscert)
+* **Dönüştürü**
+  * [CBool](#cbool)
+  * [CDate](#cdate)
+  * [CGuid](#cguid)
+  * [ConvertFromBase64](#convertfrombase64)
+  * [ConvertToBase64](#converttobase64)
+  * [ConvertFromUTF8Hex](#convertfromutf8hex)
+  * [ConvertToUTF8Hex](#converttoutf8hex)
+  * [CNum](#cnum)
+  * [CRef](#cref)
+  * [CStr](#cstr)
+  * [StringFromGuid](#stringfromguid)
+  * [StringFromSid](#stringfromsid)
+* **Tarih / Saat**
+  * [DateAdd](#dateadd)
+  * [Tarih Fromnum](#datefromnum)
+  * [FormatDateTime](#formatdatetime)
+  * [Sunuldu](#now)
+  * [NumFromDate](#numfromdate)
+* **Dizinden**
+  * [DNComponent](#dncomponent)
+  * [DNComponentRev](#dncomponentrev)
+  * [Çıkar Edncomponent](#escapedncomponent)
+* **Değerlendirmesinin**
+  * [IsBitSet](#isbitset)
+  * [IsDate](#isdate)
+  * [IsEmpty](#isempty)
+  * [IsGuid](#isguid)
+  * [IsNull](#isnull)
+  * [IsNullOrEmpty](#isnullorempty)
+  * [IsNumeric](#isnumeric)
+  * [Olmasına](#ispresent)
+  * [Isstrıng](#isstring)
+* **Matematik**
+  * [BitAnd](#bitand)
+  * [BitOr](#bitor)
+  * [Rasgelenum](#randomnum)
+* **Çoklu * değerli**
+  * [Vardır](#contains)
+  * [Biriktirme](#count)
+  * [Öğe](#item)
+  * [Imornull](#itemornull)
+  * [Katıl](#join)
+  * [RemoveDuplicates](#removeduplicates)
+  * [Ayırmayı](#split)
+* **Program akışı**
+  * [Hata](#error)
+  * [Mayan](#iif)
+  * [Seç](#select)
+  * [Anahtar](#switch)
+  * [Olmadığı](#where)
+  * [Kullanılarak](#with)
+* **Metin**
+  * ['INI](#guid)
+  * [InStr](#instr)
+  * [InStrRev](#instrrev)
+  * [LCase](#lcase)
+  * [Tarafta](#left)
+  * [Tepe](#len)
+  * [LTrim](#ltrim)
+  * [Orta](#mid)
+  * [Asma sol](#padleft)
+  * [Asma sağ](#padright)
+  * [PCase](#pcase)
+  * [Değiştirin](#replace)
+  * [ReplaceChars](#replacechars)
+  * [Right](#right)
+  * [RTrim](#rtrim)
+  * [Kırpma](#trim)
+  * [UCase](#ucase)
+  * [Word](#word)
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -107,7 +165,7 @@ Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve bir bit 
 
 Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 olduğu durumlar dışında her durumda 0 döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `BitAnd(&HF, &HF7)`  
 Onaltılık "F" ve "F7" değerinin bu değeri değerlendirmesi nedeniyle 7 döndürür.
 
@@ -135,7 +193,7 @@ CBool işlevi, değerlendirilen ifadeye bağlı olarak bir Boole değeri döndü
 **Açıklamalarının**  
 İfade sıfır olmayan bir değer olarak değerlendirilirse, CBool true değerini döndürür, aksi takdirde false döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `CBool([attrib1] = [attrib2])`  
 
 Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
@@ -153,7 +211,7 @@ CDate işlevi bir dizeden UTC tarih saati döndürür. DateTime, Sync içinde ye
 **Açıklamalarının**  
 Döndürülen dize her zaman UTC olarak olur.
 
-**Örneğinde**  
+**Örnek:**  
 `CDate([employeeStartTime])`  
 Çalışanın başlangıç zamanına bağlı olarak bir tarih saat döndürür
 
@@ -382,7 +440,7 @@ Dizenin bulunduğu çok değerli öznitelikteki dizini döndürür. dize bulunam
 Birden çok değerli dize öznitelikleri için arama, değerlerde alt dizeleri bulur.  
 Başvuru öznitelikleri için, aranan dizenin eşleşme olarak kabul edileceği değerle tam olarak eşleşmesi gerekir.
 
-**Örneğinde**  
+**Örnek:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 ProxyAddresses özniteliğinin bir birincil e-posta adresi varsa (büyük harfli "SMTP:"), ardından proxyAddress özniteliğini döndürün, aksi takdirde bir hata döndürün.
 
@@ -398,7 +456,7 @@ ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizey
 * Kaynak: Base64 kodlamalı dize  
 * Kodlama: Unicode, ASCII, UTF8
 
-**Örneğinde**  
+**Örnek**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
@@ -418,7 +476,7 @@ ConvertFromUTF8Hex işlevi, belirtilen UTF8 onaltılı kodlamalı değeri bir di
 Bu işlev ve ConvertFromBase64 ([], UTF8) arasındaki fark, sonucun DN özniteliği için kullanımı kolay.  
 Bu biçim, Azure Active Directory tarafından DN olarak kullanılır.
 
-**Örneğinde**  
+**Örnek:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 "*Hello World!*" döndürür
 
@@ -431,7 +489,7 @@ Bir tamsayılar dizisinin değerini, Base-64 basamakları ile kodlanmış eşde�
 **Sözdizimi**  
 `str ConvertToBase64(str source)`
 
-**Örneğinde**  
+**Örnek:**  
 `ConvertToBase64("Hello world!")`  
 "Sablagwabebek Vacaadilevahiababkacea" döndürür
 
@@ -446,7 +504,7 @@ ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dö
 **Açıklamalarının**  
 Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik biçimi olarak kullanılır.
 
-**Örneğinde**  
+**Örnek:**  
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 döndürür
 
@@ -474,7 +532,7 @@ Bir dizeyi başvuru özniteliğine dönüştürür
 **Sözdizimi**  
 `ref CRef(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
 ---
@@ -489,7 +547,7 @@ CStr işlevi bir dize veri türüne dönüştürür.
 
 * değer: sayısal bir değer, başvuru özniteliği veya Boole olabilir.
 
-**Örneğinde**  
+**Örnek:**  
 `CStr([dn])`  
 "CN = ali, DC = contoso, DC = com" döndürebilir
 
@@ -515,7 +573,7 @@ Belirtilen zaman aralığının eklendiği tarihi içeren bir tarih döndürür.
 * değer: eklemek istediğiniz birim sayısı. Pozitif olabilir (gelecekte tarihleri almak için) veya negatif (geçmişte tarihleri almak için).
 * Date: aralığın eklendiği tarihi temsil eden tarih saat.
 
-**Örneğinde**  
+**Örnek:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 3 ay ekler ve "2001-04-01" temsil eden bir tarih saat döndürür.
 
@@ -527,7 +585,7 @@ DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat tür�
 **Sözdizimi**  
 `dt DateFromNum(num value)`
 
-**Örneğinde**  
+**Örnek:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 2012-01-01 23:00:00 temsil eden bir tarih saat döndürür
@@ -543,7 +601,7 @@ DNComponent işlevi, soldan bir belirtilen DN bileşeninin değerini döndürür
 * DN: yorumlamaya yönelik başvuru özniteliği
 * ComponentNumber: DN 'nin döndürülecek olan bileşen
 
-**Örneğinde**  
+**Örnek:**  
 `DNComponent(CRef([dn]),1)`  
 DN "CN = ali, OU =..." ise, "ali döndürür
 
@@ -560,7 +618,7 @@ DNComponentRev işlevi, sağdan (bitiş) belirtilen bir DN bileşeni değerini d
 * ComponentNumber-döndürülecek DN 'deki bileşen
 * Seçenekler: DC – "DC =" ile tüm bileşenleri yoksay
 
-**Örneğinde**  
+**Örnek:**  
 DN "CN = ali, OU = Atlanta, OU = GA, OU = US, DC = contoso, DC = com" ise  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
@@ -574,7 +632,7 @@ Hata işlevi özel bir hata döndürmek için kullanılır.
 **Sözdizimi**  
 `void Error(str ErrorMessage)`
 
-**Örneğinde**  
+**Örnek:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
@@ -586,7 +644,7 @@ Kaçış Edncomponent işlevi bir DN 'nin bir bileşenini alır ve LDAP 'de tems
 **Sözdizimi**  
 `str EscapeDNComponent(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 DisplayName özniteliğinde, LDAP 'de kaçışması gereken karakterler olsa bile, nesnenin bir LDAP dizininde oluşturulabilse emin olur.
 
@@ -604,7 +662,7 @@ FormatDateTime işlevi, bir tarih/saati belirtilen biçime sahip bir dizeye biç
 **Açıklamalarının**  
 Biçim için olası değerler burada bulunabilir: [Format işlevi Için özel tarih ve saat biçimleri](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
-**Örneğinde**  
+**Örnek:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
 "2007-12-25" ile sonuçlanır.
@@ -632,7 +690,7 @@ IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini dö
 * valueIfTrue: koşul true olarak değerlendirilirse döndürülen değer.
 * valueIfFalse: Koşul false olarak değerlendirilirse döndürülen değer.
 
-**Örneğinde**  
+**Örnek:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Kullanıcı bir ınters ise, "t-" bir kullanıcının diğer adını döndürür. Bu, başka bir kullanıcının diğer adını olduğu gibi döndürür.
 
@@ -655,7 +713,7 @@ InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
 **Açıklamalarının**  
 Alt dizenin bulunduğu konumu veya bulunmazsa 0 değerini döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `InStr("The quick brown fox","quick")`  
 Evalues 'a 5
 
@@ -680,7 +738,7 @@ InStrRev işlevi bir dizedeki alt dizenin son oluşumunu bulur
 **Açıklamalarının**  
 Alt dizenin bulunduğu konumu veya bulunmazsa 0 değerini döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `InStrRev("abbcdbbbef","bb")`  
 7 döndürür
 
@@ -694,7 +752,7 @@ Bir bit ayarlandıysa veya belirtilmemişse işlev, test olarak ayarlandı
 
 * değer: değerlendirilen sayısal bir değer. bayrak: değerlendirilecek biti olan sayısal bir değer
 
-**Örneğinde**  
+**Örnek:**  
 `IsBitSet(&HF,4)`  
 "F" onaltılık değerinde bit "4" ayarlandığı için true değerini döndürür
 
@@ -738,7 +796,7 @@ GUID şu desenlerden birini izleyen bir dize olarak tanımlanır: xxxxxxxx-xxxx-
 
 CGuid () işleminin başarılı olup olmadığını anlamak için kullanılır.
 
-**Örneğinde**  
+**Örnek:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 StrAttribute bir GUID biçimine sahipse, ikili bir temsili döndürün, aksi takdirde null döndürün.
 
@@ -753,7 +811,7 @@ StrAttribute bir GUID biçimine sahipse, ikili bir temsili döndürün, aksi tak
 **Açıklamalarının**  
 Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
 
-**Örneğinde**  
+**Örnek:**  
 `IsNull([displayName])`  
 Öznitelik CS veya MV içinde yoksa, true döndürür.
 
@@ -769,7 +827,7 @@ Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
 Özniteliği için, öznitelik yoksa veya varsa ancak boş bir dize ise, bu true olarak değerlendirilir.  
 Bu işlevin tersi ısun olarak adlandırılmıştır.
 
-**Örneğinde**  
+**Örnek:**  
 `IsNullOrEmpty([displayName])`  
 Öznitelik yoksa veya CS ya da MV içindeki boş bir dize ise true döndürür.
 
@@ -806,7 +864,7 @@ CStr () ifadesinin ayrıştırmak için başarılı olup olmadığını belirlem
 **Açıklamalarının**  
 Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
 
-**Örneğinde**  
+**Örnek:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -825,7 +883,7 @@ Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
 
 Dizin sınırların dışında olduğunda bir hata oluşturur.
 
-**Örneğinde**  
+**Örnek:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Birincil e-posta adresini döndürür.
 
@@ -860,9 +918,9 @@ JOIN işlevi, birden çok değerli bir dize alır ve her öğe arasında belirti
 **Açıklamalar**  
 JOIN ve Split işlevleri arasında eşlik vardır. JOIN işlevi, tek bir dize döndürmek için bir dizi dizeyi alır ve bunları bir sınırlayıcı dize kullanarak birleştirir. Split işlevi bir dize alır ve bir dize dizisi döndürecek şekilde sınırlayıcıda ayırır. Bununla birlikte, bir temel fark, birleştirmenin herhangi bir sınırlayıcı dizeyle dizeleri birleştireceği ve yalnızca tek bir karakter sınırlayıcısı kullanarak dizeleri ayırabilirler.
 
-**Örneğinde**  
+**Örnek:**  
 `Join([proxyAddresses],",")`  
-Şunu döndürebilir: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
+Şunu döndürebilir: " SMTP:john.doe@contoso.com , smtp:jd@contoso.com "
 
 ---
 ### <a name="lcase"></a>LCase
@@ -872,7 +930,7 @@ LCase işlevi bir dizedeki tüm karakterleri küçük harfe dönüştürür.
 **Sözdizimi**  
 `str LCase(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `LCase("TeSt")`  
 "Test" döndürür.
 
@@ -896,7 +954,7 @@ Dizedeki ilk Numchar karakterlerini içeren bir dize:
 
 Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize ile özdeş bir dize (yani, 1 parametresindeki tüm karakterleri içeren) döndürülür.
 
-**Örneğinde**  
+**Örnek:**  
 `Left("John Doe", 3)`  
 "Joh" döndürür.
 
@@ -908,7 +966,7 @@ Len işlevi bir dizedeki karakter sayısını döndürür.
 **Sözdizimi**  
 `num Len(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `Len("John Doe")`  
 8 döndürür
 
@@ -920,7 +978,7 @@ LTrim işlevi bir dizeden öndeki boşlukları kaldırır.
 **Sözdizimi**  
 `str LTrim(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `LTrim(" Test ")`  
 "Test" döndürür
 
@@ -948,7 +1006,7 @@ Konumdan başlangıç dizesinde numChars karakter içeren bir dize:
 
 Konumda, mümkün olan çok sayıda karakter döndürüldüğü için konumdan başlangıç dizesinde kalan numChar karakteri yoksa.
 
-**Örneğinde**  
+**Örnek:**  
 `Mid("John Doe", 3, 5)`  
 "Hn do" döndürür.
 
@@ -971,7 +1029,7 @@ NumFromDate işlevi, AD 'nin tarih biçiminde bir tarih döndürür.
 **Sözdizimi**  
 `num NumFromDate(dt value)`
 
-**Örneğinde**  
+**Örnek:**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 129699324000000000 döndürür
 
@@ -996,7 +1054,7 @@ Asma sol işlevi, bir dizeyi belirtilen bir doldurma karakteri kullanarak belirl
 * Dize uzunluğu uzunluğundan küçükse, istenen uzunlukta yeni bir dize, bir asma karakteriyle doldurulmuş dize içeren döndürülür.
 * Dize null ise, işlev boş bir dize döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `PadLeft("User", 10, "0")`  
 "000000User" döndürür.
 
@@ -1021,7 +1079,7 @@ Asma sağ işlevi, bir dizeyi belirtilen bir doldurma karakteri kullanarak belir
 * Dize uzunluğu uzunluğundan küçükse, istenen uzunlukta yeni bir dize, bir asma karakteriyle doldurulmuş dize içeren döndürülür.
 * Dize null ise, işlev boş bir dize döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `PadRight("User", 10, "0")`  
 "User000000" döndürür.
 
@@ -1037,7 +1095,7 @@ PCase işlevi bir dizedeki her bir boşlukla ayrılmış sözcüğün ilk karakt
 
 * Bu işlev, bir kısaltma gibi tamamen büyük harfli bir kelimeyi dönüştürmek için şu anda uygun bir büyük harf sağlamıyor.
 
-**Örneğinde**  
+**Örnek:**  
 `PCase("TEsT")`  
 "Test" döndürür.
 
@@ -1055,7 +1113,7 @@ Rasgelenum işlevi, belirtilen Aralık arasında rastgele bir sayı döndürür.
 * başlangıç: oluşturulacak rastgele değerin alt sınırını tanımlayan bir sayı
 * End: oluşturulacak rastgele değerin üst sınırını tanımlayan sayı
 
-**Örneğinde**  
+**Örnek:**  
 `Random(100,999)`  
 734 döndürebilir.
 
@@ -1067,7 +1125,7 @@ Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin 
 **Sözdizimi**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Örneğinde**  
+**Örnek:**  
 `RemoveDuplicates([proxyAddresses])`  
 Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür.
 
@@ -1090,7 +1148,7 @@ Replace işlevi bir dizenin tüm oluşumlarını başka bir dizeye koyar.
 * \r – satır başı
 * \t – sekme
 
-**Örneğinde**  
+**Örnek:**  
 `Replace([address],"\r\n",", ")`  
 CRLF 'yi bir virgül ve boşluk ile değiştirir ve "One Microsoft Way, Redmond, WA, ABD" ile sonuçlanabiliyor
 
@@ -1118,7 +1176,7 @@ Biçim {source1}: {Target1}, {SOURCE2}: {Target2}, {Sourgothic}, {targetN}; bura
 * , (Virgül) ve: (iki nokta üst üste) ayrılmış karakterlerdir ve bu işlev kullanılarak değiştirilemez.
 * Replacemodel dizesindeki boşluklar ve diğer beyaz karakterler yok sayılır.
 
-**Örneğinde**  
+**Örnek:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
@@ -1149,7 +1207,7 @@ Dizedeki son numChars karakterlerini içeren bir dize:
 
 Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, String ile özdeş bir dize döndürülür.
 
-**Örneğinde**  
+**Örnek:**  
 `Right("John Doe", 3)`  
 "Tikan" döndürür.
 
@@ -1161,7 +1219,7 @@ RTrim işlevi bir dizeden sondaki boşlukları kaldırır.
 **Sözdizimi**  
 `str RTrim(str value)`
 
-**Örneğinde**  
+**Örnek:**  
 `RTrim(" Test ")`  
 "Test" döndürür.
 
@@ -1179,7 +1237,7 @@ Belirtilen işleve bağlı olarak, birden çok değerli bir öznitelik (veya bir
 * ifade: bir değer koleksiyonu döndüren bir ifade
 * koşul: öznitelikte bir öğeyi işleyebilirler herhangi bir işlev
 
-**Örnekler**  
+**Örnekler:**  
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 Kısa çizgiler (-) kaldırıldıktan sonra, çok değerli öznitelikteki tüm değerleri, diğer telefondaki bir değere döndürün.
 
@@ -1196,7 +1254,7 @@ Split işlevi, sınırlayıcıyla ayrılmış bir dize alır ve bunu çok değer
 * sınırlayıcı: sınırlayıcı olarak kullanılacak tek karakter.
 * limit: döndürebilirler maksimum değer sayısı.
 
-**Örneğinde**  
+**Örnek:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 ProxyAddress özniteliği için yararlı 2 öğesi olan çok değerli bir dize döndürür.
 
@@ -1241,7 +1299,7 @@ Yalnızca birini döndürse de, anahtar tüm ifadeleri değerlendirir. Bu nedenl
 
 Değer aynı zamanda bir özel dize döndüren Error işlevi olabilir.
 
-**Örneğinde**  
+**Örnek:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 Bazı önemli şehirlerde konuşulan dili döndürür, aksi takdirde bir hata döndürür.
 
@@ -1253,7 +1311,7 @@ Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.
 **Sözdizimi**  
 `str Trim(str value)`  
 
-**Örneğinde**  
+**Örnek:**  
 `Trim(" Test ")`  
 "Test" döndürür.
 
@@ -1268,7 +1326,7 @@ UCase işlevi bir dizedeki tüm karakterleri büyük harfe dönüştürür.
 **Sözdizimi**  
 `str UCase(str string)`
 
-**Örneğinde**  
+**Örnek:**  
 `UCase("TeSt")`  
 "TEST" döndürür.
 
@@ -1286,7 +1344,7 @@ Belirli bir koşula bağlı olarak, birden çok değerli bir öznitelikten (veya
 * koşul: doğru veya yanlış olarak değerlendirilebilen herhangi bir ifade
 * ifade: bir değer koleksiyonu döndüren bir ifade
 
-**Örneğinde**  
+**Örnek:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 Sertifika değerlerini, zaman aşımına ermeyen çok değerli öznitelik userCertificate değerine döndürün.
 
@@ -1301,7 +1359,7 @@ WITH işlevi, karmaşık ifadede bir veya daha fazla kez görüntülenen alt ifa
 * alt Ifade: değişkene göre temsil edilen alt ifade.
 * complexExpression: karmaşık bir ifade.
 
-**Örneğinde**  
+**Örnek:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 İşlevsel olarak eşdeğerdir:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
@@ -1328,7 +1386,7 @@ Sınırlayıcıdaki karakterlerden biri tarafından ayrılan dizedeki her karakt
 
 Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlayıcılar tarafından tanımlanan herhangi bir sözcük içermiyorsa, boş bir dize döndürülür.
 
-**Örneğinde**  
+**Örnek:**  
 `Word("The quick brown fox",3," ")`  
 "Kahverengi" döndürür
 

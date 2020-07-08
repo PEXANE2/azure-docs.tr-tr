@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550274"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Şirket içi Azure AD parola koruma ortamları için günlükleri izleme ve gözden geçirme
 
@@ -63,7 +63,7 @@ Bu durumları yakalamaya yönelik ayrık olaylar, aşağıdaki faktörlere göre
 
 Anahtar parolası-doğrulama ile ilgili olaylar aşağıdaki gibidir:
 
-|   |Parola değiştirme |Parola kümesi|
+| Olay |Parola değiştirme |Parola kümesi|
 | --- | :---: | :---: |
 |Aktar |10014 |10015|
 |Başarısız (müşteri parola ilkesi nedeniyle)| 10016, 30002| 10017, 30003|
@@ -79,7 +79,7 @@ Bir çift olay çifti birlikte kaydedildiğinde, her iki olay da aynı Correlati
 
 ### <a name="password-validation-summary-reporting-via-powershell"></a>PowerShell aracılığıyla parola doğrulama özeti raporlaması
 
-Cmdlet `Get-AzureADPasswordProtectionSummaryReport` 'i, parola doğrulama etkinliğinin Özet görünümünü oluşturmak için kullanılabilir. Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
+`Get-AzureADPasswordProtectionSummaryReport`Cmdlet 'i, parola doğrulama etkinliğinin Özet görünümünü oluşturmak için kullanılabilir. Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -96,7 +96,7 @@ PasswordSetErrors               : 1
 
 Cmdlet 'in raporlama kapsamı – Forest,-Domain veya – DomainController parametrelerinden biri kullanılarak etkilenebilir. Bir parametre belirtilmemekle, – Forest anlamına gelir.
 
-`Get-AzureADPasswordProtectionSummaryReport` CMDLET, DC Aracısı Yönetici olay günlüğünü sorgulayarak ve ardından görüntülenen her bir sonuç kategorisine karşılık gelen olayların toplam sayısını sayarak işe yarar. Aşağıdaki tabloda, her bir sonuç ve onun karşılık gelen olay KIMLIĞI arasındaki eşlemeler yer almaktadır:
+`Get-AzureADPasswordProtectionSummaryReport`Cmdlet, DC Aracısı Yönetici olay günlüğünü sorgulayarak ve ardından görüntülenen her bir sonuç kategorisine karşılık gelen olayların toplam sayısını sayarak işe yarar. Aşağıdaki tabloda, her bir sonuç ve onun karşılık gelen olay KIMLIĞI arasındaki eşlemeler yer almaktadır:
 
 |Get-AzureADPasswordProtectionSummaryReport özelliği |Karşılık gelen olay KIMLIĞI|
 | :---: | :---: |
@@ -109,7 +109,7 @@ Cmdlet 'in raporlama kapsamı – Forest,-Domain veya – DomainController param
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-`Get-AzureADPasswordProtectionSummaryReport` Cmdlet 'in PowerShell betik biçiminde gönderildiğini ve gerekirse doğrudan aşağıdaki konumda başvurulduğunu unutmayın:
+`Get-AzureADPasswordProtectionSummaryReport`Cmdlet 'In PowerShell betik biçiminde gönderildiğini ve gerekirse doğrudan aşağıdaki konumda başvurulduğunu unutmayın:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
@@ -250,7 +250,7 @@ DC aracı hizmeti yazılımı, **Azure AD parola koruması**adlı bir performans
 
 ## <a name="dc-agent-discovery"></a>DC Aracısı bulma
 
-`Get-AzureADPasswordProtectionDCAgent` Cmdlet 'i, bir etki alanında veya ormanda çalışan çeşitli DC aracıları hakkındaki temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan DC Aracısı Hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
+`Get-AzureADPasswordProtectionDCAgent`Cmdlet 'i, bir etki alanında veya ormanda çalışan ÇEŞITLI DC aracıları hakkındaki temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan DC Aracısı Hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
 
 Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 
@@ -343,7 +343,7 @@ Bir cmdlet hatası oluşursa ve nedeni and\veya çözümü açık değilse, bu m
 
 ## <a name="proxy-discovery"></a>Proxy bulma
 
-`Get-AzureADPasswordProtectionProxy` Cmdlet 'i, bir etki alanında veya ormanda çalışan ÇEŞITLI Azure AD parola koruma proxy hizmetleriyle ilgili temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan proxy hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
+`Get-AzureADPasswordProtectionProxy`Cmdlet 'i, bir etki alanında veya ormanda çalışan çeşitli Azure AD parola koruma proxy hizmetleriyle ilgili temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan proxy hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
 
 Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 

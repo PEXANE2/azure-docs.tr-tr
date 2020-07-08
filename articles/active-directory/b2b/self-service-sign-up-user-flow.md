@@ -11,18 +11,16 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdae4a219408e811a49826999c85837aac449c0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551250"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
-|     |
-| --- |
-| Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Kuruluşunuz tarafından oluşturulan uygulamalar için Kullanıcı akışları oluşturabilirsiniz. Kullanıcı akışınızı bir uygulamayla ilişkilendirmek, bu uygulamanın kaydolmasına olanak tanır. Kullanıcı akışıyla ilişkilendirmek için birden fazla uygulama seçebilirsiniz. Kullanıcı akışını bir veya daha fazla uygulamayla ilişkilendirdikten sonra, uygulamayı ziyaret eden kullanıcılar, Kullanıcı akışında yapılandırılan seçenekleri kullanarak bir Konuk hesabı elde edebilir.
 
@@ -85,7 +83,7 @@ Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz
 3. Listeden self servis kaydolma Kullanıcı akışını seçin.
 4. **Özelleştir**altında **sayfa düzenleri**' ni seçin.
 5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı**taşı, **aşağı taşı**, **üste**taşı veya **en alta taşı**' yı seçin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Self Servis kaydolma Kullanıcı akışına uygulama ekleme
 
