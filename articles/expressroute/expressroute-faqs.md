@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987306"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
@@ -295,7 +294,7 @@ ExpressRoute Premium, aşağıdaki özelliklerin bir koleksiyonudur:
 * ExpressRoute bağlantı hattı üzerinde etkinleştirilenebilir VNET 'ler ve ExpressRoute Global Reach bağlantıları (varsayılan değer 10 ' dur). Daha fazla bilgi için bkz. [ExpressRoute limitleri](#limits) tablosu.
 * Office 365 bağlantısı
 * Microsoft Core ağı üzerinden genel bağlantı. Artık başka bir bölgedeki bir ExpressRoute bağlantı hattına sahip bir sanal ağı tek bir geopolitik bölgede bağlayabilirsiniz.<br>
-    **Örnekler**
+    **Örnekler:**
 
     *  Avrupa Batı 'da oluşturulan bir sanal ağı, Silicon Valley içinde oluşturulan bir ExpressRoute devresine bağlayabilirsiniz. 
     *  Microsoft eşlemesi ' nde, diğer geopolitik bölgelerden gelen önekler, örneğin, kuzeybatı batı 'daki SQL Azure, örneğin, Silicon Valley 'teki bir bağlantı hattı üzerinden tanıtılabilir.

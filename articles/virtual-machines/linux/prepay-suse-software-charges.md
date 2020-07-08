@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759291"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure yazılım planları için ön ödeme yapma
@@ -25,7 +24,7 @@ Azure portal SUSE ve RedHat yazılım planlarını satın alabilirsiniz. Bir pla
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ayar devre dışı bırakılmışsa, abonelik için bir EA yöneticisi olmanız gerekir.
 - Bulut çözümü sağlayıcısı (CSP) programı için, yönetici aracıları veya satış aracıları yazılım planlarını satın alabilir.
 
-## <a name="buy-a-software-plan"></a>Yazılım planı satın alma
+## <a name="buy-a-software-plan"></a>Yazılım planı satın alın
 
 1. Azure portal oturum açın ve [ayırmalar](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)' a gidin.
 2. **Ekle** ' ye tıklayın ve ardından satın almak istediğiniz yazılım planını seçin.
@@ -70,7 +69,7 @@ Bir ayırmayı yönetme hakkında bilgi edinmek için bkz. [Azure ayırmaların�
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure ayırmaları nelerdir?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Azure’da Rezervasyonları Yönetme](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [SUSE rezervasyon iskontosunun nasıl uygulanacağını anlayın](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

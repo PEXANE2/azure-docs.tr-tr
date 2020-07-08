@@ -3,12 +3,11 @@ title: Uygulamaları ve verileri havuz düğümlerine kopyalama
 description: Uygulama ve verileri havuz düğümlerine kopyalamayı öğrenin.
 ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e21b8551fb62c4335910fd05bb9590eaf6f7e35a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726834"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954902"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Uygulamaları ve verileri havuz düğümlerine kopyalama
 
@@ -19,13 +18,13 @@ Azure Batch, veri ve uygulamaların görevler tarafından kullanıma hazır olma
 Örnekler: 
 - Uygulamaları taşımak veya yüklemek için başlangıç görevi komut satırını kullanma
 
-- Bir Azure depolama hesabındaki belirli dosya veya kapsayıcıların listesini belirtin. Daha fazla bilgi için bkz. [rest belgelerinde # resourceFile ekleme](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile)
+- Bir Azure depolama hesabındaki belirli dosya veya kapsayıcıların listesini belirtin. Daha fazla bilgi için bkz. [rest belgelerinde # resourceFile ekleme](/rest/api/batchservice/pool/add#resourcefile)
 
-- Havuz üzerinde çalışan her iş, önce MyApplication. msi ile yüklenmesi gereken MyApplication. exe ' yi çalıştırır. Bu mekanizmayı kullanırsanız, başlangıç görevinin **Success için bekle** özelliğini **true**olarak ayarlamanız gerekir. Daha fazla bilgi için [rest belgelerine # startTask ekleme](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)bölümüne bakın.
+- Havuz üzerinde çalışan her iş, öncelikle MyApplication.msi yüklenmesi gereken MyApplication.exe çalışır. Bu mekanizmayı kullanırsanız, başlangıç görevinin **Success için bekle** özelliğini **true**olarak ayarlamanız gerekir. Daha fazla bilgi için [rest belgelerine # startTask ekleme](/rest/api/batchservice/pool/add#starttask)bölümüne bakın.
 
-- Havuzdaki **uygulama paketi başvuruları** : havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Uygulama paketiyle ilişkili bir Install komutu yoktur, ancak herhangi bir Install komutunu çalıştırmak için bir başlangıç görevi kullanabilirsiniz. Uygulamanız yükleme gerektirmiyorsa veya çok sayıda dosya içeriyorsa, bu yöntemi kullanabilirsiniz. Uygulama paketleri, çok sayıda dosya başvurularını küçük bir yük içine birleştirdiğinden çok sayıda dosya için idealdir. Tek bir görevde 100 ' den fazla ayrı kaynak dosyası eklemeyi denerseniz, Batch hizmeti tek bir görevde iç sistem sınırlamalarına karşı gelebilir. Ayrıca, aynı uygulamanın birçok farklı sürümüne sahip olabileceğiniz ve aralarında seçim yapmanız gereken durumlarda, uygulama paketlerini kullanın. Daha fazla bilgi için [batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma](https://docs.microsoft.com/azure/batch/batch-application-packages)makalesini okuyun.
+- Havuzdaki **uygulama paketi başvuruları** : havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Uygulama paketiyle ilişkili bir Install komutu yoktur, ancak herhangi bir Install komutunu çalıştırmak için bir başlangıç görevi kullanabilirsiniz. Uygulamanız yükleme gerektirmiyorsa veya çok sayıda dosya içeriyorsa, bu yöntemi kullanabilirsiniz. Uygulama paketleri, çok sayıda dosya başvurularını küçük bir yük içine birleştirdiğinden çok sayıda dosya için idealdir. Tek bir görevde 100 ' den fazla ayrı kaynak dosyası eklemeyi denerseniz, Batch hizmeti tek bir görevde iç sistem sınırlamalarına karşı gelebilir. Ayrıca, aynı uygulamanın birçok farklı sürümüne sahip olabileceğiniz ve aralarında seçim yapmanız gereken durumlarda, uygulama paketlerini kullanın. Daha fazla bilgi için [batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma](./batch-application-packages.md)makalesini okuyun.
 
-- **İş hazırlama görevi kaynak dosyaları**: işin çalışması için yüklenmesi gereken uygulamalar veya veriler için, ancak tüm havuzda yüklü olması gerekmez. Örneğin: havuzunuzun birçok farklı iş türü olması ve yalnızca bir iş türünün çalıştırmak için MyApplication. msi ihtiyacı varsa, yükleme adımını iş hazırlama görevine koymak mantıklı olur. İş hazırlama görevleri hakkında daha fazla bilgi için bkz. [Batch işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
+- **İş hazırlama görevi kaynak dosyaları**: işin çalışması için yüklenmesi gereken uygulamalar veya veriler için, ancak tüm havuzda yüklü olması gerekmez. Örneğin: havuzunuzun birçok farklı iş türü varsa ve yalnızca bir iş türünün çalışması MyApplication.msi gerekiyorsa, yükleme adımını bir iş hazırlama görevine koymak mantıklı olur. İş hazırlama görevleri hakkında daha fazla bilgi için bkz. [Batch işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma](./batch-job-prep-release.md).
 
 - **Görev kaynak dosyaları**: bir uygulama veya veriler yalnızca tek bir görevle ilgili olduğunda. Örneğin: beş göreviniz vardır, her biri farklı bir dosyayı işler ve sonra çıktıyı blob depolamaya yazar.  Bu durumda, her görevin kendi giriş dosyası bulunduğundan, giriş dosyası **Görevler kaynak dosyaları** koleksiyonunda belirtilmelidir.
 
@@ -41,7 +40,7 @@ Toplu işlem düğümlerine resmi olarak tümleşik olmayan toplu işlem düğü
 - Diğer Web hizmetlerinden/özel konumlardan veri yükleme
 - Ağ paylaşımından eşleme
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure depolama
 
 BLOB depolama, ölçeklenebilirlik hedeflerini indirir. Azure depolama dosya paylaşma ölçeklenebilirliği hedefleri, tek bir Blobun ile aynıdır. Boyut, ihtiyacınız olan düğüm ve havuzların sayısını etkileyecektir.
 

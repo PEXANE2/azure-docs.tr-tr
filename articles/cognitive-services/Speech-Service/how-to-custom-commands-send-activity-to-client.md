@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307922"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027622"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>İstemci uygulamasına özel komutlar etkinliği gönder
 
@@ -28,7 +27,7 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) veya üzeri. Bu kılavuzda Visual Studio 2019 kullanılmaktadır
 > * Konuşma hizmeti için bir Azure abonelik anahtarı: [ücretsiz olarak alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
 > * Önceden [oluşturulmuş özel komutlar uygulaması](quickstart-custom-commands-application.md)
 > * Bir konuşma SDK 'Sı etkin istemci uygulaması: [nasıl yapılır: konuşma SDK 'sını kullanarak istemci uygulamasıyla tümleştirme](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
      "device": "{SubjectDevice}"
    }
    ```
-1. Etkinlik Gönder eylemiyle yeni bir kural oluşturmak için **Kaydet** ' e tıklayın
+1. Etkinlik Gönder eylemiyle yeni bir kural oluşturmak için **Kaydet** ' e tıklayın, değişikliği **eğitme** ve **yayımlayın**
 
    > [!div class="mx-imgBorder"]
    > ![Etkinlik tamamlama kuralını gönder](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 
 [Nasıl yapılır: istemci uygulamasını konuşma SDK 'sı (Önizleme) Ile ayarlama](./how-to-custom-commands-setup-speech-sdk.md)bölümünde, konuşma SDK 'sı ile gibi komutları ele alan bir UWP istemci uygulaması oluşturdunuz `turn on the tv` `turn off the fan` . Bazı görseller eklendikçe, bu komutların sonucunu görebilirsiniz.
 
-Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **off** etiketli kutular ekleyin`MainPage.xaml`
+**Açık** veya **kapalı**şeklinde metin içeren etiketli kutular eklemek Için, aşağıdaki XML StackPanel bloğunu öğesine ekleyin `MainPage.xaml` .
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **off** eti
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>Başvuru kitaplıkları ekleme
@@ -79,15 +82,21 @@ Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **off** eti
 Bir JSON yükü oluşturduğunuzdan, seri durumdan çıkarmayı işlemek için [JSON.net](https://www.newtonsoft.com/json) kitaplığına bir başvuru eklemeniz gerekir.
 
 1. Çözümünüz için sağ istemci.
-1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **yükler** ' i seçin 
-1. Güncelleştirme listesinde **Newtonsoft.js** arama yapın, **Microsoft. Netcore. Üniversalwindowsplatform** 'U en yeni sürüme güncelleştirin
+1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **Araştır** ' ı seçin 
+1. **ÜzerindeNewtonsoft.js**zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler**' e gidin, güncelleştirmek için **üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
 
-> [!div class="mx-imgBorder"]
-> ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. Ayrıca, **Microsoft. NETCore. Üniversalwindowsplatform** adlı NuGet paketinin en az 6.2.10 olduğundan emin olun. Bu kılavuz, 6.2.10 sürümünü kullanıyor.
 
 ' MainPage. xaml. cs ' içinde, Ekle
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>Alınan yükü işle
 

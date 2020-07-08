@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84048808"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL veritabanı, Azure SYNAPSE Analytics, Data Factory ve Power BI SaaS analizlerini keşfet
@@ -79,7 +78,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 Bu öğreticide, Bilet satış verilerine ilişkin analizler incelenmektedir. Bu adımda, tüm kiracılar için bilet verileri oluşturursunuz. Sonraki bir adımda bu veriler Analize çıkarılır. Farklı bilet satın alma desenlerinin bir aralığını açığa çıkarmak için yeterli veri bulundurabilmeniz için _kiracılar toplu işlemini sağladığınızdan emin olun_ (daha önce açıklandığı gibi).
 
-1. PowerShell ıSE 'de *. ..\Learning Modules\işletimsel Analtics\tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*açın ve aşağıdaki değeri ayarlayın:
+1. PowerShell ıSE 'de *. ..\Learning Modules\işletimsel Analiztics\tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*açın ve aşağıdaki değeri ayarlayın:
     - **$DemoScenario**  =  **1** tüm havalandırma olaylardaki olaylar için bilet satın al
 2. Komut dosyasını çalıştırmak ve tüm havalandırma noktaları için bilet satın alma geçmişi oluşturmak için **F5** tuşuna basın. 20 kiracılar ile, betik on binlerce bilet üretir ve 10 dakika veya daha uzun sürebilir.
 
@@ -122,7 +121,7 @@ Nesne Gezgini:
 1. Mevcut nesneleri araştırmak için **wingtiphazırlama \<user\> ** depolama hesabı ' na tıklayın.
 1. **Bloblar** kutucuğuna tıklayın
 1. Kapsayıcı **ConfigFile** öğesine tıklayın
-1. **ConfigFile** 'ın **tableconfig. JSON**adlı bir JSON dosyası içerdiğini doğrulayın. Bu dosya, kaynak ve hedef tablo adlarını, sütun adlarını ve izleyici sütun adını içerir.
+1. **ConfigFile** **üzerindeTableConfig.js**adlı bir JSON dosyası içerdiğini doğrulayın. Bu dosya, kaynak ve hedef tablo adlarını, sütun adlarını ve izleyici sütun adını içerir.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 

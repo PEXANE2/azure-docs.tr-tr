@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343209"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
@@ -25,9 +24,9 @@ Kuralın üçüncü bölümü özelliğidir. Bir özellik, bir eşleşme koşull
 Kullanılabilir özellik türleri şunlardır:
 
 * [Erişim](#access)
-* [Önbelleğe alma](#caching)
+* [Önbelleğe Alma](#caching)
 * [Yorum](#comment)
-* [Üst Bilgiler](#headers)
+* [Üst bilgiler](#headers)
 * [Günlükler](#logs)
 * [İyileştirme](#optimize)
 * [Kaynak](#origin)
@@ -49,7 +48,7 @@ Bu özellikler, içeriğe erişimi denetlemek için tasarlanmıştır.
 
 **[En üste geri dön](#top)**
 
-### <a name="caching"></a><a name="caching"></a>Önbelleğe alma
+### <a name="caching"></a><a name="caching"></a>Önbelleğe Alma
 
 Bu özellikler, içeriğin ne zaman ve nasıl önbelleğe alınacağını özelleştirmek için tasarlanmıştır.
 
@@ -88,7 +87,7 @@ Açıklama özelliği, bir notun bir kural içine eklenmesine izin verir.
 
 **[En üste geri dön](#top)**
 
-### <a name="headers"></a><a name="headers"></a>Üst Bilgiler
+### <a name="headers"></a><a name="headers"></a>Üst bilgiler
 
 Bu özellikler, istek veya yanıta üstbilgiler eklemek, değiştirmek veya silmek için tasarlanmıştır.
 

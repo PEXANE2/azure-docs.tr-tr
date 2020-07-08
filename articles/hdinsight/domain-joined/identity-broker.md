@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921334"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için KIMLIK Aracısı (Önizleme) kullan
 
@@ -38,7 +37,7 @@ KIMLIK Aracısı, parola sağlamadan Multi-Factor Authentication kullanarak ESP 
 
 KIMLIK Aracısı etkin bir ESP kümesi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Bir ESP kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için bkz. [ESP Ile HDInsight kümesi oluşturma](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. **HDıNSIGHT kimlik Broker 'ı etkinleştir**' i seçin.
 
@@ -89,6 +88,8 @@ KIMLIK Aracısı özelliği kümeye bir ek VM ekler. Bu VM kimlik Aracısı dü�
 ## <a name="tool-integration"></a>Araç tümleştirmesi
 
 HDInsight [IntelliJ eklentisi](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) , OAuth 'ı destekleyecek şekilde güncelleştirilir. Kümeye bağlanmak ve işleri göndermek için bu eklentiyi kullanabilirsiniz.
+
+Not defterinden yararlanmak ve işleri göndermek için [vs Code Için Spark & Hive araçlarını](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) da kullanabilirsiniz.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS Parola karması olmadan SSH erişimi
 

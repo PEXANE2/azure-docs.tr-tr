@@ -4,10 +4,9 @@ description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılam
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322465"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
@@ -42,7 +41,7 @@ Tanılama günlükleri varsayılan olarak devre dışıdır. Tanılama günlükl
 
 Event Hubs aşağıdaki kategoriler için tanılama günlüklerini yakalar:
 
-| Kategori | Description | 
+| Kategori | Açıklama | 
 | -------- | ----------- | 
 | Arşiv günlükleri | Yakalama hatalarıyla ilgili olarak, [Event Hubs yakalama](event-hubs-capture-overview.md) işlemlerine ilişkin bilgileri yakalar. |
 | İşletimsel Günlükler | Azure Event Hubs ad alanında gerçekleştirilen tüm yönetim işlemlerini yakalayın. Azure Event Hubs üzerinde gerçekleştirilen yüksek miktarda veri işlemi nedeniyle veri işlemleri yakalanmaz. |
@@ -59,7 +58,7 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 
 Arşiv günlüğü JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-Name | Description
+Name | Açıklama
 ------- | -------
 Silinecek | Başarısız olan görevin açıklaması
 Etkinlik kimliği | İzleme için kullanılan iç KIMLIK
@@ -97,7 +96,7 @@ Aşağıdaki kod arşiv günlüğü JSON dizesinin bir örneğidir:
 
 İşletimsel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-Name | Description
+Name | Açıklama
 ------- | -------
 Etkinlik kimliği | İzleme amacıyla kullanılan iç KIMLIK |
 EventName | İşlem adı |
@@ -129,7 +128,7 @@ Example:
 ## <a name="autoscale-logs-schema"></a>Otomatik ölçeklendirme günlüğü şeması
 Otomatik ölçeklendirme günlüğü JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ---- | ----------- | 
 | TrackingId | İzleme amacıyla kullanılan iç KIMLIK |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI. |
@@ -148,7 +147,7 @@ Otomatik ölçeklendirme günlüğü JSON, aşağıdaki tabloda listelenen öğe
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka Coordinator günlükleri şeması
 Kafka Coordinator log JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ---- | ----------- | 
 | No | İzleme amacıyla kullanılan istek KIMLIĞI |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
@@ -176,7 +175,7 @@ Kafka Coordinator log JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 ## <a name="kafka-user-error-logs-schema"></a>Kafka Kullanıcı hatası günlüğü şeması
 Kafka Kullanıcı hatası günlüğü JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ---- | ----------- |
 | TrackingId | İzleme amacıyla kullanılan izleme KIMLIĞI. |
 | Uz | Ad alanı adı |
@@ -191,7 +190,7 @@ Kafka Kullanıcı hatası günlüğü JSON, aşağıdaki tabloda listelenen öğ
 
 Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ---  | ----------- | 
 | kaynak grubundaki | Azure abonelik KIMLIĞI |
 | Uz | Ad alanı adı |
@@ -219,7 +218,7 @@ Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelen
 ## <a name="customer-managed-key-user-logs"></a>Müşteri tarafından yönetilen anahtar Kullanıcı günlükleri
 Müşteri tarafından yönetilen anahtar Kullanıcı günlüğü JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ---- | ----------- | 
 | Kategori | İleti kategorisi türü. Şu değerlerden biri: **hata** ve **bilgi** |
 | ResourceId | Azure abonelik KIMLIĞI ve ad alanı adı içeren iç kaynak KIMLIĞI |

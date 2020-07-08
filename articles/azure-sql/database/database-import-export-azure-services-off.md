@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045308"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
@@ -71,7 +70,7 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
 [SqlPackage 'in en son sürümünü indirip yükleyin](https://docs.microsoft.com/sql/tools/sqlpackage-download).
 
-Daha fazla bilgi için bkz. [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+Daha fazla bilgi için bkz. [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage).
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Veritabanına VM erişimine izin vermek için bir güvenlik duvarı kuralı oluşturma
 
@@ -91,7 +90,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -101,7 +100,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 Çoğu üretim ortamında, ölçek ve performans için SqlPackage yardımcı programının kullanılmasını öneririz. BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Bu örnek, Active Directory evrensel kimlik doğrulamasıyla SqlPackage. exe kullanarak bir veritabanını dışarı aktarmayı gösterir. Ortamınıza özgü değerlerle değiştirin.
+Bu örnekte, Active Directory evrensel kimlik doğrulamasıyla SqlPackage.exe kullanarak bir veritabanını dışarı aktarma işlemi gösterilmektedir. Ortamınıza özgü değerlerle değiştirin.
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"

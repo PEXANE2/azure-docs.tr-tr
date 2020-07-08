@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724726"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954185"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD oluşturma sırasında sık karşılaşılan sorunlar
 
@@ -20,7 +19,7 @@ Bu sık sorulan sorular (SSS), Azure sanal makine teklifiniz için bir sanal sab
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Premium depolamada bulunan bir VHD 'yi kullanarak Azure portal bir sanal makine oluşturmak Nasıl yaparım?.
 
-Azure Marketi Şu anda yönetilen depolama veya Azure Premium Depolama 'daki görüntülerden sanal makine teklifleri oluşturmayı desteklemez. Ayrıntılar için bkz. [Azure yönetilen disklere genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+Azure Marketi Şu anda yönetilen depolama veya Azure Premium Depolama 'daki görüntülerden sanal makine teklifleri oluşturmayı desteklemez. Ayrıntılar için bkz. [Azure yönetilen disklere genel bakış](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Teklifler için 2. nesil VM 'Leri kullanabilir miyim?
 
@@ -45,9 +44,9 @@ Sertifikaların oluşturulması, [Azure VM görüntüsü sertifikalarında](http
 
 Azure Resource Manager dağıtım modelini kullanıyorsanız, üç seçeneğiniz vardır:
 
-* [Azure portal kullanarak rota tabanlı bir VPN ağ geçidi oluşturma](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Azure PowerShell kullanarak rota tabanlı bir VPN ağ geçidi oluşturma](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [CLı kullanarak rota temelli VPN ağ geçidi oluşturma](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Azure portal kullanarak rota tabanlı bir VPN ağ geçidi oluşturma](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Azure PowerShell kullanarak rota tabanlı bir VPN ağ geçidi oluşturma](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [CLı kullanarak rota temelli VPN ağ geçidi oluşturma](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Azure tabanlı VM 'lerde Microsoft sunucu yazılımını çalıştırmaya yönelik Microsoft destek ilkeleri nelerdir?
 
@@ -75,4 +74,4 @@ Daha fazla bilgi için şu makalelere bakın:
 
 VHD 'lerimin içinden bir görüntü oluşturmaya her seferinde, bu Azure PowerShell "VHD, kaynak olarak görüntü deposuna zaten kaydedildi" hatasını alıyorum. Azure 'da bu ada sahip herhangi bir görüntü oluşturmadım veya bu adı taşıyan bir resim bulmadı. Bu sorunu nasıl çözebilirim?
 
-Bu sorun genellikle kilidi olan bir VHD 'den bir VM oluşturduysanız görüntülenir. Bu VHD 'den ayrılmış bir VM olmadığından emin olun ve işlemi yeniden deneyin. Bu sorun devam ederse bir destek bileti açın. Bkz. [Iş ortağı merkezi desteği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Bu sorun genellikle kilidi olan bir VHD 'den bir VM oluşturduysanız görüntülenir. Bu VHD 'den ayrılmış bir VM olmadığından emin olun ve işlemi yeniden deneyin. Bu sorun devam ederse bir destek bileti açın. Bkz. [Iş ortağı merkezi desteği](support.md).

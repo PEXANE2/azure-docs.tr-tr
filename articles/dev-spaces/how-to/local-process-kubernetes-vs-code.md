@@ -1,18 +1,17 @@
 ---
-title: Visual Studio Code (Önizleme) ile Kubernetes ile yerel Işlem kullanma
+title: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlamak için Kubernetes ile yerel Işlemi nasıl kullanacağınızı öğrenin Azure Dev Spaces
 keywords: Kubernetes, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar ile yerel Işlem
 ms.openlocfilehash: 23a94528ffa4e9e412f472349ea26d1a14003616
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316743"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Visual Studio Code (Önizleme) ile Kubernetes ile yerel Işlem kullanma
+# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
 
 Kubernetes ile yerel Işlem, geliştirme bilgisayarınızda kod çalıştırmanıza ve hata ayıklamanıza karşın uygulamanızın veya hizmetlerinizin geri kalanı ile Kubernetes kümenize bağlı olmaya devam etmenize olanak tanır. Örneğin, birbirine bağlı çok sayıda hizmet ve veritabanına sahip büyük bir mikro hizmet mimariniz varsa, bu bağımlılıkların geliştirme bilgisayarınızda çoğaltılması zor olabilir. Ayrıca, iç döngü geliştirme sırasında her kod değişikliği için Kubernetes kümenize kod oluşturup dağıtmak, bir hata ayıklayıcıyla yavaş, zaman alabilir ve kullanılması zor olabilir.
 
@@ -29,7 +28,7 @@ Bu kılavuzda, Kubernetes ile yerel Işlem kullanarak, geliştirme bilgisayarın
 
 Bu kılavuz, geliştirme bilgisayarınızı bir Kubernetes kümesine bağlamayı göstermek için [Azure dev Spaces bisiklet paylaşımı örnek uygulamasını][bike-sharing-github] kullanır. Zaten bir Kubernetes kümesinde çalışan bir uygulamanız varsa, aşağıdaki adımları izleyerek kendi hizmetlerinizin adlarını da kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli].
@@ -130,13 +129,13 @@ Geliştirme Bilgisayarınız, durum çubuğu turuncu kapandığında ve dev Spac
 ![Geliştirme bilgisayarı bağlı](../media/local-process-kubernetes-vs-code/development-computer-connected.png)
 
 > [!NOTE]
-> Alt görevler başlatıldığında hizmet adı, bağlantı noktası veya başlatma görevi istenmez. Bu değerler *. vscode/Tasks. JSON*içine kaydedilir.
+> Alt görevler başlatıldığında hizmet adı, bağlantı noktası veya başlatma görevi istenmez. Bu değerler *üzerinde. vscode/tasks.js*kaydedilir.
 
 Geliştirme Bilgisayarınız bağlandıktan sonra, değiştirmek istediğiniz hizmet için trafik geliştirme bilgisayarınıza yeniden yönlendirmeye başlar.
 
 ## <a name="set-a-break-point"></a>Kesme noktası ayarlama
 
-[Sunucu. js][server-js-breakpoint] ' yi açın ve imlecinizi buraya yerleştirmek için satır 233 ' de bir yere tıklayın. *F9* tuşuna basarak bir kesme noktası ayarlayın veya *Çalıştır* ' a tıkladıktan sonra *kesme noktasını değiştirin*.
+[server.js][server-js-breakpoint] açın ve imlecinizi buraya yerleştirmek için satır 233 ' de bir yere tıklayın. *F9* tuşuna basarak bir kesme noktası ayarlayın veya *Çalıştır* ' a tıkladıktan sonra *kesme noktasını değiştirin*.
 
 Ortak URL 'YI açarak örnek uygulamaya gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* öğesini seçin ve ardından kiralamak istediğiniz bir bisiklet seçin. Bisiklet görüntüsünün yüklenmediğine dikkat edin. Visual Studio Code dön ve 233 satırını gözlemle vurgulanır. Ayarladığınız kesme noktası 233 satırındaki hizmeti duraklattı. Hizmeti sürdürmek için *F5* tuşuna basın veya *Çalıştır* ' a tıkladıktan sonra *devam edin*. Tarayıcınıza dönün ve bisiklet için bir yer tutucu görüntüsü gördiğinizi doğrulayın.
 

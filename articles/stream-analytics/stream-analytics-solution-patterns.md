@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535791"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037520"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
@@ -30,13 +29,13 @@ Bu çözüm modelinde, bir tarayıcıda olay kaynağından Power BI panosuna en 
 
 ## <a name="use-sql-for-dashboard"></a>Pano için SQL kullanma
 
-Power BI panosu düşük gecikme süresi sunar, ancak tam kapsamlı Power BI raporları üretmek için kullanılamaz. Yaygın bir raporlama deseninin verileri, önce SQL veritabanına çıktı olarak kullanılır. Daha sonra Power BI SQL bağlayıcısını kullanarak en son veriler için SQL 'i sorgulayın.
+Power BI panosu düşük gecikme süresi sunar, ancak tam kapsamlı Power BI raporları üretmek için kullanılamaz. Yaygın bir raporlama deseninin verileri SQL veritabanı 'na ilk kez çıktı olarak kaydedilir. Daha sonra Power BI SQL bağlayıcısını kullanarak en son veriler için SQL 'i sorgulayın.
 
 ![ASA SQL panosu](media/stream-analytics-solution-patterns/sqldashboard.png)
 
 SQL veritabanı kullanmak, daha fazla esneklik elde etmenizi sağlar, ancak biraz daha yüksek bir gecikme olur. Bu çözüm, gecikme süresi bir saniyeden daha büyük olan işler için idealdir. Bu yöntemde, raporlar için verileri daha fazla dilimleyip zarmak ve çok daha fazla görselleştirme seçeneği için Power BI yeteneklerini en üst düzeye çıkarabilirsiniz. Ayrıca, Tableau gibi diğer Pano çözümlerini kullanma esnekliği de elde edersiniz.
 
-SQL yüksek bir işleme veri deposu değildir. Azure Stream Analytics bir SQL veritabanı için en yüksek aktarım hızı şu anda 24 MB/sn 'nin üzerinde. Çözümünüzdeki olay kaynakları daha yüksek bir hızda veri üretemiyor, SQL 'e çıkış oranını azaltmak için Stream Analytics işlem mantığını kullanmanız gerekir. Filtreleme, pencereli toplamalar, zamana bağlı birleştirmelere göre desenler ve analitik işlevler gibi teknikler de kullanılabilir. SQL için çıkış oranı, [Azure SQL veritabanı 'na Azure Stream Analytics çıktı](stream-analytics-sql-output-perf.md)bölümünde açıklanan teknikler kullanılarak daha da iyileştirilebilir.
+SQL yüksek bir işleme veri deposu değildir. Azure Stream Analytics SQL veritabanı 'na en yüksek aktarım hızı, şu anda 24 MB/sn 'nin üzerinde. Çözümünüzdeki olay kaynakları daha yüksek bir hızda veri üretemiyor, SQL 'e çıkış oranını azaltmak için Stream Analytics işlem mantığını kullanmanız gerekir. Filtreleme, pencereli toplamalar, zamana bağlı birleştirmelere göre desenler ve analitik işlevler gibi teknikler de kullanılabilir. SQL için çıkış oranı, [Azure SQL veritabanı 'na Azure Stream Analytics çıktı](stream-analytics-sql-output-perf.md)bölümünde açıklanan teknikler kullanılarak daha da iyileştirilebilir.
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Olay mesajlaşması ile uygulamanıza gerçek zamanlı Öngörüler ekleyin
 
@@ -72,7 +71,7 @@ Bu model sistemin esnekliğini ve yönetilebilirliğini geliştirir. Ancak, Stre
 
 ## <a name="use-reference-data-for-application-customization"></a>Uygulama özelleştirmesi için başvuru verilerini kullanma
 
-Azure Stream Analytics başvuru verileri özelliği, uyarı eşiği, işleme kuralları ve [bölge dilimleri](geospatial-scenarios.md)gibi son kullanıcı özelleştirmesi için özel olarak tasarlanmıştır. Uygulama katmanı, parametre değişikliklerini kabul edebilir ve bunları bir SQL veritabanında saklayabilir. Stream Analytics işi veritabanındaki değişiklikleri düzenli aralıklarla sorgular ve özelleştirme parametrelerini bir başvuru verileri birleşimi aracılığıyla erişilebilir hale getirir. Uygulama özelleştirmesi için başvuru verilerini kullanma hakkında daha fazla bilgi için bkz. [SQL başvuru verileri](sql-reference-data.md) ve [başvuru verileri katılımı](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+Azure Stream Analytics başvuru verileri özelliği, uyarı eşiği, işleme kuralları ve [bölge dilimleri](geospatial-scenarios.md)gibi son kullanıcı özelleştirmesi için özel olarak tasarlanmıştır. Uygulama katmanı, parametre değişikliklerini kabul edebilir ve bunları SQL veritabanı 'nda saklayabilir. Stream Analytics işi veritabanındaki değişiklikleri düzenli aralıklarla sorgular ve özelleştirme parametrelerini bir başvuru verileri birleşimi aracılığıyla erişilebilir hale getirir. Uygulama özelleştirmesi için başvuru verilerini kullanma hakkında daha fazla bilgi için bkz. [SQL başvuru verileri](sql-reference-data.md) ve [başvuru verileri katılımı](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Bu model, kural eşiklerinin başvuru verilerinden tanımlandığı bir kural altyapısını uygulamak için de kullanılabilir. Kurallar hakkında daha fazla bilgi için, bkz. [Azure Stream Analytics yapılandırılabilir eşik tabanlı kuralları işleme](stream-analytics-threshold-based-rules.md).
 

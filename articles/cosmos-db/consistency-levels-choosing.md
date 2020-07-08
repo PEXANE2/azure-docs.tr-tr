@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921846"
 ---
 # <a name="choose-the-right-consistency-level"></a>Doğru tutarlılık düzeyini seçme 
 
-Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya bağlı dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasında temel zorunluluğunu getirir yapın. Ticari olarak kullanılabilen en çok dağıtılmış veritabanları, geliştiricilerin iki üstün tutarlılık modeli arasından seçim yapmasını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Azure Cosmos DB, geliştiricilerin iyi tanımlanmış beş tutarlılık modeli arasından seçim yapmasına olanak sağlar: *güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek* ve *nihai*. Bu tutarlılık modellerinin her biri iyi tanımlanmış, sezgisel ve belirli gerçek dünyada senaryolar için kullanılabilir. Beş tutarlılık modelinin her biri, kesin [kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) sağlar ve kapsamlı SLA 'lar tarafından desteklenir. Aşağıdaki basit konular, birçok yaygın senaryoda doğru seçim yapmanıza yardımcı olur.
+Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya bağlı dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasında temel zorunluluğunu getirir yapın. Ticari olarak kullanılabilen en çok dağıtılmış veritabanları, geliştiricilerin iki üstün tutarlılık modeli arasından seçim yapmasını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Azure Cosmos DB, geliştiricilerin iyi tanımlanmış beş tutarlılık modeli arasından seçim yapmasına olanak sağlar: *güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek* ve *nihai*. Bu tutarlılık modellerinin her biri iyi tanımlanmış, sezgisel ve belirli gerçek dünyada senaryolar için kullanılabilir. Beş tutarlılık modelinin her biri, kesin [kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) sağlar ve kapsamlı SLA 'lar tarafından desteklenir. Hesap düzeyinde varsayılan bir tutarlılık yapılandırabilir ve [bunu istek düzeyinde geçersiz kılabilirsiniz](how-to-manage-consistency.md#override-the-default-consistency-level). Aşağıdaki basit konular, birçok yaygın senaryoda doğru seçim yapmanıza yardımcı olur.
 
 ## <a name="sql-api-and-table-api"></a>SQL API ve Tablo API'si
 

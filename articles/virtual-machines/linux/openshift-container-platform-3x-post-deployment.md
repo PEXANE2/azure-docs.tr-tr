@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759525"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
@@ -34,9 +33,9 @@ Kimlik doğrulaması için Azure Active Directory kullanmak için önce bir Azur
 Bu adımlar, uygulama kaydını oluşturmak için Azure CLı ve izinleri ayarlamak için GUI (portal) kullanır. Uygulama kaydını oluşturmak için aşağıdaki beş bilgi parçasına ihtiyacınız vardır:
 
 - Görünen ad: uygulama kaydı adı (örneğin, OCPAzureAD)
-- Giriş sayfası: OpenShift konsol URL 'SI (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Tanımlayıcı URI: OpenShift konsol URL 'SI (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Yanıt URL 'SI: Ana genel URL ve uygulama kaydı adı (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
+- Giriş sayfası: OpenShift konsol URL 'SI (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Tanımlayıcı URI: OpenShift konsol URL 'SI (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Yanıt URL 'SI: Ana genel URL ve uygulama kaydı adı (örneğin, `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` )
 - Parola: güvenli parola (güçlü bir parola kullanın)
 
 Aşağıdaki örnek, önceki bilgileri kullanarak bir uygulama kaydı oluşturur:
@@ -69,7 +68,7 @@ Sonraki bir adım için komuttan döndürülen AppID özelliğini bir yere göz 
 
 Azure portalında:
 
-1. **Azure Active Directory** > **uygulama kaydı**' nı seçin.
+1. **Azure Active Directory**  >  **uygulama kaydı**' nı seçin.
 2. Uygulama kaydınızı arayın (örneğin, OCPAzureAD).
 3. Sonuçlarda uygulama kaydı ' na tıklayın.
 4. **Ayarlar**altında **gerekli izinler**' i seçin.
@@ -197,7 +196,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Azure için Hizmet Aracısı açın veya OSBA, doğrudan OpenShift 'ten Azure Cloud Services sağlamanıza olanak tanır. OSBA Azure için açık bir Hizmet Aracısı API uygulamasıdır. Açık Hizmet Aracısı API 'SI, bulut Yerel uygulamalarının, bulut hizmetlerini kilitleme olmadan yönetmek için kullanabileceği bulut sağlayıcıları için ortak bir dil tanımlayan bir belirtimdir.
 
-OpenShift üzerinde OSBA yüklemek için burada bulunan yönergeleri izleyin: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+OpenShift üzerinde OSBA yüklemek için burada bulunan yönergeleri izleyin: https://github.com/Azure/open-service-broker-azure#openshift-project-template . 
 > [!NOTE]
 > Tüm yükleme bölümünün değil, yalnızca OpenShift proje şablonu bölümündeki adımları uygulayın.
 

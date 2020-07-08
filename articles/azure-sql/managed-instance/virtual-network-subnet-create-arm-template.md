@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: d6458794b8d3c5ba68109dbc90a075d6a2a577b9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711332"
 ---
-# <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için sanal ağ oluşturma
+# <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için sanal ağ oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, Azure SQL yönetilen örneğini dağıtabileceğiniz geçerli bir sanal ağ ve alt ağ oluşturma açıklanır.

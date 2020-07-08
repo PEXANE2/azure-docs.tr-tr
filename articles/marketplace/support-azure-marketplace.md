@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 8615a853ea218c0598f33d87d39c9ead15709cc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828109"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955463"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -43,10 +42,9 @@ Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiy
 | E-posta:[gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM avantajları ve program soruları için destek. | İş saatleri Pasifik saati dilimlidir. |  
 | E-posta:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure logoları ve marka kullanımı hakkında soruların yanıtları. |  |  
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ticari Market yayımcı Kılavuzu sayfasını](https://docs.microsoft.com/azure/marketplace/)ziyaret edin.
-* [Iş Ortağı Merkezi 'nde ticari Market programı desteği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)hakkında daha fazla bilgi edinin.
+* [Ticari Market yayımcı Kılavuzu sayfasını](index.yml)ziyaret edin.
+* [Iş Ortağı Merkezi 'nde ticari Market programı desteği](partner-center-portal/support.md)hakkında daha fazla bilgi edinin.
 
 ---

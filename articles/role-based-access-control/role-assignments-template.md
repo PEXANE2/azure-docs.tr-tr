@@ -14,10 +14,9 @@ ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392463"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
@@ -363,7 +362,7 @@ Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sor
 
 Azure RBAC 'de, bir Azure kaynağına erişimi kaldırmak için rol atamasını kaldırırsınız. Şablon kullanarak rol atamasını kaldırmanın bir yolu yoktur. Rol atamasını kaldırmak için, gibi diğer araçları kullanmanız gerekir:
 
-- [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure portalındaki](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
 - [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)

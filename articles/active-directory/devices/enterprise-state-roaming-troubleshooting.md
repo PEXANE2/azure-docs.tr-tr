@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604548"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory Enterprise State Roaming ayarları sorunlarını giderme
 
@@ -54,7 +53,7 @@ Bu bölüm Enterprise State Roaming ilgili sorunları gidermeye ve tanılamaya y
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Eşitlemeyi doğrulama ve "ayarlarınızı eşitleme" ayarları sayfası 
 
-1. Windows 10 PC 'nizi Enterprise State Roaming izin verecek şekilde yapılandırılmış bir etki alanına katıldıktan sonra iş hesabınızla oturum açın. **Ayarlar** > **Accounts**hesaplar > ' a gidin,**Ayarlarınızı eşitleyin** ve eşitlemenin ve bireysel ayarların açık olduğunu ve Ayarlar sayfasının en üst tarafında iş hesabınızla eşitlediğiniz olduğunu doğrulayın. Aynı hesabın, **Ayarlar** > **hesaplar** > **bilgileriniz**içinde oturum açma hesabınız olarak da kullanıldığını onaylayın. 
+1. Windows 10 PC 'nizi Enterprise State Roaming izin verecek şekilde yapılandırılmış bir etki alanına katıldıktan sonra iş hesabınızla oturum açın. **Ayarlar**  >  **hesaplar**'  >  a gidin,**Ayarlarınızı eşitleyin** ve eşitlemenin ve bireysel ayarların açık olduğunu ve Ayarlar sayfasının en üst tarafında iş hesabınızla eşitlediğiniz olduğunu doğrulayın. Aynı hesabın, **Ayarlar**  >  **hesaplar**  >  **bilgileriniz**içinde oturum açma hesabınız olarak da kullanıldığını onaylayın. 
 1. Görev çubuğunu ekranın sağ veya üst tarafına taşıma gibi bazı değişiklikler yaparak, eşitlemenin birden çok makine arasında çalıştığını doğrulayın. İkinci makineye beş dakika içinde yayan değişikliği izleyin. 
 
    * Ekranı kilitlemek ve kilidini açmak (Win + L), eşitlemenin tetiklenmesine yardımcı olabilir.
@@ -67,12 +66,12 @@ Bu bölüm Enterprise State Roaming ilgili sorunları gidermeye ve tanılamaya y
 Enterprise State Roaming, cihazın Azure AD 'ye kaydedilmesini gerektirir. Enterprise State Roaming özgü olmamakla birlikte, aşağıdaki yönergeleri izleyerek Windows 10 Istemcisinin kaydedildiğini ve parmak izini, Azure AD ayarları URL 'sini, NGC durumunu ve diğer bilgileri onaylamanız yardımcı olabilir.
 
 1. Yükseltbırakılmamış komut istemi ' ni açın. Bunu Windows 'ta yapmak için, çalıştırma başlatıcısı 'nı (Win + R) açın ve açmak için "cmd" yazın.
-1. Komut istemi açıldıktan sonra, "*dsregcmd. exe/status*" yazın.
+1. Komut istemi açıldıktan sonra, "*dsregcmd.exe/Status*" yazın.
 1. Beklenen çıkış için, **Azureadkatılmış** alan DEĞERI "Yes" olmalıdır, **Wamdefaultset** alan değeri "Yes" olmalıdır ve **wamdefaultguid** alan değeri sonunda "(AZUREAD)" ile bir GUID olmalıdır.
 
-**Olası sorun**: **wamdefaultset** ve **azureadkatılmış** her ikisi de alan değerinde "Hayır", CIHAZıN etki alanına katılmış ve Azure AD 'ye kayıtlı olduğu ve cihaz eşitlenmediği için. Bunu gösteriyorsa cihazın, ilkenin uygulanmasını beklemesi veya Azure AD 'ye bağlanılırken cihazın kimlik doğrulaması başarısız olması gerekebilir. Kullanıcının ilkenin uygulanması için birkaç saat beklemeniz gerekebilir. Diğer sorun giderme adımları, yeniden oturum açıp tekrar oturum açarak veya Görev Zamanlayıcı görevi başlatarak, tekrar kaydolmayı yeniden denemeyi içerebilir. Bazı durumlarda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd. exe/Leave*" komutunu çalıştırın, yeniden başlatma ve kayıt yeniden deneniyor bu sorunla ilgili yardımcı olabilir.
+**Olası sorun**: **wamdefaultset** ve **azureadkatılmış** her ikisi de alan değerinde "Hayır", CIHAZıN etki alanına katılmış ve Azure AD 'ye kayıtlı olduğu ve cihaz eşitlenmediği için. Bunu gösteriyorsa cihazın, ilkenin uygulanmasını beklemesi veya Azure AD 'ye bağlanılırken cihazın kimlik doğrulaması başarısız olması gerekebilir. Kullanıcının ilkenin uygulanması için birkaç saat beklemeniz gerekebilir. Diğer sorun giderme adımları, yeniden oturum açıp tekrar oturum açarak veya Görev Zamanlayıcı görevi başlatarak, tekrar kaydolmayı yeniden denemeyi içerebilir. Bazı durumlarda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd.exe/Leave*" komutunu çalıştırın, yeniden başlatma ve kayıt yeniden deneniyor bu sorunla ilgili yardımcı olabilir.
 
-**Olası sorun**: **settingsurl** alanı boş ve cihaz eşitlenmedi. Azure Active Directory portalında Enterprise State Roaming etkinleştirilmeden önce Kullanıcı cihazda en son oturum açmış olabilir. Cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. İsteğe bağlı olarak, portalda BT yöneticisinin **Azure Active Directory** > **cihazlara** > gitmesini**Enterprise State Roaming** , **kullanıcıların ayarları ve uygulama verilerini cihazlar arasında eşitlemesine izin verebilir**. Yeniden etkinleştirildikten sonra, cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. Bu sorunu çözmezse, hatalı bir cihaz sertifikası varsa **Settingsurl** boş olabilir. Bu durumda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd. exe/Leave*" çalıştırmak, yeniden başlatmak ve kayıt yeniden denemek bu sorunla ilgili yardımcı olabilir.
+**Olası sorun**: **settingsurl** alanı boş ve cihaz eşitlenmedi. Azure Active Directory portalında Enterprise State Roaming etkinleştirilmeden önce Kullanıcı cihazda en son oturum açmış olabilir. Cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. İsteğe bağlı olarak, portalda BT yöneticisinin **Azure Active Directory**  >  **cihazlara**gitmesini  >  **Enterprise State Roaming** , **kullanıcıların ayarları ve uygulama verilerini cihazlar arasında eşitlemesine izin verebilir**. Yeniden etkinleştirildikten sonra, cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. Bu sorunu çözmezse, hatalı bir cihaz sertifikası varsa **Settingsurl** boş olabilir. Bu durumda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd.exe/Leave*" komutunu çalıştırın, yeniden başlatma ve kayıt yeniden deneniyor bu sorunla ilgili yardımcı olabilir.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming ve Multi-Factor Authentication 
 
@@ -84,7 +83,7 @@ Bazı koşullar altında, Enterprise State Roaming Azure Multi-Factor Authentica
 
 ### <a name="event-viewer"></a>Olay Görüntüleyicisi
 
-Gelişmiş sorun giderme için Olay Görüntüleyicisi belirli hataları bulmak için kullanılabilir. Bunlar aşağıdaki tabloda belgelenmiştir. Olaylar, **Microsoft** > **Windows** > **settingsync-Azure** > ve **Microsoft** > **Windows** > Windows**AAD**ile kimlik ile ilgili sorunlar için Olay Görüntüleyicisi > uygulama ve hizmet günlükleri altında bulunabilir.
+Gelişmiş sorun giderme için Olay Görüntüleyicisi belirli hataları bulmak için kullanılabilir. Bunlar aşağıdaki tabloda belgelenmiştir. Olaylar Olay Görüntüleyicisi altında bulunabilir > **uygulamalar ve hizmetler**,  >  **Microsoft**  >  **Windows**  >  **settingsync-Azure** ' a kaydedilir ve eşitleme **Uygulamaları ve Hizmetleri günlükleriyle**ilgili kimlik sorunları için  >  **Microsoft**  >  **Windows**  >  **AAD**.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -156,7 +155,7 @@ Eşitlemenin sürdürülabilmesi için cihazı bir kurumsal ağa bağlayın.
 Kullanıcının karma bir durum UPN 'si varsa (örneğin, Kullanıcı adı yerine Kullanıcı adı) ve Kullanıcı Windows 10 Build 10586 ' den 14393 ' e yükseltilen bir Azure AD 'ye katılmış cihazdaysa, kullanıcının cihazı eşitlenemeyebilir. 
 
 **Önerilen eylem**  
-Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **Ayarlar** > **sistemine** > giderek cihazın bağlantısını**kaldırın ve "** iş veya okuldan yönetme veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' ın **Ayarlar** > **sisteminde** > cihazı yeniden**birleştirin ve "** iş veya okula Bağlan" seçeneğini seçin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
+Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **Ayarlar**  >  **sistemine**giderek cihazın  >  **About** bağlantısını kaldırın ve "iş veya okuldan yönetme veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' ın **Ayarlar**sisteminde cihazı yeniden birleştirin  >  **System**  >  **About** ve "iş veya okula Bağlan" seçeneğini seçin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
 
 Temizleme adımında, aşağıdaki dosyaları temizleyin:
 - İçindeki Settings. dat`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
