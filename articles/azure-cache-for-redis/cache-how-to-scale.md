@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84698368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830018"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -66,7 +66,9 @@ Azure portal önbellek örneklerinizi ölçeklendirmenin yanı sıra, PowerShell
 
 , Veya özellikleri değiştirildiğinde [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz `Size` `Sku` `ShardCount` . Aşağıdaki örnek, `myCache` 2,5 GB önbellek olarak adlandırılan bir önbelleğin nasıl ölçeklendirilebilen gösterilmektedir. 
 
-    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```powershell
+   Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 PowerShell ile ölçeklendirme hakkında daha fazla bilgi için bkz. [PowerShell kullanarak redsıs Için Azure önbelleğini ölçekleme](cache-how-to-manage-redis-cache-powershell.md#scale).
 
@@ -78,6 +80,7 @@ Azure CLı ile ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs i�
 ### <a name="scale-using-maml"></a>MAML kullanarak ölçeklendirme
 [Microsoft Azure Yönetim kitaplıklarını (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)kullanarak redsıs örnekleri Için Azure önbelleğinizi ölçeklendirmek için, `IRedisOperations.CreateOrUpdate` yöntemini çağırın ve için yeni boyutu geçirin `RedisProperties.SKU.Capacity` .
 
+```csharp
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
@@ -95,6 +98,7 @@ Azure CLı ile ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs i�
         var redisParams = new RedisCreateOrUpdateParameters(redisProperties, redisCacheRegion);
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
+```
 
 Daha fazla bilgi için bkz. [MAML Için Azure önbelleğini redml Ile yönetme](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) örneği.
 

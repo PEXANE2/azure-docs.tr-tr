@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85507951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830069"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
@@ -68,6 +68,8 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 ### <a name="identifying-rules-associated-with-a-moved-resource-from-the-azure-portal"></a>Azure portal taşınan kaynakla ilişkili kuralları tanımlama
 
 - **Uyarı kuralları için** -uyarı kurallarını yönetmek > Uyarılar ' a gidin ve kapsayan aboneliğe ve taşınan kaynağa göre filtre uygulayın >.
+> [!NOTE]
+> Etkinlik günlüğü uyarı kuralları bu işlemi desteklemiyor. Bir etkinlik günlüğü uyarı kuralının kapsamını güncelleştirmek mümkün değildir ve başka bir abonelikteki bir kaynağı işaret ediyor olabilir. Bunun yerine, eskisini değiştirecek yeni bir kural oluşturabilirsiniz.
 
 - **Eylem kuralları için** -uyarılara gidin > eylemleri yönetme > eylem kuralları (önizleme) > kapsayan aboneliğe ve taşınan kaynağa göre filtreleyin.
 

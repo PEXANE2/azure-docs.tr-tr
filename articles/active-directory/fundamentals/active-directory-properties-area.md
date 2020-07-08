@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2018
 ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830647"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory kullanarak kuruluşunuzun gizlilik bilgilerini ekleyin
 Bu makalede, bir kiracı yöneticisinin Azure portal aracılığıyla bir kuruluşun Azure Active Directory (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
@@ -32,15 +32,15 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD 'nin **Özellikler** alanına ekler
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Özellikler alanına erişmek ve gizlilik bilgilerinizi eklemek için
 
-1.    Azure portal Kiracı Yöneticisi olarak oturum açın.
+1. Azure portal Kiracı Yöneticisi olarak oturum açın.
 
-2.    Sol gezinti çubuğunda **Azure Active Directory**' yi seçin ve ardından **Özellikler**' i seçin.
+2. Sol gezinti çubuğunda **Azure Active Directory**' yi seçin ve ardından **Özellikler**' i seçin.
 
     **Özellikler** alanı görüntülenir.
 
     ![Gizlilik bilgileri alanını vurgulayan Azure AD özellikleri alanı](media/active-directory-properties-area/properties-area.png)
 
-3.    Çalışanlarınıza ait gizlilik bilgilerinizi ekleyin:
+3. Çalışanlarınıza ait gizlilik bilgilerinizi ekleyin:
 
     - **Teknik iletişim.** Kuruluşunuz dahilinde teknik destek için iletişim kurulacak kişinin e-posta adresini yazın.
     
@@ -49,11 +49,11 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD 'nin **Özellikler** alanına ekler
     - **Gizlilik bildirimi URL 'SI.** Kuruluşunuzun hem iç hem de dış konuğun veri gizliliğini nasıl işlediğini açıklayan, kuruluşunuzun belgesinin bağlantısını yazın.
 
         >[!Important]
-        >Kendi gizlilik bildirimimizi veya gizlilik kişinizi eklemezseniz, dış konularınız, gözden **geçirme izinleri** kutusunda bir metin görür, ** <bu da _kuruluş adınızın_> gözden geçirmeniz için kendi koşullarına bağlantı sağlamamıştır**. Örneğin, bir Konuk Kullanıcı B2B işbirliği aracılığıyla kuruluşa erişim daveti aldıklarında bu iletiyi görür.
+        >Kendi gizlilik bildirimimizi veya gizlilik kişinizi eklemezseniz, dış konularınız, gözden **geçirme izinleri** kutusunda bir metin görür, bu da ** < _kuruluş adınızın_> gözden geçirmeniz için kendi koşullarına bağlantı sağlamamıştır**. Örneğin, bir Konuk Kullanıcı B2B işbirliği aracılığıyla kuruluşa erişim daveti aldıklarında bu iletiyi görür.
 
         ![B2B Işbirliği Inceleme Izinleri kutusu ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Active Directory B2B işbirliği daveti kullanım](../b2b/redemption-experience.md)

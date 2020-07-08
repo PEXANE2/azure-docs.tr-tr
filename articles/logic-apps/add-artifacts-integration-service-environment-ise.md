@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830035"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
 
@@ -26,7 +26,7 @@ Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network
 
 * Mantıksal uygulamalarınızı çalıştırmak için oluşturduğunuz ıSE. Bir ıSE yoksa, [önce BIR Ise oluşturun](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
-* Bir ıSE 'ye dağıtılan kaynakları oluşturmak, eklemek veya güncelleştirmek için, bu ıSE 'ye sahip veya katkıda bulunan rolü atanması veya Azure aboneliği veya ıSE ile ilişkili Azure Kaynak grubu aracılığıyla devralınan izinleriniz olması gerekir. Sahibi, katkıda bulunan veya devralınan izinleri olmayan kişiler için, Tümleştirme Hizmeti Ortamı katkıda bulunan rolü veya Tümleştirme Hizmeti Ortamı geliştirici rolü atanabilir. Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure kaynakları için rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)nedir?
+* Bir ıSE 'ye dağıtılan kaynakları oluşturmak, eklemek veya güncelleştirmek için, bu ıSE 'ye sahip veya katkıda bulunan rolü atanması veya Azure aboneliği veya ıSE ile ilişkili Azure Kaynak grubu aracılığıyla devralınan izinleriniz olması gerekir. Sahibi, katkıda bulunan veya devralınan izinleri olmayan kişiler için, Tümleştirme Hizmeti Ortamı katkıda bulunan rolü veya Tümleştirme Hizmeti Ortamı geliştirici rolü atanabilir. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)nedir?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -44,10 +44,10 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Yes | Oluşturulacak mantıksal uygulamanın adı |
-   | **Abonelik** | Yes | Kullanılacak Azure aboneliğinin adı |
-   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Adı** | Evet | Oluşturulacak mantıksal uygulamanın adı |
+   | **Abonelik** | Evet | Kullanılacak Azure aboneliğinin adı |
+   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**'u seçin.
@@ -76,11 +76,11 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Yes | Oluşturmak istediğiniz tümleştirme hesabının adı |
-   | **Abonelik** | Yes | Kullanmak istediğiniz Azure aboneliğinin adı |
-   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Fiyatlandırma Katmanı** | Yes | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
-   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Adı** | Evet | Oluşturmak istediğiniz tümleştirme hesabının adı |
+   | **Abonelik** | Evet | Kullanmak istediğiniz Azure aboneliğinin adı |
+   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Fiyatlandırma Katmanı** | Evet | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**'u seçin.

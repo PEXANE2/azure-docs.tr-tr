@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64be7350b373dcceb8c192f0859fa2ee7f47334
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830936"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
 Bu makalede Azure Active Directory (Azure AD) Connect kullanılarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetimi ve özelleştirmeyi açıklanmaktadır. Ayrıca, bir AD FS grubunun tüm yapılandırması için yapmanız gerekebilecek diğer ortak AD FS görevlerini de içerir.
@@ -192,7 +192,9 @@ Aşağıdaki bölümler, AD FS oturum açma sayfanızı özelleştirirken gerçe
 > [!NOTE]
 > Logo için önerilen boyutlar 260 x 35 \@ 96 dpi şeklindedir ve dosya boyutu 10 KB 'tan fazla değildir.
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
 > *TargetName* parametresi gereklidir. AD FS ile yayınlanan varsayılan tema varsayılan olarak adlandırılır.
@@ -200,7 +202,9 @@ Aşağıdaki bölümler, AD FS oturum açma sayfanızı özelleştirirken gerçe
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Oturum açma açıklaması ekle 
 **Oturum açma sayfasına**bir oturum açma sayfası açıklaması eklemek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS talep kurallarını değiştirme 
 AD FS, özel talep kuralları oluşturmak için kullanabileceğiniz bir zengin talep dilini destekler. Daha fazla bilgi için bkz. [talep kuralı dili rolü](https://technet.microsoft.com/library/dd807118.aspx).
@@ -214,8 +218,10 @@ Azure AD Connect, nesneler Azure AD ile eşitlendiğinde kaynak bağlantısı ol
 
 **Kural 1: sorgu öznitelikleri**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 Bu kuralda, kullanıcının Active Directory için **MS-DS-ımlıguıd** ve **Objectguıd** değerlerini sorgulıyoruz. Mağaza adını AD FS dağıtımınızda uygun bir mağaza adıyla değiştirin. Ayrıca, **Objectguıd** ve **MS-DS-ımıbu GUID**için tanımlanan şekilde, talep türünü Federasyonun uygun bir talep türüyle değiştirin.
 
@@ -223,23 +229,29 @@ Ayrıca, **Ekle** ve **Hayır ' ı**kullanarak varlık için giden bir sorun ekl
 
 **Kural 2: Kullanıcı için ms-DS-ımfbu GUID olup olmadığını denetleyin**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
 Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, talepler eklediğinizde `http://contoso.com/ws/2016/02/identity/claims/objectguid` ve `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` Kural 1 ' de, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile sona erdir. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd**değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
 
 **Kural 3: varsa, ms-DS-ımıdnbu GUID 'yi sabit KIMLIK olarak verme**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 Bu **örtük bir** denetim. Talep için değer varsa, bu değeri sabit KIMLIK olarak verin. Önceki örnek, **NameIdentifier** talebini kullanır. Bunu, ortamınızdaki sabit KIMLIK için uygun talep türü olarak değiştirmeniz gerekir.
 
 **Kural 4: ms-DS-ımıdnguıd yoksa sabit KIMLIK olarak Objectguıd verme**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 Bu kuralda, yalnızca geçici bayrağı **ıdflag**' u kontrol edersiniz. Talebin değerine göre mi verilmeyeceğine karar verirsiniz.
 

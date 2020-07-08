@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2019
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829982"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı akışları oluşturma
 
@@ -40,13 +40,13 @@ Oluşturmak istediğiniz kullanıcı akışlarının parçası olan [uygulamalar
 
 Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma deneyimlerini tek bir yapılandırmayla işler. Uygulamanızın kullanıcıları, bağlama göre doğru yolun altına alınır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
     ![B2C kiracısı, dizin ve abonelik bölmesi, Azure portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+1. **İlkeler**altında **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 
     ![Yeni Kullanıcı akışı düğmesi vurgulanmış şekilde portalda Kullanıcı akışları sayfası](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,7 +82,7 @@ Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma de
 
 Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek istiyorsanız, bir profil düzenleme Kullanıcı akışı kullanın.
 
-1. Azure AD B2C kiracının Genel Bakış sayfasının menüsünde, **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+1. Azure AD B2C kiracının Genel Bakış sayfasının menüsünde **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 1. **Önerilen** sekmede **profil düzenlemesi** Kullanıcı akışı ' nı seçin.
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *profileediting1*.
 1. **Kimlik sağlayıcıları**Için **yerel hesap oturumu açma**' yı seçin.
@@ -100,7 +100,7 @@ Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek isti
 
 Uygulamanızın kullanıcılarının parolasını sıfırlamasına olanak tanımak için, parola sıfırlama kullanıcı akışını kullanırsınız.
 
-1. Azure AD B2C kiracı genel bakış menüsünde, **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+1. Azure AD B2C kiracı genel bakış menüsünde **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 1. **Önerilen** sekmede **parola sıfırlama** Kullanıcı akışını seçin.
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *passwordreset1*.
 1. **Kimlik sağlayıcıları**için **e-posta adresini kullanarak parolayı sıfırlamayı**etkinleştirin.

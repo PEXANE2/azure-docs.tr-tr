@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f68a3c8bb70c720f9d0c1870ead723b7b4c179c
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830715"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti tetikleme Bağlayıcısı
 
@@ -67,9 +67,9 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -101,9 +101,9 @@ public static void Run(InvocationContext invocation, string message, ILogger log
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -130,9 +130,9 @@ module.exports = function (context, invocation) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -166,9 +166,9 @@ def main(invocation) -> None:
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle**| yok | Olarak ayarlanmalıdır `SignalRTrigger` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
@@ -196,7 +196,7 @@ Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini iç
 |Olay| İleti olayı.|
 |ConnectionID| İletiyi gönderen istemcinin bağlantı KIMLIĞI.|
 |UserId| İletiyi gönderen istemcinin kullanıcı kimliği.|
-|Üst Bilgiler| İsteğin üst bilgileri.|
+|Üst bilgiler| İsteğin üst bilgileri.|
 |Sorgu| İstemciler hizmete bağlandıklarında isteğin sorgusu.|
 |Talepler| İstemci talepleri.|
 
@@ -222,7 +222,9 @@ Parametre bağlama için sıralama önemlidir. Kullanıyorsanız `ParameterNames
 
 Azure Işlevi, SignalR hizmeti tetikleme bağlaması için bir URL oluşturur ve aşağıdaki gibi biçimlendirilir:
 
-    https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```
 
 , `API_KEY` Azure işlevi tarafından oluşturulmuştur. `API_KEY`SignalR hizmeti tetikleyici bağlamayı kullanırken Azure Portal ' dan edinebilirsiniz.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API anahtarı":::

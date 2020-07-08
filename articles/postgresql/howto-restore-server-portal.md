@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/30/2020
+ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74765639"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831045"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
@@ -33,7 +33,7 @@ Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katman�
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu hızlı başlangıç](quickstart-create-server-database-portal.md).
 
 Bir sunucunun yedekleme saklama süresi aşağıdaki adımlarla değiştirilebilir:
-1. [Azure Portal](https://portal.azure.com/)oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
@@ -69,30 +69,55 @@ Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 
 Noktadan noktaya geri yükleme tarafından oluşturulan yeni sunucu, mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolası ile aynı zamanda, Parolayı yeni sunucunun **genel bakış** sayfasından değiştirebilirsiniz.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
-
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan güvenlik duvarı kurallarını veya VNet hizmeti uç noktalarını içermiyor. Bu kuralların bu yeni sunucu için ayrıca ayarlanması gerekir.
 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, PostgreSQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları** > **PostgreSQL için Azure veritabanı**' nı seçin.
+1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **PostgreSQL için Azure veritabanı**' nı seçin.
 
-   !["PostgreSQL için Azure Veritabanı" seçeneği](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="PostgreSQL için Azure veritabanı 'na gidin.":::
 
-2. Formun **Kaynak Seç** açılan menüsünde **Yedekle**' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini yükler. Yeni sunucunuzun kaynağı olacak şekilde bu Yedeklerden birini seçin.
-   ![Kaynak seçin: coğrafi olarak yedekli yedeklemelerin yedeklenmesi ve listesi](./media/howto-restore-server-portal/2-georestore.png)
+2. **Tek sunuculu** dağıtım seçeneğini belirleyin.
 
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="PostgreSQL için Azure veritabanı-tek sunuculu dağıtım seçeneğini belirleyin.":::
+ 
+3. Yeni sunucunun aboneliğini, kaynak grubunu ve adını sağlayın. 
+
+4. **Veri kaynağı**olarak **yedekleme** ' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini sağlayan bir açılan menü yükler.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Veri kaynağını seçin.":::
+    
    > [!NOTE]
    > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
    >
 
-3. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz. Konumu seçtikten sonra **fiyatlandırma katmanını**seçebilirsiniz. Varsayılan olarak, geri yüklemekte olduğunuz mevcut sunucunun parametreleri görüntülenir. Bu ayarları devralması için herhangi bir değişiklik yapmadan **Tamam** ' a tıklayabilirsiniz. Ya da **Işlem üretimini** (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedekleme artıklığı seçeneğinin**sayısını değiştirebilirsiniz. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
+5. **Yedekleme** açılan listesini seçin.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Yedekleme açılan listesini seçin.":::
 
+6. Geri yüklenecek kaynak sunucuyu seçin.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Yedekle 'yi seçin.":::
+
+7. Sunucu, **sanal çekirdek**sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü**ve **yönetici kimlik bilgileri**için varsayılan değerleri sağlar. **Devam**’ı seçin. 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
+
+8. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz.
+
+    Konumu seçtikten sonra, **Işlem üretimini** güncelleştirmek Için **Sunucu Yapılandır** ' ı seçebilirsiniz (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedek artıklık seçeneği**. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
+
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Form Doldur."::: 
+
+9. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
+
+10. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
 
 Coğrafi geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan güvenlik duvarı kurallarını veya VNet hizmeti uç noktalarını içermiyor. Bu kuralların bu yeni sunucu için ayrıca ayarlanması gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

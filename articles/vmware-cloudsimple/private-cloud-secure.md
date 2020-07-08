@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829882"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Özel Bulut ortamınızın güvenliğini sağlama
 
@@ -29,16 +29,16 @@ CloudSimple hizmeti oluşturma, Azure aboneliğinde **sahip** veya **katkıda bu
 
 Yalnızca kaynak grubunda **sahip** veya **katkıda bulunan** ayrıcalıklarına sahip kullanıcılar cloudsimple hizmetini görebilir ve cloudsimple Portal 'ı başlatır.
 
-RBAC hakkında daha fazla bilgi için bkz. [Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?](../role-based-access-control/overview.md)
+Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>Özel bulut vCenter için RBAC
 
-Özel bir bulut `CloudOwner@cloudsimple.local` OLUŞTURULDUĞUNDA vCenter SSO etki alanında varsayılan bir Kullanıcı oluşturulur.  CloudOwner kullanıcısının vCenter yönetimi ayrıcalıkları vardır. Farklı kullanıcılara erişim vermek için vCenter SSO 'ya ek kimlik kaynakları eklenir.  Önceden tanımlanmış roller ve gruplar, ek kullanıcı eklemek için kullanılabilecek vCenter üzerinde ayarlanır.
+`CloudOwner@cloudsimple.local`Özel bir bulut oluşturulduğunda vCenter SSO etki alanında varsayılan bir Kullanıcı oluşturulur.  CloudOwner kullanıcısının vCenter yönetimi ayrıcalıkları vardır. Farklı kullanıcılara erişim vermek için vCenter SSO 'ya ek kimlik kaynakları eklenir.  Önceden tanımlanmış roller ve gruplar, ek kullanıcı eklemek için kullanılabilecek vCenter üzerinde ayarlanır.
 
 ### <a name="add-new-users-to-vcenter"></a>VCenter 'a Yeni Kullanıcı ekleme
 
-1. Özel buluttaki **Cloudowner\@cloudsimple. Local** kullanıcısı için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
-2. **Cloudowner\@cloudsimple. Local** kullanarak vCenter 'da oturum açın
+1. Özel buluttaki **Cloudowner \@ cloudsimple. Local** kullanıcısı için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
+2. **Cloudowner \@ cloudsimple. Local** kullanarak vCenter 'da oturum açın
 3. [VCenter çoklu oturum açma kullanıcıları ekleyin](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. [VCenter çoklu oturum açma gruplarına](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)Kullanıcı ekleyin.
 
@@ -51,8 +51,8 @@ RBAC hakkında daha fazla bilgi için bkz. [Azure kaynakları için rol tabanlı
 * Özel bulut vCenter üzerinde [kimlik sağlayıcısı olarak Active Directory kullanın](set-vcenter-identity.md) .
 * Azure AD 'yi özel bulut vCenter üzerinde [kimlik sağlayıcısı olarak kullanma](azure-ad.md)
 
-1. Özel buluttaki **Cloudowner\@cloudsimple. Local** kullanıcısı için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
-2. **Cloudowner\@cloudsimple. Local** kullanarak vCenter 'da oturum açın
+1. Özel buluttaki **Cloudowner \@ cloudsimple. Local** kullanıcısı için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
+2. **Cloudowner \@ cloudsimple. Local** kullanarak vCenter 'da oturum açın
 3. Kimlik sağlayıcısından [vCenter çoklu oturum açma gruplarına](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)Kullanıcı ekleyin.
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Özel bulut ortamınızda güvenli ağ
