@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76020970"
 ---
 Sanal makinelerinizin (VM’ler) Azure’da nasıl ve hangi konumda çalıştığının yanı sıra performans, kullanılabilirlik ve yedekliliği artırmak için kullanabileceğiniz seçeneklerin de anlaşılması önemlidir. Bu makalede, Azure’un kullanılabilirlik ve yedeklilik özelliklerine genel bakış sunulmaktadır.
@@ -56,7 +56,7 @@ Belirli VM boyutları ya da depolama türleri gibi bazı hizmetler veya VM özel
 ## <a name="storage-availability"></a>Depolama kullanılabilirliği
 Kullanılabilir çoğaltma seçenekleri düşünüldüğünde Azure bölge ve coğrafyalarının anlaşılması önemlidir. Depolama türüne bağlı olarak farklı çoğaltma seçenekleriniz vardır.
 
-**Azure Yönetilen Diskleri**
+**Azure Yönetilen Diskler**
 * Yerel olarak yedekli depolama (LRS)
   * Depolama hesabınızı oluşturduğunuz bölge içinde verilerinizi üç kez çoğaltır.
 
@@ -74,8 +74,8 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Yes |Yes |Yes |
-| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Yes |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Yes |Yes |
+| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 
 [Azure Depolama çoğaltma seçenekleri hakkında buradan](../articles/storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md).
@@ -83,7 +83,7 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 ### <a name="storage-costs"></a>Depolama maliyetleri
 Fiyatlar seçtiğiniz depolama türüne ve kullanılabilirliğe bağlı olarak değişir.
 
-**Azure Yönetilen Diskleri**
+**Azure Yönetilen Diskler**
 * Premium yönetilen diskler, katı hal sürücüleri (SSD 'Ler) tarafından desteklenir ve standart yönetilen diskler düzenli olarak dönen diskler tarafından desteklenir. Hem Premium hem de Standart Yönetilen Diskler, diskin sağlanan kapasitesine göre ücretlendirilir.
 
 **Yönetilmeyen diskler**

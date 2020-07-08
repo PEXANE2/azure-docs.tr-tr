@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188046"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -27,7 +27,7 @@ Bir varlık için en fazla 252 özel özellik tanımlayabilirsiniz.
 
 ### <a name="add-table-entities"></a>Tablo varlıkları ekleme
 
-**Add-AzTableRow**kullanarak bir tabloya varlık ekleyin. Bu örnekler, bölüm anahtarlarını değerleri `partition1` ve `partition2`ve satır anahtarlarıyla durum kısaltmalara eşit olarak kullanır. Her varlıktaki Özellikler ve ' `username` `userid`dir. 
+**Add-AzTableRow**kullanarak bir tabloya varlık ekleyin. Bu örnekler, bölüm anahtarlarını değerleri `partition1` ve `partition2` ve satır anahtarlarıyla durum kısaltmalara eşit olarak kullanır. Her varlıktaki Özellikler `username` ve ' dir `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -101,7 +101,7 @@ Get-AzTableRow -table $cloudTable `
 
 Bu sorgu bir kayıt alır.
 
-|alan|value|
+|alan|değer|
 |----|----|
 | UserID | 1 |
 | kullanıcı adı | Chris |
@@ -118,7 +118,7 @@ Get-AzTableRow `
 
 Bu sorgu bir kayıt alır.
 
-|alan|value|
+|alan|değer|
 |----|----|
 | UserID | 1 |
 | kullanıcı adı | Chris |
@@ -153,7 +153,7 @@ Get-AzTableRow -table $cloudTable `
 
 Sonuçlar Jessie2 kaydını gösterir.
 
-|alan|value|
+|alan|değer|
 |----|----|
 | UserID | 2 |
 | kullanıcı adı | Jessie2 |

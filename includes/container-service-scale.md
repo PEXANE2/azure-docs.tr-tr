@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814856"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -29,7 +29,7 @@ Azure portal veya Azure CLı kullanarak DC/OS, Docker Sısınma veya Kubernetes 
 
 ## <a name="scale-with-the-azure-cli"></a>Azure CLı ile ölçeklendirme
 
-[Azure CLI 'Yı yükleyip](/cli/azure/install-azure-cli) Ile `az login`bir Azure hesabında oturum açın.
+[Azure CLI 'Yı yükleyip](/cli/azure/install-azure-cli) Ile bir Azure hesabında oturum açın `az login` .
 
 ### <a name="see-the-current-agent-count"></a>Geçerli aracı sayısını görme
 Şu anda kümedeki aracıları sayısını görmek için `az acs show` komutunu çalıştırın. Bunu yaptığınızda küme yapılandırması gösterilir. Örneğin, aşağıdaki komut `myResourceGroup` kaynak grubundaki `containerservice-myACSName` adlı kapsayıcı hizmetinin yapılandırmasını gösterir:

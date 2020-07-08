@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008377"
 ---
 ## <a name="limitations"></a>Sınırlamalar
@@ -27,12 +27,12 @@ ms.locfileid: "81008377"
 
 ### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Premium SSD 'yi paylaşılan disk olarak dağıtma
 
-Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için yeni özelliği `maxShares` kullanın ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için yeni özelliği kullanın `maxShares` ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
 
-Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`ve `[resourceGroup().location]` `[parameters('maxShares')]` değerlerini `[parameters('dataDiskSizeGB')]`kendi değerlerinizle değiştirin.
+Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` ve `[parameters('maxShares')]` değerlerini kendi değerlerinizle değiştirin.
 
 ```json
 { 
@@ -80,7 +80,7 @@ Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`ve `[re
 Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, `maxShares` parametreyi 1 ' den büyük bir değere değiştirin. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, özelliğini `maxShares` kullanın ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, özelliğini kullanın `maxShares` ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
 
-Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`ve `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadOnly')]` değerlerini `[parameters('diskMBpsReadWrite')]`kendi `[parameters('diskIOPSReadOnly')]`değerlerinizle değiştirin.
+Aşağıdaki şablonu kullanmadan önce,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` ve `[parameters('diskMBpsReadOnly')]` değerlerini kendi değerlerinizle değiştirin.
 
 ```json
 {
@@ -170,7 +170,7 @@ Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`, `[res
 
 ### <a name="using-azure-shared-disks-with-your-vms"></a>Sanal makinelerinizdeki Azure Paylaşılan disklerini kullanma
 
-İle `maxShares>1`paylaşılan bir disk dağıttıktan sonra, diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
+İle paylaşılan bir disk dağıttıktan sonra `maxShares>1` , diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
 
 > [!IMPORTANT]
 > Bir diski paylaşan tüm VM 'Lerin aynı [yakınlık yerleşimi grubuna](../articles/virtual-machines/windows/proximity-placement-groups.md)dağıtılması gerekir.

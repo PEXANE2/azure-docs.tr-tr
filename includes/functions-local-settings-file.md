@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
 ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77205687"
 ---
 ## <a name="local-settings-file"></a>Yerel ayarlar dosyası
@@ -37,7 +37,7 @@ Dosya local.settings.js, uygulama ayarlarını, bağlantı dizelerini ve yerel g
 
 Projeleri yerel olarak çalıştırdığınızda bu ayarlar desteklenir:
 
-| Ayar      | Description                            |
+| Ayar      | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | Bu ayar olarak ayarlandığında `true` , tüm değerler yerel makine anahtarıyla şifrelenir. Komutlarıyla birlikte kullanılır `func settings` . Varsayılan değer `false` . |
 | **`Values`** | Bir proje yerel olarak çalışırken kullanılan uygulama ayarları ve bağlantı dizeleri dizisi. Bu anahtar-değer (dize-dize) çiftleri, gibi Azure 'daki işlev uygulamanızda uygulama ayarlarına karşılık gelir [`AzureWebJobsStorage`] . Birçok tetikleyici ve bağlamanın, `Connection` [BLOB depolama tetikleyicisi](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)gibi bir bağlantı dizesi uygulama ayarına başvuran bir özelliği vardır. Bu özellikler için dizide tanımlanmış bir uygulama ayarı gereklidir `Values` . <br/>[`AzureWebJobsStorage`], HTTP dışındaki Tetikleyiciler için gerekli bir uygulama ayarıdır. <br/>Işlevler çalışma zamanının 2. x ve üzeri sürümleri `FUNCTIONS_WORKER_RUNTIME` için, temel araçlar tarafından projeniz için oluşturulan [] ayarı gereklidir. <br/> [Azure Storage öykünücüsü](../articles/storage/common/storage-use-emulator.md) yerel olarak yüklüyse ve [`AzureWebJobsStorage`] olarak ayarlarsanız `UseDevelopmentStorage=true` , çekirdek araçlar öykünücüyü kullanır. Öykünücü geliştirme sırasında faydalıdır, ancak dağıtımdan önce gerçek bir depolama bağlantısı ile test etmeniz gerekir.<br/> Değerler dize olmalıdır ve JSON nesneleri veya dizileri olmamalıdır. Ayar adları iki nokta ( `:` ) veya çift alt çizgi () içeremez `__` . Bu karakterler çalışma zamanı tarafından ayrılmıştır.  |

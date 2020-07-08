@@ -4,10 +4,10 @@ description: Azure App Service bir özel Linux kapsayıcısını yapılandırmay
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84905808"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı yapılandırma

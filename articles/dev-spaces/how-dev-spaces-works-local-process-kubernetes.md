@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Geliştirme bilgisayarınızı Kubernetes kümenize bağlamak için Kubernetes ile yerel Işlem kullanma işlemlerini açıklar
 keywords: Kubernetes, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar ile yerel Işlem
 ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974430"
 ---
 # <a name="how-local-process-with-kubernetes-works"></a>Kubernetes ile Yerel İşlem nasıl çalışır?

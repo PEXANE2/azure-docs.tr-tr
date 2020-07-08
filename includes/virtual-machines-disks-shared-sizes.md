@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,22 +9,22 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008376"
 ---
-Şimdilik yalnızca Ultra diskler ve Premium SSD 'Ler Paylaşılan diskleri etkinleştirebilir. Farklı disk boyutları farklı `maxShares` bir sınıra sahip olabilir ve bu `maxShares` değer ayarlanırken aşamazsınız. Premium SSD 'Ler için, disklerinin paylaşımını destekleyen disk boyutları P15 ve daha büyüktür.
+Şimdilik yalnızca Ultra diskler ve Premium SSD 'Ler Paylaşılan diskleri etkinleştirebilir. Farklı disk boyutları farklı bir sınıra sahip olabilir `maxShares` ve bu değer ayarlanırken aşamazsınız `maxShares` . Premium SSD 'Ler için, disklerinin paylaşımını destekleyen disk boyutları P15 ve daha büyüktür.
 
-Her disk için, diski eşzamanlı olarak paylaşabilen en fazla düğüm sayısını temsil eden bir `maxShares` değer belirleyebilirsiniz. Örneğin, 2 düğümlü bir yük devretme kümesi ayarlamayı planlıyorsanız, ayarlanır `maxShares=2`. En büyük değer, üst sınırdır. Düğüm sayısı belirtilen `maxShares` değerden düşük olduğu sürece, düğümler kümeye katılabilir veya kümeyi bırakabilir (diski bağlama veya çıkarma).
+Her disk için, `maxShares` diski eşzamanlı olarak paylaşabilen en fazla düğüm sayısını temsil eden bir değer belirleyebilirsiniz. Örneğin, 2 düğümlü bir yük devretme kümesi ayarlamayı planlıyorsanız, ayarlanır `maxShares=2` . En büyük değer, üst sınırdır. Düğüm sayısı belirtilen değerden düşük olduğu sürece, düğümler kümeye katılabilir veya kümeyi bırakabilir (diski bağlama veya çıkarma) `maxShares` .
 
 > [!NOTE]
-> `maxShares` Değer yalnızca disk tüm düğümlerden ayrıldığında ayarlanabilir veya düzenlenebilir.
+> `maxShares`Değer yalnızca disk tüm düğümlerden ayrıldığında ayarlanabilir veya düzenlenebilir.
 
 ### <a name="premium-ssd-ranges"></a>Premium SSD aralıkları
 
-Aşağıdaki tabloda Premium disk boyutları için `maxShares` izin verilen en büyük değerler gösterilmektedir:
+Aşağıdaki tabloda Premium disk boyutları için izin verilen en büyük değerler gösterilmektedir `maxShares` :
 
 |Disk boyutları  |maxShares sınırı  |
 |---------|---------|
@@ -36,4 +36,4 @@ Bir diskin ıOPS ve bant genişliği sınırları bu `maxShares` değerden etkil
 
 ### <a name="ultra-disk-ranges"></a>Ultra disk aralıkları
 
-En küçük `maxShares` değer 1 ' dir, ancak en `maxShares` büyük değer 5 ' tir. Ultra disklerde herhangi bir boyut kısıtlaması yoktur, tüm boyuttaki Ultra Disk `maxShares`, en fazla değeri de dahil olmak üzere herhangi bir değeri kullanabilir.
+En küçük `maxShares` değer 1 ' dir, ancak en büyük `maxShares` değer 5 ' tir. Ultra disklerde herhangi bir boyut kısıtlaması yoktur, tüm boyuttaki Ultra Disk `maxShares` , en fazla değeri de dahil olmak üzere herhangi bir değeri kullanabilir.

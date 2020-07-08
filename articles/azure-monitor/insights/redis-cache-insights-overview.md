@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
 ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945418"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
@@ -44,7 +44,7 @@ Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı ger
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **İzleyici**araması yapın ve **izleyici**' yi seçin.
 
@@ -79,7 +79,7 @@ Mavi renkle vurgulanmış Redsıs kaynak adı için Azure önbelleğini seçtiğ
 - **İsabetsiz Önbellek Okuma Sayısı**
 - **Hata Sayısı (En Fazla)**
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>İşlemler
 
 Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı şablonunun **işlemler** tablosu açılır. Şu sütunları gösterir:
 

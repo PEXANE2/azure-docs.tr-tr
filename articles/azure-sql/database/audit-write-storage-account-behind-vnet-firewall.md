@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84944787"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
@@ -25,7 +25,7 @@ ms.locfileid: "84944787"
 
 Bu makalede, bu seçenek için Azure SQL veritabanı ve Azure depolama hesabı 'nı yapılandırmanın iki yolu açıklanmaktadır. İlki Azure portal kullanır, ikincisi REST kullanır.
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 [Azure sanal ağı (VNet)](../../virtual-network/virtual-networks-overview.md) , Azure 'daki özel ağınız için temel yapı taşdır. VNet, Azure sanal makineler (VM) gibi birçok Azure Kaynak türünün birbirleriyle güvenli bir şekilde iletişim kurmasına olanak sağlar, internet ve şirket içi ağlar. VNet, kendi veri merkezinizdeki geleneksel bir ağa benzerdir, ancak ölçek, kullanılabilirlik ve yalıtım gibi Azure altyapısının ek avantajlarından yararlanır.
 

@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67133624"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager isteklerinin kimliğini doğrulamak için hazırlanma
@@ -41,8 +41,8 @@ Aşağıdaki adımlarda, PowerShell kullanarak bir AD uygulaması için parola k
 3. Yer tutucuları değiştirerek aşağıdaki komutu kullanarak yeni bir Azure Active Directory uygulaması oluşturun:
    
    * **{Display Name}:** uygulamanız Için **MySampleApp** gibi bir görünen ad
-   * **{Giriş sayfası URL 'si}:** uygulamanızın ana sayfasının **http:\//MYSAMPLEAPP/Home**gibi URL 'si. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
-   * **{Uygulama tanımlayıcısı}:** **Http:\//MySampleApp**gibi benzersiz bir tanımlayıcı. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
+   * **{Giriş sayfası URL 'si}:** uygulamanızın ana sayfasının **http: \/ /MySampleApp/Home**gibi URL 'si. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
+   * **{Uygulama tanımlayıcısı}:** **Http: \/ /MySampleApp**gibi benzersiz bir tanımlayıcı. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
    * **{Password}:** Uygulamanızda kimlik doğrulaması için kullandığınız bir parola.
      
      ```powershell
@@ -64,7 +64,7 @@ Aşağıdaki adımlarda, PowerShell kullanarak bir AD uygulaması için parola k
 Artık özel C# uygulamanızdan kimlik doğrulaması yapmanızı sağlayan Azure AD uygulamasını oluşturmayı tamamladınız. Bu öğreticide daha sonra aşağıdaki değerlere ihtiyacınız vardır:
 
 * TenantId
-* SubscriptionId
+* kaynak grubundaki
 * ApplicationID
 * Parola
 

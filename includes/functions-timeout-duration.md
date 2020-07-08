@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: functions
 author: nzthiago
 ms.service: azure-functions
@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198335"
 ---
 ## <a name="function-app-timeout-duration"></a><a name="timeout"></a>İşlev uygulaması zaman aşımı süresi 
 
-Bir işlev uygulamasının zaman aşımı süresi, [Host. JSON](../articles/azure-functions/functions-host-json.md#functiontimeout) proje `functionTimeout` dosyasındaki özelliği tarafından tanımlanır. Aşağıdaki tabloda, hem planlar hem de farklı çalışma zamanı sürümleri için dakika cinsinden varsayılan ve en büyük değerler gösterilmektedir:
+Bir işlev uygulamasının zaman aşımı süresi, `functionTimeout` Proje dosyasındaki [host.js](../articles/azure-functions/functions-host-json.md#functiontimeout) özelliği tarafından tanımlanır. Aşağıdaki tabloda, hem planlar hem de farklı çalışma zamanı sürümleri için dakika cinsinden varsayılan ve en büyük değerler gösterilmektedir:
 
 | Planlama | Çalışma zamanı sürümü | Varsayılan | Maksimum |
 |------|---------|---------|---------|

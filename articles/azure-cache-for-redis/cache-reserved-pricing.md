@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974849"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
@@ -48,7 +48,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış önbell
 
 Aşağıdaki tablo gerekli alanları açıklar.
 
-| Alan | Description |
+| Alan | Açıklama |
 | :------------ | :------- |
 | Abonelik   | Reda için Azure önbelleği için ödeme yapmak üzere kullanılan abonelik, ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, Red, ayrılmış kapasite rezervasyonu için Azure önbelleğinin ön maliyetlerini ücretlendirilmiştir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon**indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.

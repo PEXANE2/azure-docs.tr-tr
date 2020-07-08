@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9a0315fadefac0269a6d9670844ef8c3886eef12
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975631"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
 Microsoft kimlik doğrulama kitaplığı (MSAL), farklı uygulama senaryolarında kullanılmak üzere çeşitli kimlik doğrulama akışlarını destekler.
 
-| Akış | Description | Kullanıldığı yer|
+| Akış | Açıklama | Kullanıldığı yer|
 | ---- | ----------- | ------- |
 | [LiDE](#interactive) | Bir tarayıcı veya açılır pencere aracılığıyla kullanıcıdan kimlik bilgilerini isteyen etkileşimli bir işlem aracılığıyla belirteci alır. | [Masaüstü uygulamaları](scenario-desktop-overview.md), [mobil uygulamalar](scenario-mobile-overview.md) |
 | [Örtük izin](#implicit-grant) | Uygulamanın arka uç sunucu kimlik bilgisi değişimi gerçekleştirmeden belirteçleri almasına izin verir. Uygulamanın kullanıcı tarafından oturum açmasını, oturum korumasını ve diğer Web API 'Lerine belirteç almasını sağlar ve bunların hepsi istemci JavaScript kodu içindedir.| [Tek sayfalı uygulamalar (SPA)](scenario-spa-overview.md) |
@@ -88,7 +88,7 @@ Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uyg
 1. Erişim belirteci için kullanılan bir yetkilendirme kodu ister.
 2. Bir Web API 'sini çağırmak için erişim belirtecini kullanır.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 - Bir belirteci kullanmak için yalnızca bir kez yetkilendirme kodu kullanabilirsiniz. Protokol standart belirtimi tarafından açıkça yasaklanmış olduğundan, belirteci aynı yetkilendirme koduyla birden çok kez almaya çalışmayın. Kodu kasıtlı olarak veya bir Framework 'ün sizin için de yaptığı farkında olmadığınız durumlarda kodu birkaç kez kullandıysanız şu hatayı alırsınız:
 

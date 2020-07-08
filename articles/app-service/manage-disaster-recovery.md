@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84947113"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service uygulamasını başka bir bölgeye taşıma
@@ -47,10 +47,10 @@ Etkilenen uygulamanın Şu anda kullandığı tüm App Service kaynaklarını be
 
 1. **Yedeği geri yükle** sayfasında, geri yükleme işlemini aşağıdaki tabloya göre yapılandırın. İşiniz bittiğinde **Tamam**' a tıklayın.
 
-   | Ayar | Değer | Description |
+   | Ayar | Değer | Açıklama |
    |-|-|-|
    | **Anlık görüntü (Önizleme)** | Bir anlık görüntü seçin. | En son iki anlık görüntü kullanılabilir. |
-   | **Hedefi geri yükle** | **Mevcut uygulama** | Aşağıdaki nota tıklayarak **geri yükleme hedef uygulamasını değiştirebilir** ve hedef uygulamayı seçebilirsiniz. Bir olağanüstü durum senaryosunda, anlık görüntüyü yalnızca farklı bir Azure bölgesindeki bir uygulamaya geri yükleyebilirsiniz. |
+   | **Hedefi geri yükle** | **Var olan uygulama** | Aşağıdaki nota tıklayarak **geri yükleme hedef uygulamasını değiştirebilir** ve hedef uygulamayı seçebilirsiniz. Bir olağanüstü durum senaryosunda, anlık görüntüyü yalnızca farklı bir Azure bölgesindeki bir uygulamaya geri yükleyebilirsiniz. |
    | **Site yapılandırmasını geri yükle** | **Evet** | |
 
     ![](media/manage-disaster-recovery/restore-configure.png)

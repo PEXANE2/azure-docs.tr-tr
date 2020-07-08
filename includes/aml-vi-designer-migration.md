@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75541809"
 ---
 1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
@@ -26,7 +26,7 @@ ms.locfileid: "75541809"
     
 1. İşlem hattı taslakları listenizi görüntülemek için çalışma alanının tasarımcı bölümüne gidin. 
     
-    Dönüştürülen Web Hizmetleri, **uç noktalar** > **gerçek zamanlı uç noktalara**gidilerek bulunabilir.
+    Dönüştürülen Web Hizmetleri, **uç noktalar**  >  **gerçek zamanlı uç noktalara**gidilerek bulunabilir.
 
 1. Açmak için bir işlem hattı taslağı seçin.
 

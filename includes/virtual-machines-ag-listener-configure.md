@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75468854"
 ---
 Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun dinlediği bir IP adresi ve ağ adıdır. Kullanılabilirlik grubu dinleyicisini oluşturmak için aşağıdakileri yapın:
@@ -19,7 +19,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     b. Yük Devretme Kümesi Yöneticisi açın.
 
-    c. **Ağlar** düğümünü seçin ve küme ağı adını aklınızda edin. PowerShell betiğindeki `$ClusterNetworkName` değişkende bu adı kullanın. Aşağıdaki görüntüde küme ağı adı **küme ağı 1**' dir:
+    c. **Ağlar** düğümünü seçin ve küme ağı adını aklınızda edin. `$ClusterNetworkName`PowerShell betiğindeki değişkende bu adı kullanın. Aşağıdaki görüntüde küme ağı adı **küme ağı 1**' dir:
 
    ![Küme ağ adı](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
@@ -28,7 +28,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     a. Küme adını genişletin ve ardından **Roller**' e tıklayın.
 
-    b. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak** > **istemci erişim noktası**Ekle ' yi seçin.
+    b. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak**  >  **istemci erişim noktası**Ekle ' yi seçin.
 
    ![İstemci erişim noktası](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -46,7 +46,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
    ![İstemci erişim noktası](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. IP kaynağına sağ tıklayın ve ardından Özellikler ' e tıklayın. IP adresinin adını ve PowerShell betiğindeki `$IPResourceName` değişkende kullanın.
+    b. IP kaynağına sağ tıklayın ve ardından Özellikler ' e tıklayın. IP adresinin adını ve `$IPResourceName` PowerShell betiğindeki değişkende kullanın.
 
     c. **IP adresi**altında **statik IP adresi**' ne tıklayın. IP adresini, Azure portal yük dengeleyici adresini ayarladığınızda kullandığınız adresle aynı olacak şekilde ayarlayın.
 
@@ -106,7 +106,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
    b. Küme düğümlerinin birinde PowerShell betiğini çalıştırarak küme parametrelerini ayarlayın.  
 
    > [!NOTE]
-   > SQL Server örneklerinizin ayrı bölgelerde olması durumunda PowerShell betiğini iki kez çalıştırmanız gerekir. İlk kez, ilk bölgeden `$ListenerILBIP` ve `$ListenerProbePort` kullanın. İkinci kez, ikinci bölgeden `$ListenerILBIP` ve `$ListenerProbePort` ' ı kullanın. Küme ağ adı ve küme IP kaynak adı her bölge için de farklıdır.
+   > SQL Server örneklerinizin ayrı bölgelerde olması durumunda PowerShell betiğini iki kez çalıştırmanız gerekir. İlk kez, `$ListenerILBIP` ilk bölgeden ve kullanın `$ListenerProbePort` . İkinci kez, `$ListenerILBIP` ikinci bölgeden ve ' ı kullanın `$ListenerProbePort` . Küme ağ adı ve küme IP kaynak adı her bölge için de farklıdır.
 
 1. Kullanılabilirlik grubu kümesi rolünü çevrimiçi duruma getirin. **Roller**altında **Yük devretme kümesi Yöneticisi** , role sağ tıklayın ve **rolü Başlat**' ı seçin.
 
@@ -116,7 +116,7 @@ Gerekirse, WSFC kümesi IP adresinin küme parametrelerini ayarlamak için yukar
 
 1. **IP adresi**' ne sağ tıklayın ve **Özellikler**' i seçin.
 
-1. IP adresinin **adını** kopyalayın. Olabilir `Cluster IP Address`. 
+1. IP adresinin **adını** kopyalayın. Olabilir `Cluster IP Address` . 
 
 1. <a name="setwsfcparam"></a>PowerShell 'de küme parametrelerini ayarlayın.
   
