@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/10/2020
 ms.openlocfilehash: d772e98032a29a93527359335a13d7b37e020e50
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706962"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
@@ -41,7 +40,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
@@ -70,7 +69,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | server-name | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
@@ -88,7 +87,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun bulunduğu kaynak grubu.  |
 | name | mydemoreplicaserver | Çoğaltmayı durdurulacak çoğaltma sunucusunun adı. |

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708272"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
@@ -127,7 +126,7 @@ En yaygın değişiklikler, rotalar [eklemek](#create-a-route) , yönlendirmeler
 
 1. **Yol tablosu**' nda alt ağla ilişkilendirmek istediğiniz yol tablosunu seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Sanal ağınız bir Azure VPN Gateway 'e bağlıysa, bir yol tablosunu *0.0.0.0/0*hedefine sahip bir yol içeren [ağ geçidi alt ağıyla](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) ilişkilendirmeyin. Bunun yapılması, ağ geçidinin düzgün çalışmasını engelleyebilir. Bir rotada *0.0.0.0/0* kullanma hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md#default-route).
 
@@ -152,7 +151,7 @@ Bir alt ağdan yol tablosunun ilişkilendirmesini kaldırdığınızda, Azure tr
 
 1. **Yol tablosunda** **hiçbiri**' ni seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="dissociate-a-route-table---commands"></a>Rota tablosunun ilişkilendirmesini kaldırma-komutlar
 

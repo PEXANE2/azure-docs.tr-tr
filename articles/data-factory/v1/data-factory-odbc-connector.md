@@ -13,10 +13,9 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707387"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ODBC veri depolarından veri taşıma
@@ -66,13 +65,13 @@ Aşağıdaki tabloda ODBC bağlantılı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesOdbc** olarak ayarlanmalıdır |Yes |
-| Dizisi |Bağlantı dizesinin erişim dışı kimlik bilgisi kısmı ve isteğe bağlı olarak şifrelenmiş kimlik bilgileri. Aşağıdaki bölümlerde bulunan örneklere bakın. <br/><br/>Bağlantı dizesini gibi bir düzende belirtebilir `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` veya ağ geçidi makinesinde ayarladığınız SISTEM DSN 'sini (veri kaynağı adı) kullanabilirsiniz `"DSN=<name of the DSN>;"` (yine de bağlı hizmette kimlik bilgisi bölümünü belirtmeniz gerekir). |Yes |
-| kimlik bilgisi |Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
-| authenticationType |ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim ve temel. |Yes |
-| userName |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |No |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |No |
-| gatewayName |Data Factory hizmetinin ODBC veri deposuna bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| tür |Type özelliği: **OnPremisesOdbc** olarak ayarlanmalıdır |Evet |
+| Dizisi |Bağlantı dizesinin erişim dışı kimlik bilgisi kısmı ve isteğe bağlı olarak şifrelenmiş kimlik bilgileri. Aşağıdaki bölümlerde bulunan örneklere bakın. <br/><br/>Bağlantı dizesini gibi bir düzende belirtebilir `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` veya ağ geçidi makinesinde ayarladığınız SISTEM DSN 'sini (veri kaynağı adı) kullanabilirsiniz `"DSN=<name of the DSN>;"` (yine de bağlı hizmette kimlik bilgisi bölümünü belirtmeniz gerekir). |Evet |
+| kimlik bilgisi |Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Hayır |
+| authenticationType |ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim ve temel. |Evet |
+| userName |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |Hayır |
+| gatewayName |Data Factory hizmetinin ODBC veri deposuna bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ### <a name="using-basic-authentication"></a>Temel kimlik doğrulaması kullanma
 
@@ -138,7 +137,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tableName |ODBC veri deposundaki tablonun adı. |Yes |
+| tableName |ODBC veri deposundaki tablonun adı. |Evet |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir.
@@ -149,7 +148,7 @@ Kopyalama etkinliğinde, kaynak **Relationalsource** türünde (ODBC içeren), t
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Yes |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Evet |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON örneği: ODBC veri deposundan Azure Blob 'a veri kopyalama

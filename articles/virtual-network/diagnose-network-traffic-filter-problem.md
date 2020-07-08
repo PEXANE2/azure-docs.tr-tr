@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704990"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Bir sanal makine ağ trafiği Filtreleme sorununu Tanıla
@@ -185,7 +184,7 @@ Azure gelen trafiği işlediğinde, alt ağla ilişkili NSG 'deki kuralları iş
 
 Hala iletişim sorunlarınız varsa bkz. [hususlar](#considerations) ve ek tanılama.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Bağlantı sorunlarını giderirken aşağıdaki noktaları göz önünde bulundurun:
 

@@ -11,10 +11,9 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708675"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma
@@ -94,7 +93,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. **Gelen güvenlik kuralları** sekmesini seçin ve aşağıdaki ayarlarla **deny_all_inbound** kuralından daha yüksek önceliğe sahip bir kural **ekleyin** : </br> </br>
 
-    |Ayar  |Önerilen değer  |Description  |
+    |Ayar  |Önerilen değer  |Açıklama  |
     |---------|---------|---------|
     |**Kaynak**     |Herhangi bir IP adresi veya hizmet etiketi         |<ul><li>Power BI gibi Azure hizmetleri için Azure Cloud Service etiketini seçin</li> <li>Bilgisayarınız veya Azure sanal makineniz için NAT IP adresi kullanın</li></ul> |
     |**Kaynak bağlantı noktası aralıkları**     |* |Kaynak bağlantı noktaları genellikle dinamik olarak ayrıldığı ve bu şekilde tahmin edilemeyen |

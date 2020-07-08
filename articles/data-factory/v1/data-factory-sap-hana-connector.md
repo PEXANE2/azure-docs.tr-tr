@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707149"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri taşıma
@@ -59,11 +58,11 @@ Aşağıdaki tabloda SAP HANA bağlı hizmetine özgü JSON öğeleri için aç�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-sunucu | SAP HANA örneğinin bulunduğu sunucunun adı. Sunucunuz özelleştirilmiş bir bağlantı noktası kullanıyorsa, belirtin `server:port` . | string | Yes
-authenticationType | Kimlik doğrulama türü. | kullanabilirsiniz. "Temel" veya "Windows" | Yes 
-kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
-password | Kullanıcının parolası. | string | Yes
-gatewayName | Data Factory hizmetinin şirket içi SAP HANA örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
+sunucu | SAP HANA örneğinin bulunduğu sunucunun adı. Sunucunuz özelleştirilmiş bir bağlantı noktası kullanıyorsa, belirtin `server:port` . | string | Evet
+authenticationType | Kimlik doğrulama türü. | kullanabilirsiniz. "Temel" veya "Windows" | Evet 
+kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Evet
+password | Kullanıcının parolası. | string | Evet
+gatewayName | Data Factory hizmetinin şirket içi SAP HANA örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Evet
 encryptedCredential | Şifrelenmiş kimlik bilgisi dizesi. | dize | No
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
@@ -81,7 +80,7 @@ Copy etkinliğinin kaynağı **Relationalsource** (SAP HANA içerir) türünde o
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | SQL sorgusu. | Yes |
+| sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | SQL sorgusu. | Evet |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON örneği: SAP HANA verileri Azure Blob 'a kopyalama
 Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu örnek, şirket içi SAP HANA verilerinin bir Azure Blob depolama alanına nasıl kopyalanacağını gösterir. Bununla birlikte, veriler, Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) listelenen herhangi bir havuza **doğrudan** kopyalanabilir.  

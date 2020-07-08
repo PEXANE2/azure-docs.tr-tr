@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706214"
 ---
-# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için bağlantı mimarisi
+# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için bağlantı mimarisi
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, Azure SQL yönetilen örneği ile iletişim açıklanır. Ayrıca, bağlantı mimarisini ve bileşenlerin yönetilen örneğe trafiği nasıl yönlendirdiğinden de açıklanmaktadır.  

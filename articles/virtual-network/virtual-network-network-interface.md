@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 1eb32fe4950a3a27ec97026b9170d08996de0c89
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707438"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Ağ arabirimi oluşturma, değiştirme veya silme
@@ -49,15 +48,15 @@ Azure portal kullanarak bir sanal makine oluştururken, Portal sizin için varsa
 
     |Ayar|Gerekli mi?|Ayrıntılar|
     |---|---|---|
-    |Name|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır. Zaman içinde, büyük olasılıkla Azure aboneliğinizde birkaç ağ arabirimine sahip olacaksınız. Birkaç ağ arabirimini yönetmeyi kolaylaştırmak için bir adlandırma kuralı oluşturma konusunda öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Ağ arabirimi oluşturulduktan sonra ad değiştirilemez.|
-    |Sanal ağ|Yes|Ağ arabirimi için sanal ağı seçin. Ağ arabirimiyle aynı abonelikte ve konumda bulunan bir sanal ağa yalnızca bir ağ arabirimi atayabilirsiniz. Bir ağ arabirimi oluşturulduktan sonra, atandığı sanal ağı değiştiremezsiniz. Ağ arabirimini ekleyeceğiniz sanal makine, ağ arabirimiyle aynı konum ve abonelikte de bulunmalıdır.|
-    |Alt ağ|Yes|Seçtiğiniz sanal ağ içinden bir alt ağ seçin. Ağ arabiriminin oluşturulduktan sonra atandığı alt ağı değiştirebilirsiniz.|
-    |Özel IP adresi ataması|Yes| Bu ayarda, IPv4 adresi için atama yöntemini seçiyoruz. Şu atama yöntemlerinden birini seçin: **dinamik:** bu seçeneği belirlediğinizde, Azure seçtiğiniz alt ağın adres alanından bir sonraki kullanılabilir adresi otomatik olarak atar. **Statik:** Bu seçeneği seçerken, seçtiğiniz alt ağın adres alanından kullanılabilir bir IP adresini el ile atamanız gerekir. Statik ve dinamik adresler, siz değiştirene veya ağ arabirimi silinene kadar değişmez. Ağ arabirimi oluşturulduktan sonra atama yöntemini değiştirebilirsiniz. Azure DHCP sunucusu bu adresi, sanal makinenin işletim sistemi içindeki ağ arabirimine atar.|
-    |Ağ güvenlik grubu|No| **None**olarak ayarlı bırakın, var olan bir [ağ güvenlik grubunu](security-overview.md)seçin veya [bir ağ güvenlik grubu oluşturun](tutorial-filter-network-traffic.md). Ağ güvenlik grupları bir ağ arabiriminden gelen ve giden ağ trafiğini filtrelemenizi sağlar. Bir ağ arabirimine sıfır veya bir ağ güvenlik grubu uygulayabilirsiniz. Ağ arabiriminin atandığı alt ağa sıfır veya bir ağ güvenlik grubu da uygulanabilir. Ağ arabirimine bir ağ güvenlik grubu uygulandığında ve ağ arabiriminin atandığı alt ağ için bazı durumlarda beklenmedik sonuçlar oluşur. Ağ arabirimlerine ve alt ağlara uygulanan ağ güvenlik gruplarının sorunlarını gidermek için bkz. [ağ güvenlik gruplarında sorun giderme](diagnose-network-traffic-filter-problem.md).|
-    |Abonelik|Yes|Azure [aboneliklerinizden](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)birini seçin. Bir ağ arabirimini ve bağlandığınız sanal ağı aynı abonelikte mevcut olması gerekir.|
-    |Özel IP adresi (IPv6)|No| Bu onay kutusunu seçerseniz, ağ arabirimine atanan IPv4 adresine ek olarak ağ arabirimine bir IPv6 adresi atanır. Ağ arabirimleriyle IPv6 kullanımı hakkında önemli bilgiler için bu makalenin IPv6 bölümüne bakın. IPv6 adresi için bir atama yöntemi seçemezsiniz. Bir IPv6 adresi atamayı seçerseniz, bu, dinamik yöntemle atanır.
+    |Name|Evet|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır. Zaman içinde, büyük olasılıkla Azure aboneliğinizde birkaç ağ arabirimine sahip olacaksınız. Birkaç ağ arabirimini yönetmeyi kolaylaştırmak için bir adlandırma kuralı oluşturma konusunda öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Ağ arabirimi oluşturulduktan sonra ad değiştirilemez.|
+    |Sanal ağ|Evet|Ağ arabirimi için sanal ağı seçin. Ağ arabirimiyle aynı abonelikte ve konumda bulunan bir sanal ağa yalnızca bir ağ arabirimi atayabilirsiniz. Bir ağ arabirimi oluşturulduktan sonra, atandığı sanal ağı değiştiremezsiniz. Ağ arabirimini ekleyeceğiniz sanal makine, ağ arabirimiyle aynı konum ve abonelikte de bulunmalıdır.|
+    |Alt ağ|Evet|Seçtiğiniz sanal ağ içinden bir alt ağ seçin. Ağ arabiriminin oluşturulduktan sonra atandığı alt ağı değiştirebilirsiniz.|
+    |Özel IP adresi ataması|Evet| Bu ayarda, IPv4 adresi için atama yöntemini seçiyoruz. Şu atama yöntemlerinden birini seçin: **dinamik:** bu seçeneği belirlediğinizde, Azure seçtiğiniz alt ağın adres alanından bir sonraki kullanılabilir adresi otomatik olarak atar. **Statik:** Bu seçeneği seçerken, seçtiğiniz alt ağın adres alanından kullanılabilir bir IP adresini el ile atamanız gerekir. Statik ve dinamik adresler, siz değiştirene veya ağ arabirimi silinene kadar değişmez. Ağ arabirimi oluşturulduktan sonra atama yöntemini değiştirebilirsiniz. Azure DHCP sunucusu bu adresi, sanal makinenin işletim sistemi içindeki ağ arabirimine atar.|
+    |Ağ güvenlik grubu|Hayır| **None**olarak ayarlı bırakın, var olan bir [ağ güvenlik grubunu](security-overview.md)seçin veya [bir ağ güvenlik grubu oluşturun](tutorial-filter-network-traffic.md). Ağ güvenlik grupları bir ağ arabiriminden gelen ve giden ağ trafiğini filtrelemenizi sağlar. Bir ağ arabirimine sıfır veya bir ağ güvenlik grubu uygulayabilirsiniz. Ağ arabiriminin atandığı alt ağa sıfır veya bir ağ güvenlik grubu da uygulanabilir. Ağ arabirimine bir ağ güvenlik grubu uygulandığında ve ağ arabiriminin atandığı alt ağ için bazı durumlarda beklenmedik sonuçlar oluşur. Ağ arabirimlerine ve alt ağlara uygulanan ağ güvenlik gruplarının sorunlarını gidermek için bkz. [ağ güvenlik gruplarında sorun giderme](diagnose-network-traffic-filter-problem.md).|
+    |Abonelik|Evet|Azure [aboneliklerinizden](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)birini seçin. Bir ağ arabirimini ve bağlandığınız sanal ağı aynı abonelikte mevcut olması gerekir.|
+    |Özel IP adresi (IPv6)|Hayır| Bu onay kutusunu seçerseniz, ağ arabirimine atanan IPv4 adresine ek olarak ağ arabirimine bir IPv6 adresi atanır. Ağ arabirimleriyle IPv6 kullanımı hakkında önemli bilgiler için bu makalenin IPv6 bölümüne bakın. IPv6 adresi için bir atama yöntemi seçemezsiniz. Bir IPv6 adresi atamayı seçerseniz, bu, dinamik yöntemle atanır.
     |IPv6 adı (yalnızca **özel IP adresi (IPv6)** onay kutusu işaretlendiğinde görüntülenir) |Evet, **özel IP adresi (IPv6)** onay kutusu işaretliyse.| Bu ad, ağ arabirimi için bir ikincil IP yapılandırmasına atanır. IP konfigürasyonları hakkında daha fazla bilgi için bkz. [ağ arabirimi ayarlarını görüntüleme](#view-network-interface-settings).|
-    |Kaynak grubu|Yes|Var olan bir [kaynak grubunu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) seçin veya bir kaynak grubu oluşturun. Bir ağ arabirimi, sizin eklediğiniz sanal makineden veya bağlandığınız sanal makineye göre aynı veya farklı bir kaynak grubunda bulunabilir.|
+    |Kaynak grubu|Evet|Var olan bir [kaynak grubunu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) seçin veya bir kaynak grubu oluşturun. Bir ağ arabirimi, sizin eklediğiniz sanal makineden veya bağlandığınız sanal makineye göre aynı veya farklı bir kaynak grubunda bulunabilir.|
     |Konum|Evet|Bir ağ arabirimini ve bağlandığınız sanal ağı, bir bölge olarak da adlandırılan aynı [konumda](https://azure.microsoft.com/regions)bulunmalıdır.|
 
 Portal, bir genel IP adresini oluştururken ağ arabirimine atama seçeneğini sağlamaz; ancak Portal, bir genel IP adresi oluşturur ve portalı kullanarak bir sanal makine oluşturduğunuzda ağ arabirimine atar. Oluşturduktan sonra ağ arabirimine genel IP adresi ekleme hakkında bilgi edinmek için bkz. [IP adreslerini yönetme](virtual-network-network-interface-addresses.md). Genel IP adresi olan bir ağ arabirimi oluşturmak istiyorsanız, ağ arabirimini oluşturmak için CLı veya PowerShell kullanmanız gerekir.
@@ -113,7 +112,7 @@ DNS sunucusu, Azure DHCP sunucusu tarafından sanal makine işletim sistemi içi
    - **Özel**: birden çok sanal ağ üzerindeki adları çözümlemek IÇIN kendi DNS sunucunuzu yapılandırabilirsiniz. DNS sunucusu olarak kullanmak istediğiniz sunucunun IP adresini girin. Belirttiğiniz DNS sunucusu adresi yalnızca bu ağ arabirimine atanır ve ağ arabiriminin atandığı sanal ağ için herhangi bir DNS ayarını geçersiz kılar.
      >[!Note]
      >VM, bir kullanılabilirlik kümesinin parçası olan bir NIC kullanıyorsa, kullanılabilirlik kümesinin parçası olan tüm NIC 'lerden sanal makinelerin her biri için belirtilen tüm DNS sunucuları devralınacaktır.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 **Komutlar**
 
@@ -134,7 +133,7 @@ Bu ayar, sanal makinenin iletmesi gereken trafiği alan sanal makineye bağlı h
 2. İçin IP iletmeyi etkinleştirmek veya devre dışı bırakmak istediğiniz ağ arabirimini seçin.
 3. **Ayarlar** bölümünde **IP yapılandırması** ' nı seçin.
 4. Ayarı değiştirmek için **etkin** veya **devre dışı** (varsayılan ayar) seçeneğini belirleyin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 **Komutlar**
 
@@ -152,9 +151,9 @@ Ağ arabiriminin atandığı alt ağı (sanal ağı) değiştirebilirsiniz.
 3. **Ayarlar**altında **IP yapılandırması** ' nı seçin. Listelenen herhangi bir IP yapılandırması için herhangi bir özel IP adresi **(statik)** varsa, aşağıdaki ADıMLARı tamamlayarak IP adresi atama yöntemini dinamik olarak değiştirmeniz gerekir. Ağ arabirimi için alt ağ atamasını değiştirmek üzere, tüm özel IP adreslerinin dinamik atama yöntemiyle atanması gerekir. Adresler dinamik yöntemle atanırsa, beş adımdan devam edin. Statik atama yöntemiyle herhangi bir IPv4 adresi atanmışsa, atama yöntemini dinamik olarak değiştirmek için aşağıdaki adımları izleyin:
    - IP yapılandırmaları listesinden için IPv4 adresi atama yöntemini değiştirmek istediğiniz IP yapılandırmasını seçin.
    - Özel IP adresi **atama** yöntemi için **dinamik** ' i seçin. Statik atama yöntemiyle bir IPv6 adresi atayamazsınız.
-   - **Kaydet**’i seçin.
+   - **Kaydet**'i seçin.
 4. **Alt** ağ açılan listesinden ağ arabirimini taşımak istediğiniz alt ağı seçin.
-5. **Kaydet**’i seçin. Yeni dinamik adresler yeni alt ağ için alt ağ adres aralığından atanır. Ağ arabirimini yeni bir alt ağa atadıktan sonra seçerseniz, yeni alt ağ adres aralığından statik bir IPv4 adresi atayabilirsiniz. Bir ağ arabirimi için IP adreslerini ekleme, değiştirme ve kaldırma hakkında daha fazla bilgi için bkz. [IP adreslerini yönetme](virtual-network-network-interface-addresses.md).
+5. **Kaydet**'i seçin. Yeni dinamik adresler yeni alt ağ için alt ağ adres aralığından atanır. Ağ arabirimini yeni bir alt ağa atadıktan sonra seçerseniz, yeni alt ağ adres aralığından statik bir IPv4 adresi atayabilirsiniz. Bir ağ arabirimi için IP adreslerini ekleme, değiştirme ve kaldırma hakkında daha fazla bilgi için bkz. [IP adreslerini yönetme](virtual-network-network-interface-addresses.md).
 
 **Komutlar**
 
@@ -184,7 +183,7 @@ Ağ arabirimi bir sanal makineye bağlıysa, portalı kullanarak bir ağ arabiri
 3. **Ayarlar**altında **ağ güvenlik grubu** ' nu seçin.
 4. **Düzenle**' yi seçin.
 5. Ağ Güvenlik **grubu ' nu seçin ve ağ** arabirimiyle ilişkilendirmek istediğiniz ağ güvenlik grubunu seçin veya bir ağ güvenlik grubunun ilişkilendirmesini kaldırmak için **hiçbiri**' ni seçin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 **Komutlar**
 

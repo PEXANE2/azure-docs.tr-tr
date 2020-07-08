@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706605"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM'de ağ arabirimini sıfırlama 
@@ -84,7 +83,7 @@ Ağ arabirimini sıfırlamak için şu adımları izleyin:
 4.  **IP adreslerini**seçin.
 5.  **Özel IP ataması** **statik**değilse, **statik**olarak değiştirin.
 6.  **IP adresini** alt ağda kullanılabilir olan başka bir IP adresiyle değiştirin.
-7.  **Kaydet**’i seçin.
+7.  **Kaydet**'i seçin.
 8.  Sanal makine, yeni NIC 'yi sisteme başlatacak şekilde yeniden başlatılacak.
 9.  Makinenize RDP 'yi deneyin. Başarılı olursa, özel IP adresini özgün durumuna geri döndürmeyi seçebilirsiniz.  
 

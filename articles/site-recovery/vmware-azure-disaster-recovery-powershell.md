@@ -8,10 +8,9 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704395"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile Azure 'da VMware VM 'lerinin olağanüstü durum kurtarması ayarlama
@@ -353,9 +352,9 @@ Bulunan bir sanal makineyi korumak için aşağıdaki ayrıntılara ihtiyacını
 
 |Sanal makine  |İşlem sunucusu        |Depolama Hesabı              |Günlük depolama hesabı  |İlke           |Mobility hizmeti yüklemesi için hesap|Hedef kaynak grubu  | Hedef sanal ağ  |Hedef alt ağ  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |Yok| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |
+|CentOSVM1       |ConfigurationServer   |YOK| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |
 |Win2K12VM1       |Genişleme-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Yok                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| YOK                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
 
 
 ```azurepowershell

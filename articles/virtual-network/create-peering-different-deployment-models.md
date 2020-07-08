@@ -17,10 +17,9 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 318e51f12653b5cbe6bd47b9c48a57d72286a4a7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710057"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Sanal ağ eşlemesi oluşturma-farklı dağıtım modelleri, aynı abonelik
@@ -43,7 +42,7 @@ Bir sanal ağ eşlemesi oluşturmak için Azure portal, Azure [komut satırı ar
 
 ## <a name="create-peering---azure-portal"></a>Eşleme oluşturma-Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#requirements-and-constraints).
+1. [Azure portalında](https://portal.azure.com) oturum açın. Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#requirements-and-constraints).
 2. **+ Yeni**' ye, **ağ**' a ve ardından **sanal ağ ' a**tıklayın.
 3. **Sanal ağ oluştur** dikey penceresinde, aşağıdaki ayarlara ait değerleri girin veya seçin ve ardından **Oluştur**' a tıklayın:
     - **Ad**: *myVnet1*

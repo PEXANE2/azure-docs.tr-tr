@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708935"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
@@ -73,7 +72,7 @@ Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler
 Hayır.Bir Azure sanal ağ geçidi türü ilke temelli veya rota temelli olarak değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
 1. Silinecek ağ geçidiyle ilişkilendirilmiş bağlantıları silin.
 1. Ağ geçidini silin:
-   - [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure portalındaki](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).

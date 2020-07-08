@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708306"
 ---
 # <a name="filters"></a>Filtreler
@@ -47,7 +46,7 @@ Senaryonuza bağlı olarak, hangi tür bir filtrenin daha uygun olduğuna karar 
 
 Filtreleri anlatmak için aşağıdaki özellikleri kullanabilirsiniz. 
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |firstQuality|Filtrenin ilk kalite bit hızı.|
 |presentationTimeRange|Sunum zaman aralığı. Bu özellik bildirim başlangıç/bitiş noktaları, sunum penceresi uzunluğu ve canlı başlangıç konumunu filtrelemek için kullanılır. <br/>Daha fazla bilgi için bkz. [Presentationtimerange](#presentationtimerange).|
@@ -57,7 +56,7 @@ Filtreleri anlatmak için aşağıdaki özellikleri kullanabilirsiniz.
 
 Bu özelliği **varlık filtreleriyle**kullanın. Özelliği **Hesap filtreleriyle**ayarlamanız önerilmez.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |**endTimestamp**|Isteğe bağlı video (VoD) için geçerlidir.<br/>Canlı akış sunusu için sessizce yok sayılır ve sunu sona erdiğinde ve akış VoD olduğunda uygulanır.<br/>Bu, sununun mutlak bitiş noktasını temsil eden, en yakın bir sonraki GOP başlangıcına yuvarlanan uzun bir değerdir. Birim zaman ölçeğdir, bu nedenle bir endTimestamp 1800000000 3 dakika olur.<br/>Şarkı listesinde olacak parçaları kırpmak için startTimestamp ve endTimestamp kullanın (manifest).<br/>Örneğin, varsayılan zaman ölçeğini kullanan startTimestamp = 40000000 ve endTimestamp = 100000000, VoD sunusunun 4 saniye ve 10 saniyelik parçalarını içeren bir çalma listesi oluşturur. Bir parça sınır ayırır, tüm parçalar bildirime dahil edilir.|
 |**forceEndTimestamp**|Yalnızca canlı akış için geçerlidir.<br/>EndTimestamp özelliğinin mevcut olup olmadığını gösterir. True ise endTimestamp belirtilmelidir veya hatalı bir istek kodu döndürülür.<br/>İzin verilen değerler: false, true.|
@@ -72,7 +71,7 @@ Stream 'in (canlı akış veya video Isteğe bağlı) dinamik olarak oluşturulm
 
 Filtre izleme özellik koşulları, izleme türlerini, değerleri (aşağıdaki tabloda açıklanan) ve işlemleri (eşittir, NotEqual) anlatmaktadır. 
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |**Bit hızı**|Filtreleme için izlemenin bit hızını kullanın.<br/><br/>Önerilen değer bit/saniye cinsinden bir bit hızı aralığıdır. Örneğin, "0-2427000".<br/><br/>Not: 250000 (bit/saniye) gibi belirli bir bit hızı değeri kullanabileceğiniz sürece, tam bit hızları bir varlıktan diğerine doğru dalgalanmasına rağmen bu yaklaşım önerilmez.|
 |**FourCC**|Filtreleme için parçanın FourCC değerini kullanın.<br/><br/>Değer, [RFC 6381](https://tools.ietf.org/html/rfc6381)' de belirtildiği gibi codec biçiminin ilk öğesidir. Şu anda aşağıdaki codec bileşenleri desteklenir: <br/>Video için: "avc1", "hev1", "hvc1"<br/>Ses için: "MP4A", "EC-3"<br/><br/>Bir varlık içindeki izlemelere ait FourCC değerlerini öğrenmek için bildirim dosyasını alın ve inceleyin.|

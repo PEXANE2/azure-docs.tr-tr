@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709207"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS 'de ters DNS arama bölgeleri barındırma
@@ -28,7 +27,7 @@ Bu makale, Azure portal, Azure PowerShell, Azure klasik CLı veya Azure CLı kul
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Geriye doğru arama DNS bölgesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde **Yeni**  >  **ağ**' ı ve ardından **DNS bölgesi**' ni seçin.
 
    !["DNS bölgesi" seçimi](./media/dns-reverse-dns-hosting/figure1.png)

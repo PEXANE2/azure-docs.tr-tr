@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707319"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'tan veri taşıma
@@ -63,12 +62,12 @@ Aşağıdaki tabloda, Teradata bağlantılı hizmetine özgü JSON öğeleri iç
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Yes |
-| sunucu |Teradata sunucusunun adı. |Yes |
-| authenticationType |Teradata veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |No |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |No |
-| gatewayName |Data Factory hizmetinin şirket içi Teradata veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| tür |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Evet |
+| sunucu |Teradata sunucusunun adı. |Evet |
+| authenticationType |Teradata veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
+| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
+| gatewayName |Data Factory hizmetinin şirket içi Teradata veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
@@ -84,7 +83,7 @@ Kaynak, **Relationalsource** türünde olduğunda (Teradata içeren), **typeprop
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Yes |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Evet |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON örneği: Teradata 'dan Azure Blob 'a veri kopyalama
 Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu kişiler, Teradata 'dan Azure Blob depolama 'ya nasıl veri kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.

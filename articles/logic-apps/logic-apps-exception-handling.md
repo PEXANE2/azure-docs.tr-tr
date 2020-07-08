@@ -9,13 +9,12 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704531"
 ---
-# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps hataları ve özel durumları işleme
+# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps'teki hataları ve özel durumları işleme
 
 Herhangi bir tümleştirme mimarisinin kapalı kalma süresini veya bağımlı sistemlerden kaynaklanan sorunları uygun şekilde işleme yöntemi bir zorluk oluşturabilirler. Sorunları ve hataları sorunsuz şekilde işleyen güçlü ve dayanıklı tümleştirmeler oluşturmanıza yardımcı olmak için Logic Apps hataları ve özel durumları işlemeye yönelik birinci sınıf bir deneyim sağlar.
 
@@ -27,7 +26,7 @@ En temel özel durum ve hata işleme için, desteklenen yerlerde, her türlü ey
 
 Yeniden deneme ilkesi türleri şunlardır:
 
-| Tür | Description |
+| Tür | Açıklama |
 |------|-------------|
 | **Varsayılan** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . |
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. |
@@ -69,7 +68,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *Gerekli*
 
-| Değer | Tür | Description |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
 | <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default` , `none` , `fixed` veya`exponential` |
 | <*yeniden deneme aralığı*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D` . Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. |
@@ -78,7 +77,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *İsteğe Bağlı*
 
-| Değer | Tür | Description |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
 | <*Minimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık |
 | <*Maksimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık |
@@ -112,7 +111,7 @@ Eylemde veya tetikleyicide açıkça tanımlanmamışsa, örnek bir HTTP eylemin
 }
 ```
 
-### <a name="none"></a>Yok
+### <a name="none"></a>Hiçbiri
 
 Eylem veya tetikleyicinin başarısız istekleri yeniden denemediğini belirtmek için <*retry-Policy-type*> olarak ayarlayın `none` .
 

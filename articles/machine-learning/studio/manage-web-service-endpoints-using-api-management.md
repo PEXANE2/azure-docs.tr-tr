@@ -11,15 +11,14 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: d9b83c065865bf8e3e5906aa3ad7107f1ca8da75
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84705551"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetmek için API Management kullanarak nasıl hızlı bir şekilde başlacağınız gösterilmektedir.
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management nedir?
@@ -36,7 +35,7 @@ Bu kılavuzu gerçekleştirmek için şunlar gerekir:
 
 Azure Machine Learning Web hizmetinizi API Management bir örnekle yönetebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+ Kaynak oluştur**’u seçin.
 3. Arama kutusuna "API Management" yazın, ardından "API Management" kaynağını seçin.
 4. **Oluştur**'a tıklayın.

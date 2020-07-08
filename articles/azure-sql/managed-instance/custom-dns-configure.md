@@ -13,16 +13,15 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
 ms.openlocfilehash: 2ba5794ba647c28cde3b54a1afdfbd0201b23e8e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706163"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için özel bir DNS yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL yönetilen örneğinin bir Azure [sanal ağı (VNet)](../../virtual-network/virtual-networks-overview.md)içinde dağıtılması gerekir. Özel ana bilgisayar adlarının SQL yönetilen örneğinden çözümlenmesi gereken birkaç senaryo (örneğin, DB posta, bağlı sunucular, bulut veya karma ortamınızda bulunan diğer SQL Server örneklerine) vardır. Bu durumda, Azure içinde özel bir DNS yapılandırmanız gerekir. 
+Azure SQL yönetilen örneğinin bir Azure [sanal ağı (VNet)](../../virtual-network/virtual-networks-overview.md)içinde dağıtılması gerekir. Özel ana bilgisayar adlarının SQL Yönetilen Örneğinden çözümlenmesini gerektiren birkaç senaryo (örneğin veritabanı postası, bulutunuzda veya hibrit ortamınızda bulunan diğer SQL Server örnekleriyle bağlantılı sunucular) vardır. Böyle bir durumda Azure içinde özel DNS yapılandırmanız gerekir. 
 
 SQL yönetilen örneği, iç işleyişi için aynı DNS 'i kullandığından, özel DNS sunucusunu ortak etki alanı adlarını çözümleyebilecek şekilde yapılandırın.
 

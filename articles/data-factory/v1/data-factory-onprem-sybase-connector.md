@@ -13,10 +13,9 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707370"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri taşıma
@@ -65,14 +64,14 @@ Aşağıdaki tabloda, Sybase bağlantılı hizmetine özgü JSON öğeleri için
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesSybase** olarak ayarlanmalıdır |Yes |
-| sunucu |Sybase sunucusunun adı. |Yes |
-| database |Sybase veritabanının adı. |Yes |
-| manızı |Veritabanındaki şemanın adı. |No |
-| authenticationType |Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |No |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |No |
-| gatewayName |Data Factory hizmetinin şirket içi Sybase veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| tür |Type özelliği: **OnPremisesSybase** olarak ayarlanmalıdır |Evet |
+| sunucu |Sybase sunucusunun adı. |Evet |
+| database |Sybase veritabanının adı. |Evet |
+| manızı |Veritabanındaki şemanın adı. |Hayır |
+| authenticationType |Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
+| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
+| gatewayName |Data Factory hizmetinin şirket içi Sybase veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.

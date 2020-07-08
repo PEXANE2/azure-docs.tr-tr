@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707625"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Genel IP adresini bir sanal makineyle ilişkilendir
@@ -28,7 +27,7 @@ Genel IP adresini bir VM ile ilişkilendirmek için [Azure Portal](#azure-portal
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Genel IP adresini eklemek istediğiniz sanal makineyi bulun veya arayın ve ardından seçin.
 3. **Ayarlar**altında **ağ**' ı SEÇIN ve ardından genel IP adresini eklemek istediğiniz ağ arabirimini aşağıdaki resimde gösterildiği gibi seçin:
 

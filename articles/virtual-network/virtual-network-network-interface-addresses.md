@@ -17,10 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711009"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
@@ -54,10 +53,10 @@ Oturum açarken veya Azure 'a bağlanırken kullandığınız hesap, [ağ katıl
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Name|Yes|Ağ arabirimi için benzersiz olmalıdır|
-   |Tür|Yes|Var olan bir ağ arabirimine bir IP yapılandırması ekliyorsanız ve her bir ağ arabiriminin bir [birincil](#primary) IP yapılandırması olması gerektiğinden, tek seçeneğiniz **ikincildir**.|
-   |Özel IP adresi atama yöntemi|Yes|[**Dinamik**](#dynamic): Azure, ağ arabiriminin dağıtıldığı alt ağ adres aralığı için bir sonraki kullanılabilir adresi atar. [**Statik**](#static): ağ arabiriminin dağıtıldığı alt ağ adres aralığı için kullanılmayan bir adres atarsınız.|
-   |Genel IP adresi|No|**Devre dışı:** Şu anda IP yapılandırmasıyla ilişkili genel IP adresi kaynağı yok. **Etkin:** Mevcut bir IPv4 Genel IP adresi seçin veya yeni bir tane oluşturun. Genel IP adresi oluşturmayı öğrenmek için [genel IP adresleri](virtual-network-public-ip-address.md#create-a-public-ip-address) makalesini okuyun.|
+   |Name|Evet|Ağ arabirimi için benzersiz olmalıdır|
+   |Tür|Evet|Var olan bir ağ arabirimine bir IP yapılandırması ekliyorsanız ve her bir ağ arabiriminin bir [birincil](#primary) IP yapılandırması olması gerektiğinden, tek seçeneğiniz **ikincildir**.|
+   |Özel IP adresi atama yöntemi|Evet|[**Dinamik**](#dynamic): Azure, ağ arabiriminin dağıtıldığı alt ağ adres aralığı için bir sonraki kullanılabilir adresi atar. [**Statik**](#static): ağ arabiriminin dağıtıldığı alt ağ adres aralığı için kullanılmayan bir adres atarsınız.|
+   |Genel IP adresi|Hayır|**Devre dışı:** Şu anda IP yapılandırmasıyla ilişkili genel IP adresi kaynağı yok. **Etkin:** Mevcut bir IPv4 Genel IP adresi seçin veya yeni bir tane oluşturun. Genel IP adresi oluşturmayı öğrenmek için [genel IP adresleri](virtual-network-public-ip-address.md#create-a-public-ip-address) makalesini okuyun.|
 6. Sanal makine işletim [sistemlerine birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md#os-config) makalesindeki yönergeleri tamamlayarak, IKINCIL özel IP adreslerini sanal makine işletim sistemine el ile ekleyin. IP adreslerini bir sanal makine işletim sistemine el ile eklemeden önce [, özel IP adreslerine göz atın.](#private) Sanal makine işletim sistemine genel IP adresleri eklemeyin.
 
 **Komutlar**
@@ -76,7 +75,7 @@ Bir IPv4 adresinin atama yöntemini değiştirmeniz, statik IPv4 adresini deği�
 3. **Ayarlar**altında **IP yapılandırması**' nı seçin.
 4. Listeden değiştirmek istediğiniz IP yapılandırmasını seçin.
 5. [IP yapılandırması ekleme](#add-ip-addresses)' nin 5. adımında bulunan ayarlarla ilgili bilgileri kullanarak ayarları istediğiniz şekilde değiştirin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 >[!NOTE]
 >Birincil ağ arabiriminin birden çok IP yapılandırması varsa ve birincil IP yapılandırmasının özel IP adresini değiştirirseniz, birincil ve ikincil IP adreslerini Windows içindeki ağ arabirimine el ile yeniden atamanız gerekir (Linux için gerekli değildir). IP adreslerini bir işletim sistemi içindeki bir ağ arabirimine el ile atamak için bkz. [sanal makinelere birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md#os-config). IP adreslerini bir sanal makine işletim sistemine el ile eklemeden önce özel göz önünde bulundurulması gereken [özel IP adresleri bölümüne bakın](#private) . Sanal makine işletim sistemine genel IP adresleri eklemeyin.

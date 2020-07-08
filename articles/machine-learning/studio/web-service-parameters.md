@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
 ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84705874"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasik) Web hizmeti parametrelerini kullanma
@@ -64,7 +63,7 @@ Web hizmetine yönelik API belgeleri Web hizmetine erişirken Web hizmeti parame
 5. Web hizmeti parametresi için varsayılan bir değer sağlamak üzere, adın sağ tarafındaki simgeye tıklayın, "varsayılan değer sağla" seçeneğini belirleyin, bir değer girin (örneğin, "kapsayıcı1/output1.csv") ve **ENTER** tuşuna basın.
    
    ![Web hizmeti parametresi](./media/web-service-parameters/parameter.png)
-6. **Çalıştır**’a tıklayın. 
+6. **Çalıştır**' a tıklayın. 
 7. Web **Hizmeti Dağıt ' a** tıklayın ve Web hizmetini dağıtmak için Web Hizmeti Dağıt **[klasik]** veya Web hizmeti dağıtma [ **Yeni]** seçeneğini belirleyin.
 
 > [!NOTE] 

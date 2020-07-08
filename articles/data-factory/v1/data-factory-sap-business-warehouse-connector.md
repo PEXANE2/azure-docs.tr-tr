@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707285"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'Tan veri taşıma
@@ -63,12 +62,12 @@ Aşağıdaki tabloda SAP Business Warehouse (siyah-beyaz) bağlantılı hizmetin
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | string | Yes
-systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes
-clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes
-kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
-password | Kullanıcının parolası. | string | Yes
-gatewayName | Data Factory hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
+sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | string | Evet
+systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet
+clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet
+kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Evet
+password | Kullanıcının parolası. | string | Evet
+gatewayName | Data Factory hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Evet
 encryptedCredential | Şifrelenmiş kimlik bilgisi dizesi. | dize | No
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
@@ -86,7 +85,7 @@ Copy etkinliğinin kaynağı **Relationalsource** (SAP BW içerir) türünde old
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Yes |
+| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Evet |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON örneği: SAP Business Warehouse 'tan Azure Blob 'a veri kopyalama

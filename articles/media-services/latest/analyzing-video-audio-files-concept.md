@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708969"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video ve ses dosyalarını Azure Media Services Çözümleme
@@ -67,7 +66,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 ### <a name="transcript"></a>döküm
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Satır KIMLIĞI.|
 |metin|Dökümü.|
@@ -105,7 +104,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 ### <a name="ocr"></a>OCR
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|OCR satır KIMLIĞI.|
 |metin|OCR metni.|
@@ -148,7 +147,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 ### <a name="faces"></a>leri
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Yüz KIMLIĞI.|
 |name|Yüz adı. ' Bilinmeyen #0 ', tanımlanan bir ünlüde veya müşterinin eğitilen bir kişi olabilir.|
@@ -193,7 +192,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 ### <a name="shots"></a>görüntüleri
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Görüntü KIMLIĞI.|
 |Gezen|Görüntü içindeki anahtar çerçevelerinin listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Anahtar çerçeve örneklerinin, ana karenin küçük resim KIMLIĞI olan bir thumbnailId alanı vardır.|
@@ -250,7 +249,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 ### <a name="statistics"></a>girecek
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |Yazışma sayısı|Videodaki yazışma sayısı.|
 |WordCount|Konuşmacı başına sözcük sayısı.|
@@ -263,7 +262,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). Örneğin, 0-0.1, 0,1-0.2.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
@@ -298,7 +297,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 
 ### <a name="labels"></a>etikete
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Etiket KIMLIĞI.|
 |name|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
@@ -356,7 +355,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 
 ### <a name="keywords"></a>anahtar sözcükler
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Anahtar sözcük KIMLIĞI.|
 |metin|Anahtar sözcük metni.|
@@ -407,7 +406,7 @@ Visualcontentmoderblock blok, büyük olasılıkla yetişkinlere yönelik içeri
 
 Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için kullanılabilir olabilir. Kullanıcılar içeriğin insan incelemesi için bir istek gönderebilir ve bu durumda `IsAdult` öznitelik insan incelemesi sonucunu içerecektir.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|

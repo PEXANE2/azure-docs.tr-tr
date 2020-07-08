@@ -11,10 +11,9 @@ ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
 ms.openlocfilehash: 659011a13be310512ace68d2e020eaebff9a10ee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706044"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasik bir Studio (klasik) Web hizmetini yeniden eğitme ve dağıtma
@@ -118,7 +117,7 @@ Aşağıdaki örnek kod, uç noktayı güncelleştirmek için *Baselocation*, *r
 
 *Kaynaklardaki* *ad* parametresinin değeri, tahmine dayalı deneyde kaydedilen eğitilen modelin kaynak adıyla eşleşmelidir. Kaynak adını almak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **Machine Learning**' ye tıklayın.
 1. Ad ' ın altında, çalışma alanınıza ve ardından **Web Hizmetleri**' ne tıklayın.
 1. Ad ' ın altında, **Census modeli [tahmine dayalı exp.]** öğesine tıklayın.

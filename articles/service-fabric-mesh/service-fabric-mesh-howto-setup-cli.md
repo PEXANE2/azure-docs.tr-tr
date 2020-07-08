@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707983"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
@@ -17,7 +16,7 @@ Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve 
 
 Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlenmiştir.
 
-| CLı modülü | Hedef Ortam |  Description | 
+| CLı modülü | Hedef Ortam |  Açıklama | 
 |---|---|---|
 | az ağ | Azure Service Fabric ağı | Azure Service Fabric kafes ortamında uygulamalarınızı dağıtmanıza ve kaynakları yönetmenize olanak tanıyan birincil CLı. 
 | sfctl | Yerel kümeler | Yerel kümelerdeki Service Fabric kaynaklarının dağıtımına ve test edilmesine izin veren Service Fabric CLı.  

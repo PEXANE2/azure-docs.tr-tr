@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/10/2020
 ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708000"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
@@ -41,7 +40,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 `az mariadb server replica create`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
@@ -71,7 +70,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 `az mariadb server replica list`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | server-name | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
@@ -89,7 +88,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 `az mariadb server replica stop`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun bulunduğu kaynak grubu.  |
 | name | mydemoreplicaserver | Çoğaltmayı durdurulacak çoğaltma sunucusunun adı. |

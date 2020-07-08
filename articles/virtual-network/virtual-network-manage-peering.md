@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711111"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
@@ -86,7 +85,7 @@ Bir eşlemeyi değiştirmeden önce, gereksinimler ve kısıtlamalar ve [gerekli
 3. **Ayarlar**altında, eşlemeler ' **i seçin.**
 4. Görüntülemek veya ayarlarını değiştirmek istediğiniz eşlemeyi seçin.
 5. Uygun ayarı değiştirin. Eşleme oluşturma [adımının 5. adımında](#add-peering) her ayar için seçenekler hakkında bilgi edinin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 **Komutlar**
 

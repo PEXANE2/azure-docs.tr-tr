@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704446"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
@@ -111,7 +110,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
 ### <a name="configure-settings"></a>Ayarları yapılandırma
 
-1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmeti bulma ve anında yükleme için kullandığı NIC 'i seçin. Ardından yapılandırma sunucusunun Azure ile bağlantı için kullandığı NIC 'ı seçin. **Kaydet**’i seçin. Bu ayar yapılandırıldıktan sonra değiştirilemez. Yapılandırma sunucusunun IP adresini değiştirmeyin. Yapılandırma sunucusuna atanan IP 'nin bir DHCP IP 'si değil statik IP olduğundan emin olun.
+1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmeti bulma ve anında yükleme için kullandığı NIC 'i seçin. Ardından yapılandırma sunucusunun Azure ile bağlantı için kullandığı NIC 'ı seçin. **Kaydet**'i seçin. Bu ayar yapılandırıldıktan sonra değiştirilemez. Yapılandırma sunucusunun IP adresini değiştirmeyin. Yapılandırma sunucusuna atanan IP 'nin bir DHCP IP 'si değil statik IP olduğundan emin olun.
 2. **Kurtarma Hizmetleri kasasını Seç**sayfasında, [yapılandırma sunucusunu Azure Site Recovery hizmetleriyle kaydetme](#register-the-configuration-server-with-azure-site-recovery-services)adım 6 ' da kullanılan kimlik bilgileriyle Microsoft Azure için oturum açın.
 3. Oturum açtıktan sonra Azure aboneliğinizi ve ilgili kaynak grubunu ve kasasını seçin.
 

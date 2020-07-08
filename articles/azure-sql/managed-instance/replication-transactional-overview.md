@@ -13,10 +13,9 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
 ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708508"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile işlemsel çoğaltma
@@ -24,7 +23,7 @@ ms.locfileid: "84708508"
 
 İşlem çoğaltma, Azure SQL yönetilen örneği 'nin bir özelliğidir ve Azure SQL yönetilen örneğindeki bir tablodan veya bir SQL Server örneğindeki verileri uzak veritabanlarına yerleştirilmiş tablolara çoğaltmanıza olanak tanıyan SQL Server. Bu özellik, farklı veritabanlarındaki birden çok tabloyu eşitlemenize olanak tanır.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı kullanabilirsiniz:
 
@@ -43,10 +42,10 @@ Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bil
 
 | Rol | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Evet |
-| **Dağıtım** | No | Evet|
-| **Çekme abonesi** | No | Evet|
-| **İtme abonesi**| Yes | Yes|
+| **Publisher** | Hayır | Evet |
+| **Dağıtım** | Hayır | Evet|
+| **Çekme abonesi** | Hayır | Evet|
+| **İtme abonesi**| Evet | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server örneği olabilir.
@@ -72,11 +71,11 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes |
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
+| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
+| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
 | [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Evet|
+| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
 | [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 

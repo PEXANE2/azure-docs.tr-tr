@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706180"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
@@ -36,7 +35,7 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
 1. **Oluştur**'a tıklayın.
@@ -51,7 +50,7 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 Azure Data Lake Storage 2. depolama hesabı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
 1. **Oluştur**'a tıklayın.
@@ -81,7 +80,7 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 
     ![RBAC rolü atamayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. **Kaydet**’i seçin. Seçtiğiniz kullanıcı tarafından atanan kimlik artık seçili rol altında listelenmiştir.
+1. **Kaydet**'i seçin. Seçtiğiniz kullanıcı tarafından atanan kimlik artık seçili rol altında listelenmiştir.
 1. Bu ilk kurulum tamamlandıktan sonra Portal aracılığıyla bir küme oluşturabilirsiniz. Küme, depolama hesabıyla aynı Azure bölgesinde olmalıdır. Küme oluşturma menüsünün **depolama** sekmesinde aşağıdaki seçenekleri belirtin:
 
     * **Birincil depolama türü**için **Azure Data Lake Storage 2.**' yi seçin.
@@ -100,7 +99,7 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 
 Örnek bir [şablon dosyası indirebilir](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) ve [örnek bir parametre dosyası indirebilirsiniz](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Aşağıdaki şablon ve Azure CLı kod parçacığını kullanmadan önce aşağıdaki yer tutucuları doğru değerlerle değiştirin:
 
-| Yer tutucu | Description |
+| Yer tutucu | Açıklama |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure aboneliğinizin KIMLIĞI |
 | `<RESOURCEGROUPNAME>` | Yeni küme ve depolama hesabının oluşturulmasını istediğiniz kaynak grubu. |

@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/10/2020
 ms.openlocfilehash: eff70d193674877b3b9453319197b60569399968
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707114"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
@@ -53,7 +52,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlServerReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulduğu kaynak grubu.  |
 | Name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
@@ -82,7 +81,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | aboneliğinde ve | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
