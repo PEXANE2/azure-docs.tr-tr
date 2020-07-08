@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3eb429c4981cbc548c7d68c788008b841ff5d33e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85484086"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025599"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -20,10 +20,6 @@ PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahta
 PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
 
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarılabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/key-Vault-hsm-protected-keys.md)sağlayabilir.
-
-
-> [!NOTE]
-> Bu özellik şu anda genel olarak kullanıma sunulmuştur ve tüm bölgelerde yakında kullanıma sunulacaktır. Bölgenizde görmüyorsanız, iletişim kurun AskAzureDBforPostgreSQL@service.microsoft.com .
 
 > [!NOTE]
 > Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
@@ -136,22 +132,13 @@ Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafın
 PostgreSQL için Azure veritabanı 'nda, müşteriler tarafından yönetilen anahtar (CMK) kullanılarak bekleyen verilerin şifrelenmesi için bazı sınırlamalar vardır.
 
 * Bu işlevselliğe yönelik destek, **genel amaçlı** ve bellek için **iyileştirilmiş** fiyatlandırma katmanlarında sınırlandırılmıştır.
-* Bu özellik yalnızca, 16 TB 'a kadar depolamayı destekleyen bölgelerde ve sunucularda desteklenir. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [buradaki](concepts-pricing-tiers.md#storage) belgelerde bulunan depolama bölümüne bakın
+* Bu özellik yalnızca 16 TB'a kadar depolamayı destekleyen bölgelerde ve sunucularda desteklenir. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [buradaki](concepts-pricing-tiers.md#storage) belgelerde bulunan depolama bölümüne bakın
 
     > [!NOTE]
     > - Yukarıda listelenen bölgelerde oluşturulan tüm yeni PostgreSQL sunucuları, müşteri yöneticisi anahtarlarıyla şifreleme desteği **mevcuttur**. Geri yüklenen zaman noktası (INR) sunucusu veya okuma çoğaltması, teorik olarak ' New ' olarak nitelendirilecektir.
     > - Sağlanan sunucunuzun 16 TB 'a kadar destekleyip desteklemediğini doğrulamak için, portalda fiyatlandırma katmanı dikey penceresine gidebilir ve sağlanan sunucunuzun desteklediği en fazla depolama boyutunu görebilirsiniz. Kaydırıcıyı 4TB 'a kadar taşıyabiliyorsanız, sunucunuz müşterinin yönettiği anahtarlarla şifrelemeyi desteklemiyor olabilir. Ancak, veriler hizmet tarafından yönetilen anahtarlar kullanılarak her zaman şifrelenir. Sorularınız varsa lütfen öğesine ulaşın AskAzureDBforPostgreSQL@service.microsoft.com .
 
 * Şifreleme yalnızca RSA 2048 şifreleme anahtarıyla desteklenir.
-
-## <a name="infrastructure-double-encryption"></a>Altyapı Çift şifreleme
-PostgreSQL için Azure veritabanı, Microsoft 'un yönetilen anahtarlarını kullanarak verileri bekleyen verilerin depolama [şifrelemesini](concepts-security.md#at-rest) kullanır. Yedeklemeler de dahil olmak üzere veriler diskte şifrelenir ve bu şifreleme her zaman açıktır ve devre dışı bırakılamaz. Şifreleme, FIPS 140-2 tarafından doğrulanan şifreleme modülünü ve Azure depolama şifrelemesi için AES 256 bit şifre kullanır. 
-
-Altyapı çift şifrelemesi, FIPS 140-2 tarafından doğrulanan bir şifreleme modülünü ve bekleyen veriler için ek koruma katmanı sağlayan farklı bir şifreleme algoritmasını kullanarak ikinci bir şifreleme katmanı ekler. Altyapı çift şifrelemede kullanılan anahtar Ayrıca hizmet tarafından yönetilir. Bu, ek şifreleme katmanı nedeniyle performans etkisine sahip olacağı için varsayılan olarak *Açık* değildir. 
-
-   > [!NOTE]
-   > - Bu işlevsellik hala genel olarak kullanılamaz. 
-   > - Bu işlevselliğe yönelik destek, **genel amaçlı** ve bellek için **iyileştirilmiş** fiyatlandırma katmanlarında sınırlandırılmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
