@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir sanal makinenin (VM) boyutunu CPU, ağ veya 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482029"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvardaki bir VM 'yi yeniden boyutlandırma
@@ -20,7 +20,7 @@ Azure DevTest Labs bir laboratuvardaki bir sanal makineyi yeniden boyutlandırma
 > [!NOTE]
 > VM 'ye Uzak Masaüstü oturumu (RDP) aracılığıyla bağlıysanız, çalışmanızı kaydedin ve yeniden boyutlandırmadan önce VM bağlantısını kesin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden, yeniden boyutlandırmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
 4. Sol bölmede **sanal makinelerim**' ı seçin. 

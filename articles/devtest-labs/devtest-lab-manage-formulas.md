@@ -4,10 +4,10 @@ description: Bu makalede, bir temel (özel görüntü, Market görüntüsü veya
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480414"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formülleri yönetme
@@ -27,7 +27,7 @@ Kullanıcıları ve izinleri ekleme hakkında daha fazla bilgi için, bkz. [Azur
 ### <a name="create-a-formula-from-a-base"></a>Bir tabandan formül oluşturma
 Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka bir formülden formül oluşturma sürecinde size kılavuzluk gösterir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -76,7 +76,7 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 > 
 > 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın **genel bakış** sayfasında, formülü oluşturmak istediğiniz VM 'yi seçin.
@@ -93,7 +93,7 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 ## <a name="modify-a-formula"></a>Bir formülü değiştirme
 Bir formülü değiştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın sayfasında **formüller (yeniden kullanılabilir tabanlar)** öğesini seçin.
@@ -105,7 +105,7 @@ Bir formülü değiştirmek için şu adımları izleyin:
 ## <a name="delete-a-formula"></a>Formül silme
 Bir formülü silmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvar **ayarları** sayfasında **formüller**' i seçin.

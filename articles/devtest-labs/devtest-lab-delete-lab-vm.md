@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs Azure portal kullanarak laboratuvar
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481230"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuarda laboratuvar veya VM silme
@@ -21,7 +21,7 @@ Bir kaynak grubundan bir DevTest Labs örneğini sildiğinizde, DevTest Labs hiz
 
 Bir laboratuvarı silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -46,7 +46,7 @@ Sanal makine, ağ arabirimi ve VM ile ilişkili disk silinir.
 
 Laboratuvara bir sanal makineyi silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)

@@ -4,10 +4,10 @@ description: Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laborat
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480771"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
@@ -24,7 +24,7 @@ Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-stor
 
 1. Azure portal kullanarak laboratuvarın depolama hesabının adını alın:
 
-    1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+    1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
     
     1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
     

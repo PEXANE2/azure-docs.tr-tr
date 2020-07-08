@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479523"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API’si
@@ -36,7 +36,7 @@ Beta API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph Beta uç nokta
 
 V 1.0 API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph REST API v 1.0 başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>başlarken
 
 Kullanıcı veya e-posta iletisi gibi bir kaynağı okumak veya bir kaynağa yazmak için aşağıdaki gibi görünen bir istek oluşturursunuz:
 

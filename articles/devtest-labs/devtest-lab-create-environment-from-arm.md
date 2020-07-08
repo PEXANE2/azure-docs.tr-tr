@@ -4,10 +4,10 @@ description: Azure Resource Manager şablonundan Azure DevTest Labs çoklu VM or
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481434"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma
@@ -62,7 +62,7 @@ Azure Resource Manager şablonlarınızı bir depoda düzenlemek için izlenecek
 
 Deponuzu oluşturup yapılandırdıktan sonra, Azure portal kullanarak laboratuvarınızı ekleyebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
 1. Laboratuvarın **genel bakış** bölmesinde **yapılandırma ve ilkeler**' i seçin.
@@ -85,7 +85,7 @@ Deponuzu oluşturup yapılandırdıktan sonra, Azure portal kullanarak laboratuv
      - GitHub 'dan belirtecinizi almak için, profiliniz altında **Ayarlar**  >  **Geliştirici ayarları**  >  **kişisel erişim belirteçleri**' ni seçin.
    - **Klasör yolları**: yapıt tanımlarınız veya Azure Resource Manager şablon tanımlarınız için git kopya URI 'siyle ilişkili klasör yolunu girin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
    ![Yeni Depo Ekle](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
@@ -109,7 +109,7 @@ Sonraki bölümde, bir Azure Resource Manager şablonundan ortam oluşturma adı
 
 Laboratuvara bir Azure Resource Manager şablonu ekledikten sonra, laboratuar kullanıcılarınız aşağıdaki adımları izleyerek Azure portal ortamlar oluşturabilir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 

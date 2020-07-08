@@ -4,10 +4,10 @@ description: Azure portal kullanarak Azure DevTest Labs lisanslı bir görüntü
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481026"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvarınızda lisanslı bir görüntüyü etkinleştirin
@@ -17,7 +17,7 @@ Azure DevTest Labs, lisanslı bir görüntü, hüküm ve koşulları içeren bir
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Lisanslı bir görüntünün kullanıcılar için kullanılabilir olup olmadığını belirleme
 Kullanıcıların lisanslı görüntüden VM oluşturmalarına izin vermenin ilk adımı, lisanslı görüntü için hüküm ve koşulların kabul edildiğinden emin olmanızı sağlar. Aşağıdaki adımlarda, lisanslı bir görüntünün teklif durumunu nasıl görüntüleyebileceğiniz gösterilmektedir ve gerekirse hüküm ve koşullarını kabul edebilirsiniz.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -66,7 +66,7 @@ Aşağıdaki adımları izleyerek, lisanslı bir görüntü için programlı da�
    >
 
 
-1. **Kaydet**’i seçin. 
+1. **Kaydet**'i seçin. 
 
     Market görüntüleri listesinde, bu görüntüde artık **kabul edilen şartlar** gösteriliyor ve kullanıcıların sanal makineler oluşturması için kullanılabilir.
 

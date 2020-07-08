@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de bir laboratuvara iç destek beyanı nakletm
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480482"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara iç destek bildirisi ekleme
@@ -20,7 +20,7 @@ Artık geçerli olmadığında bir destek bildirisini kolayca devre dışı bır
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Mevcut laboratuvara destek beyanı ekleme adımları
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar**altında gösteriliyor olabilir).
 1. Laboratuvarlar listesinden, bir destek ekstresi eklemek istediğiniz Laboratuvarı seçin.  
 1. Laboratuvarın **genel bakış** alanında **yapılandırma ve ilkeler**' i seçin.  

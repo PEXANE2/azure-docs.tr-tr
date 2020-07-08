@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479836"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
@@ -94,14 +94,14 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 ## <a name="log-schema"></a>Günlük şeması 
 Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Adı | Açıklama |
+| Name | Açıklama |
 | ---- | ----------- | 
 | Silinecek | Başarısız olan görevin açıklaması. |
 | Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | keyVault | Anahtar kasasının tam adı. |
-| key | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
+| anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | sürüm | Kullanılan anahtarın sürümü. |
 | çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
 | kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |

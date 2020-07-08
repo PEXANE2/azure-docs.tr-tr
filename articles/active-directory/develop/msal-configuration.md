@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479428"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
@@ -32,12 +32,12 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 
 | Özellik | Veri Türü | Gerekli | Notlar |
 |-----------|------------|-------------|-------|
-| `client_id` | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
-| `redirect_uri`   | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
-| `authorities` | Listele\<Authority> | No | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
-| `authorization_user_agent` | AuthorizationAgent (enum) | No | Olası değerler: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
-| `http` | HttpConfiguration | No | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
-| `logging` | LoggingConfiguration | No | Günlüğe kaydetme ayrıntı düzeyini belirtir. İsteğe bağlı yapılandırmalara, `pii_enabled` bir Boolean değer alan ve,,, `log_level` `ERROR` `WARNING` `INFO` veya alan `VERBOSE` . |
+| `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
+| `redirect_uri`   | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
+| `authorities` | Listele\<Authority> | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
+| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
+| `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
+| `logging` | LoggingConfiguration | Hayır | Günlüğe kaydetme ayrıntı düzeyini belirtir. İsteğe bağlı yapılandırmalara, `pii_enabled` bir Boolean değer alan ve,,, `log_level` `ERROR` `WARNING` `INFO` veya alan `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -88,10 +88,10 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Tür | Hedef kitle | Kiracı Kimliği | Authority_Url | Sonuç uç noktası | Notlar |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | Azureadandpersonmicrosoftaccount | | | `https://login.microsoftonline.com/common` | `common`, hesabın nerede olduğu, kiracı diğer adıdır. Örneğin, belirli bir Azure Active Directory kiracı veya Microsoft hesabı sistemi. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`, hesabın nerede olduğu, kiracı diğer adıdır. Örneğin, belirli bir Azure Active Directory kiracı veya Microsoft hesabı sistemi. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Yalnızca contoso.com içinde bulunan hesaplar bir belirteç alabilir. Doğrulanmış etki alanı veya kiracı GUID 'SI, kiracı KIMLIĞI olarak kullanılabilir. |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Bu uç noktayla yalnızca Azure Active Directory hesapları kullanılabilir. Microsoft hesapları, kuruluşların üyesi olabilir. Bir kuruluştaki kaynak için Microsoft hesabı kullanarak bir belirteç almak için, belirteci istediğiniz kuruluş kiracısını belirtin. |
-| AAD | Personmicrosoftaccount | | | `https://login.microsoftonline.com/consumers` | Bu uç noktayı yalnızca Microsoft hesapları kullanabilir. |
+| AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Bu uç noktayı yalnızca Microsoft hesapları kullanabilir. |
 | B2C | | | Elde edilen uç noktaya bakın | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | Yalnızca contoso.onmicrosoft.com kiracısında bulunan hesaplar bir belirteç alabilir. Bu örnekte B2C ilkesi, yetkili URL yolunun bir parçasıdır. |
 
 > [!NOTE]
@@ -103,17 +103,17 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri türü  | Gerekli | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` ,`B2C` |
-| `audience` | Nesne | No | Yalnızca Type = olduğunda geçerlidir `AAD` . Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
-| `authority_url` | Dize | Yes | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
-| `default` | boole | Yes | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
+| `type` | Dize | Evet | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` ,`B2C` |
+| `audience` | Nesne | Hayır | Yalnızca Type = olduğunda geçerlidir `AAD` . Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
+| `authority_url` | Dize | Evet | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
+| `default` | boole | Evet | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
 
 #### <a name="audience-properties"></a>Hedef kitle özellikleri
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
-| `tenant_id` | Dize | Yes | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
+| `type` | Dize | Evet | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `tenant_id` | Dize | Evet | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -140,8 +140,8 @@ HTTP zaman aşımları için genel ayarları yapılandırın, örneğin:
 
 | Özellik | Veri türü | Gerekli | Notlar |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | No | Milisaniye cinsinden süre |
-| `read_timeout` | int | No | Milisaniye cinsinden süre |
+| `connect_timeout` | int | Hayır | Milisaniye cinsinden süre |
+| `read_timeout` | int | Hayır | Milisaniye cinsinden süre |
 
 ### <a name="logging"></a>günlüğe kaydetme
 
@@ -149,9 +149,9 @@ Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boole | No | Kişisel verilerin yayanıp bildirilmeyeceğini belirtir |
+| `pii_enabled`  | boole | Hayır | Kişisel verilerin yayanıp bildirilmeyeceğini belirtir |
 | `log_level`   | dize | No | Çıktının kaydedileceği günlük iletileri. Desteklenen günlük düzeyleri,,, `ERROR` `WARNING` ve içerir `INFO` `VERBOSE` . |
-| `logcat_enabled` | boole | No | Günlüğe kaydetme arabirimine ek olarak günlük Cat 'e çıkış yapılıp yapılmayacağını belirtir |
+| `logcat_enabled` | boole | Hayır | Günlüğe kaydetme arabirimine ek olarak günlük Cat 'e çıkış yapılıp yapılmayacağını belirtir |
 
 ### <a name="account_mode"></a>account_mode
 

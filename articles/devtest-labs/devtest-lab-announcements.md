@@ -4,10 +4,10 @@ description: Azure DevTest Labs laboratuvara nasıl duyuru ekleneceğini öğren
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479003"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara duyuru gönderin
@@ -24,7 +24,7 @@ Duyuru özelliği geçici bildirimler için kullanılmak üzere tasarlanmıştı
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Mevcut laboratuvarda duyuru gönderme adımları
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar**altında gösteriliyor olabilir).
 1. Laboratuvarlar listesinden, bir duyuru göndermek istediğiniz Laboratuvarı seçin.
 1. Laboratuvarın **genel bakış** alanında **yapılandırma ve ilkeler**' i seçin.
@@ -149,7 +149,7 @@ Aşağıdaki örnekte gösterildiği gibi, bir Azure Resource Manager şablonun 
 
 Aşağıdaki yollarla bir Azure Resource Manager şablonu dağıtabilirsiniz:
 
-- [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure portalındaki](../azure-resource-manager/templates/deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 - [REST API](../azure-resource-manager/templates/deploy-rest.md)

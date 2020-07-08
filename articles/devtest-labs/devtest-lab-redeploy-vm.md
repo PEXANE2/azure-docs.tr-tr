@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir sanal makineyi yeniden dağıtmayı öğreni
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480244"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden dağıtma
@@ -16,7 +16,7 @@ Bir laboratuvarda Uzak Masaüstü bağlantısı aracılığıyla bir sanal makin
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Laboratuvarda bir VM 'yi yeniden dağıtma adımları 
 Azure DevTest Labs bir laboratuvarda bir sanal makineyi yeniden dağıtmak için aşağıdaki adımları uygulayın: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden, yeniden dağıtmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
 4. Sol bölmede **sanal makinelerim**' ı seçin. 

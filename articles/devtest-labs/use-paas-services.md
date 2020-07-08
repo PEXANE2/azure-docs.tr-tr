@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de hizmet olarak platform (pass) hizmetlerini 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478748"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
@@ -30,7 +30,7 @@ Büyük kuruluşlarda, geliştirme ekipleri genellikle özelleştirilmiş/yalıt
 
 ## <a name="customizations"></a>Özelleştirmeler
 
-#### <a name="sandbox"></a>Korumalı Alan 
+#### <a name="sandbox"></a>Korumalı alan 
 Laboratuvar sahibi, laboratuvar ortamlarını özelleştirerek kullanıcının rolünü **okuyucudan** kaynak grubu içinde **katkıda bulunan** olarak değiştirebilir. Bu özellik, laboratuvarın **yapılandırma ve ilkeleri** altındaki **Laboratuvar ayarları** sayfasıdır. Roldeki bu değişiklik, kullanıcının bu ortamda kaynak eklemesine veya kaldırmasına izin verir. Erişimi daha fazla kısıtlamak istiyorsanız Azure ilkeleri ' ni kullanın. Bu işlevsellik, abonelik düzeyinde erişim olmadan kaynakları veya yapılandırmayı özelleştirmenizi sağlar.
 
 #### <a name="custom-tokens"></a>Özel belirteçler
