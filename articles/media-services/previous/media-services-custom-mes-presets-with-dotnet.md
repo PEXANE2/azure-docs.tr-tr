@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251251"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956728"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard önayarlarını özelleştirme  
 
@@ -36,11 +36,11 @@ Bu makalede, [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multip
 
 ### <a name="original-preset"></a>Özgün önayar
 
-. JSON uzantılı bazı dosyadaki [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) MAKALESINDE tanımlanan JSON 'ı kaydedin. Örneğin, **CustomPreset_JSON. JSON**.
+. JSON uzantılı bazı dosyadaki [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) MAKALESINDE tanımlanan JSON 'ı kaydedin. Örneğin, **üzerindeCustomPreset_JSON.js**.
 
 ### <a name="customized-preset"></a>Özelleştirilmiş önayar
 
-**CustomPreset_JSON. JSON** dosyasını açın ve **H264Layers** 'den ilk üç katmanı kaldırarak dosyanızı bunun gibi görünmesini sağlayın.
+Dosyasında **CustomPreset_JSON.js** açın ve **H264Layers** 'den ilk üç katmanı kaldırarak dosyanızı şöyle bir şekilde görünür.
 
 ```json 
     {  
@@ -120,9 +120,11 @@ Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media 
 - Bir kodlama işi oluşturun.
 - Media Encoder Standard Kodlayıcısı için bir başvuru alın.
 - Önceki bölümde oluşturduğunuz özel JSON ön ayarını yükleyin. 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - İşe bir kodlama görevi ekleyin. 
 - Kodlanacak giriş varlığını belirtin.
@@ -272,5 +274,5 @@ namespace CustomizeMESPresests
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

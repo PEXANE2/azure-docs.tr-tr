@@ -1,5 +1,5 @@
 ---
-title: Gerçekleştirilmiş görünümler ile performans ayarlama
+title: Gerçekleştirilmiş görünümlerle performans ayarı
 description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d33c9af2c66f04bc981ce92c6283e9d836f3f199
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204583"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956398"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
+# <a name="performance-tune-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı
 
 SYNAPSE SQL havuzundaki gerçekleştirilmiş görünümler, herhangi bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
 
@@ -31,13 +31,13 @@ Gerçekleştirilmiş bir görünüm, verileri SQL havuzunda tıpkı bir tablo gi
 
 Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünüm için de geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimler hakkında daha fazla bilgi için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-| Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm
+| Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Tanımı görüntüleme                 | SQL havuzunda depolanır.              | SQL havuzunda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında SQL havuzunda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Yes
+|Ek depolama                   | Hayır                                           | Evet
 |Syntax                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları

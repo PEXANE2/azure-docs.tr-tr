@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137833"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955786"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Çok Sınıflı Artırmalı Karar Ağacı
 
@@ -40,21 +40,21 @@ Bu modül, eğitimli olmayan bir sınıflandırma modeli oluşturur. Sınıfland
 
 1. **Ağaç başına en fazla yaprakları** sayısı, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) sınırlar.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    Bu değeri artırarak, büyük/veya daha uzun bir eğitim süresi riski altında ağacın boyutunu artırabilir ve daha yüksek bir duyarlık elde edersiniz.
   
 1. **Yaprak düğüm başına minimum örnek sayısı** , bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken durum sayısını gösterir.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.
 
 1. **Öğrenme oranı** , öğrenirken adım boyutunu tanımlar. 0 ile 1 arasında bir sayı girin.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    Öğrenme oranı, öğrenimi en iyi çözüm üzerinde ne kadar hızlı veya yavaş söylebileceğinizi belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözüm üzerinde yakınsama işlemi daha uzun sürer.
 
 1. **Oluşturulan ağaç sayısı** , ensede birleştirmek için oluşturulacak karar ağacının toplam sayısını gösterir. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
 
 1. **Rastgele sayı tohum** , isteğe bağlı olarak rastgele çekirdek değeri olarak kullanılmak üzere negatif olmayan bir tamsayı ayarlar. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    Rastgele çekirdek, varsayılan olarak 42 olarak ayarlanır. Farklı rastgele çekirdekler kullanan art arda çalıştırmalar farklı sonuçlara sahip olabilir.
 
 1. Modeli eğitme:
 

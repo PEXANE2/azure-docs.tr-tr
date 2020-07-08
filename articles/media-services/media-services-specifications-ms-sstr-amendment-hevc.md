@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76514230"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954703"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC için Kesintisiz Akış Protocol (MS-SSTR) Düzeltme 
 
@@ -242,10 +242,12 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 > 
 >   Bu bölümde tanımlanan, ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) içinde belirtilen alanların sözdizimi aşağıdaki gibidir:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Note**: ' ccff ' ve ' iso8 ' uyumluluk markalarına parçaların "ortak kapsayıcı dosya biçimi" ve Common ENCRYPTION [ISO/IEC 23001-7] ve ISO temel medya dosyası biçimi sürüm 4 [ISO/IEC 14496-12] ile uyumlu olduğunu gösterir.
 
@@ -288,14 +290,18 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 > 
 >   HEVC akışlarını içeren sunular şu şekilde ayarlanır:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Note: kullanım dışı kutular)
 > 
 >   Sunular de ayarlanmalıdır:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Stream Collection: *3.1.1.1.2*bölümünde belirtildiği gibi Stream Description veri öğelerinin bir koleksiyonu.
 > 
@@ -385,7 +391,7 @@ Common Encryption uygulandığında ve [ISO/ıEC 23001-7] veya [ISO/ıEC 14496-1
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

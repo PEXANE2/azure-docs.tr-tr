@@ -9,6 +9,7 @@ ms.topic: guide
 ms.date: 04/09/2020
 ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85954185"

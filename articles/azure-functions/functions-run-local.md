@@ -7,6 +7,7 @@ ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85955277"
@@ -203,7 +204,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`, aksi belirtilmediği takdirde sürüm 3. x/2. x-Only olan aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | [C# sınıf kitaplığı (. cs) projesi](functions-dotnet-class-library.md)başlatır. |
 | **`--csx`** | Bir [C# betiği (. CSX) projesi](functions-reference-csharp.md)başlatır. `--csx`Sonraki komutlarda ' i belirtmeniz gerekir. |
@@ -304,7 +305,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
 
-| Bağımsız Değişken     | Açıklama                            |
+| Bağımsız Değişken     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Sürüm 3. x/2. x) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
 | **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 3. x/2. x içinde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
@@ -363,7 +364,7 @@ npm start
 
 `func start`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Çalıştırmadan önce derleme geçerli projesi yok. Yalnızca DotNet projeleri için. Varsayılan değer false olarak ayarlanmıştır. 1. x sürümü için desteklenmez. |
 | **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile kullanılır `--useHttps` . 1. x sürümü için desteklenmez. |
@@ -473,7 +474,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 
 `func run`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Satır içi içerik. |
 | **`--debug`**, **`-d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
@@ -512,14 +513,14 @@ Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde
 
 Aşağıdaki yayımlama seçenekleri 3. x, 2. x ve 1. x sürümleri için geçerlidir:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ayarları Azure 'da local.settings.jsyayımlayın, bu ayar zaten varsa üzerine yazmak isteyip istemediğinizi sorar. Microsoft Azure Depolama Öykünücüsü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
 | **`--overwrite-settings -y`** | Kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin `--publish-local-settings -i` .|
 
 Aşağıdaki yayımlama seçenekleri yalnızca 3. x ve 2. x sürümünde desteklenir:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
 |**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
@@ -543,7 +544,7 @@ func deploy
 
 Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
-| Seçenek     | Açıklama                            |
+| Seçenek     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
 | **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır`kubernetes` |

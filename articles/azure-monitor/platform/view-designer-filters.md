@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658583"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955964"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Izleyici görünümlerindeki filtreler
 [Azure izleyici görünümündeki](view-designer.md) bir **filtre** , kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Örneğin, görünüminizdeki kullanıcıların görünümü yalnızca belirli bir bilgisayar veya bilgisayar kümesi tarafından filtrelemesine izin verebilirsiniz.  Kullanıcıların birden çok özelliğe göre filtrelemesine olanak tanımak için, tek bir görünümde birden çok filtre oluşturabilirsiniz.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.
@@ -21,7 +21,7 @@ Görünümü açmak için bir görünümün en üstündeki tarih saat aralığı
 
 ![Filtre örneği](media/view-designer-filters/filters-example-time.png)
 
-Görünüm için **+** tanımlanan özel filtreleri kullanarak filtre eklemek için öğesine tıklayın. Açılan listeden filtre için bir değer seçin ya da bir değer yazın. Öğesine tıklayarak filtre eklemeye devam edin **+**. 
+**+** Görünüm için tanımlanan özel filtreleri kullanarak filtre eklemek için öğesine tıklayın. Açılan listeden filtre için bir değer seçin ya da bir değer yazın. Öğesine tıklayarak filtre eklemeye devam edin **+** . 
 
 
 ![Filtre örneği](media/view-designer-filters/filters-example-custom.png)
@@ -61,15 +61,19 @@ Bir filtrenin herhangi bir etkiye sahip olması için, görünümdeki tüm sorgu
 
 Sorguda filtre değeri kullanmanın sözdizimi şöyledir: 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 Örneğin, görünümünüzde olayları döndüren ve _bilgisayarlar_adlı bir filtre kullanan bir sorgu varsa, aşağıdaki sorguyu kullanabilirsiniz.
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 Önem derecesi adlı başka bir filtre eklediyseniz, her iki filtreyi da kullanmak için aşağıdaki sorguyu kullanabilirsiniz.
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Özel görünüminizdeki ekleyebileceğiniz [görselleştirme bölümleri](view-designer-parts.md) hakkında daha fazla bilgi edinin.

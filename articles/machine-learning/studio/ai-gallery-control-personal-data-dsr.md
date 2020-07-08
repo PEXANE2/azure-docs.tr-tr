@@ -11,12 +11,12 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 429ba2ae44788430bfa9d308b8de5daff25954d0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6bf0d889d70272988c9d2b243ae255f9654656bd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711179"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955599"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi ürün içi kullanıcı verilerini görüntüleyin ve silin
 
@@ -45,11 +45,13 @@ Katalog yanıtları JSON biçiminde döndürülür.
 ### <a name="get-an-author-id"></a>Yazar KIMLIĞI al
 Yazar KIMLIĞI, Azure Yapay Zeka Galerisi yayımlarken kullanılan e-posta adresini temel alır. Değişmez:
 
-1.    [Azure yapay zeka Galerisi](https://gallery.azure.ai/)oturum açın.
-2.    Sağ üst köşedeki profil resmine ve sonra profil sayfanızı yüklemek için hesap adına tıklayın.
-3.    Adres çubuğundaki URL aşağıdaki alfasayısal KIMLIĞI görüntüler `authorId=` . Örneğin, URL için:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
-        
-    Yazar KIMLIĞI:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1. [Azure yapay zeka Galerisi](https://gallery.azure.ai/)oturum açın.
+2. Sağ üst köşedeki profil resmine ve sonra profil sayfanızı yüklemek için hesap adına tıklayın.
+3. Adres çubuğundaki URL aşağıdaki alfasayısal KIMLIĞI görüntüler `authorId=` . Örneğin, URL için: \
+    `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+
+    Yazar KIMLIĞI: \
+    `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 ### <a name="get-your-access-token"></a>Erişim belirtecinizi alın
 
@@ -67,16 +69,17 @@ Erişim belirteci almak için, `DataLabAccessToken` oturum açıkken tarayıcın
 ### <a name="view-user-information"></a>Kullanıcı bilgilerini görüntüle
 Önceki adımlarda aldığınız yazar KIMLIĞINI kullanarak, bir kullanıcının profilindeki bilgileri `[AuthorId]` AŞAĞıDAKI URL 'de değiştirerek görüntüleyin:
 
-    https://catalog.cortanaanalytics.com/users/[AuthorID]
+`https://catalog.cortanaanalytics.com/users/[AuthorID]`
 
 Örneğin, bu URL isteği:
-    
-    https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
+
+`https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 Şöyle bir yanıt döndürür:
 
-    {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
-
+```json
+{"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
+```
 
 ### <a name="view-public-entities"></a>Ortak varlıkları görüntüleme
 
@@ -84,11 +87,11 @@ Katalog API 'SI, yayımlanan varlıklar hakkındaki bilgileri doğrudan [AI Gale
 
 Yayınlanan varlıkları görüntülemek için aşağıdaki URL 'yi ziyaret edin ve yukarıdaki yazar kimliğini `[AuthorId]` [Al](#get-an-author-id) bölümünde elde edilen yazar kimliğiyle değiştirin.
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
 Örneğin:
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 
 ### <a name="view-unlisted-and-public-entities"></a>Listelenmemiş ve ortak varlıkları görüntüleme
 

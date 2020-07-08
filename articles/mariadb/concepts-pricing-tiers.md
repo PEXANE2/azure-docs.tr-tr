@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/9/2020
-ms.openlocfilehash: 95891e35d2f30bfceb6282c6d9b3f9e7e21b3df8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660882"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954203"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
 MariaDB sunucusu için Azure veritabanı oluşturmak için üç farklı fiyatlandırma katmanından birini kullanabilirsiniz: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Fiyatlandırma katmanları, sağlanan sanal çekirdekler, sanal çekirdek başına bellek ve verileri depolamak için kullanılan depolama teknolojisi miktarına göre farklılaştırılabilir. Tüm kaynaklar MariaDB sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Kaynak | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
 | İşlem oluşturma | Gen 5 |Gen 5 | Gen 5 |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Sunucu oluşturduktan sonra, sanal çekirdek sayısı ve Fiyatlandırma Katmanı
 
 Sağladığınız depolama alanı, MariaDB sunucusu için Azure veritabanınız tarafından kullanılabilen depolama kapasitesi miktarıdır. Depolama alanı veritabanı dosyaları, geçici dosyalar, işlem günlükleri ve MariaDB sunucu günlükleri için kullanılır. Sağladığınız toplam depolama miktarı, sunucunuz için kullanılabilir olan g/ç kapasitesini de tanımlar.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Depolama öznitelikleri   | Temel | Genel Amaçlı | Bellek İçin İyileştirilmiş |
 |:---|:----------|:--------------------|:---------------------|
 | Depolama türü | Temel depolama | Genel Amaçlı depolama | Genel Amaçlı depolama |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
@@ -63,7 +63,7 @@ G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyeb
 
 Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sınırlarını artırıyoruz. Önizlemeye eklenen yeni oluşturulan sunucular 16 TB 'a kadar depolama alanı sağlayabilir. IOPS ölçeği, 3:1 ıOPS 20.000 'ye varan bir oranına sahiptir. Geçerli genel olarak kullanılabilir depolama alanında olduğu gibi, sunucu oluşturulduktan sonra ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz.
 
-|              | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Depolama öznitelikleri | Genel Amaçlı | Bellek İçin İyileştirilmiş |
 |:-------------|:--------------------|:---------------------|
 | Depolama türü | Azure Premium Depolama | Azure Premium Depolama |
 | Depolama boyutu | 32 GB ila 16 TB| 32-16 TB |

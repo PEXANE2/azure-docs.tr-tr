@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343702"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955514"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84343702"
 Bu makalede, her zaman açık kullanılabilirlik grubu ile Active Directory bir etki alanı bağımsız kümesi oluşturmak için gereken adımlar açıklanmaktadır; Bu, çalışma grubu kümesi olarak da bilinir. Bu makale, çalışma grubu ve kullanılabilirlik grubunu hazırlamaya ve yapılandırmaya yönelik adımlara ve küme oluşturma veya kullanılabilirlik grubunu dağıtma gibi diğer makalelerde kapsanan adımları glosses. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için şunlar gerekir:
 - SQL Server 2016 (veya üzeri) çalıştıran sanal makineler, aynı Kullanılabilirlik kümesine veya statik IP adresleri kullanılarak farklı kullanılabilirlik bölgelerine dağıtılır. 2016 
@@ -104,7 +104,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>Yük devretme kümesini oluşturma
 
-Bu adımda, yük devretme kümesi oluşturacaksınız. Bu adımları tanımıyorsanız, bunları [Yük devretme kümesi öğreticiden](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)izleyebilirsiniz.
+Bu adımda, yük devretme kümesi oluşturacaksınız. Bu adımları tanımıyorsanız, bunları [Yük devretme kümesi öğreticiden](failover-cluster-instance-storage-spaces-direct-manually-configure.md)izleyebilirsiniz.
 
 Öğretici ve bir çalışma grubu kümesi için yapılması gerekenler arasındaki önemli farklılıklar:
 - **Depolama**işaretini kaldırın ve küme doğrulamayı çalıştırırken **depolama alanları doğrudan** . 
@@ -130,7 +130,7 @@ Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak iç
 
 ## <a name="create-a-cloud-witness"></a>Bulut tanığı oluşturma 
 
-Bu adımda, bir bulut paylaşma tanığı yapılandırın. Adımları tanımıyorsanız [Yük devretme kümesi öğreticisi](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness)' ne bakın. 
+Bu adımda, bir bulut paylaşma tanığı yapılandırın. Adımlara alışkın değilseniz bkz. [Yük devretme kümesi Için bulut tanığı dağıtma](/windows-server/failover-clustering/deploy-cloud-witness). 
 
 ## <a name="enable-the-availability-group-feature"></a>Kullanılabilirlik grubu özelliğini etkinleştirme 
 

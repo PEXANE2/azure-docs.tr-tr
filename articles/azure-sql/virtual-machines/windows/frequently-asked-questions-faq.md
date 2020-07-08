@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c0302c8bac483979211b2ec7cb91c8a70b69cb9b
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669044"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955684"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure'da Windows sanal makineleri üzerinde çalıştırılan SQL Server için sık sorulan sorular
+# <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-Bu makalede, [Azure 'da Windows sanal makineleri (VM) üzerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)çalıştırmaya ilişkin en yaygın soruların yanıtları sunulmaktadır.
+Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)çalıştırmaya yönelik en yaygın soruların yanıtları sunulmaktadır.
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 

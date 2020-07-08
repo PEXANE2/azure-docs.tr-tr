@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267622"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955175"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage 'ı izleme
 
@@ -78,7 +78,9 @@ Tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen 
 
 Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, Azure CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmak için, bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
-Bir tanılama ayarı oluşturduğunuzda bir blob, kuyruk, tablo veya dosya gibi günlükleri etkinleştirmek istediğiniz depolama türünü seçin. Azure portal tanılama ayarını oluşturursanız, kaynağı listeden seçebilirsiniz. PowerShell veya Azure CLı kullanıyorsanız, depolama türünün kaynak KIMLIĞINI kullanmanız gerekir. Depolama hesabınızın **Özellikler** sayfasını açarak Azure Portal kaynak kimliğini bulabilirsiniz.
+Bir tanılama ayarı oluşturduğunuzda bir blob, kuyruk, tablo veya dosya gibi günlükleri etkinleştirmek istediğiniz depolama türünü seçin. Data Lake Storage 2., depolama türü olarak görünmez. Bunun nedeni, Data Lake Storage 2. blob depolama için kullanılabilen bir özellik kümesidir. 
+
+Azure portal tanılama ayarını oluşturursanız, kaynağı listeden seçebilirsiniz. PowerShell veya Azure CLı kullanıyorsanız, depolama türünün kaynak KIMLIĞINI kullanmanız gerekir. Depolama hesabınızın **Özellikler** sayfasını açarak Azure Portal kaynak kimliğini bulabilirsiniz.
 
 Günlükleri toplamak istediğiniz işlem kategorilerini da belirtmeniz gerekir. Azure depolama kategorileri bu tabloda listelenmiştir.
 
@@ -343,6 +345,8 @@ Veriler Bu tablolarda depolanır.
 |StorageFileLogs | Dosya paylaşımlarında etkinliği tanımlayan Günlükler. |
 |StorageQueueLogs | Kuyruklarda etkinliği tanımlayan Günlükler.|
 |StorageTableLogs| Tablolarda etkinliği tanımlayan Günlükler.|
+
+Data Lake Storage 2. Günlükler adanmış bir tabloda görünmez. Çünkü Data Lake Storage 2. hizmet değildir. Bu, bir BLOB depolama hesabında etkinleştirebileceğiniz bir dizi özellik kümesidir. Bu özellikleri etkinleştirdiyseniz, Günlükler Storagebloblogları tablosunda görünmeye devam edecektir. 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Izleyici 'de Azure depolama Log Analytics sorguları
 

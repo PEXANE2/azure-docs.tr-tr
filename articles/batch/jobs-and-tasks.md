@@ -3,12 +3,12 @@ title: Azure Batch iş ve görevler
 description: İşler ve görevler hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791081"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955378"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch iş ve görevler
 
@@ -22,7 +22,7 @@ Bir iş, çalışmanın çalıştırılacağı [havuzu](nodes-and-pools.md#pools
 
 ### <a name="job-priority"></a>İş önceliği
 
-Oluşturduğunuz işlere isteğe bağlı bir iş önceliği atayabilirsiniz. Batch hizmeti bir hesaptaki iş zamanlama sırasını belirlemek üzere işin öncelik değerini kullanır ([zamanlanmış iş](#scheduled-jobs) ile karıştırılmamalıdır). Öncelik değeri, -1000 en düşük öncelik ve 1000 en yüksek öncelik olmak üzere, -1000 ile 1000 aralığındadır. Bir işin önceliğini güncelleştirmek için [İşin önceliklerini güncelleştirme](https://docs.microsoft.com/rest/api/batchservice/job/update) işlemini (Batch REST) ya da [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) özelliğini (Batch .NET) çağırabilirsiniz.
+Oluşturduğunuz işlere isteğe bağlı bir iş önceliği atayabilirsiniz. Batch hizmeti bir hesaptaki iş zamanlama sırasını belirlemek üzere işin öncelik değerini kullanır ([zamanlanmış iş](#scheduled-jobs) ile karıştırılmamalıdır). Öncelik değeri, -1000 en düşük öncelik ve 1000 en yüksek öncelik olmak üzere, -1000 ile 1000 aralığındadır. Bir işin önceliğini güncelleştirmek için [İşin önceliklerini güncelleştirme](/rest/api/batchservice/job/update) işlemini (Batch REST) ya da [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) özelliğini (Batch .NET) çağırabilirsiniz.
 
 Aynı hesapta, yüksek öncelikli işlerin düşük öncelikli işlere göre zamanlama üstünlüğü vardır. Bir hesaptaki yüksek öncelik değerine sahip iş farklı bir hesaptaki düşük öncelik değerine sahip başka bir işe karşı zamanlama üstünlüğüne sahip değildir. Çalışmakta olan düşük öncelikli işlerdeki görevler engellenmez.
 
@@ -39,13 +39,13 @@ Havuzlardaki iş zamanlaması bağımsızdır. Farklı havuzlar arasında, iliş
 
 İstemci uygulamanız bir işe görevler ekleyebilir ya da bir [iş yöneticisi görevi](#job-manager-task) belirtebilirsiniz. Bir iş yöneticisi görevi havuzdaki işlem düğümlerinden birinde çalıştırılan görevle birlikte bir iş için gereken görevleri oluşturmak üzere gerekli bilgileri içerir. İş Yöneticisi görevi özellikle Batch tarafından işlenir; iş oluşturulduktan hemen sonra kuyruğa alınır ve başarısız olursa yeniden başlatılır. İş tarafından oluşturulan işler için iş Yöneticisi görevi [gerekir, çünkü](#scheduled-jobs)iş örneği oluşturulmadan önce görevleri tanımlamanın tek yoludur.
 
-Varsayılan olarak, işteki tüm görevler tamamlandığında iş etkin durumda kalır. Bu davranışı, işteki tüm görevler tamamlandığında işin otomatik olarak sonlandırılacağı şekilde değiştirebilirsiniz. Görevlerin hepsi tamamlanmış durumdayken işi otomatik olarak sonlandırmak için, işin **onAllTasksComplete** özelliğini (Batch .NET’te [OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob)) *terminatejob* olarak ayarlayın.
+Varsayılan olarak, işteki tüm görevler tamamlandığında iş etkin durumda kalır. Bu davranışı, işteki tüm görevler tamamlandığında işin otomatik olarak sonlandırılacağı şekilde değiştirebilirsiniz. Görevlerin hepsi tamamlanmış durumdayken işi otomatik olarak sonlandırmak için, işin **onAllTasksComplete** özelliğini (Batch .NET’te [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)) *terminatejob* olarak ayarlayın.
 
 Batch hizmeti, tüm görevlerinin tamamlanması için görev *içermeyen* bir işi kabul eder. Bu nedenle, bu seçenek genellikle [iş yöneticisi görevi](#job-manager-task) ile kullanılır. İş yöneticisi olmadan otomatik iş sonlandırmayı kullanmak istiyorsanız başlangıçta yeni işin **onAllTasksComplete** özelliğini *noaction* olarak ayarlamanız ve işe görev eklemeyi bitirdiğinizde bu ayarı *terminatejob* olarak değiştirmeniz gerekir.
 
 ### <a name="scheduled-jobs"></a>Zamanlanan işler
 
-[İş zamanlamaları](https://docs.microsoft.com/rest/api/batchservice/jobschedule) , Batch hizmeti içinde yinelenen işler oluşturmanızı sağlar. Bir iş zamanlaması işlerin ne zaman çalıştırılacağını belirtir ve çalıştırılacak işlerin özelliklerini içerir. Zamanlamanın süresini (zamanlamanın ne kadar süreyle ve ne zaman etkin olduğunu) ve zamanlanan dönemde işlerin ne sıklıkta oluşturulacağını belirtebilirsiniz.
+[İş zamanlamaları](/rest/api/batchservice/jobschedule) , Batch hizmeti içinde yinelenen işler oluşturmanızı sağlar. Bir iş zamanlaması işlerin ne zaman çalıştırılacağını belirtir ve çalıştırılacak işlerin özelliklerini içerir. Zamanlamanın süresini (zamanlamanın ne kadar süreyle ve ne zaman etkin olduğunu) ve zamanlanan dönemde işlerin ne sıklıkta oluşturulacağını belirtebilirsiniz.
 
 ## <a name="tasks"></a>Görevler
 
@@ -153,11 +153,11 @@ Daha fazla ayrıntı için bkz. [Azure Batch görev bağımlılıkları](batch-t
 
 ### <a name="environment-settings-for-tasks"></a>Görevler için ortam ayarları
 
-Batch hizmeti tarafından yürütülen her görevin, işlem düğümleri üzerinde ayarladığı ortam değişkenlerine erişimi vardır. Bu, Batch hizmeti tarafından tanımlanan ortam değişkenlerini ([hizmet tanımlı](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) ve görevleriniz için tanımlayabileceğiniz özel ortam değişkenleri) içerir. Görevleriniz tarafından yürütülen uygulamalar ve komut dosyaları yürütme sırasında bu ortam değişkenlerine erişebilir.
+Batch hizmeti tarafından yürütülen her görevin, işlem düğümleri üzerinde ayarladığı ortam değişkenlerine erişimi vardır. Bu, Batch hizmeti tarafından tanımlanan ortam değişkenlerini ([hizmet tanımlı](./batch-compute-node-environment-variables.md) ve görevleriniz için tanımlayabileceğiniz özel ortam değişkenleri) içerir. Görevleriniz tarafından yürütülen uygulamalar ve komut dosyaları yürütme sırasında bu ortam değişkenlerine erişebilir.
 
-Bu varlıkların *ortam ayarları* özelliğini doldurarak görev ya da iş düzeyinde özel ortam değişkenleri ayarlayabilirsiniz. Daha fazla ayrıntı için Batch .NET içindeki [cloudtask. EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) ve [Cloudjob. commonenvironmentsettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) özelliklerine bakın. [bir işe görev ekleme](https://docs.microsoft.com/rest/api/batchservice/task/add?)] işlemi (Batch REST API)
+Bu varlıkların *ortam ayarları* özelliğini doldurarak görev ya da iş düzeyinde özel ortam değişkenleri ayarlayabilirsiniz. Daha fazla ayrıntı için Batch .NET içindeki [cloudtask. EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) ve [Cloudjob. commonenvironmentsettings](/dotnet/api/microsoft.azure.batch.cloudjob) özelliklerine bakın. [bir işe görev ekleme](/rest/api/batchservice/task/add?)] işlemi (Batch REST API)
 
-[Bir görev hakkında bilgi alma](https://docs.microsoft.com/rest/api/batchservice/task/get) işlemini (Batch REST) kullanarak veya [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) özelliğine (Batch .NET) erişerek istemci uygulamanız ya da hizmetiniz bir görevin hem hizmet tanımlı hem de özel ortam değişkenlerini elde edebilir. Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
+[Bir görev hakkında bilgi alma](/rest/api/batchservice/task/get) işlemini (Batch REST) kullanarak veya [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) özelliğine (Batch .NET) erişerek istemci uygulamanız ya da hizmetiniz bir görevin hem hizmet tanımlı hem de özel ortam değişkenlerini elde edebilir. Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
 
 [İşlem düğümü ortam değişkenleri](batch-compute-node-environment-variables.md) içinde hizmet tarafından tanımlanan tüm ortam değişkenlerinin tam listesini bulabilirsiniz.
 

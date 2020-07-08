@@ -9,12 +9,12 @@ ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560215"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955548"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -224,7 +224,7 @@ Kitaplıklar, veritabanı erişimi için R ve Python 'da kullanılabilir:
 * R 'de, RODBC paketini veya dplyr paketini kullanarak veritabanı sunucusundaki SQL deyimlerini sorgulayabilir veya çalıştırabilirsiniz.
 * Python 'da pyodbc kitaplığı, temel alınan katman olarak ODBC ile veritabanı erişimi sağlar.  
 
-## <a name="azure-tools"></a>Azure Araçları
+## <a name="azure-tools"></a>Azure araçları
 
 Aşağıdaki Azure Araçları sanal makineye yüklendi:
 
@@ -255,7 +255,7 @@ R ve Python 'da modellerin Azure Machine Learning içine nasıl dağıtılacağ�
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu güncelleştirmeler şunlardır:
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu modüller şunlardır:
 
 * **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
 * **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
@@ -263,8 +263,10 @@ VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi a
 * **Python**: Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. Komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz `pip install` .
 * **Lightgbm**: karar ağacı algoritmalarını temel alan hızlı, dağıtılmış ve yüksek performanslı bir gradyan arttırma çerçevesi.
 * **R**: r. önceden yüklenmiş kitaplıklar için, LM, GLM, rasgeleforest ve rpart için zengin bir makine öğrenme işlevleri kitaplığı mevcuttur. Şu komutu çalıştırarak diğer kitaplıkları yükleyebilirsiniz:
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 Listedeki ilk üç makine öğrenimi araçlarıyla ilgili bazı ek bilgiler aşağıda verilmiştir.
 

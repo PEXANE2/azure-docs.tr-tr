@@ -1,7 +1,7 @@
 ---
-title: Resimlerden ve belgelerden metin okuma-Görüntü İşleme
+title: Optik karakter tanıma (OCR)-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si kullanarak, yazdırma ve el yazısı metinler için, optik karakter tanıma (OCR) ve metin ile ilgili kavramlarla ilgili kavramlar.
+description: Görüntü İşleme API'si kullanarak, yazdırılmış ve el ile yazılmış metinlere sahip resimler ve belgelerden optik karakter tanıma (OCR) ile ilgili kavramlar.
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560804"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954749"
 ---
-# <a name="read-text-from-images-and-documents"></a>Görüntülerden ve belgelerden metin okuma
+# <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
 Görüntü İşleme, görüntülerden ve PDF belgelerinden yazdırılmış veya el yazısı metin çıkaran yeni derin öğrenme tabanlı optik karakter tanıma (OCR) özellikleri içerir. Görüntü İşleme hem analog belgelerden (görüntüler, taranmış belgeler) hem de dijital belgelerde metin ayıklar. Sonuç olarak, belge-faturalar, senetler, finansal raporlar, makaleler ve daha fazlasını içeren, lisans levhalarının veya seri numaralarının bulunduğu kapsayıcıların fotoğraflarındaki resimlerden metin ayıklayabilirsiniz. Bu OCR işlevselliği, bulutta veya şirket içinde (kapsayıcılar) yönetilen hizmetin bir parçası olarak kullanılabilir. Ayrıca, kurumsal sınıf uyumluluk ve gizlilik ihtiyaçlarınızı karşılamak için sanal ağları ve özel uç noktaları destekler.
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 07/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd170d505286d57f383af50da282e120167fe499
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 6f2462e9bba909099ea3bb2910e26596427c0a4e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367368"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954307"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -55,14 +55,6 @@ Bir dizi belge, Azure 'daki SAP HANA (büyük örnekler) veya kısa, HANA büyü
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>Azure sanal makineler 'de SAP HANA
 Belgelerinin bu bölümü SAP HANA farklı yönlerini kapsamaktadır. Bir önkoşul olarak, Azure IaaS 'in temel hizmetlerini sağlayan Azure 'un asıl hizmetleri hakkında bilgi sahibi olmanız gerekir. Bu nedenle, Azure işlem, depolama ve ağ hakkında bilgi sahibi olmanız gerekir. Bu konuların birçoğu SAP NetWeaver ile ilgili [Azure planlama kılavuzunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)ele alınır. 
-
-Azure 'da HANA hakkında daha fazla bilgi için aşağıdaki makalelere ve bunların alt makalelerine bakın:
-
-- [Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [Azure sanal makinelerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-
 
  
 
@@ -112,6 +104,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 7/04/2020: [SAP Çözümleri Için Azure izleyici sürümü (Önizleme)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-overview)
+- 07/01/2020: Azure [sanal makine depolama yapılandırmalarını SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) belgedeki Azure Premium Depolama patlaması işlevine göre daha ucuz depolama yapılandırması önerme 
 - 06/24/2020: Azure 'da, Azure sınır aracısına bağlı yeni geliştirilmiş Azure sınır Aracısı ve cihazlar için daha dayanıklı STONITH yapılandırması yayınlamak üzere [Azure 'DA SLES 'de pacemaker ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) sırasında değişiklik yapın 
 - 06/24/2020: [Azure 'daki RHEL üzerinde Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) sırasında değişiklik yaparken daha dayanıklı bir yapılandırma yayınlanın
 - 06/23/2020: SAP [NetWeaver Guide planlama ve uygulama Için Azure sanal makinelerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) yapılan DEĞIŞIKLIKLER ve [SAP iş yükü Kılavuzu için Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) giriş

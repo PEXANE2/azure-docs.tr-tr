@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022820"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956381"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
@@ -102,20 +102,31 @@ Arka uç havuzundaki her VM için bir Windows komut Isteminde aşağıdaki komut
 
 VM 'niz üzerinde sahip olduğunuz arabirim adlarının listesini almak için şu komutu yazın:
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 VM NIC (Azure tarafından yönetilen) için şu komutu yazın:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (InterfaceName değerini bu arabirimin adıyla değiştirin)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(InterfaceName değerini bu arabirimin adıyla değiştirin)
 
 Eklediğiniz her geri döngü arabirimi için şu komutları tekrarlayın:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
 
 > [!IMPORTANT]
 > Geri döngü arabirimlerinin yapılandırması, Konuk işletim sistemi içinde gerçekleştirilir. Bu yapılandırma, Azure tarafından gerçekleştirilmez veya yönetilmez. Bu yapılandırma olmadan kurallar çalışmayacaktır. Durum araştırma tanımları, DSR ön ucu temsil eden geri döngü arabirimi yerine VM 'nin DIP 'sini kullanır. Bu nedenle, hizmetiniz DSR ön noktasını temsil eden geri döngü arabiriminde sunulan hizmetin durumunu yansıtan bir DIP bağlantı noktası üzerinde araştırma yanıtları sağlamalıdır.

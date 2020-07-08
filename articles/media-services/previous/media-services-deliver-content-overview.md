@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476745"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956602"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
 Akışa veya isteğe bağlı video içeriğinizi müşterilere sunarken, amacınız farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli video sunmaktır.
@@ -29,7 +29,7 @@ Bu hedefe ulaşmak için şunları yapabilirsiniz:
 * Akışınızı çoklu bit hızında (Uyarlamalı bit hızı) bir video akışına kodlayın. Bu işlem kalite ve ağ koşullarından faydalandı.
 * Akışınızı farklı protokollere dinamik olarak yeniden paketlemek için Microsoft Azure Media Services [dinamik paketleme](media-services-dynamic-packaging-overview.md) kullanın. Bu işlem, farklı cihazlarda akışa alınır. Media Services, aşağıdaki Uyarlamalı bit hızı akış teknolojilerinin teslimini destekler: <br/>
     * **Http canlı akışı** (HLS)-"(format = M3U8-AAPL)" yolunu, akış kaynak sunucusuna **Apple iOS** Native cihazlarda tüketim için içerik GERI dönmesini söylemek için URL 'nin "/manifest" bölümüne ekleyin (Ayrıntılar için bkz. [Konum Belirleyicisi](#locators) ve [URL 'ler](#URLs)),
-    * **MPEG-Dash** -"(format = MPD-Time-CSF)" yolunu URL 'nin "/manifest" bölümüne ekleyerek akış kaynak sunucusuna MPEG-Dash geri dönmesini söyleyin (Ayrıntılar için bkz: [Konumlandırıcı](#locators) ve [URL 'ler](#URLs)),
+    * **MPEG-Dash** -"(format = MPD-Time-CSF)" yolunu, akış kaynak sunucusuna MPEG-Dash geri döndürmesini söylemek için URL 'nin "/manifest" bölümüne ekleyin (Ayrıntılar için bkz: [Konumlandırıcı](#locators) ve [URL 'ler](#URLs)),
     * **Kesintisiz akış**.
 
 >[!NOTE]
@@ -92,22 +92,22 @@ Yalnızca içeriğinizi teslim ettiğiniz akış uç noktası 10 Eylül 2014 ' d
 ### <a name="mpeg-dash-format"></a>MPEG-DASH biçimi
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = MPD-Time-CSF)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = MPD-Time-CSF)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Canlı Akışı (HLS) V4 biçimi
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Canlı Akışı (HLS) v3 biçimi
 {Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Yalnızca ses filtresiyle Apple HTTP Canlı Akışı (HLS) biçimi
 Varsayılan olarak, HLS bildiriminde yalnızca ses parçaları bulunur. Bu, hücresel ağlarda Apple Store sertifikası için gereklidir. Bu durumda, bir istemcinin yeterli bant genişliği yoksa veya bir 2G bağlantısı üzerinden bağlanmazsa, kayıttan yürütme geçişleri salt ses 'a geçirir. Bu, içerik akışını arabelleğe almadan tutmaya yardımcı olur, ancak video yoktur. Bazı senaryolarda, Player arabelleğe alma yalnızca ses üzerinden tercih edilebilir. Yalnızca ses parçasını kaldırmak istiyorsanız, URL 'ye **yalnızca ses = false** ekleyin.
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3, yalnızca ses = false)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3, yalnızca ses = false)
 
 Daha fazla bilgi için bkz. [dinamik bildirim oluşturma desteği ve HLS çıkış ek özellikleri](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,30 +116,30 @@ Daha fazla bilgi için bkz. [dinamik bildirim oluşturma desteği ve HLS çıkı
 
 Örnek:
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest
 
 ### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Kesintisiz Akış 2,0 bildirimi (eski bildirim)
 Varsayılan olarak, Kesintisiz Akış bildirim biçimi Yinele etiketini (r-Tag) içerir. Ancak, bazı oyuncular r-Tag ' i desteklemez. Bu oyunculara sahip istemciler, r-Tag ' i devre dışı bırakan bir biçim kullanabilir:
 
 {Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = fmp4-V20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)`
 
 ## <a name="progressive-download"></a>Aşamalı indirme
 Aşamalı indirme sayesinde, dosyanın tamamı indirilmeden önce medyayı yürütmeye başlayabilirsiniz. . ISM * (ISMV, ISMT veya ısmc) dosyalarını aşamalı olarak indirebilirsiniz.
 
 İçeriği aşamalı olarak indirmek için, Konumlandırıcı 'nın OnDemandOrigin türünü kullanın. Aşağıdaki örnek, Konumlandırıcı 'nın OnDemandOrigin türünü temel alan URL 'YI göstermektedir:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 Aşamalı indirme için kaynak hizmetten akışa almak istediğiniz depolama ile şifrelenmiş tüm varlıkların şifresini çözmeniz gerekir.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndir
 İçeriğinizi bir istemci cihazına indirmek için bir SAS Bulucu oluşturmanız gerekir. SAS bulucu, dosyanızın bulunduğu Azure depolama kapsayıcısına erişmenizi sağlar. İndirme URL 'sini oluşturmak için, konak ve SAS imzası arasına dosya adını eklemeniz gerekir.
 
 Aşağıdaki örnek SAS Konumlandırıcı 'sını temel alan URL 'YI gösterir:
 
-    https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
+`https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D`
 
 Aşağıdaki noktalara dikkat edilmelidir:
 
@@ -157,34 +157,37 @@ Akış uç noktası, daha fazla dağıtım için doğrudan bir istemci oynatıc�
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Kesintisiz Akış manifest sürümündeki değişiklikler
 Temmuz 2016 hizmet sürümünden önce--Media Encoder Standard, Media Encoder Premium Workflow veya daha önceki Azure Medya Kodlayıcısı tarafından oluşturulan varlıklar dinamik paketleme kullanılarak akışa alındı--döndürülen Kesintisiz Akış bildirimi sürüm 2,0 ' e uygundur. Sürüm 2,0 ' de, parça süreleri so-çağrılan yineleme (' r ') etiketlerini kullanmaz. Örneğin:
 
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" n="0" />
-            <c d="2000" />
-            <c d="2000" />
-            <c d="2000" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" n="0" />
+        <c d="2000" />
+        <c d="2000" />
+        <c d="2000" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Temmuz 2016 hizmet sürümünde, üretilen Kesintisiz Akış bildirimi sürüm 2,2 ' ye uygundur. Bu, yineleme etiketlerini kullanarak parça sürelerle uyumludur. Örneğin:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" r="4" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" r="4" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Eski Kesintisiz Akış istemcilerinden bazıları yineleme etiketlerini desteklemeyebilir ve bildirimi yükleyemeyecektir. Bu sorunu azaltmak için eski bildirim biçimi parametresini **(format = fmp4-V20)** kullanabilir veya istemcinizi, yineleme etiketlerini destekleyen en son sürüme güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [Kesintisiz Akış 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular
