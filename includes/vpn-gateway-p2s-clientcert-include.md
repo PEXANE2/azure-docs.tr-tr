@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188233"
 ---
 Noktadan siteye bağlantısı olan bir VNet 'e bağlandığınız her istemci bilgisayarda bir istemci sertifikası yüklü olmalıdır. Bunu kök sertifikadan oluşturup her bir istemci bilgisayara yüklersiniz. Geçerli bir istemci sertifikası yüklemezseniz, istemci VNet 'e bağlanmayı denediğinde kimlik doğrulaması başarısız olur.
@@ -22,7 +22,7 @@ Aşağıdaki yöntemleri kullanarak istemci sertifikaları oluşturabilirsiniz:
 
 - **Kurumsal sertifika:**
 
-  - Kurumsal bir sertifika çözümü kullanıyorsanız, ortak ad değeri biçimi *adı\@yourdomain.com*olan bir istemci sertifikası oluşturun. *Etkialanı \ Kullanıcı adı* biçimi yerine bu biçimi kullanın.
+  - Kurumsal bir sertifika çözümü kullanıyorsanız, ortak ad değeri biçimi *adı \@ yourdomain.com*olan bir istemci sertifikası oluşturun. *Etkialanı \ Kullanıcı adı* biçimi yerine bu biçimi kullanın.
   - İstemci sertifikasının, Kullanıcı listesindeki ilk öğe olarak listelenmiş *Istemci kimlik doğrulaması* olan bir Kullanıcı sertifika şablonunu temel alan bir kullanıcı sertifikası şablonuna dayandığınızdan emin olun. Sertifikayı çift tıklayarak ve **Ayrıntılar** sekmesinde **Gelişmiş anahtar kullanımı** ' nı görüntüleyerek denetleyin.
 
 - **Otomatik olarak imzalanan kök sertifika:** Oluşturduğunuz istemci sertifikalarının P2S bağlantılarınız ile uyumlu olması için aşağıdaki P2S sertifika makalelerinden birindeki adımları izleyin. Bu makalelerdeki adımlar uyumlu bir istemci sertifikası oluşturur: 
