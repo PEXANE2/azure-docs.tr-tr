@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602593"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -123,7 +123,7 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
 
    a.    Azure Izleyici kaynaklarınıza bağlamak istediğiniz **sanal ağı** ve **alt ağı** seçin. 
  
-   b.    **Özel DNS bölgesi Ile tümleştirme**için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. 
+   b.    **Özel DNS bölgesi Ile tümleştirme**için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. Gerçek DNS bölgeleri aşağıdaki ekran görüntüsünde gösterilenden farklı olabilir. 
  
    c.    **Gözden geçir ve oluştur**’a tıklayın.
  

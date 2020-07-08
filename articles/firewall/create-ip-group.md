@@ -4,20 +4,17 @@ description: IP grupları, Azure Güvenlik duvarı kuralları için IP adresleri
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602542"
 ---
-# <a name="create-ip-groups-preview"></a>IP grupları oluşturma (Önizleme)
-
-> [!IMPORTANT]
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-ip-groups"></a>IP Grupları oluşturma
 
 IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini Grupve yönetmenize olanak sağlar. Tek bir IP adresi, birden çok IP adresi veya bir veya daha fazla IP adresi aralığı olabilir.
 
@@ -25,7 +22,7 @@ IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini Grupve yö
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **IP grupları** yazın ve **IP grupları**' nı seçin.
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. Aboneliğinizi seçin.
 5. Bir kaynak grubu seçin veya yeni bir tane oluşturun.
 6. IP grubunuz için benzersiz bir ad yazın ve ardından bir bölge seçin.
@@ -42,7 +39,7 @@ IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini Grupve yö
    Bir IP adresi yazdığınızda, Portal, çakışan, yinelenen ve biçimlendirme sorunlarını kontrol etmek için onu doğrular.
 
 5. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin.
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
