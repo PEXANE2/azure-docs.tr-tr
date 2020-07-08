@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 8644a4e7dc8973775d952581bfc57d266c79f1a5
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85130798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848989"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gösterme
 
@@ -43,7 +43,7 @@ Gizleme kurallarınız, uyarıların otomatik olarak hangi ölçütlere göre ka
 > [!CAUTION]
 > Güvenlik uyarılarını gizleme Güvenlik Merkezi 'nin tehdit korumasını azaltır. Herhangi bir gizleme kuralının olası etkisini dikkatle denetlemeniz ve zaman içinde izlemeniz gerekir.
 
-[![Uyarı gizleme seçenekleri içeren Azure Güvenlik Merkezi güvenlik uyarıları sayfası](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
+![Uyarı gizleme kuralı oluştur](media\alerts-suppression-rules\create-suppression-rule.gif)
 
 ## <a name="create-a-suppression-rule"></a>Gizleme kuralı oluşturma
 

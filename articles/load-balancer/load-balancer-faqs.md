@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848222"
 ---
-# <a name="frequently-asked-questions"></a>Sık sorulan sorular
+# <a name="load-balancer-frequently-asked-questions"></a>Load Balancer sık sorulan sorular
 
 ## <a name="what-types-of-load-balancer-exist"></a>Ne tür Load Balancer var?
 Bir sanal ağ ve dış yük dengeleyiciler içindeki trafiği dengelemeye yönelik iç yük dengeleyiciler, internet 'e bağlı bir uç noktadan gelen ve giden trafiği dengelemek Daha fazla bilgi için bkz. [Load Balancer türleri](components.md#frontend-ip-configurations). 
@@ -36,8 +36,18 @@ NAT kuralları, trafiğin yönlendirileceği bir arka uç kaynağını belirtmek
 ## <a name="what-is-ip-1686312916"></a>IP 168.63.129.16 nedir?
 Azure altyapısı olarak etiketlenen konağın sanal IP adresi, Azure sistem durumu araştırmalarının gerçekleştiği Load Balancer. Arka uç örnekleri yapılandırılırken, bu IP adresinden gelen trafiğin sistem durumu araştırmasına başarıyla yanıt vermesi gerekir. Bu kural Load Balancer ön uç 'nize erişimle etkileşime girmiyor. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. [Burada](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)Service Tags hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Temel yük Blancer ile küresel VNET eşlemesini kullanabilir miyim?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Temel Load Balancer genel VNET eşlemesini kullanabilir miyim?
 Hayır. Temel Load Balancer genel VNET eşlemesini desteklemez. Bunun yerine bir Standart Load Balancer kullanabilirsiniz. Sorunsuz yükseltme için [temel 'Ten standart sürümüne yükseltme](upgrade-basic-standard.md) makalesine bakın.
+
+## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Azure VM 'nin kullandığı genel IP 'yi nasıl keşfedebilirim?
+
+Giden bir bağlantının genel kaynak IP adresini belirlemenin birçok yolu vardır. OpenDNS, sanal makinenizin genel IP adresini gösterebilmeniz için bir hizmet sağlar.
+Nslookup komutunu kullanarak, myip.opendns.com adı için OpenDNS çözümleyiciye bir DNS sorgusu gönderebilirsiniz. Hizmet, sorguyu göndermek için kullanılan kaynak IP adresini döndürür. Aşağıdaki sorguyu sanal makinenizde çalıştırdığınızda, yanıt o VM için kullanılan genel IP 'dir:
+
+ ```nslookup myip.opendns.com resolver1.opendns.com```
+
+## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Azure depolama ile aynı bölgedeki bağlantılar nasıl çalışır?
+Yukarıdaki senaryolar aracılığıyla giden bağlantıların olması, VM ile aynı bölgedeki depolamaya bağlanmak için gerekli değildir. Bunu istemiyorsanız, yukarıda açıklandığı gibi ağ güvenlik gruplarını (NSG 'ler) kullanın. Diğer bölgelerdeki depolama bağlantısı için giden bağlantı gereklidir. Lütfen aynı bölgedeki bir VM 'den depolamaya bağlanırken, depolama tanılama günlüklerindeki kaynak IP adresinin, sanal makinenizin genel IP adresi değil, iç sağlayıcı adresi olacağını unutmayın. Depolama hesabınıza erişimi aynı bölgedeki bir veya daha fazla sanal ağ alt ağında bulunan VM 'Lerle kısıtlamak istiyorsanız, depolama hesabı güvenlik duvarını yapılandırırken ortak IP adresinizi değil [sanal ağ hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanın. Hizmet uç noktaları yapılandırıldıktan sonra, sanal ağ özel IP adresinizi, iç sağlayıcı adresinde değil, depolama tanılama günlüklerinizin içinde görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Sorunuz yukarıdaki listede yoksa, bu sayfayla ilgili geri bildirimde bulunmak için lütfen sorularınızı gönderin. Bu, tüm değerli müşteri sorularımızın cevaplanmasını sağlamak için ürün ekibine yönelik bir GitHub sorunu oluşturur.

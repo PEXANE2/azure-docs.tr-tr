@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848381"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Sanal makine tarafından yönetilen kimlikler uzantısını kullanmayı durdurma ve Azure Instance Metadata Service kullanmaya başlama
 
@@ -27,7 +27,7 @@ ms.locfileid: "80049058"
 
 Yönetilen kimlikler için sanal makine uzantısı, sanal makine içinde yönetilen bir kimlik için belirteç istemek üzere kullanılır. İş akışı aşağıdaki adımlardan oluşur:
 
-1. İlk olarak, kaynak içindeki iş yükü, bir erişim belirteci `http://localhost/oauth2/token` istemek için Yerel uç noktasını çağırır.
+1. İlk olarak, kaynak içindeki iş yükü, `http://localhost/oauth2/token` bir erişim belirteci istemek için Yerel uç noktasını çağırır.
 2. Daha sonra sanal makine uzantısı, Azure AD 'den bir erişim belirteci istemek için yönetilen kimliğin kimlik bilgilerini kullanır. 
 3. Erişim belirteci, çağırana döndürülür ve Azure Key Vault veya Azure depolama gibi Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmak için kullanılabilir.
 
@@ -35,68 +35,68 @@ Bir sonraki bölümde özetlenen çeşitli sınırlamalar nedeniyle, yönetilen 
 
 ### <a name="provision-the-extension"></a>Uzantıyı sağlama 
 
-Bir sanal makineyi veya sanal makine ölçek kümesini yönetilen bir kimliğe sahip olacak şekilde yapılandırdığınızda, isteğe bağlı olarak `-Type` [set-Azvmexgercmdlet](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 'teki PARAMETRESINI kullanarak Azure kaynakları VM uzantısı için Yönetilen kimlikler sağlamayı tercih edebilirsiniz. Sanal makine türüne bağlı `ManagedIdentityExtensionForWindows` olarak `ManagedIdentityExtensionForLinux`ya da ' i geçirebilir ve `-Name` parametresini kullanarak adını verebilirsiniz. `-Settings` Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
+Bir sanal makineyi veya sanal makine ölçek kümesini yönetilen bir kimliğe sahip olacak şekilde yapılandırdığınızda, isteğe bağlı olarak `-Type` [set-Azvmexgercmdlet](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 'Teki parametresini kullanarak Azure kaynakları VM uzantısı için Yönetilen kimlikler sağlamayı tercih edebilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
 
 ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
-Aşağıdaki JSON `resources` 'ı şablona ekleyerek (Linux sürümü için ad ve tür öğeleri için kullanın `ManagedIdentityExtensionForLinux` ), VM uzantısını sağlamak için Azure Resource Manager Dağıtım şablonunu da kullanabilirsiniz.
+Aşağıdaki JSON 'ı `resources` şablona ekleyerek ( `ManagedIdentityExtensionForLinux` Linux sürümü için ad ve tür öğeleri için kullanın), VM uzantısını sağlamak için Azure Resource Manager Dağıtım şablonunu da kullanabilirsiniz.
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
-Sanal makine ölçek kümeleriyle çalışıyorsanız, [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 'Ini kullanarak Azure kaynakları sanal makine ölçek kümesi uzantısı için Yönetilen kimlikler de sağlayabilirsiniz. Sanal makine ölçek kümesinin `ManagedIdentityExtensionForWindows` türüne `ManagedIdentityExtensionForLinux`bağlı olarak ya da ' i geçirebilir ve `-Name` parametresini kullanarak adını verebilirsiniz. `-Settings` Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
+Sanal makine ölçek kümeleriyle çalışıyorsanız, [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 'Ini kullanarak Azure kaynakları sanal makine ölçek kümesi uzantısı için Yönetilen kimlikler de sağlayabilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine ölçek kümesinin türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
 
    ```powershell
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
-Sanal makine ölçek kümesi uzantısını Azure Resource Manager dağıtım şablonuyla sağlamak için, aşağıdaki JSON 'ı `extensionpProfile` bölümüne ekleyin (Linux sürümü için ad ve tür öğeleri için kullanın `ManagedIdentityExtensionForLinux` ).
+Sanal makine ölçek kümesi uzantısını Azure Resource Manager dağıtım şablonuyla sağlamak için, aşağıdaki JSON 'ı `extensionpProfile` bölümüne ekleyin ( `ManagedIdentityExtensionForLinux` Linux sürümü için ad ve tür öğeleri için kullanın).
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 Sanal makine uzantısının sağlanması DNS arama hatalarından dolayı başarısız olabilir. Bu durumda, sanal makineyi yeniden başlatın ve yeniden deneyin. 
 
 ### <a name="remove-the-extension"></a>Uzantıyı kaldırma 
-Uzantıyı kaldırmak için, [az VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)ile (sanal makine türüne bağlı olarak) veya Azure CLI kullanan sanal makine ölçek kümeleri için [az VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) ' i veya PowerShell `Remove-AzVMExtension` için şunu kullanın: `-n ManagedIdentityExtensionForWindows` `-n ManagedIdentityExtensionForLinux`
+Uzantıyı kaldırmak için, `-n ManagedIdentityExtensionForWindows` `-n ManagedIdentityExtensionForLinux` [az VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)ile (sanal makine türüne bağlı olarak) veya Azure CLI kullanan sanal makine ölçek kümeleri için [az VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) ' i veya `Remove-AzVMExtension` PowerShell için şunu kullanın:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -123,7 +123,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://localhost:50342/oauth2/token` | Azure kaynakları için Yönetilen kimlikler uç noktası, burada 50342 varsayılan bağlantı noktasıdır ve yapılandırılabilir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister `https://management.azure.com/`. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, `aud` verilen belirtecin (hedef kitle) talebinde de görüntülenir. Bu örnek, uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister `https://management.azure.com/` . |
 | `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır.|
 | `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 | `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
@@ -150,9 +150,9 @@ Content-Type: application/json
 | `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
 | `refresh_token` | Azure kaynakları için Yönetilen kimlikler tarafından kullanılmıyor. |
 | `expires_in` | Erişim belirtecinin, verme zamanından önce geçerli olmaya devam etmesi için geçmesi gereken saniye sayısı. Verme süresi belirtecin `iat` talebinde bulunabilir. |
-| `expires_on` | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `exp` talebine karşılık gelir) için saniye sayısı olarak gösterilir. |
-| `not_before` | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `nbf` talebine karşılık gelir) için saniye sayısı olarak gösterilir. |
-| `resource` | İsteğin `resource` sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak. |
+| `expires_on` | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin talebine karşılık gelir) için saniye sayısı olarak gösterilir `exp` . |
+| `not_before` | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin talebine karşılık gelir) için saniye sayısı olarak gösterilir `nbf` . |
+| `resource` | İsteğin sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak `resource` . |
 | `token_type` | "Taşıyıcı" erişim belirteci olan belirtecin türü, bu, kaynağın bu belirtecin taşıyıcının erişim izni verebileceği anlamına gelir. |
 
 
@@ -166,7 +166,7 @@ Windows ve Linux 'un belirli sürümlerinde, uzantı durdurulduğunda aşağıda
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Konumlar: 
+Burada: 
 - Windows için uzantı adı ve tür:`ManagedIdentityExtensionForWindows`
 - Linux için uzantı adı ve türü:`ManagedIdentityExtensionForLinux`
 
@@ -196,7 +196,7 @@ Sanal makine uzantısını kullanmanın bazı önemli sınırlamaları vardır.
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) , sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilecek çalışan sanal makine örnekleri hakkında bilgi sağlayan bir REST uç noktasıdır. Uç nokta, yalnızca sanal makine içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresinde`169.254.169.254`() kullanılabilir.
+[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) , sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilecek çalışan sanal makine örnekleri hakkında bilgi sağlayan bir REST uç noktasıdır. Uç nokta, `169.254.169.254` yalnızca sanal makine içinden erişilebilen, iyi bilinen YÖNLENDIRILEMEYEN IP adresinde () kullanılabilir.
 
 Belirteçleri istemek için Azure ıMDS kullanmanın çeşitli avantajları vardır. 
 

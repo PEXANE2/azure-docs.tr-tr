@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847865"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Küme Kaynak Yöneticisi Service Fabric küme yönetimi ile tümleştirme
 Service Fabric Küme Kaynak Yöneticisi Service Fabric yükseltmeleri değil, ancak buna dahil değildir. Küme Kaynak Yöneticisi, yönetim ile ilgili olarak, kümenin istenen durumunu ve içindeki hizmetleri izlemeye yardımcı olur. Küme Kaynak Yöneticisi, kümeyi istenen yapılandırmaya koyane zaman sistem durumu raporları gönderir. Örneğin, yeterli kapasite yoksa, Küme Kaynak Yöneticisi durum uyarıları ve sorunu belirten hatalar gönderilir. Diğer bir tümleştirme parçasının, yükseltmelerin nasıl çalıştığı ile ilgili olması vardır. Küme Kaynak Yöneticisi, yükseltmeler sırasında davranışını biraz daha değiştirir.  
@@ -18,7 +18,7 @@ Service Fabric Küme Kaynak Yöneticisi Service Fabric yükseltmeleri değil, an
 ## <a name="health-integration"></a>Sistem durumu tümleştirmesi
 Küme Kaynak Yöneticisi, hizmetlerinizin yerleştirilmesi için tanımladığınız kuralları sürekli izler. Ayrıca, düğümlerde ve kümedeki her ölçüm için kalan kapasiteyi ve kümenin tamamını izler. Bu kuralları karşılayamaz veya yeterli kapasite yoksa, sistem durumu uyarıları ve hatalar yayınlanır. Örneğin, bir düğüm kapasiteden fazla olursa ve Küme Kaynak Yöneticisi Hizmetleri taşıyarak durumu gidermeye çalışır. Durumu düzeltemediği takdirde, hangi düğümün kapasite üzerinde olduğunu ve hangi ölçümlerle ilgili olduğunu belirten bir sistem durumu uyarısı yayar.
 
-Kaynak Yöneticisi sistem durumu uyarılarından başka bir örnek, yerleştirme kısıtlamaları için ihlal örneğidir. Örneğin, bir yerleştirme kısıtlaması (gibi `“NodeColor == Blue”`) tanımladıysanız ve Kaynak Yöneticisi bu kısıtlamayı ihlal ederse, bir sistem durumu uyarısı yayar. Bu, özel kısıtlamalar ve varsayılan kısıtlamalar (hata etki alanı ve yükseltme etki alanı kısıtlamaları gibi) için geçerlidir.
+Kaynak Yöneticisi sistem durumu uyarılarından başka bir örnek, yerleştirme kısıtlamaları için ihlal örneğidir. Örneğin, bir yerleştirme kısıtlaması (gibi `“NodeColor == Blue”` ) tanımladıysanız ve Kaynak Yöneticisi bu kısıtlamayı ihlal ederse, bir sistem durumu uyarısı yayar. Bu, özel kısıtlamalar ve varsayılan kısıtlamalar (hata etki alanı ve yükseltme etki alanı kısıtlamaları gibi) için geçerlidir.
 
 Bu tür bir sistem durumu raporuna bir örnek aşağıda verilmiştir. Bu durumda sistem durumu raporu, sistem hizmeti bölümlerinin birine yöneliktir. Sistem durumu iletisi, bu bölümün çoğaltmaların geçici olarak çok az yükseltme etki alanına paketlediği anlamına gelir.
 
@@ -122,7 +122,7 @@ Gelişmiş durumlarda kısıtlama önceliklerini değiştirebilirsiniz. Örneği
 
 Farklı kısıtlamalar için varsayılan öncelik değerleri aşağıdaki yapılandırmada belirtilmiştir:
 
-ClusterManifest. xml
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -135,7 +135,7 @@ ClusterManifest. xml
         </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -179,7 +179,7 @@ Yükseltme, başarısızlık veya diğer kısıtlama ihlalleriyle uğraşmak iç
 Ortam doğru yapılandırılmışsa, yükseltmeler sırasında bile tüm kısıtlamalar tam olarak işlenir. Temel şey, Küme Kaynak Yöneticisi kısıtlamalarınız için izlenemez. İhlalin ihlal algıladığında, hemen rapor eder ve sorunu gidermeye çalışır.
 
 ## <a name="the-preferred-location-constraint"></a>Tercih edilen konum kısıtlaması
-PreferredLocation kısıtlaması, iki farklı kullanım içerdiğinden biraz farklıdır. Bu kısıtlamanın bir kullanımı uygulama yükseltmeleri sırasında yapılır. Küme Kaynak Yöneticisi, yükseltmeler sırasında bu kısıtlamayı otomatik olarak yönetir. Çoğaltmaların ilk konumlarına geri döndürdüğü yükseltmelerin tamamlandığında emin olmak için kullanılır. Preferredlocation kısıtlamasının diğer kullanımı [ `PreferredPrimaryDomain` yerleştirme ilkesine](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)yöneliktir. Bunların her ikisi de iyileştirmedir ve bu nedenle PreferredLocation kısıtlaması varsayılan olarak "Iyileştirme" olarak ayarlanmış tek kısıtlamadır.
+PreferredLocation kısıtlaması, iki farklı kullanım içerdiğinden biraz farklıdır. Bu kısıtlamanın bir kullanımı uygulama yükseltmeleri sırasında yapılır. Küme Kaynak Yöneticisi, yükseltmeler sırasında bu kısıtlamayı otomatik olarak yönetir. Çoğaltmaların ilk konumlarına geri döndürdüğü yükseltmelerin tamamlandığında emin olmak için kullanılır. PreferredLocation kısıtlamasının diğer kullanımı [ `PreferredPrimaryDomain` yerleştirme ilkesine](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)yöneliktir. Bunların her ikisi de iyileştirmedir ve bu nedenle PreferredLocation kısıtlaması varsayılan olarak "Iyileştirme" olarak ayarlanmış tek kısıtlamadır.
 
 ## <a name="upgrades"></a>Güncelleştirmelerini
 Küme Kaynak Yöneticisi, uygulama ve küme yükseltmeleri sırasında iki işi olduğu için de yardımcı olur:

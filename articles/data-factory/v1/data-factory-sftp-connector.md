@@ -12,11 +12,11 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847684"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory kullanarak bir SFTP sunucusundan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -50,10 +50,10 @@ Aşağıdaki tabloda, FTP bağlantılı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type | Type özelliği olarak `Sftp`ayarlanmalıdır. |Yes |
-| konak | SFTP sunucusunun adı veya IP adresi. |Yes |
+| tür | Type özelliği olarak ayarlanmalıdır `Sftp` . |Evet |
+| konak | SFTP sunucusunun adı veya IP adresi. |Evet |
 | port |SFTP sunucusunun dinlediği bağlantı noktası. Varsayılan değer: 21 |Hayır |
-| authenticationType |Kimlik doğrulama türünü belirtin. İzin verilen değerler: **temel**, **sshpublickey**. <br><br> [Temel kimlik doğrulamasını kullanma](#using-basic-authentication) ve sırasıyla daha fazla ÖZELLIK ve JSON ÖRNEKLERI üzerinde [SSH ortak anahtar kimlik doğrulama bölümlerini kullanma](#using-ssh-public-key-authentication) bölümüne bakın. |Yes |
+| authenticationType |Kimlik doğrulama türünü belirtin. İzin verilen değerler: **temel**, **sshpublickey**. <br><br> [Temel kimlik doğrulamasını kullanma](#using-basic-authentication) ve sırasıyla daha fazla ÖZELLIK ve JSON ÖRNEKLERI üzerinde [SSH ortak anahtar kimlik doğrulama bölümlerini kullanma](#using-ssh-public-key-authentication) bölümüne bakın. |Evet |
 | skipHostKeyValidation | Konak anahtarı doğrulamanın atlanıp atlanmayacağını belirtin. | Hayır. Varsayılan değer: false |
 | hostKeyFingerprint | Ana bilgisayar anahtarının parmak yazdırma türünü belirtin. | Evet, `skipHostKeyValidation` false olarak ayarlandıysa.  |
 | gatewayName |Şirket içi bir SFTP sunucusuna bağlanmak için Veri Yönetimi ağ geçidinin adı. | Şirket içi bir SFTP sunucusundan veri kopyalandıysanız Evet. |
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, FTP bağlantılı hizmetine özgü JSON öğeleri için a�
 
 ### <a name="using-basic-authentication"></a>Temel kimlik doğrulaması kullanma
 
-Temel kimlik doğrulamasını kullanmak için, `authenticationType` olarak `Basic`ayarlayın ve son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
+Temel kimlik doğrulamasını kullanmak için, `authenticationType` olarak ayarlayın `Basic` ve son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| kullanıcı adı | SFTP sunucusuna erişimi olan kullanıcı. |Yes |
-| password | Kullanıcı için parola (Kullanıcı adı). | Yes |
+| kullanıcı adı | SFTP sunucusuna erişimi olan kullanıcı. |Evet |
+| password | Kullanıcı için parola (Kullanıcı adı). | Evet |
 
 #### <a name="example-basic-authentication"></a>Örnek: temel kimlik doğrulaması
 ```json
@@ -111,13 +111,13 @@ Temel kimlik doğrulamasını kullanmak için, `authenticationType` olarak `Basi
 
 ### <a name="using-ssh-public-key-authentication"></a>SSH ortak anahtar kimlik doğrulamasını kullanma
 
-SSH ortak anahtar kimlik doğrulamasını kullanmak için, `authenticationType` olarak `SshPublicKey`ayarlayın ve en son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
+SSH ortak anahtar kimlik doğrulamasını kullanmak için, `authenticationType` olarak ayarlayın `SshPublicKey` ve en son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| kullanıcı adı |SFTP sunucusuna erişimi olan Kullanıcı |Yes |
-| privateKeyPath | Ağ geçidinin erişebileceği özel anahtar dosyasının mutlak yolunu belirtin. | `privateKeyPath` Ya `privateKeyContent`da belirtin. <br><br> Yalnızca şirket içi bir SFTP sunucusundan veri kopyalarken geçerlidir. |
-| privateKeyContent | Özel anahtar içeriğinin seri hale getirilmiş dizesi. Kopyalama Sihirbazı özel anahtar dosyasını okuyabilir ve özel anahtar içeriğini otomatik olarak ayıklayabilir. Başka bir aracı/SDK kullanıyorsanız, bunun yerine privateKeyPath özelliğini kullanın. | `privateKeyPath` Ya `privateKeyContent`da belirtin. |
+| kullanıcı adı |SFTP sunucusuna erişimi olan Kullanıcı |Evet |
+| privateKeyPath | Ağ geçidinin erişebileceği özel anahtar dosyasının mutlak yolunu belirtin. | Ya da belirtin `privateKeyPath` `privateKeyContent` . <br><br> Yalnızca şirket içi bir SFTP sunucusundan veri kopyalarken geçerlidir. |
+| privateKeyContent | Özel anahtar içeriğinin seri hale getirilmiş dizesi. Kopyalama Sihirbazı özel anahtar dosyasını okuyabilir ve özel anahtar içeriğini otomatik olarak ayıklayabilir. Başka bir aracı/SDK kullanıyorsanız, bunun yerine privateKeyPath özelliğini kullanın. | Ya da belirtin `privateKeyPath` `privateKeyContent` . |
 | Deyimi | Anahtar dosyası bir pass ifadesi tarafından korunuyorsa, özel anahtarın şifresini çözmek için geçiş tümceciğini/parolayı belirtin. | Özel anahtar dosyası bir pass ifadesi tarafından korunuyorsa Evet. |
 
 > [!NOTE]
@@ -171,9 +171,9 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasörün alt yolu. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Yes |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt`(Örnek: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Hayır |
-| fileFilter |Tüm dosyalar yerine folderPath içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) `?` ve (tek karakter).<br/><br/>Örnekler 1:`"fileFilter": "*.log"`<br/>Örnek 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter, bir giriş FileShare veri kümesi için geçerlidir. Bu özellik,. |Hayır |
+| folderPath |Klasörün alt yolu. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Evet |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt`(Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
+| fileFilter |Tüm dosyalar yerine folderPath içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) ve `?` (tek karakter).<br/><br/>Örnekler 1:`"fileFilter": "*.log"`<br/>Örnek 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter, bir giriş FileShare veri kümesi için geçerlidir. Bu özellik,. |Hayır |
 | partitionedBy |partitionedBy, zaman serisi verilerine yönelik bir dinamik folderPath, filename belirtmek için kullanılabilir. Örneğin, her saat veri için folderPath parametreli parametrelenir. |Hayır |
 | biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
 | sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
@@ -282,7 +282,7 @@ Kullanabileceğiniz farklı kimlik doğrulama türleri için bkz. [FTP bağlı h
 ```
 **SFTP giriş veri kümesi**
 
-Bu veri kümesi SFTP klasörünü `mysharedfolder` ve dosyasını `test.csv`ifade eder. İşlem hattı, dosyayı hedefe kopyalar.
+Bu veri kümesi SFTP klasörünü `mysharedfolder` ve dosyasını ifade eder `test.csv` . İşlem hattı, dosyayı hedefe kopyalar.
 
 "External": "true" ayarı, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir.
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848495"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -73,9 +73,13 @@ Aşağıdaki kitaplığı el ile yüklemeniz gerekir:
 
 NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Active Directory eşitlenmesi ve MFA için kayıtlı olması gerekir.
 
-Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin KIMLIĞINIZI [Azure Portal](https://portal.azure.com)bulabilirsiniz. Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
+Uzantıyı yüklediğinizde, Azure AD kiracınızın *KIRACı kimliği* ve yönetici kimlik bilgilerine sahip olmanız gerekir. Kiracı KIMLIĞINI almak için aşağıdaki adımları izleyin:
 
-![Azure Active Directory özellikleri altında Dizin KIMLIĞINIZI bulun](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Azure kiracının genel yöneticisi olarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**bulun ve seçin.
+1. **Genel bakış** sayfasında, *kiracı bilgileri* gösterilir. *KIRACı kimliği*' nin yanında, aşağıdaki örnekte gösterildiği gibi **Kopyala** simgesini seçin:
+
+   ![Azure portal Kiracı KIMLIĞINI alma](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -206,7 +210,7 @@ Kendi sertifikalarınızı kullanmak istemiyorsanız (PowerShell betiğinin olu�
    ```
 
 4. Azure AD 'de yönetici olarak oturum açın.
-5. Kiracı KIMLIĞINIZ için PowerShell istemleri. Önkoşullar bölümündeki Azure portal kopyaladığınız dizin KIMLIĞI GUID 'sini kullanın.
+5. Kiracı KIMLIĞINIZ için PowerShell istemleri. Önkoşullar bölümündeki Azure portal kopyaladığınız *KIRACı kimliği* GUID 'sini kullanın.
 6. Betik tamamlandığında PowerShell bir başarı iletisi gösterir.  
 
 Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu adımları yineleyin.

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847238"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bulut hizmeti Izlemeye giriş
 
@@ -54,13 +54,13 @@ Her bir rol oluşturulduğunda, Visual Studio buna Azure Tanılama uzantısını
 
 İlk olarak, **Klasik** bir depolama hesabınız yoksa [bir tane oluşturun](../storage/common/storage-account-create.md). Depolama hesabının belirtilen **klasik dağıtım modeliyle** oluşturulduğundan emin olun.
 
-Ardından, **depolama hesabı (klasik)** kaynağına gidin. **Ayarlar** > **erişim anahtarları** ' nı seçin ve **birincil bağlantı dizesi** değerini kopyalayın. Bulut hizmeti için bu değere ihtiyacınız vardır. 
+Ardından, **depolama hesabı (klasik)** kaynağına gidin. **Ayarlar**  >  **erişim anahtarları** ' nı seçin ve **birincil bağlantı dizesi** değerini kopyalayın. Bulut hizmeti için bu değere ihtiyacınız vardır. 
 
 Gelişmiş tanılamaları, **ServiceDefinition. csdef** ve **ServiceConfiguration. cscfg**' i etkinleştirmek için değiştirmeniz gereken iki yapılandırma dosyası vardır.
 
 ### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 
-**ServiceDefinition. csdef** dosyasında, gelişmiş tanılama kullanan her bir rol için `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` adlı yeni bir ayar ekleyin. Yeni bir proje oluşturduğunuzda Visual Studio bu değeri dosyaya ekler. Eksik olması durumunda şimdi ekleyebilirsiniz. 
+**ServiceDefinition. csdef** dosyasında, `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` Gelişmiş tanılama kullanan her bir rol için adlı yeni bir ayar ekleyin. Yeni bir proje oluşturduğunuzda Visual Studio bu değeri dosyaya ekler. Eksik olması durumunda şimdi ekleyebilirsiniz. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -71,7 +71,7 @@ Gelişmiş tanılamaları, **ServiceDefinition. csdef** ve **ServiceConfiguratio
 
 Bu, her **ServiceConfiguration. cscfg** dosyasına eklenmesi gereken yeni bir ayar tanımlar. 
 
-Büyük olasılıkla Azure 'a dağıtmak için **ServiceConfiguration. Cloud. cscfg** adlı iki **. cscfg** dosyasına ve öykünülmüş ortamda yerel dağıtımlar için kullanılan **ServiceConfiguration. Local. cscfg** adlı bir ada sahip olabilirsiniz. Her **. cscfg** dosyasını açın ve değiştirin. Adlı `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`bir ayar ekleyin. Değeri, klasik depolama hesabının **birincil bağlantı dizesine** ayarlayın. Geliştirme makinenizde yerel depolamayı kullanmak istiyorsanız kullanın `UseDevelopmentStorage=true`.
+Büyük olasılıkla Azure 'a dağıtmak için **ServiceConfiguration. Cloud. cscfg** adlı iki **. cscfg** dosyasına ve öykünülmüş ortamda yerel dağıtımlar için kullanılan **ServiceConfiguration. Local. cscfg** adlı bir ada sahip olabilirsiniz. Her **. cscfg** dosyasını açın ve değiştirin. Adlı bir ayar ekleyin `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` . Değeri, klasik depolama hesabının **birincil bağlantı dizesine** ayarlayın. Geliştirme makinenizde yerel depolamayı kullanmak istiyorsanız kullanın `UseDevelopmentStorage=true` .
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

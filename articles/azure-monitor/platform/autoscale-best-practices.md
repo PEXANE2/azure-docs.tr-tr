@@ -1,15 +1,15 @@
 ---
-title: Otomatik ölçeklendirme için en iyi uygulamalar
+title: Otomatik ölçeklendirme için en iyi yöntemler
 description: Web Apps, sanal makine ölçek kümeleri ve Cloud Services için Azure 'da otomatik ölçeklendirme desenleri
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846945"
 ---
 # <a name="best-practices-for-autoscale"></a>Otomatik ölçeklendirme için en iyi uygulamalar
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
@@ -31,7 +31,7 @@ Otomatik ölçeklendirme kullanırken aşağıdaki en iyi yöntemleri kullanın.
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>En yüksek ve en düşük değerlerin farklı olduğundan emin olun ve bunların arasında yeterli bir boşluk bırakın
 
-En az = 2, maksimum = 2 ve geçerli örnek sayısı 2 olan bir ayarınız varsa, hiçbir ölçeklendirme eylemi gerçekleşmeyebilir. Dahil olmak üzere maksimum ve minimum örnek sayısı arasında yeterli bir kenar boşluğu tutun. Otomatik ölçeklendirme, her zaman bu sınırlar arasındaki ölçeği ölçeklendirir.
+En düşük=2 ve en yüksek=2 ayarınız varsa, geçerli örnek sayısı da 2 ise, hiçbir ölçeklendirme işlemi gerçekleştirilemez. En yüksek ile en düşük örnek sayıları (belirtilen sayılar da dahildir) arasında uygun bir marj bırakın. Otomatik ölçeklendirme her zaman bu sınırlar arasında ölçeklendirir.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>El ile ölçeklendirme, otomatik ölçeklendirmenin en düşük ve en yüksek değerleriyle sıfırlanır
 
@@ -48,8 +48,8 @@ Genişleme ve ölçeklendirme için farklı eşikleri pratik durumlara göre dik
 
 Aşağıdaki örneklerde, çıkış ve koşullar için aynı veya benzer eşik değerleriyle birlikte otomatik ölçeklendirme ayarlarını *önermiyoruz* :
 
-* Iş parçacığı sayısı >= 600 olduğunda örnekleri 1 sayıya yükseltin
-* Iş parçacığı sayısı <= 600 olduğunda örnekleri 1 sayıya küçültün
+* İş Parçacığı Sayısı >= 600 olduğunda örnekleri 1 artır
+* İş Parçacığı Sayısı <= 600 olduğunda örnekleri 1 azalt
 
 Kafa karıştırıcı olabilecek bir davranışa neden olabilecek bir örneğe bakalım. Aşağıdaki sırayı göz önünde bulundurun.
 

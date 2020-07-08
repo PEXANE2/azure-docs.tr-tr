@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847488"
 ---
 # <a name="manage-farms"></a>Grupları yönetme
 
@@ -33,7 +33,7 @@ Aşağıdaki adımları kullanın:
 
 Aşağıda, bir grup sınırı tanımlamanın iki yolu verilmiştir:
 
-1. **Haritada işaretle**: harita denetim aracını kullanarak grubun sınırını çizin ve işaretleyin. Sınırları işaretlemek için, ![proje grubu](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) ve tam sınırları işaretler.
+1. **Haritada işaretle**: harita denetim aracını kullanarak grubun sınırını çizin ve işaretleyin. Sınırları işaretlemek için, ![ Proje grubu ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) ve tam sınırları işaretler.
 
     ![Proje grubu ları](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 

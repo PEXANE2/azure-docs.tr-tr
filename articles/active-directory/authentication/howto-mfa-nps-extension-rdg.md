@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848736"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
@@ -115,16 +115,15 @@ Bir hesap MFA için etkinleştirildikten sonra, ikinci kimlik doğrulama faktör
 
 Bu bölümde, Uzak Masaüstü Ağ Geçidi ile istemci kimlik doğrulaması için Azure MFA kullanmak üzere RDS altyapısını yapılandırma yönergeleri sağlanmaktadır.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID KIMLIĞI al
+### <a name="acquire-azure-active-directory-tenant-id"></a>Azure Active Directory kiracı KIMLIĞI al
 
-NPS uzantısının yapılandırmasının bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgilerini ve Azure AD KIMLIĞINI sağlamanız gerekir. Aşağıdaki adımlarda, kiracı KIMLIĞINI nasıl alacağınız gösterilmektedir.
+NPS uzantısının yapılandırmasının bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgilerini ve Azure AD KIMLIĞINI sağlamanız gerekir. Kiracı KIMLIĞINI almak için aşağıdaki adımları izleyin:
 
 1. Azure kiracının genel yöneticisi olarak [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
-1. **Özellikler**’i seçin.
-1. Özellikler dikey penceresinde, dizin KIMLIĞI ' nin yanında, KIMLIĞI panoya kopyalamak için aşağıda gösterildiği gibi **Kopyala** simgesine tıklayın.
+1. **Genel bakış** sayfasında, *kiracı bilgileri* gösterilir. *KIRACı kimliği*' nin yanında, aşağıdaki örnekte gösterildiği gibi **Kopyala** simgesini seçin:
 
-   ![Azure portal dizin KIMLIĞI alınıyor](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portal Kiracı KIMLIĞINI alma](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS uzantısını yükler
 
@@ -167,9 +166,9 @@ Betiği kullanmak için, uzantıyı Azure AD yönetici kimlik bilgilerinizle ve 
 
    ![PowerShell 'de Azure AD kimlik doğrulaması](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. İstendiğinde, pano 'ya kopyaladığınız Dizin KIMLIĞINI daha önce yapıştırın ve **ENTER**tuşuna basın.
+1. İstendiğinde, pano 'ya kopyaladığınız *KIRACı kimliğini* daha önce yapıştırın ve **ENTER**tuşuna basın.
 
-   ![PowerShell 'de dizin KIMLIĞI yerleştirme](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Kiracı KIMLIĞINI PowerShell 'e yerleştirme](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. Betik otomatik olarak imzalanan bir sertifika oluşturur ve diğer yapılandırma değişikliklerini gerçekleştirir. Çıktı aşağıda gösterilen görüntü gibi olmalıdır.
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847391"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -71,16 +71,16 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 
 |Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
-|**Aracı**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|**Aracısı**|||  
+|\*.ods.opinsights.azure.com| 443 |Evet|  
+|\*.oms.opinsights.azure.com| 443|Evet|  
+|\*.blob.core.windows.net| 443|Evet|  
+|\*.azure-automation.net| 443|Evet|  
 |**Yönetim sunucusu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Evet|  
+|\*.ods.opinsights.azure.com| 443| Evet|  
+|*.azure-automation.net | 443| Evet|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -110,7 +110,7 @@ Log Analytics çalışma alanı ile Operations Manager yönetim grubunuzun ilk k
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Azure Izleyici ile tümleştirme için aşağıdaki adımları tamamladıktan sonra, çalıştırarak `netsh winhttp reset proxy` yapılandırmayı kaldırabilir ve sonra proxy veya Log Analytics ağ geçidi sunucusunu belirtmek için İşletim konsolundaki **proxy sunucusunu yapılandır** seçeneğini kullanabilirsiniz.
+Azure Izleyici ile tümleştirme için aşağıdaki adımları tamamladıktan sonra, çalıştırarak yapılandırmayı kaldırabilir `netsh winhttp reset proxy` ve sonra proxy veya Log Analytics ağ geçidi sunucusunu belirtmek Için İşletim konsolundaki **proxy sunucusunu yapılandır** seçeneğini kullanabilirsiniz.
 
 1. Operations Manager konsolunda **Yönetim** çalışma alanını seçin.
 1. Operations Management Suite düğümünü genişletin ve **Bağlantı**'ya tıklayın.
@@ -163,14 +163,14 @@ Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, yönetim grubunda Azure Izl
 Bağlantı oluşturulduktan ve Azure Izleyici 'de günlük verilerini hangi aracıların toplayacağınızı ve rapor alyacağını yapılandırdıktan sonra, aşağıdaki yapılandırma sırasıyla Yönetim grubunda uygulanır:
 
 * **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** Farklı Çalıştır Hesabı oluşturulur. Bu hesap **Microsoft System Center Advisor Farklı Çalıştır Profili Blobu** Farklı Çalıştır profiliyle ilişkilendirilmiştir ve iki sınıfı hedefler: **Koleksiyon Sunucusu** ve **Operations Manager Yönetim Grubu**.
-* İki bağlayıcı oluşturulur.  İlki **Microsoft. SystemCenter. Advisor. DataConnector** olarak adlandırılmıştır ve yönetim grubundaki tüm sınıfların örneklerinden oluşturulan tüm uyarıları Azure izleyici 'ye ileten bir abonelikle otomatik olarak yapılandırılır. İkinci bağlayıcı, Azure Izleyici ve paylaşım verileriyle iletişim sağlanmasından sorumlu olan **danışman Bağlayıcısı**olur.
+* İki bağlayıcı oluşturulur.  İlki **Microsoft.SystemCenter. Advisor. DataConnector** olarak adlandırılmıştır ve yönetim grubundaki tüm sınıfların örneklerinden oluşturulan tüm uyarıları Azure izleyici 'ye ileten bir abonelikle otomatik olarak yapılandırılır. İkinci bağlayıcı, Azure Izleyici ve paylaşım verileriyle iletişim sağlanmasından sorumlu olan **danışman Bağlayıcısı**olur.
 * Yönetim grubunda veri toplamak için seçilmiş olan aracılar ve gruplar **Microsoft System Center Advisor Sunucu İzleme Grubu**'na eklenir.
 
 ## <a name="management-pack-updates"></a>Yönetim paketi güncelleştirmeleri
 
 Yapılandırma tamamlandıktan sonra Operations Manager yönetim grubu, Azure Izleyici ile bir bağlantı kurar. Yönetim sunucusu web hizmetiyle eşitlenir ve Operations Manager'la tümleştirilmek üzere etkinleştirmiş olduğunuz çözümler için yönetim paketleri biçiminde güncelleştirilmiş yapılandırma bilgilerini alır. Operations Manager, bu yönetim paketlerinin güncelleştirmelerini denetler ve kullanılabilir olduğunda onları otomatik olarak indirip içeri aktarır. Bu davranışı denetleyen özellikle iki kural vardır:
 
-* **Microsoft. SystemCenter. Advisor. MPUpdate** -temel Azure izleyici yönetim paketlerini güncelleştirir. Varsayılan olarak her 12 saatte bir çalıştırılır.
+* **Microsoft.SystemCenter. Advisor. MPUpdate** -temel Azure izleyici yönetim paketlerini güncelleştirir. Varsayılan olarak her 12 saatte bir çalıştırılır.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - Çalışma alanınızda etkinleştirilmiş olan çözüm yönetim paketlerini güncelleştirir. Varsayılan olarak her beş (5) dakikada bir çalıştırılır.
 
 Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucusunun Azure Izleyici ile ne sıklıkta eşitleyeceğini, yeni bir yönetim paketinin mevcut olup olmadığını ve indirilmesinin gerekip gerekmediğini belirleyerek geçersiz kılabilir. **Frequency** parametresini saniye cinsinden bir değerle değiştirip eşitleme zamanlamasında değişiklik yapmak veya **Enabled** parametresini değiştirip kuralları devre dışı bırakmak için, [Kuralı veya İzlemeyi Geçersiz Kılma](https://technet.microsoft.com/library/hh212869.aspx) altındaki adımları izleyin. Geçersiz kılmalarda, Operations Manager Yönetim Grubu sınıfındaki tüm nesneleri hedefleyin.
@@ -347,10 +347,10 @@ Operations Manager ile tümleştirilen ve Azure Izleyici ile tümleştirmeyi des
     Remove-Connector $connectorName
 ```
 
-Gelecekte, yönetim grubunuzu bir Log Analytics çalışma alanına yeniden bağlamayı planlıyorsanız, `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` yönetim paketi dosyasını yeniden içeri aktarmanız gerekir. Ortamınıza dağıtılan System Center Operations Manager sürümüne bağlı olarak bu dosyayı aşağıdaki konumda bulabilirsiniz:
+Gelecekte, yönetim grubunuzu bir Log Analytics çalışma alanına yeniden bağlamayı planlıyorsanız, yönetim paketi dosyasını yeniden içeri aktarmanız gerekir `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` . Ortamınıza dağıtılan System Center Operations Manager sürümüne bağlı olarak bu dosyayı aşağıdaki konumda bulabilirsiniz:
 
 * System Center 2016 - Operations Manager ve üstü için kaynak medyada `\ManagementPacks` klasörünün altında.
-* Yönetim grubunuza uygulanan en son güncelleştirme dağıtımından. Operations Manager 2012 için kaynak klasör `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ve 2012 R2 için bulunur. `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`
+* Yönetim grubunuza uygulanan en son güncelleştirme dağıtımından. Operations Manager 2012 için kaynak klasör `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ve 2012 R2 için bulunur `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

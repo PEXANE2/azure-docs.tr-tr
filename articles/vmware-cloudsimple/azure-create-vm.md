@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847166"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware altyapısında VM şablonları kullanarak Azure 'da sanal makine oluşturma
 
@@ -21,7 +21,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-cloudsimple-virtual-machine"></a>CloudSimple sanal makinesi oluştur
 
@@ -44,7 +44,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
     | ------------ | ------------- |
     | Abonelik | Özel bulutunuz ile ilişkili Azure aboneliği.  |
     | Kaynak Grubu | VM 'nin atanacağı kaynak grubu. Var olan bir grubu seçebilir veya yeni bir grup oluşturabilirsiniz. |
-    | Adı | VM 'yi tanımlayacak ad.  |
+    | Name | VM 'yi tanımlayacak ad.  |
     | Konum | Bu VM 'nin barındırıldığı Azure bölgesi.  |
     | Özel Bulut | Sanal makineyi oluşturmak istediğiniz CloudSimple özel bulutu. |
     | Kaynak Havuzu | VM için eşlenen kaynak havuzu. Kullanılabilir kaynak havuzlarından seçin. |
@@ -64,7 +64,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
     | Denetim | Açıklama |
     | ------------ | ------------- |
-    | Adı | Arabirimi tanımlamak için bir ad girin.  |
+    | Name | Arabirimi tanımlamak için bir ad girin.  |
     | Ağ | Özel bulut vSphere 'unuzda yapılandırılmış dağıtılmış bağlantı noktası grubu listesinden seçin.  |
     | Bağdaştırıcı | VM için yapılandırılmış kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için bkz. [sanal makineniz için bir ağ bağdaştırıcısı seçme](https://kb.vmware.com/s/article/1001805)VMware Bilgi Bankası makalesi. |
     | Önyüklemede açma | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan olarak **etkinleştirilir**. |
@@ -73,7 +73,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
     | Öğe | Açıklama |
     | ------------ | ------------- |
-    | Adı | Diski tanımlamak için bir ad girin.  |
+    | Name | Diski tanımlamak için bir ad girin.  |
     | Boyut | Kullanılabilir boyutlardan birini seçin.  |
     | SCSI denetleyicisi | Disk için bir SCSI denetleyicisi seçin.  |
     | Mod | Diskin anlık görüntülere nasıl katıldığını belirler. Aşağıdaki seçeneklerden birini belirleyin: <br> -Bağımsız kalıcı: diske yazılan tüm veriler kalıcı olarak yazılmıştır.<br> -Bağımsız kalıcı olmayan: sanal makineyi kapatıp sıfırladığınızda diske yazılan değişiklikler atılır.  Bağımsız olarak kalıcı olmayan bağımsız mod, sanal makineyi her zaman aynı durumda yeniden başlatmanıza olanak tanır. Daha fazla bilgi için bkz. [VMware belgeleri](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).

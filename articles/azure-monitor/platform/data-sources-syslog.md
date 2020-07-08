@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847423"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure İzleyici'de Syslog veri kaynakları
 Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
@@ -47,7 +47,7 @@ Linux için Log Analytics Aracısı yalnızca kendi yapılandırmasında belirti
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure portal Syslog 'ı yapılandırma
 [Gelişmiş ayarlar 'Daki veri menüsünde](agent-data-sources.md#configuring-data-sources)Syslog 'ı yapılandırın. Bu yapılandırma, her bir Linux aracısının yapılandırma dosyasına dağıtılır.
 
-İlk olarak, **aşağıdaki yapılandırmayı Makinelerime Uygula** seçeneğini belirleyip adını yazıp öğesini tıklayarak **+** yeni bir tesis ekleyebilirsiniz. Her tesis için yalnızca seçili önem derecelerine sahip iletiler toplanacaktır.  Toplamak istediğiniz belirli bir tesis için önem derecelerine göz atın. İletileri filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
+İlk olarak, **aşağıdaki yapılandırmayı Makinelerime Uygula** seçeneğini belirleyip adını yazıp öğesini tıklayarak yeni bir tesis ekleyebilirsiniz **+** . Her tesis için yalnızca seçili önem derecelerine sahip iletiler toplanacaktır.  Toplamak istediğiniz belirli bir tesis için önem derecelerine göz atın. İletileri filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
 
 ![Syslog yapılandırma](media/data-sources-syslog/configure.png)
 
@@ -170,7 +170,7 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
 * Rsyslog için, içinde bulunan yeni bir yapılandırma dosyası oluşturmanız `/etc/rsyslog.d/` ve% SYSLOG_PORT% değerini özel bağlantı noktası numaranız ile değiştirmeniz gerekir.  
 
     > [!NOTE]
-    > Yapılandırma dosyasında `95-omsagent.conf`bu değeri değiştirirseniz, aracı varsayılan bir yapılandırma uyguladığı zaman üzerine yazılır.
+    > Yapılandırma dosyasında bu değeri değiştirirseniz `95-omsagent.conf` , aracı varsayılan bir yapılandırma uyguladığı zaman üzerine yazılır.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -179,7 +179,7 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Aşağıda gösterilen örnek yapılandırma kopyalanarak ve içinde `/etc/syslog-ng/`bulunan Syslog-ng. conf yapılandırma dosyasının sonuna özel değiştirilen ayarlar eklenerek Syslog-ng yapılandırması değiştirilmelidir. **% WORKSPACE_ID% _oms** veya **% WORKSPACE_ID_OMS**varsayılan **etiketini kullanmayın,** değişikliklerinizi ayırt etmenize yardımcı olmak için özel bir etiket tanımlayın.  
+* Aşağıda gösterilen örnek yapılandırma kopyalanarak ve içinde bulunan Syslog-ng. conf yapılandırma dosyasının sonuna özel değiştirilen ayarlar eklenerek Syslog-ng yapılandırması değiştirilmelidir `/etc/syslog-ng/` . **% WORKSPACE_ID% _oms** veya **% WORKSPACE_ID_OMS**varsayılan **etiketini kullanmayın,** değişikliklerinizi ayırt etmenize yardımcı olmak için özel bir etiket tanımlayın.  
 
     > [!NOTE]
     > Yapılandırma dosyasındaki varsayılan değerleri değiştirirseniz, aracı varsayılan bir yapılandırma uyguladığı zaman üzerine yazılır.

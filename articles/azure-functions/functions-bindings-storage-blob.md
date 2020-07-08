@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847661"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Azure Blob depolama bağlamaları genel bakış
 
@@ -24,7 +24,7 @@ Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings
 
 ## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 

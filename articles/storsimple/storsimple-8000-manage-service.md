@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847106"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 serisi cihazlar için StorSimple Aygıt Yöneticisi hizmetini dağıtma
 
@@ -77,7 +77,7 @@ Bir hizmeti silmek için aşağıdaki adımları gerçekleştirin.
 
     ![Silinecek arama hizmeti](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Bu sizi StorSimple Aygıt Yöneticisi hizmeti dikey penceresine götürür. **Sil**' e tıklayın.
+2. Bu sizi StorSimple Aygıt Yöneticisi hizmeti dikey penceresine götürür. **Sil**'e tıklayın.
 
     ![Hizmeti Sil](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -103,7 +103,7 @@ Anahtar dönüşü yapmanız gerekiyorsa veya hizmet yöneticileri listesi deği
 Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde ** &gt; yönetim** **anahtarlar**' a gidin.
+1. **StorSimple aygıt yöneticisi** dikey penceresinde ** &gt; Yönetim** **anahtarlar**' a gidin.
     
     ![Anahtarlar dikey penceresi](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -134,7 +134,7 @@ Genellikle, Cihaz Yöneticisi hizmet yöneticisinin hizmet veri şifreleme anaht
 
 Bu adım Azure Resource Manager tabanlı betik kullanılarak gerçekleştirilir. Hizmet Yöneticisi yetkilendirilebilecek bir cihaz seçebilir. Daha sonra cihaz, hizmet veri şifreleme anahtarı değiştirme işlemini başlatmaya yetkilidir. 
 
-Betiği kullanma hakkında daha fazla bilgi için [Authorize-ServiceEncryptionRollover. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1) adresine gidin.
+Betiği kullanma hakkında daha fazla bilgi için [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1) gidin.
 
 #### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Hizmet veri şifreleme anahtarlarını değiştirmek için hangi cihazlara yetki atanabilir?
 Bir cihazın hizmet veri şifreleme anahtarı değişikliklerini başlatma yetkisine sahip olabilmesi için aşağıdaki ölçütleri karşılaması gerekir:
@@ -181,7 +181,7 @@ Cihazınızda hizmet veri şifrelemesini güncelleştirmek için aşağıdaki ad
 3. 2. adımda elde ettiğiniz hizmet veri şifreleme anahtarını sağlayın [: hizmet verileri şifreleme anahtarı değişikliğini başlatmak için StorSimple için Windows PowerShell kullanın](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Tüm 8010/8020 bulut gereçlerinde hizmet veri şifreleme anahtarını güncelleştirmek için
-1. [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell betiğini indirip kurun. 
+1. [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell betiğini indirip kurun. 
 2. PowerShell 'i açın ve komut isteminde şunu yazın:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Bu betik, hizmet veri şifreleme anahtarının, cihaz yöneticisi altındaki tüm 8010/8020 bulut gereçlerinde ayarlanmış olmasını sağlayacaktır.
@@ -189,26 +189,26 @@ Bu betik, hizmet veri şifreleme anahtarının, cihaz yöneticisi altındaki tü
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Güncelleştirme 5,0 ' den önceki sürümleri çalıştıran cihazlarda desteklenen işlemler
 Azure portal, yalnızca güncelleştirme 5,0 ve üstünü çalıştıran StorSimple cihazları desteklenir. Daha eski sürümleri çalıştıran cihazların desteği sınırlıdır. Azure portal geçirdikten sonra, güncelleştirme 5,0 ' den önceki sürümleri çalıştıran cihazlarda hangi işlemlerin desteklendiğini anlamak için aşağıdaki tabloyu kullanın.
 
-| İşlem                                                                                                                       | Destekleniyor      |
+| Çalışma                                                                                                                       | Destekleniyor      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Cihaz kaydetme                                                                                                               | Yes            |
-| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Yes            |
-| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Yes            |
-| Cihazı devre dışı bırak                                                                                                               | Yes            |
-| Cihazı silme                                                                                                                   | Yes            |
+| Cihaz kaydetme                                                                                                               | Evet            |
+| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Evet            |
+| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Evet            |
+| Cihazı devre dışı bırak                                                                                                               | Evet            |
+| Cihazı silme                                                                                                                   | Evet            |
 | Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | Hayır             |
 | Birim oluşturma, değiştirme ve silme                                                                                             | Hayır             |
 | Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | Hayır             |
 | El ile yedekleme yapın                                                                                                            | Hayır             |
 | Zamanlanmış bir yedekleme yapın                                                                                                         | Uygulanamaz |
 | Yedek kümesi 'ten geri yükleme                                                                                                        | Hayır             |
-| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Yes            |
+| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Evet            |
 | Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | Hayır             |
-| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Yes            |
+| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Evet            |
 | Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | Hayır             |
-| Bir uyarıyı Temizleme                                                                                                                  | Yes            |
-| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Yes            |
-| Cihaz denetleyicilerini aç ve Kapat                                                                                              | Yes            |
+| Bir uyarıyı Temizleme                                                                                                                  | Evet            |
+| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Evet            |
+| Cihaz denetleyicilerini aç ve Kapat                                                                                              | Evet            |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848692"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Brivo onair Identity bağlayıcısını yapılandırma
 
@@ -54,17 +54,17 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Sağlama için Brivo onair Identity bağlayıcısını ayarlayın
 
-1.    [Brivo ONAIR Identity Connector yönetici konsolunda](https://acs.brivo.com/login/)oturum açın. Hesap **> hesap ayarları**' na gidin.
+1. [Brivo ONAIR Identity Connector yönetici konsolunda](https://acs.brivo.com/login/)oturum açın. Hesap **> hesap ayarları**' na gidin.
 
-    ![Brivo onair Identity Connector Yönetici Konsolu](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Brivo onair Identity Connector Yönetici Konsolu](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  **Azure AD** sekmesine tıklayın. **Azure AD** ayrıntıları sayfasında, üst düzey yönetici hesabınızın parolasını yeniden girin. **Gönder**' e tıklayın.
+2. **Azure AD** sekmesine tıklayın. **Azure AD** ayrıntıları sayfasında, üst düzey yönetici hesabınızın parolasını yeniden girin. **Gönder**' e tıklayın.
 
-    ![Brivo onair Identity Bağlayıcısı Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo onair Identity Bağlayıcısı Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    **Belirteç Kopyala** düğmesine tıklayın ve **gizli belirteç**kaydedin. Bu değer, Azure portal Brivo onair Identity bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+3. **Belirteç Kopyala** düğmesine tıklayın ve **gizli belirteç**kaydedin. Bu değer, Azure portal Brivo onair Identity bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-    ![Brivo onair Identity bağlayıcı belirteci](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo onair Identity bağlayıcı belirteci](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Galeriden Brivo onair Identity bağlayıcısını ekleyin
 
@@ -94,7 +94,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 ### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Azure AD 'de Brivo onair Identity bağlayıcısının otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

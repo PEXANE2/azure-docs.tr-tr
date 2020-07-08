@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848711"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -228,9 +228,9 @@ Bu bölümde, VPN sunucunuzu RADIUS kimlik doğrulaması kullanacak şekilde yap
 
 2. Sunucu Yöneticisi **Araçlar**' ı seçin ve ardından **Yönlendirme ve uzaktan erişim**' i seçin.
 
-3. **Yönlendirme ve uzaktan erişim** penceresinde, ** \< sunucu adı> (yerel)**' e sağ tıklayın ve ardından **Özellikler**' i seçin.
+3. **Yönlendirme ve uzaktan erişim** penceresinde, ** \<server name> (yerel)** öğesine sağ tıklayın ve ardından **Özellikler**' i seçin.
 
-4. ** \< Sunucu adı> (yerel) Özellikler** penceresinde **güvenlik** sekmesini seçin.
+4. ** \<server name> (Yerel) Özellikler** penceresinde **güvenlik** sekmesini seçin.
 
 5. **Güvenlik** sekmesinde, **kimlik doğrulama sağlayıcısı**altında, **RADIUS kimlik doğrulaması**' nı seçin ve ardından **Yapılandır**' ı seçin.
 
@@ -320,19 +320,15 @@ _HKLM\SOFTWARE\Microsoft\AzureMfa içinde REQUIRE_USER_MATCH_adlı yeni bir dize
 
 Değer *true* olarak ayarlandıysa veya boşsa, tüm kimlik doğrulama istekleri MFA sınamasına tabidir. Değer *false*olarak ayarlandıysa, MFA sorunları yalnızca Azure Multi-Factor Authentication kayıtlı olan kullanıcılara verilir. Bir ekleme dönemi sırasında yalnızca test veya üretim ortamlarında *yanlış* ayarını kullanın.
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>Azure Active Directory GUID KIMLIĞINI edinin
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>Azure Active Directory kiracı KIMLIĞINI edinin
 
-NPS uzantısının yapılandırmasının bir parçası olarak, yönetici kimlik bilgilerini ve Azure AD kiracınızın KIMLIĞINI sağlamanız gerekir. Aşağıdakileri yaparak KIMLIĞI edinin:
+NPS uzantısının yapılandırmasının bir parçası olarak, yönetici kimlik bilgilerini ve Azure AD kiracınızın KIMLIĞINI sağlamanız gerekir. Kiracı KIMLIĞINI almak için aşağıdaki adımları izleyin:
 
 1. Azure kiracının genel yöneticisi olarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
+1. **Genel bakış** sayfasında, *kiracı bilgileri* gösterilir. *KIRACı kimliği*' nin yanında, aşağıdaki örnekte gösterildiği gibi **Kopyala** simgesini seçin:
 
-2. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
-
-3. **Özellikler**’i seçin.
-
-4. Azure AD KIMLIĞINIZI kopyalamak için **Kopyala** düğmesini seçin.
-
-    ![Azure portal Azure AD dizin KIMLIĞI](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portal Kiracı KIMLIĞINI alma](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS uzantısını yükler
 
@@ -340,9 +336,9 @@ NPS uzantısının, ağ Ilkesi ve erişim Hizmetleri rolünün yüklü olduğu v
 
 1. NPS uzantısını [Microsoft Indirme merkezi](https://aka.ms/npsmfa)' nden indirin.
 
-2. Kurulum yürütülebilir dosyasını (*NpsExtnForAzureMfaInstaller. exe*) NPS sunucusuna kopyalayın.
+2. Kurulum yürütülebilir dosyasını (*NpsExtnForAzureMfaInstaller.exe*) NPS sunucusuna kopyalayın.
 
-3. NPS sunucusunda **NpsExtnForAzureMfaInstaller. exe** ' ye çift tıklayın ve Istenirse, **Çalıştır**' ı seçin.
+3. NPS sunucusunda **NpsExtnForAzureMfaInstaller.exe** ' a çift tıklayın ve Istenirse, **Çalıştır**' ı seçin.
 
 4. **Azure MFA Için NPS uzantısı kurulum** penceresinde, yazılım lisans koşullarını gözden geçirin, **Lisans hüküm ve koşullarını kabul** ediyorum onay kutusunu işaretleyin ve ardından **yükleme**' yi seçin.
 
@@ -374,7 +370,7 @@ Betiği kullanmak için, uzantıyı Azure Active Directory yönetici kimlik bilg
 
 3. Sonraki komut isteminde **.\AzureMfaNpsExtnConfigSetup.ps1**girin ve ardından ENTER ' u seçin. Betik, Azure AD PowerShell modülünün yüklü olup olmadığını denetler. Yüklü değilse, betik modülü sizin için yüklenir.
 
-    ![AzureMfsNpsExtnConfigSetup. ps1 yapılandırma betiği çalıştırılıyor](./media/howto-mfa-nps-extension-vpn/image38.png)
+    ![AzureMfsNpsExtnConfigSetup.ps1 yapılandırma betiği çalıştırılıyor](./media/howto-mfa-nps-extension-vpn/image38.png)
 
     TLS nedeniyle bir güvenlik hatası alırsanız, PowerShell isteminizden komutunu kullanarak TLS 1,2 ' yi etkinleştirin `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` .
     
@@ -386,7 +382,7 @@ Betiği kullanmak için, uzantıyı Azure Active Directory yönetici kimlik bilg
 
 5. Komut isteminde, daha önce kopyaladığınız kiracı KIMLIĞINI yapıştırın ve ENTER ' u seçin.
 
-    ![Azure AD dizin KIMLIĞINI daha önce kopyalanmış şekilde girin](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![Daha önce kopyalanmış Azure AD kiracı KIMLIĞINI girin](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     Betik otomatik olarak imzalanan bir sertifika oluşturur ve diğer yapılandırma değişikliklerini gerçekleştirir. Çıktı aşağıdaki görüntüde olduğu gibidir:
 
@@ -412,7 +408,9 @@ Aşağıdaki örnekte, bir Windows Phone Microsoft Authenticator uygulama ikinci
 
 Windows Olay Görüntüleyicisi günlüklerinde başarılı oturum açma olaylarını görüntülemek için aşağıdaki PowerShell komutunu girerek NPS sunucusundaki Windows Güvenlik günlüğünü sorgulayın:
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell Güvenlik Olay Görüntüleyicisi](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ Ayrıca, burada gösterildiği gibi güvenlik günlüğünü veya ağ Ilkesi ve 
 
 Azure Multi-Factor Authentication için NPS uzantısını yüklediğiniz sunucuda, *uygulama ve hizmetler Logs\Microsoft\AzureMfa*' de uzantıya özgü Olay Görüntüleyicisi uygulama günlüklerini bulabilirsiniz.
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Olay Görüntüleyicisi AuthZ logs bölmesi örneği](./media/howto-mfa-nps-extension-vpn/image46.png)
 

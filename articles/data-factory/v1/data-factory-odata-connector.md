@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847568"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -62,9 +62,9 @@ Aşağıdaki tabloda, OData bağlantılı hizmetine özgü JSON öğeleri için 
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OData** olarak ayarlanmalıdır |Yes |
-| url |OData hizmetinin URL 'si. |Yes |
-| authenticationType |OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. <br/><br/> Bulut OData için, olası değerler anonim, temel ve OAuth ' dir (Azure Data Factory Şu anda yalnızca Azure Active Directory tabanlı OAuth 'ı destekler). <br/><br/> Şirket içi OData için, olası değerler anonim, temel ve Windows ' dir. |Yes |
+| tür |Type özelliği: **OData** olarak ayarlanmalıdır |Evet |
+| url |OData hizmetinin URL 'si. |Evet |
+| authenticationType |OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. <br/><br/> Bulut OData için, olası değerler anonim, temel ve OAuth ' dir (Azure Data Factory Şu anda yalnızca Azure Active Directory tabanlı OAuth 'ı destekler). <br/><br/> Şirket içi OData için, olası değerler anonim, temel ve Windows ' dir. |Evet |
 | kullanıcı adı |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |Evet (yalnızca temel kimlik doğrulaması kullanıyorsanız) |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Evet (yalnızca temel kimlik doğrulaması kullanıyorsanız) |
 | authorizedCredential |OAuth kullanıyorsanız, Data Factory kopyalama Sihirbazı veya düzenleyicide **Yetkilendir** düğmesine tıklayın ve kimlik bilgilerinizi girin, ardından bu özelliğin değeri otomatik olarak oluşturulur. |Evet (yalnızca OAuth kimlik doğrulaması kullanıyorsanız) |

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848455"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Uygulama Proxy'si sorunlarını ve hata iletilerini giderme
 
@@ -43,7 +43,9 @@ Belirli hata iletileri almadan, uygulamanız üzerinde işleme veya hatalı çal
 
 Bağlayıcı Sihirbazı yüklemesi sırasında kayıt başarısız olursa, hatanın nedenini görüntülemenin iki yolu vardır. **Uygulamalar ve hizmetler Logs\Microsoft\AadApplicationProxy\Connector\Admin**altında olay günlüğüne bakın veya aşağıdaki Windows PowerShell komutunu çalıştırın:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Olay günlüğünden bağlayıcı hatasını bulduktan sonra, sorunu gidermek için bu ortak hata tablosunu kullanın:
 

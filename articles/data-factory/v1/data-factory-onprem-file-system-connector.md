@@ -13,11 +13,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847602"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory kullanarak şirket içi dosya sistemine veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -72,22 +72,22 @@ Aşağıdaki bölümler, dosya sistemine özgü Data Factory varlıkları tanım
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliğinin **OnPremisesFileServer**olarak ayarlandığından emin olun. |Yes |
-| konak |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) . |Yes |
+| tür |Type özelliğinin **OnPremisesFileServer**olarak ayarlandığından emin olun. |Evet |
+| konak |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) . |Evet |
 | UserID |Sunucuya erişimi olan kullanıcının KIMLIĞINI belirtin. |Hayır (encryptedCredential öğesini seçerseniz) |
 | password |Kullanıcının parolasını belirtin (Kullanıcı kimliği). |Hayır (encryptedCredential seçeneğini belirlerseniz |
 | encryptedCredential |New-AzDataFactoryEncryptValue cmdlet 'ini çalıştırarak alabileceğiniz şifrelenmiş kimlik bilgilerini belirtin. |Hayır (Kullanıcı kimliği ve parolayı düz metin olarak belirtmeyi seçerseniz) |
-| gatewayName |Data Factory şirket içi dosya sunucusuna bağlanmak için kullanması gereken ağ geçidinin adını belirtir. |Yes |
+| gatewayName |Data Factory şirket içi dosya sunucusuna bağlanmak için kullanması gereken ağ geçidinin adını belirtir. |Evet |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Örnek bağlantılı hizmet ve veri kümesi tanımları
 | Senaryo | Bağlı hizmet tanımında ana bilgisayar | veri kümesi tanımında folderPath |
 | --- | --- | --- |
-| Veri Yönetimi ağ geçidi makinesindeki yerel klasör: <br/><br/>Örnekler: D:\\ \* veya d:\folder\alt klasörü\\\* |D:\\ \\ (veri yönetimi Gateway 2,0 ve üzeri sürümler için) <br/><br/> localhost (Veri Yönetimi Gateway 'den önceki sürümlerde 2,0) |. \\ \\veya klasör\\alt klasörü (veri yönetimi Gateway 2,0 ve \\ üzeri sürümler için) <br/><br/>D:\\ \\ veya d:\\\\Folder\\\\alt klasörü (2,0 altındaki Ağ Geçidi sürümü için) |
-| Uzak paylaşılan klasör: <br/><br/>Örnekler: \\ \\sunucum\\Share\\ \* veya \\\\sunucum Share\\klasör\\alt \\klasörü\\\* |\\\\\\\\sunucum\\\\paylaşma |. \\ \\veya klasör\\ \\ |
+| Veri Yönetimi ağ geçidi makinesindeki yerel klasör: <br/><br/>Örnekler: D: \\ \* veya D:\folder\alt klasörü\\\* |D: \\ \\ (Veri Yönetimi Gateway 2,0 ve üzeri sürümler için) <br/><br/> localhost (Veri Yönetimi Gateway 'den önceki sürümlerde 2,0) |.\\\\ veya klasör \\ \\ alt klasörü (Veri Yönetimi Gateway 2,0 ve üzeri sürümler için) <br/><br/>D: \\ \\ veya d: \\ \\ folder \\ \\ alt klasörü (2,0 altındaki Ağ Geçidi sürümü için) |
+| Uzak paylaşılan klasör: <br/><br/>Örnekler: \\ \\ Sunucum \\ Share \\ \* veya \\ \\ Sunucum \\ Share \\ klasör \\ alt klasörü\\\* |\\\\\\\\sunucum \\ \\ paylaşma |.\\\\ veya klasör \\ \\ alt klasörü |
 
 >[!NOTE]
->Kullanıcı arabirimi aracılığıyla yazarken, JSON aracılığıyla yaptığınız gibi kaçış için çift ters`\\`eğik çizgi () eklemeniz gerekmez, tek eğik çizgi belirtin.
+>Kullanıcı arabirimi aracılığıyla yazarken, `\\` JSON aracılığıyla yaptığınız gibi kaçış için çift ters eğik çizgi () eklemeniz gerekmez, tek eğik çizgi belirtin.
 
 ### <a name="example-using-username-and-password-in-plain-text"></a>Örnek: salt metin olarak Kullanıcı adı ve parola kullanma
 
@@ -129,9 +129,9 @@ TypeProperties bölümü her bir veri kümesi türü için farklıdır. Veri dep
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasörün alt yol belirtir. Dizedeki özel karakterler için '\' kaçış karakterini kullanın. Joker karakter filtresi desteklenmiyor. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) .<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Yes |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Hayır |
-| fileFilter |Tüm dosyalar yerine folderPath içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin. <br/><br/>İzin verilen değerler: `*` (birden çok karakter) `?` ve (tek karakter).<br/><br/>Örnek 1: "fileFilter": "*. log"<br/>Örnek 2: "fileFilter": 2014-1-?. txt<br/><br/>FileFilter 'nin bir giriş FileShare veri kümesi için geçerli olduğunu unutmayın. |Hayır |
+| folderPath |Klasörün alt yol belirtir. \'Dizedeki özel karakterler için ' kaçış karakterini kullanın. Joker karakter filtresi desteklenmiyor. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) .<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Evet |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Hayır |
+| fileFilter |Tüm dosyalar yerine folderPath içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin. <br/><br/>İzin verilen değerler: `*` (birden çok karakter) ve `?` (tek karakter).<br/><br/>Örnek 1: "fileFilter": "*. log"<br/>Örnek 2: "fileFilter": 2014-1-?. txt<br/><br/>FileFilter 'nin bir giriş FileShare veri kümesi için geçerli olduğunu unutmayın. |Hayır |
 | partitionedBy |Zaman serisi verileri için dinamik bir folderPath/fileName belirtmek üzere partitionedBy ' i kullanabilirsiniz. Her saat veri için folderPath parametreli bir örnektir. |Hayır |
 | biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
 | sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. [Azure Data Factory dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. |Hayır |
@@ -257,7 +257,7 @@ Aşağıdaki örnek, saat serisi verilerini şirket içi bir dosya sisteminden h
 
 Veriler her saat yeni bir dosyadan alınır. FolderPath ve fileName özellikleri, dilimin başlangıç saatine göre belirlenir.
 
-Data Factory `"external": "true"` , veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+`"external": "true"`Data Factory, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {
@@ -477,7 +477,7 @@ Aşağıdaki örnek şunu gösterir:
 
 Örnek, Azure SQL 'de bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestampcolumn" adlı bir sütun içerdiğini varsayar.
 
-Data Factory ``“external”: ”true”`` , veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+``“external”: ”true”``Data Factory, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {

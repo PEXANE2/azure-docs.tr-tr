@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847880"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktör yaşam döngüsü, otomatik atık toplama ve el ile silme
 Bir aktör, metotlarından herhangi birine ilk kez çağrı yapıldığında etkinleştirilir. Bir aktör, yapılandırılabilir bir süre için kullanılmıyorsa devre dışı bırakılır (aktör çalışma zamanı tarafından atık olarak toplanır). Aktör ve durumu istediğiniz zaman el ile de silinebilir.
@@ -20,14 +20,14 @@ Aktör etkinleştirildiğinde aşağıdakiler gerçekleşir:
 
 * Bir aktör için bir çağrı geldiğinde ve biri etkin değilse, yeni bir aktör oluşturulur.
 * Aktörin durumu, durumu koruma ise yüklenir.
-* `OnActivateAsync` (C#) veya `onActivateAsync` (aktör uygulamasında geçersiz kılınabilen) metodu çağrılır.
+* `OnActivateAsync`(C#) veya `onActivateAsync` (aktör uygulamasında geçersiz kılınabilen) metodu çağrılır.
 * Aktör artık etkin olarak kabul edilir.
 
 ## <a name="actor-deactivation"></a>Aktör devre dışı bırakma
 Aktör devre dışı bırakıldığında aşağıdakiler gerçekleşir:
 
 * Bir aktör bir süre boyunca kullanılmazsa, etkin aktörler tablosundan kaldırılır.
-* `OnDeactivateAsync` (C#) veya `onDeactivateAsync` (aktör uygulamasında geçersiz kılınabilen) metodu çağrılır. Bu, aktör için tüm zamanlayıcıları temizler. Durum değişiklikleri gibi aktör işlemleri bu yöntemden çağrılmamalıdır.
+* `OnDeactivateAsync`(C#) veya `onDeactivateAsync` (aktör uygulamasında geçersiz kılınabilen) metodu çağrılır. Bu, aktör için tüm zamanlayıcıları temizler. Durum değişiklikleri gibi aktör işlemleri bu yöntemden çağrılmamalıdır.
 
 > [!TIP]
 > Yapı aktör çalışma zamanı, [aktör etkinleştirme ve devre dışı bırakma ile ilgili bazı olayları](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)yayar. Tanılama ve performans izleme için faydalıdır.
@@ -85,9 +85,9 @@ public class Program
     }
 }
 ```
-Her etkin aktör için aktör çalışma zamanı, boşta olan (kullanılmayan) süreyi izler. Aktör çalışma zamanı, atık olarak toplanabilecek ve `ScanIntervalInSeconds` boş kalırsa işaret eden her aktörlerin her birini denetler `IdleTimeoutInSeconds`.
+Her etkin aktör için aktör çalışma zamanı, boşta olan (kullanılmayan) süreyi izler. Aktör çalışma zamanı, `ScanIntervalInSeconds` atık olarak toplanabilecek ve boş kalırsa işaret eden her aktörlerin her birini denetler `IdleTimeoutInSeconds` .
 
-Aktör her kullanıldığında, boşta kalma süresi 0 ' a sıfırlanır. Bundan sonra aktör yalnızca, için `IdleTimeoutInSeconds`boşta kalırsa çöp toplama yapılabilir. Aktör arabirimi yöntemi veya aktör anımsatıcı geri araması yürütüldüğünde bir aktörün kullanılmış kabul edileceğini unutmayın. Bir aktör, zamanlayıcı geri araması yürütülürse kullanılmış olarak kabul **edilmez** .
+Aktör her kullanıldığında, boşta kalma süresi 0 ' a sıfırlanır. Bundan sonra aktör yalnızca, için boşta kalırsa çöp toplama yapılabilir `IdleTimeoutInSeconds` . Aktör arabirimi yöntemi veya aktör anımsatıcı geri araması yürütüldüğünde bir aktörün kullanılmış kabul edileceğini unutmayın. Bir aktör, zamanlayıcı geri araması yürütülürse kullanılmış olarak kabul **edilmez** .
 
 Aşağıdaki diyagramda, bu kavramları göstermek için tek bir aktörün yaşam döngüsü gösterilmektedir.
 
