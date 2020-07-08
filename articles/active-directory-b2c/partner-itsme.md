@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385578"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect 'i (OıDC) Azure Active Directory B2C ile yapılandırma
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Soyadı | family_name |
    |E-posta | e-posta|
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="configure-a-user-flow"></a>Kullanıcı akışı yapılandırma
 
@@ -119,7 +119,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    * **Erişim & kimliği belirteci yaşam sürelerini (dakika)** **5**' e değiştirin.
    * **Yenileme belirteci kayan pencere ömrünü** **süre sonu yok**olarak değiştirin.
 
-### <a name="register-an-application"></a>Bir uygulamayı kaydetme
+### <a name="register-an-application"></a>Uygulamaları kaydetme
 
 1. B2C kiracınızda, **Yönet**altında **App registrations**  >  **Yeni kayıt**uygulama kayıtları ' yi seçin.
 
@@ -131,7 +131,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    a. Sınama amacıyla **kimlik doğrulaması**' nı seçin ve **örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.  
 
-   b. **Kaydet**’i seçin.
+   b. **Kaydet**'i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

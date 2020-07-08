@@ -11,10 +11,10 @@ ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386071"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
@@ -91,10 +91,10 @@ Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahi
 
 ### <a name="create-the-link"></a>Bağlantıyı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından kullanmak istediğiniz Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracıyı içeren dizin*değil* ).
 1. **Kaynak oluştur**' u seçin, `Active Directory B2C` Market alanını **Ara** alanına girin ve ardından **Azure Active Directory B2C**' yi seçin.
-1. **Oluştur** ' u seçin
+1. **Oluştur**’u seçin
 1. **Mevcut bir Azure AD B2C kiracıyı Azure aboneliğime bağla**' yı seçin.
 1. Açılan listeden bir **Azure AD B2C kiracı** seçin. Yalnızca genel yöneticisi olduğunuz ve bir aboneliğe henüz bağlanmamış olan kiracılar gösterilir. **Azure AD B2C kaynak adı** alanı seçtiğiniz Azure AD B2C kiracının etki alanı adıyla doldurulur.
 1. Yönetici olduğunuz etkin bir Azure **aboneliğini** seçin.

@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385952"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profili tanımlama
@@ -59,10 +59,10 @@ Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılı
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| userPrincipalName | Yes | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
-| phoneNumber | Yes | SMS kodu göndermek için kullanılacak telefon numarası. |
-| Tadı | No |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
-| locale | No | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
+| userPrincipalName | Evet | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
+| phoneNumber | Evet | SMS kodu göndermek için kullanılacak telefon numarası. |
+| Tadı | Hayır |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
+| locale | Hayır | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -76,7 +76,7 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | **Onewaysms**olmalıdır.  |
+| Çalışma | Evet | **Onewaysms**olmalıdır.  |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -84,10 +84,10 @@ Aşağıdaki meta veriler SMS hatası gönderdikten sonra görüntülenecek hata
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageif, Dntsendsms | No | Girilen telefon numarası SMS 'yi kabul etmezse Kullanıcı hata iletisi. |
-| Usermessageifınvalidformat | No | Girilen telefon numarası geçerli bir telefon numarası değilse Kullanıcı hata iletisi. |
-| UserMessageIfServerError | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| No | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
+| Usermessageif, Dntsendsms | Hayır | Girilen telefon numarası SMS 'yi kabul etmezse Kullanıcı hata iletisi. |
+| Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse Kullanıcı hata iletisi. |
+| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
 
 ### <a name="example-send-an-sms"></a>Örnek: SMS gönder
 
@@ -121,8 +121,8 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdak
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Yes | Daha önce kod göndermek için kullanılan telefon numarası. Telefon doğrulama oturumunun yerini bulmak için de kullanılır. |
-| Doğrulama kodu  | Yes | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu |
+| phoneNumber| Evet | Daha önce kod göndermek için kullanılan telefon numarası. Telefon doğrulama oturumunun yerini bulmak için de kullanılır. |
+| Doğrulama kodu  | Evet | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -136,7 +136,7 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | **Verify** olmalıdır |
+| Çalışma | Evet | **Verify** olmalıdır |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -144,10 +144,10 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifmaxallowedcoderetr'e ulaşıldı| No | Kullanıcı bir doğrulama kodunu çok fazla kez denediğinde Kullanıcı hata iletisi. |
-| UserMessageIfServerError | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| No | İstek kısıtlanmamışsa Kullanıcı hata iletisi.|
-| Usermessageifyanlışlıkla Gcodegirildi| No| Doğrulama için girilen kod yanlış ise Kullanıcı hata iletisi.|
+| Usermessageifmaxallowedcoderetr'e ulaşıldı| Hayır | Kullanıcı bir doğrulama kodunu çok fazla kez denediğinde Kullanıcı hata iletisi. |
+| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmamışsa Kullanıcı hata iletisi.|
+| Usermessageifyanlışlıkla Gcodegirildi| Hayır| Doğrulama için girilen kod yanlış ise Kullanıcı hata iletisi.|
 
 ### <a name="example-verify-a-code"></a>Örnek: bir kodu doğrulama
 

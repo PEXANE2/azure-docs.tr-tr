@@ -12,10 +12,10 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 10613bd2d6219272248f882e45ae1c33d2cc9d61
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384218"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
@@ -33,7 +33,7 @@ E-posta doğrulamayı devre dışı bırakmak için şu adımları izleyin:
 1. **Yerel hesap kaydolma sayfası**' nı seçin.
 1. **Kullanıcı öznitelikleri**altında **e-posta adresi**' ni seçin.
 1. **Doğrulama gerektirir** açılır penceresinde **Hayır**' ı seçin.
-1. **Kaydet**’i seçin. E-posta doğrulaması artık bu kullanıcı akışı için devre dışı bırakıldı.
+1. **Kaydet**'i seçin. E-posta doğrulaması artık bu kullanıcı akışı için devre dışı bırakıldı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

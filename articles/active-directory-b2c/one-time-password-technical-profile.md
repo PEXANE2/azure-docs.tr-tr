@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385731"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
@@ -53,7 +53,7 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Yes | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| tanımlayıcı | Evet | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -63,7 +63,7 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| otpGenerated | Yes | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
+| otpGenerated | Evet | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -73,12 +73,12 @@ Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | No | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . |
-| Kod uzunluğu | No | Kodun uzunluğu. Varsayılan değer: `6`. |
-| CharacterSet | No | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
-| NumRetryAttempts | No | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
-| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
-| ReuseSameCode | No | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
+| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . |
+| Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
+| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| Çalışma | Evet | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
+| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="example"></a>Örnek
 
@@ -115,8 +115,8 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandı
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Yes | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
-| otpToVerify | Yes | Kullanıcı tarafından belirtilen doğrulama kodu. |
+| tanımlayıcı | Evet | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| otpToVerify | Evet | Kullanıcı tarafından belirtilen doğrulama kodu. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -132,7 +132,7 @@ Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
+| Çalışma | Evet | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
@@ -141,11 +141,11 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifsessionffnotexist | No | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
-| UserMessageIfMaxRetryAttempted | No | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
-| Usermessageifınvalidcode | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
-| UserMessageIfVerificationFailedRetryAllowed | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti ve kullanıcının doğru kodu sağlamasına izin verilir.  |
-|UserMessageIfSessionConflict|No| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
+| Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
+| UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
+| UserMessageIfVerificationFailedRetryAllowed | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti ve kullanıcının doğru kodu sağlamasına izin verilir.  |
+|UserMessageIfSessionConflict|Hayır| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
 
 ### <a name="example"></a>Örnek
 

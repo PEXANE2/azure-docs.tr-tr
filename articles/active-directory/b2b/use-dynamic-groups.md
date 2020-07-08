@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386666"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamik Gruplar ve Azure Active Directory B2B işbirliği
@@ -42,7 +42,7 @@ Bir üyelik kuralı kullanarak bir kiracının içindeki tüm kullanıcıları i
 
    ![Tüm kullanıcılar için kural sözdizimi dinamik grubu](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  **Kaydet**’i seçin. Yeni dinamik grup artık B2B Konuk kullanıcılarını ve üye kullanıcıları içerir.
+1.  **Kaydet**'i seçin. Yeni dinamik grup artık B2B Konuk kullanıcılarını ve üye kullanıcıları içerir.
 
 
 1. Grubu oluşturmak için **Yeni Grup** sayfasında **Oluştur** ' u seçin.

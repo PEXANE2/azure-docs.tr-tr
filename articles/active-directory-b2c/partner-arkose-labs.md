@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d4e5dfe26af7e1d92c20cf15e3519563e600b256
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385714"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
@@ -100,7 +100,7 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
    ![Arkoo Labs kaydolma ve oturum açma](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 ### <a name="part-2--set-up-a-back-end-server"></a>Bölüm 2 – bir arka uç sunucusu ayarlama
 

@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dd6e22052d2fab6d39382b21eec7a7bd379adb82
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384082"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
@@ -245,8 +245,8 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 | Rusça               | ru            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Slovakça                | sor            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Slovence             | SL            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Sırpça-Kiril    | SR-cryıl-CS    | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Sırpça-Latin       | sr-Latn-CS    | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Sırpça (Kiril)    | SR-cryıl-CS    | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Sırpça (Latin)       | sr-Latn-CS    | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | İsveççe               | v            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Tamil dili                 | dolu            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | Telugu dili                | ot            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
@@ -254,5 +254,5 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 | Türkçe               | tr            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Ukraynaca             | tr            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Vietnamca            | v            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Çince-Basitleştirilmiş  | zh-Hans       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Çince-Geleneksel | zh-Hant       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Basitleştirilmiş Çince  | zh-Hans       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Geleneksel Çince | zh-Hant       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |

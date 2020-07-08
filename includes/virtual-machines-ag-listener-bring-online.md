@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188322"
 ---
 1. Yük Devretme Kümesi Yöneticisi ' de **Roller**' i genişletin ve ardından kullanılabilirlik grubunuzu vurgulayın.  
@@ -31,7 +31,7 @@ ms.locfileid: "67188322"
 
 8. SQL Server Management Studio başlatın ve ardından birincil çoğaltmaya bağlanın.
 
-9. **AlwaysOn High AVAILABILITY**  >  **AVAILABILITY Groups**AVAILABILITY  >  ** \< \> bilitygroupname**  >  **kullanılabilirlik grubu dinleyicilerine**gidin.  
+9. **AlwaysOn yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **\<AvailabilityGroupName\>**  >  **kullanılabilirlik grubu dinleyicileri**' ne gidin.  
     Yük Devretme Kümesi Yöneticisi içinde oluşturduğunuz dinleyici adı görüntülenmelidir.
 
 10. Dinleyici adına sağ tıklayın ve ardından **Özellikler**' e tıklayın.

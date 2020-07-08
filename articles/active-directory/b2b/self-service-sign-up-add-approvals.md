@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386785"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
@@ -86,7 +86,7 @@ Bu bağlayıcıları oluşturmak için [API Bağlayıcısı oluşturma](self-ser
 
    ![Kullanıcı akışına API ekleme](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>API yanıtları ile kaydolma akışını denetleme
 
@@ -305,13 +305,13 @@ Content-type: application/json
 
 | Parametre                                           | Gerekli | Açıklama                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Yes      | , `email_address` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Yes      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
-| posta                                                | Yes      | `email_address`API 'ye gönderilen talebe denktir.                                                                                                               |
-| userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
-| lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | No       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
+| userPrincipalName                                   | Evet      | , `email_address` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Evet      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
+| posta                                                | Evet      | `email_address`API 'ye gönderilen talebe denktir.                                                                                                               |
+| userType                                            | Evet      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
+| lerinizde                                          | Evet      | Federal kimlik bilgileri.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Federe Azure Active Directory Kullanıcı için
 

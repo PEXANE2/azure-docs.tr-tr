@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386751"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
@@ -44,7 +44,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 
    ![API Bağlayıcısı taleplerini ayarlama](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
 
-10. **Kaydet**’i seçin.
+10. **Kaydet**'i seçin.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Kullanıcı akışında API bağlayıcısını etkinleştirme
 
@@ -61,7 +61,7 @@ Self Servis kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek içi
 
    ![Kullanıcı akışına API ekleme](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 [Kullanıcı akışında BIR API bağlayıcısını etkinleştirebileceğinizi](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow)öğrenin.
 
@@ -135,10 +135,10 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
-| action                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talep isteğe bağlı olarak içermez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
+| action                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talep isteğe bağlı olarak içermez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
 ### <a name="blocking-response"></a>Engelleme yanıtı
 
@@ -161,10 +161,10 @@ Content-type: application/json
 
 | Parametre   | Tür   | Gerekli | Açıklama                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize | Yes      | API sürümü.                                                    |
-| action      | Dize | Yes      | Değer olmalıdır`ShowBlockPage`                                              |
-| userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| sürüm     | Dize | Evet      | API sürümü.                                                    |
+| action      | Dize | Evet      | Değer olmalıdır`ShowBlockPage`                                              |
+| userMessage | Dize | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>Engelleyici bir Yanıt ile son kullanıcı deneyimi
 
@@ -191,11 +191,11 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Yes      | API sürümü.                                                    |
-| action      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
-| durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
-| userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize  | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| sürüm     | Dize  | Evet      | API sürümü.                                                    |
+| action      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
+| durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
+| userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-validation-error-response"></a>Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi
 

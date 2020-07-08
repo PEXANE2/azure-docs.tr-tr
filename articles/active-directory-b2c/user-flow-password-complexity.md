@@ -12,10 +12,10 @@ ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384031"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
@@ -37,7 +37,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.

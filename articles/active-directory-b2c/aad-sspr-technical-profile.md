@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85383606"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir Azure AD SSPR teknik profili tanımlama
@@ -59,7 +59,7 @@ Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılı
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| emailAddress | Yes | E-posta adresine sahip kullanıcı için tanımlayıcı. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` . |
+| emailAddress | Evet | E-posta adresine sahip kullanıcı için tanımlayıcı. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` . |
 
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure AD SSPR hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstransınor** öğelerinin bir koleksiyonunu içerebilir.
@@ -74,7 +74,7 @@ Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyo
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | **Sendcode**olmalıdır.  |
+| Çalışma | Evet | **Sendcode**olmalıdır.  |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -82,8 +82,8 @@ Aşağıdaki meta veriler SMS hatası gönderdikten sonra görüntülenecek hata
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifınternalerror | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| No | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
+| Usermessageifınternalerror | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
 
 
 ### <a name="example-send-an-email"></a>Örnek: e-posta gönder
@@ -113,8 +113,8 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdak
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- | ----------- |
-| emailAddress| Yes | Daha önce kod göndermek için kullanılan e-posta adresi. E-posta doğrulama oturumunu bulmak için de kullanılır. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` .|
-| Doğrulama kodu  | Yes | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `verificationCode` . |
+| emailAddress| Evet | Daha önce kod göndermek için kullanılan e-posta adresi. E-posta doğrulama oturumunu bulmak için de kullanılır. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` .|
+| Doğrulama kodu  | Evet | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `verificationCode` . |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek ya da Azure AD SSPR hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -128,7 +128,7 @@ Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyo
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | **Verifycode** olmalıdır |
+| Çalışma | Evet | **Verifycode** olmalıdır |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 

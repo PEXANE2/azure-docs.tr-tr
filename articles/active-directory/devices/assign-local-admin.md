@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386377"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
@@ -85,7 +85,7 @@ Ayrıca, komut istemi kullanarak da kullanıcı ekleyebilirsiniz:
 - Kiracı kullanıcılarınız şirket içi Active Directory eşitlendiğinde, kullanın `net localgroup administrators /add "Contoso\username"` .
 - Azure AD 'de kiracı kullanıcılarınız oluşturulduysa, şunu kullanın`net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+## <a name="considerations"></a>Önemli noktalar 
 
 Cihaz Yöneticisi rolüne Grup atayamazsınız, yalnızca bireysel kullanıcılara izin verilir.
 

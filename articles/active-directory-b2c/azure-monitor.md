@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386224"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
@@ -223,7 +223,7 @@ Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-moni
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
 1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
@@ -241,7 +241,7 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
     | Log Analytics’e gönderme | Çalışma alanının adı. |
 
 1. **Auditlogs** ve **signınlogs**' u seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
