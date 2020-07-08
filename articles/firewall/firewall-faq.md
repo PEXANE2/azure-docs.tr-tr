@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791495"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078434"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -218,3 +219,7 @@ Hayır, bir IP grubunu başka bir kaynak grubuna taşımak Şu anda desteklenmiy
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Güvenlik Duvarı için TCP boşta kalma zaman aşımı nedir?
 
 Ağ güvenlik duvarının standart bir davranışı, TCP bağlantılarının etkin tutulmasını ve etkinlik olmaması durumunda bunları hemen kapatmalarını sağlamaktır. Azure Güvenlik Duvarı TCP boşta kalma zaman aşımı dört dakikadır. Bu ayar yapılandırılabilir değildir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun korunduğundan emin olmaz. Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için bkz. [.NET örnekleri](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Azure Güvenlik duvarını genel bir IP adresi olmadan dağıtabilir miyim?
+
+Hayır, şu anda Azure Güvenlik duvarını genel bir IP adresiyle dağıtmanız gerekir.

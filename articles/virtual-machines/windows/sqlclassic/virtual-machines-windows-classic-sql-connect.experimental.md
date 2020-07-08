@@ -16,11 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4b63735509c0d1c755eced8277d18b2a535457b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078451"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure’daki bir SQL Server Sanal Makinesi’ne Bağlanma (Klasik Dağıtım)
 > [!div class="op_single_selector"]
@@ -52,7 +53,9 @@ Aynı bulut hizmetinde birden çok sanal makine oluşturulabilir. Bu sanal makin
 
 Bu senaryoda, VM **adını** (portalda **bilgisayar adı** veya **ana bilgisayar** adı olarak da gösterilir) kullanarak bağlanabilirsiniz. Bu, oluşturma sırasında VM için verdiğiniz addır. Örneğin, SQL VM 'nizi, **mysqlvm**'niz olarak adlandırdıysanız, aynı bulut hizmetindeki bir istemci sanal makinesi bağlanmak için aşağıdaki bağlantı dizesini kullanabilir:
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>Internet üzerinden SQL Server bağlanma
 SQL Server veritabanı altyapısına Internet 'ten bağlanmak istiyorsanız, gelen TCP iletişimi için bir sanal makine uç noktası oluşturmanız gerekir. Bu Azure yapılandırma adımı, gelen TCP bağlantı noktası trafiğini sanal makinenin erişebildiği bir TCP bağlantı noktasına yönlendirir.
@@ -61,7 +64,9 @@ Internet üzerinden bağlanmak için, sanal makinenin DNS adını ve VM uç nokt
 
 Örneğin, **MYSQLVM7777.CLOUDAPP.net** DNS adına sahip **mysqlvm** adlı klasik bir sanal makineyi ve **57500**VM uç noktasını düşünün. Doğru şekilde yapılandırılmış bağlantı olduğunu varsayarsak, sanal makineye İnternet üzerinde herhangi bir yerden erişmek için aşağıdaki bağlantı dizesi kullanılabilir:
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 Bu bağlantı dizesi Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server bağlanabileceği anlamına gelmez. Dış istemciler, doğru Kullanıcı adı ve parolaya sahiptir. Ek güvenlik için, ortak sanal makine uç noktası için iyi bilinen 1433 numaralı bağlantı noktasını kullanmayın. Mümkünse, trafiği yalnızca izin veren istemcilerle kısıtlamak için uç noktanıza bir ACL eklemeyi düşünün. ACL 'Leri uç noktalarla kullanma hakkında yönergeler için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
@@ -77,7 +82,9 @@ Sanal ağlar Ayrıca, Azure VM 'lerinizi bir etki alanına katlamada sağlar. Bi
 
 Bir etki alanı ortamı ve Windows kimlik doğrulaması yapılandırmayı planlıyorsanız, genel uç noktasını veya SQL kimlik doğrulamasını ve oturum açmaları yapılandırmanız gerekmez. Bu senaryoda, bağlantı dizesinde SQL Server VM adını belirterek SQL Server örneğine bağlanabilirsiniz. Aşağıdaki örnek, Windows kimlik doğrulamasının yapılandırıldığını ve kullanıcıya SQL Server örneğine erişim verildiğini varsayar.
 
-    "Server=mysqlvm;Integrated Security=true"
+```config
+"Server=mysqlvm;Integrated Security=true"
+```
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Azure VM 'de SQL Server bağlantısını yapılandırma adımları
 Aşağıdaki adımlarda, SQL Server Management Studio (SSMS) kullanarak Internet üzerinden SQL Server örneğine nasıl bağlanabileceğiniz gösterilmektedir. Ancak, SQL Server sanal makinenizi, hem şirket içinde hem de Azure 'da çalışan uygulamalarınız için erişilebilir hale getirmek için de aynı adımlar geçerlidir.
