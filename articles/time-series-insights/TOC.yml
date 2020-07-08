@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights Önizleme
       items:
-        - name: Ortamınızı planlama
-          href: time-series-insights-update-plan.md
-        - name: Veri depolama ve giriş
-          href: time-series-insights-update-storage-ingress.md
         - name: Uygulama alanları
           href: time-series-insights-update-use-cases.md
+        - name: Ortamınızı planlama
+          href: time-series-insights-update-plan.md
+        - name: Almaya Genel Bakış
+          href: concepts-ingestion-overview.md
+        - name: Desteklenen Veri Türleri
+          href: concepts-supported-data-types.md
+        - name: Akış Alımı Olay Kaynakları
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON düzleştirme ve kaçış kuralları
+          href: concepts-json-flattening-escaping-rules.md
+        - name: Akış Girişi Aktarım Hızı Limitleri
+          href: concepts-streaming-throughput-limitations.md
+        - name: Depolama
+          href: concepts-storage.md
         - name: Zaman Serisi Modeli
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: Zaman Serisi Sorgusu
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: Gezginde verileri görselleştirme (Önizleme)
           href: time-series-insights-update-explorer.md
         - name: Geliştirme

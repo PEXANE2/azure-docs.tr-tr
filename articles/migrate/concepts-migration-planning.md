@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317399"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043249"
 ---
-# <a name="build-migration-plan-with-azure-migrate"></a>Azure geçişi ile derleme geçiş planı
+# <a name="build-migration-plan-with-azure-migrate"></a>Azure Geçişi ile geçiş planı oluşturma
 
 Bu makalede [, Azure geçişi Ile Azure](migrate-services-overview.md)'a geçiş planınızı oluşturmaya yardımcı olacak hızlı bir kılavuz sunulmaktadır.Başka sorularınız varsa şu kaynakları kontrol edin:
 
@@ -83,7 +83,7 @@ Azure VM değerlendirmesi raporunu dışarı aktarın ve VM 'nin Azure için haz
 
 - **Hazır olma bilinmiyor**: Azure geçişi, yetersiz meta veri nedeniyle makinenin hazır olduğunu belirleyemiyor
 
-Veritabanı değerlendirmelerini kullanarak, SQL Server verilerinizi Azure SQL veritabanlarına veya Azure SQL veritabanı yönetilen örneklerine geçirme hazırlığını değerlendirebilirsiniz. SQL Server örneklerinizin her biri için geçiş hazırlık durumu yüzdesini görebilirsiniz. Ayrıca, örneklerin her biri için Azure 'da önerilen hedefi, olası geçiş engelleyicileri, önemli değişiklikler sayısını, Azure SQL DB/Azure SQL VM için hazırlık ve uyumluluk düzeyini görebilirsiniz. Geçiş engelleyicileri ve bunları gidermeye yönelik önerilerin etkisini anlamak için daha ayrıntılı bilgi alabilirsiniz.
+Veritabanı değerlendirmelerini kullanarak, SQL Server verilerinizi Azure SQL veritabanı 'na veya Azure SQL yönetilen örneklerine geçirme hazırlığını değerlendirebilirsiniz. SQL Server örneklerinizin her biri için geçiş hazırlık durumu yüzdesini görebilirsiniz. Ayrıca, örneklerin her biri için Azure 'da önerilen hedefi, olası geçiş engelleyicileri, önemli değişiklikler sayısını, Azure SQL DB/Azure SQL VM için hazırlık ve uyumluluk düzeyini görebilirsiniz. Geçiş engelleyicileri ve bunları gidermeye yönelik önerilerin etkisini anlamak için daha ayrıntılı bilgi alabilirsiniz.
 
  ![Veritabanı değerlendirmeleri](./media/concepts-migration-planning/database-assessment-portal.png)
 
