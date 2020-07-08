@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591923"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS
@@ -98,7 +97,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    4. Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    5. Alt ağ KIMLIĞI  
-      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. Kimlik genellikle/Subscriptions/**&lt;&gt;abonelik kimliği**/ResourceGroups/**&lt;kaynak grubu&gt;adı**/Providers/Microsoft.Network/virtualNetworks/**&lt;sanal ağ adı&gt;**/Subnets/**&lt;alt ağ adı&gt; ** gibi görünüyor
+      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 

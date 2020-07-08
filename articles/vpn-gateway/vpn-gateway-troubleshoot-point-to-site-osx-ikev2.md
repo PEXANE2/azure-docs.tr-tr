@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
 ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425739"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN istemcilerinden Noktadan siteye VPN bağlantıları sorunlarını giderme
@@ -34,7 +33,7 @@ Bu makale, yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağ
 4. **Yerel kimlik** , Istemci sertifikasının **konusuyla** aynı olmalıdır.
 5. Kimlik doğrulama ayarları sayfasını açmak için **kimlik doğrulama ayarları** ' na tıklayın.
 
-   ![Kimlik doğrulama ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![Kimlik doğrulaması ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. Açılan listeden **sertifikanın** seçildiğini doğrulayın.
 7. **Seç** düğmesine tıklayın ve doğru sertifikanın seçildiğini doğrulayın. Değişiklikleri kaydetmek için **Tamam** ' ı tıklatın.
 
@@ -48,7 +47,7 @@ Bu makale, yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağ
 4. **Yerel kimlik** boş olabilir.
 5. **Kimlik doğrulama ayarı** düğmesine tıklayın ve açılan listeden "Kullanıcı adı" seçeneğinin seçildiğini doğrulayın.
 
-   ![Kimlik doğrulama ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![Kimlik doğrulaması ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Doğru kimlik bilgilerinin girildiğinden emin olun.
 
 ## <a name="additional-steps"></a><a name="additional"></a>Ek adımlar

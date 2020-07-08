@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190719"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM Uzantısı sorunlarını giderme
@@ -42,7 +41,7 @@ Hata kodu: "151099"
 
 Sanal makinedeki Azure Konuk Aracısı, Ready durumunda değilse bu hata oluşabilir.
 
-[Azure Portal](https://portal.azure.com/)Azure Konuk aracısının durumunu kontrol edebilirsiniz. Korumaya çalıştığınız sanal makineye gidin ve **VM** > **ayarları** > **Özellikler** > **Aracı durumu**' nda durumu denetleyin. Çoğu zaman, sanal makine yeniden başlatıldıktan sonra aracının durumu için de hazırlık yapılır. Bununla birlikte, yeniden başlatılamıyor veya sorunu yaşamaya devam ediyorsanız, aşağıdaki sorun giderme adımlarını izleyin:
+[Azure Portal](https://portal.azure.com/)Azure Konuk aracısının durumunu kontrol edebilirsiniz. Korumaya çalıştığınız sanal makineye gidin ve **VM**  >  **ayarları**  >  **Özellikler**  >  **Aracı durumu**' nda durumu denetleyin. Çoğu zaman, sanal makine yeniden başlatıldıktan sonra aracının durumu için de hazırlık yapılır. Bununla birlikte, yeniden başlatılamıyor veya sorunu yaşamaya devam ediyorsanız, aşağıdaki sorun giderme adımlarını izleyin:
 
 - [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'Leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -102,7 +101,7 @@ Uzantıyı kaldırın ve işlemi yeniden başlatın.
 Uzantıyı kaldırmak için:
 
 1. [Azure Portal](https://portal.azure.com/), yedekleme hatası yaşayan VM 'ye gidin.
-1. **Ayarlar**' ı seçin.
+1. **Ayarlar**'ı seçin.
 1. **Uzantılar**'ı seçin.
 1. **Site Recovery uzantısı**' nı seçin.
 1. **Kaldır**'ı seçin.

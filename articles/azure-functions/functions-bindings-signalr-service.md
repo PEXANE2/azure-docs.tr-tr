@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523045"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
@@ -23,7 +22,7 @@ Bu makale kümesi, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanıl
 
 ## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
@@ -43,7 +42,7 @@ SignalR hizmetini ve Azure Işlevlerini birlikte yapılandırma ve kullanma hakk
 
 ### <a name="annotations-library-java-only"></a>Ek açıklamalar kitaplığı (yalnızca Java)
 
-Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, *pom. xml* dosyanıza *Azure-Functions-Java-Library-SignalR* Yapıt (sürüm 1,0 veya üzeri) için bir bağımlılık eklemeniz gerekir.
+Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, *Azure-Functions-Java-Library-SignalR* yapıtı (sürüm 1,0 veya üzeri) *pom.xml* dosyanıza bir bağımlılık eklemeniz gerekir.
 
 ```xml
 <dependency>

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605210"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu
@@ -97,7 +96,7 @@ Bir arabirimin bazı gerekli alanları vardır:
 
 Bu basit örnekte yalnızca tek bir telemetri alanı vardır. En az bir alan açıklamasında şunu vardır:
 
-- `@type`: capability türünü belirtir: `Telemetry`, `Property`, veya. `Command`
+- `@type`: capability türünü belirtir: `Telemetry` , `Property` , veya `Command` .
 - `name`: telemetri değerinin adını sağlar.
 - `schema`: telemetri için veri türünü belirtir. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
 
@@ -111,7 +110,7 @@ Ayrıca, bir özelliği bir arabirim üzerinde yazılabilir olarak işaretleyebi
 
 Özellik değerlerini ayarlamak için cihazların bağlı olması gerekmez. Güncelleştirilmiş değerler cihaz daha sonra hub 'a bağlanırsa aktarılır. Bu davranış hem salt okunurdur hem de yazılabilir özellikler için geçerlidir.
 
-Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, gibi bir salt okunur özelliği `temperatureSetting=80` , cihaz sıcaklığının 80 olarak ayarlandığı ve cihazın bu sıcaklığa veya bu sıcaklığın devam etmesi için çalıştığı anlamına gelir.
+Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, gibi bir salt okunur özelliği, `temperatureSetting=80` cihaz sıcaklığının 80 olarak ayarlandığı ve cihazın bu sıcaklığa veya bu sıcaklığın devam etmesi için çalıştığı anlamına gelir.
 
 Yazılabilir özellikler için, cihaz uygulaması, özellik değerini alınıp uygulamadığını göstermek için istenen bir durum durum kodu, sürüm ve açıklama döndürür.
 
@@ -127,11 +126,11 @@ Komutlar zaman uyumlu ya da zaman uyumsuz. Zaman uyumlu bir komutun varsayılan 
 
 Uzun süre çalışan işlemler için zaman uyumsuz komutları kullanın. Cihaz, telemetri iletilerini kullanarak ilerleme bilgileri gönderir. Bu ilerleme iletileri aşağıdaki üst bilgi özelliklerine sahiptir:
 
-- `iothub-command-name`: Örneğin `UpdateFirmware`, komut adı.
+- `iothub-command-name`: Örneğin, komut adı `UpdateFirmware` .
 - `iothub-command-request-id`: sunucu tarafında oluşturulan ve ilk çağrıda cihaza gönderilen istek KIMLIĞI.
-- `iothub-interface-id`: Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI (örneğin `urn:example:AssetTracker:1`,).
- `iothub-interface-name`: Örneğin `myAssetTracker`, bu arabirimin örnek adı.
-- `iothub-command-statuscode`: Örneğin `202`, cihazdan döndürülen durum kodu.
+- `iothub-interface-id`: Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI (örneğin,) `urn:example:AssetTracker:1` .
+ `iothub-interface-name`: Örneğin, bu arabirimin örnek adı `myAssetTracker` .
+- `iothub-command-statuscode`: Örneğin, cihazdan döndürülen durum kodu `202` .
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
@@ -182,35 +181,35 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT Tak ve Kullan, yeteneklerini IoT Hub 'ınız ile kaydetmiş olan cihazları kullanmanıza olanak sağlar. Örneğin, bir cihazın özelliklerine ve komutlarına doğrudan erişebilirsiniz.
 
-IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır. API 'nin geçerli sürümü `2019-07-01-preview`. REST `?api-version=2019-07-01-preview` PI çağrılarınızın sonuna ekleyin.
+IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır. API 'nin geçerli sürümü `2019-07-01-preview` . `?api-version=2019-07-01-preview`Rest PI çağrılarınızın sonuna ekleyin.
 
-Termostat 'daki`fwVersion` `DeviceInformation` arabirimdeki bellenim sürümü () gibi bir cihaz özelliğinin değerini almak için, dijital TWINS REST API kullanırsınız.
+Termostat 'daki arabirimdeki bellenim sürümü () gibi bir cihaz özelliğinin değerini almak için, `fwVersion` `DeviceInformation` dijital twıns REST API kullanırsınız.
 
-Termostat cihazınız çağrılırsa `t-123`, REST API Get çağrısıyla cihazınız tarafından uygulanan tüm arabirimlerin tüm özelliklerini alırsınız:
+Termostat cihazınız çağrılırsa `t-123` , REST API Get çağrısıyla cihazınız tarafından uygulanan tüm arabirimlerin tüm özelliklerini alırsınız:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Daha genel olarak, tüm arabirimlerde tüm özelliklere bu REST API şablonuyla `{device-id}` erişilir ve bu da cihazın tanımlayıcısıdır:
+Daha genel olarak, tüm arabirimlerde tüm özelliklere bu REST API şablonuyla erişilir ve bu `{device-id}` da cihazın tanımlayıcısıdır:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Arabirimin `deviceInformation`adını (gibi) biliyorsanız ve söz konusu arabirimin özelliklerini almak istiyorsanız, isteği ada göre belirli bir arabirime kapsam:
+Arabirimin adını (gibi) biliyorsanız `deviceInformation` ve söz konusu arabirimin özelliklerini almak istiyorsanız, isteği ada göre belirli bir arabirime kapsam:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-Daha genel olarak, belirli bir arabirimin özelliklerine bu REST API şablonu `device-id` aracılığıyla erişilebilir ve bu, cihazın tanımlayıcısıdır ve `{interface-name}` arabirimin adıdır:
+Daha genel olarak, belirli bir arabirimin özelliklerine bu REST API şablonu aracılığıyla erişilebilir `device-id` ve bu, cihazın tanımlayıcısıdır ve `{interface-name}` arabirimin adıdır:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `t-123` `restart` Cihazdaki `Thermostat` arabirimin bir komutu varsa, bunu bir REST API Post çağrısıyla çağırabilirsiniz:
+IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `Thermostat` `t-123` Cihazdaki arabirimin bir `restart` komutu varsa, bunu bir REST API Post çağrısıyla çağırabilirsiniz:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart

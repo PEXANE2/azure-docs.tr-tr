@@ -10,10 +10,9 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77505567"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
@@ -117,7 +116,7 @@ Azure Machine Learning kullanmaya başlamak için bkz.:
 
 + [Azure Machine Learning genel bakış](overview-what-is-azure-ml.md)
 + [Çalışma alanı oluşturma](how-to-manage-workspace.md)
-+ [Çalışma alanını yönetme](how-to-manage-workspace.md)
++ [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
 + [Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)
 + [Öğretici: R SDK ile Azure Machine Learning kullanmaya başlama](tutorial-1st-r-experiment.md)
 + [Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma](tutorial-first-experiment-automated-ml.md) (yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir)

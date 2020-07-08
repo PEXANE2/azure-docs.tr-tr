@@ -7,25 +7,24 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595374"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtmaya yönelik GitHub eylemleri
 
-[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. Kubernetes eylemi [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) , Azure Kubernetes hizmet kümelerine dağıtımları kolaylaştırır. Eylem, [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) vb. gibi diğer eylemler tarafından kullanılabilecek hedef aks kümesi bağlamını ayarlar veya herhangi bir kubectl komutunu çalıştırın.
+[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. Kubernetes eylemi, [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Azure Kubernetes hizmet kümelerine dağıtımları kolaylaştırır. Eylem, [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) vb. gibi diğer eylemler tarafından kullanılabilecek hedef aks kümesi bağlamını ayarlar veya herhangi bir kubectl komutunu çalıştırın.
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
+Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
 AKS 'i hedefleyen bir iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
 |**Kimlik Doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
-|**Yapı** | Kapsayıcı görüntüsünü oluşturun & gönderin  |
-|**Dağıt** | 1. hedef AKS kümesini ayarlama |
+|**Derleme** | Kapsayıcı görüntüsünü oluşturun & gönderin  |
+|**Dağıtma** | 1. hedef AKS kümesini ayarlama |
 | |2. Kubernetes kümesinde genel/Docker-Registry gizli dizisi oluşturma  |
 ||3. Kubernetes kümesine dağıtın|
 
@@ -71,11 +70,11 @@ Gizli dizileri yapılandırmak için aşağıdaki adımları izleyin:
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Bir kapsayıcı görüntüsü oluşturun ve Azure Kubernetes hizmet kümesine dağıtın
 
-Kapsayıcı görüntülerinin oluşturulması ve gönderimi eylem kullanılarak `Azure/docker-login@v1` yapılır. AKS 'e bir kapsayıcı görüntüsü dağıtmak için `Azure/k8s-deploy@v1` eylemini kullanmanız gerekir. Bu eylem beş parametreye sahiptir:
+Kapsayıcı görüntülerinin oluşturulması ve gönderimi eylem kullanılarak yapılır `Azure/docker-login@v1` . AKS 'e bir kapsayıcı görüntüsü dağıtmak için eylemini kullanmanız gerekir `Azure/k8s-deploy@v1` . Bu eylem beş parametreye sahiptir:
 
 | **Parametre**  | **Açıklama**  |
 |---------|---------|
-| **ad alanı** | Seçim Hedef Kubernetes ad alanını seçin. Ad alanı sağlanmazsa, komutlar varsayılan ad alanında çalıştırılır | 
+| **uzayına** | Seçim Hedef Kubernetes ad alanını seçin. Ad alanı sağlanmazsa, komutlar varsayılan ad alanında çalıştırılır | 
 | **listeleri** |  Istenir Dağıtım için kullanılacak olan bildirim dosyalarının yolu |
 | **yansımasını** | Seçim Bildirim dosyalarındaki değişimler için kullanılacak görüntünün tam kaynak URL 'SI |
 | **ımagepullgizlilikler** | Seçim Küme içinde zaten ayarlanmış olan Docker-Registry parolasının adı. Bu gizli adların her biri, giriş bildirimi dosyalarında bulunan iş yükleri için ımagepullsecret alanı altına eklenir |

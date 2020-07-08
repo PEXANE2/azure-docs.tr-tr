@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587932"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
@@ -38,7 +37,7 @@ Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durum
 
 1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com)da oturum açın
 
-2. **Azure Sentinel** > **yapılandırma** > **Analizi** ' ne gidin
+2. **Azure Sentinel**  >  **yapılandırma**  >  **Analizi** ' ne gidin
 
 3. **Etkin kurallar** ' ı seçin ve **ad** sütununda **Gelişmiş çok aşamalı saldırı algılamayı** bulun. Bu algılamanın etkin veya devre dışı olduğunu doğrulamak için **durum** sütununu kontrol edin.
 
@@ -49,7 +48,7 @@ Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durum
 Kural şablonları gelişmiş çok aşamalı saldırı algılama için geçerli değildir.
 
 > [!NOTE]
-> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel** \> **yapılandırma** \> ** \> \> Analizi etkin kurallar gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
+> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel**   \>  **yapılandırma**   \>  **Analizi \> etkin kurallar \> Gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
 
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Palo Alto Networks ve Microsoft Defender ATP kullanarak Fusion
 
@@ -89,7 +88,7 @@ Azure Sentinel, gelişmiş çok aşamalı saldırı algılama kullanarak, Azure 
 
 [Azure AD kimlik koruması Data Connector](connect-azure-ad-identity-protection.md) ve [Cloud App Security](connect-cloud-app-security.md) bağlayıcıları yapılandırılmış olmalıdır.
 
-Aşağıdaki açıklamalarda, Azure Sentinel, bu sayfada temsil edilen verilerinizde bulunan gerçek değeri köşeli ayraç içindeki değişken olarak görüntüler. Örneğin, hesap \< *adı*> yerine hesabın gerçek görünen adı ve \< *sayı*> yerine gerçek sayı.
+Aşağıdaki açıklamalarda, Azure Sentinel, bu sayfada temsil edilen verilerinizde bulunan gerçek değeri köşeli ayraç içindeki değişken olarak görüntüler. Örneğin, yerine bir hesabın gerçek görünen adı \<*account name*> ve yerine gerçek sayı \<*number*> .
 
 ### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Anormal Office 365 etkinliğinin ardından gelen bir konuma imkansız seyahat
 
@@ -97,45 +96,45 @@ Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması 
 
 - **Office 365 posta kutusu için önde gelen konumlara yönelik imkansız seyahat**
     
-    Bu uyarı, bir kullanıcının gelen kutusunda şüpheli bir konum>, \<olağan olmayan bir konum ve şüpheli bir gelen \<kutusu iletme kuralı ayarlanmış bir *konuma*> *hesap adına* göre oturum açma olayının göstergesidir.
+    Bu uyarı, bir \<*account name*> \<*location*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından, olağan dışı bir konuma kadar bir oturum açma olayının göstergesidir.
     
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>.
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> .
 
 - **Şüpheli bulut uygulaması yönetim etkinliğine yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location*
+    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> .
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> çok *sayıda* yönetim etkinliği üzerinden gerçekleştirilir.
+    Ardından, hesap, \<*account name*> \<*number*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
 
 - **Toplu dosya silmeye yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı \<, genel bir konum olan> *konuma*> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, genel bir konuma göre bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
 
 - **Toplu dosyanın indirileceği sıradan konumlara yönelik imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
+    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
 - **Office 365 kimliğe bürünme için önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
+    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir oturumdaki kimliğe bürünme\<etkinliklerinin olağan dışı bir miktarını (*etkinlik> sayısı* ) gerçekleştirdi.
+    Daha sonra hesap, \<*account name*> \<*number of activities*> tek bir oturumda kimliğe bürünme etkinliklerinin olağan dışı bir miktarını () gerçekleştirdi.
 
 - **Toplu dosya paylaşımına önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
+    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
+    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
 - **Bulut uygulamasındaki fidye 'ya yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
+    Bu uyarı, bir oturum açma olayının \<*account name*> , imkansız bir yolculuya bir sıradan bir konuma kadar olan bir göstergesidir \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
+    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
     
     Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
@@ -146,45 +145,45 @@ Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturul
 
 - **Bilinmeyen bir konumdan Exchange Online posta kutusu için bir oturum açma olayı lider**
     
-    \<Bu uyarı, *konum*>> \< *hesap adına* göre bir oturum açma olayının göstergesidir ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı, tanıdık bir konum.
+    Bu uyarı, bilinmeyen bir konumdan, bir \<*account name*> \<*location*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olan bir oturum açma olayının göstergesidir.
     
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
 
 - **Bilinmeyen bir konumdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
+    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
 
 - **Bilmediğiniz bir konumdan toplu dosya silmeye kadar olan oturum açma etkinliği**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
 
 - **Bilinmeyen bir konumdan yığın dosya indirme için bir oturum açma olayı**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
 - **Bilmediğiniz bir konumdan Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir.
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> .
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
+    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
 
 - **Bilinmeyen bir konumdan yığın dosya paylaşımına önde gelen oturum açma olayı**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
+    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
 - **Tanınmayan bir konumdan bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
     
-    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, bilinmeyen bir konumdan tarafından bir oturum açma olayının göstergesidir \<*account name*> \<*location*> . 
     
-    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
+    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
     
     Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
@@ -194,45 +193,45 @@ Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması 
 
 - **Virüslü bir cihazdan Office 365 posta kutusu için lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenen bir cihazdan \< *hesap adına*> bir oturum açma olayının göstergesidir ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olabilir.
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlara karşı etkilenen bir cihazdan gelen ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olan bir oturum açma olayının göstergesidir.
     
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
 
 - **Virüslü bir cihazdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir.
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir.
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
+    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
 
 - **Virüslü bir cihazdan toplu dosya silmeye kadar lider olan oturum açma olayı**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
 
 - **Virüslü bir cihazdan toplu dosya indirme için lider olan oturum açma olayı**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
 - **Virüslü bir cihazdan Office 365 kimliğe bürünmeye önde gelen oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
+    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
 
 - **Virüslü bir cihazdan toplu dosya paylaşımına lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
+    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
 - **Etkilenen bir cihazdan, bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan oturum açma olayının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
+    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
     
     Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
@@ -242,45 +241,45 @@ Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması 
 
 - **Anonim bir IP adresinden Office 365 posta kutusu için önde gelen oturum açma olayı**
     
-    Bu uyarı, bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme \<kuralı> bir anonim proxy IP adresi \< *IP adresinden*> *hesap adına* göre oturum açma olayının göstergesidir.
+    Bu uyarı, bir \<*account name*> \<*IP address*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından izlenen bir anonım Proxy IP adresinden gelen oturum açma olayının göstergesidir.
     
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
 
 - **Anonim bir IP adresinden, şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
+    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
 
 - **Anonim bir IP adresinden toplu dosya silmeye kadar bir oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
 
 - **Anonim bir IP adresinden yığın dosya indirmelerine kadar bir oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
 - **Anonim bir IP adresinden Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
+    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
 
 - **Anonim bir IP adresinden yığın dosya paylaşımına önde gelen oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
+    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
 - **Bulut uygulamasındaki fidye 'ya anonim IP adresinden oturum açma olayı**
     
-    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
+    Bu uyarı, \<*account name*> anonim bir proxy IP adresinden bir oturum açma olayının göstergesidir \<*IP address*> . 
     
-    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
+    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
     
     Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
@@ -290,45 +289,45 @@ Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturul
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 posta kutusu için oturum açma etkinliği**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının, sızdırılan kimlik bilgilerini> kullanıldığını ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlandığını belirten bir göstergesidir. 
+    Bu uyarı, \<*account name*> kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı tarafından, sızdırılan kimlik bilgilerini kullanan oturum açma olayının ayarlandığını belirten bir göstergesidir. 
     
-    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı, \<*account name*> gelen tüm e-postaları dış adrese ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş \<*email address*> . 
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli bulut uygulaması yönetim etkinliğine**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
     
-    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
+    Ardından, hesap, \<*account name*> \<*number of*> tek bir oturumda yönetim etkinlikleri üzerinden gerçekleştirilir.
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası silinmeye birlikte oturum açma etkinliği**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
     
-    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyaları sildi.
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası indirme için oturum açma etkinliği**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
+    Ardından, hesap \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden indirilir.
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 kimliğe bürünme ile oturum açma etkinliği**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir. 
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
+    Daha sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki farklı hesapların kimliğine büründü.
 
 - **Sızdırılan kimlik bilgilerine sahip kullanıcıdan yığın dosya paylaşımına lider olarak oturum açma etkinliği**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir.
     
-    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
+    Bundan sonra hesap, \<*account name*> \<*number of*> tek bir oturumdaki benzersiz dosyalar üzerinden paylaşılır.
 
 - **Bulut uygulamasındaki fidye 'ya sızdırılan kimlik bilgilerine sahip kullanıcıdan oturum açma olayı**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir. 
+    Bu uyarı, oturum açma olayının \<*account name*> sızdırılan kimlik bilgilerini kullandığının göstergesidir. 
     
-    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
+    Ardından, hesap \<*account name*> dosyaları karşıya yükledi \<*number of*> ve toplam \<*number of*> Dosya sildi. 
     
     Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 

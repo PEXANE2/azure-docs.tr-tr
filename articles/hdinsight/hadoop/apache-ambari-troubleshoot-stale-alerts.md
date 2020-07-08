@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539119"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta Apache ambarı eski uyarıları
@@ -74,7 +73,7 @@ Eski bir uyarıyı atmak için devre dışı bırakıp yeniden etkinleştirin:
 
 Bir ambarı Aracısı, yapılandırılmış bir uyarının zamanlamasını kaçırdığını rapor etmeden önce bir yetkisiz kullanım süresi vardır. Uyarı zamanlanan süresini kaçırırsa ancak yetkisiz kullanım süresi içinde çalıştırıldıysa, eski uyarı oluşturulmaz.
 
-Varsayılan `alert_grace_period` değer 5 saniyedir. Bu ayarı,/etc/Ambari-Agent/conf/Ambari-Agent.ini. içinde yapılandırabilirsiniz Eski uyarıların düzenli aralıklarla oluştuğu konaklar için değeri 10 ' a artırmayı deneyin. Ardından, ambarı Aracısı 'nı yeniden başlatın.
+Varsayılan `alert_grace_period` değer 5 saniyedir. Bu ayarı,/etc/Ambari-Agent/conf/ambari-agent.ini ' de yapılandırabilirsiniz. Eski uyarıların düzenli aralıklarla oluştuğu konaklar için değeri 10 ' a artırmayı deneyin. Ardından, ambarı Aracısı 'nı yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -82,7 +81,7 @@ Sorununuz burada bahsedilmiyorsa veya çözemezseniz, daha fazla destek için a�
 
 * Azure [Community desteği](https://azure.microsoft.com/support/community/)' nden Azure uzmanlarından yanıt alın.
 
-* Twitter 'da [@AzureSupport](https://twitter.com/azuresupport) ile bağlantı kurmak. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
+* Twitter 'da ile bağlantı kurmak [@AzureSupport](https://twitter.com/azuresupport) . Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Buradan yararlanmak için Portal menüsünden Yardım (**?**) seçeneğini belirleyin veya **Yardım + Destek** bölmesini açın. Daha fazla bilgi için bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
 

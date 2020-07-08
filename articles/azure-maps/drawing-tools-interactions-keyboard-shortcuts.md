@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198301"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Çizim araçları modülündeki etkileşim türleri ve klavye kısayolları
@@ -27,26 +26,26 @@ Bu makalede, fare, dokunmatik ekran veya klavye kısayollarını kullanarak şek
 
 ## <a name="how-to-draw-shapes"></a>Şekil çizme
 
- Herhangi bir şekil çizilebilmeniz için, çizim `drawingMode` Yöneticisi seçeneğini desteklenen bir çizim ayarı olarak ayarlayın. Bu ayar, araç çubuğundaki çizim düğmelerinden birine basılarak programlanabilir veya çağrılabilir. Çizim modu, bir şekil çizildikten sonra bile etkin kalır, ancak aynı türde ek şekiller çizmeyi kolaylaştırır. Çizim modunu program aracılığıyla boşta durumuna ayarlayın. Ya da, araç çubuğundaki geçerli çizim modları düğmesine tıklayarak boşta durumuna geçiş yapın.
+ Herhangi bir şekil çizilebilmeniz `drawingMode` için, çizim Yöneticisi seçeneğini desteklenen bir çizim ayarı olarak ayarlayın. Bu ayar, araç çubuğundaki çizim düğmelerinden birine basılarak programlanabilir veya çağrılabilir. Çizim modu, bir şekil çizildikten sonra bile etkin kalır, ancak aynı türde ek şekiller çizmeyi kolaylaştırır. Çizim modunu program aracılığıyla boşta durumuna ayarlayın. Ya da, araç çubuğundaki geçerli çizim modları düğmesine tıklayarak boşta durumuna geçiş yapın.
 
 Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatlarıyla listelenmektedir.
 
 ### <a name="how-to-draw-a-point"></a>Nokta çizme
 
-Çizim Yöneticisi `draw-point` çizim modundayken, haritada noktaları çizmek için aşağıdaki eylemler yapılabilir. Bu yöntemler tüm etkileşim modlarıyla çalışır.
+Çizim Yöneticisi `draw-point` Çizim modundayken, haritada noktaları çizmek için aşağıdaki eylemler yapılabilir. Bu yöntemler tüm etkileşim modlarıyla çalışır.
 
 **Çizimi Başlat**
  - Sol fare düğmesine tıklayın ya da haritaya bir nokta eklemek için haritaya dokunun. 
  - Fare haritanın üzerindeyken, `F` tuşa basın ve fare işaretçisinin koordinatına bir nokta eklenir. Bu yöntem, haritaya bir nokta eklemek için daha fazla doğruluk sağlar. Sol fare düğmesinin düğmesine basılması nedeniyle fare üzerinde daha az hareket olacaktır.
- - Haritaya daha fazla işaret eklemek `F` için tıklamaya, dokunmaya veya dokunarak çalışmaya devam edin.
+ - `F`Haritaya daha fazla işaret eklemek için tıklamaya, dokunmaya veya dokunarak çalışmaya devam edin.
  
 **Çizimi tamamlama**
  - Çizim araç çubuğunda herhangi bir düğmeye tıklayın. 
  - Çizim modunu programlı olarak ayarlayın. 
- - `C` Tuşuna basın.
+ - Tuşuna basın `C` .
 
 **Çizimi iptal et**
- - `Escape` Tuşuna basın.
+ - Tuşuna basın `Escape` .
 
 ### <a name="how-to-draw-a-line"></a>Çizgi çizme
 
@@ -58,7 +57,7 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
    * Fare haritanın üzerindeyken, `F` tuşa basın ve fare işaretçisinin koordinatına bir nokta eklenir. Bu yöntem, haritaya bir nokta eklemek için daha fazla doğruluk sağlar. Sol fare düğmesinin düğmesine basılması nedeniyle fare üzerinde daha az hareket olacaktır.
    * İstenen tüm noktaların satıra eklenene kadar tıklamasına devam edin.
  - FreeHand modu
-   * Sol fare düğmesine basın veya haritada dokunma yapın, fare veya dokunma noktasını etrafında sürükleyin. Fare veya dokunma noktası haritanın etrafında hareket ederken, koordinatlar çizgiye eklenir. Fare veya dokunma olayı tetiklendikten hemen sonra çizim tamamlanır. Koordinatların eklendiği sıklık, çizim yöneticileri `freehandInterval` seçeneği tarafından tanımlanır.
+   * Sol fare düğmesine basın veya haritada dokunma yapın, fare veya dokunma noktasını etrafında sürükleyin. Fare veya dokunma noktası haritanın etrafında hareket ederken, koordinatlar çizgiye eklenir. Fare veya dokunma olayı tetiklendikten hemen sonra çizim tamamlanır. Koordinatların eklendiği sıklık, çizim yöneticileri seçeneği tarafından tanımlanır `freehandInterval` .
  - Karma mod
    * Tek bir çizgi çizerken, tıklama ve FreeHand yöntemleri arasında alternatif olarak. Örneğin, birkaç noktaya tıklayın, sonra da bir dizi noktayı eklemek için fareyi basılı tutup sürükleyin ve daha sonra birkaç kez tıklayın. 
 
@@ -69,10 +68,10 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
    * Çizim modunu programlı olarak ayarlayın. 
  - FreeHand modu
    * Fare düğmesini veya dokunma noktasını serbest bırakın.
- - `C` Tuşuna basın.
+ - Tuşuna basın `C` .
 
 **Çizimi iptal et**
- - `Escape` Tuşuna basın.
+ - Tuşuna basın `Escape` .
 
 ### <a name="how-to-draw-a-polygon"></a>Çokgen çizme
 
@@ -84,7 +83,7 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
    * Fare haritanın üzerindeyken, `F` tuşa basın ve fare işaretçisinin koordinatına bir nokta eklenir. Bu yöntem, haritaya bir nokta eklemek için daha fazla doğruluk sağlar. Sol fare düğmesinin düğmesine basılması nedeniyle fare üzerinde daha az hareket olacaktır.
    * Tüm istenen noktaları Çokgen 'e eklenene kadar tıklamasına devam edin.
  - FreeHand modu
-   * Sol fare düğmesine basın veya haritada dokunma yapın, fare veya dokunma noktasını etrafında sürükleyin. Fare veya dokunma noktası haritanın etrafında hareket ettirildiğinde, koordinatlar Çokgen 'e eklenir. Fare veya dokunma olayı tetiklendikten hemen sonra çizim tamamlanır. Koordinatların eklendiği sıklık, çizim yöneticileri `freehandInterval` seçeneği tarafından tanımlanır.
+   * Sol fare düğmesine basın veya haritada dokunma yapın, fare veya dokunma noktasını etrafında sürükleyin. Fare veya dokunma noktası haritanın etrafında hareket ettirildiğinde, koordinatlar Çokgen 'e eklenir. Fare veya dokunma olayı tetiklendikten hemen sonra çizim tamamlanır. Koordinatların eklendiği sıklık, çizim yöneticileri seçeneği tarafından tanımlanır `freehandInterval` .
  - Karma mod
    * Tek bir çokgen çizerken, istediğiniz gibi tıklama ve FreeHand yöntemleri arasında alternatif. Örneğin, birkaç noktaya tıklayın, sonra da bir dizi noktayı eklemek için fareyi basılı tutup sürükleyin ve daha sonra birkaç kez tıklayın. 
 
@@ -96,10 +95,10 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
    * Çizim modunu programlı olarak ayarlayın. 
  - FreeHand modu
    * Fare düğmesini veya dokunma noktasını serbest bırakın.
- - `C` Tuşuna basın.
+ - Tuşuna basın `C` .
 
 **Çizimi iptal et**
- - `Escape` Tuşuna basın.
+ - Tuşuna basın `Escape` .
 
 ### <a name="how-to-draw-a-rectangle"></a>Dikdörtgen çizme
 
@@ -111,10 +110,10 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
 **Çizimi tamamlama**
  - Fare düğmesini veya dokunma noktasını serbest bırakın.
  - Çizim modunu programlı olarak ayarlayın. 
- - `C` Tuşuna basın.
+ - Tuşuna basın `C` .
 
 **Çizimi iptal et**
- - `Escape` Tuşuna basın.
+ - Tuşuna basın `Escape` .
 
 ### <a name="how-to-draw-a-circle"></a>Daire çizme
 
@@ -126,10 +125,10 @@ Sonraki bölümlerde şekillerin haritada çizileceği farklı yolları ana hatl
 **Çizimi tamamlama**
  - Fare düğmesini veya dokunma noktasını serbest bırakın.
  - Çizim modunu programlı olarak ayarlayın. 
- - `C` Tuşuna basın.
+ - Tuşuna basın `C` .
 
 **Çizimi iptal et**
- - `Escape` Tuşuna basın.
+ - Tuşuna basın `Escape` .
 
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
 

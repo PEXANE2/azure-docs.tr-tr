@@ -4,10 +4,9 @@ description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygula
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525300"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
@@ -91,7 +90,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Parametre için YAML dosya adını belirterek, [az Container Create][az-container-create] komutuyla kapsayıcı grubunu dağıtın. `--file` Bir kaynak grubunun adını ve *eastus* gibi bir kapsayıcı grubu için GPU kaynaklarını destekleyen bir konum sağlamanız gerekir.  
+Parametre için YAML dosya adını belirterek, [az Container Create][az-container-create] komutuyla kapsayıcı grubunu dağıtın `--file` . Bir kaynak grubunun adını ve *eastus* gibi bir kapsayıcı grubu için GPU kaynaklarını destekleyen bir konum sağlamanız gerekir.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -116,7 +115,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Kaynak Yöneticisi şablonu örneği
 
-Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanmaktır. Adlı `gpudeploy.json`bir dosya oluşturarak başlayın, ardından aşağıdaki JSON öğesine kopyalayın. Bu örnek, bir V100 GPU ile, bir [TensorFlow](https://www.tensorflow.org/) eğitim işini, veri kümesine göre çalıştıran bir kapsayıcı örneği dağıtır. Kaynak istekleri iş yükünü çalıştırmak için yeterlidir.
+Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanmaktır. Adlı bir dosya oluşturarak başlayın `gpudeploy.json` , ardından AŞAĞıDAKI JSON öğesine kopyalayın. Bu örnek, bir V100 GPU ile, bir [TensorFlow](https://www.tensorflow.org/) eğitim işini, veri kümesine göre çalıştıran bir kapsayıcı örneği dağıtır. Kaynak istekleri iş yükünü çalıştırmak için yeterlidir.
 
 ```JSON
 {

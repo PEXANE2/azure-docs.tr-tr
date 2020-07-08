@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617202"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Azure 'da SAP HANA HANA 'yı (büyük örnekler)
@@ -39,7 +38,7 @@ HANA büyük örnek birimleri doğrudan internet 'e bağlı değildir. Yükleme 
 
 SAP Market 'e erişmenize izin veren bir SAP S-User veya başka bir kullanıcı olması gerekir.
 
-1. Oturum açın ve [SAP hizmeti marketi](https://support.sap.com/en/index.html)' ne gidin. **Yazılım** > **yüklemelerini indir ve** > **alfabetik dizine göre**Yükselt ' i seçin. Ardından **H – SAP HANA platform Edition** > **SAP HANA platform Edition 2,0** > **yüklemesi**altında öğesini seçin. Aşağıdaki ekran görüntüsünde gösterilen dosyaları indirin.
+1. Oturum açın ve [SAP hizmeti marketi](https://support.sap.com/en/index.html)' ne gidin. **Yazılım yüklemelerini indir**  >  **ve**  >  **alfabetik dizine göre**Yükselt ' i seçin. Ardından **H – SAP HANA platform Edition**  >  **SAP HANA platform Edition 2,0**  >  **yüklemesi**altında öğesini seçin. Aşağıdaki ekran görüntüsünde gösterilen dosyaları indirin.
 
    ![İndirilecek dosyaların ekran görüntüsü](./media/hana-installation/image16_download_hana.PNG)
 

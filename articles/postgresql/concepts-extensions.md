@@ -7,26 +7,25 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201280"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-tek sunucu
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla birlikte tek bir pakette yüklenebilecek veya kaldırılabileceği tek bir pakette birden çok ilgili SQL nesnesini birlikte paketleyebilir. Veritabanına yüklendikten sonra uzantı işlevleri yerleşik özellikler gibi.
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL uzantılarını kullanma
-PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, psql aracından [uzantı](https://www.postgresql.org/docs/current/sql-createextension.html) Oluştur komutunu çalıştırarak paketlenmiş nesneleri veritabanınıza yükleyin.
+PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, psql aracından [Uzantı Oluştur](https://www.postgresql.org/docs/current/sql-createextension.html)   komutunu çalıştırarak paketlenmiş nesneleri veritabanınıza yükleyin.
 
-PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantıları alt kümesini destekler. Bu bilgiler çalıştırılarak `SELECT * FROM pg_available_extensions;`da kullanılabilir. Listelenenlerin ötesinde uzantılar desteklenmez. PostgreSQL için Azure veritabanı 'nda kendi uzantınızı oluşturamazsınız.
+PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantıları alt kümesini destekler. Bu bilgiler çalıştırılarak da kullanılabilir `SELECT * FROM pg_available_extensions;` . Listelenenlerin ötesinde uzantılar desteklenmez. PostgreSQL için Azure veritabanı 'nda kendi uzantınızı oluşturamazsınız.
 
 ## <a name="postgres-11-extensions"></a>Postgres 11 uzantıları
 
 Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Azure veritabanı 'nda mevcuttur. 
 
 > [!div class="mx-tableFixed"]
-> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -71,7 +70,7 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure veritabanı sunucuları 'nda mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -117,7 +116,7 @@ Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure ver
 Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -163,7 +162,7 @@ Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -205,9 +204,9 @@ Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 [Pg_stat_statements uzantısı](https://www.postgresql.org/docs/current/pgstatstatements.html) , SQL deyimlerinin yürütme istatistiklerini izlemek Için her PostgreSQL Için Azure veritabanı sunucusuna önceden yüklenir.
-Uzantı tarafından `pg_stat_statements.track`hangi deyimlerin sayıldığını denetleyen ayar, varsayılan olarak `top`, istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi ve ' `none` `all`dir. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
+`pg_stat_statements.track`Uzantı tarafından hangi deyimlerin sayıldığını denetleyen ayar, varsayılan olarak `top` , istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi `none` ve ' dir `all` . Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
-Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, ' ye `pg_stat_statements.track` `none`ayarlamanızı öneririz. Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunmak için pg_stat_statements güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
+Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, ' ye ayarlamanızı öneririz `pg_stat_statements.track` `none` . Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunmak için pg_stat_statements güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere bu uzantıları kullanırken, bu, "Azure hizmetlerine erişime Izin ver" ayarı kullanılarak yapılabilir. Ayrıca, uzantıları aynı sunucuya geri dönmek için kullanmak istiyorsanız bu da gereklidir. "Azure hizmetlerine erişime Izin ver" ayarı, Postgres sunucusunun Azure portal sayfasında, bağlantı güvenliği altında bulunabilir. "Azure hizmetlerine erişime Izin ver" seçeneği açıldığında tüm Azure IP 'Leri izin verilenler listesine koyar.
@@ -215,7 +214,7 @@ Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe 
 Şu anda PostgreSQL için Azure veritabanı 'na giden bağlantılar, PostgreSQL için Azure veritabanı sunucuları için bağlantılar dışında desteklenmez.
 
 ## <a name="uuid"></a>uuid
-`uuid_generate_v4()` [UUID-ossp uzantısından](https://www.postgresql.org/docs/current/uuid-ossp.html)kullanmayı planlıyorsanız performans avantajları için `gen_random_uuid()` [pgşifre uzantısı](https://www.postgresql.org/docs/current/pgcrypto.html) ile karşılaştırmayı göz önünde bulundurun.
+`uuid_generate_v4()` [UUID-ossp uzantısından](https://www.postgresql.org/docs/current/uuid-ossp.html)kullanmayı planlıyorsanız `gen_random_uuid()` performans avantajları için [pgşifre uzantısı](https://www.postgresql.org/docs/current/pgcrypto.html) ile karşılaştırmayı göz önünde bulundurun.
 
 ## <a name="pgaudit"></a>pgAudit
 [Pgaudit uzantısı](https://github.com/pgaudit/pgaudit/blob/master/README.md) , oturum ve nesne denetim günlüğü sağlar. Bu uzantıyı PostgreSQL için Azure veritabanı 'nda nasıl kullanacağınızı öğrenmek için [Denetim kavramları makalesini](concepts-audit.md)ziyaret edin. 
@@ -223,7 +222,7 @@ Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe 
 ## <a name="pg_prewarm"></a>pg_prewarm
 Pg_prewarm uzantısı, ilişkisel verileri önbelleğe yükler. Önbellekler önceden ısındıktan sonra, bir yeniden başlatmanın ardından sorgularınızın ilk çalıştırmaları için daha iyi yanıt süresi olduğu anlamına gelir. Postgres 10 ve sonrasında, ön [sıcak işlevi](https://www.postgresql.org/docs/10/pgprewarm.html)kullanılarak el ile yapılır.
 
-Postgres 11 ve üzeri sürümlerde, önısını [otomatik olarak](https://www.postgresql.org/docs/current/pgprewarm.html)gerçekleşecek şekilde yapılandırabilirsiniz. `shared_preload_libraries` Parametrenin listesine pg_prewarm dahil etmeniz ve değişikliği uygulamak için sunucuyu yeniden başlatmanız gerekir. Parametreler [Azure Portal](howto-configure-server-parameters-using-portal.md), [CLI](howto-configure-server-parameters-using-cli.md), REST API veya ARM şablonundan ayarlanabilir. 
+Postgres 11 ve üzeri sürümlerde, önısını [otomatik olarak](https://www.postgresql.org/docs/current/pgprewarm.html)gerçekleşecek şekilde yapılandırabilirsiniz. Parametrenin listesine pg_prewarm dahil etmeniz `shared_preload_libraries` ve değişikliği uygulamak için sunucuyu yeniden başlatmanız gerekir. Parametreler [Azure Portal](howto-configure-server-parameters-using-portal.md), [CLI](howto-configure-server-parameters-using-cli.md), REST API veya ARM şablonundan ayarlanabilir. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi veritabanıdır. TimescaleDB zamana dayalı analitik işlevler, iyileştirmeler ve zaman serisi iş yükleri için Postgres ölçekleme sağlar.
@@ -231,7 +230,7 @@ TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi v
 [TimescaleDB hakkında daha fazla bilgi](https://docs.timescale.com/latest)için bkz. zaman ölçeğinin tescilli ticari marka [, Inc.](https://www.timescale.com/). PostgreSQL için Azure veritabanı, zaman ölçeğinin açık kaynak sürümünü sağlar. Bu sürümde hangi zaman ölçeği özelliklerinin kullanılabildiğini öğrenmek için bkz. [zaman ölçeği ürün karşılaştırması](https://www.timescale.com/products/).
 
 ### <a name="installing-timescaledb"></a>TimescaleDB yükleniyor
-TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresinin bir değişikliği, **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.
+TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin parametresinin bir değişikliği, `shared_preload_libraries` **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.
 
 [Azure Portal](https://portal.azure.com/)kullanarak:
 
@@ -239,7 +238,7 @@ TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıkla
 
 2. Kenar çubuğunda **sunucu parametreleri**' ni seçin.
 
-3. `shared_preload_libraries` Parametresi için arama yapın.
+3. Parametresi için arama yapın `shared_preload_libraries` .
 
 4. **TimescaleDB**öğesini seçin.
 
@@ -258,7 +257,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 Artık, [sıfırdan](https://docs.timescale.com/getting-started/creating-hypertables) bir TimescaleDB hypertable oluşturabilir veya [PostgreSQL içindeki mevcut zaman serisi verilerini](https://docs.timescale.com/getting-started/migrating-data)geçirebilirsiniz.
 
 ### <a name="restoring-a-timescale-database"></a>Zaman ölçeği veritabanını geri yükleme
-Pg_dump ve pg_restore kullanarak bir zaman ölçeği veritabanını geri yüklemek için hedef veritabanında iki yardımcı yordam çalıştırmanız gerekir: `timescaledb_pre_restore()` ve. `timescaledb_post restore()`
+Pg_dump ve pg_restore kullanarak bir zaman ölçeği veritabanını geri yüklemek için hedef veritabanında iki yardımcı yordam çalıştırmanız gerekir: `timescaledb_pre_restore()` ve `timescaledb_post restore()` .
 
 İlk olarak hedef veritabanını hazırlayın:
 

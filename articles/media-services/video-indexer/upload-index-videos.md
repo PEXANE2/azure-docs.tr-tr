@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77468771"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
@@ -40,13 +39,13 @@ Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluş
 - Sorgu dizesi URL 'sinin uzunluğu 4096 karakterle sınırlı olduğunda, istek URL 'si uzunluğu 6144 karakterle sınırlıdır.
 - Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
 - Bayt dizisi seçeneği 30 dakikadan sonra zaman aşımına uğrar.
-- `videoURL` Param 'DA belirtilen URL 'nin kodlanması gerekir.
+- Param 'da belirtilen URL 'nin `videoURL` kodlanması gerekir.
 - Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır.
 - Video Indexer, tek bir dosya için maksimum süre sınırı olan 4 saattir.
 - URL 'nin erişilebilir olması gerekir (örneğin, genel bir URL). 
 
     Özel bir URL ise, istekte erişim belirtecinin sağlanması gerekir.
-- URL, `www.youtube.com` sayfanın bağlantısı gibi bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda.
+- URL, sayfanın bağlantısı gibi bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda `www.youtube.com` .
 - Ücretli bir hesapta, dakikada en fazla 50 film yükleyebilirsiniz ve dakikada 5 filmle bir deneme hesabı kullanabilirsiniz.
 
 > [!Tip]
@@ -93,22 +92,22 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özellikler:    
     
-        |Adı|Açıklama|
+        |Name|Açıklama|
         |---|---|
-        |id|Video KIMLIĞI|
+        |kimlik|Video KIMLIĞI|
         |durum|Video durumu|  
-    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&ID = 1234abcd&State = işlendi
+    - Örnek: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = işlendi
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Adı|Açıklama|
+      |Name|Açıklama|
       |---|---|
-      |id| Video KIMLIĞI|
+      |kimlik| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
       |Knownpersonıd|Bir yüz modeli içinde benzersiz olan kişi KIMLIĞI|
       |kişi adı|Kişinin adı|
         
-    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&ID = 1234abcd&çok yönlü kimliği = 12&knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5&personname = Inigo_Montoya 
+    - Örnek: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&çok yönlü kimliği = 12&Knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
 ##### <a name="notes"></a>Notlar
 
@@ -126,7 +125,7 @@ Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kull
 
 > [!NOTE]
 > Video Indexer, sesin en fazla iki parçasını içerir. Dosyada daha fazla ses parçası varsa, bunlar tek bir izleme olarak kabul edilir.<br/>
-Parçaları ayrı olarak dizinlemek istiyorsanız ilgili ses dosyasını ayıklamanız ve olarak `AudioOnly`dizinetmeniz gerekir.
+Parçaları ayrı olarak dizinlemek istiyorsanız ilgili ses dosyasını ayıklamanız ve olarak dizinetmeniz gerekir `AudioOnly` .
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 
@@ -164,9 +163,9 @@ Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanı
 
     API anahtarınızı almak için şu akışa gidin:
 
-    * Şuraya gidinhttps://api-portal.videoindexer.ai/
-    * Oturum Aç
-    * **Ürünler** -> **Authorization**yetkilendirme -> **Yetkilendirme aboneliğine** git
+    * https://api-portal.videoindexer.ai/ sayfasına gidin
+    * Oturum aç
+    * **Ürünler**  ->  **Yetkilendirme**  ->  **Yetkilendirme aboneliğine** git
     * **Birincil anahtarı** Kopyala
 * Video URL 'SI: endekslenecek video/ses dosyasının URL 'SI. URL bir medya dosyasına yönlendirmelidir (HTML sayfaları desteklenmez). Dosya, URI'nin parçası olarak sunulan bir erişim belirteci tarafından korunabilir ve dosyayı sunan uç noktanın güvenliği TLS 1.2 veya üzeri bir sürümle sağlanmalıdır. URL’nin kodlanması gerekir.
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562131"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
@@ -38,7 +37,7 @@ Bu örnek, bir konumun geçerli hava durumu koşullarını izler ve skıes açı
 
 Bu örnek, bir konum için geçerli hava durumu koşullarını denetlemek için hava durumu düşük olan API 'sini kullanmayı içerir.
 
-İhtiyaç duyduğunuz ilk şey, hava durumu düşük bir hesaptır. ' De ücretsiz olarak bir tane oluşturabilirsiniz [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Hesabınız olduktan sonra bir API anahtarı edinmeniz gerekir. Bunu, sonra anahtar ayarları ' [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)nı ziyaret ederek yapabilirsiniz. Bu örneği çalıştırmak için, Stratler geliştirici planı ücretsizdir ve yeterlidir.
+İhtiyaç duyduğunuz ilk şey, hava durumu düşük bir hesaptır. ' De ücretsiz olarak bir tane oluşturabilirsiniz [https://www.wunderground.com/signup](https://www.wunderground.com/signup) . Hesabınız olduktan sonra bir API anahtarı edinmeniz gerekir. Bunu [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) , sonra anahtar ayarları ' nı ziyaret ederek yapabilirsiniz. Bu örneği çalıştırmak için, Stratler geliştirici planı ücretsizdir ve yeterlidir.
 
 Bir API anahtarınız olduğunda, işlev uygulamanıza aşağıdaki **uygulama ayarını** ekleyin.
 
@@ -50,21 +49,21 @@ Bir API anahtarınız olduğunda, işlev uygulamanıza aşağıdaki **uygulama a
 
 Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
-* `E3_Monitor`: Düzenli aralıklarla çağıran `E3_GetIsClear` bir [Orchestrator işlevi](durable-functions-bindings.md#orchestration-trigger) . Doğru `E3_GetIsClear` döndürürse `E3_SendGoodWeatherAlert` çağırır.
+* `E3_Monitor`: Düzenli aralıklarla çağıran bir [Orchestrator işlevi](durable-functions-bindings.md#orchestration-trigger) `E3_GetIsClear` . `E3_SendGoodWeatherAlert` `E3_GetIsClear` Doğru döndürürse çağırır.
 * `E3_GetIsClear`: Bir konum için geçerli hava durumu koşullarını denetleyen bir [etkinlik işlevi](durable-functions-bindings.md#activity-trigger) .
 * `E3_SendGoodWeatherAlert`: Twilio aracılığıyla SMS iletisi gönderen bir etkinlik işlevi.
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator işlevi
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
 
-Orchestrator, konum üzerinde açık hale geldiğinde bir ileti göndermek için bir konum ve bir telefon numarası gerektirir. Bu veriler, kesin olarak belirlenmiş `MonitorRequest` bir nesne olarak Orchestrator 'a geçirilir.
+Orchestrator, konum üzerinde açık hale geldiğinde bir ileti göndermek için bir konum ve bir telefon numarası gerektirir. Bu veriler, kesin olarak belirlenmiş bir nesne olarak Orchestrator 'a geçirilir `MonitorRequest` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**E3_Monitor** işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
+**E3_Monitor** işlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
@@ -87,15 +86,15 @@ Orchestrator işlevini birden çok kez çağırarak, birden fazla Orchestrator �
 
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear Activity işlevi
 
-Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrigger` tetikleyici bağlamayı kullanan normal işlevlerdir. **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler.
+Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici bağlamayı kullanan normal işlevlerdir `activityTrigger` . **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Function. JSON* aşağıdaki gibi tanımlanır:
+*function.js* , aşağıdaki gibi tanımlanır:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
@@ -109,16 +108,16 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrig
 
 **E3_SendGoodWeatherAlert** işlevi, son kullanıcıya bir ilerleme için iyi bir zaman olduğunu BILDIREN bir SMS iletisi göndermek için Twilio bağlamasını kullanır.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> Örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
+> `Microsoft.Azure.WebJobs.Extensions.Twilio`Örnek kodu çalıştırmak için NuGet paketini yüklemeniz gerekir.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Function. JSON* basittir:
+*Üzerindefunction.js* basittir:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
@@ -169,7 +168,7 @@ Azure Işlevleri portalındaki işlev günlüklerine bakarak Orchestration 'un e
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durable-functions-instance-management.md) veya temizleme işlemi algılanır. Ayrıca, (.net `TerminateAsync` ) veya `terminate` (JavaScript) öğesini başka bir işlev içinde kullanabilir veya yukarıdaki 202 yanıtında başvurulan **terminateposturi** http post Web kancasını çağırarak sonlandırma nedeni `{text}` ile değiştirin:
+Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durable-functions-instance-management.md) veya temizleme işlemi algılanır. Ayrıca, `TerminateAsync` (.net) veya `terminate` (JavaScript) öğesini başka bir işlev içinde kullanabilir veya yukarıdaki 202 yanıtında başvurulan **terminateposturi** http post Web kancasını çağırarak `{text}` sonlandırma nedeni ile değiştirin:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

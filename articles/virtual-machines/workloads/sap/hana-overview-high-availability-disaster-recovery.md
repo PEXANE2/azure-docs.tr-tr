@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616939"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA Büyük Örnekleri 
@@ -40,7 +39,7 @@ Azure 'daki SAP HANA (büyük örnekler) dört geopolitik bölgede (ABD, Avustra
 
 Aşağıdaki tabloda, şu anda desteklenen yüksek kullanılabilirlik ve olağanüstü durum kurtarma yöntemleri ve birleşimleri gösterilmektedir:
 
-| HANA büyük örneklerde desteklenen senaryo | Yüksek kullanılabilirlik seçeneği | Olağanüstü durum kurtarma seçeneği | Açıklamalar |
+| HANA büyük örneklerde desteklenen senaryo | Yüksek kullanılabilirlik seçeneği | Olağanüstü durum kurtarma seçeneği | Yorumlar |
 | --- | --- | --- | --- |
 | Tek düğüm | Kullanılamıyor. | Adanmış DR kurulumu.<br /> Çok amaçlı DR kurulumu. | |
 | Konak otomatik yük devretme: genişleme (bekleme ile veya olmadan)<br /> 1 + 1 dahil | Etkin rolü almaya yönelik bekleme ile mümkün.<br /> HANA, rol anahtarını denetler. | Adanmış DR kurulumu.<br /> Çok amaçlı DR kurulumu.<br /> Depolama çoğaltması kullanarak DR eşitlemesi. | HANA birim kümeleri tüm düğümlere iliştirilir.<br /> DR sitesinin aynı sayıda düğüm olması gerekir. |

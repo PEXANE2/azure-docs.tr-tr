@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
 ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77469774"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services Azure Tanılama etkinleştirme
@@ -136,12 +135,12 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. **WorkerRole1** projesine sağ tıklayıp yeni öğe **Ekle** -> **... öğesini** seçerek **WorkerRole1** projenize bir XML dosyası ekleyin. -> **Visual C# Items** -> **Data** -> **XML dosyası**. "Wadexörnek. xml" dosyasını adlandırın.
+2. **WorkerRole1** projesine sağ tıklayıp **WorkerRole1** **Add**  ->  **Yeni öğe Ekle... öğesini** seçerek WorkerRole1 projenize bir XML dosyası ekleyin. -> **Visual C# öğeleri**  ->  **Veri**  ->  **XML dosyası**. "WadExample.xml" dosyasını adlandırın.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. WadConfig. xsd dosyasını yapılandırma dosyası ile ilişkilendirin. WADEX,. XML düzenleyici penceresinin etkin pencere olduğundan emin olun. **Özellikler** penceresini açmak için **F4** tuşuna basın. **Özellikler** penceresinde **şemalar** özelliğine tıklayın. **..** . Öğesine tıklayın. **şema** özelliğinde. **Ekle...** öğesine tıklayın. düğmesine tıklayın ve XSD dosyasını kaydettiğiniz konuma gidin ve WadConfig. xsd dosyasını seçin. **Tamam**'a tıklayın.
+3. WadConfig. xsd dosyasını yapılandırma dosyası ile ilişkilendirin. WadExample.xml Düzenleyicisi penceresinin etkin pencere olduğundan emin olun. **Özellikler** penceresini açmak için **F4** tuşuna basın. **Özellikler** penceresinde **şemalar** özelliğine tıklayın. **..** . Öğesine tıklayın. **şema** özelliğinde. **Ekle...** öğesine tıklayın. düğmesine tıklayın ve XSD dosyasını kaydettiğiniz konuma gidin ve WadConfig. xsd dosyasını seçin. **Tamam**'a tıklayın.
 
-4. Wadexörnek. xml yapılandırma dosyasının içeriğini aşağıdaki XML ile değiştirin ve dosyayı kaydedin. Bu yapılandırma dosyası, bir tane CPU kullanımı ve diğeri bellek kullanımı için toplanacak birkaç performans sayacını tanımlar. Sonra yapılandırma, SampleEventSourceWriter sınıfındaki yöntemlere karşılık gelen dört olayı tanımlar.
+4. WadExample.xml yapılandırma dosyasının içeriğini aşağıdaki XML ile değiştirin ve dosyayı kaydedin. Bu yapılandırma dosyası, bir tane CPU kullanımı ve diğeri bellek kullanımı için toplanacak birkaç performans sayacını tanımlar. Sonra yapılandırma, SampleEventSourceWriter sınıfındaki yöntemlere karşılık gelen dört olayı tanımlar.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,7 +169,7 @@ namespace WorkerRole1
 Bir Web veya çalışan rolünde tanılamayı yönetmeye yönelik PowerShell cmdlet 'leri şunlardır: set-Azurezervicediagnokısexten, Get-azurezervicediagnoçıkartsextenma ve Remove-azurezervicediagnokısextenma.
 
 1. Azure PowerShell açın.
-2. Çalışan rolünüze tanılama yüklemek için betiği yürütün ( *Storageaccountkey* değerini WADEX, depolama hesabınızın depolama hesabı anahtarıyla değiştirin ve *WADEX,. xml* dosyasının yoluyla *config_path* ):
+2. Çalışan rolünüze tanılama yüklemek için betiği yürütün ( *Storageaccountkey* değerini WADEX, depolama hesabınızın depolama hesabı anahtarıyla değiştirin ve *WadExample.xml* dosyasının yoluyla *config_path* ):
 
 ```powershell
 $storage_name = "wadexample"

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471189"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri çözümleme
@@ -23,7 +22,7 @@ HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri çözüml
 
 ## <a name="logs-location"></a>Günlük konumu
 
-Kümedeki Apache Kafka Günlükler konumunda `/var/log/kafka`bulunur. Yönetilen diskler kullanılıyorsa, Kafka günlükleri küme yaşam döngüleri arasında kaydedilmez veya kalıcı olmaz. Aşağıdaki tabloda kullanılabilir Günlükler gösterilmektedir.
+Kümedeki Apache Kafka Günlükler konumunda bulunur `/var/log/kafka` . Yönetilen diskler kullanılıyorsa, Kafka günlükleri küme yaşam döngüleri arasında kaydedilmez veya kalıcı olmaz. Aşağıdaki tabloda kullanılabilir Günlükler gösterilmektedir.
 
 |Günlük |Açıklama |
 |---|---|
@@ -68,7 +67,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen ileti: (küme `your_kafka_cluster_name` adınızla değiştirin.)
+* Saniye başına gelen ileti: ( `your_kafka_cluster_name` küme adınızla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -76,7 +75,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen bayt: (bir `wn0-kafka` çalışan düğümü ana bilgisayar adıyla değiştirin.)
+* Saniye başına gelen bayt: ( `wn0-kafka` bir çalışan düğümü ana bilgisayar adıyla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +83,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına giden bayt: (küme `your_kafka_cluster_name` adınızla değiştirin.)
+* Saniye başına giden bayt: ( `your_kafka_cluster_name` küme adınızla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -92,13 +91,13 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    Günlüğe kaydedilen tüm türleri `*` aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
+    `*`Günlüğe kaydedilen tüm türleri aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
 
     | Günlük türü | Açıklama |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka Broker Server. log |
-    | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
-    | ölçümler\_Kafka\_CL | Kafka JMX ölçümleri |
+    | log \_ kafkaserver \_ CL | Kafka Broker Server. log |
+    | log \_ kafkacontroller \_ CL | Kafka Broker Controller. log |
+    | ölçümler \_ Kafka \_ CL | Kafka JMX ölçümleri |
 
     ![Apache Kafka Log Analytics CPU kullanımı](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 

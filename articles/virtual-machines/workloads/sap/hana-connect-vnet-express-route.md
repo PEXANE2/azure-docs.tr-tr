@@ -14,10 +14,9 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617194"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Sanal ağı HANA büyük örneklerine bağlama
@@ -35,7 +34,7 @@ Bir ağ geçidi zaten varsa, bir ExpressRoute ağ geçidi olup olmadığını ko
   - Azure portal kullanıyorsanız, yeni bir **sanal ağ geçidi**ekleyin ve ardından ağ geçidi türü olarak **ExpressRoute** ' u seçin.
   - PowerShell kullanıyorsanız, önce en son [Azure PowerShell SDK 'sını](https://azure.microsoft.com/downloads/)indirip kullanın. 
  
-Aşağıdaki komutlar bir ExpressRoute ağ geçidi oluşturur. Önünde bir _$_ olan metinler, belirli bilgileriniz ile güncelleştirilmeleri gereken kullanıcı tanımlı değişkenlerdir.
+Aşağıdaki komutlar bir ExpressRoute ağ geçidi oluşturur. Önünde bir olan metinler, _$_ belirli bilgileriniz ile güncelleştirilmeleri gereken kullanıcı tanımlı değişkenlerdir.
 
 ```powershell
 # These Values should already exist, update to match your environment

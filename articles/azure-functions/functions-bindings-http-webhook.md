@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77462114"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları genel bakış
@@ -25,7 +24,7 @@ Bu makaledeki kod, sürüm 2. x ve üzeri Işlevlerde kullanılan .NET Core söz
 
 ## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 

@@ -10,10 +10,9 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209305"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Bilişsel Arama hizmetinizi PowerShell ile yönetme
@@ -80,7 +79,7 @@ Birden çok Azure aboneliği tutarsanız, Azure aboneliğinizi ayarlayın. Geçe
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription`.
+Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription` .
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -193,11 +192,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) , yönetici [API anahtarlarını](search-security-api-keys.md)almak için kullanılır. Kimliği doğrulanmış erişim için her bir hizmetle iki yönetici anahtarı oluşturulur. Her istekte anahtarlar gereklidir. Her iki yönetici anahtarı da işlevsel olarak eşdeğerdir, bir arama hizmetine tüm bilgileri alma veya herhangi bir nesne oluşturma ve silme imkanına tam yazma erişimi veriliyor. Diğerini değiştirirken bir tane kullanabilmeniz için iki anahtar mevcuttur. 
 
-`primary` Ya `secondary` da anahtarı olarak belirtilen tek seferde yalnızca bir tane oluşturabilirsiniz. Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
+Ya da anahtarı olarak belirtilen tek seferde yalnızca bir tane oluşturabilirsiniz `primary` `secondary` . Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
 
 Beklenirken, istemci kodunu güncelleştirmeden anahtarları yeniden oluşturursanız, eski anahtarı kullanan istekler başarısız olur. Tüm yeni anahtarların yeniden oluşturulması, hizmetinizi kalıcı olarak kilitlemez ve Portal üzerinden hizmete erişmeye devam edebilirsiniz. Birincil ve ikincil anahtarları yeniden oluşturduktan sonra, yeni anahtarları kullanmak için istemci kodunu güncelleştirebilirsiniz ve işlemler buna uygun şekilde sürdürülür.
 
-API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Bilişsel Arama kullanılmak üzere özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular veya `primary` `secondary`ya da sabit dizelerdir. 
+API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Bilişsel Arama kullanılmak üzere özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular veya ya da sabit dizelerdir `primary` `secondary` . 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

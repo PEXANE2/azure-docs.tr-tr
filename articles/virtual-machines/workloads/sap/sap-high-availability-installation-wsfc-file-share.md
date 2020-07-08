@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617325"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler
@@ -231,13 +230,13 @@ Kurulum, kullandığınız DBMS 'ye bağlı olarak farklılık gösterdiğinden,
 
 SOFS kümesinde aşağıdaki birim ve dosya payını oluşturun:
 
-* SOFS küme paylaşılan `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` BIRIMI (CSV) ÜZERINDE SAP globalhost dosya yapısı
+* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`SOFS küme paylaşılan birimi (CSV) ÜZERINDE SAP GLOBALHOST dosya yapısı
 
 * SAPMNT dosya paylaşma
 
 * SAPMNT dosya paylaşımında ve için tam denetim ile klasör üzerinde güvenlik ayarlayın:
-    * \<Etki alanı> \ SAP_\<SID>_GlobalAdmin Kullanıcı grubu
-    * SAP ASCS/SCS küme düğümü bilgisayar nesneleri \<etki alanı> \clusternode1 $ ve \<etki alanı> \clusternode2 $
+    * \<DOMAIN>\ SAP_ \<SID> _GlobalAdmin Kullanıcı grubu
+    * SAP ASCS/SCS küme düğümü bilgisayar nesneleri \<DOMAIN> \Clusternode1 $ ve \<DOMAIN> \clusternode2 $
 
 Yansıtma dayanıklılığı olan bir CSV birimi oluşturmak için, SOFS küme düğümlerinden birinde aşağıdaki PowerShell cmdlet 'ini yürütün:
 
@@ -299,7 +298,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. Örneği yüklemek için SAP SWPM yükleme aracında şuraya gidin:
 
-**\<Ürün>**  >  >  **DBMS \< **, **yükleme**  > **uygulama sunucusu ABAP** (veya **Java**)>**yüksek kullanılabilirliğe sahip sistem** > **yoks/SCS örneği****ilk küme düğümü**>. > 
+**\<Product>** > **\<DBMS>** > **Yükleme**  >  **Uygulama sunucusu ABAP** (veya **Java**) **yüksek kullanılabilirliğe sahip sistem**  >  **yoks/SCS örneği**  >  **ilk küme düğümü**>.
 
 ### <a name="add-a-probe-port"></a>Araştırma bağlantı noktası ekle
 
@@ -309,12 +308,12 @@ PowerShell kullanarak SAP-SID-IP araştırma bağlantı noktasını bir SAP küm
 
 İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. Örneği yüklemek için SAP SWPM yükleme aracında şuraya gidin:
 
-**\<Ürün>**  >   >  **DBMS \<>** **yükleme** >  >  **Java** **High-Availability System****Application Server ABAP** **Additional cluster node****ASCS/SCS instance**uygulama sunucusu ABAP (veya Java) yüksek kullanılabilirlik sistemi yoks/SCS örneği ek küme düğümü >. > 
+**\<Product>** > **\<DBMS>** > **Yükleme**  >  **Uygulama sunucusu ABAP** (veya **Java**) **yüksek kullanılabilirliğe sahip sistem**  >  **yoks/SCS örneği**  >  **ek küme düğümü**>.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>SAP ASCS/SCS örnek profilini güncelleştirme
 
-SAP ascs/SCS örnek profili \<SID>_ascs/SCS\<NR>_ \<Host> parametrelerini güncelleştirin.
+SAP ASCS/SCS örnek profili \<SID> _yoks/ \<Nr> SCS_içindeki parametreleri güncelleştirin \<Host> .
 
 
 | Parametre adı | Parametre değeri |
@@ -323,7 +322,7 @@ SAP ascs/SCS örnek profili \<SID>_ascs/SCS\<NR>_ \<Host> parametrelerini günce
 | EnQue/encnı/set_so_keepalive  | **değeri** |
 | hizmet/ha_check_node | **1** |
 
-SAP ASCS/SCS örneğini yeniden başlatın. Her `KeepAlive` ıkı SAP ascs/SCS küme düğümlerinde parametreleri ayarla, [SAP ascs/SCS örneğinin küme düğümlerinde kayıt defteri girişlerini ayarlamak][high-availability-guide]için yönergeleri izleyin. 
+SAP ASCS/SCS örneğini yeniden başlatın. `KeepAlive`Her IKI SAP ascs/SCS küme düğümlerinde parametreleri ayarla, [SAP ascs/SCS örneğinin küme düğümlerinde kayıt defteri girişlerini ayarlamak][high-availability-guide]için yönergeleri izleyin. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 

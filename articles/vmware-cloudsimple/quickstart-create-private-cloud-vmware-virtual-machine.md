@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566157"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
@@ -96,7 +95,7 @@ Aşağıdaki bölümler, özel bulut iş yükleri için DNS ve DHCP sunucuların
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>VCenter 'a Kullanıcı ve kimlik kaynakları ekleme (Isteğe bağlı)
 
-CloudSimple, Kullanıcı adı `cloudowner@cloudsimple.local`ile varsayılan bir vCenter Kullanıcı hesabı atar. Kullanmaya başlamak için başka bir hesap kurulumu gerekli değildir.  CloudSimple normalde yöneticilere normal işlemler yapmak için ihtiyaç duydukları ayrıcalıkları atar.  Şirket içi Active Directory 'nizi veya Azure AD 'yi özel bulutunuzda [ek bir kimlik kaynağı](set-vcenter-identity.md) olarak ayarlayın.
+CloudSimple, Kullanıcı adı ile varsayılan bir vCenter Kullanıcı hesabı atar `cloudowner@cloudsimple.local` . Kullanmaya başlamak için başka bir hesap kurulumu gerekli değildir.  CloudSimple normalde yöneticilere normal işlemler yapmak için ihtiyaç duydukları ayrıcalıkları atar.  Şirket içi Active Directory 'nizi veya Azure AD 'yi özel bulutunuzda [ek bir kimlik kaynağı](set-vcenter-identity.md) olarak ayarlayın.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS ve DHCP sunucusu oluşturma (Isteğe bağlı)
 
@@ -200,7 +199,7 @@ netstat -an | grep 80
 python2.7 -m SimpleHTTPServer 80
 ```
 
-or
+veya
 
 ```
 python3 -m http.server 80

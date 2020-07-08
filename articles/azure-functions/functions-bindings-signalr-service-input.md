@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530269"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti giriş bağlaması
@@ -22,7 +21,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve HTTP üzerinden döndüren bir [C# işlevini](functions-dotnet-class-library.md) gösterir.
 
@@ -38,11 +37,11 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir.
+Aşağıdaki örnekte, bir *function.js* dosyadaki bir SignalR bağlantı bilgisi girişi bağlama ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [C# betik işlevi](functions-reference-csharp.md) gösterilmektedir.
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -68,11 +67,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
+Aşağıdaki örnekte, bir *function.js* dosyadaki bir SignalR bağlantı bilgisi girişi bağlama ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir.
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -94,11 +93,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
+Aşağıdaki örnekte, bir *function.js* dosyadaki bir SignalR bağlantı bilgisi girişi bağlama ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [Python işlevi](functions-reference-python.md) gösterilmektedir.
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -147,11 +146,11 @@ public SignalRConnectionInfo negotiate(
 
 İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-App Service kimlik doğrulaması, sırasıyla kimliği `x-ms-client-principal-id` doğrulanmış `x-ms-client-principal-name` kullanıcının istemci asıl kimliğini ve adını içeren ve adlı HTTP üstbilgilerini ayarlar.
+App Service kimlik doğrulaması, `x-ms-client-principal-id` `x-ms-client-principal-name` sırasıyla kimliği doğrulanmış kullanıcının ISTEMCI asıl kimliğini ve adını içeren ve adlı HTTP üstbilgilerini ayarlar.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Bağlama ifadesini kullanarak, `UserId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
+Bağlama `UserId` ifadesini kullanarak, bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}` .
 
 ```cs
 [FunctionName("negotiate")]
@@ -168,9 +167,9 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
+Bağlama `userId` ifadesini kullanarak, bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}` .
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -199,9 +198,9 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
+Bağlama `userId` ifadesini kullanarak, bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}` .
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -226,9 +225,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
+Bağlama `userId` ifadesini kullanarak, bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}` .
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
+Bağlama `userId` ifadesini kullanarak, bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}` .
 
 ```java
 @FunctionName("negotiate")

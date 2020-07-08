@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560091"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları olan kümeler Apache Hadoop
@@ -32,13 +31,13 @@ Mevcut bir depolama hesabını Azure portal güncelleştirmek için bkz. [Azure 
 
 ### <a name="powershell"></a>PowerShell
 
-[New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)PowerShell cmdlet 'i için parametrenin `-EnableHttpsTrafficOnly` olarak `1`ayarlandığından emin olun.
+[New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)PowerShell cmdlet 'i için parametrenin `-EnableHttpsTrafficOnly` olarak ayarlandığından emin olun `1` .
 
 Var olan bir depolama hesabını PowerShell ile güncelleştirmek için bkz. [PowerShell ile güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı komutu [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)parametresi için parametresinin `--https-only` olarak `true`ayarlandığından emin olun.
+Azure CLı komutu [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)parametresi için parametresinin `--https-only` olarak ayarlandığından emin olun `true` .
 
 Azure CLı ile mevcut bir depolama hesabını güncelleştirmek için bkz. [Azure CLI ile güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 

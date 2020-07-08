@@ -7,10 +7,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523773"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
@@ -60,7 +59,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-`AddAzureAppConfiguration` İşleve geçirilen `optional` parametreye dikkat edin. Olarak `true`ayarlandığında, bu parametre, işlev yapılandırma verilerini yükleyememesi durumunda uygulamanın devam etmesini önler.
+`optional`İşleve geçirilen parametreye dikkat edin `AddAzureAppConfiguration` . Olarak ayarlandığında `true` , bu parametre, işlev yapılandırma verilerini yükleyememesi durumunda uygulamanın devam etmesini önler.
 
 ## <a name="synchronization-between-configuration-stores"></a>Yapılandırma depoları arasında eşitleme
 
@@ -68,7 +67,7 @@ Coğrafi olarak yedekli yapılandırma mağazalarınızın tümünün aynı veri
 
 Azure portal, aşağıdaki adımları izleyerek başka bir yapılandırma deposuna bir değişikliği gönderebilirsiniz.
 
-1. **İçeri/dışarı aktarma** sekmesine gidin ve**uygulama yapılandırma** > **hedefini** >  **dışarı aktar** > ' ı seçin ve**kaynak seçin**.
+1. **İçeri/dışarı aktarma** sekmesine gidin ve uygulama yapılandırma hedefini **dışarı aktar**' ı seçin ve  >  **App Configuration**  >  **Target**  >  **kaynak seçin**.
 
 1. Açılan yeni dikey pencerede abonelik, kaynak grubu ve ikincil deponuzu kaynak adını belirtip **Uygula**' yı seçin.
 

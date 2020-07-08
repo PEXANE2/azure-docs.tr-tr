@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616698"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
@@ -105,7 +104,7 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 
     ![SAP CAL temel modu: örnek oluştur](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. **Oluştur**' a tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
+1. **Oluştur**'a tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
 
     ![SAP CAL örnekleri](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

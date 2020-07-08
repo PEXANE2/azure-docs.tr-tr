@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471032"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleyin
@@ -23,7 +22,7 @@ HDInsight 'ta [Apache Hive](https://hive.apache.org/) kitaplıklarını önceden
 
 Bir küme oluştururken, küme düğümlerini oluşturuldukları sırada değiştirmek için bir betik eylemi kullanabilirsiniz. Bu belgedeki betik, kitaplıkların konumu olan tek bir parametreyi kabul eder. Bu konum bir Azure depolama hesabında olmalıdır ve kitaplıkların jar dosyaları olarak depolanması gerekir.
 
-Küme oluşturma sırasında betik, dosyaları numaralandırır, bunları baş ve çalışan düğümlerinde `/usr/lib/customhivelibs/` dizine kopyalar ve ardından bunları `hive.aux.jars.path` `core-site.xml` dosyadaki özelliğine ekler. Linux tabanlı kümeler üzerinde `hive-env.sh` dosya konumuyla birlikte dosyayı da güncelleştirir.
+Küme oluşturma sırasında betik, dosyaları numaralandırır, bunları `/usr/lib/customhivelibs/` baş ve çalışan düğümlerinde dizine kopyalar ve ardından bunları `hive.aux.jars.path` dosyadaki özelliğine ekler `core-site.xml` . Linux tabanlı kümeler üzerinde `hive-env.sh` Dosya konumuyla birlikte dosyayı da güncelleştirir.
 
 Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**için Hive istemcisi kullanılırken kitaplıkları kullanılabilir hale getirir.
 
@@ -41,7 +40,7 @@ Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**içi
 
 * Jar dosyalarının kitaplığını içeren depolama hesabı, oluşturma sırasında HDInsight **kümesine bağlanmalıdır.** Bu, varsayılan depolama hesabı ya da __depolama hesabı ayarları__aracılığıyla eklenmiş bir hesap olmalıdır.
 
-* Kapsayıcının ınsıb yolu, komut dosyası eyleminin parametresi olarak belirtilmelidir. Örneğin, JAR dosyaları dışındaki, **depolamam**adlı bir depolama hesabındaki `wasbs://libs@mystorage.blob.core.windows.net/` **LIBS** adlı bir kapsayıcıda depolanıyorsa parametre olur.
+* Kapsayıcının ınsıb yolu, komut dosyası eyleminin parametresi olarak belirtilmelidir. Örneğin, JAR dosyaları dışındaki, **depolamam**adlı bir depolama hesabındaki **LIBS** adlı bir kapsayıcıda depolanıyorsa parametre olur `wasbs://libs@mystorage.blob.core.windows.net/` .
 
   > [!NOTE]  
   > Bu belge, zaten bir depolama hesabı, blob kapsayıcısı oluşturmuş olduğunuzu ve dosyaları ona yüklediğinizi varsayar.
@@ -59,17 +58,17 @@ Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**içi
     |Özellik |Değer |
     |---|---|
     |Betik türü|-Özel|
-    |Adı|Kitaplıklar |
+    |Name|Kitaplıklar |
     |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Düğüm türleri|Baş, çalışan|
     |Parametreler|Cars 'ı içeren kapsayıcı ve depolama hesabına ait olan adresi girin. Örneğin, `wasbs://libs@mystorage.blob.core.windows.net/`.|
 
     > [!NOTE]
-    > Apache Spark 2,1 için şu Bash betiği URI 'sini kullanın: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
+    > Apache Spark 2,1 için şu Bash betiği URI 'sini kullanın: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh` .
 
 1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümünde açıklandığı gibi kümeyi sağlamaya devam edin.
 
-Küme oluşturma işlemi tamamlandıktan sonra, `ADD JAR` ifadesini kullanmak zorunda kalmadan Hive 'den bu komut dosyası aracılığıyla eklenen jar dosyaları dışındaki 'ı kullanabilirsiniz.
+Küme oluşturma işlemi tamamlandıktan sonra, ifadesini kullanmak zorunda kalmadan Hive 'den bu komut dosyası aracılığıyla eklenen jar dosyaları dışındaki 'ı kullanabilirsiniz `ADD JAR` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595833"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service ile CoreDNS hizmetini özelleştirme
@@ -34,7 +33,7 @@ Tüm yerleşik CoreDNS eklentileri desteklenir. Eklenti/üçüncü taraf eklenti
 
 ## <a name="rewrite-dns"></a>DNS 'i yeniden yaz
 
-Sahip olduğunuz bir senaryo, anlık DNS adını yeniden yazar işlemini gerçekleştirmenizi sağlar. Aşağıdaki örnekte, kendi tam etki `<domain to be written>` alanı adınızla değiştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
+Sahip olduğunuz bir senaryo, anlık DNS adını yeniden yazar işlemini gerçekleştirmenizi sağlar. Aşağıdaki örnekte, `<domain to be written>` kendi tam etki alanı adınızla değiştirin. Adlı bir dosya oluşturun `corednsms.yaml` ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -64,18 +63,18 @@ kubectl apply -f corednsms.yaml
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Şimdi CoreDNS 'i ConfigMap 'i yeniden yüklemeye zorlayın. [Kubectl Delete Pod][kubectl delete] komutu bozucu değil ve zamana neden olmaz. `kube-dns` Pod 'ler silinir ve Kubernetes Zamanlayıcı bunları yeniden oluşturur. Bu yeni FID 'ler TTL değerindeki değişikliği içerir.
+Şimdi CoreDNS 'i ConfigMap 'i yeniden yüklemeye zorlayın. [Kubectl Delete Pod][kubectl delete] komutu bozucu değil ve zamana neden olmaz. `kube-dns`Pod 'ler silinir ve Kubernetes Zamanlayıcı bunları yeniden oluşturur. Bu yeni FID 'ler TTL değerindeki değişikliği içerir.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> Yukarıdaki komutu doğru. Değişiklik `coredns`yaptığımız sırada dağıtım **kuin-DNS** adı altındadır.
+> Yukarıdaki komutu doğru. Değişiklik yaptığımız sırada `coredns` dağıtım **kuin-DNS** adı altındadır.
 
 ## <a name="custom-forward-server"></a>Özel ileri sunucu
 
-Ağ trafiğiniz için bir iletme sunucusu belirtmeniz gerekiyorsa, DNS 'yi özelleştirmek için bir ConfigMap oluşturabilirsiniz. Aşağıdaki örnekte, `forward` ad ve adresi kendi ortamınızın değerleriyle güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
+Ağ trafiğiniz için bir iletme sunucusu belirtmeniz gerekiyorsa, DNS 'yi özelleştirmek için bir ConfigMap oluşturabilirsiniz. Aşağıdaki örnekte, `forward` ad ve adresi kendi ortamınızın değerleriyle güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -101,7 +100,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 Yalnızca dahili olarak çözümlenebileceğiniz özel etki alanlarını yapılandırmak isteyebilirsiniz. Örneğin, geçerli bir üst düzey etki alanı olmayan, *poglife. Local*özel etki alanını çözümlemek isteyebilirsiniz. Özel bir etki alanı ConfigMap olmadan AKS kümesi adresi çözemiyor.
 
-Aşağıdaki örnekte, özel etki alanını ve IP adresini kendi ortamınızın değerleriyle doğrudan trafiğe yönlendirmek için güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
+Aşağıdaki örnekte, özel etki alanını ve IP adresini kendi ortamınızın değerleriyle doğrudan trafiğe yönlendirmek için güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -127,7 +126,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 ## <a name="stub-domains"></a>Saplama etki alanları
 
-CoreDNS, saplama etki alanlarını yapılandırmak için de kullanılabilir. Aşağıdaki örnekte, özel etki alanlarını ve IP adreslerini kendi ortamınızın değerleriyle güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
+CoreDNS, saplama etki alanlarını yapılandırmak için de kullanılabilir. Aşağıdaki örnekte, özel etki alanlarını ve IP adreslerini kendi ortamınızın değerleriyle güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1

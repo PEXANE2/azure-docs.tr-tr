@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617068"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA tarafından izleme ve sorun giderme
@@ -70,7 +69,7 @@ Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: CPU Ile Ilg
 
 Linux üzerinde SAP HANA en önemli denetimlerinden biri, saydam büyük sayfaların devre dışı bırakıldığından emin olmak için, [SAP HANA sunucularında SAP Note #2131662 – saydam büyük sayfalar (THP)](https://launchpad.support.sap.com/#/notes/2131662)konusuna bakın.
 
-- Saydam büyük sayfaların şu Linux komutu aracılığıyla etkinleştirilip etkinleştirilmediğini kontrol edebilirsiniz: **Cat/sys/kernel/mm/Transparent\_kugepage/Enabled**
+- Saydam büyük sayfaların şu Linux komutu aracılığıyla etkinleştirilip etkinleştirilmediğini kontrol edebilirsiniz: **Cat/sys/kernel/mm/Transparent \_ kugepage/Enabled**
 - Aşağıdaki gibi _her zaman_ köşeli ayraç içine Alınmısa, saydam büyük sayfaların etkin olduğu anlamına gelir: [Always] her zaman madmenlik; aşağıdaki gibi _hiçbir zaman_ parantez içine alınmadıysa, saydam büyük sayfaların devre dışı bırakıldığı anlamına gelir: her zaman madmenlik [hiçbir zaman]
 
 Aşağıdaki Linux komutu Nothing olarak döndürmelidir: **RPM-qa | grep ulimit.** _Uılimit_ yüklüyse, hemen kaldırın.
@@ -93,10 +92,10 @@ Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: bellek soru
 [SAP note #2081065 – SAP HANA ağ sorunlarını giderme](https://launchpad.support.sap.com/#/notes/2081065) ve bu SAP notunda ağ sorun giderme adımlarını gerçekleştirme bölümüne bakın.
 
 1. Sunucu ve istemci arasındaki gidiş dönüş süresini çözümleme.
-  A. SQL betiği [_Hana\_\_ağ istemcilerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
+  A. SQL betiği [_Hana \_ Ağ \_ istemcilerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
   
 2. Düğümler arası iletişimi analiz edin.
-  A. SQL betiği [_Hana\_\_ağ hizmetlerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
+  A. SQL betiği [_Hana \_ Ağ \_ hizmetlerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
 
 3. Linux komutunu çalıştırın **ıconfig** (çıkış, herhangi bir paket kayıpları oluşup oluşmadığını gösterir).
 4. Linux komutunu çalıştırın **tcpdump**.
@@ -119,15 +118,15 @@ Ekranın alt kısmındaki eklenen birimler, birimlerin ayrıntılarını (örne�
 
 ## <a name="diagnostic-tools"></a>Tanılama Araçları
 
-HANA\_yapılandırma\_Minichecks aracılığıyla SAP HANA bir sistem durumu denetimi gerçekleştirin. Bu araç, SAP HANA Studio 'da zaten uyarı olarak oluşturulmuş olması gereken önemli olabilecek teknik sorunları döndürür.
+HANA yapılandırma Minichecks aracılığıyla SAP HANA bir sistem durumu denetimi gerçekleştirin \_ \_ . Bu araç, SAP HANA Studio 'da zaten uyarı olarak oluşturulmuş olması gereken önemli olabilecek teknik sorunları döndürür.
 
-[SAP HANA Için SAP Note #1969700 – SQL deyimi koleksiyonuna](https://launchpad.support.sap.com/#/notes/1969700) bakın ve bu nota eklenen SQL deyimlerini. zip dosyasını indirin. Bu. zip dosyasını yerel sabit sürücüde depolayın.
+[SAP HANA Için SAP Note #1969700 – SQL deyimkoleksiyonu](https://launchpad.support.sap.com/#/notes/1969700) ' na bakın ve söz konusu nota eklenen SQL Statements.zip dosyasını indirin. Bu. zip dosyasını yerel sabit sürücüde depolayın.
 
 SAP HANA Studio 'da, **sistem bilgileri** sekmesinde **ad** sütununa sağ tıklayın ve **SQL deyimlerini içeri aktar**' ı seçin.
 
 ![SAP HANA Studio 'da, sistem bilgileri sekmesinde Ad sütununa sağ tıklayın ve SQL deyimlerini Içeri Aktar ' ı seçin.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Yerel olarak depolanan SQL deyimlerini. zip dosyasını seçin ve karşılık gelen SQL deyimlerine sahip bir klasör içeri aktarılır. Bu noktada, birçok farklı tanılama denetimi bu SQL deyimleriyle çalıştırılabilir.
+Yerel olarak depolanan SQL Statements.zip dosyasını ve karşılık gelen SQL deyimleriyle birlikte içeri aktarılacak bir klasörü seçin. Bu noktada, birçok farklı tanılama denetimi bu SQL deyimleriyle çalıştırılabilir.
 
 Örneğin, SAP HANA sistem çoğaltması bant genişliği gereksinimlerini test etmek için **çoğaltma: bant genişliği** altında **bant genişliği** BILDIRIMINE sağ tıklayın ve SQL konsolunda **Aç** ' ı seçin.
 
@@ -143,29 +142,29 @@ Bu, sorun gidermenize yardımcı olan bilgiler ile sonuçlanır:
 
 ![Bu, sorun gidermenize yardımcı olacak bilgiler ile sonuçlanır](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-HANA\_yapılandırma\_Minichecks için aynısını yapın ve _C_ (kritik) sütununda herhangi bir _X_ işaretini kontrol edin.
+HANA yapılandırma Minichecks için aynısını \_ yapın \_ ve _C_ (kritik) sütununda herhangi bir _X_ işaretini kontrol edin.
 
 Örnek çıktılar:
 
-Genel SAP HANA denetimleri için **Hana\_Configuration\_MiniChecks\_Rev 102.01 + 1** .
+**Hana \_ Genel SAP HANA denetimleri için yapılandırma \_ MiniChecks \_ Rev 102.01 + 1** .
 
-![HANA\_Configuration\_MiniChecks\_Rev 102.01 + 1 Genel SAP HANA denetimleri için](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA \_ Configuration \_ MiniChecks \_ Rev 102.01 + 1 Genel SAP HANA denetimleri için](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**Hana\_hizmetlerine\_genel bakış** SAP HANA Hizmetleri 'nin şu anda çalıştığı konusuna genel bakış.
+**Hana \_ Hizmetlere genel \_ bakış** SAP HANA Hizmetleri şu anda çalışıyor.
 
-![HANA\_hizmetlerine\_genel bakış SAP HANA Hizmetleri 'nin şu anda çalıştığı hakkında genel bakış](./media/troubleshooting-monitoring/image12-services-overview.png)
+![HANA \_ hizmetlerine \_ genel bakış SAP HANA Hizmetleri 'nin şu anda çalıştığı hakkında genel bakış](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-SAP HANA hizmet bilgileri için **\_Hana HIZMETLERI\_istatistikleri** (CPU, bellek, vb.).
+**Hana \_ SAP HANA \_ ** Service ıNFORMATION (CPU, bellek, vb.) için hizmet istatistikleri.
 
-![SAP HANA\_hizmeti\_bilgileri için Hana Hizmetleri istatistikleri](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![\_ \_ SAP HANA hizmeti BILGILERI için Hana Hizmetleri istatistikleri](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-SAP HANA örneği hakkında genel bilgi için **Hana\_yapılandırmasına\_genel\_bakış Rev110 +** .
+**Hana \_ SAP HANA örneğiyle ilgili genel bilgiler için yapılandırmaya \_ Genel Bakış \_ Rev110 +** .
 
-![SAP HANA\_örneği\_hakkında\_genel bilgi için Hana yapılandırmasına genel bakış Rev110 +](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![\_ \_ \_ SAP HANA örneği hakkında genel bilgi için Hana yapılandırmasına genel bakış Rev110 +](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-SAP HANA parametrelerini denetlemek için **Hana\_yapılandırma\_\_parametreleri Rev70 +** .
+**Hana \_ SAP HANA parametrelerini denetlemek için \_ \_ Rev70 + yapılandırma parametreleri** .
 
-![SAP HANA\_parametrelerini\_denetlemek\_için Hana yapılandırma parametreleri Rev70 +](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![\_ \_ \_ SAP HANA PARAMETRELERINI denetlemek için Hana yapılandırma parametreleri Rev70 +](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **Sonraki adımlar**
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425875"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
@@ -38,7 +37,7 @@ Diyagram, aracı tabanlı geçişe dahil olan bileşenleri gösterir.
 
 Tablo, aracı tabanlı geçiş için kullanılan bileşenleri özetler.
 
-**Bileşen** | **Bilgileri** | **Yükleme**
+**Bileşen** | **Ayrıntılar** | **Yükleme**
 --- | --- | ---
 **Çoğaltma gereci** | Çoğaltma gereci (yapılandırma sunucusu/işlem sunucusu), şirket içi ortam ve sunucu geçişi arasında köprü görevi gören bir şirket içi makinedir. Gereç, şirket içi makine envanterini bulur, böylece sunucu geçişi çoğaltma ve geçişi düzenleyebilir. Gereç iki bileşene sahiptir:<br/><br/> **Yapılandırma sunucusu**: sunucu geçişine bağlanır ve çoğaltmaları koordine eder.<br/> **İşlem sunucusu**: veri çoğaltmasını işler. İşlem sunucusu makine verilerini alır, sıkıştırır ve şifreler ve Azure 'a gönderir. Azure 'da, sunucu geçişi verileri yönetilen disklere yazar. | Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde yapılandırma sunucusu ile birlikte yüklenir.
 **Mobility hizmeti** | Mobility hizmeti, çoğaltmak ve geçirmek istediğiniz her makinede yüklü bir aracıdır. Makineden işlem sunucusuna çoğaltma verileri gönderir. | Mobility hizmetinin farklı sürümleri için yükleme dosyaları, çoğaltma gereci üzerinde bulunur. Çoğaltmak istediğiniz makinenin işletim sistemine ve sürümüne uygun olarak, ihtiyacınız olan aracıyı indirip yüklersiniz.
@@ -73,7 +72,7 @@ Mobility hizmeti, çoğaltma gereci ve çoğaltılan makinelerle iletişim kurar
 
 ## <a name="ports"></a>Bağlantı noktaları
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | --- 
 **Makineleri çoğaltma** | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci ile iletişim kurar.<br/><br/> Makineler, çoğaltma verilerini işlem sunucusuna HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 **Çoğaltma gereci** | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.

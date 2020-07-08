@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77463225"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Ranger ve Apache ambarı 'nda LDAP eşitlemesi
@@ -33,9 +32,9 @@ Güvenli bir küme dağıtıldığında, Grup üyeleri geçişli olarak (tüm al
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambarı Kullanıcı eşitleme ve yapılandırma
 
-Kullanıcı eşitlemesini zamanlamak için bir cron işi `/opt/startup_scripts/start_ambari_ldap_sync.py`olan baş düğümlerden her saat çalıştırılır. Cron işi, eşitlemeyi gerçekleştirmek için, ambarı REST API 'Lerini çağırır. Betik, eşitlenecek Kullanıcı ve grupların bir listesini gönderir (kullanıcılar belirtilen gruplara ait olmayabilir, her ikisi de ayrı olarak belirtilir). Ambarı, sAMAccountName öğesini Kullanıcı adı ve tüm grup üyeleri olarak eşitler, geçişli.
+Kullanıcı eşitlemesini zamanlamak için bir cron işi olan baş düğümlerden `/opt/startup_scripts/start_ambari_ldap_sync.py` her saat çalıştırılır. Cron işi, eşitlemeyi gerçekleştirmek için, ambarı REST API 'Lerini çağırır. Betik, eşitlenecek Kullanıcı ve grupların bir listesini gönderir (kullanıcılar belirtilen gruplara ait olmayabilir, her ikisi de ayrı olarak belirtilir). Ambarı, sAMAccountName öğesini Kullanıcı adı ve tüm grup üyeleri olarak eşitler, geçişli.
 
-Günlüklerin içinde `/var/log/ambari-server/ambari-server.log`olması gerekir. Daha fazla bilgi için bkz. [ambarı günlüğü düzeyini yapılandırma](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
+Günlüklerin içinde olması gerekir `/var/log/ambari-server/ambari-server.log` . Daha fazla bilgi için bkz. [ambarı günlüğü düzeyini yapılandırma](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
 Data Lake kümelerinde, Kullanıcı sonrası oluşturma kancası, eşitlenen kullanıcılar için giriş klasörleri oluşturmak için kullanılır ve giriş klasörlerinin sahibi olarak ayarlanır. Kullanıcı, doğru şekilde ambarla eşitlenmemişse, hazırlama ve diğer geçici klasörlere erişme sırasında Kullanıcı hatalara karşı başarısız olabilir.
 
@@ -64,16 +63,16 @@ Artımlı eşitleme yalnızca zaten eşitlenmiş olan kullanıcılar (ilk kez) i
 
 ### <a name="update-ranger-sync-filter"></a>Ranger eşitleme filtresini Güncelleştir
 
-LDAP filtresi, ' ın Ranger Kullanıcı-eşitleme Yapılandırması bölümünün altında bulunan ambarı Kullanıcı arabiriminde bulunabilir. Mevcut filtre formda `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`olacaktır. Son ' a koşul ekleyip arama komutunu veya Ldp. exe ' yi veya `net ads` benzer bir şeyi kullanarak filtreyi test edin.
+LDAP filtresi, ' ın Ranger Kullanıcı-eşitleme Yapılandırması bölümünün altında bulunan ambarı Kullanıcı arabiriminde bulunabilir. Mevcut filtre formda olacaktır `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))` . Son sırada koşul ekleyip `net ads` arama komutunu veya ldp.exe veya benzer bir şeyi kullanarak filtreyi test edin.
 
 ## <a name="ranger-user-sync-logs"></a>Ranger Kullanıcı eşitleme günlükleri
 
-Ranger Kullanıcı eşitlemesi, her iki yayın düğümünden de oluşabilir. Günlükler ' de `/var/log/ranger/usersync/usersync.log`bulunur. Günlüklerin ayrıntı düzeyini artırmak için aşağıdaki adımları uygulayın:
+Ranger Kullanıcı eşitlemesi, her iki yayın düğümünden de oluşabilir. Günlükler ' de bulunur `/var/log/ranger/usersync/usersync.log` . Günlüklerin ayrıntı düzeyini artırmak için aşağıdaki adımları uygulayın:
 
 1. Ambarı 'nda oturum açın.
 1. Ranger yapılandırma bölümüne gidin.
 1. Gelişmiş **usersync-Log4J** bölümüne gidin.
-1. Öğesini olarak `log4j.rootLogger` `DEBUG` değiştirin (değiştirme sonrasında, şöyle `log4j.rootLogger = DEBUG,logFile,FilterLog`görünmelidir).
+1. Öğesini `log4j.rootLogger` olarak değiştirin `DEBUG` (değiştirme sonrasında, şöyle görünmelidir `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Yapılandırmayı kaydedin ve Ranger 'ı yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

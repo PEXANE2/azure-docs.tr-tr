@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565936"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager ile özel bulutu olağanüstü durum kurtarma hedefi olarak ayarlama
@@ -146,7 +145,7 @@ VSphere çoğaltma 6,5 için ayrıntılı yükleme yönergeleri için bkz. VMwar
 
 CloudSimple portalından ayrıcalıkların ilerleme işleminden sonra cloudowner Kullanıcı kimlik bilgilerini kullanarak vCenter 'da oturum açın.
 
-VCenter 'da yeni bir Kullanıcı `srm-soln-admin`oluşturun ve vCenter 'daki Yöneticiler grubuna ekleyin.
+VCenter 'da yeni bir kullanıcı oluşturun `srm-soln-admin` ve vCenter 'daki Yöneticiler grubuna ekleyin.
 Cloudowner kullanıcısı olarak vCenter oturumunu kapatın ve *SRM-soln-yönetici* kullanıcısı olarak oturum açın.
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple Portal: vRA için güvenlik duvarı kurallarını yapılandırma

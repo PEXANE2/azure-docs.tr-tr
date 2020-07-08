@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212274"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama
@@ -45,13 +44,13 @@ Başlamadan önce:
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure aboneliğinizde oturum açın
 
-`Connect-AzAccount` Cmdlet 'ı ile Azure aboneliğinizde oturum açın.
+Cmdlet 'i ile Azure aboneliğinizde oturum açın `Connect-AzAccount` .
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Azure aboneliğinizi seçin. Erişiminiz olan `Get-AzSubscription` Azure aboneliklerinin listesini almak için cmdlet 'ini kullanın. `Set-AzContext` Cmdlet 'ini kullanarak birlikte çalışmak için Azure aboneliğini seçin.
+Azure aboneliğinizi seçin. `Get-AzSubscription`Erişiminiz olan Azure aboneliklerinin listesini almak için cmdlet 'ini kullanın. Cmdlet 'ini kullanarak birlikte çalışmak için Azure aboneliğini seçin `Set-AzContext` .
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -59,7 +58,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>Çoğaltılacak sanal makinenin ayrıntılarını al
 
-Bu makalede, Doğu ABD bölgesindeki bir sanal makine Batı ABD 2 bölgesinde çoğaltılır ve kurtarılabilir. Çoğaltılan sanal makinenin bir işletim sistemi diski ve tek bir veri diski vardır. Örnekte kullanılan sanal makinenin adı `AzureDemoVM`.
+Bu makalede, Doğu ABD bölgesindeki bir sanal makine Batı ABD 2 bölgesinde çoğaltılır ve kurtarılabilir. Çoğaltılan sanal makinenin bir işletim sistemi diski ve tek bir veri diski vardır. Örnekte kullanılan sanal makinenin adı `AzureDemoVM` .
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -115,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Bir kurtarma hizmetleri Kasası oluşturun. Bu örnekte, Batı ABD 2 bölgesinde adlı `a2aDemoRecoveryVault` bir kurtarma hizmetleri Kasası oluşturulur.
+Bir kurtarma hizmetleri Kasası oluşturun. Bu örnekte, Batı ABD 2 bölgesinde adlı bir kurtarma hizmetleri Kasası `a2aDemoRecoveryVault` oluşturulur.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -170,7 +169,7 @@ Kasadaki yapı nesnesi bir Azure bölgesini temsil eder. Birincil yapı nesnesi,
 - Her bölge için yalnızca bir yapı nesnesi oluşturulabilir.
 - Daha önce Azure portal bir VM için Site Recovery çoğaltmasını etkinleştirdiyseniz Site Recovery otomatik olarak bir Fabric nesnesi oluşturur. Bir bölge için bir yapı nesnesi varsa yeni bir tane oluşturamazsınız.
 
-Başlamadan önce Site Recovery işlemlerinin zaman uyumsuz olarak yürütüldüğünü anlayın. Bir işlemi başlattığınızda bir Azure Site Recovery işi gönderilir ve bir iş izleme nesnesi döndürülür. İşle ilgili`Get-AzRecoveryServicesAsrJob`en son durumu almak ve işlemin durumunu izlemek için iş izleme nesnesini kullanın.
+Başlamadan önce Site Recovery işlemlerinin zaman uyumsuz olarak yürütüldüğünü anlayın. Bir işlemi başlattığınızda bir Azure Site Recovery işi gönderilir ve bir iş izleme nesnesi döndürülür. İşle ilgili en son durumu almak `Get-AzRecoveryServicesAsrJob` ve işlemin durumunu izlemek için iş izleme nesnesini kullanın.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -603,7 +602,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-fail-back-to-the-source-region"></a>Yeniden koruma ve kaynak bölgeye geri dönme
 
-Yük devretmenin ardından, özgün bölgeye geri dönmek için hazırsanız, `Update-AzRecoveryServicesAsrProtectionDirection` cmdlet 'ini kullanarak çoğaltma korumalı öğe için çoğaltmayı tersine çevirme işlemini başlatın.
+Yük devretmenin ardından, özgün bölgeye geri dönmek için hazırsanız, cmdlet 'ini kullanarak çoğaltma korumalı öğe için çoğaltmayı tersine çevirme işlemini başlatın `Update-AzRecoveryServicesAsrProtectionDirection` .
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -620,7 +619,7 @@ Yeniden koruma tamamlandıktan sonra, ters yönde yük devretmek, Doğu ABD Bat�
 
 ## <a name="disable-replication"></a>Çoğaltmayı devre dışı bırakma
 
-`Remove-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet ile çoğaltmayı devre dışı bırakabilirsiniz.
+Cmdlet ile çoğaltmayı devre dışı bırakabilirsiniz `Remove-AzRecoveryServicesAsrReplicationProtectedItem` .
 
 ```azurepowershell
 Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem

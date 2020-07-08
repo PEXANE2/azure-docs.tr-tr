@@ -8,10 +8,9 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523807"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure uygulama yapılandırma olaylarına yeniden davranıma
@@ -46,10 +45,10 @@ Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt ver
 > |Kimlik|string|Bu olayın benzersiz tanımlayıcısı.|
 > |dataVersion|string|Veri nesnesinin şema sürümü.|
 > |metadataVersion|string|Üst düzey özelliklerin şema sürümü.|
-> |veri|object|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
+> |veriler|nesne|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
 > |Data. Key|string|Değiştirilen veya silinen anahtar-değer anahtarı.|
 > |Data. Label|string|Değiştirilen veya silinen anahtar-değer etiketi.|
-> |Data. ETag|string|Yeni `KeyValueModified` anahtar-değer ETag için. Silinen `KeyValueDeleted` anahtar değerinin ETag 'i için.|
+> |Data. ETag|string|`KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için.|
 
 KeyValueModified olayına bir örnek aşağıda verilmiştir:
 ```json

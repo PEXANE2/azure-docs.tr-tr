@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588187"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Microsoft Web uygulaması güvenlik duvarındaki verileri bağlama
@@ -34,7 +33,7 @@ Microsoft Web uygulaması güvenlik duvarınız dağıtıldıktan ve veriler al�
     
 1. Azure Sentinel portalında **veri bağlayıcıları**' nı seçin.
 1. Veri bağlayıcıları sayfasında **WAF** kutucuğunu seçin.
-1. [Application Gateway kaynağına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) gidin ve WAF 'nizi seçin.
+1. [Application Gateway kaynağına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)gidin   ve WAF 'nizi seçin.
     1. **Tanılama ayarları**' nı seçin.
     1. Tablo altında **+ Tanılama ayarı Ekle** ' yi seçin.
     1. **Tanılama ayarları** sayfasında, bir **ad** yazın ve **Log Analytics gönder**' i seçin.

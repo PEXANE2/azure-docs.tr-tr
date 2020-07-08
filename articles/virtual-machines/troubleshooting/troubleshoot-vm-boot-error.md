@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561958"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM, grub kurtarma için önyüklenir
@@ -41,13 +40,13 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
 * Hata 15 hata alıyorsanız **: dosya bulunamadı veya Ilk RAM diski** ya da **ınitrd/ınitramfs dosyası bulunamadı**, aşağıdaki adımları izleyin.
 
-    * Eksik dosya `/boot/grub2/grub.cfg` için aşağıdaki işleme `initrd/initramfs` devam edin:
+    * Eksik dosya için `/boot/grub2/grub.cfg` `initrd/initramfs` aşağıdaki işleme devam edin:
 
-    1. Var `/etc/default/grub` olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
+    1. `/etc/default/grub`Var olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
 
     2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**) için, komutların farklı olması için kullanılır. Doğru komutların sağlandığından emin olmak için, eski bir sunucu ve test etmeniz gerekir.
+   * Eksik dosya varsa `/boot/grub/menu.lst` , bu hata eski işletim sistemi sürümleri (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**) için, komutların farklı olması için kullanılır. Doğru komutların sağlandığından emin olmak için, eski bir sunucu ve test etmeniz gerekir.
 
 ### <a name="error---no-such-partition"></a>Hata-böyle bir bölüm yok
 
@@ -57,13 +56,13 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
 * **/Boot/GRUB2/grub.cfg dosyası bulunamadı**hatasını alıyorsanız aşağıdaki adımları izleyin.
 
-    * Eksik dosya `/boot/grub2/grub.cfg` için aşağıdaki işleme `initrd/initramfs` devam edin:
+    * Eksik dosya için `/boot/grub2/grub.cfg` `initrd/initramfs` aşağıdaki işleme devam edin:
 
-    1. Var `/etc/default/grub` olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
+    1. `/etc/default/grub`Var olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
 
-    2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
+    2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın: `grub2-mkconfig -o /boot/grub2/grub.cfg` .
 
-   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri Için (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**), böylece komutların ertelenmesi gerekir. Eski bir sunucu başlatın ve doğru komutların sağlandığından emin olmak için test edin.
+   * Eksik dosya varsa `/boot/grub/menu.lst` , bu hata eski işletim sistemi sürümleri için (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**), böylece komutların ertelenmesi gerekir. Eski bir sunucu başlatın ve doğru komutların sağlandığından emin olmak için test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

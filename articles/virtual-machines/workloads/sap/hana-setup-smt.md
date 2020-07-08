@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616984"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux için SMT Server 'ı ayarlama
@@ -34,7 +33,7 @@ HANA büyük örneklere yönelik görevi yerine getiren bir SMT sunucusunu yükl
 
 İlk olarak, [SUSE müşteri merkezinde](https://scc.suse.com/)oturum açın.
 
-**Kuruluş** > **kuruluşu kimlik bilgileri**' ne gidin. Bu bölümde, SMT sunucusunu ayarlamak için gereken kimlik bilgilerini bulmanız gerekir.
+**Kuruluş**  >  **kuruluşu kimlik bilgileri**' ne gidin. Bu bölümde, SMT sunucusunu ayarlamak için gereken kimlik bilgilerini bulmanız gerekir.
 
 Ardından, Azure sanal ağına bir SUSE Linux VM 'si yüklersiniz. Sanal makineyi dağıtmak için, Azure 'un SLES 12 SP2 Galeri görüntüsünü alın (KCG SUSE görüntüsünü seçin). Dağıtım sürecinde, DNS adı tanımlamaz ve statik IP adresleri kullanmayın.
 
@@ -83,7 +82,7 @@ Ayrıca, SMT paketlerini yüklemek için YAST aracını da kullanabilirsiniz. YA
 ![YAST içindeki SMT ekran görüntüsü](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Smtserver üzerinde yükleme seçimini kabul edin. Yükleme tamamlandıktan sonra, SMT sunucu yapılandırmasına gidin. Daha önce aldığınız SUSE müşteri merkezinden kuruluş kimlik bilgilerini girin. Ayrıca, Azure sanal makinenizin ana bilgisayar adını SMT sunucu URL 'SI olarak girin. Bu gösteride, https:\//smtserver.
+Smtserver üzerinde yükleme seçimini kabul edin. Yükleme tamamlandıktan sonra, SMT sunucu yapılandırmasına gidin. Daha önce aldığınız SUSE müşteri merkezinden kuruluş kimlik bilgilerini girin. Ayrıca, Azure sanal makinenizin ana bilgisayar adını SMT sunucu URL 'SI olarak girin. Bu gösteride, https: \/ /smtserver.
 
 ![SMT sunucu yapılandırması ekran görüntüsü](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

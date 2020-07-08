@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77470726"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Azure HDInsight 'ta işlem hatalarını ayıklama dosyası işlemleri
@@ -26,23 +25,23 @@ Azure depolama ile ilgili olan işlemleri hangi işlemlerin başlatıldığını
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>Dosya işlemleri için işlem hata ayıklama günlüğünü aç
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`' a gidin, burada `CLUSTERNAME` Spark kümenizin adıdır.
+1. Bir Web tarayıcısından, ' a gidin `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` , burada `CLUSTERNAME` Spark kümenizin adıdır.
 
 1. **Gelişmiş spark2-Log4J-Özellikler**' e gidin.
 
-    1. Öğesini `log4j.appender.console.Threshold=INFO` olarak `log4j.appender.console.Threshold=DEBUG`değiştirin.
+    1. Öğesini `log4j.appender.console.Threshold=INFO` olarak değiştirin `log4j.appender.console.Threshold=DEBUG` .
 
-    1. Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    1. Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. **Gelişmiş livy2-Log4J-Özellikler**' e gidin.
 
-    Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. Değişiklikleri kaydedin.
 
 ## <a name="additional-logging"></a>Ek günlükler
 
-Yukarıdaki Günlükler dosya sistemi işlemlerinin üst düzey olarak anlaşılmasına sahip olmalıdır. Yukarıdaki Günlükler hala yararlı bilgiler sağlamaıyorsa veya blob depolama API çağrılarını araştırmak istiyorsanız, ' ye ekleyin `fs.azure.storage.client.logging=true` `core-site`. Bu ayar, tek bir depolama sürücüsüne yönelik Java SDK günlüklerini etkinleştirir ve her bir blob Storage Server çağrısını yazdırır. Diski hızla doldurabileceğinden ve işlemi yavaşlatabileceğinden, araştırmalar sonrasında ayarı kaldırın.
+Yukarıdaki Günlükler dosya sistemi işlemlerinin üst düzey olarak anlaşılmasına sahip olmalıdır. Yukarıdaki Günlükler hala yararlı bilgiler sağlamaıyorsa veya blob depolama API çağrılarını araştırmak istiyorsanız, ' `fs.azure.storage.client.logging=true` ye ekleyin `core-site` . Bu ayar, tek bir depolama sürücüsüne yönelik Java SDK günlüklerini etkinleştirir ve her bir blob Storage Server çağrısını yazdırır. Diski hızla doldurabileceğinden ve işlemi yavaşlatabileceğinden, araştırmalar sonrasında ayarı kaldırın.
 
 Arka uç Azure Data Lake tabanlıdır, bileşen için aşağıdaki Log4J ayarını kullanın (örneğin, Spark/tez/TBU):
 
@@ -55,7 +54,7 @@ log4j.appender.adlsFile.layout=org.apache.log4j.PatternLayout
 log4j.appender.adlsFile.layout.ConversionPattern=%p\t%d{ISO8601}\t%r\t%c\t[%t]\t%m%n
 ```
 
-Günlüklerde bulunan `/var/log/adl/adl.log` günlüklere bakın.
+Günlüklerde bulunan günlüklere bakın `/var/log/adl/adl.log` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -63,6 +62,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

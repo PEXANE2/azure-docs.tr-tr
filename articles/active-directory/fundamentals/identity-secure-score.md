@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523126"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory kimlik güvenli puanı nedir?
@@ -48,7 +47,7 @@ Geliştirme eylemlerini izleyerek:
 
 ## <a name="how-do-i-get-my-secure-score"></a>Güvenlik puanımı nasıl alabilirim?
 
-Kimlik güvenli puanı Azure AD 'nin tüm sürümlerinde kullanılabilir. Kuruluşlar, kimlik güvenli puanlarına **Azure Portal** > **Azure Active Directory** > **güvenlik** > **kimliği güvenli puanı**aracılığıyla erişebilir.
+Kimlik güvenli puanı Azure AD 'nin tüm sürümlerinde kullanılabilir. Kuruluşlar, kimlik güvenli puanlarına **Azure Portal**  >  **Azure Active Directory**  >  **güvenlik**  >  **kimliği güvenli puanı**aracılığıyla erişebilir.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 

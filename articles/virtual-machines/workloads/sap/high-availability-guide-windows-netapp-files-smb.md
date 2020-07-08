@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
 ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591362"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
@@ -147,7 +146,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>İlk yoks/SCS kümesi düğümüne bir ASCS/SCS örneği yükler
 
-1. İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve şuraya gidin: **ürün** > **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ilk küme düğümü.  
+1. İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve şuraya gidin: **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ilk küme düğümü.  
 
 2. SWPM 'de küme paylaşma yapılandırması olarak **dosya paylaşma kümesi** ' ni seçin.  
 3. **SAP sistem kümesi parametrelerine**adım sorulduğunda, **dosya paylaşma ana bilgisayar adı**olarak zaten oluşturduğunuz Azure NetApp Files SMB paylaşımının ana bilgisayar adını girin.  Bu örnekte, SMB paylaşımının ana bilgisayar adı **anfsmb-9562**' dir. 
@@ -162,7 +161,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>İkinci yoks/SCS küme düğümüne bir ASCS/SCS örneği yükler
 
-1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve ardından **ürün** > **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümü ' ne gidin.  
+1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve ardından **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümü ' ne gidin.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 
@@ -177,9 +176,9 @@ Aşağıdakileri yükleyerek SAP yüklemenizi doldurun:
 ### <a name="fail-over-from-cluster-node-a-to-cluster-node-b-and-back"></a>A kümesi düğümünden B ve geri küme düğümüne yük devretme
 Bu test senaryosunda, A düğümü olarak küme düğümüne sapascs1 ve düğüm sapascs2 olarak düğüm B olarak kümelendirilecektir.
 
-1. Küme kaynaklarının A düğümünde çalıştığını doğrulayın. ![Şekil 1: yük devretme testi öncesinde düğüm üzerinde çalışan Windows Server yük devretme kümesi kaynakları](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
+1. Küme kaynaklarının A düğümünde çalıştığını doğrulayın. ![ Şekil 1: yük devretme testi öncesinde düğüm üzerinde çalışan Windows Server yük devretme kümesi kaynakları](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
 
-2. Küme düğümü A 'yi yeniden başlatın. SAP kümesi kaynakları, B küme düğümüne taşınacak. ![Şekil 2: yük devretme testi sonrasında b düğümünde çalışan Windows Server yük devretme kümesi kaynakları](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
+2. Küme düğümü A 'yi yeniden başlatın. SAP kümesi kaynakları B küme düğümüne taşınır. ![ Şekil 2: yük devretme testi sonrasında düğüm B 'de çalışan Windows Server yük devretme kümesi kaynakları](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
 
 
 ## <a name="lock-entry-test"></a>Giriş testini kilitle

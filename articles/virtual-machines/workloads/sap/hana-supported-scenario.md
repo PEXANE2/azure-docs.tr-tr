@@ -14,10 +14,9 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617176"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA büyük örnekleri için desteklenen senaryolar
@@ -67,10 +66,10 @@ Sağlanan her sunucu, Ethernet arabirimleri kümeleriyle önceden yapılandırı
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme|
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | STONıTH |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme|
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | STONıTH |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme|
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | STONıTH |
 
 Ara birim üzerinde yapılandırılan topolojiye göre arabirimi seçersiniz. Örneğin, "B" arabirimi düğümden düğüme iletişim için ayarlanır ve bu, yapılandırılmış bir genişleme topolojisi olduğunda faydalıdır. Bu arabirim, tek düğüm, ölçek yapılandırması için kullanılmaz. Arabirim kullanımı hakkında daha fazla bilgi için, gerekli senaryolarınızı gözden geçirin (Bu makalenin ilerleyen kısımlarında). 
 
@@ -100,7 +99,7 @@ HANA sistem çoğaltması veya HANA genişleme dağıtımı için, iki atanmış
 Depolama, istenen topolojiye göre önceden yapılandırılmıştır. Birim boyutları ve bağlama noktaları, sunucu sayısına, SKU sayısına ve yapılandırılan topolojiye bağlı olarak değişir. Daha fazla bilgi için, gerekli senaryolarınızı gözden geçirin (Bu makalenin ilerleyen kısımlarında). Daha fazla depolama gerekliyse, bunu 1 TB 'lik artışlarla satın alabilirsiniz.
 
 >[!NOTE]
->Bağlama noktası/usr/SAP/\<SID>,/Hana/Shared bağlama noktasına yönelik sembolik bir bağlantıdır.
+>Bağlama noktası/usr/SAP/, \<SID> /Hana/Shared bağlama noktasına yönelik sembolik bir bağlantıdır.
 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
@@ -139,10 +138,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -174,10 +173,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -214,10 +213,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -255,10 +254,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -310,10 +309,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | STONITH için kullanıldı |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | STONITH için kullanıldı |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | STONITH için kullanıldı |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -356,10 +355,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | STONITH için kullanıldı |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | STONITH için kullanıldı |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | STONITH için kullanıldı |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -415,10 +414,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -456,10 +455,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -492,10 +491,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -531,10 +530,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -576,10 +575,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI/HSR |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları, HLI birimlerinde (birincil ve DR) önceden yapılandırılmıştır:
@@ -617,10 +616,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI/HSR |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -667,10 +666,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI/HSR |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -712,10 +711,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI/HSR |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
@@ -763,10 +762,10 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
 | C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
 | D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantno> | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantno + 2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantno + 1> | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantno + 3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TÜR ıı | VLAN\<tenantNo> | team0. Tenant | İstemciden HLI/HSR |
+| B | TÜR ıı | VLAN\<tenantNo+2> | team0. Tenant + 2 | Düğümden düğüme iletişim |
+| C | TÜR ıı | VLAN\<tenantNo+1> | team0. Tenant + 1 | Düğümden depolamaya |
+| D | TÜR ıı | VLAN\<tenantNo+3> | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
 
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77472524"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta etki alanı hesapları için SSH erişimini yönetme
@@ -20,7 +19,7 @@ Güvenli kümeler üzerinde, varsayılan olarak, [Azure AD DS](../../active-dire
 
 ## <a name="manage-access"></a>Erişimi yönetme
 
-Belirli kullanıcılar veya gruplar için SSH erişimini değiştirmek üzere düğümlerin her `/etc/ssh/sshd_config` birinde güncelleştirin.
+Belirli kullanıcılar veya gruplar için SSH erişimini değiştirmek üzere `/etc/ssh/sshd_config` düğümlerin her birinde güncelleştirin.
 
 1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
@@ -34,7 +33,7 @@ Belirli kullanıcılar veya gruplar için SSH erişimini değiştirmek üzere d�
     sudo nano /etc/ssh/sshd_config
     ```
 
-1. `sshd_config` Dosyayı istediğiniz gibi değiştirin. Kullanıcıları belirli gruplar ile kısıtladığınızda, yerel hesaplar bu düğüme SSH kullanamaz. Aşağıda yalnızca söz dizimi örneği verilmiştir:
+1. `sshd_config`Dosyayı istediğiniz gibi değiştirin. Kullanıcıları belirli gruplar ile kısıtladığınızda, yerel hesaplar bu düğüme SSH kullanamaz. Aşağıda yalnızca söz dizimi örneği verilmiştir:
 
     ```bash
     AllowUsers useralias1 useralias2
@@ -54,11 +53,11 @@ Belirli kullanıcılar veya gruplar için SSH erişimini değiştirmek üzere d�
 
 ## <a name="ssh-authentication-log"></a>SSH kimlik doğrulaması günlüğü
 
-SSH kimlik doğrulaması günlüğü içine `/var/log/auth.log`yazılır. Yerel veya etki alanı hesapları için SSH aracılığıyla herhangi bir oturum açma hatası görürseniz, hatalarda hata ayıklamak için günlüğe gitmeniz gerekir. Genellikle bu sorun belirli kullanıcı hesaplarıyla ilişkili olabilir ve genellikle diğer Kullanıcı hesaplarını veya SSH 'yi varsayılan SSH kullanıcısı (yerel hesap) kullanarak denemek ve ardından bir kinit denemesi yapmak iyi bir uygulamadır.
+SSH kimlik doğrulaması günlüğü içine yazılır `/var/log/auth.log` . Yerel veya etki alanı hesapları için SSH aracılığıyla herhangi bir oturum açma hatası görürseniz, hatalarda hata ayıklamak için günlüğe gitmeniz gerekir. Genellikle bu sorun belirli kullanıcı hesaplarıyla ilişkili olabilir ve genellikle diğer Kullanıcı hesaplarını veya SSH 'yi varsayılan SSH kullanıcısı (yerel hesap) kullanarak denemek ve ardından bir kinit denemesi yapmak iyi bir uygulamadır.
 
 ## <a name="ssh-debug-log"></a>SSH hata ayıklama günlüğü
 
-Ayrıntılı günlüğe kaydetmeyi etkinleştirmek için `sshd` `-d` seçeneğiyle yeniden başlatmanız gerekir. Benzer `/usr/sbin/sshd -d` şekilde, ana SSH `sshd` arka plan programını durdurmanız gerekmiyorsa, özel bir bağlantı noktasında da (2222 gibi) çalıştırabilirsiniz. Daha fazla günlük ( `-v` hataların istemci tarafı görünümü) almak için SSH istemcisiyle seçeneğini de kullanabilirsiniz.
+Ayrıntılı günlüğe kaydetmeyi etkinleştirmek için seçeneğiyle yeniden başlatmanız gerekir `sshd` `-d` . Benzer `/usr/sbin/sshd -d` `sshd` şekilde, ana SSH arka plan programını durdurmanız gerekmiyorsa, özel bir bağlantı noktasında da (2222 gibi) çalıştırabilirsiniz. `-v`Daha fazla günlük (hataların istemci tarafı görünümü) almak IÇIN SSH istemcisiyle seçeneğini de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

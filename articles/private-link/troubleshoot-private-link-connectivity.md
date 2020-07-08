@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539476"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Özel Bağlantı hizmeti bağlantı sorunlarını giderme
@@ -81,7 +80,7 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
 
        ![Görünürlük bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. **Genel bakış** sekmesinde **yük dengeleyici** bilgilerini gözden geçirin.
+    örneğin: **Genel bakış** sekmesinde **yük dengeleyici** bilgilerini gözden geçirin.
      - Yük dengeleyici bağlantısını seçerek yük dengeleyiciye gidebilirsiniz.
 
        ![Yük dengeleyici bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-ilb.png)

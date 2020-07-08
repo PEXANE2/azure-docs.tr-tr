@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Her şeyi yüklemeden doğrudan tarayıcınızdan Azure Dev Spaces için etkin bir Kubernetes kümesini kolayca oluşturmayı öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605310"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Azure Cloud Shell ile Azure Dev Spaces etkin bir Kubernetes kümesi oluşturma
@@ -30,7 +29,7 @@ az group create --name MyResourceGroup --location <region>
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
-Kümenin oluşturulması birkaç dakika sürer.  Tamamlandığında, çıktı JSON biçiminde gösterilir. Arama yapın `provisioningState` ve doğrulayın `Succeeded`.
+Kümenin oluşturulması birkaç dakika sürer.  Tamamlandığında, çıktı JSON biçiminde gösterilir. Arama yapın `provisioningState` ve doğrulayın `Succeeded` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

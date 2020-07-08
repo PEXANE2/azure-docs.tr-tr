@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
 ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585280"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
@@ -68,7 +67,7 @@ Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz ger
 
 ## <a name="vendor-documentation"></a>Satıcı belgeleri
 
-| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantısının**|
+| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantı**|
 |----|----|----|
 | GitHub| Topluluk sayfasına erişmek için kullanılır| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|

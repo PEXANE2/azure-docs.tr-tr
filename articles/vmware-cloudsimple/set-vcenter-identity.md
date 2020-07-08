@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564032"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
@@ -58,9 +57,9 @@ Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri k
 | **Etki alanı adı** | Etki alanının FQDN 'SI, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
 | **Etki alanı diğer adı** | Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
 | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. |
-| **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini `ldap://hostname:port` kullanın `ldaps://hostname:port`. Bağlantı noktası genellikle LDAP bağlantıları için 389 ve LDAPS bağlantıları için 636 ' dir. Birden çok etki alanı denetleyicisi dağıtımı Active Directory için, bağlantı noktası genellikle LDAP için 3268 ve LDAPS için 3269 ' dir.<br><br>Birincil veya ikincil LDAP URL 'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
+| **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini kullanın  `ldap://hostname:port`    `ldaps://hostname:port` . Bağlantı noktası genellikle LDAP bağlantıları için 389 ve LDAPS bağlantıları için 636 ' dir. Birden çok etki alanı denetleyicisi dağıtımı Active Directory için, bağlantı noktası genellikle LDAP için 3268 ve LDAPS için 3269 ' dir.<br><br> `ldaps://`   Birincil veya IKINCIL LDAP URL 'sinde kullandığınızda Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
 | **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
-| **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız, URL metin kutusuna yazdıktan `ldaps://` sonra Sertifika Seç düğmesi görünür. İkincil bir URL gerekli değildir. |
+| **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız,  `ldaps://` URL metin kutusuna yazdıktan sonra Sertifika Seç düğmesi görünür   . İkincil bir URL gerekli değildir. |
 | **Nitelen** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
 | **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
@@ -118,7 +117,7 @@ Ağ bağlantısı kurulduktan sonra, kimlik kaynağı olarak eklemek için [Şir
 
     ![Çoklu Oturum Açma](media/OnPremAD02.png)
 
-5. **Kimlik kaynakları** sekmesini açın ve yeni bir **+** kimlik kaynağı eklemek için tıklayın.
+5. **Kimlik kaynakları** sekmesini açın ve **+** Yeni bir kimlik kaynağı eklemek için tıklayın.
 
     ![Kimlik kaynakları](media/OnPremAD03.png)
 

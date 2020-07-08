@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564653"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights’ı Uzaktan İzleme ile tümleştirme
@@ -49,9 +48,9 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Sonra, Time Series Insights uzaktan Izleme çözümünüze ek bir kaynak olarak dağıtın ve IoT Hub 'ına bağlayın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1.  > **Time Series Insights****nesnelerin interneti** **kaynak** > oluştur ' u seçin.
+1. Time Series Insights **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Time Series Insights**.
 
     ![Yeni Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -68,7 +67,7 @@ Sonra, Time Series Insights uzaktan Izleme çözümünüze ek bir kaynak olarak 
 
     ![Time Series Insights oluştur](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. **Oluştur**' a tıklayın. Ortamın oluşturulması biraz zaman alabilir.
+1. **Oluştur**'a tıklayın. Ortamın oluşturulması biraz zaman alabilir.
 
 ## <a name="create-event-source"></a>Olay kaynağı oluşturma
 
@@ -89,7 +88,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
     | Ayar | Değer |
     | ------- | ----- |
     | Olay kaynağı adı | Aşağıdaki ekran görüntüsünde **contosorm-IoT-Hub**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı kullanın. |
-    | Kaynak | **IoT Hub** |
+    | Kaynak | **IoT Hub’ı** |
     | İçeri aktarma seçeneği | **Kullanılabilir aboneliklerden IoT Hub kullanma** |
     | Abonelik Kimliği | Açılan listeden Azure aboneliğinizi seçin. |
     | Iot hub adı | **contosorma57a6**. Uzaktan Izleme çözümünüzdeki IoT Hub 'ınızın adını kullanın. |
@@ -101,7 +100,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
 
     ![Olay kaynağı oluştur](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ## <a name="configure-the-data-access-policy"></a>Veri erişim ilkesini yapılandırma
 
@@ -205,7 +204,7 @@ Time Series Insights tümleştirmesini tamamlayabilmeniz için, güncelleştiril
 
 ### <a name="basic-deployments"></a>Temel dağıtımlar
 
-Güncelleştirilmiş mikro hizmetler için `basic` dağıtım ortamını yapılandırın.
+`basic`Güncelleştirilmiş mikro hizmetler için dağıtım ortamını yapılandırın.
 
 1. Azure portal sol bölmedeki **Azure Active Directory** sekmesine tıklayın.
 
@@ -213,15 +212,15 @@ Güncelleştirilmiş mikro hizmetler için `basic` dağıtım ortamını yapıla
 
 1. **ContosoRM** uygulamanızda arama yapın ve tıklayın.
 
-1. **Ayarlar** > **anahtarlar** ' a gidin ve uygulamanız için yeni bir anahtar oluşturun. Anahtar değerini güvenli konuma kopyalamadığınızdan emin olun.
+1. **Ayarlar**  >  **anahtarlar** ' a gidin ve uygulamanız için yeni bir anahtar oluşturun. Anahtar değerini güvenli konuma kopyalamadığınızdan emin olun.
 
 1. En son etiketini kullanarak GitHub deposundan [en son Docker Compose YAML dosyasını](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) çekin. 
 
 1. [SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)konusunda açıklanan ADıMLARı izleyerek VM 'ye SSH.
 
-1. Bağlandıktan sonra yazın `cd /app`.
+1. Bağlandıktan sonra yazın `cd /app` .
 
-1. Docker Compose YAML dosyasındaki her bir mikro hizmete ve VM 'deki `env-setup` betiğe aşağıdaki ortam değişkenlerini ekleyin:
+1. Docker Compose YAML dosyasındaki her bir mikro hizmete ve `env-setup` VM 'deki betiğe aşağıdaki ortam değişkenlerini ekleyin:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -233,18 +232,18 @@ Güncelleştirilmiş mikro hizmetler için `basic` dağıtım ortamını yapıla
 
 1. **Telemetri hizmetine** gidin ve ayrıca aynı ortam değişkenlerini ekleyerek Docker Compose dosyasını düzenleyin.
 
-1. **Asa Yöneticisi hizmetine** gidin ve Docker Compose dosyasını ekleyerek `PCS_TELEMETRY_STORAGE_TYPE`düzenleyin.
+1. **Asa Yöneticisi hizmetine** gidin ve Docker Compose dosyasını ekleyerek düzenleyin `PCS_TELEMETRY_STORAGE_TYPE` .
 
-1. SANAL makineden kullanarak `sudo ./start.sh` Docker kapsayıcılarını yeniden başlatın.
+1. SANAL makineden kullanarak Docker kapsayıcılarını yeniden başlatın `sudo ./start.sh` .
 
 > [!NOTE]
 > Ortam değişkenlerinin yukarıdaki yapılandırması 1.0.2 öncesine ait uzak Izleme sürümleri için geçerlidir
 
 ### <a name="standard-deployments"></a>Standart dağıtımlar
 
-Yukarıdaki güncelleştirilmiş mikro Hizmetler `standard` için dağıtım ortamını yapılandırın
+`standard`Yukarıdaki güncelleştirilmiş mikro hizmetler için dağıtım ortamını yapılandırın
 
-1. Komut satırında komutunu çalıştırın `kubectl proxy`. Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Komut satırında komutunu çalıştırın `kubectl proxy` . Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
 
 1. Kubernetes yönetim konsolunu açın.
 

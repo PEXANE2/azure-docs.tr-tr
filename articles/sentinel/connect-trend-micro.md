@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588034"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Bağlama eğilimi mikro derin güvenliği
@@ -32,7 +31,7 @@ Trend mikro derin güvenlik Bağlayıcısı, Azure Sentinel ile derin güvenlik 
 
 ## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Azure Sentinel 'i Trend mikro derin güvenlik 'e bağlayın
 
-1. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **Trend mikro derin güvenlik** bağlayıcısını seçin.
+1. Azure Portal **Azure Sentinel**  >  **veri bağlayıcıları** ' na gidin ve ardından **Trend mikro derin güvenlik** bağlayıcısını seçin.
 
 2. **Bağlayıcı sayfasını aç**' ı seçin.
 

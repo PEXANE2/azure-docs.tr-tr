@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617132"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 üzerinde yüksek kullanılabilirliğe sahip ayarları SAP HANA doğrulama ve sorun giderme 
@@ -91,7 +90,7 @@ Aşağıdaki SAP HANA ağ önerilerini, bir Azure sanal ağı içinde üç alt a
 - SAP HANA sistem çoğaltması (HSR) için 10.0.1.0/24
 - diğer her şey için 10.0.0.0/24
 
-Birden çok ağı kullanmayla ilgili SAP HANA yapılandırma hakkında daha fazla bilgi için bkz. [SAP HANA Global. ini](#sap-hana-globalini).
+Birden çok ağ kullanmayla ilgili SAP HANA yapılandırma hakkında daha fazla bilgi için bkz. [SAP HANA global.ini](#sap-hana-globalini).
 
 Kümedeki her VM 'nin alt ağ sayısına karşılık gelen üç vNIC 'i vardır. [Azure 'da birden çok ağ arabirimi kartı Ile Linux sanal makinesi oluşturma][azure-linux-multiple-nics] BIR Linux VM dağıtımı sırasında Azure 'da olası bir yönlendirme sorununu açıklar. Bu özel yönlendirme makalesi yalnızca birden fazla sanal NIC kullanımı için geçerlidir. Bu sorun, SLES 12 SP3'TE varsayılan olarak SUSE tarafından çözülür. Daha fazla bilgi için bkz. [EC2 ve Azure 'da Cloud-netconfig Ile çoklu NIC][suse-cloud-netconfig].
 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Yük devretme veya devralma
 
-[Önemli notlarda](#important-notes)anlatıldığı gibi, küme yük devretmesini veya SAP HANA HSR 'leri test etmek için standart bir düzgün kapanma kullanmamanız gerekir. Bunun yerine, bir çekirdek PANIC tetiklemenizi, bir kaynak geçişi zorlamanıza veya bir VM 'nin işletim sistemi düzeyindeki tüm ağları kapatmanızı öneririz. Başka bir yöntem de **CRM \<düğümü\> bekleme** komutunuz. [SUSE belgesine][sles-12-ha-paper]bakın. 
+[Önemli notlarda](#important-notes)anlatıldığı gibi, küme yük devretmesini veya SAP HANA HSR 'leri test etmek için standart bir düzgün kapanma kullanmamanız gerekir. Bunun yerine, bir çekirdek PANIC tetiklemenizi, bir kaynak geçişi zorlamanıza veya bir VM 'nin işletim sistemi düzeyindeki tüm ağları kapatmanızı öneririz. Başka bir yöntem de **CRM \<node\> bekleme komutundayken** . [SUSE belgesine][sles-12-ha-paper]bakın. 
 
 Aşağıdaki üç örnek komut, küme yük devretmesini zorlayabilir:
 
@@ -682,7 +681,7 @@ Ayrıca, bir SAP Python betiğiyle gelen SAP HANA yatay duruma bakmanıza de yar
 
 Gereksiz yük devretme yapmaktan kaçınmak için bazı yeniden denemeler vardır. Küme, yalnızca durum **Tamam**' dan, değer **4**' e, **hata**' a geri dönerek **çalışır.** Bu nedenle, **Saphanasr-showAttr** çıktısındaki çıkış, durumu **çevrimdışı**olan bir VM 'yi gösteriyorsa doğrudur. Ancak birincil ve ikincil anahtar geçişi için henüz etkinlik yok. SAP HANA bir hata döndürmeyen sürece hiçbir küme etkinliği tetiklenmez.
 
-SAP Python betiğini aşağıdaki gibi çağırarak, SAP HANA yatay sistem durumunu Kullanıcı ** \<Hana SID\>adm** olarak izleyebilirsiniz. Yolu uyarlamanız gerekebilir:
+SAP Python betiğini aşağıdaki gibi çağırarak, SAP HANA yatay sistem durumunu Kullanıcı ** \<HANA SID\> ADM** olarak izleyebilirsiniz. Yolu uyarlamanız gerekebilir:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -900,10 +899,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-Aşağıdaki alıntıları, küme site 2 ' deki SAP HANA **Global. ini** dosyasından alınmıştır. Bu örnek, SAP HANA Internode iletişimi ve HSR için farklı ağlar kullanmak üzere konak adı çözümleme girdilerini gösterir:
+Aşağıdaki alıntıları, küme site 2 ' deki SAP HANA **global.ini** dosyasıdır. Bu örnek, SAP HANA Internode iletişimi ve HSR için farklı ağlar kullanmak üzere konak adı çözümleme girdilerini gösterir:
 
 <pre><code>
 [communication]
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Havk dili
 
 Küme çözümü, menü ve grafiklerin kabuk düzeyinde tüm komutlara sahip olmasını tercih eden kullanıcılar için GUI sağlayan bir tarayıcı arabirimi sağlar.
-Tarayıcı arabirimini kullanmak için, ** \<düğümü\> ** aşağıdaki URL 'deki gerçek bir SAP HANA düğümü ile değiştirin. Sonra kümenin (Kullanıcı **kümesi**) kimlik bilgilerini girin:
+Tarayıcı arabirimini kullanmak için **\<node\>** AŞAĞıDAKI URL 'deki gerçek bir SAP HANA düğümü ile değiştirin. Sonra kümenin (Kullanıcı **kümesi**) kimlik bilgilerini girin:
 
 <pre><code>
 https://&ltnode&gt:7630

@@ -5,17 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595391"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) kümesi düğümlerinden kubelet günlüklerini alma
 
 Bir AKS kümesinin bir parçası olarak, bir sorunu gidermek için günlükleri gözden geçirmeniz gerekebilir. Azure portal yerleşik olarak, aks [ana bileşenleri][aks-master-logs] veya [bir aks kümesindeki kapsayıcılar][azure-container-logs]için günlükleri görüntüleyebilme yeteneğidir. Bazen, sorun giderme amacıyla bir AKS düğümünden *kubelet* günlüklerini almanız gerekebilir.
 
-Bu makalede, bir AKS düğümünde `journalctl` *kubelet* günlüklerini görüntülemek için nasıl kullanabileceğiniz gösterilmektedir.
+Bu makalede, `journalctl` BIR AKS düğümünde *kubelet* günlüklerini görüntülemek için nasıl kullanabileceğiniz gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

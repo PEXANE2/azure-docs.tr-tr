@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77366442"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TeamViewer 'ı yapılandırma
@@ -43,12 +42,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * TeamViewer için geçerli bir [Tensor lisansı](https://www.teamviewer.com/de/teamviewer-tensor/) .
 * [Çoklu oturum](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) açma yapılandırmasından geçerli bir özel tanımlayıcı var.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD ve TeamViewer arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için TeamViewer 'ı yapılandırma
+## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için TeamViewer 'ı yapılandırma
 
 1. [TeamViewer Yönetim konsolunda](https://login.teamviewer.com)oturum açın. **Profili Düzenle**' ye gidin.
 
@@ -85,7 +84,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>Azure AD 'de TeamViewer için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -101,7 +100,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** Bölümü ' nün altında `ttps://webapi.teamviewer.com/scim/v2` , eski **URL** alanına girip, daha önce **gizli bir belirteçte**oluşturulan betik belirtecini girin. Azure AD 'nin TeamViewer 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TeamViewer hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** Bölümü ' nün altında, `ttps://webapi.teamviewer.com/scim/v2` eski **URL** alanına girip, daha önce **gizli bir belirteçte**oluşturulan betik belirtecini girin. Azure AD 'nin TeamViewer 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TeamViewer hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -109,7 +108,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları TeamViewer**' ya eşitler ' ı seçin.
 

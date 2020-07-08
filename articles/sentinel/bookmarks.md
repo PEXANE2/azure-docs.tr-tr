@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588697"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel ile arama sırasında verilerin izini sürme
@@ -36,7 +35,7 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 
 ## <a name="add-a-bookmark"></a>Bir yer işareti ekleme
 
-1. Azure Portal, şüpheli ve anormal davranışlar için sorguları çalıştırmak üzere **Sentinel** > **tehdit yönetimi** > **arayışında** gezinin.
+1. Azure Portal, **Sentinel**  >  şüpheli ve anormal davranışlar için sorguları çalıştırmak üzere Sentinel**tehdit yönetimi**  >  **arayışında** gezinin.
 
 2. Sorgu arama ayrıntılarından birini seçin ve sağ tarafta **sorgu ayrıntılarını Çalıştır**' ı seçin. 
 
@@ -67,11 +66,11 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 
  
 > [!NOTE]
-> Günlük sorgusu sonuçları, bu bölme Azure Sentinel 'ten her açıldığında yer işaretlerini destekler. Örneğin, gezinti çubuğundan **genel** > **Günlükler** ' i seçin, araştırmalar grafiğinde olay bağlantıları ' nı seçin veya bir olayın tüm ayrıntılarından bir uyarı kimliği (Şu anda önizleme aşamasında) seçin. **Günlükler** bölmesi, doğrudan Azure izleyici 'den farklı konumlardan açıldığında yer işaretleri oluşturamazsınız.
+> Günlük sorgusu sonuçları, bu bölme Azure Sentinel 'ten her açıldığında yer işaretlerini destekler. Örneğin, gezinti çubuğundan **genel**  >  **Günlükler** ' i seçin, araştırmalar grafiğinde olay bağlantıları ' nı seçin veya bir olayın tüm ayrıntılarından bir uyarı kimliği (Şu anda önizleme aşamasında) seçin. **Günlükler** bölmesi, doğrudan Azure izleyici 'den farklı konumlardan açıldığında yer işaretleri oluşturamazsınız.
 
 ## <a name="view-and-update-bookmarks"></a>Yer imlerini görüntüleme ve güncelleştirme 
 
-1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Arayıcı**' a gidin. 
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**  >  **Arayıcı**' a gidin. 
 
 2. Yer işaretleri listesini görüntülemek için yer **işaretleri** sekmesini seçin.
 
@@ -88,7 +87,7 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 > Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Hunting** > arama**yer işaretleri** sekmesine gidin ve araştırmak istediğiniz yer işaretini veya yer imlerini seçin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve araştırmak istediğiniz yer işaretini veya yer imlerini seçin.
 
 2. Yer işareti ayrıntılarında, en az bir varlığın eşlendiğinden emin olun. Örneğin, **varlıklar**için **IP**, **makine**veya **Hesap**girdilerini görürsünüz.
 
@@ -103,7 +102,7 @@ Araştırma grafiğini kullanma hakkında yönergeler için bkz. [araştırma gr
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Hunting** > arama**yer işaretleri** sekmesine gidin ve bir olaya eklemek istediğiniz yer işaretlerini veya yer imlerini seçin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve bir olaya eklemek istediğiniz yer işaretlerini veya yer imlerini seçin.
 
 2. Komut çubuğundan **olay eylemlerini (Önizleme)** seçin:
     
@@ -115,20 +114,20 @@ Araştırma grafiğini kullanma hakkında yönergeler için bkz. [araştırma gr
     - Yeni bir olay için: Isteğe bağlı olarak olay ayrıntılarını güncelleştirin ve ardından **Oluştur**' u seçin.
     - Var olan bir olaya bir yer işareti eklemek için: bir olay seçin ve ardından **Ekle**' yi seçin. 
 
-Olay içindeki yer işaretini görüntülemek için: **Sentinel** > **tehdit yönetimi** > **olayları** ' na gidin ve yer işaretinizdeki olayı seçin. **Tüm ayrıntıları görüntüle**' yi seçin ve ardından **yer imleri** sekmesini seçin.
+Olay içindeki yer işaretini görüntülemek için: **Sentinel**  >  **tehdit yönetimi**  >  **olayları** ' na gidin ve yer işaretinizdeki olayı seçin. **Tüm ayrıntıları görüntüle**' yi seçin ve ardından **yer imleri** sekmesini seçin.
 
 > [!TIP]
 > Komut çubuğundaki **olay eylemleri (Önizleme)** seçeneğine alternatif olarak, **Yeni olay oluşturma**, **var olan olaya ekleme**ve **olaydan kaldırma**seçeneklerini belirlemek için bir veya daha fazla yer işareti için bağlam menüsünü (**...**) kullanabilirsiniz. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Günlüklerde yer işaretli verileri görüntüleme
 
-Yer işareti yapılan sorguları, sonuçları veya onların geçmişini görüntülemek için **, yer** > **işaretleri** sekmesinden yer işaretini seçin ve Ayrıntılar bölmesinde sunulan bağlantıları kullanın: 
+Yer işareti yapılan sorguları, sonuçları veya onların geçmişini görüntülemek için **, yer**  >  **işaretleri** sekmesinden yer işaretini seçin ve Ayrıntılar bölmesinde sunulan bağlantıları kullanın: 
 
 - Kaynak sorguyu **Günlükler** bölmesinde görüntülemek için **kaynak sorgusunu görüntüleyin** .
 
 - Güncelleştirmeyi kimin yaptığını, güncelleştirilmiş değerleri ve güncelleştirmenin gerçekleştiği saati içeren tüm yer işareti meta verilerini görmek için **yer işareti günlüklerini görüntüleyin** .
 
-Ayrıca **, yer** > **işaretleri** sekmesindeki komut çubuğundan **yer işareti günlükleri** ' ni seçerek tüm yer işaretlerine ait ham yer işareti verilerini görüntüleyebilirsiniz:
+Ayrıca **, yer**işaretleri sekmesindeki komut çubuğundan **yer işareti günlükleri** ' ni seçerek tüm yer işaretlerine ait ham yer işareti verilerini görüntüleyebilirsiniz  >  **Bookmarks** :
 
 > [!div class="mx-imgBorder"]
 > ![Yer işareti günlükleri](./media/bookmarks/bookmark-logs.png)
@@ -140,7 +139,7 @@ Bu görünüm, ilişkili meta verilerle tüm yer işaretlerinizi gösterir. Arad
 
 ## <a name="delete-a-bookmark"></a>Yer işaretini silme
  
-1.  Azure Portal, **Sentinel** > **tehdit yönetimi** > **Hunting** > arama**yer işaretleri** sekmesine gidin ve silmek istediğiniz yer işaretlerini veya yer imlerini seçin. 
+1.  Azure Portal, **Sentinel**  >  **tehdit yönetimi**arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve silmek istediğiniz yer işaretlerini veya yer imlerini seçin. 
 
 2. Seçimlerinizi sağ tıklatın ve yer işaretini veya yer imlerini silme seçeneğini belirleyin. Örneğin, yalnızca bir yer işareti seçtiyseniz ve iki yer işaretini seçtiyseniz **2 yer Işaretini silerek** **yer işaretini silin** .
     

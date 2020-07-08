@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530256"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti çıkış bağlaması
@@ -27,7 +26,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 Aşağıdaki örnek, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir işlevi gösterir. *Hedef* , her istemcide çağrılacak yöntemin adıdır. *Arguments* özelliği, istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -46,9 +45,9 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -81,9 +80,9 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -108,9 +107,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -157,7 +156,7 @@ public SignalRMessage sendMessage(
 
 SignalR iletisindeki *Kullanıcı kimliğini* ayarlayarak yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -178,7 +177,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -213,7 +212,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -240,9 +239,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -292,7 +291,7 @@ public SignalRMessage sendMessage(
 
 SignalR iletisindeki *Grup adını* ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -313,7 +312,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -348,7 +347,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -375,9 +374,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+İşte *function.js* dosyadaki verileri bağlama:
 
-Örnek Function. JSON:
+Örnek function.js:
 
 ```json
 {
@@ -425,9 +424,9 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>Grup yönetimi
 
-SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Bir kullanıcının grup üyeliğini `SignalR` yönetmek için çıkış bağlamayı kullanabilirsiniz.
+SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. `SignalR`Bir kullanıcının grup üyeliğini yönetmek için çıkış bağlamayı kullanabilirsiniz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
@@ -476,7 +475,7 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> `ClaimsPrincipal` Doğru bir şekilde bağlanmasını sağlamak Için Azure işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
+> `ClaimsPrincipal`Doğru bir şekilde bağlanmasını sağlamak Için Azure işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -484,7 +483,7 @@ public static Task RemoveFromGroup(
 
 Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -522,7 +521,7 @@ public static Task Run(
 
 Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -557,7 +556,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> `ClaimsPrincipal` Doğru bir şekilde bağlanmasını sağlamak Için Azure işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
+> `ClaimsPrincipal`Doğru bir şekilde bağlanmasını sağlamak Için Azure işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -565,7 +564,7 @@ public static Task Run(
 
 Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -577,7 +576,7 @@ Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -593,7 +592,7 @@ module.exports = async function (context, req) {
 
 Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -605,7 +604,7 @@ Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -623,7 +622,7 @@ module.exports = async function (context, req) {
 
 Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -650,7 +649,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
-Örnek *function. JSON*
+Örnek *function.js*
 
 ```json
 {
@@ -725,12 +724,12 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>Signalrconnectionınfo
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRConnectionInfo` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle**| yok | Olarak `signalRConnectionInfo`ayarlanmalıdır.|
-|**Görünüm**| yok | Olarak `in`ayarlanmalıdır.|
+|**türüyle**| yok | Olarak ayarlanmalıdır `signalRConnectionInfo` .|
+|**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
 |**ada**| yok | Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
 |**UserID**|**UserID**| İsteğe bağlı: erişim anahtarı belirtecinde ayarlanacak Kullanıcı tanımlayıcı talebinin değeri. |
@@ -738,12 +737,12 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` ö
 
 ### <a name="signalr"></a>SignalR
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalR` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalR` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle**| yok | Olarak `signalR`ayarlanmalıdır.|
-|**Görünüm**| yok | Olarak `out`ayarlanmalıdır.|
+|**türüyle**| yok | Olarak ayarlanmalıdır `signalR` .|
+|**Görünüm**| yok | Olarak ayarlanmalıdır `out` .|
 |**ada**| yok | Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |

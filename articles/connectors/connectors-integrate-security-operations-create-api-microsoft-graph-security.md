@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598842"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph güvenlik & tümleştirerek tehdit korumasını geliştirebilirsiniz Azure Logic Apps
@@ -40,8 +39,8 @@ Microsoft Graph güvenliği hakkında daha fazla bilgi edinmek için [Microsoft 
 
   | Özellik | Değer |
   |----------|-------|
-  | **Uygulama Adı** | `MicrosoftGraphSecurityConnector` |
-  | **Uygulama KIMLIĞI** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Uygulama adı** | `MicrosoftGraphSecurityConnector` |
+  | **Uygulama Kimliği** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Bağlayıcıya izin vermek için, Azure AD kiracı yöneticiniz aşağıdaki adımları izleyebilir:
@@ -93,8 +92,8 @@ Bu örnek, uygulamanıza yeni uyarılar gönderildiğinde bir mantıksal uygulam
 
    | Özellik | Özellik (JSON) | Gerekli | Tür | Açıklama |
    |----------|-----------------|----------|------|-------------|
-   | **Interval** | `interval` | Yes | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
-   | **Sıklık** | `frequency` | Yes | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
+   | **Interval** | `interval` | Evet | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
+   | **Sıklık** | `frequency` | Evet | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
    | **Saat dilimi** | `timeZone` | Hayır | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
    | **Başlangıç saati** | `startTime` | Hayır | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p><p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017 ile 2:00 PM arasında bir süre istiyorsanız "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
@@ -109,7 +108,7 @@ Microsoft Graph güvenlik Bağlayıcısı ile kullanılabilen çeşitli eylemler
 
 ### <a name="manage-alerts"></a>Uyarıları yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin `https://graph.microsoft.com/v1.0/security/alerts`, ya da `GET` veya `PATCH` işlem) belirtmeyin. Yüksek önem derecesine sahip bir liste istediğinizde, **uyarıları al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
+En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/v1.0/security/alerts` `GET` veya işlem) belirtmeyin `PATCH` . Yüksek önem derecesine sahip bir liste istediğinizde, **uyarıları al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -117,20 +116,20 @@ Bu bağlayıcı ile kullanabileceğiniz sorgular hakkında daha fazla bilgi içi
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Uyarıları al** | Bir veya daha fazla [Uyarı özelliklerine](https://docs.microsoft.com/graph/api/resources/alert)göre filtrelenmiş uyarıları alın, örneğin, `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
+| **Uyarıları al** | Bir veya daha fazla [Uyarı özelliklerine](https://docs.microsoft.com/graph/api/resources/alert)göre filtrelenmiş uyarıları alın, örneğin, `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **KIMLIĞE göre uyarı al** | Uyarı KIMLIğINE bağlı olarak belirli bir uyarı alın. | 
 | **Uyarıyı Güncelleştir** | Uyarı KIMLIĞINE göre belirli bir uyarıyı güncelleştirin. İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Uyarılar için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/alert-update)bakın. Örneğin, araştırabilmeleri için bir güvenlik analiste uyarı atamak üzere uyarının **atanmış** özelliğini güncelleştirebilirsiniz. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Uyarı aboneliklerini yönetme
 
-Microsoft Graph [*abonelikleri*](https://docs.microsoft.com/graph/api/resources/subscription)veya [*Web kancalarını*](https://docs.microsoft.com/graph/api/resources/webhooks)destekler. Abonelikleri almak, güncelleştirmek veya silmek için [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters) Microsoft Graph varlık yapısına sağlayın ve sonra OData sorgusunun ardından ekleyin `security/alerts` . *Don't include* Temel URL 'yi (örneğin, `https://graph.microsoft.com/v1.0`) eklemeyin. Bunun yerine, şu örnekteki biçimi kullanın:
+Microsoft Graph [*abonelikleri*](https://docs.microsoft.com/graph/api/resources/subscription)veya [*Web kancalarını*](https://docs.microsoft.com/graph/api/resources/webhooks)destekler. Abonelikleri almak, güncelleştirmek veya silmek için [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters) Microsoft Graph varlık yapısına sağlayın ve `security/alerts` sonra OData sorgusunun ardından ekleyin. Temel URL 'yi (örneğin,) *eklemeyin* `https://graph.microsoft.com/v1.0` . Bunun yerine, şu örnekteki biçimi kullanın:
 
 `security/alerts?$filter=status eq 'New'`
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Abonelikleri oluşturma** | Herhangi bir değişiklik hakkında size bildirimde bulunan [bir abonelik oluşturun](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) . İstediğiniz belirli uyarı türleri için bu aboneliği filtreleyebilirsiniz. Örneğin, size yüksek önem derecesi uyarıları bildiren bir abonelik oluşturabilirsiniz. |
+| **Abonelik oluşturma** | Herhangi bir değişiklik hakkında size bildirimde bulunan [bir abonelik oluşturun](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) . İstediğiniz belirli uyarı türleri için bu aboneliği filtreleyebilirsiniz. Örneğin, size yüksek önem derecesi uyarıları bildiren bir abonelik oluşturabilirsiniz. |
 | **Etkin abonelikleri al** | Süre [dolmamış abonelikler alın](https://docs.microsoft.com/graph/api/subscription-list). | 
 | **Aboneliği Güncelleştir** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği güncelleştirin](https://docs.microsoft.com/graph/api/subscription-update) . Örneğin, aboneliğinizi genişletmek için aboneliğin `expirationDateTime` özelliğini güncelleştirebilirsiniz. | 
 | **Aboneliği silme** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği silin](https://docs.microsoft.com/graph/api/subscription-delete) . | 
@@ -138,7 +137,7 @@ Microsoft Graph [*abonelikleri*](https://docs.microsoft.com/graph/api/resources/
 
 ### <a name="manage-threat-intelligence-indicators"></a>Tehdit zekası göstergelerini yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin `https://graph.microsoft.com/beta/security/tiIndicators`, ya da `GET` veya `PATCH` işlem) belirtmeyin. Tehdit türüne sahip bir listeyi istediğiniz zaman al eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir: **Get tiIndicators** `DDoS`
+En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/beta/security/tiIndicators` `GET` veya işlem) belirtmeyin `PATCH` . Tehdit türüne sahip bir listeyi istediğiniz zaman **Al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir `DDoS` :
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

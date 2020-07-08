@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77611874"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Hesaplar ve kiracı profilleri (Android)
@@ -32,7 +31,7 @@ Microsoft Identity platformunda bir hesap aşağıdakilerden oluşur:
 - Hesabın sahipliğini/denetimini göstermek için kullanılan bir veya daha fazla kimlik bilgisi.
 - Öznitelikleri içeren bir veya daha fazla profil:
   - Resim, verilen ad, Aile adı, başlık, ofis konumu
-- Hesap, bir yetki kaynağına veya kayıt sistemine sahiptir. Bu, hesabın oluşturulduğu ve bu hesapla ilişkili kimlik bilgilerinin depolandığı sistemdir. Microsoft Identity platformu gibi çok kiracılı sistemlerde, kayıt sistemi hesabın oluşturulduğu `tenant` yerdir. Bu kiracıya da denir `home tenant`.
+- Hesap, bir yetki kaynağına veya kayıt sistemine sahiptir. Bu, hesabın oluşturulduğu ve bu hesapla ilişkili kimlik bilgilerinin depolandığı sistemdir. Microsoft Identity platformu gibi çok kiracılı sistemlerde, kayıt sistemi `tenant` hesabın oluşturulduğu yerdir. Bu kiracıya da denir `home tenant` .
 - Microsoft Identity platform 'daki hesaplara aşağıdaki kayıt sistemleri sahiptir:
   - Azure Active Directory B2C dahil Azure Active Directory.
   - Microsoft hesabı (canlı).
@@ -43,7 +42,7 @@ Microsoft Identity platformunda bir hesap aşağıdakilerden oluşur:
 - Microsoft Identity platformu, birden fazla kuruluşa (Azure Active Directory kiracılar) ait kaynaklara erişmek için bir hesabın kullanılmasına izin verir.
   - Bir kayıt sisteminden (AAD kiracı A) bir hesabın, başka bir kayıt sistemindeki (AAD kiracısı B) bir kaynağa erişimi olduğunu kaydetmek için, hesabın, kaynağın tanımlandığı kiracıda temsil edilebilmesi gerekir. Bu, sistem B 'deki sistem A 'dan hesabın yerel bir kaydı oluşturularak yapılır.
   - Hesabın temsili olan bu yerel kayıt, özgün hesaba bağlanır.
-  - MSAL bu yerel kaydı bir `Tenant Profile`olarak gösterir.
+  - MSAL bu yerel kaydı bir olarak gösterir `Tenant Profile` .
   - Kiracı profili, Iş unvanı, ofis konumu, Iletişim bilgileri vb. gibi yerel bağlamla ilgili farklı özniteliklere sahip olabilir.
 - Bir hesap bir veya daha fazla kiracıda mevcut olabileceğinden, hesap birden fazla profile sahip olabilir.
 
@@ -56,18 +55,18 @@ Microsoft Identity platformunda bir hesap aşağıdakilerden oluşur:
 
 Yukarıdaki diyagramda:
 
-- Hesap `bob@contoso.com` , şirket Içi Windows Server Active Directory (kaynak şirket içi kayıt sisteminde) oluşturulur.
+- Hesap, Şirket `bob@contoso.com` Içi Windows Server Active Directory (kaynak şirket içi kayıt sisteminde) oluşturulur.
 - Hesap `tom@live.com` Microsoft hesabı kiracısında oluşturulur.
 - `bob@contoso.com`, aşağıdaki Azure Active Directory kiracılarda en az bir kaynağa erişebilir:
   - contoso.com (kaydın bulut sistemi-şirket içi kayıt sistemine bağlı)
   - fabrikam.com
   - woodgrovebank.com
-  - Bu kiracıların her `bob@contoso.com` birinde için bir kiracı profili bulunur.
+  - `bob@contoso.com`Bu kiracıların her birinde için bir kiracı profili bulunur.
 - `tom@live.com`, aşağıdaki Microsoft kiracılarındaki kaynaklara erişebilir:
   - contoso.com
   - fabrikam.com
-  - Bu kiracıların her `tom@live.com` birinde için bir kiracı profili bulunur.
-- Diğer kiracılardaki Tom ve Bob hakkındaki bilgiler, kayıt sisteminde farklılık gösterebilir. Bunlar, Iş unvanı, ofis konumu vb. gibi özniteliklere göre farklılık gösterebilir. Gruplar ve/veya rollerinin üyeleri (Azure Active Directory kiracısı) olabilir. Bu bilgilere kiracı profili olarak bob@contoso.com değintik.
+  - `tom@live.com`Bu kiracıların her birinde için bir kiracı profili bulunur.
+- Diğer kiracılardaki Tom ve Bob hakkındaki bilgiler, kayıt sisteminde farklılık gösterebilir. Bunlar, Iş unvanı, ofis konumu vb. gibi özniteliklere göre farklılık gösterebilir. Gruplar ve/veya rollerinin üyeleri (Azure Active Directory kiracısı) olabilir. Bu bilgilere kiracı profili olarak değintik bob@contoso.com .
 
 Diyagramda bob@contoso.com ve tom@live.com farklı Azure Active Directory kiracılarındaki kaynaklara erişimi vardır. Daha fazla bilgi için [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)bölümüne bakın.
 
@@ -82,7 +81,7 @@ MSAL belirteç önbelleği, hesap başına *tek bir yenileme belirteci* depolar.
 
 MSAL hesap KIMLIĞI, bir hesap nesne KIMLIĞI değil. Microsoft Identity platform içinde benzersizlik dışında herhangi bir şeyi iletmek için ayrıştırılıp/veya bir şekilde güvenilmez.
 
-Azure AD kimlik doğrulama kitaplığı (ADAL) ile uyumluluk ve ADAL 'den MSAL 'e geçiş kolaylığı sağlamak için MSAL, MSAL önbelleğinde bulunan hesap için geçerli bir tanımlayıcı kullanarak hesapları arayabilir.  Örneğin, her bir tanımlayıcı geçerli olduğundan aşağıdakiler için tom@live.com her zaman aynı hesap nesnesini alır:
+Azure AD kimlik doğrulama kitaplığı (ADAL) ile uyumluluk ve ADAL 'den MSAL 'e geçiş kolaylığı sağlamak için MSAL, MSAL önbelleğinde bulunan hesap için geçerli bir tanımlayıcı kullanarak hesapları arayabilir.  Örneğin, tom@live.com her bir tanımlayıcı geçerli olduğundan aşağıdakiler için her zaman aynı hesap nesnesini alır:
 
 ```java
 // The following would always retrieve the same account object for tom@live.com because each identifier is valid
@@ -125,7 +124,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Kiracı profili taleplerine erişin
 
-Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e `IMultiTenantAccount`atamalısınız. Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örneğin:
+Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e atamalısınız `IMultiTenantAccount` . Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örneğin:
 
 ```java
 // Psuedo Code
@@ -140,7 +139,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Hesap için belirteçleri Yenile, B2C ilkeleri arasında paylaşılmaz. Sonuç olarak, belirteçler kullanan çoklu oturum açma mümkün değildir. Bunun anlamı çoklu oturum açma mümkün değildir. Çoklu oturum açma 'nın çoklu oturum açmayı etkinleştirmek için bir tanımlama bilgisinin kullanılabildiği etkileşimli bir deneyim kullanması gerektiği anlamına gelir.
 
-Bu Ayrıca, MSAL durumunda farklı B2C ilkeleri kullanarak belirteçler elde ediyorsanız, bunların her biri kendi tanımlayıcısına sahip ayrı hesaplar olarak değerlendirilir. Kullanarak `acquireTokenSilent`bir belirteç istemek için bir hesap kullanmak istiyorsanız, belirteç isteğiyle kullanmakta olduğunuz ilkeyle eşleşen hesap listesinden hesabı seçmeniz gerekir. Örneğin:
+Bu Ayrıca, MSAL durumunda farklı B2C ilkeleri kullanarak belirteçler elde ediyorsanız, bunların her biri kendi tanımlayıcısına sahip ayrı hesaplar olarak değerlendirilir. Kullanarak bir belirteç istemek için bir hesap kullanmak istiyorsanız `acquireTokenSilent` , belirteç isteğiyle kullanmakta olduğunuz ilkeyle eşleşen hesap listesinden hesabı seçmeniz gerekir. Örneğin:
 
 ```java
 // Get Account For Policy

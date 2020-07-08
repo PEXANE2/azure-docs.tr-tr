@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620864"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect bulut sağlama desteklenen topolojiler ve senaryolar
@@ -50,7 +49,7 @@ Ortak topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı 
 Bu senaryo, çok ormanlı senaryoya benzerdir, ancak bu, mevcut bir Azure AD Connect ortamını içerir ve sonra Azure AD Connect bulut sağlaması kullanılarak yeni bir ormana gönderilir.  Bu senaryonun bir örneği için bkz [. Öğretici: tek bir Azure AD kiracısına sahip mevcut bir orman](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Mevcut bir karma AD ormanında bulut Sağlama Azure AD Connect
-![Tek bir orman için topoloji ve tek bir kiracı](media/plan-cloud-provisioning-topologies/migrate.png) , pilolama senaryosu aynı ormanda hem Azure AD Connect hem de Azure AD Connect bulut sağlamasının varlığını ve Kullanıcı ve grupların uygun şekilde kapsamını içerir. NOTE: bir nesnenin yalnızca bir araç kapsamında olması gerekir. 
+![Tek bir orman için topoloji ve tek bir kiracı ](media/plan-cloud-provisioning-topologies/migrate.png) , pilolama senaryosu aynı ormanda hem Azure AD Connect hem de Azure AD Connect bulut sağlamasının varlığını ve Kullanıcı ve grupların uygun şekilde kapsamını içerir. NOTE: bir nesnenin yalnızca bir araç kapsamında olması gerekir. 
 
 Bu senaryonun bir örneği için bkz [. Öğretici: Pilot Azure AD Connect var olan eşitlenmiş BIR ad ormanında bulut sağlama](tutorial-pilot-aadc-aadccp.md)
 

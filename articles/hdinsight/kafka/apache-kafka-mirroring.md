@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425893"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker kullanarak Apache Kafka konularını HDInsight üzerinde Kafka ile çoğaltma
@@ -81,7 +80,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 1. Sanal ağ eşlemesi oluşturun. Bu adım iki eşleme oluşturur: biri **Kafka-Primary-VNET** 'ten **Kafka-ikincil-VNET** 'e, diğeri **Kafka-ikincil VNET** 'ten **Kafka-Primary-VNET**'e kadar bir geri.
     1. **Kafka-Primary-VNET** sanal ağını seçin.
     1. Ayarlar **altında eşlemeler** ' **Settings**i seçin.
-    1. **Add (Ekle)** seçeneğini belirleyin.
+    1. **Ekle**'yi seçin.
     1. **Eşleme Ekle** ekranında, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrıntıları girin.
 
         ![HDInsight Kafka VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -90,9 +89,9 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 
 Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağlanmasını sağlamak için IP tanıtıcılarını yapılandırın.
 
-1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-1. **Hizmetler** > **Kafka**' ı seçin. **Configs** sekmesini Clienselectck.
-1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**’i seçin.
+1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
+1. **Hizmetler**  >  **Kafka**' ı seçin. **Configs** sekmesini Clienselectck.
+1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**'i seçin.
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -105,14 +104,14 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 1. **Yapılandırma kaydet** ekranına bir Note girin ve **Kaydet**' e tıklayın.
 1. Yapılandırma Uyarısı sorulursa, **yine de devam et**' e tıklayın.
 1. **Yapılandırma değişikliklerini kaydet**' de **Tamam ' ı** seçin.
-1. Yeniden başlatma **gerekli** bildiriminde**etkilenen tüm** **Yeniden Başlat ' ı seçin.** >  **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
+1. Yeniden **Restart**başlatma  >  **gerekli** bildiriminde**etkilenen tüm** yeniden Başlat ' ı seçin. **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
 
     ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
     
-1. **Services**Hizmetler > **Kafka**' nin altındaki **configs** sekmesinde kalın. **Kafka Broker** bölümünde **Listeners** özelliğini olarak `PLAINTEXT://0.0.0.0:9092`ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Hizmetler**Kafka ' nin altındaki **configs** sekmesinde kalın  >  **Kafka**. **Kafka Broker** bölümünde **Listeners** özelliğini olarak ayarlayın `PLAINTEXT://0.0.0.0:9092` .
+1. **Kaydet**'i seçin.
 1. **Yeniden Başlat**' ı seçin ve **tümünün yeniden başlatılmasını onaylayın**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Birincil küme için Kayıt Aracısı IP adreslerini ve Zookeeper adreslerini kaydeder.
@@ -136,14 +135,14 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
     Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Birincil küme için Apache Zookeeper konaklarıyla bir değişken oluşturmak için aşağıdaki komutu kullanın. Benzer `ZOOKEEPER_IP_ADDRESS1` dizeler, `10.23.0.11` ve `10.23.0.7`gibi daha önce kaydedilen gerçek IP adresleriyle değiştirilmelidir. Özel bir DNS sunucusu ile FQDN çözümlemesi kullanıyorsanız, aracı ve Zookeeper adlarını almak için [aşağıdaki adımları](apache-kafka-get-started.md#getkafkainfo) izleyin.:
+1. Birincil küme için Apache Zookeeper konaklarıyla bir değişken oluşturmak için aşağıdaki komutu kullanın. Benzer dizeler `ZOOKEEPER_IP_ADDRESS1` , ve gibi daha önce kaydedilen gerçek IP adresleriyle değiştirilmelidir `10.23.0.11` `10.23.0.7` . Özel bir DNS sunucusu ile FQDN çözümlemesi kullanıyorsanız, aracı ve Zookeeper adlarını almak için [aşağıdaki adımları](apache-kafka-get-started.md#getkafkainfo) izleyin.:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-1. Adlı `testtopic`bir konu oluşturmak için aşağıdaki komutu kullanın:
+1. Adlı bir konu oluşturmak için `testtopic` aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
@@ -155,7 +154,7 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-    Yanıt içerir `testtopic`.
+    Yanıt içerir `testtopic` .
 
 1. Bu ( **birincil**) küme için Zookeeper ana bilgisayar bilgilerini görüntülemek için aşağıdakileri kullanın:
 
@@ -181,13 +180,13 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
     Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Birincil `consumer.properties` kümeyle iletişimi yapılandırmak için bir dosya kullanılır. **primary** Dosyayı oluşturmak için aşağıdaki komutu kullanın:
+1. `consumer.properties` **Birincil** kümeyle iletişimi yapılandırmak için bir dosya kullanılır. Dosyayı oluşturmak için aşağıdaki komutu kullanın:
 
     ```bash
     nano consumer.properties
     ```
 
-    `consumer.properties` Dosyanın içeriği olarak aşağıdaki metni kullanın:
+    Dosyanın içeriği olarak aşağıdaki metni kullanın `consumer.properties` :
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
@@ -210,13 +209,13 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-1. İkincil `producer.properties` kümeyi iletmek için bir dosya kullanılır **secondary** . Dosyayı oluşturmak için aşağıdaki komutu kullanın:
+1. `producer.properties` **İkincil** kümeyi iletmek için bir dosya kullanılır. Dosyayı oluşturmak için aşağıdaki komutu kullanın:
 
     ```bash
     nano producer.properties
     ```
 
-    `producer.properties` Dosyanın içeriği olarak aşağıdaki metni kullanın:
+    Dosyanın içeriği olarak aşağıdaki metni kullanın `producer.properties` :
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
@@ -244,16 +243,16 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        Oluşturulacak `testtopic` konunun adıyla değiştirin.
+        `testtopic`Oluşturulacak konunun adıyla değiştirin.
 
     * **Kümeyi otomatik konu oluşturma Için yapılandırma**: Bu seçenek, mirrormaker 'ın otomatik olarak konu oluşturmasına izin verir, ancak bu seçenek, birincil konudan farklı sayıda bölüm veya çoğaltma faktörü ile oluşturulabilir.
 
         İkincil kümeyi otomatik olarak konu başlıkları oluşturacak şekilde yapılandırmak için aşağıdaki adımları uygulayın:
 
-        1. İkincil kümenin ambarı panosuna gidin: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
-        1. **Hizmetler** > **Kafka**' e tıklayın. **Configs** sekmesine tıklayın.
-        1. __Filtre__ alanına bir değeri girin `auto.create`. Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarı görüntüler.
-        1. Değerini true `auto.create.topics.enable` olarak değiştirin ve ardından __Kaydet__' i seçin. Bir Note ekleyin ve sonra yeniden __Kaydet__ ' i seçin.
+        1. İkincil kümenin ambarı panosuna gidin: `https://SECONDARYCLUSTERNAME.azurehdinsight.net` .
+        1. **Hizmetler**  >  **Kafka**' e tıklayın. **Configs** sekmesine tıklayın.
+        1. __Filtre__ alanına bir değeri girin `auto.create` . Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarı görüntüler.
+        1. Değerini `auto.create.topics.enable` true olarak değiştirin ve ardından __Kaydet__' i seçin. Bir Note ekleyin ve sonra yeniden __Kaydet__ ' i seçin.
         1. __Kafka__ hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
 
         ![Kafka otomatik oluşturma konularını etkinleştir](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
@@ -270,8 +269,8 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
     |Parametre |Açıklama |
     |---|---|
-    |--Consumer. config|Tüketici özelliklerini içeren dosyayı belirtir. Bu özellikler, *birincil* Kafka kümesinden okuyan bir tüketici oluşturmak için kullanılır.|
-    |--Producer. config|Üretici özelliklerini içeren dosyayı belirtir. Bu özellikler, *İkincil* Kafka kümesine yazan bir üretici oluşturmak için kullanılır.|
+    |--consumer.config|Tüketici özelliklerini içeren dosyayı belirtir. Bu özellikler, *birincil* Kafka kümesinden okuyan bir tüketici oluşturmak için kullanılır.|
+    |--producer.config|Üretici özelliklerini içeren dosyayı belirtir. Bu özellikler, *İkincil* Kafka kümesine yazan bir üretici oluşturmak için kullanılır.|
     |--Beyaz liste|MirrorMaker 'ın birincil kümeden ikincil kümeye çoğaltıldığı konuların listesi.|
     |--say. akışlar|Oluşturulacak tüketici iş parçacığı sayısı.|
 
@@ -292,7 +291,7 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    Bu konu başlığı altında `testtopic`, mirrormaster konuyu ikincil kümeden ikinciye yansıtdığına göre oluşturulan konuların listesi. Konudan alınan iletiler, birincil kümede girdikleriyle aynıdır.
+    `testtopic`Bu konu başlığı altında, MirrorMaster konuyu ikincil kümeden ikinciye yansıtdığına göre oluşturulan konuların listesi. Konudan alınan iletiler, birincil kümede girdikleriyle aynıdır.
 
 ## <a name="delete-the-cluster"></a>Küme silme
 

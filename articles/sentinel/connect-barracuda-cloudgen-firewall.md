@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588510"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Barracuda CloudGen Firewall'u bağlama
@@ -36,7 +35,7 @@ Barbcuda CloudGen güvenlik duvarı (CGFW) Bağlayıcısı, Barmcuda CGFW günl�
 
 ## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Azure Sentinel 'e Barbcuda CloudGen güvenlik duvarı 'na bağlanma
 
-1. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **barraycuda cloudgen güvenlik duvarı** bağlayıcısını seçin.
+1. Azure Portal **Azure Sentinel**  >  **veri bağlayıcıları** ' na gidin ve ardından **barraycuda cloudgen güvenlik duvarı** bağlayıcısını seçin.
 
 2. **Bağlayıcı sayfasını aç**' ı seçin.
 

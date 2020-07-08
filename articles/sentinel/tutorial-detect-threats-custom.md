@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585116"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Öğretici: şüpheli tehditleri algılamak için özel analitik kurallar oluşturma
 
- [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçüt eşleştirildiği zaman bunları araştırabilmeniz için olaylar oluşturabileceğiniz özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
+ [Veri kaynaklarınızı](quickstart-onboard.md)   Azure Sentinel 'e bağladıktan sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçüt eşleştirildiği zaman bunları araştırabilmeniz için olaylar oluşturabileceğiniz özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 > [!div class="checklist"]
@@ -59,7 +58,7 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > Sorgu uzunluğu 1 ila 10.000 karakter arasında olmalıdır ve "Search \*" veya "Union \*" içeremez.
+      > Sorgu uzunluğu 1 ila 10.000 karakter arasında olmalıdır ve "Search \* " veya "Union \* " içeremez.
 
     1. Sorgu sonuçlarınızdan parametreleri Azure Sentinel tarafından tanınan varlıklara bağlamak için **varlıkları eşle** bölümünü kullanın. Bu varlıklar, **olay ayarları** sekmesinde uyarıların gruplandırılmasına dahil olmak üzere daha fazla çözümlemenin temelini oluşturur.
     1. **Sorgu zamanlaması** bölümünde aşağıdaki parametreleri ayarlayın:
