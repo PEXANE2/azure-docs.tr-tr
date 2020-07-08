@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314371"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Relay ölçümleri 
@@ -48,7 +48,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 | ListenerConnections-başarılı  | Belirli bir süre içinde Azure Relay yapılan başarılı dinleyici bağlantısı sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |ListenerConnections-ClientError |Belirli bir süre boyunca dinleyici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -58,14 +58,14 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 |SenderConnections-Sunucuhatası |Belirli bir süre boyunca gönderici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |ListenerConnections-TotalRequests |Belirli bir süre içindeki dinleyici bağlantılarının toplam sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |SenderConnections-TotalRequests |Belirli bir süre içinde göndericiler tarafından yapılan bağlantı istekleri.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|ActiveConnection sayısı |Etkin bağlantı sayısı. Bu değer bir zaman noktası değeridir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+|ActiveConnections |Etkin bağlantı sayısı. Bu değer bir zaman noktası değeridir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |ActiveListeners |Etkin dinleyicilerinin sayısı. Bu değer bir zaman noktası değeridir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Listenerdisconnect |Belirtilen bir süre içinde bağlantısı kesilen dinleyicilerinin sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Gönderenin bağlantısı kesiliyor |Belirli bir süre içinde bağlantısı kesilen gönderici sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Bellek kullanım ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 |BytesTransferred |Belirtilen bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 
@@ -73,7 +73,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Azure Relay, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Description|
+|Boyut adı|Açıklama|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay ad alanı altındaki mesajlaşma varlıklarını destekler.|
 

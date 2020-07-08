@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event hub 'ınızdaki verileri bir Azure Stream 
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312889"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme 
@@ -21,7 +21,7 @@ Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları a
 
 ## <a name="end-to-end-flow"></a>Uçtan uca akış
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. **Event Hubs ad alanına** gidin ve ardından gelen verileri içeren **Olay Hub 'ına**gidin. 
 1. Olay Hub 'ı sayfasında **Işlem verileri** ' ni seçin.  
 

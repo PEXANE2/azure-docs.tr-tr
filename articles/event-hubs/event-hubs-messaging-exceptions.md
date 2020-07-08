@@ -4,10 +4,10 @@ description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve ön
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314613"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs mesajlaşma özel durumları-.NET

@@ -4,10 +4,10 @@ description: Azure Relay Karma Bağlantılar Web Yuvaları için bir Node.js kon
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 86897c0a752e4203537135dbac68cc0b4c1da44c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316929"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js geçiş Karma Bağlantılar WebSockets ile çalışmaya başlama

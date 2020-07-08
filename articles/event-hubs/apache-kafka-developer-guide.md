@@ -4,10 +4,10 @@ description: Bu makalede, Kafka uygulamalarınızı Azure Event Hubs ile tümle�
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314246"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu
@@ -22,7 +22,7 @@ Hızlı başlangıçlara GitHub 'da ve Kafka için Event Hubs hızlı bir şekil
 ### <a name="quickstarts-in-github"></a>GitHub 'da hızlı başlangıç
 **Azure-Event-hub 'lar-for-Kafka** depolarındaki şu hızlı başlangıçlara bakın: 
 
-| İstemci dili/çerçevesi | Description | 
+| İstemci dili/çerçevesi | Açıklama | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>Bu hızlı başlangıçta, .NET Core 2,0 kullanılarak C# dilinde yazılmış örnek bir üretici ve tüketici kullanarak bir Event Hubs Kafka uç noktası oluşturma ve buna bağlanma gösterilmektedir.</p><p>Bu örnek, Kafka için Event Hubs birlikte kullanılmak üzere değiştirilmiş olan, [confluent 'in Apache Kafka .net Client](https://github.com/confluentinc/confluent-kafka-dotnet)tabanlıdır.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | Bu hızlı başlangıçta, Java 'da yazılan örnek bir üretici ve tüketici kullanarak bir Event Hubs Kafka uç noktası oluşturma ve buna bağlanma gösterilmektedir. |
@@ -42,7 +42,7 @@ Bkz. hızlı başlangıç: Bu içerik kümesindeki [Kafka protokolünü kullanar
 ### <a name="tutorials-in-github"></a>GitHub 'daki öğreticiler
 GitHub 'da aşağıdaki öğreticilere bakın:
 
-| Öğretici | Description | 
+| Öğretici | Açıklama | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Bu öğreticide, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Akka akışlarının Kafka özellikli Event Hubs nasıl bağlanacağı gösterilmektedir. **Java** ve **Scala** programlama dillerini kullanan iki ayrı öğretici vardır. | 
 | [Bağlan](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Bu belge, Kafka Connect 'i Azure Event Hubs tümleştirirken ve temel FileStreamSource ve FileStreamSink bağlayıcılarını dağıtırken size yol gösterecektir. Bu bağlayıcılar üretim kullanımına yönelik değildir, ancak Azure Event Hubs bir Kafka Aracısı olarak kendini gizleyen bir uçtan uca Kafka Connect senaryosu gösterir.| 
@@ -63,13 +63,13 @@ Ayrıca bkz. öğreticiye bakın: Bu içerik kümesindeki [Stream Analytics 'i k
 ## <a name="how-to-guides"></a>Nasıl yapılır kılavuzları
 Belgelerimizde aşağıdaki nasıl yapılır kılavuzlarını inceleyin:
 
-| Makale | Description | 
+| Makale | Açıklama | 
 | ------- | ----------- | 
 | [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md) | Kafka MirrorMaker kullanarak bir olay hub 'ında Kafka aracısının nasıl yansıtmasının gösterir. |
 | [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md) | Spark uygulamanızı gerçek zamanlı akış için Event Hubs bağlama konusunda size kılavuzluk eder. |
 | [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md) | Protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Apache flink 'i bir olay hub 'ına nasıl bağlayabileceğiniz gösterilir. |
 | [Apache Kafka Connect 'i bir olay hub 'ı ile tümleştirme (Önizleme)](event-hubs-kafka-connect-tutorial.md) | Kafka Connect 'i bir olay hub 'ı ile tümleştirerek temel FileStreamSource ve FileStreamSink bağlayıcılarını dağıtmanıza yardımcı olur. |
-| [Akka Streams’i bir olay hub’ına bağlama](event-hubs-kafka-akka-streams-tutorial.md) | Protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan, Akka akışlarını bir olay hub 'ına bağlamayı gösterir. |
+| [Akka akışlarını bir olay hub 'ına bağlama](event-hubs-kafka-akka-streams-tutorial.md) | Protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan, Akka akışlarını bir olay hub 'ına bağlamayı gösterir. |
 | [Azure ile Apache Kafka için Spring Boot Starter 'ı kullanın Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Azure Event Hubs ile Apache Kafka kullanmak üzere Spring Boot başlatıcısıyla oluşturulmuş bir Java tabanlı yay bulut akışı bağlayıcısının nasıl yapılandırılacağını gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

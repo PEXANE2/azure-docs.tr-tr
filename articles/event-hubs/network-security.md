@@ -4,10 +4,10 @@ description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırıla
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312837"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs için ağ güvenliği 
@@ -26,7 +26,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **EventHub** | Azure Event Hubs. | Giden | Yes | Yes |
+| **EventHub** | Azure Event Hubs. | Giden | Evet | Evet |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 

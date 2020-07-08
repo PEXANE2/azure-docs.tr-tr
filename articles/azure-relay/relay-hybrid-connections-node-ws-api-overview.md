@@ -4,10 +4,10 @@ description: Bu makalede Azure Relay hizmeti için Node.js API 'sine genel bakı
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 71faa2ee143488483aff4300152aab6d1e2b2a88
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316736"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş Karma Bağlantılar node API 'sine genel bakış
@@ -120,7 +120,7 @@ Oluşturucu bağımsız değişkenleri:
 - `server`(gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
 - `token`(gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
-#### <a name="events"></a>Ekinlikler
+#### <a name="events"></a>Olaylar
 
 `RelayedServer`örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
 

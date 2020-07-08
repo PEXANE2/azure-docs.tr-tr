@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs ad alanını geçerli bölgeden başk
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312967"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs ad alanını başka bir bölgeye taşıma
@@ -18,15 +18,15 @@ Mevcut Event Hubs ad alanınızı bir bölgeden diğerine taşımak istediğiniz
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Hesabınızın kullandığı hizmet ve özelliklerin hedef bölgede desteklendiğinden emin olun.
-- Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye kaydedildiğinden emin olun.
+- Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
+- Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
 - Ad alanındaki Olay Hub 'ları için etkin **yakalama özelliği** varsa, Event Hubs ad alanını taşımadan önce [Azure Storage veya Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) veya [Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) hesaplarını taşıyın. Ayrıca, bu makalede açıklananlara benzer adımları izleyerek, hem depolama hem de Event Hubs ad alanlarını içeren kaynak grubunu diğer bölgeye taşıyabilirsiniz. 
 - Event Hubs ad alanı bir **Event Hubs kümedeyse**, bu makaledeki adımlara geçmeden önce **hedef bölgede** [ayrılmış bir küme oluşturun](event-hubs-dedicated-cluster-create-portal.md) . Ayrıca bir Event Hubs kümesi oluşturmak için [GitHub 'daki hızlı başlangıç şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/) da kullanabilirsiniz. Şablonda, yalnızca kümeyi oluşturmak için JSON 'ın ad alanı bölümünü kaldırın. 
 
 ## <a name="prepare"></a>Hazırlama
 Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın. Bu şablon Event Hubs ad alanınızı tanımlayan ayarları içerir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve sonra Event Hubs ad alanınızı seçin.
 
@@ -46,15 +46,15 @@ Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın. Bu şablon Event
 Hedef bölgede bir Event Hubs ad alanı oluşturmak için şablonu dağıtın. 
 
 
-1. Azure portalda **Kaynak oluştur**’u seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
 
-2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
 
-3. **Şablon dağıtımı**'nı seçin.
+3. **Şablon dağıtımı**seçin.
 
 4. **Oluştur**'u seçin.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
 
 6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
@@ -88,7 +88,7 @@ Hedef bölgede bir Event Hubs ad alanı oluşturmak için şablonu dağıtın.
     
     6. Şimdi dağıtım işlemini başlatmak için **satın al** ' ı seçin. 
 
-## <a name="discard-or-clean-up"></a>Atın veya temizleyin
+## <a name="discard-or-clean-up"></a>Atma veya temizleme
 Dağıtımdan sonra, baştan başlamak istiyorsanız, **hedef Event Hubs ad alanını**silebilir ve bu makalenin [hazırlama](#prepare) ve [taşıma](#move) bölümünde açıklanan adımları yineleyebilirsiniz.
 
 Değişiklikleri uygulamak ve bir Event Hubs ad alanını taşımayı tamamlamak için, **kaynak Event Hubs ad alanını**silin. Ad alanını silmeden önce ad alanındaki tüm olayları işlediğinizden emin olun. 

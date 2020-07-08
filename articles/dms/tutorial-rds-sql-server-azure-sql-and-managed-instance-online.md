@@ -13,17 +13,17 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 20ca7f1d9c8322fe9a4d5dd784768bdaaf7cd0d7
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314943"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: Azure SQL veritabanı 'na veya DMS kullanarak çevrimiçi Azure SQL yönetilen örneğine RDS SQL Server geçirme
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir RDS SQL Server örneğinden [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/) 'Na veya [Azure SQL yönetilen örneği](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) 'ne en az kapalı kalma süresiyle geçirebilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak SQL veritabanı 'na veya SQL yönetilen örneği SQL Server 2012 (veya üzeri) bir RDS SQL Server örneğine geri yüklenen **Adventureworks2012** veritabanını geçirmiş olursunuz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure SQL veritabanı veya SQL yönetilen örneği için bir veritabanı oluşturun. 
 > * Data Migration Yardımcısı'nı kullanarak örnek şemayı geçirme.
@@ -209,7 +209,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
     > [!NOTE]
     > Alternatif olarak, şimdi **proje oluştur** ' u seçerek geçiş projesini hemen oluşturabilir ve geçişi daha sonra yürütebilirsiniz.
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 7. Projeyi oluşturmak ve geçiş etkinliğini çalıştırmak için **Etkinlik oluştur ve çalıştır**'ı seçin.
 
@@ -250,7 +250,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 4. Aşağıdaki **Gelişmiş çevrimiçi geçiş ayarlarını**ayarladıktan sonra **Kaydet**' i seçin.
 
-    | Ayar | Description |
+    | Ayar | Açıklama |
     | ------------- | ------------- |
     | **Paralel olarak yüklenecek en fazla tablo sayısı** | Geçiş sırasında DMS 'in paralel olarak çalıştırdığı tablo sayısını belirtir. Varsayılan değer 5 ' tir, ancak herhangi bir POC geçişiyle ilgili geçiş ihtiyaçlarını karşılamak için en iyi değere ayarlanabilir. |
     | **Kaynak tablo kesilmişse** | Geçiş sırasında DMS 'in hedef tabloyu keser olup olmadığını belirtir. Bu ayar, geçiş işleminin bir parçası olarak bir veya daha fazla tablo kesilmişse yararlı olabilir. |

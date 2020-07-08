@@ -4,10 +4,10 @@ description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312832"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure Event Hubs Azure özel bağlantısı ile tümleştirme
@@ -54,7 +54,7 @@ Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için
 ### <a name="steps"></a>Adımlar
 Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
@@ -194,9 +194,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |

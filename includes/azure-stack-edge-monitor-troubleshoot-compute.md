@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85313215"
 ---
 İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, modülleri izlemek veya sorunlarını gidermek için Docker komutlarının bir alt kümesi kullanılabilir. Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `dkrdbe` işlevini kullanın.
@@ -37,7 +37,7 @@ Commands:
 ```
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `dkrdbe` :
 
-|command  |Description |
+|command  |Açıklama |
 |---------|---------|
 |`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunu kullanın:`dkrdbe image prune -a -f`       |
 |`images`     | Resimleri Listele         |

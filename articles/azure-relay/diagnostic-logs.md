@@ -4,10 +4,10 @@ description: Bu makalede, Azure Relay için kullanılabilen tüm etkinlik ve tan
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314907"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay Karma Bağlantılar için tanılama günlüklerini etkinleştir
@@ -52,7 +52,7 @@ Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama 
 ## <a name="schema-for-hybrid-connections-events"></a>Karma Bağlantı olayları için şema
 Karma bağlantılar olay günlüğü JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ------- | ------- |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
 | Etkinlik kimliği | Belirtilen işlemi tanımlamak için kullanılan iç KIMLIK. "Trackingıd" olarak da bilinir |
@@ -80,7 +80,7 @@ JSON biçiminde örnek bir karma bağlantılar olayı aşağıda verilmiştir.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Tanılama günlüklerinde yakalanan olaylar ve işlemler
 
-| Çalışma | Description | 
+| Çalışma | Açıklama | 
 | --------- | ----------- | 
 | AuthorizationFailed | Yetkilendirme başarısız oldu.|
 | Invalidsastoken | SAS belirteci geçersiz. | 

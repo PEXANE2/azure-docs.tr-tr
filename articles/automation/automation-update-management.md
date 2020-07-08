@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316394"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
@@ -166,11 +166,11 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Destekleniyor | Description |
+| Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -207,7 +207,7 @@ Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bi
 
 Aşağıdaki tabloda, Güncelleştirme Yönetimi Windows güncelleştirmeleri için desteklediği sınıflandırmalar tanımlanmaktadır. 
 
-|Sınıflandırma  |Description  |
+|Sınıflandırma  |Açıklama  |
 |---------|---------|
 |Kritik güncelleştirmeler     | Kritik, güvenlikle ilgili olmayan bir hatayı ele alan belirli bir sorun için güncelleştirme.        |
 |Güvenlik güncelleştirmeleri     | Ürüne özgü, güvenlikle ilgili bir sorun için bir güncelleştirme.        |
@@ -220,7 +220,7 @@ Aşağıdaki tabloda, Güncelleştirme Yönetimi Windows güncelleştirmeleri i�
 
 Sonraki tabloda, Linux güncelleştirmeleri için desteklenen sınıflandırmalar tanımlanmaktadır.
 
-|Sınıflandırma  |Description  |
+|Sınıflandırma  |Açıklama  |
 |---------|---------|
 |Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
 |Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
