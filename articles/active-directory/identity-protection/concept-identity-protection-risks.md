@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 06/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775ff6b3ba003bed22ccd5a42cb4da005c4dbb69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555257"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
@@ -38,7 +38,7 @@ Bu riskler, Microsoft 'un güvenlik araştırmacıları, hukuk uzmanları, Micro
 
 | Risk algılama | Açıklama |
 | --- | --- |
-| Sızdırılan kimlik bilgileri | Bu risk algılama türü, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. Sidolandırıcılar meşru kullanıcıların geçerli parolalarını tehlikeye ayorsa, genellikle bu kimlik bilgilerini paylaşır. Bu paylaşım genellikle koyu Web üzerinden genel olarak, siteler yapıştırarak veya ticari ve kimlik bilgilerini siyah pazarda satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti, koyu Web, siteleri veya diğer kaynaklardan Kullanıcı kimlik bilgilerini edindiğinde, geçerli eşleşmeleri bulmak için Azure AD kullanıcılarının geçerli geçerli kimlik bilgileriyle denetlenir. |
+| Sızdırılan kimlik bilgileri | Bu risk algılama türü, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. Sidolandırıcılar meşru kullanıcıların geçerli parolalarını tehlikeye ayorsa, genellikle bu kimlik bilgilerini paylaşır. Bu paylaşım genellikle koyu Web üzerinden genel olarak, siteler yapıştırarak veya ticari ve kimlik bilgilerini siyah pazarda satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti, koyu Web, siteleri veya diğer kaynaklardan Kullanıcı kimlik bilgilerini edindiğinde, geçerli eşleşmeleri bulmak için Azure AD kullanıcılarının geçerli geçerli kimlik bilgileriyle denetlenir. Sızdırılan kimlik bilgileri hakkında daha fazla bilgi için bkz. [genel sorular](#common-questions). |
 | Azure AD tehdit bilgileri | Bu risk algılama türü, belirli bir kullanıcı için olağandışı olan veya Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarına dayanan bilinen saldırı desenleriyle tutarlı olan kullanıcı etkinliklerini gösterir. |
 
 ### <a name="sign-in-risk"></a>Oturum açma riski
@@ -55,7 +55,7 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | Bilmediğiniz oturum açma özellikleri | Gerçek zamanlı | Bu risk algılama türü, anormal oturum açma işlemlerini aramak için geçen oturum açma geçmişini (IP, Enlem/Boylam ve ASN) dikkate alır. Sistem, bir kullanıcı tarafından kullanılan önceki konumlara ilişkin bilgileri depolar ve bu "tanıdık" konumları dikkate alır. Risk algılama, oturum açma, zaten tanıdık konumlar listesinde olmayan bir konumdan gerçekleştirildiğinde tetiklenir. Yeni oluşturulan kullanıcılar "öğrenme modunda", algoritmalarımız kullanıcının davranışını öğrenirken, bilinmeyen oturum açma özelliklerinin risk algılamalarının devre dışı bırakıldığına ilişkin bir süre için "öğrenme modunda" olacaktır. Öğrenme modu süresi dinamiktir ve kullanıcının oturum açma desenleriyle ilgili yeterli bilgi toplamak için algoritmanın ne kadar zaman aldığını bağlıdır. En kısa süre beş gündür. Bir Kullanıcı, uzun bir süre etkinlik dışı kaldıktan sonra öğrenme moduna geçebilir. Sistem ayrıca tanıdık cihazlardan oturum açma işlemlerini ve coğrafi olarak tanıdık bir konuma yakın konumları yoksayar. <br><br> Bu algılamayı Ayrıca temel kimlik doğrulaması (veya eski protokoller) için de çalıştırdık. Bu protokollerin istemci KIMLIĞI gibi modern özellikleri olmadığından, hatalı pozitif sonuçları azaltmak için sınırlı telemetri vardır. Müşterilerimizin modern kimlik doğrulamasına taşınmasını öneririz. |
 | Yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış | Çevrimdışı | Bu algılama, bir yöneticinin riskli kullanıcılar Kullanıcı arabiriminde veya riskyUsers API 'sini kullanarak ' Kullanıcı güvenliğinin aşılmasına karşı ' yı seçtiğinizi gösterir. Bu kullanıcının hangi yönetici tarafından tehlikede olduğunu görmek için kullanıcının risk geçmişini (UI veya API aracılığıyla) denetleyin. |
 | Kötü amaçlı IP adresi | Çevrimdışı | Bu algılama, kötü amaçlı bir IP adresinden oturum açma işlemini gösterir. IP adresi veya diğer IP saygınlığı kaynaklarından alınan geçersiz kimlik bilgileri nedeniyle, bir IP adresi yüksek hata ücretleri temelinde kötü amaçlı olarak değerlendirilir. |
-| Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu, Kullanıcı hesabının tehlikeye girdiği, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını gösterebilir. |
+| Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu algılama, Kullanıcı hesabının güvenliğinin aşıldığını, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını belirtebilir. |
 | Mümkün olmayan seyahat | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)tarafından keşfedilir. Bu algılama, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösteren bir zaman dilimi içinde coğrafi olarak uzak konumların ikinci kez, ilk konumdan saniye içinde hareket etmek için geçen süreden daha kısa bir süre içinde olan iki kullanıcı etkinliğini tanımlar (tek veya birden çok oturumdur). |
 
 ### <a name="other-risk-detections"></a>Diğer risk algılamaları
@@ -64,8 +64,34 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | --- | --- | --- |
 | Ek risk algılandı | Gerçek zamanlı veya çevrimdışı | Bu algılama, yukarıdaki Premium algılamalardan birinin algılandığını gösterir. Premium algılamalar yalnızca Azure AD Premium P2 müşterilerine görünür olduğundan, müşteriler için Azure AD Premium P2 lisansları olmayan "ek risk algılandı" olarak adlandırılmış olurlar. |
 
+## <a name="common-questions"></a>Sık sorulan sorular
+
+### <a name="leaked-credentials"></a>Sızdırılan kimlik bilgileri
+
+#### <a name="where-does-microsoft-find-leaked-credentials"></a>Microsoft, sızdırılan kimlik bilgilerini nerede bulabilirim?
+
+Microsoft, sızdırılan kimlik bilgilerini çeşitli yerlerde bulur, örneğin:
+
+- Pastebin.com ve paste.ca gibi genel yapıştırma siteleri, kötü aktörlerin genellikle böyle malzemeler göndermesinden sonra. Bu konum, çalınan kimlik bilgilerini bulmak için, her bir kötü aktör için, kendi aratlarını durdurur.
+- Yasalar zorlama kurumları.
+- Microsoft 'un karanlık Web araştırması yaptığı diğer gruplar.
+
+#### <a name="why-arent-i-seeing-any-leaked-credentials"></a>Neden sızdırılan kimlik bilgilerini görmüyorum?
+
+Sızdırılan kimlik bilgileri Microsoft 'un her zaman yeni, genel kullanıma açık bir toplu iş bulduğu Hassas doğası nedeniyle, sızdırılan kimlik bilgileri işlemden sonra kısa bir süre sonra silinir. Parola karması eşitlemesini (PHS) etkinleştirdikten sonra yalnızca yeni sızdırılan kimlik bilgileri, kiracınıza karşı işlenir. Daha önce bulunan kimlik bilgisi çiftlerine karşı doğrulama yapılmaz. 
+
+#### <a name="i-havent-seen-any-leaked-credential-risk-events-for-quite-some-time"></a>Hiç sızdırılan kimlik bilgisi risk olaylarını çok bir süre görmemiş mıyım?
+
+Herhangi bir sızdırılan kimlik bilgisi risk olayı görmediyseniz, bunun nedeni aşağıdaki nedenlerden kaynaklanır:
+
+- Kiracınız için PHS özelliği etkin değil.
+- Microsoft, kullanıcılarınız ile eşleşen herhangi bir sızdırılan kimlik bilgisi çifti bulamadı.
+
+#### <a name="how-often-does-microsoft-process-new-credentials"></a>Microsoft yeni kimlik bilgilerini ne sıklıkla işler?
+
+Kimlik bilgileri, normalde her gün birden çok işlem halinde bulunduklarında hemen işlenir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Riskleri azaltmak için kullanılabilir ilkeler](concept-identity-protection-policies.md)
-
 - [Güvenliğe genel bakış](concept-identity-protection-security-overview.md)

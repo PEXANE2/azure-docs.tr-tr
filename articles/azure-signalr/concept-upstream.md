@@ -1,86 +1,90 @@
 ---
 title: Azure SignalR hizmetindeki yukarı akış ayarları
-description: Yukarı akış ayarlarının ve yukarı akış iletilerinin protokol tanıtımı
+description: Yukarı akış ayarlarının ve yukarı akış iletilerinin protokollerinin bir özetini alın.
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 7434e8796ddcd89968a0ffa0328a823d635f51c9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559431"
 ---
 # <a name="upstream-settings"></a>Yukarı akış ayarları
 
-Yukarı akış, SignalR hizmetinin, sunucusuz moddaki bir uç nokta kümesine ileti ve bağlantı olayları göndermesini sağlayan bir özelliktir. Yukarı akış, sunucusuz modda istemcilerden hub yöntemi çağırmak ve istemci bağlantıları bağlandığında veya bağlantısı kesildiğinde uç noktaların bildirim almasına izin vermek için kullanılabilir.
+Yukarı akış, Azure SignalR hizmetinin, sunucusuz moddaki bir uç nokta kümesine ileti ve bağlantı olayları göndermesini sağlayan bir özelliktir. Sunucudan, sunucusuz moddaki bir hub yöntemi çağırmak ve istemci bağlantıları bağlandığında veya bağlantısı kesildiğinde uç noktaların bildirim almasına izin vermek için yukarı akış kullanabilirsiniz.
 
 > [!NOTE]
 > Yalnızca sunucusuz mod, yukarı akış ayarlarını yapılandırabilir.
 
-## <a name="upstream-settings-details"></a>Yukarı akış ayarları ayrıntıları
+## <a name="details-of-upstream-settings"></a>Yukarı akış ayarlarının ayrıntıları
 
-Yukarı akış ayarları, hassas öğelerin sıralı bir listesinden oluşur. Her öğe `URL Template` , iletilerin nereden gönderileceğini belirten bir ve bir yapılandırma kümesi içerir `Rules` `Authentication` . Belirtilen olay gerçekleştiğinde, öğe `Rules` sırayla bir kez denetlenir ve iletiler, ilk eşleşen öğenin yukarı AKıŞ URL 'sine gönderilir.
+Yukarı akış ayarları bir sıra duyarlı öğe listesinden oluşur. Her öğe aşağıdakilerden oluşur:
+
+* İletilerin nereye gönderileceğini belirten bir URL şablonu.
+* Bir kurallar kümesi.
+* Kimlik doğrulama yapılandırması. 
+
+Belirtilen olay gerçekleştiğinde, bir öğenin kuralları sırayla tek tek denetlenir. İletiler, ilk eşleşen öğenin yukarı akış URL 'sine gönderilir.
 
 ### <a name="url-template-settings"></a>URL şablonu ayarları
 
-URL, çeşitli desenleri desteklemek için parametreli olabilir. Önceden tanımlanmış üç parametre vardır:
+Farklı desenleri desteklemek için URL 'YI parametreleştirebilirsiniz. Önceden tanımlanmış üç parametre vardır:
 
-|Önceden tanımlanmış parametre|Description|
+|Önceden tanımlanmış parametre|Açıklama|
 |---------|---------|
-|Hub| Hub, bir SignalR kavramıdır. Hub, bir yalıtım birimidir, kullanıcıların ve ileti tesliminin kapsamı bir hub ile kısıtlanır|
-|alan| Kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. Bir istemci bağlantısı bağlıyken veya bağlantısı kesildiğinde tetiklenir. *Bağlı* ve *bağlantısı kesilmiş* olayları ekleme</li><li>**mesajlar**: istemciler hub metodunu çağırdığınızda tetiklenir. *Bağlantılar* kategorisi hariç diğer tüm olayları dahil etme</li></ul>|
-|olay| *İleti* kategorisi için, olay, istemcilerin gönderdikleri [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *hedeftir* . *Bağlantılar* kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır.|
+|Hub| Hub, Azure SignalR hizmeti kavramıdır. Hub bir yalıtım birimidir. Kullanıcıların ve ileti tesliminin kapsamı bir hub ile kısıtlanır.|
+|alan| Bir kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. İstemci bağlantısı bağlandığında veya bağlantısı kesildiğinde tetiklenir. Bağlı ve bağlantısı kesilmiş olayları içerir.</li><li>**mesajlar**: istemciler bir hub yöntemi çağıryüklerken tetiklenir. **Bağlantılar** kategorisinden hariç olmak üzere diğer tüm olayları içerir.</li></ul>|
+|olay| **İletiler** kategorisi için, bir olay, istemcilerin gönderdikleri bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) hedeftir. **Bağlantılar** kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır.|
 
-Bu önceden tanımlanmış parametreler ' de kullanılabilir `URL Pattern` ve parametreler, yukarı akış URL 'si değerlendirilirken belirtilen bir değerle değiştirilmelidir. Örneğin 
+Bu önceden tanımlanmış parametreler, URL modelinde kullanılabilir. Yukarı akış URL 'sini değerlendirirken Parametreler belirtilen değerle değiştirilmelidir. Örneğin: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
-' Chat ' hub 'ındaki bir istemci bağlantısı bağlandığında, şu URL 'ye bir ileti gönderilir:
+"Sohbet" hub 'ında bir istemci bağlantısı bağlandığında, bu URL 'ye bir ileti gönderilir:
 ```
 http://host.com/chat/api/connections/connected
 ```
-Hub 'da bir istemci `chat` hub metodunu çağırdığında `broadcast` Şu URL 'ye bir ileti gönderilir:
+"Sohbet" hub 'ındaki bir istemci hub yöntemini çağırdığında `broadcast` , bu URL 'ye bir ileti gönderilir:
 ```
 http://host.com/chat/api/messages/broadcast
 ```
 
-### <a name="rules-settings"></a>Kural ayarları
+### <a name="rule-settings"></a>Kural ayarları
 
-*Hub kuralları*, *Kategori kuralları* ve *olay kuralları* için kurallar oluşturabilirsiniz. Eşleşen kural üç biçimi destekler. *Olay kurallarını* örnek olarak alın:
+*Hub kuralları*, *Kategori kuralları*ve *olay kuralları* için kurallar oluşturabilirsiniz. Eşleşen kural üç biçimi destekler. Olay kurallarını örnek olarak alın:
 - Herhangi bir olayla eşleştirmek için yıldız işareti (*) kullanın.
-- Birden çok olayı birleştirmek için Kullanıcı virgül (,). Örneğin, `connected, disconnected` *bağlanan* ve *bağlantısı kesilen*olayları eşleştirir.
-- Olayı eşleştirmek için tam olay adını kullanın. Örneğin, `connected` *bağlantılı* olayla eşleşir.
+- Birden çok olayı birleştirmek için virgül (,) kullanın. Örneğin, `connected, disconnected` bağlı ve bağlantısı kesilmiş olaylarla eşleşir.
+- Olayı eşleştirmek için tam olay adını kullanın. Örneğin, `connected` bağlantılı olayla eşleşir.
 
 ### <a name="authentication-settings"></a>Kimlik doğrulaması ayarları
 
-Her yukarı akış ayarları öğesi için *kimlik doğrulamasını* ayrı ayrı yapılandırabilirsiniz. *Kimlik doğrulaması*yapılandırıldığında, yukarı akış Iletisinin *kimlik doğrulama* üstbilgisinde bir belirteç ayarlanır. Geçerli, SignalR hizmeti şu kimlik doğrulama türünü destekler
-- Yok
-- Managedıdentity kimliğine
+Her yukarı akış ayarı öğesi için kimlik doğrulamasını ayrı ayrı yapılandırabilirsiniz. Kimlik doğrulamasını yapılandırırken, `Authentication` yukarı akış iletisinin üst bilgisinde bir belirteç ayarlanır. Şu anda Azure SignalR hizmeti aşağıdaki kimlik doğrulama türlerini destekler:
+- `None`
+- `ManagedIdentity`
 
-*Managedıdentity*' yi seçtiğinizde, SignalR hizmetinde yönetilen kimliği önceden etkinleştirmeniz ve isteğe bağlı olarak bir *kaynak*belirtmeniz gerekir. Ayrıntılar için bkz. [Azure SignalR hizmeti için Yönetilen kimlikler kullanma](howto-use-managed-identity.md) .
+Seçeneğini belirlediğinizde `ManagedIdentity` , Azure SignalR hizmetinde yönetilen bir kimliği önceden etkinleştirmeniz ve isteğe bağlı olarak bir kaynak belirtmeniz gerekir. Ayrıntılar için bkz. [Azure SignalR hizmeti Için Yönetilen kimlikler](howto-use-managed-identity.md) .
 
-## <a name="create-upstream-settings"></a>Yukarı akış ayarları oluşturma
-
-### <a name="create-upstream-settings-via-azure-portal"></a>Azure portal aracılığıyla yukarı akış ayarları oluşturma
+## <a name="create-upstream-settings-via-the-azure-portal"></a>Azure portal aracılığıyla yukarı akış ayarları oluşturma
 
 1. Azure SignalR Service 'e gidin.
-2. *Ayarlar* Bland ' ye tıklayın ve *hizmet modunu* *sunucusuz*olarak değiştirin. *Yukarı akış ayarları* aşağıda gösterildiği gibi görüntülenir:
+2. **Ayarlar** ' ı ve **hizmet modunu** **sunucusuz**olarak değiştir ' i seçin. Yukarı akış ayarları şu şekilde görünür:
 
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="Yukarı akış ayarları":::
 
-3. URL 'leri *yukarı akış URL 'Si düzenine*göre doldur, *hub kuralları* gibi ayarlar varsayılan değeri gösterir.
-4. *Hub kuralları*, *olay kuralları*, *Kategori kuralları* ve *yukarı akış kimlik doğrulaması*gibi ayarları ayarlamak için *hub kuralları*değerine tıklayın. Ayarları aşağıda gösterildiği gibi düzenlemenizi sağlayan bir sayfa.
+3. **Yukarı akış URL 'Si deseninin**altında URL 'ler ekleyin. Ardından, **hub kuralları** gibi ayarlar varsayılan değeri gösterir.
+4. **Hub kuralları**, **olay kuralları**, **Kategori kuralları**ve **yukarı akış kimlik doğrulaması**ayarlarını belirlemek için **hub kuralları**değerini seçin. Ayarları düzenlemenizi sağlayan bir sayfa görüntülenir:
 
     :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Yukarı akış ayarları":::
 
-5. *Yukarı akış kimlik doğrulamasını*ayarlamak için, önce yönetilen kimliği etkinleştirdiğinizden emin olun ve ardından *yukarı akış kimlik doğrulaması*altında *yönetilen kimliği kullan* ' ı seçin. Gereksinimlerinize göre, *kimlik doğrulama kaynak kimliği*altında herhangi bir seçeneği belirleyebilirsiniz. Ayrıntılar için bkz. [yönetilen kimliği etkinleştirme](howto-use-managed-identity.md) .
+5. **Yukarı akış kimlik doğrulamasını**ayarlamak için, önce yönetilen bir kimliği etkinleştirdiğinizden emin olun. Ardından **yönetilen kimliği kullan**' ı seçin. Gereksinimlerinize göre, **kimlik doğrulama kaynak kimliği**altında herhangi bir seçeneği belirleyebilirsiniz. Ayrıntılar için bkz. [Azure SignalR hizmeti Için Yönetilen kimlikler](howto-use-managed-identity.md) .
 
-### <a name="create-upstream-settings-via-arm-template"></a>ARM şablonu aracılığıyla yukarı akış ayarları oluşturma
+## <a name="create-upstream-settings-via-resource-manager-template"></a>Kaynak Yöneticisi şablonu aracılığıyla yukarı akış ayarları oluşturma
 
-[Kaynak Yöneticisi şablonu](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak yukarı akış ayarları oluşturmak için, özelliği `upstream` özelliğindeki özelliği ayarlayın `properties` . Aşağıdaki kod parçacıkları, `upstream` yukarı akış ayarlarını oluşturma ve güncelleştirme özelliğinin nasıl ayarlanacağını göstermektedir.
+[Azure Resource Manager şablonu](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak yukarı akış ayarları oluşturmak için, özelliği `upstream` özelliğindeki özelliği ayarlayın `properties` . Aşağıdaki kod parçacığında, `upstream` yukarı akış ayarlarını oluşturma ve güncelleştirme özelliğinin nasıl ayarlanacağı gösterilmektedir.
 
 ```JSON
 {
@@ -105,9 +109,9 @@ Her yukarı akış ayarları öğesi için *kimlik doğrulamasını* ayrı ayrı
 }
 ```
 
-## <a name="signalr-serverless-protocol"></a>SignalR sunucusuz Protokolü
+## <a name="serverless-protocols"></a>Sunucusuz protokoller
 
-SignalR hizmeti aşağıdaki protokolleri izleyen uç noktalara iletiler gönderiyor.
+Azure SignalR hizmeti, aşağıdaki protokolleri izleyen uç noktalara iletiler gönderir.
 
 ### <a name="method"></a>Yöntem
 
@@ -115,17 +119,17 @@ POST
 
 ### <a name="request-header"></a>İstek üst bilgisi
 
-|Name |Description|
+|Name |Açıklama|
 |---------|---------|
-|X-ASRS-bağlantı kimliği |İstemci bağlantısı için bağlantı kimliği|
-|X-ASRS-hub |İstemci bağlantısının ait olduğu merkez|
-|X-ASRS-kategori |İletinin ait olduğu kategori|
-|X-ASRS-olay |İletinin ait olduğu olay|
-|X-ASRS-Imza |Doğrulama için kullanılan HMAC. Ayrıntılar için bkz. [imza](#signature) .|
-|X-ASRS-Kullanıcı talepleri |İstemci bağlantısı taleplerinin bir grubu|
-|X-ASRS-Kullanıcı kimliği |İletiyi gönderen istemcinin kullanıcı kimliği|
-|X-ASRS-Client-Query |İstemciler hizmete bağlandıklarında isteğin sorgusu|
-|Kimlik doğrulaması |*Managedıdentity* kullanılırken isteğe bağlı bir belirteç |
+|X-ASRS-bağlantı kimliği |İstemci bağlantısı için bağlantı KIMLIĞI.|
+|X-ASRS-hub |İstemci bağlantısının ait olduğu merkez.|
+|X-ASRS-kategori |İletinin ait olduğu kategori.|
+|X-ASRS-olay |İletinin ait olduğu olay.|
+|X-ASRS-Imza |Doğrulama için kullanılan, karma tabanlı bir ileti kimlik doğrulama kodu (HMAC). Ayrıntılar için bkz. [imza](#signature) .|
+|X-ASRS-Kullanıcı talepleri |İstemci bağlantısının talep grubu.|
+|X-ASRS-Kullanıcı kimliği |İletiyi gönderen istemcinin kullanıcı kimliği.|
+|X-ASRS-Client-Query |İstemciler hizmete bağlandıklarında isteğin sorgusu.|
+|Kimlik Doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -137,28 +141,28 @@ Content-Type: Application/JSON
 
 İçerik türü:`application/json`
 
-|Name  |Tür  |Description  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
-|Hata |string |Bağlantının hata iletisi kapatıldı. Bağlantılar hata olmadan kapatıldığında boştur|
+|Hata |string |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
 
 #### <a name="invocation-message"></a>Çağırma iletisi
 
 İçerik türü: `application/json` veya`application/x-msgpack`
 
-|Name  |Tür  |Description  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
-|Invocationıd |string | İsteğe bağlı bir dize bir çağrı iletisini temsil eder. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
-|Hedef |string | *Olay* ile aynı ve [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *hedefle* aynı. |
-|Arguments |Nesne dizisi |Hedefte başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi. |
+|Invocationıd |string | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
+|Hedef |string | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
+|Arguments |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
 
 ### <a name="signature"></a>İmza
 
-Hizmet, `X-ASRS-Connection-Id` anahtar olarak hem birincil erişim anahtarını hem de ikincil erişim anahtarını kullanarak değer IÇIN SHA256 kodunu hesaplar `HMAC` ve `X-ASRS-Signature` yukarı akış için http istekleri yaparken üst bilgide ayarlar:
+Bu hizmet, `X-ASRS-Connection-Id` anahtar olarak hem birincil erişim anahtarını hem de ikincil erişim anahtarını kullanarak değer IÇIN SHA256 kodunu hesaplar `HMAC` . Hizmet, `X-ASRS-Signature` yukarı akış IÇIN http istekleri yaparken üst bilgide ayarlanır:
 ```
 Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SignalR hizmeti için Yönetilen kimlikler kullanma](howto-use-managed-identity.md)
+- [Azure SignalR hizmeti için Yönetilen kimlikler](howto-use-managed-identity.md)
 - [Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma](signalr-concept-serverless-development-config.md)

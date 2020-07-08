@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561588"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
@@ -28,7 +28,7 @@ Bir arama belgesi çok sayıda alandan oluşabilir, genellikle sonuç kümesinde
 En iyi şekilde çalışan alanlar, Kullanıcı bölümünde bir tıklama yanıtı davet etmek için yeterli bilgi sağlayan ve belgeler arasında ayrım yapan ve bunları ayırt eden alanlardır. Bir e-ticaret sitesinde bir ürün adı, açıklama, marka, renk, boyut, Fiyat ve derecelendirme olabilir. Oteller-örnek dizini yerleşik örneği için aşağıdaki örnekteki alanlar olabilir:
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -103,11 +103,11 @@ Biçimlendirme, tüm terim sorgularına uygulanır. Biçimlendirme türü etiket
 Aşağıdaki örnekte, açıklama alanı içindeki "Sandy", "kum", "kirekler", "plaj" terimleri vurgulama için etiketlendi. Benzer ve joker karakter arama gibi altyapıda sorgu genişletmeyi tetikleyen sorgular, isabet vurgulama için sınırlı desteğe sahiptir.
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"

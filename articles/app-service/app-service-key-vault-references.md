@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557919"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
@@ -38,7 +38,7 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 Key Vault bir başvuru, `@Microsoft.KeyVault({referenceString})` `{referenceString}` aşağıdaki seçeneklerden biri tarafından değiştirildiği biçimdedir:
 
 > [!div class="mx-tdBreakAll"]
-> | Başvuru dizesi                                                            | Description                                                                                                                                                                                 |
+> | Başvuru dizesi                                                            | Açıklama                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm dahil olmak üzere Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır, örneğin,https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
@@ -72,7 +72,7 @@ Bir uygulama ayarı için Key Vault başvurusu kullanmak için, başvuruyu ayar�
 
 Kaynak dağıtımlarını Azure Resource Manager şablonları aracılığıyla otomatikleştirmede, bu özelliğin çalışmasını sağlamak için bağımlılıklarınızı belirli bir sırada sıraya almanız gerekebilir. , Site tanımında bir özellik kullanmak yerine uygulama ayarlarınızı kendi kaynakları olarak tanımlamanız gerekecektir `siteConfig` . Bunun nedeni, sitenin, sistem tarafından atanan kimliğin birlikte oluşturulması ve erişim ilkesinde kullanılabilmesi için önce tanımlanması gerekir.
 
-Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi görünebilir:
+Bir işlev uygulaması için örnek sözde şablon, aşağıdaki gibi görünebilir:
 
 ```json
 {

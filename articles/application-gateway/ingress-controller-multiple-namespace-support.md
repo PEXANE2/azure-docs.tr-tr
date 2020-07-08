@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84806999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556161"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
 
@@ -45,6 +45,7 @@ Hiyerarşinin en **üstünde (IP** adresi, bağlantı noktası ve ana bilgisayar
 Diğer yandan yollar, arka uç havuzları, HTTP ayarları ve TLS sertifikaları yalnızca bir ad alanı tarafından oluşturulabilir ve yinelemeler kaldırılır.
 
 Örneğin, aşağıdaki yinelenen giriş kaynakları tanımlı ad alanlarını ve için göz önünde bulundurun `staging` `production` `www.contoso.com` :
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -101,6 +102,7 @@ Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde aç�
   - AGIC 'i belirli ad alanlarıyla sınırlamak için [rol/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) kullanın
 
 ## <a name="sample-helm-config-file"></a>Örnek HELI yapılandırma dosyası
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde aç�
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

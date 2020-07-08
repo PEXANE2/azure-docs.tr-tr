@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557585"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -37,7 +37,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 1. Hizmet Eşlemesi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) 'nden veya [Çözüm Galerisi izleme çözümlerini ekleme](solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
 1. [Windows 'A bağımlılık aracısını yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux 'a bağımlılık Aracısı 'nı yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) . Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
 
-Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> ![Çalışma](./media/service-map/select-solution-from-workspace.png)alanında çözüm seçeneğini belirleyin.<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> ![Özet kutucuğunu](./media/service-map/service-map-summary-tile.png)hizmet eşlemesi.
+Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> ![Çalışma alanında çözüm seçeneğini belirleyin ](./media/service-map/select-solution-from-workspace.png) .<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> ![Özet kutucuğunu Hizmet Eşlemesi ](./media/service-map/service-map-summary-tile.png) .
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT süreçlerinizi bağımlılıktan haberdar edin
 
@@ -113,7 +113,7 @@ Bazı grupları oluşturduktan sonra gruplar sekmesini seçerek bunları görün
 ![Gruplar sekmesi](media/service-map/machine-groups-tab.png)
 
 Sonra bu makine grubu için Haritayı görüntülemek üzere Grup adını seçin.
-![Makine grubu](media/service-map/machine-group.png) gruba ait olan makineler haritada beyaz olarak özetlenmiştir.
+![Makine grubu ](media/service-map/machine-group.png) gruba ait olan makineler haritada beyaz olarak özetlenmiştir.
 
 Grup genişletildiğinde makine grubunu oluşturan makineler listelenir.
 
@@ -273,16 +273,16 @@ Aşağıdaki görüntü, **Log Analytics Içinde göster '** i seçtikten sonra 
 Performans verilerini görmek için [uygun Log Analytics performans sayaçlarını etkinleştirmeniz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)gerekebilir.  Etkinleştirmek istediğiniz sayaçlar:
 
 Windows:
-- İşlemci (*)\\% işlemci zamanı
-- Bellek\\% kaydedilmiş bayt kullanımda
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci (*) \\ % Işlemci zamanı
+- Bellek \\ % kaydedilmiş bayt kullanımda
+- Ağ bağdaştırıcısı (*) \\ gönderilen bayt/sn
+- Ağ bağdaştırıcısı (*) \\ alınan bayt/sn
 
 Linux:
-- İşlemci (*)\\% işlemci zamanı
-- Bellek (*)\\% kullanılan bellek
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci (*) \\ % Işlemci zamanı
+- Bellek (*) \\ % kullanılan bellek
+- Ağ bağdaştırıcısı (*) \\ gönderilen bayt/sn
+- Ağ bağdaştırıcısı (*) \\ alınan bayt/sn
 
 Ağ performansı verilerini almak için, çalışma alanınızdaki Wire Data 2.0 çözümünü da etkinleştirmiş olmanız gerekir.
  
@@ -485,7 +485,7 @@ ServiceMapProcess_CL | Burada MachineResourceName_s = = "a-559dbcd8-3130-454D-8d
 
 ### <a name="list-all-computers-running-sql"></a>SQL çalıştıran tüm bilgisayarları listeleme
 
-ServiceMapComputer_CL | Burada ResourceName_s (((ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s)) | ayrı ComputerName_s
+ServiceMapComputer_CL | Burada ResourceName_s (((ServiceMapProcess_CL) " \* SQL \* " | DISTINCT MachineResourceName_s)) | ayrı ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Veri merkezindeki tüm benzersiz ürün sürümlerini listeleyin
 
@@ -554,52 +554,52 @@ Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [g�
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Hizmet Eşlemesi yüklerken veya çalıştırırken herhangi bir sorun yaşıyorsanız, bu bölüm size yardımcı olabilir. Hala sorununuzu çözemezseniz, lütfen Microsoft Desteği başvurun.
+Hizmet Eşlemesi yüklerken veya çalıştırırken herhangi bir sorun yaşıyorsanız, bu bölüm size yardımcı olabilir. Bu bilgiler sorununuzu çözmenize yardımcı olmazsa lütfen Microsoft Desteği'ne başvurun.
 
 ### <a name="dependency-agent-installation-problems"></a>Bağımlılık Aracısı yükleme sorunları
 
-#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici yeniden başlatma sorar
+#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici sistemin yeniden başlatılmasını istiyor
 Bağımlılık Aracısı *genellikle* yükleme veya kaldırma sonrasında yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda Windows Server, yükleme işlemine devam etmek için yeniden başlatma gerektirir. Bu durum, bir bağımlılık olduğunda, genellikle Microsoft Visual C++ yeniden dağıtılabilir kitaplığı, kilitli bir dosya nedeniyle yeniden başlatma gerektirdiğinde oluşur.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti "bağımlılık Aracısı yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları yüklenemedi (kod = [code_number])" görüntülenir
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti: "Bağımlılık aracısı yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları (kod = [kod_numarası])" yükleyemedi
 
-Microsoft bağımlılık Aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları üzerine kurulmuştur. Kitaplıkların yüklenmesi sırasında bir sorun oluşursa bir ileti alırsınız. 
+Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı kitaplıklarını kullanır. Kitaplıkların yüklenmesi sırasında bir sorun oluşması halinde ileti görüntülenir. 
 
-Çalışma zamanı kitaplığı yükleyicileri,%LOCALAPPDATA%\temp klasöründe Günlükler oluşturur. Dosya `dd_vcredist_arch_yyyymmddhhmmss.log`, *Arch* 'in `x86` veya `amd64` ve *yyyyaaggssddss* 'in, günlük oluşturulduğu tarih ve saat (24 saatlik saat) olduğu yerdir. Günlük, yüklemeyi engelleyen sorun hakkında ayrıntılar sağlar.
+Çalışma zamanı yükleyicileri %LOCALAPPDATA%\temp klasöründe günlük oluşturur. Dosya, `dd_vcredist_arch_yyyymmddhhmmss.log` *Arch* 'in `x86` veya `amd64` ve *yyyyaaggssddss* 'in, günlük oluşturulduğu tarih ve saat (24 saatlik saat) olduğu yerdir. Günlük, yüklemeyi engelleyen sorun hakkında ayrıntılar sağlar.
 
-Önce [en son çalışma zamanı kitaplıklarını](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yüklemek yararlı olabilir.
+[En son çalışma zamanı kitaplıklarını](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en önce yüklemek yararlı olabilir.
 
 Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
 | Kod | Açıklama | Çözüm |
 |:--|:--|:--|
-| 0x17 | Kitaplık yükleyicisi yüklü olmayan bir Windows güncelleştirmesi gerektiriyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun ardından bir `Windows8.1-KB2999226-x64.msu` satır `Error 0x80240017: Failed to execute MSU package,` gelmesi, KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update çalıştırmanız ve birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft bağımlılık Aracısı yükleyicisini yeniden çalıştırın. |
+| 0x17 | Kitaplık yükleyicisi, henüz yüklenmemiş bir Windows güncelleştirmesine ihtiyaç duyuyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır gelmesi, `Error 0x80240017: Failed to execute MSU package,` KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows'da Evrensel C Çalışma Zamanı](https://support.microsoft.com/kb/2999226) makalesinin önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update'i çalıştırmanız ve sistemi birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 
 ### <a name="post-installation-issues"></a>Yükleme sonrası sorunlar
 
 #### <a name="server-doesnt-appear-in-service-map"></a>Sunucu Hizmet Eşlemesi görünmüyor
 
 Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizmet Eşlemesi çözümde görmezsiniz:
-* Bağımlılık Aracısı başarıyla yüklendi mi? Hizmetin yüklü ve çalışır olup olmadığını denetleyerek bunu doğrulayabilirsiniz.<br><br>
+* Bağımlılık aracısı başarıyla yüklendi mi? Bunu doğrulamak için hizmetin yüklü ve çalışır durumda olup olmadığını kontrol edebilirsiniz.<br><br>
 **Windows**: **Microsoft bağımlılık Aracısı**adlı hizmeti arayın.
 **Linux**: çalışan işlem **Microsoft-Dependency-Agent**' ı arayın.
 
-* [Log Analytics ücretsiz katmanda](https://azure.microsoft.com/pricing/details/monitor/)misiniz? Ücretsiz plan, beş adede kadar benzersiz Hizmet Eşlemesi makineye izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm makineler Hizmet Eşlemesi görünmez.
+* [Log Analytics ücretsiz katmanda](https://azure.microsoft.com/pricing/details/monitor/)misiniz? Ücretsiz planda en fazla beş benzersiz Hizmet Eşlemesi makinesi kullanabilirsiniz. Önceki beş makine artık veri göndermiyor olsa dahi sonradan ekleyeceğiniz makineler Hizmet Eşlemesi'nde görünmez.
 
-* Sunucunuz Azure Izleyici günlüklerine günlük ve performans verileri gönderiyor mu? Azure Monitor\Logs ' e gidin ve bilgisayarınız için aşağıdaki sorguyu çalıştırın: 
+* Sunucunuz Azure Izleyici günlüklerine günlük ve performans verileri gönderiyor mu? Azure İzleyici\Günlükler'e gidin ve bilgisayarınız için aşağıdaki sorguyu çalıştırın: 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Sonuçlarda çeşitli olaylar mı kullanıyorsunuz? Veriler son zamanlarda mı? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve çalışma alanıyla iletişim kuruyor. Aksi takdirde, makinenizde aracı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
+Sonuçlarda çeşitli olaylar mı kullanıyorsunuz? Veriler güncel mi? Bu durum, Log Analytics aracınızın doğru şekilde çalıştığını ve çalışma alanıyla iletişim kurduğunu gösterir. Aksi takdirde makinenizde aracıyı kontrol edin: [Windows için Log Analytics aracısı sorun giderme adımları](../platform/agent-windows-troubleshoot.md) veya [Linux için Log Analytics aracısı sorun giderme adımları](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu Hizmet Eşlemesi görünüyor ancak işlem içermiyor
 
 Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi yoksa, bağımlılık aracısının yüklü ve çalışır durumda olduğunu ancak çekirdek sürücüsünün yüklenmediğini gösterir. 
 
-`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) öğesini kontrol edin. Dosyanın son satırları, çekirdeğin neden yüklenmediğini göstermelidir. Örneğin, çekirdeğini güncelleştirdiyseniz, çekirdek Linux üzerinde desteklenmeyebilir.
+`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file`(Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) öğesini kontrol edin. Dosyanın son satırları, çekirdeğin neden yüklenmediğini göstermelidir. Örneğin çekirdeğinizi güncelleştirdiyseniz yeni çekirdek için Linux desteği sunulmuyor olabilir.
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions"></a>Öneriler
 
 Hizmet Eşlemesi veya bu belgeler hakkında bizimle ilgili geri bildiriminiz var mı?  Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.

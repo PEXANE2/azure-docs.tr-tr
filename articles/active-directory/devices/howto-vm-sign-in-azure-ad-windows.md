@@ -12,21 +12,19 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554884"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
 Kuruluşlar artık **Windows Server 2019 Datacenter Edition** veya **Windows 10 1809** ve üstünü çalıştıran Azure sanal makineleri (vm 'ler) için Azure Active Directory (ad) kimlik doğrulaması kullanabilir. VM 'Lerde kimlik doğrulaması yapmak için Azure AD 'nin kullanılması, ilkeleri merkezi olarak denetleme ve zorunlu kılmak için bir yol sağlar. Azure rol tabanlı Access Control (RBAC) ve Azure AD koşullu erişim gibi araçlar, bir VM 'ye kimlerin erişebileceğini denetlemenize olanak tanır. Bu makalede, Azure AD kimlik doğrulamasını kullanmak üzere bir Windows Server 2019 VM oluşturma ve yapılandırma açıklanmaktadır.
 
-|     |
-| --- |
-| Azure Windows VM 'Leri için Azure AD oturum açma, Azure Active Directory genel bir önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> Azure Windows VM 'Leri için Azure AD oturum açma, Azure Active Directory genel bir önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum açmak için aşağıdakiler de dahil olmak üzere birçok avantaj vardır:
 

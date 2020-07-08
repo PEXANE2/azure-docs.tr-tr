@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bd89e3366fbaa60109be9ef3552970936f0a6715
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556292"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET uygulamasından Azure Bilişsel Arama kullanma
 
@@ -38,7 +38,7 @@ SDK 'daki diğer NuGet paketleri şunlardır:
 
 SDK 'nın gelecekteki bir güncelleştirmesiyle ilgili geri bildirim sağlamak isterseniz, [geri bildirim sayfamıza](https://feedback.azure.com/forums/263029-azure-search/) bakın veya [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 'da sorun oluşturun ve sorun başlığında "Azure bilişsel arama" bahsetmeniz gerekir.
 
-.NET SDK, `2019-05-06` [Azure bilişsel arama REST API](https://docs.microsoft.com/rest/api/searchservice/)sürümünü destekler. Bu sürüm, Azure Blob 'Ları dizin oluştururken [karmaşık türler](search-howto-complex-data-types.md), [AI zenginleştirme](cognitive-search-concept-intro.md), [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete)ve [jsonlines ayrıştırma modu](search-howto-index-json-blobs.md) için destek içerir. 
+.NET SDK, `2019-05-06` [Azure bilişsel arama REST API](https://docs.microsoft.com/rest/api/searchservice/)sürümünü hedefler. Bu sürüm, Azure Blob 'Ları dizin oluştururken [karmaşık türler](search-howto-complex-data-types.md), [AI zenginleştirme](cognitive-search-concept-intro.md), [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete)ve [jsonlines ayrıştırma modu](search-howto-index-json-blobs.md) için destek içerir. 
 
 Bu SDK, arama hizmetleri oluşturma ve ölçekleme ve API anahtarlarını yönetme gibi [yönetim işlemlerini](https://docs.microsoft.com/rest/api/searchmanagement/) desteklemez. Arama kaynaklarınızı bir .NET uygulamasından yönetmeniz gerekiyorsa [Azure bilişsel arama .NET Yönetim SDK 'sını](https://aka.ms/search-mgmt-sdk)kullanabilirsiniz.
 

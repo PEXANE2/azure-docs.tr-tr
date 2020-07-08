@@ -4,15 +4,15 @@ description: Microsoft AppSource ve Azure Market teklifinizden müşteri adaylar
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559572"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin müşteri adayları
 
@@ -87,10 +87,12 @@ Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıda
 
 ## <a name="best-practices-for-lead-management"></a>Müşteri adayı yönetimi için en iyi yöntemler
 
+Müşteri adaylarını satış döngüsüyle yönlendirmeyi sağlayacak bazı öneriler aşağıda verilmiştir:
+
 - **İşlem**: kilometre taşları, analiz ve açık ekip sahipliğiyle açık bir satış işlemi tanımlayın.
 - **Nitelik**: bir müşteri adayının tam nitelikli olup olmadığını gösteren önkoşulları tanımlayın. Satış veya pazarlama temsilcilerinin, müşteri adaylarını tam satış süreci boyunca almadan önce dikkatli bir şekilde nitelediğinizden emin olun.
-- **İzleme**: izlemeyi unutmayın. Tipik işlemin, 5-12 izleme çağrısı gerektirmesini bekler.
-- **Nurra**: daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın.
+- **İzleme**: 24 saat içinde izlemeyi unutmayın. Müşteri, bir test sürücüsü dağıtduktan sonra müşteri adayını tercih ettiğiniz şekilde hemen alacaksınız. hala normal olduklarından içinde e-posta gönderin. Ürününüzün sorunu için iyi bir çözüm olup olmadığını daha iyi anlamak için bir telefon araması zamanlaması isteyin. Tipik işlemin çok sayıda izleme çağrısı gerektirmesini bekler.
+- **Nurra**: daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın. İade et, ancak onları Not etmeyin. Kapatmadan önce e-posta fırsatlarından en az birkaç kez bakmasını öneririz; ilk denemeden sonra vermeyin. Bu müşterilerin ürününüze doğrudan sahip olduğunu ve ücretsiz denemede zaman harcadığını unutmayın; Harika adaylardır.
 
 ## <a name="common-questions-about-lead-management"></a>Müşteri adayı yönetimi hakkında sık sorulan sorular
 

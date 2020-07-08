@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke ihlalleri ve şema parametre işlevleri gibi şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-ms.date: 01/15/2020
+ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76157092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557516"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -55,11 +55,11 @@ Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
 
 #### <a name="cause"></a>Nedeni
 
-Bir yapıtı gibi bir işlevi `[resourceGroup().tags.myTag]`kullanan bir şema parametresini geçirmek, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
+Bir yapıtı gibi bir işlevi kullanan bir şema parametresini geçirmek, `[resourceGroup().tags.myTag]` dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
 
 #### <a name="resolution"></a>Çözüm
 
-Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi `[` , şema parametresi gibi görünen şekilde kaçış. `[[resourceGroup().tags.myTag]` Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
+Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` şema parametresi gibi görünen şekilde kaçış `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Hataları Sil
 
@@ -82,5 +82,5 @@ Terminal olmayan bir durumdaki şema atamaları, _6 saatlik_ bir zaman aşımın
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 - Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-- Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 - Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

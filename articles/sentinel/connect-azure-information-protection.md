@@ -1,6 +1,6 @@
 ---
 title: Azure Information Protection Azure Sentinel 'e bağlama
-description: Azure Sentinel 'de Azure Information Protection verileri nasıl bağlayacağınızı öğrenin.
+description: Azure Information Protection veri bağlayıcısını yapılandırarak, Azure Information Protection 'den Azure Sentinel 'e günlük kaydı bilgilerini akışa alma. 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559131"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection verileri bağlama
 

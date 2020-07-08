@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555124"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza listelenmemiş (Galeri olmayan) bir uygulama ekleme
 
@@ -70,7 +70,7 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
 
       **Atanan** kullanıcılar için davranış:
 
-       | Uygulama özelliği ayarları | | | Atanan kullanıcı deneyimi | |
+       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanan kullanıcı deneyimi | Atanan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | evet | evet  |
@@ -84,7 +84,7 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
 
       **Atanmayan** kullanıcılar için davranış:
 
-       | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
+       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanmayan kullanıcı deneyimi | Atanmayan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | hayır  | hayır   |

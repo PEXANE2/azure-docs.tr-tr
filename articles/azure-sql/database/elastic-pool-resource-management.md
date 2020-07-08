@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 03/13/2019
-ms.openlocfilehash: 1db8eeecf411ae219474029e09cb866aaf0d5bbe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/29/2020
+ms.openlocfilehash: d35b4691bcf6e40edd57d4caeae00e18a8298925
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558885"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Yoğun elastik havuzlardaki kaynak yönetimi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -60,7 +60,7 @@ Azure SQL veritabanı, bu tür izlemelerle ilgili birkaç ölçüm sağlar. Her 
 |`avg_log_write_percent`|İşlem günlüğü yazma GÇ için üretilen iş yükü belirlemeleri. Havuzdaki her veritabanı için ve, havuzun kendisi için de sunulur. Veritabanı düzeyinde ve havuz düzeyinde günlük verimlilik üzerinde farklı sınırlar vardır, bu nedenle bu ölçümün her iki düzeyde de izlenmesi önerilir. Her veritabanındaki [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) görünümünde ve veritabanındaki [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümünde kullanılabilir `master` . Bu [ölçüm, Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) izleyici 'ye de yayılmaktadır ve burada `log_write_percent` Azure Portal görüntülenir. Bu ölçüm %100 ' e yakın olduğunda, tüm veritabanı değişiklikleri (INSERT, UPDATE, DELETE, MERGE deyimleri, SELECT... INTO, BULK INSERT vb.) daha yavaş olacaktır.|%90 altında. %100 ' e kadar zaman zaman kısa artışlar kabul edilebilir.|
 |`oom_per_second`|Bellek baskısı göstergesi olan elastik havuzda bellek dışı (OOM) hatalarının hızı. [Sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current) görünümünde kullanılabilir. Bu ölçümü hesaplamak için örnek bir sorgu [örneklerine](#examples) bakın.|0|
 |`avg_storage_percent`|Esnek havuz düzeyinde depolama alanı kullanımı. Veritabanında [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümünde kullanılabilir `master` . Bu [ölçüm, Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) izleyici 'ye de yayılmaktadır ve burada `storage_percent` Azure Portal görüntülenir.|%80 altında. Veri büyümesi olmayan havuzlar için %100 yaklaşımda bulunabilir.|
-|`tempdb_log_used_percent`|Veritabanındaki işlem günlüğü alanı kullanımı `tempdb` . Bir veritabanında oluşturulan geçici nesneler aynı elastik havuzdaki diğer veritabanlarında görünmese de, `tempdb` Aynı havuzdaki tüm veritabanları için paylaşılan bir kaynaktır. Havuzdaki bir veritabanından başlatılan uzun süre çalışan veya boşta işlem, `tempdb` işlem günlüğünün büyük bir kısmını tüketebilir ve aynı havuzdaki diğer veritabanlarındaki sorgular için hatalara neden olabilir. [Sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) görünümünde kullanılabilir. Bu ölçüm Ayrıca Azure Izleyici 'ye de yayılır ve Azure portal ' de görüntülenebilir. Bu ölçümün geçerli değerini döndürmek için örnek bir sorgu [örneklerine](#examples) bakın.|%50 altında. %80 ' e kadar zaman zaman artışlar kabul edilebilir.|
+|`tempdb_log_used_percent`|Veritabanındaki işlem günlüğü alanı kullanımı `tempdb` . Bir veritabanında oluşturulan geçici nesneler aynı elastik havuzdaki diğer veritabanlarında görünmese de, `tempdb` Aynı havuzdaki tüm veritabanları için paylaşılan bir kaynaktır. Havuzdaki bir veritabanından başlatılan uzun süre çalışan veya yalnız bırakılmış bir işlem, `tempdb` işlem günlüğünün büyük bir bölümünü kullanabilir ve aynı havuzdaki diğer veritabanlarındaki sorgular için hatalara neden olabilir. [Sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) ve [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) görünümlerinden türetiliyor. Bu ölçüm Ayrıca Azure Izleyici 'ye de yayılır ve Azure portal ' de görüntülenebilir. Bu ölçümün geçerli değerini döndürmek için örnek bir sorgu [örneklerine](#examples) bakın.|%50 altında. %80 ' e kadar zaman zaman artışlar kabul edilebilir.|
 |||
 
 Azure SQL veritabanı, bu ölçümlere ek olarak, gerçek kaynak idare sınırlarını döndüren bir görünüm ve kaynak havuzu düzeyinde kaynak kullanımı istatistikleri döndüren ek görünümler ve iş yükü grubu düzeyinde bir görünüm sağlar.
@@ -114,11 +114,17 @@ ORDER BY pool_id;
 
 ### <a name="monitoring-tempdb-log-space-utilization"></a>`tempdb`Günlük alanı kullanımını izleme
 
-Bu sorgu, ölçümün geçerli değerini döndürür `tempdb_log_used_percent` . Bu sorgu, elastik havuzdaki herhangi bir veritabanında yürütülebilir.
+Bu sorgu `tempdb_log_used_percent` , `tempdb` işlem günlüğünün izin verilen en büyük boyutuna göre göreli kullanımını gösteren ölçümün geçerli değerini döndürür. Bu sorgu, elastik havuzdaki herhangi bir veritabanında yürütülebilir.
 
 ```sql
-SELECT used_log_space_in_percent AS tempdb_log_used_percent
-FROM tempdb.sys.dm_db_log_space_usage;
+SELECT (lsu.used_log_space_in_bytes / df.log_max_size_bytes) * 100 AS tempdb_log_space_used_percent
+FROM tempdb.sys.dm_db_log_space_usage AS lsu
+CROSS JOIN (
+           SELECT SUM(CAST(max_size AS bigint)) * 8 * 1024. AS log_max_size_bytes
+           FROM tempdb.sys.database_files
+           WHERE type_desc = N'LOG'
+           ) AS df
+;
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

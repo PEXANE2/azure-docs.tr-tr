@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560006"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan kanallar ile çalışma
 
@@ -187,7 +187,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | **Başlatılıyor** |**Başlatılıyor** |Hayır (geçici durum) |
-| **Çalışıyor** |**Ready** (çalışan program yok)<p><p>or<p>**Akış** (en az bir çalışan program) |Yes |
+| **Çalışıyor** |**Ready** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Evet |
 | **Durduruluyor** |**Durduruluyor** |Hayır (geçici durum) |
 | **Durduruldu** |**Durduruldu** |Hayır |
 
@@ -200,7 +200,7 @@ Aşağıdaki tabloda kapalı açıklamalı altyazı ve ad ekleme için desteklen
 | TTML içinde. ismt (Kesintisiz Akış metin parçaları) |Media Services dinamik paketleme, istemcilerinizin şu biçimlerden herhangi birinde içerik akışını sağlar: DASH, HLS veya Kesintisiz Akış. Ancak,. ismt (Kesintisiz Akış metin parçaları) içindeki açıklamalı alt yazılar ile parçalanmış MP4 (Kesintisiz Akış) aldıysanız, akışı yalnızca Kesintisiz Akış istemcilerine teslim edebilirsiniz. |
 | SCTE-35 |SCTE-35, reklam ekleme işlemini işaret etmek için kullanılan dijital bir sinyal sistemidir. Aşağı akış alıcıları, ayrılan süre için tanıtımı akışa almak için sinyali kullanır. SCTE-35, giriş akışında seyrek bir izleme olarak gönderilmelidir.<p><p>Şu anda, ad sinyallerini taşıyan tek desteklenen giriş akışı biçimi parçalanmış MP4 (Kesintisiz Akış). Yalnızca desteklenen çıkış biçimi de Kesintisiz Akış. |
 
-## <a name="considerations"></a><a id="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a><a id="considerations"></a>Önemli noktalar
 Bir kanala çoklu bit hızında akış göndermek için şirket içi bir Live Encoder kullandığınızda aşağıdaki kısıtlamalar uygulanır:
 
 * Alma noktalarına veri göndermek için yeterli boş Internet bağlantısına sahip olduğunuzdan emin olun.
@@ -225,7 +225,8 @@ Kanallarla ve ilgili bileşenlerle çalışma ile ilgili başka konular aşağı
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions-and-feedback"></a>Öneriler ve geri bildirim
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

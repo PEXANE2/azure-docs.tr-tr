@@ -6,16 +6,15 @@ ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.custom: tracking-python
-ms.openlocfilehash: d047fd62e897163bf4ab6bf7e085462b136bf8fe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0d2a7910523bf5b6dd02d4c93aaf851b38cf09df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555655"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>U-SQL betiklerini Azure Data Lake Analytics Python kodu ile genişletme
 
@@ -27,7 +26,7 @@ Başlamadan önce, Python uzantılarının Azure Data Lake Analytics hesabınız
 * Sol taraftaki menüde, **Başlarken** bölümünde **örnek betiklerine** tıklayın
 * **U-SQL uzantılarını yükleyip** **Tamam 'a** tıklayın
 
-## <a name="overview"></a>Genel Bakış 
+## <a name="overview"></a>Genel Bakış
 
 U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek düzeyde paralel yürütme gerçekleştirmesini sağlar. Aşağıdaki örnek, temel adımları göstermektedir:
 
@@ -36,38 +35,32 @@ U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek
 * U-SQL için Python uzantıları, `Extension.Python.Reducer` Reducer atanan her bir köşede Python kodu çalıştıran yerleşik bir Reducer () içerir.
 * U-SQL betiği, `usqlml_main` giriş olarak bir Pandas dataframe kabul eden adlı ve çıkış olarak bir Pandas dataframe döndüren bir işlevi olan gömülü Python kodunu içerir.
 
---
-
-    REFERENCE ASSEMBLY [ExtPython];
-
-    DECLARE @myScript = @"
-    def get_mentions(tweet):
-        return ';'.join( ( w[1:] for w in tweet.split() if w[0]=='@' ) )
-
-    def usqlml_main(df):
-        del df['time']
-        del df['author']
-        df['mentions'] = df.tweet.apply(get_mentions)
-        del df['tweet']
-        return df
-    ";
-
-    @t  = 
-        SELECT * FROM 
-           (VALUES
-               ("D1","T1","A1","@foo Hello World @bar"),
-               ("D2","T2","A2","@baz Hello World @beer")
-           ) AS 
-               D( date, time, author, tweet );
-
-    @m  =
-        REDUCE @t ON date
-        PRODUCE date string, mentions string
-        USING new Extension.Python.Reducer(pyScript:@myScript);
-
-    OUTPUT @m
-        TO "/tweetmentions.csv"
-        USING Outputters.Csv();
+```usql
+REFERENCE ASSEMBLY [ExtPython];
+DECLARE @myScript = @"
+def get_mentions(tweet):
+    return ';'.join( ( w[1:] for w in tweet.split() if w[0]=='@' ) )
+def usqlml_main(df):
+    del df['time']
+    del df['author']
+    df['mentions'] = df.tweet.apply(get_mentions)
+    del df['tweet']
+    return df
+";
+@t  =
+    SELECT * FROM
+       (VALUES
+           ("D1","T1","A1","@foo Hello World @bar"),
+           ("D2","T2","A2","@baz Hello World @beer")
+       ) AS date, time, author, tweet );
+@m  =
+    REDUCE @t ON date
+    PRODUCE date string, mentions string
+    USING new Extension.Python.Reducer(pyScript:@myScript);
+OUTPUT @m
+    TO "/tweetmentions.csv"
+    USING Outputters.Csv();
+```
 
 ## <a name="how-python-integrates-with-u-sql"></a>Python U-SQL ile nasıl tümleştirilir?
 
@@ -78,30 +71,36 @@ U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek
 
 ### <a name="schemas"></a>Şemalar
 
-* Pandas 'teki Dizin vektörleri U-SQL ' de desteklenmez. Python işlevindeki tüm giriş verisi çerçeveleri her zaman 0 ' dan 1 ' den fazla satır sayısı kadar olan 64 bitlik bir sayısal dizine sahiptir. 
+* Pandas 'teki Dizin vektörleri U-SQL ' de desteklenmez. Python işlevindeki tüm giriş verisi çerçeveleri her zaman 0 ' dan 1 ' den fazla satır sayısı kadar olan 64 bitlik bir sayısal dizine sahiptir.
 * U-SQL veri kümelerinde yinelenen sütun adları olamaz
-* U-SQL veri kümeleri dize olmayan sütun adları. 
+* U-SQL veri kümeleri dize olmayan sütun adları.
 
 ### <a name="python-versions"></a>Python sürümleri
-Yalnızca Python 3.5.1 (Windows için derlenen) desteklenir. 
+
+Yalnızca Python 3.5.1 (Windows için derlenen) desteklenir.
 
 ### <a name="standard-python-modules"></a>Standart Python modülleri
+
 Tüm standart Python modülleri dahildir.
 
 ### <a name="additional-python-modules"></a>Ek Python modülleri
+
 Standart Python kitaplıklarının yanı sıra, yaygın olarak kullanılan birkaç Python kitaplığı dahil edilmiştir:
 
-    pandas
-    numpy
-    numexpr
+* pandas
+* numpy
+* numexpr
 
 ### <a name="exception-messages"></a>Özel durum Iletileri
+
 Şu anda Python kodundaki bir özel durum genel köşe hatası olarak gösteriliyor. Gelecekte, U-SQL Işi hata iletilerinde Python özel durum iletisi görüntülenir.
 
 ### <a name="input-and-output-size-limitations"></a>Giriş ve çıkış boyutu sınırlamaları
+
 Her köşenin kendisine atanan sınırlı miktarda belleği vardır. Şu anda bu sınır, AU için 6 GB 'dir. Giriş ve çıkış veri çerçevelerinin Python kodundaki bellekte bulunması gerektiğinden, giriş ve çıkış için Toplam Boyut 6 GB 'ı aşamaz.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
+
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
 * [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics işleri için U-SQL pencere işlevlerini kullanma](data-lake-analytics-use-window-functions.md)

@@ -1,6 +1,6 @@
 ---
 title: Veri kaynaklarını Azure Sentinel 'e bağlama | Microsoft Docs
-description: Veri kaynaklarını Azure Sentinel 'e bağlamayı öğrenin.
+description: Microsoft tehdit koruması, Microsoft 365 ve Office 365, Azure AD, ATP ve Cloud App Security gibi veri kaynaklarını Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 3ff031cb9e4dd45de180eca4b726aa47f0fd52e1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555506"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -61,13 +61,13 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
 
 - **API aracılığıyla dış çözümler**: bazı veri kaynakları, bağlı veri kaynağı tarafından sağlanmış API 'ler kullanılarak bağlanır. Genellikle, çoğu güvenlik teknolojisi, olay günlüklerinin alınabileceği bir API kümesi sağlar. API 'Ler Azure Sentinel 'e bağlanır ve belirli veri türlerini toplayıp Azure Log Analytics 'e gönderir. API aracılığıyla bağlı olan gereçler şunları içerir:
     
-    - [Alcide Kaudıt](connect-alcide-kaudit.md)
+    - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (Güvenlik)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Çevre 81 günlükleri](connect-perimeter-81-logs.md)
+    - [Perimeter 81 günlükleri](connect-perimeter-81-logs.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [Zimperium](connect-zimperium-mtd.md)
@@ -80,7 +80,7 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     Aslında Log Analytics aracı olan Azure Sentinel Aracısı, CEF biçimli günlükleri Log Analytics tarafından kullanılabilecek bir biçime dönüştürür. Gereç türüne bağlı olarak, aracı doğrudan gereç üzerine ya da ayrılmış bir Linux tabanlı günlük ileticisine yüklenir. Linux Aracısı, syslog arka plan programından UDP üzerinden olay alır, ancak bir Linux makinenin yüksek hacimli bir Syslog olayları toplaması bekleniyorsa, bunlar Syslog arka plan programından aracıya ve Log Analytics için Buradan TCP üzerinden gönderilir.
 
     - **Güvenlik duvarları, proxy 'ler ve uç noktalar:**
-        - [AI Vektöri algılama](connect-ai-vectra-detect.md)
+        - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Denetim Noktası](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)

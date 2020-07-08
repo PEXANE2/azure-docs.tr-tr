@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554767"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -41,13 +41,12 @@ Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](.
 
 Hibrit Azure AD uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
-|   |   |
-| --- | --- |
-| ![İşaretli][1] | Desteklenen cihazları gözden geçir |
-| ![İşaretli][1] | Bilmeniz gereken işlemleri gözden geçirin |
-| ![İşaretli][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
-| ![İşaretli][1] | Kimlik altyapınıza göre senaryonuzu seçin |
-| ![İşaretli][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
+> [!div class="checklist"]
+> - Desteklenen cihazları gözden geçir
+> - Bilmeniz gereken işlemleri gözden geçirin
+> - Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
+> - Kimlik altyapınıza göre senaryonuzu seçin
+> - Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin
 
 ## <a name="review-supported-devices"></a>Desteklenen cihazları gözden geçir
 
@@ -136,7 +135,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet**  >  **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
@@ -170,8 +169,8 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Federasyon ortamına](hybrid-azuread-join-federated-domains.md)
-> yönelik karma Azure Active Directory birleştirmesini yapılandırma[yönetilen ortama yönelik karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-managed-domains.md)
+> [Federasyon ortamına](hybrid-azuread-join-federated-domains.md) 
+>  yönelik karma Azure Active Directory birleştirmesini yapılandırma [Yönetilen ortam için karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

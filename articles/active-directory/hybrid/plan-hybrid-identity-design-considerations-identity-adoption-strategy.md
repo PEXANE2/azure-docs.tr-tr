@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555380"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Karma kimlik benimseme stratejisi tanımlama
 Bu görevde, ' de açıklanan iş gereksinimlerini karşılamak üzere hibrit kimlik çözümü için karma kimlik benimseme stratejisini tanımlarsınız:
@@ -63,7 +63,7 @@ Kullandığınız strateji, Kullanıcı oturum açma deneyimini dikte eder.  Aş
 
 **Doman 'a katılmış ve özel ağ uygulamaları**:
 
-|  | Eşitlenmiş kimlik | Federal Kimlik |
+| Uygulama | Eşitlenmiş kimlik | Federal Kimlik |
 | --- | --- | --- |
 | Web tarayıcıları |Form tabanlı kimlik doğrulaması |Çoklu oturum açma, bazen kuruluş KIMLIĞI sağlamak için gereklidir |
 | Outlook |Kimlik bilgileri iste |Kimlik bilgileri iste |
@@ -73,7 +73,7 @@ Kullandığınız strateji, Kullanıcı oturum açma deneyimini dikte eder.  Aş
 
 **Dış veya güvenilmeyen kaynaklar**:
 
-|  | Eşitlenmiş kimlik | Federal Kimlik |
+| Uygulama | Eşitlenmiş kimlik | Federal Kimlik |
 | --- | --- | --- |
 | Web tarayıcıları |Form tabanlı kimlik doğrulaması |Form tabanlı kimlik doğrulaması |
 | Outlook, Skype Kurumsal (Lync), OneDrive Iş, Office aboneliği |Kimlik bilgileri iste |Kimlik bilgileri iste |
@@ -111,7 +111,7 @@ Yıl boyunca birkaç eşitleme aracı vardı ve çeşitli senaryolar için kulla
 ### <a name="supported-topologies"></a>Desteklenen topolojiler
 Bir eşitleme stratejisi tanımlarken, kullanılan topoloji belirtilmelidir. 2. adımda belirlenen bilgilere bağlı olarak hangi topolojinin kullanılması gerektiğini belirleyebilirsiniz. Tek orman, tek Azure AD topolojisi en yaygın ve tek bir Active Directory ormanı ve tek bir Azure AD örneğinden oluşur.  Bu, Çoğu senaryoda kullanılacaktır ve aşağıdaki şekilde gösterildiği gibi Azure AD Connect Express yüklemesi kullanılırken beklenen topolojidir.
 
-![Desteklenen topolojiler](./media/plan-hybrid-identity-design-considerations/single-forest.png) tek orman senaryosu büyük ve hatta küçük kuruluşların, Şekil 5 ' te gösterildiği gibi birden çok ormanı olması yaygındır.
+![Desteklenen topolojiler ](./media/plan-hybrid-identity-design-considerations/single-forest.png) Tek orman senaryosu büyük ve hatta küçük kuruluşların, Şekil 5 ' te gösterildiği gibi birden çok ormanı olması yaygındır.
 
 > [!NOTE]
 > Azure AD Connect eşitleme ile farklı şirket içi ve Azure AD topolojileri hakkında daha fazla bilgi için [Azure AD Connect makale topolojilerini](plan-connect-topologies.md)okuyun.

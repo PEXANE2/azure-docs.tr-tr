@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560981"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Tweet için sallayın, sallayın, Azure Işlevleri ile Twitter iletisi alın
 
@@ -52,11 +52,11 @@ Proje klasörünü açarak başlayın.
 Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **ShakeShake**' yi seçin. Proje klasörünü görüntüleyen yeni bir VS Code penceresi açılır. MXYONGAAZ3166 bölümünü göremiyorsanız, cihazınızın doğru bir şekilde bağlı olduğundan emin olun ve Visual Studio Code yeniden başlatın.  
 ![mini çözüm-örnekler](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Örnek projeyi komut paletinden da açabilirsiniz. Komut `Ctrl+Shift+P` paletini açmak için ( `Cmd+Shift+P`MacOS:) seçeneğine tıklayın, **Arduino**yazın ve ardından **Arduino: örnekleri**bulun ve seçin.
+Örnek projeyi komut paletinden da açabilirsiniz. `Ctrl+Shift+P`Komut paletini açmak için (MacOS:) seçeneğine tıklayın `Cmd+Shift+P` , **Arduino**yazın ve ardından **Arduino: örnekleri**bulun ve seçin.
 
 ## <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
-Çözüm penceresinde, öğesini girerek `Ctrl+P` `Cmd+P` `task cloud-provision`(MacOS:) görevini çalıştırın.
+Çözüm penceresinde, öğesini `Ctrl+P` girerek (MacOS:) görevini çalıştırın `Cmd+P` `task cloud-provision` .
 
 VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama sırasında size rehberlik eder:
 
@@ -67,17 +67,17 @@ VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini
  
 ## <a name="modify-the-hashtag"></a>#Hashtag değiştirin
 
-Bu `ShakeShake.ino` kod satırını açın ve bulun:
+`ShakeShake.ino`Bu kod satırını açın ve bulun:
 
 ```cpp
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Küme ayraçları içindeki `iot` dizeyi, tercih ettiğiniz diyez etiketiyle değiştirin. DevKit daha sonra bu adımda belirttiğiniz diyez etiketini içeren bir rastgele Tweet alır.
+`iot`Küme ayraçları içindeki dizeyi, tercih ettiğiniz diyez etiketiyle değiştirin. DevKit daha sonra bu adımda belirttiğiniz diyez etiketini içeren bir rastgele Tweet alır.
 
 ## <a name="deploy-azure-functions"></a>Azure İşlevleri’ni dağıtma
 
-Azure `Ctrl+P` işlevleri kodunu dağıtmaya başlamak `Cmd+P`üzere çalıştırmak `task cloud-deploy` için (MacOS:) kullanın:
+`Ctrl+P` `Cmd+P` `task cloud-deploy` Azure işlevleri kodunu dağıtmaya başlamak üzere çalıştırmak için (MacOS:) kullanın:
 
 ![bulut-dağıtım](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
@@ -90,7 +90,7 @@ Sonra, cihaz kodunu derleyin ve karşıya yükleyin.
 
 ### <a name="windows"></a>Windows
 
-1. Çalıştırmak `Ctrl+P` `task device-upload`için kullanın.
+1. `Ctrl+P`Çalıştırmak için kullanın `task device-upload` .
 
 2. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için:
 
@@ -106,7 +106,7 @@ Sonra, cihaz kodunu derleyin ve karşıya yükleyin.
 
    Düğme A tuşunu basılı tutarak sıfırlama düğmesini gönderin ve serbest bırakın. Ekran ' yapılandırma ' görüntüler.
 
-2. Adımdan alınan bağlantı `task device-upload` dizesini ayarlamak için öğesini kullanın `Cmd+P` `task cloud-provision`
+2. `Cmd+P` `task device-upload` Adımdan alınan bağlantı dizesini ayarlamak için öğesini kullanın `task cloud-provision` .
 
 ### <a name="verify-upload-and-run"></a>Doğrulayın, karşıya yükleyin ve çalıştırın
 
@@ -185,7 +185,7 @@ Bu örnek proje, test amacıyla önceden yapılandırılmış bir Twitter taşı
 
 Sorunları giderme veya geri bildirim sağlama. 
 
-### <a name="problems"></a>Sorunlarının
+### <a name="problems"></a>Sorunlar
 
 Her adım başarıyla çalıştırıldığında ekranda ' fazla yer yok ' ekranında görüntülenen bir sorun. Bu durum normalde, örneği ilk kez dağıtıp çalıştırdığınızda gerçekleşir çünkü işlev uygulaması, uygulamayı soğuk olarak başlatmak için bir dakika kadar birkaç saniyeden fazla bir süre bekleyin. 
 
@@ -196,8 +196,6 @@ Ya da kodu çalıştırırken, uygulamanın yeniden başlatılmasına neden olan
 2. [Azure Portal](https://portal.azure.com/)oluşturduğunuz Azure işlevleri uygulamasını bulun ve yeniden başlatın:
 
    ![Azure-Function-yeniden Başlat](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>Geri Bildirim
 
 Başka sorunlarla karşılaşırsanız, [IoT DevKit hakkında SSS bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) bakın veya aşağıdaki kanalları kullanarak bizimle iletişime geçin:
 

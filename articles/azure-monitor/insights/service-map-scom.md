@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928015"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557219"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -29,7 +29,7 @@ VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve
 
 ## <a name="install-the-service-map-management-pack"></a>Hizmet Eşlemesi yönetim paketini yükler
 
-Microsoft. SystemCenter. ServiceMap yönetim paketi paketini (Microsoft. SystemCenter. ServiceMap. mpb) içeri aktararak Operations Manager ile eşleme özelliği arasındaki tümleştirmeyi etkinleştirirsiniz. Yönetim Paketi grubunu [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55763)' nden indirebilirsiniz. Paket aşağıdaki yönetim paketlerini içerir:
+Operations Manager ile eşleme özelliği arasında tümleştirmeyi etkinleştirerek Microsoft.SystemCenter. ServiceMap yönetim paketi paketini (Microsoft.SystemCenter. ServiceMap. mpb) içeri aktarabilirsiniz. Yönetim Paketi grubunu [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55763)' nden indirebilirsiniz. Paket aşağıdaki yönetim paketlerini içerir:
 
 * Microsoft Hizmet Eşlemesi uygulama görünümleri
 * Microsoft System Center Hizmet Eşlemesi Iç
@@ -106,7 +106,7 @@ Hizmet Eşlemesi klasörü dört düğüme sahiptir:
 
 ## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenleme veya silme
 
-Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesinde düzenleyebilir veya silebilirsiniz (**Yönetim** bölmesi > **Operations Management Suite** > **hizmet eşlemesi**).
+Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesinde düzenleyebilir veya silebilirsiniz (**Yönetim** bölmesi > **Operations Management Suite**  >  **hizmet eşlemesi**).
 
 > [!NOTE]
 > Operations Management Suite, artık [Azure izleyici](../overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) .
@@ -117,7 +117,7 @@ Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanı yapılandır
 
 ## <a name="configure-rules-and-overrides"></a>Kuralları ve geçersiz kılmaları yapılandırma
 
-Bir kural, *Microsoft. SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval**parametresi için değiştirebilirsiniz.
+Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval**parametresi için değiştirebilirsiniz.
 
 ![Operations Manager Özellikler penceresi geçersiz kılınır](media/service-map-scom/scom-overrides.png)
 
@@ -142,5 +142,6 @@ Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
 * [Azure CLı kullanarak hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Azure portal kullanarak bir hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Geri Bildirim
+### <a name="suggestions"></a>Öneriler
+
 VM'ler için Azure İzleyici Map özelliği veya bu belgeler ile tümleştirme hakkında bizimle ilgili geri bildiriminiz var mı? Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.

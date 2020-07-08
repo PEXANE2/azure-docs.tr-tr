@@ -1,6 +1,6 @@
 ---
 title: Fortinet verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Fortinet verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için Fortinet gerecinizi Azure Sentinel 'e bağlayın. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555959"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet 'ı Azure Sentinel 'e bağlama
 
@@ -50,7 +50,7 @@ Fortinet Agent aracılığıyla syslog iletilerini CEF biçiminde Azure çalış
    > [!NOTE] 
    > Daha fazla bilgi için, [Fortinet belge kitaplığına](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)gidin. Sürümünüzü seçin ve **el kitabı** ve **log ileti başvurusunu**kullanın.
 
-1. Azure Izleyici 'de ilgili şemayı, Fortinet olayları için Log Analytics kullanmak için arama yapın `CommonSecurityLog`.
+1. Azure Izleyici 'de ilgili şemayı, Fortinet olayları için Log Analytics kullanmak için arama yapın `CommonSecurityLog` .
 
 1. 3. [Adım: bağlantıyı doğrulama adımına](connect-cef-verify.md)geçin.
 

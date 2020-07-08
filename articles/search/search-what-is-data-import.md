@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 26899d629661fbf3a4f48ac09fa9fd3ee806bdb4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 06/30/2020
+ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554266"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -52,7 +52,7 @@ REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdel
 .NET SDK 'sında verilerinizi bir `IndexBatch` nesneye paketleyin. `IndexBatch` `IndexAction` , Her biri bir belge ve bu belgede hangi eylemin gerçekleştirileceğini bilişsel arama Azure 'a söyleyen bir özellik içeren bir nesne koleksiyonunu kapsüller. Kod örneği için bkz. [C# hızlı](search-get-started-dotnet.md)başlangıcı.
 
 
-| @search.action | Description | Her bir belge için gerekli alanlar | Notlar |
+| @search.action | Açıklama | Her bir belge için gerekli alanlar | Notlar |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Bir `upload` eylemi, belgenin yeni olması durumunda ekleneceği ve var olması durumunda güncelleştirileceği/değiştirileceği bir "upsert" ile benzerlik gösterir. |anahtar ve tanımlamak istediğiniz diğer alanlar |Var olan bir belgeyi güncelleştirirken/değiştirirken istekte belirtilmeyen herhangi bir alan `null` olarak ayarlanır. Bu durum, alan daha önce değersiz olmayan bir değere ayarlanmış olsa dahi gerçekleşir. |
 | `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, türünde alanlar içerir `DataType.Collection(DataType.String)` . REST API, bu, türünde alanlar içerir `Collection(Edm.String)` . Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
@@ -63,11 +63,13 @@ REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdel
 
 [REST API kullanarak dizininizi aramanın](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) iki yolu bulunur. Bu yollardan biri, sorgu parametrelerinizin istek gövdesindeki bir JSON nesnesinde tanımlanacağı bir HTTP POST isteği göndermektir. Diğer yol ise sorgu parametrelerinizin istek URL'si içinde tanımlanacağı bir HTTP GET isteği göndermektir. POST, sorgu parametrelerinin boyutu açısından GET'ten daha [esnek sınırlara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) sahiptir. Bu nedenle, GET'i kullanmanın daha kullanışlı olduğu özel durumlar olmadığı sürece POST kullanmanızı öneririz.
 
-POST ve GET için *hizmet adınızı*, *dizin adını* ve uygun *API sürümünü* (bu belgenin yayımlandığı sırada geçerli API sürümü `2019-05-06`) istek URL'sinde sağlamanız gerekir. GET için sorgu parametrelerini URL'nin sonundaki *sorgu dizesine* sağlarsınız. URL biçimi için aşağıya bakın:
+Hem GÖNDERI hem de GET için, istek URL 'sinde *hizmet adınızı*, *Dizin adınızı*ve bir *API sürümünü* sağlamanız gerekir. 
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+GET için sorgu parametrelerini URL'nin sonundaki *sorgu dizesine* sağlarsınız. URL biçimi için aşağıya bakın:
 
-POST için biçim aynıdır ancak sorgu dizesi parametrelerinde yalnızca api sürümü olur.
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+
+POST biçimi aynı ancak `api-version` sorgu dizesi parametrelerinde ile aynıdır.
 
 ## <a name="pulling-data-into-an-index"></a>Verileri dizine çekme
 

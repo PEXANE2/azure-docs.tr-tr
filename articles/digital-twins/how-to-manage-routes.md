@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559826"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
 
@@ -28,7 +28,9 @@ Farklı uç noktalar hakkında daha fazla bilgi için bkz. [Azure mesajlaşma hi
 Uç noktalar ve rotalar [**Eventroutes API 'leri**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilir. Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek.
 
 > [!NOTE]
-> Azure portal aracılığıyla olay yollarının yönetilmesi, şu anda yalnızca kurumsal etki alanı hesaplarında Azure kullanıcıları tarafından kullanılabilir. Kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account/Account)kullanıyorsanız, lütfen bu makalede açıklandığı gibi olay yollarını yönetmek Için Azure Digital TWINS API 'LERINI veya CLI 'yi kullanın.
+> Azure portal aracılığıyla olay yollarının yönetilmesi, şu anda yalnızca kurumsal etki alanı hesaplarında Azure kullanıcıları tarafından kullanılabilir. 
+>
+>Hesap gibi bir kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account/Account)kullanıyorsanız @outlook.com , lütfen bu makalede açıklandığı gibi olay yollarını yönetmek Için Azure Digital TWINS API 'lerini veya CLI 'yi kullanın.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 4f7be81c3593e35dfbbcf3a5671726da70ae0c7e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 4906ea7c3ed3486a4ce089f51916fb8322761fe9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559541"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme    
 
@@ -196,7 +196,7 @@ Her çalışma alanı günlük Cap günün farklı bir saatine uygulanır. Sıf�
 Günlük sınıra ulaşıldığında yakında faturalandırılabilir veri türleri koleksiyonu, günün geri kalanı için duraklar. (Günlük üst sınır uygulandığında devralınan gecikme süresi, ucun kesin olarak belirtilen günlük sınır düzeyinde uygulanmadığı anlamına gelir.) Seçili Log Analytics çalışma alanı için sayfanın üst kısmında bir uyarı başlığı görünür ve bir işlem olayı **Logmanagement** kategorisi altındaki *işlem* tablosuna gönderilir. *Günlük sınır*altında tanımlanan sıfırlama süresi, veri toplama işlemine devam eder. Günlük veri sınırına ulaşıldığında bildirmek üzere yapılandırılan bu işlem olayına dayalı bir uyarı kuralı tanımlamayı öneririz. 
 
 > [!WARNING]
-> Günlük sınır, Azure Güvenlik Merkezi 'nin 19 Haziran 2017 ' den önce yüklendiği çalışma alanları dışında Azure Sentuya da Azure Güvenlik Merkezi 'nden veri toplamayı durdurmaz. 
+> Günlük sınır, Azure Güvenlik Merkezi 'nin 19 Haziran 2017 ' den önce yüklendiği çalışma alanları dışında Azure Sentinel veya Azure Güvenlik Merkezi 'nden veri toplamayı durdurmaz. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Hangi günlük veri sınırının tanımlanacağını belirleyin
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560165"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
@@ -31,9 +31,9 @@ Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri t
 * [Ölçümler](workbooks-data-sources.md#metrics)
 * [Azure Kaynak Grafiği](workbooks-data-sources.md#azure-resource-graph)
 * [Uyarılar (Önizleme)](workbooks-data-sources.md#alerts-preview)
-* [İş yükü sistem durumu (Önizleme)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Kaynak Durumu (Önizleme)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Veri Gezgini (Önizleme)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [İş yükü sistem durumu](workbooks-data-sources.md#workload-health)
+* [Azure Kaynak Durumu](workbooks-data-sources.md#azure-resource-health)
+* [Azure Veri Gezgini](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>Görsel öğeler
 
@@ -42,7 +42,7 @@ Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri t
 * [Metin](workbooks-visualizations.md#text)
 * [Grafikler](workbooks-visualizations.md#charts)
 * [Kılavuzlar](workbooks-visualizations.md#grids)
-* [Parça](workbooks-visualizations.md#tiles)
+* [Kutucuklar](workbooks-visualizations.md#tiles)
 * [Ağaçlarında](workbooks-visualizations.md#trees)
 * [Performansının](workbooks-visualizations.md#graphs)
 

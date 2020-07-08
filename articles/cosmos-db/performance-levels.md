@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556058"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor
 
 > [!IMPORTANT] 
 > Bu makalede ele alınan S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor ve yeni Azure Cosmos DB hesapları için artık kullanılamıyor.
->
 
 Bu makalede S1, S2 ve S3 performans düzeylerine genel bir bakış sağlanır ve bu performans düzeylerini kullanan koleksiyonların tek bölümlenmiş koleksiyonlara nasıl geçirilebileceği açıklanır. Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
@@ -43,7 +42,7 @@ S1, S2 ve S3 performans düzeyleri, standart Azure Cosmos DB teklifinin sağlad�
 
 Aşağıdaki tabloda, tek bölüm koleksiyonlarında, bölümlenmiş koleksiyonlarda ve S1, S2, S3 performans düzeylerinde bulunan aktarım hızı ve depolama seçenekleri karşılaştırılmaktadır. ABD Doğu 2 bölge için bir örnek aşağıda verilmiştir:
 
-|   |Bölümlenmiş koleksiyon|Tek bölümlü toplama|S1|S2|S3|
+| Kota adı  |Bölümlenmiş koleksiyon|Tek bölümlü toplama|S1|S2|S3|
 |---|---|---|---|---|---|
 |Aktarım hızı üst sınırı|Sınırsız|10.000 RU/sn|250 RU/sn|1 K RU/sn|2,5 K RU/sn|
 |En düşük aktarım hızı|2,5 K RU/sn|400 RU/sn|250 RU/sn|1 K RU/sn|2,5 K RU/sn|

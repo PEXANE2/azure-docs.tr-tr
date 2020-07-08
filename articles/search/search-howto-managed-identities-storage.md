@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 1fa9581f1a7968a1bfd6df0fb82383dd45e70f54
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559877"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir Azure depolama hesabına bağlantı kurma
 
@@ -83,7 +83,7 @@ Bir depolama hesabından dizin oluştururken, veri kaynağı aşağıdaki gerekl
 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak blob veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -103,7 +103,7 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
 
 `content`Bloblardan ayıklanan metni depolamak için aranabilir bir alanla dizin oluşturma:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -125,7 +125,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra Dizin oluşturucuyu oluşturmaya 
 
 Blob Dizin Oluşturucu için örnek Dizin Oluşturucu tanımı:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

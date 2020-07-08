@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel 'de DNS verilerini bağlama | Microsoft Docs
-description: Azure Sentinel 'de DNS verilerini bağlamayı öğrenin.
+description: DNS makinesine bir aracı yükleyerek Windows üzerinde çalışan herhangi bir etki alanı ad sunucusunu (DNS) Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555425"
 ---
 # <a name="connect-your-domain-name-server"></a>Etki alanı ad sunucunuzu bağlama
 
@@ -43,9 +43,9 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| [Windows aracıları](../azure-monitor/platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
+| [Windows aracıları](../azure-monitor/platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
 | [Linux aracıları](../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
-| [System Center Operations Manager yönetim grubu](../azure-monitor/platform/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [System Center Operations Manager yönetim grubu](../azure-monitor/platform/om-agents.md) | Evet | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 | [Azure depolama hesabı](../azure-monitor/platform/collect-azure-metrics-logs.md) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları

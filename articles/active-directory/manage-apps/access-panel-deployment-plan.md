@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84761179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555313"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory Access panel dağıtımı planlayın
 
@@ -81,7 +81,7 @@ Bu projeye başlamadan önce aşağıdaki önkoşulları doldurun:
 
 Aşağıdaki tabloda, bir erişim paneli dağıtımı için anahtar kullanım durumları özetlenmektedir:
 
-| Alan| Description |
+| Alan| Açıklama |
 | - | - |
 | Access| Şirket ağı içindeki şirket ve kişisel cihazlardan erişim paneli portalına erişilebilir. |
 |Access | Şirket ağı dışındaki şirket aygıtlarından erişim paneli portalına erişilebilir. |
@@ -127,11 +127,11 @@ Aşağıdaki tabloda birçok önemli erişim paneli yapılandırması ve kullana
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Office 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 
@@ -261,7 +261,7 @@ Self Servis Grup üyeliğini planlamak için, kuruluşunuzdaki tüm kullanıcıl
 
 Azure AD, [Teknik ve iş öngörüleri sunan raporlar](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)sağlar. Bu raporların sahipliğini varsaymak ve bunları düzenli olarak tüketmek için iş ve teknik uygulama sahipleriyle birlikte çalışın. Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiştir.
 
-|   | Riski yönetin| Üretkenliği artırın| İdare ve uyum |
+| Örnek | Riski yönetin| Üretkenliği artırın| İdare ve uyum |
 |  - |- | - | - |
 | Rapor türleri|  Uygulama izinleri ve kullanımı| Hesap sağlama etkinliği| Uygulamalara kimlerin eriştiğini gözden geçirme |
 | Olası eylemler| Denetim erişimi; izinleri iptal et| Sağlama hatalarını düzelt| Erişimi iptal et |
@@ -338,11 +338,11 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|
-| Yardım Masası Yöneticisi| Katman 1 desteği| Yok |
+| Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
-| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
+| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) kullanabilirsiniz.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562301"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
@@ -58,7 +58,7 @@ Her iki parametre hakkında daha fazla bilgi için bkz. [arama belgeleri > istek
 
 Sorgu zamanında, bir filtre ayrıştırıcısı ölçütü girdi olarak kabul eder, ifadeyi bir ağaç olarak temsil edilen atomik Boole ifadelerine dönüştürür ve sonra filtre ağacını bir dizin içindeki filtrelenebilir alanlar üzerinde değerlendirir.
 
-Filtreleme, arama ile birlikte meydana gelir ve belge alımı ve ilgi Puanlama için aşağı akış işleme dahil edilecek belgeleri niteleyen şekilde kapsar. Bir arama dizesiyle eşlendiğinde, filtre, sonraki arama işleminin geri çağırma kümesini etkin bir şekilde azaltır. Tek başına kullanıldığında (örneğin, sorgu dizesi nerede `search=*`boşsa), filtre ölçütü tek giriştir. 
+Filtreleme, arama ile birlikte meydana gelir ve belge alımı ve ilgi Puanlama için aşağı akış işleme dahil edilecek belgeleri niteleyen şekilde kapsar. Bir arama dizesiyle eşlendiğinde, filtre, sonraki arama işleminin geri çağırma kümesini etkin bir şekilde azaltır. Tek başına kullanıldığında (örneğin, sorgu dizesi nerede boşsa `search=*` ), filtre ölçütü tek giriştir. 
 
 ## <a name="defining-filters"></a>Filtreleri tanımlama
 Filtreler OData ifadeleridir, [Azure bilişsel arama 'de desteklenen OData v4 sözdizimi alt kümesi](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)kullanılarak ifade edilir. 
@@ -71,10 +71,10 @@ Aşağıdaki örneklerde, birkaç API 'de Prototipik filtre tanımları temsil e
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
@@ -109,7 +109,7 @@ Aşağıdaki örneklerde, filtre senaryoları için çeşitli kullanım desenler
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
-+ "Veya" ile ayrılmış, her biri kendi filtre ölçütlerine sahip (örneğin, ' köpek ' veya ' Siamese ', ' Cat ' içinde ' Beagles ') bileşik sorgular. İle `or` birleştirilmiş ifadeler, yanıtta geri gönderilen her ifadeyle eşleşen belgelerin birleşimi ile ayrı ayrı değerlendirilir. Bu kullanım deseninin `search.ismatchscoring` işlevi aracılığıyla elde edilir. Puanlama olmayan sürümü de kullanabilirsiniz `search.ismatch`.
++ "Veya" ile ayrılmış, her biri kendi filtre ölçütlerine sahip (örneğin, ' köpek ' veya ' Siamese ', ' Cat ' içinde ' Beagles ') bileşik sorgular. İle birleştirilmiş ifadeler `or` , yanıtta geri gönderilen her ifadeyle eşleşen belgelerin birleşimi ile ayrı ayrı değerlendirilir. Bu kullanım deseninin işlevi aracılığıyla elde edilir `search.ismatchscoring` . Puanlama olmayan sürümü de kullanabilirsiniz `search.ismatch` .
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +119,7 @@ Aşağıdaki örneklerde, filtre senaryoları için çeşitli kullanım desenler
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  Bunun yerine `search.ismatchscoring` kullanarak `and` tam metin aramasını filtreler ile birleştirmek de `or`mümkündür, ancak bu, bir arama isteğindeki `search` ve `$filter` parametreleri kullanılarak işlevsel olarak eşdeğerdir. Örneğin, aşağıdaki iki sorgu aynı sonucu üretir:
+  Bunun yerine kullanarak tam metin aramasını filtreler ile birleştirmek de mümkündür `search.ismatchscoring` `and` `or` , ancak bu, `search` bir arama isteğindeki ve parametreleri kullanılarak işlevsel olarak eşdeğerdir `$filter` . Örneğin, aşağıdaki iki sorgu aynı sonucu üretir:
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -135,9 +135,9 @@ Belirli kullanım durumlarında kapsamlı yönergeler için bu makalelerle takip
 
 ## <a name="field-requirements-for-filtering"></a>Filtreleme için alan gereksinimleri
 
-REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; Filtre içinde gerçekten kullanmayı `"filterable": false` planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
+REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; `"filterable": false`Filtre içinde gerçekten kullanmayı planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) nesnesinin `true` [ısfilterable özelliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz. Bunu, [ısfilterable özniteliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği Dizin tanımıyla eşleşen bir model sınıfının `BaseRate` özelliği üzerinde ayarlanır.
+.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) nesnesinin [ısfilterable özelliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -158,15 +158,15 @@ Metin dizeleri büyük/küçük harfe duyarlıdır. Büyük küçük harf olmaya
 
 | Yaklaşım | Açıklama | Kullanılması gereken durumlar |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | Ayrılmış bir dize listesine karşı bir alanla eşleşen bir işlev. | Birçok ham metin değerinin bir dize alanı ile eşleştirilmesi gereken, [Güvenlik filtreleri](search-security-trimming-for-azure-search.md) ve tüm filtreler için önerilir. **Search.in** işlevi hız için tasarlanmıştır ve ve `eq` `or`kullanarak alanı her bir dizeye göre açıkça karşılaştırmadan çok daha hızlıdır. | 
+| [`search.in`](search-query-odata-search-in-function.md) | Ayrılmış bir dize listesine karşı bir alanla eşleşen bir işlev. | Birçok ham metin değerinin bir dize alanı ile eşleştirilmesi gereken, [Güvenlik filtreleri](search-security-trimming-for-azure-search.md) ve tüm filtreler için önerilir. **Search.in** işlevi hız için tasarlanmıştır ve ve kullanarak alanı her bir dizeye göre açıkça karşılaştırmadan çok daha hızlıdır `eq` `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Aynı filtre ifadesinde tam metin arama işlemlerini kesin olarak Boolean filtre işlemleriyle karıştırabilmeniz için bir işlev. | Tek bir istekte birden çok arama filtresi kombinasyonu istediğinizde **Search. IsMatch** (veya Puanlama eşdeğerini, **arama. ısmatchpuanlama**) kullanın. Ayrıca, daha büyük bir dizedeki kısmi bir dizeyi filtrelemek için bir *Contains* filtresi için de kullanabilirsiniz. |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Alanlar, işleçler ve değerlerden oluşan Kullanıcı tanımlı bir ifade. | Bir dize alanı ve bir dize değeri arasındaki tam eşleşmeleri bulmak istediğinizde bunu kullanın. |
 
 ## <a name="numeric-filter-fundamentals"></a>Sayısal filtre temelleri
 
-Sayısal alanlar tam metin `searchable` araması bağlamında değil. Yalnızca dizeler tam metin aramasına tabidir. Örneğin, bir arama terimi olarak 99,99 girerseniz, öğelerin fiyatı $99,99 ' de alınır. Bunun yerine, belgenin dize alanlarında 99 numaralı öğeyi görürsünüz. Bu nedenle, sayısal verileriniz varsa, Bu varsayımını aralıklar, modeller, gruplar vb. dahil olmak üzere filtreler için kullanmanız gerekir. 
+Sayısal alanlar `searchable` tam metin araması bağlamında değil. Yalnızca dizeler tam metin aramasına tabidir. Örneğin, bir arama terimi olarak 99,99 girerseniz, öğelerin fiyatı $99,99 ' de alınır. Bunun yerine, belgenin dize alanlarında 99 numaralı öğeyi görürsünüz. Bu nedenle, sayısal verileriniz varsa, Bu varsayımını aralıklar, modeller, gruplar vb. dahil olmak üzere filtreler için kullanmanız gerekir. 
 
-Sayısal alanlar (Fiyat, boyut, SKU, KIMLIK) içeren belgeler, alan işaretlenmişse `retrievable`arama sonuçlarında bu değerleri sağlar. Burada nokta, tam metin aramasının kendisinin sayısal alan türleri için geçerli olmadığı bir alandır.
+Sayısal alanlar (Fiyat, boyut, SKU, KIMLIK) içeren belgeler, alan işaretlenmişse arama sonuçlarında bu değerleri sağlar `retrievable` . Burada nokta, tam metin aramasının kendisinin sayısal alan türleri için geçerli olmadığı bir alandır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

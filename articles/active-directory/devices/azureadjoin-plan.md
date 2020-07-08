@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555024"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -32,15 +32,14 @@ Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](../device-man
 
 Azure AD JOIN uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
-|   |   |
-|---|---|
-|![İşaretli][1]|Senaryolarınızı gözden geçirin|
-|![İşaretli][1]|Kimlik altyapınızı gözden geçirin|
-|![İşaretli][1]|Cihaz yönetimini değerlendirin|
-|![İşaretli][1]|Uygulamalar ve kaynaklarla ilgili önemli noktaları anlama|
-|![İşaretli][1]|Sağlama seçeneklerinizi anlayın|
-|![İşaretli][1]|Kurumsal durum dolaşımı yapılandırma|
-|![İşaretli][1]|Koşullu erişimi yapılandırma|
+> [!div class="checklist"]
+> - Senaryolarınızı gözden geçirin
+> - Kimlik altyapınızı gözden geçirin
+> - Cihaz yönetimini değerlendirin
+> - Uygulamalar ve kaynaklarla ilgili önemli noktaları anlama
+> - Sağlama seçeneklerinizi anlayın
+> - Kurumsal durum dolaşımı yapılandırma
+> - Koşullu erişimi yapılandırma
 
 ## <a name="review-your-scenarios"></a>Senaryolarınızı gözden geçirin 
 
@@ -197,12 +196,12 @@ Aşağıdaki yaklaşımlardan yararlanarak Azure AD katılımı sağlayabilirsin
  
 Bu üç yaklaşımdan oluşan bir karşılaştırma 
  
-|   | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
+| Öğe | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
 | --- | --- | --- | --- |
-| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
-| BT çabaları gerektir | Hayır | Yes | Yes |
+| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Evet | Hayır |
+| BT çabaları gerektir | Hayır | Evet | Yes |
 | Geçerli akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
-| Birincil Kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | No |
+| Birincil Kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
 | Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  

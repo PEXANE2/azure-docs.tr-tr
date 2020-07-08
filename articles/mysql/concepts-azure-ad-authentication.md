@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556368"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -66,8 +66,11 @@ Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bi
 - Azure Active Directory tümleşik
 - MFA ile evrensel Azure Active Directory
 - Active Directory Uygulama sertifikaları veya istemci gizli dizileri kullanma
+- [Yönetilen Kimlik](howto-connect-with-managed-identity.md)
 
 Active Directory göre kimlik doğrulamasından sonra bir belirteç alırsınız. Bu belirteç oturum açmak için parolanız.
+
+Lütfen yeni kullanıcı ekleme gibi yönetim işlemlerinin bu noktada yalnızca Azure AD Kullanıcı rolleri için desteklendiğini unutmayın.
 
 > [!NOTE]
 > Active Directory belirteciyle bağlanma hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı Için Azure AD Ile yapılandırma ve oturum açma](howto-configure-sign-in-azure-ad-authentication.md).

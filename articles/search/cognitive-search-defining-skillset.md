@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557454"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
@@ -55,7 +55,7 @@ Diyagramda *belge çözme* adımı otomatik olarak gerçekleşir. Esas olarak, A
 Bir beceri bir yetenek dizisi olarak tanımlanır. Her beceri, girişlerinin kaynağını ve üretilen çıktıların adını tanımlar. [Create beceri REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak, önceki diyagrama karşılık gelen bir beceri tanımlayabilirsiniz: 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Beceri kümesi oluşturma
 
-Bir beceri oluştururken, Beceri kendi kendine belgelerinizi yapmak için bir açıklama sağlayabilirsiniz. Bir açıklama isteğe bağlıdır, ancak beceri ne yaptığını izlemek için yararlıdır. Beceri, açıklamalara izin vermediği bir JSON belgesi olduğundan, bunun için bir `description` öğe kullanmanız gerekir.
+Bir beceri oluştururken, Beceri kendi kendine belgelerinizi yapmak için bir açıklama sağlayabilirsiniz. Bir açıklama isteğe bağlıdır, ancak beceri ne yaptığını izlemek için yararlıdır. Beceri, açıklamalara izin vermediği bir JSON belgesi olduğundan, `description` bunun için bir öğe kullanmanız gerekir.
 
 ```json
 {
@@ -163,15 +163,15 @@ Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.m
     }
 ```
 
-* Her yerleşik beceri `odata.type`, `input`, ve `output` özelliklerdir. Beceriye özgü özellikler, bu beceriye uygun ek bilgiler sağlar. Varlık tanıma için, `categories` önceden eğitilen modelin tanıyabileceği sabit bir varlık türleri kümesi arasında bir varlıktır.
+* Her yerleşik beceri `odata.type` , `input` , ve `output` özelliklerdir. Beceriye özgü özellikler, bu beceriye uygun ek bilgiler sağlar. Varlık tanıma için, `categories` önceden eğitilen modelin tanıyabileceği sabit bir varlık türleri kümesi arasında bir varlıktır.
 
-* Her yeteneğin bir ```"context"```olması gerekir. Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki becerideki bağlam tüm belgedir, yani varlık tanıma becerisi her belge için bir kez çağrılır. Çıkışlar da bu düzeyde oluşturulur. Daha özel olarak ```"organizations"``` , üyesi olarak üretilir ```"/document"```. Aşağı akış becerileri bölümünde bu yeni oluşturulan bilgilere olarak ```"/document/organizations"```başvurabilirsiniz.  ```"context"``` Alan açıkça ayarlanmamışsa, varsayılan bağlam belgedir.
+* Her yeteneğin bir olması gerekir ```"context"``` . Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki becerideki bağlam tüm belgedir, yani varlık tanıma becerisi her belge için bir kez çağrılır. Çıkışlar da bu düzeyde oluşturulur. Daha özel olarak, ```"organizations"``` üyesi olarak üretilir ```"/document"``` . Aşağı akış becerileri bölümünde bu yeni oluşturulan bilgilere olarak başvurabilirsiniz ```"/document/organizations"``` .  ```"context"```Alan açıkça ayarlanmamışsa, varsayılan bağlam belgedir.
 
-* Yeteneğin, kaynak girişi olarak ```"/document/content"```ayarlanmış "metin" adlı bir giriş vardır. Yetenek (varlık tanıma), Azure Blob Indexer tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanı üzerinde çalışır. 
+* Yeteneğin, kaynak girişi olarak ayarlanmış "metin" adlı bir giriş vardır ```"/document/content"``` . Yetenek (varlık tanıma), Azure Blob Indexer tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanı üzerinde çalışır. 
 
-* Yeteneğin adlı ```"organizations"```bir çıkış vardır. Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıktıyı olarak ```"/document/organizations"```başvuru yapın.
+* Yeteneğin adlı bir çıkış vardır ```"organizations"``` . Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıktıyı olarak başvuru yapın ```"/document/organizations"``` .
 
-* Belirli bir belge için değeri ```"/document/organizations"``` , metinden ayıklanan kuruluşların bir dizisidir. Örneğin:
+* Belirli bir belge için değeri, ```"/document/organizations"``` metinden ayıklanan kuruluşların bir dizisidir. Örneğin:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -179,7 +179,7 @@ Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.m
 
 Bazı durumlar, bir dizinin her öğesine ayrı olarak başvurmak için çağrı yapılır. Örneğin, her öğesini ```"/document/organizations"``` ayrı olarak başka bir beceriye (özel Bing varlık arama daha zengin gibi) geçirmek istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz:```"/document/organizations/*"``` 
 
-Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. Giriş olarak ```"/document/content"``` alır ve her içerik örneği için bir yaklaşım puanı döndürür. ```"context"``` Alanı açıkça ayarlamazsanız, çıkış (mySentiment) artık bir alt öğesidir ```"/document"```.
+Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. ```"/document/content"```Giriş olarak alır ve her içerik örneği için bir yaklaşım puanı döndürür. ```"context"```Alanı açıkça ayarlamazsanız, çıkış (mySentiment) artık bir alt öğesidir ```"/document"``` .
 
 ```json
     {
@@ -229,9 +229,9 @@ Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıb�
 
 Bu tanım, zenginleştirme sürecinin bir parçası olarak bir Web API 'SI çağıran [özel bir yetentandır](cognitive-search-custom-skill-web-api.md) . Bu yetenek, varlık tanıma tarafından tanımlanan her kuruluş için, bu kuruluşun açıklamasını bulmak için bir Web API 'SI çağırır. Web API 'sinin ne zaman çağrılacağını ve alınan bilgilerin nasıl Flow, enzenginleştirme altyapısı tarafından dahili olarak işlenir. Ancak, bu özel API 'yi çağırmak için gereken başlatma işlemi JSON 'da (URI, httpHeaders ve beklenen girişler gibi) sağlanmalıdır. Zenginleştirme işlem hattı için özel Web API 'SI oluşturma konusunda rehberlik için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md).
 
-"Bağlam" alanının, altındaki ```"/document/organizations/*"``` ```"/document/organizations"``` *her kuruluş için* de zenginleştirme adımının çağrıldığı bir yıldız işaretiyle ayarlandığını unutmayın. 
+"Bağlam" alanının, ```"/document/organizations/*"``` altındaki *her kuruluş için* de zenginleştirme adımının çağrıldığı bir yıldız işaretiyle ayarlandığını unutmayın ```"/document/organizations"``` . 
 
-Bu durumda, belirtilen her bir kuruluş için bir şirket açıklaması olan çıktı. Bir aşağı akış adımında (örneğin, anahtar tümceciği ayıklama içinde) açıklamaya başvururken, bunu yapmak için yolunu ```"/document/organizations/*/description"``` kullanırsınız. 
+Bu durumda, belirtilen her bir kuruluş için bir şirket açıklaması olan çıktı. Bir aşağı akış adımında (örneğin, anahtar tümceciği ayıklama içinde) açıklamaya başvururken, ```"/document/organizations/*/description"``` bunu yapmak için yolunu kullanırsınız. 
 
 ## <a name="add-structure"></a>Yapı Ekle
 
@@ -247,7 +247,7 @@ Olası bir sonuç, aşağıdaki çizime benzer şekilde oluşturulmuş bir yapı
 
 ## <a name="add-a-knowledge-store"></a>Bilgi deposu ekleme
 
-[Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure bilişsel arama bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
+[Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure bilişsel arama bir özelliktir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
 
 Bir beceri öğesine bilgi deposu tanımı eklenir. İşlemin tamamına yönelik bir anlatım için bkz. [rest 'te bilgi deposu oluşturma](knowledge-store-create-rest.md).
 

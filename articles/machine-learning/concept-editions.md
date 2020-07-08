@@ -8,23 +8,16 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: d870cb8d90573ab0c9661804aa1dd17b64d1600d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555537"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning Enterprise ve Basic sürümleri 
 
 Azure Machine Learning, Machine Learning gereksinimleriniz için tasarlanmış iki sürüm sunar. Bu sürümler, geliştiricilerin ve veri bilimcilerinin çalışma alanından hangi makine öğrenimi araçlarının kullanılabilir olduğunu tespit.
-
-<br/>
-<br/>
-
-| Temel sürüm | Kurumsal sürüm                 |
-|------------------------------------------------------------------------------------|-----------|
-|Harika: <br/>+ açık kaynaklı geliştirme <br/>+ ile bulut ölçeğinde<br/>+ Code-ilk deneyim <br/><br/>Temel çalışma alanları Azure Machine Learning kullanmaya devam edip yalnızca ML işlemi sırasında [tüketilen Azure kaynakları için ödeme](concept-plan-manage-cost.md) yapmanıza olanak tanır. |Tüm temel sürüm ve:<br/>+ Studio Web arabirimi <br/>+ güvenli, kapsamlı ML yaşam döngüsü yönetimi <br/>Tüm beceri düzeyleri için +<br/><br/>Enterprise Edition çalışma alanları, sürüm önizlemedeyken yalnızca Azure tüketimine göre ücretlendirilir. |
 
 ## <a name="choose-an-edition"></a>Sürüm seçin
 
@@ -111,7 +104,6 @@ Her çalışma alanı oluşturduğunuzda sürümü atarsınız. Müşteriler, bu
 | Toplu iş ınkrii                                                                  | Tümü                     |
 | FPGA tabanlı Hızlandırılmış Donanım Modelleri                                             | Tümü                     |
 | Model profili oluşturma                                                                    | Tümü                     |
-| Kullanıcı arabiriminde Explainability                                                               | Yalnızca Enterprise Edition |
 
 <br/>
 <br/>

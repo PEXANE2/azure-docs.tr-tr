@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 5cb053a87293a4309a393bd9e0e76bf0d881dd71
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559311"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kural altyapısı başvurusu
 
@@ -36,6 +36,13 @@ Her kurala en fazla on eşleşme koşulu ve beş eylem olabilir. Her Azure CDN u
 
 Bu sınıra dahil edilen varsayılan bir *genel kuraldır*. Genel kural eşleşme koşullarına sahip değildir; bir genel kuralda tanımlanan eylemler her zaman tetiklenir.
 
+## <a name="limits-and-pricing"></a>Sınırlar ve fiyatlandırma 
+
+Her Azure CDN uç noktası en fazla 25 kurala sahip olabilir. Her kurala en fazla on eşleşme koşulu ve beş eylem olabilir. Kural altyapısı için fiyatlandırma aşağıdaki boyutları izler: 
+- Kurallar: her ay kural başına $1 
+- Işlenen istek sayısı: milyon talep başına $0,60
+- İlk 5 kural ücretsiz kalacak
+
 ## <a name="syntax"></a>Syntax
 
 Kural içinde özel karakterlerin nasıl ele alındığı, farklı eşleşme koşullarının ve eylemlerin metin değerlerini nasıl işleydiğine göre farklılık gösterir. Bir eşleştirme koşulu veya eylemi, aşağıdaki yollarla metni yorumlayabilir:
@@ -54,7 +61,7 @@ URL kodlamasını göstermek için yüzde işareti kullanılır (örneğin, `%20
 
 Joker karakter değeri olarak yorumlanan metin özel karakterlere ek anlam atar. Aşağıdaki tabloda, özel karakterlerin standart kurallar altyapısında nasıl yorumlanacağı açıklanmaktadır:
 
-Karakter | Description
+Karakter | Açıklama
 ----------|------------
 \ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
 % | URL kodlamasını göstermek için yüzde işareti kullanılır (örneğin, `%20` ).

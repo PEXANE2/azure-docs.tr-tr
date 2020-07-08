@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 1a3735180d72496d58cdd22d0aa34c8a6f88a6a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559846"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -21,15 +21,24 @@ Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerl
 
 ## <a name="about-assessments"></a>Değerlendirmeler hakkında
 
-Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'nde iki tür değerlendirme vardır.
+Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır: Sunucu değerlendirmesi:
 
-**Değerlendirme türü** | **Ayrıntılar** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar**
+--- | --- 
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi](concepts-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+
+
+### <a name="sizing-criteria"></a>Boyutlandırma ölçütü
+Sunucu değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
+
+**Boyutlandırma ölçütü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
-**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.
-**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.
+**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | **Azure VM değerlendirmesi**: VM boyutu ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.
+**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | **Azure VM değerlendirmesi**: VM boyutu önerisi, ŞIRKET içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri önerisi, ŞIRKET içi VM boyutunu temel alır.
 
-### <a name="example"></a>Örnek
-Örnek olarak, %20 ' de dört çekirdekli bir şirket içi sanal makine ve %10 kullanımı ile 8 GB bellek varsa, değerlendirmeler aşağıdaki gibi olacaktır:
+#### <a name="example"></a>Örnek
+Örnek olarak, %20 ' de dört çekirdekli bir şirket içi sanal makine ve %10 kullanımı ile 8 GB bellek varsa, Azure VM değerlendirmesi aşağıdaki gibi olacaktır:
 
 - **Performans tabanlı değerlendirme**:
     - Core (4 x 0,20 = 0,8) ve bellek (8 GB x 0,10 = 0,8) kullanımı temel alınarak etkin çekirdekleri ve bellek tanımlar.
@@ -38,6 +47,7 @@ Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, v
 
 - **As (Şirket içi) değerlendirmesi**:
     -  Dört çekirdekli bir VM önerir; 8 GB bellek.
+
 
 ## <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -54,6 +64,19 @@ Azure geçişi ile içeri aktarılan sunucuların değerlendirmesi için bu en i
 - Bir **as-to değerlendirmesi oluştur**: makineleriniz Azure geçişi portalında görünür.
 - **Performans tabanlı değerlendirme oluştur**: Bu, özellikle de şirket içinde fazla sağlanmış sunucu kapasiteniz varsa daha iyi maliyet tahmini sağlamaya yardımcı olur. Ancak, performans tabanlı değerlendirmenin doğruluğu, sunucular için sizin tarafınızdan belirtilen performans verilerine bağlıdır. 
 - **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde anlık görüntüler olduğundan, en son verilerle otomatik olarak güncellenmez. En son içeri aktarılan verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
+ 
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>AVS değerlendirmesi için FTT boyutlandırma parametreleri
+
+AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri, sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler, depolama biriminin VM 'ye nasıl ayrılacağını tespit ettiğinden VM 'niz için gereken hizmet düzeyini garanti eder. Kullanılabilir FTT-RAID birleşimleri şunlardır: 
+
+**Tolerans sayısı (FTT)** | **RAID yapılandırması** | **Gerekli en düşük konaklar** | **Boyutlandırma değerlendirmesi**
+--- | --- | --- | --- 
+1 | RAID-1 (yansıtma) | 3 | 100'LIK bir VM 200GB tüketir.
+1 | RAID-5 (ERASURE kodlaması) | 4 | 100 GB 'lık bir VM 133.33 GB tüketir
+2 | RAID-1 (yansıtma) | 5 | 100 GB 'lık bir VM 300 GB tüketir.
+2 | RAID-6 (ERASURE kodlaması) | 6 | 100 GB 'lik bir VM, 150GB tüketir.
+3 | RAID-1 (yansıtma) | 7 | 100 GB 'lık bir VM 400 ' ü tüketir.
+
 
 ## <a name="best-practices-for-confidence-ratings"></a>Güvenirlik derecelendirmeleri için en iyi uygulamalar
 
@@ -92,7 +115,7 @@ Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değ
 - Disk sayısı
 - Ağ bağdaştırıcısı sayısı
 - Disk boyutu değişikliği (GB ayrılmış)
-- NIC özelliklerine güncelleştirin. Örnek: MAC adresi değişiklikleri, IP adresi ekleme vb.
+- NIC özellikleri güncelleştirmesi. Örnek: MAC adresi değişiklikleri, IP adresi ekleme vb.
 
 Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden**Hesapla**).
 
@@ -105,6 +128,12 @@ Bir değerlendirme, birkaç nedenden dolayı tüm veri noktalarına sahip olmaya
 - Değerlendirmenin hesaplandığı dönem boyunca birkaç sanal makine kapatılmıştır. Bazı VM'ler belirli bir süre boyunca kapatıldıysa Sunucu Değerlendirmesi o süreye ait performans verilerini toplayamaz.
 
 - Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
+
+### <a name="migration-tool-guidance-for-avs-assessments"></a>AVS değerlendirmesi için geçiş aracı Kılavuzu
+
+Azure VMware çözümü (AVS) değerlendirmesi için Azure hazırlık raporu ' nda, aşağıdaki önerilen araçları görebilirsiniz: 
+- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+- **Bilinmiyor**: bir CSV dosyası aracılığıyla içeri aktarılan makineler için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

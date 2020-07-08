@@ -1,32 +1,29 @@
 ---
-title: Azure 'da Micro Focus Enterprise Server 4,0 ve Enterprise Developer 4,0 'yi yükler | Microsoft Docs
+title: Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler | Microsoft Docs
 description: Azure sanal makinelerinde (VM) mikro odak geliştirme ve test ortamını kullanarak IBM z/OS ana bilgisayar iş yüklerinizi yeniden barındırın.
 services: virtual-machines-linux
 documentationcenter: ''
-author: njray
+author: maggsl
 ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561073"
 ---
-# <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Server 4,0 ve Enterprise Developer 4,0 'yi yükler
+# <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
-Bu makalede, Azure 'da [Micro Focus Enterprise Server 4,0](https://www.microfocus.com/documentation/enterprise-developer/es30/) ve [Micro focus Enterprise Developer 4,0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) ' nin nasıl ayarlanacağı gösterilmektedir.
+Bu makalede, Microsoft Azure 'de [Micro Focus Enterprise Server 5,0](https://www.microfocus.com/documentation/enterprise-developer/ed50pu5/ES-WIN/GUID-F7D8FD6E-BDE0-4169-8D8C-96DDFFF6B495.html) ve [Micro focus Enterprise Developer 5,0](https://www.microfocus.com/documentation/enterprise-developer/ed50/) ' nin nasıl ayarlanacağı gösterilmektedir.
 
 Azure 'da ortak bir iş yükü geliştirme ve test ortamıdır. Bu senaryo, daha uygun maliyetli ve dağıtım ve ayırma kolaylığı açısından yaygındır. Enterprise Server ile mikro odak, kullanılabilir en büyük anabilgisayar yeniden barındırma platformlarından birini oluşturmuştur. Windows ya da Linux sanal makinelerini (VM 'Ler) kullanarak Azure 'da daha az pahalı bir x86 platformunda z/OS iş yüklerini çalıştırabilirsiniz.
-
-> [!NOTE]
-> Yakında: Azure VM 'lerinde [Micro Focus Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma yönergeleri.
 
 Bu kurulum, Azure Marketi 'nden Windows Server 2016 görüntüsünü çalıştıran Azure sanal makinelerini kullanır Microsoft SQL Server 2017 ' de zaten yüklüdür. Bu kurulum Azure Stack için de geçerlidir.
 
@@ -36,95 +33,100 @@ Enterprise Server için karşılık gelen geliştirme ortamı, Microsoft Visual 
 
 Başlamadan önce Şu önkoşullara göz atın:
 
-- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+-   Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- Mikro odak yazılımı ve geçerli bir lisans (veya deneme lisansı). Mevcut bir Micro Focus müşterisiyseniz, mikro odak temsilcinizle iletişime geçin. Aksi takdirde, [bir deneme isteyin](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
+-   Mikro odak yazılımı ve geçerli bir lisans (veya deneme lisansı). Mevcut bir Micro Focus müşterisiyseniz, mikro odak temsilcinizle iletişime geçin. Aksi takdirde, [bir deneme isteyin](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 
-- [Enterprise Server ve Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/#")belgelerini alın.
+-   [Enterprise Server ve Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/ed50/)belgelerini alın.
 
-> [!NOTE]
-> Azure VM 'lerine erişimi denetleyebilmeniz için bir siteden siteye sanal özel ağ (VPN) tüneli veya bir atlama kutusu kurmak en iyi uygulamadır.
+    > [!Note]
+    > Sanal makinelerinize erişimi denetlemek için birkaç seçenek vardır:
+    > -   En iyi uygulama, [Azure](https://azure.microsoft.com/services/azure-bastion/)Savunma kurulumu kullanmaktır.
+    > -   [Siteden siteye sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) tüneli.
+    > -   Bir sıçrama kutusu VM 'si.
 
 ## <a name="install-enterprise-server"></a>Enterprise Server’ı yükleme
 
-1. Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver**. Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
+1.  Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver**. Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
 
-2. Sanal makine oluşturur. Azure Marketi 'nden istediğiniz sanal makineyi ve işletim sistemini seçin. Önerilen bir kurulum aşağıda verilmiştir:
+2.  Sanal makine oluşturur. Azure Marketi 'nden istediğiniz sanal makineyi ve işletim sistemini seçin. Önerilen bir kurulum aşağıda verilmiştir:
 
-    - **Kurumsal Sunucu**: Windows Server 2016 ve SQL Server 2017 yüklü ES2 v3 VM (2 vCPU ve 16 GB bellek ile) seçeneğini belirleyin. Bu görüntü, Azure Marketi 'nden edinilebilir. Enterprise Server, Azure SQL veritabanı 'nı da kullanabilir.
+    -   **Kurumsal Sunucu:** Windows Server 2016 ve SQL Server 2017 yüklü **ES2 v3 VM** (2 vCPU ve 16 GB bellek ile) seçeneğini belirleyin. Bu görüntü, Azure Marketi 'nden edinilebilir. Enterprise Server, Azure SQL veritabanı 'nı da kullanabilir.
 
-    - **Enterprise Developer**: Windows 10 ve Visual Studio yüklü B2ms VM 'yi (2 vCPU ve 8 GB bellekle) seçin. Bu görüntü, Azure Marketi 'nden edinilebilir.
+    -   **Kurumsal Geliştirici:** Windows 10 ve Visual Studio yüklü **B2MS VM** 'yi (2 vCPU ve 8 GB bellekle) seçin. Bu görüntü, Azure Marketi 'nden edinilebilir.
 
-3. **Temel bilgiler** bölümünde, Kullanıcı adınızı ve parolanızı girin. VM 'Ler için kullanmak istediğiniz **aboneliği** ve **konumu/bölgeyi** seçin. Kaynak grubu için **Rgmikro Focusentserver** ' ı seçin.
+3.  **Temel bilgiler** bölümünde, Kullanıcı adınızı ve parolanızı girin. VM 'Ler için kullanmak istediğiniz **aboneliği** ve **konumu/bölgeyi** seçin. Kaynak grubu için **Rgmikro Focusentserver** ' ı seçin.
 
-4. Her iki VM 'yi aynı sanal ağa yerleştirin, böylece birbirleriyle iletişim kurabilir.
+4.  Her iki VM 'yi aynı sanal ağa yerleştirin, böylece birbirleriyle iletişim kurabilir.
 
-5. Geri kalan ayarlar için varsayılan değerleri kabul edin. Bu VM 'lerin Yöneticisi için oluşturduğunuz Kullanıcı adını ve parolayı unutmayın.
+5.  Geri kalan ayarlar için varsayılan değerleri kabul edin. Bu VM 'lerin Yöneticisi için oluşturduğunuz Kullanıcı adını ve parolayı unutmayın.
 
-6. Sanal makineler oluşturulduğunda, HTTP için 9003, 86 ve 80 gelen bağlantı noktalarını ve Enterprise Server makinesinde RDP için 3389 ve geliştirici makinesinde 3389 ' i açın.
+6.  Sanal makineler oluşturulduğunda, **3389** HTTP için **9003, 86** ve **80** gelen bağlantı noktalarını, Enterprise Server makinesinde Uzak Masaüstü Protokolü (RDP) ve geliştirici makinesinde **3389** ' yi açın.
 
-7. Enterprise Server sanal makinesinde oturum açmak için, Azure portal ' de ES2 v3 VM ' yi seçin. **Genel bakış** bölümüne gidin ve bir RDP oturumu başlatmak için **Bağlan** ' ı seçin. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
+7.  Enterprise Server sanal makinesinde oturum açmak için, Azure portal ' de ES2 v3 VM ' yi seçin. **Genel bakış** bölümüne gidin ve bir RDP oturumu başlatmak için **Bağlan** ' ı seçin. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
 
-8. RDP oturumunda, aşağıdaki iki dosyayı yükleyin. Windows 'u kullandığınız için dosyaları RDP oturumuna sürükleyip bırakabilirsiniz:
+8.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin. Windows 'u kullandığınız için dosyaları RDP oturumuna sürükleyip bırakabilirsiniz:
 
-    - **es\_40. exe**, kurumsal sunucu yükleme dosyası.
+    -   ** \_50.exe**, kurumsal sunucu yükleme dosyası.
 
-    - **mflik**, ilgili lisans dosyası — kurumsal sunucu bu olmadan yüklenmez.
+    -   **mflik**, ilgili lisans dosyası — kurumsal sunucu bu olmadan yüklenmez.
 
-9. Yüklemeyi başlatmak için dosyaya çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin.
+9.  Yüklemeyi başlatmak için dosyaya çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin.
 
-     ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/01-enterprise-server.png)
+    ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/install-image-1.png)
 
-     Kurulum tamamlandığında, aşağıdaki ileti görünür:
+    Kurulum tamamlandığında, aşağıdaki ileti görünür:
 
-     ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/02-enterprise-server.png)
+    ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/install-image-2.png)
 
-### <a name="check-for-updates"></a>Güncelleştirmeleri denetle
+ ### <a name="check-for-updates"></a>Güncelleştirmeleri denetle
 
-Yükleme sonrasında, Microsoft C++ Redistributable ve .NET Framework gibi birçok önkoşul, Enterprise Server ile birlikte yüklendiğinden, ek güncelleştirme olup olmadığını denetlediğinizden emin olun.
+Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework gibi bir dizi önkoşul olarak Enterprise Server ile birlikte yüklü olan ek güncelleştirmeleri denetlediğinizden emin olun.
 
 ### <a name="upload-the-license"></a>Lisansı karşıya yükleyin
 
-1. Micro Focus lisans yönetimini başlatın.
+1.  Micro Focus lisans yönetimini başlatın.
 
-2. **Micro Focus License Manager** \> **lisans yönetimini** **Başlat** \> ' a tıklayın ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
+2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
 
-     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/03-enterprise-server.png)
+    ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-3.png)
 
-3. Enterprise Server 'ın yüklendiğini doğrulayın. Bu URL 'YI <http://localhost:86/> kullanarak bir tarayıcıdan Enterprise Server yönetim sitesini başlatmayı deneyin. Kurumsal sunucu yönetim sayfası gösterildiği gibi görüntülenir.
+3.  Enterprise Server 'ın yüklendiğini doğrulayın. Şu URL 'YI kullanarak bir tarayıcıdan Enterprise Server yönetim sitesini başlatmayı deneyin: <http://localhost:86/> . Kurumsal sunucu yönetim sayfası gösterildiği gibi görüntülenir.
 
-     ![Kurumsal sunucu yönetim sayfası](media/04-enterprise-admin.png)
+    ![Kurumsal sunucu yönetim sayfası](media/install-image-4.png)
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Geliştirici makinesine Enterprise Developer 'ı yükler
 
-1. Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver**) seçin ve ardından Geliştirici görüntüsünü seçin.
+1.  Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver**) seçin ve ardından Geliştirici görüntüsünü seçin.
 
-2. Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan**' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
+2.  Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan**' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
 
-3. RDP oturumunda, aşağıdaki iki dosyayı yükleyin (isterseniz sürükleyip bırakın):
+3.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin (isterseniz sürükleyip bırakın):
 
-    - **edvs2017. exe**, kurumsal sunucu yükleme dosyası.
+    -   **edvs2017.exe**, kurumsal sunucu yükleme dosyası.
 
-    - **mflik**, karşılık gelen lisans dosyası (Kurumsal Geliştirici bu olmadan yüklenmez).
+    -   **mflik**, karşılık gelen lisans dosyası (Kurumsal Geliştirici bu olmadan yüklenmez).
 
-4. Yüklemeyi başlatmak için **edvs2017. exe** dosyasına çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin. İsterseniz, büyük olasılıkla ihtiyaç duyacağınız bu Terminal öykünücüsünü yüklemek için **Rumba 9,5 'Yi yükleyebilirsiniz** .
+4.  Yüklemeyi başlatmak için **edvs2017.exe** dosyasına çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin. İsterseniz, büyük olasılıkla ihtiyaç duyacağınız bu Terminal öykünücüsünü yüklemek için **Rumba 9,5 'Yi yükleyebilirsiniz** .
 
-     ![Visual Studio 2017 için Micro Focus Enterprise Developer kurulum iletişim kutusu](media/04-enterprise-server.png)
+    ![Visual Studio 2017 için Micro Focus Enterprise Developer kurulum iletişim kutusu](media/install-image-5.png)
 
-5. Kurulum tamamlandıktan sonra aşağıdaki ileti görünür:
+5.  Kurulum tamamlandıktan sonra aşağıdaki ileti görünür:
 
-     ![Kurulum başarılı iletisi](media/05-enterprise-server.png)
+    ![Kurulum başarılı iletisi](media/install-image-6.png)
 
-6. Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Micro Focus License Manager** \> **lisans yönetimini** **Başlat** \> ' ı seçin ve sonra da **Install** sekmesine tıklayın.
+6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
 
-7. Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
+7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, daha önce VM 'ye yüklenen **mflik** dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
 
-     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/07-enterprise-server.png)
+    ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-7.png)
 
 Enterprise Developer yüklendiğinde, Azure 'da bir Micro Focus geliştirme ve test ortamı dağıtımınız tamamlanmıştır!
 
-## <a name="next-steps"></a>Sonraki adımlar
+**Sonraki adımlar**
 
-- [Banka demo uygulamasını ayarlama](./demo.md)
-- [Docker kapsayıcılarında kurumsal sunucu Çalıştır](./run-enterprise-server-container.md)
-- [Ana bilgisayar uygulaması geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [BankDemo uygulamasını ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+
+-   [Docker kapsayıcılarında kurumsal sunucu Çalıştır](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+
+-   [Ana bilgisayar uygulaması geçişi](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

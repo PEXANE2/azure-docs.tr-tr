@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561036"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -22,11 +22,11 @@ Azure Blob depolama için sabit depolama, kullanıcıların iş açısından kri
 
 Yasal tutmaları ayarlama ve temizleme veya Azure portal, PowerShell veya Azure CLı kullanarak zaman tabanlı bir bekletme ilkesi oluşturma hakkında bilgi için bkz. [BLOB depolama için imlebilirlik Ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md).
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Sabit BLOB depolama hakkında
 
-Sabit depolama, sağlık kurumlarının, mali kurumların ve ilgili&mdash;sektörlerin özellikle de aracı&mdash;dağıtıcı kuruluşların verileri güvenli bir şekilde depolamasına yardımcı olur Sabit depolama Ayrıca, değişiklik veya silme açısından kritik verileri korumak için herhangi bir senaryoda yararlanılabilir olabilir.
+Sabit depolama, sağlık kurumlarının, mali kurumların ve ilgili sektörlerin &mdash; özellikle de aracı dağıtıcı kuruluşların &mdash; verileri güvenli bir şekilde depolamasına yardımcı olur Sabit depolama Ayrıca, değişiklik veya silme açısından kritik verileri korumak için herhangi bir senaryoda yararlanılabilir olabilir.
 
 Tipik kullanım alanları şunlardır:
 
@@ -78,15 +78,15 @@ Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için iyileştirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Yalnızca zaman tabanlı bekletme ilkeleri, daha fazla `allowProtectedAppendWrites` koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
+Yalnızca zaman tabanlı bekletme ilkeleri `allowProtectedAppendWrites` , daha fazla koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
 
 Bu ayar, zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ekleme Blobları, *etkin* saklama dönemi süresince hala sabit durumda kalır. Yeni veriler ekleme Blobun ilk oluşturulduktan sonra eklenebileceği için, bekletme döneminin nasıl belirlendiği küçük bir farklılık vardır. Etkin saklama, ekleme blobunun **son değiştirilme zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farktır. Benzer şekilde, saklama aralığı genişletildiğinde, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
 
-Örneğin, bir kullanıcının etkin bir zaman tabanlı bekletme ilkesi oluşturduğunu ve 90 günlük bekletme `allowProtectedAppendWrites` aralığına sahip olduğunu varsayalım. Bir Append blobu, _logblob1_, bugün kapsayıcıda oluşturulur, yeni Günlükler sonraki 10 gün boyunca ekleme blobuna eklenmeye devam eder; Bu nedenle, _logblob1_ için geçerli saklama süresi bugünden itibaren 100 gündür (son append + 90 gün saati).
+Örneğin, bir kullanıcının etkin bir zaman tabanlı bekletme ilkesi oluşturduğunu `allowProtectedAppendWrites` ve 90 günlük bekletme aralığına sahip olduğunu varsayalım. Bir Append blobu, _logblob1_, bugün kapsayıcıda oluşturulur, yeni Günlükler sonraki 10 gün boyunca ekleme blobuna eklenmeye devam eder; Bu nedenle, _logblob1_ için geçerli saklama süresi bugünden itibaren 100 gündür (son append + 90 gün saati).
 
 Kilitsiz zaman tabanlı bekletme ilkeleri, `allowProtectedAppendWrites` ayarın etkin ve devre dışı olarak herhangi bir zamanda etkinleştirilmesini sağlar. Zaman tabanlı bekletme ilkesi kilitlendiğinde, `allowProtectedAppendWrites` ayar değiştirilemez.
 
-Yasal saklama ilkeleri etkinleştirilemez `allowProtectedAppendWrites` ve geçerli saklama, ' allowProtectedAppendWrites ' özelliğini null olarak tutacaktır. Etkin olan `allowProtectedAppendWrites` bir zaman tabanlı bekletme ilkesine geçerli bir saklama uygulanmışsa, yasal tutmaya yükseltilmemiş kadar *Appendblock* API 'si başarısız olur.
+Yasal saklama ilkeleri etkinleştirilemez `allowProtectedAppendWrites` ve geçerli saklama, ' allowProtectedAppendWrites ' özelliğini null olarak tutacaktır. Etkin olan bir zaman tabanlı bekletme ilkesine geçerli bir saklama uygulanmışsa `allowProtectedAppendWrites` , yasal tutmaya yükseltilmemiş kadar *Appendblock* API 'si başarısız olur.
 
 ## <a name="legal-holds"></a>Yasal tutma
 
@@ -112,7 +112,7 @@ Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmı�
 
 <sup>1</sup> blob hizmeti bu işlemlerin bir kez yeni blob oluşturmasına izin verir. Sabit bir kapsayıcıda var olan bir blob yolundaki tüm sonraki üzerine yazma işlemlerine izin verilmez.
 
-<sup>2</sup> Append bloğuna yalnızca `allowProtectedAppendWrites` özelliği etkinleştirilmiş zaman tabanlı bekletme ilkeleri için izin verilir. Daha fazla bilgi için, [korumalı ekleme Blobları yazmaları Izin ver](#allow-protected-append-blobs-writes) bölümüne bakın.
+<sup>2</sup> Append bloğuna yalnızca özelliği etkinleştirilmiş zaman tabanlı bekletme ilkeleri için izin verilir `allowProtectedAppendWrites` . Daha fazla bilgi için, [korumalı ekleme Blobları yazmaları Izin ver](#allow-protected-append-blobs-writes) bölümüne bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

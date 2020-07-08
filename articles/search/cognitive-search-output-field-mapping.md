@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557267"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI zenginleştirilmiş alanları aranabilir bir dizinle eşleme
 
@@ -25,10 +25,10 @@ Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş 
 > Son zamanlarda çıkış alanı eşlemelerinde işlevleri eşleme işlevlerini etkinleştirdik. Eşleme işlevleri hakkında daha fazla bilgi için bkz. [alan eşleme işlevleri](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanma
-Alanları eşlemek için, Dizin `outputFieldMappings` Oluşturucu tanımınıza aşağıda gösterildiği gibi ekleyin:
+Alanları eşlemek için, `outputFieldMappings` Dizin Oluşturucu tanımınıza aşağıda gösterildiği gibi ekleyin:
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -74,11 +74,11 @@ Her bir çıkış alanı eşlemesi için, zenginleştirilmiş belge ağacındaki
 
 ## <a name="flattening-information-from-complex-types"></a>Karmaşık türlerden bilgileri düzleştirme 
 
-Bir sourceFieldName içindeki yol bir öğeyi veya birden çok öğeyi temsil edebilir. Yukarıdaki örnekte, ```/document/content/sentiment``` tek bir sayısal değeri temsil ederken ```/document/content/organizations/*/description``` , çeşitli kuruluş açıklamalarını temsil eder. 
+Bir sourceFieldName içindeki yol bir öğeyi veya birden çok öğeyi temsil edebilir. Yukarıdaki örnekte, ```/document/content/sentiment``` tek bir sayısal değeri temsil ederken, ```/document/content/organizations/*/description``` çeşitli kuruluş açıklamalarını temsil eder. 
 
 Çeşitli öğelerin olduğu durumlarda, öğelerin her birini içeren bir dizi içinde "düzleştirilmez". 
 
-Daha fazla iyal, ```/document/content/organizations/*/description``` Örneğin, *açıklamalar* alanındaki veriler, Dizin oluşturulmadan önce düz bir açıklama dizisi gibi görünür:
+Daha fazla ```/document/content/organizations/*/description``` iyal, örneğin, *açıklamalar* alanındaki veriler, Dizin oluşturulmadan önce düz bir açıklama dizisi gibi görünür:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
@@ -117,7 +117,7 @@ Bu önemli bir ilkedir, bu nedenle başka bir örnek sağlıyoruz. Zenginleştir
 
 Burada, dizinlerinizin, varlıkların adlarından her birini depolamak istediğiniz türdeki koleksiyon (EDM. String) ' didenler ' adlı bir alana sahip olduğunu varsayalım. 
 
-Bu, "\*" simgesi kullanılarak kolayca yapılabilir:
+Bu, "" simgesi kullanılarak kolayca yapılabilir \* :
 
 ```json
     "outputFieldMappings": [

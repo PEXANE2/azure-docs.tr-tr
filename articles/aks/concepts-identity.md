@@ -4,12 +4,12 @@ description: Azure Active Directory tümleştirme, Kubernetes rol tabanlı eriş
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558171"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -67,6 +67,9 @@ Roller, kaynaklara izinler vermek üzere tanımlandıktan sonra, bu Kubernetes R
 Rol bağlamaları, belirli bir ad alanı için roller atamak üzere kullanılır. Bu yaklaşım, tek bir AKS kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. Rolleri tüm küme genelinde veya belirli bir ad alanı dışındaki küme kaynaklarına bağlamanız gerekiyorsa, *Clusterrolebindings*kullanabilirsiniz.
 
 ClusterRoleBinding, rolleri kullanıcılara bağlamanın aynı şekilde çalışacaktır, ancak belirli bir ad alanı değil tüm küme genelinde kaynaklara uygulanabilir. Bu yaklaşım, yöneticilerin veya Destek mühendislerinin AKS kümesindeki tüm kaynaklara erişmesine izin vermenizi sağlar.
+
+> [!NOTE]
+> Microsoft desteği tarafından alınan herhangi bir küme eylemi, adın yerleşik bir Kubernetes ["düzenleme"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) rolü altında Kullanıcı onayı ile yapılır `aks-support-rolebinding` . Bu rol ile, küme sorunlarını gidermek ve tanılamak için küme yapılandırma ve kaynaklarını düzenleme özelliği etkinleştirilmiş olsa da rol, izinleri değiştiremez ve roller ya da rol bağlamaları oluşturamaz. Rol erişimi yalnızca, tam zamanında (JıT) erişime sahip etkin destek biletleri altında etkinleştirilir. [Aks destek ilkeleri](support-policies.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

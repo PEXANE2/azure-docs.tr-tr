@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e944c25f39903f8a78a949206bc8037f34508698
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555056"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Uygulama Ara Sunucusu uygulama hatalarını ayıklama 
 
@@ -39,7 +39,7 @@ Bu akış çizelgesi, uygulamaya bağlanma ile ilgili daha yaygın sorunlardan b
 
 ![Bir uygulamada hata ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Eylem | Description | 
+| Adım | Eylem | Açıklama |
 |---------|---------|---------|
 |1 | Bir tarayıcı açın, uygulamaya erişin ve kimlik bilgilerinizi girin | Uygulamada oturum açmak için kimlik bilgilerinizi kullanmayı deneyin ve [Bu şirket uygulamasına erişilemediği](application-proxy-sign-in-bad-gateway-timeout-error.md)gibi kullanıcı ile ilgili herhangi bir hata olup olmadığını denetleyin. |
 |2 | Uygulamaya Kullanıcı atamasını doğrulama | Kullanıcı hesabınızın, kurumsal ağın içinden uygulamaya erişim izni olduğundan emin olun ve ardından [uygulamayı test](application-proxy-add-on-premises-application.md#test-the-application)etme bölümündeki adımları izleyerek uygulamada oturum açmayı sınayın. Oturum açma sorunları devam ederse bkz. [oturum açma hatalarıyla ilgili sorun giderme](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |

@@ -8,14 +8,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560144"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -42,24 +42,30 @@ Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçü
 
 ![Çalışma kitabı ölçümleri arabiriminin ekran görüntüsü](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Azure Kaynak Grafiği 
+## <a name="azure-resource-graph"></a>Azure Kaynak Grafiği
 
 Çalışma kitapları, Azure Kaynak Grafiği (ARG) kullanarak kaynakları ve bunların meta verilerini sorgulamayı destekler. Bu işlevsellik öncelikle raporlar için özel sorgu kapsamları oluşturmak için kullanılır. Kaynak kapsamı, bağımsız değişken tarafından desteklenen bir KQL-alt kümesi ile ifade edilir ve genellikle yaygın kullanım örnekleri için yeterlidir.
 
 Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure Kaynak Grafiği ' ni seçmek üzere sorgu türü açılan listesini kullanın ve hedeflenecek abonelikleri seçin. İlgi çekici bir kaynak alt kümesi seçen ARG KQL-alt kümesini eklemek için sorgu denetimini kullanın.
 
-
 ![Azure Kaynak Grafiği KQL sorgusunun ekran görüntüsü](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Uyarılar (Önizleme)
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Çalışma kitapları, kullanıcıların kaynaklarıyla ilgili etkin uyarıları görselleştirmesine olanak tanır. Bu özellik bildirim verileri (uyarı) ve tanılama bilgilerini (ölçümler, Günlükler) tek bir raporda oluşturan raporların oluşturulmasına olanak sağlar. Bu bilgiler ayrıca, bu veri kaynakları genelinde öngörüleri birleştiren zengin raporlar oluşturmak için birlikte birleştirilebilir.
+Çalışma kitabı Azure Resource Manager REST işlemlerini destekler. Bu, kendi yetkilendirme üst bilgi belirtecinizi sağlamaya gerek kalmadan management.azure.com uç noktasını sorgulama olanağına sahip olmak için izin verir.
 
-Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için sorgu türü açılan listesini kullanarak Uyarılar ' ı seçin ve hedeflenecek abonelikleri, kaynak gruplarını veya kaynakları seçin. Analitik gereksinimleriniz için uyarıların ilginç bir alt kümesini seçmek üzere uyarı filtresi açılan listelerini kullanın.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure Resource Manager seçmek için veri kaynağı açılır listesini kullanın. Http yöntemi, URL yolu, üst bilgiler, URL parametreleri ve/veya gövde gibi uygun parametreleri sağlayın.
 
-![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/alerts.png)
+> [!NOTE]
+> Yalnızca `GET` , `POST` ve `HEAD` işlemleri şu anda destekleniyor.
 
-## <a name="workload-health-preview"></a>İş yükü sistem durumu (Önizleme)
+## <a name="azure-data-explorer"></a>Azure Veri Gezgini
+
+Artık çalışma kitapları, güçlü [kusto](https://docs.microsoft.com/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
+
+![Kusto sorgu penceresinin ekran görüntüsü](./media/workbooks-overview/data-explorer.png)
+
+## <a name="workload-health"></a>İş yükü sistem durumu
 
 Azure Izleyici, Windows veya Linux konuk işletim sistemlerinin kullanılabilirliğini ve performansını önceden izleyerek izleyen işlevlere sahiptir. Azure Izleyici, temel bileşenleri ve bunların ilişkilerini, bu bileşenlerin sistem durumunu ölçme ölçütlerini ve sağlıksız bir durum algılandığında hangi bileşenlerin sizi uyarmasını sağlar. Çalışma kitapları, kullanıcıların zengin etkileşimli raporlar oluşturmak için bu bilgileri kullanmasına izin verir.
 
@@ -67,7 +73,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, **sor
 
 ![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure Kaynak durumu 
+## <a name="azure-resource-health"></a>Azure Kaynak durumu
 
 Çalışma kitapları, Azure Kaynak durumu almayı ve zengin, etkileşimli sistem durumu raporları oluşturmak için diğer veri kaynaklarıyla birleştirmeyi destekler
 
@@ -75,13 +81,37 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için **sorg
 
 ![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure Veri Gezgini (Önizleme)
+## <a name="json"></a>JSON
 
-Artık çalışma kitapları, güçlü [kusto](https://docs.microsoft.com/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
+JSON sağlayıcısı, statik JSON içeriğinden bir sorgu sonucu oluşturmanıza olanak sağlar. Statik değerlerin açılan menü parametreleri oluşturmak için parametrelerde en yaygın olarak kullanılır. Basit JSON dizileri veya nesneleri otomatik olarak kılavuz satırlarına ve sütunlara dönüştürülür.  Daha özel davranışlar için, sütunları yapılandırmak için sonuçlar sekmesini ve JSONPath ayarlarını kullanabilirsiniz.
 
-![Kusto sorgu penceresinin ekran görüntüsü](./media/workbooks-overview/data-explorer.png)
+## <a name="alerts-preview"></a>Uyarılar (Önizleme)
+
+> [!NOTE]
+> Azure uyarı bilgilerini sorgulamak için önerilen yol, tabloyu sorgulayarak [Azure Kaynak Grafiği](#azure-resource-graph) veri kaynağını kullanmaktır `AlertsManagementResources` .
+>
+> Örnekler için bkz. [Azure Kaynak Grafiği tablosu başvurusu](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)veya [Uyarılar şablonu](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
+>
+> Yazarlar, bağımsız değişken kullanmaya geçiş yaparken, uyarılar veri kaynağı bir süre için kullanılabilir kalır. Bu veri kaynağının şablonlarda kullanılması önerilmez. 
+
+Çalışma kitapları, kullanıcıların kaynaklarıyla ilgili etkin uyarıları görselleştirmesine olanak tanır. Sınırlamalar: uyarılar veri kaynağı, kaynakları sorgulamak için abonelik için okuma erişimi gerektirir ve daha yeni uyarı türlerini gösteremeyebilir. 
+
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak Uyarılar ' ı _(Önizleme)_ seçin ve hedeflenecek abonelikleri, kaynak gruplarını veya kaynakları seçin. Analitik gereksinimleriniz için uyarıların ilginç bir alt kümesini seçmek üzere uyarı filtresi açılan listelerini kullanın.
+
+## <a name="custom-endpoint"></a>Özel uç nokta
+
+Çalışma kitapları, herhangi bir dış kaynaktan veri almayı destekler. Verileriniz Azure dışında yaşar, bu veri kaynağı türünü kullanarak çalışma kitaplarına taşıyabilirsiniz.
+
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak _Özel uç nokta_' ı seçin. ,, `Http method` `url` `headers` , `url parameters` Ve/ `body` gibi uygun parametreleri sağlayın. Veri kaynağınızın [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 'yi desteklediğinden emin olun, aksi takdirde istek başarısız olur.
+
+Şablonları kullanırken güvenilmeyen konaklara otomatik olarak çağrı yapmayı önlemek için, kullanıcının kullanılan konakları güvenilir olarak işaretlemesi gerekir. Bu işlem, _güvenilir değil Ekle_ düğmesine tıklayarak veya çalışma kitabı ayarları 'nda güvenilir bir ana bilgisayar olarak eklenerek yapılabilir. Bu ayarlar, Web çalışanları ile ındexdb 'yi destekleyen tarayıcılara kaydedilir, burada daha fazla bilgi [bulabilirsiniz](https://caniuse.com/#feat=indexeddb).
+
+> [!NOTE]
+> `headers` `parameters` `body` `url` Tüm çalışma kitabı kullanıcıları tarafından görülebilmesi için alanlardan herhangi bir gizli dizi (,,,) eklemeyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
 * Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
+* [Log Analytics sorgu iyileştirme ipuçları](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* 

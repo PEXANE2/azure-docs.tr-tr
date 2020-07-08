@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554344"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -36,7 +36,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | hizmet | global | 1-50 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | hizmet | global | 1-50 | Alfasayısal ve kısa çizgi.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
 > | hizmet/API 'ler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/ekler | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -542,7 +542,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

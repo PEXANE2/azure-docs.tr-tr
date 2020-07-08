@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e86721d9f8644adabd1e01920c432217354d654
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76905650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556221"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. belgeleri dizine ekleme
 
 > [!IMPORTANT] 
-> Azure Data Lake Storage 2. desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak önizlemelere erişim isteğinde bulabilirsiniz. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Azure Data Lake Storage 2. desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak önizlemelere erişim isteğinde bulabilirsiniz. [REST API sürüm 2020-06-30-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 
 Bir Azure depolama hesabı ayarlarken, [hiyerarşik ad alanını](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)etkinleştirme seçeneğiniz vardır. Bu, bir hesaptaki içerik koleksiyonunun bir Dizin hiyerarşisinde ve iç içe yerleştirilmiş alt dizinlerde düzenlenmesine olanak sağlar. Hiyerarşik ad alanını etkinleştirerek [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)etkinleştirirsiniz.
@@ -38,7 +38,7 @@ Data Lake Storage 2. içeriği indekslemek için gerçekleştirmeniz gereken bir
 
 Önizlemenin kayıt işleminin başarılı olduğunu belirten bir onay aldıktan sonra, dizin oluşturma işlem hattını oluşturmaya hazırsınız demektir.
 
-Data Lake Storage 2. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md)kullanarak içerik ve meta verileri dizinleyebilir. Şu anda portal veya .NET SDK desteği yok.
+Data Lake Storage 2. [REST API sürüm 2020-06-30-önizleme](search-api-preview.md)kullanarak içerik ve meta verileri dizinleyebilir. Şu anda portal veya .NET SDK desteği yok.
 
 Data Lake Storage 2. içerik dizini oluşturma, Azure Blob depolamada dizin oluşturma içeriğiyle aynıdır. Data Lake Storage 2. veri kaynağını, dizini ve Dizin oluşturucuyu ayarlamayı öğrenmek için Azure [bilişsel arama Ile Azure Blob depolamada belgelerin nasıl dizinlebileceğini](search-howto-indexing-azure-blob-storage.md)inceleyin. BLOB depolama makalesinde hangi belge biçimlerinin desteklendiği, hangi blob meta veri özelliklerinin ayıklandığı, artımlı dizin oluşturma ve daha fazlası hakkında bilgiler de sağlanmaktadır. Bu bilgiler Data Lake Storage 2. için aynı olacaktır.
 
@@ -50,7 +50,7 @@ Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik
 
 ## <a name="change-detection"></a>Değişiklik algılama
 
-Data Lake Storage 2. Indexer değişiklik algılamayı destekler. Bu, dizin oluşturucunun onu çalıştırması durumunda yalnızca blob 'un zaman damgasıyla belirlendiği şekilde değiştirilen Blobları `LastModified` yeniden dizinleyen anlamına gelir.
+Data Lake Storage 2. Indexer değişiklik algılamayı destekler. Bu, dizin oluşturucunun onu çalıştırması durumunda yalnızca blob 'un zaman damgasıyla belirlendiği şekilde değiştirilen Blobları yeniden dizinleyen anlamına gelir `LastModified` .
 
 > [!NOTE] 
-> Data Lake Storage 2. dizinlerin yeniden adlandırılmasına izin verir. Bir dizin yeniden adlandırıldığında, bu dizindeki Blobların zaman damgaları güncellenmez. Sonuç olarak, Dizin Oluşturucu bu Blobları yeniden kullanmaz. Bir dizin yeniden adlandırıldıktan sonra dizin yeniden Dizinlenecek olan Blobların, artık yeni URL 'Ler olduğundan, dizin oluşturucunun ileride çalıştırılan bir çalışma sırasında yeniden dizine `LastModified` alınmasını bilmesi için, dizindeki tüm Bloblar için zaman damgasını güncelleştirmeniz gerekir.
+> Data Lake Storage 2. dizinlerin yeniden adlandırılmasına izin verir. Bir dizin yeniden adlandırıldığında, bu dizindeki Blobların zaman damgaları güncellenmez. Sonuç olarak, Dizin Oluşturucu bu Blobları yeniden kullanmaz. Bir dizin yeniden adlandırıldıktan sonra dizin yeniden Dizinlenecek olan Blobların, artık yeni URL 'Ler olduğundan, Dizin `LastModified` oluşturucunun ileride çalıştırılan bir çalışma sırasında yeniden dizine alınmasını bilmesi için, dizindeki tüm Bloblar için zaman damgasını güncelleştirmeniz gerekir.

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555037"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Uygulama Ara Sunucusu bağlayıcı hatalarını ayıklama 
 
@@ -40,7 +40,7 @@ Bu akış çizelgesi, daha yaygın bağlayıcı sorunlarından bazılarının ha
 
 ![Bağlayıcının hatalarını ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Eylem | Description | 
+| Adım | Eylem | Açıklama |
 |---------|---------|---------|
 |1 | Uygulamaya atanan bağlayıcı grubunu bulma | Büyük olasılıkla birden çok sunucuya yüklenmiş bir bağlayıcıya sahipsiniz, bu durumda bağlayıcılar [bağlayıcı gruplarına atanmalıdır](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Bağlayıcı grupları hakkında daha fazla bilgi edinmek için bkz. [bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama](application-proxy-connector-groups.md). |
 |2 | Bağlayıcıyı yükleyip bir grup atayın | Yüklü bir Bağlayıcınız yoksa, bkz. [bağlayıcı yükleme ve kaydetme](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Bağlayıcıyı yükleme konusunda sorun yaşıyorsanız, bkz. [bağlayıcıyı yükleme sorunu](application-proxy-connector-installation-problem.md).<br></br> Bağlayıcı bir gruba atanmamışsa, bkz. [bağlayıcıyı bir gruba atama](application-proxy-connector-groups.md#create-connector-groups).<br></br>Uygulama bir bağlayıcı grubuna atanmamışsa, bkz. [uygulamayı bir bağlayıcı grubuna atama](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: e06cf07809d3eca208fc18f4ee6022538400d315
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7b49752eeca6a3600830d71a029b6d93c9390b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560052"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Azure Data Box Disk disk kilit açma sorunlarını giderme
 
@@ -51,7 +51,7 @@ Bu bölümde, veri kopyalama için bir Windows istemcisi kullanılırken Data Bo
 
 BitLocker iletişim kutusunda parolayı kullandınız ve BitLocker 'ın kilit açma sürücüleri iletişim kutusu aracılığıyla diskin kilidini açmaya çalışıyorsunuz. Bu çalışmaz.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Data Box disklerinin kilidini açmak için Data Box Disk unlock aracını kullanmanız ve parolayı Azure portal sağlamanız gerekir. Daha fazla bilgi için bkz. [öğretici: Unpack, Connect ve unlock Azure Data Box disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
@@ -65,7 +65,7 @@ Hata günlüğünde aşağıdaki hatayı görebilir ve bazı birimleri kilitleyi
  
 Bu, büyük olasılıkla Windows istemciniz üzerinde Windows PowerShell 'in uygun sürümü eksik olduğunu gösterir.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 [Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) 'yi yükleyip işlemi yeniden deneyin.
  

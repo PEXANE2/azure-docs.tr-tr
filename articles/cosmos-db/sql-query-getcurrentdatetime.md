@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555890"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  ISO 8601 dizesi olarak geçerli UTC (Eşgüdümlü Evrensel Saat) Tarih ve saati döndürür.
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
@@ -25,9 +25,9 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Dönüş türleri
   
-  Şu biçimdeki `YYYY-MM-DDThh:mm:ss.fffffffZ` geçerli UTC Tarih ve saat ISO 8601 dize değerini döndürür:
+  Şu biçimdeki geçerli UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |||
+  |Biçim|Açıklama|
   |-|-|
   |YYYY|dört basamaklı yıl|
   |MM|iki basamaklı ay (01 = Ocak, vb.)|

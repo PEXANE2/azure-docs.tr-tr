@@ -1,6 +1,6 @@
 ---
 title: Windows Güvenliği olay verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Windows Güvenliği olay verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Windows sistemlerinizdeki tüm güvenlik olaylarını Azure Sentinel çalışma alanınıza akışa almak için güvenlik olayları bağlayıcısını kullanmayı öğrenin. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 30055ba1befc68d015e3e3162d8db11a2916f3d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555717"
 ---
 # <a name="connect-windows-security-events"></a>Windows güvenlik olaylarını bağlama 
 
@@ -81,7 +81,7 @@ Azure Sentinel 'de Windows Güvenlik olaylarınızı toplamak için:
 
 1. **Güncelleştir**’e tıklayın.
 
-1. Windows güvenlik olayları için Log Analytics ilgili şemayı kullanmak için, sorgu penceresine yazın `SecurityEvent` .
+1. Windows güvenlik olayları için Log Analytics ilgili şemayı kullanmak için, `SecurityEvent` sorgu penceresine yazın.
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 

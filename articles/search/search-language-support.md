@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560844"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Bilişsel Arama birden çok dil için dizin oluşturma
 
@@ -44,7 +44,7 @@ Bir alan için dil Çözümleyicisi seçildikten sonra, bu alan için her bir di
 
 Bir sorgu veren aracının dili biliniyorsa, bir arama isteği, **Searchfields** sorgu parametresi kullanılarak belirli bir alana kapsam yapılabilir. Aşağıdaki sorgu yalnızca Lehçe 'daki açıklamaya göre verilecek:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 Yukarıdaki gibi bir sorguya benzer bir sorgu yapıştırmak için [**Arama Gezgini**](search-explorer.md) 'ni kullanarak portalınızın dizinini sorgulayabilirsiniz.
 
@@ -61,7 +61,7 @@ Bazen bir sorguyu veren aracının dili, bu durumda sorgunun tüm alanlara aynı
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
