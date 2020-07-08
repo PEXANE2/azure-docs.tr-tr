@@ -3,12 +3,12 @@ title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: d8e9617fca38ca2b1f16ba2c6c1599e3663347e7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445194"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056693"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -16,7 +16,7 @@ Karmaşık çözümleri dağıtmak için şablonunuzu birçok ilgili şablona b�
 
 Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve korunması daha kolay olur. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Bağlantılı şablonlar, gelişmiş senaryolar için çözümü hedeflenen bileşenlere bölebilir. Bu şablonları diğer senaryolar için kolayca yeniden kullanabilirsiniz.
 
-Öğretici için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](template-tutorial-create-linked-templates.md).
+Öğretici için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Bağlantılı veya iç içe şablonlar için yalnızca [artımlı](deployment-modes.md) Dağıtım modunu kullanabilirsiniz.
@@ -793,7 +793,7 @@ Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](template-tutorial-create-linked-templates.md).
+* Öğreticiye gitmek için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](./deployment-tutorial-linked-template.md).
 * Kaynaklarınızın dağıtım sırasını tanımlama hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](define-resource-dependency.md).
 * Tek bir kaynağı tanımlama ve birçok örneğini oluşturma hakkında bilgi edinmek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 * Bir depolama hesabında bir şablon ayarlama ve SAS belirteci oluşturma adımları için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure PowerShell](deploy-powershell.md) [Kaynak Yöneticisi ŞABLONLARı ve Azure CLI ile kaynak dağıtma](deploy-cli.md).

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756487"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054738"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java ve tutulma ile ilk işlevinizi oluşturma 
 
@@ -37,14 +37,10 @@ Azure Işlevleri 'ni çalıştırmaya ve hata ayıklamaya yönelik yerel bir ort
 
 ## <a name="create-a-functions-project"></a>Işlevler projesi oluşturma
 
-1. Tutulma ' da **Dosya** menüsünü seçin ve ardından **Yeni-&gt; Maven projesi**' ni seçin. 
+1. Tutulma ' da **Dosya** menüsünü seçin ve ardından **Yeni- &gt; Maven projesi**' ni seçin. 
 1. **Yeni Maven proje** iletişim kutusunda varsayılan değerleri kabul edin ve **İleri ' yi**seçin.
-1. [Azure-Functions-arşiv ETYPE](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)Için arşiv **ETYPE Ekle** ' yi seçin ve girişleri ekleyin.
-    - Arşiv grubu KIMLIĞI: com. Microsoft. Azure
-    - Bir arşiv türü yapıt KIMLIĞI: Azure-Functions-arşiv Etype
-    - Sürüm: [merkezi depo](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![tutulma Maven Create ile en son sürümü denetleyin ve kullanın](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. **Tamam** ' a ve ardından **İleri**' ye tıklayın.  , `resourceGroup` `appName`Ve `appRegion` dahil tüm alanların değerlerini doldurduğunuzdan emin olun (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
+1. [Azure-Functions-arşiv ETYPE](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) bulun ve seçin ve **İleri**' ye tıklayın.
+1. , Ve dahil tüm alanların değerlerini doldurduğunuzdan emin olun `resourceGroup` `appName` `appRegion` (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
     ![Tutulma Maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) bir işlevdir.
@@ -55,16 +51,16 @@ Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Proje
 > Azure Functions Core Tools, yerel olarak işlevleri çalıştırmak ve hatalarını ayıklamak için [sürüm 2 '](functions-run-local.md#v2) nin yüklü olması gerekir.
 
 1. Oluşturulan projeye sağ tıklayın ve ardından **Farklı Çalıştır** ve **Maven Build**öğesini seçin.
-1. **Yapılandırma Düzenle** Iletişim `package` kutusunda **hedefler** ve **ad** alanlarını girip **Çalıştır**' ı seçin. Bu işlem işlev kodunu derleyip paketleyebilir.
-1. Oluşturma işlemi tamamlandıktan sonra, hedef ve ad olarak kullanarak `azure-functions:run` yukarıdaki gibi başka bir çalıştırma yapılandırması oluşturun. İşlevi IDE 'de çalıştırmak için **Çalıştır** ' ı seçin.
+1. **Yapılandırma Düzenle** Iletişim kutusunda `package` **hedefler** ve **ad** alanlarını girip **Çalıştır**' ı seçin. Bu işlem işlev kodunu derleyip paketleyebilir.
+1. Oluşturma işlemi tamamlandıktan sonra, `azure-functions:run` hedef ve ad olarak kullanarak yukarıdaki gibi başka bir çalıştırma yapılandırması oluşturun. İşlevi IDE 'de çalıştırmak için **Çalıştır** ' ı seçin.
 
 İşlevinizi test etmeyi bitirdiğinizde konsol penceresindeki çalışma zamanını sonlandırın. Tek seferde yalnızca bir işlev Konağı etkin ve yerel olarak çalıştırılabilir.
 
 ### <a name="debug-the-function-in-eclipse"></a>Çakışan Küreler işlevinde hata ayıklama
 
-Önceki adımda bulunan **Farklı Çalıştır** yapılandırmanızda, işlev uygulamasını hata ayıklama modunda başlatmak `azure-functions:run` için `azure-functions:run -DenableDebug` olarak değiştirin ve güncelleştirilmiş yapılandırmayı çalıştırın.
+Önceki adımda bulunan **Farklı Çalıştır** yapılandırmanızda, `azure-functions:run` `azure-functions:run -DenableDebug` işlev uygulamasını hata ayıklama modunda başlatmak için olarak değiştirin ve güncelleştirilmiş yapılandırmayı çalıştırın.
 
-**Çalıştır** menüsünü seçin ve **hata ayıklama yapılandırması**' nı açın. **Uzak Java uygulaması** ' nı seçin ve yeni bir tane oluşturun. Yapılandırmanıza bir ad verin ve ayarları girin. Bağlantı noktası, varsayılan olarak olan işlev Konağı tarafından açılan hata ayıklama bağlantı noktasıyla tutarlı olmalıdır `5005`. Kurulumdan sonra, hata ayıklamayı `Debug` başlatmak için Aç ' a tıklayın.
+**Çalıştır** menüsünü seçin ve **hata ayıklama yapılandırması**' nı açın. **Uzak Java uygulaması** ' nı seçin ve yeni bir tane oluşturun. Yapılandırmanıza bir ad verin ve ayarları girin. Bağlantı noktası, varsayılan olarak olan işlev Konağı tarafından açılan hata ayıklama bağlantı noktasıyla tutarlı olmalıdır `5005` . Kurulumdan sonra, `Debug` hata ayıklamayı başlatmak için Aç ' a tıklayın.
 
 ![Tutulma 'daki hata ayıklama işlevleri](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
@@ -78,7 +74,7 @@ Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgiler
 az login
 ```
 
-Yeni bir `azure-functions:deploy` **Farklı Çalıştır** yapılandırmasında Maven hedefini kullanarak kodunuzu yeni bir işlev uygulamasına dağıtın.
+`azure-functions:deploy`Yeni bir **Farklı Çalıştır** yapılandırmasında Maven hedefini kullanarak kodunuzu yeni bir işlev uygulamasına dağıtın.
 
 Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullanabileceğiniz URL’yi görürsünüz:
 

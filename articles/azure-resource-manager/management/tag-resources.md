@@ -2,13 +2,13 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: c06bd5f44f01a98e3a39d0cf404713e0d0546192
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/01/2020
+ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791937"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056931"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -17,7 +17,9 @@ Bunları bir taksonomiye mantıksal olarak düzenlemek için Azure kaynakların�
 Etiketleme stratejisi uygulama hakkında öneriler için bkz. [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> Etiket adları büyük/küçük harfe duyarlıdır. Etiket değerleri büyük/küçük harfe duyarlıdır.
+> Etiket adları, işlemler için büyük/küçük harfe duyarlıdır. Büyük/küçük harfe bakılmaksızın etiket adı olan bir etiket güncelleştirilir veya alınır. Ancak, kaynak sağlayıcısı, etiket adı için sağladığınız büyük/küçük harfleri saklayabilirler. Bu büyük küçük harf ' i maliyet raporlarında görürsünüz.
+> 
+> Etiket değerleri büyük/küçük harfe duyarlıdır.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -576,7 +578,7 @@ Kaynak grubuna veya aboneliğe uygulanan Etiketler kaynaklar tarafından devral�
 
 Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
 
-[Azure Kaynak kullanımı ve RateCard API 'leri](../../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../billing/billing-download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
+[Azure Kaynak kullanımı ve RateCard API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
 REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 

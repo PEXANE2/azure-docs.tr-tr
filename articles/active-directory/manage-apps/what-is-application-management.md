@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile Uygulamaları Yönetme | Microsoft Docs
-description: Bulut ve şirket içi uygulamalarınız için kimlik ve Yetkilendirme Yönetimi (ıAM) sistemi olarak Azure Active Directory (AD) kullanılmasına genel bakış.
+description: Bulut ve şirket içi uygulamalarınız için kimlik ve erişim yönetimi (ıAM) sistemi olarak Azure Active Directory (AD) kullanılmasına genel bakış.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,16 +12,16 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d69da3f1e9a505d14974a7a3089acca0e17c713
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85549558"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055214"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
-Azure AD, bir kimlik ve Yetkilendirme Yönetimi (ıAM) sistemidir. Bu, dijital kimlikler hakkında bilgi depolamak için tek bir yer sağlar. Yazılım uygulamalarınızı, Kullanıcı bilgilerinin depolandığı yer olarak Azure AD 'yi kullanacak şekilde yapılandırabilirsiniz. 
+Azure AD, bir kimlik ve erişim yönetimi (ıAM) sistemidir. Bu, dijital kimlikler hakkında bilgi depolamak için tek bir yer sağlar. Yazılım uygulamalarınızı, Kullanıcı bilgilerinin depolandığı yer olarak Azure AD 'yi kullanacak şekilde yapılandırabilirsiniz. 
 
 Azure AD bir uygulamayla tümleştirilecek şekilde yapılandırılmalıdır. Diğer bir deyişle, bir kimlik sistemi olarak hangi uygulamaların kullandığını bilmeleri gerekir. Azure AD 'nin bu uygulamalardan haberdar olduğu ve bunların nasıl işlenmesi gerektiği, uygulama yönetimi olarak bilinen bir işlemdir.
 
@@ -29,12 +29,12 @@ Uygulamaları, Azure Active Directory portalının Yönet bölümünde yer alan 
 
 ![Azure AD portalının Yönet bölümünün altındaki kurumsal uygulamalar seçeneği.](media/what-is-application-management/enterprise-applications-in-nav.png)
 
-## <a name="what-is-an-identity-and-authorization-management-iam-system"></a>Kimlik ve Yetkilendirme Yönetimi (ıAM) sistemi nedir?
+## <a name="what-is-an-identity-and-access-management-iam-system"></a>Kimlik ve erişim yönetimi (ıAM) sistemi nedir?
 Uygulama, bir amaç için kullanılan bir yazılım parçasıdır. Çoğu uygulama, uygulamanın söz konusu Kullanıcı için özel bir deneyim sağlayabilmesi için kullanıcıların oturum açmasını gerektirir. Diğer bir deyişle uygulamanın, uygulamayı kullanarak kullanıcının kimliğini bilmeleri gerekir. Bu, Kullanıcı için teklif edilecek veya kaldırılacak işlevselliği bildiği için.
 
 Her uygulama, kullanıcıları ayrı ayrı izleirse sonuç, her uygulama için farklı Kullanıcı adları ve oturum açma işlemleri için bir silmeydir. Bir uygulama diğer uygulamalardaki kullanıcılarla ilgili hiçbir şeyi bilmez.
 
-Merkezi bir kimlik sistemi, daha sonra tüm uygulamalar tarafından kullanılabilecek Kullanıcı bilgilerini depolamak için tek bir yer sağlayarak bu sorunu çözer. Bu sistemler, kimlik ve Yetkilendirme Yönetimi (ıAM) sistemleri olarak bilinmelidir. Azure Active AD, Microsoft bulutu için ıAM sistemidir.
+Merkezi bir kimlik sistemi, daha sonra tüm uygulamalar tarafından kullanılabilecek Kullanıcı bilgilerini depolamak için tek bir yer sağlayarak bu sorunu çözer. Bu sistemler, kimlik ve erişim yönetimi (ıAM) sistemleri olarak bilinmelidir. Azure Active AD, Microsoft bulutu için ıAM sistemidir.
 
 >[!TIP]
 >Bir ıAM sistemi, Kullanıcı kimliklerini izlemek için tek bir yer sağlar. Azure AD, Microsoft bulutu için ıAM sistemidir.

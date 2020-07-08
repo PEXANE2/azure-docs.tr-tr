@@ -3,12 +3,12 @@ title: Kaynakları dağıtım & çapraz abonelik kaynak grubu
 description: Dağıtım sırasında birden fazla Azure aboneliğini ve kaynak grubunu nasıl hedefleyecek olduğunu gösterir.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34de1d9df53d61d849ffbb81a57b468020bc3b65
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650631"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057390"
 ---
 # <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Azure kaynaklarını abonelikler veya kaynak grupları arasında dağıtma
 
@@ -25,7 +25,7 @@ Kaynak Yöneticisi, tek bir dağıtımda birden fazla kaynak grubuna dağıtman�
 
 Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir.
 
-Şablonu dağıtan hesabın, belirtilen abonelik KIMLIĞINE dağıtım izni olması gerekir. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
+Şablonu dağıtan hesabın, belirtilen abonelik KIMLIĞINE dağıtım izni olması gerekir. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../../active-directory/b2b/what-is-b2b.md)gerekir.
 
 Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağıtım işleminde belirtilen kaynak grubuna dağıtılır. İkinci depolama hesabı, ve parametrelerinde belirtilen kaynak grubuna dağıtılır `secondResourceGroup` `secondSubscriptionID` :
 
@@ -129,7 +129,7 @@ Aşağıdaki tabloda, işlevlerin üst veya katıştırılmış kaynak grubuna v
 | ------------- | ----- | ---------- |
 | ble        | dış (varsayılan) | Üst kaynak grubu |
 | ble        | Dahili | Alt kaynak grubu |
-| bağlandı        | Yok   | Alt kaynak grubu |
+| bağlandı        | YOK   | Alt kaynak grubu |
 
 Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) şunları gösterir:
 

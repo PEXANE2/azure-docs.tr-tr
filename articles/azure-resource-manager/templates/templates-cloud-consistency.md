@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055248"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
@@ -487,7 +487,7 @@ Bir konumdaki kullanılabilir VM görüntülerinin listesini almak için şu Azu
 az vm image list -all
 ```
 
-[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve parametresiyle istediğiniz konumu belirtebilirsiniz `-Location` . Örnek:
+[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve parametresiyle istediğiniz konumu belirtebilirsiniz `-Location` . Örneğin:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -574,7 +574,7 @@ Aynı değişiklikler [veri disklerini](../../virtual-machines/windows/using-man
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Azure Stack ' de VM uzantılarının kullanılabildiğini doğrulama
 
-Bulut tutarlılığı için başka bir değerlendirme, [sanal makine uzantılarının](../../virtual-machines/windows/extensions-features.md) bir VM içindeki kaynakları yapılandırmak için kullanılması. Azure Stack ' de tüm VM uzantıları kullanılamaz. Şablon, VM uzantısına adanmış kaynakları belirtebilir, şablon içinde bağımlılıklar ve koşullar oluşturabilir.
+Bulut tutarlılığı için başka bir değerlendirme, [sanal makine uzantılarının](../../virtual-machines/extensions/features-windows.md) bir VM içindeki kaynakları yapılandırmak için kullanılması. Azure Stack ' de tüm VM uzantıları kullanılamaz. Şablon, VM uzantısına adanmış kaynakları belirtebilir, şablon içinde bağımlılıklar ve koşullar oluşturabilir.
 
 Örneğin, Microsoft SQL Server çalıştıran bir VM yapılandırmak istiyorsanız, VM uzantısı, şablon dağıtımı kapsamında SQL Server yapılandırabilir. Dağıtım şablonu, SQL Server çalıştıran VM üzerinde veritabanı oluşturmak üzere yapılandırılmış bir uygulama sunucusu içeriyorsa ne olacağını düşünün. Ayrıca, uygulama sunucuları için bir VM Uzantısı kullanmanın yanı sıra, SQL Server VM Uzantısı kaynağının başarıyla geri dönmesi üzerinde uygulama sunucusunun bağımlılığını yapılandırabilirsiniz. Bu yaklaşım, uygulama sunucusu veritabanını oluştururken SQL Server çalıştıran VM 'nin yapılandırıldığından ve kullanılabilir olmasını sağlar.
 
@@ -590,7 +590,7 @@ Belirli bir bölge için kullanılabilen VM uzantılarının listesini almak iç
 az vm extension image list --location myLocation
 ```
 
-Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve `-Location` sanal makine görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örnek:
+Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve `-Location` sanal makine görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örneğin:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

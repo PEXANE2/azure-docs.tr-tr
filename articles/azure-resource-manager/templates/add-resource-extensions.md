@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: b3c4110c8761b3e8daf324d65ac7fa1dcbcdf61f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023506"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055060"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>Uzantıları kullanarak dağıtım sonrası yapılandırma sağlama
 
@@ -20,13 +20,13 @@ ms.locfileid: "77023506"
 
 Mevcut uzantılar şunlardır:
 
-- [Microsoft. COMPUTE/virtualMachines/uzantıları](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft. COMPUTE virtualMachineScaleSets/uzantıları](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
-- [Microsoft. HDInsight kümeleri/uzantıları](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
-- [Microsoft. SQL sunucuları/veritabanları/uzantıları](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
-- [Microsoft. Web/Sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
+- [Microsoft. COMPUTE/virtualMachines/uzantıları](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft. COMPUTE virtualMachineScaleSets/uzantıları](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
+- [Microsoft. HDInsight kümeleri/uzantıları](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
+- [Microsoft. SQL sunucuları/veritabanları/uzantıları](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
+- [Microsoft. Web/Sites/siteextensions](/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-Kullanılabilir uzantıları bulmak için [şablon başvurusuna](https://docs.microsoft.com/azure/templates/)gidin. **Başlığa göre filtrele**' de **uzantı**girin.
+Kullanılabilir uzantıları bulmak için [şablon başvurusuna](/azure/templates/)gidin. **Başlığa göre filtrele**' de **uzantı**girin.
 
 Bu uzantıların nasıl kullanılacağını öğrenmek için bkz.:
 

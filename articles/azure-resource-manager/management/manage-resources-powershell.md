@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: de6f24ea66ef41b5ee4bfdda5948de9639f10a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c14e8ae7de48752466cea43205445d5bb4856c9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75485409"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055381"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynaklarını yönetme
 
@@ -139,5 +139,5 @@ Etiketleme, kaynak grubunuzun ve kaynaklarınızın mantıksal olarak düzenlenm
 
 - Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
 - Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
+- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](../index.yml)bölümüne bakın.
 - Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).

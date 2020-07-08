@@ -13,18 +13,18 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d04953789dc3fc864dd2809783b0d214a91738f
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983128"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055401"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Hızlı başlangıç: kimlik yönetimi için Azure Active Directory (Azure AD) kiracınızı kullanan uygulamaların listesini görüntüleme
 
-Kuruluşunuzun kullandığı uygulamalar için kimlik ve Yetkilendirme Yönetimi (ıAM) sistemi olarak Azure AD 'yi kullanmaya başlayın. Bu hızlı başlangıçta, uygulama olarak da bilinen uygulamaları, kimlik sağlayıcısı olarak Azure AD kiracısı kullanacak şekilde önceden ayarlamış olursunuz.
+Kuruluşunuzun kullandığı uygulamalar için kimlik ve erişim yönetimi (ıAM) sistemi olarak Azure AD 'yi kullanmaya başlayın. Bu hızlı başlangıçta, uygulama olarak da bilinen uygulamaları, kimlik sağlayıcısı olarak Azure AD kiracısı kullanacak şekilde önceden ayarlamış olursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD kiracınızda kayıtlı olan uygulamaları görüntülemek için şunlar gerekir:
 
@@ -73,6 +73,6 @@ Belirli bir uygulamayı aramak için:
 Bu hızlı başlangıçta, Azure AD kiracınızdaki uygulamaları görüntülemeyi öğrendiniz. Uygulama türü, durum ve görünürlük ile uygulama listesinin nasıl filtreleneceğini öğrendiniz. Ayrıca belirli bir uygulamayı aramayı da öğrendiniz.
 
 - [Uygulama ekleme](add-application-portal.md)
-- [Uygulama yapılandırma](add-application-portal-configure.md)
+- [Bir uygulamayı yapılandırma](add-application-portal-configure.md)
 - [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
-- [Uygulama silme](delete-application-portal.md)
+- [Bir uygulamayı silme](delete-application-portal.md)

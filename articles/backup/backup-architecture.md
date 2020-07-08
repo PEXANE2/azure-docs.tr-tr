@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707932"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055265"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -52,7 +52,7 @@ Kurtarma Hizmetleri kasaları aşağıdaki özelliklere sahiptir:
 
 Azure Backup, ne tür bir makinenin yedeklendiğine bağlı olarak farklı yedekleme aracıları sağlar:
 
-**Aracı** | **Ayrıntılar**
+**Aracısı** | **Ayrıntılar**
 --- | ---
 **MARS Aracısı** | <ul><li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için tek bir şirket içi Windows Server makinesi üzerinde çalışır.</li> <li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için Azure VM 'lerde çalışır.</li> <li>DPM/mabs sunucularında DPM/MABS yerel depolama diskini Azure 'a yedeklemek için çalışır.</li></ul>
 **Azure VM Uzantısı** | Azure VM 'lerde çalışarak bunları bir kasaya yedekler.
@@ -94,10 +94,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
-Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
+Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
+Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
@@ -105,9 +105,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 ## <a name="backup-policy-essentials"></a>Yedekleme ilkesi temelleri
 
 - Her kasa için bir yedekleme ilkesi oluşturulur.
-- Aşağıdaki iş yüklerinin yedeklenmesi için bir yedekleme ilkesi oluşturulabilir
-  - Azure VM
-  - Azure VM 'de SQL
+- Aşağıdaki iş yüklerinin yedeklenmesi için bir yedekleme ilkesi oluşturulabilir: Azure VM 'leri, Azure VM 'lerinde SQL, Azure VM 'lerde ve Azure dosya paylaşımlarında SAP HANA. Mars Aracısı kullanılarak dosya ve klasör yedeklemesi ilkesi MARS konsolunda belirtilmiştir.
   - Azure Dosya Paylaşımı
 - Bir ilke, birçok kaynağa atanabilir. Azure VM yedekleme ilkesi, birçok Azure VM 'yi korumak için kullanılabilir.
 - Bir ilke iki bileşenden oluşur
@@ -115,9 +113,12 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
   - Bekletme: her yedeklemenin ne kadar süreyle saklanması gerekir.
 - Zamanlama, belirli bir zaman noktasıyla "günlük" veya "haftalık" olarak tanımlanabilir.
 - Bekletme "günlük", "haftalık", "aylık", "yıllık" yedekleme noktaları için tanımlanabilir.
-- "haftalık" haftanın belirli bir gününde bir yedekleme anlamına gelir, "aylık" bir yedekleme, ayın belirli bir gününde, "yıllık" ise yılın belirli bir gününde bir yedeği ifade eder.
-- "Aylık", "yıllık" yedekleme noktaları için bekletme "Longtermbekletme" olarak adlandırılır.
-- Bir kasa oluşturulduğunda, Azure VM yedeklemeleri için "DefaultPolicy" adlı bir ilke de oluşturulur ve Azure VM 'Leri yedeklemek için kullanılabilir.
+  - "haftalık" haftanın belirli bir gününde bir yedeklemeyi ifade eder
+  - "Monthly", ayın belirli bir gününde bir yedekleme anlamına gelir
+  - "yıllık" yılın belirli bir gününde bir yedeklemeyi ifade eder
+- "Aylık", "yıllık" yedekleme noktaları için bekletme, uzun süreli saklama (LTR) olarak adlandırılır
+- Bir kasa oluşturulduğunda, "DefaultPolicy" de oluşturulur ve kaynakları yedeklemek için kullanılabilir.
+- Bir yedekleme ilkesinin bekletme döneminde yapılan tüm değişiklikler, yeni olanlardan başka tüm eski kurtarma noktalarına daha etkin bir şekilde uygulanır.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 

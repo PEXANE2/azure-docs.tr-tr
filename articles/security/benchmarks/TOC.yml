@@ -41,10 +41,14 @@
       href: ../../automation/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure İlkesi güvenlik temeli
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Yedekleme güvenlik temeli
       href: ../../backup/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
+    - name: Bilişsel Hizmetler güvenlik temeli
+      href: ../../cognitive-services/security-baseline.md
     - name: Container Instances güvenlik temeli
       href: ../../container-instances/security-baseline.md
     - name: Container Registry güvenlik temeli
@@ -53,7 +57,7 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Müşteri Kasası güvenlik temeli
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Databox güvenlik temeli
+    - name: Data Box güvenlik temeli
       href: ../../databox/security-baseline.md
     - name: Veri Gezgini güvenlik temeli
       href: /azure/data-explorer/security-baseline
@@ -87,3 +91,5 @@
       href: ../../stream-analytics/security-baseline.md
     - name: Depolama güvenlik temeli
       href: ../../storage/common/security-baseline.md
+    - name: Synapse Analytics güvenlik temeli
+      href: ../../synapse-analytics/security-baseline.md

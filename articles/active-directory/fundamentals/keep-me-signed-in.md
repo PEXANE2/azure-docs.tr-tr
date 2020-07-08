@@ -5,19 +5,19 @@ services: active-directory
 author: CelesteDG
 manager: daveba
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339551"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054721"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>' Oturum açmış kalsın ' öğesini yapılandırın Azure AD hesapları istemi
 
@@ -55,7 +55,18 @@ Oturum açma hatası hakkındaki ayrıntılar aşağıda verilmiştir ve örnekt
 
 :::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Oturumumu Açık tut kesintiye sahip örnek oturum açma günlüğü girişi":::
 
-Gelişmiş marka ayarlarında **göster seçeneğini oturum açmış olarak kalacak şekilde** ayarlayarak, kullanıcıların kesme işlemini görmesini durdurabilirsiniz. **No**
+Gelişmiş marka ayarlarında **göster seçeneğini oturum açmış olarak kalacak şekilde** ayarlayarak, kullanıcıların kesme işlemini görmesini durdurabilirsiniz. **No** Bu, Azure AD dizininizde tüm kullanıcılar için KMSı isteğini devre dışı bırakır.
+
+Ayrıca, kullanıcıların KMSı sorgusunu gördüğünü engellemek için koşullu erişim 'teki kalıcı tarayıcı oturumu denetimlerini de kullanabilirsiniz. Bu seçenek, dizinde kalan kullanıcılar için oturum açma davranışını etkilemeden, belirli bir Kullanıcı grubu (Genel Yöneticiler gibi) için KMSı isteğini devre dışı bırakmanızı sağlar. Daha fazla bilgi için bkz. [Kullanıcı oturum açma sıklığı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+
+KMSı isteminin yalnızca kullanıcıya yararlanabileceği durumlarda gösterildiğinden emin olmak için, aşağıdaki senaryolarda KMSı istemi özellikle gösterilmez:
+
+* Kullanıcı sorunsuz SSO ve tümleşik Windows kimlik doğrulaması (ıWA) aracılığıyla oturum açtı
+* Kullanıcı Active Directory Federasyon Hizmetleri (AD FS) ve ıWA aracılığıyla oturum açtı
+* Kullanıcı Kiracıdaki bir konudır
+* Kullanıcının risk puanı yüksek
+* Kullanıcı veya yönetici onay akışı sırasında oturum açma işlemi gerçekleşir
+* Kalıcı tarayıcı oturumu denetimi, koşullu erişim ilkesinde yapılandırılır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

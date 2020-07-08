@@ -4,12 +4,12 @@ description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilme
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598020"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056630"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -166,6 +166,25 @@ Hata | Olası nedenler | Önerilen Eylemler
 --- | --- | ---
 Geçerli işlem, bir iç hizmet hatası nedeniyle başarısız oldu "kaynak hizmet damgasında sağlanmadı". Lütfen bir süre sonra işlemi yeniden deneyin. (KIMLIK: 230006) | Korunan sunucu yeniden adlandırıldı. | <li> Sunucuyu kasayla birlikte kaydedilen özgün adla yeniden adlandırın. <br> <li> Sunucuyu yeni adla kasaya yeniden kaydedin.
 
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Başka bir iş sürdüğünden iş başlatılamadı
+
+**Mars konsolu**  >  **iş geçmişinde**bir uyarı iletisi görürseniz, "iş devam eden başka bir iş olarak başlatılamadı" diyerek, bu durum Görev Zamanlayıcı tarafından tetiklenen bir işin yinelenen örneği olabilir.
+
+![Başka bir iş sürdüğünden iş başlatılamadı](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+Bu sorunu çözmek için:
+
+1. Çalıştır penceresinde *taskschd. msc* yazarak Görev Zamanlayıcı ek bileşenini başlatın
+1. Sol bölmede **Görev Zamanlayıcı Kitaplığı**  ->  **Microsoft**  ->  **onlinebackup**' a gidin.
+1. Bu kitaplıktaki her görev için, özellikleri açmak üzere göreve çift tıklayın ve aşağıdaki adımları gerçekleştirin:
+    1. **Ayarlar** sekmesine geçin.
+
+         ![Ayarlar sekmesi](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. **Görev zaten çalışıyorsa, aşağıdaki kural geçerli**olur. **Yeni bir örnek başlatma**' yı seçin.
+
+         ![Yeni örnek başlatmayın kuralını değiştirme](./media/backup-azure-mars-troubleshoot/change-rule.png)
+
 ## <a name="troubleshoot-restore-problems"></a>Geri yükleme sorunlarını giderme
 
 Azure Backup, birkaç dakika sonra bile kurtarma birimini başarıyla bağlayamayabilir. Ve işlem sırasında hata iletileri alabilirsiniz. Normal olarak kurtarmaya başlamak için şu adımları uygulayın:
@@ -198,7 +217,7 @@ Kurtarma hala başarısız olursa, sunucunuzu veya istemcinizi yeniden başlatı
 
 Önbellek klasörü (karalama klasörü olarak da bilinir) yanlış yapılandırılmışsa, eksik Önkoşullar veya kısıtlı erişim varsa yedekleme işlemi başarısız olabilir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 MARS Aracısı işlemlerinin başarılı olabilmesi için önbellek klasörünün aşağıdaki gereksinimlere uyması gerekir:
 

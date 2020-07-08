@@ -4,12 +4,12 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744258"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056286"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -199,7 +199,12 @@ Bir Azure Resource Manager şablonu kullanarak bir etkinlik günlüğü uyarı k
   ]
 }
 ```
-Önceki örnek JSON, örneğin, Bu izlenecek yol için sampleActivityLogAlert. JSON gibi kaydedilebilir ve [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak dağıtılabilir.
+Önceki örnek JSON, örneğin Bu izlenecek yol için sampleActivityLogAlert.jsve [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak dağıtılabilecek şekilde kaydedilebilir.
+
+  > [!NOTE]
+  > 
+  > En üst düzey etkinlik günlüğü uyarılarının tanımlandığına dikkat edin.
+  > Yani, birkaç abonelikte uyarı tanımlama seçeneği yoktur, bu nedenle tanım abonelik başına uyarı olmalıdır.
 
 Aşağıdaki alanlar, koşullar alanları için Azure Resource Manager şablonunda kullanabileceğiniz seçeneklerdir: "Kaynak Durumu", "Advisor" ve "Service Health" seçeneklerinin özel alanları için ek özellikler alanları olduğunu unutmayın. 
 1. RESOURCEID: uyarının oluşturulması gereken etkinlik günlüğü olayında etkilenen kaynağın kaynak KIMLIĞI.
@@ -251,7 +256,7 @@ Aşağıdaki alanlar, koşullar alanları için Azure Resource Manager şablonun
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 
-sampleActivityLogAlert. Parameters. JSON, uyarı kuralı oluşturma için gereken parametreler için belirtilen değerleri içerir.
+Burada sampleActivityLogAlert.parameters.js, uyarı kuralı oluşturmak için gereken parametreler için belirtilen değerleri içerir.
 
 ### <a name="use-activity-log-powershell-cmdlets"></a>Etkinlik günlüğü PowerShell cmdlet 'lerini kullanma
 
@@ -263,7 +268,7 @@ Etkinlik günlüğü uyarıları için kullanılabilir adanmış PowerShell cmdl
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): bir etkinlik günlüğü uyarısını kaldırır.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Ayarla [az Monitor Activity-Log Alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
 

@@ -3,12 +3,12 @@ title: Kaynak özelliklerini bulma
 description: Kaynak özelliklerinin nasıl aranacağını açıklar.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668568"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057084"
 ---
 # <a name="discover-resource-properties"></a>Kaynak özelliklerini bulma
 
@@ -16,7 +16,7 @@ Kaynak Yöneticisi şablonları oluşturmadan önce, hangi kaynak türlerinin ku
 
 ## <a name="find-resource-provider-namespaces"></a>Kaynak sağlayıcısı ad alanlarını bulma
 
-ARM şablonundaki kaynaklar bir kaynak sağlayıcısı ad alanı ve kaynak türü ile tanımlanır. Örneğin, Microsoft. Storage/storageAccounts, depolama hesabı kaynak türünün tam adıdır. Microsoft. Storage, ad alanıdır. Kullanmak istediğiniz kaynak türleri için ad alanlarını henüz bilmiyorsanız bkz. [Azure hizmetleri Için kaynak sağlayıcıları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-services-resource-providers).
+ARM şablonundaki kaynaklar bir kaynak sağlayıcısı ad alanı ve kaynak türü ile tanımlanır. Örneğin, Microsoft. Storage/storageAccounts, depolama hesabı kaynak türünün tam adıdır. Microsoft. Storage, ad alanıdır. Kullanmak istediğiniz kaynak türleri için ad alanlarını henüz bilmiyorsanız bkz. [Azure hizmetleri Için kaynak sağlayıcıları](../management/azure-services-resource-providers.md).
 
 ![Kaynak Yöneticisi kaynak sağlayıcısı ad alanı eşlemesi](./media/view-resources/resource-provider-namespace-and-azure-service-mapping.png)
 

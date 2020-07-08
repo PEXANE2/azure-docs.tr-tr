@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b258b0b5dba902e94e8d221e0d8f0292fdec9f67
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176830"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057407"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure portal içerik yayımlama  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [KALANı](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > 
 > 
 
@@ -42,19 +42,19 @@ Kullanıcınıza içeriğinizin akışını sağlamak veya indirmek için kullan
 
 HLS akış URL 'SI oluşturmak için, URL 'ye *(format = M3U8-AAPL)* ekleyin:
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 Kesintisiz Akış varlıklarını oynatacak akış URL’sini oluşturmak için aşağıdaki URL biçimini kullanın:
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
 MPEG DASH akış URL’si oluşturmak için, URL’ye *(format=mpd-time-csf)* ekleyin.
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 Paylaşılan erişim imzası URL'si aşağıdaki biçime sahiptir:
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 Daha fazla bilgi için bkz. [içerik sunma genel bakış](media-services-deliver-content-overview.md).
 
@@ -73,7 +73,7 @@ Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST 
 2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle**'yi seçin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

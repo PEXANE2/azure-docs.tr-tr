@@ -2,13 +2,13 @@
 title: ACR görevinden çapraz kayıt defteri kimlik doğrulaması
 description: Azure kaynakları için yönetilen bir kimlik kullanarak başka bir özel Azure Container Registry 'ye erişmek üzere bir Azure Container Registry görevi (ACR görevi) yapılandırma
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842511"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057373"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanan bir ACR görevinde çapraz kayıt defteri kimlik doğrulaması 
 
@@ -39,11 +39,12 @@ Gerekli Azure Container Registry 'ye zaten sahip değilseniz bkz. [hızlı başl
 
 ## <a name="prepare-base-registry"></a>Temel kayıt defterini hazırla
 
-İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içeriğe sahip Dockerfile adlı bir dosya oluşturun. Bu basit örnek, Docker Hub 'daki ortak görüntüden bir Node. js temel görüntüsü oluşturur.
+İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içeriğe sahip Dockerfile adlı bir dosya oluşturun. Bu basit örnek, Docker Hub 'daki ortak görüntüden bir Node.js temel görüntü oluşturur.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 Geçerli dizinde, temel görüntüyü derlemek ve temel bir kayıt defterine göndermek için [az ACR Build][az-acr-build] komutunu çalıştırın. Uygulamada, kuruluştaki başka bir takım veya işlem temel kayıt defterini koruyabilir.
     
 ```azurecli
@@ -52,7 +53,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>YAML dosyasında görev adımlarını tanımlama
 
-Bu örnek [çoklu adım görevi](container-registry-tasks-multi-step.md) için adımlar bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)tanımlanmıştır. Yerel çalışma dizininizde adlı `helloworldtask.yaml` bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Derleme adımındaki değerini `REGISTRY_NAME` , temel kayıt defterinizin sunucu adıyla güncelleştirin.
+Bu örnek [çoklu adım görevi](container-registry-tasks-multi-step.md) için adımlar bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)tanımlanmıştır. Yerel çalışma dizininizde adlı bir dosya oluşturun `helloworldtask.yaml` ve aşağıdaki içeriği yapıştırın. `REGISTRY_NAME`Derleme adımındaki değerini, temel kayıt defterinizin sunucu adıyla güncelleştirin.
 
 ```yml
 version: v1.1.0
@@ -62,7 +63,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-Derleme adımı, bir görüntü `Dockerfile-app` oluşturmak için [Azure-Samples/ACR-Build-HelloWorld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) depoındaki dosyayı kullanır. Temel `--build-arg` görüntüyü çekmek için temel kayıt defterine başvurur. Başarılı bir şekilde oluşturulduğunda, görüntü, görevi çalıştırmak için kullanılan kayıt defterine gönderilir.
+Derleme adımı, `Dockerfile-app` bir görüntü oluşturmak Için [Azure-Samples/ACR-Build-HelloWorld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) depoındaki dosyayı kullanır. Temel `--build-arg` görüntüyü çekmek için temel kayıt defterine başvurur. Başarılı bir şekilde oluşturulduğunda, görüntü, görevi çalıştırmak için kullanılan kayıt defterine gönderilir.
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Seçenek 1: Kullanıcı tarafından atanan kimlikle görev oluşturma
 
@@ -72,7 +73,7 @@ Bu bölümdeki adımlar bir görev oluşturur ve Kullanıcı tarafından atanan 
 
 ### <a name="create-task"></a>Görev Oluştur
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. `--assign-identity` Parametresi, Kullanıcı tarafından atanan KIMLIğIN kaynak kimliğini geçirir. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut `helloworldtask.yaml` çalışma dizinindeki dosyasına başvurur. `--assign-identity`Parametresi, Kullanıcı tarafından atanan kimliğin kaynak kimliğini geçirir. 
 
 ```azurecli
 az acr task create \
@@ -85,13 +86,34 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
+
+Bu bölümde, *mybaseregyıı*temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
+
+Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak için [az ACR Show][az-acr-show] komutunu kullanın:
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+Rolün kimliğini temel kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın `acrpull` . Bu rol yalnızca kayıt defterinden görüntüleri çekmek için izinlere sahiptir.
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+[Göreve hedef kayıt defteri kimlik bilgilerini eklemeye](#add-target-registry-credentials-to-task)devam edin.
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>2. seçenek: sistem tarafından atanan kimlikle görev oluşturma
 
 Bu bölümdeki adımlar bir görev oluşturur ve sistem tarafından atanan bir kimliği etkinleştirir. Bunun yerine Kullanıcı tarafından atanan bir kimliği etkinleştirmek istiyorsanız, bkz. [1. seçenek: Kullanıcı tarafından atanan kimlik ile görev oluşturma](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Görev Oluştur
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. Değer `--assign-identity` içermeyen parametre, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut `helloworldtask.yaml` çalışma dizinindeki dosyasına başvurur. `--assign-identity`Değer içermeyen parametre, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez. 
 
 ```azurecli
 az acr task create \
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
 
 Bu bölümde, *mybaseregyıı*temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
 
@@ -113,7 +135,7 @@ Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak i�
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Rolün kimliğini temel kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın. `acrpull` Bu rol yalnızca kayıt defterinden görüntüleri çekmek için izinlere sahiptir.
+Rolün kimliğini temel kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın `acrpull` . Bu rol yalnızca kayıt defterinden görüntüleri çekmek için izinlere sahiptir.
 
 ```azurecli
 az role assignment create \
@@ -124,7 +146,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-task"></a>Göreve hedef kayıt defteri kimlik bilgilerini ekle
 
-Şimdi, görevin kimlik bilgilerini kullanarak temel kayıt defteri ile kimlik doğrulaması yapmasını sağlamak için [az ACR Task Credential Add][az-acr-task-credential-add] komutunu kullanın. Görevde etkinleştirdiğiniz yönetilen kimliğin türüne karşılık gelen komutu çalıştırın. Kullanıcı tarafından atanan bir kimliği etkinleştirdiyseniz, kimliğin istemci KIMLIĞIYLE `--use-identity` geçiş yapın. Sistem tarafından atanan bir kimliği etkinleştirdiyseniz, geçirin `--use-identity [system]`.
+Şimdi, görevin kimlik bilgilerini kullanarak temel kayıt defteri ile kimlik doğrulaması yapmasını sağlamak için [az ACR Task Credential Add][az-acr-task-credential-add] komutunu kullanın. Görevde etkinleştirdiğiniz yönetilen kimliğin türüne karşılık gelen komutu çalıştırın. Kullanıcı tarafından atanan bir kimliği etkinleştirdiyseniz, `--use-identity` kimliğin ISTEMCI kimliğiyle geçiş yapın. Sistem tarafından atanan bir kimliği etkinleştirdiyseniz, geçirin `--use-identity [system]` .
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

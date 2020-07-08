@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836405"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057305"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -191,12 +191,14 @@ Artık, Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi dinamik olar
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>Şubat 2016 sürümü
 .NET için Media Services SDK 'nın en son sürümü (3.5.3), Google Widevine ile ilgili hata düzeltmesini içerir. Widevine ile şifrelenen birden çok varlık için AssetDeliveryPolicy yeniden kullanılması imkansız oldu. Bu hata düzeltmesinin bir parçası olarak, aşağıdaki özellik SDK 'ya eklenmiştir: Widevınebaselicensetanışytionurl.
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>Ocak 2016 sürümü
 Kodlayıcı adlarıyla karışıklığı azaltmak için kodlama ayrılmış birimleri yeniden adlandırıldı.
@@ -323,7 +325,9 @@ Media Services .NET SDK artık sürüm 3.1.0.1.
 
 Bu sürüm, varsayılan Microsoft. WindowsAzure. MediaServices. Client. Contentkeyauthorleştirme. TokenRestrictionTemplate oluşturucusunu eski olarak işaretledi. Yeni Oluşturucu, TokenType öğesini bir bağımsız değişken olarak alır.
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>Aralık 2014 sürümü
@@ -502,8 +506,8 @@ Aşağıdaki değişiklikler Haziran 2013 Media Services SDK yayınlarına eklen
     * Microsoft. WindowsAzure. MediaServices. Client. ıjobnotificationsubscription türü
     * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointCollection türü
     * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointType türü
-* Depolama istemcisi SDK 2,0 bağımlılığı (Microsoft. WindowsAzure. StorageClient. dll)
-* OData 5,5 bağımlılığı (Microsoft. Data. OData. dll)
+* Depolama istemcisi SDK 2,0 bağımlılığı (Microsoft.WindowsAzure.StorageClient.dll)
+* OData 5,5 bağımlılığı (Microsoft.Data.OData.dll)
 
 ## <a name="december-2012-release"></a><a id="december_changes_12"></a>Aralık 2012 sürümü
 ### <a name="media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>.NET SDK değişikliklerini Media Services
@@ -565,7 +569,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

@@ -1,21 +1,21 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77112315"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057372"
 ---
-Komut çıkışında, `identity` bölümünde türünde `SystemAssigned` bir kimlik ayarlanır. , `principalId` Görev KIMLIĞININ asıl kimliğidir:
+Komut çıkışında, `identity` bölümünde türünde bir kimlik `SystemAssigned` ayarlanır. , `principalId` Görev kimliğinin asıl kimliğidir:
 
 ```console
 [...]
@@ -31,7 +31,9 @@ Komut çıkışında, `identity` bölümünde türünde `SystemAssigned` bir kim
 Daha sonraki komutlarda kullanmak için PrincipalId 'yi bir değişkende depolamak üzere [az ACR Task Show][az-acr-task-show] komutunu kullanın. Aşağıdaki komutta, göreviniz ve kayıt defterinizin adını değiştirin:
 
 ```azurecli
-principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show \
+  --name <task_name> --registry <registry_name> \
+  --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

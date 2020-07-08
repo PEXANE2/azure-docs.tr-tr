@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706588"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055537"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynaklarını yönetme
 
@@ -33,7 +33,7 @@ Azure kaynakları, Azure hizmetleri ve kaynak grupları tarafından düzenlenir.
 
 Bir kaynağı hizmet türüne göre açmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol bölmede Azure hizmeti ' ni seçin. Bu durumda, **depolama hesapları**.  Listelenen hizmeti görmüyorsanız, **tüm hizmetler**' i seçin ve ardından hizmet türünü seçin.
 
     ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Bir kaynağı hizmet türüne göre açmak için:
 
 Kaynak grubuna göre bir kaynağı açmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Grubun içindeki kaynağı listelemek için sol bölmede **kaynak grupları** ' nı seçin.
 3. Açmak istediğiniz kaynağı seçin. 
 
@@ -120,5 +120,5 @@ Grafiği panoya sabitlemek için grafiklerin sağ üst köşesindeki sabitleme s
 
 - Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
 - Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
+- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](../index.yml)bölümüne bakın.
 - Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).

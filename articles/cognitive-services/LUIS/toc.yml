@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: Toplu işe testi
           href: luis-concept-batch-test.md
-    - name: Yazma ve çalışma zamanı anahtarları
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: Veri yönetimi
       items:
         - name: Verileri değiştirme

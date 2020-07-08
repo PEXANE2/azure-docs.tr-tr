@@ -1,20 +1,20 @@
 ---
-title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+title: Özel uç nokta kullanarak bir Azure Web uygulamasına özel olarak bağlanma
 description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 462de426a365a2aca4572dae6bff9261e4ee37f7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445483"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054585"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -70,7 +70,7 @@ Web uygulaması için özel uç noktası kullandığınızda, istenen URL, Web u
 Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı kümeye kurallı bir addır.
 Örneğin, ad çözümlemesi şu şekilde olacaktır:
 
-|Adı |Tür |Değer |
+|Name |Tür |Değer |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -80,7 +80,7 @@ Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı küme
 Özel bir uç nokta dağıttığınızda, DNS girişini mywebapp.privatelink.azurewebsites.net kurallı adını gösterecek şekilde güncelleştiririz.
 Örneğin, ad çözümlemesi şu şekilde olacaktır:
 
-|Adı |Tür |Değer |Görüyorum |
+|Name |Tür |Değer |Görüyorum |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -91,7 +91,7 @@ Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı küme
 Oluşturmanız gereken DNS bölgesi: **Privatelink.azurewebsites.net**. Web uygulamanızın kaydını bir kayıt ve özel uç nokta IP 'si ile kaydedin.
 Örneğin, ad çözümlemesi şu şekilde olacaktır:
 
-|Adı |Tür |Değer |Görüyorum |
+|Name |Tür |Değer |Görüyorum |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--bu girişi, Özel uç nokta IP adresinizi işaret etmek üzere DNS sisteminizde yönetirsiniz|
@@ -103,13 +103,11 @@ Bu DNS yapılandırmasından sonra, Web uygulamanıza mywebappname.azurewebsites
 
 Kudu konsolu veya kudu REST API (örneğin, Azure DevOps kendiliğinden konak aracılarıyla dağıtım) için, Azure DNS özel bölgeniz veya özel DNS sunucunuzda iki kayıt oluşturmanız gerekir. 
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 
-> [!TIP]
-> Özel uç noktasını oluşturduğunuz sanal ağa bağlı privatelink.azurewebsites.net adlı özel bir DNS bölgeniz varsa, bu iki kayıt otomatik olarak doldurulur.
 
 
 ## <a name="pricing"></a>Fiyatlandırma
@@ -126,8 +124,9 @@ Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak üzere, bkz. [Web uygulamasına özel olarak bağlanma][howtoguide]
-
+- Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak üzere, bkz [. Portal Ile Web uygulamasına özel olarak bağlanma][howtoguide1]
+- Azure CLı kullanarak Web uygulamanıza özel uç nokta dağıtmak için bkz. [Azure CLI Ile Web uygulamasına özel olarak bağlanma][howtoguide2]
+- PowerShell kullanarak Web uygulamanız için özel uç nokta dağıtmak üzere, bkz. [PowerShell Ile Web uygulamasına özel olarak bağlanma][howtoguide3]
 
 
 
@@ -141,4 +140,6 @@ Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak üzere
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
+[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint

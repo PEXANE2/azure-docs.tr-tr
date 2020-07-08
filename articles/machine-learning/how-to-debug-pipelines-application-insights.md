@@ -1,5 +1,5 @@
 ---
-title: Application Insights hata ayıklama ve makine öğrenimi ardışık düzenleri sorunlarını giderme
+title: İşlem hattı günlük dosyalarını izleme &
 titleSuffix: Azure Machine Learning
 description: Eğitim ve Batch Puanlama işlem hatlarınıza günlük kaydı ekleyin ve günlüğe kaydedilen sonuçları Application Insights görüntüleyin.
 services: machine-learning
@@ -7,18 +7,17 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: faf83ad35e6aed191d07d7a297a547ec0d9921b2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555746"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055724"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights hata ayıklama ve makine öğrenimi ardışık düzenleri sorunlarını giderme
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 [Opencensus](https://opencensus.io/quickstart/python/) Python kitaplığı, günlükleri betiklerinizde Application Insights yönlendirmek için kullanılabilir. İşlem hattı çalıştırmalarının tek bir yerde toplamı toplama, sorgular oluşturmanıza ve sorunları tanılamanıza olanak sağlar. Application Insights kullanmak zaman içinde günlükleri izlemenize ve işlem hattı günlüklerini çalışma genelinde karşılaştırmanıza imkan tanır.

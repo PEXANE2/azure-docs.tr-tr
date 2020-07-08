@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374891"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055469"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -25,7 +25,7 @@ Language Understanding (LUSıS) yazma kimlik doğrulaması, bir e-posta hesabın
 
 ## <a name="what-is-migration"></a>Geçiş nedir?
 
-Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını değiştirme işlemidir. Hesabınız, geçiş işleminden sonra bir Azure aboneliğine ve bir Azure yazma kaynağına bağlanır. *Tüm LUYA kullanıcıları (sahipler veya ortak çalışanlar) sonunda geçiş yapması gerekecektir.* 
+Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını değiştirme işlemidir. Hesabınız, geçiş işleminden sonra bir Azure aboneliğine ve bir Azure yazma kaynağına bağlanır. *Tüm LUYA kullanıcıları (sahipler veya ortak çalışanlar) sonunda geçiş yapması gerekecektir.*
 
 Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS CLı 'yı kullanarak yazma anahtarlarını oluşturursanız, HALSıS portalındaki geçiş işlemini gerçekleştirmeniz gerekir. Geçiş işleminden sonra uygulamalarınızda hala coyazarlarınız olabilir, ancak bunlar uygulama düzeyi yerine Azure Kaynak düzeyine eklenecektir.
 
@@ -81,7 +81,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 3. Uygulamalarınızdan herhangi birine ortak çalışanlar varsa, onlara geçiş hakkında bilgi veren bir e-posta göndermeniz istenir. Bu, isteğe bağlı bir adımdır.
 
    Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması, hafif biçimli bir e-posta ile açılır. Göndermeden önce e-postayı düzenleyebilirsiniz. E-posta şablonu, tam uygulama KIMLIĞI ve uygulama adını içerir.
-   
+
    ```html
    Dear Sir/Madam,
 
@@ -89,10 +89,10 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 
    App Id: <app-ID-omitted>
    App name: Human Resources
-      
+
    Thank you
    ```
-   
+
    > [!Note]
    > Hesabınızı Azure 'a geçirdikten sonra uygulamalarınız artık ortak olmayan uygulamalar tarafından kullanılamaz.
 
@@ -162,7 +162,7 @@ Geçiş işleminden sonra, sahibi olduğunuz tüm LUO uygulamalarınız artık t
  > [!div class="mx-imgBorder"]
  > ![Abonelik ve yazma kaynağı için kutular](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez. 
+Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez.
 
 Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, **Manage**  >  LUA portalındaki**Azure kaynaklarını** Yönet sayfasında görüntülenir. Bunlar ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur. Ayrıca, daha fazla yazma kaynağı oluşturabilir ve bunları aynı sayfadan atayabilirsiniz.
 
@@ -246,5 +246,5 @@ Aşağıdaki hatayı görürseniz, [bir uygulamada ortak çalışan kullanıyors
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yazma ve çalışma zamanı anahtarları hakkındaki kavramları](luis-concept-keys.md)gözden geçirin. 
+* [Yazma ve çalışma zamanı anahtarları hakkındaki kavramları](luis-how-to-azure-subscription.md)gözden geçirin.
 * [Anahtar atamayı](luis-how-to-azure-subscription.md) ve [katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md)inceleyin.

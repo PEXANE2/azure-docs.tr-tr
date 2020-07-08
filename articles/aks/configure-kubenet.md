@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079052"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055503"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -40,7 +40,7 @@ Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 Birçok ortamda, ayrılmış IP adresi aralıklarına sahip sanal ağları ve alt ağları tanımladınız. Bu sanal ağ kaynakları, birden çok hizmeti ve uygulamayı desteklemek için kullanılır. Aks kümeleri, ağ bağlantısı sağlamak için *Kubernetes kullanan* (temel ağ) veya Azure CNI (*Gelişmiş ağ*) kullanabilir.
 
-*Kubernetes kullanan*ile yalnızca düğümler sanal ağ alt ağında bir IP adresi alır. Pods birbirleriyle doğrudan iletişim kuramaz. Bunun yerine, düğümler arasında yer alan bağlantı için Kullanıcı tanımlı yönlendirme (UDR) ve IP iletimi kullanılır. Ayrıca, atanan IP adresi alan bir hizmetin arkasında yer alan ve uygulama için Yük Dengeleme trafiği dağıtımını yapabilirsiniz. Aşağıdaki diyagramda, AKS düğümlerinin sanal ağ alt ağında IP adresi alma, ancak bunların olmaması gösterilmektedir:
+*Kubernetes kullanan*ile yalnızca düğümler sanal ağ alt ağında bir IP adresi alır. Pods birbirleriyle doğrudan iletişim kuramaz. Bunun yerine, düğümler arasında yer alan bağlantı için Kullanıcı tanımlı yönlendirme (UDR) ve IP iletimi kullanılır. Varsayılan olarak, UDRs ve IP iletme yapılandırması AKS hizmeti tarafından oluşturulur ve saklanır, ancak [özel yol yönetimi için kendi yol tablonuzu getirme][byo-subnet-route-table]seçeneğine ihtiyacınız vardır. Ayrıca, atanan IP adresi alan bir hizmetin arkasında yer alan ve uygulama için Yük Dengeleme trafiği dağıtımını yapabilirsiniz. Aşağıdaki diyagramda, AKS düğümlerinin sanal ağ alt ağında IP adresi alma, ancak bunların olmaması gösterilmektedir:
 
 ![AKS kümesi ile kubenet ağ modeli](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ AKS kümeniz için hangi ağ eklentisinin kullanılacağını tercih etmek, gene
 
 - Kullanılabilir IP adresi alanı var.
 - Pod iletişiminin çoğu, küme dışındaki kaynaklara göre yapılır.
-- UDRs 'yi yönetmek istemezsiniz.
+- POD bağlantısı için Kullanıcı tanımlı yolları yönetmek istemezsiniz.
 - Sanal düğümler veya Azure ağ Ilkesi gibi gelişmiş özelliklere ihtiyacınız vardır.  [Calıco ağ ilkelerini][calico-network-policies]kullanın.
 
 Hangi ağ modelini kullanacağınıza karar vermenize yardımcı olacak daha fazla bilgi için bkz. [ağ modellerini ve bunların destek kapsamını karşılaştırın][network-comparisons].
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. *\<appId>* Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterilen şekilde kendinizinkini sağlayın:
+Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks küme *ağı katılımcısı* izinleriniz için hizmet sorumlusu atayın. *\<appId>* Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterilen şekilde kendinizinkini sağlayın:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Sanal ağda AKS kümesi oluşturma
@@ -253,6 +253,7 @@ Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık k�
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md

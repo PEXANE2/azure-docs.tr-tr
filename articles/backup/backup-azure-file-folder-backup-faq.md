@@ -3,12 +3,12 @@ title: Dosya ve klasörleri yedekleme-sık sorulan sorular
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254759"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056183"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
 
@@ -112,7 +112,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 1. Yedekleme altyapısını durdurmak için bu komutu yükseltilmiş bir komut isteminde çalıştırın:
 
     ```Net stop obengine```
-2. Sistem durumu yedeklemesini yapılandırdıysanız, disk yönetimi 'ni açın ve adları biçimindeki `"CBSSBVol_<ID>"`disk (ler) i çıkarın.
+2. Sistem durumu yedeklemesini yapılandırdıysanız, disk yönetimi 'ni açın ve adları biçimindeki disk (ler) i çıkarın `"CBSSBVol_<ID>"` .
 3. Varsayılan olarak, karalama klasörü şurada bulunur:`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Tüm `\Scratch` klasörü yeterli alana sahip farklı bir sürücüye kopyalayın. İçeriğin kopyalanmadığından ve taşınmadığından emin olun.
 5. Aşağıdaki kayıt defteri girdilerini yeni taşınan karalama klasörünün yoluyla güncelleştirin.
@@ -159,7 +159,8 @@ Evet, bant genişliğini ve zamanlamayı ayarlamak için MARS aracısındaki **�
 
 ### <a name="manage"></a>Yönetme
 
-**Parolamı unuttum, kurtarabilir miyim?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>Parolamı unuttum, kurtarabilir miyim?
+
 Azure Backup Aracısı, geri yükleme sırasında yedeklenen verilerin şifresini çözmek için bir parola (kayıt sırasında verdiğiniz) gerektirir. Kayıp bir parolayı işleme seçeneklerinizi anlamak için aşağıdaki senaryoları gözden geçirin:
 
 | Özgün makine <br> *(yedeklemelerin alındığı kaynak makine)* | Deyimi | Kullanılabilir seçenekler |
@@ -177,14 +178,18 @@ Aşağıdaki koşulları göz önünde bulundurun:
   * *Farklı parola*, yedeklenen verilerinizi geri yükleyemezsiniz.
 * Özgün makineniz bozuksa (parolayı MARS konsolu aracılığıyla yeniden üretmeyi önler), ancak MARS Aracısı tarafından kullanılan orijinal karalama klasörünü geri yükleyebilir veya erişebilirsiniz, ardından geri yükleme yapabilirsiniz (parolayı unuttuysanız). Daha fazla yardım için müşteri desteğine başvurun.
 
-**Özgün makinemi (yedeklemelerin alındığı) kaybetmem durumunda kurtarma Nasıl yaparım??**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Özgün makinemi (yedeklemelerin alındığı) kaybetmem durumunda kurtarma Nasıl yaparım??
 
 Özgün makinenin aynı parolaya sahipseniz (kayıt sırasında sağladıysanız), yedeklenen verileri alternatif bir makineye geri yükleyebilirsiniz. Geri yükleme seçeneklerinizi anlamak için aşağıdaki senaryoları gözden geçirin.
 
 | Özgün makine | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. Geri yükleme işlemini gerçekleştirmek için **Kurtarma seçeneğini** > **başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
+| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini**başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?
+
+Bir güvenlik önlemi olarak, Azure Backup, bekletme süresini geçmiş olsa bile son kurtarma noktasını korur. Yedeklemeler çalışmaya başladıktan ve yeni kurtarma noktaları kullanılabilir hale geldiğinde, eski kurtarma noktası belirtilen bekletmeye göre kaldırılır.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal etdiğimde ne olur?
 
@@ -194,7 +199,7 @@ Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi duraklar
 
 * MARS Aracısı, dosyalar, klasörler ve birimler üzerinde ayarlanan ACL 'Leri yedekler
 * Birim geri yükleme kurtarma seçeneği için, MARS Aracısı, kurtarılan dosya veya klasöre ACL izinleri geri yüklemeyi atlama seçeneği sunar
-* Tek dosya ve klasörler kurtarma seçeneği için, MARS Aracısı ACL izinleriyle geri yüklenir (ACL geri yüklemeyi atlama seçeneği yoktur).
+* Tek dosya ve klasörler kurtarma seçeneği için, MARS Aracısı ACL izinleriyle geri yüklenecek (ACL geri yüklemeyi atlama seçeneği yoktur).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

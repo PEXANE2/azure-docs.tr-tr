@@ -4,12 +4,12 @@ description: Bu makale Language Understanding (LUO) hakkında sık sorulan sorul
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343549"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054874"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -43,7 +43,7 @@ Evet, diğer amaçlar için daha fazla etiket eklerken, **hiçbiri** amacınız�
 Bkz. [Bing yazım denetimi API'si v7](luis-tutorial-bing-spellcheck.md) öğreticisi. Lua, Bing Yazım Denetimi API'si v7 tarafından uygulanan limitleri zorlar.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>LUMY uygulamamı programlı bir şekilde Düzenle Nasıl yaparım??
-LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. [lusıs yazma API 'Sini çağırma](./get-started-get-model-rest-apis.md) ve [Node. js kullanarak program aracılığıyla bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-concept-keys.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-concept-keys.md).
+LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. Node.jskullanarak [lusıs yazma API 'Sini çağırma](./get-started-get-model-rest-apis.md) ve [bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-how-to-azure-subscription.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-how-to-azure-subscription.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Normal ifade eşleşen bir model özelliği nerede?
 Önceki **desen özelliği** Şu anda kullanım dışıdır ve **[desenlerle](luis-concept-patterns.md)** değiştirilmiştir.
@@ -123,7 +123,7 @@ Diğer ipuçları için [en iyi uygulamaları](luis-concept-best-practices.md) g
 LUSıS, [kültürü](luis-language-support.md#tokenization)temel alan bir şekilde [simgeleştirir](luis-glossary.md#token) . Hem özgün değer hem de simgeleştirilmiş değer [veri ayıklama](luis-concept-data-extraction.md#tokenized-entity-returned)için kullanılabilir.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Nasıl yaparım? bir LUSıS uç noktası anahtarı oluşturup atamayı mı istiyorsunuz?
-Azure 'da [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyiniz için [uç nokta anahtarı oluşturun](luis-how-to-azure-subscription.md) . [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eylem için karşılık gelen bir API yok. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için http isteğini uç noktaya değiştirmeniz gerekir.
+Azure 'da [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyiniz için [uç nokta anahtarı oluşturun](luis-how-to-azure-subscription.md) . [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eylem için karşılık gelen bir API yok. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-how-to-azure-subscription.md)için http isteğini uç noktaya değiştirmeniz gerekir.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUSıS puanlarını Nasıl yaparım? yorumlanması mı?
 Sisteminizin değeri ne olursa olsun, en yüksek Puanlama amacını kullanması gerekir. Örneğin, 0,5 altına bir puan (%50 ' den az) , LUıN düşük güvenilirliğe sahip olduğu anlamına gelmez. Daha fazla eğitim verisi sağlamak, en olası amacın [Puanını](luis-concept-prediction-score.md) artırmaya yardımcı olabilir.
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>LUMY Uygulamam dün çalışıyor, ancak bugün 403 hata alıyorum. Uygulamayı değiştirdim. Nasıl düzeltebilirim?
-Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
+Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-how-to-azure-subscription.md)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUMY uç noktanmın güvenli Nasıl yaparım? mi?
-Bkz. [uç noktayı güvenli hale getirme](luis-concept-keys.md#securing-the-endpoint).
+Bkz. [uç noktayı güvenli hale getirme](luis-how-to-azure-subscription.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>LUSıS sınırları içinde çalışma
 
@@ -206,7 +206,7 @@ Eğer uygulamanız, Lu, genel kullanıma hazır olmadan (GA) varsa, aboneliğini
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Nasıl yaparım? hangi anahtara ihtiyacım olduğunu ve bununla ne yapmalıyım?
 
-Yazma anahtarı ve tahmin çalışma zamanı anahtarı arasındaki farklar hakkında bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmini uç noktası anahtarları](luis-concept-keys.md) .
+Yazma anahtarı ve tahmin çalışma zamanı anahtarı arasındaki farklar hakkında bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmini uç noktası anahtarları](luis-how-to-azure-subscription.md) .
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Kotanın olmadığı hakkında bir hata aldım. Nasıl düzeltebilirim?
 
@@ -301,7 +301,7 @@ Bir LUSıS şablonu seçer ve şablon bölmesinde **Seç** düğmesini seçersen
 
 ### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Nasıl yaparım? bir kaynağın LUO bölgesini programlı olarak alır mi?
 
-C# veya Node. js kullanarak [bölgeyi](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programlı bir şekilde bulmak için Luo örneğini kullanın.
+C# veya Node.Js kullanarak bölgeyi programlı bir şekilde [bulmak](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) için Luo örneğini kullanın.
 
 ## <a name="luis-service"></a>LUIS hizmeti
 

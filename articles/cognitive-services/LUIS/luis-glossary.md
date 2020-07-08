@@ -3,12 +3,12 @@ title: Sözlük-LUSıS
 description: Sözlük, LUSıS API hizmetiyle çalışırken karşılaşabileceğiniz terimleri açıklar.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681609"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056387"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -38,11 +38,11 @@ Yazma, LUıS portalını veya yazma API 'Lerini kullanarak bir LUıS uygulaması
 
 ### <a name="authoring-key"></a>Yazma anahtarı
 
-[Yazma anahtarı](luis-concept-keys.md) , uygulamayı yazmak için kullanılır. Üretim düzeyi uç nokta sorguları için kullanılmaz. Daha fazla bilgi için bkz. [anahtar sınırları](luis-limits.md#key-limits).
+[Yazma anahtarı](luis-how-to-azure-subscription.md) , uygulamayı yazmak için kullanılır. Üretim düzeyi uç nokta sorguları için kullanılmaz. Daha fazla bilgi için bkz. [anahtar sınırları](luis-limits.md#key-limits).
 
 ### <a name="authoring-resource"></a>Kaynak yazma
 
-LUSıS [Authoring Resource](luis-concept-keys.md#azure-resources-for-luis) , Azure aracılığıyla kullanılabilen yönetilebilir bir öğedir. Kaynak, Azure hizmetinin ilişkili yazma, eğitim ve yayımlama becerileriyle olan erişimdir. Kaynak, ilişkili Azure hizmetine erişmeniz için gereken kimlik doğrulaması, yetkilendirme ve güvenlik bilgilerini içerir.
+LUSıS [Authoring Resource](luis-how-to-azure-subscription.md#azure-resources-for-luis) , Azure aracılığıyla kullanılabilen yönetilebilir bir öğedir. Kaynak, Azure hizmetinin ilişkili yazma, eğitim ve yayımlama becerileriyle olan erişimdir. Kaynak, ilişkili Azure hizmetine erişmeniz için gereken kimlik doğrulaması, yetkilendirme ve güvenlik bilgilerini içerir.
 
 Yazma kaynağının bir Azure "türü" vardır `LUIS-Authoring` .
 
@@ -234,7 +234,7 @@ Tahmin, yeni verileri alan (Kullanıcı utterance) Azure LUSıS tahmin hizmetine
 
 ### <a name="prediction-key"></a>Tahmin anahtarı
 
-[Tahmin anahtarı](luis-concept-keys.md) (daha önce abonelik anahtarı olarak bilinirdi), Azure 'da, tahmin uç noktasının kullanımını YETKILENDIREN bir halsıs hizmeti ile ilişkili anahtardır.
+[Tahmin anahtarı](luis-how-to-azure-subscription.md) (daha önce abonelik anahtarı olarak bilinirdi), Azure 'da, tahmin uç noktasının kullanımını YETKILENDIREN bir halsıs hizmeti ile ilişkili anahtardır.
 
 Bu anahtar yazma anahtarı değil. Tahmin uç noktası anahtarınız varsa, yazma anahtarı yerine herhangi bir uç nokta isteği için kullanılmalıdır. Geçerli tahmin anahtarınızı, LUSıS Web sitesinde Azure kaynakları sayfasının en altında bulunan uç nokta URL 'SI içinde görebilirsiniz. Bu, abonelik anahtar adı/değer çiftinin değeridir.
 
@@ -290,7 +290,7 @@ LUıN [listesi varlıkları](reference-entity-list.md)' nda, her birinin bir eş
 
 Girişte herhangi bir eş anlamlılar bulunduğunda, model varlık için normalleştirilmiş değeri döndürür.
 
-## <a name="test"></a>Test et
+## <a name="test"></a>Test etme
 
 Bir lusıs uygulamasını [test etmek](luis-concept-test.md) , model tahminlerinin görüntülenmesi anlamına gelir.
 

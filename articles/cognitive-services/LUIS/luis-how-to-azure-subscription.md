@@ -3,18 +3,19 @@ title: Yazma ve çalışma zamanı anahtarlarını kullanma-LUSıS
 description: Language Understanding (LUU) ilk kez kullandığınızda, yazma anahtarı oluşturmanız gerekmez. Uygulamayı yayımlamayı ve sonra çalışma zamanı uç noktanızı kullanmayı amaçlıyorsanız, çalışma zamanı anahtarını uygulamaya oluşturup atamanız gerekir.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560437"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055775"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
 Yazma ve sorgu tahmini çalışma zamanı kaynakları, LUSıS uygulamanız ve tahmin uç noktanıza kimlik doğrulaması sağlar.
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -38,7 +39,7 @@ LUSıS uygulamalarını yayımlamak ve sorgulamak istediğiniz [bölgelerde](lui
 
 LUO gibi bir Azure kaynağı, kaynağı içeren aboneliğe aittir.
 
-Bir kaynağın sahipliğini aktarmak için, OU şunlardan biri olabilir:
+Bir kaynağın sahipliğini aktarmak için şunlardan birini yapabilirsiniz:
 * Aboneliğinizin [sahipliğini](../../cost-management-billing/manage/billing-subscription-transfer.md) aktarma
 * LUO uygulamasını bir dosya olarak dışarı aktarın ve uygulamayı farklı bir abonelikte içeri aktarın. Dışarı aktarma işlemi, Lua portalındaki **uygulamalarım** sayfasında bulunur.
 
@@ -70,6 +71,8 @@ Henüz geçirilmeyen uygulamalar için: anahtar, LUSıS portalındaki tüm uygul
 
 **Anahtarlar** sayfasında Azure Portal Azure anahtarlarını yeniden oluşturun.
 
+
+<a name="securing-the-endpoint"></a>
 
 ## <a name="app-ownership-access-and-security"></a>Uygulama sahipliği, erişim ve güvenlik
 
@@ -158,11 +161,10 @@ Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı
 1. Kaynak seçim sürecinizle işiniz bittiğinde [Yeni bir uygulama oluşturun](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
 
-## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>Azure CLı 'de kaynak oluşturma
 
@@ -204,7 +206,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**'i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
@@ -226,7 +228,7 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     ![Azure Resource Manager belirteci iste ve Azure Resource Manager belirteci al](./media/luis-manage-keys/get-arm-token.png)
 
-1. Kullanıcı hesabınızın erişimi olan [Get lusıs Azure hesapları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)'sinden, halsıs çalışma zamanı kaynaklarını abonelikler arasında istemek için belirteci kullanın.
+1. Kullanıcı hesabınızın erişimi olan [Get Lusıs Azure hesapları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)'sinden, halsıs çalışma zamanı kaynaklarını abonelikler arasında istemek için belirteci kullanın.
 
     Bu POST API 'SI aşağıdaki ayarları gerektirir:
 
@@ -237,7 +239,7 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     Bu API, abonelik KIMLIĞI, kaynak grubu ve kaynak adı gibi, hesap adı olarak döndürülen LUSıS aboneliklerinizin JSON nesnelerinin bir dizisini döndürür. LUO uygulamasına atanacak LUO kaynağı olan dizideki bir öğeyi bulun.
 
-1. [Bir uygulama API 'sine BIR lusıs Azure hesabı atama](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) ile, belirteci halsıs kaynağına atayın.
+1. [Bir uygulama API 'sine BIR Lusıs Azure hesabı atama](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) ile, belirteci halsıs kaynağına atayın.
 
     Bu POST API 'SI aşağıdaki ayarları gerektirir:
 

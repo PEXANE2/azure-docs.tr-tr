@@ -3,12 +3,12 @@ title: Limit-LUSıS
 description: Bu makale, Azure bilişsel hizmetler Language Understanding (LUSıS) 'nin bilinen sınırlarını içerir. LUO 'NUN birkaç sınır alanı vardır. Model sınırı denetim amaçları, varlıklar ve LUSıS 'deki Özellikler. Anahtar türüne göre kota sınırları. Klavye birleşimi LUSıS Web sitesini denetler.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976991"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055350"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUO 'NUN birkaç sınır alanı vardır. Birincisi, LUSıS 'deki amaçları, varlıkları ve özellikleri denetleyen [model limiti](#model-limits)olur. İkinci alan, anahtar türüne göre [Kota sınırlamalarıdır](#key-limits) . Limitlerin üçüncü alanı, LUSıS Web sitesini denetlemeye yönelik [klavye birleşimidir](#keyboard-controls) . Bir dördüncü alan, LUıS Authoring Web sitesi ve LUıS [uç nokta](luis-glossary.md#endpoint) API 'leri arasındaki [Dünya bölgesi eşlemesidir](luis-reference-regions.md) .
@@ -68,7 +68,7 @@ Aşağıdaki adlarla aşağıdaki karakterleri kullanmayın.
 
 ## <a name="resource-usage-and-limits"></a>Kaynak kullanımı ve sınırları
 
-Dil anlaşılması ayrı kaynaklar, yazma için bir tür ve tahmin uç noktasını sorgulamak için bir tür içerir. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmin uç noktası anahtarları](luis-concept-keys.md).
+Dil anlaşılması ayrı kaynaklar, yazma için bir tür ve tahmin uç noktasını sorgulamak için bir tür içerir. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmin uç noktası anahtarları](luis-how-to-azure-subscription.md).
 
 <a name="key-limits"></a>
 
@@ -106,7 +106,7 @@ Yaklaşım bilgilerini sağlayan yaklaşım [Analizi tümleştirmesi](luis-how-t
 
 ## <a name="keyboard-controls"></a>Klavye denetimleri
 
-|Klavye girişi | Description |
+|Klavye girişi | Açıklama |
 |--|--|
 |Denetim + E|utterslar listesindeki belirteçler ve varlıklar arasında geçiş yapar|
 
