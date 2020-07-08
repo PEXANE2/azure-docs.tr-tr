@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267112"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042026"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -183,9 +183,10 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcını görüntüleyin
+* Node.js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node.js hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcı 'nı görüntüleyin.
+* Java ya da Android için Kotlin kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Android öğreticisini](./tutorial-android.md) görüntüleyin
+* İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./tutorial-ios.md) görüntüleyin
 * Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
-* Swift [öğreticisini](./tutorial-ios-picture-immersive-reader.md) kullanarak tam ekran okuyucu SDK 'sı ile neler yapabileceğinizi görün.
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
 
 

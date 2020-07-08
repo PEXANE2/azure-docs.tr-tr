@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250523"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042127"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -85,7 +85,7 @@ Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak i�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı bir VM 'ye karşı özel Betik uzantısı 'nı çalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https:\//RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
+Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı bir VM 'ye karşı özel Betik uzantısı 'nı çalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
 
 ```azurecli
 az vm extension set `
@@ -241,7 +241,7 @@ Aracı yüklendiğinde, bir üst Daemon oluşturulur. Bu üst daha sonra, uzant�
 
 Üst işlem otomatik olarak güncelleştirilemez. Üst öğe yalnızca bir paket güncelleştirmesi tarafından güncelleştirilemez.
 
-Çalıştırdığınız sürümü denetlemek için aşağıdaki `waagent` gibi denetleyin:
+Çalıştırdığınız sürümü denetlemek için `waagent` aşağıdaki gibi denetleyin:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 1. Linux Aracısı günlüğünü denetlemek için, uzantınızın */var/log/waagent.log* adresinde sağlanması durumunda etkinliğe bakın.
 
-2. */Var/log/Azure/\<ExtensionName>* hakkında daha fazla bilgi için gerçek uzantı günlüklerine bakın
+2. */Var/log/Azure/ \<extensionName> * ' de daha fazla ayrıntı için gerçek uzantı günlüklerine bakın
 
 3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorunlarını giderme bölümüne bakın.
 

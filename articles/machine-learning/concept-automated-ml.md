@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: cec4213cc9b4d40707607b00ef96761e69438ee2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210261"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041736"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
-Otomatik ML veya otomatik ml olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML, [Microsoft Research](https://arxiv.org/abs/1705.05355)bölümümüzden bir kesimme dayanır.
+Otomatik ML veya otomatik ml olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML, [Microsoft Research](https://www.microsoft.com/research/project/automl/)bölümümüzden bir kesimme dayanır.
 
 Geleneksel makine öğrenme modeli geliştirme kaynakları yoğun bir şekilde, çok sayıda modeli oluşturmak ve karşılaştırmak için önemli etki alanı bilgisi ve zaman gerektirir. Otomatik makine öğrenimi sayesinde, mükemmel kolaylıklar ve verimlilik sayesinde üretime uygun ML modellerini elde etmek için geçen süreyi hızlandıracaksınız.
 
@@ -118,7 +118,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Description |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |

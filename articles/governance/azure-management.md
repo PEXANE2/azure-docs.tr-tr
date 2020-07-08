@@ -3,12 +3,12 @@ title: Azure yönetimine genel bakış-Azure Idare
 description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılarla Azure uygulamaları ve kaynakları için yönetim bölümlerine genel bakış.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 00e42f05e07a6aba2fcada973d57c11e0ab98ca7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956348"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041923"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure Yönetim bölgeleri nelerdir?
 
@@ -24,9 +24,9 @@ Tek bir Azure hizmeti belirli bir yönetim alanının gereksinimlerini tamamen d
 
 Aşağıdaki bölümlerde farklı yönetim alanları kısaca açıklanır ve ilgili temel Azure hizmetlerindeki ayrıntılı içeriklere yönelik bağlantılar sunulur.
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
-İzleme, kaynaklarınızın performansını, sistem durumunu ve kullanılabilirliğini denetlemek için veri toplama ve çözümleme işlemidir. Etkili bir izleme stratejisi, bileşenlerin çalışmasını anlamanıza ve kullanım süresini bildirimlerle artırmaya yardımcı olur. [Azure uygulamalarını ve kaynaklarını izlerken](../monitoring/monitoring-overview.md)kullanılan farklı Hizmetleri kapsamakta olan izlemeye genel bakış konusunu okuyun.
+İzleme, kaynaklarınızın performansını, sistem durumunu ve kullanılabilirliğini denetlemek için veri toplama ve çözümleme işlemidir. Etkili bir izleme stratejisi, bileşenlerin çalışmasını anlamanıza ve kullanım süresini bildirimlerle artırmaya yardımcı olur. [Azure uygulamalarını ve kaynaklarını izlerken](../azure-monitor/overview.md)kullanılan farklı Hizmetleri kapsamakta olan izlemeye genel bakış konusunu okuyun.
 
 ## <a name="configure"></a>Yapılandırma
 
@@ -46,12 +46,12 @@ Kaynaklarınızın ve verilerinizin güvenliğini yönetin. Bir güvenlik progra
 
 ## <a name="protect"></a>Koruma
 
-Koruma, sizin denetiminizin ötesinde olan kesintilerle birlikte uygulamalarınızın ve verilerinizin kullanılabilir tutulması anlamına gelir. Azure’da Koruma, iki hizmetle sağlanır. [Azure Backup](../backup/backup-introduction-to-azure-backup.md), hem buluttaki hem de şirket içindeki verilerinize yönelik yedekleme ve kurtarma sağlar. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) olağanüstü durum sırasında iş sürekliliği ve anında kurtarma sağlar.
+Koruma, sizin denetiminizin ötesinde olan kesintilerle birlikte uygulamalarınızın ve verilerinizin kullanılabilir tutulması anlamına gelir. Azure’da Koruma, iki hizmetle sağlanır. [Azure Backup](../backup/backup-overview.md), hem buluttaki hem de şirket içindeki verilerinize yönelik yedekleme ve kurtarma sağlar. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) olağanüstü durum sırasında iş sürekliliği ve anında kurtarma sağlar.
 
 ## <a name="migrate"></a>Geçiş
 
 Geçiş, şirket içinde çalışan mevcut iş yüklerini Azure bulut ortamına geçirmeyi ifade eder.
-[Azure geçişi](../migrate/migrate-overview.md) , şirket içi sanal makinelerin Azure 'a geçiş uygunluğunu değerlendirmenize yardımcı olan bir hizmettir. Azure Site Recovery sanal makineleri [Şirket içinden](../site-recovery/migrate-tutorial-on-premises-azure.md) veya [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md)geçirir. [Azure veritabanı geçişi](../dms/dms-overview.md) , veritabanı kaynaklarını Azure veri platformları 'na geçirmeye yardımcı olur.
+[Azure geçişi](../migrate/migrate-services-overview.md) , şirket içi sanal makinelerin Azure 'a geçiş uygunluğunu değerlendirmenize yardımcı olan bir hizmettir. Azure Site Recovery sanal makineleri [Şirket içinden](../site-recovery/migrate-tutorial-on-premises-azure.md) veya [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md)geçirir. [Azure veritabanı geçişi](../dms/dms-overview.md) , veritabanı kaynaklarını Azure veri platformları 'na geçirmeye yardımcı olur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

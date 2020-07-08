@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 92c878497f16162f46f4da34501885b73ff85dfc
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306937"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042093"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Cloud-init ile VM sağlama sorunlarını giderme
 
@@ -27,13 +27,13 @@ Bazı örnekler, sağlama sorunları:
 - Ağ iletişimi doğru ayarlanmadı
 - Dosya veya bölüm hatasını takas etme
 
-Bu makalede, Cloud-init sorunlarını giderme adımları anlatılmaktadır. Daha ayrıntılı bilgi için bkz. [Cloud-Init nasıl çalıştığını öğrenin](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive).
+Bu makalede, Cloud-init sorunlarını giderme adımları anlatılmaktadır. Daha ayrıntılı bilgi için bkz. [Cloud-init derin DIVE](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive).
 
 ## <a name="step-1-test-the-deployment-without-customdata"></a>1. Adım: bir dağıtımı customData olmadan test etme
 
 Cloud-init, VM oluşturulduğunda kendisine geçirilen customData öğesini kabul edebilir. Öncelikle bu, dağıtımlarla ilgili herhangi bir soruna neden olmadığından emin olmalısınız. Herhangi bir yapılandırmaya geçmeden VM 'yi sağlamayı deneyin. VM 'yi sağlayamazsa, geçirdiğiniz yapılandırmanın uygulanamamakta olduğunu fark ederseniz, [Adım 4]()' e geçin. 
 
-## <a name="step-2-review-image-requirements-are-satisfied"></a>2. Adım: Gözden geçirme görüntü gereksinimleri karşılandı
+## <a name="step-2-review-image-requirements"></a>2. Adım: görüntü gereksinimlerini gözden geçirme
 VM sağlama başarısızlığının birincil nedeni, işletim sistemi görüntüsünün Azure 'da çalışmaya yönelik önkoşulları karşılamamasına neden olur. Azure 'da sağlamaya çalışmadan önce görüntülerinizin doğru şekilde hazırlandığından emin olun. 
 
 
@@ -59,22 +59,16 @@ VM çalışırken, sağlanmasının neden başarısız olduğunu anlamak için V
 
 - VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) .
 
-- Günlükleri ayıklamak için işletim sistemi diskini çalışan bir VM 'ye [el ile ekleyin ve bağlayın](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux) -Azure VM onarımı
-
-Şu günlükleri topla:
+- İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) , bu da bu günlükleri toplamanıza olanak tanır:
 ```bash
+/var/log/cloud-init*
 /var/log/waagent*
 /var/log/syslog*
 /var/log/rsyslog*
 /var/log/messages*
 /var/log/kern*
 /var/log/dmesg*
-/var/log/dpkg*
-/var/log/yum*
-/var/log/cloud-init*
 /var/log/boot*
-/var/log/auth*
-/var/log/secure*
 ```
 İlk sorun giderme 'yi başlatmak için Cloud-init günlükleriyle başlayın ve hatanın nerede oluştuğunu anlayın, daha ayrıntılı bilgi edinmek için diğer günlükleri kullanın ve ek öngörüler sağlayın. 
 * /var/log/Cloud-Init.log
@@ -138,4 +132,4 @@ Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örne
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive) . 
+Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 
