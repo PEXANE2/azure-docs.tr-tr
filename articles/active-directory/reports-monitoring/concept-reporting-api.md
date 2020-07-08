@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83647404"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API 'SI ile çalışmaya başlama
@@ -34,7 +33,7 @@ Bu makalede, size erişme yolları dahil olmak üzere Raporlama API 'sine ilişk
 
 Sorunlarla karşılaşırsanız, bkz. [Azure Active Directory için destek alma](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Raporlama API 'sine erişmek için veya Kullanıcı müdahalesi olmadan, şunları yapmanız gerekir:
 
@@ -55,7 +54,7 @@ Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı eri�
 
 Oturum açma ve denetim API 'SI verilerini doğrulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz. Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerinden her ikisini kullanarak hesabınızda oturum açıp **AuditLog. Read. All** ve **Directory. Read.** , kiracınız için gösterildiği gibi tüm izinleri ayarlayın.   
 
-![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
+![Graph Gezgini](./media/concept-reporting-api/graph-explorer.png)
 
 ![İzin Kullanıcı arabirimini değiştirme](./media/concept-reporting-api/modify-permissions.png)
 

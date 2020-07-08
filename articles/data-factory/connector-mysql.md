@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: jingwang
 ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83635792"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'ten veri kopyalama
@@ -40,7 +39,7 @@ MySQL veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalay
 
 Özellikle, bu MySQL Bağlayıcısı MySQL **sürüm 5,6, 5,7 ve 8,0 ' i**destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -58,8 +57,8 @@ MySQL bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **MySQL** olarak ayarlanmalıdır | Yes |
-| Dizisi | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin.<br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| tür | Type özelliği: **MySQL** olarak ayarlanmalıdır | Evet |
+| Dizisi | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin.<br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . Servis talebi başına ayarlayabileceğiniz daha fazla özellik:
@@ -69,7 +68,7 @@ Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID
 | SSLMode | Bu seçenek, sürücünün MySQL 'e bağlanırken TLS şifrelemesini ve doğrulamasını kullanıp kullanmadığını belirtir. Ör.,`SSLMode=<0/1/2/3/4>`| DEVRE DıŞı (0)/tercıh EDILEN (1) **(varsayılan)** /gerekli (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Hayır |
 | UseSystemTrustStore | Bu seçenek, sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1)/devre dışı (0) **(varsayılan)** | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -147,7 +146,7 @@ MySQL 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Mysqltable** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Mysqltable** olarak ayarlanmalıdır | Evet |
 | tableName | MySQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -180,10 +179,10 @@ MySQL 'ten veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağın
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mysqlsource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mysqlsource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

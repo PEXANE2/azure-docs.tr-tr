@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
 ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83646627"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight için varsayılan ve önerilen düğüm yapılandırması nelerdir?
@@ -53,7 +52,7 @@ Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki bel
 > [!Note]
 > PowerShell ve diğer betiklerdeki kullanım için SKU tanımlayıcısını almak üzere `Standard_` aşağıdaki tablolardaki tüm VM SKU 'larının başına ekleyin. Örneğin, `D12_v2` olur `Standard_D12_v2` .
 
-| Küme türü | Hadoop | HBase | Interactive Query | Fırtına | Spark | ML Server | Kafka |
+| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +67,7 @@ Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki bel
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brezilya Güney ve Japonya Batı
 
-| Küme türü | Hadoop | HBase | Interactive Query | Fırtına | Spark | ML Services |
+| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

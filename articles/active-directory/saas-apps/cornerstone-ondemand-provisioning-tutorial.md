@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83647430"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için temel taş OnDemand yapılandırma
@@ -30,7 +29,7 @@ Bu öğreticide, Azure AD 'yi, Kullanıcı veya grupları otomatik olarak sağla
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 
@@ -113,7 +112,7 @@ Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapıland
 
     ![Köşeli kenar, Ondemandnotification e-postası](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 9. **Eşlemeler** bölümü altında, Azure Active Directory kullanıcılarını, temel aşağı **Taşı OnDemand olacak şekilde eşitler**' ı seçin.
 

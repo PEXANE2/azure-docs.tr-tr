@@ -4,10 +4,9 @@ description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azu
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201974"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile geri yükleme
@@ -125,7 +124,7 @@ Restore [-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/m
 
 ### <a name="restore-multiple-files"></a>Birden çok dosyayı geri yükleme
 
-Aşağıdaki betikte, *Filesharepage. png* ve *myTestFile. txt* dosyalarını geri yüklemeye çalışıyoruz.
+Aşağıdaki betikte, *FileSharePage.png* ve *MyTestFile.txt* dosyalarını geri yüklemeye çalışıyoruz.
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

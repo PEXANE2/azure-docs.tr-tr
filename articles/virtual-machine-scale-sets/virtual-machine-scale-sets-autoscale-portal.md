@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124950"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal bir sanal makine ölçek kümesini otomatik olarak ölçeklendirme
@@ -44,9 +43,9 @@ Uygulamanızın talebi artarsa, ölçek kümenizdeki sanal makine örneklerinde 
     | Parametre              | Açıklama                                                                                                         | Değer          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
     | *Zaman toplama*     | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama        |
-    | *Ölçüm adı*          | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi |
+    | *Ölçüm Adı*          | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi |
     | *Zaman dilimi istatistiği* | Her seferinde toplanan ölçümlerin analiz için nasıl toplanması gerektiğini tanımlar.                             | Ortalama        |
-    | *İşlecinde*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
+    | *Operatör*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
     | *Eşiği*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 70             |
     | *Süre*             | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 10 dakika     |
     | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                        | Yüzdeyi yüzde artır |
@@ -70,7 +69,7 @@ Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süre
     
     | Parametre              | Açıklama                                                                                                          | Değer          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *İşlecinde*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
+    | *Operatör*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
     | *Eşiği*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 30             |
     | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                         | Yüzdeyi azalt |
     | *Örnek sayısı*       | Kural tetiklendiğinde değiştirilmesi gereken sanal makine örneklerinin yüzdesi.                                             | 20             |

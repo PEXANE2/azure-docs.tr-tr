@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197164"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>İOS için Media Services v3 ile çevrimdışı FairPlay Akışı
@@ -46,7 +45,7 @@ Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay 
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İOS 10 + cihazında FairPlay için çevrimdışı DRM uygulamadan önce:
 

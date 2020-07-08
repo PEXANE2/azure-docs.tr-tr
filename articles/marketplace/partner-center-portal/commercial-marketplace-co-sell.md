@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201443"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
@@ -34,7 +33,7 @@ Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri içi
 | Power BI hizmet uygulaması     |     Duyurulacak       |
 |  |
 
-## <a name="listing"></a>Döküm
+## <a name="listing"></a>Liste
 
 Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha geniş bir hedef kitleye pazarlamasını sağlar.
 
@@ -88,7 +87,7 @@ Ayrıca, bir teklifin mevcut kişi listesini dışarı aktarabilir ve ardından 
 * *İş unvanı (gerekli)*: iş unvanı.
 * *Rol (zorunlu)*: şablonda bu alanda aşağıdaki rollerden birini kullanın.
 
-    | **Rol**    | **Açıklama**  |
+    | **Role**    | **Açıklama**  |
     | :------------------- | :-------------------|
     | *:::no-loc text="Partner marketing":::* | Bu rol, Microsoft satış ekipleri ve kanal satıcıları ile çözümünüze pazarlama ve pazarlama çabalarıyla işbirliği yapmaya odaklanır. Pazarlama görevlendirmelere yönelik ana iletişim noktası ve ürün açıklamaları, Resimler ve videolar gibi liste içeriği teklifi. |
     | *:::no-loc text="Partner sales":::* | Bu rol, Microsoft satış ekipleriyle ve kanal satıcılarıyla çözümünüze ve satış üzerinde işbirliği yapmaya odaklanır. Ortak satış çözümleri için, ortak satış sağlamak istediğiniz bölge başına en az bir iş ortağı satış kişisi belirtin. Aynı iş ortağı satış kişisi birden çok bölgeyi kapsayabilir. |

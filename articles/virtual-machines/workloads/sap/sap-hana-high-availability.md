@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 05/11/2020
 ms.author: radeltch
 ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196859"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
@@ -112,7 +111,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
     - **Sistem kullanılabilirliği**: **ha**seçeneğini belirleyin.
     - **Yönetici Kullanıcı adı ve yönetici parolası**: makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
     - **Yeni veya var olan alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulması gerekip gerekmediğini veya mevcut bir alt ağın kullanıldığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-    - **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle **/Subscriptions/ \< subscription ID>/resourceGroups/ \< kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ \< sanal ağ adı>/Subnets/ \< alt ağ adı>** gibi görünür.
+    - **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle **/Subscriptions/ \<subscription ID> /ResourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /Subnets/ \<subnet name> **şeklinde görünür.
 
 ### <a name="manual-deployment"></a>El ile dağıtım
 
@@ -150,7 +149,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Sanal makine Ekle**' yi seçin.
       1. * * Sanal makine * * öğesini seçin.
       1. SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-      1. **Add (Ekle)** seçeneğini belirleyin.
+      1. **Ekle**'yi seçin.
    
    1. Sonra, bir sistem durumu araştırması oluşturun:
    

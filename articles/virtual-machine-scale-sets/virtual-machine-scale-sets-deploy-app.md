@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124933"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uygulamanızı sanal makine ölçek kümelerine dağıtma
@@ -90,9 +89,9 @@ Update-AzVmss `
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
-Örnek *kabuğunuzda Cloud-init. txt* dosyası dahil olmak üzere daha fazla bilgi için bkz. [Cloud-Init kullanarak Azure VM 'leri özelleştirme](../virtual-machines/linux/using-cloud-init.md).
+Örnek bir *cloud-init.txt* dosyası da dahil olmak üzere daha fazla bilgi için bkz. [Azure VM 'leri özelleştirmek için Cloud-init kullanma](../virtual-machines/linux/using-cloud-init.md).
 
-Bir ölçek kümesi oluşturmak ve bir Cloud-init dosyası kullanmak için, `--custom-data` [az VMSS Create](/cli/azure/vmss) komutuna parametresini ekleyin ve bir Cloud-init dosyasının adını belirtin. Aşağıdaki örnek, *Myresourcegroup* içinde *myScaleSet* adlı bir ölçek kümesi oluşturur ve sanal makine örneklerini *kabuğunuzda Cloud-init. txt*adlı bir dosyayla yapılandırır. Kendi adlarınızı aşağıdaki gibi girin:
+Bir ölçek kümesi oluşturmak ve bir Cloud-init dosyası kullanmak için, `--custom-data` [az VMSS Create](/cli/azure/vmss) komutuna parametresini ekleyin ve bir Cloud-init dosyasının adını belirtin. Aşağıdaki örnek, *Myresourcegroup* içinde *myScaleSet* adlı bir ölçek kümesi oluşturur ve sanal makine örneklerini *cloud-init.txt*adlı bir dosyayla yapılandırır. Kendi adlarınızı aşağıdaki gibi girin:
 
 ```azurecli
 az vmss create \

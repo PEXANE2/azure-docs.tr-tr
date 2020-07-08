@@ -10,17 +10,16 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648211"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
 Azure Maps Android SDK, Android için bir vektör eşleme kitaplığıdır. Bu makale, Azure Maps Android SDK yükleme ve eşleme yükleme işlemlerinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
@@ -84,7 +83,7 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
         ```
     
     4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın.
-3. Ana etkinliğe bir harita parçası ekleyin (Res \> Düzen \> etkinliği \_ Main. xml):
+3. Ana etkinliğe bir harita parçası ekleyin (Res \> Düzen \> etkinliği \_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

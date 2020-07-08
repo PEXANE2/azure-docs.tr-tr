@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125613"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Bilişsel Arama için IP güvenlik duvarını yapılandırma
@@ -39,7 +38,7 @@ Azure portal geliştirmeyi basitleştirmek için, istemci makinenizin IP 'sini b
 
 Portal, istemci IP adresinizi otomatik olarak algılar. Makinenizin veya ağ geçidinizin istemci IP adresi olabilir. İş yükünüzü üretime almadan önce bu IP adresini kaldırdığınızdan emin olun.
 
-Geçerli IP 'nizi IP listesine eklemek için, **ISTEMCI IP adresinizi ekleyin**' i işaretleyin. Sonra **Kaydet**' i seçin.
+Geçerli IP 'nizi IP listesine eklemek için, **ISTEMCI IP adresinizi ekleyin**' i işaretleyin. Sonra **Kaydet**'i seçin.
 
 ![IP Güvenlik Duvarı ayarlarının geçerli IP 'ye izin vermek için nasıl yapılandırılacağını gösteren ekran görüntüsü](./media/service-configure-firewall/enable-current-ip.png)
 

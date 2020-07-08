@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648399"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway sistem durumu izlemeye genel bakış
@@ -49,7 +48,7 @@ Aşağıdakiler eşleşen ölçütlerdir:
 
 Eşleştirme ölçütü `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet 'i kullanılarak belirtilebilir.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -69,7 +68,7 @@ Eşleşme ölçütü belirtildiğinde, PowerShell 'deki bir parametre kullanıla
 > [!NOTE]
 > Bağlantı noktası, arka uç HTTP ayarlarıyla aynı bağlantı noktasıdır.
 
-Varsayılan araştırma, \/ \< \> sistem durumunu öğrenmek için yalnızca http:/127.0.0.1: bağlantı noktası ' na bakar. Sistem durumu araştırmasını özel bir URL 'ye gidecek veya diğer ayarları değiştirecek şekilde yapılandırmanız gerekiyorsa, özel araştırmaları kullanmanız gerekir. HTTP araştırmaları hakkında daha fazla bilgi için bkz. [TLS sonlandırmasına genel bakış ve Application Gateway ile uçtan uca TLS](ssl-overview.md#for-probe-traffic).
+Varsayılan araştırma, \/ sistem durumunu belirlemede yalnızca http:/127.0.0.1: ' de görünür \<port\> . Sistem durumu araştırmasını özel bir URL 'ye gidecek veya diğer ayarları değiştirecek şekilde yapılandırmanız gerekiyorsa, özel araştırmaları kullanmanız gerekir. HTTP araştırmaları hakkında daha fazla bilgi için bkz. [TLS sonlandırmasına genel bakış ve Application Gateway ile uçtan uca TLS](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Araştırma aralıkları
 
@@ -97,7 +96,7 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 
 > [!IMPORTANT]
 > Tek bir site için Application Gateway yapılandırıldıysa, varsayılan olarak, özel araştırmata yapılandırılmadığı sürece konak adı ' 127.0.0.1 ' olarak belirtilmelidir.
-> Başvuru için, \< Protokol \> :// \< ana bilgisayar \> : \< bağlantı noktası \> \< yoluna \> özel bir araştırma gönderilir. Kullanılan bağlantı noktası, arka uç HTTP ayarlarında tanımlananla aynı bağlantı noktası olacaktır.
+> Başvuru için,://: adresine özel bir araştırma gönderilir \<protocol\> \<host\> \<port\> \<path\> . Kullanılan bağlantı noktası, arka uç HTTP ayarlarında tanımlananla aynı bağlantı noktası olacaktır.
 
 ## <a name="nsg-considerations"></a>NSG konuları
 

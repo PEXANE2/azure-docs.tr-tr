@@ -4,10 +4,9 @@ description: Bu makalede, Azure Service Fabric 'da merkezi gizlilikler deposunun
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197759"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 'da merkezi gizlilikler Mağazası 
@@ -73,7 +72,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
 
-1. Aşağıdaki kod parçacığına sahip **Settings. xml** dosyasına bir bölüm ekleyin. Değerin {} biçiminde olduğunu buraya unutmayın `secretname:version` .
+1. Aşağıdaki kod parçacığına sahip **settings.xml** dosyasına bir bölüm ekleyin. Değerin {} biçiminde olduğunu buraya unutmayın `secretname:version` .
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +80,7 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
      </Section>
    ```
 
-1. **ApplicationManifest. xml**dosyasındaki bölümü içeri aktarın.
+1. **ApplicationManifest.xml**bölümünü içeri aktarın.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -99,7 +98,7 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
 1. Gizli dizileri bir kapsayıcıya bağlayın. Kapsayıcının içinde kullanılabilir gizli dizileri oluşturmak için gereken tek değişiklik, `specify` içindeki bir bağlama noktasına ait `<ConfigPackage>` .
-Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir.  
+Aşağıdaki kod parçacığı değiştirilen **ApplicationManifest.xml**.  
 
    ```xml
    <ServiceManifestImport>
@@ -117,7 +116,7 @@ Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir
    ```
    Gizli dizileri, kapsayıcının içindeki bağlama noktası altında bulunur.
 
-1. Belirterek bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz `Type='SecretsStoreRef` . Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1` `MySuperSecret` **servicemanifest. xml**dosyasındaki ortam değişkenine bağlama örneğidir.
+1. Belirterek bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz `Type='SecretsStoreRef` . Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1`ServiceManifest.xmlortam değişkenine bağlamaya bir örnektir `MySuperSecret` . ** **
 
    ```xml
    <EnvironmentVariables>

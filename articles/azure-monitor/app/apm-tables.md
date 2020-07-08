@@ -6,10 +6,9 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83210547"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Çalışma alanı tabanlı kaynak değişiklikleri (Önizleme)
@@ -68,7 +67,7 @@ Eski tablo: kullanılabilirlik
 |ItemType|string|Tür|Dize|
 |location|string|Konum|string|
 |message|string|İleti|string|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -108,7 +107,7 @@ Eski tablo: Browserzamanlamalar
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|ad|string|Name|datetime|
+|name|string|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
@@ -148,14 +147,14 @@ Eski tablo: bağımlılıklar
 |cloud_RoleName|string|Approtaname|string|
 |customDimensions|dynamic|Özellikler|Dinamik|
 |Customölçüler|dynamic|Ölçümler|Dinamik|
-|veri|string|Veriler|string|
+|veriler|string|Veriler|string|
 |süre|real|Ort|real|
 |`id`|string|`Id`|string|
 |iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -167,7 +166,7 @@ Eski tablo: bağımlılıklar
 |başarılı|string|Başarılı|Bool|
 |hedef|string|Hedef|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|type|string|DependencyType|string|
+|tür|string|DependencyType|string|
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|
@@ -197,7 +196,7 @@ Eski tablo: customEvents
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -232,7 +231,7 @@ Eski tablo: Customölçümler
 |iKey|string|IKey|string|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -243,7 +242,7 @@ Eski tablo: Customölçümler
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|
-|value|real|kaldırıldı||
+|değer|real|kaldırıldı||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -277,7 +276,7 @@ Eski tablo: pageViews
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -317,7 +316,7 @@ Eski tablo: performanceCounters
 |örnek|string|Örnek|string|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|string|
-|ad|string|Name|string|
+|name|string|Name|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -328,7 +327,7 @@ Eski tablo: performanceCounters
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|
-|value|real|Değer|real|
+|değer|real|Değer|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -357,7 +356,7 @@ Eski tablo: istekler
 |ItemCount|int|ItemCount|int|
 |ID|string|\_ID|string|
 |ItemType|string|Tür|Dize|
-|ad|string|Name|Dize|
+|name|string|Name|Dize|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|ThrottledRequests|string|
 |operation_ParentId|string|Operationparentıd|string|
@@ -383,7 +382,7 @@ Eski tablo: özel durumlar
 |appId|string|\_ResourceGUID|string|
 |application_Version|string|AppVersion|string|
 |appName|string|\_ResourceId|string|
-|derleme|string|Derleme|string|
+|derleme|string|Bütünleştirilmiş Kod|string|
 |client_Browser|string|ClientBrowser|string|
 |client_City|string|ClientCity|string|
 |client_CountryOrRegion|string|ClientCountryOrRegion|string|
@@ -421,7 +420,7 @@ Eski tablo: özel durumlar
 |session_Id|string|SessionId|string|
 |Severıtylevel|int|Severıtylevel|int|
 |timestamp|datetime|TimeGenerated|datetime|
-|type|string|Türü|string|
+|tür|string|Türü|string|
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|

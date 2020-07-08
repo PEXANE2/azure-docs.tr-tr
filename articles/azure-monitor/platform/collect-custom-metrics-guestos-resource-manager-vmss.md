@@ -8,10 +8,9 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125783"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
@@ -38,14 +37,14 @@ Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönl
 ## <a name="author-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu yazma 
 Bu örnekte, herkese açık bir [örnek şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)kullanabilirsiniz:  
 
-- **Azuredeploy. JSON** , bir sanal makine ölçek kümesinin dağıtılması için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
+- **Azuredeploy.js** , bir sanal makine ölçek kümesinin dağıtılması için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
 
-- **Azuredeploy. Parameters. JSON** , VM 'niz için ayarlamak istediğiniz Kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır. 
+- **Azuredeploy.parameters.json** , VM 'niz için ayarlamak istediğiniz Kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır. 
 
 Her iki dosyayı da yerel olarak indirin ve kaydedin. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Azuredeploy. Parameters. JSON öğesini Değiştir
-**Azuredeploy. Parameters. JSON** dosyasını açın:  
+###  <a name="modify-azuredeployparametersjson"></a>Üzerinde azuredeploy.parameters.jsDeğiştir
+Dosyadaki **azuredeploy.parameters.js** açın:  
  
 - Dağıtmak istediğiniz bir **Vmsku** sağlayın. Standard_D2_v3 öneririz. 
 - Sanal makine ölçek kümesi için istediğiniz bir **Windowsosversion** belirtin. 2016-Datacenter önerilir. 
@@ -54,8 +53,8 @@ Her iki dosyayı da yerel olarak indirin ve kaydedin.
 - **AdminUserName** ve sanal makine ölçek kümesi için **adminPassword** değerlerini girin. Bu parametreler, ölçek kümesindeki VM 'lere uzaktan erişim için kullanılır. VM 'nizin ele geçirilmesini önlemek için bu şablondaki **olanları kullanmayın.** Botlar, genel GitHub depolarındaki Kullanıcı adları ve parolalar için interneti tarar. Bu varsayılanlar ile VM 'Leri test etmeleri olasıdır. 
 
 
-###  <a name="modify-azuredeployjson"></a>Azuredeploy. JSON öğesini değiştirme
-**Azuredeploy. JSON** dosyasını açın. 
+###  <a name="modify-azuredeployjson"></a>Üzerinde azuredeploy.jsDeğiştir
+azuredeploy.jsdosya **üzerinde** açın. 
 
 Kaynak Yöneticisi şablonundaki depolama hesabı bilgilerini tutmak için bir değişken ekleyin. Tanılama yapılandırma dosyasında belirtilen tüm Günlükler veya performans sayaçları hem Azure Izleyici ölçüm deposuna hem de burada belirttiğiniz depolama hesabına yazılır: 
 
@@ -266,7 +265,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 1. Dağıtımınız başarılı olduktan sonra, Azure portal sanal makine ölçek kümesini bulmanız gerekir. Ölçümleri Azure Izleyici 'ye yaymalıdır. 
 
    > [!NOTE]  
-   > Seçili **Vmskusize**etrafında hatalarla karşılaşabilirsiniz. Bu durumda, **azuredeploy. JSON** dosyanıza dönün ve **Vmskusize** parametresinin varsayılan değerini güncelleştirin. **Standard_DS1_v2**denemeniz önerilir. 
+   > Seçili **Vmskusize**etrafında hatalarla karşılaşabilirsiniz. Bu durumda, dosyadaki **azuredeploy.js** geri dönüp **Vmskusize** parametresinin varsayılan değerini güncelleştirin. **Standard_DS1_v2**denemeniz önerilir. 
 
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın 

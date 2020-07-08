@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201539"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
@@ -23,7 +22,7 @@ ms.locfileid: "83201539"
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-Bu öğreticide, IoT Hub 'ınızın yerel bilgisayarınızda çalışan bir Node. js web uygulamasıyla aldığı gerçek zamanlı algılayıcı verilerini görselleştirmeyi öğreneceksiniz. Web uygulamasını yerel olarak çalıştırdıktan sonra, isteğe bağlı olarak, Azure App Service Web uygulamasını barındırmak için adımları izleyebilirsiniz. Power BI kullanarak IoT Hub 'ınızdaki verileri görselleştirmeye denemek istiyorsanız bkz. [Azure IoT Hub 'deki gerçek zamanlı algılayıcı verilerini görselleştirmek için Power BI kullanma](iot-hub-live-data-visualization-in-power-bi.md).
+Bu öğreticide, IoT Hub 'ınızın yerel bilgisayarınızda çalışan bir node.js Web uygulamasıyla aldığı gerçek zamanlı algılayıcı verilerini görselleştirmeyi öğreneceksiniz. Web uygulamasını yerel olarak çalıştırdıktan sonra, isteğe bağlı olarak, Azure App Service Web uygulamasını barındırmak için adımları izleyebilirsiniz. Power BI kullanarak IoT Hub 'ınızdaki verileri görselleştirmeye denemek istiyorsanız bkz. [Azure IoT Hub 'deki gerçek zamanlı algılayıcı verilerini görselleştirmek için Power BI kullanma](iot-hub-live-data-visualization-in-power-bi.md).
 
 ## <a name="what-you-do"></a>Yapabilecekleriniz
 
@@ -37,7 +36,7 @@ Bu öğreticide, IoT Hub 'ınızın yerel bilgisayarınızda çalışan bir Node
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [Node. js Ile Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md). Bu, aşağıdaki gereksinimleri kapsar:
+* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [node.jsRaspberry Pi ](iot-hub-raspberry-pi-kit-node-get-started.md). Bu, aşağıdaki gereksinimleri kapsar:
 
   * Etkin bir Azure aboneliği
   * Aboneliğiniz kapsamındaki bir IoT Hub 'ı
@@ -100,17 +99,17 @@ Web Apps-node-IoT-Hub-veri görselleştirme dizininden Web uygulamasını en sev
 
 Aşağıdaki dosyaları incelemek için bir dakikanızı ayırın:
 
-* **Server. js** , Web yuvasını ve Olay Hub sarmalayıcı sınıfını başlatan hizmet tarafı bir betiktir. Bu, sınıfın, gelen iletileri Web yuvasına yayımlamak için kullandığı olay hub sarmalayıcı sınıfına bir geri çağırma sağlar.
+* **Server.js** , Web yuvasını ve Olay Hub sarmalayıcı sınıfını başlatan hizmet tarafı bir betiktir. Bu, sınıfın, gelen iletileri Web yuvasına yayımlamak için kullandığı olay hub sarmalayıcı sınıfına bir geri çağırma sağlar.
 
-* **Event-hub-Reader. js** , belirtilen bağlantı dizesini ve tüketici grubunu kullanarak IoT Hub 'ın yerleşik uç noktasına bağlanan bir hizmet tarafı betiğidir. Gelen iletilerde DeviceID ve EnqueuedTimeUtc 'yi ayıklar ve ardından Server. js tarafından kaydedilen geri arama yöntemini kullanarak iletiyi geçirir.
+* **Event-hub-reader.js** , belirtilen bağlantı dizesini ve tüketici grubunu kullanarak IoT Hub 'ın yerleşik uç noktasına bağlanan bir hizmet tarafı betiğidir. DeviceID ve EnqueuedTimeUtc 'yi gelen iletilerdeki meta verilerden ayıklar ve sonra server.js tarafından kaydedilen geri arama yöntemini kullanarak iletiyi geçirir.
 
-* **Chart-Device-Data. js** , Web yuvasını dinleyen, her bir DeviceID 'nin izlenmesini tutan ve her bir cihaz için gelen verilerin son 50 noktasını depolayan bir istemci tarafı komut dosyası. Daha sonra seçili cihaz verilerini grafik nesnesine bağlar.
+* **Chart-device-data.js** , Web yuvasını dinleyen, her bir DeviceID 'nin izlenmesini tutan ve her bir cihaz için gelen verilerin son 50 noktasını depolayan bir istemci tarafı komut dosyası. Daha sonra seçili cihaz verilerini grafik nesnesine bağlar.
 
-* **Index. html** , Web sayfası için Kullanıcı arabirimi yerleşimini işler ve istemci tarafı mantığı için gerekli betiklerine başvurur.
+* **Index.html** , Web sayfası için Kullanıcı arabirimi yerleşimini işler ve istemci tarafı mantığı için gerekli betiklerine başvurur.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Web uygulaması için ortam değişkenlerini yapılandırma
 
-IoT Hub 'ınızdaki verileri okumak için, Web uygulamasının IoT Hub 'ının bağlantı dizesine ve okuması gereken tüketici grubunun adına ihtiyacı vardır. Bu dizeleri, Server. js ' de aşağıdaki satırlardaki işlem ortamından alır:
+IoT Hub 'ınızdaki verileri okumak için, Web uygulamasının IoT Hub 'ının bağlantı dizesine ve okuması gereken tüketici grubunun adına ihtiyacı vardır. Bu dizeleri işlem ortamından server.js, aşağıdaki satırlarda alır:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
@@ -165,7 +164,7 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git`Parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. `--runtime`Kullandığınız Node. js çalışma zamanının sürümüne bağlı olarak, parametresi Için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. `az webapp list-runtimes`Desteklenen çalışma zamanlarının listesini almak için komutunu kullanabilirsiniz.
+2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git`Parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. `--runtime`Kullandığınız Node.js çalışma zamanının sürümüne bağlı olarak, parametre Için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. `az webapp list-runtimes`Desteklenen çalışma zamanlarının listesini almak için komutunu kullanabilirsiniz.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -198,7 +197,7 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. App Service içindeki Web uygulaması için git deposuna başvuran bir uzak kopya ekleyin. \<Git kopyası URL 'si için \> , önceki adımda döndürülen URL 'yi kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
+7. App Service içindeki Web uygulaması için git deposuna başvuran bir uzak kopya ekleyin. İçin \<Git clone URL\> , önceki adımda döndürülen URL 'yi kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -239,13 +238,13 @@ Bu örnekle ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki bölümlerde
 
 * Tarayıcıda Geliştirici Araçları ' nı açın (birçok tarayıcıda F12 tuşu açılır ve konsolu bulunur). Burada yazdırılan uyarıları veya hataları arayın.
 
-* /JS/chat-Device-Data.js. içinde istemci tarafı betikte hata ayıklaması yapabilirsiniz
+* /JS/chat-device-data.js 'de istemci tarafı betikte hata ayıklaması yapabilirsiniz.
 
 ### <a name="local-website-issues"></a>Yerel Web sitesi sorunları
 
 * Konsol çıktısı için düğümü başlattığınız penceredeki çıktıyı izleyin.
 
-* Sunucu kodunda özel olarak Server. js ve/Scripts/Event-hub-Reader.exe hatalarını ayıklayın.
+* Sunucu kodunda özel olarak server.js ve/Scripts/event-hub-reader.js hatalarını ayıklayın.
 
 ### <a name="azure-app-service-issues"></a>Azure App Service sorunları
 

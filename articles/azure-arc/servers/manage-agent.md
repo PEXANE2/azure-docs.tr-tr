@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648098"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
@@ -52,7 +51,7 @@ Windows Installer paketlerine yönelik komut satırı seçeneklerini tanımıyor
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum sihirbazını başlatmak için **AzureConnectedMachineAgent. msi** dosyasını yürütün.
+2. Kurulum sihirbazını başlatmak için **AzureConnectedMachineAgent.msi** yürütün.
 
 Kurulum Sihirbazı önceki bir sürümün mevcut olup olmadığını bulur ve sonra otomatik olarak aracının yükseltmesini gerçekleştirir. Yükseltme tamamlandığında, Kurulum Sihirbazı otomatik olarak kapanır.
 
@@ -125,7 +124,7 @@ Paketlerin yüklenmesi ve kaldırılması gibi [zypper](https://en.opensuse.org/
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent aracı hakkında
 
-Azcmagent Tool (Azcmagent. exe), yükleme sırasında sunucu aracısına bağlı makine aracısını yapılandırmak veya yükleme sonrasında aracının başlangıç yapılandırmasını değiştirmek için kullanılır. Azcmagent. exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
+Azcmagent Aracı (Azcmagent.exe), yükleme sırasında sunucu aracısına bağlı makine aracısını yapılandırmak veya yükleme sonrasında aracının başlangıç yapılandırmasını değiştirmek için kullanılır. Azcmagent.exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
 
 * **Bağlan** -makineyi Azure yaya bağlamak için
 
@@ -212,11 +211,11 @@ Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinede *C:\
     c. **Programlar ve Özellikler**' de **Azure bağlı makine Aracısı**' nı seçin, **Kaldır**' ı seçin ve **Evet**' i seçin.  
 
     >[!NOTE]
-    > Ayrıca, **AzureConnectedMachineAgent. msi** yükleyici paketini çift tıklayarak da aracı kurulum sihirbazını çalıştırabilirsiniz.
+    > Aracı Kurulum sihirbazını **AzureConnectedMachineAgent.msi** yükleyicisi paketine çift tıklayarak da çalıştırabilirsiniz.
 
 #### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldır
 
-Aracıyı komut Isteminden el ile kaldırmak veya betik gibi otomatikleştirilmiş bir yöntemi kullanmak için aşağıdaki örneği kullanabilirsiniz. İlk olarak, işletim sisteminden uygulama paketinin asıl tanımlayıcısı olan bir GUID olan ürün kodunu almanız gerekir. Kaldırma işlemi, Msiexec. exe komut satırı-kullanılarak gerçekleştirilir `msiexec /x {Product Code}` .
+Aracıyı komut Isteminden el ile kaldırmak veya betik gibi otomatikleştirilmiş bir yöntemi kullanmak için aşağıdaki örneği kullanabilirsiniz. İlk olarak, işletim sisteminden uygulama paketinin asıl tanımlayıcısı olan bir GUID olan ürün kodunu almanız gerekir. Kaldırma işlemi Msiexec.exe komut satırı kullanılarak gerçekleştirilir `msiexec /x {Product Code}` .
 
 1. Kayıt defteri düzenleyicisini açın.
 

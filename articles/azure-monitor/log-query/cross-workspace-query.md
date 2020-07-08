@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83199903"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
@@ -55,7 +54,7 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Azure Kaynak KIMLIĞI: çalışma alanının Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır.  Çalışma alanları için şu biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/çalışma alanları/componentName*.  
 
-    Örnek:
+    Örneğin:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -86,7 +85,7 @@ Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlay�
 
 * Azure Kaynak KIMLIĞI-uygulamanın Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır. Biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/bileşenler/componentName*.  
 
-    Örnek:
+    Örneğin:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```

@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
 ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83597033"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede, ön üretim ortamlarında çekme isteklerini gözden geçirin
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde üretim öncesi ortamlarında çekme isteklerini gözden geçirme
 
 Bu makalede, [Azure statik Web Apps](overview.md)ile dağıtılan uygulamalardaki değişiklikleri gözden geçirmek için üretim öncesi ortamların nasıl kullanılacağı gösterilmektedir.
 
@@ -35,7 +34,7 @@ Birden çok üretim öncesi ortam, Azure statik Web Apps kullanırken aynı anda
 > [!NOTE]
 > Önizleme süresince, bir seferde [en fazla yalnızca bir hazırlık ortamına](quotas.md) izin verilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure statik Web Apps ile yapılandırılmış mevcut bir GitHub deposu. Bkz. bir tane yoksa, [ilk statik uygulamanızı oluşturma](getting-started.md) .
 

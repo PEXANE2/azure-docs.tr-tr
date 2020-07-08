@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201127"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
@@ -56,19 +55,19 @@ Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlaya
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Uygulama ayarları dosyası oluşturma ve yapılandırma
 
-### <a name="create-appsettingsjson"></a>AppSettings. JSON oluştur
+### <a name="create-appsettingsjson"></a>appsettings.jsoluşturma
 
 1. Git **genel**  >  **metin dosyası**.
-1. "AppSettings. JSON" olarak adlandırın.
+1. "appsettings.json" olarak adlandırın.
 1. . Json dosyasının "çıkış dizinine Kopyala" özelliğini "daha sonra Kopyala" olarak ayarlayın (böylece uygulamanın yayımlandığında erişebilmesi için).
 
-### <a name="set-values-in-appsettingsjson"></a>AppSettings. JSON içindeki değerleri ayarla
+### <a name="set-values-in-appsettingsjson"></a>Üzerinde appsettings.jsdeğerleri ayarlama
 
-`az ams account sp create`Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
+`az ams account sp create`Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appsettings.json" uygulamanıza kopyalamanız gereken JSON döndürür.
  
 ## <a name="add-configuration-file"></a>Yapılandırma dosyasını ekleme
 
-Kolaylık sağlaması için, "appSettings. JSON" öğesinden değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
+Kolaylık sağlaması için, "appsettings.json" kaynağından gelen değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
 
 1. Projenize yeni bir. cs sınıfı ekleyin. Bunu, `ConfigWrapper` olarak adlandırın. 
 1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının olduğunu varsayar `ConsoleApp1` ).

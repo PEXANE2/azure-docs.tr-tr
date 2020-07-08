@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201115"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Izleyici sorgusunda App () ifadesi
@@ -20,7 +19,7 @@ Bu `app` ifade, bir Azure izleyici sorgusunda aynı kaynak grubunda, başka bir 
 > [!IMPORTANT]
 > Günlük verileri bir Log Analytics çalışma alanında depolandığından, bu, bir [çalışma alanı tabanlı Application Insights kaynağı](../app/create-workspace-resource.md) kullanıyorsanız, uygulama () ifadesi kullanılmaz. Birden çok çalışma alanındaki uygulamayı içeren bir sorgu yazmak için log () ifadesini kullanın. Aynı çalışma alanındaki birden çok uygulama için, bir çapraz çalışma alanı sorgusuna gerek yoktur.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 `app(`*Tanımlayıcısını*`)`
 
@@ -33,7 +32,7 @@ Bu `app` ifade, bir Azure izleyici sorgusunda aynı kaynak grubunda, başka bir 
 |:---|:---|:---|
 | Kaynak Adı | Uygulamanın okunabilir adı ("bileşen adı" olarak da bilinir) | uygulama ("fabrikamapp") |
 | Tam ad | Şu biçimdeki uygulamanın tam adı: "subscriptionName/resourceGroup/componentName" | uygulama (' AI-Prototype/fabrikam/fabrikamapp ') |
-| Kimlik | Uygulamanın GUID 'SI | uygulama ("988ba129-363e-4415-8fe7-8cbe5447518") |
+| ID | Uygulamanın GUID 'SI | uygulama ("988ba129-363e-4415-8fe7-8cbe5447518") |
 | Azure Kaynak KIMLIĞI | Azure kaynağı için tanımlayıcı |uygulama ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 

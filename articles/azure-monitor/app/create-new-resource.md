@@ -4,10 +4,9 @@ description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200684"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
@@ -27,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | `Unique value` | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
-   | **Kaynak grubu**     | `myResourceGroup`      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
+   | **Kaynak Grubu**     | `myResourceGroup`      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
    | **Geli** | `East US` | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
    | **Kaynak modu** | `Classic` veya `Workspace-based` | Çalışma alanı tabanlı kaynaklar şu anda genel önizlemededir ve Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi sağlar. Daha fazla bilgi için [çalışma alanı tabanlı kaynaklardaki makaleye](create-workspace-resource.md)bakın.
 
