@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366754"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile performans Izleme
@@ -31,9 +30,9 @@ Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birli
 
     ![Log Analytics özellikleri sayfası](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
 
-3. Bir Windows kümesi ve Linux kümesi oluşturuyorsanız, **Linux sunucuları** Için **Windows Server** 'a tıklayın. Bu sayfada size `workspace ID` ve `workspace key` görüntülenir (portalda birincil anahtar olarak listelenir). Bir sonraki adımda her ikisine de ihtiyacınız olacak.
+3. Bir Windows kümesi ve Linux kümesi oluşturuyorsanız, **Linux sunucuları** Için **Windows Server** 'a tıklayın. Bu sayfada size `workspace ID` ve görüntülenir `workspace key` (portalda birincil anahtar olarak listelenir). Bir sonraki adımda her ikisine de ihtiyacınız olacak.
 
-4. `vmss extension set` API 'yi kullanarak Log Analytics aracısını kümenize yüklemek için komutunu çalıştırın:
+4. API 'yi kullanarak Log Analytics aracısını kümenize yüklemek için komutunu çalıştırın `vmss extension set` :
 
     Bir Windows kümesi için:
 
@@ -51,7 +50,7 @@ Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birli
 
     ![Log Analytics Agent CLI komutu](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. Aracıyı düğümlere başarıyla eklemek için bu 15 dakikadan az sürer. `az vmss extension list` API 'leri kullanarak aracıların eklendiğini doğrulayabilirsiniz:
+5. Aracıyı düğümlere başarıyla eklemek için bu 15 dakikadan az sürer. API 'leri kullanarak aracıların eklendiğini doğrulayabilirsiniz `az vmss extension list` :
 
     ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -67,7 +66,7 @@ Bu şablonu, gereksinimlerinize en uygun bir küme dağıtmak için indirebilir 
 
 Artık Log Analytics aracıyı eklediğine göre, hangi performans sayaçlarını toplamak istediğinizi seçmek için Log Analytics portalına gidin.
 
-1. Azure portal, Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **\<Servicefabric Nameoflog analiz ticsworkspace\>**' i seçin.
+1. Azure portal, Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **Servicefabric \<nameOfLog AnalyticsWorkspace\> **' i seçin.
 
 2. **Log Analytics**’i tıklayın.
 

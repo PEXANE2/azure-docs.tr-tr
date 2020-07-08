@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79266994"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
@@ -69,7 +68,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - Sürücü bilgileri
 
 - Donanım
-  - PCI aygıtları [`*`]
+  - PCI aygıtları [ `*` ]
 
 - Süreçler ve bellek
   - İşlem listesi (görev adı, kullanılan bellek, açılan dosyalar)
@@ -103,16 +102,16 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - /var/log/Cloud-init-output.log
   - /var/logtecu-Manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[uzantı klasörü]/\*günlük\*
+  - /var/log/Azure/[uzantı klasörü]/ \* günlük\*
   - /var/seçenek/Microsoft/omsconfig/omsconfig.log
   - /var/seçenek/Microsoft/omsagent/log/omsagent.log
-  - /etc/waagentnconfig
+  - /etc/waagent.config
   - Son beş güne ait journalctl çıkışı
 
 - [Azure sanal makine örneği meta verileri](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı
+>[ `*` ] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>VM 'niz üzerinde Perfinsıghts Linux 'u çalıştırın
 
@@ -127,16 +126,16 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
 
     | Dağıtım               | Sürüm                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux sunucusu        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Oracle Linux sunucusu        | 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image)|
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
-    | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Lütfen [bilinen sorunlar](#known-issues) bölümüne bakın
+>[ `*` ] Lütfen [bilinen sorunlar](#known-issues) bölümüne bakın
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
@@ -173,7 +172,7 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Dosyasını içeren `perfinsights.py` klasöre gidin ve ardından kullanılabilir komut satırı parametrelerini görüntülemek `perfinsights.py` için çalıştırın.
+2. Dosyasını içeren klasöre gidin `perfinsights.py` ve ardından `perfinsights.py` kullanılabilir komut satırı parametrelerini görüntülemek için çalıştırın.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +204,11 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
     >
     >Microsoft ile etkin bir destek biletine sahipseniz ve üzerinde çalıştığınız destek mühendisinin isteği başına Perfinsıghts çalıştırıyorsanız, **-s veya--support-Request** seçeneğini kullanarak destek bileti numarasını sağladığınızdan emin olun.
 
-Çalıştırma tamamlandığında, hiçbir çıkış klasörü belirtilmediği sürece yeni bir tar dosyası Perfinsıghts ile aynı klasörde görünür. Dosyanın adı **\_performancediagnostics yyyy-aa-gg\_hh-mm-ss-fff. tar. gz şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu dosya içinde açabilirsiniz.
+Çalıştırma tamamlandığında, hiçbir çıkış klasörü belirtilmediği sürece yeni bir tar dosyası Perfinsıghts ile aynı klasörde görünür. Dosyanın adı **Performancediagnostics \_ yyyy-aa-gg \_ HH-mm-ss-fff. tar. gz şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu dosya içinde açabilirsiniz.
 
 ## <a name="review-the-diagnostics-report"></a>Tanılama raporunu gözden geçirin
 
-**\_Performancediagnostics yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasında, perfinsıghts 'ın bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını genişletin ve ardından **perfinsıghts Report. html** dosyasını açın.
+**Performancediagnostics \_ yyyy-aa-gg \_ HH-mm-ss-fff. tar. gz** dosyasında, perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **Performancediagnostics \_ yyyy-aa-gg \_ HH-mm-ss-fff. tar. gz** dosyasını genişletin ve ardından **perfinsıghts Report.html** dosyasını açın.
 
 ### <a name="overview-tab"></a>Genel Bakış sekmesi
 
@@ -254,4 +253,4 @@ Aşağıdaki ekran görüntüsünde, neler alabileceğinize benzer bir ileti gö
 
 Dosya aktarımı çalışma alanına erişmek için iletideki yönergeleri izleyin. Ek güvenlik için, ilk kullanımda parolanızı değiştirmeniz gerekir.
 
-Oturum açtıktan sonra, Perfinsıghts tarafından toplanan **\_performancediagnostics yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını karşıya yüklemek için bir iletişim kutusu görürsünüz.
+Oturum açtıktan sonra, Perfinsıghts tarafından toplanan **Performancediagnostics \_ yyyy-aa-gg \_ HH-mm-ss-fff. tar. gz** dosyasını karşıya yüklemek için bir iletişim kutusu görürsünüz.

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79272207"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop YARN sorunlarını giderme
@@ -95,7 +94,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Bu komut amlogs. txt adlı bir günlük dosyası oluşturur.
+    Bu komut amlogs.txt adlı bir günlük dosyası oluşturur.
 
 1. YARN kapsayıcı günlüklerini yalnızca en son uygulama ana kopyası için indirmek üzere aşağıdaki komutu kullanın:
 
@@ -103,7 +102,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Bu komut, latestamlogs. txt adlı bir günlük dosyası oluşturur.
+    Bu komut latestamlogs.txt adlı bir günlük dosyası oluşturur.
 
 1. İlk iki uygulama ana için YARN kapsayıcı günlüklerini indirmek için aşağıdaki komutu kullanın:
 
@@ -111,7 +110,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Bu komut first2amlogs. txt adlı bir günlük dosyası oluşturur.
+    Bu komut first2amlogs.txt adlı bir günlük dosyası oluşturur.
 
 1. Tüm YARN kapsayıcı günlüklerini indirmek için aşağıdaki komutu kullanın:
 
@@ -119,7 +118,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Bu komut logs. txt adlı bir günlük dosyası oluşturur.
+    Bu komut logs.txt adlı bir günlük dosyası oluşturur.
 
 1. Belirli bir kapsayıcı için YARN kapsayıcı günlüğünü indirmek için aşağıdaki komutu kullanın:
 
@@ -127,7 +126,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Bu komut, containerlogs. txt adlı bir günlük dosyası oluşturur.
+    Bu komut containerlogs.txt adlı bir günlük dosyası oluşturur.
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Ek okuma
 
@@ -140,6 +139,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 - Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

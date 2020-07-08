@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282789"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel dizin oluşturma
@@ -145,7 +144,7 @@ Bir portal yaklaşımı yerine kod, yinelemeli tasarım için önerilir. Dizin t
 Şemanızı tanımlarken, dizininizdeki her bir alan için ad, tür ve öznitelikler belirtmeniz gerekir. Alan türü, bu alanda depolanan verileri sınıflandırır. Öznitelikler, alanın nasıl kullanıldığını belirtmek için tek tek alanlarda ayarlanır. Aşağıdaki tablolar belirtebileceğiniz türleri ve öznitelikleri numaralandırır.
 
 ### <a name="data-types"></a>Veri türleri
-| Tür | Açıklama |
+| Tür | Description |
 | --- | --- |
 | *Edm.String* |İsteğe bağlı olarak tam metin araması için simgeleştirilmiş olabilecek metin (sözcük ayırma, sözcük kökü oluşturma vb.). |
 | *Collection(Edm.String)* |Tam metin araması için isteğe bağlı olarak belirteç haline getirilebilen dize listesi. Bir koleksiyondaki öğelerin sayısında teorik bir üst sınır yoktur ancak yük boyutundaki 16 MB'lık üst sınır, koleksiyonlar için geçerlidir. |
@@ -153,7 +152,7 @@ Bir portal yaklaşımı yerine kod, yinelemeli tasarım için önerilir. Dizin t
 | *Edm.Int32* |32 bit tamsayı değerleri. |
 | *Edm.Int64* |64 bit tamsayı değerleri. |
 | *Edm.Double* |Çift duyarlıklı sayısal veriler. |
-| *Edm.DateTimeOffset* |OData v4 biçiminde temsil edilen tarih saat değerleri (örneğin, `yyyy-MM-ddTHH:mm:ss.fffZ` veya `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.DateTimeOffset* |OData v4 biçiminde temsil edilen tarih saat değerleri (örneğin, `yyyy-MM-ddTHH:mm:ss.fffZ` veya `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | *Edm.GeographyPoint* |Dünya üzerindeki bir coğrafi konumu temsil eden bir nokta. |
 
 Azure Bilişsel Arama tarafından [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)hakkında daha ayrıntılı bilgi edinmek için burada bulabilirsiniz.
@@ -211,9 +210,9 @@ Tarayıcı tüm çapraz kaynak isteklerini önleyediğinden, istemci tarafı Jav
 
 CORS için aşağıdaki seçenekler ayarlanabilir:
 
-+ **allowederlerin** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle form `protocol://<fully-qualified-domain-name>:<port>` olur, ancak `<port>` genellikle atlanacaktır. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
++ **allowederlerin** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle form olur, `protocol://<fully-qualified-domain-name>:<port>` ancak `<port>` genellikle atlanacaktır. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-  Tüm kaynaklardan erişime izin vermek istiyorsanız, **Allowedkaynakları** dizisine tek `*` bir öğe olarak dahil edin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
+  Tüm kaynaklardan erişime izin vermek istiyorsanız, `*` **allowedkaynakları** dizisine tek bir öğe olarak dahil edin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
 
 + **Maxageınseconds** (isteğe bağlı): TARAYıCıLAR, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
 

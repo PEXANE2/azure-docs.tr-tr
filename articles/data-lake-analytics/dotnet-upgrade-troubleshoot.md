@@ -10,10 +10,9 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79213579"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics .NET Framework v 4.7.2 sürümüne yükseltiyor
@@ -65,27 +64,27 @@ Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını (Bu 
   - Önerilen eylem: TaskFactory. FromAsync ' nin doğru doğru döndürdüğünden emin olun
 
 - DataObject. GetData artık verileri UTF-8 olarak alıyor
-  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. #N # #N # .NET Framework 4,5 veya üstünü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için, `DataObject.GetData` HTML biçimli verileri, 0x7F 'den büyük karakterleri temsıl eden UTF-8 olarak alır.
+  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. #N # #N # .NET Framework 4,5 veya üstünü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için, `DataObject.GetData` HTML biçimli verileri, 0x7F 'den büyük karakterleri temsil eden UTF-8 olarak alır.
   - Etkilenen kitaplıklar: GLO
   - Önerilen eylem: alınan verilerin istediğiniz biçimde olduğundan emin olun
 
 - XmlWriter, geçersiz vekil çiftlerine atar
-  - .NET Framework 4.5.2 veya önceki sürümleri hedefleyen uygulamalar için, özel durum geri dönüş işleme kullanarak geçersiz bir yedek çifti yazmak her zaman bir özel durum oluşturmaz. .NET Framework 4,6 ' i hedefleyen uygulamalar için geçersiz bir yedek çifti yazma girişimi bir `ArgumentException`oluşturur.
-  - Etkilenen kitaplıklar: System. xml, System. xml. ReaderWriter
+  - .NET Framework 4.5.2 veya önceki sürümleri hedefleyen uygulamalar için, özel durum geri dönüş işleme kullanarak geçersiz bir yedek çifti yazmak her zaman bir özel durum oluşturmaz. .NET Framework 4,6 ' i hedefleyen uygulamalar için geçersiz bir yedek çifti yazma girişimi bir oluşturur `ArgumentException` .
+  - Etkilenen kitaplıklar: System.Xml, System.Xml. ReaderWriter
   - Önerilen eylem: bağımsız değişken özel durumuna neden olacak geçersiz bir yedek çifti yazmatığınızdan emin olun
 
 - HtmlTextWriter `<br/>` öğeyi doğru işlemiyor
-  - .NET Framework 4,6 ' den başlayarak, ve `HtmlTextWriter.RenderBeginTag()` `HtmlTextWriter.RenderEndTag()` içeren bir `<BR />` öğe çağırmak doğru bir şekilde yalnızca bir `<BR />` tane eklenir (iki yerine)
+  - .NET Framework 4,6 ' den başlayarak, `HtmlTextWriter.RenderBeginTag()` ve `HtmlTextWriter.RenderEndTag()` içeren bir `<BR />` öğe çağırmak doğru bir şekilde yalnızca bir tane eklenir `<BR />` (iki yerine)
   - Etkilenen kitaplıklar: System. Web
   - Önerilen eylem: Bu şekilde, bir `<BR />` üretim işinde rastgele bir davranışın görülmemesi için görmeyi beklediğiniz miktarı yerleştirdiğinizden emin olun
 
 - CreateDefaultAuthorizationContext 'in null bir bağımsız değişkenle çağrılması değiştirildi
-  - Null authorizationPolicies bağımsız değişkeniyle bir çağrı `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` tarafından döndürülen AuthorizationContext 'in uygulanması, .NET Framework 4,6 ' deki uygulamasını değiştirdi.
+  - Null authorizationPolicies bağımsız değişkeniyle bir çağrı tarafından döndürülen AuthorizationContext 'in uygulanması, `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` .NET Framework 4,6 ' deki uygulamasını değiştirdi.
   - Etkilenen kitaplıklar: System. IdentityModel
   - Önerilen eylem: null yetkilendirme ilkesi olduğunda, beklenen yeni davranışı işlediğinizden emin olun
   
 - RSACng artık standart olmayan anahtar boyutunun RSA anahtarlarını doğru şekilde yükler
-  - 4.6.2 ' den önceki .NET Framework sürümlerde, RSA sertifikaları için standart olmayan anahtar boyutlarına sahip müşteriler bu anahtarlara `GetRSAPublicKey()` ve `GetRSAPrivateKey()` genişletme yöntemleriyle erişemez. " `CryptographicException` İstenen anahtar boyutu desteklenmiyor" iletisiyle bir ileti oluşturulur. .NET Framework 4.6.2 Bu sorun düzeltildi. Benzer şekilde `RSA.ImportParameters()` , `RSACng.ImportParameters()` ve artık `CryptographicException`oluşturmaksızın standart olmayan anahtar boyutlarıyla çalışır.
+  - 4.6.2 ' den önceki .NET Framework sürümlerde, RSA sertifikaları için standart olmayan anahtar boyutlarına sahip müşteriler bu anahtarlara `GetRSAPublicKey()` ve `GetRSAPrivateKey()` genişletme yöntemleriyle erişemez. `CryptographicException`"İstenen anahtar boyutu desteklenmiyor" iletisiyle bir ileti oluşturulur. .NET Framework 4.6.2 Bu sorun düzeltildi. Benzer şekilde, `RSA.ImportParameters()` ve `RSACng.ImportParameters()` artık oluşturmaksızın standart olmayan anahtar boyutlarıyla çalışır `CryptographicException` .
   - Etkilenen kitaplıklar: mscorlib, System. Core
   - Önerilen eylem: RSA anahtarlarının beklendiği gibi çalıştığından emin olun
 
@@ -95,11 +94,11 @@ Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını (Bu 
   - Önerilen eylem:
 
 - ClaimsIdentity oluşturucuları çağrıları
-  - .NET Framework 4.6.2 ' den başlayarak, bir `T:System.Security.Claims.ClaimsIdentity` `T:System.Security.Principal.IIdentity` parametreye sahip oluşturucuların `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği ayarlama biçiminde bir değişiklik vardır. `T:System.Security.Principal.IIdentity` `T:System.Security.Claims.ClaimsIdentity` Bağımsız değişken bir nesne ise ve bu `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Claims.ClaimsIdentity` nesnenin özelliği değilse `null`, `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği `M:System.Security.Claims.ClaimsIdentity.Clone` yöntemi kullanılarak iliştirilir. Framework 4.6.1 ve önceki sürümlerde, `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği var olan bir başvuru olarak eklenir. Bu değişiklik nedeniyle .NET Framework 4.6.2 ile `P:System.Security.Claims.ClaimsIdentify.Actor` başlayarak, yeni `T:System.Security.Claims.ClaimsIdentity` nesnenin özelliği oluşturucunun `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Principal.IIdentity` bağımsız değişkeninin özelliğine eşit değildir. .NET Framework 4.6.1 ve önceki sürümlerde, eşittir.
+  - .NET Framework 4.6.2 ' den başlayarak, `T:System.Security.Claims.ClaimsIdentity` bir parametreye sahip oluşturucuların özelliği ayarlama biçiminde bir değişiklik vardır `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` . `T:System.Security.Principal.IIdentity`Bağımsız değişken bir nesne ise `T:System.Security.Claims.ClaimsIdentity` ve `P:System.Security.Claims.ClaimsIdentify.Actor` Bu `T:System.Security.Claims.ClaimsIdentity` nesnenin özelliği değilse `null` , `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği yöntemi kullanılarak iliştirilir `M:System.Security.Claims.ClaimsIdentity.Clone` . Framework 4.6.1 ve önceki sürümlerde, `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği var olan bir başvuru olarak eklenir. Bu değişiklik nedeniyle .NET Framework 4.6.2 ile başlayarak, `P:System.Security.Claims.ClaimsIdentify.Actor` Yeni `T:System.Security.Claims.ClaimsIdentity` nesnenin özelliği `P:System.Security.Claims.ClaimsIdentify.Actor` oluşturucunun bağımsız değişkeninin özelliğine eşit değildir `T:System.Security.Principal.IIdentity` . .NET Framework 4.6.1 ve önceki sürümlerde, eşittir.
   - Etkilenen kitaplıklar: mscorlib
   - Önerilen eylem: yeni çalışma zamanında beklenen ClaimsIdentity 'nin çalıştığından emin olun
 
 - DataContractJsonSerializer ile denetim karakterlerinin serileştirilmesi artık ECMAScript V6 ve V8 ile uyumludur
   - .NET Framework 4.6.2 ve önceki sürümlerinde, DataContractJsonSerializer, \b, \f ve \t gibi bazı özel denetim karakterlerini ECMAScript V6 ve V8 standartlarıyla uyumlu olacak şekilde serileştirmedi. 4,7 .NET Framework başlayarak, bu denetim karakterlerinin serileştirilmesi ECMAScript V6 ve V8 ile uyumludur.
-  - Etkilenen kitaplıklar: System. Runtime. Serialization. JSON
+  - Etkilenen kitaplıklar: System.Runtime.Serialization.Js
   - Önerilen eylem: DataContractJsonSerializer ile aynı davranışa sahip olun

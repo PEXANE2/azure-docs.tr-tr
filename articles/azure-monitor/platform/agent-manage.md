@@ -6,10 +6,9 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79275106"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve bakımını yapma
@@ -28,11 +27,11 @@ Windows ve Linux için Log Analytics Aracısı en son sürüme el ile veya VM 'n
 
 ### <a name="upgrade-windows-agent"></a>Windows aracısını yükselt 
 
-Bir Windows sanal makinesinde aracıyı Log Analytics VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut Istemi, komut dosyası veya diğer otomasyon çözümünden veya MMASetup-\<Platform\>. msi kurulum sihirbazını kullanarak komutunu çalıştırın.  
+Bir Windows VM 'deki aracıyı Log Analytics VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut Istemi, komut dosyası veya başka bir Otomasyon çözümünden veya MMASetup- \<platform\> . msi kurulum sihirbazını kullanarak komutunu çalıştırın.  
 
 Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızdan Windows aracısının en son sürümünü indirebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
@@ -50,7 +49,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum sihirbazını başlatmak için **MMASetup-\<\>platform. exe** ' yi yürütün.
+2. Kurulum sihirbazını başlatmak için **MMASetup- \<platform\> . exe dosyasını** yürütün.
 
 3. Kurulum sihirbazının ilk sayfasında, **İleri**' ye tıklayın.
 
@@ -64,7 +63,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri `MMASetup-<platform>.exe /c /t:<Full Path>`geçirerek yolu belirtebilirsiniz.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri geçirerek yolu belirtebilirsiniz `MMASetup-<platform>.exe /c /t:<Full Path>` .
 
 3. Aşağıdaki komutu çalıştırın. Burada D:\ yükseltme günlük dosyasının konumudur.
 
@@ -74,7 +73,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 ### <a name="upgrade-linux-agent"></a>Linux aracısını yükselt 
 
-Önceki sürümlerden yükseltme (>1.0.0-47) desteklenir. `--upgrade` Komutuyla yüklemeyi gerçekleştirmek aracının tüm bileşenlerini en son sürüme yükseltir.
+Önceki sürümlerden yükseltme (>1.0.0-47) desteklenir. Komutuyla yüklemeyi gerçekleştirmek `--upgrade` aracının tüm bileşenlerini en son sürüme yükseltir.
 
 Aracıyı yükseltmek için aşağıdaki komutu çalıştırın.
 
@@ -129,7 +128,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Aracıyı yüklemek veya yapılandırmak için daha önce komut satırını veya betiğini kullandıysanız, `EnableAzureOperationalInsights` `AddCloudWorkspace` ve `RemoveCloudWorkspace`ile değiştirilmiştir.
+>Aracıyı yüklemek veya yapılandırmak için daha önce komut satırını veya betiğini kullandıysanız, `EnableAzureOperationalInsights` ve ile değiştirilmiştir `AddCloudWorkspace` `RemoveCloudWorkspace` .
 >
 
 ### <a name="linux-agent"></a>Linux Aracısı
@@ -236,16 +235,16 @@ Komut satırı veya Kurulum Sihirbazı 'nı kullanarak Windows veya Linux Aracı
 3. **Programlar ve Özellikler**' de **Microsoft Monitoring Agent**' a, **Kaldır**' a ve ardından **Evet**' e tıklayın.
 
 >[!NOTE]
->Aracı Kurulum Sihirbazı, Ayrıca, Azure portal bir çalışma alanından indirileceği **MMASetup-\<Platform\>. exe**' ye çift tıklayarak da çalıştırılabilir.
+>Aracı Kurulum Sihirbazı, Azure portal bir çalışma alanından indirileceği **MMASetup- \<platform\> . exe**dosyasına çift tıklanarak da çalıştırılabilir.
 
 #### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldır
 Aracının indirilen dosyası, IExpress ile oluşturulan, kendi içinde bulunan bir yükleme paketidir. Aracının ve destekleyici dosyaların kurulum programı pakette bulunur ve aşağıdaki örnekte gösterilen komut satırı kullanılarak düzgün bir şekilde kaldırılması için ayıklanmalıdır.
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `extract MMASetup-<platform>.exe` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`geçirerek yolu belirtebilirsiniz. IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `extract MMASetup-<platform>.exe` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri geçirerek yolu belirtebilirsiniz `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
 
-3. İstemine yazın `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
+3. İstemine yazın `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 
 ### <a name="linux-agent"></a>Linux Aracısı
 Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştırın. *--temizleme* bağımsız değişkeni, aracıyı ve yapılandırmasını tamamen kaldırır.
@@ -286,7 +285,7 @@ Linux için Log Analytics aracısını bir System Center Operations Manager yön
 
 1. Dosyayı Düzenle`/etc/opt/omi/conf/omiserver.conf`
 
-2. İle `httpsport=` başlayan satırın 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin:`httpsport=1270`
+2. İle başlayan satırın `httpsport=` 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin:`httpsport=1270`
 
 3. OMı sunucusunu yeniden başlatın:`sudo /opt/omi/bin/service_control restart`
 

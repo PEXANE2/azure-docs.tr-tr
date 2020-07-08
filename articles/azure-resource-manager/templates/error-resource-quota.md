@@ -4,10 +4,9 @@ description: Kaynakları Azure Resource Manager ile dağıttığınızda kaynak 
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79273793"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Kaynak kotası hatalarını düzeltme
@@ -44,7 +43,7 @@ Tüm kota bilgileri için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı için, sanal makine `az vm list-usage` kotalarını bulmak için komutunu kullanın.
+Azure CLı için, `az vm list-usage` sanal makine kotalarını bulmak için komutunu kullanın.
 
 ```azurecli
 az vm list-usage --location "South Central US"

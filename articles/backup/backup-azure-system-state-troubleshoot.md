@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969569"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
@@ -106,7 +105,7 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki adımları ger�
 
 - WSB PowerShell 'in çalıştığından emin olun
 
-  - Yükseltilmiş `Get-WBJob` bir PowerShell 'den çalıştırın ve aşağıdaki hatayı döndürmediğinden emin olun:
+  - `Get-WBJob`Yükseltilmiş bir PowerShell 'den çalıştırın ve aşağıdaki hatayı döndürmediğinden emin olun:
 
     > [!WARNING]
     > Get-WBJob: ' Get-WBJob ' terimi bir cmdlet, işlev, betik dosyası veya çalıştırılabilir program adı olarak tanınmıyor. Adın yazımını denetleyin veya bir yol içerilip yolun doğru olduğundan emin olun ve yeniden deneyin.
@@ -120,8 +119,8 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki adımları ger�
       > [!NOTE]
       >X değerini, sistem durumu yedekleme görüntüsünü depolamak istediğiniz birimin sürücü harfiyle değiştirin.
 
-    - Yükseltilmiş PowerShell 'ten komut çalıştırarak `Get-WBJob` işin durumunu düzenli olarak denetleyin
-    - Yedekleme işi tamamlandıktan sonra, komutunu çalıştırarak `Get-WBJob -Previous 1` işin son durumunu denetleyin
+    - Yükseltilmiş PowerShell 'ten komut çalıştırarak işin durumunu düzenli olarak denetleyin `Get-WBJob`
+    - Yedekleme işi tamamlandıktan sonra, komutunu çalıştırarak işin son durumunu denetleyin `Get-WBJob -Previous 1`
 
 İş başarısız olursa, MARS Aracısı sistem durumu yedeklerinin başarısız olmasına neden olacak bir WSB sorunu belirtir.
 

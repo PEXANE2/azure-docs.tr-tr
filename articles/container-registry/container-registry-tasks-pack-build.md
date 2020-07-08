@@ -4,15 +4,14 @@ description: Bir uygulamadan kapsayıcı görüntüsü oluşturmak için az ACR 
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087080"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpack kullanarak bir uygulamadan görüntü oluşturma ve gönderme
 
-Azure CLı komutu `az acr pack build` , [`pack`](https://github.com/buildpack/pack) [buildpacks](https://buildpacks.io/)'ten bir uygulama oluşturmak ve görüntüsünü bir Azure Container Registry 'ye göndermek için CLI aracını kullanır. Bu özellik, bir Dockerfile tanımlamak zorunda kalmadan Node. js, Java ve diğer dillerdeki uygulama kaynak kodunuzun hızlı bir kapsayıcı görüntüsünü oluşturmak için bir seçenek sunar.
+Azure CLı komutu, `az acr pack build` [`pack`](https://github.com/buildpack/pack) [buildpacks](https://buildpacks.io/)'ten bir uygulama oluşturmak ve görüntüsünü bir Azure Container Registry 'ye göndermek için CLI aracını kullanır. Bu özellik, bir Dockerfile tanımlamak zorunda kalmadan Node.js, Java ve diğer dillerdeki uygulama kaynak kodunuzda bir kapsayıcı görüntüsünü hızlıca oluşturmak için bir seçenek sunar.
 
 Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shell veya yerel bir yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.70 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
@@ -23,18 +22,18 @@ Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shel
 
 Cloud Native Buildpacks kullanarak bir kapsayıcı görüntüsü derlemek ve göndermek için [az ACR Pack Build][az-acr-pack-build] komutunu çalıştırın. [Az ACR Build][az-acr-build] komutu, bir Dockerfile kaynağından ve ilgili koddan `az acr pack build` doğrudan bir uygulama kaynak ağacı belirttiğinizde bir görüntü oluşturur ve gönderir.
 
-En azından, çalıştırdığınızda `az acr pack build`şunları belirtin:
+En azından, çalıştırdığınızda şunları belirtin `az acr pack build` :
 
 * Komutu çalıştırdığınız bir Azure Container kayıt defteri
 * Elde edilen görüntü için bir görüntü adı ve etiketi
 * Bir yerel dizin, GitHub deposu veya uzak bir tarbol gibi ACR görevleri için [desteklenen bağlam konumlarından](container-registry-tasks-overview.md#context-locations) biri
-* Uygulamanız için uygun bir Buildpack Oluşturucu görüntüsünün adı. Azure Container Registry daha hızlı derlemeler gibi Oluşturucu `cloudfoundry/cnb:0.0.34-cflinuxfs3` görüntülerini önbelleğe alır.  
+* Uygulamanız için uygun bir Buildpack Oluşturucu görüntüsünün adı. Azure Container Registry daha hızlı derlemeler gibi Oluşturucu görüntülerini önbelleğe alır `cloudfoundry/cnb:0.0.34-cflinuxfs3` .  
 
 `az acr pack build`, akan ve ayrıca daha sonra alınabilmeleri için [çalışan değişkenleri](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlüklerini](container-registry-tasks-logs.md) içeren ACR görevleri komutlarının diğer özelliklerini destekler.
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Örnek: Cloud Foundry Builder ile Node. js görüntüsü oluşturma
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Örnek: Cloud Foundry Oluşturucu ile derleme Node.js görüntüsü
 
-Aşağıdaki örnek, `cloudfoundry/cnb:0.0.34-cflinuxfs3` oluşturucuyu kullanarak [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) depoındaki bir Node. js uygulamasından bir kapsayıcı görüntüsü oluşturur. Bu Oluşturucu Azure Container Registry tarafından önbelleğe alınır, bu nedenle `--pull` bir parametre gerekli değildir:
+Aşağıdaki örnek, oluşturucuyu kullanarak [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) depoındaki bir Node.js uygulamasından bir kapsayıcı görüntüsü oluşturur `cloudfoundry/cnb:0.0.34-cflinuxfs3` . Bu Oluşturucu Azure Container Registry tarafından önbelleğe alınır, bu nedenle bir `--pull` parametre gerekli değildir:
 
 ```azurecli
 az acr pack build \
@@ -60,11 +59,11 @@ Görüntüyü çalıştırın:
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-`localhost:1337` Örnek Web uygulamasını görmek için en sevdiğiniz tarayıcınıza gidin. Kapsayıcıyı `[Ctrl]+[C]` durdurmak için tuşuna basın.
+`localhost:1337`Örnek Web uygulamasını görmek için en sevdiğiniz tarayıcınıza gidin. `[Ctrl]+[C]`Kapsayıcıyı durdurmak için tuşuna basın.
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Örnek: Heroku Builder ile Java görüntüsü oluşturma
 
-Aşağıdaki örnek, `heroku/buildpacks:18` oluşturucuyu kullanarak [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) deposunda Java uygulamasından bir kapsayıcı görüntüsü oluşturur. `--pull` Parametresi, komutun en son Oluşturucu görüntüsünü çekmesini belirtir. 
+Aşağıdaki örnek, oluşturucuyu kullanarak [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) deposunda Java uygulamasından bir kapsayıcı görüntüsü oluşturur `heroku/buildpacks:18` . `--pull`Parametresi, komutun en son Oluşturucu görüntüsünü çekmesini belirtir. 
 
 ```azurecli
 az acr pack build \
@@ -74,7 +73,7 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-Bu örnekte, komutun `java-app` çalıştırma kimliğiyle etiketlenmiş görüntü oluşturulur ve bunu *myregistry* kapsayıcı kayıt defterine iter.
+Bu örnekte `java-app` , komutun çalıştırma kimliğiyle etiketlenmiş görüntü oluşturulur ve bunu *myregistry* kapsayıcı kayıt defterine iter.
 
 Komut çıktısı, görüntüyü oluşturma ve gönderme sürecini gösterir. 
 
@@ -90,12 +89,12 @@ az acr login --name myregistry
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-`localhost:8080` Örnek Web uygulamasını görmek için en sevdiğiniz tarayıcınıza gidin. Kapsayıcıyı `[Ctrl]+[C]` durdurmak için tuşuna basın.
+`localhost:8080`Örnek Web uygulamasını görmek için en sevdiğiniz tarayıcınıza gidin. `[Ctrl]+[C]`Kapsayıcıyı durdurmak için tuşuna basın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir kapsayıcı görüntüsünü derleyip gönderdikten sonra `az acr pack build`, istediğiniz bir hedefe herhangi bir görüntü gibi dağıtabilirsiniz. Azure dağıtım seçenekleri, [App Service](../app-service/containers/tutorial-custom-docker-image.md) veya [Azure Kubernetes hizmetinde](../aks/tutorial-kubernetes-deploy-cluster.md), diğerleri arasında çalıştırmayı içerir.
+Bir kapsayıcı görüntüsünü derleyip gönderdikten sonra `az acr pack build` , istediğiniz bir hedefe herhangi bir görüntü gibi dağıtabilirsiniz. Azure dağıtım seçenekleri, [App Service](../app-service/containers/tutorial-custom-docker-image.md) veya [Azure Kubernetes hizmetinde](../aks/tutorial-kubernetes-deploy-cluster.md), diğerleri arasında çalıştırmayı içerir.
 
 ACR görevleri özellikleri hakkında daha fazla bilgi için bkz. [ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirme](container-registry-tasks-overview.md).
 

@@ -9,10 +9,9 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79139122"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesinde projeleri, şablonları, görüntü akışlarını yönetme 
@@ -21,7 +20,7 @@ Bir OpenShift kapsayıcı platformunda, projeler ilişkili nesneleri gruplandır
 
 ## <a name="self-provisioning-projects"></a>Kendi kendine sağlama projeleri
 
-Geliştiricilerin kendi projelerini oluşturmasını sağlayabilirsiniz. Bir API uç noktası proje-istek adlı bir şablona göre bir proje sağlamaktan sorumludur. Web Konsolu ve `oc new-project` komutu, geliştirici yeni bir proje oluşturduğunda bu uç noktayı kullanır.
+Geliştiricilerin kendi projelerini oluşturmasını sağlayabilirsiniz. Bir API uç noktası proje-istek adlı bir şablona göre bir proje sağlamaktan sorumludur. Web Konsolu ve komutu, `oc new-project` Geliştirici yeni bir proje oluşturduğunda bu uç noktayı kullanır.
 
 Bir proje isteği gönderildiğinde, API, şablonda aşağıdaki parametreleri yerine koyar:
 
@@ -37,7 +36,7 @@ API 'ye erişim, kendi kendini hazırlayıcılar kümesi rol bağlamasıyla geli
 
 ## <a name="modify-the-template-for-a-new-project"></a>Yeni bir proje için şablonu değiştirme 
 
-1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan bir kullanıcı olarak oturum açın `customer-admin` .
 
 2. Varsayılan proje-istek şablonunu düzenleyin.
 
@@ -61,7 +60,7 @@ API 'ye erişim, kendi kendini hazırlayıcılar kümesi rol bağlamasıyla geli
 
 Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sağlamasını engelleyebilirsiniz.
 
-1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan bir kullanıcı olarak oturum açın `customer-admin` .
 
 2. Kendi kendine hazırlayıcılar kümesi rol bağlamasını düzenleyin.
 
@@ -69,7 +68,7 @@ Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sa�
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Aşağıdaki ek açıklamayı ekleyerek, rolü ARO güncelleştirme işleminden kaldırın: `openshift.io/reconcile-protect: "true"`.
+3. Aşağıdaki ek açıklamayı ekleyerek, rolü ARO güncelleştirme işleminden kaldırın: `openshift.io/reconcile-protect: "true"` .
 
    ```
    ...
@@ -79,7 +78,7 @@ Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sa�
    ...
    ```
 
-4. Proje oluşturmaktan kaçınmak `system:authenticated:oauth` için küme rolü bağlamasını değiştirin:
+4. Proje oluşturmaktan kaçınmak için küme rolü bağlamasını değiştirin `system:authenticated:oauth` :
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -101,18 +100,18 @@ Kimliği doğrulanmış bir Kullanıcı grubunun kendi kendine yeni projeler sa�
 
 ## <a name="manage-default-templates-and-imagestreams"></a>Varsayılan şablonları ve ımagestreams 'yi yönetme
 
-Azure Red Hat OpenShift 'te, ad alanı içindeki `openshift` tüm varsayılan şablonlar ve görüntü akışları için güncelleştirmeleri devre dışı bırakabilirsiniz.
-Tüm `Templates` ve `ImageStreams` `openshift` ad alanı için güncelleştirmeleri devre dışı bırakmak için:
+Azure Red Hat OpenShift 'te, ad alanı içindeki tüm varsayılan şablonlar ve görüntü akışları için güncelleştirmeleri devre dışı bırakabilirsiniz `openshift` .
+Tüm `Templates` ve `ImageStreams` ad alanı için güncelleştirmeleri devre dışı bırakmak için `openshift` :
 
-1. Ayrıcalıkları olan `customer-admin` bir kullanıcı olarak oturum açın.
+1. Ayrıcalıkları olan bir kullanıcı olarak oturum açın `customer-admin` .
 
-2. Ad `openshift` alanını Düzenle:
+2. `openshift`Ad alanını Düzenle:
 
    ```
    oc edit namespace openshift
    ```
 
-3. Aşağıdaki `openshift` ek AÇıKLAMAYı ekleyerek Aro güncelleştirme işlemindeki ad alanını kaldırın:`openshift.io/reconcile-protect: "true"`
+3. `openshift`Aşağıdaki ek açıklamayı ekleyerek Aro güncelleştirme işlemindeki ad alanını kaldırın:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,7 +121,7 @@ Tüm `Templates` ve `ImageStreams` `openshift` ad alanı için güncelleştirmel
    ...
    ```
 
-   Ad alanındaki herhangi bir nesne `openshift` , buna ek açıklama `openshift.io/reconcile-protect: "true"` eklenerek güncelleştirme işleminden kaldırılabilir.
+   Ad alanındaki herhangi bir nesne, `openshift` buna ek açıklama eklenerek güncelleştirme işleminden kaldırılabilir `openshift.io/reconcile-protect: "true"` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

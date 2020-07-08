@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968889"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
@@ -81,7 +80,7 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 | Örnek sahibi            | Örnek Için mevcut Kullanıcı, Kullanıcı adı        | DB2sdin1                                                                                              |
 | Fbaşvurusu olan Kullanıcı               | Mevcut Kullanıcı, Kullanıcı adı                     | DB2sdfe1                                                                                              |
 | Küme dosya sistemi       | Paylaşılan disk bölümü cihaz yolu            | /dev/DM-2                                                                                             |
-|                           | Bağlama noktası                                  | /DB2sd\_1804a                                                                                         |
+|                           | Bağlama noktası                                  | /DB2sd \_ 1804a                                                                                         |
 |                           | Veriler için paylaşılan disk                         | /dev/DM-1                                                                                             |
 |                           | Bağlama noktası (veri)                           | /DB2fs/datafs1                                                                                        |
 |                           | Günlük için paylaşılan disk                          | /dev/DM-0                                                                                             |
@@ -111,7 +110,7 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 
 - Kurulum betikleri, gerçek adların kolayca bulunabilmesi için Iscsı disklerinin diğer adlarını kullanır.
 
-- D0 üzerinde kurulum betiği çalıştırıldığında, **/dev/DM-\* ** Values, D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
+- D0 üzerinde kurulum betiği çalıştırıldığında, **/dev/DM- \* ** Values, D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
 
 ## <a name="troubleshooting-and-known-issues"></a>Sorun çözümü ve bilinen sorunlar
 

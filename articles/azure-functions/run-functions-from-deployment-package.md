@@ -4,15 +4,14 @@ description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje d
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365280"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
-Azure 'da işlevlerinizi doğrudan işlev uygulamanızdaki bir dağıtım paketi dosyasından çalıştırabilirsiniz. Diğer seçenek, dosyalarınızı işlev uygulamanızın `d:\home\site\wwwroot` dizinine dağıtmaktır.
+Azure 'da işlevlerinizi doğrudan işlev uygulamanızdaki bir dağıtım paketi dosyasından çalıştırabilirsiniz. Diğer seçenek, dosyalarınızı `d:\home\site\wwwroot` işlev uygulamanızın dizinine dağıtmaktır.
 
 Bu makalede, işlevlerinizi bir paketten çalıştırmanın avantajları açıklanmaktadır. Ayrıca, işlev uygulamanızda bu işlevselliği nasıl etkinleştireceğinizi gösterir.
 
@@ -33,11 +32,11 @@ Daha fazla bilgi için [bu duyuruya](https://github.com/Azure/app-service-announ
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>İşlevleri bir paketten çalıştırmak için etkinleştirme
 
-İşlev uygulamanızın bir paketten çalıştırılmasını sağlamak için, işlev uygulaması ayarlarınıza yalnızca bir `WEBSITE_RUN_FROM_PACKAGE` ayar eklersiniz. `WEBSITE_RUN_FROM_PACKAGE` Ayar aşağıdaki değerlerden birine sahip olabilir:
+İşlev uygulamanızın bir paketten çalıştırılmasını sağlamak için, `WEBSITE_RUN_FROM_PACKAGE` işlev uygulaması ayarlarınıza yalnızca bir ayar eklersiniz. `WEBSITE_RUN_FROM_PACKAGE`Ayar aşağıdaki değerlerden birine sahip olabilir:
 
 | Değer  | Açıklama  |
 |---------|---------|
-| **`1`**  | Windows üzerinde çalışan işlev uygulamaları için önerilir. İşlev uygulamanızın `d:\home\data\SitePackages` klasöründeki bir paket dosyasından çalıştırın. [ZIP dağıtımı ile dağıtılmadığından](#integration-with-zip-deployment), bu seçenek klasörün ayrıca adlı `packagename.txt`bir dosyaya sahip olmasını gerektirir. Bu dosya, bir boşluk olmadan yalnızca klasördeki paket dosyasının adını içerir. |
+| **`1`**  | Windows üzerinde çalışan işlev uygulamaları için önerilir. İşlev uygulamanızın klasöründeki bir paket dosyasından çalıştırın `d:\home\data\SitePackages` . [ZIP dağıtımı ile dağıtılmadığından](#integration-with-zip-deployment), bu seçenek klasörün ayrıca adlı bir dosyaya sahip olmasını gerektirir `packagename.txt` . Bu dosya, bir boşluk olmadan yalnızca klasördeki paket dosyasının adını içerir. |
 |**`<URL>`**  | Çalıştırmak istediğiniz belirli bir paket dosyasının konumu. Blob depolamayı kullanırken, Işlevlerin çalışma zamanının pakete erişmesini sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanmanız gerekir. Paket dosyalarını BLOB depolama hesabınıza yüklemek için [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) kullanabilirsiniz. Bir URL belirttiğinizde, güncelleştirilmiş bir paket yayımladıktan sonra [Tetikleyicileri de eşitlemeniz](functions-deployment-technologies.md#trigger-syncing) gerekir. |
 
 > [!CAUTION]
@@ -52,7 +51,7 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 
 ## <a name="integration-with-zip-deployment"></a>ZIP dağıtımıyla tümleştirme
 
-[ZIP dağıtımı][Zip deployment for Azure Functions] , işlev uygulaması projenizi `wwwroot` dizine dağıtmanıza olanak sağlayan bir Azure App Service özelliğidir. Proje bir. zip dağıtım dosyası olarak paketlenmiştir. Paketinizi `d:\home\data\SitePackages` klasöre dağıtmak Için aynı API 'ler kullanılabilir. `WEBSITE_RUN_FROM_PACKAGE` Uygulama ayarı değeri ile `1`, ZIP dağıtım API 'leri dosyaları içine ayıklamak yerine paketini `d:\home\data\SitePackages` klasörüne kopyalar `d:\home\site\wwwroot`. Ayrıca `packagename.txt` dosyayı da oluşturur. Yeniden başlatmadan sonra, paket `wwwroot` salt okunurdur. ZIP dağıtımı hakkında daha fazla bilgi için bkz. [Azure işlevleri Için zip dağıtımı](deployment-zip-push.md).
+[ZIP dağıtımı][Zip deployment for Azure Functions] , işlev uygulaması projenizi dizine dağıtmanıza olanak sağlayan bir Azure App Service özelliğidir `wwwroot` . Proje bir. zip dağıtım dosyası olarak paketlenmiştir. Paketinizi klasöre dağıtmak için aynı API 'Ler kullanılabilir `d:\home\data\SitePackages` . `WEBSITE_RUN_FROM_PACKAGE`Uygulama ayarı değeri ile `1` , ZIP dağıtım API 'leri `d:\home\data\SitePackages` dosyaları içine ayıklamak yerine paketini klasörüne kopyalar `d:\home\site\wwwroot` . Ayrıca dosyayı da oluşturur `packagename.txt` . Yeniden başlatmadan sonra, paket `wwwroot` salt okunurdur. ZIP dağıtımı hakkında daha fazla bilgi için bkz. [Azure işlevleri Için zip dağıtımı](deployment-zip-push.md).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE ayarı ekleniyor
 
@@ -64,8 +63,8 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 - Paketten Çalıştır `wwwroot` salt okunurdur, bu nedenle dosyaları bu dizine yazarken bir hata alırsınız.
 - Tar ve gzip biçimleri desteklenmez.
 - Bu özellik yerel önbellek ile oluşturmaz.
-- İyileştirilmiş soğuk başlangıç performansı için yerel ZIP seçeneğini (`WEBSITE_RUN_FROM_PACKAGE`= 1) kullanın.
-- Paketten Çalıştır, dağıtım özelleştirme seçeneği (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) ile uyumlu değil, dağıtım sırasında derleme adımı yok sayılır.
+- İyileştirilmiş soğuk başlangıç performansı için yerel ZIP seçeneğini ( `WEBSITE_RUN_FROM_PACKAGE` = 1) kullanın.
+- Paketten Çalıştır, dağıtım özelleştirme seçeneği () ile uyumlu değil `SCM_DO_BUILD_DURING_DEPLOYMENT=true` , dağıtım sırasında derleme adımı yok sayılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

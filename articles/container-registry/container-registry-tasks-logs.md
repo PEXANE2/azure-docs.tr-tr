@@ -4,10 +4,9 @@ description: ACR görevleri tarafından oluşturulan çalıştırma günlükleri
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246974"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Görev çalıştırma günlüklerini görüntüleme ve yönetme
@@ -65,7 +64,7 @@ Bir görev otomatik olarak tetikleniyorsa (örneğin, kaynak kodu güncelleştir
 Portalda çalıştırma günlüklerini görüntülemek için:
 
 1. Kapsayıcı Kayıt defterinize gidin.
-1. **Hizmetler**' de **Görevler** > **çalıştırmalar**' ı seçin.
+1. **Hizmetler**' de **Görevler**  >  **çalıştırmalar**' ı seçin.
 1. Çalıştırma durumunu görüntülemek ve günlükleri çalıştırmak için bir **çalıştırma kimliği** seçin. Günlük, oluşturulduysa akış günlüğü ile aynı bilgileri içerir.
 
 ![Görevi çalıştır oturum açma portalını görüntüle](./media/container-registry-tasks-logs/portal-task-run-logs.png)

@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79080369"
 ---
 # <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
@@ -83,7 +82,7 @@ ACı hizmetinin anahtarınıza erişmesine izin vermek için yeni bir erişim il
 
 * Anahtarınız oluşturulduktan sonra Anahtar Kasası kaynak dikey pencerenize geri dönün, Ayarlar ' ın altında, **erişim ilkeleri**' ne tıklayın.
 * Anahtar kasanızın "erişim Ilkeleri" sayfasında, **erişim Ilkesi Ekle**' ye tıklayın.
-* Anahtar *izinlerini* , **Get** ve **Unwrap anahtar** ![kümesi anahtar izinlerini içerecek şekilde ayarlayın](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Anahtar *izinlerini* , **Get** ve **Unwrap anahtar** ![ kümesi anahtar izinlerini içerecek şekilde ayarlayın](./media/container-instances-encrypt-data/set-key-permissions.png)
 * *Asıl seçin*Için **Azure Container Instance hizmeti** ' ni seçin.
 * Alt kısımdaki **Ekle** 'ye tıklayın 
 
@@ -97,12 +96,12 @@ Erişim ilkesinin artık anahtar kasasının erişim ilkelerinde gösterilmesi g
 > Dağıtım verilerinin, müşteri tarafından yönetilen bir anahtarla şifrelenmesi, şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin. Bu sorunla karşılaşırsanız lütfen Azure desteğine ulaşın.
 
 Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özellikleri acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* Altında `resources`, olarak `apiVersion` `2019-12-01`ayarlayın.
-* Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde, aşağıdaki değerleri içeren bir `encryptionProperties`ekleyin:
+* Altında `resources` , `apiVersion` olarak ayarlayın `2019-12-01` .
+* Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde, `encryptionProperties` aşağıdaki değerleri içeren bir ekleyin:
   * `vaultBaseUrl`: anahtar kasaınızın DNS adı, portalda Anahtar Kasası kaynağının genel bakış dikey penceresinde bulunabilir
   * `keyName`: daha önce oluşturulan anahtarın adı
   * `keyVersion`: anahtarın geçerli sürümü. Bu, anahtarın kendine tıklanarak bulunabilir (Anahtar Kasası kaynağınızın ayarlar bölümünde "anahtarlar" altında)
-* Kapsayıcı grubu özellikleri altında, değerine `sku` `Standard`sahip bir özellik ekleyin. `sku` Özelliği apı sürüm 2019-12-01 ' de gereklidir.
+* Kapsayıcı grubu özellikleri altında, `sku` değerine sahip bir özellik ekleyin `Standard` . `sku`ÖZELLIĞI API sürüm 2019-12-01 ' de gereklidir.
 
 Aşağıdaki şablon kod parçacığında dağıtım verilerini şifrelemek için bu ek özellikler gösterilmektedir:
 

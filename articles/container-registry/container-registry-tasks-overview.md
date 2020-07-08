@@ -4,10 +4,9 @@ description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, y�
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087273"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
@@ -22,7 +21,7 @@ Kapsayıcılar, altyapı ve işletimsel gereksinimlerden uygulama ve geliştiric
 
 ACR görevleri kapsayıcı görüntülerini ve diğer yapıtları derlemek ve sürdürmek için çeşitli senaryoları destekler. Ayrıntılar için bu makaledeki aşağıdaki bölümlere bakın.
 
-* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. `docker build`Buluta göz önünde `docker push` bulundurun.
+* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. Buluta göz önünde bulundurun `docker build` `docker push` .
 * **Otomatik tetiklenen görevler** -bir görüntü oluşturmak için bir veya daha fazla *tetikleyici* etkinleştirin:
   * **[Kaynak kodu güncelleştirmesinde Tetikle](#trigger-task-on-source-code-update)** 
   * **[Temel görüntü güncelleştirmesinde Tetikle](#automate-os-and-framework-patching)** 
@@ -39,7 +38,7 @@ Kaynak denetimine işlemeden önce uygulamanızı kod yazma, oluşturma ve test 
 
 İlk kod satırlarınızı işlemeden önce, ACR görevlerinin [hızlı görev](container-registry-tutorial-quick-task.md) özelliği, kapsayıcı görüntüsü derlemelerinizi Azure 'a devrederek bir tümleşik geliştirme deneyimi sağlayabilir. Hızlı görevlerle, kodunuzu işlemeden önce otomatik derleme tanımlarınızı doğrulayabilirsiniz ve olası sorunları yakalayabilin.
 
-Tanıdık `docker build` biçimi kullanarak, Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
+Tanıdık biçimi kullanarak `docker build` , Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
 
 Giriş için bkz. Azure Container Registry [bir kapsayıcı görüntüsü oluşturma ve çalıştırma](container-registry-quickstart-task-cli.md) hızlı başlangıcı.  
 
@@ -58,7 +57,7 @@ ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşa
 
 | Tetikleyici | Varsayılan olarak etkindir |
 | ------- | ------------------ |
-| İşleme | Yes |
+| İşleme | Evet |
 | Çekme isteği | Hayır |
 
 Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya özel GitHub veya Azure DevOps deposunda Web kancasını ayarlamak üzere bir kişisel erişim belirteci (PAT) görevi sağlamanız gerekir.
@@ -92,7 +91,7 @@ Görevi oluştururken veya güncelleştirdiğinizde bir veya daha fazla *Zamanla
 1. Web uygulaması test görüntüsü oluşturma
 1. Çalışan uygulama kapsayıcısına karşı testler gerçekleştiren Web uygulaması test kapsayıcısını çalıştırın
 1. Testler başarılı olursa bir Helu grafik arşiv paketi oluşturun
-1. Yeni Helmchart arşiv paketini kullanarak bir `helm upgrade` gerçekleştir
+1. `helm upgrade`Yeni helmchart arşiv paketini kullanarak bir gerçekleştir
 
 Çok adımlı görevler, bir görüntünün oluşturma, çalıştırma ve test etme özelliğini, adım adım bağımlılık desteğiyle daha birleştirilebilir adımlara bölmeye olanak tanır. ACR görevlerinde çok adımlı görevlerle, görüntü oluşturma, test etme ve işletim sistemi ve çerçeve düzeltme eki uygulama iş akışları üzerinde daha ayrıntılı denetime sahip olursunuz.
 
@@ -117,7 +116,7 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yöne
 
 ## <a name="image-platforms"></a>Görüntü platformları
 
-Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini oluşturmak için `--platform` etiketi belirtin. İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
+Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. `--platform`Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini oluşturmak için etiketi belirtin. İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm` ). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8` ):
 
 | İşletim Sistemi | Mimari|
 | --- | ------- | 

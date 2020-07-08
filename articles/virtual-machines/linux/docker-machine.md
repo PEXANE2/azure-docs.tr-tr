@@ -8,14 +8,13 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968813"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Azure 'da ana bilgisayar oluşturmak için Docker makinesi kullanma
-Bu makalede, Azure 'da ana bilgisayar oluşturmak için [Docker makinesi](https://docs.docker.com/machine/) 'nin nasıl kullanılacağı açıklanır. Komut `docker-machine` Azure 'Da bir Linux sanal MAKINESI (VM) oluşturur ve Docker 'ı kurar. Daha sonra, aynı yerel araçları ve iş akışlarını kullanarak Docker konaklarınızı Azure 'da yönetebilirsiniz. Windows 10 ' da Docker-Machine ' i kullanmak için Linux Bash kullanmanız gerekir.
+Bu makalede, Azure 'da ana bilgisayar oluşturmak için [Docker makinesi](https://docs.docker.com/machine/) 'nin nasıl kullanılacağı açıklanır. `docker-machine`Komut Azure 'da bir Linux sanal makinesi (VM) oluşturur ve Docker 'ı kurar. Daha sonra, aynı yerel araçları ve iş akışlarını kullanarak Docker konaklarınızı Azure 'da yönetebilirsiniz. Windows 10 ' da Docker-Machine ' i kullanmak için Linux Bash kullanmanız gerekir.
 
 ## <a name="create-vms-with-docker-machine"></a>Docker makinesiyle VM oluşturma
 İlk olarak, [az Account](/cli/azure/account) komutuyla Azure abonelik kimliğinizi aşağıda gösterildiği gibi edinin:
@@ -88,10 +87,10 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-Bağlantı ayarlarını tanımlamak için, önerilen yapılandırma komutunu (`eval $(docker-machine env myvm)`) çalıştırabilir ya da ortam değişkenlerini el ile ayarlayabilirsiniz. 
+Bağlantı ayarlarını tanımlamak için, önerilen yapılandırma komutunu ( `eval $(docker-machine env myvm)` ) çalıştırabilir ya da ortam değişkenlerini el ile ayarlayabilirsiniz. 
 
 ## <a name="run-a-container"></a>Kapsayıcı çalıştırma
-Bir kapsayıcıyı eylemde görmek için temel NGıNX Web sunucusu çalışmasına izin verir. İle `docker run` bir kapsayıcı oluşturun ve web trafiği için 80 numaralı bağlantı noktasını aşağıdaki gibi kullanıma sunun:
+Bir kapsayıcıyı eylemde görmek için temel NGıNX Web sunucusu çalışmasına izin verir. İle bir kapsayıcı oluşturun `docker run` ve web trafiği için 80 numaralı bağlantı noktasını aşağıdaki gibi kullanıma sunun:
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -110,7 +109,7 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-İle `docker ps`çalışan kapsayıcıları görüntüleyin. Aşağıdaki örnek çıktı, 80 numaralı bağlantı noktası ile çalışan NGıNX kapsayıcısını göstermektedir:
+İle çalışan kapsayıcıları görüntüleyin `docker ps` . Aşağıdaki örnek çıktı, 80 numaralı bağlantı noktası ile çalışan NGıNX kapsayıcısını göstermektedir:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES

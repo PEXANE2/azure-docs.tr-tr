@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282308"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors Service Fabric platformunu kullanma
@@ -28,7 +27,7 @@ Aktör hizmeti güvenilir bir hizmet olduğundan, Reliable Services tüm [uygula
 
 Yukarıdaki diyagramda Service Fabric uygulama çerçeveleri ve Kullanıcı kodu arasındaki ilişki gösterilmektedir. Mavi öğeler Reliable Services uygulama çerçevesini temsil eder, turuncu güvenilir aktör çerçevesini temsil eder ve yeşil Kullanıcı kodunu temsil eder.
 
-Reliable Services, hizmetiniz `StatefulService` sınıfını devralır. Bu sınıf, (veya `StatefulServiceBase` `StatelessService` durum bilgisi olmayan hizmetler için) öğesinden türetilir. Reliable Actors, aktör hizmetini kullanırsınız. Aktör hizmeti, Aktörlerinizin çalıştırıldığı aktör modelini `StatefulServiceBase` uygulayan sınıfının farklı bir uygulamasıdır. Aktör hizmeti yalnızca bir uygulaması olduğu için `StatefulServiceBase`, devralma `ActorService` `StatefulService`sırasında aynı şekilde hizmet düzeyi özelliklerden oluşan kendi hizmetinizi yazabilirsiniz, örneğin:
+Reliable Services, hizmetiniz `StatefulService` sınıfını devralır. Bu sınıf, `StatefulServiceBase` (veya `StatelessService` durum bilgisi olmayan hizmetler için) öğesinden türetilir. Reliable Actors, aktör hizmetini kullanırsınız. Aktör hizmeti, `StatefulServiceBase` Aktörlerinizin çalıştırıldığı aktör modelini uygulayan sınıfının farklı bir uygulamasıdır. Aktör hizmeti yalnızca bir uygulaması olduğu için `StatefulServiceBase` , `ActorService` Devralma sırasında aynı şekilde hizmet düzeyi özelliklerden oluşan kendi hizmetinizi yazabilirsiniz `StatefulService` , örneğin:
 
 * Hizmet yedekleme ve geri yükleme.
 * Tüm aktörler için paylaşılan işlevsellik; Örneğin, devre kesici.
@@ -40,7 +39,7 @@ Daha fazla bilgi için bkz. [aktör hizmetinizde hizmet düzeyi özellikleri uyg
 Aktör Hizmetleri Reliable Services, bu nedenle uygulama modeli aynı. Ancak aktör Framework derleme araçları sizin için bazı uygulama modeli dosyalarını oluşturur.
 
 ### <a name="service-manifest"></a>Hizmet bildirimi
-Aktör Framework derleme araçları, aktör hizmetinizin ServiceManifest. xml dosyasının içeriğini otomatik olarak oluşturur. Bu dosya şunları içerir:
+Aktör Framework derleme araçları, aktör hizmetinizin ServiceManifest.xml dosyasının içeriğini otomatik olarak oluşturur. Bu dosya şunları içerir:
 
 * Aktör hizmeti türü. Tür adı, aktörin proje adına göre oluşturulur. Aktör içindeki Kalıcılık özniteliğine bağlı olarak, HasPersistedState bayrağı da buna göre ayarlanır.
 * Kod paketi.
@@ -61,7 +60,7 @@ Aktör Hizmetleri bölümlenmiş durum bilgisi olan hizmetlerdir. Aktör hizmeti
 Reliable Services, farklı bölüm şemaları ve bölüm anahtarı aralıklarıyla oluşturulabilir. Aktör hizmeti, aktörlerin bölümlerle eşleşmesini sağlamak için tam Int64 anahtar aralığıyla Int64 bölümlendirme şemasını kullanır.
 
 ### <a name="actor-id"></a>Aktör KIMLIĞI
-Hizmette oluşturulan her aktörle ilişkili benzersiz bir KIMLIĞI vardır ve `ActorId` sınıfı tarafından temsil edilir. `ActorId`Rastgele kimlikler oluşturarak hizmet bölümleri genelinde aktörlerin Tekdüzen dağılımı için kullanılabilen donuk bir KIMLIK değeridir:
+Hizmette oluşturulan her aktörle ilişkili benzersiz bir KIMLIĞI vardır ve sınıfı tarafından temsil edilir `ActorId` . `ActorId`Rastgele kimlikler oluşturarak hizmet bölümleri genelinde aktörlerin Tekdüzen dağılımı için kullanılabilen donuk bir KIMLIK değeridir:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -71,7 +70,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Her `ActorId` bir bir Int64 için karma hale getirilir. Bu, aktör hizmetinin tam Int64 anahtar aralığıyla bir Int64 bölümlendirme şeması kullanması nedenidir. Ancak, GUID/UUID 'ler, dizeler ve Int64s dahil `ActorID`olmak üzere özel kimlik değerleri için kullanılabilir.
+Her `ActorId` bir bir Int64 için karma hale getirilir. Bu, aktör hizmetinin tam Int64 anahtar aralığıyla bir Int64 bölümlendirme şeması kullanması nedenidir. Ancak, `ActorID` GUID/UUID 'ler, dizeler ve Int64s dahil olmak üzere özel kimlik değerleri için kullanılabilir.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -84,7 +83,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-GUID/UUID 'ler ve dizeler kullanırken, değerler bir Int64 için karma hale getirilir. Ancak, açıkça bir `ActorId`Int64 belirttiğinizde, int64 daha fazla karma olmadan doğrudan bir bölüme eşlenir. Aktörlerin hangi bölüme yerleştirileceğini denetlemek için bu tekniği kullanabilirsiniz.
+GUID/UUID 'ler ve dizeler kullanırken, değerler bir Int64 için karma hale getirilir. Ancak, açıkça bir Int64 belirttiğinizde `ActorId` , int64 daha fazla karma olmadan doğrudan bir bölüme eşlenir. Aktörlerin hangi bölüme yerleştirileceğini denetlemek için bu tekniği kullanabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082889"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
@@ -95,7 +94,7 @@ Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşa
     du -h --max-depth=1 / | sort -h
     ```
 
-1. Çıktıyı gözden geçirin ve `mnt` klasörde veya diğer klasörlerde büyük dosyaların varlığını denetleyin. `usercache`Genellikle, ve `appcache` (mnt/Resource/Hadoop/Yarn/yerel/kullanıcıönbelleği/Hive/APPCACHE/) klasörleri büyük dosyalar içerir.
+1. Çıktıyı gözden geçirin ve `mnt` klasörde veya diğer klasörlerde büyük dosyaların varlığını denetleyin. Genellikle, `usercache` ve `appcache` (mnt/Resource/Hadoop/Yarn/yerel/kullanıcıönbelleği/Hive/APPCACHE/) klasörleri büyük dosyalar içerir.
 
 1. Büyük dosyalar varsa, geçerli bir iş dosyanın büyümesi veya başarısız olan bir önceki iş bu soruna katkıda bulunabilir. Bu davranışın geçerli bir işin neden olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
 
@@ -109,7 +108,7 @@ Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşa
     yarn application -kill -applicationId <application_id>
     ```
 
-    Uygulama `application_id` kimliğiyle değiştirin. Belirli bir iş belirtilmemişse, sonraki adıma gidin.
+    `application_id`Uygulama kimliğiyle değiştirin. Belirli bir iş belirtilmemişse, sonraki adıma gidin.
 
 1. Yukarıdaki komut tamamlandıktan sonra veya belirli bir iş belirtilmemişse, aşağıdakine benzer bir komut çalıştırarak belirlediğiniz büyük dosyaları silin:
 

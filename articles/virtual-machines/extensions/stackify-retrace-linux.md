@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79253799"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Yeniden Izleme Linux Aracısı uzantısını stackbelirt
@@ -54,14 +53,14 @@ Retrace Aracısı bu Linux dağıtımlarına karşı çalıştırılabilir
 
 Linux için Stacktarget aracı uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. 
 
-Stackbir bağlantı kurulmasına izin vermek için ağ yapılandırmanızı ayarlamanız gerekebilir, bkz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall.. 
+Stackbir bağlantı kurulmasına izin vermek için ağ yapılandırmanızı ayarlamanız gerekebilir, bkz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall .. 
 
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
 ---
 
-Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını gösterir. Uzantı, `environment` ve `activationKey`gerektirir.
+Aşağıdaki JSON, Stackbelirt retrace aracı uzantısının şemasını gösterir. Uzantı, ve gerektirir `environment` `activationKey` .
 
 ```json
     {
@@ -95,7 +94,7 @@ Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç i
 
 Aşağıdaki örnek, Stackbir retrace Linux uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, sanal makinenin "resources": [] nesnesine yerleştirilir.
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı, ve gerektirir `environment` `activationKey` .
 
 ```json
     {
@@ -150,9 +149,9 @@ JSON uzantısını şablon köküne yerleştirirken, kaynak adı üst sanal maki
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-`Set-AzVMExtension` Komut, mevcut bir sanal makineye Stackbelirt yeniden Izleme Linux Aracısı sanal makinesi uzantısını dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
+`Set-AzVMExtension`Komut, mevcut bir sanal makineye Stackbelirt yeniden Izleme Linux Aracısı sanal makinesi uzantısını dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı, ve gerektirir `environment` `activationKey` .
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +172,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Azure CLı Aracı, Stackbir retrace Linux Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir.  
 
-Uzantı, `environment` ve `activationKey`gerektirir.
+Uzantı, ve gerektirir `environment` `activationKey` .
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +197,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Hatayı devre dışı bırak | Hizmet kaldırılamadı |
 | 120 | Kaldırma hatası | Hizmet durdurulamadı |
 
-Daha fazla yardıma ihtiyacınız varsa, ' de https://support.stackify.comstackbelirt desteğine başvurabilirsiniz.
+Daha fazla yardıma ihtiyacınız varsa, ' de Stackbelirt desteğine başvurabilirsiniz https://support.stackify.com .

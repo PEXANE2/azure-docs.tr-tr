@@ -7,19 +7,18 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
 ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969149"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Azure 'daki bir Linux sanal makinesine paket güncelleştirmek ve onları yüklemek için Cloud-init kullanma
 Bu makalede, Azure 'da sağlama zamanında bir Linux sanal makinesi (VM) veya sanal makine ölçek kümelerinde paketleri güncelleştirmek için [Cloud-init](https://cloudinit.readthedocs.io) ' in nasıl kullanılacağı gösterilmektedir. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
 
 ## <a name="update-a-vm-with-cloud-init"></a>Cloud-init ile VM güncelleştirme
-Güvenlik nedeniyle, ilk önyüklemede en son güncelleştirmeleri uygulamak için bir VM yapılandırmak isteyebilirsiniz. Cloud-init farklı Linux kaldırmalar arasında çalıştığından, Paket Yöneticisi için veya `apt` `yum` belirtmeniz gerekmez. Bunun yerine, Cloud `package_upgrade` -init işleminin, kullanımda olan kullanım için uygun mekanizmayı belirlemesini ve bunu belirlemenizi sağlayabilirsiniz. Bu iş akışı, distros genelinde aynı Cloud-init betiklerini kullanmanıza olanak sağlar.
+Güvenlik nedeniyle, ilk önyüklemede en son güncelleştirmeleri uygulamak için bir VM yapılandırmak isteyebilirsiniz. Cloud-init farklı Linux kaldırmalar arasında çalıştığından, `apt` `yum` Paket Yöneticisi için veya belirtmeniz gerekmez. Bunun yerine, `package_upgrade` Cloud-init işleminin, kullanımda olan kullanım için uygun mekanizmayı belirlemesini ve bunu belirlemenizi sağlayabilirsiniz. Bu iş akışı, distros genelinde aynı Cloud-init betiklerini kullanmanıza olanak sağlar.
 
-Yükseltme işlemini eylemde görmek için, geçerli kabuğunuzun *cloud_init_upgrade. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_upgrade.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  
+Yükseltme işlemini işlem içinde görmek için, geçerli kabuğunuz *cloud_init_upgrade.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_upgrade.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  
 
 ```yaml
 #cloud-config
@@ -34,7 +33,7 @@ Bu görüntüyü dağıtılmadan önce [az Group Create](/cli/azure/group) komut
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve Cloud-init dosyasını aşağıdaki `--custom-data cloud_init_upgrade.txt` gibi belirtin:
+Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve Cloud-init dosyasını `--custom-data cloud_init_upgrade.txt` aşağıdaki gibi belirtin:
 
 ```azurecli-interactive 
 az vm create \
@@ -57,7 +56,7 @@ Paket Yönetimi aracını çalıştırın ve güncelleştirmeleri denetleyin.
 sudo yum update
 ```
 
-Cloud-init için denetlenir ve önyükleme sırasında güncelleştirmeler yüklüyse, uygulanacak başka bir güncelleştirme olmamalıdır.  Güncelleştirme işlemini, değiştirilen paket sayısını ve öğesini çalıştırarak `httpd` `yum history` yüklemesinin yanı sıra, aşağıda gösterilene benzer olan çıktıyı gözden geçirin.
+Cloud-init için denetlenir ve önyükleme sırasında güncelleştirmeler yüklüyse, uygulanacak başka bir güncelleştirme olmamalıdır.  Güncelleştirme işlemini, değiştirilen paket sayısını ve öğesini çalıştırarak yüklemesinin yanı sıra, `httpd` `yum history` aşağıda gösterilene benzer olan çıktıyı gözden geçirin.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks

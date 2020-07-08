@@ -9,10 +9,9 @@ ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298640"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Şirket içi canlı akış kodlayıcılarınızı doğrulama
@@ -65,7 +64,7 @@ Adım 11 hariç [geçiş canlı olay doğrulaması ile](#pass-through-live-event
 
 ## <a name="email-your-recorded-settings"></a>Kayıtlı ayarlarınıza e-posta gönderin
 
-Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, tüm otomatik amshelp@microsoft.com doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak Azure Media Services için e-posta ile gönderin. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
+Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, amshelp@microsoft.com tüm otomatik doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak Azure Media Services için e-posta ile gönderin. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

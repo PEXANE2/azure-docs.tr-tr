@@ -8,10 +8,9 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79284921"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
@@ -48,7 +47,7 @@ Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
 
 ![IP filtre kuralı ekle seçeneğini belirledikten sonra](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* IP filtresi kuralı için bir **ad** girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterler ve `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` kabul edilir.
+* IP filtresi kuralı için bir **ad** girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterler ve kabul edilir `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
 * CıDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğu sağlayın. Örneğin, CıDR gösteriminde 192.168.100.0/22, 192.168.100.0 'den 192.168.103.255 'e 1024 IPv4 adresini temsil eder.
 
@@ -135,8 +134,8 @@ Aşağıdaki şablon örneği, tüm trafiği kabul eden "AllowAll" adlı yeni bi
 
 | Öznitelik                | Açıklama |
 | ------------------------ | ----------- |
-| **Süzgeç**           | IP filtresi kuralı için bir ad girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterleri ve {'-', ': ', '/', '\', '. ', ' + ', '% ', ' _ ', ' # ', ' * ', '? ', '! ', ' (', ') ', ', ', ' = ', ' @ ', '; ', ' ' '} kabul edilir. |
-| **Eylem**               | Kabul edilen değerler, IP filtre kuralı için eylem olarak **kabul** veya **Red** . |
+| **Süzgeç**           | IP filtresi kuralı için bir ad girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterleri ve {'-', ': ', '/', ' \' , '. ', ' + ', '% ', ' _ ', ' # ', ' * ', '? ', '! ', ' (', ') ', ', ', ' = ', ' @ ', '; ', ' ' '} kabul edilir. |
+| **Eylem**               | Kabul edilen değerler **Accept**,    **Reject**   IP filtre kuralı için eylem olarak kabul veya Red. |
 | **ipMask**               | CıDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğu sağlayın. Örneğin, CıDR gösteriminde 192.168.100.0/22, 192.168.100.0 'den 192.168.103.255 'e 1024 IPv4 adresini temsil eder. |
 
 

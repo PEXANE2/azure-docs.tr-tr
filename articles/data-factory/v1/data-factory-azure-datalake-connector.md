@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281606"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory kullanarak Data Lake Storage 1. veri kopyalama
@@ -71,8 +70,8 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Data Lake Store veri
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **türüyle** | Type özelliği **AzureDataLakeStore**olarak ayarlanmalıdır. | Yes |
-| **dataLakeStoreUri** | Azure Data Lake Store hesabıyla ilgili bilgiler. Bu bilgiler aşağıdaki biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya. `adl://[accountname].azuredatalakestore.net/` | Yes |
+| **türüyle** | Type özelliği **AzureDataLakeStore**olarak ayarlanmalıdır. | Evet |
+| **dataLakeStoreUri** | Azure Data Lake Store hesabıyla ilgili bilgiler. Bu bilgiler aşağıdaki biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya `adl://[accountname].azuredatalakestore.net/` . | Evet |
 | **SubscriptionID** | Data Lake Store hesabının ait olduğu Azure abonelik KIMLIĞI. | Havuz için gerekli |
 | **resourceGroupName** | Data Lake Store hesabının ait olduğu Azure Kaynak grubu adı. | Havuz için gerekli |
 
@@ -92,9 +91,9 @@ Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını ku
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
-| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Yes |
-| **Kiracı** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes |
+| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
+| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Evet |
+| **tenant** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet |
 
 **Örnek: hizmet sorumlusu kimlik doğrulaması**
 ```json
@@ -119,8 +118,8 @@ Alternatif olarak, aşağıdaki özellikleri belirterek veya Data Lake Store kop
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Yes |
-| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Yes |
+| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Evet |
+| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Evet |
 
 > [!IMPORTANT]
 > Azure Data Lake Store ' de kullanıcıya uygun izni verdiğinizden emin olun:
@@ -154,7 +153,7 @@ Aşağıdaki tabloda farklı kullanıcı hesabı türlerinin sona erme zamanlar�
 
 | Kullanıcı türü | Süre sonu |
 |:--- |:--- |
-| Azure Active Directory tarafından *yönetilmeyen Kullanıcı* hesapları (örneğin, @hotmail.com veya @live.com) |12 saat |
+| Azure Active Directory tarafından *yönetilmeyen Kullanıcı* hesapları (örneğin, @hotmail.com veya @live.com ) |12 saat |
 | Azure Active Directory tarafından yönetilen Kullanıcı hesapları |Son dilimin çalıştırıldıktan 14 gün sonra <br/><br/>90 gün, OAuth tabanlı bağlı bir hizmete dayalı bir dilim 14 günde bir en az bir kez çalışırsa |
 
 Parolanızı belirtecin süre sonu zamanından önce değiştirirseniz, belirtecin süresi hemen dolar. Bu bölümün önceki kısımlarında bahsedilen iletiyi görürsünüz.
@@ -186,7 +185,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz. [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)ve [authorizationsessiongetresponse sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) konuları. Kodda kullanılan `2.9.10826.1824` `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` `WindowsFormsWebAuthenticationDialog` sınıf için sürümüne bir başvuru ekleyin.
+Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz. [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)ve [authorizationsessiongetresponse sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) konuları. `2.9.10826.1824` `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` Kodda kullanılan sınıf için sürümüne bir başvuru ekleyin `WindowsFormsWebAuthenticationDialog` .
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
@@ -198,12 +197,12 @@ Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz
 
 **Kök nedeni:** 2 olası neden vardır:
 
-1. Azure Data Lake Store `resourceGroupName` bağlı hizmeti 'nde `subscriptionId` ve/veya belirtilen yanlış;
+1. `resourceGroupName` `subscriptionId` Azure Data Lake Store bağlı hizmeti 'nde ve/veya belirtilen yanlış;
 2. Kullanıcı veya hizmet sorumlusu gerekli izne sahip değil.
 
 **Çözünürlüğüne**
 
-1. Bağlı hizmette `typeProperties` belirttiğiniz `subscriptionId` ve `resourceGroupName` ' ın, Data Lake hesabınızın ait olduğu gerçekten olduğundan emin olun.
+1. `subscriptionId` `resourceGroupName` Bağlı hizmette belirttiğiniz ve ' ın, `typeProperties` Data Lake hesabınızın ait olduğu gerçekten olduğundan emin olun.
 
 2. Data Lake hesabındaki Kullanıcı veya hizmet sorumlusu için en az **okuyucu** rolü verdiğinizden emin olun. Bunun nasıl yapılacağı aşağıda verilmiştir:
 
@@ -238,17 +237,17 @@ Data Lake Store giriş verilerini temsil edecek bir veri kümesi belirtmek için
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store kapsayıcı ve klasörün yolu. |Yes |
-| **Kısaltın** |Azure Data Lake Store içindeki dosyanın adı. **Filename** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. <br/><br/>**Dosya adı**belirtirseniz, etkinlik (kopyalama dahil) belirli dosya üzerinde çalışmaktadır.<br/><br/>**Dosya adı** belirtilmediğinde, Copy, giriş veri kümesindeki **FolderPath** içindeki tüm dosyaları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı biçimindedir `Data._Guid_.txt`. Örneğin: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt. |Hayır |
+| **folderPath** |Data Lake Store kapsayıcı ve klasörün yolu. |Evet |
+| **Kısaltın** |Azure Data Lake Store içindeki dosyanın adı. **Filename** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. <br/><br/>**Dosya adı**belirtirseniz, etkinlik (kopyalama dahil) belirli dosya üzerinde çalışmaktadır.<br/><br/>**Dosya adı** belirtilmediğinde, Copy, giriş veri kümesindeki **FolderPath** içindeki tüm dosyaları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı biçimindedir `Data._Guid_.txt` . Örneğin: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Hayır |
 | **partitionedBy** |**Partitionedby** özelliği isteğe bağlıdır. Bu uygulamayı, zaman serisi verileri için dinamik bir yol ve dosya adı belirtmek üzere kullanabilirsiniz. Örneğin, **FolderPath** her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için bkz. partitionedBy özelliği. |Hayır |
-| **formatını** | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **Orcformat**ve **parquetformat**. **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için, [Azure Data Factory makale tarafından desteklenen dosya ve sıkıştırma biçimlerinde](data-factory-supported-file-and-compression-formats.md) [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" dosyaları kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi `format` tanımlarında bölümü atlayın. |Hayır |
+| **formatını** | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **Orcformat**ve **parquetformat**. **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için, [Azure Data Factory makale tarafından desteklenen dosya ve sıkıştırma biçimlerinde](data-factory-supported-file-and-compression-formats.md) [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" dosyaları kopyalamak istiyorsanız, `format` hem giriş hem de çıkış veri kümesi tanımlarında bölümü atlayın. |Hayır |
 | **masıyla** | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
 
 ### <a name="the-partitionedby-property"></a>PartitionedBy özelliği
 **Partitionedby** özelliği, Data Factory işlevleri ve sistem değişkenleri ile zaman serisi verileri Için dinamik **FolderPath** ve **filename** özellikleri belirtebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory-işlevler ve sistem değişkenleri](data-factory-functions-variables.md) makalesi.
 
 
-Aşağıdaki örnekte, `{Slice}` belirtilen biçimdeki Data Factory sistem değişkeninin `SliceStart` değeri ile değiştirilmiştir (`yyyyMMddHH`). Ad `SliceStart` , dilimin başlangıç saatine başvurur. `folderPath` Özelliği, veya `wikidatagateway/wikisampledataout/2014100103` `wikidatagateway/wikisampledataout/2014100104`içinde olduğu gibi her bir dilim için farklıdır.
+Aşağıdaki örnekte, `{Slice}` Belirtilen biçimdeki Data Factory sistem değişkeninin değeri ile değiştirilmiştir `SliceStart` ( `yyyyMMddHH` ). Ad, `SliceStart` dilimin başlangıç saatine başvurur. `folderPath`Özelliği, veya içinde olduğu gibi her bir dilim için `wikidatagateway/wikisampledataout/2014100103` farklıdır `wikidatagateway/wikisampledataout/2014100104` .
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -258,7 +257,7 @@ Aşağıdaki örnekte, `{Slice}` belirtilen biçimdeki Data Factory sistem deği
 ],
 ```
 
-Aşağıdaki örnekte, yıl, ay, gün ve saati `SliceStart` , `folderPath` ve `fileName` özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır:
+Aşağıdaki örnekte, yıl, ay, gün ve saati, `SliceStart` ve özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır `folderPath` `fileName` :
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -358,7 +357,7 @@ Bu bölümdeki örnek kod şunları gösterir:
 
 **Azure Blob girdi veri kümesi**
 
-Aşağıdaki örnekte, veriler her saat (`"frequency": "Hour", "interval": 1`) için yeni bir bloba alınır. Blob için klasör yolu ve dosya adı, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay ve gün kısmını kullanır. Dosya adı başlangıç zamanının saat kısmını kullanır. `"external": true` Ayar, Data Factory hizmetine tablonun veri fabrikasının dışında olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
+Aşağıdaki örnekte, veriler her saat () için yeni bir bloba alınır `"frequency": "Hour", "interval": 1` . Blob için klasör yolu ve dosya adı, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay ve gün kısmını kullanır. Dosya adı başlangıç zamanının saat kısmını kullanır. `"external": true`Ayar, Data Factory hizmetine tablonun veri fabrikasının dışında olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
 
 ```JSON
 {
@@ -442,7 +441,7 @@ Aşağıdaki örnek Data Lake Store verileri kopyalar. Yeni veriler her saat Dat
 
 **Blob kaynağı ve bir Data Lake Store havuzu ile işlem hattındaki etkinliği kopyalama**
 
-Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık Düzen `source` JSON tanımında tür olarak `BlobSource`ayarlanır ve `sink` tür olarak `AzureDataLakeStoreSink`ayarlanır.
+Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında `source` tür olarak ayarlanır `BlobSource` ve `sink` tür olarak ayarlanır `AzureDataLakeStoreSink` .
 
 ```json
 {
@@ -539,7 +538,7 @@ Kod, saat serisi verilerini her saat Data Lake Store bir Azure blobuna kopyalar.
 ```
 **Azure Data Lake girişi veri kümesi**
 
-Bu örnekte, Data Factory hizmetine `"external"` tablonun `true` veri fabrikasının dışında olduğunu ve veri fabrikasında bir etkinlik tarafından üretilmediğini bildiren ayar.
+Bu örnekte, `"external"` `true` Data Factory hizmetine tablonun veri fabrikasının dışında olduğunu ve veri fabrikasında bir etkinlik tarafından üretilmediğini bildiren ayar.
 
 ```json
 {
@@ -574,7 +573,7 @@ Bu örnekte, Data Factory hizmetine `"external"` tablonun `true` veri fabrikası
 ```
 **Azure Blob çıktı veri kümesi**
 
-Aşağıdaki örnekte, veriler her saat (`"frequency": "Hour", "interval": 1`) yeni bir bloba yazılır. Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısmını kullanır.
+Aşağıdaki örnekte, veriler her saat () yeni bir bloba yazılır `"frequency": "Hour", "interval": 1` . Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısmını kullanır.
 
 ```JSON
 {
@@ -634,7 +633,7 @@ Aşağıdaki örnekte, veriler her saat (`"frequency": "Hour", "interval": 1`) y
 
 **Bir işlem hattındaki bir Azure Data Lake Store kaynağı ve bir blob havuzu içeren bir kopyalama etkinliği**
 
-Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık Düzen `source` JSON tanımında tür olarak `AzureDataLakeStoreSource`ayarlanır ve `sink` tür olarak `BlobSink`ayarlanır.
+Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında `source` tür olarak ayarlanır `AzureDataLakeStoreSource` ve `sink` tür olarak ayarlanır `BlobSink` .
 
 ```json
 {

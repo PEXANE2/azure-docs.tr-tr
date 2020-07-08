@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
 ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969245"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure kaynaklarını yönetmek için genel Azure CLI komutları
@@ -20,7 +19,7 @@ Azure CLı, Azure kaynaklarınızı macOS, Linux ve Windows üzerinde oluşturma
 Bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Ayrıca, tarayıcınızdan [Cloud Shell](/azure/cloud-shell/quickstart) de kullanabilirsiniz.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI’daki Temel Azure Resource Manager komutları
-Belirli komut satırı anahtarları ve seçenekleriyle ilgili daha ayrıntılı yardım için yazarak `az <command> <subcommand> --help`çevrimiçi komut yardımını ve seçeneklerini kullanabilirsiniz.
+Belirli komut satırı anahtarları ve seçenekleriyle ilgili daha ayrıntılı yardım için yazarak çevrimiçi komut yardımını ve seçeneklerini kullanabilirsiniz `az <command> <subcommand> --help` .
 
 ### <a name="create-vms"></a>VM oluşturma
 | Görev | Azure CLI komutları |

@@ -12,10 +12,9 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944882"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM 'de MongoDB 'yi yüklemek ve yapılandırmak
@@ -47,7 +46,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Kendi Kullanıcı adınızı ve önceki adımdan alınan çıktıda `publicIpAddress` listelenen sanal makineye SSH 'yi kullanarak:
+Kendi Kullanıcı adınızı ve `publicIpAddress` önceki adımdan alınan çıktıda LISTELENEN sanal MAKINEYE SSH 'yi kullanarak:
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -59,7 +58,7 @@ MongoDB için yükleme kaynakları eklemek için, aşağıdaki gibi bir **yum** 
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-`vi` Veya `nano`gibi, düzenlenmek üzere MongoDB depo dosyasını açın. Aşağıdaki satırları ekleyin:
+Veya gibi, düzenlenmek üzere MongoDB depo dosyasını açın `vi` `nano` . Aşağıdaki satırları ekleyin:
 
 ```sh
 [mongodb-org-3.6]
@@ -89,7 +88,7 @@ MongoDB hizmetini şu şekilde başlatın:
 sudo service mongod start
 ```
 
-Yerel `mongo` istemciyi kullanarak bağlantı kurarak MongoDB yüklemesini doğrulayın:
+Yerel istemciyi kullanarak bağlantı kurarak MongoDB yüklemesini doğrulayın `mongo` :
 
 ```bash
 mongo
@@ -143,7 +142,7 @@ Kendi Kullanıcı adınızı ve genel DNS adresinizi kullanarak sanal makinenize
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-Yerel `mongo` istemciyi kullanarak aşağıdaki gibi, MongoDB yüklemesini doğrulayın:
+Yerel istemciyi kullanarak aşağıdaki gibi, MongoDB yüklemesini doğrulayın `mongo` :
 
 ```bash
 mongo
@@ -197,7 +196,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Bu dağıtım, tüm sanal makine örneklerini dağıtmak ve yapılandırmak için bir saatten fazla sürebilir. `--no-wait` Bayrak, önceki komutun sonunda, şablon dağıtımı Azure platformu tarafından kabul edildikten sonra denetimi komut istemine döndürmek için kullanılır. Daha sonra dağıtım durumunu [az Group Deployment Show](/cli/azure/group/deployment)ile görüntüleyebilirsiniz. Aşağıdaki örnek *Myresourcegroup* kaynak grubundaki *Mymongodbcluster* dağıtımının durumunu görüntüler:
+Bu dağıtım, tüm sanal makine örneklerini dağıtmak ve yapılandırmak için bir saatten fazla sürebilir. `--no-wait`Bayrak, önceki komutun sonunda, şablon dağıtımı Azure platformu tarafından kabul edildikten sonra denetimi komut istemine döndürmek için kullanılır. Daha sonra dağıtım durumunu [az Group Deployment Show](/cli/azure/group/deployment)ile görüntüleyebilirsiniz. Aşağıdaki örnek *Myresourcegroup* kaynak grubundaki *Mymongodbcluster* dağıtımının durumunu görüntüler:
 
 ```azurecli
 az group deployment show \

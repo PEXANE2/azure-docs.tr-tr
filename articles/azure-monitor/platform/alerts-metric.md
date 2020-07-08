@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
 ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79369395"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
@@ -43,7 +42,7 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 8. Ölçümün boyutları varsa, bir Boyutlar tablosu görürsünüz. Her boyut için bir veya daha fazla değer seçin.
     - Görüntülenen boyut değerleri, son üç gündeki ölçüm verilerini temel alır.
     - Aradığınız boyut değeri görüntülenmiyorsa, özel bir değer eklemek için "+" düğmesine tıklayın.
-    - Boyutlardan herhangi biri için de **seçim \* ** yapabilirsiniz. **Seç \* seçeneği** , seçimi dinamik olarak bir boyut için geçerli ve gelecekteki değerlere ölçeklendirecektir.
+    - Boyutlardan herhangi biri için de **seçim \* ** yapabilirsiniz. **Seç \* ** seçimi dinamik olarak bir boyut için geçerli ve gelecekteki değerlere ölçeklendirecektir.
 
     Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](alerts-metric-overview.md).
 
@@ -94,7 +93,7 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 1. Azure portal git **Cloud Shell**' e tıklayın.
 
-2. Komut isteminde komutlar ve kullanma hakkında daha fazla bilgi ``--help`` edinmek için seçeneğini kullanabilirsiniz. Örneğin, aşağıdaki komut, ölçüm uyarılarını oluşturmak, görüntülemek ve yönetmek için kullanabileceğiniz komutların listesini gösterir
+2. Komut isteminde komutlar ``--help`` ve kullanma hakkında daha fazla bilgi edinmek için seçeneğini kullanabilirsiniz. Örneğin, aşağıdaki komut, ölçüm uyarılarını oluşturmak, görüntülemek ve yönetmek için kullanabileceğiniz komutların listesini gösterir
 
     ```azurecli
     az monitor metrics alert --help

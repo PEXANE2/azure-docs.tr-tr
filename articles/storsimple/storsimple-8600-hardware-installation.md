@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79254761"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
@@ -27,7 +26,7 @@ Aşağıdaki adımlarda, StorSimple 8600 depolama cihazınızın paketini açmak
 ### <a name="prepare-to-unpack-your-device"></a>Cihazınızın paketini açmaya hazırlanma
 Cihazınızı paketten yapılandırmadan önce aşağıdaki bilgileri gözden geçirin.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/storsimple-safety/IC740879.png)![ ağır ağırlık simgesi ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
 
 1. Cihazı el ile işliyorsa, cihazın ağırlığını yönetmek için kullanılabilecek iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 2. Kutuyu düz ve sabit bir yüzeye yerleştirin.
@@ -85,7 +84,7 @@ Kasaları hem ön hem de arka gönderilere sahip standart 19 inç bir rafa yükl
 2. Ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücüne sahip olduğunu doğrulayın.
 3. Kasaları bağlamak istediğiniz rafta bir 4U (2 X 2U) yuvasının bulunduğundan emin olun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/storsimple-safety/IC740879.png)![ ağır ağırlık simgesi ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
 
  Cihaz kurulumunu el ile işliyorsa ağırlığı yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 

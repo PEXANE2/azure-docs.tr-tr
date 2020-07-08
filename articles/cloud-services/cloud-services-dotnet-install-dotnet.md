@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79214718"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services rollerine .NET 'i yükler
@@ -35,11 +34,11 @@ Web ve çalışan rolleriniz üzerinde .NET yüklemek için, bulut hizmeti proje
 * [.NET Framework 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Bir *Web* rolü için yükleyiciyi eklemek için:
-  1. **Çözüm Gezgini**, bulut hizmeti **projenizdeki roller** ' in altında *Web* rolünüze sağ tıklayıp**Yeni klasör** **Ekle** > ' yi seçin. **Bin**adlı bir klasör oluşturun.
-  2. Bin klasörüne sağ tıklayın ve**Varolan öğe** **Ekle** > ' yi seçin. .NET yükleyicisini seçin ve bin klasörüne ekleyin.
+  1. **Çözüm Gezgini**, bulut hizmeti projenizdeki **Roller** ' in altında *Web* rolünüze sağ tıklayıp **Add**  >  **Yeni klasör**Ekle ' yi seçin. **Bin**adlı bir klasör oluşturun.
+  2. Bin klasörüne sağ tıklayın ve **Add**  >  **Varolan öğe**Ekle ' yi seçin. .NET yükleyicisini seçin ve bin klasörüne ekleyin.
   
 Bir *çalışan* rolü için yükleyiciyi eklemek için:
-* *Çalışan* rolünüze sağ tıklayın ve**Varolan öğe** **Ekle** > ' yi seçin. .NET yükleyicisini seçin ve role ekleyin. 
+* *Çalışan* rolünüze sağ tıklayın ve **Add**  >  **Varolan öğe**Ekle ' yi seçin. .NET yükleyicisini seçin ve role ekleyin. 
 
 Bu şekilde, rol içerik klasörüne dosyalar eklendiğinde, bulut hizmeti paketinize otomatik olarak eklenir. Dosyalar daha sonra sanal makinede tutarlı bir konuma dağıtılır. Tüm rollerin yükleyicinin bir kopyasına sahip olması için bulut hizmetinizdeki her bir Web ve çalışan rolü için bu işlemi tekrarlayın.
 
@@ -73,7 +72,7 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
     </Startup>
     ```
    
-    Önceki yapılandırma, .NET Framework yüklemek için konsol `install.cmd` komutunu yönetici ayrıcalıklarıyla çalıştırır. Yapılandırma ayrıca **Netfxınstall**adlı bir **localStorage** öğesi oluşturur. Başlangıç betiği, bu yerel depolama kaynağını kullanmak için Temp klasörünü ayarlar. 
+    Önceki yapılandırma, `install.cmd` .NET Framework yüklemek için konsol komutunu yönetici ayrıcalıklarıyla çalıştırır. Yapılandırma ayrıca **Netfxınstall**adlı bir **localStorage** öğesi oluşturur. Başlangıç betiği, bu yerel depolama kaynağını kullanmak için Temp klasörünü ayarlar. 
     
     > [!IMPORTANT]
     > Framework 'ün doğru yüklemesini sağlamak için bu kaynağın boyutunu en az 1.024 MB olarak ayarlayın.
@@ -197,7 +196,7 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
    EXIT /B 0
    ```
 
-3. Bu konunun önceki kısımlarında açıklandığı gibi **Çözüm Gezgini** ' de**var olan öğe** **Ekle** > ' 'yi kullanarak her role Install. cmd dosyasını ekleyin. 
+3. **Add**  >  Bu konunun önceki kısımlarında açıklandığı gibi **Çözüm Gezgini** ' de**var olan öğe** Ekle ' 'yi kullanarak her role Install. cmd dosyasını ekleyin. 
 
     Bu adım tamamlandıktan sonra, tüm rollerin .NET yükleyici dosyası ve Install. cmd dosyası olması gerekir.
 

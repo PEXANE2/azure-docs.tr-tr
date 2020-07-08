@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265707"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
@@ -29,24 +28,24 @@ Bu makalede, Azure portal kullanılarak Azure Data Lake Analytics hesaplarının
 
 ### <a name="create-an-account"></a>Hesap oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Kaynak** > oluştur**Intelligence + Analytics** > **Data Lake Analytics**' a tıklayın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Kaynak oluştur**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**' a tıklayın.
 3. Aşağıdaki öğeler için değerleri seçin: 
    1. **Ad**: Data Lake Analytics hesabının adı.
    2. **Abonelik**: hesap Için kullanılan Azure aboneliği.
    3. **Kaynak grubu**: hesabın oluşturulacağı Azure Kaynak grubu. 
    4. **Konum**: Data Lake Analytics hesabı için Azure veri merkezi. 
    5. **Data Lake Store**: Data Lake Analytics hesabı için kullanılacak varsayılan depo. Azure Data Lake Store hesabı ve Data Lake Analytics hesabı aynı konumda olmalıdır.
-4. **Oluştur**' a tıklayın. 
+4. **Oluştur**'a tıklayın. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics hesabı silme
 
 Bir Data Lake Analytics hesabını silmeden önce varsayılan Data Lake Store hesabını silin.
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
-2. **Sil**' e tıklayın.
+2. **Sil**'e tıklayın.
 3. Hesap adını yazın.
-4. **Sil**' e tıklayın.
+4. **Sil**'e tıklayın.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -111,7 +110,7 @@ U-SQL geliştiricilerinin Data Lake Analytics hizmetini kullanmasını sağlamak
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Data Lake Analytics hesaba Kullanıcı veya güvenlik grupları ekleme
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
-2. **Erişim denetimi (IAM)** > **rol ataması Ekle**' ye tıklayın.
+2. **Erişim denetimi (IAM)**  >  **rol ataması Ekle**' ye tıklayın.
 3. Bir rol seçin.
 4. Bir kullanıcı ekleyin.
 5. **Tamam**'a tıklayın.

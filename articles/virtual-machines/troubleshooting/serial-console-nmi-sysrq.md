@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250094"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq ve NMI çağrıları için seri konsol kullan
@@ -25,13 +24,13 @@ ms.locfileid: "79250094"
 ## <a name="system-request-sysrq"></a>Sistem Isteği (SysRq)
 SysRq, bir dizi önceden tanımlanmış eylemi tetikleyebilen Linux işlem sistemi çekirdeği tarafından anlaşılan bir anahtarlar dizisidir. Bu komutlar genellikle sanal makine sorun giderme veya kurtarma geleneksel yönetim aracılığıyla gerçekleştirilemediği zaman kullanılır (örneğin, VM yanıt vermiyorsa). Azure seri konsolunun SysRq özelliğinin kullanılması, SysRq anahtarına ve fiziksel bir klavyede girilen karakterlere yönelik olarak bir tuşa benzecektir.
 
-SysRq sırası teslim edildiğinde, çekirdek yapılandırması sistemin nasıl yanıt verdiğini denetler. SySRq 'ı etkinleştirme ve devre dışı bırakma hakkında daha fazla bilgi için bkz. *SySRq Yönetici Kılavuzu* [metin](https://aka.ms/kernelorgsysreqdoc) | [markı](https://aka.ms/linuxsysrq).
+SysRq sırası teslim edildiğinde, çekirdek yapılandırması sistemin nasıl yanıt verdiğini denetler. SySRq 'ı etkinleştirme ve devre dışı bırakma hakkında daha fazla bilgi için bkz. *SySRq Yönetici Kılavuzu* [metin](https://aka.ms/kernelorgsysreqdoc)  |  [markı](https://aka.ms/linuxsysrq).
 
 Azure seri konsolu, aşağıda gösterilen komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine bir SysRq göndermek için kullanılabilir.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-"Send SysRq komutunu" seçtiğinizde, genel SysRq seçeneklerini sağlayan bir iletişim kutusu açılır ve iletişim kutusuna girilen bir SysRq komutları dizisi kabul edilir.  Bu, ' nin kullanarak güvenli bir yeniden başlatma gibi yüksek düzeyli bir işlem gerçekleştirmesine olanak sağlar `REISUB`.
+"Send SysRq komutunu" seçtiğinizde, genel SysRq seçeneklerini sağlayan bir iletişim kutusu açılır ve iletişim kutusuna girilen bir SysRq komutları dizisi kabul edilir.  Bu, ' nin kullanarak güvenli bir yeniden başlatma gibi yüksek düzeyli bir işlem gerçekleştirmesine olanak sağlar `REISUB` .
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
@@ -59,7 +58,7 @@ Yukarıdaki SysRq yönetim kılavuzunda:
 |``e``  |   İnit hariç tüm işlemlere bir SIGTERM gönderin.
 |``f``  |   , Bir bellek barındırma işlemini sonlandırmak için OOM Killer çağrısını çağırır, ancak hiçbir şey sonlandırılıp sonlandırılmayacağını söylemez.
 |``g``  |   KGDB tarafından kullanılan (çekirdek hata ayıklayıcı)
-|``h``  |   Yardım görüntülenir (burada listelenenden başka herhangi bir anahtar de yardım görüntülenir, ancak ``h`` bu da kolay hatırlanmaktadır)
+|``h``  |   Yardım görüntülenir (burada listelenenden başka herhangi bir anahtar de yardım görüntülenir, ancak bu da ``h`` kolay hatırlanmaktadır)
 |``i``  |    İnit hariç tüm işlemlere bir SIGKıLL gönderin.
 |``j``  |    Zorla, fifreeze IOCTL tarafından dondurulmuş olan dosya sistemleri 'ı zorla.
 |``k``  |    Güvenli erişim anahtarı (SAK) geçerli sanal konsolundaki tüm programları Killer. NOTE: SAK bölümünde aşağıdaki önemli açıklamalara bakın.
@@ -79,7 +78,7 @@ Yukarıdaki SysRq yönetim kılavuzunda:
 |``x``  |    PPC/PowerPC platformlarında XMON arabirimi tarafından kullanılır. SPARC64 üzerinde genel PMU kayıtlarını göster. MIPS üzerindeki tüm TLB girdilerini dökümünü alın.
 |``y``  |    Genel CPU kayıtlarını göster [SPARC-64 özgü]
 |``z``  |    FTRACE arabelleğinin dökümünü al
-|``0``-``9`` | Konsolunuza hangi çekirdek iletilerinin yazdırılacağını denetleyen konsol günlük düzeyini ayarlar. (``0``Örneğin, örneğin, yalnızca panics veya oopse gibi acil mesaj iletilerinin konsolunuza yapması için bunu yapar.)
+|``0``-``9`` | Konsolunuza hangi çekirdek iletilerinin yazdırılacağını denetleyen konsol günlük düzeyini ayarlar. ( ``0`` Örneğin, örneğin, yalnızca PANICs veya Oopse gibi acil mesaj iletilerinin konsolunuza yapması için bunu yapar.)
 
 ### <a name="distribution-specific-documentation"></a>Dağıtıma özgü belgeler ###
 SysRq üzerinde dağıtıma özgü belgeler ve Linux 'u bir SysRq "kilitlenme" komutu aldığında kilitlenme dökümü oluşturmak üzere Linux yapılandırma adımları için aşağıdaki bağlantılara bakın:
@@ -111,7 +110,7 @@ Seri konsol, aşağıda gösterilen komut çubuğundaki klavye simgesini kullana
 1. Çalıştırarak sysctl 'yi yeniden başlatma veya güncelleştirme <br>
     `sysctl -p`
 
-`unknown_nmi_panic`, Ve `panic_on_io_nmi` `panic_on_unrecovered_nmi`dahil Linux çekirdek yapılandırması hakkında daha fazla bilgi için bkz. [/proc/sys/kernel/* belgeleri](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). NMI 'deki dağıtıma özgü belgeler ve bir NMI aldığında kilitlenme dökümü oluşturmak için Linux yapılandırma adımları için aşağıdaki bağlantılara bakın:
+, Ve dahil Linux çekirdek yapılandırması hakkında daha fazla bilgi için `unknown_nmi_panic` `panic_on_io_nmi` `panic_on_unrecovered_nmi` bkz. [/proc/sys/kernel/* belgeleri](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). NMI 'deki dağıtıma özgü belgeler ve bir NMI aldığında kilitlenme dökümü oluşturmak için Linux yapılandırma adımları için aşağıdaki bağlantılara bakın:
 
 ### <a name="ubuntu"></a>Ubuntu
  - [Çekirdek kilitlenme dökümü](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

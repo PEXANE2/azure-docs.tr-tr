@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285155"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'ne erişimi denetleme
@@ -77,14 +76,14 @@ Beklenen değerler şunlardır:
 
 | Değer | Açıklama |
 | --- | --- |
-| imza |Şu biçimdeki bir HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry`. **Önemli**: anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır.|
+| imza |Şu biçimdeki bir HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry` . **Önemli**: anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır.|
 | kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
 | {URL-Encoded-resourceURI} | Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması. IoT cihaz sağlama hizmeti 'nin (protokol yok) ana bilgisayar adıyla başlayarak, bu belirteçle erişilebilen uç noktaların URI ön eki (kesimine göre). Örneğin, `mydps.azure-devices-provisioning.net`. |
 | PolicyName |Bu belirtecin başvurduğu paylaşılan erişim ilkesinin adı. |
 
-**Ön eke Not**: URI öneki, karakterle değil, segmente göre hesaplanır. Örneğin `/a/b` , için bir ön `/a/b/c` ektir. `/a/bc`
+**Ön eke Not**: URI öneki, karakterle değil, segmente göre hesaplanır. Örneğin `/a/b` , için bir ön ektir `/a/b/c` `/a/bc` .
 
-Aşağıdaki Node. js kod parçacığında, girdilerden belirteç hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir `resourceUri, signingKey, policyName, expiresInMins`. Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
+Aşağıdaki Node.js kod parçacığında, girdilerden belirteç hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir `resourceUri, signingKey, policyName, expiresInMins` . Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -150,9 +149,9 @@ Uç noktalarda sunulan hizmet işlevleri aşağıda verilmiştir:
 
 Örnek olarak, kayıtları **kayıtoku** adlı önceden oluşturulmuş bir paylaşılan erişim ilkesi kullanılarak oluşturulan bir hizmet, aşağıdaki parametrelerle bir belirteç oluşturur:
 
-* Kaynak URI 'SI `{mydps}.azure-devices-provisioning.net`:,
-* imzalama anahtarı: `enrollmentread` ilkenin anahtarlarından biri,
-* ilke adı: `enrollmentread`,
+* Kaynak URI 'SI: `{mydps}.azure-devices-provisioning.net` ,
+* imzalama anahtarı: ilkenin anahtarlarından biri `enrollmentread` ,
+* ilke adı: `enrollmentread` ,
 * herhangi bir süre sonu süresi. backn
 
 ![Portalda cihaz sağlama hizmeti örneğiniz için bir paylaşılan erişim ilkesi oluşturma][img-add-shared-access-policy]

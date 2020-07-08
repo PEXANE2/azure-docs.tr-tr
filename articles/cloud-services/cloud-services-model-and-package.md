@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247494"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Bulut hizmeti modeli nedir ve nasıl paketlarım?
@@ -140,7 +139,7 @@ Burada kullanılan XML şemasını daha iyi anlamak için [hizmet yapılandırma
 Rol için çalışan örneklerin sayısını yapılandırır. Bulut hizmetinizin yükseltmeler sırasında kullanılamaz duruma gelmesine engel olmak için, Web 'e yönelik rollerinizin birden fazla örneğini dağıtmanız önerilir. Birden fazla örnek dağıtarak, bir hizmet için iki veya daha fazla rol örneği dağıtıldığında, Internet 'e yönelik rollere yönelik% 99,95 dış bağlantıyı garanti eden [Azure işlem hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/)yönergelerine bağlı olursunuz.
 
 **ConfigurationSettings**  
-Bir rol için çalışan örneklerin ayarlarını yapılandırır. `<Setting>` Öğelerin adı, hizmet tanımı dosyasındaki ayar tanımlarına uymalıdır.
+Bir rol için çalışan örneklerin ayarlarını yapılandırır. Öğelerin adı, `<Setting>` hizmet tanımı dosyasındaki ayar tanımlarına uymalıdır.
 
 **Sertifikalar**  
 Hizmeti tarafından kullanılan sertifikaları yapılandırır. Önceki kod örneğinde, RemoteAccess modülünün sertifikasının nasıl tanımlanacağı gösterilmektedir. *Parmak izi* özniteliğinin değeri, kullanılacak sertifikanın parmak izine ayarlanmalıdır.
@@ -221,15 +220,15 @@ Hizmeti çevrimdışı yapmadan, Azure 'da çalışırken bulut hizmetinizin yap
 
 Azure 'da bir uygulamayı bulut hizmeti olarak dağıtmak için, önce uygulamayı uygun biçimde paketetmeniz gerekir. Paket dosyasını Visual Studio 'ya alternatif olarak oluşturmak için **CSPack** komut satırı aracını ( [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenir) kullanabilirsiniz.
 
-**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket adlandırılır `[ServiceDefinitionFileName].cspkg`, ancak `/out` **CSPack**seçeneğini kullanarak farklı bir ad belirtebilirsiniz.
+**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket adlandırılır `[ServiceDefinitionFileName].cspkg` , ancak CSPack seçeneğini kullanarak farklı bir ad belirtebilirsiniz `/out` . **CSPack**
 
 **CSPack** şurada bulunur:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> CSPack. exe (Windows üzerinde), SDK ile birlikte yüklenen **Microsoft Azure komut istemi** kısayolunu çalıştırılarak kullanılabilir.  
+> CSPack.exe (Windows üzerinde), SDK ile birlikte yüklenen **Microsoft Azure komut istemi** kısayolunu çalıştırılarak kullanılabilir.  
 > 
-> Tüm olası anahtar ve komutlarla ilgili belgeleri görmek için CSPack. exe programını tek başına çalıştırın.
+> Tüm olası anahtar ve komutlarla ilgili belgeleri görmek için CSPack.exe programını kendisiyle çalıştırın.
 > 
 > 
 
@@ -266,7 +265,7 @@ Değişkenlerin şu şekilde tanımlandığı yer:
 | --- | --- |
 | \[DirectoryName\] |Azure projesinin. csdef dosyasını içeren kök proje dizini altındaki alt dizin. |
 | \[ServiceDefinition\] |Hizmet tanım dosyasının adı. Varsayılan olarak, bu dosya ServiceDefinition. csdef olarak adlandırılır. |
-| \[OutputFilename & lt\] |Oluşturulan paket dosyasının adı. Genellikle bu, uygulamanın adına ayarlanır. Dosya adı belirtilmemişse, uygulama paketi ApplicationName \[\]. cspkg olarak oluşturulur. |
+| \[OutputFilename & lt\] |Oluşturulan paket dosyasının adı. Genellikle bu, uygulamanın adına ayarlanır. Dosya adı belirtilmemişse, uygulama paketi \[ ApplicationName \] . cspkg olarak oluşturulur. |
 | \[RoleName\] |Rolün hizmet tanım dosyasında tanımlanan adı. |
 | \[RoleBinariesDirectory] |Rolün ikili dosyalarının konumu. |
 | \[VirtualPath\] |Hizmet tanımının siteler bölümünde tanımlanan her bir sanal yol için fiziksel dizinler. |

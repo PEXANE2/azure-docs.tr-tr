@@ -4,10 +4,9 @@ description: Azure Storage 'da uygulama verilerinizi şifreleyin ve paket dosyas
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408733"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
@@ -31,7 +30,7 @@ Sonra, [SAS oluşturmak](../vs-azure-tools-storage-manage-with-storage-explorer.
 
 ### <a name="configure-running-from-a-package-from-your-storage-account"></a>Depolama hesabınızdan bir paketten çalıştırmayı yapılandırma
   
-Dosyanızı blob depolamaya yükledikten ve dosya için bir SAS URL 'sine sahip olduktan sonra, `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarını SAS URL 'si olarak ayarlayın. Aşağıdaki örnek, Azure CLı kullanarak bunu yapar:
+Dosyanızı blob depolamaya yükledikten ve dosya için bir SAS URL 'sine sahip olduktan sonra, `WEBSITE_RUN_FROM_PACKAGE` uygulama AYARıNı SAS URL 'si olarak ayarlayın. Aşağıdaki örnek, Azure CLı kullanarak bunu yapar:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
@@ -41,9 +40,9 @@ Bu uygulama ayarı eklendiğinde, işlev uygulamanızın yeniden başlatılması
 
 ### <a name="encrypt-the-application-setting-using-key-vault-references"></a>Key Vault başvurularını kullanarak uygulama ayarını şifreleyin
 
-Artık `WEBSITE_RUN_FROM_PACKAGE` uygulama AYARıNıN değerini SAS kodlu URL 'ye bir Key Vault başvurusuyla değiştirebilirsiniz. Bu, ek bir güvenlik katmanı sağlayan Key Vault SAS URL 'sini şifreli tutar.
+Artık `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarının DEĞERINI SAS kodlu URL 'ye bir Key Vault başvurusuyla değiştirebilirsiniz. Bu, ek bir güvenlik katmanı sağlayan Key Vault SAS URL 'sini şifreli tutar.
 
-1. Bir Key Vault örneği [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) oluşturmak için aşağıdaki komutu kullanın.       
+1. [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)Bir Key Vault örneği oluşturmak için aşağıdaki komutu kullanın.       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -51,19 +50,19 @@ Artık `WEBSITE_RUN_FROM_PACKAGE` uygulama AYARıNıN değerini SAS kodlu URL 'y
 
 1. Uygulamanızı anahtar kasanıza [erişim izni vermek için aşağıdaki yönergeleri](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault) izleyin:
 
-1. Dış URL 'nizi [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) anahtar kasanıza gizli dizi olarak eklemek için aşağıdaki komutu kullanın:   
+1. [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set)Dış URL 'nizi anahtar kasanıza gizli dizi olarak eklemek için aşağıdaki komutu kullanın:   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  Aşağıdaki [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutu kullanarak, DEĞERI dış URL `WEBSITE_RUN_FROM_PACKAGE` 'ye Key Vault başvuru olarak değere sahip bir uygulama ayarı oluşturun:
+1.  Aşağıdaki komutu kullanarak, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) `WEBSITE_RUN_FROM_PACKAGE` DEĞERI dış URL 'ye Key Vault başvuru olarak değere sahip bir uygulama ayarı oluşturun:
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    , `<secret-version>` Önceki `az keyvault secret set` komutun çıktısında olacaktır.
+    , `<secret-version>` Önceki komutun çıktısında olacaktır `az keyvault secret set` .
 
 Bu uygulama ayarının güncelleştirilmesi, işlev uygulamanızın yeniden başlatılmasına neden olur. Uygulama yeniden başlatıldıktan sonra, Key Vault başvurusunu kullanarak doğru şekilde başlatıldığından emin olun.
 
@@ -71,7 +70,7 @@ Bu uygulama ayarının güncelleştirilmesi, işlev uygulamanızın yeniden baş
 
 Depolama hesabınızın SAS anahtarını düzenli aralıklarla döndürmek en iyi uygulamadır. İşlev uygulamasının yanlışlıkla erişimi istemediğinden emin olmak için Key Vault SAS URL 'sini de güncelleştirmeniz gerekir.
 
-1. Azure portal depolama hesabınıza giderek SAS anahtarını döndürün. **Ayarlar** > **erişim tuşları**altında, SAS anahtarını döndürmek için simgeye tıklayın.
+1. Azure portal depolama hesabınıza giderek SAS anahtarını döndürün. **Ayarlar**  >  **erişim tuşları**altında, SAS anahtarını döndürmek için simgeye tıklayın.
 
 1. Yeni SAS URL 'sini kopyalayın ve Anahtar Kasanızda güncelleştirilmiş SAS URL 'sini ayarlamak için aşağıdaki komutu kullanın:
 
@@ -85,7 +84,7 @@ Depolama hesabınızın SAS anahtarını düzenli aralıklarla döndürmek en iy
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    , `<secret-version>` Önceki `az keyvault secret set` komutun çıktısında olacaktır.
+    , `<secret-version>` Önceki komutun çıktısında olacaktır `az keyvault secret set` .
 
 ## <a name="how-to-revoke-the-function-apps-data-access"></a>İşlev uygulamasının veri erişimini iptal etme
 
@@ -120,4 +119,4 @@ Yalnızca Azure depolama hesabı ve geçerli çıkış ücretleri ile ilişkili 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [App Service için Key Vault başvurular](../app-service/app-service-key-vault-references.md)
-- [Bekleyen veriler için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md)
+- [Bekleyen veri için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md)

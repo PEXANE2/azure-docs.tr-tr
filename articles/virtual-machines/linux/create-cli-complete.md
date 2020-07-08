@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969556"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLı ile tamamen bir Linux sanal makinesi oluşturma
@@ -27,7 +26,7 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 az group create --name myResourceGroup --location eastus
 ```
 
-Varsayılan olarak, Azure CLı komutlarının çıkışı JSON (JavaScript Nesne Gösterimi) ' dir. Örneğin, varsayılan çıktıyı bir liste veya tablo olarak değiştirmek için [az configure--output](/cli/azure/reference-index)kullanın. Ayrıca, çıkış biçiminde `--output` tek bir zaman değişikliği için herhangi bir komuta ekleyebilirsiniz. Aşağıdaki örnek, `az group create` komutundan JSON çıkışını gösterir:
+Varsayılan olarak, Azure CLı komutlarının çıkışı JSON (JavaScript Nesne Gösterimi) ' dir. Örneğin, varsayılan çıktıyı bir liste veya tablo olarak değiştirmek için [az configure--output](/cli/azure/reference-index)kullanın. Ayrıca, `--output` Çıkış biçiminde tek bir zaman değişikliği için herhangi bir komuta ekleyebilirsiniz. Aşağıdaki örnek, komutundan JSON çıkışını gösterir `az group create` :
 
 ```json                       
 {
@@ -94,7 +93,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-Şimdi [az Network public-IP Create](/cli/azure/network/public-ip)komutuyla BIR genel IP adresi oluşturalım. Bu genel IP adresi, Internet 'ten sanal makinelerinize bağlanmanızı sağlar. Varsayılan Adres dinamik olduğundan, `--domain-name-label` parametresiyle adlandırılmış bir DNS girişi oluşturun. Aşağıdaki örnek, mypublicdns DNS adıyla *Mypublicıp* adlı BIR genel *mypublicdns*IP oluşturur. DNS adının benzersiz olması gerektiğinden, kendi benzersiz DNS adınızı sağlayın:
+Şimdi [az Network public-IP Create](/cli/azure/network/public-ip)komutuyla BIR genel IP adresi oluşturalım. Bu genel IP adresi, Internet 'ten sanal makinelerinize bağlanmanızı sağlar. Varsayılan Adres dinamik olduğundan, parametresiyle adlandırılmış bir DNS girişi oluşturun `--domain-name-label` . Aşağıdaki örnek, mypublicdns DNS adıyla *Mypublicıp* adlı BIR genel *mypublicdns*IP oluşturur. DNS adının benzersiz olması gerektiğinden, kendi benzersiz DNS adınızı sağlayın:
 
 ```azurecli
 az network public-ip create \
@@ -471,7 +470,7 @@ az vm availability-set create \
 ## <a name="create-a-vm"></a>VM oluşturma
 Internet erişimli VM 'Leri desteklemek için ağ kaynaklarını oluşturdunuz. Şimdi bir VM oluşturun ve bir SSH anahtarıyla güvenli hale getirin. Bu örnekte, en son LTS 'yi temel alan bir Ubuntu VM oluşturalım. [Azure VM görüntülerini bulma](cli-ps-findimage.md)bölümünde açıklandığı gibi [az VM image List](/cli/azure/vm/image)ile ek görüntüler bulabilirsiniz.
 
-Kimlik doğrulaması için kullanılacak bir SSH anahtarı belirtin. SSH ortak anahtar çiftiniz yoksa, [bunları](mac-create-ssh-keys.md) oluşturabilir veya `--generate-ssh-keys` parametresini sizin için oluşturmak üzere kullanabilirsiniz. Zaten bir anahtar çiftiniz varsa, bu parametre içindeki `~/.ssh`mevcut anahtarları kullanır.
+Kimlik doğrulaması için kullanılacak bir SSH anahtarı belirtin. SSH ortak anahtar çiftiniz yoksa, [bunları](mac-create-ssh-keys.md) oluşturabilir veya `--generate-ssh-keys` parametresini sizin için oluşturmak üzere kullanabilirsiniz. Zaten bir anahtar çiftiniz varsa, bu parametre içindeki mevcut anahtarları kullanır `~/.ssh` .
 
 Tüm kaynakları ve bilgileri [az VM Create](/cli/azure/vm) komutuyla birlikte getirerek VM 'yi oluşturun. Aşağıdaki örnek *myVM* adlı bir VM oluşturur:
 
@@ -556,7 +555,7 @@ Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Bu komut, `myResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. `az group export` Komutuna `--include-parameter-default-value` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [Parameters. JSON dosyası oluşturun](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Bu komut, `myResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. Komutuna parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz `--include-parameter-default-value` `az group export` . Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [bir dosya parameters.jsoluşturun](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment) ' ı aşağıdaki gibi kullanın:
 

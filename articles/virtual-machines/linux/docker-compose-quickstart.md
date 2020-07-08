@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970298"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Azure 'da çok kapsayıcılı bir uygulama tanımlamak ve çalıştırmak için Docker ve Compose kullanmaya başlama
@@ -27,7 +26,7 @@ En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/az
 az group create --name myDockerGroup --location eastus
 ```
 
-*Kabuğunuzda Cloud-init. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init.txt` adını girin. 
+*cloud-init.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init.txt` adını girin. 
 
 ```yaml
 #include https://get.docker.com
@@ -69,9 +68,9 @@ sudo apt install docker-compose
 
 
 ## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-Compose. yıml yapılandırma dosyası oluşturma
-VM 'de `docker-compose.yml` çalıştırılacak Docker kapsayıcılarını tanımlamak için bir yapılandırma dosyası oluşturun. Dosya, her kapsayıcıda çalıştırılacak görüntüyü, gerekli ortam değişkenlerini ve bağımlılıklarını, bağlantı noktalarını ve kapsayıcılar arasındaki bağlantıları belirtir. YML dosya sözdizimi hakkında daha fazla bilgi için bkz. [dosya başvurusu oluşturma](https://docs.docker.com/compose/compose-file/).
+`docker-compose.yml`VM 'de çalıştırılacak Docker kapsayıcılarını tanımlamak için bir yapılandırma dosyası oluşturun. Dosya, her kapsayıcıda çalıştırılacak görüntüyü, gerekli ortam değişkenlerini ve bağımlılıklarını, bağlantı noktalarını ve kapsayıcılar arasındaki bağlantıları belirtir. YML dosya sözdizimi hakkında daha fazla bilgi için bkz. [dosya başvurusu oluşturma](https://docs.docker.com/compose/compose-file/).
 
-Bir *Docker-Compose. yıml* dosyası oluşturun. Dosyaya veri eklemek için en sevdiğiniz metin düzenleyiciyi kullanın. Aşağıdaki örnek, kullanmak istediğiniz bir düzenleyiciyi seçmek `sensible-editor` üzere bir komut istemi ile dosyayı oluşturur.
+Bir *Docker-Compose. yıml* dosyası oluşturun. Dosyaya veri eklemek için en sevdiğiniz metin düzenleyiciyi kullanın. Aşağıdaki örnek, `sensible-editor` kullanmak istediğiniz bir düzenleyiciyi seçmek üzere bir komut istemi ile dosyayı oluşturur.
 
 ```bash
 sensible-editor docker-compose.yml
@@ -94,7 +93,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>Oluşturma ile kapsayıcıları başlatma
-*Docker-Compose. yml* dosyanızdaki aynı dizinde aşağıdaki komutu çalıştırın (ortamınıza bağlı olarak, kullanarak `docker-compose` `sudo`çalıştırmanız gerekebilir):
+*Docker-Compose. yml* dosyanızdaki aynı dizinde aşağıdaki komutu çalıştırın (ortamınıza bağlı olarak, kullanarak çalıştırmanız gerekebilir `docker-compose` `sudo` ):
 
 ```bash
 sudo docker-compose up -d
@@ -109,7 +108,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Kapsayıcıların güncel olduğunu doğrulamak için, yazın `sudo docker-compose ps`. Şuna benzer bir şey görmeniz gerekir:
+Kapsayıcıların güncel olduğunu doğrulamak için, yazın `sudo docker-compose ps` . Şuna benzer bir şey görmeniz gerekir:
 
 ```
         Name                       Command               State         Ports

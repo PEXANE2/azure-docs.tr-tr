@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79269490"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM 'lerini, sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM 'lerine geçirin
@@ -52,7 +51,7 @@ Sunucu geçiş portalı deneyimi, bir VM 'yi bir projede ilk kez çoğalttığı
 
 1. Azure portal, kaynak grupları sayfasına gidin ve Azure geçişi projesinin oluşturulduğu kaynak grubunu seçin.
 2. Sol menüden **dağıtımlar** ' ı seçin ve *"Microsoft. MigrateV2. VMwareV2EnableMigrate"* dizesiyle başlayarak bir dağıtım adı arayın. Bu projedeki VM 'Lerin çoğaltmasını ayarlamak için Portal deneyimi tarafından oluşturulan Kaynak Yöneticisi şablonlarının bir listesini görürsünüz. Bu tür bir şablonu indirecek ve şablonu CMK ile çoğaltmaya hazırlamak için temel olarak kullanacaksınız.
-3. Şablonu indirmek için önceki adımda dize düzeniyle eşleşen herhangi bir dağıtım seçin > sol menüden **şablon** ' u seçin > en üstteki menüden **Indir** ' e tıklayın. Template. json dosyasını yerel olarak kaydedin. Bu şablon dosyasını son adımda düzenlersiniz.
+3. Şablonu indirmek için önceki adımda dize düzeniyle eşleşen herhangi bir dağıtım seçin > sol menüden **şablon** ' u seçin > en üstteki menüden **Indir** ' e tıklayın. template.jsdosyayı yerel olarak kaydedin. Bu şablon dosyasını son adımda düzenlersiniz.
 
 ## <a name="create-a-disk-encryption-set"></a>Disk şifreleme kümesi oluşturma
 

@@ -8,10 +8,9 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79096788"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Azure Izleyici platformu günlüklerine yapılan biçim değişikliğine hazırlanma bir depolama hesabına arşivlendi
@@ -25,7 +24,7 @@ ms.locfileid: "79096788"
 Azure Izleyici, Azure Izleyici 'deki bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak günlükleri ve etkinlik günlükleri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişti. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
 
 * Salı günü, 1 Kasım 2018, 12:00 gece UTC 'de, blob biçimi [JSON satırları](http://jsonlines.org/)olarak değiştirildi. Bu, her kaydın bir yeni satır tarafından sınırlandırıldığından, dış kayıt dizisi olmadan ve JSON kayıtları arasında virgül olmaması anlamına gelir.
-* Blob biçimi tüm aboneliklerdeki tüm Tanılama ayarları için aynı anda değişmiştir. 1 Kasım için yayılan ilk PT1H. JSON dosyası bu yeni biçimi kullandı. Blob ve kapsayıcı adları aynı kalır.
+* Blob biçimi tüm aboneliklerdeki tüm Tanılama ayarları için aynı anda değişmiştir. 1 Kasım 'da oluşturulan ilk PT1H.js, bu yeni biçimi kullandı. Blob ve kapsayıcı adları aynı kalır.
 * Verileri geçerli biçimde 1 Kasım 'a kadar göstermek için 1 Kasım 'dan önce 1 Kasım 'a kadar devam eden bir tanılama ayarı ayarlama.
 * Bu değişiklik, tüm genel bulut bölgelerinde bir kez oluştu. Bu değişiklik, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure Almanya veya Azure Kamu bulutlarında henüz gerçekleşmeyecektir.
 * Bu değişiklik aşağıdaki veri türlerini etkiler:
@@ -55,7 +54,7 @@ Bu kaynak tanılama ayarlarını kullanarak bir depolama hesabına veri göndere
 
 ### <a name="details-of-the-format-change"></a>Biçim değişikliğinin ayrıntıları
 
-Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON dizi kayıt kullanır. İşte şu anda bir Keykasası günlük dosyası örneği:
+Azure Blob depolama alanındaki PT1H.jsdosyanın geçerli biçimi, bir JSON dizi kayıt kullanır. İşte şu anda bir Keykasası günlük dosyası örneği:
 
 ```json
 {
@@ -116,7 +115,7 @@ Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON diz
 }
 ```
 
-Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni bir olayı gösteren [JSON hatlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, PT1H. json dosyasında değişiklikten sonra şöyle görünür:
+Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni bir olayı gösteren [JSON hatlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, değişiklikten sonra dosyada PT1H.jsşöyle görünür:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}

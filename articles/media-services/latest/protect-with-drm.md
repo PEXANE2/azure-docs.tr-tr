@@ -16,10 +16,9 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086741"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
@@ -57,7 +56,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 * Visual Studio Code veya Visual Studio 'Yu yükler.
 * [Bu hızlı başlangıçta](create-account-cli-quickstart.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
 * [Erişim API'lerini](access-api-cli-how-to.md) kullanarak Media Services API'lerini kullanmak için gerekli kimlik bilgilerini edinin.
-* Uygulama yapılandırma dosyasında (appSettings. JSON) uygun değerleri ayarlayın.
+* Uygulama yapılandırma dosyasında (appsettings.jsüzerinde) uygun değerleri ayarlayın.
 
 ## <a name="download-code"></a>Kodu indirin
 
@@ -86,7 +85,7 @@ Aşağıdaki komutu kullanarak, bu makalede anlatılan eksiksiz .NET örneğini 
 
 ## <a name="get-or-create-an-encoding-transform"></a>Kodlama Dönüşümü alma veya oluşturma
 
-Yeni bir [Dönüşüm](transforms-jobs-concept.md) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda `transformOutput` gösterildiği gibi bir nesnedir. Her TransformOutput bir **Ön ayar** içerir. Ön ayar, video ve/veya ses işleme işlemlerinin istenen TransformOutput nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu makalede açıklanan örnek, **AdaptiveStreaming** adlı yerleşik bir Ön Ayar kullanır. Önceden ayarlanmış, giriş videosunu, giriş çözünürlüğünü ve bit hızını temel alarak otomatik olarak oluşturulmuş bir bit hızı (bit hızı çözme çiftleri) olarak kodlar ve her bit hızı çözme çiftine karşılık gelen H. leneçini ve AAC ses ile ISO MP4 dosyaları üretir. 
+Yeni bir [Dönüşüm](transforms-jobs-concept.md) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. Gerekli parametre `transformOutput` , aşağıdaki kodda gösterildiği gibi bir nesnedir. Her TransformOutput bir **Ön ayar** içerir. Ön ayar, video ve/veya ses işleme işlemlerinin istenen TransformOutput nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu makalede açıklanan örnek, **AdaptiveStreaming** adlı yerleşik bir Ön Ayar kullanır. Önceden ayarlanmış, giriş videosunu, giriş çözünürlüğünü ve bit hızını temel alarak otomatik olarak oluşturulmuş bir bit hızı (bit hızı çözme çiftleri) olarak kodlar ve her bit hızı çözme çiftine karşılık gelen H. leneçini ve AAC ses ile ISO MP4 dosyaları üretir. 
 
 Yeni bir **Dönüşüm** oluşturmadan önce ilk olarak aşağıdaki kodda gösterildiği gibi **Get** yöntemi ile bir dönüşümün zaten var olup olmadığını denetlemeniz gerekir.  Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
 
@@ -135,7 +134,7 @@ Kodlama tamamlandıktan ve içerik anahtarı ilkesi ayarlandıktan sonra sırada
 
 **Akış bulucuyu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerlidir. İsteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadığınız sürece, silinene kadar sürer.
 
-Bir **akış Bulucu**oluştururken, istenen `StreamingPolicyName`' i belirtmeniz gerekir. Bu öğreticide, önceden tanımlanmış akış Ilkelerinden birini kullanıyoruz, bu da içeriğin akış için nasıl yayımlanacağını söyler Azure Media Services. Bu örnekte StreamingLocator.StreamingPolicyName öğesini "Predefined_MultiDrmCencStreaming" ilkesi olarak belirliyoruz. PlayReady ve Widevine şifrelemeleri uygulanır ve anahtar, yapılandırılmış DRM lisanslarına göre kayıttan yürütme istemcisine gönderilir. Akışınızı CBCS (FairPlay) ile de şifrelemek isterseniz "Predefined_MultiDrmStreaming" öğesini kullanın.
+Bir **akış Bulucu**oluştururken, istenen ' i belirtmeniz gerekir `StreamingPolicyName` . Bu öğreticide, önceden tanımlanmış akış Ilkelerinden birini kullanıyoruz, bu da içeriğin akış için nasıl yayımlanacağını söyler Azure Media Services. Bu örnekte StreamingLocator.StreamingPolicyName öğesini "Predefined_MultiDrmCencStreaming" ilkesi olarak belirliyoruz. PlayReady ve Widevine şifrelemeleri uygulanır ve anahtar, yapılandırılmış DRM lisanslarına göre kayıttan yürütme istemcisine gönderilir. Akışınızı CBCS (FairPlay) ile de şifrelemek isterseniz "Predefined_MultiDrmStreaming" öğesini kullanın.
 
 > [!IMPORTANT]
 > Özel bir [akış ilkesi](streaming-policy-concept.md)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Media Service hesabınızda StreamingPolicy girişlerinin sayısı için bir kota bulunur. Her StreamingLocator için yeni bir StreamingPolicy oluşturmamalısınız.

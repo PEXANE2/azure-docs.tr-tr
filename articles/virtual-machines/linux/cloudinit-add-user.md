@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969233"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine Kullanıcı eklemek için Cloud-init kullanma
@@ -19,7 +18,7 @@ Bu makalede, Azure 'da sağlama zamanında bir sanal makineye (VM) veya sanal ma
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Cloud-init ile bir VM 'ye Kullanıcı ekleme
 Yeni bir Linux VM 'deki ilk görevlerden biri, *kök*kullanımını önlemek için kendinize ek bir kullanıcı eklemektir. SSH anahtarları, güvenlik ve kullanılabilirlik için en iyi uygulamadır. Bu Cloud-init betiğine sahip *~/. SSH/authorized_keys* dosyasına anahtarlar eklenir.
 
-Bir Linux VM 'ye Kullanıcı eklemek için, geçerli kabuğunuzun *cloud_init_add_user. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_add_user.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  Örnek için `ssh-authorized-keys:` kendi ortak anahtarınızı ( *~/. ssh/id_rsa. pub*içeriği gibi) sağlamanız gerekir. Bu, örneği basitleştirmek için burada kısaltıldı.
+Bir Linux VM 'ye Kullanıcı eklemek için, geçerli kabuğunuzun *cloud_init_add_user.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_add_user.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  Örnek için kendi ortak anahtarınızı ( *~/. ssh/id_rsa. pub*içeriği gibi) sağlamanız gerekir `ssh-authorized-keys:` . Bu, örneği basitleştirmek için burada kısaltıldı.
 
 ```yaml
 #cloud-config
@@ -33,7 +32,7 @@ users:
       - ssh-rsa AAAAB3<snip>
 ```
 > [!NOTE] 
-> #Cloud-config dosyası, `- default` dahil edilen parametreyi içerir. Bu işlem, kullanıcıyı sağlama sırasında oluşturulan mevcut yönetici kullanıcısına ekler. `- default` Parametresi olmadan bir kullanıcı oluşturursanız, Azure platformu tarafından oluşturulan otomatik olarak oluşturulan Yönetici Kullanıcı üzerine yazılır. 
+> #Cloud-config dosyası, `- default` dahil edilen parametreyi içerir. Bu işlem, kullanıcıyı sağlama sırasında oluşturulan mevcut yönetici kullanıcısına ekler. Parametresi olmadan bir kullanıcı oluşturursanız, `- default` Azure platformu tarafından oluşturulan otomatik olarak oluşturulan Yönetici Kullanıcı üzerine yazılır. 
 
 Bu görüntüyü dağıtılmadan önce [az Group Create](/cli/azure/group) komutuyla bir kaynak grubu oluşturmanız gerekir. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
@@ -41,7 +40,7 @@ Bu görüntüyü dağıtılmadan önce [az Group Create](/cli/azure/group) komut
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve Cloud-init dosyasını aşağıdaki `--custom-data cloud_init_add_user.txt` gibi belirtin:
+Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve Cloud-init dosyasını `--custom-data cloud_init_add_user.txt` aşağıdaki gibi belirtin:
 
 ```azurecli-interactive 
 az vm create \
@@ -64,7 +63,7 @@ Kullanıcının VM 'ye ve belirtilen gruplara eklendiğini doğrulamak için, */
 cat /etc/group
 ```
 
-Aşağıdaki örnek çıktı, *cloud_init_add_user. txt* DOSYASıNDAKI kullanıcının VM 'ye ve uygun gruba eklendiğini gösterir:
+Aşağıdaki örnek çıktı, *cloud_init_add_user.txt* DOSYASıNDAKI kullanıcının VM 'ye ve uygun gruba eklendiğini gösterir:
 
 ```bash
 root:x:0:

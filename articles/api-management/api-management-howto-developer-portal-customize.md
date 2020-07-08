@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79244101"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
@@ -68,7 +67,7 @@ Bir sayfaya, artı işareti ile mavi simgesine tıklayarak satır ekleyebilirsin
 
 Düzenler sayfaların nasıl görüntüleneceğini tanımlar. Örneğin, varsayılan içerikte iki düzen vardır-diğeri giriş sayfasına, diğeri de kalan tüm sayfalara uygulanır.
 
-Bir düzen, URL şablonuyla sayfanın URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin `/wiki/*` , URL şablonuna sahip bir düzen, URL 'deki `/wiki/` segmentle birlikte her sayfaya uygulanır: `/wiki/getting-started`, `/wiki/styles`vb.
+Bir düzen, URL şablonuyla sayfanın URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin, URL şablonuna sahip bir düzen, `/wiki/*` `/wiki/` URL 'deki segmentle birlikte her sayfaya uygulanır: `/wiki/getting-started` , `/wiki/styles` vb.
 
 Yukarıdaki görüntüde, sayfa kırmızı olarak işaretlenirken düzene ait içerikler mavi olarak işaretlenir. Menü bölümleri sırasıyla işaretlenir.
 
@@ -91,7 +90,7 @@ Portalda her değişiklik yaptığınızda, alt kısımdaki menüdeki **Kaydet**
 Portalınızı ziyaretçi tarafından kullanılabilir yapmadan önce, otomatik olarak oluşturulan içeriği kişiselleştirmelisiniz. Önerilen değişiklikler, ana sayfanın düzenlerini, stillerini ve içeriğini içerir.
 
 > [!NOTE]
-> Tümleştirme konuları nedeniyle, aşağıdaki sayfalar farklı bir URL altında kaldırılamaz veya taşınamaz: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin` `/signin-sso`,,,,,, `/signup`,,,,,.
+> Tümleştirme konuları nedeniyle, aşağıdaki sayfalar farklı bir URL altında kaldırılamaz veya taşınamaz: `/404` , `/500` ,, `/captcha` `/change-password` , `/config.json` , `/confirm/invitation` , `/confirm-v2/identities/basic/signup` , `/confirm-v2/password` , `/internal-status-0123456789abcdef` , `/publish` , `/signin` `/signin-sso` `/signup` ,,,,,,,,,,,.
 
 ### <a name="home-page"></a>Giriş sayfası
 
@@ -124,7 +123,7 @@ Portalınızın ve en son değişikliklerinin ziyaretçi tarafından kullanılab
 
 ## <a name="visit-the-published-portal"></a>Yayınlanan portalı ziyaret edin
 
-Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz (örneğin `https://contoso-api.developer.azure-api.net`,). Bunu, dış ziyaretçi olarak ayrı bir tarayıcı oturumunda (bilito/Private gözatma modu) görüntüleyin.
+Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz (örneğin,) `https://contoso-api.developer.azure-api.net` . Bunu, dış ziyaretçi olarak ayrı bir tarayıcı oturumunda (bilito/Private gözatma modu) görüntüleyin.
 
 ## <a name="apply-the-cors-policy-on-apis"></a>API 'lerde CORS ilkesini uygulama
 

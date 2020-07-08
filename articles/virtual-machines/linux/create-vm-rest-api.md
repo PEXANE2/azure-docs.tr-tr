@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970266"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
@@ -25,7 +24,7 @@ Bu makalede, yönetilen diskler ve SSH kimlik doğrulamasıyla Ubuntu 18,04-LTS 
 
 İsteği oluşturmadan ve göndermeden önce şunları yapmanız gerekir:
 
-* Aboneliğiniz `{subscription-id}` için
+* `{subscription-id}`Aboneliğiniz için
   * Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * Bir `{resourceGroupName}` süre önce oluşturduğunuz
 * Aynı kaynak grubundaki bir [sanal ağ arabirimi](../../virtual-network/virtual-network-network-interface.md)
@@ -39,7 +38,7 @@ Bir sanal makine oluşturmak veya güncelleştirmek için aşağıdaki *PUT* iş
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` Ve `{resourceGroupName}` parametrelerine ek olarak, ( `{vmName}` `api-version` isteğe bağlı, ancak bu makale ile `api-version=2017-12-01`test edilmiştir) belirtmeniz gerekir.
+Ve parametrelerine ek olarak `{subscription-id}` , `{resourceGroupName}` `{vmName}` ( `api-version` isteğe bağlı, ancak bu makale ile test edilmiştir `api-version=2017-12-01` ) belirtmeniz gerekir.
 
 Aşağıdaki üstbilgiler gereklidir:
 
@@ -54,16 +53,16 @@ REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API i
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-| Adı                       | Gerekli | Tür                                                                                | Açıklama  |
+| Name                       | Gerekli | Tür                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Kaynak konumu. |
-| ad                       |          | string                                                                              | Sanal makinenin adı. |
+| name                       |          | string                                                                              | Sanal makinenin adı. |
 | Properties. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Sanal makine için donanım ayarlarını belirtir. |
 | Properties. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Sanal makine disklerinin depolama ayarlarını belirtir. |
 | Properties. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Sanal makine için işletim sistemi ayarlarını belirtir. |
 | Properties. networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Sanal makinenin ağ arabirimlerini belirtir. |
 
-Örnek bir istek gövdesi aşağıda verilmiştir. `{computerName}` `{name}` Ve `networkInterfaces`parametrelerinde, sanal makine adını, altında oluşturduğunuz ağ arabiriminin adını, ve `adminUsername` `path`içindeki kullanıcı adınızı ve SSH KeyPair 'nin (örneğin, içinde bulunan `~/.ssh/id_rsa.pub`) `keyData` *ortak* bölümünü belirttiğinizden emin olun. Değiştirmek isteyebileceğiniz diğer parametreler, ve `location` `vmSize`içerir.  
+Örnek bir istek gövdesi aşağıda verilmiştir. Ve parametrelerinde, sanal makine adını, `{computerName}` `{name}` altında oluşturduğunuz ağ arabiriminin adını `networkInterfaces` , ve içindeki kullanıcı adınızı `adminUsername` `path` ve SSH KeyPair 'nin (örneğin, içinde bulunan) *ortak* bölümünü `~/.ssh/id_rsa.pub` `keyData` belirttiğinizden emin olun. Değiştirmek isteyebileceğiniz diğer parametreler `location` , ve içerir `vmSize` .  
 
 ```json
 {
@@ -128,7 +127,7 @@ Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz
 
 Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-| Adı        | Tür                                                                              | Açıklama |
+| Name        | Tür                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
 | 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |

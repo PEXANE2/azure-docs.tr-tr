@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367593"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
@@ -38,7 +37,7 @@ Azure Cosmos DB, aşağıdaki uzamsal veri türlerini destekler:
 
 - Seçeneğinin
 - LineString
-- Gen
+- Poligon
 - MultiPolygon
 
 ### <a name="points"></a>Noktalar
@@ -156,9 +155,9 @@ Dünya şekli düzensiz olduğundan, coğrafi bölge Jeo uzamsal verilerinin koo
 Günümüzde kullanımda olan en popüler dünyayı dünya çapındaki sistem [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)' dir. GPS cihazları ve Google Maps ve Bing Haritalar API 'Leri dahil olmak üzere birçok eşleme hizmeti WGS-84 kullanır. Azure Cosmos DB Coğrafya Jeo uzamsal verilerinin dizinlenmesini ve sorgulanmasını destekler ve yalnızca WGS-84 leri kullanılarak.
 
 ## <a name="creating-documents-with-spatial-data"></a>Uzamsal verilerle belge oluşturma
-GeoJSON değerleri içeren belgeler oluşturduğunuzda, kapsayıcının dizin oluşturma ilkesine uygun olarak bir uzamsal dizin ile otomatik olarak dizinlenir. Python veya Node. js gibi dinamik olarak yazılmış bir dilde Azure Cosmos DB SDK ile çalışıyorsanız, geçerli bir GeoJSON oluşturmanız gerekir.
+GeoJSON değerleri içeren belgeler oluşturduğunuzda, kapsayıcının dizin oluşturma ilkesine uygun olarak bir uzamsal dizin ile otomatik olarak dizinlenir. Python veya Node.js gibi dinamik olarak yazılmış bir dilde Azure Cosmos DB SDK 'Sı ile çalışıyorsanız, geçerli bir GeoJSON oluşturmanız gerekir.
 
-**Node. js ' de Jeo-uzamsal verilerle belge oluşturma**
+**Node.jsJeo uzamsal verilerle belge oluşturma**
 
 ```javascript
 var userProfileDocument = {
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-SQL API 'leriyle çalışıyorsanız, uygulama nesnelerinize konum bilgilerini eklemek `Point`için `LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial` ad alanı içinde,, ve sınıflarını kullanabilirsiniz. Bu sınıflar, uzamsal verilerin seri hale getirilmesi ve coğrafi serisini kaldırma işlemini basitleştirmeye yardımcı olur.
+SQL API 'leriyle çalışıyorsanız, `Point` `LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial` uygulama nesnelerinize konum bilgilerini eklemek için ad alanı içinde,, ve sınıflarını kullanabilirsiniz. Bu sınıflar, uzamsal verilerin seri hale getirilmesi ve coğrafi serisini kaldırma işlemini basitleştirmeye yardımcı olur.
 
 **.NET 'te Jeo-uzamsal verilerle belge oluşturma**
 

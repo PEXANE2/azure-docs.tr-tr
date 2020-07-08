@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79258193"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer ile kümenizi görselleştirme
@@ -37,9 +36,9 @@ Service Fabric Explorer Masaüstü uygulaması olarak indirmek için aşağıdak
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Kümeden Service Fabric Explorer çalıştırma
 
-Service Fabric Explorer, bir Service Fabric kümesinin HTTP yönetim uç noktasında da barındırılır. SFX 'i bir Web tarayıcısında başlatmak için, herhangi bir tarayıcıdan kümenin HTTP yönetim uç noktasına gidin; örneğin, https:\//Clusterfqdn: 19080.
+Service Fabric Explorer, bir Service Fabric kümesinin HTTP yönetim uç noktasında da barındırılır. SFX 'i bir Web tarayıcısında başlatmak için, herhangi bir tarayıcıdan kümenin HTTP yönetim uç noktasına gidin; örneğin, https: \/ /Clusterfqdn: 19080.
 
-Geliştirici iş istasyonu kurulumu için, ' a giderek yerel kümenizde Service Fabric Explorer başlatabilirsiniz https://localhost:19080/Explorer. [Geliştirme ortamınızı hazırlamak](service-fabric-get-started.md)için bu makaleye bakın.
+Geliştirici iş istasyonu kurulumu için, ' a giderek yerel kümenizde Service Fabric Explorer başlatabilirsiniz https://localhost:19080/Explorer . [Geliştirme ortamınızı hazırlamak](service-fabric-get-started.md)için bu makaleye bakın.
 
 > [!NOTE]
 > Kümenizin otomatik olarak imzalanan bir sertifikayla güvenliği varsa, Web tarayıcısından "Bu site güvenli değil" bir hata iletisi alırsınız. Yalnızca, uyarı geçersiz kılarak en modern web tarayıcıları üzerinde ilerleyebilirsiniz. Bir üretim ortamında, kümenizin ortak ad ve sertifika yetkilisi tarafından verilen bir sertifika kullanılarak güvenliği sağlanmalıdır. 
@@ -47,7 +46,7 @@ Geliştirici iş istasyonu kurulumu için, ' a giderek yerel kümenizde Service 
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Service Fabric kümesine bağlanma
-Bir Service Fabric kümesine bağlanmak için kümeler yönetim uç noktası (FQDN/IP) ve HTTP yönetim uç noktası bağlantı noktası (varsayılan olarak 19080) gereklidir. Örneğin, https\://mysfcluster.westus.cloudapp.Azure.com:19080. İş istasyonunuzda yerel bir kümeye bağlanmak için "localhost 'a Bağlan" onay kutusunu kullanın.
+Bir Service Fabric kümesine bağlanmak için kümeler yönetim uç noktası (FQDN/IP) ve HTTP yönetim uç noktası bağlantı noktası (varsayılan olarak 19080) gereklidir. Örneğin, https \: //mysfcluster.westus.cloudapp.Azure.com:19080. İş istasyonunuzda yerel bir kümeye bağlanmak için "localhost 'a Bağlan" onay kutusunu kullanın.
 
 ### <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
 Service Fabric kümenize, sertifikalarla veya Azure Active Directory (AAD) kullanarak istemci erişimini denetleyebilirsiniz.
@@ -83,7 +82,7 @@ Düğüm görünümü, kümenin fiziksel düzenini gösterir. Belirli bir düğ�
 ## <a name="actions"></a>Eylemler
 Service Fabric Explorer, kümenizin içindeki düğümlerde, uygulamalarda ve hizmetlerde eylemler çağırma için hızlı bir yol sunar.
 
-Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan uygulamayı seçin ve ardından**uygulama Sil**' **i seçin.** > 
+Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan **uygulamayı seçin ve**ardından  >  **uygulama Sil**' i seçin.
 
 ![Service Fabric Explorer bir uygulamayı silme][sfx-delete-application]
 

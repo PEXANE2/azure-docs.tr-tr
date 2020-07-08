@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968792"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
@@ -48,7 +47,7 @@ VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için 
 
 VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
 
-1.  [Azure Portal](https://portal.azure.com/) oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
 2.  Sol taraftaki menüden **sanal makineler**' i seçin.
 3.  Listeden VM 'yi seçin.
 4.  VM 'nin sayfasında **Durdur**' u seçin.

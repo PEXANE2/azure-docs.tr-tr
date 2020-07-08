@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945350"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme
@@ -67,16 +66,16 @@ Aşağıdaki komutu kullanarak geçiş kaynak sağlayıcısına kaydolun. Bazı 
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Lütfen kaydın tamamlanmasını beş dakika bekleyin. Aşağıdaki komutu kullanarak onay durumunu kontrol edebilirsiniz. Devam etmeden `Registered` önce registrationstate 'in olduğundan emin olun.
+Lütfen kaydın tamamlanmasını beş dakika bekleyin. Aşağıdaki komutu kullanarak onay durumunu kontrol edebilirsiniz. Devam etmeden önce RegistrationState 'in olduğundan emin olun `Registered` .
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Şimdi CLı 'yi `asm` moda geçirin.
+Şimdi CLı 'yi moda geçirin `asm` .
 
     azure config mode asm
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3. Adım: geçerli dağıtımınızın veya VNET 'nizin Azure bölgesinde yeterli sayıda Azure Resource Manager sanal makineye sahip olduğunuzdan emin olun
-Bu adım için `arm` moda geçmeniz gerekir. Bunu aşağıdaki komutla yapın.
+Bu adım için moda geçmeniz gerekir `arm` . Bunu aşağıdaki komutla yapın.
 
 ```
 azure config mode arm
@@ -88,7 +87,7 @@ Azure Resource Manager içinde sahip olduğunuz vCPU 'ların geçerli sayısın�
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Bu adımı doğrulamayı tamamladıktan sonra `asm` moda geri dönebilirsiniz.
+Bu adımı doğrulamayı tamamladıktan sonra moda geri dönebilirsiniz `asm` .
 
     azure config mode asm
 
@@ -118,7 +117,7 @@ Kaynak Yöneticisi dağıtım modelinde var olan bir sanal ağa geçiş yapmak i
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Hazırlama işlemi başarılı olduktan sonra, VM 'lerin geçiş durumunu almak ve `Prepared` durumunda olduklarından emin olmak için ayrıntılı çıktıyı gözden geçirebilmeniz gerekir.
+Hazırlama işlemi başarılı olduktan sonra, VM 'lerin geçiş durumunu almak ve durumunda olduklarından emin olmak için ayrıntılı çıktıyı gözden geçirebilmeniz gerekir `Prepared` .
 
     azure vm show <vmName> -vv
 

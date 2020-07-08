@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371656"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric olağanüstü durum kurtarma
@@ -60,7 +59,7 @@ Tek makineler, tüm nedenlerden dolayı başarısız olabilir. Bazen güç kayna
 
 Hizmetin türü ne olursa olsun, tek bir örnek çalıştırıldığında kodun tek bir kopyası herhangi bir nedenle başarısız olursa, bu hizmet için kapalı kalma süresi oluşur. 
 
-Tek bir hatayı işlemek için, yapabileceğiniz en basit şey, hizmetlerinizin varsayılan olarak birden fazla düğüm üzerinde çalışmasını sağlamaktır. Durum bilgisi olmayan hizmetler için 1 ' `InstanceCount` den büyük olduğundan emin olun. Durum bilgisi olan hizmetler için en düşük öneri `TargetReplicaSetSize` `MinReplicaSetSize` , her ikisi de 3 olarak ayarlanmıştır. Hizmet kodunuzun daha fazla kopyasını çalıştırmak, hizmetinizin tek bir hatayı otomatik olarak işlemesini sağlar. 
+Tek bir hatayı işlemek için, yapabileceğiniz en basit şey, hizmetlerinizin varsayılan olarak birden fazla düğüm üzerinde çalışmasını sağlamaktır. Durum bilgisi olmayan hizmetler için 1 ' `InstanceCount` den büyük olduğundan emin olun. Durum bilgisi olan hizmetler için en düşük öneri, `TargetReplicaSetSize` `MinReplicaSetSize` her ikisi de 3 olarak ayarlanmıştır. Hizmet kodunuzun daha fazla kopyasını çalıştırmak, hizmetinizin tek bir hatayı otomatik olarak işlemesini sağlar. 
 
 ### <a name="handling-coordinated-failures"></a>Eşgüdümlü sorunları işleme
 Küme içindeki Eşgüdümlü hatalara, planlı veya planlanmamış altyapı hatalarından ve değişikliklerden veya planlı yazılım değişikliklerinden kaynaklanabilir. Service Fabric, *hata etki alanları*olarak Eşgüdümlü hatalarla karşılaşan altyapı bölgelerini modelleyin. Koordine edilen yazılım değişikliklerini deneyime yönelik alanlara *yükseltme etki alanları*olarak modellenir. Hata etki alanları, yükseltme etki alanları ve küme topolojisi hakkında daha fazla bilgi için bkz. [küme kaynak yöneticisi kullanarak Service Fabric kümesi tanımlama](service-fabric-cluster-resource-manager-cluster-description.md).
@@ -97,7 +96,7 @@ Birden çok eşzamanlı rastgele başarısızlık da oluşabilir. Bunlar, kapal�
 #### <a name="stateless-services"></a>Durum bilgisi olmayan hizmetler
 Durum bilgisi olmayan bir hizmetin örnek sayısı, çalışması gereken birkaç örnek sayısını gösterir. Örneklerin herhangi biri (veya tümü) başarısız olduğunda, Service Fabric diğer düğümlerde otomatik olarak değiştirme örnekleri oluşturarak yanıt verir. Service Fabric, hizmet istenen örnek sayısına geri alınana kadar değişiklik oluşturmaya devam eder.
 
-Örneğin, durum bilgisi olmayan hizmetin-1 `InstanceCount` değerine sahip olduğunu varsayalım. Bu değer, kümedeki her düğümde bir örnek çalıştırılması gereken anlamına gelir. Bu örneklerden bazıları başarısız olursa, Service Fabric hizmetin istenen durumunda olmadığını algılar ve örnekleri eksik oldukları düğümlerde oluşturmaya çalışır.
+Örneğin, durum bilgisi olmayan hizmetin `InstanceCount` -1 değerine sahip olduğunu varsayalım. Bu değer, kümedeki her düğümde bir örnek çalıştırılması gereken anlamına gelir. Bu örneklerden bazıları başarısız olursa, Service Fabric hizmetin istenen durumunda olmadığını algılar ve örnekleri eksik oldukları düğümlerde oluşturmaya çalışır.
 
 #### <a name="stateful-services"></a>Durum bilgisi olan hizmetler
 İki tür durum bilgisi olan hizmetler vardır:
@@ -129,8 +128,8 @@ Durum bilgisi olan bir hizmet için olağanüstü durum olup olmadığını beli
    
    Her zaman _şüpheli_ veri kaybını söyliyoruz, kalan çoğaltmanın çekirdek kaybedildiğinde birincil was ile aynı duruma sahip olma olasılığı vardır. Bununla birlikte, bu durum ile karşılaştırılabilmesi için, Service Fabric veya operatörlerin emin olup olmadığını bilmek için iyi bir yol yoktur.     
    
-   Bu nedenle `OnDataLossAsync` yöntemin tipik bir uygulanması ne yapar?
-   1. Tetiklenen uygulama günlükleri ve `OnDataLossAsync` gerekli yönetim uyarılarını tetikledi.
+   Bu nedenle yöntemin tipik bir uygulanması ne yapar `OnDataLossAsync` ?
+   1. Tetiklenen uygulama günlükleri `OnDataLossAsync` ve gerekli yönetim uyarılarını tetikledi.
    1. Genellikle, uygulama duraklatılır ve daha fazla kararlar ve el ile gerçekleştirilen eylemler için bekler. Bunun nedeni, yedeklemeler kullanılabilir olsa bile bunların hazırlanmaları gerekebilir. 
    
       Örneğin, iki farklı hizmetin bilgileri koordine etmesidir, geri yükleme yapıldıktan sonra, bu iki hizmetin ilgilendiğinden emin olmak için bu yedeklemelerin değiştirilmesi gerekebilir. 
@@ -171,8 +170,8 @@ Aşağıdaki eylemler veri kaybına neden olabilir. İzlemeden önce denetleyin.
 > Belirli bölümlerde hedeflenen bir şekilde bu yöntemleri kullanmak _hiç_ güvenli değildir. 
 >
 
-- `Repair-ServiceFabricPartition -PartitionId` Veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'yi kullanın. Bu API, çekirdek kaybını ve olası veri kaybını taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
-- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, kurtarma gerçekleştirilmeden önce, `QuorumLossWaitDuration` girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
+- `Repair-ServiceFabricPartition -PartitionId`Veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'yi kullanın. Bu API, çekirdek kaybını ve olası veri kaybını taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
+- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, `QuorumLossWaitDuration` Kurtarma gerçekleştirilmeden önce, girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric kümesinin kullanılabilirliği
 Genel olarak Service Fabric kümesi, tek hata noktası olmayan, yüksek oranda dağıtılmış bir ortamdır. Birincil olarak, Service Fabric sistem hizmetleri daha önce sunulan yönergeleri izlediğinden, herhangi bir düğüm, kümede kullanılabilirlik veya güvenilirlik sorunlarına yol açmaz. Diğer bir deyişle, her zaman varsayılan olarak üç veya daha fazla çoğaltma ve durum bilgisiz olmayan sistem hizmetleri tüm düğümlerde çalışır. 

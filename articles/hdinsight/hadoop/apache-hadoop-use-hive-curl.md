@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298759"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>REST kullanarak HDInsight 'ta Apache Hadoop Apache Hive sorguları çalıştırma
@@ -27,11 +26,11 @@ Azure HDInsight kümesinde Apache Hadoop ile Apache Hive sorguları çalıştır
 
 * REST istemcisi. Bu belge Windows PowerShell 'de [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve [Bash](https://docs.microsoft.com/windows/wsl/install-win10)üzerinde [kıvrımlı](https://curl.haxx.se/) kullanır.
 
-* Bash kullanıyorsanız, bir komut satırı JSON işlemcisi olan JQ da gerekir.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)..
+* Bash kullanıyorsanız, bir komut satırı JSON işlemcisi olan JQ da gerekir.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 
 ## <a name="base-uri-for-rest-api"></a>REST API için temel URI
 
-HDInsight üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI (`CLUSTERNAME.azurehdinsight.net`) öğesinin tam etki alanı adı (FQDN) bölümünde küme adı büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
+HDInsight üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -42,7 +41,7 @@ Web Hcat ile bir veya daha fazla REST iletişimini kullanırken, HDInsight küme
 Her bir örneğe yeniden girmemek için kimlik bilgilerinizi koruyun.  Küme adı ayrı bir adımda korunacaktır.
 
 **A. bash**  
-Aşağıdaki betiği, gerçek parolanızla değiştirerek `PASSWORD` düzenleyin.  Sonra komutunu girin.
+Aşağıdaki betiği, `PASSWORD` gerçek parolanızla değiştirerek düzenleyin.  Sonra komutunu girin.
 
 ```bash
 export password='PASSWORD'
@@ -58,7 +57,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir.  Buradaki adımlarda gerçek büyük/küçük harf görüntülenir ve sonra tüm örnekler için bir değişkende depoda yer verilmiştir.
 
-Aşağıdaki komut dosyalarını, küme adınızla `CLUSTERNAME` değiştirmek için düzenleyin. Sonra komutunu girin. (FQDN için küme adı, büyük/küçük harfe duyarlı değildir.)
+Aşağıdaki komut dosyalarını, küme adınızla değiştirmek için düzenleyin `CLUSTERNAME` . Sonra komutunu girin. (FQDN için küme adı, büyük/küçük harfe duyarlı değildir.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -101,7 +100,7 @@ $clusterName
     * `-u`-İsteğin kimliğini doğrulamak için kullanılan Kullanıcı adı ve parola.
     * `-G`-Bu isteğin bir GET işlemi olduğunu gösterir.
 
-1. URL `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`'nin başlangıcı tüm istekler için aynıdır. Yolu `/status`, isteğin, sunucu Için WebHCat (tempkaton olarak da bilinir) durumunun döndürülmeyeceğini gösterir. Ayrıca, aşağıdaki komutu kullanarak Hive sürümünü isteyebilirsiniz:
+1. URL 'nin başlangıcı `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` tüm istekler için aynıdır. Yolu, `/status` isteğin, sunucu Için WebHCat (Tempkaton olarak da bilinir) durumunun döndürülmeyeceğini gösterir. Ayrıca, aşağıdaki komutu kullanarak Hive sürümünü isteyebilirsiniz:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -159,7 +158,7 @@ $clusterName
    * `SELECT`- **T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu ifade, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
 
      > [!NOTE]  
-     > HiveQL deyimleri arasındaki boşlukların, kıvrımlı ile kullanıldığında `+` karakteriyle değiştirildiğine dikkat edin. Sınırlayıcı gibi bir boşluk içeren tırnak içine alınmış değerler ile `+`değiştirilmemelidir.
+     > HiveQL deyimleri arasındaki boşlukların, `+` kıvrımlı ile kullanıldığında karakteriyle değiştirildiğine dikkat edin. Sınırlayıcı gibi bir boşluk içeren tırnak içine alınmış değerler ile değiştirilmemelidir `+` .
 
       Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürür.
 
@@ -183,7 +182,7 @@ $clusterName
 
     İş tamamlandıysa, durum **başarılı**olur.
 
-1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla `statusdir` geçirilen parametre, çıkış dosyasının konumunu içerir; Bu durumda, `/example/rest`. Bu adres, çıktıyı varsayılan depolama alanı `example/curl` kümelerindeki dizinde depolar.
+1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. `statusdir`Sorguyla geçirilen parametre, çıkış dosyasının konumunu içerir; bu durumda, `/example/rest` . Bu adres, çıktıyı `example/curl` varsayılan depolama alanı kümelerindeki dizinde depolar.
 
     [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)kullanarak bu dosyaları listeleyebilir ve indirebilirsiniz. Azure depolama ile Azure CLı kullanma hakkında daha fazla bilgi için bkz. Azure [CLI 'Yi Azure depolama belgesiyle kullanma](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
 

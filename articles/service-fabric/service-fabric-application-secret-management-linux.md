@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969025"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Bir şifreleme sertifikası ayarlama ve Linux kümelerinde gizli dizileri şifreleme
 Bu makalede, bir şifreleme sertifikasının nasıl ayarlanacağı ve Linux kümelerinde gizli dizileri şifrelemek için nasıl kullanılacağı gösterilmektedir. Windows kümeleri için bkz. [şifreleme sertifikası ayarlama ve Windows kümelerinde gizli dizileri şifreleme][secret-management-windows-specific-link].
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Veri şifreleme sertifikası alma
-Bir veri şifreleme sertifikası, bir hizmetin ServiceManifest. xml dosyasındaki bir hizmetin Settings. xml ve [ortam değişkenlerinde][environment-variables-link] [parametrelerin][parameters-link] şifrelenmesi ve şifresinin çözülmesi için kesinlikle kullanılır. Şifre metninin kimlik doğrulaması veya imzalanması için kullanılmaz. Sertifikanın aşağıdaki gereksinimleri karşılaması gerekir:
+Bir veri şifreleme sertifikası, bir hizmetin Settings.xml ve bir hizmetin ServiceManifest.xml [ortam değişkenlerinde][environment-variables-link] [parametrelerin][parameters-link] şifrelenmesi ve şifresinin çözülmesi için kesinlikle kullanılır. Şifre metninin kimlik doğrulaması veya imzalanması için kullanılmaz. Sertifikanın aşağıdaki gereksinimleri karşılaması gerekir:
 
 * Sertifika bir özel anahtar içermelidir.
 * Sertifika anahtarı kullanımı, veri şifreleme (10) içermelidir ve sunucu kimlik doğrulaması veya Istemci kimlik doğrulaması içermemelidir.
@@ -29,7 +28,7 @@ Bir veri şifreleme sertifikası, bir hizmetin ServiceManifest. xml dosyasındak
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>Sertifikayı kümenize yükler
-Sertifikanın altındaki `/var/lib/sfcerts`kümedeki her bir düğüme yüklenmesi gerekir. Hizmetin üzerinde çalıştığı kullanıcı hesabı (varsayılan olarak, `/var/lib/sfcerts/TestCert.pem` sfuser) yüklü sertifikaya (geçerli örnek için) **okuma erişimine sahip olmalıdır** .
+Sertifikanın altındaki kümedeki her bir düğüme yüklenmesi gerekir `/var/lib/sfcerts` . Hizmetin üzerinde çalıştığı kullanıcı hesabı (varsayılan olarak, sfuser) yüklü sertifikaya (geçerli örnek için) **okuma erişimine sahip olmalıdır** `/var/lib/sfcerts/TestCert.pem` .
 
 ## <a name="encrypt-secrets"></a>Gizli dizileri şifreleme
 Aşağıdaki kod parçacığı bir gizli dizi şifrelemek için kullanılabilir. Bu kod parçacığı yalnızca değeri şifreler; şifre metnini **imzalamaz** . Gizli değerler için şifreli değerleri oluşturmak üzere kümenize yüklenmiş aynı şifreleme sertifikasını **kullanmanız gerekir** .
@@ -39,7 +38,7 @@ user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-Şifrelenmiş. txt için elde edilen temel 64 kodlu dize çıktısı hem gizli bir şifreli metin hem de bunu şifrelemek için kullanılan sertifikayla ilgili bilgiler içerir. OpenSSL ile şifresini çözerek geçerliliğini doğrulayabilirsiniz.
+encrypted.txt için elde edilen temel 64 kodlu dize çıktısı hem gizli bir şifreli metin hem de bunu şifrelemek için kullanılan sertifikayla ilgili bilgiler içerir. OpenSSL ile şifresini çözerek geçerliliğini doğrulayabilirsiniz.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```

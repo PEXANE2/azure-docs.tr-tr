@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945046"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
@@ -73,13 +72,13 @@ Bu mimaride, Azure sanal makinelerinde uygulama, depolama ve veri katmanları ç
 
 -   DB2 CF, E serisi veya L serisi gibi bellek için iyileştirilmiş sanal makineler kullanır.
 
--   Linux çalıştıran standart\_DS4\_v2 sanal makinelerini kullanan paylaşılan bir depolama kümesi.
+-   \_ \_ Linux çalıştıran standart DS4 v2 sanal makinelerini kullanan paylaşılan bir depolama kümesi.
 
--   Yönetim atlama kutusu, Linux çalıştıran standart\_bir\_DS2 v2 sanal makinedir.  Sanal ağınızdaki tüm VM 'Ler için güvenli bir RDP/SSH deneyimi sağlayan bir hizmet olan Azure savunma bir alternatiftir.
+-   Yönetim atlama kutusu, \_ Linux çalıştıran standart bir DS2 \_ v2 sanal makinedir.  Sanal ağınızdaki tüm VM 'Ler için güvenli bir RDP/SSH deneyimi sağlayan bir hizmet olan Azure savunma bir alternatiftir.
 
--   İstemci, Windows çalıştıran standart\_bir\_DS3 v2 sanal makinedir (test için kullanılır).
+-   İstemci, \_ Windows çalıştıran standart bir DS3 \_ v2 sanal makinedir (test için kullanılır).
 
--   *Isteğe bağlı*. Tanık sunucu. Bu yalnızca daha eski DB2 pureScale sürümleriyle gereklidir. Bu örnek, Linux çalıştıran\_standart\_DS3 v2 sanal makinesini kullanır (DB2 purescale için kullanılır).
+-   *Isteğe bağlı*. Tanık sunucu. Bu yalnızca daha eski DB2 pureScale sürümleriyle gereklidir. Bu örnek, \_ \_ Linux çalıştıran standart DS3 v2 sanal makinesini KULLANıR (DB2 pureScale için kullanılır).
 
 > [!NOTE]
 > DB2 pureScale kümesi, en az iki DB2 örneği gerektirir. Ayrıca bir önbellek örneği ve bir kilit Yöneticisi örneği gerektirir.

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79243932"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management ürün şablonları
@@ -28,7 +27,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 -   [Ürün listesi](#ProductList)  
   
--   [Ürünüyle](#Product)  
+-   [Ürün](#Product)  
   
 > [!NOTE]
 >  Örnek varsayılan şablonlar aşağıdaki belgelere dahil edilmiştir, ancak sürekli iyileştirmeler nedeniyle değişikliğe tabidir. Canlı varsayılan şablonları, istenen ayrı şablonlara giderek Geliştirici Portalında görüntüleyebilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
@@ -71,7 +70,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `Product list` Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
+ `Product list`Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
@@ -198,7 +197,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `Product list` Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
+ `Product list`Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
 -   [abone ol-düğme](api-management-page-controls.md#subscribe-button)  
   
@@ -206,9 +205,9 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|Ürün|[Ürünüyle](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
+|Ürün|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
 |IsDeveloperSubscribed|boole|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
-|SubscriptionState|number|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended`– abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active`– Abonelik etkin.<br />-   `2 - expired`– abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted`– abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected`– abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled`– abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
+|SubscriptionState|sayı|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended`– abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active`– Abonelik etkin.<br />-   `2 - expired`– abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted`– abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected`– abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled`– abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
 |Sınırlar|array|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
 |DelegatedSubscriptionEnabled|boole|Bu abonelik için [temsilcinin](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) etkin olup olmadığı.|  
 |DelegatedSubscriptionUrl 'Si|string|Temsilci etkin ise, temsil edilen abonelik URL 'SI.|  
