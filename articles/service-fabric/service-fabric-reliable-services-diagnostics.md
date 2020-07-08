@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699830"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
@@ -20,7 +19,7 @@ Durum bilgisi olan Reliable Services StatefulServiceBase sınıfının EventSour
 
 EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri, [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)' dir.
 
-## <a name="events"></a>Ekinlikler
+## <a name="events"></a>Olaylar
 | Olay adı | Olay Kimliği | Düzey | Olay açıklaması |
 | --- | --- | --- | --- |
 | Statefulrunasyncınvocation |1 |Bilgilendirici |Service RunAsync görevi başlatıldığında yayılır |
@@ -41,7 +40,7 @@ RunAsync görevi için bir iptal isteği dört saniyeden uzun sürdiğinde State
 ## <a name="performance-counters"></a>Performans sayaçları
 Reliable Services çalışma zamanı aşağıdaki performans sayacı kategorilerini tanımlar:
 
-| Kategori | Description |
+| Kategori | Açıklama |
 | --- | --- |
 | Işlem çoğaltıcı Service Fabric |Azure Service Fabric Işlemsel çoğaltıcıya özel sayaçlar |
 | Service Fabric TStore |Azure Service Fabric TStore 'a özel sayaçlar |
@@ -95,7 +94,7 @@ Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric böl
 
 Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric Transactional Replicator`
 
- Sayaç adı | Description |
+ Sayaç adı | Açıklama |
 | --- | --- |
 | Başlangıç TXN Işlemi/sn | Saniye başına oluşturulan yeni yazma işlemi sayısı.|
 | TXN Işlemi/sn | Saniye başına güvenilir koleksiyonlar üzerinde gerçekleştirilen ekleme/güncelleştirme/silme işlemlerinin sayısı.|
@@ -108,7 +107,7 @@ Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Servi
 
 Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric TStore`
 
- Sayaç adı | Description |
+ Sayaç adı | Açıklama |
 | --- | --- |
 | Öğe sayısı | Depodaki öğelerin sayısı.|
 | Disk Boyutu | Mağaza için denetim noktası dosyalarının bayt cinsinden toplam disk boyutu.|

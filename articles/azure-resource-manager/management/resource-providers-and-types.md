@@ -4,10 +4,9 @@ description: Kaynak Yöneticisi, şemaları ve kullanılabilir API sürümlerini
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84702780"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
@@ -33,7 +32,7 @@ Kaynak sağlayıcılarını Azure hizmetleriyle eşleyen bir liste için bkz. [A
 
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
 
     ![abonelikleri Seç](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +49,7 @@ Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek 
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
 3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini**' ni girin ve ardından **Kaynak Gezgini**' yi seçin.
 
