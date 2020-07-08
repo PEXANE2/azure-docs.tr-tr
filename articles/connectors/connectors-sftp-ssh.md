@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/17/2020
 tags: connectors
 ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807743"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
@@ -52,12 +52,12 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
   | **Dosyayı Kopyala** | Hayır | Geçerli değil |
-  | **Dosya oluştur** | Yes | Yes |
+  | **Dosya oluştur** | Evet | Evet |
   | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
   | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
   | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
-  | **Dosya içeriğini al** | Yes | Yes |
-  | **Yolu kullanarak dosya içeriğini al** | Yes | Yes |
+  | **Dosya içeriğini al** | Evet | Evet |
+  | **Yolu kullanarak dosya içeriğini al** | Evet | Evet |
   | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
   | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
   | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
@@ -108,7 +108,7 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * SFTP hesabınıza erişmek istediğiniz mantıksal uygulama. Bir SFTP-SSH tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir SFTP-SSH eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
-## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH Tetikleyicileri nasıl çalışır?
+## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH tetikleyicileri nasıl çalışır?
 
 SFTP-SSH Tetikleyicileri SFTP dosya sistemini yoklayarak ve Son yoklamadan bu yana değiştirilen herhangi bir dosyayı arayarak çalışır. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanıza olanak sağlar. Bu durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı bırakmanız gerekir. Yaygın olarak kullanılan bazı ayarlar şunlardır:
 
@@ -156,7 +156,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. Özel anahtar dosyasını `.pem` dosya adı uzantısıyla kaydedin.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Bu bölümde, bu bağlayıcının Tetikleyiciler ve eylemleri için gözden geçirilecek noktalar açıklanmaktadır.
 

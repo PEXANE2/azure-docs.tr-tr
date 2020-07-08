@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80986609"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows istemcileri
@@ -25,12 +25,12 @@ ms.locfileid: "80986609"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) yönergeler
    
    * [Sanal WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) yönergeleri
-5. Özel anahtarı ve Base64 parmak izini *. pfx*dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Makinenizde OpenSSL kullanmak tek bir yoldur. *ProfileInfo. txt* dosyası, CA ve istemci sertifikası için özel anahtarı ve parmak izini içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
+5. Özel anahtarı ve Base64 parmak izini *. pfx*dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Makinenizde OpenSSL kullanmak tek bir yoldur. *profileinfo.txt* dosyası, CA ve istemci sertifikası için özel anahtarı ve parmak izini içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Not defteri 'nde *ProfileInfo. txt* dosyasını açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
+6. *profileinfo.txt* Not defteri 'nde açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
 7. Adım 3 ' teki Not defteri 'nde açtığınız *vpnconfig. ovpn* dosyasına geçin. Aşağıda gösterilen bölümü bulun ve "CERT" ve "/CERT" arasındaki her şeyi değiştirin.
 
    ```
@@ -40,7 +40,7 @@ ms.locfileid: "80986609"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Not defteri 'nde *ProfileInfo. txt* dosyasını açın. Özel anahtarı almak için, "özel anahtar----------" ve "-----son özel anahtar-----
+8. *profileinfo.txt* Not defteri 'nde açın. Özel anahtarı almak için, "özel anahtar----------" ve "-----son özel anahtar-----
 9. Not defteri 'nde vpnconfig. ovpn dosyasına dönün ve bu bölümü bulun. Özel anahtarı, ve "Key" ve "/Key" arasındaki her şeyi değiştirerek yapıştırın.
 
    ```
@@ -132,9 +132,9 @@ ms.locfileid: "80986609"
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   *ProfileInfo. txt* dosyası, CA için özel anahtarı ve parmak Izini ve istemci sertifikasını içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
+   *profileinfo.txt* dosyası, CA için özel anahtarı ve parmak Izini ve istemci sertifikasını içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
 
-6. *ProfileInfo. txt* dosyasını bir metin düzenleyicisinde açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
+6. *profileinfo.txt* bir metin düzenleyicisinde açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
 
 7. *Vpnconfig. ovpn* dosyasını açın ve aşağıda gösterilen bölümü bulun. Ve "CERT" ve "/CERT" arasındaki her şeyi değiştirin.
 
@@ -145,7 +145,7 @@ ms.locfileid: "80986609"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. ProfileInfo. txt dosyasını bir metin düzenleyicisinde açın. Özel anahtarı almak için, "-----başlangıç özel anahtarı-----" ve "-----son özel anahtar-----" dahil olmak üzere metni seçin ve kopyalayın.
+8. profileinfo.txt bir metin düzenleyicisinde açın. Özel anahtarı almak için, "-----başlangıç özel anahtarı-----" ve "-----son özel anahtar-----" dahil olmak üzere metni seçin ve kopyalayın.
 
 9. Vpnconfig. ovpn dosyasını bir metin düzenleyicisinde açın ve bu bölümü bulun. Özel anahtarı, ve "Key" ve "/Key" arasındaki her şeyi değiştirerek yapıştırın.
 
@@ -164,7 +164,7 @@ ms.locfileid: "80986609"
     sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. GUI 'yi kullanarak bağlanmak için sistem ayarları ' na gidin.
-13. Yeni **+** bir VPN bağlantısı eklemek için tıklayın.
+13. **+** Yeni BIR VPN bağlantısı eklemek için tıklayın.
 14. **VPN Ekle**altında **Dosyadan içeri aktar ' ı seçin...**
 15. Profil dosyasına gidin ve çift tıklayın veya **Aç**' ı seçin.
 16. **VPN Ekle** penceresinde **Ekle** ' ye tıklayın.

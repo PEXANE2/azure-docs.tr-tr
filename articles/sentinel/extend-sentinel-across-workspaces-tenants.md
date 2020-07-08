@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
 ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84816444"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
@@ -29,7 +29,7 @@ Azure Sentinel, Log Analytics çalışma alanının üzerine kurulmuştur. Azure
 
 Tek bir çalışma alanı kullanırken Azure Sentinel deneyiminin tüm avantajına ulaşabilirsiniz. Bu nedenle, birden çok çalışma alanına sahip olmanızı gerektirebilecek bazı durumlar da vardır. Aşağıdaki tabloda bu durumların bazıları listelenmektedir ve mümkün olduğunda, gereksinimin tek bir çalışma alanıyla nasıl karşılanıp karşılanmadığı gösterilmektedir:
 
-| Gereksinim | Description | Çalışma alanı sayısını azaltmanın yolları |
+| Gereksinim | Açıklama | Çalışma alanı sayısını azaltmanın yolları |
 |-------------|-------------|--------------------------------|
 | Sogemenlik ve mevzuat uyumluluğu | Çalışma alanı belirli bir bölgeye bağlıdır. Yasal gereksinimleri karşılamak için verilerin farklı [Azure coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgelerde tutulması gerekiyorsa, bu, ayrı çalışma alanlarına bölünmelidir. |  |
 | Veri sahipliği | Veri sahiplerinin sınırları (örneğin, yan kuruluşlar veya bağlı şirketler), ayrı çalışma alanları kullanılarak daha iyi bir şekilde ayarlanır. |  |
@@ -103,7 +103,7 @@ Sonra, ile başlayarak her iki çalışma alanı arasında bir sorgu yazabilirsi
 
 Çalışma kitapları, her biri farklı düzeylerde Son Kullanıcı uzmanlığına sahip olan üç yöntemden birine yönelik çoklu çalışma alanları sorguları sağlayabilir:
 
-| Yöntem  | Description | Ne zaman kullanmalıyım? |
+| Yöntem  | Açıklama | Ne zaman kullanmalıyım? |
 |---------|-------------|--------------------|
 | Çapraz çalışma alanı sorguları yazma | Çalışma kitabı Oluşturucu, çalışma kitabında çapraz çalışma alanı sorguları (yukarıda açıklanmıştır) yazabilir. | Bu seçenek, çalışma kitabı oluşturucularının kullanıcıyı çalışma alanı yapısından tamamen kalmalarını sağlar. |
 | Çalışma kitabına çalışma alanı seçici ekleme | Çalışma kitabı Oluşturucusu, [burada](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357)açıklandığı gibi çalışma kitabının bir parçası olarak çalışma alanı seçiciyi uygulayabilir. | Bu seçenek, kullanıcıya, kullanımı kolay bir açılan kutu aracılığıyla çalışma kitabı tarafından gösterilen çalışma alanları üzerinde denetim sağlar. |

@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808029"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
@@ -67,7 +67,7 @@ Daha fazla bilgi edinmek için bkz. [Yeni bir uygulama ağ geçidi oluştururken
 
    ![Kök sertifika](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Mevcut uygulama ağ geçidi için uçtan uca TLS 'yi etkinleştirme
 
@@ -119,7 +119,7 @@ TLS sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
    ![Güvenilen kök sertifika ekle](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

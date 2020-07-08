@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808828"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
@@ -50,9 +50,9 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 1. **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin
 2. **Platform**  >  **pencerelerini** seçin
 3. **Konsol Uygulaması (.NET Framework)** öğesini seçin
-4. **İleri** Seç
+4. **İleri**’yi seçin
 5. **Proje adı** alanına uygulamanız için bir ad girin
-6. **Oluştur** ' u seçin
+6. **Oluştur**’u seçin
 
 Bu öğreticideki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının **Main ()** yöntemine eklenebilir.
 

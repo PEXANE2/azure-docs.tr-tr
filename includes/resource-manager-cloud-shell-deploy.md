@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74451513"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell'den şablon dağıtma
 
 Şablonunuzu dağıtmak için [Cloud Shell](../articles/cloud-shell/overview.md) kullanabilirsiniz. Dış şablon dağıtmak için, şablon URI 'sini tam olarak herhangi bir dış dağıtım için yaptığınız gibi sağlayın. Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell depolama hesabına yüklemeniz gerekir. Bu bölümde, şablonun Cloud Shell hesabınıza yüklenmesi ve yerel bir dosya olarak dağıtılması açıklanmaktadır. Cloud Shell kullanmadıysanız, ayarlama hakkında bilgi için bkz. [Azure Cloud Shell Genel Bakış](../articles/cloud-shell/overview.md) .
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Cloud Shell kaynak grubunuzu seçin. Ad deseni `cloud-shell-storage-<region>` şeklindedir.
 
-   ![Kaynak grubu seçin](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
+   ![Kaynak grubunu seçme](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
 
 1. Cloud Shell için depolama hesabınızı seçin.
 
@@ -41,7 +41,7 @@ ms.locfileid: "74451513"
 
    ![Yeni kapsayıcı Seç](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. **Karşıya yükle**' yi seçin.
+1. **Karşıya Yükle**'yi seçin.
 
    ![Blobu karşıya yükle](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

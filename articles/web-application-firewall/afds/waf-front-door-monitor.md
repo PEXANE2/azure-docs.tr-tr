@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808946"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme
@@ -42,7 +42,7 @@ Azure portal, ön kapı kaynak türü ' ne gidin. Soldaki **izleme** / **ölçü
 | Ayrıntılar|Eşleşen istek hakkında ek ayrıntılar |
 || matchVariableName: eşleşen isteğin HTTP parametre adı, örneğin üst bilgi adları|
 || matchVariableValue: eşleşmeyi tetikleyen değerler|
-| Host | Eşleşen isteğin ana bilgisayar üst bilgisi |
+| Ana bilgisayar | Eşleşen isteğin ana bilgisayar üst bilgisi |
 | İlke | İsteğin eşleştiği WAF ilkesinin adı. |
 | PolicyMode | WAF ilkesinin işlemler modu. Olası değerler şunlardır "önleme" ve "algılama" |
 | RequestUri | Eşleşen isteğin tam URI 'SI. |

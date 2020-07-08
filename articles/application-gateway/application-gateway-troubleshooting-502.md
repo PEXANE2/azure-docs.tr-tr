@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808148"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
@@ -82,7 +82,7 @@ Bir uygulama ağ geçidi örneği sağlandığında, BackendHttpSetting 'in öze
 
 Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değerler listelenmektedir:
 
-| Araştırma özelliği | Değer | Description |
+| Araştırma özelliği | Değer | Açıklama |
 | --- | --- | --- |
 | Araştırma URL 'SI |`http://127.0.0.1/` |URL yolu |
 | Interval |30 |Saniye cinsinden yoklama aralığı |
@@ -106,11 +106,11 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 
 Aşağıdaki ek özellikler eklenmiştir:
 
-| Araştırma özelliği | Description |
+| Araştırma özelliği | Açıklama |
 | --- | --- |
 | Name |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Host |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
+| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. Araştırma \<protocol\> ://: öğesine gönderiliyor \<host\>\<port\>\<path\> |
 | Interval |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir. |

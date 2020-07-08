@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935867"
 ---
 **Son belge güncelleştirmesi**: 12 kasım 2019 10:00 PST.
@@ -74,7 +74,7 @@ Bu ek güvenlik özelliklerinin etkinleştirilmesi için hedef işletim sistemin
 
 **1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM boyutuna taşınması gerekir. Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/windows/acu) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). VM 'nizin hiper iş parçacığı oluşturma özelliğinin etkin olup olmadığını denetlemek için lütfen VM 'nin içinden Windows komut satırını kullanarak aşağıdaki komut dosyasına bakın.
 
-Etkileşimli `wmic` arabirimi girmek için yazın. Ardından, VM 'deki fiziksel ve mantıksal işlemci miktarını görüntülemek için aşağıdaki adımları yazın.
+`wmic`Etkileşimli arabirimi girmek için yazın. Ardından, VM 'deki fiziksel ve mantıksal işlemci miktarını görüntülemek için aşağıdaki adımları yazın.
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
@@ -101,17 +101,17 @@ Windows OS support for MDS mitigation is enabled: True
 Windows OS support for TAA mitigation is enabled: True
 ```
 
-Çıktıyı gösteriyorsa `MDS mitigation is enabled: False`, lütfen kullanılabilir risk azaltma seçenekleri Için [Azure desteğine başvurun](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) .
+Çıktıyı gösteriyorsa `MDS mitigation is enabled: False` , lütfen kullanılabilir risk azaltma seçenekleri Için [Azure desteğine başvurun](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) .
 
 
 
-**3. adım**: çekirdek sanal adres GÖLGELEME (Kvas) ve dal hedefi ekleme (BTı) işletim sistemi desteğini etkinleştirmek için, `Session Manager` kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek üzere [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) içindeki yönergeleri izleyin. Yeniden başlatma gerekiyor.
+**3. adım**: çekirdek sanal adres GÖLGELEME (Kvas) ve dal hedefi ekleme (BTı) işletim sistemi desteğini etkinleştirmek için, kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek üzere [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) içindeki yönergeleri izleyin `Session Manager` . Yeniden başlatma gerekiyor.
 
 
 **4. adım**: [iç içe sanallaştırma](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) kullanan dağıtımlar (yalnızca D3 ve E3): Bu yönergeler Hyper-V konağı olarak kullandığınız VM 'nin içinde geçerlidir.
 
-1.  Kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek için KB4072698 içindeki yönergeleri izleyin. [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) `MinVmVersionForCpuBasedMitigations`
-2.  Buradaki yönergeleri izleyerek hiper yönetici Zamanlayıcı `Core` türünü olarak ayarlayın. [here](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)
+1.  Kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek için [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) içindeki yönergeleri izleyin `MinVmVersionForCpuBasedMitigations` .
+2.  `Core` [Buradaki](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)yönergeleri izleyerek hiper yönetici Zamanlayıcı türünü olarak ayarlayın.
 
 
 ### <a name="linux"></a>Linux
@@ -119,11 +119,11 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>İçinde ek güvenlik özellikleri kümesinin etkinleştirilmesi, hedef işletim sisteminin tamamen güncel olmasını gerektirir. Bazı azaltmaları varsayılan olarak etkinleştirilir. Aşağıdaki bölümde, varsayılan olarak kapalı olan ve/veya donanım desteği 'ne (mikro kod) bağlı olan özellikler açıklanmaktadır. Bu özelliklerin etkinleştirilmesi performans etkisine neden olabilir. Daha fazla yönerge için işletim sistemi sağlayıcınızın belgelerine başvurun
 
 
-**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM 'ye taşınması gerekir.  Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/linux/acu) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). Hiper iş parçacıklı bir VM çalıştırıp çalıştıracağınızı denetlemek için Linux VM 'de `lscpu` komutunu çalıştırın. 
+**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM 'ye taşınması gerekir.  Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/linux/acu) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). Hiper iş parçacıklı bir VM çalıştırıp çalıştıracağınızı denetlemek için `lscpu` LINUX VM 'de komutunu çalıştırın. 
 
-İse `Thread(s) per core = 2`hiper iş parçacığı oluşturma etkinleştirilmiştir. 
+İse `Thread(s) per core = 2` hiper iş parçacığı oluşturma etkinleştirilmiştir. 
 
-İse `Thread(s) per core = 1`hiper iş parçacığı devre dışı bırakılmıştır. 
+İse `Thread(s) per core = 1` hiper iş parçacığı devre dışı bırakılmıştır. 
 
  
 Hiper iş parçacığı etkin bir VM için örnek çıkış: 
