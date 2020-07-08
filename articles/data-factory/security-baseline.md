@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 854d95f95d6ecf2fe35bcc93ddeaafdc9bafbf8f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485640"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044184"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -512,7 +512,7 @@ Integration Runtime bir Azure sanal makinesinde (VM) çalıştırıyorsanız, sa
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: destek senaryoları sırasında Microsoft 'un ilgili müşteri verilerine erişimini sağlama
 
-**Kılavuz**: Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Azure müşteri kasası müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Azure Kasası Azure Data Factory kendisi için kullanılamadığından Azure kasalarının Azure SQL veritabanlarını ve Azure sanal makinelerini desteklediğini unutmayın.
+**Kılavuz**: Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Azure müşteri kasası müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Azure Kasası Azure Data Factory kendisi için kullanılamadığından Azure Kasası, Azure SQL veritabanı ve Azure sanal makinelerini destekler.
 
 * [Müşteri Kasası anlayın](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -672,7 +672,7 @@ Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etk
 
 Integration Runtime bir Azure sanal makinesinde (VM) çalıştırıyorsanız, sanal makinelerinizde güvenlik açığı değerlendirmeleri gerçekleştirerek Azure Güvenlik Merkezi 'ndeki önerileri izleyin. Sanal makinelerinize yönelik güvenlik açığı değerlendirmelerini gerçekleştirmek için, Azure Güvenlik önerilir veya üçüncü taraf çözümü kullanın.
 
-* [Azure SQL veritabanlarınızda güvenlik açığı değerlendirmeleri çalıştırma](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Azure SQL veritabanı 'nda güvenlik açığı değerlendirmeleri nasıl çalıştırılır](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Gelişmiş veri güvenliğini etkinleştirme](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -896,7 +896,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 * [Azure Güvenlik Duvarı nedir?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Azure Web uygulaması güvenlik duvarı nedir?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Azure Web Uygulaması Güvenlik Duvarı nedir?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
 

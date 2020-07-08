@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 673524f08ecae28fb6f2e18f3c0c7230cf102b06
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513468"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043878"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>SQL makineler için gelişmiş veri güvenliği (Önizleme)
 
@@ -31,7 +31,7 @@ Bu önizleme özelliği, olası veritabanı güvenlik açıklarını belirlemek 
 * [Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) -SQL Server 'ınızı SQL ekleme, deneme yanılma saldırıları ve ayrıcalık kötüye kullanımı gibi tehditler için sürekli olarak izleyen algılama hizmeti. Bu hizmet, Azure Güvenlik Merkezi 'nde şüpheli etkinliğin ayrıntıları, tehditleri hafifletmeye yönelik yönergeler ve Azure Sentinel ile araştırmalarınıza devam etme seçeneklerini içeren eyleme dayalı güvenlik uyarıları sağlar.
 
 >[!TIP]
-> SQL makinelerinde gelişmiş veri güvenliği, Azure Güvenlik Merkezi 'nin Azure SQL veritabanları, SYNAPSE ve SQL yönetilen örnekleri için zaten kullanılabilir olan [Gelişmiş veri güvenliği paketinin](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)bir uzantısıdır.
+> SQL makinelerinde gelişmiş veri güvenliği, Azure Güvenlik Merkezi 'nin Azure SQL veritabanı, Azure SYNAPSE ve SQL yönetilen örneği için kullanılabilen [Gelişmiş veri güvenliği paketinin](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)bir uzantısıdır.
 
 
 ## <a name="set-up-advanced-data-security-for-sql-machines"></a>SQL makineleri için gelişmiş veri güvenliğini ayarlama 
@@ -91,14 +91,14 @@ Güvenlik açığı değerlendirme panosu, tüm veritabanlarınızda, sağlıkl�
 
 Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'nden görüntüleyebilirsiniz.
 
-1. Güvenlik Merkezi 'nin kenar çubuğundan **öneriler** sayfasını açın ve **makinelerdeki SQL veritabanı sunucularınızda öneri güvenlik açıklarını seçin (Önizleme)**. Daha fazla bilgi için bkz. [Güvenlik Merkezi önerileri](security-center-recommendations.md). 
+1. Güvenlik Merkezi 'nin kenar çubuğundan **öneriler** sayfasını açın ve **makinelerde SQL Server 'Larınızdaki öneri güvenlik açıklarını seçin (Önizleme)**. Daha fazla bilgi için bkz. [Güvenlik Merkezi önerileri](security-center-recommendations.md). 
 
 
-    [![* * Makinelerdeki SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir (Önizleme) * * öneri](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+    [![* * Makinelerdeki SQL sunucularınızda bulunan güvenlik açıkları düzeltilmelidir (Önizleme) * * öneri](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
     Bu öneriye ilişkin ayrıntılı görünüm görüntülenir.
 
-    [![Makinelerdeki SQL veritabanlarınızdaki * * güvenlik açıkları için ayrıntılı görünüm (Önizleme) * * öneri](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+    [![Makinelerde SQL sunucularınızda bulunan * * güvenlik açıkları için ayrıntılı görünüm (Önizleme) * * öneri](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
 1. Daha fazla ayrıntı için ayrıntıya gidin:
 

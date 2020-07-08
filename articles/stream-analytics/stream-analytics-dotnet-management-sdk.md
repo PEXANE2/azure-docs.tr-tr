@@ -5,15 +5,15 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835504"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043453"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
 Yönetim .NET SDK 'sını kullanarak .NET için Stream Analytics API 'sini kullanarak analiz işlerini ayarlamayı ve çalıştırmayı öğrenin. Bir proje kurun, giriş ve çıkış kaynakları, dönüşümler ve işleri başlatın ve durdurun. Analiz işleriniz için blob depolamadan veya bir olay hub 'ından veri akışı yapabilirsiniz.
@@ -59,7 +59,7 @@ Bir analiz işi oluşturmak için, .NET için Stream Analytics API 'sini kullan�
    Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
    ```
 
-3. Aşağıdaki **appSettings** bölümünü App. config dosyasına ekleyin:
+3. Aşağıdaki **appSettings** bölümünü App.config dosyasına ekleyin:
    
    ```powershell
    <appSettings>
@@ -284,7 +284,7 @@ Aşağıdaki örnek kod, özel bir çıkış başlangıç saati 12 Aralık 2012,
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

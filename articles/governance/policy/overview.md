@@ -3,12 +3,12 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944670"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044201"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -82,7 +82,7 @@ Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-base
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Ilkesi kapsamındaki kaynaklar
 
-Azure Ilkesi, Azure 'daki tüm kaynakları değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/key-vault-overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
+Azure Ilkesi, Azure 'daki tüm kaynakları değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/general/overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>İlkeleri yönetme ile ilgili öneriler
 

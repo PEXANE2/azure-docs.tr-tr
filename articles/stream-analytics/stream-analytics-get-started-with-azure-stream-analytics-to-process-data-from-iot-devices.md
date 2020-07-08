@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426239"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043436"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 
@@ -57,10 +57,10 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 ## <a name="create-an-azure-stream-analytics-query"></a>Azure Akış Analizi sorgusu oluşturma
 İşiniz oluşturulduktan sonraki adım bir sorgu yazmaktır. Bir giriş veya çıktıyı işinize bağlamadan örnek verilere karşı sorgular test edebilirsiniz.
 
-GitHub ' dan [Helloworldasa-InputStream. JSON](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
-) ' i indirin. Sonra, Azure portal Azure Stream Analytics işinize gidin.
+[HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) GitHub 'dan indirin. Sonra, Azure portal Azure Stream Analytics işinize gidin.
 
-Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle**' yi seçin. `HelloWorldASA-InputStream.json` Dosyayı karşıya yükleyin ve **Tamam**' ı seçin.
+Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle**' yi seçin. Dosyayı karşıya yükleyin `HelloWorldASA-InputStream.json` ve **Tamam**' ı seçin.
 
 ![Pano sorgu kutucuğunu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 

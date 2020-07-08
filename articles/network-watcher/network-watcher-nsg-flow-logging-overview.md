@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627911"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043861"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -51,7 +51,10 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 - Günlükler Azure platformu aracılığıyla toplanır ve müşteri kaynaklarını veya ağ performansını herhangi bir şekilde etkilemez.
 - Günlükler JSON biçiminde yazılır ve her NSG kural temelinde giden ve gelen akışları gösterir.
 - Her günlük kaydı, akış için geçerli olan ağ arabirimini (NIC), 5 demet bilgisini, trafik kararı & (yalnızca sürüm 2) aktarım hızı bilgilerini içerir. Tam Ayrıntılar için aşağıdaki _günlük biçimine_ bakın.
-- Akış günlükleri, oluşturma işleminden sonra otomatik olarak bir yıla kadar olan günlükleri silmeye izin veren bir bekletme özelliğine sahiptir. **Note**: bekletme yalnızca [genel amaçlı v2 depolama hesapları (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)kullandığınızda kullanılabilir. 
+- Akış günlükleri, oluşturma işleminden sonra otomatik olarak bir yıla kadar olan günlükleri silmeye izin veren bir bekletme özelliğine sahiptir. 
+
+> [!NOTE]
+> Saklama, yalnızca [genel amaçlı v2 depolama hesapları (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)kullandığınızda kullanılabilir. 
 
 **Temel kavramlar**
 
@@ -107,7 +110,7 @@ Akış durumu _B_ , bir akış başlatıldığında kaydedilir. Flow durumu _C_ 
 Aşağıdaki metin akış günlüğüne bir örnektir. Gördüğünüz gibi, önceki bölümde açıklanan özellik listesini izleyen birden çok kayıt vardır.
 
 > [!NOTE]
-> **Flowbaşlıkların* özelliğindeki değerler, virgülle ayrılmış bir liste.
+> *Flowdiziler* özelliğindeki değerler, virgülle ayrılmış bir liste.
  
 **Sürüm 1 NSG akış günlüğü biçim örneği**
 ```json
@@ -306,7 +309,7 @@ Devamlılık _C_ ve bitiş _E_ akışı durumları için bayt ve paket sayılar�
 
 Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgili bağlantıyı kullanın.
 
-- [Azure portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Azure portalındaki](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
 - [CLI](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
@@ -314,7 +317,7 @@ Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgi
 
 ## <a name="updating-parameters"></a>Parametreleri güncelleştirme
 
-**Azure portal**
+**Azure portalındaki**
 
 Azure portal, ağ Izleyicisi 'nde NSG akış günlükleri bölümüne gidin. Sonra NSG adına tıklayın. Bu işlem, akış günlüğü için ayarlar bölmesini getirir. İstediğiniz parametreleri değiştirin ve değişiklikleri dağıtmak için **Kaydet** 'e basın.
 
@@ -354,9 +357,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
-**Gelen akışlar Için yanlış bayt ve paket sayısı**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) , [durum bilgisi olan bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, platform sınırlamaları nedeniyle, gelen akışları denetleyen kurallar durum bilgisiz bir biçimde uygulanır. Bu baytlar ve paket sayısı bu akışlar için kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Ayrıca, gelen akışlar artık Sonlandırılmamış. Bu sınırlama, Aralık 2020 ile düzeltilmek üzere zamanlanır.
+**Gelen akışlar Için yanlış bayt ve paket sayısı**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) , [durum bilgisi olan bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, platform sınırlamaları nedeniyle, gelen akışları denetleyen kurallar durum bilgisiz bir biçimde uygulanır. Bu baytlar ve paket sayısı bu akışlar için kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Ayrıca, gelen akışlar artık Sonlandırılmamış. Bu sınırlama, Aralık 2020 ile düzeltilmek üzere zamanlanır. 
 
-**Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
+**Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

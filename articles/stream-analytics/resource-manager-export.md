@@ -5,14 +5,14 @@ services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968926"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043538"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics işi Azure Resource Manager şablonu dışarı aktarma
 
@@ -42,13 +42,13 @@ Bir sonraki adım, iş betiğini bir Azure Resource Manager şablonuna derlemedi
 
 1. Stream Analytics iş çalışma alanınızda bir **dağıtım** klasörü göründüğünü unutmayın.
 
-1. Dağıtım için kullanılan Azure Kaynak Yönetimi şablonu olan *Jobtemplate. JSON* dosyasını gezin.
+1. Dosyası üzerinde, dağıtmak için kullanılan Azure Kaynak Yönetimi şablonu olan *JobTemplate.js* keşfedelim.
 
 ## <a name="complete-the-parameters-file"></a>Parametreler dosyasını doldurun
 
 Ardından, Azure Kaynak Yönetimi şablon parametreleri dosyasını doldurun.
 
-1. Visual Studio Code Stream Analytics iş çalışma alanınızın **dağıtım** klasöründe bulunan *jobtemplate. Parameters. JSON* dosyasını açın.
+1. Visual Studio Code ' de Stream Analytics iş çalışma alanınızın **Dağıt** klasöründe bulunan dosya *JobTemplate.parameters.js* açın.
 
 1. Giriş ve çıkış anahtarlarının NULL olduğuna dikkat edin. Null değerleri, giriş ve çıkış kaynaklarınızın gerçek erişim anahtarlarıyla değiştirin.
 
@@ -58,7 +58,7 @@ Ardından, Azure Kaynak Yönetimi şablon parametreleri dosyasını doldurun.
 
 Önceki bölümde oluşturduğunuz Azure Resource Manager şablonları kullanarak Azure Stream Analytics işinizi dağıtmaya hazırsınız.
 
-Bir PowerShell penceresinde aşağıdaki komutu çalıştırın. *Resourcegroupname*, *TemplateFile*ve *templateparameterfile* dosyalarını gerçek kaynak grubu adınızla ve tüm dosya yollarını Iş çalışma alanınızın **Deploy klasöründe** bulunan *jobtemplate. JSON* ve *jobtemplate. Parameters. JSON* dosyaları ile yeniden etkinleştirdiğinizden emin olun.
+Bir PowerShell penceresinde aşağıdaki komutu çalıştırın. *Resourcegroupname*, *TemplateFile*ve *templateparameterfile* dosyalarını gerçek kaynak grubu adınızla ve *JobTemplate.jsile ilgili* tüm dosya yollarını ve iş çalışma alanınızın **dağıtım klasöründeki** dosyalar *üzerindeJobTemplate.parameters.js* .
 
 Azure PowerShell yapılandırılmamışsa, [ınstall Azure PowerShell Module](https://docs.microsoft.com/powershell/azure/install-Az-ps)' daki adımları izleyin.
 

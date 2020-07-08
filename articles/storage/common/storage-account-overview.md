@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371571"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043656"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -184,6 +184,8 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 ## <a name="storage-account-billing"></a>Depolama hesabı faturalama
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

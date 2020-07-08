@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 9422337d30d06f0bb333e4d25ba1e54bd789ffec
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/30/2020
+ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418169"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043844"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda TLS bağlantısını yapılandırma-tek sunucu
 
@@ -51,7 +51,7 @@ Veritabanı Hizmetleri için PostgreSQL kullanan bazı uygulama çerçeveleri, y
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>TLS bağlantısı için sertifika doğrulaması gerektiren uygulamalar
 
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı sunucusuna bağlanma sertifikası konumunda bulunur https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin.
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı sunucusuna bağlanma sertifikası konumunda bulunur https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin. (Yvereign bulutları içindeki sunucular için sertifikalar için aşağıdaki bağlantılara bakın: [Azure Kamu](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure Çin](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)ve [Azure Almanya](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
 
 ### <a name="connect-using-psql"></a>Psql kullanarak bağlanma
 
@@ -85,9 +85,9 @@ PostgreSQL için Azure veritabanı tek sunucu, istemci bağlantıları için TLS
 Örneğin, bu en düşük TLS ayarı sürümünü TLS 1,0 olarak ayarlamak, sunucunuzun TLS 1,0, 1,1 ve 1.2 + kullanarak istemcilerden gelen bağlantılara izin vermeyeceği anlamına gelir. Alternatif olarak, bunu 1,2 olarak ayarlamak yalnızca TLS 1.2 + kullanan istemcilerden gelen bağlantılara izin vermek ve TLS 1,0 ve TLS 1,1 ile tüm bağlantıların reddedilecektir.
 
 > [!Note] 
-> PostgreSQL için Azure veritabanı, tüm yeni sunucular için varsayılan olarak TLS 'yi devre dışı bırakılıyor.
+> Varsayılan olarak, PostgreSQL için Azure veritabanı en düşük TLS sürümünü (ayarı `TLSEnforcementDisabled` ) zorlamaz.
 >
-> Şu anda PostgreSQL için Azure veritabanı tarafından desteklenen TLS sürümleri TLS 1,0, 1,1 ve 1,2. Belirli bir minimum TLS sürümüne zorlandıktan sonra, devre dışı olarak değiştiremezsiniz.
+> En düşük TLS sürümünü zorladıktan sonra, en düşük sürüm zorlamayı devre dışı bırakabilirsiniz.
 
 PostgreSQL için Azure veritabanı tek sunuculu TLS ayarını nasıl ayarlayacağınızı öğrenmek için bkz. [TLS yapılandırma ayarı](howto-tls-configurations.md).
 
