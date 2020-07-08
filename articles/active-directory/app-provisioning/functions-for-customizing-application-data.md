@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781676"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de öznitelik eşlemeleri için ifadeler yazma
@@ -71,7 +70,7 @@ Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 oldu
 | **value1** |Gerekli |sayı |Değer2 ile birlikte olması gereken sayısal değer|
 | **value2** |Gerekli |sayı |Değer1 ile birlikte olması gereken sayısal değer|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 BitAnd (&HF, &HF7)                                                                                
 11110111 ve 00000111 = 00000111, bitve 7 değerini, 00000111 ikili değerini döndürür
 
@@ -87,7 +86,7 @@ BitAnd (&HF, &HF7)
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli | ifade | Herhangi bir geçerli ifade |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 CBool ([Attribute1] = [attribute2])                                                                    
 Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
@@ -116,7 +115,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |64 tabanına dönüştürülecek dize|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 ConvertToBase64 ("Hello World!")                                                                                                        
 "Sablagwabebek Vacaadilevahiababkacea" döndürür
 
@@ -132,7 +131,7 @@ ConvertToBase64 ("Hello World!")
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |UTF8 onaltılı olarak dönüştürülecek dize|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 ConvertToUTF8Hex ("Hello World!")                                                                                                         
 48656C6C6F20776F726C6421 döndürür
 
@@ -160,7 +159,7 @@ ConvertToUTF8Hex ("Hello World!")
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | sayısal, başvuru veya Boole | Sayısal bir değer, başvuru özniteliği veya Boole olabilir. |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 CStr ([DN])                                                            
 "CN = ali, DC = contoso, DC = com" döndürür
 
@@ -176,7 +175,7 @@ CStr ([DN])
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | Tarih | Tarih saat türüne dönüştürülecek AD tarihi |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 DateFromNum ([lastLogonTimestamp])                                                                                                   
 DateFromNum (129699324000000000)                                                            
 2012-01-01 23:00:00 temsil eden bir tarih saat döndürür
@@ -215,7 +214,7 @@ DateFromNum (129699324000000000)
 | **valueIfTrue** |Gerekli |Değişken veya dize | Koşul true olarak değerlendirilirse döndürülen değer. |
 | **valueIfFalse** |Gerekli |Değişken veya dize |Koşul false olarak değerlendirilirse, döndürülen değer.|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 IıF ([Country] = "USA", [Ülke], [departman])
 
 ---
@@ -233,7 +232,7 @@ IıF ([Country] = "USA", [Ülke], [departman])
 | **başından** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
 | **compareType** |İsteğe Bağlı |Sabit listesi |VbTextCompare veya vbBinaryCompare olabilir |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 InStr ("hızlı kahverengi Fox", "Quick")                                                                             
 Evalues 'a 5
 
@@ -252,7 +251,7 @@ InStr ("yineleniyor", "e", 3, vbBinaryCompare)
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 IsNull ([displayName])                                                                                                
 Öznitelik yoksa true döndürür
 
@@ -269,7 +268,7 @@ Bu işlevin tersi ısun olarak adlandırılmıştır.
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 IsNullOrEmpty ([displayName])                                               
 Öznitelik yoksa veya boş bir dize ise true döndürür
 
@@ -285,7 +284,7 @@ IsNullOrEmpty ([displayName])
 | --- | --- | --- | --- |
 | **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), [skiplevelManager], ıssun ([Yönetmen]), [Yönetmen])
 
 ---
@@ -313,7 +312,7 @@ Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), 
 | **özniteliğe** |Gerekli |Öznitelik |Aranacak çok değerli öznitelik |
 | **indeks** |Gerekli |Tamsayı | Çoklu değerli dizedeki bir öğenin dizini|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 Öğe ([proxyAddresses], 1)
 
 ---
@@ -347,7 +346,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | **Dize** |Gerekli |Öznitelik | Karakterlerin döndürdüğü dize |
 | **NumChars** |Gerekli |Tamsayı | Dizenin başından (solda) döndürülecek karakter sayısını tanımlayan sayı|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 Sol ("John tikan", 3)                                                            
 "Joh" döndürür
 
@@ -401,7 +400,7 @@ Sol ("John tikan", 3)
 | --- | --- | --- | --- |
 | **deeri** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
 
-**Örneğinde**<br>
+**Örnek:**<br>
 * Workday örneği <br>
   AD 'nin *2020-12-31-08:00* Ile *AccountExpires* alanında olan Workday 'den *sözleşmeli tenddate* özniteliğini eşlemek istediğinizi varsayarsak, bu işlevi kullanabilir ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde değiştirebilirsiniz. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
@@ -423,7 +422,7 @@ Sol ("John tikan", 3)
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Çoklu değerli öznitelik |Yinelenen öğeleri kaldırılacak birden çok değerli öznitelik|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 Removeyinelemelerini ([proxyAddresses])                                                                                                       
 Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür
 
@@ -579,7 +578,7 @@ Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlay
 | **WordNumber** |Gerekli | Tamsayı | Hangi sözcük sayısının dönmesi gerektiğini tanımlayan sayı|
 | **ıcı** |Gerekli |Dize| Sözcükleri tanımlamak için kullanılması gereken sınırlayıcıları temsil eden bir dize|
 
-**Örneğinde**<br>
+**Örnek:**<br>
 Word ("hızlı kahverengi Fox", 3, "")                                                                                       
 "Kahverengi" döndürür
 

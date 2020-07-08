@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84674270"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management ilkelerinde hata işleme
@@ -80,15 +79,15 @@ Bir isteğin işlenmesi sırasında, yerleşik adımlar, istek kapsamında olan 
 
 Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hata [bağlamda saklanır. LastError](api-management-policy-expressions.md#ContextVariables) özelliği, bölümünde ilkeler tarafından erişilebilecek `on-error` . LastError aşağıdaki özelliklere sahiptir.
 
-| Name       | Tür   | Description                                                                                               | Gerekli |
+| Name       | Tür   | Açıklama                                                                                               | Gerekli |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | string | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Yes      |
-| `Reason`   | string | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | No       |
-| `Message`  | string | İnsan tarafından okunabilen hata açıklaması.                                                                         | Yes      |
-| `Scope`    | string | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | No       |
-| `Section`  | string | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | No       |
-| `Path`     | string | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | No       |
-| `PolicyId` | string | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | No       |
+| `Source`   | string | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Evet      |
+| `Reason`   | string | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | Hayır       |
+| `Message`  | string | İnsan tarafından okunabilen hata açıklaması.                                                                         | Evet      |
+| `Scope`    | string | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | Hayır       |
+| `Section`  | string | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | Hayır       |
+| `Path`     | string | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | Hayır       |
+| `PolicyId` | string | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | Hayır       |
 
 > [!TIP]
 > Durum koduna bağlam aracılığıyla erişebilirsiniz. Response. StatusCode.

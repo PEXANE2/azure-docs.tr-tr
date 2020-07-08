@@ -12,10 +12,9 @@ ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 8c508e65ef2c6d62716454af151feb0a1c80bba0
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781118"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
@@ -235,7 +234,7 @@ Aşağıda verilen XPath API deyiminizi oluştururken kullanabileceğiniz [MICRO
 * alt dize-After
 * starts-with
 * dize uzunluğu
-* içerir
+* şunu içerir
 * translate
 * boşluğu Normalleştir
 * alt dize-önce

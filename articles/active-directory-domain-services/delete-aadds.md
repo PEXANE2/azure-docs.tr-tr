@@ -9,21 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5844fca371680ce02e6628d9cacbf50ebe4c8ed0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734835"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040121"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure Active Directory Domain Services yönetilen bir etki alanını Azure portal kullanarak silme
 
-Artık yönetilen bir etki alanına ihtiyacınız yoksa, Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanını silebilirsiniz. Azure AD DS yönetilen bir etki alanını kapatma veya geçici olarak devre dışı bırakma seçeneği yoktur. Yönetilen etki alanını silme, Azure AD kiracısını silmez veya olumsuz şekilde etkilemez. Bu makalede, yönetilen bir etki alanını silmek için Azure portal nasıl kullanılacağı gösterilmektedir.
+Artık Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanına ihtiyacınız yoksa silebilirsiniz. Azure AD DS yönetilen bir etki alanını kapatma veya geçici olarak devre dışı bırakma seçeneği yoktur. Yönetilen etki alanını silme, Azure AD kiracısını silmez veya olumsuz şekilde etkilemez.
+
+Bu makalede, yönetilen bir etki alanını silmek için Azure portal nasıl kullanılacağı gösterilmektedir.
 
 > [!WARNING]
 > **Silme kalıcıdır ve geri alınamaz.**
+> 
 > Yönetilen bir etki alanını sildiğinizde, aşağıdaki adımlar oluşur:
 >   * Yönetilen etki alanı için etki alanı denetleyicileri, sanal ağdan de sağlanmış ve kaldırılır.
 >   * Yönetilen etki alanındaki veriler kalıcı olarak silinir. Bu veriler, oluşturduğunuz özel OU, GPO 'Lar, özel DNS kayıtları, hizmet sorumluları, GMSAs vb. içerir.

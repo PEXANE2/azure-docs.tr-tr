@@ -8,12 +8,11 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799274"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 
@@ -87,7 +86,7 @@ Bu gecikme süresinin birden çok nedeni olabilir:
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) bağlantı noktası tükenmesi
 
-Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)dağıtılmışsa, varsayılan olarak [Azure SNAT bağlantı noktaları](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) , sanal makinenizin dışındaki herhangi bir uç noktaya bağlantı kurar. VM 'den Azure Cosmos DB uç noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)ile sınırlıdır. Bu durum bağlantının azaltılmasına, bağlantı kapanışına veya yukarıda belirtilen [istek zaman aşımlarına](#request-timeouts)yol açabilir.
+Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balancer/load-balancer-outbound-connections.md)dağıtılmışsa, varsayılan olarak [Azure SNAT bağlantı noktaları](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) , sanal makinenizin dışındaki herhangi bir uç noktaya bağlantı kurar. VM 'den Azure Cosmos DB uç noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)ile sınırlıdır. Bu durum bağlantının azaltılmasına, bağlantı kapanışına veya yukarıda belirtilen [istek zaman aşımlarına](#request-timeouts)yol açabilir.
 
  Azure SNAT bağlantı noktaları, yalnızca sanal makinenizin özel bir IP adresi genel bir IP adresine bağlandığında kullanılır. Azure SNAT sınırlamasından kaçınmak için iki geçici çözüm vardır (önceden uygulamanın tamamında tek bir istemci örneği kullanıyor olmanız gerekir):
 
@@ -109,16 +108,16 @@ Sorgu [ölçümleri](sql-api-query-metrics.md) , sorgunun en fazla zaman harcama
 * Arka uç sorgusu yavaşsa, [sorguyu iyileştirmeyi](optimize-cost-queries.md) ve geçerli [Dizin oluşturma ilkesine](index-overview.md) bakmaya çalışın 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: HTTP isteğinde bulunan MAC imzası, hesaplanan imzayla aynı değil
-Aşağıdaki 401 hata iletisini aldıysanız: "HTTP isteğinde bulunan MAC imzası, hesaplanan imzayla aynı değil." Bu, aşağıdaki senaryolardan kaynaklanıyor olabilir.
+Şu 401 hata iletisini aldıysanız: "HTTP isteğinde bulunan MAC imzası, hesaplanan imzayla aynı değil." Bu, aşağıdaki senaryolardan kaynaklanıyor olabilir.
 
-1. Anahtar döndürüldü ve [en iyi uygulamaları](secure-access-to-data.md#key-rotation)izmedi. Bu genellikle durumdur. Cosmos DB hesap anahtarı döndürme, Cosmos DB hesap boyutuna bağlı olarak birkaç saniye ile muhtemelen gün arasında bir süre sürebilir.
-   1. 401 MAC imzası, anahtar dönüşünün kısa bir süre sonra görülür ve sonuç olarak herhangi bir değişiklik yapılmadan durduruluyor. 
-1. Anahtar, uygulamada, anahtarın hesap ile eşleşmemesi için yanlış yapılandırılmış.
-   1. 401 MAC imzası sorunu tutarlı olacak ve tüm çağrılar için gerçekleşir
+1. Anahtar döndürüldü ve [en iyi yöntemlere](secure-access-to-data.md#key-rotation) uygun değildi. Bu, sık karşılaşılan bir durumdur. Cosmos DB hesabındaki anahtarın döndürülmesi, Cosmos DB hesabının boyutuna bağlı olarak birkaç saniyeden birkaç güne kadar sürebilir.
+   1. 401 MAC imzası, anahtar döndürme işleminden kısa süre sonra görülür ve herhangi bir değişiklik yaşanmadan durdurulur. 
+1. Anahtar, uygulamada yanlış yapılandırıldığı için anahtar hesapla eşleşmiyor.
+   1. 401 MAC imzası sorunu tutarlı bir sorundur ve tüm çağrılarda ortaya çıkar
 1. Uygulama, yazma işlemleri için [salt okunurdur anahtarlarını](secure-access-to-data.md#master-keys) kullanıyor.
-   1. 401 MAC imzası sorunu yalnızca uygulama yazma istekleri gerçekleştirirken olur, ancak okuma istekleri başarılı olur.
-1. Kapsayıcı oluşturma ile bir yarış durumu var. Bir uygulama örneği, kapsayıcı oluşturma işlemi tamamlanmadan önce kapsayıcıya erişmeye çalışıyor. Uygulama çalışıyorsa bu için en yaygın senaryo ve uygulama çalışırken kapsayıcı silinip aynı adla yeniden oluşturulur. SDK yeni kapsayıcıyı kullanmayı deneyecek, ancak kapsayıcı oluşturma hala devam ediyor, bu yüzden anahtarlara sahip değil.
-   1. 401 MAC imzası sorunu bir kapsayıcı oluşturulduktan sonra kısa bir süre sonra görülür ve yalnızca kapsayıcı oluşturma tamamlanana kadar oluşur.
+   1. 401 MAC imzası sorunu yalnızca uygulama, yazma isteği gönderirken ortaya çıkar, okuma istekleri başarılı olur.
+1. Kapsayıcı oluşturma sırasında yarış durumu mevcuttur. Uygulama örneği, kapsayıcı oluşturma işlemi tamamlanmadan kapsayıcıya erişmeye çalışıyor. Bu durumun en sık görüldüğü senaryo, uygulama çalışırken kapsayıcının silinmesi ve uygulama çalışmaya devam ederken aynı adla yeniden oluşturulmasıdır. SDK, yeni kapsayıcıyı kullanmaya çalışır ancak kapsayıcı oluşturma işlemi devam ettiğinden gerekli anahtarlara sahip değildir.
+   1. 401 MAC imzası sorunu, kapsayıcı oluşturma işleminden sonra kısa bir süre ve yalnızca kapsayıcı oluşturma işlemi tamamlanana kadar yaşanır.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP hatası 400. İstek üst bilgilerinin boyutu çok uzun.
  Üstbilginin boyutu büyük ve izin verilen en büyük boyutu aşıyor. Her zaman en son SDK 'Yı kullanmanız önerilir. Özel durum iletisine üst bilgi boyutu izlemeyi ekleyen en az [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) veya [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)sürümünü kullandığınızdan emin olun.

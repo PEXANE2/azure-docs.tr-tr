@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669605"
 ---
 # <a name="track-data-changes-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de veri değişikliklerini izleme (Önizleme)
@@ -36,7 +35,7 @@ Bu özelliği yönetmek ve izlemek için bkz. [değişiklik verilerini yakalamay
 
 Değişen verilerle sorgulama ve çalışmayı anlamak için bkz. [değişiklik verileriyle çalışma](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-data-sql-server).
 
-## <a name="change-tracking"></a>Değişiklik izleme
+## <a name="change-tracking"></a>Change tracking
 
 Bu özelliğin nasıl çalıştığına ilişkin ayrıntıları anlamak için bkz. [değişiklik Izleme hakkında](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server).
 

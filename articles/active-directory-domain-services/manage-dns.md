@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7841db3138af2f8cb1efc03508b9e7c0bdb71324
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734648"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040223"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında DNS 'yi yönetme ve koşullu ileticiler oluşturma
 
@@ -23,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) ' de, anahtar bileşen DNS 
 
 Kendi uygulama ve hizmetlerinizi çalıştırırken, etki alanına katılmamış makineler için DNS kayıtları oluşturmanız, yük dengeleyiciler için sanal IP adresleri yapılandırmanız veya dış DNS ileticileri ayarlamanız gerekebilir. *AAD DC Administrators* grubuna ait kullanıcılara Azure AD DS yönetilen etkı alanında DNS yönetim ayrıcalıkları verilir ve özel DNS kayıtları oluşturabilir ve düzenleyebilir.
 
-Karma ortamda, şirket içi AD DS ortamı gibi diğer DNS ad alanlarında yapılandırılan DNS bölgeleri ve kayıtları Azure AD DS ile eşitlenmez. Diğer DNS ad alanlarındaki adlandırılmış kaynakları çözümlemek için, ortamınızda var olan DNS sunucularını işaret eden koşullu ileticiler oluşturun ve kullanın.
+Karma ortamda, şirket içi AD DS ortamı gibi diğer DNS ad alanlarında yapılandırılan DNS bölgeleri ve kayıtları, yönetilen etki alanı ile eşitlenmez. Diğer DNS ad alanlarındaki adlandırılmış kaynakları çözümlemek için, ortamınızda var olan DNS sunucularını işaret eden koşullu ileticiler oluşturun ve kullanın.
 
 Bu makalede, DNS konsolunu kullanarak Azure AD DS kayıtları yönetme ve koşullu ileticiler oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -45,7 +44,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="install-dns-server-tools"></a>DNS sunucusu araçları 'nı yükler
 
-Azure AD DS 'de DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu araçları 'nı yüklemeniz gerekir. Bu araçlar, Windows Server 'da bir özellik olarak yüklenebilir. Windows istemcisine yönetimsel araçların nasıl yükleneceği hakkında daha fazla bilgi için bkz. Install [uzak sunucu yönetim araçları (RSAT)][install-rsat].
+Yönetilen bir etki alanında DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu araçları 'nı yüklemeniz gerekir. Bu araçlar, Windows Server 'da bir özellik olarak yüklenebilir. Windows istemcisine yönetimsel araçların nasıl yükleneceği hakkında daha fazla bilgi için bkz. Install [uzak sunucu yönetim araçları (RSAT)][install-rsat].
 
 1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
 1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
@@ -58,7 +57,7 @@ Azure AD DS 'de DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu
 
     ![Kullanılabilir rol yönetim araçları listesinden DNS sunucusu araçlarını yüklemeyi seçin](./media/manage-dns/install-dns-tools.png)
 
-1. **Onay** sayfasında, **yükler**' i seçin. DnsGroup Ilke yönetimi araçları 'nı yüklemek bir veya iki dakika sürebilir.
+1. **Onay** sayfasında, **yükler**' i seçin. DNS sunucusu araçları 'nı yüklemek bir dakika veya iki dakika sürebilir.
 1. Özellik yüklemesi tamamlandığında, **rol ve özellik ekleme** Sihirbazı 'ndan çıkmak için **Kapat** ' ı seçin.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>DNS 'yi yönetmek için DNS Yönetim konsolunu açın
@@ -82,7 +81,7 @@ DNS sunucusu araçları yüklüyken, yönetilen etki alanında DNS kayıtların�
 
 ## <a name="create-conditional-forwarders"></a>Koşullu ileticiler oluşturma
 
-Azure AD DS DNS bölgesi yalnızca yönetilen etki alanının bölge ve kayıtlarını içermelidir. Diğer DNS ad alanlarında adlandırılmış kaynakları çözümlemek için Azure AD DS ek bölgeler oluşturmayın. Bunun yerine, DNS sunucusuna bu kaynakların adreslerini çözümlemek üzere nereye gidececeklerini bildirmek için yönetilen etki alanında koşullu ileticiler kullanın.
+Azure AD DS DNS bölgesi yalnızca yönetilen etki alanının bölge ve kayıtlarını içermelidir. Diğer DNS ad alanlarında adlandırılmış kaynakları çözümlemek için yönetilen etki alanında ek bölgeler oluşturmayın. Bunun yerine, DNS sunucusuna bu kaynakların adreslerini çözümlemek üzere nereye gidececeklerini bildirmek için yönetilen etki alanında koşullu ileticiler kullanın.
 
 Koşullu iletici, sorguları iletmek için *contoso.com*gıbı bir DNS etki alanı tanımlamanızı sağlayan bir DNS sunucusunda bulunan bir yapılandırma seçeneğidir. Bu etki alanındaki kayıtlar için sorguları çözümlemeye çalışan yerel DNS sunucusu yerine, DNS sorguları söz konusu etki alanı için yapılandırılan DNS 'ye iletilir. Bu yapılandırma, kaynakları yansıtmak için yönetilen etki alanında Yinelenen kayıtlarla yerel bir DNS bölgesi oluştururken doğru DNS kayıtlarının döndürüldüğünden emin olmanızı sağlar.
 
