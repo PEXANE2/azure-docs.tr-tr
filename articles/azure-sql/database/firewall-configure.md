@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
 ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84976821"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları
@@ -37,7 +37,7 @@ Aşağıdaki diyagramda gösterildiği gibi, internet 'ten ve Azure 'dan gelen b
 
 ### <a name="server-level-ip-firewall-rules"></a>Sunucu düzeyinde IP güvenlik duvarı kuralları
 
-Bu kurallar, istemcilerin tüm sunucunuza, yani sunucu tarafından yönetilen tüm veritabanlarına erişmesini sağlar. Kurallar *ana* veritabanında depolanır. Bir sunucu için en fazla 128 sunucu düzeyi IP güvenlik duvarı kuralına sahip olabilirsiniz. **Bu sunucuya erişmek Için Azure hizmetlerine ve kaynaklarına Izin ver** ayarını etkinleştirdiyseniz, bu sunucu için tek bir güvenlik duvarı kuralı olarak sayılır.
+Bu kurallar, istemcilerin sunucunuzun tamamına, yani sunucu tarafından yönetilen tüm veritabanlarına erişmesini sağlar. Kurallar *ana* veritabanında depolanır. Bir sunucu için en fazla 128 sunucu düzeyinde IP güvenlik duvarı kuralınız olabilir. **Bu sunucuya erişmek Için Azure hizmetlerine ve kaynaklarına Izin ver** ayarını etkinleştirdiyseniz, bu sunucu için tek bir güvenlik duvarı kuralı olarak sayılır.
   
 Azure portal, PowerShell veya Transact-SQL deyimlerini kullanarak sunucu düzeyi IP güvenlik duvarı kurallarını yapılandırabilirsiniz.
 
@@ -54,7 +54,7 @@ Veritabanı düzeyinde IP güvenlik duvarı kuralları, istemcilerin belirli (g�
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>Güvenlik duvarı kuralları ayarlama önerileri
 
-Mümkün olduğunda veritabanı düzeyinde IP güvenlik duvarı kuralları kullanmanızı öneririz. Bu uygulama güvenliği geliştirir ve veritabanınızı daha taşınabilir hale getirir. Yöneticiler için sunucu düzeyi IP güvenlik duvarı kurallarını kullanın. Ayrıca, aynı erişim gereksinimlerine sahip birçok veritabanınız varsa ve her veritabanını ayrı ayrı yapılandırmak istemiyorsanız bunları kullanın.
+Mümkün olduğunda veritabanı düzeyinde IP güvenlik duvarı kuralları kullanmanızı öneririz. Bu uygulama güvenlik düzeyini artırır ve veritabanınızı daha taşınabilir hale getirir. Yöneticiler için sunucu düzeyi IP güvenlik duvarı kurallarını kullanın. Ayrıca, aynı erişim gereksinimlerine sahip birçok veritabanınız varsa ve her veritabanını ayrı ayrı yapılandırmak istemiyorsanız bunları kullanın.
 
 > [!NOTE]
 > İş sürekliliği bağlamında taşınabilir veritabanları hakkında bilgi edinmek için bkz. [Olağanüstü durum kurtarma için kimlik doğrulama gereksinimleri](active-geo-replication-security-configure.md).
@@ -105,7 +105,7 @@ Azure içinde barındırılan uygulamaların SQL sunucunuza bağlanmasına izin 
 
 ## <a name="permissions"></a>İzinler
 
-Azure SQL Server için IP güvenlik duvarı kuralları oluşturup yönetebilmek için aşağıdakilerden biri olması gerekir:
+Azure SQL Server için IP güvenlik duvarı kuralı oluşturmak ve yönetmek istiyorsanız şu rollerden birine sahip olmanız gerekir:
 
 - [SQL Server katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor) bulunan rolünde
 - [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolünde
@@ -118,7 +118,7 @@ Azure SQL Server için IP güvenlik duvarı kuralları oluşturup yönetebilmek 
 > [!IMPORTANT]
 > Veritabanı düzeyi IP güvenlik duvarı kuralları yalnızca Transact-SQL kullanılarak oluşturulabilir ve yönetilebilir.
 
-Performansı artırmak için sunucu düzeyi IP güvenlik duvarı kuralları veritabanı düzeyinde geçici olarak önbelleğe alınır. Önbelleği yenilemek için bkz. [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+Performansı artırmak için sunucu düzeyinde IP güvenlik duvarı kuralları veritabanı düzeyinde geçici olarak önbelleğe alınır. Önbelleği yenilemek için bkz. [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
 > [!TIP]
 > Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı değişikliklerini denetlemek için [veritabanı denetimini](../../azure-sql/database/auditing-overview.md) kullanabilirsiniz.
@@ -152,7 +152,7 @@ Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *my
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>IP güvenlik duvarı kurallarını yönetmek için Transact-SQL kullanma
 
-| Katalog görünümü veya saklı yordam | Düzey | Description |
+| Katalog görünümü veya saklı yordam | Düzey | Açıklama |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
@@ -186,7 +186,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak tüm geliştirme artık az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az ve Azurerd modüllerindeki komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-| Cmdlet | Düzey | Description |
+| Cmdlet | Düzey | Açıklama |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Sunucu |Sunucu düzeyinde geçerli güvenlik duvarı kurallarını döndürür |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Sunucu |Sunucu düzeyinde yeni bir güvenlik duvarı kuralı oluşturur |
@@ -208,7 +208,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Sunucu düzeyinde IP güvenlik duvarı kurallarını yönetmek için CLı kullanma
 
-| Cmdlet | Düzey | Description |
+| Cmdlet | Düzey | Açıklama |
 | --- | --- | --- |
 |[az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Sunucu|Sunucu IP güvenlik duvarı kuralı oluşturur|
 |[az SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Sunucu|Bir sunucudaki IP güvenlik duvarı kurallarını listeler|
@@ -230,7 +230,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Sunucu düzeyi IP güvenlik duvarı kurallarını yönetmek için REST API kullanma
 
-| API | Düzey | Description |
+| API | Düzey | Açıklama |
 | --- | --- | --- |
 | [Güvenlik duvarı kurallarını Listele](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [Güvenlik duvarı kuralları oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |

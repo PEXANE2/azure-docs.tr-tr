@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85130815"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu türleri ve bileşimi
@@ -88,7 +88,7 @@ Diğer tüm arama parametreleri isteğe bağlıdır. Özniteliklerin tam listesi
 
 Aşağıdaki tabloda sorguları göndermek için API 'Ler ve araç tabanlı yaklaşımlar listelenmektedir.
 
-| Yöntem | Description |
+| Yöntem | Açıklama |
 |-------------|-------------|
 | [Arama Gezgini (portal)](search-explorer.md) | Dizin ve API-sürüm seçimleri için bir arama çubuğu ve seçenekler sağlar. Sonuçlar JSON belgeleri olarak döndürülür. Araştırma, test ve doğrulama için önerilir. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
 | [Postman veya diğer REST araçları](search-get-started-postman.md) | Web test araçları, REST çağrılarını formülletmenin çok iyi bir seçimdir. REST API Azure Bilişsel Arama tüm olası işlemleri destekler. Bu makalede, Azure Bilişsel Arama istek göndermek için HTTP istek üst bilgisini ve gövdesini ayarlamayı öğrenin.  |

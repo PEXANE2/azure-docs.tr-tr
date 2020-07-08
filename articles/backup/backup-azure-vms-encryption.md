@@ -4,10 +4,10 @@ description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yede
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85124512"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
@@ -27,8 +27,8 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 
 **VM disk türü** | **ADE (BEK/dm-crypt)** | **ADE ve KEK**
 --- | --- | ---
-**Yönetilmeyen** | Yes | Yes
-**Yönetilen**  | Yes | Yes
+**Yönetilmeyen** | Evet | Evet
+**Yönetilen**  | Evet | Evet
 
 - [Ade](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/general/overview.md)ve [Keks](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/azure-security-disk-encryption-faq.md) makalesini okuyun.

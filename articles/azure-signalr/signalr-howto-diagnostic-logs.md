@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85132032"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlükleri
@@ -66,9 +66,9 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 
 Arşiv günlüğü JSON dizeleri aşağıdaki tablolarda listelenen öğeleri içerir:
 
-**Biçimlendir**
+**Biçim**
 
-Name | Description
+Name | Açıklama
 ------- | -------
 time | Olay saatini günlüğe kaydet
 düzey | Olay düzeyini günlüğe kaydet
@@ -81,7 +81,7 @@ properties | Bu günlük olayla ilgili ayrıntılı özellikler. Daha fazla ayr�
 
 **Özellikler tablosu**
 
-Name | Description
+Name | Açıklama
 ------- | -------
 tür | Günlük olayının türü. Şu anda Azure SignalR hizmetine bağlantı hakkında bilgi sağlıyoruz. Yalnızca `ConnectivityLogs` tür kullanılabilir
  koleksiyonu | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve`Throttling`
@@ -128,7 +128,7 @@ Kaynak günlüklerini görüntülemek için aşağıdaki adımları izleyin:
 
 Arşiv günlüğü sütunları aşağıdaki tabloda listelenen öğeleri içerir:
 
-Name | Description
+Name | Açıklama
 ------- | ------- 
 TimeGenerated | Olay saatini günlüğe kaydet
 Koleksiyon | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve`Throttling`
@@ -162,7 +162,7 @@ Ve arasındaki fark `ConnectionAborted` , `ConnectionEnded` `ConnectionEnded` is
 
 Durdurma nedenleri aşağıdaki tabloda listelenmiştir:
 
-Nedeni | Description
+Nedeni | Açıklama
 ------- | ------- 
 Bağlantı sayısı sınıra ulaşır | Bağlantı sayısı geçerli fiyat katmanınızın sınırına ulaşır. Hizmet birimi ölçeğini azaltmayı göz önünde bulundurun
 Uygulama sunucusu bağlantıyı kapattı | App Server abortion tetikler. Beklenen bir abortion olarak kabul edilebilir

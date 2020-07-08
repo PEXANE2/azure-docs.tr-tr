@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84988111"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD kimlik doğrulaması VPN istemcisinde sorun giderme
@@ -35,7 +35,7 @@ Oturum açma bilgilerini temizleyin.
 ![oturum aç](./media/troubleshoot-ad-vpn-client/2.png)
 
 1. Şunu seçin... sorun gidermek istediğiniz profilin yanında. **Yapılandır-> kayıtlı hesabı temizle**' yi seçin.
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 3. Bağlanmayı deneyin.
 4. Bağlantı hala başarısız olursa, sonraki bölüme geçin.
 

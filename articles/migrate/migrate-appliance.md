@@ -4,10 +4,10 @@ description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi ger
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85106563"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
@@ -195,7 +195,7 @@ VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veri** | **Sayaç** | **Değerlendirme etkisi**
+**Veriler** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
 CPU kullanımı | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
@@ -215,7 +215,7 @@ Uygulama bulma, yüklü uygulamaları ve işletim sistemi verilerini toplar.
 
 Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri** | **Kayıt Defteri Konumu** | **Anahtar**
+**Veriler** | **Kayıt Defteri Konumu** | **Anahtar**
 --- | --- | ---
 Uygulama Adı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 Sürüm  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -225,7 +225,7 @@ Sağlayıcı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <
 
 Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı Özellikler verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri**  | **PowerShell cmdlet 'i** | **Özellik**
+**Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
 Name  | Get-WindowsFeature  | Name
 Özellik türü | Get-WindowsFeature  | FeatureType
@@ -235,7 +235,7 @@ Name  | Get-WindowsFeature  | Name
 
 Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çalıştıran VM 'lerden topladığı SQL Server meta verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri**  | **Kayıt Defteri Konumu**  | **Anahtar**
+**Veriler**  | **Kayıt Defteri Konumu**  | **Anahtar**
 --- | --- | ---
 Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -266,7 +266,7 @@ Sağlayıcı | RPM, dpkg-Query, Snap
 
 Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
 
-**Veri**  | **Komut** 
+**Veriler**  | **Komut** 
 --- | --- | ---
 Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
@@ -280,7 +280,7 @@ Aracısız bağımlılık analizi, bağlantı ve işlem verilerini toplar.
 
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı bağlantı verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri** | **Kullanılan komut** 
+**Veriler** | **Kullanılan komut** 
 --- | --- 
 Yerel bağlantı noktası | Netstat
 Yerel IP adresi | Netstat
@@ -293,7 +293,7 @@ Etkin bağlantı sayısı | Netstat
 
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı işlem verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 İşlem adı | Win32_Process | ExecutablePath
 İşlem bağımsız değişkenleri | Win32_Process | CommandLine
@@ -303,7 +303,7 @@ Uygulama adı | Win32_Process | ExecutablePath özelliğinin VersionInfo. Produc
 
 Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Linux VM 'den topladığı bağlantı ve işleme verilerini aşağıda bulabilirsiniz. Bu veriler Azure 'a gönderilir.
 
-**Veri** | **Kullanılan komut** 
+**Veriler** | **Kullanılan komut** 
 --- | ---
 Yerel bağlantı noktası | Netstat 
 Yerel IP adresi | Netstat 
@@ -422,7 +422,7 @@ NIC MAC adresi | IP addr $Nic \| grep istatistiklerinden \| awk ' {Print $2} ' �
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Windows Server performans verileri aşağıda verilmiştir.
 
-**Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 CPU kullanımı | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
 Bellek kullanımı | Win32_PerfFormattedData_PerfOS_Memory | Availablembayt
@@ -436,7 +436,7 @@ Disk ayrıntıları | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWrites
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu performansı verileri.
 
-**Veri** | **Linux** 
+**Veriler** | **Linux** 
 --- | --- 
 CPU kullanımı | Cat/proc/stat/| grep ' CPU '/proc/stat
 Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} '

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85114767"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma
@@ -39,10 +39,10 @@ Aşağıdaki tabloda açıklandığı gibi Azure Cosmos API 'si ile Azure Cosmos
 
 | Çalışma | Azure CLI | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- |
-|Tüm veritabanlarını listeleme| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | NA | NA |
-|Veritabanını oku| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | NA | NA |
-|Yeni veritabanı oluştur| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | NA | NA |
-|Veritabanını güncelleştir| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | NA | NA |
+|Tüm veritabanlarını listeleme| Evet | Evet | Evet (veritabanı bir keyspace ile eşlendi) | Evet | NA | NA |
+|Veritabanını oku| Evet | Evet | Evet (veritabanı bir keyspace ile eşlendi) | Evet | NA | NA |
+|Yeni veritabanı oluştur| Evet | Evet | Evet (veritabanı bir keyspace ile eşlendi) | Evet | NA | NA |
+|Veritabanını güncelleştir| Evet | Evet | Evet (veritabanı bir keyspace ile eşlendi) | Evet | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos kapsayıcıları
@@ -101,11 +101,11 @@ Azure Cosmos kapsayıcısı, Azure Cosmos API 'Lerinden herhangi birini kulland�
 
 | Çalışma | Azure CLI | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bir veritabanındaki kapsayıcıları listeleme | Yes | Yes | Yes | Yes | NA | NA |
-| Kapsayıcıyı oku | Yes | Yes | Yes | Yes | NA | NA |
-| Yeni kapsayıcı oluştur | Yes | Yes | Yes | Yes | NA | NA |
-| Kapsayıcıyı güncelleştirme | Yes | Yes | Yes | Yes | NA | NA |
-| Kapsayıcı silme | Yes | Yes | Yes | Yes | NA | NA |
+| Bir veritabanındaki kapsayıcıları listeleme | Yes | Yes | Yes | Evet | NA | NA |
+| Kapsayıcıyı oku | Yes | Yes | Yes | Evet | NA | NA |
+| Yeni kapsayıcı oluştur | Yes | Yes | Yes | Evet | NA | NA |
+| Kapsayıcıyı güncelleştirme | Yes | Yes | Yes | Evet | NA | NA |
+| Kapsayıcı silme | Yes | Yes | Yes | Evet | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos öğeleri
 
@@ -125,8 +125,8 @@ Her Azure Cosmos öğesi, sistem tarafından tanımlanan aşağıdaki özellikle
 |\_özelliği | Sistem tarafından oluşturulan | İyimser eşzamanlılık denetimi için kullanılan varlık etiketi | Evet | Hayır | Hayır | Hayır | Hayır |
 |\_Talar | Sistem tarafından oluşturulan | Öğenin son güncelleştirme zaman damgası | Evet | Hayır | Hayır | Hayır | Hayır |
 |\_Self | Sistem tarafından oluşturulan | Öğenin adreslenebilir URI 'SI | Evet | Hayır | Hayır | Hayır | Hayır |
-|kimlik | Kullanabilir | Mantıksal bölümde Kullanıcı tanımlı benzersiz ad. | Yes | Yes | Yes | Yes | Yes |
-|Rastgele Kullanıcı tanımlı özellikler | Kullanıcı tanımlı | API yerel gösteriminde temsil edilen Kullanıcı tanımlı Özellikler (JSON, BSON ve CQL dahil) | Yes | Yes | Yes | Yes | Yes |
+|kimlik | Kullanabilir | Mantıksal bölümde Kullanıcı tanımlı benzersiz ad. | Evet | Yes | Yes | Yes | Yes |
+|Rastgele Kullanıcı tanımlı özellikler | Kullanıcı tanımlı | API yerel gösteriminde temsil edilen Kullanıcı tanımlı Özellikler (JSON, BSON ve CQL dahil) | Evet | Yes | Yes | Yes | Yes |
 
 > [!NOTE]
 > Özelliğin benzersizliği `id` yalnızca her mantıksal bölüm içinde zorlanır. Birden çok belge, `id` farklı bölüm anahtarı değerleriyle aynı özelliğe sahip olabilir.

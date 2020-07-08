@@ -4,10 +4,10 @@ description: Azure Advisor 'ı kullanmaya başlayın.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85117871"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor’ı kullanmaya başlama
@@ -19,7 +19,7 @@ Azure portal aracılığıyla Advisor 'a erişmeyi öğrenin, öneriler alın ve
 
 ## <a name="get-recommendations"></a>Önerileri al
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmede **danışman**' ye tıklayın.  Sol bölmede Advisor ' ı görmüyorsanız, **tüm hizmetler**' e tıklayın.  Hizmet menü bölmesinde, **izleme ve yönetim**altında **danışman**' ye tıklayın. Danışman panosu görüntülenir.
 

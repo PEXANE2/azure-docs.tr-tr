@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116035"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
@@ -142,7 +142,7 @@ Azure Cosmos DB kapsayıcısında analitik depolamayı etkinleştirmek üzere y�
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analitik yaşam süresi (TTL)
 
-Analitik TTL, bir kapsayıcı için veri analitik deponuzda ne kadar süreyle tutulacağını belirtir. 
+Analiz TTL değeri, bir kapsayıcı için verilerin analiz deponuzda ne kadar süreyle tutulacağını belirtir. 
 
 İşletimsel verileri ekleme, güncelleştirme, silme, işlem TTL yapılandırmasından bağımsız olarak, işlem deposundan otomatik olarak analitik depoya eşitlenir. Bu işletimsel verileri analitik depoda bekletme, aşağıda belirtildiği gibi, kapsayıcı düzeyindeki analitik TTL değeri tarafından denetlenebilir:
 
@@ -170,6 +170,6 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
 
-* [Azure Cosmos DB için SYNAPSE bağlantısı hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
+* [Azure Cosmos DB için Synapse Link hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 
 * [Azure Cosmos DB için Azure Synapse Link kullanım örnekleri](synapse-link-use-cases.md)

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85126221"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
@@ -140,7 +140,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 ### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
-|Alan|Description|
+|Alan|Açıklama|
 |----|----|
 |**lardan**|Sabit, "Işlem"|
 |**correlationId**|Azure Güvenlik Merkezi uyarı KIMLIĞI|

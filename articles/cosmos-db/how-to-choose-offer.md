@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
 ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116817"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
@@ -26,7 +26,7 @@ Sağlanan aktarım hızını kullandığınızda, iş yükünüz için gereken s
 
 Aşağıdaki tabloda standart (el ile) ve otomatik ölçeklendirme arasındaki üst düzey bir karşılaştırma gösterilmektedir.
 
-|Description|Standart (el ile)|Otomatik Ölçeklendirme|
+|Açıklama|Standart (el ile)|Otomatik Ölçeklendirme|
 |-------------|------|-------|
 |En uygun|Düzenli veya öngörülebilir trafiğe sahip iş yükleri|Değişken veya öngörülemeyen trafik içeren iş yükleri. Bkz. [Otomatik ölçeklendirme durumlarını kullanma](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Nasıl çalışır?|`T`El ile değiştirmediğiniz müddetçe zaman içinde statik olan bir dızı ru/sn sağlayabilirsiniz. Her İkincisi, en fazla `T` ru/sn aktarım hızı kullanabilirsiniz. <br/><br/>Örneğin, standart (el ile) 400 RU/s ayarlarsanız, verimlilik 400 RU/s ' de kalır.|Sistemin aşilmesini istemediğiniz en yüksek veya en büyük RU/sn 'yi ayarlayın `Tmax` . Sistem, aktarım hızını otomatik olarak ölçeklendirir `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Örneğin, otomatik ölçek, 4000 RU/sn 'nin en yüksek RU/sn 'yi ayarlarsanız, sistem 400-4000 RU/s arasında ölçeklendirecektir.|

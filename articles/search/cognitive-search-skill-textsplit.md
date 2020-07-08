@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84981957"
 ---
 # <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
@@ -29,7 +29,7 @@ Microsoft. yetenekler. Text. Splitbeceri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Description |
+| Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `textSplitMode`    | "Pages" veya "cümleler" | 
 | `maximumPageLength` | TextSplitMode, "Pages" olarak ayarlandıysa, bu, ile ölçülen en fazla sayfa uzunluğuna başvurur `String.Length` . Minimum değer 300 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
@@ -38,14 +38,14 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Parametre adı       | Description      |
+| Parametre adı       | Açıklama      |
 |----------------------|------------------|
 | `text`    | Alt dizeden bölünecek metin. |
 | `languageCode`    | Seçim Belge için dil kodu. Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), bu girişin kaldırılması güvenlidir.  |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları 
 
-| Parametre adı     | Description |
+| Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `textItems`   | Ayıklanan alt dizeler dizisi. |
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: d017472715e8fe924a11080fc837ac837f5bd48f
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982161"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde AML yeteneği
@@ -40,7 +40,7 @@ Microsoft. yetenekler. Custom. Amlbeceri
 
 Parametreler büyük/küçük harfe duyarlıdır. Kullanmak istediğiniz parametreler [, AML hizmetinizin gerek duyduğu kimlik doğrulamasına](#WhatSkillParametersToUse) bağlıdır.
 
-| Parametre adı | Description |
+| Parametre adı | Açıklama |
 |--------------------|-------------|
 | `uri` | (Kimlik doğrulaması [yok veya anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) _JSON_ yükünün gönderileceği [AML HIZMETININ Puanlama URI 'si](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) . Yalnızca **https** URI şemasına izin veriliyor. |
 | `key` | ( [Anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) [AML hizmeti için anahtar](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys). |

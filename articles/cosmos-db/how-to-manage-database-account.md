@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
 ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116766"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
@@ -153,7 +153,7 @@ Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi i�
 
 3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun. 
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 
@@ -184,7 +184,7 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 
 4. Yük devretme önceliğini değiştirmek için, okuma bölgelerini, üzerine geldiğinizde görüntülenen satırın sol tarafındaki üç nokta ile sürükleyin.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 

@@ -8,10 +8,10 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85118942"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB'de ayrılmış kapasiteyle maliyeti iyileştirme
@@ -34,7 +34,7 @@ Ayrılmış kapasite satın alma boyutunun, mevcut veya kısa süreli olarak da�
 
 Saatlik kullanım örüntüsünün temelinde satın alma önerilerini hesapladık. Son 7, 30 ve 60 gün içinde kullanım çözümlenmekte ve tasarrufunuzu en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. Aşağıdaki adımları kullanarak, önerilen ayırma boyutlarını Azure portal görüntüleyebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.  
+1. [Azure portalında](https://portal.azure.com) oturum açın.  
 
 2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle**' yi seçin.
 
@@ -58,7 +58,7 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Ayrılmış Azure Cosmos DB kapasitesi satın alın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.  
+1. [Azure portalında](https://portal.azure.com) oturum açın.  
 
 2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle**' yi seçin.  
 
@@ -68,7 +68,7 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
    :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Ayrılmış kapasite formunu doldur":::
 
-   |Alan  |Description  |
+   |Alan  |Açıklama  |
    |---------|---------|
    |Kapsam   |   Ayırma ile ilişkili fatura avantajını kaç tane aboneliğin kullanabileceğinizi denetleyen seçenektir. Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını de denetler. <br/><br/>  **Paylaşılan**' i seçerseniz, rezervasyon indirimi faturalandırma bağlamınızın içindeki herhangi bir abonelikte çalışan Azure Cosmos DB örneklerine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip bireysel aboneliklerdir.  <br/><br/>  **Tek abonelik**' ı seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine ve bu abonelikte seçilen kaynak grubuna uygulanır. <br/><br/> Ayrılan kapasiteyi satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
    |Abonelik  |   Azure Cosmos DB ayrılmış kapasite için ödeme yapmak üzere kullanılan abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır: <br/><br/>  Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P): kurumsal bir abonelik Için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. <br/><br/> Kullandıkça Öde tarifesine sahip tek tek abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P): Kullandıkça Öde tarifesine sahip bireysel bir abonelik Için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.    |
@@ -102,7 +102,7 @@ Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen Azure Cosm
 
 * Azure rezervasyonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-   * [Azure ayırmaları nelerdir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Azure ayırmaları nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
    * [Azure ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
    * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
    * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)

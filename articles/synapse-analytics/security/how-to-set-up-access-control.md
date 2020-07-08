@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193422"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
@@ -36,7 +36,7 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Description |
+|Ayar | Örnek değer | Açıklama |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |
@@ -86,7 +86,7 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
 
 SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevleri gerçekleştirmek için STG1 ve CNT1 için erişim gerektirir.
 
-- Azure portal açın
+- Azure portalını açın
 - STG1 bulun
 - CNT1 adresine gidin
 - WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1 üzerinde **Depolama Blobu veri katılımcısı** rolüne atandığından emin olun
@@ -95,7 +95,7 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. Adım: SQL havuzları için yönetici erişimini yapılandırma
 
-- Azure portal açın
+- Azure portalını açın
 - WS1 adresine gidin
 - **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ne tıklayın.
 - **Yönetici ayarla** ' ya tıklayın ve WS1 SQLAdmins ' yi seçin \_
