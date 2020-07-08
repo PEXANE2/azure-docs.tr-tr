@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727126"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
@@ -36,9 +35,9 @@ Her yol, bir adres ön eki ve sonraki atlama türünü içerir. Alt ağdan ayrı
 |-------|---------                                               |---------      |
 |Varsayılan|Sanal ağa özel                           |Sanal ağ|
 |Varsayılan|0.0.0.0/0                                               |Internet       |
-|Varsayılan|10.0.0.0/8                                              |Yok           |
-|Varsayılan|192.168.0.0/16                                          |Yok           |
-|Varsayılan|100.64.0.0/10                                           |Yok           |
+|Varsayılan|10.0.0.0/8                                              |Hiçbiri           |
+|Varsayılan|192.168.0.0/16                                          |Hiçbiri           |
+|Varsayılan|100.64.0.0/10                                           |Hiçbiri           |
 
 Önceki tabloda listelenen sonraki atlama türleri, Azure’ın listelenen adres ön ekine yönelik giden trafiği nasıl yönlendirdiğini göstermektedir. Sonraki atlama türlerinin açıklamaları:
 
@@ -106,7 +105,7 @@ Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile 
 |Sanal ağ                 |VNetLocal                                       |VNETLocal (asm modunda klasik CLI’de kullanılamaz)|
 |Internet                        |Internet                                        |İnternet (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal gereç               |VirtualAppliance                                |VirtualAppliance|
-|Yok                            |Yok                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
+|Hiçbiri                            |Hiçbiri                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal ağ eşleme         |VNet eşlemesi                                    |Uygulanamaz|
 |Sanal ağ hizmet uç noktaları|VirtualNetworkServiceEndpoint                   |Uygulanamaz|
 
@@ -214,8 +213,8 @@ Resimdeki *Subnet1* için yol tablosu aşağıdaki yolları içerir:
 |3   |Kullanıcı   |Etkin |10.0.0.0/24         |Sanal ağ        |                   |Subnet1 içinde|
 |4   |Varsayılan|Geçersiz|10.1.0.0/16         |VNet eşlemesi           |                   |              |
 |5   |Varsayılan|Geçersiz|10.2.0.0/16         |VNet eşlemesi           |                   |              |
-|6   |Kullanıcı   |Etkin |10.1.0.0/16         |Yok                   |                   |ToVNet2-1-Bırak|
-|7   |Kullanıcı   |Etkin |10.2.0.0/16         |Yok                   |                   |ToVNet2-2-Bırak|
+|6   |Kullanıcı   |Etkin |10.1.0.0/16         |Hiçbiri                   |                   |ToVNet2-1-Bırak|
+|7   |Kullanıcı   |Etkin |10.2.0.0/16         |Hiçbiri                   |                   |ToVNet2-2-Bırak|
 |8   |Varsayılan|Geçersiz|10.10.0.0/16        |Sanal ağ geçidi|[X.X.X.X]          |              |
 |9   |Kullanıcı   |Etkin |10.10.0.0/16        |Sanal gereç      |10.0.100.4         |Şirket-İçine    |
 |10  |Varsayılan|Etkin |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -248,9 +247,9 @@ Resimdeki *Subnet2* için yol tablosu aşağıdaki yolları içerir:
 |Varsayılan |Etkin |10.2.0.0/16         |VNet eşlemesi              |                   |
 |Varsayılan |Etkin |10.10.0.0/16        |Sanal ağ geçidi   |[X.X.X.X]          |
 |Varsayılan |Etkin |0.0.0.0/0           |Internet                  |                   |
-|Varsayılan |Etkin |10.0.0.0/8          |Yok                      |                   |
-|Varsayılan |Etkin |100.64.0.0/10       |Yok                      |                   |
-|Varsayılan |Etkin |192.168.0.0/16      |Yok                      |                   |
+|Varsayılan |Etkin |10.0.0.0/8          |Hiçbiri                      |                   |
+|Varsayılan |Etkin |100.64.0.0/10       |Hiçbiri                      |                   |
+|Varsayılan |Etkin |192.168.0.0/16      |Hiçbiri                      |                   |
 
 *Subnet2* yol tablosu Azure tarafından oluşturulan tüm varsayılan yolları ve isteğe bağlı VNet eşlemesi ile Sanal ağ geçidi isteğe bağlı yollarını içerir. Sanal ağa ağ geçidi ve eşleme eklendiğinde Azure, sanal ağ içindeki tüm alt ağlara isteğe bağlı yollar eklemiştir. 0.0.0.0/0 adres ön eki için Kullanıcı tanımlı yol *Subnet1*'ye eklendiğinde Azure, 10.0.0.0/8, 192.168.0.0/16 ve 100.64.0.0/10 adres ön eklerinin yollarını *Subnet1* Route tablosundan kaldırdı.  
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84049837"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
@@ -42,8 +41,8 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 |CPU|Düşük|Düşük, orta, yüksek|Orta, yüksek|
 |GÇ verimlilik (yaklaşık) |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
 |GÇ gecikme süresi (yaklaşık)|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
-|Columnstore dizin oluşturma |Yok|S3 ve üzeri|Destekleniyor|
-|Bellek içi OLTP|Yok|Yok|Destekleniyor|
+|Columnstore dizin oluşturma |YOK|S3 ve üzeri|Destekleniyor|
+|Bellek içi OLTP|YOK|YOK|Destekleniyor|
 |||||
 
 > [!IMPORTANT]

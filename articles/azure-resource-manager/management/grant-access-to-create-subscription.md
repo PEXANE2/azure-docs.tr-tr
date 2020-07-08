@@ -6,16 +6,15 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75478883"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057628"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (Önizleme)
 
-[Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)üzerinde bir Azure müşterisi olarak, hesabınıza faturalandırılan abonelikler oluşturmak için başka bir kullanıcıya veya hizmet sorumlusu izni verebilirsiniz. Bu makalede, abonelik oluşturma özelliğini paylaşmak için [rol tabanlı Access Control (RBAC)](../../active-directory/role-based-access-control-configure.md) kullanmayı ve abonelik oluşturma işlemlerinin nasıl denetleneceğini öğreneceksiniz. Paylaşmak istediğiniz hesapta sahip rolüne sahip olmanız gerekir.
+[Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)üzerinde bir Azure müşterisi olarak, hesabınıza faturalandırılan abonelikler oluşturmak için başka bir kullanıcıya veya hizmet sorumlusu izni verebilirsiniz. Bu makalede, abonelik oluşturma özelliğini paylaşmak için [rol tabanlı Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanmayı ve abonelik oluşturma işlemlerinin nasıl denetleneceğini öğreneceksiniz. Paylaşmak istediğiniz hesapta sahip rolüne sahip olmanız gerekir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -60,7 +59,7 @@ ms.locfileid: "75478883"
     }
     ```
 
-    RBAC sahibine `principalName` erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabına RBAC sahibi erişimi vermek isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın `enrollmentAccountObjectId`.
+    `principalName`RBAC sahibine erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `name`Bu hesabın öğesini kopyalayın. Örneğin, kayıt hesabına RBAC sahibi erişimi vermek isterseniz SignUpEngineering@contoso.com , ' yi kopyalamanız gerekir ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın `enrollmentAccountObjectId` .
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -78,7 +77,7 @@ ms.locfileid: "75478883"
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    RBAC sahibine `principalName` erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `ObjectId` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabına RBAC sahibi erişimi vermek isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bir sonraki adımda kullanabilmek için `enrollmentAccountObjectId`bu nesne kimliğini bir yere yapıştırın.
+    `principalName`RBAC sahibine erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `ObjectId`Bu hesabın öğesini kopyalayın. Örneğin, kayıt hesabına RBAC sahibi erişimi vermek isterseniz SignUpEngineering@contoso.com , ' yi kopyalamanız gerekir ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Bir sonraki adımda kullanabilmek için bu nesne KIMLIĞINI bir yere yapıştırın `enrollmentAccountObjectId` .
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -109,14 +108,14 @@ ms.locfileid: "75478883"
 
     ---
 
-    RBAC sahibine `principalName` erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabına RBAC sahibi erişimi vermek isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın `enrollmentAccountObjectId`.
+    `principalName`RBAC sahibine erişim vermek istediğiniz hesabı belirlemek için özelliğini kullanın. `name`Bu hesabın öğesini kopyalayın. Örneğin, kayıt hesabına RBAC sahibi erişimi vermek isterseniz SignUpEngineering@contoso.com , ' yi kopyalamanız gerekir ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın `enrollmentAccountObjectId` .
 
 1. <a id="userObjectId"></a>RBAC sahibi rolüne vermek istediğiniz kullanıcının veya grubun nesne KIMLIĞINI al
 
     1. Azure portal, **Azure Active Directory**arama yapın.
     1. Bir kullanıcı erişimi vermek istiyorsanız, sol taraftaki menüden **Kullanıcılar** ' a tıklayın. Bir gruba erişim vermek istiyorsanız, **gruplar**' a tıklayın.
     1. RBAC sahibi rolüne vermek istediğiniz kullanıcıyı veya grubu seçin.
-    1. Bir Kullanıcı seçtiyseniz, profil sayfasında nesne KIMLIĞINI bulacaksınız. Bir grup seçtiyseniz, nesne KIMLIĞI Genel Bakış sayfasında olur. Metin kutusunun sağ tarafındaki simgeye tıklayarak **ObjectID** 'yi kopyalayın. Bunu bir sonraki adımda kullanabilmeniz için bir yere yapıştırın `userObjectId`.
+    1. Bir Kullanıcı seçtiyseniz, profil sayfasında nesne KIMLIĞINI bulacaksınız. Bir grup seçtiyseniz, nesne KIMLIĞI Genel Bakış sayfasında olur. Metin kutusunun sağ tarafındaki simgeye tıklayarak **ObjectID** 'yi kopyalayın. Bunu bir sonraki adımda kullanabilmeniz için bir yere yapıştırın `userObjectId` .
 
 1. Kullanıcıya veya gruba RBAC sahibi rolünü kayıt hesabında verme
 
@@ -124,7 +123,7 @@ ms.locfileid: "75478883"
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
-    İlk adımda ( ```<enrollmentAccountObjectId>``` `name` ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopyaladığınız ile değiştirerek aşağıdaki komutu çalıştırın. İkinci ```<userObjectId>``` adımdan KOPYALADıĞıNıZ nesne kimliğiyle değiştirin.
+    ```<enrollmentAccountObjectId>``` `name` İlk adımda () kopyaladığınız ile değiştirerek aşağıdaki komutu çalıştırın ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . ```<userObjectId>```İkinci adımdan kopyaladığınız nesne kimliğiyle değiştirin.
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -158,7 +157,7 @@ ms.locfileid: "75478883"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    İlk adımda `ObjectId` toplanan ile değiştirerek```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ```<enrollmentAccountObjectId>``` aşağıdaki [New-azroleatama](../../active-directory/role-based-access-control-manage-access-powershell.md) komutunu çalıştırın (). İkinci ```<userObjectId>``` adımda toplanan nesne kimliğiyle değiştirin.
+    İlk adımda toplanan ile değiştirerek aşağıdaki [New-Azroleatama](../../role-based-access-control/role-assignments-powershell.md) komutunu çalıştırın ```<enrollmentAccountObjectId>``` `ObjectId` ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). ```<userObjectId>```İkinci adımda toplanan nesne kimliğiyle değiştirin.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +165,7 @@ ms.locfileid: "75478883"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    Aşağıdaki [az role atama Create](../../active-directory/role-based-access-control-manage-access-azure-cli.md) komutunu çalıştırın, ilk adımda ```<enrollmentAccountObjectId>``` kopyaladığınız ile `name` değiştirin (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). İkinci ```<userObjectId>``` adımda toplanan nesne kimliğiyle değiştirin.
+    Aşağıdaki [az role atama Create](../../role-based-access-control/role-assignments-cli.md) komutunu çalıştırın, ```<enrollmentAccountObjectId>``` `name` ilk adımda kopyaladığınız ile değiştirin ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). ```<userObjectId>```İkinci adımda toplanan nesne kimliğiyle değiştirin.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -180,7 +179,7 @@ ms.locfileid: "75478883"
 
 Bu API aracılığıyla oluşturulan abonelikleri izlemek için [kiracı etkinlik günlüğü API](/rest/api/monitor/tenantactivitylogs)'sini kullanın. Abonelik oluşturmayı izlemek için şu anda PowerShell, CLı veya Azure portal kullanmak mümkün değildir.
 
-1. Azure AD kiracısının kiracı yöneticisi olarak, [erişimi yükseltin](../../active-directory/role-based-access-control-tenant-admin-access.md) ve sonra da `/providers/microsoft.insights/eventtypes/management` kapsamı üzerinden denetleyen kullanıcıya Okuyucu rolü atayın.
+1. Azure AD kiracısının kiracı yöneticisi olarak, [erişimi yükseltin](../../role-based-access-control/elevate-access-global-admin.md) ve sonra da `/providers/microsoft.insights/eventtypes/management` kapsamı üzerinden denetleyen kullanıcıya Okuyucu rolü atayın.
 1. Denetim kullanıcısı olarak, abonelik oluşturma etkinliklerini görmek için [kiracı etkinlik günlüğü API](/rest/api/monitor/tenantactivitylogs) 'sini çağırın. Örnek:
 
     ```

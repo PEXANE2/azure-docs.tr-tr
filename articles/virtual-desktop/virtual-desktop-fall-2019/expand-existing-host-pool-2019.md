@@ -9,10 +9,9 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214290"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
@@ -49,7 +48,7 @@ Sonraki üç bölüm, ana bilgisayar havuzunu genişletmek için kullanabileceğ
 
 Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden dağıtma:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portal en üstündeki arama çubuğundan **kaynak grupları** ' nı arayın ve **Hizmetler**altında öğeyi seçin.
 3. Konak havuzunu oluştururken oluşturduğunuz kaynak grubunu bulun ve seçin.
 4. Tarayıcının sol tarafındaki panelde **dağıtımlar**' ı seçin.

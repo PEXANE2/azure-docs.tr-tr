@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650932"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036993"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights Preview ile şekil olayları
 
@@ -33,7 +32,7 @@ Genel en iyi uygulamalar şunlardır:
 En iyi sorgu performansı için aşağıdaki kaydırma kurallarına uyar:
 
 * Gereksiz özellikler göndermeyin. Time Series Insights, kullanıma göre faturaları önizleyin. Yalnızca Sorgulayabileceğiniz verileri depolamak ve işlemek en iyisidir.
-* Statik veriler için örnek alanlarını kullanın. Bu uygulama, ağ üzerinden statik veri göndermekten kaçınmaya yardımcı olur. Zaman serisi modelinin bir bileşeni olan örnek alanları, genel kullanıma sunulan Time Series Insights hizmetindeki başvuru verileri gibi çalışır. Örnek alanları hakkında daha fazla bilgi edinmek için [zaman serisi modelini](./time-series-insights-update-tsm.md)okuyun.
+* Statik veriler için örnek alanlarını kullanın. Bu uygulama, ağ üzerinden statik veri göndermekten kaçınmaya yardımcı olur. Zaman serisi modelinin bir bileşeni olan örnek alanları, genel kullanıma sunulan Time Series Insights hizmetindeki başvuru verileri gibi çalışır. Örnek alanları hakkında daha fazla bilgi edinmek için [zaman serisi modelini](./concepts-model-overview.md)okuyun.
 * Boyut özelliklerini iki veya daha fazla olay arasında paylaşabilirsiniz. Bu uygulama, verileri ağ üzerinden daha verimli bir şekilde göndermenize yardımcı olur.
 * Derin dizi iç içe geçme kullanmayın. Time Series Insights önizleme, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Önizleme Time Series Insights, iletilerde bulunan dizileri Özellik değeri çiftleriyle birden çok olaya düzleştirir.
 * Tüm olaylar için yalnızca birkaç ölçü mevcutsa, bu ölçüleri aynı nesne içinde ayrı özellikler olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler.
@@ -50,11 +49,11 @@ Alma sırasında, iç içe geçmiş nesneler içeren yük, sütun adının bir a
    },
    ```
 
-   Düzleştirildiğinde `data_flow` :.
+   `data_flow`Düzleştirildiğinde:.
 
 > [!IMPORTANT]
-> * Azure Time Series Insights önizleme, sütun kaldırma`_`için alt çizgi () kullanır.
-> * Bunun yerine, dönemleri (`.`) kullanan genel kullanıma ait farkı dikkate alın.
+> * Azure Time Series Insights önizleme, `_` sütun kaldırma için alt çizgi () kullanır.
+> * Bunun yerine, dönemleri () kullanan genel kullanıma ait farkı dikkate alın `.` .
 
 Daha karmaşık senaryolar aşağıda gösterilmiştir.
 
@@ -95,7 +94,7 @@ Dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği
 
 **Dersler**
 
-* Örnek JSON, iletinin verimliliğini artırmak için [zaman serisi örnek](./time-series-insights-update-tsm.md#time-series-model-instances) verilerini kullanan bir dış dizi içerir. Zaman serisi örnekleri cihaz meta verilerinin değişmeme olasılığı olsa da, genellikle veri analizi için yararlı özellikler sağlar.
+* Örnek JSON, iletinin verimliliğini artırmak için [zaman serisi örnek](./concepts-model-overview.md#time-series-model-instances) verilerini kullanan bir dış dizi içerir. Zaman serisi örnekleri cihaz meta verilerinin değişmeme olasılığı olsa da, genellikle veri analizi için yararlı özellikler sağlar.
 
 * JSON, iki veya daha fazla iletiyi (her cihazdan biri) zaman içinde bant genişliğine göre tek bir yük ile birleştirir.
 
@@ -106,7 +105,7 @@ Dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği
 
 #### <a name="time-series-instance"></a>Zaman serisi örneği 
 
-Şimdi de JSON 'nizi daha iyi şekilde şekillendirmek için [zaman serisi örneğini](./time-series-insights-update-tsm.md#time-series-model-instances) kullanma bölümüne daha yakından bakalım. 
+Şimdi de JSON 'nizi daha iyi şekilde şekillendirmek için [zaman serisi örneğini](./concepts-model-overview.md#time-series-model-instances) kullanma bölümüne daha yakından bakalım. 
 
 > [!NOTE]
 > Aşağıdaki [zaman serisi kimlikleri](./time-series-insights-update-how-to-id.md) *deviceds*' dir.
@@ -180,7 +179,7 @@ Aşağıdaki JSON 'ı göz önünde bulundurun:
 }
 ```
 
-Yukarıdaki örnekte, düzleştirilmiş `data["flow"]` özellik `data_flow` özelliği ile bir adlandırma çarpışması sunmalıdır.
+Yukarıdaki örnekte, düzleştirilmiş `data["flow"]` Özellik özelliği ile bir adlandırma çarpışması sunmalıdır `data_flow` .
 
 Bu durumda, *en son* Özellik değeri önceki bir değerin üzerine yazılır. 
 

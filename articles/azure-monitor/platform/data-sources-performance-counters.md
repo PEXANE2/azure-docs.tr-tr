@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739373"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955497"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -39,9 +38,9 @@ Toplanacak yeni bir Windows performans sayacı eklemek için bu yordamı izleyin
 
 1. *Nesne (örnek) \Sayaç*biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  Ayrıca, *object\counter*belirterek belirli bir sayaca ait tüm örnekleri döndürebilirsiniz.  
 
-    Adlandırılmış örneklerden SQL Server performans sayaçlarını toplarken, tüm adlandırılmış örnek sayaçları *MSSQL $* ile başlar ve ardından örnek adı gelir.  Örneğin, INST2 adlı SQL örneği için veritabanı performans nesnesinden tüm veritabanları için günlük önbelleği Isabet oranı sayacını toplamak için, belirtin `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Adlandırılmış örneklerden SQL Server performans sayaçlarını toplarken, tüm adlandırılmış örnek sayaçları *MSSQL $* ile başlar ve ardından örnek adı gelir.  Örneğin, INST2 adlı SQL örneği için veritabanı performans nesnesinden tüm veritabanları için günlük önbelleği Isabet oranı sayacını toplamak için, belirtin `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
-2. Sayacı **+** listeye eklemek için tıklayın veya **ENTER tuşuna basın** .
+2. **+** Sayacı listeye eklemek **Enter** için tıklayın veya ENTER tuşuna basın.
 3. Bir sayaç eklediğinizde, **örnek aralığı**için varsayılan 10 saniye kullanır.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız, bu değeri 1800 saniyeye (30 dakika) daha yüksek bir değere dönüştürebilirsiniz.
 4. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
@@ -53,31 +52,33 @@ Toplanacak yeni bir Linux performans sayacı eklemek için bu yordamı izleyin.
 
 1. Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir.  Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.  Bu dosyayı her bir Linux aracısında el ile değiştirmek istiyorsanız, *Linux makinelerime aşağıdaki yapılandırmayı Uygula* onay kutusunun işaretini kaldırın ve aşağıdaki yönergeleri izleyin.
 2. *Nesne (örnek) \Sayaç*biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
-3. Sayacı **+** , nesne için diğer sayaçlar listesine eklemek için tıklayın veya **ENTER tuşuna basın** .
+3. **+** Sayacı, nesne **Enter** için diğer sayaçlar listesine eklemek için tıklayın veya ENTER tuşuna basın.
 4. Bir nesne için tüm sayaçlar aynı **örnek aralığı**kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
 5. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Yapılandırma dosyasında Linux performans sayaçlarını yapılandırma
-Linux performans sayaçlarını Azure portal kullanarak yapılandırmak yerine, Linux aracısında yapılandırma dosyalarını düzenlemeyle ilgili seçeneğiniz vardır.  Toplanacak performans ölçümleri, **/etc/seçenek/Microsoft/omsagent/\<Workspace ID\>/conf/omsagent. conf**içindeki yapılandırma tarafından denetlenir.
+Linux performans sayaçlarını Azure portal kullanarak yapılandırmak yerine, Linux aracısında yapılandırma dosyalarını düzenlemeyle ilgili seçeneğiniz vardır.  Toplanacak performans ölçümleri, **/etc/seçenek/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.exe**içindeki yapılandırma tarafından denetlenir.
 
-Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma dosyasında tek `<source>` bir öğe olarak tanımlanmalıdır. Sözdizimi aşağıdaki kalıbı izler.
+Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma dosyasında tek bir öğe olarak tanımlanmalıdır `<source>` . Sözdizimi aşağıdaki kalıbı izler.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
 | Parametreler | Açıklama |
 |:--|:--|
-| nesne\_adı | Koleksiyonun nesne adı. |
-| örnek\_Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca \_toplam örnek için işlemci ölçümlerini toplamak üzere belirtebilirsiniz `_Total`. Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)`. |
-| Sayaç\_adı\_Regex | Hangi sayaçların (nesne için) toplanacağını tanımlayan bir *normal ifade* . Nesnenin tüm sayaçlarını toplamak için şunu belirtin: `.*`. Yalnızca bellek nesnesi için takas alanı sayaçlarını toplamak için, örneğin şunları belirtebilirsiniz:`.+Swap.+` |
+| nesne \_ adı | Koleksiyonun nesne adı. |
+| örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
+| Sayaç \_ adı \_ Regex | Hangi sayaçların (nesne için) toplanacağını tanımlayan bir *normal ifade* . Nesnenin tüm sayaçlarını toplamak için şunu belirtin: `.*` . Yalnızca bellek nesnesi için takas alanı sayaçlarını toplamak için, örneğin şunları belirtebilirsiniz:`.+Swap.+` |
 | interval | Nesnenin sayaçlarının toplandığı sıklık. |
 
 
@@ -142,37 +143,39 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 
 Performans ölçümlerinin varsayılan yapılandırması aşağıda verilmiştir.
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>Veri toplama
 Azure Izleyici, bu sayacın yüklü olduğu tüm aracıların belirtilen örnek aralığındaki tüm belirtilen performans sayaçlarını toplar.  Veriler toplanmaz ve ham veriler, Log Analytics çalışma alanınız tarafından belirtilen süre için tüm günlük sorgu görünümlerinde kullanılabilir.
@@ -184,7 +187,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 |:--- |:--- |
 | Bilgisayar |Olayın toplandığı bilgisayar. |
 | CounterName |Performans sayacının adı |
-| Onay yolu |\<Bilgisayardaki sayaç \\ \\>\\nesne (örnek)\\sayacından tam yol. |
+| Onay yolu |Form \\ \\ \<Computer> \\ nesnesi (örnek) sayacında sayacın tam yolu \\ . |
 | Onay değeri |Sayacın sayısal değeri. |
 | InstanceName |Olay örneğinin adı.  Örnek yoksa boştur. |
 | ObjectName |Performans nesnesinin adı |
@@ -194,7 +197,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 ## <a name="sizing-estimates"></a>Boyutlandırma tahminleri
  10 saniyelik aralıklarda belirli bir sayacın toplanması için kabaca bir tahmin, örnek başına günlük 1 MB 'dir.  Belirli bir sayacın depolama gereksinimlerini aşağıdaki formül ile tahmin edebilirsiniz.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (sayaç sayısı) x (aracı sayısı) x (örnek sayısı)
 
 ## <a name="log-queries-with-performance-records"></a>Performans kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.

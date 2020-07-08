@@ -1,5 +1,5 @@
 ---
-title: Node. js-LUSıS kullanarak uttersları içeri aktarma
+title: Node.js-lu
 titleSuffix: Azure Cognitive Services
 description: LUSıS yazma API 'sini kullanarak CSV biçimindeki daha önceden var olan verilerden bir LUO uygulamasını programlı bir şekilde oluşturmayı öğrenin.
 services: cognitive-services
@@ -11,25 +11,24 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340190"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057747"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node. js kullanarak program aracılığıyla bir LUSıS uygulaması oluşturma
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak bir LUSıS uygulaması programlama yoluyla oluşturma
 
 LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapan BIR programlı API sağlar. Bu, önceden var olan verileriniz olduğunda zamandan tasarruf edebilir ve el ile bilgi girerek bir LUO uygulamasının programlı bir şekilde oluşturulması daha hızlıdır.
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
+* [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-how-to-azure-subscription.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * Bu makale, kuramsal bir şirketin kullanıcı isteklerinin günlük dosyaları için bir CSV ile başlar. [Buradan](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)indirin.
-* NPM ile en son Node. js ' i yükler. [Buradan](https://nodejs.org/en/download/)indirin.
+* En son Node.js NPM ile birlikte yükler. [Buradan](https://nodejs.org/en/download/)indirin.
 * **[Önerilir]** IntelliSense ve hata ayıklama için Visual Studio Code, [buradan](https://code.visualstudio.com/) ücretsiz indirin.
 
 Bu makaledeki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur.
@@ -118,17 +117,17 @@ ASIS uygulamasında varlıklar ve amaçlar tanımlandıktan sonra, bu tür eklem
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
 
-### <a name="install-nodejs-dependencies"></a>Node. js bağımlılıklarını Install
-Terminal/komut satırına NPM 'den Node. js bağımlılıklarını yükler.
+### <a name="install-nodejs-dependencies"></a>Node.js bağımlılıklarını yükler
+Terminal/komut satırına NPM 'deki Node.js bağımlılıklarını yükler.
 
 ```console
 > npm install
 ```
 
 ### <a name="change-configuration-settings"></a>Yapılandırma ayarlarını değiştir
-Bu uygulamayı kullanabilmeniz için index. js dosyasındaki değerleri kendi uç nokta anahtarınızla değiştirmeniz ve uygulamanın sahip olmasını istediğiniz adı sağlamanız gerekir. Ayrıca, uygulamanın kültürünü ayarlayabilir veya sürüm numarasını değiştirebilirsiniz.
+Bu uygulamayı kullanabilmeniz için index.js dosyasındaki değerleri kendi uç nokta anahtarınızla değiştirmeniz ve uygulamanın sahip olmasını istediğiniz adı sağlamanız gerekir. Ayrıca, uygulamanın kültürünü ayarlayabilir veya sürüm numarasını değiştirebilirsiniz.
 
-İndex. js dosyasını açın ve dosyanın en üstünde bu değerleri değiştirin.
+index.js dosyasını açın ve dosyanın en üstünde bu değerleri değiştirin.
 
 
 ```javascript
@@ -140,7 +139,7 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
-Betiği Node. js ile bir terminalden/komut satırından çalıştırın.
+Betiği Node.js bir terminalden/komut satırından çalıştırın.
 
 ```console
 > node index.js

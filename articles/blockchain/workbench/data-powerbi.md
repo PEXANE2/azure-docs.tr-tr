@@ -5,10 +5,9 @@ ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
 ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214239"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench verilerini Microsoft Power BI ile kullanma
@@ -26,7 +25,7 @@ Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’
 1.  Power BI Desktop'ı açın.
 2.  **Veri Al**’ı seçin.
 
-    ![Verileri alma](./media/data-powerbi/get-data.png)
+    ![Veri al](./media/data-powerbi/get-data.png)
 3.  Veri kaynağı türleri listesinden **SQL Server**’ı seçin.
 
 4.  İletişim kutusunda sunucu ve veritabanı adını belirtin. Veri içeri aktarmak istediğinizi mi yoksa bir **DirectQuery** mi gerçekleştirmek istediğinizi belirtin. **Tamam**’ı seçin.

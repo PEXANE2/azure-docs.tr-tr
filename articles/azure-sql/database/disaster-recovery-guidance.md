@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: c6f766dcf69b398aea0978f42f5094809a3e2f6c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050418"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL veritabanınızı veya yük devretmesini ikincil bir duruma geri yükleme
@@ -25,7 +24,7 @@ Azure SQL veritabanı, bir kesinti yaşanmadan kurtarmak için aşağıdaki öze
 
 - [Etkin coğrafi çoğaltma](active-geo-replication-overview.md)
 - [Otomatik yük devretme grupları](auto-failover-group-overview.md)
-- [Coğrafi Geri Yükleme](recovery-using-backups.md#point-in-time-restore)
+- [Coğrafi geri yükleme](recovery-using-backups.md#point-in-time-restore)
 - [Bölgesel olarak yedekli veritabanları](high-availability-sla.md)
 
 İş sürekliliği senaryoları ve bu senaryoları destekleyen özellikler hakkında bilgi edinmek için bkz. [iş sürekliliği](business-continuity-high-availability-disaster-recover-hadr-overview.md).

@@ -13,10 +13,9 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249287"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
@@ -170,7 +169,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -214,7 +213,7 @@ Aşağıdaki diyagramda Always Encrypted içindeki sütun ana anahtarlarına yö
 Kuruluşunuz ve SQL veritabanı arasındaki ağ trafiği genellikle genel ağ üzerinden yönlendirilir. Ancak, bu yolu iyileştirmenizi ve daha güvenli hale getirmeyi seçerseniz Azure ExpressRoute 'a bakabilirsiniz. ExpressRoute temelde Şirket ağınızı özel bir bağlantı üzerinden Azure platformuna genişletmenizi sağlar. Bunu yaptığınızda, genel Internet üzerinden geçmeyin. Ayrıca, genellikle genel İnternet üzerinden ilerleyenden daha hızlı ağ gecikmeleri ve çok daha hızlı hızlara çeviren daha yüksek güvenlik, güvenilirlik ve yönlendirme iyileştirmesi da alırsınız. Kuruluşunuz ve Azure arasında önemli bir veri öbeğini aktarmayı planlıyorsanız, ExpressRoute 'u kullanarak maliyet avantajları elde edebilirsiniz. Kuruluşunuzun Azure 'a bağlantısı için üç farklı bağlantı modeli arasından seçim yapabilirsiniz:
 
 - [Bulut Exchange ortak konumu](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Herhangi bir](../../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Herhangi iki nokta arasında](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Noktadan noktaya](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 ExpressRoute Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği sınırına kadar en fazla 2x veri bloğu oluşturmanızı sağlar. Ayrıca, ExpressRoute kullanarak çapraz bölge bağlantısını yapılandırmak da mümkündür. ExpressRoute bağlantı sağlayıcılarının listesini görmek için bkz: [ExpressRoute Iş ortakları ve eşleme konumları](../../expressroute/expressroute-locations.md). Aşağıdaki makalelerde Express Route daha ayrıntılı olarak açıklanır:

@@ -4,12 +4,11 @@ description: Azure Dağıtım Yöneticisi ile birçok bölge üzerinden bir hizm
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677891"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057934"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -30,7 +29,7 @@ Dağıtım şablonunu dağıtmadan önce topoloji şablonunu dağıtırsınız.
 
 Ek kaynaklar:
 
-- [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Azure Dağıtım Yöneticisi REST API başvurusu](/rest/api/deploymentmanager/).
 - [Öğretici: Azure Dağıtım Yöneticisi kaynak yöneticisi şablonlarıyla kullanın](./deployment-manager-tutorial.md).
 - [Öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanın](./deployment-manager-tutorial-health-check.md).
 - [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).

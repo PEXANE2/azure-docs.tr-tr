@@ -4,12 +4,11 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248609"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057832"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -167,6 +166,27 @@ Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'da
 
     ![Parola oluştur.](./media/backup-azure-manage-mars/passphrase2.png)
 - Parolanın, Azure Key Vault tercihen farklı bir konuma (kaynak makineden başka) güvenli bir şekilde kaydedildiğinden emin olun. MARS aracılarıyla yedeklenmekte olan birden fazla makineniz varsa tüm parolaları izleyin.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Kullanılamayan makineler için yedekleme verilerini yönetme
+
+Bu bölümde, kaynak makinenizin MARS ile korunan, bozuk, kötü amaçlı yazılım/fidye veya kullanımdan kaldırılan bir senaryo açıklanmaktadır.
+
+Bu makineler için Azure Backup hizmeti, son kurtarma noktasının, yedekleme ilkesinde belirtilen bekletme kurallarına göre sona ermemesini sağlar (yani ayıklanmaz). Bu nedenle, makineyi güvenli bir şekilde geri yükleyebilirsiniz.  Yedeklenen verilerde gerçekleştirebileceğiniz aşağıdaki senaryoları göz önünde bulundurun:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Senaryo 1: kaynak makine kullanılamıyor ve artık yedekleme verilerini tutmanız gerekmiyor
+
+- Yedeklenen verileri, [Bu makalede](backup-azure-delete-vault.md#delete-protected-items-on-premises)listelenen adımları kullanarak Azure Portal silebilirsiniz.
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>Senaryo 2: kaynak makine kullanılamıyor ve yedekleme verilerini tutmanız gerekiyor
+
+MARS için yedekleme ilkesini yönetmek, Portal üzerinden değil MARS konsolu aracılığıyla yapılır. Mevcut kurtarma noktalarının bekletme ayarlarını, süresi dolmadan önce genişletmeniz gerekiyorsa, makineyi geri yüklemeniz, MARS konsolunu yüklemeniz ve ilkeyi genişletmeniz gerekir.
+
+- Makineyi geri yüklemek için aşağıdaki adımları uygulayın:
+  - [VM 'yi alternatif bir hedef makineye geri yükleme](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - Hedef Makineyi, kaynak makineyle aynı ana bilgisayar adına yeniden oluştur
+  - Aracıyı yükler ve aynı kasaya ve aynı parolayla yeniden kaydolun
+  - Saklama süresini gereksinimlerinize göre genişletmek için MARS istemcisini başlatın
+- MARS ile korunan yeni geri yüklenen makineniz yedeklemeler almaya devam edecektir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

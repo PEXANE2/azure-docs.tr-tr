@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6d47da361303a0c421da035fc47608ba363ff82f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483542"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956313"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files için kaydolma
 
@@ -52,16 +51,22 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
 
 2. Azure hesabınızda birden çok aboneliğiniz varsa, Azure NetApp Files için beyaz listeye alınmış olanı seçin:
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
 3. Azure Cloud Shell konsolunda, aboneliğinizin beyaz listeye eklendiğini doğrulamak için aşağıdaki komutu girin:
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    Komut çıktısı şu şekilde görünür:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>`abonelik KIMLIĞINIZ.
 
@@ -69,21 +74,27 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
 
 4. Azure Cloud Shell konsolunda, Azure Kaynak sağlayıcısı 'nı kaydetmek için aşağıdaki komutu girin: 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    `--wait`Parametresi, konsolun kaydın tamamlanmasını beklemesini ister. Kayıt işleminin tamamlanması biraz zaman alabilir.
 
 5. Azure Cloud Shell konsolunda, Azure Kaynak sağlayıcısı 'nın kaydedildiğini doğrulamak için aşağıdaki komutu girin: 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    Komut çıktısı şu şekilde görünür:
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
    `<SubID>`abonelik KIMLIĞINIZ.  `state`Parametre değeri gösterir `Registered` .
 

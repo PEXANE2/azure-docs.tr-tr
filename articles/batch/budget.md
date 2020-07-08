@@ -4,10 +4,9 @@ description: Maliyet analizini nasıl alabileceğinizi ve toplu iş yüklerinizi
 ms.topic: how-to
 ms.date: 07/19/2019
 ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725780"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch için maliyet analizi ve bütçeler

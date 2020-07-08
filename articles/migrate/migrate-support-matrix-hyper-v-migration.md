@@ -4,10 +4,9 @@ description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 5dd2ae134e57fc8c719a27c25ddc58e769367065
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84771249"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
@@ -50,7 +49,7 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 | **IPv6** | Desteklenmiyor.|
 | **NIC ekibi oluşturma** | Desteklenmiyor.|
 | **Azure Site Recovery** | VM, Azure Site Recovery ile çoğaltma için etkinleştirilmişse Azure geçişi geçiş sunucusu geçişini çoğaltamaz.|
-| **Bağlantı noktaları** | VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.|
+| **Adet** | VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.|
 
 ### <a name="url-access-public-cloud"></a>URL erişimi (genel bulut)
 

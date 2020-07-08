@@ -3,12 +3,11 @@ title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057849"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni kaynak grubuna veya aboneliğe taşıma
 
@@ -53,7 +52,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
 
    Kaynak ve hedef aboneliklerin kiracı kimlikleri aynı değilse, kiracı kimliklerini mutabık kılmak için aşağıdaki yöntemleri kullanın:
 
-   * [Azure aboneliğinin sahipliğini başka bir hesaba devretme](../../billing/billing-subscription-transfer.md)
+   * [Azure aboneliğinin sahipliğini başka bir hesaba devretme](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Azure Active Directory'ye bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Hedef abonelik, taşınan kaynağın kaynak sağlayıcısına kayıtlı olmalıdır. Aksi takdirde, **aboneliğin bir kaynak türü için kayıtlı**olmadığını belirten bir hata alırsınız. Bir kaynağı yeni bir aboneliğe taşırken bu hatayla karşılaşabilirsiniz, ancak bu abonelik bu kaynak türüyle hiç kullanılmadıysa.

@@ -4,12 +4,11 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506183"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057441"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -22,11 +21,16 @@ Bu makalede Azure Site Recovery hakkında sık sorulan sorular özetlenmektedir.
 ## <a name="general"></a>Genel
 
 ### <a name="what-does-site-recovery-do"></a>Site Recovery ne işe yarar?
+
 Site Recovery bölgeler, şirket içi sanal makineler ve fiziksel sunucular ile Azure arasında Azure VM 'Leri, ikincil veri merkezine ise şirket içi makineleri düzenleyerek ve otomatikleştirerek iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur. [Daha fazla bilgi edinin](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Docker diskine sahip bir sanal makineyi koruyabilir miyim?
 
 Hayır, bu desteklenmeyen bir senaryodur.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Veri bütünlüğünü sağlamak için ne Site Recovery?
+
+Veri bütünlüğünü sağlamak için Site Recovery tarafından gerçekleştirilen çeşitli ölçümler vardır. HTTPS protokolü kullanılarak tüm hizmetler arasında güvenli bir bağlantı oluşturulur. Bu, herhangi bir kötü amaçlı yazılımın veya dış varlıkların verileri denetleyemiyorum emin olmanızı sağlar. Alınan başka bir ölçü, sağlama toplamlarını kullanmaktır. Kaynak ve hedef arasındaki veri aktarımı, aralarında veri sağlama toplamı hesaplanırken yürütülür. Bu, aktarılan verilerin tutarlı olmasını sağlar.
 
 ## <a name="service-providers"></a>Hizmet sağlayıcıları
 

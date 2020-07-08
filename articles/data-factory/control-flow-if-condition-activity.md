@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414615"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
@@ -67,11 +66,11 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | If-Condition etkinliğinin adı. | Dize | Yes
-tür | **Ifcondition** olarak ayarlanmalıdır | Dize | Yes
-ifade | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Yes
-ifTrueActivities | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `true` . | Dizi | Yes
-Ifyanlışa etkinlikleri | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `false` . | Dizi | Yes
+name | If-Condition etkinliğinin adı. | Dize | Evet
+tür | **Ifcondition** olarak ayarlanmalıdır | Dize | Evet
+ifade | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
+ifTrueActivities | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `true` . | Dizi | Evet
+Ifyanlışa etkinlikleri | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `false` . | Dizi | Evet
 
 ## <a name="example"></a>Örnek
 Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection. RouteSelection değeri true ise, veriler outputPath1 ' e kopyalanır. Ve eğer routeSelection değeri false ise, veriler outputPath2 ' e kopyalanır. 

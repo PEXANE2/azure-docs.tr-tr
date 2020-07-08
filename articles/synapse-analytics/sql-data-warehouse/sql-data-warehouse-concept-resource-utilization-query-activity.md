@@ -12,10 +12,9 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213559"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
@@ -26,7 +25,7 @@ Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere y�
 
 Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla ortaya çıkmış.
 
-| Ölçüm Adı             | Description                                                  | Toplama Türü |
+| Ölçüm Adı             | Açıklama                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Ortalama, en düşük, en fazla    |
 | Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Ortalama, en düşük, en fazla    |

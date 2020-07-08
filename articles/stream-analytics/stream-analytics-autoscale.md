@@ -5,14 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 2f871312b7e36288d1b78e05aa4058dab6c1942f
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449575"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037571"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak işleri Stream Analytics otomatik ölçeklendirme
 
@@ -29,7 +28,7 @@ Otomatik ölçeklendirmeyi yapılandırarak Stream Analytics işlerinizin maliye
 ### <a name="configure-variables"></a>Değişkenleri yapılandırma
 Aşağıdaki değişkenleri Azure Otomasyonu hesabının içine ekleyin. Bu değişkenler, sonraki adımlarda açıklanan runbook 'larda kullanılacaktır.
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | --- | --- | --- |
 | **jobName** | Dize | Otomatik ölçeklendirme yapmak istediğiniz Stream Analytics işinizin adı. |
 | **resourceGroupName** | Dize | İşinizin bulunduğu kaynak grubunun adı. |

@@ -15,10 +15,9 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669299"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>SQL Server ile bir Windows sanal makinesi sağlamak için Azure portal kullanma
@@ -136,8 +135,8 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 **SQL Server ayarları** sekmesinde, SQL Server için belirli ayarları ve iyileştirmeleri yapılandırın. SQL Server için aşağıdaki ayarları yapılandırabilirsiniz:
 
 - [Bağlantı](#connectivity)
-- [Kimlik doğrulaması](#authentication)
-- [Azure Anahtar Kasası tümleştirme](#azure-key-vault-integration)
+- [Kimlik Doğrulaması](#authentication)
+- [Azure Key Vault tümleştirme](#azure-key-vault-integration)
 - [Depolama yapılandırması](#storage-configuration)
 - [Otomatik düzeltme eki uygulama](#automated-patching)
 - [Otomatik yedekleme](#automated-backup)
@@ -162,7 +161,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 
 Genel olarak, senaryonuzun izin verdiği en kısıtlayıcı bağlantıyı seçerek güvenliği geliştirin. Ancak tüm seçenekler ağ güvenlik grubu (NSG) kuralları ve SQL/Windows kimlik doğrulaması aracılığıyla güvenli kılınabilir. VM oluşturulduktan sonra NSG 'yi düzenleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler](security-considerations-best-practices.md).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 SQL Server kimlik doğrulaması gerekiyorsa, **SQL Server ayarları** sekmesinden **SQL kimlik doğrulaması** altında **Etkinleştir** ' i seçin.
 

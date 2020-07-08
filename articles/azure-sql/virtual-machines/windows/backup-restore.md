@@ -14,10 +14,9 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669214"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için yedekleme ve geri yükleme
@@ -31,7 +30,7 @@ Bu makalenin ilk bölümü, kullanılabilir yedekleme ve geri yükleme seçenekl
 
 Aşağıdaki tabloda, Azure VM 'lerinde SQL Server yönelik çeşitli yedekleme ve geri yükleme seçenekleri hakkında bilgi verilmektedir:
 
-| Strateji | SQL sürümleri | Description |
+| Strateji | SQL sürümleri | Açıklama |
 |---|---|---|
 | [Otomatik Yedekleme](#automated) | 2014<br/> 2016<br/> 2017 | Otomatik yedekleme, bir SQL Server VM tüm veritabanları için düzenli yedeklemeler zamanlamanıza olanak sağlar. Yedeklemeler, 30 güne kadar Azure Storage 'da depolanır. SQL Server 2016 ' den başlayarak otomatik yedekleme v2, el ile zamanlamayı yapılandırma ve tam ve günlük yedeklemeleri sıklığı gibi ek seçenekler sunar. |
 | [SQL VM'leri için Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup, Azure VM 'lerinde SQL Server için kurumsal sınıf yedekleme yeteneği sağlar. Bu hizmetle, birden çok sunucu ve binlerce veritabanı için yedeklemeleri merkezi olarak yönetebilirsiniz. Veritabanları portalda belirli bir zaman noktasına geri yüklenebilir. Yıllarca yedeklemeleri koruyasağlayan özelleştirilebilir bir bekletme ilkesi sunar. |
@@ -129,23 +128,23 @@ Aşağıdaki tabloda, Azure 'daki SQL Server sanal makineler için her yedekleme
 
 || **Otomatik Yedekleme** | **SQL için Azure Backup** | **El ile yedekleme** |
 |---|---|---|---|
-| Ek Azure hizmeti gerektirir |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure portal 'de yedekleme ilkesini yapılandırma | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure portal veritabanlarını geri yükleme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Birden çok sunucuyu tek bir panoda yönetme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Belirli bir noktaya geri yükleme | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| 15 dakikalık kurtarma noktası hedefi (RPO) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| Kısa vadeli yedekleme bekletme ilkesi (gün) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |   |
-| Uzun süreli yedekleme bekletme ilkesi (aylar, yıllar) |   | ![Yes](./media/backup-restore/yes.png) |   |
-| SQL Server her zaman açık için yerleşik destek |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure depolama hesaplarına yedekleme | ![Yes](./media/backup-restore/yes.png)otomatik | ![Yes](./media/backup-restore/yes.png)otomatik | ![Yes](./media/backup-restore/yes.png)(müşteri tarafından yönetilen) |
-| Depolama ve yedekleme dosyalarının yönetimi | | ![Yes](./media/backup-restore/yes.png) |  |
-| VM 'deki bağlı disklere yedekleme |   |   | ![Yes](./media/backup-restore/yes.png) |
-| Merkezi özelleştirilebilir yedekleme raporları |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Hatalara yönelik Birleşik e-posta uyarıları |   | ![Yes](./media/backup-restore/yes.png) |   |
-| İzlemeyi Azure Izleyici günlüklerine göre özelleştirme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| SSMS veya Transact-SQL betikleri ile yedekleme işlerini izleme | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| SSMS veya Transact-SQL betiklerine sahip veritabanlarını geri yükleme | ![Yes](./media/backup-restore/yes.png) |   | ![Yes](./media/backup-restore/yes.png) |
+| Ek Azure hizmeti gerektirir |   | ![Evet](./media/backup-restore/yes.png) |   |
+| Azure portal 'de yedekleme ilkesini yapılandırma | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) |   |
+| Azure portal veritabanlarını geri yükleme |   | ![Evet](./media/backup-restore/yes.png) |   |
+| Birden çok sunucuyu tek bir panoda yönetme |   | ![Evet](./media/backup-restore/yes.png) |   |
+| Belirli bir noktaya geri yükleme | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) |
+| 15 dakikalık kurtarma noktası hedefi (RPO) | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) |
+| Kısa vadeli yedekleme bekletme ilkesi (gün) | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) |   |
+| Uzun süreli yedekleme bekletme ilkesi (aylar, yıllar) |   | ![Evet](./media/backup-restore/yes.png) |   |
+| SQL Server her zaman açık için yerleşik destek |   | ![Evet](./media/backup-restore/yes.png) |   |
+| Azure depolama hesaplarına yedekleme | ![Evet](./media/backup-restore/yes.png)otomatik | ![Evet](./media/backup-restore/yes.png)otomatik | ![Evet](./media/backup-restore/yes.png)(müşteri tarafından yönetilen) |
+| Depolama ve yedekleme dosyalarının yönetimi | | ![Evet](./media/backup-restore/yes.png) |  |
+| VM 'deki bağlı disklere yedekleme |   |   | ![Evet](./media/backup-restore/yes.png) |
+| Merkezi özelleştirilebilir yedekleme raporları |   | ![Evet](./media/backup-restore/yes.png) |   |
+| Hatalara yönelik Birleşik e-posta uyarıları |   | ![Evet](./media/backup-restore/yes.png) |   |
+| İzlemeyi Azure Izleyici günlüklerine göre özelleştirme |   | ![Evet](./media/backup-restore/yes.png) |   |
+| SSMS veya Transact-SQL betikleri ile yedekleme işlerini izleme | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) | ![Evet](./media/backup-restore/yes.png) |
+| SSMS veya Transact-SQL betiklerine sahip veritabanlarını geri yükleme | ![Evet](./media/backup-restore/yes.png) |   | ![Evet](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

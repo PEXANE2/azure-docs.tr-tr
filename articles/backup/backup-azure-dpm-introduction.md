@@ -4,10 +4,9 @@ description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data P
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84718334"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
@@ -97,7 +96,7 @@ Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal g�
 
 Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. DPM sunucusunu kaydetmek istediğiniz kasayı açın.
 3. **Ayarlar**' da **Özellikler**' e tıklayın.
 

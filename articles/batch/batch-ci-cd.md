@@ -5,12 +5,11 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726851"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956670"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -28,8 +27,8 @@ Bu örnekte, bir Azure Batch altyapısını dağıtmak ve bir uygulama paketini 
 
 Bu makaledeki adımları izlemek için bir Azure DevOps organizasyonu ve bir takım projesi gerekir.
 
-* [Azure DevOps organizasyonu oluşturma](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Azure DevOps 'da proje oluşturma](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Azure DevOps organizasyonu oluşturma](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Azure DevOps 'da proje oluşturma](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>Ortamınız için kaynak denetimi
 
@@ -48,7 +47,7 @@ Bu örnekte kullanılan CODEBASE yapısı aşağıdakine benzer;
 
 Bu bölüm, sürüm denetimi ve Kaynak Yöneticisi şablonlarını tasarlama hakkında bilgi sahibi olduğunuzu varsayar. Bu kavramları bilmiyorsanız, daha fazla bilgi için aşağıdaki sayfalara bakın.
 
-* [Kaynak denetimi nedir?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [Kaynak denetimi nedir?](/azure/devops/user-guide/source-control?view=azure-devops)
 * [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
@@ -58,11 +57,11 @@ Bu örnek, çözümümüzü dağıtmak için birden çok Kaynak Yöneticisi şab
 * Temel alınan yetenek şablonları ayrı ayrı birim test edilebilir.
 * Temel özellik şablonları bir kuruluşun içinde standart olarak tanımlanabilir ve birden çok çözümde yeniden kullanılabilir.
 
-Bu örnekte, üç şablon dağıtan bir uçtan uca çözüm şablonu (Deployment. JSON) vardır. Temel şablonlar, çözümün belirli bir yönlerini dağıtmaktan sorumlu olan özellik şablonlarıdır.
+Bu örnekte, üç şablon dağıtan uçtan uca bir çözüm şablonu (üzerinde deployment.js) vardır. Temel şablonlar, çözümün belirli bir yönlerini dağıtmaktan sorumlu olan özellik şablonlarıdır.
 
 ![Azure Resource Manager şablonları kullanarak bağlantılı şablon yapısına örnek](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-Bir Azure depolama hesabı için bakacağız ilk şablon. Çözümünüz, uygulamayı Batch hesabımızda dağıtmak için bir depolama hesabı gerektirir. Depolama hesapları için Kaynak Yöneticisi şablonları oluştururken [Microsoft. Storage kaynak türleri için Kaynak Yöneticisi şablonu Başvuru Kılavuzu ' nu](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) bilmeniz önemlidir.
+Bir Azure depolama hesabı için bakacağız ilk şablon. Çözümünüz, uygulamayı Batch hesabımızda dağıtmak için bir depolama hesabı gerektirir. Depolama hesapları için Kaynak Yöneticisi şablonları oluştururken [Microsoft. Storage kaynak türleri için Kaynak Yöneticisi şablonu Başvuru Kılavuzu ' nu](/azure/templates/microsoft.storage/allversions) bilmeniz önemlidir.
 
 ```json
 {
@@ -102,7 +101,7 @@ Bir Azure depolama hesabı için bakacağız ilk şablon. Çözümünüz, uygula
 }
 ```
 
-Daha sonra Azure Batch hesap şablonuna bakacağız. Azure Batch hesabı, havuzlarda (makine gruplandırmaları) çok sayıda uygulama çalıştırmak için bir platform görevi görür. Batch hesapları için Kaynak Yöneticisi şablonları oluştururken [Microsoft. Batch kaynak türleri için Kaynak Yöneticisi şablonu Başvuru Kılavuzu ' nu](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) bilmeniz önemlidir.
+Daha sonra Azure Batch hesap şablonuna bakacağız. Azure Batch hesabı, havuzlarda (makine gruplandırmaları) çok sayıda uygulama çalıştırmak için bir platform görevi görür. Batch hesapları için Kaynak Yöneticisi şablonları oluştururken [Microsoft.Batch kaynak türleri için Kaynak Yöneticisi şablonu başvuru kılavuzuna](/azure/templates/microsoft.batch/allversions) dikkat etmeniz önerilir.
 
 ```json
 {
@@ -141,7 +140,7 @@ Daha sonra Azure Batch hesap şablonuna bakacağız. Azure Batch hesabı, havuzl
 }
 ```
 
-Sonraki şablonda bir Azure Batch Havuzu (uygulamalarımızı işlemek için arka uç makineler) oluşturma örneği gösterilmektedir. Batch hesap havuzları için Kaynak Yöneticisi şablonları oluştururken [Microsoft. Batch kaynak türleri için Kaynak Yöneticisi şablonu Başvuru Kılavuzu ' nu](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) bilmeniz önerilir.
+Sonraki şablonda bir Azure Batch Havuzu (uygulamalarımızı işlemek için arka uç makineler) oluşturma örneği gösterilmektedir. Batch hesap havuzları için Kaynak Yöneticisi şablonları oluştururken [Microsoft.Batch kaynak türleri için Kaynak Yöneticisi şablonu Başvuru Kılavuzu ' nu](/azure/templates/microsoft.batch/allversions) bilmeniz önemlidir.
 
 ```json
 {
@@ -309,7 +308,7 @@ Kaynak kodu ayarlandığına göre, ilk derlemeyi başlayabiliriz.
 
 ## <a name="continuous-integration"></a>Sürekli tümleştirme
 
-Azure DevOps Services içinde [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops), uygulamalarınız için bir derleme, test ve dağıtım işlem hattı uygulamanıza yardımcı olur.
+Azure DevOps Services içinde [Azure Pipelines](/azure/devops/pipelines/get-started/?view=azure-devops), uygulamalarınız için bir derleme, test ve dağıtım işlem hattı uygulamanıza yardımcı olur.
 
 İşlem hattının bu aşamasında, testler genellikle kodu doğrulamak ve yazılımın uygun parçalarını derlemek için çalıştırılır. Testlerin sayısı ve türleri ve çalıştırdığınız ek görevler, daha geniş derleme ve yayın stratejinize göre değişir.
 
@@ -323,9 +322,9 @@ Bu örnekte, **HPC-Application** klasörüne odaklanacağız. **HPC-Application*
 
 1. Derleme işlem hattı oluşturmak için iki seçeneğiniz vardır:
 
-    a. [Görsel tasarımcı kullanma](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Bunu kullanmak için **Yeni işlem hattı** sayfasında "görsel tasarımcıyı kullan" a tıklayın.
+    a. [Görsel tasarımcı kullanma](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Bunu kullanmak için **Yeni işlem hattı** sayfasında "görsel tasarımcıyı kullan" a tıklayın.
 
-    b. [YAML derlemelerini kullanma](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Yeni bir YAML işlem hattı oluşturarak yeni bir işlem hattı sayfasında Azure Repos veya GitHub seçeneğine tıklayabilirsiniz. Alternatif olarak, aşağıdaki örneği, kaynak denetilinizi kullanarak, Visual Designer ' a tıklayıp YAML şablonunu kullanarak var olan bir YAML dosyasına başvurabilirsiniz.
+    b. [YAML derlemelerini kullanma](/azure/devops/pipelines/get-started-yaml?view=azure-devops). Yeni bir YAML işlem hattı oluşturarak yeni bir işlem hattı sayfasında Azure Repos veya GitHub seçeneğine tıklayabilirsiniz. Alternatif olarak, aşağıdaki örneği, kaynak denetilinizi kullanarak, Visual Designer ' a tıklayıp YAML şablonunu kullanarak var olan bir YAML dosyasına başvurabilirsiniz.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +356,11 @@ Bu örnekte, **HPC-Application** klasörüne odaklanacağız. **HPC-Application*
     ![Yapıınızdan canlı çıktıları görüntüleme](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> HPC Batch uygulamanızı yürütmek için bir istemci uygulaması kullanıyorsanız, bu uygulama için ayrı bir derleme tanımı oluşturmanız gerekir. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) belgelerinde çeşitli nasıl yapılır kılavuzlarından ulaşabilirsiniz.
+> HPC Batch uygulamanızı yürütmek için bir istemci uygulaması kullanıyorsanız, bu uygulama için ayrı bir derleme tanımı oluşturmanız gerekir. [Azure Pipelines](/azure/devops/pipelines/get-started/index?view=azure-devops) belgelerinde çeşitli nasıl yapılır kılavuzlarından ulaşabilirsiniz.
 
 ## <a name="continuous-deployment"></a>Sürekli dağıtım
 
-Azure Pipelines Ayrıca uygulamanızı ve temel altyapıyı dağıtmak için de kullanılır. [Yayın işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/release) , sürekli dağıtımı sağlayan ve yayın işleminizi otomatikleştiren bileşendir.
+Azure Pipelines Ayrıca uygulamanızı ve temel altyapıyı dağıtmak için de kullanılır. [Yayın işlem hatları](/azure/devops/pipelines/release) , sürekli dağıtımı sağlayan ve yayın işleminizi otomatikleştiren bileşendir.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Uygulamanızı ve temel altyapıyı dağıtma
 
@@ -416,7 +415,7 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     * **Eylem**: kaynak grubu oluştur veya güncelleştir
     * **Kaynak grubu**: $ (resourcegroupname)
     * **Konum**: $ (konum)
-    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/storageaccount.exe
+    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/storageAccount.json
     * **Geçersiz kılma şablonu parametreleri**:-AccountName $ (storageAccountName)
 
 1. Kaynak denetiminden yapıtları depolama hesabına yükleyin. Bunu gerçekleştirmek için bir Azure işlem hattı görevi vardır. Bu görevin bir parçası olarak, depolama hesabı kapsayıcısı URL 'SI ve SAS belirteci, Azure Pipelines bir değişkene alınabilir. Bu, bu aracı aşaması boyunca yeniden kullanılabilen anlamına gelir.
@@ -439,7 +438,7 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     * **Eylem**: kaynak grubu oluştur veya güncelleştir
     * **Kaynak grubu**: $ (resourcegroupname)
     * **Konum**: $ (konum)
-    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/Deployment.exe
+    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/deployment.json
     * **Şablon parametrelerini geçersiz kıl**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Azure Key Vault görevleri kullanmak yaygın bir uygulamadır. Hizmet sorumlusu (Azure aboneliğinize bağlantı) uygun bir erişim ilkeleri ayarlandıysa, bir Azure Key Vault parolaları indirebilir ve işlem hattınızda değişken olarak kullanılabilir. Gizli anahtar adı, ilişkili değerle ayarlanır. Örneğin, sürüm tanımında sshPassword 'ın gizli anahtarı $ (sshPassword) ile birlikte başvurulmalıdır.

@@ -9,10 +9,9 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85242063"
 ---
 | Kaynak | Temel | Standart | Premium |
@@ -25,15 +24,15 @@ ms.locfileid: "85242063"
 | İndirme bant genişliği MBps<sup>2</sup> | 30 | 60 | 100 |
 | Karşıya yükleme bant genişliği MBps<sup>2</sup> | 10 | 20 | 50 |
 | Web Kancaları | 2 | 10 | 500 |
-| Coğrafi çoğaltma | Yok | Yok | [Destek][geo-replication] |
-| İçerik güveni | Yok | Yok | [Destek][content-trust] |
-| Özel uç noktalarla özel bağlantı | Yok | Yok | [Destek][plink] |
-| Hizmet uç noktası VNet erişimi | Yok | Yok | [Önizleme][vnet] |
-| Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Destek][cmk] |
-| Depo kapsamlı izinler | Yok | Yok | [Önizleme][token]|
-| &bull;Simgelerini | Yok | Yok | 20.000 |
-| &bull;Kapsam eşlemeleri | Yok | Yok | 20.000 |
-| &bull;Kapsam başına depo eşleme | Yok | Yok | 500 |
+| Coğrafi çoğaltma | YOK | YOK | [Destek][geo-replication] |
+| İçerik güveni | YOK | YOK | [Destek][content-trust] |
+| Özel uç noktalarla özel bağlantı | YOK | YOK | [Destek][plink] |
+| Hizmet uç noktası VNet erişimi | YOK | YOK | [Önizleme][vnet] |
+| Müşteri tarafından yönetilen anahtarlar | YOK | YOK | [Destek][cmk] |
+| Depo kapsamlı izinler | YOK | YOK | [Önizleme][token]|
+| &bull;Simgelerini | YOK | YOK | 20.000 |
+| &bull;Kapsam eşlemeleri | YOK | YOK | 20.000 |
+| &bull;Kapsam başına depo eşleme | YOK | YOK | 500 |
 
 
 <sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].

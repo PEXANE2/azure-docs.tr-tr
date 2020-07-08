@@ -9,10 +9,9 @@ ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85242143"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
@@ -302,7 +301,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Yes
+Evet
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -340,7 +339,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Yes
+Evet
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -410,7 +409,7 @@ Azure 'un desteklediği en büyük Sayfa Blobu boyutu 8 TiB 'dir (8.191 GiB). Bi
 
 1 TiB 'den büyük disklerin oluşturulması, eklenmesi veya yeniden boyutlandırılması için mevcut Azure araçlarınızı yükseltmeniz gerekmez. VHD dosyanızı Şirket içinden doğrudan bir Sayfa Blobu veya yönetilmeyen disk olarak Azure 'a yüklemek için aşağıda listelenen en son araç kümelerini kullanmanız gerekir. Yalnızca 8 TiB 'ye kadar olan VHD yüklemelerini destekliyoruz.
 
-|Azure Araçları      | Desteklenen sürümler                                |
+|Azure araçları      | Desteklenen sürümler                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürüm veya üzeri|
 |Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürüm veya sonrası|

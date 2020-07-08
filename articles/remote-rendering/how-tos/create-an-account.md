@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057679"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
@@ -28,20 +27,24 @@ Azure uzaktan Işleme hizmeti için bir hesap oluşturmak için aşağıdaki ad�
     1. ' Kaynak adı ' nı hesabın adına ayarlayın
     1. Gerekirse ' abonelik ' güncelleştirmesini Güncelleştir
     1. ' Kaynak grubu ' nu tercih ettiğiniz bir kaynak grubuna ayarlayın
+    1. ' Konum ' açılan listesinden bu kaynağın oluşturulacağı bölgeyi seçin. Aşağıdaki [Hesap bölgelerinde](create-an-account.md#account-regions) yer alan açıklamalara bakın.
 1. Hesap oluşturulduktan sonra, bu hesaba gidin ve:
     1. *Genel bakış* sekmesinde, ' hesap kimliği ' ' ne göz atın
     1. *Ayarlar > erişim anahtarları* sekmesinde, ' birincil anahtar ' ' a, hesabın gizli hesap anahtarı ' na göz atalım
 
+### <a name="account-regions"></a>Hesap bölgeleri
+Hesabın hesap oluşturma zamanı sırasında belirtilen konum, hesap kaynağının hangi bölgeye atandığını belirler. Bu, oluşturulduktan sonra değiştirilemez. Ancak hesap, hesabın konumundan bağımsız olarak desteklenen herhangi bir [bölgedeki](./../reference/regions.md)uzaktan işleme oturumuna bağlanmak için kullanılabilir.
+
 ### <a name="retrieve-the-account-information"></a>Hesap bilgilerini alma
 
-Örnekler ve öğreticiler, hesap KIMLIĞI ve bir anahtar sağlamanızı gerektirir. Örneğin, PowerShell örnek betikleri için kullanılan **ARRConfig. JSON** dosyasında:
+Örnekler ve öğreticiler, hesap KIMLIĞI ve bir anahtar sağlamanızı gerektirir. Örneğin, PowerShell örnek betikleri için kullanılan dosyadaki **arrconfig.js** :
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 *Bölge* seçeneğini doldurmak için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
@@ -89,6 +92,7 @@ Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hes
 > Uzaktan Işleme hesabınız listede yoksa, bu [sorun giderme bölümüne](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)bakın.
 
 **Rol** açılan listesinden ilgili seçimler için yeni roller eklemeyi iki kez daha yineleyin:
+
 * **Depolama Hesabı Katılımcısı**
 * **Depolama Blobu veri Katılımcısı**
 

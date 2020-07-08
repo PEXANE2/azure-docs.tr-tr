@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726205"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
@@ -292,7 +291,7 @@ Artık olay aboneliğiniz ayarlanmış olduğuna göre bir cihaz bağlayarak tes
 
 3. **Cihaz Kimliği** için `Demo-Device-1` girin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 5. Farklı cihaz kimliklerine sahip birden çok cihaz ekleyebilirsiniz.
 

@@ -13,13 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343260"
 ---
-# <a name="what-is-azure-sql-database"></a>Azure SQL veritabanı nedir?
+# <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL veritabanı, Kullanıcı katılımı olmadan yükseltme, düzeltme eki uygulama, yedekleme ve izleme gibi veritabanı yönetim işlevlerinin çoğunu işleyen, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısıdır. Azure SQL veritabanı, SQL Server veritabanı altyapısının en son kararlı sürümünde ve% 99,99 kullanılabilirlik ile düzeltme eki uygulanan IŞLETIM sisteminde her zaman çalışır. Azure SQL veritabanı 'nda yerleşik olarak bulunan PaaS özellikleri, etki alanına özgü veritabanı yönetimine ve işletmeniz için önemli olan en iyi duruma getirme etkinliklerine odaklanabilmenizi sağlar.
@@ -190,7 +189,7 @@ SQL Veritabanı, [Azure Active Directory tümleştirmesi](authentication-aad-ove
 
 SQL Veritabanı uygulama oluşturma ve uygulamaların bakımını yapma işlemlerinin daha kolay ve daha verimli şekilde yapılmasını sağlar. SQL Veritabanı size, en iyi yaptığınız işe; mükemmel uygulamalar oluşturmaya odaklanma seçeneği sunar. Zaten sahip olduğunuz araçları ve becerileri kullanarak SQL veritabanı 'nda yönetebilir ve geliştirebilirsiniz.
 
-|Araç|Description|
+|Araç|Açıklama|
 |:---|:---|
 |[Azure portal](https://portal.azure.com/)|Tüm Azure hizmetlerini yönetmek için Web tabanlı bir uygulama.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Windows, MacOS ve Linux üzerinde çalışan platformlar arası bir veritabanı aracı.|
@@ -198,7 +197,7 @@ SQL Veritabanı uygulama oluşturma ve uygulamaların bakımını yapma işlemle
 |[Visual Studio 'da SQL Server Veri Araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server ilişkisel veritabanları, Azure SQL veritabanı 'ndaki veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'nı sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.|
 
-SQL veritabanı, macOS, Linux ve Windows 'da Python, Java, Node. js, PHP, Ruby ve .NET ile uygulama oluşturmayı destekler. SQL Veritabanı, SQL Server ile aynı [bağlantı kitaplıklarını destekler](connect-query-content-reference-guide.md#libraries).
+SQL veritabanı, macOS, Linux ve Windows 'da Python, Java, Node.js, PHP, Ruby ve .NET uygulamaları oluşturmayı destekler. SQL Veritabanı, SQL Server ile aynı [bağlantı kitaplıklarını destekler](connect-query-content-reference-guide.md#libraries).
 
 [!INCLUDE [sql-database-create-manage-portal](../includes/sql-database-create-manage-portal.md)]
 
