@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83868010"
 ---
 Azure paylaşılan diskler (Önizleme), Azure yönetilen disklere yönelik olarak birden çok sanal makineye (VM) aynı anda bir yönetilen disk iliştirmeyi sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
