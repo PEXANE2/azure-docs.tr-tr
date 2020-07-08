@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735107"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086934"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -61,7 +61,7 @@ Azure Galerisi 'nde Windows 10 Enterprise multi-session, sürüm 1809 ve Windows
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Hangi Windows 10 Kurumsal Çoklu oturum sürümleri desteklenir?
 
-Windows 10 Enterprise multi-session, 1809 ve üzeri sürümler desteklenmektedir ve Azure galerisinde kullanılabilir. Bu sürümler, Windows 10 Enterprise ile aynı destek yaşam döngüsü ilkesini izler, bu da yay sürümünün 18 ay boyunca ve 30 aylık sonbahar yayını için desteklendiği anlamına gelir.
+Windows 10 Enterprise multi-session, 1809 ve üzeri sürümler desteklenmektedir ve Azure galerisinde kullanılabilir. Bu sürümler, Windows 10 Enterprise ile aynı destek yaşam döngüsü ilkesini izler, bu da Mart sürümünün 18 ay ve Eylül yayını için 30 ay içinde desteklendiği anlamına gelir.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturum için hangi profil yönetimi çözümünü kullanmalıyım?
 

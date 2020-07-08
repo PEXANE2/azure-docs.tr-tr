@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087189"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics kullanarak Azure SQL veritabanını izleme (Önizleme)
 
@@ -71,7 +72,7 @@ Yukarıdaki sayfada, tek bir Azure SQL Analytics çalışma alanındaki birden �
 
 ![Azure SQL Analytics Özet kutucuğu](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Bu kutucuk, yüklendikten sonra SQL veritabanı 'nda veritabanlarının ve elastik havuzların sayısını ve SQL yönetilen örneğindeki Azure SQL Analytics tanılama telemetrisini aldığından yönetilen örnekleri ve örnek veritabanlarını gösterir.
+Bir kez yüklendikten sonra kutucuk, SQL veritabanı 'nda veritabanlarının ve elastik havuzların sayısını ve Azure SQL Analytics tanılama telemetrisini aldığından SQL yönetilen örneğindeki örnekleri ve örnek veritabanlarını gösterir.
 
 ![Azure SQL Analytics kutucuğu](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Veritabanları için Azure SQL Analytics kutucuğu seçildikten sonra, izleme pa
 
 Kutucukların herhangi birini seçtiğinizde, belirli bir perspektife bir ayrıntıya gitme raporu açılır. Perspektif seçildikten sonra, ayrıntıya gitme raporu açılır.
 
-SQL yönetilen örnek görünümünü seçtiğinizde, yönetilen örnek kullanımı, içerdiği veritabanları ve örnek genelinde yürütülen sorgularda telemetri ile ilgili ayrıntılar gösterilir.
+SQL yönetilen örnek görünümünü seçtiğinizde, örnek kullanımı, örnek veritabanları ve yönetilen örnek genelinde yürütülen sorgularda bulunan telemetri hakkındaki ayrıntıları gösterir.
 
 ![Azure SQL Analytics zaman aşımları](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - Bu uyarıyı ayarlamanın ön gerekliliği, yönetilen örnek tarafından izlenen Azure SQL Analytics için ResourceUsageStats günlüğü akışının etkin olmasını sağlar.
+> - Bu uyarıyı ayarlamanın ön gerekliliği, izlenen yönetilen örnek Azure SQL Analytics için ResourceUsageStats günlüğü akışının etkin olmasını sağlar.
 > - Bu sorgu, sorgunun yönetilen örnekte mevcut olduğunu belirten, sorgudan bir uyarı (> 0 sonuç) olduğunda bir uyarının tetikleneceği bir uyarı kuralının ayarlanmasını gerektirir. Çıktı, yönetilen örnekteki depolama yüzdesi tüketimidir.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Son 1 hr 'da CPU ortalama tüketim %95 üzerinde

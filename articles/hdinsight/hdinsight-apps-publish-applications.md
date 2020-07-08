@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64685319"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086475"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketi 'nde HDInsight uygulaması yayımlama
 Bir Azure HDInsight uygulamasını Linux tabanlı HDInsight kümesine yükleyebilirsiniz. Bu makalede, Azure Marketi 'nde bir HDInsight uygulaması yayımlamayı öğrenin. Azure Marketi 'nde yayımlama hakkında genel bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md).
@@ -25,7 +25,7 @@ Daha fazla bilgi için bkz. HDInsight uygulamasıyla ilgili bu makaleler:
 * [HDInsight uygulamalarını yükler](hdinsight-apps-install-applications.md). Kümelerinize HDInsight uygulaması yüklemeyi öğrenin.
 * [Özel HDInsight uygulamalarını yükler](hdinsight-apps-install-custom-applications.md). Özel HDInsight uygulamalarını yüklemeyi ve test yapmayı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Özel uygulamanızı Market 'te göndermek için öncelikle [özel uygulamanızı oluşturun ve test](hdinsight-apps-install-custom-applications.md)edin.
 
 Geliştirici hesabınızı da kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md) ve [bir Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).
@@ -44,7 +44,7 @@ Market 'te uygulamaları yayımlamayla ilgili iki adım vardır. İlk olarak, do
 }
 ```
 
-| Alan | Description | Olası değerler |
+| Alan | Açıklama | Olası değerler |
 | --- | --- | --- |
 | types |Uygulamanın uyumlu olduğu küme türleri. |Hadoop, HBase, fırtınası, Spark (veya bunların herhangi bir birleşimi) |
 | versions |Uygulamanın uyumlu olduğu HDInsight küme türleri. |3.4 |

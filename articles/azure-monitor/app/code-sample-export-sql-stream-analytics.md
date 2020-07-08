@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254693"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087240"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -77,14 +77,14 @@ Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha f
 
 ![Yeni, veri, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-Veritabanı sunucusunun Azure hizmetlerine erişime izin verdiğinden emin olun:
+Sunucunun Azure hizmetlerine erişime izin verdiğinden emin olun:
 
 ![Azure 'a, sunuculara, sunucunuza, ayarlarınıza, güvenlik duvarına erişime Izin verin](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Azure SQL DB 'de tablo oluşturma
+## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tablo oluşturma
 Önceki bölümde oluşturulan ve tercih ettiğiniz yönetim araclarınızın veritabanına bağlanın. Bu izlenecek yolda [SQL Server Yönetim Araçları](https://msdn.microsoft.com/ms174173.aspx) (SSMS) kullanacağız.
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Azure SQL Veritabanı'na bağlanma](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Yeni bir sorgu oluşturun ve aşağıdaki T-SQL ' i yürütün:
 
@@ -126,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![PageViewsTable oluşturma](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 Bu örnekte, sayfa görünümlerindeki verileri kullanıyoruz. Mevcut diğer verileri görmek için JSON çıktlarınızı inceleyin ve [dışarı aktarma veri modelini](../../azure-monitor/app/export-data-model.md)görüntüleyin.
 
@@ -135,7 +135,7 @@ Bu örnekte, sayfa görünümlerindeki verileri kullanıyoruz. Mevcut diğer ver
 
 ![Stream Analytics Ayarları](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![Yeni Stream Analytics işi](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Yeni iş oluşturulduğunda **Kaynağa Git**' i seçin.
 
@@ -157,7 +157,9 @@ Artık, daha önce not ettiğiniz depolama hesabınızdan birincil erişim anaht
 
 Yol ön eki, Stream Analytics depolama alanındaki giriş dosyalarını nasıl bulduğunu belirtir. Sürekli dışarı aktarmanın verileri nasıl depoladığını karşılayacak şekilde ayarlamanız gerekir. Bunu şöyle ayarlayın:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 Bu örnekte:
 
@@ -235,9 +237,10 @@ Verilerin şimdi işlenmesine veya daha önceki verilerle başlatılmasına nas�
 
 Birkaç dakika sonra, SQL Server Yönetim Araçları sayfasına dönün ve içindeki verileri izleyin. Örneğin, şöyle bir sorgu kullanın:
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>İlgili makaleler:
 * [Stream Analytics kullanarak Power BI dışa aktarma](../../azure-monitor/app/export-power-bi.md )

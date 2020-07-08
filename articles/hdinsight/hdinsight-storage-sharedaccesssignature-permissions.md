@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209069"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087461"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma
 
@@ -39,11 +39,11 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
 
 * C# kullanıyorsanız, Visual Studio sürüm 2013 veya üzeri olmalıdır.
 
-* Depolama hesabınızın URI şeması. Bu düzen, `wasb://` `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için Azure depolama için olacaktır. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://`.
+* Depolama hesabınızın URI şeması. Bu düzen `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` .
 
 * Paylaşılan erişim Imzası eklemek için var olan bir HDInsight kümesi. Aksi takdirde, küme oluşturmak ve küme oluşturma sırasında paylaşılan erişim Imzası eklemek için Azure PowerShell kullanabilirsiniz.
 
-* Örnek dosyaları [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Bu depo aşağıdaki öğeleri içerir:
+* Örnek dosyaları [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) . Bu depo aşağıdaki öğeleri içerir:
 
   * HDInsight ile kullanılmak üzere depolama kapsayıcısı, saklı ilke ve SAS oluşturabileceğiniz bir Visual Studio projesi
   * HDInsight ile kullanılmak üzere depolama kapsayıcısı, saklı ilke ve SAS oluşturabilecek bir Python betiği
@@ -88,7 +88,7 @@ Her yöntemin sonunda üretilen SAS belirtecini kaydedin. Belirteç aşağıdaki
 
 ### <a name="using-powershell"></a>PowerShell’i kullanma
 
-, `RESOURCEGROUP` `STORAGEACCOUNT`Ve `STORAGECONTAINER` değerlerini mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `-File` parametresi için `Set-AzStorageblobcontent`mutlak yolu içerecek şekilde düzeltin. Aşağıdaki PowerShell komutunu girin:
+`RESOURCEGROUP`, `STORAGEACCOUNT` Ve `STORAGECONTAINER` değerlerini mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `-File` parametresi için mutlak yolu içerecek şekilde düzeltin `Set-AzStorageblobcontent` . Aşağıdaki PowerShell komutunu girin:
 
 ```powershell
 $resourceGroupName = "RESOURCEGROUP"
@@ -154,7 +154,7 @@ Set-AzStorageblobcontent `
 
 Bu bölümdeki değişkenlerin kullanımı bir Windows ortamını temel alır. Bash ve diğer ortamlar için hafif Çeşitlemeler gerekecektir.
 
-1. Ve `STORAGEACCOUNT` `STORAGECONTAINER` değerlerini, mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin.
+1. `STORAGEACCOUNT`Ve değerlerini, `STORAGECONTAINER` mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin.
 
     ```azurecli
     # set variables
@@ -171,14 +171,14 @@ Bu bölümdeki değişkenlerin kullanımı bir Windows ortamını temel alır. B
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. Alınan birincil anahtarı daha sonra kullanmak üzere bir değişkene ayarlayın. Önceki `PRIMARYKEY` adımda alınan değerle değiştirin ve sonra aşağıdaki komutu girin:
+2. Alınan birincil anahtarı daha sonra kullanmak üzere bir değişkene ayarlayın. `PRIMARYKEY`Önceki adımda alınan değerle değiştirin ve sonra aşağıdaki komutu girin:
 
     ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `--file` parametresi için `az storage blob upload`mutlak yolu içerecek şekilde düzeltin. Kalan komutları yürütün:
+3. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `--file` parametresi için mutlak yolu içerecek şekilde düzeltin `az storage blob upload` . Kalan komutları yürütün:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -199,9 +199,9 @@ Bu bölümdeki değişkenlerin kullanımı bir Windows ortamını temel alır. B
 
 ### <a name="using-python"></a>Python’u kullanma
 
-`SASToken.py` Dosyasını açın ve, `storage_account_key`, ve `storage_container_name` öğesini mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin `storage_account_name`ve betiği çalıştırın.
+Dosyasını açın `SASToken.py` ve `storage_account_name` , `storage_account_key` , ve öğesini `storage_container_name` mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin ve betiği çalıştırın.
 
-Hata iletisini `ImportError: No module named azure.storage`alırsanız yürütmeniz `pip install --upgrade azure-storage` gerekebilir.
+`pip install --upgrade azure-storage`Hata iletisini alırsanız yürütmeniz gerekebilir `ImportError: No module named azure.storage` .
 
 ### <a name="using-c"></a>C kullanma\#
 
@@ -213,7 +213,7 @@ Hata iletisini `ImportError: No module named azure.storage`alırsanız yürütme
 
     |Öğe |Açıklama |
     |---|---|
-    |StorageConnectionString|İçin depolanan ilke ve SAS oluşturmak istediğiniz depolama hesabının bağlantı dizesi. Biçim `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` , depolama hesabınızın adıdır ve `mykey` depolama hesabının anahtarıdır.|
+    |StorageConnectionString|İçin depolanan ilke ve SAS oluşturmak istediğiniz depolama hesabının bağlantı dizesi. Biçim, `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` depolama hesabınızın adıdır ve `mykey` depolama hesabının anahtarıdır.|
     |ContainerName|Erişimi kısıtlamak istediğiniz depolama hesabındaki kapsayıcı.|
     |SASPolicyName|Oluşturulacak saklı ilke için kullanılacak ad.|
     |FileToUpload|Kapsayıcıya yüklenen bir dosyanın yolu.|
@@ -228,7 +228,7 @@ Kapsayıcı erişimini sınırlandırmak için, paylaşılan erişim Imzası kul
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>SAS kullanan bir küme oluşturma
 
-`STORAGEACCOUNT` `TOKEN` `CLUSTERNAME` `RESOURCEGROUP`,,,, Ve değerlerini uygun değerlerle değiştirin. `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER` PowerShell komutlarını girin:
+,,,, `CLUSTERNAME` `RESOURCEGROUP` `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER` `STORAGEACCOUNT` Ve `TOKEN` değerlerini uygun değerlerle değiştirin. PowerShell komutlarını girin:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -351,16 +351,16 @@ Genellikle 15 dakika boyunca bu betiğin tamamlanmasıyla ilgili bir süre süre
 
 Mevcut bir kümeniz varsa, aşağıdaki adımları kullanarak SAS 'yi **çekirdek site** yapılandırmasına ekleyebilirsiniz:
 
-1. Kümeniz için ambarı Web Kullanıcı arabirimini açın. Bu sayfanın adresi `https://YOURCLUSTERNAME.azurehdinsight.net`. İstendiğinde, kümeyi oluştururken kullandığınız yönetici adı (yönetici) ve parolayı kullanarak kümede kimlik doğrulaması yapın.
+1. Kümeniz için ambarı Web Kullanıcı arabirimini açın. Bu sayfanın adresi `https://YOURCLUSTERNAME.azurehdinsight.net` . İstendiğinde, kümeyi oluştururken kullandığınız yönetici adı (yönetici) ve parolayı kullanarak kümede kimlik doğrulaması yapın.
 
-1.  > **Configs** **HDFS** > **Advanced**Bu gelişmiş**özel çekirdek sitesine**gidin. > 
+1. Bu **HDFS**  >  **Configs**  >  **Gelişmiş**  >  **özel çekirdek sitesine**gidin.
 
 1. **Özel çekirdek-site** bölümünü genişletin, sonuna ilerleyin ve sonra **Özellik Ekle...** seçeneğini belirleyin. **Anahtar** ve **değer**için aşağıdaki değerleri kullanın:
 
     * **Anahtar**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Değer**: daha önce yürütülen yöntemlerin biri tarafından döndürülen sas.
 
-    C# `CONTAINERNAME` veya SAS uygulamasıyla kullandığınız kapsayıcı adıyla değiştirin. Kullandığınız `STORAGEACCOUNTNAME` depolama hesabı adıyla değiştirin.
+    `CONTAINERNAME`C# veya SAS uygulamasıyla kullandığınız kapsayıcı adıyla değiştirin. `STORAGEACCOUNTNAME`Kullandığınız depolama hesabı adıyla değiştirin.
 
     Bu anahtarı ve değeri kaydetmek için **Ekle** 'yi seçin
 
@@ -381,7 +381,7 @@ Mevcut bir kümeniz varsa, aşağıdaki adımları kullanarak SAS 'yi **çekirde
 
 Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiğinizi doğrulamak için aşağıdaki adımları kullanın.
 
-1. Kümeye bağlanın. Kümenizin `CLUSTERNAME` adıyla değiştirin ve aşağıdaki komutu girin:
+1. Kümeye bağlanın. `CLUSTERNAME`Kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -393,11 +393,11 @@ Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiği
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    SAS `SASCONTAINER` depolama hesabı için oluşturulan kapsayıcının adıyla değiştirin. SAS `SASACCOUNTNAME` için kullanılan depolama hesabının adıyla değiştirin.
+    `SASCONTAINER`SAS depolama hesabı için oluşturulan kapsayıcının adıyla değiştirin. `SASACCOUNTNAME`SAS için kullanılan depolama hesabının adıyla değiştirin.
 
     Bu liste, kapsayıcı ve SAS oluşturulduğunda karşıya yüklenen dosyayı içerir.
 
-3. Dosyanın içeriğini okuyabildiğinizi doğrulamak için aşağıdaki komutu kullanın. Önceki adımda `SASCONTAINER` ve `SASACCOUNTNAME` ile değiştirin. Önceki `sample.log` komutta görünen dosyanın adıyla değiştirin:
+3. Dosyanın içeriğini okuyabildiğinizi doğrulamak için aşağıdaki komutu kullanın. `SASCONTAINER`Önceki adımda ve ile değiştirin `SASACCOUNTNAME` . `sample.log`Önceki komutta görünen dosyanın adıyla değiştirin:
 
     ```bash
     hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
@@ -411,9 +411,9 @@ Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiği
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Bu komut dosyayı **Testfile. txt**adlı yerel bir dosyaya indirir.
+    Bu komut, dosyayı **testfile.txt**adlı yerel bir dosyaya indirir.
 
-5. Yerel dosyayı SAS depolamada **testupload. txt** adlı yeni bir dosyaya yüklemek için aşağıdaki komutu kullanın:
+5. Yerel dosyayı SAS depolamada **testupload.txt** adlı yeni bir dosyaya yüklemek için aşağıdaki komutu kullanın:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -421,7 +421,9 @@ Yalnızca SAS depolama hesabındaki öğeleri okuyabildiğinizi ve listebildiği
 
     Aşağıdaki metne benzer bir ileti alırsınız:
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     Bu hata, depolama konumu salt okuma + liste olduğundan oluşur. Verileri küme için varsayılan depolama alanına (yazılabilir) koymak için aşağıdaki komutu kullanın:
 

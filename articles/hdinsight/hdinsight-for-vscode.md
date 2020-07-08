@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704871"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087138"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -21,7 +21,7 @@ Visual Studio Code için Apache Spark & Hive araçlarını kullanmayı öğrenin
 
 Spark & Hive araçları, Visual Studio Code tarafından desteklenen platformlar üzerine yüklenebilir. Farklı platformlar için aşağıdaki önkoşullara göz önünde edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -71,7 +71,7 @@ Ulusal bir bulut kullanıcısı için, önce Azure ortamını ayarlamak için a�
 
 ## <a name="connect-to-an-azure-account"></a>Azure hesabına bağlanma
 
-Visual Studio Code kümelerinize komut dosyaları gönderebilmeniz için önce Azure hesabınıza bağlanmanız veya bir kümeyi bağlamanız gerekir. Apache ambarı Kullanıcı adı ve parola kimlik bilgilerini veya etki alanına katılmış bir hesabı kullanın. Azure 'a bağlanmak için şu adımları izleyin:
+Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure aboneliğinde oturum açabilir ya da [bir HDInsight kümesini bağlayabilirsiniz](#link-a-cluster). HDInsight kümenize bağlanmak için, bir ESP kümesi için ambarı Kullanıcı adı/parolası veya etki alanına katılmış kimlik bilgilerini kullanın. Azure 'a bağlanmak için şu adımları izleyin:
 
 1. Menü çubuğundan, **görüntüleme**  >  **komut paleti...**' a gidin ve **Azure: oturum aç**' ı girin:
 
@@ -291,6 +291,21 @@ Araç **Spark SQL** sorgusunu da destekler:
    ![Python işi sonuç çıkışını gönder](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
 Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code **Çıkış** penceresinde görüntülenir. Spark Kullanıcı arabirimi URL 'SI ve Yarn UI URL 'SI de gösterilir. İşi durumunu izlemek için URL 'YI bir Web tarayıcısında açabilirsiniz.
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity broker (HIB) ile tümleştirme
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP kümenize KIMLIK broker (HIB) ile bağlanma
+
+KIMLIK broker (HIB) ile HDInsight ESP kümenize bağlanmak için, Azure aboneliğinde oturum açmak üzere normal adımları izleyebilirsiniz. Oturum açtıktan sonra, Azure Explorer 'da küme listesini görürsünüz. Daha fazla yönerge için bkz. [HDInsight kümenize bağlanma](#connect-to-an-azure-account).
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>KIMLIK broker (HIB) ile bir HDInsight ESP kümesinde Hive/PySpark işi çalıştırma
+
+Hive işi çalıştırmak için, KIMLIK broker (HIB) ile HDInsight ESP kümesine iş göndermek için normal adımları izleyebilirsiniz. Daha fazla yönerge için [etkileşimli Hive sorguları ve Hive toplu iş betikleri gönderme](#submit-interactive-hive-queries-and-hive-batch-scripts) bölümüne bakın.
+
+Etkileşimli bir PySpark işi çalıştırmak için, KIMLIK broker (HIB) ile HDInsight ESP kümesine iş göndermek için normal adımları izleyebilirsiniz. Daha fazla yönerge için [etkileşimli PySpark sorgularını gönderme](#submit-interactive-pyspark-queries) bölümüne bakın.
+
+PySpark toplu işi çalıştırmak için, KIMLIK broker (HIB) ile HDInsight ESP kümesine iş göndermek için normal adımları izleyebilirsiniz. Daha fazla yönerge için [PySpark toplu Işi gönderme](#submit-pyspark-batch-job) bölümüne bakın.
+
 
 ## <a name="apache-livy-configuration"></a>Apache Livy yapılandırması
 

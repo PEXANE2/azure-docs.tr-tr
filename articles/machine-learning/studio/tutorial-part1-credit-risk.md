@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117825"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086118"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
 
@@ -38,7 +38,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 Daha sonra bu denemeyi, 2. [bölüm içindeki modelleri eğmek](tutorial-part2-credit-risk-train.md) ve sonra [3. bölüm içinde dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, Machine Learning Studio (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını kavradığınızı varsaymaktadır. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
 
@@ -99,13 +99,17 @@ Daha sonra, model aslında yüksek riskli olmaları durumunda birini düşük kr
 
 Bu verileri dönüştürmenin birçok yolu vardır. Tek yönlü, aşağıdaki Windows PowerShell komutunu kullanmaktır:   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 Diğer bir yöntem de UNIX SED komutunu kullanmaktır:  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
-Her iki durumda da, denemenize kullanabileceğiniz **Almanca. csv** adlı bir dosyada verilerin virgülle ayrılmış bir sürümünü oluşturdunuz.
+Her iki durumda da, denemenize kullanabileceğiniz **german.csv** adlı bir dosyada verilerin virgülle ayrılmış bir sürümünü oluşturdunuz.
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Veri kümesini Machine Learning Studio karşıya yükleme (klasik)
 
@@ -123,11 +127,11 @@ Veriler CSV biçimine dönüştürüldükten sonra Machine Learning Studio (klas
 
     ![Yerel dosyadan veri kümesi ekleme](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. **Yeni bir veri kümesini karşıya yükle** iletişim kutusunda, Araştır ' a tıklayın ve oluşturduğunuz **Almanya. csv** dosyasını bulun.
+6. **Yeni bir veri kümesini karşıya yükle** iletişim kutusunda, Araştır ' a tıklayın ve oluşturduğunuz **german.csv** dosyasını bulun.
 
 7. Veri kümesi için bir ad girin. Bu öğreticide, "UCI Almanya kredi kartı verileri" ni çağırın.
 
-8. Veri türü için, **üst bilgisi olmayan (. NH. csv) genel CSV dosyası**' nı seçin.
+8. Veri türü için **üst bilgi Içermeyen genel CSV dosyası ' nı (.nh.csv)** seçin.
 
 9. İsterseniz bir açıklama ekleyin.
 
@@ -256,11 +260,13 @@ Bu çoğaltmayı R Code kullanarak yapabilirsiniz:
 
 1. **Özellikler** bölmesinde, **R betiği** parametresindeki varsayılan metni silin ve şu betiği girin:
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![R betiği Yürüt modülünde r betiği](./media/tutorial-part1-credit-risk/execute-r-script.png)
 

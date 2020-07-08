@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71123559"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087699"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini operationleştir
 
@@ -32,7 +32,9 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
 1. Kenar düğümüne SSH uygulayın.
 
-        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```
 
     Azure HDInsight ile SSH kullanma hakkında yönergeler için bkz [. HDInsight Ile SSH kullanma.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,13 +42,17 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
     - Microsoft ML Server 9,1 için:
 
-            cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
-            sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
+        sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```
 
     - Microsoft R Server 9.0 için:
 
-            cd /usr/lib64/microsoft-deployr/9.0.1
-            sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-deployr/9.0.1
+        sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```
 
 1. Seçim yapabileceğiniz seçeneklerle karşılaşırsınız. **Operationalization için ml Server yapılandırmak**üzere aşağıdaki ekran görüntüsünde gösterildiği gibi ilk seçeneği belirleyin.
 
@@ -82,35 +88,36 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
 Apache Spark işlem bağlamında mrsdeploy işlevleriyle oluşturulmuş bir Web hizmetini kullanmaya çalışırken uzun gecikmeler yaşarsanız, bazı eksik klasörleri eklemeniz gerekebilir. Spark uygulaması mrsdeoploy işlevleri kullanılarak bir web hizmetinden çağrıldığında '*rserve2*' adlı bir kullanıcıya ait oluyor. Bu soruna geçici bir çözüm olarak:
 
-    # Create these required folders for user 'rserve2' in local and hdfs:
+```r
+# Create these required folders for user 'rserve2' in local and hdfs:
 
-    hadoop fs -mkdir /user/RevoShare/rserve2
-    hadoop fs -chmod 777 /user/RevoShare/rserve2
+hadoop fs -mkdir /user/RevoShare/rserve2
+hadoop fs -chmod 777 /user/RevoShare/rserve2
 
-    mkdir /var/RevoShare/rserve2
-    chmod 777 /var/RevoShare/rserve2
-
-
-    # Next, create a new Spark compute context:
- 
-    rxSparkConnect(reset = TRUE)
+mkdir /var/RevoShare/rserve2
+chmod 777 /var/RevoShare/rserve2
 
 
-Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. Artık, uç düğümünde işlem `mrsdeploy` kullanımına bağlanmak ve [Uzaktan yürütme](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) ile [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)gibi özellikleri kullanmaya başlamak için ristemcinizdeki paketi kullanabilirsiniz. Kümenizin bir sanal ağda ayarlanıp ayarlanmamasına bağlı olarak, SSH oturumu aracılığıyla bağlantı noktası iletme tüneli ayarlamanız gerekebilir. Aşağıdaki bölümlerde bu tüneli nasıl kuracağınız açıklanmaktadır.
+# Next, create a new Spark compute context:
+
+rxSparkConnect(reset = TRUE)
+```
+
+Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. Artık, `mrsdeploy` uç düğümünde işlem kullanımına bağlanmak ve [Uzaktan yürütme](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) ile [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)gibi özellikleri kullanmaya başlamak için ristemcinizdeki paketi kullanabilirsiniz. Kümenizin bir sanal ağda ayarlanıp ayarlanmamasına bağlı olarak, SSH oturumu aracılığıyla bağlantı noktası iletme tüneli ayarlamanız gerekebilir. Aşağıdaki bölümlerde bu tüneli nasıl kuracağınız açıklanmaktadır.
 
 ### <a name="ml-services-cluster-on-virtual-network"></a>Sanal ağdaki ML Hizmetleri kümesi
 
 12800 numaralı bağlantı noktası üzerinden kenar düğümüne trafik akışına izin verdiğinizden emin olun. Bu şekilde, Kullanıma Hazır Hale Getirme özelliğine bağlanmak için kenar düğümünü kullanabilirsiniz.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 `remoteLogin()` kenar düğümüne bağlanamadığı halde kenar düğümüne SSH uygulayabiliyorsanız, 12800 numaralı bağlantı noktası üzerinde trafiğe izin veren kuralın doğru şekilde ayarlanıp ayarlanmadığını doğrulamanız gerekir. Sorunla karşılaşmaya devam ederseniz, SSH üzerinden bağlantı noktası iletme tüneli oluşturarak bir geçici çözüm uygulayabilirsiniz. Yönergeler için aşağıdaki bölüme bakın:
 
@@ -118,19 +125,21 @@ Bu aşamada kullanıma hazır hale getirme yapılandırması tamamlanmıştır. 
 
 Kümeniz sanal üzerinde ayarlanmamışsa veya sanal ağ üzerinden bağlantı kurma sorunları yaşıyorsanız, SSH bağlantı noktası iletme tünelini kullanabilirsiniz:
 
-    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```bash
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
 
 SSH oturumunuz etkin olduktan sonra, yerel makinenizin bağlantı noktası 12800 trafiği, SSH oturumunda sınır düğümünün bağlantı noktası 12800 ' e iletilir. `remoteLogin()` yönteminizde `127.0.0.1:12800` kullandığınızdan emin olun. Bu işlem, bağlantı noktası iletme yoluyla kenar düğümünün işlemleştirme 'e oturum açar.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://127.0.0.1:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 ## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>HDInsight çalışan düğümlerinde operationınılan işlem düğümlerini ölçeklendirme
 
@@ -146,17 +155,17 @@ ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/curren
 
 1. Çalışan düğümlerini seçin (kullanımdan kaldırılacak).
 
-1. **Eylemler** > **Seçili konaklar** > **Hosts****Turn ON Maintenance Mode**konaklar bakım modunu aç ' a tıklayın. >  Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
+1. **Eylemler**  >  **Seçili konaklar**  >  **konaklar**  >  **bakım modunu aç**' a tıklayın. Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
 
    ![Apache ambarı bakım modunu aç](./media/r-server-operationalize/get-started-operationalization.png)  
 
-*  > **Seçili** **Eylemler** > ' i seçin ve sonra da yük **Al**' a**tıklayın >**
-* Seçili **Eylemler** > seçin**NodeManager** **Konakları** > > **Al**' a tıklayın.
-*  > **Seçili** **Eylemler** > seçin >,**gün** sonra **Durdur**' a tıklayın.
-* Seçili **Eylemler** > ' i seçin**nodeyöneticileri** **Konakları** > > **Durdur**' a tıklayın.
-* **Eylemler** > **Selected Hosts**seçili > **konaklar konaklar** ' ı seçin > **tüm bileşenleri durdur**' a tıklayın.
+* Seçili **Eylemler**' i seçin ve sonra da yük  >  **Selected Hosts**  >  **DataNodes** **Al**' a tıklayın >
+* Seçili **Eylemler**seçin  >  **Selected Hosts**  >  **NodeManager** Konakları > **Al**' a tıklayın.
+* Seçili **Eylemler**seçin  >  **Selected Hosts**  >  >,**gün** sonra **Durdur**' a tıklayın.
+* Seçili **Eylemler**  >  **Selected Hosts**  >  ' i seçin**nodeyöneticileri** Konakları > **Durdur**' a tıklayın.
+* **Eylemler**  >  **Seçili**konaklar Konaklar  >  **Hosts** ' ı seçin > **tüm bileşenleri durdur**' a tıklayın.
 * Çalışan düğümlerinin seçimini kaldırın ve baş düğümleri seçin.
-* **Eylemler** > **Seçili konaklar** ' ı seçin > "**konaklar** > **tüm bileşenleri yeniden Başlat**.
+* **Eylemler**  >  **Seçili konaklar** ' ı seçin > "**konaklar**  >  **tüm bileşenleri yeniden Başlat**.
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. Adım: her kullanımdan kaldırılan çalışan düğümlerinde işlem düğümlerini yapılandırma
 
@@ -164,11 +173,13 @@ ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/curren
 
 1. Sahip olduğunuz ML Hizmetleri kümesi için ilgili DLL 'yi kullanarak yönetici yardımcı programını çalıştırın. ML Server 9,1 için aşağıdakileri çalıştırın:
 
-        dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```bash
+    dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```
 
 1. **Operationalization için ml Server yapılandırma**seçeneğini belirlemek üzere **1** girin.
 
-1. Seçeneği **C** `C. Compute node`belirlemek için C girin. Bu işlem çalışan düğümündeki işlem düğümünü yapılandırır.
+1. Seçeneği belirlemek için **C** girin `C. Compute node` . Bu işlem çalışan düğümündeki işlem düğümünü yapılandırır.
 
 1. Yönetim Yardımcı Programından çıkın.
 
@@ -182,12 +193,14 @@ Kullanımdan kaldırılan tüm çalışan düğümleri işlem düğümünü çal
 
 1. "URI 'Ler" bölümünü arayın ve çalışan düğümünün IP ve bağlantı noktası ayrıntılarını ekleyin.
 
-       "Uris": {
-         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
-         "Values": [
-           "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
-         ]
-       }
+    ```json
+    "Uris": {
+        "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
+        "Values": [
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+        ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

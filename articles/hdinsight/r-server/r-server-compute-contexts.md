@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087614"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri
 
@@ -34,7 +34,7 @@ Genel olarak, kenar düğümündeki ML Hizmetleri kümesinde çalıştırılan b
 - Harita azalt
 - Spark
 
-*Yerel* ve *localpar* seçenekleri yalnızca **rxexec** çağrılarının nasıl yürütüldüğünden farklılık gösterir. Bunlar, örneğin `rxOptions(numCoresToUse=6)`, iptal edilmiş bir **Numscaler numcorestouse** seçeneği kullanılmadıkça, diğer tüm mevcut çekirdekler genelinde paralel bir biçimde yürütülür. Paralel yürütme seçenekleri en iyi performansı sunar.
+*Yerel* ve *localpar* seçenekleri yalnızca **rxexec** çağrılarının nasıl yürütüldüğünden farklılık gösterir. Bunlar, örneğin, Iptal edilmiş bir **Numscaler Numcorestouse** seçeneği kullanılmadıkça, diğer tüm mevcut çekirdekler genelinde paralel bir biçimde yürütülür `rxOptions(numCoresToUse=6)` . Paralel yürütme seçenekleri en iyi performansı sunar.
 
 Aşağıdaki tablo, çağrıların nasıl yürütüleceğini ayarlamak için çeşitli işlem bağlamı seçeneklerini özetler:
 
@@ -73,7 +73,9 @@ Bu ilkeler verildiğinde, aşağıdaki bölümlerde bir işlem bağlamı seçmek
 ## <a name="inline-help-on-rxsetcomputecontext"></a>RxSetComputeContext üzerinde satır içi yardım
 Daha fazla bilgi ve Iptal işlemi bağlamlarının örnekleri için, rxSetComputeContext yönteminde R 'deki satır içi yardıma bakın, örneğin:
 
-    > ?rxSetComputeContext
+```console
+> ?rxSetComputeContext
+```
 
 Ayrıca, [Machine Learning Server belgelerine](https://docs.microsoft.com/machine-learning-server/) [dağıtılmış bilgi işlem genel bakış](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) bölümüne de bakabilirsiniz.
 

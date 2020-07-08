@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4517a600acaf581ad240d634e89bba3984f835db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75978190"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087342"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerinde kullanılabilirlik grupları için dış dinleyici yapılandırma
 > [!div class="op_single_selector"]
@@ -61,22 +62,26 @@ Azure çoğaltmasını barındıran her VM için yük dengeli bir uç nokta olu�
 5. **Azure PowerShell**başlatın. Yüklenen Azure yönetim modülleri ile yeni bir PowerShell oturumu açıldı.
 6. **Get-Azuikinci dosya SettingsFile**komutunu çalıştırın. Bu cmdlet, bir yayımlama ayarları dosyasını yerel bir dizine indirmek için sizi bir tarayıcıya yönlendirir. Azure aboneliğiniz için oturum açma kimlik bilgileriniz istenebilir.
 7. İndirdiğiniz yayımlama ayarları dosyasının yoluyla **Import-Azuikinci dosya SettingsFile** komutunu çalıştırın:
-   
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
+
     Yayımlama ayarları dosyası içeri aktarıldıktan sonra, PowerShell oturumunda Azure aboneliğinizi yönetebilirsiniz.
     
 1. Aşağıdaki PowerShell betiğini bir metin düzenleyicisine kopyalayın ve değişken değerlerini ortamınıza uyacak şekilde ayarlayın (bazı parametreler için varsayılanlar verilmiştir). Kullanılabilirlik grubunuz Azure bölgelerini yaymışsa, bu veri merkezinde bulunan bulut hizmeti ve düğümlerin her bir veri merkezinde betiği bir kez çalıştırmanız gerektiğini unutmayın.
+
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
    
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-   
-        # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 2. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği Azure PowerShell oturumunuza kopyalayın. İstem hala >> gösteriyorsa, betiğin çalışmaya başladığı emin olmak için yeniden gırın yazın.
 
@@ -97,18 +102,21 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 1. Dış yük dengeleme için, çoğaltmalarınızı içeren bulut hizmetinin genel sanal IP adresini edinmeniz gerekir. Azure portalında oturum açın. Kullanılabilirlik grubu VM 'nizi içeren bulut hizmetine gidin. **Pano** görünümünü açın.
 2. **Genel sanal IP (VIP) adresi**altında gösterilen adresi aklınızda edin. Çözümünüz VNET 'leri yaymışsa, bir çoğaltma barındıran VM içeren her bir bulut hizmeti için bu adımı tekrarlayın.
 3. VM 'lerden birinde, aşağıdaki PowerShell betiğini bir metin düzenleyicisine kopyalayın ve değişkenleri daha önce not ettiğiniz değerlere ayarlayın.
+
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
    
-        # Define variables
-        $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
+    Import-Module FailoverClusters
    
-        Import-Module FailoverClusters
+    # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
    
-        # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
-   
-        # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-        # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
+    # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    ```
+
 4. Değişkenleri ayarladıktan sonra yükseltilmiş bir Windows PowerShell penceresi açın, sonra betiği metin düzenleyicisinden kopyalayın ve çalıştırmak için Azure PowerShell oturumunuza yapıştırın. İstem hala >> gösteriyorsa, betiğin çalışmaya başladığı emin olmak için yeniden gırın yazın.
 5. Her VM 'de bunu tekrarlayın. Bu betik, IP adresi kaynağını bulut hizmetinin IP adresiyle yapılandırır ve araştırma bağlantı noktası gibi diğer parametreleri ayarlar. IP adresi kaynağı çevrimiçi duruma getirildiğinde, bu öğreticide daha önce oluşturulan yük dengeli uç noktadan yoklama bağlantı noktasındaki yoklamaya yanıt verebilir.
 
@@ -124,7 +132,9 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>Kullanılabilirlik grubu dinleyicisini test etme (internet üzerinden)
 Sanal Ağ dışından dinleyiciye erişebilmek için, yalnızca aynı VNet 'te erişilebilen ıLB yerine dış/genel yük dengelemeyi (Bu konuda açıklanan) kullanmanız gerekir. Bağlantı dizesinde, bulut hizmeti adını belirtirsiniz. Örneğin, *mycloudservice*adlı bir bulut hizmetiniz varsa, sqlcmd deyimleri şu şekilde olur:
 
-    sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```
 
 Önceki örneğin aksine SQL kimlik doğrulamasının kullanılması gerekir, çünkü çağıran Windows kimlik doğrulamasını Internet üzerinden kullanamaz. Daha fazla bilgi için bkz. [Azure VM 'de Always on kullanılabilirlik grubu: Istemci bağlantı senaryoları](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). SQL kimlik doğrulaması kullanırken, her iki çoğaltmalarda de aynı oturum açmayı seçtiğinizden emin olun. Kullanılabilirlik gruplarıyla oturum açma sorunlarını giderme hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini eşleme veya diğer yinelemelere bağlanmak ve kullanılabilirlik veritabanlarına eşlemek için kapsanan SQL veritabanı kullanıcısını kullanma](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 

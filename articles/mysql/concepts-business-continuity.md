@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: b5751bdccde33fa16d5f09cfbe9a411a351518b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537236"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086560"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda iş sürekliliğini anlama
 
@@ -47,6 +47,10 @@ Diğer seçenek ise, MySQL için Azure veritabanı 'nın coğrafi olarak yedekli
 
 > [!IMPORTANT]
 > Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür. Mevcut bir sunucu için yerel olarak yedekli yedekten coğrafi olarak yedekli yedeklemelere geçiş yapmak istiyorsanız, var olan sunucunuzun mysqldump ' ı kullanarak bir döküm almanız ve coğrafi olarak yedekli yedeklemeler ile yapılandırılmış yeni oluşturulan bir sunucuya geri yüklemeniz gerekir.
+
+## <a name="cross-region-read-replicas"></a>Bölgeler arası okuma çoğaltmaları
+
+İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları, MySQL 'in ikili günlük çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

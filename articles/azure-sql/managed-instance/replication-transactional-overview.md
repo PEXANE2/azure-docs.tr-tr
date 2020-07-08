@@ -12,11 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086407"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,8 +29,8 @@ ms.locfileid: "84708508"
 Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı kullanabilirsiniz:
 
 - Şirket içinde veya Azure VM 'de SQL Server veritabanı
-- Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanı
-- Azure SQL yönetilen örneği 'nde tek veya havuza alınmış bir veritabanı
+- Azure SQL veritabanı 'nda bir veritabanı
+- Azure SQL yönetilen örneği 'nde örnek veritabanı
 
   > [!NOTE]
   > Azure SQL yönetilen örneği 'nin tüm özelliklerini kullanmak için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)en son sürümlerini kullanmanız gerekir.

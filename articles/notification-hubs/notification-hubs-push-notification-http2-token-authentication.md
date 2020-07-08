@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a8781a5afb8b6df0444ce177be452f84c73413e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172357"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087233"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması
 
@@ -53,15 +53,15 @@ Belirteç tabanlı kimlik doğrulamasını etkinleştirmek için Apple geliştir
 
 Anahtar tanımlayıcısı, Apple geliştirici hesabınızdaki **Sertifikalar, tanımlayıcılar & profiller**altında bulunan **anahtarlar** sayfasından elde edilebilir:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
+![Sertifikalar](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
+![Tanımlayıcılar](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier-and-application-name"></a>Uygulama tanımlayıcısı ve uygulama adı
 
 Uygulama adı ve tanımlayıcı, geliştirici hesabındaki **Sertifikalar, tanımlayıcılar & profiller** sayfasında da kullanılabilir:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
+![Sertifikalar ve kimlikler](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>.NET SDK veya Azure portal aracılığıyla yapılandırın
 
@@ -77,9 +77,9 @@ Belirteç tabanlı kimlik bilgileri aşağıdaki alanlardan oluşur:
 
 * **Anahtar kimliği**: Apple geliştirici portalında oluşturulan özel anahtarın tanımlayıcısı; Örneğin, `2USFGKSKLT` .
 * **EKIP kimliği**: "önek" veya "uygulama öneki" olarak da bilinir. Bu, Apple geliştirici portalındaki kuruluşun tanımlayıcısıdır; Örneğin, `S4V3D7CHJR` .
-* **Paket kimliği**: "uygulama kimliği" olarak da adlandırılır. Bu, uygulamanın paket tanıtıcısıdır; Örneğin, `com.microsoft.nhubsample2019` . Birçok uygulama için bir anahtar kullanabileceğinizi unutmayın. Bu değer `apns-topic` bir bildirim gönderilirken http üstbilgisiyle eşlenir ve belirli bir uygulamayı hedeflemek için kullanılır.
+* **Paket kimliği**: "uygulama kimliği" olarak da adlandırılır. Bu, uygulamanın paket tanıtıcısıdır; Örneğin, `com.example.myapp` . Birçok uygulama için bir anahtar kullanabileceğinizi unutmayın. Bu değer `apns-topic` bir bildirim gönderilirken http üstbilgisiyle eşlenir ve belirli bir uygulamayı hedeflemek için kullanılır. Açıkça değerini ayarlayamayacağınızı unutmayın `apns-topic` .
 * **Belirteç**: "Key" veya "Private Key" olarak da bilinir. Bu, Apple geliştirici portalında oluşturulan. P8 dosyasından elde edilir. Anahtarın APNS etkin olmalıdır (anahtar oluşturulurken Apple Geliştirici Portalında seçilir). Değer, NH portalına/API 'sine girdiğinizde PEM üst bilgisi/alt bilgisinin bu kümeden çıkarılır.
-* **Uç nokta**: bu, Notification Hubs portalı dikey PENCERESINDE ve API 'deki bir dize alanından bir geçiş yapar. Geçerli değerler veya ' dir `https://api.push.apple.com` `https://api.sandbox.push.apple.com` . Notification Hubs, bildirim göndermek için üretim veya Sandbox ortamı için bu değeri kullanır. Bu, `aps-environment` uygulamadaki yetkilendirmeler ile eşleşmelidir; Aksi takdirde, oluşturulan APNs cihaz belirteçleri ortamla eşleşmez ve bildirimler gönderilemez.
+* **Uç nokta**: bu, Notification Hubs portalı dikey PENCERESINDE ve API 'deki bir dize alanından bir geçiş yapar. Geçerli değerler veya ' dir `https://api.development.push.apple.com:443/3/device` `https://api.sandbox.push.apple.com:443/3/device` . Notification Hubs, bildirim göndermek için üretim veya Sandbox ortamı için bu değeri kullanır. Bu, `aps-environment` uygulamadaki yetkilendirmeler ile eşleşmelidir; Aksi takdirde, oluşturulan APNs cihaz belirteçleri ortamla eşleşmez ve bildirimler gönderilemez.
 
 Doğru kullanımı gösteren bir kod örneği aşağıda verilmiştir:
 

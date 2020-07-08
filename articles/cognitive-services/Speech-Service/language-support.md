@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027503"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087155"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -37,16 +38,16 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Yerel Ayar  | Dil                          | Özelleştirmeler                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arapça (UAE)                      | Hayır                                                |
+| `ar-AE` | Arapça (UAE)                      | No                                                |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
-| `ar-IL` | Arapça (Israil)                   | Hayır                                                |
-| `ar-JO` | Arapça (Ürdün)                   | Hayır                                                |
-| `ar-KW` | Arapça (Kuveyt)                   | Hayır                                                |
-| `ar-LB` | Arapça (Lübnan)                  | Hayır                                                |
-| `ar-PS` | Arapça (Filistin Yönetimi)                | Hayır                                                |
-| `ar-QA` | Arapça (Qtor)                    | Hayır                                                |
-| `ar-SA` | Arapça (Suudi Arabistan)             | Hayır                                                |
+| `ar-IL` | Arapça (Israil)                   | No                                                |
+| `ar-JO` | Arapça (Ürdün)                   | No                                                |
+| `ar-KW` | Arapça (Kuveyt)                   | No                                                |
+| `ar-LB` | Arapça (Lübnan)                  | No                                                |
+| `ar-PS` | Arapça (Filistin Yönetimi)                | No                                                |
+| `ar-QA` | Arapça (Qtor)                    | No                                                |
+| `ar-SA` | Arapça (Suudi Arabistan)             | No                                                |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
 | `ca-ES` | Katalanca                           | Dil modeli                                    |
 | `da-DK` | Danca (Danimarka)                  | Dil modeli                                    |
@@ -77,7 +78,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | İsveççe (İsviçre)                  | Dil modeli                                    |
 | `ta-IN` | Tamil dili (Hindistan)                     | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Dil modeli                                    |
-| `th-TH` | Tayca (Tayland)                   | Hayır                                                |
+| `th-TH` | Tayca (Tayland)                   | No                                                |
 | `tr-TR` | Türkçe (Türkiye)                  | Dil modeli                                    |
 | `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Akustik model<br>Dil modeli                  |
 | `zh-HK` | Çince (Cantoneo, geleneksel)  | Dil modeli                                    |
@@ -100,27 +101,42 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 
 |Yerel Ayar  | Dil            | Cinsiyet | Ses adı | Stil desteği |
 |--|--|--|--|--|
+| `ar-EG` | Arapça (Mısır)                  | Kadın | `ar-EG-SalmaNeural`      | Genel |
+| `ar-SA` | Arapça (Suudi Arabistan)           | Kadın | `ar-SA-ZariyahNeura`     | Genel |
+| `ca-ES` | Katalanca (İspanya)                 | Kadın | `ca-ES-AlbaNeural`       | Genel |
+| `da-DK` | Danca (Danimarka)                | Kadın | `da-DK-ChristelNeural`   | Genel |
 | `de-DE` | Almanca (Almanya)                | Kadın | `de-DE-KatjaNeural`      | Genel |
 | `en-AU` | İngilizce (Avustralya)             | Kadın | `en-AU-NatashaNeural`    | Genel |
 | `en-CA` | İngilizce (Kanada)                | Kadın | `en-CA-ClaraNeural`      | Genel |
 | `en-GB` | İngilizce (UK)                    | Kadın | `en-GB-LibbyNeural`      | Genel |
 |         |                                 | Kadın | `en-GB-MiaNeural`        | Genel |
+| `en-IN` | İngilizce (Hindistan)                 | Kadın | `en-IN-NeerjaNeural`     | Genel |
 | `en-US` | İngilizce (ABD)                    | Kadın | `en-US-AriaNeural`       | Genel, birden çok ses stili mevcuttur |
 |         |                                 | Erkek   | `en-US-GuyNeural`        | Genel |
 | `es-ES` | İspanyolca (İspanya)                 | Kadın | `es-ES-ElviraNeural`     | Genel |
 | `es-MX` | İspanyolca (Meksika)                | Kadın | `es-MX-DaliaNeural`      | Genel |
+| `fi-FI` | Fince (Finlandiya)               | Kadın | `fi-FI-NooraNeural`      | Genel |
 | `fr-CA` | Fransızca (Kanada)                 | Kadın | `fr-CA-SylvieNeural`     | Genel |
 | `fr-FR` | Fransızca (Fransa)                 | Kadın | `fr-FR-DeniseNeural`     | Genel |
+| `hi-IN` | Hintçe (Hindistan)                   | Kadın | `hi-IN-SwaraNeural`      | Genel |
 | `it-IT` | İtalyanca (İtalya)                 | Kadın | `it-IT-ElsaNeural`       | Genel |
 | `ja-JP` | Japonca                        | Kadın | `ja-JP-NanamiNeural`     | Genel |
 | `ko-KR` | Korece                          | Kadın | `ko-KR-SunHiNeural`      | Genel |
 | `nb-NO` | Norveççe                       | Kadın | `nb-NO-IselinNeural`     | Genel |
-| `pt-BR` | Portekizce (Brezilya)             | Kadın | `pt-BR-FranciscaNeural`  | Genel |
+| `nl-NL` | Felemenkçe (Netherland)              | Kadın | `nl-NL-ColetteNeural`    | Genel |
+| `pl-PL` | Lehçe (Polonya)                 | Kadın | `pl-PL-ZofiaNeural`      | Genel |
+| `pt-BR` | Portekizce (Brezilya)             | Kadın | `pt-BR-FranciscaNeural`  | Genel, birden çok ses stili mevcuttur |
 | `tr-TR` | Türkçe                         | Kadın | `tr-TR-EmelNeural`       | Genel |
+| `pt-PT` | Portekizce (Portekiz)           | Kadın | `pt-PT-FernandaNeural`   | Genel |
+| `ru-RU` | Rusça (Rusya)                | Kadın | `ru-RU-DariyaNeural`     | Genel |
+| `sv-SE` | İsveççe (İsviçre)                | Kadın | `sv-SE-HilleviNeural`    | Genel |
+| `th-TH` | Tayca (Tayland)                 | Kadın | `th-TH-AcharaNeural`     | Genel |
 | `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın | `zh-CN-XiaoxiaoNeural`   | Genel, birden çok ses stili mevcuttur |
 |         |                                 | Kadın | `zh-CN-XiaoyouNeural`    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
 |         |                                 | Erkek   | `zh-CN-YunyangNeural`    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
 |         |                                 | Erkek   | `zh-CN-YunyeNeural`      | Öykü anlatımı için iyileştirildi |
+| `zh-HK` | Çince (Cantoneo, yatıcı)   | Kadın | `zh-HK-HiuGaaiNeural`| Genel |
+| `zh-TW` | Çince (Taiwanese Mandarin)   | Kadın | `zh-TW-HsiaoYuNeural`    | Genel |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.

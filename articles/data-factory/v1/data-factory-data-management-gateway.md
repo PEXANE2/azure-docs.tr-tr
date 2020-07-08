@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087104"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -70,7 +71,7 @@ Aşağıda, veri ağ geçidi ile kopyalama adımları için üst düzey veri ak�
 * Veri deposu bir **Azure IaaS VM**'sinde bulutta olsa bile **ağ geçidini kullanmanız** gerekir.
 
 ## <a name="installation"></a>Yükleme
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Desteklenen **Işletim sistemi** sürümleri şunlardır; Windows 7, Windows 8/8.1, Windows 10, windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Bir etki alanı denetleyicisine veri yönetimi ağ geçidi yüklemesi şu anda desteklenmiyor.
 * .NET Framework 4.5.1 veya üzeri gereklidir. Windows 7 makinesine ağ geçidi yüklüyorsanız, .NET Framework 4,5 veya sonraki bir sürümü yükleyebilirsiniz. Ayrıntılar için [.NET Framework sistem gereksinimleri](https://msdn.microsoft.com/library/8z6watww.aspx) ' ne bakın.
 * Ağ Geçidi makinesi için önerilen **yapılandırma** en az 2 GHz, 4 çekirdek, 8 GB RAM ve 80 GB disk.
@@ -139,7 +140,7 @@ Göz önünde bulundurmanız gereken iki güvenlik duvarı vardır: kuruluşun m
 
 Şirket güvenlik duvarı düzeyinde, aşağıdaki etki alanlarını ve giden bağlantı noktalarını yapılandırmanız gerekir:
 
-| Etki alanı adları | Bağlantı noktaları | Açıklama |
+| Etki alanı adları | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
 | *.core.windows.net |443 |Azure Blob kullanılarak hazırlanan kopya için kullanılır (yapılandırıldıysa)|
@@ -246,7 +247,9 @@ Aşağıdakine benzer hatalarla karşılaşırsanız, büyük olasılıkla güve
 
 Üçüncü taraf bir güvenlik duvarı kullanıyorsanız, 8050 numaralı bağlantı noktasını el ile açabilirsiniz. Ağ geçidi kurulumu sırasında güvenlik duvarı sorunuyla karşılaşırsanız, güvenlik duvarını yapılandırmadan ağ geçidini yüklemek için aşağıdaki komutu kullanmayı deneyebilirsiniz.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 Ağ Geçidi makinesinde 8050 bağlantı noktasını açmayı seçerseniz, veri deposu kimlik bilgilerini yapılandırmak için **kimlik bilgilerini ayarlama** uygulamasını kullanmaktan farklı mekanizmaları kullanın. Örneğin, [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet 'ini kullanabilirsiniz. Veri deposunun kimlik bilgilerinin nasıl ayarlanacağı hakkında bilgi için bkz. kimlik bilgileri ve güvenlik bölümü.
 
@@ -361,7 +364,7 @@ Azure portal, bir ağ geçidi makinesindeki kaynak kullanımının (CPU, bellek,
 
 Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:
 
-İzleme özelliği | Açıklama
+İzleme özelliği | Description
 :------------------ | :----------
 Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü.

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50bf1502589ea0932fd45367c039e6e37135d761
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086067"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları
 MySQL için Azure veritabanı hizmeti, garantili yüksek düzeyde kullanılabilirlik sağlar. Mali olarak desteklenen hizmet düzeyi sözleşmesi (SLA), genel kullanıma yönelik olarak% 99,99 ' dir. Bu hizmet kullanılırken neredeyse hiçbir uygulama zaman kalmaz.
@@ -29,7 +29,7 @@ Azure 'da dahili olarak, bağlantıları yeni örneğe yönlendirmek için bir a
 ## <a name="scaling-up-or-down"></a>Ölçeği artırma veya azaltma
 HA modeline benzer şekilde, MySQL için Azure veritabanı yukarı veya aşağı ölçeklenirse, belirtilen boyuta sahip yeni bir sunucu örneği oluşturulur. Mevcut veri depolama, özgün örnekten ayrılır ve yeni örneğe eklenir.
 
-Ölçeklendirme işlemi sırasında, veritabanı bağlantılarına bir kesinti meydana gelir. İstemci uygulamalarının bağlantısı kesilir ve açık işlenmemiş işlemler iptal edilir. İstemci uygulaması bağlantıyı yeniden dener veya yeni bir bağlantı yaptığında, ağ geçidi bağlantıyı yeni boyutlandırılmış örneğe yönlendirir. 
+Ölçeklendirme işlemi sırasında, veritabanı bağlantılarına bir kesinti meydana gelir. İstemci uygulamalarının bağlantısı kesilir ve açık işlenmemiş işlemler iptal edilir. İstemci uygulaması bağlantıyı yeniden dener veya yeni bir bağlantı yaptığında, ağ geçidi bağlantıyı yeni boyutlandırılmış örneğe yönlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Geçici bağlantı hatalarını işleme](concepts-connectivity.md) hakkında bilgi edinin

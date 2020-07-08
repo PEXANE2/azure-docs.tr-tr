@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086424"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile küme kullanılabilirliğini izleme
 
@@ -55,7 +55,7 @@ Uyarı tanımlarının ve durumlarının listesini görüntülemek için, aşağ
 
 Ambarı aşağıdakiler dahil olmak üzere kullanılabilirliğiyle ilgili çok sayıda önceden tanımlı uyarı sunar:
 
-| Uyarı Adı                        | Description   |
+| Uyarı Adı                        | Açıklama   |
 |---|---|
 | Dadtanode sistem durumu Özeti           | Sağlıksız bir kades varsa, bu hizmet düzeyi uyarı tetiklenir|
 | Süs Yot yüksek kullanılabilirlik durumu | Bu hizmet düzeyi uyarı, etkin bir süs Code veya standby süs ODE çalışmıyorsa tetiklenir.|
@@ -89,5 +89,5 @@ Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim
 
 - [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
 - [Küme kullanılabilirliği - Azure İzleyici günlükleri](./cluster-availability-monitor-logs.md)
-- [Azure İzleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+- [Azure Izleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Apache Ambari e-posta bildirimleri](apache-ambari-email.md)

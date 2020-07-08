@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75830080"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087784"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell kullanarak MapReduce işlerini HDInsight üzerinde Apache Hadoop çalıştırma
 
@@ -20,7 +21,7 @@ ms.locfileid: "75830080"
 
 Bu belge, HDInsight kümesinde Hadoop 'ta MapReduce işini çalıştırmak için Azure PowerShell kullanılmasına bir örnek sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -32,7 +33,7 @@ Azure PowerShell HDInsight 'ta MapReduce işlerini uzaktan çalıştırmanıza o
 
 Aşağıdaki cmdlet 'ler, MapReduce işlerini uzak bir HDInsight kümesinde çalıştırırken kullanılır.
 
-|Cmdlet | Açıklama |
+|Cmdlet | Description |
 |---|---|
 |Connect-AzAccount|Azure aboneliğinize Azure PowerShell kimliğini doğrular.|
 |New-AzHDInsightMapReduceJobDefinition|Belirtilen MapReduce bilgilerini kullanarak yeni bir *iş tanımı* oluşturur.|

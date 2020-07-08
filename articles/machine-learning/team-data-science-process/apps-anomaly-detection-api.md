@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656550"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087172"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomali algılama API 'SI
 
@@ -63,44 +63,48 @@ API 'yi çağırmak için uç nokta konumunu ve API anahtarını bilmeniz gereke
 ### <a name="sample-request-body"></a>Örnek Istek gövdesi
 İstek iki nesne içerir: `Inputs` ve `GlobalParameters` .  Aşağıdaki örnek istekte, bazı parametreler açıkça gönderilir, diğerleri değildir (her bitiş noktası için parametrelerin tam listesi için aşağı kaydırın).  İstekte açıkça gönderilmeyen parametreler aşağıda verilen varsayılan değerleri kullanır.
 
-    {
-                "Inputs": {
-                        "input1": {
-                                "ColumnNames": ["Time", "Data"],
-                                "Values": [
-                                        ["5/30/2010 18:07:00", "1"],
-                                        ["5/30/2010 18:08:00", "1.4"],
-                                        ["5/30/2010 18:09:00", "1.1"]
-                                ]
-                        }
-                },
-        "GlobalParameters": {
-            "tspikedetector.sensitivity": "3",
-            "zspikedetector.sensitivity": "3",
-            "bileveldetector.sensitivity": "3.25",
-            "detectors.spikesdips": "Both"
-        }
+```json
+{
+            "Inputs": {
+                    "input1": {
+                            "ColumnNames": ["Time", "Data"],
+                            "Values": [
+                                    ["5/30/2010 18:07:00", "1"],
+                                    ["5/30/2010 18:08:00", "1.4"],
+                                    ["5/30/2010 18:09:00", "1.1"]
+                            ]
+                    }
+            },
+    "GlobalParameters": {
+        "tspikedetector.sensitivity": "3",
+        "zspikedetector.sensitivity": "3",
+        "bileveldetector.sensitivity": "3.25",
+        "detectors.spikesdips": "Both"
     }
+}
+```
 
 ### <a name="sample-response"></a>Örnek Yanıt
 Alanı görmek için `ColumnNames` , `details=true` ISTEĞINIZE bir URL parametresi olarak dahil etmeniz gerekir.  Bu alanların her birinin arkasındaki anlamı görmek için aşağıdaki tablolara bakın.
 
-    {
-        "Results": {
-            "output1": {
-                "type": "table",
-                "value": {
-                    "Values": [
-                        ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
-                        ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
-                        ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
-                    ],
-                    "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
-                    "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
-                }
+```json
+{
+    "Results": {
+        "output1": {
+            "type": "table",
+            "value": {
+                "Values": [
+                    ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
+                    ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
+                    ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
+                ],
+                "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
+                "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
             }
         }
     }
+}
+```
 
 
 ## <a name="score-api"></a>Puanlama API 'SI
@@ -111,7 +115,7 @@ Aşağıdaki şekilde, skor API 'sinin algılayabildiği anormalilerin bir örne
 ### <a name="detectors"></a>Algılayıcılar
 Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. Her bir algılayıcısının belirli giriş parametreleri ve çıkışları hakkındaki ayrıntılar aşağıdaki tabloda bulunabilir.
 
-| Algılayıcı kategorisi | Algılayıcısı | Açıklama | Giriş Parametreleri | Çıkışlar |
+| Algılayıcı kategorisi | Algılayıcısı | Description | Giriş Parametreleri | Çıkışlar |
 | --- | --- | --- | --- | --- |
 | Ani Detektorler |Tani algılayıcı |Değerleri temel alarak ani artışları ve DIB 'leri algılayın ve ilk ve üçüncü kutalileri |*tspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri alır, varsayılan: 3; Daha yüksek değerler daha fazla bilgi yakalar ve bu sayede daha az hassas hale gelir |Tani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
 | Ani Detektorler | Zani algılayıcı |Veri noktalarının ne kadar ilerlediğiyle ilgili ani artışları ve DIB 'leri Algıla |*zspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri Al, varsayılan: 3; Daha yüksek değerler, daha az hassas hale getirmek için daha fazla bilgi yakalar |Zani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
@@ -121,22 +125,22 @@ Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. 
 ### <a name="parameters"></a>Parametreler
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
 | detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
 | algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
 | tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
-| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
+| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |YOK |
 
 ### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Açıklama |
+| Çıkışlar | Description |
 | --- | --- |
-| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | Veriler |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
 | Zani |Zani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
@@ -157,29 +161,29 @@ Mevsimsellik uç noktasındaki detekleyler, mevsimsellik olmayan uç noktada, an
 
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
 | preprocess. Aggregationınterval |Toplanan giriş zaman serisi için saniye cinsinden toplama aralığı |0 (toplama yapılmaz) |integer |0: toplamayı atla, > 0, tersi |5 dakika ila 1 gün, zaman serisine bağımlı |
-| preprocess. aggregationFunc |Belirtilen Aggregationınterval öğesine veri toplamak için kullanılan işlev |ortalama |numara |Ortalama, toplam, uzunluk |Yok |
-| preprocess. replaceMissing |Eksik verileri ımpute için kullanılan değerler |LKV (son bilinen değer) |numara |sıfır, LKV, ortalama |Yok |
+| preprocess. aggregationFunc |Belirtilen Aggregationınterval öğesine veri toplamak için kullanılan işlev |ortalama |numara |Ortalama, toplam, uzunluk |YOK |
+| preprocess. replaceMissing |Eksik verileri ımpute için kullanılan değerler |LKV (son bilinen değer) |numara |sıfır, LKV, ortalama |YOK |
 | detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
 | algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
 | tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | mevsimsellik. etkinleştir |Mevsimsellik analizinin gerçekleştirilip gerçekleştirilmeyeceğini belirtir |true |boole |doğru, yanlış |Zaman serisine bağımlı |
 | mevsimsellik. Nummevsimsellik |Algılanabilmesi için en fazla düzenli döngü sayısı |1 |integer |1, 2 |1-2 |
-| mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |Yok |
-| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
+| mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |YOK |
+| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |YOK |
 
 ### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Açıklama |
+| Çıkışlar | Description |
 | --- | --- |
-| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | OriginalData |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | ProcessedData |Aşağıdaki seçeneklerden birini kullanabilirsiniz: <ul><li>Önemli mevsimsellik tespit edildi ve zaman dönemi seçeneği işaretliyse, zaman serisini önemli bir şekilde ayarladı;</li><li>önemli mevsimsellik tespit edildi ve demevsimsel eğilim seçeneği işaretliyse, zaman serisini ayarlama ve zaman serisini azaltma</li><li>Aksi takdirde, bu seçenek OriginalData ile aynıdır</li> |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |

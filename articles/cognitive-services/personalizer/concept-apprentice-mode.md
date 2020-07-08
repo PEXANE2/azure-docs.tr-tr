@@ -3,12 +3,12 @@ title: Apprenlet modu-kişiselleştirici
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599408"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087206"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Mevcut uygulamanızı etkilemeden Kişiselleştiriciye eğitme için Apprenlet modunu kullanın
 
@@ -30,7 +30,7 @@ Apprenlet modu, kişiselleştirici hizmetinde ve makine öğrenimi özelliklerin
 
 Apprence modunu kullanmanın iki ana nedeni şunlardır:
 
-* Azaltıcı **soğuk başlar**: apprence modu, "yeni" modelinin öğrenimi zamanının maliyetinin yönetilmesine ve değerlendirilmesine yardımcı olur. Bu, en iyi eylemi döndürmezme ve% 75-85 etrafında bir verimlilik düzeyi elde etmez.
+* Azaltıcı **soğuk başlar**: apprence modu, "yeni" modelinin öğrenimi zamanının maliyetinin yönetilmesine ve değerlendirilmesine yardımcı olur. Bu, en iyi eylemi döndürmezme ve% 60-80 etrafında bir verimlilik düzeyi elde etmez.
 * **Eylem ve bağlam özellikleri doğrulanıyor**: eylemler ve bağlam içinde gönderilen Özellikler yetersiz veya hatalı, çok fazla, yanlış veya çok büyük olabilir. Özelliklerle ilgili sorunları bulmak ve gidermek için [özellik değerlendirmeleri](concept-feature-evaluation.md) kullanın.
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Apprenlet modunu ne zaman kullanmalısınız?
@@ -57,7 +57,7 @@ Apprence modu geliştiriciler, veri uzmanları ve iş karar mekanizmaları için
 
 Apprence modunun, aşağıdaki yollarla çevrimiçi moddan ne zaman farklılık gösterir.
 
-|Alan|Apprenlet modu|Çevrimiçi mod|
+|Alan|Acemi modu|Çevrimiçi mod|
 |--|--|--|
 |Kullanıcı deneyimine etkisi|Mevcut kullanıcı davranışını, **varsayılan eylediklerinizin** ne olduğunu ve elde ettiği bir şeyi gözlemleyerek (etkilenmemesini), kişiselleştirerek eğitmenize izin vererek, kişisel bir şekilde eğitme yapmak için kullanabilirsiniz. Bu, kullanıcılarınızın deneyimi ve bunların iş sonuçlarının etkilenmeyeceği anlamına gelir.|Kullanıcı davranışını etkilemek için derece çağrısından döndürülen en iyi eylemi görüntüle.|
 |Öğrenme hızı|Kişiselleştirici, çevrimiçi modda öğrenirken Apprenlet modundayken daha yavaş bilgi ediniyor. Apprenlet modu, hiçbir araştırma gerçekleştirilemediği için öğrenme hızını sınırlayan **varsayılan eyleminiz**tarafından elde edilen rekişlerinizi gözlemleyerek öğreniyor.|Her ikisi de geçerli modelden yararlanabileceğinden ve yeni eğilimleri keşfedebildiğinden daha hızlı bir şekilde öğrenir.|
@@ -68,7 +68,7 @@ Apprence modunun, aşağıdaki yollarla çevrimiçi moddan ne zaman farklılık 
 Apprence modunun verimliliğine ilişkin bir Note:
 
 * Apprence modunda kişiselleştiriciye ait verimlilik, uygulamanın temel aldığı %100 ' a yakın bir şekilde ulaşacaktır; ve hiç aşmaz.
-* En iyi uygulamalar %100 ' a ulaşmak için denenmez; Ancak, kullanım örneğine bağlı olarak bir 75-85% aralığı belirtilmelidir.
+* En iyi uygulamalar %100 ' a ulaşmak için denenmez; Ancak kullanım örneğine bağlı olarak %60, %80 arasında bir Aralık sağlanmalıdır.
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>Geçmiş verilerle eğmesi için Apprenlet modunu kullanma
 

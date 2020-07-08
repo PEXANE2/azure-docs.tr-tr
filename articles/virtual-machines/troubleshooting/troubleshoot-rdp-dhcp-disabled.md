@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749884"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087801"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP Istemci hizmeti devre dışı bırakıldığından Azure sanal makinelerinde RDP yapılamıyor
 
@@ -39,7 +40,9 @@ DHCP Istemci hizmeti VM 'de devre dışı bırakıldığından Azure 'da bir RDP
 
 Kaynak Yöneticisi VM 'Ler için, aşağıdaki komutu kullanarak olay günlüklerini 7022 sorgulamak üzere seri erişim konsolu özelliğini kullanabilirsiniz:
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 Klasik VM 'Ler için ÇEVRIMDıŞı modda çalışmanız ve günlükleri el ile toplamanız gerekecektir.
 
@@ -62,14 +65,21 @@ Bu sorunu çözmek için seri denetim 'i kullanarak VM için DHCP 'yi etkinleşt
 ). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [ağ arabirimini sıfırlama](reset-network-interface.md).
 2. Ağ arabiriminde DHCP 'nin devre dışı olup olmadığını denetleyin:
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. DHCP durdurulmuşsa, hizmeti başlatmayı deneyin
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. Hizmetin başarıyla başlatıldığından emin olmak için hizmeti tekrar sorgulayın.
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     SANAL makineye bağlanmayı deneyin ve sorunun çözümlenip çözümlenmediğini görün.
 5. Hizmet başlamazsa, aldığınız hata iletisine bağlı olarak aşağıdaki uygun çözümü kullanın:
@@ -156,23 +166,38 @@ Bu sorunu çözmek için seri denetim 'i kullanarak VM için DHCP 'yi etkinleşt
 
 1. Bu sorun, bu hizmetin başlangıç hesabı değiştiyse, hesabı varsayılan durumuna döndürür:
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. Hizmeti başlatın:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. Uzak Masaüstü kullanarak sanal makineye bağlanmayı deneyin.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP Istemci hizmeti kilitleniyor veya askıda kalıyor
 
 1. Hizmet durumu **Başlangıç** veya **durdurma** durumunda takılırsa, hizmeti durdurmayı deneyin:
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. Hizmeti kendi ' Svchost ' kapsayıcısında yalıtın:
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. Hizmeti başlatın:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. Hizmet yine başlamazsa, [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma

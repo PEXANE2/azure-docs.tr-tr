@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086321"
 ---
 # <a name="release-notes"></a>Sürüm notları
+
+## <a name="text-to-speech-2020-july-release"></a>Metinden konuşmaya 2020-Temmuz sürümü
+
+### <a name="new-features"></a>Yeni özellikler
+
+* **Sınır TTS, 15 yeni sinir sesleri**: sinir TTS portföyüne eklenen yeni sesler Arapça (Mısır), Arapça (Suudi Arabistan), Arapça (Suudi Arabistan), KAG (Danimarka), (Danimarka), Danca (Danimarka), serja, Ingilizce (Hindistan), Hintçe (Hindistan), deniz Zofia, Lehçe (Polonya), Portekizce (Portekiz), Rusça (Rusya), Portekizce (Rusya), Isveççe (Rusya), Ispanyolca (Çin), Achara dilinde (Norveç), Çince (İsviçre), Çince (Tayvan) Içinde ıselx (Tayvan), Hiugaaı, Çince (Tayvan) Içinde Hsıaoyu. Desteklenen tüm [dilleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)denetleyin.  
+
+* **Kullanıcı deneyimini basitleştirmek için eğitim akışıyla özel ses, akıcı bir sesli test**: yeni test özelliği ile her ses, her bir dil için en iyi duruma getirilmiş önceden tanımlanmış bir test kümesiyle otomatik olarak test edilir ve bu da genel ve sesli yardım senaryolarını kapsar. Bu test kümeleri dikkatle seçilir ve genel kullanım durumlarını ve telefon dilini içerecek şekilde test edilir. Bunun yanı sıra, kullanıcılar bir modeli eğitmek için kendi test betiklerini karşıya yüklemeyi yine de seçebilir.
+
+* **Ses Içeriği oluşturma: daha güçlü ses ayarlama ve ses yönetimi özelliklerini etkinleştirmek için yeni özellikler kümesi yayımlandı**
+
+    * `Pitch`, `rate` ve, `volume` yavaş, orta ve hızlı gibi önceden tanımlanmış bir değerle ayarlamayı destekleyecek şekilde geliştirilmiştir. Artık kullanıcıların ses düzenlemesi için bir ' sabit ' değeri seçmesini kolaylaştırır.
+
+    ![Ses ayarlama](media/release-notes/audio-tuning.png)
+
+    * Kullanıcılar artık `Audio history` kendi iş dosyalarını gözden geçirebilir. Bu özellik sayesinde kullanıcılar, çalışan bir dosyayla ilgili olarak üretilen tüm sesleri kolayca izleyebilir. Bu kişiler geçmiş sürümünü denetleyebilir ve aynı zamanda ayarlama sırasında kaliteyi karşılaştırabilir. 
+
+    ![Ses geçmişi](media/release-notes/audio-history.png)
+
+    * `Clear`Özellik artık daha esnektir. Kullanıcılar belirli bir ayarlama parametresini temizleyerek, seçilen içerik için diğer parametreleri kullanılabilir tutarken bu parametreyi temizleyebilir.  
+
+    * Kullanıcıların TTS ses ayarlama ve ses yönetimi ile hızlı bir şekilde çalışmaya yardımcı olması için [giriş sayfasına](https://speech.microsoft.com/audiocontentcreation) bir öğretici videosu eklenmiştir. 
+
+### <a name="general-tts-voice-quality-improvements"></a>Genel TTS ses kalitesi geliştirmeleri
+
+* Daha yüksek doğruluk ve daha düşük gecikme için ' de geliştirilmiş TTS vocoder.
+
+    * Italyan 'daki Elsa 'Ları, ve + 0,464 CMOS (karşılaştırmalı ortalama görüşeri puanı) ile birlikte, "%40 daha hızlı ve ilk bayt gecikme süresi üzerinde %30 oranında azaldığı yeni bir vocoder 'a güncelleştirildi. 
+    * Genel etki alanı için + 0148 CMOS kazancı ve Lyrical stili için + 0,195 ile 0,348, Çin 'de Xiaoxıao, yeni vocoder 'e güncelleştirildi. 
+
+* `de-DE` `ja-JP` TTS çıkışını daha doğal hale getirmek için güncelleştirilmiş ve ses modelleri.
+    
+    * En son Prosody modelleme yöntemiyle birlikte Alman 'daki Katja güncellenmiştir, (yani, puan puanı) kazanç + 0,13 ' dir. 
+    * Yeni bir Aralık Vurgu Prosody 0,19 modeliyle Japon 'da NANAMI güncelleştirildi.  
+
+* 5 dilde sözcük düzeyinde telaffuz doğruluğu geliştirildi.
+
+    | Dil | Telaffuz hatası azaltma |
+    |---|---|
+    | en-GB | %51 |
+    | ko-KR | 17 |
+    | pt-BR | %39 |
+    | pt-PT | %77 |
+    | id-ID | %46 |
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+
+* Para birimi okuma
+    * Ve için para birimi okumada sorun düzeltildi `es-ES``es-MX`
+     
+    | Dil | Giriş | İyileştirmelerden sonra yeniden okuma |
+    |---|---|---|
+    | es-MX | $1,58 | su cincuenta y Ocho centavos kaldır |
+    | es-ES | $1,58 | dólar cincuenta y Ocho centavos 'yı kaldır |
+
+    * Aşağıdaki yerel ayarlarda negatif para birimi ("-€325" gibi) için destek: `en-US` , `en-GB` ,, `fr-FR` `it-IT` , `en-AU` , `en-CA` .
+
+* ' De geliştirilmiş Adres okuma `pt-PT` .
+* `en-AU` `en-UK` "For" ve "dört" kelimesiyle düzeltilen Natasha () ve Libby () sorunları.  
+* Ses Içeriği oluşturma aracında düzeltilen hatalar
+    * İkinci paragraf sabitledikten sonra ek ve beklenmeyen duraklama.  
+    * ' Kesme yok ' özelliği bir gerileme hatası ile geri eklenmez. 
+    * Konuşma Studio 'nun rastgele yenileme sorunu düzeltildi.  
+
+### <a name="samplessdk"></a>Örnekler/SDK
+
+* JavaScript: FireFox 'ta kayıttan yürütme sorununu ve macOS ve iOS üzerinde Safari 'yi düzeltir. 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Konuşma SDK 1.12.1:2020-Haziran sürümü
 **Konuşma CLı (aka SPX)**
 -   CLı içi yardım arama özellikleri eklendi:
@@ -322,7 +390,7 @@ Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıd
 - Java, .NET Core, C++ ve amaç-C için konuşma SDK 'Sı, macOS desteği elde etmiş. MacOS için amaç-C desteği şu anda beta aşamasındadır.
 - iOS: iOS için konuşma SDK 'Sı (hedef-C) artık bir CocoaPod olarak yayımlanmıştır.
 - JavaScript: giriş cihazı olarak varsayılan olmayan mikrofonu destekler.
-- JavaScript: node. js için proxy desteği.
+- JavaScript: Node.js için proxy desteği.
 
 **Örnekler**
 
@@ -412,7 +480,7 @@ Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıd
   - Python desteğinin beta sürümü (3,5 ve üzeri) Bu sürümde kullanılabilir. Daha fazla bilgi için buraya bakın] (hızlı başlangıç-python.md).
 - JavaScript
   - JavaScript için konuşma SDK 'Sı açık kaynaklıdır. Kaynak kodu [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)' da kullanılabilir.
-  - Artık Node. js ' yi destekliyoruz, [burada](quickstart-js-node.md)daha fazla bilgi bulabilirsiniz.
+  - Artık Node.js destekliyoruz, [burada](quickstart-js-node.md)daha fazla bilgi bulabilirsiniz.
   - Ses oturumları için uzunluk kısıtlaması kaldırılmıştır, otomatik olarak yeniden bağlanma işlemi, kapak altında otomatik olarak gerçekleşir.
 - `Connection`nesne
   - İçinden `Recognizer` bir `Connection` nesnesine erişebilirsiniz. Bu nesne, hizmet bağlantısını açık bir şekilde başlatabilmeniz ve olaylara bağlanıp bağlantıyı kesmeye abone olmanızı sağlar.
@@ -443,7 +511,7 @@ Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıd
 **Örnekler**
 
 - Birkaç örnek güncelleştirildi ve düzeltildi (örneğin, çeviri için çıkış sesleriniz vb.).
-- [Örnek depoya](https://aka.ms/csspeech/samples)Node. js örnekleri eklendi.
+- [Örnek depoda](https://aka.ms/csspeech/samples)Node.js örnekleri eklendi.
 
 ## <a name="speech-sdk-110"></a>Konuşma SDK 1.1.0
 

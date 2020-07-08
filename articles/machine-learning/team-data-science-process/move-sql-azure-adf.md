@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed35ec583af83e6ee6cb81c4e59e694cef493e1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086662"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
 
@@ -46,7 +47,7 @@ ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikle
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prereqs"></a>Önkoşullar
 Bu öğreticide şunları kabul edersiniz:
 
 * Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
@@ -139,7 +140,9 @@ Sütun adları buraya eklenmedi. Sütun adlarında bunları buraya ekleyerek se�
 
 Tablonun JSON tanımını dosyada *onpremtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
-    New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```
 
 
 ### <a name="blob-table"></a><a name="adf-table-blob-store"></a>Blob tablosu
@@ -172,7 +175,9 @@ Tablonun JSON tanımını dosyada *onpremtabledef.js* adlı bir dosyaya kopyalay
 
 Tablonun JSON tanımını dosyada *bloboutputtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\bloboutputtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```
 
 ### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure tablosu
 SQL Azure çıktısı için olan tablonun tanımı aşağıda verilmiştir (Bu şema, Blobun gelen verileri eşler):
@@ -204,7 +209,9 @@ SQL Azure çıktısı için olan tablonun tanımı aşağıda verilmiştir (Bu �
 
 Tablonun JSON tanımını dosyada *AzureSqlTable.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\AzureSqlTable.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```
 
 
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>İşlem hattını tanımlama ve oluşturma
@@ -289,13 +296,17 @@ Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanım
 
 İşlem hattının bu JSON tanımını dosyada *pipelinedef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.js*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
 
-    New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```azurepowershell
+New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```
 
 
 ## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>İşlem hattını başlatma
 İşlem hattı artık aşağıdaki komutu kullanarak çalıştırılabilir:
 
-    Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```azurepowershell
+Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```
 
 *StartDate* ve *EndDate* parametre değerlerinin, işlem hattının çalışmasını istediğiniz gerçek tarihlerle değiştirilmeleri gerekir.
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 388f59f5090be43469acfde5197a658942e817f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82182455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087852"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsüyle Excel'i Azure HDInsight'ta Apache Hadoop'a bağlama
 
@@ -23,7 +23,7 @@ Microsoft 'un büyük veri çözümü, Microsoft Business Intelligence (BI) bile
 
 Excel 'deki bir HDInsight kümesiyle ilişkili verileri Excel için Microsoft Power Query eklentisi ile bağlayabilirsiniz. Daha fazla bilgi için bkz. [Power Query Ile Excel 'ı HDInsight 'A bağlama](../hdinsight-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -48,7 +48,7 @@ Aşağıdaki adımlarda, Hive ODBC veri kaynağı oluşturma yöntemi gösterilm
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
-   | Özellik | Description |
+   | Özellik | Açıklama |
    | --- | --- |
    |  Data Source Name |Veri kaynağınız için bir ad verin |
    |  Ana bilgisayar (ler) |`HDInsightClusterName.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net`. Note: `HDInsightClusterName-int.azurehdinsight.net` istemci VM 'sinin aynı sanal ağa eşlenmiş olması için desteklenir. |

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087750"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure sanal ağı 'nda HDInsight 'ta Apache HBase kümeleri oluşturma
 
@@ -51,7 +51,7 @@ Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../a
 
 1. **Özel dağıtım** iletişim kutusunda **Şablonu Düzenle**' yi seçin.
 
-1. Satır 165 ' de değeri `Standard_A3` olarak `Standard_A4_V2`değiştirin. Sonra **Kaydet**' i seçin.
+1. Satır 165 ' de değeri `Standard_A3` olarak değiştirin `Standard_A4_V2` . Sonra **Kaydet**'i seçin.
 
 1. Kalan şablonu aşağıdaki bilgilerle doldurun:
 
@@ -82,7 +82,7 @@ Aynı Azure sanal ağına ve aynı alt ağa hizmet olarak altyapı (IaaS) sanal 
 * **Alt ağ**: subnet1
 
 > [!IMPORTANT]  
-> Önceki `CLUSTERNAME` adımlarda HDInsight kümesini oluştururken kullandığınız adla değiştirin.
+> `CLUSTERNAME`Önceki adımlarda HDInsight kümesini oluştururken kullandığınız adla değiştirin.
 
 Bu değerleri kullanarak, sanal makine HDInsight kümesiyle aynı sanal ağa ve alt ağa yerleştirilir. Bu yapılandırma, bunların birbirleriyle doğrudan iletişim kurmasına olanak tanır. Boş bir Edge düğümüyle HDInsight kümesi oluşturmanın bir yolu vardır. Uç düğümü, kümeyi yönetmek için kullanılabilir.  Daha fazla bilgi için bkz. [HDInsight 'ta boş kenar düğümlerini kullanma](../hdinsight-apps-use-edge-node.md).
 
@@ -130,14 +130,16 @@ Etki alanı adının küme adı ile başlayan bölümü DNS son ekidir. Örneği
 
 ### <a name="verify-communication-inside-virtual-network"></a>Sanal ağ içinde iletişimi doğrula
 
-Sanal makinenin HBase kümesiyle iletişim kurabildiğini doğrulamak için, sanal makinedeki komutunu `ping headnode0.<dns suffix>` kullanın. Örneğin, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Sanal makinenin HBase kümesiyle iletişim kurabildiğini doğrulamak için, `ping headnode0.<dns suffix>` sanal makinedeki komutunu kullanın. Örneğin, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Bu bilgileri bir Java uygulamasında kullanmak için, bir uygulama oluşturmak üzere [HDInsight (Hadoop) Ile Apache HBase kullanan Java uygulamaları oluşturmak Için Apache Maven kullanma](./apache-hbase-build-java-maven-linux.md) bölümündeki adımları izleyebilirsiniz. Uygulamanın uzak bir HBase sunucusuna bağlanmasını sağlamak için bu örnekteki **HBase-site. xml** dosyasını değiştirerek Zookeeper için FQDN 'yi kullanın. Örneğin:
+Bu bilgileri bir Java uygulamasında kullanmak için, bir uygulama oluşturmak üzere [HDInsight (Hadoop) Ile Apache HBase kullanan Java uygulamaları oluşturmak Için Apache Maven kullanma](./apache-hbase-build-java-maven-linux.md) bölümündeki adımları izleyebilirsiniz. Uygulamanın uzak bir HBase sunucusuna bağlanmasını sağlamak için bu örnekteki **hbase-site.xml** dosyasını Zookeeper FQDN 'sini kullanacak şekilde değiştirin. Örneğin:
 
-    <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
-    </property>
+```xml
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
+</property>
+```
 
 > [!NOTE]  
 > Azure sanal ağlarında ad çözümlemesi hakkında daha fazla bilgi için, kendi DNS sunucunuzu kullanma da dahil olmak üzere, bkz. [ad çözümlemesi (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086781"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>VM, güvenli modda önyüklendiği için bir VM 'ye RDP uygulanamıyor
 
@@ -46,7 +47,9 @@ Bu sorunu çözmek için, VM 'yi normal modda önyüklenecek şekilde yapıland�
    ). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [VM 'yi çevrimdışı olarak onarma](#repair-the-vm-offline).
 2. Önyükleme yapılandırma verilerini denetleyin:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     VM güvenli modda önyüklenecek şekilde yapılandırıldıysa, **Windows önyükleme yükleyicisi** bölümünde **safeboot**adlı bir ek bayrak görürsünüz. **Safeboot** bayrağını görmüyorsanız, sanal makine güvenli modda değildir. Bu makale senaryonuz için geçerlidir.
 
@@ -60,11 +63,15 @@ Bu sorunu çözmek için, VM 'yi normal modda önyüklenecek şekilde yapıland�
 
 3. **Safemoade** BAYRAĞıNı silerek VM normal modda önyüklenir:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. **Güvenli önyükleme** bayrağının kaldırıldığından emin olmak için önyükleme yapılandırma verilerini denetleyin:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. VM 'yi yeniden başlatın ve sorunun çözümlenip çözümlenmediğini denetleyin.
 
@@ -114,7 +121,10 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
 1. Yükseltilmiş bir komut istemi oturumu açın (**yönetici olarak çalıştır**).
 2. Önyükleme yapılandırma verilerini denetleyin. Aşağıdaki komutlarda, bağlı işletim sistemi diskine atanan sürücü harfinin F olduğunu varsaytık. Bu sürücü harfini VM 'niz için uygun değerle değiştirin.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     **\Windows** klasörünün bulunduğu bölümün tanımlayıcı adını unutmayın. Varsayılan olarak, tanımlayıcı adı "varsayılan" ' dır.
 
     VM güvenli modda önyüklenecek şekilde yapılandırıldıysa, **Windows önyükleme yükleyicisi** bölümünde **safeboot**adlı bir ek bayrak görürsünüz. **Safeboot** bayrağını görmüyorsanız, bu makale senaryonuz için geçerlidir.
@@ -123,8 +133,14 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
 
 3. **Safeboot** bayrağını kaldırın, bu nedenle VM normal modda önyüklenir:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. **Güvenli önyükleme** bayrağının kaldırıldığından emin olmak için önyükleme yapılandırma verilerini denetleyin:
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
