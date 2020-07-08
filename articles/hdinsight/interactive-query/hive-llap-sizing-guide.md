@@ -8,10 +8,9 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: a9b86f09ade0d437436779ef3e4a17fcdede2cf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664966"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight etkileşimli sorgu kümesi (Hive LLAP) boyutlandırma Kılavuzu
@@ -39,7 +38,7 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 | Tez. har. Resource. Memory. MB | 4096 (MB) | Tez AppMaster tarafından kullanılacak bellek miktarı (MB) |
 | Hive. Sunucu2. tez. Sessions. per. default. Queue | <number_of_worker_nodes> |Hive. Sunucu2. tez. default. Queues adlı her bir kuyruğun oturum sayısı. Bu sayı, sorgu koordinatörleri sayısına karşılık gelir (Tez AMs) |
 | Hive. tez. Container. size | 4096 (MB) | Belirtilen tez kapsayıcı boyutu MB olarak |
-| Hive. LLAP. Daemon. num. yürüticileri | 12 | LLAP Daemon başına yürütme sayısı | 
+| hive.llap.daemon.num.execılar | 12 | LLAP Daemon başına yürütme sayısı | 
 | Hive. LLAP. IO. ThreadPool. size | 12 | Yürüticileri için iş parçacığı havuzu boyutu |
 | Hive. LLAP. Daemon. yarn. Container. MB | 77824 (MB) | Bireysel LLAP Daemon 'ları tarafından kullanılan MB cinsinden toplam bellek (daemon başına bellek)
 | Hive. LLAP. IO. Memory. size | 235520 (MB) | LLAP arka plan programı başına MB cinsinden önbellek boyutu belirtilen SSD önbelleği etkin |
@@ -119,9 +118,9 @@ D14 v2 çalışan düğümü için HDI 4,0-önerilen değer (80 GB-4 GB)) = **76
 (HDI 3,6 için önerilen değer **74 GB** 'tır çünkü kaydırıcı için ek ~ 2 GB) ayırmanız gerekir.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. LLAP Daemon başına yürütme sayısını belirleme**  
-Yapılandırma: ***Hive. LLAP. Daemon. num. yürüticileri***, ***Hive. LLAP. IO. ThreadPool. size***
+Yapılandırma: ***hive.llap.daemon.num.executors***, ***Hive. LLAP. IO. ThreadPool. size***
 
-***Hive. LLAP. Daemon. num. yürüticileri***:   
+***hive.llap.daemon.num.execucılar***:   
 Bu yapılandırma, görevleri her LLAP arka plan programı başına paralel olarak yürütebilmesi gereken yürütme sayısını denetler. Bu değer, sanal çekirdek sayısına, yürütücü başına verilen bellek miktarına ve LLAP Daemon için kullanılabilir toplam bellek miktarına bağlıdır. Genellikle, bu değerin sanal çekirdek sayısına olabildiğince yakın olmasını istiyoruz.
 D14 v2 VM 'lerinde 16 sanal çekirdek vardır. Ancak, NodeManager, DataNode, ölçüm Izleyicisi vb. gibi diğer hizmetlerin de kullanılabilir sanal çekirdekler olması gerektiğinden, tüm sanal çekirdekler alınamaz. 
 

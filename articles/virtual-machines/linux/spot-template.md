@@ -9,10 +9,9 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758356"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak spot VM 'Leri dağıtma
@@ -21,12 +20,12 @@ ms.locfileid: "81758356"
 
 Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması.
 
-VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer `0.98765`, saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak `-1`şekilde AYARLARSANıZ, VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](spot-vms.md#pricing).
+VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Şablon kullanma
 
-Spot şablon dağıtımları için veya üstünü`"apiVersion": "2019-03-01"` kullanın. Şablonunuzda `priority`, `evictionPolicy` ve `billingProfile` özelliklerini ekleyin:
+Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü kullanın. `priority` `evictionPolicy` Şablonunuzda, ve `billingProfile` özelliklerini ekleyin:
 
 ```json
 "priority": "Spot",

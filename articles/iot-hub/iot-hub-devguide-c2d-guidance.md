@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733236"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Buluttan cihaza iletişim Kılavuzu
@@ -39,7 +38,7 @@ IoT Hub, cihaz uygulamaları için bir arka uç uygulamasına işlevsellik sunan
 | Dayanıklılık | Bağlantısı kesilen cihazlara bağlantı kurulmadı. Çözüm arka ucu, cihazın bağlı olmadığı bildirilir. | Özellik değerleri cihaz ikizi korunur. Cihaz, bir sonraki yeniden bağlantı noktasında okur. Özellik değerleri [IoT Hub sorgu diliyle](iot-hub-devguide-query-language.md)alınabilir. | İletiler, 48 saate kadar IoT Hub korunabilir. |
 | Hedefler | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**tarafından tek bir cihaz. |
 | Boyut | En yüksek doğrudan Yöntem yük boyutu 128 KB 'tır. | İstenen en fazla özellik boyutu 32 KB 'tır. | En çok 64 KB ileti. |
-| Frequency | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
+| Sıklık | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | MQTT veya AMQP kullanılarak kullanılabilir. | MQTT veya AMQP kullanılarak kullanılabilir. | Tüm protokollerde kullanılabilir. HTTPS kullanılırken cihaz yoklamalıdır. |
 
 Aşağıdaki öğreticilerde doğrudan yöntemleri, istenen özellikleri ve buluttan cihaza iletileri nasıl kullanacağınızı öğrenin:

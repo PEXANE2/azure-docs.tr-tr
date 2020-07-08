@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758253"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Bir Rigado basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulamanıza bağlama
@@ -41,9 +40,9 @@ Basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulama örneğinize ek
 
 Basamaklı 500 cihaz şablonu eklemek için: 
 
-1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni**: ![yeni cihaz şablonu oluştur ' u seçin.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni**: ![ yeni cihaz şablonu oluştur ' u seçin.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
 1. Sayfa size ***özel şablon oluşturma*** veya ***önceden yapılandırılmış bir cihaz şablonu kullanma*** seçeneği sunar
-1. Önceden yapılandırılmış cihaz şablonları listesinden aşağıda gösterildiği gibi C500 cihaz şablonunu seçin: ![C500 cihaz şablonu seçin](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. Önceden yapılandırılmış cihaz şablonları listesinden aşağıda gösterildiği gibi C500 cihaz şablonunu seçin: ![ C500 cihaz şablonu seçin](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
 1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** . 
 1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
 
@@ -54,8 +53,8 @@ Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanızın 
 1. Sol bölmedeki **Yönetim** ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
 2. IoT Central uygulamanızın **kapsam kimliğini** bir yere getirin.
 ![Uygulama kapsamı KIMLIĞI](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Şimdi **anahtarları görüntüle** ' ye tıklayın ve **birincil anahtar**
-![birincil anahtarını bir yere göz önünde yapın](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+3. Şimdi **anahtarları görüntüle** ' ye tıklayın ve **birincil anahtar** 
+ ![ birincil anahtarını bir yere göz önünde yapın](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Ağ geçidine bağlanmak için Rigado ile iletişim kurun 
 

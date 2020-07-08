@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 250bb5c7bec9cb68ba3236d0cb43938566b60fa8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027248"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>ODBC sürücüsü ile bı Analytics araçlarını kullanarak Azure Cosmos DB bağlanma
 
@@ -196,7 +195,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 Verilerinize yönelik bir görünüm oluşturmak için **şema Düzenleyicisi** penceresinde, **tanımları görüntüle** sütununda, kapsayıcının örneğine örnek olarak **Ekle** ' ye tıklayın. 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Create a view of data":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Verilerin görünümünü oluşturma":::
 
 
 Ardından **tanımları görüntüle** penceresinde şunları yapın:
@@ -226,7 +225,7 @@ Tüm ODBC uyumlu araçlarla Azure Cosmos DB bağlanmak için yeni DSN 'nizi kull
 
 1. **ODBC** penceresinde, oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam**' a tıklayın. **Gelişmiş Seçenekler** girdilerini boş bırakabilirsiniz.
 
-    ![Verileri al Power BI veri kaynağı adı (DSN) seçin](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Verileri al Power BI veri kaynağı adı (DSN) seçin":::
 
 1. **BIR ODBC sürücüsü kullanarak bir veri kaynağına erişin** penceresinde, **varsayılan veya özel** ' i seçin ve ardından **Bağlan**' a tıklayın. **Kimlik bilgisi bağlantı dizesi özelliklerini**eklemeniz gerekmez.
 
@@ -244,7 +243,10 @@ Tüm ODBC uyumlu araçlarla Azure Cosmos DB bağlanmak için yeni DSN 'nizi kull
 
 Aşağıdaki hatayı alırsanız [Adım 2](#connect) ' de Azure Portal kopyaladığınız **ana bilgisayar** ve **erişim anahtarı** değerlerinin doğru olduğundan emin olun ve yeniden deneyin. Değer hatasını serbest bir şekilde kopyalamak için **konağın** sağ tarafındaki Kopyala düğmelerini ve Azure Portal **erişim anahtarı** değerlerini kullanın.
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+```output
+[HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

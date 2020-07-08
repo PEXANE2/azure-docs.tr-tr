@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684008"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
@@ -101,7 +100,7 @@ Kabul Et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON ol
 
 **API istekleri**
 
-REST API bir istek yapmak için, HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL 'sini, bir kaynağa, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi gönderebilirsiniz. API hizmetinin URL 'SI, sağladığınız API uç noktasıdır. Örnek: https:// \< yourdatahub-website-name>. azurewebsites.net
+REST API bir istek yapmak için, HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL 'sini, bir kaynağa, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi gönderebilirsiniz. API hizmetinin URL 'SI, sağladığınız API uç noktasıdır. Örnek: https:// \<yourdatahub-website-name> . azurewebsites.net
 
 İsteğe bağlı olarak, filtrelemeye yönelik çağrıları al, boyut sınırını sınırla ve yanıtlarındaki verileri sıralamak için sorgu parametreleri ekleyebilirsiniz.
 

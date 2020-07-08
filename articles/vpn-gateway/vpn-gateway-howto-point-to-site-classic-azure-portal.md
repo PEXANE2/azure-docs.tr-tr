@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84984791"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
@@ -21,7 +20,7 @@ ms.locfileid: "84984791"
 Bu makalede, Noktadan siteye bağlantı ile sanal ağ oluşturma konusu gösterilmektedir. Azure portal kullanarak bu VNET 'i klasik dağıtım modeliyle oluşturursunuz. Bu yapılandırma, bağlanan istemcinin kimliğini doğrulamak için otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanır. Aşağıdaki makalelerde açıklanan seçenekleri kullanarak bu yapılandırmayı farklı bir dağıtım aracı veya modeliyle de oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure portalındaki](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >

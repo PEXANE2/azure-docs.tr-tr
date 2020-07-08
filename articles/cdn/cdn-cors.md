@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921160"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
@@ -82,7 +81,9 @@ Bunu Premium kurallar altyapısı ile gerçekleştirmenin iki yolu vardır. Her 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Tüm geçerli kaynakları içeren bir normal ifade
 Bu durumda, izin vermek istediğiniz tüm kaynakları içeren bir normal ifade oluşturacaksınız: 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **Verizon ' dan Premium Azure CDN** , normal ifadeler için kendi altyapısı olarak [Perl uyumlu normal ifadelerini](https://pcre.org/) kullanır.  Normal ifadenizi doğrulamak için [normal ifadeler 101](https://regex101.com/) gibi bir araç kullanabilirsiniz.  "/" Karakterinin normal ifadelerde geçerli olduğunu ve kaçmasına gerek duymadığını, ancak bu karakterin kaçış için en iyi uygulama olarak kabul edileceğini ve bazı Regex doğrulayıcıları tarafından beklendiğini unutmayın.

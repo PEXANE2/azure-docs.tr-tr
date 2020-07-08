@@ -17,10 +17,9 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764460"
 ---
 # <a name="compare-remote-access-solutions"></a>Uzaktan erişim çözümlerini karşılaştırın
@@ -34,21 +33,21 @@ Tehdit yönetimi ağ geçidi (TMG), Birleşik erişim ağ geçidi (UAG), Web uyg
 
 | Özellik | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Sertifika kimlik doğrulaması | Yes | Yes | - | - |
-| Tarayıcı uygulamalarını seçmeli olarak yayınla | Yes | Yes | Yes | Yes |
-| Ön kimlik doğrulaması ve çoklu oturum açma | Yes | Yes | Yes | Yes | 
-| Katman 2/3 güvenlik duvarı | Yes | Yes | - | - |
-| İletme Proxy özellikleri | Yes | - | - | - |
-| VPN özellikleri | Yes | Yes | - | - |
-| Zengin protokol desteği | - | Yes | Evet, HTTP üzerinden çalışıyorsa | Evet, HTTP üzerinden veya Uzak Masaüstü Ağ Geçidi aracılığıyla çalışıyorsa |
-| ADFS proxy sunucusu işlevi görür | - | Yes | Yes | - |
-| Uygulama erişimi için bir portal | - | Yes | - | Yes |
-| Yanıt gövdesi bağlantı çevirisi | Yes | Yes | - | Yes | 
-| Üst bilgiyle kimlik doğrulama | - | Yes | - | Evet, PingAccess ile | 
-| Bulut ölçeğinde güvenlik | - | - | - | Yes | 
-| Koşullu Erişim | - | Yes | - | Yes |
-| Sivilleştirilmiş bölgede bileşen yok (DMZ) | - | - | - | Yes |
-| Gelen bağlantı yok | - | - | - | Yes |
+| Sertifika kimlik doğrulaması | Evet | Evet | - | - |
+| Tarayıcı uygulamalarını seçmeli olarak yayınla | Evet | Evet | Evet | Evet |
+| Ön kimlik doğrulaması ve çoklu oturum açma | Evet | Evet | Evet | Evet | 
+| Katman 2/3 güvenlik duvarı | Evet | Evet | - | - |
+| İletme Proxy özellikleri | Evet | - | - | - |
+| VPN özellikleri | Evet | Evet | - | - |
+| Zengin protokol desteği | - | Evet | Evet, HTTP üzerinden çalışıyorsa | Evet, HTTP üzerinden veya Uzak Masaüstü Ağ Geçidi aracılığıyla çalışıyorsa |
+| ADFS proxy sunucusu işlevi görür | - | Evet | Evet | - |
+| Uygulama erişimi için bir portal | - | Evet | - | Evet |
+| Yanıt gövdesi bağlantı çevirisi | Evet | Evet | - | Evet | 
+| Üst bilgiyle kimlik doğrulama | - | Evet | - | Evet, PingAccess ile | 
+| Bulut ölçeğinde güvenlik | - | - | - | Evet | 
+| Koşullu Erişim | - | Evet | - | Evet |
+| Sivilleştirilmiş bölgede bileşen yok (DMZ) | - | - | - | Evet |
+| Gelen bağlantı yok | - | - | - | Evet |
 
 Çoğu senaryoda, modern çözüm olarak Azure AD Uygulama Ara Sunucusu önerilir. Web uygulaması ara sunucusu yalnızca AD FS için bir proxy sunucu gerektiren senaryolarda tercih edilir ve Azure Active Directory özel etki alanlarını kullanamazsınız. 
 

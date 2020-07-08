@@ -9,15 +9,14 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391970"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Node.js SDK: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)

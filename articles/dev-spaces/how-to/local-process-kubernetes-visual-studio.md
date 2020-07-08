@@ -1,18 +1,17 @@
 ---
-title: Visual Studio ile Kubernetes ile yerel Işlem kullanma (Önizleme)
+title: Visual Studio aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Geliştirme bilgisayarınızı bir Kubernetes kümesine Azure Dev Spaces ile bağlamak için Visual Studio ile Kubernetes ile yerel Işlem kullanmayı öğrenin
 keywords: Kubernetes, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar ile yerel Işlem
 ms.openlocfilehash: 8e89baeac8d9042a87685ed1268ed694db8d9455
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316806"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Visual Studio ile Kubernetes ile yerel Işlem kullanma (Önizleme)
+# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Visual Studio aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
 
 Kubernetes ile yerel Işlem, geliştirme bilgisayarınızda kod çalıştırmanıza ve hata ayıklamanıza karşın uygulamanızın veya hizmetlerinizin geri kalanı ile Kubernetes kümenize bağlı olmaya devam etmenize olanak tanır. Örneğin, birbirine bağlı çok sayıda hizmet ve veritabanına sahip büyük bir mikro hizmet mimariniz varsa, bu bağımlılıkların geliştirme bilgisayarınızda çoğaltılması zor olabilir. Ayrıca, iç döngü geliştirme sırasında her kod değişikliği için Kubernetes kümenize kod oluşturup dağıtmak, bir hata ayıklayıcıyla yavaş, zaman alabilir ve kullanılması zor olabilir.
 
@@ -29,7 +28,7 @@ Bu kılavuzda, Kubernetes ile yerel Işlem kullanarak, geliştirme bilgisayarın
 
 Bu kılavuz, geliştirme bilgisayarınızı bir Kubernetes kümesine bağlamayı göstermek için [Azure dev Spaces bisiklet paylaşımı örnek uygulamasını][bike-sharing-github] kullanır. Zaten bir Kubernetes kümesinde çalışan bir uygulamanız varsa, aşağıdaki adımları izleyerek kendi hizmetlerinizin adlarını da kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli].

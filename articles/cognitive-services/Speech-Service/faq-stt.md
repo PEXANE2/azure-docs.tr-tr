@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921022"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -71,7 +70,7 @@ Y **: modeller**yerel olarak indirilemez ve yürütülemez.
 
 **S: isteklerim günlüğe kaydediliyor mi?**
 
-Y: izlemeyi devre dışı bırakmak **için bir dağıtım**oluşturduğunuzda bir seçeneğiniz vardır. Bu noktada hiçbir ses veya döküm günlüğe kaydedilmez. Aksi takdirde, istekler genellikle güvenli depolamada Azure 'da oturum açar.
+**A**: varsayılan olarak istekler günlüğe kaydedilmez (ses veya döküm değil). Gerekirse, izlemeyi etkinleştirmek için [özel bir uç nokta oluşturduğunuzda](how-to-custom-speech-deploy-model.md) , *Bu uç nokta seçeneğinde günlük içeriği* ' ni seçebilirsiniz. Ardından istekler, güvenli depolama alanında Azure 'da günlüğe kaydedilir.
 
 **S: isteklerim kısıtlandı mı?**
 
@@ -118,6 +117,10 @@ veya
   - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
   - `Properties`Bu hizmet için görüntüleme,
   - tamamını kopyalayın `Resource ID` .
+  
+**S: eşzamanlılık limitimin artırılması maliyetimi artırıyor mu?**
+
+Y **: Hayır**, maliyet kullanımı temel alır. Eşzamanlılık artırma, daha yüksek maliyetlere neden olmaz. Maliyetle ilgili ayrıntılı bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) . 
   
 >[!NOTE]
 >Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları tarafından sınırlandırıldığından [, kapsayıcılar eşzamanlılık](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) sınırlarına artış gerektirmez.

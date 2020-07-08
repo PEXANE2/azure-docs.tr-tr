@@ -17,10 +17,9 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710023"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Sanal Ağ kapsayıcı ağı arabirimi eklentisini dağıtma
@@ -31,7 +30,7 @@ Azure Sanal Ağ kapsayıcı ağı arabirimi (CNI) eklentisi bir Azure sanal maki
 
 ACS-Engine, Kubernetes kümesini bir Azure Resource Manager şablonuyla dağıtır. Küme yapılandırması, şablon oluşturma sırasında araca geçirilen bir JSON dosyasında belirtilir. Desteklenen küme ayarlarının tam listesi ve açıklamaları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure Container Service Engine - Küme Tanımı](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md). Eklenti, ACS-Engine kullanılarak oluşturulan kümeler için varsayılan ağ eklentisidir. Eklenti yapılandırma sırasında aşağıdaki ağ yapılandırma ayarlarına dikkat edilmesi gerekir:
 
-  | Ayar                              | Description                                                                                                           |
+  | Ayar                              | Açıklama                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | Ana düğüme ayrılmış olan IP adresidir. Bu ayar zorunludur.                                     |
   | kubernetesConfig altında clusterSubnet | Kümenin dağıtıldığı ve podlara IP adreslerinin ayrıldığı sanal ağ alt ağının CIDR değeridir   |

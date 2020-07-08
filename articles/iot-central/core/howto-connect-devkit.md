@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756796"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
@@ -46,7 +45,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
     ![Yeni cihaz](media/howto-connect-devkit/new-device.png)
 
-1. Açılır pencerede, **CIHAZ kimliğini** `SampleDevKit` ve **cihaz adını** olarak `MXChip IoT DevKit - Sample`girin. **Benzetimli** seçeneğinin kapalı olduğundan emin olun. Ardından **Oluştur**’u seçin.
+1. Açılır pencerede, **CIHAZ kimliğini** `SampleDevKit` ve **cihaz adını** olarak girin `MXChip IoT DevKit - Sample` . **Benzetimli** seçeneğinin kapalı olduğundan emin olun. Ardından **Oluştur**'u seçin.
 
     ![Cihaz KIMLIĞI ve adı](media/howto-connect-devkit/device-id-name.png)
 
@@ -69,7 +68,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 1. Bilgisayarınızda veya tabletinizde, cihazın ekranında gösterilen WiFi ağ adına bağlanın. WiFi ağı **az** ve ardından MAC adresi ile başlar. Bu ağa bağlandığınızda Internet erişiminiz yok demektir. Bu durum beklenir ve bu ağa yalnızca cihazı yapılandırırken kısa bir süre boyunca bağlanırsınız.
 
-1. Web tarayıcınızı açın ve adresine [http://192.168.0.1/](http://192.168.0.1/)gidin. Aşağıdaki Web sayfası görüntülenir:
+1. Web tarayıcınızı açın ve adresine gidin [http://192.168.0.1/](http://192.168.0.1/) . Aşağıdaki Web sayfası görüntülenir:
 
     ![Yapılandırma Kullanıcı arabirimi](media/howto-connect-devkit/config-ui.png)
 

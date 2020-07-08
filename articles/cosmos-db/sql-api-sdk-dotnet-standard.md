@@ -9,15 +9,14 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: 78e0e1cbd66a943c8f893d8f51821587a70a6a7d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392038"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK V3 for SQL API: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
@@ -37,7 +36,7 @@ ms.locfileid: "85392038"
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Örnekler**|[.NET kod örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
-|**Kullanmaya başlayın**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
+|**Kullanmaya başlama**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Desteklenen geçerli çerçeve**|[Microsoft .NET Standart 2,0](/dotnet/standard/net-standard)|
 

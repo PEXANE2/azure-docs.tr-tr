@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84656589"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API tarafından üretilen Video Indexer çıkışını inceleyin
@@ -38,7 +37,7 @@ Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriğ
 
 ## <a name="root-elements"></a>Kök öğeleri
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |accountId|Çalma listesinin VI hesap KIMLIĞI.|
 |kimlik|Çalma listesinin KIMLIĞI.|
@@ -98,7 +97,7 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 
 ## <a name="videos"></a>videolar
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |accountId|Videonun VI hesap KIMLIĞI.|
 |kimlik|Videonun KIMLIĞI.|
@@ -203,7 +202,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="transcript"></a>döküm
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Satır KIMLIĞI.|
 |metin|Dökümü.|
@@ -241,7 +240,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="ocr"></a>OCR
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|OCR satır KIMLIĞI.|
 |metin|OCR metni.|
@@ -276,7 +275,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="keywords"></a>anahtar sözcükler
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Anahtar sözcük KIMLIĞI.|
 |metin|Anahtar sözcük metni.|
@@ -307,7 +306,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="faces"></a>leri
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Yüz KIMLIĞI.|
 |name|Yüzün adı. ' Bilinmeyen #0, tanımlı bir ünlüde veya müşterinin eğitilen kişi olabilir.|
@@ -352,7 +351,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="labels"></a>etikete
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Etiket KIMLIĞI.|
 |name|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
@@ -411,7 +410,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="scenes"></a>sahne
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Sahne KIMLIĞI.|
 |larında|Bu sahnenin zaman aralıklarının listesi (bir sahnenin yalnızca 1 örneği olabilir).|
@@ -444,7 +443,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="shots"></a>görüntüleri
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Görüntü KIMLIĞI.|
 |Gezen|Görüntüsündeki ana karelerin bir listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Her ana kare örneğinin, ana karenin küçük resim KIMLIĞINI tutan bir thumbnailId alanı vardır.|
@@ -494,7 +493,7 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka adları. Bu, markaların veya amblem algılamanın görsel olarak tanınmasını kapsamaz.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Marka KIMLIĞI.|
 |name|Markalar adı.|
@@ -553,7 +552,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="statistics"></a>girecek
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |Yazışma sayısı|Videodaki yazışma sayısı.|
 |Hoparlörlü Kerwordsayısı|Konuşmacı başına sözcük sayısı.|
@@ -563,7 +562,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="audioeffects"></a>audioEffects
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Ses efekti KIMLIĞI.|
 |tür|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
@@ -592,7 +591,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). Örneğin, 0-0.1, 0,1-0.2.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
@@ -631,7 +630,7 @@ Visualcontentmoderblock blok, büyük olasılıkla yetişkinlere yönelik içeri
 
 Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için kullanılabilir olabilir. Kullanıcılar, içeriğin insan incelemesi için bir istek gönderme seçeneğine sahiptir ve bu durumda Isyetişkin özniteliği insan incelemesi sonucunu içerecektir.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|
@@ -667,7 +666,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 #### <a name="textualcontentmoderation"></a>Textualcontentdenetlemesi 
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Metinsel içerik denetleme KIMLIĞI.|
 |bannedWordsCount |Yasaklanmış sözcüklerin sayısı.|
@@ -677,7 +676,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlanan duygu: Joy, sadyeti, Anger veya Fear olabilir.
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Duygu KIMLIĞI.|
 |tür|Konuşma ve ses ipuçları temelinde tanımlanan duygu. Duygu: Joy, sadyeti, Anger veya Fear olabilir.|
@@ -767,7 +766,7 @@ Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlan
 
 Video Indexer, döküm dosyalarından Ana konuların çıkarımını yapar. Mümkün olduğunda 2. düzey [IPTC](https://iptc.org/standards/media-topics/) taksonomi dahil edilir. 
 
-|Name|Description|
+|Name|Açıklama|
 |---|---|
 |kimlik|Konu KIMLIĞI.|
 |name|Konu adı, örneğin: "Ilaç".|

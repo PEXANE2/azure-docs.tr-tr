@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718489"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027435"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure üzerindeki SQL Server Sanal Makinesi verilerini işleme
 Bu belgede, Azure 'daki bir SQL Server VM depolanan veriler için verilerin nasıl araştırılacak ve özelliklerin nasıl oluşturulacağı ele alınmaktadır. Bu hedef, SQL kullanılarak veya Python gibi bir programlama dili kullanılarak veri denetimi tarafından tamamlanabilir.
@@ -68,16 +67,19 @@ Bu bölümde, SQL kullanarak özellik oluşturma yollarını anlatmaktadır:
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>Sayı tabanlı özellik oluşturma
 Aşağıdaki örneklerde, Count özellikleri oluşturmanın iki yolu gösterilmektedir. İlk yöntem koşullu Sum kullanır ve ikinci yöntem ' WHERE ' yan tümcesini kullanır. Bu sonuçlar, özgün verilerle birlikte Count özelliklerinin olması için özgün tabloyla (birincil anahtar sütunları kullanılarak) eklenebilir.
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+```
 
 ### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>Özellik oluşturmayı atma
 Aşağıdaki örnek, bir özellik olarak kullanılabilecek bir sayısal sütun (beş bölme kullanılarak) binerek nasıl oluşturulduğu gösterilmektedir:
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
-
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Tek bir sütundan özellikler kullanıma alınıyor
 Bu bölümde, ek özellikler oluşturmak için tablodaki tek bir sütunun nasıl alınacağını gösteririz. Örnek, özellik oluşturmaya çalıştığınız tabloda bir enlem veya boylam sütununun olduğunu varsayar.
@@ -97,16 +99,18 @@ Latitude/Boylam konum verilerine ilişkin kısa bir açıklama aşağıda verilm
 
 Konum bilgileri, bölge, konum ve şehir bilgilerini ayırarak aşağıdaki şekilde değiştirilebilir. Ayrıca, bölge/bölge bilgilerini almak için [noktaya göre konum bul](https://msdn.microsoft.com/library/ff701710.aspx) ' da bulunan Bing Haritalar API 'si gıbı bir REST uç noktasını çağırabilirsiniz.
 
-    select 
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select 
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 Bu konum tabanlı özellikler, daha önce açıklandığı gibi ek sayı özellikleri oluşturmak için daha fazla kullanılabilir. 
 
@@ -125,14 +129,18 @@ Veri [bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)bölümü
 
 Aşağıdaki bağlantı dizesi biçimi pyodbc (ServerName, dbname, username ve Password değerlerini belirli değerlerinizle değiştirin) kullanılarak Python 'dan bir SQL Server veritabanına bağlanmak için kullanılabilir:
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 Python 'daki [Pandas kitaplığı](https://pandas.pydata.org/) , Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, bir SQL Server veritabanından bir Pandas veri çerçevesine döndürülen sonuçları okur:
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 Artık, [veri bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)makalesinde bahsedilen Pandas veri çerçevesiyle birlikte çalışabilirsiniz.
 

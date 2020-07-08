@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733680"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Izleyici Application Insights aracı API 'SI başvurusu
@@ -66,8 +65,8 @@ Configuring registry for instrumentation engine...
 
 Bir hedef bilgisayardaki IIS uygulamalarının birlikte izlenmesini eklemeyi sunar.
 
-Bu cmdlet, IIS applicationHost. config dosyasını değiştirecek ve bazı kayıt defteri anahtarlarını ayarlayacaktır.
-Ayrıca, her bir uygulama tarafından kullanılan izleme anahtarını tanımlayan bir ApplicationInsights. Ikey. config dosyası oluşturur.
+Bu cmdlet, IIS applicationHost.config değiştirecek ve bazı kayıt defteri anahtarlarını ayarlayacaktır.
+Ayrıca, her bir uygulama tarafından kullanılan izleme anahtarını tanımlayan bir applicationinsights.ikey.config dosyası oluşturur.
 IIS, uygulama başlatılırken Application Insights SDK 'Yı uygulamalara ekleyecektir ve RedfieldModule 'u başlangıçta yükler.
 Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
@@ -84,11 +83,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter``'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `MachineFilter`joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
 - `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
 - `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
 - `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- Son olarak `AppFilter` , önceki kurallarla `'.*'` eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
+- Son olarak, `AppFilter` `'.*'` önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -104,11 +103,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ### <a name="parameters"></a>Parametreler
 
 #### <a name="-instrumentationkey"></a>-Instrumentationkey
-**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
+**Gerekli.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
 
 #### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
-**Gereklidir.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
-' İ ayarlayarak `MachineFilter`, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
+**Gerekli.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
+' İ ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz `MachineFilter` .
 
 > [!IMPORTANT]
 > Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
@@ -213,7 +212,7 @@ Configuring registry for instrumentation engine...
 ## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
 Hedef bilgisayarda izlemeyi devre dışı bırakır.
-Bu cmdlet, IIS applicationHost. config ' deki düzenlemeleri kaldırır ve kayıt defteri anahtarlarını kaldırır.
+Bu cmdlet, IIS applicationHost.config düzenlemelerini kaldırır ve kayıt defteri anahtarlarını kaldırır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -290,7 +289,7 @@ Bu cmdlet, izleme için gerekli olan anahtar dosyaları hakkında sürüm bilgil
 
 #### <a name="example-application-status"></a>Örnek: uygulama durumu
 
-Web sitelerinin izleme `Get-ApplicationInsightsMonitoringStatus` durumunu göstermek için komutunu çalıştırın.
+`Get-ApplicationInsightsMonitoringStatus`Web sitelerinin izleme durumunu göstermek için komutunu çalıştırın.
 
 ```powershell
 
@@ -335,7 +334,7 @@ Bu örnekte;
 
 #### <a name="example-powershell-module-information"></a>Örnek: PowerShell modülü bilgileri
 
-Geçerli modülle `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` ilgili bilgileri göstermek için komutunu çalıştırın:
+`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`Geçerli modülle ilgili bilgileri göstermek için komutunu çalıştırın:
 
 ```powershell
 
@@ -392,7 +391,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Şu komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
+Şu komutu çalıştırın `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
 
 
 ```
@@ -446,9 +445,9 @@ Ayrıca, gerekli dll 'Lerin IIS çalışma zamanına yüklenip yüklenmediğini 
 
 
 Bu işlem herhangi bir nedenle başarısız olursa, bu komutları el ile çalıştırabilirsiniz:
-- ıisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "ınstrumentationengine AI. ApplicationInsights
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "ınstrumentationengine AI ApplicationInsights"
+- iisreset.exe/Status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "ınstrumentationengine AI. ApplicationInsights
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "ınstrumentationengine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -476,11 +475,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter``'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `MachineFilter`joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
 - `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
 - `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
 - `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- Son olarak `AppFilter` , önceki kurallarla `'.*'` eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
+- Son olarak, `AppFilter` `'.*'` önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -494,11 +493,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 ### <a name="parameters"></a>Parametreler
 
 #### <a name="-instrumentationkey"></a>-Instrumentationkey
-**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
+**Gerekli.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
 
 #### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
-**Gereklidir.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
-' İ ayarlayarak `MachineFilter`, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
+**Gerekli.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
+' İ ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz `MachineFilter` .
 
 > [!IMPORTANT]
 > Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
@@ -556,7 +555,7 @@ Kodsuz kullanacaksınız Attach çalışma zamanından [ETW olaylarını](https:
 
 Toplanan olaylar, gerçek zamanlı olarak konsola yazdırılır ve bir ETL dosyasına kaydedilir. Çıktı ETL dosyası, daha fazla araştırma için [PerfView](https://github.com/microsoft/perfview) tarafından açılabilir.
 
-Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar veya el ile (`Ctrl + C`) durduruluncaya kadar çalışır.
+Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar veya el ile () durduruluncaya kadar çalışır `Ctrl + C` .
 
 ### <a name="examples"></a>Örnekler
 
@@ -569,15 +568,15 @@ Kodsuz kullanacaksınız Attach çalışma zamanı, IIS başlatıldığında ve 
 Bu olayları toplamak için:
 1. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /stop` ve tüm Web uygulamalarını kapatmak için yürütün.
 2. Bu cmdlet 'i Yürüt
-3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /start` başlatmak için yürütün.
+3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, `iisreset /start` IIS 'yi başlatmak için yürütün.
 4. Uygulamanıza gözatmayı deneyin.
-5. Uygulamanızın yüklenmesi tamamlandıktan sonra, el ile durdurabilirsiniz (`Ctrl + C`) veya zaman aşımı süresini bekleyebilirsiniz.
+5. Uygulamanızın yüklenmesi tamamlandıktan sonra, el ile durdurabilirsiniz ( `Ctrl + C` ) veya zaman aşımı süresini bekleyebilirsiniz.
 
 #### <a name="what-events-to-collect"></a>Toplanacak olaylar
 
 Olayları toplarken üç seçeneğiniz vardır:
-1. Application Insights SDK 'dan `-CollectSdkEvents` yayılan olayları toplamak için anahtarını kullanın.
-2. Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için anahtarını `-CollectRedfieldEvents` kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
+1. `-CollectSdkEvents`APPLICATION INSIGHTS SDK 'dan yayılan olayları toplamak için anahtarını kullanın.
+2. `-CollectRedfieldEvents`Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için anahtarını kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
 3. Her iki olay türünü de toplamak için her iki anahtarı kullanın.
 4. Varsayılan olarak, hiçbir anahtar belirtilmemişse olay türleri toplanacaktır.
 

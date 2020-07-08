@@ -9,15 +9,14 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: fdc3d4244daa1f3b3d12898d6de42128ae1670ec
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392055"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB .NET Core SDK v2: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
@@ -37,7 +36,7 @@ ms.locfileid: "85392055"
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Örnekler**|[.NET kod örnekleri](sql-api-dotnet-samples.md)|
-|**Kullanmaya başlayın**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
+|**Kullanmaya başlama**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Desteklenen geçerli çerçeve**|[.NET Standard 1,6 ve .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 

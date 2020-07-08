@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756675"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI'yı kullanarak cihaz bağlantısını izleme
@@ -25,7 +24,7 @@ Cihazlarınızın IoT Central gönderdiği iletileri görmek ve cihaz ikizi değ
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ Azure CLı yüklü ve sürüm 2.0.7 veya üzeri. Çalıştırarak `az --version`Azure CLI 'nizin sürümünü denetleyin. [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
++ Azure CLı yüklü ve sürüm 2.0.7 veya üzeri. Çalıştırarak Azure CLı 'nizin sürümünü denetleyin `az --version` . [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
 + Azure 'da bir IoT Central uygulamasına kullanıcı olarak eklenen bir iş veya okul hesabı.
 
 ## <a name="install-the-iot-central-extension"></a>IoT Central uzantısını yükler
@@ -50,9 +49,9 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>Uzantıyı kullanma
 
-Aşağıdaki bölümlerde, çalıştırdığınızda `az iot central`kullanabileceğiniz ortak komutlar ve seçenekler açıklanır. Komutların ve seçeneklerin tam kümesini görüntülemek için alt komutlarına `--help` `az iot central` veya herhangi birine geçiş yapın.
+Aşağıdaki bölümlerde, çalıştırdığınızda kullanabileceğiniz ortak komutlar ve seçenekler açıklanır `az iot central` . Komutların ve seçeneklerin tam kümesini görüntülemek için `--help` `az iot central` alt komutlarına veya herhangi birine geçiş yapın.
 
-### <a name="login"></a>Oturum Aç
+### <a name="login"></a>Oturum aç
 
 Azure CLı 'de oturum açarak başlayın. 
 

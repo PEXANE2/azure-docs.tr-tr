@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759259"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLı kullanarak yakınlık yerleşimi gruplarına VM 'Leri dağıtma
@@ -22,7 +21,7 @@ Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbir
 
 
 ## <a name="create-the-proximity-placement-group"></a>Yakınlık yerleşimi grubunu oluşturma
-Kullanarak [`az ppg create`](/cli/azure/ppg#az-ppg-create)bir yakınlık yerleşimi grubu oluşturun. 
+Kullanarak bir yakınlık yerleşimi grubu oluşturun [`az ppg create`](/cli/azure/ppg#az-ppg-create) . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -63,11 +62,11 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Kullanılabilirlik Kümeleri
-Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluşturabilirsiniz. Kullanılabilirlik kümesi oluşturmak `--ppg` için [az VM AVAILABILITY-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) ile aynı parametreyi kullanın ve kullanılabilirlik kümesindeki tüm VM 'ler aynı yakınlık yerleşimi grubunda de oluşturulur.
+Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluşturabilirsiniz. `--ppg`Kullanılabilirlik kümesi oluşturmak için [az VM AVAILABILITY-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) ile aynı parametreyi kullanın ve kullanılabilirlik kümesindeki tüm VM 'ler aynı yakınlık yerleşimi grubunda de oluşturulur.
 
 ## <a name="scale-sets"></a>Ölçek kümeleri
 
-Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. Bir ölçek kümesi `--ppg` oluşturmak için [az VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
+Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. `--ppg`Bir ölçek kümesi oluşturmak için [az VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
