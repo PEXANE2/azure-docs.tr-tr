@@ -1,7 +1,7 @@
 ---
 title: Modern okuyucu Swift istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturup tam ekran okuyucusu API işlevini eklersiniz.
+description: Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturacaksınız ve tam ekran okuyucu API işlevini eklersiniz.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268752"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038694"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
@@ -527,7 +527,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-*Iframemessaging. js* adlı *Resources* klasörüne bir dosya ekleyin ve aşağıdaki kodu ekleyin.
+*iFrameMessaging.js* adlı *Resources* klasörüne bir dosya ekleyin ve aşağıdaki kodu ekleyin.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -573,4 +573,4 @@ Uygulamanızda şunları görmeniz gerekir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet
+* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet

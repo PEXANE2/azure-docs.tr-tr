@@ -3,17 +3,17 @@ title: Veri hata kodları-Azure Stream Analytics
 description: Veri hata kodlarıyla ilgili Azure Stream Analytics sorunları giderin.
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f7383a56a11ac9b567c80e73cc84944174c30ac8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 56d7527eebb91bd09895f6cd0238721574df1015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597019"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037333"
 ---
-# <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics yapılandırma hata kodları
+# <a name="azure-stream-analytics-data-error-codes"></a>Azure Stream Analytics veri hata kodları
 
 Azure Stream Analytics işinizin beklenmedik davranışlarından hata ayıklamaya yardımcı olması için etkinlik günlüklerini ve kaynak günlüklerini kullanabilirsiniz. Bu makalede, her veri hata hata kodu için açıklama listelenir. Akışta beklenmeyen bir kayıt şeması gibi hatalı veriler olduğunda veri hataları oluşur.
 

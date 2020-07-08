@@ -4,12 +4,12 @@ description: Durum bilgisiz ve durum bilgisi olan hizmetlerle Microsoft Azure Se
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083787"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038030"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services özelliğini kullanmaya başlayın
 
@@ -23,14 +23,14 @@ Azure Service Fabric uygulaması, kodunuzu çalıştıran bir veya daha fazla hi
 
 Reliable Services kullanmaya başlamak için yalnızca birkaç temel kavramları anlamanız gerekir:
 
-* **Hizmet türü**: Bu hizmet uygulamanız. Bu, yazdığınız sınıf tarafından, bir ad ve sürüm `StatelessService` numarası ile birlikte kullanılan diğer kod veya bağımlılıkları genişletir.
+* **Hizmet türü**: Bu hizmet uygulamanız. Bu, yazdığınız sınıf tarafından `StatelessService` , bir ad ve sürüm numarası ile birlikte kullanılan diğer kod veya bağımlılıkları genişletir.
 * **Adlandırılmış hizmet örneği**: hizmetinizi çalıştırmak için, bir sınıf türünün nesne örneklerini oluştururken olduğu gibi, hizmet türünden adlandırılmış örnekler oluşturursunuz. Hizmet örneği, "Fabric:/" kullanılarak URI biçiminde bir ada sahiptir Düzen, örneğin "Fabric:/MyApp/hizmetim".
 * **Hizmet ana bilgisayarı**: oluşturduğunuz adlandırılmış hizmet örneklerinin bir konak işlemi içinde çalışması gerekir. Hizmet ana bilgisayarı yalnızca hizmetinizin örneklerinin çalıştırılabileceği bir işlemdir.
 * **Hizmet kaydı**: kayıt her şeyi bir araya getirir. Service Fabric çalıştırmak için hizmet türü, bir hizmet ana bilgisayarındaki Service Fabric çalışma zamanına kaydedilmelidir.  
 
 ## <a name="create-a-stateless-service"></a>Durum bilgisi olmayan hizmet oluşturma
 
-Durum bilgisi olmayan bir hizmet, şu anda bulut uygulamalarında norm olan bir hizmet türüdür. Hizmetin kendisi, güvenilir bir şekilde depolanması veya yüksek oranda kullanılabilir olması gereken veriler içermediğinden durum bilgisiz olarak değerlendirilir. Durum bilgisi olmayan bir hizmetin bir örneği kapatılırsa, tüm iç durumları kaybedilir. Bu tür bir hizmette durum, yüksek oranda kullanılabilir ve güvenilir hale getirilme için Azure tabloları veya bir SQL veritabanı gibi bir dış depoya kalıcı olmalıdır.
+Durum bilgisi olmayan bir hizmet, şu anda bulut uygulamalarında norm olan bir hizmet türüdür. Hizmetin kendisi, güvenilir bir şekilde depolanması veya yüksek oranda kullanılabilir olması gereken veriler içermediğinden durum bilgisiz olarak değerlendirilir. Durum bilgisi olmayan bir hizmetin bir örneği kapatılırsa, tüm iç durumları kaybedilir. Bu tür bir hizmette, durumun yüksek oranda kullanılabilir ve güvenilir hale getirilme için Azure tabloları veya SQL veritabanı gibi bir dış depoya kalıcı olması gerekir.
 
 Visual Studio 2017 veya Visual Studio 2019 ' yi yönetici olarak başlatın ve *HelloWorld*adlı yeni bir Service Fabric uygulama projesi oluşturun:
 
@@ -68,7 +68,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 Bu öğreticide, `RunAsync()` giriş noktası yöntemine odaklanacağız. Bu, kodunuzun hemen çalıştırılmasına başlayabileceğiniz yerdir.
-Proje şablonu, bir toplama sayısını artıran örnek `RunAsync()` bir uygulamasını içerir.
+Proje şablonu, `RunAsync()` bir toplama sayısını artıran örnek bir uygulamasını içerir.
 
 > [!NOTE]
 > İletişim yığınıyla çalışma hakkında ayrıntılı bilgi için bkz. [ASP.NET Core Ile hizmet iletişimi](service-fabric-reliable-services-communication-aspnetcore.md)
@@ -103,9 +103,9 @@ Bir hizmetin bir örneği yerleştirildiğinde ve yürütülmeye hazırlanıyors
 
 Bu düzenleme sistem tarafından, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde dengeli tutmak için yönetilir.
 
-`RunAsync()`zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için uzun süre çalışan veya engelleme işlemlerinde bir görev veya await döndürmelidir. Bir önceki örnekteki `while(true)` döngüde bir görev döndürmesinin `await Task.Delay()` kullanıldığını aklınızda edin. İş yükünüz zaman uyumlu olarak engellenirse, `Task.Run()` `RunAsync` uygulamanızda ile yeni bir görev zamanlamanız gerekir.
+`RunAsync()`zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için uzun süre çalışan veya engelleme işlemlerinde bir görev veya await döndürmelidir. `while(true)`Bir önceki örnekteki döngüde bir görev döndürmesinin kullanıldığını aklınızda edin `await Task.Delay()` . İş yükünüz zaman uyumlu olarak engellenirse, uygulamanızda ile yeni bir görev zamanlamanız gerekir `Task.Run()` `RunAsync` .
 
-İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve sistem iptali istediğinde mümkün olduğunca hızlı `RunAsync()` bir şekilde çıkmak önemlidir.
+İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `RunAsync()` sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir.
 
 Bu durum bilgisi olmayan hizmet örneğinde, sayı yerel bir değişkende depolanır. Ancak bu durum bilgisiz olmayan bir hizmet olduğundan, depolanan değer yalnızca hizmet örneğinin geçerli yaşam döngüsü için mevcut olur. Hizmet taşınsa veya yeniden başlatıldığında, değer kaybedilir.
 
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`durum bilgisiz ve durum bilgisi içermeyen hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform yürütmeden `RunAsync()`önce sizin adınıza ek iş gerçekleştirir. Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
+`RunAsync()`durum bilgisiz ve durum bilgisi içermeyen hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform yürütmeden önce sizin adınıza ek iş gerçekleştirir `RunAsync()` . Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Güvenilir koleksiyonlar ve güvenilir durum Yöneticisi
 
@@ -193,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Güvenilir koleksiyonlar, dil `System.Collections.Generic` Ile tümleşik sorgu (LINQ) dışında `System.Collections.Concurrent` , ve karşılıkları tarafından aynı işlemlerin çoğuna sahiptir. Güvenilir koleksiyonlardaki işlemler zaman uyumsuzdur. Bunun nedeni, güvenilir Koleksiyonlar içeren yazma işlemlerinin verileri diske çoğaltmak ve diskte kalıcı hale getirmek için g/ç işlemleri gerçekleştirmesini sağlar.
+Güvenilir koleksiyonlar `System.Collections.Generic` `System.Collections.Concurrent` , dil Ile tümleşik sorgu (LINQ) dışında, ve karşılıkları tarafından aynı işlemlerin çoğuna sahiptir. Güvenilir koleksiyonlardaki işlemler zaman uyumsuzdur. Bunun nedeni, güvenilir Koleksiyonlar içeren yazma işlemlerinin verileri diske çoğaltmak ve diskte kalıcı hale getirmek için g/ç işlemleri gerçekleştirmesini sağlar.
 
 Güvenilir koleksiyon işlemleri *işlem yapılabilir*ve bu sayede durum, birden çok güvenilir koleksiyonlar ve işlemler arasında tutarlı tutulabilmenizi sağlayabilir. Örneğin, bir iş öğesini güvenilir bir kuyruktan sıradan sıradan alabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde güvenilir bir sözlükte kaydedebilirsiniz. Bu bir atomik işlem olarak değerlendirilir ve tüm işlemin başarılı olacağını veya işlemin tamamının geri alınmayacağını garanti eder. Öğeyi sıradan çıktıktan sonra bir hata oluşursa, ancak sonucu kaydetmeden önce, tüm işlem geri alınır ve öğe işlenmek üzere kuyrukta kalır.
 

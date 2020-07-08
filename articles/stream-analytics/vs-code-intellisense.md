@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394403"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037265"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code için Azure Stream Analytics araçlarında IntelliSense
 
@@ -34,13 +34,12 @@ Nokta karakteri gibi bir tetikleyici karakteri yazarak herhangi bir düzenleyici
 
 VS Code IntelliSense için Stream Analytics araçları, dil sunucusu önerileri, kod parçacıkları ve basit sözcük tabanlı metinsel tamamlama gibi farklı türlerde tamamlama sağlar.
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Tamamlama     |  Tür       |
+| ----- | ------- |
 | Anahtar sözcükler | `keyword`
 | İşlevler | `build-in function`, `user defined function`  |
 | Veri kümesi adı| `input`, `output`, `intermediate result set`|
 | Veri kümesi sütun adı|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>Ad tamamlama
 

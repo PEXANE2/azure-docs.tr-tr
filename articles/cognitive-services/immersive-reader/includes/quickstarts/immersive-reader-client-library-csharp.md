@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268738"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038685"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
@@ -41,7 +41,7 @@ Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET C
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _gizli dizileri. JSON_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Gizli dizi okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak _gizli dizileri. JSON_ içeriğini aşağıdaki ile değiştirin.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
 
 ```json
 {
@@ -70,7 +70,7 @@ _Controllers\homecontroller.cs_dosyasını açın ve dosyanın en üstündeki _u
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Şimdi, denetleyiciyi _gizli dizi. JSON_' dan Azure AD değerlerini alacak şekilde yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
+Şimdi, denetleyiciyi _üzerindesecrets.js_Azure AD değerlerini almak için yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -305,7 +305,8 @@ Tarayıcınızda şunları görmeniz gerekir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node. js kullanarak modern okuyucu istemci kitaplığı ile neler yapabileceğinizi görmek için [Node. js hızlı](../../quickstart-nodejs.md) başlangıcını görüntüleyin
+* Node.js kullanarak tam ekran okuyucusu istemci kitaplığıyla neler yapabileceğinizi görmek için [Node.js hızlı](../../tutorial-nodejs.md) başlangıcı 'nı görüntüleyin.
+* Java ya da Android için Kotlin kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Android öğreticisini](../../tutorial-android.md) görüntüleyin
+* İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](../../tutorial-ios.md) görüntüleyin
 * Python kullanarak tam ekran okuyucusu istemci kitaplığı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](../../tutorial-python.md) görüntüleyin
-* Swift kullanarak tam ekran okuyucusu istemci kitaplığı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](../../tutorial-ios-picture-immersive-reader.md) görüntüleyin
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet

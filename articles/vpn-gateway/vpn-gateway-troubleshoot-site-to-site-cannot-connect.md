@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75862586"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037843"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Sorun giderme: bir Azure siteden siteye VPN bağlantısı bağlanamaz ve çalışmayı durduruyor
 
@@ -34,19 +34,19 @@ Azure VPN ağ geçidinin türünü denetleyin.
     
     ![Ağ geçidine genel bakış](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1. Adım. Şirket içi VPN cihazının doğrulanıp onaylanmadığını denetleyin
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Adım 1. Şirket içi VPN cihazının doğrulanıp onaylanmadığını denetleyin
 
 1. [Doğrulanan BIR VPN cihazı ve işletim sistemi sürümü](vpn-gateway-about-vpn-devices.md#devicetable)kullanıp kullanmayacağınızı denetleyin. Cihaz, doğrulanan bir VPN aygıtı değilse, bir uyumluluk sorunu olup olmadığını görmek için cihaz üreticisine başvurmanız gerekebilir.
 
 2. VPN cihazının doğru yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [cihaz yapılandırma örneklerini düzenleme](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-verify-the-shared-key"></a>2. Adım Paylaşılan anahtarı doğrulama
+### <a name="step-2-verify-the-shared-key"></a>Adım 2. Paylaşılan anahtarı doğrulama
 
 Anahtarların eşleştiğinden emin olmak için şirket içi VPN cihazının paylaşılan anahtarını Azure sanal ağ VPN ile karşılaştırın. 
 
 Azure VPN bağlantısının paylaşılan anahtarını görüntülemek için aşağıdaki yöntemlerden birini kullanın:
 
-**Azure portal**
+**Azure portalındaki**
 
 1. Oluşturduğunuz VPN Gateway siteden siteye bağlantısına gidin.
 
@@ -60,11 +60,15 @@ Azure VPN bağlantısının paylaşılan anahtarını görüntülemek için aşa
 
 Azure Resource Manager dağıtım modeli için:
 
-    Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```azurepowershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```
 
 Klasik dağıtım modeli için:
 
-    Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```azurepowershell
+Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>3. Adım VPN eşi IP 'lerini doğrulama
 

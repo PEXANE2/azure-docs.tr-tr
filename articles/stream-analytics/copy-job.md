@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c6b6af46ae89f794e05c3aa80716250c566257e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612274"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037231"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri kopyalama veya yedekleme
 
@@ -21,7 +21,7 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 ## <a name="before-you-begin"></a>Başlamadan önce
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * [Visual Studio için Visual Studio Code veya Azure Stream Analytics araçları](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension) [için Azure Stream Analytics uzantısını](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension) yükler.  
 

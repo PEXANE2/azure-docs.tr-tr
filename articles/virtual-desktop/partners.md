@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126153"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038064"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
