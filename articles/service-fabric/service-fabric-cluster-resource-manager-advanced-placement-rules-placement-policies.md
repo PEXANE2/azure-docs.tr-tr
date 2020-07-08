@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75834459"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric Hizmetleri için yerleştirme ilkeleri
@@ -101,7 +100,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 > Kısıtlamalar ve kısıtlama öncelikleri hakkında daha fazla bilgi için [Bu konuya](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)bakın.
 >
 
-"`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`" Gibi bir sistem durumu iletisi görüyorsanız, bu koşula veya bunun gibi bir duruma ulaşmış olursunuz. Genellikle yalnızca bir veya iki çoğaltma geçici olarak birlikte paketlenmiştir. Bu nedenle, belirli bir etki alanında çoğaltmalardan daha az bir çekirdek olduğu sürece güvenli olursunuz. Paketleme nadir bir durumdur, ancak bu durum genellikle düğümler geri geldiğinden bu durumlar geçicidir. Düğümler kapalıysa ve Küme Kaynak Yöneticisi değişiklik oluşturmaya ihtiyaç duyuyorsa, genellikle ideal hata etki alanlarında bulunan başka düğümler vardır.
+"" Gibi bir sistem durumu iletisi görüyorsanız `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain` , bu koşula veya bunun gibi bir duruma ulaşmış olursunuz. Genellikle yalnızca bir veya iki çoğaltma geçici olarak birlikte paketlenmiştir. Bu nedenle, belirli bir etki alanında çoğaltmalardan daha az bir çekirdek olduğu sürece güvenli olursunuz. Paketleme nadir bir durumdur, ancak bu durum genellikle düğümler geri geldiğinden bu durumlar geçicidir. Düğümler kapalıysa ve Küme Kaynak Yöneticisi değişiklik oluşturmaya ihtiyaç duyuyorsa, genellikle ideal hata etki alanlarında bulunan başka düğümler vardır.
 
 Bazı iş yükleri, daha az etki alanına paketlenmiş olsalar bile her zaman hedef yineleme sayısına sahip olmayı tercih eder. Bu iş yükleri toplam eşzamanlı kalıcı etki alanı arızalarına karşı işlenir ve genellikle yerel durumu kurtarabilir. Diğer iş yükleri, risk doğruluğu veya veri kaybı dışında kalma süresini ortadan kaldırmaktı. Çoğu üretim iş yükleri üçten fazla çoğaltma, üç hata etki alanı ve hata etki alanı başına çok sayıda geçerli düğüm ile çalışır. Bu nedenle, varsayılan davranış varsayılan olarak etki alanı paketlemeye izin verir. Varsayılan davranış, geçici bir etki alanı paketleme anlamına gelir.
 

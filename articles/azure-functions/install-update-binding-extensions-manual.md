@@ -4,10 +4,9 @@ description: Dağıtılan işlev uygulamaları için Azure Işlevleri bağlama u
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768869"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Portaldan Azure Işlevleri bağlama uzantılarını el ile yüklemeyi veya güncelleştirmeyi güncelleştirme
@@ -22,17 +21,17 @@ Uzantıları portala el ile yüklemek veya güncelleştirmek için aşağıdaki 
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin. **Genel bakış** sekmesini seçin ve **Durdur**' u seçin.  İşlev uygulamasının durdurulması, değişikliklerin yapılabilmesi için dosyaların kilidini açar.
 
-1. **Platform özellikleri** sekmesini seçin ve **geliştirme araçları** altında **Gelişmiş araçlar (kudu)** öğesini seçin. Kudu uç noktası (`https://<APP_NAME>.scm.azurewebsites.net/`) yeni bir pencerede açılır.
+1. **Platform özellikleri** sekmesini seçin ve **geliştirme araçları** altında **Gelişmiş araçlar (kudu)** öğesini seçin. Kudu uç noktası ( `https://<APP_NAME>.scm.azurewebsites.net/` ) yeni bir pencerede açılır.
 
-1. Kudu penceresinde **Hata Ayıkla konsol** > **cmd**' yi seçin.  
+1. Kudu penceresinde **Hata Ayıkla konsol**  >  **cmd**' yi seçin.  
 
-1. Komut penceresinde öğesine `D:\home\site\wwwroot` gidin ve klasörü silmek `bin` için yanındaki Sil simgesini seçin. Silmeyi onaylamak için **Tamam ' ı** seçin.
+1. Komut penceresinde öğesine gidin `D:\home\site\wwwroot` ve `bin` klasörü silmek için yanındaki Sil simgesini seçin. Silmeyi onaylamak için **Tamam ' ı** seçin.
 
-1. `extensions.csproj` Dosyanın yanında, işlev uygulaması için bağlama uzantılarını tanımlayan Düzenle simgesini seçin. Proje dosyası çevrimiçi düzenleyicide açılır.
+1. `extensions.csproj`Dosyanın yanında, işlev uygulaması için bağlama uzantılarını tanımlayan Düzenle simgesini seçin. Proje dosyası çevrimiçi düzenleyicide açılır.
 
 1. **ItemGroup**Içinde, **packagereference** öğelerinin gerekli eklemelerini ve güncelleştirmelerini yapıp **Kaydet**' i seçin. Desteklenen paket sürümlerinin geçerli listesi, [hangi paketlere](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) ihtiyacım var? wiki makalesinde bulunabilir. Üç Azure depolama bağlaması da Microsoft. Azure. WebJobs. Extensions. Storage paketini gerektirir.
 
-1. `wwwroot` Klasörde, başvurulan derlemeleri `bin` yeniden derlemek için aşağıdaki komutu çalıştırın.
+1. Klasörde `wwwroot` , başvurulan derlemeleri yeniden derlemek için aşağıdaki komutu çalıştırın `bin` .
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget

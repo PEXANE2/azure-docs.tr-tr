@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497959"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Yüksek oranda kullanılabilir Service Fabric Service Fabric bir kafes uygulamasında güvenilir disk tabanlı birim bağlama 
@@ -21,11 +20,11 @@ Service Fabric güvenilir disk, yüksek kullanılabilirlik için Service Fabric 
 
 Bu örnekte, sayaç uygulamasının bir tarayıcıda sayaç değerini gösteren bir ASP.NET Core hizmeti vardır.
 
-`counterService` Düzenli aralıklarla bir dosyadaki sayaç değerini okur, artırır ve dosyaya geri yazar. Dosya, Service Fabric güvenilir disk tarafından desteklenen birimde takılı bir klasörde depolanır.
+`counterService`Düzenli aralıklarla bir dosyadaki sayaç değerini okur, artırır ve dosyaya geri yazar. Dosya, Service Fabric güvenilir disk tarafından desteklenen birimde takılı bir klasörde depolanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu görevi gerçekleştirmek için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Azure CLı 'yi bu makaleyle birlikte kullanmak için, en azından `az --version` `azure-cli (2.0.43)`döndürdüğünden emin olun.  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
+Bu görevi gerçekleştirmek için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Azure CLı 'yi bu makaleyle birlikte kullanmak için, `az --version` en azından döndürdüğünden emin olun `azure-cli (2.0.43)` .  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -38,7 +37,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Uygulamanın dağıtılacağı kaynak grubunu oluşturun. Aşağıdaki komut, Doğu Birleşik Devletler bir konumda adlı `myResourceGroup` bir kaynak grubu oluşturur. Aşağıdaki komutta kaynak grubu adını değiştirirseniz, bunu izleyen tüm komutlarda değiştirmeyi unutmayın.
+Uygulamanın dağıtılacağı kaynak grubunu oluşturun. Aşağıdaki komut, Doğu Birleşik Devletler bir konumda adlı bir kaynak grubu oluşturur `myResourceGroup` . Aşağıdaki komutta kaynak grubu adını değiştirirseniz, bunu izleyen tüm komutlarda değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -46,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Aşağıdaki komut, [. sfreliablevolume. Linux. JSON şablonunu](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)kullanarak bir Linux uygulaması dağıtır. Bir Windows uygulamasını dağıtmak için [Counter. sfreliablevolume. Windows. JSON şablonunu](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)kullanın. Daha büyük kapsayıcı görüntülerinin dağıtmanın daha uzun sürebildiği farkında olun.
+Aşağıdaki komut, [şablonundakicounter.sfreliablevolume.linux.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)kullanarak bir Linux uygulaması dağıtır. Bir Windows uygulamasını dağıtmak için [şablondacounter.sfreliablevolume.windows.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)kullanın. Daha büyük kapsayıcı görüntülerinin dağıtmanın daha uzun sürebildiği farkında olun.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
@@ -58,7 +57,7 @@ Ayrıca, komutuyla dağıtım durumunu da görebilirsiniz
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Kaynak türü olarak `Microsoft.ServiceFabricMesh/gateways`bulunan ağ geçidi kaynağının adına dikkat edin. Bu, uygulamanın genel IP adresini almak için kullanılır.
+Kaynak türü olarak bulunan ağ geçidi kaynağının adına dikkat edin `Microsoft.ServiceFabricMesh/gateways` . Bu, uygulamanın genel IP adresini almak için kullanılır.
 
 ## <a name="open-the-application"></a>Uygulamayı açma
 
@@ -67,11 +66,11 @@ Uygulama başarıyla dağıtıldıktan sonra, uygulamanın ağ geçidi kaynağı
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-Çıkışın, hizmet uç noktası için `ipAddress` genel IP adresi olan bir özelliği olmalıdır. Bir tarayıcıdan açın. Her saniyede güncelleştirilmekte olan sayaç değerinin bulunduğu bir Web sayfası görüntülenir.
+Çıkışın, `ipAddress` hizmet uç noktası için genel IP adresi olan bir özelliği olmalıdır. Bir tarayıcıdan açın. Her saniyede güncelleştirilmekte olan sayaç değerinin bulunduğu bir Web sayfası görüntülenir.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Uygulamanın birimi kullanbildiğini doğrulama
 
-Uygulama, klasörünün içindeki `counter.txt` `counter/counterService` birimde adlı bir dosya oluşturur. Bu dosyanın içeriği, Web sayfasında görüntülenmekte olan sayaç değeridir.
+Uygulama, klasörünün içindeki birimde adlı bir dosya oluşturur `counter.txt` `counter/counterService` . Bu dosyanın içeriği, Web sayfasında görüntülenmekte olan sayaç değeridir.
 
 ## <a name="delete-the-resources"></a>Kaynakları silme
 

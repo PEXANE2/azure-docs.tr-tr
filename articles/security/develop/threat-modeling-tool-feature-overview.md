@@ -8,10 +8,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552126"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool özelliğe genel bakış
@@ -54,14 +53,14 @@ Simgeler, üst düzey menülere yönelik kısayollardır:
 | --------------------------------------- | ------------ |
 | **Aç** | Yeni bir dosya açar. |
 | **Kaydet** | Geçerli dosyayı kaydeder. |
-| **Tasarlama** | Model oluşturabileceğiniz **Tasarım** görünümünü açar. |
+| **Tasarım** | Model oluşturabileceğiniz **Tasarım** görünümünü açar. |
 | **Çözümleme** | Oluşturulan tehditleri ve bunların özelliklerini gösterir. |
 | **Diyagram Ekle** | Yeni bir diyagram ekler (Excel 'deki yeni sekmelere benzer şekilde). |
 | **Diyagramı Sil** | Geçerli diyagramı siler. |
 | **Kopyala/Kes/Yapıştır** | Öğeleri kopyalar, keser ve yapıştırır. |
 | **Geri Al/Yinele** | Geri alır ve eylemleri yeniden yapar. |
 | **Yakınlaştır/Uzaklaştır** | Daha iyi bir görünüm için diyagramı yakınlaştırır ve uzaklaştırır. |
-| **Geri bildirim** | MSDN forumunu açar. |
+| **Geri Bildirim** | MSDN forumunu açar. |
 
 ### <a name="canvas"></a>Tuval
 
@@ -194,11 +193,11 @@ Oluşturulan her tehdit için öncelik düzeyini değiştirebilirsiniz. Farklı 
 
 ## <a name="reports"></a>Raporlar
 
-Önceliklerin değiştirilmesini ve oluşturulan her bir tehdidin durumunu güncellemeyi tamamladıktan sonra, dosyayı kaydedebilir ve/veya bir raporu yazdırabilirsiniz. **Raporla** > **tam rapor oluştur**' a gidin. Raporu adlandırın ve aşağıdaki görüntüye benzer bir şey görmeniz gerekir:
+Önceliklerin değiştirilmesini ve oluşturulan her bir tehdidin durumunu güncellemeyi tamamladıktan sonra, dosyayı kaydedebilir ve/veya bir raporu yazdırabilirsiniz. **Raporla**  >  **tam rapor oluştur**' a gidin. Raporu adlandırın ve aşağıdaki görüntüye benzer bir şey görmeniz gerekir:
 
 ![Rapor](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorularınızı, yorumlarınızı ve kaygılarınızı ile gönderin tmtextsupport@microsoft.com. Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .
+- Sorularınızı, yorumlarınızı ve kaygılarınızı ile gönderin tmtextsupport@microsoft.com . Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .
 - Topluluğun şablonuna katkıda bulunmak için [GitHub](https://github.com/Microsoft/threat-modeling-templates) sayfamıza gidin.

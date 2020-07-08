@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614324"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric içindeki hizmetler için ortam değişkenlerini belirtme
@@ -20,8 +19,8 @@ Bu makalede, Service Fabric bir hizmet veya kapsayıcı için ortam değişkenle
 
 Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makalede, zaten bir uygulama ve hizmet bildiriminiz olduğunu varsaymaktadır.
 
-1. ServiceManifest. xml dosyasını açın.
-2. `CodePackage` Öğesinde, her ortam değişkeni için yeni `EnvironmentVariables` bir öğesi ve `EnvironmentVariable` bir öğesi ekleyin.
+1. ServiceManifest.xml dosyasını açın.
+2. `CodePackage`Öğesinde, `EnvironmentVariables` `EnvironmentVariable` her ortam değişkeni için yeni bir öğesi ve bir öğesi ekleyin.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">

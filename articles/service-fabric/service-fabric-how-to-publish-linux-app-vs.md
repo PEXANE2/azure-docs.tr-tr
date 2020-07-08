@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614358"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Uzak bir Linux Service Fabric kümesini hedefleyen .Net Core uygulamalar oluşturmak ve yayımlamak için Visual Studio 'Yu kullanma
@@ -38,7 +37,7 @@ Visual Studio Araçları ile bir Linux Service Fabric kümesini hedefleyen Servi
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> UpdateServiceFabricManifestEnabled ayarının false olarak ayarlanması, derleme sırasında ServiceManifest. xml güncelleştirmelerini devre dışı bırakacak. Hizmet ekleme, kaldırma veya yeniden adlandırma gibi tüm değişiklikler ServiceManifest. xml ' de yansıtılmayacaktır. Herhangi bir değişiklik yapılırsa, ServiceManifest 'i el ile güncelleştirmeniz veya UpdateServiceFabricManifestEnabled ayarını true olarak ayarlamanız gerekir ve ServiceManifest. xml ' i güncelleştirecek hizmeti oluşturun ve sonra false değerine geri döndürün.
+> UpdateServiceFabricManifestEnabled özelliği false olarak ayarlandığında, derleme sırasında ServiceManifest.xml güncelleştirmeler devre dışı bırakılır. Hizmet ekleme, kaldırma veya yeniden adlandırma gibi değişiklikler ServiceManifest.xml yansıtılmayacaktır. Herhangi bir değişiklik yapılırsa, ServiceManifest 'i el ile güncelleştirmeniz veya UpdateServiceFabricManifestEnabled ayarını true olarak ayarlamanız gerekir, sonra da ServiceManifest.xml güncelleştirecek ve sonra yeniden false değerine geri döndürecek hizmeti oluşturacaksınız.
 >
 
 4. RuntimeIndetifier-x64 konumundan hizmet projesindeki hedef platforma güncelleştirin.

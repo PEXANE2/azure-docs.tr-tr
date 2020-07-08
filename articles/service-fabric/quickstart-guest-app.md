@@ -4,10 +4,9 @@ description: Mevcut Node.js uygulamasını Visual Studio ile barındırmak için
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614851"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js uygulamasını Azure Service Fabric'te barındırma
@@ -43,10 +42,10 @@ Hizmeti **MyGuestService** olarak adlandırın ve sağdaki seçenekleri aşağı
 
 | Ayar                   | Değer |
 | ------------------------- | ------ |
-| Kod Paketi Klasörü       | _&lt;Node. js uygulamanızın bulunduğu klasör&gt;_ |
+| Kod Paketi Klasörü       | _&lt;Node.js uygulamanızın bulunduğu klasör&gt;_ |
 | Kod Paketi Davranışı     | Klasör içeriğini projeye kopyala |
 | Program                   | node.exe |
-| Bağımsız Değişkenler                 | server.js |
+| Arguments                 | server.js |
 | Çalışma Klasörü            | CodePackage |
 
 **Tamam**'a basın.
@@ -72,7 +71,7 @@ Hizmet projesinin içeriklerine genel bakış için bkz. [Reliable Services ile 
 
 Dağıttığımız örnek Node.js uygulamasında **80** bağlantı noktası kullanılır ve Service Fabric'e bu bağlantı noktasının ortaya çıkarılmasını bildirmemiz gerekir.
 
-Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, zaten tanımlanmış bir `<Resources> \ <Endpoints>` girişi vardır. Bu girdiyi değiştirerek `Port`, `Protocol` ve `Type` ekleyin. 
+Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, `<Resources> \ <Endpoints>` zaten tanımlanmış bir girişi vardır. Bu girdiyi değiştirerek `Port`, `Protocol` ve `Type` ekleyin. 
 
 ```xml
   <Resources>
@@ -85,7 +84,7 @@ Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, za
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 **F5** tuşuna basın ve projeyi çalıştırırsanız, bu, yerel kümeye dağıtılır. Ama biz bunun yerine Azure'a dağıtalım.
 
@@ -97,13 +96,13 @@ Projeye sağ tıklayın ve Azure yayımlama iletişim kutusunu açan **Yayımla.
 
 Daha önce yapmadıysanız, dağıtımın yapılacağı Azure hesabını seçin. Henüz hesabınız yoksa, [bir hesap için kaydolun][create-account].
 
-**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Yoksa, ** &lt;yeni küme oluştur... seçeneğini belirleyin. &gt; ** Web tarayıcısı penceresini Azure Portal açan. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Bir tane yoksa, Azure portal web tarayıcısı penceresini açan ** &lt; Yeni küme oluştur. &gt; ..** öğesini seçin. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Service Fabric kümesini oluştururken, **Özel uç noktalar** ayarını **80** olarak belirleyin.
 
 ![Uç noktayla Service Fabric düğüm türü yapılandırması][custom-endpoint]
 
-Yeni Service Fabric kümesi oluşturma işleminin tamamlanması biraz zaman alır. Oluşturulduktan sonra Yayımla iletişim kutusuna dönün ve ** &lt;Yenile&gt;**' yi seçin. Yeni küme, açılan kutuna listelenir; yeni kümeyi seçin.
+Yeni Service Fabric kümesi oluşturma işleminin tamamlanması biraz zaman alır. Oluşturulduktan sonra Yayımla iletişim kutusuna dönün ve ** &lt; Yenile &gt; **' yi seçin. Yeni küme, açılan kutuna listelenir; yeni kümeyi seçin.
 
 **Yayımla**'ya basın ve dağıtımın bitmesini bekleyin.
 
@@ -119,7 +118,7 @@ Hizmet adresinin genel bakış dikey penceresini denetleyin. _İstemci bağlant�
 
 ![Azure portalında Service Fabric genel bakış dikey penceresi][overview]
 
-`HELLO WORLD` Yanıtı göreceğiniz bu adrese gidin.
+Yanıtı göreceğiniz bu adrese gidin `HELLO WORLD` .
 
 ## <a name="delete-the-cluster"></a>Küme silme
 

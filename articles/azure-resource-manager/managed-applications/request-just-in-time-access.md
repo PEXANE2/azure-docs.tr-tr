@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651390"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
@@ -34,9 +33,9 @@ Bu makalede, yayımcılara JıT erişimi sağlamak ve istekleri göndermek için
 
 ## <a name="add-jit-access-step-to-ui"></a>Kullanıcı arabirimine JıT erişim adımı ekleme
 
-Createuıdefinition. JSON dosyanız, kalıcı erişim için oluşturduğunuz Kullanıcı arabirimi dosyası gibidir, ancak tüketicilerin JıT erişimini etkinleştirmesine imkan tanıyan bir adım dahil olmanız gerekir. Azure Marketi 'nde ilk yönetilen uygulama teklifinizi yayımlama hakkında daha fazla bilgi edinmek için bkz. [Market 'Te Azure yönetilen uygulamalar](publish-marketplace-app.md).
+CreateUiDefinition.jsdosya, kalıcı erişim için oluşturduğunuz Kullanıcı arabirimi dosyası gibidir, ancak tüketicilerin JıT erişimini etkinleştirmesine imkan tanıyan bir adım dahil etmeniz gerekir. Azure Marketi 'nde ilk yönetilen uygulama teklifinizi yayımlama hakkında daha fazla bilgi edinmek için bkz. [Market 'Te Azure yönetilen uygulamalar](publish-marketplace-app.md).
 
-Teklifinizin JıT özelliğini desteklemek için Createuıdefinition. JSON dosyanıza aşağıdaki içeriği ekleyin:
+Teklifinizin JıT özelliğini desteklemek için aşağıdaki içeriği dosyanıza CreateUiDefinition.jsekleyin:
 
 "Adımlar" içinde:
 

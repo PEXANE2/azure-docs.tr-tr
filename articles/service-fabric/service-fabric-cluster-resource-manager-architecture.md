@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551701"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Küme Resource Manager mimarisine genel bakış
@@ -25,7 +24,7 @@ Kümenizdeki kaynakları yönetmek için Service Fabric kümesi Kaynak Yönetici
 
 Belirli bir hizmetin kaynak tüketimi zaman içinde değişebilir ve hizmetler genellikle birden fazla kaynak türü hakkında bilgi alabilir. Farklı hizmetlerde, ölçülen gerçek fiziksel ve fiziksel kaynaklar olabilir. Hizmetler, bellek ve disk tüketimi gibi fiziksel ölçümleri izleyebilir. Daha yaygın olarak hizmetler, "WorkQueueDepth" veya "TotalRequests" gibi mantıksal ölçümler hakkında bilgi alabilir. Hem mantıksal hem de fiziksel ölçümler aynı kümede kullanılabilir. Ölçümler birçok hizmet arasında paylaşılabilir veya belirli bir hizmete özel olabilir.
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 Kümenin sahipleri ve işleçleri, hizmet ve uygulama yazarlarından farklı olabilir veya en azından farklı hastaları takan kişilerle aynıdır. Uygulamanızı geliştirirken, ne gerektirdiği hakkında birkaç şeyi bilirsiniz. Kullanacağı kaynakların tahmini ve farklı hizmetlerin dağıtılması gerekir. Örneğin, web katmanının Internet 'e açık olan düğümlerde çalıştırılması gerekir, ancak veritabanı Hizmetleri ' nin olmaması gerekir. Diğer bir örnek olarak, Web Hizmetleri büyük olasılıkla CPU ve ağ tarafından kısıtlanıyor olsa da, veri katmanı Hizmetleri bellek ve disk tüketimine daha fazla önem vermez. Bununla birlikte, üretimde bu hizmet için canlı site olayını işleyen veya hizmette yükseltmeyi yöneten kişinin farklı bir işi vardır ve farklı araçlar gerekir. 
 
 Küme ve hizmetler dinamiktir:

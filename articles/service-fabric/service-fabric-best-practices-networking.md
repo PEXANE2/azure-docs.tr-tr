@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551803"
 ---
 # <a name="networking"></a>Ağ
@@ -51,7 +50,7 @@ Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme al
 
 * Service Fabric kümeler, [Service Fabric ağ desenlerinde](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)özetlenen adımları izleyerek mevcut bir sanal ağa dağıtılabilir.
 
-* Ağ güvenlik grupları (NSG 'ler), kümelerinde gelen ve giden trafiği kısıtlayan düğüm türleri için önerilir. NSG 'de gerekli bağlantı noktalarının açık olduğundan emin olun. Örneğin: ![Service Fabric NSG kuralları][NSGSetup]
+* Ağ güvenlik grupları (NSG 'ler), kümelerinde gelen ve giden trafiği kısıtlayan düğüm türleri için önerilir. NSG 'de gerekli bağlantı noktalarının açık olduğundan emin olun. Örneğin: ![ Service Fabric NSG kuralları][NSGSetup]
 
 * Service Fabric sistem hizmetlerinin bulunduğu birincil düğüm türü, dış yük dengeleyici aracılığıyla gösterilmemelidir ve bir [iç yük dengeleyici](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) tarafından gösterilebilir.
 

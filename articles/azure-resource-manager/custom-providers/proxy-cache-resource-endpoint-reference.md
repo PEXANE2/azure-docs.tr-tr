@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650389"
 ---
 # <a name="custom-resource-cache-reference"></a>Özel kaynak önbelleği başvurusu
@@ -42,11 +41,11 @@ Bu makale, önbellek özel kaynaklarını uygulayan uç noktalar için gereksini
 
 ## <a name="building-proxy-resource-endpoint"></a>Proxy kaynak uç noktası derleniyor
 
-Bir "proxy, önbellek" kaynak **uç noktası** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bu durumda, **ResourceType** , `PUT`, ve için `GET`yeni bir Azure Kaynak API 'si oluşturur ve tek `DELETE` bir kaynakta `GET` CRUD 'yi gerçekleştirir ve tüm mevcut kaynakları almak için:
+Bir "proxy, önbellek" kaynak **uç noktası** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bu durumda, **ResourceType** ,, ve için yeni bir Azure Kaynak API 'si `PUT` oluşturur `GET` ve `DELETE` tek bir kaynakta CRUD 'yi gerçekleştirir ve `GET` tüm mevcut kaynakları almak için:
 
 > [!NOTE]
-> Azure API 'si, ve `PUT` `GET` `DELETE`istek yöntemlerini oluşturur, ancak önbellek **uç noktasının** yalnızca ve `PUT` `DELETE`işlemesi gerekir.
-> **Uç noktanın** de kullanılması önerilir `GET`.
+> Azure API 'SI, ve istek yöntemlerini oluşturur `PUT` , `GET` `DELETE` ancak önbellek **uç noktasının** yalnızca ve işlemesi gerekir `PUT` `DELETE` .
+> **Uç noktanın** de kullanılması önerilir `GET` .
 
 ### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
 
@@ -87,9 +86,9 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
-- Özel kaynak sağlayıcısı, istek için, `name`ve `type` `id` alanlarını geçersiz kılacaktır.
-- Özel kaynak sağlayıcısı yalnızca bir önbellek uç noktası için `properties` nesne altındaki alanları döndürür.
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- Özel kaynak sağlayıcısı, `name` `type` istek için, ve alanlarını geçersiz kılacaktır `id` .
+- Özel kaynak sağlayıcısı yalnızca `properties` bir önbellek uç noktası için nesne altındaki alanları döndürür.
 
 **Uç nokta** Yanıtıyla
 
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Özel `name`kaynak `id`sağlayıcısı tarafından `type` özel kaynak için,, ve alanları otomatik olarak oluşturulacaktır.
+Özel `name` kaynak `id` `type` sağlayıcısı tarafından özel kaynak için,, ve alanları otomatik olarak oluşturulacaktır.
 
 Azure özel kaynak sağlayıcısı yanıtı:
 
@@ -149,7 +148,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 - Azure özel kaynak sağlayıcısı, 200 düzeyinde bir yanıt döndürülürse öğeyi yalnızca kendi önbelleğinden kaldırır. Kaynak mevcut olmasa bile, **uç nokta** 204 döndürmelidir.
 
 **Uç nokta** Yanıtıyla

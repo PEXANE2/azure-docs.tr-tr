@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645744"
 ---
 # <a name="eventstore-overview"></a>EventStore 'A genel bakış
@@ -44,17 +43,17 @@ Olayınızda her varlık ve varlık türü için kullanılabilen olaylar için E
 * Bölümler: tüm bölümlerin olayları
 * Bölüm: belirtilen belirli bir bölümden alınan olaylar`partitionId`
 * Bölüm çoğaltmaları: belirtilen belirli bir bölüm içindeki tüm çoğaltmalardan/örneklerden alınan olaylar`partitionId`
-* Bölüm çoğaltma: ve tarafından `replicaId` tanımlanan belirli bir çoğaltma/örnek olayları`partitionId`
+* Bölüm çoğaltma: ve tarafından tanımlanan belirli bir çoğaltma/örnek olayları `replicaId``partitionId`
 
 API hakkında daha fazla bilgi edinmek için [Eventstore API başvurusunu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)inceleyin.
 
-EventStore hizmeti Ayrıca kümenizdeki olayları ilişkilendirebilme özelliğine sahiptir. Aynı anda birbirini etkilemiş olabilecek farklı varlıklardan yazılmış olaylara bakarak, EventStore hizmeti bu olayları, kümenizdeki etkinliklerin nedenlerini tanımlamaya yardımcı olmak için bağlayabilir. Örneğin, uygulamalarınızdan biri herhangi bir değişiklik yapılmadan sağlıksız hale gelirse, EventStore Ayrıca platform tarafından kullanıma sunulan diğer olaylara de bakar ve bunu bir `Error` veya `Warning` olayı ile ilişkilendirilecektir. Bu, daha hızlı hata algılama ve kök nedenler analizine yardımcı olur.
+EventStore hizmeti Ayrıca kümenizdeki olayları ilişkilendirebilme özelliğine sahiptir. Aynı anda birbirini etkilemiş olabilecek farklı varlıklardan yazılmış olaylara bakarak, EventStore hizmeti bu olayları, kümenizdeki etkinliklerin nedenlerini tanımlamaya yardımcı olmak için bağlayabilir. Örneğin, uygulamalarınızdan biri herhangi bir değişiklik yapılmadan sağlıksız hale gelirse, EventStore Ayrıca platform tarafından kullanıma sunulan diğer olaylara de bakar ve bunu bir veya olayı ile ilişkilendirilecektir `Error` `Warning` . Bu, daha hızlı hata algılama ve kök nedenler analizine yardımcı olur.
 
 ## <a name="enable-eventstore-on-your-cluster"></a>Kümenizde EventStore 'u etkinleştirme
 
 ### <a name="local-cluster"></a>Yerel küme
 
-[Kümenizdeki Fabricsettings. JSON](service-fabric-cluster-fabric-settings.md)dosyasında, EventStoreService ' i eklenti özelliği olarak ekleyin ve bir küme yükseltmesi gerçekleştirin.
+[KümenizdekifabricSettings.js](service-fabric-cluster-fabric-settings.md), bir eklenti özelliği olarak EventStoreService ekleyin ve bir küme yükseltmesi gerçekleştirin.
 
 ```json
     "addOnFeatures": [
@@ -65,7 +64,7 @@ EventStore hizmeti Ayrıca kümenizdeki olayları ilişkilendirebilme özelliği
 ### <a name="azure-cluster-version-65"></a>Azure küme sürümü 6.5 +
 Azure kümeniz sürüm 6,5 veya üzeri bir sürüme yükseltilirse, EventStore otomatik olarak kümenizde etkinleştirilir. Devre dışı bırakmak için, küme şablonunuzu aşağıdakiler ile güncelleştirmeniz gerekir:
 
-* `2019-03-01` Veya daha yenı bir API sürümü kullanın 
+* Veya daha yeni bir API sürümü kullanın `2019-03-01` 
 * Aşağıdaki kodu kümenizdeki Özellikler bölümüne ekleyin
   ```json  
     "fabricSettings": [

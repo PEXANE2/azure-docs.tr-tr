@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75638893"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
@@ -71,7 +70,7 @@ Ayrıca, bir kerelik kayıt kullanarak, veri deposunu çalışma alanıyla de ka
 
 ## <a name="experiment-submission"></a>Deneme gönderimi
 
-[Otomatik makine öğrenimi yapılandırmasında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig), paketin dağıtılmış modda `spark_context` çalışması için özelliği ayarlanmalıdır. Paralel olarak `concurrent_iterations`yürütülen maksimum yineleme sayısı olan özelliği Spark uygulamasının yürütücü çekirdekinden daha düşük bir sayı olarak ayarlanmalıdır.
+[Otomatik makine öğrenimi yapılandırmasında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig), `spark_context` paketin dağıtılmış modda çalışması için özelliği ayarlanmalıdır. `concurrent_iterations`Paralel olarak yürütülen maksimum yineleme sayısı olan özelliği Spark uygulamasının yürütücü çekirdekinden daha düşük bir sayı olarak ayarlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

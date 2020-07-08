@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666882"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps içerik türlerini işleme
 
 Çeşitli içerik türleri bir mantıksal uygulama aracılığıyla (örneğin, JSON, XML, düz dosyalar ve ikili veriler) akabilir. Logic Apps tüm içerik türlerini desteklese de, bazıları yerel desteğe sahiptir ve mantıksal uygulamalarınızda atama veya dönüştürme gerektirmez. Diğer türler gerektiğinde atama veya dönüştürme gerektirebilir. Bu makalede, Logic Apps içerik türlerini nasıl işleyeceği ve gerektiğinde bu türleri nasıl doğru şekilde dönüştürebileceğiniz ve dönüştürebileceğiniz açıklanır.
 
-Logic Apps içerik türlerini işlemenin uygun yolunu öğrenmek için, HTTP çağrılarında `Content-Type` üst bilgi değerine dayanır, örneğin:
+Logic Apps içerik türlerini işlemenin uygun yolunu öğrenmek için, `Content-Type` http çağrılarında üst bilgi değerine dayanır, örneğin:
 
 * [uygulama/JSON](#application-json) (yerel tür)
 * [metin/düz](#text-plain) (yerel tür)
@@ -28,7 +27,7 @@ Logic Apps içerik türlerini işlemenin uygun yolunu öğrenmek için, HTTP ça
 
 ## <a name="applicationjson"></a>uygulama/json
 
-Logic Apps, *uygulama/JSON* içerik türüne sahip tüm Istekleri JavaScript GÖSTERIMI (JSON) nesnesi olarak depolar ve işler. Varsayılan olarak, herhangi bir atama olmadan JSON içeriğini ayrıştırabilirsiniz. "Application/JSON" içerik türüne sahip bir üst bilgisine sahip bir isteği ayrıştırmak için bir ifade kullanabilirsiniz. Bu örnek, `animal-type` diziden değeri `dog` , atama olmadan döndürür: 
+Logic Apps, *uygulama/JSON* içerik türüne sahip tüm Istekleri JavaScript GÖSTERIMI (JSON) nesnesi olarak depolar ve işler. Varsayılan olarak, herhangi bir atama olmadan JSON içeriğini ayrıştırabilirsiniz. "Application/JSON" içerik türüne sahip bir üst bilgisine sahip bir isteği ayrıştırmak için bir ifade kullanabilirsiniz. Bu örnek, diziden değeri, `dog` `animal-type` atama olmadan döndürür: 
  
 `@body('myAction')['animal-type'][0]` 
   
@@ -99,7 +98,7 @@ Logic Apps, bu özellikleri mantıksal uygulamanızın iş akışında daha kola
      }
      ```
 
-  3. İsteğiniz içinde bir `Content-Type` üst bilgi eklediğinizden ve üstbilginin değerini olarak `application/json`ayarladığınızdan emin olun.
+  3. İsteğiniz içinde bir `Content-Type` üst bilgi eklediğinizden ve üstbilginin değerini olarak ayarladığınızdan emin olun `application/json` .
 
 * **JSON eylemini Ayrıştır**
 
@@ -113,14 +112,14 @@ Logic Apps, bu özellikleri mantıksal uygulamanızın iş akışında daha kola
 
 ## <a name="textplain"></a>metin/düz
 
-Mantıksal uygulamanız `Content-Type` üst bilgisi olarak `text/plain`ayarlanmış http iletileri aldığında, mantıksal uygulamanız bu iletileri ham biçimde depolar. Bu iletileri, atama olmadan sonraki eylemlere dahil ederseniz, istekler `Content-Type` üst bilgiyle olarak `text/plain`ayarlanır. 
+Mantıksal uygulamanız `Content-Type` üst bilgisi olarak AYARLANMıŞ http iletileri aldığında `text/plain` , mantıksal uygulamanız bu iletileri ham biçimde depolar. Bu iletileri, atama olmadan sonraki eylemlere dahil ederseniz, istekler `Content-Type` üst bilgiyle olarak ayarlanır `text/plain` . 
 
-Örneğin, düz bir dosyayla çalışırken, `Content-Type` üst bilgiyle `text/plain` IÇERIK türüne ayarlanmış bir http isteği alabilirsiniz:
+Örneğin, düz bir dosyayla çalışırken, `Content-Type` üst bilgiyle içerik türüne ayarlanmış BIR http isteği alabilirsiniz `text/plain` :
 
 `Date,Name,Address`</br>
 `Oct-1,Frank,123 Ave`
 
-Daha sonra bu isteği başka bir isteğin gövdesi olarak sonraki bir eylemde gönderirseniz, örneğin `@body('flatfile')`, bu ikinci isteğin de olarak `Content-Type` `text/plain`ayarlanmış bir üstbilgisi vardır. Düz metin olan ancak bir başlık belirtmeyen verilerle çalışıyorsanız, bu ifade gibi [String () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#string) kullanarak bu verileri el ile metne çevirebilirsiniz: 
+Daha sonra bu isteği başka bir isteğin gövdesi olarak sonraki bir eylemde gönderirseniz, örneğin, bu `@body('flatfile')` İkinci isteğin de `Content-Type` olarak ayarlanmış bir üstbilgisi vardır `text/plain` . Düz metin olan ancak bir başlık belirtmeyen verilerle çalışıyorsanız, bu ifade gibi [String () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#string) kullanarak bu verileri el ile metne çevirebilirsiniz: 
 
 `@string(triggerBody())`
 
@@ -128,11 +127,11 @@ Daha sonra bu isteği başka bir isteğin gövdesi olarak sonraki bir eylemde g�
 
 ## <a name="applicationxml-and-applicationoctet-stream"></a>Uygulama/XML ve uygulama/sekizli-akış
 
-Logic Apps, `Content-Type` ALıNAN bir http isteği veya yanıtı tarafından her zaman korunur. Mantıksal `Content-Type` uygulamanız, olarak `application/octet-stream`ayarlanmış içeriğe sahip içerik alırsa ve bu içeriği atama olmadan sonraki bir eyleme eklerseniz, giden istek de olarak `Content-Type` `application/octet-stream`ayarlanır. Bu şekilde Logic Apps, iş akışı boyunca taşırken verilerin kaybolmamasını garanti edebilir. Ancak, eylem durumu veya girişler ve çıktılar, durum iş akışı üzerinden hareket ederken bir JSON nesnesinde depolanır. 
+Logic Apps, `Content-Type` alınan BIR http isteği veya yanıtı tarafından her zaman korunur. Mantıksal uygulamanız, olarak ayarlanmış içeriğe sahip içerik alırsa `Content-Type` `application/octet-stream` ve bu içeriği atama olmadan sonraki bir eyleme eklerseniz, giden istek de `Content-Type` olarak ayarlanır `application/octet-stream` . Bu şekilde Logic Apps, iş akışı boyunca taşırken verilerin kaybolmamasını garanti edebilir. Ancak, eylem durumu veya girişler ve çıktılar, durum iş akışı üzerinden hareket ederken bir JSON nesnesinde depolanır. 
 
 ## <a name="converter-functions"></a>Dönüştürücü işlevleri
 
-Logic Apps, bazı veri türlerini korumak için, otomatik olarak dönüştürülen hem `$content` yükü hem de `$content-type`öğesini koruyan uygun meta verileri içeren ikili base64 kodlamalı bir dizeye içerik dönüştürür. 
+Logic Apps, bazı veri türlerini korumak için, `$content` otomatik olarak dönüştürülen hem yükü hem de öğesini koruyan uygun meta verileri içeren ikili base64 kodlamalı bir dizeye içerik dönüştürür `$content-type` . 
 
 Bu liste, bu [işlevleri](../logic-apps/workflow-definition-language-functions-reference.md)kullandığınızda Logic Apps içeriği nasıl dönüştüreceğini açıklar:
 
@@ -147,20 +146,20 @@ Bu liste, bu [işlevleri](../logic-apps/workflow-definition-language-functions-r
 * `dataUriToBinary()`: Bir veri URI 'sini ikili dizeye dönüştürür
 * `dataUriToString()`: Bir veri URI 'sini dizeye dönüştürür
 
-Örneğin, şu içerik gibi olarak `Content-Type` AYARLANDıĞı `application/xml`bir http isteği alırsanız:
+Örneğin, şu içerik gibi olarak ayarlandığı bir HTTP isteği alırsanız `Content-Type` `application/xml` :
 
 ```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-`xml()` Ve `triggerBody()` işlevleri ile `@xml(triggerBody())` ifadesini kullanarak bu içeriği çevirebilirsiniz ve sonra bu içeriği daha sonra kullanabilirsiniz. Ya da `@xpath(xml(triggerBody()), '/CustomerName')` ifadesini `xpath()` ve `xml()` işlevleri ile birlikte kullanabilirsiniz. 
+Ve işlevleri ile ifadesini kullanarak bu içeriği çevirebilirsiniz `@xml(triggerBody())` `xml()` `triggerBody()` ve sonra bu içeriği daha sonra kullanabilirsiniz. Ya da `@xpath(xml(triggerBody()), '/CustomerName')` ifadesini ve işlevleri ile birlikte kullanabilirsiniz `xpath()` `xml()` . 
 
 ## <a name="other-content-types"></a>Diğer içerik türleri
 
-Logic Apps ile birlikte çalışarak diğer içerik türlerini destekler, ancak `$content` değişkenin kodunu çözerek ileti gövdesini el ile almanızı gerektirebilir.
+Logic Apps ile birlikte çalışarak diğer içerik türlerini destekler, ancak değişkenin kodunu çözerek ileti gövdesini el ile almanızı gerektirebilir `$content` .
 
-Örneğin, mantıksal uygulamanızın `application/x-www-url-formencoded` içerik türüne sahip bir istek tarafından tetiklendiğini varsayalım. Tüm verileri korumak için, istek gövdesindeki `$content` değişkenin Base64 dizesi olarak kodlanmış bir yükü vardır:
+Örneğin, mantıksal uygulamanızın içerik türüne sahip bir istek tarafından tetiklendiğini varsayalım `application/x-www-url-formencoded` . Tüm verileri korumak için, `$content` istek gövdesindeki değişkenin Base64 dizesi olarak kodlanmış bir yükü vardır:
 
 `CustomerName=Frank&Address=123+Avenue`
 
@@ -184,4 +183,4 @@ Ya da bu örnek gibi bir ifade kullanarak verilere el ile erişebilirsiniz:
 
 `@string(body('formdataAction'))` 
 
-Giden isteğin aynı `application/x-www-url-formencoded` içerik türü başlığına sahip olmasını istiyorsanız, gibi `@body('formdataAction')`bir ifade kullanarak, isteği herhangi bir atama yapmadan eylemin gövdesine ekleyebilirsiniz. Ancak, bu yöntem yalnızca gövde `body` girişte tek parametre olduğunda işe yarar. `@body('formdataAction')` İfadeyi bir `application/json` istekte kullanmaya çalışırsanız, gövde kodlanmış olarak gönderildiği için bir çalışma zamanı hatası alırsınız.
+Giden isteğin aynı `application/x-www-url-formencoded` içerik türü başlığına sahip olmasını istiyorsanız, gibi bir ifade kullanarak, isteği herhangi bir atama yapmadan eylemin gövdesine ekleyebilirsiniz `@body('formdataAction')` . Ancak, bu yöntem yalnızca gövde girişte tek parametre olduğunda işe yarar `body` . `@body('formdataAction')`İfadeyi bir istekte kullanmaya çalışırsanız `application/json` , gövde kodlanmış olarak gönderildiği için bir çalışma zamanı hatası alırsınız.

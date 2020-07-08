@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645574"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors giriş
@@ -92,7 +91,7 @@ myActor.DoWorkAsync().get();
 
 Aktör proxy nesnesini oluşturmak için kullanılan iki bilgi parçasının aktör KIMLIĞI ve uygulama adı olduğunu unutmayın. Aktör KIMLIĞI aktöri benzersiz şekilde tanımlar, ancak uygulama adı aktörün dağıtıldığı [Service Fabric uygulamayı](service-fabric-reliable-actors-platform.md#application-model) tanımlar.
 
-İstemci `ActorProxy`tarafındaki (C#) `ActorProxyBase`/(Java) sınıfı, aktöri kimliğe göre bulmak için gerekli çözümü gerçekleştirir ve bununla bir iletişim kanalı açar. Ayrıca, iletişim arızaları ve yük devretme durumlarında aktöri bulmayı yeniden dener. Sonuç olarak, ileti teslimi aşağıdaki özelliklere sahiptir:
+`ActorProxy`İstemci tarafındaki (C#)/ `ActorProxyBase` (Java) sınıfı, aktöri kimliğe göre bulmak için gerekli çözümü gerçekleştirir ve bununla bir iletişim kanalı açar. Ayrıca, iletişim arızaları ve yük devretme durumlarında aktöri bulmayı yeniden dener. Sonuç olarak, ileti teslimi aşağıdaki özelliklere sahiptir:
 
 * İleti teslimi en iyi çabadır.
 * Aktörler aynı istemciden yinelenen iletiler alabilir.
@@ -126,7 +125,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları:
 * *Method1* , istemci isteğine *Xyz789*yanıt olarak *ActorId2* adına yürütülürken, *Ayrıca Method1 tarafından yürütülmesini gerektiren başka* bir istemci isteği (*abc123*) varolur *.* Ancak, *Method1* 'in ikinci yürütmesi, önceki yürütme bitinceye kadar başlamaz. Benzer şekilde, *ActorId2* tarafından kaydedilen bir anımsatıcı, *Method1* *istemci isteğine yanıt*olarak yürütüldüğünde ateşlenir. Anımsatıcı geri çağırması yalnızca *Method1* yürütmeleri tamamlandıktan sonra yürütülür. Bunun hepsi, *ActorId2*için zorunlu tabanlı eşzamanlılık nedeniyle yapılır.
 * Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2*ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi, *ActorId1*için de zorlanır.
 * *ActorId1* adına *Method1* yürütmesi, *ActorId2*adına yürütme ile çakışıyor. Bunun nedeni, çift tabanlı eşzamanlılık yalnızca aktör içinde zorlanır ve aktörler arasında değil.
-* Yöntem/geri çağırma yürütmelerinin bazılarında, yöntem/geri `Task`çağırma tarafından döndürülen ( `CompletableFuture`C#)/(Java), yöntem dönüşinden sonra tamamlanır. Bazı bazılarında, zaman uyumsuz işlem, metodun/geri aramanın döndürdüğü zaman tarafından zaten bitmiştir. Her iki durumda da, aktör başına kilit yalnızca Yöntem/geri çağırma, ve zaman uyumsuz işlem bittikten sonra serbest bırakılır.
+* Yöntem/geri çağırma yürütmelerinin bazılarında, yöntem `Task` `CompletableFuture` /geri çağırma tarafından döndürülen (C#)/(Java), yöntem dönüşinden sonra tamamlanır. Bazı bazılarında, zaman uyumsuz işlem, metodun/geri aramanın döndürdüğü zaman tarafından zaten bitmiştir. Her iki durumda da, aktör başına kilit yalnızca Yöntem/geri çağırma, ve zaman uyumsuz işlem bittikten sonra serbest bırakılır.
 
 ### <a name="reentrancy"></a>Yeniden giriş
 Aktör çalışma zamanı varsayılan olarak yeniden giriş yapılmasına izin verir. Yani aktör bir aktör yöntemi, aktör *B*üzerinde bir *yöntemi çağırırsa,* bu yöntem *bir aktör*üzerinde başka bir yöntemi çağırırsa, bu yöntemin çalışmasına izin verilir. Bunun nedeni, aynı mantıksal çağrı zinciri bağlamının bir parçası olması olabilir. Tüm Zamanlayıcı ve anımsatıcı çağrıları yeni mantıksal çağrı bağlamıyla başlar. Daha fazla ayrıntı için [Reliable Actors yeniden](service-fabric-reliable-actors-reentrancy.md) giriş bölümüne bakın.

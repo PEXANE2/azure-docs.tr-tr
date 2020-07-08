@@ -4,14 +4,13 @@ description: Service Fabric uygulamasının sistem ve yerel güvenlik hesapları
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610139"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Bir hizmeti yerel kullanıcı hesabı veya yerel sistem hesabı olarak çalıştırma
-Azure Service Fabric kullanarak kümede çalışan uygulamaların farklı Kullanıcı hesapları altında güvenli hale getirebilirsiniz. Varsayılan olarak, Service Fabric uygulamalar yapı. exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca, bir yerel kullanıcı veya sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Desteklenen yerel sistem hesabı türleri, **LocalUser**, **NetworkService**, **LocalService**ve **LocalSystem**.  Windows bağımsız kümesinde Service Fabric çalıştırıyorsanız, [Active Directory etki alanı hesapları](service-fabric-run-service-as-ad-user-or-group.md) veya [Grup yönetilen hizmet hesapları](service-fabric-run-service-as-gmsa.md)altında bir hizmet çalıştırabilirsiniz.
+Azure Service Fabric kullanarak kümede çalışan uygulamaların farklı Kullanıcı hesapları altında güvenli hale getirebilirsiniz. Varsayılan olarak, Service Fabric uygulamalar Fabric.exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca, bir yerel kullanıcı veya sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Desteklenen yerel sistem hesabı türleri, **LocalUser**, **NetworkService**, **LocalService**ve **LocalSystem**.  Windows bağımsız kümesinde Service Fabric çalıştırıyorsanız, [Active Directory etki alanı hesapları](service-fabric-run-service-as-ad-user-or-group.md) veya [Grup yönetilen hizmet hesapları](service-fabric-run-service-as-gmsa.md)altında bir hizmet çalıştırabilirsiniz.
 
 Uygulama bildiriminde, **sorumlular** bölümünde hizmetleri çalıştırmak veya kaynakları güvenli hale getirmek için gereken kullanıcı hesaplarını tanımlarsınız. Ayrıca, bir veya daha fazla kullanıcının birlikte yönetilmesi için Kullanıcı grupları tanımlayabilir ve oluşturabilirsiniz. Bu, farklı hizmet giriş noktaları için birden fazla kullanıcı olduğunda ve grup düzeyinde kullanılabilen ortak ayrıcalıklara ihtiyaç duyduklarında yararlı olur.  Daha sonra kullanıcılardan, belirli bir hizmete veya uygulamadaki tüm hizmetlere uygulanan bir RunAs ilkesinde başvurulur. 
 

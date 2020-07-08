@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563369"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric ölçümler ve yük birleştirme
@@ -58,7 +57,7 @@ Gerekli yapılandırmanın tam olarak belirlenmesi için deneme gereklidir. Üre
 ## <a name="configuring-defragmentation-metrics"></a>Birleştirme ölçümlerini yapılandırma
 Birleştirme ölçümlerini yapılandırmak, kümede küresel bir karardır ve tek tek ölçümler birleştirme için seçilebilir. Aşağıdaki yapılandırma parçacıkları, birleştirme için ölçümlerin nasıl yapılandırılacağını gösterir. Bu durumda, "Metric1" bir birleştirme ölçümü olarak yapılandırılmıştır, ancak "Metric2" normal şekilde dengeolmaya devam edecektir. 
 
-ClusterManifest. xml:
+ClusterManifest.xml:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -67,7 +66,7 @@ ClusterManifest. xml:
 </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [

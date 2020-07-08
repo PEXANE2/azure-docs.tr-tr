@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75830080"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell kullanarak MapReduce işlerini HDInsight üzerinde Apache Hadoop çalıştırma
@@ -43,11 +42,11 @@ Aşağıdaki cmdlet 'ler, MapReduce işlerini uzak bir HDInsight kümesinde çal
 
 Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için bu cmdlet 'lerin nasıl kullanılacağı gösterilmektedir.
 
-1. Bir düzenleyici kullanarak, aşağıdaki kodu **mapreducejob. ps1**olarak kaydedin.
+1. Bir düzenleyici kullanarak aşağıdaki kodu **mapreducejob.ps1**olarak kaydedin.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Yeni bir **Azure PowerShell** komut istemi açın. Dizinleri **mapreducejob. ps1** dosyasının konumuyla değiştirin, ardından betiği çalıştırmak için aşağıdaki komutu kullanın:
+2. Yeni bir **Azure PowerShell** komut istemi açın. Dizinleri **mapreducejob.ps1** dosyanın konumuyla değiştirin ve betiği çalıştırmak için aşağıdaki komutu kullanın:
 
         .\mapreducejob.ps1
 
@@ -70,18 +69,18 @@ Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için b
     > [!NOTE]  
     > **ExitCode** 0 dışında bir değer ise bkz. [sorun giderme](#troubleshooting).
 
-    Bu örnek ayrıca indirilen dosyaları, komut dosyasını çalıştırdığınız dizindeki bir **output. txt** dosyasına depolar.
+    Bu örnek ayrıca indirilen dosyaları, içinden betiği çalıştırdığınız dizindeki bir **output.txt** dosyasına depolar.
 
 ### <a name="view-output"></a>Çıktıyı görüntüle
 
-İş tarafından üretilen kelimeleri ve sayıları görmek için, **çıktı. txt** dosyasını bir metin düzenleyicisinde açın.
+İş tarafından üretilen kelimeleri ve sayıları görmek için **output.txt** dosyasını bir metin düzenleyicisinde açın.
 
 > [!NOTE]  
 > MapReduce işinin çıkış dosyaları sabittir. Bu nedenle, bu örneği yeniden çalıştırırsanız, çıkış dosyasının adını değiştirmeniz gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-İş tamamlandığında hiçbir bilgi döndürülmezse, iş için hataları görüntüleyin. Bu işin hata bilgilerini görüntülemek için, **mapreducejob. ps1** dosyasının sonuna aşağıdaki komutu ekleyin. Ardından dosyayı kaydedin ve betiği yeniden çalıştırın.
+İş tamamlandığında hiçbir bilgi döndürülmezse, iş için hataları görüntüleyin. Bu işin hata bilgilerini görüntülemek için, **mapreducejob.ps1** dosyasının sonuna aşağıdaki komutu ekleyin. Ardından dosyayı kaydedin ve betiği yeniden çalıştırın.
 
 ```powershell
 # Print the output of the WordCount job.

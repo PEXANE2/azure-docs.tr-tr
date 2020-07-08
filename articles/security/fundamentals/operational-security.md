@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749964"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
@@ -31,7 +30,7 @@ Güvenliğin bulutta bir iş olduğunu ve Azure güvenliğiyle ilgili doğru ve 
 Müşterilerin hem müşterinin hem de Microsoft operasyonel perspektiflerinden Microsoft Azure uygulanmış olan güvenlik denetimlerinin dizisini daha iyi anlamasına yardımcı olmak için, Windows Azure ile kullanılabilen işlemsel güvenlik hakkında kapsamlı bir görünüm sunan bu teknik incelemeye "Azure Operasyonel Güvenlik" yazılmıştır.
 
 ### <a name="azure-platform"></a>Azure platformu
-Azure, geniş bir işletim sistemi, programlama dili, çerçeve, araç, veritabanı ve cihaz seçimini destekleyen genel bir bulut hizmeti platformudur. Docker tümleştirmesiyle Linux kapsayıcıları çalıştırabilir; JavaScript, Python, .NET, PHP, Java ve Node. js ile uygulamalar oluşturun; iOS, Android ve Windows cihazlar için arka uçlar oluşturun. Azure bulut hizmeti, milyonlarca geliştirici ve BT uzmanlarının zaten kullandığı ve güveneceği teknolojilerin aynısını destekler.
+Azure, geniş bir işletim sistemi, programlama dili, çerçeve, araç, veritabanı ve cihaz seçimini destekleyen genel bir bulut hizmeti platformudur. Docker tümleştirmesiyle Linux kapsayıcıları çalıştırabilir; JavaScript, Python, .NET, PHP, Java ve Node.js; uygulamalar oluşturun; iOS, Android ve Windows cihazlar için arka uçlar oluşturun. Azure bulut hizmeti, milyonlarca geliştirici ve BT uzmanlarının zaten kullandığı ve güveneceği teknolojilerin aynısını destekler.
 
 Üzerinde derleme yaptığınızda veya BT varlıklarını ' ye geçirdiğinizde, bu kuruluşun, uygulama ve verilerinizi hizmetlerle ve verilerinizi, bulut tabanlı varlıklarınızın güvenliğini yönetmek için sağladığı denetimlerle koruma yeteneklerine bağlı olursunuz.
 

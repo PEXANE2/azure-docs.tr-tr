@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614532"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code ile C# Service Fabric uygulamaları geliştirme
@@ -61,31 +60,31 @@ Uygulamayı oluşturduktan sonra yerel kümeye dağıtabilirsiniz.
 
    ![Uygulama komutunu VS Code içinde dağıt](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer açın: http:\//localhost: 19080/Explorer. Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
+4. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer açın: http: \/ /localhost: 19080/Explorer. Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
 
    ![Service Fabric Explorer 'de sayaç hizmeti uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Uygulamanın çalıştığını doğruladıktan sonra bir tarayıcı başlatın ve şu sayfayı açın: http:\//localhost: 31002. Bu, uygulamanın Web ön ucu olur. Sayacın geçerli değerini artan şekilde görmek için sayfayı yenileyin.
+4. Uygulamanın çalıştığını doğruladıktan sonra bir tarayıcı başlatın ve şu sayfayı açın: http: \/ /localhost: 31002. Bu, uygulamanın Web ön ucu olur. Sayacın geçerli değerini artan şekilde görmek için sayfayı yenileyin.
 
    ![Tarayıcıda sayaç hizmeti uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
 ## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Uygulamayı Azure Service Fabric kümesinde yayımlama
 Uygulamayı yerel kümeye dağıtmaya birlikte, uygulamayı uzak bir Azure Service Fabric kümesine de yayımlayabilirsiniz. 
 
-1. Uygulamanızı yukarıdaki yönergeleri kullanarak oluşturduğunuzdan emin olun. Oluşturulan yapılandırma dosyasını `Cloud.json` , yayımlamak istediğiniz uzak kümenin ayrıntılarıyla güncelleştirin.
+1. Uygulamanızı yukarıdaki yönergeleri kullanarak oluşturduğunuzdan emin olun. Oluşturulan yapılandırma dosyasını, `Cloud.json` yayımlamak istediğiniz uzak kümenin ayrıntılarıyla güncelleştirin.
 
 2. **Komut paletinden** **Service Fabric: uygulamayı Yayımla komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
    ![Uygulama komutunu VS Code içinde Yayımla](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer açın: `https:<clusterurl>:19080/Explorer`. Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
+3. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer açın: `https:<clusterurl>:19080/Explorer` . Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
 
 ## <a name="debug-the-application"></a>Uygulamada hata ayıklama
 VS Code içindeki uygulamalarda hata ayıklarken, uygulamanın yerel bir kümede çalışıyor olması gerekir. Kesme noktaları daha sonra koda eklenebilir.
 
 Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları izleyin:
-1. Gezgin 'de, */src/CounterServiceApplication/CounterService/CounterService.cs* dosyasını açın ve `RunAsync` yöntemi içindeki 62. satırda bir kesme noktası ayarlayın.
-3. VS Code hata ayıklayıcı görünümünü açmak için **etkinlik çubuğundaki** hata ayıkla simgesine tıklayın. Hata ayıklayıcı görünümünün en üstündeki dişli simgesine tıklayın ve açılan ortam menüsünden **.NET Core** ' u seçin. Launch. JSON dosyası açılır. Bu dosyayı kapatabilirsiniz. Şimdi Çalıştır düğmesinin (yeşil ok) yanında bulunan hata ayıklama yapılandırma menüsünde yapılandırma seçimlerini görmeniz gerekir.
+1. Gezgin 'de, */src/CounterServiceApplication/CounterService/CounterService.cs* dosyasını açın ve yöntemi içindeki 62. satırda bir kesme noktası ayarlayın `RunAsync` .
+3. VS Code hata ayıklayıcı görünümünü açmak için **etkinlik çubuğundaki** hata ayıkla simgesine tıklayın. Hata ayıklayıcı görünümünün en üstündeki dişli simgesine tıklayın ve açılan ortam menüsünden **.NET Core** ' u seçin. launch.jsdosya açılır. Bu dosyayı kapatabilirsiniz. Şimdi Çalıştır düğmesinin (yeşil ok) yanında bulunan hata ayıklama yapılandırma menüsünde yapılandırma seçimlerini görmeniz gerekir.
 
    ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
@@ -93,7 +92,7 @@ Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları izl
 
    ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Service Fabric Explorer bir tarayıcıda açın: http:\//localhost: 19080/Explorer. Onay hizmetinin üzerinde çalıştığı birincil düğümü öğrenmek için **uygulamalar** ' a tıklayın ve ayrıntıya gidin. Aşağıdaki görüntüde, CounterService 'in birincil düğümünün düğüm 0 ' dır.
+3. Service Fabric Explorer bir tarayıcıda açın: http: \/ /localhost: 19080/Explorer. Onay hizmetinin üzerinde çalıştığı birincil düğümü öğrenmek için **uygulamalar** ' a tıklayın ve ayrıntıya gidin. Aşağıdaki görüntüde, CounterService 'in birincil düğümünün düğüm 0 ' dır.
 
    ![CounterService için birincil düğüm](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

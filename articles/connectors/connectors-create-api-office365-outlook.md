@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/08/2020
 tags: connectors
 ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75732738"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps’i kullanarak Office 365 Outlook’ta e-postayı, kişileri ve takvimleri yönetme
@@ -25,7 +24,7 @@ ms.locfileid: "75732738"
 İş akışınızı başlatmak için herhangi bir tetikleyiciyi kullanabilirsiniz. Örneğin, yeni bir e-posta geldiğinde, bir takvim öğesi güncelleştirilirken veya fark hizmetinde bir olay gerçekleştiğinde Salesforce gibi. Tetikleyici olayına yanıt veren eylemleri (örneğin, e-posta gönder veya yeni bir takvim olayı oluşturma) kullanabilirsiniz. 
 
 > [!NOTE]
-> Bir @outlook.com veya @hotmail.com hesabının görevlerini otomatikleştirmek için [Outlook.com bağlayıcısını](../connectors/connectors-create-api-outlook.md)kullanın.
+> Bir veya hesabının görevlerini otomatikleştirmek @outlook.com için @hotmail.com [Outlook.com bağlayıcısını](../connectors/connectors-create-api-outlook.md)kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +40,7 @@ ms.locfileid: "75732738"
 
 1. [Azure Portal](https://portal.azure.com), mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Arama kutusuna filtreniz olarak yazın `office 365 outlook` . Bu örnek **yakında yaklaşan bir olayın ne zaman başlaması**gerektiğini belirler.
+1. Arama kutusuna `office 365 outlook` filtreniz olarak yazın. Bu örnek **yakında yaklaşan bir olayın ne zaman başlaması**gerektiğini belirler.
    
    ![Mantıksal uygulamanızı başlatmak için tetikleyiciyi seçin](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
@@ -53,7 +52,7 @@ ms.locfileid: "75732738"
 
 1. Tetikleyicide **Sıklık** ve **Aralık** değerlerini ayarlayın. **Saat dilimi**gibi diğer kullanılabilir tetikleyici özelliklerini eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin.
 
-   Örneğin, tetikleyicinin takvimi 15 dakikada bir denetlemesini istiyorsanız **Sıklık** değerini **dakika**olarak ayarlayın ve **aralığı** olarak `15`ayarlayın. 
+   Örneğin, tetikleyicinin takvimi 15 dakikada bir denetlemesini istiyorsanız **Sıklık** değerini **dakika**olarak ayarlayın ve **aralığı** olarak ayarlayın `15` . 
 
    ![Tetikleyici için sıklık ve Aralık ayarlama](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
@@ -69,9 +68,9 @@ ms.locfileid: "75732738"
 
 1. İş akışınızda son adım olarak bir eylem eklemek için **yeni adım**' ı seçin. 
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `office 365 outlook` . Bu örnek, **kişi oluştur**öğesini seçer.
+1. Arama kutusuna `office 365 outlook` filtreniz olarak yazın. Bu örnek, **kişi oluştur**öğesini seçer.
 
    ![Mantıksal uygulamanızda çalıştırılacak eylemi seçin](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 

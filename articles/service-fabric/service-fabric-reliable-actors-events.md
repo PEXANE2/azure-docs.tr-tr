@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639675"
 ---
 # <a name="actor-events"></a>Aktör olayları
@@ -17,7 +16,7 @@ Aktör olayları, aktörden istemcilere en iyi çaba bildirimleri göndermenin b
 
 Aşağıdaki kod parçacıkları, uygulamanızda aktör olaylarının nasıl kullanılacağını gösterir.
 
-Aktör tarafından yayınlanan olayları açıklayan bir arabirim tanımlayın. Bu arabirimin `IActorEvents` arabiriminden türetilmesi gerekir. Yöntemlerin bağımsız değişkenlerinin [seri hale getirilebilir veri anlaşması](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)olması gerekir. Olay bildirimleri tek yönlü ve en iyi çaba olduğundan Yöntemler void döndürmelidir.
+Aktör tarafından yayınlanan olayları açıklayan bir arabirim tanımlayın. Bu arabirimin arabiriminden türetilmesi gerekir `IActorEvents` . Yöntemlerin bağımsız değişkenlerinin [seri hale getirilebilir veri anlaşması](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)olması gerekir. Olay bildirimleri tek yönlü ve en iyi çaba olduğundan Yöntemler void döndürmelidir.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -85,7 +84,7 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-Yük devretme durumunda aktör, farklı bir işlem veya düğüme yük devretmeyebilir. Aktör proxy 'si, etkin abonelikleri yönetir ve otomatik olarak yeniden abone olur. `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API aracılığıyla yeniden abonelik aralığını kontrol edebilirsiniz. Aboneliğinizi kaldırmak için `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API 'yi kullanın.
+Yük devretme durumunda aktör, farklı bir işlem veya düğüme yük devretmeyebilir. Aktör proxy 'si, etkin abonelikleri yönetir ve otomatik olarak yeniden abone olur. API aracılığıyla yeniden abonelik aralığını kontrol edebilirsiniz `ActorProxyEventExtensions.SubscribeAsync<TEvent>` . Aboneliğinizi kaldırmak için API 'yi kullanın `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
 
 Aktör üzerinde olayları olduğu gibi yayımlayın. Olayda abone varsa, aktör çalışma zamanı bu bildirimleri gönderir.
 

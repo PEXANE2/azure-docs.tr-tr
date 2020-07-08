@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650415"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure özel sağlayıcılar kaynak eklemeye genel bakış
@@ -56,9 +55,9 @@ Microsoft. CustomProviders/resourceProviders ve Microsoft. CustomProviders/Assoc
 
 Özellik | Gerekli mi? | Açıklama
 ---|---|---
-ad | Yes | Uç nokta tanımının adı. Kaynak ekleme için, adın "ilişkilendirmeler" olması gerekir.
-routingType | Yes | Uç nokta ile sözleşmenin türünü belirler. Kaynak ekleme için geçerli **Routingtypes** "proxy, önbellek, uzantı" ve "Web kancası, önbellek, uzantı" dır.
-endpoint | Yes | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin tüm yan etkilerini ve yanıtını işler.
+name | Evet | Uç nokta tanımının adı. Kaynak ekleme için, adın "ilişkilendirmeler" olması gerekir.
+routingType | Evet | Uç nokta ile sözleşmenin türünü belirler. Kaynak ekleme için geçerli **Routingtypes** "proxy, önbellek, uzantı" ve "Web kancası, önbellek, uzantı" dır.
+endpoint | Evet | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin tüm yan etkilerini ve yanıtını işler.
 
 İlişki kaynak türü ile özel sağlayıcıyı oluşturduktan sonra, Microsoft. CustomProviders/ilişkilendirmelerini kullanarak hedefleyebilirsiniz. Microsoft. CustomProviders/Association, diğer herhangi bir Azure kaynağını genişletebilen bir uzantı kaynağıdır. Microsoft. CustomProviders/Association 'ın bir örneği oluşturulduğunda, geçerli bir Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI olması gereken bir **Targetresourceıd**özelliği alır. Bu durumlarda, istek oluşturduğunuz Microsoft. CustomProviders/resourceProviders örneğinde ilişkilendirmeler kaynak türüne iletilir.
 
@@ -78,7 +77,7 @@ endpoint | Yes | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin t
 
 Özellik | Gerekli mi? | Açıklama
 ---|---|---
-Targetresourceıd | Yes | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
+Targetresourceıd | Evet | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
 
 ## <a name="how-to-use-resource-onboarding"></a>Kaynak ekleme 'yi kullanma
 
@@ -146,11 +145,11 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Uç noktanın bir uygulama/JSON `Content-Type` ve geçerlI bir JSON yanıt gövdesi ile yanıt vermesi gerekir. JSON 'ın **Özellikler** nesnesi altında döndürülen alanlar ilişkilendirme dönüş yanıtına eklenecektir.
+Uç noktanın bir uygulama/JSON `Content-Type` ve geçerli BIR JSON yanıt gövdesi ile yanıt vermesi gerekir. JSON 'ın **Özellikler** nesnesi altında döndürülen alanlar ilişkilendirme dönüş yanıtına eklenecektir.
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure özel kaynak sağlayıcıları geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt ```azure-custom-providers``` almak için etiketi ekleyin!
+Azure özel kaynak sağlayıcıları geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. ```azure-custom-providers```Hızlı bir yanıt almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

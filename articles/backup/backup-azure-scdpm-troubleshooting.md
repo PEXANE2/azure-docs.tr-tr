@@ -4,10 +4,9 @@ description: Bu makalede, System Center Data Protection Manager kullanırken kar
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75664759"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager sorunlarını giderme
@@ -32,7 +31,7 @@ Bu sorunu çözmek için aşağıdaki eylemleri gerçekleştirin:
 - Tutarsız durumu kaldırmak için tutarlılık denetimini el ile çalıştırın veya günlük tutarlılık denetimi zamanlayın.
 - Microsoft Azure Backup Server ve Data Protection Manager 'ın en son sürümünü kullandığınızdan emin olun.
 - **Otomatik tutarlılık** ayarının etkinleştirildiğinden emin olun.
-- Hizmetleri komut isteminden yeniden başlatmayı deneyin. `net stop dpmra` Komutunu ve ardından öğesini kullanın `net start dpmra`.
+- Hizmetleri komut isteminden yeniden başlatmayı deneyin. `net stop dpmra`Komutunu ve ardından öğesini kullanın `net start dpmra` .
 - Ağ bağlantısı ve bant genişliği gereksinimlerini karşıladığınızı doğrulayın.
 - Kaynak makinenin beklenmedik şekilde kapandığından emin olun.
 - Diskin sağlıklı olduğundan ve çoğaltma için yeterli alan olduğundan emin olun.
@@ -58,7 +57,7 @@ Bu sorunu çözmek için aşağıdaki eylemleri gerçekleştirin:
 
 - Azure Backup aracısının en son sürümünü kullandığınızdan emin olun.
 - Data Protection Manager sunucunuz ve korumalı sunucu arasında bağlantı (ağ/güvenlik duvarı/proxy) olduğundan emin olun.
-- SQL Server 'ı koruyorsanız, **oturum açma özelliklerinin** > **NT AUTHORITY\SYSTEM** özelliğinin etkinleştirilmiş **sysadmin** ayarını belirttiğinden emin olun.
+- SQL Server 'ı koruyorsanız, **oturum açma özelliklerinin**  >  **NT AUTHORITY\SYSTEM** özelliğinin etkinleştirilmiş **sysadmin** ayarını belirttiğinden emin olun.
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Hata: sunucu, kasa kimlik bilgisi dosyasında belirtildiği şekilde kaydedilmedi
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651026"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi yapılandırma ve onaylama
@@ -35,9 +34,9 @@ Bu makale, kullanıcılara JıT erişimini etkinleştirmek ve istekleri onaylama
 
 ## <a name="enable-during-deployment"></a>Dağıtım sırasında etkinleştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Yönetilen bir uygulama için JıT özellikli bir market girişi bulun. **Oluştur**’u seçin.
+1. Yönetilen bir uygulama için JıT özellikli bir market girişi bulun. **Oluştur**'u seçin.
 
 1. Yeni yönetilen uygulama için değer sağlarken **JIT yapılandırma** adımı yönetilen uygulama için JIT erişimini etkinleştirmenizi veya devre dışı bırakmanızı sağlar. **JIT erişimini etkinleştirmek**için **Evet** ' i seçin. Bu seçenek, Market 'te JıT etkin ile tanımlanan yönetilen uygulamalar için varsayılan olarak seçilidir.
 

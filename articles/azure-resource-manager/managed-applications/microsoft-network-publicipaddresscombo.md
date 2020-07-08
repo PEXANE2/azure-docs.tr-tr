@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651923"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. Publicıpaddresscombo UI öğesi
@@ -85,11 +84,11 @@ Kullanıcı yeni veya mevcut bir IP adresi seçerse, Denetim aşağıdaki çıkt
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `constraints.required.domainNameLabel` **True**olarak ayarlanırsa, yeni bir genel IP adresi oluştururken kullanıcının bir etki alanı adı etiketi sağlaması gerekir. Etiketi olmayan mevcut genel IP adresleri seçim için kullanılamaz.
-- `options.hideNone` **True**olarak ayarlanırsa, genel IP adresi için **hiçbirini** seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
+- `constraints.required.domainNameLabel` **True**olarak ayarlanırsa, yenı bir genel IP adresi oluştururken kullanıcının bir etki alanı adı etiketi sağlaması gerekir. Etiketi olmayan mevcut genel IP adresleri seçim için kullanılamaz.
+- `options.hideNone` **True**olarak AYARLANıRSA, genel IP adresi için **hiçbirini** seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
 - `options.hideDomainNameLabel` **True**olarak ayarlanırsa, etki alanı adı etiketinin metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
-- `options.hideExisting` Doğru ise, Kullanıcı var olan BIR genel IP adresini seçemeyebilir. Varsayılan değer **false** şeklindedir.
-- İçin `zone`, yalnızca belirtilen bölge veya bölge DAYANıKLı genel IP adresleri IÇIN genel IP adresleri kullanılabilir.
+- `options.hideExisting`Doğru ise, Kullanıcı var olan bir genel IP adresini seçemeyebilir. Varsayılan değer **false** şeklindedir.
+- İçin `zone` , yalnızca belirtilen bölge veya bölge dayanıklı genel IP adresleri için genel IP adresleri kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

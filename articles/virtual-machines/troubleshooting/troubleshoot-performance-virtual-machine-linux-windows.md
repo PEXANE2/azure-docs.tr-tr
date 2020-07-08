@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772627"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux veya Windows üzerinde Azure sanal makine performansı sorunlarını giderme
@@ -139,7 +138,7 @@ Ani ve sabit/sabit sürekli tüketim-ilişkisel veritabanı motorları gibi baz�
 
 Artmasıyla artan tüketim: olası bir uygulama olan ' ısınmış ', bu tüketim, veritabanı motorları arasında ortaktır. Bununla birlikte, bir uygulamadaki bellek sızıntısının bir işareti de olabilir. Uygulamayı tanımlayıp davranışın beklenip beklenmediğini anlayın.
 
-Sayfa veya takas dosyası kullanımı – Windows disk belleği dosyasını kullanıp kullanmayacağınızı denetleyin (D:\) veya Linux takas dosyasında (üzerinde `/dev/sdb`bulunan) yoğun olarak kullanılıyor. Bu birimler üzerinde bu dosyalar haricinde hiçbir şey yoksa, bu disklerde yüksek okuma/yazma Işlemleri olup olmadığını kontrol edin. Bu sorun, düşük bellek koşullarına göre belirlenir.
+Sayfa veya takas dosyası kullanımı – Windows disk belleği dosyasını kullanıp kullanmayacağınızı denetleyin (D: \) veya Linux takas dosyasında (üzerinde bulunan `/dev/sdb` ) yoğun olarak kullanılıyor. Bu birimler üzerinde bu dosyalar haricinde hiçbir şey yoksa, bu disklerde yüksek okuma/yazma Işlemleri olup olmadığını kontrol edin. Bu sorun, düşük bellek koşullarına göre belirlenir.
 
 ### <a name="high-memory-utilization-remediation"></a>Yüksek bellek kullanımı düzeltmesi
 

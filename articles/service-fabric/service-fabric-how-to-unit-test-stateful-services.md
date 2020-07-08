@@ -4,10 +4,9 @@ description: Durum bilgisi olan hizmetler için Azure Service Fabric birim testi
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639845"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Durum bilgisi olan hizmetler için birim testleri oluşturma
@@ -22,20 +21,20 @@ Bu makalede, [Service Fabric ' de durum bilgisi olmayan hizmetlerin](service-fab
 ## <a name="the-servicefabricmocks-library"></a>ServiceFabric. Moaltını kitaplığı
 Sürüm 3.3.0 itibariyle [Servicefabric. Moze](https://www.nuget.org/packages/ServiceFabric.Mocks/) , çoğaltmaları ve durum yönetimini düzenleme IÇIN bir API sağlar. Bu örneklerde kullanılacaktır.
 
-[NuGet](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
+[NuGet](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
+ [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric. Moaltını, Microsoft tarafından sahip değil veya korunmaz. Ancak, şu anda birim testi durum bilgisi olmayan hizmetler için Microsoft tarafından önerilen bir kitaplıktır.*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>Sahte düzenleme ve durumunu ayarlama
-Bir testin düzenleme bölümünün parçası olarak, bir sahte çoğaltma kümesi ve durum Yöneticisi oluşturulur. Çoğaltma kümesi daha sonra, her çoğaltma için Sınanan hizmetin bir örneğini oluşturur. Ayrıca, `OnChangeRole` ve `RunAsync`gibi yaşam döngüsü olaylarını yürütmektedir. Sahte durum Yöneticisi, durum yöneticisine karşı gerçekleştirilen tüm işlemlerin çalışır durumda olduğundan emin olur ve gerçek durum Yöneticisi olarak saklanır.
+Bir testin düzenleme bölümünün parçası olarak, bir sahte çoğaltma kümesi ve durum Yöneticisi oluşturulur. Çoğaltma kümesi daha sonra, her çoğaltma için Sınanan hizmetin bir örneğini oluşturur. Ayrıca, ve gibi yaşam döngüsü olaylarını yürütmektedir `OnChangeRole` `RunAsync` . Sahte durum Yöneticisi, durum yöneticisine karşı gerçekleştirilen tüm işlemlerin çalışır durumda olduğundan emin olur ve gerçek durum Yöneticisi olarak saklanır.
 
-1. Sınanan hizmeti örneklendirilecek bir Service Factory temsilcisi oluşturun. Bu, genellikle bir Service Fabric hizmeti veya aktör için içinde `Program.cs` bulunan hizmet fabrikası geri çağırması ile benzerdir veya aynı olmalıdır. Bu, aşağıdaki imzayı izlemelidir:
+1. Sınanan hizmeti örneklendirilecek bir Service Factory temsilcisi oluşturun. Bu, genellikle `Program.cs` bir Service Fabric hizmeti veya aktör için içinde bulunan hizmet fabrikası geri çağırması ile benzerdir veya aynı olmalıdır. Bu, aşağıdaki imzayı izlemelidir:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. `MockReliableStateManager` Sınıfının bir örneğini oluşturun. Bu, tüm etkileşimleri durum yöneticisiyle birlikte kullanacaktır.
-3. Öğesinin `MockStatefulServiceReplicaSet<TStatefulService>` bir örneğini `TStatefulService` , test edilmekte olan hizmetin türünün bir örneğini oluşturun. Bu, #1 adımında oluşturulan temsilcinin ve durum Yöneticisi 'nin #2 ' de oluşturulmasını gerektirir
+2. Sınıfının bir örneğini oluşturun `MockReliableStateManager` . Bu, tüm etkileşimleri durum yöneticisiyle birlikte kullanacaktır.
+3. Öğesinin bir örneğini `MockStatefulServiceReplicaSet<TStatefulService>` `TStatefulService` , test edilmekte olan hizmetin türünün bir örneğini oluşturun. Bu, #1 adımında oluşturulan temsilcinin ve durum Yöneticisi 'nin #2 ' de oluşturulmasını gerektirir
 4. Çoğaltma kümesine çoğaltmalar ekleyin. Rolü (örneğin, birincil, ActiveSecondary, ıdde Ikincil) ve çoğaltmanın KIMLIĞINI belirtin
    > Çoğaltma kimliklerinde tutun! Bu, büyük olasılıkla bir birim testinin hareket ve onaylama bölümlerinde kullanılır.
 
@@ -90,7 +89,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
-Aşağıdaki test, üç düğümlü bir çoğaltma kümesi ayarlamayı ve bir rol değişikliğinden sonra verilerin ikincil tarafından kullanılabilir olduğunu doğrulamayı gösterir. Normal bir sorun, sırasında `InsertAsync` eklenen verilerin belleğe veya güvenilir bir koleksiyona çalıştırmadan `CommitAsync`bir şeye kaydedilmesidir. Her iki durumda da ikincil, birincil ile eşitlenmemiş olur. Bu, hizmet taşındıktan sonra tutarsız yanıtlara yol açabilir.
+Aşağıdaki test, üç düğümlü bir çoğaltma kümesi ayarlamayı ve bir rol değişikliğinden sonra verilerin ikincil tarafından kullanılabilir olduğunu doğrulamayı gösterir. Normal bir sorun, sırasında eklenen verilerin `InsertAsync` belleğe veya güvenilir bir koleksiyona çalıştırmadan bir şeye kaydedilmesidir `CommitAsync` . Her iki durumda da ikincil, birincil ile eşitlenmemiş olur. Bu, hizmet taşındıktan sonra tutarsız yanıtlara yol açabilir.
 
 ```csharp
 [TestMethod]

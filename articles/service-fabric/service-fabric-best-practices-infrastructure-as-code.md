@@ -6,21 +6,20 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551837"
 ---
 # <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
 Bir üretim senaryosunda, Kaynak Yöneticisi şablonları kullanarak Azure Service Fabric kümeleri oluşturun. Kaynak Yöneticisi şablonlar, kaynak özellikleri üzerinde daha fazla denetim sağlar ve tutarlı bir kaynak modeline sahip olduğunuzdan emin olun.
 
-Örnek Kaynak Yöneticisi şablonlar, [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)Windows ve Linux 'ta kullanılabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir. Özel `azuredeploy.json` gereksinimlerinizi `azuredeploy.parameters.json` karşılayacak şekilde indirin ve düzenleyin.
+Örnek Kaynak Yöneticisi şablonlar, [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)Windows ve Linux 'ta kullanılabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir. `azuredeploy.json` `azuredeploy.parameters.json` Özel gereksinimlerinizi karşılayacak şekilde indirin ve düzenleyin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Yukarıda indirdiğiniz `azuredeploy.json` ve `azuredeploy.parameters.json` şablonlarını DAĞıTMAK için aşağıdaki Azure CLI komutlarını kullanın:
+`azuredeploy.json` `azuredeploy.parameters.json` Yukarıda indirdiğiniz ve şablonlarını dağıtmak Için AŞAĞıDAKI Azure CLI komutlarını kullanın:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"

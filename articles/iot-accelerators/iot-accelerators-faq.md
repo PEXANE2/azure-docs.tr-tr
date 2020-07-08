@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75647722"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT çözüm hızlandırıcıları için sık sorulan sorular
@@ -30,7 +29,7 @@ Kaynak kodu aşağıdaki GitHub depolarında depolanır:
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Çözüm hızlandırıcılarına yönelik cihaz istemcileri geliştirmek için hangi SDK 'Ları kullanabilirim?
 
-Farklı dilin (C, .NET, Java, Node. js, Python) IoT cihaz SDK 'larının bağlantılarını [Microsoft Azure IoT SDK 'ları](https://github.com/Azure/azure-iot-sdks) GitHub depolarında bulabilirsiniz.
+Farklı dilin (C, .NET, Java, Node.js, Python) IoT cihaz SDK 'larının bağlantılarını [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 'lar GitHub depolarında bulabilirsiniz.
 
 DevKit cihazını kullanıyorsanız, [IoT DEVKIT SDK](https://github.com/Microsoft/devkit-sdk) GitHub deposunda kaynakları ve örnekleri bulabilirsiniz.
 
@@ -65,7 +64,7 @@ Azure aboneliğiniz olduğundan emin değilseniz, aboneliğinizin kiracı eşlem
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Uzaktan Izleme çözümünün önceki sürümüyle ilgili bilgileri nereden bulabilirim?
 
-Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)bulabilirsiniz.
+Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde bulabilirsiniz [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Yeni Çözüm Hızlandırıcısı var olan çözümle aynı coğrafi bölgede kullanılabilir mi?
 
@@ -108,6 +107,6 @@ Elli. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.az
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
 * [Uzaktan Izleme çözüm hızlandırıcısının yeteneklerini keşfet](quickstart-remote-monitoring-deploy.md)
-* [Tahmine dayalı bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
+* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
 * [Baştan sona IoT güvenliği](/azure/iot-fundamentals/iot-security-ground-up)

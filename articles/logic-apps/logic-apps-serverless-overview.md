@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666559"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure sunucusuz: Azure Logic Apps ve Azure Işlevleri ile bulut tabanlı uygulamalar ve çözümler oluşturmaya genel bakış
@@ -33,7 +32,7 @@ Logic Apps kullanmaya başlamak için [ilk mantıksal uygulamanızı oluşturmay
 
 ## <a name="what-is-azure-functions"></a>Azure İşlevleri nedir?
 
-Azure Işlevleri, bulutta kod parçalarını veya "işlevleri" kolayca çalıştırmaya yönelik bir hizmettir. Tüm uygulama veya gerekli altyapı hakkında endişelenmeden yalnızca geçerli sorun için gerekli olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih ettiğiniz geliştirme dilini (C#, F #, Node. js, Python veya PHP gibi) kullanabilirsiniz. Yalnızca kodunuzun çalıştırıldığı süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
+Azure Işlevleri, bulutta kod parçalarını veya "işlevleri" kolayca çalıştırmaya yönelik bir hizmettir. Tüm uygulama veya gerekli altyapı hakkında endişelenmeden yalnızca geçerli sorun için gerekli olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih ettiğiniz geliştirme dilini (C#, F #, Node.js, Python veya PHP gibi) kullanabilirsiniz. Yalnızca kodunuzun çalıştırıldığı süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
 
 Azure Işlevleri 'ni kullanmaya başlamak için [Ilk Azure işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function.md)ile başlayın. Işlevler hakkında daha fazla teknik bilgi için bkz. [Geliştirici başvurusu](../azure-functions/functions-reference.md).
 

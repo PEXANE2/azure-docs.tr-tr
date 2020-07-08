@@ -4,10 +4,9 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730934"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de performans sorunları için uyarı oluşturma
@@ -100,7 +99,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Aşağıdaki sorgularda, kümenizi ve denetleyicinizi temsil \<etmek için-Cluster-Name> \<ve-Controller-Name> yer tutucu değerlerini kullanır. Uyarıları ayarlarken bunları ortamınıza özgü değerlerle değiştirin.
+>Aşağıdaki sorgular, yer tutucu değerlerini kullanır \<your-cluster-name> ve \<your-controller-name> kümenizi ve denetleyicinizi temsil eder. Uyarıları ayarlarken bunları ortamınıza özgü değerlerle değiştirin.
 
 Aşağıdaki sorgu, bir denetleyicideki tüm kapsayıcıların ortalama CPU kullanımını, her dakikada bir denetleyicideki her kapsayıcı örneğinin ortalama CPU kullanımı olarak hesaplar. Ölçüm, bir kapsayıcı için ayarlanan sınırın yüzdesidir.
 
@@ -283,13 +282,13 @@ Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azu
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
 >
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
 3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure Log Analytics sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
 5. **Günlükler** sayfasında, daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın ve sonra sonuçları doğrulamak için **Çalıştır** ' ı seçin. Bu adımı gerçekleştirmeyin ve **+ Yeni uyarı** seçeneği seçilecek şekilde kullanılamaz.
 6. Günlük uyarısı oluşturmak için **+ Yeni uyarı** ' yı seçin.
-7. **Koşul** bölümünde, özel günlük araması, önceden tanımlanmış özel günlük koşulunu **>\<mantığı tanımsız** olarak belirleyin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
+7. **Koşul** bölümünde, **özel günlük \<logic undefined> araması** önceden tanımlı özel günlük koşulu olduğunda ' ı seçin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
 8. Daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın.
 9. Uyarıyı şu şekilde yapılandırın:
 

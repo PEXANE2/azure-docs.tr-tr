@@ -4,14 +4,13 @@ description: Service Fabric hizmetinizde HTTP veya HTTPS uç noktalarına güven
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614664"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama
-Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy**belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi halde, **http. sys** ' nin hizmete erişimi yoktur ve istemciden gelen çağrılarla ilgili hatalarla ilgilenirsiniz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName**adlı bir uç noktaya Customer1 hesabını uygular.
+Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy**belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi takdirde, **http.sys** hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olursunuz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName**adlı bir uç noktaya Customer1 hesabını uygular.
 
 ```xml
 <Policies>

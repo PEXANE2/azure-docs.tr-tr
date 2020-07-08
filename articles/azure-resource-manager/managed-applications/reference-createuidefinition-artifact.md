@@ -1,24 +1,23 @@
 ---
 title: Createuıdefinition yapıtı
-description: Azure yönetilen uygulaması için Createuıdefinition yapay öğesinin nasıl oluşturulacağını gösterir. Dosya Createuıdefinition. JSON olarak adlandırılır.
+description: Azure yönetilen uygulaması için Createuıdefinition yapay öğesinin nasıl oluşturulacağını gösterir. Dosya createUiDefinition.jsolarak adlandırılır.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651494"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>Başvuru: Kullanıcı arabirimi öğeleri yapıtı
 
-Bu makale, Azure yönetilen uygulamalarında *Createuıdefinition. JSON* yapıtı için bir başvurudur. Kullanıcı arabirimi öğeleri yazma hakkında daha fazla bilgi için bkz. [Kullanıcı arabirimi öğeleri oluşturma](create-uidefinition-elements.md).
+Bu makale, Azure yönetilen uygulamalarında yapıta *createUiDefinition.js* yönelik bir başvurudur. Kullanıcı arabirimi öğeleri yazma hakkında daha fazla bilgi için bkz. [Kullanıcı arabirimi öğeleri oluşturma](create-uidefinition-elements.md).
 
 ## <a name="user-interface-elements"></a>Kullanıcı arabirimi öğeleri
 
-Aşağıdaki JSON, Azure yönetilen uygulamalar için *Createuıdefinition. JSON* dosyasının bir örneğini göstermektedir:
+Aşağıdaki JSON, Azure yönetilen uygulamalar için dosya *createUiDefinition.js* örneğini gösterir:
 
 ```json
 {

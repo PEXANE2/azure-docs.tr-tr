@@ -7,10 +7,9 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75498154"
 ---
 # <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
@@ -43,7 +42,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir dizi ölçüm sunar. Aşağıdaki ölçümler Azure portal ve Azure izleyici CLı aracılığıyla sunulmaktadır:
 
-| Ölçüm | Açıklama | Birimler|
+| Metric | Açıklama | Birimler|
 |----|----|----|
 | Cpukullanımı | Yüzde olarak ActualCpu/Ayrıtedcpu | % |
 | Memoryutilileştirme | Yüzde olarak ActualMem/Ayrıtedbellek | % |
@@ -51,11 +50,11 @@ Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir diz
 | Ayrılan bellek | Azure Resource Manager şablonuna göre ayrılan bellek | MB |
 | ActualCpu | CPU kullanımı | Milicore |
 | ActualMemory | Bellek kullanımı | MB |
-| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | Yok |
-| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | Yok |
-| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok |
-| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok | 
-| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | Yok |
+| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | YOK |
+| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | YOK |
+| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK |
+| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK | 
+| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | YOK |
 
 > [!NOTE]
 > ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ile aynıdır. 
@@ -101,7 +100,7 @@ Her örnekte, kaynak KIMLIĞI bu düzene uyar
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
-### <a name="metrics-explorer"></a>Ölçüm Gezgini
+### <a name="metrics-explorer"></a>Ölçüm gezgini
 
 Ölçüm Gezgini, portaldaki, kafes uygulamanız için tüm ölçümleri görselleştirebileceğiniz bir dikey pencere. Bu dikey pencere, portalın ve Azure izleyici dikey penceresindeki uygulamanın sayfasında, Azure Izleyicisini destekleyen tüm Azure kaynaklarınızın ölçümlerini görüntülemek için kullanabileceğiniz Azure izleyici dikey penceresinde erişilebilir. 
 

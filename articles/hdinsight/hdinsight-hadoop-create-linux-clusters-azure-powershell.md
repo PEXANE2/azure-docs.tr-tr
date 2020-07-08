@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 3c93eca493275612ac14a995140b2e91cc40fe98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644673"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturma
@@ -60,7 +59,7 @@ Kümenin oluşturulması 20 dakikaya kadar sürebilir.
 
 ## <a name="create-cluster-configuration-object"></a>Küme oluştur: yapılandırma nesnesi
 
-Cmdlet 'ini kullanarak [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) bir HDInsight yapılandırma nesnesi de oluşturabilirsiniz. Daha sonra kümeniz için ek yapılandırma seçeneklerini etkinleştirmek üzere bu yapılandırma nesnesini değiştirebilirsiniz. Son olarak, yapılandırmayı `-Config` kullanmak için [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 'in parametresini kullanın.
+Cmdlet 'ini kullanarak bir HDInsight yapılandırma nesnesi de oluşturabilirsiniz [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) . Daha sonra kümeniz için ek yapılandırma seçeneklerini etkinleştirmek üzere bu yapılandırma nesnesini değiştirebilirsiniz. Son olarak, `-Config` [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) yapılandırmayı kullanmak için cmdlet 'in parametresini kullanın.
 
 Aşağıdaki betik, HDInsight küme türünde bir R Server yapılandırmak için bir yapılandırma nesnesi oluşturur. Yapılandırma bir Edge düğümü, RStudio ve ek bir depolama hesabı sunar.
 

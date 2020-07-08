@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639811"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric kapsayıcı ağ modları
@@ -194,14 +193,14 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
    |Ayar |Değer | |
    | --- | --- | --- |
    |Öncelik |2000 | |
-   |Adı |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Kaynak |VirtualNetwork | |
    |Hedef | VirtualNetwork | |
    |Hizmet | DNS (UDP/53) | |
    |Eylem | İzin Ver  | |
    | | |
 
-4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` hizmetleri her biri aynı bağlantı noktasını dinleyebilir (her iki hizmet de dinleme yapabilir `Endpoint1`). Açık ağ modu belirtildiğinde, `PortBinding` konfigürasyonlar belirtilemez.
+4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">` . **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` Hizmetleri her biri aynı bağlantı noktasını dinleyebilir (her iki hizmet de dinleme yapabilir `Endpoint1` ). Açık ağ modu belirtildiğinde, `PortBinding` Konfigürasyonlar belirtilemez.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652313"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesi
@@ -52,7 +51,7 @@ Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
 ## <a name="remarks"></a>Açıklamalar
 
 - Bu öğe `defaultValue` özelliği desteklemiyor.
-- Uygulamasının uygulama ayrıntıları `constraints`için bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
+- Uygulamasının uygulama ayrıntıları için `constraints` bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
 - `options.hideConfirmation` **True**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652261"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section Kullanıcı arabirimi öğesi
@@ -45,17 +44,17 @@ Bir veya daha fazla öğeyi bir başlık altında gruplandıran bir denetim.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `elements`en az bir öğe içermeli ve hariç `Microsoft.Common.Section`tüm öğe türlerine sahip olabilir.
+- `elements`en az bir öğe içermeli ve hariç tüm öğe türlerine sahip olabilir `Microsoft.Common.Section` .
 - Bu öğe `toolTip` özelliği desteklemiyor.
 
 ## <a name="sample-output"></a>Örnek çıktı
-İçindeki `elements`öğelerin çıkış değerlerine erişmek için, [temel bilgiler ()](create-uidefinition-functions.md#basics) veya [Steps ()](create-uidefinition-functions.md#steps) işlevlerini ve nokta gösterimini kullanın:
+İçindeki öğelerin çıkış değerlerine erişmek için `elements` , [temel bilgiler ()](create-uidefinition-functions.md#basics) veya [Steps ()](create-uidefinition-functions.md#steps) işlevlerini ve nokta gösterimini kullanın:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Türündeki `Microsoft.Common.Section` öğeler kendisine hiçbir çıkış değeri içermez.
+Türündeki öğeler `Microsoft.Common.Section` kendisine hiçbir çıkış değeri içermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

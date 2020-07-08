@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864290"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
@@ -77,7 +76,7 @@ Bu öğreticideki depolar ve dizinler için belirtilen adlar, büyük veri bilim
 - Birden çok veri bilimi ekibi olmayan küçük bir veri bilimi grubu. 
 - Aynı şekilde, grup düzeyi Sprint planlaması gibi etkinliklerle ekip içi işbirliğini iyileştirmek isteyen birden fazla veri bilimi ekibine sahip daha büyük bir veri bilimi grubu. 
 
-Ekipler tek bir grup projesi altında, takımlarına özgü depolara sahip olmasını tercih ediyorsanız, ekip müşteri adayları * \<TeamName>şablonu* ve * \<TeamName>yardımcı programları*gibi adlara sahip depolar oluşturmamalıdır. Örneğin: *Teamatemplate* ve *teamautilities*. 
+Ekipler tek bir grup projesi altında, takımlarına özgü depolara sahip olmasını tercih ederseniz, takım liderleri * \<TeamName> şablon* ve * \<TeamName> yardımcı programlar*gibi adlara sahip depoları oluşturması gerekir. Örneğin: *Teamatemplate* ve *teamautilities*. 
 
 Herhangi bir durumda, takımın, takım üyelerinin hangi şablon ve yardımcı program depoları ayarlayabileceklerini ve kopyalayabileceklerini bilmesini sağlamak gerekir. Proje liderleri, ayrı projeler veya tek bir proje kapsamında olmak üzere, [bir veri bilimi ekibinin proje depoları oluşturması için proje sağlama görevlerini](project-lead-tasks.md) izlemelidir. 
 
@@ -85,17 +84,17 @@ Herhangi bir durumda, takımın, takım üyelerinin hangi şablon ve yardımcı 
 
 Takımınız için ayrı bir proje oluşturmak için:
 
-1. Web tarayıcınızda, URL *https\//\<: sunucu adı>/\<kuruluş adı>* konumundaki grubunuzun Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje**' yi seçin. 
+1. Web tarayıcınızda, sunucunuzun *https: \/ / \<server name> / \<organization name> *URL 'sindeki Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje**' yi seçin. 
    
    ![Yeni proje seçin](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. **Proje oluştur** iletişim kutusunda, **Proje adı**' nın altındaki *myTeam*adını girin ve **Gelişmiş**' i seçin. 
    
-1. **Sürüm denetimi**altında **Git**' i seçin ve **iş öğesi işlemi**altında **çevik**' i seçin. Ardından **Oluştur**’u seçin. 
+1. **Sürüm denetimi**altında **Git**' i seçin ve **iş öğesi işlemi**altında **çevik**' i seçin. Ardından **Oluştur**'u seçin. 
    
    ![Proje oluşturma](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Takım projesi **Özet** sayfası açılarak sayfa URL 'si *\//\<https: sunucu\<adı>/kuruluş adı>/\<takım adı>*.
+Takım projesi **Özet** sayfası açılır ve sayfa URL 'si *https: \/ / \<server name> / \<organization name> / \<team name> *.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>MyTeam varsayılan deposunu Ekipçonelikler olarak yeniden adlandırın
 
@@ -140,7 +139,7 @@ Ekip depolarınızı grup yöneticiniz tarafından ayarlanan ortak depoların i�
    
    ![Içeri aktar 'ı seçin](./media/team-lead-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *:\//\<https: sunucu adı>/\<kuruluş adı>/_Git/\<Depo adı>*. Örneğin: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> /_Git/ \<repository name> *. Örneğin: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
    
 1. **İçeri aktar**'ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
    
@@ -199,7 +198,7 @@ Depoları kopyalamak için:
    
 1. Oluşturduğunuz dizine geçin.
    
-1. Git Bash 'de, `git clone <clone URL>` \<kopya URL 'si> **kopyalama** iletişim kutusundan kopyaladığınız URL olduğunda komutunu çalıştırın.
+1. Git Bash 'de, `git clone <clone URL>` , \<clone URL> **Kopyala** iletişim kutusundan kopyaladığınız URL olan komutunu çalıştırın.
    
    Örneğin, **Ekipçtilities** deposunu yerel makinenizde *myTeam* dizinine kopyalamak için aşağıdaki komutlardan birini kullanın. 
    
@@ -226,7 +225,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, `git commit` komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 

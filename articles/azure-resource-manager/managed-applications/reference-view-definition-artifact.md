@@ -1,24 +1,23 @@
 ---
 title: Tanım yapıt başvurusunu görüntüle
-description: Azure yönetilen uygulamalar için Görünüm tanımı yapıtına bir örnek sağlar. Dosya adı viewDefinition. json ' dır.
+description: Azure yönetilen uygulamalar için Görünüm tanımı yapıtına bir örnek sağlar. Dosya adı viewDefinition.js.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651208"
 ---
 # <a name="reference-view-definition-artifact"></a>Başvuru: tanım yapıtı görüntüle
 
-Bu makale, Azure yönetilen uygulamalarında *ViewDefinition. JSON* yapıtı için bir başvurudur. Yazma görünümleri yapılandırması hakkında daha fazla bilgi için bkz. [View definition yapay](concepts-view-definition.md).
+Bu makale, Azure yönetilen uygulamalarında yapıta *viewDefinition.js* yönelik bir başvurudur. Yazma görünümleri yapılandırması hakkında daha fazla bilgi için bkz. [View definition yapay](concepts-view-definition.md).
 
 ## <a name="view-definition"></a>Tanımı görüntüleme
 
-Aşağıdaki JSON, Azure yönetilen uygulamalar için *ViewDefinition. JSON* dosyasının bir örneğini göstermektedir:
+Aşağıdaki JSON, Azure yönetilen uygulamalar için dosya *viewDefinition.js* örneğini gösterir:
 
 ```json
 {

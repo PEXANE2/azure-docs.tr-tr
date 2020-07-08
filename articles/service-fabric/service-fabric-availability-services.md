@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551871"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric hizmetlerinin kullanılabilirliği
@@ -18,7 +17,7 @@ Bu makalede, Azure Service Fabric 'nin bir hizmetin kullanılabilirliğini nası
 ## <a name="availability-of-service-fabric-stateless-services"></a>Service Fabric durum bilgisi olmayan Hizmetlerin kullanılabilirliği
 Service Fabric Hizmetleri durum bilgisiz veya durumsuz olabilir. Durum bilgisi olmayan bir hizmet, yüksek oranda kullanılabilir veya güvenilir olması gereken [yerel bir durumu](service-fabric-concepts-state.md) olmayan bir uygulama hizmetidir.
 
-Durum bilgisi olmayan bir hizmet oluşturmak için `InstanceCount`tanımlama gerekir. Örnek sayısı, kümede çalışması gereken durum bilgisi olmayan hizmetin uygulama mantığının örnek sayısını tanımlar. Örnek sayısının artırılması, durum bilgisi olmayan bir hizmetin ölçeğini genişletmek için önerilen yoldur.
+Durum bilgisi olmayan bir hizmet oluşturmak için tanımlama gerekir `InstanceCount` . Örnek sayısı, kümede çalışması gereken durum bilgisi olmayan hizmetin uygulama mantığının örnek sayısını tanımlar. Örnek sayısının artırılması, durum bilgisi olmayan bir hizmetin ölçeğini genişletmek için önerilen yoldur.
 
 Durum bilgisi olmayan adlandırılmış hizmetin bir örneği başarısız olursa, kümedeki uygun bir düğümde yeni bir örnek oluşturulur. Örneğin, durum bilgisi olmayan bir hizmet örneği Düğüm1 üzerinde başarısız olabilir ve Düğüm5 üzerinde yeniden oluşturulabilir.
 

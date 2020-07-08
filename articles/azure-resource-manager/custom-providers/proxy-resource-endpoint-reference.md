@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650467"
 ---
 # <a name="custom-resource-proxy-reference"></a>Özel kaynak proxy başvurusu
@@ -42,10 +41,10 @@ Bu makale, proxy özel kaynaklarını uygulayan uç noktalara yönelik gereksini
 
 ## <a name="building-proxy-resource-endpoint"></a>Proxy kaynak uç noktası derleniyor
 
-"Proxy" kaynak **uç noktası** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bu durumda, **ResourceType** , `PUT`, ve için `GET`yeni bir Azure Kaynak API 'si oluşturur ve tek `DELETE` bir kaynakta `GET` CRUD gerçekleştirir ve tüm mevcut kaynakları alır.
+"Proxy" kaynak **uç noktası** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bu durumda, **ResourceType** ,, ve için yeni bir Azure Kaynak API 'si `PUT` oluşturur `GET` ve `DELETE` tek bir kaynakta CRUD gerçekleştirir ve `GET` tüm mevcut kaynakları alır.
 
 > [!NOTE]
-> `id`, `name`Ve `type` alanları gerekli değildir, ancak özel kaynağı mevcut Azure ekosistemiyle tümleştirmeniz gerekir.
+> `id`, `name` Ve `type` alanları gerekli değildir, ancak özel kaynağı mevcut Azure ekosistemiyle tümleştirmeniz gerekir.
 
 Örnek kaynak:
 
@@ -67,9 +66,9 @@ Parametre başvurusu:
 
 Özellik | Örnek | Açıklama
 ---|---|---
-ad | ' {myCustomResourceName} ' | Özel kaynağın adı.
-type | ' Microsoft. CustomProviders/resourceProviders/{resourceTypeName} ' | Kaynak türü ad alanı.
-id | '/Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName} ' | Kaynak KIMLIĞI.
+name | ' {myCustomResourceName} ' | Özel kaynağın adı.
+tür | ' Microsoft. CustomProviders/resourceProviders/{resourceTypeName} ' | Kaynak türü ad alanı.
+kimlik | '/Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName} ' | Kaynak KIMLIĞI.
 
 ### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
 
@@ -110,7 +109,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 
 **Uç nokta** Yanıtıyla
 
@@ -171,7 +170,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **bitiş noktasından** gelen yanıt müşteriye geri iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 
 **Uç nokta** Yanıtıyla
 
@@ -208,7 +207,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 
 **Uç nokta** Yanıtıyla
 
@@ -269,8 +268,8 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
-- Kaynak listesi, en üst düzey `value` özelliğin altına yerleştirilmelidir.
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- Kaynak listesi, en üst düzey özelliğin altına yerleştirilmelidir `value` .
 
 **Uç nokta** Yanıtıyla
 

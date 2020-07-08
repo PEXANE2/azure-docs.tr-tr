@@ -6,20 +6,19 @@ ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645523"
 ---
 # <a name="configure-stateful-reliable-services"></a>Durum bilgisi olan güvenilir Hizmetleri yapılandırma
 Güvenilir hizmetler için iki yapılandırma ayarı kümesi vardır. Bir küme, diğer küme belirli bir güvenilir hizmete özel olduğu sürece kümedeki tüm güvenilir hizmetler için geneldir.
 
 ## <a name="global-configuration"></a>Genel yapılandırma
-Küresel olarak güvenilir hizmet yapılandırması, Ktlgünlükçü bölümünün altındaki kümenin küme bildiriminde belirtilir. Paylaşılan günlük konumunun ve boyutunun ve günlük kaydı tarafından kullanılan genel bellek sınırlarının yapılandırılmasına izin verir. Küme bildirimi, kümedeki tüm düğümlere ve hizmetlere uygulanan ayarları ve konfigürasyonları tutan tek bir XML dosyasıdır. Dosya genellikle ClusterManifest. xml olarak adlandırılır. Get-ServiceFabricClusterManifest PowerShell komutunu kullanarak kümenizin küme bildirimini görebilirsiniz.
+Küresel olarak güvenilir hizmet yapılandırması, Ktlgünlükçü bölümünün altındaki kümenin küme bildiriminde belirtilir. Paylaşılan günlük konumunun ve boyutunun ve günlük kaydı tarafından kullanılan genel bellek sınırlarının yapılandırılmasına izin verir. Küme bildirimi, kümedeki tüm düğümlere ve hizmetlere uygulanan ayarları ve konfigürasyonları tutan tek bir XML dosyasıdır. Dosya genellikle ClusterManifest.xml olarak adlandırılır. Get-ServiceFabricClusterManifest PowerShell komutunu kullanarak kümenizin küme bildirimini görebilirsiniz.
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Adı | Birim | Varsayılan değer | Açıklamalar |
+| Name | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
 | Writebuffermemorypoolminimumınkb |KB |8388608 |Günlükçü yazma arabelleği bellek havuzu için çekirdek modunda ayrılacak en az KB sayısı. Bu bellek havuzu, diske yazmadan önce durum bilgilerini önbelleğe almak için kullanılır. |
 | WriteBufferMemoryPoolMaximumInKB |KB |Sınırsız |Günlükçü yazma arabelleği bellek havuzunun büyüyebileceği maksimum boyut. |
@@ -38,7 +37,7 @@ Azure ARM veya şirket içi JSON şablonunda aşağıdaki örnekte, durum bilgis
     }]
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Örnek yerel geliştirici kümesi bildirim bölümü
-Bunu yerel geliştirme ortamınızda değiştirmek istiyorsanız, yerel clustermanifest. xml dosyasını düzenlemeniz gerekir.
+Bunu yerel geliştirme ortamınızda değiştirmek istiyorsanız, yerel clustermanifest.xml dosyasını düzenlemeniz gerekir.
 
 ```xml
    <Section Name="KtlLogger">
@@ -53,20 +52,20 @@ Bunu yerel geliştirme ortamınızda değiştirmek istiyorsanız, yerel clusterm
 ### <a name="remarks"></a>Açıklamalar
 Günlükçü, güvenilir hizmet çoğaltmasıyla ilişkili ayrılmış günlüğe yazılmadan önce, durum verilerinin önbelleğe alınması için bir düğümdeki tüm güvenilir hizmetler tarafından kullanılabilen, disk belleğine alınmayan çekirdek bellekten ayrılan küresel bir bellek havuzuna sahiptir. Havuz boyutu Writebuffermemorypoolminimumınkb ve WriteBufferMemoryPoolMaximumInKB Settings tarafından denetlenir. Writebuffermemorypoolminimumınkb, bu bellek havuzunun başlangıç boyutunu ve bellek havuzunun küçülebileceği en düşük boyutu belirtir. WriteBufferMemoryPoolMaximumInKB, bellek havuzunun büyüyebileceği en yüksek boyutudur. Açık olan her güvenilir hizmet çoğaltması, bellek havuzunun boyutunu WriteBufferMemoryPoolMaximumInKB olan bir sistem tarafından belirlenen miktarda artırabilir. Bellek havuzundan kullanılabilir olandan daha fazla bellek talebi varsa bellek kullanılabilir olana kadar bellek istekleri gecikecek. Bu nedenle, yazma arabelleği bellek havuzu belirli bir yapılandırma için çok küçükse performans düşebilir.
 
-Sharedlogıd ve SharedLogPath ayarları her zaman, kümedeki tüm düğümler için varsayılan paylaşılan günlük için GUID ve konum tanımlamak üzere birlikte kullanılır. Varsayılan paylaşılan günlük, belirli bir hizmet için Settings. xml dosyasında ayarları belirtmeyen tüm güvenilir hizmetler için kullanılır. En iyi performansı elde etmek için, paylaşılan günlük dosyaları yalnızca paylaşılan günlük dosyası için kullanılan disklere yerleştirilmelidir ve bu da çekişmeyi azaltır.
+Sharedlogıd ve SharedLogPath ayarları her zaman, kümedeki tüm düğümler için varsayılan paylaşılan günlük için GUID ve konum tanımlamak üzere birlikte kullanılır. Varsayılan paylaşılan günlük, belirli bir hizmet için settings.xml ayarları belirtmeyen tüm güvenilir hizmetler için kullanılır. En iyi performansı elde etmek için, paylaşılan günlük dosyaları yalnızca paylaşılan günlük dosyası için kullanılan disklere yerleştirilmelidir ve bu da çekişmeyi azaltır.
 
 Sharedlogsizeınmb, tüm düğümlerde varsayılan paylaşılan günlük için önceden ayrılacak disk alanı miktarını belirtir.  Sharedlogsizeınmb 'nin belirtime sırası için Sharedlogıd ve SharedLogPath 'in belirtilmesi gerekmez.
 
 ## <a name="service-specific-configuration"></a>Hizmete özel yapılandırma
 Durum bilgisi olan Reliable Services ' varsayılan yapılandırmalarını yapılandırma paketini (config) veya hizmet uygulamasını (kod) kullanarak değiştirebilirsiniz.
 
-* **Yapılandırma paketi** aracılığıyla yapılandırma yapılandırması, uygulamadaki her bir hizmetin yapılandırma klasörü altındaki Microsoft Visual Studio paket kökünde oluşturulan Settings. xml dosyası değiştirilerek gerçekleştirilir.
+* **Yapılandırma paketi** aracılığıyla yapılandırma yapılandırması, uygulamadaki her bir hizmetin yapılandırma klasörü altındaki Microsoft Visual Studio paketi kökünde oluşturulan Settings.xml dosyası değiştirilerek gerçekleştirilir.
 * Kod aracılığıyla **kod** yapılandırması, uygun seçenekler ayarlanmış bir ReliableStateManagerConfiguration nesnesi kullanılarak bir ReliableStateManager oluşturularak gerçekleştirilir.
 
-Varsayılan olarak, Azure Service Fabric Runtime, Settings. xml dosyasında önceden tanımlanmış bölüm adlarını arar ve temel alınan çalışma zamanı bileşenlerini oluştururken yapılandırma değerlerini kullanır.
+Varsayılan olarak, Azure Service Fabric çalışma zamanı Settings.xml dosyasında önceden tanımlanmış bölüm adlarını arar ve temel alınan çalışma zamanı bileşenlerini oluştururken yapılandırma değerlerini kullanır.
 
 > [!NOTE]
-> Hizmetinizi kod aracılığıyla yapılandırmayı planlamıyorsanız, Visual Studio çözümünde oluşturulan Settings. xml dosyasında aşağıdaki yapılandırmaların bölüm **adlarını silmeyin.**
+> Hizmetinizi kod aracılığıyla yapılandırmayı planlamıyorsanız, Visual Studio çözümünde oluşturulan Settings.xml dosyasında aşağıdaki yapılandırmaların bölüm **adlarını silmeyin.**
 > Yapılandırma paketinin veya bölüm adlarının yeniden adlandırılması, ReliableStateManager yapılandırılırken bir kod değişikliği gerektirir.
 > 
 > 
@@ -100,10 +99,10 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Adı | Birim | Varsayılan değer | Açıklamalar |
+| Name | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
 | Batchval Gementınterval |Saniye |0,015 |Birincili çoğaltıcının, birincil öğesine bir onay göndermeden önce bir işlem aldıktan sonra beklediği zaman aralığı. Bu Aralık dahilinde işlenen işlemler için gönderilecek diğer tüm onaylar bir yanıt olarak gönderilir. |
-| ReplicatorEndpoint |Yok |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
+| ReplicatorEndpoint |YOK |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
 | MaxPrimaryReplicationQueueSize |İşlem sayısı |8192 |Birincil kuyruktaki en fazla işlem sayısı. Birincil çoğaltıcı tüm ikincil replica'lerden onay aldıktan sonra bir işlem serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | MaxSecondaryReplicationQueueSize |İşlem sayısı |16384 |İkincil kuyruktaki en fazla işlem sayısı. Bir işlem, durumu Kalıcılık aracılığıyla yüksek oranda kullanılabilir olduktan sonra serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | CheckpointThresholdInMB |MB |50 |Durum denetim noktası olan günlük dosyası alanı miktarı. |

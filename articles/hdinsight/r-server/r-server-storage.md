@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75660248"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri için Azure depolama çözümleri
@@ -41,7 +40,7 @@ ML Hizmetleri kümenizi oluştururken birden fazla depolama hesabı belirttiysen
 
 1. SSH istemcisi kullanarak, kümenizin kenar düğümüne bağlanın. HDInsight kümeleri ile SSH kullanma hakkında bilgi için bkz. [HDInsight Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Örnek bir dosya olan mysamplefile. csv dosyasını/Share dizinine kopyalayın.
+2. Örnek bir dosyayı, mysamplefile.csv,/Share dizinine kopyalayın.
 
     ```bash
     hadoop fs –mkdir /share
@@ -70,11 +69,11 @@ ML Hizmetleri kümenizi oluştururken birden fazla depolama hesabı belirttiysen
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-Tüm dizin ve dosya başvuruları depolama hesabına `wasbs://container1@storage1.blob.core.windows.net`işaret. Bu, HDInsight kümesiyle ilişkili **varsayılan depolama hesabıdır** .
+Tüm dizin ve dosya başvuruları depolama hesabına işaret `wasbs://container1@storage1.blob.core.windows.net` . Bu, HDInsight kümesiyle ilişkili **varsayılan depolama hesabıdır** .
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML Hizmetleri ile ek depolamayı kullanma
 
-Şimdi, mysamplefile1. csv adlı ve **Storage2**içindeki **container2** öğesinin/Private dizininde bulunan bir dosyayı işlemek istediğinizi varsayalım.
+Şimdi, **Storage2**içindeki **container2** /private dizininde bulunan mysamplefile1.csv adlı bir dosyayı işlemek istediğinizi varsayalım.
 
 R kodunuzda, **Storage2** depolama hesabına yönelik ad düğümü başvurusunu işaret edin.
 
@@ -98,9 +97,9 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Tüm dizin ve dosya başvuruları artık depolama hesabına `wasbs://container2@storage2.blob.core.windows.net`işaret noktasıdır. Bu, belirttiğiniz **ad düğümüdür** .
+Tüm dizin ve dosya başvuruları artık depolama hesabına işaret noktasıdır `wasbs://container2@storage2.blob.core.windows.net` . Bu, belirttiğiniz **ad düğümüdür** .
 
-Storage2 üzerindeki `/user/RevoShare/<SSH username>` dizini aşağıdaki **storage2** şekilde yapılandırın:
+`/user/RevoShare/<SSH username>` **Storage2** üzerindeki dizini aşağıdaki şekilde yapılandırın:
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
@@ -178,4 +177,4 @@ Azure dosyalarının önemli bir avantajı, dosya paylaşımlarının Windows ve
 
 - [HDInsight 'ta ML Hizmetleri kümesine genel bakış](r-server-overview.md)
 - [HDInsight üzerinde ML Services kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
-- [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

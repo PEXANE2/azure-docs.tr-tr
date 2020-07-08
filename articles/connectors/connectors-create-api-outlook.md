@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75707195"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta, takvim ve kişileri Outlook.com içinde yönetin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Outlook.com Bağlayıcısı](/connectors/outlook/)sayesinde, Logic Apps oluşturarak @outlook.com veya @hotmail.com hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu görevleri otomatikleştirin:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Outlook.com Bağlayıcısı](/connectors/outlook/)sayesinde, @outlook.com Logic Apps oluşturarak veya hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz @hotmail.com . Örneğin, bu görevleri otomatikleştirin:
 
 * E-posta alın, gönderin ve yanıtlayın.
 * Takviminizde toplantılar zamanlayın.
@@ -25,7 +24,7 @@ ms.locfileid: "75707195"
 İş akışınızı başlatmak için herhangi bir tetikleyiciyi kullanabilirsiniz. Örneğin, yeni bir e-posta geldiğinde, bir takvim öğesi güncelleştirilirken veya fark hizmetinde bir olay olduğunda. Tetikleyici olayına yanıt veren eylemleri (örneğin, e-posta gönder veya yeni bir takvim olayı oluşturma) kullanabilirsiniz.
 
 > [!NOTE]
-> Gibi bir Microsoft iş hesabına @fabrikam.onmicrosoft.comyönelik görevleri otomatikleştirmek için [Office 365 Outlook bağlayıcısını](../connectors/connectors-create-api-office365-outlook.md)kullanın.
+> Gibi bir Microsoft iş hesabına yönelik görevleri otomatikleştirmek için @fabrikam.onmicrosoft.com [Office 365 Outlook bağlayıcısını](../connectors/connectors-create-api-office365-outlook.md)kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -61,7 +60,7 @@ Tetikleyiciye yanıt vermek için başka bir eylem ekleyin. Örneğin, bir e-pos
 
 1. İş akışınızda son adım olarak bir eylem eklemek için **yeni adım**' ı seçin. 
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için **e-posta gönder**' i seçin. 
 

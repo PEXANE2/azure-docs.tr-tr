@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644639"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric 'de yapılandırma dosyalarını Parametreleştirme
@@ -20,7 +19,7 @@ Bu makalede, Service Fabric bir yapılandırma dosyasının nasıl parametreleş
 
 Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılandırma değerini geçersiz kılarsınız.
 
-1. Hizmet projenizde * \<hizmetim> \packageroot\config\settings.xml* dosyasını açın.
+1. * \<MyService>\PackageRoot\Config\Settings.xml* dosyasını hizmet projenizde açın.
 1. Aşağıdaki XML 'i ekleyerek bir yapılandırma parametresi adı ve değeri (örneğin, önbellek boyutu 25 ' e eşit) ayarlayın:
 
    ```xml
@@ -30,15 +29,15 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
    ```
 
 1. Dosyayı kaydedin ve kapatın.
-1. * \<MyApplication> \applicationpackageroot\applicationmanifest.xml* dosyasını açın.
-1. ApplicationManifest. xml dosyasında, `Parameters` öğesinde bir parametre ve varsayılan değer bildirin.  Parametre adının hizmetin adını içermesi önerilir (örneğin, "hizmetim").
+1. * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
+1. ApplicationManifest.xml dosyasında, öğesinde bir parametre ve varsayılan değer bildirin `Parameters` .  Parametre adının hizmetin adını içermesi önerilir (örneğin, "hizmetim").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. ApplicationManifest `ServiceManifestImport` . xml dosyasının bölümünde, yapılandırma paketine, bölümüne ve parametresine `ConfigOverrides` başvurarak `ConfigOverride` bir ve öğesi ekleyin.
+1. `ServiceManifestImport`ApplicationManifest.xml dosyasının bölümünde, `ConfigOverrides` `ConfigOverride` yapılandırma paketine, bölümüne ve parametresine başvurarak bir ve öğesi ekleyin.
 
    ```xml
     <ConfigOverrides>

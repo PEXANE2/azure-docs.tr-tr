@@ -16,13 +16,12 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750797"
 ---
-# <a name="azure-security-logging-and-auditing"></a>Azure Güvenlik günlüğü ve denetimi
+# <a name="azure-security-logging-and-auditing"></a>Azure güvenliğini günlüğe kaydetme ve denetleme
 
 Azure, güvenlik ilkeleriniz ve mekanizmalarda boşlukları belirlemenize yardımcı olmak için çok sayıda yapılandırılabilir güvenlik denetimi ve günlüğe kaydetme seçeneği sunar. Bu makalede, Azure 'da barındırılan hizmetlerden güvenlik günlüklerinin oluşturulması, toplanması ve çözümlenmesi anlatılmaktadır.
 

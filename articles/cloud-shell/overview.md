@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
 ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75832503"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell'e Genel Bakış
@@ -55,7 +54,7 @@ Cloud Shell, Microsoft tarafından yönetiliyor ve bu nedenle popüler komut sat
 [Cloud Shell yüklü araçların tam listesini görüntüleyin.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Tümleşik Cloud Shell Düzenleyicisi
-Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir grafik metin düzenleyicisi sunar. Azure CLı veya Azure PowerShell ile sorunsuz dağıtım için `code .` çalıştırarak yapılandırma dosyalarını oluşturmanız ve düzenlemeniz yeterlidir.
+Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir grafik metin düzenleyicisi sunar. `code .`Azure CLI veya Azure PowerShell ile sorunsuz dağıtım için çalıştırarak yapılandırma dosyalarını oluşturmanız ve düzenlemeniz yeterlidir.
 
 [Cloud Shell Düzenleyicisi hakkında daha fazla bilgi edinin](using-cloud-shell-editor.md).
 
@@ -73,7 +72,7 @@ Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
 * [Visual Studio Code Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure dosyaları depolama alanınızı bağlama
-Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü ile ve adlı `clouddrive`bağlı dosya paylaşımından.  Cloud Shell ilk kez çalıştırıldığında sizin adınıza bir kaynak grubu, depolama hesabı ve Azure Dosyaları paylaşımı oluşturur. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
+Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü ile ve adlı bağlı dosya paylaşımından `clouddrive` .  Cloud Shell ilk kez çalıştırıldığında sizin adınıza bir kaynak grubu, depolama hesabı ve Azure Dosyaları paylaşımı oluşturur. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
 
 [Yeni veya mevcut bir depolama hesabını](persisting-shell-storage.md) nasıl bağlayacağınızı veya [Cloud Shell ' de kullanılan Kalıcılık mekanizmaları](persisting-shell-storage.md#how-cloud-shell-storage-works)hakkında bilgi edinmek için daha fazla bilgi edinin.
 

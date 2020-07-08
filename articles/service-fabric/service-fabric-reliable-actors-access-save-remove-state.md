@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645642"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors duruma erişin, kaydedin ve kaldırın
@@ -26,9 +25,9 @@ Duruma, durum Yöneticisi ile anahtara göre erişilir. Aktör kalıcı duruma s
 
 * Aktör yöntemi, durum yöneticisinden bir nesne aldıktan sonra işlenmeyen bir özel durum oluşturur.
 * Aktör, devre dışı bırakıldıktan veya hatadan sonra yeniden etkinleştirilir.
-* Durum sağlayıcısının durumu disk olarak. Bu davranış, durum sağlayıcısı uygulamasına bağlıdır. `Persisted` Ayarın varsayılan durum sağlayıcısı bu davranışa sahiptir.
+* Durum sağlayıcısının durumu disk olarak. Bu davranış, durum sağlayıcısı uygulamasına bağlıdır. Ayarın varsayılan durum sağlayıcısı `Persisted` Bu davranışa sahiptir.
 
-Anahtar için bir giriş yoksa, `KeyNotFoundException`(C#) veya `NoSuchElementException`(Java) oluşturan bir standart *Get* işlemi kullanarak durumu alabilirsiniz:
+*Get* `KeyNotFoundException` `NoSuchElementException` Anahtar için bir giriş yoksa, (C#) veya (Java) oluşturan bir standart get işlemi kullanarak durumu alabilirsiniz:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -106,7 +105,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ## <a name="save-state"></a>Durumu Kaydet
 Durum Yöneticisi alma yöntemleri, yerel bellekteki bir nesneye bir başvuru döndürür. Bu nesnenin tek başına yerel bellekte değiştirilmesi, bu nesnenin durda kaydedilmesine neden olmaz. Bir nesne durum yöneticisinden alındığında ve değiştirildiğinde, bu, durda kaydedilmesi için durum yöneticisine yeniden eklenmelidir.
 
-Sözdizimi eşdeğeri olan koşulsuz küme kullanarak durum ekleyebilirsiniz: *Set* `dictionary["key"] = value`
+Sözdizimi eşdeğeri olan koşulsuz *küme*kullanarak durum ekleyebilirsiniz `dictionary["key"] = value` :
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -139,7 +138,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Bir *Add* yöntemi kullanarak State ekleyebilirsiniz. Bu yöntem, `InvalidOperationException`zaten var olan bir `IllegalStateException`anahtar eklenmeye çalışıldığında (C#) veya (Java) oluşturur.
+Bir *Add* yöntemi kullanarak State ekleyebilirsiniz. Bu yöntem `InvalidOperationException` `IllegalStateException` , zaten var olan bir anahtar eklenmeye çalışıldığında (C#) veya (Java) oluşturur.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -217,7 +216,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 Aktör yönteminin sonunda, durum Yöneticisi ekleme veya güncelleştirme işlemi tarafından eklenmiş veya değiştirilmiş olan tüm değerleri otomatik olarak kaydeder. Kullanılan ayarlara bağlı olarak, "Kaydet", disk ve çoğaltmayı kalıcı olarak içerebilir. Değiştirilmeyen değerler kalıcı değil veya çoğaltılmaz. Hiçbir değer değiştirilmediyse, Kaydet işlemi hiçbir şey yapmaz. Kaydetme başarısız olursa, değiştirilen durum atılır ve özgün durum yeniden yüklenir.
 
-Aktör tabanında `SaveStateAsync` yöntemini çağırarak durumu el ile de kaydedebilirsiniz:
+Aktör tabanında yöntemini çağırarak durumu el ile de kaydedebilirsiniz `SaveStateAsync` :
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -239,7 +238,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Durumu Kaldır
-*Remove* metodunu çağırarak, aktörin durum yöneticisinden durumu kalıcı olarak kaldırabilirsiniz. Bu yöntem, `KeyNotFoundException`var olmayan bir anahtarı `NoSuchElementException`kaldırmaya çalıştığında (C#) veya (Java) oluşturur.
+*Remove* metodunu çağırarak, aktörin durum yöneticisinden durumu kalıcı olarak kaldırabilirsiniz. Bu yöntem `KeyNotFoundException` `NoSuchElementException` , var olmayan bir anahtarı kaldırmaya çalıştığında (C#) veya (Java) oluşturur.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

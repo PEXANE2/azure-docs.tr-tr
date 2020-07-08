@@ -4,10 +4,9 @@ description: Bir şablondan sertifika ortak adını kullanarak Service Fabric k�
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614562"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Parmak izi yerine sertifika ortak adı kullanan bir Service Fabric kümesi dağıtma
@@ -65,10 +64,10 @@ Write-Host "Common Name              :"  $CommName
 ```
 
 ## <a name="download-and-update-a-sample-template"></a>Örnek şablon indirme ve güncelleştirme
-Bu makale, [5 düğümlü güvenli küme örnek](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) şablonunu ve şablon parametrelerini kullanır. *Azuredeploy. JSON* ve *azuredeploy. Parameters. JSON* dosyalarını bilgisayarınıza indirin.
+Bu makale, [5 düğümlü güvenli küme örnek](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) şablonunu ve şablon parametrelerini kullanır. *Üzerindeazuredeploy.js* indirin ve dosyaları bilgisayarınıza *azuredeploy.parameters.js* .
 
 ### <a name="update-parameters-file"></a>Parametreleri Güncelleştir dosyası
-İlk olarak, *azuredeploy. Parameters. JSON* dosyasını bir metin düzenleyicisinde açın ve şu parametre değerini ekleyin:
+İlk olarak, dosyayı bir metin düzenleyicisinde *azuredeploy.parameters.js* açın ve aşağıdaki parametre değerini ekleyin:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -95,7 +94,7 @@ Ardından, *Certificatecommonname*, *Sourcevaultvalue*ve *certificateurlvalue* p
 ```
 
 ### <a name="update-the-template-file"></a>Şablon dosyasını güncelleştirme
-Sonra, *azuredeploy. JSON* dosyasını bir metin düzenleyicisinde açın ve sertifika ortak adını desteklemek için üç güncelleştirme yapın.
+Sonra, dosyadaki *azuredeploy.js* bir metin düzenleyicisinde açın ve sertifika ortak adını desteklemek için üç güncelleştirme yapın.
 
 1. **Parametreler** bölümünde, bir *certificatecommonname* parametresi ekleyin:
     ```json
@@ -120,14 +119,14 @@ Sonra, *azuredeploy. JSON* dosyasını bir metin düzenleyicisinde açın ve ser
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**Extensions**->**Özellikler**->**settings**ayarları->**sertifikası**, Ekle 
+3. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile** -> **extensionprofile** -> **Extensions** -> **Özellikler** -> **ayarları** -> **sertifikası**, Ekle 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    ve kaldırın `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    ve kaldırın `"thumbprint": "[parameters('certificateThumbprint')]",` .
 
     ```json
     "virtualMachineProfile": {

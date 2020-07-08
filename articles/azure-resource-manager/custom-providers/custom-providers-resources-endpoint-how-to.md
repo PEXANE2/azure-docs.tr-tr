@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650532"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Azure REST API özel kaynakları ekleme
@@ -18,7 +17,7 @@ Bu makale, özel kaynakları uygulayan Azure özel kaynak sağlayıcısı uç no
 
 ## <a name="how-to-define-a-resource-endpoint"></a>Kaynak uç noktası tanımlama
 
-**Uç nokta** , BT ile Azure arasında temel alınan sözleşmeyi uygulayan bir hizmete işaret eden bir URL 'dir. Uç nokta özel kaynak sağlayıcısında tanımlanmıştır ve herkese açık olarak erişilebilen herhangi bir URL olabilir. Aşağıdaki örnekte tarafından `myCustomResource` `endpointURL`uygulanan bir **ResourceType** vardır.
+**Uç nokta** , BT ile Azure arasında temel alınan sözleşmeyi uygulayan bir hizmete işaret eden bir URL 'dir. Uç nokta özel kaynak sağlayıcısında tanımlanmıştır ve herkese açık olarak erişilebilen herhangi bir URL olabilir. Aşağıdaki örnekte tarafından uygulanan bir **ResourceType** vardır `myCustomResource` `endpointURL` .
 
 Örnek **ResourceProvider**:
 
@@ -42,39 +41,39 @@ Bu makale, özel kaynakları uygulayan Azure özel kaynak sağlayıcısı uç no
 
 ## <a name="building-a-resource-endpoint"></a>Kaynak uç noktası oluşturma
 
-**ResourceType** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bir **ResourceType** ile özel bir kaynak sağlayıcısı oluşturulduğunda, Azure 'da yeni bir API kümesi oluşturur. Bu durumda, **ResourceType** , `PUT`, ve için `GET`yeni bir Azure Kaynak API 'si oluşturur ve `DELETE` tüm mevcut kaynakları almak `GET` için de tek bir kaynak üzerinde CRUD 'yi yapar:
+**ResourceType** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bir **ResourceType** ile özel bir kaynak sağlayıcısı oluşturulduğunda, Azure 'da yeni bir API kümesi oluşturur. Bu durumda, **ResourceType** ,, ve için yeni bir Azure Kaynak API 'si `PUT` oluşturur `GET` ve `DELETE` `GET` tüm mevcut kaynakları almak IÇIN de tek bir kaynak üzerinde CRUD 'yi yapar:
 
-Tek kaynak (`PUT`, `GET`, ve `DELETE`) işleme:
+Tek kaynak ( `PUT` , `GET` , ve `DELETE` ) işleme:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource/{myCustomResourceName}
 ```
 
-Tüm kaynakları al (`GET`):
+Tüm kaynakları al ( `GET` ):
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-Özel kaynaklar için özel kaynak sağlayıcıları iki tür **routingtypes**sunar: "`Proxy`" ve "`Proxy, Cache`".
+Özel kaynaklar için özel kaynak sağlayıcıları iki tür **routingtypes**sunar: " `Proxy` " ve " `Proxy, Cache` ".
 
 ### <a name="proxy-routing-type"></a>Proxy yönlendirme türü
 
-"`Proxy`" **Routingtype** , özel kaynak sağlayıcısında belirtilen **uç noktaya** tüm istek yöntemlerini proxy 'leri. "`Proxy`" Ne zaman kullanılır:
+" `Proxy` " **Routingtype** , özel kaynak sağlayıcısında belirtilen **uç noktaya** tüm istek yöntemlerini proxy 'leri. "" Ne zaman kullanılır `Proxy` :
 
 - Yanıt üzerinde tam denetim gereklidir.
 - Sistemleri mevcut kaynaklarla tümleştirme.
 
-"`Proxy`" Kaynakları hakkında daha fazla bilgi edinmek için bkz [. özel kaynak proxy başvurusu](proxy-resource-endpoint-reference.md)
+"" Kaynakları hakkında daha fazla bilgi edinmek için `Proxy` bkz [. özel kaynak proxy başvurusu](proxy-resource-endpoint-reference.md)
 
 ### <a name="proxy-cache-routing-type"></a>Proxy önbelleği yönlendirme türü
 
-`PUT` Yalnızca "`Proxy, Cache`" **routingtype** proxy 'leri ve `DELETE` özel kaynak sağlayıcısında belirtilen **uç nokta** için yöntemler ister. Özel kaynak sağlayıcı, önbelleğinde depolanma `GET` göre istekleri otomatik olarak döndürür. Özel bir kaynak önbellek ile işaretlenmişse, özel kaynak sağlayıcısı, API 'Leri Azure ile uyumlu hale getirmek için yanıttaki alanları da ekler/üzerine yazar. "`Proxy, Cache`" Ne zaman kullanılır:
+Yalnızca " `Proxy, Cache` " **routingtype** proxy 'leri `PUT` ve `DELETE` özel kaynak sağlayıcısında belirtilen **uç nokta** için yöntemler ister. Özel kaynak sağlayıcı, `GET` önbelleğinde depolanma göre istekleri otomatik olarak döndürür. Özel bir kaynak önbellek ile işaretlenmişse, özel kaynak sağlayıcısı, API 'Leri Azure ile uyumlu hale getirmek için yanıttaki alanları da ekler/üzerine yazar. "" Ne zaman kullanılır `Proxy, Cache` :
 
 - Mevcut kaynağı olmayan yeni bir sistem oluşturuluyor.
 - Mevcut Azure ekosistemiyle çalışın.
 
-"`Proxy, Cache`" Kaynakları hakkında daha fazla bilgi edinmek için bkz [. özel kaynak önbelleği başvurusu](proxy-cache-resource-endpoint-reference.md)
+"" Kaynakları hakkında daha fazla bilgi edinmek için `Proxy, Cache` bkz [. özel kaynak önbelleği başvurusu](proxy-cache-resource-endpoint-reference.md)
 
 ## <a name="creating-a-custom-resource"></a>Özel kaynak oluşturma
 
@@ -105,7 +104,7 @@ az resource create --is-full-object \
 Parametre | Gerekli | Açıklama
 ---|---|---
 -Full-Object | *Yes* | Özellikler nesnesinin location, tags, SKU ve/veya plan gibi diğer seçenekleri içerdiğini belirtir.
-id | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın kapalı olması gerekir
+kimlik | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın kapalı olması gerekir
 properties | *Yes* | **Uç noktaya**gönderilecek istek gövdesi.
 
 Azure özel kaynağını silme:
@@ -116,7 +115,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-id | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider**'ın kapalı olması gerekir.
+kimlik | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider**'ın kapalı olması gerekir.
 
 Azure özel kaynağını alma:
 
@@ -126,14 +125,14 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-id | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın kapalı olması gerekir
+kimlik | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın kapalı olması gerekir
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
 > [!NOTE]
-> Kaynaklar, yanıtın `id`uygun, `name`ve `type` **uç noktadan**içermesini gerektirir.
+> Kaynaklar, yanıtın uygun `id` , `name` ve `type` **uç noktadan**içermesini gerektirir.
 
-Azure Resource Manager şablonlar `id`, `name`, ve `type` ' ın aşağı akış uç noktasından doğru şekilde döndürülmesini gerektirir. Döndürülen bir kaynak yanıtı şu biçimde olmalıdır:
+Azure Resource Manager şablonlar,, `id` ve ' ın `name` `type` aşağı akış uç noktasından doğru şekilde döndürülmesini gerektirir. Döndürülen bir kaynak yanıtı şu biçimde olmalıdır:
 
 Örnek **uç nokta** yanıtı:
 

@@ -4,10 +4,9 @@ description: Service Fabric, kapsayıcıınızdan birimleri yedeklemek için Azu
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750048"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric için Azure dosyaları birim sürücüsü
@@ -29,7 +28,7 @@ Azure dosyaları birim sürücüsü, Docker kapsayıcıları için [Azure dosya]
 
 * [PowerShell 'i Service Fabric modülü](/azure/service-fabric/service-fabric-get-started) veya [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) yüklü olarak yüklemeniz gerekir.
 
-* Hyper-V kapsayıcıları kullanıyorsanız, aşağıdaki kod parçacıklarının Azure Resource Manager şablonunuzda (Azure Cluster) veya ClusterConfig. JSON (tek başına küme) ClusterManifest (yerel küme) veya fabricSettings bölümüne eklenmesi gerekir.
+* Hyper-V kapsayıcıları kullanıyorsanız, aşağıdaki kod parçacıklarının Azure Resource Manager şablonunuzda (Azure Cluster) veya ClusterConfig.js(tek başına küme) ClusterManifest (yerel küme) veya fabricSettings bölümüne eklenmesi gerekir.
 
 ClusterManifest içinde, barındırma bölümünde aşağıdakilerin eklenmesi gerekir. Bu örnekte, birim adı **sfazurefile** ve kümede dinlediği bağlantı noktası **19100**' dir. Bunları kümeniz için doğru değerlerle değiştirin.
 
@@ -39,7 +38,7 @@ ClusterManifest içinde, barındırma bölümünde aşağıdakilerin eklenmesi g
 </Section>
 ```
 
-Azure Resource Manager şablonunuzun fabricSettings bölümünde (Azure dağıtımları için) veya ClusterConfig. JSON (tek başına dağıtımlar için), aşağıdaki kod parçacığının eklenmesi gerekir. Yeniden, birim adı ve bağlantı noktası değerlerini kendi değerlerinizle değiştirin.
+Azure Resource Manager şablonunuzun fabricSettings bölümünde (Azure dağıtımları için) veya ClusterConfig.jsaçık (tek başına dağıtımlar için), aşağıdaki kod parçacığının eklenmesi gerekir. Yeniden, birim adı ve bağlantı noktası değerlerini kendi değerlerinizle değiştirin.
 
 ```json
 "fabricSettings": [
@@ -235,7 +234,7 @@ Bir birim eklentisi belirtirken Service Fabric, belirtilen parametreleri kullana
 </Volume>
 ```
 
-Uygulama parametreleri, önceki bildirim parçacığında gösterildiği gibi birimlerde desteklenir (örneğin, bir kullanım `MyStorageVar` için arama yapın).
+Uygulama parametreleri, önceki bildirim parçacığında gösterildiği gibi birimlerde desteklenir ( `MyStorageVar` Örneğin, bir kullanım için arama yapın).
 
 Bir Docker günlük sürücüsü belirtilmişse, kümedeki günlükleri işlemek için aracıları (veya kapsayıcıları) dağıtmanız gerekir. **Driveroption** etiketi, günlük sürücüsü seçeneklerini belirtmek için kullanılabilir.
 

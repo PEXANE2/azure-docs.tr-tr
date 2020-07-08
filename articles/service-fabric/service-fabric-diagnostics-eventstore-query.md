@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614409"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Küme olayları için EventStore API 'Lerini sorgulama
@@ -44,14 +43,14 @@ Bir kümedeki her varlık olay sorguları olabilir. Ayrıca, bu türdeki tüm va
 * Yinelemeden`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Bir uygulamaya veya hizmet adına başvurulduğunda, sorgunun "Fabric:/" eklemesi gerekmez koy. Ayrıca, uygulama veya hizmet adlarınızın içinde "/" varsa, sorguyu çalışır durumda tutmak için "~" olarak değiştirin. Örneğin, uygulamanız "Fabric:/app1/FrontendApp" olarak görünüyorsa, uygulamaya özgü sorgular olarak `/EventsStore/Applications/App1~FrontendApp/$/Events`yapılandırılır.
->Ayrıca, günümüzde hizmetler için sistem durumu raporları, ilgili uygulamanın altında görünür, bu nedenle doğru uygulama varlığına `DeployedServiceHealthReportCreated` yönelik olayları sorgulamanızı sağlayabilirsiniz. 
+>Bir uygulamaya veya hizmet adına başvurulduğunda, sorgunun "Fabric:/" eklemesi gerekmez koy. Ayrıca, uygulama veya hizmet adlarınızın içinde "/" varsa, sorguyu çalışır durumda tutmak için "~" olarak değiştirin. Örneğin, uygulamanız "Fabric:/app1/FrontendApp" olarak görünüyorsa, uygulamaya özgü sorgular olarak yapılandırılır `/EventsStore/Applications/App1~FrontendApp/$/Events` .
+>Ayrıca, günümüzde hizmetler için sistem durumu raporları, ilgili uygulamanın altında görünür, bu nedenle `DeployedServiceHealthReportCreated` doğru uygulama varlığına yönelik olayları sorgulamanızı sağlayabilirsiniz. 
 
 ## <a name="query-the-eventstore-via-rest-api-endpoints"></a>EventStore 'u REST API uç noktaları aracılığıyla sorgulama
 
-Olayları aşağıdakileri `GET` `<your cluster address>/EventsStore/<entity>/Events/`yaparak, bir REST uç noktası aracılığıyla eventstore 'u doğrudan sorgulayabilirsiniz.
+Olayları aşağıdakileri yaparak, bir REST uç noktası aracılığıyla EventStore 'u doğrudan sorgulayabilirsiniz `GET` `<your cluster address>/EventsStore/<entity>/Events/` .
 
-Örneğin, ve `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`arasındaki tüm küme olaylarını sorgulamak için isteğiniz şöyle görünür:
+Örneğin, ve arasındaki tüm küme olaylarını sorgulamak için `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` isteğiniz şöyle görünür:
 
 ```
 Method: GET 
@@ -106,7 +105,7 @@ Body:
 ]
 ```
 
-Bu `2018-04-03T18:00:00Z` şekilde, ve `2018-04-04T18:00:00Z`arasında, bu küme ilk Stood ilk yükseltmesini başarıyla tamamlayıp, ' den `"CurrentClusterVersion": "0.0.0.0:"` `"TargetClusterVersion": "6.2:1.0"`' a ' dan ' a kadar görebiliriz `"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
+Bu şekilde, ve arasında, `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` Bu küme ilk Stood ilk yükseltmesini başarıyla tamamlayıp, ' den ' a ' dan ' a kadar görebiliriz `"CurrentClusterVersion": "0.0.0.0:"` `"TargetClusterVersion": "6.2:1.0"` `"OverallUpgradeElapsedTimeInMs": "120196.5212"` .
 
 ## <a name="query-the-eventstore-programmatically"></a>EventStore 'u programlı olarak sorgulama
 
@@ -114,7 +113,7 @@ Ayrıca, [Service Fabric istemci kitaplığı](https://docs.microsoft.com/dotnet
 
 Service Fabric Istemcinizi ayarladıktan sonra, aşağıdaki gibi EventStore 'a erişerek olayları sorgulayabilirsiniz:`sfhttpClient.EventStore.<request>`
 
-İşlev aracılığıyla ve `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`arasındaki tüm küme olayları için örnek bir istek aşağıda verilmiştir. `GetClusterEventListAsync`
+`2018-04-03T18:00:00Z`İşlev aracılığıyla ve arasındaki tüm küme olayları için örnek bir istek aşağıda verilmiştir `2018-04-04T18:00:00Z` `GetClusterEventListAsync` .
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -187,7 +186,7 @@ Ayrıca, son uygulama dağıtımlarınızı ve yükseltmelerini izleyebilirsiniz
 
 *Bir uygulamanın geçmiş durumu:*
 
-Yalnızca uygulama yaşam döngüsü olaylarını görmenin yanı sıra, belirli bir uygulamanın sistem durumunda geçmiş verileri de görmek isteyebilirsiniz. Bunu, verileri toplamak istediğiniz uygulama adını belirterek yapabilirsiniz. Tüm uygulama sistem durumu olaylarını almak için bu sorguyu kullanın: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Süresi sona ermiş olabilecek sistem durumu olaylarını (yaşam süresi (TTL)) eklemek istiyorsanız, iki tür olayı filtrelemek için sorgunun `,ApplicationHealthReportExpired` sonuna ekleyin.
+Yalnızca uygulama yaşam döngüsü olaylarını görmenin yanı sıra, belirli bir uygulamanın sistem durumunda geçmiş verileri de görmek isteyebilirsiniz. Bunu, verileri toplamak istediğiniz uygulama adını belirterek yapabilirsiniz. Tüm uygulama sistem durumu olaylarını almak için bu sorguyu kullanın: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport` . Süresi sona ermiş olabilecek sistem durumu olaylarını (yaşam süresi (TTL)) eklemek istiyorsanız, `,ApplicationHealthReportExpired` iki tür olayı filtrelemek için sorgunun sonuna ekleyin.
 
 *"MyApp" içindeki tüm hizmetler için geçmiş durumu:*
 

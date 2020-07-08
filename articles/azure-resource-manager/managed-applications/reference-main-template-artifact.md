@@ -6,19 +6,18 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651468"
 ---
 # <a name="reference-deployment-template-artifact"></a>Başvuru: dağıtım şablonu yapıtı
 
-Bu makale, Azure yönetilen uygulamalarında *Maintemplate. JSON* yapıtı için bir başvurudur. Dağıtım şablonu yazma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](../templates/template-syntax.md).
+Bu makale, Azure yönetilen uygulamalarında yapıta *mainTemplate.js* yönelik bir başvurudur. Dağıtım şablonu yazma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](../templates/template-syntax.md).
 
 ## <a name="deployment-template"></a>Dağıtım şablonu
 
-Aşağıdaki JSON, Azure yönetilen uygulamalar için *Maintemplate. JSON* dosyası örneğini gösterir:
+Aşağıdaki JSON, Azure yönetilen uygulamalar için dosya *mainTemplate.js* örneğini gösterir:
 
 ```json
 {

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75744853"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
@@ -33,11 +32,11 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
     ![Azure portal kullanıcılar ve gruplar](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](hdinsight-domain-joined-configure.md) , ve `HiveUsers` `AAD DC Administrators`olmak üzere iki grup ekleme içerir.
+3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](hdinsight-domain-joined-configure.md) , ve olmak üzere iki grup ekleme içerir `HiveUsers` `AAD DC Administrators` .
 
     ![Azure portal Kullanıcı bölmesi grupları seçin](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Kullanıcıları eşleştirmek için Apache ambarı REST API kullanma
 
@@ -45,7 +44,7 @@ Küme oluşturma işlemi sırasında belirtilen kullanıcı grupları o anda eş
 
 Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi için bkz. [Apache ambarı REST API kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-1. Kümenize bağlanmak için [SSH komutunu](hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+1. Kümenize bağlanmak için [SSH komutunu](hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. Aşağıdaki komutu, `CLUSTERNAME` kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -74,7 +73,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
     }
     ```
 
-1. Eşitleme durumunu görmek için yeni `curl` bir komut yürütün:
+1. Eşitleme durumunu görmek için yeni bir `curl` komut yürütün:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
@@ -127,7 +126,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Yeni eklenen Azure AD kullanıcısını doğrulama
 
-Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı Web Kullanıcı arabirimini](hdinsight-hadoop-manage-ambari.md) açın. ' A giderek, ambarı Web Kullanıcı arabirimine **`https://CLUSTERNAME.azurehdinsight.net`** erişin. Küme Yöneticisi Kullanıcı adı ve parolasını girin.
+Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı Web Kullanıcı arabirimini](hdinsight-hadoop-manage-ambari.md) açın. ' A giderek, ambarı Web Kullanıcı arabirimine erişin **`https://CLUSTERNAME.azurehdinsight.net`** . Küme Yöneticisi Kullanıcı adı ve parolasını girin.
 
 1. Ambarı panosundan **yönetici** menüsünde **ambarı Yönet** ' i seçin.
 
@@ -137,14 +136,14 @@ Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı 
 
     ![HDInsight kullanıcıları ve grupları menüsü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak `LDAP` ayarlanır `Local`.
+3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak ayarlanır `LDAP` `Local` .
 
     ![HDInsight AAD kullanıcıları sayfasına genel bakış](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Yeni Kullanıcı olarak ambarı 'nda oturum açın
 
 Yeni Kullanıcı (veya başka bir etki alanı kullanıcısı), ambarı 'nda oturum açtığında, tam Azure AD Kullanıcı adı ve etki alanı kimlik bilgilerini kullanır.  Ambarı, Azure AD 'de kullanıcının görünen adı olan bir kullanıcı diğer adı görüntüler.
-Yeni örnek Kullanıcı Kullanıcı adına `hiveuser3@contoso.com`sahiptir. Bu yeni Kullanıcı, ambarı 'nda farklı şekilde gösterilir `hiveuser3` , ancak Kullanıcı ambarı 'nda olarak `hiveuser3@contoso.com`oturum açar.
+Yeni örnek Kullanıcı Kullanıcı adına sahiptir `hiveuser3@contoso.com` . Bu yeni Kullanıcı, ambarı 'nda farklı şekilde gösterilir, `hiveuser3` ancak Kullanıcı ambarı 'nda olarak oturum açar `hiveuser3@contoso.com` .
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

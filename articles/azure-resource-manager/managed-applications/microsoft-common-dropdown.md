@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652391"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
@@ -54,10 +53,10 @@ Açılan liste içeren seçim denetimi.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Etiketi, bir `constraints.allowedValues` öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
-- Belirtilmişse, varsayılan değer içinde `constraints.allowedValues`bulunan bir etiket olmalıdır. Belirtilmemişse, içindeki `constraints.allowedValues` ilk öğe seçilir. Varsayılan değer **null**.
+- Etiketi, `constraints.allowedValues` bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
+- Belirtilmişse, varsayılan değer içinde bulunan bir etiket olmalıdır `constraints.allowedValues` . Belirtilmemişse, içindeki ilk öğe `constraints.allowedValues` seçilir. Varsayılan değer **null**.
 - `constraints.allowedValues`en az bir öğe olmalıdır.
-- Zorunlu olmayan bir değere öykünmek için, etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin. `constraints.allowedValues`
+- Zorunlu olmayan bir değere öykünmek için, etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin `constraints.allowedValues` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

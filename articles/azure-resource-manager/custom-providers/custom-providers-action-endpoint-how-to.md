@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650402"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Azure REST API özel eylemler ekleme
@@ -18,7 +17,7 @@ Bu makalede, özel eylemleri uygulayan Azure özel kaynak sağlayıcısı uç no
 
 ## <a name="how-to-define-an-action-endpoint"></a>Eylem uç noktası tanımlama
 
-**Uç nokta** , BT ile Azure arasında temel alınan sözleşmeyi uygulayan bir hizmete işaret eden bir URL 'dir. Uç nokta özel kaynak sağlayıcısında tanımlanmıştır ve herkese açık olarak erişilebilen herhangi bir URL olabilir. Aşağıdaki örnekte, tarafından `myCustomAction` `endpointURL`uygulanan adlı bir **eylem** vardır.
+**Uç nokta** , BT ile Azure arasında temel alınan sözleşmeyi uygulayan bir hizmete işaret eden bir URL 'dir. Uç nokta özel kaynak sağlayıcısında tanımlanmıştır ve herkese açık olarak erişilebilen herhangi bir URL olabilir. Aşağıdaki örnekte, tarafından uygulanan adlı bir **eylem** vardır `myCustomAction` `endpointURL` .
 
 Örnek **ResourceProvider**:
 
@@ -42,7 +41,7 @@ Bu makalede, özel eylemleri uygulayan Azure özel kaynak sağlayıcısı uç no
 
 ## <a name="building-an-action-endpoint"></a>Eylem uç noktası oluşturma
 
-Bir **eylemi** uygulayan bir **uç noktanın** , Azure 'daki yeni API için isteği ve yanıtı işlemesi gerekir. Bir **eylem** içeren özel bir kaynak sağlayıcısı oluşturulduğunda, Azure 'da yeni bir API kümesi oluşturur. Bu durumda, eylem çağrılar için `POST` yeni bir Azure eylem API 'si oluşturacaktır:
+Bir **eylemi** uygulayan bir **uç noktanın** , Azure 'daki yeni API için isteği ve yanıtı işlemesi gerekir. Bir **eylem** içeren özel bir kaynak sağlayıcısı oluşturulduğunda, Azure 'da yeni bir API kümesi oluşturur. Bu durumda, eylem çağrılar için yeni bir Azure eylem API 'SI oluşturacaktır `POST` :
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
@@ -81,7 +80,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
 - Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
-- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- `Content-Type`Üst bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -139,7 +138,7 @@ ayrılacak | *Yes* | **ResourceProvider**'ıN kaynak kimliği.
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
 > [!NOTE]
-> Eylemlerin Azure Resource Manager şablonlarda sınırlı desteği vardır. Eylemin bir şablon içinde çağrılması için, adının [`list`](../templates/template-functions-resource.md#list) öneki içermesi gerekir.
+> Eylemlerin Azure Resource Manager şablonlarda sınırlı desteği vardır. Eylemin bir şablon içinde çağrılması için, [`list`](../templates/template-functions-resource.md#list) adının öneki içermesi gerekir.
 
 Liste eylemiyle örnek **ResourceProvider** :
 

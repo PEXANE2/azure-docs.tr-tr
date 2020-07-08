@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645030"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Özel MapReduce programlarını çalıştırma
 
 HDInsight gibi Apache Hadoop tabanlı büyük veri sistemleri, çok çeşitli araçlar ve teknolojiler kullanarak veri işlemeyi etkinleştirir. Aşağıdaki tabloda her biri için başlıca avantajlar ve noktalar açıklanmaktadır.
 
-| Sorgu mekanizması | Yararları | Dikkat edilmesi gerekenler |
+| Sorgu mekanizması | Yararları | Önemli noktalar |
 | --- | --- | --- |
 | **HiveQL kullanarak Apache Hive** | <ul><li>Veri özetlemesi ve isteğe bağlı sorgulama için, büyük miktarlarda sabit verilerin toplu işleme ve analizine yönelik mükemmel bir çözümdür. Tanıdık bir SQL benzeri sözdizimi kullanır.</li><li>Bu, kolayca bölümlenebilir ve dizine alınmış kalıcı veri tabloları oluşturmak için kullanılabilir.</li><li>Aynı verilerden birden çok dış tablo ve görünüm oluşturulabilir.</li><li>Veri depolama ve işleme için büyük ölçüde genişleme ve hataya dayanıklı yetenekler sağlayan basit bir veri ambarı uygulamasını destekler.</li></ul> | <ul><li>Kaynak verilerinde en az bir tanımlanabilir yapıya sahip olmasını gerektirir.</li><li>Gerçek zamanlı sorgular ve satır düzeyi güncelleştirmeler için uygun değildir. En iyi yöntem, büyük veri kümeleri üzerinde toplu iş işleri için kullanılır.</li><li>Karmaşık işlem görevlerinin bazı türlerini gerçekleştiremeyebilir.</li></ul> |
 | **Pig Latin kullanarak Apache Pig** | <ul><li>Verileri kümeler halinde işlemek, veri kümelerini birleştirmek ve filtrelemek, kayıtlar veya kayıt gruplarına işlevler uygulamak ve sütunları tanımlayarak, değerleri gruplayarak veya sütunları satırlara dönüştürerek yeniden yapılandırma için harika bir çözümdür.</li><li>Veri üzerinde işlem dizisi olarak iş akışı tabanlı bir yaklaşım kullanabilir.</li></ul> | <ul><li>SQL kullanıcıları Pig, HiveQL 'tan daha az tanıdık ve kullanımı daha zor olabilir.</li><li>Varsayılan çıktı genellikle bir metin dosyasıdır ve bu nedenle Excel gibi görselleştirme araçlarıyla kullanılması daha zor olabilir. Genellikle çıkış üzerine bir Hive tablosu katmanlarız.</li></ul> |
@@ -48,13 +47,13 @@ Kendi eşlemenizi oluşturmayı düşünün ve aşağıdaki koşullara göre bil
 
 En yaygın MapReduce programları Java dilinde yazılır ve bir jar dosyasına derlenir.
 
-1. MapReduce programınızı geliştirip test ettikten sonra, jar dosyanızı headnode 'a yüklemek için `scp` komutunu kullanın.
+1. MapReduce programınızı geliştirip test ettikten sonra, `scp` jar dosyanızı headnode 'a yüklemek için komutunu kullanın.
 
     ```cmd
     scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    CLUSTERNAME değerini küme adıyla değiştirin. SSH hesabının güvenliğini sağlamak için bir parola kullandıysanız parolayı girmeniz istenir. Bir sertifika kullandıysanız, özel anahtar dosyasını belirtmek için `-i` parametresini kullanmanız gerekebilir.
+    CLUSTERNAME değerini küme adıyla değiştirin. SSH hesabının güvenliğini sağlamak için bir parola kullandıysanız parolayı girmeniz istenir. Bir sertifika kullandıysanız, `-i` özel anahtar dosyasını belirtmek için parametresini kullanmanız gerekebilir.
 
 1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
@@ -68,7 +67,7 @@ En yaygın MapReduce programları Java dilinde yazılır ve bir jar dosyasına d
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Bu komut MapReduce işini YARN 'ye gönderir. Giriş dosyası `/example/data/sample.log`ve çıkış dizini `/example/data/logoutput`. Giriş dosyası ve herhangi bir çıkış dosyası, küme için varsayılan depolama alanında depolanır.
+    Bu komut MapReduce işini YARN 'ye gönderir. Giriş dosyası `/example/data/sample.log` ve çıkış dizini `/example/data/logoutput` . Giriş dosyası ve herhangi bir çıkış dosyası, küme için varsayılan depolama alanında depolanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

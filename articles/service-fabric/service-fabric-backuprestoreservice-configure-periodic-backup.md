@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610157"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
@@ -45,7 +44,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
         ```
 
     2. **Zaman tabanlı yedekleme zamanlaması**: Bu zamanlama türü, ihtiyaç duyuyorsa günün veya haftanın belirli saatlerinde veri yedeklemesi gerçekleştirmek için kullanılmalıdır. Zamanlama sıklığı türü her gün veya haftalık olabilir.
-        1. ** _Günlük_ saat tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için _günlük_olarak `ScheduleFrequencyType` ayarlayın; ve ıSO8601 `RunTimes` biçimindeki gün boyunca istenen saat listesine ayarlı, zaman içinde belirtilen tarih yok sayılır. Örneğin, `0001-01-01T18:00:00` tarih bölüm _0001-01-01_' i yoksayarak günlük _6:00 PM_ 'yi temsil eder. Aşağıdaki örnekte günlük yedeklemenin _9:00_ saat ve _6:00 PM_ 'de tetiklenmesi için yapılandırma gösterilmektedir.
+        1. ** _Günlük_ saat tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için, `ScheduleFrequencyType` _günlük_olarak ayarlayın ve `RunTimes` ISO8601 biçimindeki gün boyunca istenen saat listesine ayarlayın, zaman içinde belirtilen tarih yok sayılır. Örneğin, `0001-01-01T18:00:00` Tarih bölüm _0001-01-01_' i YOKSAYARAK günlük _6:00 PM_ 'yi temsil eder. Aşağıdaki örnekte günlük yedeklemenin _9:00_ saat ve _6:00 PM_ 'de tetiklenmesi için yapılandırma gösterilmektedir.
 
             ```json
             {
@@ -58,7 +57,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
             }
             ```
 
-        2. ** _Haftalık_ zaman tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için _haftalık_olarak `ScheduleFrequencyType` ayarlayın; yedeklemenin `RunDays` tetiklenmesi ve ISO8601 biçiminde istenen saat listesine ayarlanması `RunTimes` gereken gün listesine ayarla, saat ile birlikte belirtilen tarih yok sayılır. Düzenli yedeklemenin tetiklenmesi için haftanın gün listesi. Aşağıdaki örnekte, Pazartesi 'Den Cuma 'ya _9:00_ ve _6:00 PM_ itibariyle günlük yedeklemenin tetiklenmesi için yapılandırma gösterilmektedir.
+        2. ** _Haftalık_ zaman tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için, `ScheduleFrequencyType` _haftalık_olarak ayarlayın; `RunDays` YEDEKLEMENIN tetiklenmesi ve ISO8601 biçimindeki gün boyunca istenen süre listesine ayarlanması için bir hafta içindeki gün listesine ayarlayın `RunTimes` , saat ile birlikte belirtilen tarih yok sayılır. Düzenli yedeklemenin tetiklenmesi için haftanın gün listesi. Aşağıdaki örnekte, Pazartesi 'Den Cuma 'ya _9:00_ ve _6:00 PM_ itibariyle günlük yedeklemenin tetiklenmesi için yapılandırma gösterilmektedir.
 
             ```json
             {
@@ -119,7 +118,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 >
 
 * **Bekletme ilkesi**: yapılandırılan depolamada yedeklemelerin tutulacağı ilkeyi belirtir. Yalnızca temel bekletme Ilkesi desteklenir.
-    1. **Temel bekletme ilkesi**: Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration`, yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups`, `RetentionDuration`belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir. Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_' nin altına geçmesine izin vermez.
+    1. **Temel bekletme ilkesi**: Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration`, yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups`, belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir `RetentionDuration` . Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_' nin altına geçmesine izin vermez.
 
         ```json
         {
@@ -140,7 +139,7 @@ Aynı yedekleme zamanlaması ile veri yedeklemenin, uygulamanın daha yüksek s�
 
 ### <a name="example"></a>Örnek
 
-Bu örnek, _MyApp_A_ ve _MyApp_B_iki uygulamayla kurulum kullanır. Uygulama _MyApp_A_ , iki güvenilir durum bilgisi içeren iki hizmet, _SvcA1_ & _SvcA3_ve bir güvenilir aktör hizmeti olan _ActorA2_içerir. _SvcA1_ üç bölüm Içerir, _ActorA2_ ve _SvcA3_ her biri iki bölüm içerir.  Uygulama _MyApp_B_ , güvenilir durum bilgisi olan üç hizmet, _SvcB1_, _SvcB2_ve _SvcB3_içerir. _SvcB1_ ve _SvcB2_ her biri, _SvcB3_ üç bölüm içerdiğinde iki bölüm içerir.
+Bu örnek, _MyApp_A_ ve _MyApp_B_iki uygulamayla kurulum kullanır. Uygulama _MyApp_A_ , iki güvenilir durum bilgisi içeren iki hizmet, _SvcA1_  &  _SvcA3_ve bir güvenilir aktör hizmeti olan _ActorA2_içerir. _SvcA1_ üç bölüm Içerir, _ActorA2_ ve _SvcA3_ her biri iki bölüm içerir.  Uygulama _MyApp_B_ , güvenilir durum bilgisi olan üç hizmet, _SvcB1_, _SvcB2_ve _SvcB3_içerir. _SvcB1_ ve _SvcB2_ her biri, _SvcB3_ üç bölüm içerdiğinde iki bölüm içerir.
 
 Bu uygulamaların veri yedekleme gereksinimlerinin şu şekilde olduğunu varsayın
 
@@ -182,7 +181,7 @@ Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bı
 
 * _Bölüm_ için yedekleme ilkesini devre dışı bırakmak, bölümdeki yedekleme ilkesi nedeniyle tüm düzenli veri yedeklemesini sonlandırır.
 
-* Bir varlık (uygulama/hizmet/bölüm) için yedeklemeyi devre dışı bırakırken `CleanBackup` , yapılandırılmış depolama alanındaki tüm yedekleri silmek için _true_ olarak ayarlanabilir.
+* Bir varlık (uygulama/hizmet/bölüm) için yedeklemeyi devre dışı bırakırken, `CleanBackup` yapılandırılmış depolama alanındaki tüm yedekleri silmek için _true_ olarak ayarlanabilir.
     ```json
     {
         "CleanBackup": true 
@@ -214,7 +213,7 @@ Disable Özelliği, yalnızca yedekleme için daha önce etkinleştirilen bir d�
 ## <a name="auto-restore-on-data-loss"></a>Veri kaybına otomatik geri yükleme
 Hizmet bölümü, beklenmeyen hatalardan dolayı verileri kaybedebilir. Örneğin, bir bölüm (birincil çoğaltma dahil) için üç çoğaltma için olan disk bozulur veya silinir.
 
-Service Fabric, bölümün veri kaybına neden olduğunu algıladığında, bölüm üzerinde arabirim yöntemini `OnDataLossAsync` çağırır ve veri kaybını sağlamak için bölümün gerekli eylemi yerine gelmesini bekler. Bu durumda, bölümdeki etkin yedekleme ilkesinde `AutoRestoreOnDataLoss` bayrak ayarlandıysa `true` , geri yükleme Bu bölüm için kullanılabilir en son yedekleme kullanılarak otomatik olarak tetiklenir.
+Service Fabric, bölümün veri kaybına neden olduğunu algıladığında, `OnDataLossAsync` bölüm üzerinde arabirim yöntemini çağırır ve veri kaybını sağlamak için bölümün gerekli eylemi yerine gelmesini bekler. Bu durumda, bölümdeki etkin yedekleme ilkesinde `AutoRestoreOnDataLoss` bayrak ayarlandıysa, `true` geri yükleme Bu bölüm için kullanılabilir en son yedekleme kullanılarak otomatik olarak tetiklenir.
 
 ## <a name="get-backup-configuration"></a>Yedekleme yapılandırmasını al
 Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.

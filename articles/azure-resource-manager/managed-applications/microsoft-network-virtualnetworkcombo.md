@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651975"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo UI öğesi
@@ -105,12 +104,12 @@ Kullanıcı var olan bir sanal ağı seçtiğinde, dağıtım şablonu için ger
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Belirtilmişse, boyutun `defaultValue.addressPrefixSize` ilk çakışmayan adres ön eki, kullanıcının aboneliğindeki var olan sanal ağlara göre otomatik olarak belirlenir.
-- Ve `defaultValue.name` `defaultValue.addressPrefixSize` için varsayılan değer **null**.
+- Belirtilmişse, boyutun ilk çakışmayan adres ön eki, `defaultValue.addressPrefixSize` kullanıcının aboneliğindeki var olan sanal ağlara göre otomatik olarak belirlenir.
+- Ve için varsayılan değer `defaultValue.name` `defaultValue.addressPrefixSize` **null**.
 - `constraints.minAddressPrefixSize`belirtilmelidir. Belirtilen değerden daha küçük bir adres alanına sahip var olan sanal ağlar seçim için kullanılamaz.
 - `subnets`belirtilmelidir ve `constraints.minAddressPrefixSize` her alt ağ için belirtilmelidir.
-- Yeni bir sanal ağ oluştururken, her alt ağın adres öneki, sanal ağın adres ön eki ve ilgili `addressPrefixSize`olarak otomatik olarak hesaplanır.
-- Var olan bir sanal ağ kullanılırken, karşılık gelen `constraints.minAddressPrefixSize` alt ağlar seçim için kullanılamaz. Ayrıca, belirtilmişse, en az `minAddressCount` kullanılabilir adreslere sahip olmayan alt ağlar seçim için kullanılamaz. Varsayılan değer **0**' dır. Kullanılabilir adreslerin bitişik olduğundan emin olmak için, için `requireContiguousAddresses` **true değerini** belirtin. Varsayılan değer **true**'dur.
+- Yeni bir sanal ağ oluştururken, her alt ağın adres öneki, sanal ağın adres ön eki ve ilgili olarak otomatik olarak hesaplanır `addressPrefixSize` .
+- Var olan bir sanal ağ kullanılırken, karşılık gelen alt ağlar `constraints.minAddressPrefixSize` seçim için kullanılamaz. Ayrıca, belirtilmişse, en az kullanılabilir adreslere sahip olmayan alt ağlar `minAddressCount` seçim için kullanılamaz. Varsayılan değer **0**' dır. Kullanılabilir adreslerin bitişik olduğundan emin olmak için, için **true değerini** belirtin `requireContiguousAddresses` . Varsayılan değer **true**'dur.
 - Mevcut bir sanal ağda alt ağların oluşturulması desteklenmez.
 - `options.hideExisting` **Doğru**ise, Kullanıcı var olan bir sanal ağı seçemiyorum. Varsayılan değer **false** şeklindedir.
 

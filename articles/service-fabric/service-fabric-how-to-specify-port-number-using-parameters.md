@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609868"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric parametreleri kullanarak bir hizmetin bağlantı noktası numarasını belirtme
@@ -23,10 +22,10 @@ Bu örnekte, asp.net Core Web API 'niz için bağlantı noktası numarasını bi
 1. Visual Studio 'Yu açın ve yeni bir Service Fabric uygulaması oluşturun.
 1. Durum bilgisi olmayan ASP.NET Core şablonunu seçin.
 1. Web API 'sini seçin.
-1. ServiceManifest. xml dosyasını açın.
+1. ServiceManifest.xml dosyasını açın.
 1. Hizmetiniz için belirtilen uç noktanın adını aklınızda edin. `ServiceEndpoint` varsayılan değerdir.
-1. ApplicationManifest. xml dosyasını açın
-1. `ServiceManifestImport` Öğesinde, servicemanifest. xml dosyanızdaki `RessourceOverrides` uç noktaya başvuruya sahip yeni bir öğe ekleyin.
+1. ApplicationManifest.xml dosyasını açın
+1. `ServiceManifestImport`Öğesinde, `RessourceOverrides` ServiceManifest.xml dosyanızdaki uç noktaya yönelik başvuruya sahip yeni bir öğe ekleyin.
 
     ```xml
       <ServiceManifestImport>
@@ -40,7 +39,7 @@ Bu örnekte, asp.net Core Web API 'niz için bağlantı noktası numarasını bi
       </ServiceManifestImport>
     ```
 
-1. `Endpoint` Öğesinde, artık bir parametreyi kullanarak herhangi bir özniteliği geçersiz kılabilirsiniz. Bu örnekte, öğesini belirtip `Port` köşeli parantezleri kullanarak bir parametre adına ayarlarsınız. Örneğin,`[MyWebAPI_PortNumber]`
+1. `Endpoint`Öğesinde, artık bir parametreyi kullanarak herhangi bir özniteliği geçersiz kılabilirsiniz. Bu örnekte, öğesini belirtip `Port` köşeli parantezleri kullanarak bir parametre adına ayarlarsınız. Örneğin,`[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -54,7 +53,7 @@ Bu örnekte, asp.net Core Web API 'niz için bağlantı noktası numarasını bi
       </ServiceManifestImport>
     ```
 
-1. Hala ApplicationManifest. xml dosyasında, `Parameters` öğesinde parametresini belirtirsiniz
+1. Hala ApplicationManifest.xml dosyasında, öğesinde parametresini belirtirsiniz `Parameters`
 
     ```xml
       <Parameters>
@@ -79,7 +78,7 @@ Bu örnekte, asp.net Core Web API 'niz için bağlantı noktası numarasını bi
       </Parameters>
     ```
 
-Cloud. xml yayımlama profilini kullanarak uygulamanızı Visual Studio 'dan yayımlarken, hizmetiniz 80 numaralı bağlantı noktasını kullanacak şekilde yapılandırılır. Uygulamayı MyWebAPI_PortNumber parametresi belirtmeden dağıtırsanız, hizmet 8080 numaralı bağlantı noktasını kullanır.
+Uygulamanızı Visual Studio 'dan Cloud.xml yayımlama profilini kullanarak yayımlarken, hizmetiniz 80 numaralı bağlantı noktasını kullanacak şekilde yapılandırılmıştır. Uygulamayı MyWebAPI_PortNumber parametresi belirtmeden dağıtırsanız, hizmet 8080 numaralı bağlantı noktasını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede ele alınan temel kavramlardan bazıları hakkında daha fazla bilgi edinmek için bkz. [birden çok ortam için uygulamaları yönetme makaleleri](service-fabric-manage-multiple-environment-app-configuration.md).

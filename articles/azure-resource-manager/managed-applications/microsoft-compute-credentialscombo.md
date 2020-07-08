@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652144"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. COMPUTE. CredentialsCombo UI öğesi
@@ -100,7 +99,7 @@ Windows için aşağıdaki şemayı kullanın:
 }
 ```
 
-Linux `osPlatform` ise **Linux** ve Kullanıcı SSH ortak anahtarı sağladıysa, Denetim aşağıdaki çıktıyı döndürür:
+`osPlatform` **Linux** Ise ve Kullanıcı SSH ortak anahtarı sağladıysa, Denetim aşağıdaki çıktıyı döndürür:
 
 ```json
 {
@@ -112,10 +111,10 @@ Linux `osPlatform` ise **Linux** ve Kullanıcı SSH ortak anahtarı sağladıysa
 ## <a name="remarks"></a>Açıklamalar
 
 - `osPlatform`belirtilmelidir ve **Windows** ya da **Linux**olabilir.
-- `constraints.required` **True**olarak AYARLANıRSA, parola veya SSH ortak anahtar metin kutularının başarıyla doğrulanacak değerleri olmalıdır. Varsayılan değer **true**'dur.
+- `constraints.required` **True**olarak ayarlanırsa, parola veya SSH ortak anahtar metin kutularının başarıyla doğrulanacak değerleri olmalıdır. Varsayılan değer **true**'dur.
 - `options.hideConfirmation` **True**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
-- `options.hidePassword` **True**olarak ayarlanırsa, parola kimlik doğrulamasını kullanma seçeneği gizlenir. Bu, yalnızca `osPlatform` **Linux**olduğunda kullanılabilir. Varsayılan değer **false** şeklindedir.
-- İzin verilen parolalarla ilgili ek kısıtlamalar `customPasswordRegex` özelliği kullanılarak uygulanabilir. Bir parola özel `customValidationMessage` doğrulama başarısız olduğunda içindeki dize görüntülenir. Her iki özellik için varsayılan değer **null**.
+- `options.hidePassword` **True**olarak ayarlanırsa, parola kimlik doğrulamasını kullanma seçeneği gizlenir. Bu, yalnızca Linux olduğunda kullanılabilir `osPlatform` . **Linux** Varsayılan değer **false** şeklindedir.
+- İzin verilen parolalarla ilgili ek kısıtlamalar özelliği kullanılarak uygulanabilir `customPasswordRegex` . `customValidationMessage`Bir parola özel doğrulama başarısız olduğunda içindeki dize görüntülenir. Her iki özellik için varsayılan değer **null**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

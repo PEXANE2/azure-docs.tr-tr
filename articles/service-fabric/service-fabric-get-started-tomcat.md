@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614426"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 'ta Apache Tomcat Server çalıştıran Service Fabric kapsayıcısı oluşturma
@@ -52,13 +51,13 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    Daha fazla bilgi için [Dockerfile başvurusuna](https://docs.docker.com/engine/reference/builder/) bakın.
 
 
-4. Web uygulamanızı `docker build` çalıştıran görüntüyü oluşturmak için komutunu çalıştırın:
+4. `docker build`Web uygulamanızı çalıştıran görüntüyü oluşturmak için komutunu çalıştırın:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur, bu da görüntüyü `tomcattest`adlandırarak (-t etiketleme). Bir kapsayıcı görüntüsü oluşturmak için, temel görüntü ilk olarak Docker Hub 'ından indirilir ve uygulamaya eklenir. 
+   Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur, bu da görüntüyü adlandırarak (-t etiketleme) `tomcattest` . Bir kapsayıcı görüntüsü oluşturmak için, temel görüntü ilk olarak Docker Hub 'ından indirilir ve uygulamaya eklenir. 
 
    Oluşturma komutu tamamlandıktan sonra, yeni görüntü üzerindeki bilgileri görmek için `docker images` komutunu çalıştırın:
 
@@ -79,7 +78,7 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    * `-p`kapsayıcı ve konak işletim sistemi arasındaki bağlantı noktası eşlemesini belirtir. 
 
    > [!Note]
-   > `-p` Parametresiyle açtığınız bağlantı noktası, Tomcat uygulamanızın istekleri dinlediği bağlantı noktası olmalıdır. Geçerli örnekte, HTTP istekleri için 8080 numaralı bağlantı noktasında dinlemek üzere *ApacheTomcat/conf/Server. xml* dosyasında yapılandırılmış bir bağlayıcı vardır. Bu bağlantı noktası konaktaki 8080 numaralı bağlantı noktasına eşlenir. 
+   > Parametresiyle açtığınız bağlantı noktası, `-p` Tomcat uygulamanızın istekleri dinlediği bağlantı noktası olmalıdır. Geçerli örnekte, HTTP istekleri için 8080 numaralı bağlantı noktasında dinlemek üzere *ApacheTomcat/conf/server.xml* dosyasında yapılandırılmış bir bağlayıcı vardır. Bu bağlantı noktası konaktaki 8080 numaralı bağlantı noktasına eşlenir. 
 
    Diğer parametreler hakkında daha fazla bilgi için bkz. [Docker Run belgeleri](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -101,7 +100,7 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Tomcat görüntüsünü kapsayıcı Kayıt defterinize gönderme
 Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çalıştığını doğruladığınıza göre, kapsayıcıyı kapsayıcı kayıt defterindeki bir depoya gönderin. Bu makale, görüntüyü depolamak için Azure Container Registry kullanır, ancak bazı adımları değişikliklerle seçtiğiniz herhangi bir kapsayıcı kayıt defterini kullanabilirsiniz. Bu makalede, kayıt defteri adının *myregistry* olduğu varsayılır ve tam kayıt defteri adı myregistry.azurecr.io olur. Bunları senaryonuz için uygun şekilde değiştirin. 
 
-1. Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
+1. `docker login` [Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
 
    Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
@@ -139,7 +138,7 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
 
    ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. Hizmet bildiriminde (*Servicefabrictomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. xml*), uygulamanızın istekleri dinlediği bağlantı noktasını açmak Için kök **Servicemanfest** etiketinin altına aşağıdaki XML 'i ekleyin. **Endpoint** etiketi, uç nokta için protokolü ve bağlantı noktasını bildirir. Bu makalede Kapsayıcılı hizmet 8080 numaralı bağlantı noktasını dinler: 
+10. Hizmet bildiriminde (*Servicefabrictomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*), uygulamanızın istekleri dinlediği bağlantı noktasını açmak Için kök **Servicemanfest** etiketinin altına aşağıdaki XML 'i ekleyin. **Endpoint** etiketi, uç nokta için protokolü ve bağlantı noktasını bildirir. Bu makalede Kapsayıcılı hizmet 8080 numaralı bağlantı noktasını dinler: 
 
    ```xml
    <Resources>
@@ -152,7 +151,7 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
    </Resources>
    ```
 
-11. Uygulama bildiriminde (*Servicefabrictomcat/servicefabrictomcat/ApplicationManifest. xml*), **servicemanifestımport** etiketinin altına aşağıdaki XML 'i ekleyin. İmza kayıt defterinizin adı ve parola ile **RepositoryCredentials** oturum açmak için gereken parolayı içeren **AccountName** ve **parolayı** değiştirin.
+11. Uygulama bildiriminde (*Servicefabrictomcat/ServiceFabricTomcat/ApplicationManifest.xml*), **servicemanifestımport** etiketinin altına aşağıdaki XML 'i ekleyin. İmza kayıt defterinizin adı ve parola ile **RepositoryCredentials** oturum açmak için gereken parolayı içeren **AccountName** ve **parolayı** değiştirin.
 
    ```xml
    <Policies>
@@ -182,7 +181,7 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Önceki komutta, öğesini istemci sertifika `your-certificate.pem` dosyanızın adıyla değiştirin. Geliştirme ve test ortamlarında, küme sertifikası genellikle istemci sertifikası olarak kullanılır. Sertifikanız kendinden imzalı değilse, `-no-verify` parametresini atlayın. 
+     Önceki komutta, öğesini `your-certificate.pem` istemci sertifika dosyanızın adıyla değiştirin. Geliştirme ve test ortamlarında, küme sertifikası genellikle istemci sertifikası olarak kullanılır. Sertifikanız kendinden imzalı değilse, `-no-verify` parametresini atlayın. 
        
      Küme sertifikaları genellikle. pfx dosyaları olarak yerel olarak indirilir. Henüz bir pek biçiminde sertifikanız yoksa, bir. pfx dosyasından bir. ped dosyası oluşturmak için aşağıdaki komutu çalıştırabilirsiniz:
 
@@ -190,7 +189,7 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     . Pfx dosyanız parola korumalı değilse, son parametre için kullanın `-passin pass:` .
+     . Pfx dosyanız parola korumalı değilse, `-passin pass:` son parametre için kullanın.
 
 
 13. Uygulamayı kümenize dağıtmak için şablonda sağlanmış olan Install betiğini çalıştırın. Betik, uygulama paketini kümenin görüntü deposuna kopyalar, uygulama türünü kaydeder ve uygulamanın bir örneğini oluşturur.
@@ -201,8 +200,8 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
 
    Install betiğini çalıştırdıktan sonra bir tarayıcı açın ve Service Fabric Explorer şuraya gidin:
     
-   * Yerel bir kümede (Mac OS X vagrant kullanıyorsanız, `http://localhost:19080/Explorer` *localhost* 'U VM 'nin özel IP 'si ile değiştirin) kullanın.
-   * Güvenli bir Azure kümesinde kullanın `https://PublicIPorFQDN:19080/Explorer`. 
+   * Yerel bir kümede `http://localhost:19080/Explorer` (Mac OS X vagrant kullanıyorsanız, *localhost* 'u VM 'nin özel IP 'si ile değiştirin) kullanın.
+   * Güvenli bir Azure kümesinde kullanın `https://PublicIPorFQDN:19080/Explorer` . 
     
    **Uygulamalar** düğümünü genişletin ve artık uygulama türü, **Servicefabrictomcattype**ve bu türün ilk örneği için başka bir giriş olduğunu unutmayın. Uygulamanın tam olarak dağıtılması birkaç dakika sürebilir, bu nedenle hasta olmalıdır.
 

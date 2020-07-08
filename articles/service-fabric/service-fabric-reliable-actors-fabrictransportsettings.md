@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645591"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors için FabricTransport ayarlarını yapılandırma
@@ -49,9 +48,9 @@ Varsayılan yapılandırmayı değiştirmek için bir [yapılandırma paketi](se
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Aktör hizmeti için FabricTransport ayarlarını yapılandırma
 
-Settings. xml dosyasına bir TransportSettings bölümü ekleyin.
+settings.xml dosyasına bir TransportSettings bölümü ekleyin.
 
-Varsayılan olarak, aktör kodu SectionName 'i "&lt;actorname&gt;TransportSettings" olarak arar. Bu bulunamazsa, SectionName 'i "TransportSettings" olarak denetler.
+Varsayılan olarak, aktör kodu SectionName 'i " &lt; actorname &gt; TransportSettings" olarak arar. Bu bulunamazsa, SectionName 'i "TransportSettings" olarak denetler.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -70,7 +69,7 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;actorname&gt;TransportSettin
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Aktör istemci derlemesi için FabricTransport ayarlarını yapılandırma
 
-İstemci bir hizmetin parçası olarak çalışmıyorsa, Client. exe dosyası ile aynı konumda bir "&lt;Client exe name&gt;. Settings. xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
+İstemci bir hizmetin parçası olarak çalışmıyorsa, &lt; &gt; Client. exe dosyası ile aynı konumda bir "Istemci Exe adı.settings.xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

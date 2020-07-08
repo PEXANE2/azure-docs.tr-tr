@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645761"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 'da Linux kümesi olaylarını Service Fabric
@@ -28,11 +27,11 @@ Her Syslog olayında 4 bileşen vardır
 * İleti
 * Severity
 
-SyslogConsumer, Tesis `Local0`kullanarak tüm platform olaylarını yazar. Yapılandırma yapılandırmasını değiştirerek geçerli herhangi bir tesis için güncelleştirme yapabilirsiniz. Kullanılan kimlik `ServiceFabric`. Ileti alanı, JSON 'da serileştirilmiş tüm olayı içerir, böylece bu, çeşitli araçlarla sorgulanarak tüketilebilir. 
+SyslogConsumer, Tesis kullanarak tüm platform olaylarını yazar `Local0` . Yapılandırma yapılandırmasını değiştirerek geçerli herhangi bir tesis için güncelleştirme yapabilirsiniz. Kullanılan kimlik `ServiceFabric` . Ileti alanı, JSON 'da serileştirilmiş tüm olayı içerir, böylece bu, çeşitli araçlarla sorgulanarak tüketilebilir. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer 'ı etkinleştir
 
-SyslogConsumer 'ı etkinleştirmek için, kümenizin bir yükseltmesini yapmanız gerekir. `fabricSettings` Bölümünün aşağıdaki kodla güncelleştirilmesi gerekir. Bu kod yalnızca SyslogConsumer ile ilgili bölümleri içerir
+SyslogConsumer 'ı etkinleştirmek için, kümenizin bir yükseltmesini yapmanız gerekir. `fabricSettings`Bölümünün aşağıdaki kodla güncelleştirilmesi gerekir. Bu kod yalnızca SyslogConsumer ile ilgili bölümleri içerir
 
 ```json
     "fabricSettings": [
@@ -75,9 +74,9 @@ SyslogConsumer 'ı etkinleştirmek için, kümenizin bir yükseltmesini yapmanı
 ```
 
 Bu çağrı için değişiklikler aşağıda verilmiştir
-1. Ortak bölümünde adlı `LinuxStructuredTracesEnabled`yeni bir parametre vardır. **Bu, syslog 'a gönderildiğinde Linux olaylarının yapılandırılmış ve serileştirilmesi için gereklidir.**
+1. Ortak bölümünde adlı yeni bir parametre vardır `LinuxStructuredTracesEnabled` . **Bu, syslog 'a gönderildiğinde Linux olaylarının yapılandırılmış ve serileştirilmesi için gereklidir.**
 2. Tanılama bölümünde yeni bir ConsumerInstance: SyslogConsumer eklenmiştir. Bu, platforma bir olay müşterisi olduğunu söyler. 
-3. Yeni bölüm SyslogConsumer ' ın ' a `IsEnabled` sahip `true`olması gerekir. Local0 tesis otomatik olarak kullanılacak şekilde yapılandırılmıştır. Bunu, başka bir parametre ekleyerek geçersiz kılabilirsiniz.
+3. Yeni bölüm SyslogConsumer ' ın ' a sahip olması gerekir `IsEnabled` `true` . Local0 tesis otomatik olarak kullanılacak şekilde yapılandırılmıştır. Bunu, başka bir parametre ekleyerek geçersiz kılabilirsiniz.
 
 ```json
     {
@@ -89,7 +88,7 @@ Bu çağrı için değişiklikler aşağıda verilmiştir
 ## <a name="azure-monitor-logs-integration"></a>Azure Izleyici günlük tümleştirmesi
 Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında okuyabilirsiniz. Azure Marketi 'ni kullanarak bu [yönergeleri] kullanarak bir Log Analytics çalışma alanı oluşturabilirsiniz. (.. /Azure-Monitor/Learn/Quick-Create-Workspace.MD) Ayrıca bu verileri toplamak ve çalışma alanına göndermek için Log Analytics aracısını kümenize eklemeniz gerekir. Bu, performans sayaçlarını toplamak için kullanılan aracıdır. 
 
-1. `Advanced Settings` Dikey pencereye gitme
+1. Dikey pencereye gitme `Advanced Settings`
 
     ![Çalışma alanı ayarları](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
@@ -98,10 +97,10 @@ Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında ok
 4. Local0 'i izlemek üzere yapılandırın. FabricSettings içinde değiştirdiyseniz başka bir tesis ekleyebilirsiniz
 
     ![Syslog yapılandırma](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. Sorgulama başlamak için çalışma alanı kaynağının menüsüne tıklayarak `Logs` sorgu Gezgini 'ne gidin
+5. `Logs`Sorgulama başlamak için çalışma alanı kaynağının menüsüne tıklayarak sorgu Gezgini 'ne gidin
 
     ![Çalışma alanı günlükleri](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. ProcessName `Syslog` `ServiceFabric` olarak görünen tabloya karşı sorgulama yapabilirsiniz. Aşağıdaki sorgu, olaydaki JSON 'ı ayrıştırmaya ve içeriğini görüntülemeye yönelik bir örnektir
+6. `Syslog`ProcessName olarak görünen tabloya karşı sorgulama yapabilirsiniz `ServiceFabric` . Aşağıdaki sorgu, olaydaki JSON 'ı ayrıştırmaya ve içeriğini görüntülemeye yönelik bir örnektir
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609800"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Düğüm geçişi API 'SI ile başlangıç düğümünü değiştirme ve düğüm API 'Lerini durdurma
@@ -31,9 +30,9 @@ Ayrıca, başlangıç düğümü API 'SI çağrılana kadar bir düğümün durd
 
 Bu sorunları yeni bir API kümesinde ele aldık.  Yeni düğüm geçiş API 'SI (yönetilen: [Startnodegeçişli Tionasync ()][snt]) Service Fabric bir düğümü *durdurulmuş* duruma geçirebilir veya *durdurulmuş* bir durumdan normal bir duruma geçiş yapmak için kullanılabilir.  Lütfen API 'nin adı içindeki "Başlat" ın bir düğümü başlatmak için başvurmadığını unutmayın.  Sistemin *durdurulan* veya başlatılan durumuna geçiş için yürütebileceği zaman uyumsuz bir işlem başlangıcını gösterir.
 
-**Kullanımıyla**
+**Kullanım**
 
-Düğüm geçişi API 'SI çağrıldığında bir özel durum oluşturmaz, sistem zaman uyumsuz işlemi kabul etmiş ve yürütülür.  Başarılı bir çağrı, işlemin henüz tamamlandığını göstermez.  İşlemin geçerli durumu hakkında bilgi almak için, bu işlem için düğüm geçişi API 'SI çağrılırken kullanılan GUID ile düğüm geçişi Ilerleme durumu API 'sini (Managed: [GetNodeTransitionProgressAsync ()][gntp]) çağırın.  Düğüm geçişi Ilerleme durumu API 'SI bir Nodegeçişli Ilerleme nesnesi döndürür.  Bu nesnenin State özelliği işlemin geçerli durumunu belirtir.  Durum "çalışıyor" ise, işlem Yürütülüyor demektir.  İşlem tamamlanırsa, işlem hatasız olarak tamamlanmıştır.  Hata oluşursa, işlem çalıştırılırken bir sorun oluştu.  Result özelliğinin Exception özelliği, sorunun ne olduğunu belirtecektir.  Durum https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate özelliği ve kod örnekleri için aşağıdaki "Örnek kullanım" bölümü hakkında daha fazla bilgi için bkz..
+Düğüm geçişi API 'SI çağrıldığında bir özel durum oluşturmaz, sistem zaman uyumsuz işlemi kabul etmiş ve yürütülür.  Başarılı bir çağrı, işlemin henüz tamamlandığını göstermez.  İşlemin geçerli durumu hakkında bilgi almak için, bu işlem için düğüm geçişi API 'SI çağrılırken kullanılan GUID ile düğüm geçişi Ilerleme durumu API 'sini (Managed: [GetNodeTransitionProgressAsync ()][gntp]) çağırın.  Düğüm geçişi Ilerleme durumu API 'SI bir Nodegeçişli Ilerleme nesnesi döndürür.  Bu nesnenin State özelliği işlemin geçerli durumunu belirtir.  Durum "çalışıyor" ise, işlem Yürütülüyor demektir.  İşlem tamamlanırsa, işlem hatasız olarak tamamlanmıştır.  Hata oluşursa, işlem çalıştırılırken bir sorun oluştu.  Result özelliğinin Exception özelliği, sorunun ne olduğunu belirtecektir.  https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstateDurum özelliği ve kod örnekleri için aşağıdaki "Örnek kullanım" bölümü hakkında daha fazla bilgi için bkz..
 
 
 **Durdurulmuş bir düğüm ve aşağı düğüm arasında ayrım** Düğüm geçiş API 'SI kullanılarak bir düğüm *durdurulmuşsa* , düğüm sorgusunun çıkışı (yönetilen: [Getnodelistasync ()][nodequery], PowerShell: [Get-servicefabricnode][nodequeryps]), bu düğümün bir *ısdurdurulan* özelliği true değerine sahip olduğunu gösterir.  Bu, *düğüm durumu* özelliğinin değerinden farklı olduğunu fark *eder.*  *Nodestatus* özelliğinde bir değer *kapalıysa*, ancak *ısdurdurulan* değeri false ise düğüm, düğüm geçiş API 'si kullanılarak durdurulmadı ve başka bir nedenden dolayı *çalışmıyor* .  *Isdurdurulan* özelliği true Ise ve *Nodestatus* özelliği *kapalıysa*, düğüm geçişi API 'si kullanılarak durdurulmuştur.

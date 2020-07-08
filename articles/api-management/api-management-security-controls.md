@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75751131"
 ---
 # <a name="security-controls-for-api-management"></a>API Management için güvenlik denetimleri
@@ -25,42 +24,42 @@ Bu makalede, API Management yerleşik olarak bulunan güvenlik denetimleri Belge
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
 | Hizmet uç noktası desteği| Hayır | |  |
-| VNet ekleme desteği| Yes | |  |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | Sırasıyla ağ güvenlik grupları (NSG) ve Azure Application Gateway (veya diğer yazılım gereci) kullanma. |  |
-| Zorlamalı tünel desteği| Yes | Azure ağı Zorlamalı tünel sağlar. |  |
+| VNet ekleme desteği| Evet | |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Sırasıyla ağ güvenlik grupları (NSG) ve Azure Application Gateway (veya diğer yazılım gereci) kullanma. |  |
+| Zorlamalı tünel desteği| Evet | Azure ağı Zorlamalı tünel sağlar. |  |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | | |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) | |
-| Veri düzlemi günlüğü ve denetimi| Yes | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | | |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) | |
+| Veri düzlemi günlüğü ve denetimi| Evet | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
 ## <a name="identity"></a>Kimlik
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Kimlik Doğrulaması| Yes | |  |
-| Yetkilendirme| Yes | |  |
+| Kimlik Doğrulaması| Evet | |  |
+| Yetkilendirme| Evet | |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |  |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |  |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Tüm şifreleme anahtarları hizmet örneği başına alınır ve hizmet yönetilir. |  |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | [Express Route](../expressroute/index.yml) ve VNET şifrelemesi, [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |  |
-| Şifrelenmiş API çağrıları| Yes | Yönetim düzlemi çağrıları TLS üzerinden [Azure Resource Manager](../azure-resource-manager/index.yml) üzerinden yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor.  Veri düzlemi çağrıları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilmiş olabilir. |   |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | [Express Route](../expressroute/index.yml) ve VNET şifrelemesi, [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |  |
+| Şifrelenmiş API çağrıları| Evet | Yönetim düzlemi çağrıları TLS üzerinden [Azure Resource Manager](../azure-resource-manager/index.yml) üzerinden yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor.  Veri düzlemi çağrıları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilmiş olabilir. |   |
  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes | [Azure API Management DevOps kaynak setini](https://aka.ms/apimdevops) kullanma |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | [Azure API Management DevOps kaynak setini](https://aka.ms/apimdevops) kullanma |  |
 
 ## <a name="vulnerability-scans-false-positives"></a>Güvenlik açığı yanlış pozitifleri tarar
 

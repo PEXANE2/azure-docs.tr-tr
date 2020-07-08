@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609630"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Bir C# hizmetinde güvenli hizmet uzaktan iletişim iletişimleri
@@ -23,7 +22,7 @@ Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygula
 
 C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenliğinin sağlanmasına yardımcı olmak için şu adımları izleyin:
 
-1. Hizmetinize bir uzak yordam `IHelloWorldStateful`çağrısı için kullanılabilecek yöntemleri tanımlayan bir arabirim oluşturun. Hizmetiniz, `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` ad alanında `FabricTransportServiceRemotingListener`belirtilen ' i kullanacak. Bu, uzaktan `ICommunicationListener` iletişim özellikleri sağlayan bir uygulamasıdır.
+1. `IHelloWorldStateful`Hizmetinize bir uzak yordam çağrısı için kullanılabilecek yöntemleri tanımlayan bir arabirim oluşturun. Hizmetiniz `FabricTransportServiceRemotingListener` , ad alanında belirtilen ' i kullanacak `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` . Bu, `ICommunicationListener` Uzaktan iletişim özellikleri sağlayan bir uygulamasıdır.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -90,7 +89,7 @@ C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli
        ```
    2. Bunları bir [yapılandırma paketi](service-fabric-application-and-service-manifests.md)kullanarak sağlayın:
 
-       Settings. xml `TransportSettings` dosyasına bir adlandırılmış bölüm ekleyin.
+       `TransportSettings`settings.xml dosyasına bir adlandırılmış bölüm ekleyin.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -120,7 +119,7 @@ C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli
        }
        ```
 
-        Settings. xml dosyasına `TransportSettings` bir bölüm eklerseniz, `FabricTransportRemotingListenerSettings` bu bölümdeki tüm ayarları varsayılan olarak yükler.
+        `TransportSettings`settings.xml dosyasına bir bölüm eklerseniz, `FabricTransportRemotingListenerSettings` Varsayılan olarak bu bölümden tüm ayarlar yüklenir.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -141,7 +140,7 @@ C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli
             };
         }
         ```
-3. Güvenli bir hizmette yöntemleri, bir hizmet proxy 'si oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` sınıfını kullanmak yerine, uzak bir hizmet proxy 'si kullanarak çağırdığınızda, kullanın. `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` İçine `FabricTransportRemotingSettings`geçirin `SecurityCredentials`.
+3. Güvenli bir hizmette yöntemleri, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` bir hizmet proxy 'si oluşturmak için sınıfını kullanmak yerine, uzak bir hizmet proxy 'si kullanarak çağırdığınızda, kullanın `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` . İçine geçirin `FabricTransportRemotingSettings` `SecurityCredentials` .
 
     ```csharp
 
@@ -171,7 +170,7 @@ C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli
 
     ```
 
-    İstemci kodu bir hizmetin parçası olarak çalışıyorsa, `FabricTransportRemotingSettings` Settings. xml dosyasından yükleyebilirsiniz. Daha önce gösterildiği gibi, hizmet koduna benzer bir Merhaba Dünya Clienttransportsettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
+    İstemci kodu bir hizmetin parçası olarak çalışıyorsa, `FabricTransportRemotingSettings` settings.xml dosyasından yükleyebilirsiniz. Daha önce gösterildiği gibi, hizmet koduna benzer bir Merhaba Dünya Clienttransportsettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,9 +183,9 @@ C# Hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli
 
     ```
 
-    İstemci bir hizmetin parçası olarak çalışmıyorsa, client_name. exe ' nin bulunduğu konumda bir client_name. Settings. xml dosyası oluşturabilirsiniz. Ardından bu dosyada bir TransportSettings bölümü oluşturun.
+    İstemci bir hizmetin parçası olarak çalışmıyorsa, client_name.exe bulunduğu konumda client_name.settings.xml bir dosya oluşturabilirsiniz. Ardından bu dosyada bir TransportSettings bölümü oluşturun.
 
-    Hizmete benzer şekilde, istemci ayarları. xml/ `TransportSettings` client_name. Settings. xml ' de bir bölüm eklerseniz, `FabricTransportRemotingSettings` bu bölümdeki tüm ayarları varsayılan olarak yükler.
+    Hizmete benzer şekilde, `TransportSettings` istemci settings.xml/client_name.settings.xml bir bölüm eklerseniz, `FabricTransportRemotingSettings` Bu bölümdeki tüm ayarları varsayılan olarak yükler.
 
     Bu durumda, önceki kod daha da basitleştirilmiştir:  
 

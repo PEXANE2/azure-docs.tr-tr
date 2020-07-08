@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779255"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
@@ -86,7 +85,7 @@ client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, enc
 
 Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-Aşağıdaki C# kodu, bir akış Bulucu oluşturmayı ve belirtmeyi `StreamingLocator.Filters`gösterir. Bu, filtre adlarından `IList<string>` birini alan isteğe bağlı bir özelliktir.
+Aşağıdaki C# kodu, bir akış Bulucu oluşturmayı ve belirtmeyi gösterir `StreamingLocator.Filters` . Bu, filtre adlarından birini alan isteğe bağlı bir özelliktir `IList<string>` .
 
 ```csharp
 IList<string> filters = new List<string>();

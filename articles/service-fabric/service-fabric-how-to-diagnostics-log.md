@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614375"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric uygulamanıza günlük kaydı ekleme
@@ -126,13 +125,13 @@ ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://
 Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)ve [loggr](https://github.com/imobile3/Loggr.Extensions.Logging)gibi önceki bölümde açıklanan yaklaşımı kullanır. Bunların her birini ASP.NET Core günlüğe ekleyebilir veya bunları ayrı ayrı kullanabilirsiniz. Serilog, bir günlükçü tarafından gönderilen tüm iletileri zenginleştirir. Bu özellik, hizmet adı, tür ve bölüm bilgilerinin çıktısı için yararlı olabilir. ASP.NET Core altyapısında bu özelliği kullanmak için şu adımları uygulayın:
 
 1. **Serilog**, **Serilog. Extensions. Logging**, **Serilog. havuzlar. Literate**ve **Serilog. havuzlar. Observable** NuGet paketlerini projeye ekleyin. 
-2. `LoggerConfiguration` Ve günlükçü örneği oluşturun.
+2. `LoggerConfiguration`Ve günlükçü örneği oluşturun.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Hizmet oluşturucusuna `Serilog.ILogger` bir bağımsız değişken ekleyin ve yeni oluşturulan günlükçü 'yi geçirin.
+3. `Serilog.ILogger`Hizmet oluşturucusuna bir bağımsız değişken ekleyin ve yeni oluşturulan günlükçü 'yi geçirin.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
@@ -161,7 +160,7 @@ Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](
 5. Kodu, Serilog olmadan kullanırken ASP.NET Core.
 
    >[!NOTE]
-   >Önceki örnekle statik `Log.Logger` olarak *kullanmanız önerilmez* . Service Fabric, tek bir işlem içinde aynı hizmet türünün birden çok örneğini barındırabilir. Statik `Log.Logger`' ı kullanırsanız, özellik sorgularının son yazarı, çalıştıran tüm örneklerin değerlerini gösterir. Bu, _logger değişkeninin hizmet sınıfının özel bir üye değişkeni olmasının bir nedenidir. Ayrıca, hizmetler genelinde kullanılabilecek ortak `_logger` kod için kullanılabilir yapmanız gerekir.
+   >Önceki örnekle statik olarak *kullanmanız önerilmez* `Log.Logger` . Service Fabric, tek bir işlem içinde aynı hizmet türünün birden çok örneğini barındırabilir. Statik `Log.Logger` ' ı kullanırsanız, özellik sorgularının son yazarı, çalıştıran tüm örneklerin değerlerini gösterir. Bu, _logger değişkeninin hizmet sınıfının özel bir üye değişkeni olmasının bir nedenidir. Ayrıca, `_logger` Hizmetler genelinde kullanılabilecek ortak kod için kullanılabilir yapmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

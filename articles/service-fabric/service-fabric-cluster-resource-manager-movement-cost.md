@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563352"
 ---
 # <a name="service-movement-cost"></a>Hizmet taşıma maliyeti
@@ -94,7 +93,7 @@ MoveCost, en az kesintiye neden olan çözümleri bulmanıza yardımcı olur ve 
 Daha ayrıntılı bir MoveCost 'in hesaba alınması için, kümenizde MoveCost özelliğinin etkinleştirilmesi gerekir. Bu ayar olmadan, varsayılan sayım hareketi modu, MoveCost hesaplamak için kullanılır ve MoveCost raporları yok sayılır.
 
 
-ClusterManifest. xml:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -102,7 +101,7 @@ ClusterManifest. xml:
         </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [

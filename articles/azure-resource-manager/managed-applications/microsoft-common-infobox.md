@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652482"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft. Common. Infobox Kullanıcı arabirimi öğesi
@@ -45,7 +44,7 @@ Bilgi kutusu ekleyen bir denetim. Bu kutu, kullanıcıların sağladıkları de�
 ## <a name="remarks"></a>Açıklamalar
 
 * İçin `icon` **none**, **Info**, **Warning**veya **Error**kullanın.
-* `uri` Özelliği isteğe bağlıdır.
+* `uri`Özelliği isteğe bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

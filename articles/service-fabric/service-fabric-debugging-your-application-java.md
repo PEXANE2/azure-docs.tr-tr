@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614494"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Çakışan Küreler kullanarak Java Service Fabric uygulamanızda hata ayıklama
@@ -20,7 +19,7 @@ ms.locfileid: "75614494"
 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started-linux.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
 
-2. Hata ayıklamak istediğiniz hizmetin entryPoint.sh güncelleştirin, böylece Java işlemini uzaktan hata ayıklama parametreleriyle başlatır. Bu dosya, şu konumda bulunabilir: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. Bu örnekte, hata ayıklama için 8001 numaralı bağlantı noktası ayarlanmıştır.
+2. Hata ayıklamak istediğiniz hizmetin entryPoint.sh güncelleştirin, böylece Java işlemini uzaktan hata ayıklama parametreleriyle başlatır. Bu dosya, şu konumda bulunabilir: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh` . Bu örnekte, hata ayıklama için 8001 numaralı bağlantı noktası ayarlanmıştır.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
@@ -37,7 +36,7 @@ ms.locfileid: "75614494"
    ```
 6.  İstenilen noktalarda kesme noktaları ayarlayın ve uygulamada hata ayıklayın.
 
-Uygulama kilitleniyorlarsa, coredumps etkinleştirmek isteyebilirsiniz. Bir `ulimit -c` kabukta yürütün ve 0 döndürürse coredumps etkin değildir. Sınırsız coredumps etkinleştirmek için şu komutu yürütün: `ulimit -c unlimited`. Ayrıca, komutunu `ulimit -a`kullanarak durumu doğrulayabilirsiniz.  Coredump oluşturma yolunu güncelleştirmek isterseniz yürütün `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
+Uygulama kilitleniyorlarsa, coredumps etkinleştirmek isteyebilirsiniz. `ulimit -c`Bir kabukta yürütün ve 0 döndürürse coredumps etkin değildir. Sınırsız coredumps etkinleştirmek için şu komutu yürütün: `ulimit -c unlimited` . Ayrıca, komutunu kullanarak durumu doğrulayabilirsiniz `ulimit -a` .  Coredump oluşturma yolunu güncelleştirmek isterseniz yürütün `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

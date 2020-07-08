@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645693"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric ortam değişkenleri
@@ -20,12 +19,12 @@ Service Fabric her bir hizmet örneği için yerleşik ortam değişkenleri ayar
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | Uygulamanın yapı URI 'si adı                                 | Yapı:/MyApplication                                                |
 | Fabric_CodePackageName                       | İşlemin ait olduğu kod paketinin adı              | Kod                                                                 |
-| Fabric_Endpoint\_ıporfqdn\_*serviceendpointname*     | Uç noktanın IP adresi veya FQDN 'SI                                 | 10.0.0.1                                                     |
-| Yapı\_uç\_noktası*serviceendpointname*              | Uç nokta için bağlantı noktası numarası                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Günlük klasörü                                                             | C:\\\\veri\\\\_App\\\\_Node_0\\MyApplicationType_App12\\Kaydet\\\\      |
-| Fabric_Folder_App_Temp                       | Geçici klasör                                                            | C:\\\\veri\\\\_App\\\\_Node_0 MyApplicationType_App12\\geçici\\\\\\     |
-| Fabric_Folder_App_Work                       | Çalışma klasörü                                                            | C:\\\\veri\\\\_App\\\\_Node_0 MyApplicationType_App12\\iş\\\\\\     |
-| Fabric_Folder_Application                    | Uygulamalar giriş klasörü                                           | C:\\\\veri\\\\\\_App\\_Node_0\\MyApplicationType_App12\\             |
+| Fabric_Endpoint \_ ıporfqdn \_ *serviceendpointname*     | Uç noktanın IP adresi veya FQDN 'SI                                 | 10.0.0.1                                                     |
+| Yapı \_ uç noktası \_ *serviceendpointname*              | Uç nokta için bağlantı noktası numarası                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Günlük klasörü                                                             | C: \\ \\ veri \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ günlüğe kaydet      |
+| Fabric_Folder_App_Temp                       | Geçici klasör                                                            | C: \\ \\ veri \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ geçici     |
+| Fabric_Folder_App_Work                       | Çalışma klasörü                                                            | C: \\ \\ veri \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ iş     |
+| Fabric_Folder_Application                    | Uygulamalar giriş klasörü                                           | C: \\ \\ veri \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12             |
 | Fabric_IsContainerHost                       | İşlemin bir kapsayıcı olup olmadığını belirten bir bool                   | yanlış                                                                |
 | Fabric_NodeId                                | İşlemi çalıştıran düğümün düğüm KIMLIĞI                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | Küme bildirim dosyasında belirtildiği gibi, düğümün IP veya FQDN 'SI. | localhost veya 10.0.0.1                                                |

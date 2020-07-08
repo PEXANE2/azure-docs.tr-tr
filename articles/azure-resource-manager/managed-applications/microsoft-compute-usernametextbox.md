@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651910"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. COMPUTE. UserNameTextBox UI öğesi
@@ -50,8 +49,8 @@ Windows ve Linux Kullanıcı adları için yerleşik doğrulamaya sahip bir meti
 - `constraints.required` **True**olarak ayarlanırsa, metin kutusunun başarıyla doğrulanacak bir değere sahip olması gerekir. Varsayılan değer **true**'dur.
 - `osPlatform`belirtilmelidir ve **Windows** ya da **Linux**olabilir.
 - `constraints.regex`, JavaScript normal ifade deseninin. Belirtilmişse, metin kutusunun değeri, başarıyla doğrulanacak şekilde Düzenle eşleşmelidir. Varsayılan değer **null**.
-- `constraints.validationMessage`, metin kutusunun değeri tarafından `constraints.regex`belirtilen doğrulama başarısız olduğunda görüntülenecek bir dizedir. Belirtilmezse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null**.
-- Bu öğe için `osPlatform`belirtilen değeri temel alan yerleşik doğrulamaya sahiptir. Yerleşik doğrulama, özel bir normal ifadeyle birlikte kullanılabilir. İçin `constraints.regex` bir değer belirtilmişse, hem yerleşik hem de özel doğrulamalar tetiklenir.
+- `constraints.validationMessage`, metin kutusunun değeri tarafından belirtilen doğrulama başarısız olduğunda görüntülenecek bir dizedir `constraints.regex` . Belirtilmezse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null**.
+- Bu öğe için belirtilen değeri temel alan yerleşik doğrulamaya sahiptir `osPlatform` . Yerleşik doğrulama, özel bir normal ifadeyle birlikte kullanılabilir. İçin bir değer `constraints.regex` belirtilmişse, hem yerleşik hem de özel doğrulamalar tetiklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749542"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric programlama modeline genel bakış
@@ -38,7 +37,7 @@ Service Fabric dışlamalı, Reliable Services durumu durum bilgisi olabilir, bu
 
 [Reliable Services hakkında daha fazla bilgi edinin](service-fabric-reliable-services-introduction.md) veya [ilk güvenilir hizmetinizi yazmaya](service-fabric-reliable-services-quick-start.md)başlayın.
 
-## <a name="aspnet-core"></a>ASP.NET Core
+## <a name="aspnet-core"></a>ASP.NET Çekirdeği
 
 ASP.NET Core, Web uygulamaları, IoT uygulamaları ve mobil arka uçlar gibi modern bulut tabanlı Internet 'e bağlı uygulamalar oluşturmaya yönelik açık kaynaklı, platformlar arası bir çerçevedir. Service Fabric, güvenilir koleksiyonlardan ve Service Fabric gelişmiş düzenleme özelliğinden yararlanan hem durum bilgisi olmayan hem de durum bilgisi olan ASP.NET Core uygulamaları yazmak için ASP.NET Core ile tümleşir.
 

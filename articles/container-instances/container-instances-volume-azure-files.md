@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
 ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75561346"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
@@ -49,13 +48,13 @@ az storage share create \
 
 Bir Azure dosya paylaşımını Azure Container Instances'a birim olarak bağlamak için üç değere sahip olmanız gerekir: depolama hesabı adı, paylaşım adı ve depolama erişim anahtarı.
 
-* **Depolama hesabı adı** -önceki betiği kullandıysanız, depolama hesabı adı `$ACI_PERS_STORAGE_ACCOUNT_NAME` değişkende depolanmıştı. Hesap adını görmek için şunu yazın:
+* **Depolama hesabı adı** -önceki betiği kullandıysanız, depolama hesabı adı değişkende depolanmıştı `$ACI_PERS_STORAGE_ACCOUNT_NAME` . Hesap adını görmek için şunu yazın:
 
   ```console
   echo $ACI_PERS_STORAGE_ACCOUNT_NAME
   ```
 
-* **Paylaşma adı** -bu değer zaten biliniyor (önceki betikte `acishare` olarak tanımlanır)
+* **Paylaşma adı** -bu değer zaten biliniyor ( `acishare` önceki betikte olarak tanımlanır)
 
 * **Depolama hesabı anahtarı** -bu değer aşağıdaki komut kullanılarak bulunabilir:
 
@@ -81,7 +80,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` Değer, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Komutu çalıştırdığınızda bir **DNS adı etiketi** alırsanız, Yukarıdaki komutta değeri güncelleştirin.
+`--dns-name-label`Değer, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Komutu çalıştırdığınızda bir **DNS adı etiketi** alırsanız, Yukarıdaki komutta değeri güncelleştirin.
 
 ## <a name="manage-files-in-mounted-volume"></a>Bağlı birimdeki dosyaları yönetme
 
@@ -98,7 +97,7 @@ Uygulamayı kullanarak metin kaydettikten sonra, dosyayı veya dosya paylaşım�
 
 Ayrıca, bir kapsayıcı grubu dağıtabilir ve bir birimi Azure CLı ve [YAML şablonuyla](container-instances-multi-container-yaml.md)bir kapsayıcıya bağlayabilirsiniz. YAML şablonuna göre dağıtmak, birden çok kapsayıcıdan oluşan kapsayıcı gruplarını dağıtmada tercih edilen bir yöntemdir.
 
-Aşağıdaki YAML şablonu, `aci-hellofiles` görüntüyle oluşturulmuş bir kapsayıcı grubunu tanımlar. Azure *dosya paylaşımının bulunduğu* kapsayıcı, daha önce bir birim olarak oluşturulur. Burada, dosya paylaşımının barındırmasını barındıran depolama hesabı için ad ve depolama anahtarı ' nı girin. 
+Aşağıdaki YAML şablonu, görüntüyle oluşturulmuş bir kapsayıcı grubunu tanımlar `aci-hellofiles` . Azure *dosya paylaşımının bulunduğu* kapsayıcı, daha önce bir birim olarak oluşturulur. Burada, dosya paylaşımının barındırmasını barındıran depolama hesabı için ad ve depolama anahtarı ' nı girin. 
 
 CLı örneğinde olduğu gibi, `dnsNameLabel` değer kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Gerekirse YAML dosyasındaki değeri güncelleştirin.
 
@@ -138,7 +137,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-YAML şablonuyla dağıtmak için, önceki YAML 'yi adlı `deploy-aci.yaml`bir dosyaya kaydedin ve ardından `--file` parametresiyle [az Container Create][az-container-create] komutunu yürütün:
+YAML şablonuyla dağıtmak için, önceki YAML 'yi adlı bir dosyaya kaydedin `deploy-aci.yaml` ve ardından parametresiyle [az Container Create][az-container-create] komutunu yürütün `--file` :
 
 ```azurecli
 # Deploy with YAML template
@@ -150,9 +149,9 @@ CLı ve YAML dağıtımına ek olarak, bir kapsayıcı grubu dağıtabilir ve bi
 
 Önce, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. 
 
-Ardından, birimi bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi kapsayıcı tanımının `properties` bölümünde doldurun.
+Ardından, birimi bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, `aci-hellofiles` görüntüyle oluşturulmuş bir kapsayıcı grubunu tanımlar. Azure *dosya paylaşımının bulunduğu* kapsayıcı, daha önce bir birim olarak oluşturulur. Burada, dosya paylaşımının barındırmasını barındıran depolama hesabı için ad ve depolama anahtarı ' nı girin. 
+Aşağıdaki Kaynak Yöneticisi şablonu, görüntüyle oluşturulmuş bir kapsayıcı grubunu tanımlar `aci-hellofiles` . Azure *dosya paylaşımının bulunduğu* kapsayıcı, daha önce bir birim olarak oluşturulur. Burada, dosya paylaşımının barındırmasını barındıran depolama hesabı için ad ve depolama anahtarı ' nı girin. 
 
 Önceki örneklerde olduğu gibi, `dnsNameLabel` değerin kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olması gerekir. Gerekirse şablondaki değeri güncelleştirin.
 
@@ -223,7 +222,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, `aci-hellofiles` görüntüyle oluştu
 }
 ```
 
-Kaynak Yöneticisi şablonuyla dağıtmak için, önceki JSON 'ı adlı `deploy-aci.json`bir dosyaya kaydedin, sonra [az Group Deployment Create][az-group-deployment-create] komutunu `--template-file` parametresiyle yürütün:
+Kaynak Yöneticisi şablonuyla dağıtmak için, önceki JSON 'ı adlı bir dosyaya kaydedin `deploy-aci.json` , sonra [az Group Deployment Create][az-group-deployment-create] komutunu `--template-file` parametresiyle yürütün:
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -233,9 +232,9 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>Birden çok birim bağlama
 
-Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), YAML dosyası veya başka bir programlama yöntemi kullanarak dağıtmanız gerekir. Bir şablon veya YAML dosyası kullanmak için, dosyanın `volumes` `properties` bölümündeki diziyi doldurarak paylaşma ayrıntılarını sağlayın ve birimleri tanımlayın. 
+Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), YAML dosyası veya başka bir programlama yöntemi kullanarak dağıtmanız gerekir. Bir şablon veya YAML dosyası kullanmak için, `volumes` dosyanın bölümündeki diziyi doldurarak paylaşma ayrıntılarını sağlayın ve birimleri tanımlayın `properties` . 
 
-Örneğin, depolama hesabı *Mystorageaccount*içinde `volumes` *Share1* ve *Share2* adlı iki Azure dosya paylaşımı oluşturduysanız, Kaynak Yöneticisi şablondaki dizi aşağıdakine benzer şekilde görünür:
+Örneğin, depolama hesabı *Mystorageaccount*içinde *Share1* ve *Share2* adlı iki Azure dosya paylaşımı oluşturduysanız, `volumes` Kaynak Yöneticisi şablondaki dizi aşağıdakine benzer şekilde görünür:
 
 ```JSON
 "volumes": [{
@@ -256,7 +255,7 @@ Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Reso
 }]
 ```
 
-Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi kapsayıcı tanımının `properties` bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2*.
+Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2*.
 
 ```JSON
 "volumeMounts": [{

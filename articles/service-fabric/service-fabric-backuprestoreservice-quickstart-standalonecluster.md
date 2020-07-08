@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75526252"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Tek başına Service Fabric düzenli yedekleme ve geri yükleme
@@ -55,7 +54,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
+* `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -66,7 +65,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 ## <a name="enabling-backup-and-restore-service"></a>Yedekleme ve geri yükleme hizmeti etkinleştiriliyor
 İlk olarak, kümenizde _yedekleme ve geri yükleme hizmetini_ etkinleştirmeniz gerekir. Dağıtmak istediğiniz kümenin şablonunu alın. [Örnek şablonları](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)kullanabilirsiniz. _Yedekleme ve geri yükleme hizmetini_ aşağıdaki adımlarla etkinleştirin:
 
-1. ' In küme `apiversion` yapılandırma dosyasında olarak `10-2017` ayarlandığından emin olun ve yoksa, aşağıdaki kod parçacığında gösterildiği gibi güncelleştirin:
+1. ' `apiversion` `10-2017` In küme yapılandırma dosyasında olarak ayarlandığından emin olun ve yoksa, aşağıdaki kod parçacığında gösterildiği gibi güncelleştirin:
 
     ```json
     {
@@ -77,7 +76,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
     }
     ```
 
-2. Şimdi aşağıdaki kod parçacığında gösterildiği gibi `addonFeatures` `properties` bölümüne aşağıdaki bölümü ekleyerek _yedekleme ve geri yükleme hizmetini_ etkinleştirin: 
+2. Şimdi _backup and restore service_ `addonFeatures` `properties` Aşağıdaki kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek yedekleme ve geri yükleme hizmetini etkinleştirin: 
 
     ```json
         "properties": {
@@ -89,7 +88,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 
     ```
 
-3. Kimlik bilgilerinin şifrelenmesi için X. 509.440 sertifikasını yapılandırın. Bu, varsa, depolama alanına bağlanmak için girilen kimlik bilgilerinin kalıcı hale geldiğinden emin olmak için önemlidir. Aşağıdaki kod parçacığında gösterildiği gibi `BackupRestoreService` `fabricSettings` bölümüne aşağıdaki bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
+3. Kimlik bilgilerinin şifrelenmesi için X. 509.440 sertifikasını yapılandırın. Bu, varsa, depolama alanına bağlanmak için girilen kimlik bilgilerinin kalıcı hale geldiğinden emin olmak için önemlidir. Aşağıdaki `BackupRestoreService` `fabricSettings` kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
 
     ```json
     "properties": {
@@ -113,13 +112,13 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme
 Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme adımlarını inceleyelim. Bu adımlarda varsayılmaktadır
 - Küme, _yedekleme ve geri yükleme hizmeti_ile ayarlanır.
-- Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si. `fabric:/SampleApp/MyStatefulService` Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
+- Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si `fabric:/SampleApp/MyStatefulService` . Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` .  
 
 ### <a name="create-backup-policy"></a>Yedekleme İlkesi Oluştur
 
 İlk adım Yedekleme zamanlamasını açıklayan yedekleme ilkesi, yedekleme verileri için hedef depolama, ilke adı, yedekleme depolaması için tam yedekleme ve bekletme ilkesi tetiklemeden önce izin verilen maksimum artımlı yedeklemeler oluşturmaktır. 
 
-Yedekleme depolaması için, dosya paylaşma oluşturun ve tüm Service Fabric düğümü makineler için bu dosya paylaşımında ReadWrite erişimi verin. Bu örnek, adıyla `BackupStore` birlikte paylaşımın bulunduğunu varsayar. `StorageServer`
+Yedekleme depolaması için, dosya paylaşma oluşturun ve tüm Service Fabric düğümü makineler için bu dosya paylaşımında ReadWrite erişimi verin. Bu örnek, adıyla birlikte paylaşımın bulunduğunu varsayar `BackupStore` `StorageServer` .
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
@@ -184,7 +183,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
-Yedekleme ilkesini uygulama `BackupPolicy1` `SampleApp`ile yukarıdaki adımda oluşturulan adla ilişkilendirmek için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün.
+Yedekleme ilkesini `BackupPolicy1` uygulama ile yukarıdaki adımda oluşturulan adla ilişkilendirmek için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -225,7 +224,7 @@ Güvenilir durum bilgisi olan hizmetlere ve uygulamanın Reliable Actors ait tü
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-`SampleApp` Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemeleri NUMARALANDıRMAK üzere HTTP API 'sini çağırmak Için aşağıdaki PowerShell betiğini yürütün.
+Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemeleri numaralandırmak üzere HTTP API 'sini çağırmak için aşağıdaki PowerShell betiğini yürütün `SampleApp` .
 
 ```powershell
 $url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75500084"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight 'ta ScaleR ve parlak r 'yi birleştirme
@@ -29,9 +28,9 @@ Bu belgede yer alan adımlarda, R için bir ara düzey bilginiz olduğunu ve ML 
 
 ## <a name="the-airline-and-weather-datasets"></a>Hava yolu ve hava durumu veri kümeleri
 
-Uçuş verileri [ABD kamu arşivlerine](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)göre sunulmaktadır. [Airontimecsv. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)dosyasından bir ZIP olarak da kullanılabilir.
+Uçuş verileri [ABD kamu arşivlerine](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)göre sunulmaktadır. [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)bir ZIP olarak da kullanılabilir.
 
-Hava durumu verileri, ham formda, [Ulusal Okyanus ve atmosfer yönetim deposundan](https://www.ncdc.noaa.gov/orders/qclcd/), aya göre ZIP dosyaları olarak indirilebilir. Bu örnekte, Mayıs 2007 – Aralık 2012 için verileri indirin. Her ZIP 'nin içindeki saatlik `YYYYMMMstation.txt` veri dosyalarını ve dosyayı kullanın.
+Hava durumu verileri, ham formda, [Ulusal Okyanus ve atmosfer yönetim deposundan](https://www.ncdc.noaa.gov/orders/qclcd/), aya göre ZIP dosyaları olarak indirilebilir. Bu örnekte, Mayıs 2007 – Aralık 2012 için verileri indirin. `YYYYMMMstation.txt`Her ZIP 'nin içindeki saatlik veri dosyalarını ve dosyayı kullanın.
 
 ## <a name="setting-up-the-spark-environment"></a>Spark ortamını ayarlama
 
@@ -80,7 +79,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Ardından, R `Spark_Home` paketleri için arama yoluna ekleyin. Arama yoluna eklemek, Mini ve mini bir r oturumu başlatmak için şunu sağlar:
+Ardından, `Spark_Home` R paketleri için arama yoluna ekleyin. Arama yoluna eklemek, Mini ve mini bir r oturumu başlatmak için şunu sağlar:
 
 ```
 #..setup for use of SparkR  
@@ -506,7 +505,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Başka bir yerde Puanlama
 
-Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bir RDS dosyasına kaydederek ve bu RDS 'yi MIcrosoft SQL Server R Services gibi bir hedef Puanlama ortamına aktarıp içeri aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, ScaleR 'ın `rxCreateColInfo()` işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıda, test veri kümesinin birkaç satırını kaydeder ve bu örnekteki sütun bilgilerini tahmin komut dosyasında ayıklar ve kullanın:
+Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bir RDS dosyasına kaydederek ve bu RDS 'yi MIcrosoft SQL Server R Services gibi bir hedef Puanlama ortamına aktarıp içeri aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, ScaleR 'ın işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek `rxCreateColInfo()` ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıda, test veri kümesinin birkaç satırını kaydeder ve bu örnekteki sütun bilgilerini tahmin komut dosyasında ayıklar ve kullanın:
 
 ```
 # save the model and a sample of the test dataset 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4fcaf0e5842ce8a65175d2fc1dfa2483a1203b2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651897"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector Kullanıcı arabirimi öğesi
@@ -63,8 +62,8 @@ Denetim, kullanıcının yeni bir depolama hesabı oluşturmasını veya var ola
 ## <a name="remarks"></a>Açıklamalar
 
 - Belirtilmişse `defaultValue.name` benzersizlik için otomatik olarak onaylanır. Depolama hesabı adı benzersiz değilse, kullanıcının farklı bir ad belirtmesi veya var olan bir depolama hesabını seçmesi gerekir.
-- İçin `defaultValue.type` varsayılan değer **Premium_LRS**.
-- İçinde `constraints.allowedTypes` belirtilmeyen herhangi bir tür gizlidir ve içinde `constraints.excludedTypes` belirtilmeyen herhangi bir tür gösterilir. `constraints.allowedTypes`ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
+- İçin varsayılan değer `defaultValue.type` **Premium_LRS**.
+- İçinde belirtilmeyen herhangi bir tür `constraints.allowedTypes` gizlidir ve içinde belirtilmeyen herhangi bir tür `constraints.excludedTypes` gösterilir. `constraints.allowedTypes`ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
 - `options.hideExisting` **Doğru**ise, Kullanıcı var olan bir depolama hesabını seçemezsiniz. Varsayılan değer **false** şeklindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

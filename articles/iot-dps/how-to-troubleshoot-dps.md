@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646481"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
@@ -23,7 +22,7 @@ Kanıtlama hataları, kayıt hataları vb. gibi birçok olası başarısızlık 
 
 Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının nasıl görüntüleneceği ve ayarlanacağı açıklanır. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. IoT Hub cihaz sağlama hizmetinize gidin.
 
@@ -32,7 +31,7 @@ Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının na
 4. İstediğiniz ölçümü seçin. 
    <br />Şu anda DPS için üç ölçüm vardır:
 
-    | Ölçüm adı | Açıklama |
+    | Ölçüm Adı | Açıklama |
     |-------|------------|
     | Kanıtlama denemeleri | Cihaz sağlama hizmeti ile kimlik doğrulamaya çalıştı cihaz sayısı|
     | Kayıt denemeleri | Başarılı kimlik doğrulamasından sonra IoT Hub kaydolmaya çalışılan cihazların sayısı|
@@ -48,7 +47,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için log analitik kullanma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -69,7 +68,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 
 8. Son olayları görüntülemek için **Çalıştır** ' a tıklayın.
 
-9. Sonuçlar varsa, hata hakkında daha fazla `OperationName`ayrıntı `ResultType`almak `ResultSignature`için, `ResultDescription` , ve (hata iletisi) bölümüne bakın.
+9. Sonuçlar varsa, `OperationName` `ResultType` `ResultSignature` `ResultDescription` hata hakkında daha fazla ayrıntı almak için,, ve (hata iletisi) bölümüne bakın.
 
 
 ## <a name="common-error-codes"></a>Genel hata kodları

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639641"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
@@ -34,31 +33,31 @@ Bu makalenin geri kalanında, Service Fabric SDK ile birlikte gelen ASP.NET Core
 
 Service Fabric, hizmet *ana bilgisayar işleminde*çalıştırdığınız bir veya daha fazla örnek ve/veya çoğaltma: hizmet kodunuzu çalıştıran yürütülebilir bir dosya. Hizmet yazarı olarak, hizmet ana bilgisayar işleminin sahibi olur ve Service Fabric, sizin için etkinleştirir ve izler.
 
-Geleneksel ASP.NET (MVC 5 ' e kadar), System. Web. dll aracılığıyla IIS 'e sıkı bir şekilde bağlanmış. ASP.NET Core, Web sunucusu ile Web uygulamanız arasında bir ayrım sağlar. Bu ayrım, Web uygulamalarının farklı Web sunucuları arasında taşınabilir olmasını sağlar. Ayrıca, Web sunucularının *kendiliğinden barındırılmasına*izin verir. Bu, IIS gibi adanmış web sunucusu yazılımına ait olan bir işlemin aksine bir Web sunucusunu kendi işleminizde başlatabilmeniz anlamına gelir.
+Geleneksel ASP.NET (MVC 5 ' e kadar) System.Web.dll aracılığıyla IIS 'e sıkı bir şekilde bağlanmış. ASP.NET Core, Web sunucusu ile Web uygulamanız arasında bir ayrım sağlar. Bu ayrım, Web uygulamalarının farklı Web sunucuları arasında taşınabilir olmasını sağlar. Ayrıca, Web sunucularının *kendiliğinden barındırılmasına*izin verir. Bu, IIS gibi adanmış web sunucusu yazılımına ait olan bir işlemin aksine bir Web sunucusunu kendi işleminizde başlatabilmeniz anlamına gelir.
 
 Bir Service Fabric hizmetini ve ASP.NET bir konuk yürütülebilir dosyası ya da güvenilir bir hizmette birleştirmek için, hizmet ana bilgisayar sürecinizin içinde ASP.NET 'i başlatabilmelisiniz. ASP.NET Core kendi kendine barındırma bunu yapmanıza olanak sağlar.
 
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Güvenilir bir hizmette ASP.NET Core barındırma
-Genellikle, şirket içinde barındırılan ASP.NET Core uygulamalar, bir uygulamanın giriş noktasında, içindeki `static void Main()` `Program.cs`yöntemi gibi bir Webhost oluşturur. Bu durumda, WebHost 'in yaşam döngüsü işlemin yaşam döngüsüne bağlanır.
+Genellikle, şirket içinde barındırılan ASP.NET Core uygulamalar, bir uygulamanın giriş noktasında, içindeki yöntemi gibi bir WebHost oluşturur `static void Main()` `Program.cs` . Bu durumda, WebHost 'in yaşam döngüsü işlemin yaşam döngüsüne bağlanır.
 
 ![İşlem içinde ASP.NET Core barındırma][0]
 
 Ancak uygulama giriş noktası, güvenilir bir hizmette bir WebHost oluşturmak için doğru yer değildir. Bunun nedeni, uygulama giriş noktasının yalnızca Service Fabric çalışma zamanına sahip bir hizmet türünü kaydetmek için kullanıldığı için kullanılır, böylece bu hizmet türünün örneklerini oluşturabilir. WebHost 'in güvenilir bir hizmetin kendisinde oluşturulması gerekir. Hizmet ana bilgisayarı işlemi içinde, hizmet örnekleri ve/veya çoğaltmalar birden çok yaşam döngüsü üzerinden geçebilir. 
 
-Güvenilir bir hizmet örneği, veya `StatelessService` `StatefulService`' den türetilen hizmet sınıfınız tarafından temsil edilir. Hizmet için iletişim yığını, hizmet sınıfınıza bir `ICommunicationListener` uygulamada bulunur. NuGet `Microsoft.ServiceFabric.AspNetCore.*` paketleri, güvenilir bir hizmette `ICommunicationListener` Kestrel ya da HTTP. sys için ASP.NET Core Webhost 'yi başlatan ve yöneten uygulamaları içerir.
+Güvenilir bir hizmet örneği, veya ' den türetilen hizmet sınıfınız tarafından temsil edilir `StatelessService` `StatefulService` . Hizmet için iletişim yığını, `ICommunicationListener` hizmet sınıfınıza bir uygulamada bulunur. `Microsoft.ServiceFabric.AspNetCore.*`NuGet paketleri, `ICommunicationListener` güvenilir bir hizmette Kestrel veya HTTP.sys Için ASP.NET Core Webhost 'ı başlatan ve yöneten uygulamaları içerir.
 
 ![Güvenilir bir hizmette ASP.NET Core barındırma diyagramı][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>Idimmunicationlisteners ASP.NET Core
-NuGet paketlerindeki Kestrel ve HTTP. sys `ICommunicationListener` uygulamaları benzer kullanım düzenlerine sahiptir. `Microsoft.ServiceFabric.AspNetCore.*` Ancak her bir Web sunucusuna özel biraz farklı eylemler gerçekleştirir. 
+`ICommunicationListener`NuGet paketlerindeki Kestrel ve HTTP.sys uygulamaları `Microsoft.ServiceFabric.AspNetCore.*` benzer kullanım düzenlerine sahiptir. Ancak her bir Web sunucusuna özel biraz farklı eylemler gerçekleştirir. 
 
 Her iki iletişim dinleyicisi de aşağıdaki bağımsız değişkenleri alan bir oluşturucu sağlar:
- - **`ServiceContext serviceContext`**: Bu, çalışan `ServiceContext` hizmet hakkında bilgi içeren nesnedir.
- - **`string endpointName`**: Bu, ServiceManifest. xml `Endpoint` dosyasındaki bir yapılandırmanın adıdır. Bu, birincil olarak iki iletişim dinleyicilerinin farklı olduğu yerdir. HTTP. sys *requires* bir `Endpoint` yapılandırma gerektirir, Kestrel değildir.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Bu, öğesini oluşturup döndür, uyguladığınız bir lambda 'dir `IWebHost`. Bu, normalde ASP.NET Core bir `IWebHost` uygulamada yaptığınız şekilde yapılandırmanıza olanak tanır. Lambda, kullandığınız Service Fabric tümleştirme seçeneklerine ve sağladığınız `Endpoint` yapılandırmaya bağlı olarak sizin için oluşturulmuş bir URL sağlar. Daha sonra, Web sunucusunu başlatmak için bu URL 'YI değiştirebilir veya kullanabilirsiniz.
+ - **`ServiceContext serviceContext`**: Bu, `ServiceContext` çalışan hizmet hakkında bilgi içeren nesnedir.
+ - **`string endpointName`**: Bu, ServiceManifest.xml bir yapılandırmanın adıdır `Endpoint` . Bu, birincil olarak iki iletişim dinleyicilerinin farklı olduğu yerdir. HTTP.sys bir yapılandırma *gerektirir* `Endpoint` , Kestrel değildir.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Bu, öğesini oluşturup döndür, uyguladığınız bir lambda 'dir `IWebHost` . Bu `IWebHost` , normalde ASP.NET Core bir uygulamada yaptığınız şekilde yapılandırmanıza olanak tanır. Lambda, kullandığınız Service Fabric tümleştirme seçeneklerine ve sağladığınız yapılandırmaya bağlı olarak sizin için oluşturulmuş bir URL sağlar `Endpoint` . Daha sonra, Web sunucusunu başlatmak için bu URL 'YI değiştirebilir veya kullanabilirsiniz.
 
 ## <a name="service-fabric-integration-middleware"></a>Service Fabric tümleştirme ara yazılımı
-NuGet `Microsoft.ServiceFabric.AspNetCore` paketi, Service Fabric ile `UseServiceFabricIntegration` uyumlu ara yazılım `IWebHostBuilder` ekleyen üzerindeki genişletme yöntemini içerir. Bu ara yazılım, Kestrel veya HTTP. sys `ICommunicationListener` dosyasını Service Fabric adlandırma hizmeti benzersiz bir hizmet URL 'si kaydedecek şekilde yapılandırır. Daha sonra istemcilerin doğru hizmete bağlanmasını sağlamak için istemci isteklerini doğrular. 
+`Microsoft.ServiceFabric.AspNetCore`NuGet paketi, `UseServiceFabricIntegration` `IWebHostBuilder` Service Fabric ile uyumlu ara yazılım ekleyen üzerindeki genişletme yöntemini içerir. Bu ara yazılım, `ICommunicationListener` Service Fabric adlandırma hizmeti benzersiz bir hizmet URL 'sini kaydetmek Için Kestrel veya HTTP.sys yapılandırır. Daha sonra istemcilerin doğru hizmete bağlanmasını sağlamak için istemci isteklerini doğrular. 
 
 İstemcilerin yanlış hizmete yanlışlıkla bağlanmasını engellemek için bu adım gereklidir. Bunun nedeni, Service Fabric gibi bir paylaşılan ana bilgisayar ortamında, birden çok Web uygulamasının aynı fiziksel veya sanal makinede çalıştırılabilmesi ancak benzersiz ana bilgisayar adları kullanmaması olabilir. Bu senaryo, sonraki bölümde daha ayrıntılı olarak açıklanmıştır.
 
@@ -77,7 +76,7 @@ Bu, tanılanması zor olabilecek Rastgele zamanlarda hatalara neden olabilir.
 ### <a name="using-unique-service-urls"></a>Benzersiz hizmet URL 'Leri kullanma
 Bu hataları engellemek için, hizmetler bir uç noktayı benzersiz bir tanımlayıcıyla Adlandırma Hizmeti gönderebilir ve ardından istemci istekleri sırasında bu benzersiz tanımlayıcıyı doğrulayabilir. Bu, güvenilmeyen kiracı olmayan bir ortamda bulunan hizmetler arasında bir yardımcı eylemdir. Saldırgan kiracı ortamında güvenli hizmet kimlik doğrulaması sağlamaz.
 
-Güvenilen bir ortamda, `UseServiceFabricIntegration` yöntemi tarafından eklenen ara yazılım, adlandırma hizmeti gönderilen adrese otomatik olarak benzersiz bir tanımlayıcı ekler. Her istekte bu tanımlayıcıyı doğrular. Tanımlayıcı eşleşmezse, ara yazılım hemen bir HTTP 410 gitti yanıtı döndürür.
+Güvenilen bir ortamda, yöntemi tarafından eklenen ara yazılım, `UseServiceFabricIntegration` adlandırma hizmeti gönderilen adrese otomatik olarak benzersiz bir tanımlayıcı ekler. Her istekte bu tanımlayıcıyı doğrular. Tanımlayıcı eşleşmezse, ara yazılım hemen bir HTTP 410 gitti yanıtı döndürür.
 
 Dinamik olarak atanmış bir bağlantı noktası kullanan hizmetlerin bu ara yazılımı kullanması gerekir.
 
@@ -87,24 +86,24 @@ Aşağıdaki diyagramda, ara yazılım etkinleştirilmiş olan istek akışı g�
 
 ![Service Fabric ASP.NET Core tümleştirmesi][2]
 
-Hem Kestrel hem de HTTP. `ICommunicationListener` sys uygulamaları bu mekanizmayı tamamen aynı şekilde kullanır. HTTP. sys, temel **http. sys** bağlantı noktası paylaşma özelliğini kullanarak ISTEKLERI benzersiz URL yollarına göre dahili olarak ayırt edebilse *de, bu* işlev http. sys `ICommunicationListener` uygulamasında kullanılmaz. Bunun nedeni, daha önce açıklanan senaryoda HTTP 503 ve HTTP 404 hata durumu kodlarına neden olur. Bu durumda, HTTP 503 ve HTTP 404 yaygın olarak diğer hataları göstermek için kullanıldığından, istemcilerin hatanın amacını belirlemesini zorlaştırır. 
+Hem Kestrel hem de HTTP.sys `ICommunicationListener` uygulamaları bu mekanizmayı tamamen aynı şekilde kullanır. HTTP.sys *, temel* alınan **HTTP.sys** bağlantı noktası paylaşma ÖZELLIĞINI kullanarak istekleri benzersiz URL yollarına göre dahili olarak ayırt edebilse de, bu işlev HTTP.sys uygulama tarafından kullanılmaz `ICommunicationListener` . Bunun nedeni, daha önce açıklanan senaryoda HTTP 503 ve HTTP 404 hata durumu kodlarına neden olur. Bu durumda, HTTP 503 ve HTTP 404 yaygın olarak diğer hataları göstermek için kullanıldığından, istemcilerin hatanın amacını belirlemesini zorlaştırır. 
 
-Bu nedenle, hem Kestrel hem de HTTP `ICommunicationListener` . sys uygulamaları, `UseServiceFabricIntegration` genişletme yöntemi tarafından sunulan ara yazılımlar üzerinde standartlaştırın. Bu nedenle, istemcilerin HTTP 410 yanıtları üzerinde yalnızca bir hizmet uç noktası yeniden çözümlemesi yapması gerekir.
+Bu nedenle, hem Kestrel hem de HTTP.sys `ICommunicationListener` uygulamaları genişletme yöntemi tarafından sağlanmış olan ara yazılımlar üzerinde standartlaştırın `UseServiceFabricIntegration` . Bu nedenle, istemcilerin HTTP 410 yanıtları üzerinde yalnızca bir hizmet uç noktası yeniden çözümlemesi yapması gerekir.
 
-## <a name="httpsys-in-reliable-services"></a>Reliable Services 'de HTTP. sys
-**Microsoft. ServiceFabric. AspNetCore. HttpSys** NuGet paketini içeri aktararak RELIABLE SERVICES içindeki http. sys ' i kullanabilirsiniz. Bu paket, `HttpSysCommunicationListener`uygulamasının bir uygulamasını içerir `ICommunicationListener`. `HttpSysCommunicationListener`Web sunucusu olarak HTTP. sys kullanarak güvenilir bir hizmet içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
+## <a name="httpsys-in-reliable-services"></a>Reliable Services HTTP.sys
+**Microsoft. ServiceFabric. AspNetCore. HttpSys** NuGet paketini içeri aktararak Reliable Services HTTP.sys kullanabilirsiniz. Bu paket `HttpSysCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `HttpSysCommunicationListener`Web sunucusu olarak HTTP.sys kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
-HTTP. sys, [WINDOWS http sunucu API 'si](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx)üzerine kurulmuştur. Bu API, HTTP isteklerini işlemek ve bunları Web uygulamaları çalıştıran işlemlere yönlendirmek için **http. sys** çekirdek sürücüsünü kullanır. Bu, aynı fiziksel veya sanal makinedeki birden çok işlemin aynı bağlantı noktasında Web uygulamalarını barındırarak benzersiz bir URL yolu veya ana bilgisayar adıyla ayırt etmesine olanak tanır. Bu özellikler, aynı kümede birden çok Web sitesini barındırmak için Service Fabric yararlıdır.
+HTTP.sys, [WINDOWS http sunucu API 'si](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx)üzerine kurulmuştur. Bu API, HTTP isteklerini işlemek ve bunları Web uygulamaları çalıştıran işlemlere yönlendirmek için **HTTP.sys** çekirdek sürücüsünü kullanır. Bu, aynı fiziksel veya sanal makinedeki birden çok işlemin aynı bağlantı noktasında Web uygulamalarını barındırarak benzersiz bir URL yolu veya ana bilgisayar adıyla ayırt etmesine olanak tanır. Bu özellikler, aynı kümede birden çok Web sitesini barındırmak için Service Fabric yararlıdır.
 
 >[!NOTE]
->HTTP. sys uygulamasının yalnızca Windows platformunda çalışması.
+>HTTP.sys uygulama yalnızca Windows platformunda çalışmaktadır.
 
-Aşağıdaki diyagramda, HTTP. sys ' nin bağlantı noktası paylaşımı için Windows 'ta **http. sys** çekirdek sürücüsünü nasıl kullandığı gösterilmektedir:
+Aşağıdaki diyagramda, HTTP.sys bağlantı noktası paylaşımı için Windows üzerinde **HTTP.sys** çekirdek sürücüsünü nasıl kullandığı gösterilmektedir:
 
-![HTTP. sys diyagramı][3]
+![HTTP.sys diyagramı][3]
 
-### <a name="httpsys-in-a-stateless-service"></a>Durum bilgisi olmayan bir hizmette HTTP. sys
-Durum bilgisi `HttpSys` olmayan bir hizmette kullanmak için, `CreateServiceInstanceListeners` yöntemini geçersiz kılın ve bir `HttpSysCommunicationListener` örnek döndürün:
+### <a name="httpsys-in-a-stateless-service"></a>Durum bilgisi olmayan bir hizmette HTTP.sys
+`HttpSys`Durum bilgisi olmayan bir hizmette kullanmak için, yöntemini geçersiz kılın `CreateServiceInstanceListeners` ve bir `HttpSysCommunicationListener` örnek döndürün:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -127,17 +126,17 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="httpsys-in-a-stateful-service"></a>Durum bilgisi olan bir hizmette HTTP. sys
+### <a name="httpsys-in-a-stateful-service"></a>Durum bilgisi olan bir hizmette HTTP.sys
 
-`HttpSysCommunicationListener`, temel alınan **http. sys** bağlantı noktası paylaşma özelliği ile ilgili zorluklar nedeniyle şu anda durum bilgisi olan hizmetlerde kullanılmak üzere tasarlanmamıştır. Daha fazla bilgi için, HTTP. sys ile dinamik bağlantı noktası ayırma üzerinde aşağıdaki bölüme bakın. Durum bilgisi olan hizmetler için, Kestrel önerilen Web sunucusudur.
+`HttpSysCommunicationListener`, temel alınan **HTTP.sys** bağlantı noktası paylaşma özelliği ile ilgili zorluklar nedeniyle şu anda durum bilgisi olan hizmetlerde kullanılmak üzere tasarlanmamıştır. Daha fazla bilgi için, HTTP.sys ile dinamik bağlantı noktası ayırma üzerinde aşağıdaki bölüme bakın. Durum bilgisi olan hizmetler için, Kestrel önerilen Web sunucusudur.
 
 ### <a name="endpoint-configuration"></a>Uç nokta yapılandırması
 
-HTTP `Endpoint` . sys dahil olmak üzere Windows HTTP sunucu API 'sini kullanan Web sunucuları için bir yapılandırma gerekir. Windows HTTP sunucu API 'sini kullanan Web sunucularının öncelikle URL 'lerini HTTP. sys ile ayrılması gerekir (Bu, normalde [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) aracıyla gerçekleştirilir). 
+`Endpoint`HTTP.sys dahil olmak üzere WINDOWS http sunucu API 'sini kullanan Web sunucuları için bir yapılandırma gerekir. Windows HTTP sunucu API 'sini kullanan Web sunucularının öncelikle HTTP.sys URL 'lerini (Bu genellikle [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) aracıyla gerçekleştirilir) ayırmalıdır. 
 
-Bu eylem, hizmetlerinizin varsayılan olarak sahip olmadığı yükseltilmiş ayrıcalıklar gerektirir. ServiceManifest. xml içindeki `Protocol` `Endpoint` yapılandırmanın özelliği için "http" veya "https" seçenekleri özellikle, Service Fabric çalışma ZAMANıNıN, sizin adınıza http. sys ile bir URL kaydetmesini istemek için kullanılır. Bunu, [*güçlü joker karakter*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL önekini kullanarak yapar.
+Bu eylem, hizmetlerinizin varsayılan olarak sahip olmadığı yükseltilmiş ayrıcalıklar gerektirir. ServiceManifest.xml içindeki yapılandırmanın özelliği için "http" veya "https" seçenekleri, `Protocol` `Endpoint` özellikle de Service Fabric çalışma zamanının HTTP.sys ADıNA bir URL 'ye kaydetmesini bildirmek için kullanılır. Bunu, [*güçlü joker karakter*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL önekini kullanarak yapar.
 
-Örneğin, bir hizmet için `http://+:80` ayırmak üzere servicemanifest. xml dosyasında aşağıdaki yapılandırmayı kullanın:
+Örneğin, `http://+:80` bir hizmet için ayırmak üzere ServiceManifest.xml ' de aşağıdaki yapılandırmayı kullanın:
 
 ```xml
 <ServiceManifest ... >
@@ -151,7 +150,7 @@ Bu eylem, hizmetlerinizin varsayılan olarak sahip olmadığı yükseltilmiş ay
 </ServiceManifest>
 ```
 
-Ve uç nokta adının `HttpSysCommunicationListener` oluşturucuya geçirilmesi gerekir:
+Ve uç nokta adının oluşturucuya geçirilmesi gerekir `HttpSysCommunicationListener` :
 
 ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -164,8 +163,8 @@ Ve uç nokta adının `HttpSysCommunicationListener` oluşturucuya geçirilmesi 
  })
 ```
 
-#### <a name="use-httpsys-with-a-static-port"></a>HTTP. sys ' i statik bağlantı noktasıyla kullanma
-HTTP. sys ile bir statik bağlantı noktası kullanmak için, `Endpoint` yapılandırmadaki bağlantı noktası numarasını girin:
+#### <a name="use-httpsys-with-a-static-port"></a>Statik bağlantı noktası ile HTTP.sys kullanma
+HTTP.sys bir statik bağlantı noktası kullanmak için, yapılandırmadaki bağlantı noktası numarasını sağlayın `Endpoint` :
 
 ```xml
   <Resources>
@@ -175,8 +174,8 @@ HTTP. sys ile bir statik bağlantı noktası kullanmak için, `Endpoint` yapıla
   </Resources>
 ```
 
-#### <a name="use-httpsys-with-a-dynamic-port"></a>HTTP. sys dosyasını dinamik bir bağlantı noktasıyla kullanma
-HTTP. sys ile dinamik olarak atanmış bir bağlantı noktası kullanmak için, `Port` `Endpoint` yapılandırmadaki özelliği atlayın:
+#### <a name="use-httpsys-with-a-dynamic-port"></a>Dinamik bağlantı noktası ile HTTP.sys kullanma
+HTTP.sys ile dinamik olarak atanmış bir bağlantı noktası kullanmak için, `Port` yapılandırmadaki özelliği atlayın `Endpoint` :
 
 ```xml
   <Resources>
@@ -186,17 +185,17 @@ HTTP. sys ile dinamik olarak atanmış bir bağlantı noktası kullanmak için, 
   </Resources>
 ```
 
-Bir `Endpoint` yapılandırma tarafından ayrılan dinamik bir bağlantı noktası, *ana bilgisayar işlemi başına*yalnızca bir bağlantı noktası sağlar. Geçerli Service Fabric barındırma modeli, birden çok hizmet örneğinin ve/veya çoğaltmaların aynı işlemde barındırılmasına olanak sağlar. Bu, her birinin `Endpoint` yapılandırma yoluyla ayrıldığı aynı bağlantı noktasını paylaşacağı anlamına gelir. Birden çok **http. sys** örneği, temel alınan **http. sys** bağlantı noktası paylaşma özelliğini kullanarak bir bağlantı noktası paylaşabilir. Ancak, istemci istekleri için sunmakta olduğu karmaşıklıklar nedeniyle tarafından `HttpSysCommunicationListener` desteklenmez. Dinamik bağlantı noktası kullanımı için, Kestrel önerilen Web sunucusudur.
+Bir yapılandırma tarafından ayrılan dinamik bir bağlantı noktası `Endpoint` , *ana bilgisayar işlemi başına*yalnızca bir bağlantı noktası sağlar. Geçerli Service Fabric barındırma modeli, birden çok hizmet örneğinin ve/veya çoğaltmaların aynı işlemde barındırılmasına olanak sağlar. Bu, her birinin yapılandırma yoluyla ayrıldığı aynı bağlantı noktasını paylaşacağı anlamına gelir `Endpoint` . Birden çok **HTTP.sys** örneği, temel alınan **HTTP.sys** bağlantı noktası paylaşma özelliğini kullanarak bir bağlantı noktasını paylaşabilir. Ancak `HttpSysCommunicationListener` , istemci istekleri için sunmakta olduğu karmaşıklıklar nedeniyle tarafından desteklenmez. Dinamik bağlantı noktası kullanımı için, Kestrel önerilen Web sunucusudur.
 
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services Kestrel
-**Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket, `KestrelCommunicationListener`uygulamasının bir uygulamasını içerir `ICommunicationListener`. `KestrelCommunicationListener`Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
+**Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket `KestrelCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `KestrelCommunicationListener`Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
-Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP. sys ' nin aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP. sys ' nin aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşımını desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
+Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
 
 ![Kestrel diyagramı][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>Durum bilgisi olmayan bir hizmette Kestrel
-Durum bilgisi `Kestrel` olmayan bir hizmette kullanmak için, `CreateServiceInstanceListeners` yöntemini geçersiz kılın ve bir `KestrelCommunicationListener` örnek döndürün:
+`Kestrel`Durum bilgisi olmayan bir hizmette kullanmak için, yöntemini geçersiz kılın `CreateServiceInstanceListeners` ve bir `KestrelCommunicationListener` örnek döndürün:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -221,7 +220,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="kestrel-in-a-stateful-service"></a>Durum bilgisi olan bir hizmette Kestrel
-Durum bilgisi `Kestrel` olan bir hizmette kullanmak için, `CreateServiceReplicaListeners` yöntemini geçersiz kılın ve bir `KestrelCommunicationListener` örnek döndürün:
+`Kestrel`Durum bilgisi olan bir hizmette kullanmak için, yöntemini geçersiz kılın `CreateServiceReplicaListeners` ve bir `KestrelCommunicationListener` örnek döndürün:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -246,12 +245,12 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-Bu örnekte, tek bir örneği `IReliableStateManager` Webhost bağımlılığı ekleme kapsayıcısına sağlanır. Bu kesinlikle gerekli değildir, ancak MVC denetleyici eylem yöntemlerinde `IReliableStateManager` ve güvenilir koleksiyonları kullanmanıza olanak tanır.
+Bu örnekte, tek bir örneği `IReliableStateManager` Webhost bağımlılığı ekleme kapsayıcısına sağlanır. Bu kesinlikle gerekli değildir, ancak `IReliableStateManager` MVC denetleyici eylem yöntemlerinde ve güvenilir koleksiyonları kullanmanıza olanak tanır.
 
-Durum `Endpoint` bilgisi olan bir hizmette yapılandırma *adı sağlanmaz.* `KestrelCommunicationListener` Bu, aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır.
+`Endpoint` *not* `KestrelCommunicationListener` Durum bilgisi olan bir hizmette yapılandırma adı sağlanmaz. Bu, aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır.
 
 ### <a name="configure-kestrel-to-use-https"></a>Kestrel’i HTTPS kullanacak şekilde yapılandırma
-Hizmetinize Kestrel ile HTTPS 'yi etkinleştirirken birkaç dinleme seçeneği ayarlamanız gerekir. Bir EndpointHttps `ServiceInstanceListener` uç noktası kullanmak *EndpointHttps* ve belirli bir bağlantı noktasını dinlemek için (bağlantı noktası 443) öğesini güncelleştirin. Web konağını Kestrel Web sunucusunu kullanacak şekilde yapılandırırken, Kestrel 'i tüm ağ arabirimlerinde IPv6 adreslerini dinleyecek şekilde yapılandırmanız gerekir: 
+Hizmetinize Kestrel ile HTTPS 'yi etkinleştirirken birkaç dinleme seçeneği ayarlamanız gerekir. `ServiceInstanceListener`Bir *EndpointHttps* uç noktası kullanmak ve belirli bir bağlantı noktasını dinlemek için (bağlantı noktası 443) öğesini güncelleştirin. Web konağını Kestrel Web sunucusunu kullanacak şekilde yapılandırırken, Kestrel 'i tüm ağ arabirimlerinde IPv6 adreslerini dinleyecek şekilde yapılandırmanız gerekir: 
 
 ```csharp
 new ServiceInstanceListener(
@@ -295,14 +294,14 @@ serviceContext =>
 
 
 ### <a name="endpoint-configuration"></a>Uç nokta yapılandırması
-Kestrel `Endpoint` kullanmak için bir yapılandırma gerekli değildir. 
+`Endpoint`Kestrel kullanmak için bir yapılandırma gerekli değildir. 
 
-Kestrel basit bir tek başına Web sunucusudur. HTTP. sys (veya HttpListener) aksine, başlamadan önce URL kaydı `Endpoint` gerektirmediğinden, servicemanifest. xml ' de bir yapılandırmaya gerek yoktur. 
+Kestrel basit bir tek başına Web sunucusudur. HTTP.sys (veya HttpListener) aksine, `Endpoint` başlamadan önce URL kaydı gerektirmediğinden ServiceManifest.xml bir yapılandırmaya gerek yoktur. 
 
 #### <a name="use-kestrel-with-a-static-port"></a>Statik bağlantı noktası ile Kestrel kullanma
-Kestrel ile kullanmak üzere ServiceManifest. xml `Endpoint` yapılandırmasında bir statik bağlantı noktası yapılandırabilirsiniz. Bu kesinlikle gerekli olmasa da, iki olası avantaj sunar:
+`Endpoint`Kestrel ile kullanmak üzere ServiceManifest.xml yapılandırmasında statik bir bağlantı noktası yapılandırabilirsiniz. Bu kesinlikle gerekli olmasa da, iki olası avantaj sunar:
  - Bağlantı noktası uygulama bağlantı noktası aralığına denk değilse, Service Fabric tarafından işletim sistemi güvenlik duvarı üzerinden açılır.
- - Size `KestrelCommunicationListener` sağlanacak URL Bu bağlantı noktasını kullanır.
+ - Size sağlanacak URL `KestrelCommunicationListener` Bu bağlantı noktasını kullanır.
 
 ```xml
   <Resources>
@@ -312,18 +311,18 @@ Kestrel ile kullanmak üzere ServiceManifest. xml `Endpoint` yapılandırmasınd
   </Resources>
 ```
 
-Bir `Endpoint` yapılandırıldıysa, adının `KestrelCommunicationListener` oluşturucuya geçirilmesi gerekir: 
+Bir `Endpoint` yapılandırıldıysa, adının oluşturucuya geçirilmesi gerekir `KestrelCommunicationListener` : 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-ServiceManifest. xml bir `Endpoint` yapılandırma kullanmıyorsa, `KestrelCommunicationListener` oluşturucuda adı atlayın. Bu durumda, dinamik bir bağlantı noktası kullanacaktır. Bunun hakkında daha fazla bilgi için sonraki bölüme bakın.
+ServiceManifest.xml bir `Endpoint` yapılandırma kullanmıyorsa, oluşturucuda adı atlayın `KestrelCommunicationListener` . Bu durumda, dinamik bir bağlantı noktası kullanacaktır. Bunun hakkında daha fazla bilgi için sonraki bölüme bakın.
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>Dinamik bağlantı noktası ile Kestrel kullanma
-Kestrel, ServiceManifest. xml içindeki `Endpoint` yapılandırmadan otomatik bağlantı noktası atamasını kullanamaz. Bunun nedeni, bir `Endpoint` yapılandırmanın otomatik bağlantı noktası atamasının *ana bilgisayar işlemi*başına benzersiz bir bağlantı noktası atamasını ve tek bir konak işleminin birden çok Kestrel örneği içerebilmesi olabilir. Bağlantı noktası paylaşımını desteklemediğinden bu, Kestrel ile çalışmaz. Bu nedenle, her Kestrel örneğinin benzersiz bir bağlantı noktasında açılması gerekir.
+Kestrel, ServiceManifest.xml içindeki yapılandırmadan otomatik bağlantı noktası atamasını kullanamaz `Endpoint` . Bunun nedeni, bir yapılandırmanın otomatik bağlantı noktası atamasının `Endpoint` *ana bilgisayar işlemi*başına benzersiz bir bağlantı noktası atamasını ve tek bir konak Işleminin birden çok Kestrel örneği içerebilmesi olabilir. Bağlantı noktası paylaşımını desteklemediğinden bu, Kestrel ile çalışmaz. Bu nedenle, her Kestrel örneğinin benzersiz bir bağlantı noktasında açılması gerekir.
 
-Dinamik bağlantı noktası atamasını Kestrel ile kullanmak için, ServiceManifest. xml ' deki `Endpoint` yapılandırmayı tamamen atlayın ve aşağıdaki gibi `KestrelCommunicationListener` oluşturucuya bir uç nokta adı geçirmeyin:
+Dinamik bağlantı noktası atamasını Kestrel ile kullanmak için, `Endpoint` ServiceManifest.xml tamamen ' de yapılandırmayı atlayın ve bir uç nokta adını `KestrelCommunicationListener` oluşturucuya aşağıdaki gibi geçirin:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
@@ -331,16 +330,16 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 Bu yapılandırmada, `KestrelCommunicationListener` uygulama bağlantı noktası aralığından kullanılmamış bir bağlantı noktasını otomatik olarak seçer.
 
-HTTPS için, ServiceManifest. xml dosyasında belirtilen bir bağlantı noktası olmadan HTTPS protokolü ile yapılandırılmış uç nokta olmalıdır ve uç nokta adını KestrelCommunicationListener oluşturucusuna geçirin.
+HTTPS için, bir uç noktanın, ServiceManifest.xml ' de belirtilen bir bağlantı noktası olmadan HTTPS protokolü ile yapılandırılması ve uç nokta adını KestrelCommunicationListener oluşturucusuna geçirmesi gerekir.
 
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric yapılandırma sağlayıcısı
 ASP.NET Core içindeki uygulama yapılandırması, yapılandırma sağlayıcısı tarafından belirlenen anahtar-değer çiftlerini temel alır. Genel ASP.NET Core yapılandırma desteği hakkında daha fazla bilgi edinmek için [ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) makalesini okuyun.
 
-Bu bölümde, Service Fabric yapılandırma sağlayıcısının `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet paketini içeri aktararak ASP.NET Core yapılandırma ile nasıl tümleştirildiğini açıklanmaktadır.
+Bu bölümde, Service Fabric yapılandırma sağlayıcısının NuGet paketini içeri aktararak ASP.NET Core yapılandırma ile nasıl tümleştirildiğini açıklanmaktadır `Microsoft.ServiceFabric.AspNetCore.Configuration` .
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration başlangıç uzantıları
-`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet paketini içe aktardıktan sonra, Service Fabric yapılandırma kaynağını ASP.NET Core Configuration API 'sine kaydetmeniz gerekir. Bunu, `Microsoft.ServiceFabric.AspNetCore.Configuration` ad alanındaki **Addservicefabricconfiguration** uzantılarını denetleyerek yapabilirsiniz. `IConfigurationBuilder`
+NuGet paketini içe aktardıktan sonra `Microsoft.ServiceFabric.AspNetCore.Configuration` , Service Fabric yapılandırma kaynağını ASP.NET Core Configuration API 'sine kaydetmeniz gerekir. Bunu, ad alanındaki **Addservicefabricconfiguration** uzantılarını denetleyerek yapabilirsiniz `Microsoft.ServiceFabric.AspNetCore.Configuration` `IConfigurationBuilder` .
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;
@@ -374,7 +373,7 @@ Varsayılan olarak, Service Fabric yapılandırma sağlayıcısı paket adı, B�
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
 
-Örneğin, aşağıdaki içerikle adlı `MyConfigPackage` bir yapılandırma paketiniz varsa, yapılandırma değeri `IConfiguration` *Myconfigpackage: MyConfigSection: MyParameter*aracılığıyla ASP.NET Core kullanılabilir olacaktır.
+Örneğin, aşağıdaki içerikle adlı bir yapılandırma paketiniz varsa `MyConfigPackage` , yapılandırma değeri `IConfiguration` *myconfigpackage: MyConfigSection: MyParameter*aracılığıyla ASP.NET Core kullanılabilir olacaktır.
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
@@ -384,10 +383,10 @@ $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{Configuration
 </Settings>
 ```
 ### <a name="service-fabric-configuration-options"></a>Service Fabric yapılandırma seçenekleri
-Service Fabric yapılandırma sağlayıcısı, anahtar eşlemesinin `ServiceFabricConfigurationOptions` varsayılan davranışını değiştirmek için de destekler.
+Service Fabric yapılandırma sağlayıcısı, `ServiceFabricConfigurationOptions` anahtar eşlemesinin varsayılan davranışını değiştirmek için de destekler.
 
 #### <a name="encrypted-settings"></a>Şifrelenmiş ayarlar
-Service Fabric, Service Fabric yapılandırma sağlayıcısı gibi şifreli ayarları destekler. Şifrelenmiş ayarların şifresi varsayılan olarak ASP.NET Core `IConfiguration` . Şifrelenmiş değerler burada depolanır. Ancak ASP.NET Core Iconation 'da depolanacak değerin şifresini çözmek istiyorsanız, aşağıdaki gibi, *DecryptValue* bayrağını `AddServiceFabricConfiguration` uzantısında false olarak ayarlayabilirsiniz:
+Service Fabric, Service Fabric yapılandırma sağlayıcısı gibi şifreli ayarları destekler. Şifrelenmiş ayarların şifresi `IConfiguration` Varsayılan olarak ASP.NET Core. Şifrelenmiş değerler burada depolanır. Ancak ASP.NET Core Iconation 'da depolanacak değerin şifresini çözmek istiyorsanız, aşağıdaki gibi, *DecryptValue* bayrağını uzantısında false olarak ayarlayabilirsiniz `AddServiceFabricConfiguration` :
 
 ```csharp
 public Startup()
@@ -399,7 +398,7 @@ public Startup()
 }
 ```
 #### <a name="multiple-configuration-packages"></a>Birden çok yapılandırma paketi
-Service Fabric birden çok yapılandırma paketini destekler. Varsayılan olarak, paket adı yapılandırma anahtarına dahil edilir. Ancak aşağıdaki gibi `IncludePackageName` bayrağını false olarak ayarlayabilirsiniz:
+Service Fabric birden çok yapılandırma paketini destekler. Varsayılan olarak, paket adı yapılandırma anahtarına dahil edilir. Ancak `IncludePackageName` aşağıdaki gibi bayrağını false olarak ayarlayabilirsiniz:
 ```csharp
 public Startup()
 {
@@ -411,9 +410,9 @@ public Startup()
 }
 ```
 #### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Özel anahtar eşleme, değer ayıklama ve veri popülasyonu
-Service Fabric yapılandırma sağlayıcısı, anahtar eşlemesini özelleştirmek için daha gelişmiş senaryolar da destekler `ExtractKeyFunc` ve değerleri ile `ExtractValueFunc`özel olarak ayıklar. Kullanarak `ConfigAction`verileri Service Fabric yapılandırmadan ASP.NET Core yapılandırmasına doldurma işlemini de değiştirebilirsiniz.
+Service Fabric yapılandırma sağlayıcısı, anahtar eşlemesini özelleştirmek için daha gelişmiş senaryolar da destekler `ExtractKeyFunc` ve değerleri ile özel olarak ayıklar `ExtractValueFunc` . Kullanarak verileri Service Fabric yapılandırmadan ASP.NET Core yapılandırmasına doldurma işlemini de değiştirebilirsiniz `ConfigAction` .
 
-Aşağıdaki örneklerde, veri popülasyonu özelleştirmek için `ConfigAction` nasıl kullanılacağı gösterilmektedir:
+Aşağıdaki örneklerde, `ConfigAction` veri popülasyonu özelleştirmek için nasıl kullanılacağı gösterilmektedir:
 ```csharp
 public Startup()
 {
@@ -448,7 +447,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Yapılandırma güncelleştirmeleri
-Service Fabric yapılandırma sağlayıcısı da yapılandırma güncelleştirmelerini destekler. Değişiklik bildirimlerini almak için `IOptionsMonitor` ASP.NET Core kullanabilir ve sonra yapılandırma verilerini yeniden yüklemek `IOptionsSnapshot` için kullanabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core seçenekleri](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+Service Fabric yapılandırma sağlayıcısı da yapılandırma güncelleştirmelerini destekler. `IOptionsMonitor`Değişiklik bildirimlerini almak için ASP.NET Core kullanabilir ve sonra `IOptionsSnapshot` yapılandırma verilerini yeniden yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core seçenekleri](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
 
 Bu seçenekler varsayılan olarak desteklenir. Yapılandırma güncelleştirmelerini etkinleştirmek için başka bir kodlama gerekmez.
 
@@ -466,18 +465,18 @@ Bu bölümde, aşağıdaki senaryolarda sorun gidermek için önerdiğimiz Web s
 > Durum bilgisi olan hizmet uç noktaları genellikle internet 'e sunulmamalıdır. Azure Load Balancer gibi Service Fabric hizmet çözümünden haberdar olmayan yük dengeleyiciler arkasındaki kümeler, durum bilgisi olmayan hizmetleri kullanıma sunmayacak. Bunun nedeni, yük dengeleyicinin trafiği uygun durum bilgisi olan hizmet çoğaltmasına bulabilmeleri ve yönlendirmeyeceği bir yoldur. 
 
 ### <a name="externally-exposed-aspnet-core-stateless-services"></a>Dışarıdan sunulan ASP.NET Core durum bilgisi olmayan hizmetler
-Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön uç hizmetleri için önerilen Web sunucusudur. Windows 'da, HTTP. sys, aynı bağlantı noktasını kullanarak aynı düğüm kümesinde birden çok Web hizmeti barındırmanıza olanak sağlayan bağlantı noktası paylaşma özelliği sağlayabilir. Bu senaryoda, Web Hizmetleri, HTTP yönlendirmesi sağlamak üzere ön uç ara sunucusuna veya ağ geçidine bağlı olmadan ana bilgisayar adına veya yoluna göre farklılaştırılabilir.
+Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön uç hizmetleri için önerilen Web sunucusudur. Windows 'da HTTP.sys, aynı bağlantı noktasını kullanarak aynı düğüm kümesinde birden çok Web hizmeti barındırmanıza olanak tanıyan bağlantı noktası paylaşma özelliği sağlayabilir. Bu senaryoda, Web Hizmetleri, HTTP yönlendirmesi sağlamak üzere ön uç ara sunucusuna veya ağ geçidine bağlı olmadan ana bilgisayar adına veya yoluna göre farklılaştırılabilir.
  
 İnternet 'e sunulduğunda, durum bilgisi olmayan bir hizmet, yük dengeleyici aracılığıyla erişilebilen iyi bilinen ve kararlı bir uç nokta kullanmalıdır. Bu URL 'YI uygulamanızın kullanıcılarına sağlarsınız. Aşağıdaki yapılandırmayı öneririz:
 
 |  |  | **Notlar** |
 | --- | --- | --- |
 | Web sunucusu | Kestrel | Kestrel, Windows ve Linux genelinde desteklendiğinden tercih edilen Web sunucusudur. |
-| Bağlantı noktası yapılandırması | static | ServiceManifest. xml `Endpoints` YAPıLANDıRMASıNDA, HTTP için 80 veya HTTPS için 443 gibi iyi bilinen bir statik bağlantı noktası yapılandırılmalıdır. |
-| Servicefabricıntegrationoptions | Hiçbiri | Hizmetin, `ServiceFabricIntegrationOptions.None` benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
+| Bağlantı noktası yapılandırması | static | ServiceManifest.xml yapılandırmasında iyi bilinen bir statik bağlantı noktası `Endpoints` , https için 80, http veya 443 için gibi yapılandırılmalıdır. |
+| Servicefabricıntegrationoptions | Hiçbiri | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
 | Örnek Sayısı | -1 | Tipik kullanım durumlarında, örnek sayısı ayarı *-1*olarak ayarlanmalıdır. Bu, bir yük dengeleyiciden trafik alan tüm düğümlerde bir örnek kullanılabilmesi için yapılır. |
 
-Birden fazla dışarıdan açığa çıkarılan hizmet aynı düğüm kümesini paylaşıyorsa, HTTP. sys ' yi benzersiz ancak kararlı bir URL yolu ile kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP. sys için geçerli olduğunu unutmayın.
+Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa, benzersiz ancak kararlı bir URL yoluyla HTTP.sys kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP.sys için geçerli olduğunu unutmayın.
 
  ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -497,10 +496,10 @@ Yalnızca küme içinden çağrılan durum bilgisi olmayan hizmetler, birden ço
 
 |  |  | **Notlar** |
 | --- | --- | --- |
-| Web sunucusu | Kestrel | İç durum bilgisi olmayan hizmetler için HTTP. sys ' i kullanabilseniz de, Kestrel birden çok hizmet örneğinin bir konağı paylaşmasına izin veren en iyi sunucu olur.  |
+| Web sunucusu | Kestrel | Durum bilgisi olmayan hizmetler için HTTP.sys kullanabilseniz de, Kestrel birden çok hizmet örneğinin bir konağı paylaşmasına izin veren en iyi sunucu olur.  |
 | Bağlantı noktası yapılandırması | dinamik olarak atandı | Durum bilgisi olan bir hizmetin birden fazla çoğaltması bir konak işlemini veya ana bilgisayar işletim sistemini paylaşabilir ve bu nedenle benzersiz bağlantı noktalarına gerek duyar. |
 | Servicefabricıntegrationoptions | UseUniqueServiceUrl 'Si | Dinamik bağlantı noktası atama ile bu ayar, daha önce açıklanan kimlik sorununa engel olur. |
-| Yükteki InstanceCount | kaydedilmemiş | Örnek sayısı ayarı, hizmeti çalıştırmak için gereken herhangi bir değere ayarlanabilir. |
+| Yükteki InstanceCount | herhangi biri | Örnek sayısı ayarı, hizmeti çalıştırmak için gereken herhangi bir değere ayarlanabilir. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Yalnızca iç durum bilgisi olan ASP.NET Core hizmeti
 Yalnızca küme içinden çağrılan durum bilgisi olan hizmetler, birden çok hizmet arasında ortak işlem sağlamak için dinamik olarak atanmış bağlantı noktaları kullanmalıdır. Aşağıdaki yapılandırmayı öneririz:
