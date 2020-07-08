@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323561"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971190"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Döküm alma ve geri yükleme işlemlerini kullanarak MySQL veritabanınızı MySQL için Azure Veritabanı'na geçirme
 Bu makalede, MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -67,7 +67,11 @@ Sağlanacak parametreler şunlardır:
 - [BackupFile. SQL] veritabanı yedeklemenizin dosya adı 
 - [--opt] Mysqldump seçeneği 
 
-Örneğin, MySQL sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parolasız yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını `testdb` `testdb_backup.sql` yeniden oluşturmak için gereken tüm SQL deyimlerini içeren adlı bir dosyaya veritabanını yedekler. 
+Örneğin, MySQL sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parolasız yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını `testdb` `testdb_backup.sql` yeniden oluşturmak için gereken tüm SQL deyimlerini içeren adlı bir dosyaya veritabanını yedekler. ' Testuser ' Kullanıcı adının en azından dökülebilir tablolar için SEÇIM ayrıcalığına sahip olduğundan, dökülebilir görünümler için Görünüm ' ün ve--Single-Transaction seçeneği kullanılmazsa TABLOLARı KILITLEYECEĞINDEN emin olun.
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,7 +100,7 @@ Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 Daha hızlı veri yükleri için hedef Azure veritabanını MySQL sunucusuna hazırlamak üzere aşağıdaki sunucu parametreleri ve yapılandırmasının değiştirilmesi gerekir.
 - max_allowed_packet – uzun satırlardan kaynaklanan taşma sorununa engel olmak için 1073741824 (ör. 1GB) olarak ayarlayın.
 - slow_query_log: yavaş sorgu günlüğünü kapatmak için kapalı olarak ayarlayın. Bu, veri yükleri sırasında yavaş sorgu günlüğü 'nün neden olduğu yükü ortadan kaldırır.
-- query_store_capture_mode: sorgu deposunu kapatmak için her ikisini de yok olarak ayarlayın. Bu, sorgu deposu tarafından örnekleme etkinliklerinin neden olduğu yükü ortadan kaldırır.
+- query_store_capture_mode – sorgu deposunu kapatmak için NONE olarak ayarlayın. Bu, sorgu deposu tarafından örnekleme etkinliklerinin neden olduğu yükü ortadan kaldırır.
 - innodb_buffer_pool_size: innodb_buffer_pool_size artırmak için, geçiş sırasında portalın fiyatlandırma katmanından 32 sanal çekirdek bellek için Iyileştirilmiş SKU 'SU ölçeğini artırın. Innodb_buffer_pool_size, yalnızca MySQL için Azure veritabanı sunucusu için işlem ölçeklendirerek artırılabilir.
 - innodb_io_capacity & innodb_io_capacity_max-geçiş hızını iyileştirmek üzere GÇ kullanımını iyileştirmek için Azure portal sunucu parametrelerinden 9000 olarak değiştirin.
 - innodb_write_io_threads & innodb_write_io_threads-geçiş hızını artırmak için Azure portal içindeki sunucu parametrelerinden 4 ' e geçin.

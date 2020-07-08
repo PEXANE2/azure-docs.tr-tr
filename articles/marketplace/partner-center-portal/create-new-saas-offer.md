@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/17/2020
+ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374279"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980606"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 
@@ -76,7 +76,7 @@ Microsoft ile satış yapmak daha iyi müşteri bulma ve alma olanağı sağlar,
 Iş Ortağı Merkezi 'nde ticari Market ile hizmet olarak yazılım (SaaS) teklifleri listelemek için aşağıdaki kriterlerin karşılanması gerekir:
 
 - Teklifinizin kimlik yönetimi ve kimlik doğrulaması için [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) kullanması gerekir.
-- Teklifinizin Azure Marketi ile tümleştirilecek [SaaS karşılama API 'lerini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) kullanması gerekir.
+- Teklifinizin Azure Marketi ile tümleştirilecek [SaaS karşılama API 'lerini](pc-saas-fulfillment-api-v2.md) kullanması gerekir.
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS fiyatlandırma ve faturalandırma seçenekleri
 
@@ -96,10 +96,9 @@ Bu, bir ücret modelini (listelenen tüm fiyatlar yalnızca örnek amaçlıdır 
 |Microsoft, lisans maliyetinizi %80 oranında ödetir <br>**Microsoft, tam SaaS uygulamaları için lisans maliyetlerinizin %90 ' ını öder*|$80,00/ay <br>*$* 90,00/ay *|
 
 - Bu örnekte, Microsoft, yazılım lisansınızın $100,00 ' i müşteriye faturalandırır ve Yayımcı için $80,00 ' i ödeder.
-- **Azaltılmış Market hizmet ücreti** için uygun olan iş ortakları, 2019 2020 Haziran 'a kadar Mayıs 'a kadar olan SaaS teklifleriyle daha düşük bir işlem ücreti görür. Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $90,00 ' i ödeder.
 
 > [!NOTE]
-> **Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri Için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Teklifinizin uygun olmasını sağlamak için, tekliflerinizin en az birinin, Microsoft tarafından IP ortak satışı veya IP ortak satışı önceliği atanmış olarak belirlenmiş olması gerekir. Bu ay için daha düşük olan bu Market servis ücretini almak amacıyla her bir takvim ayının sonundan önce uygunluk en az beş (5) iş gününe ulaşılmalıdır.  Düşük Market hizmet ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market 'ten sunulan diğer ürünlerle ilgili değildir. Daha az Market hizmet ücreti yalnızca Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri için uygun tekliflerdir. Bu süreden sonra Market hizmeti ücreti normal miktarına geri döner.
+> **Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri Için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için, tekliflerinizin, IP ortak satışı veya IP ortak satışı kapsamında Microsoft tarafından belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market aracılığıyla sunulan diğer ürünlerden hiçbiri için geçerlidir.
 
 ### <a name="list-through-microsoft"></a>Microsoft ile Listele
 
@@ -109,11 +108,11 @@ Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un
 
 #### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
 
-[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla deneme süresi sunabileceği geçerli bir adres ( *http* veya *https*ile başlayarak) sunarak, müşterilerinizin teklifinizi ücretsiz olarak listeleyin. Örneğin, `https://contoso.com/saas-app`.
+[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)aracılığıyla deneme süresi sunabileceği geçerli bir adres ( *http* veya *https*ile başlayarak) sunmak için müşterilerinizin teklifinizi ücretsiz olarak listeleyin. Örneğin, `https://contoso.com/saas-app`.
 
 #### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 
-[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla bir denemeye ulaşmak istedikleri, geçerli bir adres sağlayarak ( *http* veya *https*ile başlayarak), ücretsiz bir denemeye yönelik bir bağlantıya sahip müşterilere teklifinizi listeleyin. Örneğin, `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+[Tek tıklamayla kimlik doğrulaması aracılığıyla Azure Active Directory (Azure AD)) kullanarak](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)bir deneme sürümü alabileceğiniz, ücretsiz bir deneme *http* bağlantısı sunan *https*müşterilere teklifinizi listeleyin. Örneğin, `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
 
 > [!NOTE]
 > Deneme bağlantınız aracılığıyla uygulamanızın alacağı belirteçler yalnızca, uygulamanızda hesap oluşturmayı otomatikleştirmek için Azure AD aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları (MSA) desteklenmez.
@@ -140,7 +139,7 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Açıklama
+9. Description
 10. Ekran görüntüleri/videolar
 11. Belgeler
 
@@ -157,15 +156,15 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 
 ## <a name="enable-a-test-drive"></a>Sınama sürücüsünü etkinleştir
 
-Test sürücüsü, "satın almadan önce dene" seçeneği sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. bu sayede, artan dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olur. [Sınama sürücüleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+Test sürücüsü, "satın almadan önce dene" seçeneği sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. bu sayede, artan dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olur. [Sınama sürücüleri hakkında daha fazla bilgi edinin](../what-is-test-drive.md).
 
 Bir sınama sürücüsünü sabit bir süre etkinleştirmek için, **bir sınama sürücüsünü etkinleştir** onay kutusunu seçin. Test sürücüsünü teklifinizden kaldırmak için bu onay kutusunu temizleyin.
 
-Daha fazla bilgi için bkz. [ticari Market 'te teklifinizin test](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)etme.
+Daha fazla bilgi için bkz. [ticari Market 'te teklifinizin test](test-drive.md)etme.
 
 ### <a name="test-drive-resources"></a>Sınama sürücüsü kaynakları
 
-- [En iyi pazarlama deneyimleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Test sürüşü nedir?](../what-is-test-drive.md)
 - [En iyi teknik uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
@@ -174,8 +173,8 @@ Daha fazla bilgi için bkz. [ticari Market 'te teklifinizin test](https://docs.m
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>Ek lider Yönetimi kaynakları
-- [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Müşteri adayı yönetimine genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
@@ -186,11 +185,18 @@ Bu sayfa, teklifinizi markette gruplandırmak için kullanılan kategorileri ve 
 
 ### <a name="category"></a>Kategori
 
-Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir ve en fazla üç kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıklayacağız.
+Teklifiniz, teklifiniz ve kategori seçiminiz ile ilişkili işlem yeteneklerine bağlı olarak AppSource veya Azure Marketi 'nde yayımlanacak. Ayrıntılar için bkz. [Microsoft AppSource ve Azure Marketi 'Ni karşılaştırma](../comparing-appsource-azure-marketplace.md) . Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak için kategoriler ve alt kategoriler ' i seçin. Seçin:
+
+- Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+
+[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)her bir storefront için geçerli kategorilerin ve alt kategorilerin tam listesine bakın.
 
 ### <a name="industries"></a>Sektörler
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+
+Sektör seçimi yalnızca AppSource 'ta yayınlanan teklifler için geçerlidir.
 
 ### <a name="app-version"></a>Uygulama sürümü
 
@@ -252,11 +258,11 @@ Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Marke
 
 - **Ad** (gerekli) – burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içeremez ve 50 karakterle sınırlı olmalıdır.
 - **Özet** (zorunlu) – Market listeleme arama sonuçlarında kullanılacak teklifinizin kısa bir açıklamasını sağlayın. Bu alana en fazla 100 karakter metin girilebilir.
-- **Açıklama** (gerekli) – Market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun. Biçimlendirme de dahil olmak üzere bu alana en fazla 3.000 karakter girilebilir. Ek ipuçları için bkz. [harika bir uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+- **Açıklama** (gerekli) – Market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun. Biçimlendirme de dahil olmak üzere bu alana en fazla 3.000 karakter girilebilir. Ek ipuçları için bkz. [harika bir uygulama açıklaması yazma](/windows/uwp/publish/write-a-great-app-description).
 - **Anahtar sözcükleri ara** – müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
 - Başlarken yönergeleri (gerekli) – uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya **başlamanızı** açıklayın.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu alan gereklidir.
 
@@ -267,7 +273,7 @@ Bu alan gereklidir.
 #### <a name="links"></a>Bağlantılar
 
 - **Gizlilik ilkesi** (gerekli) – kuruluşunuzun gizlilik ilkesine bağlayın. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
-- **CSP program pazarlama malzemeleri** (isteğe bağlı) – teklifinizi [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlayın. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
+- **CSP program pazarlama malzemeleri** (isteğe bağlı) – teklifinizi [bulut çözümü sağlayıcısı (CSP)](../cloud-solution-providers.md) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlayın. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
 - **Kullanışlı bağlantılar** (isteğe bağlı) – uygulamanız veya bir **başlık** ve **URL 'si**sağlanarak listelenen ilgili hizmetlerinize ilişkin isteğe bağlı ek çevrimiçi belgeler. **+ URL Ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
 #### <a name="contact-information"></a>İletişim bilgileri
@@ -296,7 +302,7 @@ Bu alan gereklidir.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-- [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Market teklif listeleri için en iyi uygulamalar](../gtm-offer-listing-best-practices.md)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -327,11 +333,11 @@ Toplanan alanların kullanımını açıklayan diyagramlar ve ayrıntılı açı
 
 - **Giriş sayfası URL 'si** (gerekli) – `https://contoso.com/signup` son müşterilerin, marketten teklifinizi aldıktan sonra ve yeni oluşturulan SaaS aboneliğinden yapılandırma işlemini tetikleyerek, SaaS site URL 'sini (örneğin:) tanımlayın.  Bu URL, belirli bir son müşterinin SaaS satın alımını benzersiz bir şekilde tanımlayan Market satın alma tanımlama belirteci parametresi ile çağırılır.  Bu belirteci, [Çözümle](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API 'sini kullanarak ilgili SaaS aboneliği ayrıntıları için değiş tokuş etmeniz gerekir.  Bu ayrıntılar ve toplamak istediğiniz tüm diğerleri, son müşteri kaydını tamamlamaya ve satın alımlarını etkinleştirmeye yönelik deneyiminizle oluşturulmuş bir müşteri etkileşimli Web sayfasının bir parçası olarak kullanılmalıdır.  Bu sayfada, Kullanıcı Azure Active Directory (Azure AD) kullanarak tek tıklamalı kimlik doğrulama aracılığıyla kaydolmalıdır. <br> <br> Market satın alma tanımlama belirteci parametresi ile bu URL, son müşteri Azure portal veya M365 yönetim merkezinden yönetilen SaaS deneyimini başlattığında de çağrılır. Belirtecin yeni müşteriler için satın alındıktan sonra ilk kez sağlandığı ve SaaS 'yi yöneten mevcut müşteri için sağlanışında her iki akışı da işlemeniz gerekir. <br> <br> Burada yapılandırdığınız giriş sayfası, 24/7 olmalıdır ve çalışıyor olmalıdır. Bu, Market 'te yapılan SaaS tekliflerinizin yeni satınalmaları veya bir teklifin etkin bir aboneliğinin yapılandırma istekleri hakkında size bildirilecek tek yoldur.
 
-- **Bağlantı Web kancası** (gerekli) – Microsoft 'un size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği iptal edildi), bir bağlantı Web kancası URL 'si sağlamanızı istiyoruz. Bu URL 'YI olay üzerinde bilgilendirmek için çağıracağız. <br> <br> Sağladığınız Web kancası, Market aracılığıyla satın alınan müşterilerinizin SaaS abonelik24/7 leriyle ilgili güncelleştirmeler hakkında bildirim almanız gereken tek yoldur.  Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (örneğin,) işleymeyecektir `https://prod-1westus.logic.azure.com:443/work` . Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Bağlantı Web kancası** (gerekli) – Microsoft 'un size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği iptal edildi), bir bağlantı Web kancası URL 'si sağlamanızı istiyoruz. Bu URL 'YI olay üzerinde bilgilendirmek için çağıracağız. <br> <br> Sağladığınız Web kancası, Market aracılığıyla satın alınan müşterilerinizin SaaS abonelik24/7 leriyle ilgili güncelleştirmeler hakkında bildirim almanız gereken tek yoldur.  Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (örneğin,) işleymeyecektir `https://prod-1westus.logic.azure.com:443/work` . Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../../logic-apps/logic-apps-http-endpoint.md).
 
-- **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+- **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](../../active-directory/develop/howto-create-service-principal-portal.md) gerekir. [KIRACı kimliğini](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için) Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 
-- **Azure AD uygulama kimliği** (gerekli) – Ayrıca [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)gerekir. Değerini almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, sonra LISTELENEN **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
+- **Azure AD uygulama kimliği** (gerekli) – Ayrıca [Uygulama Kimliğiniz](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)gerekir). Değerini almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, sonra LISTELENEN **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
 >[!Note]
 >Azure AD uygulama KIMLIĞI, Iş Ortağı Merkezi hesabınızdaki yayımcı KIMLIĞINIZLE ilişkilidir.  Tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
@@ -423,7 +429,7 @@ Teklifinizdeki her plan için ücretsiz bir deneme yapılandırabilirsiniz. Bir 
 >[!NOTE]
 >Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için bu ayarın ilk yayımlama için doğru olduğundan emin olun.
 
-Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, `isFreeTrial` doğru veya yanlış olarak işaretlenecek yenı API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)bakın.
+Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, `isFreeTrial` doğru veya yanlış olarak işaretlenecek yenı API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](pc-saas-fulfillment-api-v2.md#get-subscription)bakın.
 
 >[!NOTE]
 >Market ölçüm hizmetinden yararlanan planlar için ücretsiz denemeler desteklenmez.

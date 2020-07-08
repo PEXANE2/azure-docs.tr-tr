@@ -1,14 +1,15 @@
 ---
-title: Desteklenen Kaynak Yöneticisi kaynak türleri
-description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
+title: Desteklenen Azure Resource Manager kaynak türleri
+description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
 ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: a4679c9e1ecaef34445a7283e0d58ab78cb61ab0
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.custom: generated
+ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424304"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970578"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -87,11 +88,11 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
-- Microsoft. Batch/batchaccounts
-- Microsoft. batchaı/kümeler
-- Microsoft. batchaı/fileservers
-- Microsoft. batchaı/Jobs
-- Microsoft. batchaı/çalışma alanları
+- microsoft.batch/batchaccounts
+- Chai/kümeleri microsoft.bat
+- Chai/fileservers microsoft.bat
+- Chai/işleri microsoft.bat
+- Chai/çalışma alanlarını microsoft.bat
 - Microsoft. bingmaps/mapapsıs
 - Microsoft. biztalkservices/BizTalk
 - Microsoft. blockzincirine/blockchainmembers
@@ -196,7 +197,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. devtestlab/Labs/virtualmachines
 - Microsoft. devtestlab/zamanlamalar
 - Microsoft. digitaltwins/digitaltwınsınstances
-- Microsoft. DocumentDB/databaseaccounts
+- Umentdb/databaseaccounts microsoft.doc
 - Microsoft. domainregistration/Domains
 - Microsoft. enterpriseknowledgegraph/hizmetler
 - Microsoft. eventgrid/Domains

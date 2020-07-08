@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: SQL yönetilen örneği & Azure SQL veritabanı için yeni özellikler ve belge iyileştirmeleri hakkında bilgi edinin.
 services: sql-database
 author: stevestein
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 04442d7c82b463c0cfa5813bd4b20554b57ec950
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323237"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981386"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *tek veritabanı*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir. |
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *elastik havuzu*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir.  |
 |**Azure SQL Veritabanı** |Azure SQL Veritabanı | Terim aynı kalır, ancak artık tek veritabanı ve elastik havuz dağıtımları için geçerli olur ve yönetilen örnek içermez. |
-| **Azure SQL**| Yok | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
+| **Azure SQL**| YOK | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
 

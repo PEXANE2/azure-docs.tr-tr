@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85257542"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970816"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -46,8 +46,14 @@ Defender ATP 'yi Azure Güvenlik Merkezi ile tümleştirerek aşağıdaki ek yet
 
 Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 üzerinde algılamayı destekler. Azure VM 'Ler için Standart katman aboneliğine ve Azure dışı VM 'Ler için yalnızca çalışma alanı düzeyinde Standart katmana ihtiyacınız vardır.
 
-> [!NOTE]
-> Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, Microsoft Defender ATP kiracısı otomatik olarak oluşturulur ve Microsoft Defender ATP verileri varsayılan olarak Avrupa 'da depolanır. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurmanız gerekir. Bu tümleştirmenin kullanılmasıyla sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
+Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
+
+## <a name="data-storage-location"></a>Veri depolama konumu
+
+Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir Microsoft Defender ATP kiracısı otomatik olarak oluşturulur. Microsoft Defender ATP tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Sahte bir biçimde bulunan müşteri verileri, Birleşik Devletler merkezi depolama ve işleme sistemlerine de depolanabilir. 
+
+Yapılandırıldıktan sonra, verilerinizin depolandığı konumu değiştiremezsiniz. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
+
 
 ## <a name="onboarding-servers-to-security-center"></a>Sunucuları Güvenlik Merkezi'ne ekleme 
 

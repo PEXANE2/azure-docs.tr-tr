@@ -2,8 +2,8 @@
 title: Azure SQL veritabanı 'nda veritabanı oluşturmak için BACPAC dosyasını içeri aktarma
 description: Bir BACPAC dosyasından Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde yeni bir veritabanı oluşturun.
 services: sql-database
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-db-mi
+ms.subservice: migrate
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7bca179f3140a64923af71199fe4a1db48d2065c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218822"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982356"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ Azure portal BACPAC dosyasından içeri aktarmayı öğrenmek için bu videoyu i
 Bir veritabanını BACPAC dosyasından [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) 'ne geçirmek için, Azure portal veya Azure PowerShell ' i kullanarak SQL Server Management Studio veya SqlPackage kullanın.
 
 > [!NOTE]
-> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. Bu sorundan kaçınmak için, SQL paketini 150GB 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
+> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. Bu sorundan kaçınmak için, SQL paketini 150GB 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
 
 1. Bir BACPAC dosyasından Azure portal kullanarak yeni bir tek veritabanına aktarmak için, uygun sunucu sayfasını açın ve ardından araç çubuğundan **veritabanını Içeri aktar**' ı seçin.  
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) şu anda Azure PowerShell kullanarak bir veritabanını bir bacpac dosyasından örnek veritabanına geçirmeyi desteklemez. SQL yönetilen örneği içine aktarmak için SQL Server Management Studio veya SQLPackage kullanın.
 
 > [!NOTE]
-> Portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makinelerin bacpac dosyasını ve veri katmanı uygulaması çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip olan veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 ' i kadar katına yararlanabilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler "diskte yeterli alan yok" hatasını vererek başarısız olabilir. Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. 150GB 'den büyük veritabanlarını içeri/dışarı aktarırken, bu sorundan kaçınmak için SqlPackage kullanın.
+> Portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makinelerin bacpac dosyasını ve veri katmanı uygulaması çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip olan veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 ' i kadar katına yararlanabilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler "diskte yeterli alan yok" hatasını vererek başarısız olabilir. Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. 150GB 'den büyük veritabanlarını içeri/dışarı aktarırken, bu sorundan kaçınmak için SqlPackage kullanın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +146,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>Sınırlamalar
 
 - Bir veritabanının elastik havuza aktarılması desteklenmez. Verileri tek bir veritabanına aktarıp ardından bu veritabanını elastik havuza taşıyabilirsiniz.
-- Azure hizmetlerine erişime Izin ver kapalı olarak ayarlandığında içeri aktarma hizmeti kullanılamaz. Ancak, SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya DACFx API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
+- Azure hizmetlerine erişime Izin ver kapalı olarak ayarlandığında içeri aktarma hizmeti kullanılamaz. Bununla birlikte, bir Azure VM 'den sqlpackage.exe el ile çalıştırarak veya DACFx API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
 ## <a name="import-using-wizards"></a>Sihirbazları kullanarak içeri aktarma
 

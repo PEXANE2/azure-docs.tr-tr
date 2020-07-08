@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052724"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971122"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -603,9 +603,9 @@ Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/te
 > [!NOTE]
 > Bu işlevler, `details.deployment.properties.template` bir **Deployifnotexists** ilke tanımındaki şablon dağıtımının bölümünde hala kullanılabilir.
 
-Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda kullanımı farklıdır:
+Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda (ARM şablonu) kullanımı farklıdır:
 
-- `utcNow()`-Kaynak Yöneticisi şablondan farklı olarak, bu özellik _DefaultValue_dışında kullanılabilir.
+- `utcNow()`-ARM şablonundan farklı olarak, bu özellik _DefaultValue_dışında kullanılabilir.
   - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
 
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:

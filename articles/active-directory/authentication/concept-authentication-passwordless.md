@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201729"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981864"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
 Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar genellikle parolalarını anımsamak için gereken ek güvenlik katmanını öğreniyor. Parola kaldırılıp, sizin veya bildiğiniz bir şey ile değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
-|   | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
+| Kimlik Doğrulaması  | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
 | --- | --- | --- |
 | Parolasız | Windows 10 cihaz, telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
@@ -116,7 +116,7 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 | Feian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | CIHAZDAN | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurlik | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| TrustKey çözümleri | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto (Thales grubu) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
@@ -125,7 +125,7 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 > [!NOTE]
 > Ve NFC tabanlı güvenlik anahtarları kullanmayı planlıyorsanız, güvenlik anahtarı için desteklenen bir NFC okuyucusuna ihtiyacınız vardır. NFC okuyucusu bir Azure gereksinimi veya sınırlaması değildir. Desteklenen NFC okuyucuları listesi için, NFC tabanlı güvenlik anahtarınızın satıcısına danışın.
 
-Bir satıcısıysanız ve cihazınızı bu desteklenen cihazlar listesinde almak istiyorsanız, iletişim kurun [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Bir satıcısıysanız ve cihazınızı bu desteklenen cihazlar listesinde almak istiyorsanız, iletişim kurun [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) .
 
 ## <a name="what-scenarios-work-with-the-preview"></a>Önizlemele hangi senaryolar çalışıyor?
 
@@ -147,7 +147,7 @@ Microsoft passwordless teknolojisini seçerken göz önünde bulundurmanız gere
 |**Önkoşul**| Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory| Microsoft Authenticator uygulaması<br>Telefon (Android 6,0 veya üzeri çalıştıran iOS ve Android cihazları.)|Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory|
 |**Mod**|Platform|Yazılım|Donanım|
 |**Sistemler ve cihazlar**|Yerleşik Güvenilir Platform Modülü bılgısayar (TPM)<br>PIN ve Biyometri tanıma |Telefonda PIN ve Biyometri tanıma|Microsoft uyumlu FIDO2 güvenlik cihazları|
-|**Kullanıcı deneyimleri**|Windows cihazlarıyla bir PIN veya biyometrik tanıma (yüz, Iris veya parmak izi) kullanarak oturum açın.<br>Windows Hello kimlik doğrulaması cihaza bağlıdır; kullanıcının şirket kaynaklarına erişmek için hem cihaza hem de PIN veya biyometri faktörü gibi bir oturum açma bileşenine ihtiyacı vardır.|Parmak izi taraması, yüz veya Iris tanıma veya PIN ile cep telefonu kullanarak oturum açın.<br>Kullanıcılar, PC veya cep telefonlarından iş veya kişisel hesap için oturum açabilirler.|FIDO2 güvenlik cihazını (biyometri, PIN ve NFC) kullanarak oturum açın<br>Kullanıcı, cihaza, USB güvenlik anahtarları ve NFC 'nin etkinleştirildiği akıllı kartlar, anahtarlar veya wearables gibi cihazları kullanarak kuruluş denetimlerini ve kimlik doğrulamasını temel alarak cihaz erişimi sağlayabilir.|
+|**Kullanıcı deneyimi**|Windows cihazlarıyla bir PIN veya biyometrik tanıma (yüz, Iris veya parmak izi) kullanarak oturum açın.<br>Windows Hello kimlik doğrulaması cihaza bağlıdır; kullanıcının şirket kaynaklarına erişmek için hem cihaza hem de PIN veya biyometri faktörü gibi bir oturum açma bileşenine ihtiyacı vardır.|Parmak izi taraması, yüz veya Iris tanıma veya PIN ile cep telefonu kullanarak oturum açın.<br>Kullanıcılar, PC veya cep telefonlarından iş veya kişisel hesap için oturum açabilirler.|FIDO2 güvenlik cihazını (biyometri, PIN ve NFC) kullanarak oturum açın<br>Kullanıcı, cihaza, USB güvenlik anahtarları ve NFC 'nin etkinleştirildiği akıllı kartlar, anahtarlar veya wearables gibi cihazları kullanarak kuruluş denetimlerini ve kimlik doğrulamasını temel alarak cihaz erişimi sağlayabilir.|
 |**Etkin senaryolar**| Windows cihazındaki parola-daha az deneyim.<br>Cihaz ve uygulamalarda çoklu oturum açma yeteneğine sahip adanmış iş BILGISAYARı için geçerlidir.|Cep telefonu kullanan parola-daha az her yerde çözüm.<br>Herhangi bir cihazdan Web üzerinde iş veya kişisel uygulamalara erişmek için geçerlidir.|Biyometri, PIN ve NFC kullanan çalışanlar için parola açısından daha az deneyim.<br>Paylaşılan bilgisayarlar ve cep telefonunun uygun bir seçenek olmaması (örneğin, yardım masası personeli, genel bilgi noktası veya hastane ekibi gibi) için geçerlidir|
 
 Gereksinimlerinizi ve kullanıcılarınızı hangi yöntemin destekleyeceği belirlemek için aşağıdaki tabloyu kullanın.

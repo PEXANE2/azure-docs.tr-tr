@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654462"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970459"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -17,12 +17,13 @@ Azure Kaynak grafiğinin sorgu dili, bir dizi işleci ve işlevi destekler. Her 
 Bu makalede kaynak Graph tarafından desteklenen dil bileşenleri ele alınmaktadır:
 
 - [Kaynak grafik tabloları](#resource-graph-tables)
+- [Kaynak Grafiği özel dil öğeleri](#resource-graph-custom-language-elements)
 - [Desteklenen KQL dil öğeleri](#supported-kql-language-elements)
 - [Kaçış karakterleri](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Kaynak grafik tabloları
 
-Kaynak Grafiği Kaynak Yöneticisi kaynak türlerini ve bunların özelliklerini depolayan veriler için birkaç tablo sağlar. Bu tablolar, `join` `union` ilişkili kaynak türlerinden özellikleri almak için veya işleçleriyle birlikte kullanılabilir. Kaynak grafiğinde kullanılabilen tabloların listesi aşağıda verilmiştir:
+Kaynak Grafiği Azure Resource Manager kaynak türlerini ve bunların özelliklerini depolayan veriler için birkaç tablo sağlar. Bu tablolar, `join` `union` ilişkili kaynak türlerinden özellikleri almak için veya işleçleriyle birlikte kullanılabilir. Kaynak grafiğinde kullanılabilen tabloların listesi aşağıda verilmiştir:
 
 |Kaynak grafik tabloları |Açıklama |
 |---|---|
@@ -61,6 +62,33 @@ Resources
 
 > [!NOTE]
 > `join`İle sonuçları sınırlandırırken `project` , `join` Yukarıdaki örnekteki SubscriptionID, yukarıdaki örnekteki _abonelik_ , ' ye dahil olmalıdır `project` .
+
+## <a name="resource-graph-custom-language-elements"></a>Kaynak Grafiği özel dil öğeleri
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Paylaşılan sorgu sözdizimi (Önizleme)
+
+Önizleme özelliği olarak, [paylaşılan sorguya](../tutorials/create-share-query.md) doğrudan kaynak Graph sorgusunda erişilebilir. Bu senaryo, standart sorguları paylaşılan sorgular olarak oluşturmayı ve bunları yeniden kullanmayı mümkün kılar. Bir kaynak grafiği sorgusunda paylaşılan bir sorgu çağırmak için `{{shared-query-uri}}` söz dizimini kullanın. Paylaşılan sorgunun URI 'SI, bu sorgunun **Ayarlar** sayfasındaki paylaşılan SORGUNUN _kaynak kimliğidir_ . Bu örnekte, paylaşılan sorgu URI 'imiz `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` .
+Bu URI, başka bir sorguda başvurmak istediğimiz paylaşılan sorgunun abonelik, kaynak grubu ve tam adını gösterir. Bu sorgu, öğreticide oluşturulan bir sorgu ile aynıdır [: sorgu oluşturma ve paylaşma](../tutorials/create-share-query.md).
+
+> [!NOTE]
+> Paylaşılan bir sorguya paylaşılan sorgu olarak başvuran bir sorgu kaydedemezsiniz.
+
+Örnek 1: yalnızca paylaşılan sorguyu kullanın
+
+Bu kaynak Graph sorgusunun sonuçları, paylaşılan sorguda depolanan sorgu ile aynıdır.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+Örnek 2: paylaşılan sorguyu daha büyük bir sorgunun parçası olarak dahil etme
+
+Bu sorgu önce paylaşılan sorguyu kullanır ve ardından `limit` sonuçları daha fazla kısıtlamak için kullanır.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
 
 ## <a name="supported-kql-language-elements"></a>Desteklenen KQL dil öğeleri
 

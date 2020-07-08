@@ -2,7 +2,7 @@
 title: Otomatik ayarlamaya genel bakış
 description: Azure SQL veritabanı ve Azure SQL yönetilen örneği, SQL sorgusunu analiz eder ve Kullanıcı iş yüküne otomatik olarak uyum sağlar.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/30/2020
-ms.openlocfilehash: d8f70cc30ea1230deef686d8e8433bb4e2d83ce5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189981"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982720"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde otomatik ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,9 +63,9 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde kullanılabilen otom
 
 | Otomatik ayarlama seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
-| **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Yes | Hayır |
-| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
-| **Son ıyı planı zorla** (otomatik plan düzeltmesi)-Azure SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Yes | Yes |
+| **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Evet | Hayır |
+| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Evet | Hayır |
+| **Son ıyı planı zorla** (otomatik plan düzeltmesi)-Azure SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Yes | Evet |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL veritabanı için otomatik ayarlama
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638944"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981444"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
 
@@ -23,7 +23,7 @@ ms.locfileid: "75638944"
 
 Bu makalede, Azure Data Lake Storage 1. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 1. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 1. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 1., boyut ve performansa ilişkin sabit limitlerin çoğu kaldırılır. Ancak, Data Lake Storage 1. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Azure Data Lake Storage 1., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri ve ayrıntılı denetim sağlar. Bu erişim denetimleri, varolan dosya ve klasörlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya klasörlere uygulanabilen varsayılanlar oluşturmak için de kullanılabilir. İzinler varolan klasörlere ve alt nesnelere ayarlandığında, izinlerin her bir nesne üzerinde yinelemeli olarak yayılması gerekir. Çok sayıda dosya varsa, bu izinleri yayan uzun sürebilir. Geçen süre, saniye başına işlenen 30-50 nesne arasında değişebilir. Bu nedenle, klasör yapısını ve Kullanıcı gruplarını uygun şekilde planlayın. Aksi takdirde, verilerle çalışırken beklenmeyen gecikmeler ve sorunlara neden olabilir.
 
@@ -45,7 +45,7 @@ Azure Active Directory hizmet sorumluları, genellikle Azure HDInsight gibi hizm
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 1. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı,**Azure hizmetleri seçeneklerine erişime izin veren** güvenlik duvarı 'nı**Etkinleştir (açık)** >  **güvenlik duvarı** > aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir.
+Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı, **Firewall**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı**Etkinleştir (açık)** güvenlik duvarı aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
 
 ![Data Lake Storage 1. güvenlik duvarı ayarları](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage 1. güvenlik duvarı ayarları")
 
@@ -101,10 +101,10 @@ Aşağıda Data Lake Storage 1. hesapları arasında çoğaltmayı düzenlemek i
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Ölçek sınırları**     | Çalışan düğümlerine göre sınırlanmış        | Maksimum bulut veri taşıma birimi ile sınırlıdır        | Analiz birimlerine göre bağlıydı        |
-|**Değişimleri kopyalamayı destekler**     |   Yes      | Hayır         | Hayır         |
-|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Yes        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
+|**Değişimleri kopyalamayı destekler**     |   Evet      | Hayır         | Hayır         |
+|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Evet        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
 |**Desteklenen dosya sistemleri**     | ADL,,, CSıB, S3, GS, CFS        |Çok sayıda, bkz. [Bağlayıcılar](../data-factory/connector-azure-blob-storage.md).         | Adl 'den adl 'ye, ADL 'ye (yalnızca aynı bölge)        |
-|**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | Yok          | Windows 10         |
+|**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | YOK          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>İki konum arasındaki veri taşıma için Distcp kullanma
 
@@ -126,7 +126,9 @@ Distcp gibi, AdlCopy 'ın Azure Otomasyonu veya Windows Görev Zamanlayıcı gib
 
 Data Lake Storage 1. ayrıntılı tanılama günlükleri ve denetimi sağlar. Data Lake Storage 1., Azure portal Data Lake Storage 1. hesabı ve Azure Izleyici altında bazı temel ölçümler sağlar. Data Lake Storage 1. kullanılabilirliği Azure portal görüntülenir. Ancak, bu ölçüm yedi dakikada bir yenilenir ve genel kullanıma sunulan bir API aracılığıyla sorgulanamaz. Bir Data Lake Storage 1. hesabının en güncel kullanılabilirliğini almak için, kullanılabilirliği doğrulamak üzere kendi yapay testlerinizi çalıştırmanız gerekir. Toplam depolama alanı kullanımı, okuma/yazma istekleri ve giriş/çıkış gibi diğer ölçümler yenilenmesi 24 saate kadar sürebilir. Bu nedenle, Hadoop komut satırı araçları aracılığıyla daha güncel ölçümler el ile hesaplanmalıdır veya günlük bilgileri toplama yapılmalıdır. En son depolama kullanımını almanın en hızlı yolu, bu bir Hadoop kümesi düğümünden (örneğin, baş düğüm) Bu bir bu komutu çalıştırıyor:
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Data Lake Storage 1. tanılamayı dışarı aktar
 
@@ -136,11 +138,11 @@ Daha fazla gerçek zamanlı uyarı ve günlüklerin nereye kaydedileceği hakkı
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>HDInsight 'ta hata ayıklama düzeyinde günlüğe yazmayı aç
 
-Data Lake Storage 1. günlük aktarma açık değilse, Azure HDInsight, Log4J aracılığıyla [Data Lake Storage 1. için istemci tarafı günlüğe yazmayı](data-lake-store-performance-tuning-mapreduce.md) etkinleştirmek için bir yol sağlar. Aşağıdaki özelliği, **ambarı** > **Yarn** > **yapılandırması** > **Gelişmiş Yarn-Log4J yapılandırmalarını**ayarlamanız gerekir:
+Data Lake Storage 1. günlük aktarma açık değilse, Azure HDInsight, Log4J aracılığıyla [Data Lake Storage 1. için istemci tarafı günlüğe yazmayı](data-lake-store-performance-tuning-mapreduce.md) etkinleştirmek için bir yol sağlar. Aşağıdaki özelliği, **ambarı**  >  **Yarn**  >  **yapılandırması**  >  **Gelişmiş Yarn-Log4J yapılandırmalarını**ayarlamanız gerekir:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Özellik ayarlandıktan ve düğümler yeniden başlatıldıktan sonra Data Lake Storage 1. tanılama, düğümlerdeki YARN günlüklerine yazılır (/TMP/\<user\>/yarn.log) ve hatalar veya daraltma (http 429 hata kodu) gibi önemli ayrıntılar izlenebilir. Aynı bilgiler aynı zamanda Azure Izleyici günlüklerinde veya Data Lake Storage 1. hesabının [Tanılama](data-lake-store-diagnostic-logs.md) dikey penceresinde her bir günlüklerin gönderildiği yerde de izlenebilir. En azından istemci tarafı oturum açma özelliğinin açık olması veya işlemsel görünürlük ve daha kolay hata ayıklama için Data Lake Storage 1. ile günlük aktarımı seçeneğinin kullanılması önerilir.
+Özellik ayarlandıktan ve düğümler yeniden başlatıldıktan sonra Data Lake Storage 1. tanılama, düğümlerdeki YARN günlüklerine yazılır (/TMP/ \<user\> /yarn.log) ve hatalar veya daraltma (HTTP 429 hata kodu) gibi önemli ayrıntılar izlenebilir. Aynı bilgiler aynı zamanda Azure Izleyici günlüklerinde veya Data Lake Storage 1. hesabının [Tanılama](data-lake-store-diagnostic-logs.md) dikey penceresinde her bir günlüklerin gönderildiği yerde de izlenebilir. En azından istemci tarafı oturum açma özelliğinin açık olması veya işlemsel görünürlük ve daha kolay hata ayıklama için Data Lake Storage 1. ile günlük aktarımı seçeneğinin kullanılması önerilir.
 
 ### <a name="run-synthetic-transactions"></a>Yapay işlemleri Çalıştır
 
@@ -154,11 +156,15 @@ Verileri bir veri Gölü içine kaydederken, güvenlik, bölümleme ve işlemeni
 
 IoT iş yüklerinde, çok sayıda ürüne, cihaza, kuruluşa ve müşterilere yayılan veri deposunda yer alan harika bir veri olabilir. Sağ Akış tüketicilerine yönelik verilerin kuruluş, güvenlik ve verimli işlenmesi için Dizin düzeninin önceden planlanmak önemlidir. Göz önünde bulundurmanız gereken genel bir şablon aşağıdaki düzen olabilir:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Örneğin, UK içindeki bir uçak altyapısının giriş telemetrisi aşağıdaki yapıya benzeyebilir:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Tarihi klasör yapısının sonuna yerleştirmek için önemli bir neden vardır. Belirli bölgeleri veya ilgili konuyu kullanıcılar/gruplar için kilitlemek istiyorsanız, bunu POSIX izinleriyle kolayca yapabilirsiniz. Aksi takdirde, belirli bir güvenlik grubunu yalnızca UK verileri veya belirli düzlemleri görüntülemek üzere kısıtlamak için, her saat klasörü altındaki çok sayıda klasör için ayrı bir izin olması gereken tarih yapısına sahip olması gerekir. Ayrıca, tarih yapısının önde olması, klasör sayısını zaman içinde geçen zaman üstel olarak artırır.
 
@@ -168,14 +174,18 @@ Bir üst düzeyden, toplu işlemede yaygın olarak kullanılan bir yaklaşım, v
 
 Bazen veri bozulması veya beklenmeyen biçimler nedeniyle dosya işleme başarısız olur. Bu gibi durumlarda, dizin yapısı bir **/Bad** klasöründen daha fazla inceleme için dosyaları taşımak için faydalanabilir. Toplu iş, el ile müdahale için bu *Hatalı* dosyaların raporlamasını veya bildirimini de işleyebilir. Aşağıdaki şablon yapısını göz önünde bulundurun:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Örneğin, bir pazarlama firması, müşteri güncelleştirmelerinin Kuzey Amerika içindeki istemcilerinden günlük veri ayıklar. İşlenmeden önce ve sonra aşağıdaki kod parçacığına benzeyebilir:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 Toplu iş verilerinin doğrudan Hive veya geleneksel SQL veritabanları gibi veritabanlarına işlendiği durumlarda, çıkış zaten Hive tablosu veya dış veritabanı için ayrı bir klasöre geçtiğinde bir **/ın** veya **/Out** klasörüne gerek yoktur. Örneğin, müşterilerden günlük ayıklamalar ilgili klasörlerine giderek Azure Data Factory, Apache Oozie veya Apache Airflow gibi bir şey tarafından düzenleme, günlük bir Hive veya Spark işinin verileri bir Hive tablosuna işlemesi ve yazması için tetikleyecektir.
 

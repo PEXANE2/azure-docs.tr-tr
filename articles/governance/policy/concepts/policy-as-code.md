@@ -3,18 +3,18 @@ title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194425"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970952"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
 Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımını veya çeşitli SDK 'Ları, kurumsal ölçekte daha yönetilebilir ve yinelenebilir olacak şekilde el ile yönetmeyi tercih edersiniz. Sistemleri bulutta ölçeklendirerek yönetmek için hakim yaklaşımlardan ikisi şunlardır:
 
-- Kod olarak altyapı: ortamlarınızı tanımlayan içeriği, Kaynak Yöneticisi şablonlarından her şeyi Azure Ilke tanımlarına kaynak kodu olarak Azure 'a göre değerlendirme yöntemi.
+- Kod olarak altyapı: ortamınızı tanımlayan içeriği, Azure Resource Manager şablonlarından her şeyi (ARM şablonları) Azure Ilke tanımlarına kaynak kodu olarak kabul eden uygulama.
 - DevOps: son kullanıcılarımıza sürekli değer teslimi sağlayan kişiler, süreç ve ürünlerin birleşimi.
 
 Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
@@ -115,7 +115,7 @@ Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode
 
 ## <a name="process-integrated-evaluations"></a>İşlem tümleşik değerlendirmeleri
 
-Kod olarak Ilke için genel iş akışı, bir ortamda bir ortama ilke ve girişim geliştirme ve dağıtmaya yöneliktir. Ancak, ilke değerlendirmesi, Azure 'da uygulama dağıtma veya altyapı oluşturmak için Kaynak Yöneticisi şablonları çalıştırma gibi kaynakları dağıtan veya oluşturan herhangi bir iş akışı için dağıtım sürecinin bir parçası olmalıdır.
+Kod olarak Ilke için genel iş akışı, bir ortamda bir ortama ilke ve girişim geliştirme ve dağıtmaya yöneliktir. Ancak, ilke değerlendirmesi Azure 'da uygulama dağıtma veya altyapı oluşturmak için ARM şablonları çalıştırma gibi kaynakları dağıtan veya oluşturan herhangi bir iş akışı için dağıtım sürecinin bir parçası olmalıdır.
 
 Bu durumlarda, uygulama veya altyapı dağıtımı bir test aboneliğine veya kaynak grubuna gerçekleştirildikten sonra, bu kapsam için ilke değerlendirmesi yapılmalıdır. bu kapsam, var olan tüm ilke ve girişimlerin doğrulanmasını denetlemelidir. Bu tür bir ortamda **Enforcementmode** _devre dışı bırakılmış_ olarak yapılandırılabilirler ancak, bir uygulama veya altyapı dağıtımının ilke tanımlarının erken ihlal edildiğini erken bilmek yararlı olur. Bu ilke değerlendirmesi bu iş akışlarında bir adım olmalıdır ve uyumlu olmayan kaynaklar oluşturan dağıtımlar başarısız olur.
 

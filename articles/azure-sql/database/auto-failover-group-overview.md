@@ -3,7 +3,7 @@ title: Otomatik yük devretme grupları
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Otomatik yük devretme grupları, bir sunucudaki bir veritabanı grubunun veya yönetilen bir örnekteki tüm veritabanlarının çoğaltmasını ve otomatik/Eşgüdümlü yük devretmesini yönetmenizi sağlar.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658029"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983015"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure portal](geo-distributed-application-configure-tutorial.md)
+- [Azure portalındaki](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -404,7 +404,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Yük devretme grubunu sunucudan kaldırır |
@@ -415,7 +415,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 | [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -425,7 +425,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 
-| API | Description |
+| API | Açıklama |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -442,7 +442,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 | [New-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil örneklere kaydeder|
 | [Set-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Bir yük devretme grubunun yapılandırmasını değiştirir|
@@ -453,7 +453,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 | [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -463,7 +463,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 
-| API | Description |
+| API | Açıklama |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Bir yük devretme grubunun yapılandırmasını oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |

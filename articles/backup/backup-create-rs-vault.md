@@ -1,71 +1,33 @@
 ---
-title: Kurtarma Hizmetleri kasaları oluşturma
-description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasaları oluşturmayı öğrenin.
-ms.reviewer: sogup
+title: Kurtarma Hizmetleri kasaları oluşturma ve yapılandırma
+description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasalarını oluşturma ve yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ac30a57dcbceb4616961c9d100e6ac8639ef2172
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391069"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970544"
 ---
-# <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
+# <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
-Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolayan bir varlıktır. Kurtarma Hizmetleri Kasası, korunan sanal makinelerle ilişkili yedekleme ilkelerini de içerir.
-
-Kurtarma Hizmetleri kasası oluşturmak için:
-
-1. [Azure Portal](https://portal.azure.com/)aboneliğinizde oturum açın.
-
-2. Sol taraftaki menüden **tüm hizmetler**' i seçin.
-
-    ![Tüm hizmetleri seçin](./media/backup-create-rs-vault/click-all-services.png)
-
-3. **Tüm hizmetler** Iletişim kutusunda **Kurtarma Hizmetleri**' ni girin. Giriş listenize göre filtrelerin kaynak listesi. Kaynak listesinde, **Kurtarma Hizmetleri kasaları**' nı seçin.
-
-    ![Kurtarma Hizmetleri kasalarını girin ve seçin](./media/backup-create-rs-vault/all-services.png)
-
-    Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
-
-4. **Kurtarma Hizmetleri kasaları** panosunda **Ekle**' yi seçin.
-
-    ![Kurtarma Hizmetleri Kasası ekleme](./media/backup-create-rs-vault/add-button-create-vault.png)
-
-    **Kurtarma Hizmetleri Kasası** iletişim kutusu açılır. **Ad**, **abonelik**, **kaynak grubu**ve **konum**için değerler sağlayın.
-
-    ![Kurtarma Hizmetleri kasasını yapılandırma](./media/backup-create-rs-vault/create-new-vault-dialog.png)
-
-   - **Ad**: kasayı tanımlamak için bir kolay ad girin. Ad, Azure aboneliğine özgü olmalıdır. En az iki, 50 karakterden daha fazla olmayan bir ad belirtin. Ad bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içermelidir.
-   - **Abonelik**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğin üyesiyseniz, bu adı görürsünüz. Hangi aboneliğin kullanılacağı konusunda emin değilseniz, varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden fazla Azure aboneliğiyle ilişkilendirilmesi durumunda birden çok seçenek vardır.
-   - **Kaynak grubu**: var olan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Varolanı kullan**' ı seçin ve ardından aşağı açılan liste kutusundan bir kaynak seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin ve adı girin. Kaynak grupları hakkında tüm bilgiler için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-   - **Konum**: kasa için coğrafi bölgeyi seçin. Sanal makineleri korumaya yönelik bir kasa oluşturmak için kasanın sanal makinelerle aynı bölgede olması **gerekir** .
-
-      > [!IMPORTANT]
-      > SANAL makinenizin konumundan emin değilseniz iletişim kutusunu kapatın. Portaldaki sanal makineler listesine gidin. Birden çok bölgede sanal makineniz varsa her bölgede bir kurtarma hizmetleri Kasası oluşturun. Kasayı, başka bir konum için oluşturmadan önce ilk konumda oluşturun. Yedekleme verilerini depolamak için depolama hesapları belirtmeniz gerekmez. Kurtarma Hizmetleri kasası ve Azure Backup hizmeti otomatik olarak yapılır.
-      >
-      >
-
-5. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
-
-    ![Kurtarma Hizmetleri kasasını oluşturma](./media/backup-create-rs-vault/click-create-button.png)
-
-    Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızın oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
-
-     ![Yedekleme kasaları listesini yenileme](./media/backup-create-rs-vault/refresh-button.png)
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="set-storage-redundancy"></a>Depolama artıklığı ayarlama
 
 Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nasıl çoğaltılacağı belirtmeniz gerekir.
 
->[!NOTE]
->Geçerli çözüm, anlık görüntü tabanlı olduğundan ve kasaya aktarılan bir veri olmadığından, kasa için depolama çoğaltma ayarları Azure dosya paylaşımının yedeğine uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
+> [!NOTE]
+> Bir kurtarma hizmetleri Kasası için **depolama çoğaltma türünü** değiştirme (yerel olarak yedekli/coğrafi olarak yedekli), kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır.
+>
+>- Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+>- Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Bu geçici çözümleri gözden geçirin](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
-2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
+1. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
 
-3. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
+1. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
 
      ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -73,8 +35,8 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
    - Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin.
    - [Coğrafi](../storage/common/storage-redundancy-grs.md) ve [Yerel](../storage/common/storage-redundancy-lrs.md) artıklık hakkında daha fazla bilgi edinin.
 
-> [!NOTE]
-> Bir kurtarma hizmetleri Kasası için **depolama çoğaltma türünü** (yerel olarak yedekli/coğrafi olarak yedekli) değiştirmek, kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır ve **depolama çoğaltma türünü**değiştiremezsiniz.
+>[!NOTE]
+>Geçerli çözüm, anlık görüntü tabanlı olduğundan ve kasaya aktarılan bir veri olmadığından, kasa için depolama çoğaltma ayarları Azure dosya paylaşımının yedeğine uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
 
 ## <a name="set-cross-region-restore"></a>Çapraz bölge geri yüklemeyi ayarla
 
@@ -95,7 +57,7 @@ Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vard�
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
 >- Şu anda CRR yalnızca yedekleme yönetimi türü ARM Azure VM için desteklenir (klasik Azure VM desteklenmez).  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
->- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye geri döndürülemez. 
+>- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye geri döndürülemez.
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
 
@@ -120,9 +82,56 @@ GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelli
 
 Kasadaki yedeklemeleri yapılandırmadan önce **depolama çoğaltma türü** ve **güvenlik ayarları** için varsayılan ayarları incelemenizi kesinlikle öneririz.
 
-- **Depolama çoğaltma türü** varsayılan olarak **coğrafi olarak yedekli**olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır. Ayarları gözden geçirmek ve değiştirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) izleyin.
+- **Depolama çoğaltma türü** varsayılan olarak **coğrafi olarak yedekli** (GRS) olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır.
+  - Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+  - Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Bu geçici çözümleri gözden geçirin](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- Varsayılan olarak **geçici silme** , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için **etkinleştirilir** . Ayarları gözden geçirmek ve değiştirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) izleyin.
+- Varsayılan olarak **geçici silme** , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için **etkinleştirilir** . Ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
+
+### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>Yedekleme yapılandırıldıktan sonra GRS 'den LRS 'ye değiştirme
+
+GRS 'den yerel olarak yedekli depolama (LRS) ' ye taşımaya karar vermeden önce, senaryonuza uyan daha düşük maliyetli ve daha yüksek veri dayanıklılığı arasındaki denge konusunu gözden geçirin. GRS 'den LRS 'ye taşımanız gerekiyorsa iki seçeneğiniz vardır. Bunlar, yedekleme verilerini bekletmek için iş gereksinimlerinize bağlıdır:
+
+- [Önceki yedeklenen verileri korumanız gerekmez](#dont-need-to-preserve-previous-backed-up-data)
+- [Önceki yedeklenen verilerin korunması gerekir](#must-preserve-previous-backed-up-data)
+
+#### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Önceki yedeklenen verileri korumanız gerekmez
+
+Yeni bir LRS kasasındaki iş yüklerini korumak için, geçerli koruma ve verilerin, GRS kasasında ve yedeklemelerde yeniden yapılandırılmış olması gerekir.
+
+>[!WARNING]
+>Aşağıdaki işlem bozucu olduğundan geri alınamaz. Korunan sunucuyla ilişkili tüm yedekleme verileri ve yedekleme öğeleri kalıcı olarak silinecek. Dikkatli olun.
+
+GRS kasasında geçerli korumayı durdurun ve silin:
+
+1. GRS Kasası özelliklerinde geçici silme devre dışı bırakın. Geçici silme devre dışı bırakmak için [aşağıdaki adımları](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) izleyin.
+
+1. Korumayı durdurun ve mevcut GRS kasasından yedeklemeleri silin. Kasa panosu menüsünde **yedekleme öğeleri**' ni seçin. Burada listelenen ve LRS kasasına taşınması gereken öğelerin, yedekleme verileriyle birlikte kaldırılması gerekir. [Bulutta korunan öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ve [Şirket içi korumalı öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-on-premises)bölümüne bakın.
+
+1. AFS 'yi (Azure dosya paylaşımlarını), SQL Server 'ı veya SAP HANA sunucularını taşımayı planlıyorsanız, bunları da silmeniz gerekir. Kasa panosu menüsünde, **Yedekleme altyapısı**' nı seçin. Bkz. [SQL Server kaydını silme](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [Azure dosya paylaşımları ile ilişkili bir depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account)ve [bir SAP HANA örneğinin kaydını silme](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+
+1. GRS kasasından kaldırıldıktan sonra, yeni LRS kasasında iş yükünüz için yedeklemeleri yapılandırmaya devam edin.
+
+#### <a name="must-preserve-previous-backed-up-data"></a>Önceki yedeklenen verilerin korunması gerekir
+
+Geçerli korunan verileri GRS kasasında tutmanız ve yeni bir LRS kasasında korumaya devam etmeniz gerekiyorsa, bazı iş yükleri için sınırlı seçenekler vardır:
+
+- MARS için, verileri tutma ve aracıyı yeni LRS kasasında kaydetme [ile korumayı durdurabilirsiniz](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) .
+
+  - Azure Backup hizmet, GRS kasasının tüm mevcut kurtarma noktalarını tutmaya devam edecektir.
+  - Kurtarma noktalarını GRS kasasında tutmak için ödeme yapmanız gerekir.
+  - Yalnızca GRS kasasındaki süre dolma edilmemiş kurtarma noktaları için yedeklenmiş verileri geri yükleyebileceksiniz.
+  - LRS kasasında verilerin yeni bir ilk kopyasının oluşturulması gerekir.
+
+- Bir Azure VM için, GRS kasasında VM için [verileri koruma ile korumayı durdurabilir](backup-azure-manage-vms.md#stop-protecting-a-vm) , VM 'yi başka bir kaynak grubuna taşıyabilir ve LRS KASASıNDAKI VM 'yi koruyabilirsiniz. Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) bölümüne bakın.
+
+  Bir VM tek seferde yalnızca bir kasada korunabilir. Ancak, yeni kaynak grubundaki VM, farklı bir VM olarak kabul edildiği için LRS kasasında korunabilir.
+
+  - Azure Backup hizmet, GRS kasasında yedeklenen kurtarma noktalarını korur.
+  - Kurtarma noktalarını GRS kasasında tutmak için ödeme yapmanız gerekir (Ayrıntılar için [Azure Backup fiyatlandırmasına](azure-backup-pricing.md) bakın).
+  - Gerekirse, GRS kasasından VM 'yi geri yükleyebileceksiniz.
+  - Yeni kaynaktaki sanal makinenin LRS kasasındaki ilk yedekleme bir ilk çoğaltma olacaktır.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

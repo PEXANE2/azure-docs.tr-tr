@@ -3,16 +3,16 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81c8c642eb8b5da1e45e4d9a703685acf219ca5a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362637"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971105"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
-Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](https://docs.microsoft.com/azure/azure-arc/servers/overview)çalışan makineler için bir makine içindeki ayarları denetleyebilir.
+Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azure-arc/servers/overview.md)çalışan makineler için bir makine içindeki ayarları denetleyebilir.
 Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
 
 - İşletim sisteminin yapılandırması
@@ -35,8 +35,9 @@ Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısın
 Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir ve makinede sistem tarafından yönetilen bir kimlik olması gerekir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir. Kimlik, Konuk yapılandırma hizmetine okuduğu ve yazdığı makinenin kimliğini doğrulamak için kullanılır. Arc bağlantılı makine aracısına eklendiğinden, bu uzantı, Arc bağlantılı makineler için gerekli değildir.
 
 > [!IMPORTANT]
-> Azure sanal makinelerini denetlemek için konuk yapılandırma uzantısı ve yönetilen bir kimlik gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke girişim atamasını yapın: 
->  - [Sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> Azure sanal makinelerinde denetimleri gerçekleştirmek için konuk yapılandırma uzantısı gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın: 
+>  - [Windows VM 'lerinde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Linux VM 'lerde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
@@ -69,7 +70,7 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 |Microsoft|Windows Server|2012 ve üzeri|
 |Microsoft|Windows İstemcisi|Windows 10|
 |OpenLogic|CentOS|7,3 ve üzeri|
-|Red Hat|Red Hat Enterprise Linux|7,4 ve üzeri|
+|Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 ve üzeri|
 |SUSE|SLES|12 SP3 ve üzeri|
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
@@ -80,11 +81,10 @@ Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak içi
 
 ## <a name="managed-identity-requirements"></a>Yönetilen kimlik gereksinimleri
 
-Girişim [dağıtım önkoşulları sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) ilke yoksa, sistem tarafından atanan bir yönetilen kimliği etkinleştirir. Girişimde kimlik oluşturmayı yöneten iki ilke tanımı vardır. İlke tanımlarındaki koşullar, Azure 'daki makine kaynağının geçerli durumuna bağlı olarak doğru davranışı güvence altına alır.
+Uzantıyı sanal makinelere ekleyen **Deployifnotexists** ilkeleri Ayrıca, sistem tarafından atanmış bir yönetilen kimliği (yoksa) etkinleştirir.
 
-Makinenin Şu anda herhangi bir yönetilen kimliği yoksa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
-
-Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : Kullanıcı tarafından atanan bir kimliğe sahip sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+> [!WARNING]
+> Sistem tarafından atanan yönetilen kimliği etkinleştiren ilkeler için kapsamdaki sanal makinelere Kullanıcı tarafından atanan yönetilen kimliği etkinleştirmemeye özen gösterin. Kullanıcı tarafından atanan kimlik değiştirilmiştir ve makinenin yanıt vermemesine neden olur.
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
@@ -117,7 +117,7 @@ Ayarların çoğu parametre olarak kullanılabilir. Parametreler, denetlendiğin
 
 Bazı parametreler bir tamsayı değer aralığını destekler. Örneğin, en fazla parola yaşı ayarı geçerli grup ilkesi ayarını denetleyebilir. "1, 70" bir Aralık, kullanıcıların parolalarını en az 70 günde bir, ancak bir günden az değiştirmeme gerektiğini doğrulayacağından emin olur.
 
-İlkeyi bir Azure Resource Manager dağıtım şablonu kullanarak atarsanız, özel durumları yönetmek için bir parametre dosyası kullanın. Dosyaları git gibi bir sürüm denetim sistemine iade edin. Dosya değişiklikleriyle ilgili açıklamalar, bir atamanın beklenen değer için bir özel durum olduğunu kanıtlamadır.
+İlkeyi bir Azure Resource Manager şablonu (ARM şablonu) kullanarak atarsanız, özel durumları yönetmek için bir parametre dosyası kullanın. Dosyaları git gibi bir sürüm denetim sistemine iade edin. Dosya değişiklikleriyle ilgili açıklamalar, bir atamanın beklenen değer için bir özel durum olduğunu kanıtlamadır.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konuk yapılandırması kullanılarak yapılandırmaları uygulama
 

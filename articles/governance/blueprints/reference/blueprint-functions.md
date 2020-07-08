@@ -3,16 +3,16 @@ title: Azure şemaları işlevleri
 description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834790"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970884"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
-Azure şemaları, bir şema tanımını daha dinamik hale getiren işlevler sağlar. Bu işlevler, şema tanımları ve şema yapıtları ile kullanım içindir. Kaynak Yöneticisi Şablon yapıtı, bir şema parametresi aracılığıyla dinamik bir değer almaya ek olarak Kaynak Yöneticisi işlevlerinin tam kullanımını destekler.
+Azure şemaları, bir şema tanımını daha dinamik hale getiren işlevler sağlar. Bu işlevler, şema tanımları ve şema yapıtları ile kullanım içindir. Azure Resource Manager şablonu (ARM şablonu) yapıtı, bir şema parametresi aracılığıyla dinamik bir değer almaya ek olarak Kaynak Yöneticisi işlevlerinin tam kullanımını destekler.
 
 Aşağıdaki işlevler desteklenir:
 
@@ -30,13 +30,13 @@ Aşağıdaki işlevler desteklenir:
 Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini döndürür.
 
 > [!NOTE]
-> `artifacts()`İşlev, Kaynak Yöneticisi şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
+> `artifacts()`Işlev ARM şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| artifactName |Yes |string |Şema yapıtı adı. |
+| artifactName |Evet |string |Şema yapıtı adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -60,9 +60,9 @@ Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Şablon yapıtı Kaynak Yöneticisi
+#### <a name="arm-template-artifact"></a>ARM şablon yapıtı
 
-Döndürülen nesnenin **Çıkış** özellikleri kaynak yöneticisi şablonu içinde tanımlanır ve dağıtım tarafından döndürülür.
+Döndürülen nesnenin **çıkışlar** özellikleri ARM şablonunda tanımlanır ve dağıtım tarafından döndürülür.
 
 #### <a name="role-assignment-artifact"></a>Rol atama yapıtı
 
@@ -78,7 +78,7 @@ Döndürülen nesnenin **Çıkış** özellikleri kaynak yöneticisi şablonu i�
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek çıktı özelliğini içeren _Mytemplateyapıt_ kimlikli bir kaynak yöneticisi şablonu yapıtı:
+Aşağıdaki örnek çıktı özelliğini içeren _Mytemplateyapıt_ KIMLIKLI bir ARM şablonu yapıtı:
 
 ```json
 {
@@ -106,7 +106,7 @@ Aşağıdaki örnek çıktı özelliğini içeren _Mytemplateyapıt_ kimlikli bi
 
 _Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır:
 
-| İfade | Tür | Değer |
+| Expression | Tür | Değer |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \["First", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Dize | adı |
@@ -125,7 +125,7 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dize1 |Yes |string |Birleştirme için ilk değer. |
+| dize1 |Evet |string |Birleştirme için ilk değer. |
 | ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -134,7 +134,7 @@ Art arda eklenmiş değerlerin dizesi.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır ve yalnızca dizelerle çalışır.
+Azure Blueprint işlevi, yalnızca dizelerle çalışacak şekilde ARM şablon işlevinden farklıdır.
 
 ### <a name="example"></a>Örnek
 
@@ -150,7 +150,7 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Döndürülecek parametrenin adı. |
+| parameterName |Evet |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -158,7 +158,7 @@ Belirtilen şema veya şema yapıt parametresinin değeri.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır ve yalnızca şema parametreleriyle çalışır.
+Azure Blueprint işlevi, yalnızca şema parametreleriyle birlikte çalışarak ARM şablon işlevinden farklıdır.
 
 ### <a name="example"></a>Örnek
 
@@ -218,7 +218,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. `resourceGroup()`İşlev, abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
+Azure Blueprint işlevi ARM şablon işlevinden farklıdır. `resourceGroup()`İşlev, abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
 
 İşlevin yaygın kullanımı, `resourceGroup()` kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
 
@@ -271,7 +271,7 @@ Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. `resource
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
+| placeholderName |Evet |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

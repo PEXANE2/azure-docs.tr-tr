@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860911"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970697"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -29,9 +29,37 @@ Bu sayfa hakkında bilgi sağlar:
 - Hata düzeltmeleri
 - Kullanım dışı işlevsellik
 
+
+## <a name="january-2020"></a>Ocak 2020
+
+### <a name="enhanced-secure-score-preview"></a>Gelişmiş güvenli skor (Önizleme)
+
+Azure Güvenlik Merkezi 'nin güvenli Puanlama özelliğinin gelişmiş bir sürümü artık önizlemede sunulmaktadır. Bu sürümde, çok sayıda öneri, güvenlik açıklarına karşı savunmasız saldırı yüzeylerinizi daha iyi yansıtarak (örneğin, yönetim bağlantı noktalarına erişimi kısıtla) güvenlik denetimlerinde gruplandırılır.
+
+Önizleme aşamasında güvenli puan değişiklikleri hakkında bilgi edinin ve ortamınızı daha da güvenli hale getirmenize yardımcı olacak diğer düzeltmeleri öğrenin.
+
+[Gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
+
+
+
 ## <a name="november-2019"></a>Kasım 2019
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>Kuzey Amerika bölgelerinde genel önizlemede Azure Key Vault için tehdit koruması
+Kasım 'daki güncelleştirmeler şunlardır:
+ - [Kuzey Amerika bölgelerinde Azure Key Vault için tehdit koruması (Önizleme)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Azure depolama için tehdit koruması, kötü amaçlı yazılım sayını filtreleme içerir](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Logic Apps iş akışı Otomasyonu (Önizleme)](#workflow-automation-with-logic-apps-preview)
+ - [Toplu kaynaklar için hızlı düzelme genel kullanıma sunuldu](#quick-fix-for-bulk-resources-generally-available)
+ - [Güvenlik açıkları için kapsayıcı görüntülerini Tara (Önizleme)](#scan-container-images-for-vulnerabilities-preview)
+ - [Ek mevzuat uyumluluk standartları (Önizleme)](#additional-regulatory-compliance-standards-preview)
+ - [Azure Kubernetes hizmeti (Önizleme) için tehdit koruması](#threat-protection-for-azure-kubernetes-service-preview)
+ - [Sanal makine güvenlik açığı değerlendirmesi (Önizleme)](#virtual-machine-vulnerability-assessment-preview)
+ - [Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Önizleme)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [Özel ilkeler desteği (Önizleme)](#support-for-custom-policies-preview)
+ - [Topluluk ve iş ortakları platformu ile Azure Güvenlik Merkezi kapsamını genişletme](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [Öneriler ve uyarıların dışa aktarılması ile gelişmiş tümleştirmeler (Önizleme)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [Windows Yönetim Merkezi 'nden Güvenlik Merkezi 'ne şirket içi sunucular ekleme (Önizleme)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>Kuzey Amerika bölgelerinde Azure Key Vault için tehdit koruması (Önizleme)
 
 Azure Key Vault, bulutta anahtarlar, gizlilikler, şifreleme anahtarları ve ilkeleri merkezi olarak yönetme olanağı sunarak verileri korumak ve bulut uygulamalarının performansını geliştirmek için gerekli olan bir hizmettir. Azure Key Vault hassas ve iş açısından kritik verileri depoladığından, Anahtar kasaları ve bunlarda depolanan veriler için en fazla güvenlik gerektirir.
 
@@ -146,6 +174,11 @@ Bu yeni deneyimle, kullanıcılar Azure Güvenlik Merkezi 'ne bir WAC sunucusu e
 
 ## <a name="september-2019"></a>Eylül 2019
 
+Eylül ayında güncelleştirmeler şunları içerir:
+
+ - [Uyarlamalı uygulama denetimleri ile kuralları yönetme iyileştirmeleri](#managing-rules-with-adaptive-application-controls-improvements)
+ - [Azure Ilkesi kullanarak kapsayıcı güvenliği önerisi denetimi](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>Uyarlamalı uygulama denetimleri ile kuralları yönetme iyileştirmeleri
 
 Uyarlamalı uygulama denetimleri kullanan sanal makineler için kuralları yönetme deneyimi geliştirilmiştir. Azure Güvenlik Merkezi 'nin Uyarlamalı uygulama denetimleri, sanal makinelerinizde hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olur. Kural yönetimine genel bir iyileştirmenin yanı sıra yeni bir avantaj de yeni bir kural eklediğinizde hangi dosya türlerinin korunacağını denetlemenize olanak sağlar.
@@ -161,6 +194,12 @@ Etkin güvenlik ilkelerinizi görüntülemek için Güvenlik Merkezi 'nden Güve
 
 
 ## <a name="august-2019"></a>Ağustos 2019
+
+Ağustos ayında güncelleştirmeler şunlardır:
+
+ - [Azure Güvenlik Duvarı için tam zamanında (JıT) VM erişimi](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [Güvenlik duruşunuzu (Önizleme) artırmak için tek tıklama düzeltmesi](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [Kiracılar arası yönetim](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Azure Güvenlik Duvarı için tam zamanında (JıT) VM erişimi 
 

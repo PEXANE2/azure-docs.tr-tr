@@ -3,16 +3,16 @@ title: Dinamik şemaları oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458497"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970646"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
-Çeşitli yapıtlar (örneğin, kaynak grupları, Kaynak Yöneticisi şablonları, ilkeler veya rol atamaları) ile tam olarak tanımlanmış bir şema, Azure 'da nesnelerin hızlı bir şekilde oluşturulmasını ve tutarlı olarak oluşturulmasını sağlar. Bu yeniden kullanılabilir Tasarım desenlerinin ve kapsayıcılarının esnek kullanımını etkinleştirmek için, Azure şemaları parametreleri destekler. Parametresi, şeması tarafından dağıtılan yapıtların özelliklerini değiştirmek için hem tanım hem de atama sırasında esneklik oluşturur.
+Kaynak grupları, Azure Resource Manager şablonları (ARM şablonları), ilkeler veya rol atamaları gibi çeşitli yapıtlarla tam olarak tanımlanmış bir şema, Azure 'da nesnelerin hızlı bir şekilde oluşturulmasını ve tutarlı olarak oluşturulmasını sağlar. Bu yeniden kullanılabilir Tasarım desenlerinin ve kapsayıcılarının esnek kullanımını etkinleştirmek için, Azure şemaları parametreleri destekler. Parametresi, şeması tarafından dağıtılan yapıtların özelliklerini değiştirmek için hem tanım hem de atama sırasında esneklik oluşturur.
 
 Kaynak grubu yapıtı basit bir örnektir. Bir kaynak grubu oluşturulduğunda, sağlanması gereken iki zorunlu değer vardır: ad ve konum. Blueprint verilerinize bir kaynak grubu eklerken, parametreler yoksa, Blueprint 'in her kullanımı için bu adı ve konumu tanımlarsınız. Bu yineleme, aynı kaynak grubunda yapılar oluşturmak için şema 'in her kullanımına neden olur. Bu kaynak grubundaki kaynaklar çoğaltılır ve bir çakışmaya neden olur.
 
@@ -28,7 +28,7 @@ REST API aracılığıyla parametreler, şema üzerinde oluşturulabilir. Bu par
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString ve secureObject parametrelerini kullanma
 
-Kaynak Yöneticisi Şablon _yapıtı_ **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlanmasını gerektirir. Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, Kaynak Yöneticisi şablonu _yapıtında_güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
+ARM şablon _yapıtı_ , **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlı olmasını gerektirir. Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, ARM şablon _yapıtında_güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
 
 - Key Vault kaynak KIMLIĞI
 - Key Vault gizli dizi adı
@@ -130,11 +130,11 @@ Aşağıdaki REST API örnek, şema üzerinde bir rol atama yapıtı oluşturur 
   }
   ```
 
-Bu örnekte, **Prenalids** özelliği bir değerini kullanarak **sahipler** şeması ' nı kullanır `[parameters('owners')]`. Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
+Bu örnekte, **Prenalids** özelliği bir değerini kullanarak **sahipler** şeması ' nı kullanır `[parameters('owners')]` . Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
 
 ##### <a name="artifact-level-parameter"></a>Yapıt düzeyi parametresi
 
-Bir yapıtın üzerinde **statik parametreler** oluşturmak benzerdir, ancak `parameters()` işlevini kullanmak yerine düz bir değer alır. Aşağıdaki örnek iki statik parametre, **TagName** ve **tagvalue**oluşturur. Her bir üzerinde değer doğrudan sağlanır ve bir işlev çağrısı kullanmaz.
+Bir yapıtın üzerinde **statik parametreler** oluşturmak benzerdir, ancak işlevini kullanmak yerine düz bir değer alır `parameters()` . Aşağıdaki örnek iki statik parametre, **TagName** ve **tagvalue**oluşturur. Her bir üzerinde değer doğrudan sağlanır ve bir işlev çağrısı kullanmaz.
 
 - REST API URI'si
 
@@ -180,7 +180,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 
-Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, bir ** \<\> ad** ve **değer** anahtarı çiftiyle **Parametreler** altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
+Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, **parameters** **\<name\>** ve **değerleri** anahtar çifti parametreleri altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
 
 - REST API URI'si
 

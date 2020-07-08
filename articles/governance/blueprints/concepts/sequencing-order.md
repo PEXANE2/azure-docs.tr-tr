@@ -3,12 +3,12 @@ title: Dağıtım sırası sırasını anlayın
 description: Şema yapıtlarının bir şema atama sırasında dağıtıldığı ve dağıtım sırasının nasıl özelleştirileceğine ilişkin varsayılan sıra hakkında bilgi edinin.
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864530"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970629"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure 'de dağıtım sırasını anlayın
 
@@ -28,30 +28,30 @@ JSON örneklerinde, kendi değerlerinizle değiştirmeniz gereken değişkenler 
 
 - Yapıt adına göre sıralanan abonelik düzeyi **rol atama** yapıtları
 - Yapıt adına göre sıralanan abonelik düzeyi **ilke atama** yapıtları
-- Yapıt adına göre sıralanan abonelik düzeyi **Azure Resource Manager şablon** yapıtları
+- Yapıt adına göre sıralanan abonelik düzeyi **Azure Resource Manager şablonu** (ARM şablonları) yapıları
 - **Kaynak grubu** yapıtları (alt yapıtlar dahil) yer tutucu adına göre sıralanmış
 
 Her **kaynak grubu** yapıtları içinde, bu kaynak grubu içinde yapıların oluşturulması için aşağıdaki sıra sırası kullanılır:
 
 - Yapıt adına göre sıralanan kaynak grubu alt **rol ataması** yapıtları
 - Yapıt adına göre sıralanan kaynak grubu alt **ilke atama** yapıtları
-- Yapıt adına göre sıralanan kaynak grubu alt **Azure Resource Manager şablonu** yapıtları
+- Kaynak grubu alt **Azure Resource Manager şablonu** (ARM şablonları) yapıt adına göre sıralanan yapılar
 
 > [!NOTE]
 > [Yapıtlar ()](../reference/blueprint-functions.md#artifacts) kullanımı, başvurulan yapıtın üzerinde örtük bir bağımlılık oluşturur.
 
 ## <a name="customizing-the-sequencing-order"></a>Sıralama düzenini özelleştirme
 
-Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseninin, bir şema tanımının birçok Azure Resource Manager şablonu içermesi durumunda olur. Azure şemaları, sıralama düzeninin tanımlanmasına izin vererek bu düzeni işler.
+Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseninin, bir şema tanımının birçok ARM şablonu içermesi durumunda olur. Azure şemaları, sıralama düzeninin tanımlanmasına izin vererek bu düzeni işler.
 
-Sıralama, JSON içinde bir `dependsOn` Özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
+Sıralama, `dependsOn` JSON içinde bir özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
 
 > [!NOTE]
 > Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır. yapıtlar içindeki _resourceGroup_ başvuruları, şema tanımında tanımlananlarla aynı olmalıdır.
 
 ### <a name="example---ordered-resource-group"></a>Örnek-sıralı kaynak grubu
 
-Bu örnek şema tanımında, için `dependsOn`bir değer bildirerek bir standart kaynak grubuyla birlikte özel bir sıralama düzeni tanımlamış bir kaynak grubu vardır. Bu durumda, **atamaadı** adlı yapıt, **sıralı-RG** kaynak grubundan önce işlenir.
+Bu örnek şema tanımında, için bir değer bildirerek bir `dependsOn` Standart kaynak grubuyla birlikte özel bir sıralama düzeni tanımlamış bir kaynak grubu vardır. Bu durumda, **atamaadı** adlı yapıt, **sıralı-RG** kaynak grubundan önce işlenir.
 **Standart-RG** , varsayılan sıralama düzeni başına işlenir.
 
 ```json
@@ -81,7 +81,7 @@ Bu örnek şema tanımında, için `dependsOn`bir değer bildirerek bir standart
 
 ### <a name="example---artifact-with-custom-order"></a>Örnek-özel siparişle yapıt
 
-Bu örnek, bir Azure Resource Manager şablonuna bağlı olan bir ilke yapıtıdır. Varsayılan sıralama olarak, Azure Resource Manager şablondan önce bir ilke yapıtı oluşturulur. Bu sıralama, ilke yapıtının Azure Resource Manager şablonunun oluşturulmasını beklemesini sağlar.
+Bu örnek, ARM şablonuna bağlı olan bir ilke yapıtıdır. Varsayılan sıralama, ARM şablonundan önce bir ilke yapıtı oluşturulur. Bu sıralama, ilke yapıtının ARM şablonunun oluşturulmasını beklemesini sağlar.
 
 ```json
 {
@@ -100,7 +100,7 @@ Bu örnek, bir Azure Resource Manager şablonuna bağlı olan bir ilke yapıtıd
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Örnek-bir kaynak grubuna bağlı olarak abonelik düzeyi şablon yapıtı
 
-Bu örnek, bir kaynak grubuna bağlı olmak için abonelik düzeyinde dağıtılan bir Kaynak Yöneticisi şablonu içindir. Varsayılan sıralamada, abonelik düzeyi yapıtlar bu kaynak gruplarındaki herhangi bir kaynak grubundan ve alt yapıtlardan önce oluşturulur. Kaynak grubu, aşağıdaki gibi şema tanımında tanımlanmıştır:
+Bu örnek, abonelik düzeyinde dağıtılan bir ARM şablonu için bir kaynak grubuna göre değişir. Varsayılan sıralamada, abonelik düzeyi yapıtlar bu kaynak gruplarındaki herhangi bir kaynak grubundan ve alt yapıtlardan önce oluşturulur. Kaynak grubu, aşağıdaki gibi şema tanımında tanımlanmıştır:
 
 ```json
 "resourceGroups": {
@@ -137,7 +137,7 @@ Bu örnek, bir kaynak grubuna bağlı olmak için abonelik düzeyinde dağıtıl
 Oluşturma işlemi sırasında, planlar yapıtlarının bağımlılık grafiğini oluşturmak için bir topik sıralama kullanılır. Denetim, kaynak grupları ve yapıtlar arasındaki her bağımlılık düzeyinin desteklendiğinden emin olmanızı sağlar.
 
 Bir yapıt bağımlılığının varsayılan sırayı değiştirmediği bildirilirse, hiçbir değişiklik yapılmaz.
-Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda da varsayılan `dependsOn` sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmaz.
+Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda da `dependsOn` varsayılan sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

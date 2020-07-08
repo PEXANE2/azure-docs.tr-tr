@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255169"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970493"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -22,12 +22,12 @@ Evet. Her abonelikte, Azure Backup hizmetinin desteklenen her bir bölgesi için
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Her bir kasa için kaydedilebilen sunucu/makine sayısına yönelik sınırlar var mıdır?
 
-Kasa başına en fazla 1000 Azure Sanal makinesi kaydedebilirsiniz. Microsoft Azure Backup Aracısı kullanıyorsanız, kasa başına en fazla 50 MARS Aracısı kaydedebilirsiniz. Bir kasaya 50 MABS sunucuları/DPM sunucuları kaydedebilirsiniz.
+Kasa başına en fazla 1000 Azure Sanal makinesi kaydedebilirsiniz. Microsoft Azure Backup aracısını kullanıyorsanız, kasa başına en fazla 50 MARS aracısına kaydolabilirsiniz. Bir kasaya 50 MABS sunucuları/DPM sunucuları kaydedebilirsiniz.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Bir kasada kaç veri kaynağı/öğe korunabilir?
 
 Bir kasada tüm iş yüklerinde (IaaS VM, SQL, AFS vb.) en fazla 2000 veri kaynağı/öğe koruyabilirsiniz.
-Örneğin kasada zaten 500 VM ve 400 Azure Dosyalar paylaşımı koruyorsanız, bu kasada yalnızca 1100 SQL veritabanı koruyabilirsiniz.
+Örneğin, kasadaki 500 VM 'Leri ve 400 Azure dosya paylaşımlarını zaten koruduysanız, yalnızca bu anda en fazla 1100 SQL veritabanı koruyabilirsiniz.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Kasa başına kaç ilke oluşturabilirim?
 
@@ -47,12 +47,16 @@ Hayır. Kasada depolanan yedek veriler farklı bir kasaya taşınamaz.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Yedekleme sonrasında GRS'den LRS'ye geçebilir miyim?
 
-Hayır. Kurtarma Hizmetleri kasası yalnızca herhangi bir yedekleme depolanmadan önce depolama seçeneklerini değiştirebilir.
+Depolama çoğaltma türü varsayılan olarak coğrafi olarak yedekli depolama (GRS) olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır ve değiştirilemez.
+
+![Depolama çoğaltma türü](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Yedekleme yapılandırıldıktan sonra GRS 'den LRS 'ye geçiş yapmak için](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)bkz..
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasına yedeklenen VM'ler için Öğe Düzeyinde Kurtarma (ILR) işlemi yapabilir miyim?
 
 - ILR, Azure VM yedeklemesi tarafından yedeklenen Azure VM'lerinde desteklenir. Daha fazla bilgi için şu [makaleye](backup-azure-restore-files-from-vm.md) bakın
-- Azure yedekleme sunucusu veya System Center DPN tarafından yedeklenen şirket içi VM'lerinin çevrimiçi kurtarma noktalarında desteklenmez.
+- ILR, Azure Backup sunucusu ya da System Center DPM tarafından yedeklenen şirket içi VM 'lerin çevrimiçi kurtarma noktaları için desteklenmez.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 

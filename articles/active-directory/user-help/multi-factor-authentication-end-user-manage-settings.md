@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746741"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983314"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>İki öğeli doğrulama yönteminizi ve ayarlarını değiştirin
 
@@ -75,7 +75,7 @@ Kullanmakta olduğunuz varsayılan güvenlik doğrulama yöntemini değiştirmek
 
     - **Uygulamadan doğrulama kodunu kullan**: kimlik doğrulayıcı uygulamanızı, iş veya okul hesabınızdan gelen isteme yazdığınız bir doğrulama kodu almak için kullanacaksınız.
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 ## <a name="add-or-change-your-phone-number"></a>Telefon numaranızı ekleme veya değiştirme
 
@@ -88,9 +88,9 @@ Kullanmakta olduğunuz varsayılan güvenlik doğrulama yöntemini değiştirmek
 
 1. **Ek güvenlik doğrulama** sayfasının **nasıl yanıt vermesini istersiniz?** bölümünde, **kimlik doğrulama telefonunuzun** telefon numarası bilgilerini (birincil mobil cihazınız) ve **ofis telefonunuzu**güncelleştirin.
 
-1. **Alternatif kimlik doğrulama telefonu** seçeneğinin yanındaki kutuyu işaretleyin ve ardından birincil cihazınıza erişemiyorsanız metin iletilerini veya telefon görüşmelerini alacağınız bir ikincil telefon numarası yazın.
+1. **Alternatif kimlik doğrulama telefonu** seçeneğinin yanındaki kutuyu işaretleyin ve ardından birincil cihazınıza erişemiyorsanız telefon görüşmeleri alacağınız bir ikincil telefon numarası yazın.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına yeni bir hesap ekleme
 
@@ -106,7 +106,7 @@ Microsoft Authenticator uygulamasında iş veya okul hesabınızı zaten ayarlad
 
     Bilgilerinizi doğrulamak için Microsoft Authenticator uygulama aracılığıyla bir bildirimi onaylamanız istenecektir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasından hesabınızı veya cihazınızı silme
 
@@ -116,7 +116,7 @@ Microsoft Authenticator uygulamasından hesabınızı silebilir ve cihazınızı
 
 1. **Ek güvenlik doğrulama** sayfasının **nasıl yanıt vermesini istiyorsunuz?** bölümünde, **kimlik doğrulayıcı uygulaması ayarla** düğmesini seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasından hesabınızı silmek için
 

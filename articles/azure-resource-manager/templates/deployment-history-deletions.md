@@ -2,19 +2,19 @@
 title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 1ae0512f1d82da09c9e77b43ba57acb0cde11f5a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/06/2020
+ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391205"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981665"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
 Bir şablonu dağıttığınız her seferinde dağıtım hakkındaki bilgiler dağıtım geçmişine yazılır. Her kaynak grubu, dağıtım geçmişinde 800 dağıtım ile sınırlıdır.
 
-Azure Resource Manager, sınıra yaklaşmanıza karşı, en kısa süre önce geçmişinizden dağıtımları otomatik olarak silmeye başlayacaktır. Otomatik silme, geçmiş davranıştaki bir değişiklikten fazla. Daha önce, bir hatadan kaçınmak için dağıtımları dağıtım geçmişinden el ile silmeniz gerekiyordu.
+Azure Resource Manager, sınıra yaklaşmanıza karşı, en kısa süre önce geçmişinizden dağıtımları otomatik olarak silmeye başlayacaktır. Otomatik silme, geçmiş davranıştaki bir değişiklikten fazla. Daha önce, bir hatadan kaçınmak için dağıtımları dağıtım geçmişinden el ile silmeniz gerekiyordu. **Bu özellik henüz Azure 'a eklenmedi. Bu yaklaşan değişikliği size, geri çevirmek istediğiniz durumlarda bilgilendiriyoruz.**
 
 > [!NOTE]
 > Bir dağıtımı geçmişten silmek, dağıtılan kaynakların hiçbirini etkilemez.
@@ -38,7 +38,7 @@ Bir dağıtıma geçmişle aynı adı verdiğinizde, geçmişteki yerini sıfır
 
 Geçmişten otomatik silme işlemleri yapabilirsiniz. **Bu seçeneği yalnızca dağıtım geçmişini kendiniz yönetmek istediğinizde kullanın.** Geçmişteki 800 dağıtım limiti yine de zorlanır. 800 dağıtımlarını aşarsanız bir hata alırsınız ve dağıtımınız başarısız olur.
 
-Otomatik silme işlemlerini devre dışı bırakmak için `Microsoft.Resources/DisableDeploymentGrooming` özellik bayrağını kaydedin. Özellik bayrağını kaydettiğinizde, tüm Azure aboneliği için otomatik silme işlemleri devre dışı. Yalnızca belirli bir kaynak grubunu devre dışı kaydedemezsiniz.
+Otomatik silme işlemlerini devre dışı bırakmak için `Microsoft.Resources/DisableDeploymentGrooming` özellik bayrağını kaydedin. Özellik bayrağını kaydettiğinizde, tüm Azure aboneliği için otomatik silme işlemleri devre dışı. Yalnızca belirli bir kaynak grubunu devre dışı kaydedemezsiniz. Otomatik silme işlemlerini yeniden etkinleştirmek için özellik bayrağının kaydını kaldırın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -54,6 +54,8 @@ Aboneliğinizin geçerli durumunu görmek için şunu kullanın:
 Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName DisableDeploymentGrooming
 ```
 
+Otomatik silme işlemlerini yeniden etkinleştirmek için Azure REST API veya Azure CLı kullanın.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı için [az Feature Register](/cli/azure/feature#az-feature-register)kullanın.
@@ -68,6 +70,12 @@ Aboneliğinizin geçerli durumunu görmek için şunu kullanın:
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
+Otomatik silme işlemlerini yeniden etkinleştirmek için [az Feature Unregister](/cli/azure/feature#az-feature-unregister)kullanın.
+
+```azurecli-interactive
+az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
+```
+
 # <a name="rest"></a>[REST](#tab/rest)
 
 REST API için, [Özellikler-kaydet](/rest/api/resources/features/register)' i kullanın.
@@ -80,6 +88,12 @@ Aboneliğinizin geçerli durumunu görmek için şunu kullanın:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
+```
+
+Otomatik silme işlemlerini yeniden etkinleştirmek için, [özellikleri kullanın-kaydını kaldırın](/rest/api/resources/features/unregister)
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01
 ```
 
 ---

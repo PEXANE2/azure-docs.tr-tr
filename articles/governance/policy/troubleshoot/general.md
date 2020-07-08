@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234181"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970850"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -28,7 +28,7 @@ Hata ayrıntılarının konumu hataya neden olan eyleme bağlıdır.
 
 #### <a name="issue"></a>Sorun
 
-Azure Ilkesi Kaynak Yöneticisi özellikleriyle eşlemek için [takma adlar](../concepts/definition-structure.md#aliases) kullanır.
+Azure Ilkesi Azure Resource Manager özellikleriyle eşlemek için [takma adlar](../concepts/definition-structure.md#aliases) kullanır.
 
 #### <a name="cause"></a>Nedeni
 
@@ -103,7 +103,7 @@ Bir reddetme ilke atamasından alınan hata iletisi, ilke tanımı ve ilke atama
 
 #### <a name="issue"></a>Sorun
 
-Azure Ilkesi, bir dizi Kaynak Yöneticisi Şablon işlevini ve yalnızca bir ilke tanımında bulunan işlevleri destekler. Kaynak Yöneticisi, bu işlevleri bir ilke tanımının bir parçası yerine bir dağıtımın parçası olarak işler.
+Azure Ilkesi, bir dizi Azure Resource Manager şablonu (ARM şablonu) işlevini ve yalnızca bir ilke tanımında bulunan işlevleri destekler. Kaynak Yöneticisi, bu işlevleri bir ilke tanımının bir parçası yerine bir dağıtımın parçası olarak işler.
 
 #### <a name="cause"></a>Nedeni
 
@@ -152,6 +152,6 @@ Ada sahip Held grafiği `azure-policy-addon` zaten yüklenmiş veya kısmen yük
 
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html)aracılığıyla uzmanlardan yanıt alın.
+- [Microsoft Q&A](/answers/topics/azure-policy.html)aracılığıyla uzmanlardan yanıt alın.
 - [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 - Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

@@ -1,22 +1,21 @@
 ---
 title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168565"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970782"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
 Bir Azure kaynağının bir ilke kuralıyla uyumlu olmadığı belirlendiğinde, kuralın kaynağın hangi bölümünün uyumlu olmadığını anlamak yararlı olur. Ayrıca, daha önce uyumlu olmayan bir kaynağın uyumsuz hale getirmek için hangi değişikliğin değiştirilmediğini anlamak da yararlıdır. Bu bilgileri bulmanın iki yolu vardır:
 
-> [!div class="checklist"]
-> - [Uyumluluk ayrıntıları](#compliance-details)
-> - [Değişiklik geçmişi (Önizleme)](#change-history)
+- [Uyumluluk ayrıntıları](#compliance-details)
+- [Değişiklik geçmişi (Önizleme)](#change-history)
 
 ## <a name="compliance-details"></a>Uyumluluk ayrıntıları
 
@@ -105,7 +104,7 @@ Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](..
 |Geçerli değer büyük/küçük harfe duyarsız olmalıdır ve hedef değerle eşleşmez. |notMatchInsensitively veya **Not** matchInsensitively |
 |İlke tanımındaki efekt ayrıntılarıyla eşleşen ilgili kaynak yok. |**Daha sonra. details. Type** içinde tanımlanan ve ilke kuralının **IF** bölümünde tanımlanan kaynakla ilişkili bir kaynak türü yok. |
 
-## <a name="compliance-details-for-guest-configuration"></a>Konuk yapılandırması için uyumluluk ayrıntıları
+## <a name="compliance-details-for-guest-configuration"></a>Konuk Yapılandırması için uyumluluk ayrıntıları
 
 _Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, VM 'de birden fazla ayar değerlendirilebilecek ve ayar başına ayrıntıları görüntülemeniz gerekir. Örneğin, parola ilkelerinin bir listesini denetliyoruz ve yalnızca birinin durumu _uyumlu değil_ise, hangi parola ilkelerinin uyumsuz olduğunu ve neden olduğunu bilmeniz gerekir.
 
@@ -190,7 +189,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Değişiklik geçmişi (Önizleme)
 
-Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 14 günü, [tamamlanmış mod silme Işlemini](../../../azure-resource-manager/templates/complete-mode-deletion.md)destekleyen tüm Azure kaynakları için kullanılabilir. Değişiklik geçmişi bir değişikliğin ne zaman algılandığına ilişkin ayrıntıları ve her değişiklik için _görsel bir farkı_ sağlar. Kaynak Yöneticisi Özellikler eklendiğinde, kaldırıldığında veya değiştirilmediğinde değişiklik algılama tetiklenir.
+Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 14 günü, [tamamlanmış mod silme Işlemini](../../../azure-resource-manager/templates/complete-mode-deletion.md)destekleyen tüm Azure kaynakları için kullanılabilir. Değişiklik geçmişi bir değişikliğin ne zaman algılandığına ilişkin ayrıntıları ve her değişiklik için _görsel bir farkı_ sağlar. Azure Resource Manager Özellikler eklendiğinde, kaldırıldığında veya değiştirilmediğinde değişiklik algılama tetiklenir.
 
 1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 

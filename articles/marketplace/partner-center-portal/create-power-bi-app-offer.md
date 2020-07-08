@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513517"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980365"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
 
 Bu makalede, Microsoft [Appsource](https://appsource.microsoft.com/)'a Power BI bir uygulama teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
 
-Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
+Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
@@ -55,10 +55,10 @@ Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterim
 
 Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
-- Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Teklif önizleme sürümündedir- [canlı](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Teklif bir taslak taslağı ise, [taslak teklifini siler](update-existing-offer.md#delete-a-draft-offer))
+- Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval))
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin](update-existing-offer.md#cancel-publishing))
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -68,12 +68,12 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkil
 
 1. Potansiyel müşterileri göndermemizi istediğiniz müşteri adayı hedefini seçin. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
 
-    - Müşteri katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - Müşteri katılımı için [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md)
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) veya [https uç noktasını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
+    > CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](commercial-marketplace-lead-management-instructions-azure-table.md) veya [https uç noktasını](commercial-marketplace-lead-management-instructions-https.md) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
 
 2. Teklifinizi Iş Ortağı Merkezi 'nde yayımlarken lider hedefine bağlayın.
 3. Müşteri adayı hedefi bağlantısının düzgün şekilde yapılandırıldığını doğrulayın. Iş Ortağı Merkezi 'nde yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında satın almayı deneyerek lider bağlantınızı da test edebilirsiniz.
@@ -81,9 +81,9 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkil
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
+- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
@@ -94,33 +94,16 @@ Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destek
 
 ### <a name="category"></a>Kategori
 
-En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun Market arama alanına yerleştirmek için kullanılır ve teklif ayrıntıları sayfasında gösterilir. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın.
+Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
+
+- Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+
+[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
 ### <a name="industry"></a>Sektör
 
-İsteğe bağlı olarak, her bir sektör altında en fazla iki sektör ve iki ifade seçin. Tekliflerinizi görüntülemek için kategoriler kullanıldığında, sektör ve verticileri arama filtrelerinde kullanılır ve storefront içinde uygulanır. Teklifiniz belirli bir sektör ve/veya dikey hedefliyorsa, teklifinizin seçili sektörlerin veya maticileri nasıl desteklediğini açıklamak için teklif açıklamasını kullanın. Teklifiniz sektöre özgü değilse, bu bölümü boş bırakın.
-
-> [!NOTE]
-> Teklif bulma deneyimini geliştirmek için yeni endüstriler ve tanıtımlarla karşılaşmak üzere çalışırken, bazı sektörlerin veya verticiler henüz storefront üzerinde görünmeyebilir. (*) İle işaretlenen sektörler ve verticileri, gelecekteki bir tarihte kullanılabilir. Tüm yayımlanan teklifler anahtar sözcük arama aracılığıyla bulunabilir.
-<p>&nbsp;
-
-| **Sektör** | **Alt sektör** |
-| --- | --- |
-| * Oto | * Oto |
-| Tarım | * Diğer-kesimli |
-| Dağıtım | * Toptan<br>Paket ve paket gönderimi |
-| Eğitim | *Daha yüksek <br> eğitim* Birincil ve Ikincil Eğitim/K-12<br>* Kitaplıklar ve Museums |
-| Finansal Hizmetler | *Bankacılık ve sermaye pazarlar <br> * Eleri |
-| Devlet | *Savunma ve zeka (Ulusal ve genel güvenlik olarak adlandırılır) <br> * Genel güvenlik ve adalet<br>* Cıvilian kamu |
-| Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır) | *Sistem durumu ödemi veya <br> * Sistem durumu sağlayıcısı<br>* İlaç |
-| Üretim ve kaynaklar (üretim olarak adlandırılabilmesi için kullanılır) | *Kimyasal ve Agrokimyasal <br> * Ayrık üretim<br>* Enerji |
-| Perakende ve tüketici malları (perakende olarak adlandırılabilmesi için kullanılır) | *Tüketici malları <br> * Tercih |
-| * Medya ve Iletişim (medya ve eğlence olarak adlandırılabilecek şekilde kullanılır) | *Medya ve eğlence <br> * Telekomünikasyon |
-| Profesyonel Hizmetler | *Yasal <br> * İş ortağı profesyonel hizmetleri |
-| * Mimari ve yapım (mimari Mühendisliği olarak adlandırılabilmesi için kullanılır) | * Diğer-kesimli |
-| * Hosititesi ve seyahat | *Oteller ve boş <br> * Seyahat ve ulaşım<br>* Restoranlar ve yiyecek hizmetleri |
-| * Diğer kamu sektörü endüstrileri | *Ormancılık ve balıkçılık <br> * Şartlara |
-| * Emlak | * Diğer-kesimli |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>Yasal Bildirim
 
@@ -160,10 +143,10 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Açıklama
+10. Description
 11. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -177,7 +160,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -240,7 +223,7 @@ Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresin
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listesi en iyi uygulamaları](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listesi en iyi uygulamaları](../gtm-offer-listing-best-practices.md).
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 

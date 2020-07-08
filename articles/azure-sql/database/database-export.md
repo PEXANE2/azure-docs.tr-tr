@@ -3,7 +3,7 @@ title: Bir Azure SQL veritabanını BACPAC dosyasına dışarı aktarma (Azure p
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure portal kullanarak bir veritabanını BACPAC dosyasına dışarı aktarın.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: a8fb5675f086402bd5e5970fd856fce51220e8f4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253520"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982443"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -24,7 +24,7 @@ ms.locfileid: "85253520"
 
 Arşivleme için bir veritabanını dışarı veya başka bir platforma taşımak istediğinizde, veritabanı şemasını ve verileri [bacpac](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) dosyasına dışarı aktarabilirsiniz. BACPAC dosyası, bir BACPAC uzantısı olan ve veritabanından meta verileri ve verileri içeren bir ZIP dosyasıdır. BACPAC dosyası, Azure Blob depolama alanında veya yerel depolama alanında Şirket içi bir konumda depolanabilir ve daha sonra Azure SQL veritabanı, Azure SQL yönetilen örneği veya bir SQL Server örneğine geri alınabilir.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 - Bir dışa aktarmanın işlem açısından tutarlı olması için, dışarı aktarma sırasında herhangi bir yazma etkinliğinin gerçekleşmemesini veya veritabanınızın [işlemsel olarak tutarlı bir kopyasından](database-copy.md) dışarı aktardığınız emin olmanız gerekir.
 - Blob depolamaya veriyorsanız, BACPAC dosyasının en büyük boyutu 200 GB 'tır. Daha büyük bir BACPAC dosyasını arşivlemek için yerel depolama alanına dışarı aktarın.

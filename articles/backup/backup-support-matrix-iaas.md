@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 904240e066a83fa1278d663b8614b5b9269ba4d3
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849425"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970680"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -24,7 +24,7 @@ Diğer destek matrisleri:
 
 Azure Backup hizmeti ile Azure VM 'lerini yedekleme ve geri yükleme işlemlerinin nasıl yapılacağını aşağıda bulabilirsiniz.
 
-**Senaryo** | **Backup** | **Aracı** |**Geri Yükleme**
+**Senaryo** | **Backup** | **Aracısı** |**Geri yükleme**
 --- | --- | --- | ---
 Azure VM 'lerinin doğrudan yedeklemesi  | Tüm VM 'yi yedekleyin.  | Azure VM 'de ek bir aracı gerekmez. Azure Backup, VM üzerinde çalışan [Azure VM aracısına](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) bir uzantı yükleyip kullanır. | Aşağıdaki şekilde geri yükleyin:<br/><br/> - **Temel BIR VM oluşturun**. Bu, VM 'nin birden çok IP adresi gibi özel bir yapılandırması yoksa yararlıdır.<br/><br/> - **VM diskini geri yükleyin**. Diski geri yükleyin. Daha sonra mevcut bir VM 'ye bağlayın veya PowerShell 'i kullanarak diskten yeni bir VM oluşturun.<br/><br/> - **VM diskini değiştirin**. Bir VM varsa ve yönetilen diskler (şifrelenmemiş) kullanıyorsa, bir diski geri yükleyebilir ve sanal makinede var olan bir diski değiştirmek için kullanabilirsiniz.<br/><br/> - **Belirli dosyaları/klasörleri geri yükleyin**. Dosyaları/klasörleri VM 'nin tamamı yerine bir VM 'den geri yükleyebilirsiniz.
 Azure VM 'lerinin doğrudan yedeklemesi (yalnızca Windows)  | Belirli dosyaları/klasörleri/birimleri yedekleyin. | [Azure kurtarma hizmetleri Aracısı](backup-azure-file-folder-backup-faq.md)'nı yükler.<br/><br/> VM 'yi dosya/klasör düzeyinde yedeklemek için, Azure VM aracısının yedekleme uzantısı ile birlikte MARS aracısını çalıştırabilirsiniz. | Belirli klasörleri/dosyaları geri yükleyin.
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, Windows Azure VM 'Leri yedeklenirken desteklenen işletim 
 
 **Senaryo** | **İşletim sistemi desteği**
 --- | ---
-Azure VM Aracısı Uzantısı ile yedekleme | -Windows 10 Istemcisi (yalnızca 64 bit) <br/><br/>-Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)  <br/><br/> -Windows Server 2008 (yalnızca 64 bit)
+Azure VM Aracısı Uzantısı ile yedekleme | -Windows 10 Istemcisi (yalnızca 64 bit) <br/><br/>-Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2012 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)  <br/><br/> -Windows Server 2008 (yalnızca 64 bit)
 MARS Aracısı ile yedekleme | [Desteklenen](backup-support-matrix-mars-agent.md#supported-operating-systems) işletim sistemleri.
 DPM/MABS ile yedekleme | [Mabs](backup-mabs-protection-matrix.md) ve [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)ile yedekleme için desteklenen işletim sistemleri.
 
@@ -112,7 +112,7 @@ DPM/MABS diskindeki kurtarma noktaları | dosya sunucuları için 64 ve uygulama
 
 ## <a name="support-for-file-level-restore"></a>Dosya düzeyinde geri yükleme desteği
 
-**Geri Yükleme** | **Destek**
+**Geri yükleme** | **Destek**
 --- | ---
 İşletim sistemleri arasında dosyaları geri yükleme | Yedeklenen VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinedeki dosyaları geri yükleyebilirsiniz. Bkz. [uyumlu işletim sistemi tablosu](backup-azure-restore-files-from-vm.md#system-requirements).
 Şifrelenmiş VM 'lerden dosyaları geri yükleme | Desteklenmiyor.
@@ -125,7 +125,7 @@ Dosyaları özel ağ ayarlarıyla geri yükleme | Geri yükleme aynı VM 'de des
 
 Aşağıdaki tabloda VM diskleri ekleme veya değiştirme gibi VM yönetim görevleri sırasında yedekleme desteği özetlenmektedir.
 
-**Geri Yükleme** | **Destek**
+**Geri yükleme** | **Destek**
 --- | ---
 Abonelik/bölge/bölge genelinde geri yükleme. | Desteklenmiyor.
 Mevcut bir VM 'ye geri yükleme | Diski Değiştir seçeneğini kullanın.
@@ -153,12 +153,13 @@ Azure 'a geçirilen VM 'Leri yedekleme| Destekleniyor.<br/><br/> VM 'yi yedeklem
 [Tanılama ayarlarıyla](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) yedekleme  | Desteklenmez. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
 Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen VM ve [kullanılabilirlik bölgesi](https://azure.microsoft.com/global-infrastructure/availability-zones/) kullanılabilir).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak bölge kullanılamıyorsa, geri yükleme başarısız olur.
 Gen2 VM 'Leri | Destekleniyor <br> Azure Backup, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)'lerinin yedeklenmesini ve geri yüklenmesini destekler. Bu VM 'Ler kurtarma noktasından geri yüklendiğinde, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)olarak geri yüklenir.
+Kilitleri olan Azure VM 'lerinin yedeklenmesi | Yönetilmeyen VM 'Ler için desteklenmez. <br><br> Yönetilen VM 'Ler için desteklenir.
 
 ## <a name="vm-storage-support"></a>VM depolama desteği
 
 **Bileşen** | **Destek**
 --- | ---
-Azure VM veri diskleri | En fazla 32 diski olan Azure VM 'lerinin yedeklenmesi, [Bu bölgelerde](#backup-of-azure-virtual-machines-with-up-to-32-disks)genel önizlemededir.<br><br> Yönetilmeyen diskler veya klasik VM 'Ler ile Azure VM 'lerinin yedeklenmesi desteği yalnızca 16 diske kadar olur.
+Azure VM veri diskleri | 32 adede kadar diski olan Azure VM 'lerinin yedeklenmesi, Ulusal bulutlar (Azure Kamu, Azure Çin ve Azure Almanya) dışındaki tüm bölgelerde genel önizlemede kullanıma sunuldu.<br><br> Yönetilmeyen diskler veya klasik VM 'Ler ile Azure VM 'lerinin yedeklenmesi desteği yalnızca 16 diske kadar olur.
 Veri diski boyutu | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.
@@ -169,13 +170,6 @@ Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Genişleme Dosya Sunucusu kullanarak VM 'Leri yedekleme desteklenmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
 [Paylaşılan diskler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Desteklenmiyor.
-
-### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>En fazla 32 diski olan Azure sanal makinelerini yedekleme
-
-Azure Backup artık 32 'e kadar ekli diski olan Azure VM 'lerinin yedeklenmesini desteklemektedir.  Bu özellik Orta Batı ABD, Kanada Orta, Asya Güneydoğu, Brezilya Güney, Kanada Doğu, Fransa Orta, Fransa Güney, Hindistan Orta, Hindistan Güney, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Güney Afrika Kuzey, UK Güney, UK Batı, Avustralya Doğu ' de genel önizlemeye sunuldu.  Bu özellikle başka bölgelerde ilgileniyorsanız, daha sonra bize yazarak sınırlı önizlemeye kaydolun AskAzureBackupTeam@microsoft.com .  
-
->[!NOTE]
->Azure Backup, yalnızca yönetilmeyen diskler veya klasik VM 'Ler ile Azure VM 'Leri için en fazla 16 disk destekler.
 
 ## <a name="vm-network-support"></a>VM ağı desteği
 
@@ -217,10 +211,10 @@ Veri güvenliği:
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
-Azure VM’leri | ![Yes][green] | ![Yes][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
+Azure VM’leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -231,10 +225,10 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makine** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Evet][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

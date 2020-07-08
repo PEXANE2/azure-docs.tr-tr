@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL veritabanı ve SQL yönetilen örneği 'nin bulut iş sürekliliği ve veritabanı kurtarmayı nasıl destekledikleri ve görev açısından kritik bulut uygulamalarının çalışır durumda tutulmasına yardımcı olun.
 keywords: iş sürekliliği, bulutta iş sürekliliği, veritabanı olağanüstü durum kurtarma, veritabanı kurtarma
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189772"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982481"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 |                                              | Coğrafi çoğaltma | Yük devretme grupları  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Otomatik yük devretme                           |     Hayır          |      Evet         |
-| Birden çok veritabanını aynı anda devret  |     Hayır          |      Evet         |
-| Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmemelidir      |     Evet         |      Hayır          |
-| SQL yönetilen örnek desteği                   |     Hayır          |      Evet         |
-| Birincil ile aynı bölgede olabilir             |     Evet         |      Hayır          |
-| Birden çok çoğaltma                            |     Evet         |      Hayır          |
-| Okuma ölçeğini destekler                          |     Evet         |      Yes         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Otomatik yük devretme**                          |     Hayır          |      Evet         |
+| **Birden çok veritabanını aynı anda devret**  |     Hayır          |      Evet         |
+| **Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmemelidir**      |     Evet         |      Hayır          |
+| **SQL yönetilen örnek desteği**                   |     Hayır          |      Evet         |
+| **Birincil ile aynı bölgede olabilir**             |     Evet         |      Hayır          |
+| **Birden çok çoğaltma**                            |     Evet         |      Hayır          |
+| **Okuma ölçeğini destekler**                          |     Yes         |      Yes         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar
 

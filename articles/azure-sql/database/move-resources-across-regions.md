@@ -3,7 +3,7 @@ title: Kaynakları yeni bölgeye taşı
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Veritabanınızı veya yönetilen örneğinizi başka bir bölgeye taşımayı öğrenin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d56eed01d3f93dcf2153bdec2c465d5d5e67a1e7
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 46b95c438830a488494d50308d71a115d6f0da42
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718657"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982197"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Kaynakları yeni bölgeye taşı-Azure SQL veritabanı & Azure SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

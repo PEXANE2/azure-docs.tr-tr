@@ -3,12 +3,12 @@ title: PowerShell kullanarak bir Azure dosya paylaşımının yedeklenmesi
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak bir Azure dosyaları dosya paylaşımının nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 2d391c661363a1a2bc4238cd7a976b7e13c4f0b8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391086"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971037"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>PowerShell kullanarak bir Azure dosya paylaşımının yedeklenmesi
 
@@ -236,6 +236,8 @@ WorkloadName       Operation            Status                 StartTime        
 ------------             ---------            ------               ---------                                  -------                   -----
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
+
+Bir depolama hesabı için dosya paylaşımlarının listesini alma hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)bakın.
 
 ## <a name="important-notice-backup-item-identification"></a>Önemli duyuru: yedekleme öğesi kimliği
 

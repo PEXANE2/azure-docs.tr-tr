@@ -1,17 +1,17 @@
 ---
-title: Azure 'da Office 365 yönetim çözümü | Microsoft Docs
+title: Azure 'da Office 365 yönetim çözümü
 description: Bu makalede, Azure 'da Office 365 çözümünün yapılandırması ve kullanımıyla ilgili ayrıntılar sağlanmaktadır.  Azure Izleyici 'de oluşturulan Office 365 kayıtlarının ayrıntılı açıklamasını içerir.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023614"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971054"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023614"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Çözüm güncelleştirmesi
-> Bu çözüm, [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365](../../sentinel/connect-office-365.md) genel KULLANıLABILIRLIK çözümüyle ve [Azure AD raporlama ve izleme çözümünde](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle birlikte önceki Azure Izleyici Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlar. Mevcut çözümü 30 Haziran 2020 ' e kadar kullanmaya devam edebilirsiniz.
+> Bu çözüm, [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365](../../sentinel/connect-office-365.md) genel KULLANıLABILIRLIK çözümüyle ve [Azure AD raporlama ve izleme çözümünde](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle birlikte önceki Azure Izleyici Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlar. Mevcut çözümü 31 Ekim 2020 tarihine kadar kullanmaya devam edebilirsiniz.
 > 
 > Azure Sentinel, günlük kaydı yapan ve algılamalar, araştırmalar, araştırma ve makine öğrenimi odaklı Öngörüler dahil ek SıEM işlevselliği sağlayan bir bulut Yerel güvenlik bilgileri ve olay yönetimi çözümüdür. Azure Sentinel 'in kullanılması artık Office 365 SharePoint etkinliğinin ve Exchange Yönetim günlüklerinin kullanımını sağlar.
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023614"
 >
 > ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>S: Office 365 Azure Izleyici çözümü Şu anda ve 30 Temmuz arasında yerleşik olarak yapılabilir mi?
-> Hayır, Azure Izleyici Office 365 çözüm ekleme betikleri artık kullanılamıyor. Çözüm 30 Temmuz tarihinde kaldırılacak.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>S: Office 365 Azure Izleyici çözümü Şu anda ve 31 Ekim arasında yerleşik olarak yapılabilir mi?
+> Hayır, Azure Izleyici Office 365 çözüm ekleme betikleri artık kullanılamıyor. Çözüm 31 Ekim tarihinde kaldırılacak.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>S: tablolar ve şemalar değiştirilsin mi?
 > **Officeactivity** tablo adı ve şeması, geçerli çözümle aynı kalacaktır. Azure AD verilerine başvuran sorguları hariç tutarak yeni çözümde aynı sorguları kullanmaya devam edebilirsiniz.
@@ -102,11 +102,11 @@ ms.locfileid: "82023614"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel, çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
 > Evet, bkz. [Azure Sentinel Connect veri kaynakları](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>S: 30 Temmuz 'da ne olur? Önceden Pano yapmam gerekir mi?
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>S: 31 Ekim 'de ne olur? Önceden Pano yapmam gerekir mi?
 > 
 > - **Office365** çözümünden veri alamazsınız. Bu çözüm Market 'te artık kullanılamayacak
 > - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
-> - Çözümünüzü el ile boşaltmıyorsanız, verilerinizin 30 Temmuz tarihinde otomatik olarak bağlantısı kesilir.
+> - Çözümünüzü el ile boşaltmıyorsanız, verileriniz 31 Ekim 'e göre otomatik olarak kesilir.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
 > Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
@@ -121,11 +121,11 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 
-1. Aşağıdaki betiği *office365_unsubscribe. ps1*olarak kaydedin.
+1. Aşağıdaki betiği *office365_unsubscribe.ps1*olarak kaydedin.
 
     ```powershell
     param (
@@ -266,11 +266,11 @@ Aşağıdaki özellikler tüm Office 365 kayıtları için ortaktır.
 | Tür | *Officeetkinliği* |
 | ClientIP | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi IPv4 veya IPv6 adresi biçiminde görüntülenir. |
 | Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| İşlem | Kullanıcı veya yönetici etkinliğinin adı.  |
+| Çalışma | Kullanıcı veya yönetici etkinliğinin adı.  |
 | OrganizationId | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
 | RecordType | Gerçekleştirilen işlem türü. |
 | ResultStatus | Eylemin (Operation özelliğinde belirtilen) başarılı olup olmadığını belirtir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
-| UserId | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
+| UserId | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name . Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
 | UserKey | UserID özelliğinde tanımlanan Kullanıcı için alternatif bir KIMLIK.  Örneğin, bu özellik SharePoint, OneDrive Iş ve Exchange kullanıcıları tarafından gerçekleştirilen olaylar için Passport benzersiz KIMLIĞI (PUıD) ile doldurulur. Bu özellik aynı zamanda diğer hizmetlerde gerçekleşen olaylar ve sistem hesapları tarafından gerçekleştirilen olaylar için UserID özelliği ile aynı değeri belirtebilir|
 | UserType | İşlemi gerçekleştiren kullanıcının türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Normal<br>Ayrıldı<br>ServicePrincipal<br>Sistem |
 
@@ -465,7 +465,7 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtla
 | Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; Işleme göre Count () özetleme |
-|SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () \| değerini|
+|SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () değerini \||
 |Kullanıcı türüne göre dosya erişim işlemleri | OfficeActivity &#124; Kullanıcı türüne göre Count () özetleme |
 |Exchange 'de dış eylemleri izleme|OfficeActivity &#124; burada OfficeWorkload = ~ "Exchange" ve ExternalAccess = = true|
 

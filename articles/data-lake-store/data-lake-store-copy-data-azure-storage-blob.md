@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a2ae153d1409fddbaf4939ab4295d7434abd80
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515695"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980098"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure depolama Bloblarından veri kopyalama Azure Data Lake Storage 1.
 
@@ -45,7 +45,9 @@ Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki i�
 
 AdlCopy aracıyla çalışmak için aşağıdaki sözdizimini kullanın
 
-    AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage Gen1 destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
+```console
+AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage Gen1 destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
+```
 
 Söz diziminde parametreler aşağıda açıklanmıştır:
 
@@ -63,30 +65,40 @@ Söz diziminde parametreler aşağıda açıklanmıştır:
 1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir blobu kaynak kapsayıcıdan Data Lake Storage 1. klasöre kopyalamak için aşağıdaki komutu çalıştırın:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```
 
     Örneğin:
 
-        AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```console
+    AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
     >[!NOTE]
     >Yukarıdaki sözdizimi, Data Lake Storage 1. hesabındaki bir klasöre kopyalanacak dosyayı belirtir. AdlCopy Aracı, belirtilen klasör adı yoksa bir klasör oluşturur.
 
     Data Lake Storage 1. hesabınıza sahip olduğunuz Azure aboneliğinin kimlik bilgilerini girmeniz istenir. Aşağıdakine benzer bir çıktı görürsünüz:
 
-        Initializing Copy.
-        Copy Started.
-        100% data copied.
-        Finishing Copy.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.
+    100% data copied.
+    Finishing Copy.
+    Copy Completed. 1 file copied.
+    ```
 
 1. Ayrıca, aşağıdaki komutu kullanarak tüm Blobları bir kapsayıcıdan Data Lake Storage 1. hesabına kopyalayabilirsiniz:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>  
+    ```      
 
     Örneğin:
 
-        AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```console
+    AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
 ### <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
@@ -99,11 +111,15 @@ Ayrıca iki Data Lake Storage 1. hesap arasında veri kopyalamak için AdlCopy k
 1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir dosyayı bir Data Lake Storage 1. hesabından diğerine kopyalamak için aşağıdaki komutu çalıştırın.
 
-        AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
+    ```console
+    AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
+    ```
 
     Örneğin:
 
-        AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```console
+    AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```
 
    > [!NOTE]
    > Yukarıdaki sözdizimi, hedef Data Lake Storage 1. hesabındaki bir klasöre kopyalanacak dosyayı belirtir. AdlCopy Aracı, belirtilen klasör adı yoksa bir klasör oluşturur.
@@ -112,14 +128,18 @@ Ayrıca iki Data Lake Storage 1. hesap arasında veri kopyalamak için AdlCopy k
 
     Data Lake Storage 1. hesabınıza sahip olduğunuz Azure aboneliğinin kimlik bilgilerini girmeniz istenir. Aşağıdakine benzer bir çıktı görürsünüz:
 
-        Initializing Copy.
-        Copy Started.|
-        100% data copied.
-        Finishing Copy.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.|
+    100% data copied.
+    Finishing Copy.
+    Copy Completed. 1 file copied.
+    ```
 1. Aşağıdaki komut, kaynak Data Lake Storage 1. hesabındaki belirli bir klasördeki tüm dosyaları hedef Data Lake Storage 1. hesabındaki bir klasöre kopyalar.
 
-        AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```console
+    AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```
 
 ### <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
@@ -138,15 +158,21 @@ Bir Azure Depolama Blobu kopyalamak için AdlCopy ile Data Lake Analytics hesab�
 
 Data Lake Analytics hesabını kullanarak bir Azure Storage blobundan Data Lake Storage 1. hesabına kopyalamak için aşağıdaki komutu çalıştırın:
 
-    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
+```console
+AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
+```
 
 Örneğin:
 
-    AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
+```console
+AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
+```
 
 Benzer şekilde, kaynak Data Lake Storage 1. hesabındaki belirli bir klasördeki tüm dosyaları Data Lake Analytics hesabı kullanarak hedef Data Lake Storage 1. hesabındaki bir klasöre kopyalamak için aşağıdaki komutu çalıştırın:
 
-    AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
+```console
+AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
+```
 
 ### <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
@@ -159,11 +185,15 @@ Bu bölümde, bir kaynaktan veri kopyalamak için AdlCopy 'in nasıl kullanılac
 1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir Blobun *. csv uzantısına sahip tüm dosyaları kaynak kapsayıcısından Data Lake Storage 1. klasöre kopyalamak için aşağıdaki komutu çalıştırın:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
+    ```
 
     Örneğin:
 
-        AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
+    ```console
+    AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
+    ```
 
 ## <a name="billing"></a>Faturalandırma
 

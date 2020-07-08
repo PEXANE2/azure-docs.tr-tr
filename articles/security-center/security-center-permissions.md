@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: e0988c60629cab2c6d7312e5067c31153b24e2dc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688730"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970561"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde İzinler
 
@@ -43,6 +43,7 @@ Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler gör
 |Eylem|Güvenlik okuyucusu/ <br> Okuyucu |Güvenlik Yöneticisi  |Kaynak grubu Katılımcısı/ <br> Kaynak grubu sahibi  |Abonelik Katılımcısı  |Abonelik sahibi  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Güvenlik ilkesini Düzenle|-|✔|-|-|✔|
+|Ekleme/atama (yasal uyumluluk standartları dahil)|-|-|-|-|✔|
 |Abonelik fiyatlandırma katmanını Değiştir|-|✔|-|-|✔|
 |Otomatik sağlamayı etkinleştir/devre dışı bırak|-|✔|✔|-|✔|
 |Bir kaynak için güvenlik önerilerini uygulama</br> (ve [hızlı düzelme kullanın!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|

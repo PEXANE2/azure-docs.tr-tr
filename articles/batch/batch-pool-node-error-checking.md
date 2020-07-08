@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723927"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979926"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -24,9 +24,9 @@ Bu makalede havuzlar ve havuz düğümleri için gerçekleşebileceğini arka pl
 
 ### <a name="resize-timeout-or-failure"></a>Zaman aşımını yeniden boyutlandır veya hata
 
-Yeni bir havuz oluştururken veya var olan bir havuzu yeniden boyutlandırdığınızda, hedef düğüm sayısını belirtirsiniz.  Oluşturma veya yeniden boyutlandırma işlemi hemen tamamlanır, ancak yeni düğümlerin gerçek ayırması veya mevcut düğümlerin kaldırılması birkaç dakika sürebilir.  Yeniden boyutlandırma zaman aşımını [oluşturma](https://docs.microsoft.com/rest/api/batchservice/pool/add) veya [yeniden boyutlandırma](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API 'sinde belirtirsiniz. Yığın yeniden boyutlandırma zaman aşımı süresi boyunca düğüm hedef sayısını edinemez havuz kararlı duruma geçer ve raporların yeniden boyutlandırılması hataları görüntülenir.
+Yeni bir havuz oluştururken veya var olan bir havuzu yeniden boyutlandırdığınızda, hedef düğüm sayısını belirtirsiniz.  Oluşturma veya yeniden boyutlandırma işlemi hemen tamamlanır, ancak yeni düğümlerin gerçek ayırması veya mevcut düğümlerin kaldırılması birkaç dakika sürebilir.  Yeniden boyutlandırma zaman aşımını [oluşturma](/rest/api/batchservice/pool/add) veya [yeniden boyutlandırma](/rest/api/batchservice/pool/resize) API 'sinde belirtirsiniz. Yığın yeniden boyutlandırma zaman aşımı süresi boyunca düğüm hedef sayısını edinemez havuz kararlı duruma geçer ve raporların yeniden boyutlandırılması hataları görüntülenir.
 
-En son değerlendirme için [Resizeerror](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) özelliği oluşan hataları listeler.
+En son değerlendirme için [Resizeerror](/rest/api/batchservice/pool/get#resizeerror) özelliği oluşan hataları listeler.
 
 Yeniden boyutlandırma hatalarının yaygın nedenleri şunlardır:
 
@@ -34,31 +34,31 @@ Yeniden boyutlandırma hatalarının yaygın nedenleri şunlardır:
   - Çoğu durumda, varsayılan 15 dakikalık zaman aşımı, havuz düğümlerinin ayrılması veya kaldırılması için yeterince uzun olur.
   - Çok sayıda düğüm ayırdıysanız, yeniden boyutlandırma zaman aşımını 30 dakikaya ayarlamayı öneririz. Örneğin, bir Azure Marketi görüntüsünden 1.000 ' den fazla düğüme veya özel bir VM görüntüsünden 300 ' den fazla düğüme yeniden boyutlandırdığınızda.
 - Yetersiz çekirdek kotası
-  - Bir Batch hesabı, tüm havuzlarda ayırabilecek çekirdek sayısıyla sınırlıdır. Toplu işlem, kotaya ulaşıldığında düğüm ayırmayı durduruyor. Toplu Işlemin daha fazla düğüm ayırabilmesi için çekirdek kotayı [artırabilirsiniz](https://docs.microsoft.com/azure/batch/batch-quota-limit) .
-- Bir [havuz bir sanal ağda olduğunda](https://docs.microsoft.com/azure/batch/batch-virtual-network) yetersiz alt ağ IP 'leri
+  - Bir Batch hesabı, tüm havuzlarda ayırabilecek çekirdek sayısıyla sınırlıdır. Toplu işlem, kotaya ulaşıldığında düğüm ayırmayı durduruyor. Toplu Işlemin daha fazla düğüm ayırabilmesi için çekirdek kotayı [artırabilirsiniz](./batch-quota-limit.md) .
+- Bir [havuz bir sanal ağda olduğunda](./batch-virtual-network.md) yetersiz alt ağ IP 'leri
   - Bir sanal ağ alt ağı, istenen her havuz düğümüne ayrılacak yeterli sayıda atanmamış IP adresine sahip olmalıdır. Aksi takdirde düğümler oluşturulamaz.
-- Bir [havuz bir sanal ağda olduğunda](https://docs.microsoft.com/azure/batch/batch-virtual-network) yetersiz kaynak
+- Bir [havuz bir sanal ağda olduğunda](./batch-virtual-network.md) yetersiz kaynak
   - Batch hesabıyla aynı abonelikte yük dengeleyiciler, genel IP 'Ler ve ağ güvenlik grupları gibi kaynaklar oluşturabilirsiniz. Abonelik kotalarının bu kaynaklar için yeterli olup olmadığını denetleyin.
 - Özel VM görüntüleri içeren büyük havuzlar
   - Özel VM görüntülerini kullanan büyük havuzların ayrılması ve yeniden boyutlandırılması daha uzun sürebilir.  Sınırlara ve yapılandırmaya yönelik öneriler için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md) .
 
 ### <a name="automatic-scaling-failures"></a>Otomatik ölçeklendirme sorunları
 
-Ayrıca, bir havuzdaki düğümlerin sayısını otomatik olarak ölçeklendirmek için Azure Batch ayarlayabilirsiniz. [Bir havuz için otomatik ölçeklendirme formülünün](https://docs.microsoft.com/azure/batch/batch-automatic-scaling)parametrelerini tanımlarsınız. Batch hizmeti, havuzdaki düğümlerin sayısını düzenli aralıklarla değerlendirmek ve yeni bir hedef numara ayarlamak için formülünü kullanır. Aşağıdaki tür sorunlar oluşabilir:
+Ayrıca, bir havuzdaki düğümlerin sayısını otomatik olarak ölçeklendirmek için Azure Batch ayarlayabilirsiniz. [Bir havuz için otomatik ölçeklendirme formülünün](./batch-automatic-scaling.md)parametrelerini tanımlarsınız. Batch hizmeti, havuzdaki düğümlerin sayısını düzenli aralıklarla değerlendirmek ve yeni bir hedef numara ayarlamak için formülünü kullanır. Aşağıdaki tür sorunlar oluşabilir:
 
 - Otomatik ölçeklendirme değerlendirmesi başarısız olur.
 - Elde edilen yeniden boyutlandırma işlemi başarısız olur ve zaman aşımına uğrar.
 - Otomatik ölçeklendirme formülüyle ilgili bir sorun, yanlış düğüm hedef değerlerine yol açar. Yeniden boyutlandırma, çalışma veya zaman aşımına uğruyor.
 
-Otomatik ölçeklendirme değerlendirmesi hakkında daha fazla bilgi edinmek için otomatik [Scalerun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) özelliğini kullanın. Bu özellik değerlendirme süresini, değerleri ve sonucu ve tüm performans hatalarını bildirir.
+Otomatik ölçeklendirme değerlendirmesi hakkında daha fazla bilgi edinmek için otomatik [Scalerun](/rest/api/batchservice/pool/get#autoscalerun) özelliğini kullanın. Bu özellik değerlendirme süresini, değerleri ve sonucu ve tüm performans hatalarını bildirir.
 
-[Havuz yeniden boyutlandırma Tamam olayı](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) , Tüm değerlendirmelere ilişkin bilgileri yakalar.
+[Havuz yeniden boyutlandırma Tamam olayı](./batch-pool-resize-complete-event.md) , Tüm değerlendirmelere ilişkin bilgileri yakalar.
 
 ### <a name="delete"></a>Sil
 
 Düğüm içeren bir havuzu sildiğinizde, ilk toplu Işlem düğümleri siler. Daha sonra havuz nesnesinin kendisini siler. Havuz düğümlerinin silinmesi birkaç dakika sürebilir.
 
-Toplu işlem **, silme işlemi sırasında** [havuzun durumunu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
+Toplu işlem **, silme işlemi sırasında** [havuzun durumunu](/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
 
 ## <a name="pool-compute-node-errors"></a>Havuz işlem düğümü hataları
 
@@ -131,7 +131,7 @@ Stdout ve stderr gibi bir düğümde çalıştırılan her görev için diğer d
 Geçici sürücünün boyutu VM boyutuna bağlıdır. Bir VM boyutu seçerken, geçici sürücüde yeterli alan olduğundan emin olmak önemlidir.
 
 - Havuz eklenirken Azure portal, VM boyutlarının tam listesi görüntülenebilir ve ' kaynak disk boyutu ' sütunu vardır.
-- Tüm VM boyutlarını açıklayan makalelerde ' Temp Storage ' sütunu olan tablolar vardır; Örneğin, [işlem Için IYILEŞTIRILMIŞ VM boyutları](/azure/virtual-machines/windows/sizes-compute)
+- Tüm VM boyutlarını açıklayan makalelerde ' Temp Storage ' sütunu olan tablolar vardır; Örneğin, [işlem Için IYILEŞTIRILMIŞ VM boyutları](../virtual-machines/sizes-compute.md)
 
 Her bir görev tarafından yazılan dosyalar için, görev dosyalarının otomatik olarak temizlenmeden önce ne kadar süreyle tutulacağını belirleyen her bir görev için bir bekletme süresi belirtilebilir. Saklama süresi, depolama gereksinimlerini düşürmek için azaltılabilir.
 
@@ -140,17 +140,17 @@ Geçici diskte boş alan biterse (veya alan tükendiğinden çok yakın), düğ�
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Disk dolduğunda Yapılacaklar
 
-Diskin dolu olduğunu belirle: düğüm üzerinde ne kadar alan bulunduğunu bilmiyorsanız, düğüm üzerinde uzak olarak ve alanın nerede gerçekleştiğinden el ile araştırılması önerilir. Batch tarafından yönetilen klasörlerdeki dosyaları incelemek için [toplu Işlem listesi dosyaları API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) 'sini de kullanabilirsiniz (örneğin, görev çıkışları). Bu API 'nin yalnızca Batch yönetilen dizinlerindeki dosyaları listelediğinden ve görevleriniz başka bir yerde dosya oluşturup görmeyecektir.
+Diskin dolu olduğunu belirle: düğüm üzerinde ne kadar alan bulunduğunu bilmiyorsanız, düğüm üzerinde uzak olarak ve alanın nerede gerçekleştiğinden el ile araştırılması önerilir. Batch tarafından yönetilen klasörlerdeki dosyaları incelemek için [toplu Işlem listesi dosyaları API](/rest/api/batchservice/file/listfromcomputenode) 'sini de kullanabilirsiniz (örneğin, görev çıkışları). Bu API 'nin yalnızca Batch yönetilen dizinlerindeki dosyaları listelediğinden ve görevleriniz başka bir yerde dosya oluşturup görmeyecektir.
 
 İhtiyaç duyduğunuz tüm verilerin düğümden alındığından veya dayanıklı bir depoya yüklendiğinden emin olun. Disk dolu sorununa yönelik tüm hafifletme, boş alan kazanmak için verileri silmeyi içerir.
 
 ### <a name="recovering-the-node"></a>Düğüm kurtarılıyor
 
-1. Havuzunuz bir [C. hoparlör hizmeti yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzudur, [Batch yeniden görüntü API 'si](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)aracılığıyla düğümü yeniden görüntüleyebilirsiniz. Bu, diskin tamamını temizler. [Virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzları için yeniden görüntü şu anda desteklenmiyor.
+1. Havuzunuz bir [C. hoparlör hizmeti yapılandırma](/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzudur, [Batch yeniden görüntü API 'si](/rest/api/batchservice/computenode/reimage)aracılığıyla düğümü yeniden görüntüleyebilirsiniz. Bu, diskin tamamını temizler. [Virtualmachineconfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzları için yeniden görüntü şu anda desteklenmiyor.
 
-2. Havuzunuz bir [Virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)ise, [düğümleri kaldır API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)'sini kullanarak düğümü havuzdan kaldırabilirsiniz. Sonra, bozuk düğümü yeni bir düğüm ile değiştirmek için havuzu yeniden büyüyebilirsiniz.
+2. Havuzunuz bir [Virtualmachineconfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)ise, [düğümleri kaldır API](/rest/api/batchservice/pool/removenodes)'sini kullanarak düğümü havuzdan kaldırabilirsiniz. Sonra, bozuk düğümü yeni bir düğüm ile değiştirmek için havuzu yeniden büyüyebilirsiniz.
 
-3.  Görev verileri hala düğümlerde olan eski tamamlanmış işleri veya eski tamamlanmış görevleri silin. Hangi işlerin/görev verilerinin düğümlerde olduğunu bir ipucu için, düğümdeki [Recenttasks koleksiyonuna](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) veya [düğümdeki dosyalara](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)bakabilirsiniz. İşin silinmesi işteki tüm görevleri siler ve işteki görevleri silmek, düğümdeki görev dizinlerindeki verilerin silinmesine ve bu sayede boş alan boşaltmasını sağlayacaktır. Yeterli alan boşaltdıktan sonra, düğümü yeniden başlatın ve "kullanılamaz" durumundan sonra "boşta" ' dan "boş" durumuna geçer.
+3.  Görev verileri hala düğümlerde olan eski tamamlanmış işleri veya eski tamamlanmış görevleri silin. Hangi işlerin/görev verilerinin düğümlerde olduğunu bir ipucu için, düğümdeki [Recenttasks koleksiyonuna](/rest/api/batchservice/computenode/get#taskinformation) veya [düğümdeki dosyalara](/rest/api/batchservice/file/listfromcomputenode)bakabilirsiniz. İşin silinmesi işteki tüm görevleri siler ve işteki görevleri silmek, düğümdeki görev dizinlerindeki verilerin silinmesine ve bu sayede boş alan boşaltmasını sağlayacaktır. Yeterli alan boşaltdıktan sonra, düğümü yeniden başlatın ve "kullanılamaz" durumundan sonra "boşta" ' dan "boş" durumuna geçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

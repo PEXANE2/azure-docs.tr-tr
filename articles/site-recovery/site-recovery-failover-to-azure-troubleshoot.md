@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834739"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971088"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makinenin Azure 'a yük devretmesinde oluşan hata sorunlarını giderme
 
@@ -74,6 +74,10 @@ Azure 'da herhangi bir makineyi getirmek için, Azure ortamı bazı sürücüler
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Sanal makinede gri bağlantı düğmesi nedeniyle yük devredilecek sanal makineye/RDP/SSH bağlantısı kurulamıyor
 
+RDP sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+
+SSH sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)
+
 Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A bir Express Route veya sıteden siteye VPN bağlantısı aracılığıyla bağlı değilseniz,
 
 1. **Sanal makine**  >  **ağı**' na gidin, gerekli ağ arabiriminin adına tıklayın.  ![Ağ arabirimi](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -130,7 +134,7 @@ Bu sorun, yük devretmeyle karşılaşmış olan sanal makineyi yeniden korumaya
 
 Bir sanal makineyi yeniden koruma hakkında daha fazla bilgi için bkz. [Azure 'a yük devretmeden sonra makineleri şirket içi bir siteye yeniden koruma ve geri](vmware-azure-reprotect.md)dönme.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 Ana hedefi, kaynak makinenizi yöneten vCenter 'da el ile oluşturun. Veri deposu, sonraki vCenter Discovery ve Refresh Fabric işlemlerinden sonra kullanılabilir olacaktır.
 
@@ -148,7 +152,7 @@ Bu hata, yükleme günlüğünde aşağıdaki dizeler tarafından belirtilir:
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
  
 1. Yapılandırma sunucusu VM 'sinde, bir komut istemi açın ve aşağıdaki komutları kullanarak proxy ayarlarını doğrulayın:
 

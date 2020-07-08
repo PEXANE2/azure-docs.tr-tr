@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: d5aef82fe29ec544e29d7c65950e719110ad276a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391868"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970969"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -43,7 +43,7 @@ Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliği
 |Yerleşik rol  |Açıklama  |
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir. Okuma/yazma anahtarlarının alınmasına izin verir. |
-|[Cosmos DB hesabı okuyucusu](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
+|[Cosmos DB hesabı okuyucu rolü](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
 
 > [!IMPORTANT]
 > Azure Cosmos DB ' de rol tabanlı erişim denetimi için destek yalnızca denetim düzlemi işlemleri için geçerlidir. Veri düzlemi işlemleri, ana anahtarlar veya kaynak belirteçleri aracılığıyla güvenli hale getirilir. Daha fazla bilgi için bkz. [verilere güvenli erişim](secure-access-to-data.md) makalesi.

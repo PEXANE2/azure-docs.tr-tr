@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
-description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Kaynak Yöneticisi diğer adları arama hakkında bilgi edinin.
+description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azure Resource Manager diğer adları arama hakkında bilgi edinin.
 ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 94d865e4a810fbebd8495153f97f9d1e3227e8af
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888501"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970765"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -121,7 +121,7 @@ Tek bir abonelikte yüzlerce veya binlerce kaynağa sahip müşteriler, kaynakla
 
 ## <a name="discover-aliases-for-resource-properties"></a>Kaynak özellikleri için diğer adları keşfet
 
-Bir kaynak seçildiğinde, arama arabiriminden veya TreeView 'da seçilerek, Azure Ilke uzantısı bu kaynağı temsil eden JSON dosyasını ve tüm Kaynak Yöneticisi özellik değerlerini açar.
+Bir kaynak seçildiğinde, arama arabiriminden veya TreeView 'da seçilerek, Azure Ilke uzantısı bu kaynağı temsil eden JSON dosyasını ve tüm Azure Resource Manager özellik değerlerini açar.
 
 Bir kaynak açıldıktan sonra, Kaynak Yöneticisi özellik adı veya değerinin üzerine gelindiğinde, varsa Azure Ilkesi diğer adı görüntülenir. Bu örnekte, kaynak bir `Microsoft.Compute/virtualMachines` kaynak türüdür ve **Properties. Storageprofile. ImageReference. teklifin** özelliği üzerine düştir. Vurgulama, eşleşen diğer adları gösterir.
 
