@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 95723bbcfc5573567bee4a433b9d33908b91f5f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829372"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Kaber ile elastik veritabanı istemci kitaplığını kullanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,6 +64,7 @@ Bu gözlemler, paber için elastik veritabanı istemci kitaplığı tarafından 
 
 Bu kod örneği (eşlik eden örnekten), sağ parça bağlantısını aracıya bağlamak için, uygulama tarafından, uygulamanın, parçalara ayırma anahtarının sağlandığı yaklaşımı gösterir.   
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
                      connectionString: connStrBldr.ConnectionString,
@@ -76,6 +77,7 @@ Bu kod örneği (eşlik eden örnekten), sağ parça bağlantısını aracıya b
                             VALUES (@name)", new { name = blog.Name }
                         );
     }
+```
 
 [Openconnectionforkey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API 'sine yapılan çağrı, bir SQL istemci bağlantısının varsayılan oluşturma ve açma işlemini değiştirir. [Openconnectionforkey](https://msdn.microsoft.com/library/azure/dn807226.aspx) çağrısı, verilere bağımlı yönlendirme için gerekli olan bağımsız değişkenleri alır: 
 
@@ -87,6 +89,7 @@ Parça eşleme nesnesi, verilen parçalı anahtar için parçalama ile aynı par
 
 Sorgular çok çok aynı şekilde çalışır. ilk önce bağlantıyı istemci API 'sinden [Openconnectionforkey](https://msdn.microsoft.com/library/azure/dn807226.aspx) kullanarak açarsınız. Daha sonra, SQL sorgunuzun sonuçlarını .NET nesneleriyle eşlemek için normal kaber uzantı yöntemlerini kullanın:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
                     connectionString: connStrBldr.ConnectionString,
@@ -104,6 +107,7 @@ Sorgular çok çok aynı şekilde çalışır. ilk önce bağlantıyı istemci A
                 Console.WriteLine(item.Name);
             }
     }
+```
 
 DDR bağlantısı olan **using** bloğunun, blok içindeki tüm veritabanı Işlemlerini, tenantId1 'in tutulduğu bir parçaya kadar bir parçadır. Sorgu yalnızca geçerli parça üzerinde depolanan blogları döndürür, ancak diğer parçalara depolanamazlar. 
 
@@ -112,6 +116,7 @@ Kaber, veritabanı uygulamaları geliştirirken veritabanına daha kolay ve soyu
 
 Uygulamanızda Daperextensions kullanılması, veritabanı bağlantılarının oluşturulma ve yönetilme şeklini değiştirmez. Uygulamanın bağlantıları açma sorumluluğu hala vardır ve uzantı yöntemleri tarafından düzenli SQL Istemci bağlantısı nesneleri beklenmektedir. Yukarıda özetlenen [Openconnectionforkey](https://msdn.microsoft.com/library/azure/dn807226.aspx) öğesine güvenebiliriz. Aşağıdaki kod örnekleri de gösterildiği gibi tek değişiklik, artık T-SQL deyimlerini yazmanız gerekmez:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -120,9 +125,11 @@ Uygulamanızda Daperextensions kullanılması, veritabanı bağlantılarının o
            var blog = new Blog { Name = name2 };
            sqlconn.Insert(blog);
     }
+```
 
 Sorgu için kod örneği aşağıda verilmiştir: 
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -136,12 +143,14 @@ Sorgu için kod örneği aşağıda verilmiştir:
                Console.WriteLine(item.Name);
            }
     }
+```
 
 ### <a name="handling-transient-faults"></a>Geçici hataları işleme
 Microsoft düzenleri & Yöntemler ekibi, uygulama geliştiricilerinin bulutta çalışırken karşılaşılan yaygın geçici hata koşullarını azaltmalarına yardımcı olmak için [geçici hata Işleme uygulama bloğunu](https://msdn.microsoft.com/library/hh680934.aspx) yayımladı. Daha fazla bilgi için, bkz. [Tüm Anferance, geçici hata Işleme uygulama bloğunu kullanma](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Kod örneği, geçici hatalara karşı korumak için geçici hata kitaplığını kullanır. 
 
+```csharp
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
        using (SqlConnection sqlconn =
@@ -151,6 +160,7 @@ Kod örneği, geçici hatalara karşı korumak için geçici hata kitaplığın�
               sqlconn.Insert(blog);
           }
     });
+```
 
 Yukarıdaki koddaki **SqlDatabaseUtils. SqlRetryPolicy** , yeniden deneme sayısı 10 olan bir **SqlDatabaseTransientErrorDetectionStrategy** olarak tanımlanır ve yeniden denemeler arasında 5 saniye bekleyin. İşlem kullanıyorsanız, yeniden deneme kapsamınızda geçici bir hata olması durumunda işlemin başlangıcına doğru gitdiğinizden emin olun.
 

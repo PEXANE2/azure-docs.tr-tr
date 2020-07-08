@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807596"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılmada yapılandırma sonrası görevler
 
@@ -86,15 +86,10 @@ Bu yükleyici, kullanıcı bağlamında çalışan cihaz sisteminde zamanlanmı�
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Grup ilkesini cihaz kaydına izin verecek şekilde yapılandırma
 
-* Active Directory bir Grup İlkesi nesnesi oluşturun--zaten oluşturulmadıysa.
-* Adlandırın (ex-hibrit Azure AD JOIN).
-* Düzenle & şuraya git: bilgisayar yapılandırma > Ilkeleri > Yönetim Şablonları Windows bileşenleri > cihaz kaydı
-* Etkinleştir: etki alanına katılmış bilgisayarları cihaz olarak kaydetme
-* Uygula ve Tamam ' a tıklayın.
-* GPO 'YU tercih ettiğiniz konuma (kuruluş birimi, güvenlik grubu veya tüm cihazların etki alanı) bağlayın.
+Ayrı cihazlarda karma Azure AD JOIN 'e izin verme hakkında daha fazla bilgi için bkz. [karma Azure AD JOIN 'In denetimli doğrulaması](../devices/hybrid-azuread-join-control.md).
 
->[!NOTE]
->2012R2 için ilke ayarları, **bilgisayar yapılandırması > ilkeler > Yönetim Şablonları > Windows bileşenleri > Workplace Join > çalışma alanına katılma istemci bilgisayarları**
+> [!NOTE]
+> 2012 R2 için ilke ayarları **> > Yönetim Şablonları > Windows bileşenleri > Workplace Join >, istemci bilgisayarlarına otomatik çalışma alanına katılma**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Cihaz geri yazmayı yapılandırma](how-to-connect-device-writeback.md)

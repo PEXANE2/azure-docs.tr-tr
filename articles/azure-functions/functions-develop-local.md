@@ -3,12 +3,12 @@ title: Azure işlevlerini yerel olarak geliştirin ve çalıştırın
 description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarınızdaki Azure işlevlerini nasıl kodleyeceğinizi ve test leyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef59c57bf4e2ba1684c3e3b43357efad0da9806f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74230641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829389"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure İşlevleri’ni yerel olarak kodlama ve test etme
 
@@ -27,16 +27,16 @@ Yerel bilgisayarınızda işlevleri geliştirme yönteminiz, [dilinize](supporte
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Bu yerel geliştirme ortamlarının her biri, işlev uygulaması projeleri oluşturmanıza ve yeni işlevler oluşturmak için önceden tanımlanmış Işlevler şablonlarını kullanmanıza imkan sağlar. , İşlevlerinizi diğer uygulamalarda olduğu gibi kendi makinenizde gerçek Işlevler çalışma zamanına karşı sınayabilmeniz ve hatalarını ayıklayabilmeniz için temel araçları kullanır. Ayrıca, bu ortamların herhangi birinden işlev uygulama projenizi Azure 'a yayımlayabilirsiniz.  
+Bu yerel geliştirme ortamlarının her biri, işlev uygulaması projeleri oluşturmanıza ve yeni işlevler oluşturmak için önceden tanımlanmış Işlevler şablonlarını kullanmanıza imkan sağlar. , İşlevlerinizi diğer uygulamalarda olduğu gibi kendi makinenizde gerçek Işlevler çalışma zamanına karşı sınayabilmeniz ve hatalarını ayıklayabilmeniz için temel araçları kullanır. Ayrıca, bu ortamların herhangi birinden işlev uygulama projenizi Azure 'a yayımlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + Visual Studio 2019 kullanarak derlenmiş C# işlevlerinin yerel geliştirmesi hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Azure Işlevleri geliştirme](functions-develop-vs.md).
-+ Bir Mac, Linux veya Windows bilgisayarında VS Code kullanarak işlevlerin yerel geliştirmesi hakkında daha fazla bilgi edinmek için, bkz. [vs Code Azure Işlevlerini dağıtma](/azure/javascript/tutorial-vscode-serverless-node-01).
++ Bir Mac, Linux veya Windows bilgisayarında VS Code kullanarak işlevlerin yerel geliştirmesi hakkında daha fazla bilgi edinmek için, bkz. [vs Code Azure Işlevlerini dağıtma](/azure/developer/javascript/tutorial-vscode-serverless-node-01).
 + Komut isteminden veya terminalden işlev geliştirme hakkında daha fazla bilgi için bkz. [Azure Functions Core Tools Ile çalışma](functions-run-local.md).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portal]: https://portal.azure.com 
+[Azure portalındaki]: https://portal.azure.com
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

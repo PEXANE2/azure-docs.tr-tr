@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611637"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -16,13 +16,13 @@ ms.locfileid: "80991220"
 
 Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yükseltmeye yönelik genel strateji şu şekilde yapılır:
 
-1. Bu düğüm türü için, ancak sanal makine ölçek kümesi dağıtım şablonunun `osDisk` bölümüne eklenen [manageddisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) nesnesi ile, başka bir şekilde yinelenen bir sanal makine ölçek kümesi dağıtın. Yeni ölçek kümesi, müşterilerinizin geçiş sırasında hizmet kesintisi yaşamamasını sağlamak için, orijinalle aynı yük dengeleyiciye/IP 'ye bağlanmalıdır.
+1. Bu düğüm türü için, ancak sanal makine ölçek kümesi dağıtım şablonunun bölümüne eklenen [Manageddisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) nesnesi ile, başka bir şekilde yinelenen bir sanal makine ölçek kümesi dağıtın `osDisk` . Yeni ölçek kümesi, müşterilerinizin geçiş sırasında hizmet kesintisi yaşamamasını sağlamak için, orijinalle aynı yük dengeleyiciye/IP 'ye bağlanmalıdır.
 
 2. Hem özgün hem de yükseltilen ölçek kümeleri yan yana çalışırken, sistem hizmetlerinin (veya durum bilgisi olan hizmetlerin çoğaltmalarının) yeni ölçek kümesine geçişini sağlamak için özgün düğüm örneklerini tek seferde devre dışı bırakın.
 
 3. Kümenin ve yeni düğümlerin sağlıklı olduğunu doğrulayın, sonra silinen düğümlerin orijinal ölçek kümesini ve düğüm durumunu kaldırın.
 
-Bu makale, yönetilen diskleri kullanmak için örnek bir kümenin birincil düğüm türünü yükseltme adımlarında size yol gösterir, ancak herhangi bir küme kapalı kalma süresini önleyerek (aşağıdaki nota bakın). Örnek test kümesinin ilk durumu, beş düğümlü tek bir ölçek kümesi tarafından desteklenen [gümüş dayanıklılığa](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)sahip bir düğüm türünden oluşur.
+Bu makale, yönetilen diskleri kullanmak için örnek bir kümenin birincil düğüm türünü yükseltme adımlarında size yol gösterir, ancak herhangi bir küme kapalı kalma süresini önleyerek (aşağıdaki nota bakın). Örnek test kümesinin ilk durumu, beş düğümlü tek bir ölçek kümesi tarafından desteklenen [gümüş dayanıklılığa](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)sahip bir düğüm türünden oluşur.
 
 > [!CAUTION]
 > Bu yordamı yalnızca küme DNS ( [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)erişimi gibi) üzerinde bağımlılıklara sahipseniz bir kesinti yaşanacaktır. [Ön uç hizmetleri için mimari en iyi uygulaması](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) , düğüm değiştirmeyi kesinti olmadan mümkün hale getirmek için düğüm türlerinizin önünde bazı tür [yük dengeleyiciler](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) içermelidir.
@@ -31,7 +31,7 @@ Yükseltme senaryosunu tamamlaması için kullanacağımız Azure Resource Manag
 
 ## <a name="set-up-the-test-cluster"></a>Test kümesini ayarlama
 
-İlk Service Fabric test kümesini ayarlayalim. İlk olarak, bu senaryoyu gerçekleştirmek için kullanacağımız Azure Resource Manager örnek şablonlarını [indirin](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) .
+İlk Service Fabric test kümesini ayarlayalim. İlk olarak, bu senaryoyu gerçekleştirmek için kullanacağımız Azure Resource Manager örnek şablonları [indirin](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) .
 
 Ardından, Azure hesabınızda oturum açın.
 
@@ -44,7 +44,7 @@ Aşağıdaki komutlar, otomatik olarak imzalanan yeni bir sertifika oluşturma v
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Kendinden imzalı bir sertifika oluşturma ve kümeyi dağıtma
 
-İlk olarak, Service Fabric küme dağıtımı için gereken değişkenleri atayın. Belirli hesabınız ve ortamınız `resourceGroupName`için `certSubjectName`, `parameterFilePath`,, `templateFilePath` ve değerlerini ayarlayın:
+İlk olarak, Service Fabric küme dağıtımı için gereken değişkenleri atayın. `resourceGroupName` `certSubjectName` `parameterFilePath` `templateFilePath` Belirli hesabınız ve ortamınız için,,, ve değerlerini ayarlayın:
 
 ```powershell
 # Assign deployment variables
@@ -57,9 +57,9 @@ $parameterFilePath = "C:\Initial-1NodeType-UnmanagedDisks.parameters.json"
 ```
 
 > [!NOTE]
-> Yeni bir Service Fabric `certOutputFolder` kümesi dağıtmak için komutunu çalıştırmadan önce, konumun yerel makinenizde mevcut olduğundan emin olun.
+> `certOutputFolder`Yeni bir Service Fabric kümesi dağıtmak için komutunu çalıştırmadan önce, konumun yerel makinenizde mevcut olduğundan emin olun.
 
-Ardından [*ilk-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) dosyasını açın ve değerlerini, PowerShell 'de ayarladığınız `clusterName` dinamik `dnsName` değerlere karşılık gelen ve ile değiştirin ve değişikliklerinizi kaydedin.
+Sonra, [*Initial-1NodeType-UnmanagedDisks.parameters.jsdosya üzerinde*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) açın ve değerlerini, `clusterName` `dnsName` PowerShell 'de ayarladığınız dinamik değerlere karşılık gelecek şekilde ayarlayın ve değişikliklerinizi kaydedin.
 
 Sonra Service Fabric test kümesini dağıtın:
 
@@ -74,7 +74,7 @@ New-AzServiceFabricCluster `
     -ParameterFile $parameterFilePath
 ```
 
-Dağıtım tamamlandıktan sonra, yerel makinenizde *. pfx* dosyasını (`$certPfx`) bulun ve sertifika deponuza içeri aktarın:
+Dağıtım tamamlandıktan sonra, yerel makinenizde *. pfx* dosyasını () bulun `$certPfx` ve sertifika deponuza içeri aktarın:
 
 ```powershell
 cd c:\certificates
@@ -99,9 +99,9 @@ $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourc
 $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
 ```
 
-[*Initial-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) dosyasını açın ve değerlerini `clusterName` ve `dnsName` benzersiz bir şekilde değiştirin.
+Dosyasında [*Initial-1NodeType-UnmanagedDisks.parameters.js*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) açın ve değerlerini `clusterName` ve `dnsName` benzersiz bir şekilde değiştirin.
 
-Son olarak, küme için bir kaynak grubu adı belirleyin ve `templateFilePath` *Ilk-1Nodetype-unmanageddisks* dosyalarınızın ve `parameterFilePath` konumlarını ayarlayın:
+Son olarak, küme için bir kaynak grubu adı belirleyin ve `templateFilePath` `parameterFilePath` *Ilk-1Nodetype-unmanageddisks* dosyalarınızın ve konumlarını ayarlayın:
 
 > [!NOTE]
 > Belirtilen kaynak grubu zaten var olmalıdır ve Key Vault aynı bölgede yer almalıdır.
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Yeni kümeye bağlanma ve sistem durumunu denetleme
 
-Kümeye bağlanın ve düğümlerin tümünün sağlam olduğundan emin olun (kümeniz için `clusterName` ve `thumb` değişkenlerini değiştirerek):
+Kümeye bağlanın ve düğümlerin tümünün sağlam olduğundan emin olun ( `clusterName` `thumb` kümeniz için ve değişkenlerini değiştirerek):
 
 ```powershell
 # Connect to the cluster
@@ -153,7 +153,7 @@ Bununla birlikte, yükseltme yordamına başlamaya hazırız.
 
 ## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Birincil düğüm türü için yükseltilmiş bir ölçek kümesi dağıtma
 
-Bir düğüm türünü yükseltmek veya *dikey olarak ölçeklendirmek*için, istenen yükseltme/değişiklik ve kendi ayrı alt ağını ve gelen NAT adres havuzunu içermesi dışında, bu düğüm türünün sanal makine ölçek kümesinin bir kopyasını dağıtmalı (aynı `nodeTypeRef`, `subnet`ve `loadBalancerBackendAddressPools`' a başvuru dahil olmak üzere). Birincil düğüm türünü yükselttireceğiz, yeni ölçek kümesi yalnızca özgün ölçek kümesi gibi birincil (`isPrimary: true`) olarak işaretlenir. (Birincil olmayan düğüm türü yükseltmeleri için bunu atlayın.)
+Bir düğüm türünü yükseltmek veya *dikey olarak ölçeklendirmek*için, `nodeTypeRef` `subnet` `loadBalancerBackendAddressPools` istenen yükseltme/değişiklik ve kendi ayrı alt ağını ve gelen NAT adres havuzunu içermesi dışında, bu düğüm türünün sanal makine ölçek kümesinin bir kopyasını dağıtmalı (aynı, ve ' a başvuru dahil olmak üzere). Birincil düğüm türünü yükselttireceğiz, yeni ölçek kümesi `isPrimary: true` yalnızca özgün ölçek kümesi gibi birincil () olarak işaretlenir. (Birincil olmayan düğüm türü yükseltmeleri için bunu atlayın.)
 
 Kolaylık olması için, *yükseltme-1NodeType-2ScaleSets-ManagedDisks* [şablonunda](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) ve [Parameters](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) dosyalarında sizin için gerekli değişiklikler zaten yapıldı.
 
@@ -165,7 +165,7 @@ Birincil düğüm türü için yükseltilmiş ölçek kümesi eklemek üzere öz
 
 #### <a name="parameters"></a>Parametreler
 
-Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekleyin. `vmNodeType1Name` Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
+Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekleyin. `vmNodeType1Name`Yeni ölçek kümesinin benzersiz olduğunu, sayı ve boyut değerlerinin ise orijinal ölçek kümesiyle aynı olduğunu unutmayın.
 
 **Şablon dosyası**
 
@@ -204,7 +204,7 @@ Yeni ölçek kümesinin örnek adı, sayısı ve boyutu için parametreler ekley
 
 ### <a name="variables"></a>Değişkenler
 
-Dağıtım şablonu `variables` bölümünde, yeni ölçek KÜMESININ gelen NAT adres havuzu için bir giriş ekleyin.
+Dağıtım şablonu `variables` bölümünde, yeni ölçek kümesinin gelen NAT adres havuzu için bir giriş ekleyin.
 
 **Şablon dosyası**
 
@@ -260,19 +260,19 @@ Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümes
 
 Güncelleştirilmiş yapılandırmayı dağıtmak için öncelikle Key Vault depolanan küme sertifikanız için birkaç başvuru elde edersiniz. Bu değerleri bulmanın en kolay yolu Azure portal kullanmaktır. Gerekenler:
 
-* **Küme sertifikanızın Key Vault URL 'SI.** Azure Portal ' Key Vault,*istediğiniz sertifika* > **gizli tanımlayıcı tanımlarınızı** **seçin:** > 
+* **Küme sertifikanızın Key Vault URL 'SI.** Azure Portal ' Key Vault, **Certificates**  >  *istediğiniz sertifika*  >  **gizli tanımlayıcı tanımlarınızı**seçin:
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **Küme sertifikanızın parmak izi.** (Bu durum muhtemelen, sistem durumunu denetlemek için [ilk kümeye bağlandıysanız](#connect-to-the-new-cluster-and-check-health-status) zaten var.) Azure Portal ' de aynı sertifika dikey penceresinden (*istediğiniz sertifika***sertifikaları** > ), **X. 509.440 SHA-1 parmak izini (onaltılı)** kopyalayın:
+* **Küme sertifikanızın parmak izi.** (Bu durum muhtemelen, sistem durumunu denetlemek için [ilk kümeye bağlandıysanız](#connect-to-the-new-cluster-and-check-health-status) zaten var.) Azure Portal ' de aynı sertifika dikey**Certificates**penceresinden (  >  *istediğiniz sertifika*sertifikaları), **X. 509.440 SHA-1 parmak izini (onaltılı)** kopyalayın:
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **Key Vault kaynak KIMLIĞI.** Azure Portal Key Vault **Özellikler** > **kaynak kimliği**' ni seçin.
+* **Key Vault kaynak KIMLIĞI.** Azure Portal Key Vault **Özellikler**  >  **kaynak kimliği**' ni seçin.
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
@@ -280,7 +280,7 @@ Güncelleştirilmiş yapılandırmayı dağıtmak için öncelikle Key Vault dep
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
 
-`parameterFilePath` Ve `templateFilePath` gereken şekilde ayarlayın ve ardından aşağıdaki komutu çalıştırın:
+`parameterFilePath`Ve `templateFilePath` gereken şekilde ayarlayın ve ardından aşağıdaki komutu çalıştırın:
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.

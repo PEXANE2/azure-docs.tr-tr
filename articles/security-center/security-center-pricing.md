@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612801"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801147"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Gelişmiş güvenlik için Standart katmana yükseltme
 
@@ -63,7 +63,9 @@ Güvenlik Merkezi, karma bulut iş yükleriniz için aşağıdakiler dahil geli�
 - **Güvenlik uyarıları** -gelişmiş analizler ve Microsoft Intelligent Security Graph gelişen Cyber saldırıları üzerinden bir kenar almak için kullanın. , Saldırıları ve sıfır günlük güvenlik açıklarını belirlemek için yerleşik davranış analizi ve makine öğrenimi özelliğinden yararlanın. Gelen saldırılar ve ihlal sonrası etkinlik için ağları, makineleri ve bulut hizmetlerini izleyin. Etkileşimli araçlar ve bağlamsal tehdit zekasıyla araştırmayı kolaylaştırın.
 - **Sanal makineler Için güvenlik açığı taraması** -bir tarayıcıyı, güvenlik açığı yönetimi için sektörün en gelişmiş çözümünü sağlayan tüm sanal makinelerinize kolayca dağıtın. Bulguları doğrudan güvenlik merkezi içinde görüntüleyin, araştırın ve düzeltin. 
 - **Erişim ve uygulama denetimleri** -belirli iş yüklerinize yönelik makine öğrenimi destekli beyaz listeleme önerilerini uygulayarak kötü amaçlı yazılımları ve diğer istenmeyen uygulamaları engelleyin. Azure VM 'lerinde yönetim bağlantı noktalarına tam zamanında, denetimli erişimle ağ saldırısı yüzeyini küçültün. Bu, deneme yanılma ve diğer ağ saldırılarına maruz kalma olasılığını önemli ölçüde azaltır.
-- **Kapsayıcı güvenlik özellikleri** -Kapsayıcılı ortamlarınızda güvenlik açığı yönetimi ve gerçek zamanlı tehdit korumasından yararlanın. Kapsayıcı kayıt defterleri kaynağı etkinleştirilirken, tüm özellikler etkinleştirilene kadar bu işlem 12 saat kadar sürebilir.
+- **Kapsayıcı güvenlik özellikleri** -Kapsayıcılı ortamlarınızda güvenlik açığı yönetimi ve gerçek zamanlı tehdit korumasından yararlanın. Kapsayıcı kayıt defterleri kaynağı etkinleştirilirken, tüm özellikler etkinleştirilene kadar bu işlem 12 saat kadar sürebilir. Ücretler, bağlı kayıt defterinize gönderilen benzersiz kapsayıcı görüntülerinin sayısını temel alır. Bir görüntü bir kez tarandıktan sonra, bir kez değiştirilmediği ve bir kez itilemediği takdirde tekrar ücretlendirilmeyecektir. 
+
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

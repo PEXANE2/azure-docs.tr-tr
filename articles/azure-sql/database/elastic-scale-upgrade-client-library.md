@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 8610342c1d01deceebaf1f4998dd04181e5ddc21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829508"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>En son elastik veritabanı istemci kitaplığını kullanmak için bir uygulamayı yükseltme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,12 +51,13 @@ Bu adımları sırasıyla gerçekleştirmek, meta veri nesneleri güncelleştiri
 2. Bir komut Istemi açın, aynı klasöre gidin ve komutu verin:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
 3. Az önce indirdiğiniz yeni istemci DLL sürümünü içeren alt klasöre gidin, örneğin:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Elastik veritabanı istemci yükseltme betiğini [betik merkezi](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)' nden INDIRIN ve DLL dosyasını içeren klasöre kaydedin.
-5. Bu klasörden, komut isteminden "PowerShell .\Upgrade.exe" komutunu çalıştırın ve istemleri izleyin.
+5. Bu klasörden komut isteminden "PowerShell .\upgrade.ps1" komutunu çalıştırın ve istemleri izleyin.
 
 ***Seçenek 2: C kullanarak meta verileri yükseltme #***
 
 Alternatif olarak, ShardMapManager ' ı açan, tüm parçalar üzerinde yineleme yapan bir Visual Studio uygulaması oluşturun ve bu örnekte olduğu gibi [Upgradelocalstore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) ve [upgradeglobalstore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) yöntemlerini çağırarak meta veri yükseltmesini gerçekleştirir:
 
+```csharp
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
        (connStr, ShardMapManagerLoadPolicy.Lazy);
@@ -67,6 +68,7 @@ Alternatif olarak, ShardMapManager ' ı açan, tüm parçalar üzerinde yineleme
     {
        smm.UpgradeLocalStore(loc);
     }
+```
 
 Meta veri yükseltmeleri için bu teknikler, zarar olmadan birden çok kez uygulanabilir. Örneğin, eski bir istemci sürümü yanlışlıkla zaten güncelleştirildikten sonra bir parça oluşturursa, altyapınız genelinde en son meta veri sürümünün mevcut olduğundan emin olmak için yükseltmeyi tüm parçalar arasında yeniden çalıştırabilirsiniz.
 

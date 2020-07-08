@@ -3,12 +3,12 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 874069ec9ce9870c3deba37387ee470de1d1699f
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807273"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -39,10 +39,10 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| İstekler ve özel durumlar |Yes |Yes |
-| [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
+| İstekler ve özel durumlar |Yes |Evet |
+| [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Evet |
 | [Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
+| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Evet |
 | [Özel telemetri için API][api] |Evet |Hayır |
 | [İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md) |Evet |Hayır |
 | [Sayfa görünümü ve kullanıcı verileri](../../azure-monitor/app/javascript.md) |Evet |Hayır |
@@ -298,7 +298,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
  * Bağımlılık çağrıları (.NET 4.5); bağımlılık çağrılarındaki dönüş değerleri (.NET 4.6).
  * Özel durum yığın izleme değerleri.
 
-[Daha fazla bilgi edinin](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[Daha fazla bilgi](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 

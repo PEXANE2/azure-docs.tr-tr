@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611739"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terimlere genel bakış
 
@@ -116,7 +116,7 @@ Uygulamaları Görüntü Deposu hizmetine dağıtma hakkında daha fazla bilgi i
 
 **Onarım Yöneticisi hizmeti**: Bu, güvenli, automatable ve saydam bir şekilde bir kümede onarım eylemlerinin gerçekleştirilmesini sağlayan isteğe bağlı bir sistem hizmetidir. Onarım Yöneticisi, ' de kullanılır:
 
-   - [Gümüş ve altın dayanıklılık](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric kümelerinde Azure bakım onarımları gerçekleştirme.
+   - [Gümüş ve altın dayanıklılık](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric kümelerinde Azure bakım onarımları gerçekleştirme.
    - [Düzeltme Eki düzenleme uygulaması](service-fabric-patch-orchestration-application.md) için onarım eylemlerini yürütme
 
 ## <a name="deployment-and-application-models"></a>Dağıtım ve uygulama modelleri

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cd0116a417d2710d330c4be406a5d9d770f76461
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829423"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Bulut veritabanlarında dağıtılmış işlemler
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Elastik veritabanı işlemleri aşağıdaki senaryoları hedefler:
 
 ## <a name="installation-and-migration"></a>Yükleme ve geçiş
 
-SQL veritabanı 'ndaki elastik veritabanı işlemlerine yönelik yetenekler, .NET kitaplıkları System. Data. dll ve System. Transactions. dll güncelleştirmeleri aracılığıyla sağlanır. Dll 'Ler, kararlılık sağlamak için gerektiğinde iki aşamalı yürütmenin kullanılmasını sağlar. Elastik veritabanı işlemlerini kullanarak uygulama geliştirmeye başlamak için [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) veya sonraki bir sürümü yüklemek. .NET Framework 'ün önceki bir sürümünde çalışırken, işlemler dağıtılmış bir işleme yükseltilmeyecektir ve bir özel durum oluşur.
+SQL veritabanı 'ndaki elastik veritabanı işlemlerine yönelik yetenekler, System.Data.dll .NET kitaplıklarına yönelik güncelleştirmeler aracılığıyla sağlanır ve System.Transactions.dll. Dll 'Ler, kararlılık sağlamak için gerektiğinde iki aşamalı yürütmenin kullanılmasını sağlar. Elastik veritabanı işlemlerini kullanarak uygulama geliştirmeye başlamak için [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) veya sonraki bir sürümü yüklemek. .NET Framework 'ün önceki bir sürümünde çalışırken, işlemler dağıtılmış bir işleme yükseltilmeyecektir ve bir özel durum oluşur.
 
 Yükleme sonrasında, System. Transactions içindeki dağıtılmış işlem API 'Lerini SQL veritabanı bağlantılarıyla kullanabilirsiniz. Bu API 'Leri kullanarak mevcut MSDTC uygulamalarınız varsa, 4.6.1 çerçevesini yükledikten sonra, .NET 4,6 için mevcut uygulamalarınızı yeniden oluşturmanız yeterlidir. Projeleriniz .NET 4,6 ' i hedeflerse, yeni çerçeve sürümünden güncelleştirilmiş dll 'Leri otomatik olarak kullanır ve SQL veritabanı bağlantıları ile birlikte dağıtılmış işlem API çağrıları artık başarılı olur.
 
@@ -50,6 +50,7 @@ Elastik veritabanı işlemlerinin MSDTC yüklemesi gerektirmediğinden emin oldu
 
 Aşağıdaki örnek kod, .NET System. Transactions ile tanıdık programlama deneyimini kullanır. TransactionScope sınıfı .NET 'te bir ortam işlemi oluşturur. ("Çevresel işlem" geçerli iş parçacığında bulunan bir işlemdir.) TransactionScope içinde açılan tüm bağlantılar işleme katılır. Farklı veritabanları katılılırsa, işlem otomatik olarak dağıtılmış bir işleme yükseltilir. İşlemin sonucu, bir yürütmeyi göstermek için kapsamın tamamlanacağı şekilde ayarlanarak denetlenir.
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = new SqlConnection(connStrDb1))
@@ -70,12 +71,14 @@ Aşağıdaki örnek kod, .NET System. Transactions ile tanıdık programlama den
 
         scope.Complete();
     }
+```
 
 ### <a name="sharded-database-applications"></a>Parçalı veritabanı uygulamaları
 
 SQL veritabanı için elastik veritabanı işlemleri Ayrıca, genişletilmiş bir veri katmanının bağlantılarını açmak üzere elastik veritabanı istemci kitaplığının OpenConnectionForKey yöntemini kullandığınız dağıtılmış işlemleri koordine etme desteğini destekler. Birçok farklı parçalı anahtar değeri arasındaki değişiklikler için işlem tutarlılığını garanti etmeniz gereken durumları göz önünde bulundurun. Farklı parçalama anahtar değerlerini barındıran parçaların bağlantıları OpenConnectionForKey kullanılarak aracılı yapılır. Genel durumda, bağlantı, işlem garantilerinin dağıtılmış bir işlem gerektirdiğini sağlayan farklı parçalar olabilir.
 Aşağıdaki kod örneğinde bu yaklaşım gösterilmektedir. Bu, shardmap adlı bir değişkenin, elastik veritabanı istemci kitaplığından parça haritasını temsil etmek için kullanıldığını varsayar:
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
@@ -96,6 +99,7 @@ Aşağıdaki kod örneğinde bu yaklaşım gösterilmektedir. Bu, shardmap adlı
 
         scope.Complete();
     }
+```
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Azure Cloud Services için .NET yüklemesi
 
@@ -105,6 +109,7 @@ Azure App Service için, Konuk işletim sistemi yükseltmeleri Şu anda destekle
 
 .NET 4.6.1 yükleyicisinin, .NET 4,6 için yükleyiciden farklı olarak Azure Cloud Services 'ta önyükleme işlemi sırasında daha fazla geçici depolama gerektirebileceğini unutmayın. Yüklemenin başarılı olmasını sağlamak için, aşağıdaki örnekte gösterildiği gibi, LocalResources bölümündeki ServiceDefinition. csdef dosyanızdaki Azure bulut hizmetinizin geçici depolama alanını ve başlangıç göreviniz ortam ayarlarını artırmanız gerekir:
 
+```xml
     <LocalResources>
     ...
         <LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
@@ -123,6 +128,7 @@ Azure App Service için, Konuk işletim sistemi yükseltmeleri Şu anda destekle
             </Environment>
         </Task>
     </Startup>
+```
 
 ## <a name="transactions-across-multiple-servers"></a>Birden çok sunucu arasında işlem
 

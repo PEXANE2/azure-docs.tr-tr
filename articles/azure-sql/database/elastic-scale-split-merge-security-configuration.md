@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e1fdf219d09148d47759652e97797b569e265fa4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829450"
 ---
 # <a name="split-merge-security-configuration"></a>Bölünmüş birleştirme güvenlik yapılandırması
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,8 +38,8 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
 
 ## <a name="tools-to-generate-certificates"></a>Sertifika oluşturmaya yönelik araçlar
 
-* [MakeCert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [Pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Araçları çalıştırmak için
 
@@ -47,7 +47,10 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
   
     Yüklüyse, şuraya gidin:
   
-        %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```console
+    %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```
+
 * Windows 8.1 WDK Al [: takımları ve araçları indirme](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>TLS/SSL sertifikasını yapılandırmak için
@@ -193,12 +196,14 @@ Bu konu yalnızca başvuru amaçlıdır. İçinde özetlenen yapılandırma adı
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 Yürütme
 
-    makecert ^
-      -n "CN=myservice.cloudapp.net" ^
-      -e MM/DD/YYYY ^
-      -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha256 -len 2048 ^
-      -sv MySSL.pvk MySSL.cer
+```console
+makecert ^
+  -n "CN=myservice.cloudapp.net" ^
+  -e MM/DD/YYYY ^
+  -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
+  -a sha256 -len 2048 ^
+  -sv MySSL.pvk MySSL.cer
+```
 
 Özelleştirmek için:
 
@@ -208,7 +213,9 @@ Yürütme
 ## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Otomatik olarak imzalanan TLS/SSL sertifikası için PFX dosyası oluştur
 Yürütme
 
-        pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```console
+pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```
 
 Parolayı girin ve sertifikayı şu seçeneklerle dışarı aktarın:
 
@@ -230,7 +237,9 @@ Sertifikayı var olan veya oluşturulan ile karşıya yükleyin. TLS anahtar çi
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>Hizmet yapılandırma dosyasında TLS/SSL sertifikası Güncelleştir
 Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parmak izine sahip aşağıdaki ayarın parmak izi değerini güncelleştirin:
 
-    <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```console
+<Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="import-tlsssl-certification-authority"></a>TLS/SSL sertifika yetkilisini içeri aktarma
 Hizmetle iletişim kuracak tüm hesap/makinedeki bu adımları izleyin:
@@ -258,13 +267,15 @@ Ardından, CA sertifikası ayarında aynı parmak izini TLS/SSL sertifikasıyla 
 ## <a name="create-a-self-signed-certification-authority"></a>Otomatik olarak imzalanan sertifika yetkilisi oluşturma
 Sertifika yetkilisi görevi görecek otomatik olarak imzalanan bir sertifika oluşturmak için aşağıdaki adımları yürütün:
 
-    makecert ^
-    -n "CN=MyCA" ^
-    -e MM/DD/YYYY ^
-     -r -cy authority -h 1 ^
-     -a sha256 -len 2048 ^
-      -sr localmachine -ss my ^
-      MyCA.cer
+```console
+makecert ^
+-n "CN=MyCA" ^
+-e MM/DD/YYYY ^
+ -r -cy authority -h 1 ^
+ -a sha256 -len 2048 ^
+  -sr localmachine -ss my ^
+  MyCA.cer
+```
 
 Özelleştirmek için
 
@@ -311,13 +322,15 @@ Hizmete erişim yetkisi olan her bireyin kendi özel kullanımları için verilm
 
 Aşağıdaki adımlar, otomatik olarak imzalanan CA sertifikasının oluşturulduğu ve depolandığı makinede çalıştırılmalıdır:
 
-    makecert ^
-      -n "CN=My ID" ^
-      -e MM/DD/YYYY ^
-      -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha256 -len 2048 ^
-      -in "MyCA" -ir localmachine -is my ^
-      -sv MyID.pvk MyID.cer
+```console
+makecert ^
+  -n "CN=My ID" ^
+  -e MM/DD/YYYY ^
+  -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
+  -a sha256 -len 2048 ^
+  -in "MyCA" -ir localmachine -is my ^
+  -sv MyID.pvk MyID.cer
+```
 
 Bkz
 
@@ -330,11 +343,15 @@ Bu komut, bir parolanın oluşturulmasını ve sonra bir kez kullanılmasını i
 ## <a name="create-pfx-files-for-client-certificates"></a>İstemci sertifikaları için PFX dosyaları oluşturma
 Oluşturulan her istemci sertifikası için şunu yürütün:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Bkz
 
-    MyID.pvk and MyID.cer with the filename for the client certificate
+```console
+MyID.pvk and MyID.cer with the filename for the client certificate
+```
 
 Parolayı girin ve sertifikayı şu seçeneklerle dışarı aktarın:
 
@@ -352,7 +369,7 @@ Parolayı girin ve sertifikayı şu seçeneklerle dışarı aktarın:
 ## <a name="copy-client-certificate-thumbprints"></a>İstemci sertifikası parmak izlerini Kopyala
 İstemci sertifikası verilen her bir bireyin, sertifikasının parmak izini almak için, hizmet yapılandırma dosyasına eklenecek bu adımları izlemelidir:
 
-* Certmgr. exe dosyasını çalıştır
+* certmgr.exe Çalıştır
 * Kişisel sekmesini seçin
 * Kimlik doğrulaması için kullanılacak istemci sertifikasına çift tıklayın
 * Açılan Sertifika iletişim kutusunda Ayrıntılar sekmesini seçin.
@@ -379,11 +396,15 @@ Varsayılan ayar, istemci sertifikası iptal durumu için sertifika yetkilisini 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Otomatik olarak imzalanan şifreleme sertifikaları için PFX dosyası oluştur
 Bir şifreleme sertifikası için şunu yürütün:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Bkz
 
-    MyID.pvk and MyID.cer with the filename for the encryption certificate
+```console
+MyID.pvk and MyID.cer with the filename for the encryption certificate
+```
 
 Parolayı girin ve sertifikayı şu seçeneklerle dışarı aktarın:
 
@@ -418,7 +439,7 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 ## <a name="find-certificate"></a>Sertifika bul
 Şu adımları uygulayın:
 
-1. MMC. exe ' yi çalıştırın.
+1. mmc.exe çalıştırın.
 2. Dosya-> ek bileşen Ekle/Kaldır...
 3. **Sertifikalar**' ı seçin.
 4. **Ekle**'ye tıklayın.

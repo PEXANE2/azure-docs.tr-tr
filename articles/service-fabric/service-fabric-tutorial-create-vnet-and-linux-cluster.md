@@ -4,12 +4,12 @@ description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service F
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611705"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure sanal ağına bir Linux Service Fabric kümesi dağıtma
 
@@ -34,12 +34,12 @@ Aşağıdaki Resource Manager şablonu dosyalarını indirin:
 Ubuntu 16,04 LTS için:
 
 * [AzureDeploy.json][template]
-* [AzureDeploy. Parameters. JSON][parameters]
+* [ÜzerindeAzureDeploy.Parameters.js][parameters]
 
 Ubuntu 18,04 LTS için:
 
 * [AzureDeploy.json][template2]
-* [AzureDeploy. Parameters. JSON][parameters2]
+* [ÜzerindeAzureDeploy.Parameters.js][parameters2]
 
 İki şablon arasındaki fark, **Vmımagesku** özniteliğidir ve "18,04-LTS" olarak ayarlanmıştır ve her bir düğümün **typehandlerversion** ayarı 1,1 olarak ayarlanmıştır.
 
@@ -54,8 +54,8 @@ Bu şablon, bir sanal ağa yedi sanal makine ve üç düğümlü türden oluşan
 * İşletim sistemi: (Ubuntu 16,04 LTS/Ubuntu 18,04 LTS) (şablon parametrelerinde yapılandırılabilir)
 * sertifikanın güvenliğinin sağlanması (şablon parametrelerinde yapılandırılabilir)
 * [DNS hizmeti](service-fabric-dnsservice.md) etkin
-* Bronz [dayanıklılık düzeyi](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (şablon parametrelerinde yapılandırılabilir)
-* Gümüş [güvenilirlik düzeyi](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (şablon parametrelerinden yapılandırılabilir)
+* Bronz [dayanıklılık düzeyi](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (şablon parametrelerinde yapılandırılabilir)
+* Gümüş [güvenilirlik düzeyi](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (şablon parametrelerinden yapılandırılabilir)
 * istemci bağlantısı uç noktası: 19000 (şablon parametrelerinde yapılandırılabilir)
 * HTTP ağ geçidi uç noktası: 19080 (şablon parametrelerinde yapılandırılabilir)
 
@@ -88,7 +88,7 @@ Başka bir uygulama bağlantı noktası gerekiyorsa, gelen trafiğe izin vermek 
 |clusterName|mysfcluster123| Kümenin adı. |
 |location|southcentralus| Kümenin konumu. |
 |certificateThumbprint|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika SHA1 parmak izi değerini girin. Örneğin: "6190390162C988701DB5676EB81083EA608DCCF3". </p>|
-|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https: \/ /mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için kaynak kasa değerini girin. Örneğin: "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611824"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -24,7 +24,7 @@ Mevcut bulut veri hizmetlerinden bir makine öğrenimi ardışık düzenine veri
 
 > [!Note]
 > Bu modül tarafından sunulan tüm işlevler, çalışma alanı giriş sayfasında **veri deposu** ve **veri kümeleri** tarafından yapılabilir. Veri izleme gibi ek özellikler içeren veri **deposu** ve veri **kümesi** kullanmanızı öneririz. Daha fazla bilgi edinmek için bkz. [verilere erişme ve veri](../how-to-access-data.md) [kümelerini kaydetme](../how-to-create-register-datasets.md) makalesi.
-> Bir veri kümesini kaydettikten sonra, tasarımcı **arabirimindeki DataSet** -> **My** DataSet kategorisinden bulabilirsiniz. Bu modül, tanıdık bir deneyim için Studio (klasik) kullanıcıları için ayrılmıştır. 
+> Bir veri kümesini kaydettikten sonra, tasarımcı arabirimindeki **DataSet**  ->  **My** DataSet kategorisinden bulabilirsiniz. Bu modül, tanıdık bir deneyim için Studio (klasik) kullanıcıları için ayrılmıştır. 
 >
 
 **Veri Içeri aktarma** modülü aşağıdaki kaynaklardan gelen verileri oku destekler:
@@ -44,6 +44,10 @@ Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanın
 
 Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı yeniden çalıştırarak veri kümesini yenileyebilir ve yeni veri ekleyebilirsiniz.
 
+> [!WARNING]
+> Çalışma alanınız bir sanal ağda ise, veri mağazalarınızı tasarımcının veri görselleştirme özelliklerini kullanacak şekilde yapılandırmanız gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](../how-to-enable-virtual-network.md#machine-learning-studio).
+
+
 ## <a name="how-to-configure-import-data"></a>Içeri aktarma verilerini yapılandırma
 
 1. **Veri alım** modülünü işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri girişi ve çıkış** kategorisinde bulabilirsiniz.
@@ -52,7 +56,7 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 1. **Veri kaynağı**' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
 
-    Veri deposu ' nu seçerseniz, Azure Machine Learning çalışma alanınıza zaten kayıtlı olan mevcut veri depolarını seçebilirsiniz veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposuna aktarılacak verilerin yolunu tanımlayın. Yola **gözatmaya yol** ![Al-veri-yolu öğesine tıklayarak kolayca gidebilirsiniz](media/module/import-data-path.png)
+    Veri deposu ' nu seçerseniz, Azure Machine Learning çalışma alanınıza zaten kayıtlı olan mevcut veri depolarını seçebilirsiniz veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposuna aktarılacak verilerin yolunu tanımlayın. Yola **gözatmaya yol** ![ Al-veri-yolu öğesine tıklayarak kolayca gidebilirsiniz](media/module/import-data-path.png)
 
 1. Dahil etmek istediğiniz sütunları filtrelemek için Önizleme şemasını seçin. Ayrıca, ayrıştırma seçeneklerinde sınırlayıcı gibi gelişmiş ayarları tanımlayabilirsiniz.
 

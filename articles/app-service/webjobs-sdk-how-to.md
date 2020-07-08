@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 28d3aae402a7d091fdcbe07dd4699a6fd44b5b25
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807987"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -39,11 +39,11 @@ Mümkün olduğunda, her iki sürüm 3 için örnek sağlanır. *x* ve sürüm 2
 
 Konak, işlevleri için bir çalışma zamanı kapsayıcısıdır.  Tetikleyiciler ve çağrılar işlevlerini dinler. Sürüm 3 ' te. *x*, ana bilgisayar uygulamasının uygulamasıdır `IHost` . Sürüm 2 ' de. *x*, `JobHost` nesnesini kullanıyorsunuz. Kodunuzda bir konak örneği oluşturup davranışını özelleştirmek için kod yazabilirsiniz.
 
-Bu, Web Işleri SDK 'sını doğrudan kullanma ve Azure Işlevleri aracılığıyla dolaylı olarak kullanma arasındaki önemli bir farktır. Azure Işlevleri 'nde hizmet ana bilgisayarı denetler ve kodu yazarak Konağı özelleştiremezsiniz. Azure Işlevleri, Host. JSON dosyasındaki ayarlar aracılığıyla ana bilgisayar davranışını özelleştirmenize olanak sağlar. Bu ayarlar, kod değil dizelerdir ve bu, yapabileceğiniz özelleştirmeler türlerini sınırlandırır.
+Bu, Web Işleri SDK 'sını doğrudan kullanma ve Azure Işlevleri aracılığıyla dolaylı olarak kullanma arasındaki önemli bir farktır. Azure Işlevleri 'nde hizmet ana bilgisayarı denetler ve kodu yazarak Konağı özelleştiremezsiniz. Azure Işlevleri, ana bilgisayar davranışını dosyadaki host.jsayarları aracılığıyla özelleştirmenize olanak sağlar. Bu ayarlar, kod değil dizelerdir ve bu, yapabileceğiniz özelleştirmeler türlerini sınırlandırır.
 
 ### <a name="host-connection-strings"></a>Ana bilgisayar bağlantı dizeleri
 
-Web Işleri SDK 'Sı yerel. Settings. json dosyasında yerel. Settings. json dosyasında ya da Azure 'da çalıştırdığınızda Web Işi ortamında Azure Storage ve Azure Service Bus bağlantı dizelerini arar. Varsayılan olarak, adlı bir depolama bağlantı dizesi ayarı `AzureWebJobsStorage` gereklidir.  
+Web Işleri SDK 'Sı, yerel olarak çalıştırdığınızda veya Azure 'da çalıştırdığınızda Web Işi ortamında, Azure depolama ve Azure Service Bus bağlantı dizelerini dosya local.settings.jsüzerinde arar. Varsayılan olarak, adlı bir depolama bağlantı dizesi ayarı `AzureWebJobsStorage` gereklidir.  
 
 Sürüm 2. SDK 'nın *x* 'i, bu bağlantı dizeleri için kendi adlarınızı kullanmanıza veya onları başka bir yerde depolamanıza olanak sağlar. Aşağıdaki gibi kullanarak koddaki adları [`JobHostConfiguration`] burada gösterildiği gibi ayarlayabilirsiniz:
 
@@ -358,7 +358,7 @@ Bazı Tetikleyiciler ve bağlamaların davranışını yapılandırabilirsiniz. 
 * **Sürüm 3. *x*:** `Add<Binding>` yöntemi içinde çağrıldığında yapılandırmayı ayarlayın `ConfigureWebJobs` .
 * **Sürüm 2. *x*:** ' ye geçirdiğiniz bir yapılandırma nesnesindeki özellikleri ayarlayarak yapılandırmayı ayarlayın `JobHost` .
 
-Bu bağlamaya özgü ayarlar, Azure Işlevleri 'ndeki [Host. JSON proje dosyasındaki](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
+Bu bağlamaya özgü ayarlar, Azure Işlevleri 'ndeki [Proje dosyasındakihost.js](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
 
 Aşağıdaki bağlamaları yapılandırabilirsiniz:
 
@@ -470,7 +470,7 @@ static void Main(string[] args)
 }
 ```
 
-Daha fazla ayrıntı için bkz. [Host. JSON v1. x başvurusu](../azure-functions/functions-host-json-v1.md#queues).
+Daha fazla ayrıntı için bkz [. v1. x başvurusuhost.js](../azure-functions/functions-host-json-v1.md#queues).
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid bağlama yapılandırması (sürüm 3.* x*)
 
@@ -832,7 +832,7 @@ Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Catego
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Yok        | 6 |
+|Hiçbiri        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir şekilde filtreleyebilirsiniz [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Örneğin, `Error` diğer her şey için yalnızca ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
@@ -959,7 +959,7 @@ Sürüm 3 ' te. *x*, artık [`TelemetryClient`] ana bilgisayar durdurulduğunda 
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Sürüm 2 ' de. *x*, [`TelemetryClient`] Web İşleri SDK 'sı için Application Insights sağlayıcısı tarafından dahili olarak oluşturulan x [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Application Insights uç noktası kullanılamaz veya gelen istekleri azaltdığı zaman, bu kanal [istekleri Web uygulamasının dosya sistemine kaydeder ve daha sonra resubmits](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Sürüm 2 ' de. *x*, [`TelemetryClient`] Web İşleri SDK 'sı için Application Insights sağlayıcısı tarafından dahili olarak oluşturulan x [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Application Insights uç noktası kullanılamaz veya gelen istekleri azaltdığı zaman, bu kanal [istekleri Web uygulamasının dosya sistemine kaydeder ve daha sonra resubmits](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 , [`TelemetryClient`] Uygulayan bir sınıf tarafından oluşturulur `ITelemetryClientFactory` . Varsayılan olarak, bu ' dir [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) .
 

@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 257b1e26127186fce07e402e58f98660005a97fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800775"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki tablo istatistikleri
 
@@ -97,14 +97,60 @@ Ancak, SQL havuzunuz yalnızca bir ülke/bölge içeriyorsa ve yeni bir ülke/b�
 
 Bir sorgunun sorunlarını giderirken ilk sorulardan biri, **"istatistiklerin güncel mi?"** olduğunu sorar.
 
-Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan verilerde malzeme değişikliği olmadığında güncel bir istatistik nesnesi eski olabilir.
+Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan verilerde malzeme değişikliği olmadığında güncel bir istatistik nesnesi eski olabilir. Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için değerlerin dağıtımında bir malzeme değişikliği *varsa, istatistiklerin güncelleştirilmesi zaman olur.* 
 
-> [!TIP]
-> Satır sayısı önemli ölçüde değiştirildiğinde veya bir sütun için değerlerin dağıtımında bir malzeme değişikliği *varsa, istatistiklerin güncelleştirilmesi zaman olur.*
+Son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için dinamik bir yönetim görünümü yoktur.  Aşağıdaki iki sorgu istatistiklerinizin eski olup olmadığını belirlemenize yardımcı olabilir.
 
-Son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşınızı bilmeniz, resmin bir parçasını sağlayabilir.
+**Sorgu 1:**  İstatistiklerdeki satır sayısı (**stats_row_count**) ve gerçek satır sayısı arasındaki farkı (**actual_row_count**) öğrenin. 
 
-Her tabloda istatistiklerin güncelleştirildiği son zamanı anlamak için aşağıdaki sorguyu kullanabilirsiniz.
+```sql
+select 
+objIdsWithStats.[object_id], 
+actualRowCounts.[schema], 
+actualRowCounts.logical_table_name, 
+statsRowCounts.stats_row_count, 
+actualRowCounts.actual_row_count,
+row_count_difference = CASE
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN actualRowCounts.actual_row_count - statsRowCounts.stats_row_count
+    ELSE statsRowCounts.stats_row_count - actualRowCounts.actual_row_count
+END,
+percent_deviation_from_actual = CASE
+    WHEN actualRowCounts.actual_row_count = 0 THEN statsRowCounts.stats_row_count
+    WHEN statsRowCounts.stats_row_count = 0 THEN actualRowCounts.actual_row_count
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (actualRowCounts.actual_row_count - statsRowCounts.stats_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+    ELSE CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (statsRowCounts.stats_row_count - actualRowCounts.actual_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+END
+from
+(
+    select distinct object_id from sys.stats where stats_id > 1
+) objIdsWithStats
+left join
+(
+    select object_id, sum(rows) as stats_row_count from sys.partitions group by object_id
+) statsRowCounts
+on objIdsWithStats.object_id = statsRowCounts.object_id 
+left join
+(
+    SELECT sm.name [schema] ,
+    tb.name logical_table_name ,
+    tb.object_id object_id ,
+    SUM(rg.row_count) actual_row_count
+    FROM sys.schemas sm
+    INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
+    INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
+    INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
+    INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg
+    ON rg.object_id = nt.object_id
+    AND rg.pdw_node_id = nt.pdw_node_id
+    AND rg.distribution_id = nt.distribution_id
+    WHERE 1 = 1
+    GROUP BY sm.name, tb.name, tb.object_id
+) actualRowCounts
+on objIdsWithStats.object_id = actualRowCounts.object_id
+
+```
+
+**Sorgu 2:** İstatistiklerin her tabloda ne zaman güncelleştirildiği son zamanı denetleyerek istatistiklerinizin yaşını öğrenin. 
 
 > [!NOTE]
 > Bir sütunun değerlerinin dağıtımında bir malzeme değişikliği varsa, son güncelleştirilme zamanından bağımsız olarak istatistikleri güncelleştirmeniz gerekir.
@@ -430,7 +476,7 @@ Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statement
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü | Description |
+| Katalog görünümü | Açıklama |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her sütun için bir satır. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her nesne için bir satır. |
@@ -444,7 +490,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi | Description |
+| Sistem işlevi | Açıklama |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesinin son güncelleştirilme tarihi. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesi tarafından anlaşıldıkça değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgiler. |

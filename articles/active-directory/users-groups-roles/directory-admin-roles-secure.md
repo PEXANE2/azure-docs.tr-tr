@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b448ef83752c3ffd7be992bc5fc3c376a641101
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807868"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -90,8 +90,8 @@ Azure AD Privileged Identity Management açtıktan sonra, aşağıdaki Azure AD 
 
 * Genel yönetici
 * Ayrıcalıklı rol yöneticisi
-* Exchange Online Yöneticisi
-* SharePoint Online Yöneticisi
+* Exchange yöneticisi
+* SharePoint yöneticisi
 
 Kuruluşunuzda Azure AD Privileged Identity Management yoksa [POWERSHELL API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)'sini kullanabilirsiniz. Genel yönetici rolüyle başlayın çünkü genel yönetici, kuruluşunuzun abone olduğu tüm bulut hizmetlerinde aynı izinlere sahiptir. Bu izinlere nerede atandıklarından bağımsız olarak izin verilir: Microsoft 365 Yönetim Merkezi, Azure portal veya Microsoft PowerShell için Azure AD modülü.
 
@@ -114,7 +114,7 @@ Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. . 
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-Factor Authentication 'ı açın ve diğer tüm yüksek ayrıcalıklı tek kullanıcılı yönetici hesaplarını kaydedin
 
-Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . 2. adım ve [Office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun 3. adımında daha fazla bilgi bulunabilir. 
+Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Yöneticisi ve SharePoint Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . 2. adım ve [Office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun 3. adımında daha fazla bilgi bulunabilir. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. Aşama: sık kullanılan saldırıları azaltma
 
@@ -359,7 +359,7 @@ Yol haritasının 4. aşaması altı ayda ve daha fazla uygulanmalıdır. Günü
 Ayrıcalıklı erişimin güvenliğini sağlamak, iş varlıklarınız için güvenlik hakkı sağlamak açısından önemlidir. Bununla birlikte, sürekli güvenlik kesintileri sağlayan bir bütün güvenlik programının parçası olmalıdır. Bu program şöyle bir öğe içermelidir:
 
 * İlke
-* Operations
+* İşlemler
 * Bilgi güvenliği
 * Sunucular
 * Uygulamalar

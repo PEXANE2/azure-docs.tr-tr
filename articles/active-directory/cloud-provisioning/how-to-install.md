@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f06e9ad03face5082950ecedd3f73b97dc6ae4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807647"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -34,7 +34,8 @@ Azure AD Connect sağlamayı yükleme ve yapılandırma aşağıdaki adımlarda 
 Aracıyı yüklemek için aşağıdaki adımları izleyin.
 
 1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.
-1. Azure portalına gidin. Sol tarafta **Azure Active Directory**' yi seçin.
+1. Azure portal oturum açın ve **Azure Active Directory**' a gidin.
+1. Sol menüden **Azure AD Connect**' yi seçin.
 1. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin  >  **tüm aracıları gözden geçirin**.
 1. Azure AD Connect sağlama aracısını Azure portal indirin.
 

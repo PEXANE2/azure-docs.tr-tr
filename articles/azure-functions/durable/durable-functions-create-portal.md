@@ -4,12 +4,12 @@ description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uz
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807970"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -52,7 +52,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu yükleme paketi. JSON":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu karşıya yükleme package.js":::
 
 4. Karşıya yüklendikten sonra `package.json` `npm install` kudu uzaktan yürütme konsolundan komutunu çalıştırın.
 
@@ -83,7 +83,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
 1. Kopyaladığınız URL 'ye bir POST isteği göndermek için Postman veya kıvrık gibi bir HTTP aracını kullanın. Aşağıdaki örnek, dayanıklı işleve POST isteği gönderen bir kıvrımlı komuttur:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     Bu örnekte, `{your-function-app-name}` işlev uygulamanızın adı olan etki alanıdır. Yanıt iletisi, aşağıdaki örneğe benzeyen ve yürütmeyi izleyip yönetmenizi sağlamak için kullanabileceğiniz bir dizi URI uç noktasını içerir:

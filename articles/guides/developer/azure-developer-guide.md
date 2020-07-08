@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38e93585c2d9fd3c9cf6e4affdfd1b0a250fedc4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829406"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -255,7 +255,7 @@ Azure, Azure portal Kullanıcı arabirimini destekleyen bir REST API kümesi üz
 REST API 'lerle birlikte, birçok Azure hizmeti, aşağıdaki geliştirme platformları için SDK 'lar dahil olmak üzere platforma özgü Azure SDK 'larını kullanarak uygulamalarınızdan kaynakları programlı bir şekilde yönetmenizi sağlar:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
