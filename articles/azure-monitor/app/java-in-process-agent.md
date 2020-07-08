@@ -4,10 +4,10 @@ description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uyg
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319712"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
@@ -150,7 +150,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Ekinlikler
+### <a name="events"></a>Olaylar
 
   ```java
 telemetryClient.trackEvent("WinGame");

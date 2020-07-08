@@ -4,10 +4,10 @@ description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs ol
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320555"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
@@ -45,10 +45,10 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 
 | Birincil ad alanı | İkincil ad alanı | Destekleniyor | 
 | ----------------- | -------------------- | ---------- |
-| Standart | Standart | Yes | 
-| Standart | Ayrılmış | Yes | 
-| Ayrılmış | Ayrılmış | Yes | 
-| Ayrılmış | Standart | No | 
+| Standart | Standart | Evet | 
+| Standart | Ayrılmış | Evet | 
+| Ayrılmış | Ayrılmış | Evet | 
+| Ayrılmış | Standart | Hayır | 
 
 > [!NOTE]
 > Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
@@ -94,7 +94,7 @@ Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri e
 - Örnek kodu yürütmek için gereken adımlar. 
 - Geçerli birincil ad alanından gönderin ve alın. 
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
 

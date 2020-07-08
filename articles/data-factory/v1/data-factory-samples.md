@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318918"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
@@ -26,7 +26,7 @@ ms.locfileid: "85318918"
 ## <a name="samples-on-github"></a>GitHub’daki örnekler
 [GitHub Azure-DataFactory deposu](https://github.com/azure/azure-datafactory) , Azure Data Factory hizmetine hızlıca başlamanıza yardımcı olan birkaç örnek içerir (veya) betikleri değiştirebilir ve kendi uygulamasında kullanabilirsiniz. Samples\JSON klasörü, yaygın senaryolar için JSON kod parçacıklarını içerir.
 
-| Örnek | Description |
+| Örnek | Açıklama |
 |:--- |:--- |
 | [ADF Izlenecek yol](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Bu örnek, içindeki günlük dosyalarından verileri öngörülere açmak için Azure Data Factory kullanarak günlük dosyalarını işlemeye yönelik bir uçtan uca izlenecek yol sağlar. <br/><br/>Bu kılavuzda, Data Factory işlem hattı örnek günlükleri toplar, verileri başvuru verileriyle kaydeder ve zenginleştirir ve son zamanlarda başlatılan bir pazarlama kampanyasının verimliliğini değerlendirmek üzere verileri dönüştürür. |
 | [JSON örnekleri](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Bu örnek, yaygın senaryolar için JSON örnekleri sağlar. |
@@ -46,7 +46,7 @@ ms.locfileid: "85318918"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Description |
+| Şablon | Açıklama |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |

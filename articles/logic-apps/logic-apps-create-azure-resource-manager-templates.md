@@ -7,13 +7,13 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317779"
 ---
-# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun
+# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps dağıtımını otomatikleştirmek için Azure Resource Manager şablonu oluşturma
 
 Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -106,8 +106,8 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 
 | Parametreler | Gerekli | Açıklama |
 |------------|----------|-------------|
-| TemplateFile | Yes | Şablon dosyanızın dosya yolu |
-| KeyVault | No | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
+| TemplateFile | Evet | Şablon dosyanızın dosya yolu |
+| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -4,10 +4,10 @@ description: Bu makale, Azure Event Hubs kaynaklarına erişmek için Azure Acti
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318190"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
@@ -69,7 +69,7 @@ Event Hubs kaynaklarını yetkilendirmek için Azure AD kullanmanın ilk adımı
 
 Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göstermektedir:
 
-![Bir uygulamayı kaydetme](./media/authenticate-application/app-registrations-register.png)
+![Uygulamaları kaydetme](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
