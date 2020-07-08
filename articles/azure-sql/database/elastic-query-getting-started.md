@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048528"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956908"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ Bunlar, parça eşleme Yöneticisi ve parçaları 'na bağlanmak için kullanıl
 1. Visual Studio 'da SQL Server Management Studio veya SQL Server Veri Araçları açın.
 2. Elaun dbquery veritabanına bağlanın ve aşağıdaki T-SQL komutlarını yürütün:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     "Kullanıcı adı" ve "parola", **elastik veritabanı araçları ile çalışmaya başlama** makalesinde [Örnek uygulamayı indirme ve çalıştırma](elastic-scale-get-started.md#download-and-run-the-sample-app) başlıklı Bölüm adım 3 ' te kullanılan oturum açma bilgileri ile aynı olmalıdır.
 
 ### <a name="external-data-sources"></a>Dış veri kaynakları
 Dış veri kaynağı oluşturmak için, Elaun dbquery veritabanında aşağıdaki komutu yürütün:
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  "Customerıdshardmap", parçalı harita ve parça eşleme yöneticisini elastik veritabanı araçları örneği kullanarak oluşturduysanız parça eşlemenin adıdır. Ancak, bu örnek için özel kurulumunuzu kullandıysanız, uygulamanızda seçtiğiniz parça haritası adı olmalıdır.
 
 ### <a name="external-tables"></a>Dış tablolar
 Elagardbquery veritabanında aşağıdaki komutu yürüterek parçaların içindeki Customers tablosuyla eşleşen bir dış tablo oluşturun:
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Örnek esnek veritabanı T-SQL sorgusu yürütme
 Dış veri kaynağınızı ve dış tablolarınızı tanımladıktan sonra, dış Tablolarınızda artık tam T-SQL kullanabilirsiniz.
 
 Bu sorguyu Elaun dbquery veritabanında yürütün:
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıyı sunduğuna dikkat edin:
 
@@ -116,7 +124,7 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server**' ye tıklayın.
 
    ![Diğer kaynaklardan Excel içeri aktarma][5]
-4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**’ye tıklayın.
+4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**'ye tıklayın.
 5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin**, **Elaun dbquery** veritabanını seçin.
 6. Liste görünümünde **Customers** tablosunu seçin ve **İleri**' ye tıklayın. Ardından, **Son**'a tıklayın.
 7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin**altında **tablo** ' yı seçin ve **Tamam**' ı tıklatın.
