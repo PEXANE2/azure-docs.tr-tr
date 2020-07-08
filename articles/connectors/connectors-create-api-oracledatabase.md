@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836286"
 ---
-# <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database Bağlayıcısı ile çalışmaya başlama
+# <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
 
 Oracle Database bağlayıcısını kullanarak, mevcut veritabanınızdaki verileri kullanan kurumsal iş akışları oluşturursunuz. Bu bağlayıcı, Oracle Database yüklü bir şirket içi Oracle Database veya bir Azure sanal makinesine bağlanabilir. Bu bağlayıcı ile şunları yapabilirsiniz:
 
@@ -60,7 +59,7 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. **Kaydet**’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
+3. **Kaydet**'i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
 
 4. **Yeni adım**’ı ve **Eylem ekle**’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
 

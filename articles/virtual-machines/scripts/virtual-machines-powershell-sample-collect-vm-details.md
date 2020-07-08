@@ -16,17 +16,16 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848731"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
 
 Bu betik VM adı, kaynak grubu adı, bölge, VM boyutu, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen abonelikteki VM 'Lerin genel IP adresini içeren bir CSV oluşturur.
 
-[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 

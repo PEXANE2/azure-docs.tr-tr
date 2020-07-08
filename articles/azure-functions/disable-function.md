@@ -4,10 +4,9 @@ description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkin
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848748"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
@@ -87,15 +86,15 @@ public static class QueueFunctions
 Bu yöntem, uygulamayı yeniden derlemeden veya yeniden dağıtmaya gerek kalmadan, uygulama ayarını değiştirerek işlevini etkinleştirmenizi ve devre dışı bırakmanızı sağlar. Bir uygulama ayarının değiştirilmesi, işlev uygulamasının yeniden başlatılmasına neden olur, bu nedenle devre dışı durum değişikliği hemen tanınır.
 
 > [!IMPORTANT]
-> `Disabled`Özniteliği, bir sınıf kitaplığı işlevini devre dışı bırakmak için tek yoldur. Bir sınıf kitaplığı işlevi için oluşturulan *function. JSON* dosyası doğrudan düzenlenmemelidir. Bu dosyayı düzenlerseniz, özelliği üzerinde yaptığınız her şey `disabled` hiçbir etkiye sahip olmaz.
+> `Disabled`Özniteliği, bir sınıf kitaplığı işlevini devre dışı bırakmak için tek yoldur. Bir sınıf kitaplığı işlevi için dosyada oluşturulan *function.js* doğrudan düzenlenmemelidir. Bu dosyayı düzenlerseniz, özelliği üzerinde yaptığınız her şey `disabled` hiçbir etkiye sahip olmaz.
 >
-> , *Function. JSON* dosyasını değiştirerek çalıştığından, **Yönetim** sekmesindeki **işlev durumu** anahtarı için de aynı olur.
+> Aynı durum, dosyadaki *function.js* değiştirilerek çalıştığından, **Yönetim** sekmesindeki **işlev durumu** anahtarına de geçilir.
 >
 > Ayrıca, portalda işlevin devre dışı bırakıldığını belirtebileceğini unutmayın.
 
 ### <a name="functions-1x---scripting-languages"></a>İşlevler 1. x-betik dilleri
 
-Sürüm 1. x ' te, `disabled` çalışma zamanına bir işlev tetikleyemediğinden bilgi almak için *function. JSON* dosyasının özelliğini de kullanabilirsiniz. Bu yöntem yalnızca C# betiği ve JavaScript gibi komut dosyası dilleri için geçerlidir. `disabled`Özelliği, `true` bir uygulama ayarının adına veya adına ayarlanabilir:
+Sürüm 1. x ' de, `disabled` çalışma zamanının bir işlevi tetikleyemamasını söylemek için *function.js* dosyasındaki özelliğini de kullanabilirsiniz. Bu yöntem yalnızca C# betiği ve JavaScript gibi komut dosyası dilleri için geçerlidir. `disabled`Özelliği, `true` bir uygulama ayarının adına veya adına ayarlanabilir:
 
 ```json
 {
@@ -123,7 +122,7 @@ veya
 İkinci örnekte, IS_DISABLED adlı ve veya 1 olarak ayarlanmış bir uygulama ayarı olduğunda işlev devre dışıdır `true` .
 
 >[!IMPORTANT]  
->Portal artık v1. x işlevlerini devre dışı bırakmak için uygulama ayarlarını kullanır. Bir uygulama ayarı function. JSON dosyasıyla çakışırsa bir hata oluşabilir. `disabled`Hataları engellemek için function. json dosyasından özelliği kaldırmalısınız. 
+>Portal artık v1. x işlevlerini devre dışı bırakmak için uygulama ayarlarını kullanır. Bir uygulama ayarı dosyadaki function.jsile çakışıyorsa bir hata oluşabilir. `disabled`Hataları engellemek için dosyadaki function.jsözelliğini kaldırmalısınız. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

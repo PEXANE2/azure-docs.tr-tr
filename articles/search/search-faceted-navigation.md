@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836099"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
@@ -321,7 +320,7 @@ Belirli koşullarda, model sayılarının sonuç kümeleriyle eşleşip eşleşm
 
 Parçalı mimari nedeniyle model sayısı yanlış olabilir. Her arama dizininin birden çok parçaları vardır ve her parça, ilk N modellerini belge sayısına göre rapor ederek tek bir sonuçla birleştirilir. Bazı parçalar daha fazla eşleşen değere sahip olsa da, diğerleri daha az olduğunda bazı model değerlerinin eksik veya eksik olduğunu fark edebilirsiniz.
 
-Bu davranış herhangi bir zamanda değişebilir, ancak bugün bu davranışla karşılaşırsanız, \< her bir parçadan tam raporlamayı zorlamak için sayıyı büyük bir sayıya> yapay ederek geçici bir çözüm bulabilirsiniz. Count değeri, alanındaki benzersiz değer sayısından büyükse veya buna eşitse, doğru sonuçlar garanti edilir. Ancak, belge sayıları yüksek olduğunda bir performans cezası vardır, bu nedenle bu bozacağından seçeneğini kullanın.
+Bu davranış herhangi bir zamanda değişebilir, ancak bugün bu davranışla karşılaşırsanız, \<number> her bir parçadan tam raporlamayı zorlamak için sayıyı büyük bir sayıya yapay ederek geçici bir çözüm bulabilirsiniz. Count değeri, alanındaki benzersiz değer sayısından büyükse veya buna eşitse, doğru sonuçlar garanti edilir. Ancak, belge sayıları yüksek olduğunda bir performans cezası vardır, bu nedenle bu bozacağından seçeneğini kullanın.
 
 ### <a name="user-interface-tips"></a>Kullanıcı arabirimi ipuçları
 **Model gezintisinde her bir alan için etiketler ekleme**
@@ -395,7 +394,7 @@ Arama sonuçlarıyla çalışırken, sorgu oluşturulmakta olan değişiklikler 
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 [Azure bilişsel arama derin](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)ayrıntılarını izleyin. 45:25 ' de, nasıl model uygulanacağını gösteren bir tanıtım vardır.
 
 Çok yönlü gezinme için tasarım ilkeleri hakkında daha fazla bilgi için aşağıdaki bağlantıları öneririz:

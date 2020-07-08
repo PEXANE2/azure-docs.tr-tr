@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835810"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
@@ -51,7 +50,7 @@ Sorun gidermenin ilk adımı, işlem sunucusunun sistem durumunu ve durumunu den
 
 **Uyarı türü** | **Hata** | **Sorun giderme**
 --- | --- | --- 
-![Sağlam][green] | Yok  | İşlem sunucusu bağlandı ve sağlıklı.
+![Sağlam][green] | Hiçbiri  | İşlem sunucusu bağlandı ve sağlıklı.
 ![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. hizmetlerin çalıştığını denetleyin.<br/> 2. hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Uyarı][yellow]  | Son 15 dakika boyunca %80 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
@@ -168,18 +167,18 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
   1. İşlem sunucusunda, Görev Yöneticisi 'ni açın (Ctrl + Shift + ESC tuşlarına basın).
   2. **Kaynak İzleyicisi açmak**> **performans** sekmesini seçin.
-  3. **Kaynak İzleyicisi** sayfasında **ağ** sekmesini seçin. **Ağ etkinliği olan süreçler**' ın altında, cbengine. exe ' nin büyük hacimli verileri etkin bir şekilde gönderip göndermediğini denetleyin.
+  3. **Kaynak İzleyicisi** sayfasında **ağ** sekmesini seçin. **Ağ etkinliği olan süreçler**' ın altında, cbengine.exe büyük hacimli verileri etkin bir şekilde gönderip göndermediğini denetleyin.
 
        ![Ağ etkinliği ile işlem kapsamındaki birimler](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Cbengine. exe büyük miktarda veri göndermemişse, aşağıdaki bölümlerdeki adımları izleyin.
+  Büyük hacimli veriler cbengine.exe, aşağıdaki bölümlerdeki adımları izleyin.
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. Adım: Azure Blob depolama ile işlem sunucusu bağlantısını denetleme
 
-1. Kaynak İzleyicisi, **cbengine. exe**' yi seçin.
+1. Kaynak İzleyicisi ' de **cbengine.exe**' ı seçin.
 2. **TCP bağlantıları**altında, Işlem sunucusundan Azure depolama 'ya bağlantı olup olmadığını denetleyin.
 
-  ![Cbengine. exe ve Azure Blob depolama URL 'SI arasında bağlantı](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![cbengine.exe ile Azure Blob depolama URL 'SI arasında bağlantı](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Hizmetleri denetle
 

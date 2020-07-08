@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
 ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836048"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Izleyici 'de Öngörüler 'e genel bakış
@@ -20,7 +19,7 @@ ms.locfileid: "83836048"
 Aşağıdaki bölümlerde, Azure Izleyici 'de Şu anda kullanılabilir olan Öngörüler hakkında kısa bir açıklama sağlanmaktadır. Ayrıntılar için ayrıntılı belgelere bakın.
 
 ## <a name="application-insights"></a>Application Insights
-Application Insights, farklı platformlardaki web geliştiricilerine yönelik kapsamlı bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. .NET, Node. js ve Java EE dahil olmak üzere şirket içi, karma veya herhangi bir genel bulut gibi çok çeşitli platformlarda uygulamalar için geçerlidir. Ayrıca, DevOps süreciyle tümleştirilir ve çeşitli geliştirme araçlarına bağlantı noktaları vardır.
+Application Insights, farklı platformlardaki web geliştiricilerine yönelik kapsamlı bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. .NET, Node.js ve Java EE, şirket içi, hibrit veya herhangi bir genel bulut dahil olmak üzere çok çeşitli platformlarda uygulamalar için geçerlidir. Ayrıca, DevOps süreciyle tümleştirilir ve çeşitli geliştirme araçlarına bağlantı noktaları vardır.
 
 Bkz. [Application Insights nedir?](../app/app-insights-overview.md).
 
@@ -41,7 +40,7 @@ Bkz. [Azure izleyici (Önizleme) ile kaynak gruplarını izleme](../insights/res
 ![Kaynak grupları için Azure Izleyici](media/insights-overview/resource-group-insights.png)
 
 ## <a name="azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme)
-VM'ler için Azure İzleyici, Azure sanal makinelerinizi (VM) ve sanal makine ölçek kümelerinizi ölçeklendirerek izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder.
+VM'ler için Azure İzleyici, Azure sanal makinelerinizi (VM) ve büyük ölçekli sanal makine ölçek kümelerinizi izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder.
 
 Bkz. [VM'ler için Azure izleyici nedir?](vminsights-overview.md)
 

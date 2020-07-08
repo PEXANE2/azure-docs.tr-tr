@@ -7,10 +7,9 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Otomasyonu
 ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837085"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell runbook 'unda Azure Resource Manager şablonu dağıtma
@@ -84,11 +83,11 @@ Bir metin düzenleyicisinde, aşağıdaki metni kopyalayın:
 }
 ```
 
-Dosyayı **Templatetest. JSON**olarak yerel olarak kaydedin.
+Dosyayı **TemplateTest.js**olarak yerel olarak kaydedin.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Kaynak Yöneticisi şablonunu Azure Storage 'a kaydetme
 
-Şimdi PowerShell 'i kullanarak bir Azure depolama dosya paylaşımında oluşturma ve **Templatetest. JSON** dosyasını karşıya yükleme.
+Artık PowerShell 'i kullanarak bir Azure depolama dosya paylaşımının oluşturulmasını ve dosyadaki **TemplateTest.js** karşıya yüklenmesini istiyoruz.
 Dosya paylaşımının nasıl oluşturulacağı ve Azure portal bir dosyanın nasıl yükleneceği hakkında yönergeler için bkz. [Windows 'Da Azure dosya depolama ile çalışmaya başlama](../storage/files/storage-dotnet-how-to-use-files.md).
 
 Yerel makinenizde PowerShell 'i başlatın ve bir dosya paylaşma oluşturup Kaynak Yöneticisi şablonunu bu dosya paylaşımında karşıya yüklemek için aşağıdaki komutları çalıştırın.
@@ -114,7 +113,7 @@ Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $t
 
 ## <a name="create-the-powershell-runbook-script"></a>PowerShell runbook betiğini oluşturma
 
-Şimdi, Azure Storage 'dan **Templatetest. JSON** dosyasını alan ve yeni bir Azure depolama hesabı oluşturmak için şablonu dağıtan bir PowerShell betiği oluşturacağız.
+Şimdi Azure Storage 'dan dosya **TemplateTest.js** alan ve yeni bir Azure depolama hesabı oluşturmak için şablonu dağıtan bir PowerShell betiği oluşturacağız.
 
 Bir metin düzenleyicisinde şu metni yapıştırın:
 
@@ -161,13 +160,13 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-Dosyayı **Deploytemplate. ps1**olarak yerel olarak kaydedin.
+Dosyayı **DeployTemplate.ps1**olarak yerel olarak kaydedin.
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Runbook 'u içeri aktarın ve Azure Otomasyonu hesabınıza yayımlayın
 
 Artık PowerShell 'i kullanarak runbook 'u Azure Otomasyonu hesabınıza içeri aktarıp runbook 'u yayımlamanız gerekir. Azure portal runbook 'u içeri aktarma ve yayımlama hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
 
-**Deploytemplate. ps1** öğesini Otomasyon hesabınıza PowerShell runbook 'u olarak içeri aktarmak Için aşağıdaki PowerShell komutlarını çalıştırın:
+Otomasyon hesabınıza bir PowerShell runbook 'u olarak **DeployTemplate.ps1** aktarmak Için aşağıdaki PowerShell komutlarını çalıştırın:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1

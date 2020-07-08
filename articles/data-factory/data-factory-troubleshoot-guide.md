@@ -9,10 +9,9 @@ ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836167"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
@@ -442,7 +441,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**:`Can't launch command, or the program returned an error code.`
 
-- **Öneri**: yürütülebilir dosyanın var olduğundan emin olun. Program başlatılmışsa, *stdout. txt* ve *stderr. txt* ' nin depolama hesabına yüklendiğini doğrulayın. Hata ayıklama için kodunuzda günlükleri eklemek iyi bir uygulamadır.
+- **Öneri**: yürütülebilir dosyanın var olduğundan emin olun. Program başlatılmışsa *stdout.txt* ve *stderr.txt* depolama hesabına yüklendiğini doğrulayın. Hata ayıklama için kodunuzda günlükleri eklemek iyi bir uygulamadır.
 
 ### <a name="error-code-2501"></a>Hata kodu: 2501
 

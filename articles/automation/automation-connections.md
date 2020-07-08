@@ -7,10 +7,9 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837136"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
@@ -97,7 +96,7 @@ Otomasyon hesabınızı oluşturduğunuzda, `AzureServicePrincipal` bağlantı v
 
 ## <a name="add-a-connection-type"></a>Bağlantı türü ekleme
 
-Runbook veya DSC yapılandırmanız bir dış hizmete bağlanıyorsa, bir [özel modülde](shared-resources/modules.md#custom-modules) tümleştirme modülü olarak adlandırılan bir bağlantı türü tanımlamanız gerekir. Bu modül, bağlantı türü özelliklerini belirten bir meta veri dosyası içerir ve sıkıştırılmış **. zip** dosyanızın modül klasöründe bulunan ** &lt; ModuleName &gt; -Automation. JSON**olarak adlandırılır. Bu dosya, modülün temsil ettiği sisteme veya hizmete bağlanmak için gereken bir bağlantının alanlarını içerir. Bu dosyayı kullanarak, bağlantı türü için alan adlarını, veri türlerini, şifreleme durumunu ve isteğe bağlı durumu ayarlayabilirsiniz. 
+Runbook veya DSC yapılandırmanız bir dış hizmete bağlanıyorsa, bir [özel modülde](shared-resources/modules.md#custom-modules) tümleştirme modülü olarak adlandırılan bir bağlantı türü tanımlamanız gerekir. Bu modül, bağlantı türü özelliklerini belirten bir meta veri dosyası içerir ve sıkıştırılmış **. zip** dosyanızın modül klasöründe bulunan ** &lt; ModuleName &gt;-Automation.js'** de adlandırılır. Bu dosya, modülün temsil ettiği sisteme veya hizmete bağlanmak için gereken bir bağlantının alanlarını içerir. Bu dosyayı kullanarak, bağlantı türü için alan adlarını, veri türlerini, şifreleme durumunu ve isteğe bağlı durumu ayarlayabilirsiniz. 
 
 Aşağıdaki örnek, adlı bir özel bağlantı türü için Kullanıcı adı ve parola özelliklerini tanımlayan **. JSON** dosya biçimindeki bir şablondur `MyModuleConnection` :
 
