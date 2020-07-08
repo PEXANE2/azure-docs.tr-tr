@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/13/2020
-ms.openlocfilehash: a566c55d2ac51efc5ff2650ad682f10dae2bdc31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272007"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042297"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Hızlı Başlangıç: Azure Time Series Insights’ı Keşfedin
 
@@ -23,7 +23,7 @@ Bu Azure Time Series Insights gezgin hızlı başlangıcı, ücretsiz bir tanıt
 
 Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. IoT çözümünüzü hızla doğrulayabilmeniz ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi oluşmasını önlemek için verilerinizin genel bir görünümünü sunar. Azure Time Series Insights, gizli eğilimleri keşfetmenize, anormallikleri belirlemenize ve neredeyse gerçek zamanlı olarak kök neden analizleri yürütmenize yardımcı olur.
 
-Daha fazla esneklik için, güçlü [REST API 'leri](./time-series-insights-update-tsq.md) ve [istemci SDK 'sı](https://github.com/microsoft/tsiclient)aracılığıyla önceden var olan bir uygulamaya Azure Time Series Insights ekleyebilirsiniz. API 'Leri, zaman serisi verilerini depolamak, sorgulamak ve tercih ettiğiniz bir istemci uygulamasında kullanmak için kullanabilirsiniz. Ayrıca, mevcut uygulamanıza Kullanıcı arabirimi bileşenleri eklemek için istemci SDK 'sını de kullanabilirsiniz.
+Daha fazla esneklik için, güçlü [REST API 'leri](./concepts-query-overview.md) ve [istemci SDK 'sı](https://github.com/microsoft/tsiclient)aracılığıyla önceden var olan bir uygulamaya Azure Time Series Insights ekleyebilirsiniz. API 'Leri, zaman serisi verilerini depolamak, sorgulamak ve tercih ettiğiniz bir istemci uygulamasında kullanmak için kullanabilirsiniz. Ayrıca, mevcut uygulamanıza Kullanıcı arabirimi bileşenleri eklemek için istemci SDK 'sını de kullanabilirsiniz.
 
 Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan özelliklerin Kılavuzlu turuna sahiptir.
 

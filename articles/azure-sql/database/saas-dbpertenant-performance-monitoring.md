@@ -1,6 +1,6 @@
 ---
 title: 'SaaS uygulaması: birçok veritabanının performansını Izleme'
-description: Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanlarının ve havuzlarının performansını izleme ve yönetme
+description: Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanı 'nın performansını izleme ve yönetme
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042851"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042824"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanı ve havuzlarının performansını izleme ve yönetme
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanı 'nın performansını izleme ve yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu öğreticide, SaaS uygulamalarında kullanılan bazı önemli performans yönetimi senaryoları araştırılabilir. Tüm kiracı veritabanlarında etkinliğin benzetimini yapmak için bir yük Oluşturucu kullanarak, SQL veritabanı ve elastik havuzların yerleşik izleme ve uyarı özellikleri gösterilmiştir.
@@ -69,7 +69,7 @@ Havuzlar yalnızca iki adet S3 veritabanı ile uygun maliyetli olabilse de, havu
 
 Önceki bir öğreticide bir grup kiracıyı zaten sağladıysanız, [Tüm kiracı veritabanlarında kullanım benzetimi yap](#simulate-usage-on-all-tenant-databases) bölümüne atlayın.
 
-1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve Yönetimi \\ *demo-PerformanceMonitoringAndManagement. ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **1**ayarlama, **kiracı grubu sağlama**
 1. Betiği çalıştırmak için **F5**'e basın.
 
@@ -79,7 +79,7 @@ Bu betik, beş dakikadan daha kısa bir süre içinde 17 kiracı dağıtır.
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Tüm kiracı veritabanlarındaki kullanımın benzetimini gerçekleştirme
 
-*Demo-PerformanceMonitoringAndManagement. ps1* betiği, tüm kiracı veritabanlarına karşı çalışan bir iş yükünün benzetimini yapar. Yük, kullanılabilir yükleme senaryolarından biri kullanılarak oluşturulur:
+Tüm kiracı veritabanlarına karşı çalışan bir iş yükünün benzetimini yapan *Demo-PerformanceMonitoringAndManagement.ps1* betiği sağlanır. Yük, kullanılabilir yükleme senaryolarından biri kullanılarak oluşturulur:
 
 | Tanıtım | Senaryo |
 |:--|:--|
@@ -91,7 +91,7 @@ Bu betik, beş dakikadan daha kısa bir süre içinde 17 kiracı dağıtır.
 
 Yük oluşturucu her kiracı veritabanına *yapay* bir yalnızca CPU yükü uygular. Oluşturucu her kiracı veritabanı için yükü oluşturan saklı yordamı düzenli olarak çağıran bir iş başlatır. Yük düzeyleri (eDTU cinsinden), süresi ve aralıkları tüm veritabanlarında farklıdır ve öngörülemez kiracı etkinliğini benzetimi gerçekleştirir.
 
-1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve Yönetimi \\ *demo-PerformanceMonitoringAndManagement. ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **2**' yi ayarlayın, *Normal yoğunluk yükü oluşturun*.
 1. Bir yükü tüm kiracı veritabanlarınıza uygulamak için **F5** tuşuna basın.
 
@@ -195,7 +195,7 @@ Havuzdaki tek bir veritabanı, havuz yapılandırmasına bağlı olarak sürekli
 
 Bu alıştırmada, popüler bir konser için biletler satışa çıktığında yüksek bir yükle karşılaşan Contoso Konser Salonu etkisinin benzetimi gerçekleştirilmektedir.
 
-1. **PowerShell ISE**'de,... \\ öğesini açın. *Demo-PerformanceMonitoringAndManagement. ps1* betiği.
+1. **PowerShell ISE**'de,... \\ öğesini açın. *Demo-PerformanceMonitoringAndManagement.ps1* betiği.
 1. **$DemoScenario = 5 olarak ayarlayın, tek bir kiracı üzerinde normal yük ve yüksek yük oluşturun (yaklaşık 95 DTU).**
 1. **$SingleTenantDatabaseName = contosoconcerthall** değerini ayarlayın
 1. **F5**’i kullanarak betiği yürütün.

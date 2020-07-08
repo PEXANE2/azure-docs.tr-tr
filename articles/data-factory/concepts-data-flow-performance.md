@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 05/21/2020
-ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/06/2020
+ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798107"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042637"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -40,8 +40,10 @@ Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme se
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime işlem boyutunu artırma
 
 Daha fazla çekirdeğe sahip bir Integration Runtime Spark işlem ortamlarındaki düğümlerin sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar. ADF veri akışları işlem altyapısı için Spark 'ı kullanır. Spark ortamı, bellek için iyileştirilmiş kaynaklarda çok iyi sonuç verir.
-* İşlem hızlarınızın giriş oranından daha yüksek olmasını istiyorsanız, **işlem Için iyileştirilmiş** bir küme deneyin.
-* Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına neden olur. Verilerinizi çalıştırırken bellek hatalarından karşılaşırsanız bellek için iyileştirilmiş bir Azure IR yapılandırmasına geçin.
+
+Üretim iş yükleri için en **Iyi duruma getirilmiş belleği** kullanmanızı öneririz. Bellekte daha fazla veri depolayabilecek ve bellek dışı hataları en aza indirmenize olanak sağlayacaksınız. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına ve daha başarılı işlem hattına neden olur. Verilerinizi çalıştırırken bellek hatalarından karşılaşırsanız bellek için iyileştirilmiş bir Azure IR yapılandırmasına geçin.
+
+**İşlem Için iyileştirilmiş** , çok sayıda veri satırı için hata ayıklama ve veri önizlemesi için yeterli olacaktır. İşlem için Iyileştirilmiş, üretim iş yükleriyle büyük olasılıkla gerçekleştirmeyecektir.
 
 ![Yeni IR](media/data-flow/ir-new.png "Yeni IR")
 
@@ -110,7 +112,7 @@ DW 'nize satır satır ekleme yapmaktan kaçınmak için, ADF 'nin [PolyBase](ht
 
 ## <a name="optimizing-for-files"></a>Dosyalar için iyileştirme
 
-Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz. İlk olarak dosya tabanlı havuzları test etmek, varsayılan bölümlendirme ve iyileştirmeleri korumak iyi bir uygulamadır.
+Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz. İlk olarak dosya tabanlı havuzları test etmek, varsayılan bölümlendirme ve iyileştirmeleri korumak iyi bir uygulamadır. Bir dosya hedefinin havuzunda "geçerli bölümlendirme" olarak bölümlenmesini sağlamak Spark 'ın iş yükleriniz için uygun bir varsayılan bölümlendirme ayarlamaya izin verir. Varsayılan bölümlendirme, bölüm başına 128Mb kullanır.
 
 * Daha küçük dosyalar için, daha az bölüm seçmeyi fark edebilirsiniz.
 * Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, *hepsini bir kez deneme* bölümlendirme ve bölüm sayısını ayarlama ' yı seçin.
@@ -153,13 +155,13 @@ CosmosDB havuzları üzerinde üretilen iş ve Batch özelliklerinin ayarlanmas�
 * Aktarım hızı: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir verimlilik ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
 *   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işi ayarlandığında, bu bölümlerde daha fazla dengelemek olur.
 
-## <a name="join-performance"></a>Performansa katılarak
+## <a name="join-and-lookup-performance"></a>Katma ve arama performansı
 
 Veri akışınızdaki birleşimlerin performansını yönetmek, veri dönüştürmelerinizin yaşam döngüsü boyunca gerçekleştirdiğiniz çok yaygın bir işlemdir. ADF 'de, bu işlemler Spark 'ta Karma birleşimler olarak gerçekleştirilirken veri akışları verilerin birleşimlerden önce sıralanmasını gerektirmez. Ancak, birleştirmeler, mevcut ve arama dönüştürmeleri için geçerli olan "yayın" JOIN iyileştirmesi ile iyileştirilmiş performanstan yararlanabilirsiniz.
 
 Bu, JOIN ilişkiniz taraflarınızın her iki tarafının içeriğini Spark düğümüne ileterek uçyana karışık hale uğramasını önler. Bu, başvuru aramaları için kullanılan daha küçük tablolar için iyi bir sonuç verir. Düğümün belleğine sığamayacak olabilecek daha büyük tablolar yayın iyileştirmesi için iyi aday değildir.
 
-Birçok JOIN işlemine sahip veri akışları için önerilen yapılandırma, iyileştirme 'nin "yayın" için "otomatik" olarak ayarlanmış olmasını ve bellek için Iyileştirilmiş bir Azure Integration Runtime yapılandırması kullanmasını kullanmaktır. Veri akışı yürütmeleri sırasında bellek hatalarından veya yayın zaman aşımlarından karşılaşıyorsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur. İsteğe bağlı olarak, veri akışına, birleştirmenin yalnızca sol veya sağ tarafını veya her ikisini de aşağı doğru aşağı itme için talimat verebilirsiniz.
+Birçok JOIN işlemine sahip veri akışları için önerilen yapılandırma, iyileştirme 'nin "yayın" için "otomatik" olarak ayarlanmış olmasını ve ***bellek Için iyileştirilmiş*** bir Azure Integration Runtime yapılandırması kullanmasını kullanmaktır. Veri akışı yürütmeleri sırasında bellek hatalarından veya yayın zaman aşımlarından karşılaşıyorsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur. İsteğe bağlı olarak, veri akışına, birleştirmenin yalnızca sol veya sağ tarafını veya her ikisini de aşağı doğru aşağı itme için talimat verebilirsiniz.
 
 ![Yayın ayarları](media/data-flow/newbroad.png "Yayın ayarları")
 

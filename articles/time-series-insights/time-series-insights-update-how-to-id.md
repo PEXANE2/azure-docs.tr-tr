@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48d8c9a0f32c94f64601d27b9785213b776439af
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706794"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042178"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi KIMLIĞI seçmek için en iyi uygulamalar
 
@@ -37,9 +37,10 @@ Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman seri
 İzlenecek en iyi anahtar uygulamalar şunlardır:
 
 * Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
-* Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./time-series-insights-update-tsm.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
+* Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./concepts-model-overview.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
+* Zaman serisi KIMLIĞINIZ karmaşık bir JSON nesnesi içinde iç içe ise, özellik adınızı sağlarken giriş [düzleştirme kurallarını](./concepts-json-flattening-escaping-rules.md) izlediğinizden emin olun. Örnek [B](concepts-json-flattening-escaping-rules.md#example-b)'ye göz atın. 
 * Zaman serisi KIMLIĞINIZ olarak en fazla *üç* anahtar özelliği de seçebilirsiniz. Kombinasyonu, zaman serisi KIMLIĞINI temsil eden bir bileşik anahtar olacaktır.  
   > [!NOTE]
   > Üç anahtar özelliği dize olmalıdır.
@@ -79,6 +80,6 @@ Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri modelleme](./time-series-insights-update-tsm.md)hakkında daha fazla bilgi edinin.
+* Olayların nasıl depolanacağını anlamak için [JSON düzleştirme ve kaçış kurallarını](./concepts-json-flattening-escaping-rules.md) okuyun.
 
 * [Azure Time Series Insights Preview ortamınızı](./time-series-insights-update-plan.md)planlayın.

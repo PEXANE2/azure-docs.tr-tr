@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78209369"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042365"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS hizmetleri için özellik kapsamı<a name="paas-services"></a>
 
@@ -45,7 +45,8 @@ Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik M
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL veritabanları|✔|✔|✔|
+|Azure SQL Veritabanı|✔|✔|✔|
+|Azure SQL Yönetilen Örnek|✔|✔|✔|
 |Azure Service Bus ad alanı|✔|-|-|
 |Azure Service Fabric hesabı|✔|-|-|
 |Azure Depolama hesapları|✔|-|-|

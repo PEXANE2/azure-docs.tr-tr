@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 8e4f042e162408fef44b5c525b3a737e37005fdd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042515"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042654"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Birden çok veritabanında geçici analiz sorguları çalıştırma (Azure SQL veritabanı)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Sorguları daha ilgi çekici bir veri kümesine karşı çalıştırmak için, Bilet oluşturma ' yı çalıştırarak bilet satış verileri oluşturun.
 
-1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *demo-AdhocReporting. ps1* betiği ve aşağıdaki değerleri ayarlayın:
+1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *Demo-AdhocReporting.ps1* betiği ve aşağıdaki değerleri ayarlama:
    * **$DemoScenario** = 1, **Tüm havalandırma olayları Için bilet satın alın**.
 2. Betiği çalıştırmak ve bilet satışları oluşturmak için **F5** tuşuna basın. Betik çalışırken bu öğreticideki adımlara devam edin. Bilet verileri, *geçici olarak dağıtılan sorguları Çalıştır* bölümünde sorgulanır, bu nedenle bilet oluşturucunun tamamlanmasını bekleyin.
 
@@ -73,7 +73,7 @@ Bu düzene ulaşmak için, tüm kiracı tablolarında verilerin hangi kiracıya 
 
 Bu alıştırma, *adhocretaşıma* veritabanını dağıtır. Bu, tüm kiracı veritabanlarında sorgulamak için kullanılan şemayı içeren baş veritabanıdır. Veritabanı, örnek uygulamadaki tüm yönetim ile ilgili veritabanları için kullanılan sunucu olan var olan katalog sunucusuna dağıtılır.
 
-1. Aç... \\ \\ \\ \\ *PowerShell ISE* 'de*demo-AdhocReporting. ps1* ' de işletimsel analitik geçici raporlama ve aşağıdaki değerleri ayarlama modüllerini öğreniyor:
+1. Aç... \\ \\ \\ \\ *PowerShell ISE* 'de*Demo-AdhocReporting.ps1* öğrenme modülleri işlem analizi geçici raporlama ve aşağıdaki değerleri ayarlama:
    * **$DemoScenario** = 2, geçici **analiz veritabanını dağıtın**.
 
 2. Betiği çalıştırmak ve *adhocretaşıma* veritabanını oluşturmak için **F5** ' e basın.
@@ -159,4 +159,4 @@ Artık daha karmaşık analiz işlemleri için verileri ayrı bir analiz veritab
 * Additional [tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
 
-* [Esnek Sorgu](elastic-query-overview.md)
+* [Elastik sorgu](elastic-query-overview.md)
