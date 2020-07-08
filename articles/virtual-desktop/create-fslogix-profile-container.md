@@ -9,10 +9,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362994"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
@@ -45,7 +45,7 @@ Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için
 
 Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
 
 2. Azure Cloud Shell açmak için arama çubuğunun sağ tarafındaki **Azure Cloud Shell simgesini** seçin.
 

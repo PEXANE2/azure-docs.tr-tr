@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362688"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini yapılandırma ve erişme
@@ -30,7 +30,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 Denetim günlüğünü etkinleştirin ve yapılandırın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. MariaDB sunucusu için Azure veritabanınızı seçin.
 

@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: f941f67105227b3973386b015344d5fa787c3485
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84317762"
 ---
 Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
@@ -26,17 +26,17 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Varsayılan istemci türü**altında, uygulamayı ortak istemci olarak değerlendirmek için **Evet** ' i seçin. Bu ayar, ROPC akışı için gereklidir.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 1. Sol taraftaki menüden **bildirim** ' ı seçerek bildirim düzenleyicisini açın. 
 1. **Oauth2AllowImplicitFlow** özniteliğini *true*olarak ayarlayın:
     ```json
     "oauth2AllowImplicitFlow": true,
     ```
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.

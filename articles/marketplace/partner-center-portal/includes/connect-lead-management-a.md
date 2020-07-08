@@ -10,10 +10,10 @@ ms.date: 06/01/2020
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: 8d868d7d231f6dbe1952756917e5a7965d6cea2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84686366"
 ---
 Teklifinizi markette listeleyerek ve Müşteri Ilişkileri yönetimi (CRM) sisteminizin dökümünü yaparak müşterilere doğrudan bağlanın. böylece müşteri iletişim bilgilerini bir müşteri ilgilendikten veya ürününüzü dağıtduktan hemen sonra alabilirsiniz.

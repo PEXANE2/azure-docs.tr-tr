@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
 ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368065"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>SQL Edge 'de ONNX ile Machine Learning ve AI (Önizleme)
@@ -36,7 +36,7 @@ ONNX biçiminde bir model elde etmek için:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [TensorFlow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit-öğrenme](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     Desteklenen çerçeveler ve örneklerin tam listesi için bkz. [ONNX biçimine dönüştürme](https://github.com/onnx/tutorials#converting-to-onnx-format).

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: 3b22105486aabe8d79848d7ac621b9543815d106
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85366994"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup için VM anlık görüntüsü Windows uzantısı
@@ -59,7 +59,7 @@ Aşağıdaki JSON, VM Snapshot uzantısı için şemayı gösterir. Uzantı, gö
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | TaskID | e07354cf-041e-4370-929f-25a319ce8933_1 | string |

@@ -4,10 +4,10 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368235"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
@@ -51,7 +51,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
    ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -80,7 +80,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğe taşıyabilirsiniz
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
     ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

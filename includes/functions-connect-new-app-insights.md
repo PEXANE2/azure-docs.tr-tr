@@ -25,7 +25,7 @@ Azure Işlevleri, [Azure Portal]bir işlev uygulamasına Application Insights t�
 
 1. Aşağıdaki tabloda belirtilen ayarları kullanarak **kaynağınızın değiştirme** ve bir Application Insights kaynağı oluşturma ' yı genişletin.  
 
-    | Ayar      | Önerilen değer  | Açıklama                                        |
+    | Ayar      | Önerilen değer  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Yeni kaynak adı** | Benzersiz uygulama adı | Kendi aboneliğinizde benzersiz olması gereken işlev uygulamanız ile aynı adı kullanmak en kolay yoldur. | 
     | **Konum** | Batı Avrupa | Mümkünse, işlev uygulamanız ile aynı [bölgeyi](https://azure.microsoft.com/regions/) veya bu bölgeye yakın olanı kullanın. |

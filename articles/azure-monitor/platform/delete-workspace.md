@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367963"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
@@ -45,7 +45,7 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil** ' e tıklayın.
 4. Çalışma alanına geçen hafta boyunca veri alımını gösteren bir onay sayfası görüntülenir. Onaylamak için çalışma alanının adını yazın ve ardından **Sil**' e tıklayın.
@@ -82,7 +82,7 @@ Veri, yapılandırma ve bağlı aracılar dahil olmak üzere geçici silme döne
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin. Seçili kapsamda bulunan çalışma alanlarının listesini görürsünüz.
 3. En üstteki menüden **kurtar** ' a tıklayarak geçici bir şekilde kurtarılabilen, geçici silme durumunda bulunan çalışma alanları içeren bir sayfa açın.
 
