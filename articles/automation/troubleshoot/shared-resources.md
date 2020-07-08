@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680875"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
@@ -76,15 +75,15 @@ Modülün Azure Otomasyonu 'na başarıyla aktarılamayan bazı yaygın nedenler
 
 Sorunu onarmak için aşağıdaki çözümlerden herhangi birini kullanın:
 
-* Modülün şu biçimde olduğundan emin olun: ModuleName. zip-> ModuleName veya sürüm numarası-> (ModuleName. psm1, ModuleName. psd1).
+* Modülün şu biçimde olduğundan emin olun: ModuleName.zip-> ModuleName veya sürüm numarası-> (ModuleName. psm1, ModuleName.psd1).
 * **. Psd1** dosyasını açın ve modülün herhangi bir bağımlılığı olup olmadığını görün. Varsa, bu modülleri Otomasyon hesabına yükleyin.
 * Başvurulmuş tüm **. dll** dosyalarının modül klasöründe bulunduğundan emin olun.
 
-### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Senaryo: modüller güncelleştirilirken Update-AzureModule. ps1 askıya alınır
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Senaryo: modüller güncelleştirilirken Update-AzureModule.ps1 askıya alınır
 
 #### <a name="issue"></a>Sorun
 
-Azure modüllerinizi güncelleştirmek için [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook 'unu kullanırken modül güncelleştirme işlemi askıya alınır.
+Azure modüllerinizi güncelleştirmek için [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook 'u kullanırken modül güncelleştirme işlemi askıya alınır.
 
 #### <a name="cause"></a>Nedeni
 
@@ -97,7 +96,7 @@ Tüm Azurerd veya az modüllerin aynı Otomasyon hesabında gerekli olduğu yayg
 > [!NOTE]
 > `Az.Automation` `AzureRM.Automation` Dahil edilen tüm modülleri içeri aktaran tüm veya modülünü içeri aktarmaktan kaçının.
 
-Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` **Update-AzureModules. ps1** betiğine parametresini ekleyin ve varsayılan 10 ' dan daha düşük bir değer sağlayın. Bu mantığı uygularsanız, 3 veya 5 değeri ile başlatmayı deneyin. `SimultaneousModuleImportJobCount`, Azure modüllerini güncelleştirmek için kullanılan **Update-AutomationAzureModulesForAccount** sistem runbook 'unun bir parametresidir. Bu ayarlamayı yaparsanız, güncelleştirme işlemi daha fazla çalışır, ancak tamamlanması daha iyi olur. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
+Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` **Update-AzureModules.ps1** betiğine parametresini ekleyin ve varsayılan değer olan 10 ' dan daha düşük bir değer sağlayın. Bu mantığı uygularsanız, 3 veya 5 değeri ile başlatmayı deneyin. `SimultaneousModuleImportJobCount`, Azure modüllerini güncelleştirmek için kullanılan **Update-AutomationAzureModulesForAccount** sistem runbook 'unun bir parametresidir. Bu ayarlamayı yaparsanız, güncelleştirme işlemi daha fazla çalışır, ancak tamamlanması daha iyi olur. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
 
  ```powershell
          $Body = @"
@@ -138,7 +137,7 @@ Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, farklı �
 
 Sorun bir kilit nedeniyle, kilidin kaldırılabildiğini doğrulayın. Ardından Azure portal kilitlenen kaynağa gidin, kilidi sağ tıklatın ve **Sil**' i seçin.
 
-### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Senaryo: bir runbook yürütürken "' iplpapı. dll ' DLL dosyasında ' Getperadapterınfo ' adlı bir giriş noktası bulunamadı" hatasını alıyorsunuz
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Senaryo: bir runbook yürütürken "iplpapi.dll ' adlı DLL 'de ' Getperadapterınfo ' adlı bir giriş noktası bulunamadı" hatasını alıyorsunuz
 
 #### <a name="issue"></a>Sorun
 

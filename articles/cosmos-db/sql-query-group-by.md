@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
 ms.openlocfilehash: b602b56d37cec0e23d31318f6675d031bdd6bcdb
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83700996"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
@@ -27,7 +26,7 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
         | <scalar_expression_list>, <scalar_expression>
 ```  
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
 
 - `<scalar_expression_list>`
 
@@ -46,7 +45,7 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
   GROUP BY yan tümcesi aşağıdakilerden hiçbirine izin vermez:
   
 - Diğer ad özellikleri veya diğer ad sistemi işlevleri (SELECT yan tümcesinde hala diğer ad kullanımına izin veriliyor)
-- Alt
+- Alt Sorgular
 - Toplam sistem işlevleri (bunlar yalnızca SELECT yan tümcesinde kullanılabilir)
 
 Toplu sistem işlevine ve alt sorgusuna sahip sorgular `GROUP BY` desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:

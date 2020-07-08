@@ -9,10 +9,9 @@ ms.author: mlearned
 description: 'Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725610"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
@@ -51,7 +50,7 @@ Müşteriler, sınırlı yetenekler verildiğinde, bu sorumluyu birden çok küm
 
 Rol atarken uygun bağımsız değişkene geçerek izinler daha fazla sınırlı olabilir `--scope` . Bu, müşterilerin küme kaydını kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
 
-| Kaynak  | `scope` bağımsız değişkeni| Etki |
+| Kaynak  | `scope` bağımsız değişkeni| Efekt |
 | ------------- | ------------- | ------------- |
 | Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir |
 | Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir`myGroup` |

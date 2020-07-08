@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656320"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
@@ -23,7 +22,7 @@ Mahout, Apache Hadoop için bir [makine öğrenme](https://en.wikipedia.org/wiki
 
 HDInsight 'ta Mahout sürümü hakkında daha fazla bilgi için bkz. [HDInsight sürümleri ve Apache Hadoop bileşenleri](../hdinsight-component-versioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -89,14 +88,14 @@ Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/mov
 
     İlk sütun `userID` . ' [' Ve '] ' içinde yer alan değerler `movieId` : `recommendationScore` .
 
-2. Öneriler hakkında daha fazla bilgi sağlamak için, çıktıyı moviedb. txt ile birlikte kullanabilirsiniz. İlk olarak, aşağıdaki komutları kullanarak dosyaları yerel olarak kopyalayın:
+2. Öneriler hakkında daha fazla bilgi sağlamak için çıktıyı moviedb.txt birlikte kullanabilirsiniz. İlk olarak, aşağıdaki komutları kullanarak dosyaları yerel olarak kopyalayın:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Bu komut, çıktı verilerini geçerli dizinde, film veri dosyalarıyla birlikte **öneriler. txt** adlı bir dosyaya kopyalar.
+    Bu komut, çıktı verilerini, film veri dosyalarıyla birlikte geçerli dizindeki **recommendations.txt** adlı bir dosyaya kopyalar.
 
 3. Öneri çıktısındaki verilerin film adlarını gösteren bir Python betiği oluşturmak için aşağıdaki komutu kullanın:
 
@@ -168,11 +167,11 @@ Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/mov
 
     Bu komut, Kullanıcı KIMLIĞI 4 için oluşturulan önerilere bakar.
 
-   * **User-Ratings. txt** dosyası, derecelendirildi filmleri almak için kullanılır.
+   * **user-ratings.txt** dosyası, derecelendirildi filmleri almak için kullanılır.
 
-   * **Moviedb. txt** dosyası, filmlerin adlarını almak için kullanılır.
+   * **moviedb.txt** dosyası, filmlerin adlarını almak için kullanılır.
 
-   * **Öneriler. txt** , bu kullanıcıya ait film önerilerini almak için kullanılır.
+   * **recommendations.txt** , bu kullanıcıya ait film önerilerini almak için kullanılır.
 
      Bu komutun çıktısı aşağıdaki metne benzer:
 

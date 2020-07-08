@@ -5,10 +5,9 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83715214"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Yedekleme Gezgini ile yedeklemelerinizi izleme
@@ -32,7 +31,7 @@ Bu yetenekler, Azure Kaynak Grafiği ve Azure Izleyici çalışma kitapları ile
 > * Azure Kaynak Grafiği verilerinde özel geliştirmeler yazılmasını önermiyoruz.
 > * Yedekleme Gezgini Şu anda en fazla 1000 abonelik (kiracılar arasında) üzerinde yedeklemeleri izlemenize olanak sağlar.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Kurtarma Hizmetleri kasalarınıza gidip **genel bakış** bölmesinde **yedek gezgin** bağlantısını seçerek yedekleme Gezgini 'ne erişebilirsiniz.
 

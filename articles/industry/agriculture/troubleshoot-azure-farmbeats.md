@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656825"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
@@ -110,7 +109,7 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 > [!NOTE]
 > İlgilendiğiniz algılayıcı ortağının iş ortağı KIMLIĞI.
 
-3. Iş ortağı API 'sine dönün ve **Al/ \< kimlik>**' yi seçin.
+3. Iş ortağı API 'sine dönün ve **Al/ \<ID> Al**' ı seçin.
 4. 3. adımdaki iş ortağı KIMLIĞINI belirtip **Yürüt**' ü seçin.
 
    API yanıtının Event Hubs bağlantı dizesi olmalıdır.
@@ -205,7 +204,7 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
     1. [Azure Portal](https://portal.azure.com)oturum açın.
     2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
-    3. Depolama hesabı depolamayı seçin * * * * * > **kapsayıcılar**  >  **Batch-Prep-Files**  >  **to_vm**  >  **config. ini**
+    3. Depolama hesabı depolamayı seçin * * * * * > **kapsayıcılar**  >  **Batch-Prep-dosyalar**  >  **to_vm**  >  **config.ini**
     4. **Düzenle** 'yi seçin
     5. Sentinel_account bölümündeki Kullanıcı adını güncelleştirin
 
@@ -250,7 +249,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: en fazla bağlantı sayısına ulaşıldı
 
-**İş hatası iletisi**: "kullanıcının kullanıcı adı> ' tarafından elde edilen iki eşzamanlı akış sayısı üst sınırı \< ."
+**İş hatası iletisi**: "' ' kullanıcısı tarafından en fazla iki eş zamanlı akış elde edilir \<username> ."
 
 **Anlamı**: en fazla bağlantı sayısına ulaşıldığından bir iş başarısız olursa, birden fazla Işte aynı Sentinel hesabı kullanılıyor.
 

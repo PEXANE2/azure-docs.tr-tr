@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664938"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Azure HDInsight 'ta etkileşimli sorgu kümesi boyutlandırma Kılavuzu
@@ -39,7 +38,7 @@ Bu belgede, makul bir performansa ulaşmak için tipik bir iş yükü için HDIn
 | Hive. Sunucu2. tez. Sessions. per. default. Queue | number_of_worker_nodes |Hive. Sunucu2. tez. default. Queues adlı her bir kuyruğun oturum sayısı. Bu sayı, sorgu koordinatörleri sayısına (Tez AMs) karşılık gelir. |
 | Tez. har. Resource. Memory. MB | 4096 (MB) | Tez AppMaster tarafından kullanılacak bellek miktarı (MB). |
 | Hive. tez. Container. size | 4096 (MB) | Belirtilen tez kapsayıcı boyutu MB olarak. |
-| Hive. LLAP. Daemon. num. yürüticileri | 12 | LLAP Daemon başına yürütme sayısı. |
+| hive.llap.daemon.num.execılar | 12 | LLAP Daemon başına yürütme sayısı. |
 | Hive. LLAP. IO. ThreadPool. size | 12 | Yürüticileri için iş parçacığı havuzu boyutu. |
 | Hive. LLAP. Daemon. yarn. Container. MB | 86016 (MB) | Bireysel LLAP Daemon 'ları tarafından kullanılan MB cinsinden toplam bellek (daemon başına bellek).|
 | Hive. LLAP. IO. Memory. size | 409600 (MB) | LLAP arka plan programı başına MB cinsinden önbellek boyutu belirtilen SSD önbelleği etkin. |
@@ -129,7 +128,7 @@ Toplam LLAP Daemon belleği = [LLAP önbellek boyutu] + [yığın boyutu] + [Hea
 
 İş yükünüz için en uygun önbellek boyutunu ve yığın boyutunu ayarlamanız önerilir.  
 
-### <a name="hivellapdaemonnumexecutors"></a>Hive. LLAP. Daemon. num. yürüticileri
+### <a name="hivellapdaemonnumexecutors"></a>hive.llap.daemon.num.execılar
 
 Bu yapılandırma, görevleri her LLAP arka plan programı başına paralel olarak yürütebilmesi gereken yürütme sayısını denetler. Bu değer, kullanılabilir sanal çekirdek sayısı, yürütücü başına verilen bellek miktarı ve LLAP Daemon başına kullanılabilir toplam bellek dengesidir. Genellikle, bu değerin çekirdek sayısına olabildiğince yakın olmasını istiyoruz.
 

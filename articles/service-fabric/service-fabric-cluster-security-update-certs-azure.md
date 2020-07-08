@@ -4,10 +4,9 @@ description: Yeni sertifikaların nasıl ekleneceğini, sertifikanın nasıl akt
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83658378"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure'da Service Fabric kümesine sertifika ekleme veya kaldırma
@@ -46,11 +45,11 @@ Bu adımlarda, Kaynak Yöneticisi nasıl çalıştığını ve bir Kaynak Yönet
 
 ### <a name="edit-your-resource-manager-template"></a>Kaynak Yöneticisi şablonunuzu düzenleme
 
-Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız tüm düzenlemeleri içerir. örnek, [Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)deposu ' te kullanılabilir.
+Bunun yanı sıra, ÜZERINDE örnek 5-VM-1-NodeTypes-Secure_Step2.JS, yaptığımız tüm düzenlemeleri içerir. örnek, [Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)deposu ' te kullanılabilir.
 
 **Tüm adımları izlediğinizden emin olun**
 
-1. Kümenizi dağıtmak için kullandığınız Kaynak Yöneticisi şablonunu açın. (Örneği önceki depodan indirdiyseniz, güvenli bir küme dağıtmak için 5-VM-1-NodeTypes-Secure_Step1. JSON kullanın ve ardından bu şablonu açın).
+1. Kümenizi dağıtmak için kullandığınız Kaynak Yöneticisi şablonunu açın. (Örneği önceki depodan indirdiyseniz, güvenli bir küme dağıtmak için ÜZERINDE 5-VM-1-NodeTypes-Secure_Step1.JSkullanın ve ardından bu şablonu açın).
 
 2. Şablonunuzun parametre bölümüne "String" türünde **iki yeni** "seccertificatethumbprint" ve "secCertificateUrlValue" parametresi ekleyin. Aşağıdaki kod parçacığını kopyalayabilir ve şablona ekleyebilirsiniz. Şablonunuzun kaynağına bağlı olarak, bir sonraki adıma geçmek istiyorsanız, bu tanımlanmış olabilir. 
  
@@ -165,7 +164,7 @@ Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız t�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Şablon dosyanızı, yukarıda eklediğiniz yeni parametreleri yansıtacak şekilde düzenleyin
-Daha sonra izlemek için [Git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) deposunun örneğini kullanıyorsanız, örnek 5-VM-1-Nodetypes-Secure. PARAMETERS_STEP2. json dosyasında değişiklik yapmaya başlayabilirsiniz 
+Daha sonra izlemek için [Git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) deposunun örneğini kullanıyorsanız, örnek 5-VM-1-NodeTypes-Secure.parameters_Step2.JSüzerinde değişiklik yapmaya başlayabilirsiniz 
 
 Kaynak Yöneticisi şablonu parametre dosyanızı düzenleyin, secCertificateThumbprint ve secCertificateUrlValue için iki yeni parametreyi ekleyin. 
 

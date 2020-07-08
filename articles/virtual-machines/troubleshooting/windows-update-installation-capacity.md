@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664700"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>İşletim sistemi başlatma sorunlarını giderme – Windows Update yükleme kapasitesi
@@ -33,7 +32,7 @@ VM 'nin ekran görüntüsünü görüntülemek için önyükleme tanılamayı ku
 
 ## <a name="cause"></a>Nedeni
 
-Bu durumda, işletim sistemi (OS), dosya sisteminde çekirdek dosya oluşturuoluşturulamadığı için bir Windows Update (KB) yüklemesini tamamlayamıyor. Bu hata koduna bağlı olarak, işletim sistemi diske dosya yazamıyor.
+Bu durumda, işletim sistemi (OS), dosya sisteminde çekirdek dosya oluşturuoluşturulamadığı için bir Windows Update (KB) yüklemesini tamamlayamıyor. Bu hata kodu temelinde işletim sistemi diske hiçbir dosya yazamadı.
 
 ## <a name="solution"></a>Çözüm
 

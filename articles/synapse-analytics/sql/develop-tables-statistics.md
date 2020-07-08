@@ -12,10 +12,9 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659239"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
@@ -173,7 +172,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -190,7 +189,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -403,7 +402,7 @@ Belirli bir istatistik nesnesini güncelleştirmek için aşağıdaki sözdizimi
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -419,7 +418,7 @@ Bir tablodaki tüm istatistik nesnelerini güncelleştirmek için basit bir yön
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -522,7 +521,7 @@ Bu basit örnek, bir istatistik nesnesinin üç parçasını gösterir:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -537,7 +536,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -652,7 +651,7 @@ Bir sütunda istatistik oluşturmak için, istatistikleri gereken sütunu dönd�
 
 Varsayılan olarak, aksi takdirde, SQL isteğe bağlı SQL, istatistik oluşturduğunda veri kümesinde belirtilen verilerin %100 ' u kullanır.
 
-Örneğin, popülasyon. csv dosyasını temel alan veri kümesinin yıl sütunu için varsayılan seçeneklerle (FULLSCAN) istatistik oluşturmak için:
+Örneğin, population.csv dosyasına göre veri kümesinin yıl sütunu için varsayılan seçeneklerle (FULLSCAN) istatistik oluşturmak için:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -720,7 +719,7 @@ sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 
 Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler oluşturulduğunda kullanılan Transact-SQL Ifadesini belirtir.
 
-Veri kümesinde, popülasyon. csv dosyasını temel alan yıl sütununun istatistiklerini güncelleştirmek için, istatistikleri bırakıp oluşturmanız gerekir:
+population.csv dosyasını temel alan veri kümesindeki yıl sütununun istatistiklerini güncelleştirmek için, istatistikleri bırakıp oluşturmanız gerekir:
 
 ```sql
 EXEC sys.sp_drop_file_statistics N'SELECT payment_type

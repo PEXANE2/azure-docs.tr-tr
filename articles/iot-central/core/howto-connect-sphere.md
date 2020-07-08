@@ -8,10 +8,9 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83715078"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere cihazını Azure IoT Central uygulamanıza bağlama
@@ -52,7 +51,7 @@ IoT Central Azure Sphere bir cihaz oluşturmak için:
 
 1. Cihaz şablonunda, **sıcaklık** ve **düğme basma**' ı göstermek için **genel bakış** adlı görünümü düzenleyin.
 
-1. Okuma/yazma özelliği **durumunu**gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**’i seçin.
+1. Okuma/yazma özelliği **durumunu**gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**'i seçin.
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
@@ -78,7 +77,7 @@ Sanal cihaz oluşturmak için:
 - **+ Yeni**seçeneğini belirleyin.
 - Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**girin.
 - **Benzetimli** ayarı etkinleştirin.
-- **Oluştur**’u seçin.
+- **Oluştur**'u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
 ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680679"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
@@ -44,7 +43,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 - Tanılama ayarları aracılığıyla dışarı aktarılabilir mi? 
 - NULL/0 tarafından etkilendi 
 - ResourceType 
-- Metric 
+- Ölçüm 
 - MetricDisplayName
 - Birim 
 - Toplamatürü
@@ -54,7 +53,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 > Aşağıdaki tabloda, alt kısımdaki bir yatay kaydırma çubuğu olabilir. Bilgilerin eksik olduğunu düşünüyorsanız, kaydırma çubuğunun sola doğru olup olmadığını kontrol edin.  
 
 
-| Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?  | Null değerleri zaten yay |  ResourceType  |  Metric  |  MetricDisplayName  |  Birim  |  Toplamatürü | 
+| Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?  | Null değerleri zaten yay |  ResourceType  |  Ölçüm  |  MetricDisplayName  |  Birim  |  Toplamatürü | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Evet * * * *  | Hayır |  Microsoft. AnalysisServices/sunucuları  |  CleanerCurrentPrice  |  Bellek: temizleyici geçerli fiyatı  |  Sayı  |  Ortalama | 
 | Evet * * * *  | Hayır |  Microsoft. AnalysisServices/sunucuları  |  Cleanermemorynonınkable  |  Bellek: temizleyici bellek daraltılamaz  |  Bayt  |  Ortalama | 
@@ -147,54 +146,54 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  TotalJob  |  Toplam Iş sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  Totalupdatedeploymentmachinerçalıştırır  |  Toplam güncelleştirme dağıtım makinesi çalıştırması  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Toplam güncelleştirme dağıtımı çalıştırmaları  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  CoreCount  |  Adanmış çekirdek sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  CreatingNodeCount  |  Düğüm sayısı oluşturuluyor  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  Idıdnodecount  |  Boştaki düğüm sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobDeleteCompleteEvent  |  İş silme Tamam olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobDeleteStartEvent  |  İş silme başlangıç olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobDisableCompleteEvent  |  İş tüm olayları devre dışı bırak  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobDisableStartEvent  |  İş devre dışı başlatma olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobStartEvent  |  İş başlatma olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobTerminateCompleteEvent  |  İş sonlandırma tamamlanma olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  JobTerminateStartEvent  |  İş sonlandırma başlangıç olayları  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  LeavingPoolNodeCount  |  Havuz düğüm sayısından çıkılıyor  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  LowPriorityCoreCount  |  LowPriority çekirdek sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  OfflineNodeCount  |  Çevrimdışı düğüm sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  PoolCreateEvent  |  Havuz oluşturma olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Havuz silme Tamam olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  PoolDeleteStartEvent  |  Havuz silme başlangıç olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Havuz yeniden boyutlandırma Tamam olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  PoolResizeStartEvent  |  Havuz yeniden boyutlandırma başlangıç olayları  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  PreemptedNodeCount  |  Önden düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  RebootingNodeCount  |  Düğüm sayısı yeniden başlatılıyor  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  ReimagingNodeCount  |  Yeniden Imaging düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  RunningNodeCount  |  Çalışan düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  StartingNodeCount  |  Başlangıç düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Başlangıç görevi başarısız düğüm sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  TaskCompleteEvent  |  Görev tamamlanma olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  TaskFailEvent  |  Görev başarısız olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batch/batchAccounts  |  TaskStartEvent  |  Görev başlatma olayları  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Düşük öncelikli düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  TotalNodeCount  |  Adanmış düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  UnusableNodeCount  |  Kullanılamayan düğüm sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Batch/batchAccounts  |  Waitingforstarttasnot Decount  |  Başlangıç görevi düğüm sayısı bekleniyor  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Etkin çekirdekler  |  Etkin çekirdekler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Etkin düğümler  |  Etkin düğümler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Boştaki çekirdekler  |  Boştaki çekirdekler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Boştaki düğümler  |  Boştaki düğümler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  İş tamamlandı  |  İş tamamlandı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  İş gönderildi  |  İş gönderildi  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Çekirdekleri bırakma  |  Çekirdekleri bırakma  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Düğümlerden çıkılıyor  |  Düğümlerden çıkılıyor  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Önden çekirdekler  |  Önden çekirdekler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Önden düğümler  |  Önden düğümler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Kota kullanım yüzdesi  |  Kota kullanım yüzdesi  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Toplam çekirdek sayısı  |  Toplam çekirdek sayısı  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Toplam düğüm sayısı  |  Toplam düğüm sayısı  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Kullanılamayan çekirdekler  |  Kullanılamayan çekirdekler  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Batchaı/çalışma alanları  |  Kullanılamayan düğümler  |  Kullanılamayan düğümler  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  CoreCount  |  Adanmış çekirdek sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  CreatingNodeCount  |  Düğüm sayısı oluşturuluyor  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  Idıdnodecount  |  Boştaki düğüm sayısı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobDeleteCompleteEvent  |  İş silme Tamam olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobDeleteStartEvent  |  İş silme başlangıç olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobDisableCompleteEvent  |  İş tüm olayları devre dışı bırak  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobDisableStartEvent  |  İş devre dışı başlatma olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobStartEvent  |  İş başlatma olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  İş sonlandırma tamamlanma olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  JobTerminateStartEvent  |  İş sonlandırma başlangıç olayları  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  LeavingPoolNodeCount  |  Havuz düğüm sayısından çıkılıyor  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  LowPriorityCoreCount  |  LowPriority çekirdek sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  OfflineNodeCount  |  Çevrimdışı düğüm sayısı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  PoolCreateEvent  |  Havuz oluşturma olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Havuz silme Tamam olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  PoolDeleteStartEvent  |  Havuz silme başlangıç olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Havuz yeniden boyutlandırma Tamam olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  PoolResizeStartEvent  |  Havuz yeniden boyutlandırma başlangıç olayları  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  PreemptedNodeCount  |  Önden düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  RebootingNodeCount  |  Düğüm sayısı yeniden başlatılıyor  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  ReimagingNodeCount  |  Yeniden Imaging düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  RunningNodeCount  |  Çalışan düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  StartingNodeCount  |  Başlangıç düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Başlangıç görevi başarısız düğüm sayısı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  TaskCompleteEvent  |  Görev tamamlanma olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  TaskFailEvent  |  Görev başarısız olayları  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Batch/batchAccounts  |  TaskStartEvent  |  Görev başlatma olayları  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Düşük öncelikli düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  TotalNodeCount  |  Adanmış düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  UnusableNodeCount  |  Kullanılamayan düğüm sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft.Batch/batchAccounts  |  Waitingforstarttasnot Decount  |  Başlangıç görevi düğüm sayısı bekleniyor  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Etkin çekirdekler  |  Etkin çekirdekler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Etkin düğümler  |  Etkin düğümler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Boştaki çekirdekler  |  Boştaki çekirdekler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Boştaki düğümler  |  Boştaki düğümler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  İş tamamlandı  |  İş tamamlandı  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  İş gönderildi  |  İş gönderildi  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Çekirdekleri bırakma  |  Çekirdekleri bırakma  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Düğümlerden çıkılıyor  |  Düğümlerden çıkılıyor  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Önden çekirdekler  |  Önden çekirdekler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Önden düğümler  |  Önden düğümler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Kota kullanım yüzdesi  |  Kota kullanım yüzdesi  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Toplam çekirdek sayısı  |  Toplam çekirdek sayısı  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Toplam düğüm sayısı  |  Toplam düğüm sayısı  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Kullanılamayan çekirdekler  |  Kullanılamayan çekirdekler  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  ChAI/çalışma alanlarını Microsoft.Bat  |  Kullanılamayan düğümler  |  Kullanılamayan düğümler  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Connectionkabul edildi  |  Kabul edilen bağlantılar  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  ConnectionActive  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  ConnectionActive  |  Etkin Bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Connectionişlenmiş  |  İşlenmiş bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  CpuUsagePercentageInDouble  |  CPU kullanım yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Ioreadbytes  |  GÇ okuma baytları  |  Bayt  |  Toplam | 
@@ -635,7 +634,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. DataLakeStore/accounts  |  ReadRequests  |  Okuma Istekleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataLakeStore/accounts  |  TotalStorage  |  Toplam Depolama Alanı  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DataLakeStore/accounts  |  WriteRequests  |  Yazma Istekleri  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
+| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  active_connections  |  Etkin Bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  backup_storage_used  |  Kullanılan yedekleme depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  connections_failed  |  Başarısız Bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
@@ -650,7 +649,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  active_connections  |  Etkin Bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  backup_storage_used  |  Kullanılan yedekleme depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  connections_failed  |  Başarısız Bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
@@ -665,7 +664,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  active_connections  |  Etkin Bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  backup_storage_used  |  Kullanılan yedekleme depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  connections_failed  |  Başarısız Bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
@@ -681,7 +680,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  active_connections  |  Etkin Bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  'ye  |  IOPS  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  memory_percent  |  Bellek yüzdesi  |  Yüzde  |  Ortalama | 
@@ -758,30 +757,30 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  AttestationAttempts  |  Kanıtlama denemeleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  Deviceasyleri  |  Atanan cihazlar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Devices/provisioningServices  |  Registrationdenemeleri  |  Kayıt denemeleri  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Kullanılabilir Depolama Alanı  |  Bayt  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Cassandraconnectionkapanışları  |  Cassandra bağlantı kapanışları  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Cassandrarequestücretleri  |  Cassandra Istek ücretleri  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra Istekleri  |  Sayı  |  Sayı | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Veri kullanımı  |  Veri Kullanımı  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Sayı  |  Sayı | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DocumentCount  |  Belge sayısı  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Belge kotası  |  Bayt  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Indexusage  |  Dizin Kullanımı  |  Bayt  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Meta veri datarequests  |  Meta veri Istekleri  |  Sayı  |  Sayı | 
-| **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  Mongorequestşarj  |  Mongo Istek ücreti  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo Istekleri  |  Sayı  |  Sayı | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Mongo Istek hızı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Mongo silme Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Mongorequestsınsert  |  Mongo ekleme Isteği oranı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Mongo sorgu Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Mongo güncelleştirme Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Provisionedüretilen Iş  |  Sağlanan İşleme Hızı  |  Sayı  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99 çoğaltma gecikmesi  |  Mayacak  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Hizmet kullanılabilirliği  |  Yüzde  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequests  |  Toplam İstek Sayısı  |  Sayı  |  Sayı | 
-| **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Toplam Istek birimleri  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  FailureCount  |  Başarısız İşlem Sayısı  |  Sayı  |  Sayı | 
-| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı sayısı  |  Başarılı İşlem Sayısı  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  AvailableStorage  |  Kullanılabilir Depolama Alanı  |  Bayt  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Cassandraconnectionkapanışları  |  Cassandra bağlantı kapanışları  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Cassandrarequestücretleri  |  Cassandra Istek ücretleri  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  CassandraRequests  |  Cassandra Istekleri  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Veri kullanımı  |  Veri Kullanımı  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  DocumentCount  |  Belge sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  DocumentQuota  |  Belge kotası  |  Bayt  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Indexusage  |  Dizin Kullanımı  |  Bayt  |  Toplam | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Meta veri datarequests  |  Meta veri Istekleri  |  Sayı  |  Sayı | 
+| **Evet**  | **Evet** |  UmentDB/databaseAccounts Microsoft.Doc  |  Mongorequestşarj  |  Mongo Istek ücreti  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  UmentDB/databaseAccounts Microsoft.Doc  |  MongoRequests  |  Mongo Istekleri  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  MongoRequestsCount  |  Mongo Istek hızı  |  Sayaçpersaniye  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  MongoRequestsDelete  |  Mongo silme Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Mongorequestsınsert  |  Mongo ekleme Isteği oranı  |  Sayaçpersaniye  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  MongoRequestsQuery  |  Mongo sorgu Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  MongoRequestsUpdate  |  Mongo güncelleştirme Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  Provisionedüretilen Iş  |  Sağlanan İşleme Hızı  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  ReplicationLatency  |  P99 çoğaltma gecikmesi  |  Mayacak  |  Ortalama | 
+| Hayır  | Hayır |  UmentDB/databaseAccounts Microsoft.Doc  |  ServiceAvailability  |  Hizmet kullanılabilirliği  |  Yüzde  |  Ortalama | 
+| **Evet**  | **Evet** |  UmentDB/databaseAccounts Microsoft.Doc  |  TotalRequests  |  Toplam İstek Sayısı  |  Sayı  |  Sayı | 
+| **Evet**  | **Evet** |  UmentDB/databaseAccounts Microsoft.Doc  |  TotalRequestUnits  |  Toplam Istek birimleri  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  FailureCount  |  Hata Sayısı  |  Sayı  |  Sayı | 
+| Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı sayısı  |  Başarı Sayısı  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Başarılı gecikme  |  Başarı gecikmesi  |  Mayacak  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EnterpriseKnowledgeGraph/hizmetler  |  Işlem sayısı  |  İşlem sayısı  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. EventGrid/Domains  |  DeadLetteredCount  |  Kullanılmayan olaylar  |  Sayı  |  Toplam | 
@@ -807,30 +806,30 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. EventGrid/konuları  |  Publishbaşarılı sayısı  |  Yayımlanan olaylar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventGrid/konuları  |  Publishbaşarıyla Latencınms  |  Yayımlama başarı gecikmesi  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventGrid/konuları  |  UnmatchedEventCount  |  Eşleşmeyen olaylar  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ActiveConnection sayısı  |  ActiveConnection sayısı  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ActiveConnections  |  ActiveConnections  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  Kullanılabilirlik Blememory  |  Kullanılabilir Bellek  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CaptureBacklog  |  Biriktirme listesini yakala.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CapturedBytes  |  Yakalanan baytlar.  |  Bayt  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CapturedMessages  |  Yakalanan Iletiler.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsClosed  |  Bağlantı kapatıldı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsOpened  |  Bağlantılar açıldı.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsClosed  |  Kapatılan Bağlantılar.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsOpened  |  Açılan Bağlantılar.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CPU  |  CPU  |  Yüzde  |  Maksimum | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingbytes  |  Gelen bayt sayısı.  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingmessages  |  Gelen Iletiler  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingrequests  |  Gelen Istekler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingbytes  |  Gelen Bayt Miktarı  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingmessages  |  Gelen İletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingrequests  |  Gelen İstekler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  OutgoingBytes  |  Giden bayt sayısı.  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  OutgoingMessages  |  Giden Iletiler  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  QuotaExceededErrors  |  Kota, hataları aştı.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ServerErrors  |  Sunucu hataları.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  SuccessfulRequests  |  Başarılı Istekler  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  OperationName  |  Kısıtlanmış Istekler.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  UserErrors  |  Kullanıcı hataları.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ActiveConnection sayısı  |  ActiveConnection sayısı  |  Sayı  |  Ortalama | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  OutgoingMessages  |  Giden İletiler  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  QuotaExceededErrors  |  Kota Aşıldı Hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ServerErrors  |  Sunucu Hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  SuccessfulRequests  |  Başarılı İstekler  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  OperationName  |  Kısıtlanan İstekler.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  UserErrors  |  Kullanıcı Hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ActiveConnections  |  ActiveConnections  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  CaptureBacklog  |  Biriktirme listesini yakala.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  CapturedBytes  |  Yakalanan baytlar.  |  Bayt  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  CapturedMessages  |  Yakalanan Iletiler.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ConnectionsClosed  |  Bağlantı kapatıldı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ConnectionsOpened  |  Bağlantılar açıldı.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ConnectionsClosed  |  Kapatılan Bağlantılar.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ConnectionsOpened  |  Açılan Bağlantılar.  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  EHABL  |  Biriktirme listesi iletilerini Arşivle (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  EHAMB  |  Arşiv iletisi verimlilik (kullanım dışı)  |  Bayt  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  EHAMESAJ  |  İletileri Arşivle (kullanım dışı)  |  Sayı  |  Toplam | 
@@ -841,24 +840,24 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  EHOUTMB  |  Giden baytlar (eski) (kullanım dışı)  |  Bayt  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  EHODıKILETISI  |  Giden Iletiler (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  FAILREQ  |  Başarısız Istekler (kullanım dışı)  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingbytes  |  Gelen bayt sayısı.  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingmessages  |  Gelen Iletiler  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingrequests  |  Gelen Istekler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingbytes  |  Gelen Bayt Miktarı  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingmessages  |  Gelen İletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Incomingrequests  |  Gelen İstekler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Giriş iletileri  |  Gelen Iletiler (eski) (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  INREQS  |  Gelen Istekler (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  INTERR  |  İç sunucu hataları (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Hatalı cerr  |  Diğer hatalar (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  OutgoingBytes  |  Giden bayt sayısı.  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  OutgoingMessages  |  Giden Iletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  OutgoingMessages  |  Giden İletiler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  Dış mesaj  |  Giden Iletiler (eski) (kullanım dışı)  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  QuotaExceededErrors  |  Kota, hataları aştı.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ServerErrors  |  Sunucu hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  QuotaExceededErrors  |  Kota Aşıldı Hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  ServerErrors  |  Sunucu Hataları.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  Boyut  |  Boyut  |  Bayt  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  SuccessfulRequests  |  Başarılı Istekler  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  SuccessfulRequests  |  Başarılı İstekler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  SUCCREQ  |  Başarılı Istekler (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/ad alanları  |  SVRBSY  |  Sunucu meşgul hataları (kullanım dışı)  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  OperationName  |  Kısıtlanmış Istekler.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  UserErrors  |  Kullanıcı hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  OperationName  |  Kısıtlanan İstekler.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. EventHub/ad alanları  |  UserErrors  |  Kullanıcı Hataları.  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  Kategorizedgatewayrequests  |  Kategorilere ayrılmış ağ geçidi Istekleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  GatewayRequests  |  Ağ Geçidi Istekleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  Numactiveçalışanları  |  Etkin çalışan sayısı  |  Sayı  |  Maksimum | 
@@ -907,7 +906,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportResult  |  Sürekli dışarı aktarma sonucu  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  CPU  |  CPU  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Processedforeventhubs olayları  |  İşlenen Olaylar (olay/IoT Hub 'Ları için)  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Dışarı Aktaramstilileştirme  |  Kullanım verme  |  Yüzde  |  Maksimum | 
+| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Dışarı Aktaramstilileştirme  |  Dışarı Aktarma Kullanımı  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Inestionlatencınseconds  |  Alma gecikmesi (saniye)  |  Saniye  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Inestionresult  |  Alım sonucu  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Alım kullanımı  |  Alım kullanımı  |  Yüzde  |  Ortalama | 
@@ -1159,17 +1158,17 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Network/trafficManagerProfiles  |  QpsByEndpoint  |  Bitiş noktasına göre sorgular döndürüldü  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  AverageBandwidth  |  Ağ Geçidi S2S bant genişliği  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SBandwidth  |  Ağ Geçidi P2S bant genişliği  |  BytesPerSecond  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SConnectionCount  |  P2S bağlantı sayısı  |  Sayı  |  Maksimum | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelAverageBandwidth  |  Tünel bant genişliği  |  BytesPerSecond  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressBytes  |  Tünel çıkış baytları  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressPacketDropTSMismatch  |  Tünel çıkış uyumsuzluğu paket bırakma  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressPackets  |  Tünel çıkış paketleri  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelIngressBytes  |  Tünel giriş baytları  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelIngressPacketDropTSMismatch  |  Tünel girişi uyumsuz paket bırakma  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SConnectionCount  |  P2S Bağlantı Sayısı  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelAverageBandwidth  |  Tünel Bant Genişliği  |  BytesPerSecond  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressBytes  |  Tünel Çıkış Baytları  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressPacketDropTSMismatch  |  Tünel Çıkış TS Uyumsuzluğu Paket Bırakma  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressPackets  |  Tünel Çıkış Paketleri  |  Sayı  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelIngressBytes  |  Tünel Giriş Baytları  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelIngressPacketDropTSMismatch  |  Tünel Giriş TS Uyumsuzluğu Paket Bırakma  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelIngressPackets  |  Tünel giriş paketleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Bir VM 'ye ping için gidiş dönüş süresi  |  Mayacak  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  VM 'ye ping işlemi başarısız oldu  |  Yüzde  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar  |  gelen  |  Gelen Iletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar  |  gelen  |  Gelen İletiler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar  |  gelen. tüm. failedistekleri  |  Tüm gelen başarısız Istekler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar  |  gelen. ALL. Requests  |  Tüm gelen Istekler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar  |  gelen. zamanlandı  |  Zamanlanan anında Iletme bildirimleri gönderildi  |  Sayı  |  Toplam | 
@@ -1301,13 +1300,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Operationalınsights/çalışma alanları  |  Average_Virtual paylaşılan bellek  |  Sanal paylaşılan bellek  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Operationalınsights/çalışma alanları  |  Olay  |  Olay  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Operationalınsights/çalışma alanları  |  Sinyal  |  Sinyal  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Operationalınsights/çalışma alanları  |  Güncelleştirme  |  Güncelleştirme  |  Sayı  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft. Operationalınsights/çalışma alanları  |  Güncelleştir  |  Güncelleştir  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Powerbiadanmış/kapasiteler  |  memory_metric  |  Bellek  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Powerbiadanmış/kapasiteler  |  memory_thrashing_metric  |  Bellek kullanımı (veri kümeleri)  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Powerbiadanmış/kapasiteler  |  qpu_high_utilization_metric  |  QPU Yüksek Kullanımı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Powerbiadanmış/kapasiteler  |  QueryDuration  |  Sorgu süresi (veri kümeleri)  |  Mayacak  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Powerbiadanmış/kapasiteler  |  QueryPoolJobQueueLength  |  Sorgu havuzu Iş kuyruğu uzunluğu (veri kümeleri)  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. Relay/Namespace  |  ActiveConnection sayısı  |  ActiveConnection sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. Relay/Namespace  |  ActiveConnections  |  ActiveConnections  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. Relay/Namespace  |  ActiveListeners  |  ActiveListeners  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Relay/Namespace  |  BytesTransferred  |  BytesTransferred  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. Relay/Namespace  |  ListenerConnections-ClientError  |  ListenerConnections-ClientError  |  Sayı  |  Toplam | 
@@ -1323,24 +1322,24 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Search/searchServices  |  SearchLatency  |  Arama gecikmesi  |  Saniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Search/searchServices  |  SearchQueriesPerSecond  |  Sorgu arama/saniye  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Search/searchServices  |  Tüm Searchqueriespercentage 'ı kısıtlar  |  Kısıtlanmış arama sorguları yüzdesi  |  Yüzde  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ActiveConnection sayısı  |  ActiveConnection sayısı  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ActiveConnections  |  ActiveConnections  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ActiveMessages  |  Bir kuyruktaki/konudaki etkin ileti sayısı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ConnectionsClosed  |  Bağlantı kapatıldı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ConnectionsOpened  |  Bağlantılar açıldı.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ConnectionsClosed  |  Kapatılan Bağlantılar.  |  Sayı  |  Ortalama | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ConnectionsOpened  |  Açılan Bağlantılar.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  CPUXNS  |  CPU (kullanım dışı)  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  DeadletteredMessages  |  Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı.  |  Sayı  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  Incomingmessages  |  Gelen Iletiler  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  Incomingrequests  |  Gelen Istekler  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  İletiler  |  Kuyruktaki/konudaki iletilerin sayısı.  |  Sayı  |  Ortalama | 
+| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  Incomingmessages  |  Gelen İletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  Incomingrequests  |  Gelen İstekler  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  İletiler  |  Kuyruktaki/Konudaki iletilerin sayısı.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  NamespaceCpuUsage  |  CPU  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  NamespaceMemoryUsage  |  Bellek Kullanımı  |  Yüzde  |  Maksimum | 
-| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  OutgoingMessages  |  Giden Iletiler  |  Sayı  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. ServiceBus/ad alanları  |  OutgoingMessages  |  Giden İletiler  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ScheduledMessages  |  Bir kuyruktaki/konudaki zamanlanan ileti sayısı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ServerErrors  |  Sunucu hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  ServerErrors  |  Sunucu Hataları.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  Boyut  |  Boyut  |  Bayt  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  SuccessfulRequests  |  Başarılı Istekler  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  OperationName  |  Kısıtlanmış Istekler.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  UserErrors  |  Kullanıcı hataları.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  SuccessfulRequests  |  Başarılı İstekler  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  OperationName  |  Kısıtlanan İstekler.  |  Sayı  |  Toplam | 
+| Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  UserErrors  |  Kullanıcı Hataları.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. ServiceBus/ad alanları  |  WSXNS  |  Bellek kullanımı (kullanım dışı)  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  ActualCpu  |  ActualCpu  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  ActualMemory  |  ActualMemory  |  Bayt  |  Ortalama | 

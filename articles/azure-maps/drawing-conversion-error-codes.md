@@ -9,13 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681969"
 ---
-# <a name="drawing-conversion-errors-and-warnings"></a>Dönüştürme hatalarını ve uyarılarını çizme
+# <a name="drawing-conversion-errors-and-warnings"></a>Çizim dönüştürme hataları ve uyarıları
 
 [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Çizim paketleri, [Çizim paketi gereksinimlerine](drawing-requirements.md)bağlı olmalıdır. Bir veya daha fazla gereksinim karşılanmazsa, dönüştürme hizmeti hata veya uyarı döndürür. Bu makalede, dönüştürme hatası ve uyarı kodları listelenmektedir ve bunların nasıl çözüleceği ile ilgili öneriler sunulur. Ayrıca, dönüştürme hizmetinin bu kodları döndürmesini sağlayan bazı çizimler örneklerini de sağlar.
 
@@ -343,14 +342,14 @@ Bir **ınvaliduserdata** hatasını onarmak için şunları doğrulayın:
 
 * Bir DWG dosyası geçerli bir AutoCAD DWG dosya biçimi çizimi değildir.
 * Bir DWG dosyası bozuk.
-* Bir DWG dosyası _manifest. JSON_ dosyasında listelenir, ancak ZIP arşivi içinde yoktur.
+* Bir DWG dosyası _manifest.js_ dosyasında listelenir, ancak ZIP arşivi tarafından eksiktir.
 
 #### <a name="how-to-fix-dwgerror"></a>*DwgError 'ı çözme*
 
-Bir **Dwgerror**'ı onarmak için _manifest. JSON_ dosyanızı inceleyin ve şunları doğrulayın:
+Bir **Dwgerror**'ı onarmak için, dosyadaki _manifest.js_ inceleyin ve şunları doğrulayın:
 
 * ZIP arşivinizdeki tüm DWG dosyaları geçerli AutoCAD DWG biçim çizimlerinin her birini AutoCAD 'de açar. Tüm geçersiz çizimleri kaldırın veya onarın.
-* _Manifest. JSON_ içindeki DWG dosyalarının LISTESI, ZIP ARŞIVI içindeki DWG dosyalarıyla eşleşir.
+* _manifest.jsÜZERINDEKI_ DWG dosyalarının LISTESI, ZIP ARŞIVI içindeki DWG dosyalarıyla eşleşir.
 
 ## <a name="manifest-errors"></a>Bildirim hataları
 
@@ -358,9 +357,9 @@ Bir **Dwgerror**'ı onarmak için _manifest. JSON_ dosyanızı inceleyin ve şun
 
 #### <a name="description-for-invalidjsonformat"></a>Invalidjsonformat için açıklama
 
-_Manifest. JSON_ dosyası Okunmediğinde **ınvalidjsonformat** hatası oluşur.
+Dosya _manifest.js_ okunamıyor bir **ınvalidjsonformat** hatası oluşur.
 
-JSON biçimlendirme veya sözdizimi hataları nedeniyle _manifest. json_file okunamıyor. JSON biçimi ve sözdizimi hakkında daha fazla bilgi için bkz [. JavaScript nesne gösterimi (JSON) veri değişim biçimi](https://tools.ietf.org/html/rfc7159)
+JSON biçimlendirme veya sözdizimi hataları nedeniyle _manifest.json_file okunamıyor. JSON biçimi ve sözdizimi hakkında daha fazla bilgi için bkz [. JavaScript nesne gösterimi (JSON) veri değişim biçimi](https://tools.ietf.org/html/rfc7159)
 
 #### <a name="how-to-fix-invalidjsonformat"></a>*Invalidjsonformat 'ı çözme*
 
@@ -370,7 +369,7 @@ Bir **ınvalidjsonformat** hatasını düzeltmek için, JSON hatalarını tespit
 
 #### <a name="description-for-missingrequiredfield"></a>*MissingRequiredField açıklaması*
 
-_Manifest. JSON_ dosyasında gerekli veriler eksik olduğunda bir **missingrequiredfield** hatası oluşur.
+Dosyadaki _manifest.js_ gerekli verileri eksikse bir **missingrequiredfield** hatası oluşur.
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*MissingRequiredField 'ı çözme*
 
@@ -380,23 +379,23 @@ _Manifest. JSON_ dosyasında gerekli veriler eksik olduğunda bir **missingrequi
 
 #### <a name="description-for-missingmanifest"></a>*MissingManifest için açıklama*
 
-Eksik **bildirim** hatası, ZIP _. JSON_ dosyası ZIP arşivinde olmadığında oluşur.
+Bulunamayan **hata kodu, ZIP** arşivinde dosya _manifest.js_ oluşur.
 
 **Missingmanifest** hatası aşağıdaki nedenlerden biri veya birkaçı nedeniyle oluşur:
 
-* _Manifest. JSON_ dosyası yanlış yazılmıştır.
-* _Manifest. JSON_ eksik.
-* _Manifest. JSON_ , ZIP arşivi kök dizininin içinde değil.
+* Dosyadaki _manifest.js_ yanlış yazılmıştır.
+* _Üzerindemanifest.js_ eksik.
+* _manifest.js_ , ZIP arşivi kök dizininin içinde değil.
 
 #### <a name="how-to-fix-missingmanifest"></a>*MissingManifest nasıl düzeltilir?*
 
-Bir **Missingmanifest** hatasını onarmak için, ARŞIV 'in ZIP _. JSON_ adlı bir dosyaya sahip olduğundan emin olun.
+Bir **Missingmanifest** hatasını onarmak için, arşiv 'ın, ZIP arşivi kök düzeyinde _manifest.js_ adlı bir dosyaya sahip olduğunu doğrulayın.
 
 ### <a name="conflict"></a>**çakışma**
 
 #### <a name="description-for-conflict"></a>*Çakışma açıklaması*
 
-_Manifest. JSON_ dosyası çakışan bilgiler içerdiğinde **Çakışma** hatası oluşur.
+Dosyadaki _manifest.js_ çakışan bilgiler içerdiğinde **Çakışma** hatası oluşur.
 
 #### <a name="example-scenario-for-conflict"></a>*Çakışma için örnek senaryo*
 
@@ -422,13 +421,13 @@ Aynı düzey sıra sayısı ile birden fazla düzey tanımlandığında, dönü�
 
 #### <a name="how-to-fix-conflict"></a>*Çakışmayı çözme*
 
-Bir **Çakışma** hatasını onarmak için _manifest. JSON_ dosyanızı inceleyin ve çakışan tüm bilgileri kaldırın.
+Bir **Çakışma** hatasını onarmak için _üzerindemanifest.js_ inceleyin ve çakışan bilgileri kaldırın.
 
 ### <a name="invalidgeoreference"></a>**ınvalidgeoreference**
 
 #### <a name="description-for-invalidgeoreference"></a>*Invalidgeoreference için açıklama*
 
-Bir _manifest. JSON_ dosyası geçersiz bir georeference Içerdiğinde **ınvalidgeoreference** hatası oluşur.
+Dosyasındaki bir _manifest.js_ geçersiz bir georeference Içerdiğinde **ınvalidgeoreference** hatası oluşur.
 
 Aşağıdaki nedenlerden biri veya birkaçı nedeniyle **ınvalidgeoreference** hatası oluşur:
 

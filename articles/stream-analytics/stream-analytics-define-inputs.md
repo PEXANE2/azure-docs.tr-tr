@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701423"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
@@ -20,7 +19,7 @@ Stream Analytics, Azure veri akışları ile birinci sınıf tümleştirmeyle ü
 
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
-- [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Blob Depolama](https://azure.microsoft.com/services/storage/blobs/) 
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 
@@ -100,7 +99,7 @@ Aşağıdaki tabloda, bir IoT Hub akış girişi olarak yapılandırdığınızd
 | --- | --- |
 | **Girdi diğer adı** | Bu girişe başvurmak için iş sorgusunda kullandığınız kolay bir ad.|
 | **Abonelik** | IoT Hub kaynağının bulunduğu aboneliği seçin. | 
-| **IoT Hub** | Giriş olarak kullanılacak IoT Hub adı. |
+| **IoT Hub’ı** | Giriş olarak kullanılacak IoT Hub adı. |
 | **Uç Nokta** | IoT Hub uç noktası.|
 | **Paylaşılan erişim ilkesi adı** | IoT Hub erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. |
 | **Paylaşılan erişim ilkesi anahtarı** | IoT Hub erişimi yetkilendirmek için kullanılan paylaşılan erişim anahtarı.  IoT Hub ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
@@ -134,7 +133,7 @@ Stream Analytics blob Storage olaylarının varsayılan zaman damgası, blob 'un
 
 Bir blob, 13:00 konumundaki bir depolama hesabı kapsayıcısına yüklenirse ve Azure Stream Analytics işi 13:00 veya daha önceki bir tarihte *özel süre* kullanılarak başlatılırsa, blob, değiştirilen süre iş çalışma döneminin içinde yer aldığından alınır.
 
-Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer. Her bloba atanan zaman damgası yalnızca üzerine dayalıdır `BlobLastModifiedTime` . Blob 'un içinde olduğu klasörün, atanan zaman damgasıyla ilişkisi yok. Örneğin, 2019-11-11 ile bir blob *2019/10-01/00/B1. txt* varsa `BlobLastModifiedTime` , bu bloba atanan zaman damgası 2019-11-11 ' dir.
+Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer. Her bloba atanan zaman damgası yalnızca üzerine dayalıdır `BlobLastModifiedTime` . Blob 'un içinde olduğu klasörün, atanan zaman damgasıyla ilişkisi yok. Örneğin, 2019-11-11 olan bir blob *2019/10-01/00/b1.txt* varsa `BlobLastModifiedTime` , bu bloba atanan zaman damgası 2019-11-11.
 
 Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa bir Stream Analytics işi her saniye Azure Blob depolama girişinden verileri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
 

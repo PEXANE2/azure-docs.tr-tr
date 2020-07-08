@@ -4,10 +4,9 @@ description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandı�
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697071"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
@@ -106,7 +105,7 @@ HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM
 
 ## <a name="back-up-a-replicated-vm"></a>Çoğaltılan bir VM 'yi yedekleme
 
-### <a name="scenario-1"></a>Senaryo 1
+### <a name="scenario-1"></a>1\. Senaryo
 
 Özgün VM Azure Site Recovery veya Azure VM yedeklemesi kullanılarak çoğaltıldı. Yeni VM, eski VM 'nin benzetimini yapmak için oluşturulmuştur. Diğer bir deyişle, ayarlar tamamen aynıdır. (Bunun nedeni, özgün VM 'nin silindiği ve geri yüklemenin VM yedeklemesinden veya Azure Site Recovery) yapılmıştı.
 
@@ -133,7 +132,7 @@ Bu senaryo iki olası durumu içerebilir. Her iki durumda da çoğaltılan VM 'y
     - Bu veritabanlarında yedeklemeleri etkinleştir
     - Zaten var olan yedeklenmiş veritabanları (silinen VM 'den) kasada depolanmaya devam eder (yedeklemeler ilkeye göre tutulmaktadır)
 
-### <a name="scenario-2"></a>Senaryo 2
+### <a name="scenario-2"></a>2\. Senaryo
 
 Özgün VM Azure Site Recovery veya Azure VM yedeklemesi kullanılarak çoğaltıldı. Yeni VM, bir şablon olarak kullanılacak içerikten oluşturulmuştur. Bu, yeni bir SID 'ye sahip yeni bir VM 'dir.
 

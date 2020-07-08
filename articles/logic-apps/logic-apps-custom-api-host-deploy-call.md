@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659780"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Azure Logic Apps iş akışlarından özel API 'Leri dağıtma ve çağırma
@@ -25,7 +24,7 @@ Bir mantıksal uygulamadan özel API 'nizi çağırabilmeniz için, API 'nizi bi
 
 1. [Azure Portal](https://portal.azure.com)Web UYGULAMANıZı veya API uygulamanızı seçin.
 
-2. Açılan uygulama menüsünde, **API**altında **API tanımı**' nı seçin. **API tanımı konumunu** Swagger. JSON dosyanızın URL 'si olarak ayarlayın.
+2. Açılan uygulama menüsünde, **API**altında **API tanımı**' nı seçin. **API tanımı konumunu** , dosyadaki swagger.jsURL 'si olarak ayarlayın.
 
    Genellikle, URL şu biçimde görünür:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 

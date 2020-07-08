@@ -4,10 +4,9 @@ description: Azure Batch için Azure izleme Hizmetleri, ölçümler, tanılama g
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723536"
 ---
 # <a name="monitor-batch-solutions"></a>Batch çözümlerini izleme
@@ -33,7 +32,7 @@ Etkinlik günlüğliğinizden olayları almanın bir yolu Azure portal kullanmak
 
 ## <a name="batch-resource-monitoring"></a>Batch kaynak izleme
 
-Batch uygulamalarınızda işler, görevler, düğümler ve havuzlar dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Batch API 'Lerini kullanın. Örnek:
+Batch uygulamalarınızda işler, görevler, düğümler ve havuzlar dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Batch API 'Lerini kullanın. Örneğin:
 
 * [Görevleri ve işlem düğümlerini duruma göre say](batch-get-resource-counts.md)
 * [Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma](batch-efficient-list-queries.md)

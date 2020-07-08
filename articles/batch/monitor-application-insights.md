@@ -4,10 +4,9 @@ description: Azure Application Insights kitaplığı kullanarak Azure Batch .NET
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723621"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
@@ -48,7 +47,7 @@ Install-Package Microsoft.ApplicationInsights.WindowsServer
 
 ## <a name="instrument-your-code"></a>Kodunuzu işaretleme
 
-Kodunuzu işaretlemek için çözümünüzün bir Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)oluşturması gerekir. Örnekte, TelemetryClient yapılandırmasını [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasından yükler. Aşağıdaki projelerde ApplicationInsights. config dosyasını Application Insights izleme anahtarınızla güncelleştirdiğinizden emin olun: Microsoft. Azure. Batch. Samples. TelemetryStartTask ve TopNWordsSample.
+Kodunuzu işaretlemek için çözümünüzün bir Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)oluşturması gerekir. Örnekte, TelemetryClient [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasından yapılandırmasını yükler. Aşağıdaki projelerdeki ApplicationInsights.config Application Insights izleme anahtarınızla güncelleştirdiğinizden emin olun: Microsoft.Azure.Batch. Samples. TelemetryStartTask ve TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Batch.Samples.TelemetryInitializer
 }
 ```
 
-Telemetri başlatıcısı 'nı etkinleştirmek için, TopNWordsSample projesindeki ApplicationInsights. config dosyası aşağıdakileri içerir:
+Telemetri başlatıcısı 'nı etkinleştirmek için, TopNWordsSample projesindeki ApplicationInsights.config dosyası şunları içerir:
 
 ```xml
 <TelemetryInitializers>
