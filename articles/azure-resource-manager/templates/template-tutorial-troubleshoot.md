@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185005"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119353"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Öğretici: ARM şablon dağıtımlarının sorunlarını giderme
 
@@ -33,17 +33,17 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-- Visual Studio Code ve Resource Manager Araçları uzantısı. [ARM şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md)konusuna bakın.
+- Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Sorunlu şablon oluşturma
 
 [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/) [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) adlı bir şablon açın ve iki şablon sorunu kurun.
 
-1. Visual Studio Code **Dosya**>**Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -60,7 +60,7 @@ Bu makaleyi tamamlamak için gerekenler:
     - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
     - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
 
-5. Dosyayı yerel bilgisayarınıza **azuredeploy. JSON** olarak kaydetmek için **Dosya**>**farklı kaydet** ' i seçin.
+5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
 
 ## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak **grupları** ' nı ve ardından kaynak grubu adı ' nı seçerek kaynak grubunu açın. **Dağıtım**altında **1 başarısız** olduğunu göreceksiniz.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,8 +107,8 @@ Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 
 Ayrıca, etkinlik günlüklerinden hatayı bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **İzleme** > **etkinlik günlüğü**' nü seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **İzleme**  >  **etkinlik günlüğü**' nü seçin.
 3. Günlüğü bulmak için filtreleri kullanın.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185022"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119285"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: ARM şablon dağıtımınızdaki Azure Key Vault tümleştirin
 
@@ -33,11 +33,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. [ARM şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md)konusuna bakın.
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak için, VM yönetici hesabı için oluşturulan bir parola kullanın. Parola oluşturmak için bir örnek aşağıda verilmiştir:
 
     ```console
@@ -49,7 +49,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Bu bölümde, bir Anahtar Kasası oluşturup buna bir gizli dizi ekleyerek, şablonunuzu dağıtırken gizli dizi elde edebilirsiniz. Anahtar Kasası oluşturmanın birçok yolu vardır. Bu öğreticide, [ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)dağıtmak için Azure PowerShell kullanırsınız. Bu şablon iki şeyi yapar:
 
-* `enabledForTemplateDeployment` Özelliği etkin olan bir Anahtar Kasası oluşturur. Şablon dağıtım işleminin anahtar kasasında tanımlanan gizli anahtarlara erişebilmesi için bu özelliğin *true* olması gerekir.
+* Özelliği etkin olan bir Anahtar Kasası oluşturur `enabledForTemplateDeployment` . Şablon dağıtım işleminin anahtar kasasında tanımlanan gizli anahtarlara erişebilmesi için bu özelliğin *true* olması gerekir.
 * Anahtar kasasına gizli dizi ekler. Gizli dizi VM yönetici parolasını depolar.
 
 > [!NOTE]
@@ -99,7 +99,7 @@ Artık bir anahtar kasası ve gizli anahtarı hazırladınız. Aşağıdaki böl
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablona [basit bir WINDOWS VM dağıtımı](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)denir.
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 
 1. **Dosya adı** kutusuna aşağıdaki URL 'yi yapıştırın:
 
@@ -119,9 +119,9 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
    Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri bilmeniz yararlı olur.
 
-1. **Dosya** > **farklı kaydet**' i seçin ve sonra dosyanın bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON*adıyla kaydedin.
+1. **Dosya**  >  **farklı kaydet**' i seçin ve sonra dosyanın bir kopyasını *azuredeploy.js*adı ile yerel bilgisayarınıza kaydedin.
 
-1. Aşağıdaki URL 'yi açmak için 1-3 adımlarını yineleyin ve sonra dosyayı *azuredeploy. Parameters. JSON*olarak kaydedin.
+1. Aşağıdaki URL 'yi açmak için 1-3 adımlarını yineleyin ve sonra dosyayı *azuredeploy.parameters.js*olarak kaydedin.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -131,8 +131,8 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
 Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişiklik yapmanız gerekmez. Gizli değeri almak, şablon parametre dosyası yapılandırılarak yapılır.
 
-1. Visual Studio Code, zaten açık değilse *azuredeploy. Parameters. JSON* öğesini açın.
-1. `adminPassword` Parametreyi şu şekilde güncelleştirin:
+1. Visual Studio Code, zaten açık değilse açık *azuredeploy.parameters.js* açın.
+1. Parametreyi şu `adminPassword` şekilde güncelleştirin:
 
     ```json
     "adminPassword": {
@@ -167,7 +167,7 @@ Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişikl
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Cloud Shell için hem *azuredeploy. JSON* hem de *azuredeploy. Parameters. JSON* öğesini karşıya yükleyin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Hem *azuredeploy.js* hem de *azuredeploy.parameters.js* Cloud Shell üzerine yükleyin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 
@@ -192,7 +192,7 @@ Sanal makineyi başarıyla dağıttıktan sonra, anahtar kasasında depolanan pa
 
 1. [Azure Portal](https://portal.azure.com)açın.
 
-1. **Kaynak grupları** >  > ***YourResourceGroupName*>yourresourcegroupname simplewinvm ' yi\<** seçin.**simpleWinVM**
+1. **Kaynak grupları**  >  **\<*YourResourceGroupName*>**  >  **simplewınvm**' yi seçin.
 1. Üst kısımdaki **Bağlan** ' ı seçin.
 1. **RDP dosyasını indir**' i seçin ve ardından anahtar kasasında depolanan parolayı kullanarak sanal makinede oturum açmak için yönergeleri izleyin.
 

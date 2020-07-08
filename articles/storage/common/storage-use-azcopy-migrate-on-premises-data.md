@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120645"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Öğretici: AzCopy ile şirket içi verileri bulut depolamaya geçirme
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için AzCopy 'in en son sürümünü indirin. Bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md).
 
@@ -84,11 +84,11 @@ AzCopy komutunu kullanarak, bir klasördeki tüm dosyaları, [Windows](https://d
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Yer tutucusunu `<local-folder-path>` , dosya içeren bir klasörün yolu ile değiştirin (örneğin: `C:\myFolder` veya `/mnt/myFolder`).
+* `<local-folder-path>`Yer tutucusunu, dosya içeren bir klasörün yolu ile değiştirin (örneğin: `C:\myFolder` veya `/mnt/myFolder` ).
 
-* `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
-* Yer tutucusunu `<container-name>` , oluşturduğunuz kapsayıcının adıyla değiştirin.
+* `<container-name>`Yer tutucusunu, oluşturduğunuz kapsayıcının adıyla değiştirin.
 
 Belirtilen dizinin içeriğini BLOB depolama alanına yinelemeli olarak yüklemek için, `--recursive` seçeneğini belirtin. AzCopy komutunu bu seçenekle çalıştırdığınızda, tüm alt klasörler ve dosyaları da karşıya yüklenir.
 
@@ -102,13 +102,13 @@ Bunu denemek için, test amacıyla kaynak dizininizde yeni dosyalar oluşturun v
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Yer tutucusunu `<local-folder-path>` , dosya içeren bir klasörün yolu ile değiştirin (örneğin: `C:\myFolder` veya. `/mnt/myFolder`
+* `<local-folder-path>`Yer tutucusunu, dosya içeren bir klasörün yolu ile değiştirin (örneğin: `C:\myFolder` veya `/mnt/myFolder` .
 
-* `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
-* Yer tutucusunu `<container-name>` , oluşturduğunuz kapsayıcının adıyla değiştirin.
+* `<container-name>`Yer tutucusunu, oluşturduğunuz kapsayıcının adıyla değiştirin.
 
-`sync` Komutu hakkında daha fazla bilgi edinmek için bkz. [Synchronize Files](storage-use-azcopy-blobs.md#synchronize-files).
+Komutu hakkında daha fazla bilgi edinmek için `sync` bkz. [Synchronize Files](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Zamanlanmış görev oluşturma
 
@@ -116,18 +116,22 @@ AzCopy komut betiğini çalıştıran bir zamanlanmış görev veya sıralanmı�
 
 AzCopy komutunu bir metin düzenleyiciye kopyalayın. AzCopy komutunun parametre değerlerini uygun değerlerle güncelleştirin. Dosyayı, AzCopy için `script.sh` (Linux) veya `script.bat` (Windows) olarak kaydedin. 
 
-Bu örneklerde, klasörünüzün adlandırıldığı `myFolder`, depolama hesabınızın adı `mystorageaccount` ve kapsayıcının adı olduğu `mycontainer`varsayılır.
+Bu örneklerde, klasörünüzün adlandırıldığı `myFolder` , depolama hesabınızın adı `mystorageaccount` ve kapsayıcının adı olduğu varsayılır `mycontainer` .
 
 > [!NOTE]
 > Linux örneği bir SAS belirteci ekler. Komutunuz için bir tane sağlamanız gerekir. AzCopy Ile v10 arasındaki 'ın geçerli sürümü cron işlerinde Azure AD yetkilendirmesini desteklemez.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```bash
+azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-    azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```bash
+azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```
 
 ---
 

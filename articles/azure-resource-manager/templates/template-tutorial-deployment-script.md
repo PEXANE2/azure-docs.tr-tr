@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184988"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119336"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
 
-Azure Kaynak Yönetimi (ARM) şablonlarında dağıtım betikleri kullanmayı öğrenin. Dağıtım betikleri, ARM şablonları tarafından yapılamadığını özel adımlar gerçekleştirmek için kullanılabilir. Örneğin, otomatik olarak imzalanan bir sertifika oluşturma.  Bu öğreticide, bir Azure Anahtar Kasası dağıtmak için bir şablon oluşturup, bir sertifika oluşturmak ve ardından `Microsoft.Resources/deploymentScripts` sertifikayı anahtar kasasına eklemek için aynı şablonda bir kaynak kullanırsınız. Dağıtım betiği hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarındaki Dağıtım betiklerini kullanma](./deployment-script-template.md).
+Azure Kaynak Yönetimi (ARM) şablonlarında dağıtım betikleri kullanmayı öğrenin. Dağıtım betikleri, ARM şablonları tarafından yapılamadığını özel adımlar gerçekleştirmek için kullanılabilir. Örneğin, otomatik olarak imzalanan bir sertifika oluşturma.  Bu öğreticide, bir Azure Anahtar Kasası dağıtmak için bir şablon oluşturup, bir `Microsoft.Resources/deploymentScripts` sertifika oluşturmak ve ardından sertifikayı anahtar kasasına eklemek için aynı şablonda bir kaynak kullanırsınız. Dağıtım betiği hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarındaki Dağıtım betiklerini kullanma](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Bir depolama hesabı ve bir kapsayıcı örneği olmak üzere iki dağıtım betiği kaynağı, betik yürütme ve sorun giderme için aynı kaynak grubunda oluşturulur. Bu kaynaklar genellikle betik yürütme bir terminal durumunda olduğunda betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -36,11 +36,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Başarısız komut dosyasında hata ayıkla
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* **Kaynak Yöneticisi Araçları uzantısıyla [Visual Studio Code](https://code.visualstudio.com/) **. [ARM şablonları oluşturmak için Visual Studio Code kullanma](./use-vs-code-to-create-template.md)konusuna bakın.
+* **Kaynak Yöneticisi Araçları uzantısıyla [Visual Studio Code](https://code.visualstudio.com/) **. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
 
 * **Abonelik düzeyinde katkıda bulunan rolü ile Kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. Bir tane oluşturmak için bkz. [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
@@ -62,7 +62,7 @@ Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları]
 
 Bu hızlı başlangıçta kullanılan şablona [Azure Key Vault oluştur ve gizli anahtar](https://azure.microsoft.com/resources/templates/101-key-vault-create/)adı verilir. Şablon bir Anahtar Kasası oluşturur ve sonra anahtar kasasına bir gizli dizi ekler.
 
-1. Visual Studio Code **Dosya**>**Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -70,7 +70,7 @@ Bu hızlı başlangıçta kullanılan şablona [Azure Key Vault oluştur ve gizl
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı yerel bilgisayarınıza **azuredeploy. JSON** olarak kaydetmek için **Dosya**>**farklı kaydet** ' i seçin.
+4. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -253,7 +253,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     }
     ```
 
-    `deploymentScripts` Kaynak, Anahtar Kasası kaynağına ve rol atama kaynağına bağlıdır.  Şu özelliklere sahiptir:
+    `deploymentScripts`Kaynak, Anahtar Kasası kaynağına ve rol atama kaynağına bağlıdır.  Şu özelliklere sahiptir:
 
     * **kimlik**: dağıtım betiği, komut dosyalarını yürütmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır.
     * **tür**: betiğin türünü belirtin. Şu anda yalnızca PowerShell betiği desteklenmektedir.
@@ -280,7 +280,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
     Doğru komut **Write-Output1**yerine **Write-output** ' dır.
 
-1. Dosyayı kaydetmek için **Dosya**>**Kaydet** ' i seçin.
+1. Dosyayı **File** > kaydetmek için dosya**Kaydet** ' i seçin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -324,7 +324,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 ## <a name="debug-the-failed-script"></a>Başarısız komut dosyasında hata ayıkla
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. **RG** eklenmiş proje adıdır. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları*denir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
@@ -335,7 +335,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 1. **Azscripts** sonekine sahip depolama hesabını seçin.
 1. **Dosya paylaşımları** kutucuğunu seçin. **Azscripts** klasörünü görürsünüz.  Klasör, dağıtım betiği yürütme dosyalarını içerir.
-1. **Azscripts**seçin. İki foldersL **azscriptınput** ve **azscriptoutput**görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü bir **ExecutionResult. JSON** ve betik çıkış dosyası içerir. **ExecutionResult. JSON**dosyasında hata iletisini görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
+1. **Azscripts**seçin. İki foldersL **azscriptınput** ve **azscriptoutput**görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Hata iletisini **üzerindeexecutionresult.js**görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
 
 **Write-Output1** satırını kaldırın ve şablonu yeniden dağıtın.
 

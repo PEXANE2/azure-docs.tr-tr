@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid özel konularda olağanüstü durum kurtarma
 description: Bu öğreticide, Event Grid hizmeti bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak için nasıl ayarlanacağı konusunda size yol gösterilir.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115090"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -46,7 +42,7 @@ Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan em
 
 İlk olarak iki Event Grid konu başlığı oluşturun. Bu konular, birincil ve ikincil gibi davranır. Varsayılan olarak, olaylarınız birincil konusundan akacaktır. Birincil bölgede bir hizmet kesintisi varsa, ikincilinizi alır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 1. Ana Azure menüsünün sol üst köşesinden **tüm hizmetler** > **Event Grid** ara ' yı seçin > **Event Grid konular**' ı seçin.
 

@@ -4,12 +4,12 @@ description: Yerel bilgisayarınızdan Azure Resource Manager şablonu dağıtma
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714075"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118911"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: yerel bir Azure Resource Manager şablonu dağıtma
 
@@ -33,7 +33,7 @@ Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin
 
 ### <a name="editor-optional"></a>Düzenleyici (Isteğe bağlı)
 
-Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/düzenlemek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md).
+Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/düzenlemek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: Visual Studio Code ile Azure Resource Manager şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
@@ -44,7 +44,7 @@ Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin
 > [!IMPORTANT]
 > Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
-Şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy. JSON. Bu şablonu öğreticide daha sonra dağıtırsınız.
+Şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy.js. Bu şablonu öğreticide daha sonra dağıtırsınız.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

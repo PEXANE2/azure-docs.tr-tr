@@ -2,20 +2,19 @@
 title: Azure Otomasyonu’nu Event Grid ile tümleştirme | Microsoft Docs
 description: Yeni bir VM oluşturulduğunda otomatik olarak etiket oluşturmayı ve Microsoft Teams'e bildirim göndermeyi öğrenin.
 keywords: otomasyon, runbook, ekipler, event grid, sanal makine, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65521422"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114525"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Öğretici: Azure Otomasyonu 'Nu Event Grid ve Microsoft ekipleriyle tümleştirin
 
@@ -30,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -53,7 +52,7 @@ Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automati
 4. **İçeri Aktar**'ı seçin ve bunu **Watch-VMWrite** olarak adlandırın.
 
 5. İçeri aktarıldıktan sonra, runbook kaynağını görüntülemek için **Düzenle**'yi seçin. 
-6. Komut dosyasındaki 74 satırını yerine kullanılacak `Tag` şekilde güncelleştirin. `Tags`
+6. Komut dosyasındaki 74 satırını yerine kullanılacak şekilde güncelleştirin `Tag` `Tags` .
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
