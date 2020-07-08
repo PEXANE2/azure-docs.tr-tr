@@ -4,10 +4,10 @@ description: Bu makalede, kullanılabilir Azure Relay API 'Lerine (.NET Standard
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316959"
 ---
 # <a name="available-relay-apis"></a>Kullanılabilir geçiş API 'Leri
@@ -21,7 +21,7 @@ Aşağıdaki tabloda, şu anda kullanılabilir olan tüm geçiş çalışma zama
 | Dil/platform | Kullanılabilir özellik | İstemci paketi | Depo |
 | --- | --- | --- | --- |
 | .NET Standard | Karma Bağlantılar | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF Geçişi | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | Yok |
+| .NET Framework | WCF Geçişi | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | YOK |
 | Node | Karma Bağlantılar | [WebSockets`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP Istekleri:`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Ek bilgiler

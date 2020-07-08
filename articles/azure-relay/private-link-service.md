@@ -4,10 +4,10 @@ description: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme hakkı
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317312"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay Azure özel bağlantısıyla tümleştirin (Önizleme)
@@ -39,7 +39,7 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 ### <a name="steps"></a>Adımlar
 İçinde yeni bir Azure Relay ad alanı ve varlık oluşturmaya yönelik adım adım yönergeler için, bkz. [Azure Portal kullanarak Azure Relay ad alanı oluşturma](relay-create-namespace-portal.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **geçişler**' i yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
@@ -158,9 +158,9 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, Azure Relay ad alanı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, Azure Relay ad alanı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |

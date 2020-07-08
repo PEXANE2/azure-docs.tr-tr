@@ -9,10 +9,10 @@ author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
 ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317291"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 ## <a name="all"></a>Tümü
 
 > [!div class="mx-tableFixed"]
-> | Yerleşik rol | Description | ID |
+> | Yerleşik rol | Açıklama | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
 > | [Katkıda Bulunan](#contributor) | Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -108,7 +108,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blok zinciri** |  |  |
+> | **Blok Zinciri** |  |  |
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
 > | [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. | 25fbc0a9-bd7c-42A3-aa1a-3b75d497ee68 |
@@ -201,7 +201,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 
 ### <a name="contributor"></a>Katılımcı
 
-Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
+Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -251,7 +251,7 @@ Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla 
 
 ### <a name="owner"></a>Sahip
 
-Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
+Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -291,7 +291,7 @@ Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha f
 
 ### <a name="reader"></a>Okuyucu
 
-Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
+Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -331,7 +331,7 @@ Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıd�
 
 ### <a name="user-access-administrator"></a>Kullanıcı Erişimi Yöneticisi
 
-Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
+Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. [Daha fazla bilgi](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -502,7 +502,7 @@ Portalda sanal makineleri görüntüleyin ve yönetici olarak oturum açın [dah
 
 ### <a name="virtual-machine-contributor"></a>Sanal Makine Katılımcısı
 
-Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez. [Daha fazla bilgi edinin](../virtual-machines/linux/tutorial-govern-resources.md)
+Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez. [Daha fazla bilgi](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -622,7 +622,7 @@ Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal
 
 ### <a name="virtual-machine-user-login"></a>Sanal makine Kullanıcı oturumu açma
 
-Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. [Daha fazla bilgi edinin](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
+Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. [Daha fazla bilgi](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -783,7 +783,7 @@ CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz.
 
 ### <a name="cdn-profile-contributor"></a>CDN profili Katılımcısı
 
-CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. [Daha fazla bilgi edinin](../cdn/cdn-app-dev-net.md)
+CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. [Daha fazla bilgi](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -891,7 +891,7 @@ CDN profillerini ve uç noktalarını görüntüleyebilir, ancak değişiklik ya
 
 ### <a name="classic-network-contributor"></a>Klasik Ağ Katılımcısı
 
-Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. [Daha fazla bilgi edinin](../virtual-network/virtual-network-manage-peering.md)
+Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. [Daha fazla bilgi](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -943,7 +943,7 @@ Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. [Daha fazla bi
 
 ### <a name="dns-zone-contributor"></a>DNS bölgesi Katılımcısı
 
-Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. [Daha fazla bilgi edinin](../dns/dns-protect-zones-recordsets.md)
+Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. [Daha fazla bilgi](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1047,7 +1047,7 @@ Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez.
 
 ### <a name="private-dns-zone-contributor"></a>Özel DNS bölge Katılımcısı
 
-Özel DNS bölge kaynaklarını yönetmenizi sağlar, ancak bağlandıkları sanal ağları yönetemez. [Daha fazla bilgi edinin](../dns/dns-protect-private-zones-recordsets.md)
+Özel DNS bölge kaynaklarını yönetmenizi sağlar, ancak bağlandıkları sanal ağları yönetemez. [Daha fazla bilgi](../dns/dns-protect-private-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1160,7 +1160,7 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
 
 ### <a name="avere-contributor"></a>Avere Katılımcısı
 
-, Bir avere vFXT kümesi oluşturabilir ve yönetebilir. [Daha fazla bilgi edinin](../avere-vfxt/avere-vfxt-deploy-plan.md)
+, Bir avere vFXT kümesi oluşturabilir ve yönetebilir. [Daha fazla bilgi](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1788,7 +1788,7 @@ Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahta
 
 ### <a name="data-box-contributor"></a>Katkıda bulunan Data Box
 
-, Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](../databox/data-box-logs.md)
+, Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar. [Daha fazla bilgi](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1838,7 +1838,7 @@ Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahta
 
 ### <a name="data-box-reader"></a>Data Box okuyucu
 
-Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar. [Daha fazla bilgi edinin](../databox/data-box-logs.md)
+Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar. [Daha fazla bilgi](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1896,7 +1896,7 @@ Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına eri
 
 ### <a name="data-lake-analytics-developer"></a>Data Lake Analytics geliştirici
 
-Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz. [Daha fazla bilgi edinin](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
+Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz. [Daha fazla bilgi](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2022,7 +2022,7 @@ Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kaps
 
 ### <a name="storage-account-contributor"></a>Depolama Hesabı Katılımcısı
 
-Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. [Daha fazla bilgi edinin](../storage/common/storage-auth-aad.md)
+Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. [Daha fazla bilgi](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2078,7 +2078,7 @@ Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendir
 
 ### <a name="storage-account-key-operator-service-role"></a>Depolama hesabı anahtar operatörü hizmet rolü
 
-Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. [Daha fazla bilgi edinin](../storage/common/storage-account-keys-manage.md)
+Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. [Daha fazla bilgi](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2120,7 +2120,7 @@ Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmas�
 
 ### <a name="storage-blob-data-contributor"></a>Depolama Blobu veri Katılımcısı
 
-Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2174,7 +2174,7 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 
 ### <a name="storage-blob-data-owner"></a>Depolama Blobu veri sahibi
 
-, POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+, POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2218,7 +2218,7 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 
 ### <a name="storage-blob-data-reader"></a>Depolama Blobu veri okuyucusu
 
-Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2262,7 +2262,7 @@ Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bi
 
 ### <a name="storage-blob-delegator"></a>Depolama Blobu Delegator
 
-Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). [Daha fazla bilgi edinin](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
+Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). [Daha fazla bilgi](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2302,7 +2302,7 @@ Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşı
 
 ### <a name="storage-file-data-smb-share-contributor"></a>Depolama dosyası veri SMB paylaşımında katkıda bulunan
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
+Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. [Daha fazla bilgi](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2346,7 +2346,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine
 
 ### <a name="storage-file-data-smb-share-elevated-contributor"></a>Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
+Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. [Daha fazla bilgi](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2392,7 +2392,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değişti
 
 ### <a name="storage-file-data-smb-share-reader"></a>Depolama dosyası veri SMB paylaşma okuyucusu
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
+Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir. [Daha fazla bilgi](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2432,7 +2432,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu 
 
 ### <a name="storage-queue-data-contributor"></a>Depolama kuyruğu verileri Katılımcısı
 
-Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2482,7 +2482,7 @@ Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Beli
 
 ### <a name="storage-queue-data-message-processor"></a>Depolama kuyruğu veri Iletisi Işlemcisi
 
-Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2524,7 +2524,7 @@ Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir 
 
 ### <a name="storage-queue-data-message-sender"></a>Depolama kuyruğu veri Iletisi gönderici
 
-Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2564,7 +2564,7 @@ Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hang
 
 ### <a name="storage-queue-data-reader"></a>Depolama kuyruğu veri okuyucusu
 
-Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
+Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2649,7 +2649,7 @@ Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
 
 ### <a name="search-service-contributor"></a>Katkıda bulunan Arama Hizmeti
 
-Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. [Daha fazla bilgi edinin](../search/search-security-rbac.md)
+Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. [Daha fazla bilgi](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3064,7 +3064,7 @@ ACR karantina veri yazıcısı
 
 ### <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes hizmet kümesi yönetici rolü
 
-Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi edinin](../aks/control-kubeconfig-access.md)
+Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3106,7 +3106,7 @@ Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi edinin](
 
 ### <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes hizmet kümesi Kullanıcı rolü
 
-Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi edinin](../aks/control-kubeconfig-access.md)
+Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3193,7 +3193,7 @@ Azure Kubernetes hizmet kümelerini okuma ve yazma erişimi verir
 
 ### <a name="cosmos-db-account-reader-role"></a>Cosmos DB hesabı okuyucu rolü
 
-Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
+Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın. [Daha fazla bilgi](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3245,7 +3245,7 @@ Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yö
 
 ### <a name="cosmos-db-operator"></a>Cosmos DB Işleci
 
-Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
+Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. [Daha fazla bilgi](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3349,7 +3349,7 @@ Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme i
 
 ### <a name="documentdb-account-contributor"></a>DocumentDB hesabı Katılımcısı
 
-, Azure Cosmos DB hesaplarını yönetebilir. Azure Cosmos DB daha önce DocumentDB olarak bilinirdi. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
+, Azure Cosmos DB hesaplarını yönetebilir. Azure Cosmos DB daha önce DocumentDB olarak bilinirdi. [Daha fazla bilgi](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3455,7 +3455,7 @@ Redsıs önbellekler yönetmenize izin verir, ancak bunlara erişimi olmaz.
 
 ### <a name="sql-db-contributor"></a>SQL DB Katılımcısı
 
-SQL veritabanlarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. Ayrıca, güvenlikle ilgili ilkeleri veya bunların üst SQL sunucularını yönetemezsiniz. [Daha fazla bilgi edinin](../data-share/concepts-roles-permissions.md)
+SQL veritabanlarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. Ayrıca, güvenlikle ilgili ilkeleri veya bunların üst SQL sunucularını yönetemezsiniz. [Daha fazla bilgi](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3629,7 +3629,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 
 ### <a name="sql-security-manager"></a>SQL Güvenlik Yöneticisi
 
-, SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez. [Daha fazla bilgi edinin](../sql-database/sql-database-advanced-data-security.md)
+, SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez. [Daha fazla bilgi](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3753,7 +3753,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 
 ### <a name="sql-server-contributor"></a>Katkıda bulunan SQL Server
 
-SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez. [Daha fazla bilgi edinin](../sql-database/sql-database-aad-authentication-configure.md)
+SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez. [Daha fazla bilgi](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3870,7 +3870,7 @@ SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik eri
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure Event Hubs veri sahibi
 
-Azure Event Hubs kaynaklarına tam erişim sağlar. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
+Azure Event Hubs kaynaklarına tam erişim sağlar. [Daha fazla bilgi](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3912,7 +3912,7 @@ Azure Event Hubs kaynaklarına tam erişim sağlar. [Daha fazla bilgi edinin](..
 
 ### <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs veri alıcısı
 
-Azure Event Hubs kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
+Azure Event Hubs kaynaklarına erişim izni verir. [Daha fazla bilgi](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3954,7 +3954,7 @@ Azure Event Hubs kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../
 
 ### <a name="azure-event-hubs-data-sender"></a>Azure Event Hubs veri gönderici
 
-Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
+Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. [Daha fazla bilgi](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3996,7 +3996,7 @@ Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. [Daha fazla b
 
 ### <a name="data-factory-contributor"></a>Katkıda bulunan Data Factory
 
-Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. [Daha fazla bilgi edinin](../data-factory/concepts-roles-permissions.md)
+Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. [Daha fazla bilgi](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4098,7 +4098,7 @@ Analiz verilerini temizedebilir [daha fazla bilgi edinin](../azure-monitor/platf
 
 ### <a name="hdinsight-cluster-operator"></a>HDInsight küme operatörü
 
-HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir. [Daha fazla bilgi edinin](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
+HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir. [Daha fazla bilgi](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4198,7 +4198,7 @@ HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir,
 
 ### <a name="log-analytics-contributor"></a>Log Analytics Katkıda Bulunan
 
-Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
+Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. [Daha fazla bilgi](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4264,7 +4264,7 @@ Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını d
 
 ### <a name="log-analytics-reader"></a>Log Analytics Okuyucusu
 
-Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
+Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. [Daha fazla bilgi](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4310,7 +4310,7 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
 }
 ```
 
-## <a name="blockchain"></a>Blok zinciri
+## <a name="blockchain"></a>Blok Zinciri
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blok zinciri üye düğümü erişimi (Önizleme)
@@ -4360,7 +4360,7 @@ Blok zinciri üye düğümlerine erişim sağlar [daha fazla bilgi](../blockchai
 
 ### <a name="cognitive-services-contributor"></a>Bilişsel hizmetler Katılımcısı
 
-Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. [Daha fazla bilgi edinin](../cognitive-services/cognitive-services-virtual-networks.md)
+Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. [Daha fazla bilgi](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4472,7 +4472,7 @@ Bilişsel hizmetler verilerini okumanızı sağlar.
 
 ### <a name="cognitive-services-user"></a>Bilişsel hizmetler kullanıcısı
 
-Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. [Daha fazla bilgi edinin](../cognitive-services/authentication.md)
+Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. [Daha fazla bilgi](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4595,7 +4595,7 @@ Kullanıcıya dönüştürme, oturum yönetme, Azure uzaktan Işleme için işle
 
 ### <a name="remote-rendering-client"></a>Uzaktan Işleme Istemcisi
 
-Azure uzaktan Işleme için Kullanıcı yönetme, işleme ve tanılama özellikleri sağlar. [Daha fazla bilgi edinin](../remote-rendering/how-tos/authentication.md)
+Azure uzaktan Işleme için Kullanıcı yönetme, işleme ve tanılama özellikleri sağlar. [Daha fazla bilgi](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4972,7 +4972,7 @@ Hizmet ve API 'lere salt okuma erişimi [daha fazla bilgi](../api-management/api
 
 ### <a name="app-configuration-data-owner"></a>Uygulama yapılandırma veri sahibi
 
-Uygulama yapılandırma verilerine tam erişim sağlar. [Daha fazla bilgi edinin](../azure-app-configuration/concept-enable-rbac.md)
+Uygulama yapılandırma verilerine tam erişim sağlar. [Daha fazla bilgi](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5016,7 +5016,7 @@ Uygulama yapılandırma verilerine tam erişim sağlar. [Daha fazla bilgi edinin
 
 ### <a name="app-configuration-data-reader"></a>Uygulama yapılandırma veri okuyucusu
 
-Uygulama yapılandırma verilerine okuma erişimi sağlar. [Daha fazla bilgi edinin](../azure-app-configuration/concept-enable-rbac.md)
+Uygulama yapılandırma verilerine okuma erişimi sağlar. [Daha fazla bilgi](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5056,7 +5056,7 @@ Uygulama yapılandırma verilerine okuma erişimi sağlar. [Daha fazla bilgi edi
 
 ### <a name="azure-service-bus-data-owner"></a>Azure Service Bus veri sahibi
 
-Azure Service Bus kaynaklara tam erişim sağlar. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
+Azure Service Bus kaynaklara tam erişim sağlar. [Daha fazla bilgi](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5098,7 +5098,7 @@ Azure Service Bus kaynaklara tam erişim sağlar. [Daha fazla bilgi edinin](../s
 
 ### <a name="azure-service-bus-data-receiver"></a>Azure Service Bus veri alıcısı
 
-Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
+Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5144,7 +5144,7 @@ Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](..
 
 ### <a name="azure-service-bus-data-sender"></a>Veri Göndericisini Azure Service Bus
 
-Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
+Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5234,7 +5234,7 @@ Azure Stack kayıtlarını yönetmenizi sağlar.
 
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Katılımcısı
 
-EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. [Daha fazla bilgi edinin](../event-grid/security-authorization.md)
+EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. [Daha fazla bilgi](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5290,7 +5290,7 @@ EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. [Daha fazla bilgi e
 
 ### <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription okuyucusu
 
-EventGrid olay aboneliklerini okumanızı sağlar. [Daha fazla bilgi edinin](../event-grid/security-authorization.md)
+EventGrid olay aboneliklerini okumanızı sağlar. [Daha fazla bilgi](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5504,7 +5504,7 @@ Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına ve yazmasına i
 
 ### <a name="integration-service-environment-contributor"></a>Katkıda bulunan Tümleştirme Hizmeti Ortamı
 
-Tümleştirme hizmeti ortamlarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. [Daha fazla bilgi edinin](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+Tümleştirme hizmeti ortamlarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. [Daha fazla bilgi](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5548,7 +5548,7 @@ Tümleştirme hizmeti ortamlarını yönetmenize izin verir, ancak bunlara eriş
 
 ### <a name="integration-service-environment-developer"></a>Tümleştirme Hizmeti Ortamı geliştirici
 
-Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleştirme hesapları ve API bağlantıları oluşturmalarına ve güncelleştirmesine izin verir. [Daha fazla bilgi edinin](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleştirme hesapları ve API bağlantıları oluşturmalarına ve güncelleştirmesine izin verir. [Daha fazla bilgi](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5646,7 +5646,7 @@ Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişim
 
 ### <a name="logic-app-contributor"></a>Mantıksal uygulama Katılımcısı
 
-Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin. [Daha fazla bilgi edinin](../logic-apps/logic-apps-securing-a-logic-app.md)
+Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin. [Daha fazla bilgi](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5726,7 +5726,7 @@ Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiş
 
 ### <a name="logic-app-operator"></a>Logic App Işleci
 
-Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez. [Daha fazla bilgi edinin](../logic-apps/logic-apps-securing-a-logic-app.md)
+Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez. [Daha fazla bilgi](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6120,7 +6120,7 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
 
 ### <a name="key-vault-contributor"></a>Katkıda bulunan Key Vault
 
-Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. [Daha fazla bilgi edinin](../key-vault/general/secure-your-key-vault.md)
+Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. [Daha fazla bilgi](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6174,7 +6174,7 @@ Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. [
 
 ### <a name="security-admin"></a>Güvenlik Yöneticisi
 
-Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. [Daha fazla bilgi edinin](../security-center/security-center-permissions.md)
+Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. [Daha fazla bilgi](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6332,7 +6332,7 @@ Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın.
 
 ### <a name="security-reader"></a>Güvenlik okuyucusu
 
-Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz. [Daha fazla bilgi edinin](../security-center/security-center-permissions.md)
+Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz. [Daha fazla bilgi](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6389,7 +6389,7 @@ Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güve
 
 ### <a name="devtest-labs-user"></a>DevTest Labs kullanıcısı
 
-Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. [Daha fazla bilgi edinin](../devtest-labs/devtest-lab-add-devtest-user.md)
+Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. [Daha fazla bilgi](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6493,7 +6493,7 @@ Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden b
 
 ### <a name="lab-creator"></a>Laboratuvar Oluşturucu
 
-Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. [Daha fazla bilgi edinin](../lab-services/add-lab-creator.md)
+Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. [Daha fazla bilgi](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6608,7 +6608,7 @@ Application Insights bileşenlerini yönetebilir [daha fazla bilgi](../azure-mon
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. [Daha fazla bilgi edinin](../azure-monitor/app/snapshot-debugger.md)
+Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. [Daha fazla bilgi](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6658,7 +6658,7 @@ Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görü
 
 ### <a name="monitoring-contributor"></a>Katkıda bulunan izleniyor
 
-Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
+Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6804,7 +6804,7 @@ Azure kaynaklarında ölçüm yayımlamaya izin verebilir [daha fazla bilgi](../
 
 ### <a name="monitoring-reader"></a>İzleme okuyucusu
 
-Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
+Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6848,7 +6848,7 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="workbook-contributor"></a>Çalışma kitabı Katılımcısı
 
-, Paylaşılan çalışma kitaplarını kaydedebilir. [Daha fazla bilgi edinin](../sentinel/tutorial-monitor-your-data.md)
+, Paylaşılan çalışma kitaplarını kaydedebilir. [Daha fazla bilgi](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6892,7 +6892,7 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="workbook-reader"></a>Çalışma kitabı okuyucusu
 
-, Çalışma kitaplarını okuyabilir. [Daha fazla bilgi edinin](../sentinel/tutorial-monitor-your-data.md)
+, Çalışma kitaplarını okuyabilir. [Daha fazla bilgi](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6935,7 +6935,7 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="automation-job-operator"></a>Automation Iş Işleci
 
-Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. [Daha fazla bilgi edinin](../automation/automation-role-based-access-control.md)
+Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. [Daha fazla bilgi](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7079,7 +7079,7 @@ Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve
 
 ### <a name="automation-runbook-operator"></a>Otomasyon Runbook Işleci
 
-Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. [Daha fazla bilgi edinin](../automation/automation-role-based-access-control.md)
+Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. [Daha fazla bilgi](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7129,7 +7129,7 @@ Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. [Daha
 
 ### <a name="azure-connected-machine-onboarding"></a>Azure bağlı makine ekleme
 
-, Azure bağlantılı makineler ekleyebilir. [Daha fazla bilgi edinin](../azure-arc/servers/onboard-service-principal.md)
+, Azure bağlantılı makineler ekleyebilir. [Daha fazla bilgi](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7275,7 +7275,7 @@ Faturalandırma verilerine okuma erişimi sağlar [daha fazla bilgi](../cost-man
 
 ### <a name="blueprint-contributor"></a>Blueprint Katılımcısı
 
-Şema tanımlarını yönetebilir, ancak atamazsınız. [Daha fazla bilgi edinin](../governance/blueprints/overview.md)
+Şema tanımlarını yönetebilir, ancak atamazsınız. [Daha fazla bilgi](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7323,7 +7323,7 @@ Faturalandırma verilerine okuma erişimi sağlar [daha fazla bilgi](../cost-man
 
 ### <a name="blueprint-operator"></a>Blueprint Işleci
 
-Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar. [Daha fazla bilgi edinin](../governance/blueprints/overview.md)
+Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar. [Daha fazla bilgi](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7661,7 +7661,7 @@ Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi
 
 ### <a name="managed-services-registration-assignment-delete-role"></a>Yönetilen hizmetler kayıt ataması rol silme
 
-Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir. [Daha fazla bilgi edinin](../lighthouse/how-to/remove-delegation.md)
+Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir. [Daha fazla bilgi](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7845,7 +7845,7 @@ New Relic Application Performance Management hesaplarını ve uygulamaları yön
 
 ### <a name="policy-insights-data-writer-preview"></a>İlke öngörüleri veri yazıcısı (Önizleme)
 
-Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma erişimine izin verir. [Daha fazla bilgi edinin](../governance/policy/concepts/policy-for-kubernetes.md)
+Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma erişimine izin verir. [Daha fazla bilgi](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7893,7 +7893,7 @@ Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma e
 
 ### <a name="resource-policy-contributor"></a>Kaynak İlkesine Katkıda Bulunan
 
-Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar. [Daha fazla bilgi edinin](../governance/policy/overview.md)
+Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar. [Daha fazla bilgi](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -8335,7 +8335,7 @@ Destek istekleri oluşturmanızı ve yönetmenizi sağlar [daha fazla bilgi](../
 
 ### <a name="tag-contributor"></a>Etiket Katılımcısı
 
-Varlıklarda kendilerine erişim sağlamamanıza gerek kalmadan varlıklarda etiketleri yönetmenizi sağlar. [Daha fazla bilgi edinin](../azure-resource-manager/management/tag-resources.md)
+Varlıklarda kendilerine erişim sağlamamanıza gerek kalmadan varlıklarda etiketleri yönetmenizi sağlar. [Daha fazla bilgi](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -8444,7 +8444,7 @@ BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez.
 
 ### <a name="desktop-virtualization-user"></a>Masaüstü Sanallaştırma kullanıcısı
 
-Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Daha fazla bilgi edinin](../virtual-desktop/delegated-access-virtual-desktop.md)
+Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Daha fazla bilgi](../virtual-desktop/delegated-access-virtual-desktop.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
