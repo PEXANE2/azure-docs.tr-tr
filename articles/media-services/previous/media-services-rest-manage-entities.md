@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712420"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST ile Media Services varlıklarını yönetme  
@@ -36,7 +35,7 @@ Bu konuda, Azure Media Services varlıkların REST ile nasıl yönetileceği gö
 >[!NOTE]
 > 1 Nisan 2017’den itibaren, hesabınızdaki 90 günden eski olan tüm İş kayıtları, toplam kayıt sayısı üst kota sınırının altında olsa bile ilişkili Görev kayıtlarıyla birlikte otomatik olarak silinecektir. Örneğin, 1 Nisan 2017 ' de hesabınızda 31 Aralık 2016 ' den eski olan Iş kayıtları otomatik olarak silinir. İş/görev bilgilerini arşivlemek gerekirse, bu konuda açıklanan kodu kullanabilirsiniz.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler  
+## <a name="considerations"></a>Önemli noktalar  
 
 Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 

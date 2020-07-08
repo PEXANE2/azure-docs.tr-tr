@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: bea6d01a8363dd68cff33435335391e0fb0f76c7
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798162"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 
@@ -51,14 +50,14 @@ Azure Cosmos DB öğeleri ağaçlara dönüştürmesinin nedeni, özelliklerin b
 
 Yukarıda açıklanan örnek öğeden her bir özelliğin yolları aşağıda verilmiştir:
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /Locations/0/Country: "Almanya"
+- /Locations/0/City: "Berlin"
+- /Locations/1/Country: "Fransa"
+- /Locations/1/City: "Paris"
+- /Headquarters/Country: "Belçika"
+- /Headquarters/Employees: 250
+- /EXPORTS/0/City: "Moskova"
+- /EXPORTS/1/City: "Atina"
 
 Bir öğe yazıldığında, Azure Cosmos DB her bir özelliğin yolunu ve karşılık gelen değerini etkin bir şekilde dizine ekler.
 

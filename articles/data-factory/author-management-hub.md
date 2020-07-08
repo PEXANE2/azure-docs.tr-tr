@@ -1,5 +1,5 @@
 ---
-title: Yönetim Merkezi
+title: Yönetim merkezi
 description: Azure Data Factory yönetim hub 'ında bağlantılarınızı, kaynak denetimi yapılandırmanızı ve küresel yazma özelliklerinizi yönetin
 services: data-factory
 ms.service: data-factory
@@ -10,10 +10,9 @@ ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
 ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346048"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory 'de Yönetim Merkezi
@@ -46,7 +45,7 @@ Yönetim hub 'ında yapılandırılmış git deposu ayarlarınızı görüntüle
 
 ### <a name="parameterization-template"></a>Parametreleştirme şablonu
 
-İşbirliği dalından yayımlarken oluşturulan Kaynak Yöneticisi şablonu parametrelerini geçersiz kılmak için özel bir parametre dosyası oluşturabilir veya düzenleyebilirsiniz. Daha fazla bilgi için [Kaynak Yöneticisi şablonunda özel parametreleri nasıl kullanacağınızı](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)öğrenin. Parameterleştirme şablonu yalnızca bir git deposunda çalışırken kullanılabilir. *ARM-Template-Parameters-Definition. JSON* dosyası çalışma dalında yoksa, varsayılan şablonu düzenlediğinizde bunu oluşturacaktır.
+İşbirliği dalından yayımlarken oluşturulan Kaynak Yöneticisi şablonu parametrelerini geçersiz kılmak için özel bir parametre dosyası oluşturabilir veya düzenleyebilirsiniz. Daha fazla bilgi için [Kaynak Yöneticisi şablonunda özel parametreleri nasıl kullanacağınızı](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)öğrenin. Parameterleştirme şablonu yalnızca bir git deposunda çalışırken kullanılabilir. Dosyadaki *arm-template-parameters-definition.js* çalışma dalında yoksa, varsayılan şablonu düzenlediğinizde bunu oluşturacaktır.
 
 ![Özel parametreleri Yönet](media/author-management-hub/management-hub-custom-parameters.png)
 

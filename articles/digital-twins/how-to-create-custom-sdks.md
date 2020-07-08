@@ -7,17 +7,13 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 3d6fa1660f5204137dbebeae36f6d06852d88412
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725809"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Oto Rest ile Azure dijital TWINS için özel SDK 'lar oluşturma
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Sı .NET için geçerlidir (C#). .NET SDK ve genel olarak API 'Ler hakkında bilgi edinmek için bkz. [nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi SDK 'nizi tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilir.
 
@@ -50,7 +46,7 @@ Oto Rest, çok çeşitli dil kodu oluşturucuları destekler.
 
 Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sına çok sayıda ayrı projede (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) ihtiyacınız olacak şekilde, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmanızı öneririz. Daha sonra bu sınıf kitaplığı projesini diğer çözümlerinizi proje başvurusu olarak ekleyebilirsiniz.
 
-Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Adımlar şunlardır:
+Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Uygulamanız gereken adımlar:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
 2. Proje adı olarak "ADTApi" adını kullanın

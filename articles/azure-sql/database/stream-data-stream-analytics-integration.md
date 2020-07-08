@@ -12,10 +12,9 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345368"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
@@ -33,7 +32,7 @@ Kullanıcılar artık gerçek zamanlı akış verilerini doğrudan Azure SQL ver
 > [!IMPORTANT]
 > Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 

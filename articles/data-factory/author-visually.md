@@ -11,10 +11,9 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
 ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343131"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 'de görsel yazma
@@ -43,7 +42,7 @@ Varsayılan görsel yazma deneyimi, Data Factory hizmetiyle doğrudan çalışı
 
 Özellikler bölmesi yalnızca kaynak oluşturma sırasında varsayılan olarak açılır. Düzenlemek için, tuvalin sağ üst köşesinde bulunan özellikler bölmesi simgesine tıklayın.
 
-## <a name="management-hub"></a>Yönetim Merkezi
+## <a name="management-hub"></a>Yönetim merkezi
 
 Azure Data Factory UX içindeki *Yönet* sekmesi tarafından erişilen Yönetim Merkezi, veri fabrikanızın genel yönetim eylemlerini barındıran bir portalıdır. Burada, veri depoları ve dış hesaplar, kaynak denetimi yapılandırması ve tetikleyici ayarları bağlantılarını yönetebilirsiniz. Daha fazla bilgi için [Yönetim hub 'ının](author-management-hub.md)özellikleri hakkında bilgi edinin.
 
@@ -63,7 +62,7 @@ Bu, desteklenen sistem değişkenlerinden, etkinlik çıktısından, işlevlerde
 
 İfade dili hakkında daha fazla bilgi için, [Azure Data Factory Içindeki ifadeler ve işlevler](control-flow-expression-language-functions.md)bölümüne bakın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
 

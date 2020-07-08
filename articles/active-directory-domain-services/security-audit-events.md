@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734308"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039900"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
@@ -29,7 +28,7 @@ Olayları Azure depolama 'ya arşivleyebilir ve olayları Azure Event Hubs kulla
 
 ## <a name="security-audit-destinations"></a>Güvenlik denetimi hedefleri
 
-Azure depolama, Azure Event Hubs veya Azure Log Analytics çalışma alanlarını Azure AD DS Güvenlik denetimleri için hedef kaynak olarak kullanabilirsiniz. Bu hedefler birleştirilebilir. Örneğin, güvenlik denetim olaylarını arşivlemek için Azure Storage 'ı kullanabilir, ancak kısa dönem içindeki bilgileri analiz etmek ve raporlamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz.
+Azure depolama, Azure Event Hubs veya Azure Log Analytics çalışma alanlarını Azure AD DS Güvenlik denetimleri için hedef kaynak olarak kullanabilirsiniz. Bu hedefler birleştirilebilir. Örneğin, Azure depolama 'yı güvenlik denetim olaylarını arşivlemek için kullanabilirsiniz, ancak kısa vadede bilgileri analiz etmek ve raporlamak için bir Azure Log Analytics çalışma alanı.
 
 Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmektedir.
 
@@ -38,7 +37,7 @@ Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmekte
 
 | Hedef kaynak | Senaryo |
 |:---|:---|
-|Azure Depolama| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
+|Azure Storage| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
@@ -159,11 +158,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Örnek sorgu 2
 
-Hesap kilitleme olaylarını (*4740*) 3 Şubat 2020 ile 9 saat arasında görüntüleyin 10 Şubat 2020 gece yarısı, tarih ve saate göre artan düzende sıralanır:
+Hesap kilitleme olaylarını (*4740*) 1 Haziran 2020 ile 9 saat arasında görüntüle ve 10 Haziran 2020 gece yarısı, tarih ve saate göre artan düzende sıralanır:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -217,7 +216,7 @@ Azure AD DS Güvenlik denetimleri geleneksel AD DS etki alanı denetleyicileri i
 
 Aşağıdaki denetim olayı kategorileri kullanılabilir:
 
-| Denetim kategorisi adı | Description |
+| Denetim kategorisi adı | Açıklama |
 |:---|:---|
 | Hesap oturum açma|Denetimler, bir etki alanı denetleyicisindeki veya yerel bir güvenlik Hesapları Yöneticisi (SAM) hesap verilerinin kimliğini doğrulamaya çalışır.</p>Oturum açma ve oturum kapatma ilkesi ayarları ve olayları izleme belirli bir bilgisayara erişmeye çalışır. Bu kategorideki ayarlar ve olaylar, kullanılan hesap veritabanına odaklanmaktadır. Bu kategori aşağıdaki alt kategorileri içerir:<ul><li>[Kimlik Bilgisi Doğrulamayı Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos Kimlik Doğrulaması Hizmetini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Kerberos Hizmet Bileti İşlemlerini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Diğer oturum açma/kapatma olaylarını denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Hesap Yönetimi|Kullanıcı ve bilgisayar hesapları ve gruplarındaki değişiklikleri denetler. Bu kategori aşağıdaki alt kategorileri içerir:<ul><li>[Uygulama Grubu Yönetimini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Bilgisayar Hesabı Yönetimini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Dağıtım Grubu Yönetimini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Diğer hesap yönetimini denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Güvenlik Grubu Yönetimini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Kullanıcı Hesabı Yönetimini Denetleme](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -237,10 +236,10 @@ Aşağıdaki denetim olayı kategorileri kullanılabilir:
 |:---|:---|
 |Hesap oturum açma güvenliği|4767, 4774, 4775, 4776, 4777|
 |Hesap yönetimi güvenliği|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Ayrıntı Izleme güvenliği|Yok|
+|Ayrıntı Izleme güvenliği|Hiçbiri|
 |DS erişim güvenliği|5136, 5137, 5138, 5139, 5141|
 |Oturum açma-oturumu kapatma güvenliği|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Nesne erişim güvenliği|Yok|
+|Nesne erişim güvenliği|Hiçbiri|
 |İlke değişikliği güvenliği|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Ayrıcalık kullanım güvenliği|4985|
 |Sistem güvenliği|4612, 4621|

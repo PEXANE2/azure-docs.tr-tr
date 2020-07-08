@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84417948"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub cihaz kimliklerinizi toplu olarak içeri ve dışarı aktarma
@@ -133,7 +132,7 @@ while(true)
 }
 ```
 
-İş, çıktısını, belirtilen blob kapsayıcısında, **Devices. txt**adlı bir Blok Blobu olarak depolar. Çıktı verileri, her satırda bir cihaz içeren JSON serileştirilmiş cihaz verilerinden oluşur.
+İş, çıkışını belirtilen blob kapsayıcısında **devices.txt**adına sahip bir Blok Blobu olarak depolar. Çıktı verileri, her satırda bir cihaz içeren JSON serileştirilmiş cihaz verilerinden oluşur.
 
 Aşağıdaki örnek, çıkış verilerini gösterir:
 
@@ -219,7 +218,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **Importdevicesasync** yöntemi iki parametre alır:
 
-* İş için *giriş* olarak kullanılacak bir [Azure Storage](../storage/index.yml) blob kapsayıcısının URI 'sini içeren bir *dize* . Bu URI, kapsayıcıya okuma erişimi veren bir SAS belirteci içermelidir. Bu kapsayıcı, kimlik kayıt defterinize aktarılacak seri hale getirilmiş cihaz verilerini içeren **Devices. txt** adlı bir blob içermelidir. İçeri aktarma verileri, Device **. txt** blobu oluşturduğunda, **Exportımportdevice** işinin kullandığı JSON biçiminde cihaz bilgilerini içermelidir. SAS belirteci şu izinleri içermelidir:
+* İş için *giriş* olarak kullanılacak bir [Azure Storage](../storage/index.yml) blob kapsayıcısının URI 'sini içeren bir *dize* . Bu URI, kapsayıcıya okuma erişimi veren bir SAS belirteci içermelidir. Bu kapsayıcı, kimlik kayıt defterinize aktarılacak seri hale getirilmiş cihaz verilerini içeren **devices.txt** adına sahip bir blobu içermelidir. İçeri aktarma verileri, **devices.txt** blob oluşturduğunda, **Exportımportdevice** işinin kullandığı JSON biçiminde cihaz bilgilerini içermelidir. SAS belirteci şu izinleri içermelidir:
 
    ```csharp
    SharedAccessBlobPermissions.Read
@@ -261,7 +260,7 @@ Kimlik kayıt defterinizde aşağıdaki toplu işlemleri gerçekleştirmek için
 
 Cihaz başına içeri aktarma işlemini denetlemek için her bir cihaz için serileştirme verilerini içeri aktarma ' da isteğe bağlı **ImportMode** özelliğini kullanın. **ImportMode** özelliği aşağıdaki seçeneklere sahiptir:
 
-| ImportMode | Description |
+| ImportMode | Açıklama |
 | --- | --- |
 | **createOrUpdate** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, varolan bilgilerin, **ETag** değeriyle ilgili olarak girilen giriş verileriyle üzerine yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
 | **oluşturma** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |

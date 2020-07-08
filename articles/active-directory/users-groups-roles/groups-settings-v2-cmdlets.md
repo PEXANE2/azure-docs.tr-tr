@@ -15,16 +15,15 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84727832"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
 > [!div class="op_single_selector"]
-> - [Azure portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Azure portalındaki](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -205,7 +204,7 @@ Dizininizden grupları silmek için Remove-AzureADGroup cmdlet 'ini aşağıdaki
 
 ## <a name="manage-group-membership"></a>Grup üyeliğini yönetme
 
-### <a name="add-members"></a>Üye ekle
+### <a name="add-members"></a>Üye ekleme
 
 Bir gruba yeni üyeler eklemek için Add-AzureADGroupMember cmdlet 'ini kullanın. Bu komut, önceki örnekte kullandığımız Intune yöneticileri grubuna bir üye ekler:
 

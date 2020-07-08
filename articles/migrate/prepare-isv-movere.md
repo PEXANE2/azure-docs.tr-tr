@@ -4,10 +4,9 @@ description: Bu makalede, Azure geçişi 'nin bir ISV aracı veya Movere ile ça
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770382"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>ISV aracıyla veya Movere ile çalışmaya hazırlanma

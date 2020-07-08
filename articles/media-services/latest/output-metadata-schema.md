@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
 ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418718"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
@@ -26,7 +25,7 @@ Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istedi�
 
 Media Services, meta veri oluşturmak için giriş varlıklarını tarapreemptively. Giriş meta verileri yalnızca bir iş içinde bir giriş varlığı işlendiğinde yapıt olarak üretilir. Bu nedenle, bu yapıt çıkış varlığına yazılır. Farklı araçlar, giriş varlıkları ve çıkış varlıkları için meta veriler oluşturmak için kullanılır. Bu nedenle, giriş meta verilerinin, çıkış meta verileri arasında biraz farklı bir şeması vardır.
 
-Bu makalede, çıkış meta verilerinin ( &lt; source_file_name &gt; _manifest. JSON) temel aldığı JSON şemasının öğeleri ve türleri açıklanmaktadır. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
+Bu makalede, çıkış meta verilerinin ( &lt; source_file_name &gt;_manifest.jsüzerinde) temel aldığı JSON şemasının öğeleri ve türleri açıklanmaktadır. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
 
 Tüm şema kodunu ve JSON örneğini Bu makalenin sonunda bulabilirsiniz.  
 
@@ -34,7 +33,7 @@ Tüm şema kodunu ve JSON örneğini Bu makalenin sonunda bulabilirsiniz.
 
 Kodlama işi için Assetdosya girişlerinin toplanması.  
 
-| Name | Description |
+| Name | Açıklama |
 | --- | --- |
 | **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **Videoizler**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. <br />Bkz. [Videoiz](#videotracks). |
@@ -47,7 +46,7 @@ Kodlama işi için Assetdosya girişlerinin toplanması.
 
 Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. **Videoiz** öğesi tüm video izlemelerinin bir koleksiyonunu temsil eder.  
 
-| Name | Description |
+| Name | Açıklama |
 | --- | --- |
 | **Numarasını**<br /> Gerekli |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
 | **FourCC**<br />Gerekli | FFmpeg tarafından raporlanan video codec FourCC kodu.  <br /><br />Örnek: `"FourCC": "avc1"`|
@@ -65,7 +64,7 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili b
 
 Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. **Audioizler** öğesi tüm ses izlemelerinin bir koleksiyonunu temsil eder.  
 
-| Name  | Description |
+| Name  | Açıklama |
 | --- | --- |
 | **Numarasını**<br />Gerekli  |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez.  <br /><br />Örnek: `"Id": 2`|
 | **Bileşeni**  |Ses izi codec bileşeni dizesi.  <br /><br />Örnek: `"Codec": "aac"`|

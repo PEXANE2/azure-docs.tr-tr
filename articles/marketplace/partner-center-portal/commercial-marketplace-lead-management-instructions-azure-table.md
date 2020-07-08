@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848032"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957350"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
@@ -26,11 +25,11 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
     1. Sol menü çubuğunda **+ kaynak oluştur** ' u seçin. **Yeni** bölme sağ tarafta görüntülenir.
     1. **Yeni** bölmesinde **depolama** ' yı seçin. **Öne çıkan** bir liste sağ tarafta görüntülenir.
-    1. Hesap oluşturmaya başlamak için **depolama hesabı** ' nı seçin. [Depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)bölümündeki yönergeleri izleyin.
+    1. Hesap oluşturmaya başlamak için **depolama hesabı** ' nı seçin. [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)bölümündeki yönergeleri izleyin.
 
         ![Azure depolama hesabı oluşturma adımları](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        Depolama hesapları hakkında daha fazla bilgi için bkz. [Hızlı Başlangıç Öğreticisi](https://docs.microsoft.com/azure/storage/). Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+        Depolama hesapları hakkında daha fazla bilgi için bkz. [Hızlı Başlangıç Öğreticisi](../../storage/index.yml). Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 1. Depolama Hesabınız sağlanana kadar bekleyin. Bu işlem genellikle birkaç dakika sürer. 
 
@@ -71,7 +70,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
    ![Akışlarım + zamanlandığı--boş](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-1. **Zamanlanan akış oluştur** penceresinde, **yineleme**için, sıklık için Aralık ve **saat** için **1** ' i seçin. Ayrıca, isterseniz akışa bir ad verin. **Oluştur**’u seçin.
+1. **Zamanlanan akış oluştur** penceresinde, **yineleme**için, sıklık için Aralık ve **saat** için **1** ' i seçin. Ayrıca, isterseniz akışa bir ad verin. **Oluştur**'u seçin.
 
    >[!NOTE]
    >Bu örnek bir saatlik aralığı kullansa da, iş gereksinimleriniz için en iyi aralığı ve sıklığı seçebilirsiniz.
@@ -107,7 +106,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
    **Oluştur**' u seçtikten sonra **varlıkları al** penceresi görüntülenir. Burada, **Gelişmiş seçenekleri göster**' i seçin ve aşağıdaki kutulara bilgi sağlayın:
 
-   * **Tablo**: tablonuzun adını seçin ( [tablo oluştur](#create-a-table-in-your-storage-account)' dan). Aşağıdaki görüntüde, bu örnek için "marketplaceliderleri" tablosu seçildiğinde istem gösterilmektedir.
+   * **Tablo**: tablonuzun adını seçin ( [tablo oluştur](#create-a-table-in-your-storage-account)' dan). Aşağıdaki görüntüde `marketplaceleads` Bu örnek için tablo seçildiğinde istem gösterilmektedir.
 
      ![Varlıkları al penceresi](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

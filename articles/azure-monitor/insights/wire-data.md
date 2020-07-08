@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84424474"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Izleyici 'de Wire Data 2.0 (Önizleme) çözümü
@@ -56,10 +55,10 @@ Wire Data verilerini Microsoft Bağımlılık Aracısı'ndan alır. Dependency A
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| Windows aracıları | Yes | Wire Data, Windows aracı bilgisayarlarından gelen verileri analiz eder ve toplar. <br><br> Windows Agents, [Windows için Log Analytics aracısına](../platform/agent-windows.md)ek olarak Microsoft bağımlılık Aracısı 'nı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
-| Linux aracıları | Yes | Wire Data, Linux aracı bilgisayarlarından gelen verileri analiz eder ve toplar.<br><br> Linux [için Log Analytics aracısına](../learn/quick-collect-linux-computer.md)ek olarak, Linux aracıları Microsoft bağımlılık Aracısı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Yes | Wire Data, bağlantılı bir [System Center Operations Manager yönetim grubunda](../platform/om-agents.md) Windows ve Linux aracılarından gelen verileri analiz eder ve toplar. <br><br> System Center Operations Manager Aracısı bilgisayarından Azure Izleyici 'ye doğrudan bağlantı gereklidir. |
-| Azure depolama hesabı | No | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
+| Windows aracıları | Evet | Wire Data, Windows aracı bilgisayarlarından gelen verileri analiz eder ve toplar. <br><br> Windows Agents, [Windows için Log Analytics aracısına](../platform/agent-windows.md)ek olarak Microsoft bağımlılık Aracısı 'nı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
+| Linux aracıları | Evet | Wire Data, Linux aracı bilgisayarlarından gelen verileri analiz eder ve toplar.<br><br> Linux [için Log Analytics aracısına](../learn/quick-collect-linux-computer.md)ek olarak, Linux aracıları Microsoft bağımlılık Aracısı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
+| System Center Operations Manager yönetim grubu | Evet | Wire Data, bağlantılı bir [System Center Operations Manager yönetim grubunda](../platform/om-agents.md) Windows ve Linux aracılarından gelen verileri analiz eder ve toplar. <br><br> System Center Operations Manager Aracısı bilgisayarından Azure Izleyici 'ye doğrudan bağlantı gereklidir. |
+| Azure depolama hesabı | Hayır | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
 
 Windows 'da Microsoft Monitoring Agent (MMA), veri toplamak ve göndermek için hem System Center Operations Manager hem de Azure Izleyici tarafından kullanılır. Bağlama bağlı olarak, aracıya System Center Operations Manager Aracı, Log Analytics Aracısı, MMA veya doğrudan Aracı denir. System Center Operations Manager ve Azure Izleyici, MMA 'nın biraz farklı sürümlerini sağlar. Bu sürümler her rapor System Center Operations Manager, Azure Izleyici 'ye veya her ikisine de bağlanabilir.
 
@@ -76,7 +75,7 @@ Azure Izleyici 'ye bağlı bir yönetim grubu System Center Operations Manager b
 
 Windows veya Linux bilgisayarlarınız hizmete doğrudan bağlanamıyorsa, Log Analytics aracısını Log Analytics ağ geçidini kullanarak Azure Izleyici 'ye bağlanacak şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=52666)' nden indirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [İçgörü ve Analiz](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) çözüm teklifi gereklidir.
 - Wire Data çözümünü önceki sürümünü kullanıyorsanız, önce o sürümü kaldırmalısınız. Ancak özgün Wire Data çözümüyle yakalanmış olan tüm veriler Wire Data 2.0'da ve günlük aramasında yine kullanılabilir.
@@ -102,7 +101,7 @@ Aşağıdaki bölümlerde, bağımlılık Aracısı için desteklenen işletim s
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Desteklenen Linux işletim sistemleri
 Aşağıdaki bölümlerde, Linux üzerinde bağımlılık Aracısı için desteklenen işletim sistemleri listelenmektedir.  
@@ -178,7 +177,7 @@ Aşağıdaki bölümlerde, Linux üzerinde bağımlılık Aracısı için destek
 
 Aracıyı yüklemek veya kaldırmak için yönetici ayrıcalıkları gereklidir.
 
-Bağımlılık Aracısı, InstallDependencyAgent-Windows. exe ile Windows çalıştıran bilgisayarlara yüklenir. Bu yürütülebilir dosyayı hiçbir seçenek olmadan çalıştırırsanız, etkileşimli yükleme yapmak için izleyebileceğiniz bir sihirbaz başlatır.
+Bağımlılık Aracısı, Windows 'u InstallDependencyAgent-Windows.exe aracılığıyla çalıştıran bilgisayarlara yüklenir. Bu yürütülebilir dosyayı hiçbir seçenek olmadan çalıştırırsanız, etkileşimli yükleme yapmak için izleyebileceğiniz bir sihirbaz başlatır.
 
 Windows çalıştıran her bilgisayara bağımlılık Aracısı 'nı yüklemek için aşağıdaki adımları kullanın:
 
@@ -321,7 +320,7 @@ Bağımlılık aracısını kaldırmanıza yardımcı olması için aşağıdaki
 
 Yönetici, Windows için bağımlılık aracısını Denetim Masası üzerinden kaldırabilir.
 
-Yönetici ayrıca, bağımlılık aracısını kaldırmak için%Programfiles%\Microsoft Dependency Fıles\uninstall.exe komutunu da çalıştırabilir.
+Yönetici, bağımlılık aracısını kaldırmak için%Programfiles%\Microsoft Dependency Agent\Uninstall.exe de çalıştırabilir.
 
 #### <a name="uninstall-the-dependency-agent-on-linux"></a>Linux 'ta bağımlılık aracısını kaldırma
 

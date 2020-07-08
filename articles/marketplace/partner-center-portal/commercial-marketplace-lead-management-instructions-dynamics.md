@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 65139e0842679f59733c34be838d4aad7f3c63e4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847964"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957248"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 müşteri katılımı için lider yönetimini yapılandırma
 
@@ -60,7 +59,7 @@ Müşteri adaylarını Dynamics 365 müşteri katılımı örneğine yazmak içi
 Hizmet hesabı oluşturmak ve izinleri atamak için aşağıdaki adımları kullanın. Azure Active Directory veya Office 365 ' i kullanabilirsiniz.
 
 >[!NOTE]
->Seçtiğiniz kimlik doğrulama seçeneğine göre ilgili yönergelere atlayın. Bkz. [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) veya [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>Seçtiğiniz kimlik doğrulama seçeneğine göre ilgili yönergelere atlayın. Bkz. [Azure Active Directory](#azure-active-directory) veya [Office 365](#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

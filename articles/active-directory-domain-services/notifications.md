@@ -1,5 +1,5 @@
 ---
-title: Azure AD Domain Services için e-posta bildirimleri | Microsoft Docs '
+title: Azure AD Domain Services için e-posta bildirimleri | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanındaki sorunlar hakkında sizi uyarmak için e-posta bildirimlerini nasıl yapılandıracağınızı öğrenin
 services: active-directory-ds
 author: iainfoulds
@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 4dc1cdd760c3d370c31b5c77db56df7df3ab6c1d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040002"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services sorunları için e-posta bildirimlerini yapılandırın
 
@@ -74,7 +73,7 @@ Bir uyarı çözümlenirse, uyarı Azure portal temizlenir. En olası neden, e-p
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>Bildirim ayarlarını neden düzenleyemiyorum?
 
-Azure portal bildirim ayarları sayfasına erişemezseniz, yönetilen etki alanını düzenleme izinleriniz yoktur. Azure AD DS kaynağını düzenleme veya alıcı listesinden kaldırılma izinleri almak için genel bir yöneticiye başvurmanız gerekir.
+Azure portal bildirim ayarları sayfasına erişemezseniz, yönetilen etki alanını düzenleme izinleriniz yoktur. Azure AD DS kaynağını düzenleme veya alıcı listesinden kaldırma izinleri almak için genel bir yöneticiye başvurun.
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden mi?
 

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343158"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
@@ -45,7 +44,7 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Destekleniyor |Destekleniyor |
 | Cisco | 'Nın | RouteBased: IOS-XE 16,10 | (sınanmamıştır) | [Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |Destekleniyor |Destekleniyor |
-| Cisco |Meraki |Yok |Uyumlu değil |Uyumlu değil |
+| Cisco |Meraki |YOK |Uyumlu değil |Uyumlu değil |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (etkin/Pasif mod)<br><br>19,2 (etkin/etkin mod) | Uyumlu değil |  [El ile yapılandırma (etkin/Pasif)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onrampa yapılandırması (etkin/etkin)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 ve sonraki sürümleri |[Yapılandırma Kılavuzu](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Uyumlu değil |
 | F5 |BIG-IP serisi |12.0 |[Yapılandırma Kılavuzu](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Yapılandırma Kılavuzu](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,7 +57,7 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Juniper |SSG |ScreenOS 6.2 |Destekleniyor |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Destekleniyor |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Yönlendirme ve Uzaktan Erişim Hizmeti |Windows Server 2012 |Uyumlu değil |Destekleniyor |
-| Open Systems AG |Mission Control Security Ağ Geçidi |Yok |[Yapılandırma Kılavuzu](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Uyumlu değil |
+| Open Systems AG |Mission Control Security Ağ Geçidi |YOK |[Yapılandırma Kılavuzu](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Uyumlu değil |
 | Palo Alto Networks |PAN-OS çalıştıran tüm cihazlar |PAN-OS<br>PolicyBased: 6.1.5 veya üzeri<br>RouteBased: 7.1.4 |Destekleniyor |[Yapılandırma Kılavuzu](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Yeni Nesil UTM (NU serisi) | 9.0.1.3 | Uyumlu değil | [Yapılandırma Kılavuzu](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -142,7 +141,7 @@ Aşağıdaki tablolarda:
 | Şifreleme ve Karma Algoritmaları |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
 | SA Yaşam Süresi (Zaman)            |3.600 saniye  |27.000 saniye                               |
 | SA Yaşam Süresi (Bayt)           |102.400.000 KB |102.400.000 KB                               |
-| Kusursuz İletme Gizliliği (PFS) |No             |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
+| Kusursuz İletme Gizliliği (PFS) |Hayır             |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
 | Kullanılmayan Eş Algılama (DPD)     |Desteklenmiyor  |Destekleniyor                                    |
 
 
@@ -154,24 +153,24 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 |-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Yok         |
-| 2 |AES256        |SHA1              |Yok         |
-| 3 |3DES          |SHA1              |Yok         |
-| 4 |AES256        |SHA256            |Yok         |
-| 5 |AES128        |SHA1              |Yok         |
-| 6 |3DES          |SHA256            |Yok         |
+| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
+| 2 |AES256        |SHA1              |Hiçbiri         |
+| 3 |3DES          |SHA1              |Hiçbiri         |
+| 4 |AES256        |SHA256            |Hiçbiri         |
+| 5 |AES128        |SHA1              |Hiçbiri         |
+| 6 |3DES          |SHA256            |Hiçbiri         |
 
 #### <a name="azure-gateway-as-responder"></a>Yanıtlayıcı olarak Azure Gateway
 
 |-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Yok         |
-| 2 |AES256        |SHA1              |Yok         |
-| 3 |3DES          |SHA1              |Yok         |
-| 4 |AES256        |SHA256            |Yok         |
-| 5 |AES128        |SHA1              |Yok         |
-| 6 |3DES          |SHA256            |Yok         |
-| 7 |DES           |SHA1              |Yok         |
+| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
+| 2 |AES256        |SHA1              |Hiçbiri         |
+| 3 |3DES          |SHA1              |Hiçbiri         |
+| 4 |AES256        |SHA256            |Hiçbiri         |
+| 5 |AES128        |SHA1              |Hiçbiri         |
+| 6 |3DES          |SHA256            |Hiçbiri         |
+| 7 |DES           |SHA1              |Hiçbiri         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -186,7 +185,7 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Yok         |
+| 22|AES128        |SHA256            |Hiçbiri         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

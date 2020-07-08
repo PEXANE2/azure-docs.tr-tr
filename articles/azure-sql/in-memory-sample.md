@@ -12,10 +12,9 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345283"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
@@ -49,11 +48,11 @@ Daha fazla uyarlaması için, ancak bellek Içi OLTP için daha görsel açıdan
 
 1. [Azure Portal](https://portal.azure.com/)sunucuda bir Premium veya iş açısından kritik veritabanı oluşturun. **Kaynağı** AdventureWorksLT örnek veritabanına ayarlayın. Ayrıntılı yönergeler için bkz. [Azure SQL veritabanı 'nda ilk veritabanınızı oluşturma](database/single-database-create-quickstart.md).
 
-2. Veritabanına SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx)ile bağlanın.
+2. Veritabanına SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)ile bağlanın.
 
 3. [Bellek ıçı OLTP Transact-SQL betiğini](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) panonuza kopyalayın. T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli bellek Içi nesneleri oluşturur.
 
-4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örnek:
+4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örneğin:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -109,18 +108,18 @@ Aşağıdaki iki *saklı yordam* arasındaki tek fark, ilk yordamın tabloları 
 - SalesLT **.** usp_InsertSalesOrder **_inmem**
 - SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
-Bu bölümde, yararlı **ostres. exe** yardımcı programını kullanarak bu iki saklı yordamı stressellevels üzerinde nasıl yürütekullanacağınızı görürsünüz. İki stres çalıştırmanın tamamlanmasının ne kadar sürdüğünü karşılaştırabilirsiniz.
+Bu bölümde, uygun düzeylerde bulunan iki saklı yordamı yürütmek için kullanışlı **ostress.exe** yardımcı programını nasıl kullanacağınızı görürsünüz. İki stres çalıştırmanın tamamlanmasının ne kadar sürdüğünü karşılaştırabilirsiniz.
 
-Ostres. exe dosyasını çalıştırdığınızda, aşağıdakilerin her ikisi için tasarlanan parametre değerlerini geçirmeniz önerilir:
+ostress.exe çalıştırdığınızda, aşağıdakilerin her ikisi için tasarlanan parametre değerlerini geçirmeniz önerilir:
 
 - -N100 kullanarak çok sayıda eşzamanlı bağlantı çalıştırın.
 - Her bağlantı döngüsünü-R500 kullanarak yüzlerce kez yapın.
 
 Ancak, her şeyin çalıştığından emin olmak için-N10 ve-R50 gibi çok daha küçük değerler ile başlamak isteyebilirsiniz.
 
-### <a name="script-for-ostressexe"></a>Ostres. exe betiği
+### <a name="script-for-ostressexe"></a>ostress.exe betiği
 
-Bu bölümde, ostres. exe komut satırımızda gömülü olan T-SQL betiği görüntülenir. Betik, daha önce yüklediğiniz T-SQL betiği tarafından oluşturulan öğeleri kullanır.
+Bu bölümde ostress.exe komut satırımızda gömülü olan T-SQL betiği görüntülenir. Betik, daha önce yüklediğiniz T-SQL betiği tarafından oluşturulan öğeleri kullanır.
 
 Aşağıdaki betik, aşağıdaki bellek için iyileştirilmiş *tablolara*beş satır içeren bir örnek satış siparişi ekler:
 
@@ -150,19 +149,19 @@ begin;
 end
 ```
 
-Önceki T-SQL betiğinin, ostres. exe için *_ondisk* sürümünü yapmak için, *_inmem* alt dizenin her iki tekrarı da *_ondisk*ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
+Önceki T-SQL komut dosyasının *_ondisk* sürümünü ostress.exe için yapmak üzere, *_inmem* alt dizenin her ikisini de *_ondisk*ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
 
 #### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve`ostress`
 
-İdeal olarak, ostres. exe ' yi bir Azure sanal makinesinde (VM) çalıştırmayı planlarsınız. AdventureWorksLT veritabanınızın bulunduğu aynı Azure coğrafi bölgesinde bir [Azure VM](https://azure.microsoft.com/documentation/services/virtual-machines/) oluşturursunuz. Ancak bunun yerine, dizüstü bilgisayarınızda ostres. exe dosyasını çalıştırabilirsiniz.
+İdeal olarak, bir Azure sanal makinesinde (VM) ostress.exe çalıştırmayı planlarsınız. AdventureWorksLT veritabanınızın bulunduğu aynı Azure coğrafi bölgesinde bir [Azure VM](https://azure.microsoft.com/documentation/services/virtual-machines/) oluşturursunuz. Ancak, bunun yerine dizüstü bilgisayarınızda ostress.exe çalıştırabilirsiniz.
 
-VM 'de veya seçtiğiniz herhangi bir konakta, yeniden yürütme biçimlendirme dili (RML) yardımcı programlarını yükleyebilirsiniz. Yardımcı programlar ostres. exe ' yi içerir.
+VM 'de veya seçtiğiniz herhangi bir konakta, yeniden yürütme biçimlendirme dili (RML) yardımcı programlarını yükleyebilirsiniz. Yardımcı programlar ostress.exe içerir.
 
 Daha fazla bilgi için bkz.
 
-- [Bellek ıçı OLTP Için örnek veritabanında](https://msdn.microsoft.com/library/mt465764.aspx)ostres. exe tartışması.
+- [Bellek ıçı OLTP Için örnek veritabanında](https://msdn.microsoft.com/library/mt465764.aspx)ostress.exe tartışma.
 - [Bellek ıçı OLTP Için örnek veritabanı](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Ostres. exe ' yi yüklemeye yönelik blog](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
+- [ostress.exeyüklemek için blog ](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
 dn511655.aspx is for SQL 2014,
@@ -176,7 +175,7 @@ whereas for SQL 2016+
 
 #### <a name="run-the-_inmem-stress-workload-first"></a>Önce *_inmem* stres iş yükünü çalıştırın
 
-Ostres. exe komut satırımuzu çalıştırmak için bir *RML komut istemi* penceresi kullanabilirsiniz. Komut satırı parametreleri doğrudan `ostress` :
+ostress.exe komut satırımuzu çalıştırmak için bir *RML komut istemi* penceresi kullanabilirsiniz. Komut satırı parametreleri doğrudan `ostress` :
 
 - 100 bağlantıyı eşzamanlı olarak çalıştırın (-N100).
 - Her bağlantının T-SQL betiğini 50 kez (-R50) çalıştırmasını sağlayabilirsiniz.
@@ -185,7 +184,7 @@ Ostres. exe komut satırımuzu çalıştırmak için bir *RML komut istemi* penc
 ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
-Önceki ostres. exe komut satırını çalıştırmak için:
+Önceki ostress.exe komut satırını çalıştırmak için:
 
 1. Tüm önceki çalıştırmalar tarafından eklenen tüm verileri silmek için SSMS 'de aşağıdaki komutu çalıştırarak veritabanı veri içeriğini sıfırlayın:
 
@@ -193,7 +192,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Önceki ostres. exe komut satırının metnini panonuza kopyalayın.
+2. Yukarıdaki ostress.exe komut satırının metnini panonuza kopyalayın.
 
 3. `<placeholders>`-S-U-P-d parametreleri için doğru gerçek değerlerle değiştirin.
 
@@ -215,9 +214,9 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Tüm *_inmem* *_ondisk*olacak şekilde değiştirmek için ostres. exe komut satırını düzenleyin.
+2. Tüm *_inmem* değiştirmek için ostress.exe komut satırını düzenleyin *_ondisk*.
 
-3. Ostres. exe dosyasını ikinci kez yeniden çalıştırın ve süre sonucunu yakalayın.
+3. İkinci kez ostress.exe yeniden çalıştırın ve süre sonucunu yakalayın.
 
 4. Daha sonra, veritabanını sıfırlayın (büyük miktarda test verisi olabilecek bir şeyi silmek için).
 
@@ -365,7 +364,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portal](https://portal.azure.com/)
+- [Azure portalındaki](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

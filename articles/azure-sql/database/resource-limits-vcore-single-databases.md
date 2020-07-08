@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/10/2020
 ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669537"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
@@ -42,7 +41,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla sanal çekirdek|0.5-1|0.5-2|0,5-4|0.75-6|1.0-8|
 |En fazla bellek (GB)|2.02-3|2.05-6|2.10-12|2.25-18|3.00-24|
 |Min-en fazla otomatik duraklatma gecikmesi (dakika)|60-10080|60-10080|60-10080|60-10080|60-10080|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|512|1024|1024|1024|1536|
 |En fazla günlük boyutu (GB)|154|307|307|307|461|
@@ -68,7 +67,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla sanal çekirdek|1,25-10|1.50-12|1,75-14|2,00-16|
 |En fazla bellek (GB)|3,75-30|4.50-36|5.25-42|6.00-48|
 |Min-en fazla otomatik duraklatma gecikmesi (dakika)|60-10080|60-10080|60-10080|60-10080|
-|Columnstore desteği|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|1536|3072|3072|3072|
 |En fazla günlük boyutu (GB)|461|461|461|922|
@@ -94,7 +93,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla sanal çekirdek|2.25-18|2,5-20|3-24|4-32|5-40|
 |En fazla bellek (GB)|6.75-54|7,5-60|9-72|12-96|15-120|
 |Min-en fazla otomatik duraklatma gecikmesi (dakika)|60-10080|60-10080|60-10080|60-10080|60-10080|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|3072|3072|4096|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|1229|1229|1229|
@@ -123,7 +122,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Sanal çekirdek|1|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
 |[Rbpex](service-tier-hyperscale.md#compute) Boyutla|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (TB)|100 |100 |100 |100 |100 |100|
 |En fazla günlük boyutu (TB)|1 |1 |1 |1 |1 |1 |
@@ -136,7 +135,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|YOK|YOK|YOK|YOK|YOK|YOK|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
@@ -148,7 +147,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Sanal çekirdek|7|8|9|10|16|24|
 |Bellek (GB)|49|56|63|70|112|159,5|
 |[Rbpex](service-tier-hyperscale.md#compute) Boyutla|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (TB)|100 |100 |100 |100 |100 |100 |
 |En fazla günlük boyutu (TB)|1 |1 |1 |1 |1 |1 |
@@ -161,7 +160,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|YOK|YOK|YOK|YOK|YOK|YOK|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
@@ -177,7 +176,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Sanal çekirdek|2|4|6|8|10|12|14|
 |Bellek (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[Rbpex](service-tier-hyperscale.md#compute) Boyutla|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (TB)|100 |100 |100 |100 |100 |100 |100|
 |En fazla günlük boyutu (TB)|1 |1 |1 |1 |1 |1 |1 |
@@ -190,7 +189,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
@@ -204,7 +203,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Sanal çekirdek|16|18|20|24|32|40|80|
 |Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[Rbpex](service-tier-hyperscale.md#compute) Boyutla|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|3X belleği|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (TB)|100 |100 |100 |100 |100 |100 |100 |
 |En fazla günlük boyutu (TB)|1 |1 |1 |1 |1 |1 |1 |
@@ -217,7 +216,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|7 gün|
 |||
 
@@ -243,7 +242,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|
 |Sanal çekirdek|1|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|
 |En fazla günlük boyutu (GB)|307|307|461|461|461|922|
@@ -268,7 +267,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|
 |Sanal çekirdek|7|8|9|10|16|24|
 |Bellek (GB)|49|56|63|70|112|159,5|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|3072|3072|3072|3072|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|922|922|1229|1229|
@@ -295,7 +294,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|2|4|6|8|10|12|14|
 |Bellek (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|3072|
 |En fazla günlük boyutu (GB)|307|307|461|461|461|922|922|
@@ -320,7 +319,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|16|18|20|24|32|40|80|
 |Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|YOK|YOK|YOK|YOK|YOK|YOK|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
@@ -347,7 +346,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|Fsv2 serisi|
 |Sanal çekirdek|72|
 |Bellek (GB)|136,2|
-|Columnstore desteği|Yes|
+|Columnstore desteği|Evet|
 |Bellek içi OLTP depolaması (GB)|YOK|
 |En fazla veri boyutu (GB)|4096|
 |En fazla günlük boyutu (GB)|1024|
@@ -378,7 +377,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|
 |Sanal çekirdek|1|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|1|2|3|4|5|6|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|1024|
@@ -391,8 +390,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|200|400|600|800|1000|1200|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 \*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
@@ -404,7 +403,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|4. nesil|
 |Sanal çekirdek|7|8|9|10|16|24|
 |Bellek (GB)|49|56|63|70|112|159,5|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|7|8|9,5|11|20|36|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|1024|
@@ -417,8 +416,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maksimum eşzamanlı oturum açma sayısı (istek)|1400|1600|1800|2000|3200|4800|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 \*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
@@ -432,7 +431,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|2|4|6|8|10|12|14|
 |Bellek (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|1,57|3,14|4,71|6,28|8,65|11,02|13,39|
 |En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|3072|
 |En fazla günlük boyutu (GB)|307|307|461|461|461|922|922|
@@ -445,8 +444,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|200|400|600|800|1000|1200|1400|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|4|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 \*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
@@ -458,7 +457,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|16|18|20|24|32|40|80|
 |Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
-|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Bellek içi OLTP depolaması (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,64|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
@@ -471,8 +470,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|1600|1800|2000|2400|3200|4000|8000|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|4|4|4|4|4|4|4|
-|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 \*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
@@ -486,7 +485,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |İşlem oluşturma|M serisi|
 |Sanal çekirdek|128|
 |Bellek (GB)|3767,1|
-|Columnstore desteği|Yes|
+|Columnstore desteği|Evet|
 |Bellek içi OLTP depolaması (GB)|1768|
 |En fazla veri boyutu (GB)|4096|
 |En fazla günlük boyutu (GB)|2048|
@@ -499,8 +498,8 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Maks. eş zamanlı oturum|12.800|
 |Maks. eş zamanlı oturum|30000|
 |Çoğaltma sayısı|4|
-|Çoklu-AZ|Yes|
-|Okuma Amaçlı Ölçeği Genişletme|Yes|
+|Çoklu-AZ|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Evet|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|
 
 \*8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).

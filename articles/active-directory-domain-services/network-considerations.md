@@ -8,53 +8,56 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8a23974e55c599585fc247a97db66ff76bf93e76
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734597"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040036"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
-Azure Active Directory Domain Services (Azure AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağladığından, ağ bağlantısı bir anahtar bileşendir. Doğru şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sunulan özelliklerle birlikte kullanamaz. Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği şekilde ulaşacağına emin olmak için sanal ağ gereksinimlerinizi planlayın.
+Azure Active Directory Domain Services (Azure AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağlar. Ağ bağlantısı, önemli bir bileşendir. Doğru şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sunulan özelliklerle birlikte kullanamaz. Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği şekilde ulaşacağına emin olmak için sanal ağ gereksinimlerinizi planlayın.
 
 Bu makalede, Azure AD DS 'yi destekleyecek bir Azure sanal ağının tasarım konuları ve gereksinimleri özetlenmektedir.
 
 ## <a name="azure-virtual-network-design"></a>Azure sanal ağ tasarımı
 
-Ağ bağlantısı sağlamak ve uygulamaların ve hizmetlerin Azure AD DS karşı kimlik doğrulamasına izin vermek için bir Azure sanal ağı ve alt ağı kullanın. İdeal olarak, Azure AD DS kendi sanal ağına dağıtılmalıdır. Yönetim VM 'nizi veya hafif uygulama iş yüklerinizi barındırmak için aynı sanal ağa ayrı bir uygulama alt ağını dahil edebilirsiniz. Azure AD DS sanal ağı 'nda bulunan daha büyük veya karmaşık uygulama iş yükleri için ayrı bir sanal ağ, genellikle en uygun tasarımdır. Diğer tasarım seçimleri geçerli olduğundan, sanal ağ ve alt ağ için aşağıdaki bölümlerde özetlenen gereksinimleri karşıladınız.
+Ağ bağlantısı sağlamak ve uygulamaların ve hizmetlerin Azure AD DS yönetilen bir etki alanında kimlik doğrulamasına izin vermek için bir Azure sanal ağı ve alt ağı kullanın. İdeal olarak, yönetilen etki alanının kendi sanal ağına dağıtılması gerekir.
+
+Yönetim VM 'nizi veya hafif uygulama iş yüklerinizi barındırmak için aynı sanal ağa ayrı bir uygulama alt ağını dahil edebilirsiniz. Azure AD DS sanal ağı 'nda bulunan daha büyük veya karmaşık uygulama iş yükleri için ayrı bir sanal ağ, genellikle en uygun tasarımdır.
+
+Diğer tasarım seçimleri geçerli olduğundan, sanal ağ ve alt ağ için aşağıdaki bölümlerde özetlenen gereksinimleri karşıladınız.
 
 Azure AD DS sanal ağını tasarlarken aşağıdaki noktalar geçerlidir:
 
 * Azure AD DS, sanal ağınızla aynı Azure bölgesine dağıtılmalıdır.
-    * Şu anda Azure AD kiracısı başına yalnızca bir Azure AD DS yönetilen etki alanı dağıtabilirsiniz. Yönetilen etki alanı tek bir bölgeye dağıtılır. [Azure AD DS destekleyen bir bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)bir sanal ağ oluşturun veya seçtiğinizden emin olun.
+    * Şu anda, her Azure AD kiracısı için yalnızca bir yönetilen etki alanı dağıtabilirsiniz. Yönetilen etki alanı tek bir bölgeye dağıtılır. [Azure AD DS destekleyen bir bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)bir sanal ağ oluşturun veya seçtiğinizden emin olun.
 * Diğer Azure bölgelerinin ve uygulama iş yüklerinizi barındıran sanal ağların yakınlığını göz önünde bulundurun.
     * Gecikme süresini en aza indirmek için, temel uygulamalarınızı, yönetilen etki alanınız için sanal ağ alt ağı ile aynı bölgede veya ' ye yakın tutun. Azure sanal ağları arasında sanal ağ eşlemesi veya sanal özel ağ (VPN) bağlantıları kullanabilirsiniz. Bu bağlantı seçenekleri aşağıdaki bölümde ele alınmıştır.
-* Sanal ağ, Azure AD DS tarafından sağlananlardan farklı DNS hizmetlerinden yararlanmaz.
+* Sanal ağ, yönetilen etki alanı tarafından sunulan hizmetlerden farklı DNS hizmetlerinden yararlanmaz.
     * Azure AD DS kendi DNS hizmetini sağlar. Sanal ağın bu DNS hizmeti adreslerini kullanacak şekilde yapılandırılması gerekir. Ek ad alanları için ad çözümlemesi, koşullu ileticiler kullanılarak gerçekleştirilebilir.
-    * Diğer DNS sunucularından gelen sorguları VM 'Ler dahil olmak üzere yönlendirmek için özel DNS sunucusu ayarlarını kullanamazsınız. Sanal ağdaki kaynakların Azure AD DS tarafından sunulan DNS hizmetini kullanması gerekir.
+    * Diğer DNS sunucularından gelen sorguları VM 'Ler dahil olmak üzere yönlendirmek için özel DNS sunucusu ayarlarını kullanamazsınız. Sanal ağdaki kaynakların, yönetilen etki alanı tarafından sağlanmış DNS hizmetini kullanması gerekir.
 
 > [!IMPORTANT]
 > Hizmeti etkinleştirdikten sonra Azure AD DS farklı bir sanal ağa taşıyamazsınız.
 
 Yönetilen bir etki alanı, Azure sanal ağındaki bir alt ağa bağlanır. Bu alt ağı Azure AD DS için aşağıdaki noktalara göre tasarlayın:
 
-* Azure AD DS kendi alt ağında dağıtılmalıdır. Mevcut bir alt ağı veya ağ geçidi alt ağını kullanmayın.
+* Yönetilen bir etki alanının kendi alt ağında dağıtılması gerekir. Mevcut bir alt ağı veya ağ geçidi alt ağını kullanmayın.
 * Yönetilen bir etki alanının dağıtımı sırasında bir ağ güvenlik grubu oluşturulur. Bu ağ güvenlik grubu, doğru hizmet iletişimi için gerekli kuralları içerir.
     * Kendi özel kurallarınız ile mevcut bir ağ güvenlik grubu oluşturmayın veya kullanmayın.
-* Azure AD DS, 3-5 IP adresi gerektirir. Alt ağ IP adresi aralığınızı bu sayıda adres sağlayasağlayadığınızdan emin olun.
-    * Kullanılabilir IP adreslerini kısıtlamak, Azure AD Domain Services iki etki alanı denetleyicisinin çalışmasını engelleyebilir.
+* Yönetilen etki alanı 3-5 IP adresi gerektirir. Alt ağ IP adresi aralığınızı bu sayıda adres sağlayasağlayadığınızdan emin olun.
+    * Kullanılabilir IP adreslerini kısıtlamak, yönetilen etki alanının iki etki alanı denetleyicisini kullanmasını engelleyebilir.
 
-Aşağıdaki örnek diyagramda, Azure AD DS kendi alt ağına sahip olan geçerli bir tasarım özetlenmektedir, dış bağlantı için bir ağ geçidi alt ağı vardır ve uygulama iş yükleri sanal ağ içindeki bağlı bir alt ağda bulunur:
+Aşağıdaki örnek diyagramda, yönetilen etki alanının kendi alt ağına sahip olduğu geçerli bir tasarım özetlenmektedir, dış bağlantı için bir ağ geçidi alt ağı vardır ve uygulama iş yükleri sanal ağ içindeki bağlı bir alt ağda bulunur:
 
 ![Önerilen alt ağ tasarımı](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
 ## <a name="connections-to-the-azure-ad-ds-virtual-network"></a>Azure AD DS sanal ağına bağlantılar
 
-Önceki bölümde belirtildiği gibi, Azure 'daki tek bir sanal ağda yalnızca bir Azure AD Domain Services yönetilen etki alanı oluşturabilir ve Azure AD kiracısı başına yalnızca bir yönetilen etki alanı oluşturulabilir. Bu mimariye bağlı olarak, uygulama iş yüklerinizi barındıran bir veya daha fazla sanal ağı Azure AD DS sanal ağınıza bağlamanız gerekebilir.
+Önceki bölümde belirtildiği gibi, Azure 'daki tek bir sanal ağda yalnızca yönetilen bir etki alanı oluşturabilir ve Azure AD kiracısı başına yalnızca bir yönetilen etki alanı oluşturulabilir. Bu mimariye bağlı olarak, uygulama iş yüklerinizi barındıran bir veya daha fazla sanal ağa, yönetilen etki alanının sanal ağına bağlamanız gerekebilir.
 
 Aşağıdaki yöntemlerden birini kullanarak, diğer Azure sanal ağlarında barındırılan uygulama iş yüklerini bağlayabilirsiniz:
 
@@ -71,7 +74,7 @@ Daha fazla bilgi için bkz. [Azure sanal ağ eşlemesi genel bakış](../virtual
 
 ### <a name="virtual-private-networking-vpn"></a>Sanal özel ağ (VPN)
 
-Bir sanal ağı başka bir sanal ağa (VNet-VNet), bir sanal ağı şirket içi site konumuna yapılandırabileceğiniz şekilde bağlayabilirsiniz. Her iki bağlantı da IPSec/ıKE kullanarak güvenli bir tünel oluşturmak için bir VPN ağ geçidi kullanır. Bu bağlantı modeli Azure AD DS Azure sanal ağına dağıtmanıza ve ardından Şirket içi konumlara veya diğer bulutlara bağlanmanızı sağlar.
+Bir sanal ağı başka bir sanal ağa (VNet-VNet), bir sanal ağı şirket içi site konumuna yapılandırabileceğiniz şekilde bağlayabilirsiniz. Her iki bağlantı da IPSec/ıKE kullanarak güvenli bir tünel oluşturmak için bir VPN ağ geçidi kullanır. Bu bağlantı modeli, yönetilen etki alanını bir Azure sanal ağına dağıtmanıza sonra şirket içi konumlara veya diğer bulutlara bağlanmanızı sağlar.
 
 ![VPN Gateway kullanarak sanal ağ bağlantısı](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
@@ -79,15 +82,15 @@ Sanal özel ağ kullanma hakkında daha fazla bilgi için, [Azure Portal kullana
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Sanal ağları bağlarken ad çözümlemesi
 
-Azure AD Domain Services sanal ağa bağlı sanal ağların genellikle kendi DNS ayarları vardır. Sanal ağları bağladığınızda, yönetilen etki alanı tarafından sunulan hizmetleri çözümlemek üzere bağlanılan sanal ağ için ad çözümlemesini otomatik olarak yapılandırmaz. Bağlanan sanal ağlarda ad çözümlemesi, uygulama iş yüklerinin Azure AD Domain Services bulmasını sağlamak için yapılandırılmalıdır.
+Yönetilen etki alanının sanal ağına bağlı sanal ağların genellikle kendi DNS ayarları vardır. Sanal ağları bağladığınızda, yönetilen etki alanı tarafından sunulan hizmetleri çözümlemek üzere bağlanılan sanal ağ için ad çözümlemesini otomatik olarak yapılandırmaz. Bağlanan sanal ağlarda ad çözümlemesi, uygulama iş yüklerinin yönetilen etki alanını bulmasını sağlamak için yapılandırılmalıdır.
 
-DNS sunucusunda, bağlanan sanal ağları destekleyen ve Azure AD etki alanı hizmeti sanal ağı 'ndan aynı DNS IP adreslerini kullanarak ad çözümlemesini etkinleştirebilirsiniz.
+Sanal ağları bağlayan DNS sunucusunda koşullu DNS ileticileri veya yönetilen etki alanının sanal ağından aynı DNS IP adreslerini kullanarak ad çözümlemesini etkinleştirebilirsiniz.
 
 ## <a name="network-resources-used-by-azure-ad-ds"></a>Azure AD DS tarafından kullanılan ağ kaynakları
 
 Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluşturur. Bu kaynaklar, yönetilen etki alanının başarılı bir şekilde çalışması ve yönetimi için gereklidir ve el ile yapılandırılmamalıdır.
 
-| Azure kaynağı                          | Description |
+| Azure kaynağı                          | Açıklama |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
 | Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
@@ -100,18 +103,18 @@ Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluştu
 
 ## <a name="network-security-groups-and-required-ports"></a>Ağ güvenlik grupları ve gerekli bağlantı noktaları
 
-Bir [ağ güvenlik grubu (NSG)](../virtual-network/virtual-networks-nsg.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Azure AD DS dağıtırken, hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
+Bir [ağ güvenlik grubu (NSG)](../virtual-network/virtual-networks-nsg.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir yönetilen etki alanını dağıtırken bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
 
-Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağıdaki ağ güvenlik grubu kuralları gereklidir. Yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
+Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak üzere aşağıdaki ağ güvenlik grubu kuralları gereklidir. Yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
 
 > [!WARNING]
-> Bu ağ kaynaklarını ve konfigürasyonları el ile düzenlemeyin. Yanlış yapılandırılmış bir ağ güvenlik grubunu veya Kullanıcı tanımlı bir yol tablosunu Azure AD DS 'nin dağıtıldığı alt ağla ilişkilendirdiğinizde, Microsoft 'un etki alanını hizmet etme ve yönetme yeteneğini kesintiye uğratabilir. Azure AD kiracınız ile yönetilen etki alanınız arasında eşitleme de kesintiye uğrar.
+> Bu ağ kaynaklarını ve konfigürasyonları el ile düzenlemeyin. Yanlış yapılandırılmış bir ağ güvenlik grubunu veya Kullanıcı tanımlı bir yol tablosunu yönetilen etki alanının dağıtıldığı alt ağla ilişkilendirdiğinizde, Microsoft 'un etki alanını hizmet etme ve yönetme yeteneğini kesintiye uğratabilir. Azure AD kiracınız ile yönetilen etki alanınız arasında eşitleme de kesintiye uğrar.
 >
 > Güvenli LDAP kullanıyorsanız, gerekirse dış trafiğe izin vermek için gerekli TCP bağlantı noktası 636 kuralını ekleyebilirsiniz. Bu kuralın eklenmesi, ağ güvenlik grubu kurallarınızı desteklenmeyen bir duruma yerleştirmez. Daha fazla bilgi için bkz [. internet üzerinden GÜVENLI LDAP erişimini kilitleme](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
@@ -151,9 +154,9 @@ Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağı
 
 ## <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 
-Kullanıcı tanımlı yollar varsayılan olarak oluşturulmaz ve Azure AD DS 'nin düzgün çalışması için gerekli değildir. Yol tabloları kullanmanız gerekiyorsa *0.0.0.0* yolunda herhangi bir değişiklik yapmaktan kaçının. Bu rotadaki değişiklikler Azure AD Domain Services kesintiye uğratır ve yönetilen etki alanını desteklenmeyen bir duruma geçirir.
+Kullanıcı tanımlı yollar varsayılan olarak oluşturulmaz ve Azure AD DS 'nin düzgün çalışması için gerekli değildir. Yol tabloları kullanmanız gerekiyorsa *0.0.0.0* yolunda herhangi bir değişiklik yapmaktan kaçının. Bu rotadaki değişiklikler Azure AD DS kesintiye uğratır ve yönetilen etki alanını desteklenmeyen bir duruma geçirir.
 
-Ayrıca, ilgili Azure hizmet etiketlerine dahil edilen IP adreslerinden gelen trafiği Azure AD Domain Services alt ağına yönlendirmelidir. Hizmet etiketleri ve ilgili IP adresleri hakkında daha fazla bilgi için bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
+Ayrıca, ilgili Azure hizmet etiketlerine dahil edilen IP adreslerinden gelen trafiği yönetilen etki alanının alt ağına yönlendirmelidir. Hizmet etiketleri ve ilgili IP adresleri hakkında daha fazla bilgi için bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
 > [!CAUTION]
 > Bu Azure veri merkezi IP aralıkları bildirimde bulunmaksızın değiştirilebilir. En son IP adreslerine sahip olduğunuzdan emin olmak için işlemlere sahip olduğunuzdan emin olun.

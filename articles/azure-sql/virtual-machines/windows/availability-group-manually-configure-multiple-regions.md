@@ -15,10 +15,9 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669316"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Farklı Azure bölgelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma
@@ -199,7 +198,7 @@ Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Always on kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx)
+* [AlwaysOn Kullanılabilirlik Grupları](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure yük dengeleyiciler](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure kullanılabilirlik kümeleri](../../../virtual-machines/linux/manage-availability.md)

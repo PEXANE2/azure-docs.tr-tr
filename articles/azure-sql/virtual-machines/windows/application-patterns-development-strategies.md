@@ -14,10 +14,9 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
 ms.openlocfilehash: b77756f81eb5085b9c1d386b7c59d5aae03d1fb8
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669503"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için uygulama desenleri ve geliştirme stratejileri
@@ -45,11 +44,11 @@ Farklı makinelerdeki farklı uygulama katmanlarının bileşenlerini ve ayrı b
 
 Tipik *n katmanlı* bir uygulama sunum katmanını, iş katmanını ve veri katmanını içerir:
 
-| Katman | Description |
+| Katman | Açıklama |
 | --- | --- |
 | **Sunum** |*Sunu katmanı* (Web katmanı, ön uç katmanı), kullanıcıların bir uygulamayla etkileşimde bulunduğu katmandır. |
 | **İş** |*İş katmanı* (orta katman), sunum katmanının ve veri katmanının birbirleriyle iletişim kurmak için kullandığı katmandır ve sistemin temel işlevlerini içerir. |
-| **Veri** |*Veri katmanı* temel olarak bir uygulamanın verilerini depolayan bir sunucu (örneğin, SQL Server çalıştıran bir sunucu). |
+| **Veriler** |*Veri katmanı* temel olarak bir uygulamanın verilerini depolayan bir sunucu (örneğin, SQL Server çalıştıran bir sunucu). |
 
 Uygulama katmanları, bir uygulamadaki işlevlerin ve bileşenlerin mantıksal gruplandırmaları anlatmaktadır; Katmanlar, işlevlerin ve bileşenlerin ayrı fiziksel sunucular, bilgisayarlar, ağlar veya uzak konumlarda fiziksel dağıtımını anlatmaktadır. Bir uygulamanın katmanları aynı fiziksel bilgisayarda (aynı katman) bulunabilir veya ayrı bilgisayarlara (n-tier) dağılmış olabilir ve her katmandaki bileşenler, iyi tanımlanmış arabirimler aracılığıyla diğer katmanlardaki bileşenlerle iletişim kurar. Terim katmanını, iki katmanlı, üç katmanlı ve n katmanlı gibi fiziksel dağıtım düzenlerine başvurarak düşünebilirsiniz. **2 katmanlı uygulama deseninin** iki uygulama katmanı vardır: uygulama sunucusu ve veritabanı sunucusu. Doğrudan iletişim, uygulama sunucusu ve veritabanı sunucusu arasında gerçekleşir. Uygulama sunucusu hem Web katmanı hem de iş katmanı bileşenlerini içerir. **3 katmanlı uygulama**düzeninde üç uygulama katmanı vardır: Web sunucusu, iş mantığı katmanını ve/veya iş katmanı veri erişimi bileşenlerini ve veritabanı sunucusunu içeren uygulama sunucusu. Web sunucusu ile veritabanı sunucusu arasındaki iletişim uygulama sunucusu üzerinden gerçekleşir. Uygulama katmanları ve katmanları hakkında ayrıntılı bilgi için bkz. [Microsoft uygulama mimarisi Kılavuzu](https://msdn.microsoft.com/library/ff650706.aspx).
 

@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 71a1a97c3cb6df4c1498940738fe070819fba1b5
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 0d2d5a9a6d897e3dde039f6124a1b6c1b356a29a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734818"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040105"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
-Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur. Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarından daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
+Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur.
+
+Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarından daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
 
 Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
 
@@ -42,7 +43,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardı
 
 Kerberos temsili, bir hesabın kaynaklara erişmek için başka bir hesabın kimliğine bürünmesini sağlar. Örneğin, arka uç Web bileşenine erişen bir Web uygulaması, arka uç bağlantısı yaptığında kendisini farklı bir kullanıcı hesabı olarak taklit edebilir. Kimliğe bürünme hesabının erişebileceği kaynakları sınırmadığı için Kerberos temsili güvenli değildir.
 
-Kerberos kısıtlanmış temsili (KCD), belirli bir sunucunun veya uygulamanın başka bir kimlik kimliğine bürünerek bağlanabileceği Hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabı yapılandırmak için etki alanı yöneticisi ayrıcalıklarına gerek duyar ve hesabı tek bir etki alanında çalışacak şekilde kısıtlar.
+Kerberos *Kısıtlanmış* temsili (KCD), belirli bir sunucunun veya uygulamanın başka bir kimlik kimliğine bürünerek bağlanabileceği Hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabı yapılandırmak için etki alanı yöneticisi ayrıcalıklarına gerek duyar ve hesabı tek bir etki alanında çalışacak şekilde kısıtlar.
 
 Geleneksel KCD 'de de bazı sorunlar vardır. Örneğin, önceki işletim sistemlerinde, hizmet yöneticisinin sahip oldukları kaynak hizmetleri için hangi ön uç hizmetlerin temsilci olarak olduğunu bilmemiz için kullanışlı bir yolu yoktur. Kaynak hizmetine temsilci olabilecek herhangi bir ön uç hizmeti potansiyel bir saldırı noktasıdır. Kaynak hizmetleri için temsilci olarak yapılandırılmış bir ön uç hizmeti barındıran bir sunucunun güvenliği tehlikeye girerse, kaynak hizmetleri de tehlikeye girebilir.
 
@@ -56,7 +57,11 @@ Kaynak tabanlı KCD, PowerShell kullanılarak yapılandırılır. Kimliğe bür�
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bilgisayar hesabı için kaynak tabanlı KCD 'YI yapılandırma
 
-Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım.
+
+Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir.
+
+Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
 
 1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
 1. [Etki alanı-][create-join-windows-vm]hem Web uygulamasını çalıştıran hem de Web API 'sini çalıştıran bir sanal makineyi yönetilen etki alanına ekleyin. Önceki adımda özel OU 'da bu bilgisayar hesaplarını oluşturun.
@@ -64,7 +69,9 @@ Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir
     > [!NOTE]
     > Web uygulaması ve Web API 'SI için bilgisayar hesapları, kaynak tabanlı KCD 'yi yapılandırma izninizin olduğu özel bir OU 'da olmalıdır. Yerleşik *AAD DC bilgisayarları* kapsayıcısında bir bilgisayar hesabı için kaynak tabanlı KCD 'yi yapılandıramazsınız.
 
-1. Son olarak, [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
+1. Son olarak, [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın.
+
+    Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
     
     ```powershell
     $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
@@ -77,12 +84,14 @@ Bu senaryoda, *appsvc*adlı bir hizmet hesabı olarak çalışan bir Web uygulam
 
 1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
 1. [Etki alanı-][create-join-windows-vm] arka uç Web API 'si/kaynağını çalıştıran sanal makineleri yönetilen etki alanına ekleyin. Kendi bilgisayar hesabını özel OU içinde oluşturun.
-1. Web uygulamasını özel OU içinde çalıştırmak için kullanılan hizmet hesabını (örneğin, ' appsvc ') oluşturun.
+1. Özel OU içinde Web uygulamasını çalıştırmak için kullanılan hizmet hesabını (örneğin, *appsvc*) oluşturun.
 
     > [!NOTE]
     > Yine, Web API sanal makinesi için bilgisayar hesabı ve Web uygulaması için hizmet hesabı, kaynak tabanlı KCD 'yi yapılandırma izninizin olduğu özel bir OU 'da olmalıdır. Yerleşik *AAD DC Computers* veya *AAD DC Users* kapsayıcılarındaki hesaplar için kaynak tabanlı KCD 'yi yapılandıramazsınız. Bu ayrıca kaynak tabanlı KCD 'yi ayarlamak için Azure AD 'den eşitlenen Kullanıcı hesaplarını kullanamayacağı anlamına gelir. Azure AD DS 'de özel olarak oluşturulan hizmet hesaplarını oluşturmanız ve kullanmanız gerekir.
 
-1. Son olarak, [set-ADUser][Set-ADUser] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi hizmet adlarınızı sağlayın:
+1. Son olarak, [set-ADUser][Set-ADUser] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın.
+
+    Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi hizmet adlarınızı sağlayın:
 
     ```powershell
     $ImpersonatingAccount = Get-ADUser -Identity appsvc

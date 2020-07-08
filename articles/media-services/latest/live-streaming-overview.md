@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418152"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
@@ -80,8 +79,8 @@ Canlı döküm, doğrudan geçiş ya da canlı kodlama olan canlı olaylarla kul
 Media Services v3 sürümünde canlı akış iş akışını anlamak için öncelikle aşağıdaki kavramları gözden geçirmeniz ve anlamanız gerekir: 
 
 - [Akış uç noktaları](streaming-endpoint-concept.md)
-- [Canlı etkinlikler ve canlı çıktılar](live-events-outputs-concept.md)
-- [Akış Konumlandırıcı](streaming-locators-concept.md)
+- [Canlı etkinlikler ve canlı çıkışlar](live-events-outputs-concept.md)
+- [Akış bulucuları](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Genel adımlar
 

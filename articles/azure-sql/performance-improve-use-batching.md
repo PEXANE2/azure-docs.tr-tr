@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343838"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
@@ -99,7 +98,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 **Şirket Içinden Azure 'a**:
 
-| Operations | İşlem yok (MS) | İşlem (MS) |
+| İşlemler | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +107,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 **Azure 'Dan Azure 'a (aynı veri merkezi)**:
 
-| Operations | İşlem yok (MS) | İşlem (MS) |
+| İşlemler | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +194,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye cinsinden geçici test sonuçları gösterilmektedir.
 
-| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| İşlemler | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +211,7 @@ Tablo değerli parametreler hakkında daha fazla bilgi için bkz. [tablo değerl
 
 ### <a name="sql-bulk-copy"></a>SQL toplu kopyalama
 
-SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** , işlevinde komut satırı aracına, **bcp. exe**' ye veya Transact-SQL bildirimine benzer **bulk INSERT**. Aşağıdaki kod örneği, kaynak **DataTable**, tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
+SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** işlevi, komut satırı aracına, **Bcp.exe**veya Transact-SQL bildirimine benzer **bulk INSERT**. Aşağıdaki kod örneği, kaynak **DataTable**, tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,7 +232,7 @@ Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği baz�
 
 Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
-| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| İşlemler | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +275,7 @@ Bu örnek, temel kavramı göstermek için tasarlanmıştır. Daha gerçekçi bi
 
 Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansını milisaniye cinsinden gösterir.
 
-| Operations | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
+| İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |

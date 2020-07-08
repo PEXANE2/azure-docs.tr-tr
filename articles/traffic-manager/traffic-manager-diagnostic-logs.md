@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711689"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager kaynak günlüğünü etkinleştirme
@@ -54,7 +53,7 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
       Traffic Manager profili kaynağıyla ilişkili tüm günlük kategorilerinin etkinleştirildiğinden emin olun. Ayrıca, depolama hesabının doğru şekilde ayarlandığını doğrulayın.
 
 ## <a name="access-log-files"></a>Günlük dosyalarına erişin
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. Portalda Azure depolama hesabınıza gidin.
 2. Azure depolama hesabınızın **genel bakış** sayfasında, **Hizmetler** ' in altında **Bloblar**' ı seçin.
 3. **Kapsayıcılar**için, **Öngörüler-logs-probehealthkara sevents**' i seçin ve dosyadaki PT1H.jsaşağı gidin ve bu günlük dosyasının bir kopyasını indirip kaydetmek için **İndir** ' e tıklayın.

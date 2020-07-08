@@ -10,12 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 90e654255691686225ddab3c294dcd62877d4622
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696414"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957333"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için özel R modülleri tanımlama (klasik)
 
@@ -39,53 +38,56 @@ Bu örnek, özel bir R modülü tarafından istenen dosyaların nasıl oluşturu
 ## <a name="the-source-file"></a>Kaynak dosya
 İki veri kümesinden (veri çerçevelerinden) satırları (gözlemleme) birleştirmek için kullanılan **satır ekle** modülünün standart uygulamasını değiştiren **özel bir satır ekle** modülünün örneğini düşünün. Standart **satır ekleme** modülü, ikinci giriş veri kümesinin satırlarını, algoritmayı kullanarak ilk giriş veri kümesinin sonuna ekler `rbind` . `CustomAddRows`Benzer şekilde, özelleştirilmiş işlev iki veri kümesini kabul eder, ancak ek bir giriş olarak Boole takas parametresini de kabul eder. Swap parametresi **false**olarak ayarlandıysa, standart uygulamayla aynı veri kümesini döndürür. Ancak Swap parametresi **true**ise, işlevi ilk giriş veri kümesinin satırlarını ikinci veri kümesinin sonuna ekler. `CustomAddRows` **Özel satır ekle** modülü tarafından kullanıma sunulan r Işlevinin uygulamasını Içeren CustomAddRows. R dosyası aşağıdaki R koduna sahiptir.
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+{
+    if (swap)
     {
-        if (swap)
-        {
-            return (rbind(dataset2, dataset1));
-        }
-        else
-        {
-            return (rbind(dataset1, dataset2));
-        } 
+        return (rbind(dataset2, dataset1));
+    }
+    else
+    {
+        return (rbind(dataset1, dataset2));
     } 
+} 
+```
 
 ### <a name="the-xml-definition-file"></a>XML tanım dosyası
 Bu `CustomAddRows` işlevi Azure Machine Learning Studio (klasik) modülü olarak göstermek için, **özel satır ekleme** modülünün nasıl görünmesi ve davranması gerektiğini BELIRTMEK üzere bir XML tanım dosyası oluşturulmalıdır. 
 
-    <!-- Defined a module using an R Script -->
-    <Module name="Custom Add Rows">
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
+```xml
+<!-- Defined a module using an R Script -->
+<Module name="Custom Add Rows">
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
 
-    <!-- Specify the base language, script file and R function to use for this module. -->        
-        <Language name="R" 
-         sourceFile="CustomAddRows.R" 
-         entryPoint="CustomAddRows" />  
+<!-- Specify the base language, script file and R function to use for this module. -->        
+    <Language name="R" 
+        sourceFile="CustomAddRows.R" 
+        entryPoint="CustomAddRows" />  
 
-    <!-- Define module input and output ports -->
-    <!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
-        <Ports>
-            <Input id="dataset1" name="Dataset 1" type="DataTable">
-                <Description>First input dataset</Description>
-            </Input>
-            <Input id="dataset2" name="Dataset 2" type="DataTable">
-                <Description>Second input dataset</Description>
-            </Input>
-            <Output id="dataset" name="Dataset" type="DataTable">
-                <Description>The combined dataset</Description>
-            </Output>
-        </Ports>
+<!-- Define module input and output ports -->
+<!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
+    <Ports>
+        <Input id="dataset1" name="Dataset 1" type="DataTable">
+            <Description>First input dataset</Description>
+        </Input>
+        <Input id="dataset2" name="Dataset 2" type="DataTable">
+            <Description>Second input dataset</Description>
+        </Input>
+        <Output id="dataset" name="Dataset" type="DataTable">
+            <Description>The combined dataset</Description>
+        </Output>
+    </Ports>
 
-    <!-- Define module parameters -->
-        <Arguments>
-            <Arg id="swap" name="Swap" type="bool" >
-                <Description>Swap input datasets.</Description>
-            </Arg>
-        </Arguments>
-    </Module>
-
+<!-- Define module parameters -->
+    <Arguments>
+        <Arg id="swap" name="Swap" type="bool" >
+            <Description>Swap input datasets.</Description>
+        </Arg>
+    </Arguments>
+</Module>
+```
 
 XML dosyasındaki **giriş** ve **bağımsız değişken** öğelerinin **kimlik** özniteliklerinin değerinin, CustomAddRows. r dosyasındaki R kodunun işlev parametre adlarıyla (örnekteki*DATASET1*, *DataSet2*ve *Swap* ) tam olarak eşleşmesi gerektiğini unutmayın. Benzer şekilde, **Language** öğesinin **entryPoint** özniteliğinin değeri, R betiğindeki işlevin adıyla aynı olmalıdır: (örnekteki*CustomAddRows* ). 
 
@@ -104,10 +106,11 @@ Bunları Machine Learning çalışma alanınıza kaydetmek için, Azure Machine 
 ### <a name="module-elements"></a>Modül öğeleri
 **Modül** Öğesı, XML dosyasında özel bir modül tanımlamak için kullanılır. Birden çok modül, birden çok **Modül** öğesi kullanılarak tek bir XML dosyasında tanımlanabilir. Çalışma alanınızdaki her modülün benzersiz bir adı olmalıdır. Mevcut bir özel modülle aynı ada sahip özel bir modül kaydedin ve var olan modülün yenisiyle yerini alır. Ancak, özel modüller mevcut Azure Machine Learning Studio (klasik) modülle aynı ada sahip olabilir. Bu durumda, modül paleti **özel** kategorisinde görünürler.
 
-    <Module name="Custom Add Rows" isDeterministic="false"> 
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another...</Description>/> 
-
+```xml
+<Module name="Custom Add Rows" isDeterministic="false"> 
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another...</Description>/> 
+```
 
 **Module** öğesi içinde, iki isteğe bağlı iki öğe belirtebilirsiniz:
 
@@ -127,8 +130,9 @@ S_SAYI_ÜRET veya geçerli tarih ya da saati döndüren bir işlev gibi belirley
 ### <a name="language-definition"></a>Dil tanımı
 XML tanım dosyanızdaki **Language** öğesi özel modül dilini belirtmek için kullanılır. Şu an için yalnızca R dili desteklenmektedir. **SourceFile** özniteliğinin değeri, modül çalıştırıldığında çağrılacak Işlevi içeren R dosyasının adı olmalıdır. Bu dosya ZIP paketinin parçası olmalıdır. **EntryPoint** özniteliğinin değeri, Çağrılmakta olan işlevin adıdır ve kaynak dosyada ile tanımlanmış geçerli bir işlevle eşleşmelidir.
 
-    <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
-
+```xml
+<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
+```
 
 ### <a name="ports"></a>Bağlantı noktaları
 Özel bir modülün giriş ve çıkış bağlantı noktaları, XML tanım dosyasının **bağlantı noktaları** bölümünün alt öğelerinde belirtilmiştir. Bu öğelerin sırası, kullanıcılar tarafından karşılaşılan (UX) düzeni belirler. XML dosyasının **Ports** öğesinde listelenen ilk alt **girdi** veya **Çıkış** , Machine Learning UX içinde en soldaki giriş bağlantı noktası olur.
@@ -143,18 +147,22 @@ Giriş bağlantı noktaları, R işlevinizdeki ve çalışma alanınıza veri ge
 
 **DataTable:** Bu tür, R işlevinizde bir Data. Frame olarak geçirilir. Aslında, Machine Learning tarafından desteklenen ve **DataTable** ile uyumlu olan herhangi bir tür (ÖRNEĞIN, CSV dosyaları veya arff dosyaları) bir veri. çerçeveye otomatik olarak dönüştürülür. 
 
-        <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
-            <Description>Input Dataset 1</Description>
-           </Input>
+```xml
+<Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
+    <Description>Input Dataset 1</Description>
+</Input>
+```
 
 Her bir **DataTable** giriş bağlantı noktasıyla ilişkili **ID** özniteliği benzersiz bir değere sahip olmalı ve bu değer R işlevinizdeki karşılık gelen adlandırılmış parametreyle eşleşmelidir.
 Bir denemenize giriş olarak geçirilmedi isteğe bağlı **DataTable** bağlantı noktaları, R işlevine **null** değer geçirilmiş ve giriş bağlı değilse, isteğe bağlı ZIP bağlantı noktalarında yok sayılır. **IsOptional** özniteliği hem **DataTable** hem de **ZIP** türleri için isteğe bağlıdır ve varsayılan olarak *false 'tur* .
 
 **Posta kodu:** Özel modüller bir ZIP dosyasını girdi olarak kabul edebilir. Bu giriş, işlevinizin R çalışma dizinine paketten bulunur
 
-        <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
-            <Description>Zip files to be extracted to the R working directory.</Description>
-           </Input>
+```xml
+<Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
+    <Description>Zip files to be extracted to the R working directory.</Description>
+</Input>
+```
 
 Özel R modülleri için, bir ZIP bağlantı noktasının KIMLIĞI, R işlevinin herhangi bir parametresiyle eşleşmek zorunda değildir. Bunun nedeni, ZIP dosyasının R çalışma dizinine otomatik olarak ayıklanabileceği bir çalışmadır.
 
@@ -170,47 +178,54 @@ Bir denemenize giriş olarak geçirilmedi isteğe bağlı **DataTable** bağlant
 ### <a name="output-elements"></a>Çıkış öğeleri
 **Standart çıkış bağlantı noktaları:** Çıkış bağlantı noktaları, daha sonra sonraki modüller tarafından kullanılabilecek olan R işlevinizdeki dönüş değerleriyle eşleştirilir. *DataTable* Şu anda desteklenen tek standart çıkış bağlantı noktası türüdür. ( *Öğrenenler* ve *dönüşümler* için destek sağlanır.) *DataTable* çıkışı şöyle tanımlanır:
 
-    <Output id="dataset" name="Dataset" type="DataTable">
-        <Description>Combined dataset</Description>
-    </Output>
+```xml
+<Output id="dataset" name="Dataset" type="DataTable">
+    <Description>Combined dataset</Description>
+</Output>
+```
 
 Özel R modüllerindeki çıktılar için, **ID** özniteliğinin değeri R betiğindeki herhangi bir şeyle eşleşmelidir, ancak benzersiz olmalıdır. Tek modüllü bir çıktıda, R işlevinin dönüş değeri bir *Data. Frame*olmalıdır. Desteklenen bir veri türünde birden fazla nesnenin çıktısını almak için, uygun çıkış bağlantı noktalarının XML tanım dosyasında belirtilmesi gerekir ve nesneler liste olarak döndürülmelidir. Çıkış nesneleri soldan sağa çıkış bağlantı noktalarına atanır ve nesnelerin döndürülen listeye yerleştirildiği sırayı yansıtır.
 
 Örneğin, **özel satır ekle** modülünü, yeni birleştirilmiş veri kümesine, *veri kümesine*(bir sırada, soldan sağa: *veri kümesi*, *dataSet1*, *DataSet2*) ek olarak, *dataSet1* ve *DataSet2*gibi özgün iki veri kümesinin çıktısını almak için değiştirmek istiyorsanız, CustomAddRows.xml dosyasında çıkış bağlantı noktalarını aşağıdaki gibi tanımlayın:
 
-    <Ports> 
-        <Output id="dataset" name="Dataset Out" type="DataTable"> 
-            <Description>New Dataset</Description> 
-        </Output> 
-        <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
-            <Description>First Dataset</Description> 
-        </Output> 
-        <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
-            <Description>Second Dataset</Description> 
-        </Output> 
-        <Input id="dataset1" name="Dataset 1" type="DataTable"> 
-            <Description>First Input Table</Description>
-        </Input> 
-        <Input id="dataset2" name="Dataset 2" type="DataTable"> 
-            <Description>Second Input Table</Description> 
-        </Input> 
-    </Ports> 
-
+```xml
+<Ports> 
+    <Output id="dataset" name="Dataset Out" type="DataTable"> 
+        <Description>New Dataset</Description> 
+    </Output> 
+    <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
+        <Description>First Dataset</Description> 
+    </Output> 
+    <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
+        <Description>Second Dataset</Description> 
+    </Output> 
+    <Input id="dataset1" name="Dataset 1" type="DataTable"> 
+        <Description>First Input Table</Description>
+    </Input> 
+    <Input id="dataset2" name="Dataset 2" type="DataTable"> 
+        <Description>Second Input Table</Description> 
+    </Input> 
+</Ports> 
+```
 
 Ve bir listedeki nesne listesini ' CustomAddRows. R ' içinde doğru sırada döndürün:
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
-        if (swap) { dataset <- rbind(dataset2, dataset1)) } 
-        else { dataset <- rbind(dataset1, dataset2)) 
-        } 
-    return (list(dataset, dataset1, dataset2)) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
+    if (swap) { dataset <- rbind(dataset2, dataset1)) } 
+    else { dataset <- rbind(dataset1, dataset2)) 
     } 
+    return (list(dataset, dataset1, dataset2)) 
+} 
+```
 
 **Görselleştirme çıkışı:** Ayrıca, R grafik cihazından ve konsol çıktısından çıktıyı görüntüleyen *görselleştirme*türünde bir çıkış bağlantı noktası da belirtebilirsiniz. Bu bağlantı noktası R işlevi çıkışının bir parçası değildir ve diğer çıkış bağlantı noktası türlerinin sırasını engellemez. Özel modüllere bir görselleştirme bağlantı noktası eklemek için, **tür** özniteliği için *görselleştirme* değeri olan bir **çıktı** öğesi ekleyin:
 
-    <Output id="deviceOutput" name="View Port" type="Visualization">
-      <Description>View the R console graphics device output.</Description>
-    </Output>
+```xml
+<Output id="deviceOutput" name="View Port" type="Visualization">
+    <Description>View the R console graphics device output.</Description>
+</Output>
+```
 
 **Çıkış kuralları:**
 
@@ -229,51 +244,56 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 
 **int** – bir ınteger (32-bit) tür parametresi.
 
-    <Arg id="intValue1" name="Int Param" type="int">
-        <Properties min="0" max="100" default="0" />
-        <Description>Integer Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="intValue1" name="Int Param" type="int">
+    <Properties min="0" max="100" default="0" />
+    <Description>Integer Parameter</Description>
+</Arg>
+```
 
 * *Isteğe bağlı özellikler*: **Min**, **Max**, **Default** ve **IsOptional**
 
 **Double** : çift tür parametresi.
 
-    <Arg id="doubleValue1" name="Double Param" type="double">
-        <Properties min="0.000" max="0.999" default="0.3" />
-        <Description>Double Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="doubleValue1" name="Double Param" type="double">
+    <Properties min="0.000" max="0.999" default="0.3" />
+    <Description>Double Parameter</Description>
+</Arg>
+```
 
 * *Isteğe bağlı özellikler*: **Min**, **Max**, **Default** ve **IsOptional**
 
 **bool** : UX içindeki bir onay kutusuyla temsil edilen bir Boole parametresi.
 
-    <Arg id="boolValue1" name="Boolean Param" type="bool">
-        <Properties default="true" />
-        <Description>Boolean Parameter</Description>
-    </Arg>
-
-
+```xml
+<Arg id="boolValue1" name="Boolean Param" type="bool">
+    <Properties default="true" />
+    <Description>Boolean Parameter</Description>
+</Arg>
+```
 
 * *Isteğe bağlı özellikler*: **varsayılan** -ayarlanmamışsa false
 
 **dize**: standart bir dize
 
-    <Arg id="stringValue1" name="My string Param" type="string">
-        <Properties isOptional="true" />
-        <Description>String Parameter 1</Description>
-    </Arg>    
+```xml
+<Arg id="stringValue1" name="My string Param" type="string">
+    <Properties isOptional="true" />
+    <Description>String Parameter 1</Description>
+</Arg>    
+```
 
 * *Isteğe bağlı özellikler*: **varsayılan** ve **IsOptional**
 
 **Columnpicker**: bir sütun seçim parametresi. Bu tür UX 'de bir sütun Seçicisi olarak işlenir. Burada, hedef bağlantı noktası türü *DataTable*olması gereken sütunların seçildiği bağlantı noktasının kimliğini belirtmek Için bu **özellik** öğesi kullanılır. Sütun seçiminin sonucu R işlevine, seçili sütun adlarını içeren dizelerin bir listesi olarak geçirilir. 
 
-        <Arg id="colset" name="Column set" type="ColumnPicker">      
-          <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
-          <Description>Column set</Description>
-        </Arg>
-
+```xml
+<Arg id="colset" name="Column set" type="ColumnPicker">      
+    <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
+    <Description>Column set</Description>
+</Arg>
+```
 
 * *Gerekli özellikler*: **PortID** - *DATATABLE*türünde bir giriş öğesinin kimliğiyle eşleşir.
 * *Isteğe bağlı özellikler*:
@@ -290,7 +310,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
     * Tümü
   * **varsayılan** -sütun seçici için geçerli varsayılan seçimler şunları içerir: 
     
-    * Yok
+    * Hiçbiri
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -314,14 +334,16 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 
 **Açılan menü**: Kullanıcı tarafından belirtilen numaralandırılan (açılan) liste. Açılan öğeler, bir **öğe** öğesi kullanılarak **Özellikler** öğesi içinde belirtilir. Her **öğenin** **kimliği** benzersiz olmalı ve geçerli bir R değişkeni olmalıdır. Bir **öğenin** **adının** değeri hem gördüğünüz metin hem de R işlevine geçirilen değer olarak işlev görür.
 
-    <Arg id="color" name="Color" type="DropDown">
-      <Properties default="red">
+```xml
+<Arg id="color" name="Color" type="DropDown">
+    <Properties default="red">
         <Item id="red" name="Red Value"/>
         <Item id="green" name="Green Value"/>
         <Item id="blue" name="Blue Value"/>
-      </Properties>
-      <Description>Select a color.</Description>
-    </Arg>    
+    </Properties>
+    <Description>Select a color.</Description>
+</Arg>    
+```
 
 * *Isteğe bağlı özellikler*:
   * **varsayılan** -varsayılan özelliğin değeri, **öğe** öğelerinden birindeki bir kimlik değeri ile eşleşmelidir.
@@ -336,25 +358,30 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 
 Örneğin, veri kümesinden NAs içeren herhangi bir satırı kaldırmak ve ayrıca, CustomAddRows ' a yazmadan önce yinelenen satırları kaldırmak ve bir RemoveDupNARows. R dosyasında bunu yapan bir R işlevi zaten yazmış olmanız gerektiğini varsayalım:
 
-    RemoveDupNARows <- function(dataFrame) {
-        #Remove Duplicate Rows:
-        dataFrame <- unique(dataFrame)
-        #Remove Rows with NAs:
-        finalDataFrame <- dataFrame[complete.cases(dataFrame),]
-        return(finalDataFrame)
-    }
+```r
+RemoveDupNARows <- function(dataFrame) {
+    #Remove Duplicate Rows:
+    dataFrame <- unique(dataFrame)
+    #Remove Rows with NAs:
+    finalDataFrame <- dataFrame[complete.cases(dataFrame),]
+    return(finalDataFrame)
+}
+```
+
 CustomAddRows işlevindeki RemoveDupNARows. R yardımcı dosyasını kaynak bölümünde bulabilirsiniz:
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
-        source("src/RemoveDupNARows.R")
-            if (swap) { 
-                dataset <- rbind(dataset2, dataset1))
-             } else { 
-                  dataset <- rbind(dataset1, dataset2)) 
-             } 
-        dataset <- removeDupNARows(dataset)
-        return (dataset)
-    }
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
+    source("src/RemoveDupNARows.R")
+        if (swap) { 
+            dataset <- rbind(dataset2, dataset1))
+        } else { 
+            dataset <- rbind(dataset1, dataset2)) 
+        } 
+    dataset <- removeDupNARows(dataset)
+    return (dataset)
+}
+```
 
 Ardından, özel bir R modülü olarak ' CustomAddRows. R ', ' CustomAddRows.xml ' ve ' RemoveDupNARows. R ' içeren bir ZIP dosyası yükleyin.
 

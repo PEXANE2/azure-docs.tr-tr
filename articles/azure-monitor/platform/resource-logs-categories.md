@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418767"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
@@ -67,14 +66,14 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |DscNodeStatus|DSC düğüm durumu|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Kategori|Kategori görünen adı|
 |---|---|
 |ServiceLog|Hizmet günlükleri|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. Batchaı/çalışma alanları
+## <a name="microsoftbatchaiworkspaces"></a>ChAI/çalışma alanlarını Microsoft.Bat
 
 |Kategori|Kategori görünen adı|
 |---|---|
@@ -297,7 +296,7 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |ServiceOperations|Hizmet İşlemleri|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
 |Kategori|Kategori görünen adı|
 |---|---|

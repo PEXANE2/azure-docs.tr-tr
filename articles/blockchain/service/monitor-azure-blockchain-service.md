@@ -5,10 +5,9 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214052"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
@@ -79,7 +78,7 @@ Tüm kaynak günlükleri, blok zinciri hizmetine özgü birkaç benzersiz özell
 Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure blok zinciri ara sunucu günlüklerinin özellikleri listelenmektedir.  
 
 
-| Özellik adı  | Description |
+| Özellik adı  | Açıklama |
 |:---|:---|
 | time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.  |
@@ -105,7 +104,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri listelenmektedir.
 
 
-| Özellik adı  | Description |
+| Özellik adı  | Açıklama |
 |:---|:---|
 | time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.|
@@ -131,7 +130,7 @@ Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hi
 Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blok zinciri ölçümlerinin listesini belirtir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Description   |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
 | Bekleyen Işlemler   | Sayı  |  Ortalama | Mined bekleniyor işlem sayısı.   |
 | İşlenen bloklar   | Sayı  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
@@ -143,7 +142,7 @@ Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blo
 Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenmektedir. Bunlar NGıNX ara sunucu ölçümleridir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Description |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama |
 |---|---|---|---|
 | Kabul edilen bağlantılar   | Sayı  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
 | Etkin Bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
@@ -156,7 +155,7 @@ Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan f
 Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri için toplanan performans ölçümleri listelenmektedir.  
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Description   |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
 | CPU kullanım yüzdesi   | Yüzde  |  Maks | CPU kullanımının yüzdesi.     |
 | GÇ okuma baytları   | KB   | Toplam  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
