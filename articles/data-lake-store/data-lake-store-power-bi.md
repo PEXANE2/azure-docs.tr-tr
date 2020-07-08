@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504942"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
@@ -78,7 +78,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
         ![Görselleştirmeler oluştur](./media/data-lake-store-power-bi/create-visualizations.png "Görselleştirmeler oluştur")
     3. Pasta grafiğinin şimdi aşağıda gösterildiği gibi bir benzemesi gerekir.
        
-        ![Pasta grafiği](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
+        ![Pasta grafik](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
 16. Sayfa düzeyi filtrelerinden belirli bir ülke/bölge seçerek, seçili ülkenin/bölgenin her bir şehrindeki sürücü sayısını görebilirsiniz. Örneğin, **görsel öğeler** sekmesinin altında, **sayfa düzeyi filtreleri**altında **Brezilya**' yi seçin.
     
     ![Ülke/bölge seçin](./media/data-lake-store-power-bi/select-country.png "Ülke/bölge seçin")

@@ -1,6 +1,6 @@
 ---
 title: AzCopy ile v10 arasındaki kullanarak Azure depolama 'ya veri kopyalama veya taşıma | Microsoft Docs
-description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy indirmenize, depolama hesabınıza bağlanmanıza ve sonra dosyaları aktarmaya yardımcı olur.
+description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale AzCopy programını indirme, depolama hesabınıza bağlama ve dosyaları aktarma aşamalarında size yardımcı olur.
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504483"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
-AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy indirmenize, depolama hesabınıza bağlanmanıza ve sonra dosyaları aktarmaya yardımcı olur.
+AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi gerçekleştirmenizi sağlayan bir komut satırı yardımcı programıdır. Bu makale AzCopy programını indirme, depolama hesabınıza bağlama ve dosyaları aktarma aşamalarında size yardımcı olur.
 
 > [!NOTE]
 > AzCopy **ile v10 arasındaki** , şu anda desteklenen AzCopy sürümüdür.
@@ -40,9 +40,9 @@ Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olar
 > [Azure Tablo depolama](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) hizmetinize veri kopyalamak Istiyorsanız, [azcopy sürüm 7,3](https://aka.ms/downloadazcopynet)' yi de yükleyebilirsiniz.
 
 
-## <a name="run-azcopy"></a>AzCopy Çalıştır
+## <a name="run-azcopy"></a>AzCopy programını çalıştırma
 
-Kolaylık sağlaması için, AzCopy yürütülebilir dosyasının dizin konumunu, kullanım kolaylığı için sistem yolunuza eklemeyi göz önünde bulundurun. Bu şekilde, `azcopy` sisteminizdeki herhangi bir dizinden yazabilirsiniz.
+Kolaylık sağlamak için AzCopy yürütülebilir dosyanızın bulunduğu dizini sistem yolunuza ekleyebilirsiniz. Bu şekilde, `azcopy` sisteminizdeki herhangi bir dizinden yazabilirsiniz.
 
 Yolunuza AzCopy dizinini eklememayı seçerseniz, dizinleri AzCopy yürütülebilir dosyanızın konumuyla değiştirmeniz ve `azcopy` `.\azcopy` Windows PowerShell komut istemleri ' nde yazmanız gerekir.
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507186"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme
@@ -82,7 +82,7 @@ Azure Ilkesi atama hakkında daha fazla bilgi için bkz. [Azure ilkesine genel b
 
 Bir Azure VM 'nin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
-|Adı |Açıklama |Tür |
+|Name |Açıklama |Tür |
 |-----|------------|-----|
 |VM'ler için Azure İzleyici etkinleştir |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) sanal makineler için Azure Izleyicisini etkinleştirin. Log Analytics çalışma alanını parametre olarak alır. |Girişim |
 |Denetim bağımlılık Aracısı dağıtımı – VM görüntüsü (OS) listelenmemiş |VM görüntüsü (OS) listede tanımlanmamışsa ve aracı yüklü değilse, VM 'Leri uyumsuz olarak raporlar. |İlke |
@@ -97,7 +97,7 @@ Bir Azure VM 'nin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
 Karma Azure Arc makinelerinde ilke tanımları aşağıdaki tabloda listelenmiştir.
 
-|Adı |Açıklama |Tür |
+|Name |Açıklama |Tür |
 |-----|------------|-----|
 | [Önizleme]: Log Analytics Aracı, Linux Azure yay makinelerinizde yüklü olmalıdır |VM görüntüsü (OS) listede tanımlanmışsa ve aracı yüklü değilse, karma Azure yay makinelerini Linux VM 'Ler için uyumsuz olarak raporlar. |İlke |
 | [Önizleme]: aracı Log Analytics Windows Azure Arc makinelerinizde yüklü olmalıdır |VM görüntüsü (OS) listede tanımlanmışsa ve aracı yüklü değilse, karma Azure yay makinelerini Windows VM 'Ler için uyumsuz olarak raporlar. |İlke |
@@ -111,7 +111,7 @@ Karma Azure Arc makinelerinde ilke tanımları aşağıdaki tabloda listelenmiş
 
 Bir Azure sanal makine ölçek kümesinin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
-|Adı |Açıklama |Tür |
+|Name |Açıklama |Tür |
 |-----|------------|-----|
 |Sanal Makine Ölçek Kümeleri için Azure Izleyicisini etkinleştir |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) sanal makine ölçek kümeleri için Azure Izleyicisini etkinleştirin. Log Analytics çalışma alanını parametre olarak alır. Note: ölçek ayarlama yükseltme ilkeniz el Ile olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme içindeki tüm VM 'lere uygulayın. CLı 'de, bu `az vmss update-instances` . |Girişim |
 |Sanal makine ölçek kümelerinde denetim bağımlılığı Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş |VM görüntüsü (OS) listede tanımlanmamışsa ve aracı yüklü değilse, sanal makine ölçek kümesini uyumsuz olarak bildirir. |İlke |
@@ -123,7 +123,7 @@ Bir Azure sanal makine ölçek kümesinin ilke tanımları aşağıdaki tabloda 
 
 Tek başına ilke (girişim ile birlikte verilmez) burada açıklanmıştır:
 
-|Adı |Açıklama |Tür |
+|Name |Açıklama |Tür |
 |-----|------------|-----|
 |VM için Log Analytics çalışma alanını denetle – rapor uyumsuzluğu |İlke veya girişim atamasında belirtilen Log Analytics çalışma alanına oturum açtıklarında VM 'Leri uyumsuz olarak raporla. |İlke |
 
@@ -133,7 +133,7 @@ Tek başına ilke (girişim ile birlikte verilmez) burada açıklanmıştır:
 
 İlkeyi veya girişimi atadığınızda, atamadaki seçili kapsam burada listelenen kapsam veya bunun bir alt kümesi olabilir. Örneğin, yönetim grubu (kapsam kapsamı) değil, abonelik (ilke kapsamı) için bir atama oluşturmuş olabilirsiniz. Bu durumda, kapsam yüzdesi, ilke veya girişim kapsamındaki VM 'Leri kapsam kapsamındaki VM 'Ler tarafından ayrılmış olarak gösterir. Başka bir durumda, bazı VM 'Leri veya kaynak gruplarını veya ilke kapsamından bir aboneliği dışınınız olabilir. Boşsa, ilke veya girişim yok ya da izniniz yok anlamına gelir. Bilgi, **atama durumu**altında sağlanır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portal, **İzle**' yi seçin. 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b60162800695be67c742554881b296c3d8bb9dc
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504381"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Bant genişliği orta veya yüksek olduğunda büyük veri kümeleri için veri aktarımı
@@ -68,7 +68,7 @@ Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili f
 |    Veri türü                        |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
 |    Form faktörü                      |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
 |    İlk kurulum saati               |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
-|    Verileri Azure 'a gönderme               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    Verileri Azure 'a gönderme               |    Evet                          |    Yes                                           |    Yes                                   |    Yes                                 |
 |    Verileri Azure’dan dışarı aktarma           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
 |    Şifreleme                       |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
 |    Donanım                         |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
@@ -88,8 +88,8 @@ Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili f
 |    Veri türü                  |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları                           |   Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler    |
 |    Form faktörü                |    Komut satırı araçları                        |    Programlı arabirim                    |    Microsoft bir sanal <br>veya fiziksel cihaz     |    Azure portal hizmet                                            |
 |    İlk bir kerelik kurulum     |    Kolaylık               |    Orta                       |    Kolay (<30 dakika)-Orta (1-2 saat)            |    Yaygın                                                          |
-|    Verileri önceden işleme              |    Hayır                                        |    Hayır                                        |    Evet (Edge işlem Ile)                               |    Yes                                                                |
-|    Diğer bulutlardan aktar       |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Yes                                                                |
+|    Verileri önceden işleme              |    Hayır                                        |    Hayır                                        |    Evet (Edge işlem Ile)                               |    Evet                                                                |
+|    Diğer bulutlardan aktar       |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Evet                                                                |
 |    Kullanıcı türü                        |    BT uzmanı veya geliştirme                                       |    Geliştirme                                       |    BT Profesyoneli                                                |    BT Profesyoneli                                                             |
 |    Fiyatlandırma                          |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 

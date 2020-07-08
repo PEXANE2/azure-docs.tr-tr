@@ -4,10 +4,10 @@ description: Azure DevTest Labs içindeki özel yapıt kaynağınız için GitHu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483151"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Özel yapıtları ve Kaynak Yöneticisi şablonlarını depolamak için bir git deposu ekleme
@@ -60,7 +60,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 10. [Laboratuvarınızı depoya bağlama](#connect-your-lab-to-the-repository) bölümüne devam edin.
 
 ## <a name="connect-your-lab-to-the-repository"></a>Laboratuvarınızı depoya bağlama
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Diğer hizmetler**' i seçin ve ardından hizmetler listesinden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin. 
 4. **Yapılandırma ve ilke depoları ' nı ve**  >  **Repositories**  >  **Ekle**' yi seçin.
@@ -74,7 +74,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
    5. **Klasör yolları**. Yapıtı veya Kaynak Yöneticisi şablonu tanımlarınızı içeren kopya URL 'sine göre en az bir klasör yolu girin. Bir alt dizin belirttiğinizde, klasör yolunda eğik çizgi eklediğinizden emin olun.
 
       ![Depolar alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ### <a name="related-blog-posts"></a>İlgili blog gönderileri
 * [DevTest Labs 'de başarısız yapıtların sorunlarını giderme](devtest-lab-troubleshoot-artifact-failure.md)

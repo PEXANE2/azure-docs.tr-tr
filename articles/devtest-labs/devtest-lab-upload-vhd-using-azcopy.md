@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs ' de bir laboratuvarın depolama he
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483219"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy kullanarak VHD dosyasını laboratuvarın depolama hesabına yükleyin
@@ -26,7 +26,7 @@ Aşağıdaki adımlarda, [AzCopy](https://aka.ms/downloadazcopy)kullanarak Azure
 
 1. Azure portal kullanarak laboratuvarın depolama hesabının adını alın:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 

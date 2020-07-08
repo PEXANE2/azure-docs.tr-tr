@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505996"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
@@ -55,7 +55,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 

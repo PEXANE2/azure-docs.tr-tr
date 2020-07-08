@@ -4,10 +4,10 @@ description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvar
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 23fb43fa7295006d8d3784d1dbb5d80c48411431
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484137"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştir 
@@ -33,7 +33,7 @@ Azure savunma alt ağında laboratuvar VM 'Leri oluşturamazsınız. Aşağıdak
 ## <a name="enable-vm-creation-in-the-subnet"></a>Alt ağda VM oluşturmayı etkinleştirme
 Şimdi, aşağıdaki adımları izleyerek bu alt ağdaki VM 'Leri oluşturmayı etkinleştirin: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti menüsünde **tüm hizmetler** ' i seçin. 
 1. Listeden **DevTest Labs**'i seçin. 
 1. Laboratuvarlar listesinden *laboratuvarınızı*seçin. 

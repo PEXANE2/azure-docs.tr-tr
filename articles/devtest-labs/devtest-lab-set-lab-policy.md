@@ -4,10 +4,10 @@ description: VM boyutları, Kullanıcı başına en fazla VM ve kapalı otomasyo
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483406"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvar için tüm ilkeleri yönetme
@@ -29,7 +29,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. Bu ilkeyi etkinleştirirseniz laboratuvarınızda oluşturulabilecek bir veya daha fazla VM boyutunu seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="set-virtual-machines-per-user"></a>Kullanıcı başına sanal makine ayarlama
 **Kullanıcı başına sanal makine** ilkesi, tek bir kullanıcı tarafından oluşturulabilen VM sayısını belirtmenizi sağlar. Kullanıcı sınırı karşılandığında bir sanal makine oluşturmaya veya talep almaya çalışırsa, VM 'nin oluşturuamayacağını/istenmediğini belirten bir hata iletisi görüntülenir. 
@@ -42,7 +42,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. SSD 'yi (katı hal diski) kullanılabilecek VM 'lerin sayısını sınırlandırmak için **Evet** ' i seçin. SSD 'yi kullanacak sanal makinelerin sayısını sınırlandırmak istemiyorsanız **Hayır**' ı seçin. **Evet**' i SEÇERSENIZ, SSD kullanılarak oluşturulabilen VM sayısını belirten bir değer girin. 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="set-virtual-machines-per-lab"></a>Laboratuvar başına sanal makine ayarlama
 **Laboratuvar başına sanal makine** ilkesi, geçerli laboratuvar Için oluşturulabilecek VM sayısını belirtmenizi sağlar. Laboratuvar sınırı karşılandığında bir Kullanıcı VM oluşturmaya çalışırsa, VM 'nin oluşturuamayacağını belirten bir hata iletisi görüntülenir. 
@@ -55,7 +55,7 @@ Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek 
 
 1. SSD 'yi (katı hal diski) kullanılabilecek VM 'lerin sayısını sınırlandırmak için **Evet** ' i seçin. SSD 'yi kullanacak sanal makinelerin sayısını sınırlandırmak istemiyorsanız **Hayır**' ı seçin. **Evet**' i SEÇERSENIZ, SSD kullanılarak oluşturulabilen VM sayısını belirten bir değer girin. 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="set-auto-shutdown"></a>Otomatik kapanışı ayarla
 Otomatik kapatma ilkesi, bu laboratuvarın VM 'lerinin kapandığı saati belirtmenize izin vererek laboratuvar harcanmasının en aza indirilmesine yardımcı olur.
@@ -72,7 +72,7 @@ Otomatik kapatma ilkesi, bu laboratuvarın VM 'lerinin kapandığı saati belirt
 
    Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Varsayılan olarak, bu ilke, etkinleştirildikten sonra geçerli laboratuvardaki tüm VM 'Ler için geçerlidir. Bu ayarı belirli bir VM 'den kaldırmak için VM 'nin Yönetim bölmesini açın ve **otomatik kapatılma** ayarını değiştirin.
 
@@ -111,7 +111,7 @@ Otomatik başlatma ilkesi, geçerli laboratuvardaki VM 'Lerin ne zaman başlatı
 
 3. Bu ilkeyi etkinleştirirseniz, zamanlanan başlangıç saati, saat dilimi ve saatin geçerli olduğu haftanın günleri belirtin. 
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 Bu ilke etkinleştirildikten sonra, geçerli laboratuvardaki tüm sanal makinelere otomatik olarak uygulanmaz. Bu ayarı belirli bir VM 'ye uygulamak için, VM 'nin Yönetim bölmesini açın ve **autostart** ayarını değiştirin.
 

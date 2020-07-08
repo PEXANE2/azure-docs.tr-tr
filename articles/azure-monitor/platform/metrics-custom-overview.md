@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
 ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506982"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
@@ -74,7 +74,7 @@ Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işar
 ### <a name="namespace"></a>Ad Alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları
@@ -231,7 +231,7 @@ Etkin bir zaman serisi, son 12 saat içinde yayımlanmış ölçüm değerleri o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Farklı hizmetlerden özel ölçümler kullanın: 
- - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Sanal Makineler](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Sanal makine ölçek kümesi](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure sanal makineleri (klasik)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf aracısını kullanan Linux sanal makinesi](collect-custom-metrics-linux-telegraf.md)

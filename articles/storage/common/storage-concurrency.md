@@ -11,10 +11,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504303"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolamada Eşzamanlılığı Yönetme
@@ -90,13 +90,13 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | Çalışma | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Kapsayıcı Oluşturma |Evet |No |
-| Kapsayıcı özelliklerini al |Evet |No |
-| Kapsayıcı meta verilerini al |Evet |No |
+| Kapsayıcı Oluşturma |Evet |Hayır |
+| Kapsayıcı özelliklerini al |Evet |Hayır |
+| Kapsayıcı meta verilerini al |Evet |Hayır |
 | Kapsayıcı meta verilerini ayarla |Yes |Yes |
-| Kapsayıcı ACL 'sini al |Evet |No |
-| Kapsayıcı ACL 'sini ayarla |Yes |Evet (*) |
-| Kapsayıcıyı Silme |No |Evet |
+| Kapsayıcı ACL 'sini al |Evet |Hayır |
+| Kapsayıcı ACL 'sini ayarla |Evet |Evet (*) |
+| Kapsayıcıyı Silme |Hayır |Evet |
 | Kira kapsayıcısı |Yes |Yes |
 | Blobları Listele |Hayır |Hayır |
 
@@ -114,12 +114,12 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 | Blob meta verilerini ayarla |Yes |Yes |
 | Kira Blobu (*) |Yes |Yes |
 | İkili Büyük Nesne Anlık Görüntüsünü Alma |Yes |Yes |
-| İkili Büyük Nesneyi Kopyalama |Yes |Evet (kaynak ve hedef blobu için) |
+| İkili Büyük Nesneyi Kopyalama |Evet |Evet (kaynak ve hedef blobu için) |
 | Kopyalama blobu durdur |Hayır |Hayır |
-| İkili Büyük Nesneyi Silme |No |Evet |
+| İkili Büyük Nesneyi Silme |Hayır |Evet |
 | Yerleştirme bloğu |Hayır |Hayır |
 | Öbek listesini yerleştirme |Yes |Yes |
-| Engelleme listesini al |Evet |No |
+| Engelleme listesini al |Evet |Hayır |
 | Yerleştirme sayfası |Yes |Yes |
 | Sayfa aralıklarını al |Yes |Yes |
 

@@ -4,10 +4,10 @@ description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamında yükümlülükle
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483525"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs kişisel verileri dışarı aktarma veya silme
@@ -160,7 +160,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | ResourceGroupName | VM 'yi içeren kaynak grubunun adı | 
 | ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
-| Adı | Sanal makine adı. |
+| Name | Sanal makine adı. |
 | CreatedTime | VM 'nin oluşturulduğu tarih-saat. |
 | DeletedDate | VM 'nin silindiği tarih-saat. Boşsa, silme işlemi henüz gerçekleşmemiştir. |
 | ResourceOwner | VM sahibi. Değer boşsa, tek bir sanal makine olabilir veya bir hizmet sorumlusu tarafından oluşturulur. |
@@ -188,7 +188,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | ResourceGroupName | Laboratuvarın bulunduğu kaynak grubunun adı | 
 | ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
- |Adı | Eklenen diskin adı |
+ |Name | Eklenen diskin adı |
 | CreatedTime |Veri diskinin oluşturulduğu tarih ve saat. |
 | DeletedDate | Veri diskinin silindiği tarih ve saat. |
 | ResourceStatus | Kaynağın durumu. Kaynak varsa etkin. Silindiğinde, etkin değil. |

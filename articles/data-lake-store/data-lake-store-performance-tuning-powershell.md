@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504704"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>PowerShell 'i Azure Data Lake Storage 1. kullanmaya yönelik performans ayarlama Kılavuzu
@@ -26,7 +26,7 @@ Bu makalede, PowerShell kullanırken Data Lake Storage 1. çalışmak için daha
 | PerFileThreadCount  | 10      | Bu parametre, her bir dosya karşıya yüklenirken veya indirilirken kaç paralel iş parçacığı kullanılacağını seçmenize olanak tanır. Bu sayı, dosya başına ayrılabilecek en fazla iş parçacığını temsil eder, ancak senaryonuza bağlı olarak daha az iş parçacığı alabilirsiniz (örneğin, 1 KB 'lık bir dosyayı karşıya yüklüyorsanız, 20 iş parçacığı sorsanız bile bir iş parçacığı alırsınız).  |
 | ConcurrentFileCount | 10      | Bu parametre özellikle klasörlerin karşıya yüklenmesi ve indirilmesi içindir. Bu parametre, karşıya yüklenebilecek veya indirilebilecek eş zamanlı dosya sayısını belirler. Bu sayı, tek seferde karşıya yüklenebilen veya indirilebilecek en fazla eş zamanlı dosya sayısını temsil eder, ancak senaryonuza bağlı olarak daha az eşzamanlılık alabilirsiniz (örneğin, iki dosyayı karşıya yüklüyorsanız, 15 ' i sorsanız bile iki eş zamanlı dosyayı karşıya yüklemeniz gerekir). |
 
-**Örneğinde**
+**Örnek:**
 
 Bu komut, dosya başına 20 iş parçacığı ve 100 eşzamanlı dosya kullanarak Data Lake Storage 1. dosyalarını kullanıcının yerel sürücüsüne indirir.
 
@@ -48,7 +48,7 @@ Bir sonraki soru, performansla ilgili özellikler için hangi değerin sağlanma
 
     `Total thread count = total physical cores * 6`
 
-    **Örneğinde**
+    **Örnek:**
 
     PowerShell komutlarını 16 çekirdekli bir D14 VM’den çalıştırdığınız varsayılmıştır
 
@@ -58,7 +58,7 @@ Bir sonraki soru, performansla ilgili özellikler için hangi değerin sağlanma
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **Örneğinde**
+    **Örnek:**
 
     1 GB ile 10 GB arasında 100 dosya olduğunu varsayarsak, eşitlik için en büyük dosya boyutu olan 10 GB 'ı kullanıyoruz, bu, aşağıdaki gibi okuyacağız.
 
@@ -68,7 +68,7 @@ Bir sonraki soru, performansla ilgili özellikler için hangi değerin sağlanma
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **Örneğinde**
+    **Örnek:**
 
     Kullandığımız örnek değerler temel alınmıştır
 

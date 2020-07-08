@@ -10,13 +10,13 @@ ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
 ms.openlocfilehash: 82234719320f1ac707147c7c8393c0464956dd99
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85378422"
 ---
-| İşlem hedefi | Kullanıldığı yerler | GPU desteği | FPGA desteği | Açıklama |
+| İşlem hedefi | Kullanıldığı yerler | GPU desteği | FPGA desteği | Description |
 | ----- | ----- | ----- | ----- | ----- |
 | [Yerel &nbsp; Web &nbsp; hizmeti](../articles/machine-learning/how-to-deploy-and-where.md#local) | Test/hata ayıklama | &nbsp; | &nbsp; | Sınırlı test ve sorun giderme için kullanın. Donanım hızlandırma, yerel sistemdeki kitaplıkların kullanımına bağlıdır.
 | [Azure Machine Learning işlem örneği &nbsp; Web &nbsp; hizmeti](../articles/machine-learning/how-to-deploy-and-where.md#notebookvm) | Test/hata ayıklama | &nbsp; | &nbsp; | Sınırlı test ve sorun giderme için kullanın.

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 4cdb9390b3146df74f2cbe8eba7b170a5d11fb2c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507067"
 ---
 # <a name="enable-azure-monitor-for-single-vm-or-vmss-in-the-azure-portal"></a>Azure portal tek VM veya VMSS için Azure Izleyicisini etkinleştirin
@@ -24,7 +24,7 @@ Başlamadan önce [önkoşulları](vminsights-enable-overview.md) gözden geçir
 
 ## <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **Sanal makineler**, **Sanal Makine Ölçek Kümeleri**veya **makineler-Azure Arc**' ı seçin.
 

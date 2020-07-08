@@ -8,10 +8,10 @@ ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506063"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
@@ -60,11 +60,11 @@ Bazı abonelik kanalları desteklenmez:
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
+| Kurumsal Anlaşma         | Evet                               |
+| Kullandıkça Öde                | Evet                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Yes                               |
+| Sponsorlu                    | Evet                               |
 | Ücretsiz Deneme                   | Kullanılamaz                     |
 
 

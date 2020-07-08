@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483644"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
@@ -31,7 +31,7 @@ Zaten bir kapasite havuzu ayarlamış olmalısınız.
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+## <a name="considerations"></a>Önemli noktalar 
 
 * Hangi NFS sürümünün kullanılacağına karar verme  
   NFSv3, çok çeşitli kullanım durumlarını işleyebilir ve genellikle çoğu kurumsal uygulamalarda dağıtılır. Uygulamanızın gerektirdiği sürümü (NFSv3 veya NFSv 4.1) doğrulamanız ve uygun sürümü kullanarak biriminiz oluşturmanız gerekir. Örneğin, [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)kullanıyorsanız, NFSv 4.1 ile dosya kilitleme NFSv3 üzerinden önerilir. 

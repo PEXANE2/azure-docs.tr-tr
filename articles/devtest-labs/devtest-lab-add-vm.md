@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de bir laboratuvara sanal makine eklemeyi öğ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a872fdaa3d7d5b2cf5aff17ea15d07604dc287b3
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483967"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuvara VM ekleme
@@ -16,7 +16,7 @@ ms.locfileid: "85483967"
 Bu makalede ayrıca laboratuvarınızda bir VM için yapıtları yönetme de gösterilmektedir.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara VM ekleme adımları
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve **DevOps** bölümünde **DevTest Labs** ' i seçin. DevOps bölümünde, **DevTest Labs** ' in yanındaki * (Star) **DEVOPS** seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. Ardından, sol gezinti menüsünde **DevTest Labs** ' i seçebilirsiniz.
 
     ![Tüm hizmetler-DevTest Labs seçin](./media/devtest-lab-create-lab/all-services-select.png)
@@ -59,7 +59,7 @@ Bir VM oluştururken, var olan yapıtları ekleyebilirsiniz. Her laboratuvar, or
 
 Yapıtları oluşturma hakkında [bilgi edinmek için, DevTest Labs ile kullanmak üzere kendi yapılarınızı nasıl yazacağınızı öğrenmek](devtest-lab-artifact-author.md)için makalesine bakın.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden, çalışmak istediğiniz VM 'yi içeren Laboratuvarı seçin.
 1. **Sanal makinelerimi**seçin.

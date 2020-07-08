@@ -4,10 +4,10 @@ description: Bir DevTest laboratuvarında otomatik olarak laboratuvar oluşturma
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: af225e8cfade30a64aa1f4cf747e2a4d8d3f895f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483185"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager şablonlarını ve PowerShell 'i kullanarak laboratuvarları otomatik olarak oluşturma veya değiştirme

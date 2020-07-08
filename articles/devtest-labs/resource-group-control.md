@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir laboratuvardaki VM 'Ler için kaynak grubu b
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483372"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar sanal makineleri için Azure DevTest Labs bir kaynak grubu belirtin
@@ -27,7 +27,7 @@ Bu özellik ile, tüm Laboratuvar sanal makinelerinizdeki Azure aboneliğinizde 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Laboratuvarda oluşturulan tüm VM 'Ler için bir kaynak grubu belirtmek üzere bu adımları izleyin. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol gezinti menüsünde **tüm hizmetler** ' i seçin. 
 3. Listeden **DevTest Labs**'i seçin.
 4. Laboratuvarlar listesinden **laboratuvarınızı**seçin.  

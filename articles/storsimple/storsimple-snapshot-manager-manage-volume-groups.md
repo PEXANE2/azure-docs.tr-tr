@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506268"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
@@ -50,7 +50,7 @@ Bu eylemlerin tümü, **Eylemler** bölmesinde de kullanılabilir.
 
 | Sonuç sütunu | Açıklama |
 |:--- |:--- |
-| Adı |**Ad** sütunu, birim grubunun adını içerir. |
+| Name |**Ad** sütunu, birim grubunun adını içerir. |
 | Uygulama |**Uygulamalar** sütununda, Windows konakta yüklü olan ve ÇALıŞMAKTA olan VSS yazıcılarının sayısı gösterilir. |
 | Seçildi |**Seçili** sütun, birim grubunda bulunan birim sayısını gösterir. Sıfır (0), birim grubundaki birimlerle hiçbir uygulamanın ilişkilendirilmediğini belirtir. |
 | Alındıysa |**Içeri aktarılan** sütun, içeri aktarılan birim sayısını gösterir. **True**olarak ayarlandığında, bu sütun bir birim grubunun Azure Portal içeri aktarıldığını ve storsimple Snapshot Manager içinde oluşturulmadığını gösterir. |

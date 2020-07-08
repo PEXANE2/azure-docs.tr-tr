@@ -4,10 +4,10 @@ description: Azure DevTest Labs 'de laboratuvarınızda yapıt deposu eklemeyi �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483916"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
@@ -55,7 +55,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Bu bölümde, Azure portal bir laboratuvara yapıt deposu ekleme adımları sağlanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Diğer hizmetler**' i seçin ve ardından hizmetler listesinden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin.
 4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.
@@ -71,7 +71,7 @@ Bu bölümde, Azure portal bir laboratuvara yapıt deposu ekleme adımları sağ
    5. **Klasör yolları**. Yapıtı veya Kaynak Yöneticisi şablonu tanımlarınızı içeren kopya URL 'sine göre en az bir klasör yolu girin. Bir alt dizin belirttiğinizde, klasör yolunda eğik çizgi eklediğinizden emin olun.
 
         ![Depolar alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullan
 Azure Kaynak Yönetimi (Azure Resource Manager) şablonları, Azure 'da oluşturmak istediğiniz kaynakları tanımlayan JSON dosyalarıdır. Bu şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md).

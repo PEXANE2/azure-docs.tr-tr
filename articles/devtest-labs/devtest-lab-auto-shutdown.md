@@ -4,10 +4,10 @@ description: Sanal makinelerin kullanımda olmadıkları zaman otomatik olarak k
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482743"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar ve işlem sanal makinelerini Azure DevTest Labs için oto kapatma yapılandırma
@@ -31,7 +31,7 @@ Oto kapatma ilkesi, bu laboratuvarın VM 'lerinin kapanması için gereken süre
 
 Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.   
 4. **Yapılandırma ve ilkeler '** i seçin.
@@ -43,7 +43,7 @@ Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adım
 6. Bu ilkeyi **etkinleştirmek ve devre dışı bırakmak Için** **Açık** seçeneğini belirleyin.
 7. Bu ilkeyi etkinleştirirseniz, geçerli laboratuvardaki tüm VM 'Leri kapatmak için saati (ve saat dilimini) belirtin.
 8. Belirtilen oto kapatma zamanından önce 30 dakika bildirim gönderme seçeneği için Evet veya **Hayır** **değerini** belirtin. **Evet**' i seçerseniz, bildirimin nakledilmesini veya gönderilmesini istediğiniz yeri belirten bir Web kancası URL uç noktası veya e-posta adresi girin. Kullanıcı bildirimi alır ve kapatmaya gecikme seçeneği verilir. Daha fazla bilgi için [Bildirimler](#notifications) bölümüne bakın. 
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 
     Varsayılan olarak, bu ilke, etkinleştirildikten sonra geçerli laboratuvardaki tüm VM 'Ler için geçerlidir. Bu ayarı belirli bir VM 'den kaldırmak için, VM 'nin Yönetim bölmesini açın ve kendi **oto kapatma** ayarını değiştirin.
     
@@ -184,7 +184,7 @@ Başlamak için, aşağıdaki adımları kullanarak Azure aboneliğinizde bir ma
 2. **Otomatik kapatma** sayfasında, bu ilkeyi etkinleştirmek ve devre dışı bırakmak için **kapalı** ' **yı seçin.**
 3. Bu ilkeyi etkinleştirirseniz, VM 'nin kapanması gereken **saati** (ve **saat dilimini**) belirtin.
 4. Belirtilen oto kapatma zamanından önce 30 dakika bildirim gönderme seçeneği için Evet veya **Hayır** **değerini** belirtin. **Evet**' i seçerseniz, bildirimin nakledilmesini veya gönderilmesini istediğiniz yeri belirten bir Web kancası URL uç noktası veya e-posta adresi girin. Kullanıcı bildirimi alır ve kapatmaya gecikme seçeneği verilir. Daha fazla bilgi için [Bildirimler](#notifications) bölümüne bakın. 
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 
     ![İşlem VM 'si için oto kapatılmasını yapılandırma](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
 

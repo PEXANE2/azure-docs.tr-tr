@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504364"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
-AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, gelişmiş yapılandırma görevlerini gerçekleştirmenize yardımcı olur ve AzCopy kullandığınızda oluşabilecek sorunları gidermenize yardımcı olur.
+AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi gerçekleştirmenizi sağlayan bir komut satırı yardımcı programıdır. Bu makale, gelişmiş yapılandırma görevleri gerçekleştirmenize ve AzCopy kullanırken karşılaşabileceğiniz sorunları gidermenize yardımcı olur.
 
 > [!NOTE]
 > AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
@@ -49,7 +49,7 @@ Windows üzerinde AzCopy çalıştırıyorsanız ve bu sunucuya _hiçbir_ proxy 
 
 Diğer işletim sistemlerinde, ara sunucu kullanmak istiyorsanız HTTPS_PROXY değişkenini yok etmeniz yeterlidir.
 
-## <a name="optimize-performance"></a>Performansı iyileştirme
+## <a name="optimize-performance"></a>Performansı en iyi hale getirme
 
 Performans ve kaynak tüketimine ilişkin en iyi zorunluluğunu getirir bulmak için, performansı ve ardından komut ve ortam değişkenlerini kullanabilirsiniz.
 
@@ -124,7 +124,7 @@ Bunu gerçekleştirmek için, bunun yerine [AzCopy kopyalama](storage-ref-azcopy
 
 ## <a name="troubleshoot-issues"></a>Sorunları giderme
 
-AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları araştırmak ve sorunlarını gidermek için günlükleri kullanabilirsiniz. 
+AzCopy, her bir iş için günlük ve plan dosyaları oluşturur. Günlükleri kullanarak olası sorunları araştırabilir ve giderebilirsiniz. 
 
 Günlükler hatanın durumunu ( `UPLOADFAILED` , `COPYFAILED` , ve `DOWNLOADFAILED` ), tam yolu ve hatanın nedenini içerecektir.
 

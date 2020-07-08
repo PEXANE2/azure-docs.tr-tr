@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir sanal makineye bir veri diski eklemeyi veya 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482981"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayırma
@@ -24,7 +24,7 @@ Bir sanal makineye bir veri diski iliştirmadan önce şu ipuçlarını gözden 
 ### <a name="attach-a-new-disk"></a>Yeni Disk Ekle
 Azure DevTest Labs ' de bir VM 'ye yeni bir yönetilen veri diski oluşturup eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin. 
 1. **Sanal makinelerimin**listesinden çalışan bir VM seçin.

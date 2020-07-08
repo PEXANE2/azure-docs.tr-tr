@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504329"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bant genişliği düşük veya orta olduğunda küçük veri kümeleri için veri aktarımı
@@ -55,9 +55,9 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 | Grafik arabirim | Yes | Evet | Hayır | Hayır |
 | Desteklenen platformlar | Windows, Mac, Linux | Web tabanlı |Windows, Mac, Linux |Tüm platformlar |
 | İzin verilen BLOB depolama işlemleri<br>Bloblar ve klasörler için | Karşıya Yükle<br>İndir<br>Yönetme | Karşıya Yükle<br>İndir<br>Yönetme |Karşıya Yükle<br>İndir<br>Yönetme | Evet, özelleştirilebilir |
-| Data Lake Gen1 Storage izin verildi<br>dosyalar ve klasörler için işlemler | Karşıya Yükle<br>İndir<br>Yönetme | No |Karşıya Yükle<br>İndir<br>Yönetme                   | No |
+| Data Lake Gen1 Storage izin verildi<br>dosyalar ve klasörler için işlemler | Karşıya Yükle<br>İndir<br>Yönetme | Hayır |Karşıya Yükle<br>İndir<br>Yönetme                   | Hayır |
 | İzin verilen dosya depolama işlemleri<br>dosyalar ve dizinler için | Karşıya Yükle<br>İndir<br>Yönetme | Karşıya Yükle<br>İndir<br>Yönetme   |Karşıya Yükle<br>İndir<br>Yönetme | Evet, özelleştirilebilir |
-| İzin verilen tablo depolama işlemleri<br>tablolar için |Yönetme | No |AzCopy v7 'ta tablo desteği |Evet, özelleştirilebilir|
+| İzin verilen tablo depolama işlemleri<br>tablolar için |Yönetme | Hayır |AzCopy v7 'ta tablo desteği |Evet, özelleştirilebilir|
 | İzin verilen kuyruk depolaması | Yönetme | Hayır  |Hayır | Evet, özelleştirilebilir|
 
 

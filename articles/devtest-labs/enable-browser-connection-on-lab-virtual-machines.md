@@ -4,10 +4,10 @@ description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvar
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9b901d36907c8d2bbae866c38bbf1c2554e0f1da
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482947"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştir 
@@ -28,7 +28,7 @@ Bir savunma konağını VNet 'te dağıtmayı öğrenmek için bkz. [Azure savun
 
 Laboratuvarınızı yapılandırılmış bir sanal ağ ile nasıl bağlayacağınızı öğrenmek için bkz. [Azure DevTest Labs sanal ağı yapılandırma](devtest-lab-configure-vnet.md). Savunma konağının dağıtıldığı VNet 'i ve içinde **AzureBastionSubnet** seçin. Ayrıntılı adımlar aşağıda verilmiştir: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti menüsünde **tüm hizmetler** ' i seçin. 
 1. Listeden **DevTest Labs**'i seçin. 
 1. Laboratuvarlar listesinden *laboratuvarınızı*seçin. 
