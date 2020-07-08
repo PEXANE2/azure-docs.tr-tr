@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261435"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Toplu yürütücü kitaplığından Azure Cosmos DB .NET v3 SDK 'daki toplu desteğe geçiş yapın
@@ -87,7 +87,7 @@ Toplu yürütücü kitaplığı, [guidance](bulk-executor-dot-net.md#bulk-import
 > [!NOTE]
 > Sağlanan istek birimlerinin, veri miktarına göre beklenenden çok daha düşük olduğu durumlarda, bunları yüksek değerlere ayarlamayı düşünmek isteyebilirsiniz. Toplu işlem daha uzun sürer, ancak daha yüksek yeniden denemeler nedeniyle tamamen başarılı olma şansı daha yüksektir.
 
-## <a name="performance-improvements"></a>Performans geliştirmeleri
+## <a name="performance-improvements"></a>Performans iyileştirmeleri
 
 .NET SDK ile diğer işlemlerde olduğu gibi, Stream API 'Leri kullanılması daha iyi performansa neden olur ve gereksiz Serileştirmeyi önler. 
 

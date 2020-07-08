@@ -8,10 +8,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 7590d40085c3963a95fd251dd1291cf34fbaf4a0
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262098"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirme
@@ -41,7 +41,7 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
 1. **Anlık Ileti kümesi ayarları** bölmesinde, çaba anlık ileti dağıtımı türünü ve sanal makine boyutunu seçin.
 
-   |Ayar | Değer | Description |
+   |Ayar | Değer | Açıklama |
    | ---| ---| ---|
    |Anlık ileti dağıtım türü |Tek Başına | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
    | Çarpıcı anlık ileti kümesinin adı|    <Striim_cluster_Name>|  Çarpıcı anlık ileti kümesinin adı.|

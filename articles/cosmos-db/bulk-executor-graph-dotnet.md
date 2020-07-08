@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85260653"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 
-Dosya|Description
+Dosya|Açıklama
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
 `Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.
@@ -136,7 +136,7 @@ Dosya|Description
 
 `App.config` dosyasında aşağıdaki yapılandırma değerleri sağlanabilir:
 
-Ayar|Description
+Ayar|Açıklama
 ---|---
 `EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır**. `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
 `AuthorizationKey`|Bu, Azure Cosmos DB hesabınızda listelenen Birincil veya İkincil anahtardır. [Azure Cosmos DB verilerine güvenli erişim sağlama](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys) hakkında daha fazla bilgi edinin

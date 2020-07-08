@@ -9,10 +9,10 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.openlocfilehash: 20e7e0dd7df469aa797100bd9d2df3cd6d633dca
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85260908"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
@@ -96,7 +96,7 @@ Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanı
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-### <a name="headers"></a>Üst Bilgiler
+### <a name="headers"></a>Üst bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula
@@ -136,7 +136,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay platform tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması

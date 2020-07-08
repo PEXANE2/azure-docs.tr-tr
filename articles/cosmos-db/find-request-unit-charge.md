@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
 ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261843"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>İstek Birim ücreti Azure Cosmos DB bulun
@@ -25,7 +25,7 @@ SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir i
 
 Şu anda, yalnızca bir SQL sorgusu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir Azure Cosmos hesabı seçin.
 
@@ -175,7 +175,7 @@ RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/
 
 Şu anda yalnızca bir sorgu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir hesabı seçin.
 

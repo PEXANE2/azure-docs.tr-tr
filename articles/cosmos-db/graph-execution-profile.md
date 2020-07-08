@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261809"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin sorgularınızı hesaplamak için yürütme profili adımını kullanma
@@ -155,7 +155,7 @@ Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesn
     - `storeOps.count`: Bu depolama işleminin döndürdüğü sonuç sayısını temsil eder.
     - `storeOps.size`: Belirli bir depolama işleminin sonucunun bayt cinsinden boyutunu temsil eder.
 
-Cosmos DB Gremlin çalışma zamanı Işleci|Description
+Cosmos DB Gremlin çalışma zamanı Işleci|Açıklama
 ---|---
 `GetVertices`| Bu adım, kalıcılık katmanından tahmine dayalı bir nesne kümesi edinir. 
 `GetEdges`| Bu adım bir köşe kümesine bitişik olan kenarları elde eder. Bu adım bir veya daha fazla depolama işlemine yol açabilir.

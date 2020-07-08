@@ -8,10 +8,10 @@ ms.date: 04/28/2020
 ms.author: tisande
 ms.custom: tracking-python
 ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261520"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
@@ -350,7 +350,7 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 

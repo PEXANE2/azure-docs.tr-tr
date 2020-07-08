@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: tracking-python
 ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261554"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
@@ -20,7 +20,7 @@ Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) veya mevcut olanı seçin.
 
