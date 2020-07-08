@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061284"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pingboard 'ı yapılandırma
@@ -58,7 +57,7 @@ Bu bölüm, Azure AD 'nizi Pingboard Kullanıcı hesabı sağlama API 'sine bağ
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Azure AD 'de ping panosuna otomatik Kullanıcı hesabı sağlamayı yapılandırmak için
 
-1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** > **Enterprise Apps** > **tüm uygulamalar** bölümüne gidin.
+1. [Azure Portal](https://portal.azure.com), **Azure Active Directory**  >  **Enterprise Apps**  >  **tüm uygulamalar** bölümüne gidin.
 
 1. Zaten çoklu oturum açma için Pingboard yapılandırdıysanız arama alanını kullanarak Pingboard örneğinizi arayın. Aksi takdirde uygulama galerisinde, **Ekle** ve **pingboard** ara ' yı seçin. Arama sonuçlarından **Pingboard** ' ı seçin ve uygulama listenize ekleyin.
 
@@ -70,11 +69,11 @@ Bu bölüm, Azure AD 'nizi Pingboard Kullanıcı hesabı sağlama API 'sine bağ
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki adımları kullanın:
 
-    a. **Kiracı URL 'si**' nde `https://your_domain.pingboard.com/scim/v2`girin ve "your_domain" değerini gerçek etki alanınız ile değiştirin.
+    a. **Kiracı URL 'si**' nde girin `https://your_domain.pingboard.com/scim/v2` ve "your_domain" değerini gerçek etki alanınız ile değiştirin.
 
     b. Yönetici hesabınızı kullanarak [Pingboard](https://pingboard.com/) 'da oturum açın.
 
-    c. **Eklentiler** > **Integrations** > **Azure Active Directory**Eklentiler ' i seçin.
+    c. **Eklentiler Azure Active Directory eklentiler**' i seçin  >  **Integrations**  >  **Azure Active Directory**.
 
     d. **Yapılandır** sekmesine gidin ve **Azure 'Dan Kullanıcı sağlamayı etkinleştir**' i seçin.
 
@@ -84,7 +83,7 @@ Bu bölüm, Azure AD 'nizi Pingboard Kullanıcı hesabı sağlama API 'sine bağ
 
 1. **Bildirim e-postasında**sağlama hatası bildirimlerini almak istediğiniz kişinin veya grubun e-posta adresini girin. Altındaki onay kutusunu seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Pingboard olarak eşitler**' ı seçin.
 

@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064130"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Velpıc yapılandırma
@@ -71,7 +70,7 @@ Bu bölümde, Azure AD 'nizi Velpıc 'nin Kullanıcı hesabı sağlama API 'sine
 
     ![Velpıc sağlama](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, bir Velpıc 'Nin **gizli belirteç&kiracı URL 'sini** girin. (Bu değerleri velpıc hesabınız altında bulabilirsiniz:**Integration** > **eklentisini** >  **yönetme** > **SCIM**)
+5. **Yönetici kimlik bilgileri** bölümünün altında, bir Velpıc 'Nin **gizli belirteç&kiracı URL 'sini** girin. (Bu değerleri, Velpıc hesabınız altında bulabilirsiniz: **Yönet**  >  **Tümleştirme**  >  **Eklenti**  >  **SCIM**)
 
     ![Yetkilendirme değerleri](./media/velpic-provisioning-tutorial/Velpic2.png)
 

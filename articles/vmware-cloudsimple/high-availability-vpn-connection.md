@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025274"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir bağlantı yapılandırın
@@ -97,7 +96,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. dönüşüm kümesini yapılandırın
 
-Anahtar sözcüğünü ```ikev1```içeren dönüştürme KÜMESINI (TS) yapılandırın. TS 'lerde belirtilen şifreleme ve karma öznitelikleri, [CloudSimple VPN Gateway 'ler Için varsayılan yapılandırmada](cloudsimple-vpn-gateways.md)listelenen parametrelerle eşleşmelidir.
+Anahtar sözcüğünü içeren dönüştürme kümesini (TS) yapılandırın ```ikev1``` . TS 'lerde belirtilen şifreleme ve karma öznitelikleri, [CloudSimple VPN Gateway 'ler Için varsayılan yapılandırmada](cloudsimple-vpn-gateways.md)listelenen parametrelerle eşleşmelidir.
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -147,7 +146,7 @@ Siteden siteye VPN 'nin çalışması için, şirket içi Palo Alto Networks ağ
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. birincil ve ikincil tünel arabirimleri oluşturma
 
-Palo Alto güvenlik duvarında oturum açın, **ağ** > **arabirimleri** > **tünel** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+Palo Alto güvenlik duvarında oturum açın, **ağ**  >  **arabirimleri**  >  **tünel**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 * Arabirim adı. İlk alan ' Tunnel ' anahtar sözcüğüyle tekrar doldurulur. Bitişik alana, 1 ile 9999 arasında bir sayı girin. Bu arabirim, şirket içi veri merkezi ve özel bulut arasında siteden siteye trafiği taşımak için birincil bir tünel arabirimi olarak kullanılacaktır.
 * Açıklamanın. Tünelin amacının kolay tanımlanması için açıklama girin
@@ -162,7 +161,7 @@ Bu yapılandırma yüksek kullanılabilirliğe sahip bir VPN için olduğundan, 
 
 Yönlendiriciler, şirket içi alt ağların CloudSimple özel bulut alt ağlarına ulaşması için gereklidir.
 
-**Ağ** > **sanal yönlendiricileri** > *varsayılan* > **Add** **OK****Static Routes**statik yollar Ekle ' yi seçin, aşağıdaki alanları yapılandırın ve Tamam ' ı tıklatın. > 
+**Ağ**  >  **sanal yönlendiricileri**  >  *varsayılan*  >  **statik yollar**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 * Ada. Yolun amacının kolay tanımlanması için herhangi bir ad girin.
 * Hedefine. Şirket içinden S2S tünel arabirimleri üzerinden ulaşılmış olan CloudSimple özel bulut alt ağlarını belirtin
@@ -180,7 +179,7 @@ Yönlendiriciler, şirket içi alt ağların CloudSimple özel bulut alt ağlar�
 
 IKEv1 Phase 1 ' deki VPN tünellerini ayarlamak için kullanılacak tanımlama, kimlik doğrulama ve şifreleme için protokolleri ve algoritmaları belirten bir şifreleme profili tanımlayın.
 
-**Ağ** > **Genişlet ağ profilleri** > **Ike şifre** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+**Ağ**  >  **Genişlet ağ profilleri**  >  **Ike şifre**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 * Ada. IKE şifreleme profilinin adını girin.
 * DH grubu. **Ekle** ' ye tıklayın ve uygun DH grubunu seçin.
@@ -193,7 +192,7 @@ IKEv1 Phase 1 ' deki VPN tünellerini ayarlamak için kullanılacak tanımlama, 
 
 VPN tünelinin her bir ucunda bulunan eşler arasında iletişim kurmak için ıKE ağ geçitlerini tanımlayın.
 
-**Ağ** > **Genişlet ağ profilleri** > **Ike ağ geçitleri** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+**Ağ**  >  **Genişlet ağ profilleri**  >  **Ike ağ geçitleri**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 Genel sekmesi:
 
@@ -224,21 +223,21 @@ IKEv1
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. ıPSEC şifreleme profillerini tanımlama
 
-**Ağ** > **Genişlet ağ profilleri** > **IPSec şifre** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+**Ağ**  >  **Genişlet ağ profilleri**  >  **IPSec şifre**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 * Ada. IPSec şifre profili için bir ad girin.
 * IPsec protokolü. **ESP**'yi seçin.
 * Şifreleme. **Ekle** ' ye tıklayın ve uygun şifreleme yöntemini seçin.
 * Kimlik doğrulaması. **Ekle** ' ye tıklayın ve uygun kimlik doğrulama yöntemini seçin.
 * DH grubu. **PFS yok**' u seçin.
-* Ömür. 30 dakika olarak ayarlayın.
+* Süre. 30 dakika olarak ayarlayın.
 * Etkinleştirebilir. Kutuyu işaretlenmemiş olarak bırakın.
 
 İkinci CloudSimple VPN eşi olarak kullanılacak başka bir IPSec şifre profili oluşturmak için önceki adımları tekrarlayın. Aynı ıPSEC şifre profili, hem birincil hem de ikincil IPSec tünelleri (aşağıdaki yordama bakın) için de kullanılabilir.
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. tünel izleme için izleyici profillerini tanımlayın
 
-**Ağ** > **Genişlet ağ profilleri** > **izleyici** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+**Ağ**  >  **Genişlet ağ profilleri**  >  **izleyici**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 * Ada. Hata için öngörülü yeniden işlem için tünel izlemesi için kullanılacak Izleyici profilinin adını girin.
 * Ön. **Yük devret**' i seçin.
@@ -247,7 +246,7 @@ IKEv1
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. birincil ve ikincil IPSec tünellerini ayarlayın.
 
-**Ağ** > **IPSec tünelleri** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
+**Ağ**  >  **IPSec tünelleri**  >  **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
 Genel sekmesi:
 
@@ -263,7 +262,7 @@ Genel sekmesi:
 * Hedef IP. Siteden siteye bağlantı üzerinden izin verilen CloudSimple özel bulut alt ağına ait herhangi bir IP adresi girin. Palo Alto 'daki tünel arabirimlerinin (Tunnel. 20-10.64.5.2/32 ve Tunnel. 30-10.64.6.2/32 gibi), siteden siteye VPN üzerinden CloudSimple özel bulut IP adresine erişmesine izin verildiğinden emin olun. Proxy kimlikleri için aşağıdaki yapılandırmaya bakın.
 * Profilinizi. İzleyici profilini seçin.
 
-Proxy kimlikleri sekmesi: **IPv4** > **Ekle** ' ye tıklayın ve aşağıdakileri yapılandırın:
+Proxy kimlikleri sekmesi: **IPv4**  >  **Ekle** ' ye tıklayın ve aşağıdakileri yapılandırın:
 
 * Proxy KIMLIĞI. İlginç trafik için herhangi bir ad girin. Tek bir IPSec tünelinde yürütülen birden çok proxy kimliği olabilir.
 * Yerel. Siteden siteye VPN üzerinden özel bulut alt ağları ile iletişim kurmasına izin verilen şirket içi yerel alt ağları belirtin.

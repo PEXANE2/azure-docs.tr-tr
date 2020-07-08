@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019409"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: sık sorulan sorular (SSS)
@@ -38,7 +37,7 @@ NSG 'ye, **3389** ve **20000**bağlantı noktalarında trafiğe izin veren kural
 
 Hayır, normal "ping"/ıCMP protokolü kullanılarak değil. ICMP protokolüne Azure yük dengeleyici üzerinden izin verilmiyor.
 
-Bağlantıyı test etmek için bir bağlantı noktası ping işlemi yapmanızı öneririz. Ping. exe ıCMP kullandığından, belirli bir TCP bağlantı noktasıyla bağlantıyı sınamak için PSPing, nmap ve Telnet gibi diğer araçları kullanabilirsiniz.
+Bağlantıyı test etmek için bir bağlantı noktası ping işlemi yapmanızı öneririz. Ping.exe ıCMP kullandığından, belirli bir TCP bağlantı noktasıyla bağlantıyı sınamak için PSPing, nmap ve Telnet gibi diğer araçları da kullanabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure VM bağlantısını test etmek IÇIN ICMP yerine bağlantı noktası ping 'Leri kullanma](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
 
@@ -65,14 +64,14 @@ Kullanılan dağıtım algoritması, trafiği kullanılabilir sunucularla eşlem
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Gelen trafiği bulut hizmetimin varsayılan URL 'sine özel bir URL 'ye nasıl yönlendirebilirim?
 
-IIS 'nin URL yeniden yazma modülü, bulut hizmeti için varsayılan URL 'ye gelen trafiği (örneğin, \*. cloudapp.net) bir özel ad/URL 'ye yönlendirmek için kullanılabilir. URL yeniden yazma modülü Web rolleri üzerinde varsayılan olarak etkinleştirildiğinden ve kuralları uygulamanın Web. config dosyasında yapılandırılmışsa, yeniden başlatmalar/regörüntülerden bağımsız olarak her zaman VM 'de kullanılabilir. Daha fazla bilgi için bkz.
+IIS 'nin URL yeniden yazma modülü, bulut hizmeti için varsayılan URL 'ye gelen trafiği (örneğin, \* . cloudapp.net) bir özel ad/URL 'ye yönlendirmek için kullanılabilir. URL yeniden yazma modülü Web rolleri üzerinde varsayılan olarak etkinleştirildiğinden ve kuralları uygulamanın web.config yapılandırıldığı için, yeniden başlatmalar/regörüntülerden bağımsız olarak sanal makine üzerinde her zaman kullanılabilir. Daha fazla bilgi için bkz.
 
 - [URL yeniden yazma modülü için yeniden yazma kuralları oluşturma](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Varsayılan bağlantıyı kaldır](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Bulut hizmetimin varsayılan URL 'SI için gelen trafiği nasıl engelleyebilir/devre dışı bırakabilirim?
 
-Bulut hizmetinizin varsayılan URL 'sine/adına gelen trafiği engelleyebilirsiniz (örneğin, \*. cloudapp.net). Belirtilen şekilde, bulut hizmeti tanımı (*. csdef) dosyasındaki site bağlama\.yapılandırması altında, ana bilgisayar üst bilgisini özel bir DNS adına (örneğin, www MyCloudService.com) ayarlayın:
+Bulut hizmetinizin varsayılan URL 'sine/adına gelen trafiği engelleyebilirsiniz (örneğin, \* . cloudapp.net). \.Belirtilen şekilde, bulut hizmeti tanımı (*. csdef) dosyasındaki site bağlama yapılandırması altında, ana bilgisayar üst bilgisini özel BIR DNS adına (örneğin, www MyCloudService.com) ayarlayın:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

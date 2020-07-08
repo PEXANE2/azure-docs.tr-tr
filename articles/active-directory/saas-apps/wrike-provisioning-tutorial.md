@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064207"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Wrike yapılandırma
@@ -68,7 +67,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Wrike 'yi yapılandırmadan 
 
     ![Temel URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. **API** > **Azure SCIM öğesini**seçin.
+4. **API**  >  **Azure SCIM öğesini**seçin.
 
     ![Azure SCıM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -113,7 +112,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Azure AD 'de Wrike için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
@@ -137,7 +136,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Wrike olarak eşitler**' ı seçin.
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019630"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma
@@ -61,7 +60,7 @@ ExpressRoute bağlantısı kurmak için ExpressRoute bağlantı hattınızı bir
     [![ExpressRoute bağlantı hattı yetkilendirme kopyası](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > **Kaynak kimliği** , kullanıcı arabiriminden kopyalanmalı ve desteklemek için sağladığınız biçimde ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` olmalıdır.
+    > **Kaynak kimliği** , kullanıcı arabiriminden kopyalanmalı ve ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` desteklemek için sağladığınız biçimde olmalıdır.
 
 6. Oluşturulacak bağlantı <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">desteğiyle</a> bir bilet dosyası oluşturma.
     * Sorun türü: **Teknik**

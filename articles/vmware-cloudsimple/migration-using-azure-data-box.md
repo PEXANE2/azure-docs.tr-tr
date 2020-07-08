@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019766"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Azure Data Box kullanarak verileri Azure VMware çözümüne geçirme
@@ -58,7 +57,7 @@ Toplu veri geçişi için aşağıdaki senaryolarda Data Box kullanın:
 
     ![NFS istemci erişimini yapılandırma 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
-> **Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları doğrudan depolama hesabındaki *kök* klasöre kopyalayamazsınız.
+> **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları doğrudan depolama hesabındaki *kök* klasöre kopyalayamazsınız.
 
 Blok blobu ve sayfa blobu paylaşımlarının altında birinci düzeydeki varlıklar kapsayıcılar, ikinci düzeydeki varlıklar ise bloblardır. Azure dosyaları için paylaşımlar altında, ilk düzey varlıklar paylaşımlardır ve ikinci düzey varlıklar dosyalardır.
 
@@ -133,7 +132,7 @@ Sanal makine, Data Box NFS veri deposuna geçirilir. Tüm sanal makineler geçir
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Bir sanal makineyi veya sanal makine şablonunu Data Box veri deposuna kopyalama
 
-1. Kopyalamak istediğiniz bir sanal makineye veya sanal makine şablonuna sağ tıklayın. **Kopyayı sanal makineye** **Kopyala** > ' yı seçin.
+1. Kopyalamak istediğiniz bir sanal makineye veya sanal makine şablonuna sağ tıklayın. **Clone**  >  **Kopyayı sanal makineye**Kopyala ' yı seçin.
 
     ![Sanal makine kopyası](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamland�
 
 4. [Linux sanal makinenize AzCopy 'i](../storage/common/storage-use-azcopy-v10.md)yükler.
 
-5. AzCopy kullanarak Azure Blob depolamaınızdan verileri yönetilen diske indirin.  Komut sözdizimi: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Azure `<storage-account-name>` depolama hesabınızın adı ile ve `<container-name>` Data Box ile kopyalanmış verileri tutan kapsayıcınle değiştirin.
+5. AzCopy kullanarak Azure Blob depolamaınızdan verileri yönetilen diske indirin.  Komut sözdizimi: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` .  `<storage-account-name>`Azure depolama hesabınızın adı ile ve Data Box ile `<container-name>` kopyalanmış verileri tutan kapsayıcınle değiştirin.
 
 6. Linux sanal makinenize NFS sunucusunu yükler:
 
-    - Ubuntu/debir dağıtım üzerinde: `sudo apt install nfs-kernel-server`.
-    - Enterprise Linux dağıtımında: `sudo yum install nfs-utils`.
+    - Ubuntu/debir dağıtım üzerinde: `sudo apt install nfs-kernel-server` .
+    - Enterprise Linux dağıtımında: `sudo yum install nfs-utils` .
 
 7. Yönetilen diskinizde, Azure Blob depolama alanındaki verilerin kopyalandığı klasörün iznini değiştirin.  NFS paylaşma olarak dışarı aktarmak istediğiniz tüm klasörler için izinleri değiştirin.
 
@@ -241,7 +240,7 @@ Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamland�
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. `/etc/exports` Dosyayı DÜZENLEYEREK, NFS paylaşımında erişim sağlamak IÇIN istemci IP adreslerinin izinlerini atayın.
+8. Dosyayı düzenleyerek, NFS paylaşımında erişim sağlamak için istemci IP adreslerinin izinlerini atayın `/etc/exports` .
 
     ```bash
     sudo vi /etc/exports
@@ -256,9 +255,9 @@ Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamland�
     .
     ```
 
-9. `sudo exportfs -a` Komutunu kullanarak NFS paylaşımlarını dışarı aktarın.
+9. Komutunu kullanarak NFS paylaşımlarını dışarı aktarın `sudo exportfs -a` .
 
-10. `sudo systemctl restart nfs-kernel-server` Komutunu kullanarak NFS çekirdek sunucusunu yeniden başlatın.
+10. Komutunu kullanarak NFS çekirdek sunucusunu yeniden başlatın `sudo systemctl restart nfs-kernel-server` .
 
 
 ### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Linux sanal makinesi NFS paylaşımından bir özel bulut vCenter kümesine veri deposu olarak bağlama ve sonra verileri kopyalama

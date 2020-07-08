@@ -16,10 +16,9 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b8038896a11b65e835ce71f5fc34e85723cc91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060530"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
@@ -96,7 +95,7 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 10. Belirteci kopyalayın, Azure AD pencerenize gidin ve **gizli belirteç** alanına yapıştırın.
 
-11. Salesforce örneği Salesforce kamu bulutunda ise **kiracı URL 'si** girilmelidir. Aksi takdirde, isteğe bağlıdır. "Https://\<The-ınstance\>. My.Salesforce.com" biçimini kullanarak kiracı URL 'sini girin,-örneğinizi \<\> Salesforce örneğinizin adıyla değiştirin.
+11. Salesforce örneği Salesforce kamu bulutunda ise **kiracı URL 'si** girilmelidir. Aksi takdirde, isteğe bağlıdır. "Https:// \<your-instance\> . My.Salesforce.com" biçimini kullanarak, \<your-instance\> Salesforce örneğinizin adıyla birlikte kiracı URL 'sini girin.
 
 12. Azure portal, Azure AD 'nin Salesforce uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 

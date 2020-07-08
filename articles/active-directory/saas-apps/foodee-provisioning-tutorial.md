@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057837"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
@@ -79,7 +78,7 @@ Azure AD uygulama galerisinden Pdee eklemek için aşağıdakileri yapın:
 
     ![Azure Active Directory komutu](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup 
 
 Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kullanıcı sağlamayı yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -118,7 +117,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
 1. **Yönetici kimlik bilgileri**altında şunları yapın:
 
-   a. **Kiracı URL 'si** kutusuna, daha önce aldığınız **https:\//concierge.Food.ee/Scim/v2** değerini girin.
+   a. **Kiracı URL 'si** kutusuna, daha önce aldığınız **https: \/ /concierge.Food.ee/Scim/v2** değerini girin.
 
    b. **Gizli belirteç** kutusunda, daha önce aldığınız **API belirteç** değerini girin.
    
@@ -130,7 +129,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
     ![Bildirim e-postası metin kutusu](common/provisioning-notification-email.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Eşlemeler**' in altında **Azure Active Directory Kullanıcıları kadee olarak eşitlemeyi**seçin.
 

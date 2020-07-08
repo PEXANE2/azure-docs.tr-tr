@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048609"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell kullanarak Hyper-V VM 'lerini ikincil bir siteye olağanüstü durum kurtarmayı ayarlama (Kaynak Yöneticisi)
@@ -89,7 +88,7 @@ Başlamaya Azure PowerShell olduğunuzdan emin olun:
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   `Get-AzRecoveryServicesVault` Cmdlet 'ini kullanarak oluşturduktan sonra kasa nesnesini alabilirsiniz.
+   Cmdlet 'ini kullanarak oluşturduktan sonra kasa nesnesini alabilirsiniz `Get-AzRecoveryServicesVault` .
 
 ## <a name="set-the-vault-context"></a>Kasa bağlamını ayarla
 
@@ -227,7 +226,7 @@ Başlamaya Azure PowerShell olduğunuzdan emin olun:
    > [!NOTE]
    > Kaynak Virtual Machine Manager sunucusu, sunucu dizisindeki birinci veya ikinci bir dizin olabilir. Virtual Machine Manager Server adlarını denetleyin ve ağları uygun şekilde alın.
 
-1. Bu cmdlet, birincil ağ ile kurtarma ağı arasında bir eşleme oluşturur. Birincil ağı ilk öğesi olarak belirtir `$PrimaryNetworks`. Kurtarma ağını öğesinin `$RecoveryNetworks`ilk öğesi olarak belirtir.
+1. Bu cmdlet, birincil ağ ile kurtarma ağı arasında bir eşleme oluşturur. Birincil ağı ilk öğesi olarak belirtir `$PrimaryNetworks` . Kurtarma ağını öğesinin ilk öğesi olarak belirtir `$RecoveryNetworks` .
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -259,9 +258,9 @@ Sunucular, bulutlar ve ağlar doğru yapılandırıldıktan sonra buluttaki VM '
 > Azure 'da CMK özellikli yönetilen disklere çoğaltmak istiyorsanız az PowerShell 3.3.0 onlıve sürümlerini kullanarak aşağıdaki adımları uygulayın:
 >
 > 1. VM özelliklerini güncelleştirerek yönetilen disklere yük devretmeyi etkinleştirme
-> 1. Korunan öğenin `Get-AzRecoveryServicesAsrReplicationProtectedItem` her bir diski IÇIN disk kimliğini getirmek üzere cmdlet 'ini kullanın
-> 1. Disk KIMLIĞININ disk şifreleme kümesine `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` eşlemesini içeren cmdlet 'i kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
-> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem` **Diskidtodiskencryptionsetmap** parametresindeki sözlük nesnesini GEÇIREREK cmdlet 'ini kullanarak VM özelliklerini güncelleştirin.
+> 1. `Get-AzRecoveryServicesAsrReplicationProtectedItem`Korunan öğenin her bir diski için DISK kimliğini getirmek üzere cmdlet 'ini kullanın
+> 1. Disk `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` kimliğinin disk şifreleme kümesine eşlemesini içeren cmdlet 'i kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
+> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem` **Diskidtodiskencryptionsetmap** parametresindeki sözlük nesnesini geçirerek CMDLET 'ini kullanarak VM özelliklerini güncelleştirin.
 
 ## <a name="run-a-test-failover"></a>Yük devretme testi çalıştırma
 

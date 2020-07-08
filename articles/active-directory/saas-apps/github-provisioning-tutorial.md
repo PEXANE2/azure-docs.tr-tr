@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057660"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
@@ -77,7 +76,7 @@ Bu bölümde, Azure AD 'nizi GitHub 'ın Kullanıcı hesabı sağlama API 'sine 
 
     ![Yetkilendirme Iletişim kutusu](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure portal, **kiracı URL 'sini** girin ve Azure AD 'nin GitHub uygulamanıza bağlanabildiğinden emin olmak Için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, GitHub hesabınızın yönetici izinlerine sahip olduğundan ve **kiracı URL 'sinin** doğru şekilde yazıldığından emin olun, sonra da "Yetkilendir" adımını tekrar deneyin ( **kiracı URL 'sini** kurala göre oluşturabilirsiniz: `https://api.github.com/scim/v2/organizations/<Organization_name>`, kuruluşlarınızı GitHub hesabınızın altında bulabilirsiniz: **Ayarlar** > **kuruluşları**).
+7. Azure portal, **kiracı URL 'sini** girin ve Azure AD 'nin GitHub uygulamanıza bağlanabildiğinden emin olmak Için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, GitHub hesabınızın yönetici izinlerine sahip olduğundan ve **kiracı URL 'sinin** doğru şekilde yazıldığından emin olun, sonra da "Yetkilendir" adımını tekrar deneyin ( **kiracı URL 'sini** kurala göre oluşturabilirsiniz: `https://api.github.com/scim/v2/organizations/<Organization_name>` , kuruluşlarınızı GitHub hesabınızın altında bulabilirsiniz: **Ayarlar**  >  **kuruluşları**).
 
     ![Yetkilendirme Iletişim kutusu](./media/github-provisioning-tutorial/GitHub3.png)
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063790"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevleri Çalışma Zamanı erişilebilir değil"
@@ -26,7 +25,7 @@ Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak ü
 
 Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işleviniz çalışmaz.
 
-Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. Ya `AzureWebJobsStorage` `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` da bir bağlantı dizesinde sarmalanmış depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage`Ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bir bağlantı dizesinde sarmalanmış depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
 Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınızı arayın. Silinmişse, depolama hesabını yeniden oluşturun ve depolama bağlantı dizelerinizi değiştirin. İşlev kodunuz kaybolur ve yeniden dağıtmanız gerekir.
 
@@ -66,7 +65,7 @@ Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depo
 
 Günlük yürütme kotayı yapılandırdıysanız, işlev uygulamanız geçici olarak devre dışı bırakılır ve bu da Portal denetimlerinin çoğunun kullanılamaz hale gelmesine neden olur. 
 
-[Azure Portal](https://portal.azure.com)kotayı doğrulamak için, işlev uygulamanızda **platform özellikleri** > **işlev uygulaması ayarları** ' nı seçin. Ayarladığınız **günlük kullanım kotasının** üzerinde çalışıyorsanız, aşağıdaki ileti görüntülenir:
+[Azure Portal](https://portal.azure.com)kotayı doğrulamak için, işlev uygulamanızda **platform özellikleri**  >  **işlev uygulaması ayarları** ' nı seçin. Ayarladığınız **günlük kullanım kotasının** üzerinde çalışıyorsanız, aşağıdaki ileti görüntülenir:
 
   > "İşlev Uygulaması günlük kullanım kotasına ulaştı ve sonraki 24 saatlik zaman dilimine kadar durduruldu."
 

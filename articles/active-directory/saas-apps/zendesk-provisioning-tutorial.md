@@ -17,10 +17,9 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062764"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zendesk yapılandırma
@@ -83,7 +82,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD 'de Zendesk için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zendesk**' i seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Zendesk**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -105,9 +104,9 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
    * **Gizli belirteç** kutusunda adım 6 ' da açıklanan gizli anahtarı girin.
 
-   * **Etki alanı** kutusunda, Zendesk kiracınızın alt etki alanını girin. Örneğin, kiracı URL 'SI olan bir hesap için `https://my-tenant.zendesk.com`, alt etki **alanım-kiracım**.
+   * **Etki alanı** kutusunda, Zendesk kiracınızın alt etki alanını girin. Örneğin, kiracı URL 'SI olan bir hesap için, alt `https://my-tenant.zendesk.com` etki **alanım-kiracım**.
 
-6. Zendesk hesabınız için gizli belirteç, **Yönetim** > **API 'si** > **ayarlarında**bulunur. **Belirteç erişiminin** **etkin**olarak ayarlandığından emin olun.
+6. Zendesk hesabınız için gizli belirteç, **Yönetim**  >  **API 'si**  >  **ayarlarında**bulunur. **Belirteç erişiminin** **etkin**olarak ayarlandığından emin olun.
 
     ![Zendesk yönetici ayarları](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -121,7 +120,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zendesk bildirim e-postası](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zendesk ' e eşitler**' ı seçin.
 

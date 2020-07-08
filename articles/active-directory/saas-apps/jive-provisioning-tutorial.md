@@ -16,10 +16,9 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057743"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Jive 'yi yapılandırma
@@ -80,7 +79,7 @@ Bu yordamın bir parçası olarak, Jive.com ' den istemeniz gereken bir Kullanı
       
       > [!NOTE]
       > Jive kiracı URL 'SI, kuruluşunuz tarafından Jive 'da oturum açmak için kullanılan URL 'dir.  
-      > Genellikle, URL şu biçimdedir: **www.\< Organization\>. Jive.com**.          
+      > Genellikle, URL şu biçimdedir: **www. \<organization\> . jive.com**.          
 
 1. Azure portal, Azure AD 'nin Jive uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 

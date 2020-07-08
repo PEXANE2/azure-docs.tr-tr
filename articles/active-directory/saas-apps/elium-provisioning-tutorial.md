@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058522"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Elium yapılandırma
@@ -55,7 +54,7 @@ Bir kullanıcıyı elim 'e atarken atama iletişim kutusunda geçerli, uygulamay
 
 Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önce, sistemi etki alanları arası kimlik yönetimi (SCıM) sağlama için bir arada etkinleştirmeniz gerekir. Şu adımları uygulayın:
 
-1. Elim 'de oturum açın ve >  **profil ayarlarıma**gidin.**Settings**
+1. Elim 'de oturum açın ve **profil**  >  **ayarlarıma**gidin.
 
     ![Elium 'da ayarlar menü öğesi](media/Elium-provisioning-tutorial/setting.png)
 
@@ -112,7 +111,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Sağlama modu için otomatik ayar](common/provisioning-automatic.png)
 
-1. **Yönetici kimlik bilgileri** bölümünde **kiracı URL 'si** alanına ** \<tenanturl\>/Scim/v2** yazın. ( **Tenanturl** , daha önce elium Yönetici konsolundan alınan değerdir.) Ayrıca **gizli belirteç** alanına Elium **gizli belirteç** değerini yazın. Son olarak, Azure AD 'nin Elium 'a bağlanabildiğini doğrulamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Elium hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+1. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL 'si** alanına ** \<tenantURL\> /Scim/v2** yazın. ( **Tenanturl** , daha önce elium Yönetici konsolundan alınan değerdir.) Ayrıca **gizli belirteç** alanına Elium **gizli belirteç** değerini yazın. Son olarak, Azure AD 'nin Elium 'a bağlanabildiğini doğrulamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Elium hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Yönetici kimlik bilgilerinde kiracı URL 'SI ve gizli belirteç alanları](common/provisioning-testconnection-tenanturltoken.png)
 

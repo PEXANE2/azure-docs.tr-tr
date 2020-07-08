@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063421"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Peakon yapılandırma
@@ -99,7 +98,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
 ### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Azure AD 'de Peakon için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -147,7 +146,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Peakon ' deki tüm özel kullanıcı özniteliklerinin, `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`Peakon 'ıN özel SCIM Kullanıcı uzantısından genişletilmesi gerekir.
+* Peakon ' deki tüm özel kullanıcı özniteliklerinin, Peakon 'ın özel SCıM Kullanıcı uzantısından genişletilmesi gerekir `urn:ietf:params:scim:schemas:extension:peakon:2.0:User` .
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

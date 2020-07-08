@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025376"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>CloudSimple Portal tarafından Azure VMware çözümünde hesapları yönetme
@@ -35,6 +34,6 @@ Bir girişi kaldırmak için **X**' e tıklayın.
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple işleç erişimi
 
-Operatör erişim ayarı, cloudsimple portalında oturum açmaya yönelik bir destek mühendisine izin vererek CloudSimple 'ın sorun gidermeye yardımcı olmasına olanak tanır.  Ayar varsayılan olarak etkindir. Müşteri hesabınızda oturum açarken destek mühendisi tarafından gerçekleştirilen tüm eylemler, **etkinlik** > **Denetim** sayfasında gözden geçirmeniz için kaydedilir ve kullanılabilir.
+Operatör erişim ayarı, cloudsimple portalında oturum açmaya yönelik bir destek mühendisine izin vererek CloudSimple 'ın sorun gidermeye yardımcı olmasına olanak tanır.  Ayar varsayılan olarak etkindir. Müşteri hesabınızda oturum açarken destek mühendisi tarafından gerçekleştirilen tüm eylemler, **etkinlik**  >  **Denetim** sayfasında gözden geçirmeniz için kaydedilir ve kullanılabilir.
 
 Erişimi açmak veya kapatmak için **Cloudsimple işleç erişimi etkin** ' e tıklayın.

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: b113cc27195b2ce954d677ab0f1ec83e394946be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060244"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için SmartFile 'ı yapılandırma
@@ -97,7 +96,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartfile-in-azure-ad"></a>Azure AD 'de SmartFile için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -113,7 +112,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5.  **Yönetici kimlik bilgileri** bölümünün altında, `https://<SmartFile sitename>.smartfile.com/ftp/scim` **kiracı URL 'sini**girin. Bir örnek şöyle `https://demo1test.smartfile.com/ftp/scim`görünmelidir. Daha önce **gizli bir belirteçte**aldığınız **taşıyıcı belirteç** değerini (ProductKey: productpassword) girin. Azure AD 'nin SmartFile 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SmartFile hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5.  **Yönetici kimlik bilgileri** bölümünün altında, `https://<SmartFile sitename>.smartfile.com/ftp/scim` **kiracı URL 'sini**girin. Bir örnek şöyle görünmelidir `https://demo1test.smartfile.com/ftp/scim` . Daha önce **gizli bir belirteçte**aldığınız **taşıyıcı belirteç** değerini (ProductKey: productpassword) girin. Azure AD 'nin SmartFile 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SmartFile hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 

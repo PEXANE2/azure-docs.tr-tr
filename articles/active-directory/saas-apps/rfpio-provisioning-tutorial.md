@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060873"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için RFıO yapılandırma
@@ -64,7 +63,7 @@ Azure AD ile otomatik Kullanıcı sağlama için RFıO yapılandırmadan önce, 
     
     ![RFıO Yöneticisi](media/rfpio-provisioning-tutorial/aadtest.png)
 
-3.  **Kullanıcı yönetimi** > **güvenlik** > **SCIM**bölümüne gidin.
+3.  **Kullanıcı yönetimi**  >  **güvenlik**  >  **SCIM**bölümüne gidin.
 
     ![RFıO Add SCıM](media/rfpio-provisioning-tutorial/scim.png)
 
@@ -107,7 +106,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 ### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Azure AD 'de RFıO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -123,7 +122,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **kiracı URL 'sini**girin. Örnek bir değer `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. **Gizli belirteçte**daha önce alınan **SCIM API belirteç** değerini girin. Azure AD 'nin RFıO 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, RFıO hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **kiracı URL 'sini**girin. Örnek bir değer `https://Azure-test1.rfpio.com/rfpserver/scim/v2` . **Gizli belirteçte**daha önce alınan **SCIM API belirteç** değerini girin. Azure AD 'nin RFıO 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, RFıO hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 

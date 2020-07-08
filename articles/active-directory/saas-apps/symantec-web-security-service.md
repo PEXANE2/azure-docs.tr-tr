@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: fbd105ca1623512a3c16f3b609374f5c4055898b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063130"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Symantec Web Security Service 'i (WSS) yapılandırma
@@ -56,11 +55,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlama için Symantec Web Security hizmeti 'ni (WSS) yapılandırmadan önce, Symantec Web Security Service (WSS) üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Symantec Web Security hizmeti yönetici konsolunda](https://portal.threatpulse.com/login.jsp)oturum açın. **Solutions** > **Service**'e gidin.
+1. [Symantec Web Security hizmeti yönetici konsolunda](https://portal.threatpulse.com/login.jsp)oturum açın. **Solutions**  >  **Service**'e gidin.
 
     ![Symantec Web güvenlik hizmeti (WSS)](media/symantec-web-security-service/service.png)
 
-2. **Hesap bakımı** > **tümleştirmeleri** > **yeni tümleştirme**' e gidin.
+2. **Hesap bakımı**  >  **tümleştirmeleri**  >  **yeni tümleştirme**' e gidin.
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
@@ -103,7 +102,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 ### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>Azure AD 'de Symantec Web Security Service (WSS) için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

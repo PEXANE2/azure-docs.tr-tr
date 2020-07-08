@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025070"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple ile VMware çözümü hakkında sık sorulan sorular
@@ -33,7 +32,7 @@ CloudSimple, çok yakında başka bölgelere sahip Doğu ABD, Batı ABD ve Batı
 
 **CloudSimple için aboneliğimi etkinleştirmek Nasıl yaparım? mı?**
 
-Microsoft hesabı temsilcinizle, CloudSimple hizmeti [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) aboneliğinizi etkinleştirmek için ' de başvurabilirsiniz. CloudSimple hizmetinin etkin olmasını istediğiniz e-postada abonelik KIMLIĞINIZI belirtin.  
+Microsoft hesabı temsilcinizle [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) , CloudSimple hizmeti aboneliğinizi etkinleştirmek için ' de başvurabilirsiniz. CloudSimple hizmetinin etkin olmasını istediğiniz e-postada abonelik KIMLIĞINIZI belirtin.  
 
 **CloudSimple portalına erişmek Nasıl yaparım? mı?**
 
@@ -150,7 +149,7 @@ CloudSimple, özel bulutta yüklü uygulamaların yükseltmelerini veya güncell
 
 **Hangi Azure hizmetleri destekleniyor?**
 
-CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örneklere şunlar dahildir:
+CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örnekler arasında şunlar yer almaktadır:
 
 * CloudSimple vCenter için bir kimlik kaynağı olarak **Azure Active Directory** .
 * Özel bulutunuzun yedeklerini, görüntülerini ve diğer verilerini depolamak için **Azure depolama** .

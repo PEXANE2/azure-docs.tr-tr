@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77020650"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>CloudSimple özel bulutu için vSAN şifrelemesini yapılandırma
@@ -78,8 +77,8 @@ Sanal ağınızdaki Azure Resource Manager bir HyTrust KeyControl kümesi dağı
 3. Azure Marketi 'ndeki görüntüden ilk KeyControl düğümünü dağıtın.  Oluşturulan anahtar çiftinin ortak anahtarını kullanın ve KeyControl düğümü için ağ güvenlik grubu olarak **NSG-hytrust** ' ı seçin.
 4. KeyControl özel IP adresini bir statik IP adresine dönüştürür.
 5. Genel IP adresini ve daha önce bahsedilen anahtar çiftinin özel anahtarını kullanarak KeyControl sanal makinesine SSH.
-6. SSH kabuğu 'nda sorulduğunda, düğümü ilk KeyControl düğümü olarak ayarlamayı seçin `No` .
-7. Bu yordamın 3-5. adımlarını yineleyerek ve var olan bir kümeye ekleme sorulduğunda `Yes` öğesini seçerek ek keycontrol düğümleri ekleyin.
+6. SSH kabuğu 'nda sorulduğunda, `No` düğümü Ilk KeyControl düğümü olarak ayarlamayı seçin.
+7. Bu yordamın 3-5. adımlarını yineleyerek ve `Yes` var olan bir kümeye ekleme sorulduğunda öğesini seçerek ek KeyControl düğümleri ekleyin.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: KMıP sunucusunu yapılandırma
 

@@ -17,10 +17,9 @@ ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058940"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Asana yapılandırma
@@ -59,7 +58,7 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı hesabı sağlamayı Asana olarak yapılandırmak için
 
-1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** > **Enterprise Apps** > **tüm uygulamalar** bölümüne gidin.
+1. [Azure Portal](https://portal.azure.com), **Azure Active Directory**  >  **Enterprise Apps**  >  **tüm uygulamalar** bölümüne gidin.
 
 1. Çoklu oturum açma için zaten bir Asana yapılandırdıysanız, arama alanını kullanarak Asana örneğinizi arayın. Aksi takdirde, **Ekle** ve uygulama galerisinde **Asana** için ara ' yı seçin. Arama sonuçlarından **Asana** ' yı seçin ve uygulama listenize ekleyin.
 
@@ -85,7 +84,7 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
 1. **Bildirim e-postasında**sağlama hatası bildirimlerini almak istediğiniz kişinin veya grubun e-posta adresini girin. Altındaki onay kutusunu seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Asana olarak eşitler**' ı seçin.
 
@@ -93,7 +92,7 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
 1. Azure AD sağlama hizmetini Asana için etkinleştirmek üzere **Ayarlar** bölümünde, **sağlama durumunu** **Açık**olarak değiştirin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Artık ilk eşitleme, **Kullanıcılar** bölümünde Asana 'ya atanan tüm kullanıcılar için başlar. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanın. Denetim günlükleri, Asana uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri anlatmaktadır.
 

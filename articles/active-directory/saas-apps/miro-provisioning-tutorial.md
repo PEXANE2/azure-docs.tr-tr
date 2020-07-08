@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
 ms.openlocfilehash: b7e1907e3fa1eb9d775fb7662445b08d5671e0b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063426"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için mıro yapılandırma
@@ -54,7 +53,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="set-up-miro-for-provisioning"></a>Sağlama için mıro ayarlama
 
-1.  Gereken **gizli anahtar belirteci** Ile Ilgili mıro desteği ekibini almak için support@miro.com. Bu değer, Azure portal mıro uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+1.  Gereken **gizli anahtar belirteci** Ile Ilgili mıro desteği ekibini almak için support@miro.com . Bu değer, Azure portal mıro uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
 ## <a name="add-miro-from-the-gallery"></a>Galeriden mıro ekleme
 
@@ -90,7 +89,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-miro-in-azure-ad"></a>Azure AD 'de mıro için otomatik Kullanıcı sağlamayı yapılandırmak için
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

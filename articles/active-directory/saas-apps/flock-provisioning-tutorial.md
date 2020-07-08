@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: cd7aae05b064657c7b9072402f4bc4d4d7fef7a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057923"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Flock yapılandırma
@@ -56,7 +55,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı hazırlama için Flock 'ı yapılandırmadan önce, Flock üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Flock](https://web.flock.com/?)'ta oturum açın. **Ayarlar simgesi** > **takımınızı yönetme**' ye tıklayın.
+1. [Flock](https://web.flock.com/?)'ta oturum açın. **Ayarlar simgesi**  >  **takımınızı yönetme**' ye tıklayın.
 
     ![Flock](media/flock-provisioning-tutorial/icon.png)
 
@@ -100,7 +99,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
 ### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Azure AD 'de Flock için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -116,7 +115,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünde `https://api.flock-staging.com/v2/scim` , sırasıyla **kiracı URL 'Si** ve **gizli belirteç** içinde alınan ve **API belirteci** değerlerini girin. Azure AD 'nin Flock 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Flock hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde, `https://api.flock-staging.com/v2/scim` sırasıyla **kiracı URL 'Si** ve **gizli belirteç** içinde alınan ve **API belirteci** değerlerini girin. Azure AD 'nin Flock 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Flock hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 

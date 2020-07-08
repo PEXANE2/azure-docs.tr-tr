@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 353da826b6e339d40a5d85bbf63caac5bf7094f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061378"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için myPolicies yapılandırma
@@ -56,7 +55,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı hazırlama için Ilkelerinizi yapılandırmadan önce myPolicies üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. SCıM sağlamasını yapılandırmak için gereken gizli belirteci **support@mypolicies.com** almak Için, mypolicies temsilcinize ulaşın.
+1. **support@mypolicies.com**SCIM sağlamasını yapılandırmak için gereken gizli belirteci almak için, myPolicies temsilcinize ulaşın.
 
 2.  MyPolicies temsilcisi tarafından sunulan belirteç değerini kaydedin. Bu değer, Azure portal myPolicies uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
@@ -91,7 +90,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
 ### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Azure AD 'de myPolicies için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -107,8 +106,8 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, mypolicies `https://<myPoliciesCustomDomain>.mypolicies.com/scim` özel etki alanınız olan `<myPoliciesCustomDomain>` **kiracı URL 'sine** giriş yapın. MyPolicies müşteri etki alanınızı URL 'nizden elde edebilirsiniz.
-Örnek: `<demo0-qa>`. mypolicies.com.
+5. **Yönetici kimlik bilgileri** bölümünde, `https://<myPoliciesCustomDomain>.mypolicies.com/scim` mypolicies özel etki alanınız olan **kiracı URL 'sine** giriş yapın `<myPoliciesCustomDomain>` . MyPolicies müşteri etki alanınızı URL 'nizden elde edebilirsiniz.
+Örnek: `<demo0-qa>` . mypolicies.com.
 
 6. **Gizli belirteç**' de, daha önce alınan belirteç değerini girin. Azure AD 'nin Ilkelerinize bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, myPolicies hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

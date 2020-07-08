@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025138"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B&R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
@@ -196,7 +195,7 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
 
 1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
 2. [Kapsayıcı oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
-2. Microsoft 'tan `azcopy` Linux için komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
+2. `azcopy`Microsoft 'Tan Linux için komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,7 +205,7 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
     sudo yum -y install icu
     ```
 
-3. Yedekleme dosyalarını `azcopy` blob kapsayıcısından ve öğesinden kopyalamak için komutunu kullanın.  Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md) .
+3. `azcopy`Yedekleme dosyalarını blob kapsayıcısından ve öğesinden kopyalamak için komutunu kullanın.  Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md) .
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Özel bulutun vCenter konsolu: Install Veeam B&R
 
@@ -277,7 +276,7 @@ Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları
 
 * [Kullanılan bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
 * [Gerekli Izinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
-* [Sistem gereksinimleri](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
+* [Sistem Gereksinimleri](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
 * [Veead yedekleme & çoğaltma yükleniyor](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
 * [Linux için birden çok işletim sistemi FLR ve depo desteği için gerekli modüller ve izinler](https://www.veeam.com/kb2216)
 * [Veead Backup & çoğaltma v9-yükleme ve dağıtım-video](https://www.youtube.com/watch?v=b4BqC_WXARk)

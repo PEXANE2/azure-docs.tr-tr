@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063365"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Proxyclick yapılandırma
@@ -84,7 +83,7 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de Kullanıcı ve/veya grup at
 
 ### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>Azure AD 'de Proxyclick otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -102,7 +101,7 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de Kullanıcı ve/veya grup at
 
 5. Proxyclick hesabınızın **kiracı URL 'sini** ve **gizli belirtecini** almak için adım 6 ' da anlatıldığı şekilde izlenecek yolu izleyin.
 
-6. [Proxyclick yönetim konsolunda](https://app.proxyclick.com/login//?destination=%2Fdefault)oturum açın. **Ayarlar** > **tümleştirmelere** > git**Market**'e gidin.
+6. [Proxyclick yönetim konsolunda](https://app.proxyclick.com/login//?destination=%2Fdefault)oturum açın. **Ayarlar**  >  **tümleştirmelere**git  >  **Market**'e gidin.
 
     ![Proxyclick ayarları](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -120,7 +119,7 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de Kullanıcı ve/veya grup at
 
     ![Proxyclick Kullanıcı sağlama](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    Uygun ayarlar yapılandırma kullanıcı arabirimi artık **Ayarlar** > **tümleştirmeleri**altında gösterilmelidir. Azure AD altında **ayarları** seçin **(Kullanıcı hazırlama)**.
+    Uygun ayarlar yapılandırma kullanıcı arabirimi artık **Ayarlar**  >  **tümleştirmeleri**altında gösterilmelidir. Azure AD altında **ayarları** seçin **(Kullanıcı hazırlama)**.
 
     ![Proxyclick oluştur](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024849"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VMware Vfarkında otomasyonu için özel bulutunuzda vCenter 'ı ayarlama
@@ -48,7 +47,7 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
 2. Vanautomation uç noktası için bir vSphere Aracısı dağıtın.
     1. Https://*vra-URL*: 5480/Installer adresine gidin; burada *vra-URL* , VANAUTOMATION yönetim Kullanıcı ARABIRIMINE erişmek için kullandığınız URL 'dir.
     2. Yükleyiciyi indirmek için **IaaS yükleyicisi** ' ne tıklayın.<br>
-    Yükleyici dosyasının adlandırma kuralı setup_*vra-URL*@5480.exe'dir.
+    Yükleyici dosyasının adlandırma kuralı setup_*vra-URL*'dir @5480.exe .
     3. Yükleyiciyi çalıştırın. Hoş Geldiniz ekranında **İleri**’ye tıklayın.
     4. EULA 'Yı kabul edin ve **İleri**' ye tıklayın.
     5. Oturum açma bilgilerini girin, **sertifikayı kabul et**' e ve ardından **İleri**' ye tıklayın.
@@ -69,8 +68,8 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
 ## <a name="configure-the-vsphere-agent"></a>VSphere aracısını yapılandırma
 
 1. Https://*vra-URL*/vcac adresine gidin ve **configurationadmin**olarak oturum açın.
-2. **Altyapı** > **uç noktaları** > **uç noktalarını**seçin.
-3. **Yeni** > **Virtual**sanal > **vSphere**öğesini seçin.
+2. **Altyapı**  >  **uç noktaları**  >  **uç noktalarını**seçin.
+3. **Yeni**  >  **sanal**  >  **vSphere**öğesini seçin.
 4. Önceki yordamda belirttiğiniz vSphere uç nokta adını girin.
 5. **Adres**Için, özel bulut vCenter Server URL 'sini https://*vCenter-FQDN*/SDK biçiminde girin; burada *vCenter-FQDN* , vCenter sunucusunun adıdır.
 6. Sanal bir Otomasyon IaaS yönetim kullanıcısına yönelik kimlik bilgilerini, CloudSimple desteğinin sizin için oluşturulduğunu girin.
@@ -90,7 +89,7 @@ Doğru vCenter sunucusu uç noktası adını belirlemek için aşağıdakileri y
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get
 ```
 
-Çıktı aşağıdakine benzer. `managementEndpointName` Alanın değeri, uç nokta adıdır.
+Çıktı aşağıdakine benzer. Alanın değeri, `managementEndpointName` uç nokta adıdır.
 
 ```
 managementEndpointName: cslab1pc3-vc
