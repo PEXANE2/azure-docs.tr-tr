@@ -16,12 +16,11 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69eb19686598de103b1c2f3e97ad35be2c427beb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85356381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807613"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
 
@@ -288,12 +287,15 @@ Hesap, tüm etki alanlarındaki parola karmalarını okumak için gerekli izinle
 6. Etki alanı denetleyicileri Azure AD Connect tarafından erişilebilir mi? Connect sunucusu tüm etki alanı denetleyicilerine bağlanamazsa, **yalnızca tercih edilen etki alanı denetleyicisini kullan**seçeneğini yapılandırın.  
     
     ![Active Directory Bağlayıcısı tarafından kullanılan etki alanı denetleyicisi](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. **Synchronization Service Manager** ve **dizin bölümünü yapılandırmak**için geri dönün. 
  
 8. **Dizin bölümlerini Seç**' de etki alanınızı seçin, **yalnızca tercih edilen etki alanı denetleyicilerini kullan** onay kutusunu işaretleyin ve ardından **Yapılandır**' a tıklayın. 
 
 9. Listede, parola eşitleme için bağlantı için kullanması gereken etki alanı denetleyicilerini girin. Aynı liste içeri ve dışarı aktarma için de kullanılır. Tüm etki alanlarınız için bu adımları uygulayın.
+
+> [!NOTE]
+> Bu değişiklikleri uygulamak için **Microsoft Azure AD eşitleme** (ADSync) hizmetini yeniden başlatın.
 
 10. Betik, sinyal bulunmadığını gösteriyorsa, [tüm parolaların tam eşitlemesini tetiklemek](#trigger-a-full-sync-of-all-passwords)için betiği çalıştırın.
 

@@ -4,27 +4,26 @@ description: Havuzlar, işler, görevler ve işlem düğümleri gibi Batch kayna
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7034b910f7ddfe07b27ee9c2939fb8ee6531c9ca
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299475"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960614"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
 
 Neredeyse tüm Batch uygulamalarının, genellikle düzenli aralıklarla Batch hizmetini sorgulayan bir tür izleme veya başka işlem gerçekleştirmesi gerekir. Örneğin, bir işte kalan sıraya alınmış görevler olup olmadığını anlamak için, işteki her görevde veri almanız gerekir. Havuzunuzdaki düğümlerin durumunu öğrenmek için, havuzdaki her düğümde veri almanız gerekir. Bu makalede, bu tür sorguların en verimli şekilde nasıl yürütüleceği açıklanmaktadır.
 
-[Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) kitaplığı ile işleri, görevleri, işlem düğümlerini ve diğer kaynakları sorguladığınızda, hizmet tarafından döndürülen veri miktarını azaltarak Azure Batch uygulamanızın performansını artırabilirsiniz.
+[Batch .net](/dotnet/api/microsoft.azure.batch) kitaplığı ile işleri, görevleri, işlem düğümlerini ve diğer kaynakları sorguladığınızda, hizmet tarafından döndürülen veri miktarını azaltarak Azure Batch uygulamanızın performansını artırabilirsiniz.
 
 > [!NOTE]
-> Batch hizmeti, bir işteki görevleri saymakta olan ortak senaryolar ve Batch havuzundaki işlem düğümlerini saymak için API desteği sağlar. Bunlar için bir liste sorgusu kullanmak yerine, [görev sayısını Al](https://docs.microsoft.com/rest/api/batchservice/job/gettaskcounts) ve [Havuz düğüm sayılarını Listele](https://docs.microsoft.com/rest/api/batchservice/account/listpoolnodecounts) işlemlerini çağırabilirsiniz. Bu işlemler liste sorgusundan daha verimlidir, ancak her zaman güncel olmayan daha sınırlı bilgiler döndürür. Daha fazla bilgi için bkz. [görevleri ve işlem düğümlerini duruma göre sayma](batch-get-resource-counts.md).
+> Batch hizmeti, bir işteki görevleri saymakta olan ortak senaryolar ve Batch havuzundaki işlem düğümlerini saymak için API desteği sağlar. Bunlar için bir liste sorgusu kullanmak yerine, [görev sayısını Al](/rest/api/batchservice/job/gettaskcounts) ve [Havuz düğüm sayılarını Listele](/rest/api/batchservice/account/listpoolnodecounts) işlemlerini çağırabilirsiniz. Bu işlemler liste sorgusundan daha verimlidir, ancak her zaman güncel olmayan daha sınırlı bilgiler döndürür. Daha fazla bilgi için bkz. [görevleri ve işlem düğümlerini duruma göre sayma](batch-get-resource-counts.md).
 
 ## <a name="specify-a-detail-level"></a>Ayrıntı düzeyi belirtin
 
 Bir üretim toplu Iş uygulamasında, işler, görevler ve işlem düğümleri gibi varlıklar binlerce sayı olabilir. Bu kaynaklarla ilgili bilgileri istediğinizde, potansiyel olarak büyük miktarda veri, Batch hizmetinden her bir sorgudaki uygulamanıza "tel çapraz" olmalıdır. Bir sorgu tarafından döndürülen öğelerin sayısını ve bilgi türünü sınırlayarak, sorgularınızın hızını ve bu nedenle uygulamanızın performansını artırabilirsiniz.
 
-Bu [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) API kod parçacığı, her görevin *Tüm* özellikleriyle birlikte bir işle ilişkili *her* görevi listeler:
+Bu [Batch .net](/dotnet/api/microsoft.azure.batch) API kod parçacığı, her görevin *Tüm* özellikleriyle birlikte bir işle ilişkili *her* görevi listeler:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -32,7 +31,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Bununla birlikte, sorgunuza bir "ayrıntı düzeyi" uygulayarak daha verimli bir liste sorgusu gerçekleştirebilirsiniz. Bunu, [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) yöntemine bir [Odatadetaillevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnesi sağlayarak yapabilirsiniz. Bu kod parçacığı yalnızca, tamamlanan görevlerin KIMLIK, komut satırı ve işlem düğümü bilgi özelliklerini döndürür:
+Bununla birlikte, sorgunuza bir "ayrıntı düzeyi" uygulayarak daha verimli bir liste sorgusu gerçekleştirebilirsiniz. Bunu, [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) yöntemine bir [Odatadetaillevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnesi sağlayarak yapabilirsiniz. Bu kod parçacığı yalnızca, tamamlanan görevlerin KIMLIK, komut satırı ve işlem düğümü bilgi özelliklerini döndürür:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -53,7 +52,7 @@ Bu örnek senaryoda, işte binlerce görev varsa, ikinci sorgudaki sonuçlar gen
 
 ## <a name="filter-select-and-expand"></a>Filtrele, seç ve Genişlet
 
-[Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) ve [Batch Rest](https://docs.microsoft.com/rest/api/batchservice/) API 'leri, bir listede döndürülen öğelerin sayısını ve her biri için döndürülen bilgi miktarını azaltmaya olanak sağlar. Bunu, liste sorguları gerçekleştirirken **filtre**, **seçme**ve **dizeleri Genişlet** ' i belirterek yapabilirsiniz.
+[Batch .net](/dotnet/api/microsoft.azure.batch) ve [Batch Rest](/rest/api/batchservice/) API 'leri, bir listede döndürülen öğelerin sayısını ve her biri için döndürülen bilgi miktarını azaltmaya olanak sağlar. Bunu, liste sorguları gerçekleştirirken **filtre**, **seçme**ve **dizeleri Genişlet** ' i belirterek yapabilirsiniz.
 
 ### <a name="filter"></a>Filtre
 
@@ -84,7 +83,7 @@ Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin d
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Filter, Select ve Expand dizeleri için kurallar
 
-- Filtre içindeki Özellikler adları, Select ve Genişlet dizeleri Batch [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) veya diğer Batch SDK 'larından birini kullandığınızda bile, [yığın Rest](https://docs.microsoft.com/rest/api/batchservice/) API 'sinde olduğu gibi görünmelidir.
+- Filtre içindeki Özellikler adları, Select ve Genişlet dizeleri Batch [.net](/dotnet/api/microsoft.azure.batch) veya diğer Batch SDK 'larından birini kullandığınızda bile, [yığın Rest](/rest/api/batchservice/) API 'sinde olduğu gibi görünmelidir.
 - Tüm özellik adları büyük/küçük harfe duyarlıdır, ancak özellik değerleri büyük/küçük harfe duyarsızdır.
 - Tarih/saat dizeleri iki biçimden biri olabilir ve önünde olmalıdır `DateTime` .
   
@@ -95,11 +94,11 @@ Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin d
 
 ## <a name="efficient-querying-in-batch-net"></a>Batch .NET 'te verimli sorgulama
 
-[Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) API 'si Içinde, [Odatadetaillevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) sınıfı filtre sağlamak için kullanılır, seçme ve dizeleri listelemek için dizeleri genişletme. ODataDetailLevel sınıfı, oluşturucuda belirtime üç genel dize özelliklerine sahiptir veya doğrudan nesne üzerinde ayarlanır. Ardından, ODataDetailLevel nesnesini [Listpools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations), [ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations)ve [ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations)gibi çeşitli liste işlemlerine bir parametre olarak geçitirsiniz.
+[Batch .net](/dotnet/api/microsoft.azure.batch) API 'si Içinde, [Odatadetaillevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) sınıfı filtre sağlamak için kullanılır, seçme ve dizeleri listelemek için dizeleri genişletme. ODataDetailLevel sınıfı, oluşturucuda belirtime üç genel dize özelliklerine sahiptir veya doğrudan nesne üzerinde ayarlanır. Ardından, ODataDetailLevel nesnesini [Listpools](/dotnet/api/microsoft.azure.batch.pooloperations), [ListJobs](/dotnet/api/microsoft.azure.batch.joboperations)ve [ListTasks](/dotnet/api/microsoft.azure.batch.joboperations)gibi çeşitli liste işlemlerine bir parametre olarak geçitirsiniz.
 
-- [Odatadetaillevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): döndürülen öğelerin sayısını sınırlayın.
-- [Odatadetaillevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): her öğe ile hangi özellik değerlerinin döndürüleceğini belirtin.
-- [Odatadetaillevel. ExpandClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri alın.
+- [Odatadetaillevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): döndürülen öğelerin sayısını sınırlayın.
+- [Odatadetaillevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): her öğe ile hangi özellik değerlerinin döndürüleceğini belirtin.
+- [Odatadetaillevel. ExpandClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri alın.
 
 Aşağıdaki kod parçacığı, Batch hizmetini belirli bir havuz kümesinin istatistikleri için etkin bir şekilde sorgulamak üzere Batch .NET API 'sini kullanır. Bu senaryoda Batch kullanıcısının hem test hem de üretim havuzları vardır. Test havuzu kimlikleri "test" önekini alır ve üretim havuzu kimlikleri "prod" önekini alır. Kod parçacığında, *Mybatchclient* , [batchclient](/dotnet/api/microsoft.azure.batch.batchclient) sınıfının düzgün başlatılmış bir örneğidir.
 
@@ -130,7 +129,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Select ve expand yan tümceleri ile yapılandırılan [Odatadetaillevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) örneği, döndürülen veri miktarını sınırlamak Için [Pooloperations. getpool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)gibi uygun alma yöntemlerine de geçirilebilir.
+> Select ve expand yan tümceleri ile yapılandırılan [Odatadetaillevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) örneği, döndürülen veri miktarını sınırlamak Için [Pooloperations. getpool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)gibi uygun alma yöntemlerine de geçirilebilir.
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Toplu iş geri kalanı .NET API eşlemeleri
 
@@ -138,39 +137,39 @@ Filtre içindeki Özellik adları, Select ve Genişlet dizeleri, hem ad hem de d
 
 ### <a name="mappings-for-filter-strings"></a>Filtre dizeleri için eşlemeler
 
-- **.Net liste yöntemleri**: Bu SÜTUNDAKI .NET API yöntemlerinin her biri, bir [Odatadetaillevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnesini parametre olarak kabul eder.
-- **Rest liste istekleri**: Bu sütunda bağlantılı her bir REST API sayfası, *filtre* dizelerinde izin verilen özellikleri ve işlemleri belirten bir tablo içerir. Bu özellik adlarını ve işlemlerini bir [Odatadetaillevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) dizesi oluştururken kullanırsınız.
+- **.Net liste yöntemleri**: Bu SÜTUNDAKI .NET API yöntemlerinin her biri, bir [Odatadetaillevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnesini parametre olarak kabul eder.
+- **Rest liste istekleri**: Bu sütunda bağlantılı her bir REST API sayfası, *filtre* dizelerinde izin verilen özellikleri ve işlemleri belirten bir tablo içerir. Bu özellik adlarını ve işlemlerini bir [Odatadetaillevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) dizesi oluştururken kullanırsınız.
 
 | .NET liste yöntemleri | REST liste istekleri |
 | --- | --- |
-| [CertificateOperations. ListCertificates](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) |[Bir hesaptaki sertifikaları listeleme](https://docs.microsoft.com/rest/api/batchservice/certificate/list) |
-| [CloudTask. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[Bir görevle ilişkili dosyaları listeleme](https://docs.microsoft.com/rest/api/batchservice/file/listfromtask) |
-| [JobOperations. ListJobPreparationAndReleaseTaskStatus](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[İş için iş hazırlama ve iş bırakma görevlerinin durumunu listeleyin](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
-| [JobOperations. ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Bir hesaptaki işleri listeleyin](https://docs.microsoft.com/rest/api/batchservice/job/list) |
-| [JobOperations. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Bir düğümdeki dosyaları listeleme](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) |
-| [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Bir işle ilişkili görevleri listeleyin](https://docs.microsoft.com/rest/api/batchservice/task/list) |
-| [JobScheduleOperations. Listjobzamanlamalar](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[Bir hesaptaki iş zamanlamalarını listeleme](https://docs.microsoft.com/rest/api/batchservice/jobschedule/list) |
-| [JobScheduleOperations. ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[İş zamanlamasıyla ilişkili işleri listeleyin](https://docs.microsoft.com/rest/api/batchservice/job/listfromjobschedule) |
-| [PoolOperations. ListComputeNodes](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[Bir havuzdaki işlem düğümlerini listeleme](https://docs.microsoft.com/rest/api/batchservice/computenode/list) |
-| [PoolOperations. ListPools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[Bir hesaptaki havuzları listeleme](https://docs.microsoft.com/rest/api/batchservice/pool/list) |
+| [CertificateOperations. ListCertificates](/dotnet/api/microsoft.azure.batch.certificateoperations) |[Bir hesaptaki sertifikaları listeleme](/rest/api/batchservice/certificate/list) |
+| [CloudTask. ListNodeFiles](/dotnet/api/microsoft.azure.batch.cloudtask) |[Bir görevle ilişkili dosyaları listeleme](/rest/api/batchservice/file/listfromtask) |
+| [JobOperations. ListJobPreparationAndReleaseTaskStatus](/dotnet/api/microsoft.azure.batch.joboperations) |[İş için iş hazırlama ve iş bırakma görevlerinin durumunu listeleyin](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
+| [JobOperations. ListJobs](/dotnet/api/microsoft.azure.batch.joboperations) |[Bir hesaptaki işleri listeleyin](/rest/api/batchservice/job/list) |
+| [JobOperations. ListNodeFiles](/dotnet/api/microsoft.azure.batch.joboperations) |[Bir düğümdeki dosyaları listeleme](/rest/api/batchservice/file/listfromcomputenode) |
+| [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) |[Bir işle ilişkili görevleri listeleyin](/rest/api/batchservice/task/list) |
+| [JobScheduleOperations. Listjobzamanlamalar](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[Bir hesaptaki iş zamanlamalarını listeleme](/rest/api/batchservice/jobschedule/list) |
+| [JobScheduleOperations. ListJobs](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[İş zamanlamasıyla ilişkili işleri listeleyin](/rest/api/batchservice/job/listfromjobschedule) |
+| [PoolOperations. ListComputeNodes](/dotnet/api/microsoft.azure.batch.pooloperations) |[Bir havuzdaki işlem düğümlerini listeleme](/rest/api/batchservice/computenode/list) |
+| [PoolOperations. ListPools](/dotnet/api/microsoft.azure.batch.pooloperations) |[Bir hesaptaki havuzları listeleme](/rest/api/batchservice/pool/list) |
 
 ### <a name="mappings-for-select-strings"></a>Seçme dizeleri için eşlemeler
 
 - **Batch .net türleri**: Batch .NET API türleri.
-- **REST API varlıklar**: Bu sütundaki her sayfa, türün REST API özellik adlarını listeeden bir veya daha fazla tablo içerir. Bu özellik adları, *Select* dizeleri oluşturduğunuzda kullanılır. Bir [Odatadetaillevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) dizesi oluştururken aynı özellik adlarını kullanırsınız.
+- **REST API varlıklar**: Bu sütundaki her sayfa, türün REST API özellik adlarını listeeden bir veya daha fazla tablo içerir. Bu özellik adları, *Select* dizeleri oluşturduğunuzda kullanılır. Bir [Odatadetaillevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) dizesi oluştururken aynı özellik adlarını kullanırsınız.
 
 | Batch .NET türleri | REST API varlıkları |
 | --- | --- |
-| [Sertifika](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificate) |[Bir sertifika hakkında bilgi edinme](https://docs.microsoft.com/rest/api/batchservice/certificate/get) |
-| [CloudJob](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) |[İş hakkında bilgi alın](https://docs.microsoft.com/rest/api/batchservice/job/get) |
-| [CloudJobSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[İş zamanlaması hakkında bilgi alın](https://docs.microsoft.com/rest/api/batchservice/jobschedule/get) |
-| [ComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) |[Bir düğüm hakkında bilgi edinme](https://docs.microsoft.com/rest/api/batchservice/computenode/get) |
-| [CloudPool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) |[Havuz hakkında bilgi edinme](https://docs.microsoft.com/rest/api/batchservice/pool/get) |
-| [CloudTask](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[Bir görev hakkında bilgi edinme](https://docs.microsoft.com/rest/api/batchservice/task/get) |
+| [Sertifika](/dotnet/api/microsoft.azure.batch.certificate) |[Bir sertifika hakkında bilgi edinme](/rest/api/batchservice/certificate/get) |
+| [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) |[İş hakkında bilgi alın](/rest/api/batchservice/job/get) |
+| [CloudJobSchedule](/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[İş zamanlaması hakkında bilgi alın](/rest/api/batchservice/jobschedule/get) |
+| [ComputeNode](/dotnet/api/microsoft.azure.batch.computenode) |[Bir düğüm hakkında bilgi edinme](/rest/api/batchservice/computenode/get) |
+| [CloudPool](/dotnet/api/microsoft.azure.batch.cloudpool) |[Havuz hakkında bilgi edinme](/rest/api/batchservice/pool/get) |
+| [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) |[Bir görev hakkında bilgi edinme](/rest/api/batchservice/task/get) |
 
 ## <a name="example-construct-a-filter-string"></a>Örnek: bir filtre dizesi oluşturun
 
-[Odatadetaillevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)için bir filtre dizesi oluşturduğunuzda, gerçekleştirmek istediğiniz liste işlemine karşılık gelen REST API belge sayfasını bulmak için yukarıdaki "Filtre dizeleri için eşlemeler" altındaki tabloya başvurun. Filtrelenebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Çıkış kodu sıfır olmayan tüm görevleri almak isterseniz, örneğin, [bir işle ilişkili görevleri listede](https://docs.microsoft.com/rest/api/batchservice/task/list) bu satır ilgili özellik dizesini ve izin verilen işleçleri belirler:
+[Odatadetaillevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)için bir filtre dizesi oluşturduğunuzda, gerçekleştirmek istediğiniz liste işlemine karşılık gelen REST API belge sayfasını bulmak için yukarıdaki "Filtre dizeleri için eşlemeler" altındaki tabloya başvurun. Filtrelenebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Çıkış kodu sıfır olmayan tüm görevleri almak isterseniz, örneğin, [bir işle ilişkili görevleri listede](/rest/api/batchservice/task/list) bu satır ilgili özellik dizesini ve izin verilen işleçleri belirler:
 
 | Özellik | İzin verilen işlemler | Tür |
 |:--- |:--- |:--- |
@@ -182,7 +181,7 @@ Bu nedenle, sıfır dışında çıkış koduna sahip tüm görevleri listelemek
 
 ## <a name="example-construct-a-select-string"></a>Örnek: Select String oluşturun
 
-[Odatadetaillevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)oluşturmak için, "dizeleri seç için eşlemeler" altındaki tabloya bakın ve listelerken varlık türüne karşılık gelen REST API sayfasına gidin. Seçilebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Bir listedeki her bir görev için yalnızca KIMLIĞI ve komut satırını almak istiyorsanız, [bir görevle ilgili bilgi edinmek](https://docs.microsoft.com/rest/api/batchservice/task/get)için bu satırları uygulanabilir tabloda bulabilirsiniz:
+[Odatadetaillevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)oluşturmak için, "dizeleri seç için eşlemeler" altındaki tabloya bakın ve listelerken varlık türüne karşılık gelen REST API sayfasına gidin. Seçilebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Bir listedeki her bir görev için yalnızca KIMLIĞI ve komut satırını almak istiyorsanız, [bir görevle ilgili bilgi edinmek](/rest/api/batchservice/task/get)için bu satırları uygulanabilir tabloda bulabilirsiniz:
 
 | Özellik | Tür | Notlar |
 |:--- |:--- |:--- |
@@ -197,7 +196,7 @@ Yalnızca listelenen her görevle ilgili KIMLIĞI ve komut satırını dahil etm
 
 ### <a name="efficient-list-queries-code-sample"></a>Etkili liste sorguları kod örneği
 
-GitHub 'daki [verimlilik Entlistqueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) örnek projesi bir uygulamadaki performansı ne kadar etkili bir şekilde etkilediğini gösterir. Bu C# konsol uygulaması, bir işe çok sayıda görev oluşturur ve ekler. Daha sonra, [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) yöntemine birden çok çağrı yapar ve döndürülecek veri miktarını değiştirmek için farklı özellik değerleriyle yapılandırılan [Odatadetaillevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnelerini geçirir. Aşağıdakine benzer bir çıktı üretir:
+GitHub 'daki [verimlilik Entlistqueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) örnek projesi bir uygulamadaki performansı ne kadar etkili bir şekilde etkilediğini gösterir. Bu C# konsol uygulaması, bir işe çok sayıda görev oluşturur ve ekler. Daha sonra, [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) yöntemine birden çok çağrı yapar ve döndürülecek veri miktarını değiştirmek için farklı özellik değerleriyle yapılandırılan [Odatadetaillevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) nesnelerini geçirir. Aşağıdakine benzer bir çıktı üretir:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -244,53 +243,53 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 - [Görevleri ve düğümleri duruma göre sayarak Batch çözümlerini izlemeyi](batch-get-resource-counts.md) öğrenin
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_listjobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[api_rest]: /rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
-[odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx
-[odata_expand]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.expandclause.aspx
-[odata_filter]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.filterclause.aspx
-[odata_select]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.selectclause.aspx
+[odata]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_ctor]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_expand]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_filter]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_select]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
 
-[net_list_certs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificateoperations.listcertificates.aspx
-[net_list_compute_nodes]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listcomputenodes.aspx
-[net_list_job_schedules]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobschedules.aspx
-[net_list_jobprep_status]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobpreparationandreleasetaskstatus.aspx
-[net_list_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[net_list_nodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listnodefiles.aspx
-[net_list_pools]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listpools.aspx
-[net_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobs.aspx
-[net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
+[net_list_certs]: /dotnet/api/microsoft.azure.batch.certificateoperations
+[net_list_compute_nodes]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_job_schedules]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_jobprep_status]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_jobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_nodefiles]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_pools]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_schedule_jobs]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_task_files]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_list_tasks]: /dotnet/api/microsoft.azure.batch.joboperations
 
-[rest_list_certs]: https://msdn.microsoft.com/library/azure/dn820154.aspx
-[rest_list_compute_nodes]: https://msdn.microsoft.com/library/azure/dn820159.aspx
-[rest_list_job_schedules]: https://msdn.microsoft.com/library/azure/mt282174.aspx
-[rest_list_jobprep_status]: https://msdn.microsoft.com/library/azure/mt282170.aspx
-[rest_list_jobs]: https://msdn.microsoft.com/library/azure/dn820117.aspx
-[rest_list_nodefiles]: https://msdn.microsoft.com/library/azure/dn820151.aspx
-[rest_list_pools]: https://msdn.microsoft.com/library/azure/dn820101.aspx
-[rest_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/mt282169.aspx
-[rest_list_task_files]: https://msdn.microsoft.com/library/azure/dn820142.aspx
-[rest_list_tasks]: https://msdn.microsoft.com/library/azure/dn820187.aspx
+[rest_list_certs]: /rest/api/batchservice/certificate/list
+[rest_list_compute_nodes]: /rest/api/batchservice/computenode/list
+[rest_list_job_schedules]: /rest/api/batchservice/jobschedule/list
+[rest_list_jobprep_status]: /rest/api/batchservice/job/listpreparationandreleasetaskstatus
+[rest_list_jobs]: /rest/api/batchservice/job/list
+[rest_list_nodefiles]: /rest/api/batchservice/file/listfromcomputenode
+[rest_list_pools]: /rest/api/batchservice/pool/list
+[rest_list_schedule_jobs]: /rest/api/batchservice/job/listfromjobschedule
+[rest_list_task_files]: /rest/api/batchservice/file/listfromtask
+[rest_list_tasks]: /rest/api/batchservice/task/list
 
-[rest_get_cert]: https://msdn.microsoft.com/library/azure/dn820176.aspx
-[rest_get_job]: https://msdn.microsoft.com/library/azure/dn820106.aspx
-[rest_get_node]: https://msdn.microsoft.com/library/azure/dn820168.aspx
-[rest_get_pool]: https://msdn.microsoft.com/library/azure/dn820165.aspx
-[rest_get_schedule]: https://msdn.microsoft.com/library/azure/mt282171.aspx
-[rest_get_task]: https://msdn.microsoft.com/library/azure/dn820133.aspx
+[rest_get_cert]: /rest/api/batchservice/certificate/get
+[rest_get_job]: /rest/api/batchservice/job/get
+[rest_get_node]: /rest/api/batchservice/computenode/get
+[rest_get_pool]: /rest/api/batchservice/pool/get
+[rest_get_schedule]: /rest/api/batchservice/jobschedule/get
+[rest_get_task]: /rest/api/batchservice/task/get
 
-[net_cert]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificate.aspx
-[net_job]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_node]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.aspx
-[net_pool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
-[net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_cert]: /dotnet/api/microsoft.azure.batch.certificate
+[net_job]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_node]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_schedule]: /dotnet/api/microsoft.azure.batch.cloudjobschedule
+[net_task]: /dotnet/api/microsoft.azure.batch.cloudtask
 
 [rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
 [rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts

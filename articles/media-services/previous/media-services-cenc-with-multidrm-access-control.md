@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162999"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960478"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services kullanarak erişim denetimiyle içerik koruma sistemi tasarlama 
 
@@ -206,7 +205,7 @@ Uygulama aşağıdaki adımları içerir:
    * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
    * Install-Package Microsoft. Owin. Security. Openıdconnect
    * Install-Package Microsoft. Owin. Security. Cookies
-   * Install-Package Microsoft. Owin. Host. SystemWeb
+   * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
 
 8. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanarak bir oyuncu oluşturun. Farklı DRM platformlarında hangi DRM teknolojisinin kullanılacağını belirtmek için [Azure Media Player Protectionınfo API](https://amp.azure.net/libs/amp/latest/docs/) 'sini kullanın.
@@ -234,8 +233,10 @@ Uygulama sorunlarıyla ilgili yardım için aşağıdaki sorun giderme bilgileri
 
 * Veren URL 'SI "/" ile bitmelidir. Hedef kitle, oynatıcı uygulaması istemci KIMLIĞI olmalıdır. Ayrıca, veren URL 'sinin sonuna "/" ekleyin.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     [JWT kod çözücüde](http://jwt.calebb.net/), JWT içinde gösterildiği gibi **AUD** ve **ISS**' yi görürsünüz:
 
@@ -247,11 +248,15 @@ Uygulama sorunlarıyla ilgili yardım için aşağıdaki sorun giderme bilgileri
 
 * Dinamik CENC korumasını ayarlarken doğru sertifikayı kullanın.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Aşağıdakiler çalışmaz:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     GUID, Azure AD kiracı KIMLIĞIDIR. GUID, Azure portal **uç noktalar** açılır menüsünde bulunabilir.
 
@@ -261,7 +266,9 @@ Uygulama sorunlarıyla ilgili yardım için aşağıdaki sorun giderme bilgileri
 
 * Kısıtlama gereksinimleri oluştururken uygun TokenType öğesini ayarlayın.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     SWT (ACS) ' ye ek olarak JWT (Azure AD) desteği eklediğiniz için varsayılan TokenType, TokenType. JWT ' dir. SWT/ACS kullanırsanız, belirteci TokenType. SWT olarak ayarlamanız gerekir.
 
@@ -477,6 +484,6 @@ Bu belgede, belirteç kimlik doğrulaması, tasarımı ve Azure, Media Services 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
  

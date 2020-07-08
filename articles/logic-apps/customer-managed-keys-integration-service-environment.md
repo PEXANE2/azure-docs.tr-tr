@@ -7,10 +7,9 @@ ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84687013"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
@@ -21,7 +20,7 @@ Logic Apps 'i barındırmak için bir [tümleştirme hizmeti ortamı (ıSE)](../
 
 Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere kendi şifreleme anahtarınızı ayarlama ve belirtme işlemlerinin nasıl yapılacağı gösterilmektedir. Logic Apps REST API aracılığıyla bir ıSE oluşturmanın genel adımları için, bkz. [Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ISE) oluşturma](../logic-apps/create-integration-service-environment-rest-api.md).
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 * Şu anda bir ıSE için müşteri tarafından yönetilen anahtar desteği yalnızca şu Azure bölgelerinde kullanılabilir: Batı ABD 2, Doğu ABD ve Orta Güney ABD
 
@@ -47,7 +46,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
   |----------|-------|
   | **Anahtar türü** | RSA |
   | **RSA anahtar boyutu** | 2048 |
-  | **Etkin** | Yes |
+  | **Etkin** | Evet |
   |||
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)

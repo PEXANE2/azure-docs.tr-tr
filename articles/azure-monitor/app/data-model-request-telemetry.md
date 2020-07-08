@@ -4,28 +4,27 @@ description: İstek telemetrisi için veri modeli Application Insights
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807667"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>İstek telemetrisi: Application Insights veri modeli
 
-İstek telemetrisi öğesi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve `url` tüm yürütme parametrelerini içerecek şekilde tanımlanır. İstekleri mantıksal `name` olarak gruplandırabilir ve bu isteğin `source` sayısını tanımlayabilirsiniz. Kod yürütme, `success` veya `fail` ile sonuçlanabilir. `duration` Başarılı ve başarısız yürütmeler, tarafından `resultCode`daha fazla gruplandırılabilir. Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
+İstek telemetrisi öğesi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve `url` tüm yürütme parametrelerini içerecek şekilde tanımlanır. İstekleri mantıksal olarak gruplandırabilir `name` ve `source` Bu isteğin sayısını tanımlayabilirsiniz. Kod yürütme, `success` veya ile sonuçlanabilir `fail` `duration` . Başarılı ve başarısız yürütmeler, tarafından daha fazla gruplandırılabilir `resultCode` . Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
 
-İstek telemetrisi, özel `properties` ve `measurements`kullanan standart genişletilebilirlik modelini destekler.
+İstek telemetrisi, özel ve kullanan standart genişletilebilirlik modelini `properties` destekler `measurements` .
 
-## <a name="name"></a>Adı
+## <a name="name"></a>Name
 
-İsteğin adı, isteği işlemek için alınan kod yolunu temsil eder. İsteklerin daha iyi gruplanmasına izin vermek için düşük kardinalite değeri. HTTP istekleri için, gerçek `GET /values/{id}` `id` değer olmadan gıbı http yöntemini ve URL yol şablonunu temsil eder.
+İsteğin adı, isteği işlemek için alınan kod yolunu temsil eder. İsteklerin daha iyi gruplanmasına izin vermek için düşük kardinalite değeri. HTTP istekleri için, gerçek değer olmadan gibi HTTP yöntemini ve URL yol şablonunu temsil eder `GET /values/{id}` `id` .
 
-Application Insights Web SDK, "olduğu gibi" istek adını harf büyük harfe göre gönderir. Kullanıcı arabirimindeki gruplandırma, büyük/küçük harfe `GET /Home/Index` duyarlıdır; bu nedenle `GET /home/INDEX` , genellikle aynı denetleyici ve eylem yürütmeye neden olur. Bunun nedeni, genel olarak URL 'lerin [büyük/küçük harfe duyarlıdır](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Büyük harfle yazılan URL 'ler için tümünün `404` olup olmadığını görmek isteyebilirsiniz. İstek adı koleksiyonu hakkında daha fazla bilgi için ASP.NET Web SDK tarafından [blog gönderisine](https://apmtips.com/blog/2015/02/23/request-name-and-url/)erişebilirsiniz.
+Application Insights Web SDK, "olduğu gibi" istek adını harf büyük harfe göre gönderir. Kullanıcı arabirimindeki gruplandırma, büyük/küçük harfe duyarlıdır; bu nedenle, `GET /Home/Index` `GET /home/INDEX` genellikle aynı denetleyici ve eylem yürütmeye neden olur. Bunun nedeni, genel olarak URL 'lerin [büyük/küçük harfe duyarlıdır](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). `404`Büyük harfle yazılan URL 'ler için tümünün olup olmadığını görmek isteyebilirsiniz. İstek adı koleksiyonu hakkında daha fazla bilgi için ASP.NET Web SDK tarafından [blog gönderisine](https://apmtips.com/posts/2015-02-23-request-name-and-url/)erişebilirsiniz.
 
 Maksimum Uzunluk: 1024 karakter
 
-## <a name="id"></a>Kimlik
+## <a name="id"></a>ID
 
 İstek çağrısı örneğinin tanımlayıcısı. İstek ve diğer telemetri öğeleri arasındaki bağıntı için kullanılır. KIMLIK, genel olarak benzersiz olmalıdır. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
 
@@ -45,23 +44,23 @@ Maksimum Uzunluk: 1024 karakter
 
 ## <a name="duration"></a>Süre
 
-Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM`. Pozitif ve günlerden `1000` küçük olmalıdır. İstek telemetrisi, başlangıcı ve bitişi olan işlemi temsil ettiğinden bu alan gereklidir.
+Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM` . Pozitif ve günlerden küçük olmalıdır `1000` . İstek telemetrisi, başlangıcı ve bitişi olan işlemi temsil ettiğinden bu alan gereklidir.
 
 ## <a name="response-code"></a>Yanıt kodu
 
-İstek yürütmenin sonucu. HTTP istekleri için HTTP durum kodu. Diğer istek türleri `HRESULT` için değer veya özel durum türü olabilir.
+İstek yürütmenin sonucu. HTTP istekleri için HTTP durum kodu. `HRESULT`Diğer istek türleri için değer veya özel durum türü olabilir.
 
 Maksimum Uzunluk: 1024 karakter
 
 ## <a name="success"></a>Başarılı
 
-Başarılı veya başarısız çağrı göstergesi. Bu alan gereklidir. Açıkça olarak `false` ayarlanmamışsa, istek başarılı olarak kabul edilir. İşlem özel durum tarafından `false` kesintiye uğrarsa veya hata sonucu kodu döndürdüğünden, bu değeri olarak ayarlayın.
+Başarılı veya başarısız çağrı göstergesi. Bu alan gereklidir. Açıkça olarak ayarlanmamışsa `false` , istek başarılı olarak kabul edilir. `false`İşlem özel durum tarafından kesintiye uğrarsa veya hata sonucu kodu döndürdüğünden, bu değeri olarak ayarlayın.
 
-Web uygulamaları için, yanıt kodu değerinden `400` küçük veya buna eşit olduğunda isteği başarılı olarak tanımlayın Application Insights. `401` Ancak, bu varsayılan eşlemenin uygulamanın anlam ile eşleşmemesi durumunda durumlar vardır. Yanıt kodu `404` , normal akışın bir parçası olabilen "kayıt yok" anlamına gelebilir. Aynı zamanda bozuk bir bağlantı olduğunu gösteriyor olabilir. Bozuk bağlantılar için daha gelişmiş mantık da uygulayabilirsiniz. Hatalı bağlantıları, yalnızca bu bağlantılar aynı sitede bulunduğunda, URL başvuran ' i çözümleyerek hatalara göre işaretleyebilirsiniz. Ya da şirketin mobil uygulamasından erişildiğinde bunları hatalara göre işaretleyin. Benzer `301` şekilde `302` , yeniden yönlendirmeyi desteklemeyen istemciden erişildiğinde hata olduğunu gösterir.
+Web uygulamaları için, yanıt kodu değerinden küçük veya buna eşit olduğunda isteği başarılı olarak tanımlayın Application Insights `400` `401` . Ancak, bu varsayılan eşlemenin uygulamanın anlam ile eşleşmemesi durumunda durumlar vardır. Yanıt kodu `404` , normal akışın bir parçası olabilen "kayıt yok" anlamına gelebilir. Aynı zamanda bozuk bir bağlantı olduğunu gösteriyor olabilir. Bozuk bağlantılar için daha gelişmiş mantık da uygulayabilirsiniz. Hatalı bağlantıları, yalnızca bu bağlantılar aynı sitede bulunduğunda, URL başvuran ' i çözümleyerek hatalara göre işaretleyebilirsiniz. Ya da şirketin mobil uygulamasından erişildiğinde bunları hatalara göre işaretleyin. Benzer şekilde `301` , `302` yeniden yönlendirmeyi desteklemeyen istemciden erişildiğinde hata olduğunu gösterir.
 
-Kısmen kabul edilen `206` içerik, genel bir isteğin bir başarısızlığını gösterebilir. Örneğin, Application Insights uç noktası tek bir istek olarak telemetri öğelerini toplu olarak alır. Toplu işteki `206` bazı öğelerin başarıyla işlenmediği zaman döndürür. Artış oranı, `206` Araştırılması gereken bir sorunu gösterir. Benzer mantık, başarıyı `207` ayrı yanıt kodlarının en kötü olabileceği çok durum için geçerlidir.
+Kısmen kabul edilen içerik `206` , genel bir isteğin bir başarısızlığını gösterebilir. Örneğin, Application Insights uç noktası tek bir istek olarak telemetri öğelerini toplu olarak alır. `206`Toplu işteki bazı öğelerin başarıyla işlenmediği zaman döndürür. Artış oranı, `206` Araştırılması gereken bir sorunu gösterir. Benzer mantık `207` , başarıyı ayrı yanıt kodlarının en kötü olabileceği çok durum için geçerlidir.
 
-İstek sonucu kodu ve durum kodu hakkında daha fazla bilgi için [blog gönderisine](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)erişebilirsiniz.
+İstek sonucu kodu ve durum kodu hakkında daha fazla bilgi için [blog gönderisine](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/)erişebilirsiniz.
 
 ## <a name="custom-properties"></a>Özel Özellikler
 

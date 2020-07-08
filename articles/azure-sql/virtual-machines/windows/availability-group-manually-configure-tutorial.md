@@ -14,12 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 574e2e1647ecf33fb05600407163c96247b6ce41
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391052"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960750"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Öğretici: Azure sanal makinelerinde el ile SQL Server kullanılabilirlik grubu yapılandırma
 
@@ -39,15 +38,15 @@ Diyagramda, öğreticide ne derledikleriniz gösterilmektedir.
 
 Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gereken önkoşullar listelenmektedir:
 
-|  |Gereksinim |Açıklama |
+| Gereksinim |Açıklama |
 |----- |----- |----- |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png) | İki SQL Server örneği | -Bir Azure kullanılabilirlik kümesinde <br/> -Tek bir etki alanında <br/> -Yük Devretme Kümelemesi özelliği yüklü |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Küme tanığı için dosya paylaşma |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server hizmet hesabı | Etki alanı hesabı |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server Agent hizmet hesabı | Etki alanı hesabı |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Güvenlik Duvarı bağlantı noktaları açık | -SQL Server: varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durum araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durum araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Yük Devretme Kümelemesi özelliği Ekle | SQL Server örneklerin her ikisi de bu özelliği gerektirir |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Yükleme etki alanı hesabı | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **iki SQL Server örneği**    | -Bir Azure kullanılabilirlik kümesinde <br/> -Tek bir etki alanında <br/> -Yük Devretme Kümelemesi özelliği yüklü |
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Küme tanığı için dosya paylaşma |  
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server hizmet hesabı**    | Etki alanı hesabı |
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server Agent hizmet hesabı**    | Etki alanı hesabı |  
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **güvenlik duvarı bağlantı noktaları açık**    | -SQL Server: varsayılan örnek için **1433** <br/> -Veritabanı yansıtma uç noktası: **5022** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Kullanılabilirlik grubu yük dengeleyici IP adresi durum araştırması: **59999** veya kullanılabilir herhangi bir bağlantı noktası <br/> -Küme çekirdeği yük dengeleyici IP adresi durum araştırması: **58888** veya kullanılabilir herhangi bir bağlantı noktası |
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **Yük Devretme Kümelemesi özelliği Ekle**    | SQL Server örneklerin her ikisi de bu özelliği gerektirir |
+|![Kare ](./media/availability-group-manually-configure-tutorial/square.png) **yükleme etki alanı hesabı**    | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
 
 
 Öğreticiye başlamadan önce, [Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları oluşturmak için önkoşulları gerçekleştirmeniz](availability-group-manually-configure-prerequisites-tutorial.md)gerekir. Bu Önkoşullar zaten tamamlanırsa, [küme oluştur](#CreateCluster)' a atlayabilirsiniz.
@@ -87,7 +86,7 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server yük devretme kümesi IP adresini ayarlama
 
   > [!NOTE]
-  > Windows Server 2019 ' de küme, **küme ağ adı**yerine bir **dağıtılmış sunucu adı** oluşturur. Windows Server 2019 kullanıyorsanız, bu öğreticide küme çekirdeği adına başvuran adımları atlayın. [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#windows-server-2019)kullanarak bir küme ağ adı oluşturabilirsiniz. Daha fazla bilgi için blog [Yük devretme kümesini gözden geçirin: küme ağ nesnesi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
+  > Windows Server 2019 ' de küme, **küme ağ adı**yerine bir **dağıtılmış sunucu adı** oluşturur. Windows Server 2019 kullanıyorsanız, bu öğreticide küme çekirdeği adına başvuran adımları atlayın. [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster)kullanarak bir küme ağ adı oluşturabilirsiniz. Daha fazla bilgi için blog [Yük devretme kümesini gözden geçirin: küme ağ nesnesi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
 1. **Yük devretme kümesi Yöneticisi**' de, **küme çekirdeği kaynakları** ' na kaydırın ve küme ayrıntılarını genişletin. **Başarısız** durumunda hem **adı** hem de **IP adresi** kaynaklarını görmeniz gerekir. Küme, makinenin kendisi ile aynı IP adresine atandığından ve bu nedenle yinelenen bir adres olduğundan, IP adresi kaynağı çevrimiçi duruma getirilemiyor.
 

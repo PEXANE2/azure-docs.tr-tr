@@ -3,12 +3,11 @@ title: Azure Kaynak Durumu genel bakış
 description: Azure Kaynak Durumu genel bakış
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159260"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041584"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
  
@@ -80,7 +79,7 @@ Kaynak Durumu **sistem durumu geçmişi** bölümünde en fazla 30 güne kadar g
 
 ![Son iki hafta içindeki Kaynak Durumu olaylarının listesi](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Bir kaynak için Kaynak Durumu açmak için:
 

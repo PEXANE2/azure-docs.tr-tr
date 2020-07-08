@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356160"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
@@ -44,7 +43,7 @@ Doğrudan kimlik doğrulama özelliğinin kiracınızda hala **etkinleştirildi�
 
 Kullanıcı geçişli kimlik doğrulaması kullanarak oturum açamıyor ise Azure AD oturum açma ekranında aşağıdaki kullanıcıya yönelik hatalardan birini görebilirler: 
 
-|Hata|Description|Çözüm
+|Hata|Açıklama|Çözüm
 | --- | --- | ---
 |AADSTS80001|Active Directory ile bağlantı kurulamıyor|Aracı sunucularının, parolalarının doğrulanması gereken kullanıcılarla aynı AD ormanının üyesi olduğundan ve Active Directory bağlanabildiklerinden emin olun.  
 |AADSTS8002|Active Directory bağlantısında bir zaman aşımı oluştu|Active Directory kullanılabilir olduğundan ve aracılardan gelen isteklere yanıt verdiğinden emin olun.

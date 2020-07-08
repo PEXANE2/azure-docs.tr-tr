@@ -4,10 +4,9 @@ description: Bu makalede, Azure Lab Services yapıların yönetilmesine yardımc
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d9c184f3917be378eb77d1bf4096bfebb5ee1884
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445602"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>Az.LabServices PowerShell modülü (önizleme)
@@ -23,7 +22,7 @@ Tüm laboratuvarlarda çalışan tüm VM 'Leri durdurmak için bir PowerShell ko
 Get-AzLabAccount | Get-AzLab | Get-AzLabVm -Status Running | Stop-AzLabVm
 ```
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>başlarken
 1. Makinenizde yoksa [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) . 
 2. Makinenize [az. LabServices. psm1](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Modules/Library/Az.LabServices.psm1) indirin.
 3. Modülü içeri aktar:

@@ -4,10 +4,9 @@ description: Bu makalede, Azure Service Bus iletiler, yük, ileti yönlendirme v
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341681"
 ---
 # <a name="messages-payloads-and-serialization"></a>İletiler, yükler ve serileştirme
@@ -22,7 +21,7 @@ Service Bus ileti, Service Bus hiçbir biçimde hizmet tarafında hiçbir şekil
  
 AMQP protokol düzeyinde kullanılan eşdeğer adlar parantez içinde listelenmiştir. 
 
-| Özellik Adı                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Özellik Adı                         | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (içerik türü)           | İsteğe bağlı olarak, RFC2045 biçimini izleyen bir tanımlayıcı ile ileti yükünü açıklar, Bölüm 5; Örneğin, `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (bağıntı kimliği)       | Bir uygulamanın, bağıntı amaçları doğrultusunda ileti için bir bağlam belirtmesini sağlar; Örneğin, yanıtmakta olan bir iletinin **MessageID** ' i yansıtmaktadır.                                                                                                                                                                                                                                                                  |

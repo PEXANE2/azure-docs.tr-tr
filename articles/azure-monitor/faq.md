@@ -7,12 +7,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807715"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -245,7 +244,7 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
 
 * Bu dosyaları projenize ekler:
   * ApplicationInsights.config
-  * AI. js
+  * ai.js
 * Şu NuGet paketlerini yükleme:
   * *APPLICATION INSIGHTS API* -çekirdek API 'si
   * *Web uygulamaları için APPLICATION INSIGHTS API* -sunucudan telemetri göndermek için kullanılır
@@ -262,7 +261,7 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
 Uygulama türüne uygun SDK için [sürüm notlarına](app/release-notes.md) bakın.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
-Çözüm Gezgini ' de sağ tıklayın `ApplicationInsights.config` ve **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+Çözüm Gezgini ' de sağ tıklayın `ApplicationInsights.config` ve **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen ApplicationInsights.config izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>`providers('Microsoft.Insights', 'components').apiVersions[0]`Azure Resource Manager dağıtımlarım içinde kullanabilir miyim?
 
@@ -318,7 +317,7 @@ Evet, şu sunucuda yazabilirsiniz:
 * IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
 
 
-Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP` . [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP` . [Daha fazla bilgi edinin](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](app/export-power-bi.md ) .
 
@@ -367,7 +366,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 ### <a name="what-are-the-user-and-session-counts"></a>Kullanıcı ve oturum sayıları nelerdir?
 
 * JavaScript SDK 'Sı, Web istemcisinde Kullanıcı tanımlama bilgisini, döndürülen kullanıcıları ve etkinlikleri gruplandırmak için bir oturum tanımlama bilgisini belirler.
-* İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Bir gerçek Kullanıcı, sitenizi farklı tarayıcılarda kullanıyorsa ya da özel/veya farklı makinelere göz atmak veya farklı makineler kullanmak için birden çok kez sayılır.
 * Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](app/api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
 
@@ -443,12 +442,12 @@ Web sunucunuzun, uç noktalarımıza telemetri göndermesini sağlar.
 
 #### <a name="gateway-redirect"></a>Ağ Geçidi yönlendirmesi
 
-Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin. Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights. config örneğinde aşağıda gösterilen varsayılan değerleri kullanır. 
+Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin. Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights.config aşağıda gösterilen varsayılan değerleri kullanır. 
 
 Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda varsayılan değerleri ile değiştirin `http://<your.gateway.address>/<relative path>` .
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights. config:
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights.config:
 ```xml
 <ApplicationInsights>
   ...
@@ -479,7 +478,7 @@ Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. 
 Proxy geçişi, bir makine düzeyi veya uygulama düzeyi proxy yapılandırılarak elde edilebilir.
 Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
  
- Örnek Web. config:
+ Örnek Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -546,7 +545,7 @@ Bunu nasıl hesaplarız?
 
 Aracı sürümü ciprod12042019 ve üzeri için, varsayılan olarak bu iki özellik her günlük satırı için doldurulmaz ve toplanan günlük verilerinde maliyeti en aza indirir. Bu özellikleri içeren tabloyu, değerlerini sorgulamak için iki seçenek vardır:
 
-#### <a name="option-1"></a>Seçenek 1 
+#### <a name="option-1"></a>1\. Seçenek 
 
 Sonuçlara bu özellik değerlerini dahil etmek için diğer tabloları birleştirin.
 
@@ -574,7 +573,7 @@ ContainerLog
 
 ```
 
-#### <a name="option-2"></a>2. Seçenek
+#### <a name="option-2"></a>2\. Seçenek
 
 Her kapsayıcı günlük satırı için bu özellikler için koleksiyonu yeniden etkinleştirin.
 
@@ -619,7 +618,7 @@ Aracıyı yükseltmeyi öğrenmek için bkz. [Aracı yönetimi](insights/contain
 
 Şu anda kapsayıcılar için Azure Izleyici çok satırlı günlüğe kaydetmeyi desteklemez, ancak kullanılabilir geçici çözümler vardır. Tüm hizmetleri JSON biçiminde yazacak şekilde yapılandırabilir ve ardından Docker/Moby, bunları tek bir satır olarak yazar.
 
-Örneğin, bir örnek Node. js uygulaması için aşağıdaki örnekte gösterildiği gibi, günlüğünüz bir JSON nesnesi olarak sardırabilirsiniz:
+Örneğin, bir örnek node.js uygulaması için aşağıdaki örnekte gösterildiği gibi, günlüğlerinizi bir JSON nesnesi olarak kaydırabilirsiniz:
 
 ```
 console.log(json.stringify({ 

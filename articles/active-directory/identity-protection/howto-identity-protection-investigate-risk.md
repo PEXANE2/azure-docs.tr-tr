@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463952"
 ---
-# <a name="how-to-investigate-risk"></a>Nasıl yapılır: riski araştırma
+# <a name="how-to-investigate-risk"></a>Nasıl Yapılır: Riski araştırma
 
 Kimlik koruması, kuruluşların ortamlarında kimlik risklerini araştırmak için kullanabilecekleri üç rapor sağlar. Bu raporlar **riskli kullanıcılar**, **riskli oturum**açmalar ve **risk algılamaları**. Olayların araştırılması, güvenlik stratejinizde zayıf noktaları daha iyi anlamak ve tanımlamak için önemli bir anahtardır.
 

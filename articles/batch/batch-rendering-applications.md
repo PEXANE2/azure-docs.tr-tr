@@ -3,12 +3,11 @@ title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726494"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960495"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>VM görüntülerini işlemeye önceden yüklenmiş uygulamalar
 
@@ -60,7 +59,7 @@ Aşağıdaki liste Windows Server 2016, sürüm 1.3.8 işleme görüntüleri iç
 * AZ 10
 
 > [!IMPORTANT]
-> [Azure Batch uzantısı şablonlarının](https://github.com/Azure/batch-extension-templates)dışında Maya ile V-Ray çalıştırmak için, `vrayses.exe` işlemeyi çalıştırmadan önce ' yi başlatın. Vrayses. exe ' yi şablonların dışında başlatmak için aşağıdaki komutu kullanabilirsiniz `%MAYA_2017%\vray\bin\vrayses.exe"` .
+> [Azure Batch uzantısı şablonlarının](https://github.com/Azure/batch-extension-templates)dışında Maya ile V-Ray çalıştırmak için, `vrayses.exe` işlemeyi çalıştırmadan önce ' yi başlatın. vrayses.exe şablonların dışında başlatmak için aşağıdaki komutu kullanabilirsiniz `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Bir örnek için GitHub 'da [Maya ve V-Ray şablonunun](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) başlangıç görevine bakın.
 
@@ -87,4 +86,4 @@ Aşağıdaki liste Windows Server 2016, sürüm 1.3.7 işleme görüntüleri iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Oluşturma VM görüntülerini kullanmak için bir havuz oluşturulduğunda havuz yapılandırmasında belirtilmesi gerekir; [işleme Için Batch havuzu özelliklerine](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools)bakın.
+Oluşturma VM görüntülerini kullanmak için bir havuz oluşturulduğunda havuz yapılandırmasında belirtilmesi gerekir; [işleme Için Batch havuzu özelliklerine](./batch-rendering-functionality.md#batch-pools)bakın.

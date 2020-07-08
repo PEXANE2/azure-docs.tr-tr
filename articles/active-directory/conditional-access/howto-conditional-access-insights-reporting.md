@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253282"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Koşullu erişim öngörüleri ve raporlama
@@ -50,7 +49,7 @@ Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirdiyseniz, çal
 
 Öngörüler ve raporlama çalışma kitabına erişmek için:  
 
-1. **Azure Portal** oturum açın.
+1. **Azure portalında** oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **öngörülerini ve raporlamayı**inceleyin.
 
 ### <a name="get-started-select-parameters"></a>Kullanmaya başlayın: parametreleri seçin 
@@ -103,7 +102,7 @@ Ayrıca, panonun alt kısmındaki oturum açma işlemlerini arayarak belirli bir
 
 Çalışma kitabına erişebilmek için, uygun Azure AD izinlerinin yanı sıra Log Analytics çalışma alanı izinlerine de ihtiyacınız vardır. Örnek bir Log Analytics sorgusu çalıştırarak uygun çalışma alanı izinlerine sahip olup olmadığını test etmek için:
 
-1. **Azure Portal** oturum açın.
+1. **Azure portalında** oturum açın.
 1. **Azure Active Directory**  >  **günlüklere**gidin.
 1. `SigninLogs`Sorgu kutusuna yazın ve **Çalıştır**' ı seçin.
 1. Sorgu herhangi bir sonuç döndürmezse, çalışma alanınız doğru şekilde yapılandırılmamış olabilir. 

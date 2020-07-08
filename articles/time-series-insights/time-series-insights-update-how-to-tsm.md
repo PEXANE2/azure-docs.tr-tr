@@ -10,19 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77470760"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041481"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
 Bu makalede, Azure Time Series Insights önizlemede zaman serisi modeliyle nasıl çalışılacağı açıklanır. Yaygın olarak karşılaşılan çeşitli veri senaryolarına ilişkin ayrıntılar.
 
 > [!TIP]
-> * Önizleme [zamanı serisi modeli](time-series-insights-update-tsm.md)hakkında bilgi edinin.
+> * Önizleme [zamanı serisi modeli](concepts-model-overview.md)hakkında bilgi edinin.
 > * [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)'da önizleme Kullanıcı arabirimine gitme hakkında daha fazla bilgi edinin.
 
 ## <a name="instances"></a>Örnekler
@@ -53,7 +52,7 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
     [![Örnekleri JSON aracılığıyla toplu karşıya yükleyin.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
-1. **Karşıya yükle**' yi seçin.
+1. **Karşıya Yükle**'yi seçin.
 
 ### <a name="edit-a-single-instance"></a>Tek bir örneği düzenleme
 
@@ -104,7 +103,7 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
 1. **JSON karşıya yükle**' yi seçin.
 1. Hiyerarşi yükünü içeren dosyayı seçin.
-1. **Karşıya yükle**' yi seçin.
+1. **Karşıya Yükle**'yi seçin.
 
     [![Hiyerarşileri toplu karşıya yüklemeye yönelik seçimler.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
 
@@ -147,7 +146,7 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
 1. **JSON karşıya yükle**' yi seçin.
 1. Tür yükünü içeren dosyayı seçin.
-1. **Karşıya yükle**' yi seçin.
+1. **Karşıya Yükle**'yi seçin.
 
     [![Toplu türleri karşıya yükleme seçenekleri.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
 
@@ -168,7 +167,7 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Zaman serisi modeli hakkında daha fazla bilgi için [veri modellemesini](./time-series-insights-update-tsm.md)okuyun.
+- Zaman serisi modeli hakkında daha fazla bilgi için [veri modellemesini](./concepts-model-overview.md)okuyun.
 
 - Önizleme hakkında daha fazla bilgi edinmek için [Azure Time Series Insights önizleme Gezgini ' nde verileri görselleştir](./time-series-insights-update-explorer.md)' i okuyun.
 
