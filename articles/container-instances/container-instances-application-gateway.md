@@ -4,10 +4,9 @@ description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Applicati
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299171"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
@@ -71,7 +70,7 @@ az network public-ip create \
 
 Önceki adımda yapılandırdığınız sanal ağda bir kapsayıcı grubu oluşturmak için aşağıdaki [az Container Create][az-container-create] öğesini çalıştırın. 
 
-Grup *Myacıubnet* alt ağına dağıtılır ve görüntüyü çeken *AppContainer* adlı tek bir örnek içerir `aci-helloworld` . Belgelerdeki diğer makalelerde gösterildiği gibi, bu görüntü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. 
+Grup *Myacıubnet* alt ağına dağıtılır ve görüntüyü çeken *AppContainer* adlı tek bir örnek içerir `aci-helloworld` . Bu resimde, belgelerdeki diğer makalelerde gösterildiği gibi, statik bir HTML sayfasına hizmet veren Node.js yazılmış küçük bir Web uygulamasını paketler. 
 
 ```azurecli
 az container create \

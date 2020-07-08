@@ -11,10 +11,9 @@ ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84297913"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
@@ -145,7 +144,7 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalar (es
 1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar** sekmesini seçin.
 1. Kaydolduysanız tüm uygulamaları silin.
 1. **B2C-Extensions-App**' i silin.
-1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
@@ -164,7 +163,7 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalar (es
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
 1. Azure AD B2C kiracınızda kayıtlı olan tüm **uygulamaları (eski)** silin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
-1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
 1. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
 1. **Tüm uygulamaları görüntüle** seçeneğini belirleyin

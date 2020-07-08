@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: fa90c3579e241fd6b7dc53c9df7d996402fc78a5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84296910"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Zeppelin 'i Hive ambarı Bağlayıcısı ile tümleştirme
@@ -22,7 +21,7 @@ HDInsight Spark kümeleri, farklı yorumlayıcılara sahip Apache Zeppelin not d
 
 [Hive ambarı Bağlayıcısı kurulum](apache-hive-warehouse-connector.md#hive-warehouse-connector-setup) adımlarını doldurun.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 1. Apache Spark kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 

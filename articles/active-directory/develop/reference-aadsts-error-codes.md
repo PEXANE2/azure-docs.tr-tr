@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266602"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
@@ -308,7 +307,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource-kaynak yalnızca cihaz belirteçlerini kabul edecek şekilde yapılandırılmadı. |
 | AADSTS240001 | BulkAADJTokenUnauthorized-Kullanıcı Azure AD 'ye cihaz kaydetme yetkisine sahip değil. |
 | AADSTS240002 | Requiredclaimısmissing-id_token ver olarak kullanılamaz `urn:ietf:params:oauth:grant-type:jwt-bearer` .|
-| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-kiracı yöneticisi, bu isteği engelleyen bir güvenlik ilkesi yapılandırmıştır. İsteğiniz ilke gereksinimlerini karşılayıp karşılamadığını öğrenmek için kiracı düzeyinde tanımlanan güvenlik ilkelerini kontrol edin. |
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-kiracı yöneticisi, bu isteği engelleyen bir güvenlik ilkesi yapılandırmıştır. Kiracı düzeyinde tanımlanmış olan güvenlik ilkelerini denetleyerek isteğinizin ilke gereksinimlerine uygun olup olmadığını belirleyin. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest-uygulama dizinde/kiracıda bulunamadı. Uygulama, kiracının yöneticisi tarafından yüklenmediyse veya kiracıdaki herhangi bir kullanıcı tarafından onaylanmadıysa bu durum ortaya çıkabilir. Uygulamanın Tanımlayıcı değerini yanlış yapılandırılmış veya uygulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. |
 | AADSTS700020 | Interactionrequired-erişim izni etkileşim gerektiriyor. |
 | AADSTS700022 | Invalidmultipleresourcesscope-giriş parametresi kapsamı için girilen değer, birden fazla kaynak içerdiğinden geçerli değil. |

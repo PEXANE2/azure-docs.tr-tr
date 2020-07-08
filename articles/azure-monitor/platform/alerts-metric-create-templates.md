@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/2/2020
 ms.subservice: alerts
 ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299375"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
@@ -34,7 +33,7 @@ Temel adımlar aşağıdaki gibidir:
 
 Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` ilgili tüm özellikleri bir kaynak oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
-Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -208,7 +207,7 @@ Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada b
 
 Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir.
 
-Aşağıdaki JSON 'u simplestaticmetricalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
+Aşağıdaki JSON 'ı simplestaticmetricalert.parameters.jsolarak kaydedin ve gereken şekilde değiştirin.
 
 ```json
 {
@@ -283,7 +282,7 @@ az group deployment create \
 
 Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` ilgili tüm özellikleri bir kaynak oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
-Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -481,7 +480,7 @@ Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada b
 
 Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir. 
 
-Aşağıdaki JSON öğesini simpledynamicmetricalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
+Aşağıdaki JSON 'ı simpledynamicmetricalert.parameters.jsolarak kaydedin ve gereken şekilde değiştirin.
 
 ```json
 {
@@ -572,7 +571,7 @@ Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullan�
     - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutuna sahip olduğundan ve *Criterion1* **apiname** boyutu için *"GetBlob"* değerini belirttiğinden, Ayrıca, *criterion2* de **apiname** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
 
 
-Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -707,7 +706,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON
 
 Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advancedstaticmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı advancedstaticmetricalert.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -816,7 +815,7 @@ Aşağıdaki örnekte, uyarı kuralı, **işlem** ölçümü Için **responseTyp
 - Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
 - Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
 
-Bu izlenecek yolun amacına uygun olarak JSON 'u multidimensionalstaticmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u multidimensionalstaticmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -943,7 +942,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u multidimensionalstaticmetricale
 
 Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u multidimensionalstaticmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı multidimensionalstaticmetricalert.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -1036,7 +1035,7 @@ Aşağıdaki örnekte, uyarı kuralı, **işlem** ölçümü Için **responseTyp
 - Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
 - Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
 
-Bu izlenecek yolun amacına uygun olarak JSON 'u advanceddynamicmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u advanceddynamicmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -1158,7 +1157,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u advanceddynamicmetricalert. JSO
 
 Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı advanceddynamicmetricalert.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -1252,7 +1251,7 @@ Azure Izleyici 'de özel ölçümler hakkında daha fazla bilgi edinmek için bk
 
 Özel bir ölçümde bir uyarı kuralı oluştururken, hem ölçüm adını hem de ölçüm ad alanını belirtmeniz gerekir. Henüz mevcut olmayan özel bir ölçümde uyarı kuralı oluşturverilmediği için özel ölçümün zaten bildirilmekte olduğundan emin olmanız gerekir.
 
-Bu izlenecek yolun amacına uygun olarak JSON 'ı customstaticmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u customstaticmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -1432,7 +1431,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'ı customstaticmetricalert. JSON 
 
 Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'ı customstaticmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı customstaticmetricalert.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -1527,7 +1526,7 @@ Bu bölümde, tek bir kuralla birden çok kaynağı izlemek üzere üç senaryon
 
 Bu şablon, bir veya daha fazla kaynak grubunda tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen bir statik eşik ölçüm uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Static. JSON olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı all-vms-in-resource-group-static.jsolarak kaydedin.
 
 ```json
 {
@@ -1760,7 +1759,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Static. JSON olarak 
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'ı Resource-Group-Static. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı all-vms-in-resource-group-static.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -1839,7 +1838,7 @@ az group deployment create \
 
 Bu şablon, bir veya daha fazla kaynak grubunda tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Dynamic. JSON olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı all-vms-in-resource-group-dynamic.jsolarak kaydedin.
 
 ```json
 {
@@ -2089,7 +2088,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Dynamic. JSON olarak
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'ı Resource-Group-Dynamic. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı all-vms-in-resource-group-dynamic.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -2174,7 +2173,7 @@ az group deployment create \
 
 Bu şablon, bir abonelikteki tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen bir statik eşik ölçümü uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı tüm-VM--------------------
+Bu izlenecek yol için aşağıdaki JSON 'ı all-vms-in-subscription-static.jsolarak kaydedin.
 
 ```json
 {
@@ -2408,7 +2407,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı tüm-VM--------------------
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı----------------------
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı all-vms-in-subscription-static.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -2484,7 +2483,7 @@ az group deployment create \
 
 Bu şablon, bir abonelikteki tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Bu izlenecek yol için, aşağıdaki JSON 'yi abonelik-dinamik. JSON olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı all-vms-in-subscription-dynamic.jsolarak kaydedin.
 
 ```json
 {
@@ -2734,7 +2733,7 @@ Bu izlenecek yol için, aşağıdaki JSON 'yi abonelik-dinamik. JSON olarak kayd
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı abonelik---------------------
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı all-vms-in-subscription-dynamic.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -2816,7 +2815,7 @@ az group deployment create \
 
 Bu şablon, bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) bir listesi için yüzde CPU 'YU izleyen bir statik eşik ölçümü uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı-VM-static. JSON listesi olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı list-of-vms-static.jsolarak kaydedin.
 
 ```json
 {
@@ -3050,7 +3049,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı-VM-static. JSON listesi olarak kayd
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı-VM-static. Parameters. JSON listesi olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı list-of-vms-static.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -3129,7 +3128,7 @@ az group deployment create \
 
 Bu şablon, bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) bir listesi için yüzde CPU 'YU izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı VM 'ler-Dynamic. JSON olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı list-of-vms-dynamic.jsolarak kaydedin.
 
 ```json
 {
@@ -3379,7 +3378,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı VM 'ler-Dynamic. JSON olarak kayded
 ```
 
 Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
-Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı VM listesi-Dynamic. Parameters. JSON olarak kaydedin ve değiştirin.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı list-of-vms-dynamic.parameters.jsolarak kaydedin ve değiştirin.
 
 ```json
 {
@@ -3465,7 +3464,7 @@ az group deployment create \
 [Application Insights kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) , dünyanın her yerindeki çeşitli konumlardan Web sitenizin/uygulamanızın kullanılabilirliğini izlemenize yardımcı olur. Kullanılabilirlik testi uyarıları, belirli sayıda konumdan başarısız olduğunda, kullanılabilirlik testleri size bildirir.
 Ölçüm uyarıları (Microsoft. Insights/metricAlerts) ile aynı kaynak türünde kullanılabilirlik testi uyarıları. Aşağıdaki örnek Azure Resource Manager şablonu, bir basit kullanılabilirlik testini ve ilişkili uyarıyı ayarlamak için kullanılabilir.
 
-Bu izlenecek yolun amacına uygun olarak JSON öğesini availabilityalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u availabilityalert.jsolarak kaydedin.
 
 ```json
 {
@@ -3573,7 +3572,7 @@ Parametrelerin değerlerini, komut satırında veya bir parametre dosyası arac�
 >
 > `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, ";" ile kaçış yapmanız gerekir `&amp`
 
-Aşağıdaki JSON öğesini availabilityalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
+Aşağıdaki JSON 'ı availabilityalert.parameters.jsolarak kaydedin ve gereken şekilde değiştirin.
 
 ```json
 {

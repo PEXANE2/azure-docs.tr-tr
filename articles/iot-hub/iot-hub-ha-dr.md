@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267639"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
@@ -131,7 +130,7 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
 | Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Hiçbiri|Hiçbiri|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Yes|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar

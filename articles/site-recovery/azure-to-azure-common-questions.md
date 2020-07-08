@@ -6,10 +6,9 @@ manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299791"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
@@ -183,7 +182,7 @@ Evet, bekletme süresini 24 saat ile 72 saate artırırsanız Site Recovery, kur
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux sunucularında uygulama tutarlılığı ile çoğaltmayı etkinleştirebilir miyim?
 
-Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. [Daha fazla bilgi](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Çoklu VM tutarlılığı
 

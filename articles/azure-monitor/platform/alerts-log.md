@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298470"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
@@ -207,7 +206,7 @@ Aşağıda, örnek verileri değişken olarak ayarlanmış şekilde, [sonuç tü
 
 ```
 
-Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
+Yukarıdaki örnek JSON (deyin), Bu izlenecek yol için sampleScheduledQueryRule.jsolarak kaydedilebilir ve [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Azure kaynak şablonu kullanarak çapraz kaynak sorgusuyla günlük uyarısı
@@ -304,7 +303,7 @@ Aşağıda, değişken olarak ayarlanan örnek verilerle birlikte, [Ölçüm Öl
 > [!IMPORTANT]
 > Günlük uyarısında çapraz kaynak sorgusu kullanılırken, [Authorizedresources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) kullanımı zorunludur ve kullanıcının belirtilen kaynak listesine erişimi olması gerekir
 
-Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
+Yukarıdaki örnek JSON (deyin), Bu izlenecek yol için sampleScheduledQueryRule.jsolarak kaydedilebilir ve [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
 
 ## <a name="managing-log-alerts-using-powershell"></a>PowerShell kullanarak günlük uyarılarını yönetme
 
@@ -353,7 +352,7 @@ Azure Izleyici- [Zamanlanmış sorgu kuralları API 'si](https://docs.microsoft.
 > [!NOTE]
 > Log Analytics için günlük uyarıları, eski [Log Analytics uyarı API 'si](api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions-resources-searches-alerts.md) eski şablonları kullanılarak da yönetilebilir. Burada ayrıntılı olarak açıklanan yeni ScheduledQueryRules API 'sini kullanma hakkında daha fazla bilgi için, bkz. [Log Analytics uyarılar için yenı API 'ye geçme](alerts-log-api-switch.md).
 
-Günlük uyarıları Şu anda adanmış CLı komutlarına sahip değil; aşağıda gösterildiği gibi, kaynak şablonu bölümünde daha önce gösterilen örnek kaynak şablonu için Azure Resource Manager CLı komutu aracılığıyla (sampleScheduledQueryRule. JSON) kullanılabilir:
+Günlük uyarıları Şu anda adanmış CLı komutlarına sahip değil; aşağıda gösterildiği gibi, kaynak şablonu bölümünde daha önce (sampleScheduledQueryRule.jsaçık) gösterilen örnek kaynak şablonu için Azure Resource Manager CLı komutu aracılığıyla kullanılabilir:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

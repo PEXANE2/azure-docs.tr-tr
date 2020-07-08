@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300529"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Önyükleme hatası sorunlarını giderme-disk okuma hatası oluştu
@@ -58,7 +57,7 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
 
 1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün **etkin**olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil durum bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
 
-1. Yükseltilmiş bir komut istemi açın (cmd. exe).
+1. Yükseltilmiş bir komut istemi açın (cmd.exe).
 1. **DiskPart** aracını başlatmak için **DiskPart** girin.
 1. Sistemdeki diskleri listelemek ve bağlı işletim sistemi sanal sabit diskini (VHD) belirlemek için **liste diski** girin.
 1. Bağlı işletim sistemi VHD 'SI konumlandırıldıktan sonra, diski seçmek için **sel disk #** girin. Disk 1 ' in bağlı işletim sistemi VHD 'sinin bir örneği için aşağıdaki resme bakın.
@@ -86,7 +85,7 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
 
 ### <a name="fix-the-disk-partition"></a>Disk bölümünü çözme
 
-1. Yükseltilmiş bir komut istemi açın (cmd. exe).
+1. Yükseltilmiş bir komut istemi açın (cmd.exe).
 1. Disklerde **Chkdsk** çalıştırmak ve hata düzeltmeleri yapmak için aşağıdaki komutu kullanın:
 
    `chkdsk <DRIVE LETTER>: /f`

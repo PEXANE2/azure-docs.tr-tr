@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Azure Kubernetes hizmetlerinde Azure Dev Spaces çalıştırmaya yönelik ağ gereksinimlerini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CNı, kubenet, SDN, ağ
 ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300700"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma

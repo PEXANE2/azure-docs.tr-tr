@@ -4,10 +4,9 @@ description: Bu konu, IoT Edge üzerindeki canlı video analizlerinin Module iki
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266823"
 ---
 # <a name="module-twin-json-schema"></a>Module ikizi JSON şeması
@@ -25,12 +24,12 @@ IoT Edge üzerindeki canlı video analizi, aşağıdaki modülün ikizi özellik
 
 |Özellik |Gerekli |Dinamik |Açıklama |
 |---|---|---|---|
-|applicationDataDirectory |Yes |Hayır |Kalıcı yapılandırma için bağlı bir birimin yolu. |
-|Azudüzeltici Aservicesarmid |Yes |Hayır |Media Services hesabı için benzersiz Azure Kaynak Yönetimi tanımlayıcısı.|
-|Aadtenantıd |Yes |Hayır |Müşteri Azure AD kiracı KIMLIĞI.|
+|applicationDataDirectory |Evet |Hayır |Kalıcı yapılandırma için bağlı bir birimin yolu. |
+|Azudüzeltici Aservicesarmid |Evet |Hayır |Media Services hesabı için benzersiz Azure Kaynak Yönetimi tanımlayıcısı.|
+|Aadtenantıd |Evet |Hayır |Müşteri Azure AD kiracı KIMLIĞI.|
 |Aadserviceprincıpalappıd |Yes |Yes |Müşteri Azure AD AppID oluşturdu.|
-|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID sertifikası oluşturdu.|
-|aadServicePrincipalPassword |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID parolası oluşturdu.|
+|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID sertifikası oluşturdu.|
+|aadServicePrincipalPassword |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID parolası oluşturdu.|
 |aadEndpoint |Hayır |Hayır |Buluta özel Azure AD uç noktası. <br/>Varsayılanını`https://login.microsoftonline.com` |
 |Aadresourceıd |Hayır |Hayır |Buluta özel Azure AD hedef kitlesi/kaynak KIMLIĞI <br/>Varsayılanını`https://management.core.windows.net/` |
 |armEndpoint |Hayır |Hayır |Buluta özgü Azure Kaynak uç noktasını yönetme. <br/>Varsayılanını`https://management.azure.com/` |

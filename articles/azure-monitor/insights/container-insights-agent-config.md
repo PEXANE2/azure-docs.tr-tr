@@ -4,10 +4,9 @@ description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamay
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299290"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
@@ -31,7 +30,7 @@ Bunu sıfırdan oluşturmak zorunda kalmadan özelleştirmelerinizle kolayca dü
 
 Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar verilmiştir.
 
-| Anahtar | Veri türü | Değer | Description |
+| Anahtar | Veri türü | Değer | Açıklama |
 |--|--|--|--|
 | `schema-version` | Dize (büyük/küçük harfe duyarlı) | v1 | Bu, aracı tarafından kullanılan şema sürümüdür<br> Bu ConfigMap ayrıştırılırken.<br> Şu anda desteklenen şema sürümü v1.<br> Bu değerin değiştirilmesi desteklenmez ve<br> ConfigMap değerlendirilirken reddedildi. |
 | `config-version` | Dize |  | , Kaynak denetimi sisteminizde/deponuzda bu yapılandırma dosyasının sürümünün izini sürme yeteneğini destekler.<br> İzin verilen en fazla karakter sayısı 10 ' dur ve diğer tüm karakterler kesilir. |

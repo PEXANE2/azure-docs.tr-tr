@@ -4,10 +4,9 @@ description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı v
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298270"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
@@ -29,7 +28,7 @@ Kümeyi bu yeni özellikleri destekleyecek şekilde güncelleştirmek Azure port
 
 Her iki işlem de, aracı tarafından toplanan verilerin kümeler kaynağına yayımlanabilmesi için izleme **ölçümleri yayımcı** rolünü kümenin hizmet sorumlusuna veya izleme eklentisi için Kullanıcı tarafından atanmış MSI 'ye atar. Ölçümleri izlemek, yalnızca ölçümleri kaynağa iletmek için izne sahiptir, herhangi bir durumu değiştiremez, kaynağı güncelleştiremez veya herhangi bir veriyi okuyabilir. Rol hakkında daha fazla bilgi için bkz. [ölçümleri Izleme yayımcısı rolü](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakileri onaylayın:
 
@@ -90,7 +89,7 @@ Azure CLı kullanarak aboneliğinizdeki belirli bir kümeyi güncelleştirmek i�
 
 Azure PowerShell kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Mdm_onboarding_atscale. ps1** betiğini [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) ve GitHub deponuzdaki yerel bir klasöre kaydedin.
+1. **mdm_onboarding_atscale.ps1** betiğini [indirip](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) GitHub deponuzdaki yerel bir klasöre kaydedin.
 2. Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.  AKS kümesi için **aks genel bakış** sayfasındaki değeri kullanarak **SubscriptionID** değerini düzenleyin.
 
     ```powershell
@@ -106,7 +105,7 @@ Azure PowerShell kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek i
 
 Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Mdm_onboarding. ps1** betiğini [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) ve GitHub deponuzdaki yerel bir klasöre kaydedin.
+1. **mdm_onboarding.ps1** betiğini [indirip](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) GitHub deponuzdaki yerel bir klasöre kaydedin.
 
 2. Azure PowerShell kullanarak aşağıdaki komutu çalıştırın. AKS kümesi için **aks genel bakış** sayfasındaki değerleri kullanarak **SubscriptionID**, **resourcegroupname**ve **clusterName** değerlerini düzenleyin.
 

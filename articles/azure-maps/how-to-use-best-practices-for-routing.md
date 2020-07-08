@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266704"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
@@ -323,7 +322,7 @@ Aşağıdaki görüntüde, zaman ve mesafe için belirtilen Sapma limitleriyle a
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Yönlendirme hizmetini bir Web uygulamasında kullanma
 
-Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node. js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
+Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

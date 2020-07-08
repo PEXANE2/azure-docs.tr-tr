@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298236"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazları oluşturmak için Visual Studio ve Visual Studio Code kullanma
@@ -27,7 +26,7 @@ Bu makale, şunları nasıl yapacağınızı gösterir:
 
 IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi için bkz [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench) ..
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
@@ -69,7 +68,7 @@ Kod Oluşturucu, yerel klasörde bulunan DCM ve arabirim dosyalarını kullanmay
 
 Kod oluşturma işlemi tamamlandıktan sonra uzantı, kodla yeni bir VS Code penceresi açar. **Main. c**gibi oluşturulmuş bir dosyayı açarsanız, IntelliSense 'ın c SDK kaynak dosyalarını açmadığı hakkında bilgi edinebilirsiniz. Doğru IntelliSense ve kod gezintisini etkinleştirmek için, C SDK kaynağını eklemek için aşağıdaki adımları kullanın:
 
-1. VS Code ' de, **CTRL + SHIFT + P** ' yi kullanarak komut paletini açın, yazın ve **C/C++: yapılandırma yapılandırma (JSON)** öğesini seçerek **c_cpp_properties. JSON** dosyasını açın.
+1. VS Code ' de, **Ctrl + Shift + P** tuşlarına basarak komut paletini açın, yazın ve **C/C++: Düzenle yapılandırma (JSON)** öğesini seçerek **c_cpp_properties.js** dosyayı açın.
 
 1. Cihaz SDK 'sının yolunu `includePath` bölümüne ekleyin:
 
@@ -187,7 +186,7 @@ Komut satırında CMake ve Visual Studio C/C++ derleyicilerini kullanarak Window
 > [!TIP]
 > Visual Studio 'da CMake 'i kullanma hakkında daha fazla bilgi için bkz. [CMake projesi oluşturma](https://docs.microsoft.com/cpp/build/cmake-projects-in-visual-studio?view=vs-2019#building-cmake-projects) .
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK kaynak kodu ile birlikte cihaz kodunun nasıl oluşturulacağı gösterilmektedir:
 

@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 05/27/2020
 ms.author: dbradish
 ms.openlocfilehash: 404022b13f44174e4b647f0430a58fac5eeb81df
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300622"
 ---
 # <a name="azure-cli-for-azure-data-share"></a>Azure veri paylaşımında Azure CLı
@@ -24,7 +23,7 @@ Azure komut satırı arabirimi ([Azure CLI](/cli/azure/what-is-azure-cli)), Azur
 
 Azure veri paylaşımıyla ilgili tüm Azure CLı komutları Şu anda Azure CLı için uzantılardır.  Bir uzantı, deneysel ve yayın öncesi komutlara erişmenizi sağlar.  Uzantı başvuruları hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
-|Azure CLı başvurusu |Description
+|Azure CLı başvurusu |Açıklama
 |-|-|-|
 | [az datashare](/cli/azure/ext/datashare/datashare) | Azure veri paylaşımının yönetilmesine yönelik tüm komutlar.
 | [az datashare hesabı](/cli/azure/ext/datashare/datashare/account) | Azure veri paylaşma hesaplarını yönetmek için komutlar.

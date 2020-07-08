@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84265327"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe açık kaynak medya çerçevesi için Microsoft Kesintisiz Akış eklentisini kullanma  
@@ -334,7 +333,7 @@ OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (
 2. Src 'yi bir Kesintisiz Akış kaynağına ayarlayın (örn. http: \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. İstenen yapılandırma değişikliklerini yapın ve önizleme ve güncelleştirme ' ye tıklayın.
    
-   **Göz önünde** İçerik Web sunucunuzun geçerli bir crossdomain. xml olması gerekir. 
+   **Göz önünde** İçerik Web sunucunuzun geçerli bir crossdomain.xml olması gerekir. 
 4. Aşağıdaki örnekte olduğu gibi, en sevdiğiniz metin düzenleyicisini kullanarak kodu kopyalayıp basit bir HTML sayfasına yapıştırın:
 
         <html>
@@ -388,7 +387,7 @@ Genel OSMF geliştirme hakkında daha fazla bilgi için lütfen resmi [OSMF geli
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

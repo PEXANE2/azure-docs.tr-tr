@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
 ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299953"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
@@ -143,5 +142,5 @@ Bu makalede, önerilerinizi ve uyarılarınızı sürekli dışarı aktarmaları
 
 - [Azure Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel belgeleri](https://docs.microsoft.com/azure/sentinel/)
-- [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure Izleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
 - [İş akışı otomasyonu ve sürekli dışarı aktarma veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)
