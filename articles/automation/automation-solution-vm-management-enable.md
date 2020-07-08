@@ -6,13 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743751"
 ---
-# <a name="enable-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur etkinleştir
+# <a name="enable-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirme
 
 Yeni veya mevcut bir Otomasyon hesabı ve bağlantılı Log Analytics çalışma alanı kullanarak VM 'Ler için VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirmek üzere bu konudaki adımları uygulayın. Kurulum işlemini tamamladıktan sonra, özelliği özelleştirmek için değişkenleri yapılandırın.
 
@@ -98,7 +97,7 @@ VM'leri çalışma saatleri dışında başlat/durdur, önceden tanımlanmış b
 
 1. Özelliği için gereken başlangıç ayarlarını yapılandırdıktan sonra, parametreler sayfasını kapatmak için **Tamam** ' ı tıklatın.
 
-2. **Oluştur**' a tıklayın. Tüm ayarlar doğrulandıktan sonra, özelliği aboneliğinize dağıtır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
+2. **Oluştur**'a tıklayın. Tüm ayarlar doğrulandıktan sonra, özelliği aboneliğinize dağıtır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
 
     > [!NOTE]
     > Azure bulut çözümü sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon hesabınızda, **paylaşılan kaynaklar** altındaki **değişkenlere** gidin ve [External_EnableClassicVMs](automation-solution-vm-management.md#variables) değişkenini **false**olarak ayarlayın. Bu, çözümün klasik VM kaynaklarına bakmasını engeller.

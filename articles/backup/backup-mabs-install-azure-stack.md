@@ -4,10 +4,9 @@ description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek iç
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747447"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
@@ -171,7 +170,7 @@ Tüm dosyaları Azure Stack sanal makinenize indirdikten sonra, indirme konumuna
 
 ![İndirme Merkezi 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Yüklemeyi başlatmak için indirilen dosyalar listesinden **MicrosoftAzureBackupserverInstaller. exe**' ye tıklayın.
+1. Yüklemeyi başlatmak için indirilen dosyalar listesinden **MicrosoftAzureBackupserverInstaller.exe**' ye tıklayın.
 
     > [!WARNING]
     > Kurulum dosyalarını ayıklamak için en az 4 GB boş alan gerekir.
@@ -193,7 +192,7 @@ Tüm dosyaları Azure Stack sanal makinenize indirdikten sonra, indirme konumuna
 
    ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Ayıklama işlemi tamamlandıktan sonra **son**' a tıklayın. Varsayılan olarak, **Execute Setup. exe** seçilidir. **Son**' a tıkladığınızda Setup. exe Microsoft Azure Backup sunucusu belirtilen konuma yüklenir.
+6. Ayıklama işlemi tamamlandıktan sonra **son**' a tıklayın. Varsayılan olarak, **setup.exeÇalıştır** seçilidir. **Son**' a tıkladığınızda, Setup.exe Microsoft Azure Backup sunucusunu belirtilen konuma yükleyecek.
 
    ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 

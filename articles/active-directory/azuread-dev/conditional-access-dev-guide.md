@@ -14,19 +14,18 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738056"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu Erişimi için geliştirici kılavuzu
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* Çok faktörlü kimlik doğrulaması
+* Multi-factor authentication
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -46,7 +45,7 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 
 * Şirket adına akış gerçekleştiren uygulamalar
 * Birden çok hizmete/kaynağa erişen uygulamalar
-* ADAL. js kullanan tek sayfalı uygulamalar
+* ADAL.js kullanan tek sayfalı uygulamalar
 * Kaynak çağırma Web Apps
 
 Koşullu erişim ilkeleri uygulamaya uygulanabilir, ancak uygulamanızın eriştiği bir Web API 'sine de uygulanabilir. Koşullu erişim ilkesini yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Genel koşullu erişim ilkeleri](../conditional-access/concept-conditional-access-policy-common.md).
@@ -98,7 +97,7 @@ Aşağıdaki bilgiler yalnızca bu koşullu erişim senaryolarında geçerlidir:
 
 * Şirket adına akış gerçekleştiren uygulamalar
 * Birden çok hizmete/kaynağa erişen uygulamalar
-* ADAL. js kullanan tek sayfalı uygulamalar
+* ADAL.js kullanan tek sayfalı uygulamalar
 
 Aşağıdaki bölümlerde daha karmaşık olan yaygın senaryolar ele alınmaktadır. Çekirdek işletim ilkesi, koşullu erişim ilkeleri uygulanmış olan hizmet için belirtecin istendiği sırada değerlendirilir.
 
@@ -147,11 +146,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Uygulama ADAL kitaplığını kullanıyorsa, belirteci alma hatası her zaman etkileşimli olarak yeniden denenir. Bu etkileşimli istek gerçekleştiğinde, son kullanıcının koşullu erişime uyum sağlamak için bir fırsat vardır. İstek bir `AcquireTokenSilentAsync` veya bu `PromptBehavior.Never` durumda, uygulamanın ```AcquireToken``` son kullanıcıya ilkeyle uyum sağlaması için etkileşimli bir istek gerçekleştirmesi gereken durumlar bu şekilde geçerlidir.
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Senaryo: ADAL. js kullanan tek sayfalı uygulama (SPA)
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Senaryo: ADAL.js kullanarak tek sayfalı uygulama (SPA)
 
-Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için ADAL. js ' yi kullanarak tek sayfalı bir uygulama (SPA) olduğunda büyük/küçük harfe kılavuzluk ederiz. Bu basit bir mimaridir, ancak koşullu erişim konusunda geliştirme yaparken dikkate alınması gereken bazı nuslar vardır.
+Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için ADAL.js kullanarak tek sayfalı bir uygulama (SPA) olduğunda büyük/küçük harfe ilerliyoruz. Bu basit bir mimaridir, ancak koşullu erişim konusunda geliştirme yaparken dikkate alınması gereken bazı nuslar vardır.
 
-ADAL. js ' de, belirteçleri elde eden birkaç işlev vardır: `login()` ,, `acquireToken(...)` `acquireTokenPopup(…)` ve `acquireTokenRedirect(…)` .
+ADAL.js, belirteçleri elde eden birkaç işlev vardır: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` , ve `acquireTokenRedirect(…)` .
 
 * `login()`etkileşimli bir oturum açma isteği aracılığıyla bir KIMLIK belirteci edinir, ancak herhangi bir hizmet için (koşullu erişim korumalı Web API 'SI dahil) erişim belirteçleri almaz.
 * `acquireToken(…)`daha sonra, bir erişim belirtecini sessizce almak için kullanılabilir ve bu, herhangi bir koşulda Kullanıcı arabirimini göstermez.
@@ -173,7 +172,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Uygulamamız için catch gerekmektedir `error=interaction_required` . Uygulama daha sonra aynı kaynakta ya da kullanabilir `acquireTokenPopup()` `acquireTokenRedirect()` . Kullanıcı çok faktörlü kimlik doğrulaması yapmak için zorlanır. Kullanıcı Multi-Factor Authentication 'ı tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci vermiş olur.
 
-Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA ile ilgili yönergeler için genel [angular. js kod örneğini](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) kullanıma alın
+Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA üzerinde rehberlik için genel [Angular.js kod örneğini](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) kullanıma alın
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

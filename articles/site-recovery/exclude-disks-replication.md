@@ -4,10 +4,9 @@ description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83740533"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
@@ -26,7 +25,7 @@ Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsini
 
 **Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** | **Fiziksel sunucudan Azure 'a**
 --- | --- | --- | ---
-Yes | Yes | Yes | Yes
+Evet | Evet | Evet | Evet
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -44,7 +43,7 @@ Yes | Yes | Yes | Yes
 
 ## <a name="typical-scenarios"></a>Tipik senaryolar
 
-Dışlama için harika aday olan veri değişim örnekleri, bir sayfalama dosyasına (pagefile. sys) yazma ve Microsoft SQL Server tempdb dosyasına yazma işlemleri içerir. İş yüküne ve depolama alt sistemine bağlı olarak, disk belleği ve tempdb dosyaları önemli miktarda dalgalanma kaydedebilir. Bu tür verilerin Azure 'a çoğaltılması Kaynak yoğunluklu bir işlemdir.
+Dışlama için harika aday olan veri dalgalanmasına örnek olarak, bir sayfalama dosyasına (pagefile.sys) yazma ve Microsoft SQL Server tempdb dosyasına yazma dahildir. İş yüküne ve depolama alt sistemine bağlı olarak, disk belleği ve tempdb dosyaları önemli miktarda dalgalanma kaydedebilir. Bu tür verilerin Azure 'a çoğaltılması Kaynak yoğunluklu bir işlemdir.
 
 - Hem işletim sistemini hem de disk belleği dosyasını içeren tek bir sanal diskle bir VM için çoğaltmayı iyileştirmek üzere şunları yapabilirsiniz:
     1. Tek sanal diski iki sanal diske bölün. Bir sanal diskte işletim sistemi ve diğerinde disk belleği dosyası vardır.
@@ -185,7 +184,7 @@ DB-Disk4 | Disk4 | G:\ | Kullanıcı Veritabanı2
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>Örnek 2: disk belleği dosyası diskini hariç tutma
 
-Kaynak Windows sanal makinesi için disk dışlama, yük devretme ve yük devretme işlemlerinin nasıl yapılacağını, her iki sürücüde de pagefile. sys dosya diskini dışlamak istiyoruz ve alternatif bir sürücü sağlar.
+Bir kaynak Windows sanal makinesi için disk dışlama, yük devretme ve yük devretme işlemlerinin nasıl yapılacağını, her iki sürücüde de pagefile.sys dosya diskini dışlamak istiyoruz ve alternatif bir sürücü.
 
 
 ### <a name="paging-file-on-the-d-drive"></a>D sürücüsündeki disk belleği dosyası
@@ -213,7 +212,7 @@ Yük devretmeden sonra Azure VM, tabloda özetlenen diskler içerir.
 **Disk adı** | **Konuk işletim sistemi disk no.** | **Sürücü harfi** | **Diskteki veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski
-DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile. sys <br/><br/> Çünkü DB-Disk1 (D:) çıkarıldı, D: kullanılabilir listedeki ilk sürücü harftir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM disk belleği dosyası ayarı aynı kalır.
+DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile.sys <br/><br/> Çünkü DB-Disk1 (D:) çıkarıldı, D: kullanılabilir listedeki ilk sürücü harftir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM disk belleği dosyası ayarı aynı kalır.
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 

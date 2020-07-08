@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745006"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
@@ -40,158 +39,158 @@ Bunlar, yukarıdaki ödeme yöntemlerinin her Market için kullanıldığı ülk
 
 | Ülke/Bölge | Azure Market | Mağaza, reklam, karıştırıcı ve Minecrat | Office | PayPal ödemeleri  |
 | --- | --- | --- | --- | --- |
-| Afganistan | Yes | Yes | Hayır | Hayır |
+| Afganistan | Yes | Evet | Hayır | Hayır |
 | Arnavutluk | Yes | Yes | Yes | Yes |
 | Cezayir | Yes | Yes | Yes | Yes |
-| Andorra | Hayır | Hayır | Yes | Yes |
-| Angola | Yes | Yes | Yes | No |
-| Antigua ve Barbuda | Yes | Yes | No | Yes |
+| Andorra | Hayır | Hayır | Evet | Yes |
+| Angola | Yes | Yes | Evet | Hayır |
+| Antigua ve Barbuda | Yes | Evet | Hayır | Evet |
 | Arjantin | Yes | Yes | Yes | Yes |
-| Ermenistan | Yes | Yes | Hayır | Hayır |
+| Ermenistan | Yes | Evet | Hayır | Hayır |
 | Avustralya | Yes | Yes | Yes | Yes |
 | Avusturya | Yes | Yes | Yes | Yes |
-| Azerbaycan | Yes | Yes | Yes | No |
+| Azerbaycan | Yes | Yes | Evet | Hayır |
 | Bahreyn | Yes | Yes | Yes | Yes |
-| Bangladeş | Yes | Yes | Yes | No |
-| Belarus | Yes | Yes | Yes | No |
+| Bangladeş | Yes | Yes | Evet | Hayır |
+| Belarus | Yes | Yes | Evet | Hayır |
 | Belçika | Yes | Yes | Yes | Yes |
-| Benin | Yes | Yes | Yes | No |
-| Bolivya | Yes | Yes | Yes | No |
+| Benin | Yes | Yes | Evet | Hayır |
+| Bolivya | Yes | Yes | Evet | Hayır |
 | Bosna-Hersek | Yes | Yes | Yes | Yes |
-| Botsvana | Yes | Yes | No | Yes |
+| Botsvana | Yes | Evet | Hayır | Evet |
 | Brezilya | Yes | Yes | Yes | Yes |
 | Bulgaristan | Yes | Yes | Yes | Yes |
-| Burkina Faso | Yes | Yes | Yes | No |
-| Burundi | Yes | Yes | Yes | No |
-| Kamboçya | Yes | Yes | Yes | No |
-| Kamerun | Yes | Yes | Yes | No |
+| Burkina Faso | Yes | Yes | Evet | Hayır |
+| Burundi | Yes | Yes | Evet | Hayır |
+| Kamboçya | Yes | Yes | Evet | Hayır |
+| Kamerun | Yes | Yes | Evet | Hayır |
 | Kanada | Yes | Yes | Yes | Yes |
-| Orta Afrika Cumhuriyeti | Yes | Yes | Yes | No |
-| Çad | Yes | Yes | Yes | No |
+| Orta Afrika Cumhuriyeti | Yes | Yes | Evet | Hayır |
+| Çad | Yes | Yes | Evet | Hayır |
 | Şili | Yes | Yes | Yes | Yes |
-| Çin | No | Yes | Yes | Yes |
+| Çin | Hayır | Evet | Yes | Yes |
 | Kolombiya | Yes | Yes | Yes | Yes |
-| Komorlar | Yes | Yes | Hayır | Hayır |
-| Kongo (KDC) | Yes | Yes | Yes | No |
-| Kongo Cumhuriyeti | Yes | Yes | Yes | No |
+| Komorlar | Yes | Evet | Hayır | Hayır |
+| Kongo (KDC) | Yes | Yes | Evet | Hayır |
+| Kongo Cumhuriyeti | Yes | Yes | Evet | Hayır |
 | Kosta Rika | Yes | Yes | Yes | Yes |
-| Fildişi Sahili (Cote d'Ivoire) | Yes | Yes | Yes | No |
-| Hırvatistan | Yes | Yes | Yes | No |
+| Fildişi Sahili (Cote d'Ivoire) | Yes | Yes | Evet | Hayır |
+| Hırvatistan | Yes | Yes | Evet | Hayır |
 | Kıbrıs | Yes | Yes | Yes | Yes |
 | Çek Cumhuriyeti | Yes | Yes | Yes | Yes |
 | Danimarka | Yes | Yes | Yes | Yes |
-| Dominika | Yes | Yes | No | Yes |
+| Dominika | Yes | Evet | Hayır | Evet |
 | Dominik Cumhuriyeti | Yes | Yes | Yes | Yes |
 | Ekvador | Yes | Yes | Yes | Yes |
 | Mısır | Yes | Yes | Yes | Yes |
 | El Salvador | Yes | Yes | Yes | Yes |
-| Eritre | Yes | Yes | Yes | No |
+| Eritre | Yes | Yes | Evet | Hayır |
 | Estonya | Yes | Yes | Yes | Yes |
-| Etiyopya | Yes | Yes | Yes | No |
-| Fiji Adaları | Yes | Yes | Hayır | Hayır |
+| Etiyopya | Yes | Yes | Evet | Hayır |
+| Fiji Adaları | Yes | Evet | Hayır | Hayır |
 | Finlandiya | Yes | Yes | Yes | Yes |
 | Fransa | Yes | Yes | Yes | Yes |
 | Gürcistan | Yes | Yes | Yes | Yes |
 | Almanya | Yes | Yes | Yes | Yes |
-| Gana | Yes | Yes | Yes | No |
-| Yunanistan | Yes | Yes | Yes | Yes |
-| Guatemala | Yes | Yes | Yes | Yes |
-| Gine | Yes | Yes | Yes | No |
-| Haiti | Yes | Yes | Yes | No |
-| Honduras | Yes | Yes | Yes | Yes |
-| Hong Kong | Yes | Yes | Yes | Yes |
-| Macaristan | Yes | Yes | Yes | Yes |
-| İzlanda | Yes | Yes | Yes | No |
-| Hindistan | Yes | Yes | Yes | Yes |
-| Endonezya | Yes | Yes | Yes | Yes |
-| Irak | Yes | Yes | Hayır | Hayır |
-| İrlanda | Yes | Yes | Yes | Yes |
-| İsrail | Yes | Yes | Yes | Yes |
-| İtalya | Yes | Yes | Yes | Yes |
-| Jamaika | Yes | Yes | Yes | Yes |
-| Japonya | Yes | Yes | Yes | Yes |
-| Ürdün | Yes | Yes | Yes | Yes |
-| Kazakistan | Yes | Yes | Yes | Yes |
-| Kenya | Yes | Yes | Yes | Yes |
-| Kore dili (Güney) | Yes | Yes | Yes | No |
+| Gana | Yes | Yes | Evet | Hayır |
+| Yunanistan | Yes | Yes | Yes | Evet |
+| Guatemala | Yes | Yes | Yes | Evet |
+| Gine | Yes | Yes | Evet | Hayır |
+| Haiti | Yes | Yes | Evet | Hayır |
+| Honduras | Yes | Yes | Yes | Evet |
+| Hong Kong | Yes | Yes | Yes | Evet |
+| Macaristan | Yes | Yes | Yes | Evet |
+| İzlanda | Yes | Yes | Evet | Hayır |
+| Hindistan | Yes | Yes | Yes | Evet |
+| Endonezya | Yes | Yes | Yes | Evet |
+| Irak | Yes | Evet | Hayır | Hayır |
+| İrlanda | Yes | Yes | Yes | Evet |
+| İsrail | Yes | Yes | Yes | Evet |
+| İtalya | Yes | Yes | Yes | Evet |
+| Jamaika | Yes | Yes | Yes | Evet |
+| Japonya | Yes | Yes | Yes | Evet |
+| Ürdün | Yes | Yes | Yes | Evet |
+| Kazakistan | Yes | Yes | Yes | Evet |
+| Kenya | Yes | Yes | Yes | Evet |
+| Kore dili (Güney) | Yes | Yes | Evet | Hayır |
 | Kuveyt | Yes | Yes | Yes | Yes |
-| Kırgızistan | Hayır | Hayır | Yes | No |
-| Laos | Yes | Yes | Yes | No |
-| Letonya | Yes | Yes | Yes | No |
-| Lübnan | Yes | Yes | Hayır | Hayır |
-| Liberya | Yes | Yes | Yes | No |
+| Kırgızistan | Hayır | Hayır | Evet | Hayır |
+| Laos | Yes | Yes | Evet | Hayır |
+| Letonya | Yes | Yes | Evet | Hayır |
+| Lübnan | Yes | Evet | Hayır | Hayır |
+| Liberya | Yes | Yes | Evet | Hayır |
 | Liechtenstein | Yes | Yes | Yes | Yes |
-| Litvanya | Yes | Yes | Yes | No |
+| Litvanya | Yes | Yes | Evet | Hayır |
 | Lüksemburg | Yes | Yes | Yes | Yes |
-| Makedonya | No | Yes | Yes | No |
-| Madagaskar | Yes | Yes | Yes | No |
+| Makedonya | Hayır | Evet | Evet | Hayır |
+| Madagaskar | Yes | Yes | Evet | Hayır |
 | Malavi | Yes | Yes | Yes | Yes |
 | Malezya | Yes | Yes | Yes | Yes |
-| Mali | Yes | Yes | Yes | No |
+| Mali | Yes | Yes | Evet | Hayır |
 | Malta | Yes | Yes | Yes | Yes |
-| Mauritius | Yes | Yes | No | Yes |
+| Mauritius | Yes | Evet | Hayır | Evet |
 | Meksika | Yes | Yes | Yes | Yes |
-| Monako | Yes | Yes | Hayır | Hayır |
-| Moğolistan | Yes | Yes | Yes | No |
-| Karadağ | Yes | Yes | Yes | No |
-| Fas | Yes | Yes | Yes | No |
+| Monako | Yes | Evet | Hayır | Hayır |
+| Moğolistan | Yes | Yes | Evet | Hayır |
+| Karadağ | Yes | Yes | Evet | Hayır |
+| Fas | Yes | Yes | Evet | Hayır |
 | Mozambik | Yes | Yes | Yes | Yes |
-| Nepal | Yes | Yes | Yes | No |
+| Nepal | Yes | Yes | Evet | Hayır |
 | Hollanda, | Yes | Yes | Yes | Yes |
 | Yeni Zelanda | Yes | Yes | Yes | Yes |
 | Nikaragua | Yes | Yes | Yes | Yes |
-| Nijer | Yes | Yes | Yes | No |
-| Nijerya | Yes | Yes | Yes | No |
+| Nijer | Yes | Yes | Evet | Hayır |
+| Nijerya | Yes | Yes | Evet | Hayır |
 | Norveç | Yes | Yes | Yes | Yes |
 | Umman | Yes | Yes | Yes | Yes |
-| Pakistan | Yes | Yes | Yes | No |
+| Pakistan | Yes | Yes | Evet | Hayır |
 | Panama | Yes | Yes | Yes | Yes |
-| Paraguay | Yes | Yes | Yes | No |
+| Paraguay | Yes | Yes | Evet | Hayır |
 | Peru | Yes | Yes | Yes | Yes |
 | Filipinler | Yes | Yes | Yes | Yes |
 | Polonya | Yes | Yes | Yes | Yes |
 | Portekiz | Yes | Yes | Yes | Yes |
-| Porto Riko | Hayır | Hayır | Yes | No |
+| Porto Riko | Hayır | Hayır | Evet | Hayır |
 | Katar | Yes | Yes | Yes | Yes |
-| Romanya | Yes | Yes | Yes | No |
-| Rusya | Yes | Yes | No | Yes |
-| Ruanda | Yes | Yes | Yes | No |
-| Saint Vincent ve Grenadinler | No | Yes | Hayır | Hayır |
+| Romanya | Yes | Yes | Evet | Hayır |
+| Rusya | Yes | Evet | Hayır | Evet |
+| Ruanda | Yes | Yes | Evet | Hayır |
+| Saint Vincent ve Grenadinler | Hayır | Evet | Hayır | Hayır |
 | Suudi Arabistan | Yes | Yes | Yes | Yes |
-| Senegal | Yes | Yes | Yes | No |
-| Sırbistan | Yes | Yes | Yes | No |
-| Sierra Leone | Yes | Yes | Yes | No |
+| Senegal | Yes | Yes | Evet | Hayır |
+| Sırbistan | Yes | Yes | Evet | Hayır |
+| Sierra Leone | Yes | Yes | Evet | Hayır |
 | Singapur | Yes | Yes | Yes | Yes |
 | Slovakya | Yes | Yes | Yes | Yes |
 | Slovenya | Yes | Yes | Yes | Yes |
-| Somali | Yes | Yes | Yes | No |
+| Somali | Yes | Yes | Evet | Hayır |
 | Güney Afrika | Yes | Yes | Yes | Yes |
 | İspanya | Yes | Yes | Yes | Yes |
-| Sri Lanka | Yes | Yes | Yes | No |
+| Sri Lanka | Yes | Yes | Evet | Hayır |
 | İsveç | Yes | Yes | Yes | Yes |
-| İsviçre | Yes | Yes | Yes | No |
-| Tayvan | No | Yes | Yes | Yes |
-| Tacikistan | Yes | Yes | Hayır | Hayır |
-| Tanzanya | Yes | Yes | Yes | No |
+| İsviçre | Yes | Yes | Evet | Hayır |
+| Tayvan | Hayır | Evet | Yes | Yes |
+| Tacikistan | Yes | Evet | Hayır | Hayır |
+| Tanzanya | Yes | Yes | Evet | Hayır |
 | Tayland | Yes | Yes | Yes | Yes |
-| Timor-Leste | Yes | Yes | Yes | No |
-| Togo | Yes | Yes | Yes | No |
-| Tonga | Yes | Yes | Hayır | Hayır |
-| Trinidad ve Tobago | Yes | Yes | Yes | Yes |
-| Tunus | Yes | Yes | Yes | No |
-| Türkiye | Yes | Yes | Yes | No |
-| Türkmenistan | Yes | Yes | Hayır | Hayır |
-| Uganda | Yes | Yes | Yes | No |
-| Ukrayna | Yes | Yes | Hayır | Hayır |
-| Birleşik Arap Emirlikleri | Yes | Yes | Yes | Yes |
-| Birleşik Krallık | Yes | Yes | Yes | Yes |
-| Birleşik Devletler | Yes | Yes | Yes | Yes |
-| Uruguay | Yes | Yes | Yes | Yes |
-| Özbekistan | Yes | Yes | Hayır | Hayır |
-| Venezuela | Yes | Yes | Yes | Yes |
-| Vietnam | Yes | Yes | Yes | Yes |
-| Zambiya | Yes | Yes | Yes | No |
-| Zimbabve | Yes | Yes | Yes | No |
+| Timor-Leste | Yes | Yes | Evet | Hayır |
+| Togo | Yes | Yes | Evet | Hayır |
+| Tonga | Yes | Evet | Hayır | Hayır |
+| Trinidad ve Tobago | Yes | Yes | Yes | Evet |
+| Tunus | Yes | Yes | Evet | Hayır |
+| Türkiye | Yes | Yes | Evet | Hayır |
+| Türkmenistan | Yes | Evet | Hayır | Hayır |
+| Uganda | Yes | Yes | Evet | Hayır |
+| Ukrayna | Yes | Evet | Hayır | Hayır |
+| Birleşik Arap Emirlikleri | Yes | Yes | Yes | Evet |
+| Birleşik Krallık | Yes | Yes | Yes | Evet |
+| Birleşik Devletler | Yes | Yes | Yes | Evet |
+| Uruguay | Yes | Yes | Yes | Evet |
+| Özbekistan | Yes | Evet | Hayır | Hayır |
+| Venezuela | Yes | Yes | Yes | Evet |
+| Vietnam | Yes | Yes | Yes | Evet |
+| Zambiya | Yes | Yes | Evet | Hayır |
+| Zimbabve | Yes | Yes | Evet | Hayır |
 | | |
 
 ## <a name="next-step"></a>Sonraki adım

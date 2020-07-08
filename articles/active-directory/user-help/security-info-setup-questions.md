@@ -12,10 +12,9 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744427"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Doğrulama yönteminiz olarak güvenlik sorularını ayarlama
@@ -33,7 +32,7 @@ Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de p
 
 | Yöntem | Kullanıldığı yerler |
 | ------ | -------- |
-| Doğrulayıcı uygulama | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |

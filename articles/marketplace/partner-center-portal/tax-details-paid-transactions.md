@@ -7,10 +7,9 @@ ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
 ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83746671"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Ticari Market yayımcıları için vergi ayrıntıları
@@ -250,7 +249,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Uruguay                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Özbekistan                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Vanuatu                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
-| Vatikan şehri                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
+| Vatikan                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Venezuela                        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Vietnam                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. [Bu ülke/bölge için vergi değerlendirmeleri hakkında daha fazla bilgi edinin.](#mixed-remittance-countriesregions-for-publishers) | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Wallis ve Futuna                | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |

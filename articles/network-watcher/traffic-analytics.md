@@ -13,10 +13,9 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747524"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
@@ -192,7 +191,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 > [!NOTE]
 >Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 

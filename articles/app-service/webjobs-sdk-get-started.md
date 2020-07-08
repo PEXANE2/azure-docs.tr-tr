@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743615"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
@@ -201,7 +200,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 1. App Service uygulamanızı oluşturduğunuz **bölgeyi** veya size yakın bir bölgeyi seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    ![Depolama hesabı oluştur](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -217,7 +216,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 Web Işleri SDK 'Sı, Azure 'daki uygulama ayarlarındaki depolama bağlantı dizesini arar. Yerel olarak çalıştırdığınızda bu değer yerel yapılandırma dosyasında veya ortam değişkenlerinde bu değere bakar.
 
-1. Projeye sağ tıklayın, **Add**  >  **Yeni öğe Ekle...**' yi seçin, **JavaScript JSON yapılandırma dosyası**' nı seçin, yeni dosya *appSettings. JSON* dosyasını adlandırın ve **Ekle**' yi seçin. 
+1. Projeye sağ tıklayın, **Add**  >  **Yeni öğe Ekle...**' yi seçin, **JavaScript JSON yapılandırma dosyası**' nı seçin, yeni dosya *appsettings.js* dosyaya adlandırın ve **Ekle**' yi seçin. 
 
 1. Yeni dosyada, `AzureWebJobsStorage` Aşağıdaki örnekte olduğu gibi bir alan ekleyin:
 
@@ -229,7 +228,7 @@ Web Işleri SDK 'Sı, Azure 'daki uygulama ayarlarındaki depolama bağlantı di
 
 1. *{Storage bağlantı dizesi}* öğesini daha önce kopyaladığınız bağlantı dizesiyle değiştirin.
 
-1. Çözüm Gezgini içinde *appSettings. JSON* dosyasını seçin ve **Özellikler** penceresinde, **daha yeniyse kopyalamak**için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
+1. Çözüm Gezgini dosyasında *appsettings.js* seçin ve **Özellikler** penceresinde, **daha yeniyse kopyalamak**için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
 
 Daha sonra, Azure App Service ' de uygulamanıza aynı bağlantı dizesi uygulaması ayarını eklersiniz.
 
@@ -338,9 +337,9 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. *{Instrumentation Key}* değerini, kullanmakta olduğunuz Application Insights kaynaktaki izleme anahtarıyla değiştirin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
-1. Application Insights bağlantısını projeye ekleyerek yerel olarak çalıştırabilirsiniz. *AppSettings. JSON* dosyasında, `APPINSIGHTS_INSTRUMENTATIONKEY` Aşağıdaki örnekte olduğu gibi bir alan ekleyin:
+1. Application Insights bağlantısını projeye ekleyerek yerel olarak çalıştırabilirsiniz. Dosyadaki *appsettings.js* , `APPINSIGHTS_INSTRUMENTATIONKEY` Aşağıdaki örnekte olduğu gibi bir alan ekleyin:
 
     ```json
     {

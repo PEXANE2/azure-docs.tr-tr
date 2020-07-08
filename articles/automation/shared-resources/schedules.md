@@ -10,10 +10,9 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744962"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
@@ -183,7 +182,7 @@ Zamanlamalarınızı kaldırmaya hazırsanız Azure portal veya PowerShell kulla
 
 1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
 2. Ayrıntılar bölmesini açmak için bir zamanlamanın adına tıklayın.
-3. **Sil**' e tıklayın.
+3. **Sil**'e tıklayın.
 
 ### <a name="remove-a-schedule-with-powershell"></a>PowerShell ile zamanlama kaldırma
 
