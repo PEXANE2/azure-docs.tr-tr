@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114420"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
@@ -24,7 +23,7 @@ Klasik uyarı kurallarınızı yeni uyarı kurallarına göre gönüllü olarak 
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Klasik uyarı kuralları (`microsoft.insights/alertrules`) oluşturan ve yöneten API 'ler, yeni ölçüm uyarıları (`microsoft.insights/metricalerts`) oluşturan ve yöneten API 'lerden farklıdır. Hemen klasik uyarı kuralları oluşturup yönetiyorsanız, dağıtım betiklerinizi yeni API 'lerle çalışacak şekilde güncelleştirin.
+Klasik uyarı kuralları () oluşturan ve yöneten API 'ler `microsoft.insights/alertrules` , yeni ölçüm uyarıları () oluşturan ve yöneten API 'lerden farklıdır `microsoft.insights/metricalerts` . Hemen klasik uyarı kuralları oluşturup yönetiyorsanız, dağıtım betiklerinizi yeni API 'lerle çalışacak şekilde güncelleştirin.
 
 Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabirimlerin bir başvurusu verilmiştir:
 

@@ -14,10 +14,9 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885642"
 ---
 # <a name="app-registration-reference"></a>Uygulama kayıt başvurusu
@@ -26,7 +25,7 @@ Bu belge, Azure portal [uygulama kayıtları](https://aka.ms/appregistrations) d
 
 ## <a name="my-applications-or-converged-applications"></a>Uygulamalarım veya yakınsanmış uygulamalar
 
-Bu liste, Microsoft Identity platform (v 2.0) uç noktasıyla birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Kimlik platformu uç noktası hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](active-directory-appmodel-v2-overview.md). Bu uygulamalar, `https://login.live.com`Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir.
+Bu liste, Microsoft Identity platform (v 2.0) uç noktasıyla birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Kimlik platformu uç noktası hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](active-directory-appmodel-v2-overview.md). Bu uygulamalar, Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Yalnızca Azure AD uygulamaları
 
@@ -34,11 +33,11 @@ Bu liste, Azure AD v 1.0 uç noktasıyla birlikte kullanılmak üzere kaydedilen
 
 ## <a name="live-sdk-applications"></a>Canlı SDK Uygulamaları
 
-Bu liste, yalnızca Microsoft hesabı ile kullanım için kaydedilmiş tüm uygulamalarınızı içerir. Azure Active Directory ile kullanım için etkinleştirilmemelidir. Burada, daha önce MSA geliştirici portalına kayıtlı olan uygulamaları bulabilirsiniz `https://account.live.com/developers/applications`. Daha önce gerçekleştirdiğiniz `https://account.live.com/developers/applications` tüm işlevler artık [uygulama kayıtları](https://aka.ms/appregistrations)gerçekleştirilebilir.
+Bu liste, yalnızca Microsoft hesabı ile kullanım için kaydedilmiş tüm uygulamalarınızı içerir. Azure Active Directory ile kullanım için etkinleştirilmemelidir. Burada, daha önce MSA geliştirici portalına kayıtlı olan uygulamaları bulabilirsiniz `https://account.live.com/developers/applications` . Daha önce gerçekleştirdiğiniz tüm işlevler `https://account.live.com/developers/applications` artık [uygulama kayıtları](https://aka.ms/appregistrations)gerçekleştirilebilir.
 
 ## <a name="application-secrets"></a>Uygulama gizli dizileri
 
-Uygulama gizli dizileri, uygulamanızın Azure AD ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir `client_secret`olarak adlandırılır. V 2.0 protokolünde, bir Web adreslenebilir konumda (bir `https` şema kullanılarak) bir güvenlik belirteci alan tüm uygulamalar, bu güvenlik belirtecinin kullanıma alınması sırasında kendısını Azure AD 'ye tanıtmak için bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
+Uygulama gizli dizileri, uygulamanızın Azure AD ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir olarak adlandırılır `client_secret` . V 2.0 protokolünde, bir Web adreslenebilir konumda (bir şema kullanılarak) bir güvenlik belirteci alan tüm uygulamalar, `https` Bu güvenlik belirtecinin kullanıma alınması sırasında kendisini Azure AD 'ye tanıtmak için bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
 
 Her bir uygulama, belirli bir zamanda iki geçerli uygulama parolası içerebilir. İki gizli dizi tutarak, uygulamanızın tamamı boyunca düzenli anahtar geçişi gerçekleştirebilirsiniz. Uygulamanızı tamamen yeni bir gizli dizi ile geçirdikten sonra, eski parolayı silip yeni bir parola sağlayabilirsiniz.
 

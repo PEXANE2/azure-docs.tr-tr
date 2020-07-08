@@ -13,10 +13,9 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881086"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Nasıl yapılır: iOS ve macOS TLS/SSL sorunları için MSAL sorunlarını giderme
@@ -27,7 +26,7 @@ Bu makalede, [iOS ve macOS Için Microsoft kimlik doğrulama kitaplığı 'nı (
 
 **Hata-1200**: "bir SSL hatası oluştu ve sunucuyla güvenli bir bağlantı kurulamıyor."
 
-Bu hata bağlantının güvenli olmadığı anlamına gelir. Bir sertifika geçersiz olduğunda meydana gelir. Hangi sunucunun TLS denetimi başarısız olduğu dahil olmak üzere daha fazla bilgi için, bkz `NSURLErrorFailingURLErrorKey` . Error `userInfo` nesnesinin sözlüğü.
+Bu hata bağlantının güvenli olmadığı anlamına gelir. Bir sertifika geçersiz olduğunda meydana gelir. Hangi sunucunun TLS denetimi başarısız olduğu dahil olmak üzere daha fazla bilgi için, bkz `NSURLErrorFailingURLErrorKey` `userInfo` . Error nesnesinin sözlüğü.
 
 Bu hata, Apple 'ın ağ kitaplığından yapılır. NSURL hata kodlarının tam listesi, macOS ve iOS SDK 'lerinde NSURLError. h içinde bulunur. Bu hatayla ilgili daha fazla bilgi için bkz. [URL yükleme sistem hata kodları](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 

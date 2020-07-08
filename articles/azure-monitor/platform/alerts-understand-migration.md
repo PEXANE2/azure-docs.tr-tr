@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114316"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
@@ -121,12 +120,12 @@ Bunlar, daha önce desteklenen ancak sonunda kullanım dışı olan ölçümler 
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Eşit yeni uyarı kuralları ve eylem grupları oluşturma
 
-Geçiş Aracı, klasik uyarı kurallarınızı eşdeğer yeni uyarı kurallarına ve eylem gruplarına dönüştürür. Çoğu klasik uyarı kuralları için, eşdeğer yeni uyarı kuralları, `windowSize` ve `aggregationType`gibi aynı özelliklerle aynı ölçümdedir. Ancak bazı klasik uyarı kuralları, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümlerde bulunur. Aşağıdaki ilkeler aşağıdaki bölümde belirtilmedikçe klasik uyarıların geçirilmesi için geçerlidir:
+Geçiş Aracı, klasik uyarı kurallarınızı eşdeğer yeni uyarı kurallarına ve eylem gruplarına dönüştürür. Çoğu klasik uyarı kuralları için, eşdeğer yeni uyarı kuralları, ve gibi aynı özelliklerle aynı ölçümdedir `windowSize` `aggregationType` . Ancak bazı klasik uyarı kuralları, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümlerde bulunur. Aşağıdaki ilkeler aşağıdaki bölümde belirtilmedikçe klasik uyarıların geçirilmesi için geçerlidir:
 
-- **Sıklık**: klasik veya yeni bir uyarı kuralının koşulu ne sıklıkta denetleyeceğini tanımlar. `frequency` Klasik uyarı kuralları Kullanıcı tarafından yapılandırılamaz ve 1 dak Application Insights bileşenleri hariç tüm kaynak türleri için her zaman 5 dakikadır. Bu nedenle denk kuralların sıklığı sırasıyla 5 dk ve 1 dk olarak ayarlanmıştır.
-- **Toplama türü**: ölçümün ilgilendiğiniz pencere üzerinden nasıl toplandığını tanımlar. Ayrıca `aggregationType` , klasik uyarılar ve çoğu ölçüm için yeni uyarılar arasında de aynıdır. Bazı durumlarda, ölçüm klasik uyarılar ve yeni uyarılar arasında farklılık gösterdiğinden, eşdeğer `aggregationType` veya ölçüm için `primary Aggregation Type` tanımlanan değer kullanılır.
+- **Sıklık**: klasik veya yeni bir uyarı kuralının koşulu ne sıklıkta denetleyeceğini tanımlar. `frequency`Klasik uyarı kuralları Kullanıcı tarafından yapılandırılamaz ve 1 dak Application Insights bileşenleri hariç tüm kaynak türleri için her zaman 5 dakikadır. Bu nedenle denk kuralların sıklığı sırasıyla 5 dk ve 1 dk olarak ayarlanmıştır.
+- **Toplama türü**: ölçümün ilgilendiğiniz pencere üzerinden nasıl toplandığını tanımlar. `aggregationType`Ayrıca, klasik uyarılar ve çoğu ölçüm için yeni uyarılar arasında de aynıdır. Bazı durumlarda, ölçüm klasik uyarılar ve yeni uyarılar arasında farklılık gösterdiğinden, eşdeğer `aggregationType` veya `primary Aggregation Type` ölçüm için tanımlanan değer kullanılır.
 - **Units**: uyarının oluşturulduğu ölçümün özelliği. Bazı eşdeğer ölçümler farklı birimlere sahiptir. Eşik gerektiği şekilde uygun şekilde ayarlanır. Örneğin, özgün ölçüm, birim olarak saniyeler içeriyorsa, ancak eşdeğer yeni ölçüm, birim olarak milisaniyeye sahipse, aynı davranışı sağlamak için özgün eşik 1000 ile çarpılır.
-- **Pencere boyutu**: eşiğe göre Karşılaştırılacak ölçüm verilerinin üzerine toplanan pencereyi tanımlar. 5 dakika `windowSize` , 15 dakika, 30 dakika, 1saat, 3saat, 6 saat, 12 saat, 1 gün gibi standart değerler için, denk yeni uyarı kuralı için değişiklik yapılmaz. Diğer değerler için en yakın `windowSize` kullanım için seçilir. Çoğu müşteri için, bu değişikliğe göre hiçbir etkisi yoktur. Müşterilerin küçük bir yüzdesi için, tam olarak aynı davranışı almak üzere eşiğin ince ayar bir olması gerekebilir.
+- **Pencere boyutu**: eşiğe göre Karşılaştırılacak ölçüm verilerinin üzerine toplanan pencereyi tanımlar. `windowSize`5 dakika, 15 dakika, 30 dakika, 1saat, 3saat, 6 saat, 12 saat, 1 gün gibi standart değerler için, denk yeni uyarı kuralı için değişiklik yapılmaz. Diğer değerler için en yakın `windowSize` kullanım için seçilir. Çoğu müşteri için, bu değişikliğe göre hiçbir etkisi yoktur. Müşterilerin küçük bir yüzdesi için, tam olarak aynı davranışı almak üzere eşiğin ince ayar bir olması gerekebilir.
 
 Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümleri ayrıntılandırıyoruz. Klasik ve yeni uyarı kuralları için aynı kalan her türlü ölçüm listelenmez. [Burada](metrics-supported.md)yeni sistemde desteklenen ölçümlerin listesini bulabilirsiniz.
 
@@ -134,7 +133,7 @@ Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip 
 
 Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki ölçümler aşağıda gösterildiği gibi eşdeğer ölçümlere eşlenir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| "ResponseType" = "AuthorizationError" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü| |
 | Anonymousclienentothererror | "ResponseType" = "Clienentothererror" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü | |
@@ -146,12 +145,12 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 | AuthorizationError | "ResponseType" = "AuthorizationError" boyutlarıyla işlem ölçümü | |
 | AverageE2ELatency | SuccessE2ELatency | |
 | AverageServerLatency | Başarılı Sunucugecikmesi | |
-| Kapasite | BlobCapacity | ' `aggregationType` Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
+| Kapasite | BlobCapacity | `aggregationType`' Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
 | Clienentothererror | "ResponseType" = "Clienentothererror" boyutlarıyla işlem ölçümü  | |
 | ClientTimeoutError | "ResponseType" = "ClientTimeOutError" boyutlarıyla işlem ölçümü | |
-| ContainerCount | ContainerCount | ' `aggregationType` Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
+| ContainerCount | ContainerCount | `aggregationType`' Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
 | NetworkError | "ResponseType" = "NetworkError" boyutlarıyla işlem ölçümü | |
-| ObjectCount | BlobCount| ' `aggregationType` Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
+| ObjectCount | BlobCount| `aggregationType`' Last ' yerine ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
 | SASAuthorizationError | "ResponseType" = "AuthorizationError" ve "Authentication" = "SAS" boyutlarıyla işlem ölçümü | |
 | SASClientOtherError | "ResponseType" = "Clienentothererror" ve "Authentication" = "SAS" boyutlarıyla işlem ölçümü | |
 | SASClientTimeOutError | "ResponseType" = "ClientTimeOutError" ve "Authentication" = "SAS" boyutlarıyla işlem ölçümü | |
@@ -171,7 +170,7 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 
 Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | kullanılabilirlik. Kullanılabilirbilitymetric. değer | Kullanılabilirlik sonuçları/kullanılabilirliği yüzdesi|   |
 | AVAILABILITY. durationMetric. Value | Kullanılabilirlik sonuçları/süresi| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
@@ -197,11 +196,11 @@ Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibi
 | requestFailed. Count | istek/başarısız| ' `aggregationType` Sum ' yerine ' Count ' kullanın.   |
 | View. Count | pageViews/Count| ' `aggregationType` Sum ' yerine ' Count ' kullanın.   |
 
-### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
 Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | Veri boyutu | Veri kullanımı| |

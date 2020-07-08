@@ -4,10 +4,9 @@ description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin ola�
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259519"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
@@ -282,7 +281,7 @@ Parolayı indirmeyi [öğrenin](vmware-azure-manage-configuration-server.md#gene
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kasa kayıt anahtarlarını nereden indirebilirim?
 
-Kurtarma Hizmetleri kasasında **Site Recovery altyapı** > **yönetimi**' nde **yapılandırma sunucuları** ' nı seçin. Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+Kurtarma Hizmetleri kasasında **Site Recovery altyapı**Yönetimi ' nde **yapılandırma sunucuları** ' nı seçin  >  **Manage**. Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Birden çok vCenter örneğini korumak için tek bir yapılandırma sunucusu kullanılabilir mi?
 

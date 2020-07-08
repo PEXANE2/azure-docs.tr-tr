@@ -13,10 +13,9 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991510"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory kullanarak şirket içi Cassandra veritabanından veri taşıma
@@ -65,13 +64,13 @@ Aşağıdaki tabloda, Cassandra bağlı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesCassandra** olarak ayarlanmalıdır |Yes |
-| konak |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/><br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Yes |
+| tür |Type özelliği: **OnPremisesCassandra** olarak ayarlanmalıdır |Evet |
+| konak |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/><br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
 | port |Cassandra sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır, varsayılan değer: 9042 |
-| authenticationType |Temel veya anonim |Yes |
+| authenticationType |Temel veya anonim |Evet |
 | kullanıcı adı |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
 | password |Kullanıcı hesabı için parola belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
-| gatewayName |Şirket içi Cassandra veritabanına bağlanmak için kullanılan ağ geçidinin adı. |Yes |
+| gatewayName |Şirket içi Cassandra veritabanına bağlanmak için kullanılan ağ geçidinin adı. |Evet |
 | encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |Hayır |
 
 >[!NOTE]
@@ -299,7 +298,7 @@ Sanal tablolar dahil Cassandra veritabanındaki tablo listesini görüntülemek 
 ### <a name="example"></a>Örnek
 Örneğin, aşağıdaki "ExampleTable", "pk_int" adlı bir tamsayı birincil anahtar sütunu, value adlı bir metin sütunu, bir liste sütunu, bir harita sütunu ve bir küme sütunu ("StringSet" adlı) içeren bir Cassandra veritabanı tablosudur.
 
-| pk_int | Değer | Liste | Eşleme | StringSet |
+| pk_int | Değer | Liste | Harita | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"örnek değer 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"örnek değeri 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |

@@ -10,10 +10,9 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878400"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler kavramları, terminolojisi ve varlıkları
@@ -85,12 +84,12 @@ Bir Scheduler işi genel olarak şu temel bölümlerden oluşur:
 | Öğe | Gerekli | Açıklama | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Hayır | [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) saat dilimi farkına sahip olan işin başlangıç zamanı | 
-| [**ön**](#action) | Yes | **errorAction** nesnesi de içerebilecek birincil eylem ayrıntıları | 
+| [**ön**](#action) | Evet | **errorAction** nesnesi de içerebilecek birincil eylem ayrıntıları | 
 | [**errorAction**](#error-action) | Hayır | Birincil eylemin başarısız olması durumunda çalışan ikinci eylemin ayrıntıları |
 | [**yinelemeyi**](#recurrence) | Hayır | Yinelenen bir işin sıklık ve aralık gibi ayrıntıları | 
 | [**retryPolicy**](#retry-policy) | Hayır | Bir eylemin yeniden deneme sıklığını belirten ayrıntılar | 
-| [**durum**](#state) | Yes | İşin geçerli durumunun ayrıntıları |
-| [**durumlarına**](#status) | Yes | Hizmet tarafından denetlenen geçerli iş durumu ayrıntıları |
+| [**durumunda**](#state) | Evet | İşin geçerli durumunun ayrıntıları |
+| [**durumlarına**](#status) | Evet | Hizmet tarafından denetlenen geçerli iş durumu ayrıntıları |
 ||||
 
 Bu örnekte bir HTTP eyleminin kapsamlı iş tanımı gösterilmiştir ve öğeler sonraki bölümlerde ayrıntılı bir şekilde açıklanacaktır: 
@@ -278,7 +277,7 @@ Bir Scheduler işinin başarısız olması durumunda Scheduler uygulamasının e
 
 | Özellik | Gerekli | Değer | Açıklama | 
 |----------|----------|-------|-------------| 
-| **retryType** | Yes | **Fixed**, **None** | Bir yenileme ilkesi belirtip (**fixed**) belirtmediğinizi (**none**) belirler. | 
+| **retryType** | Evet | **Fixed**, **None** | Bir yenileme ilkesi belirtip (**fixed**) belirtmediğinizi (**none**) belirler. | 
 | **retryInterval** | Hayır | PT30S | Yeniden deneme girişimleri arasındaki aralığı ve sıklığı [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) belirtir. Minimum değer 15 saniye, maksimum değer ise 18 aydır. | 
 | **retryCount** | Hayır | 4 | Yeniden deneme girişimlerinin sayısını belirtir. Maksimum değer 20'dir. | 
 ||||

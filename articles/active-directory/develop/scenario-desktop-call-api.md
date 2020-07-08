@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882973"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Lerini çağıran masaüstü uygulaması: Web API 'SI çağırma
@@ -64,7 +63,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde bir Web API 'SI çağırma
 
-Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult`bir Web `accessToken` API 'si çağırmak için kullanılabilecek bir özellik sunar. Korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
+Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult``accessToken`bir Web API 'si çağırmak için kullanılabilecek bir özellik sunar. Korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
 
 Amaç-C:
 
@@ -94,7 +93,7 @@ task.resume()
 
 ## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Çeşitli API 'Leri çağırma: artımlı izin ve koşullu erişim
 
-Aynı kullanıcı için çeşitli API 'Leri çağırmak için, ilk API için bir belirteç aldıktan sonra çağrısı `AcquireTokenSilent`yapın. Diğer API 'Ler için çoğu zaman sessizce bir belirteç alacaksınız.
+Aynı kullanıcı için çeşitli API 'Leri çağırmak için, ilk API için bir belirteç aldıktan sonra çağrısı yapın `AcquireTokenSilent` . Diğer API 'Ler için çoğu zaman sessizce bir belirteç alacaksınız.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -130,4 +129,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-desktop-production.md)
+> [Üretime taşı](scenario-desktop-production.md)

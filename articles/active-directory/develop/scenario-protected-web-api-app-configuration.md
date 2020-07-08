@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882480"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
@@ -134,7 +133,7 @@ Yukarıdaki kod parçacığı, [Microsoft. Identity. Web/WebApiServiceCollection
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
-Yukarıdaki kod parçacığında, Web Apps 'teki OpenID Connect ara yazılımı gibi Jwttaşıyıcı ara yazılımı, belirtecini değerine göre doğrular `TokenValidationParameters`. Gerektiğinde belirtecin şifresi çözülür, talepler ayıklanır ve imza doğrulanır. Bu durumda, ara yazılım bu verileri denetleyerek belirteci doğrular:
+Yukarıdaki kod parçacığında, Web Apps 'teki OpenID Connect ara yazılımı gibi Jwttaşıyıcı ara yazılımı, belirtecini değerine göre doğrular `TokenValidationParameters` . Gerektiğinde belirtecin şifresi çözülür, talepler ayıklanır ve imza doğrulanır. Bu durumda, ara yazılım bu verileri denetleyerek belirteci doğrular:
 
 - Hedef kitle: belirteç Web API 'sine yöneliktir.
 - Sub: Web API 'sini çağırmaya izin verilen bir uygulama için verildi.

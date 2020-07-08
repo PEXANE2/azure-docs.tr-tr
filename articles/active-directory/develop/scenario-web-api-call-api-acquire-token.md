@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885149"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
@@ -48,9 +47,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`Web API ['leri çağıran bir Web API 'si senaryosuna benzerdir: uygulama yapılandırması](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`yalnızca `IConfidentialClientApplication` bir hesap için bilgi içeren bir önbellekle birlikte başlatılır. Hesap `GetAccountIdentifier` yöntemi tarafından sağlanır.
+`BuildConfidentialClient()`Web API ['leri çağıran bir Web API 'si senaryosuna benzerdir: uygulama yapılandırması](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()``IConfidentialClientApplication`yalnızca bir hesap için bilgi içeren bir önbellekle birlikte başlatılır. Hesap yöntemi tarafından sağlanır `GetAccountIdentifier` .
 
-`GetAccountIdentifier` Yöntemi, Web apı 'sinin JSON Web token (JWT) aldığı kullanıcı kimliğiyle ilişkili talepleri kullanır:
+`GetAccountIdentifier`Yöntemi, Web API 'sinin JSON Web token (JWT) aldığı kullanıcı kimliğiyle ilişkili talepleri kullanır:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -91,7 +90,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) YÖNTEMI çağırarak msal Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir. Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra yöntemi çağırarak MSAL Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
 
 ---
 

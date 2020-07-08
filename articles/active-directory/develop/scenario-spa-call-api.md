@@ -12,15 +12,14 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882140"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Tek sayfalı uygulama: Web API 'SI çağırma
 
-Web API 'sini çağırmak için bir `acquireTokenSilent` erişim belirteci almak veya yenilemek üzere yöntemini çağırmanız önerilir. Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz.
+`acquireTokenSilent`Web API 'sini çağırmak için bir erişim belirteci almak veya yenilemek üzere yöntemini çağırmanız önerilir. Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz.
 
 ## <a name="call-a-web-api"></a>Web API çağrısı
 
@@ -53,4 +52,4 @@ MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-spa-production.md)
+> [Üretime taşı](scenario-spa-production.md)

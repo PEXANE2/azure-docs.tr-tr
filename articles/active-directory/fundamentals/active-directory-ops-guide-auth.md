@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876301"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
@@ -128,7 +127,7 @@ Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekird
 Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini ve bunları Azure AD 'de yöneterek bu hedefi gerçekleştirebilirsiniz:
 
 - Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft uç noktası Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
-- [Hibrit Azure AD katılımı](../devices/hybrid-azuread-join-managed-domains.md) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır. bu sayede, bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/overview.md) erişim sağlamanıza olanak tanır.
+- [Hibrit Azure AD katılımı](../devices/hybrid-azuread-join-managed-domains.md) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır. bu sayede, bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/overview.md)erişim sağlamanıza olanak tanır   .
 
 Bulutta kayıtlı olmayan, ancak koşullu erişim ilkeleri olmadan etki alanına katılmış Windows cihazlarına veya bulutta kayıtlı olan, etki alanına katılmış Windows cihazlarınız varsa, kayıtsız cihazları kaydetmeniz ve her iki durumda da, koşullu erişim ilkeleriniz üzerinde [bir denetim olarak karma Azure AD JOIN 'i kullanmanız](../conditional-access/require-managed-devices.md) gerekir.
 
@@ -205,7 +204,7 @@ Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/activ
 
 Önceliğe göre, kuruluşunuzun ihtiyaçlarını en iyi şekilde karşılayan önerilen çözümü bulmak için aşağıdaki tabloyu kullanın:
 
-| **Öncelik** | **Senaryo** | **Öneri** |
+| **Priority** | **Senaryo** | **Öneri** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | PHS veya PTA kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
 | 2 | Federe çalışıyorsanız ve "insideCorporateNetwork" talebini kullanmıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
@@ -296,7 +295,7 @@ Bir ıllicıt onayı verme saldırısında, saldırgan, iletişim bilgileri, e-p
 
 Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinlere sahip uygulamaların bir listesi verilmiştir:
 
-- Uygulama veya Temsilcili \*uygulamalar. ReadWrite Izinleri
+- Uygulama veya Temsilcili uygulamalar \* . ReadWrite Izinleri
 - Temsilci izinleri olan uygulamalar Kullanıcı adına e-posta okuyabilir, gönderebilir veya yönetebilir
 - Aşağıdaki izinleri kullanarak verilen uygulamalar:
 
@@ -305,7 +304,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | Office 365 Exchange Online | Olduğundan. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
-| Microsoft Graph API'si | Mail. Read |
+| Microsoft Graph API’si | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
@@ -313,7 +312,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 
 |Kaynak | İzin |
 | :- | :- |
-| Microsoft Graph API'si| Directory. AccessAsUser. All |
+| Microsoft Graph API’si| Directory. AccessAsUser. All |
 | Azure REST API | user_impersonation |
 
 Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay iznini Algıla ve](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Sonra [Self-Service ' i tamamen kaldırın](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) ve [idare yordamları oluşturun](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Son olarak, uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerek duyulmadığında kaldırın.

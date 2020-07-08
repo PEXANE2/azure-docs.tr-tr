@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981860"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer için IPv6 'ya genel bakış
@@ -49,7 +48,7 @@ Azure Resource Manager aracılığıyla dağıtılan VM 'Ler için yerel IPv6 de
 3. Gelen ve giden tarafından başlatılan yerel IPv6 bağlantıları
 4. TCP, UDP ve HTTP gibi desteklenen protokoller, eksiksiz bir hizmet mimarisi yelpazesi sağlar
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Bu işlevsellik aşağıdaki önemli avantajları sağlar:
 

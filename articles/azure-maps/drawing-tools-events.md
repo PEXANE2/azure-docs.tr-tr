@@ -9,15 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804682"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
-Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek yararlıdır. Bu tablo, `DrawingManager` sınıfının desteklediği tüm olayları listeler.
+Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek yararlıdır. Bu tablo, sınıfının desteklediği tüm olayları listeler `DrawingManager` .
 
 | Olay | Açıklama |
 |-------|-------------|
@@ -32,7 +31,7 @@ Aşağıdaki kod, çizim araçları modülündeki olayların nasıl çalıştı�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araçları olayları" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>çizimi araçları olaylarına</a> bakın.
+Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>çizimi araçları olaylarına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -43,36 +42,36 @@ Aşağıdaki kod, çizim araçları modülündeki olayların nasıl çalıştı�
 
 ### <a name="select-points-in-polygon-area"></a>Çokgen alanında noktaları seçin
 
-Bu kod, Kullanıcı çizimi şekillerindeki bir olayın nasıl izleneceğini gösterir. Bu örnekte, kod çokgenler, dikdörtgenler ve dairelerin şekillerini izler. Ardından, haritadaki hangi veri noktalarının çizilen alanın içinde olduğunu belirler. `drawingcomplete` Olay, select mantığını tetiklemek için kullanılır. Select mantığındaki kod, haritadaki tüm veri noktalarında döngü yapılır. Noktanın ve çizilen şeklin alanının kesişimi olup olmadığını denetler. Bu örnek, uzamsal bir kesişim hesaplamayı gerçekleştirmek için açık kaynaklı [Turf. js](https://turfjs.org/) kitaplığını kullanır.
+Bu kod, Kullanıcı çizimi şekillerindeki bir olayın nasıl izleneceğini gösterir. Bu örnekte, kod çokgenler, dikdörtgenler ve dairelerin şekillerini izler. Ardından, haritadaki hangi veri noktalarının çizilen alanın içinde olduğunu belirler. `drawingcomplete`Olay, select mantığını tetiklemek için kullanılır. Select mantığındaki kod, haritadaki tüm veri noktalarında döngü yapılır. Noktanın ve çizilen şeklin alanının kesişimi olup olmadığını denetler. Bu örnek, bir uzamsal kesişmeyle hesaplama gerçekleştirmek için açık kaynaklı [Turf.js](https://turfjs.org/) kitaplığını kullanır.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çizilmiş Çokgen alanındaki verileri seçme" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/XWJdeja'>çizilen Çokgen alanındaki verileri seçme</a> kalemine bakın.
+Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/XWJdeja'>çizilen Çokgen alanındaki verileri seçme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 <br/>
 
 ### <a name="draw-and-search-in-polygon-area"></a>Çokgen alanında çizim ve arama
 
-Bu kod, Kullanıcı şekli çizmeyi tamamladıktan sonra bir şeklin alanındaki ilgi alanlarını arar. Çerçevenin sağ üst köşesindeki ' kod kalemlerini Düzenle ' seçeneğine tıklayarak kodu değiştirebilir ve yürütebilirsiniz. `drawingcomplete` Olay, arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya Çokgen çizdiğinde, geometri içinde bir arama gerçekleştirilir. Bir daire çizildiyse, bir faiz arama noktası gerçekleştirmek için yarıçap ve orta konum kullanılır. `drawingmodechanged` Olay, kullanıcının çizim moduna ne zaman geçiş yaptığında ve bu olay çizim tuvalini temizler.
+Bu kod, Kullanıcı şekli çizmeyi tamamladıktan sonra bir şeklin alanındaki ilgi alanlarını arar. Çerçevenin sağ üst köşesindeki ' kod kalemlerini Düzenle ' seçeneğine tıklayarak kodu değiştirebilir ve yürütebilirsiniz. `drawingcomplete`Olay, arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya Çokgen çizdiğinde, geometri içinde bir arama gerçekleştirilir. Bir daire çizildiyse, bir faiz arama noktası gerçekleştirmek için yarıçap ve orta konum kullanılır. `drawingmodechanged`Olay, kullanıcının çizim moduna ne zaman geçiş yaptığında ve bu olay çizim tuvalini temizler.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen alanında çizim ve arama" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bkz. kalem <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>çizimi ve çokgen alanında</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io'>birlikte</a>arama.
+Bkz. kalem <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>çizimi ve çokgen alanında</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) ile <a href='https://codepen.io'>birlikte</a>arama.
 </iframe>
 
 <br/>
 
 ### <a name="create-a-measuring-tool"></a>Ölçüm aracı oluşturma
 
-Aşağıdaki kod, bir ölçüm aracı oluşturmak için çizim olaylarının nasıl kullanılabileceğini gösterir. , `drawingchanging` Çizilmekte olduğundan şekli izlemek için kullanılır. Kullanıcı fareyi taşırken, şeklin boyutları hesaplanır. Bu `drawingcomplete` olay, çizdikten sonra şekil üzerinde son bir hesaplama yapmak için kullanılır. `drawingmodechanged` Olay, kullanıcının bir çizim moduna ne zaman geçiş yaparken olduğunu tespit etmek için kullanılır. Ayrıca, `drawingmodechanged` olay çizim tuvalini temizler ve eski ölçüm bilgilerini temizler.
+Aşağıdaki kod, bir ölçüm aracı oluşturmak için çizim olaylarının nasıl kullanılabileceğini gösterir. , `drawingchanging` Çizilmekte olduğundan şekli izlemek için kullanılır. Kullanıcı fareyi taşırken, şeklin boyutları hesaplanır. `drawingcomplete`Bu olay, çizdikten sonra şekil üzerinde son bir hesaplama yapmak için kullanılır. `drawingmodechanged`Olay, kullanıcının bir çizim moduna ne zaman geçiş yaparken olduğunu tespit etmek için kullanılır. Ayrıca, `drawingmodechanged` olay çizim tuvalini temizler ve eski ölçüm bilgilerini temizler.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Ölçüm Aracı" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>ölçme aracına</a> bakın.
+Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>ölçme aracına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 <br/>

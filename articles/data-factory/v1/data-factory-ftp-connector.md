@@ -13,10 +13,9 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80992054"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir FTP sunucusundan veri taşıma
@@ -64,9 +63,9 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| type |Bunu FtpServer olarak ayarlayın. |Yes |&nbsp; |
-| konak |FTP sunucusunun adını veya IP adresini belirtin. |Yes |&nbsp; |
-| authenticationType |Kimlik doğrulama türünü belirtin. |Yes |Temel, anonim |
+| tür |Bunu FtpServer olarak ayarlayın. |Evet |&nbsp; |
+| konak |FTP sunucusunun adını veya IP adresini belirtin. |Evet |&nbsp; |
+| authenticationType |Kimlik doğrulama türünü belirtin. |Evet |Temel, anonim |
 | kullanıcı adı |FTP sunucusuna erişimi olan kullanıcıyı belirtin. |Hayır |&nbsp; |
 | password |Kullanıcının parolasını belirtin (Kullanıcı adı). |Hayır |&nbsp; |
 | encryptedCredential |FTP sunucusuna erişmek için şifrelenmiş kimlik bilgisini belirtin. |Hayır |&nbsp; |
@@ -154,9 +153,9 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç ve bitiş tarih zamanları temelinde klasör yollarına sahip olmak için **Partitionby** ile birleştirebilirsiniz. |Yes |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Hayır |
-| fileFilter |Tüm dosyalar yerine **FolderPath**içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) `?` ve (tek karakter).<br/><br/>Örnek 1:`"fileFilter": "*.log"`<br/>Örnek 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** , bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (bir) ile desteklenmiyor. |Hayır |
+| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç ve bitiş tarih zamanları temelinde klasör yollarına sahip olmak için **Partitionby** ile birleştirebilirsiniz. |Evet |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Hayır |
+| fileFilter |Tüm dosyalar yerine **FolderPath**içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) ve `?` (tek karakter).<br/><br/>Örnek 1:`"fileFilter": "*.log"`<br/>Örnek 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** , bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (bir) ile desteklenmiyor. |Hayır |
 | partitionedBy |Zaman serisi verileri için dinamik bir **FolderPath** ve **filename** belirtmek için kullanılır. Örneğin, her saat veri için parametreli bir **FolderPath** belirtebilirsiniz. |Hayır |
 | biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
 | sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**ve desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
@@ -259,7 +258,7 @@ Kullanabileceğiniz farklı kimlik doğrulama türleri için [FTP bağlı hizmet
 ```
 ### <a name="ftp-input-dataset"></a>FTP giriş veri kümesi
 
-Bu veri kümesi, FTP klasörünü `mysharedfolder` ve dosyasını `test.csv`ifade eder. İşlem hattı, dosyayı hedefe kopyalar.
+Bu veri kümesi, FTP klasörünü `mysharedfolder` ve dosyasını ifade eder `test.csv` . İşlem hattı, dosyayı hedefe kopyalar.
 
 **External** to **true** olarak ayarlamak, Data Factory hizmetine veri kümesinin veri fabrikası dışında olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
 

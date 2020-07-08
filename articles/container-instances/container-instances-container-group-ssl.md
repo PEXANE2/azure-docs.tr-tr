@@ -4,10 +4,9 @@ description: Sepet kapsayıcısında NGINX 'i çalıştırarak Azure Container I
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80984615"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Bir sepet kapsayıcısında TLS uç noktasını etkinleştirme
@@ -46,19 +45,19 @@ Sertifika isteğinden otomatik olarak imzalanan sertifika (. CRT dosyası) oluş
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-Artık dizinde üç dosya görmeniz gerekir: sertifika isteği (`ssl.csr`), özel anahtar (`ssl.key`) ve otomatik olarak imzalanan sertifika (`ssl.crt`). Ve `ssl.crt` sonraki `ssl.key` adımlarda kullanırsınız.
+Artık dizinde üç dosya görmeniz gerekir: sertifika isteği ( `ssl.csr` ), özel anahtar ( `ssl.key` ) ve otomatik olarak imzalanan sertifika ( `ssl.crt` ). `ssl.key`Ve `ssl.crt` sonraki adımlarda kullanırsınız.
 
 ## <a name="configure-nginx-to-use-tls"></a>NGINX 'i TLS kullanacak şekilde yapılandırma
 
 ### <a name="create-nginx-configuration-file"></a>NGINX yapılandırma dosyası oluştur
 
-Bu bölümde, NGINX 'in TLS kullanması için bir yapılandırma dosyası oluşturacaksınız. Aşağıdaki metni adlı `nginx.conf`yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
+Bu bölümde, NGINX 'in TLS kullanması için bir yapılandırma dosyası oluşturacaksınız. Aşağıdaki metni adlı yeni bir dosyaya kopyalayarak başlayın `nginx.conf` . Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
 
 ```console
 code nginx.conf
 ```
 
-' `location`De, uygulamanız için doğru `proxy_pass` bağlantı noktasıyla ayarladığınızdan emin olun. Bu örnekte, `aci-helloworld` kapsayıcı için 80 numaralı bağlantı noktasını ayarlayacağız.
+' De `location` , `proxy_pass` uygulamanız için doğru bağlantı noktasıyla ayarladığınızdan emin olun. Bu örnekte, kapsayıcı için 80 numaralı bağlantı noktasını ayarlayacağız `aci-helloworld` .
 
 ```console
 # nginx Configuration File
@@ -138,13 +137,13 @@ Artık bir [YAML dosyasında](container-instances-multi-container-yaml.md)kapsay
 
 ### <a name="create-yaml-file"></a>YAML dosyası oluştur
 
-Aşağıdaki YAML 'yi adlı `deploy-aci.yaml`yeni bir dosyaya kopyalayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
+Aşağıdaki YAML 'yi adlı yeni bir dosyaya kopyalayın `deploy-aci.yaml` . Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
 
 ```console
 code deploy-aci.yaml
 ```
 
-' In altında `secret`gösterildiği Base64 kodlamalı dosyaların içeriğini girin. Örneğin, `cat` Base64 kodlamalı her bir dosya içeriğini görmek için. Dağıtım sırasında, bu dosyalar kapsayıcı grubundaki gizli bir [birime](container-instances-volume-secret.md) eklenir. Bu örnekte, gizli birim NGINX kapsayıcısına bağlanır.
+' In altında gösterildiği Base64 kodlamalı dosyaların içeriğini girin `secret` . Örneğin, `cat` Base64 kodlamalı her bir dosya içeriğini görmek için. Dağıtım sırasında, bu dosyalar kapsayıcı grubundaki gizli bir [birime](container-instances-volume-secret.md) eklenir. Bu örnekte, gizli birim NGINX kapsayıcısına bağlanır.
 
 ```YAML
 api-version: 2018-10-01
@@ -223,7 +222,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-tls-connection"></a>TLS bağlantısını doğrula
 
-Kapsayıcı grubunun genel IP adresine gitmek için tarayıcınızı kullanın. Bu örnekte gösterilen IP adresi `52.157.22.76`, URL 'dir. **https://52.157.22.76** NGINX sunucu yapılandırması nedeniyle çalışan uygulamayı görmek için HTTPS kullanmanız gerekir. HTTP üzerinden bağlanma girişimleri başarısız olur.
+Kapsayıcı grubunun genel IP adresine gitmek için tarayıcınızı kullanın. Bu örnekte gösterilen IP adresi `52.157.22.76` , URL 'dir **https://52.157.22.76** . NGINX sunucu yapılandırması nedeniyle çalışan uygulamayı görmek için HTTPS kullanmanız gerekir. HTTP üzerinden bağlanma girişimleri başarısız olur.
 
 ![Bir Azure kapsayıcı örneğinde çalışan uygulamayı gösteren tarayıcı ekran görüntüsü](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 

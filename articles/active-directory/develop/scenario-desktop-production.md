@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882888"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
@@ -31,14 +30,14 @@ Farklı akışlarda, kod parçacıkları bölümünde gösterildiği gibi sessiz
 > [!NOTE]
 > Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
 
-Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes` Parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının `extraScopesToConsent` parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz.
+Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes`Parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz `extraScopesToConsent` .
 
 Örneğin, her biri iki kapsamın bulunduğu iki kaynak olabilir:
 
 - `https://mytenant.onmicrosoft.com/customerapi`kapsamları `customer.read` ve`customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi`kapsamları `vendor.read` ve`vendor.write`
 
-Bu örnekte, `extraScopesToConsent` parametresine sahip olan `.WithAdditionalPromptToConsent` değiştiriciyi kullanın.
+Bu örnekte, `.WithAdditionalPromptToConsent` parametresine sahip olan değiştiriciyi kullanın `extraScopesToConsent` .
 
 Örneğin:
 
@@ -95,7 +94,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Bu çağrı, ilk Web API 'SI için bir erişim belirteci alır.
 
-İkinci Web API 'sini çağırmanız gerektiğinde `AcquireTokenSilent` API 'yi çağırın.
+İkinci Web API 'sini çağırmanız gerektiğinde API 'yi çağırın `AcquireTokenSilent` .
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

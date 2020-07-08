@@ -12,16 +12,15 @@ ms.date: 01/29/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: d82f9beecb1b558fca094c31f8c6718c990debd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885778"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>Uygulamanıza uygulamanın kayıt bilgilerini ekleyin
 Bu adımda, uygulama kimliğini projenize eklemeniz gerekir.
 
-1.  Öğesini `App.xaml.cs` açın ve `ClientId` ile içeren satırı değiştirin:
+1.  Öğesini açın `App.xaml.cs` ve ile içeren satırı değiştirin `ClientId` :
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

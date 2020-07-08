@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253722"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
@@ -60,7 +59,7 @@ Bir kaynağın eski olduğu kabul edildiğinde, kaynak sunucunun onu doğrulamas
 
 Önbelleğe almanın bir Web tarayıcısında uygulanma biçimine benzer şekilde, Cache-Directive üst bilgilerini göndererek bir CDN 'de önbelleğe almanın nasıl gerçekleştirileceğini denetleyebilirsiniz. Cache-Directive üstbilgileri, genellikle kaynak sunucu tarafından eklenen HTTP başlıklardır. Bu üstbilgilerin çoğu başlangıçta istemci tarayıcılarındaki önbelleğe alma için tasarlansa da, bunlar artık CDNs gibi tüm ara önbellekler tarafından da kullanılmaktadır. 
 
-Önbellek yeniliği tanımlamak için iki üst bilgi kullanılabilir: `Cache-Control` ve `Expires`. `Cache-Control`daha güncel olur ve her ikisi de `Expires`varsa önceliklidir. Ayrıca, doğrulama için kullanılan iki tür üstbilgi vardır (doğrulayıcılar adı verilir) `ETag` : `Last-Modified`ve. `ETag``Last-Modified`, her ikisi de tanımlıysa daha güncel ve önceliklidir.  
+Önbellek yeniliği tanımlamak için iki üst bilgi kullanılabilir: `Cache-Control` ve `Expires` . `Cache-Control`daha güncel olur ve `Expires` her ikisi de varsa önceliklidir. Ayrıca, doğrulama için kullanılan iki tür üstbilgi vardır (doğrulayıcılar adı verilir): `ETag` ve `Last-Modified` . `ETag``Last-Modified`, her ikisi de tanımlıysa daha güncel ve önceliklidir.  
 
 ## <a name="cache-directive-headers"></a>Cache-Directive üstbilgileri
 
@@ -70,43 +69,43 @@ Bir kaynağın eski olduğu kabul edildiğinde, kaynak sunucunun onu doğrulamas
 Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağıdaki HTTP Cache-Directive üst bilgilerini destekler.
 
 **Cache-Control:**
-- HTTP 1,1 ' de kullanıma sunulmuş, Web yayımcılarının içeriği üzerinde daha fazla denetime sahip olması ve `Expires` üst bilgi sınırlamalarını ele vermesi.
-- Her ikisi `Expires` de `Cache-Control` tanımlıysa üstbilgiyi geçersiz kılar.
-- İstemciden CDN POP `Cache-Control` 'A bir http isteğinde kullanıldığında, varsayılan olarak tüm Azure CDN profilleri tarafından yok sayılır.
+- HTTP 1,1 ' de kullanıma sunulmuş, Web yayımcılarının içeriği üzerinde daha fazla denetime sahip olması ve üst bilgi sınırlamalarını ele vermesi `Expires` .
+- `Expires`Her ikisi de tanımlıysa üstbilgiyi geçersiz kılar `Cache-Control` .
+- İstemciden CDN POP 'a bir HTTP isteğinde kullanıldığında, `Cache-Control` Varsayılan olarak tüm Azure CDN profilleri tarafından yok sayılır.
 - İstemciden CDN POP 'a bir HTTP yanıtında kullanıldığında:
-     - Verizon **Azure CDN ve Microsoft** desteği tüm `Cache-Control` yönergelerden standart **/Premium Azure CDN** .
-     - **Akamai 'den Azure CDN Standart** yalnızca aşağıdaki `Cache-Control` yönergeleri destekler; diğerlerinin tümü yok sayılır:
+     - Verizon **Azure CDN ve Microsoft** desteği tüm yönergelerden standart **/Premium Azure CDN** `Cache-Control` .
+     - **Akamai from Azure CDN Standart** yalnızca aşağıdaki yönergeleri destekler `Cache-Control` ; diğerleri yok sayılır:
          - `max-age`: Bir önbellek, belirtilen saniye sayısı için içeriği depolayabilirler. Örneğin, `Cache-Control: max-age=5`. Bu yönerge, içeriğin yeni olarak kabul edildiği en uzun süreyi belirtir.
-         - `no-cache`: İçeriği önbelleğe alma, ancak önbellekten teslim etmeden önce her seferinde içerik doğrulama. İle `Cache-Control: max-age=0`eşdeğerdir.
+         - `no-cache`: İçeriği önbelleğe alma, ancak önbellekten teslim etmeden önce her seferinde içerik doğrulama. İle eşdeğerdir `Cache-Control: max-age=0` .
          - `no-store`: İçeriği hiçbir bir şekilde önbelleğe alma. Daha önce depolanmışsa içeriği kaldırın.
 
 **Bitiminden**
 - HTTP 1,0 ' de sunulan eski üst bilgi; geriye dönük uyumluluk için desteklenir.
 - İkinci duyarlıkla Tarih temelli bir sona erme saati kullanır. 
-- Benzer `Cache-Control: max-age`.
-- Mevcut olmadığında `Cache-Control` kullanılır.
+- Benzer `Cache-Control: max-age` .
+- Mevcut olmadığında kullanılır `Cache-Control` .
 
 **Prag**
    - Varsayılan olarak Azure CDN tarafından kabul edilmez.
    - HTTP 1,0 ' de sunulan eski üst bilgi; geriye dönük uyumluluk için desteklenir.
-   - Şu yönergeyle istemci isteği üst bilgisi olarak kullanılır: `no-cache`. Bu yönerge, sunucuya kaynağın yeni bir sürümünü sunmasını söyler.
-   - `Pragma: no-cache`değerine `Cache-Control: no-cache`eşdeğerdir.
+   - Şu yönergeyle istemci isteği üst bilgisi olarak kullanılır: `no-cache` . Bu yönerge, sunucuya kaynağın yeni bir sürümünü sunmasını söyler.
+   - `Pragma: no-cache`değerine eşdeğerdir `Cache-Control: no-cache` .
 
 ## <a name="validators"></a>Metninin
 
-Önbellek eskidiğinde, bir dosyanın önbelleğe alınmış sürümünü kaynak sunucudaki sürümüyle karşılaştırmak için HTTP önbellek Doğrulayıcıları kullanılır. **Verizon tarafından sunulan standart/Premium** , varsayılan `ETag` olarak `Last-Modified` hem hem de doğrulayıcıları destekler, **Microsoft 'tan alınan Azure CDN Standart** ve **Akamai 'den Azure CDN Standart** yalnızca `Last-Modified` varsayılan olarak destekler. Azure CDN
+Önbellek eskidiğinde, bir dosyanın önbelleğe alınmış sürümünü kaynak sunucudaki sürümüyle karşılaştırmak için HTTP önbellek Doğrulayıcıları kullanılır. **Verizon tarafından sunulan standart/Premium** , varsayılan olarak hem hem de `ETag` `Last-Modified` Doğrulayıcıları destekler, **Microsoft 'Tan alınan Azure CDN Standart** ve **Akamai 'den Azure CDN Standart** yalnızca `Last-Modified` Varsayılan olarak destekler. Azure CDN
 
 **Özelliği**
-- **Verizon ' dan Standart/Premium Azure CDN** varsayılan olarak destekler `ETag` , **Microsoft 'tan Azure CDN Standard** ve **Akamai 'den Azure CDN Standart** .
+- **Verizon ' dan Standart/Premium Azure CDN** `ETag` Varsayılan olarak destekler, **Microsoft 'Tan Azure CDN standard** ve **Akamai 'den Azure CDN Standart** .
 - `ETag`bir dosyanın her bir dosyası ve sürümü için benzersiz olan bir dize tanımlar. Örneğin, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
-- HTTP 1,1 ' de kullanıma sunulmuştur ve ' den `Last-Modified`daha güncel. Son değiştirme tarihi saptanmaları zor olduğunda faydalıdır.
+- HTTP 1,1 ' de kullanıma sunulmuştur ve ' den daha güncel `Last-Modified` . Son değiştirme tarihi saptanmaları zor olduğunda faydalıdır.
 - Hem güçlü doğrulamayı hem de zayıf doğrulamayı destekler; Ancak, Azure CDN yalnızca güçlü doğrulamayı destekler. Güçlü doğrulama için iki kaynak temsili, bayt için bayt özdeş olmalıdır. 
-- Önbellek, istekte bir veya daha fazla `ETag` `ETag` doğrulayıcıya sahip `If-None-Match` bir üst bilgi göndererek kullanan bir dosyayı doğrular. Örneğin, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Sunucunun sürümü listedeki bir `ETag` doğrulayıcı ile eşleşiyorsa, yanıt olarak 304 (değiştirilmez) durum kodunu gönderir. Sürüm farklıysa, sunucu 200 (Tamam) durum koduyla ve güncelleştirilmiş kaynakla yanıt verir.
+- Önbellek `ETag` `If-None-Match` , istekte bir veya daha fazla doğrulayıcıya sahip bir üst bilgi göndererek kullanan bir dosyayı doğrular `ETag` . Örneğin, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Sunucunun sürümü listedeki bir doğrulayıcı ile eşleşiyorsa `ETag` , yanıt olarak 304 (değiştirilmez) durum kodunu gönderir. Sürüm farklıysa, sunucu 200 (Tamam) durum koduyla ve güncelleştirilmiş kaynakla yanıt verir.
 
 **Son değiştirme:**
-- Yalnızca **Verizon öğesinden Standart/Premium Azure CDN** IÇIN, `Last-Modified` HTTP yanıtının bir `ETag` parçası değilse kullanılır. 
+- Yalnızca **Verizon öğesinden Standart/Premium Azure CDN** IÇIN, `Last-Modified` `ETag` HTTP yanıtının bir parçası değilse kullanılır. 
 - Kaynak sunucunun, kaynağın en son değiştirildiğini belirlediği tarihi ve saati belirtir. Örneğin, `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
-- Önbellek, istekte tarih ve saat `Last-Modified` içeren bir `If-Modified-Since` üstbilgi göndererek kullanarak bir dosyayı doğrular. Kaynak sunucu bu tarihi en son kaynağın `Last-Modified` üstbilgisiyle karşılaştırır. Kaynak belirtilen süreden bu yana değiştirilmediyse, sunucu yanıtında 304 (değiştirilmez) durum kodunu döndürür. Kaynak değiştirildiyse, sunucu 200 (Tamam) durum kodunu ve güncelleştirilmiş kaynağı döndürür.
+- Önbellek `Last-Modified` `If-Modified-Since` , istekte tarih ve saat içeren bir üstbilgi göndererek kullanarak bir dosyayı doğrular. Kaynak sunucu bu tarihi `Last-Modified` en son kaynağın üstbilgisiyle karşılaştırır. Kaynak belirtilen süreden bu yana değiştirilmediyse, sunucu yanıtında 304 (değiştirilmez) durum kodunu döndürür. Kaynak değiştirildiyse, sunucu 200 (Tamam) durum kodunu ve güncelleştirilmiş kaynağı döndürür.
 
 ## <a name="determining-which-files-can-be-cached"></a>Hangi dosyaların önbelleğe alınacağını belirleme
 
@@ -126,12 +125,12 @@ Aşağıdaki tabloda Azure CDN ürünlerin varsayılan önbelleğe alma davranı
 
 |    | Microsoft: genel web teslimi | Verizon: genel web teslimi | Verizon: DSA | Akamai: genel web teslimi | Akamai: DSA | Akamai: büyük dosya indirme | Akamai: genel veya VOD medya akışı |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Kaynak kabul**       | Yes    | Yes   | Hayır   | Yes    | Hayır   | Yes   | Yes    |
+| **Kaynak kabul**       | Yes    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Yes    |
 | **CDN önbellek süresi** | 2 gün |7 gün | Hiçbiri | 7 gün | Hiçbiri | 1 gün | 1 yıl |
 
 **Kaynağı**kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
 
-**CDN önbellek süresi**: bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini `Expires` içeriyorsa `Cache-Control: max-age`, Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
+**CDN önbellek süresi**: bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini içeriyorsa `Expires` `Cache-Control: max-age` , Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

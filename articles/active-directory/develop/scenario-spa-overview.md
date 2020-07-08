@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885200"
 ---
 # <a name="scenario-single-page-application"></a>Senaryo: tek sayfalı uygulama
@@ -35,7 +34,7 @@ JavaScript SPA hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluştur
 
 ## <a name="overview"></a>Genel Bakış
 
-Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler onları JavaScript veya angular, Vue. js ve yanıt verme. js gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. 
+Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue.js ve React.js gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. 
 
 Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve [OAuth 2,0 örtük akışını](./v2-oauth2-implicit-grant-flow.md)kullanarak arka uç hizmetlerine veya Web API 'lerine erişim belirteçleri almasını sağlar. Örtük akış, uygulamanın kimliği doğrulanmış kullanıcıyı temsil etmesi için kimlik belirteçleri almasına izin verir ve ayrıca korumalı API 'Leri çağırmak için gereken belirteçleri de erişin.
 

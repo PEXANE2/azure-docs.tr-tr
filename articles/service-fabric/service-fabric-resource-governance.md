@@ -4,10 +4,9 @@ description: Azure Service Fabric, kapsayıcılar içinde veya dışında çalı
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115140"
 ---
 # <a name="resource-governance"></a>Kaynak idaresi
@@ -21,9 +20,9 @@ Aynı düğüm veya küme üzerinde birden fazla hizmet çalıştırırken, bir 
 
 Kaynak İdaresi, [hizmet paketine](service-fabric-application-model.md)uygun olarak Service Fabric desteklenir. Hizmet paketine atanan kaynaklar kod paketleri arasında daha da ayrılabilir. Belirtilen kaynak sınırları, kaynakların rezervasyonu da anlamına gelir. Service Fabric, iki yerleşik [ölçüm](service-fabric-cluster-resource-manager-metrics.md)ile hizmet PAKETI başına CPU ve bellek belirtmeyi destekler:
 
-* *CPU* (ölçüm adı `servicefabric:/_CpuCores`): konak makinesinde kullanılabilen mantıksal çekirdek. Tüm düğümlerdeki tüm çekirdekler aynı şekilde ağırlıklı olarak dağıtılır.
+* *CPU* (ölçüm adı `servicefabric:/_CpuCores` ): konak makinesinde kullanılabilen mantıksal çekirdek. Tüm düğümlerdeki tüm çekirdekler aynı şekilde ağırlıklı olarak dağıtılır.
 
-* *Bellek* (ölçüm adı `servicefabric:/_MemoryInMB`): bellek megabayt cinsinden ifade edilir ve makinede bulunan fiziksel bellekle eşlenir.
+* *Bellek* (ölçüm adı `servicefabric:/_MemoryInMB` ): bellek megabayt cinsinden ifade edilir ve makinede bulunan fiziksel bellekle eşlenir.
 
 Bu iki ölçüm için [küme kaynak yöneticisi](service-fabric-cluster-resource-manager-cluster-description.md) toplam küme kapasitesini, kümedeki her düğümdeki yükü ve kümedeki kalan kaynakları izler. Bu iki ölçüm, diğer Kullanıcı veya özel ölçümle eşdeğerdir. Var olan tüm özellikler bunlarla birlikte kullanılabilir:
 

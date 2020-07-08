@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: danlep
 ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892402"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
@@ -39,9 +38,9 @@ Log Analytics çalışma alanı KIMLIĞINI ve birincil anahtarı almak için:
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Ayarlar**altında **Gelişmiş ayarlar** ' ı seçin.
-1. **Bağlı kaynaklar** > **Windows Server** (veya **Linux sunucuları**) seçin--kimlik ve anahtarlar her ikisi için de aynıdır
+1. **Bağlı kaynaklar**  >  **Windows Server** (veya **Linux sunucuları**) seçin--kimlik ve anahtarlar her ikisi için de aynıdır
 1. Şunları not edin:
-   * **ÇALIŞMA ALANI KİMLİĞİ**
+   * **ÇALıŞMA ALANı KIMLIĞI**
    * **BİRİNCİL ANAHTAR**
 
 ## <a name="create-container-group"></a>Kapsayıcı grubu oluştur
@@ -92,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Ardından, kapsayıcı grubunu dağıtmak için aşağıdaki komutu yürütün. Aboneliğinizdeki bir kaynak grubuyla değiştirin `myResourceGroup` (veya önce "myresourcegroup" adlı bir kaynak grubu oluşturun):
+Ardından, kapsayıcı grubunu dağıtmak için aşağıdaki komutu yürütün. `myResourceGroup`Aboneliğinizdeki bir kaynak grubuyla değiştirin (veya önce "myResourceGroup" adlı bir kaynak grubu oluşturun):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -102,7 +101,7 @@ Komutu verdikten kısa bir süre sonra, Azure’dan dağıtım ayrıntılarını
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
-Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. `ContainerInstanceLog_CL` Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için:
+Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için `ContainerInstanceLog_CL` :
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  
@@ -115,7 +114,7 @@ Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak he
 
 ## <a name="view-events"></a>Etkinlikleri görüntüleme
 
-Ayrıca, Azure portal kapsayıcı örnekleri için olayları görüntüleyebilirsiniz. Olaylar, örneğin oluşturulduğu ve başlatıldığı zamanı içerir. `ContainerEvent_CL` Tablodaki olay verilerini görüntülemek için:
+Ayrıca, Azure portal kapsayıcı örnekleri için olayları görüntüleyebilirsiniz. Olaylar, örneğin oluşturulduğu ve başlatıldığı zamanı içerir. Tablodaki olay verilerini görüntülemek için `ContainerEvent_CL` :
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  
@@ -130,7 +129,7 @@ Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak he
 
 Azure Izleyici günlükleri, büyük olasılıkla binlerce günlük çıktı satırı üzerinden bilgi çekmek için kapsamlı bir [sorgu dili][query_lang] içerir.
 
-Bir sorgunun temel yapısı, kaynak tablo (Bu makalede `ContainerInstanceLog_CL` veya `ContainerEvent_CL`) ve ardından Kanal karakteriyle (`|`) ayrılmış bir dizi işleçten oluşur. Sonuçları daraltmak ve gelişmiş işlevleri gerçekleştirmek için çeşitli işleçleri zincirleyebilirsiniz.
+Bir sorgunun temel yapısı, kaynak tablo (Bu makalede `ContainerInstanceLog_CL` veya `ContainerEvent_CL` ) ve ardından Kanal karakteriyle () ayrılmış bir dizi işleçten oluşur `|` . Sonuçları daraltmak ve gelişmiş işlevleri gerçekleştirmek için çeşitli işleçleri zincirleyebilirsiniz.
 
 Örnek sorgu sonuçlarını görmek için, aşağıdaki sorguyu sorgu metin kutusuna yapıştırın ve sorguyu yürütmek için **Çalıştır** düğmesini seçin. Bu sorgu "Message" alanı "warn" sözcüğünü içeren tüm günlük girdilerini gösterir:
 

@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886186"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
@@ -85,7 +84,7 @@ Erişim belirtecini aldıktan sonra, Graph API 'Lerini (Bu örnekteki Outlook g�
 
 1. Önceki adımda getirilen erişim belirtecine sahip bir GET isteği oluşturun:
 
-    ![İsteği al](./media/v2-saml-bearer-assertion/7.png)
+    ![GET isteği](./media/v2-saml-bearer-assertion/7.png)
 
 1. Başarılı istek üzerine bir JSON yanıtı alırsınız.
 

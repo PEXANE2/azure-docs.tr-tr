@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010316"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
@@ -30,7 +29,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 **Kaynak menüsünü**kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
 
-* [Genel bakış](#overview)
+* [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
 * [Etiketler](#tags)
@@ -45,13 +44,13 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
     * [Sanal Ağ](#virtual-network)
-    * [Güvenlik duvarı](#firewall)
+    * [Güvenlik Duvarı](#firewall)
     * [Özellikler](#properties)
     * [Kilitler](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
     * [Verileri içeri aktar](#importexport)
-    * [Verileri dışarı aktarma](#importexport)
+    * [Verileri dışarı aktar](#importexport)
     * [Yeniden başlatma](#reboot)
 * [İzleme](#monitoring)
     * [Redsıs ölçümleri](#redis-metrics)
@@ -97,7 +96,7 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
 * [Sanal Ağ](#virtual-network)
-* [Güvenlik duvarı](#firewall)
+* [Güvenlik Duvarı](#firewall)
 * [Özellikler](#properties)
 * [Kilitler](#locks)
 * [Otomasyon betiği](#automation-script)
@@ -139,13 +138,13 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 * `volatile-ttl`
 * `noeviction`
 
-İlkeler hakkında `maxmemory` daha fazla bilgi için bkz. [çıkarma ilkeleri](https://redis.io/topics/lru-cache#eviction-policies).
+İlkeler hakkında daha fazla bilgi için `maxmemory` bkz. [çıkarma ilkeleri](https://redis.io/topics/lru-cache#eviction-policies).
 
 **MaxMemory-Reserve** ayarı, yük devretme sırasında çoğaltma gibi önbellekte olmayan işlemler için ayrılan bellek miktarını MB olarak yapılandırır. Bu değer ayarlandığında, yüklemeniz farklılık gösterdiği zaman daha tutarlı bir Redto sunucu deneyimi sağlar. Bu değer, yazma ağır olan iş yükleri için daha yüksek olarak ayarlanmalıdır. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
 **Maxfragmentationmemory-ayrılmış** ayarı, bellek parçalanması için ayrılan bellek miktarını MB olarak yapılandırır. Bu değeri ayarlamak, önbellek dolduğunda veya dolduğunda, parçalanma oranı yüksek olduğunda daha tutarlı bir Redsıs sunucu deneyimine sahip olmasını sağlar. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
-Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey (**MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve**), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` `used_memory_rss` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır. Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. `used_memory` Ve `used_memory_rss`gibi önbellek ölçümleri hakkında daha fazla bilgi için bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey (**MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve**), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > **MaxMemory-ayrýlmýþ** ve **maxfragmentationmemory-ayrýlmýþ** ayarları yalnızca standart ve Premium önbellekler için kullanılabilir.
@@ -258,13 +257,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 >
 >
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 
@@ -291,7 +290,7 @@ Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu d
 ![Yönetim](./media/cache-configure/redis-cache-administration.png)
 
 * [Verileri içeri aktar](#importexport)
-* [Verileri dışarı aktarma](#importexport)
+* [Verileri dışarı aktar](#importexport)
 * [Yeniden başlatma](#reboot)
 
 
@@ -378,7 +377,7 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsıs yapılandırma değerleriyle yapılandırılır:
 
 > [!NOTE]
-> Bu bölümdeki ayarlar `StackExchange.Redis.IServer.ConfigSet` yöntemi kullanılarak değiştirilemez. Bu yöntem, bu bölümdeki komutlardan biriyle çağrılırsa, aşağıdaki örneğe benzer bir özel durum oluşur:  
+> Bu bölümdeki ayarlar yöntemi kullanılarak değiştirilemez `StackExchange.Redis.IServer.ConfigSet` . Bu yöntem, bu bölümdeki komutlardan biriyle çağrılırsa, aşağıdaki örneğe benzer bir özel durum oluşur:  
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
@@ -388,16 +387,16 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
 
 | Ayar | Varsayılan değer | Açıklama |
 | --- | --- | --- |
-| `databases` |16 |Varsayılan veritabanı sayısı 16 ' dır, ancak fiyatlandırma katmanını temel alarak farklı bir sayı yapılandırabilirsiniz. <sup>1</sup> varsayılan veritabanı DB 0 ' `connection.GetDatabase(dbid)` dır, ve `dbid` `0` `databases - 1`arasında bir sayı olan ' i kullanarak bağlantı başına temelinde farklı bir tane seçebilirsiniz. |
+| `databases` |16 |Varsayılan veritabanı sayısı 16 ' dır, ancak fiyatlandırma katmanını temel alarak farklı bir sayı yapılandırabilirsiniz. <sup>1</sup> varsayılan veritabanı DB 0 ' dır, `connection.GetDatabase(dbid)` `dbid` ve arasında bir sayı olan ' i kullanarak bağlantı başına temelinde farklı bir tane seçebilirsiniz `0` `databases - 1` . |
 | `maxclients` |Fiyatlandırma katmanına bağlıdır<sup>2</sup> |Bu değer, aynı anda izin verilen en fazla bağlı istemci sayısıdır. Sınıra ulaşıldıktan sonra, ' en fazla istemci sayısına ulaşıldı ' hatası döndüren tüm yeni bağlantıları kapatır. |
-| `maxmemory-policy` |`volatile-lru` |MaxMemory ilkesi, Redto 'ın ne zaman `maxmemory` kaldırılacağını (önbellek oluştururken seçtiğiniz önbellek sunumu boyutu) ulaşıldığında nasıl seçdiklerine yönelik ayardır. Redl için Azure Cache ile, bir LRU `volatile-lru`algoritması kullanarak bir süre sonu kümesiyle anahtarları kaldıran varsayılan ayar varsayılandır. Bu ayar Azure portal yapılandırılabilir. Daha fazla bilgi için bkz. [bellek ilkeleri](#memory-policies). |
+| `maxmemory-policy` |`volatile-lru` |MaxMemory ilkesi, Redto 'ın ne zaman kaldırılacağını `maxmemory` (önbellek oluştururken seçtiğiniz önbellek sunumu boyutu) ulaşıldığında nasıl seçdiklerine yönelik ayardır. Redl için Azure Cache ile, `volatile-lru` BIR LRU algoritması kullanarak bir süre sonu kümesiyle anahtarları kaldıran varsayılan ayar varsayılandır. Bu ayar Azure portal yapılandırılabilir. Daha fazla bilgi için bkz. [bellek ilkeleri](#memory-policies). |
 | `maxmemory-samples` |3 |Belleği kaydetmek için, LRU ve en düşük TTL algoritmaları, kesin algoritmalar yerine yaklaşık algoritmalardır. Varsayılan olarak redin üç anahtarı denetler ve en kısa süre önce kullanılan olanı seçer. |
 | `lua-time-limit` |5.000 |Bir Lua betiğinin en uzun yürütme süresi (milisaniye). Maksimum yürütme süresine ulaşıldığında, Redsıs, bir betiğin izin verilen en uzun süre sonunda hala yürütülmeye devam ettiği ve bir hata ile sorguları yanıtlamaya başlar. |
 | `lua-event-limit` |500 |Betik olay kuyruğunun en büyük boyutu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |İstemci çıkış arabelleği sınırları, bir nedenden dolayı sunucudan veri okumayan istemcilerin bağlantısını kesmeyi zorlamak için kullanılabilir (yaygın bir nedenden dolayı bir yayın/alt istemci, yayımcı tarafından bu kadar hızlı bir şekilde ileti tüketemez). Daha fazla bilgi için bkz [https://redis.io/topics/clients](https://redis.io/topics/clients).. |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |İstemci çıkış arabelleği sınırları, bir nedenden dolayı sunucudan veri okumayan istemcilerin bağlantısını kesmeyi zorlamak için kullanılabilir (yaygın bir nedenden dolayı bir yayın/alt istemci, yayımcı tarafından bu kadar hızlı bir şekilde ileti tüketemez). Daha fazla bilgi için bkz. [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
-<sup>1</sup> İçin `databases` sınır, redsıs fiyatlandırma katmanının her bir Azure önbelleği için farklılık görebilir ve önbellek oluşturma sırasında ayarlanabilir. Önbellek oluşturma `databases` sırasında hiçbir ayar belirtilmemişse, varsayılan değer 16 ' dır.
+<sup>1</sup> İçin sınır, `databases` redsıs fiyatlandırma katmanının her bir Azure önbelleği için farklılık görebilir ve önbellek oluşturma sırasında ayarlanabilir. `databases`Önbellek oluşturma sırasında hiçbir ayar belirtilmemişse, varsayılan değer 16 ' dır.
 
 * Temel ve standart önbellekler
   * C0 (250 MB) önbellek-16 veritabanına kadar
@@ -412,12 +411,12 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
   * P2 (13 GB-130 GB)-en fazla 32 veritabanı
   * P3 (26 GB-260 GB)-en fazla 48 veritabanı
   * P4 (53 GB-530 GB)-en fazla 64 veritabanı
-  * Redsıs kümesi etkin olan tüm Premium önbellekler-Redsıs kümesi yalnızca 0 veritabanının kullanımını destekler, `databases` böylece redsıs kümesi etkin olan tüm Premium önbellek için sınır etkin 1 olur ve [Select](https://redis.io/commands/select) komutuna izin verilmez. Daha fazla bilgi için bkz. [kümelendirmeyi kullanmak için istemci Uygulamam üzerinde herhangi bir değişiklik yapmam gerekir mi?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Redsıs kümesi etkin olan tüm Premium önbellekler-Redsıs kümesi yalnızca 0 veritabanının kullanımını destekler, böylece `databases` redsıs kümesi etkin olan tüm Premium önbellek için sınır etkin 1 olur ve [Select](https://redis.io/commands/select) komutuna izin verilmez. Daha fazla bilgi için bkz. [kümelendirmeyi kullanmak için istemci Uygulamam üzerinde herhangi bir değişiklik yapmam gerekir mi?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nelerdir?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> `databases` Ayar yalnızca önbellek oluşturma sırasında ve yalnızca POWERSHELL, CLI veya diğer yönetim istemcileri kullanılarak yapılandırılabilir. PowerShell kullanarak önbellek oluşturma sırasında `databases` yapılandırma örneği için, bkz. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
+> `databases`Ayar yalnızca önbellek oluşturma sırasında ve yalnızca PowerShell, CLI veya diğer yönetim istemcileri kullanılarak yapılandırılabilir. `databases`PowerShell kullanarak önbellek oluşturma sırasında yapılandırma örneği için, bkz. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
 >
 >
 
@@ -447,7 +446,7 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğinde redsıs komutları desteklenmez
 > [!IMPORTANT]
-> Redsıs örnekleri için Azure önbelleğinin yapılandırması ve yönetimi Microsoft tarafından yönetildiğinden, aşağıdaki komutlar devre dışı bırakılmıştır. Bunları çağırmaya çalışırsanız şuna benzer bir hata iletisi alırsınız `"(error) ERR unknown command"`.
+> Redsıs örnekleri için Azure önbelleğinin yapılandırması ve yönetimi Microsoft tarafından yönetildiğinden, aşağıdaki komutlar devre dışı bırakılmıştır. Bunları çağırmaya çalışırsanız şuna benzer bir hata iletisi alırsınız `"(error) ERR unknown command"` .
 >
 > * BGREWRITEAOF
 > * BGSAVE
@@ -461,14 +460,14 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 >
 >
 
-Redsıs komutları hakkında daha fazla bilgi için bkz [https://redis.io/commands](https://redis.io/commands)..
+Redsıs komutları hakkında daha fazla bilgi için bkz [https://redis.io/commands](https://redis.io/commands) ..
 
 ## <a name="redis-console"></a>Redsıs konsolu
 Redsıs örnekleri için Azure önbelleğiniz için, tüm önbellek katmanlarında Azure portal kullanılabilen **Redsıs konsolunu**kullanarak komutları güvenli bir şekilde verebilirsiniz.
 
 > [!IMPORTANT]
 > - Redin Konsolu [VNET](cache-how-to-premium-vnet.md)ile çalışmaz. Önbelleğiniz bir sanal ağın parçası olduğunda, yalnızca VNET 'teki istemciler önbelleğe erişebilir. Redsıs konsolu, sanal ağ dışında bir yerel tarayıcınızda çalıştığından, önbelleğinize bağlanamaz.
-> - Redsıs için Azure önbelleğinde tüm Redın komutları desteklenmez. Redin için Azure önbelleği için devre dışı bırakılan Redsıs komutlarının bir listesi için, [redsıs Için Azure önbelleğinde desteklenmeyen önceki redin komutlarına](#redis-commands-not-supported-in-azure-cache-for-redis) bakın. Redsıs komutları hakkında daha fazla bilgi için bkz [https://redis.io/commands](https://redis.io/commands)..
+> - Redsıs için Azure önbelleğinde tüm Redın komutları desteklenmez. Redin için Azure önbelleği için devre dışı bırakılan Redsıs komutlarının bir listesi için, [redsıs Için Azure önbelleğinde desteklenmeyen önceki redin komutlarına](#redis-commands-not-supported-in-azure-cache-for-redis) bakın. Redsıs komutları hakkında daha fazla bilgi için bkz [https://redis.io/commands](https://redis.io/commands) ..
 >
 >
 
@@ -494,7 +493,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-Önceki örnekte, parça 1 seçili parçadır, ancak `myKey` hata iletisinin `(shard 0)` bölümünde gösterildiği gibi parça 0 ' da bulunur. Bu örnekte, erişmek `myKey`için parça seçiciyi kullanarak parça 0 ' ı seçin ve ardından istediğiniz komutu verin.
+Önceki örnekte, parça 1 seçili parçadır, ancak `myKey` hata iletisinin bölümünde gösterildiği gibi parça 0 ' da bulunur `(shard 0)` . Bu örnekte, erişmek için parça `myKey` seçiciyi kullanarak parça 0 ' ı seçin ve ardından istediğiniz komutu verin.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Önbelleğinizi yeni bir aboneliğe taşıma

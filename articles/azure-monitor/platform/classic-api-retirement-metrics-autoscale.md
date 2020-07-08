@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114224"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
@@ -35,9 +34,9 @@ Aşağıdaki bileşenleri kullanıyorsanız, bu makale sizin için geçerlidir:
 
 Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emin değilseniz, aşağıdakilere bakın:
 
-- Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler URI https://management.core.windows.netkullanır. Kaynak Yöneticisi tabanlı API 'Ler ile `https://management.azure.com/`başlayan yeni URI 'yi kullanmanız gerekir.
+- Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler URI kullanır https://management.core.windows.net . Kaynak Yöneticisi tabanlı API 'Ler ile başlayan yeni URI 'yi kullanmanız gerekir `https://management.azure.com/` .
 
-- Makinenizde derleme adını karşılaştırın. Klasik eski derleme https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Makinenizde derleme adını karşılaştırın. Klasik eski derleme https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Ölçüm veya otomatik ölçeklendirme API 'Lerine erişmek için sertifika kimlik doğrulaması kullanıyorsanız, klasik bir uç nokta ve kitaplık kullanıyorsunuz demektir. Yeni Kaynak Yöneticisi API 'Leri, hizmet sorumlusu veya Kullanıcı sorumlusu aracılığıyla Azure Active Directory kimlik doğrulaması gerektirir.
 
@@ -83,7 +82,7 @@ Aşağıdaki hesap rolleri için e-posta adreslerine bir kullanımdan kaldırma 
 - Hesap ve hizmet yöneticileri
 - Coadministrators  
 
-Sorularınız varsa bizimle iletişime geçin MonitorClassicAPIhelp@microsoft.com.  
+Sorularınız varsa bizimle iletişime geçin MonitorClassicAPIhelp@microsoft.com .  
 
 ## <a name="references"></a>Başvurular
 

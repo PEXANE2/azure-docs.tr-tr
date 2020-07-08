@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811402"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services’ı Yapılandırma
@@ -46,7 +45,7 @@ Belirli bir işletim sistemi sürümünü hedefliyorsanız, bu sürümü **yapı
 
 ## <a name="monitoring"></a>İzleme
 
-Bulut hizmetinize uyarı ekleyebilirsiniz. **Ayarlar** > **Uyarı kuralları** > **Uyarı Ekle**' ye tıklayın.
+Bulut hizmetinize uyarı ekleyebilirsiniz. **Ayarlar**  >  **Uyarı kuralları**  >  **Uyarı Ekle**' ye tıklayın.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +61,7 @@ Buradan bir uyarı ayarlayabilirsiniz. **Ölçüm** açılan kutusuyla, aşağı
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Ölçüm kutucuğundan izlemeyi yapılandırma
 
-**Ayarlar** > **Uyarı kurallarını**kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
+**Ayarlar**  >  **Uyarı kurallarını**kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
 
 ![Bulut hizmeti Izleme](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -92,7 +91,7 @@ Daha sonra, bir Uzak Masaüstü bağlantısı başlatabilir, örneği uzaktan ye
     ![Yapılandırma dikey penceresi](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **İndir** düğmesine tıklayın.
 
-    ![İndirme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![İndir](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Hizmet yapılandırma dosyasını güncelleştirdikten sonra yapılandırma güncelleştirmelerini yükleyin ve uygulayın:
 
     ![Karşıya Yükle](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)

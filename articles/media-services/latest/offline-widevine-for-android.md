@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
 ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80887206"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Android için Media Services v3 ile çevrimdışı Widevine akışı
@@ -49,7 +48,7 @@ Android cihazlarda Widevine için çevrimdışı DRM uygulamadan önce, önce ş
 - Widevine DRM kullanarak çevrimiçi içerik koruma için tanıtılan kavramlarla ilgili bilgi sahibi olun. Bu, aşağıdaki belgelerde/örneklerde ayrıntılı olarak ele alınmıştır:
     - [Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)
     - [DRM dinamik şifreleme ve lisans teslim hizmetini kullanma](protect-with-drm.md)
-- Kopyala https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
+- Kopyala https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git .
 
     Widevine yapılandırması eklemek için [.NET kullanarak DRM ile birlikte şifrelemeden](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) kodu değiştirmeniz gerekir.  
 - Çevrimdışı Widevine DRM kayıttan yürütmeyi destekleyebilen açık kaynaklı bir video oynatıcı SDK 'sı olan Android için Google ExoPlayer SDK 'sı hakkında bilgi sahibi olun. 
@@ -121,7 +120,7 @@ Geliştiriciler, bir uygulamanın geliştirilmesi sırasında [Exoplayer gelişt
 
 Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds**ve **license_duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
 
-Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve https://github.com/google/ExoPlayer/issues/3112. <br/>Değerleri açıkça ayarlamazsanız, **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
+Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve https://github.com/google/ExoPlayer/issues/3112 . <br/>Değerleri açıkça ayarlamazsanız, **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
 
 Android 5,0, ARMv8 ([GELIŞMIŞ RISC makinesi](https://en.wikipedia.org/wiki/ARM_architecture)) ve 64-bit platformlarını tamamen destekleyecek şekilde tasarlanan ilk Android sürümü olduğundan, Android 5,0 Lollipop veya sonrasında bu sorun oluşmaz, çünkü Android 4,4 KitKat ilk olarak diğer eski Android sürümleriyle aynı şekilde ARMv7 ve 32 bit platformları desteklemek üzere tasarlanmıştır.
 
@@ -145,9 +144,9 @@ Ayrıca, Google bir aşamalı Web uygulaması (PWA) örneği üretti ve açık k
 
 Mobil Chrome tarayıcınızı bir Android telefonunda V62 (veya üzeri) sürümüne yükseltir ve yukarıdaki barındırılan örnek uygulamayı test ederseniz hem çevrimiçi akış hem de çevrimdışı oynatma işinin olduğunu görürsünüz.
 
-Yukarıdaki açık kaynaklı PWA uygulaması Node. js ' de yazılır. Bir Ubuntu sunucusunda kendi sürümünüzü barındırmak istiyorsanız, kayıttan yürütmeyi engelleyebilecek aşağıdaki yaygın sorunları göz önünde bulundurun:
+Yukarıdaki açık kaynaklı PWA uygulaması Node.js yazılır. Bir Ubuntu sunucusunda kendi sürümünüzü barındırmak istiyorsanız, kayıttan yürütmeyi engelleyebilecek aşağıdaki yaygın sorunları göz önünde bulundurun:
 
-1. CORS sorunu: örnek uygulamadaki örnek video içinde https://storage.googleapis.com/biograf-video-files/videos/barındırılır. Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi `https://biograf-155113.appspot.com` (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere ERIŞIMI engellediği CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS sorunu: örnek uygulamadaki örnek video içinde barındırılır https://storage.googleapis.com/biograf-video-files/videos/ . Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi `https://biograf-155113.appspot.com` (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere erişimi ENGELLEDIĞI CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Sertifika sorunu: Chrome v 58 ' den başlayarak Widevine için EME, HTTPS gerektirir. Bu nedenle, örnek uygulamayı bir x509 sertifikasıyla HTTPS üzerinden barındırmanıza gerek duyarsınız. Aşağıdaki gereksinimler nedeniyle olağan bir test sertifikası çalışmıyor: aşağıdaki minimum gereksinimleri karşılayan bir sertifika edinmeniz gerekir:
     - Chrome ve Firefox, sertifikada SAN konusu alternatif adı ayarının mevcut olmasını gerektirir
     - Sertifika, güvenilir bir CA 'ya sahip olmalı ve kendinden imzalı bir geliştirme sertifikası çalışmıyor

@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885081"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran bir Web API 'SI
@@ -29,8 +28,8 @@ Bu senaryoda, korumalı bir Web API 'SI Web API 'Lerini çağırdığında, "bir
 ## <a name="overview"></a>Genel Bakış
 
 - Web, Masaüstü, mobil veya tek sayfalı uygulama istemcisi (eşlik eden diyagramda temsil edilmez) korumalı bir Web API 'sini çağırır ve "Authorization" HTTP üstbilgisinde JSON Web Token (JWT) taşıyıcı belirteci sağlar.
-- Korunan Web API 'SI, belirteci doğrular ve Microsoft kimlik doğrulama kitaplığı (MSAL) `AcquireTokenOnBehalfOf` yöntemini kullanarak korunan Web API 'sinin Kullanıcı adına ikinci BIR Web API 'sini veya aşağı AKıŞ Web API 'sini çağırabilmesi için Azure Active Directory (Azure AD) ' den başka bir belirteç ister.
-- Korunan Web API 'SI ayrıca aynı kullanıcı `AcquireTokenSilent`adına diğer aşağı akış API 'leri için belirteç istemek üzere daha sonra çağrı yapabilir. `AcquireTokenSilent`gerektiğinde belirteci yeniler.
+- Korunan Web API 'SI, belirteci doğrular ve Microsoft kimlik doğrulama kitaplığı (MSAL) `AcquireTokenOnBehalfOf` yöntemini kullanarak korunan Web API 'sinin Kullanıcı adına ikinci bir Web API 'sini veya aşağı akış Web API 'sini çağırabilmesi için Azure Active Directory (Azure AD) ' den başka bir belirteç ister.
+- Korunan Web API 'SI Ayrıca `AcquireTokenSilent` aynı kullanıcı adına diğer aşağı akış API 'leri için belirteç istemek üzere daha sonra çağrı yapabilir. `AcquireTokenSilent`gerektiğinde belirteci yeniler.
 
 ![Web API 'sini çağıran Web API 'SI diyagramı](media/scenarios/web-api.svg)
 

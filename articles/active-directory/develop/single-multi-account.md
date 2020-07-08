@@ -13,10 +13,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881359"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Tek ve birden çok hesap genel istemci uygulamaları
@@ -25,18 +24,18 @@ Bu makale, tek hesap genel istemci uygulamalarına odaklanarak tek ve çoklu hes
 
 Azure Active Directory kimlik doğrulama kitaplığı (ADAL), sunucuyu modelleyen.  İstemci uygulamanızı modelleyen, Microsoft kimlik doğrulama kitaplığı (MSAL).  Android uygulamalarının çoğu ortak istemci olarak kabul edilir. Ortak istemci, gizli anahtarı güvenli bir şekilde saklayamıyorum bir uygulamadır.  
 
-MSAL, tek seferde yalnızca bir hesabın `PublicClientApplication` kullanılmasına izin veren uygulamalar için geliştirme deneyimini basitleştirecek ve açıklığa KAVUŞTURMAYA yönelik API yüzeyini uzmanlar. `PublicClientApplication`, ve `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication`tarafından alt sınıflanmış.  Aşağıdaki diyagramda bu sınıflar arasındaki ilişki gösterilmektedir.
+MSAL, tek seferde `PublicClientApplication` yalnızca bir hesabın kullanılmasına izin veren uygulamalar için geliştirme deneyimini basitleştirecek ve açıklığa kavuşturmaya YÖNELIK API yüzeyini uzmanlar. `PublicClientApplication`, ve tarafından alt sınıflanmış `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication` .  Aşağıdaki diyagramda bu sınıflar arasındaki ilişki gösterilmektedir.
 
 ![SingleAccountPublicClientApplication UML sınıf diyagramı](./media/single-multi-account/single-and-multiple-account.png)
 
 ## <a name="single-account-public-client-application"></a>Tek hesap ortak istemci uygulaması
 
-Sınıfı `SingleAccountPublicClientApplication` , aynı anda yalnızca tek bir hesabın oturum açmasına ızın veren msal tabanlı bir uygulama oluşturmanıza olanak tanır. `SingleAccountPublicClientApplication``PublicClientApplication` aşağıdaki yollarla farklılık gösterir:
+`SingleAccountPublicClientApplication`Sınıfı, aynı anda yalnızca tek bir hesabın oturum açmasına izin veren msal tabanlı bir uygulama oluşturmanıza olanak tanır. `SingleAccountPublicClientApplication``PublicClientApplication`aşağıdaki yollarla farklılık gösterir:
 
 - MSAL Şu anda oturum açmış olan hesabı izler.
   - Uygulamanız bir aracı kullanıyorsa (Azure portal uygulama kaydı sırasında varsayılan) ve bir aracısının bulunduğu bir cihaza yüklüyse, MSAL hesabın cihazda hala kullanılabilir olduğunu doğrular.
 - `signIn`bir hesapta bir hesabı açık ve ayrı olarak oturum açmanıza olanak tanır.
-- `acquireTokenSilent`Hesap parametresi gerektirmez.  Bir hesap sağlarsanız ve sağladığınız hesap, MSAL tarafından izlenen geçerli hesapla eşleşmiyorsa, bir `MsalClientException` oluşturulur.
+- `acquireTokenSilent`Hesap parametresi gerektirmez.  Bir hesap sağlarsanız ve sağladığınız hesap, MSAL tarafından izlenen geçerli hesapla eşleşmiyorsa, bir oluşturulur `MsalClientException` .
 - `acquireToken`kullanıcının hesaplara geçiş yapmasına izin vermez. Kullanıcı farklı bir hesaba geçiş yapmayı denerse, bir özel durum oluşturulur.
 - `getCurrentAccount`aşağıdakileri sağlayan bir sonuç nesnesi döndürür:
   - Hesabın değişip değişmediğini gösteren bir Boole değeri. Örneğin, cihazdan kaldırılmakta olan bir hesap değişebilir.
@@ -48,7 +47,7 @@ Microsoft Authenticator veya Intune Şirket Portalı gibi bir Android kimlik do�
 
 ## <a name="single-account-scenario"></a>Tek hesap senaryosu
 
-Aşağıdaki sözde kod kullanılarak `SingleAccountPublicClientApplication`gösterilmektedir.
+Aşağıdaki sözde kod kullanılarak gösterilmektedir `SingleAccountPublicClientApplication` .
 
 ```java
 // Construct Single Account Public Client Application
@@ -107,24 +106,24 @@ if (app.signOut())
 
 ## <a name="multiple-account-public-client-application"></a>Birden çok hesap ortak istemci uygulaması
 
-`MultipleAccountPublicClientApplication` Sınıfı, birden fazla hesabın aynı anda oturum açmaya ızın veren msal tabanlı uygulamalar oluşturmak için kullanılır. Aşağıdaki gibi hesapları almanıza, eklemenize ve kaldırmanıza olanak tanır:
+`MultipleAccountPublicClientApplication`Sınıfı, birden fazla hesabın aynı anda oturum açmaya izin veren msal tabanlı uygulamalar oluşturmak için kullanılır. Aşağıdaki gibi hesapları almanıza, eklemenize ve kaldırmanıza olanak tanır:
 
 ### <a name="add-an-account"></a>Hesap ekleme
 
-Bir veya daha fazla kez çağırarak `acquireToken` uygulamanızdaki bir veya daha fazla hesabı kullanın.  
+Bir veya daha fazla kez çağırarak uygulamanızdaki bir veya daha fazla hesabı kullanın `acquireToken` .  
 
 ### <a name="get-accounts"></a>Hesapları al
 
-- Belirli `getAccount` bir hesabı almak için çağrısı yapın.
-- Uygulamanın `getAccounts`Şu anda bilinen hesaplarının bir listesini almak için çağrısı yapın.
+- `getAccount`Belirli bir hesabı almak için çağrısı yapın.
+- `getAccounts`Uygulamanın Şu anda bilinen hesaplarının bir listesini almak için çağrısı yapın.
 
 Uygulamanız, aracı uygulaması tarafından bilinen cihazdaki tüm Microsoft kimlik platformu hesaplarını numaralandıramıyor. Yalnızca uygulamanız tarafından kullanılan hesapları numaralandırabilirler.  Cihazdan kaldırılmış olan hesaplar bu işlevler tarafından döndürülmez.
 
 ### <a name="remove-an-account"></a>Hesap kaldırma
 
-Hesap tanımlayıcısıyla çağırarak `removeAccount` bir hesabı kaldırın.
+Hesap tanımlayıcısıyla çağırarak bir hesabı kaldırın `removeAccount` .
 
-Uygulamanız bir aracı kullanacak şekilde yapılandırıldıysa ve cihaza bir aracı yüklenirse, çağırdığınızda `removeAccount`hesap aracıdan kaldırılmaz.  Yalnızca istemciyle ilişkili belirteçler kaldırılır.
+Uygulamanız bir aracı kullanacak şekilde yapılandırıldıysa ve cihaza bir aracı yüklenirse, çağırdığınızda hesap aracıdan kaldırılmaz `removeAccount` .  Yalnızca istemciyle ilişkili belirteçler kaldırılır.
 
 ## <a name="multiple-account-scenario"></a>Çoklu hesap senaryosu
 

@@ -9,15 +9,14 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879182"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps 'te likit şablonlar ile gelişmiş JSON dönüştürmeleri gerçekleştirin
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps'te Liquid şablonlarıyla gelişmiş JSON dönüşümleri gerçekleştirme
 
-Mantıksal uygulamalarınızda, JSON **oluşturma** veya **ayrıştırma**gibi yerel veri Işleme eylemleriyle temel JSON dönüşümleri gerçekleştirebilirsiniz. Gelişmiş JSON dönüştürmeleri gerçekleştirmek için, esnek Web uygulamalarına yönelik açık kaynaklı bir şablon dili olan [likit](https://shopify.github.io/liquid/)ile şablonlar veya haritalar oluşturabilirsiniz. Bir likit şablon, JSON çıkışının nasıl dönüştürüleceğini ve yinelemeler, denetim akışları, değişkenler vb. gibi daha karmaşık JSON dönüştürmelerinin nasıl desteklediğine ilişkin tanımlar.
+Mantıksal uygulamalarınızda, JSON **oluşturma** veya **ayrıştırma**gibi yerel veri Işleme eylemleriyle temel JSON dönüşümleri gerçekleştirebilirsiniz. Gelişmiş JSON dönüştürmeleri gerçekleştirmek için, esnek Web uygulamalarına yönelik açık kaynaklı bir şablon dili olan [likit](https://shopify.github.io/liquid/)ile şablonlar veya haritalar oluşturabilirsiniz. Liquid şablonları, JSON çıktısının nasıl dönüştürüleceğini tanımlar ve yinelemeler, denetim akışları ve değişkenler gibi daha karmaşık JSON dönüşümlerini destekler.
 
 Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için önce JSON ile JSON eşlemeyi bir sıvı şablonuyla tanımlamanız ve bu eşlemeyi tümleştirme hesabınızda depolamanız gerekir. Bu makalede, bu likit şablon veya haritanın nasıl oluşturulduğu ve kullanılacağı gösterilir.
 
@@ -57,7 +56,7 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
    }
    ```
 
-1. [Azure Portal](https://portal.azure.com)Azure Arama kutusuna girin `integration accounts`ve **tümleştirme hesapları**' nı seçin.
+1. [Azure Portal](https://portal.azure.com)Azure Arama kutusuna girin `integration accounts` ve **tümleştirme hesapları**' nı seçin.
 
    !["Tümleştirme hesaplarını" bul](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -86,7 +85,7 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 
 1. Mantıksal uygulama Tasarımcısı ' nda, mantıksal uygulamanıza [istek tetikleyiciyi](../connectors/connectors-native-reqres.md#add-request) ekleyin.
 
-1. Tetikleyici altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak girin `liquid` ve şu eylemi SEÇIN: **JSON 'U JSON 'A Dönüştür-sıvı**
+1. Tetikleyici altında **yeni adım**' ı seçin. Arama kutusuna `liquid` filtreniz olarak girin ve şu eylemi seçin: **JSON 'u JSON 'a Dönüştür-sıvı**
 
    ![Sıvı eylemini bul ve Seç](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811162"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
@@ -87,11 +86,11 @@ Bu kılavuzda, Application Gateway aracılığıyla **Geliştirici Portalını**
 > Azure AD veya üçüncü taraf kimlik doğrulaması kullanıyorsanız, lütfen Application Gateway için [tanımlama bilgisi tabanlı oturum benzeşimi](../application-gateway/features.md#session-affinity) özelliğini etkinleştirin.
 
 > [!WARNING]
-> Application Gateway WAF 'nin Geliştirici Portalında Openapı belirtiminin indirilmesini bozmasını engellemek için güvenlik duvarı kuralını `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`devre dışı bırakmanız gerekir.
+> Application Gateway WAF 'nin Geliştirici Portalında Openapı belirtiminin indirilmesini bozmasını engellemek için güvenlik duvarı kuralını devre dışı bırakmanız gerekir `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Resource Manager için kaynak grubu oluşturun
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 Azure'da oturum açma
 
@@ -126,7 +125,7 @@ Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerekti
 
 Aşağıdaki örnek, Kaynak Yöneticisi kullanarak nasıl sanal ağ oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 Bir sanal ağ oluştururken Application Gateway için kullanılacak alt ağ değişkenine 10.0.0.0/24 adres aralığını atayın.
 
@@ -163,7 +162,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Aşağıdaki örnek, yalnızca iç erişim için yapılandırılmış bir sanal ağda API Management bir hizmetin nasıl oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 Yukarıda oluşturulan alt ağ $apimsubnetdata kullanarak API Management bir sanal ağ nesnesi oluşturun.
 
@@ -189,9 +188,9 @@ Yukarıdaki komut başarılı olduktan sonra, bu [hizmete erişmek için Iç VNE
 > [!IMPORTANT]
 > [Yeni geliştirici portalı](api-management-howto-developer-portal.md) , aşağıdaki adımlara ek olarak API Management yönetim uç noktasına bağlantıyı etkinleştirmenizi de gerektirir.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
-Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte, ve `api.contoso.net` `portal.contoso.net`kullanacağız.  
+Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte, `api.contoso.net` ve kullanacağız `portal.contoso.net` .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -220,7 +219,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> Eski geliştirici portalı bağlantısını yapılandırmak için ile `-HostnameType DeveloperPortal` `-HostnameType Portal`değiştirmeniz gerekir.
+> Eski geliştirici portalı bağlantısını yapılandırmak için ile değiştirmeniz gerekir `-HostnameType DeveloperPortal` `-HostnameType Portal` .
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Ön uç yapılandırma için genel bir IP adresi oluşturun
 
@@ -236,7 +235,7 @@ Hizmet başlatıldığında uygulama ağ geçidine bir IP adresi atanır.
 
 Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarlanmalıdır. Aşağıdaki adımlar uygulama ağ geçidi kaynağı için gerekli yapılandırma öğelerini oluşturur.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 **Gatewayıp01**adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
 
@@ -280,10 +279,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6. Adım
 
-API Management hizmeti `ContosoApi` proxy etki alanı uç noktası için özel yoklamalar oluşturun. Yol `/status-0123456789abcdef` , tüm API Management hizmetlerinde barındırılan varsayılan bir sistem durumu uç noktasıdır. TLS `api.contoso.net` /SSL sertifikasıyla güvenli hale getirmek için özel bir araştırma ana bilgisayar adı olarak ayarlayın.
+API Management hizmeti `ContosoApi` Proxy etki alanı uç noktası için özel yoklamalar oluşturun. Yol, `/status-0123456789abcdef` tüm API Management hizmetlerinde barındırılan varsayılan bir sistem durumu uç noktasıdır. `api.contoso.net`TLS/SSL sertifikasıyla güvenli hale getirmek için özel bir araştırma ana bilgisayar adı olarak ayarlayın.
 
 > [!NOTE]
-> Ana bilgisayar `contosoapi.azure-api.net` adı, genel Azure 'da adlı `contosoapi` bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
+> Ana bilgisayar adı, `contosoapi.azure-api.net` Genel Azure 'da adlı bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır `contosoapi` .
 >
 
 ```powershell
@@ -357,7 +356,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Ağ geçidi oluşturulduktan sonraki adım, iletişim için ön uç yapılandırması yapmaktır. Genel IP kullanırken Application Gateway dinamik olarak atanan bir DNS adı gerektirir ve bu, kullanılması kolay olmayabilir.
 
-Application Gateway DNS adı, APıM proxy ana bilgisayar adını (örneğin `api.contoso.net` , Yukarıdaki örneklerde) bu DNS adına işaret eden bir CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için, Application Gateway ayrıntılarını ve ilgili IP/DNS adını Publicıpaddress öğesini kullanarak alın. Ağ geçidinin yeniden başlatılması sırasında VIP değişebileceğinizden, A kayıtlarının kullanılması önerilmez.
+Application Gateway DNS adı, APıM proxy ana bilgisayar adını (örneğin `api.contoso.net` , Yukarıdaki örneklerde) bu DNS adına işaret eden BIR CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için, Application Gateway ayrıntılarını ve ilgili IP/DNS adını Publicıpaddress öğesini kullanarak alın. Ağ geçidinin yeniden başlatılması sırasında VIP değişebileceğinizden, A kayıtlarının kullanılması önerilmez.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

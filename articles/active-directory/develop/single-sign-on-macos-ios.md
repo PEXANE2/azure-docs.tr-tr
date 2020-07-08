@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881257"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
@@ -78,7 +77,7 @@ App3 yeniden yönlendirme URI 'SI:`msauth.com.contoso.mytestapp3://auth`
 
 Anahtarlık paylaşımını etkinleştirmek için Apple 'ın [özellik ekleme](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) makalesine bakın. Önemli olan şey, anahtarlarınızın ne şekilde çağrdığına karar vereceğinize ve bu yeteneği SSO 'ya dahil edilecek tüm uygulamalarınıza eklemektir.
 
-Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde aşağıdaki örneğe benzer bir `entitlements.plist` dosya görürsünüz:
+Yetkilendirmeler doğru şekilde ayarlandığında, `entitlements.plist` Proje dizininizde aşağıdaki örneğe benzer bir dosya görürsünüz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -106,7 +105,7 @@ Daha fazla bilgi için bkz. [Anahtarlık grupları](howto-v2-keychain-objc.md).
 
 ## <a name="configure-the-application-object"></a>Uygulama nesnesini yapılandırma
 
-Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun yapılandırın `MSALPublicClientApplication` :
+Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, `MSALPublicClientApplication` Aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun yapılandırın:
 
 Amaç-C:
 
@@ -145,7 +144,7 @@ MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. 
 
 Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. '<app.bundle.id>' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
+1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth` . '<app.bundle.id>' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +153,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. Aşağıdaki şemaları uygulamanızın Info. plist öğesine ekleyin `LSApplicationQueriesSchemes`:
+1. Aşağıdaki şemaları uygulamanızın Info. plist öğesine ekleyin `LSApplicationQueriesSchemes` :
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,7 +163,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. Geri çağırmaları işlemek için `AppDelegate.m` dosyanıza aşağıdakileri ekleyin:
+1. `AppDelegate.m`Geri çağırmaları işlemek için dosyanıza aşağıdakileri ekleyin:
 
     Amaç-C:
     
@@ -183,7 +182,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyaya yerleştirmeniz gerekir.
+**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini dosyaya yerleştirmeniz gerekir `SceneDelegate` .
 Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:

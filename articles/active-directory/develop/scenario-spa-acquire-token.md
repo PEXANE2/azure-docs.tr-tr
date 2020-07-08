@@ -12,15 +12,14 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882327"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Tek sayfalı uygulama: API 'YI çağırmak için belirteç alma
 
-MSAL. js ile API 'Ler için belirteçleri alma deseninin, `acquireTokenSilent` yöntemi kullanılarak sessiz bir belirteç isteği denemesi gerekir. Bu yöntem çağrıldığında, kitaplık önce geçerli bir belirtecin mevcut olup olmadığını görmek için tarayıcı depolamada önbelleği denetler ve döndürür. Önbellekte geçerli bir belirteç yoksa, gizli bir iframe 'den Azure Active Directory (Azure AD) için sessiz bir belirteç isteği gönderir. Bu yöntem, kitaplığın belirteçleri yenilemesini de sağlar. Azure AD 'de çoklu oturum açma oturumu ve belirteç yaşam süresi değerleri hakkında daha fazla bilgi için bkz. [belirteç yaşam süreleri](active-directory-configurable-token-lifetimes.md).
+MSAL.js olan API 'Ler için belirteçleri alma deseninin yöntemi kullanılarak sessiz bir belirteç isteği denemesi gerekir `acquireTokenSilent` . Bu yöntem çağrıldığında, kitaplık önce geçerli bir belirtecin mevcut olup olmadığını görmek için tarayıcı depolamada önbelleği denetler ve döndürür. Önbellekte geçerli bir belirteç yoksa, gizli bir iframe 'den Azure Active Directory (Azure AD) için sessiz bir belirteç isteği gönderir. Bu yöntem, kitaplığın belirteçleri yenilemesini de sağlar. Azure AD 'de çoklu oturum açma oturumu ve belirteç yaşam süresi değerleri hakkında daha fazla bilgi için bkz. [belirteç yaşam süreleri](active-directory-configurable-token-lifetimes.md).
 
 Azure AD 'ye yönelik sessiz Belirteç istekleri, zaman aşımına uğradı bir Azure AD oturumu veya parola değişikliği gibi nedenlerle başarısız olabilir. Bu durumda, bir etkileşimli yöntemden birini çağırabilirsiniz (kullanıcıdan, belirteçleri, belirteç almasına izin verir).
 
@@ -70,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak alacak ve bunları API 'lere HTTP isteklerine ekleyecek HTTP yakalayıcısını sağlar.
 
-`protectedResourceMap` Yapılandırma seçeneğinde API 'ler için kapsamları belirtebilirsiniz. `MsalInterceptor`belirteçleri otomatik olarak alırken bu kapsamları ister.
+Yapılandırma seçeneğinde API 'Ler için kapsamları belirtebilirsiniz `protectedResourceMap` . `MsalInterceptor`belirteçleri otomatik olarak alırken bu kapsamları ister.
 
 ```javascript
 // app.module.ts
@@ -126,7 +125,7 @@ ngOnDestroy() {
  }
 ```
 
-Alternatif olarak, çekirdek MSAL. js kitaplığı 'nda açıklandığı gibi Acquire-Token yöntemlerini kullanarak açıkça belirteç alabilirsiniz.
+Alternatif olarak, çekirdek MSAL.js kitaplığı 'nda açıklandığı gibi Acquire-Token yöntemlerini kullanarak açıkça belirteç alabilirsiniz.
 
 ---
 
@@ -168,7 +167,7 @@ Aşağıdaki amaçlar için isteğe bağlı talepler kullanabilirsiniz:
 - Azure AD 'nin belirteçlerde döndürdüğü belirli taleplerin davranışını değiştirin.
 - Uygulamanız için özel talepler ekleyin ve erişin.
 
-İçinde `IdToken`isteğe bağlı talepler istemek için, `claimsRequest` `AuthenticationParameters.ts` sınıfının alanına bir strıngiingclaim nesnesi gönderebilirsiniz.
+İçinde isteğe bağlı talepler istemek için `IdToken` , sınıfının alanına bir strıngiingclaim nesnesi gönderebilirsiniz `claimsRequest` `AuthenticationParameters.ts` .
 
 ```javascript
 "optionalClaims":

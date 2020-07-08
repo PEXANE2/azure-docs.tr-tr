@@ -7,10 +7,9 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892266"
 ---
 # <a name="what-is-distributed-tracing"></a>Dağıtılmış Izleme nedir?
@@ -31,7 +30,7 @@ Bir uygulamadaki hizmetler genelinde dağıtılmış izlemeyi etkinleştirmek, h
 
 ## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Otomatik izleme veya SDK 'lar aracılığıyla Application Insights aracılığıyla etkinleştirme
 
-.NET, .NET Core, Java, Node. js ve JavaScript 'In tüm Application Insights aracıları ve/veya SDK 'Ları, dağıtılmış izlemeyi yerel olarak destekler. Her Application Insights SDK 'Yı yükleme ve yapılandırmaya yönelik yönergeler aşağıda verilmiştir:
+.NET, .NET Core, Java, Node.js ve JavaScript 'In tüm Application Insights aracıları ve/veya SDK 'Ları, dağıtılmış izlemeyi yerel olarak destekler. Her Application Insights SDK 'Yı yükleme ve yapılandırmaya yönelik yönergeler aşağıda verilmiştir:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)

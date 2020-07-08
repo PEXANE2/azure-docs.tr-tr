@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811718"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
@@ -28,7 +27,7 @@ Boş bir App Service planı oluşturabilir veya uygulama oluşturmanın bir par�
 
    ![Azure portal bir kaynak oluşturun.][createResource] 
 
-1. **Yeni** > **Web uygulaması** veya başka türde bir App Service uygulaması seçin.
+1. **Yeni**  >  **Web uygulaması** veya başka türde bir App Service uygulaması seçin.
 
    ![Azure portal bir uygulama oluşturun.][createWebApp] 
 

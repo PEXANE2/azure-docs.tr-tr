@@ -12,10 +12,9 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882344"
 ---
 # <a name="single-page-application-code-configuration"></a>Tek sayfalı uygulama: kod yapılandırma
@@ -28,8 +27,8 @@ Microsoft Identity platformu, sektörde önerilen güvenlik uygulamalarını kul
 
 | MSAL kitaplığı | Açıklama |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | JavaScript veya angular, Vue. js ve yanıt verme. js gibi SPA çerçeveleri aracılığıyla oluşturulmuş herhangi bir istemci tarafı Web uygulamasında kullanmak için düz JavaScript kitaplığı. |
-| ![MSAL angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Angular çerçevesi aracılığıyla oluşturulan tek sayfalı uygulamalarda kullanımı basitleştirecek Core MSAL. js kitaplığı sarmalayıcısı. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | JavaScript veya SPA çerçeveleri aracılığıyla oluşturulmuş herhangi bir istemci tarafı Web uygulamasında kullanmak için, angular, Vue.js ve React.js gibi basit JavaScript kitaplığı. |
+| ![MSAL angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Angular çerçevesi aracılığıyla oluşturulan tek sayfalı uygulamalarda kullanımı basitleştirecek çekirdek MSAL.js kitaplığı sarmalayıcısı. |
 
 ## <a name="application-code-configuration"></a>Uygulama kodu yapılandırması
 
@@ -50,7 +49,7 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-Yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [msal. js ile uygulamayı başlatma](msal-js-initializing-client-applications.md).
+Yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [MSAL.jsuygulama başlatma ](msal-js-initializing-client-applications.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 

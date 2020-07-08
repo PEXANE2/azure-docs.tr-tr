@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885659"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD, SAML protokolünü nasıl kullanır?
@@ -31,8 +30,8 @@ Azure AD, imzalama anahtarını ve oturum kapatma URI 'sini almak için bulut hi
 
 Azure Active Directory, kiracıya özgü ve ortak (kiracıdan bağımsız) çoklu oturum açma ve çoklu oturum açma uç noktalarını kullanıma sunar. Bu URL 'Ler adreslenebilir konumları temsil eder; bu, yalnızca tanımlayıcılardır; bu nedenle meta verileri okumak için uç noktaya gidebilirsiniz.
 
-* Kiracıya özgü uç nokta konumunda `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`bulunur. * \<Tenantdomainname>* yer tutucusu, bir Azure AD kiracısının bir kayıtlı etki alanı adını veya tenantıd 'sini temsil eder. Örneğin, contoso.com kiracının Federasyon meta verileri şu konumda:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Kiracıya özgü uç nokta konumunda bulunur `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . *\<TenantDomainName>* Yer tutucu, bir Azure AD kiracısının bir kayıtlı etki alanı adını veya Tenantıd 'sini temsil eder. Örneğin, contoso.com kiracının Federasyon meta verileri şu konumda:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* Kiracıdan bağımsız uç nokta konumunda `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`bulunur. Bu uç nokta adresinde, kiracı etki alanı adı veya KIMLIĞI yerine **yaygın** görüntülenir.
+* Kiracıdan bağımsız uç nokta konumunda bulunur `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` . Bu uç nokta adresinde, kiracı etki alanı adı veya KIMLIĞI yerine **yaygın** görüntülenir.
 
 Azure AD 'nin yayımladığı Federasyon meta verileri belgeleri hakkında daha fazla bilgi için bkz. [Federasyon meta verileri](../azuread-dev/azure-ad-federation-metadata.md).

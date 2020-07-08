@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258465"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Mxyongaıot DevKit 'i Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlama
@@ -62,7 +61,7 @@ Etkin bir Azure aboneliği. Bir tane yoksa, bu iki yöntemden birini kullanarak 
   
    ![Yeni cihaz ekleme](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. **Kendi cihaz kimliğimi tanımlamama Izin ver**' e tıklayın `AZ3166`, girin ve ardından **Oluştur**' a tıklayın.
+7. **Kendi cihaz kimliğimi tanımlamama Izin ver**' e tıklayın, girin `AZ3166` ve ardından **Oluştur**' a tıklayın.
   
    ![KIMLIĞI olan cihaz oluştur](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
@@ -82,11 +81,11 @@ Etkin bir Azure aboneliği. Bir tane yoksa, bu iki yöntemden birini kullanarak 
 4. Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **RemoteMonitoring**' yi seçin. İçinde proje klasörü olan yeni bir VS Code penceresi açar.
 
    > [!NOTE]
-   > Bölmeyi kapatmanız durumunda yeniden açabilirsiniz. Komut `Ctrl+Shift+P` paletini açmak için ( `Cmd+Shift+P`MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+   > Bölmeyi kapatmanız durumunda yeniden açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
 
 ## <a name="provision-required-azure-services"></a>Gerekli Azure hizmetlerini sağlayın
 
-Çözüm penceresinde, sunulan metin kutusuna girerek `Ctrl+P` `Cmd+P` `task cloud-provision` (MacOS:) görevini çalıştırın.
+Çözüm penceresinde, `Ctrl+P` `Cmd+P` sunulan metin kutusuna girerek (MacOS:) görevini çalıştırın `task cloud-provision` .
 
 VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama sırasında size rehberlik eder.
 
@@ -94,15 +93,15 @@ VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini
 
 ## <a name="build-and-upload-the-device-code"></a>Cihaz kodunu derleyin ve karşıya yükleyin
 
-1. ( `Ctrl+P` MacOS: `Cmd + P`) ve tür **görevi yapılandırması-cihaz-bağlantısı**kullanın.
+1. `Ctrl+P`(MacOS: `Cmd + P` ) ve tür **görevi yapılandırması-cihaz-bağlantısı**kullanın.
 
-2. Terminal, `task cloud-provision` adımla aldığı bağlantı dizesini kullanmak isteyip istemediğinizi sorar. Ayrıca, ' Yeni oluştur... ' seçeneğine tıklayarak kendi cihaz Bağlantı dizenizi de girebilirsiniz.
+2. Terminal, adımla aldığı bağlantı dizesini kullanmak isteyip istemediğinizi sorar `task cloud-provision` . Ayrıca, ' Yeni oluştur... ' seçeneğine tıklayarak kendi cihaz Bağlantı dizenizi de girebilirsiniz.
 
 3. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için, düğme A ' yı basılı tutun ve sıfırlama düğmesini gönderin ve serbest bırakın. Bu ekranda DevKit KIMLIĞI ve ' Configuration ' görüntülenir.
 
    ![Giriş bağlantı dizesi](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/config-device-connection.png)
 
-4. Tamamlandıktan `task config-device-connection` sonra vs Code komutları `F1` yüklemek ve seçmek `Arduino: Upload`için tıklayın. VS Code, Arduino taslağını doğrulamaya ve karşıya yüklemeye başlar.
+4. `task config-device-connection`Tamamlandıktan sonra `F1` vs Code komutları yüklemek ve seçmek için tıklayın `Arduino: Upload` . VS Code, Arduino taslağını doğrulamaya ve karşıya yüklemeye başlar.
   
    ![Arduino taslağı için doğrulama ve karşıya yükleme](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 

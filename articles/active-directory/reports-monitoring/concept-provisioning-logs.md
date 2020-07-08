@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113365"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
@@ -30,7 +29,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 - **Etkinlik** 
     - **Oturum açma** bilgileri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgiler.
-    - **Denetim günlükleri** - [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
+    - **Denetim günlükleri**  -  [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
     - **Günlükleri sağlama** -Azure AD sağlama hizmeti tarafından sağlanan Kullanıcı, Grup ve roller hakkında sistem etkinliği sağlar. 
 
 - **Güvenlik** 
@@ -128,14 +127,14 @@ Olası değerler şunlardır:
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Oluştur 
-- Güncelleştirme
+- Güncelleştir
 - Sil
 - Devre Dışı Bırak
 - Diğer
 
 Ayrıca, varsayılan görünümün filtrelerine aşağıdaki filtreleri de ayarlayabilirsiniz:
 
-- İş KIMLIĞI
+- İş kimliği
 - Geçiş KIMLIĞI
 - Değişiklik KIMLIĞI
 - Kaynak KIMLIĞI

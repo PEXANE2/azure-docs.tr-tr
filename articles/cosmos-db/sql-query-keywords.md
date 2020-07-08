@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261576"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
@@ -19,7 +18,7 @@ Bu makalede, Azure Cosmos DB SQL sorgularında kullanılabilecek anahtar sözcü
 
 ## <a name="between"></a>BETWEEN
 
-Sorguları dize veya sayısal `BETWEEN` değer aralıklarına göre ifade etmek için anahtar sözcüğünü kullanabilirsiniz. Örneğin, aşağıdaki sorgu ilk alt öğenin 1-5, dahil olduğu tüm öğeleri döndürür.
+`BETWEEN`Sorguları dize veya sayısal değer aralıklarına göre ifade etmek için anahtar sözcüğünü kullanabilirsiniz. Örneğin, aşağıdaki sorgu ilk alt öğenin 1-5, dahil olduğu tüm öğeleri döndürür.
 
 ```sql
     SELECT *
@@ -27,21 +26,21 @@ Sorguları dize veya sayısal `BETWEEN` değer aralıklarına göre ifade etmek 
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-Aşağıdaki örnekte olduğu gibi `BETWEEN` `SELECT` yan tümcesindeki anahtar sözcüğünü de kullanabilirsiniz.
+`BETWEEN` `SELECT` Aşağıdaki örnekte olduğu gibi yan tümcesindeki anahtar sözcüğünü de kullanabilirsiniz.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-SQL API 'de, ANSI SQL 'den farklı olarak, Aralık sorguları karışık türlerin özelliklerine göre ifade edebilirsiniz. Örneğin, `grade` bazı öğeler ve diğerleri gibi `5` `grade4` bir dize gibi bir sayı olabilir. Bu durumlarda, JavaScript 'de olduğu gibi, iki farklı tür arasındaki karşılaştırma ile sonuçlanır `Undefined`, bu nedenle öğe atlanır.
+SQL API 'de, ANSI SQL 'den farklı olarak, Aralık sorguları karışık türlerin özelliklerine göre ifade edebilirsiniz. Örneğin, `grade` `5` bazı öğeler ve diğerleri gibi bir dize gibi bir sayı olabilir `grade4` . Bu durumlarda, JavaScript 'de olduğu gibi, iki farklı tür arasındaki karşılaştırma ile sonuçlanır, bu `Undefined` nedenle öğe atlanır.
 
 > [!TIP]
-> Daha hızlı sorgu yürütme süreleri için, bir Aralık dizin türünü kullanan bir dizin oluşturma ilkesi oluşturun ve bu `BETWEEN` yan tümce filtre uygulayan herhangi bir sayısal özellik veya yol.
+> Daha hızlı sorgu yürütme süreleri için, bir Aralık dizin türünü kullanan bir dizin oluşturma ilkesi oluşturun ve bu yan tümce filtre uygulayan herhangi bir sayısal özellik veya yol `BETWEEN` .
 
 ## <a name="distinct"></a>DISTINCT
 
-`DISTINCT` Anahtar sözcüğü sorgunun projeksiyonundaki yinelemeleri ortadan kaldırır.
+`DISTINCT`Anahtar sözcüğü sorgunun projeksiyonundaki yinelemeleri ortadan kaldırır.
 
 Bu örnekte, her bir soyadı için sorgu proje değerleri:
 
@@ -103,7 +102,7 @@ Sonuçlar:
 ]
 ```
 
-Toplu sistem işlevine ve alt sorgusuna sahip `DISTINCT` sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
+Toplu sistem işlevine ve alt sorgusuna sahip sorgular `DISTINCT` desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -111,7 +110,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-Belirtilen değerin listedeki herhangi bir değerle eşleşip eşleşmediğini denetlemek için ın anahtar sözcüğünü kullanın. Örneğin, aşağıdaki sorgu, `id` `WakefieldFamily` veya `AndersenFamily`olduğu tüm aile öğelerini döndürür.
+Belirtilen değerin listedeki herhangi bir değerle eşleşip eşleşmediğini denetlemek için ın anahtar sözcüğünü kullanın. Örneğin, aşağıdaki sorgu, veya olduğu tüm aile öğelerini döndürür `id` `WakefieldFamily` `AndersenFamily` .
 
 ```sql
     SELECT *
@@ -133,7 +132,7 @@ Bölüm anahtarınızı `IN` filtreye eklerseniz, sorgunuz otomatik olarak yaln�
 
 ## <a name="top"></a>TOP
 
-TOP anahtar sözcüğü, ilk `N` sorgu sonucu sayısını tanımsız bir sırada döndürür. En iyi uygulama olarak, sonuçları sıralanmış değerlerin ilk `ORDER BY` `N` sayısıyla sınırlamak için yan tümcesiyle birlikte en üstteki öğesini kullanın. Bu iki yan tümceyi birleştirmek, en üst düzey etkileri tahmin edilebilir olarak göstermek için tek yoldur.
+TOP anahtar sözcüğü, ilk `N` sorgu sonucu sayısını tanımsız bir sırada döndürür. En iyi uygulama olarak, `ORDER BY` sonuçları sıralanmış değerlerin ilk sayısıyla sınırlamak için yan tümcesiyle birlikte en üstteki öğesini kullanın `N` . Bu iki yan tümceyi birleştirmek, en üst düzey etkileri tahmin edilebilir olarak göstermek için tek yoldur.
 
 Aşağıdaki örnekte olduğu gibi, ya da parametreli sorguları kullanarak bir değişken değeri ile en üstteki bir sabit değerle kullanabilirsiniz.
 
@@ -168,4 +167,4 @@ Sonuçlar:
 
 - [Başlarken](sql-query-getting-started.md)
 - [Birleştirme](sql-query-join.md)
-- [Alt](sql-query-subquery.md)
+- [Alt Sorgular](sql-query-subquery.md)

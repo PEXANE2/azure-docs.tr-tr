@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114359"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Günlük uyarıları için anahtar API tercihi
@@ -50,7 +49,7 @@ Aşağıdaki bir tercihe yönelik anahtar kümesi, scheduledQueryRules API 'SI i
 Uyarı kurallarının [eski Log Analytics uyarı API](api-alerts.md) 'sinden taşınması işlemi, uyarı tanımınızın, sorgunuzun veya yapılandırmanızın herhangi bir şekilde değiştirilmesini kapsamaz. Uyarı kurallarınızın ve izlemenin etkilenmemiştir ve uyarılar, anahtar sırasında veya sonrasında durdurulmaz veya durdurulmaz. Tek değişiklikler şunlardır:
 
 - API tercihi değişikliği ve yeni bir API aracılığıyla kurallarınızın erişimi.
-- Bu yapıda `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`uyarı kuralı adı yerine [eskı Log Analytics Alert API](api-alerts.md) 'sinde kullanılan kimlikleri içeren değiştirilmiş bir uyarı kuralı kaynak URI 'si. Uyarı kuralının görünen adı değişmeden kalacak.
+- Bu yapıda uyarı kuralı adı yerine [eski Log Analytics Alert API](api-alerts.md) 'Sinde kullanılan kimlikleri içeren değiştirilmiş bir uyarı kuralı kaynak URI 'si `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Uyarı kuralının görünen adı değişmeden kalacak.
 
 Gönüllü olarak yeni [Scheduledqueryrules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 'a geçiş yapan ve [eskı Log Analytics uyarı API](api-alerts.md)'sinden kullanımı engelleyen müşteriler; Bu işlemi, belirli bir Log Analytics çalışma alanıyla ilişkili tüm uyarı kurallarını değiştirmek için aşağıdaki API üzerinde bir PUT çağrısı gerçekleştirerek yapabilirsiniz.
 

@@ -1,25 +1,24 @@
 ---
 title: Redsıs için Azure Cache ile redsıs-CLI kullanma
-description: İstemci olarak Redsıs için Azure önbelleğiyle etkileşim kurmak üzere *Redis-cli. exe* ' yi bir komut satırı aracı olarak nasıl kullanacağınızı öğrenin.
+description: İstemci olarak Redsıs için Azure önbelleğiyle etkileşim kurmak üzere bir komut satırı aracı olarak *redis-cli.exe* kullanmayı öğrenin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010780"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Redsıs için Azure Cache ile Redsıs komut satırı aracını kullanma
 
-*Redis-cli. exe* , Red, istemci olarak bir Azure önbelleğiyle etkileşim kurmaya yönelik popüler bir komut satırı aracıdır. Bu araç redde için Azure Cache ile birlikte kullanılabilir.
+*redis-cli.exe* , Red, istemci olarak bir Azure önbelleğiyle etkileşim kurmaya yönelik popüler bir komut satırı aracıdır. Bu araç redde için Azure Cache ile birlikte kullanılabilir.
 
 Araç, [Windows Için redsıs komut satırı araçları](https://github.com/MSOpenTech/redis/releases/)'Nı indirerek Windows platformları için kullanılabilir. 
 
-Komut satırı aracını başka bir platformda çalıştırmak istiyorsanız, Redsıs için Azure önbelleği ' ni indirin [https://redis.io/download](https://redis.io/download).
+Komut satırı aracını başka bir platformda çalıştırmak istiyorsanız, Redsıs için Azure önbelleği ' ni indirin [https://redis.io/download](https://redis.io/download) .
 
 ## <a name="gather-cache-access-information"></a>Önbellek erişim bilgilerini topla
 
@@ -36,11 +35,11 @@ Bu bölümde, Azure portal anahtarları alırsınız.
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 
-## <a name="enable-access-for-redis-cliexe"></a>Redis-cli. exe için erişimi etkinleştir
+## <a name="enable-access-for-redis-cliexe"></a>redis-cli.exe için erişimi etkinleştir
 
-Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayılan olarak etkindir. `redis-cli.exe` Komut SATıRı aracı TLS 'yi desteklemez. Bunu kullanmak için iki yapılandırma seçeneğiniz vardır:
+Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayılan olarak etkindir. `redis-cli.exe`Komut satırı aracı TLS 'yi desteklemez. Bunu kullanmak için iki yapılandırma seçeneğiniz vardır:
 
-1. [TLS olmayan bağlantı noktasını etkinleştirme (6379)](cache-configure.md#access-ports) - **Bu yapılandırmada,** erişim tuşları açık metin olarak TCP aracılığıyla gönderilir. Bu değişiklik önbelleğiniz için erişimi tehlikeye atabilir. Yalnızca bir test önbelleğine erişirken bu yapılandırmayı düşünebileceğiniz tek senaryo.
+1. [TLS olmayan bağlantı noktasını etkinleştirme (6379)](cache-configure.md#access-ports)  -  Bu yapılandırmada bu **yapılandırma önerilmez** çünkü erişim tuşları, şifresiz metın olarak TCP aracılığıyla gönderilir. Bu değişiklik önbelleğiniz için erişimi tehlikeye atabilir. Yalnızca bir test önbelleğine erişirken bu yapılandırmayı düşünebileceğiniz tek senaryo.
 
 2. [Stunnel](https://www.stunnel.org/downloads.html)indirin ve yükleyin.
 
@@ -48,9 +47,9 @@ Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayıl
 
     Stunnel sunucusu için görev çubuğu simgesine sağ tıklayın ve **günlük penceresini göster**' e tıklayın.
 
-    Stunnel günlük penceresi menüsünde **yapılandırma** > **düzenleme yapılandırması** ' na tıklayarak geçerli yapılandırma dosyasını açın.
+    Stunnel günlük penceresi menüsünde **yapılandırma**  >  **düzenleme yapılandırması** ' na tıklayarak geçerli yapılandırma dosyasını açın.
 
-    **Service Definitions** bölümünde *Redis-cli. exe* için aşağıdaki girişi ekleyin. Yerine gerçek önbelleğiniz adını ekleyin `yourcachename`. 
+    **Hizmet tanımları** bölümünün altındaki *redis-cli.exe* için aşağıdaki girişi ekleyin. Yerine gerçek önbelleğiniz adını ekleyin `yourcachename` . 
 
     ```
     [redis-cli]
@@ -61,12 +60,12 @@ Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayıl
 
     Yapılandırma dosyasını kaydedin ve kapatın. 
   
-    Stunnel günlüğü penceresi menüsünde, **yapılandırma** > **yeniden yükleme yapılandırması**' na tıklayın.
+    Stunnel günlüğü penceresi menüsünde, **yapılandırma**  >  **yeniden yükleme yapılandırması**' na tıklayın.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Redsıs komut satırı aracını kullanarak bağlanın.
 
-Stunnel kullanırken, *Redis-cli. exe*' yi çalıştırın ve yalnızca *bağlantı noktasını*geçirin ve önbelleğe bağlanmak için *erişim anahtarı* (birincil veya ikincil) kullanın.
+Stunnel kullanırken *redis-cli.exe*çalıştırın ve yalnızca *bağlantı noktasını*geçirin ve önbelleğe bağlanmak için *erişim anahtarı* (birincil veya ikincil) kullanın.
 
 ```
 redis-cli.exe -p 6380 -a YourAccessKey
@@ -74,7 +73,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![redin-CLI ile Stunnel](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-**Güvenli** olmayan TLS bağlantı noktası ile bir sınama önbelleği kullanıyorsanız, test önbelleğine bağlanmak için `redis-cli.exe` *ana bilgisayar adınızı*, *bağlantı noktasını*ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın ve geçirin.
+**Güvenli** olmayan TLS bağlantı noktası ile bir sınama önbelleği kullanıyorsanız, `redis-cli.exe` Test önbelleğine bağlanmak için *ana bilgisayar adınızı*, *bağlantı noktasını*ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın ve geçirin.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

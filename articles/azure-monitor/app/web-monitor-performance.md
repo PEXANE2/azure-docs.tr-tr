@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985074"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
@@ -21,7 +20,7 @@ Application Insights hem Java hem de ASP.NET Web uygulamaları ve Hizmetleri, WC
 İstemci tarafında, Application Insights Web sayfalarından telemetri alabilir ve iOS, Android ve Windows Mağazası uygulamaları dahil olmak üzere çok çeşitli cihazlar olabilir.
 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Performans izlemeyi ayarlama
-Projenize henüz Application Insights eklemediyseniz (yani, ApplicationInsights. config yoksa), başlamak için şu yollarla birini seçin:
+Projenize henüz Application Insights eklemediyseniz (yani, ApplicationInsights.config yoksa), başlamak için şu yollarla birini seçin:
 
 * [ASP.NET web uygulamaları](../../azure-monitor/app/asp-net.md)
   * [Özel durum izleme ekleme](../../azure-monitor/app/asp-net-exceptions.md)

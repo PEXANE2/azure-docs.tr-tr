@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884877"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
@@ -18,9 +17,9 @@ Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye ço
 
 Site Recovery çoğaltmanın çalışması için, VM 'den belirli URL 'Lere veya IP aralıklarına giden bağlantı gerekir. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan birini görebilirsiniz.
 
-| URL'si | Ayrıntılar |
+| URL | Ayrıntılar |
 |---|---|
-| `*.blob.core.windows.net` | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Leri için bir izin verilenler listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine. `*.blob.core.windows.net` |
+| `*.blob.core.windows.net` | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Leri için bir izin verilenler listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine `*.blob.core.windows.net` . |
 | `login.microsoftonline.com` | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir. |
 | `*.hypervrecoverymanager.windowsazure.com` | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik Duvarı ara sunucunuz IP 'Leri destekliyorsa, karşılık gelen _SITE Recovery IP_ 'sini kullanabilirsiniz. |
 | `*.servicebus.windows.net` | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen _Site Recovery Izleme IP_ 'sini kullanabilirsiniz. |
@@ -51,7 +50,7 @@ DNS sunucusuna sanal makineden erişmeyi deneyin. DNS sunucusu erişilebilir de�
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Recovery yapılandırma başarısız oldu (151196)
 
 > [!NOTE]
-> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com`. Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](/azure/load-balancer/configure-load-balancer-outbound-cli)makalesinde belirtildiği şekilde giden erişim oluşturun.
+> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com` . Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](/azure/load-balancer/configure-load-balancer-outbound-cli)makalesinde belirtildiği şekilde giden erişim oluşturun.
 
 #### <a name="possible-cause"></a>Olası nedeni
 
@@ -124,7 +123,7 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
 
 #### <a name="resolution"></a>Çözüm
 
-1. Mobility hizmeti Aracısı Windows ve `/etc/environment` LINUX üzerinde IE 'deki proxy ayarlarını algılar.
+1. Mobility hizmeti Aracısı Windows ve Linux üzerinde IE 'deki proxy ayarlarını algılar `/etc/environment` .
 1. Proxy 'yi yalnızca Azure Site Recovery Mobility hizmeti için ayarlamayı tercih ediyorsanız, şu adreste bulunan _ProxyInfo. conf_ dosyasında proxy ayrıntılarını sağlayabilirsiniz:
 
    - **Linux**:`/usr/local/InMage/config/`

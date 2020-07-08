@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811704"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service
@@ -29,7 +28,7 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 
 ## <a name="find-the-thumbprint"></a>Parmak izini bulma
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
 Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**' nı seçin ve ardından **özel anahtar sertifikaları (. pfx** ) veya **ortak anahtar sertifikaları (. cer)** seçeneğini belirleyin.
 
@@ -45,16 +44,16 @@ Uygulama kodunuzda bir sertifikaya erişmek için, `WEBSITE_LOAD_CERTIFICATES` <
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Tüm sertifikalarınızı erişilebilir hale getirmek için değerini olarak `*`ayarlayın.
+Tüm sertifikalarınızı erişilebilir hale getirmek için değerini olarak ayarlayın `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Windows uygulamalarında sertifika yükleme
 
-`WEBSITE_LOAD_CERTIFICATES` Uygulama ayarı, belirtilen sertifikaları Windows sertifika deposundaki Windows barındırılan uygulamanız için erişilebilir hale getirir ve konum, [fiyatlandırma katmanına](overview-hosting-plans.md)bağlıdır:
+`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarı, belirtilen sertifikaları Windows sertifika deposundaki Windows barındırılan uygulamanız için erişilebilir hale getirir ve konum, [fiyatlandırma katmanına](overview-hosting-plans.md)bağlıdır:
 
 - **Yalıtılmış** katman- [Yerel machine\.](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
 - Diğer tüm katmanlar- [geçerli Kullanıcı\.](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)
 
-C# kodunda sertifika parmak izine göre sertifikaya erişirsiniz. Aşağıdaki kod parmak izine `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`sahip bir sertifika yükler.
+C# kodunda sertifika parmak izine göre sertifikaya erişirsiniz. Aşağıdaki kod parmak izine sahip bir sertifika yükler `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
 ```csharp
 using System;
@@ -109,10 +108,10 @@ Windows sertifika deposu için desteklemeyen veya desteklemeyen diller için bkz
 
 ## <a name="load-certificate-in-linux-apps"></a>Linux uygulamalarında sertifika yükleme
 
-Uygulama `WEBSITE_LOAD_CERTIFICATES` ayarları, belirtilen sertifikaları Linux barındırılan uygulamalarınızın (özel kapsayıcı uygulamaları dahil) dosya olarak erişilebilir hale getirir. Dosyalar aşağıdaki dizinler altında bulunur:
+`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarları, belirtilen sertifikaları Linux barındırılan uygulamalarınızın (özel kapsayıcı uygulamaları dahil) dosya olarak erişilebilir hale getirir. Dosyalar aşağıdaki dizinler altında bulunur:
 
-- Özel Sertifikalar- `/var/ssl/private` ( `.p12` dosyalar)
-- Ortak Sertifikalar- `/var/ssl/certs` ( `.der` dosyalar)
+- Özel Sertifikalar- `/var/ssl/private` ( `.p12` Dosyalar)
+- Ortak Sertifikalar- `/var/ssl/certs` ( `.der` Dosyalar)
 
 Sertifika dosyası adları, sertifika parmak izlerdir. Aşağıdaki C# kodu, bir Linux uygulamasına ortak bir sertifikanın nasıl yükleneceğini göstermektedir.
 
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Node. js, PHP, Python, Java veya Ruby içindeki bir dosyadan TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
+Node.js, PHP, Python, Java veya Ruby içindeki bir dosyadan bir TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
 
 ## <a name="load-certificate-from-file"></a>Sertifikayı dosyadan yükle
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Node. js, PHP, Python, Java veya Ruby içindeki bir dosyadan TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
+Node.js, PHP, Python, Java veya Ruby içindeki bir dosyadan bir TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 

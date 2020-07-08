@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
 ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261644"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure üzerinde FreeBSD’ye giriş
@@ -52,9 +51,9 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Yükleme sırasında size sorulur `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Yanıt `y` verirseniz ve girerseniz `/etc/rc.conf` `a path to an rc file to update`, sorunu `ERROR: [Errno 13] Permission denied`karşılayabilirsiniz. Bu sorunu çözmek için, dosyaya `etc/rc.conf`göre geçerli kullanıcıya yazma hakkı vermelisiniz.
+Yükleme sırasında size sorulur `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` . Yanıt verirseniz `y` ve girerseniz `/etc/rc.conf` `a path to an rc file to update` , sorunu karşılayabilirsiniz `ERROR: [Errno 13] Permission denied` . Bu sorunu çözmek için, dosyaya göre geçerli kullanıcıya yazma hakkı vermelisiniz `etc/rc.conf` .
 
-Artık Azure 'da oturum açabilir ve FreeBSD VM 'nizi oluşturabilirsiniz. FreeBSD 11,0 VM oluşturmak için aşağıda bir örnek verilmiştir. Parametresi `--public-ip-address-dns-name` , yeni oluşturulan genel IP için genel olarak BENZERSIZ bir DNS adı ile de ekleyebilirsiniz. 
+Artık Azure 'da oturum açabilir ve FreeBSD VM 'nizi oluşturabilirsiniz. FreeBSD 11,0 VM oluşturmak için aşağıda bir örnek verilmiştir. Parametresi, `--public-ip-address-dns-name` Yeni oluşturulan genel IP için genel olarak benzersiz BIR DNS adı ile de ekleyebilirsiniz. 
 
 ```azurecli
 az login 
@@ -103,7 +102,7 @@ Aşağıda, FreeBSD 'de desteklenen VM uzantıları verilmiştir.
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Kimlik doğrulaması: Kullanıcı adları, parolalar ve SSH anahtarları
 Azure portal kullanarak FreeBSD sanal makinesi oluştururken, bir Kullanıcı adı, parola veya SSH ortak anahtarı sağlamanız gerekir.
 Azure üzerinde FreeBSD sanal makinesini dağıtmaya yönelik kullanıcı adları, sanal makinede (örneğin, "root") zaten mevcut olan sistem hesaplarının (UID <100) adlarıyla aynı olmamalıdır.
-Şu anda yalnızca RSA SSH anahtarı desteklenir. Çok satırlı SSH anahtarının ile başlaması `---- BEGIN SSH2 PUBLIC KEY ----` ve ile bitmesi gerekir `---- END SSH2 PUBLIC KEY ----`.
+Şu anda yalnızca RSA SSH anahtarı desteklenir. Çok satırlı SSH anahtarının ile başlaması `---- BEGIN SSH2 PUBLIC KEY ----` ve ile bitmesi gerekir `---- END SSH2 PUBLIC KEY ----` .
 
 ## <a name="obtaining-superuser-privileges"></a>Süper kullanıcı ayrıcalıkları alma
 Azure üzerinde sanal makine örneği dağıtımı sırasında belirtilen kullanıcı hesabı ayrıcalıklı bir hesaptır. Sudo paketi yayınlanan FreeBSD görüntüsüne yüklendi.
@@ -113,7 +112,7 @@ Bu kullanıcı hesabından oturum açtıktan sonra komut sözdizimini kullanarak
 $ sudo <COMMAND>
 ```
 
-İsteğe bağlı olarak, kullanarak `sudo -s`bir kök kabuğu elde edebilirsiniz.
+İsteğe bağlı olarak, kullanarak bir kök kabuğu elde edebilirsiniz `sudo -s` .
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 [Azure VM Konuk Aracısı](https://github.com/Azure/WALinuxAgent/) sürümü 2.2.2, Azure üzerinde FreeBSD VM 'si için sağlama hatasına neden olan [bilinen bir sorunla](https://github.com/Azure/WALinuxAgent/pull/517) karşılaştı. Bu çözüm, [Azure VM Konuk Aracısı](https://github.com/Azure/WALinuxAgent/) sürüm 2.2.3 ve sonraki sürümleri tarafından yakalanmıştı. 

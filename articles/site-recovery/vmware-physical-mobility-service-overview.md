@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259823"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
@@ -129,7 +128,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Kurulum günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 `/InstallLocation`| İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu (herhangi bir klasör) belirtir.
@@ -140,7 +139,7 @@ Kurulum günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | Zorunlu parametre. `<CSIP>`yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `/PassphraseFilePath` |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
@@ -170,9 +169,9 @@ Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgent
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
-`-d` | İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu belirtir: `/usr/local/ASR`.
+`-d` | İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu belirtir: `/usr/local/ASR` .
 `-v` | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. <br/> VMware VM 'Leri/fiziksel sunucuları için **VMware** . <br/> Azure VM 'Leri için **Azure** .
 `-q` | İsteğe bağlı. Yükleyicinin sessiz modda çalıştırılıp çalıştırılmayacağını belirtir.
 
@@ -180,7 +179,7 @@ Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | Zorunlu parametre. `<CSIP>`yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `-P` |  Zorunlu. Parolasının kaydedildiği dosyanın tam dosya yolu. Geçerli bir klasör kullanın.
 

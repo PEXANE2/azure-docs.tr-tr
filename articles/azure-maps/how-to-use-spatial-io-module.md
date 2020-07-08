@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804648"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
@@ -45,7 +44,7 @@ Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı
 
 Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebilirsiniz:
 
-* Azure Maps uzamsal GÇ modülü için küresel olarak barındırılan Azure CDN. Bu seçenek için, HTML dosyasının `<head>` öğesinde JavaScript 'e bir başvuru eklersiniz.
+* Azure Maps uzamsal GÇ modülü için küresel olarak barındırılan Azure CDN. Bu seçenek için, HTML dosyasının öğesinde JavaScript 'e bir başvuru eklersiniz `<head>` .
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
@@ -57,7 +56,7 @@ Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebil
     npm install azure-maps-spatial-io
     ```
 
-    Daha sonra, HTML belgesi `<head>` öğesindeki JavaScript 'e bir başvuru ekleyin:
+    Daha sonra, HTML belgesi öğesindeki JavaScript 'e bir başvuru ekleyin `<head>` :
 
     ```html
     <script src="node_modules/azure-maps-spatial-io/dist/atlas-spatial.min.js"></script>
@@ -121,13 +120,13 @@ Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebil
     </html>
     ```
 
-2. Azure Maps uzamsal GÇ modülünü yükleyin. Bu alıştırmada, Azure Maps uzamsal GÇ modülü için CDN 'yi kullanın. Aşağıdaki başvuruyu, HTML dosyanızın `<head>` öğesine ekleyin:
+2. Azure Maps uzamsal GÇ modülünü yükleyin. Bu alıştırmada, Azure Maps uzamsal GÇ modülü için CDN 'yi kullanın. Aşağıdaki başvuruyu, `<head>` HTML dosyanızın öğesine ekleyin:
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. Bir `datasource`başlatın ve veri kaynağını haritaya ekleyin. Bir `layer`başlatın ve veri kaynağını harita katmanına ekleyin. Ardından, hem veri kaynağını hem de katmanını işleme. Sonraki adımda tam kodu görmek için aşağı kaydırmadan önce, veri kaynağını ve katman kodu parçacıklarını yerleştirmek için en iyi yerleri düşünün. Haritayı programlı bir şekilde işleyebilmemiz için, eşleme kaynağı hazırlanana kadar beklemeniz gerektiğini hatırlayın.
+3. Bir başlatın `datasource` ve veri kaynağını haritaya ekleyin. Bir başlatın `layer` ve veri kaynağını harita katmanına ekleyin. Ardından, hem veri kaynağını hem de katmanını işleme. Sonraki adımda tam kodu görmek için aşağı kaydırmadan önce, veri kaynağını ve katman kodu parçacıklarını yerleştirmek için en iyi yerleri düşünün. Haritayı programlı bir şekilde işleyebilmemiz için, eşleme kaynağı hazırlanana kadar beklemeniz gerektiğini hatırlayın.
 
     ```javascript
     var datasource, layer;
@@ -222,7 +221,7 @@ Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebil
     </html>
     ```
 
-5. Birincil anahtarınızla `<Your Azure Maps Key>` değiştirmeyi unutmayın. HTML dosyanızı açın ve aşağıdaki görüntüye benzer sonuçlar görürsünüz:
+5. `<Your Azure Maps Key>`Birincil anahtarınızla değiştirmeyi unutmayın. HTML dosyanızı açın ve aşağıdaki görüntüye benzer sonuçlar görürsünüz:
 
     <center>
 
@@ -235,19 +234,19 @@ Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebil
 Burada gösterilen özellik, uzamsal GÇ modülünde kullanılabilen birçok özellikten yalnızca biridir. Uzamsal GÇ modülündeki diğer işlevleri nasıl kullanacağınızı öğrenmek için aşağıdaki kılavuzlardan okuyun:
 
 > [!div class="nextstepaction"]
-> [Basit bir veri katmanı ekleyin](spatial-io-add-simple-data-layer.md)
+> [Basit bir veri katmanı ekleme](spatial-io-add-simple-data-layer.md)
 
 > [!div class="nextstepaction"]
 > [Uzamsal verileri okuma ve yazma](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [OGC eşleme katmanı ekleme](spatial-io-add-ogc-map-layer.md)
+> [OGC harita katmanı ekleme](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [WFS hizmetine bağlanma](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Çekirdek işlemlerden yararlanın](spatial-io-core-operations.md)
+> [Çekirdek işlemlerden yararlanma](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
 > [Desteklenen veri biçimi ayrıntıları](spatial-io-supported-data-format-details.md)

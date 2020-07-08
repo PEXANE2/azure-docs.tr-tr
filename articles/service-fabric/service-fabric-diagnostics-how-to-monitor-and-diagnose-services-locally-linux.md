@@ -4,10 +4,9 @@ description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerini
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991339"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Yerel bir Linux makine geliştirme kurulumunda hizmetleri izleme ve tanılama
@@ -24,9 +23,9 @@ Hizmetlerin Kullanıcı deneyimine en düşük kesintilerle devam etmesine izin 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Java uygulamalarında hata ayıklama Service Fabric
 
-Java uygulamaları için [birden çok günlük](https://en.wikipedia.org/wiki/Java_logging_framework) çerçevesi mevcuttur. , `java.util.logging` JRE 'nin varsayılan seçeneği olduğundan, [GitHub 'daki kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışmada `java.util.logging` Framework 'ün nasıl yapılandırılacağı açıklanmaktadır.
+Java uygulamaları için [birden çok günlük](https://en.wikipedia.org/wiki/Java_logging_framework) çerçevesi mevcuttur. , `java.util.logging` JRE 'nin varsayılan seçeneği olduğundan, [GitHub 'daki kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışmada Framework 'ün nasıl yapılandırılacağı açıklanmaktadır `java.util.logging` .
 
-Java. util. Logging kullanarak, uygulama günlüklerinizi bellek, çıkış akışları, konsol dosyaları veya yuvalara yeniden yönlendirebilirsiniz. Bu seçeneklerin her biri için çerçevede zaten sağlanmış olan varsayılan işleyiciler vardır. Tüm günlükleri yerel bir `app.properties` dosyaya yeniden yönlendirmek üzere uygulamanız için dosya işleyicisini yapılandırmak üzere bir dosya oluşturabilirsiniz.
+Java. util. Logging kullanarak, uygulama günlüklerinizi bellek, çıkış akışları, konsol dosyaları veya yuvalara yeniden yönlendirebilirsiniz. Bu seçeneklerin her biri için çerçevede zaten sağlanmış olan varsayılan işleyiciler vardır. `app.properties`Tüm günlükleri yerel bir dosyaya yeniden yönlendirmek üzere uygulamanız için dosya işleyicisini yapılandırmak üzere bir dosya oluşturabilirsiniz.
 
 Aşağıdaki kod parçacığı örnek bir yapılandırma içerir:
 
@@ -40,14 +39,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` Dosya tarafından işaret edilen klasör var olmalıdır. `app.properties` `entrypoint.sh` Dosya oluşturulduktan sonra, özelliği `<applicationfolder>/<servicePkg>/Code/` `java.util.logging.config.file` dosya olarak `app.properties` ayarlamak için, giriş noktası komut dosyanızı klasöre de değiştirmeniz gerekir. Giriş aşağıdaki kod parçacığı gibi görünmelidir:
+Dosya tarafından işaret edilen klasör `app.properties` var olmalıdır. `app.properties`Dosya oluşturulduktan sonra, `entrypoint.sh` `<applicationfolder>/<servicePkg>/Code/` özelliği dosya olarak ayarlamak için, giriş noktası komut dosyanızı klasöre de değiştirmeniz gerekir `java.util.logging.config.file` `app.properties` . Giriş aşağıdaki kod parçacığı gibi görünmelidir:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Bu yapılandırma, üzerinde bir döndürme sırasında `/tmp/servicefabric/logs/`günlüklerin toplanmasına neden olur. Bu durumda bulunan günlük dosyası, burada yer aldığı Kapsamım% u .% g. log:
+Bu yapılandırma, üzerinde bir döndürme sırasında günlüklerin toplanmasına neden olur `/tmp/servicefabric/logs/` . Bu durumda bulunan günlük dosyası, burada yer aldığı Kapsamım% u .% g. log:
 * **% u** eşzamanlı Java işlemlerinde çakışmaları çözümlemek için benzersiz bir sayıdır.
 * **% g** , döndürme günlükleri arasında ayrım yapmak için oluşturma numarasıdır.
 
@@ -61,7 +60,7 @@ Daha fazla bilgi için [GitHub 'daki kod örneklerine](https://github.com/Azure-
 
 Linux 'ta CoreCLR uygulamalarını izlemek için birden çok çerçeve mevcuttur. Daha fazla bilgi için bkz. [günlük için .net uzantıları](https://github.com/dotnet/extensions/tree/master/src/Logging).  EventSource, C# geliştiricilerine tanıdık olduğundan, ' Bu makale Linux 'ta CoreCLR örnekleri içinde izlemek için EventSource kullanır.
 
-İlk adım, günlüklerinizi belleğe, Çıkış akışlarına veya konsol dosyalarına yazabilbilmeniz için System. Diagnostics. Tracing ' i dahil etmek için kullanılır.  EventSource kullanarak günlüğe kaydetmek için, Project. json ' a aşağıdaki projeyi ekleyin:
+İlk adım, günlüklerinizi belleğe, Çıkış akışlarına veya konsol dosyalarına yazabilbilmeniz için System. Diagnostics. Tracing ' i dahil etmek için kullanılır.  EventSource kullanarak günlüğe kaydetmek için aşağıdaki projeyi project.jsekleyin:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
@@ -120,7 +119,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Yukarıdaki kod parçacığı, içindeki `/tmp/MyServiceLog.txt`bir dosyaya Günlükler verir. Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener Sınıfınıza aşağıdaki kod parçacığını kullanın:
+Yukarıdaki kod parçacığı, içindeki bir dosyaya Günlükler verir `/tmp/MyServiceLog.txt` . Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener Sınıfınıza aşağıdaki kod parçacığını kullanın:
 
 ```csharp
 public static TextWriter Out = Console.Out;

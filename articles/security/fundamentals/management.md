@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981316"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
@@ -106,7 +105,7 @@ Sanal Makine–dağıtılmış uygulamalar gerekliyse kendi istemci araçların�
 ### <a name="management-gateway"></a>Yönetimi ağ geçidi
 Tüm yönetim erişimini merkezileştirmek ve izlemeyi ve günlüğe kaydetmeyi basitleştirmek için, Azure ortamınıza bağlı, şirket için ağınızdaki ayrılmış bir [Uzak Masaüstü Ağ Geçidi](https://technet.microsoft.com/library/dd560672) (RD Ağ Geçidi) sunucusu dağıtabilirsiniz.
 
-Uzak Masaüstü Ağ geçidi, güvenlik gereksinimlerini uygulayan ilke tabanlı bir RDP proxy hizmetidir. Windows Server Network Access Protection ile RD Ağ Geçidi uygulamak yalnızca Active Directory Etki Alanı Hizmetleri (AD DS) Grup İlkesi Nesneleri (GPO'lar) tarafından oluşturulan belirli güvenlik durumu ölçütlerini karşılayan istemcilerin bağlanabilmesinin sağlanmasına yardımcı olur. Buna ek olarak:
+Uzak Masaüstü Ağ geçidi, güvenlik gereksinimlerini uygulayan ilke tabanlı bir RDP proxy hizmetidir. Windows Server Network Access Protection ile RD Ağ Geçidi uygulamak yalnızca Active Directory Etki Alanı Hizmetleri (AD DS) Grup İlkesi Nesneleri (GPO'lar) tarafından oluşturulan belirli güvenlik durumu ölçütlerini karşılayan istemcilerin bağlanabilmesinin sağlanmasına yardımcı olur. Bunlara ek olarak:
 
 * Azure portalına erişimine izin verilen tek ana bilgisayar olacak şekilde, RD Ağ Geçidi’nde [Azure yönetim sertifikası](https://msdn.microsoft.com/library/azure/gg551722.aspx) sağlayın.
 * RD Ağ Geçidi’ni yönetici iş istasyonları olarak aynı [yönetim etki alanına](https://technet.microsoft.com/library/bb727085.aspx) ekleyin. Bu, Azure AD’ye tek yön trust sahibi olan bir etki alanında siteden siteye IPsec VPN ya da ExpressRoute kullanırken ya da şirket için AD DS örneği ve Azure AD’niz arasında kimlik bilgilerini birleştirirken gereklidir.
@@ -138,7 +137,7 @@ Sıkı erişim denetimleri içeren ilke uygulama yönetici eylemlerini yönetebi
 ## <a name="client-configuration"></a>İstemci yapılandırması
 Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz. Bunlar arasındaki en büyük fark, tüm seçeneklerde benzer güvenlik profili sağlarken, maliyet, kullanılabilirlik ve erişilebilirliktir. Aşağıdaki tabloda her birinin avantajları ve risklerinin kısa bir çözümlemesini sağlar. (“kurumsal PC” ifadesinin, rollerden bağımsız olarak, tüm etki alanı kullanıcıları için dağıtılabilecek standart masaüstü PC yapılandırması anlamına geldiğini unutmayın.)
 
-| Yapılandırma | Avantajlar | Simgeler |
+| Yapılandırma | Yararları | Simgeler |
 | --- | --- | --- |
 | Tek başına sağlamlaştırılmış iş istasyonu |Sıkı denetlenen iş istasyonu |ayrılmış masaüstü bilgisayarlar için daha yüksek maliyet |
 | - | Azaltılmış uygulama açıkları riski |Artan yönetim çabası |

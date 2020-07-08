@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010588"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
@@ -30,7 +29,7 @@ Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanız
 
 ## <a name="live-events"></a>Canlı Etkinlikler
 
-[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir birincil ve ikincil giriş uç noktası oluşturulur. Uzak Live Encoder, bu giriş uç noktasına [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [kesintisiz akış](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış-MP4) giriş protokolünü kullanarak katkı akışını gönderir. RTMP alma protokolü için içerik açık (`rtmp://`) veya kabloda (`rtmps://`) güvenli bir şekilde şifreli olarak gönderilebilir. Kesintisiz Akış alma protokolü için desteklenen URL şemaları `http://` veya. `https://`  
+[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir birincil ve ikincil giriş uç noktası oluşturulur. Uzak Live Encoder, bu giriş uç noktasına [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [kesintisiz akış](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış-MP4) giriş protokolünü kullanarak katkı akışını gönderir. RTMP alma protokolü için içerik açık ( `rtmp://` ) veya kabloda () güvenli bir şekilde şifreli olarak gönderilebilir `rtmps://` . Kesintisiz Akış alma protokolü için desteklenen URL şemaları `http://` veya `https://` .  
 
 ## <a name="live-event-types"></a>Canlı olay türleri
 
@@ -87,7 +86,7 @@ Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 ### <a name="naming-rules"></a>Adlandırma kuralları
 
 * En büyük canlı olay adı 32 karakterdir.
-* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-concept.md#naming-convention).
 
@@ -116,11 +115,11 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
     > [!NOTE]
     > Azure Portal, Gösterim URL 'si "*kalıcı giriş URL 'si*" olarak adlandırılmıştır.
 
-    Bu modu API 'de belirtmek için, oluşturma zamanı `vanityUrl` ( `true` varsayılan `false`) olarak ayarlayın. Ayrıca, oluşturma zamanında kendi erişim belirtecinizi (`LiveEventInput.accessToken`) geçirmeniz gerekir. URL 'de rastgele bir belirteci önlemek için belirteç değerini belirtirsiniz. Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra, bu güncelleştirilemiyor.
+    Bu modu API 'de belirtmek için, `vanityUrl` `true` oluşturma zamanı (varsayılan) olarak ayarlayın `false` . Ayrıca, oluşturma zamanında kendi erişim belirtecinizi () geçirmeniz gerekir `LiveEventInput.accessToken` . URL 'de rastgele bir belirteci önlemek için belirteç değerini belirtirsiniz. Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra, bu güncelleştirilemiyor.
 
     Erişim belirtecinin, veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir gösterim URL kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan GUID 'yi yeniden kullanmak yerine).
 
-    Aşağıdaki API 'Leri kullanarak Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin, `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) olarak ayarlayın.  
+    Aşağıdaki API 'Leri kullanarak Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin,) olarak ayarlayın `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` .  
 
     |Dil|Gösterim URL 'sini etkinleştir|Erişim belirteci ayarlama|
     |---|---|---|

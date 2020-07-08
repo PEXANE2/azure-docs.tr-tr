@@ -1,5 +1,5 @@
 ---
-title: Özel olarak geliştirilen uygulamalar için kayıt alanlarını Azure portal
+title: Özel olarak geliştirilmiş uygulamalar için Azure portalı kayıt alanlarını bulma
 description: Azure AD ile özel bir geliştirilmiş uygulamayı kaydetme Kılavuzu
 services: active-directory
 author: rwike77
@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80883177"
 ---
-# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilen uygulamalar için kayıt alanlarını Azure portal
+# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilmiş uygulamalar için Azure portalı kayıt alanlarını bulma
 
 Bu makale, [Azure Portal](https://portal.azure.com)uygulama kaydı formundaki tüm kullanılabilir alanlarla ilgili kısa bir açıklama sağlar.
 
@@ -36,7 +35,7 @@ Bu makale, [Azure Portal](https://portal.azure.com)uygulama kaydı formundaki t�
 
 | Alan            | Açıklama                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Adı             | Uygulamanın adı. En az dört karakter uzunluğunda olmalıdır.                |
+| Name             | Uygulamanın adı. En az dört karakter uzunluğunda olmalıdır.                |
 | Desteklenen hesap türleri| Uygulamanızın hangi hesaplara desteklemesini istediğinizi seçin: yalnızca bu kuruluş dizinindeki hesaplar, herhangi bir kuruluş dizinindeki hesaplar veya herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları.  |
 | Yeniden yönlendirme URI 'SI (isteğe bağlı) | Oluşturmakta olduğunuz uygulamanın türünü, **Web** veya **ortak istemciyi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'SINI (veya yanıt URL 'si) girin. Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin http://localhost:31544 yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır. Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin, myapp://auth. Web uygulamalarına veya yerel uygulamalara yönelik belirli örnekleri görmek için [hızlı başlangıç](https://docs.microsoft.com/azure/active-directory/develop)deneyimimize göz atın.|
 
@@ -47,7 +46,7 @@ Yukarıdaki alanları doldurduktan sonra uygulama Azure portal kaydedilir ve uyg
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Uygulama Kimliği  | Bir uygulamayı kaydettiğinizde, Azure AD uygulamanıza uygulama KIMLIĞI atar. Uygulama KIMLIĞI, uygulamanızı Azure AD 'ye yönelik kimlik doğrulama isteklerinde benzersiz olarak tanımlamak ve Graph API gibi kaynaklara erişmek için kullanılabilir.                                                          |
-| Uygulama Kimliği URI'si      | Bu, genellikle **https://&lt;kiracı\_adı&gt;/&lt;uygulama\_adı&gt;** biçiminde benzersiz bir URI olmalıdır. Bu, yetkilendirme verme akışı sırasında Belirtecin verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak kullanılır. Ayrıca, verilen erişim belirtecinde ' AUD ' talebi de olur. |
+| Uygulama Kimliği URI'si      | Bu, genellikle **https:// &lt; kiracı \_ adı &gt; / &lt; uygulama \_ adı &gt; ** biçiminde benzersiz bir URI olmalıdır. Bu, yetkilendirme verme akışı sırasında Belirtecin verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak kullanılır. Ayrıca, verilen erişim belirtecinde ' AUD ' talebi de olur. |
 
 ### <a name="branding"></a>Markalama
 

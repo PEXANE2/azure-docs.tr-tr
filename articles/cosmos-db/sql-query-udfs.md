@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81011132"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 'de Kullanıcı tanımlı işlevler (UDF 'ler)
@@ -26,13 +25,13 @@ UDF 'Leri kullanarak Azure Cosmos DB sorgu dilini genişletebilirsiniz. UDF 'ler
 Ancak, şu durumlarda UDF 'ler önlenmelerden kaçınıyoruz:
 
 - Azure Cosmos DB ' de eşdeğer bir [sistem işlevi](sql-query-system-functions.md) zaten var. Sistem işlevleri, eşdeğer UDF 'den her zaman daha az RU kullanır.
-- UDF, sorgunuzun `WHERE` yan tümcesindeki tek filtredir. UDF 'nin dizinden yararlanın ve UDF 'yi değerlendirmek için yükleme belgelerinin yüklenmesi gerekir. Dizin kullanan ek filtre koşullarını birleştirmek, bir UDF ile birlikte, `WHERE` yan tümcesinde UDF tarafından işlenen belgelerin sayısını azaltır.
+- UDF, sorgunuzun yan tümcesindeki tek filtredir `WHERE` . UDF 'nin dizinden yararlanın ve UDF 'yi değerlendirmek için yükleme belgelerinin yüklenmesi gerekir. Dizin kullanan ek filtre koşullarını birleştirmek, bir UDF ile birlikte, `WHERE` yan TÜMCESINDE UDF tarafından işlenen belgelerin sayısını azaltır.
 
 Bir sorguda aynı UDF 'yi birden çok kez kullanmanız gerekiyorsa, UDF 'ye bir [alt sorgu](sql-query-subquery.md#evaluate-once-and-reference-many-times)içinde başvurmanız gerekir ve bir JOIN IFADESI kullanarak UDF 'yi bir kez değerlendirmek, ancak bu kadar çok kez başvuru yapmanız gerekir.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, Cosmos veritabanındaki bir öğe kapsayıcısı altına bir UDF kaydeder. Örnek, `REGEX_MATCH`adı olan bir udf oluşturur. İki JSON dize değerini `input` `pattern`kabul eder ve ilk kez, JavaScript 'in `string.match()` işlevi kullanılarak ikinci öğesinde belirtilen Düzenle eşleşip eşleşmediğini denetler.
+Aşağıdaki örnek, Cosmos veritabanındaki bir öğe kapsayıcısı altına bir UDF kaydeder. Örnek, adı olan bir UDF oluşturur `REGEX_MATCH` . İki JSON dize değerini kabul eder ve `input` `pattern` ilk kez, JavaScript 'in işlevi kullanılarak ikinci öğesinde belirtilen Düzenle eşleşip eşleşmediğini denetler `string.match()` .
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +47,7 @@ Aşağıdaki örnek, Cosmos veritabanındaki bir öğe kapsayıcısı altına bi
            regexMatchUdf).Result;  
 ```
 
-Şimdi bu UDF 'yi bir sorgu projeksiyonu içinde kullanın. UDF 'Leri sorgular içerisinden çağırırken büyük/küçük harfe duyarlı `udf.` önekiyle nitelemeniz gerekir.
+Şimdi bu UDF 'yi bir sorgu projeksiyonu içinde kullanın. UDF 'Leri sorgular içerisinden çağırırken büyük/küçük harfe duyarlı önekiyle nitelemeniz gerekir `udf.` .
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +67,7 @@ Sonuçlar:
     ]
 ```
 
-Aşağıdaki örnekte olduğu gibi, bir filtrenin içindeki `udf.` ÖNEKIYLE nitelenmiş UDF 'yi kullanabilirsiniz:
+`udf.`Aşağıdaki örnekte olduğu gibi, bir filtrenin içindeki önekiyle NITELENMIŞ UDF 'yi kullanabilirsiniz:
 
 ```sql
     SELECT Families.id, Families.address.city

@@ -4,10 +4,9 @@ description: Application Insights içinde Ölçüm Gezgini grafiklerinize dağı
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010755"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 'de ölçüm grafiklerindeki ek açıklamalar
@@ -63,7 +62,7 @@ Azure Pipelines sürüm şablonlarınızın her biri için ayrı bir API anahtar
    
 1. Yayın Şablonu penceresinde, **değişkenler** sekmesinde, yeni API anahtarı için bir değişken tanımı oluşturmak üzere **Ekle** ' yi seçin.
 
-1. **Ad**' ın altında `ApiKey`, **değer**' in altında, **API erişimi** sekmesinden kopyaladığınız API anahtarını yapıştırın.
+1. **Ad**' ın altında, değer ' in altında, `ApiKey` **API erişimi** sekmesinden kopyaladığınız API anahtarını yapıştırın. **Value**
    
    ![Azure DevOps değişkenleri sekmesinde Ekle ' yi seçin, ApiKey değişkenini adlandırın ve değer altına API anahtarını yapıştırın.](./media/annotations/7-paste-api-key.png)
    
@@ -94,11 +93,11 @@ Görselleştirmenin x ekseni üzerinde saat gösterdiği herhangi bir günlük t
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell 'den özel ek açıklamalar oluşturma
 Azure DevOps kullanmadan istediğiniz herhangi bir işlemden ek açıklama oluşturmak için GitHub ' dan [Createreleaseannotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell betiğini kullanabilirsiniz. 
 
-1. [Createreleaseannotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)yerel bir kopyasını oluşturun.
+1. [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)yerel bir kopyasını oluşturun.
    
 1. Application Insights KIMLIĞINIZI almak ve Application Insights **API erişimi** sekmesinizden bir API anahtarı oluşturmak için yukarıdaki yordamdaki adımları kullanın.
    
-1. Aşağıdaki kodla PowerShell betiğini çağırın ve açılı ayraçlı yer tutucuları değerlerinizle değiştirin. `-releaseProperties` İsteğe bağlıdır. 
+1. Aşağıdaki kodla PowerShell betiğini çağırın ve açılı ayraçlı yer tutucuları değerlerinizle değiştirin. `-releaseProperties`İsteğe bağlıdır. 
    
    ```powershell
    

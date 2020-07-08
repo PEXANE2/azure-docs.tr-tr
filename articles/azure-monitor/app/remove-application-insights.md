@@ -4,10 +4,9 @@ description: Visual Studio 'da ASP.NET ve ASP.NET Core için Application Insight
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80805111"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio 'da Application Insights kaldırma
@@ -25,7 +24,7 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
     ![Üstteki menüde Araçlar > NuGet Paket Yöneticisi > Paket Yöneticisi Konsolu ' na tıklayın.](./media/remove-application-insights/package-manager.png)
 
     > [!NOTE]
-    > İzleme koleksiyonu etkinse, öncelikle Microsoft. ApplicationInsights. TraceListener ' i kaldırmanız gerekir. `Uninstall-package Microsoft.ApplicationInsights.TraceListener` Daha sonra Microsoft. ApplicationInsights. Web ' i kaldırmak için aşağıdaki adımları izleyin.
+    > İzleme koleksiyonu etkinse, öncelikle Microsoft. ApplicationInsights. TraceListener ' i kaldırmanız gerekir. `Uninstall-package Microsoft.ApplicationInsights.TraceListener`Daha sonra Microsoft. ApplicationInsights. Web ' i kaldırmak için aşağıdaki adımları izleyin.
 
 1. Aşağıdaki komutu girin: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
@@ -49,7 +48,7 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. Sağdaki *Çözüm Gezgini*  **çözüme** sağ tıklayın ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
+1. Sağdaki *Çözüm Gezgini*    **çözüme**sağ tıklayın   ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
 
     Bundan sonra, projenin parçası olan tüm NuGet paketlerini düzenlemenize olanak tanıyan bir ekran görürsünüz.
     
@@ -58,9 +57,9 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
     > [!NOTE]
     > İzleme koleksiyonu etkinse, önce bağımlılıkları kaldırmadan Microsoft. ApplicationInsights. TraceListener ' ı kaldırmanız ve ardından aşağıdaki adımları izleyerek Microsoft. ApplicationInsights. Web 'i Kaldır seçili bir şekilde kaldırmanız gerekir.
     
-1. "Microsoft. ApplicationInsights. Web" paketine tıklayın.Sağ tarafta, tüm projeler ' i seçmek için *Proje* ' nin yanındaki onay kutusunu işaretleyin.
+1. "Microsoft. ApplicationInsights. Web" paketine tıklayın.Sağ tarafta, tüm projeler ' i seçmek için *Proje*' nin yanındaki onay kutusunu işaretleyin   .
     
-1. Kaldırma sırasında tüm bağımlılıkları kaldırmak için, projeyi seçtiğiniz bölümün altında bulunan **Seçenekler** açılan düğmesini seçin.
+1. Kaldırma sırasında tüm bağımlılıkları kaldırmak için, **Options**   projeyi seçtiğiniz bölümün altında bulunan seçenekler açılan düğmesini seçin.
 
      *Kaldırma seçenekleri*altında *bağımlılıkları kaldır*' ın yanındaki onay kutusunu işaretleyin.
 
@@ -68,15 +67,15 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
     
     ![Bağımlılıkları kaldır ve Kaldır](./media/remove-application-insights/uninstall-framework.png)
 
-    Uygulamadan kaldırılacak tüm bağımlılıkları gösteren bir iletişim kutusu görüntülenir.Kaldırmak için **Tamam ' ı** seçin.
+    Uygulamadan kaldırılacak tüm bağımlılıkları gösteren bir iletişim kutusu görüntülenir.Kaldırmak için **Tamam ' ı**seçin   .
     
     ![Bağımlılıkları kaldır ve Kaldır](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights. config" ve "AiHandleErrorAttribute.cs" görmeye devam edebilirsiniz.İki dosyayı el ile silebilirsiniz.
+1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights.config" ve "AiHandleErrorAttribute.cs" görünmeye devam edebilir.İki dosyayı el ile silebilirsiniz.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. Sağdaki *Çözüm Gezgini*  **çözüme** sağ tıklayın ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
+1. Sağdaki *Çözüm Gezgini*    **çözüme**sağ tıklayın   ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
 
     Bundan sonra, projenin parçası olan tüm NuGet paketlerini düzenlemenize olanak tanıyan bir ekran görürsünüz.
 
@@ -107,7 +106,7 @@ Aşağıdaki kod parçaları eklenmiştir:
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- Packages. config
+- Packages.config
 
     ```xml
     <packages>
@@ -155,7 +154,7 @@ Aşağıdaki kod parçaları eklenmiştir:
     </head>
     ```
 
-- ConnectedService. JSON
+- Üzerinde ConnectedService.js
 
     ```json
     {
@@ -197,14 +196,14 @@ Visual Studio ASP.NET Core şablon projesine Application Insights Telemetri ekle
       </ItemGroup>
     ```
 
-- AppSettings. JSON:
+- Appsettings.js:
 
     ```json
     "ApplicationInsights": {
         "InstrumentationKey": "00000000-0000-0000-0000-000000000000"
     ```
 
-- ConnectedService. JSON
+- Üzerinde ConnectedService.js
     
     ```json
     {

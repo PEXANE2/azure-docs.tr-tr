@@ -4,10 +4,9 @@ description: Bir Service Fabric kümesi için Kaynak Yöneticisi şablonu oluşt
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985380"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric kümesi Kaynak Yöneticisi şablonu oluşturma
@@ -24,13 +23,13 @@ Küme güvenliği, küme ilk kez ayarlandığında yapılandırılır ve daha so
 ## <a name="create-the-resource-manager-template"></a>Resource Manager şablonu oluşturma
 Örnek Kaynak Yöneticisi şablonlar [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)bulunabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir.
 
-Bu makale [beş düğümlü güvenli küme][service-fabric-secure-cluster-5-node-1-nodetype] örnek şablonunu ve şablon parametrelerini kullanır. *Azuredeploy. JSON* ve *azuredeploy. Parameters. JSON* dosyasını bilgisayarınıza indirin ve her iki dosyayı da en sevdiğiniz metin düzenleyicisinde açın.
+Bu makale [beş düğümlü güvenli küme][service-fabric-secure-cluster-5-node-1-nodetype] örnek şablonunu ve şablon parametrelerini kullanır. *Üzerindeazuredeploy.js* indirin ve bilgisayarınıza *azuredeploy.parameters.js* ve her iki dosyayı da en sevdiğiniz metin düzenleyicisinde açın.
 
 > [!NOTE]
-> `fabricSettings` Ulusal bulutlarda (Azure Kamu, Azure Çin, Azure Almanya), aşağıdakileri şablonunuza de eklemeniz gerekir: `AADLoginEndpoint`, `AADTokenEndpointFormat` ve. `AADCertEndpointFormat`
+> Ulusal bulutlarda (Azure Kamu, Azure Çin, Azure Almanya), aşağıdakileri şablonunuza de eklemeniz gerekir `fabricSettings` : `AADLoginEndpoint` , `AADTokenEndpointFormat` ve `AADCertEndpointFormat` .
 
 ## <a name="add-certificates"></a>Sertifika ekle
-Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna sertifikalar eklersiniz. Bu Anahtar Kasası parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin.
+Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna sertifikalar eklersiniz. Bu Anahtar Kasası parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy.parameters.js*) ekleyin.
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Tüm sertifikaları sanal makine ölçek kümesi osProfile 'e Ekle
 Kümede yüklü olan her sertifikanın, ölçek kümesi kaynağının **Osprofile** bölümünde (Microsoft. COMPUTE/virtualMachineScaleSets) yapılandırılması gerekir. Bu eylem, kaynak sağlayıcısına sertifikayı VM 'Lere yüklemesini söyler. Bu yükleme, hem küme sertifikasını hem de uygulamalarınız için kullanmayı planladığınız uygulama güvenlik sertifikalarını içerir:
@@ -132,7 +131,7 @@ Küme kimlik doğrulama sertifikası, sanal makine ölçek kümesi kaynağındak
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>İstemci erişimi için Azure AD 'yi kullanmak üzere Azure AD yapılandırması ekleme
 
-Azure AD yapılandırmasını, sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna eklersiniz. Bu Azure AD parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin. 
+Azure AD yapılandırmasını, sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna eklersiniz. Bu Azure AD parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy.parameters.js*) ekleyin. 
 
 > [!NOTE]
 > Linux 'ta, kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.

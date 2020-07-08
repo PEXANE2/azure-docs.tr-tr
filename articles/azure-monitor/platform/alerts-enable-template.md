@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
 ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114423"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
@@ -29,7 +28,7 @@ Temel adımlar aşağıdaki gibidir:
 Aşağıda, tek başına bir uyarı için önce bir Kaynak Yöneticisi şablonu oluşturmayı ve sonra başka bir kaynağın oluşturulması sırasında bir uyarının nasıl oluşturulacağını anladık.
 
 ## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Klasik ölçüm uyarısı için Kaynak Yöneticisi şablonu
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak oluşturacak `Microsoft.Insights/alertRules` ve doldurmanız gerekir. Aşağıda, bir uyarı kuralı oluşturan bir şablon verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/alertRules` ilgili tüm özellikleri bir kaynak oluşturacak ve doldurmanız gerekir. Aşağıda, bir uyarı kuralı oluşturan bir şablon verilmiştir.
 
 ```json
 {
@@ -179,7 +178,7 @@ Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm
 Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Klasik ölçüm uyarısı olan bir kaynak için Kaynak Yöneticisi şablonu
-Kaynak Yöneticisi şablonundaki bir uyarı, genellikle bir kaynak oluştururken uyarı oluştururken kullanışlıdır. Örneğin, bir sanal makineyi her dağıttığınızda "CPU% > 80" kuralının ayarlanmış olmasını sağlamak isteyebilirsiniz. Bunu yapmak için, uyarı kuralını VM şablonunuz için kaynak dizisine bir kaynak olarak ekler ve VM kaynak KIMLIĞINE `dependsOn` özelliği kullanarak bir bağımlılık eklersiniz. Aşağıda, bir Windows sanal makinesi oluşturan ve CPU kullanımı %80 üzerinde kaldığında abonelik yöneticilerine bildirimde bulunan bir uyarı ekleyen bir tam örnek verilmiştir.
+Kaynak Yöneticisi şablonundaki bir uyarı, genellikle bir kaynak oluştururken uyarı oluştururken kullanışlıdır. Örneğin, bir sanal makineyi her dağıttığınızda "CPU% > 80" kuralının ayarlanmış olmasını sağlamak isteyebilirsiniz. Bunu yapmak için, uyarı kuralını VM şablonunuz için kaynak dizisine bir kaynak olarak ekler ve `dependsOn` VM kaynak kimliğine özelliği kullanarak bir bağımlılık eklersiniz. Aşağıda, bir Windows sanal makinesi oluşturan ve CPU kullanımı %80 üzerinde kaldığında abonelik yöneticilerine bildirimde bulunan bir uyarı ekleyen bir tam örnek verilmiştir.
 
 ```json
 {

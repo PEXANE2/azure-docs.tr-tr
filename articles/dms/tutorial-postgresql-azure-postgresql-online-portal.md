@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
 ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113996"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Öğretici: Azure portal aracılığıyla DMS kullanarak PostgreSQL için PostgreSQL için Azure DB 'ye geçiş yapma
@@ -228,7 +227,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Kaynak Ayrıntıları Ekleyin ekranı](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 

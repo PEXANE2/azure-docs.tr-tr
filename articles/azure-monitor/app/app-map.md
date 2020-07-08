@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989536"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
@@ -112,7 +111,7 @@ namespace CustomInitializer.Telemetry
 
 **ASP.NET Apps: Active TelemetryConfiguration 'a Başlatıcı yükleme**
 
-ApplicationInsights. config dosyasında:
+ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -138,11 +137,11 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 ```
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak `TelemetryConfiguration.Active` Başlatıcı eklemek ASP.NET Core uygulamaları için geçerli değildir. 
+> `ApplicationInsights.config`Veya kullanarak Başlatıcı eklemek `TelemetryConfiguration.Active` ASP.NET Core uygulamaları için geçerli değildir. 
 
 **ASP.NET Core uygulamalar: Başlatıcı yükleme TelemetryConfiguration**
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi `TelemetryInitializer` , yeni bir ekleme işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` `Startup.cs` sınıfınızın yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi, yeni bir ekleme `TelemetryInitializer` işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` sınıfınızın yönteminde yapılır `Startup.cs` .
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -169,11 +168,11 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 }
 ```
 
-Ayrıca, ortam değişkenini ```APPLICATIONINSIGHTS_ROLE_NAME```kullanarak bulut rolü adını da ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini kullanarak bulut rolü adını da ayarlayabilirsiniz ```APPLICATIONINSIGHTS_ROLE_NAME``` .
 
 **Java SDK**
 
-Application Insights Java SDK 2.5.0 ile başlayarak SDK kullanıyorsanız, `<RoleName>` `ApplicationInsights.xml` dosyanıza ekleyerek bulut rolü adını belirtebilirsiniz (örneğin,
+Application Insights Java SDK 2.5.0 ile başlayarak SDK kullanıyorsanız, dosyanıza ekleyerek bulut rolü adını belirtebilirsiniz ( `<RoleName>` `ApplicationInsights.xml` Örneğin,
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -199,7 +198,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Node. js için alternatif Yöntem
+### <a name="alternate-method-for-nodejs"></a>Node.js için alternatif Yöntem
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -229,7 +228,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![Uygulama Haritası ekran görüntüsü](media/app-map/cloud-rolename.png)
 
-Yukarıdaki uygulama haritasında yeşil kutular 'daki adların her biri, bu dağıtılan uygulamanın farklı yönleri için bulut rolü adı değerlerdir. Bu nedenle, bu uygulama için rolleri şunlardan oluşur `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+Yukarıdaki uygulama haritasında yeşil kutular 'daki adların her biri, bu dağıtılan uygulamanın farklı yönleri için bulut rolü adı değerlerdir. Bu nedenle, bu uygulama için rolleri şunlardan oluşur: `Authentication` , `acmefrontend` , `Inventory Management` , a `Payment Processing Worker Role` . 
 
 Bu uygulama, bu bulut rolü adlarının her biri aynı zamanda kendi izleme anahtarlarına sahip farklı bir benzersiz Application Insights kaynağını da temsil eder. Bu uygulamanın sahibi bu dört farklı Application Insights kaynağın her birine erişime sahip olduğundan, uygulama haritası temel alınan ilişkilerin bir haritasını birlikte birleştirilebilir.
 

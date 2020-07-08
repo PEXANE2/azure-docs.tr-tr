@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253518"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Verizon Premium kural altyapısı koşullu ifadelerinden Azure CDN
@@ -26,7 +25,7 @@ IF | Bir If ifadesi her zaman kuraldaki ilk deyimin bir parçasıdır. Diğer t�
 VE ISE | Bir ve If ifadesi yalnızca aşağıdaki koşullu ifade türlerinden sonra eklenebilir: Ise ve. İlk IF ifadesinde karşılanması gereken başka bir koşul olduğunu gösterir.
 AKSI TAKDIRDE| Bir ELSE IF ifadesi, bu başka bir durum deyimi gerçekleşmişse, bu özelliğe özgü bir özellik kümesinden önce karşılanması gereken alternatif bir koşulu belirtir. Bir ELSE IF ifadesinin var olması, önceki deyimin sonunu gösterir. Bir ELSE IF deyimi daha sonra yerleştirilebilecek tek koşullu ifade başka bir IF deyimi ise. Bu, başka bir IF ifadesinin yalnızca yerine getirilmesi gereken tek bir ek koşul belirtmek için kullanılabilir olması anlamına gelir.
 
-**Örnek**: ![CDN eşleşme koşulu](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**Örnek**: ![ CDN eşleşme koşulu](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
    > Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir.

@@ -14,10 +14,9 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885591"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
@@ -31,7 +30,7 @@ Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendi
 İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
 
 - **Kullanıcı onay akışı** , bir uygulama geliştiricisi kullanıcıları yalnızca geçerli kullanıcı için izin kaydetme amacını taşıyan yetkilendirme uç noktasına yönlendirirse.
-- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için uygulama geliştiricilerinin, uygulama bildirimindeki `RequiredResourceAccess` özelliğindeki tüm izinleri listebilmeleri gerekir. Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için uygulama geliştiricilerinin, uygulama bildirimindeki özelliğindeki tüm izinleri listebilmeleri gerekir `RequiredResourceAccess` . Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Onay isteminin yapı taşları
 

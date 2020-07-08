@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113443"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
@@ -49,7 +48,7 @@ Eşleşen bir ağ kuralı nedeniyle google.com bağlantısına izin verilir.
 - Eylem: İzin Ver
 
 
-|ad  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
+|name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
 |Web 'e izin ver     |TCP|IP adresi|*|IP adresi|*|80,443
 
@@ -57,7 +56,7 @@ Eşleşen bir ağ kuralı nedeniyle google.com bağlantısına izin verilir.
 
 - Eylem: reddetme
 
-|ad  |Kaynak türü  |Kaynak  |Protokol: bağlantı noktası|Hedef FQDN 'Ler|
+|name  |Kaynak türü  |Kaynak  |Protokol: bağlantı noktası|Hedef FQDN 'Ler|
 |---------|---------|---------|---------|----------|----------|
 |Reddet-Google     |IP adresi|*|http: 80, https: 443|google.com
 
@@ -75,7 +74,7 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 - Öncelik: 200
 - Eylem: İzin Ver
 
-|ad  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
+|name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
 |SSH 'ye izin ver     |TCP|IP adresi|*|IP adresi|*|22
 
@@ -85,7 +84,7 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 - Öncelik: 100
 - Eylem: reddetme
 
-|ad  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
+|name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
 |Deny-SSH     |TCP|IP adresi|*|IP adresi|*|22
 

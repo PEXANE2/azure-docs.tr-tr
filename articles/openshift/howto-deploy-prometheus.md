@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, Aro, OpenShift, ölçümler, Red Hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886897"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesine tek başına Prometheus örneği dağıtma
@@ -30,7 +29,7 @@ Bazı Prometheus yapılandırma dosyalarını yerel olarak hazırlarsınız. Dep
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>OC aracını kullanarak kümede oturum açma
 
-1. Bir Web tarayıcısı açın ve ardından kümenizin web konsoluna gidin (https://openshift.* Rastgele kimlik*. *Region*. azmosa.io).
+1. Bir Web tarayıcısı açın ve ardından kümenizin web konsoluna gidin ( https://openshift .* Rastgele kimlik*. *Region*. azmosa.io).
 2. Azure kimlik bilgilerinizle oturum açın.
 3. Sağ üst köşedeki Kullanıcı adınızı seçin ve ardından **oturumu Kopyala komutunu**seçin.
 4. Kullanıcı adınızı kullanacağınız terminale yapıştırın.
@@ -49,7 +48,7 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> `-n` Ya `--namespace` da parametresini kullanabilir ya da `oc project` komutunu çalıştırarak etkin bir proje seçebilirsiniz.
+> Ya da parametresini kullanabilir ya `-n` da `--namespace` komutunu çalıştırarak etkin bir proje seçebilirsiniz `oc project` .
 
 ## <a name="prepare-the-prometheus-configuration-file"></a>Prometheus yapılandırma dosyasını hazırlama
 Aşağıdaki içeriği girerek bir Prometheus. yml dosyası oluşturun:
@@ -178,11 +177,11 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
 
 > [!NOTE]
-> Rol ve RoleBinding 'in doğru bir şekilde oluşturulduğunu doğrulamak için `oc get role` ve `oc get rolebinding` komutlarını çalıştırın.
+> Rol ve RoleBinding 'in doğru bir şekilde oluşturulduğunu doğrulamak için `oc get role` ve komutlarını çalıştırın `oc get rolebinding` .
 
 ## <a name="optional-deploy-example-application"></a>İsteğe bağlı: örnek uygulama dağıtma
 
-Her şey çalışıyor ancak ölçüm kaynağı yok. Prometheus URL 'sine gidin (https://prom-prometheus-project.apps.* Rastgele kimlik*. *Region*. azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
+Her şey çalışıyor ancak ölçüm kaynağı yok. Prometheus URL 'sine gidin ( https://prom-prometheus-project.apps .* Rastgele kimlik*. *Region*. azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
 
 ```
 oc get route prom -n prometheus-project
@@ -200,7 +199,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 Yeni uygulamalar, dağıtımdan sonra 30 saniye içinde hizmet bulma sayfasında geçerli hedef olarak görünmelidir.
 
-Daha fazla ayrıntı için **durum** > **hedefleri**' ni seçin.
+Daha fazla ayrıntı için **durum**  >  **hedefleri**' ni seçin.
 
 > [!NOTE]
 > Prometheus, başarıyla her başarılı bir veri noktası ekler. Sol üst köşedeki **Prometheus** ' ı seçin, **ifade olarak yazın** ve ardından **Yürüt**' ü seçin.

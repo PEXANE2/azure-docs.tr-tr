@@ -12,10 +12,9 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885166"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
@@ -40,10 +39,10 @@ Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullan�
 
 Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanmak istediğiniz akışa göre değişir.
 
-- Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, kullanın `https://login.microsoftonline.com/common/oauth2/nativeclient`. Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
+- Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, kullanın `https://login.microsoftonline.com/common/oauth2/nativeclient` . Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
   
   > [!IMPORTANT]
-  > Günümüzde MSAL.NET, Windows (`urn:ietf:wg:oauth:2.0:oob`) üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'si kullanır. Gelecekte bu Varsayılanı değiştirmek istiyoruz. bu nedenle kullanmanızı `https://login.microsoftonline.com/common/oauth2/nativeclient`öneririz.
+  > Günümüzde MSAL.NET, Windows () üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'SI kullanır `urn:ietf:wg:oauth:2.0:oob` . Gelecekte bu Varsayılanı değiştirmek istiyoruz. bu nedenle kullanmanızı öneririz `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
 - MacOS için yerel bir amaç-C veya Swift uygulaması oluşturursanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: msauth. <your.app.bundle.id>://<your.app.bundle.id>, uygulamanızın paket tanımlayıcısı ile değiştirin.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.

@@ -12,13 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878604"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Ön kapı bir yönlendirme kuralıyla istekleri eşleştirir
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door istekleri yönlendirme kuralıyla nasıl eşleştirir
 
 Bir bağlantı kurulduktan ve TLS el sıkışması yaptıktan sonra, bir istek ön kapı ortamında yer aldığı zaman ön kapıların tüm yapılandırmalardan biri tarafından belirlenir, bu, isteği eşleştirmek için belirli yönlendirme kuralını ve sonra tanımlanan eylemi alır. Aşağıdaki belge, bir HTTP isteğini işlerken ön kapısının hangi yol yapılandırmasını kullandığını belirler.
 
@@ -29,8 +28,8 @@ Bir bağlantı kurulduktan ve TLS el sıkışması yaptıktan sonra, bir istek �
 Aşağıdaki özellikler, gelen isteğin yönlendirme kuralıyla (veya Sol tarafla) eşleşip eşleşmediğini belirtir:
 
 * **HTTP protokolleri** (http/https)
-* **Konaklar** (örneğin, www\.foo.com, \*. Bar.com)
-* **Yollar** (örneğin,/\*,/Users/\*,/File.gif)
+* **Konaklar** (örneğin, www \. foo.com, \* . Bar.com)
+* **Yollar** (örneğin,/ \* ,/users/ \* ,/file.gif)
 
 Bu özellikler dahili olarak genişletilir, böylece her protokol/ana bilgisayar/yol birleşimi potansiyel bir eşleşme kümesi olur.
 
@@ -52,19 +51,19 @@ Bu işlemi daha ayrıntılı olarak açıklamak için ön kapı yollarının ör
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /Users/\* |
-| C | www\.fabrikam.com, foo.Adventure-Works.com  | /\*,/images/\* |
+| C | www \. fabrikam.com, foo.Adventure-Works.com  | /\*,/images/\* |
 
 Aşağıdaki gelen istekler ön kapıya gönderilmişse, yukarıdaki yönlendirme kurallarına göre eşleşmesi gerekir:
 
 | Gelen ön uç Konağı | Eşleşen yönlendirme kuralları |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www\.fabrikam.com | C |
+| www \. fabrikam.com | C |
 | images.fabrikam.com | Hata 400: Hatalı Istek |
 | foo.adventure-works.com | C |
 | contoso.com | Hata 400: Hatalı Istek |
-| www\.Adventure-Works.com | Hata 400: Hatalı Istek |
-| www\.northwindtraders.com | Hata 400: Hatalı Istek |
+| www \. Adventure-Works.com | Hata 400: Hatalı Istek |
+| www \. northwindtraders.com | Hata 400: Hatalı Istek |
 
 ### <a name="path-matching"></a>Yol eşleştirme
 Belirli ön uç konağını belirledikten ve olası yönlendirme kurallarını yalnızca o ön uç konağına sahip yollara filtreledikten sonra, ön kapı, daha sonra yönlendirme kurallarını istek yoluna göre filtreler. Ön uç konakları olarak benzer bir mantık kullanıyoruz:
@@ -80,35 +79,35 @@ Daha ayrıntılı bir açıklama için diğer örnek kümesine göz atalım:
 
 | Yönlendirme kuralı | Ön uç Konağı    | Yol     |
 |-------|---------|----------|
-| A     | www\.contoso.com | /        |
-| B     | www\.contoso.com | /\*      |
-| C     | www\.contoso.com | /AB      |
-| D     | www\.contoso.com | /ABC     |
-| E     | www\.contoso.com | ABC    |
-| F     | www\.contoso.com | ABC\*  |
-| G     | www\.contoso.com | /abc/def |
-| H     | www\.contoso.com | /Path   |
+| A     | www \. contoso.com | /        |
+| B     | www \. contoso.com | /\*      |
+| C     | www \. contoso.com | /AB      |
+| D     | www \. contoso.com | /ABC     |
+| E     | www \. contoso.com | ABC    |
+| F     | www \. contoso.com | ABC\*  |
+| G     | www \. contoso.com | /abc/def |
+| H     | www \. contoso.com | /Path   |
 
 Bu yapılandırma verildiğinde, aşağıdaki örnek eşleşen tablo neden olur:
 
 | Gelen Istek    | Eşleşen yol |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/AB          | C             |
-| www\.contoso.com/ABC         | D             |
-| www\.contoso.com/abzzz       | B             |
-| www\.contoso.com/ABC/        | E             |
-| www\.contoso.com/ABC/d       | F             |
-| www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/ABC/defzzz  | F             |
-| www\.contoso.com/abc/def/Ghi | F             |
-| www\.contoso.com/path        | B             |
-| www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| www \. contoso.com/            | A             |
+| www \. contoso.com/a           | B             |
+| www \. contoso.com/AB          | C             |
+| www \. contoso.com/ABC         | D             |
+| www \. contoso.com/abzzz       | B             |
+| www \. contoso.com/ABC/        | E             |
+| www \. contoso.com/ABC/d       | F             |
+| www \. contoso.com/abc/def     | G             |
+| www \. contoso.com/ABC/defzzz  | F             |
+| www \. contoso.com/abc/def/Ghi | F             |
+| www \. contoso.com/path        | B             |
+| www \. contoso.com/path/       | H             |
+| www \. contoso.com/path/zzz    | B             |
 
 >[!WARNING]
-> </br> Tam eşleşen bir ön uç ana bilgisayar için bir catch-all yol yoluna (`/*`) sahip bir yönlendirme kuralı yoksa, herhangi bir yönlendirme kuralıyla eşleşme olmayacaktır.
+> </br> Tam eşleşen bir ön uç ana bilgisayar için bir catch-all yol yoluna () sahip bir yönlendirme kuralı yoksa `/*` , herhangi bir yönlendirme kuralıyla eşleşme olmayacaktır.
 >
 > Örnek yapılandırma:
 >

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259961"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
@@ -104,7 +103,7 @@ Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeniden yazmak için kul
 
 Alan | Açıklama 
 ------|------------
-Kaynak stili | Değiştirilecek URL yolundaki kaynak modelini tanımlayın. Şu anda, kaynak stili önek tabanlı eşleşme kullanıyor. Tüm URL yollarını eşleştirmek için, kaynak model değeri olarak bir**/** eğik çizgi () kullanın.
+Kaynak stili | Değiştirilecek URL yolundaki kaynak modelini tanımlayın. Şu anda, kaynak stili önek tabanlı eşleşme kullanıyor. Tüm URL yollarını eşleştirmek için, **/** kaynak model değeri olarak bir eğik çizgi () kullanın.
 Hedef | Yeniden yazma sırasında kullanılacak hedef yolu tanımlayın. Hedef yol, kaynak deseninin üzerine yazar.
 Eşleşmeyen yolu koru | **Evet**olarak ayarlanırsa, kaynak örüntüden sonraki kalan yol yeni hedef yoluna eklenir. 
 

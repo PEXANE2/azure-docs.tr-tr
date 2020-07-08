@@ -1,5 +1,5 @@
 ---
-title: Uygulama onayı nasıl kullanılır?
+title: Uygulama onayının işleyiş biçimi
 description: Azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. Azure AD 'de uygulama geliştirirken bu uygulamayı nasıl kullanabileceğinizi öğrenin
 services: active-directory
 author: rwike77
@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885557"
 ---
-# <a name="how-application-consent-works"></a>Uygulama onayı nasıl kullanılır?
+# <a name="how-application-consent-works"></a>Uygulama onayının işleyiş biçimi
 
 Bu makale, Azure AD onay çerçevesinin nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur. böylece, uygulamaları daha verimli bir şekilde geliştirebilirsiniz.
 

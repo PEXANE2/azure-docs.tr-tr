@@ -16,10 +16,9 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258839"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma
@@ -168,7 +167,7 @@ Yukarıdaki ölçüm yapılandırması, tanılama depolama hesabınızda aşağ�
 Her Wadölçümler tablosu şu sütunları içerir:
 
 * **Partitionkey**: bölüm anahtarı, VM kaynağını benzersiz şekilde tanımlamak için *RESOURCEID* değeri temel alınarak oluşturulur. Örneğin, `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **Rowkey**: biçimi `<Descending time tick>:<Performance Counter Name>`izler. Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **Rowkey**: biçimi izler `<Descending time tick>:<Performance Counter Name>` . Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: performans sayacının adıdır. Bu, XML yapılandırmasında tanımlanan *sayaç belirticisiyle* eşleşir.
 * **Maksimum**: toplama dönemi boyunca performans sayacının maksimum değeri.
 * **Minimum**: toplama dönemi boyunca performans sayacının minimum değeri.

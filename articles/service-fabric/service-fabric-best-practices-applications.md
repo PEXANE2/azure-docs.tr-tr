@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
 ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991663"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric uygulama tasarımı en iyi uygulamaları
@@ -57,9 +56,9 @@ Maliyetleri kaydedin ve kullanılabilirliği geliştirebilirsiniz:
 
 ## <a name="how-to-work-with-reliable-services"></a>Reliable Services ile çalışma
 Service Fabric Reliable Services, durum bilgisiz ve durum bilgisi olan hizmetleri kolayca oluşturmanızı sağlar. Daha fazla bilgi için [Reliable Services giriş](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)bölümüne bakın.
-- Durum bilgisiz ve durum bilgisi olan `RunAsync()` hizmetlere yönelik yöntemde [iptal belirtecini](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) her zaman kabul `ChangeRole()` edin ve durum bilgisi olan hizmetler için yöntemi. Bunu yapmazsanız, hizmetinizin kapatılıp kapatılmadığı Service Fabric bilmez. Örneğin, iptal belirtecini dikkate mazsanız, daha uzun bir uygulama yükseltme süresi oluşabilir.
+- Durum bilgisiz ve durum bilgisi olan hizmetlere yönelik yöntemde [iptal belirtecini](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) her zaman kabul edin `RunAsync()` ve `ChangeRole()` durum bilgisi olan hizmetler için yöntemi. Bunu yapmazsanız, hizmetinizin kapatılıp kapatılmadığı Service Fabric bilmez. Örneğin, iptal belirtecini dikkate mazsanız, daha uzun bir uygulama yükseltme süresi oluşabilir.
 -    [İletişim dinleyicilerini](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) zamanında açın ve kapatın ve iptal belirteçlerini kabul edin.
--    Eşitleme kodunu zaman uyumsuz kodla karıştırmayın. Örneğin, zaman uyumsuz aramalarınız içinde kullanmayın `.GetAwaiter().GetResult()` . Çağrı yığınında zaman uyumsuz olarak *tüm yolu* kullanın.
+-    Eşitleme kodunu zaman uyumsuz kodla karıştırmayın. Örneğin, `.GetAwaiter().GetResult()` zaman uyumsuz aramalarınız içinde kullanmayın. Çağrı yığınında zaman uyumsuz olarak *tüm yolu* kullanın.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Reliable Actors ile çalışma
 Service Fabric Reliable Actors, durum bilgisi olan sanal aktörlerin kolayca oluşturulmasını sağlar. Daha fazla bilgi için [Reliable Actors giriş](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)bölümüne bakın.
@@ -70,14 +69,14 @@ Service Fabric Reliable Actors, durum bilgisi olan sanal aktörlerin kolayca olu
 - Doğru [tabanlı eşzamanlılık](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)nedeniyle aktör, bağımsız nesneler olarak en iyi şekilde kullanılır. Birden çok aktör, zaman uyumlu yöntem çağrısı (her biri büyük olasılıkla ayrı bir ağ çağrısı haline gelir) veya dairesel aktör istekleri oluşturma gibi grafikler oluşturmayın. Bunlar, performansı ve ölçeği önemli ölçüde etkiler.
 - Zaman uyumsuz kodla eşitleme kodunu karıştırmayın. Performans sorunlarını engellemek için zaman uyumsuz olarak sürekli kullanın.
 - Aktörlerin uzun süre çalışan çağrıları yapmayın. Uzun süre çalışan çağrılar, çift tabanlı eşzamanlılık nedeniyle aynı aktöre yapılan diğer çağrıları engeller.
-- [Service Fabric uzaktan iletişimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) kullanarak diğer hizmetlerle iletişim kursanız ve oluştururken `ServiceProxyFactory`, aktör düzeyinde *değil* , [aktör hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) düzeyinde fabrika oluşturun.
+- [Service Fabric uzaktan iletişimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) kullanarak diğer hizmetlerle iletişim kursanız ve oluştururken `ServiceProxyFactory` , aktör düzeyinde *değil* , [aktör hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) düzeyinde fabrika oluşturun.
 
 
 ## <a name="application-diagnostics"></a>Uygulama Tanılama
 Hizmet çağrılarında [uygulama günlüğü](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) ekleme hakkında ayrıntılı bilgi. Hizmetlerin birbirini çağırabileceği senaryoları tanılamanıza yardımcı olur. Örneğin, bir A çağrısı B C çağrısını çağırdığında, çağrı her yerde başarısız olabilir. Yeterli günlük kaydı yoksa, hataların tanılanabilmesi zordur. Çağrı birimleri nedeniyle hizmetler çok fazla günlüğe kaydedildiğine göre, en azından hataların ve uyarıların günlüğe kaydedildiğine dikkat edin.
 
 ## <a name="iot-and-messaging-applications"></a>IoT ve mesajlaşma uygulamaları
-[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)Iletileri okurken [servicefabricprocessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)kullanın. ServiceFabricProcessor, Olay Hub 'ı bölümlerinden okuma durumunu korumak ve `IEventProcessor::ProcessEventsAsync()` yöntemi aracılığıyla hizmetlerinize yeni iletiler vermek için Service Fabric Reliable Services ile tümleşir.
+[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)Iletileri okurken [servicefabricprocessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)kullanın. ServiceFabricProcessor, Olay Hub 'ı bölümlerinden okuma durumunu korumak ve yöntemi aracılığıyla hizmetlerinize yeni iletiler vermek için Service Fabric Reliable Services ile tümleşir `IEventProcessor::ProcessEventsAsync()` .
 
 
 ## <a name="design-guidance-on-azure"></a>Azure 'da Tasarım Kılavuzu
