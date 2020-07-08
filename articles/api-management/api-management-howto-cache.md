@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75708364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851207"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management performansını artırmak için önbelleğe alma ekleme
 
@@ -62,20 +62,24 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 
 8. **Gelen** öğesinde, şu ilkeyi ekleyin:
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. **Giden** öğesinde, şu ilkeyi ekleyin:
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     **Süre** önbelleğe alınan yanıtların sona erme aralığını belirtir. Bu örnekte, aralık **20** saniyedir.
 
 > [!TIP]
-> [Azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklandığı gibi dış önbellek kullanıyorsanız, önbelleğe alma ilkelerinin `caching-type` özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) .
+> [Azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklandığı gibi dış önbellek kullanıyorsanız, `caching-type` önbelleğe alma ilkelerinin özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) .
 
 ## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>İşlem çağırma ve önbelleğe almayı test etme
 Önbelleğe alma eylemini görmek için, işlemi geliştirici portalından çağırın.

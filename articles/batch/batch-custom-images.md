@@ -1,21 +1,23 @@
 ---
-title: Yönetilen görüntüden özel havuz sağlama
-description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri sağlamak için yönetilen bir görüntü kaynağından bir Batch havuzu oluşturun.
+title: Özel görüntü havuzu oluşturmak için yönetilen görüntü kullanma
+description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri sağlamak için yönetilen görüntüden Batch özel görüntü havuzu oluşturun.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851293"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için yönetilen bir görüntü kullanma
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için yönetilen görüntü kullanma
 
-Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluşturmak üzere paylaşılan bir görüntü [Galerisi](batch-sig-images.md)oluşturmak için yönetilen bir görüntü kullanabilirsiniz. Yalnızca yönetilen bir görüntünün kullanılması de desteklenir, ancak yalnızca 2019-08-01 olan API sürümleri için de geçerlidir.
+Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü havuzu oluşturmak üzere paylaşılan bir görüntü [Galerisi görüntüsü](batch-sig-images.md)oluşturmak için yönetilen bir görüntü kullanabilirsiniz. Yalnızca yönetilen bir görüntünün kullanılması de desteklenir, ancak yalnızca 2019-08-01 olan API sürümleri için de geçerlidir. 
 
 > [!IMPORTANT]
 > Çoğu durumda, paylaşılan görüntü Galerisi 'Ni kullanarak özel görüntüler oluşturmanız gerekir. Paylaşılan görüntü Galerisi 'ni kullanarak, havuzları daha hızlı sağlayabilir, daha büyük miktarlarda VM 'Ler ölçeklendirebilir ve VM 'Ler sağlanırken güvenilirliği daha iyi bir şekilde sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [paylaşılan görüntü galerisini kullanarak özel bir havuz oluşturma](batch-sig-images.md).
+
+Bu konuda, yalnızca yönetilen bir görüntü kullanılarak özel bir görüntü havuzunun nasıl oluşturulduğu açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -26,7 +28,7 @@ Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluştur
 
 - **Azure Active Directory (Azure AD) kimlik doğrulaması**. Batch istemcisi API 'SI, Azure AD kimlik doğrulaması kullanmalıdır. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
-## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
+## <a name="prepare-a-managed-image"></a>Yönetilen bir görüntü hazırlama
 
 Azure 'da, yönetilen bir görüntüyü şuradan hazırlayabilirsiniz:
 
@@ -57,7 +59,7 @@ Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. Bir sanal ma
 
 Bir anlık görüntüden yönetilen bir görüntü oluşturmak için [az Image Create](/cli/azure/image) komutu gibi Azure komut satırı araçlarını kullanın. Bir işletim sistemi disk anlık görüntüsü ve isteğe bağlı olarak bir veya daha fazla veri diski anlık görüntüsü belirterek görüntü oluşturabilirsiniz.
 
-## <a name="create-a-pool-from-a-custom-image"></a>Özel görüntüden havuz oluşturma
+## <a name="create-a-pool-from-a-managed-image"></a>Yönetilen görüntüden havuz oluşturma
 
 Yönetilen görüntünüzün kaynak KIMLIĞINI bulduktan sonra, bu görüntüden özel bir görüntü havuzu oluşturun. Aşağıdaki adımlarda, Batch hizmeti ya da Batch yönetimi kullanarak nasıl özel bir görüntü havuzu oluşturacağınız gösterilmektedir.
 

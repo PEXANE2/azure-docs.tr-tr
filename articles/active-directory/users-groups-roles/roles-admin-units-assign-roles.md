@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b29ddd5c46f8d6def7e598b7ed443892b345c18
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 578fb481ec858e65ede49bdce2d8bc26470aa2ca
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850759"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
@@ -29,7 +29,7 @@ PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsof
 
 ## <a name="roles-available"></a>Kullanılabilir roller
 
-Rol  |  Description
+Rol  |  Açıklama
 ----- |  -----------
 Kimlik doğrulama Yöneticisi  |  Yalnızca atanan yönetim birimindeki yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini görüntüleme, ayarlama ve sıfırlama erişimine sahiptir.
 Grup Yöneticisi  |  , Yalnızca atanan yönetim birimindeki adlandırma ve süre sonu ilkeleri gibi grupların ve grupların ayarlarının tüm yönlerini yönetebilir.
@@ -52,25 +52,29 @@ Atanacak rolü seçin ve ardından **atama Ekle**' yi seçin. Bu işlem, role at
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-    $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-    Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```powershell
+$administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
+$uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
+Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```
 
 Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{id}/scopedRoleMembers
+```http
+Http request
+POST /administrativeUnits/{id}/scopedRoleMembers
     
-    Request body
-    {
-      "roleId": "roleId-value",
-      "roleMemberInfo": {
-        "id": "id-value"
-      }
-    }
+Request body
+{
+  "roleId": "roleId-value",
+  "roleMemberInfo": {
+    "id": "id-value"
+  }
+}
+```
 
 ## <a name="list-the-scoped-admins-on-an-au"></a>Bir AU 'da kapsamlı yöneticileri listeleme
 
@@ -80,17 +84,21 @@ Bir yönetim birimi kapsamıyla gerçekleştirilen tüm rol atamaları, [Azure A
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```
 
 Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    GET /administrativeUnits/{id}/scopedRoleMembers
-    Request body
-    {}
+```http
+Http request
+GET /administrativeUnits/{id}/scopedRoleMembers
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

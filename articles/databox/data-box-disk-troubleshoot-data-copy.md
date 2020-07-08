@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849191"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Azure Data Box Disk 'de veri kopyalama sorunlarını giderme
 
@@ -32,11 +32,13 @@ Bunun nedeni, temiz olmayan bir dosya sistemi olabilir.
 
 Bir sürücünün okuma-yazma olarak takılması Data Box disklerle birlikte çalışmaz. Bu senaryo, disdolabı tarafından şifresi çözülen sürücülerle desteklenmez. Aşağıdaki komutu kullanarak cihazı başarıyla yeniden dağıtabilirsiniz:
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 Geri bağlanıcı başarılı olsa da veriler devam etmez.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Linux sisteminizde aşağıdaki adımları uygulayın:
 
@@ -76,7 +78,7 @@ Linux sisteminizde aşağıdaki adımları uygulayın:
 
 Sürücünün takıldıktan sonra veri olmadığını görürseniz (veriler kendisine kopyalansa da), Sürücü salt okunurdur olarak bağlandıktan sonra bir sürücüyü okuma-yazma olarak yeniden takmış olmanız mümkündür.
 
-**Çözünürlüğüne**
+**Çözünürlük**
  
 Bu durumda, [salt okuma olarak bağlanmış sürücüler](#issue-drive-getting-mounted-as-read-only)için çözünürlüğe bakın.
 
@@ -91,7 +93,7 @@ Verileri birden çok diske ayırmak için bölünmüş kopyalama Aracı kullanı
 |---------|---------|
 |Bilgisine Birim için BitLocker parolası alınıyor: a <br>Hatayla B birimi için BitLocker anahtarı alınırken özel durum yakalandı:<br> Sıra hiçbir öğe içermiyor.|Bu hata hedef Data Box Disk çevrimdışı olduğunda gösterilir. <br> Diskleri çevrimiçi duruma getirmek için `diskmgmt.msc` aracını kullanın.|
 |[Hata] Özel durum oluştu: WMI işlemi başarısız oldu:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Girilen kurtarma parolası biçimi geçersiz. <br>BitLocker kurtarma parolaları 48 hanelidir. <br>Kurtarma parolasının doğru biçimde olduğunu doğrulayıp yeniden deneyin.|Data Box Disk kilit açma aracını kullanarak disklerin kilidini açın ve komutu yeniden deneyin. Daha fazla bilgi için bkz. <li> [Windows istemcileri için Data Box Disk kilidini açma](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Linux istemcileri için Data Box Disk kilidini açma](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Hata] Özel durum oluştu: Hedef sürücüde DriveManifest.xml dosyası var. <br> Bu durum hedef sürücünün farklı bir günlük dosyasıyla hazırlanmış olabileceğini gösterir. <br>Aynı sürücüye daha fazla veri eklemek için önceki günlük dosyasını kullanın. Mevcut verileri silmek ve yeni bir içeri aktarma işi için hedef sürücüyü yeniden kullanmak için, sürücüdeki *Drivemanifest. xml* ' yi silin. Bu komutu yeni bir günlük dosyasıyla yeniden çalıştırın.| Bu hata aynı sürücü kümesini birden fazla içeri aktarma oturumunda kullanmaya çalıştığınızda ortaya çıkar. <br> Bir sürücü kümesini yalnızca bir bölme ve kopyalama oturumu için kullanın.|
+|[Hata] Özel durum oluştu: Hedef sürücüde DriveManifest.xml dosyası var. <br> Bu durum hedef sürücünün farklı bir günlük dosyasıyla hazırlanmış olabileceğini gösterir. <br>Aynı sürücüye daha fazla veri eklemek için önceki günlük dosyasını kullanın. Mevcut verileri silmek ve yeni bir içeri aktarma işi için hedef sürücüyü yeniden kullanmak için, sürücüdeki *DriveManifest.xml* silin. Bu komutu yeni bir günlük dosyasıyla yeniden çalıştırın.| Bu hata aynı sürücü kümesini birden fazla içeri aktarma oturumunda kullanmaya çalıştığınızda ortaya çıkar. <br> Bir sürücü kümesini yalnızca bir bölme ve kopyalama oturumu için kullanın.|
 |[Hata] Özel durum oluştu: CopySessionId importdata-sept-test-1 eski bir kopyalama oturumunu gösteriyor ve yeni bir kopyalama oturumu için yeniden kullanılamaz.|Bu hata yeni bir işe önceden başarıyla tamamlanan bir işin adının verilmeye çalışılması durumunda bildirilir.<br> Yeni işiniz için benzersiz bir ad atayın.|
 |[Bilgi] Hedef dosya veya dizin adı NTFS uzunluk sınırını aşıyor. |Bu ileti hedef dosya uzun dosya yolu nedeniyle yeniden adlandırıldığında bildirilir.<br> Bu davranışı denetlemek için `config.json` dosyasındaki değerlendirme seçeneğini değiştirin.|
 |[Hata] Özel durum oluştu: Bozuk JSON kaçış dizisi. |Bu ileti config.json dosyasında geçersiz biçim olduğunda bildirilir. <br> Dosyayı kaydetmeden önce [JSONlint](https://jsonlint.com/) kullanarak `config.json` için doğrulama gerçekleştirin.|

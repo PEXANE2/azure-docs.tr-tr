@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fc0af331dc6cb604847be9173c836e0b46ca40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851376"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 'ta Azure depolama 'ya genel bakış
 
@@ -31,11 +31,11 @@ Aşağıdaki diyagramda Azure Storage 'ın HDInsight mimarisinin soyut bir gör�
 
 HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış dosya sistemine erişim imkanı sağlar. Bu dosya sistemine tam uygun URI kullanılarak erişilebilir, örneğin:
 
-    hdfs://<namenodehost>/<path>
+`hdfs://<namenodehost>/<path>`
 
 HDInsight aracılığıyla Azure Storage 'daki verilere de erişebilirsiniz. Söz dizimi aşağıdaki gibidir:
 
-    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 HDInsight kümeleri ile Azure depolama hesabı kullanırken aşağıdaki ilkeleri göz önünde bulundurun:
 
@@ -48,11 +48,11 @@ HDInsight kümeleri ile Azure depolama hesabı kullanırken aşağıdaki ilkeler
 
 * **Bir kümeye bağlı olmayan depolama hesaplarındaki özel kapsayıcılar:** Web Hcat işlerini gönderdiğinizde depolama hesabını tanımlamadığınız müddetçe kapsayıcılardaki bloblara erişemezsiniz.
 
-Oluşturma işleminde tanımlanan depolama hesapları ve bunların anahtarların %HADOOP_HOME%/conf/core-site.xml küme düğümlerinde depolanır. HDInsight, varsayılan olarak Core-site. xml dosyasında tanımlanan depolama hesaplarını kullanır. Bu ayarı, [Apache ambarı](./hdinsight-hadoop-manage-ambari.md)'nı kullanarak değiştirebilirsiniz.
+Oluşturma işleminde tanımlanan depolama hesapları ve bunların anahtarların %HADOOP_HOME%/conf/core-site.xml küme düğümlerinde depolanır. HDInsight, varsayılan olarak core-site.xml dosyasında tanımlanan depolama hesaplarını kullanır. Bu ayarı, [Apache ambarı](./hdinsight-hadoop-manage-ambari.md)'nı kullanarak değiştirebilirsiniz.
 
 Apache Hive dahil olmak üzere birden çok WebHCat işi. Ve MapReduce, Apache Hadoop streaming ve Apache Pig, depolama hesaplarının ve meta verilerin bir açıklamasını taşır. (Bu boyut Şu anda depolama hesapları olan Pig için geçerlidir, ancak meta veriler için değil.) Daha fazla bilgi için bkz. [alternatif depolama hesaplarıyla HDInsight kümesi ve meta depolar kullanma](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-Bloblar yapılandırılmış ve yapılandırılmamış veriler için kullanılabilir. Blob kapsayıcıları, verileri anahtar/değer çiftleri olarak depolar ve Dizin hiyerarşisine sahip değildir. Bununla birlikte, anahtar adı, bir dosyanın dizin yapısında depolanmış gibi görünmesini sağlamak için eğik çizgi karakteri (/) içerebilir. Örneğin, bir Blobun anahtarı olabilir `input/log1.txt`. Gerçek `input` dizin yok, ancak anahtar adındaki eğik çizgi karakteri nedeniyle anahtar bir dosya yolu gibi görünüyor.
+Bloblar yapılandırılmış ve yapılandırılmamış veriler için kullanılabilir. Blob kapsayıcıları, verileri anahtar/değer çiftleri olarak depolar ve Dizin hiyerarşisine sahip değildir. Bununla birlikte, anahtar adı, bir dosyanın dizin yapısında depolanmış gibi görünmesini sağlamak için eğik çizgi karakteri (/) içerebilir. Örneğin, bir Blobun anahtarı olabilir `input/log1.txt` . Gerçek `input` Dizin yok, ancak anahtar adındaki eğik çizgi karakteri nedeniyle anahtar bir dosya yolu gibi görünüyor.
 
 ## <a name="benefits-of-azure-storage"></a>Azure Depolamanın yararları
 
@@ -73,7 +73,7 @@ Verileri, Azure Storage 'da, her ne kadar çok avantaj elde edersiniz:
 Belirli MapReduce işleri ve paketleri, Azure depolama 'da depolamak istemediğiniz ara sonuçlar oluşturabilir. Bu durumda, verileri yerel olarak depolamayı tercih edebilirsiniz. HDInsight, Hive işlerinde ve diğer işlemlerde bu ara sonuçlardan birkaçı için DFS kullanır.
 
 > [!NOTE]  
-> En çok bu komut (örneğin `ls` `copyFromLocal`,,, ve `mkdir`) Azure depolama 'da beklendiği gibi çalışır. Yalnızca yerel bir IBU uygulamaya özgü komutlar (DFS olarak adlandırılır), `fschk` ve `dfsadmin`gibi Azure depolama 'da farklı davranışlar gösterir.
+> En çok bu komut (örneğin,,, `ls` `copyFromLocal` ve `mkdir` ) Azure depolama 'da beklendiği gibi çalışır. Yalnızca yerel bir IBU uygulamaya özgü komutlar (DFS olarak adlandırılır), `fschk` ve gibi `dfsadmin` Azure depolama 'da farklı davranışlar gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

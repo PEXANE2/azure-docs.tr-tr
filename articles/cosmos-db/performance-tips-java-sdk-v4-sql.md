@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: d4e21e03770591229416c1f70bbd5a715b43362c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850212"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -20,7 +20,7 @@ ms.locfileid: "85263475"
 > * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
 > * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
-> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
 > * [.NET SDK v2](performance-tips.md)
 > 
 
@@ -374,9 +374,11 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Bir istemci bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi yoktur. Sunucu, isteği RequestRateTooLarge (HTTP durum kodu 429) ile sona erpreemptively ve kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten [x-MS-retry-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini döndürür.
 
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
+    ```
 
     SDK 'lar, sunucu tarafından belirtilen yeniden deneme üst bilgisine göre bu yanıtı dolaylı olarak yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 

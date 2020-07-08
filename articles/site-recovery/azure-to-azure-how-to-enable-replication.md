@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851180"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine çoğaltma
 
@@ -113,12 +113,13 @@ Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştire
     - Linux VM 'lerinin bir çoğaltma grubunun parçası olmasını istiyorsanız, bağlantı noktası 20004 ' deki giden trafiğin, belirli bir Linux sürümüne yönelik kılavuza göre el ile açıldığından emin olun.
 ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. **Hedef kaynak** > oluştur**çoğaltmasını etkinleştir**' e tıklayın.
+5. **Hedef kaynak oluştur**  >  **çoğaltmasını etkinleştir**' e tıklayın.
 6. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler** altında VM sistem durumunun durumunu kontrol edebilirsiniz
 
 >[!NOTE]
->İlk çoğaltma sırasında durumun yenilenmesi zaman alabilir ve devam etmeden devam edebilir. En son durumu almak için **Yenile** düğmesine tıklayın.
 >
+> - İlk çoğaltma sırasında durumun yenilenmesi zaman alabilir ve devam etmeden devam edebilir. En son durumu almak için **Yenile** düğmesine tıklayın.
+> - Son 60 dakika içinde bir kurtarma noktası oluşturulmadığından, sanal makinenin çoğaltma durumu kritik olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

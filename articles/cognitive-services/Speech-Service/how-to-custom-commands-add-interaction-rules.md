@@ -10,43 +10,43 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 5f66e29e4c1bc85981202251e0de8288f4baee4e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851301"
 ---
-# <a name="add-interaction-rules"></a>Etkileşim kuralları Ekle
+# <a name="add-interaction-rules"></a>Etkileşim kuralları ekleme
 
-Bu makalede, **etkileşim kuralları**hakkında bilgi edineceksiniz. Bunlar, daha belirgin veya karmaşık durumları işlemek için ek kurallardır. Kendi özel etkileşim kurallarınızı yazmak için ücretsiz olduğunuzda, bu makalede aşağıdaki hedeflenen senaryolar için etkileşim kurallarından yararlanabilirsiniz:
+Bu makalede, *etkileşim kuralları*hakkında bilgi edineceksiniz. Bu ek kurallar, daha belirgin veya karmaşık durumları işler. Kendi özel etkileşim kurallarınızı yazabilirsiniz, ancak bu makalede, aşağıdaki hedeflenen senaryolar için etkileşim kurallarını kullanabilirsiniz:
 
 * Onaylama komutları
-* Komutlara bir adım düzeltme ekleme
+* Komutlara tek adımlı bir düzeltme ekleme
 
 Etkileşim kuralları hakkında daha fazla bilgi edinmek için [Başvurular](./custom-commands-references.md) bölümüne gidin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki makalelerde bulunan adımları tamamlamış olmanız gerekir:
+Aşağıdaki makalelerde bulunan adımları tamamlamalısınız:
 > [!div class="checklist"]
-> * [Nasıl yapılır: basit komutlarla uygulama oluşturma](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Nasıl yapılır: komutlara parametreler ekleme](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Basit komutlarla uygulama oluşturma](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Komutlara parametre ekleme](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Komuta onaylar ekleme
 
-Bir onay eklemek için **Setsıcaklık** komutunu kullanın. Onayı sağlamak için aşağıdaki adımları kullanarak etkileşim kuralları oluşturursunuz.
+Bir onay eklemek için **Setsıcaklık** komutunu kullanın. Onay elde etmek için aşağıdaki adımları kullanarak etkileşim kuralları oluşturursunuz.
 
-1. Sol bölmeden **Setsıcaklık** komutunu seçin.
-2. Orta bölmede **Ekle** ' yi ve ardından **etkileşim kuralları**  >  **Onayla komutunu**seçerek etkileşim kuralları ekleyin.
+1. Sol bölmedeki **Setsıcaklık** komutunu seçin.
+1. Orta bölmede **Ekle** ' ye tıklayarak etkileşim kuralları ekleyin. Ardından **etkileşim kuralları**  >  **Onayla komutunu**seçin.
 
-    Bu, 3 etkileşim kuralı ekler. Bu kural, kullanıcıdan uyarının tarih ve saatini onaylamasını ve bir sonraki sırayla bir onay (Evet/Hayır) bekliyor olduğunu ister.
+    Bu eylem üç etkileşim kuralı ekler. Bu kural, kullanıcıdan alarm tarihini ve saatini onaylamasını ve bir sonraki sırayla bir onay (Evet/Hayır) beklediğini ister.
 
-    1. Aşağıdaki yapılandırmaya göre **Onayla komut** etkileşimi kuralını değiştirin
-        1. **Adı** olarak yeniden adlandırın **`Confirm Temperature`** .
-        1. Yeni bir koşulu **gerekli parametreler > sıcaklığını** ekleyin
-        1. Yeni bir eylem **türü ekleyin > konuşma yanıtı gönder > `Are you sure you want to set the temperature as {Temperature} degrees?` **
-        1. Beklentiler bölümünde **kullanıcıdan onay bekleyen** varsayılan değeri bırakın.
+    1. Aşağıdaki yapılandırmaya göre **Onayla komut** etkileşim kuralını değiştirin:
+        1. **Sıcaklığı onaylamak**için **adı** yeniden adlandırın.
+        1. **Gerekli parametre**sıcaklığı olarak yeni bir koşul ekleyin  >  **Temperature**.
+        1. Yeni bir eylem ekleyin **tür**  >  **konuşma yanıtı gönder**  >  **sıcaklığı {sıcaklık} derece olarak ayarlamak istediğinizden emin misiniz?**
+        1. **Beklentiler** bölümünde **kullanıcıdan onay bekleyen** varsayılan değeri bırakın.
       
          > [!div class="mx-imgBorder"]
          > ![Gerekli parametre yanıtı oluştur](media/custom-speech-commands/add-validation-set-temperature.png)
@@ -54,92 +54,92 @@ Bir onay eklemek için **Setsıcaklık** komutunu kullanın. Onayı sağlamak i�
 
     1. **Onaylama** başarılı etkileşim kuralını, başarılı bir onaylamayı işleyecek şekilde değiştirin (Kullanıcı Evet olarak kabul edilir).
       
-          1. **Adı** olarak değiştirin **`Confirmation temperature succeeded`** .
+          1. **Adı** **onay sıcaklığı olarak değiştirme başarılı oldu**.
           1. Zaten var olan **onayın başarılı olduğunu** bırakın.
-          1. Yeni bir koşulu tür olarak ekleyin **> gerekli parametreler > sıcaklık**
+          1. **Type**  >  **Gerekli parametre**  >  **sıcaklığını**tür olarak yeni bir koşul ekleyin.
           1. **Yürütme sonrası durumunun** varsayılan değerini **yürütme kuralları yürütme**olarak bırakın.
 
-    1. Onay reddedildiğinde senaryoları işlemek için **Reddedilen onay** (Kullanıcı yok diyor) öğesini değiştirin.
+    1. **Onay reddedildi etkileşim kuralını** , onay reddedildiğinde senaryoları işleyecek şekilde değiştirin (Kullanıcı Hayır olarak kabul edilir).
 
-          1. **Adı** olarak değiştirin **`Confirmation temperature denied`** .
+          1. **Adı** **onay sıcaklığı**olarak değiştirme reddedildi.
           1. Zaten mevcut **onay reddedildi** koşulunu bırakın.
-          1. Yeni bir koşulu tür olarak ekleyin **> gerekli parametreler > sıcaklık**
-          1. Yeni bir eylem **türü ekleyin > konuşma yanıtı gönder > `No problem. What temperature then?` **
+          1. **Type**  >  **Gerekli parametre**  >  **sıcaklığını**tür olarak yeni bir koşul ekleyin.
+          1. Yeni bir eylem ekleyin **Type**  >  **konuşma yanıtı gönder**  >  **sorun yok. Ne daha sonra sıcaklık?**
           1. **Yürütme sonrası durumunun** varsayılan değerini **kullanıcının girişini bekle**olarak bırakın.
 
 > [!IMPORTANT]
-> Bu makalede, yerleşik onay özelliğini kullandınız. Alternatif olarak, etkileşim kurallarını tek bir, el ile ekleyerek de aynı zamanda elde edebilirsiniz.
+> Bu makalede, yerleşik onay özelliğini kullandınız. Etkileşim kurallarını bir tane de el ile ekleyebilirsiniz.
    
 
 ### <a name="try-out-the-changes"></a>Değişiklikleri deneyin
 
-Eğitim **' i**seçin, eğitimin tamamlanmasını bekleyin ve **Test**' i seçin.
+Eğitim **' i seçin,** eğitimin bitmesini bekleyin ve **Test**' i seçin.
 
-- Giriş: sıcaklığı 80 derece olarak ayarlayın
-- Çıkış: Tamam 80?
-- Giriş: Hayır
-- Çıkış: sorun değil. Ne daha sonra sıcaklık?
-- Giriş: 83 derece
-- Çıkış: Tamam 83?
-- Giriş: Evet
-- Çıkış: Tamam, sıcaklık 83 derece olarak ayarlanıyor
+- **Giriş**: sıcaklığı 80 derece olarak ayarlayın.
+- **Çıkış**: Tamam 80?
+- **Giriş**: Hayır.
+- **Çıkış**: sorun değil. Ne daha sonra sıcaklık?
+- **Giriş**: 83 derece.
+- **Çıkış**: Tamam 83?
+- **Giriş**: Evet.
+- **Çıkış**: Tamam, sıcaklık 83 derece olarak ayarlanıyor.
 
 
-## <a name="implementing-corrections-in-a-command"></a>Bir komutta düzeltme uygulama
+## <a name="implement-corrections-in-a-command"></a>Bir komutta düzeltmeleri uygulama
 
-Bu bölümde, bir adım adım düzeltmeyi yapılandırırsınız ve bu işlem, tamamlama eylemi zaten yürütüldüğünde kullanılır. Ayrıca, komutun henüz karşılanmamış olması durumunda düzeltme özelliğinin varsayılan olarak nasıl etkin olduğunu gösteren bir örnek görürsünüz. Komut tamamlandığında bir düzeltme eklemek için, yeni bir **Alarmton**parametresi ekleyin.
+Bu bölümde, tek adımlı bir düzeltme yapılandırırsınız ve bu işlem, tamamlama eylemi daha önce yürütüldükten sonra kullanılır. Ayrıca, komutun henüz karşılanmamış olması durumunda bir düzeltmenin varsayılan olarak nasıl etkin olduğunu gösteren bir örnek görürsünüz. Komut tamamlandığında bir düzeltme eklemek için, yeni **Alarmtone**parametresini ekleyin.
 
-Sol bölmeden **SetAlarm** komutunu seçin ve yeni bir **alarmton**parametresi ekleyin.
+Sol bölmeden **SetAlarm** komutunu seçin ve yeni **alarmtone**parametresini ekleyin.
         
-- **Ada** > `AlarmTone`
-- > dize **yazın**
-- **Varsayılan değer** > `Chimes`
-- **Yapılandırma** > iç katalogdan önceden tanımlanmış giriş değerlerini kabul et
-- **Önceden tanımlanmış giriş değerleri**  >  `Chimes` , `Jingle` , ve `Echo` . Her biri önceden tanımlanmış tek giriş.
+- **Ad**  >  **Alarmton**
+- **Tür**  >  **Dize**
+- **Varsayılan değer**  >  **Oymes**
+- **Yapılandırma**  >  **Önceden tanımlanmış giriş değerlerini iç katalogdan kabul etme**
+- **Önceden tanımlanmış giriş değerleri**  >  Tek tek önceden tanımlanmış girişler olarak **oyırmes**, **jne**ve **yankı**
 
 
-Sonra, DateTime parametresinin yanıtını ' e güncelleştirin `Ready to set alarm with tone as {AlarmTone}. For what time?` . Sonra tamamlama kuralını aşağıdaki şekilde değiştirin.
+Sonra, **DateTime** parametresinin yanıtını, **alarmtone} olarak sesle ayarlamaya başlamaya hazırlanın. Ne zaman?** Sonra tamamlama kuralını aşağıdaki gibi değiştirin:
 
 1. Mevcut tamamlama kuralını **ConfirmationResponse**seçin.
-1. Sağ bölmede, var olan eylemin üzerine gelin ve **Düzenle** düğmesini seçin.
-1. Konuşma yanıtını Güncelleştir`Ok, alarm set for {DateTime}. The alarm tone is {AlarmTone}.`
+1. Sağ bölmede, var olan eylemin üzerine gelin ve **Düzenle**' yi seçin.
+1. Konuşma yanıtını **Tamam, uyarı kümesi {DateTime} için güncelleştirin. Uyarı tonu {AlarmTone}.**
 
 ### <a name="try-out-the-changes"></a>Değişiklikleri deneyin
 
-Eğitim **' i**seçin, eğitime kadar bekleyin ve **Test**' i seçin.
+Eğitim **' i seçin,** eğitimin bitmesini bekleyin ve **Test**' i seçin.
 Aşağıdaki detersliği deneyin:
 
-- Giriş: bir alarm ayarlama
-- Çıkış: oyda oylarla alarm ayarlamaya hazırlanıyor. Ne zaman?
-- Giriş: 9 yarın için jsıt olarak ton ile bir alarm ayarlayın
-- Çıkış: Tamam, 2020-05-30 09:00:00 için alarm kümesi. Uyarı tonu, Jbir.
+- **Giriş**: bir alarm ayarlayın.
+- **Çıkış**: oyda oylarla alarm ayarlamaya hazırlanıyor. Ne zaman?
+- **Giriş**: 9 yarın için jsıas ile bir alarm ayarlayın.
+- **Çıkış**: tamam, 2020-05-30 09:00:00 için alarm kümesi. Uyarı tonu, Jbir.
 
 > [!IMPORTANT]
-> Uyarı tonu devam eden bir komutta hiçbir açık yapılandırma olmadan nasıl değiştirilebileceğine Not, örneğin, komut henüz tamamlanmadıysa. **Komut, komutun yerine getirilme numarası ne olursa olsun, tüm komut parametreleri için varsayılan olarak etkindir.**
+> Uyarı tonu devam eden bir komutta herhangi bir açık yapılandırma olmadan değiştirilebilir, örneğin, komut henüz tamamlanmamıştır. *Komut için bir düzeltme varsayılan olarak, komutun yerine getirilme numarası ne olursa olsun, tüm komut parametreleri için etkindir.*
 
 ### <a name="correction-when-command-is-completed"></a>Komut tamamlandığında Düzeltme
 
-Özel komutlar platformu, komut tamamlandığında bile tek adımlı düzeltme için de yetenek sağlar. Ancak bu özellik varsayılan olarak etkin değildir ve açıkça yapılandırılması gerekir. Tek adımlı düzeltmeyi yapılandırmak için aşağıdaki adımları kullanın.
+Özel komutlar platformu, komut tamamlandığında bile tek adımlı bir düzeltme için özelliği de sağlar. Bu özellik varsayılan olarak etkin değildir. Açıkça yapılandırılması gerekir. Tek adımlı bir düzeltme yapılandırmak için aşağıdaki adımları kullanın.
 
-1. **SetAlarm** komutunda, daha önce set alarmını güncelleştirmek için **Update Previous komutunu Güncelleştir** türünde bir etkileşim kuralı ekleyin. **Önceki alarmı güncelleştirmek**için etkileşim kuralının varsayılan **adını** yeniden adlandırın.
+1. **SetAlarm** komutunda, daha önce set alarmını güncelleştirmek Için **Öncekini Güncelleştir komutunu** yazın ' ın bir etkileşim kuralını ekleyin. **Önceki alarmı güncelleştirmek**için etkileşim kuralının varsayılan **adını** yeniden adlandırın.
 1. Önceki komutun olduğu gibi **güncelleştirilmesi için gereken** varsayılan koşulu bırakın.
-1.  **DateTime > gerekli parametre > türü**olarak yeni bir koşul ekleyin.
-1. **Basit düzenleyici > konuşma yanıtı göndermek > tür `Updating previous alarm time to {DateTime}.` ** olarak yeni bir eylem ekleyin >
-1. Yürütme durumunun varsayılan değerini **komut tamamlandı**olarak bırakın.
+1. **Type**  >  **Gerekli parametre DateTime parametresi**olarak yeni bir koşul ekleyin  >  **DateTime**.
+1. Türe yeni bir eylem ekleyin **Type**  >  **konuşma yanıtı gönder**  >  **basit düzenleyici**  >  **önceki Alarm süresini {DateTime} olarak güncelleştiriyor.**
+1. **Yürütme sonrası durumunun** varsayılan değerini **komut tamamlandı**olarak bırakın.
 
 ### <a name="try-out-the-changes"></a>Değişiklikleri deneyin
 
-Eğitim **' i**seçin, eğitimin tamamlanmasını bekleyin ve **Test**' i seçin.
+Eğitim **' i seçin,** eğitimin bitmesini bekleyin ve **Test**' i seçin.
 
-- Giriş: bir alarm ayarlama
-- Çıkış: oyda oylarla alarm ayarlamaya hazırlanıyor. Saat kaç?
-- Giriş: 9 yarın için jsıt olarak ton ile bir alarm ayarlayın
-- Çıkış: Tamam, 2020-05-21 09:00:00 için alarm kümesi. Uyarı tonu, Jbir.
-- Giriş: Hayır, 8 har
-- Çıkış: önceki Alarm süresini 2020-05-29 08:00 olarak güncelleştirme.
+- **Giriş**: bir alarm ayarlayın.
+- **Çıkış**: oyda oylarla alarm ayarlamaya hazırlanıyor. Ne zaman?
+- **Giriş**: 9 yarın için jsıas ile bir alarm ayarlayın.
+- **Çıkış**: tamam, 2020-05-21 09:00:00 için alarm kümesi. Uyarı tonu, Jbir.
+- **Giriş**: Hayır, 8 har.
+- **Çıkış**: önceki alarm süresini 2020-05-29 08:00 olarak güncelleştirme.
 
 > [!NOTE]
-> Gerçek bir uygulamada, bu düzeltme kuralının Eylemler bölümünde, bir etkinliği istemciye geri göndermeniz veya sisteminizdeki alarm saatini güncelleştirmek için bir HTTP uç noktası çağırmanız gerekir. Bu eylem, bu durumda alarm tonu içinde yalnızca Alarm süresini güncelleştirmekten ve komutun başka bir özniteliği olmadığından, bu eylemin büyük bir sorumlusu olmalıdır.
+> Gerçek bir uygulamada, bu düzeltme kuralının **Eylemler** bölümünde, bir etkinliği istemciye geri göndermeniz veya sisteminizdeki alarm saatini güncelleştirmek IÇIN bir HTTP uç noktası çağırmanız gerekir. Bu eylem yalnızca Alarm süresini güncelleştirmekten ve komutun başka bir özniteliğini içermemelidir. Bu durumda, uyarı tonu olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

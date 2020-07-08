@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849883"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
@@ -153,13 +153,17 @@ Tek başına kimlik doğrulama aracısını dağıtmanın iki yolu vardır:
 1. Kimlik doğrulama Aracısı yüklemek için şu komutu çalıştırın: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
 2. Windows PowerShell 'i kullanarak hizmetimizi kullanarak kimlik doğrulama aracısını kaydedebilirsiniz. `$cred`Kiracınız için genel yönetici kullanıcı adını ve parolasını içeren bir PowerShell kimlik bilgileri nesnesi oluşturun. Ve yerine aşağıdaki komutu çalıştırın *\<username\>* *\<password\>* :
 
-        $User = "<username>"
-        $PlainPassword = '<password>'
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```powershell
+  $User = "<username>"
+  $PlainPassword = '<password>'
+  $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```
 3. **C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama aracısına** gidin ve oluşturduğunuz nesneyi kullanarak aşağıdaki betiği çalıştırın `$cred` :
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```powershell
+  RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```
 
 >[!IMPORTANT]
 >Bir sanal makinede bir kimlik doğrulama Aracısı yüklüyse, başka bir kimlik doğrulama Aracısı kurmak için sanal makineyi klonlamamanız gerekir. Bu yöntem **desteklenmiyor**.

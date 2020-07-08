@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678639"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850442"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
@@ -38,13 +38,13 @@ HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrud
 Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretlerden, HB, HC, H16r, H16mr ve RDMA özellikli N serisi sanal makineler için tarifelerinin ve A8 ve A9 VM 'Ler için QDR ücretlerden başlayarak iletişim kurmasını sağlar. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir. Hız hakkında daha fazla bilgi için bu sayfadaki tablolardaki ayrıntılara bakın.
 
 > [!NOTE]
-> Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, InfiniBand özellikli VM 'Ler için SR-ıOV: HBv2, HB, HC ve NCv3. InfiniBand etkin VM 'lerin geri kalanı SR-ıOV ' n i n etkin değildir.
+> Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, InfiniBand özellikli VM 'Ler için SR-ıOV: HBv2, HB, HC, NCv3 ve NDv2. InfiniBand etkin VM 'lerin geri kalanı SR-ıOV ' n i n etkin değildir.
 > RDMA üzerinden RDMA, tüm RDMA özellikli VM 'Ler için desteklenir.
 > IB üzerinden IP yalnızca SR-ıOV etkinleştirilmiş VM 'lerde desteklenir.
 
-- **İşletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir, CentOS, RHEL, Ubuntu, SUSE ise ortaktır. Windows desteği ile ilgili olarak, Windows Server 2016 tüm HPC serisi sanal makinelerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'lerde de desteklenir.
+- **İşletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın.
 
-- **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir.
+- **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3, NDv2), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir.
 SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
 
 - **Infinibanddriver<Linux | Windows> VM Uzantısı** -RDMA özellikli sanal makinelerde, ınfinibanddriver<Linux ekleyin | InfiniBand 'i etkinleştirmek için Windows> uzantısı. Linux 'ta, ınfinibanddriverlinux sanal makine uzantısı, RDMA bağlantısı için (SR-ıOV VM 'lerde), Mellanox Ed sürücüleri (SR-ıOV). Windows 'da, ınfinibanddriverwindows VM uzantısı, RDMA bağlantısı için Windows ağ doğrudan sürücülerini (SR-ıOV olmayan VM 'lerde) veya (SR-ıOV VM 'lerinde)

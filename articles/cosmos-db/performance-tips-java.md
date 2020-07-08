@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 93a3be4d19eeaedfab8f0fbb8fdcf60e341f86ec
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: cb42ac4e59d8e9d8c3e0c24eb24a810a5797c277
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850106"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
 
@@ -20,7 +20,7 @@ ms.locfileid: "85392412"
 > * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
 > * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
-> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
 > * [.NET SDK v2](performance-tips.md)
 > 
 
@@ -167,11 +167,12 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 1. **Tanıtıcı hız sınırlandırma/istek hızı çok büyük**
 
     Bir istemci bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi yoktur. Sunucu, isteği RequestRateTooLarge (HTTP durum kodu 429) ile sona erpreemptively ve kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten [x-MS-retry-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini döndürür.
-
+    
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
-
+    ```
     SDK 'lar, sunucu tarafından belirtilen yeniden deneme üst bilgisine göre bu yanıtı dolaylı olarak yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 
     İstek hızının sürekli olarak birden fazla istemciniz varsa, bu, şu anda istemci tarafından dahili olarak 9 olarak ayarlanmış olan varsayılan yeniden deneme sayısı çalışmayabilir; Bu durumda, istemci uygulamaya 429 durum kodu ile bir [Documentclientexception](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception) oluşturur. Varsayılan yeniden deneme sayısı, [Connectionpolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy) örneğinde [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) kullanılarak değiştirilebilir. Varsayılan olarak, durum kodu 429 olan DocumentClientException, istek istek hızının üzerinde çalışmaya devam ederse, 30 saniyelik birikimli bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır.

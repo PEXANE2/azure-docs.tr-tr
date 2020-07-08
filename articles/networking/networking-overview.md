@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 7d3fff80dcae3f97ca947504390ebc4a824e5f0d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851649"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
 
@@ -142,9 +142,9 @@ Bu bölümde, Azure 'da uygulamalar (Content Delivery Network, Azure ön kapı h
 |Hizmet|Neden kullanılmalıdır?|Senaryo|
 |---|---|---|
 |[Content Delivery Network](#cdn)|Kullanıcılara yüksek bant genişliğine sahip içerik sunar. CDNs, gecikme süresini en aza indirmek için son kullanıcılara yakın olan varlık (POP) konumları içinde önbelleğe alınmış içeriği uç sunucular üzerinde depolar|<p>[Web uygulamasına CDN ekleme](../cdn/cdn-add-to-web-app.md)</p> <p>[-HTTPS üzerinden Azure CDN özel bir etki alanı kullanarak depolama bloblarına erişin](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Azure CDN uç noktanıza özel etki alanı ekleme](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Azure CDN özel etki alanı üzerinde HTTPS yapılandırma](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
-|[Azure Front Door Hizmeti](#frontdoor)|Yüksek kullanılabilirlik için en iyi performansı ve hızlı genel yük devretmeyi iyileştirerek Web trafiğiniz için küresel yönlendirmeyi tanımlamanıza, yönetmenize ve izlemenize olanak sağlar.|<p>[Azure Front Door Service’inize özel etki alanı ekleme](../frontdoor/front-door-custom-domain.md)</p> <p>[Ön kapı özel etki alanında HTTPS 'yi yapılandırma](../frontdoor/front-door-custom-domain-https.md)</p><p>[Coğrafi filtreleme Web uygulaması güvenlik duvarı ilkesini ayarlama](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Azure Front Door Hizmeti](#frontdoor)|Yüksek kullanılabilirlik için en iyi performansı ve hızlı genel yük devretmeyi iyileştirerek Web trafiğiniz için küresel yönlendirmeyi tanımlamanıza, yönetmenize ve izlemenize olanak sağlar.|<p>[Azure Front Door Service’inize özel etki alanı ekleme](../frontdoor/front-door-custom-domain.md)</p> <p>[Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma](../frontdoor/front-door-custom-domain-https.md)</p><p>[Coğrafi filtreleme Web uygulaması güvenlik duvarı ilkesini ayarlama](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[Traffic Manager](#trafficmanager)|Yüksek kullanılabilirlik ve yanıt hızı sağlarken, DNS tabanlı trafiği küresel Azure bölgelerindeki hizmetlere dağıtır|<p> [Düşük gecikme süresi için trafiği yönlendirme](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Trafiği bir öncelik uç noktasına yönlendirme](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Ağırlıklı uç noktalarla trafiği yönetme](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Uç noktanın coğrafi konumunu temel alarak trafiği yönlendirme](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Kullanıcının alt ağına göre trafik yönlendirme](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|, Trafiği kullanılabilirlik alanları arasında ve sanal ağlarınız arasında yönlendirerek bölgesel yük dengelemesi sağlar. , Bölgesel uygulamanızı oluşturmak için kaynaklarınızın tamamında ve arasında trafiği yönlendirerek iç yük dengelemesi sağlar.|<p> [Sanal makinelerin internet trafiğinde yük dengeleme](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Bir sanal ağ içindeki VM 'lerde Yük Dengeleme trafiği](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Belirli VM 'lerde belirli bir bağlantı noktasına giden trafik iletme trafiği](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Yük dengelemeyi ve giden kuralları yapılandırma](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Load Balancer](#loadbalancer)|, Trafiği kullanılabilirlik alanları arasında ve sanal ağlarınız arasında yönlendirerek bölgesel yük dengelemesi sağlar. , Bölgesel uygulamanızı oluşturmak için kaynaklarınızın tamamında ve arasında trafiği yönlendirerek iç yük dengelemesi sağlar.|<p> [Sanal makinelerin internet trafiğinde yük dengeleme](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Bir sanal ağ içindeki VM 'lerde Yük Dengeleme trafiği](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[Belirli VM 'lerde belirli bir bağlantı noktasına giden trafik iletme trafiği](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Yük dengelemeyi ve giden kuralları yapılandırma](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[Application Gateway](#applicationgateway)|Azure Application Gateway, web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir.|<p>[Azure Application Gateway ile web trafiğini yönlendirme](../application-gateway/quick-create-portal.md)</p><p>[Öğretici: Azure portal kullanarak bir uygulama ağ geçidini TLS sonlandırmasıyla yapılandırma](../application-gateway/create-ssl-portal.md)</p><p>[URL yolu tabanlı yönlendirme ile bir uygulama ağ geçidi oluşturma](../application-gateway/create-url-route-portal.md) </p>|
 |
 

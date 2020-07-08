@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10e6d3a419bdf8b14675f0edabd63ed4b4f4b86f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849960"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -31,7 +31,7 @@ Bu belge, Azure AD Connect Health Aracılarını yüklemenize ve yapılandırman
 
 Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimler listelenmiştir.
 
-| Gereksinim | Description |
+| Gereksinim | Açıklama |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health, bir Azure AD Premium özelliği olup Azure AD Premium gerektirir. <br /><br />Daha fazla bilgi için bkz. [Azure AD Premium kullanmaya başlama](../fundamentals/active-directory-get-started-premium.md) <br />30 günlük ücretsiz denemeyi başlatmak için bkz. [Denemeyi başlatma.](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Connect Health ile çalışmaya başlamak için Azure AD'nizin genel yöneticisi olmanız gerekir. |Varsayılan olarak yalnızca genel yöneticiler; çalışmaya başlamak üzere durum aracılarını yükleyip yapılandırabilir, portala erişebilir ve Azure AD Connect Health'te işlem gerçekleştirebilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-administer.md). <br /><br /> Rol Tabanlı Erişim Denetimini kullanarak kuruluşunuzdaki diğer kullanıcılara Azure AD Connect Health erişim izni verebilirsiniz. Daha fazla bilgi için bkz [. Azure AD Connect Health Için rol tabanlı Access Control.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Önemli:** Aracıları yüklerken kullanılan hesap bir iş veya okul hesabı olmalıdır. Bir Microsoft hesabı olamaz. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md) |
@@ -329,19 +329,25 @@ Azure AD Connect Health Aracısını bir HTTP Ara Sunucusunu kullanacak şekilde
 
 Internet Explorer HTTP proxy ayarları Azure AD Connect Health Aracıları tarafından kullanılmak üzere içeri aktarılabilir. Health aracısını çalıştıran sunucuların her birinde aşağıdaki PowerShell komutunu yürütün:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>WinHTTP'den içeri aktarma
 
 WinHTTP proxy ayarları Azure AD Connect Health Aracıları tarafından kullanılmak üzere içeri aktarılabilir. Health aracısını çalıştıran sunucuların her birinde aşağıdaki PowerShell komutunu yürütün:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>Ara sunucu adreslerini el ile belirtme
 
 Health Aracısını çalıştıran sunucuların her birinde aşağıdaki PowerShell komutunu yürüterek bir proxy sunucusunu elle belirtebilirsiniz:
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 Örnek: *Set-AzureAdConnectHealthProxySettings - HttpsProxyAddress myproxyserver: 443*
 
@@ -352,15 +358,17 @@ Health Aracısını çalıştıran sunucuların her birinde aşağıdaki PowerSh
 
 Aşağıdaki komutu çalıştırarak var olan proxy sunucu yapılandırmasını silebilirsiniz:
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>Geçerli ara sunucu ayarlarını okuma
 
 Aşağıdaki komutu çalıştırarak geçerli olarak yapılandırılmış olan proxy sunucu ayarlarını okuyabilirsiniz:
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Azure AD Connect Health Hizmeti için Bağlantı Testi
 
@@ -368,7 +376,9 @@ Azure AD Connect Health aracısıyla Azure AD Connect Health hizmeti arasındaki
 
 Aracı iki saatten uzun bir süre boyunca Azure AD Connect Health hizmetine veri gönderemezse portalda şu uyarı ile gösterilir: "Health Hizmeti verileri güncel değil." Aşağıdaki PowerShell komutunu çalıştırarak, etkilenen Azure AD Connect Health aracısının Azure AD Connect Health hizmetine veri yükleyebildiğini onaylayabilirsiniz:
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 Rol parametresi şu anda şu değerleri alır:
 

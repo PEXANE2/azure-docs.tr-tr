@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851267"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
@@ -81,6 +81,8 @@ Bloblarınızı bir sınırlayıcı kullanarak adlandırın, Blobları hiyerarş
 Varsayılan olarak, bir listeleme işlemi blob 'ları düz bir listede döndürür. Düz bir listede, Bloblar sanal dizin tarafından düzenlenmez.
 
 Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını bir konsol penceresine yazar.
+
+Hesabınızda hiyerarşik ad alanı özelliğini etkinleştirdiyseniz, dizinler sanal değildir. Bunun yerine somut, bağımsız nesnelerdir. Bu nedenle, dizinler listede sıfır uzunluklu blob 'lar olarak görünür.
 
 # <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
 

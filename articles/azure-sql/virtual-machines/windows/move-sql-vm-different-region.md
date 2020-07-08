@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bc65e34fa16312b54fc8a346c561ab128424ab26
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851794"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM Azure Site Recovery Azure içindeki başka bir bölgeye taşıma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Taşıma için hem kaynak SQL Server VM hem de hedef bölgeyi hazırlayın.
     - Azure Site Recovery, kaynak VM için çoğaltmayı etkinleştirdiğinizde otomatik olarak bir sanal ağ bulur ve oluşturur. Ayrıca, bir ağı önceden oluşturup çoğaltmayı etkinleştirmek için Kullanıcı akışındaki sanal makineye atayabilirsiniz. Hedef bölgede diğer kaynakları el ile oluşturmanız gerekir.
 - Kaynak VM yapılandırmasına bağlı olarak sizin için uygun olan en sık kullanılan ağ kaynaklarını oluşturmak için aşağıdaki belgelere bakın: 
     - [Ağ güvenlik grupları](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Yük dengeleyici](../../../load-balancer/tutorial-load-balancer-basic-internal-portal.md)
+    - [Yük dengeleyici](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
     - [Genel IP adresi](../../../virtual-network/virtual-network-public-ip-address.md)
     - Tüm ek ağ bileşenleri için [ağ belgelerine](../../../virtual-network/virtual-networks-overview.md)bakın.
 - Hedef bölgede son taşıma işlemini gerçekleştirmeden önce yapılandırmayı test etmek istiyorsanız, hedef bölgede el ile bir üretim dışı ağ oluşturun. Üretim ağıyla en az girişim sağladığından bu adımı öneririz. 

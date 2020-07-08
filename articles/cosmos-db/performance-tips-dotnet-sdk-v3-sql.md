@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: ce0bc73fd21210e7cd5cd48c8134abd5f014b026
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850249"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
 > * [.NET SDK v2](performance-tips.md)
 > * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
@@ -247,9 +247,11 @@ Bu üst bilgide döndürülen istek ücreti, sağlanan aktarım hızını (yani,
 
 Bir istemci, bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi kullanılamaz. Sunucu isteği RequestRateTooLarge ile sona erdirmek için preemptively (HTTP durum kodu 429). Kullanıcının isteği yeniden denemeden önce beklemesi gereken süre miktarını milisaniye cinsinden belirten bir [x-MS-retry-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisi döndürür.
 
+```xml
     HTTP Status 429,
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
+```
 
 SDK 'lar, sunucu tarafından belirtilen yeniden deneme üst bilgisine göre bu yanıtı dolaylı olarak yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849652"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -76,7 +76,7 @@ SSH kullanma hakkında daha fazla bilgi için bkz. [HDInsight Ile SSH kullanma](
 
 HDInsight kümesindeki düğümlerin iç IP adresi ve yalnızca kümeden erişilebilen bir FQDN vardır. İç FQDN veya IP adresini kullanarak kümedeki hizmetlere erişirken, hizmete erişirken kullanılacak IP veya FQDN 'yi doğrulamak için ambarı 'nı kullanmanız gerekir.
 
-Örneğin, Apache Oozie hizmeti yalnızca bir baş düğümde çalışabilir ve bir SSH oturumundan `oozie` komutun KULLANıLMASı hizmetin URL 'sini gerektirir. Bu URL, aşağıdaki komutu kullanarak ambarı 'ndan alınabilir:
+Örneğin, Apache Oozie hizmeti yalnızca bir baş düğümde çalışabilir ve `oozie` BIR SSH oturumundan komutun kullanılması HIZMETIN URL 'sini gerektirir. Bu URL, aşağıdaki komutu kullanarak ambarı 'ndan alınabilir:
 
 ```bash
 export password='PASSWORD'
@@ -85,7 +85,7 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-Bu komut, `oozie` komutuyla birlikte kullanılacak iç URL 'yi içeren aşağıdakine benzer bir değer döndürür:
+Bu komut, komutuyla birlikte kullanılacak iç URL 'YI içeren aşağıdakine benzer bir değer döndürür `oozie` :
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
@@ -109,7 +109,7 @@ Baş düğümlerde çalışan hizmetlerin durumunu denetlemek için, ambarı Web
 
 ### <a name="ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi
 
-Ambarı Web Kullanıcı arabirimi, ' de `https://CLUSTERNAME.azurehdinsight.net`görüntülenebilir. **Clustername** değerini kümenizin adıyla değiştirin. İstenirse, kümenizin HTTP Kullanıcı kimlik bilgilerini girin. Varsayılan HTTP Kullanıcı adı **yönetici** ve parola, kümeyi oluştururken girdiğiniz paroladır.
+Ambarı Web Kullanıcı arabirimi, ' de görüntülenebilir `https://CLUSTERNAME.azurehdinsight.net` . **Clustername** değerini kümenizin adıyla değiştirin. İstenirse, kümenizin HTTP Kullanıcı kimlik bilgilerini girin. Varsayılan HTTP Kullanıcı adı **yönetici** ve parola, kümeyi oluştururken girdiğiniz paroladır.
 
 Ambarı sayfasına geldiğinizde, yüklü hizmetler sayfanın solunda listelenir.
 
@@ -129,7 +129,7 @@ Aşağıdaki uyarılar bir kümenin kullanılabilirliğini izlemeye yardımcı o
 | Spark2 Thrift sunucusu                     | Bu konak düzeyi uyarısı, Spark2 Thrift sunucusu etkin olarak belirlenemiyorsa tetiklenir.                                                                                                |
 | Geçmiş sunucu Işlemi                   | Bu konak düzeyi uyarısı, geçmiş sunucusu işleminin ağ üzerinde dinlenecek ve dinlemek için kurulamazsa tetiklenir.                                                                |
 | Geçmiş sunucusu Web Kullanıcı arabirimi                    | Bu konak düzeyi uyarı, geçmiş sunucusu Web Kullanıcı arabirimine ulaşılamıyorsa tetiklenir.                                                                                                              |
-| `ResourceManager`Web Kullanıcı arabirimi                   | `ResourceManager` Web Kullanıcı arabirimine ulaşılamıyorsa bu konak düzeyi uyarısı tetiklenir.                                                                                                             |
+| `ResourceManager`Web Kullanıcı arabirimi                   | `ResourceManager`Web Kullanıcı arabirimine ulaşılamıyorsa bu konak düzeyi uyarısı tetiklenir.                                                                                                             |
 | NodeManager sistem durumu Özeti               | Sağlıksız NodeManager varsa, bu hizmet düzeyi uyarı tetiklenir                                                                                                                    |
 | Uygulama zaman çizelgesi Web Kullanıcı arabirimi                      | Bu konak düzeyi uyarı, uygulama zaman çizelgesi sunucusu Web Kullanıcı arabirimine ulaşılamıyorsa tetiklenir.                                                                                                         |
 | Dadtanode sistem durumu Özeti                  | Sağlıksız bir kades varsa, bu hizmet düzeyi uyarı tetiklenir                                                                                                                       |
@@ -139,7 +139,7 @@ Aşağıdaki uyarılar bir kümenin kullanılabilirliğini izlemeye yardımcı o
 | Oozie sunucu durumu                      | Bu konak düzeyi uyarısı, Oozie sunucusunun istemci isteklerine yanıt verip vermeyeceğini tespit edilebilir ise tetiklenir.                                                                      |
 | Hive meta veri deposu Işlemi                   | Bu konak düzeyi uyarısı, Hive meta veri deposu işlemi, ağı dinleyerek ve dinlemeden saptanamıyor.                                                                 |
 | HiveServer2 Işlemi                      | Bu konak düzeyi uyarısı, HiveServer 'ın istemci isteklerine yanıt verip vermediğini tespit edilebilir ise tetiklenir.                                                                        |
-| WebHCat sunucu durumu                    | `templeton` Sunucu durumu sağlıklı değilse bu konak düzeyi uyarısı tetiklenir.                                                                                                            |
+| WebHCat sunucu durumu                    | Sunucu durumu sağlıklı değilse bu konak düzeyi uyarısı tetiklenir `templeton` .                                                                                                            |
 | Kullanılabilir ZooKeeper sunucusu yüzdesi      | Kümedeki aşağı ZooKeeper sunucularının sayısı yapılandırılan kritik eşikten büyükse bu uyarı tetiklenir. ZooKeeper işlem denetimlerinin sonuçlarını toplar.     |
 | Spark2 Livy sunucusu                       | Bu konak düzeyi uyarı, Livy2 sunucusu çalışır olarak belirlenemiyorsa tetiklenir.                                                                                                        |
 | Spark2 geçmiş sunucusu                    | Bu ana bilgisayar düzeyi uyarı, Spark2 geçmiş sunucusunun olarak belirlenemediği takdirde tetiklenir.                                                                                               |
@@ -241,12 +241,14 @@ Her bir baş düğüm benzersiz günlük girişlerine sahip olabilir, bu nedenle
 
 Ayrıca SSH Dosya Aktarım Protokolü veya güvenli Dosya Aktarım Protokolü (SFTP) kullanarak baş düğüme bağlanabilir ve günlük dosyalarını doğrudan indirebilirsiniz.
 
-SSH istemcisi kullanmaya benzer şekilde, kümeye bağlanırken SSH kullanıcı hesabı adını ve kümenin SSH adresini sağlamanız gerekir. Örneğin, `sftp username@mycluster-ssh.azurehdinsight.net`. İstendiğinde hesabın parolasını sağlayın veya `-i` parametresini kullanarak bir ortak anahtar sağlayın.
+SSH istemcisi kullanmaya benzer şekilde, kümeye bağlanırken SSH kullanıcı hesabı adını ve kümenin SSH adresini sağlamanız gerekir. Örneğin, `sftp username@mycluster-ssh.azurehdinsight.net`. İstendiğinde hesabın parolasını sağlayın veya parametresini kullanarak bir ortak anahtar sağlayın `-i` .
 
 Bağlandıktan sonra bir `sftp>` istem sunulur. Bu istem içinden dizinleri değiştirebilir, karşıya yükleyebilir ve dosyaları indirebilirsiniz. Örneğin, aşağıdaki komutlar dizinleri **/var/log/Hadoop/HDFS** diziniyle değiştirir ve sonra dizindeki tüm dosyaları indirir.
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
 Kullanılabilir komutların listesi için, `help` `sftp>` istemine yazın.
 
@@ -272,9 +274,9 @@ Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki b
 
     ![Düğüm boyutu seçimiyle küme oluşturma Sihirbazı görüntüsü](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**: [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) komutunu kullanırken,, ve `--headnode-size` `--workernode-size` `--zookeepernode-size` parametrelerini kullanarak baş, çalışan ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz.
+* **Azure CLI**: komutunu kullanırken,, [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) ve parametrelerini kullanarak baş, çalışan ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz `--headnode-size` `--workernode-size` `--zookeepernode-size` .
 
-* **Azure PowerShell**: [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 'ini kullanırken,, ve `-HeadNodeSize` `-WorkerNodeSize` `-ZookeeperNodeSize` parametrelerini kullanarak Head, worker ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz.
+* **Azure PowerShell**: [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 'ini kullanırken,, `-HeadNodeSize` `-WorkerNodeSize` ve parametrelerini kullanarak Head, worker ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz `-ZookeeperNodeSize` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

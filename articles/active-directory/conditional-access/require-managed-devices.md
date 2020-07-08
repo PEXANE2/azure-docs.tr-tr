@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690582638451f1691b2ed7a4d0d4d6a7880fd80a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849939"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -95,6 +95,28 @@ Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz:
 - İş gücünüzün kullandığı mobil uygulamalar yönetiliyor
 - Şirket bilgileriniz, iş gücünüzün eriştiği ve paylaştığı bir şekilde denetim sağlanmasına yardımcı olur.
 - Cihaz ve uygulamaları, şirket güvenlik gereksinimleriyle uyumludur
+
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Senaryo: iOS ve Android cihazlar için cihaz kaydı gerektir
+
+Contoso, bu senaryoda, Office 365 kaynaklarına yönelik tüm mobil erişimin kayıtlı bir cihaz kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
+
+Kuruluşlar, kayıtlı bir mobil cihazın kullanımını gerektirmek için aşağıdaki adımları tamamlamalıdır.
+
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
+1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+   1. **Done** (Bitti) öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
+   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+   1. **Android** ve **iOS**dahil edin.
+1. **Erişim denetimleri**  >  **izni**altında, aşağıdaki seçenekleri belirleyin:
+   - **Cihazın uyumlu olarak işaretlenmesini gerektir**
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 ### <a name="known-behavior"></a>Bilinen davranış
 

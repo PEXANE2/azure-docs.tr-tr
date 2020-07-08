@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850690"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB ile sosyal olarak çalışmaya devam edin
 
@@ -39,22 +39,24 @@ Neden SQL Bu senaryoda en iyi seçim değil? Tek bir gönderi yapısına göz at
 
 Bu makale, Azure 'un NoSQL veritabanı [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) uygun maliyetli bir şekilde sosyal platformunuzun verilerini modellemeye kılavuzluk eder. Ayrıca, [Gremlin API](../cosmos-db/graph-introduction.md)gibi diğer Azure Cosmos DB özelliklerini nasıl kullanacağınızı da söyler. Bir [NoSQL](https://en.wikipedia.org/wiki/NoSQL) yaklaşımı kullanarak veri depolama ve JSON [biçiminde uygulama,](https://en.wikipedia.org/wiki/Denormalization)daha önce karmaşık gönderi tek bir [belgeye](https://en.wikipedia.org/wiki/Document-oriented_database)dönüştürülebilir:
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 Ve tek bir sorgu ile ve birleştirme olmadan alınabilir. Bu sorgu çok basit ve basittir ve bütçe temelinde, daha iyi bir sonuç elde etmek için daha az kaynak gerektirir.
 
@@ -62,39 +64,45 @@ Azure Cosmos DB, tüm özelliklerin Otomatik Dizin oluşturma ile dizine eklendi
 
 Bir gönderiyle ilgili açıklamalar, ana özelliği olan diğer gönderiler olarak değerlendirilir. (Bu uygulama, nesne eşlemenizi basitleştirir.)
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 Tüm sosyal etkileşimler, sayaçlar olarak ayrı bir nesne üzerinde depolanabilir:
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 Akış oluşturma, belirli bir ilgi sırasına sahip gönderi kimliklerinin bir listesini tutan belgeler oluşturmaktan yalnızca bir önemi vardır:
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 Oluşturma tarihine göre sıralanmış gönderilere sahip "en son" bir akışa sahip olabilirsiniz. Ya da son 24 saat içinde daha beğeneni olan bu gönderilere sahip "Hottest" akışına sahip olabilirsiniz. Aynı şekilde, her kullanıcı için izleyici ve ilgi alanları gibi mantığa göre özel bir akış da uygulayabilirsiniz. Bu, gönderilerin bir listesi olmaya devam eder. Bu listelerin oluşturulması, ancak okuma performansı açıklanmadan bağımsız kalır. Bu listelerden birini aldıktan sonra tek seferde gönderilerin sayfalarını almak için [ın anahtar sözcüğünü](sql-query-keywords.md#in) kullanarak Cosmos DB için tek bir sorgu verirsiniz.
 
@@ -104,28 +112,32 @@ Bir gönderi üzerinde işaret ve beğeni, sonuçta tutarlı bir ortam oluşturm
 
 Takipçler, karmaşık. Cosmos DB belge boyut sınırına sahiptir ve büyük belgeleri okuma/yazma, uygulamanızın ölçeklenebilirliğini etkileyebilir. Bu nedenle, izleyicileri Bu yapıyla bir belge olarak depolamayı düşünebilirsiniz:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 Bu yapı birkaç binlerce izleyicileri olan bir kullanıcı için çalışabilir. Ancak, bir ünlütlerin derecelendirmesine katılılırsa, bu yaklaşım büyük bir belge boyutuna yol açacağından, sonuç olarak belge boyutu üst sınırına gelebilir.
 
 Bu sorunu çözmek için karışık bir yaklaşım kullanabilirsiniz. Kullanıcı Istatistikleri belgesinin bir parçası olarak, izleme sayısını depolayabilmeniz gerekir:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 "A-B" ilişkilerini koruanların her bir Kullanıcı ve [kenar](http://mathworld.wolfram.com/GraphEdge.html) için [izdüşümler](http://mathworld.wolfram.com/GraphVertex.html) oluşturmak üzere Azure Cosmos DB [Gremlin API](../cosmos-db/graph-introduction.md) 'sini kullanarak takipçilerin gerçek graflarını saklayabilirsiniz. Gremlin API 'SI ile belirli bir kullanıcı için izleyicileri alabilir ve sık sık insanlar önermek için daha karmaşık sorgular oluşturabilirsiniz. İster veya keyfini çıkarmış olan Içerik kategorilerini grafiğe eklerseniz akıllı içerik bulma 'yı içeren, bu kişilerin beğeneceğiniz içerikleri öneren veya sizinle ortak olan kişileri bulma gibi dalgalı deneyimler başlatabilirsiniz.
 
@@ -141,19 +153,21 @@ Her etkinlik için uygulamanızda göstereceğiniz bir kullanıcının anahtar �
 
 Kullanıcı bilgilerini örnek olarak ele alalım:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 Bu bilgilere bakarak, kritik bilgileri ve hangilerinin olmadığını hızlı bir şekilde tespit edebilir ve bu nedenle "el merdivenini" oluşturursunuz:
 
@@ -167,26 +181,30 @@ En büyük değer, Genişletilmiş Kullanıcı. Bu, oturum açma sürecinde oldu
 
 Kullanıcıyı neden bölecektir, hatta bu bilgileri farklı yerlere depoluyordu? Bir performans noktasından bir görünüm olduğundan, belgeler daha büyük olduğundan sorguları sorgular. Sosyal ağınıza yönelik tüm performansa bağımlı sorgularınızı yapmak için, belgeleri ince ve doğru bilgilerle koruyun. Kullanım Analizi ve büyük veri girişimleri için tam profil düzenlemeleri, oturum açmalar ve veri madenciliği gibi son senaryolar için diğer ek bilgileri saklayın. Veri madenciliği için veri toplama işlemi, Azure SQL veritabanı 'nda çalıştığından gerçekten dikkatli olmaz. Kullanıcılarınız hızlı ve ince bir deneyimle karşılaşmış olabilir. Cosmos DB depolanan bir Kullanıcı şu kod gibi görünür:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 Bir gönderi şöyle görünür:
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 Bir öbek özniteliğinin etkilendiğine ilişkin bir düzenleme yapıldığında, etkilenen belgeleri kolayca bulabilirsiniz. Yalnızca dizinli öznitelikleri işaret eden sorguları kullanın (gibi) `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` ve ardından öbekleri güncelleştirin.
 
@@ -212,7 +230,7 @@ Ancak neleri öğrenebilirsiniz? Birkaç kolay örnek, yaklaşım [analizini](ht
 
 Artık kullanıma sundum, bu desenleri ve bilgileri basit veritabanlarının ve dosyaların dışına çıkarmak için matematik bilimi 'nin bazı PhD 'ye ihtiyacınız olduğunu düşündük, ancak yanlış bir sorun var.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)bir parçası olarak, basit bir sürükle ve bırak arabirimindeki algoritmaları kullanarak Iş akışları oluşturmanıza, [R](https://en.wikipedia.org/wiki/R_\(programming_language\))'de kendi algoritmalarınızı kodlamanızı veya önceden oluşturulmuş ve şu gibi API 'leri kullanmaya hazır olan API 'leri kullanmayı sağlayan tam olarak yönetilen bir bulut hizmetidir: [metin analizi](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content moderator veya [öneriler](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)bir parçası olarak, basit bir sürükle ve bırak arabirimindeki algoritmaları kullanarak Iş akışları oluşturmanıza, [R](https://en.wikipedia.org/wiki/R_\(programming_language\))'de kendi algoritmalarınızı kodlamanızı veya daha önce oluşturulmuş ve şu gibi apı 'leri kullanmaya hazır olan " [metin analizi](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), Content moderator veya [önerileri](https://gallery.azure.ai/Solution/Recommendations-Solution)kullanabilirsiniz.
 
 Bu Machine Learning senaryolarından herhangi birine ulaşmak için [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) kullanarak farklı kaynaklardaki bilgileri alabilirsiniz. Ayrıca, bilgileri işlemek için [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) ' i de kullanabilir ve Azure Machine Learning tarafından işlenebilecek bir çıktı oluşturabilirsiniz.
 

@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850902"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Personelim ile kullanıcılarınızı yönetme (Önizleme)
 
@@ -71,9 +71,10 @@ Azure AD koşullu erişim ilkesini kullanarak personel portalından koruma sağl
 1. [Microsoft Graph Beta PowerShell cmdlet 'lerini](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)yükler.
 1. Aşağıdaki komutları çalıştırın:
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. Personel bulut uygulaması için geçerli bir koşullu erişim ilkesi oluşturun.
 
     ![Personel uygulaması için koşullu erişim ilkesi oluşturma](media/my-staff-configure/conditional-access.png)

@@ -1,19 +1,19 @@
 ---
-title: Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
-description: Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
+title: Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
+description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak için işlem düğümlerini yapılandırmanın etkili bir yoludur.
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851721"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
-Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümü için işletim sistemini sağlayan bir VM görüntüsü belirtirsiniz. Desteklenen bir Azure Marketi görüntüsüne sahip bir sanal makine havuzu oluşturabilir veya [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md)ile özel bir görüntü oluşturabilirsiniz.
+Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümü için işletim sistemini sağlayan bir VM görüntüsü belirtirsiniz. Desteklenen bir Azure Marketi görüntüsüne sahip bir sanal makine havuzu oluşturabilir veya [paylaşılan görüntü Galerisi görüntüsüyle](../virtual-machines/windows/shared-image-galleries.md)özel bir görüntü oluşturabilirsiniz.
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Paylaşılan görüntü galerisinin avantajları
 
@@ -30,7 +30,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 - **Uygulamaları önceden yükler.** İşletim düğümleri bir başlangıç göreviyle sağlandıktan sonra uygulamaları yüklemekten daha verimli ve daha az hata, işletim sistemi diskine önceden yükleme.
 - **Büyük miktarlarda veriyi bir kez kopyalayın.** Yönetilen bir görüntünün veri disklerine kopyalayarak, yönetilen paylaşılan görüntünün statik veri parçasını oluşturun. Bu yalnızca bir kez yapılmalıdır ve verileri havuzun her bir düğümü için kullanılabilir hale getirir.
 - **Daha büyük boyutlarda havuzları büyütün.** Paylaşılan görüntü Galerisi ile, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz.
-- **Özel görüntüden daha iyi performans.** Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre %25 daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
+- **Özel görüntü olarak yalnızca yönetilen bir görüntü kullanmaktan daha iyi performans.** Paylaşılan görüntü özel görüntü havuzu için, kararlı duruma ulaşma süresi %25 ' e varan ve VM boşta kalma gecikmesi %30 ' a kadar kısa.
 - **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -47,9 +47,9 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 
 Paylaşılan görüntü Galerisi görüntüsüne sahip özel bir görüntü havuzu oluşturmak için bir Azure AD uygulaması kullanıyorsanız, bu uygulamaya paylaşılan görüntüye erişim sağlayan bir [Azure yerleşik rolü](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) verilmiş olmalıdır. Paylaşılan görüntüye gidip, **erişim denetimi (IAM)** seçeneğini belirleyerek ve uygulama için bir rol ataması ekleyerek Azure Portal bu erişime izin verebilirsiniz.
 
-## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
+## <a name="prepare-a-shared-image"></a>Paylaşılan bir görüntü hazırlama
 
-Azure 'da özel bir görüntüyü hazırlayacaksınız:
+Azure 'da, yönetilen bir görüntüden şu kaynaktan oluşturulabilecek paylaşılan bir görüntü hazırlayabilirsiniz:
 
 - Azure VM 'nin işletim sistemi ve veri disklerinin anlık görüntüleri
 - Yönetilen disklere sahip genelleştirilmiş bir Azure VM

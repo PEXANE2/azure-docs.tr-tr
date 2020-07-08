@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5b80a0b03959ec3fba90ed21e291c1fd021916c2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851707"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 'deki tutarlılık düzeyleri
 
@@ -31,7 +31,7 @@ Okuma tutarlılığı, mantıksal bir bölüm kapsamındaki tek bir okuma işlem
 
 ## <a name="configure-the-default-consistency-level"></a>Varsayılan tutarlılık düzeyini yapılandırma
 
-Azure Cosmos hesabınızda varsayılan tutarlılık düzeyini dilediğiniz zaman yapılandırabilirsiniz. Hesabınızda yapılandırılan varsayılan tutarlılık düzeyi, bu hesap altındaki tüm Azure Cosmos veritabanları ve kapsayıcıları için geçerlidir. Bir kapsayıcıya veya bir veritabanına karşı verilen tüm okuma ve sorgular varsayılan olarak belirtilen tutarlılık düzeyini kullanır. Daha fazla bilgi için bkz. [varsayılan tutarlılık düzeyini yapılandırma](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Azure Cosmos hesabınızda varsayılan tutarlılık düzeyini dilediğiniz zaman yapılandırabilirsiniz. Hesabınızda yapılandırılan varsayılan tutarlılık düzeyi, bu hesap altındaki tüm Azure Cosmos veritabanları ve kapsayıcıları için geçerlidir. Bir kapsayıcıya veya bir veritabanına karşı verilen tüm okuma ve sorgular varsayılan olarak belirtilen tutarlılık düzeyini kullanır. Daha fazla bilgi için bkz. [varsayılan tutarlılık düzeyini yapılandırma](how-to-manage-consistency.md#configure-the-default-consistency-level). Ayrıca, belirli bir istek için varsayılan tutarlılık düzeyini geçersiz kılabilirsiniz, daha fazla bilgi edinmek için bkz. [varsayılan tutarlılık düzeyi makalesini geçersiz kılma](how-to-manage-consistency.md?#override-the-default-consistency-level) .
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Tutarlılık düzeyleriyle ilişkili garanti garantisi
 

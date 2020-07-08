@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850968"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell Başvurusu
 Aşağıdaki belgeler Azure AD Connect eklenen ADSyncConfig. psm1 PowerShell modülü için başvuru bilgileri sağlar.
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -452,7 +452,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -614,7 +614,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-Adsyncmsdsımorguıdizinleri
 
@@ -775,7 +775,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -896,7 +896,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -1061,7 +1061,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>AÇIKLAMA
 Set-ADSyncRestrictedPermissions Işlevi, belirtilen hesap için izinleri sıkılacaktır.
 Sıkı bir şekilde izinleri aşağıdaki adımları içerir:
-1.
-Belirtilen nesnede devralmayı devre dışı bırak
-2.
-KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın.
+1. Belirtilen nesnede devralmayı devre dışı bırak
+2. KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın.
 Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
-3.
-Bu özel izinleri ata:
+3. Bu özel izinleri ata:
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | Tür | Name | Access | Uygulanan Öğe |
+   |------|------|--------|------------|
+   | İzin Ver | SİSTEM | Tam Denetim | Bu nesne |
+   | İzin Ver | Enterprise Admins | Tam Denetim | Bu nesne |
+   | İzin Ver | Etki Alanı Yöneticileri | Tam Denetim | Bu nesne | 
+   | İzin Ver | Yöneticiler | Tam Denetim | Bu nesne |
+   | İzin Ver | Kurumsal etki alanı denetleyicileri | Liste Içerikleri <br> Tüm Özellikleri Oku <br> Okuma Izinleri | Bu nesne |
+   | İzin Ver | Kimliği Doğrulanmış Kullanıcılar | Liste Içerikleri <br> Tüm Özellikleri Oku <br> Okuma Izinleri | Bu nesne |
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -1192,7 +1183,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
@@ -1354,7 +1345,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
@@ -1397,4 +1388,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)(.
+Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
