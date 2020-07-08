@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83655192"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
@@ -29,7 +28,7 @@ Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı h
 | Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları |Desteklenmeyen performans katmanları| Desteklenen erişim katmanları |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (genel amaçlı v2)  | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
-| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| Yok                    |
+| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| YOK                    |
 | BlobStorage                    | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
 
 İş verilerini depolamak için varsayılan blob kapsayıcısını kullanmanızı önermiyoruz. Depolama maliyetini azaltmak için blob kapsayıcısının her kullanımdan sonra silinmesi iyi bir uygulamadır. Varsayılan kapsayıcı, uygulama ve sistem günlükleri içerir. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
@@ -129,7 +128,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |

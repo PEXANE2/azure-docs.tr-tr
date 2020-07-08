@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654530"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın  
@@ -36,7 +35,7 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
 
 * Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
@@ -339,7 +338,7 @@ AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depola
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
 ### <a name="update-the-assetfile"></a>Assetdosyasını güncelleştirme
-Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örnek:
+Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örneğin:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -821,7 +820,7 @@ AccessPolicy ve Locator kümesini aldıktan sonra Azure depolama REST API 'Lerin
 
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örnek:    
+Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örneğin:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -918,5 +917,5 @@ Aşamalı indirmeyi test etmek için bir tarayıcıya URL (örneğin, IE, Chrome
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki Adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

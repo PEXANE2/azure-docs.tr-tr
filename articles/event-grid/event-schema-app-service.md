@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: jafreebe
 ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650699"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure App Service
@@ -54,7 +53,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 |    Türü          |    string    |    Bu olay kaynağı için kayıtlı olay türlerinden biri.                                                                                  |
 |    eventTime          |    string    |    Etkinliğin UTC saatine göre oluşturulduğu zaman.                                                                         |
 |    kimlik                 |    string    |    Etkinliğin benzersiz tanımlayıcısı.                                                                                                            |
-|    veri               |    nesne    |    BLOB depolama olay verileri.                                                                                                                    |
+|    veriler               |    nesne    |    BLOB depolama olay verileri.                                                                                                                    |
 |    dataVersion        |    string    |    Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar.                                                          |
 |    metadataVersion    |    string    |    Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar.    |
 

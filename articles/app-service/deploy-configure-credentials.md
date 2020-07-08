@@ -6,10 +6,9 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649130"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
@@ -23,7 +22,7 @@ Kullanıcı düzeyi kimlik bilgilerinizi, herhangi bir uygulamanın [kaynak sayf
 
 ### <a name="in-the-cloud-shell"></a>Cloud Shell
 
-[Cloud Shell](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. \<Kullanıcı adı> ve \< parola> bir dağıtım kullanıcısı Kullanıcı adı ve parolasıyla değiştirin. 
+[Cloud Shell](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. \<username>Ve öğesini \<password> bir dağıtım kullanıcısı Kullanıcı adı ve parolasıyla değiştirin. 
 
 - Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. 
 - Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller. 
@@ -38,7 +37,7 @@ JSON çıktısı parolayı olarak gösterir `null` . `'Conflict'. Details: 409` 
 
 Azure portal, dağıtım kimlik bilgileri sayfasına erişebilmek için en az bir uygulamanız olması gerekir. Kullanıcı düzeyi kimlik bilgilerinizi yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri**  >  ** \< any_app>**  >  **Dağıtım Merkezi**  >  **FTP**  >  **panosu**' nu seçin.
+1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri**  >  **\<any_app>**  >  **Dağıtım Merkezi**  >  **FTP**  >  **panosu**' nu seçin.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

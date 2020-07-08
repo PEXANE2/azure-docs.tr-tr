@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651101"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight’ta WebHCat’ten alınan hataları anlama ve düzeltme
@@ -34,7 +33,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 | Ayar | Ne yapar? | Varsayılan değer |
 | --- | --- | --- |
 | [Yarn. Scheduler. kapasite. maksimum-uygulamalar][maximum-applications] |Aynı anda etkin olabilen en fazla iş sayısı (bekliyor veya çalışıyor) |10,000 |
-| [temptaton. Exec. Max-procs][max-procs] |Eşzamanlı olarak sunulabilecek en fazla istek sayısı |20 |
+| [templeton.exec. Max-procs][max-procs] |Eşzamanlı olarak sunulabilecek en fazla istek sayısı |20 |
 | [MapReduce. jobhistory. max-age-MS][max-age-ms] |İş geçmişinin tutulacağı gün sayısı |7 gün |
 
 ## <a name="too-many-requests"></a>Çok fazla istek

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649206"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
@@ -40,7 +39,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 | ---------- | -------------------------- | ------ | ------------- |
 | Değer      | 42                         | False  | önemli sayılar |
 | Kimlik Bilgisi | ••••••••••••••••••••••     | True   | güvenlik      |
-| İfade | @ (DateTime. Now. ToString ()) | False  |               |
+| Expression | @ (DateTime. Now. ToString ()) | False  |               |
 
 > [!NOTE]
 > Bir API Management hizmeti içinde depolanan adlandırılmış değerler yerine, bu [örnekte](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)gösterildiği gibi [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) hizmetinde depolanan değerleri kullanabilirsiniz.
@@ -55,7 +54,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 
     Ad ve değer gerekli değerlerdir. Değer bir gizli dizi ise, _Bu gizli bir_ onay kutusu olup olmadığını kontrol edin. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
 
-4. **Oluştur**' a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 Adlandırılmış değer oluşturulduktan sonra, üzerine tıklayarak düzenleyebilirsiniz. Adlandırılmış değer adını değiştirirseniz, bu adlandırılmış değere başvuruda bulunan tüm ilkeler, yeni adı kullanacak şekilde otomatik olarak güncelleştirilir.
 

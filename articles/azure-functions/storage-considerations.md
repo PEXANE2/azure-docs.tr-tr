@@ -4,10 +4,9 @@ description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648774"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
@@ -17,10 +16,10 @@ Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure de
 
 |Depolama hizmeti  | İşlev kullanımı  |
 |---------|---------|
-| [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
-| [Azure Dosyalar](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planında](functions-scale.md#consumption-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
+| [Azure Blob Depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
+| [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planında](functions-scale.md#consumption-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
 | [Azure kuyruk depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
-| [Azure Tablo depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
+| [Azure Tablo Depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
 
 > [!IMPORTANT]
 > Tüketim barındırma planı kullanılırken işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure Dosya depolama alanında saklanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz.

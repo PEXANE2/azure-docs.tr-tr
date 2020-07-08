@@ -10,16 +10,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651896"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API hesaplarıyla Azure Cosmos DB zaman uyumsuz Java SDK v2 kullandığınızda oluşan sorunları giderme
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Java SDK’sı v4](troubleshoot-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -193,7 +192,7 @@ Yukarıdaki özel durum, daha eski bir RxJava lib sürümü (ör. 1.2.2) için b
 
 Bu tür sorunlar için geçici çözüm olarak, RxJava-1.2.2 ' deki diğer bağımlılığın ne olduğunu ve RxJava-1.2.2 üzerinde geçişli bağımlılığı dışarıda bırakmayı ve CosmosDB SDK 'sının daha yeni sürümü getirmesine izin vermeyi belirlemektir.
 
-RxJava-1.2.2 ' de hangi kitaplığın bu duruma getirdiğinin belirlemek için, projenizin pom. xml dosyasının yanında aşağıdaki komutu çalıştırın:
+RxJava-1.2.2 ' de hangi kitaplığın pom.xml olduğunu belirlemek için, proje dosyanızın yanında aşağıdaki komutu çalıştırın:
 ```bash
 mvn dependency:tree
 ```

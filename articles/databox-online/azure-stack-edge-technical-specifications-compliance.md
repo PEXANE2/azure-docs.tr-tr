@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652045"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge teknik özellikleri
@@ -45,7 +44,7 @@ Azure Stack Edge cihazında, yüksek performanslı fanlarla iki 100-240 V güç 
 | Maksimum çıkış gücü    | 750 W                     |
 | Sıklık               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Yes                        |
+| Etkin takılabilir           | Evet                        |
 
 ### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Bölgeye göre Azure Stack Edge güç kablosu belirtimleri
 

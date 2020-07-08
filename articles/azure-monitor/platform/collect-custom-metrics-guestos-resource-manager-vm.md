@@ -8,10 +8,9 @@ ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650552"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için bir Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
@@ -23,7 +22,7 @@ Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğe
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir.
 
@@ -38,22 +37,22 @@ Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönl
 ## <a name="author-resource-manager-template"></a>Kaynak Yöneticisi şablonu yaz
 Bu örnekte, genel kullanıma açık bir örnek şablon kullanabilirsiniz. Başlangıç şablonları https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
-- **Azuredeploy. JSON** , bir sanal makinenin dağıtımı için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
+- **Azuredeploy.js** , bir sanal makinenin dağıtımı için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
 
-- **Azuredeploy. Parameters. JSON** , VM 'niz için ayarlamak istediğiniz Kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır.
+- **Azuredeploy.parameters.json** , VM 'niz için ayarlamak istediğiniz Kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır.
 
 Her iki dosyayı da yerel olarak indirin ve kaydedin.
 
-### <a name="modify-azuredeployparametersjson"></a>Azuredeploy. Parameters. JSON öğesini Değiştir
-*Azuredeploy. Parameters. JSON* dosyasını açın
+### <a name="modify-azuredeployparametersjson"></a>Üzerinde azuredeploy.parameters.jsDeğiştir
+Dosyadaki *azuredeploy.parameters.js* açın
 
 1. **AdminUserName** ve VM için **adminPassword** değerlerini girin. Bu parametreler VM 'ye uzaktan erişim için kullanılır. VM 'nizin ele geçirilmesini önlemek için bu şablondaki değerleri kullanmayın. Botlar, genel GitHub depolarında Kullanıcı adları ve parolalar için internet 'i tarar. Bu varsayılanlar ile VM 'Leri test etmek olasıdır.
 
 1. VM için benzersiz bir DnsName oluşturun.
 
-### <a name="modify-azuredeployjson"></a>Azuredeploy. JSON öğesini değiştirme
+### <a name="modify-azuredeployjson"></a>Üzerinde azuredeploy.jsDeğiştir
 
-*Azuredeploy. JSON* dosyasını açın
+Dosyadaki *azuredeploy.js* açın
 
 **StorageAccountName** girdisinden sonra şablonun **değişkenler** bölümüne bir depolama hesabı kimliği ekleyin.
 
@@ -263,7 +262,7 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 1. Dağıtımınız başarılı olduktan sonra, sanal makinenin Azure portal olması gerekir ve ölçümleri Azure Izleyici 'ye yayın.
 
    > [!NOTE]
-   > Seçili vmSkuSize etrafında hatalarla karşılaşabilirsiniz. Bu durumda, azuredeploy. JSON dosyanıza dönün ve vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" seçeneğini denemeyi öneririz.
+   > Seçili vmSkuSize etrafında hatalarla karşılaşabilirsiniz. Bu durumda, dosyadaki azuredeploy.jsgeri dönüp vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" seçeneğini denemeyi öneririz.
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın
 

@@ -9,10 +9,9 @@ ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
 ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653603"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
@@ -21,7 +20,7 @@ ms.locfileid: "83653603"
 
 
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Sanal makinelerinize birden çok şekilde erişebilirsiniz. Çalıştır komutu, sanal makinelerinizde VM aracısını kullanarak uzaktan betikleri çalıştırabilir. Windows VM 'Leri için Azure portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) aracılığıyla Run komutunu kullanın.
 

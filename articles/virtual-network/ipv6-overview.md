@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653308"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure sanal ağ için IPv6 nedir?
@@ -31,7 +30,7 @@ Aşağıdaki diyagramda, Azure 'da basit bir çift yığın (IPv4/IPv6) dağıt�
 
 ![IPv6 ağ dağıtım diyagramı](./media/ipv6-support-overview/ipv6-sample-diagram.png)
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Azure VNET için IPv6 avantajları:
 

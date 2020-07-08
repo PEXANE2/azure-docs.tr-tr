@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
 ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652019"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
@@ -62,7 +61,7 @@ Azure Sentinel 'ten bir not defteri doğrudan çalıştırabilir veya tüm Azure
  
 1. Azure Portal **Azure Sentinel**  >  **tehdit yönetimi**  >  **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz. 
 
-2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örnek:
+2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örneğin:
     
     > [!div class="mx-imgBorder"]
     > ![Not defterini Başlat](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -86,7 +85,7 @@ Bu yordam, sizin için Azure Sentinel not defterlerini içeren bir Azure Noteboo
 
    ![Not Defteri al](./media/notebooks/sentinel-create-project.png)
 
-4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örnek:
+4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örneğin:
 
    ![Depoyu içeri aktar](./media/notebooks/sentinel-open-notebook1.png)
 

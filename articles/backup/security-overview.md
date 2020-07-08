@@ -4,10 +4,9 @@ description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiy
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653794"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış

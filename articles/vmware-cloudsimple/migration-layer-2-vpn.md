@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651015"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
@@ -57,8 +56,8 @@ Aşağıdaki tabloda desteklenen vSphere sürümleri ve ağ bağdaştırıcısı
 
 | vSphere sürümü | Kaynak vSwitch türü | Sanal NIC sürücüsü | Hedef vSwitch türü | Destekleniyor mu? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Yes |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Yes |
+| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Evet |
+| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Evet |
 | vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | E1000 | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI veya 6.5 P03, NSX-V veya NSX-T 2.2, 6.5 P03 veya üzeri sürümlerindeki sürümler | Tümü | Tümü | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 

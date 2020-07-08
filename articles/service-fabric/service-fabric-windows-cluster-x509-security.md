@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653648"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
@@ -18,7 +17,7 @@ Bu makalede, tek başına Windows kümenizin çeşitli düğümleri arasındaki 
 Düğüm-düğüm güvenliği, istemciden düğüme güvenlik ve rol tabanlı erişim denetimi gibi küme güvenliği hakkında daha fazla bilgi için bkz. [küme güvenliği senaryoları](service-fabric-cluster-security.md).
 
 ## <a name="which-certificates-do-you-need"></a>Hangi sertifikalara ihtiyacınız var?
-İle başlamak için, [Windows Server paketi Service Fabric](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) kümenizdeki düğümlerden birine indirin. İndirilen pakette, bir ClusterConfig. X509. MultiMachine. JSON dosyası bulabilirsiniz. Dosyasını açın ve Özellikler bölümünde güvenlik bölümünü gözden geçirin:
+İle başlamak için, [Windows Server paketi Service Fabric](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) kümenizdeki düğümlerden birine indirin. İndirilen pakette, dosyasında bir ClusterConfig.X509.MultiMachine.jsbulabilirsiniz. Dosyasını açın ve Özellikler bölümünde güvenlik bölümünü gözden geçirin:
 
 ```JSON
 "security": {
@@ -265,7 +264,7 @@ Test amaçları için kullandığınız kümeler için otomatik olarak imzalanan
 Diğer sorular için [sık sorulan sertifika sorularını](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)inceleyin.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>İsteğe bağlı: otomatik olarak imzalanan sertifika oluşturma
-Doğru şekilde güvenliği sağlanabilen otomatik olarak imzalanan bir sertifika oluşturmanın bir yolu, C:\Program Files\Microsoft SDKs\Service Fabric\clustersetup\securedizinindeki Service Fabric SDK klasöründe CertSetup. ps1 betiğini kullanmaktır. Sertifikanın varsayılan adını değiştirmek için bu dosyayı düzenleyin. (CN = ServiceFabricDevClusterCert değerini arayın.) Bu betiği olarak çalıştırın `.\CertSetup.ps1 -Install` .
+Doğru şekilde güvenliği sağlanabilen otomatik olarak imzalanan bir sertifika oluşturmanın bir yolu, C:\Program Files\Microsoft SDKs\Service Fabric\clustersetup\securedizinindeki Service Fabric SDK klasöründe CertSetup.ps1 betiğini kullanmaktır. Sertifikanın varsayılan adını değiştirmek için bu dosyayı düzenleyin. (CN = ServiceFabricDevClusterCert değerini arayın.) Bu betiği olarak çalıştırın `.\CertSetup.ps1 -Install` .
 
 Şimdi sertifikayı korumalı bir parolayla bir. pfx dosyasına dışarı aktarın. İlk olarak, sertifikanın parmak izini alın. 
 1. **Başlat** menüsünde **bilgisayar sertifikalarını Yönet**' i çalıştırın. 
@@ -344,13 +343,13 @@ Sertifikalarınızın ardından bunları küme düğümlerine yükleyebilirsiniz
 4. Her sunucu sertifikası için önceki adımları tekrarlayın. Ayrıca, bu adımları, kümeye erişime izin vermek istediğiniz makinelere istemci sertifikalarını yüklemek için de kullanabilirsiniz.
 
 ## <a name="create-the-secure-cluster"></a>Güvenli kümeyi oluşturma
-ClusterConfig. X509. MultiMachine. json dosyasının güvenlik bölümünü yapılandırdıktan sonra, düğümleri yapılandırmak ve tek başına kümeyi oluşturmak için [küme oluşturma](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) bölümüne devam edebilirsiniz. Kümeyi oluştururken ClusterConfig. X509. MultiMachine. json dosyasını kullanmayı unutmayın. Örneğin, komutunuz aşağıdaki gibi görünebilir:
+Dosyadaki ClusterConfig.X509.MultiMachine.jsgüvenlik bölümünü yapılandırdıktan sonra, düğümleri yapılandırmak ve tek başına kümeyi oluşturmak için [küme oluşturma](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) bölümüne devam edebilirsiniz. Kümeyi oluştururken ClusterConfig.X509.MultiMachine.jsdosyayı kullanmayı unutmayın. Örneğin, komutunuz aşağıdaki gibi görünebilir:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örnek:
+Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örneğin:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }

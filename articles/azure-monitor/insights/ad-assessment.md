@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651848"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure İzleyici'de Active Directory Sistem Durumu Denetimi çözümüyle Active Directory ortamınızı iyileştirme
@@ -33,14 +32,14 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![AD sistem durumu denetimi panosunun görüntüsü](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Active Directory sistem durumu denetimi çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
 * Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2, Windows Server 2016 ve Windows Server 2019 çalıştıran etki alanı denetleyicilerini destekler.
 * Azure portal Azure Marketi 'nden Active Directory sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Ek yapılandırma gerekmez.
 
   > [!NOTE]
-  > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
+  > Çözümü ekledikten sonra, AdvisorAssessment.exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
   >
   >
 
@@ -140,9 +139,9 @@ Günlük sorgusunun gösterildiği bir ekran görüntüsü aşağıda verilmişt
 
 Yoksaymak istediğiniz önerileri seçin. Sonraki yordamda RecommendationId için değerleri kullanacaksınız.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir ıgnorereyorum geçişleri. txt metin dosyası oluşturmak ve kullanmak için
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir IgnoreRecommendations.txt metin dosyası oluşturmak ve kullanmak için
 
-1. Ignorereyorumgeçişleri. txt adlı bir dosya oluşturun.
+1. IgnoreRecommendations.txt adlı bir dosya oluşturun.
 
 2. Azure Izleyici 'nin ayrı bir satırda yok saymasını istediğiniz her öneri için her bir RecommendationId yapıştırın veya yazın, sonra dosyayı kaydedip kapatın.
 
@@ -162,7 +161,7 @@ Zamanlanan bir sonraki sistem durumu denetimi çalıştıktan sonra, varsayılan
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz, tüm ıgnorereyorum. txt dosyalarını kaldırın veya RecommendationIDs kaldırabilir.
+2. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz IgnoreRecommendations.txt dosyaları kaldırın veya RecommendationIDs kaldırabilir.
 
 ## <a name="ad-health-check-solutions-faq"></a>AD Sistem Durumu Denetimi çözümleri SSS
 
@@ -195,7 +194,7 @@ Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabil
 
 *Veri toplamayı yapan işlemin adı nedir?*
 
-* Danışmanorassessment. exe
+* AdvisorAssessment.exe
 
 *Verilerin toplanması ne kadar sürer?*
 
