@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c7de0fdf6a22b1414be297b6958841ba5c251c4b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309229"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
@@ -36,7 +35,7 @@ Bu makalede, aşağı akış cihaz bağlantılarıyla ilgili yaygın sorunlar ve
 
 Bu makalede, terimler *ağ geçidi* ve *IoT Edge Ağ* geçidi, saydam bir ağ geçidi olarak yapılandırılmış bir IoT Edge cihazına başvurur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * IoT Edge cihazı yapılandırmak için kullanılan kök CA sertifika dosyasını, aşağı akış cihazınızda bulunan [saydam bir ağ geçidi olarak davranacak şekilde yapılandırın](how-to-create-transparent-gateway.md) . Aşağı akış cihazınız, ağ geçidi cihazının kimliğini doğrulamak için bu sertifikayı kullanır. Tanıtım sertifikalarını kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped**adı verilir.
 * [Bir aşağı akış cihazının Azure IoT Hub kimlik doğrulaması](how-to-authenticate-downstream-device.md)bölümünde açıklandığı gibi ağ geçidi cihazını işaret eden değiştirilmiş bağlantı dizesine sahip olmalıdır.
@@ -130,9 +129,9 @@ Uygulama düzeyi örnekleri kullanılmadan önce iki şey hazırlayın:
 
 Bu bölüm, bir Azure IoT NodeJS cihaz istemcisini IoT Edge bir ağ geçidine bağlamak için örnek bir uygulama sağlar. NodeJS uygulamaları için, kök CA sertifikasını burada gösterildiği gibi uygulama düzeyinde yüklemelisiniz. NodeJS uygulamaları sistemin sertifika deposunu kullanmaz.
 
-1. [Node. js örnek deposu Için Azure IoT cihaz SDK 'sına](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) **edge_downstream_device. js** örneğini alın.
+1. [Azure IoT CIHAZ SDK 'sinden Node.js örnek deposu için](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) **edge_downstream_device.js** örneğini alın.
 2. **README.MD** dosyasını inceleyerek örneği çalıştırmak için tüm önkoşullara sahip olduğunuzdan emin olun.
-3. Edge_downstream_device. js dosyasında, **ConnectionString** ve **edge_ca_cert_path** değişkenlerini güncelleştirin.
+3. edge_downstream_device.js dosyasında, **ConnectionString** ve **edge_ca_cert_path** değişkenlerini güncelleştirin.
 4. Örneğin cihazınızda nasıl çalıştırılacağınız hakkında yönergeler için SDK belgelerine bakın.
 
 Çalıştırdığınız örneği anlamak için aşağıdaki kod parçacığı, istemci SDK 'sının sertifika dosyasını okumasıdır ve güvenli bir TLS bağlantısı kurmak için onu kullanır:
@@ -151,7 +150,7 @@ Bu bölüm, bir Azure IoT .NET cihaz istemcisini IoT Edge bir ağ geçidine bağ
 
 1. [IoT Edge .NET örnekleri klasöründen](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice) **Edgedownstreamdevice** örneğine yönelik örneği alın.
 2. **README.MD** dosyasını inceleyerek örneği çalıştırmak için tüm önkoşullara sahip olduğunuzdan emin olun.
-3. **Properties/launchSettings. JSON** dosyasında **DEVICE_CONNECTION_STRING** ve **CA_CERTIFICATE_PATH** değişkenlerini güncelleştirin. Konak sistemindeki güvenilen sertifika deposunda yüklü olan sertifikayı kullanmak istiyorsanız, bu değişkeni boş bırakın.
+3. Dosyadaki **Özellikler/launchSettings.js** **DEVICE_CONNECTION_STRING** ve **CA_CERTIFICATE_PATH** değişkenlerini güncelleştirin. Konak sistemindeki güvenilen sertifika deposunda yüklü olan sertifikayı kullanmak istiyorsanız, bu değişkeni boş bırakın.
 4. Örneğin cihazınızda nasıl çalıştırılacağınız hakkında yönergeler için SDK belgelerine bakın.
 
 Bir .NET uygulaması aracılığıyla sertifika deposuna programlı olarak güvenilir bir sertifika yüklemek için, **Edgedownstreamdevice/program.cs** dosyasındaki **ınstallcacert ()** işlevine bakın. Bu işlem ıdempotent olduğundan, ek bir etki olmadan aynı değerlerle birden çok kez çalıştırılabilir.

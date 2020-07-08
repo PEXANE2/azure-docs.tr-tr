@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84487959"
 ---
 # <a name="init-image-transformation"></a>Init Görüntü Dönüşümü
@@ -67,7 +66,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name                    | Aralık   | Tür    | Varsayılan | Description                              |
+| Name                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Yeniden boyutlandırma                  | Herhangi biri     | Boole | True    | Giriş PIL görüntüsünü verilen boyuta göre yeniden boyutlandır |
 | Boyut                    | >= 1     | Tamsayı | 256     | İstenen çıkış boyutunu belirtin          |
@@ -93,7 +92,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="output"></a>Çıktı  
 
-| Name                        | Tür                    | Description                              |
+| Name                        | Tür                    | Açıklama                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Çıkış görüntüsü dönüştürme | Dönüştürme Tiondirectory | **Görüntü dönüştürme modülünü uygulamak** için bağlanýlabilen çıkış resmi dönüştürmesi. |
 

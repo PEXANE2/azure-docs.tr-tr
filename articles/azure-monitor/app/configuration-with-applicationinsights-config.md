@@ -1,27 +1,26 @@
 ---
-title: ApplicationInsights. config başvurusu-Azure | Microsoft Docs
+title: ApplicationInsights.config başvurusu-Azure | Microsoft Docs
 description: Veri toplama modüllerini etkinleştirin veya devre dışı bırakın ve performans sayaçlarını ve diğer parametreleri ekleyin.
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485127"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.
 
-Yapılandırma dosyası `ApplicationInsights.config` `ApplicationInsights.xml` , uygulamanızın türüne göre veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. Varsayılan olarak, **> ekleme Application Insights telemetri**destekleyen Visual Studio şablon projelerinden otomatik deneyim kullanılırken, ApplicationInsights. config dosyası proje kök klasöründe oluşturulur ve bu dosya, bilgi kutusu klasörüne karmaşıklu şekilde kopyalanır. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
+Yapılandırma dosyası `ApplicationInsights.config` `ApplicationInsights.xml` , uygulamanızın türüne göre veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. Varsayılan olarak, **> ekleme Application Insights telemetri**destekleyen Visual Studio şablon projelerinden otomatik deneyim kullanılırken, ApplicationInsights.config dosyası proje kök klasöründe oluşturulur ve bu, karmaşık olduğunda bin klasörüne kopyalanır. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
 
 [Bir Web sayfasında SDK 'yı][client]denetlemek için eşdeğer bir dosya yok.
 
 Bu belgede yapılandırma dosyasında gördüğünüz bölümler, SDK 'nın bileşenlerini nasıl denetdukları ve hangi NuGet paketlerinin bu bileşenleri yüklemesi açıklanmaktadır.
 
 > [!NOTE]
-> ApplicationInsights. config ve. xml yönergeleri .NET Core SDK uygulanmaz. .NET Core uygulamalarını yapılandırmak için [Bu](../../azure-monitor/app/asp-net-core.md) kılavuzu izleyin.
+> ApplicationInsights.config ve. xml yönergeleri .NET Core SDK uygulanmaz. .NET Core uygulamalarını yapılandırmak için [Bu](../../azure-monitor/app/asp-net-core.md) kılavuzu izleyin.
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetri modülleri (ASP.NET)
 Her telemetri modülü belirli bir veri türünü toplar ve verileri göndermek için çekirdek API kullanır. Modüller, aynı zamanda gerekli satırları. config dosyasına da ekleyen farklı NuGet paketleri tarafından yüklenir.
@@ -88,7 +87,7 @@ HTTP isteklerinin [yanıt süresini ve sonuç kodunu](../../azure-monitor/app/as
 ### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
 Microsoft. ApplicationInsights paketi SDK 'nın [temel API](https://msdn.microsoft.com/library/mt420197.aspx) 'sini sağlar. Diğer telemetri modülleri bunu kullanır ve [bunu kendi telemetrinizi tanımlamak için](../../azure-monitor/app/api-custom-events-metrics.md)de kullanabilirsiniz.
 
-* ApplicationInsights. config dosyasında giriş yok.
+* ApplicationInsights.config giriş yok.
 * [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet paketi. Yalnızca bu NuGet 'i yüklüyorsanız, hiçbir. config dosyası oluşturulmaz.
 
 ## <a name="telemetry-channel"></a>Telemetri kanalı
@@ -231,7 +230,7 @@ Bu sınıfın isteğe bağlı bir özelliği vardır `ProfileQueryEndpoint` .
 Varsayılan olarak, bu olarak ayarlanır `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
 Bu yapılandırma için bir ara sunucu yapılandırmanız gerekiyorsa, temel adresi ve "/api/Profiles//AppID" dahil olmak üzere proxy 'yi kullanmanızı öneririz {0} . ' {0} ', Izleme anahtarı ile istek başına çalışma zamanında değiştirilir.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights. config aracılığıyla örnek yapılandırma:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights.config aracılığıyla örnek yapılandırma:
 ```xml
 <ApplicationInsights>
     ...
@@ -255,7 +254,7 @@ Bu sınıf `Defined` , bir sözlük<dize, uygulama kimliği çiftlerine yönelik
 
 Bu sınıf, `Next` yapılandırmanızda bulunmayan bir Izleme anahtarı istendiğinde kullanmak üzere başka bir sağlayıcıyı yapılandırmak için kullanılabilen isteğe bağlı bir özelliğe sahiptir.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights. config aracılığıyla örnek yapılandırma:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights.config aracılığıyla örnek yapılandırma:
 ```xml
 <ApplicationInsights>
     ...

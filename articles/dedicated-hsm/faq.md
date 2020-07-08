@@ -14,10 +14,9 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310394"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
@@ -90,7 +89,7 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 * US Gov Virginia
 * US Gov Texas
 
-## <a name="interoperability"></a>Birlikte Çalışabilirlik
+## <a name="interoperability"></a>Birlikte çalışabilirlik
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>S: Uygulamam adanmış bir HSM 'ye nasıl bağlanır?
 

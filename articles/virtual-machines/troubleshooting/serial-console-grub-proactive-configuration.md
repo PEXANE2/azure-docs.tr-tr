@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
 ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309841"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>GRUB ve SySRq erişimine sahip olmanızı sağlamak, size büyük bir süre aşağı kaydetme
@@ -105,7 +104,7 @@ VM, çekirdek parametresi için 1 değerini kabul edecek şekilde yapılandırı
 [SySRq videosunu etkinleştir](https://youtu.be/0doqFRrHz_Mc)
 
 
-VM 'yi Azure portal, SysRq komutları aracılığıyla bir yeniden başlatmayı kabul edecek şekilde yapılandırmak için çekirdek parametresi çekirdek parametresi için 1 değerini ayarlamanız gerekecektir. SySRq
+VM 'yi Azure portal, SysRq komutları aracılığıyla bir yeniden başlatmayı kabul edecek şekilde yapılandırmak için, kernel.sysRQ çekirdek parametresi için 1 değerini ayarlamanız gerekir
 
 Bu yapılandırmanın yeniden başlatılmasını kalıcı hale getirmek için **sysctl. conf** dosyasına bir giriş ekleyin
 

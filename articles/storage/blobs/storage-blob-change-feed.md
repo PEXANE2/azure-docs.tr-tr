@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465193"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
@@ -108,7 +107,7 @@ Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akış�
 
 1. Azure portal **kaynak oluştur**' u seçin.
 
-2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
 
 3. **[Özel bir şablon dağıt](https://portal.azure.com/#create/Microsoft.Template)**' ı seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
@@ -323,7 +322,7 @@ Bu bölümde, değişiklik akışında geçerli genel önizlemede bulunan biline
 - Değişiklik akışınızda tek bir değişikliğin değişiklik olay kayıtları birden çok kez görüntülenebilir.
 - Bunlara zaman tabanlı bekletme ilkesi ayarlayarak değişiklik akışı günlük dosyalarının yaşam süresini henüz yönetemezsiniz ve Blobları silemezsiniz.
 - `url`Günlük dosyasının özelliği şu anda her zaman boştur.
-- `LastConsumable`Segment. json dosyasının özelliği, değişiklik akışı 'nın sonlandırabildiği ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, özellikte doğru bir şekilde yakalanır `LastConsumable` .
+- `LastConsumable`Dosyadaki segments.jsözelliği, değişiklik akışı 'nın sonlandıraldığı ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, özellikte doğru bir şekilde yakalanır `LastConsumable` .
 - Şu anda ListContainers API 'sini çağırdığınızda **$blobchangefeed** kapsayıcısını göremez ve kapsayıcı Azure portal veya Depolama Gezgini gösterilmez. Listblobları API 'sini doğrudan $blobchangefeed kapsayıcısında çağırarak içeriği görüntüleyebilirsiniz.
 - Daha önce bir [Hesap yük devretmesini](../common/storage-disaster-recovery-guidance.md) Başlatan depolama hesaplarında, günlük dosyası görünmediğinden ilgili sorunlar olabilir. Gelecekteki tüm hesap yük devretme işlemleri, önizleme sırasında günlük dosyasını da etkileyebilir.
 

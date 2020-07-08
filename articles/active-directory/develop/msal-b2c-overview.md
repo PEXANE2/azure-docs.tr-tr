@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C ile MSAL. js kullanma
+title: Azure AD B2C ile MSAL.js kullanma
 titleSuffix: Microsoft identity platform
-description: JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı, uygulamaların, güvenli Web API 'Lerini çağırmak için Azure AD B2C ve belirteçleri almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'Leri, başkalarından Web API 'Leri veya kendi Web API 'niz olabilir.
+description: JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı, uygulamaların, güvenli Web API 'Lerini çağırmak için Azure AD B2C birlikte çalışmasını ve belirteçleri almasını sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'Leri, başkalarından Web API 'Leri veya kendi Web API 'niz olabilir.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,25 +14,24 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84308598"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
-[JavaScript (msal. js) Için Microsoft kimlik doğrulama kitaplığı](https://github.com/AzureAD/microsoft-authentication-library-for-js) , javascript geliştiricilerinin [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) kullanarak sosyal ve yerel kimliklere sahip kullanıcıların kimliklerini doğrulamasına olanak sağlar.
+[JavaScript (MSAL.js) Için Microsoft kimlik doğrulama kitaplığı](https://github.com/AzureAD/microsoft-authentication-library-for-js) , javascript geliştiricilerinin [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) kullanarak sosyal ve yerel kimliklerle kullanıcıların kimliğini doğrulamasını sağlar.
 
 Kimlik yönetimi hizmeti olarak Azure AD B2C kullanarak müşterilerinizin uygulamalarınızı kullandıklarında, oturum açma ve profillerini yönetme şeklini özelleştirebilir ve kontrol edebilirsiniz. Azure AD B2C Ayrıca, kimlik doğrulama işlemi sırasında uygulamanızın görüntüleyeceği Kullanıcı arabirimini markalamanıza ve özelleştirmenize olanak sağlar.
 
 Aşağıdaki bölümlerde aşağıdakilerin nasıl yapılacağı gösterilmektedir:
 
-- Node. js web API 'sini koruma
+- Node.js Web API 'sini koruma
 - Tek sayfalı bir uygulamada (SPA) oturum açma desteği *ve korunan Web* API 'sini çağırma
 - Parola sıfırlama desteğini etkinleştir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Henüz yapmadıysanız, bir [Azure AD B2C kiracı](../../active-directory-b2c/tutorial-create-tenant.md)oluşturun.
 
@@ -40,7 +39,7 @@ Henüz yapmadıysanız, bir [Azure AD B2C kiracı](../../active-directory-b2c/tu
 
 Aşağıdaki adımlarda, bir **Web API 'sinin** kendisini korumak ve seçilen kapsamları bir istemci uygulamasına göstermek için Azure AD B2C nasıl kullanabileceği gösterilmektedir.
 
-Node için MSAL. js Şu anda geliştirme aşamasındadır. Daha fazla bilgi için GitHub 'daki [yol haritasını](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) inceleyin. Şu anda Microsoft tarafından geliştirilen ve desteklenen Node. js için bir kimlik doğrulama kitaplığı olan [Passport-Azure-AD](https://github.com/AzureAD/passport-azure-ad)' ı kullanmanızı öneririz.
+Düğüm için MSAL.js Şu anda geliştirme aşamasındadır. Daha fazla bilgi için GitHub 'daki [yol haritasını](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) inceleyin. Şu anda Microsoft tarafından geliştirilen ve desteklenen Node.js için bir kimlik doğrulama kitaplığı olan [Passport-Azure-AD](https://github.com/AzureAD/passport-azure-ad)' ı kullanmanızı öneririz.
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
@@ -67,7 +66,7 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-Daha fazla bilgi için bu [Node. js B2C Web API örneğine](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)göz atın.
+Daha fazla bilgi için bu [Node.js B2C Web API örneğine](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)göz atın.
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
@@ -92,7 +91,7 @@ Uygulamanızı yapılandırmanın iki ilgisi vardır:
 - API uç noktası ve sunulan Kapsamları yapılandırma
 - Kimlik doğrulama parametrelerini ve belirteç kapsamlarını yapılandırma
 
-1. Örnekteki *Apiconfig. js* dosyasını açın.
+1. Örnekteki *apiConfig.js* dosyasını açın.
 
 2. Örneği, Web API 'nizi kaydederken daha önce edindiğiniz parametrelerle yapılandırın. Aşağıdaki kod satırlarını, değerlerini Web API 'nizin adresiyle ve sunulan kapsamlarla değiştirerek değiştirin.
 
@@ -104,7 +103,7 @@ Uygulamanızı yapılandırmanın iki ilgisi vardır:
     };
    ```
 
-1. Örnekteki *AuthConfig. js* dosyasını açın.
+1. Örnekteki *authConfig.js* dosyasını açın.
 
 1. Örneği, daha önce tek sayfalı Uygulamanızı kaydederken elde ettiğiniz parametrelerle yapılandırın. Değerleri ClientID, yetkili meta verileri ve belirteç istek kapsamlarınız ile değiştirerek aşağıdaki kod satırlarını değiştirin.
 
@@ -132,7 +131,7 @@ Daha fazla bilgi için bu [JAVASCRIPT B2C tek sayfalı uygulama örneğine](http
 
 ## <a name="support-password-reset"></a>Parola sıfırlamayı destekle
 
-Bu bölümde, tek sayfalı uygulamanızı, Azure AD B2C parola sıfırlama kullanıcı akışını kullanacak şekilde genişletmenizi sağlar. MSAL. js Şu anda birden çok kullanıcı akışını veya özel ilkeyi yerel olarak desteklemez, ancak parola sıfırlama gibi yaygın kullanım durumlarını işlemek için kitaplığı kullanabilirsiniz.
+Bu bölümde, tek sayfalı uygulamanızı, Azure AD B2C parola sıfırlama kullanıcı akışını kullanacak şekilde genişletmenizi sağlar. MSAL.js Şu anda birden çok kullanıcı akışını veya özel ilkeleri yerel olarak desteklemez, ancak parola sıfırlama gibi yaygın kullanım durumlarını işlemek için kitaplığı kullanabilirsiniz.
 
 Aşağıdaki adımlarda önceki [JAVASCRIPT Spa](#javascript-spa) bölümündeki adımları zaten takip ettiğiniz varsayılır.
 

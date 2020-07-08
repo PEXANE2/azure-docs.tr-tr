@@ -11,10 +11,9 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 582d6077a4b84e5b2d8c0d69da7b00b807a355b3
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433150"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning için algoritmalar seçme
@@ -49,24 +48,24 @@ Aşağıdaki tabloda, sınıflandırma, gerileme ve kümeleme ailelerinden algor
 | **Algoritma** | **Veritabanınızın** | **Eğitim süresi** | **Doğrity** | **Parametreler** | **Notlar** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Sınıflandırma ailesi** | | | | | |
-| [İki sınıf Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi  |Hızlı |Yes |4 | |
-| [İki sınıf karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |5 |Daha yavaş Puanlama sürelerini gösterir. Ağaç tahminlerinin biriktirme bölümünde Tread kilitlemesinin neden olduğu daha yavaş Puanlama süreleri nedeniyle Bire Karşı Hepsi Çoklu Sınıf ile çalışmamayı önerin |
-| [İki sınıf önceden artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 |Büyük bellek ayak izi |
-| [İki sınıf sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
-| [İki sınıflı ortalama Perceptron](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Yes |4 | |
-| [İki sınıflı destek vektör makinesi](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |5 |Büyük özellik kümeleri için iyi |
-| [Birden çok Lass Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |4 | |
-| [Birden çok Lass karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |5 |Daha yavaş Puanlama sürelerini gösterir |
-| [Birden çok sınıf tarafından artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 | Daha az kapsama sahip küçük risklerle doğruluğu artırmaya eğilimlidir |
-| [Birden çok Lass sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
+| [İki sınıf Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi  |Hızlı |Evet |4 | |
+| [İki sınıf karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Hayır |5 |Daha yavaş Puanlama sürelerini gösterir. Ağaç tahminlerinin biriktirme bölümünde Tread kilitlemesinin neden olduğu daha yavaş Puanlama süreleri nedeniyle Bire Karşı Hepsi Çoklu Sınıf ile çalışmamayı önerin |
+| [İki sınıf önceden artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Hayır |6 |Büyük bellek ayak izi |
+| [İki sınıf sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Hayır |8 | |
+| [İki sınıflı ortalama Perceptron](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Evet |4 | |
+| [İki sınıflı destek vektör makinesi](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Evet |5 |Büyük özellik kümeleri için iyi |
+| [Birden çok Lass Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Evet |4 | |
+| [Birden çok Lass karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Hayır |5 |Daha yavaş Puanlama sürelerini gösterir |
+| [Birden çok sınıf tarafından artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Hayır |6 | Daha az kapsama sahip küçük risklerle doğruluğu artırmaya eğilimlidir |
+| [Birden çok Lass sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Hayır |8 | |
 | [Tek vs-hepsi birden çok sınıf](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Seçilen iki sınıf yöntemin özelliklerine bakın |
 | **Regresyon ailesi** | | | | | |
-| [Doğrusal regresyon](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |4 | |
-| [Karar ormanı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Mükemmel |Orta |No |5 | |
-| [Artırılmış karar ağacı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 |Büyük bellek ayak izi |
-| [Sinir ağ gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
+| [Doğrusal regresyon](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Evet |4 | |
+| [Karar ormanı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Mükemmel |Orta |Hayır |5 | |
+| [Artırılmış karar ağacı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Hayır |6 |Büyük bellek ayak izi |
+| [Sinir ağ gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Hayır |8 | |
 | **Kümeleme ailesi** | | | | | |
-| [K-kümelemenin anlamı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Yes |8 |Kümeleme algoritması |
+| [K-kümelemenin anlamı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Evet |8 |Kümeleme algoritması |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Bir veri bilimi senaryosu için gereksinimler
 

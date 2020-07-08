@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
 ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84556933"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
@@ -425,7 +424,7 @@ Studio 'da ek çalışma bilgileri için **Azure Machine Learning Studio 'da ça
 
 **Episode_reward_mean** çizimde, eğitim dönemi başına puanlanmış noktaların ortalama sayısı gösterilir. Eğitim aracısının başlangıçta kötü bir şekilde gerçekleştirildiğini ve tek bir noktaya sahip olmadan eşleşmelerini kaybetmesini (-21 reward_mean) görebilirsiniz. Eğitim Aracısı 100 yinelemeden, bilgisayar rakibinizi ortalama 18 noktaya ayırarak öğrendi.
 
-Alt çalıştırmanın günlüklerine gözatıp, driver_log. txt dosyasında kaydedilen değerlendirme sonuçlarını görebilirsiniz. Bu ölçümler çalışma sayfasında kullanılabilir hale gelmeden birkaç dakika beklemeniz gerekebilir.
+Alt çalıştırmanın günlüklerine gözatıp, driver_log.txt dosyasına kaydedilmiş değerlendirme sonuçlarını görebilirsiniz. Bu ölçümler çalışma sayfasında kullanılabilir hale gelmeden birkaç dakika beklemeniz gerekebilir.
 
 Kısa bir çalışmada, bir pekiştirmeye dayalı öğrenme aracısını Pong 'ın çok iyi oynamasını sağlayacak şekilde eğitmek için birden çok işlem kaynağı yapılandırmayı öğrendiniz.
 

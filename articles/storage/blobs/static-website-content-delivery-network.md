@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465227"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir Web sitesini Azure CDN tümleştirme
@@ -53,7 +52,7 @@ Statik Web siteniz için Azure CDN doğrudan depolama hesabınızdan etkinleşti
 
     ![CDN uç noktasına genel bakış gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. CDN uç noktası sağlandıktan sonra, CDN uç noktasına gitmek daha önce statik Web sitenize yüklediğiniz index. html dosyasının içeriğini görüntüler.
+1. CDN uç noktası sağlandıktan sonra, CDN uç noktasına gitmek daha önce statik Web sitenize yüklediğiniz index.html dosyasının içeriğini görüntüler.
 
 1. CDN uç noktanıza ait kaynak ayarlarını gözden geçirmek için, CDN uç noktanıza ilişkin **Ayarlar** bölümünde **kaynak** ' a gidin. **Kaynak türü** alanının *özel kaynak* olarak ayarlandığını ve **kaynak konak adı** alanının statik Web sitesi uç noktasını görüntülediğini görürsünüz.
 

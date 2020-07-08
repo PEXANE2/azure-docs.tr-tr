@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307937"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
@@ -22,7 +21,7 @@ Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıt
 > [!NOTE]
 > Daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="install-required-software"></a>Gerekli yazılımları yükler
 
@@ -88,9 +87,9 @@ Dağıtım başarılı olduktan sonra Hizmetleri kullanmaya başlayabilirsiniz. 
 
 ## <a name="delete-the-services-from-the-subscription"></a>Abonelikten hizmetleri silme
 
-Bunu yapmak için:
+Aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 4. Kısa bir süre sonra dağıtılan tüm hizmet bileşenleri silinir.

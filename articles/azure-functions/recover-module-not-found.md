@@ -7,10 +7,9 @@ ms.date: 05/12/2020
 ms.author: hazeng
 ms.custom: tracking-python
 ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84554747"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Azure Işlevlerinde Python modülü hatalarıyla ilgili sorunları giderme
@@ -86,9 +85,9 @@ Bkz. [paketinizi en son sürüme güncelleştirme](#update-your-package-to-the-l
 
 `requirements.txt`' İ bir metin düzenleyici ile açın ve içindeki paketi kontrol edin `https://pypi.org/project/<package-name>` . Bazı paketler yalnızca Windows veya macOS platformlarında çalışır. Örneğin, pywin32 yalnızca Windows üzerinde çalışır.
 
-`Module Not Found`Yerel geliştirme Için Windows veya macOS kullanırken hata oluşmayabilir. Ancak, paket, çalışma zamanında Linux kullanan Azure Işlevleri üzerine içeri aktaramazsa. Bunun nedeni, `pip freeze` projenin başlatılması sırasında Windows veya macOS makinesinden Virtual Environment 'ın requirements. txt dosyasına aktarılması için kullanılması olasıdır.
+`Module Not Found`Yerel geliştirme Için Windows veya macOS kullanırken hata oluşmayabilir. Ancak, paket, çalışma zamanında Linux kullanan Azure Işlevleri üzerine içeri aktaramazsa. Bu durum, `pip freeze` Proje başlatma sırasında Windows veya macOS makinenizden requirements.txt sanal ortamı dışarı aktarmak için kullanılması olabilir.
 
-Bkz. azaltma için [paketi eşdeğerleri Ile değiştirme](#replace-the-package-with-equivalents) veya [el ile gereksinimler. txt](#handcraft-requirementstxt) .
+Risk azaltma için [paketi eşdeğerleri veya el Ile değiştirme](#replace-the-package-with-equivalents) [requirements.txt](#handcraft-requirementstxt) bakın.
 
 ## <a name="mitigate-modulenotfounderror"></a>Modulenotfounbir şekilde azaltma
 
@@ -119,19 +118,19 @@ Hem **Docker** hem de [Azure Functions Core Tools](https://github.com/Azure/azur
 
 ' Deki en son paket sürümüne göz atın `https://pypi.org/project/<package-name>` ve **sınıflandırıcılar:** bölümüne bakın. Paketin ya `OS Independent` da `POSIX` `POSIX :: Linux` **işletim sistemi**ile uyumlu olması gerekir. Ayrıca, programlama dili,,, `Python :: 3` `Python :: 3.6` veya içermelidir `Python :: 3.7` `Python :: 3.8` .
 
-Bunlar doğruysa, `<package-name>~=<latest-version>` requirements. txt ' deki satırı değiştirerek paketi en son sürüme güncelleştirebilirsiniz.
+Bunlar doğruysa, requirements.txt satırı değiştirerek paketi en son sürüme güncelleştirebilirsiniz `<package-name>~=<latest-version>` .
 
-### <a name="handcraft-requirementstxt"></a>El ile gereksinimler. txt
+### <a name="handcraft-requirementstxt"></a>Eller requirements.txt
 
 Bazı geliştiriciler, `pip freeze > requirements.txt` geliştirme ortamları Için Python paketlerinin listesini oluşturmak için kullanır. Çoğu durumda bu kolaylık de çalışır, ancak Windows veya macOS 'ta işlev geliştirme, ancak Linux üzerinde çalışan bir işlev uygulamasına yayımlama gibi platformlar arası dağıtım senaryolarında sorunlar olabilir. Bu senaryoda, `pip freeze` yerel geliştirme ortamınız için beklenmeyen işletim sistemine özgü bağımlılıkları veya bağımlılıkları ortaya çıkarabilir. Bu bağımlılıklar, Linux üzerinde çalışırken Python işlev uygulamasını bozabilir.
 
-En iyi uygulama, proje kaynak kodunuzda bulunan her bir. Kopyala dosyasından içeri aktarma ekstresini denetme ve yalnızca requirements. txt dosyasındaki bu modülleri iade etme yöntemidir. Bu, paketlerin çözümlenme işleminin farklı işletim sistemlerinde düzgün işlenebilmesini güvence altına alır.
+En iyi uygulama, proje kaynak kodunuzda bulunan her bir. Kopyala dosyasından içeri aktarma ekstresini denetme ve yalnızca requirements.txt dosyasında bu modülleri iade etme yöntemidir. Bu, paketlerin çözümlenme işleminin farklı işletim sistemlerinde düzgün işlenebilmesini güvence altına alır.
 
 ### <a name="replace-the-package-with-equivalents"></a>Paketi eşdeğerleriyle değiştirme
 
 İlk olarak, içindeki paketin en son sürümüne bakmamız gerekir `https://pypi.org/project/<package-name>` . Genellikle bu paketin kendi GitHub sayfası vardır, GitHub 'daki **sorunlar** bölümüne gidin ve sorununuz düzeltildiğinde arama yapın. Bu durumda, paketi en son sürüme güncelleştirin.
 
-Bazen paket, [Python Standart Kitaplığı](https://docs.python.org/3/library/) (pathlib gibi) ile tümleştirilmiş olabilir. Bu durumda, Azure Işlevlerinde belirli bir Python dağıtımı sağladığımızdan (Python 3,6, Python 3,7 ve Python 3,8), requirements. txt dosyasındaki paketin kaldırılması gerekir.
+Bazen paket, [Python Standart Kitaplığı](https://docs.python.org/3/library/) (pathlib gibi) ile tümleştirilmiş olabilir. Bu durumda, Azure Işlevlerinde belirli bir Python dağıtımı sağladığımızdan (Python 3,6, Python 3,7 ve Python 3,8), requirements.txt paketin kaldırılması gerekir.
 
 Bununla birlikte, düzeltilmeyen bir sorunla karşılaşdıysanız ve son tarih olduğunuzda. Bir araştırma yapıp projeniz için benzer bir paket bulmanız önerilir. Genellikle, Python topluluğu kullanabileceğiniz çok çeşitli benzer kitaplıklar sağlar.
 

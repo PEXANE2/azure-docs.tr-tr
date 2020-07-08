@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343029"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-Azure CDN kuralları altyapısı için HTTP üstbilgilerini hata ayıkla
@@ -41,7 +40,7 @@ X-EC-hata ayıkla: x-EC-Check-önbelleklenebilir | [Önbelleğe alınabilir öğ
 X-EC-hata ayıkla: x-EC-Cache-Key | [Cache-Key](#cache-key-response-header)
 X-EC-hata ayıklama: x-EC-Cache-State | [Önbellek durumu](#cache-state-response-header)
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıklama önbelleği yanıt üstbilgileri istenebilir:
 
@@ -54,7 +53,7 @@ Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıkla
 ## <a name="cache-status-code-information"></a>Önbellek durum kodu bilgileri
 X-EC-Debug yanıt üst bilgisi, bir sunucuyu ve aşağıdaki yönergeler aracılığıyla yanıtı nasıl ele alındığını tanımlayabilir:
 
-Üst bilgi | Description
+Üst bilgi | Açıklama
 -------|------------
 X-EC-hata ayıklama: x-EC-önbellek | Bu üst bilgi, içerik CDN aracılığıyla her yönlendirildiğinde raporlanır. İsteği yerine getirdi POP sunucusunu tanımlar.
 X-EC-hata ayıklama: x-EC-Cache-Remote | Bu üst bilgi, yalnızca istenen içerik bir kaynak kalkan sunucusunda veya bir ADN Ağ Geçidi sunucusunda önbelleğe alındığında bildirilir.
@@ -103,7 +102,7 @@ Bu yanıt üst bilgisi, önbelleğe almanın yapılıp yapılmayacağını göst
 
 Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terim aşağıdaki gibi tanımlanır:
 
-Değer  | Description
+Değer  | Açıklama
 -------| --------
 EVET    | İstenen içeriğin önbelleğe alma için uygun olduğunu gösterir.
 NO     | İstenen içeriğin önbelleğe alma için uygun olmadığını gösterir. Bu durumun nedeni aşağıdakilerden biri olabilir: <br /> -Müşteriye özgü yapılandırma: hesabınıza özgü bir yapılandırma, pop sunucularının bir varlığı önbelleğe almasını engelleyebilir. Örneğin, kural altyapısı, uygun istekler için önbelleği atlama özelliğini etkinleştirerek bir varlığın önbelleğe alınmasını önleyebilir.<br /> -Önbellek yanıtı üstbilgileri: istenen varlığın Cache-Control ve Expires üstbilgileri, POP sunucularının onu önbelleğe almasını önleyebilir.

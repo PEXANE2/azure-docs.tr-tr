@@ -4,10 +4,9 @@ description: Azure Site Recovery hizmetini kullanarak olağanüstü durum kurtar
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485334"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Kurtarma planlarını oluşturma ve özelleştirme
@@ -76,7 +75,7 @@ Bir komut dosyası veya el ile eylem ekleyerek bir kurtarma planını özelleşt
     1. Eylem için bir ad yazın ve eylem yönergeleri yazın. Yük devretmeyi çalıştıran kişi bu yönergeleri görür.
     1. Tüm yük devretme türleri için el ile eylem eklemek isteyip istemediğinizi belirtin (test, yük devretme, planlı yük devretme (ilgiliyse)). Ardından **Tamam**'a tıklayın.
 4. Bir betik eklemek istiyorsanız, aşağıdakileri yapın:
-    1. VMM betiği ekliyorsanız, **VMM betiğine yük devretme**' yı seçin ve **betik yolu** ' nda, paylaşımın göreli yolunu yazın. Örneğin, paylaşım \\ \<VMMServerName> \Msscvmmlibrary\rpscripts dizininde bulunuyorsa: \Rpscripts\rpscript.exe. ps1yolunu belirtin.
+    1. VMM betiği ekliyorsanız, **VMM betiğine yük devretme**' yı seçin ve **betik yolu** ' nda, paylaşımın göreli yolunu yazın. Örneğin, paylaşma \\ \<VMMServerName> \Msscvmmlibrary\rpscripts dizininde bulunuyorsa, yolu belirtin: \RPScripts\RPScript.PS1.
     1. Bir Azure Otomasyonu çalıştırma defteri ekliyorsanız, runbook 'un bulunduğu **Azure Otomasyonu hesabını** belirtin ve uygun **Azure runbook betiğini**seçin.
 5. Komut dosyasının beklendiği gibi çalıştığından emin olmak için kurtarma planının test yük devretmesini çalıştırın.
 

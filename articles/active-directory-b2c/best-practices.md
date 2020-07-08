@@ -12,17 +12,16 @@ ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484291"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
 
 Aşağıdaki en iyi yöntemler ve öneriler, Azure Active Directory (Azure AD) B2C 'yi mevcut veya yeni uygulama ortamlarında tümleştirmesinin bazı birincil yönlerini kapsar.
 
-## <a name="fundamentals"></a>Temeller
+## <a name="fundamentals"></a>Temel Konular
 
 | En iyi yöntem | Açıklama |
 |--|--|

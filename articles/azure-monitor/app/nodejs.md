@@ -4,15 +4,14 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309773"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Veri merkezinizde, Azure VM 'lerinde ve Web uygulamalarınızda ve hatta diğer genel bulutlarda barındırılan Node. js Hizmetleri için Application Insights kullanabilirsiniz.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Veri merkezinizde, Azure VM 'lerinde ve Web uygulamalarınızda ve hatta diğer genel bulutlarda barındırılan Node.js Hizmetleri için Application Insights kullanabilirsiniz.
 
 İzleme verilerinizi almak, depolamak ve araştırmak için SDK'yı kodunuza ekleyin ve Azure'da karşılık gelen Application Insights kaynağını ayarlayın. SDK daha fazla analiz ve araştırma için verileri bu kaynağa gönderir.
 
@@ -20,11 +19,11 @@ Node.js SDK'sı gelen ve giden HTTP isteklerini, özel durumları ve bazı siste
 
 TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özelliklerini el ile işaretleyebilir ve izleyebilirsiniz. TelemetryClient API'si bu makalenin ilerleyen bölümlerinde ayrıntılı bir şekilde anlatılmıştır.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Bir uygulama veya hizmet için izlemeyi ayarlamak üzere aşağıdaki görevleri tamamlayın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ücretsiz olarak yeni bir tane edinin][azure-free-offer]. Kuruluşunuzun bir Azure aboneliğini zaten varsa, yöneticiniz [bu yönergeleri][add-aad-user] izleyerek sizi aboneliğe ekleyebilir.
 
@@ -33,7 +32,7 @@ Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ü
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Application Insights kaynağı ayarlama
 
-1. [Azure Portal][portal] oturum açın.
+1. [Azure portalında][portal] oturum açın.
 2. [Application Insights kaynağı oluşturma](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK'sını ayarlama
@@ -68,7 +67,7 @@ Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin.
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a> Uygulamanızı izleme
 
-SDK, Node. js çalışma zamanı ve bazı yaygın üçüncü taraf modülleriyle ilgili Telemetriyi otomatik olarak toplar. Uygulamanızı kullanarak bu verilerin bazılarını oluşturun.
+SDK, Node.js çalışma zamanı ve bazı yaygın üçüncü taraf modülleriyle ilgili Telemetriyi otomatik olarak toplar. Uygulamanızı kullanarak bu verilerin bazılarını oluşturun.
 
 Ardından [Azure portalında][portal] önceden oluşturduğunuz Application Insights kaynağına gidin. **Genel bakış zaman çizelgesinde** ilk birkaç veri noktasını bulun. Ayrıntılı verileri görmek için grafikteki farklı bileşenleri seçin.
 
@@ -190,7 +189,7 @@ Uygulamanızı Azure 'a canlı ölçümler göndermeyi etkinleştirmek için kul
 > [!NOTE]
 > Genişletilmiş yerel ölçümleri gönderme özelliği 1.4.0 sürümüne eklendi
 
-Uygulamanızı Azure 'a genişletilmiş yerel ölçümler göndermeyi etkinleştirmek için, ayrı yerel ölçüm paketini de yüklersiniz. SDK, yüklendiğinde otomatik olarak yüklenir ve Node. js yerel ölçümlerini toplamaya başlar.
+Uygulamanızı Azure 'a genişletilmiş yerel ölçümler göndermeyi etkinleştirmek için, ayrı yerel ölçüm paketini de yüklersiniz. SDK, yüklendiğinde otomatik olarak yüklenir ve Node.js yerel ölçümleri toplamaya başlar.
 
 ```bash
 npm install applicationinsights-native-metrics

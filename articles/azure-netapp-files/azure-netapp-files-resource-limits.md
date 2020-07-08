@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: b-juche
 ms.openlocfilehash: 8b417559a17dc05a07467a28d37fec9b9a7c12cb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553465"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
@@ -31,9 +30,9 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 
 |  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
+|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Evet   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
 |  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
 |  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
@@ -43,7 +42,7 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
 |  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
 |  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -81,7 +80,7 @@ Azure portal gezinti düzleminden:
 
         |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışı nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Hesap |  *Abonelik KIMLIĞI*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
+        |  Hesap |  *Abonelik Kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Birim  |  *Abonelik KIMLIĞI, hesap URI 'si, havuz URI 'SI*   |  *İstenen yeni en yüksek **birim** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Maxfiles  |  *Abonelik KIMLIĞI, hesap URI 'SI, havuz URI 'si, birim URI 'SI*   |  *İstenen yeni en yüksek **maxfiles** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |    

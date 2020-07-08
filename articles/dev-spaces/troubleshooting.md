@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309654"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
@@ -112,7 +111,7 @@ Kubectl komutlarını çalıştırarak API sunucusunun kullanılabilir olduğund
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Projenizi Azure Dev Spaces hazırlarken yaygın sorunlar
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Uyarı "desteklenmeyen dil nedeniyle Dockerfile üretilemedi"
-Azure Dev Spaces, C# ve Node. js için yerel destek sağlar. `azds prep`Bu dillerden birinde yazılmış kodla bir dizinde çalıştırdığınızda, Azure dev Spaces sizin için otomatik olarak uygun bir Dockerfile oluşturur.
+Azure Dev Spaces, C# ve Node.js için yerel destek sağlar. `azds prep`Bu dillerden birinde yazılmış kodla bir dizinde çalıştırdığınızda, Azure dev Spaces sizin için otomatik olarak uygun bir Dockerfile oluşturur.
 
 Azure Dev Spaces başka dillerde yazılmış kodla kullanmaya devam edebilirsiniz, ancak ilk kez çalışmadan önce Dockerfile 'ı el ile oluşturmanız gerekir `azds up` .
 
@@ -392,7 +391,7 @@ spec:
 ### <a name="error-required-tools-and-configurations-are-missing"></a>"Gerekli araçlar ve Konfigürasyonlar eksik" hatası
 
 VS Code başlatılırken bu hata oluşabilir: "[Azure Dev Spaces] gerekli araçlar ve yapılandırma ve hata ayıklama ' [proje adı] ' eksik."
-Hata, azds. exe ' VS Code de görüldüğü gibi, PATH ortam değişkeninde olmadığı anlamına gelir.
+Hata, VS Code gösterildiği gibi azds.exe yol ortam değişkeninde olmadığı anlamına gelir.
 
 PATH ortam değişkeninin düzgün ayarlandığı bir komut isteminden VS Code başlatmayı deneyin.
 
@@ -430,9 +429,9 @@ Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebili
 
 Bu sorunu onarmak için Visual Studio Code kapatıp yeniden açın. Hata ayıklayıcıyı yeniden başlatın.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Bir Node. js uygulamasına hata ayıklama eklenirken "Iç izleme başarısız oldu: {ENOSPC" izleme
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Bir Node.js uygulamasına hata ayıklama eklenirken "Iç izleme başarısız oldu: ' ENOSPC ' izleme
 
-Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node. js uygulamasıyla Pod 'ı çalıştıran düğüm, *FS. inotify. max_user_watches* değerini aşmış olduğunda oluşur. Bazı durumlarda, [varsayılan *FS. inotify. max_user_watches* değeri bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
+Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node.js uygulamayla Pod 'ı çalıştıran düğüm *FS. inotify. max_user_watches* değerini aştığında oluşur. Bazı durumlarda, [varsayılan *FS. inotify. max_user_watches* değeri bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
 
 Bu soruna yönelik geçici bir geçici çözüm, kümedeki her bir düğümde *FS. inotify. max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
 
@@ -545,7 +544,7 @@ Bu sorunu düzeltmek için:
 1. Kapsayıcı oluşturma/dağıtım süreciyorsa 2-3 saniye bekleyip hizmete erişmeyi yeniden deneyebilirsiniz. 
 1. Aşağıdaki varlıklarda bağlantı noktası yapılandırmanızı denetleyin:
     * ** [Helb grafiği](https://docs.helm.sh):** `service.port`Ve değerleri ile belirtilir `deployment.containerPort` . YAML scafkatby `azds prep` komutu.
-    * Uygulama kodunda açılan ve örneğin Node. js ' de bulunan bağlantı noktaları:`var server = app.listen(80, function () {...}`
+    * Uygulama kodunda açılan bağlantı noktaları, örneğin Node.js:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>"MyLibrary" tür veya ad alanı adı bulunamadı
 

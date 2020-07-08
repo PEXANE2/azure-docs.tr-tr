@@ -4,10 +4,9 @@ description: Sorun giderme kılavuzu-Application Insights ile canlı Java uygula
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484789"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java için Application Insights Sorun Giderme, Soru ve Yanıt
@@ -22,13 +21,13 @@ ms.locfileid: "84484789"
 **Başarıyla Application Insights ekledim ve uygulamamı çalıştırdım, ancak portalda hiç veri gördüm.**
 
 * Bir dakika bekleyip Yenile ' ye tıklayın. Grafikler düzenli aralıklarla yenilenir, ancak el ile de yenileme yapabilirsiniz. Yenileme aralığı, grafiğin zaman aralığına bağlıdır.
-* ApplicationInsights. xml dosyasında tanımlanan bir izleme anahtarınız olup olmadığını denetleyin (Projenizdeki kaynaklar klasöründe) veya ortam değişkeni olarak yapılandırılmış.
+* ApplicationInsights.xml dosyasında tanımlanmış bir izleme anahtarınız olup olmadığını denetleyin (Projenizdeki kaynaklar klasöründe) veya ortam değişkeni olarak yapılandırılmış.
 * `<DisableTelemetry>true</DisableTelemetry>`XML dosyasında düğüm olmadığını doğrulayın.
 * Güvenlik duvarınızdaki dc.services.visualstudio.com 'e giden trafik için 80 ve 443 TCP bağlantı noktalarını açmanız gerekebilir. [Güvenlik Duvarı özel durumlarının tam listesini](../../azure-monitor/app/ip-addresses.md) görüntüleyin
 * Microsoft Azure başlangıç panosunda, hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
-* [Turn on logging](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights. xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ile kullanıma hazır olan girdileri denetleyin. 
-* Doğru ApplicationInsights. xml dosyasının Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. bunun için konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine göz atalım.
-* Yapılandırma dosyası bulunamazsa, yapılandırma dosyasının nerede arandığını görmek için çıkış iletilerini denetleyin ve ApplicationInsights. xml ' in bu arama konumlarından birinde bulunduğundan emin olun. Thumb kuralı olarak, yapılandırma dosyasını Application Insights SDK JARs yakınına yerleştirebilirsiniz. Örneğin: Tomcat 'te bu, WEB-INF/Classes klasörü anlamına gelir. Geliştirme sırasında, ApplicationInsights. xml dosyasını Web projenizin Resources klasörüne yerleştirebilirsiniz.
+* [Turn on logging](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights.xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ' a ait olan girişleri kontrol edin. 
+* Doğru ApplicationInsights.xml dosyanın Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. Bu, konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine bakar.
+* Yapılandırma dosyası bulunamazsa, yapılandırma dosyasının nerede arandığını görmek için çıkış iletilerini denetleyin ve ApplicationInsights.xml bu arama konumlarından birinde bulunduğundan emin olun. Thumb kuralı olarak, yapılandırma dosyasını Application Insights SDK JARs yakınına yerleştirebilirsiniz. Örneğin: Tomcat 'te bu, WEB-INF/Classes klasörü anlamına gelir. Geliştirme sırasında, ApplicationInsights.xml Web projenizin Resources klasörüne yerleştirebilirsiniz.
 * Ayrıca, SDK ile ilgili bilinen sorunlar için [GitHub sorunları sayfasına](https://github.com/Microsoft/ApplicationInsights-Java/issues) bakın.
 * Sürüm Çakışma sorunlarından kaçınmak için lütfen Application Insights Core, Web, aracı ve günlüğe kaydetme uygulamalarına ait aynı sürümü kullandığınızdan emin olun.
 
@@ -45,7 +44,7 @@ ms.locfileid: "84484789"
 
 ### <a name="java-agent-cannot-capture-dependency-data"></a>Java Aracısı bağımlılık verilerini yakalayamaz
 * Java aracısını [Yapılandır](java-agent.md) ' ı izleyerek Java aracısını yapılandırdınız mı?
-* Hem Java Agent jar hem de AI-Agent. xml dosyasının aynı klasöre yerleştirildiğinden emin olun.
+* Hem Java aracı jar 'in hem de AI-Agent.xml dosyasının aynı klasöre yerleştirildiğinden emin olun.
 * Otomatik toplamaya çalıştığınız bağımlılığın otomatik toplama için desteklendiğinden emin olun. Şu anda yalnızca MySQL, MsSQL, Oracle DB ve Redsıs bağımlılık koleksiyonu için Azure önbelleğini destekliyoruz.
 
 ## <a name="no-usage-data"></a>Kullanım verisi yok
@@ -71,7 +70,7 @@ Kod:
 
 **Veya**
 
-ApplicationInsights. xml dosyasını güncelleştirin (Projenizdeki kaynaklar klasöründe). Kök düğümü altına aşağıdakileri ekleyin:
+Güncelleştirme ApplicationInsights.xml (Projenizdeki kaynaklar klasöründe). Kök düğümü altına aşağıdakileri ekleyin:
 
 ```XML
 
@@ -86,15 +85,15 @@ XML yöntemini kullanarak, değeri değiştirirken uygulamayı yeniden başlatma
 * [Yeni kaynağın izleme anahtarını alır.][java]
 * Azure Toolkit for Eclipse kullanarak projenize Application Insights eklediyseniz, Web projenize sağ tıklayın, **Azure**' ı seçin **Application Insights yapılandırın**ve anahtarı değiştirin.
 * Izleme anahtarını ortam değişkeni olarak yapılandırdıysanız lütfen ortam değişkeninin değerini yeni Ikey ile güncelleştirin.
-* Aksi takdirde, projenizdeki Resources klasöründeki ApplicationInsights. xml dosyasında anahtarı güncelleştirin.
+* Aksi takdirde, ApplicationInsights.xml içindeki anahtarı projenizdeki Resources klasöründe güncelleştirin.
 
 ## <a name="debug-data-from-the-sdk"></a>SDK 'dan veri ayıklama
 
 **SDK 'nın ne yaptığını nasıl öğrenebilirim?**
 
-API 'de neler olduğu hakkında daha fazla bilgi edinmek için, `<SDKLogger/>` ApplicationInsights. xml yapılandırma dosyasının kök düğümü altına ekleyin.
+API 'de neler olduğu hakkında daha fazla bilgi edinmek için `<SDKLogger/>` ApplicationInsights.xml yapılandırma dosyasının kök düğümü altına ekleyin.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. xml
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Günlükçüde bir dosyanın çıktısını almak için de talimat verebilirsiniz:
 
@@ -125,7 +124,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java Aracısı
 
-JVM aracı günlüğünü etkinleştirmek için [AI-Agent. xml dosyasını](java-agent.md)güncelleştirin:
+JVM aracı günlüğünü etkinleştirmek için [AI-Agent.xml dosyasını](java-agent.md)güncelleştirin:
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->

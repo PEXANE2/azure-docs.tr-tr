@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307376"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
@@ -22,13 +21,13 @@ Azure Dev Spaces, Kubernetes uygulamalarını hızla yinelemek ve hata ayıklama
 
 Azure Dev Spaces, Kubernetes uygulamanızı geliştirme, test etme ve AKS kümeniz bağlamında yineleme çabaları azaltır. Çabadaki Bu azalma, geliştiricilerin kendi uygulamalarının iş mantığına odaklanmasını ve hizmetlerini Kubernetes 'de çalışacak şekilde yapılandırmamasını sağlar.
 
-### <a name="local-process-with-kubernetes"></a>Kubernetes ile yerel Işlem
+### <a name="local-process-with-kubernetes"></a>Kubernetes ile Yerel İşlem
 
 Kubernetes ile yerel Işlem sayesinde, geliştirme bilgisayarınızı Kubernetes kümenize bağlanarak, geliştirme bilgisayarınızda küme üzerinde çalışıyor gibi kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Azure Dev Spaces, kuruluşunuzda geliştirme bilgisayarınız ve küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, kümenizde çalışan geliştirme bilgisayarınızdaki ve hizmetinizdeki kodların aynı kümelemiş gibi iletişim kurmasına olanak tanır. Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlama hakkında daha fazla bilgi için, [Kubernetes Ile yerel Işlemin nasıl çalıştığı hakkında][how-it-works-local-process-kubernetes]daha fazla bilgi için bkz..
 
 ### <a name="run-your-code-in-aks"></a>Kodunuzu AKS 'de çalıştırın
 
-Geliştirme bilgisayarınız ile AKS kümeniz arasında trafiği yeniden yönlendirmeye ek olarak, Azure Dev Spaces, kodunuzu doğrudan AKS içinde yapılandırabilir ve hızlı bir şekilde çalıştırabilirsiniz. Visual Studio, Visual Studio Code veya Azure Dev Spaces CLı ile Azure dev Spaces, kodunuzu kümenize yükleyecek, sonra derleyip çalıştıracak. Azure dev Spaces Ayrıca kod değişikliklerini açabilir ve gerekirse değişiklikleri yansıtacak şekilde hizmetinizi yeniden başlatabilir. Kodunuzu çalıştırırken, derleme günlükleri ve HTTP izlemeleri, ilerleme durumunu izleyip sorunları tanılamanıza olanak tanıyacak şekilde istemcisine geri akışı sağlar. Visual Studio 'da hata ayıklayıcıyı iliştirmek ve Java, Node. js ve .NET Core hizmetlerine Visual Studio Code Azure Dev Spaces de kullanabilirsiniz. Daha fazla bilgi için bkz. [bir projenin Azure dev Spaces nasıl][how-it-works-prep]çalıştığı, [kodunuzun Azure dev Spaces nasıl çalıştığı][how-it-works-up]ve [Azure dev Spaces ile kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]nasıl çalıştığı.
+Geliştirme bilgisayarınız ile AKS kümeniz arasında trafiği yeniden yönlendirmeye ek olarak, Azure Dev Spaces, kodunuzu doğrudan AKS içinde yapılandırabilir ve hızlı bir şekilde çalıştırabilirsiniz. Visual Studio, Visual Studio Code veya Azure Dev Spaces CLı ile Azure dev Spaces, kodunuzu kümenize yükleyecek, sonra derleyip çalıştıracak. Azure dev Spaces Ayrıca kod değişikliklerini açabilir ve gerekirse değişiklikleri yansıtacak şekilde hizmetinizi yeniden başlatabilir. Kodunuzu çalıştırırken, derleme günlükleri ve HTTP izlemeleri, ilerleme durumunu izleyip sorunları tanılamanıza olanak tanıyacak şekilde istemcisine geri akışı sağlar. Visual Studio 'da hata ayıklayıcıyı eklemek ve Java, Node.js ve .NET Core hizmetlerine Visual Studio Code Azure Dev Spaces de kullanabilirsiniz. Daha fazla bilgi için bkz. [bir projenin Azure dev Spaces nasıl][how-it-works-prep]çalıştığı, [kodunuzun Azure dev Spaces nasıl çalıştığı][how-it-works-up]ve [Azure dev Spaces ile kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]nasıl çalıştığı.
 
 ## <a name="team-development"></a>Takım geliştirme
 

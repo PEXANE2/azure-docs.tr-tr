@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310096"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
@@ -47,7 +46,7 @@ Herkes, [GitHub deposundan][link-github-wingtip-multitenantdb-55g]Wingtip biletl
 
 Bu ilk dağıtımı üzerine inşa eden bir dizi ilgili öğretici vardır. Öğreticiler bir dizi SaaS tasarımı ve yönetim desenini keşfedebilir. Öğreticilerde çalışırken, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betiklerin içinde ilerletirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -99,7 +98,7 @@ Uygulama dağıtıldığında, uygulama kaynak kodunu ve yönetim betikleri ' ni
 1. [Wingtipbilet ssaas-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)deposuna gidin.
 2. **Kopyala veya indir**' e tıklayın.
 3. **ZIP 'ı indir** ' e tıklayın ve dosyayı kaydedin.
-4. **WingtipTicketsSaaS-MultiTenantDb-Master. zip** dosyasına sağ tıklayın ve **Özellikler**' i seçin.
+4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** dosyasına sağ tıklayın ve **Özellikler**' i seçin.
 5. **Genel** sekmesinde **Engellemeyi kaldır**' ı seçin ve **Uygula**' ya tıklayın.
 6. **Tamam**'a tıklayın.
 7. Dosyaları ayıklayın.
@@ -131,7 +130,7 @@ Merkezi bir **Olay Hub 'ı** Web sayfası, belirli dağıtımınızdaki kiracıl
 
 2. **Olay Hub’ında****Fabrikam Caz Kulübü**’ne tıklayın.
 
-   ![Ekinlikler](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Olaylar](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -155,22 +154,22 @@ Bir üretim ortamında, genellikle [Şirket İnternet etki alanını](../../traf
 
 Artık uygulama dağıtıldığına göre, şimdi çalışacak şekilde koyalım! *Demo-LoadGenerator* PowerShell betiği, her kiracı için çalışan bir iş yükünü başlatır. Birçok SaaS uygulamasında gerçek dünyada yük, genellikle sporda ve öngörülemeyen bir şekilde yapılır. Bu tür yükün benzetimini yapmak için, Oluşturucu tüm kiracılara dağıtılmış bir yük oluşturur. Yük, rastgele aralıklarda oluşan her bir kiracıda rastgele artışlarıyla içerir. Yük deseninin ortaya geçmesi birkaç dakika sürer. bu nedenle, yüklemeyi izlemeden önce oluşturucunun en az üç veya dört dakika çalışmasını sağlamak en iyisidir.
 
-1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *demo-LoadGenerator. ps1* betiği.
+1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *Demo-LoadGenerator.ps1* betiği.
 2. Betiği çalıştırmak ve yük oluşturucuyu başlatmak için **F5**’e basın (şimdilik varsayılan parametre değerlerini bırakın).
 
-*Demo-LoadGenerator. ps1* betiği, yük oluşturucunun çalıştığı başka bir PowerShell oturumu açar. Yük Oluşturucu bu oturumda, her kiracı için bir tane olmak üzere arka plan yük oluşturma işlerini çağıran bir ön plan görevi olarak çalışır.
+*Demo-LoadGenerator.ps1* betiği, yük oluşturucunun çalıştığı başka bir PowerShell oturumu açar. Yük Oluşturucu bu oturumda, her kiracı için bir tane olmak üzere arka plan yük oluşturma işlerini çağıran bir ön plan görevi olarak çalışır.
 
 Ön plan görevi başladıktan sonra, iş çağırma durumunda kalır. Görev, daha sonra sağlanan yeni kiracılar için ek arka plan işleri başlatır.
 
 PowerShell oturumunun kapatılması tüm işleri durduruyor.
 
-Farklı parametre değerlerini kullanmak için Load Generator oturumunu yeniden başlatmak isteyebilirsiniz. Varsa, PowerShell oluşturma oturumunu kapatın ve *demo-LoadGenerator. ps1*öğesini yeniden çalıştırın.
+Farklı parametre değerlerini kullanmak için Load Generator oturumunu yeniden başlatmak isteyebilirsiniz. Bu durumda, PowerShell oluşturma oturumunu kapatın ve ardından *Demo-LoadGenerator.ps1*yeniden çalıştırın.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Parçalı veritabanına yeni bir kiracı sağlayın
 
 İlk dağıtım, *Tenants1* veritabanında üç örnek kiracı içerir. Daha sonra başka bir kiracı oluşturalım ve bu uygulamayı dağıtılan uygulama üzerinde gözlemleyeceksiniz. Bu adımda, yeni bir kiracı oluşturmak için bir tuşa basın:
 
-1. Aç... \\ Öğrenme modülleri \\ \\ , *PowerShell ISE*'de*demo-ProvisionTenants. ps1* sağlama ve kataloğunu.
+1. Aç... \\ \\ \\ *PowerShell ISE*'de öğrenme modülleri sağlama ve Katalog*Demo-ProvisionTenants.ps1* .
 2. Betiği çalıştırmak için **F5** ( **F8**değil) tuşuna basın (şimdilik varsayılan değerleri bırakın).
 
    > [!NOTE]
@@ -193,7 +192,7 @@ Parçalı çok kiracılı model, diğer kiracıların bulunduğu bir veritabanı
 
 Daha sonra, bu kez kendi veritabanında başka bir kiracı sağladık:
 
-1. İçinde.. \\ . Öğrenme modülleri \\ , \\ *demo-ProvisionTenants. ps1*sağlama ve kataloğunu *$TenantName* **SALX salsa**, **dans** *$VenueType* ve **2**' ye *$Scenario* .
+1. İçinde.. \\ . Öğrenme modülleri \\ sağlama ve katalog \\ *Demo-ProvisionTenants.ps1*, **salx salsa**'ya *$VenueType* *$TenantName* , **dans** ve *$Scenario* **2**olarak değiştirme.
 
 2. Betiği yeniden çalıştırmak için **F5** tuşuna basın.
     - Bu **F5** tuþuna, yeni kiracıyı ayrı bir veritabanında sağlar. Veritabanı ve kiracı kataloğa kaydedilir. Ardından tarayıcı, kiracının Olaylar sayfasında açılır.

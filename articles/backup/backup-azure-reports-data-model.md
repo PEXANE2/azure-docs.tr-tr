@@ -4,10 +4,9 @@ description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları gönderm
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484495"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
@@ -55,7 +54,7 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 | ResourceGroupName                 | Metin          | Toplanmakta olan veriler için kaynağın kaynak grubu (örneğin, kurtarma hizmetleri Kasası) |
 | SchemaVersion                     | Metin          | Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
 | SecondaryBackupProtectionState    | Metin          | Yedekleme öğesi için ikincil korumanın etkinleştirilip etkinleştirilmediği  |
-| Eyalet                             | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
+| Durum                             | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
 | StorageReplicationType            | Metin          | Kasa için depolama çoğaltma türü. Örneğin, Geoyedekli |
 | kaynak grubundaki                    | Metin          | Verilerin toplandığı kaynağın abonelik tanımlayıcısı (örneğin, kurtarma hizmetleri Kasası) |
 | VaultName                         | Metin          | Kasanın adı                                            |
@@ -88,7 +87,7 @@ Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | Protectedcontaineruniqueıd     | Metin          | Uyarıyla ilişkili korumalı sunucunun benzersiz tanıtıcısı |
 | RecommendedAction              | Metin          | Uyarıyı çözümlemek için önerilen eylem                      |
 | SchemaVersion                  | Metin          | Şemanın geçerli sürümü, örneğin **v2**            |
-| Eyalet                          | Metin          | Uyarı nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| Durum                          | Metin          | Uyarı nesnesinin geçerli durumu, örneğin, etkin, silindi |
 | Storageuniqueıd                | Metin          | Depolama varlığını tanımlamak için kullanılan benzersiz KIMLIK                |
 | Vaultuniqueıd                  | Metin          | Uyarıyla ilgili kasayı tanımlamak için kullanılan benzersiz KIMLIK    |
 | SourceSystem                   | Metin          | Geçerli verilerin kaynak sistemi-Azure                    |
@@ -108,7 +107,7 @@ Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 | Protectedcontaineruniqueıd     | Metin          | İşin çalıştırıldığı korunan kapsayıcıyı belirlemek için benzersiz KIMLIK |
 | Protectedınstancecount         | Metin          | İlişkili yedekleme öğesi veya korunan kapsayıcı için bu tarih-saat için korunan örnek sayısı |
 | SchemaVersion                  | Metin          | Şemanın geçerli sürümü, örneğin **v2**            |
-| Eyalet                          | Metin          | Yedekleme öğesi nesnesinin durumu, örneğin, etkin, silindi |
+| Durum                          | Metin          | Yedekleme öğesi nesnesinin durumu, örneğin, etkin, silindi |
 | Vaultuniqueıd                  | Metin          | Korunan örnekle ilişkili korumalı kasasının benzersiz tanıtıcısı |
 | SourceSystem                   | Metin          | Geçerli verilerin kaynak sistemi-Azure                    |
 
@@ -139,7 +138,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 | RecoveryJobLocation            | Metin          | Kurtarılan kurtarma noktasının depolandığı konum |
 | RecoveryLocationType           | Metin          | Kurtarma konumunun türü                                |
 | SchemaVersion                  | Metin          | Şemanın geçerli sürümü, örneğin **v2**            |
-| Eyalet                          | Metin          | İş nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| Durum                          | Metin          | İş nesnesinin geçerli durumu, örneğin, etkin, silindi |
 | Vaultuniqueıd                  | Metin          | İşle ilişkili korumalı kasasının benzersiz tanıtıcısı |
 | SourceSystem                   | Metin          | Geçerli verilerin kaynak sistemi-Azure                    |
 
@@ -177,7 +176,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | Retentionduration 'a               | Metin           | Yapılandırılan yedeklemeler için bekletme süresi                    |
 | RetentionType                   | Metin           | Bekletme türü                                            |
 | SchemaVersion                   | Metin           | Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
-| Eyalet                           | Metin           | İlke nesnesinin geçerli durumu. Örneğin, etkin, silindi |
+| Durum                           | Metin           | İlke nesnesinin geçerli durumu. Örneğin, etkin, silindi |
 | SynchronisationFrequencyPerDay  | Tam Sayı   | SC DPM ve MABS için bir dosya yedeklemesinin eşitlendiği gün sayısı |
 | Vaultuniqueıd                   | Metin           | Bu ilkenin ait olduğu kasanın benzersiz KIMLIĞI          |
 | WeeklyRetentionDaysOfTheWeek    | Metin           | Haftalık saklama için seçilen haftanın günleri               |
@@ -207,7 +206,7 @@ Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | PreferredWorkloadOnVolume      | Metin          | Bu birimin tercih edilen depolama alanı olduğu iş yükü      |
 | Protectedcontaineruniqueıd     | Metin          | Yedekleme öğesiyle ilişkili korumalı kapsayıcının benzersiz tanıtıcısı |
 | SchemaVersion                  | Metin          | Şema sürümü. Örneğin, **v2**                   |
-| Eyalet                          | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
+| Durum                          | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
 | Storageallocatedinmb          | Sayı        | Disk türünde karşılık gelen yedekleme öğesi tarafından ayrılan depolama alanı boyutu |
 | Storagetüketimedinmb           | Sayı        | Karşılık gelen depolama alanındaki karşılık gelen yedekleme öğesi tarafından tüketilen depolamanın boyutu |
 | StorageName                    | Metin          | Depolama varlığının adı. Örneğin, E:\                      |

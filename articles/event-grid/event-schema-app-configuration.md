@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553162"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Uygulama yapılandırması
@@ -23,7 +22,7 @@ Bu makalede, Azure uygulama yapılandırma olayları için özellikler ve şema 
 
 Azure Uygulama yapılandırması aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Anahtar-değer oluşturulduğunda veya değiştirildiğinde tetiklenir. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Anahtar-değer silindiğinde tetiklenir. |
@@ -79,7 +78,7 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | ID | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | Uygulama yapılandırma olay verileri. |
+| veriler | nesne | Uygulama yapılandırma olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -87,7 +86,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| key | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
+| anahtar | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
 | etiket | string | Değiştirilen veya silinen anahtar-değer etiketi. |
 | özelliği | string | `KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için. |
 

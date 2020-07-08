@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
 ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485477"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu
@@ -46,8 +45,8 @@ Bu konuda, iki aşamalı bir kod örneği sunulmaktadır:
   
   - İsteğe bağlı olarak, dakikalar içinde [bir **AdventureWorksLT** demo veritabanı oluşturabilirsiniz](single-database-create-quickstart.md) .
 
-- SQL Server Management Studio (SSMS. exe), en son aylık güncelleştirme sürümünü idealdir.
-  En son SSMS. exe ' yi şuradan indirebilirsiniz:
+- SQL Server Management Studio (ssms.exe), ideal olarak en son aylık güncelleştirme sürümü.
+  En son ssms.exe şuradan indirebilirsiniz:
   
   - [SQL Server Management Studio indirme](https://msdn.microsoft.com/library/mt238290.aspx)başlıklı konu.
   - [İndirmenin doğrudan bağlantısı.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -62,7 +61,7 @@ Bu PowerShell, iki aşamalı kod örneğinin Aşama 1 ' dir.
 
 Betik, bir önceki çalıştırıldıktan sonra temizlik komutları ile başlar ve yeniden başlatılamaz.
 
-1. PowerShell betiğini Notepad. exe gibi bir basit metin düzenleyicisine yapıştırın ve betiği **. ps1**uzantısına sahip bir dosya olarak kaydedin.
+1. PowerShell betiğini Notepad.exe gibi bir basit metin düzenleyicisine yapıştırın ve betiği **. ps1**uzantısına sahip bir dosya olarak kaydedin.
 2. PowerShell ıSE 'yi yönetici olarak başlatın.
 3. İsteminde şunu yazın:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>ve ardından ENTER tuşuna basın.
 4. PowerShell ıSE 'de **. ps1** dosyanızı açın. Betiği çalıştırın.
@@ -250,7 +249,7 @@ Betik, bir önceki çalıştırıldıktan sonra temizlik komutları ile başlar 
 
 PowerShell betiği, sona erdikten sonra birkaç adlandırılmış değer yazdırılmıştır. Bu değerleri kullanmak için Transact-SQL betiğini düzenlemeniz gerekir. Düzenleme noktalarını bulmak için Transact-SQL komut dosyasında **Todo** bulun.
 
-1. SQL Server Management Studio açın (SSMS. exe).
+1. SQL Server Management Studio açın (ssms.exe).
 2. Azure SQL veritabanı 'nda veritabanınıza bağlanın.
 3. Yeni bir sorgu bölmesi açmak için tıklayın.
 4. Aşağıdaki Transact-SQL betiğini sorgu bölmesine yapıştırın.

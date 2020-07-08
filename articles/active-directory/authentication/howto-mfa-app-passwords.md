@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485605"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure Multi-Factor Authentication etkinleştirme ve kullanma
@@ -81,7 +80,7 @@ Bu senaryoda, aşağıdaki kimlik bilgilerini kullanırsınız:
 
 Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların bunları kullanabilmesi için uygulama parolaları özelliğinin etkinleştirilmesi gerekir. Kullanıcılara uygulama parolaları oluşturma yeteneği vermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 3. Gezinti çubuğundan *Kullanıcılar* penceresinin üst kısmında **Multi-Factor Authentication** ' yi seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.

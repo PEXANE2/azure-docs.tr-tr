@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84321691"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama için lisans gereksinimleri
@@ -30,7 +29,7 @@ SSPR Kullanıcı başına lisanslanır. Uyumluluğun korunması için, kuruluşl
 
 Aşağıdaki tabloda parola değiştirme, sıfırlama veya şirket içi geri yazma için farklı SSPR senaryoları ve hangi SKU 'Ların özelliği sağladığı özetlenmektedir.
 
-| Öne çıkan özelliği | Azure AD Ücretsiz | Microsoft 365 İş standart | Microsoft 365 İş Premium | Azure AD Premium P1 veya P2 |
+| Özellik | Azure AD Ücretsiz | Microsoft 365 İş standart | Microsoft 365 İş Premium | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Yalnızca bulutta bulunan Kullanıcı parolası değiştirme**<br />Azure AD 'deki bir Kullanıcı parolasını bilir ve yeni bir şekilde değiştirmek ister. | ● | ● | ● | ● |
 | **Yalnızca bulut Kullanıcı parolası sıfırlama**<br />Azure AD 'deki bir Kullanıcı parolasını unutursa ve sıfırlanması gerekir. | | ● | ● | ● |

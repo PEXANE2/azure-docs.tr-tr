@@ -4,10 +4,9 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485164"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
@@ -104,9 +103,9 @@ Varsayılan tarayıcınızda en son kullandığınız Microsoft oturum açma [i�
 Olası nedenler:
 
 * Uygulamanız için Application Insights kaynağı silindi; veya
-* İzleme anahtarı, proje dosyasını güncelleştirmeden doğrudan düzenlenerek ApplicationInsights. config dosyasında ayarlanır veya değiştirilmiştir.
+* İzleme anahtarı, proje dosyasını güncelleştirmeden doğrudan düzenlenerek ApplicationInsights.config ayarlanır veya değiştirilmiştir.
 
-ApplicationInsights. config dosyasındaki izleme anahtarı, telemetrinin gönderildiği yeri denetler. Proje dosyasındaki bir satır, Visual Studio 'da komutunu kullandığınızda hangi kaynağın açılacağını denetler.
+ApplicationInsights.config 'daki izleme anahtarı, telemetrinin gönderildiği yeri denetler. Proje dosyasındaki bir satır, Visual Studio 'da komutunu kullandığınızda hangi kaynağın açılacağını denetler.
 
 Onar
 
@@ -127,14 +126,14 @@ Onar
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights portalında [Tanılama araması](../../azure-monitor/app/diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
 * Yenile düğmesine tıklayın. Dikey pencere kendi kendine düzenli olarak yenilenir, ancak bunu el ile de yapabilirsiniz. Yenileme aralığı daha büyük zaman aralıkları için daha uzun.
-* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'da, ApplicationInsights. config dosyasını açın ve öğesini bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
+* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'daki projenizdeki ApplicationInsights.config açın ve bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
   * Portalda Application Insights ' a tıklayın ve doğru anahtarla uygulama kaynağını arayın; veya
   * Visual Studio Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Yapılandır ' ı seçin. Doğru kaynağa telemetri göndermek için uygulamayı sıfırlayın.
   * Eşleşen anahtarları bulamıyorsanız, portalda ' de olduğu gibi Visual Studio 'da aynı oturum açma kimlik bilgilerini kullanıp kullanınızdan emin olun.
 * [Microsoft Azure giriş panosunda](https://portal.azure.com), hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
 * Ayrıca [durum blogumuzu](https://blogs.msdn.microsoft.com/servicemap-status/)inceleyin.
 * [Sunucu tarafı SDK](../../azure-monitor/app/api-custom-events-metrics.md) için, örneklerdeki veya içindeki izleme anahtarını değiştirebilen herhangi bir kod yazdınız `TelemetryClient` `TelemetryContext` mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](../../azure-monitor/app/api-filtering-sampling.md) mı yazdınız?
-* ApplicationInsights. config dosyasını düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
+* ApplicationInsights.config düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Sayfa görünümlerinde, tarayıcılarda, kullanımında veri yok
 *Sunucu yanıt süresi ve sunucu Isteği grafiklerde veri görüyorum, ancak sayfa görünümü yükleme sırasında veya tarayıcıda veya kullanım dikey penceresinde veri yok.*
@@ -152,9 +151,9 @@ Bkz. [bağımlılık telemetrisi](../../azure-monitor/app/asp-net-dependencies.m
 Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md)'yi yüklüyorsanız, [Java Web Hizmetleri](../../azure-monitor/app/java-collectd.md), [Windows Masaüstü uygulamaları](../../azure-monitor/app/windows-desktop.md), [IIS Web UYGULAMALARı ve HIZMETLERI](../../azure-monitor/app/monitor-performance-live-website-now.md)için performans verileri (CPU, GÇ oranı vb.) kullanılabilir. Bunu ayarlar, sunucular bölümünde bulabilirsiniz.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Uygulamayı sunucuma yayımladığım için hiçbir (sunucu) veri yok
-* Tüm Microsoft 'un gerçekten kopyalamadığını denetleyin. Microsoft. Diagnostics. Instrumentation. Extensions. KESMENOKTASI. dll ile birlikte, sunucuda ApplicationInsights dll 'Leri
+* Tüm Microsoft 'un gerçekten kopyalamadığını denetleyin. Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ile birlikte sunucuda ApplicationInsights dll 'Leri
 * Güvenlik duvarınızdaki [bazı TCP bağlantı noktalarını açmanız](../../azure-monitor/app/ip-addresses.md)gerekebilir.
-* Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web. config dosyasında [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) 'yi ayarlayın
+* Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web.config [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) 'yi ayarlayın
 * Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Verileri görmek için kullandım, ancak durdu
@@ -187,7 +186,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
 1. NuGet 'den [Microsoft. Aspnet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) paketini yükler. Yüklediğiniz sürüm, geçerli yüklü sürümü ile eşleşmelidir`Microsoft.ApplicationInsighs`
 
-2. ApplicationInsights. config dosyanızı aşağıdakileri içerecek şekilde değiştirin:
+2. applicationinsights.config dosyanızı aşağıdakileri içerecek şekilde değiştirin:
 
     ```xml
     <TelemetryModules>

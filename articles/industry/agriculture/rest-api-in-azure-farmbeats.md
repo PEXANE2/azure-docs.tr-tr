@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488044"
 ---
 # <a name="references"></a>Referanslar
@@ -33,7 +32,7 @@ Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların
 
 Aşağıdaki tabloda, Farmrets veri hub 'ında bulunan tüm nesneler ve kaynaklar özetlenmektedir:
 
-| Nesneler ve kaynaklar | Description
+| Nesneler ve kaynaklar | Açıklama
 --- | ---|
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır. |
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Bir cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
@@ -111,7 +110,7 @@ REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu paramet
 
 Azure Farmrets veri hub 'ı API 'Leri, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
- |Hata kodu             | Description |
+ |Hata kodu             | Açıklama |
  |---                    | --- |
  |200                    | Başarılı |
  |201                    | Oluşturma (post) başarılı |
@@ -162,7 +161,7 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
     - **Genel Bakış ' a**geri dönün ve **yerel dizinde uygulamayı Yönet ' in**yanındaki bağlantıyı seçin.
     - **Nesne kimliğini**yakalamak için **Özellikler** ' e gidin.
 
-4. Veri hub Swagger (https:// <yourdatahub> . azurewebsites.net/Swagger/index.html) sayfasına gidin ve şunları yapın:
+4. Veri hub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) sayfasına gidin ve şunları yapın:
     - **Roleatama API**'sine gidin.
     - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin.
  

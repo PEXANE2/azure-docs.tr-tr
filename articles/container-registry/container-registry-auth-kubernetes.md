@@ -7,10 +7,9 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309824"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure Container Registry 'den bir Kubernetes kümesine görüntü çekme
@@ -47,7 +46,7 @@ kubectl create secret docker-registry <secret-name> \
 ```
 burada:
 
-| Değer | Description |
+| Değer | Açıklama |
 | :--- | :--- |
 | `secret-name` | Resim çekme parolasının adı, örneğin *ACR-sır* |
 | `namespace` | Gizli anahtarı yerleştirmek için Kubernetes ad alanı <br/> Yalnızca parolayı varsayılan ad alanından başka bir ad alanına yerleştirmek istiyorsanız gereklidir |

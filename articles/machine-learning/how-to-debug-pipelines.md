@@ -11,10 +11,9 @@ ms.author: keli19
 ms.date: 03/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557428"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
@@ -137,7 +136,7 @@ Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kalad
 
 1. Yazma tuvalinde çalışmayı tamamlamış bir modül seçin.
 1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
-1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log. txt** ' yi seçin. Günlükleri yerel olarak da indirebilirsiniz.
+1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log.txt** seçin. Günlükleri yerel olarak da indirebilirsiniz.
 
     ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)
 
@@ -151,7 +150,7 @@ Ayrıca, Studio 'nun işlem **hatları** veya **denemeleri** bölümünde buluna
 
 1. Önizleme bölmesinde bir modül seçin.
 1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
-1. Sağ bölmeyi genişleterek **70_driver_log. txt** dosyasını tarayıcıda görüntüleyin veya günlükleri yerel olarak indirmek için dosyayı seçin.
+1. **70_driver_log.txt** dosyasını tarayıcıda görüntülemek için sağ bölmeyi genişletin veya günlükleri yerel olarak indirmek için dosyayı seçin.
 
 > [!IMPORTANT]
 > İşlem hattı çalıştırma ayrıntıları sayfasından bir işlem hattını güncelleştirmek için, işlem hattı çalıştırmasını yeni bir işlem hattı taslağında **kopyalamanız** gerekir. İşlem hattı çalıştırması, işlem hattının anlık görüntüsüdür. Bir günlük dosyasına benzer ve değiştirilemez. 
@@ -350,9 +349,9 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 
 1. Hata ayıklayıcıyı çalıştıran Azure Machine Learning işlem ile iletişim kurmak üzere VS Code yapılandırmak için yeni bir hata ayıklama yapılandırması oluşturun:
 
-    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
+    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __launch.js__ adlı bir dosya açılır.
 
-    1. __Launch. JSON__ dosyasında, içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin. Girişi, `"host": "10.3.0.5"` önceki bölümden günlüklerinizin DÖNDÜRDÜĞÜ IP adresiyle değiştirin. Girişi, `"localRoot": "${workspaceFolder}/code/step"` hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
+    1. Dosyadaki __launch.js__ , içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin. Girişi, `"host": "10.3.0.5"` önceki bölümden günlüklerinizin DÖNDÜRDÜĞÜ IP adresiyle değiştirin. Girişi, `"localRoot": "${workspaceFolder}/code/step"` hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
 
         ```json
         {
@@ -379,7 +378,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
         >
         > Birden çok betikte hata ayıklaması yapıyorsanız, farklı dizinlerde, her komut dosyası için ayrı bir yapılandırma bölümü oluşturun.
 
-    1. __Launch. JSON__ dosyasını kaydedin.
+    1. __launch.js__ dosyaya kaydedin.
 
 ### <a name="connect-the-debugger"></a>Hata ayıklayıcıyı bağlama
 

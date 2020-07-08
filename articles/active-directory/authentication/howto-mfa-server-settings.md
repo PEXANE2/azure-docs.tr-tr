@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485612"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA sunucu ayarlarını yapılandırma
@@ -42,10 +41,10 @@ Bir kerelik geçiş oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
 1. **Azure Active Directory**arayıp seçin, sonra **güvenlik**  >  **MFA**  >  **bir kerelik geçişe**gidin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 1. Gerekirse, atlama için çoğaltma grubunu seçin.
 1. Kullanıcı adını olarak girin `username\@domain.com` . Atlamamasının son olması gereken saniye sayısını ve atlama nedenini girin.
-1. **Add (Ekle)** seçeneğini belirleyin. Zaman sınırı hemen yürürlüğe girer. Kullanıcının bir kerelik atlama süresi dolmadan önce oturum açması gerekir.
+1. **Ekle**'yi seçin. Zaman sınırı hemen yürürlüğe girer. Kullanıcının bir kerelik atlama süresi dolmadan önce oturum açması gerekir.
 
 Aynı pencereden tek seferlik atlama raporunu da görüntüleyebilirsiniz.
 
@@ -61,10 +60,10 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 Önbelleğe almayı ayarlamak için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **önbelleğe alma kurallarını**inceleyin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 1. Açılan listeden **önbellek türünü** seçin. En fazla **önbellek saniyesi**sayısını girin.
 1. Gerekirse, bir kimlik doğrulama türü seçin ve bir uygulama belirtin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

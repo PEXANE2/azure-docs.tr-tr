@@ -9,10 +9,9 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465873"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)
@@ -81,7 +80,7 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Projenizin kökünde dizin oluşturun. Kök dizin, **Pok. xml** dosyasını içeren dizindir.
+1. Projenizin kökünde dizin oluşturun. Kök dizin, **pom.xml** dosyasını içeren dizindir.
 
    > [!NOTE]
    > Bu makaledeki örneklerde, Dizin adının **lib**olduğu varsayılır.
@@ -90,7 +89,7 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 
 3. Bu. zip dosyasındaki dosyaları oluşturduğunuz dizine ayıklayın. Örneğimizde, bu dizin **lib**olarak adlandırılmıştır. 
 
-4. *Pod. xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğelerini bağımlılıklar grubuna ekleyin. 
+4. *pom.xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğelerini bağımlılıklar grubuna ekleyin. 
 
    ```xml
    <!-- Request static dependencies from Maven -->

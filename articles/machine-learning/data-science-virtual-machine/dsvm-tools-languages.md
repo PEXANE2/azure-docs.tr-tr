@@ -12,10 +12,9 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557462"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen diller 
@@ -203,6 +202,6 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 **Java**: OpenJDK, dsvm 'Nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Java kullanmak için `javac` `java` Windows veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde veya komutunu yazın.
 
-**Node. js**: node. js, dsvm 'Nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Node. js ' ye erişmek için `node` `npm` Windows 'Ta veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde veya komutunu yazın. Windows 'da Node. js Araçları için Visual Studio uzantısı, Node. js uygulamanızı geliştirmek için bir grafik IDE sağlamak üzere yüklenmiştir.
+**Node.js**: Node.js Dsvm 'nin Linux ve Windows sürümlerinde bulunur ve yolda ayarlanır. Node.js erişmek için `node` `npm` Windows veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde veya komutunu yazın. Windows 'da, Node.js uygulamanızı geliştirmek için bir grafik IDE sağlamak üzere Node.js araçları için Visual Studio uzantısı yüklenmiştir.
 
 **F #**: Windows 'da kullanılabilir ve Visual Studio Community Edition aracılığıyla veya ' de erişilebilir `Developer Command Prompt for Visual Studio` , burada `fsc` komutu çalıştırabilirsiniz.

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343243"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
@@ -61,7 +60,7 @@ Aşağıdaki iki örneği indirin:
 
 -   [Veri eşitleme Azure Izleyici görünümü](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
@@ -135,7 +134,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 1.  Azure portal **günlük araması**' nı seçin.
 
-2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örnek:
+2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örneğin:
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 

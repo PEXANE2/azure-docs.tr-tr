@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Kodunuzu Azure Kubernetes hizmetinde Azure Dev Spaces ile çalıştırma işlemlerini açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307478"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Kodunuzu Azure Dev Spaces çalışır şekilde çalıştırma
@@ -157,7 +156,7 @@ configurations:
 
 Denetleyici, uygulamanızı derlemek ve çalıştırmak için bir Dockerfile kullanır.
 
-*Build. Context* özelliği, Dockerfiles 'ın mevcut olduğu dizini listeler. *Build. dockerfile* özelliği, uygulamanın üretim sürümünü oluşturmak Için dockerfile adını tanımlar. *Configurations. geliþme. Build. dockerfile* özelliği, uygulamanın geliştirme sürümü Için dockerfile adını yapılandırır.
+*Build. Context* özelliği, Dockerfiles 'ın mevcut olduğu dizini listeler. *build.dockerfile* özelliği, uygulamanın üretim sürümünü oluşturmak Için dockerfile adını tanımlar. *configurations.develop.build.dockerfile* özelliği, uygulamanın geliştirme sürümü Için dockerfile adını yapılandırır.
 
 Geliştirme ve üretim için farklı Dockerfiles bulundurmak, geliştirme sırasında belirli şeyleri etkinleştirmenizi ve üretim dağıtımlarında bu öğeleri devre dışı bırakmanızı sağlar. Örneğin, bir üretim ortamında geliştirme ve devre dışı bırakma sırasında hata ayıklamayı veya daha ayrıntılı günlük kaydını etkinleştirebilirsiniz. Ayrıca, Dockerfiles farklı şekilde adlandırılmışsa veya farklı bir konumdaysa bu özellikleri güncelleştirebilirsiniz.
 
@@ -205,7 +204,7 @@ Projenizi çalıştırmak için Azure Dev Spaces kullanmaya başlamak için aşa
 
 * [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
 * [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node. js ile hızlıca yineleme ve hata ayıklama][quickstart-node]
+* [Visual Studio Code ve Node.jsile hızlıca yineleme ve hata ayıklama][quickstart-node]
 * [Visual Studio ve .NET Core ile hızla yineleme ve hata ayıklama][quickstart-vs]
 * [Kubernetes 'te uygulama geliştirmek için CLı kullanma][quickstart-cli]
 

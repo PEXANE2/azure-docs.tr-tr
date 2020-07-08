@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 08/24/2018
 ms.custom: tracking-python
 ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553361"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Bir Batch işine çok sayıda görev gönderme
@@ -26,7 +25,7 @@ Tek bir çağrıda ekleyebileceğiniz görev koleksiyonunun en büyük boyutu, k
 * Aşağıdaki Batch API 'Leri, koleksiyonu **100 görevle**sınırlandırır. Sınır, görevlerin boyutuna bağlı olarak daha küçük olabilir. Örneğin, görevlerde çok sayıda kaynak dosyası veya ortam değişkeni varsa.
 
     * [REST API](/rest/api/batchservice/task/addcollection)
-    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
+    * [Python API’si](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
     * [Node.js API’si](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   Bu API 'Leri kullanırken, görev sayısını koleksiyon sınırını karşılayacak şekilde bölmek ve görevlerin eklenmesi durumunda hataları ve yeniden denemeleri işlemek için mantık sağlamanız gerekir. Bir görev koleksiyonu eklemek için çok büyükse istek bir hata oluşturur ve daha az görevle yeniden denenmelidir.
