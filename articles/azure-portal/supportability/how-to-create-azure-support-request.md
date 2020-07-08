@@ -2,23 +2,21 @@
 title: Azure destek isteği oluşturma | Microsoft Docs
 description: Yardıma ihtiyacı olan müşteriler, self servis çözümlerini bulmak ve destek istekleri oluşturmak ve yönetmek için Azure portal kullanabilir.
 services: Azure Supportability
-author: ganganarayanan
+author: mgblythe
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: how-to
-ms.date: 03/31/2020
-ms.author: kfollis
-ms.openlocfilehash: 52205ec4f5aabc2eb858229d26bc4966441820aa
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.date: 06/25/2020
+ms.author: mblythe
+ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851875"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Azure destek isteği oluşturma
-
-## <a name="overview"></a>Genel Bakış
+# <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
 Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yönetmenize olanak sağlar. [Azure Portal](https://portal.azure.com), bu makalede ele alınan istekleri oluşturabilir ve yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
 
@@ -28,14 +26,14 @@ Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yöne
 >* Ticari kullanım için Azure portal:[https://portal.azure.com](https://portal.azure.com)
 >* Almanya için Azure portal:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
 >* Birleşik Devletler kamu Azure portal:[https://portal.azure.us](https://portal.azure.us)
->
->
 
-Müşteri geri bildirimlerine göre, destek isteği deneyimini üç ana hedefle odaklanmak üzere güncelleştirdik:
+Destek isteği deneyimi üç ana hedefle odaklanır:
 
 * **Kolaylaştırılmış**: destek isteği göndermeyi ve yönetmeyi kolaylaştırmak için destek ve sorun gidermeyi kolaylaştırın.
 * **Tümleşik**: bir Azure kaynağıyla ilgili sorun giderirken bağlam değiştirmeden kolayca bir destek isteği açabilirsiniz.
-* **Verimli**: sorununuzu verimli bir şekilde çözmek için destek aracınızın ihtiyaç duyacağı anahtar bilgilerini toplayın.
+* **Verimli**: sorununuzu verimli bir şekilde çözmek için destek mühendislerinizin ihtiyaç duyacağı anahtar bilgilerini toplayın.
+
+Azure, faturalandırma, kota ayarlamaları ve hesap aktarımları dahil olmak üzere abonelik yönetimi için sınırsız destek sağlar. Teknik destek için bir destek planına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Destek planlarını karşılaştırma](https://azure.microsoft.com/support/plans).
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -43,7 +41,7 @@ Azure portal **Yardım + Destek** alabilirsiniz. Bu, bir hizmetin Azure portal m
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne bir [sahip](../../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) veya atanmış olmanız gerekir. Abonelik olmadan bir destek isteği oluşturmak için, örneğin Azure Active Directory (AAD) senaryosu için [yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)olmanız gerekir.
+Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne bir [sahip](../../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) veya atanmış olmanız gerekir. Aboneliği olmayan bir destek isteği oluşturmak için, örneğin bir Azure Active Directory senaryosunda, [yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)olmanız gerekir.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Genel üst bilgiden yardım + destek 'e gidin
 
@@ -53,7 +51,7 @@ Azure portal her yerden bir destek talebi başlatmak için:
 
    ![Yardım ve Destek](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. **Yeni destek isteği**’ni seçin. Bize sorun hakkında bilgi sağlamak için istemleri izleyin. Bazı olası çözümler önereceğiz, sorunla ilgili ayrıntıların toplanması ve Destek isteğini göndermenize ve izlemenize yardımcı olacak.
+1. **Yeni destek isteği**’ni seçin. Sorununuz hakkında bilgi sağlamak için istemleri izleyin. Bazı olası çözümler önereceğiz, sorunla ilgili ayrıntıların toplanması ve Destek isteğini göndermenize ve izlemenize yardımcı olacak.
 
    ![Yeni Destek İsteği](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -65,7 +63,7 @@ Kaynak bağlamında bir destek talebi başlatmak için şu anda çalışıyorsun
 
    ![Bağlamda](./media/how-to-create-azure-support-request/incontext2lower.png)
 
-2. Bize karşılaştığınız sorun hakkında bilgi sağlamak için istemleri izleyin. Kaynaktan destek isteği sürecini başlattığınızda, bazı seçenekler sizin için önceden seçilmiştir.
+1. Bize karşılaştığınız sorun hakkında bilgi sağlamak için istemleri izleyin. Kaynaktan destek isteği sürecini başlattığınızda, bazı seçenekler sizin için önceden seçilmiştir.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
@@ -75,14 +73,9 @@ Sorununuz hakkında bilgi toplamak ve çözmenize yardımcı olmak için bazı a
 
 Destek isteği işleminin ilk adımı, sorununuz ve Destek planınız hakkında temel bilgileri toplar.
 
-**Yeni destek isteğine**Ilişkin **temel bilgiler** sekmesinde, sorunu bize bildirmek için seçicileri kullanın. İlk olarak, sorun türü için bazı genel kategoriler tanımlayacaksınız ve ilgili aboneliği seçmelisiniz. Hizmeti (örneğin, **Windows çalıştıran sanal makine**) seçin. Sanal makinenizin adı gibi kaynağı seçin. Sorunu kendi sözcüklerinizle açıkla, daha fazla bilgi almak için **sorun türünü seçin** .
+**Yeni destek isteğine**Ilişkin **temel bilgiler** sekmesinde, sorunu bize bildirmek için seçicileri kullanın. İlk olarak, sorun türü için bazı genel kategoriler tanımlayacaksınız ve ilgili aboneliği seçmelisiniz. Hizmeti (örneğin, **Windows çalıştıran sanal makine**) seçin. Sanal makinenizin adı gibi kaynağı seçin. Sorunu kendi sözcüklerinizle anlaın ve daha fazla bilgi almak için **sorun türü** ve **sorun alt türü** ' nü seçin.
 
 ![Temel Bilgiler dikey penceresi](./media/how-to-create-azure-support-request/basics2lower.png)
-
-> [!NOTE]
-> Azure, faturalandırma, kota ayarlamaları ve hesap aktarımları dahil olmak üzere abonelik yönetimi için sınırsız destek sağlar. Teknik destek için bir destek planına ihtiyacınız vardır. [Destek planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/support/plans).
->
->
 
 ### <a name="solutions"></a>Çözümler
 
@@ -90,42 +83,35 @@ Temel bilgiler toplandıktan sonra, bir sonraki adımda deneyebileceğiniz çöz
 
 ### <a name="details"></a>Ayrıntılar
 
-Daha sonra, sorunla ilgili ek ayrıntıları topladık. Bu adımda kapsamlı ve ayrıntılı bilgiler sağlamak, destek isteğinizi doğru aracıya yönlendirmemize yardımcı olur.
+Daha sonra, sorunla ilgili ek ayrıntıları topladık. Bu adımda kapsamlı ve ayrıntılı bilgiler sağlamak, destek isteğinizi doğru mühendise yönlendirmemize yardımcı olur.
 
-Mümkünse, sorunun ne zaman başlatıldığını ve bunu yeniden oluşturmak için gereken adımları bize söyleyin. Günlük dosyası veya tanılama çıktısı gibi bir dosyayı karşıya yükleyebilirsiniz.
+1. Mümkünse, sorunun ne zaman başlatıldığını ve bunu yeniden oluşturmak için gereken adımları bize söyleyin. Günlük dosyası veya tanılama çıktısı gibi bir dosyayı karşıya yükleyebilirsiniz. Dosya karşıya yüklemeleri hakkında daha fazla bilgi için bkz. [dosya yükleme yönergeleri](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-Sorunla ilgili tüm bilgileri aldıktan sonra, nasıl destek alınacağını seçin. **Ayrıntıların** **destek yöntemi** bölümünde, etkinin önem derecesini seçin. Tercih ettiğiniz iletişim yönteminizi, sizinle iletişim kurmak için iyi bir zaman ve destek dilinizi belirtin.
+1. Sorunla ilgili tüm bilgileri aldıktan sonra, nasıl destek alınacağını seçin. **Ayrıntıların** **destek yöntemi** bölümünde, etkinin önem derecesini seçin. En yüksek önem düzeyi, [destek planınıza](https://azure.microsoft.com/support/plans)bağlıdır.
 
-Ardından, sizinle nasıl iletişim kurabileceğinizi bilmemiz için **iletişim bilgileri** bölümünü doldurun.
+    Varsayılan olarak, **Tanılama bilgilerini paylaşma** seçeneği seçilidir. Bu, Azure desteğinin Azure kaynaklarınızdan [Tanılama bilgileri](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) toplamasına olanak sağlar. Bazı durumlarda, bir sanal makinenin belleğine erişim isteme gibi, varsayılan olarak seçili olmayan ikinci bir soru vardır.
+
+1. Tercih ettiğiniz iletişim yönteminizi, sizinle iletişim kurmak için iyi bir zaman ve destek dilinizi belirtin.
+
+1. Ardından, sizinle nasıl iletişim kurabileceğinizi bilmemiz için **iletişim bilgileri** bölümünü doldurun.
 
 ### <a name="review--create"></a>Gözden geçir + oluştur
 
 Her sekme için gerekli tüm bilgileri doldurun ve ardından **gözden geçir + oluştur**' u seçin. Destek için göndereceğiniz ayrıntıları denetleyin. Gerekirse değişiklik yapmak için herhangi bir sekmeye dönün. Destek isteği tamamlandıktan memnun olduğunuzda **Oluştur**' u seçin.
 
-Bir destek Aracısı belirttiğiniz yöntemi kullanarak sizinle iletişim kuracaktır. İlk yanıt süresi hakkında daha fazla bilgi için bkz. [Destek kapsamı ve yanıt hızı](https://azure.microsoft.com/support/plans/response/).
+Bir destek mühendisi belirttiğiniz yöntemi kullanarak sizinle iletişim kuracaktır. İlk yanıt süreleri hakkında daha fazla bilgi için bkz. [Destek kapsamı ve yanıt hızı](https://azure.microsoft.com/support/plans/response/).
 
-## <a name="all-support-requests"></a>Tüm destek istekleri
 
-Destek isteklerinin ayrıntılarını ve durumunu, **Yardım +**  >   **tüm destek isteklerini**destekle ' ya giderek görebilirsiniz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-![Tüm destek istekleri](./media/how-to-create-azure-support-request/allrequestslower.png)
-
-Bu sayfada, destek isteklerini **aboneliğe**, **oluşturma** tarihine (UTC) ve **duruma**göre filtreleyebilirsiniz. Ayrıca, bu sayfadaki destek isteklerini sıralayabilir ve arayabilirsiniz.
-
-Destek aracısının yanıt vermesi için gereken önem ve beklenen süre dahil olmak üzere ayrıntıları görüntülemek için bir destek isteği seçin.
-
-İsteğin önem derecesini değiştirmek istiyorsanız, **iş etkisi**' ni seçin. Atanacak bir dizi önem derecesi listesinden seçim yapın.
-
-> [!NOTE]
-> En yüksek önem düzeyi, destek planınıza bağlıdır. [Destek planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/support/plans).
->
->
 Azure 'da kendi kendine yardım destek seçenekleri hakkında daha fazla bilgi edinmek için şu videoyu izleyin:
 
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="next-steps"></a>Sonraki adımlar
+Daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
+* [Azure Destek isteğini yönetme](how-to-manage-azure-support-request.md)
+* [Azure destek bileti REST API](/rest/api/support)
 * [Görüşlerinizi ve önerilerinizi bize gönderin](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) 'da bizimle iletişime katılın
 * [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure) Meslektaşlarınızdan yardım alın

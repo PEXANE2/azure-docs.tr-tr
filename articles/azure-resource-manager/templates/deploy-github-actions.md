@@ -2,13 +2,13 @@
 title: GitHub eylemlerini kullanarak Kaynak Yöneticisi şablonları dağıtma
 description: GitHub eylemleri kullanılarak Azure Resource Manager şablonlarının nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854749"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
 
@@ -78,11 +78,11 @@ GitHub deposuna bir Kaynak Yöneticisi şablonu ekleyin. Bir tane yoksa, aşağ�
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümdeki iş akışı örneği, şablon dosyasının **azuredeploy. JSON**olarak adlandırıldığını varsayar ve deponuzun kök dizininde **Şablonlar** adlı bir klasörde depolanır.
+Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan iş akışı örneği, şablon dosyasının **azuredeploy.js**olarak adlandırıldığını varsayar ve deponuzun kök dizininde **Şablonlar** adlı bir klasörde depolanır.
 
 ## <a name="create-workflow"></a>İş akışı oluştur
 
-İş akışı dosyası, deponuzın kökündeki **. GitHub/Workflow** klasöründe depolanmalıdır. İş akışı dosyası uzantısı **. yıml** ya da **. YAML**olabilir.
+İş akışı dosyası, deponuzın kökündeki **. GitHub/iş akışları** klasöründe depolanmalıdır. İş akışı dosyası uzantısı **. yıml** ya da **. YAML**olabilir.
 
 Bir iş akışı dosyası oluşturabilir, sonra dosyayı depoya gönderebilir/karşıya yükleyebilir ya da aşağıdaki yordamı kullanabilirsiniz:
 

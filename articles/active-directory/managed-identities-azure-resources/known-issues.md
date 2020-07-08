@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 971ec1fcda87a9db61147133604dd0e28cc4d102
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855136"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -104,7 +104,7 @@ Azure kaynakları için Yönetilen kimlikler VM Uzantısı (2019 Ocak 'ta kullan
 
 Bir VM 'yi çalışır durumda taşırsanız, taşıma sırasında çalışmaya devam eder. Ancak, taşıma işleminden sonra VM durdurulur ve yeniden başlatılırsa başlatılamaz. Bu sorun, VM 'nin Azure kaynakları kimliği için yönetilen kimliklere yönelik başvuruyu güncelleştirmediği ve eski kaynak grubunda ona işaret etmeye devam ettiğinden meydana gelir.
 
-**Sorunu** 
+**Geçici çözüm** 
  
 Azure kaynakları için yönetilen kimliklerin doğru değerlerini kullanabilmesi için VM 'de bir güncelleştirme tetikleyin. Azure kaynak kimliği için yönetilen kimliklerin başvurusunu güncelleştirmek üzere bir VM özelliği değişikliği yapabilirsiniz. Örneğin, aşağıdaki komutla sanal makinede yeni bir etiket değeri ayarlayabilirsiniz:
 
@@ -132,6 +132,8 @@ Başka bir dizine taşınmış bir abonelikte Yönetilen kimlikler için geçici
 
  - Sistem tarafından atanan Yönetilen kimlikler için: devre dışı bırakın ve yeniden etkinleştirin. 
  - Kullanıcı tarafından atanan Yönetilen kimlikler için: silin, yeniden oluşturun ve bunları gereken kaynaklara yeniden ekleyin (örneğin, sanal makineler)
+
+Daha fazla bilgi için bkz. [Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Kullanıcı tarafından atanan yönetilen bir kimliği farklı bir kaynak grubuna/aboneliğe taşıma
 

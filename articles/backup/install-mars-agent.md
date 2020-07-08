@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855235"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -71,6 +71,7 @@ Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güven
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP adresleri
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Azure ExpressRoute üzerinden verilerinizi, genel eşlemeyi (eski devreler için
 Ortak eşlemeyi kullanmak için önce aşağıdaki etki alanlarına ve adreslere erişim sağlayın:
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -133,7 +135,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
-1. Yedeklemek istediğiniz makinelerde *Marsagentınstaller. exe* dosyasını çalıştırın.
+1. Yedeklemek istediğiniz makinelerde *MARSagentinstaller.exe* dosyasını çalıştırın.
 1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Ardından **İleri**' yi seçin.
    * Azure Backup, veri anlık görüntülerini Azure 'a göndermeden önce depolamak için önbelleği kullanır.
    * Önbellek konumunda, yedeklediğiniz verilerin boyutunun en az %5 ' i kadar boş alan olmalıdır.
