@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339733"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
@@ -34,7 +34,7 @@ Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fu
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 Koşullu erişim dağıtmanın avantajları şunlardır:
 

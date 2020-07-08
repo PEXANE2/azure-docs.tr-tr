@@ -4,10 +4,10 @@ description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamas
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337894"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
@@ -359,10 +359,10 @@ Protokol hareketi, yönetim belirtimi tarafından tanımlanan bir istek/yanıt d
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| çalışmasını |No |string |**Put belirteci** |
-| tür |No |string |Yerleştirmekte olan belirtecin türü. |
-| name |No |string |Belirtecin uygulandığı "hedef kitle". |
-| dolmadan |Yes |timestamp |Belirtecin süre sonu zamanı. |
+| çalışmasını |Hayır |string |**Put belirteci** |
+| tür |Hayır |string |Yerleştirmekte olan belirtecin türü. |
+| name |Hayır |string |Belirtecin uygulandığı "hedef kitle". |
+| dolmadan |Evet |timestamp |Belirtecin süre sonu zamanı. |
 
 *Name* özelliği, belirtecin ilişkilendirilacağı varlığı tanımlar. Service Bus kuyruk veya konu/abonelik yoludur. *Type* özelliği, belirteç türünü tanımlar:
 
@@ -378,8 +378,8 @@ Yanıt iletisinde aşağıdaki *uygulama özellikleri* değerleri bulunur
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| durum kodu |No |int |HTTP yanıt kodu **[RFC2616]**. |
-| durum-açıklama |Yes |string |Durumun açıklaması. |
+| durum kodu |Hayır |int |HTTP yanıt kodu **[RFC2616]**. |
+| durum-açıklama |Evet |string |Durumun açıklaması. |
 
 İstemci, *yerleştirme belirtecini* sürekli olarak ve mesajlaşma altyapısındaki herhangi bir varlık için çağırabilir. Belirteçler, geçerli istemcinin kapsamına alınır ve geçerli bağlantıya bağlanır, yani bağlantı düşerse sunucu tüm korunan belirteçleri bırakır.
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0120bf3f2bd347ae60677b89ec658f08140af49
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356371"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
@@ -103,4 +103,4 @@ Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Aş
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Geçişli kimlik doğrulaması](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
-- [Çoklu Oturum Açma](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)
+- [Çoklu oturum açma](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)

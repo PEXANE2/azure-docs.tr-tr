@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340442"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin
@@ -55,7 +55,7 @@ Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek içi
 
 Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bir uç nokta oluşturabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Service Bus**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
@@ -169,9 +169,9 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |

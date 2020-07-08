@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus için kullanılabilen tüm işletims
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337536"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus için tanılama günlüklerini etkinleştirme
@@ -25,7 +25,7 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 İşletimsel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Description |
+| Name | Açıklama |
 | ------- | ------- |
 | Etkinlik kimliği | Belirtilen etkinliği tanımlamak için kullanılan iç KIMLIK |
 | EventName | İşlem adı |
@@ -97,7 +97,7 @@ Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır:
 
     !["Tanılama ayarları" bölmesi](./media/service-bus-diagnostic-logs/image3.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama günlükleri** bölmesindeki yapılandırılan arşiv hedefinde görüntülenir.
 

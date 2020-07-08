@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356415"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
@@ -44,7 +44,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| URL | Bağlantı noktası | Description |
+| URL | Bağlantı noktası | Açıklama |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |

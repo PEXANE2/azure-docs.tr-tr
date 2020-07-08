@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357877"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
@@ -265,7 +265,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
-    | Description | *Bir açıklama girin* |  |
+    | Açıklama | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
@@ -274,7 +274,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
 5. **Kapsam filtresi** sekmesine gidin ve aşağıdaki yan tümcesiyle **tek bir kapsam filtresi grubu** ekleyin:
 
-    | Öznitelik | Operatör | Değer |
+    | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Kullanıcı\_ |
 
@@ -284,13 +284,13 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştirme |
+    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştir |
 
     Başka bir örnekte, UserType özniteliğinin değerini diğer özelliklerden türetmek istiyorsunuz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle sonlanıyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir <em>@partners.fabrikam123.org</em> . Şunun gibi bir ifade uygulayabilirsiniz:
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | İfade | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "üye", "Konuk"), hata ("UserType belirleme Için userPrincipalName yok")) | Olmayan | Güncelleştirme |
+    | Expression | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "üye", "Konuk"), hata ("UserType belirleme Için userPrincipalName yok")) | Olmayan | Güncelleştir |
 
 7. Gelen kuralını oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -307,7 +307,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
     | Name | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
-    | Description | *Bir açıklama girin* ||
+    | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
@@ -316,7 +316,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren **tek bir kapsam filtresi grubu** ekleyin:
 
-    | Öznitelik | Operatör | Değer |
+    | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |
@@ -327,7 +327,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | Olmayan | Güncelleştirme |
+    | Direct | UserType | UserType | Olmayan | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye tıklayın.
 

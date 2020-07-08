@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357418"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
@@ -143,7 +143,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
-    | Description | *Özel bir açıklama sağlayın* |  |
+    | Açıklama | *Özel bir açıklama sağlayın* |  |
     | Bağlı sistem | *Şirket içi Active Directory bağlayıcısını seçme* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
@@ -155,7 +155,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştirme |
+    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştir |
 
 7. Gelen kuralı oluşturmak için **Ekle**' yi seçin.
 
@@ -172,7 +172,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
     | Name | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
-    | Description | *Bir açıklama girin* ||
+    | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
@@ -181,7 +181,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren tek bir kapsam filtresi grubu ekleyin:
 
-    | Öznitelik | Operatör | Değer |
+    | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |
@@ -192,7 +192,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştirme |
+    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye kapatın.
 

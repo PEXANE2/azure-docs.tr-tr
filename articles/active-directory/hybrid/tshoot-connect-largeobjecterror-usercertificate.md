@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356177"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: Kullanıcısertifikası özniteliği nedeniyle LargeObject hatalarını Işleme
@@ -105,7 +105,7 @@ Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak
 7. Düzenleme ekranında **kapsam filtresi** sekmesini seçin.
 8. Kapsam filtresi yapılandırması ' nı aklınızda edin. OOB eşitleme kuralını kullanıyorsanız, aşağıdakiler de dahil olmak üzere **iki yan tümce içeren bir kapsam filtresi grubu**olmalıdır:
 
-    | Öznitelik | Operatör | Değer |
+    | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |
@@ -118,7 +118,7 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
-    | Description | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
+    | Açıklama | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* |
     | Bağlı sistem nesne türü | **kullanıcısını** | |
     | Meta veri deposu nesne türü | **kişiler** | |
@@ -131,7 +131,7 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
 
     | Öznitelik | Değer |
     | --- | --- |
-    | Akış Türü |**İfadesini** |
+    | Akış Türü |**Expression** |
     | Target özniteliği |**userCertificate** |
     | Kaynak özniteliği |*Aşağıdaki Ifadeyi kullanın*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

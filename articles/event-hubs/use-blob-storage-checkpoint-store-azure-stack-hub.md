@@ -4,10 +4,10 @@ description: Bu makalede, Azure Stack hub 'ında (Önizleme) Event Hubs bir dene
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322362"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob depolamayı denetim noktası deposu olarak kullanma-Azure Stack hub 'da Event Hubs (Önizleme)

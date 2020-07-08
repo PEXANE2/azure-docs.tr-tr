@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85338207"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir

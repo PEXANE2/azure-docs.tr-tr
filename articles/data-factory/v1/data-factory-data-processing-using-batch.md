@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85321414"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
@@ -665,7 +665,7 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
 
     Her bir dilim için başlangıç saati, önceki JSON kod parçacığında bir **Dilimestart** sistem değişkeni tarafından temsil edilir. Her dilimin başlangıç zamanları aşağıda verilmiştir.
 
-    | **'In** | **Başlangıç zamanı**          |
+    | **'In** | **Başlangıç saati**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**: 00:00 |
     | 2         | 2015-11-16T**01**: 00:00 |
@@ -675,7 +675,7 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
 
     **FolderPath** , dilim başlangıç saatinin yıl, ay, gün ve saat bölümü (**dilimestart**) kullanılarak hesaplanır. Bir giriş klasörünün bir dilimle nasıl eşlenildiği aşağıda verilmiştir.
 
-    | **'In** | **Başlangıç zamanı**          | **Giriş klasörü**  |
+    | **'In** | **Başlangıç saati**          | **Giriş klasörü**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01** |
@@ -722,7 +722,7 @@ Bu adımda, çıkış verilerini göstermek için AzureBlob türünde başka bir
 
     Her giriş dilimi için bir çıktı blobu/dosyası oluşturulur. Her bir dilim için bir çıktı dosyası adı verilmiştir. Tüm çıkış dosyaları bir çıkış klasöründe oluşturulur `mycontainer\\outputfolder` .
 
-    | **'In** | **Başlangıç zamanı**          | **Çıktı dosyası**       |
+    | **'In** | **Başlangıç saati**          | **Çıktı dosyası**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01.txt** |
@@ -960,7 +960,7 @@ Data Factory ve Batch özellikleri hakkında daha fazla bilgi edinmek için bu �
 Verileri tamamladıktan sonra, Power BI gibi çevrimiçi araçlarla kullanabilirsiniz. Power BI ve Azure 'da nasıl kullanacağınızı anlamanıza yardımcı olacak bağlantılar aşağıda verilmiştir:
 
 * [Power BI bir veri kümesini keşfet](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Power BI Desktop ile çalışmaya başlama](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
+* [Power BI Desktop’ı kullanmaya başlayın](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
 * [Power BI verileri yenileme](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure ve Power BI: temel genel bakış](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 

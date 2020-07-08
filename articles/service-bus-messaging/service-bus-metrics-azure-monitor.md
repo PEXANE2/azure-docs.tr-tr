@@ -4,10 +4,10 @@ description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyrukla
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340287"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
@@ -54,10 +54,10 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| Gelen Istekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Başarılı Istekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+| Gelen İstekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+|Başarılı İstekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Sunucu hataları|Belirli bir süre içinde Service Bus hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Belirtilen bir süre içinde Kullanıcı hataları nedeniyle işlenmeyen isteklerin sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Kısıtlanmış Istekler|Kullanım aşıldığı için kısıtlanan isteklerin sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -72,10 +72,10 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|Gelen Iletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Giden Iletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+|Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 | İletiler| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
 | ActiveMessages| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
 | Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/>Boyut: EntityName |
@@ -90,9 +90,9 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|ActiveConnection sayısı|Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
+|ActiveConnections|Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Kapalı bağlantılar |Kapalı bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 
@@ -105,7 +105,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 > 
 > İzleyebilmeniz için kullanabileceğiniz diğer ölçüm: **Kısıtlanmış istekleriniz**. Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığında bir sorun olması gerekmez. Daha fazla bilgi için bkz. [Azure Service Bus Premium katmanında daraltma](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 |Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
 |Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
@@ -114,7 +114,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Description|
+|Boyut adı|Açıklama|
 | ------------------- | ----------------- |
 |EntityName| Service Bus ad alanı altındaki mesajlaşma varlıklarını destekler.|
 

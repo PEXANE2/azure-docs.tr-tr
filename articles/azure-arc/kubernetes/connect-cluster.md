@@ -10,10 +10,10 @@ description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
 ms.openlocfilehash: ec77609e5ee30cd3451c52635e530eb7153bc9a0
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341384"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
@@ -64,7 +64,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP-->`https://:443`
 * 9418 numaralı bağlantı noktasında TCP-->`git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |

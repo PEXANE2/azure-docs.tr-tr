@@ -4,10 +4,10 @@ description: Bu makalede, AMQP (gelişmiş mesajlaşma sıraya alma Protokolü) 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340185"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
