@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932103"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085200"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesi için kaynakları yönetme
 
@@ -34,17 +34,17 @@ Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıld�
     ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı kullanıcı arabiriminden, **Yarn** > **hızlı bağlantılar** > **etkin** > **Kaynak Yöneticisi Kullanıcı arabirimine**gidin.
+   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı kullanıcı arabiriminden, **Yarn**  >  **hızlı bağlantılar**  >  **etkin**  >  **Kaynak Yöneticisi Kullanıcı arabirimine**gidin.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Spark uygulamaları için kümeleri iyileştirme
 
-Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanılabilecek üç temel parametre, `spark.executor.instances` `spark.executor.cores`ve `spark.executor.memory`' dir. Yürütücü, Spark uygulaması için başlatılan bir işlemdir. Çalışan düğümünde çalışır ve uygulama için görevleri yürütmekten sorumludur. Her kümenin varsayılan yürütmelerin sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu bilgiler, ' de `spark-defaults.conf` küme baş düğümlerinde depolanır.
+Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanılabilecek üç temel parametre `spark.executor.instances` , ve ' dir `spark.executor.cores` `spark.executor.memory` . Yürütücü, Spark uygulaması için başlatılan bir işlemdir. Çalışan düğümünde çalışır ve uygulama için görevleri yürütmekten sorumludur. Her kümenin varsayılan yürütmelerin sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu bilgiler, ' de `spark-defaults.conf` küme baş düğümlerinde depolanır.
 
 Üç yapılandırma parametresi küme düzeyinde yapılandırılabilir (küme üzerinde çalışan tüm uygulamalar için) veya her bir uygulama için de belirlenebilir.
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Ambarı Kullanıcı arabirimini kullanarak parametreleri değiştirme
 
-1. Ambarı kullanıcı arabiriminden **Spark2** > **configs** > **Custom Spark2-Defaults**adresine gidin.
+1. Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults**adresine gidin.
 
     ![Ambarı özel kullanarak parametreleri ayarlama](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Ambarı özel kullanarak parametreleri ayarlama")
 
@@ -58,38 +58,44 @@ Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanıl
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulamanın parametrelerini değiştirme
 
-Jupyter not defterinde çalışan uygulamalar için, yapılandırma değişikliğini yapmak için `%%configure` Magic 'i kullanabilirsiniz. İdeal olarak, ilk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Bunun yapılması, yapılandırmanın, oluşturulduğu zaman, uygun bir oturuma uygulanmasını sağlar. Uygulamada sonraki bir aşamada yapılandırmayı değiştirmek istiyorsanız `-f` parametresini kullanmanız gerekir. Ancak bunu yaparak uygulamadaki tüm ilerleme durumu kaybedilir.
+Jupyter not defterinde çalışan uygulamalar için, `%%configure` yapılandırma değişikliğini yapmak için Magic 'i kullanabilirsiniz. İdeal olarak, ilk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Bunun yapılması, yapılandırmanın, oluşturulduğu zaman, uygun bir oturuma uygulanmasını sağlar. Uygulamada sonraki bir aşamada yapılandırmayı değiştirmek istiyorsanız parametresini kullanmanız gerekir `-f` . Ancak bunu yaparak uygulamadaki tüm ilerleme durumu kaybedilir.
 
 Aşağıdaki kod parçacığında, Jupyıter 'da çalışan bir uygulama için yapılandırmanın nasıl değiştirileceği gösterilmektedir.
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 Yapılandırma parametrelerinin, örnek sütununda gösterildiği gibi, bir JSON dizesi olarak geçirilmesi ve Magic 'in sonraki satırında olması gerekir.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Spark-gönder kullanılarak gönderilen bir uygulama için parametreleri değiştirme
 
-Aşağıdaki komut kullanılarak `spark-submit`gönderilen toplu uygulama için yapılandırma parametrelerinin nasıl değiştirileceği hakkında bir örnektir.
+Aşağıdaki komut kullanılarak gönderilen toplu uygulama için yapılandırma parametrelerinin nasıl değiştirileceği hakkında bir örnektir `spark-submit` .
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Kıvrımlı kullanılarak gönderilen bir uygulama için parametreleri değiştirme
 
 Aşağıdaki komut, kıvrımlı kullanılarak gönderilen toplu uygulama için yapılandırma parametrelerinin nasıl değiştirileceği hakkında bir örnektir.
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Spark Thrift sunucusunda bu parametreleri değiştirme
 
 Spark Thrift Server, Spark kümesine JDBC/ODBC erişimi sağlar ve Spark SQL sorgularına hizmet vermek için kullanılır. Power BI, Tableau vb. gibi araçlar, Spark SQL sorgularını Spark uygulaması olarak yürütmek üzere Spark Thrift sunucusuyla iletişim kurmak için ODBC protokolünü kullanın. Bir Spark kümesi oluşturulduğunda, her bir baş düğümde bir tane olmak üzere Spark Thrift sunucusu 'nun iki örneği başlatılır. Her Spark Thrift sunucusu, YARN Kullanıcı arabiriminde Spark uygulaması olarak görülebilir.
 
-Spark Thrift sunucusu Spark dinamik yürütücü ayırmayı kullanır ve bu nedenle `spark.executor.instances` kullanılmaz. Bunun yerine, Spark Thrift sunucusu `spark.dynamicAllocation.maxExecutors` , `spark.dynamicAllocation.minExecutors` yürütücü sayısını belirtmek için ve kullanır. Yapılandırma parametreleri `spark.executor.cores`ve `spark.executor.memory` yürütücü boyutunu değiştirmek için kullanılır. Aşağıdaki adımlarda gösterildiği gibi bu parametreleri değiştirebilirsiniz:
+Spark Thrift sunucusu Spark dinamik yürütücü ayırmayı kullanır ve bu nedenle `spark.executor.instances` kullanılmaz. Bunun yerine, Spark Thrift sunucusu `spark.dynamicAllocation.maxExecutors` , `spark.dynamicAllocation.minExecutors` yürütücü sayısını belirtmek için ve kullanır. Yapılandırma parametreleri `spark.executor.cores` ve `spark.executor.memory` yürütücü boyutunu değiştirmek için kullanılır. Aşağıdaki adımlarda gösterildiği gibi bu parametreleri değiştirebilirsiniz:
 
-* Parametreleri `spark.dynamicAllocation.maxExecutors`güncelleştirmek için `spark.dynamicAllocation.minExecutors` **Advanced spark2-Thrift-parlak conf** kategorisini genişletin.
+* Parametreleri güncelleştirmek için **Advanced spark2-Thrift-parlak conf** kategorisini genişletin `spark.dynamicAllocation.maxExecutors` `spark.dynamicAllocation.minExecutors` .
 
     ![Spark Thrift sunucusunu yapılandırma](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Spark Thrift sunucusunu yapılandırma")
 
-* Parametreleri `spark.executor.cores`güncelleştirmek için `spark.executor.memory` **Custom spark2-Thrift-parlak conf** kategorisini genişletin.
+* Parametreleri güncelleştirmek için **Custom spark2-Thrift-parlak conf** kategorisini genişletin `spark.executor.cores` `spark.executor.memory` .
 
     ![Spark Thrift sunucu parametresini yapılandırma](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Spark Thrift sunucu parametresini yapılandırma")
 
@@ -97,7 +103,7 @@ Spark Thrift sunucusu Spark dinamik yürütücü ayırmayı kullanır ve bu nede
 
 Spark Thrift sunucu sürücüsü belleği, baş düğümün Toplam RAM boyutu 14 GB 'den büyük olduğundan, baş düğüm RAM boyutunun %25 ' i olarak yapılandırılır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, sürücü belleği yapılandırmasını değiştirmek için, ambarı Kullanıcı arabirimini kullanabilirsiniz:
 
-Ambarı kullanıcı arabiriminden **Spark2** > **configs** > **Advanced Spark2-env**dizinine gidin. Sonra **spark_thrift_cmd_opts**için değeri sağlayın.
+Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Advanced Spark2-env**dizinine gidin. Sonra **spark_thrift_cmd_opts**için değeri sağlayın.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Spark küme kaynaklarını geri kazanma
 

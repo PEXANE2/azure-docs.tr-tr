@@ -5,15 +5,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 35835e1508311bd31008a2335a8c543e558686c2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085948"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
 
@@ -29,7 +29,7 @@ Ayrıca, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri 
 > [!NOTE]  
 > HDInsight ile iş akışlarını tanımlamaya yönelik başka bir seçenek Azure Data Factory kullanmaktır. Data Factory hakkında daha fazla bilgi edinmek için bkz. [Data Factory Ile Apache Pig ve Apache Hive kullanma](../data-factory/transform-data.md). Kurumsal Güvenlik Paketi kümeleriyle Oozie 'yi kullanmak için lütfen bkz. [HDInsight Hadoop kümelerinde Apache Oozie 'yi kurumsal güvenlik paketi Ile çalıştırma](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -47,9 +47,11 @@ Bu belgede kullanılan iş akışı iki eylem içerir. Eylemler, Hive, Sqoop, Ma
 
 1. Hive eylemi, HDInsight 'ta bulunan içinden kayıtları ayıklamak için HiveQL betiğini çalıştırır `hivesampletable` . Her veri satırı, belirli bir mobil cihazdan ziyaret işlemini açıklar. Kayıt biçimi aşağıdaki metin gibi görünür:
 
-        8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-        23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-        23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```output
+    8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+    23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+    23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```
 
     Bu belgede kullanılan Hive betiği, Android veya iPhone gibi her platformun toplam ziyaretlerini sayar ve sayıları yeni bir Hive tablosuna depolar.
 
@@ -240,11 +242,13 @@ Oozie iş akışı tanımları, XML işlem tanımı dili olan Hadoop Işlem tan�
 
     Aşağıdaki metin gibi bir çıktı alırsınız:
 
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to oozietest
-        1>
+    ```output
+    locale is "en_US.UTF-8"
+    locale charset is "UTF-8"
+    using default charset "UTF-8"
+    Default database being set to oozietest
+    1>
+    ```
 
 3. `1>` isteminde aşağıdaki satırları girin:
 
@@ -268,8 +272,10 @@ Oozie iş akışı tanımları, XML işlem tanımı dili olan Hadoop Işlem tan�
 
     Aşağıdaki metin gibi bir çıktı görürsünüz:
 
-        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        oozietest       dbo             mobiledata      BASE TABLE
+    ```output
+    TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+    oozietest       dbo             mobiledata      BASE TABLE
+    ```
 
 4. İstemine girerek TSQL yardımcı programından çıkın `exit` `1>` .
 
@@ -424,20 +430,22 @@ Aşağıdaki adımlarda, kümedeki Oozie iş akışlarını göndermek ve yönet
 
     Bu, aşağıdaki metin gibi bilgileri döndürür:
 
-        Job ID : 0000005-150622124850154-oozie-oozi-W
-        ------------------------------------------------------------------------------------------------------------------------------------
-        Workflow Name : useooziewf
-        App Path      : wasb:///tutorials/useoozie
-        Status        : PREP
-        Run           : 0
-        User          : USERNAME
-        Group         : -
-        Created       : 2015-06-22 15:06 GMT
-        Started       : -
-        Last Modified : 2015-06-22 15:06 GMT
-        Ended         : -
-        CoordAction ID: -
-        ------------------------------------------------------------------------------------------------------------------------------------
+    ```output
+    Job ID : 0000005-150622124850154-oozie-oozi-W
+    ------------------------------------------------------------------------------------------------------------------------------------
+    Workflow Name : useooziewf
+    App Path      : wasb:///tutorials/useoozie
+    Status        : PREP
+    Run           : 0
+    User          : USERNAME
+    Group         : -
+    Created       : 2015-06-22 15:06 GMT
+    Started       : -
+    Last Modified : 2015-06-22 15:06 GMT
+    Ended         : -
+    CoordAction ID: -
+    ------------------------------------------------------------------------------------------------------------------------------------
+    ```
 
     Bu işin durumu vardır `PREP` . Bu durum işin oluşturulduğunu, ancak başlatılmadığını gösterir.
 
@@ -464,14 +472,16 @@ Aşağıdaki adımlarda, kümedeki Oozie iş akışlarını göndermek ve yönet
 
     Döndürülen bilgiler aşağıdaki metin gibidir:
 
-        deviceplatform  count
-        Android 31591
-        iPhone OS       22731
-        proprietary development 3
-        RIM OS  3464
-        Unknown 213
-        Windows Phone   1791
-        (6 rows affected)
+    ```output
+    deviceplatform  count
+    Android 31591
+    iPhone OS       22731
+    proprietary development 3
+    RIM OS  3464
+    Unknown 213
+    Windows Phone   1791
+    (6 rows affected)
+    ```
 
 Oozie komutu hakkında daha fazla bilgi için bkz. [Apache Oozie komut satırı aracı](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 

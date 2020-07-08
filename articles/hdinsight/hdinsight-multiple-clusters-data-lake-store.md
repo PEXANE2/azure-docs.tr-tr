@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85509226"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083959"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
 
@@ -79,7 +79,9 @@ Yeni bir Azure Data Lake Storage hesabı oluşturulduğunda, kök dizin, Access-
 
 Bu ayarlar, [Yarn 247](https://hwxmonarch.atlassian.net/browse/YARN-247)' de yakalanan belirli bir HDInsight kullanım örneğini etkileyecek şekilde bilinmektedir. İş gönderimleri şuna benzer bir hata iletisiyle başarısız olabilir:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Daha önce bağlı olan Yarn Jira ile bağlantılı olarak, ortak kaynakları yerelleştirirken, yorumdur, uzak dosya sistemindeki izinlerini denetleyerek, istenen tüm kaynakların gerçekten genel olduğunu doğrular. Bu koşula uymayan herhangi bir LocalResource, yerelleştirme için reddedilir. İzinleri denetle, "diğerleri" için dosyaya okuma erişimi içerir. Bu senaryo, Azure Data Lake ' de HDInsight kümeleri barındırırken kullanıma hazır değildir, çünkü Azure Data Lake tüm "diğer" erişimini kök klasör düzeyinde reddeder.
 

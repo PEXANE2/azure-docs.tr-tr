@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195588"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082786"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
 
@@ -142,7 +142,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     }
     ```
 
-1. **Çözüm Gezgini**, **Web. config** dosyasını açmak için çift tıklayın.
+1. **Çözüm Gezgini**, açmak için **Web.config** çift tıklayın.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
@@ -652,7 +652,7 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
 1. Yeni SQL Veritabanı için aşağıdaki ayarları kullanın:
 
-   | Ayar       | Önerilen değer | Açıklama |
+   | Ayar       | Önerilen değer | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Veritabanı adı** | *ContosoTeamsDatabase* | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Abonelik** | *Aboneliğiniz*  | Önbelleği oluşturmak ve App Service’i barındırmak için kullandığınız aynı aboneliği seçin. |
@@ -661,7 +661,7 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
 1. **Sunucu** bölümünde, **Gerekli ayarları yapılandır** > **Yeni sunucu oluştur** seçeneklerine tıklayın ve aşağıdaki bilgileri girip **Seç** düğmesine tıklayın:
 
-   | Ayar       | Önerilen değer | Açıklama |
+   | Ayar       | Önerilen değer | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
@@ -680,8 +680,8 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
     | Yer tutucu | Önerilen değer |
     | --- | --- |
-    | *{your_username}* | Yeni oluşturduğunuz veritabanı sunucusu için **sunucu yöneticisi oturum açma bilgilerini** kullanın. |
-    | *{your_password}* | Yeni oluşturduğunuz veritabanı sunucusu için parolayı kullanın. |
+    | *{your_username}* | Yeni oluşturduğunuz sunucu için **Sunucu Yöneticisi oturum açma** bilgilerini kullanın. |
+    | *{your_password}* | Az önce oluşturduğunuz sunucu için parolayı kullanın. |
 
     Uygulama Ayarı olarak kullanıcı adını ve parolayı eklediğinizde kullanıcı adınız ve parolanız kodunuza dahil edilmez. Bu yaklaşım, bu kimlik bilgilerinin korunmasına yardımcı olur.
 
@@ -701,7 +701,7 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
     Aşağıdaki tablo örnek uygulamadaki her eylem bağlantısını açıklar:
 
-    | Eylem | Açıklama |
+    | Eylem | Description |
     | --- | --- |
     | Yeni Oluştur |Yeni bir Ekip oluşturun. |
     | Sezonu Oynat |Oyun sezonunu oynatın, ekip istatistiklerini güncelleştirin ve veritabanından tüm güncel olmayan ekip verilerini temizleyin. |

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085727"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Değişiklik verilerini yakalama (CDC) kullanarak Azure SQL yönetilen örneğinden Azure depolama 'ya artımlı olarak veri yükleme
 
@@ -51,7 +51,7 @@ Bu öğreticide, aşağıdaki işlemleri gerçekleştiren bir işlem hattı olu�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure SQL veritabanı yönetilen örneği**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Bir Azure SQL veritabanı yönetilen örneği yoksa, oluşturma adımları için [Azure SQL veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **RAW**adlı bir kapsayıcı oluşturun. 
 
@@ -113,7 +113,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    Azure veri fabrikasının adı **genel olarak benzersiz**olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+    *"ADFTutorialDataFactory" Veri Fabrikası adı kullanılamıyor.*
 3. **Sürüm** için **V2**'yi seçin.
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
 5. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
@@ -278,12 +278,12 @@ Bu adımda, bir **arama etkinliği**kullanarak değişiklik tablosunda bulunan d
    2. **Sorgu Kullan** için **Sorgu**’yu seçin.
    3. **Sorgu**için aşağıdakileri girin.
 
-    ```sql
-    DECLARE @from_lsn binary(10), @to_lsn binary(10); 
-    SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
-    SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
-    ```
+      ```sql
+      DECLARE @from_lsn binary(10), @to_lsn binary(10); 
+      SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
+      SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
+      SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
+      ```
 
    ![Kopyalama Etkinliği - kaynak ayarları](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-settings.png)
 

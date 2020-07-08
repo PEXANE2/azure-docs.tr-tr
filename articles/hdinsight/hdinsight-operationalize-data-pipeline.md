@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022837"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082803"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -235,7 +235,7 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     | nameNode | HDInsight kümenize eklenen Azure depolama kapsayıcısının tam yolu. |
     | Jobtracker 'a | Etkin kümenizin YARN baş düğümüne ait iç ana bilgisayar adı. Ambarı giriş sayfasında, hizmetler listesinden YARN ' yi seçin ve ardından etkin Kaynak Yöneticisi ' ni seçin. Ana bilgisayar adı URI 'SI sayfanın en üstünde görüntülenir. 8050 numaralı bağlantı noktasını ekleyin. |
     | Adı | Hive eylemleri planlanırken kullanılan YARN kuyruğunun adı. Varsayılan olarak bırakın. |
-    | Oozie.. System. libpath kullanın | Doğru olarak bırakın. |
+    | oozie.use.sysdıtem. libpath | Doğru olarak bırakın. |
     | Uygulama tabanı dizininin | Oozie iş akışını ve destekleyici dosyaları dağıttığınız Azure depolama 'daki alt klasörün yolu. |
     | Oozie. WF. Application. Path | Çalıştırılacak Oozie iş akışının konumu `workflow.xml` . |
     | hiveScriptLoadPartition | Azure depolama 'daki yol, Hive sorgu dosyasına `hive-load-flights-partition.hql` . |
@@ -422,7 +422,9 @@ Oozie iş akışınızı ( `workflow.xml` ), Hive sorgularını ( `hive-load-fli
 
 1. Durum başarılı olduğunda, ekli satırları görüntülemek için SQL veritabanı tablosunu sorgulayın. Azure portal kullanarak, SQL veritabanınızın bölmesine gidin, **Araçlar**' ı seçin ve **sorgu düzenleyicisini**açın.
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 İş akışı tek bir test günü boyunca çalışıyor olduğuna göre, bu iş akışını günlük olarak çalışacak şekilde iş akışını zamanlayan bir düzenleyiciyle sardırabilirsiniz.
 

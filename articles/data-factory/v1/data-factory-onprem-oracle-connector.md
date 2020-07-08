@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084299"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Oracle 'a veya şirket içi verileri kopyalama
 
@@ -70,7 +70,7 @@ Bu Oracle Bağlayıcısı iki sürücü sürümünü destekler:
 
 - **.Net Için oracle veri sağlayıcısı**: Oracle veri sağlayıcısı kullanarak veya Oracle 'dan veri kopyalayabilirsiniz. Bu bileşen [Windows Için Oracle Data Access Components](https://www.oracle.com/technetwork/topics/dotnet/downloads/)'a dahildir. Ağ geçidinin yüklü olduğu makineye ilgili sürümü (32-bit veya 64-bit) yükleme. [Oracle veri sağlayıcısı .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) , 10G sürüm 2 ve sonraki sürümlerine erişebilir Oracle Database.
 
-    **Xcopy yükleme**' yi seçerseniz Readme. htm dosyasında açıklanan adımları uygulayın. Kullanıcı arabirimine (XCopy yükleyicisi değil) sahip yükleyiciyi seçmenizi öneririz.
+    **Xcopy yükleme**' yi seçerseniz, readme.htm dosyasında açıklanan adımları uygulayın. Kullanıcı arabirimine (XCopy yükleyicisi değil) sahip yükleyiciyi seçmenizi öneririz.
 
     Sağlayıcıyı yükledikten sonra, hizmetler uygulamasını veya Veri Yönetimi ağ geçidi Configuration Manager kullanarak makinenizde Veri Yönetimi ağ geçidi konak hizmetini yeniden başlatın.
 
@@ -101,15 +101,15 @@ Aşağıdaki tabloda, Oracle bağlantılı hizmetine özgü JSON öğeleri açı
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |**Type** özelliği **OnPremisesOracle**olarak ayarlanmalıdır. |Yes |
+| tür |**Type** özelliği **OnPremisesOracle**olarak ayarlanmalıdır. |Evet |
 | driverType | Bir Oracle veritabanından veri kopyalamak için kullanılacak sürücüyü belirtin. İzin verilen değerler **Microsoft** ve **ODP** (varsayılan). Sürücü ayrıntıları için [desteklenen sürüm ve yükleme](#supported-versions-and-installation) bölümüne bakın. | Hayır |
-| Dizisi | **ConnectionString** özelliği için Oracle Database örneğine bağlanmak için gereken bilgileri belirtin. | Yes |
-| gatewayName | Şirket içi Oracle sunucusuna bağlanmak için kullanılan ağ geçidinin adı. |Yes |
+| Dizisi | **ConnectionString** özelliği için Oracle Database örneğine bağlanmak için gereken bilgileri belirtin. | Evet |
+| gatewayName | Şirket içi Oracle sunucusuna bağlanmak için kullanılan ağ geçidinin adı. |Evet |
 
 **Örnek: Microsoft sürücüsünü kullanma**
 
 > [!TIP]
-> "ORA-01025: UPı parametresi aralık dışında" bir hata görürseniz ve Oracle sürümü 8i ise, Bağlantı dizenizi ekleyin `WireProtocolMode=1` ve yeniden deneyin:
+> "ORA-01025: UPı parametresi aralık dışında" bir hata görürseniz ve Oracle sürümü 8i ise, `WireProtocolMode=1` Bağlantı dizenizi ekleyin ve yeniden deneyin:
 
 ```json
 {
@@ -171,7 +171,7 @@ Kopyalama etkinliğinde, kaynak **Oraclesource** türü olduğunda, **typeproper
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Verileri okumak için özel sorguyu kullanın. |Bir SQL sorgu dizesi. Örneğin, " **tablom**arasından \* Seç". <br/><br/>Belirtilmemişse, bu SQL deyimleri yürütülür: " \* **tablom**arasından seç" |Hayır<br />( **veri kümesi** **TableName** belirtilmişse) |
+| oracleReaderQuery |Verileri okumak için özel sorguyu kullanın. |Bir SQL sorgu dizesi. Örneğin, " \* **tablom**arasından seç". <br/><br/>Belirtilmemişse, bu SQL deyimleri yürütülür: " \* **tablom**arasından seç" |Hayır<br />( **veri kümesi** **TableName** belirtilmişse) |
 
 ### <a name="oraclesink"></a>OracleSink
 
@@ -556,7 +556,9 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 
 **Hata iletisi**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **Olası nedenler**
 
@@ -567,22 +569,26 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 
 * Oracle için .NET sağlayıcısını yüklemediyseniz, [uygulamayı yükleyip](https://www.oracle.com/technetwork/topics/dotnet/downloads/)senaryoyu yeniden deneyin.
 * Sağlayıcıyı yükledikten sonra bile hata iletisini görürseniz, aşağıdaki adımları izleyin:
-    1. <sistem diski\>klasöründen .NET 2,0 için makine yapılandırma dosyasını açın: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. **.Net Için Oracle veri sağlayıcısı**aratın. Aşağıdaki örnekte gösterildiği gibi bir girişi, **System. Data** > **DbProviderFactory**altında bulabilirsiniz:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Bu girdiyi şu .NET 4,0 klasöründeki Machine. config dosyasına kopyalayın: <sistem diski\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ardından sürümü 4. xxx. x.x. olarak değiştirin
-* \> **Gacutil/i [Provider Path]** çalıştırarak genel derleme önbelleği 'ne (GAC) <ODP.net yüklü yolu \ 11.2.0 \ Client_1 \odp.net\bin\4\oracle.dataaccess.dll yükleme.
+    1. <sistem diski:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config klasöründen .NET 2,0 için makine yapılandırma dosyasını açın \> .
+    2. **.Net Için Oracle veri sağlayıcısı**aratın. Aşağıdaki örnekte gösterildiği gibi bir girişi, **System. Data**  >  **DbProviderFactory**altında bulabilirsiniz:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Bu girdiyi şu .NET 4,0 klasöründeki machine.config dosyasına kopyalayın: <sistem diski \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ardından sürümü 4. xxx. x.x. olarak değiştirin
+* ODP.NET yüklü\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll yolunu <\> , genel derleme önbelleği 'ne (GAC), **Gacutil/i [Provider Path]** çalıştırarak yükleme.
 
 ### <a name="problem-2-datetime-formatting"></a>Sorun 2: Tarih/saat biçimlendirmesi
 
 **Hata iletisi**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **Çözünürlük**
 
 Kopyalama etkinliğinizdeki sorgu dizesini, tarihlerin Oracle veritabanınızda nasıl yapılandırıldığına bağlı olarak ayarlamanız gerekebilir. İşte bir örnek ( **to_date** işlevi kullanılarak):
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle için tür eşleme

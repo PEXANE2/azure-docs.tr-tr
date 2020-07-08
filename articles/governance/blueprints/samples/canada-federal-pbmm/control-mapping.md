@@ -3,18 +3,18 @@ title: Kanada Federal pbmm şema örnek denetimleri
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: e9153972938a572f8d37610e5721f7b0a578157c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005708"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085642"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları Kanada Federal korunan B, Orta bütünlük, orta kullanılabilirlik (pbmm) şema örneği, Kanada Federal pbmm denetimlerine nasıl eşlenir. Denetimler hakkında daha fazla bilgi için bkz. [Kanada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4).
 
-Aşağıdaki eşlemeler **Kanada Federal PBMM** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[önizlemeyi\]bulun ve seçin: Kanada Federal pbmm denetimleri denetim** yerleşik ilke girişim.
+Aşağıdaki eşlemeler **Kanada Federal PBMM** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : Kanada Federal pbmm denetimleri denetim** yerleşik ilke girişim.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md)bakın.
@@ -85,8 +85,8 @@ Azure SQL veritabanı için gelişmiş veri güvenliği 'nin veri bulma ve sın�
 
 Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı olduğunu izlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atayarak uzaktan erişimi izleyip denetlemenize yardımcı olur. Şema Ayrıca, parola olmadan hesaplardan gelen uzak bağlantılara izin veren Linux sanal makinelerini denetleyen ilke tanımları atar. Ayrıca, şema, depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
 
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
@@ -96,11 +96,11 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı
 
 Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve yönetimi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -108,31 +108,31 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 
 - Tanılama ayarını denetle
 - SQL Server üzerinde denetim etkinleştirilmelidir
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) denetim Incelemesi, analiz ve raporlama | Merkezi Inceleme ve analiz
 
 Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve analizi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-12-audit-generation"></a>AU-12 denetim oluşturma
 
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Bu ilke tanımları, Azure sanal makinelerinde Log Analytics aracısının dağıtımını ve diğer Azure Kaynak türleri için denetim ayarları yapılandırmasını denetler ve uygular. Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Ayrıca, denetim ve gelişmiş veri güvenliği SQL Server 'lar üzerinde yapılandırılır.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server üzerinde denetim etkinleştirilmelidir
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma
@@ -140,13 +140,13 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) en az Işlevsellik | Yetkili yazılım/beyaz listeleme
 
-Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama beyaz listeleme çözümüdür. Uygulama denetimi, sanal makineleriniz için onaylanan uygulama listeleri oluşturmanıza yardımcı olur. Bu şema, bir uygulama beyaz listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek, akıllı ve otomatikleştirilmiş bir uçtan uca uygulama izin verilenler listesi çözümüdür. Uygulama denetimi, sanal makineleriniz için onaylanan uygulama listeleri oluşturmanıza yardımcı olur. Bu şema, bir uygulama izin verilenler listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 Kullanıcı tarafından yüklenen yazılım
 
-Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama beyaz listeleme çözümüdür. Uygulama denetimi, yazılım kısıtlama ilkeleriyle uyumluluğu zorlamanıza ve izlemenize yardımcı olabilir. Bu şema, bir uygulama beyaz listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek, akıllı ve otomatikleştirilmiş bir uçtan uca uygulama izin verilenler listesi çözümüdür. Uygulama denetimi, yazılım kısıtlama ilkeleriyle uyumluluğu zorlamanıza ve izlemenize yardımcı olabilir. Bu şema, bir uygulama izin verilenler listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
 
@@ -167,25 +167,25 @@ Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip v
 
 Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya passwd dosyasında yanlış izinlere sahip olan Linux sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu şema Ayrıca, Windows sanal makineleri için parola şifreleme türünün yapılandırılmasını denetleyen ilke tanımları atar. Bu göstergeleri izlemek, sistem kimlik doğrulamasının kuruluşunuzun kimlik ve kimlik doğrulama ilkesiyle uyumlu olmasını sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: en fazla 70 gün parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : en fazla 70 gün parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
+- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Kimlik ve kimlik bilgisi güvence düzeyleri
 
@@ -198,7 +198,7 @@ Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip v
 
 Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
 
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -249,7 +249,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 
 Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, bu şemayı, geri kalan bilgileri korumak için cryptograph denetimleri kullanma konusunda zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilke tanımları Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; ve SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin.
 
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL DB saydam veri şifrelemesini dağıtma
@@ -288,12 +288,12 @@ Bu şema, Azure Güvenlik Merkezi 'ndeki sanal makinelerde eksik uç nokta korum
 
 Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyerek ve zorunlu tutarak sisteminizi izlemenize yardımcı olur. Özellikle, Log Analytics aracısının dağıtımını denetleme ve uygulamaya zorlama ve SQL veritabanları, depolama hesapları ve ağ kaynakları için gelişmiş güvenlik ayarları atanmış ilkeleridir. Bu yetenekler, uygun işlemleri yapabilmeniz için anormal davranışları ve saldırı göstergelerini tespit etmenize yardımcı olabilir.
 
-- \[Önizleme\]: denetim Log Analytics aracı DAĞıTıMı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme\]: VMSS-VM GÖRÜNTÜSÜNDEKI (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: VM Için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
-- \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
+- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
+- \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
@@ -309,8 +309,8 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 Kanada Federal pbmm şema örneğinin denetim eşlemesini gözden geçirdiniz. Daha sonra, genel bakış ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Kanada Federal pbmm şema-genel bakış](./control-mapping.md)
-> [Kanada Federal pbmm şema-Deploy adımları](./deploy.md)
+> [Kanada Federal pbmm şema-genel bakış](./control-mapping.md) 
+>  [Kanada Federal pbmm şema-Deploy adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74803846"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085370"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight kümelerini izlemek için Azure Izleyici günlüklerini sorgulama
 
@@ -23,7 +24,7 @@ Azure HDInsight kümelerini izlemek için Azure Izleyici günlüklerini kullanma
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Izleyici günlüklerini kullanmak için bir HDInsight kümesi yapılandırmış olmanız ve çalışma alanına HDInsight kümesine özgü Azure Izleyici günlükleri izleme çözümlerini eklemiş olmanız gerekir. Yönergeler için bkz. [HDInsight kümeleri Ile Azure izleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 

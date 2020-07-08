@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084009"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
@@ -57,7 +57,7 @@ Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir ta
 | Ana Bilgisayar Adı | abcd1234namespace.servicebus.windows.net |
 | Ad Alanı | abcd1234namespace |
 
-Daha sonra, belirtilen olay hub 'ına bağlanmak için **Serviceconnect** izinlerine sahip herhangi bir paylaşılan erişim ilkesi kullanabilirsiniz.
+Daha sonra, yukarıdaki ekran görüntüsünde gösterildiği gibi açılan listeden herhangi bir paylaşılan erişim ilkesini seçebilirsiniz. Yalnızca belirtilen olay hub 'ına bağlanmak için **Serviceconnect** izinlerine sahip olan ilkeleri gösterir.
 
 IoT Hub ortaya çıkaran yerleşik Olay Hub 'ı ile uyumlu uç noktaya bağlanmak için kullanabileceğiniz SDK 'lar şunlardır:
 

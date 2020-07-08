@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190648"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085880"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight 'ta Apache Hadoop işleri için veri yükleme
 
@@ -37,7 +37,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki yardımcı programl
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -60,18 +60,18 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 Örneğin, `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-HDInsight için varsayılan dosya sistemi Azure Storage 'da olduğundan,/example/Data/Data.txt aslında Azure Storage 'da bulunur. Ayrıca dosyaya şu şekilde bakabilirsiniz:
+HDInsight için varsayılan dosya sistemi Azure Storage 'da olduğundan,/example/Data/data.txt aslında Azure Storage 'da bulunur. Ayrıca dosyaya şu şekilde bakabilirsiniz:
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
-or
+veya
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 Dosyalarla çalışan diğer Hadoop komutlarının bir listesi için bkz.[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> Apache HBase kümelerinde, veri yazılırken kullanılan varsayılan blok boyutu 256 KB 'dir. Bu, HBase API 'Leri veya REST API 'Leri kullanırken iyi çalışırken, ~ `hadoop` 12 `hdfs dfs` GB 'den büyük verileri yazmak için veya komutlarını kullanarak bir hatayla sonuçlanır. Daha fazla bilgi için bkz. [BLOB üzerinde yazma için depolama özel durumu](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
+> Apache HBase kümelerinde, veri yazılırken kullanılan varsayılan blok boyutu 256 KB 'dir. Bu, HBase API 'Leri veya REST API 'Leri kullanırken iyi çalışırken, `hadoop` `hdfs dfs` ~ 12 GB 'den büyük verileri yazmak için veya komutlarını kullanarak bir hatayla sonuçlanır. Daha fazla bilgi için bkz. [BLOB üzerinde yazma için depolama özel durumu](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
 
 ### <a name="graphical-clients"></a>Grafik istemcileri
 
@@ -98,7 +98,7 @@ Azure Data Factory hizmeti, veri oluşturmaya yönelik tam olarak yönetilen bir
 
 |Depolama türü|Belgeler|
 |----|----|
-|Azure Blob depolama|[Azure Data Factory kullanarak Azure Blob depolama alanına veya veri kopyalama](../data-factory/connector-azure-blob-storage.md)|
+|Azure Blob depolama|[Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](../data-factory/connector-azure-blob-storage.md)|
 |Azure Data Lake Storage Gen1|[Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../data-factory/load-azure-data-lake-storage-gen2.md)|
 

@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083789"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Common Data Model (CDM) meta veri sistemi, verilerin ve anlamının uygulamalar ve iş süreçlerinde kolayca paylaşılmasını olanaklı kılar. Daha fazla bilgi için bkz. [ortak veri modeline](https://docs.microsoft.com/common-data-model/) genel bakış.
 
-Azure Data Factory, kullanıcılar, veri akışlarını eşleme kullanarak [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS 2.) içinde depolanan CDM varlıklarına ve bu varlıkları dönüştürebilir.
+Azure Data Factory, kullanıcılar, veri akışlarını eşleme kullanarak [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS 2.) içinde depolanan CDM varlıklarına ve bu varlıkları dönüştürebilir. model.jsve bildirim stili CDM kaynakları arasında seçim yapın ve CDM bildirim dosyalarına yazın.
 
 > [!NOTE]
 > ADF veri akışları için ortak veri modeli (CDM) biçim Bağlayıcısı Şu anda genel önizleme olarak kullanılabilir.
@@ -27,6 +27,9 @@ Azure Data Factory, kullanıcılar, veri akışlarını eşleme kullanarak [Azur
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
 Ortak veri modeli, kaynak ve havuz olarak eşleme verilerinde bir [satır içi](data-flow-source.md#inline-datasets) veri akışı olarak kullanılabilir.
+
+> [!NOTE]
+> CDM varlıklarını yazarken, zaten tanımlanmış olan bir CDM varlık tanımına (meta veri şeması) sahip olmanız gerekir. ADF veri akışı havuzu bu CDM varlık dosyasını okur ve alan eşlemesi için şemayı havuza aktarır.
 
 ### <a name="source-properties"></a>Kaynak özellikleri
 
@@ -51,8 +54,16 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 
 #### <a name="import-schema"></a>Şemayı içeri aktar
 
-CDM yalnızca satır içi veri kümesi olarak kullanılabilir ve varsayılan olarak ilişkili bir şemaya sahip değildir. Sütun meta verilerini almak için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayın. Bu, Corpus tarafından belirtilen sütun adlarına ve veri türlerine başvuruda bulunmak için izin verir. Şemayı içeri aktarmak için bir [veri akışı hata ayıklama oturumunun](concepts-data-flow-debug-mode.md) etkin olması gerekir.
+CDM yalnızca satır içi veri kümesi olarak kullanılabilir ve varsayılan olarak ilişkili bir şemaya sahip değildir. Sütun meta verilerini almak için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayın. Bu, Corpus tarafından belirtilen sütun adlarına ve veri türlerine başvuruda bulunmak için izin verir. Şemayı içeri aktarmak için bir [veri akışı hata ayıklama oturumunun](concepts-data-flow-debug-mode.md) etkin olması ve işaret etmek için var olan bir CDM varlık tanımı dosyanızın olması gerekir.
 
+> [!NOTE]
+>  Power BI veya güç platformu veri akışlarından kaynaklanan kaynak türünde model.jskullanırken, kaynak dönüşümünde "Corpus yolu null veya boş" hatalarla karşılaşabilirsiniz. Bunun nedeni, dosyadaki model.jsbölüm konumu yolunun biçimlendirme sorunlarından kaynaklanıyor olabilir. Bu hatayı onarmak için aşağıdaki adımları izleyin: 
+
+1. Dosyadaki model.jsmetin düzenleyicisinde aç
+2. Bölümleri bulun. Location özelliği 
+3. "Blob.core.windows.net" öğesini "dfs.core.windows.net" olarak değiştir
+4. URL 'deki "% 2F" kodlamasını "/" olarak düzeltin
+ 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM kaynak veri akışı betiği örneği
 

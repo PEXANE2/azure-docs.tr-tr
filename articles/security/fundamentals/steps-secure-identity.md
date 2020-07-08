@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e12c3e10243e2e8adb23527683813f33a75a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084384"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -114,9 +115,9 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 ### <a name="restrict-user-consent-operations"></a>Kullanıcı onay işlemlerini kısıtlama
 
-Çeşitli [Azure AD uygulama onayı deneyimlerini](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [izin ve onay türlerini](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)ve kuruluşunuzun güvenlik duruşunuzun etkilerini anlamak önemlidir. Varsayılan olarak, Azure AD 'deki tüm kullanıcılar kuruluşunuzun verilerine erişmek için Microsoft Identity platformundan yararlanan uygulamalara izin verebilir. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
+Çeşitli [Azure AD uygulama onayı deneyimlerini](../../active-directory/develop/application-consent-experience.md), [izin ve onay türlerini](../../active-directory/develop/v2-permissions-and-consent.md)ve kuruluşunuzun güvenlik duruşunuzun etkilerini anlamak önemlidir. Varsayılan olarak, Azure AD 'deki tüm kullanıcılar kuruluşunuzun verilerine erişmek için Microsoft Identity platformundan yararlanan uygulamalara izin verebilir. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
 
-Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Son Kullanıcı onayını devre dışı bırakmadan önce, bu değişikliği kuruluşunuzda planlamak için [önerilerimizi](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) kullanın. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve koşullu erişim 'i kullanarak [belirli uygulamalara](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)Kullanıcı erişimini kısıtlayın.
+Microsoft, Kullanıcı onayını, yüzey alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için kısıtlamayı önerir. Ayrıca, Son Kullanıcı onayını yalnızca yalnızca seçtiğiniz izinlerle ve yalnızca seçtiğiniz izinlerle kısıtlamak için [uygulama onay ilkeleri 'ni (Önizleme)](../../active-directory/manage-apps/configure-user-consent.md) kullanabilirsiniz. Son Kullanıcı onayı kısıtlanmışsa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Sınırlı durumlar için yönetici onayı, kullanıcılar tarafından tümleşik [yönetici izin isteği iş akışıyla](../../active-directory/manage-apps/configure-admin-consent-workflow.md) veya kendi destek süreçleriniz aracılığıyla istenebilir. Son Kullanıcı onayını kısıtlamadan önce, bu değişikliği kuruluşunuzda planlamak için [önerilerimizi](../../active-directory/manage-apps/manage-consent-requests.md) kullanın. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](../../active-directory/develop/v2-admin-consent.md)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) ve koşullu erişim 'i kullanarak [belirli uygulamalara](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)Kullanıcı erişimini kısıtlayın.
 
 Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en aza indirmek ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmasını engellemek için yeni uygulamalar için yönetici onayı isteğinde bulunduğundan emin olun. Onay işlemlerinizi belirledikten sonra Yöneticiler, uygulamayı ve onaylı izinleri düzenli aralıklarla denetlemelidir.
 

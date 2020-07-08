@@ -1,7 +1,7 @@
 ---
 title: Ağ erişim denetimleri
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL veritabanı ve Azure SQL veri ambarı (eskiden Azure SQL veri ambarı) için ağ erişimini yönetme ve denetleme konusuna genel bakış.
+description: Azure SQL veritabanı ve Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) için ağ erişimini yönetme ve denetleme konusuna genel bakış.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 3a88ce96ca95bd02481558597bcc8082adf7c975
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085472"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
 
@@ -56,7 +56,7 @@ Ancak bunun yapılması, Azure 'da sanal ağınızın bir parçası olmayan ve b
 
 ### <a name="import-export-service"></a>İçeri aktarma hizmeti al
 
-**Azure hizmetlerine erişime Izin ver** **devre dışı**bırakıldığında içeri aktarma hizmeti çalışmıyor. Ancak, [SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
+**Azure hizmetlerine erişime Izin ver** **devre dışı**bırakıldığında içeri aktarma hizmeti çalışmıyor. Bununla birlikte, [bir Azure VM 'den sqlpackage.exe el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
 ### <a name="data-sync"></a>Data Sync
 
@@ -82,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > Get-AzNetworkServiceTag, location parametresini belirtirken SQL Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
-PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimde olduğunu unutmayın. Bu, [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanılarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmelidir, örneğin:
+PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimde olduğunu unutmayın. Bunun gibi [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerekir:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -106,7 +106,7 @@ Artık bunları farklı güvenlik duvarı kuralları olarak ekleyebilir ve sonra
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 
-IP tabanlı güvenlik duvarı, Azure 'daki mantıksal SQL Server 'ın, istemci makinelerin [IP adreslerini](firewall-create-server-level-portal-quickstart.md) açıkça ekleyene kadar veritabanı sunucunuza tüm erişimi önleyen bir özelliğidir.
+IP tabanlı güvenlik duvarı, Azure 'daki mantıksal SQL Server 'ın, istemci makinelerin [IP adreslerini açıkça eklemeene](firewall-create-server-level-portal-quickstart.md) kadar sunucunuza tüm erişimleri önleyen bir özelliğidir.
 
 ## <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
@@ -131,7 +131,7 @@ Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ
 
 Azure SQL veritabanı güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki sanal makineler (VM) *dinamik* IP adresleriyle yapılandırılır. Dinamik IP adresleri, VM 'niz yeniden başlatıldığında değişebilir ve IP tabanlı güvenlik duvarı kuralını geçersiz kılar. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
 
-SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki işlem sırasında maliyetli olur.
+SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak statik genel IP adresi olan bir sanal makine oluşturma](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki işlem sırasında maliyetli olur.
 
 Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurmak ve yönetmek için daha kolay bir alternatiftir.
 

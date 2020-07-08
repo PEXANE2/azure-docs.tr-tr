@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209717"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085822"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -19,6 +19,18 @@ Bu makaleyi okuduktan sonra şunları yapabilir olacaksınız:
 
 - Hiper muhasebe dokusuna ve hiper muhasebe doku blok zinciri ağının yapı taşlarını oluşturan çeşitli bileşenlere sahip çalışma hakkında bilgi edinin.
 - Üretim senaryolarınız için Azure Kubernetes hizmetinde bir hiper muhasebe doku konsorsiyusunu dağıtmayı ve yapılandırmayı öğrenin.
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>Bir Azure blok zinciri çözümü seçin
+
+Bir çözüm şablonu kullanmayı seçmeden önce, senaryonuzu, kullanılabilir Azure blok zinciri seçeneklerinin ortak kullanım durumları ile karşılaştırın.
+
+Seçenek | Hizmet modeli | Yaygın kullanım durumu
+-------|---------------|-----------------
+Çözüm şablonları | IaaS | Çözüm şablonları, tam olarak yapılandırılmış bir blok zinciri ağ topolojisi sağlamak için kullanabileceğiniz Azure Resource Manager şablonlardır. Şablonlar, belirli bir blok zinciri ağ türü için Microsoft Azure işlem, ağ ve depolama hizmetleri dağıtır ve yapılandırır. Çözüm şablonları, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) kullanın.
+[Azure Blok Zinciri Hizmeti](../service/overview.md) | PaaS | Azure blok zinciri hizmeti önizlemesi, konsorsiyum blok zinciri ağlarının yönetimini, yönetimini ve yönetimini basitleştirir. PaaS, konsorsiyum yönetimi veya sözleşme ve işlem gizliliği gerektiren çözümler için Azure blok zinciri hizmetini kullanın.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS ve PaaS | Azure blok zinciri çalışma ekranı önizlemesi, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak üzere blok zinciri uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olmak üzere tasarlanmış bir Azure hizmetleri ve özellikleri koleksiyonudur. Bir blok zinciri çözümünü veya blok zinciri uygulaması kavram kanıtı 'nı prototip için Azure blok zinciri çalışma ekranı 'nı kullanın. Azure Blockchain Workbench hizmet düzeyi anlaşması olmadan sunulur. Destek için [Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) kullanın.
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hiper muhasebe Fabric Consortium mimarisi
 
@@ -429,6 +441,6 @@ Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.micr
 
 Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
 
-- [Microsoft Q&Azure blok zinciri hizmeti için soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
+- [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
 - [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

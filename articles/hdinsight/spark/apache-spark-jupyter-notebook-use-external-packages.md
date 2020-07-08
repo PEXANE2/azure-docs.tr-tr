@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74561716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084690"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma
 
@@ -33,11 +33,11 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
 * HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi. Daha fazla bilgi için bkz. [HDInsight üzerinde verileri yükleme ve sorguları çalıştırma Apache Spark](./apache-spark-load-data-run-query.md).
 
-* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, `wasb://` `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için Azure depolama için olacaktır. Azure depolama veya Data Lake Storage 2. için güvenli aktarım etkinleştirilirse, URI `wasbs://` veya `abfss://`Ayrıca, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md)' ı da görürsünüz.
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama veya Data Lake Storage 2. için güvenli aktarım etkinleştirilirse, URI `wasbs://` veya `abfss://` Ayrıca, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md)' ı da görürsünüz.
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter not defterleri ile dış paketleri kullanma
 
-1. Spark kümenizin `https://CLUSTERNAME.azurehdinsight.net/jupyter` adı `CLUSTERNAME` olduğu yere gidin.
+1. `https://CLUSTERNAME.azurehdinsight.net/jupyter` `CLUSTERNAME` Spark Kümenizin adı olduğu yere gidin.
 
 1. Yeni bir not defteri oluşturun. **Yeni**' yi ve ardından **Spark**' ı seçin.
 
@@ -47,7 +47,7 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
     ![Not defteri adını belirtme](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Not defteri adını belirtme")
 
-1. Not defterini harici bir `%%configure` paket kullanacak şekilde yapılandırmak için Magic 'i kullanacaksınız. Dış paketleri kullanan not defterlerinde, ilk kod hücresinde `%%configure` Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
+1. `%%configure`Not defterini harici bir paket kullanacak şekilde yapılandırmak için Magic 'i kullanacaksınız. Dış paketleri kullanan not defterlerinde, `%%configure` ilk kod hücresinde Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
 
     >[!IMPORTANT]  
     >İlk hücrede çekirdeği yapılandırmayı unutursanız, `%%configure` `-f` parametresini parametresiyle kullanabilirsiniz, ancak bu işlem oturumu yeniden başlatır ve tüm ilerleme kaybedilir.
@@ -61,33 +61,41 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
     a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv)kullanırız.
 
-    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. Spark Jupyıter çekirdeği üzerinde veya Spark göndermesi üzerinde çalıştırarak `scala.util.Properties.versionString` , kümenizde Scala sürümünü bulabilirsiniz. Jupi Not defterleri üzerinde çalıştırarak `sc.version` Spark sürümünü kümenizde bulabilirsiniz.
+    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. `scala.util.Properties.versionString`Spark Jupyıter çekirdeği üzerinde veya Spark göndermesi üzerinde çalıştırarak, kümenizde Scala sürümünü bulabilirsiniz. `sc.version`Jupi Not defterleri üzerinde çalıştırarak Spark sürümünü kümenizde bulabilirsiniz.
 
     ![Jupyter Not defteri ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Not defteri ile dış paketleri kullanma")
 
     c. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
-        com.databricks:spark-csv_2.11:1.5.0
+    ```scala
+    com.databricks:spark-csv_2.11:1.5.0
+    ```
 
-1. Kod hücresini `%%configure` Magic ile çalıştırın. Bu, temel alınan Livy oturumu verdiğiniz paketi kullanacak şekilde yapılandırır. Not defterindeki sonraki hücrelerde, artık paketini aşağıda gösterildiği gibi kullanabilirsiniz.
+1. Kod hücresini Magic ile çalıştırın `%%configure` . Bu, temel alınan Livy oturumu verdiğiniz paketi kullanacak şekilde yapılandırır. Not defterindeki sonraki hücrelerde, artık paketini aşağıda gösterildiği gibi kullanabilirsiniz.
 
-        val df = spark.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = spark.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
     HDInsight 3,4 ve sonraki bir için aşağıdaki kod parçacığını kullanmanız gerekir.
 
-        val df = sqlContext.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = sqlContext.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
 1. Daha sonra, önceki adımda oluşturduğunuz veri çerçevesindeki verileri görüntülemek için aşağıda gösterildiği gibi parçacıkları çalıştırabilirsiniz.
 
-        df.show()
+    ```scala
+    df.show()
    
-        df.select("Time").count()
+    df.select("Time").count()
+    ```
 
 ## <a name="see-also"></a><a name="seealso"></a>Ayrıca bkz.
 

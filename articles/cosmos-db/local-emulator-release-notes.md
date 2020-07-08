@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687183"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083466"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
@@ -22,11 +22,15 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 | | |
 |---------|---------|
 |**MSI indirme**|[Microsoft İndirme Merkezi](https://aka.ms/cosmosdb-emulator)|
-|**başlarken**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
+|**Kullanmaya başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+
+- Bu sürüm, Cosmos öykünücüsünün sorunlarını giderirken ETL izlemelerinin toplanması için gereken değişiklikleri değiştirir. WPR (Windows performans çalışma zamanı araçları) artık, eski LOGMAN tabanlı yakalama kullanım dışı durumdayken ETL tabanlı izlemeleri yakalamaya yönelik varsayılan araçlardır. En son Windows güvenlik güncelleştirmelerinde, Cosmos öykünücüsü aracılığıyla yürütüldüğünde, LOGMAN 'in nasıl çalıştığı konusunda beklenmedik bir etkiye sahip olduğundan bu değişiklik kısmen zorunludur.
+
+### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
 
 - Bu sürüm, öykünücü Veri Gezgini ilgili birkaç hatayı düzeltir. Belirli durumlarda, öykünücü Veri Gezgini bir Web tarayıcısı aracılığıyla kullanılırken Cosmos öykünücü uç noktasına bağlanamaz ve veritabanı veya kapsayıcı oluşturma gibi ilgili tüm eylemler hata verir. Düzeltilen ikinci sorun, Veri Gezgini karşıya yükleme eylemini kullanarak bir JSON dosyasından bir öğe oluşturmakla ilgilidir.
 

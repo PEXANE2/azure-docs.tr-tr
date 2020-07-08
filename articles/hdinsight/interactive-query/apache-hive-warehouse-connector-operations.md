@@ -5,13 +5,14 @@ author: nis-goel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 999c58871ed811d91fd96d158ea6f65db6c718f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83853844"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085846"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Hive ambar Bağlayıcısı tarafından desteklenen Apache Spark işlemler
 
@@ -21,7 +22,7 @@ Bu makalede, Hive ambar Bağlayıcısı (HWC) tarafından desteklenen Spark taba
 
 [Hive ambarı Bağlayıcısı kurulum](./apache-hive-warehouse-connector.md#hive-warehouse-connector-setup) adımlarını doldurun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Spark-Shell oturumu başlatmak için aşağıdaki adımları uygulayın:
 

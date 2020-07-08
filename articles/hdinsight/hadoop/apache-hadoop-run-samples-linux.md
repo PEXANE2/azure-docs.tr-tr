@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bef655c4dd30147733b28252199a7d8b58df42f8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435744"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085999"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight 'ta bulunan MapReduce örneklerini çalıştırma
 
@@ -20,7 +21,7 @@ ms.locfileid: "75435744"
 
 HDInsight üzerinde Apache Hadoop eklenen MapReduce örneklerini çalıştırmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -32,7 +33,7 @@ HDInsight üzerinde Apache Hadoop eklenen MapReduce örneklerini çalıştırmay
 
 Aşağıdaki örnekler bu arşivde yer alır:
 
-|Örnek |Açıklama |
+|Örnek |Description |
 |---|---|
 |aggregatewordcount|Giriş dosyalarındaki sözcükleri sayar.|
 |aggregatewordhist|Giriş dosyalarındaki sözcüklerin histogramını hesaplar.|

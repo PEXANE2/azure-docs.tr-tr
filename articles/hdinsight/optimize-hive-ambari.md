@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796375"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084367"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
 
@@ -132,12 +132,12 @@ Hadoop işleri genellikle g/ç bottlenecked. Verilerin sıkıştırılması, g/�
 
 Kullanılabilir sıkıştırma türleri şunlardır:
 
-| Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
+| Biçim | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | Söndür | `.gz` | No |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
+| Gzip | Gzip | Söndür | `.gz` | Hayır |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Evet |
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
-| Snappy | Yok | Snappy | Snappy | No |
+| Snappy | YOK | Snappy | Snappy | Hayır |
 
 Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin ise `bzip2` en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
@@ -158,7 +158,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
     c. Özellik Ekle penceresinde, `mapred.map.output.compression.codec` anahtar olarak ve `org.apache.hadoop.io.compress.SnappyCodec` değerini girin.
 
-    d. **Add (Ekle)** seçeneğini belirleyin.
+    d. **Ekle**'yi seçin.
 
     ![' Apache Hive özel Özellik Ekle '](./media/optimize-hive-ambari/hive-custom-property.png)
 

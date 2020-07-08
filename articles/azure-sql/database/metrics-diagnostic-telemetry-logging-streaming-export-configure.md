@@ -2,7 +2,7 @@
 title: Ölçüm ve kaynak günlüklerinin akış dışa aktarılmasını yapılandırma
 description: Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nin akıllı tanılama analizini, kaynak kullanımı ve sorgu yürütme istatistikleri hakkında bilgi depolamak için tercih ettiğiniz hedefe dahil olmak üzere ölçüm ve kaynak günlüklerinin akış dışa aktarılmasını nasıl yapılandıracağınızı öğrenin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085625"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL veritabanı ve SQL yönetilen örnek tanılama telemetrisine akış vermeyi yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,15 +39,15 @@ Akıllı İçgörüler günlüğünün dışa aktarılmasını akışa ek olarak
 | :------------------- | ----- | ----- |
 | [Temel ölçümler](#basic-metrics): DTU/CPU YÜZDESI, DTU/CPU sınırı, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama alanı yüzdesi ve XTP depolama yüzdesi içerir. | Evet | Hayır |
 | [Örnek ve uygulama gelişmiş](#advanced-metrics): tempdb sistem veritabanı verilerini ve günlük dosyası boyutunu ve kullanılan tempdb yüzde günlük dosyasını içerir. | Evet | Hayır |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): CPU kullanımı ve sorgu süresi istatistikleri gibi sorgu çalışma zamanı istatistikleri hakkındaki bilgileri içerir. | Yes | Yes |
-| [Querystorewaitstatistics](#query-store-wait-statistics): CPU, günlük ve kilitleme gibi sorgu bekleme istatistikleri (sorgularınızın ne kadar bekledikleriniz) hakkındaki bilgileri içerir. | Yes | Yes |
-| [Hatalar](#errors-dataset): BIR veritabanındaki SQL hatalarıyla ilgili bilgileri içerir. | Yes | Yes |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): CPU kullanımı ve sorgu süresi istatistikleri gibi sorgu çalışma zamanı istatistikleri hakkındaki bilgileri içerir. | Yes | Evet |
+| [Querystorewaitstatistics](#query-store-wait-statistics): CPU, günlük ve kilitleme gibi sorgu bekleme istatistikleri (sorgularınızın ne kadar bekledikleriniz) hakkındaki bilgileri içerir. | Yes | Evet |
+| [Hatalar](#errors-dataset): BIR veritabanındaki SQL hatalarıyla ilgili bilgileri içerir. | Yes | Evet |
 | [Databasewaitstatistics](#database-wait-statistics-dataset): bir veritabanının farklı bekleme türlerini beklerken ne kadar zaman harcadığını gösteren bilgiler içerir. | Evet | Hayır |
 | [Zaman aşımları](#time-outs-dataset): bir veritabanındaki zaman aşımları hakkında bilgi içerir. | Evet | Hayır |
 | [Bloklar](#blockings-dataset): bir veritabanındaki olayları engelleme hakkında bilgi içerir. | Evet | Hayır |
 | [Kilitlenmeler](#deadlocks-dataset): bir veritabanındaki kilitlenme olayları hakkında bilgi içerir. | Evet | Hayır |
 | Otomatik [ayarlama: bir](#automatic-tuning-dataset)veritabanı için otomatik ayarlama önerileri hakkındaki bilgileri içerir. | Evet | Hayır |
-| [Sqlinsıghts](#intelligent-insights-dataset): bir veritabanının performansına akıllı içgörüler içerir. Daha fazla bilgi için bkz. [akıllı içgörüler](intelligent-insights-overview.md). | Yes | Yes |
+| [Sqlinsıghts](#intelligent-insights-dataset): bir veritabanının performansına akıllı içgörüler içerir. Daha fazla bilgi için bkz. [akıllı içgörüler](intelligent-insights-overview.md). | Yes | Evet |
 
 > [!NOTE]
 > Tanılama ayarları, ana, msdb, model, kaynak ve tempdb veritabanları gibi **sistem veritabanları**için yapılandırılamaz.
@@ -96,7 +96,7 @@ Tanılama telemetrinin akışını etkinleştirmek ve yapılandırmak için Azur
 
 Azure portal tanılama telemetrinin akış dışa aktarılmasını yapılandırmaya yönelik adım adım yönergeler ve PowerShell ve Azure CLı ile aynı şekilde çalışmak için betikler için aşağıdaki sekmelerden birini seçin.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzlar
 
@@ -127,15 +127,15 @@ Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek i
 7. Elastik havuz tanılama telemetrisi için onay kutusunu seçin: **temel** ölçümler.
    ![Elastik havuzlar için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek izlemek istediğiniz elastik havuzda bulunan her bir veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
 > Esnek havuz için tanılama telemetrisini yapılandırmanın yanı sıra, esnek havuzdaki her veritabanı için de tanılama telemetrisini yapılandırmanız gerekir.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları
+### <a name="databases-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki veritabanları
 
-Aşağıdaki tanılama telemetrisini toplamak için, tek veya havuza alınmış bir veritabanı kaynağı ayarlayabilirsiniz:
+Aşağıdaki tanılama telemetrisini toplamak için bir veritabanı kaynağı ayarlayabilirsiniz:
 
 | Kaynak | Telemetri izleme |
 | :------------------- | ------------------- |
@@ -156,7 +156,7 @@ Tek veya havuza alınmış bir veritabanı için tanılama telemetrinin akışı
 8. Gelişmiş, tek dakikalık tabanlı izleme deneyimi için **temel** ölçümler onay kutusunu seçin.
 
    ![Azure SQL veritabanı için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 10. İzlemek istediğiniz her veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -192,7 +192,7 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 
    ![Yönetilen örnek için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek, izlemek istediğiniz yönetilen örnek içindeki her örnek veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
@@ -220,7 +220,7 @@ Bir örnek veritabanı için tanılama telemetrinin akışını etkinleştirmek 
 5. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
 6. Veritabanı tanılama telemetrisi için onay kutularını seçin: **Sqlinsıghts**, **QueryStoreRuntimeStatistics**, **Querystorewaitstatistics**ve **hatalar**.
    ![Örnek veritabanları için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 8. İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -439,13 +439,13 @@ Kaynağa göre temel ölçümler hakkında daha fazla bilgi için aşağıdaki t
 
 #### <a name="basic-metrics-for-elastic-pools"></a>Elastik havuzlar için temel ölçümler
 
-|**Kaynak**|**Metrics** (Ölçümler)|
+|**Kaynak**|**Ölçümler**|
 |---|---|
 |Elastik havuz|eDTU yüzdesi, eDTU kullanımı, eDTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, depolama sınırı, XTP depolama yüzdesi |
 
 #### <a name="basic-metrics-for-single-and-pooled-databases"></a>Tek ve havuza alınmış veritabanları için temel ölçümler
 
-|**Kaynak**|**Metrics** (Ölçümler)|
+|**Kaynak**|**Ölçümler**|
 |---|---|
 |Tek ve havuza alınmış veritabanı|DTU yüzdesi, DTU kullanımı, DTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, XTP depolama yüzdesi ve kilitlenmeler |
 
