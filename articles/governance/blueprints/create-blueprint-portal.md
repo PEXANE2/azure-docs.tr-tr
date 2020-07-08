@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: portalda bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: aac4e13ca0da73f8b7915ea6655343d5cf0b94cb
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970986"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045221"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
 Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonlarına (ARM şablonları), ilkeye, güvenliğe ve daha fazlasına dayalı yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler aşağıdakileri içerir:
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -206,7 +206,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Şeması ata** sayfasında, **abonelik** açılan listesinde, bu şemayı dağıtmak istediğiniz abonelikleri seçin.
 
-   [Azure faturalandırmaya](../../billing/index.md)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları uygulayın:
+   [Azure faturalandırmaya](../../cost-management-billing/index.yml)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları uygulayın:
 
    1. Yeni bir abonelik oluşturmak için **Yeni oluştur** bağlantısını seçin.
 

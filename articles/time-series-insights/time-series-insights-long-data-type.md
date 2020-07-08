@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: dpalled
-ms.openlocfilehash: b4ddff197ff41ee9ddee129fae4699e18af8d0d0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ebb62b67b56134902f2752b43dd25fb0a7c6ccd4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898034"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045782"
 ---
 # <a name="adding-support-for-long-data-type"></a>Uzun veri türü için destek ekleme
 
@@ -211,4 +211,4 @@ Durum 5: **Isınma süresi 1.000 Özellik sınırına yaklaşıyor**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Desteklenen veri türleri hakkında bilgi edinmek için giriş [ve depolama](time-series-insights-update-storage-ingress.md) hakkındaki makaleye göz atın.
+* Desteklenen veri türlerinin tam listesini görüntülemek için [Bu](concepts-supported-data-types.md) makaleye bakın.

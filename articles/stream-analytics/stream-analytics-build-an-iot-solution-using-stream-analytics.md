@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426452"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044592"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
 
@@ -30,7 +30,7 @@ Bu çözümü tamamladıktan sonra şunları yapabilirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu çözümü tamamlayabilmeniz için aşağıdaki önkoşulların olması gerekir:
-* Bir [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
+* [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="scenario-introduction-hello-toll"></a>Senaryoya giriş: "Merhaba, ücretli!"
 Ücretli istasyon ortak bir Phenomenon olur. Dünyanın dört bir yanında birçok ifade, köprü ve tünelle karşılaşırsınız. Her ücretli istasyonda birden çok ücretsiz olarak bulunur. El ile yapılan bir görevlisi ile ücretsiz olarak ödeme yapmayı durdurursunuz. Otomatik olarak, her bir stand üzerinde yapılan bir algılayıcı, stand 'yi geçirdiğiniz sırada, sizin için tek bir bir RFıD kartını tarar. Bu ücretli istasyonlardan, ilginç işlemlerin gerçekleştirilebileceği bir olay akışı olarak taşıtmayı kolayca görselleştirebilirsiniz.
@@ -113,7 +113,7 @@ Bu çözümü tamamlayabilmeniz için bir Microsoft Azure aboneliğine sahip olm
 Azure kredinizi en iyi şekilde kullanabilmeniz için bu makalenin sonundaki "Azure hesabınızı Temizleme" bölümündeki adımları izlediğinizden emin olun.
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
-Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kaynak vardır. Çözüm tanımı, konumundaki [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)GitHub deposunda barındırılır.
+Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kaynak vardır. Çözüm tanımı, konumundaki GitHub deposunda barındırılır [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) .
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Azure portal için TollApp şablonunu dağıtın
 1. TollApp ortamını Azure 'a dağıtmak için bu bağlantıyı kullanarak [Tollapp Azure şablonunu dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -122,7 +122,7 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 
 3. Çeşitli kaynakların faturalandırılabileceği aboneliği seçin.
 
-4. Örneğin `MyTollBooth`, benzersiz bir ada sahip yeni bir kaynak grubu belirtin.
+4. Örneğin, benzersiz bir ada sahip yeni bir kaynak grubu belirtin `MyTollBooth` .
 
 5. Bir Azure konumu seçin.
 
@@ -168,7 +168,7 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 3. TollApp örnek işinin girişlerini inceleyin. Geçerli sorguda yalnızca EntryStream girişi kullanılır.
    - **Entrystream** girişi, bir araba otoyol üzerine bir tollstand girdiğinde verileri sıraya alan bir olay hub bağlantısıdır. Örneğin bir parçası olan bir Web uygulaması olayları oluşturuyor ve bu veri bu olay hub 'ında sıraya alındı. Bu girişin, akış sorgusunun FROM yan tümcesinde sorgulandığını unutmayın.
    - **Exitstream** girişi, her bir otomobil otovaya bir tollstand 'tan çıktığında verileri sıraya alan bir olay hub bağlantısıdır. Bu akış girişi, sorgu sözdiziminin sonraki varyasyonları içinde kullanılır.
-   - **Kayıt** girişi, gerektiğinde aramalar için kullanılan bir statik kayıt. json dosyasını işaret eden bir Azure Blob depolama bağlantısıdır. Bu başvuru veri girişi, sorgu sözdiziminin sonraki varyasyonları içinde kullanılır.
+   - **Kayıt** girişi, gerektiğinde aramalar için kullanılan bir statik registration.jsişaret eden bir Azure Blob depolama bağlantısıdır. Bu başvuru veri girişi, sorgu sözdiziminin sonraki varyasyonları içinde kullanılır.
 
 4. TollApp örnek işinin çıkışlarını inceleyin.
    - **Cosmos DB** çıktısı, çıkış havuzu olaylarını alan bir Cosmos veritabanı kapsayıcısıdır. Bu çıkışın, akış sorgusunun INTO yan tümcesinde kullanıldığını unutmayın.
@@ -185,11 +185,11 @@ Akış işini başlatmak için aşağıdaki adımları izleyin:
 ## <a name="review-the-cosmosdb-output-data"></a>CosmosDB çıkış verilerini gözden geçirme
 1. TollApp kaynaklarını içeren kaynak grubunu bulun.
 
-2. **Tollapp\<Random\>-cosmos**ad düzenine sahip Azure Cosmos DB hesabını seçin.
+2. **Tollapp \<random\> -Cosmos**ad düzenine sahip Azure Cosmos DB hesabını seçin.
 
 3. Veri Gezgini sayfasını açmak için **Veri Gezgini** başlığını seçin.
 
-4. **Tollappdatabase** > **tollappcollection** > **belgelerini**genişletin.
+4. **Tollappdatabase**  >  **tollappcollection**  >  **belgelerini**genişletin.
 
 5. Kimlik listesinde, çıktı kullanılabilir olduğunda birkaç belge gösterilir.
 
@@ -303,7 +303,7 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 3. Akış işindeki yapılandırma başlığı altında **Ölçek**' i seçin.
 
-4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**’i seçin.
+4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**'i seçin.
 
 5. Ek ölçeği göstermek için akış işini **başlatın** . Azure Stream Analytics, işleri daha fazla işlem kaynağına dağıtır ve bölüm BY yan tümcesinde belirtilen sütunu kullanarak işleri kaynaklar genelinde bölümleyerek daha iyi işleme elde edin.
 

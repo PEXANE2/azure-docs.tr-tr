@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2018
-ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e8fbf624dfa84ec54bf6a7e0ce202d047e15d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354360"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045119"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio için Azure Stream Analytics araçları 'nı yükler
 
@@ -28,7 +28,7 @@ Visual Studio 2019 önerilir.
 
 ### <a name="install-for-visual-studio-2019-and-2017"></a>Visual Studio 2019 ve 2017 için Install<a name="recommended-visual-studio-2019-and-2017"></a>
 
-Azure Data Lake ve Stream Analytics araçları, **Azure geliştirme** ve **veri depolama ve işleme** iş yüklerinin bir parçasıdır. Yükleme sırasında bu iki iş yükünün birini etkinleştirin. Visual Studio zaten yüklüyse, **araçları** > **ve özellikleri al** ' ı seçerek iş yükleri ekleyin.
+Azure Data Lake ve Stream Analytics araçları, **Azure geliştirme** ve **veri depolama ve işleme** iş yüklerinin bir parçasıdır. Yükleme sırasında bu iki iş yükünün birini etkinleştirin. Visual Studio zaten yüklüyse, **araçları**  >  **ve özellikleri al** ' ı seçerek iş yükleri ekleyin.
 
 [Visual studio 2019 (Preview 2 veya üzeri) ya da Visual studio 2017 (15,3 veya üzeri)](https://www.visualstudio.com/) sürümünü indirin ve yükleme yönergelerini izleyin.
 
@@ -42,7 +42,7 @@ Gösterildiği gibi **Azure geliştirme** iş yükünü seçin:
 
 İş yükünü ekledikten sonra, araçları güncelleştirin. Bu yordam, Visual Studio 2019 'e başvurur:
 
-1.  > Uzantıları**Yönet uzantıları**' **nı seçin.**
+1. Uzantıları **Extensions**  >  **Yönet uzantıları**' nı seçin.
 
 1. **Uzantıları Yönet**' de **güncelleştirmeler** ' i seçin ve **Azure Data Lake ve Stream Analytics araçları**' nı seçin.
 
@@ -64,8 +64,8 @@ Visual Studio 2019 ve Visual Studio 2017 için yeni bir sürüm anımsatıcısı
 
 Visual Studio 2015 ve Visual Studio 2013 için araçlar, yeni sürümleri otomatik olarak denetler. En son sürümü yüklemek için yönergeleri izleyin.
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
-Azure Data Lake ve Stream Analytics araçlarını kaldırabilirsiniz. Visual Studio 2019 veya Visual Studio 2017 için **Araçlar** > **ve Özellikler al**' ı seçin. **Değiştirme**bölümünde **Azure Data Lake ve Stream Analytics araçlarının**seçimini kaldırın. **Veri depolama ve işleme** iş yükü ya da **Azure geliştirme** iş yükü altında görünür.
+Azure Data Lake ve Stream Analytics araçlarını kaldırabilirsiniz. Visual Studio 2019 veya Visual Studio 2017 için **Araçlar**  >  **ve Özellikler al**' ı seçin. **Değiştirme**bölümünde **Azure Data Lake ve Stream Analytics araçlarının**seçimini kaldırın. **Veri depolama ve işleme** iş yükü ya da **Azure geliştirme** iş yükü altında görünür.
 
-Visual Studio 2015 veya Visual Studio 2013 kaldırmak için **Denetim Masası** > **Programlar ve Özellikler**' e gidin. **Visual Studio için Microsoft Azure Data Lake ve Stream Analytics araçları**'nı kaldırın.
+Visual Studio 2015 veya Visual Studio 2013 kaldırmak için **Denetim Masası**  >  **Programlar ve Özellikler**' e gidin. **Visual Studio için Microsoft Azure Data Lake ve Stream Analytics araçları**'nı kaldırın.

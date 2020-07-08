@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354452"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045102"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın 
 Bu makalede, Azure Stream Analytics CI/CD NuGet paketinin bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için nasıl kullanılacağı açıklanır.
@@ -34,15 +34,19 @@ Standart Visual Studio MSBuild deneyimi gibi bir proje oluşturmak için iki se�
 
 Bir Stream Analytics Visual Studio projesi başarıyla oluşturduğunda, **bin/[Debug/Retail]/Deploy** klasörü altında aşağıdaki iki Azure Resource Manager şablon dosyasını oluşturur: 
 
-*  Şablon dosyası Kaynak Yöneticisi
+* Şablon dosyası Kaynak Yöneticisi
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Kaynak Yöneticisi Parameters dosyası
+* Kaynak Yöneticisi Parameters dosyası
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
-       [ProjectName].JobTemplate.parameters.json   
-
-Parameters. JSON dosyasındaki varsayılan parametreler, Visual Studio projenizin ayarlarından alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
+parameters.jsdosyadaki varsayılan parametreler, Visual Studio projenizin ayarlarından alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
 
 > [!NOTE]
 > Tüm kimlik bilgileri için varsayılan değerler null olarak ayarlanır. Buluta dağıtmadan önce değerleri ayarlamanız **gerekir** .
@@ -60,7 +64,7 @@ Azure Data Lake Store Gen1 için yönetilen kimliği çıkış havuzu olarak kul
 ## <a name="command-line-tool"></a>Komut satırı aracı
 
 ### <a name="build-the-project"></a>Projeyi derleme
-NuGet paketinin **sa. exe**adlı bir komut satırı aracı vardır. Sürekli tümleştirme ve sürekli teslim sürecinde kullanabileceğiniz rastgele bir makinede proje derlemesini ve yerel sınamayı destekler. 
+NuGet paketinin **SA.exe**adlı bir komut satırı aracı vardır. Sürekli tümleştirme ve sürekli teslim sürecinde kullanabileceğiniz rastgele bir makinede proje derlemesini ve yerel sınamayı destekler. 
 
 Dağıtım dosyaları varsayılan olarak geçerli dizinin altına yerleştirilir. Aşağıdaki-OutputPath parametresini kullanarak çıkış yolunu belirtebilirsiniz:
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 9d39a6d85f878b6d67ffbcc55f468ad6984eecab
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260822"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045493"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -49,6 +49,7 @@ Bu bölüm, Windows Uygulamaları ve SQL Server çözümleri için başvurular s
 ### <a name="sql-server"></a>SQL Server
 
 * [Azure NetApp Files SMB üzerinden SQL Server dağıtma](https://www.youtube.com/watch?v=x7udfcYbibs)
+* [SMB üzerinden SQL Server her zaman yük devretme kümesi dağıtma Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q)
 * [Azure NetApp Files ile her zaman açık kullanılabilirlik grupları dağıtma](https://www.youtube.com/watch?v=y3VQmzzeyvc)
 
 ## <a name="sap-on-azure-solutions"></a>Azure çözümlerinde SAP

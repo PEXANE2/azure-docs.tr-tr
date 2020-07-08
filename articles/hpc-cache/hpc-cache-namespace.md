@@ -1,17 +1,17 @@
 ---
-title: Azure HPC önbelleği oluşturma
+title: Azure HPC önbellek örneği oluşturma
 description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73582190"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045816"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlama
 
@@ -29,14 +29,14 @@ Azure HPC Cache bu sanal dosya sistemini yönettiği için, istemciye yönelik y
 
 Şablon verileri bir veri merkezinde depolanır ve bu iş için gereken bilgiler şu alt dizinlerde saklanır:
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */Goldline/Templates/acme2017/sku798*
+* */Goldline/Templates/acme2017/sku980* 
 
 Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar:
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */Goldline*
+* */Goldline/Templates*
 
 Çözümlenecek veriler, [Clfsload yardımcı programı](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)kullanılarak "SourceCollection" adlı bir Azure Blob depolama kapsayıcısına kopyalanmış.
 
@@ -57,7 +57,7 @@ NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku798   | /Templates/sku798 |
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku980   | /Templates/sku980 |
 
-Bir istemci uygulaması, önbelleği bağlayabilir ve toplanmış ad alanı dosya yollarına ``/source`` ``/templates/sku798``, ve ``/templates/sku980``' ye kolayca erişebilir.
+Bir istemci uygulaması, önbelleği bağlayabilir ve toplanmış ad alanı dosya yollarına, ve ' ye kolayca erişebilir ``/source`` ``/templates/sku798`` ``/templates/sku980`` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

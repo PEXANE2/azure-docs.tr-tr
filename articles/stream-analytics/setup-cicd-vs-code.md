@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76962230"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045833"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD NPM paketini kullanarak bir Azure Stream Analytics işi dağıtma 
 
@@ -25,9 +25,9 @@ PowerShell ile dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yönetici
 
 **Asa-streamanalytics-cicd** NPM paketini kullanarak Azure Stream Analytics işleri için sürekli tümleştirme ve dağıtım sağlayabilirsiniz. NPM paketi, [Stream Analytics Visual Studio Code projelerinin](quick-create-vs-code.md)Azure Resource Manager şablonlarını oluşturmak için araçlar sağlar. Visual Studio Code yüklenmeden Windows, macOS ve Linux 'ta kullanılabilir.
 
-Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya `npm install -g azure-streamanalytics-cicd` komutu aracılığıyla [Global olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz. Bu, **Azure Pipelines**bir derleme Işlem hattının PowerShell veya Azure CLI betik görevinde de kullanılabilecek olan önerilen yaklaşımdır.
+Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya komutu aracılığıyla [Global olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz `npm install -g azure-streamanalytics-cicd` . Bu, **Azure Pipelines**bir derleme Işlem hattının PowerShell veya Azure CLI betik görevinde de kullanılabilecek olan önerilen yaklaşımdır.
 
-Paketi yükledikten sonra, Azure Resource Manager şablonlarının çıktısını almak için aşağıdaki komutu kullanın. **ScriptPath** bağımsız değişkeni, projenizdeki **aşama QL** dosyasının mutlak yoludur. Asaproj. JSON ve JobConfig. JSON dosyalarının betik dosyası ile aynı klasörde olduğundan emin olun. **OutputPath** belirtilmemişse, şablonlar projenin **bin** klasörü altındaki **Dağıt** klasörüne yerleştirilir.
+Paketi yükledikten sonra, Azure Resource Manager şablonlarının çıktısını almak için aşağıdaki komutu kullanın. **ScriptPath** bağımsız değişkeni, projenizdeki **aşama QL** dosyasının mutlak yoludur. Dosyalardaki asaproj.jsve JobConfig.js, betik dosyası ile aynı klasörde olduğundan emin olun. **OutputPath** belirtilmemişse, şablonlar projenin **bin** klasörü altındaki **Dağıt** klasörüne yerleştirilir.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -39,15 +39,19 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 Bir Stream Analytics Visual Studio Code projesi başarıyla oluşturulduğunda, **bin/[Debug/Retail]/Deploy** klasörü altında aşağıdaki iki Azure Resource Manager şablon dosyasını oluşturur: 
 
-*  Şablon dosyası Kaynak Yöneticisi
+* Şablon dosyası Kaynak Yöneticisi
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Kaynak Yöneticisi Parameters dosyası
+* Kaynak Yöneticisi Parameters dosyası
 
-       [ProjectName].JobTemplate.parameters.json   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```   
 
-Parameters. JSON dosyasındaki varsayılan parametreler Visual Studio Code projenizdeki ayarlardan alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
+parameters.jsdosyadaki varsayılan parametreler Visual Studio Code projenizdeki ayarlardan alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
 
 > [!NOTE]
 > Tüm kimlik bilgileri için varsayılan değerler null olarak ayarlanır. Buluta dağıtmadan önce değerleri ayarlamanız **gerekir** .
@@ -106,7 +110,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
 
 1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Kopya dosyalarını**arayın. Ardından aşağıdaki konfigürasyonları girin.
 
-   |Parametre|Girdi|
+   |Parametre|Giriş|
    |-|-|
    |Görünen ad|Dosyaları kopyala: $ (Build. artifactstagingdirectory)|
    |Kaynak klasör|`$(system.defaultworkingdirectory)`| 
@@ -155,8 +159,8 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Kaynak grubu| Stream Analytics işinizi içerecek test kaynak grubu için bir ad seçin.|
    |Konum|Test kaynak grubunuzun konumunu seçin.|
    |Şablon konumu| *Bağlı yapıt*|
-   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.js |
+   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.js|
    |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
    |Dağıtım modu|Artımlı|
 
@@ -172,8 +176,8 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Kaynak grubu| Stream Analytics işinizi içerecek üretim kaynak grubu için bir ad seçin.|
    |Konum|Üretim kaynağı grubunuzun konumunu seçin.|
    |Şablon konumu| *Bağlı yapıt*|
-   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.js |
+   |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.js|
    |Şablon parametrelerini geçersiz kılma|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
    |Dağıtım modu|Artımlı|
 

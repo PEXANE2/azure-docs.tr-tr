@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408553"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045544"
 ---
 # <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
 
@@ -34,7 +34,7 @@ Gizli bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı
 |--|--|--|
 | 4.2 | 13,2, 2,10 | Müşteri |
 
-Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz. 
+Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz. 
 
 - [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -76,7 +76,7 @@ Azure 'daki belirli bir hizmet için kullanılabilir bir özellik yoksa, şirket
 
 Office 365 belgelerindeki önemli bilgileri tanımlamak için Azure Information Protection kullanın.
 
-Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiketlemesine yardımcı olması için Azure SQL Information Protection kullanın.
+Azure SQL veritabanı 'nda depolanan bilgilerin sınıflandırmasına ve etiketlemesine yardımcı olması için Azure SQL Information Protection kullanın.
 
 - [Azure SQL veri bulmayı uygulama](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 

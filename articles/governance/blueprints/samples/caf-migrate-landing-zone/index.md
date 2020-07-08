@@ -3,12 +3,12 @@ title: CAF Geçişi giriş bölgesi şema örneğine genel bakış
 description: Azure Geçişi giriş bölgesi şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459874"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044830"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Azure Geçişi giriş bölgesi şema örneği için Microsoft Bulutu Benimseme Çerçevesine genel bakış
 
@@ -28,7 +28,7 @@ Bu ortam, güvenli, tam olarak izlenen, kurumsal kullanıma hazır yönetim sağ
 - Geçiş işleminize başladığınız andan itibaren tüm eylemlerin ve hizmetlerin merkezi bir konumda günlüğe kaydedildiğinden emin olmak amacıyla dağıtılan [Log Analytics](../../../../azure-monitor/overview.md) dağıtımı
 - [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md) (standart sürüm) dağıtımını yaparak, geçirilen iş yüklerinize yönelik tehdit koruması sağlayın.
 - [Azure Sanal Ağı](../../../../virtual-network/virtual-networks-overview.md) dağıtımını yaparak, sanal makineniz için yalıtılmış ağ ve alt ağlar sağlayın.
-- Keşif ve değerlendirme için [Azure Geçişi Projesi](../../../..//migrate/migrate-overview.md) dağıtımını yapın. Sunucu değerlendirmesine, Sunucu geçişine, Veritabanı değerlendirmesine ve Veritabanı geçişine yönelik araçları ekliyoruz.  
+- Keşif ve değerlendirme için [Azure Geçişi Projesi](../../../../migrate/migrate-services-overview.md) dağıtımını yapın. Sunucu değerlendirmesine, Sunucu geçişine, Veritabanı değerlendirmesine ve Veritabanı geçişine yönelik araçları ekliyoruz.  
 
 
 Tam bu öğeler [Azure Mimari Merkezi - Referans Mimarileri](/azure/architecture/reference-architectures/)'nde yayımlanan kanıtlanmış uygulamalara dayanır.

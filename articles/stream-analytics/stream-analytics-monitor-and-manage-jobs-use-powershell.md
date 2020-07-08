@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 58908b690464396f716801338cb22514ae4b5a66
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831271"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044354"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlet 'leriyle Stream Analytics işlerini izleme ve yönetme
 Temel Stream Analytics görevlerini çalıştıran Azure PowerShell cmdlet 'leri ve PowerShell betiği ile Stream Analytics kaynakları izlemeyi ve yönetmeyi öğrenin.
@@ -242,7 +242,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
-Bu PowerShell komutu, Input. json dosyasından yeni bir giriş oluşturur. Giriş tanımı dosyasında belirtilen ada sahip mevcut bir giriş zaten tanımlanmışsa, cmdlet 'in değiştirip etmeyeceğini sorar.
+Bu PowerShell komutu, üzerinde Input.jsdosyadan yeni bir giriş oluşturur. Giriş tanımı dosyasında belirtilen ada sahip mevcut bir giriş zaten tanımlanmışsa, cmdlet 'in değiştirip etmeyeceğini sorar.
 
 **Örnek 2**
 
@@ -301,7 +301,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
-Bu PowerShell komutu, JobDefinition. JSON dosyasındaki tanımdan yeni bir iş oluşturur. İş tanımı dosyasında belirtilen ada sahip mevcut bir iş zaten tanımlanmışsa, cmdlet bunu değiştirip değiştiremeyeceğini sorar.
+Bu PowerShell komutu, üzerinde JobDefinition.jsiçindeki tanımdan yeni bir iş oluşturur. İş tanımı dosyasında belirtilen ada sahip mevcut bir iş zaten tanımlanmışsa, cmdlet bunu değiştirip değiştiremeyeceğini sorar.
 
 **Örnek 2**
 
@@ -541,7 +541,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 Bu PowerShell komutu, StreamingJob içindeki çıktı çıkışının bağlantı durumunu sınar.  
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

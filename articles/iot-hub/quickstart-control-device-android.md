@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727208"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044728"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Android)
 
@@ -113,9 +113,7 @@ Bu hızlı başlangıçta örneklerin her ikisi de GitHub 'daki Azure-IoT-Sample
 
 Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öykünücüsünde çalıştırılabilir. Örnek, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır, sanal telemetri gönderir ve merkezinizden doğrudan Yöntem çağrılarını dinler. Bu hızlı başlangıçta, hub’dan gelen doğrudan yöntem çağrısı, telemetri gönderme aralığını değiştirmesini cihaza bildirir. Sanal cihaz, doğrudan yöntemini yürütmeden sonra hub 'ınıza bir bildirim gönderir.
 
-1. Android Studio 'de GitHub örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun kopyası dizininde bulunur.
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. Android Studio 'de GitHub örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\device\AndroidSample*.
 
 2. Android Studio, örnek proje için *Gradle. Properties* ' i açın ve **Device_Connection_String** yer tutucusunu, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin.
 
@@ -165,9 +163,7 @@ Bu uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüs�
 
 Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada, bir IoT Hub tüm cihazları denetleyen hassas bağlantı dizesiyle ilişkili riskleri azaltmak daha kolay olur. Bu örnekte, bunu yalnızca tanıtım amacıyla bir Android uygulaması olarak çalıştırdık. Bu hızlı başlangıçta diğer dil sürümleri, tipik bir arka uç hizmet uygulamasıyla daha yakından hizalanacak örnekler sağlar.
 
-1. Android Studio 'de GitHub hizmeti örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun kopyası dizininde bulunur.
-
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
+1. Android Studio 'de GitHub hizmeti örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\service\AndroidSample*.
 
 2. Android Studio, örnek proje için *Gradle. Properties* ' i açın. **ConnectionString** ve **DeviceID** özelliklerinin değerlerini, daha önce not ettiğiniz hizmet bağlantı dizesiyle ve kaydettiğiniz Android cihaz kimliğiyle güncelleştirin.
 

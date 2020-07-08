@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76847205"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045408"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
 
@@ -20,7 +20,7 @@ ms.locfileid: "76847205"
 
 ## <a name="debug-a-query-using-job-diagram"></a>İş diyagramı kullanarak bir sorgu hatalarını ayıklama
 
-Giriş verilerini çıktı verilerine dönüştürmek için bir Azure Stream Analytics betiği kullanılır. İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak çıkış havuzları aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, bir `WITH` ifade kullanılarak betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Bir sorunun kaynağını bulmak için her bir ara sonuç kümesindeki her bir sorgu adımındaki ölçümleri ve verileri görüntüleyebilirsiniz.
+Giriş verilerini çıktı verilerine dönüştürmek için bir Azure Stream Analytics betiği kullanılır. İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak çıkış havuzları aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, bir ifade kullanılarak betikte tanımlanan geçici bir sonuç kümesiyle eşlenir `WITH` . Bir sorunun kaynağını bulmak için her bir ara sonuç kümesindeki her bir sorgu adımındaki ölçümleri ve verileri görüntüleyebilirsiniz.
 
 > [!NOTE]
 > Bu iş diyagramı yalnızca tek bir düğümdeki yerel test için verileri ve ölçümleri gösterir. Performans ayarlama ve sorun giderme için kullanılmamalıdır.
@@ -52,7 +52,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı canlı giriş kaynakları](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Olay Hub'ı** | Giriş kaynağı türü.|
@@ -68,7 +68,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel giriş kaynakları](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -79,7 +79,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı sorgu adımı](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**TripData**|Geçici sonuç kümesinin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -89,7 +89,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
 |**Olaylar**|Havuza çıkış yapılacak olay sayısı.|
@@ -98,7 +98,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
 |**Yerel çıkış**| Yerel bir dosyaya giden sonuç çıktısı.|

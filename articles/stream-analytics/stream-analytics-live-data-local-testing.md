@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840494"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044473"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test etme (Önizleme)
 
@@ -23,7 +23,7 @@ Visual Studio için Azure Stream Analytics araçları, Azure Olay Hub 'ı, IoT H
 
 Aşağıdaki yerel test seçenekleri desteklenir:
 
-|**Girdi**  |**Çıktı**  |**İş türü**  |
+|**Giriş**  |**Çıktı**  |**İş türü**  |
 |---------|---------|---------|
 |Yerel statik veriler   |  Yerel statik veriler   |   Bulut/kenar |
 |Canlı giriş verileri   |  Yerel statik veriler   |   Bulut |

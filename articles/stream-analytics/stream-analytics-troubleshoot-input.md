@@ -5,15 +5,15 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831900"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045085"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -138,6 +138,28 @@ FROM data
 ### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Girişlerin farklı tüketici gruplarına bağlı olduğundan emin olun
 
 Üç veya daha fazla girişin aynı Event Hubs tüketici grubuna bağlandığı sorgular için, ayrı tüketici grupları oluşturun. Bu, ek Stream Analytics girişlerinin oluşturulmasını gerektirir.
+
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>Farklı tüketici gruplarıyla ayrı girişler oluşturun
+
+Aynı Olay Hub 'ı için farklı tüketici gruplarıyla ayrı girişler oluşturabilirsiniz. Aşağıdaki BIRLEŞIM sorgusu, *ınputone* ve *ınputtwo* 'in aynı Olay Hub kaynağına başvurduğu bir örnektir. Herhangi bir sorgunun farklı tüketici gruplarıyla ayrı girdileri olabilir. BIRLEŞIM sorgusu yalnızca bir örnektir.
+
+```sql
+WITH 
+DataOne AS 
+(
+SELECT * FROM InputOne 
+),
+
+DataTwo AS 
+(
+SELECT * FROM InputTwo 
+),
+
+SELECT foo FROM DataOne
+UNION 
+SELECT foo FROM DataTwo
+
+```
 
 ## <a name="get-help"></a>Yardım alın
 

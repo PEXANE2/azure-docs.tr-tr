@@ -4,14 +4,14 @@ description: Bu makalede, Azure SQL DB çıktısında Azure Stream Analytics iş
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651955"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045629"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -19,7 +19,7 @@ Azure Stream Analytics, Azure SQL veritabanı çıkış havuzları için [yönet
 
 Yönetilen kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır. Yönetilen uygulama, hedeflenen bir kaynağın kimliğini doğrulamak için kullanılır. Bu makalede, Azure portal aracılığıyla bir Stream Analytics işinin Azure SQL veritabanı çıkışları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özellik için aşağıdakiler gereklidir:
 
@@ -70,7 +70,7 @@ Yönetilen bir kimlik oluşturduktan sonra bir Active Directory Yöneticisi seç
 
 Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş bir kapsanan veritabanı kullanıcısı oluşturun. Kapsanan Veritabanı kullanıcısının ana veritabanı için bir oturum açma işlemi yoktur, ancak veritabanıyla ilişkili dizindeki bir kimlikle eşlenir. Azure Active Directory kimliği, tek bir kullanıcı hesabı veya grup olabilir. Bu durumda, Stream Analytics işiniz için kapsanan bir veritabanı kullanıcısı oluşturmak istersiniz. 
 
-1. SQL Server Management Studio kullanarak SQL veritabanına bağlanın. **Kullanıcı adı** , Kullanıcı **değiştirme** iznine sahip Azure Active Directory bir kullanıcı. SQL Server ayarladığınız yönetici bir örnektir. MFA kimlik doğrulamasıyla **Azure Active Directory – Universal** kullanın. 
+1. SQL Server Management Studio kullanarak SQL veritabanı 'na bağlanma. **Kullanıcı adı** , Kullanıcı **değiştirme** iznine sahip Azure Active Directory bir kullanıcı. SQL Server ayarladığınız yönetici bir örnektir. MFA kimlik doğrulamasıyla **Azure Active Directory – Universal** kullanın. 
 
    ![SQL Server’a bağlanma](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş 
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. Microsoft 'un Stream Analytics işinin SQL veritabanına erişimi olup olmadığını doğrulamak için Azure Active Directory, veritabanıyla iletişim kurmak için Azure Active Directory izni vermemiz gerekir. Bunu yapmak için, Azure portalındaki "güvenlik duvarları ve sanal ağ" sayfasına yeniden gidin ve "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine Izin ver" seçeneğini etkinleştirin. 
+1. Microsoft 'un Stream Analytics işinin SQL veritabanına erişimi olup olmadığını doğrulamak için Azure Active Directory, veritabanıyla iletişim kurmak için Azure Active Directory izni vermemiz gerekir. Bunu yapmak için, yeniden Azure portal "güvenlik duvarları ve sanal ağ" sayfasına gidin ve "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine Izin ver" seçeneğini etkinleştirin. 
 
    ![Güvenlik Duvarı ve sanal ağ](./media/sql-db-output-managed-identity/allow-access.png)
 

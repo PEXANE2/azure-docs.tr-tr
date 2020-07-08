@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425967"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044422"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics Işinin girdileri ve çıkışları için oturum açma kimlik bilgilerini döndürün
 
@@ -49,13 +49,13 @@ Bu bölümde, BLOB depolama, Event Hubs, SQL veritabanı ve tablo depolama için
 
 ### <a name="sql-database"></a>SQL Veritabanı
 
-Mevcut bir kullanıcının oturum açma kimlik bilgilerini güncelleştirmek için SQL veritabanına bağlanmanız gerekir. Azure portal veya SQL Server Management Studio gibi bir istemci tarafı aracı kullanarak kimlik bilgilerini güncelleştirebilirsiniz. Bu bölümde Azure portal kullanarak kimlik bilgilerini güncelleştirme işlemi gösterilmektedir.
+Mevcut bir kullanıcının oturum açma kimlik bilgilerini güncelleştirmek için SQL veritabanı 'na bağlanmanız gerekir. Azure portal veya SQL Server Management Studio gibi bir istemci tarafı aracı kullanarak kimlik bilgilerini güncelleştirebilirsiniz. Bu bölümde Azure portal kullanarak kimlik bilgilerini güncelleştirme işlemi gösterilmektedir.
 
 1. Azure portal oturum açın > Stream Analytics iş için çıktı olarak kullandığınız SQL veritabanına gidin.    
 2. **Veri Gezgini**'nde, veritabanınıza bağlanın/veritabanınıza bağlanın > Yetkilendirme türünü **SQL Server kimlik doğrulaması** olarak seçin > **oturum açma** ve **parola** ayrıntılarına yazın > Tamam ' **ı**seçin.  
    ![SQL veritabanı için kimlik bilgilerini yeniden üret](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
-3. Sorgu sekmesinde, aşağıdaki sorguyu çalıştırarak kullanıcılarınızın parolasını değiştirin (Kullanıcı adınızla ve `<user_name>` `<new_password>` yeni parolanızla değiştirdiğinizden emin olun):  
+3. Sorgu sekmesinde, aşağıdaki sorguyu çalıştırarak kullanıcılarınızın parolasını değiştirin (Kullanıcı `<user_name>` adınızla ve yeni parolanızla değiştirdiğinizden emin olun `<new_password>` ):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'

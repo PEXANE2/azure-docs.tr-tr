@@ -3,12 +3,12 @@ title: Service Fabric Hizmetleri bölümlendirme
 description: Service Fabric durum bilgisi olan hizmetlerin nasıl bölümleneceğini açıklar. Bölümler, veri ve işlem birlikte ölçeklendirilebilmeleri için yerel makinelerde veri depolamayı mümkün bir şekilde sunar.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115157"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045425"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric güvenilir hizmetleri
 Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Makalede kullanılan kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)'da da kullanılabilir.
@@ -21,11 +21,11 @@ Durum bilgisi olmayan hizmetler için bir bölümün bir veya daha fazla hizmet 
 
 ![Durum bilgisi olmayan hizmet](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Aslında iki tür durum bilgisi olmayan hizmet çözümü vardır. Birincisi, örneğin bir Azure SQL veritabanında (oturum bilgilerini ve verileri depolayan bir Web sitesi gibi) durumu dışarıdan devam eden bir hizmettir. İkincisi, kalıcı bir durumu yönetmeyen yalnızca hesaplama Hizmetleri (Hesaplayıcı veya Image thumbnailing gibi) olur.
+Aslında iki tür durum bilgisi olmayan hizmet çözümü vardır. Birincisi, örneğin Azure SQL veritabanı 'ndaki bir veritabanında (oturum bilgilerini ve verileri depolayan bir Web sitesi gibi) durumu dışarıdan devam eden bir hizmettir. İkincisi, kalıcı bir durumu yönetmeyen yalnızca hesaplama Hizmetleri (Hesaplayıcı veya Image thumbnailing gibi) olur.
 
 Her iki durumda da, durum bilgisi olmayan bir hizmetin bölümlenmesi çok nadir bir senaryodur--ölçeklenebilirlik ve kullanılabilirlik normalde daha fazla örnek eklenerek elde edilir. Durum bilgisi olmayan hizmet örnekleri için birden çok bölümü düşünmek istediğiniz tek zaman, özel yönlendirme isteklerini karşılamanız gerekir.
 
-Örnek olarak, belirli bir aralıktaki kimlikleri olan kullanıcıların yalnızca belirli bir hizmet örneği tarafından sunulması gereken bir durum düşünün. Durum bilgisi olmayan bir hizmetin bölümlenmesi için başka bir örnek de gerçek bir arka uca (örneğin, parçalı bir SQL veritabanı) sahip olmanız ve hangi hizmet örneğinin veritabanına yazılacağını denetlemek istediğinizde veya arka uçta kullanılan aynı bölümleme bilgilerini gerektiren durum bilgisiz hizmeti içinde başka hazırlık çalışmaları gerçekleştirmek istediğinizde. Bu tür senaryolar aynı zamanda farklı yollarla çözülebilirler ve hizmet bölümlendirme gerektirmez.
+Örnek olarak, belirli bir aralıktaki kimlikleri olan kullanıcıların yalnızca belirli bir hizmet örneği tarafından sunulması gereken bir durum düşünün. Durum bilgisi olmayan bir hizmetin bölümlenmesi için başka bir örnek de gerçek bir arka uca (örneğin, SQL veritabanı 'nda parçalı bir veritabanı) sahip olduğunuzda ve hangi hizmet örneğinin veritabanına yazılması gerektiğini denetlemek istediğinizde veya arka uçta kullanılan aynı bölümleme bilgilerini gerektiren durum bilgisiz hizmeti içinde başka bir hazırlık çalışması gerçekleştirmek istediğinizde. Bu tür senaryolar aynı zamanda farklı yollarla çözülebilirler ve hizmet bölümlendirme gerektirmez.
 
 Bu izlenecek yolun geri kalanı durum bilgisi olan hizmetlere odaklanır.
 
@@ -115,17 +115,17 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
 > 
 > 
 
-1. **Visual Studio** > **Dosya** > **New**yeni > **Proje**'yi açın.
+1. **Visual Studio**  >  **Dosya**  >  **Yeni**  >  **Proje**'yi açın.
 2. **Yeni proje** iletişim kutusunda Service Fabric uygulamayı seçin.
 3. "Harfler bölümler" projesini çağırın.
 4. **Hizmet oluştur** Iletişim kutusunda **durum bilgisi olan** hizmet ' i seçin ve "alfabe. işleme" seçeneğini çağırın.
-5. Bölüm sayısını ayarlayın. Aşağıdaki şekilde gösterildiği gibi, bir Alfabölüm projesinin ApplicationPackageRoot klasöründe bulunan ApplicationManifest. xml dosyasını açın ve Processing_PartitionCount parametresini 26 olarak güncelleştirin.
+5. Bölüm sayısını ayarlayın. Aşağıdaki gösterildiği gibi,, Alfadisk bölümleri projesinin ApplicationPackageRoot klasöründe bulunan Applicationmanifest.xml dosyasını açın ve Processing_PartitionCount parametresini 26 olarak güncelleştirin.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    Ayrıca, ApplicationManifest. xml dosyasındaki StatefulService öğesinin LowKey ve HighKey özelliklerini aşağıda gösterildiği gibi güncelleştirmeniz gerekir.
+    Ayrıca, ApplicationManifest.xml StatefulService öğesinin LowKey ve HighKey özelliklerini aşağıda gösterildiği gibi güncelleştirmeniz gerekir.
    
     ```xml
     <Service Name="Processing">
@@ -134,20 +134,20 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
       </StatefulService>
     </Service>
     ```
-6. Hizmetin erişilebilir olması için, aşağıda gösterildiği gibi, alfabetik. Işleme hizmeti için ServiceManifest. xml (PackageRoot klasöründe bulunur) uç nokta öğesini ekleyerek bir bağlantı noktası üzerinde bir uç nokta açın:
+6. Hizmetin erişilebilir olması için, aşağıda gösterildiği gibi alfabetik. Işleme hizmeti için ServiceManifest.xml (PackageRoot klasöründe bulunur) uç nokta öğesini ekleyerek bir bağlantı noktası üzerinde bir uç nokta açın:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
    
     Artık hizmet, 26 bölümden oluşan bir iç uç noktayı dinlemek üzere yapılandırılmıştır.
-7. Ardından, Işleme sınıfının `CreateServiceReplicaListeners()` yöntemini geçersiz kılmanız gerekir.
+7. Ardından, `CreateServiceReplicaListeners()` işleme sınıfının yöntemini geçersiz kılmanız gerekir.
    
    > [!NOTE]
    > Bu örnek için, basit bir HttpCommunicationListener kullandığınızı varsaytık. Güvenilir hizmet iletişimi hakkında daha fazla bilgi için bkz. [güvenilir hizmet iletişim modeli](service-fabric-reliable-services-communication.md).
    > 
    > 
-8. Bir çoğaltmanın dinlediği URL için önerilen bir model aşağıdaki biçimdedir: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+8. Bir çoğaltmanın dinlediği URL için önerilen bir model aşağıdaki biçimdedir: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` .
     Bu nedenle, iletişim dinleyicinizi doğru uç noktaları ve bu düzene göre dinlemek için yapılandırmak istiyorsunuz.
    
     Bu hizmetin birden fazla çoğaltması aynı bilgisayarda barındırılıyor olabilir, bu nedenle bu adresin çoğaltma için benzersiz olması gerekir. Bu nedenle bölüm KIMLIĞI + çoğaltma KIMLIĞI URL 'de bulunur. HttpListener, URL öneki benzersiz olduğu sürece aynı bağlantı noktasında birden çok adresi dinleyebilir.
@@ -224,14 +224,14 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     }
     ```
    
-    `ProcessInternalRequest`bölümü çağırmak için kullanılan sorgu dizesi parametresinin değerlerini okur ve soyadu güvenilir sözlüğe `AddUserAsync` `dictionary`eklemek için çağırır.
+    `ProcessInternalRequest`bölümü çağırmak için kullanılan sorgu dizesi parametresinin değerlerini okur ve `AddUserAsync` soyadu güvenilir sözlüğe eklemek için çağırır `dictionary` .
 10. Ayrıca, belirli bir bölümü nasıl çağırakullanabileceğinizi görmek için projeye durum bilgisi olmayan bir hizmet ekleyelim.
     
     Bu hizmet, LastName parametresini bir sorgu dizesi parametresi olarak kabul eden basit bir Web arabirimi olarak görev yapar, Bölüm anahtarını belirler ve işlemek için alfabetik. processing hizmetine gönderir.
 11. **Hizmet oluştur** iletişim kutusunda, **durum bilgisi olmayan** hizmet ' i seçin ve aşağıda gösterildiği gibi "alfabe. Web" i çağırın.
     
     ![Durum bilgisi olmayan hizmet ekran görüntüsü](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Aşağıda gösterildiği gibi bir bağlantı noktasını açmak için alfabetik. WebApi hizmetinin ServiceManifest. xml dosyasındaki uç nokta bilgilerini güncelleştirin.
+12. Aşağıda gösterildiği gibi bir bağlantı noktasını açmak için alfabetik. WebApi hizmetinin ServiceManifest.xml uç nokta bilgilerini güncelleştirin.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
@@ -252,7 +252,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Şimdi işlem mantığını uygulamanız gerekir. HttpCommunicationListener bir istek `ProcessInputRequest` geldiğinde çağırır. Şimdi aşağıdaki kodu ekleyin.
+14. Şimdi işlem mantığını uygulamanız gerekir. HttpCommunicationListener `ProcessInputRequest` bir istek geldiğinde çağırır. Şimdi aşağıdaki kodu ekleyin.
     
     ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -298,7 +298,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     }
     ```
     
-    Adımla adım adım ilerlim. Kod, sorgu dizesi parametresinin `lastname` ilk harfini char olarak okur. Ardından, Bu harfin bölüm anahtarını, son adların ilk harfinin onaltılık değerinden çıkararak onaltılık değerini `A` çıkararak belirler.
+    Adımla adım adım ilerlim. Kod, sorgu dizesi parametresinin ilk harfini char olarak okur `lastname` . Ardından, Bu harfin bölüm anahtarını, `A` son adların ilk harfinin onaltılık değerinden çıkararak onaltılık değerini çıkararak belirler.
     
     ```csharp
     string lastname = context.Request.QueryString["lastname"];
@@ -307,13 +307,13 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     ```
     
     Bu örnekte, bölüm başına bir bölüm anahtarı ile 26 bölüm kullandığınızı unutmayın.
-    Daha sonra, bu anahtarla ilgili hizmet `partition` bölümünü `ResolveAsync` `servicePartitionResolver` nesne üzerindeki metodunu kullanarak elde ediyoruz. `servicePartitionResolver`şöyle tanımlanır
+    Daha sonra, `partition` Bu anahtarla ilgili hizmet bölümünü `ResolveAsync` nesne üzerindeki metodunu kullanarak elde ediyoruz `servicePartitionResolver` . `servicePartitionResolver`şöyle tanımlanır
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    `ResolveAsync` Yöntemi, hizmet URI 'sini, Bölüm anahtarını ve bir iptal belirtecini parametre olarak alır. İşleme hizmeti için hizmet URI 'SI `fabric:/AlphabetPartitions/Processing`. Daha sonra, bölümün uç noktasını alırız.
+    `ResolveAsync`Yöntemi, HIZMET URI 'sini, Bölüm anahtarını ve bir iptal belirtecini parametre olarak alır. İşleme hizmeti için hizmet URI 'SI `fabric:/AlphabetPartitions/Processing` . Daha sonra, bölümün uç noktasını alırız.
     
     ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
@@ -332,7 +332,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     ```
     
     İşlem tamamlandıktan sonra çıktıyı geri yazarız.
-15. Son adım, hizmeti test etmek için kullanılır. Visual Studio yerel ve bulut dağıtımı için uygulama parametrelerini kullanır. Hizmeti 26 bölümden oluşan yerel olarak test etmek için, aşağıda gösterildiği gibi, `Local.xml` söz konusu dosyayı, aşağıdaki şekilde gösterilen şekilde, en alttaki bölüm projesinin applicationparameters klasöründen güncelleştirmeniz gerekir:
+15. Son adım, hizmeti test etmek için kullanılır. Visual Studio yerel ve bulut dağıtımı için uygulama parametrelerini kullanır. Hizmeti 26 bölümden oluşan yerel olarak test etmek için, `Local.xml` aşağıda gösterildiği gibi, söz konusu dosyayı, aşağıdaki şekilde gösterilen şekilde, en alttaki bölüm projesinin ApplicationParameters klasöründen güncelleştirmeniz gerekir:
     
     ```xml
     <Parameters>
@@ -343,7 +343,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
 16. Dağıtımı tamamladıktan sonra, Service Fabric Explorer hizmeti ve tüm bölümlerini kontrol edebilirsiniz.
     
     ![Service Fabric Explorer ekran görüntüsü](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. Bir tarayıcıda bölümlendirme mantığını girerek `http://localhost:8081/?lastname=somename`test edebilirsiniz. Aynı harfle başlayan her bir soyadı aynı bölümde depolanmakta olduğunu görürsünüz.
+17. Bir tarayıcıda bölümlendirme mantığını girerek test edebilirsiniz `http://localhost:8081/?lastname=somename` . Aynı harfle başlayan her bir soyadı aynı bölümde depolanmakta olduğunu görürsünüz.
     
     ![Tarayıcı ekran görüntüsü](./media/service-fabric-concepts-partitioning/samplerunning.png)
 

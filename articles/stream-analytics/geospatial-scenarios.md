@@ -4,14 +4,14 @@ description: Bu makalede, bölge sınırlaması ve jeo-uzamsal toplama için Azu
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443634"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045272"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama senaryoları
 
@@ -29,7 +29,7 @@ Bu örnekte kullanılan başvuru verileri, binalara ve binalarda izin verilen ci
 
 ### <a name="define-geofences-in-reference-data"></a>Başvuru verilerinde bölge tanımlar
 
-Bir bölge bölge, GeoJSON nesnesi kullanılarak tanımlanabilir. Uyumluluk sürümü 1,2 ve üzeri olan işler için bölge alanları da bilinen tanınmış metin (WKT) kullanılarak da tanımlanabilir `NVARCHAR(MAX)`. WKT, uzamsal verileri metinsel biçimde temsil etmek için kullanılan bir Open Geospatial Consortium (OGC) standardıdır.
+Bir bölge bölge, GeoJSON nesnesi kullanılarak tanımlanabilir. Uyumluluk sürümü 1,2 ve üzeri olan işler için bölge alanları da bilinen tanınmış metin (WKT) kullanılarak da tanımlanabilir `NVARCHAR(MAX)` . WKT, uzamsal verileri metinsel biçimde temsil etmek için kullanılan bir Open Geospatial Consortium (OGC) standardıdır.
 
 Yerleşik Jeo-uzamsal işlevler, bir öğenin belirli bir bölge poligonun içinde mi yoksa dışında mı olduğunu bulmak için tanımlı bölge sınırlarını kullanabilir.
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, Azure Blob depolama veya bir Azure SQL tablosu 'nda depola
 
 ### <a name="generate-alerts-with-geofence"></a>Bölge sınırı ile uyarı oluşturma
 
-Cihazlar, KIMLIK ve konumlarını her dakikada, adlı `DeviceStreamInput`bir akış aracılığıyla yayabilir. Aşağıdaki tablo bir giriş akışıdır.
+Cihazlar, KIMLIK ve konumlarını her dakikada, adlı bir akış aracılığıyla yayabilir `DeviceStreamInput` . Aşağıdaki tablo bir giriş akışıdır.
 
 |DeviceID|Coğrafi konum|
 |--------|-----------|
@@ -70,7 +70,7 @@ Aşağıdaki resim, bölge sınırlarını temsil eder. Cihazların akış veri 
 
 ### <a name="site-with-multiple-allowed-devices"></a>Birden çok izin verilen cihaz içeren site
 
-Bir site birden çok cihaza izin veriyorsa, bir cihaz kimlikleri dizisi ' de `AllowedDeviceID` tanımlanabilir ve `WHERE` yan tümcesinde Kullanıcı tanımlı bir işlev kullanılabilir ve bu da akış cihazı kimliğinin bu LISTEDEKI herhangi bir cihaz kimliğiyle eşleşip eşleşmediğini doğrular. Daha fazla bilgi için, bulut işlerinin [JAVASCRIPT UDF](stream-analytics-javascript-user-defined-functions.md) öğreticisini ve Edge Işleri Için [C# UDF](stream-analytics-edge-csharp-udf.md) öğreticisini görüntüleyin.
+Bir site birden çok cihaza izin veriyorsa, bir cihaz kimlikleri dizisi ' de tanımlanabilir `AllowedDeviceID` ve yan tümcesinde Kullanıcı tanımlı bir işlev kullanılabilir ve `WHERE` Bu da AKıŞ cihazı kimliğinin bu listedeki herhangi BIR cihaz kimliğiyle eşleşip eşleşmediğini doğrular. Daha fazla bilgi için, bulut işlerinin [JAVASCRIPT UDF](stream-analytics-javascript-user-defined-functions.md) öğreticisini ve Edge Işleri Için [C# UDF](stream-analytics-edge-csharp-udf.md) öğreticisini görüntüleyin.
 
 ## <a name="geospatial-aggregation"></a>Jeo-uzamsal toplama
 

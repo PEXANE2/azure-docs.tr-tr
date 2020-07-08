@@ -1,16 +1,16 @@
 ---
-title: Windows için konuk yapılandırma ilkeleri oluşturma
+title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835963"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045136"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için konuk yapılandırma ilkeleri oluşturma
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
 Özel ilke tanımları oluşturmadan önce, [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md)sayfasında kavramsal genel bakış bilgilerini okumak iyi bir fikirdir.
  
@@ -84,11 +84,14 @@ DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye gene
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Konuk yapılandırma modüllerinin Windows PowerShell DSC modülleriyle farkı
 
-Konuk yapılandırması bir makineyi denetyzaman:
+Konuk yapılandırma bir makineyi denet,, olay sırası Windows PowerShell DSC 'den farklıdır.
 
 1. Aracı ilk olarak `Test-TargetResource` yapılandırmanın doğru durumda olup olmadığını belirlemede çalışır.
 1. İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler.
 1. Sağlayıcı `Get-TargetResource` her ayarın geçerli durumunu döndürmek için çalışır, böylece ayrıntılar, makinenin neden uyumlu olmaması ve geçerli durumun uyumlu olduğunu doğrulamak için geçerlidir.
+
+Azure Ilkesindeki, verileri Konuk yapılandırma atamalarına geçiren parametreler _dize_ türünde olmalıdır.
+DSC kaynağı dizileri desteklediğinden bile, dizileri parametreler aracılığıyla geçirmek mümkün değildir.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
-Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Kaynak Yöneticisi şablonundaki Konuk atama adı aynı olmalıdır.
+Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Azure Resource Manager şablonundaki (ARM şablonu) Konuk atama adı aynı olmalıdır.
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Konuk yapılandırma projesi yapı iskelesi
 
@@ -163,7 +166,7 @@ Paket biçimi bir. zip dosyası olmalıdır.
 ### <a name="storing-guest-configuration-artifacts"></a>Konuk yapılandırma yapıtları depolanıyor
 
 . Zip paketinin yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir.
-GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz.
+GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-sas-overview.md) ekleyebilirsiniz.
 Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Adım adım, Windows için özel konuk yapılandırma denetim ilkesi oluşturma
@@ -320,9 +323,9 @@ New-GuestConfigurationPolicy `
 
 Aşağıdaki dosyalar tarafından oluşturulmuştur `New-GuestConfigurationPolicy` :
 
-- **Auditınotexists. JSON**
-- **deployIfNotExists. JSON**
-- **Girişim. JSON**
+- **ÜzerindeauditIfNotExists.js**
+- **ÜzerindedeployIfNotExists.js**
+- **ÜzerindeInitiative.js**
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
 
@@ -408,7 +411,7 @@ Aşağıdaki etiketlere filtre uygulayan bir ilke tanımının örnek parçacı�
 
 Konuk yapılandırması, çalışma zamanında bir yapılandırmanın özelliklerini geçersiz kılmayı destekler. Bu özellik, paketteki MOF dosyasındaki değerlerin statik olarak değerlendirilmesi gerekmediği anlamına gelir. Geçersiz kılma değerleri Azure Ilkesi aracılığıyla sağlanır ve yapılandırmaların nasıl yazıldığı veya derlendiğini etkilemez.
 
-Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **Parametreler**adlı bir parametre ekleyin. Bu parametre, her parametre hakkında tüm ayrıntılar dahil olmak üzere bir Hashtable tanımı alır ve Azure Ilke tanımı için kullanılan her bir dosyanın gerekli bölümlerini oluşturur.
+Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **parametresi**adlı bir parametre ekleyin. Bu parametre, her parametre hakkında tüm ayrıntılar dahil olmak üzere bir Hashtable tanımı alır ve Azure Ilke tanımı için kullanılan her bir dosyanın gerekli bölümlerini oluşturur.
 
 Aşağıdaki örnek, kullanıcının ilke ataması sırasında bir listeden seçtiği bir hizmeti denetlemek için bir ilke tanımı oluşturur.
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Üçüncü taraf araçlarla Konuk yapılandırmasını genişletme
 
 > [!Note]
-> Bu özellik önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.1 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
-> Version 1.20.1 sürümünde bu özellik yalnızca Windows makinelerini denetleyen ilke tanımları için kullanılabilir
+> Bu özellik önizleme aşamasındadır ve kullanılarak yüklenebilen Konuk yapılandırma modülü sürüm 1.20.3 gerektirir `Install-Module GuestConfiguration -AllowPrerelease` .
+> Version 1.20.3 sürümünde bu özellik yalnızca Windows makinelerini denetleyen ilke tanımları için kullanılabilir
 
 Konuk yapılandırması için yapıt paketleri, üçüncü taraf araçları içerecek şekilde genişletilebilir.
 Konuk yapılandırmasını genişletme iki bileşenin geliştirilmesini gerektirir.
@@ -465,7 +468,14 @@ Yalnızca `New-GuestConfigurationPackage` cmdlet, DSC içerik yapıtları için 
 Gerekli modülleri geliştirme ortamınıza yükler:
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 İlk olarak, InSpec tarafından kullanılan YaML dosyasını oluşturun. Dosya, ortam hakkında temel bilgileri sağlar. Aşağıda bir örnek verilmiştir:
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-Bu dosyayı proje dizininizde adlı bir klasöre kaydedin `wmi_service` .
+Adlı bu dosyayı `wmi_service.yml` Proje dizininizde adlı bir klasöre kaydedin `wmi_service` .
 
 Sonra, makineyi denetlemek için kullanılan InSpec Language soyutlama ile Ruby dosyasını oluşturun.
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-Bu dosyayı dizin içinde adlı yeni bir klasöre kaydedin `controls` `wmi_service` .
+Bu dosyayı `wmi_service.rb` Dizin içinde adlı yeni bir klasöre kaydedin `controls` `wmi_service` .
 
 Son olarak, bir yapılandırma oluşturun, **Guestconfiguration** kaynak modülünü içeri aktarın ve `gcInSpec` InSpec profilinin adını ayarlamak için kaynağı kullanın.
 
@@ -509,7 +519,7 @@ Son olarak, bir yapılandırma oluşturun, **Guestconfiguration** kaynak modül�
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ Destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azu
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü

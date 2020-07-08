@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846674"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044286"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -47,7 +47,7 @@ Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, Güvenlik
 
 ## <a name="architecture"></a>Mimari
 
-Güvenlik Merkezi Azure 'un yerel olarak bir parçası olduğundan, Azure 'da Service Fabric, SQL veritabanları ve depolama hesapları dahil olmak üzere PaaS hizmetleri, tasarımda hiçbir dağıtım olmadan Güvenlik Merkezi tarafından izlenir ve korunur.
+Güvenlik Merkezi Azure 'un yerel olarak bir parçası olduğundan, Azure 'da Service Fabric, SQL veritabanı, SQL yönetilen örneği ve depolama hesapları dahil olmak üzere PaaS hizmetleri, tasarımda hiçbir dağıtım olmadan Güvenlik Merkezi tarafından izlenir ve korunur.
 
 Ayrıca, Güvenlik Merkezi, Azure dışı sunucuları ve bulutta veya şirket içinde bulunan sanal makineleri, hem Windows hem de Linux sunucuları için Log Analytics aracıyı yükleyerek korur. Azure sanal makineleri, güvenlik merkezi 'nde otomatik olarak sağlanır.
 
@@ -111,7 +111,7 @@ Güvenlik Merkezi 'nin tehdit koruması, bir saldırı kampanyasının tam hikay
 
 Güvenlik Merkezi, Microsoft Defender Gelişmiş tehdit koruması ile otomatik, yerel tümleştirme içerir. Bu, herhangi bir yapılandırma olmadan Windows ve Linux makinelerinizin Güvenlik Merkezi 'nin önerileriyle ve değerlendirmelerinden tamamen tümleştirileceği anlamına gelir.
 
-Ayrıca, Güvenlik Merkezi, sunucu ortamlarında uygulama denetim ilkelerini otomatikleştirmenize imkan tanır. Güvenlik Merkezi 'ndeki Uyarlamalı uygulama denetimleri, Windows sunucularınız genelinde uçtan uca uygulama beyaz listesini etkinleştirir. Kurallar oluşturmanız ve ihlalleri denetlemeniz gerekmez, bu işlem sizin için otomatik olarak yapılır.
+Ayrıca, Güvenlik Merkezi, sunucu ortamlarında uygulama denetim ilkelerini otomatikleştirmenize imkan tanır. Güvenlik Merkezi 'ndeki Uyarlamalı uygulama denetimleri, Windows sunucularınız genelinde uçtan uca uygulama onayı listesini etkinleştirir. Kurallar oluşturmanız ve ihlalleri denetlemeniz gerekmez, bu işlem sizin için otomatik olarak yapılır.
 
 ### <a name="protect-paas"></a>PaaS 'yi koruma
 
@@ -147,6 +147,6 @@ Kapsamlı günlük koleksiyonu-Windows ve Linux 'daki Günlükler, güvenlik Ana
 
 - Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 
-- Azure portalında ilk kez Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirilmişse, güvenlik merkezi 'nin ücretsiz fiyatlandırma katmanı tüm mevcut Azure aboneliklerinizde etkindir. Gelişmiş güvenlik yönetimi ve tehdit algılama özellikleri avantajlarından yararlanmak için standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman 30 gün boyunca ücretsiz olarak denenolabilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
+- İlk kez Azure portal Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirilmişse, güvenlik merkezi 'nin ücretsiz fiyatlandırma katmanı tüm mevcut Azure aboneliklerinizde etkindir. Gelişmiş güvenlik yönetimi ve tehdit algılama özellikleri avantajlarından yararlanmak için standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman 30 gün boyunca ücretsiz olarak denenolabilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
 
 - Güvenlik Merkezi standardını şimdi etkinleştirmeye hazırsanız [hızlı başlangıç: Azure aboneliğinizi Güvenlik Merkezi standardına](security-center-get-started.md) ekleme, adımlarda size yol gösterir.

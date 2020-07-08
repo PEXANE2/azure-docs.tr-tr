@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205267"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045867"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Oozie sorunlarını giderme
 
@@ -32,7 +32,9 @@ Aşağıdakiler, içinde karşılaşabileceğiniz belirli hatalar ve bunları na
 
 İş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
 
-    JA009: Cannot initialize Cluster. Please check your configuration for map
+```output
+JA009: Cannot initialize Cluster. Please check your configuration for map
+```
 
 ### <a name="cause"></a>Nedeni
 
@@ -50,7 +52,9 @@ Aşağıdakiler, içinde karşılaşabileceğiniz belirli hatalar ve bunları na
 
 İş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
 
-    JA002: User: oozie is not allowed to impersonate <USER>
+```output
+JA002: User: oozie is not allowed to impersonate <USER>
+```
 
 ### <a name="cause"></a>Nedeni
 
@@ -60,7 +64,9 @@ Geçerli izin ayarları, Oozie 'nin belirtilen kullanıcı hesabını taklit etm
 
 Oozie gruptaki kullanıcıları taklit edebilir **`users`** . `groups USERNAME`Kullanıcı hesabının üyesi olduğu grupları görmek için öğesini kullanın. Kullanıcı grubun üyesi değilse **`users`** , kullanıcıyı gruba eklemek için aşağıdaki komutu kullanın:
 
-    sudo adduser USERNAME users
+```bash
+sudo adduser USERNAME users
+```
 
 > [!NOTE]  
 > HDInsight 'ın Kullanıcı gruba eklendiğini tanıması birkaç dakika sürebilir.
@@ -73,7 +79,9 @@ Oozie gruptaki kullanıcıları taklit edebilir **`users`** . `groups USERNAME`K
 
 İş durumu **sonlandırıldı**olarak değişir. İşin ayrıntıları `RunSqoopExport` durumu **hata**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
 
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```output
+Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```
 
 ### <a name="cause"></a>Nedeni
 

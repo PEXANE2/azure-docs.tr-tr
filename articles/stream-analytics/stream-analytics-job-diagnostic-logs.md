@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 4737b8f13a3a4a1e65c4c7812bd514f76a24d2e3
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119059"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044524"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
 
@@ -94,7 +94,7 @@ Azure Stream Analytics, kaynak günlüklerinin iki kategorisini yakalar:
 
 Tüm Günlükler JSON biçiminde depolanır. Her giriş aşağıdaki ortak dize alanlarına sahiptir:
 
-Name | Description
+Name | Açıklama
 ------- | -------
 time | Günlüğün zaman damgası (UTC).
 resourceId | İşlemin üzerinde gerçekleştiği kaynağın KIMLIĞI (büyük harfle). Abonelik KIMLIĞI, kaynak grubu ve iş adını içerir. Örneğin, **/Subscriptions/6503d296-dac1-4449-9B03-609a1f4a1c87/ResourceGroups/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMMINGJOB**.
@@ -112,7 +112,7 @@ Yürütme günlükleri Stream Analytics işi yürütme sırasında gerçekleşen
 
 İş işlenirken oluşan herhangi bir hata, bu Günlükler kategorisindedir. Bu Günlükler genellikle veri okuma, serileştirme ve yazma işlemleri sırasında oluşturulur. Bu Günlükler bağlantı hatalarını içermez. Bağlantı hataları genel olaylar olarak değerlendirilir. Çeşitli farklı [giriş ve çıkış verileri hatalarının](https://docs.microsoft.com/azure/stream-analytics/data-errors)nedeni hakkında daha fazla bilgi edinebilirsiniz.
 
-Name | Description
+Name | Açıklama
 ------- | -------
 Kaynak | Hatanın oluştuğu iş girişinin veya çıktının adı.
 İleti | Hatayla ilişkili ileti.
@@ -133,7 +133,7 @@ Veriler | Hatanın kaynağını doğru bir şekilde bulmak için yararlı olan v
 
 Genel olaylar diğer her şeyi kapsar.
 
-Name | Description
+Name | Açıklama
 -------- | --------
 Hata | seçim Hata bilgileri. Genellikle, bu, varsa özel durum bilgileri olur.
 İleti| Günlük iletisi.

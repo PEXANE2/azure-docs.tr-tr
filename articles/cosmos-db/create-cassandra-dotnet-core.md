@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 56adfa2ddab011372783a7a7872b4f4c8d7fc050
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e30bee23b634db12def62e906183c6087c6613e6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118466"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044303"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET Core ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -133,7 +133,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi**’ni seçin.
 
-1. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-dotnet/copy.png) kullanın.
+1. :::image type="icon" source="./media/create-cassandra-dotnet/copy.png":::Kullanıcı adı değerini kopyalamak için ekranın sağ tarafındaki düğmeyi kullanın.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL veritabanı ve veri ambarı için bağlantı ayarları
-description: Bu belgede, Azure SQL veritabanı ve Azure SYNAPSE Analytics için TLS sürüm seçimi ve proxy ile yeniden yönlendirme ayarı açıklanmaktadır
+description: Bu belgede, Azure SQL veritabanı ve Azure SYNAPSE Analytics için Aktarım Katmanı Güvenliği (TLS) sürüm seçimi ve ara sunucu ile yeniden yönlendirme ayarı açıklanmaktadır
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 3397fcb14f27e6bc0cc64b048dedde7198d5a06b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 07/06/2020
+ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266092"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045390"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL Bağlantı Ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,9 +33,17 @@ Bağlantı ayarlarına aşağıdaki ekran görüntüsünde gösterildiği gibi *
 
 ## <a name="deny-public-network-access"></a>Ortak ağ erişimini reddetme
 
-Azure portal, **genel ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar **Hayır**olarak ayarlandığında, istemciler özel veya genel uç nokta kullanarak bağlanabilir.
+**Ortak ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar **Hayır** (varsayılan) olarak ayarlandığında, istemciler genel uç noktaları (IP tabanlı güvenlik duvarı KURALLARı, VNET tabanlı güvenlik duvarı kuralları) veya özel uç noktalar (özel bağlantı kullanarak) [ağ erişimi genel bakış](network-access-controls-overview.md)bölümünde özetlenen şekilde bağlanabilir. 
 
-Müşteriler, genel uç noktaları (IP tabanlı güvenlik duvarı kuralları, VNET tabanlı güvenlik duvarı kuralları) veya özel uç noktalar (özel bağlantı kullanarak) [ağ erişimine genel bakış](network-access-controls-overview.md)bölümünde açıklandığı gıbı, SQL veritabanı 'na bağlanabilir. 
+ ![Ortak ağ erişimini reddetme ile bağlantının ekran görüntüsü][2]
+
+Mantıksal sunucuda var olan özel uç noktaları olmadan **ortak ağ erişimini reddet** ayarını **Evet** olarak ayarlama girişimleri şuna benzer bir hata iletisiyle başarısız olur:  
+
+```output
+Error 42102
+Unable to set Deny Public Network Access to Yes since there is no private endpoint enabled to access the server. 
+Please set up private endpoints and retry the operation. 
+```
 
 **Ortak ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında, yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir ve genel uç noktalar aracılığıyla tüm bağlantılar şuna benzer bir hata iletisiyle reddedilir:  
 
@@ -44,6 +52,14 @@ Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. 
 The public network interface on this server is not accessible. 
 To connect to this server, use the Private Endpoint from inside your virtual network.
+```
+
+**Ortak ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında, güvenlik duvarı kuralları ekleme veya güncelleştirme girişimleri aşağıdakine benzer bir hata iletisiyle reddedilir:
+
+```output
+Error 42101
+Unable to create or modify firewall rules when public network interface for the server is disabled. 
+To manage server or database level firewall rules, please enable the public network interface.
 ```
 
 ## <a name="change-public-network-access-via-powershell"></a>PowerShell aracılığıyla genel ağ erişimini değiştirme
@@ -86,9 +102,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, MÜŞTERILERIN Azure SQL veritabanı tarafından kullanılan TLS sürümünü denetlemesine olanak tanır.
 
-Şu anda TLS 1,0, 1,1 ve 1,2 destekliyoruz. Minimum TLS sürümü ayarlandığında, daha yeni olan TLS sürümlerinin desteklenmesini sağlar. Örneğin, örneğin, 1,1 'den büyük bir TLS sürümü seçme. Yalnızca TLS 1,1 ve 1,2 arasındaki bağlantıların kabul edildiği ve TLS 1,0 reddedildiği anlamına gelir. Uygulamalarınızın bu uygulamayı desteklediğini doğrulamak için test ettikten sonra, önceki sürümlerde bulunan güvenlik açıklarına yönelik düzeltmeler içerdiğinden ve Azure SQL veritabanı 'nda desteklenen en yüksek TLS sürümü olduğundan, en düşük TLS sürümünü 1,2 olarak ayarlamayı öneririz.
+Mevcut olduğunda, TLS 1,0, 1,1 ve 1,2 destekliyoruz. Minimum TLS sürümü ayarlandığında, daha yeni olan TLS sürümlerinin desteklenmesini sağlar. Örneğin, 1,1 'den büyük bir TLS sürümü seçme. Yalnızca TLS 1,1 ve 1,2 arasındaki bağlantıların kabul edildiği ve TLS 1,0 reddedildiği anlamına gelir. Uygulamalarınızın bu uygulamayı desteklediğini doğrulamak için test ettikten sonra, önceki sürümlerde bulunan güvenlik açıklarına yönelik düzeltmeler içerdiğinden ve Azure SQL veritabanı 'nda desteklenen en yüksek TLS sürümü olduğundan, en düşük TLS sürümünü 1,2 olarak ayarlamayı öneririz.
 
-TLS 'nin eski sürümlerini kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir. 
+> [!IMPORTANT]
+> En az TLS sürümü için varsayılan değer tüm sürümlere izin verdir. Ancak, bir TLS sürümünü zorladıktan sonra, varsayılana dönmek mümkün değildir.
+
+TLS 'nin eski sürümlerini kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir.
 
 Daha fazla bilgi için bkz. [SQL veritabanı bağlantısı Için TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
@@ -205,3 +224,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png
+[2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

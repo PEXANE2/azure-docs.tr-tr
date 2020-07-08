@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045476"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK’ları ve CLI araçları
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda desteklenen SDK 'lar listelenmiştir.  Desteklenen SDK 'lar
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure-SDK-for-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure-SDK-for-Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Go    |    [Azure/Azure-SDK-for-go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Başlayın    |    [Azure/Azure-SDK-for-go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure-SDK-for-Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    JavaScript    |    [Azure/Azure-SDK-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure-SDK-for-Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -44,17 +44,12 @@ Aşağıdaki tabloda desteklenen CLı araçları ve bunların komut başvurular�
 
 |    Araç    |    Komut başvurusu    |
 |------------------|--------------------------------------------|
-|    Azure CLI’si  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure NetApp Files için Azure PowerShell](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Aşağıdaki tabloda, başvurunuz için kod örnekleri listelenir.   
-
-|    Dil/araç    |    Kod örnek belgeleri    |
-|------------------|--------------------------------------------|
-|    .NET   |    [İçin SDK örneğini Azure NetApp Files. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Python için Azure NetApp Files SDK örneği](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+[Azure NetApp Files için kod örneklerine](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar   
  [Azure SDK 'larını indirin](https://azure.microsoft.com/downloads/)

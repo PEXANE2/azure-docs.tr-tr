@@ -4,14 +4,14 @@ description: Bu makalede, bir Azure Stream Analytics işi tarafından kullanıla
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
-ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857294"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045357"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -32,11 +32,11 @@ Stream Analytics Portal kullanılarak anahtarları depolama hesabınıza güncel
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
-1. Sonuçlar listesinden **analiz** > **Stream Analytics işi** ' ni seçin. 
+1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi**' ni seçin   . 
 
 1. Stream Analytics işi sayfasını, ad, bölge ve ölçek gibi gerekli ayrıntılarla doldurun. 
 

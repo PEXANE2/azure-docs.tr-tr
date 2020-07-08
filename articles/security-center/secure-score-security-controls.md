@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262727"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044320"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli puan
 
@@ -132,7 +132,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Bekleyen şifrelemeyi etkinleştir (en fazla skor 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">Bekleyen şifreleme</a> , depolanan veriler için veri koruması sağlar. Bekleyen verilere yönelik saldırılar, verilerin depolandığı donanıma fiziksel erişim sağlamaya çalışır. Azları, bekleyen büyük miktarlarda verileri şifrelemek ve şifrelerini çözmek için simetrik şifrelemeyi kullanır. Verileri depolamaya yazıldığı şekilde şifrelemek için bir simetrik şifreleme anahtarı kullanılır. Bu şifreleme anahtarı, bellekte kullanım için yeniden kullanıma hazır olduğundan bu verilerin şifresini çözmek için de kullanılır. Anahtarlar kimlik tabanlı erişim denetimi ve denetim ilkeleriyle güvenli bir yerde depolanmalıdır. Bu tür bir güvenli konum Azure Key Vault. Bir saldırgan şifreli verileri alırsa, şifreleme anahtarlarını yoksa, saldırgan şifrelemeyi bozmadan verilere erişemez.</td>
-    <td class="tg-lboi"; width=55%>-Disk şifrelemesi sanal makinelere uygulanmalıdır<br>-SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir<br>-Otomasyon hesabı değişkenleri şifrelenmelidir<br>-Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır<br>-SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir</td>
+    <td class="tg-lboi"; width=55%>-Disk şifrelemesi sanal makinelere uygulanmalıdır<br>-SQL veritabanı 'nda Saydam Veri Şifrelemesi etkinleştirilmelidir<br>-Otomasyon hesabı değişkenleri şifrelenmelidir<br>-Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır<br>-SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Yoldaki verileri şifreleme (en fazla puan 4)</p></strong>Veriler, bileşenler, konumlar veya programlar arasında aktarıldığında "geçiş sırasında" olur. Yoldaki verileri koruyamadığı kuruluşlar, ortadaki adam saldırıları, gizlice dinleme ve oturum ele geçirme işlemleri için açıktır. SSL/TLS protokolleri, verileri alışverişi için kullanılmalıdır ve bir VPN önerilir. Bir Azure sanal makinesi ve şirket içi konum arasında şifrelenmiş veriler gönderirken, internet üzerinden şifreli trafik göndermek için <a href="https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways">azure VPN Gateway</a> gibi bir sanal ağ geçidi kullanabilirsiniz.</td>
@@ -151,7 +151,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
     <td class="tg-lboi"; width=55%>-Sanal makinenizde IP iletimi devre dışı bırakılmalıdır<br>-Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>-Kullanım DıŞı Uygulama hizmetlerine erişim kısıtlı olmalıdır (Önizleme)<br>-Kullanım DıŞı IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır<br>-Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir<br>-CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir<br>-CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir<br>-API uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Web uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir<br>-Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Uyarlamalı uygulama denetimi Uygula (en fazla skor 3)</p></strong>Uyarlamalı uygulama denetimi (AAC), Azure ve Azure dışı makinelerde hangi uygulamaların çalıştırılacağını denetlemenize olanak tanıyan akıllı, otomatik, uçtan uca bir çözümdür. Ayrıca makinelerinizi kötü amaçlı yazılımlara karşı sağlamlaştırmanıza de yardımcı olur.<br>Güvenlik Merkezi, bir makine grubu için bilinen güvenli uygulamaların beyaz bir listesini oluşturmak üzere makine öğrenimini kullanır.<br>Bu uygulama beyaz listesine yönelik yenilikçi yaklaşım, yönetim karmaşıklığı olmadan güvenlik avantajlarını sağlar.<br>AAC, özellikle belirli bir uygulama kümesini çalıştırması gereken amaç oluşturulmuş sunucular için geçerlidir.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Uyarlamalı uygulama denetimi Uygula (en fazla skor 3)</p></strong>Uyarlamalı uygulama denetimi (AAC), Azure ve Azure dışı makinelerde hangi uygulamaların çalıştırılacağını denetlemenize olanak tanıyan akıllı, otomatik, uçtan uca bir çözümdür. Ayrıca makinelerinizi kötü amaçlı yazılımlara karşı sağlamlaştırmanıza de yardımcı olur.<br>Güvenlik Merkezi, bir makine grubu için bilinen güvenli uygulamaların bir listesini oluşturmak üzere makine öğrenimini kullanır.<br>Onaylanan uygulama listesine yönelik bu yenilikçi yaklaşım, yönetim karmaşıklığı olmadan güvenlik avantajlarını sağlar.<br>AAC, özellikle belirli bir uygulama kümesini çalıştırması gereken amaç oluşturulmuş sunucular için geçerlidir.</td>
     <td class="tg-lboi"; width=55%>-Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>-Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
   </tr>
   <tr>

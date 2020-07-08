@@ -1,14 +1,16 @@
 ---
 title: IoT Edge-Azure 'da canlı video analizlerinin sorunlarını giderme
 description: Bu makalede, IoT Edge üzerinde canlı video analizi için sorun giderme adımları ele alınmaktadır.
+author: IngridAtMicrosoft
 ms.topic: how-to
+ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: c235dd27da1d370531c1668c40586d4ae479aec7
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: dd55050521a1791a11f220cd5617d9df2fa2d160
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261124"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045594"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -128,7 +130,7 @@ Bu sorunu düzeltmek için:
     ```
 1. Aşağıdaki uzantıların yüklü olduğundan emin olun. Bu kılavuzun yazıldığı itibariyle uzantılar sürümü aşağıdaki gibidir:
 
-    |||
+    | Dahili numara | Sürüm |
     |---|---|
     |azure-cli   |      2.5.1|
     |komut-modüller-nspkg         |   2.0.3|
@@ -199,7 +201,7 @@ Yayınımızın bir parçası olarak, geliştirici Community önyüklendi 'ı al
     sudo iotedge support-bundle --since 2h
     ```
 1. Hata yanıtı 400 kodu alırsanız, yöntem çağırma yükünün [doğrudan yöntem](direct-methods.md) Kılavuzu ' na göre doğru biçimlendirildiğinden emin olun.
-1. Durum 200 kodunu alırsanız, hub 'ınızın düzgün çalıştığını ve modül dağıtımınızın doğru ve yanıt verdiğini gösterir. Sonraki adımda, uygulama yapılandırmalarının doğru olup olmadığı kontrol edilir. Uygulama yapılandırmanız appSettings. JSON dosyasındaki aşağıdaki alanlardan oluşur. Lütfen DeviceID ve ModuleID 'nin doğru olduğundan emin olun. Bunu kontrol etmenin kolay bir yolu, VSCode 'daki Azure IoT Hub Extension bölümüdür. AppSettings. JSON dosyasındaki değerler ve IoT Hub bölümü eşleşmelidir.
+1. Durum 200 kodunu alırsanız, hub 'ınızın düzgün çalıştığını ve modül dağıtımınızın doğru ve yanıt verdiğini gösterir. Sonraki adımda, uygulama yapılandırmalarının doğru olup olmadığı kontrol edilir. Uygulama yapılandırmanız appsettings.jsdosyadaki aşağıdaki alanlardan oluşur. Lütfen DeviceID ve ModuleID 'nin doğru olduğundan emin olun. Bunu kontrol etmenin kolay bir yolu, VSCode 'daki Azure IoT Hub Extension bölümüdür. Dosyadaki appsettings.jsve IoT Hub bölümündeki değerler eşleşmelidir.
     
     ```
     {
@@ -211,7 +213,7 @@ Yayınımızın bir parçası olarak, geliştirici Community önyüklendi 'ı al
 
     ![ıOT HUB 'ı](./media/troubleshoot-how-to/iot-hub.png)
 
-1. Son olarak, IoT Hub IoT Hub cihaz bağlantı dizesi olarak değil appSettings. JSON içinde, [biçimleri](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) farklı olduğundan emin olun.
+1. Son olarak, IoT Hub cihaz bağlantı dizesi olarak değil IoT Hub bağlantı dizesi appsettings.jsve [biçimleri](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) farklı olduğundan emin olun.
 
 ### <a name="live-video-analytics-working-with-external-modules"></a>Canlı video analizi dış modüllerle çalışıyor
 
@@ -241,9 +243,94 @@ HTTP uzantısı işlemcisi aracılığıyla canlı video analizi, medya grafiği
 
 IoT Edge üzerindeki canlı video analizi, birden çok topolojinin ve birden çok grafik örneğinin oluşturulmasına olanak tanıyan doğrudan Yöntem tabanlı programlama modeli sağlar. Topoloji ve grafik kurulumunun bir parçası olarak, Edge modülünde birden çok doğrudan yöntem çağrısı çağıralınacaktır. Bu birden çok yöntem çağrılarını çağırırsanız, özellikle de grafikleri başlatıp durdurmakla birlikte, paralel olarak, aşağıdaki gibi bazı zaman aşımı hatalarıyla karşılaşabilirsiniz. 
 
-Derleme başlatma yöntemi Microsoft. Media. LiveVideoAnalytics. test. Feature. Edge. Assemblybaşlatıcısı. InitializeAssemblyAsync özel durum oluşturdu. Microsoft. Azure. Devices. Common. Exceptions. ıothubexception: Microsoft. Azure. Devices. Common. Exceptions. ıothubexception:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
+Derleme başlatma yöntemi Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync özel durum oluşturdu. Microsoft. Azure. Devices. Common. Exceptions. ıothubexception: Microsoft. Azure. Devices. Common. Exceptions. ıothubexception:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
-Doğrudan yöntemleri paralel bir biçimde çağırmamalıdır, ancak bunu sıralı bir biçimde yapmanız önerilir, yani  yalnızca önceki bir yöntem gerçekleştirildikten sonra bir doğrudan yöntem çağrısı. 
+Doğrudan yöntemleri paralel bir biçimde çağırmamalıdır, ancak bunu sıralı bir biçimde yapmanız önerilir, yani  yalnızca önceki bir yöntem gerçekleştirildikten sonra bir doğrudan yöntem çağrısı.
+
+### <a name="collecting-logs-for-submitting-a-support-ticket"></a>Destek bileti göndermek için günlüklerin toplanması
+
+Kendi kendine Kılavuzlu sorun giderme adımları sorunlarınızı gidermezse, Azure portal gitmeniz ve [bir destek bileti açmanız](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gerekir.
+
+Bilet içine eklenmesi gereken ilgili günlükleri toplamak için aşağıdaki adımları izleyin. Destek isteğinin **Ayrıntılar** sekmesinde günlük dosyalarını karşıya yükleyebilirsiniz.
+
+### <a name="support-bundle"></a>Destek-paket
+
+IoT Edge cihazdan Günlükler toplamanız gerektiğinde, en kolay yöntem `support-bundle` komutunu kullanmaktır. Bu komut şunu toplar:
+
+- Modül günlükleri
+- IoT Edge Güvenlik Yöneticisi ve kapsayıcı altyapısı günlükleri
+- Iotedge JSON çıkışını denetle
+- Yararlı hata ayıklama bilgileri
+
+#### <a name="use-the-iot-edge-security-manager"></a>IoT Edge Security Manager 'ı kullanma
+ 
+IoT Edge Güvenlik Yöneticisi, başlatma ve sağlama cihazlarında IoT Edge sistemi başlatma gibi işlemlerden sorumludur. IoT Edge başlatılamıyorsa, Güvenlik Yöneticisi günlükleri yararlı bilgiler sağlayabilir. IoT Edge Güvenlik Yöneticisi 'nin daha ayrıntılı günlüklerini görüntülemek için:
+
+1. IoT Edge cihazında IoT Edge Daemon ayarlarını düzenleyin:
+
+    ```
+    sudo systemctl edit iotedge.service
+    ```
+
+1. Aşağıdaki satırları güncelleştirin:
+
+    ```
+    [Service]
+    Environment=IOTEDGE_LOG=edgelet=debug
+    ```
+
+1. Aşağıdaki komutları çalıştırarak IoT Edge güvenlik arka plan programını yeniden başlatın:
+
+    ```
+    sudo systemctl cat iotedge.service
+    sudo systemctl daemon-reload
+    sudo systemctl restart iotedge
+    ```
+
+1. `support-bundle`Geçmişteki kayıtları ne kadar süreyle almak istediğinizi belirtmek için komutunu--since bayrağıyla çalıştırın. Örneğin, 2H, son iki saatten bu yana günlükleri alacak. Bu bayrağın değerini farklı bir döneme ait günlükleri içerecek şekilde değiştirebilirsiniz.
+
+    ```
+    sudo iotedge support-bundle --since 2h
+    ```
+
+### <a name="lva-debug-logs"></a>LVA hata ayıklama günlükleri
+
+Hata ayıklama günlükleri oluşturmak için IoT Edge modülündeki LVA 'yi yapılandırmak için aşağıdaki adımları izleyin:
+
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
+1. Menüden **IoT Edge** seçin.
+1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın.
+1. Üst menüdeki **modülleri ayarla** bağlantısına tıklayın.
+
+  ![modülleri ayarlama Azure portalı](media/troubleshoot-how-to/set-modules.png)
+
+5. IoT Edge modüller bölümünde, **Lvaedge**' i bulup tıklayın.
+1. **Kapsayıcı oluşturma seçenekleri**' ne tıklayın.
+1. Bağlamalar bölümünde aşağıdaki komutu ekleyin:
+
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+
+    Bu, uç cihaz ve kapsayıcı arasındaki Günlükler klasörlerini bağlar.
+
+1. **Güncelleştir** düğmesine tıklayın
+1. Sayfanın alt kısmındaki **gözden geçir + oluştur** düğmesine tıklayın. Basit bir doğrulama gerçekleşmez ve başarılı doğrulama iletisi yeşil bir başlık altına gönderilir.
+1. **Oluştur** düğmesine tıklayın.
+1. Daha sonra, **Ikizi modül kimliğini** , hata Günlüksdirectory parametresini, günlüklerin toplanacağı dizini işaret edecek şekilde güncelleştirin:
+    1. **Modüller** tablosunun altında **lvaedge** ' i seçin.
+    1. **Modül kimliği ikizi** bağlantısına tıklayın. Bunu sayfanın en üstünde bulabilirsiniz. Bu, düzenlenebilir bir bölmeyi açar.
+    1. Aşağıdaki anahtar-değer çiftini **istenen anahtara**ekleyin:
+
+        `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
+
+    1. **Kaydet**'e tıklayın.
+
+1. Sorunu yeniden üretin.
+1. Portalınızdaki IoT Hub sayfasından sanal makineye bağlanın.
+1. `/var/local/mediaservices/logs`Bu klasörün bin içeriğini klasöre ve zip sayfasına gidin ve bizimle paylaşabilirsiniz. (Bu günlük dosyaları kendi kendine Tanılama için tasarlanmamıştır. Bunlar, Azure Mühendisliği 'nin sorunlarınızı analiz etmesine yöneliktir.)
+
+1. **Modül kimliği ikizi** içindeki değer yeniden *null* olarak ayarlanarak günlük koleksiyonu durdurulabilir. **Modül kimliği ikizi** sayfasına dönün ve aşağıdaki parametreyi şu şekilde güncelleştirin:
+
+    `"DebugLogsDirectory": ""`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

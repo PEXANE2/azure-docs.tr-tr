@@ -3,12 +3,12 @@ title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204846"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045204"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -34,7 +34,7 @@ Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu
 
 - Bir kapsama zaten atanmış olan bir ilke veya girişim güncellenir. Bu senaryonun değerlendirme çevrimi ve zamanlaması, bir kapsama yönelik yeni atama ile aynıdır.
 
-- Bir kaynak, Kaynak Yöneticisi, REST, Azure CLı veya Azure PowerShell aracılığıyla atama içeren bir kapsama dağıtılır. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
+- Bir kaynak, Azure Resource Manager, REST, Azure CLı veya Azure PowerShell aracılığıyla atama içeren bir kapsama dağıtılır. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
 
 - Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlandığı zaman önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
@@ -118,7 +118,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 Bir atamada, ilke veya girişim kurallarını takip etmez bir kaynak **uyumlu** değildir.
 Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk durumu için koşul değerlendirmesiyle nasıl çalıştığı gösterilmektedir:
 
-| Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
+| Kaynak durumu | Efekt | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
 | Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Uyumlu değil |
 | Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Uyumlu |
@@ -429,7 +429,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak, uyumluluk döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log-collect.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
+Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../azure-monitor/log-query/log-query-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak, uyumluluk döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Izleyici günlüklerini kullanarak Azure Ilke uyumluluğu" border="false":::
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
+title: SYNAPSE Studio Not defterleri
 description: Bu makalede, veri hazırlama ve görselleştirme için Azure SYNAPSE Studio (Önizleme) Not defterleri oluşturmayı ve geliştirmeyi öğreneceksiniz.
 services: synapse analytics
 author: ruixinxu
@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373378"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045697"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
-Azure SYNAPSE Studio (Önizleme) Not defteri, canlı kod, görselleştirme ve anlatım metni içeren dosyalar oluşturmanız için bir Web arabirimidir. Not defterleri, fikirlerinizi doğrulamak ve hızlı denemeleri kullanarak verilerinizden Öngörüler elde etmek için iyi bir yerdir. Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer büyük veri senaryolarında da yaygın olarak kullanılır.
+Bir Synapse Studio (Önizleme) Not defteri, canlı kod, görselleştirme ve anlatım metni içeren dosyalar oluşturmanız için bir Web arabirimidir. Not defterleri, fikirlerinizi doğrulamak ve hızlı denemeleri kullanarak verilerinizden Öngörüler elde etmek için iyi bir yerdir. Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer büyük veri senaryolarında da yaygın olarak kullanılır.
 
 Bir Azure SYNAPSE Studio not defteriyle şunları yapabilirsiniz:
 
@@ -110,16 +110,16 @@ Bir Synapse Studio not defterindeki farklı dillerdeki verilere veya değişkenl
 
 ### <a name="ide-style-intellisense"></a>IDE stili IntelliSense
 
-Azure SYNAPSE Studio Not defterleri, IDE stili IntelliSense 'i hücre düzenleyicisine getirmek için Monako düzenleyiciyle tümleşiktir. Sözdizimi vurgulaması, hata Oluşturucusu ve otomatik kod tamamlama, kod yazmanıza ve sorunları daha hızlı belirlemenize yardımcı olur.
+Azure SYNAPSE Studio Not defterleri, IDE stili IntelliSense 'i hücre düzenleyicisine getirmek için Monako düzenleyiciyle tümleşiktir. Sözdizimi vurgusu, hata işaretçisi ve otomatik kod tamamlama, kod yazmanıza ve sorunları daha hızlı belirlemenize yardımcı olur.
 
 IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. Desteklenen öğeleri görmek için aşağıdaki tabloyu kullanın.
 
 |Diller| Sözdizimi vurgusu | Söz dizimi hata Işaretleyicisi  | Sözdizimi kodu tamamlama | Değişken kodu tamamlama| Sistem Işlevi kod tamamlama| Kullanıcı Işlevi kod tamamlama| Akıllı Girinti | Kod katlama|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
-|Mini SQL|Yes|Yes|-|-|-|-|-|-|
-|Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
+|PySpark (Python)|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Spark (Scala)|Evet|Evet|Evet|Evet|-|-|-|Evet|
+|Mini SQL|Evet|Evet|-|-|-|-|-|-|
+|Spark için .NET (C#)|Evet|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
@@ -159,7 +159,7 @@ Daraltmak için geçerli hücre çıktısının sol üst kısmındaki **çıktı
 
    ![daraltma-hücre çıkışı](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
-## <a name="run-notebooks"></a>Not defterlerini Çalıştır
+## <a name="run-notebooks"></a>Not defterlerini çalıştırma
 
 Kod hücrelerini Not defterinizde tek seferde veya tümünde çalıştırabilirsiniz. Her hücrenin durumu ve ilerlemesi not defterinde temsil edilir.
 

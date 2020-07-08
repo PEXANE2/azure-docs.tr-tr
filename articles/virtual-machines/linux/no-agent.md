@@ -6,21 +6,21 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e5e47b5822127bcd00fd2d67efff9a786f00a258
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307004"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045340"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Sağlama Aracısı olmadan Genelleştirilmiş görüntüler oluşturma
 
 Microsoft Azure, [vmınuxagent](https://github.com/Azure/WALinuxAgent) veya [Cloud-Init](https://github.com/canonical/cloud-init) biçiminde Linux sanal makineleri için sağlama aracıları sağlar (önerilir). Ancak aşağıdaki gibi, sağlama aracınız için bu uygulamalardan birini kullanmak istemediğinizde bir senaryo olabilir:
 
-- Linux aboneliğiniz/sürümünüz Cloud-init ' i desteklemez.
+- Linux sürümü/sürümü, Cloud-init/Linux aracısını desteklemez.
 - Ana bilgisayar adı gibi belirli VM özelliklerinin ayarlanmış olması gerekir.
 
 > [!NOTE] 
@@ -70,7 +70,7 @@ $ az vm create \
 VM sağlandıktan sonra, içinde SSH oluşturabilir ve Linux aracısını kaldırabilirsiniz:
 
 ```bash
-$ sudo apt remove -y waagent
+$ sudo apt purge -y waagent
 $ sudo rm -rf /var/lib/waagent /etc/waagent.conf /var/log/waagent.log
 ```
 

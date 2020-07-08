@@ -1,5 +1,5 @@
 ---
-title: Portalda Azure Machine Learning çalışma alanları oluşturma
+title: Portalda çalışma alanları oluşturma
 titleSuffix: Azure Machine Learning
 description: Azure portal Azure Machine Learning çalışma alanlarını oluşturmayı, görüntülemeyi ve silmeyi öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: c729f59fbb92584ff613147577ab097e63307ace
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430449"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045714"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
-   Alan|Description 
+   Alan|Açıklama 
    ---|---
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
@@ -64,9 +64,9 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 
 1. Bir [işlem örneği](tutorial-1st-experiment-sdk-setup.md#azure)oluşturacağınız takdirde, bu adımı atlayın.
 
-1. Yerel ortamınızda bu çalışma alanına başvuruda bulunan kodu kullanmayı planlıyorsanız, çalışma alanının **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin.  
+1. Yerel ortamınızda bu çalışma alanına başvuran kodu kullanmayı planlıyorsanız, çalışma alanının **genel bakış** bölümünden **config.jsindir** ' i seçin.  
 
-   ![Config. json dosyasını indir](./media/how-to-manage-workspace/configure.png)
+   ![config.jsindir](./media/how-to-manage-workspace/configure.png)
    
    Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir işlem örneği oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
 
@@ -102,7 +102,7 @@ Düşük kodlu deneyimler ve gelişmiş güvenlik özellikleri gibi gelişmiş �
 
 1. Özelliklerini göstermek için bir çalışma alanı seçin.
 
-## <a name="delete-a-workspace"></a>Çalışma alanı silme
+## <a name="delete-a-workspace"></a>Çalışma alanını silme
 
 [Azure Portal](https://portal.azure.com/), silmek istediğiniz çalışma alanının en üstünde bulunan **Sil** ' i seçin.
 

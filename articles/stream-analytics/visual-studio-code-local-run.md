@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486475"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044371"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code kullanarak örnek verilerle yerel olarak Stream Analytics sorguları test edin
 
@@ -35,7 +35,7 @@ Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek ve
 
 ## <a name="define-a-local-input"></a>Yerel giriş tanımlama
 
-1. Stream Analytics projenizdeki girişler klasörü altında **input. JSON** öğesine tıklayın. Ardından en üstteki satırdan **yerel giriş Ekle** ' yi seçin.
+1. Stream Analytics projenizdeki girişler klasörü altında **input.js** ' a tıklayın. Ardından en üstteki satırdan **yerel giriş Ekle** ' yi seçin.
 
     ![Projeden yerel giriş Ekle](./media/quick-create-vs-code/add-input-from-project.png)
 
@@ -55,7 +55,7 @@ Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek ve
 
     ![Yeni bir ASA yerel giriş diğer adı ekleme](./media/vscode-local-run/new-local-input-alias.png)
 
-5. Yeni oluşturulan **LocalInput_Input. JSON** dosyasında, yerel veri dosyanızın bulunduğu dosya yolunu girin.
+5. Dosya üzerinde yeni oluşturulan **LocalInput_Input.js** , yerel veri dosyanızın bulunduğu dosya yolunu girin.
 
     ![Visual Studio 'da yerel dosya yolunu girin](./media/vscode-local-run/local-file-path.png)
 

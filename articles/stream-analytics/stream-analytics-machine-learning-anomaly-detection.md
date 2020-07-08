@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525541"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044388"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
@@ -117,7 +117,7 @@ Bu modellerin performansı, geçmiş boyutuna, pencere süresine, olay yüküne 
 * **Geçmiş boyutu** -bu modeller **Geçmiş boyutuyla**linerken gerçekleştirir. Geçmiş boyutu arttıkça, modeller yeni bir olayı puan etmek için daha uzun sürer. Bunun nedeni, modellerin yeni olayı geçmiş arabelleğindeki geçmiş olayların her biriyle karşılaştırmaktır.
 * **Pencere süresi** - **pencere süresi** , geçmiş boyutuyla belirtilen sayıda olayı almak için geçen süreyi yansıtmalıdır. Pencerede bu çok sayıda olay olmadan, Azure Stream Analytics eksik değerleri bir değere sahip olur. Bu nedenle, CPU tüketimi geçmiş boyutunun bir işlevidir.
 * **Olay yükü** -daha fazla **olay yükü**, model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
-* **İşlev düzeyi bölümleme** - **işlev düzeyi bölümlendirme** , anomali algılama ```PARTITION BY``` işlevi çağrısı içinde kullanılarak yapılır. Aynı anda birden çok modelde durum tutulması gerektiğinden, bu tür bölümleme bir ek yük ekler. İşlev düzeyi bölümleme, cihaz düzeyi bölümlendirme gibi senaryolarda kullanılır.
+* **İşlev düzeyi bölümleme**  -  **İşlev düzeyi bölümlendirme** ```PARTITION BY``` , anomali algılama işlevi çağrısı içinde kullanılarak yapılır. Aynı anda birden çok modelde durum tutulması gerektiğinden, bu tür bölümleme bir ek yük ekler. İşlev düzeyi bölümleme, cihaz düzeyi bölümlendirme gibi senaryolarda kullanılır.
 
 ### <a name="relationship"></a>İlişki
 Geçmiş boyutu, pencere süresi ve toplam olay yükü aşağıdaki şekilde ilişkilidir:

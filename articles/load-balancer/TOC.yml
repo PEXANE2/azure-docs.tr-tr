@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Yerleşik güvenlik denetimleri
       href: load-balancer-security-controls.md
+    - name: Arka Uç Havuzu yönetimi
+      href: backend-pool-management.md
 - name: Nasıl yapılır
   items:
     - name: Sanal makine ölçek kümeleri
