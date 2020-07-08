@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753597"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için kaynak günlükleri
@@ -87,7 +87,7 @@ Azure, etkinlik günlüğünü varsayılan olarak oluşturur. Günlükler, Azure
 
 Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Her Application Gateway erişimi, v1 için aşağıdaki örnekte gösterildiği gibi JSON biçiminde günlüğe kaydedilir:
 
-|Değer  |Description  |
+|Değer  |Açıklama  |
 |---------|---------|
 |instanceId     | İsteği sunan Application Gateway örneği.        |
 |ClientIP     | İstek için kaynak IP 'si.        |
@@ -131,7 +131,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 ```
 Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir:
 
-|Değer  |Description  |
+|Değer  |Açıklama  |
 |---------|---------|
 |instanceId     | İsteği sunan Application Gateway örneği.        |
 |ClientIP     | İstek için kaynak IP 'si.        |
@@ -185,7 +185,7 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Performans günlüğü verileri 1 dakikalık aralıklarla oluşturulur. Yalnızca v1 SKU 'SU için kullanılabilir. V2 SKU 'SU için performans verileri [ölçümlerini](../../application-gateway/application-gateway-metrics.md) kullanın. Aşağıdaki veriler günlüğe kaydedilir:
 
 
-|Değer  |Description  |
+|Değer  |Açıklama  |
 |---------|---------|
 |instanceId     |  Performans verilerinin oluşturulduğu örnek Application Gateway. Birden çok örnekli bir uygulama ağ geçidi için örnek başına bir satır vardır.        |
 |Healthyıhostcount     | Arka uç havuzundaki sağlıklı ana bilgisayar sayısı.        |
@@ -222,7 +222,7 @@ Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her 
 Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yalnızca her bir uygulama ağ geçidi için etkinleştirdiyseniz oluşturulur. Bu günlük Ayrıca, Web uygulaması güvenlik duvarının bir uygulama ağ geçidinde yapılandırılmasını gerektirir. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Aşağıdaki veriler günlüğe kaydedilir:
 
 
-|Değer  |Description  |
+|Değer  |Açıklama  |
 |---------|---------|
 |instanceId     | Güvenlik Duvarı verilerinin oluşturulduğu örnek Application Gateway. Birden çok örnekli bir uygulama ağ geçidi için örnek başına bir satır vardır.         |
 |ClientIP     |   İstek için kaynak IP 'si.      |

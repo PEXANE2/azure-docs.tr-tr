@@ -10,10 +10,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84792141"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
@@ -72,7 +72,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 |Azure Information Protection|Azure Information Protection için kiracı anahtarına erişime izin ver [.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Key Vault aracılığıyla Azure Web uygulaması sertifikasını dağıtın](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Veritabanı|[Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Depolama|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
+|Azure Storage|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|Müşteri tarafından yönetilen bir anahtarla [Azure Data Lake Store verilerin şifrelenmesi](../../data-lake-store/data-lake-store-encryption.md) .|
 |Azure Databricks|[Hızlı, kolay ve işbirliğine dayalı Apache Spark tabanlı analiz hizmeti](../../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[MSI kullanarak Key Vault özel etki alanı için sertifika dağıtma](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|

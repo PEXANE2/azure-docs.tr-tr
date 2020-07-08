@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84803978"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
@@ -112,7 +112,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
 |Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem*değerlerinden biridir.   |
-|Description |Gözlemlenen tehdit açıklaması. |
+|Açıklama |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
 |Severity |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
@@ -233,7 +233,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Description | İşlem açıklaması |
+|Açıklama | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
@@ -451,7 +451,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 
 Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
-| Ad Alanı | Name | Description | Birim | Etiketler |
+| Ad Alanı | Name | Açıklama | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
 | Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
 | Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | TI      | memorySizeMB-toplam bellek boyutu|

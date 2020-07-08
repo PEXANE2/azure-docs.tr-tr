@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84805490"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLı ile blob veya kuyruk verilerine erişim yetkisi verme
@@ -97,7 +97,7 @@ az storage container create \
 
 Her bir Azure depolama veri işlemine yapılan her çağrıya dahil etmek için, ortam değişkenlerinde yetkilendirme parametreleri belirtebilirsiniz. Aşağıdaki tabloda kullanılabilir ortam değişkenleri açıklanmaktadır.
 
-| Ortam değişkeni                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
+| Ortam değişkeni                  | Açıklama                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Depolama hesabı adı. Bu değişken, depolama hesabı anahtarı veya SAS belirteci ile birlikte kullanılmalıdır. Hiçbiri yoksa, Azure CLı kimliği doğrulanmış Azure AD hesabını kullanarak depolama hesabı erişim anahtarını almaya çalışır. Tek seferde çok sayıda komut yürütülürse, Azure depolama kaynak sağlayıcısı azaltma sınırına ulaşılmış olabilir. Kaynak sağlayıcısı limitleri hakkında daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Depolama hesabı anahtarı. Bu değişkenin depolama hesabı adıyla birlikte kullanılması gerekir.                                                                                                                                                                                                                                                                          |

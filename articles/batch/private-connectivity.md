@@ -4,10 +4,10 @@ description: Özel uç noktaları kullanarak bir Azure Batch hesabına özel ola
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84754486"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch hesapları ile özel uç noktaları kullanma

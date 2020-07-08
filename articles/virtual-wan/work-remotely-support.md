@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753776"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure sanal WAN ve uzak çalışmayı destekleme
@@ -49,7 +49,7 @@ Burada iki seçeneğiniz vardır:
 
 Temel sanal WAN yalnızca siteden siteye VPN sağlar. Uzak kullanıcıların bağlanabilmesi için, sanal WAN 'ı standart sanal WAN 'a yükseltmeniz gerekir. Bir sanal WAN yükseltme adımları için bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md)
 
-## <a name="additional-information"></a><a name="other considerations"></a>Ek bilgi
+## <a name="additional-information"></a><a name="other considerations"></a>Ek bilgiler
 
 Sanal WAN, bölge/konum başına bir hub destekler. Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. Her Hub 10.000 adede kadar uzak kullanıcı bağlantısını, 1.000 dal bağlantısını, dört ExpressRoute devresine ve en fazla 500 sanal ağ bağlantısını destekler. Uzak kullanıcıları ölçeklendirirseniz, sorularınız varsa, ' e bir e-posta göndererek yardım arama hakkında daha fazla araştırma yapmayın azurevirtualwan@microsoft.com . Teknik desteğe ihtiyacınız varsa, Azure portal bir destek bileti açın ve yardım 'ın bu şekilde olacağını unutmayın.
 

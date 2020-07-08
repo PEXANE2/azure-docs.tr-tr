@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84749591"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
@@ -110,7 +110,7 @@ VPN sitesini oluşturup hub 'a bağlandıktan sonra, bağlantıyı ExpressRoute 
 
    ![VPN bağlantısı için özel IP adresi kullanma ayarı](./media/vpn-over-expressroute/vpn-link-configuration.png)
    
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Değişikliklerinizi kaydettikten sonra, Merkez VPN ağ geçidi, ExpressRoute üzerinden şirket içi VPN cihazıyla IPSec/ıKE bağlantıları kurmak için VPN ağ geçidinde özel IP adreslerini kullanır.
 

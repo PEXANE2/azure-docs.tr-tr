@@ -16,10 +16,10 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790855"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamaları ekleme veya kaldırma
@@ -170,5 +170,5 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 - [REST API kullanarak Azure rol atamalarını listeleyin](role-assignments-list-rest.md)
 - [Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma](../azure-resource-manager/templates/deploy-rest.md)
-- [Azure REST API Başvurusu](/rest/api/azure/)
+- [Azure REST API başvurusu](/rest/api/azure/)
 - [REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin](custom-roles-rest.md)

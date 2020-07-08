@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84804344"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
@@ -157,13 +157,13 @@ Sanal makine ölçek kümesi portalı Kullanıcı arabirimi, ölçek kümesi iç
 3. **Arka uç havuzlarını**seçin.
 4. **Myappgatewaymyvmss**öğesini seçin.
 5. **Arka uç havuzundan tüm hedefleri kaldır**' ı seçin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 7. Bu işlem tamamlandıktan sonra, **Myappgatewaymyvmss** arka uç havuzunu seçin, **Sil** ' i seçin ve ardından onaylamak için **Tamam** ' ı seçin.
 8. **Appgatewaybackendpool**öğesini seçin.
 9. **Hedefler**altında **VMSS**' yi seçin.
 10. **VMSS**altında **myvmss**' yi seçin.
 11. **Ağ arabirimi yapılandırması**altında, **Myvmssnıc**' i seçin.
-12. **Kaydet**’i seçin.
+12. **Kaydet**'i seçin.
 
 ### <a name="upgrade-the-scale-set"></a>Ölçek kümesini yükseltme
 

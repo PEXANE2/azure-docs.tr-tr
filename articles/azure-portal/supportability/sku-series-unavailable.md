@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763831"
 ---
 # <a name="region-or-sku-unavailable"></a>Bölge veya SKU kullanılamıyor
@@ -68,7 +68,7 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. **Sorun türü**için **sorun türünü seç**' i seçin.
 
-1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**’i seçin.
+1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**'i seçin.
 
    ![İstek için bir sorun belirtin](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 

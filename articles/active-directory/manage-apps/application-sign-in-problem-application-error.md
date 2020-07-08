@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84759547"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Bir uygulama sayfası, Kullanıcı oturum açtıktan sonra bir hata iletisi gösterir
@@ -62,7 +62,7 @@ Azure AD yapılandırmasında Azure AD yanıtında gönderilecek bir öznitelik 
 
    1. **Öznitelik Ekle**' yi seçin. **Adı**girin ve açılan listeden **değeri** seçin.
 
-   1.  **Kaydet**’i seçin. Tabloda yeni özniteliğini görürsünüz.
+   1.  **Kaydet**'i seçin. Tabloda yeni özniteliğini görürsünüz.
 
 9. Yapılandırmayı kaydedin.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: ec31d8b0b2cc672b65d0c25a4a902befd8693d41
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781013"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Blob depolama
@@ -28,7 +28,7 @@ Bu makalede, BLOB depolama olaylarına yönelik özellikler ve şema sağlanmakt
 
 Bu olaylar, bir istemci blob REST API 'Lerini çağırarak bir blobu oluşturduğunda, değiştirdiği veya sildiği zaman tetiklenir.
 
- |Olay adı |Description|
+ |Olay adı |Açıklama|
  |----------|-----------|
  |**Microsoft. Storage. Bloboluşturuldu** |Bir blob oluşturulduğunda veya değiştirildiğinde tetiklenir. <br>Özellikle, bu olay, istemci `PutBlob` `PutBlockList` `CopyBlob` BLOB REST API mevcut olan, veya işlemlerini kullandıklarında tetiklenir.   |
  |**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay, istemci `DeleteBlob` Blob REST API kullanılabilir olan işlemi çağırdığında tetiklenir. |
@@ -40,7 +40,7 @@ Bu olaylar, bir istemci blob REST API 'Lerini çağırarak bir blobu oluşturdu�
 
 Bu olaylar, depolama hesabında hiyerarşik bir ad alanı etkinleştirirseniz ve istemciler Azure Data Lake Storage 2. REST API 'Leri çağırdığında tetiklenir. Azure Data Lake Storage 2. hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md).
 
-|Olay adı|Description|
+|Olay adı|Açıklama|
 |----------|-----------|
 |**Microsoft. Storage. Bloboluşturuldu** | Bir blob oluşturulduğunda veya değiştirildiğinde tetiklenir. <br>Özellikle, istemciler `CreateFile` `FlushWithClose` Azure Data Lake Storage 2. REST API kullanılabilir olan ve işlemlerini kullandıklarında bu olay tetiklenir. |
 |**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay ayrıca istemciler `DeleteFile` Azure Data Lake Storage 2. REST API kullanılabilir olan işlemi çağırdığında tetiklenir. |
@@ -292,14 +292,14 @@ BLOB depolama hesabının hiyerarşik bir ad alanı varsa, veriler önceki örne
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | BLOB depolama olay verileri. |
+| veriler | nesne | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 

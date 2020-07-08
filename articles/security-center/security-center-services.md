@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
 ms.openlocfilehash: 4d048bb348b8093db7d3bf92ef0fc93aead35055
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84762301"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
@@ -95,13 +95,13 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 
 | Uç Nokta Koruma| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Yes |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
-| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | No | Yes**\*** |
-| Sophos v9 +| Linux sunucu ailesi  | No | Yes**\***  |
+| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
+| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
+| Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Evet |
+| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
+| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes**\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes**\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 

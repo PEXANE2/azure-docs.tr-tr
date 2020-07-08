@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753553"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux için NVıDıA GPU sürücü uzantısı
@@ -83,7 +83,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 Tüm ayarlar isteğe bağlıdır. Varsayılan davranış, sürücü yüklemesi için gerekli değilse çekirdeği güncelleştirmemelidir, desteklenen en son sürücüyü ve CUDA araç setini (varsa) yükler.
 
-| Name | Description | Varsayılan değer | Geçerli Değerler | Veri Türü |
+| Name | Açıklama | Varsayılan değer | Geçerli Değerler | Veri Türü |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Sürücü yüklemesi için gerekli olmasa bile çekirdeği Güncelleştir | yanlış | doğru, yanlış | boole |
 | driverVersion | NV: GRID sürücü sürümü<br> NC/ND: CUDA araç seti sürümü. Seçilen CUDA için en son sürücüler otomatik olarak yüklenir. | en son | KıLAVUZ: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |

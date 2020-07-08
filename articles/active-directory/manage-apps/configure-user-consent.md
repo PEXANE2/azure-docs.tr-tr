@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763474"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
@@ -228,7 +228,7 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
 
 1. Ayar değerlerini anlayın. Bir uygulamanın grubun verilerine erişmesine izin veren kullanıcıları tanımlayan iki ayar değeri vardır:
 
-    | Ayar       | Tür         | Description  |
+    | Ayar       | Tür         | Açıklama  |
     | ------------- | ------------ | ------------ |
     | _Enablegroupspecificonayı_   | Boole | Grup sahiplerinin gruba özel izinler verip vermeyeceğini belirten bayrak. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _Enablegroupspecificonay_ değeri "true" olarak ayarlanırsa ve bu değer bir grubun nesne kimliği olarak ayarlandıysa, tanımlı grubun üyelerinin sahip oldukları gruplara gruba özel izinler verme yetkisine sahip olur. |
@@ -286,7 +286,7 @@ Bunu, [PowerShell kullanarak Grup sahibi onayını yapılandırmak](#configure-g
 
 1. Risk tabanlı adım onayı için ayar değerlerini anlayın:
 
-    | Ayar       | Tür         | Description  |
+    | Ayar       | Tür         | Açıklama  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boole |  Riskli bir istek algılandığında Kullanıcı izninin engellenip engellenmediğini belirten bayrak. |
 

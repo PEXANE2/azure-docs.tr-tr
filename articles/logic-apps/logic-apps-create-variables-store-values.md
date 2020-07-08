@@ -7,13 +7,13 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753260"
 ---
-# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps değişkenleri kullanarak değerleri depolayın ve yönetin
+# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps'te değişkenleri kullanarak değer depolama ve yönetme
 
 Bu makalede, mantıksal uygulamanızda değerleri depolamak için kullandığınız değişkenlerin nasıl oluşturulacağı ve bunlarla nasıl çalışılacağı gösterilmektedir. Örneğin, değişkenler bir döngünün kaç kez çalışacağını izlemenize yardımcı olabilir. Bir diziyi yinelemek veya belirli bir öğe için bir diziyi denetlemek için, her bir dizi öğesi için dizin numarasına başvurmak üzere bir değişken kullanabilirsiniz.
 
@@ -65,11 +65,11 @@ Bir değişken oluşturabilir ve veri türünü ve başlangıç değerini, mant�
 
 1. Aşağıdaki konularda, değişkeniniz hakkında şu bilgileri sağlayın:
 
-   | Özellik | Gerekli | Değer |  Description |
+   | Özellik | Gerekli | Değer |  Açıklama |
    |----------|----------|-------|--------------|
-   | **Adı** | Yes | <*değişken adı*> | Artış değişkeninin adı |
-   | **Tür** | Yes | <*değişken türü*> | Değişken için veri türü |
-   | **Değer** | No | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
+   | **Adı** | Evet | <*değişken adı*> | Artış değişkeninin adı |
+   | **Tür** | Evet | <*değişken türü*> | Değişken için veri türü |
+   | **Değer** | Hayır | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
    |||||
 
    Örneğin:
@@ -205,10 +205,10 @@ Bir değişkeni sabit *bir değere göre artırmak veya arttırmak* için, mant�
 
 1. Değişkeninizi arttırın şu bilgileri sağlayın:
 
-   | Özellik | Gerekli | Değer |  Description |
+   | Özellik | Gerekli | Değer |  Açıklama |
    |----------|----------|-------|--------------|
-   | **Adı** | Yes | <*değişken adı*> | Artış değişkeninin adı |
-   | **Değer** | No | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
+   | **Adı** | Evet | <*değişken adı*> | Artış değişkeninin adı |
+   | **Değer** | Hayır | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
    ||||
 
    Örneğin:
@@ -326,10 +326,10 @@ Bir değişkeni sabit *bir değere göre azaltmak veya azaltmak* için, değişk
 
 **Değişken azaltma** eyleminin özellikleri şunlardır:
 
-| Özellik | Gerekli | Değer |  Description |
+| Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Adı** | Yes | <*değişken adı*> | Azaltılacak değişkenin adı | 
-| **Değer** | No | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
+| **Adı** | Evet | <*değişken adı*> | Azaltılacak değişkenin adı | 
+| **Değer** | Hayır | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
 ||||| 
 
 Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **azaltma değişkeni** EYLEMININ, JSON biçiminde olan mantıksal uygulama tanımınızda görünme yolu vardır.
@@ -359,10 +359,10 @@ Varolan bir değişkene farklı bir değer atamak için, [bir değişkeni](#incr
 
 **Değişken ayarla** eyleminin özellikleri şunlardır:
 
-| Özellik | Gerekli | Değer |  Description |
+| Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Adı** | Yes | <*değişken adı*> | Değiştirilecek değişkenin adı |
-| **Değer** | Yes | <*Yeni değer*> | Değişkeni atamak istediğiniz değer. Her ikisi de aynı veri türüne sahip olmalıdır. |
+| **Adı** | Evet | <*değişken adı*> | Değiştirilecek değişkenin adı |
+| **Değer** | Evet | <*Yeni değer*> | Değişkeni atamak istediğiniz değer. Her ikisi de aynı veri türüne sahip olmalıdır. |
 ||||| 
 
 > [!NOTE]
@@ -417,10 +417,10 @@ Dizeleri veya dizileri depolayan değişkenler için, değişkenin değerini bu 
 
 **Append...** eylemlerinin özellikleri şunlardır:
 
-| Özellik | Gerekli | Değer |  Description |
+| Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Adı** | Yes | <*değişken adı*> | Değiştirilecek değişkenin adı |
-| **Değer** | Yes | <*Append-değer*> | Eklemek istediğiniz değer, herhangi bir tür içerebilir |
+| **Adı** | Evet | <*değişken adı*> | Değiştirilecek değişkenin adı |
+| **Değer** | Evet | <*Append-değer*> | Eklemek istediğiniz değer, herhangi bir tür içerebilir |
 |||||
 
 Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **dizi değişkenine Ekle** eyleminin JSON biçiminde olan mantıksal uygulama tanımınızın içinde görünme yolu vardır. Bu örnek, bir dizi değişkeni oluşturur ve dizideki son öğe olarak başka bir değer ekler. Sonuçlarınız, bu diziyi içeren güncelleştirilmiş bir değişkendir:`[1,2,3,"red"]`

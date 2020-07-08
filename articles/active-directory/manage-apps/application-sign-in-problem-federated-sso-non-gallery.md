@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e72ed9ef43fd1222592e7f88d4e3a6e998c59d2d
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84759088"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Federasyon çoklu oturum açma için yapılandırılmış Galeri olmayan bir uygulamada oturum açma sorunları
@@ -38,7 +38,7 @@ Aşağıdaki oturum açma sorunlarını gidermek için aşağıdaki öneriyi izl
 
 Yayımlayan özniteliği, bir uygulamadan Azure AD 'ye Gönderen, Azure AD 'de yapılandırılan tanımlayıcı değeriyle eşleşmiyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 `Issuer`SAML isteğindeki özniteliğinin Azure AD 'de yapılandırılan tanımlayıcı değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
 
@@ -68,7 +68,7 @@ Yayımlayan özniteliği, bir uygulamadan Azure AD 'ye Gönderen, Azure AD 'de y
 
 SAML isteğindeki AssertionConsumerServiceURL değeri Azure AD'de yapılandırılan Yanıt URL'si değeri veya deseniyle eşleşmiyor. SAML isteğindeki AssertionConsumerServiceURL değeri, hatada gördüğünüz URL'dir. 
 
-**Çözünürlüğüne** 
+**Çözünürlük** 
 
 `Issuer`SAML isteğindeki özniteliğinin Azure AD 'de yapılandırılan tanımlayıcı değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
  
@@ -100,7 +100,7 @@ Azure AD 'de yanıt URL 'SI değerini güncelleştirdikten ve SAML isteğindeki 
 
 Azure AD'de kullanıcıya uygulama için erişim verilmedi.​
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Bir uygulamaya doğrudan bir veya daha fazla kullanıcı atamak için aşağıdaki adımları izleyin. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
 
@@ -150,7 +150,7 @@ Azure AD, uygulama tarafından Çoklu oturum açma için gönderilen SAML İste�
 
 -   SAML isteği kodlama yöntemi
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 1.  SAML isteğini yakala. SAML isteğini nasıl yakalayacağınızı öğrenmek için [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) öğreticisini izleyin.
 
@@ -170,7 +170,7 @@ Uygulama satıcısı, çoklu oturum açma için Azure AD SAML uygulamasını des
 
 `Issuer`UYGULAMANıN SAML Isteğindeki Azure AD 'ye gönderdiği öznitelik, Azure AD 'de uygulama için yapılandırılan tanımlayıcı değeriyle eşleşmiyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 `Issuer`SAML isteğindeki özniteliğinin Azure AD 'de yapılandırılan tanımlayıcı değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, aşağıdaki adımları el ile izlemeniz gerekmez:
 
@@ -198,7 +198,7 @@ Hata AADSTS50003: imzalama anahtarı yapılandırılmadı.
 
 Uygulama nesnesi bozuk ve Azure AD uygulama için yapılandırılan sertifikayı tanımıyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 
@@ -234,7 +234,7 @@ Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 
 Azure AD, HTTP isteğindeki URL parametreleri içindeki SAML isteğini tanımlayamadı. Bu durum, uygulamanın Azure AD 'ye SAML isteği gönderilirken HTTP yeniden yönlendirme bağlamasını kullanmadığı durumlarda meydana gelebilir.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Uygulamanın, HTTP yeniden yönlendirme bağlamasını kullanarak konum başlığına kodlanmış SAML isteğini gönderebilmesi gerekir. Bunun nasıl gerçekleştirileceği hakkında daha fazla bilgi için [SAML protokolü belirtimi belgesinde](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) HTTP Yeniden Yönlendirme Bağlaması bölümünü okuyun.
 
@@ -246,7 +246,7 @@ Uygulamanın, HTTP yeniden yönlendirme bağlamasını kullanarak konum başlı�
 
 Uygulama galeriden olmayan bir uygulama olarak eklendiğinde, Azure Active Directory bu yanıt URL'sini bir varsayılan değer olarak oluşturuldu. Bu davranış değiştirildi ve Azure Active Directory artık varsayılan olarak bu URL'yi eklemez. 
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Uygulama için yapılandırılmış kullanılmayan yanıt URL 'Lerini silin.
 
