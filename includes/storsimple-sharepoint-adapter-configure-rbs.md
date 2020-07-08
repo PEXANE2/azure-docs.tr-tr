@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188411"
 ---
 > [!NOTE]
@@ -55,7 +55,7 @@ ms.locfileid: "67188411"
    
    1. Belgeyi SharePoint 'e yükleyin. 
    2. Yapılandırdığınız UNC yoluna gidin. KÇY dizin yapısının oluşturulduğundan ve karşıya yüklenen nesneyi içerdiğinden emin olun.
-6. Seçim Mevcut BLOB içeriğini StorSimple cihazına `Migrate()` geçirmek Için, SharePoint 'e dahil EDILEN Microsoft KÇY PowerShell cmdlet 'ini kullanabilirsiniz. Daha fazla bilgi için bkz. [sharepoint 2013 'de KÇY 'ye veya dışına Içerik geçirme][6] veya [KÇY (SharePoint Foundation 2010) içine veya dışına içerik geçirme][7].
+6. Seçim `Migrate()`Mevcut blob Içeriğini StorSimple cihazına geçirmek için, SharePoint 'e dahil edilen MICROSOFT KÇY PowerShell cmdlet 'ini kullanabilirsiniz. Daha fazla bilgi için bkz. [sharepoint 2013 'de KÇY 'ye veya dışına Içerik geçirme][6] veya [KÇY (SharePoint Foundation 2010) içine veya dışına içerik geçirme][7].
 7. Seçim Test yüklemelerinde, Blobların içerik veritabanından şu şekilde taşındığını doğrulayabilirsiniz: 
    
    1. SQL Management Studio başlatın.

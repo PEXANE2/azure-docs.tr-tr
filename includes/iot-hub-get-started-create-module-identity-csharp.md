@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-hub
 author: chrissie926
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68883814"
 ---
 ## <a name="create-a-module-identity"></a>Modül kimliği oluşturma
@@ -29,7 +29,7 @@ Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül içi
 
     ![Visual Studio çözümünüz için ad ve çerçeve girin](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **çözüm için NuGet Paketlerini Yönet**' i açın. **Gözat** sekmesini seçin.
+1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet**' i açın. **Gözat** sekmesini seçin.
 
 1. **Microsoft. Azure. Devices**' i arayın. Seçin ve ardından **Install**' ı seçin.
 
@@ -102,9 +102,9 @@ Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül içi
     }
     ```
 
-    Yöntemi `AddDeviceAsync` , **myfirstdevice**kimliğiyle bir cihaz kimliği oluşturur. Bu cihaz KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut cihaz bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, sanal cihaz uygulamasında hub 'ınıza bağlanmak için kullanırsınız.
+    `AddDeviceAsync`Yöntemi, **myfirstdevice**kimliğiyle bir cihaz kimliği oluşturur. Bu cihaz KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut cihaz bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, sanal cihaz uygulamasında hub 'ınıza bağlanmak için kullanırsınız.
 
-    Bu `AddModuleAsync` Yöntem, myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiyle **myFirstDevice**bir modül kimliği oluşturur. Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, hub 'ınıza bağlanmak için sanal modül uygulamasında kullanırsınız.
+    Bu `AddModuleAsync` Yöntem, **myfirstdevice**adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, hub 'ınıza bağlanmak için sanal modül uygulamasında kullanırsınız.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

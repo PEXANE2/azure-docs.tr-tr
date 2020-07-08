@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017622"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
@@ -92,7 +92,7 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Açıklama | Sin | Iostat |
+| Sayaç | Description | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
@@ -252,7 +252,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485757"
 ---
 Azure sanal makinelerini (VM 'Ler) bir ölçekte tutarlı bir şekilde oluşturmak ve yönetmek için, bazı Otomasyon formları genellikle istenir. Azure altyapı dağıtımı ve yönetim yaşam döngüsünün tamamını otomatikleştirmenize imkan tanıyan birçok araç ve çözüm vardır. Bu makalede, Azure 'da kullanabileceğiniz bazı altyapı Otomasyonu araçları tanıtılmaktadır. Bu araçlar, genellikle aşağıdaki yaklaşımlardan birine uyum sağlar:
