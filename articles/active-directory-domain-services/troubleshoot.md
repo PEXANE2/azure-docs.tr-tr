@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ea8492ff5a25eb72b0a842c4da82ed78c89863f8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733832"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039577"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sık karşılaşılan hatalar ve sorun giderme adımları
 
@@ -28,7 +28,7 @@ Bu makalede, Azure AD DS 'daki yaygın sorunlar için sorun giderme adımları s
 
 Azure AD DS 'yi etkinleştirme sorunlarıyla karşılaşırsanız, bu sorunları çözmek için aşağıdaki yaygın hataları ve adımları gözden geçirin:
 
-| **Örnek hata Iletisi** | **Çözünürlüğüne** |
+| **Örnek hata Iletisi** | **Çözünürlük** |
 | --- |:--- |
 | *Aaddscontoso.com adı bu ağda zaten kullanılıyor. Kullanımda olmayan bir ad belirtin.* |[Sanal ağda etki alanı adı çakışması](troubleshoot.md#domain-name-conflict) |
 | *Bu Azure AD kiracısında etki alanı Hizmetleri etkinleştirilemedi. Hizmet ' Azure AD Domain Services Sync ' adlı uygulama için yeterli izinlere sahip değil. ' Azure AD Domain Services Sync ' adlı uygulamayı silin ve ardından Azure AD kiracınız için etki alanı hizmetlerini etkinleştirmeyi deneyin.* |[Etki alanı Hizmetleri Azure AD Domain Services eşitleme uygulaması için yeterli izinlere sahip değil](troubleshoot.md#inadequate-permissions) |
@@ -41,7 +41,7 @@ Azure AD DS 'yi etkinleştirme sorunlarıyla karşılaşırsanız, bu sorunları
 
 *Aaddscontoso.com adı bu ağda zaten kullanılıyor. Kullanımda olmayan bir ad belirtin.*
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Aynı etki alanı adına sahip mevcut bir AD DS ortamınız veya eşlenmiş bir sanal ağ olup olmadığına bakın. Örneğin, Azure VM 'lerde çalışan *aaddscontoso.com* adlı bir AD DS etki alanınız olabilir. Sanal ağdaki *aaddscontoso.com* aynı etki alanı adıyla bir Azure AD DS yönetilen etki alanını etkinleştirmeye çalıştığınızda, istenen işlem başarısız olur.
 
@@ -53,7 +53,7 @@ Bu hata, sanal ağ üzerindeki etki alanı adı için ad çakışmalarının kay
 
 *Bu Azure AD kiracısında etki alanı Hizmetleri etkinleştirilemedi. Hizmet ' Azure AD Domain Services Sync ' adlı uygulama için yeterli izinlere sahip değil. ' Azure AD Domain Services Sync ' adlı uygulamayı silin ve ardından Azure AD kiracınız için etki alanı hizmetlerini etkinleştirmeyi deneyin.*
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Azure AD dizininizde *Azure AD Domain Services eşitleme* adlı bir uygulama olup olmadığını denetleyin. Bu uygulama varsa, silin ve sonra Azure AD DS 'yi etkinleştirmeyi yeniden deneyin. Mevcut bir uygulamayı denetlemek ve gerekirse silmek için aşağıdaki adımları izleyin:
 
@@ -68,7 +68,7 @@ Azure AD dizininizde *Azure AD Domain Services eşitleme* adlı bir uygulama olu
 
 *Bu Azure AD kiracısında etki alanı Hizmetleri etkinleştirilemedi. Azure AD kiracınızdaki etki alanı Hizmetleri uygulaması, etki alanı hizmetlerini etkinleştirmek için gerekli izinlere sahip değil. Uygulamayı d87dcbc6-a371-462e-88e3-28ad15ec4e64 uygulama tanımlayıcısı ile silin ve ardından Azure AD kiracınız için etki alanı hizmetlerini etkinleştirmeyi deneyin.*
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Azure AD dizininizde *d87dcbc6-a371-462e-88e3-28ad15ec4e64* uygulama tanımlayıcısına sahip *AzureActiveDirectoryDomainControllerServices* adlı mevcut bir uygulamanız olup olmadığını denetleyin. Bu uygulama varsa, silin ve sonra Azure AD DS 'yi etkinleştirmeyi yeniden deneyin.
 
@@ -112,7 +112,7 @@ if ($sp -ne $null)
 
 *Bu Azure AD kiracısında etki alanı Hizmetleri etkinleştirilemedi. Microsoft Azure AD uygulama Azure AD kiracınızda devre dışı bırakıldı. Uygulamayı 00000002-0000-0000-C000-000000000000 uygulama tanımlayıcısıyla etkinleştirin ve sonra Azure AD kiracınız için etki alanı hizmetlerini etkinleştirmeyi deneyin.*
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 *00000002-0000-0000-C000-000000000000*tanımlayıcısına sahip bir uygulamayı devre dışı bırakılıp bırakılmadığını kontrol edin. Bu uygulama Microsoft Azure AD uygulamasıdır ve Azure AD kiracınıza Graph API erişim sağlar. Azure AD kiracınızı eşitlemeniz için bu uygulamanın etkinleştirilmesi gerekir.
 
@@ -137,15 +137,15 @@ Azure AD kiracınızdaki bir veya daha fazla Kullanıcı yönetilen etki alanın
     
       * [En son önerilen Azure AD Connect sürümünü](https://www.microsoft.com/download/details.aspx?id=47594)dağıttıysanız veya sürümüne güncelleştirdiniz.
       * [Tam eşitleme gerçekleştirmek][hybrid-phs]için Azure AD Connect yapılandırdınız.
-      * Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının Azure AD DS 'de kullanılabilir olması biraz zaman alabilir. Yönetilen etki alanında kimlik doğrulaması yapmayı denemeden önce yeterince uzun süre beklemeniz gerekir.
-      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini*yeniden başlatmayı deneyin. Azure AD Connect sunucunuzda bir komut istemi açın ve aşağıdaki komutları çalıştırın:
+      * Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının yönetilen etki alanında kullanılabilir olması biraz zaman alabilir. Yönetilen etki alanında kimlik doğrulaması yapmayı denemeden önce yeterince uzun süre beklemeniz gerekir.
+      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini*yeniden başlatmayı deneyin. Azure AD Connect sunucusundan bir komut istemi açın ve aşağıdaki komutları çalıştırın:
     
         ```console
         net stop 'Microsoft Azure AD Sync'
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **Yalnızca bulut hesapları**: etkilenen Kullanıcı hesabı yalnızca bulutta yer alan bir kullanıcı hesabı Ise, [Azure AD DS etkinleştirildikten sonra kullanıcının parolasını değiştirdiğine][cloud-only-passwords]emin olun. Bu parola sıfırlama Azure AD Domain Services için gereken kimlik bilgisi karmalarının oluşturulmasına neden olur.
+    * **Yalnızca bulut hesapları**: etkilenen Kullanıcı hesabı yalnızca bulutta yer alan bir kullanıcı hesabı Ise, [Azure AD DS etkinleştirildikten sonra kullanıcının parolasını değiştirdiğine][cloud-only-passwords]emin olun. Bu parola sıfırlama, yönetilen etki alanı için gereken kimlik bilgisi karmalarının oluşturulmasına neden olur.
 
 * **Kullanıcı hesabının etkin olduğunu doğrulayın**: varsayılan olarak, yönetilen etki alanında 2 dakika içinde beş geçersiz parola denemesi, bir kullanıcı hesabının 30 dakika boyunca kilitlenmesine neden olur. Hesap kilitliyken Kullanıcı oturum açamaz. 30 dakika sonra, Kullanıcı hesabı otomatik olarak kilidi açılır.
   * Yönetilen etki alanında geçersiz parola denemeleri, Azure AD 'de Kullanıcı hesabını kilitlemez. Kullanıcı hesabı yalnızca yönetilen etki alanı içinde kilitlenir. Azure AD 'de değil, [YÖNETIM sanal][management-vm]makinesini kullanarak *Active Directory Yönetim Konsolu 'nda (ADAC)* Kullanıcı hesabı durumunu kontrol edin.

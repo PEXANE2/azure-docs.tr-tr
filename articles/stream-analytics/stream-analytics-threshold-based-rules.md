@@ -4,14 +4,14 @@ description: Bu makalede, Azure Stream Analytics ' de yapılandırılabilir eşi
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75369720"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039050"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics 'de yapılandırılabilir eşik tabanlı kuralları işleme
 Bu makalede, Azure Stream Analytics ' de yapılandırılabilir eşik tabanlı kurallar kullanan bir uyarı çözümüne ulaşmak için başvuru verilerinin nasıl kullanılacağı açıklanır.
@@ -39,10 +39,10 @@ Sorguda, her DeviceID için ve DeviceID altındaki her bir metricName için 0 il
 ## <a name="reference-data"></a>Başvuru verileri
 Bu örnek başvuru verileri, eşik tabanlı bir kuralın nasıl temsil edileceğini gösterir. JSON dosyası başvuru verilerini barındırır ve Azure Blob depolama alanına kaydedilir ve bu blob depolama kapsayıcısı, **kurallar**adlı bir başvuru veri girişi olarak kullanılır. Bu JSON dosyasının üzerine yazabilir ve kural yapılandırmasını, akış işini durdurmadan veya başlatmadan zaman ile değiştirin.
 
-- Örnek kural, CPU aşıldığı zaman ayarlanabilir bir uyarıyı göstermek için kullanılır (ortalama değer değerinden büyük veya buna eşitse) yüzde değeri `90` . `value` Alanı gerektiği şekilde yapılandırılabilir.
-- Kuralda, daha sonra sorgu sözdiziminde dinamik olarak yorumlanan bir **operatör** alanı olduğuna dikkat edin `AVGGREATEROREQUAL`. 
-- Kural, belirli bir boyut anahtarındaki `2` verileri değeriyle `C1`filtreler. Diğer alanlar, giriş akışının bu olay alanları tarafından filtreleneceğini belirten boş bir dizedir. Gerektiğinde diğer eşleşen alanları filtrelemek için ek CPU kuralları ayarlayabilirsiniz.
-- Tüm sütunlar çıkış uyarı olayına dahil edilmez. Bu durumda, `includedDim` akışta bulunan olay `2` verilerinin 2 alan `TRUE` numarasını temsil etmek için anahtar numarası açıktır ve uygun çıkış olaylarına dahil edilir. Diğer alanlar, uyarı çıktısına dahil değildir, ancak alan listesi ayarlanabilir.
+- Örnek kural, CPU aşıldığı zaman ayarlanabilir bir uyarıyı göstermek için kullanılır (ortalama değer değerinden büyük veya buna eşitse) `90` yüzde değeri. `value`Alanı gerektiği şekilde yapılandırılabilir.
+- Kuralda, daha sonra sorgu sözdiziminde dinamik olarak yorumlanan bir **operatör** alanı olduğuna dikkat edin `AVGGREATEROREQUAL` . 
+- Kural, belirli bir boyut anahtarındaki verileri `2` değeriyle filtreler `C1` . Diğer alanlar, giriş akışının bu olay alanları tarafından filtreleneceğini belirten boş bir dizedir. Gerektiğinde diğer eşleşen alanları filtrelemek için ek CPU kuralları ayarlayabilirsiniz.
+- Tüm sütunlar çıkış uyarı olayına dahil edilmez. Bu durumda, `includedDim` `2` akışta bulunan `TRUE` olay verilerinin 2 alan numarasını temsil etmek için anahtar numarası açıktır ve uygun çıkış olaylarına dahil edilir. Diğer alanlar, uyarı çıktısına dahil değildir, ancak alan listesi ayarlanabilir.
 
 
 ```json
@@ -134,11 +134,11 @@ HAVING
 ## <a name="example-streaming-input-event-data"></a>Örnek akış girişi olay verileri
 Bu örnek JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçüm** giriş verilerini temsil eder. 
 
-- Üç örnek olay, 1 dakikalık TimeSpan değeri `T14:50`içinde listelenir. 
-- Üçü de aynı `deviceId` değere `978648`sahiptir.
-- CPU ölçüm değerleri, `98` `95` `80` sırasıyla her olayda değişir. Yalnızca ilk iki olay, kuralda belirlenen CPU uyarısı kuralını aşıyor.
-- Uyarı kuralındaki ıncludedim alanı 2 numaralı önemli sayıdır. Örnek olaylardaki karşılık gelen anahtar 2 alanı adı `NodeName`. Üç örnek olay, `N024` `N024`, ve `N014` sırasıyla değerleri vardır. Çıktıda yalnızca düğümü `N024` , yüksek CPU için uyarı ölçütleriyle eşleşen tek veri olarak görürsünüz. `N014`yüksek CPU eşiğini karşılamıyor.
-- Uyarı kuralı `filter` yalnızca, örnek olaylardaki `cluster` alana karşılık gelen anahtar numarası 2 ile yapılandırılır. Üç örnek olay hepsi değere `C1` sahiptir ve filtre ölçütlerine göre eşleşir.
+- Üç örnek olay, 1 dakikalık TimeSpan değeri içinde listelenir `T14:50` . 
+- Üçü de aynı değere sahiptir `deviceId` `978648` .
+- CPU ölçüm değerleri, sırasıyla her olayda değişir `98` `95` `80` . Yalnızca ilk iki olay, kuralda belirlenen CPU uyarısı kuralını aşıyor.
+- Uyarı kuralındaki ıncludedim alanı 2 numaralı önemli sayıdır. Örnek olaylardaki karşılık gelen anahtar 2 alanı adı `NodeName` . Üç örnek olay, `N024` `N024` , ve sırasıyla değerleri vardır `N014` . Çıktıda yalnızca düğümü, `N024` yüksek CPU için uyarı ölçütleriyle eşleşen tek veri olarak görürsünüz. `N014`yüksek CPU eşiğini karşılamıyor.
+- Uyarı kuralı `filter` yalnızca, `cluster` örnek olaylardaki alana karşılık gelen anahtar numarası 2 ile yapılandırılır. Üç örnek olay hepsi değere sahiptir `C1` ve filtre ölçütlerine göre eşleşir.
 
 ```json
 {
@@ -282,7 +282,7 @@ Bu örnek JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçüm** 
 ```
 
 ## <a name="example-output"></a>Örnek çıkış
-Bu örnek çıkış JSON verileri, başvuru verilerinde tanımlanan CPU eşik kuralına göre tek bir uyarı olayının üretildiğini gösterir. Çıkış olayı, uyarının adının yanı sıra değerlendirilen alanların toplanmış (Average, min, Max) adını içerir. Çıkış olayı verileri, kural yapılandırması nedeniyle alan anahtar `NodeName` numarası `N024` 2 değerini içerir. (JSON, okunabilirlik için satır sonlarını göstermek üzere değiştirilmiştir.)
+Bu örnek çıkış JSON verileri, başvuru verilerinde tanımlanan CPU eşik kuralına göre tek bir uyarı olayının üretildiğini gösterir. Çıkış olayı, uyarının adının yanı sıra değerlendirilen alanların toplanmış (Average, min, Max) adını içerir. Çıkış olayı verileri, `NodeName` kural yapılandırması nedeniyle alan anahtar numarası 2 değerini içerir `N024` . (JSON, okunabilirlik için satır sonlarını göstermek üzere değiştirilmiştir.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

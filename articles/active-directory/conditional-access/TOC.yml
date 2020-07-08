@@ -8,8 +8,6 @@
   items:
     - name: Kullanım koşullarının kabul edilmesini gerektirme
       href: require-tou.md
-    - name: Oturum riski algılandığında erişimi engelleme
-      href: app-sign-in-risk.md
 - name: Öğreticiler
   items:
     - name: Azure Multi-Factor Authentication’ı gerektirme
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: Tüm kullanıcılar için MFA gerektirme
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Risk tabanlı Koşullu Erişim
+        - name: Risk tabanlı Koşullu Erişim’de oturum açma
           href: howto-conditional-access-policy-risk.md
+        - name: Kullanıcı risk tabanlı Koşullu Erişim
+          href: howto-conditional-access-policy-risk-user.md
         - name: Güvenlik bilgileri kaydının güvenliğini sağlama
           href: howto-conditional-access-policy-registration.md
         - name: Erişimi konuma göre engelleme

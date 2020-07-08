@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213780"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039033"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu makalede, SYNAPSE SQL 'de genel sorun giderme sorunları listelenmektedir.
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 18456) | Bu hata, bir Azure AD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcı olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
 | Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata, bir Azure AD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcı olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
-| CTAıP hatası                                                  | Bu hata, SQL Server ana veritabanında bir oturum oluşturulduğunda, ancak SQL veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine göz atın.  Bu makalede, ana bilgisayarda bir oturum açma ve Kullanıcı oluşturma ve ardından SQL veritabanında bir Kullanıcı oluşturma işlemleri açıklanmaktadır. |
+| CTAıP hatası                                                  | Bu hata, SQL veritabanı ana veritabanında bir oturum oluşturulduğunda, ancak belirli SQL veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine göz atın.  Bu makalede, ana veritabanında bir oturum açma ve Kullanıcı oluşturma ve ardından bir SQL veritabanında Kullanıcı oluşturma işlemleri açıklanmaktadır. |
 | Güvenlik duvarı tarafından engellendi                                          | SQL havuzları, yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki](create-data-warehouse-portal.md) [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma](create-data-warehouse-portal.md) bölümündeki adımları izleyin. |
 | Araçla veya sürücüyle bağlantı yapılamaz                           | SYNAPSE SQL havuzu, [SMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve Azure SYNAPSE 'a bağlanma hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SYNAPSE makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
 

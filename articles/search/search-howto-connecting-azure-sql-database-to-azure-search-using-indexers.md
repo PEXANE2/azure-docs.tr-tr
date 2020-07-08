@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322147"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039288"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
@@ -62,7 +62,7 @@ Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer ku
 1. Veri kaynağını oluşturun:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer ku
 
 3. Dizin Oluşturucuyu bir ad vererek ve veri kaynağına ve hedef dizine başvurarak oluşturun:
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer ku
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 Bu şekilde oluşturulan bir dizin oluşturucunun zamanlaması yoktur. Oluşturulduğunda otomatik olarak çalışır. Bir **çalıştırma Dizin Oluşturucu** isteği kullanarak istediğiniz zaman yeniden çalıştırabilirsiniz:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 Dizin Oluşturucu davranışının, toplu iş boyutu ve dizin oluşturucunun yürütülmesi başarısız olmadan önce kaç tane belge atlanacak gibi çeşitli yönlerini özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Dizin Oluşturucu API 'Si oluşturma](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
@@ -103,11 +105,14 @@ Azure hizmetlerinin veritabanınıza bağlanmasına izin vermeniz gerekebilir. B
 
 Dizin Oluşturucu durumunu ve yürütme geçmişini (dizin oluşturulan öğe sayısı, başarısızlık vb.) izlemek için bir **Dizin Oluşturucu durum** isteği kullanın:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 Yanıt aşağıdakine benzer görünmelidir:
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,6 +143,7 @@ Yanıt aşağıdakine benzer görünmelidir:
             ... earlier history items
         ]
     }
+```
 
 Yürütme geçmişi, geriye doğru kronolojik düzende sıralanan en son tamamlanan yürütmelerin 50 ' i içerir (yani en son yürütmenin yanıtta ilk olarak olması gerekir).
 Yanıtla ilgili ek bilgiler, [Dizin Oluşturucu durumunu Al](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) bölümünde bulunabilir
@@ -145,7 +151,8 @@ Yanıtla ilgili ek bilgiler, [Dizin Oluşturucu durumunu Al](https://docs.micros
 ## <a name="run-indexers-on-a-schedule"></a>Dizin Oluşturucuyu bir zamanlamaya göre Çalıştır
 Dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de düzenleyebilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, Dizin oluşturucuyu güncellemek için bir PUT isteği gösterilmektedir:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,6 +161,7 @@ Dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şe
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 **Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))` . Örnekler: her `PT15M` `PT2H` 2 saat için 15 dakikada bir.
 
@@ -181,6 +189,7 @@ SQL veritabanınız [değişiklik izlemeyi](https://docs.microsoft.com/sql/relat
 
 Bu ilkeyi kullanmak için veri kaynağınızı şu şekilde oluşturun veya güncelleştirin:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ Bu ilkeyi kullanmak için veri kaynağınızı şu şekilde oluşturun veya gün
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 SQL tümleşik değişiklik izleme ilkesini kullanırken, ayrı bir veri silme algılama ilkesi belirtmeyin-Bu ilke, silinen satırları tanımlamaya yönelik yerleşik desteğe sahiptir. Ancak, silmeler "otomatikgara" olarak algılanabilmesi için, arama dizininizdeki belge anahtarı SQL tablosundaki birincil anahtarla aynı olmalıdır. 
 
@@ -216,6 +226,7 @@ Bu değişiklik algılama ilkesi, bir satırın en son güncelleştirildiği sü
 
 Yüksek bir su işareti İlkesi kullanmak için veri kaynağınızı şu şekilde oluşturun veya güncelleştirin:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,6 +237,7 @@ Yüksek bir su işareti İlkesi kullanmak için veri kaynağınızı şu şekild
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
 > Kaynak tabloda yüksek su işareti sütununda bir dizin yoksa, SQL Indexer tarafından kullanılan sorgular zaman aşımına uğrar. Özellikle, `ORDER BY [High Water Mark Column]` yan tümce tablo çok sayıda satır içerdiğinde bir dizinin verimli bir şekilde çalışmasını gerektirir.
@@ -243,11 +255,13 @@ Yüksek su işareti sütunu için [ROWVERSION](https://docs.microsoft.com/sql/t-
 
 Bu özelliği etkinleştirmek için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
     }
+```
 
 <a name="queryTimeout"></a>
 
@@ -255,11 +269,13 @@ Bu özelliği etkinleştirmek için aşağıdaki yapılandırmayla Dizin oluştu
 
 Zaman aşımı hatalarıyla karşılaşırsanız, `queryTimeout` sorgu zaman aşımını varsayılan 5 dakikalık zaman aşımından daha yüksek bir değere ayarlamak için Dizin Oluşturucu yapılandırma ayarını kullanabilirsiniz. Örneğin, zaman aşımını 10 dakika olarak ayarlamak için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 <a name="disableOrderByHighWaterMarkColumn"></a>
 
@@ -267,11 +283,13 @@ Zaman aşımı hatalarıyla karşılaşırsanız, `queryTimeout` sorgu zaman aş
 
 Yan tümcesini de devre dışı bırakabilirsiniz `ORDER BY [High Water Mark Column]` . Ancak, Dizin Oluşturucu yürütmesi bir hata tarafından kesintiye uğrarsa, dizin oluşturucunun daha sonra çalıştırıldığında tüm satırları yeniden işlemesi gerekir, çünkü Dizin Oluşturucu, neredeyse tüm satırları yarıda kesilen zamana göre zaten işledi. Yan tümcesini devre dışı bırakmak için `ORDER BY` `disableOrderByHighWaterMarkColumn` Dizin Oluşturucu tanımındaki ayarı kullanın:  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Geçici silme sütunu silme algılama ilkesi
 Satırlar kaynak tablodan silindiğinde, muhtemelen bu satırları arama dizininden da silmek isteyebilirsiniz. SQL tümleşik değişiklik izleme ilkesini kullanıyorsanız, bu sizin için bu şekilde yapılır. Ancak, yüksek su işareti değişiklik izleme ilkesi, silinen satırlarda size yardımcı olmaz. Ne yapmalı?
@@ -280,6 +298,7 @@ Satırlar tablodan fiziksel olarak kaldırılırsa Azure Bilişsel Arama, artık
 
 Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya güncelleştirirken geçici silme ilkesini aşağıdaki gibi belirtebilirsiniz:
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -288,6 +307,7 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 **SoftDeleteMarkerValue** bir dize olmalıdır: gerçek değer ' in dize gösterimini kullanın. Örneğin, silinen satırları 1 değeri ile işaretlenmiş bir tamsayı sütununuz varsa kullanın `"1"` . Silinen satırların, Boolean true değeri ile işaretlenmiş bir BIT sütununuz varsa, değişmez değer veya dize kullanın `True` `true` , büyük/küçük harf kullanmayın.
 
@@ -305,8 +325,8 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueıdentıer |Edm.String | |
 | Coğrafya |Edm.GeographyPoint |Yalnızca SRID 4326 (varsayılan) ile tür noktası olan Coğrafya örnekleri desteklenir |
-| rowversion |Yok |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
-| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |Yok |Desteklenmiyor |
+| rowversion |YOK |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
+| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |YOK |Desteklenmiyor |
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 SQL Indexer çeşitli yapılandırma ayarları sunar:
@@ -318,11 +338,13 @@ SQL Indexer çeşitli yapılandırma ayarları sunar:
 
 Bu ayarlar, `parameters.configuration` Dizin Oluşturucu tanımındaki nesnesinde kullanılır. Örneğin, sorgu zaman aşımını 10 dakika olarak ayarlamak için, aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>SSS
 
@@ -358,7 +380,7 @@ Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü 
 
 Bir salt okuma çoğaltmasında ROWVERSION kullanmaya çalışırsanız aşağıdaki hatayı görürsünüz: 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+"Değişiklik izleme için ROWVERSION sütununun kullanılması ikincil (salt okunurdur) kullanılabilirlik çoğaltmalarının üzerinde desteklenmez. Lütfen veri kaynağını güncelleştirin ve birincil kullanılabilirlik çoğaltmasına bir bağlantı belirtin. Geçerli veritabanı ' Updatebeceri ' özelliği ' READ_ONLY ' ".
 
 **S: yüksek su işareti değişiklik izleme için alternatif, rowversion olmayan bir sütun kullanabilir miyim?**
 

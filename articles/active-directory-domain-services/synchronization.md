@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a1a652c19d624d6faf941de84bcf74dd8613152
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734258"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039849"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 
@@ -61,15 +61,17 @@ Aşağıdaki tabloda, Azure AD 'deki Kullanıcı nesneleri için belirli öznite
 |:--- |:--- |
 | accountEnabled |userAccountControl (ACCOUNT_DISABLED bitini ayarlar veya temizler) |
 | city |l |
-| ülke |\ |
+| ülke |co |
 | bölüm |bölüm |
 | displayName |displayName |
+| Employeeditıd |Çalışan |
 | facsimileTelephoneNumber 'dir |facsimileTelephoneNumber 'dir |
 | givenName |givenName |
 | jobTitle |başlık |
 | posta |posta |
 | mailNickname |msDS-Azureadmailtakma ad |
 | mailNickname |SAMAccountName (bazen otomatik olarak oluşturulabilir) |
+| manager |manager |
 | mobil |mobil |
 | uzantının |msDS-Azureadobjectıd |
 | onPremiseSecurityIdentifier |Sıdhistory |
@@ -77,6 +79,7 @@ Aşağıdaki tabloda, Azure AD 'deki Kullanıcı nesneleri için belirli öznite
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
+| proxyAddresses | proxyAddresses |
 | durum |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -95,6 +98,7 @@ Aşağıdaki tabloda, Azure AD 'deki grup nesnelerinin belirli özniteliklerinin
 | mailNickname |msDS-Azureadmailtakma ad |
 | uzantının |msDS-Azureadobjectıd |
 | onPremiseSecurityIdentifier |Sıdhistory |
+| proxyAddresses | proxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Şirket içi AD DS Azure AD 'ye ve Azure AD DS eşitleme

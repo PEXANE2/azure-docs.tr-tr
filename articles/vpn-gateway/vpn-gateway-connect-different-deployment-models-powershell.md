@@ -10,6 +10,7 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
 ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86040767"
@@ -32,7 +33,7 @@ Zaten bir sanal ağ geçidinizin yoksa ve bir tane oluşturmak istemiyorsanız V
 
 Aşağıdaki adımlarda, her VNet için dinamik veya yol tabanlı bir ağ geçidi yapılandırmak ve ağ geçitleri arasında bir VPN bağlantısı oluşturmak için gereken ayarlar açıklanmaktadır. Bu yapılandırma statik veya ilke tabanlı ağ geçitlerini desteklemez.
 
-### <a name="prerequisites"></a><a name="pre"></a>Ön koşullar
+### <a name="prerequisites"></a><a name="pre"></a>Önkoşullar
 
 * Her iki sanal ağ zaten oluşturulmuş. Resource Manager sanal ağı oluşturmanız gerekiyorsa bkz. [kaynak grubu ve sanal ağ oluşturma](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Klasik bir sanal ağ oluşturmak için bkz. [Klasik VNET oluşturma](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * VNET 'lerin adres aralıkları birbirleriyle örtüşmez veya ağ geçitlerinin bağlı olabileceği diğer bağlantılar için aralıklardan herhangi biriyle çakışmaz.

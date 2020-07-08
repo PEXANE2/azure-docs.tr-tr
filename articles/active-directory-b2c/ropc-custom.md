@@ -13,6 +13,7 @@ ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dac1d66242dc88c1b2d96c7af1930e36f225ff4e
 ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/07/2020
 ms.locfileid: "86040512"
@@ -25,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 

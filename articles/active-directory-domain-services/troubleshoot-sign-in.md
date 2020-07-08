@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services oturum açma sorunlarını giderme | Microsoft Docs
-description: Azure Active Directory Domain Services genel kullanıcı oturum açma sorunlarını ve hatalarını nasıl giderebileceğinizi öğrenin.
+description: Azure Active Directory Domain Services genel kullanıcı oturum açma sorunları ve hatalarıyla ilgili sorunları giderme hakkında bilgi edinin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733968"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039662"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap oturum açma sorunlarını giderme
 
@@ -30,7 +30,7 @@ Bir kullanıcı hesabının Azure Active Directory Domain Services (Azure AD DS)
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>Hesap henüz Azure AD DS eşitlenmedi
 
-Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının Azure AD DS 'de kullanılabilir olması biraz zaman alabilir. Büyük dizinler için, Azure AD 'den bu ilk tek yönlü eşitleme birkaç saat sürebilir ve günde bir veya iki kez olabilir. Kimlik doğrulamasını yeniden denemeden önce yeterince uzun süre beklemediğinizden emin olun.
+Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının yönetilen bir etki alanında kullanılabilir olması biraz zaman alabilir. Büyük dizinler için, Azure AD 'den bu ilk tek yönlü eşitleme birkaç saat sürebilir ve günde bir veya iki kez olabilir. Kimlik doğrulamasını yeniden denemeden önce yeterince uzun süre beklemediğinizden emin olun.
 
 Azure AD Connect kullanıcının şirket içi dizin verilerini Azure AD 'ye eşitlemesine yönelik karma ortamlarda, Azure AD Connect en son sürümünü çalıştırdığınızdan ve [Azure AD DS etkinleştirildikten sonra tam eşitleme gerçekleştirmek için Azure AD Connect yapılandırdığınızdan][azure-ad-connect-phs]emin olun. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
 
@@ -47,7 +47,7 @@ Azure AD, kiracınız için Azure AD DS etkinleştirene kadar NTLM veya Kerberos
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Şirket içi eşitlemeyle karma ortamlar
 
-Şirket içi AD DS ortamından eşitlenmek üzere Azure AD Connect kullanan karma ortamlarda, gerekli NTLM veya Kerberos parola karmalarını yerel olarak oluşturup Azure AD 'ye eşitleyebilir. Yönetilen etki alanınızı oluşturduktan sonra, [Azure Active Directory Domain Services için Parola karması eşitlemesini etkinleştirin][azure-ad-connect-phs]. Bu parola karması eşitleme adımını tamamlamadan, Azure AD DS kullanarak bir hesapta oturum açamazsınız. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
+Şirket içi AD DS ortamından eşitlenmek üzere Azure AD Connect kullanan karma ortamlarda, gerekli NTLM veya Kerberos parola karmalarını yerel olarak oluşturup Azure AD 'ye eşitleyebilir. Yönetilen etki alanınızı oluşturduktan sonra, [Azure Active Directory Domain Services için Parola karması eşitlemesini etkinleştirin][azure-ad-connect-phs]. Bu parola karması eşitleme adımını tamamlamadan, yönetilen etki alanını kullanarak bir hesapta oturum açamazsınız. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
 
 Daha fazla bilgi için bkz. [Parola karması eşitlemesi Azure AD DS Için nasıl kullanılır][phs-process].
 
@@ -64,7 +64,7 @@ Daha fazla bilgi için bkz. [Parola karması eşitlemesi Azure AD DS Için nası
 
 ## <a name="the-account-is-locked-out"></a>Hesap kilitli
 
-Başarısız oturum açma girişimleri için tanımlanan bir eşik karşılandığında Azure AD DS bir kullanıcı hesabı kilitlenir. Bu hesap kilitleme davranışı, otomatikleştirilmiş bir dijital saldırıyı gösterebilen yinelenen deneme yanılma girişimlerini korumak için tasarlanmıştır.
+Yönetilen etki alanındaki bir kullanıcı hesabı, başarısız oturum açma girişimleri için tanımlanan bir eşik karşılandığında kilitlenir. Bu hesap kilitleme davranışı, otomatikleştirilmiş bir dijital saldırıyı gösterebilen yinelenen deneme yanılma girişimlerini korumak için tasarlanmıştır.
 
 Varsayılan olarak, 2 dakika içinde 5 hatalı parola denemesi varsa, hesap 30 dakika boyunca kilitlenir.
 

@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021696"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039305"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
@@ -99,13 +99,13 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Visual Studio 'da yeni Stream Analytics girişi](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. **Çözüm Gezgini** **Input. JSON** öğesine çift tıklayın.
+2. **Çözüm Gezgini** **Input.js** çift tıklayın.
 
 3. **Stream Analytics giriş yapılandırmasını**doldurun. Veritabanı adını, sunucu adını, yenileme türünü ve yenileme hızını seçin. Yenileme hızını biçimde belirtin `DD:HH:MM` .
 
    ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
-   "Yalnızca bir kez Yürüt" veya "düzenli aralıklarla Yürüt" seçeneğini belirlerseniz, **[Input Alias]** ADLı bir SQL codebehind dosyası, projede **Input. JSON** dosya düğümünün altında oluşturulur.
+   "Yalnızca bir kez Yürüt" veya "düzenli aralıklarla Yürüt" seçeneğini belirlerseniz, **[Input Alias]** ADLı bir SQL codebehind dosyası, dosya düğümündeki **Input.js** altında projede oluşturulur.
 
    ![Visual Studio 'da giriş kodu](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
@@ -119,7 +119,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="specify-storage-account"></a>Depolama hesabı belirtin
 
-SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını belirtmek için **Jobconfig. JSON** dosyasını açın.
+SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını belirtmek için **üzerindeJobConfig.js** açın.
 
    ![Visual Studio 'da Stream Analytics iş yapılandırması](./media/sql-reference-data/stream-analytics-job-config.png)
 
@@ -156,7 +156,7 @@ Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../azure-sql/temporal-
  
 2. Delta sorgusunu yazar. 
    
-   Bu sorgu, SQL veritabanınızda bir başlangıç saati, ** \@ deltastarttime**ve bitiş zamanı ** \@ deltabitişsaati**içinde eklenmiş veya silinmiş olan tüm satırları alır. Delta sorgusunun anlık görüntü sorgusuyla aynı sütunları ve sütun **_işlemini_** döndürmesi gerekir. Bu sütun, ** \@ deltastarttime** ve ** \@ deltabitişsaati**arasında satırın eklendiğini veya silinip silinmediğini tanımlar. Kayıtlar eklenmişse, sonuç satırları **1** olarak işaretlenir veya silinirse **2** ' dir. Ayrıca, Delta dönemindeki tüm güncelleştirmelerin uygun şekilde yakalandığından emin olmak için sorgunun SQL Server kenarından **filigran** eklemesi gerekir. Delta sorgusunun **filigran** olmadan kullanılması yanlış başvuru veri kümesine neden olabilir.  
+   Bu sorgu, başlangıç saati, ** \@ deltastarttime**ve bitiş zamanı ** \@ deltabitişsaati**içinde eklenen veya silinen SQL veritabanındaki tüm satırları alır. Delta sorgusunun anlık görüntü sorgusuyla aynı sütunları ve sütun **_işlemini_** döndürmesi gerekir. Bu sütun, ** \@ deltastarttime** ve ** \@ deltabitişsaati**arasında satırın eklendiğini veya silinip silinmediğini tanımlar. Kayıtlar eklenmişse, sonuç satırları **1** olarak işaretlenir veya silinirse **2** ' dir. Ayrıca, Delta dönemindeki tüm güncelleştirmelerin uygun şekilde yakalandığından emin olmak için sorgunun SQL Server kenarından **filigran** eklemesi gerekir. Delta sorgusunun **filigran** olmadan kullanılması yanlış başvuru veri kümesine neden olabilir.  
 
    Güncelleştirilmiş kayıtlar için, isteğe bağlı tablo, ekleme ve silme işlemini yakalayıp barındırmaz. Stream Analytics çalışma zamanı, başvuru verilerini güncel tutmak için Delta sorgusunun sonuçlarını önceki anlık görüntüye uygular. Delta sorgusuna örnek aşağıda gösterilmektedir:
 
@@ -183,12 +183,12 @@ Stream Analytics işinde [akış birimi başına ek ücret](https://azure.micros
 
 **Nasıl yaparım?, başvuru verileri anlık görüntüsünün SQL DB 'den sorgulanmakta olduğunu ve Azure Stream Analytics işinde kullanıldığını öğrensin mi?**
 
-SQL veritabanı başvuru verileri girişinin sistem durumunu izlemek için kullanabileceğiniz mantıksal ada (ölçüm Azure portalında) göre filtrelenen iki ölçüm vardır.
+SQL veritabanı başvuru verileri girişinin sistem durumunu izlemek için kullanabileceğiniz, mantıksal ada (ölçümler Azure portal) göre filtrelenen iki ölçüm vardır.
 
    * Inputevents: Bu ölçüm, SQL veritabanı başvuru verileri kümesinden yüklenen kayıt sayısını ölçer.
    * Inputeventbytes: Bu ölçüm, Stream Analytics işinin belleğine yüklenen başvuru verileri anlık görüntüsünün boyutunu ölçer. 
 
-Bu ölçümlerin her ikisinin birleşimi, işin SQL veritabanını başvuru veri kümesini getirmek ve belleğe yüklemek üzere sorguladığını anlamak için kullanılabilir.
+Bu ölçümlerin her ikisinin birleşimi, işin SQL veritabanını başvuru verileri kümesini getirmek ve belleğe yüklemek üzere sorguladığını anlamak için kullanılabilir.
 
 **Özel bir Azure SQL veritabanı türü isteyecek mıyım?**
 
