@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861770"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037316"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights önizlemesi Gezgini
 
@@ -75,11 +74,11 @@ Azure Time Series Insights önizlemesi, zaman serisi modelinizdeki tam oluşturm
 * **Zaman serisi model hiyerarşisi**: hiyerarşiler verilerinizin sistematik kuruluşlardır. Hiyerarşiler Time Series Insights verilerinizde farklı varlıklar arasındaki ilişkileri düzenler.
 * **Zaman serisi model örneği**: örnekler zaman serisidir. Çoğu durumda, bu, ortamdaki varlığın benzersiz tanımlayıcısı olan **DeviceID** veya **AssetID**.
 
-Zaman serisi modeli hakkında daha fazla bilgi edinmek için okuma [zamanları dizi modelleri](./time-series-insights-update-tsm.md).
+Zaman serisi modeli hakkında daha fazla bilgi edinmek için okuma [zamanları dizi modelleri](./concepts-model-overview.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiyerarşi ağacı ve arama paneli
 
-Hiyerarşi ağacı ve arama paneli, grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için [zaman serisi modeli](./time-series-insights-update-tsm.md) hiyerarşinizde kolayca arama yapmanıza ve gezinmenize izin verir. Örneklerinizi seçtiğinizde, bunlar yalnızca geçerli grafiğe eklenmez, ancak veri kutusuna da eklenir. 
+Hiyerarşi ağacı ve arama paneli, grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için [zaman serisi modeli](./concepts-model-overview.md) hiyerarşinizde kolayca arama yapmanıza ve gezinmenize izin verir. Örneklerinizi seçtiğinizde, bunlar yalnızca geçerli grafiğe eklenmez, ancak veri kutusuna da eklenir. 
 
 [![Hiyerarşi ağacı ve arama paneli](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -171,7 +170,7 @@ Time Series Insights önizlemesi gezinti paneli Time Series Insights uygulamanı
 
 ### <a name="current-session-share-link-control"></a>Geçerli oturum paylaşma bağlantı denetimi
 
-  [![Paylaşma simgesi](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
+  [![Paylaş simgesi](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Ekibinizle bir URL bağlantısı paylaşmak için yeni **paylaşma** simgesini seçin.
 
@@ -215,7 +214,7 @@ Time Series Insights önizleme Koşulları Düzenleyicisi paneli aşağıdaki pa
 
 **Burada**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için WHERE yan tümcesini kullanın. Bir işlenen seçerek bir arama yaparsanız, bu arama temelinde koşul otomatik olarak güncelleştirilir. Desteklenen işlenen türleri şunları içerir:
 
-| İşlem | Desteklenen türler   | Notlar |
+| Çalışma | Desteklenen türler   | Notlar |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, TimeSpan | |
 | `=`, `!=`, `<>` | Dize, bool, Double, DateTime, TimeSpan, NULL |
@@ -240,8 +239,10 @@ Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek graf
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Time Series Insights önizlemede [depolama ve](./time-series-insights-update-storage-ingress.md) giriş hakkında bilgi edinin.
+- [Verileri](./concepts-ingestion-overview.md) ortamınıza alma hakkında bilgi edinin.
 
-- [Veri modellemesi](./time-series-insights-update-tsm.md)Time Series Insights önizleme belgesini okuyun.
+- [Depolama](concepts-storage.md) hakkındaki makaleye göz atın
+
+- [Veri modellemesi](./concepts-model-overview.md)Time Series Insights önizleme belgesini okuyun.
 
 - Time Series Insights örneğinizi [tanılamayı ve sorun gidermeyi](./time-series-insights-update-how-to-troubleshoot.md) öğrenin.

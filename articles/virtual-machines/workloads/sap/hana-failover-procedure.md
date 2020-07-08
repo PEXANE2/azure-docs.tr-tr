@@ -14,10 +14,9 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83660570"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Olağanüstü durum kurtarma yük devretme yordamı
@@ -56,7 +55,7 @@ Sınanacak birden çok SAP HANA örneğine sahip olmak istiyorsanız, betiği bi
 
       Çıktı, bir durdurulmuş durumda **hdbdaemon** işlemini ve çalışan ya da başlatılmış bir durumda başka bir hana işlemini göstermemelidir.
 1. Olağanüstü durum kurtarma sitesinin geri yüklenmesini istediğiniz anlık görüntü adını veya SAP HANA yedekleme KIMLIĞINI belirleme. Gerçek olağanüstü durum kurtarma durumlarında, bu anlık görüntü genellikle en son anlık görüntüdür. Kayıp verileri kurtarmanız gerekiyorsa, önceki bir anlık görüntü seçin.
-1. Yüksek öncelikli destek isteğiyle Azure desteğine başvurun. Anlık görüntünün adını ve tarihini veya DR sitesindeki HANA yedekleme KIMLIĞINI kullanarak bu anlık görüntünün geri yüklenmesini isteyin. Varsayılan olarak, işlem tarafı yalnızca/Hana/Data birimini geri yükler. /Hana/logbackups birimlerine da sahip olmak istiyorsanız, özel olarak bu durumu belirlemeniz gerekir. */Hana/Shared birimini geri yüklemeyin.* Bunun yerine, PRD için/Hana/Shared birimini kaldırdıktan sonra **. Snapshot** dizininden ve alt dizinlerinde Global. ini gibi belirli dosyaları seçin. 
+1. Yüksek öncelikli destek isteğiyle Azure desteğine başvurun. Anlık görüntünün adını ve tarihini veya DR sitesindeki HANA yedekleme KIMLIĞINI kullanarak bu anlık görüntünün geri yüklenmesini isteyin. Varsayılan olarak, işlem tarafı yalnızca/Hana/Data birimini geri yükler. /Hana/logbackups birimlerine da sahip olmak istiyorsanız, özel olarak bu durumu belirlemeniz gerekir. */Hana/Shared birimini geri yüklemeyin.* Bunun yerine, PRD için/Hana/Shared birimini kaldırdıktan sonra **. Snapshot** dizininden ve alt dizinlerinde global.ini gibi belirli dosyaları seçin. 
 
    İşlemler tarafında aşağıdaki adımlar oluşur:
 
@@ -88,7 +87,7 @@ Aşağıdaki adımlarda, geri yüklenen depolama anlık görüntüsüne ve kulla
 
    ![Başlatma günlüğü alanını ayarla](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. **Son**' u seçin.
+1. **Son**'u seçin.
 
    ![DR geri yüklemeyi tamamlama](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 

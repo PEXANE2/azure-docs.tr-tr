@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759584"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -33,10 +32,10 @@ Tanılama günlükleri ' nde, **401003 Iothubyetkilendirilmemiş**, sonrasında 
 IoT Hub istekleri aşağıdaki hata iletilerinden biriyle başarısız olur:
 
 * Yetkilendirme üstbilgisi eksik
-* Iothub '\*' belirtilen '\*' cihazını içermiyor
-* '\*' Yetkilendirme kuralı '\*' için erişime izin vermiyor
+* Iothub ' \* ' belirtilen ' ' cihazını içermiyor \*
+* ' ' Yetkilendirme kuralı \* ' ' için erişime izin vermiyor \*
 * Bu cihaz için kimlik doğrulaması başarısız oldu, belirteci veya sertifikayı yenileyip yeniden bağlayın
-* Parmak izi yapılandırma ile eşleşmiyor: Parmak Izi: SHA1Hash\*=, SHA2Hash\*=; Yapılandırma: Primaryparmak Izi\*=, secondaryparmak izi =\*
+* Parmak izi yapılandırma ile eşleşmiyor: Parmak Izi: SHA1Hash = \* , SHA2Hash = \* ; Yapılandırma: Primaryparmak Izi = \* , secondaryparmak izi =\*
 
 ## <a name="cause"></a>Nedeni
 

@@ -4,10 +4,9 @@ description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bi
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331415"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
@@ -66,8 +65,8 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [Coalesce](template-functions-comparison.md#coalesce)
-* [equals](template-functions-comparison.md#equals)
-* [daha az](template-functions-comparison.md#less)
+* [eşittir](template-functions-comparison.md#equals)
+* [büyüktür](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [büyüktür](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
@@ -104,7 +103,7 @@ Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevl
 
 * [ve](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [if](template-functions-logical.md#if)
+* [kullandıysanız](template-functions-logical.md#if)
 * [başlatılmadı](template-functions-logical.md#not)
 * [veya](template-functions-logical.md#or)
 

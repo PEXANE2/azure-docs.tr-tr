@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b57a7c04db0e601b90bc19059df70e63795784bf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189258"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036959"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
@@ -41,7 +40,7 @@ Azure Time Series Insights Kullandıkça Öde iş modelini kullanır. Ücretler 
 Time Series Insights bir önizleme ortamı sağladığınızda iki Azure kaynağı oluşturursunuz:
 
 * Azure Time Series Insights önizleme ortamı
-* Azure depolama genel amaçlı v1 hesabı
+* Bir Azure depolama hesabı
 
 Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek isteyip istemediğinizi belirlersiniz. Sıcak mağaza size katmanlı bir sorgu deneyimi sağlar. Etkinleştirildiğinde, 7 ila 30 gün arasında bir saklama süresi belirtmeniz gerekir. Sıcak mağaza Bekletme dönemi içinde yürütülen sorgular genellikle daha hızlı yanıt süreleri sağlar. Bir sorgu, yarı zamanlı saklama süresi üzerinden yayıldığında, bu, soğuk depodan sunulur.
 
@@ -52,7 +51,7 @@ Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular ma
 
 Başlamak için üç ek öğe gereklidir:
 
-* [Zaman serisi modeli](./time-series-insights-update-tsm.md)
+* [Zaman serisi modeli](./concepts-model-overview.md)
 * [Time Series Insights bağlı bir olay kaynağı](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * Hem modele eşlenmiş hem de geçerli JSON biçiminde olan [olay kaynağına akan olaylar](./time-series-insights-send-events.md)
 
@@ -67,7 +66,7 @@ Yeni bir Time Series Insights ortamı oluşturmak için bir zaman serisi KIMLIĞ
 > [!IMPORTANT]
 > Zaman serisi kimlikleri *daha sonra değiştirilemez*. Son seçim ve ilk kullanmadan önce her birini doğrulayın.
 
-Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, zaman serisi KIMLIĞI ve [depolama ve](./time-series-insights-update-storage-ingress.md)giriş [seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md) okuyun.
+Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, [zaman SERISI kimliği ve alım kuralları seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md) okuyun. [Ingestion rules](concepts-json-flattening-escaping-rules.md)
 
 **Timestamp** özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
 
@@ -78,7 +77,7 @@ Boş bırakıldığında, olay zaman damgası olarak bir olay kaynağının olay
 
 ## <a name="understand-the-time-series-model"></a>Zaman serisi modelini anlama
 
-Artık Time Series Insights ortamınızın zaman serisi modelini yapılandırabilirsiniz. Yeni model IoT verilerini bulmayı ve çözümlemeyi kolaylaştırır. Zaman serisi verilerinin listesini alma, bakım ve zenginleştirmeye olanak sağlar ve tüketiciye yönelik veri kümelerini hazırlamaya yardımcı olur. Model, benzersiz kaynağı türler ve hiyerarşiler olarak bilinen değişkenlerle ilişkilendiren bir örnekle eşlenen zaman serisi kimliklerini kullanır. Yeni [zaman serisi modeli](./time-series-insights-update-tsm.md)hakkında bilgi edinin.
+Artık Time Series Insights ortamınızın zaman serisi modelini yapılandırabilirsiniz. Yeni model IoT verilerini bulmayı ve çözümlemeyi kolaylaştırır. Zaman serisi verilerinin listesini alma, bakım ve zenginleştirmeye olanak sağlar ve tüketiciye yönelik veri kümelerini hazırlamaya yardımcı olur. Model, benzersiz kaynağı türler ve hiyerarşiler olarak bilinen değişkenlerle ilişkilendiren bir örnekle eşlenen zaman serisi kimliklerini kullanır. Yeni [zaman serisi modeli](./concepts-model-overview.md)hakkında bilgi edinin.
 
 Model dinamiktir, bu nedenle herhangi bir zamanda derlenebilir. Hızlı bir başlangıç yapmak için, Time Series Insights verileri dağıtmadan önce derleyin ve karşıya yükleyin. Modelinizi derlemek için [zaman serisi modelini kullanın](./time-series-insights-update-how-to-tsm.md)' ı okuyun.
 
@@ -100,5 +99,6 @@ Daha fazla bilgi için [Şekil olaylarını](./time-series-insights-send-events.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Advisor](../advisor/advisor-overview.md) 'ı inceleyerek iş kurtarma yapılandırması seçeneklerinizi planlayın.
-- Time Series Insights önizlemede [depolama ve](./time-series-insights-update-storage-ingress.md) giriş hakkında daha fazla bilgi edinin.
-- Time Series Insights önizlemede [veri modelleme](./time-series-insights-update-tsm.md) hakkında bilgi edinin.
+- [Veri](./concepts-ingestion-overview.md)alımı hakkında daha fazla bilgi edinin.
+- [Veri depolama](./concepts-storage.md) hakkındaki makaleyi gözden geçirin
+- Time Series Insights önizlemede [veri modelleme](./concepts-model-overview.md) hakkında bilgi edinin.

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921591"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -97,11 +96,13 @@ CSR yalnızca bir metin dosyasıdır. Sertifikanın son olarak kullanılacağı 
 
 Yönetim sertifikalarınızı yenilemek için aşağıdaki PowerShell komutlarını kullanabilirsiniz:
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-**Get-azuikinci dosya SettingsFile** , Azure Portal **abonelik** > **Yönetim sertifikalarında** yeni bir yönetim sertifikası oluşturacaktır. Yeni sertifikanın adı "YourSubscriptionNam]-[CurrentDate]-Credentials" şeklinde görünür.
+**Get-azuikinci dosya SettingsFile** , Azure Portal **abonelik**  >  **Yönetim sertifikalarında** yeni bir yönetim sertifikası oluşturacaktır. Yeni sertifikanın adı "YourSubscriptionNam]-[CurrentDate]-Credentials" şeklinde görünür.
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Ana TLS/SSL sertifikası (. pfx) ve ara sertifika (. p7b) yüklemesini otomatikleştirme
 
@@ -111,7 +112,7 @@ Bu görevi, bir başlangıç betiği (Batch/cmd/PowerShell) kullanarak otomatikl
 
 Bu sertifika, Azure Web rolleri üzerinde makine anahtarlarını şifrelemek için kullanılır. Daha fazla bilgi edinmek için [Bu danışma belgesine](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)göz atın.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Ortak bulut hizmeti başlangıç görevleri](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -137,7 +138,7 @@ Günlük dizinine yazmak için yerel depolama kotasını tüketmiş olursunuz.Bu
 * Yerel kaynaklar için kota sınırını artırın.
 
 Daha fazla bilgi için, aşağıdaki belgelere bakın:
-* [Azure depolama 'da tanılama verilerini depolama ve görüntüleme](/azure/storage/common/storage-introduction)
+* [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](/azure/storage/common/storage-introduction)
 * [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Nasıl yaparım? Cloud Services için WAD günlüğü etkinleştirilsin mi?
@@ -189,7 +190,7 @@ Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları s�
 
 Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 desteğiyle birlikte gelir. İstemciniz (tarayıcı), TLS uzantıları aracılığıyla HTTP/2 ' yi görüşür ve TLS üzerinden IIS sunucusuna bağlanıyorsa, sunucu tarafında herhangi bir değişiklik yapmanız gerekmez. Bunun nedeni, TLS üzerinden HTTP/2 kullanımını belirten H2-14 üst bilgisi varsayılan olarak gönderilir. Diğer taraftan, istemciniz HTTP/2 ' ye yükseltmek için bir yükseltme üst bilgisi gönderiyorsa, yükseltmenin çalıştığından ve bir HTTP/2 bağlantısı ile sonlandırtığınızdan emin olmak için sunucu tarafında aşağıdaki değişikliği yapmanız gerekir. 
 
-1. Regedit. exe ' yi çalıştırın.
+1. regedit.exe çalıştırın.
 2. Kayıt defteri anahtarına göz atın: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. **Duoenabled**adlı yenı bir DWORD değeri oluşturun.
 4. Değerini 1 olarak ayarlayın.
@@ -253,7 +254,7 @@ Cloud Services için Azure Tanılama günlüğe kaydetmenin nasıl etkinleştiri
 ## <a name="generic"></a>Genel
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>"Noalgılamasına f" i web siteme Nasıl yaparım? eklensin mi?
-İstemcilerin MIME türlerini algılaması için, *Web. config* dosyanıza bir ayar ekleyin.
+İstemcilerin MIME türlerini algılaması için *web.config* dosyanıza bir ayar ekleyin.
 
 ```xml
 <configuration>
@@ -282,7 +283,7 @@ Bkz. [hizmete özgü sınırlar](../azure-resource-manager/management/azure-subs
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Bulut hizmeti sanal makinemdeki sürücü neden çok az boş disk alanı gösteriyor?
 Bu beklenen davranıştır ve uygulamanızda herhangi bir soruna neden olmaz. Azure PaaS VM 'lerinde% AppRoot% sürücüsü için günlük kaydı etkinleştirilir ve bu, temelde dosyaların normalde kapladığı alan miktarını iki katına tüketir. Bununla birlikte, dikkat etmeniz gereken birkaç nokta vardır.
 
-% AppRoot% sürücü boyutu,. cspkg + Max günlük boyutu + boş alan boşluğu> veya 1,5 GB, hangisi daha büyükse hesaplanır \<. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
+% AppRoot% sürücü boyutu, \<size of .cspkg + max journal size + a margin of free space> hangisi daha büyükse, 1,5 GB olarak hesaplanır. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
 
 % AppRoot% sürücüsüne yazmak desteklenmez. Azure VM 'ye yazıyorsanız, bunu geçici bir LocalStorage kaynağında (veya blob depolama, Azure dosyaları vb. gibi diğer bir seçeneğe) yapmanız gerekir. Bu nedenle% AppRoot% klasöründeki boş alan miktarı anlamlı değildir. Uygulamanızın% AppRoot% sürücüsüne yazıyor olduğundan emin değilseniz, hizmetinizin birkaç gün boyunca her zaman çalışmasına izin verebilir ve "önce" ve "sonra" boyutlarını karşılaştırabilirsiniz. 
 
@@ -306,9 +307,11 @@ Aşağıdaki yöntemlerden birini kullanarak Cloud Services SNı 'yi etkinleşti
 **Yöntem 1: PowerShell kullanma**
 
 SNı bağlama, aşağıdaki gibi bir bulut hizmeti rolü örneği için başlangıç görevinde **New-Webbinding** PowerShell cmdlet 'i kullanılarak yapılandırılabilir:
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 [Burada](https://technet.microsoft.com/library/ee790567.aspx)açıklandığı gibi, $sslFlags aşağıdaki gibi değerlerden biri olabilir:
 
 |Değer|Anlamı|
@@ -322,14 +325,15 @@ SNı bağlama, aşağıdaki gibi bir bulut hizmeti rolü örneği için başlang
 
 SNı bağlama, bu [blog gönderisine](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)göre rol başlangıcında kod aracılığıyla da yapılandırılabilir:
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 Yukarıdaki yaklaşımlardan herhangi birini kullanarak, belirli ana bilgisayar adları için ilgili sertifikaların (*. pfx) ilk olarak bir başlangıç görevi kullanılarak veya SNı bağlamasının etkili olabilmesi için kod aracılığıyla rol örneklerine yüklenmesi gerekir.
 
@@ -341,7 +345,9 @@ Bulut hizmeti, klasik bir kaynaktır. Yalnızca Azure Resource Manager tarafınd
 
 Bu özelliği Azure portal duruma getirmek için çalışıyoruz. Bu arada, SDK sürümünü almak için aşağıdaki PowerShell komutlarını kullanabilirsiniz:
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Bulut hizmetini birkaç ay boyunca kapatmak istiyorum. Bulut hizmetinin fatura maliyeti, IP adresini kaybetmeksizin nasıl azaltılıyor?
 

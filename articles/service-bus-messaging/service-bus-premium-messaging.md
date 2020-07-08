@@ -4,10 +4,9 @@ description: Bu makalede, Azure Service Bus standart ve Premium katmanları aç�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337408"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
@@ -23,7 +22,7 @@ Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 | Yüksek verimlilik |Değişken işleme |
 | Tahmin edilebilir performans |Değişken gecikme süresi |
 | Sabit fiyatlandırma |Kullandıkça Öde değişken fiyatlandırması |
-| İş yükünün ölçeğini artırma veya azaltma |Yok |
+| İş yükünün ölçeğini artırma veya azaltma |YOK |
 | İleti boyutu 1 MB’a kadar |İleti boyutu 256 KB’a kadar |
 
 **Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.

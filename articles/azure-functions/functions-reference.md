@@ -4,12 +4,11 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921740"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure İşlevleri geliştirici kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -17,9 +16,9 @@ Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne ol
 Bu makalede, [Azure işlevlerine genel bakış ' ı](functions-overview.md)okuduğunuzu varsaymış olursunuz.
 
 ## <a name="function-code"></a>İşlev kodu
-Bir *işlev* , Azure işlevlerinde birincil kavramdır. Bir işlev, çeşitli dillerde yazılmış ve bazı config, function. JSON dosyası olmak üzere iki önemli parça içerir. Derlenen diller için, bu yapılandırma dosyası kodunuzdaki ek açıklamalardan otomatik olarak oluşturulur. Komut dosyası dilleri için yapılandırma dosyasını kendiniz sağlamanız gerekir.
+Bir *işlev* , Azure işlevlerinde birincil kavramdır. Bir işlev iki önemli parça içerir. Bu kod, çeşitli dillerde yazılmış ve bazı config, dosyadaki function.js. Derlenen diller için, bu yapılandırma dosyası kodunuzdaki ek açıklamalardan otomatik olarak oluşturulur. Komut dosyası dilleri için yapılandırma dosyasını kendiniz sağlamanız gerekir.
 
-Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Her işlevde tek bir tane tetikleyici olması gerekir. Çalışma zamanı, izlenecek olayları ve bir işlev yürütmesindeki verilerin içine nasıl geçirileceğini ve geri döneceğini öğrenmek için bu yapılandırma dosyasını kullanır. Aşağıda örnek bir Function. JSON dosyası verilmiştir.
+Dosyadaki function.js, işlevin tetikleyicisi, bağlamaları ve diğer yapılandırma ayarlarını tanımlar. Her işlevde tek bir tane tetikleyici olması gerekir. Çalışma zamanı, izlenecek olayları ve bir işlev yürütmesindeki verilerin içine nasıl geçirileceğini ve geri döneceğini öğrenmek için bu yapılandırma dosyasını kullanır. Aşağıda, dosyasında function.jsbir örnek verilmiştir.
 
 ```json
 {
@@ -38,9 +37,9 @@ Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yap
 
 Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
-`bindings` Özelliği, hem Tetikleyicileri hem de bağlamaları yapılandırdığınız yerdir. Her bağlama birkaç ortak ayarı ve belirli bir bağlama türüne özgü bazı ayarları paylaşır. Her bağlama için aşağıdaki ayarlar gereklidir:
+`bindings`Özelliği, hem Tetikleyicileri hem de bağlamaları yapılandırdığınız yerdir. Her bağlama birkaç ortak ayarı ve belirli bir bağlama türüne özgü bazı ayarları paylaşır. Her bağlama için aşağıdaki ayarlar gereklidir:
 
-| Özellik | Değerler/türler | Açıklamalar |
+| Özellik | Değerler/türler | Yorumlar |
 | --- | --- | --- |
 | `type` |string |Bağlama türü. Örneğin, `queueTrigger`. |
 | `direction` |' ın ', ' Out ' |Bağlamanın işleve veri almak veya işlevden veri göndermek için olup olmadığını gösterir. |
@@ -55,10 +54,10 @@ Bir işlev uygulaması, Azure 'da işlevlerinizin çalıştırıldığı bir yü
 ## <a name="folder-structure"></a>Klasör yapısı
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yapısıdır. Bir işlevin kodunun dosya konumunu değiştirmek istiyorsanız, `scriptFile` _function. JSON_ dosyasının bölümünü değiştirin. Ayrıca, Azure 'daki işlev uygulamanıza projenizi dağıtmak için [paket dağıtımı](deployment-zip-push.md) kullanmanızı öneririz. Ayrıca, [sürekli tümleştirme ve dağıtım](functions-continuous-deployment.md) ve Azure DevOps gibi mevcut araçları da kullanabilirsiniz.
+Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yapısıdır. Bir işlevin kodunun dosya konumunu değiştirmek istiyorsanız, `scriptFile` dosyadaki _function.js_ bölümünü değiştirin. Ayrıca, Azure 'daki işlev uygulamanıza projenizi dağıtmak için [paket dağıtımı](deployment-zip-push.md) kullanmanızı öneririz. Ayrıca, [sürekli tümleştirme ve dağıtım](functions-continuous-deployment.md) ve Azure DevOps gibi mevcut araçları da kullanabilirsiniz.
 
 > [!NOTE]
-> Bir paketi el ile dağıtıyorsanız, _Host. JSON_ dosyanızı ve işlev klasörlerinizi doğrudan `wwwroot` klasörüne dağıttığınızdan emin olun. Dağıtımlarınıza `wwwroot` klasörü eklemeyin. Aksi takdirde, klasörler ile `wwwroot\wwwroot` biter.
+> Bir paketi el ile dağıtıyorsanız, _host.js_ dosya ve işlev klasörlerinde doğrudan klasöre dağıttığınızdan emin olun `wwwroot` . `wwwroot`Dağıtımlarınıza klasörü eklemeyin. Aksi takdirde, klasörler ile biter `wwwroot\wwwroot` .
 
 #### <a name="use-local-tools-and-publishing"></a>Yerel araçları ve yayımlamayı kullanma
 İşlev uygulamaları [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [ıntellij](./functions-create-maven-intellij.md), [tutulma](./functions-create-maven-eclipse.md)ve [Azure Functions Core Tools](./functions-develop-local.md)gibi çeşitli araçlar kullanılarak yazılabilir ve yayımlanabilir. Daha fazla bilgi için bkz. [Azure işlevlerini yerel olarak kod ve test](./functions-develop-local.md)etme.
@@ -66,14 +65,14 @@ Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yap
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
 ## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Azure portal işlevleri düzenleme
-Azure portal yerleşik Işlevler Düzenleyicisi kodunuzu ve *function. JSON* dosyanızı doğrudan satır içinde güncelleştirmenize olanak tanır. Bu yalnızca küçük değişiklikler veya kavram provaları için önerilir-en iyi yöntem, VS Code gibi bir yerel geliştirme aracı kullanmaktır.
+Azure portal yerleşik Işlevler Düzenleyicisi kodunuzu ve *function.jsdosya üzerinde* doğrudan satır içi olarak güncelleştirmenizi sağlar. Bu yalnızca küçük değişiklikler veya kavram provaları için önerilir-en iyi yöntem, VS Code gibi bir yerel geliştirme aracı kullanmaktır.
 
 ## <a name="parallel-execution"></a>Paralel yürütme
 Çoklu iş parçacıklı bir işlev çalışma zamanının daha hızlı bir şekilde tetiklenmesi durumunda, çalışma zamanı işlevi paralel olarak birden çok kez çağırabilir.  Bir işlev uygulaması [Tüketim barındırma planını](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanıyorsa, işlev uygulaması otomatik olarak ölçeklendirebilir.  İşlev uygulamasının her örneği, uygulamanın tüketim barındırma planı üzerinde mi yoksa düzenli bir [App Service barındırma planı](../app-service/overview-hosting-plans.md)üzerinde mi çalıştığı, birden çok iş parçacığı kullanarak eşzamanlı işlev çağrılarını paralel olarak işleyebilir.  Her işlev uygulama örneğindeki maksimum eşzamanlı işlev çağırma sayısı, kullanılan tetikleyici türüne ve işlev uygulamasındaki diğer işlevler tarafından kullanılan kaynaklara göre değişir.
 
 ## <a name="functions-runtime-versioning"></a>İşlevler çalışma zamanı sürümü oluşturma
 
-`FUNCTIONS_EXTENSION_VERSION` Uygulama ayarını kullanarak işlevler çalışma zamanının sürümünü yapılandırabilirsiniz. Örneğin, "~ 3" değeri, İşlev Uygulaması ana sürümü olarak 3. x kullanacağını gösterir. İşlev uygulamaları, yayımlandıklarında her yeni küçük sürüme yükseltilir. İşlev uygulamanızın tam sürümünün nasıl görüntüleneceği dahil olmak üzere daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
+Uygulama ayarını kullanarak Işlevler çalışma zamanının sürümünü yapılandırabilirsiniz `FUNCTIONS_EXTENSION_VERSION` . Örneğin, "~ 3" değeri, işlev uygulamanızın ana sürümü olarak 3. x kullanacağını gösterir. İşlev uygulamaları, yayımlandıklarında her yeni küçük sürüme yükseltilir. İşlev uygulamanızın tam sürümünün nasıl görüntüleneceği dahil olmak üzere daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
 
 ## <a name="repositories"></a>Depolar
 Azure Işlevleri için kod açık kaynaktır ve GitHub depolarında depolanır:
@@ -102,4 +101,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Azure İşlevleri’ni yerel olarak kodlama ve test etme](./functions-develop-local.md)
 * [Azure Işlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure Işlevleri C# Geliştirici Başvurusu](functions-dotnet-class-library.md)
-* [Azure Işlevleri Node. js Geliştirici Başvurusu](functions-reference-node.md)
+* [Azure Işlevleri Node.js geliştirici başvurusu](functions-reference-node.md)

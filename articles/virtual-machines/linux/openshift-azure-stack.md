@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758224"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack 'de OpenShift kapsayıcı platformunu veya OKD 'yi dağıtma
@@ -28,7 +27,7 @@ Azure Stack, OpenShift kapsayıcı platformunu veya OKD 'yi dağıtmak için bir
 - OpenShift kapsayıcı platformu kümesinin dağıtımını kolaylaştıran mevcut bir [Kaynak Yöneticisi şablonunu](https://github.com/Microsoft/openshift-container-platform/) da kullanabilirsiniz.
 - Ayrıca, OKD kümesinin dağıtımını kolaylaştıran mevcut bir [Kaynak Yöneticisi şablonunu](https://github.com/Microsoft/openshift-origin) da kullanabilirsiniz.
 
-Kaynak Yöneticisi şablonu kullanılıyorsa doğru dalı seçin (azurestack-Release-3. x). API sürümleri Azure ile Azure Stack arasında farklı olduğu için Azure şablonları çalışmaz. RHEL görüntü başvurusu Şu anda azuredeploy. json dosyasında bir değişken olarak sabit kodlanmış ve görüntlekiniz eşleşecek şekilde değiştirilmelidir.
+Kaynak Yöneticisi şablonu kullanılıyorsa doğru dalı seçin (azurestack-Release-3. x). API sürümleri Azure ile Azure Stack arasında farklı olduğu için Azure şablonları çalışmaz. RHEL görüntü başvurusu Şu anda dosyada azuredeploy.jsbir değişken olarak sabit kodludur ve görüntkodda eşleşecek şekilde değiştirilmelidir.
 
 ```json
 "imageReference": {
@@ -40,7 +39,7 @@ Kaynak Yöneticisi şablonu kullanılıyorsa doğru dalı seçin (azurestack-Rel
 ```
 
 Tüm seçenekler için, Red Hat aboneliği gerekir. Dağıtım sırasında Red Hat Enterprise Linux örneği Red Hat aboneliğine kaydedilir ve OpenShift kapsayıcı platformu için yetkilendirmeleri içeren havuz KIMLIĞINE eklenir.
-Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  Bu bilgileri, ' de oturum açarak doğrulayabilirsiniz https://access.redhat.com.
+Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  Bu bilgileri, ' de oturum açarak doğrulayabilirsiniz https://access.redhat.com .
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack önkoşulları
 
@@ -56,10 +55,10 @@ Kaynak Yöneticisi şablonunu kullanarak dağıtmak için, giriş parametrelerin
 
 Bazı yaygın özelleştirme seçenekleri şunlardır, ancak bunlarla sınırlı değildir:
 
-- Savunma VM boyutu (azuredeploy. JSON içinde değişken)
-- Adlandırma kuralları (azuredeploy. JSON içindeki değişkenler)
+- Savunma VM boyutu (azuredeploy.jsdeğişken)
+- Adlandırma kuralları (azuredeploy.jsdeğişkenler)
 - OpenShift küme özellikleri, Hosts dosyası aracılığıyla değiştirildi (deployOpenShift.sh)
-- RHEL görüntü başvurusu (azuredeploy. JSON içinde değişken)
+- RHEL görüntü başvurusu (azuredeploy.jsdeğişken)
 
 Azure CLı kullanarak dağıtma adımları için [OpenShift kapsayıcı platformu](./openshift-container-platform-3x.md) bölümünde veya [OKD](./openshift-okd.md) bölümünde uygun bölümü izleyin.
 

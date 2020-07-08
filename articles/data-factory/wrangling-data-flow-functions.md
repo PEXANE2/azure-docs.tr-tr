@@ -7,18 +7,20 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921543"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Denetimi veri akışındaki dönüştürme işlevleri
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory 'de denetimi veri akışı, bulut ölçeğinde kod ücretsiz çevik veri hazırlama ve denetimi kullanmanıza olanak sağlar. Denetimi veri akışı, [çevrimiçi Power Query](https://docs.microsoft.com/powerquery-m/power-query-m-reference) ile tümleşir ve Spark yürütmesi aracılığıyla veriler için Power Query M işlevlerini kullanılabilir hale getirir. 
+
+> [!NOTE]
+> Wrangling veri akışı şu anda genel önizlemede bir avılamaz
 
 Şu anda tüm Power Query M işlevleri, yazma sırasında kullanılabilir olmasına rağmen veri denetimi için desteklenmez. Denetimi veri akışlarınızı oluştururken, bir işlev desteklenmiyorsa aşağıdaki hata iletisiyle karşılaşırsınız:
 
@@ -39,7 +41,7 @@ Aşağıdaki koşullara göre filtrelemek için, [. SelectRows.](https://docs.mi
 
 * Eşitlik ve eşitsizlik
 * Sayısal, metin ve Tarih karşılaştırmaları (DateTime değil)
-* Sayı gibi sayısal bilgiler [. ıyedi](https://docs.microsoft.com/powerquery-m/number-iseven)/[tek](https://docs.microsoft.com/powerquery-m/number-iseven)
+* Sayı gibi sayısal bilgiler [. ıyedi](https://docs.microsoft.com/powerquery-m/number-iseven) / [tek](https://docs.microsoft.com/powerquery-m/number-iseven)
 * [Metin. Contains](https://docs.microsoft.com/powerquery-m/text-contains), [Text. StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)veya [Text. EndsWith](https://docs.microsoft.com/powerquery-m/text-endswith) kullanılarak metin kapsama
 * Tüm ' ısin' [Tarih işlevlerini](https://docs.microsoft.com/powerquery-m/date-functions)içeren tarih aralıkları) 
 * Bu koşulların ve, veya değil, koşullarını kullanma
@@ -55,7 +57,7 @@ Aşağıdaki koşullara göre filtrelemek için, [. SelectRows.](https://docs.mi
 * En standart, bilimsel ve trigonometrik sayısal işlevler (sayı *hariç* [işlemler](https://docs.microsoft.com/powerquery-m/number-functions#operations), [yuvarlama](https://docs.microsoft.com/powerquery-m/number-functions#rounding)ve [trigonometrik metri](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry) , sayı. çarpınmalar ve sayı. birleşimler)
 * Değiştirme (tekrar[cer. ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext), tekrar [cer. replacevalue](https://docs.microsoft.com/powerquery-m/replacer-replacevalue), [Text. Replace](https://docs.microsoft.com/powerquery-m/text-replace), [Text. Remove](https://docs.microsoft.com/powerquery-m/text-remove))
 * Konumsal metin ayıklama ([Text. PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof), [Text. length](https://docs.microsoft.com/powerquery-m/text-length), [Text. Start](https://docs.microsoft.com/powerquery-m/text-start), [Text. End](https://docs.microsoft.com/powerquery-m/text-end), [Text. ortadaki](https://docs.microsoft.com/powerquery-m/text-middle), [Text. değiştirici serange](https://docs.microsoft.com/powerquery-m/text-replacerange), [Text. RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange))
-* Temel metin biçimlendirme ([Text. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [Text. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [Text. Trim](https://docs.microsoft.com/powerquery-m/text-trim)/[Start](https://docs.microsoft.com/powerquery-m/text-trimstart)/[End](https://docs.microsoft.com/powerquery-m/text-trimend), [Text. asma start](https://docs.microsoft.com/powerquery-m/text-padstart)/[End](https://docs.microsoft.com/powerquery-m/text-padend), [Text. Reverse](https://docs.microsoft.com/powerquery-m/text-reverse))
+* Temel metin biçimlendirme ([Text. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [Text. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [Text. Trim](https://docs.microsoft.com/powerquery-m/text-trim) / [Start](https://docs.microsoft.com/powerquery-m/text-trimstart) / [End](https://docs.microsoft.com/powerquery-m/text-trimend), [Text. asma start](https://docs.microsoft.com/powerquery-m/text-padstart) / [End](https://docs.microsoft.com/powerquery-m/text-padend), [Text. Reverse](https://docs.microsoft.com/powerquery-m/text-reverse))
 * Tarih/saat Işlevleri ([Tarih. gün](https://docs.microsoft.com/powerquery-m/date-day), [Tarih. ay](https://docs.microsoft.com/powerquery-m/date-month), [Tarih. yıl](https://docs.microsoft.com/powerquery-m/date-year) [saat. saat](https://docs.microsoft.com/powerquery-m/time-hour), [saat. dakika](https://docs.microsoft.com/powerquery-m/time-minute), [saat. saniye](https://docs.microsoft.com/powerquery-m/time-second), [Tarih. DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek), [Tarih. DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear), [date. DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
 * If ifadeleri (ancak dallar eşleşen türlere sahip olmalıdır)
 * Mantıksal sütun olarak satır filtreleri

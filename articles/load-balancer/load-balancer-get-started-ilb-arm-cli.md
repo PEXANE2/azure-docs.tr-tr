@@ -1,5 +1,5 @@
 ---
-title: İç temel Load Balancer oluşturma-Azure CLı
+title: Dahili Load Balancer oluşturma-Azure CLı
 titleSuffix: Azure Load Balancer
 description: Bu makalede, Azure CLı kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -11,14 +11,13 @@ ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2018
+ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 9bcd476f0e1418227f6ab290ad84ac9737e52bbd
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
-ms.translationtype: MT
+ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921712"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI kullanarak sanal makinelerin yük dengelemesi için iç yük dengeleyici oluşturma
 
@@ -52,7 +51,7 @@ Aşağıdaki örnek *eastus* konumunda *myResourceGroupILB* adlı bir kaynak gru
     --subnet-name mySubnet
 ```
 
-## <a name="create-basic-load-balancer"></a>Temel Yük Dengeleyici Oluşturma
+## <a name="create-standard-load-balancer"></a>Standart Load Balancer oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
   - Yük dengeleyicideki gelen ağ trafiğini alan bir ön uç IP yapılandırması.
@@ -62,12 +61,15 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
-"* Kısmına 10.0.0.7" özel IP adresi ile ilişkili **Mybackendpool** adlı bir arka uç havuzu olan **myön uç**adlı ön uç IP **yapılandırmasını içeren,** [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı bir iç Load Balancer oluşturun.
+**Kısmına 10.0.0.7**özel IP adresi ile Ilişkili **mybackendpool** adlı bir arka uç havuzu olan **MYÖN uç**adlı ön uç IP **yapılandırmasını içeren,** [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı bir iç Load Balancer oluşturun. 
+
+`--sku basic`Temel bir Load Balancer oluşturmak için kullanın. Microsoft, üretim iş yükleri için standart SKU 'YU önerir.
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupILB \
     --name myLoadBalancer \
+    --sku standard \
     --frontend-ip-name myFrontEnd \
     --private-ip-address 10.0.0.7 \
     --backend-pool-name myBackEndPool \
@@ -85,7 +87,7 @@ Durum araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği al
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
 ### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
@@ -103,6 +105,12 @@ Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yan�
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe  
+```
+
+Ayrıca, Standart Load Balancer ile aşağıdaki yapılandırmayı kullanarak bir [ha bağlantı noktaları](load-balancer-ha-ports-overview.md) yük dengeleyici kuralı oluşturabilirsiniz.
+
+```azurecli-interactive
+az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
 ```
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>Arka uç adres havuzu için sunucular oluşturma

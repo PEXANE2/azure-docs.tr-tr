@@ -14,10 +14,9 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667443"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
@@ -39,7 +38,7 @@ Azure portal SQL Server VM sağlarsanız, **SQL bağlantısı**türünü belirtm
 
 Bağlantı seçenekleriniz şunlardır:
 
-| Seçenek | Description |
+| Seçenek | Açıklama |
 |---|---|
 | **Geneldir** | İnternet üzerinden SQL Server 'e bağlanın. |
 | **Özelleştirme** | Aynı sanal ağda SQL Server bağlanın. |
@@ -135,7 +134,7 @@ Portal otomatik olarak bağlantı yapılandırma seçenekleri sağlasa da, bağl
 
 Aşağıdaki tabloda, Azure VM 'de SQL Server bağlanma gereksinimleri listelenmektedir.
 
-| Gereksinim | Description |
+| Gereksinim | Açıklama |
 |---|---|
 | [SQL Server kimlik doğrulama modunu etkinleştir](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Sanal ağ üzerinde Active Directory yapılandırmadığınız takdirde VM 'ye uzaktan bağlanmak için SQL Server kimlik doğrulaması gerekir. |
 | [SQL oturum açma oluştur](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL kimlik doğrulaması kullanıyorsanız, hedef veritabanınıza yönelik izinlere de sahip olan bir Kullanıcı adı ve parolayla SQL oturum açma gerekir. |

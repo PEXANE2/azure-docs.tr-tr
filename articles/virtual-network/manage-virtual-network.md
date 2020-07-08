@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710040"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
@@ -123,7 +122,7 @@ Adres aralığı eklemek veya kaldırmak için:
 4. Aşağıdaki seçeneklerden birini doldurun:
     - **Adres aralığı Ekle**: yeni adres aralığını girin. Adres aralığı, sanal ağ için tanımlanan mevcut bir adres aralığıyla çakışamaz.
     - **Adres aralığını kaldır**: kaldırmak istediğiniz adres aralığının sağında **.**.. öğesini seçin ve **Kaldır**' ı seçin. Adres aralığında bir alt ağ varsa, adres aralığını kaldıramazsınız. Bir adres aralığını kaldırmak için, önce adres aralığında bulunan tüm alt ağları (ve alt ağlardaki kaynakları) silmeniz gerekir.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 **Komutlar**
 
@@ -144,7 +143,7 @@ Sanal ağa bağlı tüm VM 'Ler, sanal ağ için belirttiğiniz DNS sunucularıy
    - **Adresi Kaldır**: kaldırmak istediğiniz sunucunun yanında **..**. ' ı seçin ve ardından **kaldırın**. Sunucu silindiğinde bu sanal ağ listesinden sunucu kaldırılır. DNS sunucusu, diğer sanal ağlarınızın kullanması için Azure 'da kayıtlı kalır.
    - **DNS sunucusu adreslerini yeniden sırala**: DNS sunucularınızı, ortamınız için doğru sırada listediğinizi doğrulamanız önemlidir. DNS sunucusu listeleri belirtildikleri sırada kullanılır. Hepsini bir kez deneme ayarı olarak çalışmamaları. Listedeki ilk DNS sunucusuna ulaşılırsa istemci, DNS sunucusunun düzgün çalışıp çalışmadığını fark etmeksizin bu DNS sunucusunu kullanır. Listelenen tüm DNS sunucularını kaldırın ve ardından bunları istediğiniz sırayla yeniden ekleyin.
    - **Bir adresi değiştirin**: listedeki DNS sunucusunu vurgulayın ve yeni adresi girin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 6. Sanal ağa bağlı olan VM 'Leri yeniden başlatarak yeni DNS sunucusu ayarları atanır. VM 'Ler yeniden başlatılana kadar geçerli DNS ayarlarını kullanmaya devam eder.
 
 **Komutlar**

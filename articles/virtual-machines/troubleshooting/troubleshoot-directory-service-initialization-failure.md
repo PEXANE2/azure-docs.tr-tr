@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
 ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83665141"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Windows durma hatası – dizin hizmeti başlatma hatası sorunlarını giderme
@@ -35,7 +34,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 Hata kodu **0xC00002E2** **STATUS_DS_INIT_FAILURE**temsil eder ve hata kodu **0xC00002E1** **STATUS_DS_CANT_START**temsil eder. Dizin hizmeti ile ilgili bir sorun olduğunda her iki hata da oluşur.
 
-İşletim sistemi önyüklendiğinde, Kullanıcı oturum açma bilgilerini doğrulayan yerel güvenlik kimlik doğrulama sunucusu (**lsass. exe**) tarafından otomatik olarak yeniden başlatılmaya zorlanır. VM üzerindeki işletim sistemi, yerel Active Directory veritabanına okuma/yazma erişimi olmayan bir etki alanı denetleyicisi olduğunda kimlik doğrulaması gerçekleşmez. **Active Directory (ad)** erişimi olmamasından dolayı, Lsass. exe kimlik doğrulaması yapamaz ve işletim sistemini yeniden başlatmaya zorlanır.
+İşletim sistemi önyüklendiğinde, Kullanıcı oturum açma bilgilerini doğrulayan yerel güvenlik kimlik doğrulama sunucusu (**LSASS.exe**) tarafından otomatik olarak yeniden başlatılmaya zorlanır. VM üzerindeki işletim sistemi, yerel Active Directory veritabanına okuma/yazma erişimi olmayan bir etki alanı denetleyicisi olduğunda kimlik doğrulaması gerçekleşmez. **Active Directory (ad)** erişimi olmamasından dolayı, LSASS.exe kimlik doğrulaması yapamaz ve işletim sistemini yeniden başlatmaya zorlanır.
 
 Bu hataya aşağıdaki koşullardan biri neden olmuş olabilir:
 

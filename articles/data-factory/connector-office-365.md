@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513298"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' deki verileri Azure 'a kopyalama
@@ -64,7 +63,7 @@ ADF, yönetilen bir uygulamanın parçası olarak oluşturulduysa ve yönetim ka
 
 Aşağıdaki araçlardan veya SDK 'Lardan birini kullanarak kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz. Bir kopyalama etkinliği ile işlem hattı oluşturmak için adım adım yönergeler içeren öğreticiye gitmek üzere bir bağlantı seçin. 
 
-- [Azure portal](quickstart-create-data-factory-portal.md)
+- [Azure portalındaki](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK'sı](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
@@ -79,19 +78,19 @@ Aşağıdaki özellikler Office 365 bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Office365** olarak ayarlanmalıdır | Yes |
-| office365TenantId | Office 365 hesabının ait olduğu Azure kiracı KIMLIĞI. | Yes |
-| Serviceprincipaltenantıd | Azure AD Web uygulamanızın bulunduğu kiracı bilgilerini belirtin. | Yes |
-| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak Integration Runtime.  Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No |
+| tür | Type özelliği: **Office365** olarak ayarlanmalıdır | Evet |
+| office365TenantId | Office 365 hesabının ait olduğu Azure kiracı KIMLIĞI. | Evet |
+| Serviceprincipaltenantıd | Azure AD Web uygulamanızın bulunduğu kiracı bilgilerini belirtin. | Evet |
+| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
+| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. | Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak Integration Runtime.  Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır |
 
 >[!NOTE]
 > **Office365TenantId** ve **serviceprincipaltenantıd** ile buna karşılık gelen değer arasındaki fark:
 >- Kendi kuruluşunuzun kullanımı için Office 365 verilerine yönelik bir uygulama geliştiren bir kurumsal geliştiricisiyseniz, kuruluşunuzun AAD kiracı KIMLIĞI olan her iki özellik için de aynı kiracı KIMLIĞINI sağlamanız gerekir.
 >- Müşterileriniz için bir uygulama geliştiren bir ISV geliştiricisiyseniz office365TenantId, müşterinizin (uygulama yükleyicisi) AAD kiracı KIMLIĞI ve Serviceprincipaltenantıd, şirketinizin AAD Kiracı kimliği olacaktır.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -119,8 +118,8 @@ Office 365 ' den veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Office365Table** olarak ayarlanmalıdır | Yes |
-| tableName | Office 365 ' den Ayıklanacak veri kümesinin adı. Ayıklama için kullanılabilen Office 365 veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-datasets#datasets) bakın. | Yes |
+| tür | DataSet 'in Type özelliği: **Office365Table** olarak ayarlanmalıdır | Evet |
+| tableName | Office 365 ' den Ayıklanacak veri kümesinin adı. Ayıklama için kullanılabilen Office 365 veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-datasets#datasets) bakın. | Evet |
 
 ,, Ve ' i ayarlıyorsanız,, ve ' de olduğu `dateFilterColumn` `startTime` gibi, `endTime` `userScopeFilterUri` etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
@@ -153,15 +152,15 @@ Office 365 ' den veri kopyalamak için aşağıdaki özellikler, etkinlik **kayn
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Office365Source** olarak ayarlanmalıdır | Yes |
-| allowedGroups | Grup Seçimi koşulu.  Verilerin alınacağı en fazla 10 kullanıcı grubunu seçmek için bu özelliği kullanın.  Hiçbir grup belirtilmemişse, veriler tüm kuruluş için döndürülür. | No |
-| userScopeFilterUri | `allowedGroups`Özellik belirtilmediğinde, Office 365 ' den Ayıklanacak belirli satırları filtrelemek için kiracının tamamına uygulanan bir koşul ifadesi kullanabilirsiniz. Koşul biçimi Microsoft Graph API 'lerin sorgu biçimiyle eşleşmelidir, örn. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` . | No |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Office365Source** olarak ayarlanmalıdır | Evet |
+| allowedGroups | Grup Seçimi koşulu.  Verilerin alınacağı en fazla 10 kullanıcı grubunu seçmek için bu özelliği kullanın.  Hiçbir grup belirtilmemişse, veriler tüm kuruluş için döndürülür. | Hayır |
+| userScopeFilterUri | `allowedGroups`Özellik belirtilmediğinde, Office 365 ' den Ayıklanacak belirli satırları filtrelemek için kiracının tamamına uygulanan bir koşul ifadesi kullanabilirsiniz. Koşul biçimi Microsoft Graph API 'lerin sorgu biçimiyle eşleşmelidir, örn. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` . | Hayır |
 | Tarih FilterColumn | Tarih saat filtresi sütununun adı. Office 365 verilerinin ayıklandığı zaman aralığını sınırlamak için bu özelliği kullanın. | Veri kümesinde bir veya daha fazla DateTime sütunu varsa evet. Bu tarih saat filtresini gerektiren veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-filtering#filtering) bakın. |
 | startTime | Filtrelemek için tarih saat değerini başlatın. | Belirtilmişse Evet `dateFilterColumn` |
 | endTime | Filtrelemek için tarih saat değeri sonu. | Belirtilmişse Evet `dateFilterColumn` |
-| outputColumns | Havuza kopyalanacak sütunların dizisi. | No |
+| outputColumns | Havuza kopyalanacak sütunların dizisi. | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities": [

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711910"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Şirket içi VMware sanal makinelerinde veya fiziksel sunucularda ikincil siteye olağanüstü durum kurtarmayı ayarlama
@@ -52,7 +51,7 @@ o fiziksel makineler Için bu [öğreticiyi](./physical-azure-disaster-recovery.
 **Yapılandırma ve düzenleme** |Azure portal kurtarma hizmetleri Kasası | VContinuum kullanma 
 **Çoğaltılmış** |Disk (Windows ve Linux) |Birim-Windows<br> Disk-Linux
 **Paylaşılan disk kümesi** |Desteklenmiyor|Destekleniyor
-**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi edinin](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
+**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
 **İzleme** |Azure portal 'den|CX (yapılandırma sunucusu)
 **Destek matrisi** | [Ayrıntılar için buraya tıklayın](./vmware-physical-azure-support-matrix.md)|[ASR Scout uyumlu matrisi indir](https://aka.ms/asr-scout-cm)
 
@@ -135,7 +134,7 @@ Güncelleştirmeleri şu şekilde yükler:
 
    * [Sürüm notları](https://aka.ms/asr-scout-release-notes)
    * [Uyumluluk matrisi](https://aka.ms/asr-scout-cm)
-   * [Kullanıcı Kılavuzu](https://aka.ms/asr-scout-user-guide)
+   * [Kullanıcı kılavuzu](https://aka.ms/asr-scout-user-guide)
    * [RX Kullanıcı Kılavuzu](https://aka.ms/asr-scout-rx-user-guide)
    * [Hızlı Yükleme Kılavuzu](https://aka.ms/asr-scout-quick-install-guide)
    * [MYSQL ve PHP kitaplıklarını yükseltme](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
