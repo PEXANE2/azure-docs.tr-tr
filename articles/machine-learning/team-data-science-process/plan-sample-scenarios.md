@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078791"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning’de gelişmiş analiz senaryoları
 Bu makalede, [ekip veri bilimi işlemi (TDSP)](overview.md)tarafından işlenebilen çeşitli örnek veri kaynakları ve hedef senaryolar özetlenmektedir. TDSP, ekiplerin akıllı uygulamalar oluşturma konusunda işbirliği yapmasına yönelik sistematik bir yaklaşım sağlar. Burada sunulan senaryolar, Azure 'daki veri özelliklerine, kaynak konumlarına ve hedef depolarına bağlı olan veri işleme iş akışında sunulan seçenekleri gösterir.
@@ -193,9 +194,7 @@ SQL Server veritabanının tamamını SQL Server VM çoğaltmak için bir verita
 1. Azure HDInsight Hadoop kümesi oluşturun.
 1. Seçim Ön işleme ve verileri temizleme.
    
-   a.  IPython not defterindeki verileri önceden işleme ve Temizleme, Azure 'daki verilere erişme
-   
-       blobs.
+   a.  IPython not defterindeki verileri Azure Bloblarındaki verilere erişen, ön işleme ve temizleme.
    
    b.  Gerekirse, verileri temizlenmiş tablolu bir forma dönüştürün.
    

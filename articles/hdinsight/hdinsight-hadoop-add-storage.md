@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192493"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080015"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
@@ -22,7 +22,7 @@ HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nas
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, bir kümeye oluşturulduktan sonra ek depolama hesapları ekleme hakkında bilgi içerir. Küme oluşturma sırasında depolama hesapları ekleme hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlası ile kümeleri ayarlama](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Depolama hesabı adı ve anahtarı. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
@@ -133,14 +133,6 @@ Bu sorunu geçici olarak çözmek için:
 
 > [!IMPORTANT]  
 > Bir kümeye bağlı birincil depolama hesabı için depolama anahtarı döndürülmesi desteklenmez.
-
-### <a name="poor-performance"></a>Düşük performans
-
-Depolama hesabı HDInsight kümesinden farklı bir bölgedeyse, düşük performansla karşılaşabilirsiniz. Farklı bir bölgedeki verilere erişim, bölgesel Azure veri merkezi dışında ağ trafiği gönderir. Ve genel İnternet üzerinden gecikme süresi ortaya çıkarabilir.
-
-### <a name="additional-charges"></a>Ek ücretler
-
-Depolama hesabı HDInsight kümesinden farklı bir bölgedeyse Azure faturamda ek çıkış ücretleri görebilirsiniz. Veriler bölgesel bir veri merkezinden ayrıldığında çıkış ücreti uygulanır. Bu ücret, trafik farklı bir bölgedeki başka bir Azure veri merkezine gidiyor olsa bile uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

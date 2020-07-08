@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130638"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078570"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -60,7 +60,7 @@ Danışman, aşağıdaki kaynaklar için son 30 güne ait kullanım düzenlerini
 Danışman, son 30 güne ait Azure Cosmos DB kullanım desenlerinizi analiz eder ve maliyetleri iyileştirmek için ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, saatlik kullanım Azure Cosmos DB ön satın alabilir ve kullandıkça öde maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar ve son 30 gün içinde gözlenen kullanım düzenlerini tahmin eder. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ### <a name="sql-paas-reserved-capacity"></a>SQL PaaS ayrılmış kapasitesi
-Advisor, son 30 gün içinde SQL PaaS elastik veritabanı havuzlarını ve yönetilen örnek kullanım desenlerini analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak SQL VERITABANı saatlik kullanımını ön satın alabilir ve SQL işlem maliyetlerinizi kaydedebilirsiniz. SQL lisansınız ayrı olarak ücretlendirilir ve rezervasyon tarafından indirimli değildir. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar ve son 30 gün içinde gözlenen kullanım düzenlerini tahmin eder. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
+Advisor, son 30 gün içinde SQL PaaS elastik veritabanı havuzlarını ve SQL yönetilen örnek kullanım desenlerini analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak SQL VERITABANı saatlik kullanımını ön satın alabilir ve SQL işlem maliyetlerinizi kaydedebilirsiniz. SQL lisansınız ayrı olarak ücretlendirilir ve rezervasyon tarafından indirimli değildir. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar ve son 30 gün içinde gözlenen kullanım düzenlerini tahmin eder. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service damga ücreti ayrılmış kapasitesi
 Danışman, son 30 gün içinde Azure App Service yalıtılmış ortamınız için damga kullanım modelini analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, yalıtılmış ortam damgası ücreti için saatlik kullanım ön satın alabilir ve kullandıkça öde maliyetlerinizi de kaydedebilirsiniz. Ayrılmış kapasitenin yalnızca damga ücreti için geçerli olduğunu ve App Service örneklere uygulanacağını unutmayın. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, son 30 gün içindeki kullanım desenlerine göre 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tahminleri kaydetmeyi hesaplar.

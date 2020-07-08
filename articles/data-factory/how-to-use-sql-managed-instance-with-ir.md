@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195378"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082293"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
 
@@ -31,7 +32,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL yönetilen örneği üzerinde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
@@ -40,8 +41,8 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
     - Özel uç nokta (tercih edilen)
 
         1. Katılacak Azure-SSIS IR sanal ağını seçin:
-            - Aynı sanal ağın içinde, **farklı bir alt ağla**SQL yönetilen örneği ile.
-            - SQL yönetilen örneğinden farklı bir sanal ağın içinde, sanal ağ eşlemesi (genel VNet eşleme kısıtlamaları nedeniyle aynı bölge ile sınırlıdır) veya sanal ağdan sanal ağa bağlantı aracılığıyla.
+            - **Farklı bir alt ağla**, yönetilen örnekle aynı sanal ağın içinde.
+            - Yönetilen örneğinden farklı bir sanal ağın içinde, sanal ağ eşlemesi (genel VNet eşleme kısıtlamaları nedeniyle aynı bölge ile sınırlıdır) veya sanal ağdan sanal ağa bağlantı aracılığıyla.
 
             SQL yönetilen örnek bağlantısı hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 

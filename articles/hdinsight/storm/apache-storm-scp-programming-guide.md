@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4445bb5c73ca001813d529a3e65d1ea95e084616
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77186871"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082463"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
 
@@ -433,7 +434,7 @@ SCP topolojisi belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak içi
 
 SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
-| Yeni işlev | Parametreler | Açıklama |
+| Yeni işlev | Parametreler | Description |
 | --- | --- | --- |
 | **TX-topolopy** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile bir işlem topolojisini tanımlar. |
 | **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
@@ -445,7 +446,7 @@ SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
 SCP.NET aşağıdaki anahtar sözcükleri tanımlar:
 
-| Sözcükle | Açıklama |
+| Sözcükle | Description |
 | --- | --- |
 | **: ad** |Topoloji adı |
 | **: topoloji** |Önceki tabloda ve yerleşik işlevlerde bulunan işlevleri kullanan topoloji |

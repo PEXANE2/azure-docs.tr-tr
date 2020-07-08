@@ -5,22 +5,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b45af924b75392374265ca41bd4dc1627edd4e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89e3aa1fec2157d77ac5c180bc4dd193f10398cd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078961"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
 
 > [!Note]
 > Gelişmiş performans ve yeni özellikler için [Azure Data Lake Storage 2.](hdinsight-hadoop-use-data-lake-storage-gen2.md) kullanarak yeni HDInsight kümeleri dağıtın.
 
-HDInsight kümesindeki verileri çözümlemek için verileri ' de, [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)' e [`Azure Storage`](../storage/common/storage-introduction.md)veya [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)' de saklayabilirsiniz. Tüm depolama seçenekleri, hesaplama için kullanılan HDInsight kümelerini Kullanıcı verilerini kaybetmeden güvenle silmenizi sağlar.
+HDInsight kümesindeki verileri çözümlemek için verileri ' de [`Azure Storage`](../storage/common/storage-introduction.md) , [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)' e veya [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)' de saklayabilirsiniz. Tüm depolama seçenekleri, hesaplama için kullanılan HDInsight kümelerini Kullanıcı verilerini kaybetmeden güvenle silmenizi sağlar.
 
 Bu makalede, Data Lake Storage 1. HDInsight kümeleri ile nasıl çalıştığını öğrenirsiniz. Azure Depolama’nın HDInsight kümeleriyle nasıl çalıştığı hakkında bilgi edinmek için bkz. [Azure Depolama’yı Azure HDInsight kümeleri ile kullanma](hdinsight-hadoop-use-blob-storage.md). HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -43,11 +43,11 @@ HDInsight kümeleri, Data Lake Storage 1. iki şekilde kullanabilir:
 | HDInsight küme türü | Varsayılan depolama alanı olarak Data Lake Storage 1. | Ek depolama alanı olarak Data Lake Storage 1.| Notlar |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight sürüm 4,0 | Hayır | Hayır |HDInsight 4,0 ADLS 1. desteklenmez |
-| HDInsight sürümü 3.6 | Yes | Yes | HBase haricinde|
-| HDInsight sürümü 3.5 | Yes | Yes | HBase haricinde|
-| HDInsight sürümü 3.4 | Hayır | Yes | |
+| HDInsight sürümü 3.6 | Evet | Yes | HBase haricinde|
+| HDInsight sürümü 3.5 | Evet | Yes | HBase haricinde|
+| HDInsight sürümü 3.4 | Hayır | Evet | |
 | HDInsight sürümü 3.3 | Hayır | Hayır | |
-| HDInsight sürümü 3.2 | Hayır | Yes | |
+| HDInsight sürümü 3.2 | Hayır | Evet | |
 | Storm | | |Data Lake Storage 1., bir fırtınası topolojisinden veri yazmak için kullanabilirsiniz. Daha sonra, bir fırtınası topolojisi tarafından okunabilen başvuru verileri için Data Lake Storage de kullanabilirsiniz.|
 
 > [!WARNING]  
@@ -57,12 +57,12 @@ Ek depolama hesabı olarak Data Lake Storage 1. kullanmak performansı etkilemez
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Data Lake Storage 1. varsayılan depolama olarak kullan
 
-HDInsight, varsayılan depolama alanı olarak Data Lake Storage 1. dağıtıldığında, küme ile ilgili dosyalar içinde `adl://mydatalakestore/<cluster_root_path>/`depolanır; burada `<cluster_root_path>` , Data Lake Storage içinde oluşturduğunuz klasörün adıdır. Her küme için bir kök yolu belirterek, birden fazla küme için aynı Data Lake Storage hesabını kullanabilirsiniz. Bunu yaptığınızda şöyle bir durum olabilir:
+HDInsight, varsayılan depolama alanı olarak Data Lake Storage 1. dağıtıldığında, küme ile ilgili dosyalar içinde depolanır `adl://mydatalakestore/<cluster_root_path>/` ; burada, `<cluster_root_path>` Data Lake Storage içinde oluşturduğunuz klasörün adıdır. Her küme için bir kök yolu belirterek, birden fazla küme için aynı Data Lake Storage hesabını kullanabilirsiniz. Bunu yaptığınızda şöyle bir durum olabilir:
 
 * Cluster1 `adl://mydatalakestore/cluster1storage` yolunu kullanabilir.
 * Cluster2 `adl://mydatalakestore/cluster2storage` yolunu kullanabilir.
 
-Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore**. Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/\<clustername>** gibi bir klasör adı kullanmanızı ister.
+Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore**. Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/ \<clustername> ** gibi bir klasör adı kullanmanızı ister.
 
 Data Lake Storage 1. varsayılan depolama alanı olarak kullanmak için, hizmet sorumlusu erişimini aşağıdaki yollara vermeniz gerekir:
 
@@ -76,7 +76,7 @@ Hizmet sorumlusu oluşturma ve erişim verme hakkında daha fazla bilgi için bk
 
 Hizmet sorumlunuz için sertifika Azure Key Vault içinde depolanıyorsa, sertifikayı doğru biçime dönüştürmeniz gerekir. Aşağıdaki kod parçacıkları, dönüştürmenin nasıl yapılacağını gösterir.
 
-İlk olarak, Key Vault ' dan sertifikayı indirip ayıklayın `SecretValueText`.
+İlk olarak, Key Vault ' dan sertifikayı indirip ayıklayın `SecretValueText` .
 
 ```powershell
 $certPassword = Read-Host "Enter Certificate Password"
@@ -84,7 +84,7 @@ $cert = (Get-AzureKeyVaultSecret -VaultName 'MY-KEY-VAULT' -Name 'MY-SECRET-NAME
 $certValue = [System.Convert]::FromBase64String($cert.SecretValueText)
 ```
 
-Sonra, `SecretValueText` öğesini bir sertifikaya dönüştürün.
+Sonra, öğesini `SecretValueText` bir sertifikaya dönüştürün.
 
 ```powershell
 $certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certValue,$null,"Exportable, PersistKeySet"
@@ -92,7 +92,7 @@ $certBytes = $certObject.Export([System.Security.Cryptography.X509Certificates.X
 $identityCertificate = [System.Convert]::ToBase64String($certBytes)
 ```
 
-Ardından, `$identityCertificate` aşağıdaki kod parçacığında olduğu gibi yeni bir küme dağıtmak için kullanabilirsiniz:
+Ardından, `$identityCertificate` Aşağıdaki kod parçacığında olduğu gibi yeni bir küme dağıtmak için kullanabilirsiniz:
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -110,13 +110,13 @@ New-AzResourceGroupDeployment `
 
 Data Lake Storage 1., küme için ek depolama alanı olarak da kullanabilirsiniz. Bu gibi durumlarda, küme varsayılan depolaması bir Azure Depolama Blobu ya da Data Lake Storage hesabı olabilir. HDInsight işlerini ek depolama alanı olarak Data Lake Storage depolanan verilere karşı çalıştırırken, tam yolu kullanın. Örneğin:
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 URL 'de artık **cluster_root_path** yok. Bunun nedeni, Data Lake Storage bu durumda varsayılan bir depolama değildir. Bu nedenle, tüm yapmanız gereken dosyaların yolunu sağlamaktır.
 
 Ek depolama alanı olarak Data Lake Storage 1. kullanmak için, hizmet sorumlusu ile dosyalarınızın depolandığı yollara erişim izni verin.  Örneğin:
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 Hizmet sorumlusu oluşturma ve erişim verme hakkında daha fazla bilgi için bkz. Configure Data Lake Storage Access.
 
@@ -157,7 +157,7 @@ HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yolla
 
 ### <a name="data-access-examples"></a>Veri erişimi örnekleri
 
-Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. Ve `DATALAKEACCOUNT` `CLUSTERNAME` değerlerini ilgili değerlerle değiştirin.
+Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. `DATALAKEACCOUNT`Ve `CLUSTERNAME` değerlerini ilgili değerlerle değiştirin.
 
 #### <a name="a-few-hdfs-commands"></a>Birkaç bir bu komut
 
@@ -193,7 +193,7 @@ HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yolla
 
 #### <a name="creating-a-hive-table"></a>Hive tablosu oluşturma
 
-Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için `LOCATION` girdilerden yalnızca birini kullanın.
+Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için girdilerden yalnızca birini kullanın `LOCATION` .
 
 ```hql
 DROP TABLE myTable;
@@ -214,7 +214,7 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Ambarı 'ndan depolama yolunu tanımla
 
-Yapılandırılmış varsayılan deponun tüm yolunu **belirlemek için,** > , 1. olarak gidin**ve filtre** girişi kutusuna girin `fs.defaultFS` .
+Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için,, 1. **olarak gidin**  >  **Configs** ve `fs.defaultFS` filtre girişi kutusuna girin.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma
 
@@ -227,7 +227,7 @@ Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma hakkında ayr�
 
 ## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>Data Lake Storage 1. Nesil erişimi için HDInsight sertifikasını yenileme
 
-Aşağıdaki örnek PowerShell kodu bir sertifikayı yerel bir dosyadan veya Azure Key Vault okur ve HDInsight kümenizi, Azure Data Lake Storage 1. erişmek için yeni sertifikayla güncelleştirir. Kendi HDInsight küme adınızı, kaynak grubu adını, abonelik KIMLIĞINI `app ID`, sertifikaya yönelik yerel yolu belirtin. İstendiğinde parolayı yazın.
+Aşağıdaki örnek PowerShell kodu bir sertifikayı yerel bir dosyadan veya Azure Key Vault okur ve HDInsight kümenizi, Azure Data Lake Storage 1. erişmek için yeni sertifikayla güncelleştirir. Kendi HDInsight küme adınızı, kaynak grubu adını, abonelik KIMLIĞINI, `app ID` sertifikaya yönelik yerel yolu belirtin. İstendiğinde parolayı yazın.
 
 ```powershell-interactive
 $clusterName = '<clustername>'

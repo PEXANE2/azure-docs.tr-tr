@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079658"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
@@ -42,7 +42,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 
-1. **Güvenlik** > **Windows Server 2016 Datacenter**' ı seçin.
+1. **Güvenlik**  >  **Windows Server 2016 Datacenter**' ı seçin.
 
     ![Windows Server 2016 Datacenter, VM oluşturma, Azure portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
 
@@ -136,7 +136,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     ![Yol tablosu oluşturma, Azure portal](./media/tutorial-create-route-table-portal/create-route-table.png)
 
-5. **Oluştur**’u seçin.
+5. **Oluştur**'u seçin.
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
@@ -144,7 +144,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 1. Yol tablonuzun adını (**Myroutetablepublic**) seçin.
 
-1. **Rotalar** > **Ekle**' yi seçin.
+1. **Rotalar**  >  **Ekle**' yi seçin.
 
     ![Rota, yol tablosu, Azure portal ekleyin](./media/tutorial-create-route-table-portal/add-route.png)
 
@@ -239,7 +239,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 1. **RDP Ile Bağlan** SAYFASıNDA, **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen *. rdp* dosyasını açın. İstendiğinde **Bağlan**’ı seçin. **Diğer seçimler** > ' i seçin,**farklı bir hesap kullanın**ve ardından özel VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+1. İndirilen *. rdp* dosyasını açın. İstendiğinde **Bağlan**’ı seçin. **Diğer seçimler**  >  ' i seçin,**farklı bir hesap kullanın**ve ardından özel VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
 1. **Tamam**’ı seçin.
 
@@ -275,7 +275,7 @@ Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-i
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. *Myvmnva* VM 'sini yeniden başlatın: görev çubuğundan **Başlangıç** > **gücü**' ni, **diğer (planlı)** > **devam et**' i seçin.
+1. *Myvmnva* VM 'sini yeniden başlatın: görev çubuğundan **Başlangıç**  >  **gücü**' ni, **diğer (planlı)**  >  **devam et**' i seçin.
 
     Bu, uzak masaüstü oturumunun bağlantısını da keser.
 
@@ -359,3 +359,6 @@ Bir sanal ağ içinde birçok Azure kaynağı dağıtabilmeniz sırasında Azure
 
 > [!div class="nextstepaction"]
 > [PaaS kaynaklarına ağ erişimini kısıtlama](tutorial-restrict-network-access-to-resources.md)
+
+> [!NOTE] 
+> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.

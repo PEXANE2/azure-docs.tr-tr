@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437642"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080168"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
 
@@ -291,7 +291,7 @@ Azure AD DS Sanal ağınızı (**Hdıfabrikam-AADDSVNET**) özel DNS sunucuları
     1. **Ayarlar**altında, **DNS sunucuları**' nı seçin.
     1. **Özel**' i seçin.
     1. Metin kutusuna, ilk IP adresini (*10.0.0.4*) girin.
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
     1. Diğer IP adresini (*10.0.0.5*) eklemek için adımları yineleyin.
 
 Senaryolarımızda Azure AD DS 10.0.0.4 ve 10.0.0.5 IP adreslerini kullanacak şekilde yapılandırdık ve Azure AD DS sanal ağında aynı IP adresini ayarlıyoruz:
@@ -392,7 +392,7 @@ Bu adım aşağıdaki önkoşulları gerektirir:
 1. **Hdifabrikam-AADDSVNET** sanal AĞıNDA özel DNS ayarlayın.
     1. **Resource groups**  >  **Onpremadvrg**  >  **hdifabrikam-aaddsvnet**  >  **DNS sunucuları**Azure Portal > kaynak gruplarına gidin.
     1. **Özel** ' i seçin ve *10.0.0.4* ve *10.0.0.5*girin.
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
 
         ![Bir sanal ağ için özel DNS ayarlarını kaydet](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanına veritabanı geçişini SQL Server
+title: Azure SQL veritabanı 'na SQL Server veritabanı geçişi
 description: Azure SQL veritabanı 'na SQL Server veritabanı geçişi hakkında bilgi edinin.
 keywords: veritabanı geçişi,sql server veritabanı geçişi,veritabanı taşıma araçları,veritabanı taşıma,sql veritabanı geçişi
 services: sql-database
@@ -12,20 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 861c6749c7843d64a39376366544668c77883c9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081953"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Azure SQL veritabanı 'na SQL Server veritabanı geçişi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu makalede, SQL Server 2005 veya üzeri bir veritabanını Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanına geçirmeye yönelik birincil yöntemler hakkında bilgi edineceksiniz. Azure SQL yönetilen örneği 'ne geçiş hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine SQL Server örneği geçirme](../managed-instance/migrate-to-instance-from-sql-server.md). Diğer platformlardan geçiş hakkında geçiş bilgileri için bkz. [Azure veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
+Bu makalede, SQL Server 2005 veya sonraki bir veritabanını Azure SQL veritabanı 'na geçirmeye yönelik birincil yöntemler hakkında bilgi edineceksiniz. Azure SQL yönetilen örneği 'ne geçiş hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine SQL Server örneği geçirme](../managed-instance/migrate-to-instance-from-sql-server.md). Diğer platformlardan geçiş hakkında geçiş bilgileri için bkz. [Azure veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Tek bir veritabanına veya havuza alınmış bir veritabanına geçirme
 
-SQL Server 2005 veya üzeri bir veritabanını Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanına geçirmek için iki birincil yöntem vardır. İlk yöntem basittir, ancak geçiş sırasında önemli olabilecek bazı kapalı kalma sürelerine neden olabilir. İkinci yöntem daha karmaşık olmasına karşın, geçiş sırasında kapalı kalma süresini önemli ölçüde ortadan kaldırır.
+SQL Server 2005 veya sonraki bir veritabanını Azure SQL veritabanı 'na geçirmek için iki birincil yöntem vardır. İlk yöntem basittir, ancak geçiş sırasında önemli olabilecek bazı kapalı kalma sürelerine neden olabilir. İkinci yöntem daha karmaşık olmasına karşın, geçiş sırasında kapalı kalma süresini önemli ölçüde ortadan kaldırır.
 
 Her iki durumda da, [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)kullanarak kaynak VERITABANıNıN Azure SQL veritabanı ile uyumlu olduğundan emin olmanız gerekir. SQL veritabanı, sunucu düzeyi ve veritabanları arası işlemlerle ilgili sorunlardan başka SQL Server, [özellik eşliği](features-comparison.md) ile yaklaşılıyor. [Kısmen desteklenen veya desteklenmeyen işlevleri](transact-sql-tsql-differences-sql-server.md) kullanan veritabanları ve uygulamalar için SQL Server veritabanının geçirilebilmesi için [bu uyumsuzlukların giderilmesi amacıyla yeniden mühendislik](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues) işlemlerinin yapılması gerekir.
 

@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800656"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078747"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
 Azure Farmker, bir Docker tabanlı bağlayıcı çerçevesi kullanarak hava durumu veri sağlayıcılarınızın Hava durumu verilerini taşımanıza yardımcı olur. Bu çerçeveyi kullanarak, hava durumu veri sağlayıcıları Farmker 'Lar ile tümleştirilebilen bir Docker uygular. Şu anda aşağıdaki Hava durumu veri sağlayıcıları desteklenir:
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Hava durumu verileri, eyleme dönüştürülebilir içgörüler oluşturmak ve Farmtları üzerinde AI/ML modelleri oluşturmak için kullanılabilir.
 
@@ -59,6 +62,9 @@ Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıda
    ```
 
    Örneğin, DTN 'den Hava durumu verileri almak için aşağıdaki yükü kullanın. Ad ve açıklamayı tercihlerinize göre değiştirebilirsiniz.
+
+   > [!NOTE]
+   > Aşağıdaki adım bir API anahtarı gerektirir, lütfen DTN aboneliğiniz için aynısını almak üzere DTN ile iletişime geçin.
 
    ```json
    {

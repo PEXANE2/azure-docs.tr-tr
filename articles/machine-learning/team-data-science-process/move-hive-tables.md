@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860622"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080746"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Azure Blob depolamadan Hive tabloları oluşturma ve veri yükleme
 
@@ -69,7 +70,9 @@ Hadoop komut satırında Hive sorguları göndermenin üç yolu vardır:
 #### <a name="submit-hive-queries-in-hql-files"></a>'. HQL ' dosyalarında Hive sorguları gönder
 Hive sorgusu daha karmaşıktır ve birden çok satıra sahipse, komut satırında veya Hive komut konsolunda sorguları düzenlemeniz pratik değildir. Diğer bir seçenek de, Hadoop kümesinin baş düğümünde bir metin düzenleyicisi kullanarak Hive sorgularını baş düğümün yerel dizinindeki bir '. HQL ' dosyasına kaydeder. Ardından, '. HQL ' dosyasındaki Hive sorgusu, `-f` bağımsız değişken kullanılarak şu şekilde gönderilebilir:
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 !['. HQL ' dosyasında Hive sorgusu](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -77,8 +80,10 @@ Hive sorgusu daha karmaşıktır ve birden çok satıra sahipse, komut satırın
 
 Varsayılan olarak, Hive sorgusu Hadoop komut satırında gönderildikten sonra harita/küçültme işinin ilerlemesi ekranda yazdırılır. Harita/iş ilerlemesini azaltma ekranını bastırmak için, `-S` komut satırında aşağıdaki gibi bir bağımsız değişken (büyük harfle "S") kullanabilirsiniz:
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive sorgularını Hive komut konsoluna gönderebilirsiniz.
 Ayrıca, Hadoop komut satırında komutunu çalıştırarak Hive komut konsolunu girip Hive `hive` sorgularını Hive komut konsoluna gönderebilirsiniz. Aşağıda bir örnek vardır. Bu örnekte, iki kırmızı kutu Hive komut konsolunu girmek için kullanılan komutları ve sırasıyla Hive komut konsolunda gönderilen Hive sorgusunu vurgular. Yeşil kutu, Hive sorgusunun çıktısını vurgular.
@@ -90,7 +95,9 @@ Ayrıca, Hadoop komut satırında komutunu çalıştırarak Hive komut konsolunu
 **Çıktı Hive sorgusu sonuçları yerel bir dosyaya göre yapılır.**
 Hive sorgu sonuçlarının baş düğümdeki yerel bir dizine çıkışını sağlamak için, Hive sorgusunu aşağıdaki gibi Hadoop komut satırına göndermeniz gerekir:
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 Aşağıdaki örnekte, Hive sorgusunun çıktısı dizindeki bir dosyaya yazılır `hivequeryoutput.txt` `C:\apps\temp` .
 
@@ -100,7 +107,9 @@ Aşağıdaki örnekte, Hive sorgusunun çıktısı dizindeki bir dosyaya yazıl�
 
 Ayrıca, Hadoop kümesinin varsayılan kapsayıcısı dahilinde Hive sorgu sonuçlarını bir Azure Blob 'una de aktarabilirsiniz. Bunun için Hive sorgusu aşağıdaki gibidir:
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 Aşağıdaki örnekte, Hive sorgusunun çıktısı, `queryoutputdir` Hadoop kümesinin varsayılan kapsayıcısı içindeki bir blob dizinine yazılır. Burada, dizin adını yalnızca blob adı olmadan sağlamanız gerekir. Hem dizin hem de blob adlarını (gibi) sağlarsanız bir hata oluşur `wasb:///queryoutputdir/queryoutput.txt` .
 
@@ -121,18 +130,20 @@ Hive sorguları [GitHub deposunda](https://github.com/Azure/Azure-MachineLearnin
 
 Hive tablosu oluşturan Hive sorgusu aşağıda verilmiştir.
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 Aşağıda, eklenti ve diğer yapılandırma için gereken alanların açıklamaları verilmiştir:
 
@@ -146,7 +157,9 @@ Aşağıda, eklenti ve diğer yapılandırma için gereken alanların açıklama
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Hive tablolarına veri yükleme
 Verileri bir Hive tablosuna yükleyen Hive sorgusu aşağıda verilmiştir.
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
 * **\<path to blob data\>**: Hive tablosuna yüklenecek blob dosyası HDInsight Hadoop kümesinin varsayılan kapsayıcıda ise, *\<path to blob data\>* *' wasb:// \<directory in this container> / \<blob file name> '* biçiminde olmalıdır. Blob dosyası, HDInsight Hadoop kümesinin ek bir kapsayıcısında de olabilir. Bu durumda, *\<path to blob data\>* *' wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> '* biçiminde olmalıdır.
 
@@ -163,69 +176,83 @@ Hive tablolarının bölümlenmesi ek olarak, Hive verilerinin en Iyileştirilmi
 ### <a name="partitioned-table"></a>Bölümlenmiş tablo
 Bölümlenmiş bir tablo oluşturan ve içine veri yükleyen Hive sorgusu aşağıda verilmiştir.
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 Bölümlenmiş tabloları sorgularken, Bölüm koşulunun, **beginning** `where` arama verimliliğini artıran yan tümcesinin başına eklenmesi önerilir.
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>Hive verilerini ORC biçiminde depolayın
 Blob depolamadan, ORC biçiminde depolanan Hive tablolarına doğrudan veri yükleyemezsiniz. Azure Bloblarından verileri ORC biçiminde depolanan Hive tablolarına yüklemek için gerçekleştirmeniz gereken adımlar aşağıda verilmiştir.
 
 **TEXTFILE olarak depolanan** bir dış tablo oluşturun ve BLOB depolamadan tabloya veri yükleyin.
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 1. adımda, aynı alan sınırlayıcısı ile aynı şemaya sahip bir iç tablo oluşturun ve Hive verilerini ORC biçiminde depolayın.
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 1. adımdaki dış tablodaki verileri seçin ve ORC tablosuna ekleyin
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
 > TEXTFILE tablosu * \<database name\> . \<external textfile table name\> * bölüm içerir, adım 3 ' te, `SELECT * FROM <database name>.<external textfile table name>` komut bölüm değişkenini döndürülen veri kümesindeki bir alan olarak seçer. İçine ekleniyor * \<database name\> . \<ORC table name\> * bu yana başarısız oluyor * \<database name\> . \<ORC table name\> * , tablo şemasında bir alan olarak bölüm değişkenine sahip değildir. Bu durumda, eklenecek alanları özel olarak seçmeniz gerekir * \<database name\> . \<ORC table name\> * şöyle:
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
 *\<external text file table name\>* Tüm veriler öğesine eklendikten sonra aşağıdaki sorgu kullanılırken öğesini bırakmak güvenlidir * \<database name\> . \<ORC table name\> *:
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
 Bu yordamı tamamladıktan sonra, ORC biçimindeki verileri kullanmaya hazırlamış bir tablonuz olmalıdır.  

@@ -3,11 +3,12 @@ title: Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628466"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081069"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -26,9 +27,8 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 - Yedekleme için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın. [Buradaki](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)destek matrisine bakın.
 - Azure Backup Sunucusu ayarladığınızdan emin olun. Yapmadıysanız, başlamadan önce [bunu yapın](backup-azure-microsoft-azure-backup.md) . En son güncelleştirmelerle Azure Backup Sunucusu çalıştırıyor olmanız gerekir.
 - Aşağıdaki ağ bağlantı noktalarının açık olduğundan emin olun:
-    - MABS ve vCenter arasında TCP 443
-    - TCP 443 ve MABS ile ESXi Konağı arasında TCP 902
-
+  - MABS ve vCenter arasında TCP 443
+  - TCP 443 ve MABS ile ESXi Konağı arasında TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server güvenli bir bağlantı oluşturun
 
@@ -133,72 +133,75 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 
 ### <a name="role-permissions"></a>Rol izinleri
 
-| VCenter 6,7 Kullanıcı hesabı ayrıcalıkları                     | VCenter 6,5 Kullanıcı hesabı ayrıcalıkları                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Veri deposu bir datatstore kümesini cluster.Config            | Veri deposu bir datatstore kümesini cluster.Config            |
-| DataStore. AllocateSpace                                      | DataStore. AllocateSpace                                      |
-| Veri deposu. veri deposuna gözatamazsınız                                   | Veri deposu. veri deposuna gözatamazsınız                                   |
-| Veri deposu. alt düzey dosya işlemleri                          | Veri deposu. alt düzey dosya işlemleri                          |
-| Global. Disable yöntemleri                                       | Global. Disable yöntemleri                                       |
-| Global. Enable yöntemleri                                        | Global. Enable yöntemleri                                        |
-| Küresel. lisanslar                                              | Küresel. lisanslar                                              |
-| Global. log olayı                                             | Global. log olayı                                             |
-| Global. Manage özel öznitelikler                              | Global. Manage özel öznitelikler                              |
-| Global. set özel özniteliği                                  | Global. set özel özniteliği                                  |
-| Ana bilgisayar. yerel işlemler. Sanal makine oluştur                | Ana bilgisayar. yerel işlemler. Sanal makine oluştur                |
-| Network. assign ağı                                       | Network. assign ağı                                       |
-| Kaynak. Sanal makineyi kaynak havuzuna ata           | Kaynak. Sanal makineyi kaynak havuzuna ata           |
-| vApp. sanal makine Ekle                                     | vApp. sanal makine Ekle                                     |
-| vApp. assign kaynak havuzu                                    | vApp. assign kaynak havuzu                                    |
-| vApp. Unregister                                              | vApp. Unregister                                              |
-| VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır          | VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır          |
-| Sanal machine.Configurlama. Disk kirası al            | Sanal machine.Configurlama. Disk kirası                     |
-| Sanal machine.Configurlama. Yeni Disk Ekle                   | Sanal machine.Configurlama. Yeni Disk Ekle                   |
-| Sanal machine.Configurlama. Gelişmiş yapılandırma        | Sanal machine.Configurlama. İleri                       |
-| Sanal machine.Configurlama. Disk değişiklik izlemeyi Değiştir   | Sanal machine.Configurlama. Disk değişiklik izleme          |
-| Sanal machine.Configuration.Configure USB cihazı     | Sanal machine.Configurlama. Konak USB cihazı               |
-| Sanal machine.Configurlama. Sanal diski Genişlet           | Sanal machine.Configurlama. Sanal diski Genişlet           |
-| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula           | Sanal machine.Configurlama. Sahip olunan dosyaları sorgula           |
-| Sanal machine.Configurlama. Swapfile yerleşimini değiştirme     | Sanal machine.Configurlama. Swapfile yerleşimi            |
-| Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme | Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme |
-| Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri | Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri |
-| Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları    | Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları    |
-| Sanal makine. Uyor. Cihaz bağlantısı             | Sanal makine. Uyor. Cihaz bağlantısı             |
+Aşağıdaki tablo, oluşturduğunuz Kullanıcı hesabına atamanız gereken ayrıcalıkları yakalar:
+
+| VCenter 6,5 Kullanıcı hesabı ayrıcalıkları                          | VCenter 6,7 Kullanıcı hesabı ayrıcalıkları                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Veri deposu cluster.Configbir veri deposu kümesi                           | Veri deposu cluster.Configbir veri deposu kümesi                           |
+| DataStore. AllocateSpace                                                    | DataStore. AllocateSpace                                                    |
+| Veri deposu. veri deposuna gözatamazsınız                                                 | Veri deposu. veri deposuna gözatamazsınız                                                 |
+| Veri deposu. alt düzey dosya işlemleri                                        | Veri deposu. alt düzey dosya işlemleri                                        |
+| Global. Disable yöntemleri                                                     | Global. Disable yöntemleri                                                     |
+| Global. Enable yöntemleri                                                      | Global. Enable yöntemleri                                                      |
+| Küresel. lisanslar                                                            | Küresel. lisanslar                                                            |
+| Global. log olayı                                                           | Global. log olayı                                                           |
+| Global. Manage özel öznitelikler                                            | Global. Manage özel öznitelikler                                            |
+| Global. set özel özniteliği                                                | Global. set özel özniteliği                                                |
+| Ana bilgisayar. yerel işlemler. Sanal makine oluştur                               | Ana bilgisayar. yerel işlemler. Sanal makine oluştur                               |
+| Network. assign ağı                                                     | Network. assign ağı                                                     |
+| Kaynak. Sanal makineyi kaynak havuzuna ata                          | Kaynak. Sanal makineyi kaynak havuzuna ata                          |
+| vApp. sanal makine Ekle                                                   | vApp. sanal makine Ekle                                                   |
+| vApp. assign kaynak havuzu                                                  | vApp. assign kaynak havuzu                                                  |
+| vApp. Unregister                                                            | vApp. Unregister                                                            |
+| VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır                         | VirtualMachine.Configurlama. Cihaz Ekle veya Kaldır                         |
+| Sanal machine.Configurlama. Disk kirası                                   | Sanal machine.Configurlama. Disk kirası al                           |
+| Sanal machine.Configurlama. Yeni Disk Ekle                                 | Sanal machine.Configurlama. Yeni Disk Ekle                                 |
+| Sanal machine.Configurlama. İleri                                     | Sanal machine.Configurlama. Gelişmiş yapılandırma                       |
+| Sanal machine.Configurlama. Disk değişiklik izleme                         | Sanal machine.Configurlama. Disk değişiklik izlemeyi Değiştir                  |
+| Sanal machine.Configurlama. Konak USB cihazı                              | Sanal machine.Configuration.Configure USB cihazı                    |
+| Sanal machine.Configurlama. Sanal diski Genişlet                          | Sanal machine.Configurlama. Sanal diski Genişlet                          |
+| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula                          | Sanal machine.Configurlama. Sahip olunan dosyaları sorgula                          |
+| Sanal machine.Configurlama. Swapfile yerleşimi                           | Sanal machine.Configurlama. Swapfile yerleşimini değiştirme                    |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme         | Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme         |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri             | Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri             |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları                   | Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları                   |
+| Sanal makine. Uyor. Cihaz bağlantısı                            | Sanal makine. Uyor. Cihaz bağlantısı                            |
 | Sanal makine. Uyor. VIX API tarafından Konuk işletim sistemi yönetimi | Sanal makine. Uyor. VIX API tarafından Konuk işletim sistemi yönetimi |
-| Sanal makine. Uyor. Gücü kapat                      | Sanal makine. Uyor. Gücü kapat                      |
-| Sanal makine. Envanter. Yeni oluştur                        | Sanal makine. Envanter. Yeni oluştur                        |
-| Sanal makine. Inventory. Remove                            | Sanal makine. Inventory. Remove                            |
-| Sanal makine. Inventory. Register                          | Sanal makine. Inventory. Register                          |
-| Sanal makine. Sağlama. disk erişimine Izin ver             | Sanal makine. Sağlama. disk erişimine Izin ver             |
-| Sanal makine. Sağlama. dosya erişimine Izin ver             | Sanal makine. Sağlama. dosya erişimine Izin ver             |
-| Sanal makine. Sağlama. salt okuma disk erişimine Izin ver   | Sanal makine. Sağlama. salt okuma disk erişimine Izin ver   |
-| Sanal makine. Sağlama. sanal makine indirmeye Izin ver | Sanal makine. Sağlama. sanal makine indirmeye Izin ver |
-| Sanal makine. Anlık görüntü yönetimi.  Anlık görüntü oluşturma       | Sanal makine. Anlık görüntü yönetimi.  Anlık görüntü oluşturma       |
-| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır        | Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır        |
-| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüye dön     | Sanal makine. Anlık görüntü yönetimi. Anlık görüntüye dön     |
+| Sanal makine. Uyor. Gücü kapat                                    | Sanal makine. Uyor. Gücü kapat                                    |
+| Sanal makine. Envanter. Yeni oluştur                                      | Sanal makine. Envanter. Yeni oluştur                                      |
+| Sanal makine. Inventory. Remove                                          | Sanal makine. Inventory. Remove                                          |
+| Sanal makine. Inventory. Register                                        | Sanal makine. Inventory. Register                                        |
+| Sanal makine. Sağlama. disk erişimine Izin ver                            | Sanal makine. Sağlama. disk erişimine Izin ver                            |
+| Sanal makine. Sağlama. dosya erişimine Izin ver                            | Sanal makine. Sağlama. dosya erişimine Izin ver                            |
+| Sanal makine. Sağlama. salt okuma disk erişimine Izin ver                  | Sanal makine. Sağlama. salt okuma disk erişimine Izin ver                  |
+| Sanal makine. Sağlama. sanal makine indirmeye Izin ver               | Sanal makine. Sağlama. sanal makine indirmeye Izin ver               |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluşturma                      | Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluşturma                      |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır                       | Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır                       |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüye dön                    | Sanal makine. Anlık görüntü yönetimi. Anlık görüntüye dön                    |
 
-<br>
+> [!NOTE]
+> Aşağıdaki tabloda vCenter 6,0 ve vCenter 5,5 Kullanıcı hesapları için ayrıcalıklar listelenmektedir.
 
-| **VCenter 6,0 Kullanıcı hesabı ayrıcalıkları**                | **VCenter 5,5 Kullanıcı hesabı ayrıcalıkları** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| DataStore. AllocateSpace                                    | Network. assign                              |
-| Global. Manage özel öznitelikler                           | DataStore. AllocateSpace                     |
-| Global. set özel özniteliği                               | VirtualMachine.Config. Değişiklik izleme dosyanız        |
-| Ana bilgisayar. yerel işlemler. Sanal makine oluştur              | VirtualMachine. State. RemoveSnapshot         |
-| Network.  Ağ ata                                   | VirtualMachine. State. CreateSnapshot         |
-| Kaynak.  Sanal makineyi kaynak havuzuna ata         | VirtualMachine. sağlama. DiskRandomRead  |
-| Sanal machine.Configurlama. Yeni Disk Ekle                | VirtualMachine. etkileşim. PowerOff            |
-| Sanal machine.Configurlama. İleri                    | VirtualMachine. Inventory. Create             |
-| Sanal machine.Configurlama. Disk değişiklik izleme        | VirtualMachine.Config. AddNewDisk            |
-| Sanal machine.Configurlama. Konak USB cihazı             | VirtualMachine.Config. HostUSBDevice         |
-| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula         | VirtualMachine.Config. AdvancedConfig        |
-| Sanal machine.Configurlama. Swapfile yerleşimi          | VirtualMachine.Config. Swapyerleştirmesini         |
-| Sanal makine. Etkileşim. güç kapalı                     | Global. ManageCustomFields                   |
-| Sanal makine. Envanteri. Yeni oluştur                     |                                             |
-| Sanal makine. Sağlama. disk erişimine Izin ver            |                                             |
-| Sanal makine. Alınıyor. Salt okuma disk erişimine izin ver |                                             |
-| Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluştur       |                                             |
-| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır       |                                             |
+| VCenter 6,0 Kullanıcı hesabı ayrıcalıkları | VCenter 5,5 Kullanıcı hesabı ayrıcalıkları |
+| --- | --- |
+| DataStore. AllocateSpace | Network. assign |
+| Global. Manage özel öznitelikler | DataStore. AllocateSpace |
+| Global. set özel özniteliği | VirtualMachine.Config. Değişiklik izleme dosyanız |
+| Ana bilgisayar. yerel işlemler. Sanal makine oluştur | VirtualMachine. State. RemoveSnapshot |
+| Network. Ağ ata | VirtualMachine. State. CreateSnapshot |
+| Kaynak. Sanal makineyi kaynak havuzuna ata | VirtualMachine. sağlama. DiskRandomRead |
+| Sanal machine.Configurlama. Yeni Disk Ekle | VirtualMachine. etkileşim. PowerOff |
+| Sanal machine.Configurlama. İleri | VirtualMachine. Inventory. Create |
+| Sanal machine.Configurlama. Disk değişiklik izleme | VirtualMachine.Config. AddNewDisk |
+| Sanal machine.Configurlama. Konak USB cihazı | VirtualMachine.Config. HostUSBDevice |
+| Sanal machine.Configurlama. Sahip olunan dosyaları sorgula | VirtualMachine.Config. AdvancedConfig |
+| Sanal machine.Configurlama. Swapfile yerleşimi | VirtualMachine.Config. Swapyerleştirmesini |
+| Sanal makine. Etkileşim. güç kapalı | Global. ManageCustomFields |
+| Sanal makine. Envanteri. Yeni oluştur |   |
+| Sanal makine. Sağlama. disk erişimine Izin ver |   |
+| Sanal makine. Alınıyor. Salt okuma disk erişimine izin ver |   |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluştur |   |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır |   |
 
 ## <a name="create-a-vmware-account"></a>VMware hesabı oluşturma
 

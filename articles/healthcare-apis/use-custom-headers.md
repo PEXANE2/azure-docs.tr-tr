@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 068af40ed42d0211eed6e1a315016bb8ecc40d05
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954222"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081852"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Özel HTTP üstbilgilerini kullanarak denetim günlüklerine veri ekleme
 
@@ -26,7 +26,7 @@ Bu veri akışını aşağıdaki diyagramda görebilirsiniz:
 
 :::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Özel üstbilgiler diyagramı":::
 
-Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örnek:
+Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örneğin:
 
 * Kimlik veya yetkilendirme bilgileri
 * Çağıranın kaynağı
@@ -36,15 +36,15 @@ Bu veri akışını aşağıdaki diyagramda görebilirsiniz:
 > [!IMPORTANT]
 > Özel üst bilgilerde gönderilen bilgilerin, Azure günlük Izleme 'de mevcut olduktan sonra 30 gün boyunca Microsoft iç günlük sisteminde depolandığını unutmayın. Özel üstbilgilere eklemeden önce tüm bilgileri şifrelemeyi öneririz. Müşteri üstbilgileri aracılığıyla herhangi bir FI bilgisi iletmemelisiniz.
 
-HTTP başlıklarınız için aşağıdaki adlandırma kuralını kullanmanız gerekir: X-MS-AZUREFHıR-AUDIT-AUDIT- \<name> .
+HTTP başlıklarınız için aşağıdaki adlandırma kuralını kullanmanız gerekir: X-MS-AZUREFHıR-AUDIT- \<name> .
 
-Bu HTTP üstbilgileri, günlüğe eklenen bir özellik çantasına dahildir. Örnek:
+Bu HTTP üstbilgileri, günlüğe eklenen bir özellik çantasına dahildir. Örneğin:
 
 * X-MS-AZUREFHıR-AUDIT-USERıD: 1234 
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: XXXX
 * X-MS-AZUREFHıR-AUDIT-XYZ: 1234
 
-Bu bilgiler daha sonra günlükteki Özellikler sütununa eklendiğinde JSON olarak serileştirilir. Örnek:
+Bu bilgiler daha sonra günlükteki Özellikler sütununa eklendiğinde JSON olarak serileştirilir. Örneğin:
 
 ```json
 { "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
@@ -52,12 +52,12 @@ Bu bilgiler daha sonra günlükteki Özellikler sütununa eklendiğinde JSON ola
 "X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
 ```
  
-Herhangi bir HTTP üst bilgisinde olduğu gibi, aynı üst bilgi adı farklı değerlerle tekrarlanabilir. Örnek:
+Herhangi bir HTTP üst bilgisinde olduğu gibi, aynı üst bilgi adı farklı değerlerle tekrarlanabilir. Örneğin:
 
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: Hospyürüla
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: acil durum
 
-Günlüğe eklendiğinde, değerler virgülle ayrılmış bir liste ile birleştirilir. Örnek:
+Günlüğe eklendiğinde, değerler virgülle ayrılmış bir liste ile birleştirilir. Örneğin:
 
 {"X-MS-AZUREFHıR-AUDIT-USERLOCATION": "Hospyürüla, acil durum"}
  

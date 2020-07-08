@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344637"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080185"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -58,7 +59,7 @@ Azure, verilerinizi tehditler açısından sürekli izler. Azure SQL ile şunlar
 Farklı veri teklifleri arasında seçim yapmak için kararlarınızı etkileyebilecek birkaç etken vardır:
 
 - [Maliyet](#cost): her Iki PaaS ve IaaS seçeneği, temel altyapıyı ve lisanslamayı kapsayan temel fiyatı içerir. Bununla birlikte, IaaS seçeneği ile veritabanınızı yönetmek için ek saat ve kaynakları yatırım yapmanız gerekir. PaaS 'de, fiyata dahil olan bu yönetim özelliklerini edinirsiniz. IaaS, kaynakları, gerekli olduğunda kaynakları bırakıp yeniden oluşturmadığınız sürece her zaman çalışır durumdayken, maliyetleri azaltmak için kullanmadığınız sırada, kaynakları kapatmanızı sağlar.
-- [Yönetim](#administration): PaaS seçenekleri veritabanını yönetmek için yatırım yapmanız gereken süre miktarını azaltır. Ancak, gerçekleştirebileceğiniz veya çalıştırabileceğiniz özel yönetim görevlerinin ve betiklerin aralığını da sınırlandırır. Örneğin, CLR tek veya havuza alınmış veritabanlarıyla desteklenmez, ancak SQL yönetilen örneği örneği için desteklenir. Ayrıca PaaS 'deki dağıtım seçenekleri, izleme bayraklarının kullanımını desteklemez.
+- [Yönetim](#administration): PaaS seçenekleri veritabanını yönetmek için yatırım yapmanız gereken süre miktarını azaltır. Ancak, gerçekleştirebileceğiniz veya çalıştırabileceğiniz özel yönetim görevlerinin ve betiklerin aralığını da sınırlandırır. Örneğin, CLR SQL veritabanı ile desteklenmez, ancak SQL yönetilen örneği örneği için desteklenir. Ayrıca PaaS 'deki dağıtım seçenekleri, izleme bayraklarının kullanımını desteklemez.
 - [Hizmet düzeyi sözleşmesi](#service-level-agreement-sla): IaaS ve PaaS, yüksek endüstri standardı SLA 'sı sağlar. PaaS seçeneği% 99,99 SLA 'sını garanti ederken IaaS, altyapı için% 99,95 SLA 'sını garanti ederken, veritabanlarının kullanılabilirliğini sağlamak için ek mekanizmalar uygulamanız gerekir. % 99,99 SLA 'yı ek bir SQL sanal makinesi oluşturarak ve Always on kullanılabilirlik grubu yüksek kullanılabilirlik çözümü SQL Server uygulayarak sağlayabilirsiniz. 
 - [Azure 'a geçiş süresi](#market): Azure vm 'deki SQL Server ortamınızın tam eşleşmesinden itibaren şirket Içi SUNUCUDAN Azure VM 'sine geçiş, veritabanlarını bir şirket içi sunucudan diğerine taşımaktan farklı değildir. SQL yönetilen örneği de kolay geçişe izin verebilir; Ancak, geçişten önce uygulamanız gereken bazı değişiklikler olabilir. 
 

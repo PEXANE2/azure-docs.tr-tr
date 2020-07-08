@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701890"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081579"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure’da Windows VM’si için belirli RDP hata iletileri sorunları giderme
 Azure 'da bir Windows sanal makinesine (VM) Uzak Masaüstü bağlantısı kullanırken, belirli bir hata iletisi alabilirsiniz. Bu makalede, karşılaşılan daha yaygın hata iletilerinin bazıları ve bunları çözmek için sorun giderme adımlarıyla birlikte ayrıntılar verilmektedir. VM 'nize RDP kullanarak bağlanma sorunları yaşıyorsanız ancak belirli bir hata iletisiyle karşılaşmayın, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md)bakın.
@@ -39,7 +40,9 @@ Neden: Uzak Masaüstü sunucu rolü için 120 günlük lisanslama yetkisiz kulla
 
 Geçici bir çözüm olarak, portaldan RDP dosyasının yerel bir kopyasını kaydedin ve bağlanmak için bir PowerShell komut isteminde bu komutu çalıştırın. Bu adım yalnızca bu bağlantı için lisanslamayı devre dışı bırakır:
 
-        mstsc <File name>.RDP /admin
+```powershell
+mstsc <File name>.RDP /admin
+```
 
 VM 'ye en fazla iki eşzamanlı uzak masaüstü bağlantısı gerekmiyorsa, uzak masaüstü sunucu rolünü kaldırmak için Sunucu Yöneticisi kullanabilirsiniz.
 
@@ -54,9 +57,11 @@ Olası çözümler:
 
 * Bir kuruluşun intraneti kullanıyorsanız, bilgisayarınızın proxy sunucusuna erişimi olduğundan ve buna HTTPS trafiği gönderediğinden emin olun.
 * Yerel olarak depolanan bir RDP dosyası kullanıyorsanız, portal tarafından oluşturulan birini kullanmayı deneyin. Bu adım, sanal makine için doğru DNS adına veya bulut hizmetine ve VM 'nin uç nokta bağlantı noktasına sahip olmanızı sağlar. Portal tarafından oluşturulan örnek bir RDP dosyası aşağıda verilmiştir:
-  
-        full address:s:tailspin-azdatatier.cloudapp.net:55919
-        prompt for credentials:i:1
+
+    ```output
+    full address:s:tailspin-azdatatier.cloudapp.net:55919
+    prompt for credentials:i:1
+    ```
 
 Bu RDP dosyasının adres kısmı şunlardır:
 

@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130407"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079896"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -277,8 +277,6 @@ Hata kodu: Bmsusererrorobjectkilitlendi
 Hata Iletisi: seçili öğede başka bir işlem devam ediyor.
 
 Devam eden diğer işlemin tamamlanmasını bekleyin ve daha sonra yeniden deneyin.
-
-Dosyadan: troubleshoot-azure-files.md
 
 ## <a name="common-soft-delete-related-errors"></a>Yaygın geçici silme ile Ilgili hatalar
 

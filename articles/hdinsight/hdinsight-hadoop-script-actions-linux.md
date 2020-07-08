@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082259"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -60,7 +60,7 @@ Farklı HDInsight sürümlerinin farklı Hadoop Hizmetleri ve bileşenleri yükl
 
 HDInsight 'ın farklı sürümleri, Ubuntu 'ın belirli sürümlerini kullanır. Betikte denetlemeniz gereken işletim sistemi sürümleri arasında farklılıklar olabilir. Örneğin, Ubuntu sürümüne bağlı bir ikili dosya yüklemeniz gerekebilir.
 
-İşletim sistemi sürümünü denetlemek için kullanın `lsb_release`. Örneğin, aşağıdaki komut dosyası, işletim sistemi sürümüne bağlı olarak belirli bir tar dosyasına nasıl başvurulacağını göstermektedir:
+İşletim sistemi sürümünü denetlemek için kullanın `lsb_release` . Örneğin, aşağıdaki komut dosyası, işletim sistemi sürümüne bağlı olarak belirli bir tar dosyasına nasıl başvurulacağını göstermektedir:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,7 +108,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Bu kod parçacıklarını içeren tam betiği ' de bulabilirsiniz https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+Bu kod parçacıklarını içeren tam betiği ' de bulabilirsiniz https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh .
 
 HDInsight tarafından kullanılan Ubuntu sürümü için bkz. [HDInsight bileşen sürümü](hdinsight-component-versioning.md) belgesi.
 
@@ -152,7 +152,7 @@ Kümeye yüklediğiniz bileşenlerin, Apache Hadoop Dağıtılmış Dosya Sistem
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-Bu örnekte, `hdfs` komut saydam olarak varsayılan küme depolamayı kullanır. Bazı işlemler için URI belirtmeniz gerekebilir. Örneğin, `adl:///example/jars` Azure Data Lake Storage 1. `abfs:///example/jars` Için Data Lake Storage 2. veya `wasb:///example/jars` Azure depolama için.
+Bu örnekte, `hdfs` komut saydam olarak varsayılan küme depolamayı kullanır. Bazı işlemler için URI belirtmeniz gerekebilir. Örneğin, `adl:///example/jars` Azure Data Lake Storage 1. için `abfs:///example/jars` Data Lake Storage 2. veya `wasb:///example/jars` Azure depolama için.
 
 ### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>STDOUT ve STDERR 'e bilgi yazma
 
@@ -161,19 +161,19 @@ HDInsight, STDOUT ve STDERR 'e yazılan betik çıkışını günlüğe kaydeder
 > [!NOTE]  
 > Apache ambarı yalnızca küme başarıyla oluşturulduysa kullanılabilir. Küme oluşturma sırasında bir betik eylemi kullanırsanız ve oluşturma başarısız olursa, bkz. günlüğe kaydedilen bilgilere erişmenin diğer yolları için [betik eylemlerine sorun giderme](./troubleshoot-script-action.md) .
 
-Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için kullanın `echo`. Örneğin:
+Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için kullanın `echo` . Örneğin:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Varsayılan olarak, `echo` dizeyi stdout ' a gönderir. Bunu STDERR 'e yönlendirmek için, daha `>&2` önce `echo`ekleyin. Örneğin:
+Varsayılan olarak, `echo` DIZEYI stdout ' a gönderir. Bunu STDERR 'e yönlendirmek için, daha `>&2` önce ekleyin `echo` . Örneğin:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-Bu, STDOUT 'a yazılan bilgileri STDERR 'e (2) yönlendirir. GÇ yönlendirmesi hakkında daha fazla bilgi için bkz [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)..
+Bu, STDOUT 'a yazılan bilgileri STDERR 'e (2) yönlendirir. GÇ yönlendirmesi hakkında daha fazla bilgi için bkz [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) ..
 
 Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntüleme hakkında daha fazla bilgi için bkz. [betik eylemlerine sorun giderme](./troubleshoot-script-action.md).
 
@@ -226,7 +226,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>Özel betikler için yardımcı yöntemler
 
-Betik eylemi Yardımcısı yöntemleri, Özel betikler yazarken kullanabileceğiniz yardımcı programlardır. Bu yöntemler [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) betiğe dahil edilir. Komut dosyanızı bir parçası olarak indirmek ve kullanmak için aşağıdakileri kullanın:
+Betik eylemi Yardımcısı yöntemleri, Özel betikler yazarken kullanabileceğiniz yardımcı programlardır. Bu yöntemler betiğe dahil edilir [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) . Komut dosyanızı bir parçası olarak indirmek ve kullanmak için aşağıdakileri kullanın:
 
 ```bash
 # Import the helper method module.
@@ -235,10 +235,10 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Aşağıdaki yardımcılar betiğinizdeki kullanım için kullanılabilir:
 
-| Yardımcı kullanım | Açıklama |
+| Yardımcı kullanım | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Kaynak URI 'den belirtilen dosya yoluna bir dosya indirir. Varsayılan olarak, varolan bir dosyanın üzerine yazmaz. |
-| `untar_file TARFILE DESTDIR` |Bir tar dosyasını (kullanarak `-xf`) hedef dizine ayıklar. |
+| `untar_file TARFILE DESTDIR` |Bir tar dosyasını (kullanarak `-xf` ) hedef dizine ayıklar. |
 | `test_is_headnode` |Bir küme başdüğümü üzerinde çalıştırıldıysa 1 döndürür. Aksi takdirde, 0. |
 | `test_is_datanode` |Geçerli düğüm bir veri (çalışan) düğümüdür, 1 döndürür. Aksi takdirde, 0. |
 | `test_is_first_datanode` |Geçerli düğüm ilk veri (çalışan) düğümüdür (workernode0 adlı), bir 1 döndürür. Aksi takdirde, 0. |
@@ -256,7 +256,7 @@ Bu bölüm, kendi özel betiğinizi yazarken çalıştırabileceğiniz bazı yay
 
 Bazı durumlarda, betiğinizin parametreleri gerekebilir. Örneğin, ambarı REST API kullanılırken küme için yönetici parolası gerekebilir.
 
-Betiğe geçirilen parametreler *Konumsal parametreler*olarak bilinir ve ilk parametre `$1` için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0`betiğin adını içerir.
+Betiğe geçirilen parametreler *Konumsal parametreler*olarak bilinir ve `$1` ilk parametre için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0`betiğin adını içerir.
 
 Komut dosyasına parametre olarak geçirilen değerler tek tırnak (') içine alınmalıdır. Bunun yapılması, geçen değerin değişmez değer olarak değerlendirilmesini sağlar.
 
@@ -264,15 +264,19 @@ Komut dosyasına parametre olarak geçirilen değerler tek tırnak (') içine al
 
 Bir ortam değişkenini ayarlamak aşağıdaki ifade tarafından gerçekleştirilir:
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
-Burada VARIABLENAME değişkenin adıdır. Değişkenine erişmek için kullanın `$VARIABLENAME`. Örneğin, bir Konumsal parametre tarafından belirtilen bir değeri parola adlı bir ortam değişkeni olarak atamak için aşağıdaki ifadeyi kullanın:
+Burada VARIABLENAME değişkenin adıdır. Değişkenine erişmek için kullanın `$VARIABLENAME` . Örneğin, bir Konumsal parametre tarafından belirtilen bir değeri parola adlı bir ortam değişkeni olarak atamak için aşağıdaki ifadeyi kullanın:
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
-Bilgilere sonraki erişim daha sonra kullanabilir `$PASSWORD`.
+Bilgilere sonraki erişim daha sonra kullanabilir `$PASSWORD` .
 
-Betik içinde ayarlanan ortam değişkenleri yalnızca betiğin kapsamı içinde bulunur. Bazı durumlarda, komut dosyası tamamlandıktan sonra devam edecek sistem genelinde ortam değişkenleri eklemeniz gerekebilir. Sistem genelinde ortam değişkenleri eklemek için, değişkenini öğesine `/etc/environment`ekleyin. Örneğin, aşağıdaki ifade şunları ekler `HADOOP_CONF_DIR`:
+Betik içinde ayarlanan ortam değişkenleri yalnızca betiğin kapsamı içinde bulunur. Bazı durumlarda, komut dosyası tamamlandıktan sonra devam edecek sistem genelinde ortam değişkenleri eklemeniz gerekebilir. Sistem genelinde ortam değişkenleri eklemek için, değişkenini öğesine ekleyin `/etc/environment` . Örneğin, aşağıdaki ifade şunları ekler `HADOOP_CONF_DIR` :
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -298,7 +302,7 @@ Komut dosyası tarafından kullanılan kaynaklar da genel kullanıma açık olma
 Dosyaları Azure depolama hesabında depolama veya Azure Data Lake Storage, hem Azure ağı içinde hem de hızlı erişim sağlar.
 
 > [!NOTE]  
-> Komut dosyasına başvurmak için kullanılan URI biçimi, kullanılan hizmete bağlı olarak farklılık gösterir. HDInsight kümesiyle ilişkili depolama hesapları için veya `wasb://` `wasbs://`kullanın. Genel olarak okunabilen URI 'Ler için `http://` veya `https://`kullanın. Data Lake Storage için kullanın `adl://`.
+> Komut dosyasına başvurmak için kullanılan URI biçimi, kullanılan hizmete bağlı olarak farklılık gösterir. HDInsight kümesiyle ilişkili depolama hesapları için `wasb://` veya kullanın `wasbs://` . Genel olarak okunabilen URI 'Ler için `http://` veya kullanın `https://` . Data Lake Storage için kullanın `adl://` .
 
 ## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Betik eylemi dağıtmaya yönelik denetim listesi
 
@@ -328,7 +332,7 @@ Microsoft, bir HDInsight kümesine bileşen yüklemek için örnek betikler sağ
 
 Aşağıda, geliştirmiş olduğunuz betikleri kullanırken karşılaşabileceğiniz hatalar verilmiştir:
 
-**Hata**: `$'\r': command not found`. Bazen sonrasında `syntax error: unexpected end of file`.
+**Hata**: `$'\r': command not found` . Bazen sonrasında `syntax error: unexpected end of file` .
 
 *Neden*: Bu hata, bir betikteki satırlar CRLF ile bitmediğinde oluşur. UNIX sistemleri, son satır olarak yalnızca LF bekler.
 
@@ -346,15 +350,17 @@ Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Dosyayı doğrudan değiştirir |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |ÇıKıŞDOSYASı yalnızca LF sonları olan bir sürüm içeriyor. |
 
-**Hata**: `line 1: #!/usr/bin/env: No such file or directory`.
+**Hata**: `line 1: #!/usr/bin/env: No such file or directory` .
 
 *Neden*: komut dosyası UTF-8 olarak bir bayt sırası IŞARETIYLE (BOM) kaydedildiğinde bu hata oluşur.
 
 *Çözüm*: dosyayı ASCII ya da bir BOM olmadan UTF-8 olarak kaydedin. Ayrıca, bir Linux veya UNIX sisteminde, BOM olmadan bir dosya oluşturmak için aşağıdaki komutu kullanabilirsiniz:
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
-BOM `INFILE` içeren dosyayla değiştirin. `OUTFILE`, BOM olmadan betiği içeren yeni bir dosya adı olmalıdır.
+`INFILE`Bom içeren dosyayla değiştirin. `OUTFILE`, BOM olmadan betiği içeren yeni bir dosya adı olmalıdır.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Sonraki adımlar
 

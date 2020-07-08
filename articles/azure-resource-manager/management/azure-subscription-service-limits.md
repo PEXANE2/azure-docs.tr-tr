@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 7805e65b3f49a69d4667180715a58585767ddf5a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080984"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir.
 
-Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiyatlandırması genel bakış](https://azure.microsoft.com/pricing/). Burada, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)' nı kullanarak maliyetlerinizi tahmin edebilirsiniz. Ayrıca, belirli bir hizmet için (örneğin, [Windows VM 'ler](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Fiyatlandırma ayrıntıları sayfasına gidebilirsiniz. Maliyetlerinizi yönetmeye yardımcı olacak ipuçları için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../billing/billing-getting-started.md).
+Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiyatlandırması genel bakış](https://azure.microsoft.com/pricing/). Burada, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)' nı kullanarak maliyetlerinizi tahmin edebilirsiniz. Ayrıca, belirli bir hizmet için (örneğin, [Windows VM 'ler](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Fiyatlandırma ayrıntıları sayfasına gidebilirsiniz. Maliyetlerinizi yönetmeye yardımcı olacak ipuçları için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../cost-management-billing/manage/getting-started.md).
 
 ## <a name="managing-limits"></a>Sınırları yönetme
 
@@ -29,7 +29,7 @@ Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiy
 >
 > Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, [ücretsiz bir çevrimiçi müşteri destek isteği açın](../templates/error-resource-quota.md).
 
-[Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](../../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+[Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](../../cost-management-billing/manage/upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 
 Bazı sınırlar, bölgesel düzeyde yönetilir.
 
@@ -259,7 +259,7 @@ Aşağıdaki tabloda temel, standart ve Premium [hizmet katmanlarının](../../c
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (eski)
 
-Media Services V2 'ye (eski) özgü sınırlar için bkz. [Media Services V2 (eski)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
+Media Services V2 'ye (eski) özgü sınırlar için bkz. [Media Services V2 (eski)](../../media-services/previous/media-services-quotas-and-limitations.md)
 
 ## <a name="mobile-services-limits"></a>Mobile Services sınırları
 
@@ -332,11 +332,11 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 ## <a name="sql-database-limits"></a>SQL veritabanı limitleri
 
-SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek veritabanları için](../../azure-sql/database/resource-limits-vcore-single-databases.md), [elastik havuzlar ve havuza alınmış veritabanları için SQL veritabanı kaynak limitleri](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)ve [yönetilen örnekler için SQL veritabanı kaynak sınırları](../../azure-sql/managed-instance/resource-limits.md).
+SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek veritabanları için](../../azure-sql/database/resource-limits-vcore-single-databases.md), [elastik havuzlar ve havuza alınmış veritabanları için SQL veritabanı kaynak limitleri](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)ve [SQL yönetilen örneği için SQL veritabanı kaynak sınırları](../../azure-sql/managed-instance/resource-limits.md).
 
-## <a name="sql-data-warehouse-limits"></a>SQL veri ambarı sınırları
+## <a name="azure-synapse-analytics-limits"></a>Azure SYNAPSE Analytics limitleri
 
-SQL veri ambarı sınırları için bkz. [SQL veri ambarı kaynak sınırları](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+Azure SYNAPSE Analytics limitleri için bkz. [Azure SYNAPSE kaynak sınırları](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="storage-limits"></a>Depolama sınırları
 

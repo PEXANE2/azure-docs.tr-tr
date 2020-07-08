@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75552653"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079505"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix performansı için en iyi yöntemler
 
@@ -52,7 +52,7 @@ Bu yeni birincil anahtarla, Phoenix tarafından oluşturulan satır anahtarları
 
 Yukarıdaki ilk satırda, rowkey verileri gösterilen şekilde gösterilir:
 
-|rowkey|       anahtar|   value|
+|rowkey|       anahtar|   değer|
 |------|--------------------|---|
 |  Dole-John-111|adres |1111 San Gabriel Dr.|  
 |  Dole-John-111|telefon |1-425-000-0002|  
@@ -82,13 +82,17 @@ Phoenix, verilerinizin dağıtıldığı bölge sayısını denetlemenizi sağla
 
 Oluşturma sırasında bir tabloyu oluşturmak için, anahtar demetlerinin sayısını belirtin:
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 Bu, tablo, verileri otomatik olarak seçerek birincil anahtarların değerleri üzerinde böler. 
 
 Tablonun nerede bölündüğünü denetlemek için bölmenin gerçekleştiği Aralık değerlerini sağlayarak tabloyu önceden bölebilirsiniz. Örneğin, üç bölgenin üzerinde bölünen bir tablo oluşturmak için:
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>Dizin tasarımı
 
@@ -120,11 +124,15 @@ Kapsanan dizinler, dizinli değerlere ek olarak satırdaki verileri içeren dizi
 
 Bununla birlikte, genel olarak, socialSecurityNum verilen firstName ve lastName bilgilerini aramak istiyorsanız, Dizin tablosunda gerçek veriler olarak firstName ve lastName içeren bir kapsanan dizin oluşturabilirsiniz:
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 Bu kapsanan Dizin, aşağıdaki sorgunun tüm verileri yalnızca ikincil dizini içeren tablodan okuyarak almasını sağlar:
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>İşlevsel dizinleri kullanma
 
@@ -132,7 +140,9 @@ Bu kapsanan Dizin, aşağıdaki sorgunun tüm verileri yalnızca ikincil dizini 
 
 Örneğin, bir kişinin Birleşik adı ve soyadı için büyük/küçük harfe duyarsız aramalar yapmanıza olanak sağlayan bir dizin oluşturabilirsiniz:
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>Sorgu tasarımı
 
@@ -153,46 +163,64 @@ Sorgu tasarımında başlıca noktalar şunlardır:
 
 Örnek olarak, Uçuş gecikmesi bilgilerini depolayan FıŞıKLARı adlı bir tablonuz olduğunu varsayalım.
 
-Airlineıd ile tüm fışıklardan birini `19805`seçmek için airlineıd, birincil anahtarda veya herhangi bir dizinde olmayan bir alandır:
+Airlineıd ile tüm fışıklardan birini seçmek için `19805` airlineıd, birincil anahtarda veya herhangi bir dizinde olmayan bir alandır:
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Açıkla komutunu aşağıdaki gibi çalıştırın:
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Sorgu planı şöyle görünür:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 Bu planda, FıŞıKLARA göre tam tarama tümceciğini ifade edin. Bu tümcecik, yürütmenin, daha verimli Aralık TARAMASı veya tarama atlama seçeneği yerine tablodaki tüm satırların üzerinde tarama yaptığını gösterir.
 
-Şimdi, flightnum 'ın 1 ' den büyük olduğu taşıyıcı `AA` Için 2 Ocak 2014 ' de fışıkları sorgulamak istediğinizi varsayalım. Yıl, ay, dayofmonth, taşıyıcı ve flightnum sütunlarının örnek tabloda bulunduğunu ve bileşik birincil anahtarın bir parçası olduğunu varsayalım. Sorgu şöyle görünür:
+Şimdi, `AA` flightnum 'ın 1 ' den büyük olduğu taşıyıcı için 2 ocak 2014 ' de fışıkları sorgulamak istediğinizi varsayalım. Yıl, ay, dayofmonth, taşıyıcı ve flightnum sütunlarının örnek tabloda bulunduğunu ve bileşik birincil anahtarın bir parçası olduğunu varsayalım. Sorgu şöyle görünür:
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Bu sorgunun planını şu şekilde incelim:
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Elde edilen plan:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
-Köşeli ayraçlar içindeki değerler, birincil anahtarların değer aralığıdır. Bu durumda, Aralık değerleri 2014, Month 1 ve dayofmonth 2 ile düzeltilir, ancak 2 ve üzerinde (`*`) başlayan flightnum değerlerine izin verir. Bu sorgu planı, birincil anahtarın beklenen şekilde kullanıldığını onaylar.
+Köşeli ayraçlar içindeki değerler, birincil anahtarların değer aralığıdır. Bu durumda, Aralık değerleri 2014, Month 1 ve dayofmonth 2 ile düzeltilir, ancak 2 ve üzerinde () başlayan flightnum değerlerine izin verir `*` . Bu sorgu planı, birincil anahtarın beklenen şekilde kullanıldığını onaylar.
 
-Ardından, FıŞıKLARı tablosunda yalnızca taşıyıcı alanında olan adlı `carrier2_idx` bir dizin oluşturun. Bu dizin Ayrıca, verileri dizinde depolanan kapsanan sütunlar olarak da flightdate,,,, Origin ve flightnum bilgilerini içerir.
+Ardından, FıŞıKLARı tablosunda `carrier2_idx` yalnızca taşıyıcı alanında olan adlı bir dizin oluşturun. Bu dizin Ayrıca, verileri dizinde depolanan kapsanan sütunlar olarak da flightdate,,,, Origin ve flightnum bilgilerini içerir.
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 Aşağıdaki sorguda olduğu gibi, flightdate ve ıdinum ile birlikte taşıyıcıyı almak istediğinizi varsayalım:
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 Kullanılmakta olan dizini görmeniz gerekir:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 Plan sonuçlarını açıkla bölümünde görünebilen öğelerin tamamı listesi için [Apache Phoenix ayarlama kılavuzundaki](https://phoenix.apache.org/tuning_guide.html)açıkla planları bölümüne bakın.
 
@@ -200,7 +228,7 @@ Plan sonuçlarını açıkla bölümünde görünebilen öğelerin tamamı liste
 
 Genellikle, tek bir kenar küçük olmadığı ve özellikle sık sorgularda, birleşimlerden kaçınmak istersiniz.
 
-Gerekirse, `/*+ USE_SORT_MERGE_JOIN */` ipucu ile büyük birleşimler yapabilirsiniz, ancak büyük bir birleştirme çok sayıda satır üzerinde pahalı bir işlemdir. Tüm sağ taraftaki tabloların genel boyutu kullanılabilir belleği aşarsa, `/*+ NO_STAR_JOIN */` ipucunu kullanın.
+Gerekirse, ipucu ile büyük birleşimler yapabilirsiniz `/*+ USE_SORT_MERGE_JOIN */` , ancak büyük bir birleştirme çok sayıda satır üzerinde pahalı bir işlemdir. Tüm sağ taraftaki tabloların genel boyutu kullanılabilir belleği aşarsa, `/*+ NO_STAR_JOIN */` ipucunu kullanın.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -222,7 +250,9 @@ Büyük bir veri kümesini silerken, SILME sorgusunu vermeden önce, istemci sil
 
 Senaryonuz veri bütünlüğü üzerinde yazma hızına tercih eder, tablolarınızı oluştururken yazma ön günlüğünü devre dışı bırakmayı göz önünde bulundurun:
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 Bu ve diğer seçeneklerle ilgili ayrıntılı bilgi için bkz. [Apache Phoenix dilbilgisi](https://phoenix.apache.org/language/index.html#options).
 

@@ -8,11 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079165"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portalı kullanarak Azure Data Box Gateway paylaşımlarını yönetme 
 
@@ -91,23 +92,23 @@ Yenileme özelliği, şirket içi paylaşımın içeriğini yenilemenizi sağlar
 
 Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1.   Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
+1. Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
-    ![Paylaşımı seçme](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Paylaşımı seçme](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   **Yenile**'ye tıklayın. 
+2. **Yenile**'ye tıklayın. 
 
-    ![Yenile'ye tıklayın](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![Yenile'ye tıklayın](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   Onayınız istendiğinde **Evet**’e tıklayın. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır. 
+3. Onayınız istendiğinde **Evet**’e tıklayın. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır. 
 
-    ![Yenilemeyi onaylama](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![Yenilemeyi onaylama](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   Yenileme işlemi devam ederken bağlam menüsündeki Yenile seçeneği gri renkte gösterilir. Yenileme işinin durumunu görüntülemek için iş bildirimine tıklayın.
 
-5.   Yenileme süresi Azure kapsayıcısındaki ve cihazdaki dosya sayısına göre değişir. Yenileme işlemi başarıyla tamamlandıktan sonra paylaşım zaman damgası güncelleştirilir. Yenilemede kısmi hatalar olsa da işlem başarılı kabul edilir ve zaman damgası güncelleştirilir. 
+5. Yenileme süresi Azure kapsayıcısındaki ve cihazdaki dosya sayısına göre değişir. Yenileme işlemi başarıyla tamamlandıktan sonra paylaşım zaman damgası güncelleştirilir. Yenilemede kısmi hatalar olsa da işlem başarılı kabul edilir ve zaman damgası güncelleştirilir. 
 
-    ![Güncelleştirilmiş zaman damgası](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![Güncelleştirilmiş zaman damgası](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Hata varsa bir uyarı görüntülenir. Uyarıda sorunun nedeni ve düzeltme adımları yer alır. Uyarıda ayrıca güncelleştirme veya silme işleminin başarısız olduğu dosyalar da dahil olmak üzere hatanın ayrıntılı bir özetinin yer aldığı bir dosyaya bağlantı da verilir.
 

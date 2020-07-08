@@ -7,11 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 96881154a368da15d703b43ba2ffe5d6dd034bd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a26b6a622368fe9601ea3b6555386b6a121540
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213270"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081103"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -59,22 +60,36 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
 
-Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve masaüstü bilgisayarlar tarafından oluşturulan tüm grafikleri (GPU ile veya CPU ile işlenmeksizin) kodlar. Varsayılan olarak, uzak masaüstü bu kodlama için kullanılabilir GPU 'lara ait değildir. GPU hızlandırmalı çerçeve kodlamasını etkinleştirmek için oturum ana bilgisayarı için grup ilkesi yapılandırın. Yukarıdaki adımlara devam edin:
+Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve masaüstü bilgisayarlar tarafından oluşturulan tüm grafikleri (GPU ile veya CPU ile işlenmeksizin) kodlar. Ekranın bir kısmı sıklıkla güncelleniyorsa, ekranın bu bölümü bir video codec bileşeniyle (H. bir/AVC) kodlanır. Varsayılan olarak, uzak masaüstü bu kodlama için kullanılabilir GPU 'lara ait değildir. GPU hızlandırmalı çerçeve kodlamasını etkinleştirmek için oturum ana bilgisayarı için grup ilkesi yapılandırın. Yukarıdaki adımlara devam edin:
+ 
+>[!NOTE]
+>GPU hızlandırmalı çerçeve kodlaması NVv4 serisi VM 'lerde kullanılamaz.
 
-1. **Uzak Masaüstü bağlantıları için Ilke öncelik atama H.,/avc 444 grafik modu** ' nu seçin ve bu ilkeyi uzak oturumda h., ve AVC 444 codec bileşenini zorlamak için **etkin** olarak ayarlayın.
-2. **Uzak Masaüstü bağlantıları için, Ilke yapılandırma H. ıfer/AVC donanım kodlamasını** seçin ve bu ilkeyi uzak oturumda AVC/H. IBU için donanım kodlamayı etkinleştirmek üzere **etkin** olarak ayarlayın.
+1. **Uzak Masaüstü bağlantıları için, Ilke yapılandırma H. ıfer/AVC donanım kodlamasını** seçin ve bu ilkeyi uzak oturumda AVC/H. IBU için donanım kodlamayı etkinleştirmek üzere **etkin** olarak ayarlayın.
 
     >[!NOTE]
     >Windows Server 2016 ' de, **her zaman denemek**Için **AVC donanım kodlamasını tercih et** seçeneğini belirleyin.
 
-3. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
+2. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. Uzak Masaüstü oturumunda oturumu kapatın.
+3. Uzak Masaüstü oturumunda oturumu kapatın.
 
+## <a name="configure-fullscreen-video-encoding"></a>Tam ekran video kodlamasını yapılandırma
+
+Genellikle 3B modelleme, CAD/CAM ve video uygulamaları gibi yüksek kare hızlı bir içerik üreten uygulamalar kullanıyorsanız, uzak bir oturum için tam ekran olarak bir video kodlaması etkinleştirmeyi seçebilirsiniz. Tam ekran olarak video profili, ağ bant genişliği ve hem oturum ana bilgisayarı hem de istemci kaynakları için daha yüksek bir kare hızı ve daha iyi kullanıcı deneyimi sağlar. Tam ekran video kodlaması için GPU hızlandırmalı çerçeve kodlamasının kullanılması önerilir. Tam ekran video kodlamasını etkinleştirmek için oturum ana bilgisayarı için grup ilkesi yapılandırın. Yukarıdaki adımlara devam edin:
+
+1. **Uzak Masaüstü bağlantıları için Ilke öncelik atama H.,/avc 444 grafik modu** ' nu seçin ve bu ilkeyi uzak oturumda h., ve AVC 444 codec bileşenini zorlamak için **etkin** olarak ayarlayın.
+2. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
+
+    ```batch
+    gpupdate.exe /force
+    ```
+
+3. Uzak Masaüstü oturumunda oturumu kapatın.
 ## <a name="verify-gpu-accelerated-app-rendering"></a>GPU hızlandırmalı uygulama işlemeyi doğrulama
 
 Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağıdakilerden birini deneyin:
@@ -89,7 +104,14 @@ Uzak Masaüstü 'Nün GPU hızlandırmalı kodlama kullandığını doğrulamak 
 1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
 2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulamalar ve hizmetler günlükleri**  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-rdpcorecdv**  >  **operasyonel**
 3. GPU hızlandırmalı kodlamanın kullanıldığını anlamak için, olay KIMLIĞI 170 ' i arayın. "AVC donanım Kodlayıcısı etkin: 1" görürseniz, GPU kodlaması kullanılır.
-4. AVC 444 modunun kullanıldığını anlamak için, olay KIMLIĞI 162 ' yi arayın. "AVC kullanılabilir: 1 başlangıç profili: 2048" görürseniz, AVC 444 kullanılır.
+
+## <a name="verify-fullscreen-video-encoding"></a>Tam ekran video kodlamasının doğrulanması
+
+Uzak Masaüstü 'Nün tam ekran ekran kodlaması kullandığını doğrulamak için:
+
+1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
+2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulamalar ve hizmetler günlükleri**  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-rdpcorecdv**  >  **operasyonel**
+3. Tam ekran video kodlamasının kullanıldığını anlamak için, olay KIMLIĞI 162 ' i arayın. "AVC kullanılabilir: 1 başlangıç profili: 2048" görürseniz, AVC 444 kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

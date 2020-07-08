@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570772"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080490"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Öğretici: gelişmiş dağıtım akışı için Azure Stack Edge ile veri dönüştürme
 
@@ -22,7 +22,7 @@ Bu öğreticide, Azure Stack Edge cihazınızda gelişmiş bir dağıtım akış
 
 İşlem, cihazınızda basit veya gelişmiş dağıtım akışı için yapılandırılabilir.
 
-|                  | Basit Dağıtım                                | Gelişmiş dağıtım                   |
+| Ölçütler | Basit Dağıtım                                | Gelişmiş dağıtım                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | İçin tasarlanan     | BT yöneticileri                                | Geliştiriciler                            |
 | Tür             | Modül dağıtmak için Azure Stack Edge hizmetini kullanma      | Modül dağıtmak için IoT Hub hizmetini kullanma |
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -66,11 +66,11 @@ Azure Stack Edge 'de işlem yapılandırmak için bir IoT Hub kaynağı oluştur
     |Alan  |Değer  |
     |---------|---------|
     |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Adı     |IoT Hub kaynağınız için bir ad girin.         |
+    |Name     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için **Edge bilgi işlem** kutucuk güncelleştirmelerini yapılandırın. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin.
+4. **Oluştur**'u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için **Edge bilgi işlem** kutucuk güncelleştirmelerini yapılandırın. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin.
     
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
@@ -215,11 +215,11 @@ Bu bölümde, [Azure Stack kenarlarınızın C# modülünü geliştirme](azure-s
 
         ![Özel modül ekleme](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    **Rotaları belirtin**altında, modüller arasında rotalar ayarlayın.  
-    
-    ![Yolları belirt](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. **Rotaları belirtin**altında, modüller arasında rotalar ayarlayın.  
+   
+   ![Yolları belirt](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    *Rotayı* , daha önce kopyaladığınız yol dizesi ile değiştirebilirsiniz. Bu örnekte, bulut paylaşımında veri alacak yerel paylaşımın adını girin. `modulename` Öğesini modülün adıyla değiştirin. **İleri**’yi seçin.
+    *Rotayı* , daha önce kopyaladığınız yol dizesi ile değiştirebilirsiniz. Bu örnekte, bulut paylaşımında veri alacak yerel paylaşımın adını girin. Öğesini `modulename` modülün adıyla değiştirin. **İleri**’yi seçin.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
@@ -227,9 +227,9 @@ Bu bölümde, [Azure Stack kenarlarınızın C# modülünü geliştirme](azure-s
 
     ![Rotaları belirt bölümü](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    **Dağıtımı gözden geçir**altında tüm ayarları gözden geçirin ve ardından, modülü dağıtıma göndermek için **Gönder** ' i seçin.
+6. **Dağıtımı gözden geçir**altında tüm ayarları gözden geçirin ve ardından, modülü dağıtıma göndermek için **Gönder** ' i seçin.
 
-    ![Modülleri ayarla sayfası](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![Modülleri ayarla sayfası](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Bu eylem modül dağıtımını başlatır. Dağıtım tamamlandıktan sonra, modülün **çalışma zamanı durumu** **çalışıyor**olur.
 
@@ -241,13 +241,13 @@ Son adım modülün bağlı olduğundan ve beklendiği gibi çalıştığından 
 
 Veri dönüştürmeyi doğrulamak ve Azure 'a aktarmak için aşağıdaki adımları uygulayın.
  
-1.    Dosya Gezgini 'nde, daha önce oluşturduğunuz uç yerel ve kenar paylaşımlarına bağlanın.
+1. Dosya Gezgini 'nde, daha önce oluşturduğunuz uç yerel ve kenar paylaşımlarına bağlanın.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    Yerel paylaşıma veri ekleyin.
+1. Yerel paylaşıma veri ekleyin.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Veriler bulut paylaşımına taşınır.
 

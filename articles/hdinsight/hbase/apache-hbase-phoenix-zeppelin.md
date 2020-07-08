@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72392247"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079437"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
 
@@ -23,7 +23,7 @@ Apache Zeppelin, etkileşimli veri analizlerini ve SQL ve Scala gibi dilleri kul
 
 HDInsight kullanıcıları, Phoenix tablolarını sorgulamak için Apache Zeppelin kullanabilirler. Apache Zeppelin, HDInsight kümesiyle tümleşiktir ve bunu kullanmak için başka bir adım yoktur. JDBC yorumlayıcı ile Zeppelin Not defteri oluşturmanız ve Phoenix SQL sorgularınızı yazmaya başlamanız yeterlidir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama](./apache-hbase-tutorial-get-started-linux.md).
 

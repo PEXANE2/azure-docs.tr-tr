@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078638"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Ağ arabirimi devre dışı bırakıldığından bir VM 'ye uzak masaüstü yapılamıyor
 
@@ -39,21 +40,29 @@ VM 'nin arabirimini etkinleştirmek için, seri denetim veya VM için [ağ arabi
 ). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [ağ arabirimini sıfırlama](#reset-network-interface).
 2. Ağ arabiriminin durumunu kontrol edin:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Devre dışı bırakılan ağ arabiriminin adını aklınızda edin.
 
 3. Ağ arabirimini etkinleştir:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Örneğin, INTERWORK arabirimi "Ethernet 2" olarak adlandırılmışsa, aşağıdaki komutu çalıştırın:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Ağ arabiriminin etkinleştirildiğinden emin olmak için ağ arabiriminin durumunu yeniden kontrol edin.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Bu noktada VM 'yi yeniden başlatmanız gerekmez. VM 'ye erişilecektir.
 

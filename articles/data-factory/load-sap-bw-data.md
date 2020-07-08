@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081324"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -192,7 +192,7 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
       3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname*içinde yapılandırdığınız aynı değerleri kullanın.
 
-      4. **Kaydet**’i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
+      4. **Kaydet**'i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
 
 4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, **Debug**  >  yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için hata ayıklama**sonu** ' nu seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
 
@@ -269,7 +269,7 @@ Bundan sonra, sonraki Delta DTPs ve Data Factory Delta dışlamaları beklenen �
 
 Delta DTP 'nin durumunu **getirildi**olarak ayarlamak için, Delta DTP 'yi el ile çalıştırmak için aşağıdaki seçeneği kullanabilirsiniz:
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+*Veri Aktarımı yok; Kaynakta Delta durumu: getirildi*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

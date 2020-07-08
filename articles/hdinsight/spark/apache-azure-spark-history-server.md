@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079301"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusunun genişletilmiş özelliklerini kullanın
 
@@ -32,7 +32,7 @@ Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıld�
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>URL 'ye göre Spark geçmiş sunucusu Web Kullanıcı arabirimini açın
 
-Spark geçmiş sunucusunu öğesine `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`giderek açın, burada **clustername** , Spark kümenizin adıdır.
+Spark geçmiş sunucusunu öğesine giderek açın `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` , burada **clustername** , Spark kümenizin adıdır.
 
 Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde görünebilir:
 
@@ -130,14 +130,14 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
     ![Spark uygulaması & Iş grafiği sayfasında eğilmiş görev simgesi.](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + İş grafiği düğümü her aşama hakkında aşağıdaki bilgileri görüntüler:
-  + Kimlik
+  + ID
   + Ad veya açıklama
   + Toplam görev numarası
   + Okunan veriler: giriş boyutu ve karışık okuma boyutu toplamı
   + Veri yazma: çıkış boyutunun ve karışık yazma boyutunun toplamı
   + Yürütme Süresi: son denemede ilk deneme ve tamamlanma zamanının başlangıç saati arasındaki süre
   + Satır sayısı: giriş kayıtlarının toplamı, çıkış kayıtları, okuma kayıtlarını karıştırma ve yazma kayıtlarını karıştırma
-  + İlerleme durumu
+  + İlerleme Durumu
 
     > [!NOTE]  
     > Varsayılan olarak, iş grafiği düğümü her aşamanın son denemesindeki bilgileri (aşama yürütme süresi dışında) görüntüler. Ancak kayıttan yürütme sırasında, iş grafiği düğümü her girişimde ilgili bilgileri gösterir.
@@ -208,7 +208,7 @@ Tüm taslaklarına karşılık gelen içeriği seçmek veya seçimini kaldırmak
 Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın.
 
 1. Kümeyi ambarı 'nda açın.
-1. **Spark2** > **configs**sayfasına gidin.
+1. **Spark2**  >  **configs**sayfasına gidin.
 1. **Özel spark2-varsayılanlar**' ı seçin.
 1. **Özellik Ekle...** seçeneğini belirleyin.
 1. **Spark. UI. geliştirmesi. Enabled = False**ekleyin ve sonra kaydedin.
@@ -245,7 +245,7 @@ Spark geçmiş sunucusunda bir hata halinde çalıştırırsanız, olayı raporl
 
 ### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>Bir düzeltme senaryosunda. jar dosyasını yükseltmek Nasıl yaparım? mi?
 
-' Yi bir düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanarak Yükseltilecek `spark-enhancement.jar*`olan öğesini kullanın.
+' Yi bir düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanarak Yükseltilecek olan öğesini kullanın `spark-enhancement.jar*` .
 
 **upgrade_spark_enhancement. sh**:
 
@@ -310,7 +310,7 @@ Spark geçmiş sunucusunda bir hata halinde çalıştırırsanız, olayı raporl
     |Özellik |Değer |
     |---|---|
     |Betik türü|-Özel|
-    |Adı|UpgradeJar|
+    |Name|UpgradeJar|
     |Bash betiği URI 'SI|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Düğüm türleri|Baş, çalışan|
     |Parametreler|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -328,6 +328,6 @@ Spark geçmiş sunucusunda bir hata halinde çalıştırırsanız, olayı raporl
 + [HDInsight üzerinde Apache Spark kümesi için kaynakları yönetme](apache-spark-resource-manager.md)
 + [Apache Spark ayarlarını yapılandırma](apache-spark-settings.md)
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions"></a>Öneriler
 
-Bu aracı kullanırken geri bildiriminiz varsa veya herhangi bir sorun yaşıyorsanız, ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)) adresine bir e-posta gönderin.
+Bu aracı kullanırken geri bildiriminiz varsa veya herhangi bir sorun yaşıyorsanız, () adresine bir e-posta gönderin [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) .

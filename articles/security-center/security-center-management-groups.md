@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74559341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080882"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde edin
 Bu makalede, Azure Active Directory kiracınızla bağlantılı tüm Azure aboneliklerine güvenlik ilkeleri uygulayarak kuruluşunuzun güvenlik duruşunu nasıl yöneteceğiniz açıklanmaktadır.
@@ -73,7 +74,7 @@ Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan eri
 
 3. **Azure kaynakları Için erişim yönetimi**altında, anahtarı **Evet**olarak ayarlayın.
 
-   ![Genel yönetici, Azure aboneliklerini ve Yönetim Grupları yönetebilir-ekran görüntüsü](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Azure kaynakları için erişim yönetimi-ekran görüntüsü](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - Anahtarı Evet olarak belirlediğinizde, Azure RBAC 'de kök kapsamda (/) Kullanıcı erişimi Yöneticisi rolü atanır. Bu, tüm Azure aboneliklerine ve bu Azure AD diziniyle ilişkili yönetim gruplarına rol atama izni verir. Bu anahtar yalnızca Azure AD 'de Genel yönetici rolü atanmış kullanıcılar tarafından kullanılabilir.
 
@@ -160,7 +161,7 @@ RBAC rolleri kullanıcılara atandıktan sonra, kiracı yöneticisinin kendisini
 
 2. Gezinti listesinde **Azure Active Directory** ' a ve ardından **Özellikler**' e tıklayın.
 
-3. **Genel yönetici altında Azure aboneliklerini ve yönetim grupları yönetebilir**, anahtarı **Hayır**olarak ayarlayabilirsiniz.
+3. **Azure kaynakları Için erişim yönetimi**altında, anahtarı **Hayır**olarak ayarlayın.
 
 4. Ayarınızı kaydetmek için **Kaydet** ' e tıklayın.
 

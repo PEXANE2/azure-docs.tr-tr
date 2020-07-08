@@ -3,18 +3,18 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: f9e51521e9bd35c6afb3dbe7cafb1e56e847756a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082208"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
 Bu makalede, [ASP.NET Core](https://docs.microsoft.com/aspnet/core) bir uygulama için Application Insights nasıl etkinleştirileceği açıklanır. Bu makaledeki yönergeleri tamamladığınızda Application Insights, ASP.NET Core uygulamanızdan istekleri, bağımlılıkları, özel durumları, performans sayaçlarını, sinyalleri ve günlükleri toplar.
 
-Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) `netcoreapp3.0` . Bu yönergeleri tüm ASP.NET Core uygulamalarına uygulayabilirsiniz.
+Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) `netcoreapp3.0` . Bu yönergeleri tüm ASP.NET Core uygulamalarına uygulayabilirsiniz. [Çalışan hizmetini](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template)kullanıyorsanız [buradaki](./worker-service.md)yönergeleri kullanın.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -30,7 +30,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](https:
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](https://docs.microsoft.com/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
@@ -201,7 +201,7 @@ public void ConfigureServices(IServiceCollection services)
 
 İçindeki ayarların tam listesi`ApplicationInsightsServiceOptions`
 
-|Ayar | Açıklama | Varsayılan
+|Ayar | Description | Varsayılan
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | Etkinleştir/devre dışı bırak`PerformanceCounterCollectionModule` | true
 |EnableRequestTrackingTelemetryModule   | Etkinleştir/devre dışı bırak`RequestTrackingTelemetryModule` | true
@@ -225,7 +225,7 @@ Daha fazla bilgi için bkz. [ASP.NET Core uygulamalar için uyarlamalı örnekle
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers ekleme
 
-Tüm telemetriyle gönderilen genel özellikleri tanımlamak istediğinizde [telemetri başlatıcıları](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) 'nı kullanın.
+Ek bilgilerle telemetri zenginleştirmek istediğinizde [telemetri başlatıcıları](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) 'nı kullanın.
 
 `TelemetryInitializer` `DependencyInjection` Aşağıdaki kodda gösterildiği gibi kapsayıcıya yenilerini ekleyin. SDK otomatik olarak kapsayıcıya eklenen her birini seçer `TelemetryInitializer` `DependencyInjection` .
 
@@ -282,7 +282,7 @@ Application Insights, Kullanıcı tarafından el ile izlemeye gerek duymadan bel
 Aşağıdaki otomatik koleksiyon modülleri varsayılan olarak etkinleştirilmiştir. Bu modüller, otomatik olarak telemetri toplamanın sorumluluğundadır. Varsayılan davranışlarını değiştirecek şekilde devre dışı bırakabilir veya yapılandırabilirsiniz.
 
 * `RequestTrackingTelemetryModule`-Gelen web isteklerinden Requesttelemetri toplar.
-* `DependencyTrackingTelemetryModule`-Giden http çağrılarından ve SQL çağrılarından Dependencytelemetri toplar.
+* `DependencyTrackingTelemetryModule`-Giden http çağrılarından ve SQL çağrılarından [Dependencytelemetri](./asp-net-dependencies.md) toplar.
 * `PerformanceCollectorModule`-Windows PerformanceCounters sayaçlarını toplar.
 * `QuickPulseTelemetryModule`-Canlı ölçüm portalında göstermek için telemetri toplar.
 * `AppServicesHeartbeatTelemetryModule`-Uygulamanın barındırıldığı Azure App Service ortamı hakkında, kalpler (özel ölçümler olarak gönderilir) toplar.
@@ -329,7 +329,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="configuring-a-telemetry-channel"></a>Telemetri kanalını yapılandırma
 
-Varsayılan kanal `ServerTelemetryChannel` . Aşağıdaki örnekte gösterildiği gibi, geçersiz kılabilirsiniz.
+Varsayılan [telemetri kanalı](./telemetry-channels.md) `ServerTelemetryChannel` . Aşağıdaki örnekte gösterildiği gibi, geçersiz kılabilirsiniz.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-Application Insights özel veri raporlama hakkında daha fazla bilgi için bkz. [Application Insights özel ölçümler API başvurusu](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/).
+Application Insights özel veri raporlama hakkında daha fazla bilgi için bkz. [Application Insights özel ölçümler API başvurusu](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/). Benzer bir yaklaşım, [GetMetric API 'si](./get-metric.md)kullanılarak Application Insights özel ölçümler göndermek için kullanılabilir.
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Bazı Visual Studio şablonları, Application Insights etkinleştirmek için ıwebhostbuilder üzerinde Useapplicationınsights () genişletme yöntemini kullandı. Bu kullanım hala geçerli mi?
 

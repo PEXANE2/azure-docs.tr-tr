@@ -7,17 +7,20 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b834f6222885ea9c5930081738a80be28f9c545
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84947107"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082310"
 ---
 # <a name="azure-activity-log"></a>Azure etkinlik günlüğü
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
 
 Tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümleri farklı hedeflere göndermek için Tanılama ayarları oluşturma](diagnostic-settings.md) .
+
+> [!NOTE]
+> Etkinlik günlüğündeki girişler sistem tarafından oluşturuldu ve değiştirilemez ya da silinemez.
 
 ## <a name="view-the-activity-log"></a>Etkinlik günlüğünü görüntüleme
 Etkinlik günlüğüne Azure portal birçok menü üzerinden erişebilirsiniz. İçinden açtığınız menü ilk filtresini belirler. Bunu **izleyici** menüsünden açarsanız, abonelik üzerinde tek filtre olur. Bunu bir kaynağın menüsünden açarsanız, filtre o kaynağa ayarlanır. Tüm diğer girdileri görüntülemek için filtreyi her zaman değiştirebilirsiniz. Filtreye ek özellikler eklemek için **Filtre Ekle** ' ye tıklayın.
@@ -63,14 +66,14 @@ Log Analytics çalışma alanındaki etkinlik günlüğü verileri, [Log Analyti
 
 ```kusto
 AzureActivity
-| summarize count() by CategoryValue
+| summarize count() by Category
 ```
 
 Yönetim kategorisindeki tüm kayıtları almak için aşağıdaki sorguyu kullanın.
 
 ```kusto
 AzureActivity
-| where CategoryValue == "Administrative"
+| where Category == "Administrative"
 ```
 
 

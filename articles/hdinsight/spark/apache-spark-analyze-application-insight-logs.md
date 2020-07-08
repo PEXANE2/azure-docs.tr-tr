@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435237"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078808"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
 
@@ -31,7 +31,7 @@ HDInsight üzerinde [Apache Spark](https://spark.apache.org/) kullanarak Applica
 
 Bu belgeyi geliştirmek ve test etmek için aşağıdaki kaynaklar kullanılmıştır:
 
-* Application Insights telemetri verileri, [Application Insights kullanmak üzere yapılandırılmış bir Node. js web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturulmuştur.
+* Application Insights telemetri verileri, [Application Insights kullanmak üzere yapılandırılmış birNode.js Web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturulmuştur.
 
 * HDInsight kümesi sürüm 3,5 ' de Linux tabanlı bir Spark, verileri çözümlemek için kullanıldı.
 
@@ -70,7 +70,7 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
 ## <a name="analyze-the-data-pyspark"></a>Verileri analiz etme: PySpark
 
-1. Bir Web tarayıcısından CLUSTERNAME öğesinin Kümenizin adı `https://CLUSTERNAME.azurehdinsight.net/jupyter` olduğu yere gidin.
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter` clustername öğesinin Kümenizin adı olduğu yere gidin.
 
 2. Jupi sayfasının sağ üst köşesinde, **Yeni**ve ardından **pyspark**' ı seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
 
@@ -80,17 +80,19 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, `/{telemetry type}/YYYY-MM-DD/{##}/`öğesine benzer bir dizin yapısına kaydedilir.
+    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, öğesine benzer bir dizin yapısına kaydedilir `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, bu hücredeki kodun yürütüldüğü belirten köşeli\*ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra '\*' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
+4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, \* Bu hücredeki kodun yürütüldüğü belirten köşeli ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra ' \* ' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
 5. Birinci bir hücre aşağıda oluşturulur. Yeni hücreye aşağıdaki metni girin. İle `CONTAINER` ve `STORAGEACCOUNT` Application Insights verileri içeren blob kapsayıcısı adı ile değiştirin.
 
@@ -101,15 +103,17 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Bu hücreyi yürütmek için **SHIFT + enter** tuşlarını kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
-    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. Döndürülen IBS yolunu kullanmak için hücredeki `hdfs dfs -ls` çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
+    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. `hdfs dfs -ls`Döndürülen IBS yolunu kullanmak için hücredeki çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak Için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
 
    > [!NOTE]  
    > Bu bölümdeki adımların geri kalanı için `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` Dizin kullanılmıştır. Dizin yapınız farklı olabilir.
 
-6. Sonraki hücrede şu kodu girin: önceki adımdaki yol ile değiştirin `WASB_PATH` .
+6. Sonraki hücrede şu kodu girin: `WASB_PATH` önceki adımdaki yol Ile değiştirin.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -125,66 +129,68 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Her telemetri türünün şeması farklıdır. Aşağıdaki örnek, Web istekleri için oluşturulan şemadır ( `Requests` alt dizinde depolanan veriler):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verilere karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
 
@@ -201,19 +207,21 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Bu sorgu, aşağıdaki metne benzer bilgiler döndürür:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="analyze-the-data-scala"></a>Verileri analiz etme: Scala
 
-1. Bir Web tarayıcısından CLUSTERNAME öğesinin Kümenizin adı `https://CLUSTERNAME.azurehdinsight.net/jupyter` olduğu yere gidin.
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter` clustername öğesinin Kümenizin adı olduğu yere gidin.
 
 2. Jupi sayfasının sağ üst köşesinde, **Yeni**' yi ve ardından **Scala**' yı seçin. Scala tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi görüntülenir.
 
@@ -223,19 +231,21 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, öğesine `/{telemetry type}/YYYY-MM-DD/{##}/`benzer bir dizin yapısına kaydedilir.
+    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, öğesine benzer bir dizin yapısına kaydedilir `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, bu hücredeki kodun yürütüldüğü belirten köşeli\*ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra '\*' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
+4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, \* Bu hücredeki kodun yürütüldüğü belirten köşeli ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra ' \* ' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    spark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    spark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. Birinci bir hücre aşağıda oluşturulur. Yeni hücreye aşağıdaki metni girin. Ve `CONTAINER` `STORAGEACCOUNT` , Application Insights günlükleri içeren blob kapsayıcısı adı ve Azure depolama hesabı adı ile değiştirin.
+5. Birinci bir hücre aşağıda oluşturulur. Yeni hücreye aşağıdaki metni girin. `CONTAINER`Ve `STORAGEACCOUNT` , Application Insights günlükleri içeren blob kapsayıcısı adı ve Azure depolama hesabı adı ile değiştirin.
 
    ```scala
    %%bash
@@ -244,15 +254,17 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Bu hücreyi yürütmek için **SHIFT + enter** tuşlarını kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
-    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. Döndürülen IBS yolunu kullanmak için hücredeki `hdfs dfs -ls` çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
+    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. `hdfs dfs -ls`Döndürülen IBS yolunu kullanmak için hücredeki çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak Için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
 
    > [!NOTE]  
    > Bu bölümdeki adımların geri kalanı için `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` Dizin kullanılmıştır. Telemetri verileriniz bir Web uygulaması için değilse, bu dizin mevcut olmayabilir.
 
-6. Sonraki hücrede şu kodu girin: önceki adımdaki yol ile değiştirin `WASB\_PATH` .
+6. Sonraki hücrede şu kodu girin: `WASB\_PATH` önceki adımdaki yol Ile değiştirin.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -270,66 +282,68 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Her telemetri türünün şeması farklıdır. Aşağıdaki örnek, Web istekleri için oluşturulan şemadır ( `Requests` alt dizinde depolanan veriler):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verilere karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
 
@@ -345,15 +359,17 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
     Bu sorgu, aşağıdaki metne benzer bilgiler döndürür:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
