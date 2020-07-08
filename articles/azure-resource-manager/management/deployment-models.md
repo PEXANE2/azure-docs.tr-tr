@@ -3,12 +3,12 @@ title: Resource Manager ve klasik dağıtım
 description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetimi) dağıtım modeli arasındaki farklılıkları açıklar.
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763797"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057577"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
 
@@ -125,7 +125,7 @@ Kaynaklarınızı klasik dağıtımdan Kaynak Yöneticisi dağıtımına geçirm
 1. [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [IaaS kaynaklarının Klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Azure PowerShell’i kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Azure CLI kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [Azure CLI kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -152,4 +152,3 @@ Yeni başlayanlar için kapsamlı bir şablon dizisi, [Azure Resource Manager H�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şablon dağıtma komutlarını görmek için bkz. [Azure Resource Manager şablonu ile uygulama dağıtma](../templates/deploy-powershell.md).
-

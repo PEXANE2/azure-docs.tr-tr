@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9489b9e1afe5e42121f61a3b0b50b28b2401bd3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392293"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057492"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği ayarlama
 
@@ -24,19 +24,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="set-up-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği ayarlama
 
-Ardından, bu nasıl yapılır, bu şekilde kullanılmak üzere yeni bir Azure Kaynak grubu oluşturmak için aşağıdaki komutları çalıştırın ve ardından bu kaynak grubunda Azure dijital TWINS 'in yeni bir örneğini oluşturun.
+Daha sonra, bu nasıl yapılır ile kullanılmak üzere yeni bir Azure Kaynak grubu oluşturacaksınız. Daha sonra, bu kaynak grubunda **Azure dijital TWINS 'in yeni bir örneğini oluşturabilirsiniz** . 
+
+Ayrıca, örneğiniz için bir ad girmeniz ve dağıtım için bir bölge seçmeniz gerekir. Azure dijital TWINS 'i destekleyen bölgeleri görmek için [bölgeye göre kullanılabilen Azure ürünlerini](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
+
+>[!NOTE]
+> Yeni örneğin adı bölge içinde benzersiz olmalıdır (yani, bu bölgedeki başka bir Azure dijital TWINS örneği zaten seçtiğiniz adı kullanıyorsa, farklı bir ad seçmeniz gerekir).
+
+Kaynak grubunu ve örneği aşağıdaki komutlarla oluşturun:
 
 ```azurecli
 az group create --location <region> --name <name-for-your-resource-group>
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
-
-> [!TIP]
-> Azure CLı 'de komutlara geçirilebilecek Azure bölge adlarının bir listesini çıkarmak için şu komutu çalıştırın:
-> ```azurecli
-> az account list-locations -o table
-> ```
-> Azure dijital TWINS 'i destekleyen bölgeleri görmek için [bölgeye göre kullanılabilen Azure ürünlerini](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
 
 Bu komutların sonucu, oluşturduğunuz kaynaklarla ilgili bilgiler olarak şu şekilde görünür:
 
@@ -55,9 +55,11 @@ Azure dijital TWINS 'i bir istemci uygulamasıyla kullanabilmek için, istemci u
 
 #### <a name="assign-yourself-a-role"></a>Kendinize bir rol atayın
 
-Azure aboneliğinizdeki AAD kiracısı ile ilişkili e-postanızı kullanarak kendiniz için bir rol ataması oluşturun. 
+Azure aboneliğinizdeki AAD kiracısı ile ilişkili e-postanızı kullanarak Azure dijital TWINS örneğinde kendiniz için bir rol ataması oluşturun. 
 
-İlk olarak, Azure aboneliğinizde bir sahip olarak sınıflandırdığınızdan emin olun. Bunu, `az role assignment list --assignee <your-Azure-email>` komutunu kullanarak ve *Roledefinitionname* değerinin *Owner*olduğunu doğrulayarak kontrol edebilirsiniz. Abonelikte sahip olarak, Azure dijital TWINS örneğiniz için kullanıcıyı bir sahip rolüne atamak üzere aşağıdaki komutu kullanabilirsiniz:
+Bunu yapabilmeleri için Azure aboneliğinizde bir sahip olarak sınıflandırılmalıdır. Bunu `az role assignment list --assignee <your-Azure-email>` , komutunu çalıştırarak ve sonra *Roledefinitionname* değerinin *sahip*olduğu çıktıda doğrulayarak kontrol edebilirsiniz. Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz, rolünüzü yükseltmek için aboneliğinizin izin vermesi için lütfen güç ile abonelik yöneticinizle iletişime geçin.
+
+Abonelikte sahip olarak, Azure dijital TWINS örneğiniz için kullanıcıyı bir sahip rolüne atamak üzere aşağıdaki komutu kullanabilirsiniz:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

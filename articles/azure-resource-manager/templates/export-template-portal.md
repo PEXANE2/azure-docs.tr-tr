@@ -3,12 +3,12 @@ title: Azure portal şablonu dışarı aktarma
 description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu dışarı aktarmak için Azure portal kullanın.
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273741"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057713"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -72,7 +72,7 @@ Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 
    **Include parametreleri** varsayılan olarak seçilidir.  Seçildiğinde, şablon oluşturulduğunda tüm şablon parametreleri dahil edilir. Kendi parametrelerinizi yazmak isterseniz, bu onay kutusunu dahil etmez.
 
-## <a name="export-template-from-a-resource"></a>Şablondan bir kaynağı dışarı aktar
+## <a name="export-template-from-a-resource"></a>Kaynak şablonunu dışarı aktarma
 
 Bir kaynağı dışarı aktarmak için:
 
@@ -121,5 +121,5 @@ Mevcut kaynakları dağıtmak için kullanılan şablonu dışarı aktarabilirsi
 
 - [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)veya [REST API](/rest/api/resources/resourcegroups/exporttemplate)ile şablonları dışarı aktarmayı öğrenin.
 - Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
+- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](../index.yml)bölümüne bakın.
 - Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).

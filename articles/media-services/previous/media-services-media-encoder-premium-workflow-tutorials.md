@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712437"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057475"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Gelişmiş Media Encoder Premium Workflow öğreticileri
 ## <a name="overview"></a>Genel Bakış
@@ -187,7 +187,7 @@ Kullanılan dosya adı dosya özelliğine göre belirlenir. Bu özellik belirli 
 
 İfade Düzenleyicisi, bir veya daha fazla değişkenle karışık olan herhangi bir sabit değer girmenize olanak sağlar. Değişkenler dolar işaretiyle başlar. $ Tuşuna ulaşırsanız, düzenleyici kullanılabilir değişkenler seçimine sahip bir açılan kutu gösterir. Bizim örneğimizde, çıkış dizini değişkeninin ve temel giriş dosya adı değişkeninin bir birleşimini kullanacağız:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![Doldurulmuş Ifade Düzenleyicisi](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ Note: varlık çıktısına eklenmesini istediğiniz diğer bit hızı ve çöz�
 
 Dosya çıktısı adlandırması, tasarımcıda ifadeler aracılığıyla denetlenebilir. Dosya çıkış bileşenlerinden biri için özellik bölmesini açın ve dosya özelliği için ifade düzenleyicisini açın. İlk çıkış dosyası aşağıdaki ifade kullanılarak yapılandırıldı ( [MXF 'den tek bir bit hızı MP4 çıktısına](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)gitmek için öğreticiye bakın):
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 Bu, dosya adınızın iki değişken tarafından belirlendiği anlamına gelir: yazılacak çıkış dizini ve kaynak dosya tabanı adı. İlki, iş akışı kökünde bir özellik olarak sunulur ve ikincisi gelen dosya tarafından belirlenir. Çıkış dizini, yerel test için kullandığınız şeydir; iş akışı Azure Media Services içindeki bulut tabanlı medya işlemcisi tarafından yürütüldüğünde, bu özellik iş akışı altyapısı tarafından geçersiz kılınır.
 Çıkış Dosyalarınıza her ikisine de tutarlı bir çıktı adlandırması vermek için, ilk dosya adlandırma ifadesini şu şekilde değiştirin:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 ve ikincisinin:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Her iki MP4 çıkış dosyasının düzgün şekilde oluşturulduğundan emin olmak için bir ara test çalıştırması yürütün.
 
@@ -287,7 +287,7 @@ Daha sonra MP4 çıkış dosyalarınıza gitmek üzere bir. ISM dosyası oluştu
 
 Muxer 'den giden akışı çıkarmak için bir üçüncü dosya çıkış bileşeni oluşturun ve dosya adlandırma ifadesini şu şekilde yapılandırın:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![Ses muxer dosya çıkışı oluşturma](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ MP4's kümesi için bildirim dosyasının oluşturulması "AMS bildirim yazıcı
 
 Diğer dosya çıkış bileşenlerimizde olduğu gibi,. ISM dosyası çıkış adını bir ifadeyle yapılandırın:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 Tamamlanan iş akışımız aşağıdaki gibi görünür:
 
@@ -342,11 +342,11 @@ Bu izlenecek yolda, bazı yönlerinin nasıl iyileştirilen ve daha uygun hale g
 
 Örneğin, ilk video dosyası için dosya çıkış bileşenimiz Bu ifadeyle yapılandırılır:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 İkinci çıkış videosu için, şöyle bir ifade sunuyoruz:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Bu çoğaltmanın bazılarını kaldırabilmemiz ve bunun yerine daha fazla yapılandırılabilir hale getiriyoruz, temizleyici, daha az hata ve daha kolay bir sorun olması gerekir mi? Luckily: iş akışı kökümüzde özel özellikler oluşturma özelliği ile birlikte tasarımcı 'nın ifade özellikleri, ek bir kolaylık düzeyi sağlar.
 
@@ -391,7 +391,7 @@ Bu üç değerin herhangi birini değiştirmek Ayrıca, bağlı oldukları ilgil
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>Yayımlanmış özellik değerlerini kullanan çıkış dosyası adlarını oluşturmuş olmanız
 Oluşturulan dosya adlarımızla ilgili olarak kodlanması yerine, artık, grafik kökünde yayımladığımız bit hızı özelliklerine göre dosya çıkış bileşenlerinde dosya adı ifademizi değiştirebiliriz. İlk dosya çıktımız ile başlayarak, dosya özelliğini bulun ve ifadeyi şu şekilde düzenleyin:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 Bu ifadedeki farklı parametrelere, ifade penceresinde klavyede dolar işaretine vurarak erişilebilir ve girilebilir. Kullanılabilir parametrelerden biri, daha önce yayımladığımız video1bitrate özelliğidir.
 
@@ -401,11 +401,11 @@ Bu ifadedeki farklı parametrelere, ifade penceresinde klavyede dolar işaretine
 
 İkinci videoımız için dosya çıktısı için de aynısını yapın:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 ve yalnızca ses dosyası çıkışı için:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 Artık herhangi bir video veya ses dosyasının bit hızını değiştirdik, ilgili kodlayıcı yeniden yapılandırılır ve bit hızı tabanlı dosya adı kuralı tüm otomatik olarak kabul edilir.
 
@@ -462,11 +462,11 @@ MP4 videoızdan farklı olarak, JPG Kodlayıcısı bileşeni birden fazla dosya 
 
 *Sahne araması JPG dosya yazıcısına giriş*
 
-Çıkış klasörü yolu özelliğini şu ifadeyle yapılandırın: $ {ROOT_outputWriteDirectory}
+Çıkış klasörü yolu özelliğini ifadesiyle yapılandırın:`${ROOT_outputWriteDirectory}`
 
 ve dosya adı öneki özelliği:
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 Ön ek, küçük resim dosyalarının nasıl adlandırıldığını belirler. Bu değerler, Thumb 'in akıştaki konumunu belirten bir sayı ile sabitlenmiştir.
 
@@ -551,11 +551,11 @@ Artık iş akışımızın kökünü inceliyoruz, her iki özellik de aynı şek
 
 Ses kırpma başlangıç zamanı için:
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 ve bitiş saati için:
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>Tamamlanan Iş akışı
 ![Tamamlanan Iş akışı](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ Betikler, Java ile uyumluluğu koruyan Java platformu için dinamik olarak derle
 
 RealizeScript 'ın bağlamına basit bir Hello World groovy betiği yazalım. Düzenleyicide aşağıdakini girin:
 
-    node.log("hello world");
+`node.log("hello world");`
 
 Şimdi bir yerel test çalıştırması yürütün. Bu çalıştırıldıktan sonra (komut dosyalı bileşendeki sistem sekmesi aracılığıyla) Günlükler özelliğini inceleyin.
 

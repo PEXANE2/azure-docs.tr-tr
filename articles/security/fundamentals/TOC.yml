@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: Sarkan DNS ve alt etki alanı adı ele geçirme
       href: subdomain-takeover.md
-    - name: DDoS Koruması güvenlik temeli
-      href: ddos-protection-security-baseline.md
     - name: Güvenli karma ağ mimarisi
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS güvenliği

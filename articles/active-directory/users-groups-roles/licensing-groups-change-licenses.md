@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 07/07/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727645"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057764"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
 
@@ -49,12 +49,12 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 1. **Azure Active Directory**  >  **Kullanıcılar**' ı seçin ve ardından bir kullanıcının **profil** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** ' ı seçin. **Atamalar** sayfası, lisans atama çakışmalarını çözebileceğiniz yerdir.
-1. Office 366 E3 onay kutusunu işaretleyin ve kullanıcıya atanmış tüm E1 hizmetlerinin en azından seçili olduğundan emin olun.
+1. Office 365 E3 onay kutusunu işaretleyin ve kullanıcıya atanmış tüm E1 hizmetlerinin en azından seçili olduğundan emin olun.
 1. Office 365 E1 için onay kutusunu temizleyin.
 
     ![Office 365 E1 temizlenmiş ve Office 365 E3 seçili olduğunu gösteren bir kullanıcının lisans atamaları sayfası](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için eski lisansları aynı anda kaldırır.
 
@@ -64,12 +64,12 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 1. **Azure Active Directory**  >  **grupları**' nı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** komutunu seçin.
-1. Office 366 E3 onay kutusunu seçin. Hizmetin sürekliliği devam etmek için, kullanıcıya zaten atanmış olan E1 hizmetlerini seçtiğinizden emin olun.
+1. Office 365 E3 onay kutusunu seçin. Hizmetin sürekliliği devam etmek için, kullanıcıya zaten atanmış olan E1 hizmetlerini seçtiğinizden emin olun.
 1. Office 365 E1 için onay kutusunu temizleyin.
 
     ![Kullanıcı veya grup lisansları sayfasında atamalar komutunu seçin](media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Azure AD, hizmet devamlılığını sağlamak için yeni lisansları uygular ve gruptaki tüm kullanıcılar için aynı anda eski lisansları kaldırır.
 

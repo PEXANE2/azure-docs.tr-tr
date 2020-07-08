@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: jgao
-ms.openlocfilehash: e3d0c3493039a1c4cda2bec0d949e610321f6c57
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: b3de286bbf4513d252b42304cdc667877c72f6da
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373820"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057424"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -74,10 +74,10 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 
   ---
 
-- **Azure PowerShell** veya **Azure CLI**. Desteklenen Azure PowerShell sürümlerinin listesi için [buraya](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)bakın; Desteklenen Azure CLı sürümlerinin listesi için [buraya](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)bakın.
+- **Azure PowerShell** veya **Azure CLI**. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
     >[!IMPORTANT]
-    > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Desteklenmeyen bir sürüm kullanılırsa, hata iletisi desteklenen sürümleri listeler.
+    > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Desteklenmeyen bir sürüm kullanılırsa, hata iletisi desteklenen sürümleri listeler.
 
     Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 

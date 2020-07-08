@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888790"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057560"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -32,7 +32,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kaynak gruplarını** seçin
 
     ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
 ## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak gruplarını listelemek için **kaynak grupları** ' nı seçin.
 
     ![kaynak gruplarına gözatamıyorum](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,7 +61,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 
 ## <a name="open-resource-groups"></a>Kaynak gruplarını aç
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kaynak grupları**’nı seçin.
 3. Açmak istediğiniz kaynak grubunu seçin.
 
@@ -111,5 +111,5 @@ Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kay
 
 - Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
 - Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
+- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](../index.yml)bölümüne bakın.
 - Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74900309"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058019"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics ile yüzeyleri redaksiyonu 
 ## <a name="overview"></a>Genel Bakış
@@ -38,7 +38,7 @@ Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, har veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Birleşik '}} |
-| Çıkış varlığı |foo_redacted. mp4 |Bulanıklaştırma uygulanmış video |
+| Çıkış varlığı |foo_redacted.mp4 |Bulanıklaştırma uygulanmış video |
 
 #### <a name="input-example"></a>Giriş örneği:
 [Bu videoyu görüntüle](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
@@ -53,8 +53,8 @@ Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Analyze '}} |
-| Çıkış varlığı |foo_annotations. JSON |JSON biçimindeki yüz konumlarının ek açıklama verileri. Bu, bulanıklaştırma sınırlayıcı kutularını değiştirmek için Kullanıcı tarafından düzenlenebilir. Aşağıdaki örneğe bakın. |
-| Çıkış varlığı |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Algılanan her bir yüzün kırpılan bir jpg (sayının, yüzün LabelId 'sini gösterdiği) |
+| Çıkış varlığı |Üzerinde foo_annotations.js |JSON biçimindeki yüz konumlarının ek açıklama verileri. Bu, bulanıklaştırma sınırlayıcı kutularını değiştirmek için Kullanıcı tarafından düzenlenebilir. Aşağıdaki örneğe bakın. |
+| Çıkış varlığı |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Algılanan her bir yüzün kırpılan bir jpg (sayının, yüzün LabelId 'sini gösterdiği) |
 
 #### <a name="output-example"></a>Çıkış örneği:
 
@@ -117,21 +117,23 @@ Analiz geçişinin çıktısı özgün videoyu içermez. Videonun, Redakct modu 
 | Aşama | Dosya Adı | Notlar |
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video. 1. adımdaki ile aynı video. |
-| Giriş varlığı |foo_annotations. JSON |isteğe bağlı değişiklikler ile birinci aşamadan sonra gelen açıklama meta verileri dosyası. |
-| Giriş varlığı |foo_IDList. txt (Isteğe bağlı) |Redaksiyonlar için isteğe bağlı yeni satıra ayrılmış yüz kimlikleri listesi. Boş bırakılırsa bu, tüm yüzleri bulanıklaştırır. |
+| Giriş varlığı |Üzerinde foo_annotations.js |isteğe bağlı değişiklikler ile birinci aşamadan sonra gelen açıklama meta verileri dosyası. |
+| Giriş varlığı |foo_IDList.txt (Isteğe bağlı) |Redaksiyonlar için isteğe bağlı yeni satıra ayrılmış yüz kimlikleri listesi. Boş bırakılırsa bu, tüm yüzleri bulanıklaştırır. |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Redact '}} |
-| Çıkış varlığı |foo_redacted. mp4 |Ek açıklamalar temelinde uygulanan bulanıklık ile video |
+| Çıkış varlığı |foo_redacted.mp4 |Ek açıklamalar temelinde uygulanan bulanıklık ile video |
 
 #### <a name="example-output"></a>Örnek çıkış
 Bu, bir ID seçili olan bir ıdlist öğesinden alınan çıktıdır.
 
 [Bu videoyu görüntüle](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Örnek foo_IDList. txt
+Örnek foo_IDList.txt
  
-     1
-     2
-     3
+```output
+1
+2
+3
+```
 
 ## <a name="blur-types"></a>Bulanıklaştırma türleri
 
@@ -367,7 +369,7 @@ namespace FaceRedaction
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706503"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057526"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -74,7 +74,7 @@ Kaynakların silinmesini Azure Resource Manager nasıl sipariş Azure Resource M
 
 Bkz. [kaynakları var olan bir kaynak grubuna dağıtma](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Bir kaynak grubu dağıtımını doğrulamak için bkz. [Test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
+Bir kaynak grubu dağıtımını doğrulamak için bkz. [Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Kaynak grubu ve kaynakları dağıtma
 
@@ -223,5 +223,5 @@ Daha fazla bilgi için, [Azure Portal ' de tek ve çoklu kaynak verme şablonuna
 
 - Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
 - Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
+- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](../index.yml)bölümüne bakın.
 - Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).

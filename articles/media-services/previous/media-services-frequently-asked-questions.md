@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832563"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058002"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Media Services V2 sık sorulan sorular
 
@@ -66,22 +66,24 @@ S: kodlama işlemi sırasında bir videoyu nasıl döndürebilirim?
 
 Y: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) , 90/180/270 açılara dönüşü destekler. Varsayılan davranış, gelen MP4/MOV dosyasındaki döndürme meta verilerini algılamaya ve bu dosyada telafi etmeye çalıştığı "Auto" dır. [Burada](media-services-mes-presets-overview.md)tanımlanan JSON önayarlarından birine aşağıdaki **Sources** öğesini ekleyin:
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

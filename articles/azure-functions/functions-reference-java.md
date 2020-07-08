@@ -3,12 +3,12 @@ title: Azure Işlevleri için Java geliştirici başvurusu
 description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340343"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057611"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 Bu arşiv ETYPE kullanmaya başlamak için bkz. [Java hızlı başlangıç](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin işlevleri oluşturma (Önizleme)
-
-Ayrıca, Kotlin işlevleri oluşturmak için bir Maven arşiv ETYPE vardır. Şu anda önizleme aşamasında olan bu arşiv ETYPE şu _GroupID_altında yayımlanır:_ArtifactId_: [com. Microsoft. Azure: Azure-Functions-Kotlin-](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/),. 
-
-Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-Bu arşiv ETYPE kullanmaya başlamak için, bkz. [Kotlin hızlı başlangıç](functions-create-first-kotlin-maven.md).
-
 ## <a name="folder-structure"></a>Klasör yapısı
 
 Bir Azure Işlevleri Java projesinin klasör yapısı aşağıda verilmiştir:
@@ -90,9 +76,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* Kotlin projesi hala Maven olduğundan çok benzer görünüyor_
-
-İşlev uygulamasını yapılandırmak için paylaşılan bir [Host. JSON](functions-host-json.md) dosyası kullanabilirsiniz. Her işlevin kendi kod dosyası (. Java) ve bağlama yapılandırma dosyası (Function. JSON) vardır.
+İşlev uygulamasını yapılandırmak için, paylaşılan bir [host.js](functions-host-json.md) dosyası kullanabilirsiniz. Her işlev kendi kod dosyasına (. Java) ve bağlama yapılandırma dosyasına (function.js) sahiptir.
 
 Bir projeye birden fazla işlev yerleştirebilirsiniz. İşlevlerinizi ayrı jliler 'e yerleştirmekten kaçının. `FunctionApp`Hedef dizindeki, Azure 'da işlev uygulamanıza dağıtılan şeydir.
 
@@ -103,7 +87,7 @@ Bir projeye birden fazla işlev yerleştirebilirsiniz. İşlevlerinizi ayrı jli
 Yöntemlerinizi giriş ve çıkışları bağlamak için [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) paketinde bulunan Java ek açıklamalarını kullanın. Daha fazla bilgi için bkz. [Java başvuru belgeleri](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> [Yerel. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) ' da Azure Blob depolama, Azure kuyruk depolaması veya Azure Tablo depolama alanı tetiklerinizi yerel olarak çalıştırmak Için bir Azure depolama hesabı yapılandırmanız gerekir.
+> Azure Blob depolama, Azure kuyruk depolama veya Azure Tablo depolama tetikleyicilerini yerel olarak çalıştırmak için [local.settings.js](/azure/azure-functions/functions-run-local#local-settings-file) Azure Storage hesabı yapılandırmanız gerekir.
 
 Örnek:
 
@@ -166,7 +150,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki örnekte olduğu gibi, ayarlamak için [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz `JAVA_OPTS` :
 
@@ -203,7 +187,7 @@ Giriş verilerini POJO 'ya dönüştürmek için [Azure-Functions-Java-Worker](h
 
 ### <a name="binary-data"></a>İkili veriler
 
-`byte[]` `dataType` Function. json ' daki alanı ' e ayarlayarak, ikili girdileri veya çıkışları öğesine bağlayın `binary` :
+`byte[]`Üzerinde function.jsalanı olarak ayarlayarak ikili girdileri veya çıkışları öğesine bağlayın `dataType` `binary` :
 
 ```java
    @FunctionName("BlobTrigger")
@@ -348,7 +332,7 @@ Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden ç
 | `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
 | `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](/azure/azure-functions/functions-triggers-bindings) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
 

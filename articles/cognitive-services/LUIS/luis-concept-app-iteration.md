@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057883"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUSıS için yinelemeli uygulama tasarımı
 
@@ -107,11 +107,22 @@ Aşama ve/veya üretim yuvalarında yayımlayabilirsiniz. Her yuva farklı bir s
 
 Eğitilen sürümler, LUSıS uygulamanızın [uç noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. LUSıS uygulama uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime**yayınlayabilirsiniz ve bu sayede, uç noktada uygulamanın iki sürümünü kullanabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümünün kullanılabilir olması gerekiyorsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
 
-### <a name="import-and-export-a-version"></a>Bir sürümü içeri ve dışarı aktarma
+### <a name="import-a-version"></a>Bir sürümü içeri aktar
 
-Bir sürüm, uygulama düzeyinde içeri aktarılabilir. Bu sürüm etkin sürüm olur ve `versionId` uygulama dosyasının özelliğindeki sürüm kimliğini kullanır. Ayrıca, sürüm düzeyinde mevcut bir uygulamaya de aktarabilirsiniz. Yeni sürüm etkin sürüm olur.
+Bir sürüm, yeni olarak **içeri aktarılabilir** :
+* Uygulama, yeni bir uygulama KIMLIĞIYLE
+* Mevcut bir uygulamanın sürümü
 
-Bir sürüm, uygulama veya sürüm düzeyinde de aktarılabilir. Tek fark, uygulama düzeyinde dışarı aktarılmış sürümün sürüm düzeyinde şu anda etkin olan sürümüdür, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışarı aktarılacak herhangi bir sürümü seçebilirsiniz.
+Bu sürüm etkin sürüm olur ve `versionId` uygulama dosyasının özelliğindeki sürüm kimliğini kullanır.
+
+### <a name="export-a-version"></a>Bir sürümü dışarı aktarma
+
+Bir sürüm, LUO portalından uygulama düzeyinde ya da sürüm düzeyinde **aktarılabilir** :
+
+* Uygulama düzeyi- **uygulamalarım** sayfasında uygulama ' yı seçin ve ardından **dışarı aktar** ' ı seçin
+* Sürüm düzeyi- **uygulamalarım** sayfasında uygulama bağlantısı ' nı seçin, **Yönet**' i seçin, **sürümler** ' i seçin
+
+Tek fark, uygulama düzeyinde dışarı aktarılmış sürüm, sürüm düzeyinde şu anda etkin olan sürümdür, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışarı aktarılacak herhangi bir sürümü seçebilirsiniz.
 
 İçe **aktarılmış dosya şunları** içermez:
 
@@ -132,7 +143,7 @@ Her yazar için bir temel sürümden [kopyalamaya](luis-how-to-manage-versions.m
 
 Her yazar uygulamanın kendi sürümünde değişiklik yapar. Yazar modelle karşılanmıyorsa, yeni sürümleri JSON dosyalarına dışarı aktarın.
 
-Aktarılmış uygulamalar,. JSON veya. lu dosyaları, değişiklikler için karşılaştırılabilir. Yeni sürümden tek bir dosya oluşturmak için dosyaları birleştirin. `versionId`Özelliği yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürümü özgün uygulamaya aktarın.
+Aktarılmış uygulamalar `.json` veya `.lu` dosyalar, değişiklikler için karşılaştırılabilir. Yeni sürümden tek bir dosya oluşturmak için dosyaları birleştirin. `versionId`Özelliği yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürümü özgün uygulamaya aktarın.
 
 Bu yöntem, bir etkin sürüme, bir aşama sürümüne ve bir yayımlanmış sürüme sahip etmenize olanak tanır. Etkin sürüm ile ilgili sonuçları, [etkileşimli test bölmesindeki](luis-interactive-test.md)yayımlanmış bir sürümle (aşama veya üretim) karşılaştırabilirsiniz.
 
@@ -150,4 +161,4 @@ Bir yineleme döngüsüyle işiniz bittiğinde, işlemi tekrarlayabilirsiniz. [�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İşbirliği](luis-concept-keys.md)hakkında kavramları öğrenin.
+[İşbirliği](luis-how-to-azure-subscription.md)hakkında kavramları öğrenin.

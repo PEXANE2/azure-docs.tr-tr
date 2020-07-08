@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285155"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057968"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market'te bulunan bir teklifi güncelleştirme
 
@@ -37,20 +37,29 @@ Güncelleştirilmiş teklifinizi yayımlamaya hazırsanız herhangi bir sayfadan
 > [!IMPORTANT]
 > Sunulan hedef kitlenize (ortak veya özel) güncelleştirilmiş teklifinizi yayımlamak için, mevcut olduğunda teklif önizlemeyi gözden geçirmeniz ve **canlı çalış** ' ı seçmeniz gerekir.
 
+## <a name="add-a-plan-to-an-existing-offer"></a>Mevcut bir teklifine bir plan ekleme
+
+Zaten yayımladığınız mevcut bir teklif içinde yeni bir plan eklemek için:
+
+1. Mevcut teklifiniz için **teklif genel bakış** sayfası ile **plana genel bakış** sayfasına gidin ve ardından **Yeni plan oluştur**' u seçin.
+1. **Mevcut planlar fiyatlandırma modelini**kullanarak [yönergelere](./create-new-saas-offer.md#plan-overview) göre yeni bir plan oluşturun.
+1. Plan adını değiştirdikten sonra **Taslağı kaydet** ' i seçin. 
+1. Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>Mevcut bir teklif içindeki bir planı güncelleştirme
 
 Zaten yayımladığınız mevcut bir teklifin içindeki bir planda değişiklik yapmak için:
 
-- Mevcut teklifiniz için **teklif genel bakış** sayfası açıkken, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
-- Plan **adını**, **fiyatlandırma modelini**veya **kullanılabilirliği**seçebilirsiniz. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
-- Plan adı, açıklama, fiyatlandırma veya hedef kitle kullanılabilirliğine gereken değişiklikleri yaptıktan sonra **Kaydet** ' i seçin. 
-- Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
+1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
+1. Plan **adını**, **fiyatlandırma modelini**veya **kullanılabilirliği**seçebilirsiniz. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
+1. Plan adı, açıklama veya hedef kitle kullanılabilirliğine gereken değişiklikleri yaptıktan sonra **Kaydet** ' i seçin. 
+1. Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Market teklifleriyle yapılan değişiklikleri karşılaştırın
 
 Bir [yayınlanmış](#compare-changes-to-published-offer) veya [Önizleme](#compare-changes-to-a-preview-offer) teklifinde yaptığınız değişiklikleri **Compare**kullanarak canlı hale getirmeden önce denetleyebilirsiniz.
 
->[!NOTE]
+> [!NOTE]
 > Yayımlanmış bir teklif, önizleme veya canlı duruma başarıyla yayınlanan bir tekliftir.
 
 Genel denetim bilgileri için aşağıya bakın:
@@ -122,9 +131,9 @@ Taslak planını silmek istediğinizi doğruladıktan sonra, plan artık Iş Ort
 
 **Yayımlama sürüyor** durumunda olan bir teklifi iptal etmek için:
 
-- Teklif **genel bakış** sayfasını açmak için teklif adını seçin.
-- Sayfanın sağ üst köşesinden **yayımlamayı Iptal et** ' i seçin.
-- Teklifin yayımlanmasını durdurmak istediğinizi onaylayın.
+1. Teklif **genel bakış** sayfasını açmak için teklif adını seçin.
+1. Sayfanın sağ üst köşesinden **yayımlamayı Iptal et** ' i seçin.
+1. Teklifin yayımlanmasını durdurmak istediğinizi onaylayın.
 
 Teklifi daha sonra yayınlamak istiyorsanız, Yayımlama sürecini üzerinde başlatmanız gerekir.
 

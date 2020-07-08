@@ -9,23 +9,21 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/22/2020
+ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 3189fec114ca68dfd862c0973b289b9eff25fed5
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445568"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057815"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim ve çıkarım işlerini yalıtarak makine öğrenimi yaşam döngülerini nasıl sağlayacağınızı öğreneceksiniz. Azure Machine Learning, modelleri eğitmek ve dağıtmak için [işlem hedefleri](concept-compute-target.md)olarak da bilinen işlem kaynakları Için diğer Azure hizmetlerini kullanır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve sonra modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Azure Machine Learning işlem kullanabilirsiniz. 
+Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim ve çıkarım işlerini yalıtarak makine öğrenimi yaşam döngülerini nasıl sağlayacağınızı öğreneceksiniz. Azure Machine Learning, işlem [hedefleri](concept-compute-target.md)olarak da bilinen, modelleri eğitmek ve dağıtmak için işlem kaynakları Için diğer Azure hizmetlerini kullanır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve sonra modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Azure Machine Learning işlem kullanabilirsiniz. 
 
-Bir **sanal ağ** , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
-
-**Temeldeki depolama alanı bir sanal ağda ise, kullanıcılar**sürükle-bırak Tasarımcısı veya otomatik makine öğrenimi, veri etiketleme ve veri kümeleri veya tümleşik Not defterleri dahil Azure Machine Learning Studio web deneyimini kullanamaz.  Denerseniz, aşağıdakine benzer bir ileti alırsınız:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+Bir __sanal ağ__ , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -57,16 +55,176 @@ Ayrıca, özel bir uç nokta kullanarak çalışma alanınıza bağlanmak için 
 > 
 
 > [!WARNING]
-> Azure Machine Learning işlem örnekleri önizlemesi, özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez.
 > 
+> Azure Machine Learning işlem örnekleri önizlemesi, özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez.
+>
 > Azure Machine Learning, özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemez. Bunun yerine, bir sanal ağda Azure Kubernetes hizmeti kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal ağı Içindeki güvenli Azure ML deneme ve çıkarım işleri](how-to-enable-virtual-network.md).
 
 
 <a id="amlcompute"></a>
 
+## <a name="machine-learning-studio"></a>Machine Learning Studio
+
+Verileriniz bir sanal ağda depolanıyorsa, Studio 'ya verilerinize erişim vermek için çalışma alanı [tarafından yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanmanız gerekir.
+
+Studio erişimi verilemez, bu hatayı alırsınız `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` ve aşağıdaki işlemleri devre dışı bırakabilirsiniz:
+
+* Studio 'daki verileri önizleyin.
+* Tasarımcıda verileri görselleştirin.
+* Bir oto ml denemesi gönder.
+* Etiketleme projesi başlatın.
+
+Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı destekler:
+
+* Azure Blob
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
+* Azure SQL Veritabanı
+
+### <a name="add-resources-to-the-virtual-network"></a>Sanal ağa kaynak ekleme 
+
+Çalışma alanınızı ve depolama hesabınızı birbirlerine erişebilecek şekilde aynı sanal ağa ekleyin.
+
+1. Çalışma alanınızı sanal ağa bağlamak için [Azure özel bağlantısını etkinleştirin](how-to-configure-private-link.md).
+
+1. Depolama hesabınızı sanal ağa bağlamak için [güvenlik duvarları ve sanal ağlar ayarlarını yapılandırın](#use-a-storage-account-for-your-workspace).
+
+### <a name="configure-a-datastore-to-use-managed-identity"></a>Bir veri deposunu yönetilen kimlik kullanacak şekilde yapılandırma
+
+Çalışma alanınızı ve depolama hizmeti hesabınızı sanal ağa ekledikten sonra, verilerinize erişmek için veri depolarını yönetilen kimlik kullanacak şekilde yapılandırmanız gerekir. Bu adımlar, Azure Kaynak tabanlı erişim denetimi (RBAC) kullanarak çalışma alanı yönetilen kimliğini depolama hizmetine bir __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
+
+1. Studio 'da __veri depoları__' nı seçin.
+
+1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__' nu seçin. Var olan bir güncelleştirmeyi güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__' i seçin.
+
+1. Veri deposu ayarları ' nda, __çalışma alanı yönetilen kimliği ' ni kullanarak Azure Machine Learning hizmetinin depolamaya erişmesine Izin ver__' __i seçin.__
+
+> [!NOTE]
+> Bu değişikliklerin etkili olması 10 dakika kadar sürebilir.
+
+### <a name="azure-blob-storage-blob-data-reader"></a>Azure Blob Depolama Blobu veri okuyucu
+
+__Azure Blob depolama__için çalışma alanı yönetilen kimliği, blob depolamadan veri okuyabilmesi Için bir [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) olarak da eklenir.
+
+
+### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage 2. Access Control
+
+Bir sanal ağ içindeki veri erişimini denetlemek için RBAC ve POSIX stili erişim denetim listelerini (ACL 'Ler) kullanabilirsiniz.
+
+RBAC 'yi kullanmak için, çalışma alanı yönetilen kimliğini [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) rolüne ekleyin. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control).
+
+ACL 'Leri kullanmak için, her türlü güvenlik ilkesiyle aynı şekilde, çalışma alanı yönetilen kimliğine erişim atanabilir. Daha fazla bilgi için bkz. [dosya ve dizinlerdeki erişim denetim listeleri](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
+
+
+### <a name="azure-data-lake-storage-gen1-access-control"></a>Azure Data Lake Storage 1. Access Control
+
+Azure Data Lake Storage 1. yalnızca POSIX stili erişim denetim listelerini destekler. Çalışma alanı yönetilen kimlik erişimini diğer tüm güvenlik ilkelerine benzer şekilde kaynaklara atayabilirsiniz. Daha fazla bilgi için [Azure Data Lake Storage 1. erişim denetimi](../data-lake-store/data-lake-store-access-control.md)bölümüne bakın.
+
+
+### <a name="azure-sql-database-contained-user"></a>Azure SQL veritabanı kullanıcı içeriyordu
+
+Yönetilen kimlik kullanarak bir Azure SQL veritabanında depolanan verilere erişmek için, yönetilen kimliğe eşlenen bir SQL kapsanan Kullanıcı oluşturmanız gerekir. Bir dış sağlayıcıdan Kullanıcı oluşturma hakkında daha fazla bilgi için bkz. [Azure AD kimliklerine eşlenmiş içerilen kullanıcılar oluşturma](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
+
+Bir SQL kapsanan Kullanıcı oluşturduktan sonra, bu kullanıcıya izin ver [T-SQL komutunu](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql)kullanarak izin verin.
+
+### <a name="connect-to-the-studio"></a>Studio 'ya bağlanma
+
+Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, bir işlem örneği veya sanal makine), sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
+
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
+
+## <a name="use-a-storage-account-for-your-workspace"></a>Çalışma alanınız için bir depolama hesabı kullanın
+
+> [!IMPORTANT]
+> Bir sanal ağda Azure Machine Learning veya _varsayılan olmayan depolama hesapları_ için hem _varsayılan depolama hesabını_ yerleştirebilirsiniz.
+>
+> Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
+>
+> Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
+
+Bir sanal ağdaki çalışma alanı için bir Azure depolama hizmeti kullanmak üzere aşağıdaki adımları kullanın:
+
+1. Bir sanal ağın arkasında bir işlem kaynağı (örneğin, bir Machine Learning işlem örneği veya kümesi) oluşturun veya çalışma alanına (örneğin, bir HDInsight kümesi, sanal makine veya Azure Kubernetes hizmet kümesi) bir işlem kaynağı ekleyin. İşlem kaynağı deneme veya model dağıtımı için olabilir.
+
+   Daha fazla bilgi için, bu makaledeki [Machine Learning Işlem kullanma](#amlcompute), [sanal makine veya HDInsight kümesi](#vmorhdi)kullanma ve [Azure Kubernetes hizmet](#aksvnet) bölümlerini kullanma bölümüne bakın.
+
+1. Azure portal, çalışma alanınızda kullanmak istediğiniz depolama hizmetine gidin.
+
+   [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+
+1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
+
+   ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+
+1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
+    - __Seçili ağlar__'ı seçin.
+    - __Sanal ağlar__altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
+
+        > [!IMPORTANT]
+        > Depolama hesabı, eğitim veya çıkarım için kullanılan işlem örnekleri veya kümeler ile aynı sanal ağ ve alt ağ içinde olmalıdır.
+
+    - __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin.
+
+    > [!IMPORTANT]
+    > Azure Machine Learning SDK ile çalışırken, geliştirme ortamınızın Azure depolama hesabına bağlanabiliyor olması gerekir. Depolama hesabı bir sanal ağın içindeyken güvenlik duvarının, geliştirme ortamının IP adresinden erişime izin vermelidir.
+    >
+    > Depolama hesabına erişimi etkinleştirmek için, *geliştirme istemcisinde bir Web tarayıcısından*depolama hesabı Için __güvenlik duvarlarını ve sanal ağları__ ziyaret edin. Ardından, istemcinin IP adresini __adres aralığına__eklemek IÇIN __Istemci IP adresini ekle__ onay kutusunu kullanın. Ayrıca, geliştirme ortamının IP adresini el ile girmek için __adres aralığı__ alanını da kullanabilirsiniz. İstemcinin IP adresi eklendikten sonra SDK 'Yı kullanarak depolama hesabına erişebilir.
+
+   [![Azure portal "güvenlik duvarları ve sanal ağlar" bölmesi](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+
+## <a name="use-datastores-and-datasets"></a>Veri depolarını ve veri kümelerini kullanma
+
+Bu bölümde SDK deneyiminin veri deposu ve veri kümesi kullanımı ele alınmaktadır. Studio deneyimi hakkında daha fazla bilgi için [studio Machine Learning](#machine-learning-studio)bölümüne bakın.
+
+Varsayılan olarak, Azure Machine Learning SDK kullanarak verilere erişmeye çalıştığınızda veri geçerliliği ve kimlik bilgisi denetimleri gerçekleştirir. Verileriniz bir sanal ağın arkasındaysa Azure Machine Learning verilere erişemez ve denetimlerinde başarısız olur. Bunu önlemek için, doğrulamayı atlayan veri depoları ve veri kümeleri oluşturmanız gerekir.
+
+### <a name="use-a-datastore"></a>Veri deposu kullanma
+
+ Azure Data Lake Store gen1 ve Azure Data Lake Store Gen2, varsayılan olarak doğrulamayı atlayın, bu nedenle başka bir eylem gerekmez. Ancak aşağıdaki hizmetlerde, veri deposu doğrulamasını atlamak için benzer sözdizimini kullanabilirsiniz:
+
+- Azure Blob depolama
+- Azure FileShare
+- PostgreSQL
+- Azure SQL Veritabanı
+
+Aşağıdaki kod örneği, yeni bir Azure blob veri deposu ve kümesi oluşturur `skip_validation=True` .
+
+```python
+blob_datastore = Datastore.register_azure_blob_container(workspace=ws,  
+
+                                                         datastore_name=blob_datastore_name,  
+
+                                                         container_name=container_name,  
+
+                                                         account_name=account_name, 
+
+                                                         account_key=account_key, 
+
+                                                         skip_validation=True ) // Set skip_validation to true
+```
+
+### <a name="use-a-dataset"></a>Veri kümesi kullanma
+
+Veri kümesi doğrulamasını atlamak için sözdizimi aşağıdaki veri kümesi türleri için benzerdir:
+- Ayrılmış dosya
+- JSON 
+- Parquet
+- SQL
+- Dosya
+
+Aşağıdaki kod, yeni bir JSON veri kümesi ve kümesi oluşturur `validate=False` .
+
+```python
+json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
+
+validate=False) 
+
+```
+
+
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>İşlem kümeleri & örnekleri 
 
-Bir sanal ağda [yönetilen Azure Machine Learning **işlem hedefi** ](concept-compute-target.md#azure-machine-learning-compute-managed) veya [Azure Machine Learning işlem **örneği** ](concept-compute-instance.md) kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
+Bir sanal ağda [yönetilen Azure Machine Learning __işlem hedefi__ ](concept-compute-target.md#azure-machine-learning-compute-managed) veya [Azure Machine Learning işlem __örneği__ ](concept-compute-instance.md) kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
 
 > [!div class="checklist"]
 > * Sanal ağın, Azure Machine Learning çalışma alanıyla aynı abonelikte ve bölgede olması gerekir.
@@ -246,50 +404,11 @@ except ComputeTargetException:
 
 Oluşturma işlemi tamamlandığında, bir deneyde kümeyi kullanarak modelinizi eğitebilirsiniz. Daha fazla bilgi için bkz. [eğitim için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
 
-## <a name="use-a-storage-account-for-your-workspace"></a>Çalışma alanınız için bir depolama hesabı kullanın
+### <a name="access-data-in-a-compute-instance-notebook"></a>Işlem örneği not defterindeki verilere erişme
 
-Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
+Azure Işlem örneği üzerinde not defterleri kullanıyorsanız, not defterinizin, verileriniz ile aynı sanal ağın ve alt ağın arkasındaki bir işlem kaynağında çalıştığından emin olmanız gerekir. 
 
-1. Bir sanal ağın arkasında bir işlem kaynağı (örneğin, bir Machine Learning işlem örneği veya kümesi) oluşturun veya çalışma alanına (örneğin, bir HDInsight kümesi, sanal makine veya Azure Kubernetes hizmet kümesi) bir işlem kaynağı ekleyin. İşlem kaynağı deneme veya model dağıtımı için olabilir.
-
-   Daha fazla bilgi için, bu makaledeki [Machine Learning Işlem kullanma](#amlcompute), [sanal makine veya HDInsight kümesi](#vmorhdi)kullanma ve [Azure Kubernetes hizmet](#aksvnet) bölümlerini kullanma bölümüne bakın.
-
-1. Azure portal, çalışma alanınıza bağlı depolama alanına gidin.
-
-   [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
-
-1. **Azure depolama** sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
-
-   ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-
-1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
-    - __Seçili ağlar__'ı seçin.
-    - __Sanal ağlar__altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
-
-        > [!IMPORTANT]
-        > Depolama hesabı, eğitim veya çıkarım için kullanılan işlem örnekleri veya kümeler ile aynı sanal ağ ve alt ağ içinde olmalıdır.
-
-    - __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin.
-
-    > [!IMPORTANT]
-    > Azure Machine Learning SDK ile çalışırken, geliştirme ortamınızın Azure depolama hesabına bağlanabiliyor olması gerekir. Depolama hesabı bir sanal ağın içindeyken güvenlik duvarının, geliştirme ortamının IP adresinden erişime izin vermelidir.
-    >
-    > Depolama hesabına erişimi etkinleştirmek için, *geliştirme istemcisinde bir Web tarayıcısından*depolama hesabı Için __güvenlik duvarlarını ve sanal ağları__ ziyaret edin. Ardından, istemcinin IP adresini __adres aralığına__eklemek IÇIN __Istemci IP adresini ekle__ onay kutusunu kullanın. Ayrıca, geliştirme ortamının IP adresini el ile girmek için __adres aralığı__ alanını da kullanabilirsiniz. İstemcinin IP adresi eklendikten sonra SDK 'Yı kullanarak depolama hesabına erişebilir.
-
-   [![Azure portal "güvenlik duvarları ve sanal ağlar" bölmesi](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-> [!IMPORTANT]
-> Bir sanal ağda Azure Machine Learning veya _varsayılan olmayan depolama hesapları_ için hem _varsayılan depolama hesabını_ yerleştirebilirsiniz.
->
-> Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
->
-> Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
-
-## <a name="machine-learning-studio"></a>Machine Learning Studio
-
-Bir sanal ağ içindeki bir kaynaktan (örneğin, bir işlem örneği veya sanal makine) erişmek için, sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
-
-Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
+İşlem örneğinizi oluşturma sırasında aynı sanal ağ içinde olacak şekilde yapılandırmanız gerekir, **Gelişmiş ayarlar**altında  >  **sanal ağı yapılandırın**. Mevcut bir Işlem örneğini bir sanal ağa ekleyemezsiniz.
 
 <a id="aksvnet"></a>
 
@@ -361,7 +480,7 @@ Varsayılan olarak, AKS dağıtımlarına genel bir IP adresi atanır. Bir sanal
 > [!IMPORTANT]
 > Azure Kubernetes hizmet kümesini oluştururken özel IP 'yi etkinleştiremezsiniz. Mevcut bir kümeye güncelleştirme olarak etkinleştirilmelidir.
 
-Aşağıdaki kod parçacığı, **Yeni BIR AKS kümesi oluşturmayı**ve ardından özel bir IP/iç yük dengeleyici kullanmak üzere güncelleştirmeyi göstermektedir:
+Aşağıdaki kod parçacığı, __Yeni BIR AKS kümesi oluşturmayı__ve ardından özel bir IP/iç yük dengeleyici kullanmak üzere güncelleştirmeyi göstermektedir:
 
 ```python
 import azureml.core
@@ -425,9 +544,59 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
 } 
 ```
 
-> [!NOTE]
-> Şu anda, var olan bir kümede __iliştirme__ işlemi gerçekleştirirken yük dengeleyiciyi yapılandıramazsınız. Önce kümeyi eklemeniz ve sonra yük dengeleyiciyi değiştirmek için bir güncelleştirme işlemi gerçekleştirmeniz gerekir.
+__Var olan bir kümeyi çalışma alanınıza iliştirirken__ , yük dengeleyiciyi yapılandırmak için iliştirme işleminden sonra beklemeniz gerekir.
 
+Bir küme ekleme hakkında bilgi için bkz. [var olan AKS kümesi ekleme](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster).
+
+Mevcut kümeyi iliştirdikten sonra, kümeyi özel bir IP kullanacak şekilde güncelleştirebilirsiniz.
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute
+
+# ws = workspace object. Creation not shown in this snippet
+aks_target = AksCompute(ws,"myaks")
+
+# Change to the name of the subnet that contains AKS
+subnet_name = "default"
+# Update AKS configuration to use an internal load balancer
+update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+aks_target.update(update_config)
+# Wait for the operation to complete
+aks_target.wait_for_completion(show_output = True)
+```
+
+__Ağ katılımcısı rolü__
+
+> [!IMPORTANT]
+> Daha önce oluşturduğunuz bir sanal ağ sağlayarak bir AKS kümesi oluşturur veya iliştirdiyseniz, AKS kümeniz için hizmet sorumlusu (SP) veya yönetilen kimliğe, sanal ağı içeren kaynak grubuna _ağ katılımcısı_ rolü vermelisiniz. İç yük dengeleyiciyi özel IP olarak değiştirmeye çalışmadan önce bunun yapılması gerekir.
+>
+> Kimliği ağ katılımcısı olarak eklemek için aşağıdaki adımları kullanın:
+
+1. AKS için hizmet sorumlusu veya yönetilen kimlik KIMLIĞINI bulmak için aşağıdaki Azure CLı komutlarını kullanın. `<aks-cluster-name>`Kümenin adıyla değiştirin. `<resource-group-name>` _, Aks kümesini içeren_kaynak grubunun adıyla değiştirin:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Bu komut değerini döndürürse `msi` , yönetilen kimliğin asıl kimliğini tanımlamak için aşağıdaki komutu kullanın:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Sanal ağınızı içeren kaynak grubunun KIMLIĞINI bulmak için aşağıdaki komutu kullanın. `<resource-group-name>` _Sanal ağı içeren_kaynak grubunun adıyla değiştirin:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Hizmet sorumlusu veya yönetilen kimliği bir ağ katılımcısı olarak eklemek için aşağıdaki komutu kullanın. `<SP-or-managed-identity>`Hizmet sorumlusu veya yönetilen kimlik için döndürülen kimlikle değiştirin. `<resource-group-id>`Sanal ağı içeren kaynak grubu için döndürülen kimlikle değiştirin:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
 AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile iç yük dengeleyici kullanma](/azure/aks/internal-lb).
 
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances kullanın (ACI)
@@ -435,7 +604,9 @@ AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [A
 Azure Container Instances, bir model dağıtıldığında dinamik olarak oluşturulur. Azure Machine Learning sanal ağ içinde ACI oluşturmak üzere etkinleştirmek için, dağıtım tarafından kullanılan alt ağ için __alt ağ temsilcisini__ etkinleştirmeniz gerekir.
 
 > [!WARNING]
-> Sanal ağ içinde Azure Container Instances kullanmak için, çalışma alanınızın Azure Container Registry (ACR) Sanal ağda de olamaz.
+> Bir sanal ağda Azure Container Instances kullanırken, sanal ağın Azure Machine Learning çalışma alanınız ile aynı kaynak grubunda olması gerekir.
+>
+> Sanal ağ içinde Azure Container Instances kullanırken, çalışma alanınızın Azure Container Registry (ACR) Sanal ağda de olamaz.
 
 Çalışma alanınıza bir sanal ağda ACI 'yi kullanmak için aşağıdaki adımları kullanın:
 
@@ -464,7 +635,7 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
 
 1. Çalışma alanınızın Azure Container Registry adını bulmak için aşağıdaki yöntemlerden birini kullanın:
 
-    __Azure portal__
+    __Azure portalındaki__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 
@@ -548,22 +719,6 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
     ]
     }
     ```
-    
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
-
-Azure Data Lake Storage Gen 2, Azure Blob depolama üzerinde oluşturulmuş, büyük veri analizi için bir dizi yetenektir. Modelleri Azure Machine Learning ile eğitmek için kullanılan verileri depolamak için kullanılabilir. 
-
-Azure Machine Learning çalışma alanınızın sanal ağı içinde Data Lake Storage Gen 2 ' yi kullanmak için aşağıdaki adımları kullanın:
-
-1. Azure Data Lake Storage Gen 2 hesabı oluşturun. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Storage hesabı oluşturma](../storage/blobs/data-lake-storage-quickstart-create-account.md).
-
-1. Hesabı sanal ağa yerleştirmek için önceki bölümde bulunan 2-4 adımlarını kullanın, [çalışma alanınız için bir depolama hesabı kullanın](#use-a-storage-account-for-your-workspace).
-
-Bir sanal ağ içinde Data Lake Storage Gen 2 ile Azure Machine Learning kullanırken aşağıdaki kılavuzu kullanın:
-
-* __Bir veri kümesi oluşturmak Için SDK__'yı kullanırsanız ve kodu çalıştıran sistem __Sanal ağda değilse__, `validate=False` parametresini kullanın. Bu parametre, sistem depolama hesabı ile aynı sanal ağda değilse başarısız olan doğrulamayı atlar. Daha fazla bilgi için [from_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) yöntemine bakın.
-
-* Veri kümesini kullanarak bir modeli eğitmek için Azure Machine Learning Işlem örneği veya işlem kümesi kullanırken, depolama hesabı ile aynı sanal ağda olması gerekir.
 
 ## <a name="key-vault-instance"></a>Anahtar Kasası örneği 
 
@@ -578,7 +733,7 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
    [![Azure Machine Learning çalışma alanıyla ilişkili olan Anahtar Kasası](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
-1. **Key Vault** sayfasında, sol bölmede __güvenlik duvarları ve sanal ağlar__' ı seçin.
+1. __Key Vault__ sayfasında, sol bölmede __güvenlik duvarları ve sanal ağlar__' ı seçin.
 
    ![Key Vault bölmesindeki "güvenlik duvarları ve sanal ağlar" bölümü](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
