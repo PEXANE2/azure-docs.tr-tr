@@ -9,10 +9,10 @@ ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207218"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
@@ -37,7 +37,7 @@ Varsayılan olarak, yayımlanan RDP dosyaları aşağıdaki özellikleri içerir
 
 |RDP özellikleri | Masaüstü Bilgisayarlar | RemoteApp uygulamaları |
 |---|---| --- |
-| Çoklu monitör modu | Etkin | Yok |
+| Çoklu monitör modu | Etkin | YOK |
 | Sürücü yeniden yönlendirmeleri etkin | Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar| Sürücüler, pano ve Yazıcılar |
 | Uzak ses modu | Yerel olarak oynat | Yerel olarak oynat |
 

@@ -5,10 +5,10 @@ ms.date: 06/04/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210125"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
@@ -325,7 +325,7 @@ Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir 
 
     ![SSH etkinleştirme izin ver](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. **Kaydet**’i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
+1. **Kaydet**'i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
 
 Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örneğin:
 

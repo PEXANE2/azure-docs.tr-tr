@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210635"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
@@ -108,7 +108,7 @@ Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
 2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
-3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Aşağıda bir örnek verilmiştir:
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
 
 ```sql
 SELECT  db.name [Database]

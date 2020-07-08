@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
 ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207898"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
@@ -208,7 +208,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
 | Microsoft Edge              | Evet<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Hayır              |
 | Mozilla Firefox             | Evet<sup>1</sup> |
 
  <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>

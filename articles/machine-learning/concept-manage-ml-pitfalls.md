@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210193"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
@@ -81,7 +81,7 @@ Makine öğrenimi sınıflandırma senaryolarına ilişkin verilerde yaygın ola
 
 Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak oluşturur. Bu, modelinizdeki sınıflandırmaların doğruluğunu anlamanıza yardımcı olabilir ve imdenli verilerden etkilenen modelleri tanımlayabilir.
 
-Grafik| Description
+Grafik| Açıklama
 ---|---
 [Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
 [Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 

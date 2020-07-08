@@ -9,10 +9,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85209360"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
@@ -31,7 +31,7 @@ Bu makalede, mevcut bir konak havuzunu yeni oturum Konakları ile nasıl genişl
 
 Başlamadan önce, aşağıdaki yöntemlerden birini kullanarak bir konak havuzu ve oturum ana bilgisayarı sanal makineleri (VM 'Ler) oluşturduğunuzdan emin olun:
 
-- [Azure portal](./create-host-pools-azure-marketplace.md)
+- [Azure portalındaki](./create-host-pools-azure-marketplace.md)
 - [PowerShell ile ana bilgisayar havuzu oluşturma](./create-host-pools-powershell.md)
 
 Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağıdaki bilgilere de ihtiyacınız olacaktır:

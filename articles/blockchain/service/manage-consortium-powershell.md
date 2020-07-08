@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
 ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85211349"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell kullanarak Azure blok zinciri hizmeti 'nde konsorsiyum üyelerini yönetme
@@ -59,7 +59,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 Azure portal diğer değerleri bulun:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Varsayılan blok zinciri hizmeti üyesine **genel bakış** sayfasına gidin.
 
     ![Üyeye genel bakış](./media/manage-consortium-powershell/member-overview.png)
@@ -85,8 +85,8 @@ Bu cmdlet 'i, konsorsiyum yönetiminin akıllı sözleşmelerine bağlamak için
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| RootContractAddress | Konsorsiyum yönetimi akıllı sözleşmelerinin kök sözleşme adresi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| RootContractAddress | Konsorsiyum yönetimi akıllı sözleşmelerinin kök sözleşme adresi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -102,8 +102,8 @@ Bu cmdlet 'i, uzak düğümün yönetim hesabının bilgilerini tutacak bir nesn
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | Blok zinciri üyesi hesap adresi | Yes |
-| ManagedAccountPassword | Hesap adresi parolası | Yes |
+| ManagedAccountAddress | Blok zinciri üyesi hesap adresi | Evet |
+| ManagedAccountPassword | Hesap adresi parolası | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -119,7 +119,7 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| RemoteRPCEndpoint | Blok zinciri üye uç nokta adresi | Yes |
+| RemoteRPCEndpoint | Blok zinciri üye uç nokta adresi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -139,9 +139,9 @@ Bu cmdlet 'i kullanarak, konsorsiyumun üye ayrıntılarını veya listesini al�
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| Name | Ayrıntılarını almak istediğiniz blok zinciri hizmeti üyesinin adı. Bir ad girildiğinde, üyenin ayrıntılarını döndürür. Bir ad atlandığında, tüm konsorsiyum üyelerinin bir listesini döndürür. | No |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| Name | Ayrıntılarını almak istediğiniz blok zinciri hizmeti üyesinin adı. Bir ad girildiğinde, üyenin ayrıntılarını döndürür. Bir ad atlandığında, tüm konsorsiyum üyelerinin bir listesini döndürür. | Hayır |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -170,10 +170,10 @@ Bir blok zinciri üyesini kaldırmak için bu cmdlet 'i kullanın.
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| Name | Kaldırılacak üye adı | Yes |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| Name | Kaldırılacak üye adı | Evet |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -196,12 +196,12 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| Name | Blok zinciri üyesinin adı | Yes |
-| DisplayName | Yeni görünen ad | No |
-| AccountAddress | Hesap adresi | No |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client |  New-Web3Connection ' den edinilen Web3Client nesnesi| Yes |
+| Name | Blok zinciri üyesinin adı | Evet |
+| DisplayName | Yeni görünen ad | Hayır |
+| AccountAddress | Hesap adresi | Hayır |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Evet |
+| Web3Client |  New-Web3Connection ' den edinilen Web3Client nesnesi| Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -226,11 +226,11 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Rol | Konsorsiyum rolü. Değerler yönetıcı veya Kullanıcı olabilir. YÖNETICI, konsorsiyum Yöneticisi rolüdür. Kullanıcı, konsorsiyum üyesi rolüdür. | Yes |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Evet |
+| Rol | Konsorsiyum rolü. Değerler yönetıcı veya Kullanıcı olabilir. YÖNETICI, konsorsiyum Yöneticisi rolüdür. Kullanıcı, konsorsiyum üyesi rolüdür. | Evet |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -248,9 +248,9 @@ Bu cmdlet 'i bir konsorsiyum üyesinin davetiye durumunu almak veya listelemek i
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI. Abonelik KIMLIĞI sağlanmışsa, abonelik KIMLIĞININ davet ayrıntılarını döndürür. Abonelik KIMLIĞI atlanırsa, tüm üye davetlerinin bir listesini döndürür. | No |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI. Abonelik KIMLIĞI sağlanmışsa, abonelik KIMLIĞININ davet ayrıntılarını döndürür. Abonelik KIMLIĞI atlanırsa, tüm üye davetlerinin bir listesini döndürür. | Hayır |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -279,10 +279,10 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | İptal edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | İptal edilecek üyenin Azure abonelik KIMLIĞI | Evet |
+| Üyeler | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 
@@ -303,11 +303,11 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Rol | Davet için yeni konsorsiyum rolü. Değerler **Kullanıcı** veya **yönetici**olabilir. | Yes |
-| Üyeler |  Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Evet |
+| Rol | Davet için yeni konsorsiyum rolü. Değerler **Kullanıcı** veya **yönetici**olabilir. | Evet |
+| Üyeler |  Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Evet |
+| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Evet |
+| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Evet |
 
 #### <a name="example"></a>Örnek
 

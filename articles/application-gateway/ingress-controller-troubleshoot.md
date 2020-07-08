@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207864"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
@@ -236,7 +236,7 @@ Diğer yandan 5. düzey, ARM 'ye uygulanan yapılandırma için ayıklanmış i�
 Kubernetes topluluğu, [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) aracı için 9 günlük kayıt kurdu. Bu depoda, benzer anlamlarla birlikte bunlardan 3 ' ü kullanıyoruz:
 
 
-| Ayrıntı Düzeyi | Description |
+| Ayrıntı Düzeyi | Açıklama |
 |-----------|-------------|
 |  1        | Varsayılan günlük düzeyi; başlangıç ayrıntılarını, uyarıları ve hataları gösterir |
 |  3        | Olaylar ve değişiklikler hakkında genişletilmiş bilgiler; oluşturulan nesne listeleri |

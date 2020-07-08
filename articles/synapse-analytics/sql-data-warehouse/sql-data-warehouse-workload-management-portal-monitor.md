@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208697"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure SYNAPSE Analytics – Iş yükü Yönetim Portalı Izleme
@@ -26,7 +26,7 @@ Azure Ölçüm Gezgini yapılandırma hakkında ayrıntılı bilgi için bkz. [A
 
 ## <a name="workload-management-metric-definitions"></a>İş yükü yönetimi Ölçüm tanımları
 
-|Ölçüm Adı                    |Description  |Toplama Türü |
+|Ölçüm Adı                    |Açıklama  |Toplama Türü |
 |-------------------------------|-------------|-----------------|
 |Etkin uç kaynak yüzdesi | *Etkin sınır yüzdesi* , diğer iş yükü grupları için ayrılan *En düşük kaynak yüzdesine* bağlı olarak, iş yükü grubu tarafından erişilebilen kaynakların yüzdesine yönelik sabit bir sınır olur. *Etkin uç kaynak yüzdesi* ölçümü, `CAP_PERCENTAGE_RESOURCE` [iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde parametresi kullanılarak yapılandırılır.  Geçerli değer burada açıklanmıştır.<br><br>Örneğin `DataLoads` , = 100 ile bir iş yükü grubu oluşturulduysa `CAP_PERCENTAGE_RESOURCE` ve geçerli bir en düşük kaynak yüzdesi %25 olan başka bir iş yükü grubu oluşturulduysa, iş yükü grubu için *geçerli sınır kaynak* yüzdesi `DataLoads` %75 ' dir.<br><br>*Etkin sınır kaynağı yüzdesi* , iş yükü grubunun elde edilebileceği eşzamanlılık (ve dolayısıyla potansiyel aktarım hızı) üst sınırını belirler.  Geçerli *sınır kaynak yüzdesi* ölçümü tarafından şu anda raporlanan ek aktarım hızı gerekiyorsa, `CAP_PERCENTAGE_RESOURCE` `MIN_PERCENTAGE_RESOURCE` daha fazla kaynak eklemek için, diğer iş yükü gruplarının sayısını azaltın veya örneği ölçeğini artırın.  Azaltmak `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşzamanlılık artırabilir, ancak genel aktarım hızını artıramayabilir.| Min, AVG, Max |
 |Geçerli Min kaynak yüzdesi |*Geçerli Min kaynak yüzdesi* , hizmet düzeyi en düşük hesaba sahip iş yükü grubu için ayrılan ve yalıtılmış kaynakların en düşük yüzdesidir.  Etkin Min kaynak yüzdesi ölçümü, `MIN_PERCENTAGE_RESOURCE` [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde parametresi kullanılarak yapılandırılır.  Geçerli değer [burada](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)açıklanmıştır.<br><br>Bu ölçüm filtrelenmemiş olduğunda Sum toplama türünü kullanın ve sistemde yapılandırılan toplam iş yükü yalıtımını izlemek için bölmeyi kaldırın.<br><br>*Geçerli Min kaynak yüzdesi* , garantili eşzamanlılık (ve bu nedenle garanti edilen aktarım hızı) için bir iş yükü grubunun alabileceği alt sınırı belirler.  Geçerli *En düşük kaynak yüzdesi* ölçümü tarafından şu anda raporlanan ek garantili kaynaklar gerekliyse, `MIN_PERCENTAGE_RESOURCE` iş yükü grubu için yapılandırılmış parametreyi artırın.  Azaltmak `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşzamanlılık artırabilir, ancak genel aktarım hızını artıramayabilir. |Min, AVG, Max|

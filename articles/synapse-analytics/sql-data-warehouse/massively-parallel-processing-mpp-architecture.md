@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210975"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
@@ -50,7 +50,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığ�
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 

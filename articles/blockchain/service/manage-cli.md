@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208170"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
@@ -229,7 +229,7 @@ az role assignment create \
 | **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örneğinde**
+**Örnek:**
 
 Azure AD kullanıcısı için blok zinciri **üyesine**düğüm erişimi verme:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Örneğinde**
+**Örnek:**
 
 Azure AD kullanıcısı için blok zinciri **işlem düğümüne**düğüm erişimi verme:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **atane-nesne kimliği** | Azure AD Grup KIMLIĞI veya uygulama KIMLIĞI. |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örneğinde**
+**Örnek:**
 
 **Uygulama rolü** için düğüm erişimi verme
 

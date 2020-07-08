@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210071"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure blok zinciri çalışma ekranı önizleme 'yi kullanma REST API
@@ -19,7 +19,7 @@ Azure blok zinciri çalışma ekranı önizlemesi REST API geliştiricilere ve b
 
 Blok zinciri çalışma ekranı API 'Lerine, dağıtımınız için bir uç nokta üzerinden erişilir. Dağıtımınız için API uç nokta URL 'sini almak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol taraftaki Gezinti bölmesinde **kaynak grupları**' nı seçin.
 1. Dağıtılmış blok zinciri çalışma ekranı ' nı kaynak grubu adı ' nı seçin.
 1. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
@@ -28,7 +28,7 @@ Blok zinciri çalışma ekranı API 'Lerine, dağıtımınız için bir uç nokt
 
     ![App Service API uç nokta URL 'SI](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Blok zinciri çalışma ekranı REST API istekleri Azure Active Directory (Azure AD) ile korunuyor.
 

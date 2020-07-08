@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85248981"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory SQL Server saklı yordam etkinliğini kullanarak verileri dönüştürme
@@ -70,12 +70,12 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
 | Özellik                  | Açıklama                              | Gerekli |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Etkinliğin adı                     | Yes      |
-| açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
-| tür                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Yes      |
-| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SYNAPSE Analytics (eskı adıyla Azure SQL veri ambarı)** veya Data Factory bağlantılı hizmet olarak kaydedilen **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Yes      |
-| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. `"param1": { "value": "param1Value","type":"param1Type" }`Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, `"param1": { "value": null }` (tüm küçük harf) seçeneğini kullanın. | No       |
+| name                      | Etkinliğin adı                     | Evet      |
+| açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
+| tür                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
+| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SYNAPSE Analytics (eskı adıyla Azure SQL veri ambarı)** veya Data Factory bağlantılı hizmet olarak kaydedilen **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Evet      |
+| storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. `"param1": { "value": "param1Value","type":"param1Type" }`Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, `"param1": { "value": null }` (tüm küçük harf) seçeneğini kullanın. | Hayır       |
 
 ## <a name="parameter-data-type-mapping"></a>Parametre veri türü eşleme
 Parametresi için belirttiğiniz veri türü, kullanmakta olduğunuz veri kaynağındaki veri türüyle eşleşen Azure Data Factory türüdür. Veri kaynağınız için veri türü eşlemelerini bağlayıcılar alanında bulabilirsiniz. Bazı örnekler

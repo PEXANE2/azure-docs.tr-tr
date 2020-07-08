@@ -9,10 +9,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85209394"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
@@ -85,7 +85,7 @@ Yeni bir nesne için Log Analytics ayarlamak için:
 
 5. Ayarlar yapılandırmanız için bir ad girin ve **Log Analytics gönder**' i seçin. Kullandığınız ad boşluk içermemelidir ve [Azure adlandırma kurallarına](../azure-resource-manager/management/resource-name-rules.md)uymalıdır. Günlüklerin bir parçası olarak, Log Analytics eklenmesini istediğiniz tüm seçenekleri (denetim noktası, hata, yönetim vb.) seçebilirsiniz.
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 >[!NOTE]
 >Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md).

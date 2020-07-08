@@ -10,6 +10,7 @@ ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 11416eb06e29b4621c1949f193318d32d76cdde3
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212726"

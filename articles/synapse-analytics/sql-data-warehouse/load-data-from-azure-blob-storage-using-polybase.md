@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207558"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
@@ -56,7 +56,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 3. Formu aşağıdaki bilgilerle doldurun:
 
-   | Ayar            | Önerilen değer       | Description                                                  |
+   | Ayar            | Önerilen değer       | Açıklama                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
    | *Ada**            | mySampleDataWarehouse | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
    | **Abonelik**   | Aboneliğiniz     | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
@@ -67,7 +67,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 4. Yeni veritabanınız için yeni bir sunucu oluşturup yapılandırmak üzere **Sunucu**’yu seçin. **Yeni sunucu formu**’nu aşağıdaki bilgilerle doldurun:
 
-    | Ayar                | Önerilen değer          | Description                                                  |
+    | Ayar                | Önerilen değer          | Açıklama                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
     | **Sunucu adı**        | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
     | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad           | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
@@ -116,7 +116,7 @@ Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üz
 
 5. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-6. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
+6. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
 
 7. **Tamam** ' ı seçin ve ardından **güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -143,11 +143,11 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
-    | Ayar        | Önerilen değer                            | Description                                                  |
+    | Ayar        | Önerilen değer                            | Açıklama                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Sunucu türü    | Veritabanı altyapısı                            | Bu değer gereklidir                                       |
     | Sunucu adı    | Tam sunucu adı            | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net**. |
-    | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola       | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 

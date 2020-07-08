@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208782"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için Azure Active Directory erişimi yapılandırma
@@ -29,7 +29,7 @@ Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düz
 
 Üye düzeyinde erişim izni vermek için.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Erişim denetimi (IAM) > > rol ataması Ekle**' ye gidin.
 1. **Blok zinciri üye düğümü erişimi (Önizleme)** rolünü seçin ve erişim vermek ISTEDIĞINIZ Azure AD kimlik nesnesini ekleyin. Azure AD KIMLIK nesnesi şu olabilir:
 
@@ -41,7 +41,7 @@ Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düz
 
     ![Rol ataması ekle](./media/configure-aad/add-role-assignment.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="grant-node-level-access"></a>Düğüm düzeyinde erişim verme
 

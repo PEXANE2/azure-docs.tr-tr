@@ -9,10 +9,10 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208510"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
@@ -118,7 +118,7 @@ Azure portal kullanarak, bir kolay ad ayarlayarak yayımlanmış bir uzak masaü
 
 6. Güncelleştirmek istediğiniz uygulamayı seçin ve ardından yeni bir **görünen ad**girin.
 
-7. **Kaydet**’i seçin. Düzenlediğiniz uygulama artık güncelleştirilmiş adı görüntülemelidir.
+7. **Kaydet**'i seçin. Düzenlediğiniz uygulama artık güncelleştirilmiş adı görüntülemelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

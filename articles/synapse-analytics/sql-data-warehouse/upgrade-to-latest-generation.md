@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210703"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzunu yükselterek performansı iyileştirin
@@ -65,7 +65,7 @@ Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- [Azure Portal](https://portal.azure.com/) oturum açın.
+- [Azure portalında](https://portal.azure.com/) oturum açın.
 - SQL havuzunun çalıştığından emin olun; Gen2 'e geçirilmesi gerekir
 
 ### <a name="powershell-upgrade-commands"></a>PowerShell yükseltme komutları
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tanımlı geri yükleme noktası oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. İçin geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal kullanarak etkin veya duraklatılmış bir veritabanını geri yükleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Geri yüklemek istediğiniz SQL havuzuna gidin.
 3. Genel Bakış bölümünün en üstünde **geri yükle**' yi seçin.
 

@@ -11,10 +11,10 @@ ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210992"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
@@ -54,7 +54,7 @@ Varsayılan olarak, yeni oluşturulan tüm veri ambarı örneklerinin dağıtım
 
 SYNAPSE SQL havuzunuza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Görüntülemek istediğiniz SYNAPSE SQL havuzunu seçin.
 3. Seçilen SYNAPSE SQL havuzu genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması**altında görünür.
 
@@ -70,7 +70,7 @@ Birincil ve ikincil pencerelerin ayrı gün aralıkları olmalıdır. Örnek ola
 
 SYNAPSE SQL havuzunuzun bakım zamanlamasını değiştirmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Güncelleştirmek istediğiniz SYNAPSE SQL havuzunu seçin. Sayfa, genel bakış dikey penceresinde açılır.
 Genel Bakış dikey penceresinde **bakım zamanlaması Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.
 
@@ -88,7 +88,7 @@ Genel Bakış dikey penceresinde **bakım zamanlaması Özeti** bağlantısını
 
    Dikey pencerenin alt kısmındaki **zamanlama Özeti** alanı, seçtiğiniz değerlere göre güncelleştirilir.
   
-5. **Kaydet**’i seçin. Yeni zamanlamanız artık etkin olduğunu onaylayan bir ileti görüntülenir.
+5. **Kaydet**'i seçin. Yeni zamanlamanız artık etkin olduğunu onaylayan bir ileti görüntülenir.
 
    Bakım zamanlamasını desteklemeyen bir bölgede bir zamanlama kaydediyorsanız aşağıdaki ileti görüntülenir. Ayarlarınız kaydedilir ve bu özellik seçtiğiniz bölgede kullanılabilir hale geldiğinde etkin hale gelir.
 
