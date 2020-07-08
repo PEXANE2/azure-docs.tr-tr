@@ -8,29 +8,28 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235615"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Dosyaları için paylaşım anlık görüntülerine genel bakış
 
-Azure dosyaları, dosya paylaşımlarının paylaşım anlık görüntülerini alma özelliğini sağlar. Anlık görüntü paylaşma, zaman içinde bu noktada paylaşma durumunu yakalar. Bu makalede, paylaşma anlık görüntülerinin sağladığı özellikleri ve özel kullanım kasaınızda bunlardan nasıl yararlanacağınızı anladık.
+Azure Dosyalar, dosya paylaşımlarının anlık görüntüsünü alma imkanı sunar. Paylaşım anlık görüntüleri, paylaşımın belirli bir noktadaki durumunu yakalar. Bu makalede paylaşım anlık görüntülerinin sağladığı imkanlar ve bu kullanım örneğinde bu imkanlardan nasıl faydalanabileceğiniz anlatılmıştır.
 
-## <a name="when-to-use-share-snapshots"></a>Paylaşma anlık görüntülerini ne zaman kullanacağınızı
+## <a name="when-to-use-share-snapshots"></a>Paylaşım anlık görüntülerinin kullanılması gereken durumlar
 
-### <a name="protection-against-application-error-and-data-corruption"></a>Uygulama hatasına ve veri bozulmasına karşı koruma
+### <a name="protection-against-application-error-and-data-corruption"></a>Uygulama hatasına ve veri bozulmasına karşı koruma sağlama
 
-Dosya paylaşımları kullanan uygulamalar yazma, okuma, depolama, iletim ve işleme gibi işlemleri gerçekleştirir. Bir uygulama yanlış yapılandırılmış veya istemeden oluşan bir hata ortaya geliyorsa, yanlışlıkla üzerine yazma veya hasar verme birkaç blok olabilir. Bu senaryolara karşı korumaya yardımcı olmak için, yeni uygulama kodu dağıtmadan önce bir paylaşma anlık görüntüsü alabilirsiniz. Yeni dağıtımla bir hata veya uygulama hatası varsa, bu dosya paylaşımında verilerinizin önceki bir sürümüne geri dönebilirsiniz. 
+Dosya paylaşımlarını kullanan uygulamalar yazma, okuma, depolama, iletme ve işleme gibi işlemler gerçekleştirir. Hatalı yapılandırılmış olan veya içinde tespit edilememiş bir hata bulunan uygulamalar yanlışlıkla verilerin üzerine yazabilir veya birkaç bloğa zarar verebilir. Bu senaryolara karşı koruma sağlamak için yeni uygulama kodunu dağıtmadan önce paylaşımın anlık görüntüsünü alabilirsiniz. Yeni dağıtımda bir hata veya uygulama kusuru olması halinde dosya paylaşımındaki verilerinizin önceki sürümüne geri dönebilirsiniz. 
 
-### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Yanlışlıkla silinmelere veya istenmeyen değişikliklere karşı koruma
+### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Yanlışlıkla silme veya istenmeyen değişikliklere karşı koruma
 
-Bir dosya paylaşımındaki metin dosyası üzerinde çalıştığınızı düşünün. Metin dosyası kapatıldıktan sonra değişikliklerinizi geri alma imkanını kaybedersiniz. Bu gibi durumlarda, dosyanın önceki bir sürümünü kurtarmanız gerekir. Yanlışlıkla yeniden adlandırılırsa veya silinirse dosyanın önceki sürümlerini kurtarmak için paylaşma anlık görüntülerini kullanabilirsiniz.
+Bir dosya paylaşımında bulunan bir metin dosyası üzerinde çalıştığınızı düşünün. Metin dosyası kapatıldıktan sonra değişikliklerinizi geri alma imkanını kaybedersiniz. Bu gibi durumlarda, dosyanın önceki bir sürümünü kurtarmanız gerekir. Yanlışlıkla yeniden adlandırılması veya silinmesi halinde dosyanın önceki sürümlerini kurtarmak için paylaşım anlık görüntülerini kullanabilirsiniz.
 
-### <a name="general-backup-purposes"></a>Genel yedekleme amaçları
+### <a name="general-backup-purposes"></a>Genel yedekleme amacıyla
 
-Bir dosya paylaşma oluşturduktan sonra, veri yedekleme için kullanmak üzere dosya paylaşımının paylaşılan anlık görüntüsünü düzenli aralıklarla oluşturabilirsiniz. Paylaşılan bir anlık görüntü, düzenli aralıklarla çalıştırıldığında, gelecekteki denetim gereksinimleri veya olağanüstü durum kurtarma için kullanılabilecek önceki veri sürümlerinin korunmasını sağlar. Anlık görüntü almak ve yönetmek için [Azure dosya paylaşma yedeklemesini](../../backup/azure-file-share-backup-overview.md) bir yedekleme çözümü olarak kullanmanızı öneririz. Ayrıca, CLı veya PowerShell kullanarak anlık görüntüleri kendiniz de alabilir ve yönetebilirsiniz.
+Bir dosya paylaşımı oluşturduktan sonra bu dosya paylaşımından düzenli olarak paylaşım anlık görüntüsü oluşturarak veri yedeği olarak kullanabilirsiniz. Düzenli olarak alınan paylaşım anlık görüntüleri, verilerin önceki sürümlerinin korunmasına ve ileride yapılacak denetimler veya olağanüstü durum kurtarma çalışmaları için kullanılmasına yardımcı olur. Anlık görüntü almak ve yönetmek için [Azure dosya paylaşma yedeklemesini](../../backup/azure-file-share-backup-overview.md) bir yedekleme çözümü olarak kullanmanızı öneririz. Ayrıca, CLı veya PowerShell kullanarak anlık görüntüleri kendiniz de alabilir ve yönetebilirsiniz.
 
 ## <a name="capabilities"></a>Özellikler
 
@@ -71,17 +70,17 @@ Paylaşılan anlık görüntü oluşturmaya yönelik eşzamanlı çağrılara y�
 
 Bugün, Linux üzerinde paylaşma anlık görüntülerini bağlamak mümkün değildir. Bunun nedeni, Linux SMB istemcisinin Windows gibi anlık görüntüleri bağlamayı desteklemeleridir.
 
-## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Paylaşma anlık görüntüsünden verileri bir paylaşıma geri kopyalama
+## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Paylaşım anlık görüntüsünden paylaşıma veri kopyalama
 
-Dosyaları içeren kopyalama işlemleri ve anlık görüntüleri paylaşma aşağıdaki kurallara uyar:
+Dosyalar ve paylaşım anlık görüntüleri ile yapılan kopyalama işlemleri şu kurallara tabidir:
 
-Bir dosya paylaşımında tek tek dosyaları, temel paylaşımıyla veya başka bir konuma kopyalayabilirsiniz. Dosyanın önceki bir sürümünü geri yükleyebilir veya dosya dosya paylaşımından paylaşma anlık görüntüsüne kopyalayarak dosya paylaşımının tamamını geri yükleyebilirsiniz. Paylaşma anlık görüntüsü temel paylaşıma yükseltilmedi. 
+Bir dosya paylaşımı anlık görüntüsündeki dosyalardan herhangi birini temel paylaşıma veya başka bir konuma kopyalayabilirsiniz. Paylaşım anlık görüntüsündeki dosyaları tek tek kopyalayarak bir dosyanın eski bir sürümünü geri yükleyebilir veya dosya paylaşımının tamamını geri yükleyebilirsiniz. Paylaşım anlık görüntüsü, temel paylaşım olacak şekilde yükseltilmez. 
 
-Paylaşma anlık görüntüsü kopyalandıktan sonra bozulmadan kalır, ancak paylaşımın anlık görüntüsünde bulunan verilerin bir kopyasıyla taban dosya paylaşımının üzerine yazılır. Geri yüklenen tüm dosyalar "değiştirilen içerik" öğesine doğru sayılır.
+Kopyalama işlemi sonrasında paylaşım anlık görüntüsü aynı şekilde kalır ancak paylaşım anlık görüntüsündeki verilerin bir kopyası temel dosya paylaşımının üzerine yazılır. Geri yüklenen tüm dosyalar "değiştirilen içerik" olarak kabul edilir.
 
-Share anlık görüntüsüne bir dosyayı farklı bir ada sahip başka bir hedefe kopyalayabilirsiniz. Elde edilen hedef dosya, paylaşma anlık görüntüsü değil yazılabilir bir dosyadır. Bu durumda, taban dosya paylaşımınız bozulmadan kalır.
+Bir paylaşım anlık görüntüsündeki dosyalardan birini farklı bir adla farklı bir konuma kopyalayabilirsiniz. Sonuçta elde edilen hedef dosya, paylaşım anlık görüntüsü değil yazılabilir bir dosya olur. Bu durumda temel dosya paylaşımınız etkilenmez.
 
-Bir kopyası olan bir hedef dosyanın üzerine yazıldığında, özgün hedef dosyayla ilişkili tüm paylaşılan anlık görüntüler bozulmadan kalır.
+Kopyalanan dosya ile hedef dosyanın üzerine yazıldığında özgün hedef dosyayla ilişkilendirilmiş olan paylaşım anlık görüntüleri etkilenmez.
 
 ## <a name="general-best-practices"></a>Genel en iyi uygulamalar
 

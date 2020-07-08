@@ -13,10 +13,9 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196099"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Kopyalama Etkinliği performansı ve ayarlama kılavuzu
@@ -208,8 +207,8 @@ Hedef veri deposuna yüklemeden önce verilerin blob depolamada hazırlanıp haz
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
 | **Enablehazırlama** |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |False |Hayır |
-| **linkedServiceName** |Bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adını belirtin ve bu, geçici hazırlama deposu olarak kullandığınız depolamanın örneğine başvurur. <br/><br/> PolyBase aracılığıyla SQL veri ambarı 'na veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| **Yolun** |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |Hayır |
+| **linkedServiceName** |Bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adını belirtin ve bu, geçici hazırlama deposu olarak kullandığınız depolamanın örneğine başvurur. <br/><br/> PolyBase aracılığıyla SQL veri ambarı 'na veri yüklemek için paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |YOK |Evet, **Enablehazırlama** true olarak ayarlandığında |
+| **Yolun** |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |YOK |Hayır |
 | **enableCompression** |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |False |Hayır |
 
 Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinliğinin örnek bir tanımı verilmiştir:
@@ -262,13 +261,13 @@ Kopyalama etkinliğiyle Data Factory hizmetinizin performansını ayarlamak içi
      * [Bulut veri taşıma birimleri](#cloud-data-movement-units)
      * [Hazırlanmış kopya](#staged-copy)
      * [Veri Yönetimi ağ geçidi ölçeklenebilirliği](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Veri Yönetimi Ağ Geçidi](#considerations-for-data-management-gateway)
+   * [Veri Yönetimi ağ geçidi](#considerations-for-data-management-gateway)
    * [Kaynak](#considerations-for-the-source)
    * [Havuz](#considerations-for-the-sink)
    * [Serileştirme ve seri durumundan çıkarma](#considerations-for-serialization-and-deserialization)
    * [Sıkıştırma](#considerations-for-compression)
    * [Sütun eşleme](#considerations-for-column-mapping)
-   * [Diğer konular](#other-considerations)
+   * [Diğer önemli noktalar](#other-considerations)
 3. **Yapılandırmayı tüm veri kümesi Için genişletin**. Yürütme sonuçları ve performansından memnun olduğunuzda, tüm veri kümesini kapsayacak şekilde tanım ve işlem hattı etkin dönemini genişletebilirsiniz.
 
 ## <a name="considerations-for-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile ilgili konular
@@ -361,7 +360,7 @@ Kopyalama etkinliğinde **ColumnMappings** özelliğini, giriş sütunlarının 
 
 Kaynak veri depetinizi Örneğin SQL veritabanı veya SQL Server gibi bir ilişkisel depodaysa veya tablo depolama ya da Azure Cosmos DB gibi bir NoSQL depoluk ise, sütun eşlemesi kullanmak yerine **sorgu** özelliğine sütun filtreleme ve yeniden sıralama mantığını göndermeyi düşünün. Bu şekilde, veri taşıma hizmeti, kaynak veri deposundan verileri okurken ve çok daha verimli olduğu sürece projeksiyon oluşur.
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 Kopyalamak istediğiniz verilerin boyutu büyükse, Data Factory Dilimleme mekanizmasını kullanarak verileri daha fazla bölümlemek için iş mantığınızı ayarlayabilirsiniz. Sonra, kopyalama etkinliğini, her kopyalama etkinliği çalışmasının veri boyutunu azaltmak için daha sık çalışacak şekilde zamanlayın.
 
 Aynı anda aynı veri deposuna bağlayıcı Data Factory gerektiren veri kümeleri ve kopyalama etkinliklerinin sayısı hakkında dikkatli olun. Birçok eşzamanlı kopyalama işi bir veri deposunu kısıtlayabilir ve performansı azalmasına, iş iç yeniden denemelerini kopyalamaya ve bazı durumlarda yürütme hatalarına neden olabilirler.
@@ -399,19 +398,19 @@ Bu durumda, bzip2 veri sıkıştırması tüm işlem hattının yavaşlatıyor o
 
 **Analiz ve performans ayarlaması**: Örneğin, bir dört çekirdekli makineye ağ geçidi yüklediyseniz, Data Factory dosyaları dosya sisteminden blob depolamaya eşzamanlı olarak taşımak için 16 paralel kopya kullanır. Bu paralel yürütme, yüksek verimlilik elde etmelidir. Ayrıca paralel kopya sayısını açıkça belirtebilirsiniz. Birçok küçük dosyayı kopyaladığınızda, paralel kopyalar kaynakları daha verimli bir şekilde kullanarak aktarım hızına önemli ölçüde yardımcı olur.
 
-![Senaryo 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+![1\. Senaryo](./media/data-factory-copy-activity-performance/scenario-1.png)
 
 **Senaryo II**: her biri Blob depolamadan Data Lake Store Analytics 'e 20 blob 500 MB kopyalayın ve ardından performansı ayarlayın.
 
 **Analiz ve performans ayarlaması**: bu senaryoda Data Factory, tek kopya (**parallelcopy** 1 olarak ayarlanmış) ve tek bulut veri taşıma birimleri kullanarak verileri blob depolamadan Data Lake Store kopyalar. Gözettiğiniz aktarım hızı, [performans Başvurusu bölümünde](#performance-reference)açıklanacak şekilde kapatılacak.
 
-![Senaryo 2](./media/data-factory-copy-activity-performance/scenario-2.png)
+![2\. Senaryo](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **Senaryo III**: tek dosya boyutu düzinelerce MB 'den büyük ve toplam birim büyük.
 
 **Analiz ve performans açılıyor**: **parallelcopy** 'leri artırma, tek bir bulut DMU 'nin kaynak sınırlamaları nedeniyle daha iyi kopyalama performansına neden olmaz. Bunun yerine, veri hareketini gerçekleştirmeye yönelik daha fazla kaynak almak için daha fazla bulut DMU belirtmelisiniz. **Parallelkopyaların** özelliği için bir değer belirtmeyin. Data Factory, sizin için paralellik uygular. Bu durumda, **Clouddatamovementunits** 'i 4 olarak ayarlarsanız, yaklaşık dört kez üretilen iş meydana gelir.
 
-![3. Senaryo](./media/data-factory-copy-activity-performance/scenario-3.png)
+![3\. Senaryo](./media/data-factory-copy-activity-performance/scenario-3.png)
 
 ## <a name="reference"></a>Başvuru
 Desteklenen bazı veri depoları için performans izleme ve ayarlama başvuruları aşağıda verilmiştir:

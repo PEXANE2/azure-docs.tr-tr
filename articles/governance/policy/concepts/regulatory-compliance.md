@@ -4,10 +4,9 @@ description: Access Control, yapılandırma yönetimi ve diğerleri gibi yasal e
 ms.date: 05/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3bcc876cf8fd608d700e39bda11c94395beace80
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205984"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure Ilkesinde mevzuata uyumluluğu

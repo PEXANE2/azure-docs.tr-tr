@@ -8,10 +8,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248745"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps ve Flow için Azure Izleyici günlükleri Bağlayıcısı
@@ -40,7 +39,7 @@ Aşağıdaki tabloda, Azure Izleyici günlükleri bağlayıcısına dahil edilen
 | [Sorgu ve liste sonuçlarını Çalıştır](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Her bir satırı kendi nesnesi olarak döndürür. Bu eylemi, iş akışının geri kalanında her bir satırla ayrı olarak çalışmak istediğinizde kullanın. Eylem genellikle [her etkinlik için](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)bir olur. |
 | [Sorgu Çalıştır ve sonuçları görselleştirin](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Sonuç kümesindeki tüm satırları tek biçimli bir nesne olarak döndürür. Sonuç kümesini, sonuçları bir e-postaya göndermek gibi iş akışı geri kalanında birlikte kullanmak istediğinizde bu eylemi kullanın.  |
 
-## <a name="walkthroughs"></a>İzlenecek Yollar
+## <a name="walkthroughs"></a>Kılavuz
 Aşağıdaki öğreticilerde Azure Logic Apps içindeki Azure Izleyici bağlayıcılarının kullanımı gösterilmektedir. Bu aynı örneği, Power otomatikleştirmede gerçekleştirebilirsiniz, ancak ilk iş akışını oluşturma ve tamamlandığında çalıştırma gibi tek fark. İş akışı ve eylemlerin yapılandırması her ikisi arasında aynıdır. Başlamak için bkz. [Power otomatikleştirmede bir şablondan akış oluşturma](https://docs.microsoft.com/power-automate/get-started-logic-template) .
 
 

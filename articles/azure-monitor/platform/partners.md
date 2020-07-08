@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248980"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
@@ -60,7 +59,7 @@ Circonus, benzersiz iş öngörülerini ve değerlerini sağlamak için gerçek 
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha fazla bilgi edinin][cloudhealth-doc]
+[Daha fazla bilgi][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -134,7 +133,7 @@ NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde al
 
 Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
 
-[Daha fazla bilgi edinin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+[Daha fazla bilgi](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 

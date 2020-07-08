@@ -4,10 +4,9 @@ description: Bir medya grafiği, bir canlı video akışından gelen analizi, bi
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 29e00b9c04a652771ca150e2a45e980d20f8bc1f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260942"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Canlı videoyu herhangi bir kayıt olmadan çözümleme

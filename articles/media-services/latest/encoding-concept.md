@@ -14,10 +14,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220172"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
@@ -60,7 +59,7 @@ Videolarınızı işlemek üzere Iş gönderdiğinizde, Media Services Giriş vi
 * [.NET ile HTTPS URL 'sinden kodlama](stream-files-dotnet-quickstart.md)
 * [REST ile HTTPS URL 'sinden kodlama](stream-files-tutorial-with-rest.md)
 * [CLı ile HTTPS URL 'sinden kodlama](stream-files-cli-quickstart.md)
-* [Node. js ile HTTPS URL 'sinden kodlama](stream-files-nodejs-quickstart.md)
+* [Node.jsile HTTPS URL 'sini kodla](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>Yerel bir dosyadan iş girişi oluşturma
 

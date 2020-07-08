@@ -10,17 +10,16 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233274"
 ---
 # <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Edge 'de SQL veritabanı DAC paketleri
 
 Azure SQL Edge (Önizleme), IoT ve Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. Bu, sektör lideri performans, güvenlik ve sorgu işleme özellikleri sağlayan Microsoft SQL Server veritabanı altyapısının en son sürümlerinde oluşturulmuştur. Azure SQL Edge, SQL Server sektör lideri ilişkisel veritabanı yönetim özelliklerinin yanı sıra gerçek zamanlı analiz ve karmaşık olay işleme için yerleşik akış özelliği sağlar.
 
-Azure SQL Edge, SQL Edge dağıtımı sırasında bir [SQL VERITABANı dac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketi dağıtmanıza olanak sağlayan bir SqlPackage. exe yerel uygulamasını da sağlar. SQL veritabanı DACPACs, SQL Edge modülünün seçeneği aracılığıyla ortaya çıkarılan SqlPackage parametresi kullanılarak SQL Edge 'e dağıtılabilir `module twin's desired properties` :
+Azure SQL Edge, SQL Edge dağıtımı sırasında bir [SQL VERITABANı dac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketi dağıtmanızı sağlayan SqlPackage.exe yerel bir uygulamasını da sağlar. SQL veritabanı DACPACs, SQL Edge modülünün seçeneği aracılığıyla ortaya çıkarılan SqlPackage parametresi kullanılarak SQL Edge 'e dağıtılabilir `module twin's desired properties` :
 
 ```json
 {
@@ -73,7 +72,7 @@ SQL Edge ile bir SQL veritabanı DAC paketi (*. dacpac) kullanmak için şu adı
             }
         ```
 
-    7. **Kaydet**’i seçin.
+    7. **Kaydet**'i seçin.
 
     8. **Modülleri ayarla** sayfasında, **İleri**' yi seçin.
 

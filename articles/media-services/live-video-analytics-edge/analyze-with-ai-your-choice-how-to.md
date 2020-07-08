@@ -4,13 +4,12 @@ description: Bu makalede, seçtiğiniz bir bilgisayar görüntü modeli kullanar
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261264"
 ---
-# <a name="analyze-live-video-with-ai-of-your-choice"></a>Seçtiğiniz AI ile canlı videoyu çözümleyin
+# <a name="analyze-live-video-with-ai-of-your-choice"></a>Seçtiğiniz yapay zeka ile canlı video analiz etme
 
 Bu makalede, seçtiğiniz bir bilgisayar görüntü modeli kullanarak canlı videoyu çözümlemek için IoT Edge üzerinde canlı video analiziyle tümleştirilebilen bir IoT Edge modülü oluşturmayı öğreneceksiniz. 
 

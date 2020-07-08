@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84199003"
 ---
-# <a name="bring-your-own-key-specification"></a>Kendi anahtar belirtimini getirin
+# <a name="bring-your-own-key-specification"></a>Kendi anahtarını getir belirtimi
 
 Bu belgede, müşterilerin Şirket içi HSM 'leri Key Vault ' e kadar olan HSM korumalı anahtarları içeri aktarmaya yönelik özellikler açıklanmaktadır.
 
@@ -158,7 +157,7 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
 ```
 "key_hsm" değeri, Base64 biçiminde KeyTransferPackage-ContosoFirstHSMkey. bYok kodlandığı tüm içeridir.
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 
 ### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
 

@@ -7,10 +7,9 @@ ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197058"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub deponuzu uygulama yapılandırmasıyla eşitleyin
@@ -209,11 +208,11 @@ jobs:
 ```
 
 ## <a name="use-azure-key-vault-with-github-action"></a>GitHub eylemiyle Azure Key Vault kullanma
-AppConfiguration ile Azure Key Vault kullanan geliştiriciler, genellikle bir appSettings. JSON ve secretreferences. JSON olmak üzere iki ayrı dosya kullanmalıdır. Secretreferences. JSON, Anahtar Kasası parolasının URL 'sini içerir.
+AppConfiguration ile Azure Key Vault kullanan geliştiricilerin, genellikle üzerinde bir appsettings.jsve üzerinde bir secretreferences.jsolmak üzere iki ayrı dosya kullanması gerekir. secretreferences.js, Anahtar Kasası parolasının URL 'sini içerir.
 
 {"mySecret": "{ \" Uri \" : \" https://myKeyVault.vault.azure.net/secrets/mySecret "} "}
 
-GitHub eylemi daha sonra appSettings. JSON üzerinde katı bir eşitleme yapmak üzere yapılandırılabilir ve ardından secretreferences. JSON üzerinde katı olmayan bir eşitleme gelir. Aşağıdaki örnek, herhangi bir dosya güncelleştirildiği zaman bir eşitleme tetikleyecektir:
+GitHub eylemi daha sonra, üzerinde appsettings.jskatı bir eşitleme yapmak için yapılandırılabilir ve secretreferences.jsaçık olmayan bir eşitlemeden sonra. Aşağıdaki örnek, herhangi bir dosya güncelleştirildiği zaman bir eşitleme tetikleyecektir:
 
 ```json
 on:
@@ -308,15 +307,15 @@ Giriş parametreleri, çalışma zamanı sırasında eylem tarafından kullanıl
 
 | Giriş adı | Gerekli mi? | Değer |
 |----|----|----|
-| configurationFile | Yes | Depodaki yapılandırma dosyasının göreli yolu.  Glob desenleri desteklenir ve birden çok dosya içerebilir. |
-| biçim | Yes | Yapılandırma dosyasının dosya biçimi.  Geçerli biçimler şunlardır: JSON, YAML, Özellikler. |
-| Dizisi | Yes | Uygulama yapılandırma örneği için bağlantı dizesi. Bağlantı dizesi GitHub deposunda bir gizli dizi olarak depolanmalıdır ve yalnızca gizli ad iş akışında kullanılmalıdır. |
-| ayırıcı | Yes | Yapılandırma dosyası anahtar-değer çiftlerine düzleştirilmesi sırasında kullanılan ayırıcı.  Geçerli değerler:. , ; : - _ __ / |
-| koy | No | Anahtarların başlangıcına eklenecek ön ek. |
-| etiket | No | Anahtar-değer çiftleri ayarlanırken kullanılan etiket. Belirtilmemişse, null bir etiket kullanılır. |
-| sert | No | Katı modunun etkin olup olmadığını belirleyen bir Boole değeri. Varsayılan değer false'tur. |
-| derinliğini | No | Yapılandırma dosyasını düzleştirme için en yüksek derinlik.  Derinlik pozitif bir sayı olmalıdır.  Varsayılan değer en fazla derinliğe sahip olmayacaktır. |
-| tags | No | Anahtar-değer çiftleri üzerinde ayarlanan etiketi belirtir.  Beklenen biçim, şu şekildeki bir JSON nesnesinin strıngıingform biçimidir: {[propertyName: String]: dize;} Her özellik adı-değeri bir etiket haline gelir. |
+| configurationFile | Evet | Depodaki yapılandırma dosyasının göreli yolu.  Glob desenleri desteklenir ve birden çok dosya içerebilir. |
+| biçim | Evet | Yapılandırma dosyasının dosya biçimi.  Geçerli biçimler şunlardır: JSON, YAML, Özellikler. |
+| Dizisi | Evet | Uygulama yapılandırma örneği için bağlantı dizesi. Bağlantı dizesi GitHub deposunda bir gizli dizi olarak depolanmalıdır ve yalnızca gizli ad iş akışında kullanılmalıdır. |
+| ayırıcı | Evet | Yapılandırma dosyası anahtar-değer çiftlerine düzleştirilmesi sırasında kullanılan ayırıcı.  Geçerli değerler:. , ; : - _ __ / |
+| koy | Hayır | Anahtarların başlangıcına eklenecek ön ek. |
+| etiket | Hayır | Anahtar-değer çiftleri ayarlanırken kullanılan etiket. Belirtilmemişse, null bir etiket kullanılır. |
+| sert | Hayır | Katı modunun etkin olup olmadığını belirleyen bir Boole değeri. Varsayılan değer false'tur. |
+| derinliğini | Hayır | Yapılandırma dosyasını düzleştirme için en yüksek derinlik.  Derinlik pozitif bir sayı olmalıdır.  Varsayılan değer en fazla derinliğe sahip olmayacaktır. |
+| etiketler | Hayır | Anahtar-değer çiftleri üzerinde ayarlanan etiketi belirtir.  Beklenen biçim, şu şekildeki bir JSON nesnesinin strıngıingform biçimidir: {[propertyName: String]: dize;} Her özellik adı-değeri bir etiket haline gelir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

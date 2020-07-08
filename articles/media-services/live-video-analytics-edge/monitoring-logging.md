@@ -4,10 +4,9 @@ description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canl�
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261215"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
@@ -16,7 +15,7 @@ Bu makalede, uzaktan izleme için IoT Edge modülündeki canlı video analizinde
 
 Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyebileceğinizi de öğreneceksiniz.
 
-## <a name="taxonomy-of-events"></a>Olay sınıflandırması
+## <a name="taxonomy-of-events"></a>Olayların taksonomisi
 
 IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki sınıflandırmaya göre yayar.
 
@@ -198,7 +197,7 @@ Olay türleri her bir olay sınıfına özeldir.
 
 Olay saati, ıSO8601 dizesinde ve olayın gerçekleştiği zaman ile açıklanır.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) . Günlüklere yazılan bilgiler [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özellikleri tarafından denetlenebilir:
 

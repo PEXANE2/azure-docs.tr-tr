@@ -4,13 +4,12 @@ description: Bu konuda, kayıt ilkesinin nasıl yönetileceği açıklanmaktadı
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 321e68087bfe2a8b3e1354e49585a89f9d3af295
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261320"
 ---
-# <a name="manage-recording-policy"></a>Kayıt ilkesini Yönet
+# <a name="manage-recording-policy"></a>Kayıt ilkesini yönetme
 
 [Sürekli video kaydı](continuous-video-recording-concept.md)için IoT Edge, canlı video analizi 'ni kullanarak haftalık veya aylık bir videoyu buluta kaydedebilirsiniz. Azure depolama 'da yerleşik olan [yaşam döngüsü yönetimi araçlarını](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) kullanarak bu Bulut arşivinin uzunluğunu (gün cinsinden) yönetebilirsiniz.  
 

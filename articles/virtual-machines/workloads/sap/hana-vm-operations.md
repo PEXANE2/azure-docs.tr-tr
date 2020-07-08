@@ -16,10 +16,9 @@ ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84230131"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
@@ -173,8 +172,8 @@ Genişleme SAP yapılandırması yükleme, şu adımları gerçekleştirmeniz ge
 Azure VM altyapınız dağıtıldığında ve diğer tüm hazırlıklar yapıldıktan sonra, aşağıdaki adımlarda SAP HANA genişleme yapılandırmasını yüklemeniz gerekir:
 
 - SAP HANA ana düğümünü SAP belgelerine göre yükler
-- Azure Premium Storage veya/Hana/Data ve/Hana/log olmayan diskler ile ultra disk depolaması kullanmak durumunda Global. ini dosyasını değiştirmeniz ve ' basepath_shared = No ' parametresini Global. ini dosyasına eklemeniz gerekir. Bu parametre SAP HANA, düğümler arasında ' Shared ' **/Hana/Data** ve **/Hana/log** birimleri olmadan ölçek genişletme içinde çalışmasına olanak sağlar. Ayrıntılar [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)bölümünde belgelenmiştir. /Hana/Data ve/Hana/log için ANF tabanlı NFS birimleri kullanıyorsanız, bu değişikliği yapmanız gerekmez
-- Global. ini parametresindeki son değişiklikten sonra SAP HANA örneğini yeniden başlatın
+- Azure Premium Storage veya/Hana/Data ve/Hana/log olmayan diskler ile ultra disk depolaması kullanmak durumunda global.ini dosyasını değiştirmeniz ve ' basepath_shared = No ' parametresini global.ini dosyasına eklemeniz gerekir. Bu parametre SAP HANA, düğümler arasında ' Shared ' **/Hana/Data** ve **/Hana/log** birimleri olmadan ölçek genişletme içinde çalışmasına olanak sağlar. Ayrıntılar [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)bölümünde belgelenmiştir. /Hana/Data ve/Hana/log için ANF tabanlı NFS birimleri kullanıyorsanız, bu değişikliği yapmanız gerekmez
+- global.ini parametresindeki nihai değişiklikten sonra, SAP HANA örneğini yeniden başlatın
 - Ek çalışan düğümleri ekleyin. Ayrıca bkz <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> .. Yükleme sırasında veya daha sonra (örneğin, yerel hdblcm) düğümler arası iletişim SAP HANA iç ağı belirtin. Daha ayrıntılı belgeler için Ayrıca bkz. [SAP Note #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
 
 SUSE Linux 'ta bekleme moduna sahip bir SAP HANA genişleme sistemi ayarlama ayrıntıları, [SUSE Linux Enterprise Server üzerinde Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)konusunda ayrıntılı olarak açıklanmıştır. Red hat için eşdeğer belgeler, [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)makalesinde bulunabilir. 

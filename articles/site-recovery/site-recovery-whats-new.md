@@ -4,10 +4,9 @@ description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son günc
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259227"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
@@ -39,7 +38,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -50,7 +49,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -61,7 +60,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery sağlayıcıları ve aracıları için güncelleştirme yoktu.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -75,7 +74,7 @@ Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bek
 
 [Güncelleştirme paketi 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -87,7 +86,7 @@ Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bek
 
 [Güncelleştirme paketi 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -97,7 +96,7 @@ Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bek
 
 Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **UEFı** | Site Recovery artık UEFı tabanlı önyükleme mimarisi olan Azure VM 'Leri için olağanüstü durum kurtarmayı desteklemektedir.
 **Linux** | Site Recovery artık Azure disk şifrelemesi (ADE) ile Linux çalıştıran Azure sanal makinelerini destekler.
@@ -108,7 +107,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **UEFı** | Site Recovery artık UEFı tabanlı önyükleme mimarisine sahip VMware VM 'Leri için olağanüstü durum kurtarmayı desteklemektedir.<br/><br/> Desteklenen işletim sistemleri Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, SLES 12 SP4, RHEL 8 ' i içerir.
 
@@ -134,7 +133,7 @@ Azure sanal makinelerinin bir ikincil bölgeye veya şirket içi VMware VM 'leri
 
 [Güncelleştirme paketi 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -145,7 +144,7 @@ Azure sanal makinelerinin bir ikincil bölgeye veya şirket içi VMware VM 'leri
 
 Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Yük devretme testi ayarları** | Yük devretme testi kurarken, artık IP adresi, NSG, iç yük dengelemesi ve her makine NIC 'i için genel IP adresi dahil olmak üzere test yük devretmesi VM 'si ve ağ için ayarları yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır ve geçerli davranışı değiştirmez. Bu ayarları yapılandırmazsanız, yük devretme testi sırasında bir Azure VNet seçebilirsiniz. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
 **Kurtarma planları** | Yük devretme güvenilirliğini sağlamak için kurtarma planları artık 100 VM 'Lerle sınırlıdır.
@@ -154,7 +153,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Kurtarma planları** | Yük devretme güvenilirliğini sağlamak için kurtarma planları artık 100 VM 'Lerle sınırlıdır.
 
@@ -165,7 +164,7 @@ VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda
 
 [Güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -177,7 +176,7 @@ VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda
 
 Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Yeniden çalışma sonrasında temizle** | İkincil Azure 'a yük devreder ve sonra birincil bölgeye geri döndüğünüzde, Site Recovery ikincil bölgedeki makineleri otomatik olarak temizler. VM 'Leri ve NIC 'leri el ile silmeniz gerekmez.
 **Sınama yük devretmesi IP adreslerini korur** | Artık bir olağanüstü durum kurtarma ayrıntısı sırasında kaynak VM 'nin IP adresini koruyabilir ve yük devretme testi için bir statik IP adresi seçebilirsiniz.
@@ -186,7 +185,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 Yeni işlem sunucusu uyarıları | Yeni işlem sunucusu uyarıları ekledik. [Daha fazla bilgi edinin](vmware-physical-azure-monitor-process-server.md).
 
@@ -194,7 +193,7 @@ Yeni işlem sunucusu uyarıları | Yeni işlem sunucusu uyarıları ekledik. [Da
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 Depolama hesabı | Site Recovery artık Hyper-V için Azure olağanüstü durum kurtarma için Güvenlik Duvarı etkinleştirilmiş depolama hesaplarının kullanımını desteklemektedir.  Güvenlik Duvarı etkinleştirilmiş depolama hesaplarını hedef hesap olarak veya önbellek depolaması için seçebilirsiniz. Güvenlik Duvarı etkinleştirilmiş hesabı kullanıyorsanız, güvenilen Microsoft hizmetlerine izin verme seçeneğini etkinleştirdiğinizden emin olun.<br/><br/> Bu, System Center VMM ile veya olmadan Hyper-V VM 'lerinde desteklenir.
 
@@ -205,7 +204,7 @@ Depolama hesabı | Site Recovery artık Hyper-V için Azure olağanüstü durum 
 
 [Güncelleştirme paketi 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -215,7 +214,7 @@ Depolama hesabı | Site Recovery artık Hyper-V için Azure olağanüstü durum 
 
 Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Azure AD olmadan şifreleme** | Azure AD uygulaması olmayan şifreleme artık Windows çalıştıran yönetilen disklere yönelik Azure VM çoğaltma için desteklenmektedir.
 **Yük devretme için ağ kaynakları** | Başka bir bölgeye yük devrettikten sonra, ağ kaynağı ayarlarını (NSG 'ler, Yük Dengeleme, genel IP adresi) bir VM 'ye ekleyebilirsiniz.
@@ -226,7 +225,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 [Güncelleştirme paketi 38](https://support.microsoft.com/help/4513507/) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -247,7 +246,7 @@ Artık, yönetilen disklerle bir Azure VM 'ye çoğaltma yaparken diskleri 8 TB 
 
 [Güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -257,7 +256,7 @@ Artık, yönetilen disklerle bir Azure VM 'ye çoğaltma yaparken diskleri 8 TB 
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **GPT bölümleri** | Güncelleştirme paketi 37 ve sonraki sürümlerde (Mobility hizmeti sürüm 9.25.5241.1), UEFı 'de beş adede kadar GPT bölümü desteklenir. Bu güncelleştirmeden önce dört destekleniyordu.
 
@@ -269,7 +268,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -278,7 +277,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Eklenen diskleri Çoğalt** | Olağanüstü durum kurtarma için zaten etkinleştirilmiş bir Azure VM 'sine eklenen veri diskleri için çoğaltmayı etkinleştirin. [Daha fazla bilgi edinin](azure-to-azure-enable-replication-added-disk.md).
 **Otomatik güncelleştirmeler** | Olağanüstü durum kurtarma için etkin olan Azure VM 'lerinde çalışan Mobility hizmeti uzantısı için otomatik güncelleştirmeleri yapılandırırken, Site Recovery tarafından oluşturulan varsayılan hesabı kullanmak yerine, kullanmak üzere var olan bir Otomasyon hesabı seçebilirsiniz. [Daha fazla bilgi edinin](azure-to-azure-autoupdate.md).
@@ -288,7 +287,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **İşlem sunucusu izleme** | Şirket içi VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için, iyileştirilmiş sunucu sistem durumu raporlama ve uyarılarla işlem sunucusu sorunlarını izleyin ve sorun giderin. [Daha fazla bilgi edinin](vmware-physical-azure-monitor-process-server.md).
 
@@ -302,7 +301,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -311,7 +310,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Yönetilen diskler** | Şirket içi VMware VM 'lerinin ve fiziksel sunucuların çoğaltılması artık doğrudan Azure 'daki yönetilen disklere gönderilir. Şirket içi veriler Azure 'da bir önbellek depolama hesabına gönderilir ve kurtarma noktaları hedef konumdaki yönetilen disklerde oluşturulur. Bu, birden çok hedef depolama hesabını yönetmenize gerek kalmaz.
 **Yapılandırma Sunucusu** | Site Recovery artık birden çok NIC içeren yapılandırma sunucularını desteklemektedir. Yapılandırma sunucusunu kasaya kaydetmeden önce yapılandırma sunucusu VM 'sine ek bağdaştırıcılar ekleyin. Daha sonra eklerseniz, sunucuyu kasada yeniden kaydetmeniz gerekir.
@@ -323,7 +322,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -333,7 +332,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -343,7 +342,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Ağ eşlemesi** | Azure VM olağanüstü durum kurtarma için artık çoğaltmayı etkinleştirdiğinizde kullanılabilir bir hedef ağı kullanabilirsiniz.
 **Standart SSD** | Artık [Standart SSD diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)kullanarak Azure VM 'leri için olağanüstü durum kurtarma ayarlayabilirsiniz.
@@ -354,7 +353,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux BRTFS dosya sistemi** | Site Recovery artık, BRTFS dosya sistemi ile VMware VM 'lerinin çoğaltılmasını desteklemektedir. Şu durumlarda çoğaltma desteklenmez:<br/><br/>-BTRFS dosya sistemi alt birimi, çoğaltma etkinleştirildikten sonra değiştirilir.<br/><br/>-Dosya sistemi birden çok diske yayılmış.<br/><br/>-BTRFS dosya sistemi RAID 'i destekler.
 **Windows Server 2019** | Windows Server 2019 çalıştıran makineler için destek eklendi.
@@ -373,7 +372,7 @@ Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV
 
 [Güncelleştirme paketi 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -382,7 +381,7 @@ Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | RedHat Workstation 6/7 için destek eklendi ve Ubuntu, de, ve SUSE için yeni çekirdek sürümleri eklendi.
 **Doğrudan Depolama Alanları** | Site Recovery, Depolama Alanları Doğrudan (S2D) kullanarak Azure VM 'lerini destekler.
@@ -391,7 +390,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 ve Oracle Linux 7,6 ve Ubuntu, de, ve SUSE için yeni çekirdek sürümleri için destek eklendi.
 
@@ -400,7 +399,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -409,7 +408,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** |  Oracle Linux 6,8, Oracle Linux 6,9 ve Oracle Linux 7,0 için Red Hat uyumlu çekirdek ile ve Ayırıcılanılabilir kurumsal çekirdek (UEK) sürüm 5 için destek eklenmiştir.
 **LVM** | LVM ve LVM2 birimlerine yönelik destek eklendi.<br/><br/> Bir disk bölümünde ve LVM birimlerinde/boot dizini artık desteklenmektedir.
@@ -422,7 +421,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | Oracle Linux 6,8, Oracle Linux 6,9 ve Oracle Linux 7,0 için Red Hat uyumlu çekirdek ile ve Ayırıcılanılabilir kurumsal çekirdek (UEK) sürüm 5 için destek eklenmiştir.
 **Linux BRTFS dosya sistemi** | Azure VM 'Leri için desteklenir.
@@ -455,7 +454,7 @@ Duyuruyu [okuyun](https://azure.microsoft.com/blog/know-exactly-how-much-it-will
 
 [Güncelleştirme paketi 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -463,7 +462,7 @@ Duyuruyu [okuyun](https://azure.microsoft.com/blog/know-exactly-how-much-it-will
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Bölge desteği** | Avustralya Orta 1 ve Avustralya Orta 2 için Site Recovery desteği eklendi.
 **Disk şifrelemesi desteği** | Azure AD uygulaması ile Azure disk şifrelemesi (ADE) ile şifrelenen Azure VM 'lerinin olağanüstü durum kurtarması için destek eklendi. [Daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-ade-vms.md).
@@ -475,7 +474,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -487,7 +486,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -495,7 +494,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | RedHat Enterprise Linux 6,10 için desteklenen eklendi; CentOS 6,10.<br/><br/>
 **Bulut desteği** | Almanya bulutundaki Azure VM 'Leri için desteklenen olağanüstü durum kurtarma.
@@ -504,7 +503,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | RedHat Enterprise Linux 6,10, CentOS 6,10 için destek eklendi.<br/><br/> Eski BIOS uyumluluk modundaki GUID bölümleme tablosu (GPT) Bölüm stilini kullanan Linux tabanlı VM 'Ler artık desteklenmektedir. Daha fazla bilgi için [Azure VM hakkında SSS bölümüne](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) bakın.
 **Geçişten sonra VM 'Ler için olağanüstü durum kurtarma** | Çoğaltmayı etkinleştirmeden önce VM 'de Mobility hizmetini kaldırmaya gerek olmadan Azure 'a geçirilen şirket içi bir VMware sanal makinesi için bir ikincil bölgeye olağanüstü durum kurtarmayı etkinleştirme desteği.
@@ -516,7 +515,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) , aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Bilgileri**
+**Güncelleştir** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -525,7 +524,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | Red Hat Enterprise Linux 7,5 için destek eklendi.
 
@@ -533,7 +532,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | Red Hat Enterprise Linux 7,5 için destek eklendi SUSE Linux Enterprise Server 12.
 

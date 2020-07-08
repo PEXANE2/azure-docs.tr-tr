@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221308"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
@@ -34,7 +33,7 @@ API sürümünden itibaren `2019-05-06` , öğe düzeyinde Dizin Oluşturucu hat
 
 | Özellik | Açıklama | Örnek |
 | --- | --- | --- |
-| key | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https: \/ /coromsearch.blob.Core.Windows.net/JFK-1k/docid-32112954.PDF |
+| anahtar | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Hatanın veya uyarının nerede oluştuğunu açıklayan işlem adı. Bu, şu yapı tarafından oluşturulur: [Kategori]. [alt kategori]. [resourceType]. Kaynak | Belgetextraction. azureblob. myBlobContainerName Enrichment. WebApiSkill. mySkillName Projection. Searchındex. OutputFieldMapping. mbir Putfieldname Projection. Searchındex. MergeOrUpload. Myındexname Projection. KnowledgeStore. Table. myTableName |
 | message | Hatanın veya uyarının üst düzey bir açıklaması. | Web API isteği başarısız olduğundan yetenek yürütülemedi. |
 | bilgileri | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... yığın izlemenin geri kalanı... |

@@ -4,10 +4,9 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247283"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
@@ -95,7 +94,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Bir kurtarma hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' a tıklayın.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -147,7 +146,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="extracting-the-software-package"></a>Yazılım paketi ayıklanıyor
 
-Tüm dosyaları indirdikten sonra, **MicrosoftAzureBackupInstaller. exe**' ye tıklayın. Bu işlem, kurulum dosyalarını sizin tarafınızdan belirtilen bir konuma ayıklamak için **Microsoft Azure Backup Kurulum Sihirbazı 'nı** başlatır. Sihirbazdan ilerleyin ve ayıklama işlemine başlamak için **Ayıkla** düğmesine tıklayın.
+Tüm dosyaları indirdikten sonra **MicrosoftAzureBackupInstaller.exe**' a tıklayın. Bu işlem, kurulum dosyalarını sizin tarafınızdan belirtilen bir konuma ayıklamak için **Microsoft Azure Backup Kurulum Sihirbazı 'nı** başlatır. Sihirbazdan ilerleyin ve ayıklama işlemine başlamak için **Ayıkla** düğmesine tıklayın.
 
 > [!WARNING]
 > Kurulum dosyalarını ayıklamak için en az 4 GB boş alan gerekir.
@@ -156,7 +155,7 @@ Tüm dosyaları indirdikten sonra, **MicrosoftAzureBackupInstaller. exe**' ye t�
 
 ![Microsoft Azure Backup Kurulum Sihirbazı](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yüklemeye başlamak ve **son** düğmesine tıklamak için, el ile ayıklanan *Setup. exe* ' yi başlatmak için kutuyu işaretleyin.
+Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yüklemeye başlamak ve **son** düğmesine tıklamak için, yeniden ayıklanan *setup.exe* başlatmak üzere kutuyu işaretleyin.
 
 ### <a name="installing-the-software-package"></a>Yazılım paketini yükleme
 

@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: c4da73e3197df894a0726556b4e92141818a520e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233082"
 ---
 # <a name="sysexternal_streaming_jobs-transact-sql"></a>sys. external_streaming_jobs (Transact-SQL)
@@ -29,8 +28,8 @@ Veritabanı kapsamında oluşturulan her bir dış akış işi için bir satır 
 |**parent_object_id**|**numarasını**| Bu akış için üst nesne için nesne kimlik numarası. Geçerli uygulamada, bu değer her zaman null olur|
 |**türüyle**|**karakter (2)**|Nesne türü. Stream nesneleri için, türü her zaman ' EJ ' olur|
 |**type_desc**|**nvarchar (60)**| Nesne türünün açıklaması. Stream nesneleri için, türü her zaman ' EXTERNAL_STREAMING_JOB ' olur|
-|**create_date**|**hem**| Nesnenin oluşturulduğu tarih.|
-|**modify_date**|**hem**| Geçerli uygulamada, bu değer Stream nesnesi için create_date aynıdır |
+|**create_date**|**datetime**| Nesnenin oluşturulduğu tarih.|
+|**modify_date**|**datetime**| Geçerli uygulamada, bu değer Stream nesnesi için create_date aynıdır |
 |**is_ms_shipped**|**bit**| Bir iç bileşen tarafından oluşturulan nesne.|  
 |**is_published**|**bit**| Nesne yayımlandı.|  
 |**is_schema_published**|**bit**|Yalnızca nesnenin şeması yayımlanır.|

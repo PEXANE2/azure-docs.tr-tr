@@ -4,10 +4,9 @@ description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmay�
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259414"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
@@ -43,7 +42,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubunun adını değişt
 
    :::image type="content" source="./media/rename_context.png" alt-text="Grup bölmesini, yönetim grubunu yeniden adlandırılacak şekilde yeniden adlandır" border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="change-the-name-in-powershell"></a>PowerShell 'de adı değiştirme
 
@@ -253,7 +252,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
    :::image type="content" source="./media/move_small_context.png" alt-text="Bölmeyi üst grubu değiştirmek için taşı" border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="move-subscriptions-in-powershell"></a>Abonelikleri PowerShell 'e taşıma
 
@@ -302,7 +301,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    :::image type="content" source="./media/add_context_MG.png" alt-text="Bir yönetim grubunu yeni veya mevcut bir gruba taşıma" border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="move-management-groups-in-powershell"></a>Yönetim gruplarını PowerShell 'de taşıma
 

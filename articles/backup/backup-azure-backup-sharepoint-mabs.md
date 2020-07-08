@@ -4,10 +4,9 @@ description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Ba
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234798"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
@@ -52,9 +51,9 @@ Ek Önkoşullar ve sınırlamalar:
 
 ## <a name="configure-backup"></a>Yedeklemeyi yapılandırma
 
-SharePoint grubunu yedeklemek için, ConfigureSharePoint. exe ' yi kullanarak SharePoint korumasını yapılandırın ve ardından MABS içinde bir koruma grubu oluşturun.
+SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoint korumasını yapılandırın ve ardından MABS içinde bir koruma grubu oluşturun.
 
-1. **ConfigureSharePoint.exe’yi çalıştırın** - Bu araç SharePoint VSS Yazıcı hizmetini \(WSS\) yapılandırır ve koruma aracısını SharePoint grubuna yönelik kimlik bilgileriyle sağlar. Koruma aracısını dağıttıktan sonra, ConfigureSharePoint. exe dosyası `<MABS Installation Path\>\bin` ön \- uç Web sunucusundaki klasöründe bulunabilir.  Birden çok WFE sunucunuz varsa, bunu yalnızca birine yüklemeniz gerekir. Aşağıdaki gibi çalıştırın:
+1. **ConfigureSharePoint.exe’yi çalıştırın** - Bu araç SharePoint VSS Yazıcı hizmetini \(WSS\) yapılandırır ve koruma aracısını SharePoint grubuna yönelik kimlik bilgileriyle sağlar. Koruma aracısını dağıttıktan sonra, ConfigureSharePoint.exe dosyası `<MABS Installation Path\>\bin` ön \- uç Web sunucusundaki klasöründe bulunabilir.  Birden çok WFE sunucunuz varsa, bunu yalnızca birine yüklemeniz gerekir. Aşağıdaki gibi çalıştırın:
 
     * WFE sunucusunda, komut isteminde şuraya gidin `\<MABS installation location\>\\bin\\` ve çalıştırın; `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` burada:
 
@@ -72,13 +71,13 @@ SharePoint grubunu yedeklemek için, ConfigureSharePoint. exe ' yi kullanarak Sh
 
         * MABS kayıt defteri anahtarına () **WSS_Admin_WPG** grubuna Okuma erişimi verin `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` .
 
-        ConfigureSharePoint. exe dosyasını çalıştırdıktan sonra SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olursa yeniden çalıştırmanız gerekir.
+        ConfigureSharePoint.exe çalıştırdıktan sonra, SharePoint grubu yönetici kimlik bilgilerinde bir değişiklik olursa yeniden çalıştırmanız gerekir.
 
 1. Koruma grubu oluşturmak **için koruma**  >  **Eylemler**  >  **koruma grubu oluştur** ' a tıklayarak mabs konsolundaki **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
 
 1. **Koruma grubu türünü seçin**içinde **sunucular**' ı seçin.
 
-1. **Grup üyelerini seçin**içinde, WFE rolünü tutan sunucuyu genişletin. Birden çok WFE sunucusu varsa, ConfigureSharePoint. exe ' yi yüklediğiniz birini seçin.
+1. **Grup üyelerini seçin**içinde, WFE rolünü tutan sunucuyu genişletin. Birden çok WFE sunucusu varsa ConfigureSharePoint.exe yüklediğiniz birini seçin.
 
     SharePoint Server MABS sorguları VSS 'yi genişleterek, MABS 'lerin neleri koruyabileceği hakkında bilgi alın.  SharePoint veritabanı uzak ise, MABS buna bağlanır. SharePoint veri kaynakları görünmezse, VSS yazıcısının SharePoint sunucusunda ve uzak SQL Server çalışıp çalışmadığını ve MABS aracısının hem SharePoint sunucusunda hem de uzak SQL Server yüklü olduğundan emin olun. Ayrıca SharePoint veritabanlarının başka bir yerde SQL Server veritabanları olarak korunmadığından emin olun.
 

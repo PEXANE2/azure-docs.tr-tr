@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197036"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
@@ -71,7 +70,7 @@ Olası nedenler:
 - Sanal makinenin listelenen disklerindeki veri değişim oranı (yazılan bayt/sn), çoğaltma hedefi depolama hesabı türü için [desteklenen Azure Site Recovery limitlerden](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) fazla.
 - Büyük miktardaki verilerin karşıya yüklenmesi beklendiğinden dolayı dalgalanma hızının ani bir ani artış vardır.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 - Hedef depolama hesabı türünün (Standart veya Premium) kaynakta dalgalanma oranı gereksinimine göre sağlandığından emin olun.
 - Zaten bir Premium yönetilen diske (asrseeddisk türü) çoğaltıyorsanız, diskin boyutunun Site Recovery limitlere göre gözlemlenen dalgalanma oranını desteklediğinden emin olun. Gerekirse, asrseeddisk boyutunu artırabilirsiniz. Aşağıdaki adımları izleyin:
     - Etkilenen çoğaltılan makinenin diskler dikey penceresine gidin ve çoğaltma diski adını kopyalayın

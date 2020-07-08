@@ -4,10 +4,9 @@ description: Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261075"
 ---
 # <a name="production-readiness-and-best-practices"></a>Üretim hazırlığı ve en iyi uygulamalar
@@ -17,7 +16,7 @@ Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde 
 > [!NOTE]
 > Kuruluşların BT departmanlarına güvenlik ile ilgili yönlere başvurmalısınız.
 
-## <a name="running-the-module-as-a-local-user"></a>Modülün yerel kullanıcı olarak çalıştırılması
+## <a name="running-the-module-as-a-local-user"></a>Modülü yerel kullanıcı olarak çalıştırma
 
 Canlı video analizlerini IoT Edge modülünde bir uç cihaza dağıttığınızda, varsayılan olarak yükseltilmiş ayrıcalıklarla çalışır. Bunu yaptığınızda, modüldeki () günlükleri kontrol ederseniz `sudo iotedge logs {name-of-module}` aşağıdakileri görürsünüz:
 
@@ -107,7 +106,7 @@ Ardından, dağıtım bildiriminde Edge modülünün oluşturma seçeneklerinde,
 
 [Sürekli video kaydı](continuous-video-recording-tutorial.md)gibi hızlı başlangıç ve öğreticiler için örnek medya grafiklerine baktığınızda, medya önbellek dizini 'Nin (localMediaCachePath) ApplicationDataDirectory altında bir alt dizin kullandığını görürsünüz. Bu, önbellek geçici veriler içerdiğinden önerilen yaklaşımdır.
 
-### <a name="naming-video-assets-or-files"></a>Video varlıklarını veya dosyaları adlandırma
+### <a name="naming-video-assets-or-files"></a>Video varlıklarını veya dosyalarını adlandırma
 
 Medya grafikleri, buluttaki bulutta veya MP4 dosyalarında varlık oluşturulmasına olanak sağlar. Medya varlıkları, [sürekli video kaydı](continuous-video-recording-tutorial.md) veya [olay tabanlı video kaydı](event-based-video-recording-tutorial.md)tarafından oluşturulabilir. Bu varlıklar ve dosyalar istediğiniz şekilde adlandırılmasına karşın, sürekli video kayıt tabanlı medya varlığı için önerilen adlandırma yapısı " &lt; anytext &gt; -$ {System. Graphtopologyıname}-$ {System. graphınstancename}" dir. Örnek olarak, varlık havuzunda assetNamePattern öğesini şu şekilde ayarlayabilirsiniz:
 

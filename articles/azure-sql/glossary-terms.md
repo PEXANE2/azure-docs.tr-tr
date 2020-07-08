@@ -13,10 +13,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221394"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL veritabanı şart sözlüğü
@@ -45,7 +44,7 @@ ms.locfileid: "84221394"
 |:---|:---|:---|
 |Azure hizmeti|Azure SQL Yönetilen Örnek|[SQL Yönetilen Örnek](managed-instance/sql-managed-instance-paas-overview.md)|
 |Satın alma modeli|Sanal çekirdek tabanlı satın alma modeli|[Sanal çekirdek tabanlı satın alma modeli](database/service-tiers-vcore.md)|
-|Dağıtım seçeneği |Tek Örnek|[Tek Örnek](managed-instance/sql-managed-instance-paas-overview.md)|
+|Dağıtım seçeneği |Tek Örnek|[Tek örnek](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Örnek Havuzu (Önizleme)|[Örnek havuzları](managed-instance/instance-pools-overview.md)|
 |Hizmet katmanı|Genel Amaçlı, İş Açısından Kritik|[SQL yönetilen örnek hizmeti katmanları](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
 |İşlem Katmanı|Sağlanan işlem|[Sağlanan işlem](database/service-tiers-vcore.md#compute-tiers)|

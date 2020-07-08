@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259278"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için yerel geliştirmeyi ayarlama
@@ -54,7 +53,7 @@ Bir Web sitesinin nasıl oluşturulduğuna bağlı olarak, uygulamayı tarayıc�
 
 - [CLı tarafından Gatsby](https://www.gatsbyjs.org/docs/gatsby-cli/)
 - [Hugo](https://gohugo.io/getting-started/quick-start/)
-- [Jekyıll](https://jekyllrb.com/docs/usage/)
+- [Jekyll](https://jekyllrb.com/docs/usage/)
 
 Sitenize hizmeti sağlamak için bir CLı aracı kullanıyorsanız, [API 'Yi çalıştıran](#run-api-locally) bölüme atlayabilirsiniz.
 
@@ -122,7 +121,7 @@ API oluşturma sürecinin bir parçası olarak Visual Studio Code için bir baş
 
 ### <a name="debugging-the-api"></a>API 'de hata ayıklama
 
-1. Visual Studio Code ' de _API/GetMessage/index. js_ dosyasını açın.
+1. _API/GetMessage/index.js_ dosyasını Visual Studio Code açın.
 
 1. Kesme noktası ayarlamak için 2. satırdaki sol kenar boşluğuna tıklayın. Kesme noktasının ayarlandığını belirten kırmızı bir nokta görünür.
 

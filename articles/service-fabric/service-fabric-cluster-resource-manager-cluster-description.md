@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259482"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
@@ -237,7 +236,7 @@ Hizmetinizin **Targetreplicasetsize** değeri dördü (örneğin) olarak düşü
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | Udtoplam |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |Yok |Yok |Yok |Yok |Yok |Yok |
+| **UD0** |YOK |YOK |YOK |YOK |YOK |YOK |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -247,7 +246,7 @@ Hizmetinizin **Targetreplicasetsize** değeri dördü (örneğin) olarak düşü
 ## <a name="configuring-fault-and-upgrade-domains"></a>Hata ve yükseltme etki alanlarını yapılandırma
 Azure 'da barındırılan Service Fabric dağıtımlarında, hata etki alanları ve yükseltme etki alanları otomatik olarak tanımlanır. Service Fabric, Azure 'daki ortam bilgilerini seçer ve kullanır.
 
-Kendi kümenizi oluşturuyorsanız (veya belirli bir topolojiyi geliştirme aşamasında çalıştırmak istiyorsanız), hata etki alanını sağlayabilir ve etki alanı bilgilerini kendiniz yükseltebilirsiniz. Bu örnekte, üç veri merkezini kapsayan dokuz düğümlü yerel bir geliştirme kümesi (her biri üç raf ile) tanımlayacağız. Bu kümede Ayrıca bu üç veri merkezinde şeritli üç yükseltme etki alanı bulunur. ClusterManifest. xml ' de yapılandırmaya bir örnek aşağıda verilmiştir:
+Kendi kümenizi oluşturuyorsanız (veya belirli bir topolojiyi geliştirme aşamasında çalıştırmak istiyorsanız), hata etki alanını sağlayabilir ve etki alanı bilgilerini kendiniz yükseltebilirsiniz. Bu örnekte, üç veri merkezini kapsayan dokuz düğümlü yerel bir geliştirme kümesi (her biri üç raf ile) tanımlayacağız. Bu kümede Ayrıca bu üç veri merkezinde şeritli üç yükseltme etki alanı bulunur. ClusterManifest.xml bir yapılandırmaya bir örnek aşağıda verilmiştir:
 
 ```xml
   <Infrastructure>
@@ -268,7 +267,7 @@ Kendi kümenizi oluşturuyorsanız (veya belirli bir topolojiyi geliştirme aşa
   </Infrastructure>
 ```
 
-Bu örnek tek başına dağıtımlar için ClusterConfig. JSON kullanır:
+Bu örnek, tek başına dağıtımlar için ClusterConfig.jskullanır:
 
 ```json
 "nodes": [
@@ -375,7 +374,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Belirli deyimler oluşturmak için koşullu denetimler:
 
-  | Deyim | Sözdizimi |
+  | Deyim | Syntax |
   | --- |:---:|
   | "eşittir" | "==" |
   | "eşit değildir" | "!=" |
@@ -386,7 +385,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Gruplandırma ve mantıksal işlemler için Boole deyimleri:
 
-  | Deyim | Sözdizimi |
+  | Deyim | Syntax |
   | --- |:---:|
   | ' | "&&" |
   | veya | "&#124;&#124;" |
@@ -401,7 +400,7 @@ Temel kısıtlama deyimlerinin bazı örnekleri aşağıda verilmiştir:
 
 Yalnızca genel yerleştirme kısıtlaması deyiminin "true" olarak değerlendirilen düğümleri hizmetin bu hizmete yerleştirilmesini sağlayabilir. Tanımlı bir özelliği olmayan düğümler, özelliği içeren herhangi bir yerleştirme kısıtlamasına uymuyor.
 
-ClusterManifest. xml dosyasındaki düğüm türü için aşağıdaki düğüm özelliklerinin tanımlandığını varsayalım:
+Aşağıdaki düğüm özelliklerinin ClusterManifest.xml bir düğüm türü için tanımlandığını varsayalım:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,7 +412,7 @@ ClusterManifest. xml dosyasındaki düğüm türü için aşağıdaki düğüm �
     </NodeType>
 ```
 
-Aşağıdaki örnek, tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla tanımlanan düğüm özelliklerini gösterir. 
+Aşağıdaki örnek, Azure 'da barındırılan kümeler için tek başına dağıtımlar veya Template.jsüzerinde ClusterConfig.jsaracılığıyla tanımlanan düğüm özelliklerini gösterir. 
 
 > [!NOTE]
 > Azure Resource Manager şablonunuzda, düğüm türü genellikle parametrelenir. NodeType01 yerine gibi görünür `"[parameters('vmNodeType1Name')]"` .
@@ -505,7 +504,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-Küme bildiriminde tanımlanan kapasiteleri görebilirsiniz. ClusterManifest. xml için bir örnek aşağıda verilmiştir:
+Küme bildiriminde tanımlanan kapasiteleri görebilirsiniz. ClusterManifest.xml için bir örnek aşağıda verilmiştir:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +514,7 @@ Küme bildiriminde tanımlanan kapasiteleri görebilirsiniz. ClusterManifest. xm
     </NodeType>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla tanımlanan kapasiteye bir örnek aşağıda verilmiştir: 
+Azure 'da barındırılan kümeler için tek başına dağıtımlar veya Template.jsClusterConfig.jsaracılığıyla tanımlanan kapasiteye bir örnektir: 
 
 ```json
 "nodeTypes": [
@@ -548,7 +547,7 @@ Ara belleğe alınmış kapasite, bir küme Kaynak Yöneticisi başka bir özell
 
 Ara belleğe alınan kapasite tüm düğümler için ölçüm başına genel olarak belirtilir. Ayrılmış kapasite için seçtiğiniz değer, kümede bulunan hata ve yükseltme etki alanlarının bir işlevidir. Daha fazla hata ve yükseltme etki alanı, arabelleğe alınmış kapasiteniz için daha düşük bir sayı seçebileceğiniz anlamına gelir. Daha fazla etki alanı varsa, yükseltmeler ve başarısızlıklar sırasında kümenizin daha küçük miktarlarda kullanılamaz olmasını sağlayabilirsiniz. Yalnızca bir ölçüm için düğüm kapasitesini belirttiyseniz, arabelleğe alınmış kapasiteyi belirtmek mantıklı olur.
 
-Kümemanifest. xml ' de ara belleğe alma kapasitesini belirtme örneği aşağıda verilmiştir:
+ClusterManifest.xml, ara belleğe alınan kapasitenin nasıl belirtilme örneği aşağıda verilmiştir:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +556,7 @@ Kümemanifest. xml ' de ara belleğe alma kapasitesini belirtme örneği aşağ�
         </Section>
 ```
 
-Azure 'da barındırılan kümeler için tek başına dağıtımlar veya Template. JSON aracılığıyla ara belleğe alınan kapasitenin nasıl belirtilbir örneği aşağıda verilmiştir:
+Azure 'da barındırılan kümeler için tek başına dağıtımlar veya Template.jsüzerinde ClusterConfig.jsile ara belleğe alma kapasitesini belirtme örneği aşağıda verilmiştir:
 
 ```json
 "fabricSettings": [

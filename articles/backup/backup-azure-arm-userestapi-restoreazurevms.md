@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247808"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
@@ -117,7 +116,7 @@ Kurtarma noktası `{name}` Yukarıdaki yanıttaki alanla tanımlanır.
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
-Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("VMConfig. JSON") yapılandırması, belirtilen depolama hesabında depolanır.
+Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("vmconfig.json") yapılandırması, belirtilen depolama hesabında depolanır.
 
 Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)bakın.
 
@@ -229,7 +228,7 @@ X-Powered-By: ASP.NET
 
 Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
 
-Uzun süre çalışan iş tamamlandıktan sonra, yedeklenen sanal makinenin diskleri ve yapılandırması ("VMConfig. JSON") belirtilen depolama hesabında mevcut olacaktır.
+Uzun süre çalışan iş tamamlandıktan sonra, yedeklenen sanal makinenin ("VMConfig.jsüzerinde") diskleri ve yapılandırması, belirtilen depolama hesabında mevcut olacaktır.
 
 ## <a name="restore-as-another-virtual-machine"></a>Başka bir sanal makine olarak geri yükle
 

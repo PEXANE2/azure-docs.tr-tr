@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234685"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 'da Service Fabric kümelerine genel bakış
@@ -31,7 +30,7 @@ Azure 'daki bir Service Fabric kümesi, diğer Azure kaynaklarıyla birlikte kul
 ![Service Fabric kümesi][Image]
 
 ### <a name="virtual-machine"></a>Sanal makine
-Bir kümenin parçası olan bir [sanal makine](/azure/virtual-machines/) , teknik olarak bir küme düğümü olan bir Service Fabric çalışma zamanı işlemidir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin [yerleştirme özellikleri](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)gibi özellikleri vardır. Her makine veya VM 'nin, önyükleme zamanında çalışmaya başlayan bir otomatik başlatma hizmeti olan *Fabrichost. exe*' dir ve sonra düğümü oluşturan *Fabric. exe* ve *fabricgateway. exe*adlı iki yürütülebilir dosya başlatır. Bir üretim dağıtımı, fiziksel veya sanal makine başına bir düğümdür. Test senaryoları için birden fazla *Fabric. exe* ve *fabricgateway. exe*örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
+Bir kümenin parçası olan bir [sanal makine](/azure/virtual-machines/) , teknik olarak bir küme düğümü olan bir Service Fabric çalışma zamanı işlemidir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin [yerleştirme özellikleri](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)gibi özellikleri vardır. Her makine veya VM, önyükleme zamanında çalışmaya başlayan *FabricHost.exe*bir otomatik başlatma hizmetine sahiptir ve sonra düğümü oluşturan *Fabric.exe* ve *FabricGateway.exe*iki yürütülebilir dosya başlatır. Bir üretim dağıtımı, fiziksel veya sanal makine başına bir düğümdür. Test senaryoları için birden fazla *Fabric.exe* ve *FabricGateway.exe*birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
 
 Her VM bir sanal ağ arabirim kartı (NIC) ile ilişkilendirilir ve her NIC 'e özel bir IP adresi atanır.  Bir VM, NIC üzerinden bir sanal ağa ve yerel dengeleyiciye atanır.
 

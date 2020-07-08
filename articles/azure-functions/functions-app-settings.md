@@ -4,10 +4,9 @@ description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235360"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
@@ -16,7 +15,7 @@ Bir işlev uygulamasındaki uygulama ayarları, bu işlev uygulaması için tüm
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-[Host. JSON](functions-host-json.md) dosyasında ve [Local. Settings. JSON](functions-run-local.md#local-settings-file) dosyasında başka genel yapılandırma seçenekleri vardır.
+Dosyasında ve [local.settings.json](functions-run-local.md#local-settings-file) dosyasında [host.js](functions-host-json.md) başka genel yapılandırma seçenekleri vardır.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -40,7 +39,7 @@ Application Insights için bağlantı dizesi. `APPLICATIONINSIGHTS_CONNECTION_ST
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-Işlev çalışma zamanının sürüm 2. x ve sonraki sürümlerinde, uygulama ayarları geçerli ortamdaki [Host. JSON](functions-host-json.md) ayarlarını geçersiz kılabilir. Bu geçersiz kılmalar, adlı uygulama ayarları olarak ifade edilir `AzureFunctionsJobHost__path__to__setting` . Daha fazla bilgi için bkz. [Host. JSON değerlerini geçersiz kılma](functions-host-json.md#override-hostjson-values).
+Işlev çalışma zamanının sürüm 2. x ve sonraki sürümlerinde, uygulama ayarları geçerli ortamdaki ayarlarda [host.js](functions-host-json.md) geçersiz kılabilir. Bu geçersiz kılmalar, adlı uygulama ayarları olarak ifade edilir `AzureFunctionsJobHost__path__to__setting` . Daha fazla bilgi için bkz. [değerler üzerinde host.jsgeçersiz kılma](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -181,7 +180,7 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 ## <a name="website_node_default_version"></a>Web sItesI \_ düğümü \_ DEFAULT_VERSION
 
 _Yalnızca Windows._  
-Windows üzerinde işlev uygulamanızı çalıştırırken kullanılacak Node. js sürümünü ayarlar. Çalışma zamanının hedeflenen ana sürümün kullanılabilir en son sürümünü kullanmasını sağlamak için bir tilde (~) kullanmanız gerekir. Örneğin, olarak ayarlandığında `~10` , Node. js 10 ' un en son sürümü kullanılır. Ana sürüm bir tilde ile hedeflenirse, ikincil sürümü el ile güncelleştirmeniz gerekmez. 
+İşlev uygulamanızı Windows 'da çalıştırırken kullanılacak Node.js sürümünü ayarlar. Çalışma zamanının hedeflenen ana sürümün kullanılabilir en son sürümünü kullanmasını sağlamak için bir tilde (~) kullanmanız gerekir. Örneğin, olarak ayarlandığında `~10` , Node.js 10 ' un en son sürümü kullanılır. Ana sürüm bir tilde ile hedeflenirse, ikincil sürümü el ile güncelleştirmeniz gerekmez. 
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -218,7 +217,7 @@ Bu ayar,% 2F ' nin, arka uç URL 'sine eklendiklerinde rota parametrelerinde eğ
 
 ### <a name="example"></a>Örnek
 
-İşte myfunction.com URL 'sindeki bir işlev uygulamasında bir proxy. JSON örneği
+İşte myfunction.com URL 'sindeki bir işlev uygulamasında bir örnek proxies.js
 
 ```JSON
 {
@@ -243,6 +242,6 @@ Bu ayar,% 2F ' nin, arka uç URL 'sine eklendiklerinde rota parametrelerinde eğ
 
 [Uygulama ayarlarını güncelleştirmeyi öğrenin](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Bkz. Host. JSON dosyasındaki genel ayarlar](functions-host-json.md)
+[Dosyadaki host.jsgenel ayarlar ' a bakın](functions-host-json.md)
 
 [App Service uygulamalar için diğer uygulama ayarlarına bakın](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

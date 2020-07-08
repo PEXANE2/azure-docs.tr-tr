@@ -14,10 +14,9 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204778"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
@@ -38,7 +37,7 @@ Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nas
 > [!NOTE]
 > Azure tarafından sağlanmış DNS kullanıyorsanız, sanal makinelerinize uygun DNS son eki otomatik olarak uygulanır. Diğer tüm seçenekler için tam etki alanı adlarını (FQDN) kullanmanız veya uygun DNS sonekini sanal makinelerinize el ile uygulamanız gerekir.
 
-| **Senaryo** | **Çözümden** | **DNS Son Ek** |
+| **Senaryo** | **Çözüm** | **DNS Son Ek** |
 | --- | --- | --- |
 | Aynı sanal ağda bulunan VM 'Ler veya aynı bulut hizmetindeki Azure Cloud Services rol örnekleri arasındaki ad çözümlemesi. | [Azure DNS özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) |Ana bilgisayar adı veya FQDN |
 | Farklı sanal ağlardaki VM 'Ler veya farklı bulut hizmetlerindeki rol örneklerinde ad çözümleme. |[Özel bölgeler](../dns/private-dns-overview.md) veya, müşteri tarafından yönetilen dns sunucuları Azure DNS sorguları Azure tarafından çözümlenmek üzere sanal ağlar arasında (DNS proxy) iletme. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |

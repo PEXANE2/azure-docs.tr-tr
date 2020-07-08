@@ -4,10 +4,9 @@ description: IoT Edge canlı video analizi, çeşitli doğrudan yöntemler sunar
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261376"
 ---
 # <a name="direct-methods"></a>Doğrudan yöntemler
@@ -142,7 +141,7 @@ Bu doğrudan yöntem tek bir grafik topolojisi alır.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık bulundu|  200 |Yok
+|Varlık bulundu|  200 |YOK
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Varlık bulunamadı   |404        ||
 |Genel sunucu hataları| 500 aralığı       ||
@@ -193,8 +192,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-Var olan varlık güncelleştirildi |200|   Yok|
-Yeni varlık oluşturuldu  |201|   Yok|
+Var olan varlık güncelleştirildi |200|   YOK|
+Yeni varlık oluşturuldu  |201|   YOK|
 Genel Kullanıcı hataları |400 aralığı  ||
 Grafik doğrulama hataları |400    |GraphValidationError|
 Modül doğrulama hataları|   400 |ModuleValidationError|
@@ -229,8 +228,8 @@ Tek bir grafik topolojisini siler.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık silindi|    200|    Yok|
-|Varlık bulunamadı|  204|    Yok|
+|Varlık silindi|    200|    YOK|
+|Varlık bulunamadı|  204|    YOK|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Grafik topolojisine bir veya daha fazla grafik örneği tarafından başvuruluyor| 409 |Graphtopologyuse|
 |Genel sunucu hataları| 500 aralığı   ||
@@ -287,7 +286,7 @@ Filtre ölçütleriyle eşleşen tüm grafik topolojilerinin bir listesini alır
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Başarılı|   200 |Yok|
+|Başarılı|   200 |YOK|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Genel sunucu hataları| 500 aralığı   ||
 
@@ -325,7 +324,7 @@ Tek bir grafik örneği alır:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık bulundu   |200|   Yok|
+|Varlık bulundu   |200|   YOK|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Varlık bulunamadı|  404 ||
 |Genel sunucu hataları| 500 aralığı   ||
@@ -375,8 +374,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Var olan varlık güncelleştirildi    |200    |Yok|
-|Yeni varlık oluşturuldu|    201 |Yok|
+|Var olan varlık güncelleştirildi    |200    |YOK|
+|Yeni varlık oluşturuldu|    201 |YOK|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Grafik doğrulama hataları    |400|   GraphValidationError|
 |Modül doğrulama hataları|  400 |ModuleValidationError|
@@ -416,8 +415,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla silindi|    200|    Yok|
-|Grafik bulunamadı|   204|    Yok|
+|Grafik başarıyla silindi|    200|    YOK|
+|Grafik bulunamadı|   204|    YOK|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Grafik "durduruldu" durumunda değil    |409    |OperationNotAllowedInState|
 |Genel sunucu hataları| 500 aralığı   ||
@@ -474,7 +473,7 @@ Filtre ölçütleriyle eşleşen tüm grafik örneklerinin listesini alır.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Başarılı    |200    |Yok|
+|Başarılı    |200    |YOK|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Genel sunucu hataları| 500 aralığı   ||
 
@@ -518,8 +517,8 @@ Anahtar yönleri
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla etkinleştirildi   |200    |Yok|
-|Yeni varlık oluşturuldu |201|   Yok|
+|Grafik başarıyla etkinleştirildi   |200    |YOK|
+|Yeni varlık oluşturuldu |201|   YOK|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Modül doğrulama hataları   |400|   ModuleValidationError|
 |Kaynak doğrulama hataları|    409|    ResourceValidationError|
@@ -567,12 +566,12 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla etkinleştirildi   |200|   Yok|
-|Yeni varlık oluşturuldu |201|   Yok|
+|Grafik başarıyla etkinleştirildi   |200|   YOK|
+|Yeni varlık oluşturuldu |201|   YOK|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Grafik etkinleştiriliyor durumunda   |409|   OperationNotAllowedInState|
 |Genel sunucu hataları  |500 aralığı  ||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Modül İkizi yapılandırma şeması](module-twin-configuration-schema.md)
+[Module Ikizi yapılandırma şeması](module-twin-configuration-schema.md)

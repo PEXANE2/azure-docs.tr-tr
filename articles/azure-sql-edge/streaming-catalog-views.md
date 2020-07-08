@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233107"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Akış Kataloğu görünümleri (Transact-SQL)
@@ -22,7 +21,7 @@ Bu bölüm, T-SQL akışıyla ilgili kullanılabilir katalog görünümlerini ve
   
 ## <a name="in-this-section"></a>Bu Bölümde  
   
-|Görünüm|Açıklama|  
+|Görüntüle|Açıklama|  
 |:---|:---|
 |[sys. external_streams](sys-external-streams.md) |Veritabanı kapsamında oluşturulan her dış akış nesnesi için bir satır döndürür.|
 |[sys. external_streaming_jobs](sys-external-streaming-jobs.md) |Veritabanı kapsamında oluşturulan her bir dış akış işi için bir satır döndürür.|

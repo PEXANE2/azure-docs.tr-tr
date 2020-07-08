@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Boot çalıştırıcı ile uygulamayı yönetme ve izleme
+title: Azure Spring Boot Actuator ile uygulama yönetme ve izleme
 description: Spring Boot çalıştırıcı ile uygulamayı yönetme ve izleme hakkında bilgi edinin.
 author: MikeDodaro
 ms.author: brendm
@@ -7,13 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84206012"
 ---
-# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot çalıştırıcı ile uygulamayı yönetme ve izleme
+# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot Actuator ile uygulama yönetme ve izleme
 
 Uygulamanıza yeni ikili dağıttıktan sonra, işlevleri denetlemek ve çalışan uygulamanız hakkındaki bilgileri görmek isteyebilirsiniz. Bu makalede, Azure Spring Cloud tarafından sunulan bir test uç noktasından API 'ye nasıl erişebileceğiniz ve uygulamanız için üretime yönelik kullanıma sunma özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 

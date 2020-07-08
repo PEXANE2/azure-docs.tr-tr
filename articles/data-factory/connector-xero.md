@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263899"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory kullanarak Xero 'tan veri kopyalama
@@ -52,15 +51,15 @@ Aşağıdaki özellikler Xero bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Xero** olarak ayarlanmalıdır | Yes |
-| konak | Xero sunucusunun uç noktası ( `api.xero.com` ).  | Yes |
-| consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). **Numbits/512 kullanılarak PrivateKey. pek oluşturmak** için not `openssl genrsa -out privatekey.pem 512` ; 1024 desteklenmez. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| tür | Type özelliği: **Xero** olarak ayarlanmalıdır | Evet |
+| konak | Xero sunucusunun uç noktası ( `api.xero.com` ).  | Evet |
+| consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). **Numbits/512 kullanılarak PrivateKey. pek oluşturmak** için not `openssl genrsa -out privatekey.pem 512` ; 1024 desteklenmez. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 | Usehostdoğrulaması | TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşmesi için Sunucu sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 | Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -98,10 +97,10 @@ Xero öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **Xero
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -128,10 +127,10 @@ Xero adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Contacts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

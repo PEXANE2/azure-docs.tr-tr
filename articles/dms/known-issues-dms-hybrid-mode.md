@@ -12,10 +12,9 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196273"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Karma mod kullanımıyla ilgili bilinen sorunlar/geçiş sınırlamaları
@@ -24,7 +23,7 @@ Azure veritabanı geçiş hizmeti 'ni karma modda kullanmayla ilişkili bilinen 
 
 ## <a name="installer-fails-to-authenticate"></a>Yükleyici kimlik doğrulaması yapamıyor
 
-Sertifikayı Uyarınıza yükledikten sonra, Azure ile kimlik doğrulaması yapabilmek için birkaç dakikalık bir gecikme olur. Yükleyici bir gecikme süresiyle yeniden denemeye çalışır, ancak yayma gecikmesi yeniden denemeden daha uzun olabildiğinde, bir **FailedToGetAccessTokenException** iletisi görürsünüz. Sertifika doğru Uyaruya yüklenmişse ve dmsSettings. JSON içinde doğru AppID sağlandıysa, install komutunu yeniden çalıştırmayı deneyin.
+Sertifikayı Uyarınıza yükledikten sonra, Azure ile kimlik doğrulaması yapabilmek için birkaç dakikalık bir gecikme olur. Yükleyici bir gecikme süresiyle yeniden denemeye çalışır, ancak yayma gecikmesi yeniden denemeden daha uzun olabildiğinde, bir **FailedToGetAccessTokenException** iletisi görürsünüz. Sertifika doğru Uyaruya yüklenmişse ve dmsSettings.jsüzerinde doğru AppID sağlandıysa, install komutunu yeniden çalıştırmayı deneyin.
 
 ## <a name="service-offline-after-successful-installation"></a>Başarılı yüklemeden sonra "çevrimdışı" hizmeti
 
@@ -55,7 +54,7 @@ Yükleme işlemi başarıyla tamamlandıktan sonra hizmet çevrimdışı olarak 
 
 ## <a name="using-your-own-signed-certificate"></a>Kendi imzalı sertifikanızı kullanma
 
-GenerateCert eylemi tarafından oluşturulan sertifika, İç Güvenlik ilkelerinize bağlı olarak kabul edilemeyebilir, kendinden imzalı bir sertifikadır. Bu sertifikayı kullanmak yerine, kendi sertifikanızı girip, dmsSettings. json dosyasında parmak izini sağlayabilirsiniz. Bu sertifikanın, Azure veritabanı geçiş hizmeti karma çalışanını yüklemekte olduğunuz bilgisayara yüklenmiş ve yüklü olması gerekir. Ardından, bu sertifikayı özel anahtarla yerel makine sertifika deposuna yüklemelisiniz.
+GenerateCert eylemi tarafından oluşturulan sertifika, İç Güvenlik ilkelerinize bağlı olarak kabul edilemeyebilir, kendinden imzalı bir sertifikadır. Bu sertifikayı kullanmak yerine, kendi sertifikanızı girip dmsSettings.jsüzerine parmak izini sağlayabilirsiniz. Bu sertifikanın, Azure veritabanı geçiş hizmeti karma çalışanını yüklemekte olduğunuz bilgisayara yüklenmiş ve yüklü olması gerekir. Ardından, bu sertifikayı özel anahtarla yerel makine sertifika deposuna yüklemelisiniz.
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Çalışan hizmetini düşük ayrıcalıklı bir hesap olarak çalıştırma
 

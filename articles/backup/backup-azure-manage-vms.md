@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248592"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
@@ -30,7 +29,7 @@ Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak
 
 Kasa panosunda VM 'Leri görüntülemek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Hub menüsünde, **Araştır**' ı seçin. Kaynak listesinde **Kurtarma Hizmetleri** yazın. Siz yazarken liste, giriş listenize göre filtrelenir. **Kurtarma Hizmetleri kasalarını**seçin.
 
     ![Kurtarma Hizmetleri kasası oluşturma](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +55,7 @@ Kasa panosunda VM 'Leri görüntülemek için:
 
 Bir yedekleme ilkesini yönetmek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
 2. **Yedekleme öğeleri** kutucuğunda **Azure sanal makineler**' i seçin.
 
     ![Yedekleme öğeleri kutucuğunu aç](./media/backup-azure-manage-vms/contoso-vault-1606.png)

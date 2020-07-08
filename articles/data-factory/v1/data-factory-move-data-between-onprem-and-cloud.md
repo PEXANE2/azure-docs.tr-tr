@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195990"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
@@ -104,7 +103,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 
     ![Ağ Geçidi-sayfayı Yapılandır](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Bu şekilde, ağ geçidini tek bir adımda karşıdan yüklemek, yüklemek, yapılandırmak ve kaydettirmek için en kolay yol (tek tıklamayla) vardır. **Microsoft veri yönetimi Gateway Configuration Manager** uygulamasının bilgisayarınızda yüklü olduğunu görebilirsiniz. Ayrıca, çalıştırılabilir **Configmanager. exe** dosyasını şu klasörde bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**.
+    Bu şekilde, ağ geçidini tek bir adımda karşıdan yüklemek, yüklemek, yapılandırmak ve kaydettirmek için en kolay yol (tek tıklamayla) vardır. **Microsoft veri yönetimi Gateway Configuration Manager** uygulamasının bilgisayarınızda yüklü olduğunu görebilirsiniz. Yürütülebilir **ConfigManager.exe** klasörde de bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**.
 
     Ayrıca, bu sayfadaki bağlantıları kullanarak ağ geçidini el ile indirip yükleyebilir ve **yenı anahtar** metin kutusunda gösterilen anahtarı kullanarak kaydedebilirsiniz.
 
@@ -117,7 +116,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 5. Birkaç dakika bekleyin veya aşağıdaki bildirim iletisini görene kadar bekleyin:
 
     ![Ağ geçidi yüklemesi başarılı](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Bilgisayarınızda **veri yönetimi Gateway Configuration Manager** uygulamasını başlatın. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın. Ayrıca, çalıştırılabilir **Configmanager. exe** dosyasını şu klasörde bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**
+6. Bilgisayarınızda **veri yönetimi Gateway Configuration Manager** uygulamasını başlatın. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın. Yürütülebilir **ConfigManager.exe** şu klasörde de bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**
 
     ![Ağ Geçidi Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. İleti görtığınızdan emin olun `adftutorialgateway is connected to the cloud service` . Alttaki durum çubuğu, bir **yeşil onay işaretiyle**birlikte **bulut hizmetine bağlı** görüntüler.
@@ -279,7 +278,7 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
    * **FolderPath** , **adföğreticisi/outfromonpremdf** olarak ayarlanır; burada outfromonpremdf, adföğreticisi kapsayıcısında klasörüdür. Henüz yoksa **adföğreticisi** kapsayıcısını oluşturun.
    * **Kullanılabilirlik** **saatlik** olarak ayarlanır (**Sıklık** **saat** ve **Aralık** **1**olarak ayarlanır).  Data Factory **hizmeti, Azure SQL veritabanındaki, her** saat bir çıktı veri dilimi oluşturur.
 
-   Bir **çıkış tablosu**Için **dosya adı** belirtmezseniz, **FolderPath** 'teki oluşturulan dosyalar aşağıdaki biçimde adlandırılır: `Data.<Guid>.txt` (örneğin:: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt.).
+   Bir **çıkış tablosu**Için bir **dosya adı** belirtmezseniz, **FolderPath** 'teki oluşturulan dosyalar aşağıdaki biçimde adlandırılır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    **folderPath** ve **fileName** öğelerini dinamik olarak **SliceStart** zamanı temelinde ayarlamak için partitionedBy özelliğini kullanın. Aşağıdaki örnekte, folderPath SliceStart’taki (işlemdeki dilimin başlangıç zamanı) Yıl, Ay ve Gün öğelerini, fileName ise SliceStart’taki Saat öğesini kullanır. Örneğin, dilim 2014-10-20T08:00:00 için oluşturulduysa, folderName wikidatagateway/wikisampledataout/2014/10/20, fileName de 08.csv olarak ayarlanır.
 

@@ -4,10 +4,9 @@ description: Bu konu, IoT Edge SSS üzerinde canlı video analizlerine yanıt ve
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261327"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
@@ -31,17 +30,17 @@ Medya Edge modülünü bir Windows 10 cihazına dağıtabilir miyim?
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>IP kamerası ve RTSP ayarlarından yakala
 
-* Video akışında göndermek için cihazımın üzerinde özel bir SDK kullanm gerekiyor mu?
+* Video akışı göndermek için cihazımda belirli bir SDK kullanmam gerekiyor mu?
     * Hayır. IoT Edge üzerindeki canlı video analizi, RTSP video akış protokolü (çoğu IP kameralarından desteklenir) kullanılarak medya yakalamayı destekler.
 * IoT Edge RTMP veya kesintisiz (Media Services canlı bir olay gibi) kullanarak canlı video analizlerine medya gönderebilirim miyim?
     * Hayır. LVA yalnızca IP kameralarından video yakalamak için RTSP 'yi destekler.
     * TCP/HTTP üzerinden RTSP akışını destekleyen tüm kamera çalışmalıdır. 
-* Bir grafik örneğindeki RTSP kaynak URL 'sini sıfırlayabilir veya güncelleştirebilir miyim?
+* Grafik örneğinde RTSP kaynak URL’sini sıfırlayabilir veya güncelleştirebilir miyim?
     * Evet, grafik örneği etkin değil durumunda.  
 * Test ve geliştirme sırasında kullanılmak üzere kullanılabilir bir RTSP simülatörü var mı?
-    * Evet. Hızlı başlar ve öğreticilerde öğrenme sürecini desteklemek için kullanılabilecek bir [RTSP simülatör](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge modülü vardır. Bu modül en iyi çaba olarak sağlanır ve her zaman kullanılabilir olmayabilir. Bunu birkaç saatten uzun bir süre kullanmak kesinlikle önerilir. Üretim dağıtımı için plan yapmadan önce gerçek RTSP kaynağınıza yönelik teste yatırım yapmanız gerekir.
-* Kenarda IP kameralarının bulunması ile ONVıF 'i destekliyor musunuz?
-    * Hayır, uç cihazlarda cihazların bulunması için ONVıF desteği yoktur.
+    * Evet. Hızlı başlar ve öğreticilerde öğrenme sürecini desteklemek için kullanılabilecek bir [RTSP simülatör](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge modülü vardır. Bu modül mümkün olan en iyi çabayla sağlanmıştır ve her zaman kullanılamayabilir. Bunu birkaç saatten uzun bir süre kullanmak kesinlikle önerilir. Üretim dağıtımı için plan yapmadan önce gerçek RTSP kaynağınıza yönelik teste yatırım yapmanız gerekir.
+* Uçta IP kameraları için ONVIF bulmayı destekliyor musunuz?
+    * Hayır, uçtaki cihazlar için ONVIF bulma desteklenmez.
 
 ## <a name="streaming-and-playback"></a>Akış ve kayıttan yürütme
 
@@ -54,9 +53,9 @@ Medya Edge modülünü bir Windows 10 cihazına dağıtabilir miyim?
     Test için önerilen oyuncular şunlardır:
 
     * [Azure Media Player](../latest/use-azure-media-player.md)
-    * [HLS. js](https://hls-js.netlify.app/demo/)
-    * [Video. js](https://videojs.com/)
-    * [Dash. js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
+    * [HLS.js](https://hls-js.netlify.app/demo/)
+    * [Video.js](https://videojs.com/)
+    * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
     * [Shaka oynatıcı](https://github.com/google/shaka-player)
     * [Exoçalar](https://github.com/google/ExoPlayer)
     * [Apple Native HTTP Canlı Akışı](https://developer.apple.com/streaming/)

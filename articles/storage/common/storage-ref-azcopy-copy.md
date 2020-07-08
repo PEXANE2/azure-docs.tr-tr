@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220128"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
@@ -63,19 +62,19 @@ azcopy copy [source] [destination] [flags]
 
 OAuth kimlik doğrulaması kullanarak tek bir dosyayı karşıya yükleyin. AzCopy 'a henüz oturum açmadıysanız, lütfen aşağıdaki komutu çalıştırmadan önce AzCopy Login komutunu çalıştırın.
 
-- AzCopy CP "/Path/to/dosya.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blobu]"
+- AzCopy CP "/Path/to/file.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blobu]"
 
 Yukarıdaki gibi, ancak bu kez dosya içeriğinin MD5 karmasını de hesaplar ve BLOB 'un Content-MD5 özelliği olarak kaydeder:
 
-- AzCopy CP "/Path/to/dosya.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blob]"--put-MD5
+- AzCopy CP "/Path/to/file.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blob]"--put-MD5
 
 SAS belirteci kullanarak tek bir dosyayı karşıya yükle:
 
-- AzCopy CP "/Path/to/DosyaYolu" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blobu]? [SAS] "
+- AzCopy CP "/Path/to/file.txt" "https://[hesap]. blob. Core. Windows. net/[Container]/[yol/to/blob]? [SAS] "
 
 SAS belirteci ve boru kullanarak tek bir dosyayı karşıya yükleme (yalnızca blok blob 'lar):
   
-- Cat "/Path/to/dosya.txt" | AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- Cat "/Path/to/file.txt" | AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
 
 Bir SAS belirteci kullanarak tüm dizini karşıya yükleyin:
   
@@ -95,15 +94,15 @@ Bir SAS belirteci ve joker karakter (*) kullanarak dosyaları ve dizinleri karş
 
 OAuth kimlik doğrulaması kullanarak tek bir dosyayı indirin. AzCopy 'a henüz oturum açmadıysanız, lütfen aşağıdaki komutu çalıştırmadan önce AzCopy Login komutunu çalıştırın.
 
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]" "/Path/to/dosya.txt"
+- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]" "/Path/to/file.txt"
 
 SAS belirteci kullanarak tek bir dosyayı indirme:
 
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ""/Path/to/dosya.txt "
+- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ""/Path/to/file.txt "
 
 Bir SAS belirteci kullanarak tek bir dosyayı indirin ve sonra çıktıyı bir dosyaya (yalnızca blok Blobları) boru edin:
   
-- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ">"/Path/to/dosya.txt "
+- AzCopy CP "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] ">"/Path/to/file.txt "
 
 Bir SAS belirteci kullanarak tüm dizini indirin:
   
@@ -197,7 +196,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--exclude-blob türü** dize Isteğe bağlı olarak, bloblardan veya hesaptan blob kopyalanırken hariç tutulacak blob türünü (Blockblob/Pageblob/appendblob) belirler. Bu bayrağın kullanılması, verileri Azure olmayan hizmetten hizmetten kopyalamak için geçerli değildir. Birden fazla BLOB '; ' ile ayrılmalıdır.
 
-**--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
+**--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/file.pdf). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
 **--exclude-model** dize, kopyalama sırasında bu dosyaları hariç tutar. Bu seçenek joker karakterler (*) destekler
 
@@ -209,7 +208,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--Include-Attributes** dize (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
 
-**--include-path** dizesi kopyalama sırasında yalnızca bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF).
+**--include-path** dizesi kopyalama sırasında yalnızca bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/file.pdf).
 
 **--Include-model** dize, kopyalama sırasında yalnızca bu dosyaları içerir. Bu seçenek joker karakterler (*) destekler. '; ' Kullanarak dosyaları ayırın.
 

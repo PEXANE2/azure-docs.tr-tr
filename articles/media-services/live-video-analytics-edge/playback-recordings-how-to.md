@@ -4,10 +4,9 @@ description: Sürekli video kaydı için IoT Edge, canlı video analizi 'ni kull
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261082"
 ---
 # <a name="playback-of-recordings"></a>Kayıtların kayıttan yürütülmesi 
@@ -18,7 +17,7 @@ ms.locfileid: "84261082"
 * [Sürekli video kaydı](continuous-video-recording-concept.md)
 * [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
 
-## <a name="background"></a>Arka Plan  
+## <a name="background"></a>Arka plan  
 
 [Sürekli video kaydı](continuous-video-recording-concept.md) (CVR) için IoT Edge, canlı video analizlerini kullanarak haftalık veya aylık bir videoyu buluta kaydedebilirsiniz. Ayrıca kaydınızı, [olay tabanlı video kaydı](event-based-video-recording-concept.md) (EVR) aracılığıyla ilgilendiğiniz kliplerle sınırlayabilirsiniz. 
 

@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248286"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
@@ -28,12 +27,12 @@ Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini s
 
 ## <a name="whats-new-in-this-feature"></a>Bu özelliğindeki yenilikler
 
-Şu anda yedekleme işi iki aşamadan oluşur:
+Yedekleme işi iki aşamadan oluşur:
 
-1. VM anlık görüntüsü alınıyor.
-2. VM anlık görüntüsünü Azure kurtarma hizmetleri kasasına aktarma.
+1. VM'nin anlık görüntüsünü alma.
+2. VM'nin anlık görüntüsünü Azure Kurtarma Hizmetleri kasasına aktarma.
 
-Bir kurtarma noktası yalnızca 1 ve 2. aşama tamamlandıktan sonra oluşturulan olarak değerlendirilir. Bu yükseltmenin bir parçası olarak, anlık görüntü tamamlandıktan hemen sonra bir kurtarma noktası oluşturulur ve bu anlık görüntü türü kurtarma noktası, aynı geri yükleme akışını kullanarak geri yükleme işlemi gerçekleştirmek için kullanılabilir. Bu kurtarma noktasını, kurtarma noktası türü olarak "Snapshot" kullanarak Azure portal tanımlayabilir ve anlık görüntü kasaya aktarıldıktan sonra, kurtarma noktası türü "anlık görüntü ve kasa" olarak değişir.
+Ancak 1 ve 2 numaralı aşamalar tamamlandıktan sonra bir kurtarma noktası oluşturulur. Bu yükseltmenin bir parçası olarak, anlık görüntü tamamlandıktan hemen sonra bir kurtarma noktası oluşturulur ve bu anlık görüntü kurtarma noktası, aynı geri yükleme akışını kullanarak geri yükleme işlemi gerçekleştirmek için kullanılabilir. Bu kurtarma noktasını, kurtarma noktası türü olarak "Snapshot" kullanarak Azure portal tanımlayabilir ve anlık görüntü kasaya aktarıldıktan sonra, kurtarma noktası türü "anlık görüntü ve kasa" olarak değişir.
 
 ![VM yedekleme yığınında yedekleme işi Kaynak Yöneticisi dağıtım modeli--depolama ve kasa](./media/backup-azure-vms/instant-rp-flow.png)
 

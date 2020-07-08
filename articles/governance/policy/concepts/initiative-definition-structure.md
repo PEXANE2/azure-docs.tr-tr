@@ -4,10 +4,9 @@ description: Kuruluşunuzdaki Azure kaynaklarına dağıtım için ilke tanımla
 ms.date: 05/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205963"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Ilke girişimi tanım yapısı
@@ -102,7 +101,7 @@ Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı göste
 
 Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samples/index.md)' nde bulunur.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 İsteğe bağlı `metadata` özelliği, ilke girişim tanımıyla ilgili bilgileri depolar.
 Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.

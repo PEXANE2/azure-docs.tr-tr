@@ -9,10 +9,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: 0b966b10c5bbc7bb90a4226d94dda8b75e25c3af
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247487"
 ---
 # <a name="data-access-strategies"></a>Veri erişim stratejileri
@@ -47,17 +46,17 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
 
     | Veri Depoları                  | Veri depolarında desteklenen ağ güvenlik mekanizması         | Güvenilen hizmet     | Statik IP aralığı | Hizmet Etiketleri | Azure hizmetlerine izin ver |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|
-    | Azure PaaS veri depoları       | Azure Cosmos DB                                             | -                   | Yes             | -            | Yes                  |
+    | Azure PaaS veri depoları       | Azure Cosmos DB                                             | -                   | Evet             | -            | Yes                  |
     |                              | Azure Veri Gezgini                                         | -                   | Evet*            | Evet*         | -                    |
-    |                              | Azure Data Lake Gen1                                        | -                   | Yes             | -            | Yes                  |
-    |                              | MariaDB, MySQL, PostgreSQL için Azure veritabanı               | -                   | Yes             | -            | Yes                  |
-    |                              | Azure Dosya Depolama                                          | -                   | Yes             | -            | .                    |
-    |                              | Azure depolama (blog, ADLS 2.)                             | Evet (yalnızca MSI kimlik doğrulaması) | Yes             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml          | -                   | Yes             | -            | Yes                  |
-    |                              | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | Yes                 | Yes             | -            | -                    |
-    | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.            | -                   | Yes             | -            | -                    |
-    | Azure laaS                   | SQL Server, Oracle, vb.                                  | -                   | Yes             | Yes          | -                    |
-    | Şirket içi laaS              | SQL Server, Oracle, vb.                                  | -                   | Yes             | -            | -                    |
+    |                              | Azure Data Lake Gen1                                        | -                   | Evet             | -            | Yes                  |
+    |                              | MariaDB, MySQL, PostgreSQL için Azure veritabanı               | -                   | Evet             | -            | Yes                  |
+    |                              | Azure Dosya Depolama                                          | -                   | Evet             | -            | .                    |
+    |                              | Azure depolama (blog, ADLS 2.)                             | Evet (yalnızca MSI kimlik doğrulaması) | Evet             | -            | .                    |
+    |                              | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml          | -                   | Evet             | -            | Yes                  |
+    |                              | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | Evet                 | Yes             | -            | -                    |
+    | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.            | -                   | Evet             | -            | -                    |
+    | Azure laaS                   | SQL Server, Oracle, vb.                                  | -                   | Evet             | Yes          | -                    |
+    | Şirket içi laaS              | SQL Server, Oracle, vb.                                  | -                   | Evet             | -            | -                    |
     
     **Yalnızca Azure Veri Gezgini, sanal ağ eklendiğinde ve IP aralığı NSG/güvenlik duvarında uygulanabildiğinde geçerlidir.* 
 
@@ -65,16 +64,16 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
     
     | Veri depoları                  | Veri depolarında desteklenen ağ güvenlik mekanizması         | Statik IP | Güvenilen hizmetler  |
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
-    | Azure PaaS veri depoları       | Azure Cosmos DB                                               | Yes       | -                   |
+    | Azure PaaS veri depoları       | Azure Cosmos DB                                               | Evet       | -                   |
     |                                | Azure Veri Gezgini                                           | -         | -                   |
-    |                                | Azure Data Lake Gen1                                          | Yes       | -                   |
-    |                                | MariaDB, MySQL, PostgreSQL için Azure veritabanı               | Yes       | -                   |
-    |                                | Azure Dosya Depolama                                            | Yes       | -                   |
-    |                                | Azure depolama (blog, ADLS 2.)                             | Yes       | Evet (yalnızca MSI kimlik doğrulaması) |
-    |                                | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml          | Yes       | -                   |
-    |                                | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | Yes       | Yes                 |
-    | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.              | Yes       | -                   |
-    | Azure laaS                     | SQL Server, Oracle, vb.                                  | Yes       | -                   |
+    |                                | Azure Data Lake Gen1                                          | Evet       | -                   |
+    |                                | MariaDB, MySQL, PostgreSQL için Azure veritabanı               | Evet       | -                   |
+    |                                | Azure Dosya Depolama                                            | Evet       | -                   |
+    |                                | Azure depolama (blog, ADLS 2.)                             | Evet       | Evet (yalnızca MSI kimlik doğrulaması) |
+    |                                | Azure SQL DB, SQL DW (SYNAPSE Analytics), SQL ml          | Evet       | -                   |
+    |                                | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | Evet       | Yes                 |
+    | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.              | Evet       | -                   |
+    | Azure laaS                     | SQL Server, Oracle, vb.                                  | Evet       | -                   |
     | Şirket içi laaS              | SQL Server, Oracle, vb.                                  | Evet       | -                   |    
 
 ## <a name="next-steps"></a>Sonraki adımlar

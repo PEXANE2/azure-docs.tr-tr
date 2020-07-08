@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195268"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V’den Azure’a çoğaltma ve yük devretmeye ilişkin sorunları giderme
@@ -53,8 +52,8 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
     - Ortamda VMM ile çoğaltma yapıyorsanız, bu hizmetlerin çalıştığından emin olun:
         - Hyper-V konağında, sanal makine yönetimi hizmeti, Microsoft Azure Kurtarma Hizmetleri Aracısı ve WMI sağlayıcısı ana bilgisayar hizmetinin çalıştığından emin olun.
         - VMM sunucusunda, System Center Virtual Machine Manager hizmetinin çalıştığından emin olun.
-4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. **Ağ sekmesinde** **ağ etkinliği ile işlem**>, cbengine. exe ' nin büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
-5. Hyper-V konaklarının Azure Depolama Blobu URL 'sine bağlanıp bağlanamadığını denetleyin. Ana bilgisayarların bağlanıp bağlanamadığını denetlemek için **cbengine. exe**' yi seçin ve denetleyin. Ana bilgisayardan Azure Storage blob 'una bağlantıyı doğrulamak için **TCP bağlantılarını** görüntüleyin.
+4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. **Ağ sekmesinde >** **ağ etkinliği ile işlem**cbengine.exe, büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
+5. Hyper-V konaklarının Azure Depolama Blobu URL 'sine bağlanıp bağlanamadığını denetleyin. Ana bilgisayarların bağlanıp bağlanamadığını denetlemek için **cbengine.exe**seçin ve işaretleyin. Ana bilgisayardan Azure Storage blob 'una bağlantıyı doğrulamak için **TCP bağlantılarını** görüntüleyin.
 6. Aşağıda açıklandığı gibi performans sorunlarını kontrol edin.
     
 ### <a name="performance-issues"></a>Performans sorunları

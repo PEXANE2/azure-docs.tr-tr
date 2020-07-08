@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84216383"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Netezza 'ten veri kopyalama
@@ -67,7 +66,7 @@ Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID
 | SecurityLevel | Sürücünün veri deposuyla bağlantı için kullandığı güvenlik düzeyi. Sürücü SSL sürüm 3 kullanılarak tek yönlü kimlik doğrulamasıyla SSL bağlantılarını destekler. <br>Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (yalnızca güvenli**olmayan**): sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)**: bir SSL bağlantısı yoksa sürücü bağlanamaz. | Hayır |
 | CaCertFile | Sunucu tarafından kullanılan SSL sertifikasının tam yolu. Örnek: `CaCertFile=<cert path>;`| Evet, SSL etkinse |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -126,7 +125,7 @@ Netezza öğesinden veri kopyalamak için, veri kümesinin **Type** özelliğini
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {

@@ -13,10 +13,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234890"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Belirli bir çözüm için en iyi bit hızı değerini bulmak için içerik algılayan kodlama ön ayarını kullanın
@@ -85,4 +84,4 @@ TransformOutput[] output = new TransformOutput[]
 * [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı](stream-files-tutorial-with-rest.md)
 * [Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve video CLı 'yı akışa koyun](stream-files-cli-quickstart.md)
 * [Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET](stream-files-dotnet-quickstart.md)
-* [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video-Node. js akışı](stream-files-nodejs-quickstart.md)
+* [Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa Node.js](stream-files-nodejs-quickstart.md)

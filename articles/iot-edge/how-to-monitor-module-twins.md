@@ -10,22 +10,21 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221408"
 ---
-# <a name="monitor-module-twins"></a>Modül TWINS izleme
+# <a name="monitor-module-twins"></a>Modül ikizlerini izleme
 
 Azure 'da modül TWINS IoT Hub IoT Edge dağıtımlarınızın bağlantısını ve durumunu izlemeyi etkinleştirir. Modül TWINS, IoT Hub 'ınızda çalışan modüllerinizin performansı hakkında yararlı bilgiler depolar. [IoT Edge Aracısı](iot-edge-runtime.md#iot-edge-agent) ve [IoT Edge merkezi](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülleri, her biri sırasıyla kendi modül ikliklerini `$edgeAgent` ve `$edgeHub` ' ı korur:
 
 * `$edgeAgent`hem IoT Edge Agent hem de IoT Edge hub Runtime modülleri ve özel modülleriniz hakkındaki sistem durumu ve bağlantı verilerini içerir. IoT Edge Aracısı, modülleri dağıtmaktan, izlemekten ve bağlantı durumunu Azure IoT Hub 'ınıza bildirmekten sorumludur.
 * `$edgeHub`bir cihazda ve Azure IoT Hub 'ınız üzerinde çalışan IoT Edge hub 'ı arasındaki iletişimlerle ilgili verileri içerir. Bu, gelen iletileri aşağı akış cihazlarından işlemeyi içerir. IoT Edge hub, Azure IoT Hub ile IoT Edge cihazları ve modülleri arasındaki iletişimin işlenmesinden sorumludur.
 
-Veriler, modül TWINS ' JSON yapılarında istenen ve bildirilen özellik kümeleriyle birlikte meta veriler, Etiketler halinde düzenlenir. Deployment. JSON dosyanızda belirttiğiniz istenen özellikler, TWINS modülüne kopyalanır. IoT Edge Aracısı ve IoT Edge hub 'ı, modülleri için bildirilen özellikleri güncelleştirir.
+Veriler, modül TWINS ' JSON yapılarında istenen ve bildirilen özellik kümeleriyle birlikte meta veriler, Etiketler halinde düzenlenir. deployment.jsdosyasında belirttiğiniz istenen özellikler, TWINS modülüne kopyalanır. IoT Edge Aracısı ve IoT Edge hub 'ı, modülleri için bildirilen özellikleri güncelleştirir.
 
-Benzer şekilde, Deployment. JSON dosyasındaki özel modülleriniz için belirtilen istenen özellikler, ikizi modülüne kopyalanır, ancak bu çözüm, bildirilen özellik değerlerini sağlamaktan sorumludur.
+Benzer şekilde, deployment.jsdosyadaki özel modülleriniz için belirtilen özellikler, ikizi modülüne kopyalanır, ancak çözüm, bildirilen özellik değerlerini sağlamaktan sorumludur.
 
 Bu makalede Azure portal, Azure CLı ve Visual Studio Code modül TWINS 'in nasıl inceleneceğini açıklanmaktadır. Cihazlarınızın dağıtımları nasıl alacağını izleme hakkında bilgi için bkz. [Monitor IoT Edge dağıtımlarını](how-to-monitor-iot-edge-deployments.md)izleme. Modül TWINS kavramıyla ilgili genel bir bakış için bkz. [IoT Hub 'da modül TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-module-twins.md).
 
@@ -83,7 +82,7 @@ JSON, en üstten başlayarak aşağıdaki bölümlerde açıklanabilir:
 
 * Meta veriler-bağlantı verileri Içerir. Intergelme, IoT Edge aracısının bağlantı durumu her zaman bağlantısı kesik durumda: `"connectionState": "Disconnected"` . Bağlantı durumu, cihazdan buluta (D2C) iletilerle ilgilidir ve IoT Edge Aracısı D2C iletilerini göndermez.
 * Özellikler-ve alt `desired` `reported` bölümleri içerir.
-* Properties. Desired-(daraltılmış), Deployment. JSON dosyasındaki işleci tarafından ayarlanan beklenen özellik değerleri.
+* Properties. Desired-(daraltılmış olarak gösteriliyor) dosyadaki deployment.jsişleci tarafından ayarlanan beklenen özellik değerleri.
 * Properties. raporlanan-IoT Edge Aracısı tarafından raporlanan en son özellik değerleri.
 
 Ve bölümlerinin her ikisi de `properties.desired` `properties.reported` benzer bir yapıya sahiptir ve şema, sürüm ve çalışma zamanı bilgileri için ek meta veriler içerir. Ayrıca `modules` , tüm özel modüller (gibi `SimulatedTemperatureSensor` ) ve `systemModules` `$edgeAgent` `$edgeHub` çalışma zamanı modülleri için bölümü de dahildir.
@@ -159,14 +158,14 @@ JSON, en üstten başlayarak aşağıdaki bölümlerde açıklanabilir:
 * Meta veriler-bağlantı verileri Içerir.
 
 * Özellikler-ve alt `desired` `reported` bölümleri içerir.
-* Properties. Desired-(daraltılmış), Deployment. JSON dosyasındaki işleci tarafından ayarlanan beklenen özellik değerleri.
+* Properties. Desired-(daraltılmış olarak gösteriliyor) dosyadaki deployment.jsişleci tarafından ayarlanan beklenen özellik değerleri.
 * Properties. raporlanan-IoT Edge hub tarafından raporlanan en son özellik değerleri.
 
 Aşağı akış cihazlarınızla ilgili sorun yaşıyorsanız, bu verilerin incelenbaşlaması iyi bir yerdir.
 
 ## <a name="monitor-custom-module-twins"></a>Özel modül TWINS 'i izle
 
-Özel modüllerinizin bağlantısı hakkındaki bilgiler, ikizi aracı modülünde IoT Edge tutulur. Özel modülünüzün ikizi modülü, birincil olarak çözümünüzün verilerini korumak için kullanılır. Deployment. JSON dosyanızda tanımladığınız istenen özellikler ikizi modülüne yansıtılır ve modülünüzün bildirilen özellik değerlerini gerektiği şekilde güncelleştirebilir.
+Özel modüllerinizin bağlantısı hakkındaki bilgiler, ikizi aracı modülünde IoT Edge tutulur. Özel modülünüzün ikizi modülü, birincil olarak çözümünüzün verilerini korumak için kullanılır. deployment.jsdosyasında tanımladığınız istenen özellikler ikizi modülüne yansıtılır ve modülünüzün bildirilen özellik değerlerini gerektiği şekilde güncelleştirebilir.
 
 Modülünüzün uygulama koduna bağlı olarak ikizi modülünde bildirilen özellik değerlerini güncelleştirmek için [Azure IoT Hub cihaz SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) 'leriyle tercih ettiğiniz programlama dilini kullanabilirsiniz. Aşağıdaki yordam, [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) modülündeki kodu kullanarak bunu yapmak için .NET için Azure SDK 'sını kullanır:
 

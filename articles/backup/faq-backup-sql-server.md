@@ -5,10 +5,9 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248269"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
@@ -32,8 +31,8 @@ Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomat
 
 Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir; Ancak, bunu devre dışı bırakmak isterseniz aşağıdaki işlemleri gerçekleştirin:
 
-- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe **ExtensionSettingsOverrides. JSON** dosyasını oluşturun veya düzenleyin.
-- **ExtensionSettingsOverrides. JSON**dosyasında *{"EnableAutoHealer": false}* ayarlayın.
+- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya **üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
+- **ExtensionSettingsOverrides.js**, *{"EnableAutoHealer": false}* olarak ayarlayın.
 - Değişikliklerinizi kaydedin ve dosyayı kapatın.
 - SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
 
@@ -41,8 +40,8 @@ Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak
 
 Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
 
-1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe *ExtensionSettingsOverrides. JSON* dosyasını oluşturun.
-2. *ExtensionSettingsOverrides. JSON* dosyasında **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
+1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya *üzerindeExtensionSettingsOverrides.js* oluşturun.
+2. *ExtensionSettingsOverrides.js* dosyadaki **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 DefaultBackupTasksThreshold varsayılan değeri **20**' dir.

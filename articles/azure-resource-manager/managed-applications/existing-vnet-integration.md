@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261292"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Azure yönetilen uygulamalarla mevcut sanal ağı kullan
@@ -18,7 +17,7 @@ Bu makalede, tüketicinin aboneliğindeki mevcut bir sanal ağla tümleşen bir 
 
 ## <a name="main-template"></a>Ana şablon
 
-İlk olarak, **Maintemplate. JSON** dosyasına bakalım. Bir sanal makineyi ve ilişkili kaynaklarını dağıtmaya yönelik tüm şablon aşağıda gösterilmiştir. Daha sonra, var olan bir sanal ağı kullanmayla ilgili olan şablonun parçalarını daha yakından inceleyebilirsiniz.
+İlk olarak, dosyasında **mainTemplate.js** bakalım. Bir sanal makineyi ve ilişkili kaynaklarını dağıtmaya yönelik tüm şablon aşağıda gösterilmiştir. Daha sonra, var olan bir sanal ağı kullanmayla ilgili olan şablonun parçalarını daha yakından inceleyebilirsiniz.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/mainTemplate.json":::
 
@@ -38,7 +37,7 @@ Ağ arabirimi alt ağ KIMLIĞI değişkenine ayarlanır.
 
 ## <a name="ui-definition"></a>UI tanımı
 
-Şimdi **Createuıdefinition. JSON** dosyasına bakalım. Dosyanın tamamı:
+Şimdi dosyada **createUiDefinition.js** bakalım. Dosyanın tamamı:
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json":::
 
@@ -59,4 +58,4 @@ Bu öğe, tüketicinin yeni veya var olan bir sanal ağ seçmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-UI tanım dosyası oluşturma hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamanın oluşturma deneyimi Için Createuıdefinition. JSON](create-uidefinition-overview.md).
+UI tanım dosyası oluşturma hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamanın oluşturma deneyimi içinCreateUiDefinition.js](create-uidefinition-overview.md).

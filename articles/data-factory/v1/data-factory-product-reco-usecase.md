@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195881"
 ---
 # <a name="use-case---product-recommendations"></a>Kullanım örneği-ürün önerileri
@@ -53,7 +52,7 @@ Bu örnekte makine öğrenimi için kullanılan öneri sistemi, [Apache Mahout](
 
 Son olarak, kişiselleştirilmiş ürün önerileri sonuç kümesi, perakende Web sitesinin tüketimi için ilişkisel bir veri reyonuna taşınır.  Sonuç kümesine başka bir uygulama tarafından doğrudan blob depolamadan de erişilebilir veya diğer tüketiciler ve kullanım örnekleri için ek depolara taşınabilir.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 Ürün önerisi stratejisini en iyi duruma getirerek ve iş hedefleri ile hizalayarak çözüm, çevrimiçi satıcıdan Merchandising ve pazarlama hedeflerini karşıladı. Ayrıca, ürün önerisi iş akışını verimli, güvenilir ve uygun maliyetli bir şekilde kullanıma açabilir ve yönetebilir. Yaklaşım, kendi modellerini güncelleştirilmesini ve satış tıklamaları-dönüştürme başarılarına göre verimliliğine ince ayar yapılmasını kolaylaştırır. Azure Data Factory kullanarak, zaman alan ve pahalı, el ile bulut kaynak yönetimini iptal edebilir ve isteğe bağlı bulut kaynak yönetimine geçebilir. Bu nedenle, zaman ve para tasarrufu sağlayabiliyor ve çözüm dağıtımına zaman harcamaları mümkün. Data kökenini görünümleri ve işletimsel hizmet sistem durumu, Azure portal sunulan sezgisel Data Factory izleme ve yönetim kullanıcı arabirimi ile görselleştirme ve sorun giderme konusunda kolay hale geldi. Bunlar artık, tamamlanmış verilerin güvenilir bir şekilde üretilmesi ve kullanıcılara teslim edilmesi için zamanlanabilecek ve yönetilebilir ve veri ve işleme bağımlılıkları, insan müdahalesi olmadan otomatik olarak yönetilir.
 
 Bu kişiselleştirilmiş alışveriş deneyimini sunarak, çevrimiçi satıcı daha rekabet eden, ilgi çekici bir müşteri deneyimi oluşturmuş ve bu nedenle satışları ve genel müşteri memnuniyetini artırmış.

@@ -7,10 +7,9 @@ ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197118"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey ile sürekli dağıtım ayarlama
@@ -82,7 +81,7 @@ Otomasyon hesabınızı şu bölgelerden birine (konum olarak da bilinir) koyabi
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>2. Adım: VM uzantılarını Kaynak Yöneticisi şablonuna oluşturma
 
 Bu [Azure hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)belirtilen VM kaydı (POWERSHELL DSC VM uzantısı kullanılarak) için ayrıntılar.
-Bu adım, yeni VM 'nizi durum yapılandırması düğümleri listesindeki çekme sunucusuna kaydeder. Bu kaydın bir parçası, düğüme uygulanacak düğüm yapılandırmasını belirtmektir. Bu düğüm yapılandırmasının çekme sunucusunda mevcut olması gerekmez, bu nedenle ilk kez bu işlem yapıldığında 4. adım bu kadar iyidir. Ancak adım 2 ' de, düğüm adına ve yapılandırmanın adına karar vermiş olmanız gerekir. Bu kullanım örneğinde, düğüm ' isvbox ' ve yapılandırma ' ISVBoxConfig '. Bu nedenle, düğüm yapılandırma adı (DeploymentTemplate. JSON içinde belirtilmelidir) ' ISVBoxConfig. isvbox '.
+Bu adım, yeni VM 'nizi durum yapılandırması düğümleri listesindeki çekme sunucusuna kaydeder. Bu kaydın bir parçası, düğüme uygulanacak düğüm yapılandırmasını belirtmektir. Bu düğüm yapılandırmasının çekme sunucusunda mevcut olması gerekmez, bu nedenle ilk kez bu işlem yapıldığında 4. adım bu kadar iyidir. Ancak adım 2 ' de, düğüm adına ve yapılandırmanın adına karar vermiş olmanız gerekir. Bu kullanım örneğinde, düğüm ' isvbox ' ve yapılandırma ' ISVBoxConfig '. Bu nedenle, düğüm yapılandırma adı (DeploymentTemplate.jsüzerinde belirtilmelidir) ' ISVBoxConfig. isvbox '.
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>3. Adım: gerekli DSC kaynaklarını çekme sunucusuna ekleme
 
@@ -126,7 +125,7 @@ Dahil edilen örnek, cChoco ve xNetworking için bu adımları uygular.
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>4. Adım: düğüm yapılandırmasını çekme sunucusuna ekleme
 
-Yapılandırmanızı çekme sunucusuna ilk kez aktardığınızda ve derlemenizde özel bir şey yoktur. Aynı yapılandırmanın tüm sonraki içeri aktarmaları veya derlemeleri tamamen aynı şekilde görünür. Paketinizi her güncelleştirdiğinizde ve üretime göndermeniz gerektiğinde, paketinizin yeni sürümü de dahil olmak üzere, yapılandırma dosyasının doğru olduğundan emin olduktan sonra bu adımı gerçekleştirebilirsiniz. **ISVBoxConfig. ps1**yapılandırma dosyası şu şekildedir:
+Yapılandırmanızı çekme sunucusuna ilk kez aktardığınızda ve derlemenizde özel bir şey yoktur. Aynı yapılandırmanın tüm sonraki içeri aktarmaları veya derlemeleri tamamen aynı şekilde görünür. Paketinizi her güncelleştirdiğinizde ve üretime göndermeniz gerektiğinde, paketinizin yeni sürümü de dahil olmak üzere, yapılandırma dosyasının doğru olduğundan emin olduktan sonra bu adımı gerçekleştirebilirsiniz. Yapılandırma dosyası şu şekildedir **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -171,7 +170,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Burada **New-ConfigurationScript. ps1** betiği bulunur (az modülünü kullanacak şekilde değiştirilir):
+İşte **New-ConfigurationScript.ps1** betiği (az modülünü kullanacak şekilde değiştirilir):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
