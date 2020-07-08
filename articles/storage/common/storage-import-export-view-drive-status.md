@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514138"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, her durum için sürücü hatası durumları ve gerçekle�
 | Sürücü durumu | Olay | Çözüm/sonraki adım |
 |:--- |:--- |:--- |
 | NeverReceived | **Neverreceived** olarak işaretlenen bir sürücü (iş sevkiyatının bir parçası olarak alınmadığı için) başka bir sevkiyata ulaştı. | İşlemler ekibi, sürücüyü **alındı**olarak kaydırır. |
-| Yok | Herhangi bir işin parçası olmayan bir sürücü, veri merkezinde başka bir işin parçası olarak ulaşır. | Sürücü ek bir sürücü olarak işaretlenir ve özgün paketle ilişkili iş tamamlandığında size döndürülür. |
+| YOK | Herhangi bir işin parçası olmayan bir sürücü, veri merkezinde başka bir işin parçası olarak ulaşır. | Sürücü ek bir sürücü olarak işaretlenir ve özgün paketle ilişkili iş tamamlandığında size döndürülür. |
 
 ## <a name="time-to-process-job"></a>İşi işleme süresi
 İçeri/dışarı aktarma işinin işlenmesi için gereken süre, şöyle bir dizi etkene göre farklılık gösterir:

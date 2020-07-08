@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513971"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma
@@ -33,7 +33,7 @@ ms.locfileid: "85513971"
 
 | Sonuç sütunu | Açıklama |
 |:--- |:--- |
-| Adı |Klasik Azure portalında yapılandırılan cihazın adı |
+| Name |Klasik Azure portalında yapılandırılan cihazın adı |
 | Model |Cihazın model numarası |
 | Sürüm |Cihazda yüklü yazılımın sürümü |
 | Durum |Cihazın kullanılabilir olup olmadığı |

@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512009"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
@@ -227,9 +227,9 @@ Bir Azure dosya paylaşımındaki dosyaları ls komutunu kullanarak listelemeyi 
 ### <a name="solution"></a>Çözüm
 Linux çekirdeğini bu sorun için bir düzeltmesine sahip olan aşağıdaki sürümlere yükseltin:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
 - 4,13 ' den büyük veya buna eşit olan tüm sürümler
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Sembolik bağlantılar oluşturulamıyor-ln: sembolik bağlantı oluşturulamadı 't ': Işlem desteklenmiyor
@@ -277,7 +277,7 @@ Linux çekirdeğindeki bu yeniden bağlantı sorunu artık aşağıdaki değişi
 
 - [Yuva yeniden bağlantısından sonra smb3 oturumunun yeniden bağlantısını geciktirmemek için yeniden bağlantı düzeltildi](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Yuva yeniden bağlantısından hemen sonra yankı hizmeti çağrısı](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: yeniden bağlanma sırasında olası bir bellek bozulmasını düzeltir](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Yeniden bağlantı sırasındaki olası bellek bozulması düzeltildi](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: yeniden bağlantı sırasında karşılıklı mutex 'in olası bir çift kilitlemeyi düzeltir (çekirdek v 4.9 ve üzeri için)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Popüler bir Linux dağıtımı kullanıyorsanız, hangi dağıtımlarınızın hangi sürümünün gerekli çekirdek değişikliklerine sahip olduğunu görmek için [Azure dosyalarını Linux Ile kullanma](storage-how-to-use-files-linux.md) bölümüne bakabilirsiniz.

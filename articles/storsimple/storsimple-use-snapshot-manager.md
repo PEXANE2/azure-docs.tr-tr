@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
 ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513748"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Yedekleme işlerini ve yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager Kullanıcı arabirimini kullanma
@@ -118,7 +118,7 @@ Aşağıdaki tablo, StorSimple Snapshot Manager eylemlerinin alfabetik bir liste
 | Ayrıntılar |**Cihazlar** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Bir cihazın yapılandırma ayrıntılarını görmek için **Ayrıntılar** ' a tıklayın. |
 | Düzenle |**Yedekleme ilkeleri**' ne tıklayın ve ardından **sonuçlar** bölmesinde bir ilkeye sağ tıklayın. |Birim grubu için Yedekleme zamanlamasını değiştirmek üzere **Düzenle** ' ye tıklayın. |
 | Listeyi dışarı aktar |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için **Listeyi dışarı aktar** ' a tıklayın. Daha sonra bu dosyayı analiz için bir elektronik tablo uygulamasına aktarabilirsiniz. |
-| Help |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
+| Yardım |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
 | Buradan Yeni Pencere |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Yeni bir StorSimple Snapshot Manager penceresi açmak için **buradan yeni pencere** ' ye tıklayın. |
 | Yenile |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Şu anda görüntülenen StorSimple Snapshot Manager penceresini güncelleştirmek için **Yenile** ' ye tıklayın. |
 | Cihazı Yenile |**Cihazlar** düğümüne tıklayın ve **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Belirli bir bağlı cihazı StorSimple Snapshot Manager ile eşleştirmek için **cihazı Yenile** ' ye tıklayın. |

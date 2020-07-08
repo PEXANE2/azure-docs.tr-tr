@@ -8,10 +8,10 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510736"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
@@ -34,7 +34,7 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal, **tüm hizmetler**' i seçin. 
 1. Kaynak listesinde **depolama hesapları**' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama Hesapları**’nı seçin.
 1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.

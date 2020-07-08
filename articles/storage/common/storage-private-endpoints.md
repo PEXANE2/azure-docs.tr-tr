@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513283"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
@@ -79,7 +79,7 @@ Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğü
 
 Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' StorageAccountA ' depolama hesabı için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Name                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -89,7 +89,7 @@ Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel u�
 
 Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde StorageAccountA için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Name                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -106,7 +106,7 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 | Depolama hizmeti        | Bölge adı                            |
 | :--------------------- | :----------------------------------- |
 | Blob hizmeti           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `privatelink.dfs.core.windows.net`   |
 | Dosya hizmeti           | `privatelink.file.core.windows.net`  |
 | Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
 | Tablo hizmeti          | `privatelink.table.core.windows.net` |

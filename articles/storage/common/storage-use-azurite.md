@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512143"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
@@ -148,7 +148,7 @@ Bu komut, Azurite 'ın tüm verileri belirli bir dizinde ( *c:\azurite*) depolam
 
 Bu bölüm, Azurıite başlatılırken kullanılabilen komut satırı anahtarlarının ayrıntılarını yapar.
 
-### <a name="help"></a>Help
+### <a name="help"></a>Yardım
 
 **Isteğe bağlı** -veya anahtarını kullanarak komut satırı yardımını alın `-h` `--help` .
 
@@ -464,7 +464,7 @@ Depolama Gezgini, aşağıdaki adımları izleyerek Azurite öğesine bağlanın
  1. **Hesapları Yönet** simgesini seçin
  1. **Hesap Ekle** ' yi seçin
  1. **Yerel öykünücüye Ekle** seçeneğini belirleyin
- 1. **İleri** Seç
+ 1. **İleri**’yi seçin
  1. **Görünen ad** alanını seçtiğiniz bir adla düzenleyin
  1. **İleri ' yi** yeniden seçin
  1. **Bağlan** 'ı seçin
@@ -493,7 +493,7 @@ Depolama Gezgini için Azurite HTTPS eklemek üzere aşağıdaki adımları izle
 1. **İleri**’yi seçin.
 1. **Görünen ad** alanına bir değer girin.
 1. Bu belgenin önceki bölümündeki [HTTPS bağlantı dizesini](#https-connection-strings) girin
-1. **İleri** Seç
+1. **İleri**’yi seçin
 1. **Bağlan** 'ı seçin
 
 ## <a name="workspace-structure"></a>Çalışma alanı yapısı

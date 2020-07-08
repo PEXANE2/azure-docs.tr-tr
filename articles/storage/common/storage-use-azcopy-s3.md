@@ -9,15 +9,15 @@ ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513757"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama
 
-AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy kullanarak Amazon Web Services (AWS) S3 ' den Azure Blob depolama alanına nesneleri, dizinleri ve demetleri kopyalamanıza yardımcı olur.
+AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi gerçekleştirmenizi sağlayan bir komut satırı yardımcı programıdır. Bu makale, AzCopy kullanarak Amazon Web Services (AWS) S3 ' den Azure Blob depolama alanına nesneleri, dizinleri ve demetleri kopyalamanıza yardımcı olur.
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Yetkilendirme kimlik bilgilerini nasıl sağlayabileceklerini seçin
 

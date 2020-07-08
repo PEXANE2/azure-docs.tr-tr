@@ -8,10 +8,10 @@ ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511993"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
@@ -99,16 +99,16 @@ Bağlantı başarılı olursa şu çıktıyı görmeniz gerekir:
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
 #### <a name="solution-1---use-azure-file-sync"></a>Çözüm 1 - Azure Dosya Eşitleme'yi kullanın
-Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Azure Dosya Eşitleme 443 bağlantı noktası üzerinden çalışarak, bağlantı noktası 445 ' nin engellediği istemcilerden Azure dosyalarına erişmek için geçici bir çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Azure Dosya Eşitleme, 443 numaralı bağlantı noktası üzerinden çalıştığından 445 numaralı bağlantı noktası engellenmiş olan istemcilerden Azure Dosyalar'a erişmek için geçici çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Çözüm 2 - VPN kullanın
-Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Windows 'dan Azure dosyalarına erişmek için [VPN Kurulumu için yönergeleri](storage-files-configure-p2s-vpn-windows.md) izleyin.
+Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Azure Dosyalar'a Windows'dan erişmek için [VPN kurulum yönergelerini](storage-files-configure-p2s-vpn-windows.md) izleyin.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Çözüm 3 - ISP/BT Yöneticinizin yardımıyla 445 numaralı bağlantı noktasının engelini kaldırın
 [Azure IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)giden 445 numaralı bağlantı noktasını açmak için BT departmanınızla veya ISS 'niz ile çalışın.
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Çözüm 4 - Depolama Gezgini/Powershell gibi REST API tabanlı araçları kullanın
-Azure dosyaları da SMB 'ye ek olarak REST 'i destekler. REST Access 443 numaralı bağlantı noktasından (Standart TCP) çalışmaktadır. REST API kullanılarak yazılan ve zengin Kullanıcı arabirimi deneyimini etkinleştiren çeşitli araçlar vardır. [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) bunlardan biridir. [Depolama Gezgini Indirip yükleyin](https://azure.microsoft.com/features/storage-explorer/) ve Azure dosyaları tarafından desteklenen dosya paylaşımınıza bağlanın. Ayrıca, Kullanıcı REST API de [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) kullanabilirsiniz.
+Azure dosyaları da SMB 'ye ek olarak REST 'i destekler. REST erişimi, 443 numaralı bağlantı noktası üzerinden (standart TCP) çalışır. REST API kullanarak yazılmış olan ve zengin bir kullanıcı arabirimi deneyimi sunan birçok araç vardır. [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) bunlardan biridir. [Depolama Gezgini'ni indirip yükleyerek](https://azure.microsoft.com/features/storage-explorer/) Azure Dosyalar destekli dosya paylaşımınıza bağlanın. Ayrıca, Kullanıcı REST API de [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) kullanabilirsiniz.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Neden 2: NTLMv1 etkin
 

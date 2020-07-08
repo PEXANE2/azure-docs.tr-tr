@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514199"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure depolama için ağ yönlendirme tercihini yapılandırma (Önizleme)
@@ -46,7 +46,7 @@ Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz.
 | Depolama hizmeti        | Rotaya özgü uç nokta                                  |
 | :--------------------- | :------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting.web.core.windows.net`   |
 
@@ -55,7 +55,7 @@ Bir Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişim
 | Depolama hizmeti        | Rotaya özgü salt okunurdur ikincil uç nokta                        |
 | :--------------------- | :----------------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting-secondary.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting-secondary.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting-secondary.web.core.windows.net`   |
 
