@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80059904"
 ---
 Otomatik olarak imzalanan bir kök sertifika oluşturduktan sonra kök sertifika ortak anahtar. cer dosyasını (özel anahtarı değil) dışarı aktarın. Daha sonra bu dosyayı Azure 'a yükleyeceksiniz. Aşağıdaki adımlar, otomatik olarak imzalanan kök sertifikanız için. cer dosyasını dışarı aktarmaya yardımcı olur:
@@ -31,7 +31,7 @@ Otomatik olarak imzalanan bir kök sertifika oluşturduktan sonra kök sertifika
    ![Base-64 kodlu](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
 5. **Dışarı aktarılacak dosya**için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
 
-   ![Göz at](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
+   ![Gözat](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
    ![Son](./media/vpn-gateway-certificates-export-public-key-include/finish.png)

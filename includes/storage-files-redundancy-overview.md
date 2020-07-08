@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 87457bb103f49be4ca3e7bf9f463c5bf63f3a119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77597846"
 ---
 Azure dosya paylaşımlardaki verileri veri kaybına veya bozulmaya karşı korumak için tüm Azure dosya paylaşımları yazıldığı gibi her bir dosyanın birden çok kopyasını depolar. İş yükünüzün gereksinimlerine bağlı olarak, ek derece artıklığı seçebilirsiniz. Azure dosyaları şu anda aşağıdaki veri artıklığı seçeneklerini desteklemektedir:

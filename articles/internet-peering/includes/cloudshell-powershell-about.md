@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678463"
 ---
 Cmdlet 'leri çalıştırmak için, ücretsiz bir etkileşimli kabuk olan Azure Cloud Shell kullanabilirsiniz. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Kodu kopyalamak için **Kopyala** ' yı seçin ve Cloud Shell yapıştırın. Ardından, çalıştırmak için **ENTER** ' u seçin. Cloud Shell başlamanın birkaç yolu vardır:

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80116953"
 ---
 ## <a name="use-custom-page-content"></a>Özel sayfa içeriğini kullan
@@ -46,7 +46,7 @@ Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://w
 
 Aşağıdaki tabloda, Azure AD B2C tarafından sunulan varsayılan sayfa içeriği listelenmektedir. Dosyaları indirin ve kendi özel sayfalarınızı oluşturmak için bir başlangıç noktası olarak kullanın.
 
-| Varsayılan sayfa | Description | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
+| Varsayılan sayfa | Açıklama | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. | *api. Error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Otomatik olarak onaylanan sayfa**. Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası, yerel hesap oturum açma sayfası, parola sıfırlama ve daha fazlası için özel bir sayfa içeriği olarak kullanın. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. | *api. localaccountsignın*, *api. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasted* |
@@ -89,7 +89,7 @@ Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı
 
 Başlığında ürününüzün marka adıyla özel bir sayfa içeriği oluşturun.
 
-1. Aşağıdaki HTML kod parçacığını kopyalayın. * \< Gövde \> * etiketleri içinde yer alan * \< div ID = "api" \> \< /DIV \> * adlı boş bir öğe ile iyi biçimlendirilmiş HTML5. Bu öğe Azure AD B2C içeriğin nereye ekleneceğini gösterir.
+1. Aşağıdaki HTML kod parçacığını kopyalayın. *\<div id="api"\>\</div\>* Etiketler içinde yer alan boş bir öğe ile iyi BIÇIMLENDIRILMIŞ HTML5 *\<body\>* . Bu öğe Azure AD B2C içeriğin nereye ekleneceğini gösterir.
 
    ```html
    <!DOCTYPE html>
@@ -114,7 +114,7 @@ Bu makalede, içeriğimizi barındırmak için Azure Blob depolamayı kullanır�
 
 Blob depolamada HTML içeriğinizi barındırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde, **Yeni**  >  **depolama**  >  **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
@@ -159,7 +159,7 @@ Aşağıdaki adımları gerçekleştirerek, çıkış noktaları arası kaynak p
 1. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 1. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 1. **Maksimum yaş**için 200 girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 #### <a name="31-test-cors"></a>3,1 test CORS
 

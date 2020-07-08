@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78301971"
 ---
 Aşağıdaki adımları izleyerek Kaynak Yöneticisi dağıtım modeliyle ve Azure portal bir sanal ağ oluşturabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../articles/virtual-network/virtual-networks-overview.md).
@@ -22,7 +22,7 @@ Aşağıdaki adımları izleyerek Kaynak Yöneticisi dağıtım modeliyle ve Azu
 >
 >
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Arama kaynakları, hizmet ve belgeler (G +/)**' de *sanal ağ*yazın.
 
    ![Sanal ağ kaynağını bul sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Sanal ağ kaynağını bul sayfası")

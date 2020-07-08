@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81791644"
 ---
 Olayları bir olay akışına yazmak için Event Hubs çıkış bağlamasını kullanın. Olayları yazacağınız olay hub'ı üzerinde gönderme iznine sahip olmanız gerekir.
@@ -17,7 +17,7 @@ Olayları bir olay akışına yazmak için Event Hubs çıkış bağlamasını k
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, bir olay hub 'ına bir ileti yazan, çıkış olarak yöntem dönüş değeri kullanan bir [C# işlevini](../articles/azure-functions/functions-dotnet-class-library.md) göstermektedir:
 
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Aşağıdaki örnek, bir dizi ileti göndermek için `IAsyncCollector` arabirimi nasıl kullanacağınızı gösterir. Bu senaryo, bir olay hub 'ından gelen iletileri işlerken ve sonucu başka bir olay hub 'ına gönderdiğinizde yaygındır.
+Aşağıdaki örnek, `IAsyncCollector` bir dizi ileti göndermek için arabirimi nasıl kullanacağınızı gösterir. Bu senaryo, bir olay hub 'ından gelen iletileri işlerken ve sonucu başka bir olay hub 'ına gönderdiğinizde yaygındır.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -53,9 +53,9 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [C# betik işlevini](../articles/azure-functions/functions-reference-csharp.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [C# betik işlevini](../articles/azure-functions/functions-reference-csharp.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
 
-Aşağıdaki örneklerde, *function. JSON* dosyasında Event Hubs bağlama verisi gösterilmektedir. İlk örnek 2. x ve üzeri Işlevleri için, ikincisi ise 1. x Işlevleri içindir. 
+Aşağıdaki örneklerde Event Hubs *function.js* dosyadaki verileri bağlama gösterilmektedir. İlk örnek 2. x ve üzeri Işlevleri için, ikincisi ise 1. x Işlevleri içindir. 
 
 ```json
 {
@@ -105,9 +105,9 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [JavaScript işlevini](../articles/azure-functions/functions-reference-node.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [JavaScript işlevini](../articles/azure-functions/functions-reference-node.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
 
-Aşağıdaki örneklerde, *function. JSON* dosyasında Event Hubs bağlama verisi gösterilmektedir. İlk örnek 2. x ve üzeri Işlevleri için, ikincisi ise 1. x Işlevleri içindir. 
+Aşağıdaki örneklerde Event Hubs *function.js* dosyadaki verileri bağlama gösterilmektedir. İlk örnek 2. x ve üzeri Işlevleri için, ikincisi ise 1. x Işlevleri içindir. 
 
 ```json
 {
@@ -157,9 +157,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [Python işlevini](../articles/azure-functions/functions-reference-python.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir olay hub 'ı tetikleme bağlantısını ve bağlamayı kullanan bir [Python işlevini](../articles/azure-functions/functions-reference-python.md) gösterir. İşlevi bir olay hub 'ına bir ileti yazar.
 
-Aşağıdaki örneklerde, *function. JSON* dosyasında Event Hubs bağlama verisi gösterilmektedir.
+Aşağıdaki örneklerde Event Hubs *function.js* dosyadaki verileri bağlama gösterilmektedir.
 
 ```json
 {
@@ -198,13 +198,13 @@ public String sendTime(
  }
 ```
 
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri olay `@EventHubOutput` hub 'ına yayımlanacak parametrelerde ek açıklama kullanın.  Parametresi türünde `OutputBinding<T>` olmalıdır; burada T BIR Pojo veya herhangi bir yerel Java türüdür.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@EventHubOutput` değeri Olay Hub 'ına yayımlanacak parametrelerde ek açıklama kullanın.  Parametresi türünde olmalıdır `OutputBinding<T>` ; burada T BIR POJO veya herhangi bir yerel Java türüdür.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıkları](../articles/azure-functions/functions-dotnet-class-library.md)Için [Eventhubattribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) özniteliğini kullanın.
 
@@ -235,46 +235,46 @@ Tam bir örnek için bkz. [output-C# örneği](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java işlevleri çalışma zamanı kitaplığı](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)' nda, değeri Olay Hub 'ına yayımlanacak parametrelerde [Eventhui put](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) ek açıklamasını kullanın. Parametresi, bir POJO veya `OutputBinding<T>` herhangi bir `T` yerel Java türü olan türünde olmalıdır.
+[Java işlevleri çalışma zamanı kitaplığı](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)' nda, değeri Olay Hub 'ına yayımlanacak parametrelerde [Eventhui put](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) ek açıklamasını kullanın. Parametresi `OutputBinding<T>` , `T` BIR Pojo veya herhangi bir yerel Java türü olan türünde olmalıdır.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHub` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `EventHub` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "EventHub" olarak ayarlanmalıdır. |
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
 |**Yolun** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**eventHubName** |**EventHubName** | İşlevler 2. x ve üzeri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
-|**bağlantı** |**Bağlanma** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, *ad alanı*Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin iletiyi olay akışına göndermek için gönderme izinleri olmalıdır.|
+|**bağlanma** |**Bağlantı** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, *ad alanı*Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin iletiyi olay akışına göndermek için gönderme izinleri olmalıdır.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName`. C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, veya `ICollector<string>` `IAsyncCollector<string>` yerinde kullanabilirsiniz. `out string`
+Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<string>` veya yerinde kullanabilirsiniz `IAsyncCollector<string>` `out string` .
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName`. C# komut dosyasında, `paramName` `name` *function. JSON*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, veya `ICollector<string>` `IAsyncCollector<string>` yerinde kullanabilirsiniz. `out string`
+Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<string>` veya yerinde kullanabilirsiniz `IAsyncCollector<string>` `out string` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Output olayına, *function. JSON* `name` özelliğinde `<name>` belirtilen değerin nerede olduğunu kullanarak `context.bindings.<name>` erişin.
+Çıkış olayına, `context.bindings.<name>` `<name>` `name` *üzerindefunction.js*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *function. JSON* içindeki özelliği olarak `$return`ayarlayın. Bu yapılandırmayla, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
+- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
 
-- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen `set` değer bir olay hub 'ı iletisi olarak kalıcıdır.
+- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -282,7 +282,7 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
 - **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
 
-- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)belirli bir parametresine uygulayın, burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, `setValue` yöntemine bir değer geçirilmesi değeri bir olay hub 'ı iletisi olarak devam ettirir.
+- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yöntemine bir değer geçirilmesi `setValue` değeri bir olay hub 'ı iletisi olarak devam ettirir.
 
 ---
 

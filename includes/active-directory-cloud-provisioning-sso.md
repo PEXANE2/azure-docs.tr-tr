@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79504292"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Çoklu oturum açmayı etkinleştirme adımları
@@ -24,17 +24,17 @@ Bulut sağlama, çoklu oturum açma ile birlikte kullanılabilir.  Şu anda arac
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>2. Adım: sorunsuz SSO PowerShell modülünü Içeri aktarma
 
 1. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
-2. `%programfiles%\Microsoft Azure Active Directory Connect` Klasöre gidin.
-3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
+2. `%programfiles%\Microsoft Azure Active Directory Connect`Klasöre gidin.
+3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
 
 ### <a name="step-3-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>3. Adım: sorunsuz SSO 'nun etkinleştirildiği Active Directory ormanların listesini alın
 
-1. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. İstendiğinde, kiracınızın genel yönetici kimlik bilgilerini girin.
-2. Çağrısı `Get-AzureADSSOStatus`yapın. Bu komut, bu özelliğin etkinleştirildiği Active Directory ormanların listesini ("etki alanları" listesine bakın) sağlar.
+1. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . İstendiğinde, kiracınızın genel yönetici kimlik bilgilerini girin.
+2. Çağrısı yapın `Get-AzureADSSOStatus` . Bu komut, bu özelliğin etkinleştirildiği Active Directory ormanların listesini ("etki alanları" listesine bakın) sağlar.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. Adım: her Active Directory orman için sorunsuz SSO 'yu etkinleştirme
 
-1. Çağrısı `Enable-AzureADSSOForest`yapın. İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
+1. Çağrısı yapın `Enable-AzureADSSOForest` . İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
 
    > [!NOTE]
    >Etki alanı yöneticisi kimlik bilgileri Kullanıcı adı, SAM hesap adı biçiminde girilmelidir (contoso\johntikan veya contoso. com\johntikan). DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak için Kullanıcı adının etki alanı bölümünü kullanıyoruz.
@@ -46,4 +46,4 @@ Bulut sağlama, çoklu oturum açma ile birlikte kullanılabilir.  Şu anda arac
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. Adım. Kiracınızda özelliği etkinleştirin
 
-Kiracınızdaki özelliği açmak için çağırın `Enable-AzureADSSO -Enable $true`.
+Kiracınızdaki özelliği açmak için çağırın `Enable-AzureADSSO -Enable $true` .

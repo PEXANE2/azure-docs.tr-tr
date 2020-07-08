@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79500191"
 ---
 1. İstemci sertifikalarını, bu [noktadan sıteye VPN istemci](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) makalesinde gösterildiği gibi Windows 10 istemcisine yükler. Sertifika, geçerli kullanıcı deposunda olmalıdır.
@@ -23,7 +23,7 @@ ms.locfileid: "79500191"
 
 Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, aşağıdaki örnekleri kullanarak bir istemci cihaz tüneli yapılandırın:
 
-1. Aşağıdaki metni kopyalayın ve *Usercert. ps1*olarak kaydedin:
+1. Aşağıdaki metni kopyalayın ve *usercert.ps1*olarak kaydedin:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve *Vpnprofile. xml* olarak *Usercert. ps1*ile aynı klasöre kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin:
+1. Aşağıdaki metni kopyalayın ve *usercert.ps1*aynı klasöre *VPNProfile.xml* olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,7 +121,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ```
 1. PowerShell'i yönetici olarak çalıştırın.
 
-1. PowerShell 'de, *Usercert. ps1* ve *vpnprofile. xml* ' nin bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
+1. PowerShell 'de *usercert.ps1* ve *VPNProfile.xml* bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest

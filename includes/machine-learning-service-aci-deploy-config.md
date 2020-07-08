@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 4f13c171c5fafb13875f5f87d4eb3d6013f0ff30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79485929"
 ---
 `deploymentconfig.json`Belgedeki girişler [Aciwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
-| JSON varlığı | Yöntem parametresi | Description |
+| JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
 | `computeType` | NA | Bilgi işlem hedefi. ACI için değer olmalıdır `ACI` . |
 | `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |

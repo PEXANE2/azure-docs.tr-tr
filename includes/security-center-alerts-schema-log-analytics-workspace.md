@@ -9,15 +9,15 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79538837"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
-|Alan|Description|
+|Alan|Açıklama|
 |----|----|
 |**AlertName**|Uyarı görünen adı|
 |**AlertType**|benzersiz uyarı tanımlayıcısı|

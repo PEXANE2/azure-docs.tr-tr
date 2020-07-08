@@ -8,10 +8,10 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117138"
 ---
 [Dayanıklı işlevler](../articles/azure-functions/durable-functions-overview.md)için yapılandırma ayarları.
@@ -92,7 +92,7 @@ ms.locfileid: "80117138"
 
 Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulaması için varsayılan görev hub 'ı adı **Durablefunctionshub**olur. Daha fazla bilgi için bkz. [görev hub 'ları](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Diğer [görev hub 'ı](../articles/azure-functions/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar dahi, birden çok dayanıklı işlevler uygulamayı birbirinden yalıtmak için kullanılabilir.|
 |controlQueueBatchSize|32|Denetim sırasından tek seferde çekilecek ileti sayısı.|

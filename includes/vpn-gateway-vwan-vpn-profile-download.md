@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 05/13/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650668"
 ---
 ## <a name="1-download-the-file"></a>1. dosyayı indirin
@@ -35,7 +35,7 @@ Zip dosyasını ayıklayın. Dosya aşağıdaki klasörleri içerir:
 
 ## <a name="3-retrieve-information"></a>3. bilgileri alma
 
-**AzureVPN** klasöründe, ***azurevpnconfig. xml*** dosyasına gidin ve Not defteri ile açın. Aşağıdaki Etiketler arasındaki metni bir yere unutmayın.
+**AzureVPN** klasöründe ***azurevpnconfig.xml*** dosyasına gidin ve Not defteri ile açın. Aşağıdaki Etiketler arasındaki metni bir yere unutmayın.
 
 ```
 <audience>          </audience>
@@ -57,6 +57,6 @@ Bir bağlantı eklediğinizde, profil ayrıntıları sayfası için önceki adı
 
 ## <a name="folder-contents"></a>Klasör içeriği
 
-* **Genel klasör** , ortak sunucu sertifikasını ve vpnsettings. xml dosyasını içerir. VpnSettings. xml dosyası, genel bir istemciyi yapılandırmak için gereken bilgileri içerir.
+* **Genel klasör** , ortak sunucu sertifikasını ve VpnSettings.xml dosyasını içerir. VpnSettings.xml dosyası bir genel istemciyi yapılandırmak için gereken bilgileri içerir.
 
 * İndirilen ZIP dosyası, **WindowsAmd64** ve **WindowsX86** klasörlerini de içerebilir. Bu klasörler, Windows istemcileri için SSTP ve Ikev2 için yükleyiciyi içerir. İstemci üzerinde yönetici haklarına sahip olmanız gerekir.
