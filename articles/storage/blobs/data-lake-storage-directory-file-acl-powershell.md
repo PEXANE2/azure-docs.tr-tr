@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84804928"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961209"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -261,7 +261,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 ## <a name="manage-access-permissions"></a>Erişim izinlerini Yönet
 
-Dosya sistemleri, dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz. Bu izinler, erişim denetim listeleri (ACL 'Ler) içinde yakalanır.
+Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz. Bu izinler, erişim denetim listeleri (ACL 'Ler) içinde yakalanır.
 
 > [!NOTE]
 > Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
@@ -270,7 +270,7 @@ Dosya sistemleri, dizinler ve dosyalar için erişim izinlerini alabilir, ayarla
 
 Cmdlet 'ini kullanarak bir dizin veya dosyanın ACL 'sini alın `Get-AzDataLakeGen2Item` .
 
-Bu örnek, bir **Dosya SISTEMININ** ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
+Bu örnek, bir **dosya sisteminin** kök dizininin ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vard�
 
 `set-AzDataLakeGen2ItemAclObject`Sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için BIR ACL oluşturmak üzere cmdlet 'ini kullanın. Ardından, ACL 'yi `Update-AzDataLakeGen2Item` yürütmek için cmdlet 'ini kullanın.
 
-Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir **Dosya SISTEMINDEKI** ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
+Bu örnek, bir **dosya sisteminin** kök dizinindeki ACL 'yi, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için ayarlar ve ardından ACL 'yi konsola yazdırır.
 
 ```powershell
 $filesystemName = "my-file-system"

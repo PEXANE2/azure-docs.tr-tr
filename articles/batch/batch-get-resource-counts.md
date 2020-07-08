@@ -4,22 +4,22 @@ description: Toplu Iş çözümlerini yönetmeye ve izlemeye yardımcı olmak i�
 ms.date: 06/18/2020
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: d702cb4ec34925e8b9ce6f0c2e47af81db149a3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 90f741b9ec5e17da4fd0cc95ef921e116b0c27dc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299458"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960597"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Görevleri ve düğümleri duruma göre sayarak Batch çözümlerini izleme
 
 Büyük ölçekli Azure Batch çözümlerini izlemek ve yönetmek için çeşitli durumlarda kaynak sayılarını belirlemeniz gerekebilir. Azure Batch, Batch görevleri ve işlem düğümleri için sayıları almak üzere etkili işlemler sağlar. Bu işlemleri, büyük görev veya düğüm koleksiyonları hakkında ayrıntılı bilgi döndüren zaman alıcı liste sorguları yerine kullanabilirsiniz.
 
-- [Get görev sayıları](https://docs.microsoft.com/rest/api/batchservice/job/gettaskcounts) bir işte etkin, çalışan ve tamamlanmış görevlerin toplam sayısını ve başarılı veya başarısız olan görevleri alır. 
+- [Get görev sayıları](/rest/api/batchservice/job/gettaskcounts) bir işte etkin, çalışan ve tamamlanmış görevlerin toplam sayısını ve başarılı veya başarısız olan görevleri alır. 
 
   Her durumda görevleri sayarak, bir kullanıcıya iş ilerlemesini daha kolay bir şekilde görüntüleyebilir veya işi etkileyebilecek beklenmedik gecikmeleri veya sorunları tespit edebilirsiniz. Toplu Iş Hizmetleri API sürümü 2017 -06-01.5.1 ve ilgili SDK 'lar ve araçlar olarak görev sayısını Al kullanılabilir.
 
-- [Liste havuzu düğüm sayıları](https://docs.microsoft.com/rest/api/batchservice/account/listpoolnodecounts) , çeşitli durumlarda bulunan her havuzda adanmış ve düşük öncelikli işlem düğümleri sayısını alır: oluşturma, boşta, çevrimdışı, ön işleme, yeniden başlatma, yeniden görüntüleme, başlangıç ve diğer durumlar.
+- [Liste havuzu düğüm sayıları](/rest/api/batchservice/account/listpoolnodecounts) , çeşitli durumlarda bulunan her havuzda adanmış ve düşük öncelikli işlem düğümleri sayısını alır: oluşturma, boşta, çevrimdışı, ön işleme, yeniden başlatma, yeniden görüntüleme, başlangıç ve diğer durumlar.
 
   Her durumda düğümleri sayarak, işlerinizi çalıştırmak için yeterli işlem kaynağına sahip olduğunuz ve havuzlarınızla ilgili olası sorunları tespit edebilirsiniz. Liste havuzu düğüm sayıları Batch hizmeti API sürümü 2018 -03-01.6.1 ve ilgili SDK 'lar ve araçlar olarak kullanılabilir.
 
@@ -30,9 +30,9 @@ Zaman, bu işlemlerin döndürdüğü sayıların güncel olamayacağını unutm
 Görev sayılarını al işlemi görevleri aşağıdaki durumlara göre sayar:
 
 - **Etkin** -sıraya alınmış ve çalıştırılabilen, ancak şu anda bir işlem düğümüne atanmamış bir görevdir. Bir görev, `active` henüz tamamlanmamış [bir üst göreve bağımlıysa](batch-task-dependencies.md) de bir görevdir. 
-- **Çalışıyor** -bir işlem düğümüne atanan ancak henüz tamamlanmamış bir görev. Bir görev, `running` `preparing` `running` [bir görev hakkında bilgi al](https://docs.microsoft.com/rest/api/batchservice/task/get) işlemiyle gösterildiği gibi, durumu veya olduğu zaman sayılır.
+- **Çalışıyor** -bir işlem düğümüne atanan ancak henüz tamamlanmamış bir görev. Bir görev, `running` `preparing` `running` [bir görev hakkında bilgi al](/rest/api/batchservice/task/get) işlemiyle gösterildiği gibi, durumu veya olduğu zaman sayılır.
 - **Tamamlandı** -başarıyla bittiği veya başarısız olduğu ve ayrıca yeniden deneme sınırını tükettiğinden, artık çalıştırılmasına uygun olmayan bir görev. 
-- **Başarılı** -görev yürütme sonucu olan bir görev `success` . Batch `TaskExecutionResult` , [ExecutionInfo](https://docs.microsoft.com/rest/api/batchservice/task/get) özelliğinin özelliğini denetleyerek bir görevin başarılı veya başarısız olup olmadığını belirler.
+- **Başarılı** -görev yürütme sonucu olan bir görev `success` . Batch `TaskExecutionResult` , [ExecutionInfo](/rest/api/batchservice/task/get) özelliğinin özelliğini denetleyerek bir görevin başarılı veya başarısız olup olmadığını belirler.
 - **Başarısız oldu** Görev yürütme sonucu olan bir görev `failure` .
 
 Aşağıdaki .NET kod örneği, görev sayılarının duruma göre nasıl alınacağını gösterir:
@@ -65,7 +65,7 @@ Liste havuzu düğüm sayısı işlemi, her havuzda aşağıdaki durumlara göre
 - **Yeniden görüntüleme** -işletim sisteminin yeniden yüklendiği düğüm.
 - **Çalışıyor** -bir veya daha fazla görev (başlangıç görevi dışında) çalıştıran bir düğüm.
 - **Başlangıç** -Batch hizmetinin başladığı bir düğüm. 
-- **Starttaskfailed** - [Başlangıç görevinin](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) başarısız olduğu ve tüm yeniden denemeler tükendi ve `waitForSuccess` Başlangıç görevinde ayarlanan bir düğüm. Düğüm, görevleri çalıştırmak için kullanılamaz.
+- **Starttaskfailed** - [Başlangıç görevinin](/rest/api/batchservice/pool/add#starttask) başarısız olduğu ve tüm yeniden denemeler tükendi ve `waitForSuccess` Başlangıç görevinde ayarlanan bir düğüm. Düğüm, görevleri çalıştırmak için kullanılamaz.
 - **Bilinmiyor** -Batch hizmetiyle iletişim kurmayan ve durumu bilinmeyen bir düğüm.
 - **Kullanılamaz** -hatalar nedeniyle görev yürütmesi için kullanılamayan düğüm.
 - **Waitingforstarttask** -başlangıç görevinin çalışmaya başladığı, ancak `waitForSuccess` ayarlandığı ve başlangıç görevinin tamamlanmadığında oluşan bir düğümdür.

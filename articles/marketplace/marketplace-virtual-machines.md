@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858301"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961549"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
 
@@ -54,7 +54,7 @@ Müşterinizle ilişkili aboneliğe bir Sanal Gereç dağıtırken *sanal makine
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- | 
 | Faturalandırma ve ölçüm | SANAL makinenizin KLG veya Kullandıkça Öde aylık faturalandırmasını desteklemesi gerekir. |  
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. VHD oluşturma hakkında daha fazla bilgi için bkz. <ul> <li>[Azure 'da desteklenen Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 'ler için).</li> <li>[Azure ile uyumlu bır VHD oluşturun](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 'ler için).</li> </ul> |  
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. VHD oluşturma hakkında daha fazla bilgi için bkz. <ul> <li>[Azure 'da desteklenen Linux dağıtımları](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için).</li> <li>[Azure ile uyumlu bır VHD oluşturun](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 'ler için).</li> </ul> |  
 
 >[!Note]
 >Bulut çözümü sağlayıcısı (CSP) iş ortağı kanalı kabul etme artık kullanılabilir. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](./cloud-solution-providers.md).

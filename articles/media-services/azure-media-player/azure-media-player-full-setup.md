@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727248"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961788"
 ---
 # <a name="azure-media-player-full-setup"></a>Eksiksiz Azure Media Player kurulumu #
 
@@ -20,20 +20,23 @@ Azure Media Player kolayca ayarlanabilir. Yalnızca Azure Media Services hesabı
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>1. Adım: JavaScript ve CSS dosyalarını sayfanızın baş bir kısmında ekleme ##
 
-Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsiniz. Genellikle JavaScript 'in yerine son gövde etiketinden `<body>` önce JavaScript yerleştirilmesi önerilir `<head>`, ancak Azure Media Player, video etiketini geçerli bir öğe olarak bilmesi için eski IE sürümlerinin başlarında olması gereken bir ' HTML5 Shiv ' içeriyor.
+Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsiniz. Genellikle JavaScript 'in yerine son gövde etiketinden önce JavaScript `<body>` `<head>` yerleştirilmesi önerilir, ancak Azure Media Player, video etiketini geçerli bir öğe olarak bilmesi IÇIN eski IE sürümlerinin başlarında olması gereken bır ' HTML5 Shiv ' içeriyor.
 
 > [!NOTE]
-> Zaten [Modernizr](http://modernizr.com/) gibi HTML5 Shiv kullanıyorsanız, Azure Media Player JavaScript 'i dilediğiniz yere ekleyebilirsiniz. Ancak Modernizr sürümünüzün video için Shiv içerdiğinden emin olun.
+> Zaten [Modernizr](https://modernizr.com/) gibi HTML5 Shiv kullanıyorsanız, Azure Media Player JavaScript 'i dilediğiniz yere ekleyebilirsiniz. Ancak Modernizr sürümünüzün video için Shiv içerdiğinden emin olun.
 
 ### <a name="cdn-version"></a>CDN sürümü ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
-> Bu, isteğe bağlı olarak `latest` değişikliğe tabi olduğu için üretimde **sürümü kullanmamalısınız.** Azure Media Player `latest` bir sürümü ile değiştirin. Örneğin, ile `2.1.1`değiştirin `latest` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
+> Bu, **NOT** `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümü ile değiştirin. Örneğin, ile değiştirin `latest` `2.1.1` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
 
 > [!NOTE]
-> `1.2.0` Yayın sonrasında, artık bu dosyanın konumu geri dönüş Techs 'ye eklemesi gerekmez (Bu, konumu azudüzeltmelerinin Aplayer. min. js dosyasının göreli yolundan otomatik olarak alır). Yukarıdaki komut dosyalarından `<head>` sonra aşağıdaki betiği ekleyerek geri dönüş Techs 'nin konumunu değiştirebilirsiniz.
+> Yayın sonrasında `1.2.0` , artık bu dosyanın konumu geri dönüş Techs 'ye eklemesi gerekmez (azuremediaplayer.min.js dosyasının göreli yolundan konumu otomatik olarak alır). Yukarıdaki komut dosyalarından sonra aşağıdaki betiği ekleyerek geri dönüş Techs 'nin konumunu değiştirebilirsiniz `<head>` .
 
 > [!NOTE]
 > Flash ve Silverlight eklentileri doğası nedeniyle, SWF ve XAP dosyaları herhangi bir hassas bilgi veya veri olmadan bir etki alanında barındırılmalıdır; bu, Azure CDN barındırılan sürümle sizin için otomatik olarak ele alınır.
@@ -49,15 +52,15 @@ Azure Media Player, betiklerine CDN barındırılan sürümünden erişebilirsin
 
 Azure Media Player, bir video eklemek için HTML5 video etiketini kullanabilirsiniz. Azure Media Player, etiketi okur ve yalnızca HTML5 videosunu destekleyen tüm tarayıcılarda çalışır. Temel biçimlendirmenin ötesinde Azure Media Player birkaç ek parçaya ihtiyaç duyuyor.
 
-1. ' `<data-setup>` Deki özniteliği, `<video>` sayfa hazırlandığınızda videoyu otomatik olarak ayarlamaya ve öznitelikten herhangi birini (JSON biçiminde) okumasına Azure Media Player söyler.
-1. `id` Özniteliği: aynı sayfadaki her video için kullanılmalıdır ve benzersiz olmalıdır.
-1. `class` Özniteliği iki sınıf içerir:
+1. `<data-setup>`' Deki özniteliği, `<video>` sayfa hazırlandığınızda videoyu otomatik olarak ayarlamaya ve öznitelikten herhangi bırını (JSON biçiminde) okumasına Azure Media Player söyler.
+1. `id`Özniteliği: aynı sayfadaki her video için kullanılmalıdır ve benzersiz olmalıdır.
+1. `class`Özniteliği iki sınıf içerir:
     - `azuremediaplayer`Azure Media Player UI işlevselliği için gerekli olan stilleri uygular
     - `amp-default-skin`HTML5 denetimlerine varsayılan kaplama uygular
 1. , `<source>` Gereken iki özniteliği içerir
     - `src`öznitelik, Azure Media Services eklenen bir **. ISM/manifest* dosyası içerebilir, Azure Media Player OTOMATIK olarak Dash, sorunsuz ve HLS Için URL 'leri yürütücüye ekler
     - `type`öznitelik, akışın gerekli MIME türüdür. *". ISM/manifest"* Ile ilişkili MIME türü *"application/vnd. MS-SSTR + xml"*
-1. ' Deki *isteğe bağlı* `<data-setup>` özniteliği `<source>` , Azure Media Services akışı için, şifreleme türü (AES veya PlayReady, Widevine veya Fairplay) ve Token dahil, ancak bunlarla sınırlı olmamak üzere herhangi bir benzersiz teslim ilkesi varsa Azure Media Player söyler.
+1. ' Deki *isteğe bağlı* `<data-setup>` özniteliği, `<source>` Azure Media Services akışı için, şifreleme türü (AES veya PlayReady, Widevine veya Fairplay) ve Token dahil, ancak bunlarla sınırlı olmamak üzere herhangi bir benzersiz teslim ilkesi varsa Azure Media Player söyler.
 
 HTML5 video için yaptığınız gibi öznitelikleri, ayarları, kaynakları ve parçaları tam olarak dahil edin/dışlayın.
 
@@ -70,7 +73,7 @@ HTML5 video için yaptığınız gibi öznitelikleri, ayarları, kaynakları ve 
     </video>
 ```
 
-Varsayılan olarak, büyük oynatma düğmesi sol üst köşede bulunur, böylece poster 'in ilginç kısımlarını kapsamaz. Büyük oynatma düğmesini ortalamak isterseniz, `amp-big-play-centered` `class` `<video>` öğeye ek ekleyebilirsiniz.
+Varsayılan olarak, büyük oynatma düğmesi sol üst köşede bulunur, böylece poster 'in ilginç kısımlarını kapsamaz. Büyük oynatma düğmesini ortalamak isterseniz, öğeye ek ekleyebilirsiniz `amp-big-play-centered` `class` `<video>` .
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>Dinamik olarak yüklenen HTML için alternatif kurulum ###
 
@@ -99,7 +102,7 @@ Web sayfanız veya uygulamanız, video etiketini dinamik olarak (AJAX, appendChi
     }]);
 ```
 
-`amp` İşlevdeki ilk bağımsız değişken, video ETIKETINIZIN kimliğidir. Kendi kendinizinkini değiştirin.
+İşlevdeki ilk bağımsız değişken, `amp` video etiketinizin kimliğidir. Kendi kendinizinkini değiştirin.
 
 İkinci bağımsız değişken bir seçenek nesnesidir. Veri kurulumu özniteliğinde yaptığınız gibi ek seçenekler ayarlamanıza olanak sağlar.
 

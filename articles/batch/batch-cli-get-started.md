@@ -4,22 +4,22 @@ description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780223"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960869"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
 Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Azure CLI, Azure kaynaklarını komut satırından yönetmek üzere iyileştirilmiştir. Azure CLI kullanarak Azure Batch hesaplarınızın yanı sıra havuzlar, işler ve görevler gibi kaynakları yönetebilirsiniz. Azure Batch CLI ile Batch API'leri, Azure portalı ve Batch PowerShell cmdlet’leri ile gerçekleştirdiğiniz görevlerin çoğu için betik oluşturabilirsiniz.
 
-Bu makalede Batch ile [Azure CLI sürüm 2.0](https://docs.microsoft.com/cli/azure) kullanımına genel bakışa yer verilmiştir. Azure ile CLI kullanımı hakkında bilgi için bkz. [Azure CLI kullanmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Bu makalede Batch ile [Azure CLI sürüm 2.0](/cli/azure) kullanımına genel bakışa yer verilmiştir. Azure ile CLI kullanımı hakkında bilgi için bkz. [Azure CLI kullanmaya başlama](/cli/azure/get-started-with-azure-cli).
 
 ## <a name="set-up-the-azure-cli"></a>Azure CLI'yı kurma
 
-En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de çalıştırabilirsiniz. Azure CLI'yı yerel ortamınıza yüklemek için [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) sayfasındaki adımları izleyin.
+En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de çalıştırabilirsiniz. Azure CLI'yı yerel ortamınıza yüklemek için [Azure CLI'yı yükleme](/cli/azure/install-azure-cli) sayfasındaki adımları izleyin.
 
 > [!TIP]
 > Hizmet güncelleştirmeleri ve geliştirmelerinden yararlanmak için Azure CLI yüklemenizi sık sık güncelleştirmeniz önerilir.
@@ -51,10 +51,10 @@ Batch ile Azure CLI kullanmak için oturum açmanız ve kimlik doğrulamasından
 
 Azure'da oturum açmanın birkaç farklı yolu vardır ve hepsi [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli) sayfasında ayrıntılı olarak açıklanmıştır:
 
-1. [Etkileşimli olarak oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Azure CLI komutlarını komut satırından çalıştırmak için etkileşimli olarak oturum açın.
-2. [Hizmet sorumlusu Ile oturum açın](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Azure CLI komutlarını bir betikten veya uygulamadan çalıştırdığınızda hizmet sorumlusuyla oturum açın.
+1. [Etkileşimli olarak oturum açma](/cli/azure/authenticate-azure-cli). Azure CLI komutlarını komut satırından çalıştırmak için etkileşimli olarak oturum açın.
+2. [Hizmet sorumlusu Ile oturum açın](/cli/azure/authenticate-azure-cli). Azure CLI komutlarını bir betikten veya uygulamadan çalıştırdığınızda hizmet sorumlusuyla oturum açın.
 
-Bu makalede Azure'da etkileşimli oturum açmayı göstereceğiz. Komut satırına [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) yazın:
+Bu makalede Azure'da etkileşimli oturum açmayı göstereceğiz. Komut satırına [az login](/cli/azure/reference-index#az-login) yazın:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ az login
 
 ### <a name="log-in-to-your-batch-account"></a>Batch hesabınızda oturum açma
 
-Havuzlar, işler ve görevler gibi Batch kaynaklarını yönetmek üzere Azure CLI kullanmak için Batch hesabınızda oturum açıp kimlik doğrulamasından geçmeniz gerekir. Batch hizmetinde oturum açmak için [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) komutunu kullanın. 
+Havuzlar, işler ve görevler gibi Batch kaynaklarını yönetmek üzere Azure CLI kullanmak için Batch hesabınızda oturum açıp kimlik doğrulamasından geçmeniz gerekir. Batch hizmetinde oturum açmak için [az batch account login](/cli/azure/batch/account#az-batch-account-login) komutunu kullanın. 
 
 Batch hesabınızla kimlik doğrulamasından geçmek için kullanabileceğiniz iki seçenek vardır:
 
@@ -81,7 +81,7 @@ Batch hesabınızla kimlik doğrulamasından geçmek için kullanabileceğiniz i
 
     Azure AD'nin avantajlarından biri rol tabanlı erişim denetimine (RBAC) sahip olmasıdır. RBAC sayesinde kullanıcı erişimi hesap anahtarına sahip olma durumuna göre değil kendisine atanan role göre belirlenir. Hesap anahtarlarını yönetmek yerine RBAC rollerini yönetebilir ve erişimle kimlik doğrulamasını Azure AD'ye bırakabilirsiniz.  
 
-     Azure AD ile Batch hesabınızda oturum açmak için [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) komutunu çağırın: 
+     Azure AD ile Batch hesabınızda oturum açmak için [az batch account login](/cli/azure/batch/account#az-batch-account-login) komutunu çağırın: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -162,10 +162,10 @@ Azure CLI sorunlarını giderirken aşağıdaki ipuçları yardımcı olabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+* Bkz. [Azure CLI belgeleri](/cli/azure).
 * [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 * [CLI şablonları ve dosya aktarımı Azure Batch kullanım](batch-cli-templates.md)kodu yazmadan havuzlar, işler ve görevler oluşturmak için Batch şablonlarını kullanma hakkında bilgi edinin.
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
-[rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_api]: /rest/api/batchservice/
+[rest_add_pool]: /rest/api/batchservice/pool/add

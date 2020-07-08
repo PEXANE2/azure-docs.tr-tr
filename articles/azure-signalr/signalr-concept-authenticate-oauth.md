@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194610"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961804"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR hizmeti kimlik doğrulaması
 
@@ -54,7 +54,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 1. Web tarayıcısını açın, `https://github.com` adresine gidin ve hesabınızda oturum açın.
 
-2. Hesabınız için **Ayarlar** > **Geliştirici ayarları** ' na gidin ve **Yeni bir uygulama kaydet**' e veya *OAuth uygulamaları*altında **Yeni OAuth uygulaması** ' na tıklayın.
+2. Hesabınız için **Ayarlar**  >  **Geliştirici ayarları** ' na gidin ve **Yeni bir uygulama kaydet**' e veya *OAuth uygulamaları*altında **Yeni OAuth uygulaması** ' na tıklayın.
 
 3. Yeni OAuth Uygulaması için aşağıdaki ayarları kullanın ve ardından **Uygulamayı kaydet**'e tıklayın:
 
@@ -67,8 +67,10 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 4. Yeni OAuth uygulama kaydı tamamlandıktan sonra, aşağıdaki komutları kullanarak *İstemci Kimliği* ve *İstemci Parolası*'nı Parola Yöneticisi'ne ekleyin. *Your_GitHub_Client_Id* ve *Your_GitHub_Client_Secret* değerlerini OAuth uygulamanızın değerleriyle değiştirin.
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>OAuth akışını uygulama
 
@@ -76,9 +78,11 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 1. En son *Microsoft.AspNetCore.Authentication.Cookies* ve *AspNet.Security.OAuth.GitHub* paketlerine başvuru ekleyin ve tüm paketleri geri yükleyin.
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. *Startup.cs*'yi açın ve aşağıdaki ad alanları için `using` deyimlerini ekleyin:
 
@@ -345,19 +349,25 @@ Bu bölümde, hub sınıfına `Authorize` özniteliğini ekleyerek ve hub yönte
 
 2. .NET Core CLI kullanarak uygulamayı derleyin, komut kabuğunda aşağıdaki komutu yürütün:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Derleme başarıyla tamamlandıktan sonra web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu yürütün:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Varsayılan değer uygulamanın yerel olarak 5000 numaralı bağlantı noktasında barındırılmasıdır:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. Bir tarayıcı penceresi başlatın ve `http://localhost:5000` adresine gidin. GitHub ile oturum açmak için en üstteki **burada** bağlantısına tıklayın.
 
@@ -539,7 +549,7 @@ Kodunuzu dağıtmak için, Git kabuğunda aşağıdaki komutları yürütün.
 
 Yapmanız gereken son işlem GitHub OAuth uygulamasının **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini yeni barındırılan uygulamaya işaret edecek şekilde güncelleştirmektir.
 
-1. Bir [https://github.com](https://github.com) tarayıcıda açın ve hesabınızın **Ayarlar** > **Geliştirici ayarları** > **OAuth Apps**' e gidin.
+1. [https://github.com](https://github.com)Bir tarayıcıda açın ve hesabınızın **Ayarlar**  >  **Geliştirici ayarları**  >  **OAuth Apps**' e gidin.
 
 2. Kimlik doğrulama uygulamanıza tıklayın ve **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini aşağıda gösterildiği gibi güncelleştirin:
 

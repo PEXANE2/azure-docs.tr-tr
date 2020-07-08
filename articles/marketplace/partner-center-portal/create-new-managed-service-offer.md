@@ -10,6 +10,7 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85957588"
@@ -102,7 +103,7 @@ Sunabileceğiniz (en fazla 100 karakter) kısa bir açıklama sağlayın ve bu i
 
 Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Bu uzun Özet, Market arama sonuçlarında da kullanılabilir.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

@@ -4,12 +4,12 @@ description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlam
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609021"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960852"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -215,7 +215,7 @@ Bu önceden tanımlanmış **işlevler** , bir otomatik ölçeklendirme formül�
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya geçirilse de dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -235,7 +235,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod () |Bir geçmiş örnek veri kümesinde alınan örneklerin dönemini döndürür. |
 | Count () |Ölçüm geçmişindeki toplam örnek sayısını döndürür. |
 | Geçmiş BeginTime () |Ölçüm için kullanılabilir en eski veri örneğinin zaman damgasını döndürür. |
-| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örnek:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>`GetSample`Döndürülen örnek yüzdesi belirtilen değerden küçükse yöntem başarısız olduğundan `samplePercent` , `GetSamplePercent` ilk olarak denetlemek için yöntemini kullanabilirsiniz. Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
+| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örneğin:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>`GetSample`Döndürülen örnek yüzdesi belirtilen değerden küçükse yöntem başarısız olduğundan `samplePercent` , `GetSamplePercent` ilk olarak denetlemek için yöntemini kullanabilirsiniz. Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Örnekler, örnek yüzdesi ve *Getsample ()* yöntemi
 Otomatik ölçeklendirme formülünün temel işlemi, görev ve kaynak ölçümü verilerini almak ve ardından bu verilere göre havuz boyutunu ayarlamasıdır. Bu nedenle, otomatik ölçeklendirme formüllerinin ölçüm verileri (örnekler) ile nasıl etkileşime gireceğini net bir şekilde anlamak önemlidir.
@@ -260,7 +260,7 @@ Bunu yapmak için, `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -375,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Batch SDK 'Ları ile otomatik ölçeklendirme özellikli havuz oluşturma
 
-Havuz otomatik ölçeklendirme, Batch [SDK 'ları](batch-apis-tools.md#azure-accounts-for-batch-development), Batch [REST API](https://docs.microsoft.com/rest/api/batchservice/) [Batch POWERSHELL cmdlet 'leri](batch-powershell-cmdlets-get-started.md)ve [Batch CLI](batch-cli-get-started.md)kullanılarak yapılandırılabilir. Bu bölümde hem .NET hem de Python örnekleri görebilirsiniz.
+Havuz otomatik ölçeklendirme, Batch [SDK 'ları](batch-apis-tools.md#azure-accounts-for-batch-development), Batch [REST API](/rest/api/batchservice/) [Batch POWERSHELL cmdlet 'leri](batch-powershell-cmdlets-get-started.md)ve [Batch CLI](batch-cli-get-started.md)kullanılarak yapılandırılabilir. Bu bölümde hem .NET hem de Python örnekleri görebilirsiniz.
 
 ### <a name="net"></a>.NET
 
 .NET ' te otomatik ölçeklendirme özelliği etkinleştirilmiş bir havuz oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Batchclient. PoolOperations. createpool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool)ile havuzu oluşturun.
-1. [Cloudpool. oto Scaleenabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini olarak ayarlayın `true` .
-1. [Cloudpool. otomatik scaleformula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) özelliğini otomatik ölçeklendirme formülünüz ile ayarlayın.
-1. Seçim [Cloudpool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) özelliğini ayarlayın (varsayılan değer 15 dakikadır).
-1. Havuzu [Cloudpool. COMMIT](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) veya [commınsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)ile işleyin.
+1. [Batchclient. PoolOperations. createpool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)ile havuzu oluşturun.
+1. [Cloudpool. oto Scaleenabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini olarak ayarlayın `true` .
+1. [Cloudpool. otomatik scaleformula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) özelliğini otomatik ölçeklendirme formülünüz ile ayarlayın.
+1. Seçim [Cloudpool. AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) özelliğini ayarlayın (varsayılan değer 15 dakikadır).
+1. Havuzu [Cloudpool. COMMIT](/dotnet/api/microsoft.azure.batch.cloudpool.commit) veya [commınsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)ile işleyin.
 
 Aşağıdaki kod parçacığı, .NET 'te otomatik ölçeklendirme özellikli bir havuz oluşturur. Havuzun otomatik ölçeklendirme formülü, ayrılmış düğümlerin hedef sayısını Mondays üzerinde 5 ve haftanın her gününde 1 olarak ayarlar. [Otomatik ölçeklendirme aralığı](#automatic-scaling-interval) 30 dakikaya ayarlanır. Bu makalede ve bu makaledeki diğer C# kod parçacıkları, `myBatchClient` [batchclient][net_batchclient] sınıfının düzgün başlatılmış bir örneğidir.
 
@@ -465,7 +465,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
 
 * [Batchclient. PoolOperations. Enableoto Scaleasync][net_enableautoscaleasync] (Batch .net)
 * [Bir havuzda otomatik ölçeklendirmeyi etkinleştir][rest_enableautoscale] (REST API)
@@ -522,11 +522,11 @@ Bir formülü bir havuza uygulamadan önce değerlendirebilirsiniz. Bu şekilde,
 
 Bir otomatik ölçeklendirme formülünü değerlendirmek için, önce geçerli bir formülle havuzda otomatik ölçeklendirmeyi etkinleştirmeniz gerekir. Henüz otomatik ölçeklendirmeyi etkin olmayan bir havuzda bir formülü test etmek için `$TargetDedicatedNodes = 0` Otomatik ölçeklendirmeyi ilk etkinleştirdiğinizde tek satırlık bir formül kullanın. Ardından, test etmek istediğiniz formülü değerlendirmek için aşağıdakilerden birini kullanın:
 
-* [Batchclient. PoolOperations. EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) veya [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [Batchclient. PoolOperations. EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) veya [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     Bu Batch .NET yöntemleri, var olan bir havuzun KIMLIĞINI ve değerlendirmek için otomatik ölçeklendirme formülünü içeren bir dizeyi gerektirir.
 
-* [Otomatik ölçeklendirme formülünü değerlendir](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [Otomatik ölçeklendirme formülünü değerlendir](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     Bu REST API isteğinde, URI 'de havuz KIMLIĞINI ve istek gövdesinin *Otomatik Scaleformula* öğesindeki otomatik ölçeklendirme formülünü belirtin. İşlemin yanıtı, formülle ilişkili olabilecek hata bilgilerini içerir.
 
@@ -612,13 +612,13 @@ AutoScaleRun.Results:
 
 Formülünüzün beklendiği gibi çalıştığından emin olmak için, toplu Işin havuzunuzdaki gerçekleştirdiği otomatik ölçeklendirme çalıştırmalarının sonuçlarını düzenli olarak kontrol etmenizi öneririz. Bunu yapmak için, havuzun başvurusunu alın (veya yenileyin) ve son otomatik ölçeklendirme çalıştırmasının özelliklerini inceleyin.
 
-Batch .NET 'te [cloudpool. otomatik Scalerun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) özelliğinin, havuzda gerçekleştirilen en son otomatik ölçeklendirme çalıştırması hakkında bilgi sağlayan birkaç özelliği vardır:
+Batch .NET 'te [cloudpool. otomatik Scalerun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) özelliğinin, havuzda gerçekleştirilen en son otomatik ölçeklendirme çalıştırması hakkında bilgi sağlayan birkaç özelliği vardır:
 
-* [Otomatik Scalerun. zaman damgası](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [Otomatik Scalerun. sonuçları](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [Otomatik Scalerun. hatası](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [Otomatik Scalerun. zaman damgası](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [Otomatik Scalerun. sonuçları](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [Otomatik Scalerun. hatası](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-REST API, [bir havuz hakkında bilgi alma](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) isteği, otomatik ölçeklendirme çalıştırma bilgilerini [Otomatik](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) olarak otomatik ölçeklendirme özelliğini içeren havuz hakkındaki bilgileri döndürür.
+REST API, [bir havuz hakkında bilgi alma](/rest/api/batchservice/get-information-about-a-pool) isteği, otomatik ölçeklendirme çalıştırma bilgilerini [Otomatik](/rest/api/batchservice/get-information-about-a-pool) olarak otomatik ölçeklendirme özelliğini içeren havuz hakkındaki bilgileri döndürür.
 
 Aşağıdaki C# kod parçacığı, havuz _mypool_üzerinde çalışan son otomatik ölçeklendirme hakkında bilgi yazdırmak için Batch .net kitaplığını kullanır:
 
@@ -735,15 +735,15 @@ string formula = string.Format(@"
 * [Eşzamanlı düğüm görevleriyle Azure Batch işlem kaynak kullanımını en üst düzeye çıkarmak](batch-parallel-node-tasks.md) , havuzunuzdaki işlem düğümlerinde birden çok görevi eşzamanlı olarak nasıl yürütebileceğinizi gösteren ayrıntılar içerir. Otomatik ölçeklendirmeye ek olarak, bu özellik bazı iş yükleri için iş süresini azaltmaya yardımcı olabilir, böylece paradan tasarruf sağlayabilirsiniz.
 * Başka bir verimlilik güçlendirici için Batch uygulamanızın Batch hizmetini en iyi şekilde sorguladığı için emin olun. Potansiyel olarak binlerce işlem düğümü veya görev durumunu sorguladığınızda, Tel kesen veri miktarını sınırlamayı öğrenmek için [Azure Batch hizmetini verimli bir şekilde sorgulama](batch-efficient-list-queries.md) bölümüne bakın.
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

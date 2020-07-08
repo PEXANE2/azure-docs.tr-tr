@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835453"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961821"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -40,13 +40,17 @@ Internet 'ten kümeye bağlanılırken kullanılacak tam etki alanı adı (FQDN)
 
 Dahili olarak, kümedeki her düğümün küme yapılandırması sırasında atanan bir adı vardır. Küme adlarını bulmak için, bkz. ambarı Web Kullanıcı arabirimindeki **konaklar** sayfası. Ayrıca, ambarı REST API konağın bir listesini döndürmek için aşağıdakileri de kullanabilirsiniz:
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```
 
 `CLUSTERNAME` değerini kümenizin adıyla değiştirin. İstendiğinde, yönetici hesabının parolasını girin. Bu komut, kümedeki ana bilgisayarların listesini içeren bir JSON belgesi döndürür. [JQ](https://stedolan.github.io/jq/) , `host_name` her ana bilgisayar için öğe değerini ayıklamak üzere kullanılır.
 
 Belirli bir hizmet için düğümün adını bulmanız gerekiyorsa, bu bileşen için ambarı sorgulayabilirsiniz. Örneğin,,,,,,,,,,,,,,,,,,,,,
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```
 
 Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](https://stedolan.github.io/jq/) yalnızca `host_name` konaklar için değer alır.
 
@@ -107,7 +111,9 @@ Daha fazla bilgi için bkz. [Blobları](https://docs.microsoft.com/rest/api/stor
 
 Azure Storage veya Data Lake Storage kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, `/example/data` klasördeki dosyaları Azure depolama 'da mi yoksa Data Lake Storage, mi depolandığını listeler:
 
-    hdfs dfs -ls /example/data
+```console
+hdfs dfs -ls /example/data
+```
 
 HDInsight 'ta veri depolama kaynakları (Azure Blob depolama ve Azure Data Lake Storage) işlem kaynaklarından ayrılır. Gerektiğinde hesaplamayı yapmak için HDInsight kümeleri oluşturabilir ve daha sonra iş bittiğinde kümeyi silebilirsiniz. Bu arada, veri dosyalarınızı, ihtiyacınız olduğu sürece Bulut depolamada güvenli bir şekilde tutmaya devam ediyor.
 

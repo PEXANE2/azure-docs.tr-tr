@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208150"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959152"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi ortak bir kimlik ayarlama
 
@@ -41,9 +41,9 @@ Azure AD DS, Azure üzerinde tam olarak yönetilen bir hizmet sağlayarak kimlik
     
    1. **Kullanıcılar ve gruplar**' da, **tüm kullanıcılar**' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
    
-           The **User** pane opens:
+        **Kullanıcı** bölmesi açılır:
       
-      !["Kullanıcı" bölmesi](./media/add-user.png)
+        !["Kullanıcı" bölmesi](./media/add-user.png)
     
    1. **Ad** ve **Kullanıcı adı** gibi kullanıcı ayrıntılarını girin. Kullanıcı adının etki alanı adı kısmı, ilk varsayılan etki alanı adı "[etki alanı adı]. onmicrosoft. com" veya "contoso.com" gibi doğrulanmış, Federasyon dışı bir [özel etki alanı adı](../../active-directory/add-custom-domain.md) olmalıdır.
     
@@ -69,8 +69,8 @@ Azure AD DS, Azure üzerinde tam olarak yönetilen bir hizmet sağlayarak kimlik
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-1. Örneğin, Azure dosya paylaşımınızı/Data/Workspace dizinine bağladığınızı varsayalım. Şimdi paylaşımdaki her bir kullanıcı için dizinler oluşturun:/Data/Workspace/User1,/Data/Workspace/User2 vb. Her kullanıcının `notebooks` çalışma alanında bir dizin oluşturun. 
-1. İçinde `notebooks` `$HOME/userx/notebooks/remote`için sembolik bağlantılar oluşturun.   
+1. Örneğin, Azure dosya paylaşımınızı/Data/Workspace dizinine bağladığınızı varsayalım. Şimdi paylaşımdaki her bir kullanıcı için dizinler oluşturun:/Data/Workspace/User1,/Data/Workspace/User2 vb. `notebooks`Her kullanıcının çalışma alanında bir dizin oluşturun. 
+1. İçinde için sembolik bağlantılar `notebooks` oluşturun `$HOME/userx/notebooks/remote` .   
 
 Artık Azure 'da barındırılan Active Directory örneğindeki kullanıcılara sahipsiniz. Kullanıcılar, Active Directory kimlik bilgilerini kullanarak Azure AD DS 'a katılmış herhangi bir DSVM 'de (SSH veya jupi) oturum açabilirler. Kullanıcı çalışma alanı bir Azure dosya paylaşımında olduğu için, kullanıcıların, jupi 'yi kullanırken herhangi bir DSVM 'deki not defterlerine ve diğer çalışmasına erişimi vardır.
 

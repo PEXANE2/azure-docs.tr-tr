@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461088"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957190"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid bağlamaları
 
@@ -32,13 +32,13 @@ Bu başvurudaki kod, sürüm 2. x ve üzeri Işlevlerde kullanılan .NET Core s�
 
 ## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
 | Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | [NuGet paketi]yükleniyor, sürüm 3. x | |
+| C#                                              | [NuGet paketi]yükleniyor, sürüm 2. x | |
 | C# betiği, Java, JavaScript, Python, PowerShell | [Uzantı paketi] kaydediliyor          | [Azure Araçları uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Visual Studio Code ile kullanılması önerilir. |
 | C# betiği (yalnızca çevrimiçi-Azure portal)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan mevcut bağlama uzantılarını güncelleştirmek için bkz. [uzantılarınızı güncelleştirme]. |
 

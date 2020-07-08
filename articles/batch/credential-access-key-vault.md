@@ -3,12 +3,12 @@ title: Batch ile Key Vault’a güvenli erişim
 description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama yoluyla nasıl erişebileceğini öğrenin.
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6ea248dd51ae6786b0e987dc31ca83b29277cd16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725729"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961515"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
@@ -37,7 +37,7 @@ Ardından, `makecert` ve adlı otomatik olarak imzalanan sertifika dosyaları ol
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch bir `.pfx` Dosya gerektiriyor. [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` `.pvk` Tarafından oluşturulan ve dosyalarını `makecert` tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın `.pfx` .
+Batch bir `.pfx` Dosya gerektiriyor. [pvk2pfx](/windows-hardware/drivers/devtest/pvk2pfx) `.cer` `.pvk` Tarafından oluşturulan ve dosyalarını `makecert` tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın `.pfx` .
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po

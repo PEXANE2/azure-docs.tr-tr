@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69016785"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960376"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma  
 
@@ -66,13 +66,13 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
 1. **DOSYA** menüsünde **Yeni**’ye ve sonra **Proje**’ye tıklayın.
 1. Yeni proje iletişim kutusunda, aşağıdaki değerleri yazın veya seçin:
 
-    | Adı | Değer |
+    | Name | Değer |
     | --- | --- |
     | Şablon grubu |Yüklü/şablonlar/Visual C#/Windows Mağazası |
     | Şablon |Boş uygulama (XAML) |
-    | Adı |SSPlayer |
+    | Name |SSPlayer |
     | Konum |C:\SSTutorials |
-    | Çözüm adı |SSPlayer |
+    | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
 
 1. **Tamam**'a tıklayın.
@@ -82,7 +82,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
 1. Çözüm Gezgini, **Ssplayer**öğesine sağ tıklayın ve ardından **Başvuru Ekle**' ye tıklayın.
 1. Aşağıdaki değerleri yazın veya seçin:
 
-    | Adı | Değer |
+    | Name | Değer |
     | --- | --- |
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |
@@ -94,7 +94,7 @@ Başvuruları ekledikten sonra, hedeflenen platformu (x64 veya x86) seçmeniz ge
 ### <a name="to-design-the-player-user-interface"></a>Oynatıcı Kullanıcı arabirimini tasarlamak için
 
 1. Çözüm Gezgini ' den, **MainPage. xaml** ' ye çift tıklayarak Tasarım görünümünde açın.
-2. ** &lt;Grid&gt; ** **ve &lt;/Grid&gt; ** etiketlerini xaml dosyasında bulun ve aşağıdaki kodu iki etiket arasına yapıştırın:
+2. ** &lt; Grid &gt; ** ve ** &lt; /Grid &gt; ** etiketlerini xaml dosyasında bulun ve aşağıdaki kodu iki etiket arasına yapıştırın:
 
    ```xml
          <Grid.RowDefinitions>
@@ -151,15 +151,24 @@ Bu XAML dosyasında, bazı olay işleyicileri denetimlerle ilişkilendirilir.  B
 
 1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. Dosyasının en üstüne aşağıdaki using ifadesini ekleyin:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. **MainPage** sınıfının başlangıcında aşağıdaki veri üyesini ekleyin:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. **MainPage** oluşturucusunun sonunda aşağıdaki iki satırı ekleyin:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. **MainPage** sınıfının sonunda, aşağıdaki kodu yapıştırın:
    ```csharp
          # region UI Button Click Events
@@ -253,7 +262,7 @@ Bu ders aşağıdaki yordamları içerir:
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. **MainPage** oluşturucusunun içinde, bundan sonra aşağıdaki kodu ekleyin **. Bileşenleri başlatın ();** önceki derste yazılan satır ve kayıt kodu satırları:
+4. **MainPage** oluşturucusunun içinde, **this.Ini();** satırı ve önceki derste yazılan kayıt kodu satırlarından sonra aşağıdaki kodu ekleyin:
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -552,7 +561,7 @@ Kesintisiz Akış, görüntüleyiciler tarafından seçilebilen birden çok dil 
 ### <a name="to-modify-the-xaml-file"></a>XAML dosyasını değiştirmek için
 
 1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
-2. Grid &lt;. RowDefinitions&gt;' ı bulun ve RowDefinitions gibi görünen satır tanımlarını değiştirin:
+2. &lt;Grid. RowDefinitions &gt; ' ı bulun ve RowDefinitions gibi görünen satır tanımlarını değiştirin:
 
    ```xml
          <Grid.RowDefinitions>            
@@ -563,7 +572,7 @@ Kesintisiz Akış, görüntüleyiciler tarafından seçilebilen birden çok dil 
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
    ```
-3. &lt;&gt;Kılavuz&lt;/Grid&gt; etiketleri içinde, bir ListBox denetimini tanımlamak için aşağıdaki kodu ekleyin, böylece kullanıcılar kullanılabilir akışlar listesini görebilir ve akışlar ' ı seçin:
+3. &lt;Kılavuz &gt; &lt; /Grid etiketleri içinde &gt; , bir ListBox denetimini tanımlamak için aşağıdaki kodu ekleyin, böylece kullanıcılar kullanılabilir akışlar listesini görebilir ve akışlar ' ı seçin:
 
    ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
@@ -830,7 +839,7 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 ### <a name="to-modify-the-xaml-file"></a>XAML dosyasını değiştirmek için
 
 1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
-2. &lt; **Gridstreadikbitrateselection**adlı Grid&gt; etiketini bulun, etiketin sonuna aşağıdaki kodu ekleyin:
+2. &lt; &gt; **Gridstreadikbitrateselection**adlı Grid etiketini bulun, etiketin sonuna aşağıdaki kodu ekleyin:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -1027,7 +1036,7 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Diğer kaynaklar:

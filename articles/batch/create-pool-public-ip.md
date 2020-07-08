@@ -3,12 +3,12 @@ title: Belirtilen genel IP adreslerine sahip bir havuz oluşturun
 description: Kendi genel IP adreslerinizi kullanan bir Batch havuzu oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 06/16/2020
-ms.openlocfilehash: 9992ae573ea5c9590f15d6cffa11da599026c0a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884964"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961566"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturun
 
@@ -16,13 +16,15 @@ Bir Azure Batch havuzu oluşturduğunuzda, [havuzu belirttiğiniz bir Azure sana
 
 Havuzunuzdaki sanal makinelerle birlikte kullanmak üzere statik genel IP adreslerinin bir listesini oluşturabilirsiniz. Bu, genel IP adreslerinin listesini denetlemenizi ve bunların beklenmedik şekilde değişmemesini sağlar. Bu, özellikle belirli IP adreslerine erişimi kısıtlayan bir veritabanı gibi herhangi bir dış hizmetle çalışıyorsanız yararlı olabilir.
 
+Genel IP adresleri olmayan havuzlar oluşturma hakkında bilgi için, [genel IP adresleri olmadan Azure Batch havuzu oluştur](./batch-pool-no-public-ip-address.md)' u okuyun.
+
 ## <a name="prerequisites"></a>Ön koşullar
 
 - **Kimlik doğrulaması**. Genel bir IP adresi kullanmak için Batch istemci API 'sinin [Azure Active Directory (ad) kimlik doğrulamasını](batch-aad-auth.md)kullanması gerekir.
 
 - **Bir Azure sanal ağı**. Havuzunuzu ve IP adreslerinizi oluşturduğunuz aynı Azure aboneliğinden bir [sanal ağ](batch-virtual-network.md) kullanmanız gerekir. Yalnızca Azure Resource Manager tabanlı VNET 'ler kullanılabilir. VNet 'in tüm [genel gereksinimleri](batch-virtual-network.md#vnet-requirements)karşıladığından emin olun.
 
-- **En az bir Azure genel IP adresi**. Bir veya daha fazla genel IP adresi oluşturmak için [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [Azure komut SATıRı arabirimini (clı)](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)kullanabilirsiniz. Aşağıda listelenen gereksinimleri izlediğinizden emin olun.
+- **En az bir Azure genel IP adresi**. Bir veya daha fazla genel IP adresi oluşturmak için [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [Azure komut SATıRı arabirimini (clı)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)veya [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)kullanabilirsiniz. Aşağıda listelenen gereksinimleri izlediğinizden emin olun.
 
 > [!NOTE]
 > Batch, genel IP adreslerini içeren kaynak grubundaki ek ağ kaynaklarını otomatik olarak ayırır. Batch, her 100 ayrılmış düğüm için genellikle bir ağ güvenlik grubu (NSG) ve bir yük dengeleyici ayırır. Bu kaynaklar, aboneliğin kaynak kotalarıyla sınırlıdır. Daha büyük havuzlar kullanılırken, bir veya daha fazla kaynağın bir veya daha fazlası için [bir kota artışı istemeniz](batch-quota-limit.md#increase-a-quota) gerekebilir.
@@ -43,7 +45,7 @@ Genel IP adreslerinizi oluştururken aşağıdaki gereksinimleri göz önünde b
 
 ## <a name="create-a-batch-pool-with-public-ip-addresses"></a>Genel IP adresleriyle bir Batch havuzu oluşturma
 
-Aşağıdaki örnekte, genel IP adresleri kullanan bir havuz oluşturmak için [Azure Batch hizmeti REST API](https://docs.microsoft.com/rest/api/batchservice/pool/add) nasıl kullanılacağı gösterilmektedir.
+Aşağıdaki örnekte, genel IP adresleri kullanan bir havuz oluşturmak için [Azure Batch hizmeti REST API](/rest/api/batchservice/pool/add) nasıl kullanılacağı gösterilmektedir.
 
 ### <a name="batch-service-rest-api"></a>Batch Hizmeti REST API’si
 
@@ -95,3 +97,5 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 
 - [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Bir [Azure sanal ağının alt ağında havuz oluşturma](batch-virtual-network.md)hakkında bilgi edinin.
+- [Genel IP adresleri olmayan Azure Batch havuzu oluşturma](./batch-pool-no-public-ip-address.md)hakkında bilgi edinin.
+

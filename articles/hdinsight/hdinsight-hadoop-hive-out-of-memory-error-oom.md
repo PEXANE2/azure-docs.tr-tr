@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891102"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961906"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight 'ta bellek yetersiz Apache Hive hatasını çözme
 
@@ -50,11 +50,14 @@ Bu sorgunun bazı nusları:
 
 Hive sorgusunun tamamlanması, 24 dakikalık bir a3 HDInsight kümesinde tamamlanır. Müşteri aşağıdaki uyarı iletilerini tespit ettik:
 
+```output
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+```
 
 Apache Tez yürütme altyapısını kullanarak. Aynı sorgu 15 dakika boyunca çalışır ve şu hatayı oluşturdu:
 
+```output
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
@@ -78,6 +81,7 @@ Apache Tez yürütme altyapısını kullanarak. Aynı sorgu 15 dakika boyunca ç
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
+```
 
 Daha büyük bir sanal makine (örneğin, D12) kullanılırken hata kalır.
 
@@ -87,7 +91,7 @@ Destek ve mühendislik ekiplerimiz, bellek yetersiz hatası nedeniyle [Apache JI
 
 "Hive. Auto. Convert. JOIN. noconditionaltask = true olduğunda noconditionaltask 'ı denetliyoruz. boyut ve harita birleştirmesindeki tablo boyutlarının toplamı noconditionaltask değerinden küçükse, planın bir harita birleşimi oluşturacağından, bununla ilgili sorun, hesaplamanın farklı bir karma uygulama tarafından sunulan ek yükü, küçük bir kenar boşluğu sorguları tarafından noconditionaltask boyutundan küçükse, OOM 'ye vuracak şekilde, farklı HashTable uygulamasına göre daha az bir değer elde etmez.
 
-Hive-site. xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , **true**olarak ayarlandı:
+hive-site.xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , **true**olarak ayarlandı:
 
 ```xml
 <property>
@@ -112,8 +116,10 @@ Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kap
 
 Bir D12 makinesinde 28 GB bellek bulunduğundan, 10 GB 'lık bir kapsayıcı boyutu (10240 MB) kullanmaya ve Java 'ya %80 ' i atamaya karar verdik. opts:
 
-    SET hive.tez.container.size=10240
-    SET hive.tez.java.opts=-Xmx8192m
+```console
+SET hive.tez.container.size=10240
+SET hive.tez.java.opts=-Xmx8192m
+```
 
 Yeni ayarlarla sorgu, 10 dakikadan kısa bir süre içinde başarıyla çalıştırıldı.
 

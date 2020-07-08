@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845808"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960571"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845808"
 3. Azure portal, aşağıdaki yordamı kullanarak bir depolama hesabı oluşturun.  
     1. Sol menü çubuğunda **+ kaynak oluştur** ' u seçin.  **Yeni** bölme (dikey pencere) sağa görüntülenecektir.
     2. **Yeni** bölmesinde **depolama** ' yı seçin.  **Öne çıkan** bir liste sağ tarafta görüntülenir.
-    3. Hesap oluşturmaya başlamak için **Depolama hesabını** seçin.  [Depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)makalesindeki yönergeleri izleyin.
+    3. Hesap oluşturmaya başlamak için **Depolama hesabını** seçin.  [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)makalesindeki yönergeleri izleyin.
 
     ![Azure depolama hesabı oluşturma adımları](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    Depolama hesapları hakkında daha fazla bilgi için [Hızlı Başlangıç Öğreticisi](https://docs.microsoft.com/azure/storage/)' ni seçin.  Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+    Depolama hesapları hakkında daha fazla bilgi için bu [hızlı](../../storage/blobs/storage-quickstart-blobs-portal.md)başlangıca bakın.  Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 4. Depolama Hesabınız sağlanana kadar bekleyin, genellikle birkaç dakika sürer.  Ardından, **Tüm kaynaklarınızı gör** ' i **Home** seçerek veya Azure Portal sol gezinti menü çubuğundan **tüm kaynakları** seçerek depolama hesabınıza Azure Portal.
 
@@ -87,7 +87,7 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
     * Kapsayıcı adı örneği:`marketplaceleadcontainer`
     * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
     > [!NOTE]
     > Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.

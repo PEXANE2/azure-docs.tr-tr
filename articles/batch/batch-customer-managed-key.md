@@ -5,18 +5,18 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: peshultz
-ms.openlocfilehash: c1fe01634a004ec06df441bb890de1652cbab4b9
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: d0dcb79d5e319abd46515162ce5a17e935d9693b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754542"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960895"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için müşteri tarafından yönetilen anahtarlar yapılandırın
 
 Varsayılan olarak Azure Batch, sertifikalar, iş/görev meta verileri gibi Azure Batch hizmetinde depolanan tüm müşteri verilerini şifrelemek için platform tarafından yönetilen anahtarları kullanır. İsteğe bağlı olarak, Azure Batch depolanan verileri şifrelemek için kendi anahtarlarınızı (müşteri tarafından yönetilen anahtarlar) kullanabilirsiniz.
 
-Sağladığınız anahtarların [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/basic-concepts)oluşturulması ve müşterinin yönettiği anahtarlarla yapılandırmak istediğiniz Batch hesaplarının [Azure yönetilen kimliğiyle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)etkinleştirilmesi gerekir.
+Sağladığınız anahtarların [Azure Key Vault](../key-vault/general/basic-concepts.md)oluşturulması ve müşterinin yönettiği anahtarlarla yapılandırmak istediğiniz Batch hesaplarının [Azure yönetilen kimliğiyle](../active-directory/managed-identities-azure-resources/overview.md)etkinleştirilmesi gerekir.
 
 > [!IMPORTANT]
 > Azure Batch 'de müşteri tarafından yönetilen anahtarlar için destek şu anda Orta Batı ABD, Doğu ABD, Orta Güney ABD, Batı ABD 2, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
@@ -28,11 +28,11 @@ Sağladığınız anahtarların [Azure Key Vault](https://docs.microsoft.com/azu
 
 [Azure Portal](https://portal.azure.com/), Batch hesapları oluşturduğunuzda, **Gelişmiş** sekmesinde kimlik türünde **sistem atanan** ' ı seçin.
 
-![](./media/batch-customer-managed-key/create-batch-account.png)
+![Sistem tarafından atanan kimlik türüne sahip yeni Batch hesabı](./media/batch-customer-managed-key/create-batch-account.png)
 
 Hesap oluşturulduktan sonra, **özellik** bölümü altındaki **kimlik sorumlusu kimliği** alanında benzersiz bir GUID bulabilirsiniz. **Kimlik türü** gösterilecektir `SystemAssigned` .
 
-![](./media/batch-customer-managed-key/linked-batch-principal.png)
+![Kimlik sorumlusu kimlik alanındaki benzersiz GUID](./media/batch-customer-managed-key/linked-batch-principal.png)
  
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -64,23 +64,23 @@ az batch account show \
 
 Azure Batch için müşteri tarafından yönetilen anahtarlarla Azure Key Vault bir örnek oluştururken, **geçici silme** ve **Temizleme korumasının** etkinleştirildiğinden emin olun.
 
-![](./media/batch-customer-managed-key/create-key-vault.png)
+![Key Vault oluşturma ekranı](./media/batch-customer-managed-key/create-key-vault.png)
 
 ### <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Azure Key Vault örneğine bir erişim ilkesi ekleme
 
 Azure portal, Key Vault oluşturulduktan sonra, **Ayarlar**' ın altında bulunan **erişim ilkesi** ' nde, yönetilen kimlik ' i kullanarak Batch hesabı erişimini ekleyin. **Anahtar izinleri**altında **Al**, **sarmalama tuşu** ve **sarmalama tuşunu kaldır**' ı seçin. 
 
-![](./media/batch-customer-managed-key/key-permissions.png)
- 
+![Erişim İlkesi Ekle](./media/batch-customer-managed-key/key-permissions.png)
+
 **Asıl**altındaki **Seç** alanında, `principalId` daha önce aldığınız ' ı veya Batch hesabının adını girin.
 
-![](./media/batch-customer-managed-key/principal-id.png)
- 
+![PrincipalId girin](./media/batch-customer-managed-key/principal-id.png)
+
 ### <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault bir anahtar oluşturun
 
 Azure portal, **anahtar** bölümündeki Key Vault örneğine gidin, **Oluştur/al**' ı seçin. Kullanılacak **anahtar türünü** `RSA` ve **anahtar boyutunu** seçin `2048` .
 
-![](./media/batch-customer-managed-key/create-key.png)
+![Bir anahtar oluşturma](./media/batch-customer-managed-key/create-key.png)
 
 Anahtar oluşturulduktan sonra, yeni oluşturulan anahtara ve geçerli sürüme tıklayın, **Özellikler** bölümü altında **anahtar tanımlayıcısı** ' nı kopyalayın.  **Izin verilen işlemler**, **sarmalama anahtarı** ve **geri saral anahtarının** her ikisinin de işaretlenmiş olduğundan emin olun.
 
@@ -88,9 +88,9 @@ Anahtar oluşturulduktan sonra, yeni oluşturulan anahtara ve geçerli sürüme 
 
 ### <a name="azure-portal"></a>Azure portal
 
-[Azure Portal](https://portal.azure.com/)Batch hesabı sayfasına gidin. **Şifreleme** bölümünde, **müşteri tarafından yönetilen anahtarları**etkinleştirin. Anahtar tanımlayıcıyı doğrudan kullanabilir veya anahtar kasasını seçip anahtar **kasası ve anahtar Seç**öğesine tıklayabilirsiniz.
+[Azure Portal](https://portal.azure.com/)Batch hesabı sayfasına gidin. **Şifreleme** bölümünde, **müşteri tarafından yönetilen anahtarı**etkinleştirin. Anahtar tanımlayıcıyı doğrudan kullanabilir veya anahtar kasasını seçip anahtar **kasası ve anahtar Seç**öğesine tıklayabilirsiniz.
 
-![](./media/batch-customer-managed-key/encryption-page.png)
+![Şifreleme altında, müşteri tarafından yönetilen anahtarı etkinleştirin](./media/batch-customer-managed-key/encryption-page.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -139,10 +139,10 @@ az batch account set \
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
   * **Mevcut Batch hesapları için müşteri tarafından yönetilen anahtarlar destekleniyor mu?** Hayır. Müşteri tarafından yönetilen anahtarlar yalnızca yeni Batch hesapları için desteklenir.
   * **Müşteri tarafından yönetilen anahtar iptal edildikten sonra hangi işlemler kullanılabilir?** Toplu işlem, müşteri tarafından yönetilen anahtara erişimi kaybederse, hesap silme işlemine izin verilir.
-  * **Key Vault anahtarını yanlışlıkla sildiğimde Batch hesabımın erişimini nasıl geri yükleyebilirim?** Temizleme koruması ve geçici silme etkin olduğundan, mevcut anahtarları geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [kurtarma Azure Key Vault]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli#recovering-a-key-vault).
+  * **Key Vault anahtarını yanlışlıkla sildiğimde Batch hesabımın erişimini nasıl geri yükleyebilirim?** Temizleme koruması ve geçici silme etkin olduğundan, mevcut anahtarları geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [kurtarma Azure Key Vault](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Müşteri tarafından yönetilen anahtarları devre dışı bırakabilir miyim?** Batch hesabının şifreleme türünü dilediğiniz zaman "Microsoft yönetilen anahtar" olarak ayarlayabilirsiniz. Bundan sonra, anahtarı silmek veya değiştirmek için ücretsiz olursunuz.
   * **Anahtarlarımı nasıl döndürebilirim?** Müşteri tarafından yönetilen anahtarlar otomatik olarak döndürülemez. Anahtarı döndürmek için, hesabın ilişkilendirildiği anahtar tanımlayıcısını güncelleştirin.
   * **Access 'i geri yükledikten sonra Batch hesabının yeniden çalışması için ne kadar sürer?** Erişim geri yüklendikten sonra hesabın yeniden erişilebilir olması 10 dakika kadar sürebilir.
   * **Batch hesabı, kaynaklarıma ne olur? kullanılamıyor mu?** Müşteri tarafından yönetilen anahtarlara toplu erişim kaybedildiğinde çalışan havuzların kaybolması, çalışmaya devam edecektir. Ancak, düğümler kullanılamayan bir duruma geçer ve görevler çalışmayı durdurur (ve yeniden kuyruğa olur). Erişim geri yüklendikten sonra düğümler yeniden kullanılabilir hale gelir ve görevler yeniden başlatılır.
-  * **Bu şifreleme mekanizması bir toplu Iş havuzundaki VM disklerine mi uygulanabilir?** Hayır. Bulut hizmeti yapılandırma havuzları için, işletim sistemi ve geçici disk için hiçbir şifreleme uygulanmaz. Sanal makine yapılandırma havuzları için, işletim sistemi ve belirtilen veri diskleri varsayılan olarak bir Microsoft Platformu yönetilen anahtarıyla şifrelenir. Şu anda bu diskler için kendi anahtarınızı belirtemezsiniz. Microsoft Platformu yönetilen anahtarıyla bir Batch havuzu için VM 'lerin geçici diskini şifrelemek üzere, [sanal makine yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzunuzdaki [diskencryptionconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#diskencryptionconfiguration) özelliğini etkinleştirmeniz gerekir. Son derece hassas ortamlarda, geçici disk şifrelemeyi etkinleştirmenizi ve hassas verileri işletim sistemi ve veri disklerinde depolamayı önlemeniz önerilir.
+  * **Bu şifreleme mekanizması bir toplu Iş havuzundaki VM disklerine mi uygulanabilir?** Hayır. Bulut hizmeti yapılandırma havuzları için, işletim sistemi ve geçici disk için hiçbir şifreleme uygulanmaz. Sanal makine yapılandırma havuzları için, işletim sistemi ve belirtilen veri diskleri varsayılan olarak bir Microsoft Platformu yönetilen anahtarıyla şifrelenir. Şu anda bu diskler için kendi anahtarınızı belirtemezsiniz. Microsoft Platformu yönetilen anahtarıyla bir Batch havuzu için VM 'lerin geçici diskini şifrelemek üzere, [sanal makine yapılandırma](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzunuzdaki [diskencryptionconfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) özelliğini etkinleştirmeniz gerekir. Son derece hassas ortamlarda, geçici disk şifrelemeyi etkinleştirmenizi ve hassas verileri işletim sistemi ve veri disklerinde depolamayı önlemeniz önerilir.
   

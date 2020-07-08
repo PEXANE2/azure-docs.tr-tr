@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888062"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958574"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services parçalanmış MP4 canlı alma belirtimi 
 
@@ -51,12 +51,12 @@ Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan ö
 1. [1] içindeki bölüm 3.3.6, kanala (EOS) akışın son akışını göstermek için canlı Alım sonunda gönderilebilecek **MovieFragmentRandomAccessBox** (**mfra**) adlı bir kutu tanımlar. Media Services alma mantığı nedeniyle, EOS kullanımı kullanım dışıdır ve canlı alma için **mfra** kutusu gönderilmemelidir. Gönderildiyse Media Services sessizce yoksayar. Alma noktasının durumunu sıfırlamak için [Kanal sıfırlamayı](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)kullanmanızı öneririz. Ayrıca, bir sunuyu ve akışı sonlandırmak için [Program durdur](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) ' un kullanılmasını öneririz.
 1. İstemci bildirimlerinin boyutunu azaltmak için MP4 parça süresi sabit olmalıdır. Sabit bir MP4 parça süresi Ayrıca, yineleme etiketlerinin kullanımıyla istemci indirme buluşsal yöntemlerini geliştirir. Süre, tamsayı olmayan kare hızları için dengede dalgalanmaya BAŞLAYABILIR.
 1. MP4 parça süresi yaklaşık 2 ila 6 saniye arasında olmalıdır.
-1. MP4 parça zaman damgaları ve dizinler**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` (TrackFragmentExtendedHeaderBox `fragment_index`ve) artan sırada gelmiş olmalıdır. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
+1. MP4 parça zaman damgaları ve dizinler (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` ve `fragment_index` ) artan sırada gelmiş olmalıdır. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
 
 ## <a name="4-protocol-format--http"></a>4. protokol biçimi – HTTP
 Media Services için ISO parçalanmış MP4 tabanlı canlı alma, parçalanmış MP4 biçiminde paketlenmiş kodlanmış medya verilerini hizmetine iletmek için standart bir uzun süreli HTTP POST isteği kullanır. Her HTTP GÖNDERISI, üst bilgi kutularından (**ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularından) başlayarak ve bir dizi parça (**Moof** ve **mdat** kutusu) ile devam ederek eksiksiz bir parçalanmış MP4 Bitstream ("Stream") gönderir. HTTP POST isteğinin URL sözdizimi için [1] içindeki 9,2 bölümüne bakın. GÖNDERI URL 'sine bir örnek: 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>Gereksinimler
 Ayrıntılı gereksinimler şunlardır:
@@ -75,7 +75,7 @@ Ayrıntılı gereksinimler şunlardır:
 ## <a name="6-definition-of-stream"></a>6. "Stream" tanımı
 Stream, canlı bir sunu oluşturmaya, akış yük devretmesini işlemeye ve artıklık senaryolarına yönelik olarak dinamik alma işlemindeki temel işlem birimidir. Akış, tek bir izleme veya birden çok parça içerebilen bir benzersiz, parçalanmış MP4 Bitstream olarak tanımlanır. Tam canlı bir sunum, canlı kodlayıcıların yapılandırmasına bağlı olarak bir veya daha fazla akış içerebilir. Aşağıdaki örneklerde, tam canlı bir sunum oluşturmak için akışları kullanmanın çeşitli seçenekleri gösterilmektedir.
 
-**Örneğinde** 
+**Örnek:** 
 
 Müşteri, aşağıdaki ses/video bitoranını içeren canlı bir akış sunumu oluşturmak istiyor:
 
@@ -133,7 +133,7 @@ Aşağıdaki beklentiler, kodlayıcı yük devretmesi gerçekleştiğinde canlı
 1. Yeni kodlayıcı 'nın POST isteği, başarısız örnekle aynı parçalanmış MP4 üstbilgi kutularını içermelidir.
 1. Yeni kodlayıcı aynı canlı sununun diğer tüm çalışan kodlayıcılarıyla düzgün şekilde eşitlenmelidir ve bu da hizalanmış parça sınırlarıyla eşitlenmiş ses/video örnekleri oluşturur.
 1. Yeni akış, önceki akışa göre anlamsal olarak eşdeğer olmalıdır ve üst bilgi ve parça düzeylerinde değiştirilebilir olmalıdır.
-1. Yeni kodlayıcı veri kaybını en aza indirmeye çalışır. Ve `fragment_absolute_time` `fragment_index` medya parçaları, kodlayıcının en son durdurulma noktasından artmalıdır. `fragment_absolute_time` Ve `fragment_index` sürekli olarak artmalıdır, ancak gerekirse, süreksizlik bir şekilde tanıtılmaya izin verilir. Media Services, zaten aldığı ve işlediği parçaları yoksayar; bu nedenle, parçaları yeniden gönderme tarafında, medya zaman çizelgesinde süreksizlik tanıtıldığından hata vermek daha iyidir. 
+1. Yeni kodlayıcı veri kaybını en aza indirmeye çalışır. `fragment_absolute_time`Ve `fragment_index` medya parçaları, kodlayıcının en son durdurulma NOKTASıNDAN artmalıdır. `fragment_absolute_time`Ve `fragment_index` sürekli olarak artmalıdır, ancak gerekirse, süreksizlik bir şekilde tanıtılmaya izin verilir. Media Services, zaten aldığı ve işlediği parçaları yoksayar; bu nedenle, parçaları yeniden gönderme tarafında, medya zaman çizelgesinde süreksizlik tanıtıldığından hata vermek daha iyidir. 
 
 ## <a name="9-encoder-redundancy"></a>9. kodlayıcı artıklığı
 Daha yüksek kullanılabilirlik ve deneyim kalitesi gerektiren belirli kritik canlı etkinlikler için, veri kaybı olmadan sorunsuz yük devretme elde etmek üzere etkin-etkin gereksiz kodlayıcıları kullanmanızı öneririz.
@@ -174,7 +174,7 @@ Aşağıdaki adımlar, seyrek parça izlemek için önerilen bir uygulama olarak
 
     f. İstemci için eşit veya daha büyük bir zaman damgası değeri olan karşılık gelen üst izleme parçası olduğunda, seyrek izleme parçası istemci için kullanılabilir hale gelir. Örneğin, seyrek parça bir t = 1000 zaman damgasına sahipse, istemci "video" (üst parça adının "video" olduğu varsayıldığında) parça zaman damgası 1000 veya daha yüksek olduğunda, bu, seyrek parça t = 1000 ' i indirebilir. Gerçek sinyalin, sunum zaman çizelgesinde belirlenen amaçla farklı bir konum için kullanılabileceğini unutmayın. Bu örnekte, t = 1000 ' in seyrek parçası bir XML yüküne sahip olabilir. Bu, birkaç saniye sonra bir konuma ad eklemek için olan bir XML yüküne sahiptir.
 
-    g. Seyrek izleme parçalarının yükü, senaryoya bağlı olarak farklı biçimlerde (XML, metin veya ikili gibi) olabilir.
+    örneğin: Seyrek izleme parçalarının yükü, senaryoya bağlı olarak farklı biçimlerde (XML, metin veya ikili gibi) olabilir.
 
 ### <a name="redundant-audio-track"></a>Yedekli ses izi
 Tipik bir HTTP uyarlamalı akış senaryosunda (örneğin, Kesintisiz Akış veya DASH), genellikle sununun tamamında yalnızca bir ses parçası vardır. İstemcinin hata koşullarında seçmesi için birden çok kalite düzeyine sahip olan video izlemelerinden farklı olarak, ses parçasını içeren akışın alımı bozulur ve ses izi tek bir hata noktası olabilir. 
@@ -193,7 +193,7 @@ Gereksiz ses parçaları için aşağıdaki uygulama önerilir:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png
