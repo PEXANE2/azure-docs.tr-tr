@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792318"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Mevcut bir Linux Azure VM görüntüsünü Cloud-init ile kullanmak üzere hazırlama
@@ -29,14 +28,14 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-İçindeki `cloud_init_modules` `/etc/cloud/cloud.cfg` bölümünü aşağıdaki modülleri içerecek şekilde güncelleştirin:
+`cloud_init_modules`İçindeki bölümünü `/etc/cloud/cloud.cfg` aşağıdaki modülleri içerecek şekilde güncelleştirin:
 
 ```bash
 - disk_setup
 - mounts
 ```
 
-Genel amaçlı `cloud_init_modules` bir bölümün nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir.
+Genel amaçlı bir bölümün nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir `cloud_init_modules` .
 
 ```bash
 cloud_init_modules:
@@ -55,7 +54,7 @@ cloud_init_modules:
  - ssh
 ```
 
-Kısa ömürlü disklerin sağlanması ve yönetilmesi ile ilgili bir dizi görevin ' de `/etc/waagent.conf`güncelleştirilmeleri gerekir. Uygun ayarları güncelleştirmek için aşağıdaki komutları çalıştırın.
+Kısa ömürlü disklerin sağlanması ve yönetilmesi ile ilgili bir dizi görevin ' de güncelleştirilmeleri gerekir `/etc/waagent.conf` . Uygun ayarları güncelleştirmek için aşağıdaki komutları çalıştırın.
 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
@@ -65,7 +64,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Aşağıdaki satırla seçtiğiniz bir düzenleyiciyi kullanarak yeni bir dosya `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` oluşturarak yalnızca Azure Linux Aracısı için veri kaynağı olarak Azure 'a izin verin:
+`/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`Aşağıdaki satırla seçtiğiniz bir düzenleyiciyi kullanarak yeni bir dosya oluşturarak yalnızca Azure Linux Aracısı için veri kaynağı olarak Azure 'a izin verin:
 
 ```bash
 # Azure Data Source config
@@ -82,7 +81,7 @@ Swapfile etkin olan CentOS görüntüleri için, Swapfile 'ı devre dışı bır
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Swapfile başvurusunun ' dan `/etc/fstab` kaldırıldığından emin olun-bu, aşağıdaki çıkışa benzer bir şekilde görünmelidir:
+Swapfile başvurusunun ' dan kaldırıldığından emin olun `/etc/fstab` -Bu, aşağıdaki çıkışa benzer bir şekilde görünmelidir:
 
 ```output
 # /etc/fstab
@@ -119,7 +118,7 @@ sudo waagent -deprovision+user -force
 
 Azure Linux Aracısı sağlama kaldırma komutları hakkında daha fazla bilgi için bkz. [Azure Linux Aracısı](../extensions/agent-linux.md) daha fazla ayrıntı için.
 
-SSH oturumundan çıkın, sonra Bash kabuğınızdan, yeni bir Azure VM görüntüsünü serbest bırakmak, genelleştirmek ve oluşturmak için aşağıdaki AzureCLI komutlarını çalıştırın.  Ve `myResourceGroup` ' `sourceVmName` i, sourcevm 'nizi yansıtan uygun bilgilerle değiştirin.
+SSH oturumundan çıkın, sonra Bash kabuğınızdan, yeni bir Azure VM görüntüsünü serbest bırakmak, genelleştirmek ve oluşturmak için aşağıdaki AzureCLI komutlarını çalıştırın.  `myResourceGroup`Ve ' i `sourceVmName` , sourcevm 'nizi yansıtan uygun bilgilerle değiştirin.
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName

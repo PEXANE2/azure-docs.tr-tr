@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891655"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla istenen durum yapılandırma uzantısı
@@ -180,16 +179,16 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 | Özellik adı | Tür | Açıklama |
 | --- | --- | --- |
 | Settings. wmfVersion |string |Sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin **en son** olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler **4,0**, **5,0**, **5,1**ve **en son**değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur. |
-| Settings. Configuration. URL |string |DSC yapılandırması. zip dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **Protectedsettings. configurationUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. **Settings. Configuration. Script** veya **Settings. Configuration. Function** tanımlanmışsa bu özellik gereklidir. Bu özellikler için herhangi bir değer verilmezse, uzantı konum Configuration Manager (LCM) meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
-| Settings. Configuration. Script |string |DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, **Settings. Configuration. URL** özelliği tarafından belirtilen URL 'den indirilen. zip dosyasının kök klasöründe olmalıdır. **Settings. Configuration. URL** veya **Settings. Configuration. Script** tanımlanmışsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
-| Settings. Configuration. Function |string |DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, **Settings. Configuration. Script** 'in tanımladığı betiğe dahil olmalıdır. **Settings. Configuration. URL** veya **Settings. Configuration. Function** tanımlanmışsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
-| Settings. configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmedi. |
-| Settings. configurationData. URL |string |DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. psd1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **Protectedsettings. configurationDataUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. |
+| settings.configacation. URL |string |DSC yapılandırması. zip dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **protectedSettings.configurationUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. **settings.configuration. Script** veya **settings.configuration. Function** tanımlanırsa bu özellik gereklidir. Bu özellikler için herhangi bir değer verilmezse, uzantı konum Configuration Manager (LCM) meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
+| settings.configuration. betiği |string |DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, **settings.configuration. URL** özelliği tarafından belirtilen URL 'den indirilen. zip dosyasının kök klasöründe olmalıdır. **settings.configuration. URL** veya **settings.configuration. Script** tanımlanmışsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
+| settings.configuration. Function |string |DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, **settings.configuration. Script** tarafından tanımlanan betiğe eklenmelidir. **settings.configuration. URL** veya **settings.configuration. Function** tanımlanırsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
+| settings.configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmedi. |
+| settings.configurationData. URL |string |DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. psd1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **protectedSettings.configurationDataUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. |
 | Settings. privacy. dataCollection |string |Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özelliğin olası tek değeri **Etkinleştir**, **devre dışı bırak**, **' '** veya **$null**. Bu özelliğin boş veya null bırakılması telemetri sunar. Varsayılan değer **' '**. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
 | Settings. Advancedoçen. downloadMappings |Koleksiyon |WMF 'nin indirileceği alternatif konumları tanımlar. Daha fazla bilgi için bkz. [Azure DSC uzantısı 2,8 ve uzantı bağımlılıklarını karşıdan yüklemelerin kendi konumunuza nasıl eşleneceğini öğrenin](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
-| protectedSettings. configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
-| protectedSettings. configurationUrlSasToken |string |**Settings. Configuration. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
-| protectedSettings. configurationDataUrlSasToken |string |**Settings. configurationData. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
+| protectedSettings.configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
+| protectedSettings.configurationUrlSasToken |string |**settings.configuration. URL** 'nın tanımladığı URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
+| protectedSettings.configurationDataUrlSasToken |string |**settings.configurationData. URL** 'nın tanımladığı URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
 
 ## <a name="default-configuration-script"></a>Varsayılan yapılandırma betiği
 
@@ -198,15 +197,15 @@ Yalnızca aşağıdaki tabloda listelenen LCM özelliklerini yapılandırmak iç
 
 | Özellik adı | Tür | Açıklama |
 | --- | --- | --- |
-| protectedSettings. configurationArguments. RegistrationKey |PSCredential |Gerekli özellik. Bir düğüm için bir PowerShell kimlik bilgisi nesnesinin parolası olarak Azure Automation hizmetine kaydolmak üzere kullanılan anahtarı belirtir. Bu değer, Otomasyon hesabına yönelik **ListKeys 'i al** yöntemi kullanılarak otomatik olarak bulunabilir.  [Örneğe](#example-using-referenced-azure-automation-registration-values)bakın. |
-| Settings. configurationArguments. RegistrationUrl |string |Gerekli özellik. Düğümün kaydolmaya çalıştığı Otomasyon uç noktasının URL 'sini belirtir. Bu değer, Otomasyon hesabında **başvuru** yöntemi kullanılarak otomatik olarak bulunabilir. |
-| Settings. configurationArguments. NodeConfigurationName |string |Gerekli özellik. Düğüme atanacak Otomasyon hesabındaki düğüm yapılandırmasını belirtir. |
-| Settings. configurationArguments. ConfigurationMode |string |LCM modunu belirtir. Geçerli seçenekler **Applyonly**, **Applyandmonitor**ve **applyandadutocorrect**içerir.  Varsayılan değer **Applyandmonitor**' dır. |
-| Settings. configurationArguments. RefreshFrequencyMins | Int32 | LCM 'nin güncelleştirmeler için Otomasyon hesabını ne sıklıkta kontrol etmek için deneme sayısını belirtir.  Varsayılan değer **30**' dur.  Minimum değer **15**' tir. |
-| Settings. configurationArguments. Configurationmodefkarşılandığından, dakika | Int32 | LCM 'nin geçerli yapılandırmayı ne sıklıkta doğrulayacağını belirtir. Varsayılan değer **15**' tir. Minimum değer **15**' tir. |
-| Settings. configurationArguments. Rebootnodeifgerekiyordu | boole | Bir DSC işlemi istediğinde bir düğümün otomatik olarak yeniden başlatılıp başlatılmayacağını belirtir. Varsayılan değer **false**'dur. |
-| Settings. configurationArguments. ActionAfterReboot | string | Bir yapılandırma uygulanırken yeniden başlatmanın ardından ne olacağını belirtir. Geçerli seçenekler **devam yapılandırması** ve **durma yapılandırması**. Varsayılan değer **devam yapılandırması**' dır. |
-| Settings. configurationArguments. AllowModuleOverwrite | boole | LCM 'nin düğümdeki mevcut modüllerin üzerine yazmayacağını belirtir. Varsayılan değer **false**'dur. |
+| protectedSettings.configurationArguments. RegistrationKey |PSCredential |Gerekli özellik. Bir düğüm için bir PowerShell kimlik bilgisi nesnesinin parolası olarak Azure Automation hizmetine kaydolmak üzere kullanılan anahtarı belirtir. Bu değer, Otomasyon hesabına yönelik **ListKeys 'i al** yöntemi kullanılarak otomatik olarak bulunabilir.  [Örneğe](#example-using-referenced-azure-automation-registration-values)bakın. |
+| settings.configurationArguments. RegistrationUrl |string |Gerekli özellik. Düğümün kaydolmaya çalıştığı Otomasyon uç noktasının URL 'sini belirtir. Bu değer, Otomasyon hesabında **başvuru** yöntemi kullanılarak otomatik olarak bulunabilir. |
+| settings.configurationArguments. NodeConfigurationName |string |Gerekli özellik. Düğüme atanacak Otomasyon hesabındaki düğüm yapılandırmasını belirtir. |
+| settings.configurationArguments.ConfigurationMode |string |LCM modunu belirtir. Geçerli seçenekler **Applyonly**, **Applyandmonitor**ve **applyandadutocorrect**içerir.  Varsayılan değer **Applyandmonitor**' dır. |
+| settings.configurationArguments. RefreshFrequencyMins | Int32 | LCM 'nin güncelleştirmeler için Otomasyon hesabını ne sıklıkta kontrol etmek için deneme sayısını belirtir.  Varsayılan değer **30**' dur.  Minimum değer **15**' tir. |
+| settings.configurationArguments.ConfigUrationmodefısmins | Int32 | LCM 'nin geçerli yapılandırmayı ne sıklıkta doğrulayacağını belirtir. Varsayılan değer **15**' tir. Minimum değer **15**' tir. |
+| settings.configurationArguments. Rebootnodeifgerekiyordu | boole | Bir DSC işlemi istediğinde bir düğümün otomatik olarak yeniden başlatılıp başlatılmayacağını belirtir. Varsayılan değer **false**'dur. |
+| settings.configurationArguments. ActionAfterReboot | string | Bir yapılandırma uygulanırken yeniden başlatmanın ardından ne olacağını belirtir. Geçerli seçenekler **devam yapılandırması** ve **durma yapılandırması**. Varsayılan değer **devam yapılandırması**' dır. |
+| settings.configurationArguments. AllowModuleOverwrite | boole | LCM 'nin düğümdeki mevcut modüllerin üzerine yazmayacağını belirtir. Varsayılan değer **false**'dur. |
 
 ## <a name="settings-vs-protectedsettings"></a>ayarlar ve protectedSettings karşılaştırması
 
@@ -255,7 +254,7 @@ Yapılandırma bağımsız değişkenleri, LCM meta verilerini ayarlamak için v
 
 Aşağıdaki örnek [DSC uzantı işleyicisine genel bakış](dsc-overview.md)' dır.
 Bu örnek, uzantıyı dağıtmak için cmdlet 'ler yerine Kaynak Yöneticisi şablonları kullanır.
-Iısınstall. ps1 yapılandırmasını kaydedin, dosyayı bir. zip dosyasına (örnek: `iisinstall.zip`) yerleştirin ve ardından dosyayı erişilebilir bir URL 'ye yükleyin.
+IisInstall.ps1 yapılandırmasını kaydedin, bir. zip dosyasına (örnek: `iisinstall.zip` ) yerleştirin ve ardından dosyayı erişilebilir BIR URL 'ye yükleyin.
 Bu örnek Azure Blob depolamayı kullanır, ancak herhangi bir rasgele konumdan. zip dosyaları indirebilirsiniz.
 
 Kaynak Yöneticisi şablonunda aşağıdaki kod VM 'nin doğru dosyayı indirmesini ve ardından uygun PowerShell işlevini çalıştırmasını söyler:
@@ -332,18 +331,18 @@ Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gös
 | Geçerli özellik adı | Önceki şema eşdeğeri |
 | --- | --- |
 | Settings. wmfVersion |Ayarlar. WMFVersion |
-| Settings. Configuration. URL |Ayarlar. ModulesUrl |
-| Settings. Configuration. Script |Ayarların ilk bölümü. ConfigurationFunction (önce \\ \\) |
-| Settings. Configuration. Function |Ayarların ikinci bölümü. ConfigurationFunction (sonra \\ \\) |
+| settings.configacation. URL |Ayarlar. ModulesUrl |
+| settings.configuration. betiği |settings.ConfigurationFunction 'ın ilk kısmı (önce \\ \\ ) |
+| settings.configuration. Function |settings.ConfigurationFunction 'ın ikinci parçası (sonra \\ \\ ) |
 | settings.configuration.module.name | Ayarlar. ModuleSource |
-| Settings. Configuration. Module. Version | Ayarlar. ModuleVersion |
-| Settings. configurationArguments |Ayarlar. Özelliklerinin |
-| Settings. configurationData. URL |protectedSettings. Davtabloburi (SAS belirteci olmayan) |
+| settings.configuration. Module. Version | Ayarlar. ModuleVersion |
+| settings.configurationArguments |Ayarlar. Özelliklerinin |
+| settings.configurationData. URL |protectedSettings. Davtabloburi (SAS belirteci olmayan) |
 | Settings. privacy. dataCollection |Ayarlar. Gizlilik. dataCollection |
 | Settings. Advancedoçen. downloadMappings |Ayarlar. Advancedoçen. DownloadMappings |
-| protectedSettings. configurationArguments |protectedSettings. Properties |
-| protectedSettings. configurationUrlSasToken |Ayarlar. SasToken |
-| protectedSettings. configurationDataUrlSasToken |ProtectedSettings. Dadburi 'den SAS belirteci |
+| protectedSettings.configurationArguments |protectedSettings. Properties |
+| protectedSettings.configurationUrlSasToken |Ayarlar. SasToken |
+| protectedSettings.configurationDataUrlSasToken |ProtectedSettings. Dadburi 'den SAS belirteci |
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -351,9 +350,9 @@ Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gös
 
 ### <a name="invalid-values"></a>Geçersiz değerler
 
-"Gizlilik. dataCollection '{0}'.
+"Gizlilik. dataCollection ' {0} '.
 Tek olası değerler şunlardır ' ', ' Enable ' ve ' Disable ' ".
-"WmfVersion '{0}'.
+"WmfVersion ' {0} '.
 Yalnızca olası değerler şunlardır... ve ' Latest ' ".
 
 **Sorun**: belirtilen değere izin verilmiyor.
@@ -363,7 +362,7 @@ Daha fazla bilgi için [Ayrıntılar](#details)bölümündeki tabloya bakın.
 
 ### <a name="invalid-url"></a>Geçersiz URL
 
-"ConfigurationData. URL '{0}'. Bu geçerli bir URL "", "" Otabloburı '{0}' değil. Bu geçerli bir URL "" yapılandırması değil. URL '{0}'. Bu geçerli bir URL değil "
+"ConfigurationData. URL ' {0} '. Bu geçerli bir URL "", "" Otabloburı ' {0} ' değil. Bu geçerli bir URL "" yapılandırması değil. URL ' {0} '. Bu geçerli bir URL değil "
 
 **Sorun**: BELIRTILEN bir URL geçerli değil.
 
@@ -374,9 +373,9 @@ Tüm URL 'Lerin, uzantının uzak makinede erişebileceği geçerli konumlara ç
 
 "PSCredential türünde parametre RegistrationKey için geçersiz tür".
 
-**Sorun**: protectedsettings. Configurationarguments Içindeki *Registrationkey* değeri, PSCredential dışında herhangi bir tür olarak sağlanamaz.
+**Sorun**: protectedSettings.configurationArguments Içindeki *Registrationkey* değeri, PSCredential dışında herhangi bir tür olarak sağlanamaz.
 
-**Çözüm**: aşağıdaki biçimi kullanarak, Registrationkey Için protectedsettings. configurationarguments girdinizi bir PSCredential türüne değiştirin:
+**Çözüm**: registrationkey Için protectedSettings.configurationArguments girdinizi aşağıdaki biçimi kullanarak bir PSCredential türüne değiştirin:
 
 ```json
 "configurationArguments": {
@@ -389,7 +388,7 @@ Tüm URL 'Lerin, uzantının uzak makinede erişebileceği geçerli konumlara ç
 
 ### <a name="invalid-configurationargument-type"></a>Geçersiz ConfigurationArgument türü
 
-"Geçersiz configurationArguments türü {0}"
+"Geçersiz configurationArguments türü {0} "
 
 **Sorun**: *configurationarguments* özelliği bir **karma tablo** nesnesine çözümlenemiyor.
 
@@ -398,7 +397,7 @@ Yukarıdaki örneklerde belirtilen biçimi izleyin. Tırnak işaretleri, virgül
 
 ### <a name="duplicate-configurationarguments"></a>Yinelenen ConfigurationArguments
 
-"Hem genel hem de{0}korumalı configurationarguments içinde yinelenen bağımsız değişkenler ' ' bulundu"
+" {0} Hem genel hem de korumalı configurationArguments içinde yinelenen bağımsız değişkenler ' ' bulundu"
 
 **Sorun**: ortak ayarlarındaki *configurationarguments* ve korunan ayarlarındaki *configurationarguments* aynı ada sahip özelliklere sahip.
 
@@ -406,17 +405,17 @@ Yukarıdaki örneklerde belirtilen biçimi izleyin. Tırnak işaretleri, virgül
 
 ### <a name="missing-properties"></a>Eksik Özellikler
 
-ayarlarına. Configuration. Function, Settings. Configuration. URL veya Settings. Configuration. Module belirtilmesini gerektirir "
+"settings.Configuration. Function, settings.configuration. URL veya settings.configuration. Module belirtilmesini gerektirir"
 
-ayarlarına. Configuration. URL, Settings. Configuration. betiğin belirtilmesini gerektirir "
+"settings.Configuration. URL, settings.configuration. betiğin belirtilmesini gerektirir"
 
-ayarlarına. Configuration. Script, Settings. Configuration. URL 'nin belirtilmesini gerektirir "
+"settings.Configuration. Script, settings.configuration. URL belirtilmesini gerektirir"
 
-ayarlarına. Configuration. URL, Settings. Configuration. işlevin belirtilmesini gerektirir "
+"settings.Configuration. URL, settings.configuration. işlevin belirtilmesini gerektirir"
 
-"protectedSettings. ConfigurationUrlSasToken, Settings. Configuration. URL belirtilmesini gerektirir"
+"protectedSettings.ConfigurationUrlSasToken, settings.configuration. URL 'nin belirtilmesini gerektirir"
 
-"protectedSettings. ConfigurationDataUrlSasToken, Settings. configurationData. URL belirtilmesini gerektirir"
+"protectedSettings.ConfigurationDataUrlSasToken, settings.configurationData. URL 'nin belirtilmesini gerektirir"
 
 **Sorun**: tanımlı bir özellik, eksik olan başka bir özelliğe ihtiyaç duyuyor.
 

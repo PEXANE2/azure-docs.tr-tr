@@ -10,10 +10,9 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f51b9ecf8e300af6b1e3f11d8431de7a282ab342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759359"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM için Azure portal tam etki alanı adı oluşturma
@@ -25,7 +24,7 @@ Bu makalede, zaten bir VM oluşturmuş olduğunuz varsayılmaktadır. Gerekirse,
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Artık, ile `ssh azureuser@mydns.westus.cloudapp.azure.com`gıbı bu DNS adını kullanarak VM 'ye uzaktan bağlanabilirsiniz.
+Artık, ile gibi bu DNS adını kullanarak VM 'ye uzaktan bağlanabilirsiniz `ssh azureuser@mydns.westus.cloudapp.azure.com` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık VM 'nizin genel IP ve DNS adı olduğuna göre, yaygın uygulama çerçevelerini veya NGINX, MongoDB, Docker gibi Hizmetleri dağıtabilirsiniz.

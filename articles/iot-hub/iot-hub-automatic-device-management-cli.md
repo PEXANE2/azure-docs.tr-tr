@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024974"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLı kullanarak otomatik IoT cihaz ve modül yönetimi
@@ -79,7 +78,7 @@ Otomatik cihaz yapılandırmasına yönelik temel bir hedef içerik örneği aş
 }
 ```
 
-Otomatik modül yapılandırması çok benzer şekilde davranır, ancak yerine `moduleContent` hedefleyebilirsiniz `deviceContent`.
+Otomatik modül yapılandırması çok benzer şekilde davranır, ancak `moduleContent` yerine hedefleyebilirsiniz `deviceContent` .
 
 ```json
 {
@@ -105,7 +104,7 @@ Otomatik modül yapılandırması çok benzer şekilde davranır, ancak yerine `
 }
 ```
 
-Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' `moduleId` den `devices.modules`' ı seçersiniz. Örneğin: 
+Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' den ' ı seçersiniz `moduleId` `devices.modules` . Örneğin: 
 
 ```json
 {
@@ -128,7 +127,7 @@ Bir yapılandırma oluşturmak için aşağıdaki komutu kullanın:
      --metrics [metric queries]
 ```
 
-* --**yapılandırma-kimliği** -IoT Hub 'ında oluşturulacak yapılandırmanın adı. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+* --**yapılandırma-kimliği** -IoT Hub 'ında oluşturulacak yapılandırmanın adı. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` .
 
 * --**Etiketler** -yapılandırmanızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, dağıtımınızı tanımlayan ad ve değer çiftleridir. Örneğin `HostPlatform, Linux` veya `Version, 3.0.1` olabilir.
 
@@ -172,11 +171,11 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**yapılandırma-kimliği** -IoT Hub 'ında bulunan dağıtımın adı.
 
-* --**ölçüm-kimliği** -cihaz kimliklerinin veya modül kimliklerinin listesini görmek istediğiniz ölçümün adı (örneğin `appliedCount`,).
+* --**ölçüm-kimliği** -cihaz kimliklerinin veya modül kimliklerinin listesini görmek istediğiniz ölçümün adı (örneğin,) `appliedCount` .
 
-* --**hub-adı** -dağıtımın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla `az account set -s [subscription name]`istenen aboneliğe geçiş yapın.
+* --**hub-adı** -dağıtımın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]` .
 
-* --**Ölçüm-türü** -ölçüm türü `system` veya `user`olabilir.  Sistem ölçümleri ve `targetedCount` ' `appliedCount`dir. Diğer tüm ölçümler Kullanıcı ölçümleridir.
+* --**Ölçüm-türü** -ölçüm türü veya olabilir `system` `user` .  Sistem ölçümleri `targetedCount` ve ' dir `appliedCount` . Diğer tüm ölçümler Kullanıcı ölçümleridir.
 
 ## <a name="modify-a-configuration"></a>Yapılandırma değiştirme
 
@@ -199,7 +198,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**yapılandırma-kimliği** -IoT Hub 'ında bulunan yapılandırmanın adı.
 
-* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla `az account set -s [subscription name]`istenen aboneliğe geçiş yapın.
+* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]` .
 
 * --yapılandırmada bir özelliği **ayarlayın** . Aşağıdaki özellikleri güncelleştirebilirsiniz:
 
@@ -222,7 +221,7 @@ az iot hub configuration delete --config-id [configuration id] \
 
 * --**yapılandırma-kimliği** -IoT Hub 'ında bulunan yapılandırmanın adı.
 
-* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla `az account set -s [subscription name]`istenen aboneliğe geçiş yapın.
+* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

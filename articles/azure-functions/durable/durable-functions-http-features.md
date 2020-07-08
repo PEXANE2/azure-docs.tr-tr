@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800728"
 ---
 # <a name="http-features"></a>HTTP özellikleri
@@ -41,29 +40,29 @@ Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik 
 
 [Orchestration istemci bağlaması](durable-functions-bindings.md#orchestration-client) , uygun http yanıt yükleri oluşturabilen API 'leri kullanıma sunar. Örneğin, belirli bir düzenleme örneği için yönetim API 'Lerinin bağlantılarını içeren bir yanıt oluşturabilir. Aşağıdaki örneklerde, bu API 'nin yeni bir Orchestration örneği için nasıl kullanılacağını gösteren bir HTTP tetikleyici işlevi gösterilmektedir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index. js**
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function. JSON**
+**Üzerindefunction.js**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-Daha önce gösterilen HTTP-Trigger işlevlerini kullanarak bir Orchestrator işlevinin başlatılması, herhangi bir HTTP istemcisi kullanılarak yapılabilir. Aşağıdaki kıvrımlı komutu adlı `DoWork`bir Orchestrator işlevi başlatır:
+Daha önce gösterilen HTTP-Trigger işlevlerini kullanarak bir Orchestrator işlevinin başlatılması, herhangi bir HTTP istemcisi kullanılarak yapılabilir. Aşağıdaki kıvrımlı komutu adlı bir Orchestrator işlevi başlatır `DoWork` :
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-Daha sonra, KIMLIĞI olan bir düzenleme `abc123` için örnek yanıt. Bazı ayrıntılar netlik açısından kaldırılmıştır.
+Daha sonra, KIMLIĞI olan bir düzenleme için örnek yanıt `abc123` . Bazı ayrıntılar netlik açısından kaldırılmıştır.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -80,7 +79,7 @@ Retry-After: 10
 }
 ```
 
-Önceki örnekte, içinde `Uri` sonlanan her bir alan YERLEŞIK BIR HTTP API 'sine karşılık gelir. Hedef Orchestration örneğini yönetmek için bu API 'Leri kullanabilirsiniz.
+Önceki örnekte, içinde sonlanan her `Uri` bir alan yerleşik BIR HTTP API 'sine karşılık gelir. Hedef Orchestration örneğini yönetmek için bu API 'Leri kullanabilirsiniz.
 
 > [!NOTE]
 > Web kancası URL 'Lerinin biçimi, çalıştırdığınız Azure Işlevleri ana bilgisayarının sürümüne bağlıdır. Önceki örnek, Azure Işlevleri 2,0 konağına yöneliktir.
@@ -114,7 +113,7 @@ Dayanıklı İşlevler 2,0 ' den başlayarak, [düzenleme, Orchestration tetikle
 
 Aşağıdaki örnek kod, giden HTTP isteği yapan bir Orchestrator işlevini göstermektedir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -172,7 +171,7 @@ Dayanıklı İşlevler, yetkilendirme için Azure Active Directory (Azure AD) be
 
 Aşağıdaki kod .NET Orchestrator işlevine bir örnektir. İşlevi, Azure Resource Manager [sanal makineler REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak bir sanal makineyi yeniden başlatmak için kimliği doğrulanmış çağrılar yapar.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -224,7 +223,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Önceki örnekte, `tokenSource` parametresi [Azure Resource Manager](../../azure-resource-manager/management/overview.md)için Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler, kaynak URI 'SI `https://management.core.windows.net`tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki `myRG`VM 'leri yönetme izni olduğu varsayılır.
+Önceki örnekte, `tokenSource` parametresi [Azure Resource Manager](../../azure-resource-manager/management/overview.md)için Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler, kaynak URI 'SI tarafından tanımlanır `https://management.core.windows.net` . Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme izni olduğu varsayılır `myRG` .
 
 Çalışma zamanında, yapılandırılmış belirteç kaynağı otomatik olarak bir OAuth 2,0 erişim belirteci döndürür. Kaynak daha sonra, Giden isteğin yetkilendirme üstbilgisine bir taşıyıcı belirteci olarak belirteç ekler. Bu model, aşağıdaki nedenlerden dolayı HTTP isteklerine el ile Yetkilendirme üstbilgileri eklemenin bir geliştirmedir:
 

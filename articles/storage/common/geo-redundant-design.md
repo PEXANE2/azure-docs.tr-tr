@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82859022"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın
@@ -63,7 +62,7 @@ Büyük olasılıkla, diğer hizmetler hala tamamen işlevsel olduğu sürece bi
 
 Sonuçta bu, uygulamanızın karmaşıklığına bağlıdır. Sorunları hizmet 'e göre işleyememeye karar verebilir, ancak tüm depolama hizmetleri için okuma isteklerini ikincil bölgeye yeniden yönlendirmek ve birincil bölgedeki herhangi bir depolama hizmetiyle ilgili bir sorun tespit ettiğinizde uygulamayı salt okuma modunda çalıştırmak isteyebilirsiniz.
 
-### <a name="other-considerations"></a>Diğer konular
+### <a name="other-considerations"></a>Diğer önemli noktalar
 
 Bunlar, bu makalenin geri kalanında tartıştığımız diğer önemli noktalardır.
 
@@ -196,12 +195,12 @@ Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye
 
 Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolünün bir üyesi haline getirmek için güncelleştirdiğinizde neler gerçekleşebileceğini gösteren bir örnek gösterilmektedir. Bu örneğin, bu örnek için **çalışan** varlığını güncelleştirmenizi ve bir **yönetici rolü** varlığını, toplam yönetici sayısı sayısıyla güncelleştirmeniz gerekir. Güncelleştirmelerin ikincil bölgede nasıl uygulandığına dikkat edin.
 
-| **Işınızda** | **İşlem**                                            | **Çoğaltma**                       | **Son eşitleme zamanı** | **Sonuç** |
+| **Saat** | **İşlem**                                            | **Çoğaltma**                       | **Son eşitleme zamanı** | **Sonuç** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
 | T1       |                                                            | İşlem A <br> çoğaltma<br> İK | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştirme<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
-| T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>içindeki rol varlığı<br>Birinc |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
+| T2       | İşlem B:<br>Güncelleştir<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
+| T3       | İşlem C:<br> Güncelleştir <br>yönetici<br>içindeki rol varlığı<br>Birinc |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
 | *T4*     |                                                       | İşlem C <br>çoğaltma<br> İK | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
 | *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
 | *T6*     |                                                      | İşlem B<br> çoğaltma<br> İK | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |

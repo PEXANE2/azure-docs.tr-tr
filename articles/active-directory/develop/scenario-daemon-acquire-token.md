@@ -12,19 +12,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868988"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
-Gizli bir istemci uygulaması oluşturduktan sonra, uygulamayı çağırarak `AcquireTokenForClient`, kapsamı geçirerek ve isteğe bağlı olarak belirtecin yenilenmesini zorlayarak uygulama için bir belirteç elde edebilirsiniz.
+Gizli bir istemci uygulaması oluşturduktan sonra, uygulamayı çağırarak `AcquireTokenForClient` , kapsamı geçirerek ve isteğe bağlı olarak belirtecin yenilenmesini zorlayarak uygulama için bir belirteç elde edebilirsiniz.
 
 ## <a name="scopes-to-request"></a>İstek için kapsamlar
 
-İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın ve sonrasında gelen addır `/.default`. Bu gösterim Azure Active Directory (Azure AD) uygulama kaydı sırasında statik olarak belirtilen *uygulama düzeyi izinleri* kullanmasını söyler. Ayrıca, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir.
+İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın ve sonrasında gelen addır `/.default` . Bu gösterim Azure Active Directory (Azure AD) uygulama kaydı sırasında statik olarak belirtilen *uygulama düzeyi izinleri* kullanmasını söyler. Ayrıca, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -53,15 +52,15 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ### <a name="azure-ad-v10-resources"></a>Azure AD (v 1.0) kaynakları
 
-İstemci kimlik bilgileri için kullanılan kapsam, her zaman kaynak KIMLIĞI ve sonrasında gelmelidir `/.default`.
+İstemci kimlik bilgileri için kullanılan kapsam, her zaman kaynak KIMLIĞI ve sonrasında gelmelidir `/.default` .
 
 > [!IMPORTANT]
 > MSAL, sürüm 1,0 erişim belirtecini kabul eden bir kaynak için bir erişim belirteci istediğinde, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
-> Bu nedenle, Azure SQL veritabanı (**https:\//Database.Windows.net**) gibi, kaynak bir EĞIK çizgi (Azure SQL veritabanı için `https://database.windows.net/`) ile biten bir hedef kitle beklediğinde, bir kapsamını istemeniz gerekir `https://database.windows.net//.default`. (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Bu nedenle, Azure SQL veritabanı (**https: \/ /Database.Windows.net**) gibi, kaynak bir eğik ÇIZGI (Azure SQL veritabanı için) ile biten bir hedef kitle beklediğinde `https://database.windows.net/` , bir kapsamını istemeniz gerekir `https://database.windows.net//.default` . (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
 
-Uygulamanın bir belirtecini almak için platforma bağlı olarak `AcquireTokenForClient` veya eşdeğerini kullanacaksınız.
+Uygulamanın bir belirtecini almak için `AcquireTokenForClient` platforma bağlı olarak veya eşdeğerini kullanacaksınız.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -202,13 +201,13 @@ Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve 
 
 ## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
 
-MSAL.NET ' de `AcquireTokenForClient` , uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) Çağrısı `AcquireTokenSilent` `AcquireTokenForClient`yapmadan önce çağrı yapmayın, çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
+MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent`Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Resource/. Default kapsamını mı kullanıyorsunuz?
 
-Geçersiz bir kapsam kullanacağınızı söyleyen bir hata mesajı alırsanız, büyük olasılıkla `resource/.default` kapsamı kullanmadınız.
+Geçersiz bir kapsam kullanacağınızı söyleyen bir hata mesajı alırsanız, büyük olasılıkla kapsamı kullanmadınız `resource/.default` .
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Yönetici onayı sağlamayı unuttunuz mu? Daemon uygulamalarında şunlar gerekir!
 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892218"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Çalışma kitaplarında JSON verilerini dönüştürmek için JSONPath kullanma
@@ -27,7 +26,7 @@ JSONPath dönüşümünü kullanarak, çalışma kitabı yazarları JSON 'ı tab
 ## <a name="using-jsonpath"></a>JSONPath kullanma
 
 1. *Düzenleme* araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına sorgu *denetimi eklemek için**Sorgu Ekle* bağlantısını kullanın. > 
+2. *Add*  >  Çalışma kitabına sorgu denetimi eklemek için*Sorgu Ekle* bağlantısını kullanın.
 3. Veri kaynağını *JSON*olarak seçin.
 4. JSON düzenleyicisini kullanarak aşağıdaki JSON kod parçacığını girin
     ```json
@@ -69,7 +68,7 @@ Yukarıdaki JSON nesnesi, bir deponun envanterinin temsili olarak verildiğini v
 1. *Sonuç ayarları* sekmesini seçin ve sonuç biçimini *JSON yoluna*geçirin.
 2. Aşağıdaki JSON yolu ayarlarını uygulayın:
 
-    JSON yol tablosu: `$.store.books`. Bu alan, tablo kökünün yolunu temsil eder. Bu durumda mağazanın defter envanterinden bahseder. Tablo yolu, JSON ile kitap bilgilerine filtre uygular.
+    JSON yol tablosu: `$.store.books` . Bu alan, tablo kökünün yolunu temsil eder. Bu durumda mağazanın defter envanterinden bahseder. Tablo yolu, JSON ile kitap bilgilerine filtre uygular.
 
    | Sütun kimlikleri | Sütun JSON yolu |
    |:-----------|:-----------------|

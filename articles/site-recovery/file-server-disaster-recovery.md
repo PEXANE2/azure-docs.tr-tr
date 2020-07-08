@@ -9,10 +9,9 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858743"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak bir dosya sunucusunu koruma 
@@ -66,10 +65,10 @@ Site Recovery çoğaltma işlem uygulamadan bağımsız olduğu için bu öneril
 
 | Kaynak  |İkincil siteye  |Azure’a
 |---------|---------|---------|
-|Azure|  -|Yes|
-|Hyper-V|  Yes  |Yes
-|VMware  |Yes|  Yes
-|Fiziksel sunucu|  Yes  |Yes
+|Azure|  -|Evet|
+|Hyper-V|  Evet  |Evet
+|VMware  |Evet|  Evet
+|Fiziksel sunucu|  Evet  |Evet
  
 
 > [!IMPORTANT]

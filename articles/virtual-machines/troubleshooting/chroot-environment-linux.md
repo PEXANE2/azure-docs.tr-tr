@@ -14,10 +14,9 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864688"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux Kurtarma sanal makinesinde chroot ortamı
@@ -36,7 +35,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -84,7 +83,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 
@@ -103,7 +102,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -151,7 +150,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 
@@ -173,7 +172,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -195,7 +194,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       #lvscan
       ```
 
-   1. LVM `lsblk` adlarını almak için komutunu kullanın:
+   1. `lsblk`LVM adlarını almak için komutunu kullanın:
 
       ```
       [user@myvm ~]$ lsblk
@@ -264,7 +263,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 
@@ -286,7 +285,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -308,7 +307,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       #lvscan
       ```
 
-   1. LVM `lsblk` adlarını almak için komutunu kullanın:
+   1. `lsblk`LVM adlarını almak için komutunu kullanın:
 
       ```
       [user@myvm ~]$ lsblk
@@ -374,7 +373,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 
@@ -393,7 +392,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -443,7 +442,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 
@@ -462,7 +461,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
 
       `#sudo su -`
 
-   1. Kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
+   1. Kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, **SCSI** disklerinde filtrelemek için **dmesg** kullanır:
 
       `dmesg | grep SCSI`
 
@@ -512,7 +511,7 @@ Bu makalede, Linux 'ta kurtarma sanal makinesinde (VM) Chroot ortamında nasıl 
       ```
 
       > [!NOTE]
-      > Hatayı `unable to unmount /rescue`alırsanız, umorekıt komutuna bir-l seçeneğini ekleyin.
+      > Hatayı alırsanız `unable to unmount /rescue` , umorekıt komutuna bir-l seçeneğini ekleyin.
       >
       > Örnek: `umount -l /rescue`
 

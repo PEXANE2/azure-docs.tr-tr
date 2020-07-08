@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81867972"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
@@ -58,7 +57,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**' a tıklayın.
+13. **Oluştur**'a tıklayın.
 
 Özel bulut sağlama işlemi başlar.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
@@ -114,7 +113,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
-4. **Kullanıcılar**’ı seçin.
+4. **Kullanıcıları**seçin.
 5. **VPN yapılandırmadan indir**' e tıklayın.
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)

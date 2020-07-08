@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871252"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
@@ -38,7 +37,7 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 * Azure portal Azure Marketi 'nden SQL sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Çözümü yüklemek için Azure aboneliğinde bir yönetici veya katkıda bulunan olması gerekir.
 
   > [!NOTE]
-  > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
+  > Çözümü ekledikten sonra, AdvisorAssessment.exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
   >
   >
 
@@ -177,8 +176,8 @@ Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme 
 
 3. Yoksaymak istediğiniz önerileri seçin. Sonraki yordamda RecommendationId için değerleri kullanacaksınız.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir ıgnorereyorum geçişleri. txt metin dosyası oluşturmak ve kullanmak için
-1. Ignorereyorumgeçişleri. txt adlı bir dosya oluşturun.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir IgnoreRecommendations.txt metin dosyası oluşturmak ve kullanmak için
+1. IgnoreRecommendations.txt adlı bir dosya oluşturun.
 2. Azure Izleyici 'nin ayrı bir satırda yok saymasını istediğiniz her öneri için her bir RecommendationId yapıştırın veya yazın, sonra dosyayı kaydedip kapatın.
 3. Azure Izleyici 'nin önerileri yoksaymasını istediğiniz her bilgisayarda dosyayı aşağıdaki klasöre yerleştirin.
    * Microsoft Monitoring Agent olan bilgisayarlarda (doğrudan veya Operations Manager üzerinden bağlı)- *systemdrive*: \Program Files\Microsoft Monitoring Tors t\agent
@@ -192,7 +191,7 @@ Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz, tüm ıgnorereyorum. txt dosyalarını kaldırın veya RecommendationIDs kaldırabilir.
+3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz IgnoreRecommendations.txt dosyaları kaldırın veya RecommendationIDs kaldırabilir.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL Sistem Durumu Denetimi çözümü SSS
 
@@ -226,7 +225,7 @@ Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabil
 
 *Veri toplamayı yapan işlemin adı nedir?*
 
-* Danışmanorassessment. exe
+* AdvisorAssessment.exe
 
 *Verilerin toplanması ne kadar sürer?*
 

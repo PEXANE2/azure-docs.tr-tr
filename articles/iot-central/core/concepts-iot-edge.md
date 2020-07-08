@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759094"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını bir Azure IoT Central uygulamasına bağlama
@@ -30,7 +29,7 @@ IoT Edge üç bileşenden oluşur:
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Ağ geçidi ve modüllerle aşağı akış cihaz ilişkileri
 
-Aşağı akış cihazları `$edgeHub` modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlanabilir. Bu IoT Edge cihaz, bu senaryoda saydam bir ağ geçidi haline gelir.
+Aşağı akış cihazları modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlanabilir `$edgeHub` . Bu IoT Edge cihaz, bu senaryoda saydam bir ağ geçidi haline gelir.
 
 ![Saydam ağ geçidi diyagramı](./media/concepts-iot-edge/gateway-transparent.png)
 
@@ -38,11 +37,11 @@ Aşağı akış cihazları, özel bir modül aracılığıyla bir IoT Edge Gatew
 
 ![Özel modül bağlantısının diyagramı](./media/concepts-iot-edge/gateway-module.png)
 
-Aşağıdaki diyagramda her iki tür modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlantı gösterilmektedir (özel ve `$edgeHub`).  
+Aşağıdaki diyagramda her iki tür modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlantı gösterilmektedir (özel ve `$edgeHub` ).  
 
 ![Her iki bağlantı modülü ile bağlanma diyagramı](./media/concepts-iot-edge/gateway-module-transparent.png)
 
-Son olarak, aşağı akış cihazları birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve `$edgeHub` modülle bağlanan aşağı akış cihazları gösterilmektedir. 
+Son olarak, aşağı akış cihazları birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve modülle bağlanan aşağı akış cihazları gösterilmektedir `$edgeHub` . 
 
 ![Birden çok özel modül aracılığıyla bağlantı diyagramı](./media/concepts-iot-edge/gateway-module2-transparent.png)
 

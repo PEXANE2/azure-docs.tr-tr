@@ -8,10 +8,9 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792233"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLı ve yönetilen diskleri kullanarak bir Linux VM 'nin kopyasını oluşturma
@@ -115,7 +114,7 @@ Kopyalanmış VM 'niz için bir sanal ağ altyapısı oluşturmak istiyorsanız,
 
 [Az VM Create](/cli/azure/vm#az-vm-create)kullanarak bir VM oluşturun.
 
-İşletim sistemi diski (`--attach-os-disk`) olarak kullanılacak kopyalanmış yönetilen diski aşağıdaki gibi belirtin:
+İşletim sistemi diski () olarak kullanılacak kopyalanmış yönetilen diski `--attach-os-disk` aşağıdaki gibi belirtin:
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

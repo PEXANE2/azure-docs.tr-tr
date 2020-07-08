@@ -11,10 +11,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856023"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning izleme verileri başvurusu
@@ -73,7 +72,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | MinimumNodeCount | Kümenin en düşük düğüm sayısı |
 | MaximumNodeCount | Kümenin en fazla düğüm sayısı |
 | Nodeanlaşlocationoption | Düğümün nasıl serbest bırakılmasının gerektiği |
-| Yayımcı | Küme türü yayımcısı |
+| Publisher | Küme türü yayımcısı |
 | Sunduğu | Kümenin oluşturulduğu teklif |
 | Sku | Küme içinde oluşturulan düğüm/VM SKU 'su |
 | Sürüm | Düğüm/VM oluşturulurken kullanılan görüntünün sürümü |
@@ -109,7 +108,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | VmSize | Düğümün VM boyutu |
 | VmFamilyName | Düğümün ait olduğu VM ailesi |
 | VmPriority | Oluşturulan düğümün önceliği/LowPriority |
-| Yayımcı | VM görüntüsünün yayımcısı, ör. Microsoft-dsvm |
+| Publisher | VM görüntüsünün yayımcısı, ör. Microsoft-dsvm |
 | Sunduğu | VM oluşturma ile ilişkili teklif |
 | Sku | Oluşturulan düğüm/VM SKU 'su |
 | Sürüm | Düğüm/VM oluşturulurken kullanılan görüntünün sürümü |
@@ -136,7 +135,7 @@ Aşağıdaki tablolarda Azure Machine Learning tüm ölçümler için toplanan p
 | Model kaydı başarısız oldu | Sayı | Başarısız olan model kaydı sayısı. |
 | Model kaydı başarılı oldu | Sayı | Başarılı olan model kaydı sayısı. |
 
-**Kotasının**
+**Kota**
 
 Kota bilgileri yalnızca Azure Machine Learning işlem amaçlıdır.
 
@@ -180,7 +179,7 @@ Aşağıdakiler, kaynak ölçümlerini filtrelemek için kullanılabilen boyutla
 | NodeId | İşin çalıştığı yerde oluşturulan düğümün KIMLIĞI. |
 | RunId | Çalışma/iş KIMLIĞI. |
 
-**Çalışmaz**
+**Çalıştır**
 
 Eğitim çalıştırmaları hakkında bilgiler.
 

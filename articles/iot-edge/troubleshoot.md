@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858604"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
@@ -21,12 +20,12 @@ Ortamınızda Azure IoT Edge çalışan sorunlarla karşılaşırsanız, sorun g
 
 ## <a name="run-the-check-command"></a>' Check ' komutunu çalıştırın
 
-Sorun giderme IoT Edge ilk adımlarınız, genel sorunlar için yapılandırma `check` ve bağlantı testlerinin bir koleksiyonunu çalıştıran komutunu kullanmaktır. Komut `check` , [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve üzeri sürümlerde kullanılabilir.
+Sorun giderme IoT Edge ilk adımlarınız `check` , genel sorunlar için yapılandırma ve bağlantı testlerinin bir koleksiyonunu çalıştıran komutunu kullanmaktır. `check`Komut, [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve üzeri sürümlerde kullanılabilir.
 
 >[!NOTE]
 >IoT Edge cihaz bir proxy sunucusunun arkasındaysa sorun giderme aracı bağlantı denetimlerini çalıştıramıyor.
 
-`check` Komutu aşağıdaki gibi çalıştırabilirsiniz veya seçeneklerin tamamı listesini görmek için `--help` bayrağını dahil edebilirsiniz:
+`check`Komutu aşağıdaki gibi çalıştırabilirsiniz veya `--help` seçeneklerin tamamı listesini görmek için bayrağını dahil edebilirsiniz:
 
 Linux 'ta:
 
@@ -50,9 +49,9 @@ Bu aracın çalıştığı her bir tanılama denetimi hakkında bilgi için, bir
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>' Support-demeti ' komutuyla hata ayıklama bilgilerini toplayın
 
-IoT Edge cihazdan Günlükler toplamanız gerektiğinde, en uygun yöntem `support-bundle` komutunu kullanmaktır. Varsayılan olarak, bu komut modül, IoT Edge Güvenlik Yöneticisi ve kapsayıcı altyapısı günlükleri, `iotedge check` JSON çıktısı ve diğer yararlı hata ayıklama bilgilerini toplar. Bunları kolay paylaşım için tek bir dosya halinde sıkıştırır. Komut `support-bundle` , [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) ve üzeri sürümlerde kullanılabilir.
+IoT Edge cihazdan Günlükler toplamanız gerektiğinde, en uygun yöntem `support-bundle` komutunu kullanmaktır. Varsayılan olarak, bu komut modül, IoT Edge Güvenlik Yöneticisi ve kapsayıcı altyapısı günlükleri, `iotedge check` JSON çıktısı ve diğer yararlı hata ayıklama bilgilerini toplar. Bunları kolay paylaşım için tek bir dosya halinde sıkıştırır. `support-bundle`Komut, [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) ve üzeri sürümlerde kullanılabilir.
 
-Geçmişteki günlüklere `support-bundle` ne kadar süre `--since` almak istediğinizi belirtmek için komutunu bayrağıyla çalıştırın. Örneğin `6h` , son altı günden `6d` `6m` bu yana son altı dakikadan bu yana son altı saat sonra günlükleri alır. Seçeneklerin tamamı `--help` listesini görmek için bayrağını ekleyin.
+`support-bundle` `--since` Geçmişteki günlüklere ne kadar süre almak istediğinizi belirtmek için komutunu bayrağıyla çalıştırın. Örneğin, son altı günden bu yana son altı dakikadan bu yana son altı `6h` saat sonra günlükleri alır `6d` `6m` . `--help`Seçeneklerin tamamı listesini görmek için bayrağını ekleyin.
 
 Linux 'ta:
 
@@ -67,11 +66,11 @@ iotedge support-bundle --since 6h
 ```
 
 > [!WARNING]
-> `support-bundle` Komutun çıktısı ana bilgisayar, cihaz ve modül adları, modülleriniz tarafından günlüğe kaydedilen bilgiler içerebilir. Çıktıyı ortak bir forumunda paylaşımında lütfen unutmayın.
+> `support-bundle`Komutun çıktısı ana bilgisayar, cihaz ve modül adları, modülleriniz tarafından günlüğe kaydedilen bilgiler içerebilir. Çıktıyı ortak bir forumunda paylaşımında lütfen unutmayın.
 
 ## <a name="check-your-iot-edge-version"></a>IoT Edge sürümünüzü denetleyin
 
-IoT Edge eski bir sürümünü çalıştırıyorsanız, yükseltme sorununuzu çözebilir. `iotedge check` Araç, IoT Edge güvenlik arka plan programının en son sürümü olup olmadığını denetler, ancak IoT Edge hub ve aracı modüllerinin sürümlerini denetlemez. Cihazınızdaki çalışma zamanı modüllerinin sürümünü denetlemek için, ve `iotedge logs edgeAgent` `iotedge logs edgeHub`komutlarını kullanın. Modül başladığında sürüm numarası günlüklerde belirtilir.
+IoT Edge eski bir sürümünü çalıştırıyorsanız, yükseltme sorununuzu çözebilir. `iotedge check`Araç, IoT Edge güvenlik arka plan programının en son sürümü olup olmadığını denetler, ancak IoT Edge hub ve aracı modüllerinin sürümlerini denetlemez. Cihazınızdaki çalışma zamanı modüllerinin sürümünü denetlemek için, ve komutlarını kullanın `iotedge logs edgeAgent` `iotedge logs edgeHub` . Modül başladığında sürüm numarası günlüklerde belirtilir.
 
 Cihazınızı güncelleştirme hakkında yönergeler için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
 
@@ -195,7 +194,7 @@ iotedge logs <container name>
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge hub 'ından giden iletileri görüntüleme
 
-IoT Edge hub 'ından gelen iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden Öngörüler toplayabilirsiniz. Bu kapsayıcılarda ayrıntılı günlükleri açmak için, YAML `RuntimeLogLevel` yapılandırma dosyanızda öğesini ayarlayın. Dosyayı açmak için:
+IoT Edge hub 'ından gelen iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden Öngörüler toplayabilirsiniz. Bu kapsayıcılarda ayrıntılı günlükleri açmak için, `RuntimeLogLevel` YAML yapılandırma dosyanızda öğesini ayarlayın. Dosyayı açmak için:
 
 Linux 'ta:
 

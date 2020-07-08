@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024889"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
@@ -117,7 +116,7 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyo
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.

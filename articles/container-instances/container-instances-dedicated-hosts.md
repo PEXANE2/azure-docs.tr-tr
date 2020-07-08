@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025042"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
@@ -28,17 +27,17 @@ Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren
 > Adanmış SKU kullanımı, yalnızca şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin.
 >
 
-API sürüm 2019-12-01 ' den başlayarak, bir acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir `sku` özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+API sürüm 2019-12-01 ' den başlayarak, bir `sku` acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-`sku` Özelliği aşağıdaki değerlerden birine sahip olabilir:
+`sku`Özelliği aşağıdaki değerlerden birine sahip olabilir:
 * `Standard`-Hiper yönetici düzeyinde güvenliği güvence altına almaya devam eden standart acı dağıtımı seçeneği 
 * `Dedicated`-kapsayıcı grubu için adanmış fiziksel konaklarla iş yükü düzeyi yalıtımı için kullanılır
 
 ## <a name="modify-your-json-deployment-template"></a>JSON dağıtım şablonunuzu değiştirme
 
 Dağıtım şablonunuzda, aşağıdaki özellikleri değiştirin veya ekleyin:
-* Altında `resources`, olarak `apiVersion` `2019-12-01`ayarlayın.
-* Kapsayıcı grubu özellikleri altında, değerine `sku` `Dedicated`sahip bir özellik ekleyin.
+* Altında `resources` , `apiVersion` olarak ayarlayın `2019-12-01` .
+* Kapsayıcı grubu özellikleri altında, `sku` değerine sahip bir özellik ekleyin `Dedicated` .
 
 Ayrılmış SKU 'yu kullanan bir kapsayıcı grubu dağıtım şablonunun kaynaklar bölümü için örnek bir kod parçacığı aşağıda verilmiştir:
 

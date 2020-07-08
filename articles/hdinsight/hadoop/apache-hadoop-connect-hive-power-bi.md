@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858344"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight’ta ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirme
@@ -22,7 +21,7 @@ Microsoft Power BI Desktop 'yi ODBC kullanarak Azure HDInsight 'a bağlamayı ve
 > [!IMPORTANT]
 > Power BI Desktop içinde Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak için Hive ODBC sürücüsünden yararlanabilirsiniz. Ancak, Hive sorgu altyapısının etkileşimli olmayan doğası olarak verilen bı iş yükleri için önerilmez. [HDInsight etkileşimli sorgu Bağlayıcısı](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) ve [HDInsight Spark Bağlayıcısı](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) , performansı için daha iyi seçimlerdir.
 
-Bu makalede, verileri Power BI için bir `hivesampletable` Hive tablosundan yüklersiniz. Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
+Bu makalede, verileri `hivesampletable` Power BI için bir Hive tablosundan yüklersiniz. Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
 
 ![Eşleme raporu Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
@@ -46,7 +45,7 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 1. Power BI Desktop'ı başlatın.
 
-1. Üstteki menüden, **ana** > **veri** > Al**daha fazla...** seçeneğine gidin.
+1. Üstteki menüden, **ana**  >  **veri al**  >  **daha fazla...** seçeneğine gidin.
 
     ![HDInsight Excel Power BI açık verileri](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

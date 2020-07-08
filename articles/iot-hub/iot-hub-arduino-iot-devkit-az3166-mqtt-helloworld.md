@@ -11,10 +11,9 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733485"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Bir MQTT sunucusuna ileti gönderme
@@ -49,11 +48,11 @@ Bu projede şunları öğrenirsiniz:
 Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQTT örneklerine**gidin ve **mqttclient**' ı seçin. İçindeki bir proje klasörüyle yeni bir VS Code penceresi açılır.
 
 > [!NOTE]
-> Ayrıca, komut paletinden örnek de açabilirsiniz. Komut `Ctrl+Shift+P` paletini açmak için ( `Cmd+Shift+P`MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+> Ayrıca, komut paletinden örnek de açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Arduino taslağı oluşturun ve DevKit 'e yükleyin
 
-Çalıştırılacak `Ctrl+P` `task device-upload`tür (MacOS `Cmd+P`:). Karşıya yükleme tamamlandıktan sonra DevKit yeniden başlatılır ve taslağı çalıştırır.
+`Ctrl+P`Çalıştırılacak tür (MacOS: `Cmd+P` ) `task device-upload` . Karşıya yükleme tamamlandıktan sonra DevKit yeniden başlatılır ve taslağı çalıştırır.
 
 ![cihaz-karşıya yükle](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
@@ -64,11 +63,11 @@ Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQT
 
 VS Code ' de, seri Izleyiciyi açmak ve ayarlamak için şu yordamı izleyin:
 
-1. Doğru com `COM[X]` bağlantı noktasını ayarlamak için durum çubuğundaki sözcüğe tıklayın `STMicroelectronics`: ![set-com-Port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. `COM[X]`Doğru com bağlantı noktasını ayarlamak için durum çubuğundaki sözcüğe tıklayın `STMicroelectronics` : ![ set-com-Port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Durum çubuğundaki güç tak simgesine tıklayarak seri izleyici 'yi açın: ![seri izleyici](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Durum çubuğundaki güç tak simgesine tıklayarak seri izleyici 'yi açın: ![ seri izleyici](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Durum çubuğunda, baud hızını temsil eden sayıya tıklayın ve şu şekilde `115200`ayarlayın: ![set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Durum çubuğunda, baud hızını temsil eden sayıya tıklayın ve şu şekilde ayarlayın `115200` : ![ set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 Seri Izleyici, örnek taslak tarafından gönderilen tüm iletileri görüntüler. Taslak, DevKit 'i Wi-Fi ' a bağlar. Wi-Fi bağlantısı başarılı olduktan sonra, taslak MQTT aracısına bir ileti gönderir. Bundan sonra örnek, sırasıyla QoS 0 ve QoS 1 kullanarak iki "iot.eclipse.org" iletisi gönderir.
 

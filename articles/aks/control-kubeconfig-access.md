@@ -5,15 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890889"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) Kubernetes yapılandırma dosyasına erişim tanımlamak için Azure rol tabanlı erişim denetimlerini kullanma
 
-`kubectl` Aracı kullanarak Kubernetes kümeleriyle etkileşim kurabilirsiniz. Azure CLı, kullanarak `kubectl`aks kümelerinize bağlanmak için erişim kimlik bilgilerini ve yapılandırma bilgilerini almanın kolay bir yolunu sunar. Bu Kubernetes yapılandırma (*kubeconfig*) bilgilerini kimlerin alabilirim ve sahip oldukları izinleri kısıtlamak için Azure rol tabanlı erişim DENETIMLERINI (RBAC) kullanabilirsiniz.
+Aracı kullanarak Kubernetes kümeleriyle etkileşim kurabilirsiniz `kubectl` . Azure CLı, kullanarak AKS kümelerinize bağlanmak için erişim kimlik bilgilerini ve yapılandırma bilgilerini almanın kolay bir yolunu sunar `kubectl` . Bu Kubernetes yapılandırma (*kubeconfig*) bilgilerini kimlerin alabilirim ve sahip oldukları izinleri kısıtlamak için Azure rol tabanlı erişim DENETIMLERINI (RBAC) kullanabilirsiniz.
 
 Bu makalede, bir AKS kümesi için yapılandırma bilgilerini kimlerin alabilirim olduğunu sınırlayan RBAC rollerinin nasıl atanacağı gösterilmektedir.
 
@@ -25,7 +24,7 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü de çalıştırıyor olman
 
 ## <a name="available-cluster-roles-permissions"></a>Kullanılabilir küme rolleri izinleri
 
-`kubectl` Aracı kullanarak bir aks kümesiyle etkileşim kurarken, küme bağlantı bilgilerini tanımlayan bir yapılandırma dosyası kullanılır. Bu yapılandırma dosyası genellikle *~/. Kube/config*dizininde depolanır. Bu *kubeconfig* dosyasında birden çok küme tanımlanabilir. [Kubectl config Use-Context][kubectl-config-use-context] komutunu kullanarak kümeler arasında geçiş yapabilirsiniz.
+Aracı kullanarak bir AKS kümesiyle etkileşim kurarken `kubectl` , küme bağlantı bilgilerini tanımlayan bir yapılandırma dosyası kullanılır. Bu yapılandırma dosyası genellikle *~/. Kube/config*dizininde depolanır. Bu *kubeconfig* dosyasında birden çok küme tanımlanabilir. [Kubectl config Use-Context][kubectl-config-use-context] komutunu kullanarak kümeler arasında geçiş yapabilirsiniz.
 
 [Az aks Get-Credentials][az-aks-get-credentials] komutu, BIR aks kümesinin erişim kimlik bilgilerini almanıza ve bunları *kubeconfig* dosyasına birleştirmenize imkan tanır. Bu kimlik bilgilerine erişimi denetlemek için Azure rol tabanlı erişim denetimlerini (RBAC) kullanabilirsiniz. Bu Azure RBAC rolleri, *kubeconfig* dosyasını kimlerin alabileceklerini ve daha sonra küme içinde sahip oldukları izinleri tanımlamanızı sağlar.
 
@@ -71,7 +70,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Bir Azure AD grubuna izinler atamak istiyorsanız, önceki örnekte gösterilen `--assignee` parametreyi bir *Kullanıcı*yerine *grubun* nesne kimliğiyle güncelleştirin. Bir grubun nesne KIMLIĞINI almak için [az Ad Group Show][az-ad-group-show] komutunu kullanın. Aşağıdaki örnek, *AppDev*ADLı Azure AD grubu IÇIN nesne kimliğini alır:`az ad group show --group appdev --query objectId -o tsv`
+> Bir Azure AD grubuna izinler atamak istiyorsanız, `--assignee` Önceki örnekte gösterilen parametreyi bir *Kullanıcı*yerıne *grubun* nesne kimliğiyle güncelleştirin. Bir grubun nesne KIMLIĞINI almak için [az Ad Group Show][az-ad-group-show] komutunu kullanın. Aşağıdaki örnek, *AppDev*ADLı Azure AD grubu IÇIN nesne kimliğini alır:`az ad group show --group appdev --query objectId -o tsv`
 
 Daha önce, *küme kullanıcı rolü* için bir önceki atamayı gerektiği şekilde değiştirebilirsiniz.
 
@@ -127,7 +126,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>Rol izinlerini kaldır
 
-Rol atamalarını kaldırmak için [az role atama Delete][az-role-assignment-delete] komutunu kullanın. Önceki komutlarda elde edilen hesap KIMLIĞI ve küme kaynak KIMLIĞI ' ni belirtin. Rolü bir kullanıcı yerine bir gruba atadıysanız, `--assignee` parametre için hesap nesne kimliği yerine uygun Grup nesnesi kimliğini belirtin:
+Rol atamalarını kaldırmak için [az role atama Delete][az-role-assignment-delete] komutunu kullanın. Önceki komutlarda elde edilen hesap KIMLIĞI ve küme kaynak KIMLIĞI ' ni belirtin. Rolü bir kullanıcı yerine bir gruba atadıysanız, parametre için hesap nesne KIMLIĞI yerine uygun Grup nesnesi KIMLIĞINI belirtin `--assignee` :
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: a7da6bc23d797e0e89b2338f446fc850b0fd0577
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797168"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
@@ -24,7 +23,7 @@ Apache HBase yapılandırması **HBase configs** sekmesinden değiştirilir. Aş
 
 HBase yığın boyutu, *bölgeye* ve *ana* sunuculara göre megabayt cinsinden kullanılacak maksimum yığın miktarını belirtir. Varsayılan değer 1.000 MB 'tır. Bu değerin küme iş yükü için ayarlanmış olması gerekir.
 
-1. Değiştirmek için, HBase **configs** sekmesindeki `HBASE_HEAPSIZE` **Gelişmiş HBase-env** bölmesine gidin ve ayarı bulun.
+1. Değiştirmek için, HBase **configs** sekmesindeki **Gelişmiş HBase-env** bölmesine gidin ve `HBASE_HEAPSIZE` ayarı bulun.
 
 1. Varsayılan değeri 5.000 MB olarak değiştirin.
 
@@ -36,7 +35,7 @@ Okuma ağır iş yüklerinin performansını artırmak için aşağıdaki konfig
 
 ### <a name="block-cache-size"></a>Blok önbelleği boyutu
 
-Blok önbelleği, okuma önbelleğidir. Boyutu `hfile.block.cache.size` parametresi tarafından denetlenir. Varsayılan değer, toplam bölge sunucu belleğinin yüzde 40 ' i olan 0,4 ' dir. Blok önbelleği boyutunun ne kadar büyük olması, rastgele okumaların daha hızlı olması olur.
+Blok önbelleği, okuma önbelleğidir. Boyutu parametresi tarafından denetlenir `hfile.block.cache.size` . Varsayılan değer, toplam bölge sunucu belleğinin yüzde 40 ' i olan 0,4 ' dir. Blok önbelleği boyutunun ne kadar büyük olması, rastgele okumaların daha hızlı olması olur.
 
 1. Bu parametreyi değiştirmek için, HBase **configs** sekmesindeki **Ayarlar** sekmesine gidin ve ardından **okuma arabelleklerine ayrılan regionserver 'ın%**' i bulun.
 
@@ -61,7 +60,7 @@ Bu `hbase.client.scanner.caching` ayar, `next` Yöntem bir tarayıcıda çağrı
 ![Getirilen Apache HBase satır sayısı](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
-> Bir tarayıcıdaki sonraki yöntemin çağrılması ile ilgili saatin tarayıcı zaman aşımından daha büyük olması için değeri ayarlamayın. Tarayıcı zaman aşımı süresi, `hbase.regionserver.lease.period` özelliği tarafından tanımlanır.
+> Bir tarayıcıdaki sonraki yöntemin çağrılması ile ilgili saatin tarayıcı zaman aşımından daha büyük olması için değeri ayarlamayın. Tarayıcı zaman aşımı süresi, özelliği tarafından tanımlanır `hbase.regionserver.lease.period` .
 
 ## <a name="optimize-write-heavy-workloads"></a>Yazma ağır iş yüklerini iyileştirme
 
@@ -69,7 +68,7 @@ Aşağıdaki konfigürasyonlar, yazma ağır iş yüklerinin performansını art
 
 ### <a name="maximum-region-file-size"></a>En büyük bölge dosyası boyutu
 
-HBase verileri *hfile*adlı dahili bir dosya biçiminde depolar. Özelliği `hbase.hregion.max.filesize` , bir bölge için tek bir hfile boyutunu tanımlar.  Bir bölgedeki tüm HFiles değerlerinin bu ayardan büyük olması halinde bölge iki bölgeye ayrılır.
+HBase verileri *hfile*adlı dahili bir dosya biçiminde depolar. Özelliği, `hbase.hregion.max.filesize` bir bölge için tek bir HFile boyutunu tanımlar.  Bir bölgedeki tüm HFiles değerlerinin bu ayardan büyük olması halinde bölge iki bölgeye ayrılır.
 
 ![' Apache HBase HRegion en fazla dosya boyutu '](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
 
@@ -77,23 +76,23 @@ Bölge dosya boyutu ne kadar büyükse, bölme sayısı küçülür. En fazla ya
 
 ### <a name="avoid-update-blocking"></a>Güncelleştirme engellemeyi önleyin
 
-* Özelliği `hbase.hregion.memstore.flush.size` , memstore 'nin diske boşaltılmakta olduğu boyutu tanımlar. Varsayılan boyut 128 MB 'tır.
+* Özelliği, `hbase.hregion.memstore.flush.size` Memstore 'nin diske boşaltılmakta olduğu boyutu tanımlar. Varsayılan boyut 128 MB 'tır.
 
-* HBase bölgesi blok çarpanı tarafından `hbase.hregion.memstore.block.multiplier`tanımlanır. Varsayılan değer 4'tür. İzin verilen en fazla 8.
+* HBase bölgesi blok çarpanı tarafından tanımlanır `hbase.hregion.memstore.block.multiplier` . Varsayılan değer 4'tür. İzin verilen en fazla 8.
 
-* Memstore (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) bayt ise, HBase tarafından güncelleştirmeler engellenir.
+* Memstore () bayt ise, HBase tarafından güncelleştirmeler engellenir `hbase.hregion.memstore.flush.size`  *  `hbase.hregion.memstore.block.multiplier` .
 
-    Varsayılan Temizleme boyutu ve blok çarpanı değerleri ile, Memstore boyutu 128 * 4 = 512 MB olduğunda güncelleştirmeler engellenir. Güncelleştirme engelleme sayısını azaltmak için değerini artırın `hbase.hregion.memstore.block.multiplier`.
+    Varsayılan Temizleme boyutu ve blok çarpanı değerleri ile, Memstore boyutu 128 * 4 = 512 MB olduğunda güncelleştirmeler engellenir. Güncelleştirme engelleme sayısını azaltmak için değerini artırın `hbase.hregion.memstore.block.multiplier` .
 
 ![Apache HBase bölgesi blok çarpanı](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 ## <a name="define-memstore-size"></a>Memstore boyutunu tanımla
 
-Memstore boyutu `hbase.regionserver.global.memstore.UpperLimit` ve `hbase.regionserver.global.memstore.LowerLimit` parametreleri tarafından tanımlanır. Bu değerlerin birbirlerine eşit ayarlanması yazma sırasında duraklar azaltır (Ayrıca daha sık temizlemeye devam ediyor) ve daha fazla yazma performansı elde edin.
+Memstore boyutu ve parametreleri tarafından tanımlanır `hbase.regionserver.global.memstore.UpperLimit` `hbase.regionserver.global.memstore.LowerLimit` . Bu değerlerin birbirlerine eşit ayarlanması yazma sırasında duraklar azaltır (Ayrıca daha sık temizlemeye devam ediyor) ve daha fazla yazma performansı elde edin.
 
 ## <a name="set-memstore-local-allocation-buffer"></a>Memstore yerel ayırma arabelleğini ayarla
 
-Memstore yerel ayırma arabelleği kullanımı, özelliği `hbase.hregion.memstore.mslab.enabled`tarafından belirlenir. Etkinleştirildiğinde (true), bu ayar ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true şeklindedir.
+Memstore yerel ayırma arabelleği kullanımı, özelliği tarafından belirlenir `hbase.hregion.memstore.mslab.enabled` . Etkinleştirildiğinde (true), bu ayar ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true şeklindedir.
 
 ![HBase. hregion. memstore. mslab. Enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
@@ -102,5 +101,5 @@ Memstore yerel ayırma arabelleği kullanımı, özelliği `hbase.hregion.memsto
 * [HDInsight kümelerini Apache ambarı Web Kullanıcı arabirimi ile yönetme](hdinsight-hadoop-manage-ambari.md)
 * [Apache ambarı REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Kümeleri iyileştirme](./hdinsight-changing-configs-via-ambari.md)
-* [Apache Hive iyileştirin](./optimize-hive-ambari.md)
-* [Apache Pig 'i iyileştirme](./optimize-pig-ambari.md)
+* [Apache Hive’ı iyileştirme](./optimize-hive-ambari.md)
+* [Apache Pig’i iyileştirme](./optimize-pig-ambari.md)

@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857425"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
@@ -56,9 +55,9 @@ Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belged
 
    c. **Spark sürümü** açılan listesinde **Spark 2.3.2 (Scala 2.11.8)** öğesini seçin.
 
-   d. **Son**' u seçin.
+   d. **Son**'u seçin.
 
-3. Kodunuzu projede açmak için **src** > **Main** > **Scala** ' yı seçin. Bu örnek **AgeMean_Div ()** betiğini kullanır.
+3. **src**  >  **main**  >  Kodunuzu projede açmak için src Main**Scala** ' yı seçin. Bu örnek **AgeMean_Div ()** betiğini kullanır.
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight kümesinde Spark Scala/Java uygulaması çalıştırma
 
@@ -68,7 +67,7 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
    ![HDI IntelliJ yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini (**+**) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
+2. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
 
    ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
@@ -90,7 +89,7 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
 İş gönderimi başarısız olursa, daha fazla hata ayıklama için başarısız iş profilini yerel makineye indirebilirsiniz.
 
-1. **Microsoft Azure Depolama Gezgini**açın, başarısız iş için kümenin HDInsight hesabını bulun, ilgili konumdan başarısız olan iş kaynaklarını indirin: **\\\hdp\parlak 2-Events. Spark-arızaları\\\<uygulama kimliği** , yerel bir klasöre>. **Etkinlik** penceresinde indirme ilerleme durumu gösterilir.
+1. **Microsoft Azure Depolama Gezgini**açın, başarısız iş için kümenin HDInsight hesabını bulun, ilgili konumdan başarısız iş kaynaklarını indirin: **\hdp\parlak 2-Events \\ . Spark \\ \<application ID> -başarısızlıklarını** yerel bir klasöre yükleyin. **Etkinlik** penceresinde indirme ilerleme durumu gösterilir.
 
    ![İndirme hatası Azure Depolama Gezgini](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

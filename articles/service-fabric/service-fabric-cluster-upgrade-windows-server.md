@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793151"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan Service Fabric sürümünü yükseltme 
@@ -94,7 +93,7 @@ Küme düğümlerinizin [Microsoft Indirme merkezi](https://download.microsoft.c
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>Otomatik sağlama vs. el ile sağlama
-En son kod sürümü için otomatik indirmeyi ve kaydolmayı etkinleştirmek üzere Service Fabric güncelleştirme hizmetini ayarlayın. Yönergeler için [tek başına pakette](service-fabric-cluster-standalone-package-contents.md) *Tools\servicefabricupdateservice,zip\ Readme_InstructionsAndHowTos. txt* dosyasına bakın.
+En son kod sürümü için otomatik indirmeyi ve kaydolmayı etkinleştirmek üzere Service Fabric güncelleştirme hizmetini ayarlayın. Yönergeler için bkz. [tek başına paketteki](service-fabric-cluster-standalone-package-contents.md) *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* .
 
 El ile işlem için bu yönergeleri izleyin.
 

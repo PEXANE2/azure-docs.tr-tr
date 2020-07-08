@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793049"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC 'yi yüklemek için CloudSimple özel bulutunuzu iyileştirin
@@ -44,16 +43,16 @@ Oracle RAC sanal makinelerinde, belirli bir işlev için kullanılan birden çok
 
 Aşağıdaki örnek aşağıdaki tabloda tanımlanan diskleri kullanır.
 
-| Disk                                      | Amaç                                       | Paylaşılan disk |
+| Disk                                      | Amaç                                       | Paylaşılan Disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| İşletim Sistemi                                        | İşletim sistemi diski                         | No          |
-| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | No          |
-| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | No          |
-| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | No          |
-| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Yes         |
-| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Yes         |
+| İşletim Sistemi                                        | İşletim sistemi diski                         | Hayır          |
+| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | Hayır          |
+| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | Hayır          |
+| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | Hayır          |
+| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Evet         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Evet         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Evet         |
+| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Evet         |
 
 ![Oracle sanal makine diski yapılandırması](media/oracle-vmdk.png)
 
@@ -174,8 +173,8 @@ vSAN ilkeleri VM disklerinde depolanan veriler için tolerans ve disk şeritleme
 3. Sol menüden **VM depolama ilkeleri** ' ni seçin ve ardından **VM depolama ilkesi oluştur**' u seçin.
 4. İlke için anlamlı bir ad girin ve **İleri**' ye tıklayın.
 5. **İlke yapısı** bölümünde, **vSAN depolaması için kuralları etkinleştir** ' i seçin ve **İleri**' ye tıklayın.
-6. **VSAN** > **kullanılabilirliği** bölümünde, site olağanüstü durum toleransı için **hiçbiri** ' ni seçin. Hatalara yönelik tolerans için, istenen FTT için **RAID-yansıtma** seçeneğini belirleyin.
-    ![vSAN ayarları](media/oracle-rac-storage-wizard-vsan.png).
+6. **VSAN**  >  **kullanılabilirliği** bölümünde, site olağanüstü durum toleransı için **hiçbiri** ' ni seçin. Hatalara yönelik tolerans için, istenen FTT için **RAID-yansıtma** seçeneğini belirleyin.
+    ![vSAN ayarları ](media/oracle-rac-storage-wizard-vsan.png) .
 7. **Gelişmiş** bölümünde, nesne başına disk şeritleri sayısını seçin. Nesne alanı ayırması için, **kalın sağlanmış**' ı seçin. **Nesne sağlamasını devre dışı bırak**' ı seçin. **İleri**' ye tıklayın.
 8. Uyumlu vSAN veri depolarının listesini görüntülemek için ekrandaki yönergeleri izleyin, ayarları gözden geçirin ve kurulumu tamamlayın.
 
@@ -247,11 +246,11 @@ Sanal makineden konağa benzeşim kuralları VM 'nin istenen konakta çalıştı
 2. Özel bulutunuzun vSphere istemcisinde oturum açın.
 3. VSphere istemcisinde, Oracle VM 'lerinin dağıtıldığı kümeyi seçin ve **Yapılandır**' a tıklayın.
 4. Yapılandır altında **VM/konak grupları**' nı seçin.
-5. Öğesine **+** tıklayın.
+5. Öğesine tıklayın **+** .
 6. Bir VM grubu ekleyin. Tür olarak **VM grubu** ' nu seçin. Grubun adını girin. VM 'Leri seçin ve sonra grubu oluşturmak için **Tamam** ' ı tıklatın.
 6. Bir konak grubu ekleyin. Tür olarak **konak grubu** ' nu seçin. Grubun adını girin. VM 'Lerin çalıştırılacağı Konakları seçin ve sonra grubu oluşturmak için **Tamam** ' ı tıklatın.
 7. Bir kural oluşturmak için **VM/konak kuralları**' na tıklayın.
-8. Öğesine **+** tıklayın.
+8. Öğesine tıklayın **+** .
 9. Kural için bir ad girin ve **Etkinleştir**' i işaretleyin.
 10. Kural türü için, **barındıracak sanal makineler**' i seçin.
 11. Oracle VM 'Leri içeren VM grubunu seçin.

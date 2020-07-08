@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792386"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
@@ -42,9 +41,9 @@ Microsoft, açık, özel olmayan, platformdan bağımsız, sektörde tanınan ve
 
 IP adresini eklemek için iki seçeneğiniz vardır:
 
-* `Simulation/Factory/Add-SimulationPublicIp.ps1` [Depodaki](https://github.com/Azure/azure-iot-connected-factory)PowerShell betiğini kullanın. Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal`. Betik, sanal makinenin IP adresini yazdırır.
+* Depodaki PowerShell betiğini kullanın `Simulation/Factory/Add-SimulationPublicIp.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory) Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal` . Betik, sanal makinenin IP adresini yazdırır.
 
-* Azure portal, dağıtımınızın kaynak grubunu bulun. Yerel dağıtım haricinde, kaynak grubunun çözüm veya dağıtım adı olarak belirttiğiniz adı vardır. Derleme betiği kullanılarak yerel bir dağıtım için, kaynak grubunun adı `<your username>ConnFactoryLocal`. Şimdi kaynak grubuna yeni bir **genel IP adresi** kaynağı ekleyin.
+* Azure portal, dağıtımınızın kaynak grubunu bulun. Yerel dağıtım haricinde, kaynak grubunun çözüm veya dağıtım adı olarak belirttiğiniz adı vardır. Derleme betiği kullanılarak yerel bir dağıtım için, kaynak grubunun adı `<your username>ConnFactoryLocal` . Şimdi kaynak grubuna yeni bir **genel IP adresi** kaynağı ekleyin.
 
 > [!NOTE]
 > Her iki durumda da [Ubuntu Web sitesinde](https://wiki.ubuntu.com/Security/Upgrades)yer alan yönergeleri izleyerek en son düzeltme eklerini yüklediğinizden emin olun. VM 'nizin genel bir IP adresi üzerinden erişilebilir olduğu sürece yüklemeyi güncel tutun.
@@ -53,30 +52,30 @@ IP adresini eklemek için iki seçeneğiniz vardır:
 
 IP adresini kaldırmak için iki seçeneğiniz vardır:
 
-* [Deponun](https://github.com/Azure/azure-iot-connected-factory)PowerShell betiği simülasyon/Factory/Remove-SimulationPublicIp. ps1 öğesini kullanın. Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal`. Betik, sanal makinenin IP adresini yazdırır.
+* [Deponun](https://github.com/Azure/azure-iot-connected-factory)PowerShell betiği benzetimi/fabrikası/Remove-SimulationPublicIp.ps1 kullanın. Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal` . Betik, sanal makinenin IP adresini yazdırır.
 
-* Azure portal, dağıtımınızın kaynak grubunu bulun. Yerel dağıtım haricinde, kaynak grubunun çözüm veya dağıtım adı olarak belirttiğiniz adı vardır. Derleme betiği kullanılarak yerel bir dağıtım için, kaynak grubunun adı `<your username>ConnFactoryLocal`. Bundan sonra **genel IP adresi** kaynağını kaynak grubundan kaldırın.
+* Azure portal, dağıtımınızın kaynak grubunu bulun. Yerel dağıtım haricinde, kaynak grubunun çözüm veya dağıtım adı olarak belirttiğiniz adı vardır. Derleme betiği kullanılarak yerel bir dağıtım için, kaynak grubunun adı `<your username>ConnFactoryLocal` . Bundan sonra **genel IP adresi** kaynağını kaynak grubundan kaldırın.
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Benzetim sanal makinesinde oturum Nasıl yaparım? mı?
 
-Simülasyon VM 'de oturum açmak yalnızca çözümünüzü `build.ps1` [depodaki](https://github.com/Azure/azure-iot-connected-factory)PowerShell betiğini kullanarak dağıttıysanız desteklenir.
+Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell betiğini kullanarak dağıttıysanız desteklenir `build.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
 
 Çözümü www.azureiotsolutions.com adresinden dağıttıysanız, sanal makinede oturum açmanız gerekmez. Parola rastgele oluşturulduğundan ve sıfırlayamadığı için oturum açılamıyor.
 
 1. VM 'ye bir genel IP adresi ekleyin. [BENZETIM sanal makinesine genel IP adresi eklemek nasıl yaparım? bakın mi?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. VM 'nize sanal makinenin IP adresini kullanarak bir SSH oturumu oluşturun.
-1. Kullanılacak Kullanıcı adı: `docker`.
+1. Kullanılacak Kullanıcı adı: `docker` .
 1. Kullanılacak parola, dağıtmak için kullandığınız sürüme bağlıdır:
-    * Build. ps1 betiği kullanılarak dağıtılan çözümlerin 1 Haziran 2017 tarihinden önce, parola: `Passw0rd`.
-    * Build. ps1 betiği kullanılarak dağıtılan çözümler için 1 Haziran 2017 ' den sonra, parolayı `<name of your deployment>.config.user` dosyada bulabilirsiniz. Parola **Vmadminpassword** ayarında depolanır. Parola, `build.ps1` betik parametresini kullanarak belirtmediğiniz takdirde dağıtım sırasında rastgele oluşturulur`-VmAdminPassword`
+    * 1 Haziran 2017 tarihinden önce build.ps1 betiği kullanılarak dağıtılan çözümler için, parola: `Passw0rd` .
+    * 1 Haziran 2017 ' den sonra build.ps1 betiği kullanılarak dağıtılan çözümler için, parolayı `<name of your deployment>.config.user` dosyada bulabilirsiniz. Parola **Vmadminpassword** ayarında depolanır. Parola, betik parametresini kullanarak belirtmediğiniz takdirde dağıtım sırasında rastgele oluşturulur `build.ps1``-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Nasıl yaparım? simülasyon VM 'deki tüm Docker süreçlerini durdurup başlatın mi?
 
 1. Benzetim VM 'de oturum açın. Bkz [. BENZETIM VM 'de oturum nasıl yaparım? mi?](#how-do-i-sign-in-to-the-simulation-vm)
-1. Hangi kapsayıcıların etkin olduğunu denetlemek için şunu çalıştırın: `docker ps`.
-1. Tüm simülasyon kapsayıcılarını durdurmak için şunu çalıştırın: `./stopsimulation`.
+1. Hangi kapsayıcıların etkin olduğunu denetlemek için şunu çalıştırın: `docker ps` .
+1. Tüm simülasyon kapsayıcılarını durdurmak için şunu çalıştırın: `./stopsimulation` .
 1. Tüm simülasyon kapsayıcılarını başlatmak için:
-    * **IOTHUB_CONNECTIONSTRING**adıyla bir Shell değişkenini dışarı aktarın. `<name of your deployment>.config.user` Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın. Örneğin:
+    * **IOTHUB_CONNECTIONSTRING**adıyla bir Shell değişkenini dışarı aktarın. Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın `<name of your deployment>.config.user` . Örneğin:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -86,11 +85,11 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü `build.ps1` [depodak
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
-Simülasyonda herhangi bir değişiklik yaptıysanız, `build.ps1` `updatedimulation` komutunu kullanarak [depodaki](https://github.com/Azure/azure-iot-connected-factory) PowerShell betiğini kullanabilirsiniz. Bu betik tüm simülasyon bileşenlerini oluşturur, sanal makinenin benzetimini sonlandırır, yükler, yükler ve başlatır.
+Simülasyonda herhangi bir değişiklik yaptıysanız, `build.ps1` komutunu kullanarak [depodaki](https://github.com/Azure/azure-iot-connected-factory) PowerShell betiğini kullanabilirsiniz `updatedimulation` . Bu betik tüm simülasyon bileşenlerini oluşturur, sanal makinenin benzetimini sonlandırır, yükler, yükler ve başlatır.
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Çözümünüz tarafından kullanılan IoT Hub 'ına ait bağlantı dizesini mi Nasıl yaparım??
 
-Çözümünüzü `build.ps1` [depodaki](https://github.com/Azure/azure-iot-connected-factory)betiğe dağıttıysanız bağlantı dizesi `<name of your deployment>.config.user` dosyadaki **ıothubownerconnectionstring** değeridir.
+Çözümünüzü `build.ps1` [depodaki](https://github.com/Azure/azure-iot-connected-factory)betiğe dağıttıysanız bağlantı dizesi dosyadaki **ıothubownerconnectionstring** değeridir `<name of your deployment>.config.user` .
 
 Azure portal kullanarak bağlantı dizesini de bulabilirsiniz. Dağıtımınızın kaynak grubundaki IoT Hub kaynağında, bağlantı dizesi ayarlarını bulun.
 
@@ -115,7 +114,7 @@ Simülasyon, aşağıdaki cihazları kaydeder:
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Simülasyon bileşenlerinden günlük verilerini nasıl alabilirim?
 
-Simülasyon günlüğü içindeki tüm bileşenler günlük dosyalarına kaydedilir. Bu dosyalar, klasöründeki `home/docker/Logs`VM 'de bulunabilir. Günlükleri almak için `Simulation/Factory/Get-SimulationLogs.ps1` [depodaki](https://github.com/Azure/azure-iot-connected-factory)PowerShell betiğini kullanabilirsiniz.
+Simülasyon günlüğü içindeki tüm bileşenler günlük dosyalarına kaydedilir. Bu dosyalar, klasöründeki VM 'de bulunabilir `home/docker/Logs` . Günlükleri almak için depodaki PowerShell betiğini kullanabilirsiniz `Simulation/Factory/Get-SimulationLogs.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
 
 Bu betiğin VM 'de oturum açması gerekir. Oturum açma için kimlik bilgilerini sağlamanız gerekebilir. Kimlik bilgilerini bulmak için bkz. [BENZETIM VM 'de oturum açma nasıl yaparım?](#how-do-i-sign-in-to-the-simulation-vm) .
 
@@ -144,7 +143,7 @@ Bağlı fabrika çözümünüzde etkileşimli Haritayı etkinleştirmek için bi
 
 Dağıtım işlemi, [www.azureiotsolutions.com](https://www.azureiotsolutions.com)'den dağıtıldığında, çözüm Hızlandırıcı hizmetlerini içeren kaynak grubuna bir Azure Maps hesabı ekler.
 
-Bağlı fabrika GitHub deposunda `build.ps1` betiği kullanarak dağıtırken, yapı penceresindeki ortam değişkenini `$env:MapApiQueryKey` [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Etkileşimli harita daha sonra otomatik olarak etkinleştirilir.
+`build.ps1`Bağlı fabrika GitHub deposunda betiği kullanarak dağıtırken, `$env:MapApiQueryKey` Yapı penceresindeki ortam değişkenini [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Etkileşimli harita daha sonra otomatik olarak etkinleştirilir.
 
 Ayrıca, dağıtımdan sonra çözüm hızlandırıcısına bir Azure haritalar hesap anahtarı ekleyebilirsiniz. Azure portal gidin ve bağlı fabrika dağıtımınızdaki App Service kaynağına erişin. Bölüm **uygulama ayarlarını**bulduğunuz **uygulama ayarları**' na gidin. **MapApiQueryKey** 'ı [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Ayarları kaydedin ve **genel bakış** ' a gidin ve App Service yeniden başlatın.
 
@@ -158,17 +157,17 @@ Bkz. [Azure Maps hesabınızı ve anahtarlarınızı yönetme](../azure-maps/how
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Yerel olarak hata ayıklarken etkileşimli Haritayı nasıl etkinleştireceğinizi?
 
-Yerel olarak hata ayıklarken etkileşimli Haritayı etkinleştirmek için `MapApiQueryKey` , dosya `local.user.config` ve `<yourdeploymentname>.user.config` dağıtımınızın kökündeki ayarların değerini daha önce kopyaladığınız **queryKey** değerine ayarlayın.
+Yerel olarak hata ayıklarken etkileşimli Haritayı etkinleştirmek için, `MapApiQueryKey` Dosya `local.user.config` ve `<yourdeploymentname>.user.config` dağıtımınızın kökündeki ayarların değerini daha önce kopyaladığınız **queryKey** değerine ayarlayın.
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Nasıl yaparım? panoumun ana sayfasında farklı bir görüntü kullanmak mı istiyorsunuz?
 
-GÇ gösterilen statik görüntüyü değiştirmek için panonun ana sayfasında, görüntünün `WebApp\Content\img\world.jpg`yerini alır. Sonra WebApp 'i yeniden derleyin ve dağıtın.
+GÇ gösterilen statik görüntüyü değiştirmek için panonun ana sayfasında, görüntünün yerini alır `WebApp\Content\img\world.jpg` . Sonra WebApp 'i yeniden derleyin ve dağıtın.
 
 ### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Bağlı fabrika ile OPC UA cihazları kullanmak Nasıl yaparım? mı?
 
 OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
 
-1. `ContosoTopologyDescription.json` Dosyadaki [bağlı fabrika topolojisinde yeni bir istasyon yapılandırın](iot-accelerators-connected-factory-configure.md) .
+1. Dosyadaki [bağlı fabrika topolojisinde yeni bir Istasyon yapılandırın](iot-accelerators-connected-factory-configure.md) `ContosoTopologyDescription.json` .
 
 1. Bağlı fabrika uyumlu JSON biçiminde telemetri verilerini alma:
 
@@ -194,6 +193,6 @@ OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
-* [Tahmine dayalı bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
+* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
 * [Baştan sona IoT güvenliği](/azure/iot-fundamentals/iot-security-ground-up)

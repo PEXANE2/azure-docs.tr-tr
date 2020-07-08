@@ -9,10 +9,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869413"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM 'lerinde MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturma
@@ -47,7 +46,7 @@ MATLAB dağıtılmış bilgi Işlem sunucusu kümeleriniz için Azure sanal maki
    * Sağlanan PowerShell betiğini kullanın veya temel VM görüntüsünden bir küme oluşturmak için hızlı başlangıç şablonunu kullanın.   
    * Kümeleri listeetmenizi, duraklatmanızı, sürdürmeyi ve silmenizi sağlayan sağlanan PowerShell betiğini kullanarak kümeleri yönetin.
 
-## <a name="cluster-configurations"></a>Küme yapılandırması
+## <a name="cluster-configurations"></a>Küme yapılandırmaları
 Şu anda, küme oluşturma betiği ve şablonu, tek bir MATLAB dağıtılmış bilgi Işlem sunucusu topolojisi oluşturmanıza imkan tanır. İsterseniz, bir veya daha fazla ek küme oluşturun, her kümeyle farklı sayıda çalışan sanal makinesi vardır, farklı VM boyutları ve bu şekilde devam eder.
 
 ### <a name="matlab-client-and-cluster-in-azure"></a>Azure 'da MATLAB istemcisi ve kümesi

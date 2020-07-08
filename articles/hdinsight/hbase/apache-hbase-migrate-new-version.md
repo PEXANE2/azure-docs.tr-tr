@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792641"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
@@ -176,13 +175,13 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
 1. Memstore içindeki son verilerin temizlendiğinden emin olmak için önceki betiği yeniden çalıştırın.
 
-1. Eski kümede (`https://OLDCLUSTERNAME.azurehdidnsight.net`) [Apache ambarı](https://ambari.apache.org/) 'Nda oturum açın ve HBase hizmetlerini durdurun. Hizmetleri durdurmak istediğinizi onaylamanız istendiğinde, HBase için bakım modunu açmak üzere kutuyu işaretleyin. Ambarı 'na bağlanma ve kullanma hakkında daha fazla bilgi için bkz. [ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari.md).
+1. Eski kümede () [Apache ambarı](https://ambari.apache.org/) 'nda oturum açın `https://OLDCLUSTERNAME.azurehdidnsight.net` ve HBase hizmetlerini durdurun. Hizmetleri durdurmak istediğinizi onaylamanız istendiğinde, HBase için bakım modunu açmak üzere kutuyu işaretleyin. Ambarı 'na bağlanma ve kullanma hakkında daha fazla bilgi için bkz. [ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari.md).
 
     ![Ambarı ' nda hizmetler > HBase > Durdur ' a tıklayın.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![HBase için bakım modunu aç onay kutusunu işaretleyin ve ardından onaylayın](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. `fs.defaultFS` Bu ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
+1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. Bu `fs.defaultFS` ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
 
     ![Ambarı 'nda hizmetler >, gelişmiş > > config 'ler ' e tıklayın](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -190,14 +189,14 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
 1. Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliği olan HBase kümeleri için gereklidir.
 
-   `hbase.rootdir` Yolu orijinal kümenin kapsayıcısına işaret etmek üzere değiştirin.
+   `hbase.rootdir`Yolu orijinal kümenin kapsayıcısına işaret etmek üzere değiştirin.
 
     ![Ambarı 'nda, HBase rootdir için kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 
 1. HDInsight 3,6 ' i 4,0 sürümüne yükseltiyorsanız aşağıdaki adımları izleyin, aksi halde adım 10 ' a atlayın:
-    1. **Hizmetler** > **yeniden başlatma gerekli**' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
+    1. **Hizmetler**  >  **yeniden başlatma gerekli**' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
     1. HBase hizmetini durdurun.
-    1. Zookeeper düğümüne SSH yazın ve [Zkclı](https://github.com/go-zkcli/zkcli) komutunu `rmr /hbase-unsecure` yürütün. Bu, HBase kök znode değerini Zookeeper 'dan kaldırın.
+    1. Zookeeper düğümüne SSH yazın ve [Zkclı](https://github.com/go-zkcli/zkcli) komutunu yürütün. Bu, `rmr /hbase-unsecure` HBase kök Znode değerini Zookeeper 'dan kaldırın.
     1. HBase 'i yeniden başlatın.
 
 1. 4,0 dışında başka bir HDInsight sürümüne yükseltiyorsanız şu adımları izleyin:
@@ -220,4 +219,4 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 * [HDInsight kümesini daha yeni bir sürüme yükseltme](../hdinsight-upgrade-cluster.md)
 * [Apache ambarı Web Kullanıcı arabirimini kullanarak Azure HDInsight 'ı izleme ve yönetme](../hdinsight-hadoop-manage-ambari.md)
 * [Bileşenler ve sürümler Apache Hadoop](../hdinsight-component-versioning.md)
-* [Apache HBase 'i iyileştirme](../optimize-hbase-ambari.md)
+* [Apache HBase’i iyileştirme](../optimize-hbase-ambari.md)

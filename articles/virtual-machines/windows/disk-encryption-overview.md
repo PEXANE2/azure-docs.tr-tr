@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5648dc1a915f2d38dc7811e6fe23ec76d0aa6f23
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857270"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
@@ -52,7 +51,7 @@ Azure disk şifrelemesi [2. nesil VM](generation-2.md#generation-1-vs-generation
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 Azure disk şifrelemeyi etkinleştirmek için VM 'Lerin aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılaması gerekir:
-  - Anahtar kasanıza bağlanma belirteci almak için Windows VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir. \[Login.microsoftonline.com.\]
+  - Anahtar kasanıza bağlanma belirteci almak için Windows VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir \[ \] . Login.microsoftonline.com.
   - Şifreleme anahtarlarını anahtar kasanıza yazmak için Windows VM 'nin Anahtar Kasası uç noktasına bağlanabiliyor olması gerekir.
   - Windows VM, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
   -  Güvenlik ilkeniz, Azure VM 'lerinden Internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/general/access-behind-firewall.md).    
@@ -62,7 +61,7 @@ Azure disk şifrelemeyi etkinleştirmek için VM 'Lerin aşağıdaki ağ uç nok
 
 Azure disk şifrelemesi, Windows VM 'Leri için BitLocker dış anahtar koruyucusunu kullanır. Etki alanına katılmış VM 'Ler için TPM koruyucuları uygulayan herhangi bir grup ilkesi göndermeyin. "Uyumlu TPM olmadan BitLocker 'a Izin ver" Grup ilkesi hakkında bilgi için bkz. [bitlocker Grup İlkesi başvurusu](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-Özel grup ilkesiyle etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate. exe/Force) ve yeniden başlatma gerekebilir.
+Özel grup ilkesiyle etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate.exe/Force) ve yeniden başlatma gerekebilir.
 
 Etki alanı düzeyi Grup ilkesi, BitLocker tarafından kullanılan AES-CBC algoritmasını engelliyorsa Azure disk şifrelemesi başarısız olur.
 

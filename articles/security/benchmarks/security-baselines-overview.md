@@ -9,10 +9,9 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871993"
 ---
 # <a name="security-baselines-for-azure"></a>Azure için güvenlik temelleri
@@ -32,4 +31,4 @@ Her öneri aşağıdaki bilgileri içerir:
 Bu belirli hizmet için geçerli olmayan öneriler de dahil olmak üzere tüm öneriler, Azure Güvenlik kıyaslamaları 'nın her bir hizmetle nasıl ilişkili olduğu hakkında ayrıntılı bir resim sunmak için temele dahil edilmiştir. Bazen çeşitli nedenlerle geçerli olmayan denetimler olabilir — Örneğin, IaaS/bilgi işlem merkezli denetimler (örneğin, işletim sistemi yapılandırma yönetimine özgü denetimler) PaaS hizmetleri için geçerli olmayabilir.
 
 
-Azure hizmetleri için güvenlik taban çizgileri hakkında geri bildirimde bulunun. Aşağıdaki geri bildirim alanına yorum sağlamanızı öneririz. Ya da, Azure Güvenlik kıyaslama ekibi ile girişinizi daha özel olarak paylaşmayı tercih ediyorsanız, formu doldurmaya hoş geldiniz https://aka.ms/AzSecBenchmark.
+Azure hizmetleri için güvenlik taban çizgileri hakkında geri bildirimde bulunun. Aşağıdaki geri bildirim alanına yorum sağlamanızı öneririz. Ya da, Azure Güvenlik kıyaslama ekibi ile girişinizi daha özel olarak paylaşmayı tercih ediyorsanız, formu doldurmaya hoş geldiniz https://aka.ms/AzSecBenchmark .

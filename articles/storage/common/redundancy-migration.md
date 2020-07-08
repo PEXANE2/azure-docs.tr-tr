@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871373"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
@@ -38,10 +37,10 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 
 | Geçiş | ... LRS 'ye | ... GRS/RA-GRS 'ye | ... ZRS 'ye | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br />Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
-| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> Dinamik geçiş isteme |
-| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
-| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
+| <b>... LRS 'den</b> | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br />Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
+| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> Dinamik geçiş isteme |
+| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
+| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK |
 
 <sup>1</sup> bir kerelik çıkış ücreti doğurur.<br />
 <sup>2</sup> ZRS 'den GZRS/ra-GZRS veya tam tersi olarak dönüştürme şu bölgelerde desteklenmez: ABD Doğu 2, ABD Doğu, Avrupa Batı.
@@ -128,10 +127,10 @@ Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne 
     - **Sorun türü**: **veri geçişini**seçin.
     - **Kategori**: **ZRS 'ye geçir**' i seçin.
     - **Başlık**: Örneğin, **ZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ \_ bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum.
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum \_ \_ .
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi bir yardımı sağlar.
 

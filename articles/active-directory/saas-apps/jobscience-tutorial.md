@@ -16,10 +16,9 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Öğretici: Jobscience ile Azure Active Directory tümleştirme
@@ -172,7 +171,7 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
     f. **SAML kimlik konumu**olarak, Select **Identity öğesi Subject ifadesinin NameIdentfier öğesidir**.
 
-    g. **Kimlik sağlayıcısı oturum açma URL** 'si metin kutusunda, Azure Portal kopyaladığınız **SAML çoklu oturum açma hizmeti URL 'sinin**değerini yapıştırın.
+    örneğin: **Kimlik sağlayıcısı oturum açma URL** 'si metin kutusunda, Azure Portal kopyaladığınız **SAML çoklu oturum açma hizmeti URL 'sinin**değerini yapıştırın.
 
     h. **Kimlik sağlayıcısı oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
 
@@ -194,7 +193,7 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
     ![Güvenlik Denetimleri](./media/jobscience-tutorial/ic784368.png "Güvenlik Denetimleri")
     
-    Yukarıdaki adımda oluşturduğunuz SSO profilini tıklatın. Bu sayfada şirketiniz için çoklu oturum açma URL 'SI (örneğin, `https://companyname.my.salesforce.com?so=companyid`) gösterilir.    
+    Yukarıdaki adımda oluşturduğunuz SSO profilini tıklatın. Bu sayfada şirketiniz için çoklu oturum açma URL 'SI (örneğin,) gösterilir `https://companyname.my.salesforce.com?so=companyid` .    
 
 > [!TIP]
 > Artık, uygulamayı ayarlarken [Azure Portal](https://portal.azure.com)içinde bu yönergelerin kısa bir sürümünü okuyabilirsiniz!  Bu uygulamayı **Active Directory > kurumsal uygulamalar** bölümünden ekledikten sonra, yalnızca **Çoklu oturum açma** sekmesine tıklayın ve en alttaki **yapılandırma** bölümünde yer alan katıştırılmış belgeye erişin. Katıştırılmış belge özelliği hakkında daha fazla bilgi için şu adımları bulabilirsiniz: [Azure AD Embedded belgeleri]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -229,7 +228,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** ' i seçin ve **parola**değerini yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience test kullanıcısı oluşturma
 
@@ -246,7 +245,7 @@ Azure AD kullanıcılarının Jobscience 'de oturum açmasını sağlamak için 
 1. Kurulum 'a gidin.
    
    ![Kurulum](./media/jobscience-tutorial/ic784358.png "Kurulum")
-1. **Kullanıcıları \> Yönet**' e gidin.
+1. **Kullanıcıları Yönet \> **' e gidin.
    
    ![Kullanıcılar](./media/jobscience-tutorial/ic784369.png "Kullanıcılar")
 1. **Yeni Kullanıcı**' ya tıklayın.
@@ -262,13 +261,13 @@ Azure AD kullanıcılarının Jobscience 'de oturum açmasını sağlamak için 
    
    c. **Diğer ad** metin kutusuna, Brittas gibi kullanıcının diğer adını yazın.
 
-   d. **E-posta** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
+   d. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
-   e. **Kullanıcı adı** metin kutusuna, gibi Brittasimon@contoso.combir Kullanıcı adı yazın.
+   e. **Kullanıcı adı** metin kutusuna, gibi bir Kullanıcı adı yazın Brittasimon@contoso.com .
 
    f. **Nick adı** metin kutusunda, Simon gibi bir Kullanıcı adı yazın.
 
-   g. **Kaydet**’e tıklayın.
+   örneğin: **Kaydet**’e tıklayın.
 
     
 > [!NOTE]

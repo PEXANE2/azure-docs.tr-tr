@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857652"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks ile dönüştürme
@@ -36,7 +35,7 @@ Kolaylık olması için bu öğreticideki şablon, zamanlanmış bir tetikleyici
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Havuzu olarak kullanılmak üzere adlı `sinkdata` bir kapsayıcı Içeren bir Azure Blob depolama hesabı.
+- Havuzu olarak kullanılmak üzere adlı bir kapsayıcı içeren bir Azure Blob depolama hesabı `sinkdata` .
 
   Depolama hesabı adı, kapsayıcı adı ve erişim anahtarı ' nı unutmayın. Bu değerlere daha sonra şablonda ihtiyaç duyarsınız.
 
@@ -47,8 +46,8 @@ Kolaylık olması için bu öğreticideki şablon, zamanlanmış bir tetikleyici
 Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak için:
 
 1. Azure Databricks çalışma alanınızda oturum açın ve ardından **Içeri aktar**' ı seçin.
-       ![Çalışma](media/solution-template-Databricks-notebook/import-notebook.png) alanını içeri aktarmaya yönelik menü komutu çalışma alanı yolunuz gösterilenden farklı olabilir, ancak daha sonra bunu unutmayın.
-1. **Içeri aktarma seçin: URL**. Metin kutusuna yazın `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`.
+       ![Çalışma alanını içeri aktarmaya yönelik menü komutu ](media/solution-template-Databricks-notebook/import-notebook.png) çalışma alanı yolunuz gösterilenden farklı olabilir, ancak daha sonra bunu unutmayın.
+1. **Içeri aktarma seçin: URL**. Metin kutusuna yazın `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
 
    ![Not defteri içeri aktarma seçimleri](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,8 +55,8 @@ Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak 
 
    İçeri aktarılan not defterinde, aşağıdaki kod parçacığında gösterildiği gibi **komut 5** ' e gidin.
 
-   - Ve `<storage name>`' `<access key>` i kendi depolama bağlantı bilgileriniz ile değiştirin.
-   - `sinkdata` Kapsayıcı ile depolama hesabını kullanın.
+   - `<storage name>`Ve ' i `<access key>` kendi depolama bağlantı bilgileriniz ile değiştirin.
+   - Kapsayıcı ile depolama hesabını kullanın `sinkdata` .
 
     ```python
     # Supply storageName and accessKey values  
@@ -90,7 +89,7 @@ Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak 
 
     !["Oluştur" düğmesi](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   Daha sonra kullanmak üzere bir Databricks bağlı hizmeti oluştururken *erişim belirtecini kaydedin* . Erişim belirteci şuna benzer `dapi32db32cbb4w6eee18b7d87e45exxxxxx`.
+   Daha sonra kullanmak üzere bir Databricks bağlı hizmeti oluştururken *erişim belirtecini kaydedin* . Erişim belirteci şuna benzer `dapi32db32cbb4w6eee18b7d87e45exxxxxx` .
 
 ## <a name="how-to-use-this-template"></a>Bu şablonu kullanma
 
@@ -126,19 +125,19 @@ Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak 
 
 Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapılandırılır. İşlem hattının yapılandırmasını gözden geçirin ve gerekli değişiklikleri yapın.
 
-1. **Doğrulama** etkinliği **kullanılabilirliği bayrağıyla**, kaynak **veri kümesi** değerinin daha önce oluşturduğunuz olarak `SourceAvailabilityDataset` ayarlandığını doğrulayın.
+1. **Doğrulama** etkinliği **kullanılabilirliği bayrağıyla**, kaynak **veri kümesi** değerinin `SourceAvailabilityDataset` daha önce oluşturduğunuz olarak ayarlandığını doğrulayın.
 
    ![Kaynak veri kümesi değeri](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1. **Veri kopyalama** etkinlik **dosyası-blob**' da, **kaynak** ve **Havuz** sekmelerini kontrol edin. Gerekirse ayarları değiştirin.
 
-   - **Kaynak** sekmesi ![kaynak sekmesi](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **Kaynak** sekmesi ![ kaynak sekmesi](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **Havuz** sekmesi ![havuz sekmesi](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **Havuz** sekmesi ![ Havuz sekmesi](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. **Not defteri** etkinliği **dönüşümünde**, yolları ve ayarları gerektiği gibi gözden geçirin ve güncelleştirin.
 
-   **Databricks bağlı** hizmeti, şu şekilde gösterildiği gibi önceki adımlardan alınan değerle önceden doldurulmalıdır: ![databricks bağlı hizmeti için doldurulmuş değer](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Databricks bağlı** hizmeti, şu şekilde gösterildiği gibi önceki adımlardan alınan değerle önceden doldurulmalıdır: ![ databricks bağlı hizmeti için doldurulmuş değer](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    **Not defteri** ayarlarını denetlemek için:
   
@@ -150,7 +149,7 @@ Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapı
 
        ![Temel parametreler](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. **Ardışık düzen parametrelerinin** aşağıdaki ekran görüntüsünde gösterilenle eşleştiğini doğrulayın: ![işlem hattı parametreleri](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. **Ardışık düzen parametrelerinin** aşağıdaki ekran görüntüsünde gösterilenle eşleştiğini doğrulayın: işlem ![ hattı parametreleri](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Veri kümelerinize bağlanın.
 
@@ -167,9 +166,9 @@ Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapı
 
    - **Destinationfilesveri kümesi** -verileri havuz hedef konumuna kopyalamak için. Aşağıdaki değerleri kullanın:
 
-     - **Linked service** - `sinkBlob_LS`Önceki bir adımda oluşturulan bağlı hizmet.
+     - **Linked service**  -  `sinkBlob_LS` Önceki bir adımda oluşturulan bağlı hizmet.
 
-     - **Dosya yolu** - `sinkdata/staged_sink`.
+     - **Dosya yolu**  -  `sinkdata/staged_sink` .
 
        ![Destinationfilesveri kümesi için bağlı hizmet ve dosya yolu seçimleri](media/solution-template-Databricks-notebook/destination-dataset.png)
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854103"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
@@ -36,7 +35,7 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 4. **Belirteç** metin kutusundaki bir erişim belirteci, varsayılan **süre sonu** ve **gizli anahtar** değerlerine göre sizin için otomatik olarak oluşturulur. Gerekirse, yeni bir belirteç oluşturmak için ya da her iki denetim içindeki değerleri seçin.
 5. **Dağıtım betikleri**altında **Kubernetes** sekmesini seçin.
 6. **<ağ geçidi-adı>. yıml** dosyası bağlantısını SEÇIN ve YAML dosyasını indirin.
-7. Komutları panoya kaydetmek için **Dağıt** metin kutusunun sağ alt köşesindeki Kopyala simgesini seçin. **copy** `kubectl`
+7. Komutları panoya kaydetmek için **Dağıt** metin kutusunun sağ alt köşesindeki **Kopyala** simgesini seçin `kubectl` .
 8. Komutları Terminal (veya komut) penceresine yapıştırın. İlk komut, 4. adımda oluşturulan erişim belirtecini içeren bir Kubernetes gizli anahtarı oluşturur. İkinci komut, adım 6 ' da indirilen yapılandırma dosyasını Kubernetes kümesine uygular ve dosyanın geçerli dizinde olmasını bekler.
 9. [Varsayılan ad](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) alanında gerekli Kubernetes nesnelerini oluşturmak ve Microsoft Container Registry indirilen [kapsayıcı görüntüsünden](https://aka.ms/apim/sputnik/dhub) şirket içinde barındırılan ağ geçidi Pod 'yi başlatmak için komutları çalıştırın.
 10. Dağıtımın başarılı olup olmadığını denetlemek için aşağıdaki komutu çalıştırın. Tüm nesnelerin oluşturulması ve pod 'nin başlatılması için biraz zaman alabilir.
@@ -57,8 +56,8 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
     ![Ağ Geçidi durumu](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> Birden fazla <code>kubectl logs deployment/<gateway-name></code> varsa, rastgele seçilmiş bir pod 'dan günlükleri görüntülemek için komutunu çalıştırın.
-> Belirli <code>kubectl logs -h</code> bir pod veya kapsayıcı için günlükleri görüntüleme gibi bir dizi komut seçeneği için çalıştırın.
+> Birden <code>kubectl logs deployment/<gateway-name></code> fazla varsa, rastgele seçilmiş bir pod 'dan günlükleri görüntülemek için komutunu çalıştırın.
+> <code>kubectl logs -h</code>Belirli bir pod veya kapsayıcı için günlükleri görüntüleme gibi bir dizi komut seçeneği için çalıştırın.
 
 ## <a name="production-deployment-considerations"></a>Üretim dağıtımı konuları
 
@@ -110,7 +109,7 @@ Kubernetes 'de ad çözümleme hakkında bilgi edinmek için bkz. [Kubernetes We
 ### <a name="configuration-backup"></a>Yapılandırma yedeklemesi
 Geçici bir Azure bağlantı kesintisi olması halinde şirket içinde barındırılan ağ geçidi davranışı hakkında bilgi edinmek için, bkz. [Şirket içinde barındırılan ağ geçidine genel bakış](self-hosted-gateway-overview.md#connectivity-to-azure).
 
-Şirket içinde barındırılan ağ geçidi kapsayıcısı için yerel bir depolama birimi yapılandırarak, en son indirilen yapılandırmanın yedek bir kopyasını kalıcı hale getirebilirler. Bağlantı kapalıysa, depolama birimi yeniden başlatma sonrasında yedek kopyayı kullanabilir. Birim bağlama yolu olmalıdır <code>/apim/config</code>. [GitHub](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)üzerinde bir örnek görüntüleyin.
+Şirket içinde barındırılan ağ geçidi kapsayıcısı için yerel bir depolama birimi yapılandırarak, en son indirilen yapılandırmanın yedek bir kopyasını kalıcı hale getirebilirler. Bağlantı kapalıysa, depolama birimi yeniden başlatma sonrasında yedek kopyayı kullanabilir. Birim bağlama yolu olmalıdır <code>/apim/config</code> . [GitHub](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)üzerinde bir örnek görüntüleyin.
 Kubernetes 'te depolama hakkında bilgi edinmek için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/storage/volumes/).
 
 ### <a name="local-logs-and-metrics"></a>Yerel Günlükler ve ölçümler

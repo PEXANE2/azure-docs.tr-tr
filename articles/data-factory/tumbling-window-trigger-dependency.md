@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
 ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82870045"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleyici bağımlılığı oluşturma
@@ -81,9 +80,9 @@ Aşağıdaki tabloda, bir atlayan pencere bağımlılığı tanımlamak için ge
 
 | **Özellik Adı** | **Açıklama**  | **Tür** | **Gerekli** |
 |---|---|---|---|
-| type  | Varolan tüm pencere Tetikleyicileri bu açılan pencerede görüntülenir. Bağımlılık yapılacak tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Yes |
+| tür  | Varolan tüm pencere Tetikleyicileri bu açılan pencerede görüntülenir. Bağımlılık yapılacak tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Evet |
 | uzaklık | Bağımlılık tetikleyicisinin boşluğu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlı ise ve tüm diğer durumlarda isteğe bağlı ise bu özellik zorunludur. Kendinden bağımlılık her zaman negatif bir konum olmalıdır. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Timespan<br/>(SS: DD: SS) | Kendinden bağımlılık: Evet<br/>Diğer: Hayır |
-| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | No  |
+| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | Hayır  |
 
 > [!NOTE]
 > Atlayan bir pencere tetikleyicisi, en fazla beş başka tetikleyicisine bağlı olabilir.

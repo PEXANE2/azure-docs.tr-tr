@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793083"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure 'da bir kümenin yapılandırmasını yükseltme 
@@ -27,7 +26,7 @@ Bu makalede Service Fabric kümeniz için çeşitli doku ayarlarının nasıl ö
 Azure kümeleri, JSON Kaynak Yöneticisi şablonu aracılığıyla yapılandırılabilir. Farklı ayarlar hakkında daha fazla bilgi edinmek için bkz. [kümeler Için yapılandırma ayarları](service-fabric-cluster-fabric-settings.md). Örnek olarak, aşağıdaki adımlarda Azure Kaynak Gezgini kullanarak *Tanılama* bölümüne *Maxdiskquocontainer MB adlı* yeni bir ayarın nasıl ekleneceği gösterilmektedir.
 
 1. Şuraya gidin: https://resources.azure.com
-2. **\<Aboneliğinizi, abonelik>**  ->  **ResourceGroups** ->  -> **kaynak grubunuz>sağlayıcıları Microsoft. servicefabric kümelerini küme adınızla genişleterek aboneliğinize\< ****Microsoft.ServiceFabric** -> **clusters** ->  **providers**gidin **subscriptions**  ->  -> **\<>**
+2. **Abonelikler**  ->  **\<Your Subscription>**  ->  **ResourceGroups**  ->  **\<Your Resource Group>**  ->  **sağlayıcıları**  ->  **Microsoft. servicefabric**  ->  **kümeleri** ' ni genişleterek aboneliğinize gidin -> **\<Your Cluster Name>**
 3. Sağ üst köşede **oku/yaz** ' ı seçin.
 4. **Düzenle** ve `fabricSettings` JSON öğesini Güncelleştir ' i seçin ve yeni bir öğe ekleyin:
 

@@ -8,10 +8,9 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854610"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub'ına gönderme
@@ -50,13 +49,13 @@ Bir olay hub 'ına doğrudan akış yapamazsınız, Azure depolama 'ya yazabilir
 
 | Araç | Azure 'da barındırılıyor | Açıklama |
 |:---|:---| :---|
-|  IBM QRadar | No | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | No | [Splunk Için Azure Izleyici eklentisi](https://splunkbase.splunk.com/app/3534/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. Belgeler, [Azure Izleyici eklentisi Ile splunk için](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)kullanılabilir.<br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
-| SumoLogic | No | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | No | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
-| Syslog sunucusu | No | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
-| Logrhythd | No| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
-|Logz.io | Yes | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
+|  IBM QRadar | Hayır | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | Hayır | [Splunk Için Azure Izleyici eklentisi](https://splunkbase.splunk.com/app/3534/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. Belgeler, [Azure Izleyici eklentisi Ile splunk için](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)kullanılabilir.<br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
+| SumoLogic | Hayır | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Hayır | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
+| Syslog sunucusu | Hayır | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
+| Logrhythd | Hayır| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+|Logz.io | Evet | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

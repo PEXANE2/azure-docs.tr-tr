@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889695"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
@@ -39,7 +38,7 @@ Arka uç sistem durumu raporu, Application Gateway sistem durumu araştırmasın
 
 ### <a name="view-back-end-health-through-the-portal"></a>Portal aracılığıyla arka uç durumunu görüntüleme
 
-Portalda, arka uç sistem durumu otomatik olarak sağlanır. Mevcut bir uygulama ağ geçidinde,**arka uç durumunu** **izleme** > ' yi seçin.
+Portalda, arka uç sistem durumu otomatik olarak sağlanır. Mevcut bir uygulama ağ geçidinde, **Monitoring**  >  **arka uç durumunu**izleme ' yi seçin.
 
 Arka uç havuzundaki her üye bu sayfada listelenir (NIC, IP veya FQDN olup olmadığı). Arka uç havuzu adı, bağlantı noktası, arka uç HTTP ayarları adı ve sistem durumu görüntülenir. Sağlık durumu için geçerli değerler **sağlıklı**, **sağlıksız**ve **bilinmiyor**durumlardır.
 
@@ -50,7 +49,7 @@ Arka uç havuzundaki her üye bu sayfada listelenir (NIC, IP veya FQDN olup olma
 
 ### <a name="view-back-end-health-through-powershell"></a>PowerShell aracılığıyla arka uç durumunu görüntüleme
 
-Aşağıdaki PowerShell kodu, `Get-AzApplicationGatewayBackendHealth` cmdlet 'ini kullanarak arka uç durumunun nasıl görüntüleneceğini gösterir:
+Aşağıdaki PowerShell kodu, cmdlet 'ini kullanarak arka uç durumunun nasıl görüntüleneceğini gösterir `Get-AzApplicationGatewayBackendHealth` :
 
 ```powershell
 Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
@@ -113,11 +112,11 @@ Günlüklerinizi depolamak için kullanabileceğiniz üç seçenek vardır:
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu Günlükler aracılığıyla kullanılabilir verileri toplamaya başlamak için erişim ve performans günlüğünü etkinleştirmeniz gerekir. Günlüğe kaydetmeyi etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. Günlük verilerinin depolandığı depolama hesabınızın kaynak kimliğini not edin. Bu değer şu biçimdedir: /subscriptions/\<abonelik kimliği\>/resourceGroups/\<kaynak grubu adı\>/providers/Microsoft.Storage/storageAccounts/\<depolama hesabı adı\>. Aboneliğinizdeki herhangi bir depolama hesabını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz.
+1. Günlük verilerinin depolandığı depolama hesabınızın kaynak kimliğini not edin. Bu değer şu biçimdedir:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> . Aboneliğinizdeki herhangi bir depolama hesabını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz.
 
     ![Portal: depolama hesabı için kaynak KIMLIĞI](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Uygulama ağ geçidinizin etkin olan kaynak KIMLIĞI ' ne göz atalım. Bu değer şu biçimdedir:\</Subscriptions/SubscriptionID\>/ResourceGroups/\<kaynak grubu adı\>/Providers/Microsoft.Network/applicationGateways/\<Application Gateway Name.\> Bu bilgileri portalda bulabilirsiniz.
+2. Uygulama ağ geçidinizin etkin olan kaynak KIMLIĞI ' ne göz atalım. Bu değer şu biçimdedir:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> . Bu bilgileri portalda bulabilirsiniz.
 
     ![Portal: uygulama ağ geçidi için kaynak KIMLIĞI](./media/application-gateway-diagnostics/diagnostics2.png)
 

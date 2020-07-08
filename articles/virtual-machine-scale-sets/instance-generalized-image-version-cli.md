@@ -10,10 +10,9 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797142"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image"></a>Genelleştirilmiş görüntüden ölçek kümesi oluşturma
@@ -36,9 +35,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Kullanarak [`az vmss create`](/cli/azure/vmss#az-vmss-create)ölçek kümesi oluşturun. 
+Kullanarak ölçek kümesi oluşturun [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-Kullanılabilir görüntünün en son sürümünden ölçek `--image` kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için `--image`görüntü sürümü kimliğini sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz. Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
+`--image`Kullanılabilir görüntünün en son sürümünden ölçek kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için görüntü sürümü KIMLIĞINI sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz `--image` . Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
 
 Bu örnekte, *Myımagedefinition* resminin en son sürümünden örnekler oluşturacağız.
 

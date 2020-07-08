@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870264"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Birden çok NIC içeren bir Windows sanal makinesi oluşturma ve yönetme
@@ -152,7 +151,7 @@ Var olan bir VM 'ye sanal bir NIC eklemek için VM 'yi serbest bırakın, sanal 
     ```
 
     ### <a name="primary-virtual-nics"></a>Birincil sanal NIC 'ler
-    Birden çok NIC VM üzerindeki NIC 'lerden birinin birincil olması gerekir. VM 'deki mevcut sanal NIC 'lerden biri zaten birincil olarak ayarlandıysa, bu adımı atlayabilirsiniz. Aşağıdaki örnek, bir VM 'de Şu anda iki sanal NIC 'nin bulunduğunu ve ilk NIC 'yi (`[0]`) birincil olarak eklemek istediğinizi varsayar:
+    Birden çok NIC VM üzerindeki NIC 'lerden birinin birincil olması gerekir. VM 'deki mevcut sanal NIC 'lerden biri zaten birincil olarak ayarlandıysa, bu adımı atlayabilirsiniz. Aşağıdaki örnek, bir VM 'de Şu anda iki sanal NIC 'nin bulunduğunu ve ilk NIC 'yi ( `[0]` ) birincil olarak eklemek istediğinizi varsayar:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -198,7 +197,7 @@ Bir sanal NIC 'yi var olan bir VM 'den kaldırmak için VM 'yi serbest bırakın
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. [Remove-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) ile NIC 'i kaldırın ve ardından VM 'yi [Update-azvm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm)ile güncelleştirin. Aşağıdaki örnek, önceki *myNic3* adımda tarafından `$nicId` elde edilen myNic3 öğesini kaldırır:
+4. [Remove-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) ile NIC 'i kaldırın ve ardından VM 'yi [Update-azvm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm)ile güncelleştirin. Aşağıdaki örnek, önceki adımda tarafından elde edilen *myNic3* öğesini kaldırır `$nicId` :
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -223,7 +222,7 @@ Azure Resource Manager şablonlar, dağıtım sırasında birden çok NIC oluşt
 
 Daha fazla bilgi için, bkz. [ *Copy*kullanarak birden çok örnek oluşturma](../../resource-group-create-multiple.md). 
 
-Bir kaynak adına bir `copyIndex()` sayı eklemek için de kullanabilirsiniz. Daha sonra *myNic1*, *MyNic2* vb. oluşturabilirsiniz. Aşağıdaki kodda dizin değeri ekleme örneği gösterilmektedir:
+`copyIndex()`Bir kaynak adına bir sayı eklemek için de kullanabilirsiniz. Daha sonra *myNic1*, *MyNic2* vb. oluşturabilirsiniz. Aşağıdaki kodda dizin değeri ekleme örneği gösterilmektedir:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -237,7 +236,7 @@ Bir kaynak adına bir `copyIndex()` sayı eklemek için de kullanabilirsiniz. Da
 
 Azure, sanal makineye bağlı ilk (birincil) ağ arabirimine bir varsayılan ağ geçidi atar. Azure, bir sanal makineye bağlı ek (ikincil) ağ arabirimlerine varsayılan ağ geçidi atamaz. Bu nedenle varsayılan olarak, alt ağın dışında kalan ve ikincil bir ağ arabirimi içeren kaynaklarla iletişim kurulamaz. Ancak, ağ alt ağı dışındaki kaynaklarla iletişim kurabilir, ancak iletişim etkinleştirme adımları farklı işletim sistemleri için farklı olabilir.
 
-1. Bir Windows komut isteminden, iki bağlı ağ `route print` arabirimine sahip bir sanal makine için aşağıdaki çıktıya benzer bir çıktı döndüren komutunu çalıştırın:
+1. Bir Windows komut isteminden, `route print` iki bağlı ağ arabirimine sahip bir sanal makine için aşağıdaki çıktıya benzer bir çıktı döndüren komutunu çalıştırın:
 
     ```
     ===========================================================================
@@ -249,7 +248,7 @@ Azure, sanal makineye bağlı ilk (birincil) ağ arabirimine bir varsayılan ağ
  
     Bu örnekte, **Microsoft Hyper-V ağ bağdaştırıcısı #4** (arabirim 7), kendisine atanmış bir varsayılan ağ geçidine sahip olmayan ikincil ağ arabirimidir.
 
-2. Bir komut isteminden, ikincil ağ arabirimine `ipconfig` hangi IP adresinin atandığını görmek için komutunu çalıştırın. Bu örnekte, 192.168.2.4 Interface 7 ' ye atanır. İkincil ağ arabirimi için varsayılan ağ geçidi adresi döndürülmez.
+2. Bir komut isteminden, `ipconfig` İkincil ağ arabirimine HANGI IP adresinin atandığını görmek için komutunu çalıştırın. Bu örnekte, 192.168.2.4 Interface 7 ' ye atanır. İkincil ağ arabirimi için varsayılan ağ geçidi adresi döndürülmez.
 
 3. İkincil ağ arabiriminin alt ağı dışındaki adreslere giden tüm trafiği alt ağ için ağ geçidine yönlendirmek üzere aşağıdaki komutu çalıştırın:
 
@@ -275,7 +274,7 @@ Azure, sanal makineye bağlı ilk (birincil) ağ arabirimine bir varsayılan ağ
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Eklenen yolun yol tablosunda olduğunu doğrulamak için, aşağıdaki metne benzer bir çıktı `route print` döndüren komutunu girin:
+5. Eklenen yolun yol tablosunda olduğunu doğrulamak için, `route print` aşağıdaki metne benzer bir çıktı döndüren komutunu girin:
 
     ```
     ===========================================================================

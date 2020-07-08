@@ -7,17 +7,16 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857413"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player için eklenti yazma #
 
 Bir eklenti, oynatıcıyı genişletmek veya geliştirmek için yazılmış bir JavaScript 'dir. Azure Media Player görünümünü değiştiren eklentiler yazabilir, işlevselliği, hatta diğer hizmetlerle BT arabirimine sahip olur. Bunu iki kolay adımda yapabilirsiniz:
 
-## <a name="step-1"></a>1. Adım ##
+## <a name="step-1"></a>1\. Adım ##
 
 JavaScript kodunuzu şöyle bir işlevde yazın:
 
@@ -33,7 +32,7 @@ JavaScript kodunuzu şöyle bir işlevde yazın:
     }).call(this);
 ```
 
-Kodunuzu doğrudan HTML sayfanıza `<script>` veya bir dış JavaScript dosyasına yazabilirsiniz. İkincisini yaparsanız, AMP betiği `<head>` *sonrasında* HTML sayfanıza JavaScript dosyasını eklediğinizden emin olun.
+Kodunuzu doğrudan HTML sayfanıza `<script>` veya bir dış JavaScript dosyasına yazabilirsiniz. İkincisini yaparsanız, `<head>` amp betiği *sonrasında* HTML sayfanıza JavaScript dosyasını eklediğinizden emin olun.
 
 Örnek:
 

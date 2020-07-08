@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 04/30/2020
 ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889251"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
@@ -34,7 +33,7 @@ Aşağıdaki tabloda, bir HDInsight kümesi kurmak için kullanabileceğiniz far
 
 | İle oluşturulan kümeler | Web tarayıcısı | Komut satırı | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portalındaki](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -97,14 +96,14 @@ HDInsight kümeleri ile, küme oluşturma sırasında iki kullanıcı hesabını
 
 HTTP Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
-* İzin verilen özel karakterler `_` : ve`@`
-* Karakterlere izin verilmiyor: #;. "',\/: '! *? $ (){}[] <>|&--= +% ~ ^ boşluk
+* İzin verilen özel karakterler: `_` ve`@`
+* Karakterlere izin verilmiyor: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ boşluk
 * En fazla uzunluk: 20
 
 SSH Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
-* İzin verilen özel karakterler`_` : ve`@`
-* Karakterlere izin verilmiyor: #;. "',\/: '! *? $ (){}[] <>|&--= +% ~ ^ boşluk
+* İzin verilen özel karakterler: `_` ve`@`
+* Karakterlere izin verilmiyor: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ boşluk
 * En fazla uzunluk: 64
 * Ayrılmış adlar: Hadoop, kullanıcılar, Oozie, Hive, mapred, ambarı-qa, Zookeeper, tez, bir, Sqoop, Yarn, hcat, AMS, HBase, fırtınası, yönetici, yönetici, Kullanıcı, Kullanıcı1, test, kullanıcı2, test1, User3, admin1, 1, 123, a, ACTUser, adm, Admin2, ASPNET, Backup, Console, David, Guest, John, Owner, root, Server, SQL, support, support_388945a0, sys, test2, test3, User4, user5, Spark
 
@@ -266,21 +265,21 @@ Apache Mahout ve basamaklı gibi bazı yerel Java bileşenleri, küme üzerinde 
 
 Bazen, oluşturma işlemi sırasında aşağıdaki yapılandırma dosyalarını yapılandırmak isteyebilirsiniz:
 
-* Clusterıdentity. xml
-* Core-site. xml
-* Gateway. xml
-* HBase-env. xml
-* HBase-site. xml
-* HDFS-site. xml
-* Hive-env. xml
-* Hive-site. xml
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-site
-* Oozie-site. xml
-* Oozie-env. xml
-* Storm-site. xml
-* Tez-site. xml
-* webhcat-site. xml
-* Yarn-site. xml
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 
 Daha fazla bilgi için bkz. [önyükleme kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-bootstrap.md).
 

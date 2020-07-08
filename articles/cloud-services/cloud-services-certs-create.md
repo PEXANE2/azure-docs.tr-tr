@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024617"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
@@ -60,9 +59,9 @@ Bu ayarlara bağlı oldukları sürece kendinden imzalı bir sertifika oluşturm
 * En az 2048 bit şifreleme.
 * **Yalnızca hizmet sertifikası**: istemci tarafı sertifika, *Kişisel* sertifika deposunda bulunmalıdır.
 
-Windows 'da, `makecert.exe` yardımcı PROGRAMıYLA veya IIS 'de sertifika oluşturmanın iki kolay yolu vardır.
+Windows 'da, `makecert.exe` yardımcı programıyla veya IIS 'de sertifika oluşturmanın iki kolay yolu vardır.
 
-### <a name="makecertexe"></a>MakeCert. exe
+### <a name="makecertexe"></a>Makecert.exe
 Bu yardımcı program kullanımdan kaldırılmıştır ve artık burada açıklanmamıştır. Daha fazla bilgi için [Bu MSDN makalesine](/windows/desktop/SecCrypto/makecert)bakın.
 
 ### <a name="powershell"></a>PowerShell

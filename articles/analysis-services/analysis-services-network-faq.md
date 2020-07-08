@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838510"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Analysis Services ağ bağlantısı hakkında sık sorulan sorular
@@ -41,7 +40,7 @@ Bu makalede depolama hesaplarına, veri kaynaklarına, güvenlik duvarlarını v
 ## <a name="azure-apps-with-ip-address"></a>IP adresi olan Azure uygulamaları
 
 **Soru** -Azure tabanlı bir uygulama (örneğin, Azure işlevleri, Azure Data Factory), anında DEĞIŞEN bir IP adresiyle kullanıyorum. Uygulamamın yürütüldüğü IP adresine dinamik olarak izin vermek için Azure Analysis Services güvenlik duvarı kurallarını nasıl yönetebilirim?   
-**Yanıt** Azure Analysis Services özel bağlantıları, VNET 'Leri veya hizmet etiketlerini desteklemez. Bazı açık kaynaklı çözümler bulunur (örneğin, https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1) ISTEMCI uygulamanın IP adresini algılar ve güvenlik duvarı kurallarını otomatik olarak güncelleştirebilir.
+**Yanıt** Azure Analysis Services özel bağlantıları, VNET 'Leri veya hizmet etiketlerini desteklemez. Bazı açık kaynaklı çözümler bulunur (örneğin, https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1) istemci UYGULAMANıN IP adresini algılar ve güvenlik duvarı kurallarını otomatik olarak güncelleştirebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

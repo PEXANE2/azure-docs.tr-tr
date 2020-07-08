@@ -4,10 +4,9 @@ description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğ
 ms.date: 05/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864054"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
@@ -21,7 +20,7 @@ Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kurul
   - Test ortamlarında şema tanımlarının otomatik testi
   - Sürekli tümleştirme ve sürekli dağıtım (CI/CD) işlem hatları desteği
 
-Nedenleriniz ne olursa olsun, şema tanımlarınızı kod olarak yönetme avantajlara sahiptir. Bu makalede, `Import-AzBlueprintWithArtifact` [az. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülündeki `Export-AzBlueprintWithArtifact` ve komutlarının nasıl kullanılacağı gösterilmektedir.
+Nedenleriniz ne olursa olsun, şema tanımlarınızı kod olarak yönetme avantajlara sahiptir. Bu makalede, `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` [az. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülündeki ve komutlarının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -38,9 +37,9 @@ Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yükl
 Şemaları dışarı ve içeri aktarmaya geçmeden önce, şema tanımını oluşturan dosyaların nasıl yapılandırıldığını inceleyelim. Şema tanımının kendi klasöründe depolanması gerekir.
 
 > [!IMPORTANT]
-> Cmdlet 'in name parametresine hiçbir değer geçirilmemişse, şema tanımının depolandığı klasörün adı kullanılır. **Name** `Import-AzBlueprintWithArtifact`
+> Cmdlet 'in **Name** parametresine hiçbir değer geçirilmemişse `Import-AzBlueprintWithArtifact` , şema tanımının depolandığı klasörün adı kullanılır.
 
-Adlandırılmış `blueprint.json`olması gereken şema tanımı ile birlikte, şema tanımının meydana gelen yapıtlardır. Her yapıt adlı `artifacts`alt klasörde olmalıdır.
+Adlandırılmış olması gereken şema tanımı ile birlikte, `blueprint.json` şema tanımının meydana gelen yapıtlardır. Her yapıt adlı alt klasörde olmalıdır `artifacts` .
 Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyaları olarak aşağıdaki gibi görünmelidir:
 
 ```text
@@ -62,14 +61,14 @@ Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyalar
 
 - **Blueprint** [gerekli]
   - Şema tanımını belirtir
-  - Başvuru `Get-AzBlueprint` nesnesini almak için kullanın
+  - `Get-AzBlueprint`Başvuru nesnesini almak için kullanın
 - **OutputPath** [gerekli]
   - Şema tanımı JSON dosyalarının kaydedileceği yolu belirtir
   - Çıktı dosyaları, şema tanımının adını taşıyan bir alt klasördeyse
 - **Sürüm** (isteğe bağlı)
   - **Blueprint** başvuru nesnesi birden fazla sürüme başvurular içeriyorsa, çıktının sürümünü belirtir.
 
-1. Şu şekilde `{subId}`gösterilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın:
+1. Şu şekilde gösterilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın `{subId}` :
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,7 +77,7 @@ Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyalar
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Belirtilen şema tanımını dışarı aktarmak için `Export-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
+1. `Export-AzBlueprintWithArtifact`Belirtilen şema tanımını dışarı aktarmak için cmdlet 'ini kullanın:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -102,7 +101,7 @@ Yerleşik şema tanımlarının örnekleri için bkz. [GitHub deposu Azure Bluep
   - Geçerli bağlam varsayılanı değilse, şema tanımının kaydedileceği abonelik kimliği
   - **ManagementGroupId** veya **SubscriptionID** belirtilmelidir
 
-1. Belirtilen şema tanımını içeri aktarmak için `Import-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
+1. `Import-AzBlueprintWithArtifact`Belirtilen şema tanımını içeri aktarmak için cmdlet 'ini kullanın:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

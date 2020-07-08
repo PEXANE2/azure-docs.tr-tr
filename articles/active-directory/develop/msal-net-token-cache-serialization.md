@@ -14,10 +14,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890567"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
@@ -30,7 +29,7 @@ Bu makale, MSAL.NET 3. x içindir. MSAL.NET 2. x ile ilgileniyorsanız, bkz. [ms
 MSAL.NET ' de, bir bellek içi belirteç önbelleği varsayılan olarak sağlanır. Varsayılan olarak serileştirme, bir kullanıcı için platformun bir parçası olarak güvenli depolamanın kullanılabildiği platformlar için sağlanır. Bu durum Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android için de kullanılır.
 
 > [!Note]
-> Bir Xamarin. Android projesini MSAL.NET 1. x ' den MSAL.NET 3. x ' e geçirdiğinizde, Visual Studio dağıtımları yerel depolama `android:allowBackup="false"` 'nın geri yüklemesini tetikleyeceğinden eski önbelleğe alınmış belirteçlerin geri gelmesinden kaçınmak için projenize eklemek isteyebilirsiniz. Bkz. [sorun #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
+> Bir Xamarin. Android projesini MSAL.NET 1. x ' den MSAL.NET 3. x ' e geçirdiğinizde, `android:allowBackup="false"` Visual Studio dağıtımları yerel depolama 'nın geri yüklemesini tetikleyeceğinden eski önbelleğe alınmış belirteçlerin geri gelmesinden kaçınmak için projenize eklemek isteyebilirsiniz. Bkz. [sorun #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Windows Masaüstü uygulamaları ve Web uygulamaları/Web API 'Leri için özel serileştirme
 
@@ -39,14 +38,14 @@ MSAL.NET ' de, bir bellek içi belirteç önbelleği varsayılan olarak sağlan�
 Aşağıdaki sınıflar ve arabirimler, belirteç önbelleği serileştirmesi içinde kullanılır:
 
 - `ITokenCache`, belirteç önbelleği serileştirme isteklerine abone olmak için olayları ve çeşitli biçimlerde (ADAL v 3.0, MSAL 2. x ve MSAL 3. x = ADAL v 5.0) önbelleğe alma veya seri hale getirme yöntemlerini tanımlar.
-- `TokenCacheCallback`, serileştirme işlemini işleyebilmeniz için olaylara geçirilmiş bir geri çağırma işlemi. Bunlar, türündeki `TokenCacheNotificationArgs`bağımsız değişkenlerle çağırılır.
-- `TokenCacheNotificationArgs`yalnızca uygulamanın ve `ClientId` belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar.
+- `TokenCacheCallback`, serileştirme işlemini işleyebilmeniz için olaylara geçirilmiş bir geri çağırma işlemi. Bunlar, türündeki bağımsız değişkenlerle çağırılır `TokenCacheNotificationArgs` .
+- `TokenCacheNotificationArgs`yalnızca `ClientId` uygulamanın ve belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar.
 
   ![Sınıf diyagramı](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET sizin için belirteç önbellekleri oluşturur ve bir uygulamanın `IToken` `UserTokenCache` ve `AppTokenCache` özelliklerini çağırdığınızda önbellek sağlar. Arabirimi kendiniz uygulamanız gerekmez. Özel bir belirteç önbelleği serileştirmesi uyguladığınızda, sorumluluğu şu şekilde olur:
-> - `BeforeAccess` Ve `AfterAccess` "olaylara" (ya da zaman uyumsuz türleri) tepki verir. Bu `BeforeAccess` temsilci önbelleğin serisini kaldırmak, ancak `AfterAccess` önbelleğin serileştirilmesinden sorumludur.
+> MSAL.NET sizin için belirteç önbellekleri oluşturur ve `IToken` bir uygulamanın ve özelliklerini çağırdığınızda önbellek sağlar `UserTokenCache` `AppTokenCache` . Arabirimi kendiniz uygulamanız gerekmez. Özel bir belirteç önbelleği serileştirmesi uyguladığınızda, sorumluluğu şu şekilde olur:
+> - `BeforeAccess`Ve `AfterAccess` "olaylara" (ya da zaman uyumsuz türleri) tepki verir. Bu `BeforeAccess` temsilci önbelleğin serisini kaldırmak, ancak `AfterAccess` önbelleğin serileştirilmesinden sorumludur.
 > - Bu olay deposunun veya yükleme bloblarının bir parçası olarak olay bağımsız değişkeni aracılığıyla istediğiniz depolama alanına geçirilir.
 
 Bir [genel istemci uygulaması](msal-client-applications.md) (Masaüstü) veya [Gizli istemci uygulaması](msal-client-applications.md)için bir belirteç önbelleği serileştirmesi yazıyorsanız, Stratejiler farklılık açıktır. (Web uygulaması/Web API 'si, Daemon uygulaması).
@@ -64,7 +63,7 @@ Belirteç önbelleği serileştirmesini özelleştirmek için ADAL.NET 3. x, ADA
 
 Masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilmesi Naïve uygulamasının bir örneği aşağıda verilmiştir. Burada, kullanıcı belirteci önbelleği, uygulamayla aynı klasördeki bir dosyadır.
 
-Uygulamayı oluşturduktan sonra, `TokenCacheHelper.EnableSerialization()` yöntemini çağırarak ve uygulamayı `UserTokenCache`geçirerek serileştirme etkinleştirilir.
+Uygulamayı oluşturduktan sonra, `TokenCacheHelper.EnableSerialization()` yöntemini çağırarak ve uygulamayı geçirerek serileştirme etkinleştirilir `UserTokenCache` .
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -72,7 +71,7 @@ app = PublicClientApplicationBuilder.Create(ClientId)
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 ```
 
-`TokenCacheHelper` Yardımcı sınıfı şöyle tanımlanır:
+`TokenCacheHelper`Yardımcı sınıfı şöyle tanımlanır:
 
 ```csharp
 static class TokenCacheHelper
@@ -280,9 +279,9 @@ Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tut
 
 | Genişletme yöntemi | Microsoft. Identity. Web Sub ad alanı | Açıklama  |
 | ---------------- | --------- | ------------ |
-| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | Bellek belirteci önbelleği serileştirme. Bu uygulama örneklerde harika. Ayrıca, Web uygulaması yeniden başlatıldığında belirteç önbelleğinin kaybolup olmadığını aklınızda bulundurmayabilmeniz için üretim uygulamalarında da iyidir. `AddInMemoryTokenCaches`, kullanılmadığı takdirde önbellek girişinin süresinin `MsalMemoryTokenCacheOptions` dolacağı süreyi belirtmenize olanak tanıyan, isteğe bağlı bir tür parametresi alır.
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | Bellek belirteci önbelleği serileştirme. Bu uygulama örneklerde harika. Ayrıca, Web uygulaması yeniden başlatıldığında belirteç önbelleğinin kaybolup olmadığını aklınızda bulundurmayabilmeniz için üretim uygulamalarında da iyidir. `AddInMemoryTokenCaches``MsalMemoryTokenCacheOptions`, kullanılmadığı takdirde önbellek girişinin süresinin dolacağı süreyi belirtmenize olanak tanıyan, isteğe bağlı bir tür parametresi alır.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Belirteç önbelleği Kullanıcı oturumuna bağlanır. Tanımlama bilgisi çok büyük hale gelecağından KIMLIK belirteci çok sayıda talep içeriyorsa bu seçenek ideal değildir.
-| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Belirteç önbelleği, ASP.NET Core `IDistributedCache` uygulamasına karşı bir bağdaştırıcıdır, bu nedenle dağıtılmış bellek önbelleği, redsıs önbelleği, dağıtılmış bir nCache veya bir SQL Server önbelleği arasından seçim yapabilirsiniz. `IDistributedCache` Uygulamalar hakkındaki ayrıntılar için bkz https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache..
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Belirteç önbelleği, ASP.NET Core uygulamasına karşı bir bağdaştırıcıdır `IDistributedCache` , bu nedenle dağıtılmış bellek önbelleği, redsıs önbelleği, dağıtılmış bir NCache veya bir SQL Server önbelleği arasından seçim yapabilirsiniz. Uygulamalar hakkındaki ayrıntılar için `IDistributedCache` bkz https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache ..
 
 Bellek içi önbelleği kullanarak basit bir durum:
 

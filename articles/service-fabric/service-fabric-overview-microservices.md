@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792877"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
@@ -176,7 +175,7 @@ Birçok kuruluş burada durur. Kapsayıcıların avantajları zaten vardır ve S
 **Modernleştirin**  
 Modernleştirme, varolan Kapsayıcılı kodun yanı sıra yeni hizmetlerin eklenmesiyle birlikte bulunur. Yeni kod yazacaksanız, mikro hizmetler yolunda küçük bir adım daha almak en iyisidir. Bu, yeni bir REST API uç noktası veya yeni iş mantığı eklemek anlamına gelebilir. Bu şekilde, yeni mikro hizmetler oluşturma ve bunları geliştirme ve dağıtma işlemlerini başlatın.
 
-**Yenilik yapın**  
+**Yenilik yapma**  
 Mikro hizmet yaklaşımı, değişen iş ihtiyaçlarını karşılar. Bu aşamada, tek parçalı uygulamayı hizmetlere bölmeye veya sürmek. Burada klasik bir örnek, bir iş akışı kuyruğu olarak kullandığınız bir veritabanının bir işleme sorunu olması durumunda meydana gelir. İş akışı isteklerinin sayısı arttıkça, çalışmanın ölçek için dağıtılması gerekir. Ölçeklendirmeyen veya daha sık güncelleştirilmesi gereken uygulamanın bu özel parçasını alın ve mikro hizmet ve yenilik yapın olarak bölmeniz gerekir.
 
 **Uygulamaları mikro hizmetlere dönüştürme**  

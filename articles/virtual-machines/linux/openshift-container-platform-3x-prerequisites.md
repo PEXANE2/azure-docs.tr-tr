@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759513"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
@@ -75,7 +74,7 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH anahtarı oluşturma 
-OpenShift kümesine erişimin güvenliğini sağlamak için bir SSH anahtarı gereklidir. `ssh-keygen` Komutunu kullanarak (Linux veya MacOS 'ta) bir SSH anahtar çifti oluşturun:
+OpenShift kümesine erişimin güvenliğini sağlamak için bir SSH anahtarı gereklidir. `ssh-keygen`Komutunu kullanarak (Linux veya macOS 'ta) BIR SSH anahtar çifti oluşturun:
  
 ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''

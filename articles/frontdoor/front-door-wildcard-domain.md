@@ -11,15 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
 ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768310"
 ---
 # <a name="wildcard-domains"></a>Joker karakter etki alanları
 
-Tepesinde etki alanları ve alt etki alanları dışında, Azure ön kapı profilinizde ön uç Konakları veya özel etki alanları listenize bir joker karakter etki alanı adı eşleyebilirsiniz. Azure ön Kapıınızın yapılandırmasında joker etki alanlarının olması, aynı yönlendirme kuralından bir API, uygulama veya Web sitesi için birden çok alt etki alanı için trafik yönlendirme davranışını basitleştirir. Her alt etki alanını ayrı olarak eklemek veya belirtmek için yapılandırmayı değiştirmeniz gerekmez. Örnek `customer1.contoso.com`olarak,, `customer2.contoso.com`, ve `customerN.contoso.com` için yönlendirmeyi tanımlayabilir ve aynı yönlendirme kuralını kullanarak joker karakter etki alanını `*.contoso.com`ekleyebilirsiniz.
+Tepesinde etki alanları ve alt etki alanları dışında, Azure ön kapı profilinizde ön uç Konakları veya özel etki alanları listenize bir joker karakter etki alanı adı eşleyebilirsiniz. Azure ön Kapıınızın yapılandırmasında joker etki alanlarının olması, aynı yönlendirme kuralından bir API, uygulama veya Web sitesi için birden çok alt etki alanı için trafik yönlendirme davranışını basitleştirir. Her alt etki alanını ayrı olarak eklemek veya belirtmek için yapılandırmayı değiştirmeniz gerekmez. Örnek olarak,,, ve için yönlendirmeyi tanımlayabilir ve `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` aynı yönlendirme kuralını kullanarak joker karakter etki alanını ekleyebilirsiniz `*.contoso.com` .
 
 Joker karakter etki alanları desteğiyle geliştirilmiş önemli senaryolar şunlardır:
 
@@ -31,7 +30,7 @@ Joker karakter etki alanları desteğiyle geliştirilmiş önemli senaryolar şu
 
 ## <a name="adding-wildcard-domains"></a>Joker karakter etki alanları ekleme
 
-Ön uç Konakları veya etki alanları için bölümün altına bir joker karakter etki alanı ekleyebilirsiniz. Alt etki alanlarına benzer şekilde Azure ön kapısının, joker etki alanınız için CNAME kaydı eşlemesi olduğunu doğrular. Bu DNS eşlemesi, ile `*.contoso.com` `contoso.azurefd.net`EŞLENMIŞ gibi bir doğrudan CNAME kayıt eşlemesi olabilir. Ya da afdverify geçici eşlemesini kullanabilirsiniz. Örneğin, eşlenmiş `afdverify.contoso.com` olarak `afdverify.contoso.azurefd.net` , joker karakter için CNAME kayıt haritasını doğrular.
+Ön uç Konakları veya etki alanları için bölümün altına bir joker karakter etki alanı ekleyebilirsiniz. Alt etki alanlarına benzer şekilde Azure ön kapısının, joker etki alanınız için CNAME kaydı eşlemesi olduğunu doğrular. Bu DNS eşlemesi, ile eşlenmiş gibi bir doğrudan CNAME kayıt eşlemesi olabilir `*.contoso.com` `contoso.azurefd.net` . Ya da afdverify geçici eşlemesini kullanabilirsiniz. Örneğin, `afdverify.contoso.com` eşlenmiş olarak, `afdverify.contoso.azurefd.net` joker karakter için CNAME kayıt haritasını doğrular.
 
 > [!NOTE]
 > Azure DNS joker kayıtlarını destekler.
@@ -40,7 +39,7 @@ Joker karakter etki alanları desteğiyle geliştirilmiş önemli senaryolar şu
 
 - Diğer etki alanları için farklı bir rota tanımlama (joker etki alanından).
 
-- Belirli bir alt etki alanı için farklı bir WAF ilkesi vardır. Örneğin, `*.contoso.com` etki alanı sahipliğini `foo.contoso.com` yeniden kanıtlamaya gerek kalmadan eklemeye izin verir. Ancak, öğesinin `*.contoso.com`tek `foo.bar.contoso.com` düzey alt etki alanı olmadığından izin vermez. Ek etki `foo.bar.contoso.com` alanı sahipliği doğrulaması olmadan eklemek için `*.bar.contosonews.com` eklenmesi gerekir.
+- Belirli bir alt etki alanı için farklı bir WAF ilkesi vardır. Örneğin, `*.contoso.com` `foo.contoso.com` etki alanı sahipliğini yeniden kanıtlamaya gerek kalmadan eklemeye izin verir. Ancak `foo.bar.contoso.com` , öğesinin tek düzey alt etki alanı olmadığından izin vermez `*.contoso.com` . `foo.bar.contoso.com`Ek etki alanı sahipliği doğrulaması olmadan eklemek için `*.bar.contosonews.com` eklenmesi gerekir.
 
 Belirli sınırlamalara sahip joker karakter etki alanları ve alt etki alanları ekleyebilirsiniz:
 
@@ -72,7 +71,7 @@ Bir alt etki alanı için WAF ilkesinin çalıştırılmasını istemiyorsanız,
 Bir yönlendirme kuralı yapılandırırken, ön uç ana bilgisayarı olarak bir joker karakter seçebilirsiniz. Joker karakterler ve alt etki alanları için farklı yönlendirme davranışlarına de sahip olabilirsiniz. [Azure ön kapısının eşleme Ile nasıl yol olduğu konusunda](front-door-route-matching.md)açıklandığı gibi, çalışma zamanında farklı yönlendirme kuralları genelinde etki alanı için en özel eşleşme seçilir.
 
 > [!IMPORTANT]
-> Yönlendirme kurallarınız genelinde eşleşen yol desenleriniz olmalıdır, aksi olarak istemcileriniz başarısız olur. Örneğin, Route 1 (`*.foo.com/*` arka uç havuzu A ile eşlenmiş) ve Route 2 (`bar.foo.com/somePath/*` arka uç havuzu B ile eşlenmiş) gibi iki yönlendirme kuralı vardır. Ardından, için `bar.foo.com/anotherPath/*`bir istek ulaşır. Azure ön kapısı, daha belirli bir etki alanı eşleştirmesine göre Route 2 ' yi, yalnızca rotalar genelinde eşleşen yol desenleri bulmak için seçer.
+> Yönlendirme kurallarınız genelinde eşleşen yol desenleriniz olmalıdır, aksi olarak istemcileriniz başarısız olur. Örneğin, Route 1 ( `*.foo.com/*` arka uç havuzu A ile eşlenmiş) ve Route 2 ( `bar.foo.com/somePath/*` arka uç havuzu B ile eşlenmiş) gibi iki yönlendirme kuralı vardır. Ardından, için bir istek ulaşır `bar.foo.com/anotherPath/*` . Azure ön kapısı, daha belirli bir etki alanı eşleştirmesine göre Route 2 ' yi, yalnızca rotalar genelinde eşleşen yol desenleri bulmak için seçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

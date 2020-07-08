@@ -1,17 +1,16 @@
 ---
-title: Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
+title: Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
 description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makineyi veya sanal makine ölçek kümesini ölçeklendirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82801612"
 ---
-# <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
+# <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
 
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
@@ -64,7 +63,7 @@ Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ö
 > [!NOTE]
 > Aynı adımlar, bir sanal makine ölçek kümesi veya bulut hizmeti rolü ile çalışmaya başlamak için geçerlidir.
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 ### <a name="scale-based-on-a-schedule"></a>Zamanlamaya göre ölçeklendirin
 CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli günlerinde farklı şekilde ayarlayabilirsiniz.
 

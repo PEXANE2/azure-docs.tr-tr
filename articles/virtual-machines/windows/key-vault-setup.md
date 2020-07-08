@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
 ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870019"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager sanal makineler için Key Vault ayarlama
@@ -51,7 +50,7 @@ Daha sonra Key Vault şablon dağıtımıyla kullanmak üzere etkinleştirmek i�
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Şablonları kullanarak Key Vault ayarlama
-Şablon kullanırken, Key Vault kaynağı için `enabledForDeployment` özelliğini olarak `true` ayarlamanız gerekir.
+Şablon kullanırken, `enabledForDeployment` Key Vault kaynağı için özelliğini olarak ayarlamanız gerekir `true` .
 
     {
       "type": "Microsoft.KeyVault/vaults",

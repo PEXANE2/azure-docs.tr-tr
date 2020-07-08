@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868674"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda yönetici onayı
@@ -47,14 +46,14 @@ https://graph.microsoft.com/mail.send
 
 | Parametre     | Koşul     | Açıklama                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü `organizations` gıbı, GUID veya kolay ad biçiminde veya genel olarak başvuruda bulunulan şekilde belirtilebilir. Kişisel hesaplar kiracı bağlamı haricinde yönetici onayı sağlayamadığından ' Common ' kullanmayın. Kiracıların yönetiminde kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı KIMLIĞINI kullanın. |
+| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi, GUID veya kolay ad biçiminde veya genel olarak başvuruda bulunulan `organizations` şekilde belirtilebilir. Kişisel hesaplar kiracı bağlamı haricinde yönetici onayı sağlayamadığından ' Common ' kullanmayın. Kiracıların yönetiminde kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı KIMLIĞINI kullanın. |
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. |
+|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını ( `openid` , `profile` ,) içerebilir `email` . |
 
 
-Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) değeri kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
+Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, parametresinde istediğiniz tüm izinleri onaylaması istenir `scope` .  Statik ( `/.default` ) değeri kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
@@ -69,7 +68,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 | `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
 | `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
 | `scope`          | Uygulamasına erişim izni verilen izinler kümesi.|
-| `admin_consent`   | , Olarak `True`ayarlanır.|
+| `admin_consent`   | , Olarak ayarlanır `True` .|
 
 ### <a name="error-response"></a>Hata yanıtı
 
@@ -83,7 +82,7 @@ Başarılı bir yanıtta görülen parametrelere ekleme, hata parametreleri aşa
 | `error_description`| Bir geliştiricinin hatanın kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.|
 | `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
 | `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
-| `admin_consent`   | , Bu yanıtın yönetici `True` onay akışında oluştuğunu göstermek için olarak ayarlanır.|
+| `admin_consent`   | , `True` Bu yanıtın yönetici onay akışında oluştuğunu göstermek için olarak ayarlanır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bkz. [bir uygulamayı çok kiracılı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)

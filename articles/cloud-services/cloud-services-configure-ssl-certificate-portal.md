@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024855"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Azure 'da bir uygulama için TLS Yapılandırma
@@ -34,7 +33,7 @@ Sertifika, Azure 'daki TLS/SSL sertifikaları için aşağıdaki gereksinimleri 
 
 * Sertifika, ortak anahtar içermelidir.
 * Sertifika, anahtar değişimi için, kişisel bilgi değişimi (. pfx) dosyasına verilebilir şekilde oluşturulmalıdır.
-* Sertifikanın konu adı, bulut hizmetine erişmek için kullanılan etki alanı ile aynı olmalıdır. Cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) bir TLS/SSL sertifikası edinemezsiniz. Hizmetinize erişirken kullanmak için özel bir etki alanı adı almanız gerekir. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, özel etki alanı adınız **contoso.com** ise, "**. contoso.com** veya **www\.contoso.com**için CA 'nızdan bir sertifika istemeniz gerekir.
+* Sertifikanın konu adı, bulut hizmetine erişmek için kullanılan etki alanı ile aynı olmalıdır. Cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) bir TLS/SSL sertifikası edinemezsiniz. Hizmetinize erişirken kullanmak için özel bir etki alanı adı almanız gerekir. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, özel etki alanı adınız **contoso.com** ise, "**. contoso.com** veya **www \. contoso.com**için CA 'nızdan bir sertifika istemeniz gerekir.
 * Sertifika en az 2048 bit şifreleme kullanmalıdır.
 
 Test amaçları için otomatik olarak imzalanan bir sertifika [oluşturup](cloud-services-certs-create.md) kullanabilirsiniz. Otomatik olarak imzalanan bir sertifika, CA aracılığıyla kimlik doğrulaması içermez ve cloudapp.net etki alanını Web sitesi URL 'SI olarak kullanabilir. Örneğin, aşağıdaki görev, sertifikada kullanılan ortak adın (CN) **sslexample.cloudapp.net**olduğu kendinden imzalı bir sertifika kullanır.
@@ -74,7 +73,7 @@ Uygulamanızın sertifikayı kullanacak şekilde yapılandırılması ve bir HTT
 
    **Sertifikalar** bölümü, sertifikamızın adını, konumunu ve bulunduğu deponun adını tanımlar.
 
-   İzinler (`permissionLevel` öznitelik) aşağıdaki değerlerden birine ayarlanabilir:
+   İzinler ( `permissionLevel` öznitelik) aşağıdaki değerlerden birine ayarlanabilir:
 
    | İzin değeri | Açıklama |
    | --- | --- |
@@ -139,7 +138,7 @@ Azure portal Bağlan ve...
 
     ![Bulut hizmetinizi yayımlayın](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. **Sertifikalar**' a tıklayın.
+2. **Sertifikalar**’a tıklayın.
 
     ![Sertifikalar simgesine tıklayın](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 

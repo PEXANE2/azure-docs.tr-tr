@@ -14,10 +14,9 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857166"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
@@ -27,7 +26,7 @@ Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
 - Eğitim
 - Gereksinimler
-- Tasarlama
+- Tasarım
 
 ## <a name="training"></a>Eğitim
 Bulut uygulamanızı geliştirmeye başlamadan önce Azure 'da güvenlik ve gizliliği anlamak için zaman alın. Bu adımı gerçekleştirerek, uygulamanızdaki açıktan yararlanmaya yönelik güvenlik açıklarının sayısını ve önem derecesini azaltabilirsiniz. Sürekli değişen tehdit yataya uygun şekilde tepki vermeye daha fazla hazırlanacağız.
@@ -97,7 +96,7 @@ Ancak, [bir ihlalin meydana gelir olduğunu varsayalım](https://docs.microsoft.
 
   - Veri sızması veya izinsiz oynama gibi saldırılardan nasıl kurtarılacağını nasıl önleyeceğiz?
 
-## <a name="design"></a>Tasarlama
+## <a name="design"></a>Tasarım
 
 Tasarım aşaması, tasarım ve işlevsel belirtimlerde en iyi uygulamalar oluşturmak için önemlidir. Ayrıca, bir proje genelinde güvenlik ve gizlilik sorunlarını azaltmaya yardımcı olan risk analizini gerçekleştirmek için de önemlidir.
 
@@ -128,7 +127,7 @@ Gelişmiş hata ayıklama özelliklerine ve yerleşik Azure desteğine sahip ola
 
 Microsoft, Azure 'da uygulama geliştirmek için kullanabileceğiniz çeşitli [Diller, çerçeveler ve araçlar](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) sunar. [.Net ve .NET Core geliştiricileri Için Azure](https://docs.microsoft.com/dotnet/azure/)bir örnektir. Sunduğumuz her dil ve çerçeve için hızlı başlangıç, öğreticiler ve API başvurularını hızla kullanmaya başlamanıza yardımcı olacak şekilde bulacaksınız.
 
-Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanabileceğiniz çeşitli hizmetler sunar. Bu hizmetler, .NET, .NET Core, Java, Ruby, Node. js, PHP veya Python gibi en sevdiğiniz dilde geliştirme yapmanızı sağlar.
+Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanabileceğiniz çeşitli hizmetler sunar. Bu hizmetler, .NET, .NET Core, Java, Ruby, Node.js, PHP veya Python gibi en sevdiğiniz dilde geliştirme yapmanızı sağlar.
 [Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) bu hizmetlerden biridir.
 
 Web Apps Microsoft Azure gücünü uygulamanıza ekler. Güvenlik, Yük Dengeleme, otomatik ölçeklendirme ve otomatik yönetimi içerir. Ayrıca, paket yönetimi, hazırlama ortamları, özel etki alanları, SSL/TLS sertifikaları ve Azure DevOps, GitHub, Docker Hub 'dan ve diğer kaynaklardan sürekli dağıtım gibi Web Apps DevOps özelliğinden faydalanabilirsiniz.

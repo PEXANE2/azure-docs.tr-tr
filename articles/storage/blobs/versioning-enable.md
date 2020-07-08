@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884351"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
@@ -22,7 +21,7 @@ Depolama hesabı için blob sürüm oluşturma 'yı (Önizleme) Azure portal vey
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal blob sürümü oluşturmayı etkinleştirmek için:
 
@@ -37,9 +36,9 @@ Azure portal blob sürümü oluşturmayı etkinleştirmek için:
 Bir şablonla blob sürümü oluşturmayı etkinleştirmek için, **ısversioningenabled** özelliği **true**olan bir şablon oluşturun. Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
 1. Azure portal **kaynak oluştur**' u seçin.
-1. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+1. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
 1. **Şablon dağıtımı**öğesini seçin, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
-1. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<accountName>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+1. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<accountName>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 1. Şablonu kaydedin.
 1. Hesabın kaynak grubunu belirtin ve ardından şablonu dağıtmak ve BLOB sürümü oluşturmayı etkinleştirmek için **satın al** düğmesini seçin.
 

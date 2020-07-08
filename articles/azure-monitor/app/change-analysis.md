@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836822"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
@@ -79,7 +78,7 @@ Tüm değişikliklerini görüntülemek için bir kaynağa tıklanın. Gerekirse
 
 ![Değişiklik ayrıntılarının ekran görüntüsü](./media/change-analysis/change-details.png)
 
-Herhangi bir geri bildirim için dikey penceredeki veya e-postadaki changeanalysisteam@microsoft.comgeri bildirim gönder düğmesini kullanın.
+Herhangi bir geri bildirim için dikey penceredeki veya e-postadaki geri bildirim gönder düğmesini kullanın changeanalysisteam@microsoft.com .
 
 ![Değişiklik Analizi dikey penceresinde geri bildirim düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ Uygulama değişikliği analizi, Web uygulamasındaki tek başına bir algılay�
 
     !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 
-5. Değişiklik analizine erişmek için, **sorunları Tanıla ve çöz sorun** > **kullanılabilirliği ve performans** > **uygulaması kilitlenmeleri**' ni seçin. Zaman içindeki değişikliklerin türünü ve bu değişikliklerle ilgili ayrıntıları özetleyen bir grafik görürsünüz. Varsayılan olarak, son 24 saat içindeki değişiklikler anında sorunla ilgili yardım almak için görüntülenir.
+5. Değişiklik analizine erişmek için, **sorunları Tanıla ve çöz sorun**  >  **kullanılabilirliği ve performans**  >  **uygulaması kilitlenmeleri**' ni seçin. Zaman içindeki değişikliklerin türünü ve bu değişikliklerle ilgili ayrıntıları özetleyen bir grafik görürsünüz. Varsayılan olarak, son 24 saat içindeki değişiklikler anında sorunla ilgili yardım almak için görüntülenir.
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
 

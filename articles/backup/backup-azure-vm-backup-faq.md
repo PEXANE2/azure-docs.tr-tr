@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800660"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
@@ -65,7 +64,7 @@ Evet. Yedeklemeler bir makine kapatıldığında çalışır. Kurtarma noktası 
 
 Evet. Bir **anlık görüntü** durumunda yedekleme işini iptal edebilirsiniz. Anlık görüntüden veri aktarımı devam ediyorsa bir işi iptal edemezsiniz.
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup hizmeti tarafından oluşturulan kaynak grubunda bir kilit etkinleştirdim (örneğin, `AzureBackupRG_<geo>_<number>`). Yedeklemelerim çalışmaya devam edecek mi?
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup hizmeti tarafından oluşturulan kaynak grubunda bir kilit etkinleştirdim (örneğin, `AzureBackupRG_<geo>_<number>` ). Yedeklemelerim çalışmaya devam edecek mi?
 
 Azure Backup hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz, en fazla 18 geri yükleme noktası sınırı olduğundan yedeklemeler başarısız olur.
 
@@ -166,9 +165,9 @@ VM, değiştirilen veya yeni ilkedeki zamanlama ve bekletme ayarları kullanıla
 2. Azure Backup ile yapılandırılmış sanal makineleri taşımak için aşağıdaki adımları uygulayın:
 
    1. Sanal makinenizin konumunu bulun.
-   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1`. Örneğin, *AzureBackupRG_westus2_1*
+   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` . Örneğin, *AzureBackupRG_westus2_1*
    3. Azure portal, **gizli türleri göster**' i işaretleyin.
-   4. Adlandırma düzenine `AzureBackup_<name of your VM that you're trying to move>_###########`sahip **Microsoft. COMPUTE/restorepointcollections** türünde kaynağı bulun.
+   4. Adlandırma düzenine sahip **Microsoft. COMPUTE/restorePointCollections** türünde kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
    6. Silme işlemi tamamlandıktan sonra, sanal makinenizi taşıyabilirsiniz.
 

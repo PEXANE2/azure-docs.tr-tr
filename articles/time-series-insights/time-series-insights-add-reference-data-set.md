@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838527"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
@@ -34,7 +33,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 ## <a name="add-a-reference-data-set"></a>Başvuru veri kümesi ekleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Mevcut Azure Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
@@ -64,17 +63,17 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
    - Verileri metin düzenleyicisine yapıştırın. Ardından, **başvuru verilerini Ayrıştır** düğmesini seçin.
    - Yerel bir metin dosyasından veri eklemek için **Dosya Seç** düğmesini seçin.
 
-   Örneğin, CSV verilerini yapıştırın: [ ![yapıştırılan CSV verileri](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   Örneğin, CSV verilerini yapıştırın: [ ![ yapıştırılan CSV verileri](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Örneğin, JSON dizisi verilerini Yapıştır: [ ![JSON verilerini Yapıştır](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   Örneğin, JSON dizisi verilerini Yapıştır: [ ![ JSON verilerini Yapıştır](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
-   Veri değerlerini ayrıştırırken bir hata oluşursa, hata sayfanın alt kısmında kırmızı renkte görünür `CSV parsing error, no rows extracted`.
+   Veri değerlerini ayrıştırırken bir hata oluşursa, hata sayfanın alt kısmında kırmızı renkte görünür `CSV parsing error, no rows extracted` .
 
 1. Veriler başarıyla ayrıştırıldıktan sonra, verileri temsil eden sütunları ve satırları gösteren bir veri kılavuzu gösterilir. Doğruluk sağlamak için veri kılavuzunu gözden geçirin.
 
    [![Başvuru verilerini gözden geçirin](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Kabul edilen veri türünü anlamak için her sütunu gözden geçirin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: **#** Double (sayısal veriler) için **T | **Boolean için F veya dize Için **ABC** .
+1. Kabul edilen veri türünü anlamak için her sütunu gözden geçirin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: **#** Double (sayısal veriler) Için **T | **Boolean için F veya dize Için **ABC** .
 
    [![Sütun başlıklarında veri türleri ' ni seçin.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -93,7 +92,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
     [![Anahtar sütun (ler) i seçin.](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-    **(Isteğe bağlı)** Bileşik birincil **+** anahtar olarak ikincil anahtar sütunu eklemek için düğmeyi seçin. Seçimi geri almanız gerekiyorsa, ikincil anahtarı kaldırmak için açılan listeden boş değeri seçin.
+    **(Isteğe bağlı)** **+** Bileşik birincil anahtar olarak ikincil anahtar sütunu eklemek için düğmeyi seçin. Seçimi geri almanız gerekiyorsa, ikincil anahtarı kaldırmak için açılan listeden boş değeri seçin.
 
 1. Verileri karşıya yüklemek için **satırları karşıya yükle** düğmesini seçin.
 

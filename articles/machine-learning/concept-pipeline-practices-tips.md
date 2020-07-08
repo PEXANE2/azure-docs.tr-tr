@@ -1,5 +1,5 @@
 ---
-title: Makine öğrenimi işlem hatlarını yineleme ve gelişen
+title: Makine öğrenmesi işlem hatlarını yineleme ve geliştirme
 titleSuffix: Azure Machine Learning
 description: Hızlı geliştirme için desenler, uygulamalar ve ipuçları
 services: machine-learning
@@ -10,13 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 05/01/2020
 ms.openlocfilehash: 2ea353469ed111eebb591aa6ba86c652683cc2f0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858187"
 ---
-# <a name="iterating-and-evolving-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yineleme ve gelişen
+# <a name="iterating-and-evolving-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarını yineleme ve geliştirme
 
 Azure Machine Learning işlem hatları, kodunuzun modüle nleştirmek, sonuçları yeniden kullanmak ve işlem kaynaklarınızı iyileştirmek için etkili bir yol sağlar. İşlem hatları ile çalışmaya yönelik bazı pratik ipuçları ve uygulamalar aşağıda verilmiştir.
 
@@ -30,7 +29,7 @@ Azure Machine Learning işlem hatları, kodunuzun modüle nleştirmek, sonuçlar
 
 ## <a name="how-do-you-modularize-pipeline-code"></a>İşlem hattı kodunu nasıl moduirsiniz? 
 
-Modüller ve sınıf `ModuleStep` , ml kodunuzu modüle nize etmek için harika bir fırsat sağlar. Ancak, işlem hattı adımları arasında hareket büyük ölçüde bir işlev çağrısından daha pahalı olduğunu göz önünde bulundurmanız gerekir. Sormanız gereken soru, bu işlevlerden ve verilerle kavramsal olarak bu diğer bölümden farklı değil mi? " Ancak "Bu işlevlerin ve verilerin ayrı olarak mi gelişmesi istiyorum?" or "Bu hesaplama pahalıdır ve çıktısını yeniden kullanabilir miyim?" Daha fazla bilgi için, bkz. The tebook [modül oluşturma, ModuleVersion ve ModuleStep ile bir işlem hattı içinde kullanma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
+Modüller ve `ModuleStep` sınıf, ml kodunuzu modüle nize etmek için harika bir fırsat sağlar. Ancak, işlem hattı adımları arasında hareket büyük ölçüde bir işlev çağrısından daha pahalı olduğunu göz önünde bulundurmanız gerekir. Sormanız gereken soru, bu işlevlerden ve verilerle kavramsal olarak bu diğer bölümden farklı değil mi? " Ancak "Bu işlevlerin ve verilerin ayrı olarak mi gelişmesi istiyorum?" or "Bu hesaplama pahalıdır ve çıktısını yeniden kullanabilir miyim?" Daha fazla bilgi için, bkz. The tebook [modül oluşturma, ModuleVersion ve ModuleStep ile bir işlem hattı içinde kullanma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
 
 Daha önce anlatıldığı gibi, eğitimin üzerinde veri hazırlığı yapmak genellikle bu fırsattan biridir. Bazen veri hazırlama karmaşık ve zaman alıcı, işlemi ayrı işlem hattı adımlarına bölebilmeniz yeterlidir. Diğer fırsatlar, eğitim sonrası testi ve analizi içerir. 
 
@@ -48,7 +47,7 @@ Hızlıca yinelemek istediğinizde, işlem hattınızı kopyalayabilir, işlem h
 
 Ayrı işlem hatları, efor 'in bölüneceği doğal hatlardır. Birden çok geliştirici veya hatta birden fazla ekip farklı adımlarda çalışarak, adımlar arasında akan veriler ve bağımsız değişkenler üzerine kabul edilir. 
 
-Etkin geliştirme sırasında, çalışma alanından sonuçları `PipelineRun` alabilir `StepRun` ve çalıştırabilir, son ve ara çıktıyı indirmek için bu nesneleri kullanabilir ve bu yapıtları kendi modüle nleştirilmiş çalışmalarınız için kullanabilirsiniz.
+Etkin geliştirme sırasında, `PipelineRun` `StepRun` çalışma alanından sonuçları alabilir ve çalıştırabilir, son ve ara çıktıyı indirmek için bu nesneleri kullanabilir ve bu yapıtları kendi modüle nleştirilmiş çalışmalarınız için kullanabilirsiniz.
 
 ## <a name="use-pipelines-to-test-techniques-in-isolation"></a>Teknikleri yalıtımda sınamak için işlem hatlarını kullanma
 

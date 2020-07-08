@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871264"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
@@ -46,7 +45,7 @@ Günlükçüize API Management bir kez yapılandırıldıktan sonra, istenen ola
 6. Gelen veya giden işleme penceresinde üçgeni (kurşun kalem ' ın yanında) tıklatın.
 7. Kod düzenleyicisini seçin. Daha fazla bilgi için bkz. [ilkeleri ayarlama veya düzenleme](set-edit-policies.md).
 8. İmlecinizi `inbound` veya `outbound` ilke bölümünde konumlandırın.
-9. Sağdaki pencerede,**EventHub için** **Gelişmiş İlkeler** > günlüğü ' nü seçin. Bu, `log-to-eventhub` ilke ekstresi şablonunu ekler.
+9. Sağdaki pencerede, EventHub için **Gelişmiş İlkeler**  >  **günlüğü**' nü seçin. Bu, `log-to-eventhub` ilke ekstresi şablonunu ekler.
 
 ```xml
 <log-to-eventhub logger-id="logger-id">
@@ -61,9 +60,9 @@ Günlükçüize API Management bir kez yapılandırıldıktan sonra, istenen ola
     }
 </log-to-eventhub>
 ```
-Önceki `logger-id` adımda günlükçü oluşturmak IÇIN istek URL `{loggerId}` 'sinde kullandığınız değerle değiştirin.
+`logger-id` `{loggerId}` Önceki adımda günlükçü oluşturmak IÇIN istek URL 'sinde kullandığınız değerle değiştirin.
 
-`log-to-eventhub` Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz. Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
+Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz `log-to-eventhub` . Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
 
 Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın. Kaydedilen ilke etkin olur ve olaylar belirlenen Olay Hub 'ına kaydedilir.
 

@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81766873"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
@@ -32,7 +31,7 @@ PowerShell 'in bilgisayarınızda değişiklik yapması için yönetici düzeyin
 - Başvuru: [yürütme ilkeleri](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) ve [set-executionpolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 )hakkında.
-- Komut: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
+- Komut: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - İsteğe bağlı parametre:
     - `-Force`. Onay istemi 'ni atlar.
 
@@ -50,7 +49,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
 
-`$PSVersionTable` Komutunu çalıştırarak PowerShell örneğinizi denetleyin.
+Komutunu çalıştırarak PowerShell örneğinizi denetleyin `$PSVersionTable` .
 Bu komut aşağıdaki çıktıyı üretir:
 
 
@@ -82,7 +81,7 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
 2. NuGet paket sağlayıcısını yükler.
     - Açıklama: Bu sağlayıcının PowerShell Galerisi gibi NuGet tabanlı depolarla etkileşim kurması gerekir.
     - Başvuru: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
-    - Komut: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
+    - Komut: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
         - `-Force`. Onay istemi 'ni atlar.
@@ -100,7 +99,7 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
 3. PowerShell Galerisi güvenilir bir depo olarak yapılandırın.
     - Açıklama: varsayılan olarak, PowerShell Galerisi güvenilmeyen bir depodur.
     - Başvuru: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
-    - Komut: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
+    - Komut: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - İsteğe bağlı parametre:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
 
@@ -112,12 +111,12 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    Bu değişikliği onaylayıp, `Get-PSRepository` komutunu çalıştırarak tüm psdepolarında denetim yapabilirsiniz.
+    Bu değişikliği onaylayıp, komutunu çalıştırarak tüm Psdepolarında denetim yapabilirsiniz `Get-PSRepository` .
 
 4. PowerShellGet 'in en yeni sürümünü yükler.
     - Açıklama: Bu modül, PowerShell Galerisi diğer modülleri almak için kullanılan araçları içerir. Sürüm 1.0.0.1, Windows 10 ve Windows Server ile birlikte gelir. Sürüm 1.6.0 veya üzeri gereklidir. Hangi sürümün yükleneceğini öğrenmek için `Get-Command -Module PowerShellGet` komutunu çalıştırın.
     - Başvuru: [PowerShellGet yükleniyor](/powershell/scripting/gallery/installing-psget).
-    - Komut: `Install-Module -Name PowerShellGet`.
+    - Komut: `Install-Module -Name PowerShellGet` .
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
         - `-Force`. "Önceden yüklenmiş" uyarısını atlar ve en son sürümü yüklüyor.
@@ -141,7 +140,7 @@ Bu adımlar, PowerShell Galerisi az. ApplicationMonitor modülünü indirir.
 2. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
 3. Az. ApplicationMonitor modülünü yükler.
     - Başvuru: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
-    - Komut: `Install-Module -Name Az.ApplicationMonitor`.
+    - Komut: `Install-Module -Name Az.ApplicationMonitor` .
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
         - `-AllowPrerelease`. Alfa ve beta sürümlerinin yüklenmesine izin verir.
@@ -200,9 +199,9 @@ Modülü başka bir dizine yüklüyorsanız, [Import-Module](https://docs.micros
 > Paketin içeriğini amaçlanan çalışma zamanı dizininizde depolayın ve erişim izinlerinin okuma izni verme ancak yazma izni olduğunu onaylayın.
 
 1. Uzantıyı ". zip" olarak değiştirin ve paketin içeriğini amaçlanan yükleme dizininize ayıklayın.
-2. Az. ApplicationMonitor. psd1 dosyasının yolunu bulun.
+2. Az.ApplicationMonitor.psd1 dosyasının yolunu bulun.
 3. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
-4. `Import-Module Az.ApplicationMonitor.psd1` Komutunu kullanarak modülü yükleyin.
+4. Komutunu kullanarak modülü yükleyin `Import-Module Az.ApplicationMonitor.psd1` .
     
 
 ## <a name="route-traffic-through-a-proxy"></a>Trafiği bir ara sunucu üzerinden yönlendirme
@@ -212,12 +211,12 @@ Modülü başka bir dizine yüklüyorsanız, [Import-Module](https://docs.micros
 PowerShell Galerisi az. ApplicationMonitor indirme ve yükleme için PowerShell komutları bir `-Proxy` parametreyi destekler.
 Yükleme betiklerinizi yazarken yukarıdaki yönergeleri gözden geçirin.
 
-Application Insights SDK 'sının uygulamanızın telemetrisini Microsoft 'a gönderebilmesi gerekir. Web. config dosyanızda uygulamanız için proxy ayarlarını yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [APPLICATION INSIGHTS SSS: proxy geçişi](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+Application Insights SDK 'sının uygulamanızın telemetrisini Microsoft 'a gönderebilmesi gerekir. web.config dosyanızda uygulamanız için proxy ayarlarını yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [APPLICATION INSIGHTS SSS: proxy geçişi](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
 ## <a name="enable-monitoring"></a>İzlemeyi etkinleştirme
 
-İzlemeyi etkinleştirmek `Enable-ApplicationInsightsMonitoring` için komutunu kullanın.
+`Enable-ApplicationInsightsMonitoring`İzlemeyi etkinleştirmek için komutunu kullanın.
 
 Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için bkz. [API başvurusu](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring) .
 

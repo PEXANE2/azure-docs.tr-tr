@@ -10,10 +10,9 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891462"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
@@ -28,8 +27,8 @@ Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavra
 
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
-- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak ARŞIV dosyanızı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
-- . Jar dosyalarını Java mak 'a dağıtmak için kudu sitesinin `/api/zipdeploy/` uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
+- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
+- . Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
 
 FTP kullanarak. war 'nizi dağıtmayın. FTP aracı başlangıç betiklerini, bağımlılıklarını veya diğer çalışma zamanı dosyalarını karşıya yüklemek üzere tasarlanmıştır. Web uygulamalarını dağıtmak için en iyi seçenek değildir.
 
@@ -43,7 +42,7 @@ Azul JVM 'Leri kullanılarak App Service üzerindeki tüm Java çalışma zamanl
 
 Zamanlanmış bir kayıt almak için Java uygulamasının PID 'sine (Işlem KIMLIĞI) ihtiyacınız olacaktır. PID 'yi bulmak için, https://adresinde Web uygulamanızın SCM sitesinde bir tarayıcı açın <-site-adı>. scm.azurewebsites.net/ProcessExplorer/. Bu sayfada Web uygulamanızdaki çalışan süreçler gösterilmektedir. Tabloda "Java" adlı işlemi bulun ve karşılık gelen PID 'yi (Işlem KIMLIĞI) kopyalayın.
 
-Ardından, SCM sitesinin üst araç çubuğunda **hata ayıklama konsolunu** açın ve aşağıdaki komutu çalıştırın. Daha `<pid>` önce KOPYALADıĞıNıZ işlem kimliğiyle değiştirin. Bu komut, Java uygulamanızın 30 saniyelik profil oluşturucu kaydını başlatır ve `timed_recording_example.jfr` `D:\home` dizininde adlı bir dosya oluşturur.
+Ardından, SCM sitesinin üst araç çubuğunda **hata ayıklama konsolunu** açın ve aşağıdaki komutu çalıştırın. `<pid>`Daha önce kopyaladığınız Işlem kimliğiyle değiştirin. Bu komut, Java uygulamanızın 30 saniyelik profil oluşturucu kaydını başlatır ve dizininde adlı bir dosya oluşturur `timed_recording_example.jfr` `D:\home` .
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -51,7 +50,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 Daha fazla bilgi için lütfen [Jcmd komut başvurusuna](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)bakın.
 
-#### <a name="analyze-jfr-files"></a>Dosyaları `.jfr` analiz etme
+#### <a name="analyze-jfr-files"></a>Dosyaları analiz etme `.jfr`
 
 JFR dosyanızı yerel makinenize indirmek için [FTPS](deploy-ftp.md) 'yi kullanın. JFR dosyasını çözümlemek için, [Zulu görevi denetimini](https://www.azul.com/products/zulu-mission-control/)indirip yükleyin. Zulu dili görev denetimi yönergeleri için [Azul belgelerine](https://docs.azul.com/zmc/) ve [yükleme yönergelerine](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
 
@@ -80,9 +79,9 @@ Azure App Service, Azure portal ve CLı aracılığıyla kullanıma hazır ayarl
 
 ### <a name="set-java-runtime-options"></a>Java çalışma zamanı seçeneklerini ayarla
 
-Ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçenekleriyle adlı `JAVA_OPTS` bir [uygulama ayarı](configure-common.md#configure-app-settings) oluşturun. App Service, bu ayarı başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
+Ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçenekleriyle adlı bir [uygulama ayarı](configure-common.md#configure-app-settings) oluşturun `JAVA_OPTS` . App Service, bu ayarı başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında adlı `JAVA_OPTS` yeni bir uygulama ayarı oluşturun, örneğin, gibi ek ayarları içerir `-Xms512m -Xmx1204m`.
+Azure portal, Web uygulaması için **uygulama ayarları** altında adlı yeni bir uygulama ayarı oluşturun, örneğin, gibi `JAVA_OPTS` ek ayarları içerir `-Xms512m -Xmx1204m` .
 
 Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi bölümüne ayar/değer etiketleri ekleyin. Aşağıdaki örnek, belirli bir minimum ve en büyük Java yığın boyutunu ayarlar:
 
@@ -122,7 +121,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Varsayılan karakter kodlamasını ayarla
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında, değeri `JAVA_OPTS` `-Dfile.encoding=UTF-8`ile adlı yeni bir uygulama ayarı oluşturun.
+Azure portal, Web uygulaması için **uygulama ayarları** altında, değeri ile adlı yeni bir uygulama ayarı oluşturun `JAVA_OPTS` `-Dfile.encoding=UTF-8` .
 
 Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını yapılandırabilirsiniz. Eklenti yapılandırmasına ayar adı ve değer etiketlerini ekleyin:
 
@@ -149,13 +148,13 @@ App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güve
 
 #### <a name="tomcat"></a>Tomcat
 
-Tomcat uygulamanız, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki `request` kodda bir örneğidir `HttpServletRequest`.
+Tomcat uygulamanız, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda `request` bir örneğidir `HttpServletRequest` .
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
 ```
 
-Artık belirli bir talep için `Map` nesneyi inceleyebilirsiniz. Örneğin, aşağıdaki kod parçacığı tüm talep türleri boyunca yinelenir ve her bir koleksiyonun içeriğini yazdırır.
+Artık `Map` belirli bir talep için nesneyi inceleyebilirsiniz. Örneğin, aşağıdaki kod parçacığı tüm talep türleri boyunca yinelenir ve her bir koleksiyonun içeriğini yazdırır.
 
 ```java
 for (Object key : map.keySet()) {
@@ -179,7 +178,7 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Bu özelliği devre dışı bırakmak için, bir değeri olan `WEBSITE_AUTH_SKIP_PRINCIPAL` adlı bir uygulama ayarı `1`oluşturun. App Service tarafından eklenen tüm servlet filtrelerini devre dışı bırakmak için, bir değeri `WEBSITE_SKIP_FILTERS` ile adlı bir ayar `1`oluşturun.
+Bu özelliği devre dışı bırakmak için, bir değeri olan adlı bir uygulama ayarı oluşturun `WEBSITE_AUTH_SKIP_PRINCIPAL` `1` . App Service tarafından eklenen tüm servlet filtrelerini devre dışı bırakmak için, bir değeri ile adlı bir ayar oluşturun `WEBSITE_SKIP_FILTERS` `1` .
 
 ### <a name="configure-tlsssl"></a>TLS/SSL 'yi yapılandırma
 
@@ -191,7 +190,7 @@ Mevcut bir TLS/SSL sertifikasını karşıya yüklemek ve uygulamanızın etki a
 
 İlk olarak, uygulamanıza [Key Vault erişim verme](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [bir uygulama ayarında gizli diziniz Için bir Anahtar Kasası başvurusu yapma](app-service-key-vault-references.md#reference-syntax)yönergelerini izleyin. App Service terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizli olarak çözümlendiğini doğrulayabilirsiniz.
 
-Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ortam değişkeni ekleme sözdizimi (`${MY_ENV_VAR}`) kullanın. Spring yapılandırma dosyaları için lütfen [externalized yapılandırmalarında](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)bu belgelere bakın.
+Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ortam değişkeni ekleme sözdizimi ( `${MY_ENV_VAR}` ) kullanın. Spring yapılandırma dosyaları için lütfen [externalized yapılandırmalarında](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)bu belgelere bakın.
 
 
 ## <a name="configure-apm-platforms"></a>APM platformlarını yapılandırma
@@ -201,26 +200,26 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 ### <a name="configure-new-relic"></a>Yeni relik yapılandırma
 
 1. [NewRelic.com](https://newrelic.com/signup) adresinde yeni bir relik hesabı oluşturun
-2. Newrelik 'ten Java aracısını indirin, *newrelic-Java-x. x. x. zip*dosyasına benzer bir dosya adı olacaktır.
+2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip*benzer bir dosya adı olacaktır.
 3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için gerekir.
 4. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
 5. Paketi açılan yeni relik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
 6. */Home/site/Wwwroot/APM/newrelic/newrelic.exe* konumundaki YAML dosyasını değiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
 7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - Uygulamanız **Java SE**kullanıyorsa, değeriyle `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`adlı bir ortam değişkeni oluşturun.
-    - **Tomcat**kullanıyorsanız, değeriyle `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`adlı bir ortam değişkeni oluşturun.
+    - Uygulamanız **Java SE**kullanıyorsa, değeriyle adlı bir ortam değişkeni oluşturun `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - **Tomcat**kullanıyorsanız, değeriyle adlı bir ortam değişkeni oluşturun `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ### <a name="configure-appdynamics"></a>AppDynamics 'i yapılandırma
 
 1. [AppDynamics.com](https://www.appdynamics.com/community/register/) adresinde bir AppDynamics hesabı oluşturun
-2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x. x. x. xxxxx. zip* ile benzerdir.
+2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x.x.x.xxxxx.zip* benzerdir.
 3. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
 4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - **Java SE**kullanıyorsanız, App Service adınız olan değer `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` ile adlı bir ortam değişkeni oluşturun.
-    - **Tomcat**kullanıyorsanız, App Service adınız olan değer `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` ile adlı bir ortam değişkeni oluşturun.
+    - **Java SE**kullanıyorsanız, `JAVA_OPTS` App Service adınız olan değer ile adlı bir ortam değişkeni oluşturun `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` .
+    - **Tomcat**kullanıyorsanız, `CATALINA_OPTS` App Service adınız olan değer ile adlı bir ortam değişkeni oluşturun `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` .
 
->  Veya `JAVA_OPTS` `CATALINA_OPTS`için bir ortam değişkeniniz zaten varsa, geçerli değerin sonuna `-javaagent:/...` bu seçeneği ekleyin.
+>  Veya için bir ortam değişkeniniz zaten varsa `JAVA_OPTS` `CATALINA_OPTS` , `-javaagent:/...` geçerli değerin sonuna bu seçeneği ekleyin.
 
 ## <a name="data-sources"></a>Veri kaynakları
 
@@ -245,15 +244,15 @@ Tomcat 'i Java veritabanı bağlantısı (JDBC) veya Java Kalıcılık API 'SI (
 </appSettings>
 ```
 
-Veya Azure Portal içindeki **yapılandırma** > **uygulaması ayarları** sayfasında ortam değişkenlerini ayarlayın.
+Veya Azure Portal içindeki **yapılandırma**  >  **uygulaması ayarları** sayfasında ortam değişkenlerini ayarlayın.
 
 Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzerinde çalışan tüm uygulamalar için mi kullanılabilir olacağını saptayın.
 
 #### <a name="application-level-data-sources"></a>Uygulama düzeyi veri kaynakları
 
-1. Projenizin *meta INF/* dizininde bir *Context. xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
+1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *Context. xml*dosyasında, veri kaynağını `Context` bir JNDI adresine bağlamak için bir öğe ekleyin. Yer tutucusunu `driverClassName` , yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -268,7 +267,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
     </Context>
     ```
 
-3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *Web. xml* ' i güncelleştirin.
+3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *web.xml* güncelleştirin.
 
     ```xml
     <resource-env-ref>
@@ -301,14 +300,14 @@ Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya
 
 Tomcat 'in `server.xml` veya diğer yapılandırma dosyalarını düzenlemek için önce portalda Tomcat ana sürümünüzü bir yere göz atın.
 
-1. `env` Komutunu çalıştırarak sürümünüz Için Tomcat giriş dizinini bulun. İle `AZURE_TOMCAT`başlayan ve ana sürümünüzle eşleşen ortam değişkenini arayın. Örneğin, `AZURE_TOMCAT85_HOME` tomcat 8,5 Için Tomcat dizinine işaret eder.
-1. Sürümünüz için Tomcat giriş dizinini tanımladıktan sonra yapılandırma dizinini öğesine `D:\home`kopyalayın. Örneğin, bir değeri `AZURE_TOMCAT85_HOME` olsaydı `D:\Program Files (x86)\apache-tomcat-8.5.37`, kopyalanmış dizinin yeni yolu olur `D:\home\apache-tomcat-8.5.37`.
+1. Komutunu çalıştırarak sürümünüz için Tomcat giriş dizinini bulun `env` . İle başlayan `AZURE_TOMCAT` ve ana sürümünüzle eşleşen ortam değişkenini arayın. Örneğin, `AZURE_TOMCAT85_HOME` tomcat 8,5 Için Tomcat dizinine işaret eder.
+1. Sürümünüz için Tomcat giriş dizinini tanımladıktan sonra yapılandırma dizinini öğesine kopyalayın `D:\home` . Örneğin, `AZURE_TOMCAT85_HOME` bir değeri olsaydı `D:\Program Files (x86)\apache-tomcat-8.5.37` , kopyalanmış dizinin yeni yolu olur `D:\home\apache-tomcat-8.5.37` .
 
-Son olarak, App Service yeniden başlatın. Dağıtımlarınız daha önce olduğu `D:\home\site\wwwroot\webapps` gibi ' e gitmelidir.
+Son olarak, App Service yeniden başlatın. Dağıtımlarınız daha önce olduğu gibi ' e gitmelidir `D:\home\site\wwwroot\webapps` .
 
 ## <a name="configure-java-se"></a>Java 'yi yapılandırma
 
-Çalıştıran bir. Windows üzerinde Java ve üzerinde JAR uygulaması, `server.port` uygulamanız başladığında bir komut satırı seçeneği olarak geçirilir. HTTP bağlantı noktasını ortam değişkeninden el ile çözümleyebilirsiniz `HTTP_PLATFORM_PORT`. Bu ortam değişkeninin değeri, uygulamanızın dinlemesi gereken HTTP bağlantı noktasıdır. 
+Çalıştıran bir. Windows üzerinde Java ve üzerinde JAR uygulaması, `server.port` uygulamanız başladığında bir komut satırı seçeneği olarak geçirilir. HTTP bağlantı noktasını ortam değişkeninden el ile çözümleyebilirsiniz `HTTP_PLATFORM_PORT` . Bu ortam değişkeninin değeri, uygulamanızın dinlemesi gereken HTTP bağlantı noktasıdır. 
 
 ## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
 

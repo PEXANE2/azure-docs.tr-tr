@@ -16,10 +16,9 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869737"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için LinkedIn Sales Navigator 'ı yapılandırma
@@ -60,14 +59,14 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Azure AD 'de LinkedIn Sales Navigator 'a otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-İlk adım, LinkedIn erişim belirtecinizi almak için kullanılır. Kuruluş yöneticisiyseniz, kendi kendine erişim belirteci sağlayabilirsiniz. Hesap merkezinizde ** &gt; ayarlar genel ayarlar** ' a gidin ve **SCIM kurulum** panelini açın.
+İlk adım, LinkedIn erişim belirtecinizi almak için kullanılır. Kuruluş yöneticisiyseniz, kendi kendine erişim belirteci sağlayabilirsiniz. Hesap merkezinizde **Ayarlar &gt; Genel ayarlar** ' a gidin ve **SCIM kurulum** panelini açın.
 
 > [!NOTE]
 > Hesap merkezine bir bağlantı yerine doğrudan erişiyorsanız, aşağıdaki adımları kullanarak buna ulaşabilirsiniz.
 
 1. Hesap Merkezi 'nde oturum açın.
 
-2. ** &gt; Yönetici Yöneticisi ayarları** ' nı seçin.
+2. **Yönetici &gt; Yöneticisi ayarları** ' nı seçin.
 
 3. Sol kenar çubuğunda **Gelişmiş tümleştirmeler** ' e tıklayın. Hesap merkezine yönlendirilirsiniz.
 
@@ -99,7 +98,7 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
 
 11. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
 
-    * **Kiracı URL 'si** alanına, girin https://developer.linkedin.com.
+    * **Kiracı URL 'si** alanına, girin https://developer.linkedin.com .
 
     * **Gizli belirteç** alanına, adım 1 ' de oluşturduğunuz erişim belirtecini girin ve **Bağlantıyı Sına** ' yı tıklatın.
 

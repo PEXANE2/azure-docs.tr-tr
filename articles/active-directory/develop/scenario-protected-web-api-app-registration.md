@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868838"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
@@ -56,7 +55,7 @@ Web API 'Lerine özgü diğer ayarlar, sunulan API ve sunulan kapsamlardır.
 
 ### <a name="application-id-uri-and-scopes"></a>Uygulama KIMLIĞI URI 'SI ve kapsamları
 
-Kapsamlar genellikle form `resourceURI/scopeName`olur. Microsoft Graph için kapsamlar kısayollarına sahiptir. Örneğin, `User.Read` için `https://graph.microsoft.com/user.read`bir kısayoldur.
+Kapsamlar genellikle form olur `resourceURI/scopeName` . Microsoft Graph için kapsamlar kısayollarına sahiptir. Örneğin, `User.Read` için bir kısayoldur `https://graph.microsoft.com/user.read` .
 
 Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
 
@@ -64,7 +63,7 @@ Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
 - Bir veya daha fazla kapsam
 - Bir veya daha fazla uygulama rolü
 
-Varsayılan olarak, uygulama kayıt portalı Kaynak URI `api://{clientId}`'sini kullanmanızı önerir. Bu URI benzersizdir ancak insanlar okunabilir değil. URI 'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun.
+Varsayılan olarak, uygulama kayıt portalı Kaynak URI 'sini kullanmanızı önerir `api://{clientId}` . Bu URI benzersizdir ancak insanlar okunabilir değil. URI 'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun.
 
 İstemci uygulamalarında kapsamlar, *temsilci izinleri* olarak görünür ve uygulama rolleri, Web API 'niz için *Uygulama izinleri* olarak gösterilir.
 
@@ -77,7 +76,7 @@ Kapsamlar, uygulamanızın kullanıcılarına sunulan izin penceresinde de gör�
 
 1. Uygulama kaydında **BIR API 'Yi kullanıma** sunma ' yı seçin.
 1. **Kapsam ekle**’yi seçin.
-1. İstenirse, **Kaydet ve devam et**' i seçerek ÖNERILEN`api://{clientId}`uygulama kimliği URI 'sini () kabul edin.
+1. İstenirse, `api://{clientId}` **Kaydet ve devam et**' i seçerek ÖNERILEN uygulama kimliği URI 'sini () kabul edin.
 1. Şu değerleri belirtin:
     - **Kapsam adı** ' nı seçin ve **access_as_user**girin.
     - **Kimlerin izin verebilir** ' i seçin ve **yöneticilerin ve kullanıcıların** seçili olduğundan emin olun.
@@ -101,12 +100,12 @@ Uygulama izinlerini göstermek için bildirimi düzenlemeniz gerekir.
 
 1. Uygulamanız için uygulama kaydında, **bildirim**' ı seçin.
 1. Bildirimi düzenlemek için `appRoles` ayarı bulun ve uygulama rollerini ekleyin. Rol tanımları aşağıdaki örnek JSON bloğunda verilmiştir.
-1. Yalnızca ' a ayarlı bırakın `allowedMemberTypes` `"Application"`
-1. Benzersiz bir `id` GUID olduğundan emin olun.
-1. Boşluk içermediğinden `displayName` emin `value` olun.
+1. Yalnızca ' a `allowedMemberTypes` ayarlı bırakın `"Application"` .
+1. `id`Benzersiz BIR GUID olduğundan emin olun.
+1. `displayName` `value` Boşluk içermediğinden emin olun.
 1. Bildirimi kaydedin.
 
-Aşağıdaki örnek öğesinin `appRoles`içeriğini gösterir; burada öğesinin `id` DEĞERI herhangi bir benzersiz GUID olabilir.
+Aşağıdaki örnek öğesinin içeriğini gösterir `appRoles` ; burada öğesinin değeri `id` herhangi BIR benzersiz GUID olabilir.
 
 ```json
 "appRoles": [
@@ -141,13 +140,13 @@ Bu artırılmış güvenliği eklemek için:
 
    > [!IMPORTANT]
    >
-   > **Gerekli Kullanıcı atamasını** **AYARLARSANıZ, Azure**ad, bir Web API erişim belirteci istediğinde bir istemcinin uygulama rolü atamalarını denetler. İstemci herhangi \<bir uygulama rolüne atanmamışsa, Azure AD "INVALID_CLIENT: AADSTS501051: uygulama uygulaması adı\> , \<Web API 'si\>için bir role atanmaz" hata iletisini döndürür.
+   > **Gerekli Kullanıcı atamasını** **AYARLARSANıZ, Azure**ad, bir Web API erişim belirteci istediğinde bir istemcinin uygulama rolü atamalarını denetler. İstemci herhangi bir uygulama rolüne atanmamışsa, Azure AD "invalid_client: AADSTS501051: Application bir role atanmamış" hata iletisini döndürür \<application name\> \<web API\> .
    >
    > **Kullanıcı atamasını gerekli** tutarsanız, **Hayır**olarak AYARLARSANıZ, istemci Web API 'niz için bir erişim BELIRTECI istediğinde, Azure AD uygulama rolü atamalarını denetlemez. Tüm Daemon istemcileri, istemci kimlik bilgileri akışını kullanan tüm istemciler, hedef kitini belirterek API için bir erişim belirteci alabilir. Herhangi bir uygulama, API 'ye izin istemek zorunda kalmadan erişebilir.
    >
-   > Ancak, önceki bölümde açıklandığı gibi, Web API 'niz uygulamanın kiracı yöneticisi tarafından yetkilendirilen doğru rolün olduğunu her zaman doğrulayabilirler. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. Önceki JSON örneğinde, değeri `access_as_application`.
+   > Ancak, önceki bölümde açıklandığı gibi, Web API 'niz uygulamanın kiracı yöneticisi tarafından yetkilendirilen doğru rolün olduğunu her zaman doğrulayabilirler. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. Önceki JSON örneğinde, değeri `access_as_application` .
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

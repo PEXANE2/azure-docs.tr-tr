@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792573"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure disk şifrelemesi (önceki sürüm)
@@ -30,7 +29,7 @@ Bu bölümlerdeki bilgiler aynı kalır:
 ## <a name="networking-and-group-policy"></a>Ağ ve grup ilkesi
 
 Azure Disk Şifrelemesi özelliğini eski AAD parametresi sözdizimini kullanarak etkinleştirmek için hizmet olarak altyapı (IaaS) VM 'Leri aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılamalıdır: 
-  - Anahtar kasanıza bağlanmak için bir belirteç almak üzere, IaaS VM 'sinin bir Azure AD uç noktasına bağlanabilmelidir, \[Login.microsoftonline.com.\]
+  - Anahtar kasanıza bağlanmak için bir belirteç almak üzere, IaaS VM 'sinin bir Azure AD uç noktasına bağlanabilmelidir, \[ login.microsoftonline.com \] .
   - Şifreleme anahtarlarını anahtar kasanıza yazmak için, IaaS VM 'sinin Anahtar Kasası uç noktasına bağlanabilmesi gerekir.
   - IaaS sanal makinesi, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
   -  Güvenlik ilkeniz, Azure VM 'lerinden internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/general/access-behind-firewall.md).
@@ -48,7 +47,7 @@ Azure Disk Şifrelemesi özelliğini eski AAD parametresi sözdizimini kullanara
 ### <a name="group-policy"></a>Grup İlkesi
  - Azure disk şifrelemesi çözümü, Windows IaaS VM 'Leri için BitLocker dış anahtar koruyucusunu kullanır. Etki alanına katılmış VM 'Ler için TPM koruyucuları uygulayan herhangi bir grup Ilkesi göndermeyin. **Uyumlu TPM olmadan BitLocker 'A Izin ver**seçeneğinin Grup ilkesi hakkında bilgi için, bkz. [BitLocker Grup İlkesi başvurusu](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Özel bir grup ilkesi etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel grup ilkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate. exe/Force) ve gerekirse yeniden başlatın. 
+- Özel bir grup ilkesi etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel grup ilkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate.exe/Force) ve gerekirse yeniden başlatın. 
 
 ## <a name="encryption-key-storage-requirements"></a>Şifreleme anahtarı depolama gereksinimleri 
 

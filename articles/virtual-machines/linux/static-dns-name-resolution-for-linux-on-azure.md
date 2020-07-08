@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
 ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757836"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Azure 'da sanal ağ arabirim kartları oluşturma ve VM ad çözümlemesi için dahili DNS kullanma
@@ -30,7 +29,7 @@ Görevi hızlı bir şekilde gerçekleştirmeniz gerekirse, aşağıdaki bölüm
 Ön gereksinimler: kaynak grubu, sanal ağ ve alt ağ, SSH gelen ağ güvenlik grubu.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Statik iç DNS adına sahip bir sanal ağ arabirim kartı oluşturun
-[Az Network Nic Create](/cli/azure/network/nic)Ile vNIC 'yi oluşturun. `--internal-dns-name` CLI bayrağı, sanal ağ arabirim kartı (vNIC) IÇIN statik DNS adı sağlayan DNS etiketinin ayarlanmasına yöneliktir. Aşağıdaki örnek adlı `myNic`bir vNIC oluşturur, bunu `myVnet` sanal ağa bağlar ve adlı `jenkins`bir iç DNS ad kaydı oluşturur:
+[Az Network Nic Create](/cli/azure/network/nic)Ile vNIC 'yi oluşturun. `--internal-dns-name`CLI bayrağı, sanal ağ arabirim kartı (vNIC) için STATIK DNS adı sağlayan DNS etiketinin ayarlanmasına yöneliktir. Aşağıdaki örnek adlı bir vNIC oluşturur `myNic` , bunu `myVnet` sanal ağa bağlar ve adlı BIR iç DNS ad kaydı oluşturur `jenkins` :
 
 ```azurecli
 az network nic create \
@@ -42,7 +41,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>VM dağıtma ve sanal NIC 'yi bağlama
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. `--nics` Bayrak, Azure 'a dağıtım sırasında VNıC 'yi VM 'ye bağlar. Aşağıdaki örnek, Azure yönetilen diskler ile `myVM` ADLı bir VM oluşturur ve önceki adımdan adlı `myNic` vNIC 'yi ekler:
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. `--nics`Bayrak, Azure 'a dağıtım sırasında vNIC 'YI VM 'ye bağlar. Aşağıdaki örnek, `myVM` Azure yönetilen diskler ile adlı BIR VM oluşturur ve önceki adımdan adlı vNIC 'yi ekler `myNic` :
 
 ```azurecli
 az vm create \
@@ -60,7 +59,7 @@ Azure 'da tam bir sürekli tümleştirme ve sürekli dağıtım (CiCd) altyapıs
 
 İç DNS adları yalnızca bir Azure sanal ağı içinde çözülebilir. DNS adları iç olduğundan, altyapıya ek güvenlik sağlayan, dış internet 'e çözümlenemez.
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları, `myResourceGroup` `myNic`, ve `myVM`içerir.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları `myResourceGroup` ,, `myNic` ve içerir `myVM` .
 
 ## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 İlk olarak, [az Group Create](/cli/azure/group)komutuyla kaynak grubunu oluşturun. Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
@@ -73,7 +72,7 @@ az group create --name myResourceGroup --location westus
 
 Sonraki adım, VM 'Leri başlatmak için bir sanal ağ oluşturmak için kullanılır. Sanal ağ Bu izlenecek yol için bir alt ağ içerir. Azure sanal ağları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-[Az Network VNET Create](/cli/azure/network/vnet)ile sanal ağ oluşturun. Aşağıdaki örnek adlı `myVnet` `mySubnet`bir sanal ağ ve adlı alt ağ oluşturur:
+[Az Network VNET Create](/cli/azure/network/vnet)ile sanal ağ oluşturun. Aşağıdaki örnek adlı bir sanal ağ ve adlı `myVnet` alt ağ oluşturur `mySubnet` :
 
 ```azurecli
 az network vnet create \
@@ -87,7 +86,7 @@ az network vnet create \
 ## <a name="create-the-network-security-group"></a>Ağ güvenlik grubunu oluşturma
 Azure ağ güvenlik grupları, ağ katmanındaki bir güvenlik duvarıyla eşdeğerdir. Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure CLI 'de NSG oluşturma](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-[Az Network NSG Create](/cli/azure/network/nsg)komutuyla ağ güvenlik grubunu oluşturun. Aşağıdaki örnek adlı `myNetworkSecurityGroup`bir ağ güvenlik grubu oluşturur:
+[Az Network NSG Create](/cli/azure/network/nsg)komutuyla ağ güvenlik grubunu oluşturun. Aşağıdaki örnek adlı bir ağ güvenlik grubu oluşturur `myNetworkSecurityGroup` :
 
 ```azurecli
 az network nsg create \
@@ -96,7 +95,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>SSH 'ye izin vermek için bir gelen kuralı ekleme
-[Az Network NSG Rule Create](/cli/azure/network/nsg/rule)komutuyla ağ güvenlik grubu için bir gelen kuralı ekleyin. Aşağıdaki örnek adlı `myRuleAllowSSH`bir kural oluşturur:
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule)komutuyla ağ güvenlik grubu için bir gelen kuralı ekleyin. Aşağıdaki örnek adlı bir kural oluşturur `myRuleAllowSSH` :
 
 ```azurecli
 az network nsg rule create \
@@ -114,7 +113,7 @@ az network nsg rule create \
 ```
 
 ## <a name="associate-the-subnet-with-the-network-security-group"></a>Alt ağı ağ güvenlik grubuyla ilişkilendir
-Alt ağı ağ güvenlik grubuyla ilişkilendirmek için [az Network VNET subnet Update](/cli/azure/network/vnet/subnet)kullanın. Aşağıdaki örnek, alt ağ adını `mySubnet` adlı `myNetworkSecurityGroup`ağ güvenlik grubuyla ilişkilendirir:
+Alt ağı ağ güvenlik grubuyla ilişkilendirmek için [az Network VNET subnet Update](/cli/azure/network/vnet/subnet)kullanın. Aşağıdaki örnek, alt ağ adını `mySubnet` adlı ağ güvenlik grubuyla ilişkilendirir `myNetworkSecurityGroup` :
 
 ```azurecli
 az network vnet subnet update \
@@ -126,9 +125,9 @@ az network vnet subnet update \
 
 
 ## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Sanal ağ arabirim kartını ve statik DNS adlarını oluşturma
-Azure çok esnektir, ancak VM ad çözümlemesi için DNS adlarını kullanmak istiyorsanız, DNS etiketi içeren sanal ağ arabirim kartları (vNIC 'ler) oluşturmanız gerekir. Sanal NIC 'Ler altyapı yaşam döngüsü üzerinden farklı VM 'lere bağlanarak yeniden kullanabileceğiniz için önemlidir. Bu yaklaşım, sanal makinelerin geçici olması durumunda vNIC 'yi statik kaynak olarak tutar. VNIC 'de DNS etiketleme kullanarak, VNet 'teki diğer VM 'lerden basit ad çözümlemesini etkinleştirebiliriz. Çözümlenebilen adların kullanılması, diğer sanal makinelerin Otomasyon sunucusuna DNS adı `Jenkins` veya git sunucusu tarafından erişmesine olanak sağlar. `gitrepo`  
+Azure çok esnektir, ancak VM ad çözümlemesi için DNS adlarını kullanmak istiyorsanız, DNS etiketi içeren sanal ağ arabirim kartları (vNIC 'ler) oluşturmanız gerekir. Sanal NIC 'Ler altyapı yaşam döngüsü üzerinden farklı VM 'lere bağlanarak yeniden kullanabileceğiniz için önemlidir. Bu yaklaşım, sanal makinelerin geçici olması durumunda vNIC 'yi statik kaynak olarak tutar. VNIC 'de DNS etiketleme kullanarak, VNet 'teki diğer VM 'lerden basit ad çözümlemesini etkinleştirebiliriz. Çözümlenebilen adların kullanılması, diğer sanal makinelerin Otomasyon sunucusuna DNS adı veya git sunucusu tarafından erişmesine olanak sağlar `Jenkins` `gitrepo` .  
 
-[Az Network Nic Create](/cli/azure/network/nic)Ile vNIC 'yi oluşturun. Aşağıdaki örnek `myNic`adlı bir vNIC oluşturur, bunu `myVnet` adlı `myVnet`sanal ağa bağlar ve adlı bir iç DNS ad kaydı oluşturur: `jenkins`
+[Az Network Nic Create](/cli/azure/network/nic)Ile vNIC 'yi oluşturun. Aşağıdaki örnek adlı bir vNIC oluşturur `myNic` , bunu `myVnet` adlı sanal ağa bağlar `myVnet` ve ADLı bir iç DNS ad kaydı oluşturur `jenkins` :
 
 ```azurecli
 az network nic create \
@@ -142,7 +141,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>VM 'yi sanal ağ altyapısına dağıtma
 Artık bir sanal ağ ve alt ağa sahip olduğumuz bir ağ güvenlik grubu, SSH için 22 bağlantı noktası ve bir vNIC dışındaki tüm gelen trafiği engelleyerek alt ağımızı korumak için bir güvenlik duvarı olarak davranan bir ağ güvenlik grubudur. Artık bu mevcut ağ altyapısının içinde bir VM dağıtabilirsiniz.
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, Azure yönetilen diskler ile `myVM` ADLı bir VM oluşturur ve önceki adımdan adlı `myNic` vNIC 'yi ekler:
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, `myVM` Azure yönetilen diskler ile adlı BIR VM oluşturur ve önceki adımdan adlı vNIC 'yi ekler `myNic` :
 
 ```azurecli
 az vm create \

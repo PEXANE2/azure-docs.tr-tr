@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892088"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Çalışma kitaplarında grupları kullanma
@@ -22,7 +21,7 @@ ms.locfileid: "82892088"
 
 Çalışma kitaplarındaki gruplar birkaç şey için yararlıdır:
 
-- Düzen
+- Layout
   - Öğelerin dikey olarak düzenlenmesini istediğiniz senaryolarda, tümünün yığılacağı bir öğe grubu oluşturabilir ve grubun stillendirilmesini bir yüzde genişliği olacak şekilde ayarlamak yerine tüm tek öğelerin yüzde genişliği olarak ayarlanmasını sağlayabilirsiniz.
 - Görünürlük
   - Birçok öğenin birlikte gizlenmesi/gösterilmesi istediğiniz senaryolarda, her bir öğe için görünürlük ayarlarını yapmak yerine tüm öğe grubunun görünürlüğünü ayarlayabilirsiniz. Bu, sekme kullanan şablonlarda yararlı olabilir, böylece bir grup, sekmenin içeriği olarak kullanılabilir ve tüm grup, seçilen sekme tarafından ayarlanan bir parametreye göre gizlenebilir/gösterilir.
@@ -114,21 +113,21 @@ Sonra bir Grup öğesi, kendi iki parametresine sahip ikinci bir şablonu ve par
 En üstte iki parametre bulunan bir grubun şablonunu göz önünde bulundurun.
 
 - `TimeRange`-bir zaman aralığı parametresi.
-- `FilterB`-bir metin parametresi, en üstteki şablon gibi `Filter` değildir.
+- `FilterB`-bir metin parametresi, `Filter` en üstteki şablon gibi değildir.
 
 ![Bir grup öğesini birleştirilmiş parametrelerin sonucuyla birlikte Düzenle](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Grubun ıtemı şablonu yüklendiğinde, `TimeRange` parametresi gruptan birleştirilir. Sonra çalışma kitabının başlangıç parametreleri adımı ve `TimeRange` `Filter`ile birlikte olacaktır ve grubun parametre adımı yalnızca şunları içerir`FilterB`
+Grubun ıtemı şablonu yüklendiğinde, `TimeRange` parametresi gruptan birleştirilir. Sonra çalışma kitabının başlangıç parametreleri adımı ve ile birlikte olacaktır `TimeRange` `Filter` ve grubun parametre adımı yalnızca şunları içerir`FilterB`
 
 ![ayrılmayacak parametrelerin sonucu](./media/workbooks-groups/groups-wont-merge-away-result.png)
 
-Yüklenen şablon, ve `TimeRange` `Filter` (yerine `FilterB`) içeriyorsa, sonuçta elde edilen çalışma kitabında bir parametre adımı ve yalnızca metin adımının kalan bir grubu bulunur.
+Yüklenen şablon, `TimeRange` ve `Filter` (yerine `FilterB` ) içeriyorsa, sonuçta elde edilen çalışma kitabında bir parametre adımı ve yalnızca metin adımının kalan bir grubu bulunur.
 
 ## <a name="how-to-split-a-large-template-into-many-templates"></a>Büyük bir şablonu birçok şablonla bölme
 
 Performansı artırmak için, büyük bir şablonu, bazı içerik yavaş veya Kullanıcı tarafından talep üzerine yükleyen birden çok daha küçük şablonlara bölmek faydalıdır. Bu, üst düzey şablon çok daha küçük olacağından ilk yükü daha hızlı hale getirir.
 
-Bir şablonu parçalara böldüğünde, şablonu her zaman tek tek çalışan çok sayıda şablona (alt şablonlar) bölmeniz gerekecektir. Bu nedenle, üst düzey şablonda diğer adımların kullandığı `TimeRange` bir parametre varsa, alt şablonun de tam ada sahip bir parametreyi tanımlayan bir Parameters adımı olmalıdır. Bu, alt şablonların bağımsız olarak çalışmasına ve gruplardaki daha büyük şablonların içinde yüklenmesine izin verir.
+Bir şablonu parçalara böldüğünde, şablonu her zaman tek tek çalışan çok sayıda şablona (alt şablonlar) bölmeniz gerekecektir. Bu nedenle, üst düzey şablonda `TimeRange` diğer adımların kullandığı bir parametre varsa, alt şablonun de tam ada sahip bir parametreyi tanımlayan bir Parameters adımı olmalıdır. Bu, alt şablonların bağımsız olarak çalışmasına ve gruplardaki daha büyük şablonların içinde yüklenmesine izin verir.
 
 Daha büyük bir şablonu birden çok alt şablon olarak açmak için:
 

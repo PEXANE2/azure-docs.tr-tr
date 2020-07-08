@@ -9,10 +9,9 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857889"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
@@ -39,7 +38,7 @@ Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. veri
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 2. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik **duvarı,** > **Azure hizmetleri seçeneklerine erişime izin veren** güvenlik duvarı 'nı**Etkinleştir (açık)** > aracılığıyla Azure Portal bir depolama hesabında etkinleştirilebilir.
+Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik **duvarı,**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı**Etkinleştir (açık)** aracılığıyla Azure Portal bir depolama hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
 
 Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal ağınıza dağıtın ve ardından bu sanal ağı güvenlik duvarınızdan ekleyin. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 

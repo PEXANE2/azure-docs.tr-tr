@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792607"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
@@ -146,7 +145,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 | --- | --- |
 | Aadclientıd | Anahtar kasasına gizli diziler yazma izinleri olan Azure AD uygulamasının istemci KIMLIĞI. |
 | AADClientSecret | Anahtar kasanıza gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
-| keyVaultName | Anahtarın karşıya yüklenmesi gereken anahtar kasasının adı. Azure CLı komutunu `az keyvault show --name "MySecureVault" --query KVresourceGroup`kullanarak edinebilirsiniz. |
+| keyVaultName | Anahtarın karşıya yüklenmesi gereken anahtar kasasının adı. Azure CLı komutunu kullanarak edinebilirsiniz `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL 'Si | Oluşturulan anahtarı şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. **UseExistingKek** açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. **UseExistingKek** açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
 | Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Desteklenen geçerli değerler _OS_ veya _All_. (Önkoşul bölümünde daha önce desteklenen Linux dağıtımlarını ve işletim sistemi ve veri diskleri sürümlerini inceleyin.) |
 | sequenceVersion | BitLocker işleminin sıra sürümü. Aynı VM 'de her disk şifreleme işlemi gerçekleştirildiğinde bu sürüm numarasını artırın. |

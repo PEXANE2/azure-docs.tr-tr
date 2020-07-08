@@ -4,10 +4,9 @@ description: Azure Service Fabric uygulamasında uçtan uca iletişimin güvenli
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858534"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Ters proxy ile güvenli bir hizmete bağlanma
@@ -20,7 +19,7 @@ Bu makalede, ters proxy ve hizmetler arasında güvenli bağlantı kurmayı ve b
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Ters proxy ve hizmetler arasında güvenli bağlantı kurulumu 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Hizmetlere ters proxy kimlik doğrulaması:
-Ters proxy, sertifikasını kullanarak kendisini hizmetlere tanıtır. Azure kümeleri için sertifika, Kaynak Yöneticisi şablonunun [**Microsoft. ServiceFabric/kümeler**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümünde](../azure-resource-manager/templates/template-syntax.md) bulunan ***smarproxycertificate*** özelliği ile belirtilir. Tek başına kümeler için, sertifika, ClusterConfig. json ' un **güvenlik** bölümünde bulunan bir ***smarproxycertificate*** veya ***smarproxycertificatecommonnames*** özelliği ile belirtilir. Daha fazla bilgi için bkz. [tek başına kümelerde ters proxy 'Yi etkinleştirme](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Ters proxy, sertifikasını kullanarak kendisini hizmetlere tanıtır. Azure kümeleri için sertifika, Kaynak Yöneticisi şablonunun [**Microsoft. ServiceFabric/kümeler**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümünde](../azure-resource-manager/templates/template-syntax.md) bulunan ***smarproxycertificate*** özelliği ile belirtilir. Tek başına kümeler için, sertifika, ClusterConfig.jsüzerindeki **güvenlik** bölümünde bulunan ***smarproxycertificate*** veya ***smarproxycertificatecommonnames*** özelliği ile belirtilir. Daha fazla bilgi için bkz. [tek başına kümelerde ters proxy 'Yi etkinleştirme](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Hizmetler, ters proxy tarafından sunulan sertifikayı doğrulamak için mantığı uygulayabilir. Hizmetler, kabul edilen istemci sertifikası ayrıntılarını yapılandırma paketindeki yapılandırma ayarları olarak belirtebilir. Bu, çalışma zamanında okunabilir ve ters proxy tarafından sunulan sertifikayı doğrulamak için kullanılabilir. Yapılandırma ayarlarını eklemek için [Uygulama parametrelerini yönetme](service-fabric-manage-multiple-environment-app-configuration.md) bölümüne bakın. 
 

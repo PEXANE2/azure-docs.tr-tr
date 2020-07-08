@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853490"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
@@ -75,11 +74,11 @@ Yok.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-`Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
+Komutuyla Azure aboneliğinizde oturum açın `Connect-AzAccount` ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
@@ -97,7 +96,7 @@ az login
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Yok
+YOK
 
 ---
 
@@ -125,7 +124,7 @@ $location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-`-Location` Parametresi için hangi bölgeyi belirtlediğinizden emin değilseniz, [Get-azlocation](/powershell/module/az.resources/get-azlocation) komutuyla aboneliğiniz için desteklenen bölgelerin bir listesini alabilirsiniz:
+Parametresi için hangi bölgeyi `-Location` belirtlediğinizden emin değilseniz, [Get-azlocation](/powershell/module/az.resources/get-azlocation) komutuyla aboneliğiniz için desteklenen bölgelerin bir listesini alabilirsiniz:
 
 ```powershell
 Get-AzLocation | select Location
@@ -142,7 +141,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, bu parametre listesine dahil `-EnableHierarchicalNamespace $True` edin.
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, `-EnableHierarchicalNamespace $True` Bu parametre listesine dahil edin.
 
 Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluşturmak için, **Skuname** parametresi için aşağıdaki tabloda istenen değeri değiştirin.
 
@@ -185,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, bu parametre listesine dahil `--enable-hierarchical-namespace true` edin. 
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, `--enable-hierarchical-namespace true` Bu parametre listesine dahil edin. 
 
 Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluşturmak için, **SKU** parametresi için aşağıdaki tabloda istenen değeri değiştirin.
 
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> Bu şablon yalnızca örnek olarak işlev görür. Bu şablonun bir parçası olarak yapılandırılmayan çok sayıda depolama hesabı ayarı var. Örneğin, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmak istiyorsanız, `isHnsEnabledad` `StorageAccountPropertiesCreateParameters` nesnesinin özelliğini olarak `true`ayarlayarak bu şablonu değiştirirsiniz. 
+> Bu şablon yalnızca örnek olarak işlev görür. Bu şablonun bir parçası olarak yapılandırılmayan çok sayıda depolama hesabı ayarı var. Örneğin, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmak istiyorsanız, `isHnsEnabledad` nesnesinin özelliğini olarak ayarlayarak bu şablonu değiştirirsiniz `StorageAccountPropertiesCreateParameters` `true` . 
 
 Bu şablonu değiştirme veya yenilerini oluşturma hakkında bilgi edinmek için bkz.:
 
@@ -239,7 +238,7 @@ Bir depolama hesabını silmek, hesaptaki tüm veriler de dahil olmak üzere tü
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabına gidin.
-1. **Sil**' e tıklayın.
+1. **Sil**'e tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

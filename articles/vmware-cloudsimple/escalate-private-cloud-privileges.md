@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870467"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
@@ -63,7 +62,7 @@ Ayrıcalık yükseltme başlar ve seçilen aralığın sonuna kadar sürer.  Yö
 
 Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme dönemini genişletebilirsiniz.  Yönetim görevlerini tamamlamanıza izin veren ek ilerleme zaman aralığını seçin.
 
-1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalık yükseltme 'yi genişletmek istediğiniz özel bulutu seçin.
+1. **Resources**  >  Cloudsimple portalındaki kaynaklar**özel bulutlarında** , ayrıcalık yükseltme 'yi genişletmek istediğiniz özel bulutu seçin.
 
 2. Özet sekmesinin altındaki **ayrıcalık yükseltmeyi Genişlet**' e tıklayın.
 
@@ -77,7 +76,7 @@ Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme d�
 
 Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz bir şekilde ilerletin.  
 
-1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
+1. **Resources**  >  Cloudsimple portalındaki kaynaklar**özel bulutlarında** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
 
 2. **Ön yükseltme**' ye tıklayın.
 

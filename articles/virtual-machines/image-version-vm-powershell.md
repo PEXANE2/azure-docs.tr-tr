@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838476"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Önizleme: VM 'den görüntü oluşturma
@@ -38,7 +37,7 @@ Bu makalede çalışırken, kaynak adlarını gereken yerde değiştirin.
 
 ## <a name="get-the-gallery"></a>Galeriyi al
 
-Galerilerde ve görüntü tanımlarının tümünü ada göre listeleyebilirsiniz. Sonuçlar biçimindedir `gallery\image definition\image version`.
+Galerilerde ve görüntü tanımlarının tümünü ada göre listeleyebilirsiniz. Sonuçlar biçimindedir `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -54,7 +53,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>VM 'yi al
 
-[Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve içindeki kaynak grubunu öğrendikten sonra, VM nesnesini almak ve daha sonra kullanmak üzere `Get-AzVM` bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$sourceVm*değişkenine atar. 
+[Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzVM` VM nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$sourceVm*değişkenine atar. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -75,13 +74,13 @@ Stop-AzVM `
 
 Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar görüntüyle ilgili bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
-Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak `-OsState generalized`bir görüntü tanımı oluşturmanız gerekir. VM 'yi genelleştirmediyseniz, kullanarak `-OsState specialized`bir görüntü tanımı oluşturun.
+Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak bir görüntü tanımı oluşturmanız gerekir `-OsState generalized` . VM 'yi genelleştirmediyseniz, kullanarak bir görüntü tanımı oluşturun `-OsState specialized` .
 
 Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
 [New-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. 
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve Windows çalıştıran özel bir sanal makine içindir. Linux kullanarak görüntü tanımı oluşturmak için kullanın `-OsType Linux`. 
+Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve Windows çalıştıran özel bir sanal makine içindir. Linux kullanarak görüntü tanımı oluşturmak için kullanın `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -105,7 +104,7 @@ Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir.
 
 Bu örnekte, görüntü sürümü *1.0.0* ve hem *Orta Batı ABD* hem de *Orta Güney ABD* veri merkezlerine çoğaltılır. Çoğaltma için hedef bölge seçerken, *kaynak* bölgeyi çoğaltma için hedef olarak da dahil etmeniz gerektiğini unutmayın.
 
-VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source`.
+VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -124,7 +123,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir, bu nedenle ilerlemeyi izleyebilmemiz için bir iş oluşturduk. İşin ilerlemesini görmek için, yazın `$job.State`.
+Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir, bu nedenle ilerlemeyi izleyebilmemiz için bir iş oluşturduk. İşin ilerlemesini görmek için, yazın `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -133,7 +132,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntünüzü, görüntü sürümünü oluştururken ekleyerek bir ekleme `-StorageAccountType Premium_LRS`veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `-StorageAccountType Standard_ZRS` tarafından Premiun depolamada da saklayabilirsiniz.
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

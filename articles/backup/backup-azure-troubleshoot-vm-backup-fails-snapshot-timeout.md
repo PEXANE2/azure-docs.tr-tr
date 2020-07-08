@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864411"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
@@ -45,7 +44,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 
 **Neden 4: [VM Aracısı yapılandırma seçenekleri ayarlanmamış (Linux sanal makineleri için)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-**Neden 5: [uygulama denetimi çözümü IaaSBcdrExtension. exe](#application-control-solution-is-blocking-iaasbcdrextensionexe) ' yi engelliyor**
+**Neden 5: [uygulama denetimi çözümü engelliyor IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM başarısız sağlama durumunda
 
@@ -70,7 +69,7 @@ Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyark
 Önerilen eylem:<br>
 Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizleme işlemini tetiklemek için işlemi yeniden deneyin.
 > [!NOTE]
-> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_`<Geo>`_`<number>` örn: AzureBackupRG_northeurope_1
+> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_ `<Geo>` _ `<number>` örn: AzureBackupRG_northeurope_1
 
 **1. Adım: [kilidi geri yükleme noktası kaynak grubundan kaldırma](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. Adım: [geri yükleme noktası koleksiyonunu Temizleme](#clean_up_restore_point_collection)**<br>
@@ -205,13 +204,13 @@ Waagent için ayrıntılı günlük kaydı gerekiyorsa, şu adımları izleyin:
 Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Yapılandırma dosyası seçenekleri **uzantıları. Enable** , **y** ve sağlama olarak ayarlanmalıdır **.** yedeklemenin çalışması için aracının **Auto** olarak ayarlanması gerekir.
 VM Aracısı yapılandırma dosyası seçeneklerinin tam listesi için bkz.<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Uygulama denetim çözümü IaaSBcdrExtension. exe ' yi engelliyor
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Uygulama denetim çözümü IaaSBcdrExtension.exe engelliyor
 
-[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (veya başka bir uygulama denetimi çözümü) çalıştırıyorsanız ve kurallar yayımcı veya yol tabanlı Ise, **IaaSBcdrExtension. exe** yürütülebilir dosyasının çalıştırılmasını engelleyebilirler.
+[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (veya başka bir uygulama denetimi çözümü) çalıştırıyorsanız ve kurallar yayımcı veya yol tabanlı ise, **IaaSBcdrExtension.exe** yürütülebilir dosyasının çalıştırılmasını engelleyebilirler.
 
 #### <a name="solution"></a>Çözüm
 
-`/var/lib` Yolu veya **IaaSBcdrExtension. exe** yürütülebilir dosyasını AppLocker 'dan (veya diğer uygulama denetimi yazılımından) dışlayın.
+`/var/lib`Yolu veya **IaaSBcdrExtension.exe** yürütülebiliri AppLocker 'dan (veya diğer uygulama denetimi yazılımlarından hariç tutun.)
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Anlık görüntü durumu alınamaz veya bir anlık görüntü alınamaz
 
@@ -228,8 +227,8 @@ Aşağıdaki koşullar anlık görüntü görevinin başarısız olmasına neden
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_`<Geo>`_.`<number>`
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_ `<Geo>` _ `<number>` .
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
 
@@ -257,13 +256,13 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri 
 
 Kaynak grubundaki kilit nedeniyle temizlenmediği geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Hub** menüsünde, **tüm kaynaklar**' a tıklayın, ardından sanal makinenizin bulunduğu kaynak grubunu aşağıdaki biçimde AzureBackupRG_`<Geo>`_`<number>` ' i seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **Hub** menüsünde, **tüm kaynaklar**' a tıklayın, ardından `<Geo>` sanal makinenizin bulunduğu kaynak grubunu aşağıdaki biçimde AzureBackupRG_ _ ' i seçin `<number>` .
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kaynak grubu ' na tıklayın, **genel bakış** bölmesi görüntülenir.
-4. Tüm gizli kaynakları görüntülemek için **gizli türleri göster** seçeneğini belirleyin. Aşağıdaki biçime sahip geri yükleme noktası koleksiyonlarını seçin AzureBackupRG_`<VMName>`_.`<number>`
+4. Tüm gizli kaynakları görüntülemek için **gizli türleri göster** seçeneğini belirleyin. Aşağıdaki biçime sahip geri yükleme noktası koleksiyonlarını seçin AzureBackupRG_ `<VMName>` _ `<number>` .
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

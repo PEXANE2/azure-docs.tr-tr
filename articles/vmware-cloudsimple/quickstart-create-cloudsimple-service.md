@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868026"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Hızlı başlangıç-CloudSimple hizmeti tarafından Azure VMware çözümü oluşturma
@@ -82,7 +81,7 @@ CloudSimple özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak 
 11. Sağlanacak düğüm sayısını seçin.
 12. **Gözden geçir + oluştur**' u seçin.
 13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
-14. **Oluştur**’u seçin.
+14. **Oluştur**'u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

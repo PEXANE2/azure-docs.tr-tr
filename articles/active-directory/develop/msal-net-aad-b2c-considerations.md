@@ -14,10 +14,9 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82883235"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
@@ -25,7 +24,7 @@ ms.locfileid: "82883235"
 [Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c)kullanarak sosyal kimliklerle kullanıcıları oturum açmak için msal.net kullanabilirsiniz. Azure AD B2C, ilke kavramı etrafında oluşturulmuştur. MSAL.NET ' de, bir ilke belirtildiğinde bir yetkili sağlamaya çevrilir.
 
 - Ortak istemci uygulamasını başlattığınızda, ilkeyi yetkilinin bir parçası olarak belirtmeniz gerekir.
-- Bir ilke uygulamak istediğinizde, `AcquireTokenInteractive` `authority` parametresini kabul eden bir geçersiz kılma çağırın.
+- Bir ilke uygulamak istediğinizde, parametresini kabul eden bir geçersiz kılma çağırın `AcquireTokenInteractive` `authority` .
 
 Bu makale, MSAL.NET 3. x için geçerlidir. MSAL.NET 2. x için bkz. GitHub 'da MSAL.NET wiki içindeki [msal 2. x içinde Azure AD B2C özellikleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) .
 
@@ -41,7 +40,7 @@ Azure AD B2C yetkilileri hakkında daha fazla bilgi için bkz. [yeniden yönlend
 
 ## <a name="instantiating-the-application"></a>Uygulamanın örneğini oluşturma
 
-Uygulama nesnesini oluştururken çağırarak `WithB2CAuthority()` yetkiyi sağlayın:
+`WithB2CAuthority()`Uygulama nesnesini oluştururken çağırarak yetkiyi sağlayın:
 
 ```csharp
 // Azure AD B2C Coordinates
@@ -76,7 +75,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 Önceki kod parçacığında:
 
-- `policy`, Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin, `PolicySignUpSignIn`) içeren bir dizedir.
+- `policy`, Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
 - `ParentActivityOrWindow`Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)`, belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
 
@@ -93,13 +92,13 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
   }
   ```
 
-Bir Kullanıcı akışı veya özel ilke uygulama (örneğin, kullanıcının profilini düzenlemesine veya parolalarını sıfırlamasına izin vermek) Şu anda çağırarak `AcquireTokenInteractive`yapılır. Bu iki ilke için döndürülen belirteç/kimlik doğrulama sonucunu kullanamazsınız.
+Bir Kullanıcı akışı veya özel ilke uygulama (örneğin, kullanıcının profilini düzenlemesine veya parolalarını sıfırlamasına izin vermek) Şu anda çağırarak yapılır `AcquireTokenInteractive` . Bu iki ilke için döndürülen belirteç/kimlik doğrulama sonucunu kullanamazsınız.
 
 ## <a name="profile-edit-policies"></a>Profil düzenleme ilkeleri
 
 Kullanıcılarınızın bir sosyal kimlikle oturum açmasını ve sonra profilini düzenlemesini sağlamak için Azure AD B2C profili düzenleme ilkesini uygulayın.
 
-Bu ilkeyi, bu `AcquireTokenInteractive` ilke için olan yetkiliyle çağırarak yapın. Kullanıcı zaten oturum açmış ve etkin bir tanımlama bilgisi oturumuna sahip olduğundan, hesap seçimi `Prompt.NoPrompt` iletişim kutusunun görüntülenmesini engellemek için kullanın.
+`AcquireTokenInteractive`Bu ilkeyi, bu ilke için olan yetkiliyle çağırarak yapın. Kullanıcı zaten oturum açmış ve etkin bir tanımlama bilgisi oturumuna sahip olduğundan, `Prompt.NoPrompt` Hesap seçimi iletişim kutusunun görüntülenmesini engellemek için kullanın.
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -136,7 +135,7 @@ Bir ROPC akışında Kullanıcı adı/parola kullanarak birkaç şeyi fesınız:
 
 Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](/azure/active-directory-b2c/configure-ropc).
 
-`IPublicClientApplication``AcquireTokenByUsernamePassword` yöntemi içerir:
+`IPublicClientApplication`yöntemi içerir `AcquireTokenByUsernamePassword` :
 
 ```csharp
 AcquireTokenByUsernamePassword(
@@ -145,7 +144,7 @@ AcquireTokenByUsernamePassword(
             SecureString password)
 ```
 
-Bu `AcquireTokenByUsernamePassword` yöntem aşağıdaki parametreleri alır:
+Bu `AcquireTokenByUsernamePassword` Yöntem aşağıdaki parametreleri alır:
 
 - Erişim belirtecinin alınabileceği *kapsamlar* .
 - Bir *Kullanıcı adı*.
@@ -157,7 +156,7 @@ ROPC akışı yalnızca, kullanıcılarınızın e-posta adresi veya Kullanıcı
 
 ## <a name="google-auth-and-embedded-webview"></a>Google Auth ve Embedded WebView
 
-Bir kimlik sağlayıcısı olarak Google kullanıyorsanız, Google ['ın katıştırılmış Web görünümlerinden kimlik doğrulamasına](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)izin vermediği için sistem tarayıcısını kullanmanızı öneririz. Şu anda `login.microsoftonline.com` , Google ile güvenilen bir yetkiliniz ve katıştırılmış WebView ile çalışacağız. Ancak, `b2clogin.com` Google ile güvenilen bir yetkili değildir, bu nedenle kullanıcılar kimlik doğrulaması yapamaz.
+Bir kimlik sağlayıcısı olarak Google kullanıyorsanız, Google ['ın katıştırılmış Web görünümlerinden kimlik doğrulamasına](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)izin vermediği için sistem tarayıcısını kullanmanızı öneririz. Şu anda, `login.microsoftonline.com` Google ile güvenilen bir yetkiliniz ve katıştırılmış WebView ile çalışacağız. Ancak, `b2clogin.com` Google ile güvenilen bir yetkili değildir, bu nedenle kullanıcılar kimlik doğrulaması yapamaz.
 
 Değişiklik olursa bu [soruna](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) yönelik bir güncelleştirme sağlayacağız.
 
@@ -174,7 +173,7 @@ MSAL.NET, [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokenc
 
 Tüm sosyal kimlik sağlayıcıları (Facebook, Google ve diğerleri), Azure AD B2C döndüren belirteçlerde döndürülmediğinden, bu taleplerin her ikisi de Azure AD B2C senaryolarında eksik olabilir.
 
-Bu tür bir senaryonun belirtisi, Azure AD B2C tarafından verilen `Missing from the token response` belirteçlerde `preferred_username` talep değerine eriştiğinizde msal.net döndürmektedir. MSAL, `Missing from the token response` kitaplıklar arasında önbellek `preferred_username` çapraz uyumluluğunu sürdürmek için değerini kullanır.
+Bu tür bir senaryonun belirtisi, `Missing from the token response` `preferred_username` Azure AD B2C tarafından verilen belirteçlerde talep değerine eriştiğinizde msal.net döndürmektedir. MSAL, `Missing from the token response` `preferred_username` Kitaplıklar arasında önbellek çapraz uyumluluğunu sürdürmek için değerini kullanır.
 
 ### <a name="workarounds"></a>Geçici Çözümler
 
@@ -182,11 +181,11 @@ Bu tür bir senaryonun belirtisi, Azure AD B2C tarafından verilen `Missing from
 
 Önerilen geçici çözüm, daha önce açıklanan [ilkeye göre önbelleğe alma](#acquire-a-token-to-apply-a-policy) özelliğini kullanmaktır.
 
-Alternatif olarak, Azure AD B2C içinde `tid` [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](/azure/active-directory-b2c/claims-transformation-technical-profile)kullanarak uygulamanıza ek talepler döndürebilir.
+Alternatif olarak, `tid` Azure AD B2C içinde [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](/azure/active-directory-b2c/claims-transformation-technical-profile)kullanarak uygulamanıza ek talepler döndürebilir.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtında yok" için azaltma
 
-Bir seçenek, yerine `name` talebi kullanmaktır. `preferred_username` `name` Talebi Azure AD B2C tarafından verilen kimlik belirteçlerine dahil etmek için, Kullanıcı akışınızı yapılandırırken **görünen ad** ' ı seçin.
+Bir seçenek, `name` yerine talebi kullanmaktır `preferred_username` . `name`Talebi Azure AD B2C tarafından VERILEN kimlik belirteçlerine dahil etmek için, Kullanıcı akışınızı yapılandırırken **görünen ad** ' ı seçin.
 
 Kullanıcı akışlarınız tarafından hangi taleplerin döndürüleceğini belirtme hakkında daha fazla bilgi için bkz. [öğretici: Kullanıcı akışlarını oluşturma Azure AD B2C](../../active-directory-b2c/tutorial-create-user-flows.md).
 

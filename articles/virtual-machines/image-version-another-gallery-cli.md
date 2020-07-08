@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797064"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Başka bir galerinin görüntüsünü kopyalama
@@ -154,7 +153,7 @@ az sig image-version create \
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntünüzü, görüntü sürümünü oluştururken ekleyerek bir ekleme `--storage-account-type  premium_lrs`veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `--storage-account-type  standard_zrs` tarafından Premiun depolamada da saklayabilirsiniz.
+> Görüntünüzü `--storage-account-type  premium_lrs` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) tarafından Premiun depolamada da saklayabilirsiniz `--storage-account-type  standard_zrs` .
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

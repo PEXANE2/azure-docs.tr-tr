@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864258"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
@@ -112,7 +111,7 @@ Heartbeat
 
 [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)ve [AVG ()](/azure/kusto/query/avg-aggfunction) gibi bazı toplama komutlarının mantığı nedeniyle düşük CPU etkisi olsa da, diğerleri daha karmaşıktır ve verimli bir şekilde yürütülmesine izin veren buluşsal yöntemler ve tahminler içerir. Örneğin, [DCount ()](/azure/kusto/query/dcount-aggfunction) , her bir değeri gerçekten saymadan, büyük veri kümelerinin ayrı sayısına kapanış tahmini sağlamak Için HyperLogLog algoritmasını kullanır; yüzdebirlik işlevleri, en yakın derecelendirme yüzdebirlik algoritmasını kullanarak benzer bir şekilde yapılır. Birçok komut, etkilerini azaltmak için isteğe bağlı parametreler içerir. Örneğin, [makeset ()](/azure/kusto/query/makeset-aggfunction) IŞLEVININ, CPU ve belleği önemli ölçüde etkileyen en büyük küme boyutunu tanımlamak için isteğe bağlı bir parametresi vardır.
 
-[JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan `by` sütunların *kardinalite*olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir. Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
+[JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan sütunların *kardinalite*olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir `by` . Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
 
 Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName**'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
 
@@ -180,7 +179,7 @@ Azure Izleyici günlüklerinde **TimeGenerated** sütunu, verileri dizine alman�
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Arama ve birleşim işleçlerinin gereksiz kullanımını önleyin
 
-İşlem olan verileri artıran bir faktör çok sayıda tablo kullanmaktır. Bu genellikle ve `union *` komutlarının `search *` kullanıldığı zaman gerçekleşir. Bu komutlar, sistem çalışma alanındaki tüm tablolardaki verileri değerlendirmeye ve taramaya zorlar. Bazı durumlarda, çalışma alanında yüzlerce tablo olabilir. "Arama *" veya herhangi bir aramayı belirli bir tabloya kapsama almadan mümkün olduğunca kaçınmaya çalışın.
+İşlem olan verileri artıran bir faktör çok sayıda tablo kullanmaktır. Bu genellikle `search *` ve `union *` komutlarının kullanıldığı zaman gerçekleşir. Bu komutlar, sistem çalışma alanındaki tüm tablolardaki verileri değerlendirmeye ve taramaya zorlar. Bazı durumlarda, çalışma alanında yüzlerce tablo olabilir. "Arama *" veya herhangi bir aramayı belirli bir tabloya kapsama almadan mümkün olduğunca kaçınmaya çalışın.
 
 Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir, ancak sonuncusu en verimli bir şekilde yapılır:
 
@@ -204,7 +203,7 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>Sorguya erken filtreler ekleme
 
-Veri birimini azaltmaya yönelik başka bir yöntem ise, koşullarda sorgunun başlarında [yer](/azure/kusto/query/whereoperator) almak için kullanılır. Azure Veri Gezgini platformu, belirli bir koşul için ilgili verileri hangi bölümlerin içerdiğini öğrenmenizi sağlayan bir önbellek içerir. Örneğin, bir sorgu içeriyorsa `where EventID == 4624` , sorguyu yalnızca eşleşen olaylara sahip bölümleri işleyen düğümlere dağıtır.
+Veri birimini azaltmaya yönelik başka bir yöntem ise, koşullarda sorgunun başlarında [yer](/azure/kusto/query/whereoperator) almak için kullanılır. Azure Veri Gezgini platformu, belirli bir koşul için ilgili verileri hangi bölümlerin içerdiğini öğrenmenizi sağlayan bir önbellek içerir. Örneğin, bir sorgu içeriyorsa, `where EventID == 4624` sorguyu yalnızca eşleşen olaylara sahip bölümleri işleyen düğümlere dağıtır.
 
 Aşağıdaki örnek sorgular tam olarak aynı sonucu üretir ancak ikincisi daha etkilidir:
 
