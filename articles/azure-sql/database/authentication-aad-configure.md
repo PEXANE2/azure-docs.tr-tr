@@ -3,7 +3,7 @@ title: Azure Active Directory kimlik doğrulamasını yapılandırma
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Azure AD 'yi yapılandırdıktan sonra Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e bağlanmayı öğrenin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310912"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984909"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -293,7 +293,7 @@ Aşağıdaki betik, **DBA_Group** `40b79501-b343-44ed-9ce7-da4c8cc7353f` **Grup-
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-**DisplayName** giriş parametresi, Azure AD görünen adını veya Kullanıcı asıl adını kabul eder. Örneğin, ``DisplayName="John Smith"`` ve ``DisplayName="johns@contoso.com"`` . Azure AD grupları için yalnızca Azure AD görünen adı desteklenir.
+**DisplayName** giriş parametresi, Azure AD görünen adını veya Kullanıcı asıl adını kabul eder. Örneğin ``DisplayName="John Smith"`` ve ``DisplayName="johns@contoso.com"``. Azure AD grupları için yalnızca Azure AD görünen adı desteklenir.
 
 > [!NOTE]
 > Azure PowerShell komutu, ```Set-AzSqlServerActiveDirectoryAdministrator``` Desteklenmeyen kullanıcılar Için Azure AD yöneticileri 'ni sağlamanıza engel olmaz. Desteklenmeyen bir Kullanıcı sağlanabilir, ancak bir veritabanına bağlanamaz.
@@ -343,7 +343,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL Server](/cli/azure
 Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanarak SQL veritabanı 'na veya Azure SYNAPSE 'e bağlandığı tüm istemci makinelerde aşağıdaki yazılımları yüklemelisiniz:
 
 - .NET Framework 4,6 veya sonraki bir sürümü [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) .
-- SQL Server için Azure Active Directory kimlik doğrulaması kitaplığı (*adal. DLL*). Aşağıda, adal içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir *. DLL* kitaplığı.
+- SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (*ADAL.DLL*). Aşağıda, *ADAL.DLL* kitaplığını içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [SQL Server için ODBC sürücüsü 17](https://www.microsoft.com/download/details.aspx?id=56567)
   - [SQL Server için 18 OLE DB sürücüsü](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -351,9 +351,9 @@ Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanar
 Bu gereksinimleri şu şekilde karşılayabilirsiniz:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) veya [SQL Server veri araçları](/sql/ssdt/download-sql-server-data-tools-ssdt) en son sürümünü yüklemek .NET Framework 4,6 gereksinimini karşılar.
-  - SSMS, adal 'in x86 sürümünü yüklüyor *. DLL*.
-  - SSDT, adal 'in AMD64 sürümünü yüklüyor *. DLL*.
-  - [Visual Studio Indirmelerinin](https://www.visualstudio.com/downloads/download-visual-studio-vs) en son Visual studio indirmeleri .NET Framework 4,6 gereksinimini karşılar, ancak adal 'nin gerekli AMD64 sürümünü yüklemez *. DLL*.
+  - SSMS *ADAL.DLL*x86 sürümünü yüklüyor.
+  - SSDT, *ADAL.DLL*AMD64 sürümünü yüklüyor.
+  - [Visual Studio Indirmelerinin](https://www.visualstudio.com/downloads/download-visual-studio-vs) en son Visual studio indirmeleri .NET Framework 4,6 gereksinimini karşılar, ancak gerekli amd64 sürümünü *ADAL.DLL*yüklemez.
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Azure AD kimlikleriyle eşlenen içerilen kullanıcılar oluşturun
 

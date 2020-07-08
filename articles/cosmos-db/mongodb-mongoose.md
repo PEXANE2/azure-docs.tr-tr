@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 05298ac0b76f93ba8249cc72910d33b58a9889e4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263135"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023678"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose uygulamasını Azure Cosmos DB 'a bağlama
 
@@ -194,7 +194,7 @@ Bu bölümde, MongoDB için Azure Cosmos DB API 'SI ile nasıl elde edilecek anl
 
 1. Şimdi de Azure portal giderek Cosmos DB iki koleksiyonun oluşturulduğunu fark edersiniz.
 
-    ![Node.js öğreticisi-birden çok koleksiyon adı vurgulanmış bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js öğreticisi-birden çok koleksiyon adı vurgulanmış bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü":::
 
 1. Son olarak, Cosmos DB verileri okuyalim. Varsayılan Mongoose çalışma modelini kullandığımızdan, okuma işlemleri Mongoose'la yapılan diğer okuma işlemleriyle aynıdır.
 
@@ -299,7 +299,7 @@ Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve
 
 1. Artık Azure Portal'a dönerseniz, hem 'Family' hem de 'VacationDestinations' verilerini içeren ```alldata``` adlı tek bir koleksiyonunuz olduğunu görürsünüz.
 
-    ![Node.js öğreticisi-koleksiyon adı vurgulanmış düğüm veritabanı ile bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js öğreticisi-koleksiyon adı vurgulanmış düğüm veritabanı ile bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü":::
 
 1. Ayrıca, iki farklı nesne modeli arasında ayırt etmenize yardımcı olmak üzere her nesnenin ```__type``` olarak adlandırılan başka bir özniteliği vardır.
 
@@ -323,6 +323,4 @@ Sizin de görebileceğiniz gibi, Mongoose ayırıcılarıyla çalışmak kolayd�
 - MongoDB için Azure Cosmos DB API 'SI ile [Robo 3T kullanmayı](mongodb-robomongo.md) öğrenin.
 - MongoDB için Azure Cosmos DB API 'siyle MongoDB [örneklerini](mongodb-samples.md) gezin.
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

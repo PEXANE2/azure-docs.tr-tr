@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058010"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985815"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM 'de RDP genel hatasıyla ilgili sorunları giderme
 
@@ -60,13 +60,13 @@ RDP dinleyicisi yanlış yapılandırılmış.
 
 ## <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snapshot-copy-managed-disk.md)ve [işletim sistemi DISKINI bir kurtarma VM 'sine bağlayın](troubleshoot-recovery-disks-portal-windows.md)ve ardından adımları izleyin.
+Bu adımları izlemeden önce, etkilenen VM 'nin işletim sistemi diskinin bir yedek olarak anlık görüntüsünü alın. Bu sorunu çözmek için seri denetim kullanın veya VM 'yi çevrimdışı onarın.
 
 ### <a name="serial-console"></a>Seri Konsol
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. Adım: Seri konsol CMD örneğini açın
 
-1. **Destek & sorun giderme** > **seri konsol (Önizleme)** öğesini seçerek [seri konsoluna](serial-console-windows.md) erişin. Özellik VM 'de etkinse VM 'yi başarıyla bağlayabilirsiniz.
+1. **Destek & sorun giderme** [Serial Console](serial-console-windows.md)  >  **seri konsol (Önizleme)** öğesini seçerek seri konsoluna erişin. Özellik VM 'de etkinse VM 'yi başarıyla bağlayabilirsiniz.
 
 2. Bir CMD örneği için yeni bir kanal oluşturun. Kanal adını almak için kanalı başlatmak üzere **cmd** yazın.
 
@@ -78,29 +78,37 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. Adım: RDP kayıt defteri anahtarlarının değerlerini denetleyin:
 
-1. RDP 'nin ilkeler tarafından devre dışı bırakılıp bırakılmadığını kontrol edin.
+1. RDP 'nin Grup ilkeleri tarafından devre dışı bırakılıp bırakılmadığını kontrol edin.
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    Grup İlkesi RDP 'nin devre dışı bırakıldığını belirtir (fDenyTSConnections değeri 0x1), TermService hizmetini etkinleştirmek için aşağıdaki komutu çalıştırın. Kayıt defteri anahtarı bulunamazsa, RDP 'yi devre dışı bırakmak için yapılandırılmış bir grup ilkesi yoktur. Sonraki adıma geçebilirsiniz.
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > Bu adım, TermService hizmetini geçici olarak sunar. Grup İlkesi ayarları yenilendiğinde değişiklik sıfırlanır. Bu sorunu çözmek için, TermService hizmetinin yerel Grup İlkesi veya etki alanı Grup İlkesi tarafından devre dışı bırakılıp bırakılmadığını denetlemeniz ve ardından ilke ayarlarını karşılık olarak güncelleştirmeniz gerekir.
+    
+2. Geçerli uzak bağlantı yapılandırmasını denetleyin.
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    Komut 0x1 döndürürse, sanal makine uzak bağlantıya izin vermez. Ardından, aşağıdaki komutu kullanarak uzak bağlantıya izin verin:
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. Terminal sunucusunun geçerli yapılandırmasını denetleyin.
 
-      - Etki alanı ilkesi varsa, yerel ilkedeki kurulumun üzerine yazılır.
-      - Etki alanı ilkesi RDP 'nin devre dışı bırakıldığını belirtir (1), AD ilkesini etki alanı denetleyicisinden güncelleştirin.
-      - Etki alanı ilkesi RDP 'nin etkin olduğunu belirtir (0), güncelleştirme gerekmez.
-      - Etki alanı ilkesi yoksa ve yerel ilke RDP 'nin devre dışı bırakıldığını belirtir (1), aşağıdaki komutu kullanarak RDP 'yi etkinleştirin: 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. Terminal sunucusunun geçerli yapılandırmasını denetleyin.
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       Komut 0 döndürürse, Terminal sunucusu devre dışıdır. Ardından, Terminal sunucusunu şu şekilde etkinleştirin:
 
@@ -157,9 +165,9 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 7. VM’yi yeniden başlatın.
 
-8. Yazarak `exit`cmd örneğinden çıkın ve sonra Iki kez **ENTER** tuşuna basın.
+8. Yazarak CMD örneğinden çıkın `exit` ve sonra iki kez **ENTER** tuşuna basın.
 
-9. Yazarak `restart`VM 'yi yeniden başlatın ve VM 'ye bağlanın.
+9. Yazarak VM 'yi yeniden başlatın `restart` ve VM 'ye bağlanın.
 
 Sorun devam ediyorsa 2. adıma geçin.
 

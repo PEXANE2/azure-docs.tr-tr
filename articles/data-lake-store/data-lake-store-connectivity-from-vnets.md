@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 080f1a55e70946281a11af44176600abfc5bc0e2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515711"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985416"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Bir Azure sanal ağı içindeki VM 'lerden erişim Azure Data Lake Storage 1.
 Azure Data Lake Storage 1., genel Internet IP adresleri üzerinde çalışan bir PaaS hizmetidir. Genel Internet 'e bağlanabilecek herhangi bir sunucu, genellikle Azure Data Lake Storage 1. uç noktalara bağlanabilir. Varsayılan olarak, Azure sanal ağları 'nda bulunan tüm VM 'Ler Internet 'e erişebilir ve bu nedenle Azure Data Lake Storage 1. erişebilir. Ancak, VNET 'teki VM 'Lerin Internet erişimi olmayan şekilde yapılandırılması mümkündür. Bu tür sanal makineler için Azure Data Lake Storage 1. erişimi de kısıtlıdır. Azure sanal ağları 'nda VM 'Ler için genel Internet erişimini engelleme, aşağıdaki yaklaşımlardan herhangi biri kullanılarak yapılabilir:
@@ -31,14 +31,18 @@ Bu makalede, Azure VM 'lerinden Azure Data Lake Storage 1. erişimi etkinleştir
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Kısıtlanmış bağlantısı olan VM 'lerden Azure Data Lake Storage 1. bağlantı etkinleştiriliyor
 Bu VM 'lerden Azure Data Lake Storage 1. erişmek için, bunları Azure Data Lake Storage 1. hesabının kullanılabildiği bölgenin IP adresine erişecek şekilde yapılandırmanız gerekir. Hesaplarınızın () DNS adlarını çözümleyerek Data Lake Storage 1. hesap Bölgelerinizdeki IP adreslerini belirleyebilirsiniz `<account>.azuredatalakestore.net` . Hesaplarınızın DNS adlarını çözümlemek için, **nslookup**gibi araçları kullanabilirsiniz. Bilgisayarınızda bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
-    nslookup mydatastore.azuredatalakestore.net
+```console
+nslookup mydatastore.azuredatalakestore.net
+```
 
 Çıktı aşağıdakine benzer. **Address** özelliğine karşı değer, Data Lake Storage 1. HESABıNıZLA ilişkili IP adresidir.
 
-    Non-authoritative answer:
-    Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
-    Address:  104.44.88.112
-    Aliases:  mydatastore.azuredatalakestore.net
+```output
+Non-authoritative answer:
+Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
+Address:  104.44.88.112
+Aliases:  mydatastore.azuredatalakestore.net
+```
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG kullanılarak kısıtlanan VM 'lerden bağlantı etkinleştiriliyor

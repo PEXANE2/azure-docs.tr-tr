@@ -2,7 +2,7 @@
 title: Ortak güvenlik gereksinimlerini ele almak için PlayBook
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde ortak güvenlik gereksinimleri ve en iyi uygulamalar sağlanmaktadır.
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323850"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986793"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,8 +59,6 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 - [Microsoft operasyonel güvenlik güvencesi (OSA) uygulamaları](https://www.microsoft.com/securityengineering/osa/practices): uygulama #1-6 ve #9
 - [NIST özel yayını 800-53 güvenlik denetimleri](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
-
-### <a name="feedback"></a>Geri Bildirim
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
@@ -141,7 +139,7 @@ Azure Multi-Factor Authentication, birden fazla kimlik doğrulama biçimi gerekt
   - SQL Server Veri Araçları (SSDT) içinde desteklenen etkileşimli kimlik doğrulaması kullanın. [SQL Server veri araçları (SSDT) Azure Active Directory destek](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)makalesine bakın.
   - Multi-Factor Authentication destekleyen diğer SQL araçlarını kullanın.
     - Dışarı aktarma/ayıklama/dağıtım veritabanı için SSMS Sihirbazı desteği  
-    - [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): '/uA ' seçeneği
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): '/uA ' seçeneği
     - [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (etkileşimli)
     - [bcp yardımcı programı](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (etkileşimli)
 
@@ -259,7 +257,7 @@ Aşağıdaki en iyi yöntemler isteğe bağlıdır, ancak güvenlik stratejinizi
   - Yönetici
   - Geliştirici
   - Destek personeli
-  - Ekleme
+  - Denetleyici
   - Otomatikleştirilmiş süreçler
   - Son kullanıcı
   
@@ -453,7 +451,7 @@ Hangi verilerin gizli olduğunu ve gizli verilerin bellekte şifrelenmesi gereki
 - Hücre düzeyinde şifrelemeyi (CLE) kullanın. Ayrıntılar için [bir veri sütununu şifreleyin](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) başlıklı makaleye bakın.
 - Always Encrypted kullanın, ancak kısıtlamasından haberdar olun. Sınırlamalar aşağıda listelenmiştir.
 
-**Önerilen uygulamalar**
+**En iyi uygulamalar**
 
 CLE kullanırken:
 

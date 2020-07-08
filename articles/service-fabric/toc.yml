@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Bölümü isteğe bağlı olarak yedekleme
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: Bir Güvenilir Koleksiyon yedeğini çevrimdışı olarak görüntüleme ve düzenleme
+              href: backup-explorer.md
         - name: Başlatıcı Kod Paketleri
           href: initializer-codepackages.md
         - name: RunToCompletion
@@ -629,7 +631,7 @@
               href: service-fabric-set-up-continuous-integration.md
             - name: Jenkins kullanarak Linux uygulamalarınızı dağıtma
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
-    - name: Ters proxy’yi kurma ve yapılandırma
+    - name: Ters proxy’yi ayarlama ve yapılandırma
       items:
         - name: Ters proxy’yi ayarlama ve yapılandırma
           href: service-fabric-reverseproxy-setup.md

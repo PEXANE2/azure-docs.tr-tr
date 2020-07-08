@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664703"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984633"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Izleyici 'de kapsayıcı Izleme çözümü
 
@@ -45,7 +45,7 @@ Başlamadan önce, önkoşulları karşıladığınızdan emin olmak için aşa�
 
 Aşağıdaki tabloda, Azure Izleyici ile kapsayıcı envanteri, performansı ve günlükleri için Docker düzenleme ve işletim sistemi izleme desteği özetlenmektedir.   
 
-| | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Node<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
+| | ACS | Linux | Windows | Kapsayıcı<br>Sayım | Görüntü<br>Sayım | Node<br>Sayım | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ Windows çalıştıran bilgisayarlarda Docker altyapılarını yüklemek ve yap�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux kapsayıcı Konakları yükleyip yapılandırma
 
-Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda, **çalışma alanı kimliğinizi** ve **birincil anahtarınızı**görüntülemek için **hızlı başlangıç** > **bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
+Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda, **Quick Start**  >  **çalışma alanı kimliğinizi** ve **birincil anahtarınızı**görüntülemek için hızlı başlangıç**bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
 **CoreOS hariç tüm Linux kapsayıcı konakları için:**
 
@@ -231,7 +231,7 @@ Bu bölümde Log Analytics aracısını OpenShift Daemon-set olarak yüklemek i�
 Log Analytics aracı Daemon-set YAML dosyasını kullanırken Log Analytics çalışma alanı KIMLIĞINIZI ve birincil anahtarınızı güvenli hale getirmek için gizli dizileri kullanmak istiyorsanız, aşağıdaki adımları uygulayın.
 
 1. OpenShift ana düğümünde oturum açın ve YAML dosyası [OCP-DS-omsagent. YAML](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) ve gizli betik oluşturma [OCP-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) öğesini GitHub 'dan kopyalayın.  Bu betik, Log Analytics çalışma alanı KIMLIĞI ve birincil anahtar için, gizlice bilgilerinizin güvenliğini sağlamak üzere gizlilikler YAML dosyasını oluşturur.  
-2. Azure Izleyici için bir proje oluşturmak ve Kullanıcı hesabını ayarlamak için aşağıdaki komutları çalıştırın. Gizli betik oluşturma, Log Analytics çalışma alanı KIMLIĞI `<WSID>` ve birincil anahtarınızı `<KEY>` ister ve tamamlandıktan sonra, OCP-Secret. YAML dosyasını oluşturur.  
+2. Azure Izleyici için bir proje oluşturmak ve Kullanıcı hesabını ayarlamak için aşağıdaki komutları çalıştırın. Gizli betik oluşturma, Log Analytics çalışma alanı KIMLIĞI `<WSID>` ve birincil anahtarınızı ister `<KEY>` ve tamamlandıktan sonra, OCP-Secret. YAML dosyasını oluşturur.  
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'  
@@ -303,7 +303,7 @@ Gizli dizileri olan veya olmayan omsagent DaemonSets oluşturmayı seçebilirsin
 
 **Gizli olmayan varsayılan OMSagent DaemonSet YAML dosyası**
 
-- Varsayılan Log Analytics Agent DaemonSet YAML dosyası için, `<WSID>` ve `<KEY>` DEĞERINI WSID ve anahtarınızla değiştirin. Dosyayı ana düğüme kopyalayın ve aşağıdakileri çalıştırın:
+- Varsayılan Log Analytics Agent DaemonSet YAML dosyası için, `<WSID>` ve `<KEY>` değerini WSID ve anahtarınızla değiştirin. Dosyayı ana düğüme kopyalayın ve aşağıdakileri çalıştırın:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -466,7 +466,7 @@ Linux Kubernetes ortamınızda Log Analytics Aracısı dağıtmak üzere Held 'y
     omsagent-msoms  3        3        3      3           3          <none>         3s
     ```
 
-3. Şu komutu çalıştırarak omsagent 'ın durumunu denetleyebilirsiniz: ```helm status "omsagent"``` ve çıktı aşağıdakine benzer şekilde görünür:
+3. Şu komutu çalıştırarak omsagent 'ın durumunu denetleyebilirsiniz ```helm status "omsagent"``` : ve çıktı aşağıdakine benzer şekilde görünür:
 
     ```
     keiko@k8s-master-3814F33-0:~$ helm status omsagent
@@ -547,7 +547,7 @@ Aşağıdaki tabloda, kapsayıcı Izleme çözümü tarafından toplanan kayıt 
 | Kapsayıcı işlemi | `ContainerProcess_CL` | TimeGenerated, bilgisayar, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, dir |
 | Kubernetes olayları | `KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, dir, Message |
 
-*Pod etiketi* veri türlerine eklenen Etiketler kendi özel etiketleridir. Tabloda gösterilen eklenmiş Pod etiketi etiketleri örnek olarak verilebilir. Bu nedenle,, ortamınızın veri kümesi ve genel benzerine benzer `PodLabel_yourlabel_s`şekilde farklılık gösterir. `PodLabel_deployment_s` `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s`
+*Pod etiketi* veri türlerine eklenen Etiketler kendi özel etiketleridir. Tabloda gösterilen eklenmiş Pod etiketi etiketleri örnek olarak verilebilir. Bu nedenle,, `PodLabel_deployment_s` `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s` ortamınızın veri kümesi ve genel benzerine benzer şekilde farklılık gösterir `PodLabel_yourlabel_s` .
 
 ## <a name="monitor-containers"></a>Kapsayıcıları izleme
 Azure portal çözümü etkinleştirildikten sonra **kapsayıcılar** kutucuğu, kapsayıcı konaklarınız ve konaklarda çalışan kapsayıcılar hakkındaki özet bilgileri gösterir.
@@ -618,7 +618,6 @@ Belirli bir hatayla ilgili sorunları giderirken, ortamınızda nerede oluştuğ
 - **KubeEvents_CL**  Kubernetes olaylarını görmek için bu türü kullanın.
 - **KubePodInventory_CL**  Küme hiyerarşisi bilgilerini anlamak istediğinizde bu türü kullanın.
 
-
 ### <a name="to-query-logs-for-container-data"></a>Kapsayıcı verileri için günlükleri sorgulamak için
 
 * Kısa süre önce başarısız olduğunu bildiğiniz bir görüntü seçin ve bunun için hata günlüklerini bulun. Bir **Containerınventory** aramayla bu görüntüyü çalıştıran bir kapsayıcı adı bularak başlayın. Örneğin, şunu arayın`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Belirli bir hatayla ilgili sorunları giderirken, ortamınızda nerede oluştuğ
 
 ## <a name="example-log-queries"></a>Örnek günlük sorguları
 
-Genellikle bir örnek veya iki ile başlayan sorgular oluşturmak ve ardından bunları ortamınıza uyacak şekilde değiştirmek yararlıdır. Başlangıç noktası olarak, daha gelişmiş sorgular oluşturmanıza yardımcı olması için **örnek sorgular** alanıyla denemeler yapabilirsiniz.
+Genellikle bir örnek veya iki ile başlayan sorgular oluşturmak ve ardından bunları ortamınıza uyacak şekilde değiştirmek yararlıdır. Başlangıç noktası olarak, daha gelişmiş sorgular oluşturmanıza yardımcı olması için çözüm sayfasının en sağındaki **örnek sorgular** alanı ile denemeler yapabilirsiniz.
 
 ![Kapsayıcılar sorguları](./media/containers/containers-queries.png)
 

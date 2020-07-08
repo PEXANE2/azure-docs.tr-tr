@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604701"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023134"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Özel bir komut uygulaması yazarken hata ayıklama hataları
 
@@ -32,20 +32,20 @@ Seçili LUSıS yazma kaynağında 500 'den az uygulama olduğundan emin olun. Ak
 ### <a name="cant-delete-luis-application"></a>LUSıS uygulaması silinemiyor
 Özel komutlar uygulaması silinirken, özel komutlar özel komutlar uygulamasıyla ilişkili LUO uygulamasını silmeye de çalışabilir.
 
-LUSıS uygulamasını silme işlemi başarısız olduysa, lütfen el ile silmek için [lusıs](https://www.luis.ai/) hesabınıza gidin.
+LUSıS uygulamasını silme işlemi başarısız olduysa, el ile silmek için [lusıs](https://www.luis.ai/) hesabınıza gidin.
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-Tek seferde büyük miktarda uygulamayı silmeye çalıştığınızda, muhtemelen ' TooManyRequests ' hataları görebilirsiniz. Bu, silme isteklerinizin Azure tarafından kısıtlandığı anlamına gelir. 
+Tek seferde çok sayıda uygulamayı silmeye çalıştığınızda, büyük olasılıkla ' TooManyRequests ' hatalarını görürsünüz. Bu hatalar, silme isteklerinizin Azure tarafından kısıtlandığı anlamına gelir. 
 
-Lütfen sayfanızı yenileyin ve daha az uygulamayı silmeyi deneyin.
+Sayfanızı yenileyin ve daha az uygulamayı silmeyi deneyin.
 
 ## <a name="errors-when-modifying-an-application"></a>Bir uygulamayı değiştirirken oluşan hatalar
 
 ### <a name="cant-delete-a-parameter-or-a-web-endpoint"></a>Bir parametre veya Web uç noktası silinemiyor
-Kullanılırken bir parametreyi silmeye izin verilmiyor. Lütfen herhangi bir konuşma yanıtlarındaki parametre başvurusunu, örnek cümleleri, koşulları ve eylemleri kaldırın ve yeniden deneyin.
+Kullanılırken bir parametreyi silmeye izin verilmiyor. Tüm konuşma yanıtlarındaki parametre başvurularını, örnek cümleleri, koşulları ve eylemleri kaldırın ve yeniden deneyin.
 
 ### <a name="cant-delete-a-web-endpoint"></a>Web uç noktası silinemiyor
-Kullanılırken bir Web uç noktası silme izniniz yok. Lütfen bir Web uç noktası kaldırılmadan önce bu Web uç noktasını kullanan tüm **çağrı Web uç noktası** eylemlerini kaldırın.
+Kullanılırken bir Web uç noktası silme izniniz yok. Web uç noktası kaldırılmadan önce bu Web uç noktasını kullanan tüm **çağrı Web uç noktası** eylemlerini kaldırın.
 
 ## <a name="errors-when-training-an-application"></a>Bir uygulamayı eğitmek için hatalar
 ### <a name="built-in-intents"></a>Yerleşik amaçlar
@@ -53,18 +53,18 @@ LUIN yerleşik Evet/Hayır amacı vardır. Yalnızca "Yes", "Hayır" ile örnek 
 
 | Sözcükle | Farklılıklar | 
 | ------- | --------- | 
-| Yes | Emin olun, tamam |
-| No | Nope, değil | 
+| Evet | Emin olun, tamam |
+| Hayır | Nope, değil | 
 
 ### <a name="common-sample-sentences"></a>Ortak örnek cümleler
 Özel komutlar, farklı komutlar arasında paylaşılan ortak örnek cümlelere izin vermez. Bir komutta bazı örnek cümleler zaten başka bir komutta tanımlanmışsa, bir uygulamanın eğitimi başarısız olabilir. 
 
-Lütfen farklı komutlar arasında paylaşılan ortak örnek cümleler olmadığından emin olun. 
+Farklı komutlar arasında paylaşılan ortak örnek cümleler olmadığından emin olun. 
 
-Örnek cümlelerinizi farklı komutlarda dengelemenin en iyi uygulaması için lütfen [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
+Örnek cümlelerinizi farklı komutlarda dengelemenin en iyi uygulaması için [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
 
 ### <a name="empty-sample-sentences"></a>Boş örnek cümleler
-Her komut için en az 1 örnek cümle olması gerekir.
+Her komut için en az bir örnek cümle olması gerekir.
 
 ### <a name="undefined-parameter-in-sample-sentences"></a>Örnek tümcelerde Tanımsız parametre
 Örnek cümlelerde bir veya daha fazla parametre kullanıldı, ancak tanımlanmamış.
@@ -82,13 +82,15 @@ Benzer birçok örnek cümle varsa, bir parametre tanımlayın, bunları bir dü
 | Uçuş kitabı | Bir {araç} kitabı |
 | Bir TAXI defteri | Bir {araç} kitabı |
 
-LUSıS eğitiminin en iyi uygulaması için lütfen [lubu en iyi uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)bölümüne bakın.
+LUSıS eğitiminin en iyi uygulaması için [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
 
 ## <a name="cant-update-luis-key"></a>LUSıS anahtarı güncelleştirilemiyor
 ### <a name="reassign-to-e0-authoring-resource"></a>E0 Authoring Resource öğesine yeniden ata
 LUSıS, E0 yazma kaynağına LUSıS uygulamasının atanmasını desteklemez.
 
-Authoring Resource F0 ' den E0 ' ye değiştirmeniz veya farklı bir E0 kaynağına değiştirmeniz gerekiyorsa lütfen uygulamayı yeniden oluşturun.
+Authoring Resource F0 ' den E0 ' ye değiştirmeniz veya farklı bir E0 kaynağına değiştirmeniz gerekiyorsa, uygulamayı yeniden oluşturun. 
+
+Mevcut bir uygulamayı hızlıca dışarı aktarıp yeni bir uygulamaya aktarmak için [Azure DevOps Ile sürekli dağıtıma](./how-to-custom-commands-deploy-cicd.md)bakın.
 
 ### <a name="save-button-is-disabled"></a>Kaydet düğmesi devre dışı
 Uygulamanıza hiçbir zaman bir LUSıS tahmin kaynağı atamadıysanız, bir tahmin kaynağı eklemeden yazma kaynağınızı değiştirmeye çalıştığınızda Kaydet düğmesi devre dışı bırakılır.

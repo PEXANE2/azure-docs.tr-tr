@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382192"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024086"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Kimlik Koruması-güvenliğe genel bakış
 
@@ -56,7 +56,7 @@ Bu grafik, seçilen dönemde algılanan riskli oturum açma işlemlerinin sayıs
 
 ### <a name="legacy-authentication"></a>Eski kimlik doğrulaması
 
-' Eski kimlik doğrulama ' kutucuğu, son haftanın kuruluşunuzdaki eski kimlik doğrulama sayısını gösterir. Eski kimlik doğrulama protokolleri MFA gibi modern güvenlik yöntemlerini desteklemez. Eski kimlik doğrulamasını engellemek için, koşullu erişim ilkesi uygulayabilirsiniz. ' Eski kimlik doğrulaması ' kutucuğuna tıklama sizi ' kimlik güvenli puanı ' öğesine yönlendirir.
+' Eski kimlik doğrulaması ' kutucuğunda, kuruluşunuzda risk altında bulunan eski kimlik doğrulama sayısı geçen hafta gösterilir. Eski kimlik doğrulama protokolleri MFA gibi modern güvenlik yöntemlerini desteklemez. Eski kimlik doğrulamasını engellemek için, koşullu erişim ilkesi uygulayabilirsiniz. ' Eski kimlik doğrulaması ' kutucuğuna tıklama sizi ' kimlik güvenli puanı ' öğesine yönlendirir.
 
 ### <a name="identity-secure-score"></a>Kimlik güvenli puanı
 

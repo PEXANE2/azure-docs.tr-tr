@@ -6,19 +6,19 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 3195fd9e367caed352cb4f9881573740399851e4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: cf44e50f7d8cc0dbf94c5313373bbd8080baa176
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513547"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984382"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
 Bu makalede, ticari Market 'te yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımlar ve noktalar açıklanmaktadır. Yeni bir Azure Uygulama teklifi oluşturmadan önce bu kavramları tanımanız gerekir.
 
-Yeni bir Azure Uygulama teklifi yayımlayabilmeniz için önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
+Yeni bir Azure Uygulama teklifi yayımlayabilmeniz için önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) ve hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -34,25 +34,25 @@ Azure Uygulama tekliflerini tasarlama, derleme ve test etme, hem Azure platformu
 
 Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakları gözden geçirin.
 
-* [Azure Resource Manager şablonlarını anlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+* [Azure Resource Manager şablonlarını anlama](../../azure-resource-manager/resource-group-authoring-templates.md)
 
 * Hızlı Başlangıçlar:
 
-    * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
+    * [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
     * [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    * [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [Hizmet kataloğu uygulaması dağıtma](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
+    * [Uygulama tanımını yayımlama](../../managed-applications/publish-service-catalog-app.md)
+    * [Hizmet kataloğu uygulaması dağıtma](../../managed-applications/deploy-service-catalog-quickstart.md)
 
 * Öğreticiler:
 
-    * [Tanım dosyaları oluşturma](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [Market uygulaması yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
+    * [Tanım dosyaları oluşturma](../../managed-applications/publish-service-catalog-app.md)
+    * [Market uygulaması yayımlama](../../managed-applications/publish-marketplace-app.md)
 
 * Lerinizi
 
-    * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    * [Yönetilen uygulama çözümleri](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    * [Azure CLI](../../managed-applications/cli-samples.md)
+    * [Azure PowerShell](../../managed-applications/powershell-samples.md)
+    * [Yönetilen uygulama çözümleri](../../managed-applications/sample-projects.md)
 
 [Azure Market 'e yönelik çözüm şablonları ve yönetilen uygulamalar için](https://channel9.msdn.com/Events/Build/2018/BRK3603) sunulan video, Azure Uygulama teklifi türüne kapsamlı bir giriş sağlar:
 
@@ -72,7 +72,7 @@ Azure uygulamanızın yönetilmesine yardımcı olmak için aşağıdaki komut d
 
 Geliştirme ortamınıza aşağıdaki araçları eklemeniz önerilir:
 
-* [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * Aşağıdaki uzantılara sahip [Visual Studio Code](https://code.visualstudio.com/) :
     * Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -84,19 +84,19 @@ Mevcut araçları [Azure Geliştirici Araçları](https://azure.microsoft.com/to
 
 İki tür Azure uygulama planı vardır: çözüm şablonları ve yönetilen uygulamalar.
 
-* **Çözüm şablonu** , Market 'te çözüm yayımlamanın ana yöntemlerinden biridir. Çözümünüz tek bir sanal makinenin (VM) ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde bu plan türünü kullanın. Bir çözüm şablonuyla, karmaşık IaaS çözümleri sağlamak üzere VM 'Ler, ağ oluşturma ve depolama kaynakları dahil olmak üzere birden fazla kaynağın sağlanması otomatik hale getirebilirsiniz.  Çözüm şablonları oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+* **Çözüm şablonu** , Market 'te çözüm yayımlamanın ana yöntemlerinden biridir. Çözümünüz tek bir sanal makinenin (VM) ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde bu plan türünü kullanın. Bir çözüm şablonuyla, karmaşık IaaS çözümleri sağlamak üzere VM 'Ler, ağ oluşturma ve depolama kaynakları dahil olmak üzere birden fazla kaynağın sağlanması otomatik hale getirebilirsiniz.  Çözüm şablonları oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
-* **Yönetilen uygulama** , tek bir anahtar farklılığı ile çözüm şablonlarına benzerdir. Yönetilen bir uygulamada kaynaklar, uygulamanın yayımcısı tarafından yönetilen bir kaynak grubuna dağıtılır. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir. Yayımcı olarak, çözümün sürekli desteği için maliyeti belirtirsiniz. Yönetilen uygulamaları kullanarak, müşterilerinize tam olarak yönetilen, anahtar kullanan uygulamaları kolayca oluşturup sunun.  Yönetilen uygulamaların avantajları ve türleri hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalarına genel bakış](https://docs.microsoft.com/azure/managed-applications/overview).
+* **Yönetilen uygulama** , tek bir anahtar farklılığı ile çözüm şablonlarına benzerdir. Yönetilen bir uygulamada kaynaklar, uygulamanın yayımcısı tarafından yönetilen bir kaynak grubuna dağıtılır. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir. Yayımcı olarak, çözümün sürekli desteği için maliyeti belirtirsiniz. Yönetilen uygulamaları kullanarak, müşterilerinize tam olarak yönetilen, anahtar kullanan uygulamaları kolayca oluşturup sunun.  Yönetilen uygulamaların avantajları ve türleri hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalarına genel bakış](../../managed-applications/overview.md).
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
 Tüm Azure uygulamaları, bir arşiv kök klasöründe en az iki dosya içerir `.zip` :
 
-* [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı kaynak yöneticisi şablon dosyası.  Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/resources/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+* [mainTemplate.js](../../azure-resource-manager/resource-group-overview.md)adlı kaynak yöneticisi şablon dosyası.  Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/resources/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
 
-* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)adlı bir kullanıcı arabirimi tanımı.  Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
+* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](../../managed-applications/create-uidefinition-overview.md)adlı bir kullanıcı arabirimi tanımı.  Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
 
-Tüm yeni Azure Uygulama teklifleri bir [Azure iş ortağı müşteri kullanımı attributıon GUID 'i](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)içermelidir. 
+Tüm yeni Azure Uygulama teklifleri bir [Azure iş ortağı müşteri kullanımı attributıon GUID 'i](../azure-partner-customer-usage-attribution.md)içermelidir. 
 
 Her uygulama planına ilişkin gereksinimleri yayımlama hakkında bilgi edinmek için bkz. [çözüm şablonu teklif yayımlama gereksinimleri](../marketplace-solution-templates.md) ve [yönetilen uygulama teklifi yayımlama gereksinimleri](../marketplace-managed-apps.md).
 
@@ -132,14 +132,14 @@ Her uygulama planına ilişkin gereksinimleri yayımlama hakkında bilgi edinmek
 
 ### <a name="test-drive"></a>Sınama sürücüsü
 
-Test sürücüsü, "satın almadan önce dene" seçeneği sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. bu sayede, artan dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olur. [Sınama sürücüleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+Test sürücüsü, "satın almadan önce dene" seçeneği sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. bu sayede, artan dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olur. [Sınama sürücüleri hakkında daha fazla bilgi edinin](../what-is-test-drive.md).
 
 Bir sınama sürücüsünü sabit bir süre etkinleştirmek için, **bir sınama sürücüsünü etkinleştir** onay kutusunu seçin. Test sürücüsünü teklifinizden kaldırmak için bu onay kutusunu temizleyin. Bu konunun ilerleyen kısımlarında, [test sürücüsü teknik yapılandırma](#test-drive-technical-configuration) bölümünde test sürücüsü ortamını yapılandırın.
 
-Daha fazla bilgi için bkz. [ticari Market 'te teklifinizin test](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)etme. Ayrıca, [test sürücüsü en iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) hakkında bilgi alabilir ve [Test SÜRÜCÜLERINE genel bakış PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) 'sini indirebilirsiniz (açılır pencere engelinizin kapalı olduğundan emin olun)
+Daha fazla bilgi için bkz. [ticari Market 'te teklifinizin test](test-drive.md)etme. Ayrıca, [test sürücüsü en iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) hakkında bilgi alabilir ve [Test SÜRÜCÜLERINE genel bakış PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) 'sini indirebilirsiniz (açılır pencere engelinizin kapalı olduğundan emin olun)
 
 >[!Note]
->Tüm Azure uygulamaları Azure Resource Manager şablonu kullanılarak uygulandığından, bir Azure uygulaması için kullanılabilen tek test sürücüsü türü, [Azure Resource Manager tabanlı bir test sürücüsüdür](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
+>Tüm Azure uygulamaları Azure Resource Manager şablonu kullanılarak uygulandığından, bir Azure uygulaması için kullanılabilen tek test sürücüsü türü, [Azure Resource Manager tabanlı bir test sürücüsüdür](../azure-resource-manager-test-drive.md).
 
 ### <a name="customer-leads"></a>Müşteri liderleri
 
@@ -151,9 +151,16 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="properties"></a>Özellikler
 
-**Özellikler** sayfası, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destekleyen yasal sözleşmelerde gruplandırmak için kullanılan kategorileri ve endüstrileri tanımladığınız yerdir.
+**Özellikler** sayfası, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destekleyen yasal sözleşmelerde gruplandırmak için kullanılan kategorileri tanımladığınız yerdir.
 
-Teklifinizi uygun Market arama alanlarında yerleştirmek için en az bir ve en fazla üç kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun.
+### <a name="category"></a>Kategori
+
+Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
+
+- Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+
+[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
 ### <a name="legal"></a>Yasal Bildirim
 
@@ -181,7 +188,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Açıklama
+8. Description
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
@@ -195,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Adı
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -207,7 +214,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -259,7 +266,7 @@ Teklifinizi gösteren en fazla beş video ekleyin. Bunların bir dış video hiz
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-- [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Market teklif listeleri için en iyi uygulamalar](../gtm-offer-listing-best-practices.md)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -292,14 +299,14 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Teknik yapılandırma, [Market ölçüm hizmeti API 'lerini](./marketplace-metering-service-apis.md)kullanarak yönetilen bir uygulama için ölçüm olaylarını yayan hizmetinize kimlik sağlamak için kullanılan ayrıntıları (Kiracı kimliği ve uygulama kimliği) tanımlar.  Hizmetinizin, ölçüm olaylarını yayırken kullanacağı kimliği girin.
 
-* **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
-* **Azure AD uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
+* **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](../../active-directory/develop/howto-create-service-principal-portal.md) gerekir. [KIRACı kimliğini](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için) Azure Active Directory gidin ve **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+* **Azure AD uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)ve bir kimlik doğrulama anahtarı gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
 
 >[!Note]
 >Azure uygulama KIMLIĞI, yayımcı KIMLIĞINIZLE ilişkilendirilecektir ve bu yayımcı hesabında yalnızca yeniden kullanılabilir.
 
 >[!Note]
->[Toplu kullanım olayını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis#batch-usage-event)kullanmak istiyorsanız bu yapılandırma gereklidir.  [Kullanım olayı](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis#usage-event)göndermek Isterseniz, [JSON Web belirteci (JWT) taşıyıcı belirtecini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)almak için [örnek meta verileri hizmetini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) de kullanabilirsiniz.
+>[Toplu kullanım olayını](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)kullanmak istiyorsanız bu yapılandırma gereklidir.  [Kullanım olayı](marketplace-metering-service-apis.md#metered-billing-single-usage-event)göndermek istiyorsanız), [JSON Web belirteci (JWT) taşıyıcı belirtecini](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)almak için [örnek meta verileri hizmetini](../../active-directory/managed-identities-azure-resources/overview.md) de kullanabilirsiniz.
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
@@ -336,11 +343,11 @@ Aynı türde birden fazla planınız varsa ve paketler aralarında özdeş ise, 
 
 Planınız en az bir Azure bölgesinde kullanılabilir duruma getirilmelidir.
 
-Planınızı, ticari Market tümleştirmesi olan tüm Azure genel bölgelerindeki müşterilerin kullanımına sunmak için **Azure genel** seçeneğini belirleyin. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Planınızı, ticari Market tümleştirmesi olan tüm Azure genel bölgelerindeki müşterilerin kullanımına sunmak için **Azure genel** seçeneğini belirleyin. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](../marketplace-geo-availability-currencies.md).
 
-Planınızı [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) bölgesinde kullanılabilir hale getirmek Için **Azure Kamu** seçeneğini belirleyin. Bu bölge, ABD Federal, eyalet, yerel veya üç aylık varlıklardan müşterilere yönelik denetimli erişim sağlar ve bu da onlara sunmaya uygun iş ortakları sağlar. Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
+Planınızı [Azure Kamu](../../azure-government/documentation-government-welcome.md) bölgesinde kullanılabilir hale getirmek Için **Azure Kamu** seçeneğini belirleyin. Bu bölge, ABD Federal, eyalet, yerel veya üç aylık varlıklardan müşterilere yönelik denetimli erişim sağlar ve bu da onlara sunmaya uygun iş ortakları sağlar. Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 
-[Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+[Azure Kamu](../../azure-government/documentation-government-manage-marketplace-partners.md)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 >[!NOTE]
 >Planınız yayımlandıktan ve belirli bir Azure bölgesinde kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.
@@ -452,15 +459,15 @@ Bu sekme, teknik yapılandırmanızın taslak sürümünü düzenlemenize olanak
 
 Tüm Azure uygulama planı paketleri, bir arşiv kök klasöründe bu iki dosyayı içermelidir `.zip` :
 
-* [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterilerin Azure aboneliğine kaynak dağıtımını otomatikleştirir.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
-* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı bir kullanıcı arabirimi tanımı.
+* [mainTemplate.js](../../azure-resource-manager/resource-group-overview.md)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterilerin Azure aboneliğine kaynak dağıtımını otomatikleştirir.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](../../azure-resource-manager/managed-application-createuidefinition-overview.md)adlı bir kullanıcı arabirimi tanımı.
 
 Desteklenen en büyük dosya boyutu:
 
 * Toplam sıkıştırılmış arşiv boyutunda en fazla 1 GB `.zip`
 * Arşiv içindeki her bir sıkıştırılmamış dosya için 1 GB 'a kadar `.zip`  
 
-Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri kullanımı attributıon](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) GUID 'i de içermelidir.
+Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri kullanımı attributıon](../azure-partner-customer-usage-attribution.md) GUID 'i de içermelidir.
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -473,7 +480,7 @@ Yönetilen uygulama planları bu sekmede ek bilgi gerektirir.
 
 #### <a name="enable-just-in-time-jit-access"></a>Tam zamanında (JıT) erişimi etkinleştir
 
-Bu plan için tam zamanında (JıT) erişimi etkinleştirmek üzere bu seçeneği belirleyin.  JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz.  Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access).  Yönetilen uygulamanızın tüketicilerinin hesabınıza kalıcı erişim vermesini gerektirmek için, bu seçeneği işaretlenmemiş olarak bırakın.
+Bu plan için tam zamanında (JıT) erişimi etkinleştirmek üzere bu seçeneği belirleyin.  JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz.  Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](../../managed-applications/request-just-in-time-access.md).  Yönetilen uygulamanızın tüketicilerinin hesabınıza kalıcı erişim vermesini gerektirmek için, bu seçeneği işaretlenmemiş olarak bırakın.
 
 >[!Note]
 >`createUiDefinition.json`Bu özelliği desteklemek için dosyanızı güncelleştirdiğinizden emin olun.  
@@ -485,7 +492,7 @@ Bu planı dağıttığınızda, **tamamlanmış** veya **artımlı dağıtım mo
 * **Tüm modda**, kaynak içinde tanımlanmazsa, uygulamanın müşteri tarafından yeniden dağıtımı yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur `mainTemplate.json` . 
 * **Artımlı modda**, uygulamanın yeniden dağıtımı mevcut kaynakları değişmeden bırakır.
 
-Dağıtım modları hakkında daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes).
+Dağıtım modları hakkında daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../../azure-resource-manager/deployment-modes.md).
 
 #### <a name="notification-endpoint-url"></a>Bildirim uç noktası URL 'SI
 
@@ -495,7 +502,7 @@ Bu plan sürümünün yönetilen uygulama örneklerinde bulunan tüm CRUD işlem
 
 Müşterilerin, `*/read` Varsayılan olarak kullanılabilir olan "" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin. 
 
-Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
+Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../../role-based-access-control/deny-assignments.md).  Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
 
 #### <a name="global-azure--azure-government-cloud"></a>Küresel Azure/Azure Kamu Bulutu
 
@@ -505,14 +512,14 @@ Desteklenen her bulutta bu yönetilen uygulamaya yönetim erişiminin olması ge
 
 **Yetkilendirmeler** – yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcı, Grup veya uygulamanın Azure ACTIVE DIRECTORY nesne kimliğini ekleyin. Kullanıcıyı, [Azure portal Azure Active Directory Kullanıcıları dikey penceresinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)bulunan birincil kimliğine göre belirler.
 
-Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Bulut başına en çok 100 yetkilendirmeler ekleyebilseniz de, genellikle bir Active Directory Kullanıcı grubu oluşturmak ve KIMLIĞINI "asıl KIMLIK" içinde belirtmek daha kolay olur. Bu, plan dağıtıldıktan sonra yönetim grubuna daha fazla kullanıcı eklemenize ve daha fazla yetkilendirmeler eklemek için planı güncelleştirme ihtiyacını azaltmasına imkan sağlar.
 
 #### <a name="policy-settings"></a>İlke ayarları
 
-Dağıtılan çözüme yönelik uyumluluk gereksinimlerini belirtmek için yönetilen uygulamanıza [Azure ilkeleri](https://docs.microsoft.com/azure/governance/policy/overview) uygulayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](https://docs.microsoft.com/azure/governance/policy/samples/index). En fazla beş ilke ve her Ilke seçeneğinin yalnızca bir örneğini yapılandırabilirsiniz. Bazı ilkeler ek parametreler gerektirir. Denetim ilkeleri için standart SKU gereklidir. İlke adı 50 karakterle sınırlıdır.
+Dağıtılan çözüme yönelik uyumluluk gereksinimlerini belirtmek için yönetilen uygulamanıza [Azure ilkeleri](../../governance/policy/overview.md) uygulayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../../governance/policy/samples/index.md). En fazla beş ilke ve her Ilke seçeneğinin yalnızca bir örneğini yapılandırabilirsiniz. Bazı ilkeler ek parametreler gerektirir. Denetim ilkeleri için standart SKU gereklidir. İlke adı 50 karakterle sınırlıdır.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -520,7 +527,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Ortak satış sekmesi hakkında bilgi sağlamak, teklifinizi yayımlamak için tamamen isteğe bağlıdır. Ortak satış için hazırlık ve IP ortak satışı için hazırlık durumu elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken çözümünüz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz.
 
-Bu sekmeye ilişkin ayrıntılar için bkz. [Partner Center 'Da ortak satış seçeneği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
+Bu sekmeye ilişkin ayrıntılar için bkz. [Partner Center 'Da ortak satış seçeneği](commercial-marketplace-co-sell.md).
 
 ## <a name="resell-through-csps"></a>CSP 'Ler aracılığıyla yeniden satış
 
@@ -530,23 +537,23 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="test-drive"></a>Sınama sürücüsü
 
-Müşterilerin teklifinizi satın almadan önce denemesini sağlayan bir tanıtım (test sürücüsü) ayarlayın. Müşterilerin teklifinizi sabit bir süre için denemesini sağlayan bir tanıtım ortamı oluşturmak için, bkz. [ticari Market 'te teklifinizin test](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)etme.
+Müşterilerin teklifinizi satın almadan önce denemesini sağlayan bir tanıtım (test sürücüsü) ayarlayın. Müşterilerin teklifinizi sabit bir süre için denemesini sağlayan bir tanıtım ortamı oluşturmak için, bkz. [ticari Market 'te teklifinizin test](test-drive.md)etme.
 
 Bir sınama sürücüsünü etkinleştirmek için [teklif kurulumu](#test-drive) sekmesinde **bir test sürücüsünü etkinleştir** onay kutusunu işaretleyin. Test sürücüsünü teklifinizden kaldırmak için bu onay kutusunu temizleyin.
 
-### <a name="test-drive-technical-configuration"></a>Sınama sürücüsü teknik yapılandırma
+### <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
-- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için, [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için, [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 
 #### <a name="deployment-subscription-details"></a>Dağıtım aboneliği ayrıntıları
 
 Test sürücüsünün sizin adınıza dağıtılmasına izin vermek için, ayrı ve benzersiz bir Azure aboneliği oluşturun ve sağlayın (Power BI test sürücüleri için gerekli değildir).
 
-* **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
-* **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, şu adreste bulunan etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+* **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](../../billing/billing-create-subscription.md) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
+* **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, şu adreste bulunan etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure AD kiracı adı** (dinamik 365 için gereklidir) – Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
-* **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol gezinti menüsünde Active Directory sekmesini seçin, **uygulama kayıtları**' i seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
-* **Azure Active Directory uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol gezinti menüsünde **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve ardından test sürücüsü uygulamanızı seçin. Sonra **Sertifikalar ve gizlilikler**' ı seçin, **yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve ardından **Ekle**' yi **Never** Bu sayfadan çıkmadan önce değeri kopyalamadığınızdan emin olun.)
+* **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol gezinti menüsünde Active Directory sekmesini seçin, **uygulama kayıtları**' i seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+* **Azure Active Directory uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol gezinti menüsünde **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve ardından test sürücüsü uygulamanızı seçin. Sonra **Sertifikalar ve gizlilikler**' ı seçin, **yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve ardından **Ekle**' yi **Never** Bu sayfadan çıkmadan önce değeri kopyalamadığınızdan emin olun.)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 

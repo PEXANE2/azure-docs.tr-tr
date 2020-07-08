@@ -2,7 +2,7 @@
 title: Akıllı İçgörüler ile veritabanı performansını izleme
 description: Azure SQL veritabanı 'nda Akıllı İçgörüler ve Azure SQL yönetilen örneği, yapay zeka aracılığıyla veritabanı kullanımını sürekli olarak izlemek ve düşük performansa neden olan kötü etkinlikleri saptamak için yerleşik zeka kullanır.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743465"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986513"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
 
 | Akıllı İçgörüler seçeneği | Azure SQL veritabanı desteği | Azure SQL Yönetilen Örneği desteği |
 | :----------------------------- | ----- | ----- |
-| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Yes | Yes |
-| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Yes | Yes |
-| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Yes | Yes |
-| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
+| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Evet | Evet |
+| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Evet | Evet |
+| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Evet | Evet |
+| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Evet | Evet |
 
 > [!NOTE]
 > Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.

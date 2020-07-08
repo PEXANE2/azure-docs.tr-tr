@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 38228e7080cb0bdead2f2b3490729702d923ae36
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504908"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984660"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
 Bu makalede, Azure [Market 'te](https://azuremarketplace.microsoft.com/)bir Azure sanal makine teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Bir işletim sistemi, bir sanal sabit disk (VHD) ve en çok 16 veri diski içeren Windows tabanlı ve Linux tabanlı sanal makinelere yöneliktir. 
 
-Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
+Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md). Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 ## <a name="introduction"></a>Giriş
 
@@ -33,19 +33,19 @@ Tekliflerinizi Azure Marketi 'nde yayımladığınızda şunları yapabilirsiniz
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-Henüz yapmadıysanız, [Sanal Makine teklifi yayımlama kılavuzunu](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) ve bu Azure sanal makine malzemesini gözden geçirin:
+Henüz yapmadıysanız, [Sanal Makine teklifi yayımlama kılavuzunu](../marketplace-virtual-machines.md) ve bu Azure sanal makine malzemesini gözden geçirin:
 
 - Hızlı Başlangıç Kılavuzu
   - [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates)
 - Öğreticiler
-  - [Linux VM'leri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Windows VM'leri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Linux VM'leri](../../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Windows VM'leri](../../virtual-machines/windows/tutorial-manage-vm.md)
 - Örnekler
-  - [Linux VM 'Ler için Azure CLı örnekleri](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [Linux sanal makineleri için Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [Windows VM 'Leri için Azure CLı örnekleri](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [Windows VM 'Leri için Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [Linux VM 'Ler için Azure CLı örnekleri](../../virtual-machines/linux/cli-samples.md)
+  - [Linux sanal makineleri için Azure PowerShell](../../virtual-machines/linux/powershell-samples.md)
+  - [Windows VM 'Leri için Azure CLı örnekleri](../../virtual-machines/windows/cli-samples.md)
+  - [Windows VM 'Leri için Azure PowerShell](../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>Teknik Bilgi Bankası temelleri
 
@@ -86,14 +86,14 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ### <a name="test-drive"></a>Test Sürüşü
 
-*Test sürücüsü* , teklifinizi potansiyel müşterilere sergilemenin harika bir yoludur. "Satın almadan önce dene" seçeneğini sunar; bu, dönüştürmelerin artırılmasına ve yüksek oranda nitelikli müşteri adayları oluşturmanıza yardımcı olabilir. Daha fazla bilgi için bkz. [test sürücüsü nedir?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+*Test sürücüsü* , teklifinizi potansiyel müşterilere sergilemenin harika bir yoludur. "Satın almadan önce dene" seçeneğini sunar; bu, dönüştürmelerin artırılmasına ve yüksek oranda nitelikli müşteri adayları oluşturmanıza yardımcı olabilir. Daha fazla bilgi için bkz. [test sürücüsü nedir?](../what-is-test-drive.md).
 
 Bir sınama sürücüsünü sabit bir süre etkinleştirmek için, **bir sınama sürücüsünü etkinleştir** onay kutusunu seçin. Test sürücüsünü teklifinizden kaldırmak için onay kutusunu temizleyin.
 
 Ek test sürücüsü kaynakları:
 
 - [En iyi teknik uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [En iyi pazarlama deneyimleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [En iyi pazarlama deneyimleri](../what-is-test-drive.md)
 - [Test sürücüsüne genel bakış indirin](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF dosyası (açılır pencere engelinizin kapalı olduğundan emin olun).
 
 ### <a name="customer-leads"></a>Müşteri liderleri
@@ -101,12 +101,12 @@ Ek test sürücüsü kaynakları:
 Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımladığınızda, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayın. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar. Bir test sürücüsünü etkinleştirmek istiyorsanız, bir CRM 'ye bağlanmak gerekir (yukarıdaki bölüme bakın). Aksi takdirde, bir CRM 'ye bağlanmak isteğe bağlıdır.
 
 1. Potansiyel müşterileri göndermemizi istediğiniz müşteri adayı hedefini seçin. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
-    - Müşteri katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - Müşteri katılımı için [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md)
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > CRM sisteminiz burada listelenmiyorsa, müşteri adayı verilerinizi depolamak için [Azure Tablo Depolaması](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) 'nı veya bir [https uç noktasını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
+    > CRM sisteminiz burada listelenmiyorsa, müşteri adayı verilerinizi depolamak için [Azure Tablo Depolaması](commercial-marketplace-lead-management-instructions-azure-table.md) 'nı veya bir [https uç noktasını](commercial-marketplace-lead-management-instructions-https.md) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
 
 1. Teklifinizi Iş Ortağı Merkezi 'nde yayımlarken lider hedefine bağlayın.
 1. Müşteri adayı hedefi bağlantısının düzgün şekilde yapılandırıldığını doğrulayın. Iş Ortağı Merkezi 'nde yayımladıktan sonra, Microsoft bağlantıyı doğrular ve size bir test lideri gönderir. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında dağıtmayı deneyerek lider bağlantınızı da test edebilirsiniz.
@@ -116,11 +116,16 @@ Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımladığınızda, M�
 
 ## <a name="properties"></a>Özellikler
 
-**Özellikler** sayfasında, teklifinizi Azure Marketi 'nde, uygulamanızın sürümüne ve teklifinizi destekleyen yasal sözleşmeleri gruplamak için kullanılan kategorileri ve endüstrileri tanımlarsınız.
+**Özellikler** sayfasında, teklifinizi Azure Marketi 'nde, uygulamanızın sürümüne ve teklifinizi destekleyen yasal sözleşmeleri gruplamak için kullanılan kategorileri tanımlarsınız.
 
-### <a name="categories"></a>Kategoriler
+### <a name="category"></a>Kategori
 
-En az bir ve en fazla beş kategori seçin. Teklifinizi uygun Azure Marketi arama alanlarında yerleştirmek için bu kategorileri kullanın. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın. Sanal makine teklifleri, Azure Marketi 'ndeki **işlem** kategorisi altında görünür.
+Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
+
+- Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+
+[Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz. Sanal makine teklifleri her zaman Azure Marketi 'ndeki **işlem** kategorisi altında görünür.
 
 ### <a name="legal"></a>Yasal Bildirim
 
@@ -143,7 +148,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
   > [!NOTE]
   > Ticari Market için standart sözleşmeyi kullanarak bir teklifi yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Standart Sözleşme veya kendi hüküm ve koşullarınız altında bir çözüm sunabilirsiniz.
 
-  Daha fazla bilgi için bkz. [Microsoft ticari Market Için standart sözleşme](https://docs.microsoft.com/azure/marketplace/standard-contract). [Standart sözleşme](https://go.microsoft.com/fwlink/?linkid=2041178) PDF dosyasını indirin (açılır pencere engelinizin kapalı olduğundan emin olun).
+  Daha fazla bilgi için bkz. [Microsoft ticari Market Için standart sözleşme](../standard-contract.md). [Standart sözleşme](https://go.microsoft.com/fwlink/?linkid=2041178) PDF dosyasını indirin (açılır pencere engelinizin kapalı olduğundan emin olun).
 
   **Standart Sözleşme düzeltme açıklamaları**
 
@@ -175,7 +180,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
-#### <a name="name"></a>Adı
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler için teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer** adı kutusuna girdiğiniz adla birlikte doldurulur. Bu adı daha sonra değiştirebilirsiniz. Ad:
 
@@ -191,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -221,7 +226,7 @@ Müşterilerin destek ekibinize ulaşabilmesi için destek Web sitesini sağlay�
 
 Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş ortakları için iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Adı
+- Name
 - E-posta
 - Telefon
 
@@ -229,7 +234,7 @@ Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş o
 
 Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da dahil olmak üzere iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Adı
+- Name
 - E-posta
 - Telefon
 
@@ -259,7 +264,7 @@ Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüs
 
 Teklifinizi gösteren en fazla beş video ekleyin. Videoların bir dış video hizmetinde barındırılması gerekir. Videonun adını, Web adresini ve videonun küçük resim PNG görüntüsünü 1280 &times; 720 piksel olarak girin.
 
-Diğer Market listeleme kaynakları için bkz. [Market teklif listeleri Için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Diğer Market listeleme kaynakları için bkz. [Market teklif listeleri Için en iyi uygulamalar](../gtm-offer-listing-best-practices.md).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -324,11 +329,11 @@ Aynı türde birden fazla planınız varsa ve paketler aralarında aynıysa, **B
 
 Planınız en az bir Azure bölgesinde kullanılabilir duruma getirilmelidir.
 
-Planınızı, ticari Market tümleştirmesi olan tüm Azure genel bölgelerindeki müşterilerin kullanımına sunmak için **Azure genel** seçeneğini belirleyin. Daha fazla bilgi için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Planınızı, ticari Market tümleştirmesi olan tüm Azure genel bölgelerindeki müşterilerin kullanımına sunmak için **Azure genel** seçeneğini belirleyin. Daha fazla bilgi için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](../marketplace-geo-availability-currencies.md).
 
-Planınızı [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) bölgesinde kullanılabilir hale getirmek Için **Azure Kamu** seçeneğini belirleyin. Bu bölge, ABD Federal, eyalet, yerel veya üç aylık varlıklardan müşterilere denetimli erişim sağlar ve bunların yanı sıra onlara hizmeti sunmaya uygun olan iş ortakları için de çalışır. Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
+Planınızı [Azure Kamu](../../azure-government/documentation-government-welcome.md) bölgesinde kullanılabilir hale getirmek Için **Azure Kamu** seçeneğini belirleyin. Bu bölge, ABD Federal, eyalet, yerel veya üç aylık varlıklardan müşterilere denetimli erişim sağlar ve bunların yanı sıra onlara hizmeti sunmaya uygun olan iş ortakları için de çalışır. Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 
-[Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/) sayfasından bir deneme hesabı isteyin.
+[Azure Kamu](../../azure-government/documentation-government-manage-marketplace-partners.md)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/) sayfasından bir deneme hesabı isteyin.
 
 > [!NOTE]
 > Planınız yayımlandıktan ve belirli bir Azure bölgesinde kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.
@@ -420,7 +425,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="technical-configuration"></a>Teknik yapılandırma
 
-Bu planla ilişkili görüntüleri ve diğer teknik özellikleri sağlayın. Daha fazla bilgi için bkz. [Azure VM teknik varlığı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Bu planla ilişkili görüntüleri ve diğer teknik özellikleri sağlayın. Daha fazla bilgi için bkz. [Azure VM teknik varlığı oluşturma](create-azure-container-technical-assets.md).
 
 > [!NOTE]
 > Bu planı, **plan kurulum** sekmesindeki başka bir plandan paketleri yeniden kullanmak üzere yapılandırdıysanız **Teknik yapılandırma** sekmesi gösterilmez.
@@ -454,7 +459,7 @@ Dağıtılmış bir sanal makinede ortak veya özel bağlantı noktalarını aç
 Sanal makine görüntüleri için bir disk sürümü ve paylaşılan erişim imzası (SAS) URI 'SI sağlayın. Her VM görüntüsü için en fazla 16 veri diski ekleyin. Belirtilen bir gönderideki plan başına yalnızca bir yeni görüntü sürümü sağlayın. Bir görüntü yayımlandıktan sonra düzenleyemezsiniz, ancak silebilirsiniz. Bir sürümü silmek, hem yeni hem de mevcut kullanıcıların silinen sürümün yeni bir örneğini dağıtmalarını engeller.
 
 - **Disk sürümü**: sağlaettiğiniz görüntünün sürümü.
-- **SAS URI 'si**: IŞLETIM sistemi VHD 'Sini depoladığınız Azure Storage hesabınızdaki konum.
+- **SAS URI 'si**: IŞLETIM sistemi VHD 'Sini depoladığınız Azure Storage hesabınızdaki konum. SAS URI 'sini alma hakkında bilgi edinmek için bkz. [VM Görüntünüz için paylaşılan erişim imzası URI 'Si alma](get-sas-uri.md).
 - Veri diski görüntüleri Ayrıca, Azure depolama hesaplarında depolanan VHD paylaşılan erişim imza URI 'leridir.
 - Bir plana gönderim başına yalnızca bir resim ekleyin.
 
@@ -470,13 +475,13 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="test-drive"></a>Test Sürüşü
 
-Müşterilerin teklifinizi, satın almadan önce sabit bir süre boyunca denemesini sağlayan bir tanıtım veya *test sürücüsü*ayarlayın. Müşterileriniz için bir tanıtım ortamı oluşturmak için bkz. [ticari Market 'Te sürücü tekliflerini test](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)etme.
+Müşterilerin teklifinizi, satın almadan önce sabit bir süre boyunca denemesini sağlayan bir tanıtım veya *test sürücüsü*ayarlayın. Müşterileriniz için bir tanıtım ortamı oluşturmak için bkz. [ticari Market 'Te sürücü tekliflerini test](test-drive.md)etme.
 
 Bir sınama sürücüsünü etkinleştirmek için **teklif kurulum** bölmesindeki **bir test sürücüsünü etkinleştir** onay kutusunu seçin. Test sürücüsünü teklifinizden kaldırmak için onay kutusunu temizleyin.
 
 Ek test sürücüsü kaynakları:
 
-- [En iyi pazarlama deneyimleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [En iyi pazarlama deneyimleri](../what-is-test-drive.md)
 - [En iyi teknik uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Test sürücüsüne genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF dosyası (açılır pencere engelinizin kapalı olduğundan emin olun)
 
@@ -511,10 +516,10 @@ Yayımlama işlemindeki **el ile doğrulama** adımı, teklifinizin ve ilişkili
 
 Bu sayfa, durumuna bağlı olarak teklifle çalışmanıza yardımcı olacak bağlantılar da içerir:
 
-- Teklif bir taslak ise: [taslak teklifini sil](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Teklif canlı ise: [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Teklif önizlemededir: [Go-Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız: [yayımlamayı Iptal et](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Teklif bir taslak ise: [taslak teklifini sil](update-existing-offer.md#delete-a-draft-offer))
+- Teklif canlı ise: [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Teklif önizlemededir: [Go-Live](publishing-status.md#publisher-approval))
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız: [yayımlamayı Iptal et](update-existing-offer.md#cancel-publishing))
 
 ## <a name="marketplace-examples"></a>Market örnekleri
 
@@ -530,7 +535,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Açıklama
+7. Description
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 
@@ -561,8 +566,8 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-1. Adı
-2. Açıklama
+1. Name
+2. Description
 3. Yararlı bağlantılar
 4. Ekran görüntüleri/videolar
 
@@ -587,4 +592,4 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Ticari Market 'te mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Ticari Market 'te mevcut bir teklifi güncelleştirme](update-existing-offer.md)

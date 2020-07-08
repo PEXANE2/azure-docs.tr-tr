@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558723"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024474"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -39,6 +39,7 @@ Yöneticiler, erişim izni verirken bir veya daha fazla denetimi zorlamayı terc
 - [Karma Azure AD 'ye katılmış cihaz gerektir](../devices/concept-azure-ad-join-hybrid.md)
 - [Onaylanan istemci uygulaması gerektir](app-based-conditional-access.md)
 - [Uygulama koruma ilkesi gerektir](app-protection-based-conditional-access.md)
+- [Parola değişikliği iste](#require-password-change)
 
 Yöneticiler bu seçenekleri birleştirmeyi seçerken, aşağıdaki yöntemleri seçebilirler:
 
@@ -134,6 +135,21 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
     - Cihazı kaydetmek için bir aracı uygulaması gereklidir. İOS 'ta, aracı uygulaması Microsoft Authenticator ve Android üzerinde Intune Şirket Portalı uygulamasıdır.
 
 Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: uygulama koruma Ilkesi gerektirme ve bulut uygulaması erişimi için onaylanan bir istemci uygulaması](app-protection-based-conditional-access.md) .
+
+### <a name="require-password-change"></a>Parola değişikliği iste 
+
+Kullanıcı riski algılandığında, Kullanıcı risk ilkesi koşulları kullanılarak Yöneticiler, kullanıcının Azure AD self servis parola sıfırlama kullanarak parolayı güvenli bir şekilde değiştirmesini seçebilirler. Kullanıcı riski algılanırsa, kullanıcılar kendi kendine düzeltme için bir self servis parola sıfırlaması gerçekleştirebilir, bu, Yöneticiler için gereksiz paraziti engellemek üzere Kullanıcı riski olayını kapatır. 
+
+Kullanıcıdan parolasını değiştirmesi istendiğinde, önce çok faktörlü kimlik doğrulamasının tamamlanmaları gerekir. Tüm kullanıcılarınızın çok faktörlü kimlik doğrulaması için kaydoldıklarından emin olmak isteyeceksiniz. bu nedenle, hesapları için bir risk algılanarak hazırlanırlar.  
+
+> [!WARNING]
+> Kullanıcılar, Kullanıcı risk ilkesini tetiklemeden önce self servis parola sıfırlama için önceden kaydolmalıdır. 
+
+Parola değiştirme denetimini kullanarak bir ilkeyi yapılandırırken, bir yerde birkaç kısıtlama bulunur.  
+
+1. İlke, ' tüm bulut uygulamaları ' için atanmalıdır. Bu, bir saldırganın farklı bir uygulamada oturum açarak Kullanıcı parolasını değiştirmesini ve hesap riskini sıfırlamasını engeller. 
+1. Parola değiştirme gerektir, uyumlu bir cihaz gerektirme gibi diğer denetimlerle kullanılamaz.  
+1. Parola değiştirme denetimi yalnızca Kullanıcı ve Grup atama koşulu, bulut uygulaması atama koşulu (tümü olarak ayarlanması gerekir) ve Kullanıcı risk koşulları ile kullanılabilir. 
 
 ### <a name="terms-of-use"></a>Kullanım koşulları
 

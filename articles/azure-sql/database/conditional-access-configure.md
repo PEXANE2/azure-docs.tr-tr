@@ -1,8 +1,9 @@
 ---
 title: Koşullu Erişim
 description: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics için koşullu erişimi yapılandırma hakkında bilgi edinin.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: conceptual
 author: GithubMirek
@@ -11,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 96ba8dac13e2044d3e561a931e4e8d0760e75050
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 67fef7b192caf064cd7c3b4b6af8923b153ee5b1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195480"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985355"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ile koşullu erişim
 
@@ -26,7 +27,7 @@ Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen ö
 
 Aşağıdaki adımlarda, koşullu erişim (CA) ilkesini zorlamak için Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'in nasıl yapılandırılacağı gösterilmektedir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SQL havuzunu Azure Active Directory (Azure AD) kimlik doğrulamasını destekleyecek şekilde yapılandırmanız gerekir. Belirli adımlar için bkz. [SQL veritabanı veya Azure SYNAPSE ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).  
 - Multi-Factor Authentication etkinleştirildiğinde, en son SQL Server Management Studio (SSMS) gibi desteklenen bir araçla bağlanmanız gerekir. Daha fazla bilgi için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).  

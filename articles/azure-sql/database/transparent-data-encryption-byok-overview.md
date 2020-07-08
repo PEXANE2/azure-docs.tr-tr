@@ -1,8 +1,9 @@
 ---
 title: Müşteri tarafından yönetilen saydam veri şifrelemesi (TDE)
 description: Kendi Anahtarını Getir (BYOK) SQL veritabanı ve Azure SYNAPSE Analytics için Azure Key Vault ile Saydam Veri Şifrelemesi (TDE) desteği. BYOK 'a genel bakış, avantajlar, nasıl çalıştığı, önemli noktalar ve öneriler ile TDE.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
@@ -11,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321317"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985318"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,6 +30,9 @@ Azure SQL veritabanı ve Azure SYNAPSE Analytics için, TDE koruyucusu sunucu d�
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen TDE kullanmaya başlamak isteyen hizmet tarafından yönetilen TDE kullanan bu işlemler için veriler, geçiş işlemi sırasında şifrelenmiş olarak kalır ve veritabanı dosyalarının kapalı kalması veya yeniden şifrelenmesi gerekmez. Hizmet tarafından yönetilen anahtardan müşterinin yönettiği bir anahtara geçiş yapmak, hızlı ve çevrimiçi bir işlem olan DEK ' ın yeniden şifrelenmesini gerektirir.
+
+> [!NOTE]
+> Azure SQL müşterilerinin bekleyen verilerin iki katmanını kullanmasını sağlamak için platform tarafından yönetilen anahtarlarla altyapı şifrelemesi (AES-256 şifreleme algoritması kullanılarak) kullanıma alınıyor. Bu, zaten mevcut olan, müşteri tarafından yönetilen anahtarlarla birlikte, bekleyen bir şifreleme katmanını de sağlar. Şu anda müşterilerin bu özelliğe erişim istemesi gerekir. Bu özellik ile ilgileniyorsanız, iletişim kurun AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE 'nın avantajları
 
@@ -127,7 +131,7 @@ Anahtar erişimi geri yüklendikten sonra, veritabanı yeniden çevrimiçi durum
 
 - Anahtar erişimi 8 saat içinde geri yüklenirse, veritabanı bir sonraki saat içinde otomatik olarak alınır.
 
-- Anahtar erişimi 8 saatten uzun bir süre sonra geri yüklenirse, otomatik heveme mümkün olmaz ve veritabanının geri yüklenmesi portalda ek adımlar gerektirir ve veritabanının boyutuna bağlı olarak önemli miktarda zaman alabilir. Veritabanı yeniden çevrimiçi olduktan sonra, önceden [Yük devretme grubu](auto-failover-group-overview.md) yapılandırması, zaman içinde geri yükleme geçmişi ve Etiketler gibi sunucu düzeyi ayarları daha önce **yapılandırılmış olur.** Bu nedenle, temel alınan anahtar erişim sorunlarını 8 saat içinde tanımlamanızı ve adresetmenizi sağlayan bir bildirim sistemi uygulanması önerilir.
+- Anahtar erişimi 8 saatten uzun bir süre sonra geri yüklenirse, otomatik düzeltme gerçekleştirilemez ve veritabanının geri getirilmesi için portaldan ek işlemler gerçekleştirilmesi gerekir. Bu işlemler veritabanının boyutuna bağlı olarak uzun sürebilir. Veritabanı yeniden çevrimiçi olduktan sonra, önceden [Yük devretme grubu](auto-failover-group-overview.md) yapılandırması, zaman içinde geri yükleme geçmişi ve Etiketler gibi sunucu düzeyi ayarları daha önce **yapılandırılmış olur.** Bu nedenle, temel alınan anahtar erişim sorunlarını 8 saat içinde tanımlamanızı ve adresetmenizi sağlayan bir bildirim sistemi uygulanması önerilir.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Yanlışlıkla TDE koruyucu erişimi iptali
 

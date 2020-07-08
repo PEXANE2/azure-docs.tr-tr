@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160724"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024473"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -32,6 +32,10 @@ Ayrıntılı ve belirli koşullu erişim ilkeleri oluşturmak için birden çok 
 
 [Kimlik korumasına](../identity-protection/overview-identity-protection.md)erişimi olan müşteriler için, oturum açma riski koşullu erişim ilkesinin bir parçası olarak değerlendirilebilirler. Oturum açma riski, belirli bir kimlik doğrulama isteğinin kimlik sahibi tarafından yetkilendirilmemiş olma olasılığını temsil eder. Makalelerde oturum [açma riski hakkında](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) daha fazla bilgi bulabilirsiniz, risk ve [nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
+## <a name="user-risk"></a>Kullanıcı riski 
+
+[Kimlik korumasına](../identity-protection/overview-identity-protection.md)erişimi olan müşteriler için, Kullanıcı riski koşullu erişim ilkesinin bir parçası olarak değerlendirilebilirler. Kullanıcı riski, belirli bir kimlik veya hesabın güvenliğinin aşıldığına ilişkin olasılığı temsil eder. Makalelerde Kullanıcı riski hakkında daha fazla bilgi [bulabilirsiniz, risk](../identity-protection/concept-identity-protection-risks.md#user-risk) ve [nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+
 ## <a name="device-platforms"></a>Cihaz platformları
 
 Cihaz platformu, bir cihazda çalışan işletim sistemine göre belirlenir. Azure AD, cihaz tarafından sunulan Kullanıcı Aracısı dizeleri gibi bilgileri kullanarak platformu tanımlar. Kullanıcı Aracısı dizeleri değiştirilebilen için bu bilgiler doğrulanmamış olur. Cihaz platformu Microsoft Intune cihaz uyumluluk ilkeleriyle veya bir blok bildiriminin parçası olarak konser 'da kullanılmalıdır. Varsayılan değer tüm cihaz platformları için geçerlidir.
@@ -42,10 +46,7 @@ Azure AD koşullu erişim aşağıdaki cihaz platformlarını destekler:
 - iOS
 - Windows Phone
 - Windows
-- macOS
-
-> [!WARNING]
-> Microsoft, koşullu erişim ilkeleri ve macOS 10.15.4 tabanlı cihazlarla ilgili bir sorunu algılar. Blog gönderisine daha fazla bilgi bulunabilir, [bilinen sorun: koşullu erişim macOS 10.15.4 Native mail Client/diğer uygulamaları beklenmedik şekilde engelliyor](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
+- Mac OS
 
 **Diğer istemciler** koşulunu kullanarak eski kimlik doğrulamasını engellerseniz, cihaz platformu koşulunu da ayarlayabilirsiniz.
 
@@ -95,7 +96,7 @@ Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu 
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
-| Windows 7 | Internet Explorer, Chrome |
+| Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
 | Windows Phone | Microsoft Edge, Internet Explorer |
@@ -115,21 +116,17 @@ Windows 7, iOS, Android ve macOS Azure AD, cihaz Azure AD 'ye kaydedildiğinde s
 
 Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağıdaki kayıt defteri anahtarını oluşturun:
 
-|    |    |
-| --- | --- |
-| Yol | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Adı | 1 |
-| Tür | REG_SZ (dize) |
-| Veriler | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/service/update2/crx |
+- Yol HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Ad 1
+- Tür REG_SZ (dize)
+- Veri ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/service/update2/crx
 
 **Windows 8.1 ve 7**' de Chrome desteği için aşağıdaki kayıt defteri anahtarını oluşturun:
 
-|    |    |
-| --- | --- |
-| Yol | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Adı | 1 |
-| Tür | REG_SZ (dize) |
-| Veriler | {"model": "https://device.login.microsoftonline.com", "filtre": {"veren": {"CN": "MS-Organization-Access"}}} |
+- Yol HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Ad 1
+- Tür REG_SZ (dize)
+- Veri {"model": " https://device.login.microsoftonline.com ", "filtre": {"veren": {"CN": "MS-Organization-Access"}}}
 
 Bu tarayıcılar cihaz kimlik doğrulamasını destekler, bu da cihazın bir ilkeye göre tanımlanmasına ve doğrulanmasını sağlar. Tarayıcı özel modda çalışıyorsa cihaz denetimi başarısız olur.
 
@@ -167,7 +164,7 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 
 İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication** gerekli olduğunda, temel kimlik doğrulaması çok faktörlü kimlik doğrulamasını desteklemediğinden, etkilenen kullanıcılar engellenir.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Koşullu erişimle eski kimlik doğrulamasını engelleyin](block-legacy-authentication.md)
 - [Koşullu erişim ile onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md)

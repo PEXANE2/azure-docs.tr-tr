@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7d71995e0e7a4b8cb7f6d80756f64cb6824c1ce9
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374398"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023015"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
 Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 
@@ -33,6 +33,7 @@ Uygulamanızın büyük ölçek kümelerini etkili bir şekilde kullanıp kullan
 - Azure Market’te oluşturulan ölçek kümeleri 1.000 VM’ye kadar ölçeklendirilebilir.
 - Özel görüntülerden oluşturulan ölçek kümeleri (kendi oluşturduğunuz ve yüklediğiniz VM görüntüleri) şu anda en fazla 600 VM’ye kadar ölçeklendirilebilir.
 - Büyük ölçek kümeleri Azure Yönetilen Diskleri gerektirir. Yönetilen Diskler ile oluşturulmayan ölçek kümeleri birden fazla depolama hesabı (her 20 VM için bir tane) gerektirir. Büyük ölçek kümeleri, depolama yönetimi yükünüzü azaltmak ve depolama hesaplarının abonelik sınırlarını aşma riskini önlemek üzere yalnızca Yönetilen Disklerle çalışacak şekilde tasarlanmıştır. 
+- Büyük ölçek (SPG = false), InfiniBand ağını desteklemez
 - Birden fazla yerleştirme grubundan oluşan ölçek kümeleriyle Katman-4 yük dengelemesi için [Azure Load Balancer Standart SKU'su](../load-balancer/load-balancer-standard-overview.md) gerekir. Load Balancer Standart SKU'su, birden çok ölçek kümesi arasında yük dengeleme özelliği gibi ek avantajlar sağlar. Standart SKU ayrıca, ölçek kümesinin kendisiyle ilişkilendirilmiş bir Ağ Güvenlik Grubu olmasını da gerektirir; aksi takdirde NAT havuzları düzgün çalışmaz. Azure Load Balancer Temel SKU'sunu kullanmanız gerekirse, ölçek kümesinin tek bir yerleştirme grubu kullanacak şekilde (varsayılan ayar) yapılandırıldığından emin olun.
 - Azure Application Gateway ile 7. katman yük dengeleme tüm ölçek kümeleri için desteklenir.
 - Ölçek kümesi tek bir alt ağ ile tanımlanır; alt ağınızın gereken tüm VM’ler için yeterince geniş bir adres alanına sahip olduğundan emin olun. Varsayılan olarak, dağıtım güvenilirliğini ve performansını artırmak için ölçek kümesi fazla sağlama yapar (dağıtım sırasında veya ölçeklendirme sırasında fazladan VM oluşturur, bunlar için ücret alınmaz). Ölçeklendirmeyi planladığınız VM sayısından %20 daha fazla adres alanı ayırın.
@@ -42,7 +43,7 @@ Uygulamanızın büyük ölçek kümelerini etkili bir şekilde kullanıp kullan
 ## <a name="creating-a-large-scale-set"></a>Büyük ölçek kümesi oluşturma
 Azure portalda bir ölçek kümesi oluştururken en fazla 1000 olarak şekilde bir *Örnek sayısı* değeri belirtin. Bu sayı 100'den fazlaysa *100'den fazla örnekle ölçeklendirmeyi etkinleştirme* ayarı *Evet* olarak belirlenir ve bu sayede birden fazla yerleştirme grubuna ölçeklendirme yapılabilir. 
 
-![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![Bu görüntüde Azure portalının örnekler dikey penceresi gösterilmektedir. Örnek sayısını ve örnek boyutunu seçme seçenekleri mevcuttur.](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_ komutunu kullanarak büyük bir sanal makine ölçek kümesi oluşturabilirsiniz. Bu komut, alt ağ boyutu gibi akıllı varsayılan değerleri _instance-count_ bağımsız değişkenine göre ayarlar:
 

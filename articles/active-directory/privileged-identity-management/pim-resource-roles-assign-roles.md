@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dceb7dc6ce6f2b97bbaad0b2db129611833eb30f
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743839"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023781"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri atama
 
@@ -47,33 +47,31 @@ Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki a
 
 1. **Azure kaynakları**' nı seçin.
 
-1. Yönetilen kaynakların listesini filtrelemek için **kaynak filtresini** kullanın.
+1. Aradığınız yönetilen kaynakları bulmak için kaynak filtresini kullanın.
 
     ![Yönetilecek Azure kaynakları listesi](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
+1. Kaynak genel bakış sayfasını açmak için yönetmek istediğiniz kaynağı seçin.
 
-1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
+1. **Yönet**altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
 
     ![Azure kaynakları rolleri](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Yeni atama bölmesini açmak için **üye Ekle** ' yi seçin.
+1. **Atamaları Ekle bölmesini açmak** Için **atamaları Ekle** ' yi seçin.
 
-1. Rol Seç bölmesini açmak için **Rol Seç** ' i seçin.
+1. **Rol Seç sayfasını açmak** Için **Rol Seç** ' i seçin.
 
     ![Yeni atama bölmesi](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. Atamak istediğiniz bir rol seçin ve ardından **Seç**' e tıklayın.
 
-    Üye Seç veya grup bölmesi açılır.
+    **Üye Seç veya grup** bölmesi açılır.
 
 1. Role atamak istediğiniz üye veya grubu seçin ve ardından **Seç**' e tıklayın.
 
     ![Üye veya grup bölmesi seçin](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Üyelik ayarları bölmesi açılır.
-
-1. **Atama türü** listesinde **uygun** veya **etkin**' i seçin.
+1. **Ayarlar** sekmesinde, **atama türü** listesinde **uygun** veya **etkin**' i seçin.
 
     ![Üyelik ayarları bölmesi](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki a
 
     - **Etkin** atamalar, üyenin rolü kullanmak için herhangi bir eylem gerçekleştirmesini gerektirmez. Etkin olarak atanan üyelerin her zaman role atanan ayrıcalıkları vardır.
 
-1. Atama kalıcı olmalıdır (kalıcı olarak uygun veya kalıcı olarak atanabilir), **kalıcı** onay kutusunu seçin.
+1. Belirli bir atama süresi belirtmek için başlangıç ve bitiş tarihlerini ve saatlerini değiştirin.
 
-    Rol ayarlarına bağlı olarak, onay kutusu görünmeyebilir veya hiç değiştirilebilir olmayabilir.
+1. İşiniz bittiğinde **ata**' yı seçin.
 
-1. Belirli bir atama süresi belirtmek için onay kutusunu temizleyin ve başlangıç ve/veya bitiş tarih ve saat kutularını değiştirin.
-
-    ![Üyelik ayarları-Tarih ve saat](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. İşiniz bittiğinde **bitti**' yi seçin.
-
-    ![Yeni atama-Ekle](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Yeni rol atamasını oluşturmak için **Ekle**' yi seçin. Durum bildirimi görüntülenir.
+1. Yeni rol ataması oluşturulduktan sonra bir durum bildirimi görüntülenir.
 
     ![Yeni atama-bildirim](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımlar�
 
 1. **Azure kaynakları**' nı seçin.
 
-1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
+1. Yönetmek istediğiniz kaynağı seçerek genel bakış sayfasını açın.
 
-1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
+1. **Yönet**altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
 
     ![Azure Kaynak rolleri-rol seçin](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

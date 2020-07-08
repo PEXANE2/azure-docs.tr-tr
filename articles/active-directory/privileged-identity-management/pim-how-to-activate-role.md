@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b09ab7287d148b4a5e613b6198b6ad44c7234
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743975"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024119"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM'de Azure AD rollerimi etkinleştirme
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşların Azure AD 'deki kaynaklara yönelik ayrıcalıklı erişimi ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler yönetmesini basitleştirir.  
 
-Bir yönetim rolü için uygun yaptıysanız, ayrıcalıklı eylemleri gerçekleştirmeniz gerektiğinde bu rolü etkinleştirebilmeniz anlamına gelir. Örneğin, bazen Office 365 özelliklerini yönetiyorsanız, bu rol diğer hizmetleri de etkilediği için kuruluşunuzun ayrıcalıklı rol yöneticileri kalıcı bir genel yönetici sunmayabilir. Bunun yerine, Exchange Online Yöneticisi gibi Azure AD rollerine uygun hale getirir. Ayrıcalıklarına ihtiyacınız olduğunda bu rolü etkinleştirmek isteyebilirsiniz ve daha sonra önceden belirlenmiş bir süre için yönetici denetimine sahip olursunuz.
+Bir yönetim rolü için uygun yaptıysanız, ayrıcalıklı eylemler gerçekleştirmeniz gerektiğinde rol atamasını etkinleştirmeniz gerekir. Örneğin, bazen Office 365 özelliklerini yönetiyorsanız, bu rol diğer hizmetleri de etkilediği için kuruluşunuzun ayrıcalıklı rol yöneticileri kalıcı bir genel yönetici sunmayabilir. Bunun yerine, Exchange Online Yöneticisi gibi Azure AD rollerine uygun hale getirir. Ayrıcalıklarına ihtiyacınız olduğunda bu rolü etkinleştirmek isteyebilirsiniz ve daha sonra önceden belirlenmiş bir süre için yönetici denetimine sahip olursunuz.
 
 Bu makale, Privileged Identity Management ' de Azure AD rolünü etkinleştirmesi gereken yöneticilere yöneliktir.
 
@@ -42,9 +42,9 @@ Bu makale, Privileged Identity Management ' de Azure AD rolünü etkinleştirmes
 
 ## <a name="activate-a-role"></a>Rol etkinleştirme
 
-Bir Azure AD rolünü varsaymak istediğinizde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
+Bir Azure AD rolünü varsaymak istediğinizde, **rollerimi** Privileged Identity Management açarak etkinleştirme isteyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın. Privileged Identity Management kutucuğunu panonuza ekleme hakkında daha fazla bilgi için bkz. [Privileged Identity Management kullanmaya başlama](pim-getting-started.md).
 
@@ -56,7 +56,7 @@ Bir Azure AD rolünü varsaymak istediğinizde, Privileged Identity Management '
 
     ![Azure AD rolleri-uygun rollerim listesi](./media/pim-how-to-activate-role/activate-link.png)
 
-1. Etkinleştir bölmesini açmak için **Etkinleştir** ' i seçin.
+1. Etkinleştir sayfasını açmak için **Etkinleştir** ' i seçin.
 
     ![Azure AD rolleri-etkinleştirme sayfası süre ve kapsam içerir](./media/pim-how-to-activate-role/activate-page.png)
 
@@ -76,29 +76,9 @@ Bir Azure AD rolünü varsaymak istediğinizde, Privileged Identity Management '
 
 1. **Etkinleştir**' i seçin.
 
-    Rol onay gerektirmiyorsa, etkinleştirilir ve etkin roller listesine eklenir. Rolünü kullanmak istiyorsanız sonraki bölümdeki adımları izleyin.
-
-    ![Kapsam, başlangıç zamanı, süre ve nedenle etkinleştirme bölmesi tamamlandı](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
-
     Rol etkinleştirme için [onay gerektiriyorsa](pim-resource-roles-approval-workflow.md) , tarayıcınızın sağ üst köşesinde, isteğin onay beklendiğini bildiren bir bildirim görüntülenir.
 
     ![Etkinleştirme isteği onay bildirimi bekliyor](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Etkinleştirdikten hemen sonra bir rol kullan
-
-Etkinleştirdikten sonra herhangi bir gecikme olması durumunda, Azure AD rollerinizi hemen kullanmaya başladıktan sonra bu adımları izleyin.
-
-1. Azure AD Privileged Identity Management açın.
-
-1. Uygun Azure AD rollerinizin ve Azure Kaynak rollerinin bir listesini görmek için **rollerimi** seçin.
-
-1. **Azure AD rolleri**' ni seçin.
-
-1. **Etkin roller** sekmesini seçin.
-
-1. Rol etkin olduktan sonra portalın oturumunu kapatın ve yeniden oturum açın.
-
-    Rol artık kullanılabilir olmalıdır.
 
 ## <a name="view-the-status-of-your-requests"></a>İsteklerinizin durumunu görüntüleyin
 
@@ -134,8 +114,6 @@ Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme 
 
 1. Azure portalında oturumunuzu kapatın ve sonra yeniden oturum açın.
 
-    Bir Azure AD rolünü etkinleştirdiğinizde, etkinleştirmesinin aşamalarını görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Oturumu kapatmak için bu bağlantıyı kullanabilirsiniz. Bu, etkinleştirme gecikmesi için çoğu durumu çöztirecek.
-
 1. Privileged Identity Management, rolün üyesi olarak listelendiğinizi doğrulayın.
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
@@ -144,7 +122,7 @@ Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme 
 
 Bir Azure AD rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın. Privileged Identity Management kutucuğunu panonuza ekleme hakkında daha fazla bilgi için bkz. [Privileged Identity Management kullanmaya başlama](pim-getting-started.md).
 

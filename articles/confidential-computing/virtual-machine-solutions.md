@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773143"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985435"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>Adanmış ana bilgisayar gereksinimleri
+Bir **Standard_DC8_v2** sanal makine boyutunu DCSV2 serisi VM ailesinden dağıtmak, tam Konağı kaplayacaktır ve diğer kiracılar veya aboneliklerle paylaşılmaz. Bu VM SKU 'SU ailesi, genellikle adanmış bir ana bilgisayar hizmetine sahip olunarak karşılanacak uyumluluk ve güvenlik mevzuatı gereksinimlerini karşılamak için ihtiyacınız olabilecek yalıtımı sağlar. **Standard_DC8_v2** SKU seçtiğinizde, fiziksel ana bilgisayar sunucusu yalnızca sanal makinenize EPC belleği dahil tüm kullanılabilir donanım kaynaklarını ayırır. Lütfen bu işlevin altyapı tasarımı tarafından mevcut olduğunu ve **Standard_DC8_v2** tüm özelliklerinin desteklendiğini unutmayın. Bu dağıtım, diğer Azure VM aileleri tarafından sunulan [Azure ayrılmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) hizmeti ile aynı değildir.
+
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 

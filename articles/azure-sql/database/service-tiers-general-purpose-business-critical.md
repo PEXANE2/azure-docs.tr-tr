@@ -3,8 +3,8 @@ title: Genel amaçlı ve iş açısından kritik hizmet katmanları
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği tarafından kullanılan sanal çekirdek tabanlı satın alma modelindeki genel amaçlı ve iş açısından kritik hizmet katmanları ele alınmaktadır.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 6b56d96a9684b2da3889219d4a5e13302e7e22e3
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 37dd6881876df010b548a8bb48ca88bb72dab764
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343906"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986612"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek hizmeti katmanları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,28 +37,28 @@ Bu makalede, sanal çekirdek tabanlı satın alma modelindeki genel amaçlı ve 
 
 Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasındaki temel farklılıklar açıklanmaktadır. Hizmet katmanı özelliklerinin SQL veritabanı ve SQL yönetilen örneği 'nde farklı olabileceğini unutmayın.
 
-| | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
+|-| Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** | |  Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar. | Birçok iş yükü. Depolama boyutunu 100 TB 'a kadar otomatik ölçeklendirme, sıvı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme. | Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türünde kullanılabilir:** ||SQL veritabanı/SQL yönetilen örneği | Tek Azure SQL veritabanı | SQL veritabanı/SQL yönetilen örneği |
 | **İşlem boyutu**| SQL Veritabanı | 1-80 sanal çekirdek | 1-80 sanal çekirdek | 1-80 sanal çekirdek |
-| | SQL Yönetilen Örnek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
-| | SQL yönetilen örnek havuzları | 2, 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | Yok |
+| | SQL Yönetilen Örnek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | YOK | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
+| | SQL yönetilen örnek havuzları | 2, 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | YOK | YOK |
 | **Depolama türü** | Tümü | Premium uzak depolama (örnek başına) | Yerel SSD Önbelleği (örnek başına) ile birlikte bağlanmış depolama | Süper hızlı yerel SSD depolaması (örnek başına) |
 | **Veritabanı boyutu** | SQL Veritabanı | 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
-| | SQL Yönetilen Örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
+| | SQL Yönetilen Örnek  | 32 GB – 8 TB | YOK | 32 GB – 4 TB |
 | **Depolama boyutu** | SQL Veritabanı | 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
-| | SQL Yönetilen Örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
+| | SQL Yönetilen Örnek  | 32 GB – 8 TB | YOK | 32 GB – 4 TB |
 | **TempDB boyutu** | SQL Veritabanı | [vCore başına 32 GB](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | [vCore başına 32 GB](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) | [vCore başına 32 GB](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | SQL Yönetilen Örnek  | [vCore başına 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | Yok | En fazla 4 TB- [sınırlı depolama boyutuna göre](../managed-instance/resource-limits.md#service-tier-characteristics) |
+| | SQL Yönetilen Örnek  | [vCore başına 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | YOK | En fazla 4 TB- [sınırlı depolama boyutuna göre](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **Günlüğe yazma aktarım hızı** | SQL Veritabanı | [vCore başına 1,875 MB/s (en fazla 30 MB/sn)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [vCore başına 6 MB/s (en fazla 96 MB/sn)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | SQL Yönetilen Örnek | [Sanal çekirdek başına 3 MB/s (en fazla 22 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) | Yok | [sanal çekirdek başına 4 MB/s (en fazla 48 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) |
+| | SQL Yönetilen Örnek | [Sanal çekirdek başına 3 MB/s (en fazla 22 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) | YOK | [sanal çekirdek başına 4 MB/s (en fazla 48 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Kullanılabilirlik**|Tümü| %99,99 |  [bir ikincil çoğaltmayla% 99,95, daha fazla çoğaltmayla% 99,99](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | %99,99 <br/> [bölge yedekli tek veritabanı ile% 99,995](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Yedeklemeler**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün)| RA-GRS, 7 gün, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
-|**Bellek içi OLTP** | | Yok | Yok | Kullanılabilir |
+|**Bellek içi OLTP** | | YOK | YOK | Kullanılabilir |
 |**Salt okuma çoğaltmaları**| | 0 yerleşik <br> [Coğrafi çoğaltmayı](active-geo-replication-overview.md) kullanarak 0-4 | 0-4 yerleşik | 1 yerleşik, fiyata dahildir <br> [Coğrafi çoğaltmayı](active-geo-replication-overview.md) kullanarak 0-4 |
 |**Fiyatlandırma/faturalandırma** | SQL Veritabanı | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. | [her çoğaltma Için sanal çekirdek ve kullanılan depolama alanı](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS henüz ücretlendirilmedi. | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. |
-|| SQL Yönetilen Örnek | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirimedi| Yok | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirilmez.| 
+|| SQL Yönetilen Örnek | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirimedi| YOK | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirilmez.| 
 |**İndirim modelleri**| | [Ayrılmış örnekler](reserved-capacity-overview.md)<br/>[Azure hibrit avantajı](../azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Azure hibrit avantajı](../azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Ayrılmış örnekler](reserved-capacity-overview.md)<br/>[Azure hibrit avantajı](../azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri|
 
 Daha fazla bilgi için [Azure SQL veritabanı (vCore)](resource-limits-vcore-single-databases.md), [tek Azure SQL veritabanı (DTU)](resource-limits-dtu-single-databases.md), [havuza alınmış Azure SQL veritabanı (DTU)](resource-limits-dtu-single-databases.md)ve [Azure SQL yönetilen örnek](../managed-instance/resource-limits.md) sayfalarında hizmet katmanları arasındaki ayrıntılı farklar bölümüne bakın.

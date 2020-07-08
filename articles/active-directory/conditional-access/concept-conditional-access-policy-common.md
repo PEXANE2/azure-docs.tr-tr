@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295300"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024392"
 ---
 # <a name="common-conditional-access-policies"></a>Sık kullanılan Koşullu Erişim İlkeleri
 
-[Güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) , bazı bazı kuruluşlar için çok daha fazla esneklik sağlar. Örneğin, birçok, çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkelerinden acil erişim veya kesme camı yönetim hesapları gibi belirli hesapları dışlayabilir. Bu kuruluşlar için, bu makalede başvurulan ortak ilkeler kullanılabilir.
+[Güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) , bazı bazı kuruluşlar için çok daha fazla esneklik sağlar. Örneğin, birçok kuruluşun, çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkelerinden acil erişim veya kesme camı yönetim hesapları gibi belirli hesapları hariç tutma yeteneğine ihtiyacı vardır. Bu kuruluşlar için, bu makalede başvurulan ortak ilkeler kullanılabilir.
 
 ![Azure portal koşullu erişim ilkeleri](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
@@ -38,11 +38,12 @@ Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla b
 * [Azure yönetimi için MFA gerektir](howto-conditional-access-policy-azure-management.md)\*
 * [Tüm kullanıcılar için MFA gerektir](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Birlikte yapılandırıldığında bu dört ilke, [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit edecektir.
+\*Bu dört ilke birlikte yapılandırıldığında, [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit edin.
 
 ## <a name="additional-policies"></a>Ek ilkeler
 
-* [Risk Tabanlı Koşullu Erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk.md)
+* [Oturum açma riski tabanlı koşullu erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk.md)
+* [Kullanıcı riskli tabanlı koşullu erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk-user.md)
 * [MFA kaydı için güvenilen konum gerektirme](howto-conditional-access-policy-registration.md)
 * [Konuma göre erişimi engelle](howto-conditional-access-policy-location.md)
 * [Uyumlu cihaz gerektirme](howto-conditional-access-policy-compliant-device.md)

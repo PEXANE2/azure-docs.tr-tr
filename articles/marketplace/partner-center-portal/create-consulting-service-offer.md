@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213744"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984279"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
-Bu makalede, [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Market](https://azuremarketplace.microsoft.com/)'e bir danışmanlık hizmeti teklifinin nasıl yayımlanacağı açıklanır. AppSource 'ta Microsoft [Dynamics 365](https://dynamics.microsoft.com/) ve Power platform temelinde danışmanlık hizmeti tekliflerini listeleyin. Azure Marketi 'ndeki Microsoft Azure temel alan danışmanlık hizmeti tekliflerini listeleyin. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
+Bu makalede, [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Market](https://azuremarketplace.microsoft.com/)'e bir danışmanlık hizmeti teklifinin nasıl yayımlanacağı açıklanır. AppSource 'ta Microsoft [Dynamics 365](https://dynamics.microsoft.com/) ve Power platform temelinde danışmanlık hizmeti tekliflerini listeleyin. Azure Marketi 'ndeki Microsoft Azure temel alan danışmanlık hizmeti tekliflerini listeleyin. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
-Teklifinizi oluşturmadan önce, [danışmanlık hizmeti ön koşulları](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)' nda önkoşulları gözden geçirin.
+Teklifinizi oluşturmadan önce, [danışmanlık hizmeti ön koşulları](consulting-service-prerequisites.md)' nda önkoşulları gözden geçirin.
 
 ## <a name="publishing-benefits"></a>Yayımlama avantajları
 
@@ -63,12 +63,12 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken bir Müşteri Iliş
 
 1. Müşteri adaylarını nereden göndermemizi istediğinizi belirtmek için **Bağlan** ' ı seçin. İş Ortağı Merkezi aşağıdaki sistemleri destekler:
 
-    - Müşteri katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - Müşteri katılımı için [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md)
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) veya [https uç noktasını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın, ardından verileri CRM sisteminize dışarı aktarın.
+    > CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](commercial-marketplace-lead-management-instructions-azure-table.md) veya [https uç noktasını](commercial-marketplace-lead-management-instructions-https.md) kullanın, ardından verileri CRM sisteminize dışarı aktarın.
 
 2. Teklifinizi Iş Ortağı Merkezi 'nde yayımlarken lider hedefine bağlayın.
 3. Müşteri adayı hedefi bağlantısının düzgün şekilde yapılandırıldığını doğrulayın. Iş Ortağı Merkezi 'nde yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında satın almayı deneyerek lider bağlantınızı da test edebilirsiniz.
@@ -76,9 +76,9 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken bir Müşteri Iliş
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
+- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
@@ -96,10 +96,19 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - **Kavram kanıtı**: bir çözümün müşteri gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
     - **Workshop**: bir müşterinin şirket içinde etkileşimli bir katılım yürütülür. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
 
-3. **Azure**'ın birincil bir ürününü seçtiyseniz en fazla üç **çözüm alanı**seçin. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure 'u seçmediyseniz, bu adımı atlayın.
-4. Azure _dışında bir birincil ürün seçtiyseniz_ , en fazla üç **uygulanabilir ürünü**seçin. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için bkz. [Microsoft AppSource danışmanlık hizmeti listeleme yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-5. Teklifinizin uygulanacağı en fazla altı **sektör** seçin. Bu, müşterilerin teklifinizi bulmasını kolaylaştırır.
-6. Şirketinizin danışmanlık hizmeti teklifi listesinde görüntülenmek üzere kazanıldığını en fazla üç **uzmanlık** ekleyin. Azure Expert MSPs ve Azure ağı MSPs hariç en az bir yetenek gereklidir.
+3. **Azure** 'u birincil ürün olarak seçtiyseniz en fazla üç **çözüm alanını**seçin. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure 'u seçmediyseniz, bu adımı atlayın.
+
+    | Çözüm alanı | | | |
+    | --- | --- | --- | --- |
+    | Analiz | Backup | DevOps | Geçiş |
+    | Uygulama modernleştirme | Büyük Veri | Olağanüstü Durum Kurtarma | Ağ |
+    | Arşiv | Veri platformu | Kimlik | Güvenlik |
+    | Yapay Zeka ve Makine Öğrenmesi | Veri merkezi yönetimi | Nesnelerin İnterneti | Depolama |
+
+1. **Azure** 'u birincil ürün olarak seçtiyseniz, en fazla altı **sektör**seçebilirsiniz. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)sektörlerin tam listesine bakın. Azure 'u seçmediyseniz, bu adımı atlayın.
+1. Azure *dışında bir birincil ürün seçtiyseniz* , en fazla üç **uygulanabilir ürünü**seçin. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için bkz. [Microsoft AppSource danışmanlık hizmeti listeleme yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+1. Azure *dışında bir birincil ürün seçtiyseniz* , her bir sektör için en fazla iki **sektör** ve iki **ifade** seçme seçeneğiniz vardır. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)sektörlerin ve verlerin tam listesine bakın.
+1. Şirketinizin danışmanlık hizmeti teklifi listesinde görüntülenmek üzere kazanıldığını en fazla üç **uzmanlık** ekleyin. Azure Expert MSPs ve Azure ağı MSPs hariç en az bir yetenek gereklidir.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -230,8 +239,8 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra, teklifinizi gözden ge
 4. Hazırsanız **Gönder**' i seçin.
 5. **Teklifin genel bakış** sayfası, teklifinizin hangi yayımlama aşamasına ait olduğunu gösterir.
 
-Teklifinizin her yayımlama aşamasında ne kadar süreyle beklendiğini öğrenmek için bkz. [ticari Market teklifinizin yayımlama durumunu denetleme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status).
+Teklifinizin her yayımlama aşamasında ne kadar süreyle beklendiğini öğrenmek için bkz. [ticari Market teklifinizin yayımlama durumunu denetleme](publishing-status.md).
 
 ## <a name="update-your-existing-consulting-service-offers"></a>Mevcut danışmanlık hizmeti tekliflerinizi güncelleştirin
 
-- [Ticari Market 'te mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Ticari Market 'te mevcut bir teklifi güncelleştirme](update-existing-offer.md)

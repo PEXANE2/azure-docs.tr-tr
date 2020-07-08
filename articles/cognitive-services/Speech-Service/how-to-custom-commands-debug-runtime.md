@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307953"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023032"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Özel bir komut uygulaması çalıştırırken hata ayıklama hataları
 
@@ -27,9 +27,8 @@ Bu makalede, özel komutlar uygulaması çalıştırılırken hata ayıkladığ�
 
 | Hata kodu | Ayrıntılar |
 | ------- | -------- |
-| 401 | AuthenticationFailure: WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu |
-| 1000 | Maksimum WebSocket bağlantısı boşta kalma süresi aşıldı (> 300.000 MS) |
-| 1002 | Sunucu, ' 101 ' durum kodu beklenirken ' 404 ' durum kodunu döndürdü. |
+| [401](#error-401) | AuthenticationFailure: WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu |
+| [1002](#error-1002)] | Sunucu, ' 101 ' durum kodu beklenirken ' 404 ' durum kodunu döndürdü. |
 
 ### <a name="error-401"></a>Hata 401
 - İstemci uygulamasında belirtilen bölge, özel komut uygulamasının bölgesiyle eşleşmiyor
@@ -37,9 +36,6 @@ Bu makalede, özel komutlar uygulaması çalıştırılırken hata ayıkladığ�
 - Konuşma kaynak anahtarı geçersiz
     
     Konuşma kaynak anahtarınızın doğru olduğundan emin olun.
-
-### <a name="error-1000"></a>Hata 1000 
-Boştaki bağlantılar, 5 dakika sonra sunucu tarafından sonlandırılır. Yeniden bağlanmayı deneyin.
 
 ### <a name="error-1002"></a>Hata 1002 
 - Özel komut uygulamanız yayımlanmadı
@@ -49,10 +45,12 @@ Boştaki bağlantılar, 5 dakika sonra sunucu tarafından sonlandırılır. Yeni
 - Özel komut ApplicationId 'niz geçerli değil
 
     Özel komut uygulama KIMLIĞINIZIN doğru olduğundan emin olun.
-
-- Konuşma kaynağınız dışında özel bir komut uygulamasına erişmeye çalışıyorsunuz
+ konuşma kaynağınızın dışında özel komut uygulaması
 
     Özel komut uygulamasının konuşma kaynağınızın altında oluşturulduğundan emin olun.
+
+Bağlantı sorunlarını giderme hakkında daha fazla bilgi için, referans [Windows Voice Yardımcısı Istemci sorunlarını giderme](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
+
 
 ## <a name="dialog-is-canceled"></a>İletişim kutusu iptal edildi
 
@@ -70,14 +68,14 @@ CancelledDialog olayı, aşağıda listelendiği gibi iptal kodu ve açıklamala
 
 | İptal kodu | İptal açıklaması |
 | ------- | --------------- | ----------- |
-| Maxturnthresholdulaşıldı | İzin verilen en fazla sayıdaki dönüşden sonra ilerleme yapılmadı |
-| Recognizerquotageçildi | Tanıyıcı kullanım kotası aşıldı |
-| RecognizerConnectionFailed | Tanıyıcıya bağlantı başarısız oldu |
-| Recognizeryetkilendirilmemiş | Bu uygulamaya geçerli abonelikle erişilemiyor |
-| Recognizerınputexceededallodilimlerin uzunluğu | Giriş, tanıyıcı için desteklenen uzunluk üst sınırını aşıyor |
-| RecognizerNotFound | Tanıyıcı bulunamadı |
-| Recognizerınvalidquery | Tanıyıcı için geçersiz sorgu |
-| Recognizerhatası | Tanıyıcı bir hata döndürüyor |
+| [Maxturnthresholdulaşıldı](#no-progress-was-made-after-the-max-number-of-turns-allowed) | İzin verilen en fazla sayıdaki dönüşden sonra ilerleme yapılmadı |
+| [Recognizerquotageçildi](#recognizer-usage-quota-exceeded) | Tanıyıcı kullanım kotası aşıldı |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | Tanıyıcıya bağlantı başarısız oldu |
+| [Recognizeryetkilendirilmemiş](#this-application-cannot-be-accessed-with-the-current-subscription) | Bu uygulamaya geçerli abonelikle erişilemiyor |
+| [Recognizerınputexceededallodilimlerin uzunluğu](#input-exceeds-the-maximum-supported-length) | Giriş, tanıyıcı için desteklenen uzunluk üst sınırını aşıyor |
+| [RecognizerNotFound](#recognizer-not-found) | Tanıyıcı bulunamadı |
+| [Recognizerınvalidquery](#invalid-query-for-the-recognizer) | Tanıyıcı için geçersiz sorgu |
+| [Recognizerhatası](#recognizer-return-an-error) | Tanıyıcı bir hata döndürüyor |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>İzin verilen en fazla sayıdaki dönüşden sonra ilerleme yapılmadı
 Gerekli bir yuva, belirli sayıda dönüşden sonra başarıyla güncellenmediğinde iletişim kutusu iptal edilir. Derleme en fazla sayı 3 ' dir.

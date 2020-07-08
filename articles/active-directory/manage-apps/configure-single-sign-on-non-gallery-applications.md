@@ -12,12 +12,12 @@ ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1604e132cb77fbb2a2a1033a1f23f70dd3e6b8b9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355973"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024240"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri uygulaması olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -42,7 +42,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
 
 3. **Yönet** bölümünde **Çoklu oturum açma**' yı seçin. 
 
-   - **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar olduğunu unutmayın. Örneğin, uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği **uygulama kayıt** portalında yapılandırılır ve **Kurumsal uygulamalar**altında gezinmede gösterilmez. Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
+   - **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar olduğunu unutmayın. Örneğin, uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde ayarlanır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar**altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi için bkz. ( https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) . SSO standartları hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) . (. Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 
 4. **SAML**'yi seçin. **SAML Ile çoklu oturum açmayı ayarlama sayfası açılır** .
 
@@ -52,7 +52,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
 
 1. Aşağıdaki ayarları girin. Uygulama satıcısından değerleri almalısınız. Değerleri el ile girebilir veya alanların değerini ayıklamak için bir meta veri dosyası yükleyebilirsiniz.
 
-    | Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Description |
+    | Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
     |:--|:--|:--|:--|
     | **Tanımlayıcı (Varlık Kimliği)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https:// <subdomain> . contoso.com ' *Bu değeri, uygulama tarafından gönderilen **Authisteyner** (SAML isteği) içinde **veren** öğesi olarak bulabilirsiniz.* |
     | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
@@ -78,7 +78,7 @@ Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı ben
 
 5. Talep eklemek için sayfanın en üstünde **yeni talep Ekle** ' yi seçin. **Adı** girin ve uygun kaynağı seçin. **Öznitelik** kaynağını seçerseniz, kullanmak istediğiniz **kaynak özniteliğini** seçmeniz gerekir. **Çeviri** kaynağını seçerseniz, kullanmak istediğiniz **dönüştürme** ve **parametre 1** ' i seçmeniz gerekir. Ayrıntılar için bkz. [uygulamaya özgü talepler ekleme](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). İşiniz bittiğinde değişiklikleri kaydedin. 
 
-6. **Kaydet**’i seçin. Yeni talep tabloda görüntülenir.
+6. **Kaydet**'i seçin. Yeni talep tabloda görüntülenir.
 
    > [!NOTE]
    > SAML belirtecini Azure AD 'den uygulamanıza özelleştirmenin ek yolları için aşağıdaki kaynaklara bakın.

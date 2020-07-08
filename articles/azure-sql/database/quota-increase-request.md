@@ -2,18 +2,19 @@
 title: Kota artışı iste
 description: Bu sayfa, Azure SQL veritabanı ve Azure SQL yönetilen örneği kotalarını artırmak için bir destek isteği oluşturmayı açıklar.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: service
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: bded7c33493c63a565ebab2dda2dccd320c6aecb
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456714"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987295"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için istek kotası artıyor
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

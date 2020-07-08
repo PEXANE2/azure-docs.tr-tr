@@ -3,19 +3,19 @@ title: Sanal çekirdek satın alma modeline genel bakış
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Sanal çekirdek satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak ölçeklendirmenize, şirket içi performansı eşleşmenize ve Azure SQL veritabanı ve Azure SQL yönetilen örneği için fiyata iyileştirmenize olanak tanır.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255050"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985559"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği tarafından kullanılan s
 
 Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş Açısından Kritik ve Hyperscale içerir. Hizmet katmanı genellikle depolama mimarisini, boşluk ve g/ç sınırlarını ve kullanılabilirlik ve olağanüstü durum kurtarma ile ilgili iş sürekliliği seçeneklerini tanımlar.
 
-||**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
+|-|**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
 |---|---|---|---|
 |En iyi kullanım alanı:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
 |Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**SQL yönetilen örneği**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |

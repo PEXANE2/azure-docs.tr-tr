@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE 'in, oturum açma bilgileri ve Kullanıcı hesapları kullanarak erişim için kullanıcıların kimliğini nasıl doğrulayacağını öğrenin. Ayrıca, Kullanıcı Yetkilendirme ve kullanıcılara işlem ve sorgu verileri sağlamak için veritabanı rolleri ve açık izinler verme hakkında bilgi edinin.
 keywords: sql veritabanı güvenliği,veritabanı güvenliği yönetimi,oturum açma güvenliği,veritabanı güvenliği,veritabanı erişimi
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298473"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986292"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 > [!IMPORTANT]
 > Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE ' deki veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanlarını yöneten [sunucuya](logical-servers.md) başvurmaktadır.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 [**Kimlik doğrulama**](security-overview.md#authentication) , kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Kullanıcı bir kullanıcı hesabı kullanarak bir veritabanına bağlanır.
 Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıcı hesabı ve kimlik doğrulama bilgileri sağlarlar. Kullanıcının kimliği, aşağıdaki iki kimlik doğrulama yönteminden birini kullanarak doğrulanır:

@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD kimlik doğrulaması
           href: concepts-azure-ad-authentication.md
+        - name: Altyapıyı çift şifreleme
+          href: concepts-infrastructure-double-encryption.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: İş sürekliliği
@@ -276,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: Veri şifreleme doğrulaması
           href: howto-data-encryption-validation.md
+    - name: Altyapıyı çift şifreleme
+      items:
+        - name: Altyapı çift şifrelemeyi yapılandırma
+          href: howto-double-encryption.md
     - name: Azure AD tümleştirmesi
       items:
         - name: Azure AD tümleştirmesini yapılandırma

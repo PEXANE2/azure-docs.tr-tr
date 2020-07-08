@@ -2,8 +2,8 @@
 title: Bellek içi teknolojiler
 description: Bellek içi teknolojiler, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde işlem ve analiz iş yüklerinin performansını önemli ölçüde artırır.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560564"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985199"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ SQL Server bellek içi hakkında daha fazla bilgi için bkz.:
 - [Columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - [Gerçek zamanlı işlemsel analiz](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics) olarak da bilinen karma işlem/analitik Işleme (htap)
 
-## <a name="in-memory-oltp"></a>Bellek içi OLTP
+## <a name="in-memory-oltp"></a>Bellek İçi OLTP
 
 Bellek içi OLTP teknolojisi, tüm verileri bellekte tutarak son derece hızlı veri erişim işlemleri sağlar. Ayrıca OLTP iş yükünün performansını artırmak için özel dizinleri, sorguların yerel derlemesini ve manuca veri erişimini de kullanır. Bellek Içi OLTP verilerinizi düzenlemenin iki yolu vardır:
 
@@ -212,6 +212,6 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ### <a name="tools"></a>Araçlar
 
-- [Azure portal](https://portal.azure.com/)
+- [Azure portalındaki](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Veri Araçları (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

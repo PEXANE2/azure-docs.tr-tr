@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1349ec3fc0fe9b5db60af883558a9d0aed5ee612
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392191"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023593"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
@@ -41,7 +41,7 @@ Cosmos DB hesap için iki ana anahtara ek olarak, salt okunurdur iki anahtar var
 
 Birincil, ikincil, salt okuma ve okuma/yazma ana anahtarları Azure portal kullanılarak alınabilir ve yeniden oluşturulabilir. Yönergeler için bkz. [erişim anahtarlarını görüntüleme, kopyalama ve yeniden](manage-with-cli.md#regenerate-account-key)oluşturma.
 
-![Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)":::
 
 ### <a name="key-rotation"></a>Anahtar döndürme<a id="key-rotation"></a>
 

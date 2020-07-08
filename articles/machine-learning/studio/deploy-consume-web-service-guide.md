@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ecc38633d8081f9060f2c1877f129378fac68f6e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696272"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985542"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri: dağıtım ve tüketim
 
@@ -53,7 +53,9 @@ Cmdlet 'lerini kullanmak için öncelikle [Connect-AzAccount](/powershell/module
 
 Tahmine dayalı denemenize dışarı aktarmak için [Bu örnek kodu](https://github.com/ritwik20/AzureML-WebServices)kullanın. Koddan. exe dosyasını oluşturduktan sonra şunu yazabilirsiniz:
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 Uygulama çalıştırıldığında bir Web hizmeti JSON şablonu oluşturulur. Bir Web hizmetini dağıtmak üzere şablonu kullanmak için aşağıdaki bilgileri eklemeniz gerekir:
 
@@ -68,13 +70,15 @@ Bunları, *Machinelearningworkspace* düğümü ile aynı düzeydeki *Özellikle
 
 İşte bir örnek:
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 Ek ayrıntılar için aşağıdaki makalelere ve örnek koda bakın:
 
