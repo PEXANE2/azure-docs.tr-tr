@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159429"
 ---
-`inferenceconfig.json` Belgedeki girişler, [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametreleriyle eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+Belgedeki girişler, `inferenceconfig.json` [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametreleriyle eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
@@ -74,7 +74,7 @@ Ayrıca, ayrılmış CLı parametrelerinde mevcut bir Azure Machine Learning [or
 }
 ```
 
-Aşağıdaki komut, önceki çıkarım yapılandırma dosyasını (Myınenceconfig. JSON adlı) kullanarak bir modelin nasıl dağıtılacağını göstermektedir. 
+Aşağıdaki komut, önceki çıkarım yapılandırma dosyasını (myInferenceConfig.js) kullanarak bir modelin nasıl dağıtılacağını göstermektedir. 
 
 Ayrıca, var olan bir Azure Machine Learning [ortamının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) en son sürümünü kullanır (yalnızca AzureML-minimal olarak adlandırılır).
 

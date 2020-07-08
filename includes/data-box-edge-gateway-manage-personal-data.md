@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67189012"
 ---
 - **Sipariş ayrıntıları**. Bir sipariş oluşturulduğunda, kullanıcının sevkiyat adresi, e-posta adresi ve iletişim bilgileri Azure portal depolanır. Kaydedilen bilgiler:
@@ -18,7 +18,7 @@ ms.locfileid: "67189012"
   - Açık adres
   - Şehir
   - Posta kodu/posta kodu
-  - Eyalet
+  - Durum
   - Ülke/Eyalet/bölge
   - Kargo takip numarası
 

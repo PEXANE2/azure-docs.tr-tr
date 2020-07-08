@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590737"
 ---
 Ayrılmış kapasiteye sahip Azure Disk Depolama kullanımınıza kaydedin. Azure ayrılmış sanal makine örnekleriyle birleştirilmiş Azure Disk Depolama ayırmalar, toplam sanal makine (VM) maliyetlerinizi düşürmenizi sağlar. Rezervasyon indirimi, seçilen ayırma kapsamındaki eşleşen disklere otomatik olarak uygulanır. Bu otomatik uygulama nedeniyle, indirimleri almak için yönetilen diske bir ayırma atamanız gerekmez.
@@ -71,10 +71,10 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
    |**Kapsam**   |  Ayırma ile ilişkili faturalandırma avantajını kaç tane abonelik kullanabilir? Bu değer Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını belirtir. <br/><br/> **Paylaşılan**' i seçerseniz, rezervasyon indirimi, faturalandırma bağlamınızın içindeki her abonelikte Azure depolama kapasitesine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip tüm bireysel abonelikleri içerir.  <br/><br/>  **Tek bir abonelik**seçerseniz, rezervasyon indirimi seçili abonelikte Azure depolama kapasitesine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, ayırma indirimi seçili abonelikte ve bu aboneliğin seçili kaynak grubunda Azure depolama kapasitesine uygulanır. <br/><br/> Ayırmayı satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
    |**Abonelik**  | Azure depolama ayırması için ödeme yapmak üzere kullandığınız abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır:<br/><ul><li> Kurumsal Anlaşma (teklif numaraları MS-AZR-0017P ve MS-AZR-0148P). Kurumsal bir abonelik için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.</li><br/><li>Kullandıkça Öde tarifesine sahip bireysel abonelik (MS-AZR-0003P ve MS-AZR-0023P). Kullandıkça Öde tarifesine sahip tek bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.</li></ul>    |
    | **Disklerinden** | Oluşturmak istediğiniz SKU. |
-   | **Bölge** | Ayırmanın etkin olduğu bölge. |
+   | **Geli** | Ayırmanın etkin olduğu bölge. |
    | **Faturalandırma sıklığı** | Hesap rezervasyon için ne sıklıkta faturalandırılır. Seçenekler **ayda** ve **önünde**bulunur. |
 
-    ![Satın almak istediğiniz ürünü seçme bölmesi. png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![purchase.png istediğiniz ürünü seçme bölmesi](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
 1. Rezervasyonunuzun değerlerini belirttikten sonra Azure portal maliyeti görüntüler. Portal Ayrıca Kullandıkça Öde faturalandırmasına göre indirim yüzdesini gösterir. **Satın alma rezervasyonları** bölmesine devam etmek için **İleri ' yi** seçin.
 
@@ -88,7 +88,7 @@ Bir ayırma satın aldıktan sonra, rezervasyon koşullarına uyan mevcut Disk D
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalar dahilinde rezervasyonları iptal edebilir, Exchange veya para iadesi yapabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Belirli sınırlamalar dahilinde rezervasyonları iptal edebilir, Exchange veya para iadesi yapabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## <a name="expiration-of-a-reservation"></a>Bir ayırmanın süre sonu
 
@@ -102,5 +102,5 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure ayırmaları nelerdir?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Rezervasyon indiriminizin Azure Disk Depolama'ya nasıl uygulandığını anlama](../articles/cost-management-billing/reservations/understand-disk-reservations.md)

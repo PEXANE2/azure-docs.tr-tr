@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673555"
 ---
 *Önbelleği hazırlama*  
@@ -33,7 +33,7 @@ SANAL makinede [Iometer aracını indirin](https://sourceforge.net/projects/iome
 
 #### <a name="access-specifications"></a>Erişim belirtimleri
 
-Özellikler, istek GÇ boyutu,% okuma/yazma,% rastgele/sıralı, Iometer içindeki "erişim belirtimleri" sekmesi kullanılarak yapılandırılır. Aşağıda açıklanan senaryoların her biri için bir erişim belirtimi oluşturun. Erişim belirtimlerini oluşturun ve – Rasgeleyazmaları\_8k, rastgele okuma\_8k gibi uygun bir adla "Kaydet" i oluşturun. Test senaryosunu çalıştırırken ilgili belirtimi seçin.
+Özellikler, istek GÇ boyutu,% okuma/yazma,% rastgele/sıralı, Iometer içindeki "erişim belirtimleri" sekmesi kullanılarak yapılandırılır. Aşağıda açıklanan senaryoların her biri için bir erişim belirtimi oluşturun. Erişim belirtimlerini oluşturun ve – Rasgeleyazmaları \_ 8k, rastgele okuma 8k gibi uygun bir adla "Kaydet" i oluşturun \_ . Test senaryosunu çalıştırırken ilgili belirtimi seçin.
 
 En büyük yazma ıOPS senaryosuna yönelik erişim belirtimlerine bir örnek aşağıda verilmiştir.  
     ![Maksimum yazma ıOPS için erişim belirtimleri örneği](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
@@ -44,8 +44,8 @@ Maksimum IOPS 'yi göstermek için, daha küçük bir istek boyutu kullanın. 8K
 
 | Erişim belirtimi | İstek boyutu | Fi | Okuyamaz |
 | --- | --- | --- | --- |
-| Rastgele yazma\_8k |8K |100 |0 |
-| Rastgele okuma\_8k |8K |100 |100 |
+| Rastgele yazma \_ 8k |8K |100 |0 |
+| Rastgele okuma \_ 8k |8K |100 |100 |
 
 #### <a name="maximum-throughput-test-specifications"></a>En yüksek işleme testi belirtimleri
 
@@ -53,8 +53,8 @@ En yüksek aktarım hızını göstermek için daha büyük istek boyutunu kulla
 
 | Erişim belirtimi | İstek boyutu | Fi | Okuyamaz |
 | --- | --- | --- | --- |
-| Rastgele yazar\_64K |64 K |100 |0 |
-| Rastgele okuma\_64K |64 K |100 |100 |
+| Rastgele yazar \_ 64K |64 K |100 |0 |
+| Rastgele okuma \_ 64K |64 K |100 |100 |
 
 #### <a name="run-the-iometer-test"></a>Iometer testini çalıştırma
 
@@ -62,33 +62,33 @@ En yüksek aktarım hızını göstermek için daha büyük istek boyutunu kulla
 
 1. Aşağıda gösterilen değerlerle iki erişim belirtimleri oluşturun,
 
-   | Adı | İstek boyutu | Fi | Okuyamaz |
+   | Name | İstek boyutu | Fi | Okuyamaz |
    | --- | --- | --- | --- |
-   | Rastgele yazar\_1 MB |1 MB |100 |0 |
-   | Rastgele okunan\_1MB |1 MB |100 |100 |
+   | Rastgele yazar \_ 1 MB |1 MB |100 |0 |
+   | Rastgele okunan \_ 1MB |1 MB |100 |100 |
 1. Önbellek diskini başlatmak için aşağıdaki parametrelerle birlikte Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
 
-   | Senaryo | Hedef birim | Adı | Süre |
+   | Senaryo | Hedef birim | Name | Süre |
    | --- | --- | --- | --- |
-   | Önbellek diskini Başlat |CacheReads |Rastgele yazar\_1 MB |2 saat |
+   | Önbellek diskini Başlat |CacheReads |Rastgele yazar \_ 1 MB |2 saat |
 1. Önbellek diskini aşağıdaki parametrelerle birlikte hazırlama için Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
 
-   | Senaryo | Hedef birim | Adı | Süre |
+   | Senaryo | Hedef birim | Name | Süre |
    | --- | --- | --- | --- |
-   | Önbellek diskini ısınma |CacheReads |Rastgele okunan\_1MB |2 saat |
+   | Önbellek diskini ısınma |CacheReads |Rastgele okunan \_ 1MB |2 saat |
 
 Önbellek diski çarpdıktan sonra, aşağıda listelenen test senaryolarına devam edin. Iometer testini çalıştırmak için, **her** bir hedef birim için en az üç çalışan iş parçacığı kullanın. Her çalışan iş parçacığı için, hedef birimi seçin, sıra derinliğini ayarlayın ve ilgili test senaryosunu çalıştırmak için aşağıdaki tabloda gösterildiği gibi kaydedilmiş test belirtimlerinden birini seçin. Tabloda Ayrıca bu testler çalıştırılırken ıOPS ve aktarım hızı için beklenen sonuçlar gösterilmektedir. Tüm senaryolarda, 8 KB küçük GÇ boyutu ve 128 yüksek bir sıra derinliği kullanılır.
 
-| Test Senaryosu | Hedef birim | Adı | Sonuç |
+| Test Senaryosu | Hedef birim | Name | Sonuç |
 | --- | --- | --- | --- |
-| En çok, IOPS 'yi oku |CacheReads |Rastgele yazma\_8k |50.000 ıOPS |
-| En çok, IOPS yaz |Nocacheyazmaları |Rastgele okuma\_8k |64.000 ıOPS |
-| En çok, Birleşik ıOPS |CacheReads |Rastgele yazma\_8k |100.000 ıOPS |
-| Nocacheyazmaları |Rastgele okuma\_8k | &nbsp; | &nbsp; |
-| En çok, Okunan MB/sn |CacheReads |Rastgele yazar\_64K |524 MB/sn |
-| En çok, Yazma MB/sn |Nocacheyazmaları |Rastgele okuma\_64K |524 MB/sn |
-| Birleşik MB/sn |CacheReads |Rastgele yazar\_64K |1000 MB/sn |
-| Nocacheyazmaları |Rastgele okuma\_64K | &nbsp; | &nbsp; |
+| En çok, IOPS 'yi oku |CacheReads |Rastgele yazma \_ 8k |50.000 ıOPS |
+| En çok, IOPS yaz |Nocacheyazmaları |Rastgele okuma \_ 8k |64.000 ıOPS |
+| En çok, Birleşik ıOPS |CacheReads |Rastgele yazma \_ 8k |100.000 ıOPS |
+| Nocacheyazmaları |Rastgele okuma \_ 8k | &nbsp; | &nbsp; |
+| En çok, Okunan MB/sn |CacheReads |Rastgele yazar \_ 64K |524 MB/sn |
+| En çok, Yazma MB/sn |Nocacheyazmaları |Rastgele okuma \_ 64K |524 MB/sn |
+| Birleşik MB/sn |CacheReads |Rastgele yazar \_ 64K |1000 MB/sn |
+| Nocacheyazmaları |Rastgele okuma \_ 64K | &nbsp; | &nbsp; |
 
 Aşağıda Birleşik ıOPS ve aktarım hızı senaryoları için Iometer test sonuçlarının ekran görüntüleri verilmiştir.
 
@@ -116,7 +116,7 @@ Disklerde okuma işlemlerini yapmak için yazma işlemlerini ve dört çalışan
 
 #### <a name="maximum-write-iops"></a>Maksimum yazma ıOPS 'si
 
-En yüksek yazma ıOPS 'sini almak için aşağıdaki belirtimlerle iş dosyasını oluşturun. "Fiowrite. ini" olarak adlandırın.
+En yüksek yazma ıOPS 'sini almak için aşağıdaki belirtimlerle iş dosyasını oluşturun. "fiowrite.ini" olarak adlandırın.
 
 ```ini
 [global]
@@ -157,7 +157,7 @@ Test çalışırken, VM ve Premium disklerin teslim aldığı yazma ıOPS sayıs
 
 #### <a name="maximum-read-iops"></a>Maksimum okuma ıOPS 'si
 
-Maksimum okuma ıOPS 'sini almak için aşağıdaki belirtimlerle iş dosyasını oluşturun. "Fioread. ini" olarak adlandırın.
+Maksimum okuma ıOPS 'sini almak için aşağıdaki belirtimlerle iş dosyasını oluşturun. "fioread.ini" olarak adlandırın.
 
 ```ini
 [global]
@@ -198,7 +198,7 @@ Test çalışırken, VM ve Premium disklerin teslim aldığı okuma ıOPS sayıs
 
 #### <a name="maximum-read-and-write-iops"></a>Maksimum okuma ve yazma ıOPS 'si
 
-En yüksek Birleşik okuma ve yazma ıOPS 'yi almak için iş dosyasını aşağıdaki belirtimlerle oluşturun. "Fioreadwrite. ini" olarak adlandırın.
+En yüksek Birleşik okuma ve yazma ıOPS 'yi almak için iş dosyasını aşağıdaki belirtimlerle oluşturun. "fioreadwrite.ini" olarak adlandırın.
 
 ```ini
 [global]

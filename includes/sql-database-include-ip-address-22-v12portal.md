@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188450"
 ---
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki listede **tüm hizmetler**' i seçin.
 
@@ -39,7 +39,7 @@ ms.locfileid: "67188450"
 
     * En düşük değer olan **0** ve yüksek değer ile bitiş değeri **. 255**olmalıdır.
 
-11. **Kaydet**’i seçin.
+11. **Kaydet**'i seçin.
 
 <!-- Image references. -->
 

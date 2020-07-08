@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67534737"
 ---
 1. İşlem sunucusunu çalıştıran makineye Uzak Masaüstü Bağlantısı oluşturun. 
-2. Azure Site Recovery Işlemi sunucu yapılandırma aracını başlatmak için Cspsconfigtool. exe ' yi çalıştırın.
+2. Azure Site Recovery Işlem sunucusu yapılandırma aracı 'nı başlatmak için cspsconfigtool.exe çalıştırın.
     - Araç, işlem sunucusunda ilk kez oturum açtığınızda otomatik olarak başlatılır.
     - Otomatik olarak açılmazsa, masaüstündeki kısayoluna tıklayın.
 
 3. **Yapılandırma sunucusu FQDN 'si veya IP**'de, işlem sunucusunun kaydedileceği yapılandırma sunucusunun adını veya IP adresini belirtin.
 4. **Yapılandırma sunucusu bağlantı noktasında**443 belirtildiğinden emin olun. Bu, yapılandırma sunucusunun istekleri dinlediği bağlantı noktasıdır.
 5. **Bağlantı parolası**' nda, yapılandırma sunucusunu ayarlarken belirttiğiniz parolayı belirtin. Parolayı bulmak için:
-    -  Yapılandırma sunucusunda, Site Recovery yükleme klasörüne gidin **\ home\svssystems\bin\**:
+    -  Yapılandırma sunucusunda, Site Recovery yükleme klasörüne gidin **\ home\svssystems\bin \* *:
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```

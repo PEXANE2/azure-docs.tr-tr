@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Gizli istemci senaryosu giriş sayfaları için dosya ekleme (Daemon, Web uygulaması, Web API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,10 +15,10 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773378"
 ---
 ## <a name="register-secrets-or-certificates"></a>Gizli dizileri veya sertifikaları Kaydet
@@ -42,5 +42,5 @@ Ayrıntılar için bkz [. hızlı başlangıç: Web API 'lerine erişmek için i
 
 Alternatif olarak, komut satırı araçlarını kullanarak uygulamanızı Azure AD 'ye kaydedebilirsiniz. [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneği, BIR Azure AD uygulaması ile uygulama gizli dizisi veya sertifikasının nasıl kaydedileceği gösterilmektedir:
 
-- Uygulama gizliliğini kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- Bir uygulama ile bir sertifikayı kaydetme hakkında ayrıntılı bilgi için bkz. [AppCreationScripts-withCert/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- Uygulama gizliliğini kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- Bir uygulama ile bir sertifikayı kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

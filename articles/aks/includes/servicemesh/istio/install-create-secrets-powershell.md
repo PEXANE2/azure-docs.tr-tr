@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: ee8beaf3368f0efc05f1a1d679398a733002bf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77594040"
 ---
 ### <a name="add-grafana-secret"></a>Grafana gizli dizisi Ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+`REPLACE_WITH_YOUR_SECURE_PASSWORD`Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 ```powershell
 $GRAFANA_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("grafana"))
@@ -33,7 +33,7 @@ data:
 
 ### <a name="add-kiali-secret"></a>Kiali gizli dizisi Ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+`REPLACE_WITH_YOUR_SECURE_PASSWORD`Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 ```powershell
 $KIALI_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("kiali"))

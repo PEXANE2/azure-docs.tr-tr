@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Microsoft ticari Market standart sözleşmesi için metin dosyasını dahil et
 documentationcenter: partner-center-commercial-marketplace
 author: dsindona
@@ -10,17 +10,17 @@ ms.date: 01/22/2020
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: e7692d8c90d71e76628ecb44ade529eabedfa909
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691542"
 ---
 Microsoft, ticari Market için standart bir sözleşme şablonu sağlar.
 
 - **Microsoft ticari Market için standart sözleşme kullanılsın mı?**
 
-Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178.
+Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178 .
 
 "Ticari Market için standart sözleşmeyi kullan" onay kutusunu seçerek, kendi özel hüküm ve koşullarınızı sağlamak yerine standart sözleşmeyi kullanmayı seçebilirsiniz.
 
