@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968808"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058172"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>İçerik anahtarı yetkilendirme ilkesini yapılandırma
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -42,7 +42,7 @@ Birden çok içerik anahtarı olmasını planlıyorsanız veya Media Services an
 * Media Services hesabınız oluşturulduğunda hesabınıza “Durdurulmuş” durumda bir varsayılan akış uç noktası eklenir. İçeriğinizi akışa başlamak ve dinamik paketleme ve dinamik şifreleme avantajlarından yararlanmak için, akış uç noktanızın "çalışıyor" durumunda olması gerekir. 
 * Varlığınız bir uyarlamalı bit hızı MP4 'leri veya Uyarlamalı bit hızı Kesintisiz Akış dosyaları içermelidir. Daha fazla bilgi için bkz. [varlık kodlama](media-services-encode-asset.md).
 * Anahtar teslim hizmeti, ContentKeyAuthorizationPolicy ve ilgili nesneleri (ilke seçenekleri ve kısıtlamalar) 15 dakika boyunca önbelleğe alır. Bir ContentKeyAuthorizationPolicy oluşturup bir belirteç kısıtlaması kullanmayı belirtebilir, test edebilir ve ardından ilkeyi açık kısıtlama olarak güncelleştirebilirsiniz. Bu işlem, ilke açık sürüme geçmeden yaklaşık 15 dakika sürer.
-* Media Services akış uç noktası, "\*" joker karakteri olarak ön kontrol yanıtında CORS erişim-denetim-Izin-kaynak üst bilgisinin değerini ayarlar. Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Ancak, Dash. js kullanan bazı oyuncular çalışmaz, çünkü kimlik bilgileri modu "içerme" olarak ayarlanmış ve Dash. js, "\*" joker karakterine Access-Control-Allow-Origin değeri olarak izin vermez. Dash. js ' de bu sınırlamaya geçici bir çözüm olarak, istemcinizi tek bir etki alanından barındırdıysanız Media Services, bu etki alanını ön kontrol yanıt üstbilgisinde belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
+* Media Services akış uç noktası, "" joker karakteri olarak ön kontrol yanıtında CORS erişim-denetim-Izin-kaynak üst bilgisinin değerini ayarlar \* . Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Ancak, kimlik bilgileri "içerme" olarak ayarlandığı için dash.js kullanan bazı oyuncular işe yaramazsa, bu dash.js XMLHttpRequest, "" joker karakterine \* Access-Control-Allow-Origin değeri olarak izin vermez. dash.js, bu sınırlamaya yönelik bir geçici çözüm olarak, istemcinizi tek bir etki alanından barındırdıysanız Media Services, bu etki alanını ön kontrol yanıt üstbilgisinde belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
 
 ## <a name="configure-the-key-authorization-policy"></a>Anahtar yetkilendirme ilkesini yapılandırma
 Anahtar yetkilendirme ilkesini yapılandırmak için **IÇERIK koruma** sayfasını seçin.
@@ -66,17 +66,19 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 ### <a name="playready"></a>PlayReady
 İçeriğinizi PlayReady ile koruduğunuzda, yetkilendirme ilkenizde belirtmeniz gereken işlemlerden biri PlayReady lisans şablonunu tanımlayan bir XML dizesidir. Varsayılan olarak, aşağıdaki ilke ayarlanır:
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-          <LicenseTemplates>
-            <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
-              <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-              <LicenseType>Nonpersistent</LicenseType>
-              <PlayRight>
-                <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
-              </PlayRight>
-            </PlayReadyLicenseTemplate>
-          </LicenseTemplates>
-        </PlayReadyLicenseResponseTemplate>
+```xml
+<PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+  <LicenseTemplates>
+    <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
+      <ContentKey i:type="ContentEncryptionKeyFromHeader" />
+      <LicenseType>Nonpersistent</LicenseType>
+      <PlayRight>
+        <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
+      </PlayRight>
+    </PlayReadyLicenseTemplate>
+  </LicenseTemplates>
+</PlayReadyLicenseResponseTemplate>
+```
 
 **İlke XML Al** düğmesini seçebilir ve [Media Services PlayReady lisans şablonuna genel bakış](media-services-playready-license-template-overview.md)' da tanımlanan XML şemasına uygun olan farklı bir XML sağlayabilirsiniz.
 
@@ -87,7 +89,7 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192689"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076615"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop ile Apache Ambari Hive Görünümünü Kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "82192689"
 
 Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırmayı öğrenin. Hive görünümü, Web tarayıcınızdan Hive sorgularını yazmanıza, iyileştirmenize ve çalıştırmanıza olanak tanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -60,7 +60,7 @@ HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya ba�
 
     Bu deyimler aşağıdaki işlemleri yapılır:
 
-    |Deyim | Description |
+    |Deyim | Açıklama |
     |---|---|
     |TABLOYU BıRAK|Tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.|
     |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir "External" tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.|

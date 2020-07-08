@@ -11,11 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983385"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075442"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -42,6 +43,16 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 IoT Edge canlı video analizinin önizlemesi herkese açık oldu. Daha fazla bilgi için bkz. [sürüm notları](../live-video-analytics-edge/release-notes.md).
 
 IoT Edge üzerindeki canlı video analizi, Media Service ailesine yönelik bir genişletmektir. Bu, kendi Edge cihazlarınızda seçtiğiniz AI modelleriyle canlı videoyu çözümlemenize ve isteğe bağlı olarak bu videoyu yakalayıp kaydetmenize olanak sağlar. Artık canlı bir video işlem hattı oluşturma ve çalıştırma karmaşıklığı hakkında endişelenmenize gerek kalmadan gerçek zamanlı video analiziyle birlikte uygulamalar oluşturabilirsiniz.
+
+### <a name="search-by-topics"></a>Konulara göre ara
+
+Artık belirli konularda (yalnızca API) videoları aramak için arama API 'sini kullanabilirsiniz.
+
+Konular, `textScope` (isteğe bağlı parametre) bir parçası olarak eklenir. Ayrıntılar için bkz. [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
+
+### <a name="labels-enhancement"></a>Etiket geliştirmesi
+
+Etiket etiketi yükseltildi ve artık tanımlanabilecek daha fazla görsel etiket içeriyor.
 
 ## <a name="may-2020"></a>Mayıs 2020
 

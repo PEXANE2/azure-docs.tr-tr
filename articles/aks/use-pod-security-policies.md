@@ -3,15 +3,23 @@ title: Azure Kubernetes Service (AKS) içinde Pod güvenlik ilkeleri kullanma
 description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanarak Pod sayede denetimini nasıl denetleyeceğinizi öğrenin
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bd4e1b85513ed5473b4136b458d20fef4faa79c
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374500"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077635"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 AKS kümenizin güvenliğini artırmak için, hangi yığınların zamanlanabileceği ile sınırlı olabilirsiniz. İzin vermeyenleri isteyen kaynaklar AKS kümesinde çalıştırılamaz. Bu erişimi Pod güvenlik ilkelerini kullanarak tanımlarsınız. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için pod güvenlik ilkelerinin nasıl kullanılacağı gösterilmektedir.
 
@@ -106,7 +114,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, *PSP: kısıtlanmış* kümerolü herhangi bir *Sistem: kimliği doğrulanmış* kullanıcılara atanır. Bu özellik, kendi ilkelerinizin tanımlanmamaları gerekmeden temel bir kısıtlama düzeyi sağlar.
+Aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, *PSP: ayrıcalıklı* kümerolü herhangi bir *Sistem: kimliği doğrulanmış* kullanıcılara atanır. Bu özellik, kendi ilkelerinizin tanımlanmamaları gerekmeden temel bir ayrıcalık düzeyi sağlar.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -164,7 +172,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Ayrıcalıklı Pod oluşturmayı test etme
 
-' In güvenlik bağlamı ile pod zamanladığınızda, ilk test edelim `privileged: true` . Bu güvenlik bağlamı Pod 'un ayrıcalıklarını ilerletir. Önceki bölümde, varsayılan AKS Pod güvenlik ilkelerini belirten, *kısıtlı* ilke bu isteği reddetmelidir.
+' In güvenlik bağlamı ile pod zamanladığınızda, ilk test edelim `privileged: true` . Bu güvenlik bağlamı Pod 'un ayrıcalıklarını ilerletir. Varsayılan AKS Pod güvenlik ilkelerini gösteren önceki bölümde, *ayrıcalık* ilkesinin bu isteği reddetmesi gerekir.
 
 Adlı bir dosya oluşturun `nginx-privileged.yaml` ve aşağıdaki YAML bildirimini yapıştırın:
 
@@ -199,7 +207,7 @@ Pod, zamanlama aşamasına ulaşmıyor, bu nedenle, üzerinde geçiş yapmadan �
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>Ayrıcalıksız Pod 'ın test oluşturması
 
-Önceki örnekte, Pod belirtimi ayrıcalıklı yükseltme istedi. Bu istek, varsayılan *kısıtlı* Pod güvenlik ilkesi tarafından reddedildi, bu nedenle Pod, Pod zamanlanamaz. Artık ayrıcalık yükseltme isteği olmadan aynı NGıNX Pod 'u çalıştırmayı deneyelim.
+Önceki örnekte, Pod belirtimi ayrıcalıklı yükseltme istedi. Bu istek varsayılan *ayrıcalık* Pod güvenlik ilkesi tarafından reddedildi, bu yüzden Pod 'un zamanlanması başarısız olur. Artık ayrıcalık yükseltme isteği olmadan aynı NGıNX Pod 'u çalıştırmayı deneyelim.
 
 Adlı bir dosya oluşturun `nginx-unprivileged.yaml` ve aşağıdaki YAML bildirimini yapıştırın:
 
@@ -232,7 +240,7 @@ Pod, zamanlama aşamasına ulaşmıyor, bu nedenle, üzerinde geçiş yapmadan �
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Belirli bir kullanıcı bağlamı ile pod 'ın test oluşturması
 
-Önceki örnekte kapsayıcı görüntüsü, NGıNX 'i 80 numaralı bağlantı noktasına bağlamak için otomatik olarak kök kullanmaya çalıştı. Bu istek varsayılan *kısıtlı* Pod güvenlik ilkesi tarafından reddedildi, bu nedenle Pod başlatılamadı. Artık aynı NGıNX Pod öğesini gibi belirli bir Kullanıcı bağlamıyla çalıştırmayı deneyelim `runAsUser: 2000` .
+Önceki örnekte kapsayıcı görüntüsü, NGıNX 'i 80 numaralı bağlantı noktasına bağlamak için otomatik olarak kök kullanmaya çalıştı. Bu istek varsayılan *ayrıcalık* Pod güvenlik ilkesi tarafından reddedildi, bu yüzden Pod başlatılamıyor. Artık aynı NGıNX Pod öğesini gibi belirli bir Kullanıcı bağlamıyla çalıştırmayı deneyelim `runAsUser: 2000` .
 
 Adlı bir dosya oluşturun `nginx-unprivileged-nonroot.yaml` ve aşağıdaki YAML bildirimini yapıştırın:
 
@@ -298,7 +306,7 @@ spec:
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın. Bir pod oluşturmak için, bir önceki örneklerde uygulanan varsayılan *kısıtlı* ilkeyle, *PSP-Deny-ayrıcalıklı* ilkesini karşılaştırın. İlkeniz tarafından yalnızca *PRIV* yükseltme kullanımı reddedilir. Kullanıcı veya grup üzerinde, *PSP-Deny-ayrıcalıklı* ilkesi için bir kısıtlama yoktur.
+Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın. Bir pod oluşturmak için, *PSP-Deny-ayrıcalıklı* ilkesini önceki örneklerde zorlanan varsayılan *ayrıcalık* ilkesiyle karşılaştırın. İlkeniz tarafından yalnızca *PRIV* yükseltme kullanımı reddedilir. Kullanıcı veya grup üzerinde, *PSP-Deny-ayrıcalıklı* ilkesi için bir kısıtlama yoktur.
 
 ```console
 $ kubectl get psp

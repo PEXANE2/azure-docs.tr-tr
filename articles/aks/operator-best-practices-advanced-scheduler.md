@@ -5,11 +5,12 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340852"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077856"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki gelişmiş Zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -100,7 +101,7 @@ Litre ve toleransyonlar, kaynakları sabit bir şekilde yalıtmak için kullanı
 Yüksek miktarda bellekle bir düğüm örneğine göz atalım. Bu düğümler, büyük miktarda bellek isteyen Pod 'ye tercih verebilir. Kaynakların boşta olmadığından emin olmak için diğer yığınların çalışmasına de izin verir.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 Pod belirtimi, `nodeSelector` bir düğüm üzerinde ayarlanan etiketle eşleşen bir düğüm seçici tanımlamak için özelliğini ekler:
@@ -184,7 +185,7 @@ Bu makalede, gelişmiş Kubernetes Zamanlayıcı özelliklerine odaklanılmışt
 
 * [Çok kiracılılık ve küme yalıtımı][aks-best-practices-scheduler]
 * [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
-* [Kimlik doğrulaması ve yetkilendirme][aks-best-practices-identity]
+* [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

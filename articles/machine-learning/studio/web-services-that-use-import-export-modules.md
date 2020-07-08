@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 634c8b118a9d1f041e536f17cc9588f3a85fa4d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076666"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
 
@@ -41,8 +41,8 @@ Azure SQL tablosundan verileri okumak için:
 6. **Veritabanı sunucusu adı**, **veritabanı adı**, **Kullanıcı adı**ve **parola** alanlarına veritabanınız için uygun bilgileri girin.
 7. Veritabanı sorgusu alanına aşağıdaki sorguyu girin.
 
-     [Age] öğesini seçin,
-
+    ```tsql
+     select [age],
         [workclass],
         [fnlwgt],
         [education],
@@ -57,7 +57,8 @@ Azure SQL tablosundan verileri okumak için:
         [hours-per-week],
         [native-country],
         [income]
-     dbo. censusdata; öğesinden
+     from dbo.censusdata;
+    ```
 8. Deneme tuvalinin alt kısmındaki **Çalıştır**' a tıklayın.
 
 ## <a name="create-the-predictive-experiment"></a>Tahmine dayalı deneme oluşturma
@@ -105,13 +106,15 @@ Klasik bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluşt
 8. *Apikey* değişkeninin değerini daha önce kaydedilen API anahtarıyla güncelleştirin.
 9. İstek bildirimini bulun ve *verileri içeri* aktarma ve *veri verme* modüllerine geçirilen Web hizmeti parametrelerinin değerlerini güncelleştirin. Bu durumda, özgün sorguyu kullanırsınız, ancak yeni bir tablo adı tanımlarsınız.
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. Uygulamayı çalıştırın.
 
 Çalıştırma tamamlandığında, veritabanına Puanlama sonuçlarını içeren yeni bir tablo eklenir.
@@ -133,15 +136,17 @@ Yeni bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluştur
 8. *Apikey* değişkeninin değerini **temel tüketim bilgisi** bölümünde bulunan **birincil anahtarla** güncelleştirin.
 9. *ScoreRequest* bildirimini bulun ve *verileri Içeri* aktarma ve *veri verme* modüllerine geçirilen Web hizmeti parametrelerinin değerlerini güncelleştirin. Bu durumda, özgün sorguyu kullanırsınız, ancak yeni bir tablo adı tanımlarsınız.
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. Uygulamayı çalıştırın.
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710703"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058121"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric ölçeklendirme
 Azure Service Fabric, bir kümenin düğümlerinde Hizmetleri, bölümleri ve çoğaltmaları yöneterek ölçeklenebilir uygulamalar oluşturmayı kolaylaştırır. Aynı donanımda birçok iş yükünün çalıştırılması maksimum kaynak kullanımını sağlar, ancak aynı zamanda iş yüklerinizi ölçeklendirmeye nasıl seçeceğiniz konusunda esneklik sağlar. Bu Channel 9 videosu, ölçeklenebilir mikro hizmet uygulamaları oluşturmayı açıklar:
@@ -127,7 +127,7 @@ Ancak neden tüm kullanıcılar için tek bir bölüm düzeni seçmeyi denemeniz
 Ölçek için derleme yaparken, aşağıdaki dinamik kalıbı göz önünde bulundurun. Durumunuza uyarlamanız gerekebilir:
 
 1. Herkes için bir bölümleme şeması seçmeyi denemek yerine "Yönetici hizmeti" oluşturun.
-2. Yönetici hizmeti 'nin işi, hizmetinize kaydolduklarında müşteri bilgilerine bakabilmenizdir. Daha _sonra bu bilgilere_bağlı olarak, yönetici hizmeti _gerçek_ iletişim depolama hizmetinizin bir örneğini oluşturur. Belirli yapılandırma, yalıtım veya yükseltmeler gerektiriyorsa, bu müşteri için bir uygulama örneği çalıştırmaya da karar verebilirsiniz. 
+2. Yönetici hizmeti 'nin işi, hizmetinize kaydolduklarında müşteri bilgilerine bakabilmenizdir. Daha sonra, bu bilgilere bağlı olarak, yönetici hizmeti _gerçek_ iletişim depolama hizmetinizin bir örneğini _yalnızca o müşteri için_oluşturur. Belirli yapılandırma, yalıtım veya yükseltmeler gerektiriyorsa, bu müşteri için bir uygulama örneği çalıştırmaya da karar verebilirsiniz. 
 
 Bu dinamik oluşturma deseninin birçok avantajı:
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/24/2020
-ms.openlocfilehash: d1d1dbb273ed1da3835f533b5f38743db73816c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: bed89b325ce28ab969bad5ed30802bdb67a21a96
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076564"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -108,6 +108,25 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve b
 > Bir okuma çoğaltmasında çoğaltmayı durdurmadan önce, çoğaltmanın gerekli tüm verilere sahip olduğundan emin olun.
 
 [Bir çoğaltmaya çoğaltmayı durdurmayı](howto-read-replicas-portal.md)öğrenin.
+
+## <a name="failover"></a>Yük devretme
+
+Ana ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
+
+Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucu üzerinde çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniye ile birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+
+> [!Tip]
+> Çoğaltmaya yük devretmek, çoğaltmayı ana bilgisayardan geri bağladığınızda oluşan gecikme, ne kadar veri kaybedildiğine işaret eder.
+
+Bir çoğaltmaya yük devretmek istediğinizde, 
+
+1. Çoğaltmaya çoğaltmayı durdur<br/>
+   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu ana sunucudan kaldırılacak. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
+    
+2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
+   Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
+    
+Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 

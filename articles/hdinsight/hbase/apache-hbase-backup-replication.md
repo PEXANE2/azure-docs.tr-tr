@@ -5,21 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495941"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076751"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight 'ta Apache HBase ve Apache Phoenix için yedekleme ve çoğaltma ayarlama
 
 Apache HBase, veri kaybına karşı koruma için çeşitli yaklaşımları destekler:
 
-* `hbase` Klasörü kopyala
+* Klasörü Kopyala `hbase`
 * Dışarı aktar ve Içeri aktar
 * Tabloları Kopyala
 * Anlık Görüntüler
@@ -36,19 +36,15 @@ Bu yaklaşımda, bir tablo veya sütun ailelerinin bir alt kümesini seçmeden t
 
 HDInsight 'ta HBase, küme oluştururken seçilen varsayılan depolamayı kullanır, Azure Storage blob 'ları veya Azure Data Lake Storage. Her iki durumda da HBase, verilerini ve meta veri dosyalarını aşağıdaki yolda depolar:
 
-    /hbase
+`/hbase`
 
 * Bir Azure depolama hesabında, `hbase` klasörü blob kapsayıcısının kökünde bulunur:
 
-    ```
-    wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
-    ```
+  `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
-* Azure Data Lake Storage, `hbase` klasör, bir küme sağlanırken belirttiğiniz kök yolun altında bulunur. Bu kök yol, genellikle HDInsight `clusters` kümenizin ardından adlı bir alt klasörü olan bir klasörüne sahiptir:
+* Azure Data Lake Storage, klasör, `hbase` bir küme sağlanırken belirttiğiniz kök yolun altında bulunur. Bu kök yol `clusters` , genellikle HDInsight kümenizin ardından adlı bir alt klasörü olan bir klasörüne sahiptir:
 
-    ```
-    /clusters/<clusterName>/hbase
-    ```
+  `/clusters/<clusterName>/hbase`
 
 Her iki durumda da `hbase` klasör, HBase 'nin diske temizlenen tüm verileri içerir, ancak bellek içi verileri içermeyebilir. HBase verilerinin doğru bir gösterimi olarak bu klasöre güvenebilmeniz için önce kümeyi kapatmanız gerekir.
 
@@ -56,7 +52,7 @@ Kümeyi sildikten sonra, verileri yerinde bırakabilir ya da verileri yeni bir k
 
 * Geçerli depolama konumunu işaret eden yeni bir HDInsight örneği oluşturun. Yeni örnek, tüm mevcut verilerle oluşturulur.
 
-* `hbase` Klasörü farklı bir Azure Storage blob kapsayıcısına veya Data Lake Storage konuma kopyalayın ve ardından bu verilerle yeni bir küme başlatın. Azure depolama için [AzCopy](../../storage/common/storage-use-azcopy.md)kullanın ve Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)kullanın.
+* `hbase`Klasörü farklı bir Azure Storage blob kapsayıcısına veya Data Lake Storage konuma kopyalayın ve ardından bu verilerle yeni bir küme başlatın. Azure depolama için [AzCopy](../../storage/common/storage-use-azcopy.md)kullanın ve Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)kullanın.
 
 ## <a name="export-then-import"></a>Dışarı aktar ve Içeri aktar
 
@@ -64,31 +60,37 @@ Kaynak HDInsight kümesinde, kaynak tablodaki varsayılan bağlı depolamaya ver
 
 Tablo verilerini dışarı aktarmak için ilk olarak kaynak HDInsight kümenizin baş düğümüne SSH ekleyin ve ardından aşağıdaki `hbase` komutu çalıştırın:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```
 
 Dışarı aktarma dizini zaten mevcut olmamalıdır. Tablo adı büyük/küçük harfe duyarlıdır.
 
 Tablo verilerini içe aktarmak için, hedef HDInsight kümenizin baş düğümüne SSH ekleyin ve ardından aşağıdaki `hbase` komutu çalıştırın:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```
 
 Tablo zaten var olmalıdır.
 
 Varsayılan depolama alanına veya bağlı depolama seçeneklerinden herhangi birine tam verme yolunu belirtin. Örneğin, Azure depolama 'da:
 
-    wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasbs://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 Azure Data Lake Storage 2., sözdizimi şöyledir:
 
-    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+`abfs://<containername>@<accountname>.dfs.core.windows.net/<path>`
 
 Azure Data Lake Storage 1., sözdizimi şöyledir:
 
-    adl://<accountName>.azuredatalakestore.net:443/<path>
+`adl://<accountName>.azuredatalakestore.net:443/<path>`
 
 Bu yaklaşım tablo düzeyinde ayrıntı düzeyi sağlar. Ayrıca, dahil edilecek satırlar için bir tarih aralığı belirtebilirsiniz. Bu işlem, işlemi artımlı olarak gerçekleştirmenize olanak tanır. Her tarih, UNIX dönemi sonrasında milisaniye cinsindendir.
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```
 
 Dışarı aktarılacak her bir satırın sürüm sayısını belirtmeniz gerektiğini unutmayın. Tarih aralığındaki tüm sürümleri dahil etmek için, 100000 gibi `<numberOfVersions>` olası en yüksek satır sürümlerindekinden daha büyük bir değere ayarlayın.
 
@@ -98,22 +100,25 @@ Dışarı aktarılacak her bir satırın sürüm sayısını belirtmeniz gerekti
 
 Küme içinde CopyTable ' ı, kaynak HDInsight kümenizin baş düğümüne SSH olarak kullanmak ve ardından şu `hbase` komutu çalıştırın:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
-
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```
 
 Farklı bir kümedeki bir tabloya kopyalamak üzere CopyTable kullanmak için, `peer` anahtarı hedef kümenin adresiyle ekleyin:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```
 
 Hedef adres, aşağıdaki üç bölümden oluşur:
 
-    <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
+`<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
 * `<ZooKeeperQuorum>`Apache ZooKeeper düğümlerinin virgülle ayrılmış listesidir, örneğin:
 
     zk0-hluc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, ZK4-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`HDInsight 'ta varsayılan değer 2181 ' dir `<ZnodeParent>` ve `/hbase-unsecure`şu şekilde tamamlanır `<destinationAddress>` :
+* `<Port>`HDInsight 'ta varsayılan değer 2181 ' `<ZnodeParent>` dir ve şu `/hbase-unsecure` şekilde tamamlanır `<destinationAddress>` :
 
     zk0-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, ZK4-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net, zk3-haloc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. net: 2181:/HBase-Unsecure
 
@@ -121,12 +126,14 @@ HDInsight kümeniz için bu değerleri alma hakkında ayrıntılı bilgi için b
 
 CopyTable yardımcı programı, kopyalanacak satırların zaman aralığını belirtmek ve kopyalanacak bir tablodaki sütun ailelerinin alt kümesini belirtmek için de parametreleri destekler. CopyTable tarafından desteklenen parametrelerin tüm listesini görmek için, hiçbir parametre olmadan CopyTable komutunu çalıştırın:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```
 
 CopyTable, hedef tabloya kopyalanacak kaynak tablo içeriğinin tamamını tarar. Bu, CopyTable yürütülürken HBase kümenizin performansını azaltabilir.
 
 > [!NOTE]  
-> Tablolar arasında veri kopyalamayı otomatik hale getirmek için GitHub 'daki `hdi_copy_table.sh` [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) deposunda betiğe bakın.
+> Tablolar arasında veri kopyalamayı otomatik hale getirmek için `hdi_copy_table.sh` GitHub 'Daki [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) deposunda betiğe bakın.
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper çekirdek listesini el ile topla
 
@@ -134,29 +141,35 @@ Her iki HDInsight kümesi de aynı sanal ağ içinde olduğunda, daha önce aç�
 
 Çekirdek ana bilgisayar adlarını almak için aşağıdaki kıvrımlı komutunu çalıştırın:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```
 
 Kıvrımlı komutu, HBase yapılandırma bilgilerini içeren bir JSON belgesi alır ve GREP komutu yalnızca "HBase. Zookeeper. Quorum" girişini döndürür, örneğin:
 
-    "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```output
+"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```
 
 Çekirdek ana bilgisayar adları değeri, iki nokta üst üste sağ tarafındaki tüm dizedir.
 
 Bu konaklara ait IP adreslerini almak için, önceki listede bulunan her bir konak için aşağıdaki kıvrımlı komutunu kullanın:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```
 
-Bu kıvrımlı komutunda `<zookeeperHostFullName>` , örnek `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`gibi BIR ZooKeeper konağının tam DNS adıdır. Komutun çıktısı, belirtilen konağın IP adresini içerir, örneğin:
+Bu kıvrımlı komutunda, `<zookeeperHostFullName>` örnek gibi bir ZooKeeper konağının tam DNS adıdır `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net` . Komutun çıktısı, belirtilen konağın IP adresini içerir, örneğin:
 
-    100    "ip" : "10.0.0.9",
+`100    "ip" : "10.0.0.9",`
 
 Çekirdekte tüm ZooKeeper düğümlerinin IP adreslerini topladıktan sonra hedef adresi yeniden derleyin:
 
-    <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
+`<destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>`
 
 Örneğimizde:
 
-    <destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure
+`<destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure`
 
 ## <a name="snapshots"></a>Anlık Görüntüler
 
@@ -164,33 +177,45 @@ Bu kıvrımlı komutunda `<zookeeperHostFullName>` , örnek `zk0-hdizc2.54o2oqaw
 
 Bir anlık görüntü oluşturmak için HDInsight HBase kümenizin baş düğümüne SSH ve `hbase` kabuğu başlatın:
 
-    hbase shell
+```console
+hbase shell
+```
 
 HBase kabuğu 'nda, ve bu anlık görüntünün adlarıyla birlikte Snapshot komutunu kullanın:
 
-    snapshot '<tableName>', '<snapshotName>'
+```console
+snapshot '<tableName>', '<snapshotName>'
+```
 
-Bir anlık görüntüyü `hbase` kabukta ada göre geri yüklemek için, önce tabloyu devre dışı bırakın, sonra anlık görüntüyü geri yükleyin ve tabloyu yeniden etkinleştirin:
+Bir anlık görüntüyü kabukta ada göre geri yüklemek için `hbase` , önce tabloyu devre dışı bırakın, sonra anlık görüntüyü geri yükleyin ve tabloyu yeniden etkinleştirin:
 
-    disable '<tableName>'
-    restore_snapshot '<snapshotName>'
-    enable '<tableName>'
+```console
+disable '<tableName>'
+restore_snapshot '<snapshotName>'
+enable '<tableName>'
+```
 
 Bir anlık görüntüyü yeni bir tabloya geri yüklemek için clone_snapshot kullanın:
 
-    clone_snapshot '<snapshotName>', '<newTableName>'
+```console
+clone_snapshot '<snapshotName>', '<newTableName>'
+```
 
-Bir anlık görüntüyü başka bir küme tarafından kullanılmak üzere bir anlık görüntü olarak dışarı aktarmak için önce daha önce açıklandığı gibi anlık görüntüyü oluşturun ve ardından ExportSnapshot yardımcı programını kullanın. Bu yardımcı programı SSH oturumunun içinden, `hbase` kabukta değil baş düğüme çalıştırın:
+Bir anlık görüntüyü başka bir küme tarafından kullanılmak üzere bir anlık görüntü olarak dışarı aktarmak için önce daha önce açıklandığı gibi anlık görüntüyü oluşturun ve ardından ExportSnapshot yardımcı programını kullanın. Bu yardımcı programı SSH oturumunun içinden, kabukta değil baş düğüme çalıştırın `hbase` :
 
-     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```
 
 , `<hdfsHBaseLocation>` Kaynak kümeniz tarafından erişilebilen depolama konumlarından herhangi biri olabilir ve hedef kümeniz tarafından kullanılan HBase klasörüne işaret etmelidir. Örneğin, kaynak kümenize bağlı ikincil bir Azure depolama hesabınız varsa ve bu hesap hedef kümenin varsayılan depolaması tarafından kullanılan kapsayıcıya erişim sağlıyorsa, şu komutu kullanabilirsiniz:
 
-    hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
 
 Anlık görüntü verildikten sonra, hedef kümenin baş düğümüne SSH ekleyin ve daha önce açıklandığı gibi restore_snapshot komutunu kullanarak anlık görüntüyü geri yükleyin.
 
-Anlık görüntüler, `snapshot` komut sırasında bir tablonun tüm yedeklemesini sağlar. Anlık görüntüler, Windows 'un zaman içinde Artımlı anlık görüntüler gerçekleştirme veya anlık görüntüye eklenecek sütun ailelerinin alt kümelerini belirtme olanağı sağlamaz.
+Anlık görüntüler, komut sırasında bir tablonun tüm yedeklemesini sağlar `snapshot` . Anlık görüntüler, Windows 'un zaman içinde Artımlı anlık görüntüler gerçekleştirme veya anlık görüntüye eklenecek sütun ailelerinin alt kümelerini belirtme olanağı sağlamaz.
 
 ## <a name="replication"></a>Çoğaltma
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314170"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075561"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Apache ambarı Web Kullanıcı arabirimi, JobHistory, süs Yot, Apache Oozie ve diğer Uıto 'a erişmek için SSH tüneli kullanın
 
@@ -56,7 +56,7 @@ Web hizmetini kullanıma sunan betik eylemleriyle yüklenen hizmetler SSH tünel
 
 ## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>SSH komutunu kullanarak bir tünel oluşturma
 
-`ssh` Komutunu kullanarak bir SSH tüneli oluşturmak için aşağıdaki komutu kullanın. HDInsight `sshuser` kümeniz IÇIN bir SSH kullanıcısı ile değiştirin ve öğesini HDInsight kümenizin `CLUSTERNAME` adıyla değiştirin:
+Komutunu kullanarak bir SSH tüneli oluşturmak için aşağıdaki komutu kullanın `ssh` . `sshuser`HDInsight kümeniz için BIR SSH kullanıcısı ile değiştirin ve öğesini `CLUSTERNAME` HDInsight kümenizin adıyla değiştirin:
 
 ```cmd
 ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -64,16 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Bu komut, trafiği SSH üzerinden kümeye yerel bağlantı noktası 9876 ' e yönlendiren bir bağlantı oluşturur. Seçenekler şunlardır:
 
-    |Seçenek |Açıklama |
-    |---|---|
-    |D 9876|Trafiği tünelden yönlendiren yerel bağlantı noktası.|
-    |C|Web trafiği çoğunlukla metin olduğundan tüm verileri sıkıştır.|
-    |2|SSH 'yi yalnızca protokol sürüm 2 ' i denemeye zorlayın.|
-    |q|Sessiz mod.|
-    |T|Yalnızca bir bağlantı noktasını iletmeniz gerektiğinden, sözde TTY ayırmayı devre dışı bırakın.|
-    |n|Yalnızca bir bağlantı noktasını iletmenizden, STDIN okumayı önleyin.|
-    |N|Yalnızca bir bağlantı noktasını iletmenizden, uzak bir komut çalıştırmayın.|
-    |f|Arka planda çalıştırın.|
+|Seçenek |Açıklama |
+|---|---|
+|D 9876|Trafiği tünelden yönlendiren yerel bağlantı noktası.|
+|C|Web trafiği çoğunlukla metin olduğundan tüm verileri sıkıştır.|
+|2|SSH 'yi yalnızca protokol sürüm 2 ' i denemeye zorlayın.|
+|q|Sessiz mod.|
+|T|Yalnızca bir bağlantı noktasını iletmeniz gerektiğinden, sözde TTY ayırmayı devre dışı bırakın.|
+|n|Yalnızca bir bağlantı noktasını iletmenizden, STDIN okumayı önleyin.|
+|N|Yalnızca bir bağlantı noktasını iletmenizden, uzak bir komut çalıştırmayın.|
+|f|Arka planda çalıştırın.|
 
 Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına gönderilen trafik küme baş düğümüne yönlendirilir.
 
@@ -93,7 +93,7 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
     |Bağlantı noktası|22|
     |Bağlantı Türü|SSH|
 
-1. **Kaydet** 'i seçin
+1. **Kaydet**'i seçin
 
     ![HDInsight Putty oturumu oluştur](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -125,16 +125,16 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
    > [!NOTE]  
    > **Uzak DNS** seçildiğinde, HDInsight kümesini kullanarak etki alanı adı SISTEMI (DNS) istekleri çözümlenir. Bu ayar, kümenin baş düğümünü kullanarak DNS 'i çözer.
 
-2. Tünelin, gibi bir siteyi ziyaret ederek çalıştığını doğrulayın [https://www.whatismyip.com/](https://www.whatismyip.com/). Döndürülen IP Microsoft Azure veri merkezi tarafından kullanılan bir tane olmalıdır.
+2. Tünelin, gibi bir siteyi ziyaret ederek çalıştığını doğrulayın [https://www.whatismyip.com/](https://www.whatismyip.com/) . Döndürülen IP Microsoft Azure veri merkezi tarafından kullanılan bir tane olmalıdır.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi ile doğrulama
 
 Küme kurulduktan sonra, aşağıdaki adımları kullanarak hizmet Web Hizmetleri 'ni ambarı Web sitesinden erişebildiğinizi doğrulayın:
 
-1. Tarayıcınızda `http://headnodehost:8080` adresine gidin. `headnodehost` Adres, kümeye tünel üzerinden gönderilir ve ambarı 'nın üzerinde çalıştığı baş düğüme çözümlenir. İstendiğinde, kümeniz için Yönetici Kullanıcı adı 'nı (yönetici) ve parolayı girin. Ambarı Web Kullanıcı arabirimi ile ikinci bir kez sorulabilir. Öyleyse, bilgileri yeniden girin.
+1. Tarayıcınızda `http://headnodehost:8080` adresine gidin. `headnodehost`Adres, kümeye tünel üzerinden gönderilir ve ambarı 'nın üzerinde çalıştığı baş düğüme çözümlenir. İstendiğinde, kümeniz için Yönetici Kullanıcı adı 'nı (yönetici) ve parolayı girin. Ambarı Web Kullanıcı arabirimi ile ikinci bir kez sorulabilir. Öyleyse, bilgileri yeniden girin.
 
    > [!NOTE]  
-   > Kümeye bağlanmak için `http://headnodehost:8080` adresi kullanırken tünelden bağlanıyorsunuz. İletişim, HTTPS yerine SSH tüneli kullanılarak güvenli hale getirilir. HTTPS kullanarak internet üzerinden bağlanmak için, ' ı `https://clustername.azurehdinsight.net`kullanın, `clustername` burada kümenin adıdır.
+   > `http://headnodehost:8080`Kümeye bağlanmak için adresi kullanırken tünelden bağlanıyorsunuz. İletişim, HTTPS yerine SSH tüneli kullanılarak güvenli hale getirilir. HTTPS kullanarak internet üzerinden bağlanmak için, `https://clustername.azurehdinsight.net` ' ı kullanın, burada `clustername` kümenin adıdır.
 
 2. Ambarı web kullanıcı arabiriminden, sayfanın solundaki listeden, "öğesini seçin.
 
@@ -154,7 +154,7 @@ Küme kurulduktan sonra, aşağıdaki adımları kullanarak hizmet Web Hizmetler
     ![Hadoop süs Code Kullanıcı arabiriminin görüntüsü](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
-    > Bu sayfanın URL 'sine dikkat edin; Şuna benzer olmalıdır `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Bu URI, düğümün dahili tam etki alanı adını (FQDN) kullanıyor ve yalnızca bir SSH tüneli kullanılırken erişilebilir.
+    > Bu sayfanın URL 'sine dikkat edin; Şuna benzer olmalıdır `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` . Bu URI, düğümün dahili tam etki alanı adını (FQDN) kullanıyor ve yalnızca bir SSH tüneli kullanılırken erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254098"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058070"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
@@ -230,7 +230,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    * [Azure Resource Manager VM 'Ler için WinRM erişimi ayarlama](../../virtual-machines/windows/winrm.md)
    * [Azure portal kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [PowerShell kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Azure CLı kullanarak Linux VM 'nize dışarıdan erişime izin verin](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Azure CLı kullanarak Linux VM 'nize dışarıdan erişime izin verin](../../virtual-machines/linux/nsg-quickstart.md)
 
 * Genel IP adresleri için **Domainnamelabel** özelliği benzersiz olmalıdır. **Domainnamelabel** değeri 3 ila 63 karakter uzunluğunda olmalı ve bu normal ifade tarafından belirtilen kuralları izlemelidir: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . **Uniquestring** işlevi 13 karakter uzunluğunda bir dize oluşturduğundan, **Dnsprefixstring** parametresi 50 karakterle sınırlıdır:
 

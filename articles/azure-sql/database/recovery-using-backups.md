@@ -3,8 +3,8 @@ title: Bir veritabanını yedekten geri yükleme
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL veritabanı 'nda bir veritabanını veya Azure SQL yönetilen örneğindeki bir örneği 35 güne kadar geri almanıza olanak tanıyan noktadan noktaya geri yükleme hakkında bilgi edinin.
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 848b8afa6070cb8b0141602f3bb62f24868a9d64
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718631"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075918"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,11 +51,11 @@ Büyük veya çok etkin bir veritabanı için geri yükleme birkaç saat sürebi
 
 Tek bir abonelik için, eş zamanlı geri yükleme isteği sayısında sınırlamalar vardır. Bu sınırlamalar, uzun süreli saklama yedeklemesinden gelen zaman içindeki tüm geri yüklemeler, coğrafi geri yüklemeler ve geri yüklemeler için geçerlidir.
 
-| | **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
+|| **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
 | :--- | --: | --: |
-|Tek veritabanı (abonelik başına)|10|60|
-|Elastik havuz (havuz başına)|4|200|
-||||
+|**Tek veritabanı (abonelik başına)**|10|60|
+|**Elastik havuz (havuz başına)**|4|200|
+
 
 Sunucunun tamamını geri yüklemek için yerleşik bir yöntem yoktur. Bu görevi nasıl gerçekleştireceğinizi gösteren bir örnek için bkz. [Azure SQL veritabanı: tam sunucu kurtarma](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
 
@@ -64,7 +64,7 @@ Sunucunun tamamını geri yüklemek için yerleşik bir yöntem yoktur. Bu göre
 
 ## <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
-Tek başına, havuza alınmış veya örnek veritabanını Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases)kullanarak daha önceki bir zaman noktasına geri yükleyebilirsiniz. İstek, geri yüklenen veritabanı için herhangi bir hizmet katmanını veya işlem boyutunu belirtebilir. Veritabanını geri yüklediğiniz sunucuda yeterli kaynaklara sahip olduğunuzdan emin olun. 
+Tek başına, havuza alınmış veya örnek veritabanını Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)kullanarak daha önceki bir zaman noktasına geri yükleyebilirsiniz. İstek, geri yüklenen veritabanı için herhangi bir hizmet katmanını veya işlem boyutunu belirtebilir. Veritabanını geri yüklediğiniz sunucuda yeterli kaynaklara sahip olduğunuzdan emin olun. 
 
 Bu tamamlandığında, geri yükleme özgün veritabanıyla aynı sunucuda yeni bir veritabanı oluşturur. Geri yüklenen veritabanı, hizmet katmanına ve işlem boyutuna bağlı olarak normal ücretler üzerinden ücretlendirilir. Veritabanı geri yüklemesi tamamlanana kadar ücretlendirilmezsiniz.
 
@@ -84,7 +84,7 @@ Tek veya örnek bir veritabanını, Azure portal geri yüklemek istediğiniz ver
 
 #### <a name="sql-database"></a>SQL Veritabanı
 
-Tek veya havuza alınmış bir veritabanını Azure portal kullanarak zaman içinde bir noktaya kurtarmak için, veritabanına genel bakış sayfasını açın ve araç çubuğunda **geri yükle** ' yi seçin. Yedekleme kaynağını seçin ve yeni bir veritabanının oluşturulacağı belirli bir noktaya yedekleme noktasını seçin.
+Azure portal kullanarak bir veritabanını zaman noktasına kurtarmak için veritabanına genel bakış sayfasını açın ve araç çubuğunda **geri yükle** ' yi seçin. Yedekleme kaynağını seçin ve yeni bir veritabanının oluşturulacağı belirli bir noktaya yedekleme noktasını seçin.
 
   ![Veritabanı geri yükleme seçeneklerinin ekran görüntüsü](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
@@ -110,7 +110,7 @@ Silinen veritabanlarını sunucudan veya yönetilen örnek kaynağından Azure p
 
 #### <a name="sql-database"></a>SQL Veritabanı
 
-Tek veya havuza alınmış silinen bir veritabanını Azure portal kullanarak silme zamanına kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+Silinen bir veritabanını Azure portal kullanarak silme zamanına kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
   ![Silinen veritabanını geri yükleme ekran görüntüsü](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
@@ -230,7 +230,7 @@ Yönetilen örnek veritabanını geri yüklemek için bkz. [restore-Azsqlınstan
 
 ### <a name="rest-api"></a>REST API
 
-REST API kullanarak tek veya havuza alınmış bir veritabanını geri yüklemek için:
+REST API kullanarak bir veritabanını geri yüklemek için:
 
 | API | Description |
 | --- | --- |
@@ -241,7 +241,7 @@ REST API kullanarak tek veya havuza alınmış bir veritabanını geri yüklemek
 
 #### <a name="sql-database"></a>SQL Veritabanı
 
-Azure CLı kullanarak tek veya havuza alınmış bir veritabanını geri yüklemek için, bkz. [az SQL DB restore](/cli/azure/sql/db#az-sql-db-restore).
+Azure CLı kullanarak bir veritabanını geri yüklemek için, bkz. [az SQL DB restore](/cli/azure/sql/db#az-sql-db-restore).
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 

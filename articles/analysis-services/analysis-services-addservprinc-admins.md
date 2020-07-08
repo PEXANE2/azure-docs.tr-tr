@@ -4,19 +4,23 @@ description: Azure Analysis Services Server yönetici rolüne bir Automation hiz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697522"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077567"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
- Katılımsız PowerShell görevlerini otomatikleştirmek için bir hizmet sorumlusu, yönetilmekte olan Analysis Services sunucuda **Sunucu Yöneticisi** ayrıcalıklarına sahip olmalıdır. Bu makalede, bir Azure AS Server 'daki sunucu yöneticileri rolüne bir hizmet sorumlusu nasıl ekleyeceğiniz açıklanır. Bunu SQL Server Management Studio veya bir Kaynak Yöneticisi şablonu kullanarak yapabilirsiniz.
+ Katılımsız PowerShell görevlerini otomatikleştirmek için bir hizmet sorumlusu, yönetilmekte olan Analysis Services sunucuda **Sunucu Yöneticisi** ayrıcalıklarına sahip olmalıdır. Bu makalede, bir Azure AS Server 'daki sunucu yöneticileri rolüne bir hizmet sorumlusu nasıl ekleyeceğiniz açıklanır. Bunu SQL Server Management Studio veya bir Kaynak Yöneticisi şablonu kullanarak yapabilirsiniz. 
+
+> [!NOTE]
+> Hizmet sorumluları doğrudan sunucu yöneticisi rolüne eklenmelidir. Bir güvenlik grubuna hizmet sorumlusu ekleme ve sonra bu güvenlik grubunu sunucu yöneticisi rolüne ekleme desteklenmiyor. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorumlusu olması gerekir.

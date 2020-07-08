@@ -5,11 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de yalıtım için küme işletmen
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077785"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme yalıtımı için en iyi yöntemler
 
@@ -29,7 +30,7 @@ Kubernetes, aynı kümede yer alan ekipleri ve iş yüklerini mantıksal olarak 
   * Daha gelişmiş Zamanlayıcı özellikleri, litre ve tolerans, düğüm seçicileri, düğüm ve pod benzeşimi veya benzeşim toleransı içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi uygulamalar][aks-best-practices-advanced-scheduler].
 * **Ağ** , dışarıda ve dışı trafik akışını denetlemek için ağ ilkelerinin kullanımını içerir.
 * **Kimlik doğrulama ve yetkilendirme** , rol tabanlı erişim denetımı (RBAC) ve Azure ACTIVE DIRECTORY (ad) tümleştirmesi, Pod kimlikleri ve Azure Key Vault gizli dizi kullanıcısını içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][aks-best-practices-identity].
-* **Kapsayıcılar** , güvenlik açıkları için pod güvenlik ilkelerini, Pod güvenlik bağlamlarını, görüntüleri taramayı ve çalışma zamanlarını içerir. Ayrıca, temel alınan düğüme kapsayıcı erişimini kısıtlamak için App koruma sağlamak veya Seccomp (güvenli bilgi Işlem) kullanmayı da içerir.
+* **Kapsayıcılar** , Pod güvenliğini zorlamak, Pod güvenlik bağlamlarının kullanılması ve güvenlik açıkları için hem görüntüleri hem de çalışma zamanını taramak için aks Için Azure ilke eklentisi 'ni içerir. Ayrıca, temel alınan düğüme kapsayıcı erişimini kısıtlamak için App koruma sağlamak veya Seccomp (güvenli bilgi Işlem) kullanmayı da içerir.
 
 ## <a name="logically-isolate-clusters"></a>Kümeleri mantıksal olarak yalıtma
 

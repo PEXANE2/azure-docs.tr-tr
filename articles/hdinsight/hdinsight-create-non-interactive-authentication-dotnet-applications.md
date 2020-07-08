@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 52f90f3ce6d6cd53fcf17f7c735dafe5411303c4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85514499"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077890"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Etkileşimli olmayan .NET uygulamanızdan şunları yapmanız gerekir:
 * Azure Active Directory (Azure AD) uygulama istemci KIMLIĞI. Bkz. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) ve [uygulama kimliği edinme](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 * Azure AD uygulama gizli anahtarı. Bkz. [uygulama kimlik doğrulama anahtarını al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 
@@ -35,7 +35,7 @@ Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir 
 
 **Azure AD uygulamasına sahip rolünü eklemek için**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Bu makalede daha sonra Hive sorgunuzu çalıştıracağınız HDInsight kümesine sahip kaynak grubuna gidin. Çok sayıda kaynak grubunuz varsa, istediğiniz birini bulmak için filtreyi kullanabilirsiniz.
 1. Kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. Geçerli rol atamalarını görmek için **rol atamaları** sekmesini seçin.
@@ -47,9 +47,9 @@ Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir 
 1. Bir C# konsol uygulaması oluşturun.
 2. Aşağıdaki [NuGet](https://www.nuget.org/) paketlerini ekleyin:
 
-        Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.Resources -Pre
+    * `Install-Package Microsoft.Azure.Common.Authentication -Pre`
+    * `Install-Package Microsoft.Azure.Management.HDInsight -Pre`
+    * `Install-Package Microsoft.Azure.Management.Resources -Pre`
 
 3. Aşağıdaki kodu çalıştırın:
 

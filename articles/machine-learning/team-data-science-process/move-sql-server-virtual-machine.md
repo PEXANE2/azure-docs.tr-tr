@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194379"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077040"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
 
@@ -37,7 +38,7 @@ Bu belgede SQL komutlarının SQL Server Management Studio veya Visual Studio Ve
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prereqs"></a>Önkoşullar
 Bu öğreticide şunları kabul edersiniz:
 
 * Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
@@ -186,11 +187,11 @@ Aşağıdaki seçeneklerin her birini aşağıda anladık:
 
     SQL Server bilgisayardan BCP çalıştırırken dosya oluşturmayı Biçimlendir
 
-        bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 
     SQL Server için BCP 'yi uzaktan çalıştırırken dosya oluşturmayı Biçimlendir
 
-        bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n`
 4. Verileri düz dosyalardaki bir SQL Server taşımak için [dosya kaynağından verileri taşıma](#filesource_to_sqlonazurevm) bölümünde açıklanan yöntemlerden herhangi birini kullanın.
 
 ### <a name="sql-database-migration-wizard"></a><a name="sql-migration"></a>SQL Veritabanı Geçiş Sihirbazı

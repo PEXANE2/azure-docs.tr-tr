@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076955"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametre |  | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
 | Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
@@ -86,6 +86,8 @@ Bir `NameIdPolicy` öğe aşağıdaki örneğe benzer şekilde görünür:
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Bu değer, Azure Active Directory talep biçimini seçmesine izin verir. Azure Active Directory, NameID 'yi ikili bir tanımlayıcı olarak verir.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory NameID talebini, geçerli SSO işlemi için benzersiz olan rastgele oluşturulmuş bir değer olarak verir. Bu, değerin geçici olduğu ve kimliği doğrulanmış kullanıcıyı tanımlamak için kullanılamayan anlamına gelir.
 
+`SPNameQualifier`Belirtilmişse, Azure AD yanıta aynı şekilde dahil edilir `SPNameQualifier` .
+
 Azure AD, `AllowCreate` özniteliğini yoksayar.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ Azure AD, `AllowCreate` özniteliğini yoksayar.
 Sağlanmışsa, `ProxyCount` `IDPListOption` Desteklenmeyen özniteliği veya `RequesterID` öğesini eklemeyin.
 
 ### <a name="signature"></a>İmza
-`Signature`Öğelerine bir öğe eklemeyin `AuthnRequest` . Azure AD, imzalı kimlik doğrulama isteklerini doğrulamaz. İstek sahibi doğrulama, yalnızca kayıtlı onaylama tüketici hizmeti URL 'Lerine yanıt vererek sağlanır.
+`Signature`Öğeleri içindeki bir öğesi `AuthnRequest` isteğe bağlıdır. İmza varsa, Azure AD imzalı kimlik doğrulama isteklerini doğrulamaz. İstek sahibi doğrulama, yalnızca kayıtlı onaylama tüketici hizmeti URL 'Lerine yanıt vererek sağlanır.
 
 ### <a name="subject"></a>Özne
 Bir öğesi eklemeyin `Subject` . Azure AD, bir istek için konunun belirtilmesini desteklemez ve sağlandıysa bir hata döndürür.
@@ -157,7 +159,7 @@ Bir öğesi eklemeyin `Subject` . Azure AD, bir istek için konunun belirtilmesi
 
 ### <a name="issuer"></a>Veren
 
-Azure AD, `Issuer` öğesini `https://sts.windows.net/<TenantIDGUID>/` \< TenantIDGUID> 'ın Azure AD KIRACıSıNıN Kiracı kimliği olduğu yere ayarlar.
+Azure AD, `Issuer` öğesini `https://sts.windows.net/<TenantIDGUID>/` \<TenantIDGUID> Azure AD KIRACıSıNıN Kiracı kimliği olduğu konum olarak ayarlar.
 
 Örneğin, veren öğesiyle bir yanıt aşağıdaki örneğe benzeyebilir:
 
@@ -192,7 +194,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 #### <a name="issuer"></a>Veren
 
-Bu, `https://sts.windows.net/<TenantIDGUID>/` \< Azure AD kiracısının Kiracı kimliği olan TenantIDGUID> olarak ayarlanır.
+Bu, `https://sts.windows.net/<TenantIDGUID>/` \<TenantIDGUID> Azure AD kiracısının Kiracı kimliği olduğu yere ayarlanır.
 
 ```
 <Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

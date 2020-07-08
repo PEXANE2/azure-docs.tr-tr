@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253673"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077669"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
 
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim kurmak için başka mekanizmalar kullanabilirsiniz; içindekiler tablosunda "Hızlı Başlangıçlar" bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
@@ -93,7 +93,7 @@ Mantıksal Uygulama Tasarımcısı’nda İstek aşağıdaki gibi görünmelidir
 
 ![Mantıksal Uygulama tasarımcısı - istek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-**E-posta Gönder** eylemi için, isteğin Gövde JSON şemasında geçirilen özellikleri kullanarak e-posta biçimini özelleştirin. Aşağıda bir örnek verilmiştir:
+**E-posta Gönder** eylemi için, isteğin Gövde JSON şemasında geçirilen özellikleri kullanarak e-posta biçimini özelleştirin. Örnek aşağıda verilmiştir:
 
 ![Mantıksal Uygulama tasarımcısı - e-posta gönderme eylemi](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Hata e-postası iş akışı
-Aynı adımları izleyerek başka bir **CopyFailEmail** Logic Apps iş akışı oluşturun. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Aşağıda bir örnek verilmiştir:
+Aynı adımları izleyerek başka bir **CopyFailEmail** Logic Apps iş akışı oluşturun. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Örnek aşağıda verilmiştir:
 
 ![Mantıksal Uygulama tasarımcısı - hata e-postası iş akışı](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Azure veri fabrikasının adı **genel olarak benzersiz**olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *"ADFTutorialDataFactory" Veri Fabrikası adı kullanılamıyor.*
+
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
 4. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
 
@@ -202,10 +203,11 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
    ![Yeni Azure Depolama bağlı hizmeti](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Klasör için `@pipeline().parameters.sourceBlobContainer`, klasör adı için `emp.txt` adını girin. Veri kümesinin klasör yolunu ayarlamak için sourceBlobContainer işlem hattı parametresini kullanırsınız.
 
-   ![Kaynak veri kümesi ayarları](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. **İşlem hattı** sekmesine geçin (veya) ağaç görünümünde işlem hattına tıklayın. **Kaynak Veri Kümesi** için **SourceBlobDataset**’in seçili olduğundan emin olun.
+    ![Kaynak veri kümesi ayarları](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![Kaynak veri kümesi](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. **İşlem hattı** sekmesine geçin (veya) ağaç görünümünde işlem hattına tıklayın. **Kaynak Veri Kümesi** için **SourceBlobDataset**’in seçili olduğundan emin olun.
+      
+   ![Kaynak veri kümesi](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. Özellikler penceresinde **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** için **+ Yeni**’ye tıklayın. Bu adımda, kaynak veri kümesi oluştururken olduğu gibi kopyalama etkinliği için bir havuz veri kümesi oluşturursunuz.
 

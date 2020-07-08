@@ -5,12 +5,12 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu v
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077703"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
 
@@ -30,6 +30,16 @@ Bir AKS kümesinin kimlik bilgilerini güncellemek istediğinizde şunları yapa
 
 * küme tarafından kullanılan mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirin veya
 * bir hizmet sorumlusu oluşturun ve kümeyi bu yeni kimlik bilgilerini kullanacak şekilde güncelleştirin.
+
+### <a name="check-the-expiration-date-of-your-service-principal"></a>Hizmet sorumlunun sona erme tarihini denetleyin
+
+Hizmet sorumlunun sona erme tarihini denetlemek için [az ad SP Credential List][az-ad-sp-credential-list] komutunu kullanın. Aşağıdaki örnek, [az aks Show][az-aks-show] komutunu kullanarak *myresourcegroup* kaynak grubundaki *myakscluster* adlı kümenin hizmet sorumlusu kimliğini alır. Hizmet sorumlusu KIMLIĞI, [az ad SP kimlik bilgileri listesi][az-ad-sp-credential-list] komutuyla kullanılmak üzere *SP_ID* adlı bir değişken olarak ayarlanır.
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
 
 ### <a name="reset-existing-service-principal-credential"></a>Mevcut hizmet sorumlusu kimlik bilgisini Sıfırla
 
@@ -88,7 +98,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
 Hizmet sorumlusu kimlik bilgilerinin AKS 'te güncelleştirilebilmesi birkaç dakika sürer.
@@ -120,4 +130,5 @@ Bu makalede, AKS kümesi için hizmet sorumlusu ve AAD tümleştirme uygulamalar
 [aad-integration]: azure-ad-integration.md
 [create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

@@ -4,15 +4,15 @@ description: Azure Analysis Services yönetim görevlerini otomatikleştirmek i�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f2ffd1ea098bcf98e25958ca40318a65b0ef6605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361464"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077380"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -38,7 +38,7 @@ Hizmet sorumlusu kimlik bilgileri ve sertifikaları, runbook işlemleri için Az
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Sunucu Yöneticisi rolüne hizmet sorumluları ekleme
 
-Analysis Services sunucusu yönetim işlemleri için bir hizmet sorumlusu kullanabilmeniz için, bunu sunucu yöneticileri rolüne eklemeniz gerekir. Daha fazla bilgi için bkz. [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md).
+Analysis Services sunucusu yönetim işlemleri için bir hizmet sorumlusu kullanabilmeniz için, bunu sunucu yöneticileri rolüne eklemeniz gerekir. Hizmet sorumluları doğrudan sunucu yöneticisi rolüne eklenmelidir. Bir güvenlik grubuna hizmet sorumlusu ekleme ve sonra bu güvenlik grubunu sunucu yöneticisi rolüne ekleme desteklenmiyor. Daha fazla bilgi için bkz. [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md).
 
 ## <a name="service-principals-in-connection-strings"></a>Bağlantı dizelerinde hizmet sorumluları
 

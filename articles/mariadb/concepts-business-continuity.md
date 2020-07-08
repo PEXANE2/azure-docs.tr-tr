@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532400"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076581"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda iş sürekliliğini anlama
 
@@ -48,11 +48,12 @@ Diğer seçenek de, coğrafi olarak yedekli yedeklemeler kullanarak sunucuyu ger
 > [!IMPORTANT]
 > Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür.
 
+## <a name="cross-region-read-replicas"></a>Bölgeler arası okuma çoğaltmaları
+
+İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları, MariaDB 'nin ikili günlük çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Otomatik yedeklemeler hakkında daha fazla bilgi edinmek için bkz. [MariaDB Için Azure veritabanı 'Nda yedeklemeler](concepts-backup.md).
-- Azure portal kullanarak bir noktaya geri yüklemek için, bkz. [Azure Portal kullanarak veritabanını zaman noktasına geri yükleme](howto-restore-server-portal.md).
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- [MariaDB Için Azure veritabanı 'nda otomatikleştirilmiş yedeklemeler](concepts-backup.md)hakkında daha fazla bilgi edinin.
+- [Azure Portal](howto-restore-server-portal.md) veya [Azure CLI](howto-restore-server-cli.md)kullanarak nasıl geri yükleyeceğinizi öğrenin.
+- [MariaDB Için Azure veritabanı 'nda çoğaltmaları okuma](concepts-read-replicas.md)hakkında bilgi edinin.

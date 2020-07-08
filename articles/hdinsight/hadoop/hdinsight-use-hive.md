@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471362"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076037"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
@@ -22,7 +23,7 @@ Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı o
 
 HDInsight, belirli iş yükleri için ayarlanmış çeşitli küme türleri sağlar. Aşağıdaki küme türleri genellikle Hive sorguları için kullanılır:
 
-|Küme türü |Açıklama|
+|Küme türü |Description|
 |---|---|
 |Interactive Query|Etkileşimli sorguların yanıt sürelerini geliştirmek için [düşük gecikme süreli analitik işleme (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) işlevselliği sağlayan bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'Ta etkileşimli sorguya başlama](../interactive-query/apache-interactive-query-get-started.md) belgesi.|
 |Hadoop|Toplu işleme iş yükleri için ayarlanmış bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md) belgesi.|
@@ -130,7 +131,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Önceki örnekte, HiveQL deyimleri aşağıdaki eylemleri gerçekleştirir:
 
-|Deyim |Açıklama |
+|Deyim |Description |
 |---|---|
 |TABLOYU BıRAK|Tablo zaten varsa, silin.|
 |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.|
@@ -163,7 +164,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-|Deyim |Açıklama |
+|Deyim |Description |
 |---|---|
 |MEVCUT DEĞILSE CREATE TABLE|Tablo yoksa, oluşturun. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. Tablo Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.|
 |ORC OLARAK DEPOLANıR|Verileri Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.|

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016483"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077312"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -37,7 +38,7 @@ Bir Azure hizmet olarak altyapı (IaaS) sanal makinesi (VM) veya şirket içinde
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| [Yük Devretme Kümelemesi (Always on FCı)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | Düğümler arasında yük devretmek için geçen süre. | Her zaman FCı üzerinde paylaşılan depolama kullandığından, yük devretme sırasında depolama örneğinin aynı görünümü kullanılabilir.
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| [Veritabanı yansıtma (yüksek performanslı mod)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Bir yarı bekleyen sunucu olarak yansıtma sunucusunu kullanan hizmeti zorlamak için geçen süre. | Çoğaltma zaman uyumsuzdur. Yansıtma veritabanı, asıl veritabanının arkasında biraz gecikme alabilir. Gecikme genellikle küçüktür. Ancak asıl veya yansıtma sunucusunun sistemi ağır bir yükün altındaysa büyük hale gelebilir.<br/><br/>Günlük aktarma, veritabanı yansıtma için bir ek olabilir. Zaman uyumsuz veritabanı yansıtma için iyi bir alternatiftir.
 Azure 'da hizmet olarak platform (PaaS) olarak SQL.<br/><br/>Bu dağıtım türü, tek veritabanları ve elastik havuzlar içerir. | Etkin coğrafi çoğaltma | Yük devretme işlemi tetiklendiğinde 30 saniye.<br/><br/>İkincil veritabanlarından biri için yük devretme etkinleştirildiğinde, diğer tüm ikincil öğeler yeni birincil ile otomatik olarak bağlanır. | Beş saniyelik RPO 'SU.<br/><br/>Etkin coğrafi çoğaltma SQL Server her zaman açık teknolojisini kullanır. Anlık görüntü yalıtımı kullanarak birincil veritabanında yürütülen işlemleri ikincil veritabanına zaman uyumsuz olarak çoğaltır.<br/><br/>İkincil verilere hiçbir şekilde kısmi işlem olmadığı garanti edilir.
-Azure 'da etkin coğrafi çoğaltma ile SQL as PaaS yapılandırıldı.<br/><br/>Bu dağıtım türü bir SQL veritabanı yönetilen örnekleri, elastik havuzlar ve tek veritabanlarını içerir. | Otomatik yük devretme grupları | RTO bir saat. | Beş saniyelik RPO 'SU.<br/><br/>Otomatik yük devretme grupları, etkin coğrafi çoğaltmanın en üstünde grup semantiğini sağlar. Ancak aynı zaman uyumsuz çoğaltma mekanizması kullanılır.
+Azure 'da etkin coğrafi çoğaltma ile SQL as PaaS yapılandırıldı.<br/><br/>Bu dağıtım türü, yönetilen örnekler, elastik havuzlar ve tek veritabanlarını içerir. | Otomatik yük devretme grupları | RTO bir saat. | Beş saniyelik RPO 'SU.<br/><br/>Otomatik yük devretme grupları, etkin coğrafi çoğaltmanın en üstünde grup semantiğini sağlar. Ancak aynı zaman uyumsuz çoğaltma mekanizması kullanılır.
 Azure IaaS sanal makinesinde veya şirket içinde SQL Server.| Azure Site Recovery ile çoğaltma | RTO, genellikle 15 dakikadan azdır. Daha fazla bilgi edinmek için [Site Recovery tarafından sunulan RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)makalesini okuyun. | Uygulama tutarlılığı için bir saat ve kilitlenme tutarlılığı için beş dakika. Daha düşük bir RPO arıyorsanız, diğer BCDR teknolojilerini kullanın.
 
 > [!NOTE]

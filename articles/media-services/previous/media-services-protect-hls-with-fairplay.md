@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968774"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058257"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma
 
@@ -65,7 +65,7 @@ Media Services anahtar teslim tarafında aşağıdaki şeyler ayarlanmalıdır:
 
       Aşağıdaki adımlarda, FairPlay için bir. pfx sertifika dosyasının nasıl oluşturulacağı açıklanır:
 
-    1. Kaynağından https://slproweb.com/products/Win32OpenSSL.htmlOpenSSL 'yi yükler.
+    1. Kaynağından OpenSSL 'yi yükler https://slproweb.com/products/Win32OpenSSL.html .
 
         FairPlay sertifikasının ve Apple tarafından sunulan diğer dosyaların bulunduğu klasöre gidin.
     2. Komut satırından aşağıdaki komutu çalıştırın. Bu,. cer dosyasını. ped dosyasına dönüştürür.
@@ -73,7 +73,7 @@ Media Services anahtar teslim tarafında aşağıdaki şeyler ayarlanmalıdır:
         "C:\OpenSSL-Win32\bin\openssl.exe" x509-ın FairPlay. cer-Out FairPlay-out. ped
     3. Komut satırından aşağıdaki komutu çalıştırın. Bu,. PEA dosyasını özel anahtarla bir. pfx dosyasına dönüştürür. . Pfx dosyasının parolasına daha sonra OpenSSL sorulur.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-Export-Out FairPlay-out. pfx-INKEY PrivateKey. ped-ın FairPlay-out. pek-passın dosyası: PrivateKey-PEM-Pass. txt
+        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-Export-Out FairPlay-out. pfx-INKEY PrivateKey. ped-in FairPlay-out. pek-passin file:privatekey-pem-pass.txt
   * **Uygulama sertifikası parolası**:. pfx dosyası oluşturmak için parola.
   * **Uygulama sertifikası parola kimliği**: diğer Media Services anahtarlarını karşıya yükleme biçimine benzer şekilde parolayı karşıya yüklemeniz gerekir. Media Services KIMLIĞINI almak için **Contentkeytype. FairPlayPfxPassword** enum değerini kullanın. Bu, anahtar teslim ilkesi seçeneği içinde kullanılması gereken şeydir.
   * **IV**: Bu, 16 baytlık rastgele bir değerdir. Varlık teslim ilkesindeki IV ile aynı olmalıdır. IV 'yi oluşturur ve her iki yere de koyabilirsiniz: varlık teslim ilkesi ve anahtar teslim ilkesi seçeneği.
@@ -127,7 +127,7 @@ Aşağıda, Media Services lisans teslim hizmetini ve ayrıca dinamik şifreleme
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>FairPlay anahtar teslimini oynatıcı uygulamaları ile kullanma
 İOS SDK 'Yı kullanarak oynatıcı uygulamaları geliştirebilirsiniz. FairPlay içeriğini oynatmak için, lisans değişim protokolünü uygulamanız gerekir. Bu protokol Apple tarafından belirtilmedi. Her bir uygulamaya, anahtar teslim istekleri gönderme işlemi yapılır. Media Services FairPlay anahtar teslimi hizmeti, aşağıdaki biçimde SPC 'nin bir www-form-URL kodlamalı gönderi iletisi olarak gelmesini bekler:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player FairPlay oynatmayı destekler. Daha fazla bilgi için bkz. [Azure Media Player belgeleri](https://amp.azure.net/libs/amp/latest/docs/index.html) .
@@ -562,5 +562,5 @@ namespace DynamicEncryptionWithFairPlay
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

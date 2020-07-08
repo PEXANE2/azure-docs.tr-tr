@@ -2,48 +2,27 @@
 title: Azure Izleyici (Önizleme) ile Python uygulamalarını izleme | Microsoft Docs
 description: Azure Izleyici ile OpenCensus Python 'ı bağlamak için yönergeler sağlar
 ms.topic: conceptual
-author: reyang
-ms.author: reyang
+author: lzchen
+ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: c6b84b25ae85d20ccd7872daf16014e5bed6934b
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bef2f1c48241a3f0215481aeb0da3fcc237ddb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374160"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076646"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
-Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makale, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye gönderme sürecinde size yol gösterecektir.
+Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makalede, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye gönderme işlemi adım adım gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/)kullanılmaktadır, ancak önceki sürümler büyük olasılıkla küçük değişikliklerle çalışacaktır.
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
-
-[Azure Portal](https://portal.azure.com/) oturum açın.
-
-## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Azure Izleyici 'de Application Insights kaynağı oluşturma
-
-İlk olarak Azure Izleyici 'de bir Application Insights kaynak oluşturmanız gerekir ve bu işlem bir izleme anahtarı (Ikey) oluşturur. Ikey daha sonra, Azure Izleyici 'ye telemetri verileri gönderecek şekilde OpenCensus SDK 'sını yapılandırmak için kullanılır.
-
-1. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
-
-   ![Application Insights kaynağı ekleme](./media/opencensus-python/0001-create-resource.png)
-
-1. Bir yapılandırma kutusu görünür. Giriş alanlarını doldurun için aşağıdaki tabloyu kullanın.
-
-   | Ayar        | Değer           | Açıklama  |
-   | ------------- |:-------------|:-----|
-   | **Adı**      | Genel benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Kaynak grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı |
-   | **Konum** | Doğu ABD | Size yakın veya uygulamanızın barındırıldığı yerin yakınında bir konum |
-
-1. **Oluştur**'u seçin.
+- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/release/python-370/)kullanılmaktadır, ancak diğer sürümler büyük olasılıkla küçük değişikliklerle çalışabilse de. SDK yalnızca Python v 2.7 ve v 3.4-v 3.7 destekler.
+- Application Insights [kaynağı](./create-new-resource.md)oluşturun. Kaynağınız için kendi izleme anahtarınızı (Ikey) atadınız.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Izleyici için OpenCensus Python SDK 'Sı ile işaretleme
 
@@ -58,31 +37,30 @@ Paketlerin ve tümleştirmelerin tam listesi için bkz. [Opencensus paketleri](h
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure`Komutu, `PATH` Python yüklemeniz için ayarlanmış bir ortam değişkeni olduğunu varsayar. Bu değişkeni yapılandırmadıysanız, Python yürütülebilirinizin bulunduğu konuma tam dizin yolu sağlamanız gerekir. Sonuç şöyle bir komuttur: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure Izleyici dışarı aktarmak kullanır: izleme, ölçümler ve Günlükler. Bu telemetri türleri hakkında daha fazla bilgi için bkz. [veri platformuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Bu telemetri türlerini üç dışarı aktarmak yoluyla göndermek için aşağıdaki yönergeleri kullanın.
+SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure Izleyici exporler kullanır. Bunlar izliyoruz, ölçümler ve günlükleridir. Bu telemetri türleri hakkında daha fazla bilgi için bkz. [veri platformuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Bu telemetri türlerini üç dışarı aktarmak yoluyla göndermek için aşağıdaki yönergeleri kullanın.
 
 ## <a name="telemetry-type-mappings"></a>Telemetri türü eşlemeleri
 
-OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendiğini sağlayan dışarı layıcılar aşağıda verilmiştir.
+Bu, OpenCensus 'ın Azure Izleyici 'de gördüğünüz telemetri türlerine eşlenme sağladığı dışarı vericiler aşağıda verilmiştir.
 
-![OpenCensus 'den Azure Izleyici 'ye telemetri türlerinin eşlenmesinin ekran görüntüsü](./media/opencensus-python/0012-telemetry-types.png)
+| Observability | Azure Izleyici 'de telemetri türü    | Açıklama                                         |
+|-------------------------|------------------------------------|-----------------------------------------------------|
+| Günlükler                    | İzlemeler, özel durumlar, customEvents   | Günlük telemetrisi, özel durum telemetrisi, olay telemetrisi |
+| Ölçümler                 | Customölçümler, performanceCounters | Özel Ölçüm performans sayaçları                |
+| İzleme                 | İstek bağımlılıkları             | Gelen istekler, giden istekler                |
 
-### <a name="trace"></a>İzleme
+### <a name="logs"></a>Günlükler
 
-> [!NOTE]
-> `Trace`OpenCensus ' de [Dağıtılmış izlemeyi](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ifade eder. `AzureExporter` `requests` `dependency` Azure izleyici 'ye gönderir ve telemetri sağlar.
-
-1. İlk olarak, bazı izleme verilerini yerel olarak oluşturalım. Python boş veya istediğiniz Düzenleyicinizde aşağıdaki kodu girin.
+1. İlk olarak, bazı yerel günlük verileri oluşturalım.
 
     ```python
-    from opencensus.trace.samplers import ProbabilitySampler
-    from opencensus.trace.tracer import Tracer
+    import logging
 
-    tracer = Tracer(sampler=ProbabilitySampler(1.0))
+    logger = logging.getLogger(__name__)
 
     def valuePrompt():
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
+        line = input("Enter a value: ")
+        logger.warning(line)
 
     def main():
         while True:
@@ -92,65 +70,162 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
         main()
     ```
 
-2. Kodu çalıştırmak, sürekli olarak bir değer girmenizi ister. Her giriş ile, değer kabuğa yazdırılır ve OpenCensus Python modülü buna karşılık gelen bir parçasını oluşturacaktır `SpanData` . OpenCensus projesi bir izlemeyi bir [yayılma ağacı olarak](https://opencensus.io/core-concepts/tracing/)tanımlar.
-    
+1. Kod sürekli olarak bir değer girilmesini ister. Her girilen değer için bir günlük girişi yayınlanır.
+
     ```
-    Enter a value: 4
-    4
-    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='15ac5123ac1f6847', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:22.805429Z', end_time='2019-06-27T18:21:44.933405Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
-    Enter a value: 25
-    25
-    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='2e512f846ba342de', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:44.933405Z', end_time='2019-06-27T18:21:46.156787Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
-    Enter a value: 100
-    100
-    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    Enter a value: 24
+    24
+    Enter a value: 55
+    55
+    Enter a value: 123
+    123
+    Enter a value: 90
+    90
     ```
 
-3. Değer girilmesi, sunum amacıyla yararlı olsa da, sonunda `SpanData` Azure izleyici 'ye yayma yapmak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+1. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonuçta günlük verilerini Azure Izleyici 'ye yaymak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin. Ya da, bunu bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
-    from opencensus.ext.azure.trace_exporter import AzureExporter
-    from opencensus.trace.samplers import ProbabilitySampler
-    from opencensus.trace.tracer import Tracer
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
     
     # TODO: replace the all-zero GUID with your instrumentation key.
-    tracer = Tracer(
-        exporter=AzureExporter(
-            connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        sampler=ProbabilitySampler(1.0),
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-
+    
     def valuePrompt():
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
-
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
     def main():
         while True:
             valuePrompt()
-
+    
     if __name__ == "__main__":
         main()
     ```
 
-4. Artık Python betiğini çalıştırdığınızda, yine de değer girmeniz istenir, ancak yalnızca değeri kabukta yazdırılıyor. Oluşturulan `SpanData` Azure izleyici 'ye gönderilir. Yayınlanan yayılmış verileri ' de bulabilirsiniz `dependencies` . Giden istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [bağımlılıkları](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
-Gelen istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [istekleri](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
+1. Dışarı Aktarıcı günlük verilerini Azure Izleyici 'ye gönderir. Verileri altında bulabilirsiniz `traces` . 
+
+    > [!NOTE]
+    > Bu bağlamda, `traces` ile aynı değildir `tracing` . Burada, kullandığınızda `traces` Azure izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . Ancak, `tracing` OpenCensus içindeki bir kavram anlamına gelir ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
+
+    > [!NOTE]
+    > Kök günlükçüsü, uyarı düzeyiyle yapılandırılır. Diğer bir deyişle, daha az önem derecesine sahip olan ve sırasıyla Azure Izleyici 'ye gönderilmemiş olan tüm Günlükler göz ardı edilir. Daha fazla bilgi için bkz. [Belgeler](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel).
+
+1. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkeninde günlük iletilerinize özel özellikler ekleyebilirsiniz. Bu özellikler Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
+    > [!NOTE]
+    > Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü onları yoksayar.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>Docgo uygulamaları için günlüğü yapılandırma
+
+Günlük kaydını, Docgo uygulamalarınız için yukarıdaki uygulama kodunuzda açıkça yapılandırabilir veya Docgo 'nun günlük yapılandırmasında belirtebilirsiniz. Bu kod, Docgo ayarları yapılandırması için kullandığınız herhangi bir dosyaya gidebilir. Docgo ayarlarını yapılandırma hakkında bilgi için bkz. [Docgo ayarları](https://docs.djangoproject.com/en/3.0/topics/settings/). Günlüğe kaydetmeyi yapılandırma hakkında daha fazla bilgi için bkz. [Docgo günlüğü](https://docs.djangoproject.com/en/3.0/topics/logging/).
+
+```python
+ LOGGING = {
+     "handlers": {
+         "azure": {
+             "level": "DEBUG",
+          "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+             "instrumentation_key": "<your-ikey-here>",
+          },
+         "console": {
+             "level": "DEBUG",
+             "class": "logging.StreamHandler",
+             "stream": sys.stdout,
+          },
+       },
+     "loggers": {
+         "logger_name": {"handlers": ["azure", "console"]},
+     },
+ }
+```
+
+Aynı ada sahip günlükçü 'yi yapılandırmanızda belirtilen adla kullandığınızdan emin olun.
+
+```python
+ import logging
+        
+ logger = logging.getLogger("logger_name")
+ logger.warning("this will be tracked")
+```
+
+#### <a name="send-exceptions"></a>Özel durum gönder
+
+OpenCensus Python, Telemetriyi otomatik olarak izlemez ve göndermez `exception` . Bunlar `AzureLogHandler` , Python günlüğü kitaplığı aracılığıyla özel durumlar kullanılarak gönderilir. Normal günlüğe kaydetme ile tıpkı özel özellikler ekleyebilirsiniz.
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
+Özel durumları açıkça günlüğe kaydetmek zorunda olduğunuzdan, bu, Kullanıcı tarafından işlenmeyen özel durumları nasıl günlüğe kaydetmek istediğinize kadar olur. OpenCensus, bir özel durum telemetrisini açıkça günlüğe kaydeden sürece kullanıcının bunu nasıl yapmak istediğini gösteren kısıtlamalar yerleştirmez.
+
+#### <a name="send-events"></a>Olayları gönderme
+
+`customEvent`Telemetrisini, `trace` bunun yerine kullanarak yalnızca Telemetriyi göndereceğiniz şekilde gönderebilirsiniz `AzureEventHandler` .
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureEventHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>'))
+logger.setLevel(logging.INFO)
+logger.info('Hello, World!')
+```
 
 #### <a name="sampling"></a>Örnekleme
 
 OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örneklemeye](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)göz atın.
 
-#### <a name="trace-correlation"></a>İzleme bağıntısı
+#### <a name="log-correlation"></a>Günlük bağıntısı
 
-İzleme verilerinizde telemetri bağıntısı hakkında ayrıntılı bilgi edinmek için, OpenCensus Python [telemetri bağıntı](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)' na göz atın.
+Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [günlükleri tümleştirmesi](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
 
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 
 İzlenen Telemetriyi Azure Izleyici 'ye gönderilmeden önce değiştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
 
+
 ### <a name="metrics"></a>Ölçümler
 
-1. İlk olarak, bazı yerel ölçüm verileri oluşturalım. Kullanıcının Enter tuşuna bastığı süreyi izlemek için basit bir ölçüm oluşturacağız.
+1. İlk olarak, bazı yerel ölçüm verileri oluşturalım. Kullanıcının **ENTER** tuşunu kaç kez seçtireceğini izlemek için basit bir ölçüm oluşturacağız.
 
     ```python
     from datetime import datetime
@@ -190,7 +265,7 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
     if __name__ == "__main__":
         main()
     ```
-2. Kodu çalıştırmak, sürekli olarak ENTER tuşuna basmanız istenir. ENTER tuşuna basıldığı sayıyı izlemek için bir ölçüm oluşturulur. Her giriş ile, değer artırılır ve ölçüm bilgileri konsolda görüntülenir. Bu bilgiler, ölçüm güncellendiği zaman geçerli değeri ve geçerli zaman damgasını içerir.
+1. Kodu tekrar tekrar çalıştırmak, **ENTER**' u seçmenizi ister. **ENTER** 'un kaç kez seçili olduğunu izlemek için bir ölçüm oluşturulur. Her giriş ile, değer artırılır ve ölçüm bilgileri konsolda görüntülenir. Bu bilgiler, ölçüm güncellendiği zaman geçerli değeri ve geçerli zaman damgasını içerir.
 
     ```
     Press enter.
@@ -201,7 +276,7 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonunda ölçüm verilerini Azure Izleyici 'ye yayma istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+1. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonunda ölçüm verilerini Azure Izleyici 'ye yayma istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin. Ya da, bunu bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
     from datetime import datetime
@@ -249,7 +324,7 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
         main()
     ```
 
-4. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında bulabilirsiniz `customMetrics` .
+1. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında bulabilirsiniz `customMetrics` .
 
 #### <a name="performance-counters"></a>Performans sayaçları
 
@@ -262,7 +337,8 @@ exporter = metrics_exporter.new_metrics_exporter(
   connection_string='InstrumentationKey=<your-instrumentation-key-here>')
 ...
 ```
-Şu anda gönderilen performans sayaçlarının listesi aşağıda verilmiştir:
+
+Şu anda bu performans sayaçları gönderiliyor:
 
 - Kullanılabilir bellek (bayt)
 - CPU Işlemci zamanı (yüzde)
@@ -275,20 +351,25 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Daha fazla bi
 
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 
-İzlenen Telemetriyi Azure Izleyici 'ye gönderilmeden önce değiştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+İzlenen telemetrinin Azure Izleyici 'ye gönderilmeden önce nasıl değiştirileceği hakkında bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
 
-### <a name="logs"></a>Günlükler
+### <a name="tracing"></a>İzleme
 
-1. İlk olarak, bazı yerel günlük verileri oluşturalım.
+> [!NOTE]
+> OpenCensus ' de, `tracing` [Dağıtılmış izlemeyi](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ifade eder. `AzureExporter` `requests` `dependency` Azure izleyici 'ye gönderir ve telemetri sağlar.
+
+1. İlk olarak, bazı izleme verilerini yerel olarak oluşturalım. Python boştayken veya istediğiniz Düzenleyicinizde aşağıdaki kodu girin:
 
     ```python
-    import logging
+    from opencensus.trace.samplers import ProbabilitySampler
+    from opencensus.trace.tracer import Tracer
 
-    logger = logging.getLogger(__name__)
+    tracer = Tracer(sampler=ProbabilitySampler(1.0))
 
     def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
 
     def main():
         while True:
@@ -298,157 +379,76 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Daha fazla bi
         main()
     ```
 
-2.  Kod sürekli olarak bir değer girilmesini ister. Her girilen değer için bir günlük girişi yayınlanır.
-
+1. Kodu sürekli olarak çalıştırmak sizden bir değer girmenizi ister. Her giriş ile, değer kabuğa yazdırılır. OpenCensus Python modülü ilgili bir parçasını oluşturur `SpanData` . OpenCensus projesi bir izlemeyi bir [yayılma ağacı olarak](https://opencensus.io/core-concepts/tracing/)tanımlar.
+    
     ```
-    Enter a value: 24
-    24
-    Enter a value: 55
-    55
-    Enter a value: 123
-    123
-    Enter a value: 90
-    90
+    Enter a value: 4
+    4
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='15ac5123ac1f6847', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:22.805429Z', end_time='2019-06-27T18:21:44.933405Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    Enter a value: 25
+    25
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='2e512f846ba342de', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:44.933405Z', end_time='2019-06-27T18:21:46.156787Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    Enter a value: 100
+    100
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Değer girilmesi, tanıtım amacıyla yararlı olsa da, sonuçta günlük verilerini Azure Izleyici 'ye yaymak istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin veya bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
+1. Değer girilmesi, sunum amaçları için yararlı olsa da, sonunda `SpanData` Azure izleyici 'ye yayma istiyoruz. Bağlantı dizenizi doğrudan dışarı aktarılmasına geçirin. Ya da, bunu bir ortam değişkeninde belirtebilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` . Aşağıdaki kod örneğine göre kodunuzu önceki adımdan değiştirin:
 
     ```python
-    import logging
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
+    from opencensus.ext.azure.trace_exporter import AzureExporter
+    from opencensus.trace.samplers import ProbabilitySampler
+    from opencensus.trace.tracer import Tracer
     
     # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    tracer = Tracer(
+        exporter=AzureExporter(
+            connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
+        sampler=ProbabilitySampler(1.0),
     )
-    
+
     def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
-    
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
+
     def main():
         while True:
             valuePrompt()
-    
+
     if __name__ == "__main__":
         main()
     ```
 
-4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. Verileri altında bulabilirsiniz `traces` . 
-
-    > [!NOTE]
-    > `traces`Bu bağlamda ile aynı değildir `Tracing` . `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
-
-    > [!NOTE]
-    > Kök günlükçüsü, düzey uyarısı ile yapılandırılır. Diğer bir deyişle, daha az önem derecesine sahip olan gönderdiğiniz tüm Günlükler yok sayılır ve sırasıyla Azure Izleyici 'ye gönderilmez. Daha fazla bilgi için bu [belgelere](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) bakın.
-
-5. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
-    > [!NOTE]
-    > Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü bunları yoksayar.
-
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
-
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
-
-    # Use properties in logging statements
-    logger.warning('action', extra=properties)
-    ```
-
-#### <a name="configure-logging-for-django-applications"></a>Docgo uygulamaları için günlüğü yapılandırma
-
-Günlük kaydını, Docgo uygulamalarınız için yukarıdaki uygulama kodunuzda açıkça yapılandırabilir veya Docgo 'nun günlük yapılandırmasında belirtebilirsiniz. Bu kod, Docgo ayarları yapılandırması için kullandığınız herhangi bir dosyaya gidebilir. Günlüğe kaydetmeyi yapılandırma hakkında daha fazla bilgi [için bkz. docgo](https://docs.djangoproject.com/en/3.0/topics/settings/) ayarlarını yapılandırma ve docgo [günlüğü](https://docs.djangoproject.com/en/3.0/topics/logging/) .
-
-    ```python
-    LOGGING = {
-        "handlers": {
-            "azure": {
-                "level": "DEBUG",
-                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
-                "instrumentation_key": "<your-ikey-here>",
-            },
-            "console": {
-                "level": "DEBUG",
-                "class": "logging.StreamHandler",
-                "stream": sys.stdout,
-            },
-        },
-        "loggers": {
-            "logger_name": {"handlers": ["azure", "console"]},
-        },
-    }
-    ```
-
-Yapılandırmanızda belirtilen adla aynı ada sahip günlükçü kullandığınızdan emin olun.
-
-    ```python
-    import logging
-        
-    logger = logging.getLogger("logger_name")
-    logger.warning("this will be tracked")
-    ```
-
-#### <a name="sending-exceptions"></a>Özel durumlar gönderiliyor
-
-OpenCensus Python, Telemetriyi otomatik olarak izlemez ve göndermez `exception` . Bunlar, `AzureLogHandler` Python günlüğü kitaplığı aracılığıyla özel durumlar kullanılarak üzerinden gönderilir. Normal günlüğe kaydetme ile tıpkı özel özellikler ekleyebilirsiniz.
-
-```python
-import logging
-
-from opencensus.ext.azure.log_exporter import AzureLogHandler
-
-logger = logging.getLogger(__name__)
-# TODO: replace the all-zero GUID with your instrumentation key.
-logger.addHandler(AzureLogHandler(
-    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-)
-
-properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
-
-# Use properties in exception logs
-try:
-    result = 1 / 0  # generate a ZeroDivisionError
-except Exception:
-    logger.exception('Captured an exception.', extra=properties)
-```
-Özel durumları açıkça günlüğe yazmanız gerektiğinden, bu, işlenmemiş özel durumları nasıl günlüğe kaydetmek istediğinizdeki kullanıcıya kadar olur. OpenCensus, bir özel durum telemetrisini açık bir şekilde günlüğe kaydeden sürece kullanıcının bunu nasıl yapmak istediğini gösteren kısıtlamalar yerleştirmez.
+1. Artık Python betiğini çalıştırdığınızda, yine de değer girmeniz istenir, ancak yalnızca değeri kabukta yazdırılıyor. Oluşturulan `SpanData` Azure izleyici 'ye gönderilir. Yayınlanan yayılmış verileri ' de bulabilirsiniz `dependencies` . Giden istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [bağımlılıkları](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
+Gelen istekler hakkında daha fazla bilgi için bkz. OpenCensus Python [istekleri](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
 #### <a name="sampling"></a>Örnekleme
 
 OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örneklemeye](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)göz atın.
 
-#### <a name="log-correlation"></a>Günlük bağıntısı
+#### <a name="trace-correlation"></a>İzleme bağıntısı
 
-Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [günlükleri tümleştirmesi](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+İzleme verilerinizde telemetri bağıntısı hakkında daha fazla bilgi için, OpenCensus Python [telemetri bağıntı](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)' na göz atın.
 
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 
-İzlenen Telemetriyi Azure Izleyici 'ye gönderilmeden önce değiştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+İzlenen telemetrinin Azure Izleyici 'ye gönderilmeden önce nasıl değiştirileceği hakkında daha fazla bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
 
-## <a name="configure-azure-monitor-exporters"></a>Azure Izleyici Exporicileri yapılandırma
+## <a name="configure-azure-monitor-exporters"></a>Azure Izleyici exporicileri yapılandırma
 
-Yukarıda gösterildiği gibi, her biri Azure Izleyici 'ye farklı telemetri türleri gönderen ve OpenCensus destekleyen üç farklı Azure Izleyici dışarı aktarmak vardır. Her bir dışarı aktarıcı tarafından gönderilen telemetri türlerini görmek için aşağıya bakın.
+Gösterildiği gibi, OpenCensus 'i destekleyen üç farklı Azure Izleyici dışarı aktarabilirliğini de vardır. Her biri Azure Izleyici 'ye farklı telemetri türleri gönderir. Her bir dışarı aktarma tarafından gönderilen telemetri türlerini görmek için aşağıdaki listeye bakın.
 
-Her bir dışarı aktarma, oluşturuculardan geçen yapılandırma için aynı bağımsız değişkenleri kabul eder. Aşağıda, her birine ilişkin ayrıntıları görebilirsiniz.
+Her bir dışarı aktarma, oluşturuculardan geçen yapılandırma için aynı bağımsız değişkenleri kabul eder. Her biri hakkındaki ayrıntıları burada görebilirsiniz:
 
-1. `connection_string`-Azure Izleyici kaynağına bağlanmak için kullanılan bağlantı dizesi. Üzerinden önceliklidir `instrumentation_key` .
-2. `enable_standard_metrics`-İçin kullanılır `AzureMetricsExporter` . Dışarı Aktarıcı 'nın [performans sayacı](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) ölçümlerini Azure izleyici 'ye otomatik olarak göndermesini bildirir. Varsayılan olarak olur `True` .
-3. `export_interval`-Dışarı aktarmanın saniye cinsinden sıklığını belirtmek için kullanılır.
-4. `instrumentation_key`-Azure Izleyici kaynağına bağlanmak için kullanılan izleme anahtarı.
-5. `logging_sampling_rate`-İçin kullanılır `AzureLogHandler` . Günlükleri dışarı aktarmak için bir örnekleme hızı [0, 1.0] sağlar. Varsayılan olarak 1,0 ' dir.
-6. `max_batch_size`-Aynı anda verilen telemetri en büyük boyutunu belirtir.
-7. `proxies`-Azure Izleyici 'ye veri göndermek için kullanılacak bir proxy dizisi belirtir. Daha fazla ayrıntı için bkz. [proxy 'ler](https://requests.readthedocs.io/en/master/user/advanced/#proxies) .
-8. `storage_path`-Yerel depolama klasörünün bulunduğu konum (gönderilmemiş telemetri). `opencensus-ext-azure`V 1.0.3 itibariyle varsayılan yol, işletim sistemi geçici dizini + ' dır `opencensus-python`  +  `your-ikey` . Ön v 1.0.3 için varsayılan yol $USER + ' dır `.opencensus`  +  `.azure`  +  `python-file-name` .
+- `connection_string`: Azure Izleyici kaynağına bağlanmak için kullanılan bağlantı dizesi. Üzerinden önceliklidir `instrumentation_key` .
+- `enable_standard_metrics`: İçin kullanılır `AzureMetricsExporter` . Dışarı Aktarıcı 'nın [performans sayacı](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) ölçümlerini Azure izleyici 'ye otomatik olarak göndermesini bildirir. Varsayılan olarak olur `True` .
+- `export_interval`: Verme işleminin saniye cinsinden sıklığını belirtmek için kullanılır.
+- `instrumentation_key`: Azure Izleyici kaynağına bağlanmak için kullanılan izleme anahtarı.
+- `logging_sampling_rate`: İçin kullanılır `AzureLogHandler` . Günlükleri dışarı aktarmak için bir örnekleme hızı [0, 1.0] sağlar. Varsayılan olarak 1,0 ' dir.
+- `max_batch_size`: Bir kerede verilen telemetri en büyük boyutunu belirtir.
+- `proxies`: Azure Izleyici 'ye veri göndermek için kullanılacak bir proxy dizisi belirtir. Daha fazla bilgi için bkz. [proxy 'ler](https://requests.readthedocs.io/en/master/user/advanced/#proxies).
+- `storage_path`: Yerel depolama klasörünün bulunduğu konum (gönderilmemiş telemetri). `opencensus-ext-azure`V 1.0.3 itibariyle varsayılan yol, işletim sistemi geçici dizini + ' dır `opencensus-python`  +  `your-ikey` . V 1.0.3 'den önce varsayılan yol $USER + ' dır `.opencensus`  +  `.azure`  +  `python-file-name` .
 
 ## <a name="view-your-data-with-queries"></a>Sorgular ile verilerinizi görüntüleme
 
