@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188425"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
 1. [Microsoft Azure Kamu portalında](https://portal.azure.us/)oturum açmak için Microsoft hesabı kimlik bilgilerinizi kullanın.
-2. Kamu portalı 'nda ve ardından Market **+** ' te, **Tümünü göster**' e tıklayın. _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, kamu portalında **+** ve sonra **depolama**altında **StorSimple fiziksel cihaz Serisi**' ne tıklayın.
+2. Kamu portalı 'nda **+** ve ardından Market ' te, **Tümünü göster**' e tıklayın. _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, kamu portalında **+** ve sonra **depolama**altında **StorSimple fiziksel cihaz Serisi**' ne tıklayın.
 3. **StorSimple Cihaz Yöneticisi** dikey penceresinde aşağıdaki adımları gerçekleştirin:
    
    1. Hizmetiniz için benzersiz bir **Kaynak adı** sağlayın. Bu ad, hizmetinizi tanımlamak için kullanılabilecek kolay bir addır. Ad harf, rakam ve tirelerden oluşan 2-50 karakter arası uzunlukta olabilir. Ad bir harf veya sayıyla başlamalı ve bitmelidir.

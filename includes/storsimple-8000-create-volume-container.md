@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 467af776af95cf035121250fdcadd2fee65d9805
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188416"
 ---
 #### <a name="to-create-a-volume-container"></a>Birim kapsayıcısı oluşturmak için
@@ -31,7 +31,7 @@ ms.locfileid: "67188416"
       Bant genişliği kullanım bilgileriniz varsa, **Bant genişliği şablonu seçin**’i belirterek zamanlama temelinde bant genişliği ayırabilirsiniz. Adım adım bir yordam için [Bant genişliği şablonu ekleyin](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)’e gidin.
 
       ![Birim kapsayıcısı dikey penceresi](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. **Oluştur**' a tıklayın.
+   7. **Oluştur**'a tıklayın.
 
         ![Birim kapsayıcısı dikey penceresi](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

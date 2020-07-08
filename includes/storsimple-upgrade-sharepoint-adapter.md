@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188414"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010 ' i SharePoint 2013 ' ye yükseltin ve ardından SharePoint için StorSomple bağdaştırıcısını yükledikten sonra
@@ -29,7 +29,7 @@ ms.locfileid: "67188414"
 > Aşağıdaki nedenlerden dolayı bu yükseltmenin planlı bir bakım penceresi sırasında gerçekleşmesini zamanlamanız gerekir:
 > 
 > * Daha önce externalized içerik, bağdaştırıcı yeniden yükleninceye kadar kullanılamayacak.
-> * SharePoint için StorSimple bağdaştırıcısının önceki sürümünü kaldırdıktan sonra siteye yüklenen içerikler, ancak yeni sürümü yüklemeden önce içerik veritabanında depolanır. Yeni bağdaştırıcıyı yükledikten sonra bu içeriği StorSimple cihazına taşımanız gerekir. İçeriği geçirmek için SharePoint 'e `RBS Migrate()` dahil edilen Microsoft PowerShell cmdlet 'ini kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](https://technet.microsoft.com/library/ff628255.aspx). 
+> * SharePoint için StorSimple bağdaştırıcısının önceki sürümünü kaldırdıktan sonra siteye yüklenen içerikler, ancak yeni sürümü yüklemeden önce içerik veritabanında depolanır. Yeni bağdaştırıcıyı yükledikten sonra bu içeriği StorSimple cihazına taşımanız gerekir. `RBS Migrate()`İçeriği geçirmek Için SharePoint 'e dahil edilen Microsoft PowerShell cmdlet 'ini kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](https://technet.microsoft.com/library/ff628255.aspx). 
 > 
 > 
 

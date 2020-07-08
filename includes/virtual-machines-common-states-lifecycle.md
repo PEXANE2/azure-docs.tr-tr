@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: shandilvarun
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188310"
 ---
 Azure sanal makineleri (VM 'Ler), *sağlama* ve *Güç* durumlarına kategorilere ayrılmamış farklı durumlara göre gider. Bu makalenin amacı, bu durumları açıklamanız ve müşterilerin örnek kullanım için faturalandırılırken özel olarak vurgulanmasını sağlamaktır. 
@@ -210,7 +210,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 </tr>
 <tr>
 <td width="162">
-<p><b>Silinmesinden</b></p>
+<p><b>Siliniyor</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -228,7 +228,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 </td>
 <td width="366">
 <p>Bir VM, özelleştirilmiş bir görüntüyle değil bir işletim sistemi görüntüsüyle oluşturulduysa, aşağıdaki alt durumlar gözlemlenebilir:</p>
-<p>1. <b>Osprovisioningınprogress</b> &ndash; sanal makinesi çalışıyor ve konuk işletim sistemi yüklemesi devam ediyor. <p /> 
+<p>1. <b>Osprovisioningınprogress</b> &ndash; VM çalışıyor ve konuk işletim sistemi yüklemesi devam ediyor. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>Osprovisioningtam</b> &ndash; kısa ömürlü durum. Herhangi bir uzantının yüklenmesi gerekmediği takdirde VM hızlı bir şekilde **başarılı** olarak geçiş yapar. Uzantıların yüklenmesi zaman alabilir. <br />
+<p>2. <b>Osprovisioningtamamlanmıştır</b> &ndash; Kısa ömürlü durum. Herhangi bir uzantının yüklenmesi gerekmediği takdirde VM hızlı bir şekilde **başarılı** olarak geçiş yapar. Uzantıların yüklenmesi zaman alabilir. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>

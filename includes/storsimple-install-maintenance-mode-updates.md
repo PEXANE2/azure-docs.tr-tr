@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188406"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Bakım modu güncelleştirmelerini StorSimple için Windows PowerShell aracılığıyla yüklemek için
@@ -24,7 +24,7 @@ ms.locfileid: "67188406"
    
     `Get-HcsUpdateStatus`
    
-    `RunInProgress` İse `True`güncelleştirme hala devam etmektedir. `RunInProgress` İse `False`, güncelleştirmenin tamamlandığını gösterir.  
+    `RunInProgress`İse `True` güncelleştirme hala devam etmektedir. `RunInProgress`İse `False` , güncelleştirmenin tamamlandığını gösterir.  
 8. Güncelleştirme geçerli denetleyiciye yüklendiğinde ve yeniden başlatıldığında, diğer denetleyiciye bağlanın ve 1 ile 6 arasındaki adımları gerçekleştirin.
 9. Her iki denetleyici güncelleştirildikten sonra bakım modundan çıkın. Yönergeler için bkz. [4. Adım: bakım modundan çıkma](../articles/storsimple/storsimple-update-device.md#step4) .
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188317"
 ---
 Bu adımda, yük dengeli uç nokta 59999 (daha önce belirtildiği gibi) için araştırma bağlantı noktasını açmak üzere bir güvenlik duvarı kuralı ve kullanılabilirlik grubu dinleyicisi bağlantı noktasını açmak için başka bir kural oluşturursunuz. Kullanılabilirlik grubu çoğaltmaları içeren VM 'lerde yük dengeli uç nokta oluşturduğunuz için, ilgili VM 'lerde yoklama bağlantı noktasını ve dinleyici bağlantı noktasını açmanız gerekir.

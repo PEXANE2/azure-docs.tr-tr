@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 9ac7966538102273b91d6b7f15b90e18ceedd421
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83779928"
 ---
 Ayrıca, cihazın performansını izlemek için ölçümleri ve cihaz sorunlarını gidermeye yönelik bazı örnekleri görüntüleyebilirsiniz.
@@ -47,4 +47,4 @@ Seçili cihaz ölçümleri için bir grafik oluşturmak üzere Azure portal aşa
 
 8. Grafik verilerini bir Excel elektronik tablosuna aktarmak veya paylaşabileceğiniz grafiğin bir bağlantısını almak için komut çubuğundan Share (paylaşma) seçeneğini belirleyin.
 
-    ![Verileri dışarı aktar](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)
+    ![Verileri dışarı aktarma](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: d679767f1a4be3ecdcf1811662c72dbbe2df33a0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014800"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Veritabanı Altyapısı’nın varsayılan örneği için Windows güvenlik duvarında TCP bağlantı noktalarını açma
@@ -29,7 +29,7 @@ ms.locfileid: "84014800"
     **Güvenlik Notu:****Bağlantı güvenliyse izin ver** seçeneği ek güvenlik sağlayabilir. Ortamınızda ek güvenlik seçenekleri yapılandırmak istiyorsanız bu seçeneği belirtin.
    
     ![Bağlantılara İzin Verme](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. **Profil** iletişim kutusunda **Genel**, **Özel** ve **Etki Alanı**’nı seçin. Ardından **İleri**’ye tıklayın.
+8. **Profil** iletişim kutusunda **Genel**, **Özel** ve **Etki Alanı**’nı seçin. Ardından **İleri**'ye tıklayın.
    
     **Güvenlik Notu:****Genel** seçeneği belirlendiğinde, İnternet üzerinden erişime izin verilir. Mümkün olduğu durumlarda daha kısıtlayıcı bir profil seçin.
    
