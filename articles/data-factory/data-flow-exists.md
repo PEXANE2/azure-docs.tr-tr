@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982641"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ile ```SQL WHERE NOT EXISTS```benzerdir.
+Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ile benzerdir ```SQL WHERE NOT EXISTS``` .
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
@@ -54,7 +53,7 @@ Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dı�
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>
@@ -67,7 +66,7 @@ Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dı�
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, sol akış `checkForChanges` `NameNorm2` ve sağ Akış `TypeConversions`alan adlı bir mevcut dönüşümdir.  Exists koşulu, her akıştaki `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` `EMPID` ve `Region` sütunlarının her ikisi de eşleşiyorsa true döndüren ifadedir. Varlığını denetliyoruz, `negate` yanlış şeklindedir. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, bu `broadcast` nedenle değer `'none'`içeriyor.
+Aşağıdaki örnek, `checkForChanges` sol akış `NameNorm2` ve sağ Akış alan adlı bir mevcut dönüşümdir `TypeConversions` .  Exists koşulu, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` `EMPID` her akıştaki ve sütunlarının her ikisi de eşleşiyorsa true döndüren ifadedir `Region` . Varlığını denetliyoruz, `negate` yanlış şeklindedir. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, bu nedenle `broadcast` değer içeriyor `'none'` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

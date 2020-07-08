@@ -15,10 +15,9 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926723"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
@@ -27,7 +26,7 @@ ms.locfileid: "82926723"
 
 ## <a name="using-the-id_token"></a>İd_token kullanma
 
-KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrulamak ve bunlarla ilgili yararlı bilgiler almak için kullanılmalıdır; bir [erişim belirtecinin](access-tokens.md)yerine yetkilendirme için kullanılmamalıdır. Sağladığı talepler, uygulamanızın içindeki UX için, bir veritabanında anahtarlar olarak ve istemci uygulamasına erişim sağlamak için kullanılabilir.  Bir veritabanı için anahtar oluştururken, `idp` Konuk senaryolarını kullanırken kullanılmamalıdır.  Anahtar oluşturma, gerektiğinde yönlendirme `sub` için `tid` kullanılan tek başına (her zaman benzersiz) yapılmalıdır.  Hizmetler `oid` + `sub` + `tid` arasında veri paylaşmanız gerekiyorsa, birden çok hizmetin hepsi aynı `oid`olduğundan çalışacaktır.
+KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrulamak ve bunlarla ilgili yararlı bilgiler almak için kullanılmalıdır; bir [erişim belirtecinin](access-tokens.md)yerine yetkilendirme için kullanılmamalıdır. Sağladığı talepler, uygulamanızın içindeki UX için, bir veritabanında anahtarlar olarak ve istemci uygulamasına erişim sağlamak için kullanılabilir.  Bir veritabanı için anahtar oluştururken, `idp` Konuk senaryolarını kullanırken kullanılmamalıdır.  Anahtar oluşturma `sub` , `tid` gerektiğinde yönlendirme için kullanılan tek başına (her zaman benzersiz) yapılmalıdır.  Hizmetler arasında veri paylaşmanız gerekiyorsa, `oid` + `sub` + `tid` birden çok hizmetin hepsi aynı olduğundan çalışacaktır `oid` .
 
 ## <a name="claims-in-an-id_token"></a>İd_token talepler
 
@@ -51,38 +50,38 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçim | Açıklama |
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
-|`kid` | Dize | Bu belirteci imzalamak için kullanılan ortak anahtar için parmak izi. Hem v 1.0 hem de v 2.0 `id_tokens`içinde yayınlanır. |
-|`x5t` | Dize | Aynı (kullanımda ve değerde) olarak `kid`. Bununla birlikte, bu, uyumluluk amacıyla yalnızca v 1.0 `id_tokens` ile yayılan eski bir taleptür. |
+|`kid` | Dize | Bu belirteci imzalamak için kullanılan ortak anahtar için parmak izi. Hem v 1.0 hem de v 2.0 içinde yayınlanır `id_tokens` . |
+|`x5t` | Dize | Aynı (kullanımda ve değerde) olarak `kid` . Bununla birlikte, bu, uyumluluk amacıyla yalnızca v 1.0 ile yayılan eski bir taleptür `id_tokens` . |
 
 ### <a name="payload-claims"></a>Yük talepleri
 
-Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, kullanıcıdan kullanıcının adı `groups` hakkında bilgi talep edebilir.
+Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, `groups` kullanıcıdan kullanıcının adı hakkında bilgi talep edebilir.
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçim | Açıklama |
 |-----|--------|-------------|
-|`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. ' `id_tokens`De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
-|`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0`.  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad`. Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
+|`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. `id_tokens`' De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
+|`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0` .  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
 |`iat` |  int, UNIX zaman damgası | "Çıkarılan", bu belirteç için kimlik doğrulamanın ne zaman oluştuğunu gösterir.  |
-|`idp`|Dize, genellikle STS URI 'SI | Belirtecin öznesinin kimliğini doğrulayan kimlik sağlayıcısını kaydeder. Bu değer, Kullanıcı hesabı veren konukiyle aynı kiracıda olmadığı sürece veren talebinin değeriyle aynıdır, örneğin. Talep yoksa, bunun yerine, değerinin `iss` kullanılabileceği anlamına gelir.  Bir kuruluş bağlamında kullanılan kişisel hesaplar için (örneğin, bir Azure AD kiracısına davet edilen kişisel hesap), `idp` talep ' Live.com ' veya Microsoft hesabı kiracıyı `9188040d-6c67-4c5b-b112-36a304b66dad`içeren bir STS URI 'si olabilir. |
+|`idp`|Dize, genellikle STS URI 'SI | Belirtecin öznesinin kimliğini doğrulayan kimlik sağlayıcısını kaydeder. Bu değer, Kullanıcı hesabı veren konukiyle aynı kiracıda olmadığı sürece veren talebinin değeriyle aynıdır, örneğin. Talep yoksa, bunun yerine, değerinin kullanılabileceği anlamına gelir `iss` .  Bir kuruluş bağlamında kullanılan kişisel hesaplar için (örneğin, bir Azure AD kiracısına davet edilen kişisel hesap), `idp` talep ' Live.com ' veya Microsoft hesabı kiracıyı içeren BIR STS URI 'si olabilir `9188040d-6c67-4c5b-b112-36a304b66dad` . |
 |`nbf` |  int, UNIX zaman damgası | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar.|
 |`exp` |  int, UNIX zaman damgası | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir.  Bir kaynağın bu süreden önce belirteci reddedebileceğini unutmayın. Örneğin, kimlik doğrulamasında bir değişiklik gerekliyse veya bir belirteç iptali algılanırsa. |
 | `c_hash`| Dize |Kod karması, yalnızca KIMLIK belirteci bir OAuth 2,0 yetkilendirme koduyla verildiğinde KIMLIK belirteçlerine dahil edilir. Bir yetkilendirme kodunun gerçekliğini doğrulamak için kullanılabilir. Bu doğrulamayı gerçekleştirme hakkında daha fazla bilgi için [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html)bakın. |
 |`at_hash`| Dize |Erişim belirteci karması yalnızca KIMLIK belirteci bir OAuth 2,0 erişim belirteciyle verildiğinde KIMLIK belirteçlerine dahil edilir. Bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamayı gerçekleştirme hakkında daha fazla bilgi için [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html)bakın. |
 |`aio` | Donuk dize | Azure AD tarafından belirteç yeniden kullanımı için veri kaydetmek üzere kullanılan bir iç talep. Göz ardı edilmelidir.|
-|`preferred_username` | Dize | Kullanıcıyı temsil eden birincil Kullanıcı adı. Belirtilen biçim olmadan bir e-posta adresi, telefon numarası veya genel Kullanıcı adı olabilir. Değeri değişebilir ve zaman içinde değişebilir. Değişebilir olduğundan, bu değer yetkilendirme kararları almak için kullanılmamalıdır. `profile` Kapsam bu talebi almak için gereklidir.|
-|`email` | Dize | Talep `email` , bir e-posta adresine sahip konuk hesapları için varsayılan olarak mevcuttur.  Uygulamanız, `email` [isteğe bağlı talebi](active-directory-optional-claims.md)kullanarak yönetilen kullanıcılar (kaynakla aynı kiracıya ait olanlar) için e-posta talebi talep edebilir.  V 2.0 uç noktasında, uygulamanız `email` OpenID Connect kapsamını da talep edebilir. talebi almak için hem isteğe bağlı talebi hem de kapsamı istemeniz gerekmez.  E-posta talebi yalnızca kullanıcının profil bilgilerinde adreslenebilir postaları destekler. |
-|`name` | Dize | `name` Talep, belirtecin konusunu tanımlayan, insan tarafından okunabilen bir değer sağlar. Değerin benzersiz olması garanti edilmez, değişebilir ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. `profile` Kapsam bu talebi almak için gereklidir. |
+|`preferred_username` | Dize | Kullanıcıyı temsil eden birincil Kullanıcı adı. Belirtilen biçim olmadan bir e-posta adresi, telefon numarası veya genel Kullanıcı adı olabilir. Değeri değişebilir ve zaman içinde değişebilir. Değişebilir olduğundan, bu değer yetkilendirme kararları almak için kullanılmamalıdır. `profile`Kapsam bu talebi almak için gereklidir.|
+|`email` | Dize | `email`Talep, bir e-posta adresine sahip konuk hesapları için varsayılan olarak mevcuttur.  Uygulamanız, `email` [isteğe bağlı talebi](active-directory-optional-claims.md)kullanarak yönetilen kullanıcılar (kaynakla aynı kiracıya ait olanlar) için e-posta talebi talep edebilir.  V 2.0 uç noktasında, uygulamanız `email` OpenID Connect kapsamını da talep edebilir. talebi almak için hem isteğe bağlı talebi hem de kapsamı istemeniz gerekmez.  E-posta talebi yalnızca kullanıcının profil bilgilerinde adreslenebilir postaları destekler. |
+|`name` | Dize | `name`Talep, belirtecin konusunu tanımlayan, insan tarafından okunabilen bir değer sağlar. Değerin benzersiz olması garanti edilmez, değişebilir ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. `profile`Kapsam bu talebi almak için gereklidir. |
 |`nonce`| Dize | Nonce, ıDP 'ye özgün/Yetkilendir isteğine dahil edilen parametreyle eşleşir. Eşleşmiyorsa, uygulamanız belirteci reddetmelidir. |
-|`oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity sistemindeki bir nesne için sabit tanımlayıcı. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, `oid` talepteki aynı değer de alınır. Microsoft Graph, bu KIMLIĞI verilen kullanıcı hesabının `id` özelliği olarak döndürür. Birden çok `oid` uygulamanın kullanıcıları ilişkilendirme olanağı sağladığından, bu `profile` talebi almak için kapsamın olması gerekir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. `oid` Talep bir GUID 'dir ve yeniden kullanılamaz. |
+|`oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity sistemindeki bir nesne için sabit tanımlayıcı. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, talepteki aynı değer de alınır `oid` . Microsoft Graph, bu KIMLIĞI `id` verilen kullanıcı hesabının özelliği olarak döndürür. `oid`Birden çok uygulamanın kullanıcıları ilişkilendirme olanağı sağladığından, `profile` Bu talebi almak için kapsamın olması gerekir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. `oid`Talep BIR GUID 'dir ve yeniden kullanılamaz. |
 |`roles`| Dizeler dizisi | Oturum açan kullanıcıya atanan roller kümesi. |
 |`rh` | Donuk dize |Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Konu, belirli bir uygulama KIMLIĞI için benzersiz bir tanımlayıcıdır. Tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya olmayabilir. |
-|`tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eden bir GUID. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Kapsam bu talebi almak için gereklidir. |
-|`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 `id_tokens`'da verilir. |
+|`tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eden bir GUID. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad` . `profile`Kapsam bu talebi almak için gereklidir. |
+|`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 'da verilir `id_tokens` . |
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 
@@ -94,13 +93,13 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 
-Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilmelidir. Her `id_tokens` zaman bir JWT belirteci olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.
+Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilmelidir. `id_tokens`Her zaman BIR JWT belirteci olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.
 
 Belirteci el ile doğrulamak için, [erişim belirtecini doğrulama](access-tokens.md#validating-tokens)konusunda bulunan adım ayrıntılarına bakın. Belirteçteki imzayı doğruladıktan sonra, aşağıdaki JWT taleplerinin id_token doğrulanması gerekir (Bunlar ayrıca, belirteç doğrulama kitaplığınız tarafından da yapılabilir):
 
-* Zaman damgaları: `iat`, `nbf`, ve `exp` zaman damgaları, uygun şekilde, geçerli zamandan önce veya sonra düşmelidir.
-* Hedef kitle: `aud` talebin, UYGULAMANıZıN uygulama kimliğiyle eşleşmesi gerekir.
-* Nonce: yükteki `nonce` talep, ilk istek sırasında/yetkilendirmeli uç noktasına geçirilen nonce parametresiyle eşleşmelidir.
+* Zaman damgaları: `iat` , `nbf` , ve `exp` zaman damgaları, uygun şekilde, geçerli zamandan önce veya sonra düşmelidir.
+* Hedef kitle: `aud` talebin, uygulamanızın uygulama kimliğiyle eşleşmesi gerekir.
+* Nonce: `nonce` yükteki talep, ilk istek sırasında/yetkilendirmeli uç noktasına geçirilen nonce parametresiyle eşleşmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

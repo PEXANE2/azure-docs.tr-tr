@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927148"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
@@ -21,7 +20,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* ISE ile aynı sanal ağda çalışan bir Azure Güvenlik Duvarı. Güvenlik duvarınız yoksa, önce sanal ağınıza `AzureFirewallSubnet` adlı [bir alt ağ ekleyin](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) . Daha sonra, sanal ağınızda [bir güvenlik duvarı oluşturabilir ve dağıtabilirsiniz](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) .
+* ISE ile aynı sanal ağda çalışan bir Azure Güvenlik Duvarı. Güvenlik duvarınız yoksa, önce sanal ağınıza adlı [bir alt ağ ekleyin](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) `AzureFirewallSubnet` . Daha sonra, sanal ağınızda [bir güvenlik duvarı oluşturabilir ve dağıtabilirsiniz](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) .
 
 * Bir Azure [yol tablosu](../virtual-network/manage-route-table.md). Bir tane yoksa, önce [bir rota tablosu oluşturun](../virtual-network/manage-route-table.md#create-a-route-table). Yönlendirme hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -31,7 +30,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    ![Giden trafiği yönlendiren kuralla rota tablosu seçin](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. [Yeni bir yol eklemek](../virtual-network/manage-route-table.md#create-a-route)için yol tablosu menüsünde **rotalar** > **Ekle**' yi seçin.
+1. [Yeni bir yol eklemek](../virtual-network/manage-route-table.md#create-a-route)için yol tablosu menüsünde **rotalar**  >  **Ekle**' yi seçin.
 
    ![Giden trafiği yönlendirmek için rota ekleyin](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
@@ -61,13 +60,13 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
 ## <a name="set-up-network-rule"></a>Ağ kuralını ayarlama
 
-1. Azure portal, güvenlik duvarınızı bulun ve seçin. Güvenlik Duvarı menüsünde, **Ayarlar**' ın altında **kurallar**' ı seçin. Kurallar bölmesinde, **ağ kuralı koleksiyonu** > **ağ kuralı koleksiyonu Ekle**' yi seçin.
+1. Azure portal, güvenlik duvarınızı bulun ve seçin. Güvenlik Duvarı menüsünde, **Ayarlar**' ın altında **kurallar**' ı seçin. Kurallar bölmesinde, **ağ kuralı koleksiyonu**  >  **ağ kuralı koleksiyonu Ekle**' yi seçin.
 
    ![Güvenlik duvarına ağ kuralı koleksiyonu Ekle](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
 1. Koleksiyonda, hedef sisteme giden trafiğe izin veren bir kural ekleyin.
 
-   Örneğin, bir ıSE 'de çalışan ve bir SFTP sunucusuyla iletişim kurması gereken bir mantıksal uygulamanız olduğunu varsayalım. Adında bir ağ kuralı içeren adlı `LogicApp_ISE_SFTP_Outbound`bir ağ kuralı koleksiyonu oluşturursunuz. `ISE_SFTP_Outbound` Bu kural, güvenlik duvarınızın özel IP adresini kullanarak, ıSE 'nin sanal ağınızda hedef SFTP sunucusuna çalıştırıldığı herhangi bir alt ağın IP adresinden gelen trafiğe izin verir.
+   Örneğin, bir ıSE 'de çalışan ve bir SFTP sunucusuyla iletişim kurması gereken bir mantıksal uygulamanız olduğunu varsayalım. Adında bir ağ kuralı içeren adlı bir ağ kuralı koleksiyonu oluşturursunuz `LogicApp_ISE_SFTP_Outbound` `ISE_SFTP_Outbound` . Bu kural, güvenlik duvarınızın özel IP adresini kullanarak, ıSE 'nin sanal ağınızda hedef SFTP sunucusuna çalıştırıldığı herhangi bir alt ağın IP adresinden gelen trafiğe izin verir.
 
    ![Güvenlik Duvarı için ağ kuralı ayarlama](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -76,8 +75,8 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Adı** | <*Ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
-   | **Öncelik** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
-   | **Eylem** | **Açılmasına** | Bu kural için gerçekleştirilecek eylem türü |
+   | **Priority** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
+   | **Eylem** | **İzin Ver** | Bu kural için gerçekleştirilecek eylem türü |
    |||
 
    **Ağ kuralı özellikleri**
@@ -85,7 +84,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Adı** | <*Ağ kuralı-adı*> | Ağ kuralınız için ad |
-   | **Protocol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
+   | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
    | **Kaynak adresler** | <*ISE-alt ağ-adresler*> | ISE 'nin çalıştığı ve mantıksal uygulamanızdan gelen trafiğin kaynaklandığı alt ağ IP adresleri |
    | **Hedef adresler** | <*hedef-IP adresi*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi. Bu örnekte, bu IP adresi SFTP sunucusu içindir. |
    | **Hedef bağlantı noktaları** | <*hedef bağlantı noktaları*> | Hedef sisteminizin gelen iletişim için kullandığı bağlantı noktaları |

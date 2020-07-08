@@ -4,10 +4,9 @@ description: Bir Azure Resource Manager şablonu kullanarak bir görüntü oluş
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927777"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak ACR görevlerini çalıştırma
@@ -16,7 +15,7 @@ ms.locfileid: "82927777"
 
 Bu makalede, az [ACR Build][az-acr-build] komutunu kullanarak el ile oluşturabileceğiniz bir hızlı görev çalıştırmasını sıraya almak için Azure Resource Manager şablon örnekleri gösterilmektedir.
 
-Bir görev çalıştırmasını sıraya almak için Kaynak Yöneticisi şablonu Otomasyon senaryolarında faydalıdır ve işlevselliğini genişletir `az acr build`. Örneğin:
+Bir görev çalıştırmasını sıraya almak için Kaynak Yöneticisi şablonu Otomasyon senaryolarında faydalıdır ve işlevselliğini genişletir `az acr build` . Örneğin:
 
 * Bir kapsayıcı kayıt defteri oluşturmak ve bir kapsayıcı görüntüsünü oluşturmak ve göndermek için bir görev çalıştırmasını hemen sıraya almak için şablon kullanma
 * Azure kaynakları için yönetilen kimlik gibi bir hızlı görev çalıştırmasında kullanabileceğiniz ek kaynaklar oluşturun veya etkinleştirin
@@ -28,8 +27,8 @@ Bir görev çalıştırmasını sıraya almak için Kaynak Yöneticisi şablonu 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **GitHub hesabı** -henüz yoksa bir hesap https://github.com oluşturun. 
-* **Çatal örnek deposu** -burada gösterilen görev örnekleri için GitHub Kullanıcı arabirimini kullanarak aşağıdaki örnek depoyu GitHub hesabınıza çatalla: https://github.com/Azure-Samples/acr-build-helloworld-node. Bu depo, küçük kapsayıcı görüntüleri oluşturmak için örnek Dockerfiles ve kaynak kodu içerir.
+* **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com . 
+* **Çatal örnek deposu** -burada gösterilen görev örnekleri için GitHub Kullanıcı arabirimini kullanarak aşağıdaki örnek depoyu GitHub hesabınıza çatalla: https://github.com/Azure-Samples/acr-build-helloworld-node . Bu depo, küçük kapsayıcı görüntüleri oluşturmak için örnek Dockerfiles ve kaynak kodu içerir.
 
 ## <a name="example-create-registry-and-queue-task-run"></a>Örnek: kayıt defteri ve kuyruk görevi çalıştırma
 
@@ -44,7 +43,7 @@ Bu örnek için aşağıdaki şablon parametreleri için değerler sağlayın:
 |registryName     |Oluşturulan kayıt defterinin benzersiz adı         |
 |depo     |Derleme görevi için hedef depo        |
 |taskRunName     |Resim etiketini belirten görev çalıştırmasının adı |
-|sourceLocation     |Derleme görevinin uzak bağlamı, örneğin, https://github.com/Azure-Samples/acr-build-helloworld-node. Depo kökündeki Dockerfile, küçük bir Node. js web uygulaması için kapsayıcı görüntüsü oluşturur. İsterseniz, depo çatalınızı derleme bağlamı olarak kullanın.         |
+|sourceLocation     |Derleme görevinin uzak bağlamı, örneğin, https://github.com/Azure-Samples/acr-build-helloworld-node . Depo kökündeki Dockerfile, küçük bir Node.js Web uygulaması için kapsayıcı görüntüsü oluşturur. İsterseniz, depo çatalınızı derleme bağlamı olarak kullanın.         |
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -112,7 +111,7 @@ az acr task logs \
 Azure portal görev çalıştırma günlüğünü de görüntüleyebilirsiniz. 
 
 1. Kapsayıcı Kayıt defterinize gidin
-2. **Hizmetler**altında **Görevler** > **çalıştırmalar**' ı seçin.
+2. **Hizmetler**altında **Görevler**  >  **çalıştırmalar**' ı seçin.
 3. Çalıştırma KIMLIĞINI seçin (Bu durumda *CA1*). 
 
 Portal, görev çalıştırma günlüğünü gösterir.
@@ -125,10 +124,10 @@ Bu senaryo, [Azure tarafından yönetilen bir kimlik kullanılarak ACR görevind
 
 ### <a name="prepare-base-registry"></a>Temel kayıt defterini hazırla
 
-Tanıtım amacıyla, temel kayıt defteriniz olarak ayrı bir kapsayıcı kayıt defteri oluşturun ve Docker Hub 'ından bir Node. js temel görüntüsünü gönderin.
+Tanıtım amacıyla, temel kayıt defteri olarak ayrı bir kapsayıcı kayıt defteri oluşturun ve Docker Hub 'ından bir Node.js temel görüntüsünü gönderin.
 
 1. Temel görüntüleri depolamak için örneğin, *mybaseregner*gibi ikinci bir kapsayıcı kayıt defteri oluşturun.
-1. `node:9-alpine` Resmi Docker Hub 'ından çekin, temel kayıt defteriniz için etiketleyin ve temel kayıt defterine gönderin:
+1. `node:9-alpine`Resmi Docker Hub 'ından çekin, temel kayıt defteriniz için etiketleyin ve temel kayıt defterine gönderin:
 
   ```azurecli
   docker pull node:9-alpine
@@ -139,7 +138,7 @@ Tanıtım amacıyla, temel kayıt defteriniz olarak ayrı bir kapsayıcı kayıt
 
 ### <a name="create-new-dockerfile"></a>Yeni Dockerfile oluştur
 
-Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun. GitHub deposunun yerel çatalınızda aşağıdaki adımları gerçekleştirin, örneğin, `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
+Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun. GitHub deposunun yerel çatalınızda aşağıdaki adımları gerçekleştirin, örneğin, `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
 1. GitHub Kullanıcı arabiriminde **yeni dosya oluştur**' u seçin.
 1. Dosyanızı *Dockerfile-test* olarak adlandırın ve aşağıdaki içeriği yapıştırın. *Mybaseregbakanlığı*için kayıt defteri adınızı değiştirin.
@@ -187,7 +186,7 @@ Bu örnek için aşağıdaki şablon parametreleri için değerler sağlayın:
 |Useratandıdentity |Görevde etkin olan kullanıcı tarafından atanan kimliğin kaynak KIMLIĞI|
 |Customregistryıdentity | Görevde etkin olan kullanıcı tarafından atanan kimliğin istemci KIMLIĞI, özel kayıt defteri ile kimlik doğrulaması için kullanılır |
 |customRegistry |Görevde erişilen özel kayıt defterinin oturum açma sunucusu adı, örneğin, *mybaseregistry.azurecr.io*|
-|sourceLocation     |Derleme görevinin uzak bağlamı, örneğin, * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node.* |
+|sourceLocation     |Derleme görevinin uzak bağlamı; Örneğin, * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | Görüntüyü oluşturmak için kullanılan uzak bağlamdaki Dockerfile dosyasının yolu. |
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma

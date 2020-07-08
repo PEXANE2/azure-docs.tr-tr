@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978391"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
@@ -55,7 +54,7 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 | [Azure planlama ve dağıtım denetim listesi üzerinde SAP iş yükü][azr-sap-plancheck] |
 | [SAP uygulamaları için SUSE Linux Enterprise Server 12 SP4 en iyi yöntemler Kılavuzu][sles-for-sap-bp] |
 | [SUSE Linux Enterprise yüksek kullanılabilirlik uzantısı 12 SP4][sles-ha-guide] |
-| [IBM DB2 Azure sanal makineleri SAP iş yükü için DBMS dağıtımı][dbms-db2] |
+| [SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı][dbms-db2] |
 | [IBM DB2 HADR 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR R 10,5][db2-hadr-10.5] |
 
@@ -174,7 +173,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler** > **Distributed**dağıtılmış > **veritabanı örneği**> **sistem kopyalama** seçeneğini belirleyin.
+1. **Hedef sistemler** **System copy**  >  **Dağıtılmış**  >  **veritabanı örneği**> sistem kopyalama seçeneğini belirleyin.
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 1. IBM DB2 için HADR 'yi ayarlayın.
@@ -314,8 +313,8 @@ Aşağıdaki öğelerin ön eki vardır:
 - **[2]**: yalnızca düğüm 2 ' de geçerlidir
 
 **[A]** pacemaker yapılandırması için Önkoşullar:
-1. Db2stop ile Kullanıcı DB2\<SID> her iki veritabanı sunucusunu da kapatın.
-1. DB2\<SID> User için Shell ortamını */bin/ksh*olarak değiştirin. Yast aracını kullanmanızı öneririz. 
+1. Db2stop ile Kullanıcı DB2 ile her iki veritabanı sunucusunu da kapatın \<sid> .
+1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh*olarak değiştirin. Yast aracını kullanmanızı öneririz. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker yapılandırması
@@ -451,18 +450,18 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](ht
 
    f. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
 
-   g. **Tamam**’ı seçin.
+   örneğin: **Tamam**’ı seçin.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Bağlantı için sanal IP 'yi kullanmak üzere SAP profillerinde değişiklikler yapın
 HADR yapılandırmasının birincil örneğine bağlanmak için, SAP uygulama katmanının Azure Load Balancer için tanımladığınız ve yapılandırdığınız sanal IP adresini kullanması gerekir. Aşağıdaki değişiklikler gereklidir:
 
-/sapmnt/\<SID>/profil/default. PFL
+/sapmnt/ \<SID> /profile/default. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/Global/DB6/Db2cli.ini
+/sapmnt/ \<SID> /Global/DB6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -480,10 +479,10 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
  
 1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve yürütün:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Sol çerçevede **Güvenlik deposu**' nu seçin.
-1. Sağ çerçevede,/URL> için anahtar JDBC/havuz/\<sapsid ' ı seçin.
+1. Sağ çerçevede, anahtar JDBC/havuz//URL ' yi seçin \<SAPSID> .
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1. Yapılandırma aracını kapatın.
 1. Java örneğini yeniden başlatın.
@@ -541,7 +540,7 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 > Teste başlamadan önce şunları yaptığınızdan emin olun:
 > * Pacemaker başarısız olan eylemlere sahip değil (CRM durumu).
 > * Hiçbir konum kısıtlaması yok (geçiş testinin sol üyesi ol)
-> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2\<sıd 'si> denetle <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2 ile denetle\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Aşağıdaki komutu yürüterek birincil DB2 veritabanını çalıştıran düğümü geçirin:
@@ -575,9 +574,9 @@ Kaynağı *azibmdb01* 'e geri geçirin ve konum kısıtlamalarını temizleyin
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **res_name> \<konak \<> CRM kaynak geçişi:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
-- **CRM kaynağı temizle \<RES_NAME>**: konum kısıtlamalarını temizler
-- **CRM kaynak temizleme \<RES_NAME>**: kaynağın tüm hatalarını temizler
+- **CRM kaynak geçişi \<res_name> \<host> :** konum kısıtlamaları oluşturur ve ele geçirimiyle ilgili sorunlara neden olabilir
+- **CRM kaynağı Temizleme \<res_name> **: konum kısıtlamalarını temizler
+- **CRM kaynağı Temizleme \<res_name> **: kaynağın tüm hatalarını temizler
 
 ### <a name="test-the-fencing-agent"></a>Sınırlama aracısını test etme
 
@@ -750,7 +749,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-As user DB2\<SID> Execute Command db2stop zorlama:
+As user DB2 \<sid> komutunu db2stop zorla yürütün:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

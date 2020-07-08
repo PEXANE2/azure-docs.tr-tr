@@ -8,21 +8,20 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927913"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET ve .NET Core 'da özel ölçüm koleksiyonu
 
-.NET ve .NET Core SDK 'larının Azure Izleyici Application Insights, ve `TrackMetric()` `GetMetric()`özel ölçümleri toplamaya yönelik iki farklı yöntem vardır. Bu iki yöntem arasındaki önemli fark yerel toplamadır. `TrackMetric()`ön toplamadır `GetMetric()` , ön toplama işlemi yoktur. Bu nedenle `TrackMetric()` önerilen yaklaşım, toplamayı kullanmak için artık özel ölçümleri toplamanın tercih edilen yöntemi değildir. Bu makale, GetMetric () yöntemini ve bu yöntemin nasıl çalıştığına ilişkin bir kısmını kullanarak size kılavuzluk eder.
+.NET ve .NET Core SDK 'larının Azure Izleyici Application Insights, ve özel ölçümleri toplamaya yönelik iki farklı yöntem vardır `TrackMetric()` `GetMetric()` . Bu iki yöntem arasındaki önemli fark yerel toplamadır. `TrackMetric()`ön toplamadır, ön toplama `GetMetric()` işlemi yoktur. Bu nedenle önerilen yaklaşım, toplamayı kullanmak için `TrackMetric()` artık özel ölçümleri toplamanın tercih edilen yöntemi değildir. Bu makale, GetMetric () yöntemini ve bu yöntemin nasıl çalıştığına ilişkin bir kısmını kullanarak size kılavuzluk eder.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric ve GetMetric karşılaştırması
 
-`TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`, telemetri başlatıcılarının ve işlemcilerin tam SDK ardışık `TrackMetric(item)` düzeninde gezindiğinden performans açısından da verimsiz olur. Farklı `TrackMetric()`olarak `GetMetric()` , yerel ön toplamasını sizin için işler ve sonra yalnızca bir dakikalık sabit bir aralıkta toplanmış bir özet ölçümü gönderir. Bu nedenle, bazı özel metrikleri ikinci veya hatta milisaniyelik düzeyde yakından izlemeniz gerekiyorsa, bunu yalnızca her dakika izlemenin yalnızca depolama ve ağ trafiği maliyetlerini alırken yapabilirsiniz. Bu Ayrıca, toplanan bir ölçüm için gönderilmesi gereken toplam telemetri öğesi sayısının büyük ölçüde azaltılmasından dolayı, kısıtlama riskini önemli ölçüde azaltır.
+`TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`, `TrackMetric(item)` telemetri başlatıcılarının ve işlemcilerin tam SDK ardışık düzeninde gezindiğinden performans açısından da verimsiz olur. Farklı olarak `TrackMetric()` , `GetMetric()` yerel ön toplamasını sizin için işler ve sonra yalnızca bir dakikalık sabit bir aralıkta toplanmış bir özet ölçümü gönderir. Bu nedenle, bazı özel metrikleri ikinci veya hatta milisaniyelik düzeyde yakından izlemeniz gerekiyorsa, bunu yalnızca her dakika izlemenin yalnızca depolama ve ağ trafiği maliyetlerini alırken yapabilirsiniz. Bu Ayrıca, toplanan bir ölçüm için gönderilmesi gereken toplam telemetri öğesi sayısının büyük ölçüde azaltılmasından dolayı, kısıtlama riskini önemli ölçüde azaltır.
 
-Application Insights, ve `TrackMetric()` `GetMetric()` ile toplanan özel ölçümler, [örneklemeye](https://docs.microsoft.com/azure/azure-monitor/app/sampling)tabi değildir. Önemli ölçümleri örnekleme, bu ölçümler etrafında derleyebileceğiniz uyarı, güvenilmez hale gelebileceği senaryolara yol açabilir. Özel ölçümlerinizi hiçbir zaman örnekleyerek, genellikle uyarı eşikleriniz ihlal edildiğinde bir uyarının tetikleneceği şekilde emin olabilirsiniz.  Ancak, özel ölçümler örneklenolmadığından, bazı olası sorunlar vardır.
+Application Insights, ve ile toplanan özel ölçümler `TrackMetric()` , `GetMetric()` [örneklemeye](https://docs.microsoft.com/azure/azure-monitor/app/sampling)tabi değildir. Önemli ölçümleri örnekleme, bu ölçümler etrafında derleyebileceğiniz uyarı, güvenilmez hale gelebileceği senaryolara yol açabilir. Özel ölçümlerinizi hiçbir zaman örnekleyerek, genellikle uyarı eşikleriniz ihlal edildiğinde bir uyarının tetikleneceği şekilde emin olabilirsiniz.  Ancak, özel ölçümler örneklenolmadığından, bazı olası sorunlar vardır.
 
 Her saniye bir ölçümde eğilimleri izlemeniz gerekiyorsa veya daha da ayrıntılı bir aralıkta bu, şunlar olabilir:
 
@@ -30,12 +29,12 @@ Her saniye bir ölçümde eğilimleri izlemeniz gerekiyorsa veya daha da ayrınt
 - Ağ trafiği/performans yükü artar. (Bazı senaryolarda bu, hem parasal hem de uygulama performans maliyeti olabilir.)
 - Alım azaltma riski. (Uygulamanız kısa bir zaman aralığında çok yüksek bir telemetri gönderdiğinde Azure Izleyici hizmeti ("kısıtlar") veri noktalarını bırakır.)
 
-Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşulu yerel olarak gerçekleşeceğinden ve daha sonra gönderilen çok fazla veri olduğu için alma uç noktasında bırakıldıklarından, azaltma kaçırılmış uyarılara yol açabilir. Bu, kendi yerel toplama mantığınızı gerçekleştirmediğiniz takdirde .NET ve `TrackMetric()` .NET Core 'un kullanılmasını önermiyoruz. Belirli bir süre boyunca bir olay meydana gelen [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) her örneği izlemeye çalışıyorsanız, daha iyi bir uyum olduğunu fark edebilirsiniz. Özel ölçümlerin aksine, özel olayların örneklemeye tabi olduğunu aklınızda bulundurun. Kendi yerel ön toplamalarınızı `TrackMetric()` yazmadan bile kullanabilirsiniz, ancak bunu yaparsanız, bunların farkında olun.
+Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşulu yerel olarak gerçekleşeceğinden ve daha sonra gönderilen çok fazla veri olduğu için alma uç noktasında bırakıldıklarından, azaltma kaçırılmış uyarılara yol açabilir. Bu, `TrackMetric()` kendi yerel toplama mantığınızı gerçekleştirmediğiniz takdirde .net ve .NET Core 'un kullanılmasını önermiyoruz. Belirli bir süre boyunca bir olay meydana gelen her örneği izlemeye çalışıyorsanız, [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) daha iyi bir uyum olduğunu fark edebilirsiniz. Özel ölçümlerin aksine, özel olayların örneklemeye tabi olduğunu aklınızda bulundurun. `TrackMetric()`Kendi yerel ön toplamalarınızı yazmadan bile kullanabilirsiniz, ancak bunu yaparsanız, bunların farkında olun.
 
-Özet `GetMetric()` içinde, ön toplama işlemi yaptığı için önerilen yaklaşım, tüm iz () çağrılarındaki değerleri toplar ve her dakikada bir Özet/toplama gönderir. Bu, daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltabilir, ancak yine de tüm ilgili bilgileri toplarken.
+Özet içinde, `GetMetric()` ön toplama işlemi yaptığı için önerilen yaklaşım, tüm iz () çağrılarındaki değerleri toplar ve her dakikada bir Özet/toplama gönderir. Bu, daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltabilir, ancak yine de tüm ilgili bilgileri toplarken.
 
 > [!NOTE]
-> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) veya `TrackMetric()`kullanabilirsiniz. Python için, [Opencensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz. JavaScript ve Node. js için kullanmaya `TrackMetric()`devam edersiniz, ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun.
+> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) veya kullanabilirsiniz `TrackMetric()` . Python için, [Opencensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz. JavaScript ve Node.js için kullanmaya devam edersiniz `TrackMetric()` , ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun.
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric ile çalışmaya başlama
 
@@ -43,7 +42,7 @@ Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşu
 
 ### <a name="sending-metrics"></a>Ölçümleri gönderme
 
-`worker.cs` Dosyanızın içeriğini aşağıdakiler ile değiştirin:
+`worker.cs`Dosyanızın içeriğini aşağıdakiler ile değiştirin:
 
 ```csharp
 using System;
@@ -140,7 +139,7 @@ Bazı durumlarda ölçüm değerleri çok sık gözlemlenmiştir. Örneğin, 500
 
 ```
 
-Ölçüm tanıtıcısını önbelleğe almanın yanı sıra, yukarıdaki örnek 772 ' e 50 kadar `Task.Delay` milisaniyeye kadar azaltılır ve bu sayede, döngünün daha sık devam eden `TrackValue()` etkinleştirmeleri olur.
+Ölçüm tanıtıcısını önbelleğe almanın yanı sıra, yukarıdaki örnek `Task.Delay` 772 ' e 50 kadar milisaniyeye kadar azaltılır ve bu sayede, döngünün daha sık devam eden `TrackValue()` etkinleştirmeleri olur.
 
 ## <a name="multi-dimensional-metrics"></a>Çok boyutlu ölçümler
 
@@ -190,7 +189,7 @@ Varsayılan olarak, Ölçüm Gezgini deneyimi içindeki çok boyutlu ölçümler
 
 ### <a name="enable-multi-dimensional-metrics"></a>Çok boyutlu ölçümleri etkinleştir
 
-Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler** > **özel ölçümler** > ' i seçin > **OK****özel ölçüm boyutlarında uyarı ' ı etkinleştirin**. Bu konuda daha fazla ayrıntı için [burada](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bulunabilir.
+Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler**  >  **özel ölçümler**' i seçin  >  **özel ölçüm boyutlarında uyarı ' ı etkinleştirin**  >  **OK**. Bu konuda daha fazla ayrıntı için [burada](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bulunabilir.
 
 Bu değişikliği yaptıktan ve yeni çok boyutlu telemetri gönderdikten sonra, **bölmeyi uygulayacaksınız**.
 
@@ -205,7 +204,7 @@ Ve her bir _FormFactor_ boyutu için ölçüm toplamaların görünümünü gör
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>Üçten fazla boyut olduğunda Metricıdentifier kullanma
 
-Şu anda 10 boyut desteklenir, ancak üç boyuttan büyük bir `MetricIdentifier`kullanım gerektirir:
+Şu anda 10 boyut desteklenir, ancak üç boyuttan büyük bir kullanım gerektirir `MetricIdentifier` :
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
@@ -221,9 +220,9 @@ computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 
 ### <a name="special-dimension-names"></a>Özel boyut adları
 
-Ölçümler, bunlara erişmek için `TelemetryClient` kullanılan telemetri bağlamını kullanmaz. `MetricDimensionNames` sınıfta sabitler olarak kullanılabilen özel boyut adları, bu sınırlamaya yönelik en iyi çözümdür.
+Ölçümler, `TelemetryClient` bunlara erişmek için kullanılan telemetri bağlamını kullanmaz. sınıfta sabitler olarak kullanılabilen özel boyut adları, `MetricDimensionNames` Bu sınırlamaya yönelik en iyi çözümdür.
 
-Aşağıdaki "özel Işlem Isteği boyutu" tarafından gönderilen ölçüm toplamaları-ölçüm "özel Işlem" olarak `Context.Operation.Name` **ayarlanmayacak.** Öte `TrackMetric()` yandan veya diğer bir trackxxx (), `OperationName` "özel işlem" olarak ayarlanır.
+Aşağıdaki "özel Işlem Isteği boyutu" tarafından gönderilen ölçüm toplamaları-ölçüm **not** `Context.Operation.Name` "özel işlem" olarak ayarlanmayacak. Öte yandan `TrackMetric()` veya diğer bir TrackXXX (), `OperationName` "özel işlem" olarak ayarlanır.
 
 ``` csharp
         //...
@@ -248,7 +247,7 @@ Aşağıdaki "özel Işlem Isteği boyutu" tarafından gönderilen ölçüm topl
         }
 ```
 
-Bu durumda, değerleri belirtmek `MetricDimensionNames` `TelemetryContext` için sınıfında listelenen özel boyut adlarını kullanın.
+Bu durumda, `MetricDimensionNames` değerleri belirtmek için sınıfında listelenen özel boyut adlarını kullanın `TelemetryContext` .
 
 Örneğin, bir sonraki deyimden kaynaklanan ölçüm toplamı Application Insights bulut uç noktasına gönderildiğinde, `Context.Operation.Name` veri alanı "özel işlem" olarak ayarlanır:
 
@@ -266,9 +265,9 @@ _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionName
 
  Telemetri alt sisteminin yanlışlıkla kaynaklarınızı kullanmasını engellemek için, ölçüm başına maksimum veri serisi sayısını kontrol edebilirsiniz. Varsayılan sınırlar, her ölçüm için 1000 ' den fazla toplam veri serisi ve boyut başına 100 ' den fazla farklı değer değildir.
 
- Boyut ve zaman dizisi bağlamında, limitlerin gözlemlendiği emin olmak `Metric.TrackValue(..)` için kullandık. Sınırlara zaten ulaşılmışsa, `Metric.TrackValue(..)` "false" döndürür ve değer izlenmeyecektir. Aksi takdirde, "true" döndürür. Bu, bir ölçüm verileri Kullanıcı girişinden kaynaklanıyorsa yararlıdır.
+ Boyut ve zaman dizisi bağlamında, `Metric.TrackValue(..)` limitlerin gözlemlendiği emin olmak için kullandık. Sınırlara zaten ulaşılmışsa, `Metric.TrackValue(..)` "false" döndürür ve değer izlenmeyecektir. Aksi takdirde, "true" döndürür. Bu, bir ölçüm verileri Kullanıcı girişinden kaynaklanıyorsa yararlıdır.
 
-`MetricConfiguration` Oluşturucu, ilgili ölçüm içinde farklı serinin nasıl yönetileceği hakkında bazı seçenekler ve her bir ölçüm serisi için toplama davranışını belirten bir `IMetricSeriesConfiguration` sınıf nesnesi kullanır:
+`MetricConfiguration`Oluşturucu, ilgili ölçüm içinde farklı serinin nasıl yönetileceği hakkında bazı seçenekler ve `IMetricSeriesConfiguration` her bir ölçüm serisi için toplama davranışını belirten bir sınıf nesnesi kullanır:
 
 ``` csharp
 var metConfig = new MetricConfiguration(seriesCountLimit: 100, valuesPerDimensionLimit:2,
@@ -285,7 +284,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`bir ölçümün içerebileceği maksimum veri süresi serisi sayısıdır. Bu sınıra ulaşıldığında, ' a çağrı yapılır `TrackValue()`.
+* `seriesCountLimit`bir ölçümün içerebileceği maksimum veri süresi serisi sayısıdır. Bu sınıra ulaşıldığında, ' a çağrı yapılır `TrackValue()` .
 * `valuesPerDimensionLimit`Boyut başına farklı değer sayısını benzer şekilde sınırlandırır.
 * `restrictToUInt32Values`Yalnızca negatif olmayan tamsayı değerlerinin izlenmesi gerekip gerekmediğini belirler.
 

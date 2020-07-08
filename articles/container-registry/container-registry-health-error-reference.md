@@ -4,10 +4,9 @@ description: Azure Container Registry ' de az ACR Check-Health Diagnostic komutu
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978323"
 ---
 # <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
@@ -22,13 +21,13 @@ Bu hata, CLı için Docker istemcisinin bulunamadığı anlamına gelir. Sonuç 
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-Bu hata, Docker Daemon durumunun kullanılamadığı veya CLı kullanılarak erişilemeyen anlamına gelir. Sonuç olarak, Docker işlemleri ( `docker login` ve `docker pull`gibi) CLI aracılığıyla kullanılamaz.
+Bu hata, Docker Daemon durumunun kullanılamadığı veya CLı kullanılarak erişilemeyen anlamına gelir. Sonuç olarak, Docker işlemleri ( `docker login` ve gibi `docker pull` ) CLI aracılığıyla kullanılamaz.
 
 *Olası çözümler*: Docker Daemon 'ı yeniden başlatın veya düzgün bir şekilde yüklendiğini doğrulayın.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-Bu hata, CLı 'nin komutu `docker --version`çalıştıramayacağı anlamına gelir.
+Bu hata, CLı 'nin komutu çalıştıramayacağı anlamına gelir `docker --version` .
 
 *Olası çözümler*: komutu el ile çalıştırmayı deneyin, en son CLI sürümüne sahip olduğunuzdan emin olun ve hata iletisini araştırın.
 
@@ -58,7 +57,7 @@ Bu hata, verilen kayıt defteri oturum açma sunucusu için DNS 'nin ping işlem
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle veya kayıt defterinin genel uç noktasına erişime izin verilmediğinden, kullanıcıların kayıt defterine erişimi olmadığı anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için öğesini çalıştırın `az acr show --query networkRuleSet --name <registry>`.
+Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle veya kayıt defterinin genel uç noktasına erişime izin verilmediğinden, kullanıcıların kayıt defterine erişimi olmadığı anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için öğesini çalıştırın `az acr show --query networkRuleSet --name <registry>` .
 
 *Olası çözümler*: sanal ağ kurallarını kaldırın veya GEÇERLI istemci IP adresini izin verilenler listesine ekleyin.
 
@@ -66,25 +65,25 @@ Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmı
 
 Bu hata, hedef kayıt defterinin sınama uç noktasının bir zorluk yayınlamadığı anlamına gelir.
 
-*Olası çözümler*: bir süre sonra yeniden deneyin. Hata devam ederse, öğesinde https://aka.ms/acr/issuesbir sorun açın.
+*Olası çözümler*: bir süre sonra yeniden deneyin. Hata devam ederse, öğesinde bir sorun açın https://aka.ms/acr/issues .
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
 Bu hata, hedef kayıt defterinin sınama uç noktasının bir zorluk verdiği, ancak kayıt defterinin Azure Active Directory kimlik doğrulamasını desteklemediği anlamına gelir.
 
-*Olası çözümler*: Örneğin, yönetici kimlik bilgileriyle kimlik doğrulamanın farklı bir yolunu deneyin. Kullanıcıların Azure Active Directory kullanarak kimlik doğrulaması yapması gerekiyorsa, ' de https://aka.ms/acr/issuesbir sorun açın.
+*Olası çözümler*: Örneğin, yönetici kimlik bilgileriyle kimlik doğrulamanın farklı bir yolunu deneyin. Kullanıcıların Azure Active Directory kullanarak kimlik doğrulaması yapması gerekiyorsa, ' de bir sorun açın https://aka.ms/acr/issues .
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
 Bu hata, kayıt defteri oturum açma sunucusunun yenileme belirteciyle yanıt vermediği anlamına gelir; bu nedenle hedef kayıt defterine erişim reddedildi. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; izinleri `az login` , belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login`izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
 Bu hata, kayıt defteri oturum açma sunucusunun bir erişim belirteciyle yanıt vermediği, hedef kayıt defterine erişimin reddedilmediği anlamına gelir. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; izinleri `az login` , belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login`izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
@@ -100,7 +99,7 @@ Bu hata, CLı 'nin verilen kayıt defteri 'nin oturum açma sunucusunu bulamadı
 
 ## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
 
-Bu hata, CLı 'nin şu anda yüklü olan Docker/Nosel sürümü ile uyumlu olmadığı anlamına gelir. Bu sorunu çözmek için Docker yüklemenizin önemli istemcinizi el ile değiştirerek, nobasık. exe sürümünüzü 0.6.0 sürümünden önceki bir sürüme düşürmeye çalışın.
+Bu hata, CLı 'nin şu anda yüklü olan Docker/Nosel sürümü ile uyumlu olmadığı anlamına gelir. Bu sorunu çözmek için Docker yüklemenizin Nosel istemcinizi el ile değiştirerek notary.exe sürümünüzü 0.6.0 ' den önceki bir sürüme düşürmeye çalışın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

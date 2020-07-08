@@ -4,10 +4,9 @@ description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş arac
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82901176"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
@@ -58,8 +57,8 @@ Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekle
     > [!NOTE]
     > Bir proje oluşturduğunuzda, en az bir değerlendirme veya geçiş aracı eklemeniz gerekir.
 
-5. **Değerlendirme aracı seçin**' de bir değerlendirme aracı ekleyin. Bir değerlendirme aracına ihtiyacınız yoksa >  **Şimdi bir değerlendirme aracı eklemeyi atla**' yı**seçin.** 
-2. **Geçiş aracı Seç**bölümünde, gereken şekilde bir geçiş aracı ekleyin. Şu anda bir geçiş aracına ihtiyacınız yoksa >  **Şimdi bir geçiş aracı eklemeyi atla**' yı**seçin.**
+5. **Değerlendirme aracı seçin**' de bir değerlendirme aracı ekleyin. Bir değerlendirme aracına ihtiyacınız yoksa **Şimdi bir değerlendirme aracı eklemeyi atla**' yı seçin  >  **Next**. 
+2. **Geçiş aracı Seç**bölümünde, gereken şekilde bir geçiş aracı ekleyin. Şu anda bir geçiş aracına ihtiyacınız yoksa **Şimdi bir geçiş aracı eklemeyi atla**' yı seçin  >  **Next**.
 3. **Gözden geçir + araçlar Ekle**' de ayarları gözden geçirin ve **araç ekle**' ye tıklayın.
 
 Projeyi oluşturduktan sonra, sunucuların ve iş yüklerinin, veritabanlarının ve Web uygulamalarının değerlendirilmesi ve geçirilmesi için ek araçlar seçebilirsiniz.

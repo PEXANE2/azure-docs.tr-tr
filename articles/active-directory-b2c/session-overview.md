@@ -11,10 +11,9 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927046"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C oturumu
@@ -37,7 +36,7 @@ Azure AD B2C tümleştirme üç tür SSO oturumu içerir:
 
 ### <a name="azure-ad-b2c-sso"></a>Azure AD B2C SSO 'SU 
 
-Bir kullanıcı yerel veya sosyal hesapla kimliğini başarıyla doğruladığında, Azure AD B2C kullanıcının tarayıcısına tanımlama bilgisi tabanlı bir oturum depolar. Tanımlama bilgisi, gibi Azure AD B2C kiracı etki alanı adı altında depolanır `https://contoso.b2clogin.com`.
+Bir kullanıcı yerel veya sosyal hesapla kimliğini başarıyla doğruladığında, Azure AD B2C kullanıcının tarayıcısına tanımlama bilgisi tabanlı bir oturum depolar. Tanımlama bilgisi, gibi Azure AD B2C kiracı etki alanı adı altında depolanır `https://contoso.b2clogin.com` .
 
 Bir kullanıcı başlangıçta bir Federasyon hesabıyla oturum açarsa ve oturum zaman penceresi (yaşam süresi veya TTL) sırasında aynı uygulamada veya farklı bir uygulamada oturum açarsa, federasyon kimliği sağlayıcısından yeni bir erişim belirteci almaya çalışır Azure AD B2C. Federal Kimlik sağlayıcısı oturumunun geçerliliği dolmuşsa veya geçersizse, federal kimlik sağlayıcısı kullanıcıdan kimlik bilgilerini ister. Oturum hala etkin ise (veya kullanıcı federe hesap yerine yerel bir hesapla oturum açmışsa), Azure AD B2C kullanıcıyı yetkilendirir ve diğer istemleri ortadan kaldırır.
 
@@ -45,7 +44,7 @@ Oturum TTL 'sini ve Azure AD B2C ilkeleri ve uygulamalar arasında oturumu nası
 
 ### <a name="federated-identity-provider-sso"></a>Federal Kimlik sağlayıcısı SSO 'SU
 
-Bir sosyal veya kurumsal kimlik sağlayıcısı kendi oturumunu yönetir. Tanımlama bilgisi, kimlik sağlayıcısının etki alanı adı altında depolanır `https://login.salesforce.com`. Azure AD B2C, federal kimlik sağlayıcısı oturumunu denetlemez. Bunun yerine, oturum davranışı federal kimlik sağlayıcısı tarafından belirlenir. 
+Bir sosyal veya kurumsal kimlik sağlayıcısı kendi oturumunu yönetir. Tanımlama bilgisi, kimlik sağlayıcısının etki alanı adı altında depolanır `https://login.salesforce.com` . Azure AD B2C, federal kimlik sağlayıcısı oturumunu denetlemez. Bunun yerine, oturum davranışı federal kimlik sağlayıcısı tarafından belirlenir. 
 
 Şu senaryoyu göz önünde bulundurun:
 
@@ -57,7 +56,7 @@ Bir sosyal veya kurumsal kimlik sağlayıcısı kendi oturumunu yönetir. Tanım
 
 Web, mobil veya tek sayfalı bir uygulama, OAuth erişimi, KIMLIK belirteçleri veya SAML belirteçleri tarafından korunabilir. Bir Kullanıcı uygulamadaki korumalı bir kaynağa erişmeyi denediğinde uygulama tarafında etkin bir oturum olup olmadığını denetler. Uygulama oturumu yoksa veya oturumun süresi dolmuşsa, uygulama oturum açma sayfasına Azure AD B2C kullanıcıyı alır.
 
-Uygulama oturumu, uygulama etki alanı adı altında depolanan tanımlama bilgisi tabanlı bir oturum olabilir, örneğin `https://contoso.com`. Mobil uygulamalar, oturumu farklı bir şekilde saklayabilir, ancak benzer bir yaklaşım kullanabilir.
+Uygulama oturumu, uygulama etki alanı adı altında depolanan tanımlama bilgisi tabanlı bir oturum olabilir, örneğin `https://contoso.com` . Mobil uygulamalar, oturumu farklı bir şekilde saklayabilir, ancak benzer bir yaklaşım kullanabilir.
 
 ## <a name="azure-ad-b2c-session-configuration"></a>Azure AD B2C oturum yapılandırması
 
@@ -107,10 +106,10 @@ Oturum açma, kullanıcının çoklu oturum açma durumunu Azure AD B2C temizler
 > [!NOTE]
 > Bu özellik [özel ilkelerle](custom-policy-overview.md)sınırlıdır.
 
-Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem OAuth2 hem de SAML protokolleri için), Azure AD B2C kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Azure AD B2C kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcıyı aynı anda imzalamasını sağlamak için, Azure AD B2C kullanıcının oturum açmış olduğu tüm uygulamalara kayıtlı `LogoutUrl` BIR http get isteği gönderir.
+Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem OAuth2 hem de SAML protokolleri için), Azure AD B2C kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Azure AD B2C kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcıyı aynı anda imzalamasını sağlamak için, Azure AD B2C `LogoutUrl` kullanıcının oturum açmış olduğu tüm uygulamalara kayıtlı BIR http get isteği gönderir.
 
 
-Uygulamalar, kullanıcıyı tanıtan ve `200` yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir. Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda bir `LogoutUrl` uygulamanız gerekir. 
+Uygulamalar, kullanıcıyı tanıtan ve yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir `200` . Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda bir uygulamanız gerekir `LogoutUrl` . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

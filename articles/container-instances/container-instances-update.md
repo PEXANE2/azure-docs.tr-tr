@@ -4,10 +4,9 @@ description: Azure Container Instances kapsayıcı gruplarınızdaki çalışan 
 ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928729"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları güncelleştirme
@@ -84,7 +83,7 @@ Bu makalede birkaç kez bahsedildiği **kapsayıcı grubu**. Azure Container Ins
 
 [Birden çok kapsayıcılı grup dağıtma](container-instances-multi-container-group.md)
 
-[Azure Container Instances kapsayıcıları el ile durdurma veya başlatma](container-instances-stop-start.md)
+[Azure Container Instances’taki kapsayıcıları el ile durdurma veya başlatma](container-instances-stop-start.md)
 
 <!-- LINKS - External -->
 

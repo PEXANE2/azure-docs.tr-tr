@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: jingwang
 ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891763"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğini kullanarak meta verileri ve ACL 'Leri koruma
@@ -31,15 +30,15 @@ Bir Data Lake 'tan [Amazon S3](connector-amazon-simple-storage-service.md), [Azu
 Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki özniteliklerin korunması destekler:
 
 - **Müşterinin belirttiği tüm meta veriler** 
-- Ve aşağıdaki **beş veri deposu yerleşik sistem özellikleri** `contentType`:, `contentLanguage` (Amazon S3 hariç), `contentEncoding`,, `contentDisposition`,. `cacheControl`
+- Ve aşağıdaki **beş veri deposu yerleşik sistem özellikleri**: `contentType` , `contentLanguage` (Amazon S3 hariç),,, `contentEncoding` `contentDisposition` , `cacheControl` .
 
 **Meta verilerde farkları işle:** Amazon S3 ve Azure Storage, müşteri tarafından belirtilen meta veriler anahtarlarındaki farklı karakter kümelerine izin veriyor. Kopya korumayı kullanarak meta verileri korumayı seçtiğinizde, ADF geçersiz karakterleri ' _ ' ile otomatik olarak değiştirir.
 
-Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure blobundan ikili biçimi ile Azure Data Lake Storage 2./Azure Blob 'a kopyaladığınızda, **koruma** seçeneğini etkinlik yazma için **etkinlik** > **ayarlarını** Kopyala sekmesinde veya veri kopyalama aracındaki **Ayarlar** sayfasında bulabilirsiniz.
+Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure blobundan ikili biçimi ile Azure Data Lake Storage 2./Azure Blob 'a kopyaladığınızda, **koruma** seçeneğini **Copy Activity**  >  etkinlik yazma için etkinlik**ayarlarını** Kopyala sekmesinde veya veri kopyalama aracındaki **Ayarlar** sayfasında bulabilirsiniz.
 
 ![Kopyalama etkinliği meta verilerini koru](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
-Kopyalama etkinliği JSON yapılandırmasına bir örnek (bkz `preserve`.): 
+Kopyalama etkinliği JSON yapılandırmasına bir örnek (bkz `preserve` .): 
 
 ```json
 "activities":[
@@ -98,11 +97,11 @@ Bir klasörden kopyalamayı belirtirseniz Data Factory, söz konusu klasör içi
 >[!IMPORTANT]
 >ACL 'Leri korumayı seçtiğinizde, Data Factory havuz Data Lake Storage 2. hesabınızda çalışması için yeterince yüksek izinler verdiğinizden emin olun. Örneğin, hesap anahtarı kimlik doğrulamasını kullanın veya Depolama Blobu veri sahibi rolünü hizmet sorumlusu veya yönetilen kimliğe atayın.
 
-Kaynağı ikili biçimi veya ikili kopyalama seçeneği ile Data Lake Storage 2. olarak Data Lake Storage 1./Gen2 olarak yapılandırdığınızda ve havuz, ikili biçimi veya ikili kopya seçeneği ile olarak, veri kopyalama aracında **Ayarlar** sayfasında veya etkinlik yazma için **etkinlik** > **ayarlarını** Kopyala sekmesinde bulunan **koru** seçeneğini bulabilirsiniz.
+Kaynağı ikili biçimi veya ikili kopyalama seçeneği ile Data Lake Storage 2. olarak Data Lake Storage 1./Gen2 olarak yapılandırdığınızda ve havuz, ikili biçimi veya ikili kopya seçeneği ile olarak, veri kopyalama aracında **Ayarlar** sayfasında veya etkinlik yazma için **etkinlik ayarlarını Kopyala**sekmesinde bulunan **koru** seçeneğini bulabilirsiniz  >  **Settings** .
 
 ![Data Lake Storage 1./Gen2 to Gen2 Preserve ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-Kopyalama etkinliği JSON yapılandırmasına bir örnek (bkz `preserve`.): 
+Kopyalama etkinliği JSON yapılandırmasına bir örnek (bkz `preserve` .): 
 
 ```json
 "activities":[

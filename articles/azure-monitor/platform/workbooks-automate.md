@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
 ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982148"
 ---
 # <a name="programmatically-manage-workbooks"></a>Program aracılığıyla çalışma kitaplarını yönetme
@@ -34,12 +33,12 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
 
 1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabını açın.
 2. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-3. Araç çubuğundaki _Advanced Editor_ _</>_ düğmesini kullanarak Gelişmiş Düzenleyici açın.
+3. Araç çubuğundaki düğmesini kullanarak _Gelişmiş Düzenleyici_ açın _</>_ .
 4. _Galeri şablonu_ sekmesinde olduğunuzdan emin olun.
 
     ![Galeri şablonu sekmesi](./media/workbooks-automate/gallery-template.png)
 1. Galeri şablonundaki JSON öğesini panoya kopyalayın.
-2. Aşağıda, Azure Izleyici çalışma kitabı galerisine bir çalışma kitabı şablonu dağıtan örnek bir Azure Resource Manager şablonu verilmiştir. Yerinde kopyaladığınız JSON 'yi yapıştırın `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`. Bir çalışma kitabı şablonu oluşturan bir başvuru Azure Resource Manager şablonu [burada](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)bulunabilir.
+2. Aşağıda, Azure Izleyici çalışma kitabı galerisine bir çalışma kitabı şablonu dağıtan örnek bir Azure Resource Manager şablonu verilmiştir. Yerinde kopyaladığınız JSON 'yi yapıştırın `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` . Bir çalışma kitabı şablonu oluşturan bir başvuru Azure Resource Manager şablonu [burada](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)bulunabilir.
 
     ```json
     {
@@ -77,12 +76,12 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
         ]
     }
     ```
-1. `galleries` Nesnesinde `name` ve `category` anahtarlarını değerlerinizle birlikte girin. Sonraki bölümde [Parametreler](#parameters) hakkında daha fazla bilgi edinin.
+1. `galleries`Nesnesinde `name` ve `category` anahtarlarını değerlerinizle birlikte girin. Sonraki bölümde [Parametreler](#parameters) hakkında daha fazla bilgi edinin.
 2. Bu Azure Resource Manager şablonunu [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [komut satırı arabirimi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)vb. kullanarak dağıtın.
 3. Azure portal açın ve Azure Resource Manager şablonunda seçilen çalışma kitabı galerisine gidin. Örnek şablonda Azure Izleyici çalışma kitabı galerisine gidin:
     1. Azure portal açın ve Azure Izleyicisi ' ne gidin
-    2. İçindekiler `Workbooks` tablosundan aç
-    3. Şablonunuz kategorisi `Deployed Templates` altındaki galeride bulun (mor öğelerden biri olacaktır).
+    2. `Workbooks`İçindekiler tablosundan aç
+    3. Şablonunuz kategorisi altındaki galeride bulun `Deployed Templates` (mor öğelerden biri olacaktır).
 
 ### <a name="parameters"></a>Parametreler
 
@@ -98,7 +97,7 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
 | `gallery.category`       | Galerideki şablonun yerleştirileceği grup.                                                     |
 | `gallery.order`          | Galerideki bir kategori içinde şablonu gösterme sırasına karar veren bir sayı. Daha düşük sıralama önceliği daha yüksektir. |
 | `gallery.resourceType`   | Galeriye karşılık gelen kaynak türü. Bu genellikle kaynağa karşılık gelen kaynak türü dizedir (örneğin, Microsoft. operationalınsights/çalışma alanları). |
-|`gallery.type`            | Çalışma kitabı türü olarak bahsedildiğinde, bu, galeriyi bir kaynak türü içinde ayıran benzersiz bir anahtardır. Örneğin, Application Insights ve `workbook` `tsg` farklı çalışma kitabı galerilerine karşılık gelen türler vardır. |
+|`gallery.type`            | Çalışma kitabı türü olarak bahsedildiğinde, bu, galeriyi bir kaynak türü içinde ayıran benzersiz bir anahtardır. Örneğin, Application Insights `workbook` ve `tsg` farklı çalışma kitabı galerilerine karşılık gelen türler vardır. |
 
 ### <a name="galleries"></a>Galeriler
 
@@ -120,7 +119,7 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
 
 1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabını açın.
 2. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-3. Araç çubuğundaki _Advanced Editor_ _</>_ düğmesini kullanarak Gelişmiş Düzenleyici açın.
+3. Araç çubuğundaki düğmesini kullanarak _Gelişmiş Düzenleyici_ açın _</>_ .
 4. Düzenleyicide, _şablon türünü_ _Kaynak Yöneticisi şablona_değiştirin.
 5. Oluşturmak için Kaynak Yöneticisi şablonu düzenleyicide görüntülenir. İçeriği kopyalayın ve olduğu gibi kullanın ya da hedef kaynağı dağıtan daha büyük bir şablonla birleştirin.
 
@@ -193,7 +192,7 @@ Bu şablon ' Merhaba Dünya! ' görüntüleyen basit bir çalışma kitabının 
 | Parametre | Açıklama |
 | :------------- |:-------------|
 | `workbookDisplayName` | Galeri veya kayıtlı listede kullanılan çalışma kitabının kolay adı. Kaynak grubunun ve kaynağın kapsamında benzersiz olması gerekir |
-| `workbookType` | Çalışma kitabının altında gösterilecek Galeri. Desteklenen değerler çalışma kitabı, `tsg`, Azure izleyici vb. içerir. |
+| `workbookType` | Çalışma kitabının altında gösterilecek Galeri. Desteklenen değerler çalışma kitabı, `tsg` , Azure izleyici vb. içerir. |
 | `workbookSourceId` | Çalışma kitabının ilişkilendirileceği kaynak örneğinin KIMLIĞI. Yeni çalışma kitabı bu kaynak örneğiyle ilgili görünür. Örneğin, _çalışma kitabı_altındaki içeriğin kaynak tablosu. Çalışma kitabınızın Azure Izleyici 'deki çalışma kitabı galerisinde görünmesini istiyorsanız, kaynak KIMLIĞI yerine _Azure izleyici_ dize kullanın. |
 | `workbookId` | Bu çalışma kitabı örneği için benzersiz GUID. Otomatik olarak yeni bir GUID oluşturmak için _[NewGuid ()]_ kullanın. |
 | `kind` | Oluşturulan çalışma kitabının paylaşılıp paylaşıldığını veya özel olduğunu belirtmek için kullanılır. Paylaşılan çalışma kitapları ve _Kullanıcı_ için _paylaşılan_ değeri özel olanlar için kullanın. |
@@ -210,7 +209,7 @@ Bu şablon ' Merhaba Dünya! ' görüntüleyen basit bir çalışma kitabının 
 | `usage` | Application Insights _kullanımı_ altında _daha fazla_ Galeri |
 
 ### <a name="limitations"></a>Sınırlamalar
-Teknik bir nedenle, bu mekanizma Application Insights çalışma _kitapları_ galerisinde çalışma kitabı örnekleri oluşturmak için kullanılamaz. Bu sınırlamayı ele almak için çalışıyoruz. Bu arada, Application Insights ilgili çalışma kitaplarını dağıtmak için sorun giderme kılavuzu galerisini (workbookType: `tsg`) kullanmanızı öneririz.
+Teknik bir nedenle, bu mekanizma Application Insights çalışma _kitapları_ galerisinde çalışma kitabı örnekleri oluşturmak için kullanılamaz. Bu sınırlamayı ele almak için çalışıyoruz. Bu arada, `tsg` Application Insights ilgili çalışma kitaplarını dağıtmak Için sorun giderme kılavuzu galerisini (workbookType:) kullanmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

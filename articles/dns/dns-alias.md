@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926241"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
@@ -60,13 +59,13 @@ Bu kısıtlama, [Azure Traffic Manager](../traffic-manager/traffic-manager-overv
 
 Bu sorun diğer ad kayıtları kullanılarak çözülebilir. CNAME kayıtlarının aksine, diğer ad kayıtları bölge tepesinde kayıtlarını dış uç noktalara sahip bir Traffic Manager profiline işaret etmek için tepesinde ve uygulama sahipleri tarafından kullanılabilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan Traffic Manager profile işaret noktasıdır.
 
-Örneğin, contoso.com ve www\.contoso.com aynı Traffic Manager profilini işaret edebilir. Azure Traffic Manager profilleriyle diğer ad kayıtlarını kullanma hakkında daha fazla bilgi edinmek için sonraki adımlar bölümüne bakın.
+Örneğin, contoso.com ve www \. contoso.com aynı Traffic Manager profilini işaret edebilir. Azure Traffic Manager profilleriyle diğer ad kayıtlarını kullanma hakkında daha fazla bilgi edinmek için sonraki adımlar bölümüne bakın.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Azure CDN uç noktalarına nokta dilimi tepesinde
 
 Traffic Manager bir profilde olduğu gibi, DNS bölgenizi Azure CDN tepesinde uç noktalarına göstermek için diğer ad kayıtlarını da kullanabilirsiniz. Bu, Azure depolama ve Azure CDN kullanarak statik Web siteleri oluşturduğunuzda yararlı olur. Daha sonra Web sitesine "www" önlemeden DNS adınızı gönderebilirsiniz.
 
-Örneğin, statik Web siteniz adlandırılmışsa `www.contoso.com`, kullanıcılarınız www 'i DNS adına eklemek zorunda `contoso.com` kalmadan sitenize erişebilir.
+Örneğin, statik Web siteniz adlandırılmışsa `www.contoso.com` , kullanıcılarınız www 'ı DNS adına eklemek zorunda kalmadan sitenize erişebilir `contoso.com` .
 
 Daha önce açıklandığı gibi, CNAME kayıtları tepesinde bölgesinde desteklenmez. Bu nedenle, contoso.com 'i CDN uç noktanıza göstermek için bir CNAME kaydı kullanamazsınız. Bunun yerine, bölge tepesinde doğrudan bir CDN uç noktasına göstermek için bir diğer ad kaydı kullanabilirsiniz.
 

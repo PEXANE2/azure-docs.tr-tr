@@ -8,10 +8,9 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982284"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
@@ -49,7 +48,7 @@ Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](http
 Aşağıdaki tabloda çeşitli SQL sorguları ve ilgili JavaScript sorguları sunulmaktadır. SQL sorgularında olduğu gibi Özellikler (örneğin, item.id) büyük/küçük harfe duyarlıdır.
 
 > [!NOTE]
-> `__`(çift alt çizgi), JavaScript sorgu API `getContext().getCollection()` 'si kullanılırken bir diğer addır.
+> `__`(çift alt çizgi), `getContext().getCollection()` JavaScript sorgu API 'si kullanılırken bir diğer addır.
 
 |**SQL**|**JavaScript sorgu API 'SI**|**Açıklama**|
 |---|---|---|

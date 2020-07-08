@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927420"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak ML Studio (klasik) v modellerini güncelleştirme
@@ -33,7 +32,7 @@ Yeniden eğitim sık gerçekleşebilir. Toplu yürütme etkinliği ve kaynak gü
 
 Aşağıdaki resimde, eğitim ve tahmine dayalı Web Hizmetleri arasındaki ilişki gösterilmektedir.
 
-![Web Hizmetleri](./media/update-machine-learning-models/web-services.png)
+![Web hizmetleri](./media/update-machine-learning-models/web-services.png)
 
 ## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio (klasik) kaynak güncelleştirme etkinliği
 
@@ -61,13 +60,13 @@ Aşağıdaki JSON kod parçacığı ML Studio (klasik) toplu yürütme etkinliğ
 
 | Özellik                      | Açıklama                              | Gerekli |
 | :---------------------------- | :--------------------------------------- | :------- |
-| ad                          | İşlem hattındaki etkinliğin adı     | Yes      |
-| açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | No       |
-| type                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Yes      |
-| linkedServiceName             | UpdateResourceEndpoint özelliği içeren bağlı hizmet Azure Machine Learning. | Yes      |
-| Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Yes      |
-| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Yes      |
-| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Yes      |
+| name                          | İşlem hattındaki etkinliğin adı     | Evet      |
+| açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| tür                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Evet      |
+| linkedServiceName             | UpdateResourceEndpoint özelliği içeren bağlı hizmet Azure Machine Learning. | Evet      |
+| Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Evet      |
+| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Evet      |
+| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Evet      |
 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
 

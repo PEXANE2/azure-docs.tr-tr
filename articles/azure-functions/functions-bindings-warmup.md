@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982250"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
@@ -38,7 +37,7 @@ Isınma tetikleyicisinin yalnızca genişleme işlemleri sırasında, yeniden ba
 
 ## <a name="trigger---example"></a>Tetikleyici-örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [C# işlevi](functions-dotnet-class-library.md) gösterir. Dönüş değeri özniteliği gerekli değildir.
 
@@ -76,11 +75,11 @@ namespace WarmupSample
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
 
-Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [C# betik işlevi](functions-reference-csharp.md) gösterir.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir ısınma tetikleyicisini ve uygulamanıza eklendiğinde her yeni örnekte çalıştırılacak bir [C# betik işlevini](functions-reference-csharp.md) gösterir.
 
 İşlevinizin adı ```warmup``` (büyük/küçük harf duyarsız) olmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -96,7 +95,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 
 [Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Buraya bağlanan C# betik kodu aşağıda verilmiştir `HttpRequest`:
+Buraya bağlanan C# betik kodu aşağıda verilmiştir `HttpRequest` :
 
 ```cs
 public static void Run(ILogger log)
@@ -107,11 +106,11 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [JavaScript işlevi](functions-reference-node.md) gösterir.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir ısınma tetikleyicisini ve uygulamanıza eklendiğinde her yeni örnekte çalıştırılacak [JavaScript işlevini](functions-reference-node.md) gösterir.
 
 İşlevinizin adı ```warmup``` (büyük/küçük harf duyarsız) olmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -137,11 +136,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [Python işlevi](functions-reference-python.md) gösterir.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnekte çalışacak bir [Python işlevi](functions-reference-python.md) gösterir.
 
 İşlevinizin adı ```warmup``` (büyük/küçük harf duyarsız) olmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -185,13 +184,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>Tetikleyici-öznitelikler
 
-[C# sınıf kitaplıklarında](functions-dotnet-class-library.md), işlevi yapılandırmak `WarmupTrigger` için özniteliği kullanılabilir.
+[C# sınıf kitaplıklarında](functions-dotnet-class-library.md), `WarmupTrigger` işlevi yapılandırmak için özniteliği kullanılabilir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Bu örnek, [Isınma](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) özniteliğinin nasıl kullanılacağını gösterir.
 
-İşlevinizin çağrılması ```Warmup``` gerektiğini ve uygulama başına yalnızca bir ısınma işlevi olabileceğini unutmayın.
+İşlevinizin çağrılması gerektiğini ```Warmup``` ve uygulama başına yalnızca bir ısınma işlevi olabileceğini unutmayın.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -224,12 +223,12 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 ## <a name="trigger---configuration"></a>Tetikleyici-yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `WarmupTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `WarmupTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **türüyle** | yok| Gerekli-olarak `warmupTrigger`ayarlanmalıdır. |
-| **Görünüm** | yok| Gerekli-olarak `in`ayarlanmalıdır. |
+| **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
+| **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-işlev kodunda kullanılan değişken adı.|
 
 ## <a name="trigger---usage"></a>Tetikleyici-kullanım

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928882"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
@@ -192,14 +191,14 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | dize | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| kimlik | dize | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | nesne | BLOB depolama olay verileri. |
-| dataVersion | dize | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | BLOB depolama olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
@@ -207,8 +206,8 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ModelName | dize | Kayıtlı olan modelin adı. |
-| ModelVersion | dize | Kaydedilen modelin sürümü. |
+| ModelName | string | Kayıtlı olan modelin adı. |
+| ModelVersion | string | Kaydedilen modelin sürümü. |
 | ModelTags | nesne | Kaydedilen modelin etiketleri. |
 | ModelProperties | nesne | Kaydedilen modelin özellikleri. |
 
@@ -216,9 +215,9 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ServiceName | dize | Dağıtılan hizmetin adı. |
-| ServiceComputeType | dize | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
-  | Modelıds | dize | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
+| ServiceName | string | Dağıtılan hizmetin adı. |
+| ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
+  | Modelıds | string | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
 | ServiceTags | nesne | Dağıtılan hizmetin etiketleri. |
 | ServiceProperties | nesne | Dağıtılan hizmetin özellikleri. |
 
@@ -226,10 +225,10 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | dize | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | dize | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | dize | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | dize | Tamamlanan çalıştırmanın çalıştırma türü. |
+| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
+| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
+| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
+| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
 | RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
 | RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
 
@@ -237,11 +236,11 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| Datadriftıd | dize | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
-| DataDriftName | dize | Olayı tetikleyen veri Drın izleyicisinin adı. |
-| RunId | dize | Veri kayması algılanan çalıştırmanın KIMLIĞI. |
-| Basedatasetıd | dize | Drift ' i algılamak için kullanılan temel veri kümesinin KIMLIĞI. |
-| Targetdatasetıd | dize | Drift ' i algılamak için kullanılan hedef veri kümesinin KIMLIĞI. |
+| Datadriftıd | string | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
+| DataDriftName | string | Olayı tetikleyen veri Drın izleyicisinin adı. |
+| RunId | string | Veri kayması algılanan çalıştırmanın KIMLIĞI. |
+| Basedatasetıd | string | Drift ' i algılamak için kullanılan temel veri kümesinin KIMLIĞI. |
+| Targetdatasetıd | string | Drift ' i algılamak için kullanılan hedef veri kümesinin KIMLIĞI. |
 | Driftkatsayısı | double | Olayı tetikleyen katsayı sonucu. |
 | StartTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan başlangıç saati.  |
 | EndTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan bitiş saati. |
@@ -250,13 +249,13 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | dize | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | dize | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | dize | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | dize | Tamamlanan çalıştırmanın çalıştırma türü. |
+| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
+| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
+| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
+| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
 | RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
 | RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
-| RunStatus | dize | Çalıştırmanın durumu. |
+| RunStatus | string | Çalıştırmanın durumu. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 | Başlık | Açıklama |

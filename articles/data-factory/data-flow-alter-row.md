@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
 ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982658"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Eşleme veri akışında değişiklik satırı dönüşümü
@@ -29,12 +28,12 @@ Değişiklik satırı dönüşümleri, yalnızca veri akışınızda veritabanı
 
 ## <a name="specify-a-default-row-policy"></a>Varsayılan bir satır ilkesi belirtin
 
-Alter Row dönüşümü oluşturun ve koşulu olan bir satır ilkesi belirtin `true()`. Önceden tanımlanmış ifadelerden hiçbiriyle eşleşmeyen her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyle eşleşmeyen her satır için `Insert`işaretlenir.
+Alter Row dönüşümü oluşturun ve koşulu olan bir satır ilkesi belirtin `true()` . Önceden tanımlanmış ifadelerden hiçbiriyle eşleşmeyen her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyle eşleşmeyen her satır için işaretlenir `Insert` .
 
 ![Satır değiştirme ilkesi](media/data-flow/alter-row4.png "Satır değiştirme ilkesi")
 
 > [!NOTE]
-> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturabilir ve koşulu olarak `true()`belirtebilirsiniz.
+> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturabilir ve koşulu olarak belirtebilirsiniz `true()` .
 
 ## <a name="view-policies-in-data-preview"></a>Veri önizlemede ilkeleri görüntüleme
 
@@ -67,13 +66,13 @@ Bunu gidermenin yolları aşağıda verilmiştir:
 
 1. Havuz dönüştürme ayarlarına gidin ve "anahtar sütunları yazmayı atla" ayarını yapın. Bu, ADF 'nin eşleme için anahtar değer olarak seçtiğiniz sütunu yazmayacak şekilde bildirir.
 
-2. Bu anahtar sütun, kimlik sütunları için soruna neden olan sütun değilse, havuz dönüştürme ön işleme SQL seçeneğini kullanabilirsiniz: ```SET IDENTITY_INSERT tbl_content ON```. Sonra, işlem sonrası SQL özelliği ile kapatın: ```SET IDENTITY_INSERT tbl_content OFF```.
+2. Bu anahtar sütun, kimlik sütunları için soruna neden olan sütun değilse, havuz dönüştürme ön işleme SQL seçeneğini kullanabilirsiniz: ```SET IDENTITY_INSERT tbl_content ON``` . Sonra, işlem sonrası SQL özelliği ile kapatın: ```SET IDENTITY_INSERT tbl_content OFF``` .
 
 3. Hem kimlik durumu hem de dağıtım sütunu durumu için mantığınızı, koşullu bölünmüş dönüşüm kullanarak ayrı bir güncelleştirme koşulu ve ayrı bir ekleme koşulu kullanarak kullanabilirsiniz. Bu şekilde, güncelleştirme yolundaki eşlemeyi anahtar sütunu eşlemesini yoksayacak şekilde ayarlayabilirsiniz.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -87,7 +86,7 @@ Bunu gidermenin yolları aşağıda verilmiştir:
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `CleanData` `SpecifyUpsertConditions` alan ve üç alter Row koşulu oluşturan adlı bir alter Row dönüşümünün örneğidir. Önceki dönüşümde, bir satırın veritabanına eklenip `alterRowCondition` eklenmeyeceğini, güncelleştirileceğini veya silindiğini belirleyen adlı bir sütun hesaplanır. Sütunun değeri alter Row kuralıyla eşleşen bir dize değeri içeriyorsa, bu ilke atanır.
+Aşağıdaki örnek, `CleanData` gelen akış alan `SpecifyUpsertConditions` ve üç alter Row koşulu oluşturan adlı bir alter Row dönüşümünün örneğidir. Önceki dönüşümde, `alterRowCondition` bir satırın veritabanına eklenip eklenmeyeceğini, güncelleştirileceğini veya silindiğini belirleyen adlı bir sütun hesaplanır. Sütunun değeri alter Row kuralıyla eşleşen bir dize değeri içeriyorsa, bu ilke atanır.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
