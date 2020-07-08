@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252976"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 dolaşım ayarları başvurusu
@@ -28,10 +27,10 @@ Windows 10 ' da eşitleme, yedekleme ve geri yükleme çerçevesi tarafından de
 
 | Hesap türü ve işlem | Masaüstü | Mobil |
 | --- | --- | --- |
-| Azure Active Directory: eşitleme |Evet |No |
+| Azure Active Directory: eşitleme |Evet |Hayır |
 | Azure Active Directory: yedekleme/geri yükleme |Hayır |Hayır |
 | Microsoft hesabı: eşitleme |Yes |Yes |
-| Microsoft hesabı: yedekleme/geri yükleme |No |Evet |
+| Microsoft hesabı: yedekleme/geri yükleme |Hayır |Evet |
 
 ## <a name="what-is-backup"></a>Yedekleme nedir?
 

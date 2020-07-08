@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253163"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
@@ -33,7 +32,7 @@ Bu makalede:
 
 Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sağlar. Bu yere [doğrudan bir bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) kullanarak ulaşabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**  >  **cihazlara**gidin.
 
 **Cihazlar** sayfası şunları yapmanızı sağlar:
@@ -184,7 +183,7 @@ Daha önce, cihaz listesini etkinliğe ve etkin duruma göre filtreleyebilirsini
 
 ![Önizleme işlevselliğinin filtrelenmesini etkinleştir](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**  >  **cihazlara**gidin.
 1. Görüntülenen başlığı seçin, **yeni cihaz filtreleme geliştirmelerini deneyin. Önizlemeyi etkinleştirmek için tıklayın.**
 

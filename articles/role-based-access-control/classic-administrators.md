@@ -15,10 +15,9 @@ ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791801"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
@@ -126,7 +125,7 @@ Azure aboneliği başına yalnızca bir hizmet yöneticisi olabilir. Hizmet yön
 | Hesap yönetici hesabı | Hizmet Yöneticisi farklı bir Microsoft hesabı değiştirilebilir mi? | Hizmet yöneticisini aynı dizindeki bir Azure AD hesabına değiştirebilir mi? | Hizmet Yöneticisi 'ni farklı bir dizinde Azure AD hesabı olarak değiştirebilir miyim? |
 | --- | --- | --- | --- |
 | Microsoft hesabı | Evet | Hayır | Hayır |
-| Azure AD hesabı | Yes | Evet | No |
+| Azure AD hesabı | Yes | Evet | Hayır |
 
 Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin, abby@contoso.com hizmet yöneticisini olarak değiştirebilir bob@contoso.com , ancak john@notcontoso.com john@notcontoso.com contoso.com dizininde bir varlık olmadığı müddetçe hizmet yöneticisini olarak değiştiremezsiniz.
 
@@ -138,7 +137,7 @@ Hesap Yöneticisi, başlangıçta Azure aboneliğine kaydolan ve aboneliğin fat
 
 Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 

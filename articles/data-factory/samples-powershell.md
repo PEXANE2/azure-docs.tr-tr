@@ -11,10 +11,9 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: c640adb0758c8dfd9dcdae3e26fd023afd5499f7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252279"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory için Azure PowerShell örnekleri
@@ -25,7 +24,7 @@ Aşağıdaki tablo, Azure Data Factory için örnek Azure PowerShell betiklerini
 
 | |  |
 |---|---|
-|**Veri kopyalama**||
+|**Verileri Kopyala**||
 |[Blob 'ları bir klasörden bir Azure Blob depolama alanındaki başka bir klasöre kopyalama](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Blobları Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. |
 |[SQL Server verilerini Azure Blob depolamaya kopyalama](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, verileri bir SQL Server veritabanından Azure Blob depolama alanına kopyalar. |
 |[Toplu kopyalama](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, Azure SQL veritabanı 'ndaki bir veritabanındaki birden çok tablodan verileri Azure SQL veri ambarı 'na kopyalar. |

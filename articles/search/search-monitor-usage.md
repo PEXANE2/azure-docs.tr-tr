@@ -7,111 +7,89 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77462335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806820"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
-Bu makalede, hizmet (kaynak) düzeyinde izleme iş yükü düzeyinde (sorgular ve dizin oluşturma) açıklanır ve Kullanıcı erişimini izlemek için bir çerçeve önerilir.
+Bu makalede, Azure Bilişsel Arama yönelik kavramların ve araçların izlenmesine ilişkin bir genel bakış sunulmaktadır. Bütünsel izleme için, Azure Izleyici gibi yerleşik işlevlerin ve eklenti hizmetlerin bir birleşimini kullanabilirsiniz.
 
-SPI genelinde, Azure Izleyici gibi yerleşik altyapının yanı sıra istatistik, sayı ve durum döndüren hizmet API 'Lerinin birleşimini kullanacaksınız. Özellik aralığını anlamak, bir geri bildirim döngüsü oluşturmanıza yardımcı olabilir, böylece sorunları ortaya çıkan sorunları ele alabilirsiniz.
+Tamamen şunları izleyebilirsiniz:
 
-## <a name="use-azure-monitor"></a>Azure İzleyici’yi kullanma
+* Hizmet: sistem durumu/kullanılabilirliği ve hizmet yapılandırmasındaki değişiklikler.
+* Depolama: her bir içerik türü için, hizmet katmanı için izin verilen kotayla ilgili olarak, hem kullanılan hem de kullanılabilir sayılır.
+* Sorgu etkinliği: birim, gecikme süresi ve daraltılmış ya da bırakılan sorgular. Günlüğe kaydedilen sorgu istekleri [Azure izleyicisini](#add-azure-monitor)gerektirir.
+* Dizin oluşturma etkinliği: Azure Izleyici ile [tanılama günlüğü](#add-azure-monitor) gerektirir.
 
-Azure Bilişsel Arama dahil olmak üzere birçok hizmet, uyarılar, ölçümler ve günlük Tanılama verileri için [Azure izleyiciden](https://docs.microsoft.com/azure/azure-monitor/) faydalanır. Azure Bilişsel Arama için yerleşik izleme altyapısı öncelikle kaynak düzeyinde izleme (hizmet durumu) ve [sorgu izleme](search-monitor-queries.md)için kullanılır.
+Arama hizmeti kullanıcı başına kimlik doğrulamasını desteklemez, bu nedenle günlüklerde kimlik bilgileri bulunamadı.
 
-Aşağıdaki ekran görüntüsü portalda Azure Izleyici özelliklerini bulmanıza yardımcı olur.
+## <a name="built-in-monitoring"></a>Yerleşik izleme
 
-+ Ana Genel Bakış sayfasında bulunan **izleme** sekmesi, önemli ölçümleri bir bakışta gösterir.
-+ **Etkinlik günlüğü**, tam olarak aşağıda genel bakış, kaynak düzeyindeki eylemlerle ilgili raporlar: hizmet durumu ve API anahtar isteği bildirimleri.
-+ **İzleme**, listede daha fazla azaltma, yapılandırılabilir uyarılar, ölçümler ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
+Yerleşik izleme, bir arama hizmeti tarafından günlüğe kaydedilen etkinliklere başvurur. Tanılama dışında, bu izleme düzeyi için yapılandırma gerekmez.
+
+Azure Bilişsel Arama, hizmet durumu ve sorgu ölçümlerinde raporlama için, portalda veya bu [REST API 'lerinde](#monitoring-apis)bulabileceğiniz, 30 günlük bir zamanlamaya göre dahili verileri saklar.
+
+Aşağıdaki ekran görüntüsü Portalda izleme bilgilerini bulmanıza yardımcı olur. Hizmeti kullanmaya başladığınızda veriler kullanılabilir hale gelir. Portal sayfaları birkaç dakikada bir yenilenir.
+
+* **İzleme** sekmesi, ana genel bakış sayfasında sorgu hacmi, gecikme süresi ve hizmetin basınç altında olup olmadığı gösterilir.
+* Sol gezinti bölmesindeki **etkinlik günlüğü**Azure Resource Manager bağlıdır. Etkinlik günlüğü Kaynak Yöneticisi, hizmet kullanılabilirliği ve durumu, kapasiteye (çoğaltmalar ve bölümler) yapılan değişiklikler ve API tuşuyla ilgili etkinlikler üzerinde gerçekleştirilen eylemler hakkında rapor sağlar.
+* **İzleme** ayarları, daha sonra yapılandırılabilir uyarılar, ölçümler ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
 
 ![Arama hizmetinde Azure Izleyici tümleştirmesi](./media/search-monitor-usage/azure-monitor-search.png
  "Arama hizmetinde Azure Izleyici tümleştirmesi")
 
-### <a name="precision-of-reported-numbers"></a>Bildirilen sayıların duyarlığı
+> [!NOTE]
+> Portal sayfaları birkaç dakikada bir yenilendiğinden, bildirilen sayılar yaklaşık olarak, sisteminizin istekleri ne kadar iyi hizmet verdiğine ilişkin genel bir fikir vermek için tasarlanmıştır. Saniye başına sorgu (QPS) gibi gerçek ölçümler, sayfada gösterilen sayıdan daha yüksek veya daha düşük olabilir. Duyarlık bir gereksinimdir ise API 'Leri kullanmayı düşünün.
 
-Portal sayfaları birkaç dakikada bir yenilenir. Bu nedenle, portalda bildirilen sayılar yaklaşık olarak, sisteminizin istekleri ne kadar iyi hizmet verebildiği konusunda genel bir fikir sunacak şekilde hazırlanmıştır. Saniye başına sorgu (QPS) gibi gerçek ölçümler, sayfada gösterilen sayıdan daha yüksek veya daha düşük olabilir.
+<a name="monitoring-apis"> </a>
 
-## <a name="activity-logs-and-service-health"></a>Etkinlik günlükleri ve hizmet durumu
+### <a name="apis-useful-for-monitoring"></a>İzleme için yararlı API 'Ler
 
-[**Etkinlik günlüğü**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) , Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
+Portalda Izleme ve kullanım sekmelerinde bulunan bilgileri almak için aşağıdaki API 'Leri kullanabilirsiniz.
 
-Sorgular, dizin oluşturma veya nesne oluşturma gibi hizmet içi görevlerde, *yönetici anahtarı al* ve her Istek için *sorgu anahtarları al* gibi genel bilgilendirme bildirimleri görürsünüz, ancak söz konusu eylemin kendisi değildir. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
+* [Hizmet Istatistiklerini al](/rest/api/searchservice/get-service-statistics)
+* [Dizin Istatistiklerini al](/rest/api/searchservice/get-index-statistics)
+* [Belge sayılarını al](/rest/api/searchservice/count-documents)
+* [Dizin Oluşturucu durumunu al](/rest/api/searchservice/get-indexer-status)
+
+### <a name="activity-logs-and-service-health"></a>Etkinlik günlükleri ve hizmet durumu
+
+Portaldaki [**etkinlik günlüğü**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) sayfası, Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
+
+Ortak girişler, API anahtarlarına yönelik başvuruları, *yönetici anahtarı al* ve *sorgu anahtarları*al gibi genel bilgilendirme bildirimleri içerir. Bu etkinlikler, yönetici anahtarı (nesneleri oluştur veya Sil) veya sorgu anahtarı kullanılarak yapılan istekleri gösterir, ancak isteği kendisi göstermez. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
 
 **Etkinlik günlüğüne** sol gezinti bölmesinden veya en üstteki pencere Komut çubuğundaki bildirimlerden veya **sorunları Tanıla ve çöz** sayfasından erişebilirsiniz.
 
-## <a name="monitor-storage"></a>Depolama alanını izleme
+### <a name="monitor-storage-in-the-usage-tab"></a>Kullanım sekmesinde depolamayı izleme
 
-Kaynak kullanımında genel bakış sayfası raporuna yerleştirilmiş sekmeli sayfalar. Bu bilgiler, hizmeti kullanmaya başladığınızda, hiçbir yapılandırma gerekmeden ve sayfa birkaç dakikada bir yenilendiğinde kullanılabilir hale gelir. 
-
-[Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
-
-Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren [bir özel çözüm](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) oluşturmanız gerekir. Depolama ölçümleri hakkında daha fazla bilgi için bkz. [hizmet Istatistiklerini edinme](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
-
-Portalda görsel izleme için **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. 
+Portalda görsel izleme için **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
 
 Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
 ![Katman sınırlarına göre kullanım durumu](./media/search-monitor-usage/usage-tab.png
  "Katman sınırlarına göre kullanım durumu")
 
-## <a name="monitor-workloads"></a>İş yüklerini izleme
+> [!NOTE]
+> Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Depolama uyarılarını almak için, kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren [bir özel çözüm](../azure-monitor/insights/solutions-creating.md) oluşturmanız gerekir.
 
-Günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics içindeki **AzureDiagnostics** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
+<a name="add-azure-monitor"></a>
 
-Günlüğe kaydedilen verilerin çoğu salt okuma işlemlerine yöneliktir. Günlükte yakalanmayan diğer oluşturma-güncelleştirme silme işlemleri için, arama hizmetini sistem bilgileri için sorgulayabilirsiniz.
+## <a name="add-on-monitoring-with-azure-monitor"></a>Azure Izleyici ile eklenti izleme
 
-| ThrottledRequests | Açıklama |
-|---------------|-------------|
-| ServiceStats | Bu işlem, bir portala genel bakış sayfası yüklendiğinde veya yenilendiğinde, doğrudan veya örtük olarak çağrılan [hizmet Istatistiklerini almak](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)için bir yordam çağrıdır. |
-| Query. Search |  Bir dizinde yapılan sorgu istekleri bkz. günlüğe kaydedilen sorgular hakkında bilgi için [izleyici sorguları](search-monitor-queries.md) .|
-| Dizin oluşturuluyor. Dizin  | Bu işlem, [belge eklemek, güncelleştirmek veya silmek](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)için yapılan bir çağrıdır. |
-| dizinlerde. Örneğini | Bu, verileri Içeri aktarma Sihirbazı tarafından oluşturulan bir dizindir. |
-| Dizin oluşturucular. oluştur | Veri alma Sihirbazı aracılığıyla açıkça veya örtük olarak bir Dizin Oluşturucu oluşturun. |
-| Indexers. Get | Dizin Oluşturucu her çalıştırıldığında bir dizin oluşturucunun adını döndürür. |
-| Dizin oluşturucular. durum | Dizin Oluşturucu her çalıştırıldığında bir dizin oluşturucunun durumunu döndürür. |
-| DataSources. Get | Bir Dizin Oluşturucu her çalıştırıldığında veri kaynağının adını döndürür.|
-| Indexes. Get | Bir Dizin Oluşturucu çalıştırıldığında bir dizinin adını döndürür. |
+Azure Bilişsel Arama dahil olmak üzere birçok hizmet, ek uyarılar, ölçümler ve günlük Tanılama verileri için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/) ile tümleşir. 
 
-### <a name="kusto-queries-about-workloads"></a>İş yükleri hakkında kusto sorguları
+Veri toplama ve depolama üzerinde denetim istiyorsanız arama hizmeti için [Tanılama günlüğünü etkinleştirin](search-monitor-logs.md) . Azure Izleyici tarafından yakalanan günlüğe kaydedilen olaylar **AzureDiagnostics** tablosunda depolanır ve sorgular ve dizin oluşturma ile ilgili işletimsel verilerden oluşur.
 
-Günlüğe kaydetmeyi etkinleştirdiyseniz, hizmetinizdeki ve ne zaman çalıştırılan işlemlerin bir listesi için **AzureDiagnostics** sorgulama yapabilirsiniz. Ayrıca, performans değişikliklerini araştırmak için etkinlik ile bağıntı de oluşturabilirsiniz.
+Azure Izleyici çeşitli depolama seçenekleri sağlar ve tercih ettiğiniz verileri nasıl kullanacağınızı belirler:
 
-#### <a name="example-list-operations"></a>Örnek: listeleme işlemleri 
+* Power BI raporunda [günlük verilerini görselleştirmek](search-monitor-logs-powerbi.md) Istiyorsanız Azure Blob Depolama ' yı seçin.
+* Verileri kusto sorguları aracılığıyla araştırmak istiyorsanız Log Analytics seçin.
 
-İşlemlerin bir listesini ve her birinin sayımını döndürün.
-
-```
-AzureDiagnostics
-| summarize count() by OperationName
-```
-
-#### <a name="example-correlate-operations"></a>Örnek: işlemler bağıntılı
-
-Sorgu isteğini dizin oluşturma işlemleriyle ilişkilendirin ve işlemlerin çakıştığı görmek için veri noktalarını bir zaman grafiğinde işleme koyun.
-
-```
-AzureDiagnostics
-| summarize OperationName, Count=count()
-| where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
-| render timechart
-```
-
-### <a name="use-search-apis"></a>Arama API 'Lerini kullanma
-
-Hem Azure Bilişsel Arama REST API hem de .NET SDK, hizmet ölçümleri, dizin ve Dizin Oluşturucu bilgilerine ve belge sayılarına programlı erişim sağlar.
-
-+ [Hizmet Istatistiklerini al](/rest/api/searchservice/get-service-statistics)
-+ [Dizin Istatistiklerini al](/rest/api/searchservice/get-index-statistics)
-+ [Belge sayılarını al](/rest/api/searchservice/count-documents)
-+ [Dizin Oluşturucu durumunu al](/rest/api/searchservice/get-indexer-status)
+Azure Izleyici kendi faturalandırma yapısına sahiptir ve bu bölümde başvurulan tanılama günlüklerinin ilişkili bir maliyeti vardır. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanım ve tahmini maliyetler](../azure-monitor/platform/usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Kullanıcı erişimini izleme
 

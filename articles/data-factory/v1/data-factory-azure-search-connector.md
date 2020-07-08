@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194911"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Azure Bilişsel Arama dizinine veri gönderme
@@ -59,7 +58,7 @@ Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğel
 | -------- | ----------- | -------- |
 | tür | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Evet |
 | url | Arama Hizmeti URL 'SI. | Evet |
-| key | Arama hizmeti için yönetici anahtarı. | Evet |
+| anahtar | Arama hizmeti için yönetici anahtarı. | Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -99,12 +98,12 @@ Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip deste
 
 | Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
-| Dize | Y |
-| Int32 | Y |
-| Int64 | Y |
-| Çift | Y |
-| Boole | Y |
-| Veri Timesapmayı | Y |
+| Dize | E |
+| Int32 | E |
+| Int64 | E |
+| Çift | E |
+| Boole | E |
+| Veri Timesapmayı | E |
 | Dize dizisi | N |
 | GeographyPoint | N |
 

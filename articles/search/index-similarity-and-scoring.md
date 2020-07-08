@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679663"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806644"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Bilişsel Arama benzerlik ve Puanlama
 
@@ -38,7 +37,7 @@ Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve paramet
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Puanlama istatistikleri ve yapışkan oturumlar (Önizleme)
+## <a name="scoring-statistics-and-sticky-sessions"></a>Puanlama istatistikleri ve yapışkan oturumlar
 
 Ölçeklenebilirlik için Azure Bilişsel Arama her dizini bir parçalama işlemi aracılığıyla yatay olarak dağıtır, bu da bir dizinin bölümlerinin fiziksel olarak ayrı olduğu anlamına gelir.
 
@@ -47,14 +46,14 @@ Varsayılan olarak, bir belgenin puanı *bir parça içindeki*verilerin istatist
 Puanı tüm parçalar genelinde istatistiksel özelliklere göre hesaplamak isterseniz, [sorgu parametresi](https://docs.microsoft.com/rest/api/searchservice/search-documents) olarak *scoringStatistics = Global* ekleyerek bunu yapabilirsiniz (veya *"scoringStatistics": "Global"* i [sorgu isteğinin](https://docs.microsoft.com/rest/api/searchservice/search-documents)gövde parametresi olarak ekleyebilirsiniz).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 ScoringStatistics kullanmak, aynı çoğaltmadaki tüm parçaların aynı sonuçları sağlamasına emin olur. Yani, her zaman dizininizdeki en son değişikliklerle güncelleştirildiğinden farklı çoğaltmalar birbirinden biraz farklı olabilir. Bazı senaryolarda, kullanıcılarınızın "sorgu oturumu" sırasında daha tutarlı sonuçlar almasını isteyebilirsiniz. Bu senaryolarda, `sessionId` sorgularınızı bir parçası olarak sağlayabilirsiniz. , `sessionId` Benzersiz bir kullanıcı oturumuna başvurmak için oluşturduğunuz benzersiz bir dizedir.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -72,6 +71,37 @@ Azure Bilişsel Arama, iki farklı benzerlik derecelendirme algoritmasını dest
 Aşağıdaki video segmenti, Azure Bilişsel Arama 'de kullanılan derecelendirme algoritmalarının açıklamasına hızlı bir şekilde iletir. Daha fazla arka plan için tam video izleyebilirsiniz.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>featuresMode parametresi (Önizleme)
+
+[Arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) isteklerinde, alan düzeyinde ilgi hakkında ek ayrıntı sağlayabilen yeni bir [Korturesmode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) parametresi vardır. Bu, `@searchScore` belge için hesaplanmışsa (Bu belgenin bu sorgu bağlamında alakalı olduğu), Korturesmode aracılığıyla bir yapıda ifade edilen ayrı alanlarla ilgili bilgileri alabilirsiniz `@search.features` . Yapı sorguda kullanılan tüm alanları (bir sorgudaki **searchfields** aracılığıyla belirli alanlar ya da bir dizinde **aranabilir** olan tüm alanlar) içerir. Her alan için aşağıdaki değerleri alırsınız:
+
++ Alanda bulunan benzersiz belirteçlerin sayısı
++ Benzerlik puanı veya alanın içeriğine benzer şekilde sorgu terimiyle ilgili bir ölçü
++ Terim sıklığı veya alanda sorgu teriminin bulunma sayısı
+
+"Description" ve "title" alanlarını hedefleyen bir sorgu için şunu içeren bir yanıt şöyle `@search.features` görünebilir:
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+Bu veri noktalarını [özel Puanlama çözümlerinde](https://github.com/Azure-Samples/search-ranking-tutorial) kullanabilir veya arama ilgi sorunlarını ayıklamak için bu bilgileri kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -7,15 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791155"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Otomatik ölçeklendirme işleme ile Azure Cosmos kapsayıcıları ve veritabanları oluşturma
 
-Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda standart (el ile) ya da otomatik ölçeklendirme sağlanan aktarım hızı ayarlamanıza olanak sağlar. Bu makalede, otomatik ölçeklendirme sağlanan aktarım hızının avantajları ve kullanım durumları açıklanmaktadır. 
+Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda standart (el ile) veya otomatik ölçeklendirme ile sağlanan işlem hızı sunmanızı sağlar. Bu makalede otomatik ölçeklendirme ile sağlanan işlem hızının avantajları ve kullanım örnekleri açıklanır. 
 
 Otomatik ölçeklendirme sağlanan aktarım hızı, değişken veya öngörülemeyen trafik desenleri olan görev açısından kritik iş yükleri için uygundur ve yüksek performans ve ölçekte SLA 'Lar gerektirir. 
 
@@ -63,11 +62,11 @@ Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleşt
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Otomatik ölçeklendirme için üretilen iş ve depolama sınırları
 
-Herhangi bir değeri için `Tmax` , veritabanı veya kapsayıcı bir toplam depolayabilirler `0.01 * Tmax GB` . Bu depolama miktarına ulaşıldığında, en fazla RU/sn, uygulamanıza hiçbir etkilenmeden yeni depolama değerine göre otomatik olarak artar. 
+Herhangi bir değeri için `Tmax` , veritabanı veya kapsayıcı bir toplam depolayabilirler `0.01 * Tmax GB` . Bu depolama alanı miktarına ulaşıldıktan sonra maksimum RU/sn değeri yeni depolama alanı değerine göre otomatik olarak artırılır ve bu durum uygulamanızı etkilemez. 
 
-Örneğin, 50.000 RU/sn 'lik en fazla RU/sn (5000-50.000 RU/s arasında ölçekleme) ile başlatırsanız, en fazla 500 GB veri saklayabilirsiniz. 500 GB 'ı aşarsanız (örneğin, depolama 600 GB ise), yeni en büyük RU/sn değeri 60.000 RU/sn olacaktır (6000-60.000 RU/s arasında ölçeklendirme).
+Örneğin 50.000 RU/sn (5000 ile 50.000 RU/sn arasında ölçeklendirilir) maksimum RU/sn değeriyle başlarsanız en fazla 500 GB veri depolayabilirsiniz. 500 GB düzeyini aşarsanız (örneğin depolama alanı 600 GB olursa) yeni maksimum RU/sn değeri 60.000 RU/sn (6000 ile 60.000 RU/sn arasında ölçeklendirilir) olacaktır.
 
-Veritabanı düzeyi aktarım hızını otomatik ölçeklendirme ile birlikte kullandığınızda, ilk 25 kapsayıcının 4000 RU/sn 'lik boyutunu (400-4000 RU/s arasında ölçeklendirin), ancak 40 GB depolama alanını aşmadığı sürece paylaşabilirsiniz. Daha fazla bilgi için bu [belgelere](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) bakın.
+Otomatik ölçeklendirme ile veritabanı düzeyinde işlem hızını kullanırsanız 40 GB depolama alanını aşmadığınız sürece ilk 25 kapsayıcının 4000 (400 ile 4000 RU/sn arasında ölçeklendirilir) otomatik ölçeklendirme maksimum RU/sn değerini paylaşmasını sağlayabilirsiniz. Daha fazla bilgi için bu [belgelere](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) bakın.
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Karşılaştırma – elle ve otomatik ölçeklendirme işleme ile yapılandırılmış kapsayıcılar
 Daha fazla ayrıntı için, standart (el ile) ve otomatik ölçeklendirme verimlilik arasından seçim yapma hakkında bu [belgelere](how-to-choose-offer.md) bakın.  

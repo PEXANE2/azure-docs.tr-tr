@@ -2,27 +2,23 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801895"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
 Bu makalede, makinelerinizde Güncelleştirme Yönetimi özelliğini dağıttığınızda çalıştırabileceğiniz sorunlar ele alınmaktadır. Temeldeki sorunu belirlemede karma Runbook Worker Aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi edinmek için bkz. [Windows Update Aracısı sorunlarını giderme](update-agent-issues.md) ve [Linux Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues-linux.md). Diğer özellik dağıtım sorunları için bkz. [özellik dağıtım sorunlarını giderme](onboarding.md).
 
 >[!NOTE]
->Bir VM 'de Güncelleştirme Yönetimi dağıttığınızda sorunlarla karşılaşırsanız, yerel makinedeki **uygulama ve hizmet günlükleri** altındaki **Operations Manager** günlüğünü kontrol edin. Olay KIMLIĞI 4502 ve olay ayrıntıları içeren olayları arayın `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+>Bir Windows makinesinde Güncelleştirme Yönetimi dağıttığınızda sorunlarla karşılaşırsanız, Windows Olay Görüntüleyicisi açın ve yerel makinedeki **uygulama ve hizmet günlükleri** altında **Operations Manager** olay günlüğünü kontrol edin. Olay KIMLIĞI 4502 ve olay ayrıntıları içeren olayları arayın `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Senaryo: "güncelleştirme çözümü etkinleştirilemedi" hatasını alıyorsunuz
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Senaryo: "güncelleştirme çözümü etkinleştirilemedi" hatasını alıyorsunuz
 
 ### <a name="issue"></a>Sorun
 
@@ -48,9 +44,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 * Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../automation-hybrid-runbook-worker.md#network-planning) ' na gidin.  
 
-* Log Analytics aracısının çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) ' na gidin.
-
-* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-scope-configurations-update-management.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-scope-configurations-update-management.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi istemiyorsanız, kapsam yapılandırmasını makineleri hedefleyecek şekilde ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * [Karma runbook çalışanını şirket içi bir Windows bilgisayarından kaldırma](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) bölümündeki adımları Izleyerek veya [karma Runbook Worker 'ı şirket içi bir Linux bilgisayarından kaldırarak](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)çalışan yapılandırmasını kaldırın. 
 

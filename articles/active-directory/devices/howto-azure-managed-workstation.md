@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252789"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma
@@ -31,18 +30,18 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 
 | Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Korunmalıdır | Yalıtılmış |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Azure AD 'de Kullanıcı | Yes | Yes | Yes | Yes | Yes | Yes |
-| Intune tarafından yönetilen | Yes | Yes | Yes | Yes | Yes | Yes |
-| Cihaz-Azure AD kayıtlı | Yes |  |  |  |  | |   |
-| Cihaz-Azure AD 'ye katılmış |   | Yes | Yes | Yes | Yes | Yes |
-| Intune güvenlik temeli uygulandı |   | Yes <br> Leştirilmiş | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Korunmalıdır | NA |
-| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Yes | Yes | Yes | Yes | Yes |
-| Microsoft Defender ATP etkin |   | Yes  | Yes | Yes | Yes | Yes |
-| Yönetici haklarının kaldırılması |   |   | Yes  | Yes | Yes | Yes |
-| Microsoft Autopilot kullanarak dağıtım |   |   | Yes  | Yes | Yes | Yes |
-| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Yes | Yes |Yes |
-| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Yes | Yes |Yes |
-| Internet engellendi (gelen/giden) |   |   |   |  |  |Yes |
+| Azure AD 'de Kullanıcı | Evet | Evet | Evet | Evet | Evet | Evet |
+| Intune tarafından yönetilen | Evet | Evet | Evet | Evet | Evet | Evet |
+| Cihaz-Azure AD kayıtlı | Evet |  |  |  |  | |   |
+| Cihaz-Azure AD 'ye katılmış |   | Evet | Evet | Evet | Evet | Evet |
+| Intune güvenlik temeli uygulandı |   | Evet <br> Leştirilmiş | Evet <br> (HighSecurity) | Evet <br> (NCSC) | Evet <br> Korunmalıdır | NA |
+| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Evet | Evet | Evet | Evet | Evet |
+| Microsoft Defender ATP etkin |   | Evet  | Evet | Evet | Evet | Evet |
+| Yönetici haklarının kaldırılması |   |   | Evet  | Evet | Evet | Evet |
+| Microsoft Autopilot kullanarak dağıtım |   |   | Evet  | Evet | Evet | Evet |
+| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Evet | Evet |Evet |
+| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Evet | Evet |Evet |
+| Internet engellendi (gelen/giden) |   |   |   |  |  |Evet |
 
 > [!NOTE]
 > Güvenli iş istasyonu Kılavuzu **cihazlarında** profiller ve ilkeler atanır. Kullanıcılara doğrudan ilke uygulanmayacak, cihaz paylaşımının (paylaşılan cihazlar) etkin olmasını sağlar. Güvenli bir iş istasyonu dağıtımınızda paylaşılmadığı veya ayrı kullanıcı ilkeleri gerekliyse, Kullanıcı ilkesi profillerinin atanması Kullanıcı ve cihaza atanabilir. 
@@ -117,7 +116,7 @@ Cihazları Azure AD 'ye katma işlemini daha da güçlendirin:
 
 1. **Azure Active Directory**  >  **cihazlar**  >  **cihaz ayarları**' na gidin.
 1. **Cihazlara katmak Için Multi-Factor auth iste**altında **Evet** ' i seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 #### <a name="configure-mobile-device-management"></a>Mobil cihaz yönetimini yapılandırma
 
@@ -125,7 +124,7 @@ Azure portal:
 
 1. **Azure Active Directory**  >  **Mobility (MDM ve MAM)**  >  **Microsoft Intune**gidin.
 1. **MDM Kullanıcı kapsamı** ayarını **Tümü**olarak değiştirin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Bu adımlar, Intune ile herhangi bir cihazı yönetmenizi sağlar. Daha fazla bilgi için bkz. [Intune hızlı başlangıç: Windows 10 cihazları için otomatik kayıt ayarlama](/Intune/quickstart-setup-auto-enrollment). Intune yapılandırma ve uyumluluk ilkelerini gelecekteki bir adımda oluşturursunuz.
 
@@ -221,7 +220,7 @@ Windows Defender ATP ve Intune tümleştirmesini yapılandırmak için Azure por
 
 1. Bir bağlantı kurulduktan sonra Intune 'a dönün ve en üstte **Yenile** ' yi seçin.
 1. **10.0.15063 ve üstü sürümü Windows cihazları Windows Defender ATP bağlayıcısına bağla** ayarını **Açık** olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Daha fazla bilgi için bkz. [Windows Defender Gelişmiş tehdit koruması](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
@@ -231,7 +230,7 @@ Daha fazla bilgi için bkz. [Windows Defender Gelişmiş tehdit koruması](/Wind
 
 | Profil | İndirme konumu | Kısaltın |
 | --- | --- | --- |
-| Düşük güvenlik | Yok | Yok |
+| Düşük güvenlik | YOK | YOK |
 | Gelişmiş güvenlik | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Yüksek güvenlik | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Özelleştirilmiş | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline.ps1 |
@@ -345,7 +344,7 @@ Microsoft komut dosyası merkezi 'ndeki [SetDesktopBackground.ps1](https://galle
 1. **Oluştur**'u seçin.
 1. **Atamaları**seçin  >  **grupları**seçin.
    1. Güvenlik grubu **güvenli Iş istasyonlarını**ekleyin.
-   1. **Kaydet**’i seçin.
+   1. **Kaydet**'i seçin.
 
 ## <a name="enroll-and-validate-your-first-device"></a>İlk cihazınızı kaydetme ve doğrulama
 
@@ -432,7 +431,7 @@ MMA aracısını Intune PowerShell betiği ile dağıtma
 1. **Oluştur**'u seçin.
 1. **Atamaları**seçin  >  **grupları**seçin.
    1. Güvenlik grubu **güvenli Iş istasyonlarını**ekleyin.
-   1. **Kaydet**’i seçin.
+   1. **Kaydet**'i seçin.
 
 Sonra yeni günlükleri almak için Log Analytics ayarlamanız gerekir
 1. **Azure Portal**, **Log Analytics çalışma alanına** gidin > ' güvenli iş Istasyonu izleme ' öğesini seçin
@@ -443,7 +442,7 @@ Sonra yeni günlükleri almak için Log Analytics ayarlamanız gerekir
    * ' Microsoft-Windows-AppLocker/MSI ve Script ' > **bilgi** seçimini kaldırın
    * ' Microsoft-Windows-AppLocker/paketlenmiş uygulama-dağıtım ' > **bilgi** seçimini kaldırın
    * ' Microsoft-Windows-AppLocker/paketlenmiş uygulama-yürütme ' > **bilgi** seçimini kaldırın
-1. **Kaydet**’i seçin
+1. **Kaydet**'i seçin
 
 Uygulama günlüğü, seçtiğiniz Log Analytics çalışma alanında kullanılabilir.
 

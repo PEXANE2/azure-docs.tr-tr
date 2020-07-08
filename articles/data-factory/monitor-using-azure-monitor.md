@@ -10,13 +10,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: 3f97db2e2722d16c3fa780dbe7205813c0e75420
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 2c9bb4bbf52c968afe267bfa3e2b8d6dae980833
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801630"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -24,7 +23,7 @@ ms.locfileid: "84655561"
 
 Bulut uygulamaları karmaşıktır ve birçok hareketli parçaya sahiptir. İzleyiciler, uygulamalarınızın sağlıklı durumda kalmasını ve çalışmasını sağlamaya yardımcı olmak için veri sağlar. İzleyicilerin olası sorunları önlemenize ve geçmişteki sorunları gidermenize yardımcı olur. Uygulamalarınız hakkında derin Öngörüler elde etmek için izleme verilerini kullanabilirsiniz. Bu bilgi, uygulama performansını ve bakımlılığını iyileştirmenize yardımcı olur. Ayrıca, el ile müdahale gerektiren eylemleri otomatikleştirmenize de yardımcı olur.
 
-Azure Izleyici, çoğu Azure hizmeti için temel düzeyde altyapı ölçümleri ve günlükleri sağlar. Azure tanılama günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Azure Data Factory, Azure Izleyici 'de tanılama günlükleri yazabilir. Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
+Azure Izleyici, çoğu Azure hizmeti için temel düzeyde altyapı ölçümleri ve günlükleri sağlar. Azure tanılama günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Azure Data Factory (ADF), Azure Izleyici 'de tanılama günlükleri yazabilir. Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
@@ -60,8 +59,13 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
 1. Ayarınızı bir ad verin, **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma**alanından bir çalışma alanı seçin.
 
-    * _Kaynağa özgü_ modda, Azure Data Factory akışından gelen tanılama günlükleri _Adfardışık düzen eylemsizlik_, _Adftriggerrun_ve _adfactivityrun_ tablolarını içine kaydedilir.
     * _Azure-Diagnostics_ modunda, tanılama günlükleri _AzureDiagnostics_ tablosuna akar.
+
+    * _Kaynağa özgü_ modda, Azure Data Factory akışından gelen tanılama günlükleri _Adfactivityrun_, _adfardışık düzen_, adftriggerrun, _ADFTriggerRun_ _adfssisıntegrationruntimelogs_, adfssıspackageeventmessagecontext, adfssispackageeventmessages, adfssıspackageexecutioncomponent, Adfssispackageexecutioncomponentaşamaların ve adfssispackageexecutiondatastatıstıcs Tables. _ADFSSISPackageEventMessageContext_ _ADFSSISPackageEventMessages_ _ADFSSISPackageExecutableStatistics_ _ADFSSISPackageExecutionComponentPhases_ _ADFSSISPackageExecutionDataStatistics_
+
+      Log Analytics tablolarına göndermek için iş yüklerinize uygun çeşitli Günlükler seçebilirsiniz. Örneğin, SQL Server Integration Services (SSIS) hiç kullanmıyorsanız, herhangi bir SSIS günlüğü seçmeniz gerekir. SSIS Integration Runtime (IR) Başlat/Durdur/bakım işlemlerini günlüğe kaydetmek istiyorsanız SSIS IR günlüklerini seçebilirsiniz. SSIS paket yürütmelerini yalnızca T-SQL aracılığıyla çağırırsanız yalnızca SSIS paket günlüklerini seçebilirsiniz. ADF işlem hatlarında SSIS paketi yürütme etkinliklerini kullanarak SSIS paket yürütmelerini çağırırsanız, tüm Günlükler ' i seçebilirsiniz.
+
+    * _Allölçümler_' i SEÇERSENIZ, ADF varlık sayısı/boyutu, etkinlik/işlem hattı/tetikleyici için ölçümler, INTEGRATION RUNTIME (IR) CPU kullanımı/belleği/düğüm sayısı/kuyruğu, ve SSIS paketi yürütmeleri ve SSIS IR başlatma/durdurma işlemleri için, üzerine uyarıları izlemenize/yükseltmenize olanak sağlanır.
 
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -115,26 +119,36 @@ Azure Data Factory Analytics 'in yüklenmesi, seçilen Log Analytics çalışma 
 > [!NOTE]
 > Azure Data Factory Analytics (Önizleme), tanılama günlüklerini _kaynağa özgü_ hedef tablolarına gönderir. Şu tablolara yönelik sorgular yazabilirsiniz: _Adfardışık düzen eylemsizlik_, _Adftriggerrun_ve _adfactivityrun_.
 
-
 ## <a name="data-factory-metrics"></a>Data Factory ölçümleri
 
 Izleyici ile Azure iş yüklerinizin performansı ve sistem durumu hakkında görünürlük elde edebilirsiniz. En önemli Izleyici verileri türü, performans sayacı olarak da adlandırılan ölçümdür. Ölçümler çoğu Azure kaynağı tarafından yayınlanır. İzleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
 
-Azure Data Factory sürüm 2 aşağıdaki ölçümleri yayar.
+Azure Data Factory sürüm 2 tarafından yayılan ölçülerden bazıları şunlardır:
 
-| **Ölçüm**           | **Ölçüm görünen adı**         | **Birim** | **Toplama türü** | **Açıklama**                                       |
-|----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| Ardışık düzen Inesucceededçalıştırmaları | Başarılı işlem hattı çalışma ölçümleri | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan işlem hattı çalıştırmalarının toplam sayısı. |
-| Pipelinefailedçalıştırmaları   | Başarısız işlem hattı çalıştırmaları ölçümleri    | Sayı    | Toplam                | Bir dakika penceresinde başarısız olan işlem hattı çalıştırmalarının toplam sayısı.    |
-| ActivitySucceededRuns | Başarılı etkinlik ölçümleri çalıştırıyor | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan etkinlik çalıştırmalarının toplam sayısı.  |
-| Activityfailedçalıştırmaları   | Başarısız etkinlik çalıştırma ölçümleri    | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan etkinlik çalıştırmalarının toplam sayısı.     |
-| TriggerSucceededRuns | Başarılı tetikleyici çalışan ölçümleri  | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı.   |
-| Triggerfailedçalıştırmaları    | Başarısız tetikleyici çalıştırma ölçümleri     | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı.      |
+| **Ölçüm**                           | **Ölçüm görünen adı**                  | **Birim** | **Toplama türü** | **Açıklama**                |
+|--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
+| Activityiptalledçalıştırmaları                 | İptal edilen etkinlik ölçümleri çalıştırır           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam etkinlik çalışması sayısı. |
+| Activityfailedçalıştırmaları                   | Başarısız etkinlik çalıştırma ölçümleri             | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan etkinlik çalıştırmalarının toplam sayısı. |
+| ActivitySucceededRuns                | Başarılı etkinlik ölçümleri çalıştırıyor          | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan etkinlik çalıştırmalarının toplam sayısı. |
+| Ardışık düzen ınecanceledçalıştırmaları                 | İptal edilen işlem hattı çalışma ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam işlem hattı çalıştırma sayısı. |
+| Pipelinefailedçalıştırmaları                   | Başarısız işlem hattı çalıştırmaları ölçümleri             | Sayı    | Toplam                | Bir dakika penceresinde başarısız olan işlem hattı çalıştırmalarının toplam sayısı. |
+| Ardışık düzen Inesucceededçalıştırmaları                | Başarılı işlem hattı çalışma ölçümleri          | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan işlem hattı çalıştırmalarının toplam sayısı. |
+| Triggeriptalledçalıştırmaları                  | İptal edilen tetikleyici çalışan ölçümleri            | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen tetikleyici çalıştırmalarının toplam sayısı. |
+| Triggerfailedçalıştırmaları                    | Başarısız tetikleyici çalıştırma ölçümleri              | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı. |
+| TriggerSucceededRuns                 | Başarılı tetikleyici çalışan ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı. |
+| Ssisıntegrationruntimestartiptal edildi  | İptal edilen SSIS IR başlangıç ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS IR 'nin başladığı toplam sayısı. |
+| Ssisıntegrationruntimestartfailed    | Başarısız SSIS IR başlangıç ölçümleri             | Sayı    | Toplam                | Bir dakika penceresinde başarısız olan SSIS IR 'nin başladığı toplam sayısı. |
+| Ssisıntegrationruntimestartsucceeded | Başarılı SSIS IR başlangıç ölçümleri          | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan SSIS IR 'nin toplam sayısı. |
+| Ssisıntegrationruntimestoptakılmış      | Kalmış SSIS IR durdurma ölçümleri               | Sayı    | Toplam                | Bir dakika penceresi içinde takılmış olan SSIS IR duraklarının toplam sayısı. |
+| Ssisıntegrationruntimestopsucceeded  | Başarılı SSIS IR durdurma ölçümleri           | Sayı    | Toplam                | Bir dakikalık pencere içinde başarılı olan SSIS IR duraklarının toplam sayısı. |
+| Ssispackageexecutioniptal edildi         | İptal edilen SSIS paketi yürütme ölçümleri  | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS paket yürütmelerinin toplam sayısı. |
+| Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Sayı    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
+| Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Sayı    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
 
 Ölçümlere erişmek için [Azure izleyici veri platformundaki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)yönergeleri doldurun.
 
 > [!NOTE]
-> Yalnızca tamamlanan, tetiklenen etkinlik ve işlem hattı çalıştırmaları olayları yayınlanır. Devam ediyor ve korumalı alan/hata ayıklama çalıştırmaları **yayılmadı** . 
+> Yalnızca tamamlanan, tetiklenen etkinlik ve işlem hattı çalıştırmaları olayları yayınlanır. Devam ediyor ve korumalı alan/hata ayıklama çalıştırmaları **yayılmadı** . Öte yandan, SSIS paket yürütmelerinin tüm olayları, bu işlemler tamamlandı, devam ediyor ve T-SQL ile SSMS/SQL Server Agent/diğer belirlenen araçlarla veya tetiklenmiş/Sandbox/hata ayıklama, ADF işlem hatları 'nda SSIS paketi etkinliklerini yürütme/hata ayıklama çalıştırmaları da dahil olmak üzere dağıtılır.
 
 ## <a name="data-factory-alerts"></a>Data Factory uyarılar
 
@@ -197,7 +211,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst Bilgiler
+##### <a name="headers"></a>Üst bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -245,7 +259,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | --- | --- | --- |
 | **Storageaccountıd** |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI. |
 | **Servicebusruleıd** |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz hizmet veri yolu ad alanının hizmet veri yolu kuralı KIMLIĞI. Kural KIMLIĞI biçimi vardır `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -261,7 +275,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="response"></a>Yanıt
 
 200 TAMAM.
-
 
 ```json
 {
@@ -318,7 +331,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst Bilgiler
+##### <a name="headers"></a>Üst bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -373,7 +386,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     },
     "identity": null
 }
-
 ```
 Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
@@ -507,7 +519,6 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/res
       "SystemParameters": {}
     }
 }
-
 ```
 
 | Özellik | Tür | Açıklama | Örnek |
@@ -525,6 +536,280 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/res
 |**triggerEvent**| Dize | Tetikleyicinin olayı. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**başından**| Dize | Zaman aralığı UTC biçiminde tetikleyicinin tetiklemenin başlangıç saati. | `2017-06-26T20:55:29.5007959Z`|
 |**durumlarına**| Dize | Tetikleyicinin başarıyla harekete geçirilip tetiklenmediğini gösteren nihai durum. Olası özellik değerleri `Succeeded` ve ' dir `Failed` . | `Succeeded`|
+
+#### <a name="ssis-integration-runtime-log-attributes"></a>SSIS tümleştirme çalışma zamanı günlük öznitelikleri
+
+Bunlar, SSIS Integration Runtime (IR) Başlat/Durdur/bakım işlemlerinin günlük öznitelikleridir/özelliklerdir.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "resultType": "",
+   "properties": {
+      "message": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Özellik                   | Tür   | Açıklama                                                   | Örnek                        |
+| -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | SSIS IR işleminizi adı                            | `Start/Stop/Maintenance` |
+| **alan**               | Dize | Tanılama günlükleri kategorisi                               | `SSISIntegrationRuntimeLogs` |
+| **correlationId**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
+| **dataFactoryName**        | Dize | ADF 'nizin adı                                          | `MyADFv2` |
+| **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                      | `MySSISIR` |
+| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                  | `Informational` |
+| **resultType**             | Dize | SSIS IR işleminin sonucu                          | `Started/InProgress/Succeeded/Failed` |
+| **İleti**                | Dize | SSIS IR işleminizi çıkış iletisi                  | `The stopping of your SSIS integration runtime has succeeded.` |
+| **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-event-message-context-log-attributes"></a>SSIS olay iletisi bağlam günlüğü öznitelikleri
+
+Bunlar, SSIS IR 'nizin SSIS paket yürütmeleri tarafından oluşturulan olay iletileriyle ilgili koşulların/özelliklerin bulunduğu günlük öznitelikleridir. Birçok SSIS paketi özelliklerinin çalışma zamanı değerlerini gösteren [SSIS Katalog (SSıSDB) olay iletisi bağlam tablosu/görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) gibi benzer bilgileri alırlar. `Basic/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve hata ayıklama/uyumluluk denetimi için faydalı olduğunda oluşturulur.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "operationId": "",
+      "contextDepth": "",
+      "packagePath": "",
+      "contextType": "",
+      "contextSourceName": "",
+      "contextSourceId": "",
+      "propertyName": "",
+      "propertyValue": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Özellik                   | Tür   | Açıklama                                                          | Örnek                        |
+| -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **alan**               | Dize | Tanılama günlükleri kategorisi                                      | `SSISPackageEventMessageContext` |
+| **correlationId**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Dize | ADF 'nizin adı                                                 | `MyADFv2` |
+| **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                             | `MySSISIR` |
+| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                         | `Informational` |
+| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK          | `1`(1 SSSıSDB 'de depolanmayan paketlerle ilgili işlemleri belirtir) |
+| **contextDepth**           | Dize | Olay iletisi bağlamınızın derinliği                              | `0`(0 paket yürütme başlamadan önce bağlamı belirtir, 1 hata oluştuğunda bağlamı belirtir ve bağlam hatadan daha fazla olduğunda artar) |
+| **packagePath**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin yolu      | `\Package` |
+| **contextType**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesi türü      | `60`( [daha fazla bağlam türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)görüntüleyin) |
+| **contextSourceName**      | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin adı      | `MyPackage` |
+| **Contextsourceıd**        | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin benzersiz KIMLIĞI | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
+| **Başlaması**           | Dize | Olay iletisi bağlam kaynağınız için paket özelliğinin adı   | `DelayValidation` |
+| **propertyValue**          | Dize | Olay iletisi bağlam kaynağınız için paket özelliğinin değeri  | `False` |
+| **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-event-messages-log-attributes"></a>SSIS olay iletileri günlük öznitelikleri
+
+Bunlar, SSIS IR 'inizdeki SSIS paket yürütmeleri tarafından oluşturulan olay iletilerinin günlük öznitelikleridir/özelliklerdir. Olay iletilerinin ayrıntılı metin/meta verilerini gösteren [Sssısdb olay iletileri tablosu/görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) olarak benzer bilgileri alırlar. Bunlar haricinde herhangi bir günlük düzeyinde oluşturulur `None` .
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "operationId": "",
+      "messageTime": "",
+      "messageType": "",
+      "messageSourceType": "",
+      "message": "",
+      "packageName": "",
+      "eventName": "",
+      "messageSourceName": "",
+      "messageSourceId": "",
+      "subcomponentName": "",
+      "packagePath": "",
+      "executionPath": "",
+      "threadId": ""
+   }
+}
+```
+
+| Özellik                   | Tür   | Açıklama                                                        | Örnek                        |
+| -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **alan**               | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageEventMessages` |
+| **correlationId**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Dize | ADF 'nizin adı                                               | `MyADFv2` |
+| **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
+| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
+| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK        | `1`(1 SSSıSDB 'de depolanmayan paketlerle ilgili işlemleri belirtir) |
+| **messageTime**            | Dize | Olay iletinizin UTC biçiminde oluşturulduğu zaman          | `2017-06-28T21:00:27.3534352Z` |
+| **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)bakın) |
+| **messageSourceType**      | Dize | Olay iletisi kaynağınızın türü                              | `20`( [daha fazla ileti kaynağı türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)görüntüleyin) |
+| **İleti**                | Dize | Olay iletinizin metni                                     | `MyPackage:Validation has started.` |
+| **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
+| **eventName**              | Dize | İlgili çalışma zamanı olayının adı                                 | `OnPreValidate` |
+| **messageSourceName**      | Dize | Olay iletisi kaynağınız olarak paket bileşeninin adı         | `Data Flow Task` |
+| **Iletiourceıd**        | Dize | Olay iletisi kaynağınız olarak paket bileşeninin benzersiz KIMLIĞI    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **Alt ComponentName**       | Dize | Olay iletisi kaynağınız olarak veri akışı bileşeninin adı       | `SSIS.Pipeline` |
+| **packagePath**            | Dize | Olay iletisi kaynağınız olarak paket nesnesinin yolu            | `\Package\Data Flow Task` |
+| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol            | `\Transformation\Data Flow Task`(Bu yol bileşen yinelemelerini de yakalar) |
+| **ThreadID**               | Dize | Olay iletiniz günlüğe kaydedildiğinde yürütülen iş parçacığının benzersiz KIMLIĞI | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+
+#### <a name="ssis-executable-statistics-log-attributes"></a>SSIS çalıştırılabilir istatistik günlüğü öznitelikleri
+
+Bunlar, SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan yürütülebilir istatistiklerin/özelliklerinin günlük öznitelikleridir/özelliklerdir. burada, yürütülebilir dosyalar paket denetim akışlarındaki kapsayıcılardır/görevlerdir. Bunlar, yineleme dahil, çalışan her çalıştırılabilir için bir satır gösteren [Sssısdb çalıştırılabilir istatistik tablosu/görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) olarak benzer bilgileri iletirler. Bunlar dışında `None` , görev düzeyi darboğazları/başarısızlıklarını belirlemek için yararlı olan herhangi bir günlük düzeyinde oluşturulur.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "executionPath": "",
+      "startTime": "",
+      "endTime": "",
+      "executionDuration": "",
+      "executionResult": "",
+      "executionValue": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Özellik                   | Tür   | Açıklama                                                      | Örnek                        |
+| -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **alan**               | Dize | Tanılama günlükleri kategorisi                                  | `SSISPackageExecutableStatistics` |
+| **correlationId**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Dize | ADF 'nizin adı                                             | `MyADFv2` |
+| **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                         | `MySSISIR` |
+| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                     | `Informational` |
+| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK      | `1`(1 SSSıSDB 'de depolanmayan paketlerle ilgili yürütmeleri belirtir) |
+| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol          | `\Transformation\Data Flow Task`(Bu yol bileşen yinelemelerini de yakalar) |
+| **startTime**              | Dize | Yürütülebilir zaman, UTC biçiminde yürütme öncesi aşamasına giriyor  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | Dize | Yürütülebilir dosyanın UTC biçiminde yürütme sonrası aşamasına girdiğinde geçen süre | `2017-06-28T21:00:27.3534352Z` |
+| **executionDuration**      | Dize | Çalıştırmanın çalışma süresi (milisaniye)                   | `1,125` |
+| **executionResult**        | Dize | Yürütülebilir dosya çalıştırmanın sonucu                                 | `0`(0 başarıyı belirtir, 1 hata belirtir, 2 tamamlanmayı belirtir ve 3, iptal) |
+| **executionValue**         | Dize | Yürütülebilir dosya çalıştırılarak döndürülen Kullanıcı tanımlı değer            | `1` |
+| **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS yürütme bileşeni aşama günlüğü öznitelikleri
+
+Bunlar, SSIS IR 'inizdeki SSIS paket yürütmeleri tarafından oluşturulan veri akışı bileşenlerine yönelik çalışma zamanı istatistiklerinin/özelliklerine yöneliktir. Tüm yürütme aşamalardaki veri akışı bileşenleri tarafından harcanan süreyi gösteren [Sssısdb yürütme bileşeni aşamaları tablosu/görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) olarak benzer bilgileri alırlar. `Performance/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı yürütme istatistiklerini yakalamak için işinize yarayacaktır.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "packageName": "",
+      "taskName": "",
+      "subcomponentName": "",
+      "phase": "",
+      "startTime": "",
+      "endTime": "",
+      "executionPath": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Özellik                   | Tür   | Açıklama                                                         | Örnek                        |
+| -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **alan**               | Dize | Tanılama günlükleri kategorisi                                     | `SSISPackageExecutionComponentPhases` |
+| **correlationId**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Dize | ADF 'nizin adı                                                | `MyADFv2` |
+| **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                            | `MySSISIR` |
+| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                        | `Informational` |
+| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK         | `1`(1 SSSıSDB 'de depolanmayan paketlerle ilgili yürütmeleri belirtir) |
+| **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                              | `MyPackage.dtsx` |
+| **Silinecek**               | Dize | Yürütülen veri akışı görevinin adı                                 | `Data Flow Task` |
+| **Alt ComponentName**       | Dize | Veri akışı bileşeninin adı                                     | `Derived Column` |
+| **aşaması**                  | Dize | Yürütme aşamasının adı                                         | `AcquireConnections` |
+| **startTime**              | Dize | Yürütme aşamasının UTC biçiminde başladığı saat                  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | Dize | Yürütme aşamasının UTC biçiminde bittiği zaman                    | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**          | Dize | Veri akışı görevinin yürütme yolu                            | `\Transformation\Data Flow Task` |
+| **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS yürütme verileri istatistikleri günlük öznitelikleri
+
+Bunlar, SSIS IR 'inizdeki SSIS paket yürütmeleri tarafından oluşturulan yukarı akış bileşenlerinden alınan veri akışı işlem hatlarından her bir hareket aracılığıyla veri hareketlerinin günlük öznitelikleri/özellikleridir. Veri akışı görevleri aracılığıyla taşınan verilerin satır sayılarını gösteren [Sssısdb yürütme verileri istatistikleri tablosu/görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) olarak benzer bilgileri alırlar. `Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı iş akışını hesaplama için işinize yarayacaktır.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "packageName": "",
+      "taskName": "",
+      "dataflowPathIdString": "",
+      "dataflowPathName": "",
+      "sourceComponentName": "",
+      "destinationComponentName": "",
+      "rowsSent": "",
+      "createdTime": "",
+      "executionPath": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Özellik                     | Tür   | Açıklama                                                        | Örnek                        |
+| ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
+| **ışınızda**                     | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **alan**                 | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageExecutionDataStatistics` |
+| **correlationId**            | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**          | Dize | ADF 'nizin adı                                               | `MyADFv2` |
+| **ıntegrationruntimename**   | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
+| **düzey**                    | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
+| **Yürütme**              | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK        | `1`(1 SSSıSDB 'de depolanmayan paketlerle ilgili yürütmeleri belirtir) |
+| **PaketAdı**              | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
+| **Silinecek**                 | Dize | Yürütülen veri akışı görevinin adı                                | `Data Flow Task` |
+| **Dataflowpathıdstring**     | Dize | İzleme veri akışı yolunun benzersiz KIMLIĞI                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
+| **dataflowPathName**         | Dize | Veri akışı yolunun adı                                         | `ADO NET Source Output` |
+| **sourceComponentName**      | Dize | Veri gönderen veri akışı bileşeninin adı                    | `SQLDB Table3` |
+| **destinationComponentName** | Dize | Veri alan veri akışı bileşeninin adı                 | `Derived Column` |
+| **rowsSent**                 | Dize | Kaynak bileşen tarafından gönderilen satır sayısı                        | `500` |
+| **createdTime**              | Dize | UTC biçiminde satır değerlerinin alındığı zaman                | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**            | Dize | Veri akışı görevinin yürütme yolu                           | `\Transformation\Data Flow Task` |
+| **RESOURCEID**               | Dize | ADF kaynağınızın benzersiz KIMLIĞI                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="log-analytics-schema"></a>Log Analytics şeması
 
@@ -548,6 +833,65 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | .properties.SystemParameters | SystemParameters | Dinamik |
     | $. Properties. Lerimi | Etiketler | Dinamik |
 
+## <a name="monitor-ssis-operations-with-azure-monitor"></a>Azure Izleyici ile SSIS işlemlerini izleme
+
+SQL Server Integration Services (SSIS) iş yüklerinizi kaldırmak & için, şunları destekleyen bir [Azure Data Factory (ADF) ssıs Integration Runtime (IR)](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) sağlayabilirsiniz:
+
+- Azure SQL veritabanı sunucusu/yönetilen örneği (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma
+- Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtılan Paketleri çalıştırma
+
+Sağlandıktan sonra, [Azure PowerShell veya ADF portalının **Monitor** hub 'ında bulunan SSIS IR işletimsel durumunu denetleyebilirsiniz](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Proje dağıtım modeliyle, SSIS paketi yürütme günlükleri SSıSDB iç tablolarında/görünümlerinde depolanır, bu nedenle, SQL Server Management Studio (SSMS) gibi belirlenmiş araçlar kullanılarak sorgulanıp analiz edilebilirler. Paket dağıtım modeliyle, SSIS paketi yürütme günlükleri, dosya sistemi/Azure dosyalarında sorgulanmadan, çözümlenebilmeleri ve görsel olarak sunulmadan önce diğer belirlenen araçlarla ayrıştırılıp işlenmeleri gereken CSV dosyaları olarak depolanabilir.
+
+Artık [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) TÜMLEŞTIRMESIYLE, SSIS IR IŞLEMLERINDEN ve SSIS paket yürütAzure Portal melerinin tümünde oluşturulan tüm ölçümler ve Günlükler, Ayrıca, uyarılar üzerinde de kullanılabilir.
+
+### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>SSIS işlemleri için tanılama ayarlarını ve çalışma alanını yapılandırma
+
+SSIS IR işlemlerinden ve SSIS paket yürütmelerinin Azure Izleyici 'de oluşturulan tüm ölçümleri ve günlükleri göndermek için, [ADF 'niz için tanılama ayarlarını ve çalışma alanını yapılandırmak](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace)üzere sunulan adım adım yönergeleri izleyin.
+
+### <a name="ssis-operational-metrics"></a>SSIS işletimsel ölçümleri
+
+SSIS işletimsel [ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) , SSIS IR başlatma/durdurma IŞLEMLERININ ve SSIS paket yürütmelerinin durumunu tanımlayan, belirli bir zamanda performans sayaçlarıdır/sayısal değerlerdir. ADF varlık sayısı/boyutu, etkinlik/işlem hattı/tetikleyici çalıştırmaları ve IR CPU kullanımı/belleği/düğüm sayısı/kuyruğu dahil olmak üzere [Azure izleyici 'Deki ADF ölçümlerinin](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)bir parçasıdır.
+
+ADF 'niz Azure Izleyici 'de tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, _Allölçümler_ onay kutusunun belirlenmesi, Azure Ölçüm Gezgini, [Azure panosu 'nda sunum](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)ve [gerçek ZAMANLı uyarı uyarısı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)kullanarak, SSIS işletimsel ölçümlerini [etkileşimli çözümlemeler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)için kullanılabilir hale getirir.
+
+![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="ssis-operational-alerts"></a>SSIS işletimsel uyarıları
+
+ADF portalından SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [ADF **izleyici** hub 'ının **Uyarılar & ölçümler** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts).
+
+![SSIS işletimsel uyarılarını ADF portalından oluşturma](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
+
+Azure portal SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [Azure **izleyici** hub ' ın **Uyarılar** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts).
+
+![Azure portal SSIS işletimsel uyarılarını yükseltme](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
+
+### <a name="ssis-operational-logs"></a>SSIS işletimsel günlükleri
+
+SSIS işletimsel [günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) , tanımlanan herhangi bir sorun hakkında yeterli bağlam/bilgi sağlayan ve kök neden analizi için yararlı olan SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri tarafından oluşturulan olaylardır. 
+
+ADF 'niz Azure Izleyicisinde tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, ilgili SSIS işletimsel günlüklerini seçebilir ve bunları Azure Veri Gezgini tabanlı Log Analytics gönderebilirsiniz; burada [zengin sorgu dili kullanılarak analizler](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [Azure panosu üzerinde sunum](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)ve [gerçek zamanlı uyarı uyarısı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)bulunur.
+
+![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+SSSıSDB iç tablolarında/görünümlerindekilerle benzer SSIS paket yürütme Log Analytics günlüklerinin şemaları ve içerikleri.
+
+| Azure Izleyici günlük kategorileri          | Log Analytics tabloları                     | SSıSDB iç tabloları/görünümleri              |
+| ------------------------------------- | ---------------------------------------- | ----------------------------------------- |
+| `SSISIntegrationRuntimeLogs`          | `ADFSSISIntegrationRuntimeLogs`          |                                           |
+| `SSISPackageEventMessageContext`      | `ADFSSISPackageEventMessageContext`      | `[internal].[event_message_context]`      |
+| `SSISPackageEventMessages`            | `ADFSSISPackageEventMessages`            | `[internal].[event_messages]`             |
+| `SSISPackageExecutableStatistics`     | `ADFSSISPackageExecutableStatistics`     | `[internal].[executable_statistics]`      |
+| `SSISPackageExecutionComponentPhases` | `ADFSSISPackageExecutionComponentPhases` | `[internal].[execution_component_phases]` |
+| `SSISPackageExecutionDataStatistics`  | `ADFSSISPackageExecutionDataStatistics`  | `[internal].[execution_data_statistics]`  |
+
+SSIS işletimsel günlük öznitelikleri/özellikleri hakkında daha fazla bilgi için bkz. [ADF Için Azure izleyici ve Log Analytics şemaları](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events).
+
+Seçtiğiniz SSIS paketi yürütme günlükleriniz her zaman Log Analytics, örneğin Azure etkinleştirilmiş SQL Server Veri Araçları (SSDT), SSMS/SQL Server Agent/diğer belirlenen araçlarla T-SQL aracılığıyla veya ADF/Sandbox/hata ayıklama, ADF işlem hatlarında SSIS paketi etkinliklerini yürütme
+
+Günlük Analizi üzerinde SSIS paketi yürütme günlüklerini sorgularken, operationId/ExecutionID/CorrelationProperties kullanarak bunlara katabilirsiniz. OperationId/ExecutionID, SSıSDB 'de **depolanmayan** paketlerle ilgili tüm işlemler/yürütmeler için her zaman 1 olarak ayarlanır.
+
+![Log Analytics SSIS paketi yürütme günlükleri sorgulanıyor](media/data-factory-monitor-oms/log-analytics-query.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [İşlem hatlarını programlama yoluyla izleme ve yönetme](monitor-programmatically.md)

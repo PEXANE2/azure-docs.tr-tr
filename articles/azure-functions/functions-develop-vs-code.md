@@ -4,10 +4,9 @@ description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak 
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84732488"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
@@ -186,7 +185,7 @@ Visual Studio Code, uygun bir istem kümesini izleyerek dosya üzerinde function
 
 Aşağıda yeni bir depolama çıkış bağlaması tanımlamak için örnek istemler verilmiştir:
 
-| İstem | Değer | Description |
+| İstem | Değer | Açıklama |
 | -------- | ----- | ----------- |
 | **Bağlama yönünü seçin** | `out` | Bağlama bir çıkış bağlamadır. |
 | **Yön içeren bağlamayı seçin** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
@@ -250,7 +249,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
 
 1. İstemlerin ardından, şu bilgileri sağlayın:
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | Azure 'da işlev uygulaması seçin | Azure 'da yeni İşlev Uygulaması oluşturma | Sonraki istem sırasında, yeni işlev uygulamanızı tanımlayan bir genel benzersiz ad yazın ve ardından ENTER ' u seçin. İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
     | Bir işletim sistemi seçin | Windows | İşlev uygulaması Windows üzerinde çalışır. |
@@ -409,7 +408,7 @@ Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağ
 
 Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim kurmak için alanında yararlı bir grafik arabirimi sağlar. Aynı işlevsellik, komut paletinde (F1) komutlar olarak da kullanılabilir. Bu Azure Işlevleri komutları kullanılabilir:
 
-|Azure Işlevleri komutu  | Description  |
+|Azure Işlevleri komutu  | Açıklama  |
 |---------|---------|
 |**Yeni ayarlar Ekle**  |  Azure 'da yeni bir uygulama ayarı oluşturur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings). Ayrıca, [Bu ayarı yerel ayarlarınıza indirmeniz](#download-settings-from-azure)gerekebilir. |
 | **Dağıtım kaynağını Yapılandır** | İşlev uygulamanızı Azure 'da yerel bir git deposuna bağlar. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md). |

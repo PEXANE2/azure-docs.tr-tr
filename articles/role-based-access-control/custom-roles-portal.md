@@ -13,10 +13,9 @@ ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
 ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791206"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portalını kullanarak Azure özel rollerini oluşturma veya güncelleştirme
@@ -33,7 +32,7 @@ ms.locfileid: "84791206"
 
 Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirleyebilmeniz için kullanabileceğiniz dört yol aşağıda verilmiştir:
 
-| Yöntem | Description |
+| Yöntem | Açıklama |
 | --- | --- |
 | Mevcut rollere bakın | Hangi izinlerin kullanıldığını görmek için mevcut rollere bakabilirsiniz. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](built-in-roles.md). |
 | Anahtar sözcüğe göre izinleri ara | Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcüğe göre izinler araması yapabilirsiniz. Örneğin, *sanal makine* veya *faturalandırma* izinleri için arama yapabilirsiniz. Bu arama işlevi, [4. Adım: izinler](#step-4-permissions)bölümünde daha sonra açıklanmaktadır. |

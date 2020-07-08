@@ -16,10 +16,9 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790985"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını listeleyin
@@ -54,7 +53,7 @@ Azure RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atam
 1. *{Filter}* değerini, rol atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Description |
+    > | Filtre | Açıklama |
     > | --- | --- |
     > | `$filter=atScope()` | Alt kapsamlardaki rol atamalarını dahil etmez, yalnızca belirtilen kapsam için rol atamalarını listeler. |
     > | `$filter=assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için rol atamalarını listeler.<br/>Kullanıcı, rol ataması olan bir grubun üyesiyse, bu rol ataması da listelenir. Bu filtre, Kullanıcı bir grubun üyesiyse ve bu grup rol ataması olan başka bir grubun üyesiyse, bu rol atamasının de listelenmediği anlamına gelen gruplar için geçişlidir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne KIMLIĞI kabul eder. Bir grup için nesne KIMLIĞI geçirilemez. |
@@ -93,4 +92,4 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
-- [Azure REST API Başvurusu](/rest/api/azure/)
+- [Azure REST API başvurusu](/rest/api/azure/)

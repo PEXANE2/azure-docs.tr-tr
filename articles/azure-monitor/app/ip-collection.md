@@ -3,12 +3,11 @@ title: Azure Application Insights IP adresi koleksiyonu | Microsoft Docs
 description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights nasıl işlendiğini anlama
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807137"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -18,7 +17,7 @@ Bu makalede, varsayılan davranışı değiştirme ile birlikte, coğrafi konum 
 
 Varsayılan olarak IP adresleri geçici olarak toplanır, ancak Application Insights depolanmaz. Temel işlem aşağıdaki gibidir:
 
-IP adresleri Telemetri verilerinin bir parçası olarak Application Insights gönderilir. Azure 'daki alma uç noktasına ulaştıktan sonra, IP adresi [Maxakılda GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)kullanarak coğrafi konum araması gerçekleştirmek için kullanılır. Bu aramanın sonuçları, `client_City` `client_StateOrProvince`,,,,, `client_CountryOrRegion`ve alanlarını doldurmak için kullanılır. Bu noktada, IP adresi atılır ve `0.0.0.0` `client_IP` alanına yazılır.
+IP adresleri Telemetri verilerinin bir parçası olarak Application Insights gönderilir. Azure 'daki alma uç noktasına ulaştıktan sonra, IP adresi [Maxakılda GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)kullanarak coğrafi konum araması gerçekleştirmek için kullanılır. Bu aramanın sonuçları, `client_City` `client_StateOrProvince` ,,,,, ve alanlarını doldurmak için kullanılır `client_CountryOrRegion` . Bu noktada, IP adresi atılır ve `0.0.0.0` `client_IP` alanına yazılır.
 
 * Tarayıcı telemetrisi: gönderenin IP adresini geçici olarak topladık. IP adresi, giriş uç noktası tarafından hesaplanır.
 * Sunucu telemetrisi: Application Insights modülü, istemci IP adresini geçici olarak toplar. Ayarlanırsa, toplanmaz `X-Forwarded-For` .
@@ -31,7 +30,7 @@ Varsayılan davranış kişisel verileri toplamayı en aza indirirken, IP adresi
 
 ## <a name="storing-ip-address-data"></a>IP adresi verileri depolanıyor
 
-IP toplamayı ve depolamayı etkinleştirmek için Application Insights bileşenin `DisableIpMasking` özelliği olarak `true`ayarlanmalıdır. Bu özellik Azure Resource Manager şablonlar aracılığıyla ya da REST API çağırarak ayarlanabilir. 
+IP toplamayı ve depolamayı etkinleştirmek için `DisableIpMasking` Application Insights bileşenin özelliği olarak ayarlanmalıdır `true` . Bu özellik Azure Resource Manager şablonlar aracılığıyla ya da REST API çağırarak ayarlanabilir. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
@@ -59,7 +58,7 @@ IP toplamayı ve depolamayı etkinleştirmek için Application Insights bileşen
 
 Yalnızca tek bir Application Insights kaynağı için davranışı değiştirmeniz gerekiyorsa, bunu yapmanın en kolay yolu Azure portal aracılığıyla yapılır.  
 
-1. Application Insights kaynak > **ayarları** > **dışarı aktarma şablonu** 'na gidin 
+1. Application Insights kaynak > **ayarları**  >  **dışarı aktarma şablonu** 'na gidin 
 
     ![Şablonu dışarı aktar](media/ip-collection/export-template.png)
 
@@ -78,7 +77,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     > [!WARNING]
     > Şöyle bir hata yaşarsanız: ** _kaynak grubu, şablondaki bir veya daha fazla kaynak tarafından desteklenmeyen bir konumda. Lütfen farklı bir kaynak grubu seçin._** Geçici olarak, açılan listeden farklı bir kaynak grubu seçin ve ardından hatayı çözümlemek için özgün kaynak grubunuzu yeniden seçin.
 
-5.  > **Satın almayı** **kabul ediyorum**' u seçin. 
+5. Satın **almayı kabul ediyorum**' u seçin  >  **Purchase**. 
 
     ![Şablon düzenleme](media/ip-collection/purchase.png)
 
@@ -86,7 +85,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
 
 6. Dağıtım tamamlandıktan sonra yeni telemetri verileri kaydedilir.
 
-    Şablonu yeniden seçip düzenleydiyseniz, yalnızca varsayılan şablonu görürsünüz ve yeni eklenen özelliği ve ilişkili değerini göremez. IP adresi verilerini görmüyorsanız ve ayarlandığını doğrulamak `"DisableIpMasking": true` istiyorsanız. Şu PowerShell 'i çalıştırın: (uygun `Fabrikam-dev` kaynak ve kaynak grubu adıyla değiştirin.)
+    Şablonu yeniden seçip düzenleydiyseniz, yalnızca varsayılan şablonu görürsünüz ve yeni eklenen özelliği ve ilişkili değerini göremez. IP adresi verilerini görmüyorsanız ve ayarlandığını doğrulamak istiyorsanız `"DisableIpMasking": true` . Şu PowerShell 'i çalıştırın: ( `Fabrikam-dev` uygun kaynak ve kaynak grubu adıyla değiştirin.)
     
     ```powershell
     # If you aren't using the cloud shell you will need to connect to your Azure account
@@ -95,7 +94,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     $AppInsights.Properties
     ```
     
-    Sonuç olarak bir özellik listesi döndürülecek. Özelliklerden biri okunmalıdır `DisableIpMasking: true`. Yeni özelliği Azure Resource Manager dağıtmadan önce PowerShell 'i çalıştırırsanız, özellik mevcut olmayacaktır.
+    Sonuç olarak bir özellik listesi döndürülecek. Özelliklerden biri okunmalıdır `DisableIpMasking: true` . Yeni özelliği Azure Resource Manager dağıtmadan önce PowerShell 'i çalıştırırsanız, özellik mevcut olmayacaktır.
 
 ### <a name="rest-api"></a>REST API 'SI
 
@@ -120,7 +119,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetri başlatıcısı
 
-IP adreslerinin tümünü veya bir kısmını kaydetmeye kıyasla `DisableIpMasking` daha esnek bir alternatif gerekırse, IP 'nin tamamını veya kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanabilirsiniz. 
+`DisableIpMasking`IP adreslerinin tümünü veya bir kısmını kaydetmeye kıyasla daha esnek bir alternatif gerekirse, IP 'nin tamamını veya kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanabilirsiniz. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -148,7 +147,7 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> Erişeerişemiyorsanız `ISupportProperties`, Application Insights SDK 'nın en son kararlı sürümünü çalıştırdığınızdan emin olun. `ISupportProperties`, yüksek kardinalite değerlerine yöneliktir, ancak `GlobalProperties` bölge adı, ortam adı vb. gibi düşük kardinalite değerleri için daha uygundur. 
+> Erişeerişemiyorsanız `ISupportProperties` , APPLICATION INSIGHTS SDK 'nın en son kararlı sürümünü çalıştırdığınızdan emin olun. `ISupportProperties`, yüksek kardinalite değerlerine yöneliktir, ancak `GlobalProperties` bölge adı, ortam adı vb. gibi düşük kardinalite değerleri için daha uygundur. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>ASP.NET için telemetri başlatıcısı 'nı etkinleştir
 
@@ -201,9 +200,9 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 Sunucu tarafı SDK 'ların aksine, istemci tarafı JavaScript SDK 'Sı IP adresini hesaplamaz. Varsayılan olarak, istemci tarafı telemetri için IP adresi hesaplaması, telemetri gelişmesinden sonra Azure 'daki alma uç noktasında gerçekleştirilir. Bu, bir ara sunucuya istemci tarafı verileri gönderiyorsanız ve sonra giriş uç noktasına iletiyorsanız, IP adresi hesaplamasının istemci için değil, proxy 'nin IP adresini gösterebileceği anlamına gelir. Hiçbir proxy kullanılmıyorsa bunun bir sorun olmaması gerekir.
 
-IP adresini doğrudan istemci tarafında hesaplamak isterseniz, bu hesaplamayı gerçekleştirmek için kendi özel mantığınızı eklemeniz ve `ai.location.ip` etiketi ayarlamak için sonucu kullanmanız gerekir. `ai.location.ip` AYARLANDıĞıNDA, IP adresi hesaplaması alma uç noktası tarafından gerçekleştirilmez ve belirtilen IP adresi kabul edilir ve coğrafi aramayı gerçekleştirmek için kullanılır. Bu senaryoda, IP adresi varsayılan olarak yine de sıfırlanacaktır. 
+IP adresini doğrudan istemci tarafında hesaplamak isterseniz, bu hesaplamayı gerçekleştirmek için kendi özel mantığınızı eklemeniz ve etiketi ayarlamak için sonucu kullanmanız gerekir `ai.location.ip` . `ai.location.ip`Ayarlandığında, IP adresi hesaplaması alma uç noktası tarafından gerçekleştirilmez ve BELIRTILEN IP adresi kabul edilir ve coğrafi aramayı gerçekleştirmek için kullanılır. Bu senaryoda, IP adresi varsayılan olarak yine de sıfırlanacaktır. 
 
-Özel mantığınızdan hesaplanan tüm IP adresini sürdürmek için, içinde `ai.location.ip` verdiğiniz IP adresi verilerini ayrı bir özel alana kopyalayacak bir telemetri başlatıcısı kullanabilirsiniz. Ancak, sunucu tarafı SDK 'Lardan farklı olarak, 3. taraf kitaplıklara veya kendi özel istemci tarafı IP koleksiyonu mantığınıza bağlı kalmadan, istemci tarafı SDK sizin için IP 'yi hesaplamaz.    
+Özel mantığınızdan hesaplanan tüm IP adresini sürdürmek için, içinde verdiğiniz IP adresi verilerini `ai.location.ip` ayrı bir özel alana kopyalayacak bir telemetri başlatıcısı kullanabilirsiniz. Ancak, sunucu tarafı SDK 'Lardan farklı olarak, 3. taraf kitaplıklara veya kendi özel istemci tarafı IP koleksiyonu mantığınıza bağlı kalmadan, istemci tarafı SDK sizin için IP 'yi hesaplamaz.    
 
 
 ```javascript
@@ -229,10 +228,10 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-Yeni toplanan IP adresleri `customDimensions_client-ip` sütununda görünmelidir. Varsayılan `client-ip` sütunda, her 4 sekizli ya da yalnızca, BILEŞEN düzeyinde IP adresi toplamayı nasıl yapılandırdığınıza bağlı olarak ilk üç sekizli görüntülenir. Telemetri başlatıcısı uygulandıktan sonra yerel olarak test ediyorsanız ve için `customDimensions_client-ip` gördüğünüz değer `::1` bu beklenen davranıştır. `::1`IPv6 'daki geri döngü adresini temsil eder. Bu, IPv4 ile `127.0.01` eşdeğerdir ve localhost 'tan test edilirken göreceğiniz sonuçtur.
+Yeni toplanan IP adresleri `customDimensions_client-ip` sütununda görünmelidir. Varsayılan sütunda, her `client-ip` 4 sekizli ya da yalnızca, bileşen DÜZEYINDE IP adresi toplamayı nasıl yapılandırdığınıza bağlı olarak ilk üç sekizli görüntülenir. Telemetri başlatıcısı uygulandıktan sonra yerel olarak test ediyorsanız ve için gördüğünüz değer `customDimensions_client-ip` `::1` Bu beklenen davranıştır. `::1`IPv6 'daki geri döngü adresini temsil eder. Bu, IPv4 ile eşdeğerdir `127.0.01` ve localhost 'tan test edilirken göreceğiniz sonuçtur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * Application Insights 'de [kişisel veri toplama](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) hakkında daha fazla bilgi edinin.
 
-* Application Insights içindeki [IP adresi koleksiyonunun](https://apmtips.com/blog/2016/07/05/client-ip-address/) nasıl çalıştığı hakkında daha fazla bilgi edinin. (Bu, mühendislerimizden biri tarafından yazılan eski bir dış blog gönderisine sahiptir. IP adresinin kaydedildiği geçerli varsayılan davranışın ön tarihlerini alır `0.0.0.0`, ancak yerleşik olarak yerleşik olarak daha fazla derinliğe gider `ClientIpHeaderTelemetryInitializer`.)
+* Application Insights içindeki [IP adresi koleksiyonunun](https://apmtips.com/posts/2016-07-05-client-ip-address/) nasıl çalıştığı hakkında daha fazla bilgi edinin. (Bu, mühendislerimizden biri tarafından yazılan eski bir dış blog gönderisine sahiptir. IP adresinin kaydedildiği geçerli varsayılan davranışın ön tarihlerini `0.0.0.0` alır, ancak yerleşik olarak yerleşik olarak daha fazla derinliğe gider `ClientIpHeaderTelemetryInitializer` .)

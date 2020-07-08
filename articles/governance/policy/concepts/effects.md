@@ -4,10 +4,9 @@ description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve r
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791427"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
@@ -19,7 +18,7 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [Ekle](#append)
 - [Denetim](#audit)
 - [Auditınotexists](#auditifnotexists)
-- [Reddet](#deny)
+- [Reddetme](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
 - [Değiştir](#modify)
@@ -546,7 +545,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|Çalışma |Description |
+|Çalışma |Açıklama |
 |-|-|
 |addOrReplace |Etiket, farklı bir değerle zaten mevcut olsa bile, kaynağa tanımlı etiketi ve değeri ekler. |
 |Ekle |Kaynağa tanımlı etiketi ve değeri ekler. |

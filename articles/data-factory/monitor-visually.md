@@ -9,13 +9,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
-ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801576"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -191,6 +190,10 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
     ![Hedef ölçütü kutusu](media/monitor-visually/add-criteria-1.png)
 
     ![Ölçüt listesi](media/monitor-visually/add-criteria-2.png)
+
+    ![Ölçüt listesi](media/monitor-visually/add-criteria-3.png)
+
+    ADF varlık sayısı/boyutu, etkinlik/ardışık düzen/tetikleyici çalıştırmaları, Integration Runtime (IR) CPU kullanımı/belleği/düğüm sayısı/kuyruğu ve SSIS paket yürütmeleri ve SSIS IR başlatma/durdurma işlemleri dahil olmak üzere çeşitli ölçümler üzerinde uyarılar oluşturabilirsiniz.
 
 1.  Uyarı mantığını yapılandırın. Tüm işlem hatları ve ilgili etkinlikler için seçili ölçüm için bir uyarı oluşturabilirsiniz. Ayrıca belirli bir etkinlik türünü, etkinlik adını, işlem hattı adını veya hata türünü de seçebilirsiniz.
 
