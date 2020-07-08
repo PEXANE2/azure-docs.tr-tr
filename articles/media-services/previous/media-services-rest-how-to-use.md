@@ -16,10 +16,9 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773668"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
@@ -33,7 +32,7 @@ Media Services hem JSON hem de atom + pub XML biçimini kabul eden bir REST API 
 
 Media Services REST API kimlik doğrulaması, [Azure MEDIA SERVICES API 'SINE Rest ile erişmek Için Azure AD kimlik doğrulamasını kullanma](media-services-rest-connect-with-aad.md) makalesinde özetlenen Azure Active Directory kimlik doğrulaması aracılığıyla yapılır
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 REST kullanılırken aşağıdaki noktalar geçerlidir.
 
@@ -62,8 +61,8 @@ Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gere
 | --- | --- | --- |
 | Yetkilendirme |Taşıyıcı |Taşıyıcı tek kabul edilen yetkilendirme mekanizmasıdır. Değer, Azure Active Directory tarafından sağlanmış erişim belirtecini de içermelidir. |
 | x-MS-sürümü |Ondalık |2,17 (veya en son sürüm)|
-| DataServiceVersion |Ondalık |3,0 |
-| MaxDataServiceVersion |Ondalık |3,0 |
+| DataServiceVersion |Ondalık |3.0 |
+| MaxDataServiceVersion |Ondalık |3.0 |
 
 > [!NOTE]
 > Media Services, REST API 'Lerini kullanıma sunmak için OData kullandığından, DataServiceVersion ve MaxDataServiceVersion üstbilgileri tüm isteklere eklenmelidir; Ancak, yoksa şu anda Media Services, kullanılmakta olan DataServiceVersion değerinin 3,0 olduğunu varsayar.
@@ -126,6 +125,6 @@ Azure AD kimlik doğrulamasını Media Services REST API ile nasıl kullanacağ�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

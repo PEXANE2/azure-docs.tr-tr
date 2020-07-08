@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841721"
 ---
 # <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
@@ -29,7 +28,7 @@ Event Grid bir ileti teslim edildikten sonra yanıt için 60 saniyeye kadar bekl
 
 Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:
 
-| Zamanlama | Açıklama |
+| Zamanla | Açıklama |
 | ---------| ------------ |
 | 1 dakika | Burada biten iletiler her dakikada denenir.
 | 10 dakika | Burada sona eklenen iletiler her 10 dakikada bir denenir.
@@ -52,7 +51,7 @@ Yeniden deneme ilkesinin limitlerinin herhangi birine ulaşıldığında bir ola
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Tüm aboneler için Varsayılanları Yapılandırma
 
-İki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve Event Grid `broker__defaultEventTimeToLiveInSeconds` dağıtımının bir parçası olarak yapılandırılabilirler ve bu da tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
+İki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve `broker__defaultEventTimeToLiveInSeconds` Event Grid dağıtımının bir parçası olarak yapılandırılabilirler ve bu da tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
 
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |

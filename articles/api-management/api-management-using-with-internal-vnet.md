@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841872"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management hizmetini iç sanal ağ ile kullanma
@@ -61,9 +60,9 @@ Dahili bir sanal ağdaki API Management hizmeti, [iç yük dengeleyici (klasik)]
 
     ![İç sanal ağda Azure API Management ayarlama menüsü][api-management-using-internal-vnet-menu]
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
-Dağıtım başarılı olduktan sonra, genel bakış dikey penceresinde API Management hizmetinizin **özel** sanal IP adresini ve **genel** sanal IP adresini görmeniz gerekir. **Özel** sanal IP adresi `gateway`,, `portal` `management` ve `scm` bitiş noktalarına erişilebilen API Management alt ağ içinden gelen yük dengeli bir IP adresidir. **Ortak** sanal IP adresi **yalnızca** , 3443 numaralı bağlantı noktası üzerinden uç noktaya `management` giden denetim düzlemi trafiği için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
+Dağıtım başarılı olduktan sonra, genel bakış dikey penceresinde API Management hizmetinizin **özel** sanal IP adresini ve **genel** sanal IP adresini görmeniz gerekir. **Özel** sanal IP adresi,, `gateway` `portal` `management` ve `scm` bitiş noktalarına erişilebilen API Management alt ağ içinden gelen yük dengeli bir IP adresidir. **Ortak** sanal IP adresi **yalnızca** , `management` 3443 numaralı bağlantı noktası üzerinden uç noktaya giden denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
 
 ![Dahili bir sanal ağ yapılandırılmış API Management panosu][api-management-internal-vnet-dashboard]
 
@@ -125,7 +124,7 @@ Bir sanal ağda özel bir DNS sunucusu kullanıyorsanız, DNS kayıtları oluşt
 ## <a name="routing"></a><a name="routing"> </a> Yönlendirme
 
 * Alt ağ aralığından yük dengeli bir *özel* sanal IP adresi ayrılır ve sanal ağ içinden API Management hizmet uç noktalarına erişmek için kullanılır. Bu *özel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. Bu adresin, sanal ağ tarafından kullanılan DNS sunucularına kayıtlı olması gerekir.
-* 3443 numaralı bağlantı noktası üzerinden yönetim hizmeti uç noktasına erişim sağlamak için yük dengeli bir *genel* IP adresı (VIP) de ayrılmış olur. Bu *genel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. *Genel* IP adresi yalnızca bağlantı noktası 3443 üzerinden `management` uç noktaya yönelik denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
+* 3443 numaralı bağlantı noktası üzerinden yönetim hizmeti uç noktasına erişim sağlamak için yük dengeli bir *genel* IP adresı (VIP) de ayrılmış olur. Bu *genel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. *Genel* IP adresi yalnızca `management` bağlantı noktası 3443 üzerinden uç noktaya yönelik denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
 * Alt ağ IP aralığından (DIP) IP adresleri, hizmette her bir VM 'ye atanır ve sanal ağ içindeki kaynaklara erişmek için kullanılır. Sanal ağ dışındaki kaynaklara erişmek için genel bir IP adresi (VIP) kullanılacaktır. Sanal ağ içindeki kaynakları güvenli hale getirmek için IP kısıtlama listeleri kullanılıyorsa, hizmete erişim vermek veya erişimi kısıtlamak için API Management hizmetinin dağıtıldığı alt ağ için tüm aralığın belirtilmesi gerekir.
 * Yük dengeli ortak ve özel IP adresleri Azure portal genel bakış dikey penceresinde bulunabilir.
 * Ortak ve özel erişim için atanan IP adresleri, hizmet konumundan kaldırılıp sonra sanal ağa geri eklendiyse değişebilir. Bu durumda, sanal ağ içindeki DNS kayıtları, yönlendirme kuralları ve IP kısıtlama listelerinin güncelleştirilmesi gerekebilir.

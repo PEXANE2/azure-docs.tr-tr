@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76932308"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Azure 'da ters DNS ve desteğe genel bakış
@@ -42,9 +41,9 @@ Bir kuruluşa bir IP adres bloğu atandığında, bunlara karşılık gelen ARPA
 
 ### <a name="ipv4"></a>IPv4
 
-IPv4 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+IPv4 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa` .
 
-Örneğin, 192.0.2.0/24 ön ekine sahip IP 'Leri olan konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölge adı, adresin Ağ önekini yalıtarak (192.0.2) ve ardından sırayı ters çevirerek (2.0.192) ve son eki `.in-addr.arpa`ekleyerek oluşturulur.
+Örneğin, 192.0.2.0/24 ön ekine sahip IP 'Leri olan konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölge adı, adresin Ağ önekini yalıtarak (192.0.2) ve ardından sırayı ters çevirerek (2.0.192) ve son eki ekleyerek oluşturulur `.in-addr.arpa` .
 
 |Alt ağ sınıfı|Ağ ön eki  |Ters ağ ön eki  |Standart sonek  |Ters bölge adı |
 |-------|----------------|------------|-----------------|---------------------------|
@@ -54,7 +53,7 @@ IPv4 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv4 netwo
 
 ### <a name="classless-ipv4-delegation"></a>Sınıfsız IPv4 temsili
 
-Bazı durumlarda, bir kuruluşa ayrılan IP aralığı, bir sınıf C (/24) aralığından daha küçüktür. Bu durumda, IP aralığı `.in-addr.arpa` bölge hiyerarşisi içindeki bir bölge sınırına düşmez ve bu nedenle alt bölge olarak temsil edilemez.
+Bazı durumlarda, bir kuruluşa ayrılan IP aralığı, bir sınıf C (/24) aralığından daha küçüktür. Bu durumda, IP aralığı bölge hiyerarşisi içindeki bir bölge sınırına düşmez `.in-addr.arpa` ve bu nedenle alt bölge olarak temsil edilemez.
 
 Bunun yerine, ayrı bir ters arama (PTR) kayıtlarının denetimini ayrılmış bir DNS bölgesine aktarmak için farklı bir mekanizma kullanılır. Bu mekanizma her IP aralığı için bir alt bölge devreder ve sonra aralıktaki her IP adresini CNAME kayıtlarını kullanarak bu alt bölgeye ayrı ayrı eşler.
 
@@ -89,7 +88,7 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 
 IPv6 geriye doğru arama bölgesinin adı aşağıdaki biçimde olmalıdır:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Örneğin,. 2001: db8:1000: abdc::/64 ön ekine sahip konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölgenin ağ ön ekini yalıtarak bölge adı oluşturulur (2001: db8: abdc::). Daha sonra, IPv6 adresi önekini kısaltmak için kullanılmışsa, [sıfır sıkıştırmayı](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)kaldırmak için IPv6 ağ önekini genişletin (2001:0db8: abdc: 0000::). Ters çevrilen ağ önekini`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`oluşturmak ve son eki `.ip6.arpa`eklemek için, ön ek içindeki her bir onaltılık sayı arasındaki sınırlayıcı olarak bir dönem kullanarak sırayı tersine çevirin.
+Örneğin,. 2001: db8:1000: abdc::/64 ön ekine sahip konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölgenin ağ ön ekini yalıtarak bölge adı oluşturulur (2001: db8: abdc::). Daha sonra, IPv6 adresi önekini kısaltmak için kullanılmışsa, [sıfır sıkıştırmayı](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)kaldırmak için IPv6 ağ önekini genişletin (2001:0db8: abdc: 0000::). Ters çevrilen ağ önekini oluşturmak `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ve son eki eklemek için, ön ek içindeki her bir onaltılık sayı arasındaki sınırlayıcı olarak bir dönem kullanarak sırayı tersine çevirin `.ip6.arpa` .
 
 
 |Ağ ön eki  |Genişletilmiş ve ters çevrilmiş ağ ön eki |Standart sonek |Ters bölge adı  |

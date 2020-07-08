@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844709"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Öğretici: olayları ıothub 'e Ilet
@@ -40,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir. Bu konu, yayımcıların daha sonra olay gönderebileceği bir uç nokta anlamına gelir.
 
-1. Aşağıdaki içeriğe sahip Topic4. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte topic4.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
    ```json
     {
@@ -84,7 +83,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içeriğe sahip subscription4. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte subscription4.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
    ```json
     {
@@ -100,7 +99,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
    ```
 
    >[!NOTE]
-   > Abonenin `endpointType` olduğunu belirtir `edgeHub`. Event Grid `outputName` modülünün bu abonelikle eşleşen olayları edgeHub 'a yönlendireceğini belirten çıktıyı belirtir. Örneğin, yukarıdaki abonelikle eşleşen olayların üzerine yazılacak `/messages/modules/eventgridmodule/outputs/sampleSub4`.
+   > `endpointType`Abonenin olduğunu belirtir `edgeHub` . `outputName`Event Grid modülünün bu abonelikle eşleşen olayları edgeHub 'a yönlendireceğini belirten çıktıyı belirtir. Örneğin, yukarıdaki abonelikle eşleşen olayların üzerine yazılacak `/messages/modules/eventgridmodule/outputs/sampleSub4` .
 2. Aboneliği oluşturmak için aşağıdaki komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
@@ -162,13 +161,13 @@ Aşağıdaki gibi, ıothub 'e iletilmek üzere olay aboneliğinin olaylarını i
 
 ## <a name="setup-iot-hub-route"></a>IoT Hub yolunu ayarla
 
-Event Grid modülünden iletilen olayları görüntüleyebilmeniz için IoT Hub 'ından bir yol ayarlamak üzere [IoT Hub yönlendirme öğreticisine](../../iot-hub/tutorial-routing.md) bakın. Öğreticiyi devam etmek için sorgu kullanın `true` .  
+Event Grid modülünden iletilen olayları görüntüleyebilmeniz için IoT Hub 'ından bir yol ayarlamak üzere [IoT Hub yönlendirme öğreticisine](../../iot-hub/tutorial-routing.md) bakın. `true`Öğreticiyi devam etmek için sorgu kullanın.  
 
 
 
 ## <a name="publish-an-event"></a>Olay yayımlama
 
-1. Aşağıdaki içeriğe sahip event4. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte event4.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         [

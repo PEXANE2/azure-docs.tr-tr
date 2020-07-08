@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841739"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Web kancası abone kimlik doğrulamasını yapılandırma
@@ -45,7 +44,7 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Özelliği `outbound__webhook__allowUnknownCA` , genellikle otomatik `true` olarak imzalanan sertifikaları kullanırken, yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **false**olarak ayarlanması önerilir.
+>Özelliği, `outbound__webhook__allowUnknownCA` `true` genellikle otomatik olarak imzalanan sertifikaları kullanırken, yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **false**olarak ayarlanması önerilir.
 
 ## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS abonesi izin ver ancak sertifika doğrulamayı atla
 
@@ -60,7 +59,7 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Özelliği `outbound__webhook__skipServerCertValidation` , kimlik doğrulaması `true` yapılması gereken bir sertifika sunmadığı için yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **false** olarak ayarlanması önerilir
+>Özelliği, `outbound__webhook__skipServerCertValidation` `true` kimlik doğrulaması yapılması gereken bir sertifika sunmadığı için yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **false** olarak ayarlanması önerilir
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalarla hem HTTP hem de HTTPS 'ye izin ver
 
@@ -75,4 +74,4 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Önce bir HTTP `outbound__webhook__httpsOnly` abonesi `false` getirmek isteyebileceğiniz gibi, özelliği yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **true** olarak ayarlanması önerilir
+>`outbound__webhook__httpsOnly` `false` Önce bir http abonesi getirmek isteyebileceğiniz gibi, özelliği yalnızca test ortamlarında olarak ayarlayın. Üretim iş yükleri için, bunların **true** olarak ayarlanması önerilir

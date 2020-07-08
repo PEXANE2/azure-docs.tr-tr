@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935014"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
@@ -29,13 +28,13 @@ Bu makalede, HDInsight Spark kümesinde bir Spark işi göndermek ve sonra masa�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
+* **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
 * **HDInsight 'Ta bir Apache Spark kümesi**. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 * **Oracle Java geliştirme seti**. [Oracle Web sitesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
 * **IntelliJ fikri**. Bu makalede 2017,1 sürümü kullanılmaktadır. Bunu, [JetBrains Web sitesinden](https://www.jetbrains.com/idea/download/)yükleyebilirsiniz.
 * **Azure Toolkit for IntelliJ 'de HDInsight araçları**. IntelliJ için HDInsight araçları Azure Toolkit for IntelliJ bir parçası olarak kullanılabilir. Azure araç seti 'nin nasıl yükleneceğine ilişkin yönergeler için bkz. [ınstall Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **IntelliJ fikrinden Azure aboneliğinizde oturum açın**. [HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanın](apache-spark-intellij-tool-plugin.md)' daki yönergeleri izleyin.
-* **Özel durum geçici çözümü**. Windows bilgisayarda uzaktan hata ayıklama için Spark Scala uygulamasını çalıştırırken bir özel durum alabilirsiniz. Bu özel durum [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ' de açıklanmaktadır ve Windows 'ta eksik bir winutils. exe dosyası nedeniyle oluşur. Bu hatayı geçici olarak çözmek için, [Winutils. exe](https://github.com/steveloughran/winutils) **dosyasını C:\Win, \ bin**gibi bir konuma indirmeniz gerekir. **HADOOP_HOME** ortam değişkeni ekleyin ve sonra değişkenin değerini **C\winutils**olarak ayarlayın.
+* **Özel durum geçici çözümü**. Windows bilgisayarda uzaktan hata ayıklama için Spark Scala uygulamasını çalıştırırken bir özel durum alabilirsiniz. Bu özel durum [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ' de açıklanmaktadır ve Windows 'da eksik bir WinUtils.exe dosyası nedeniyle oluşur. Bu hatayı geçici olarak çözmek için [Winutils.exe](https://github.com/steveloughran/winutils) **C:\Win, \ bin**gibi bir konuma indirmeniz gerekir. **HADOOP_HOME** ortam değişkeni ekleyin ve sonra değişkenin değerini **C\winutils**olarak ayarlayın.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>1. Adım: Azure sanal ağı oluşturma
 
@@ -98,7 +97,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ FIKRNDE yeni proje şablonunu seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. HDInsight 'ta **HDInsight** > **Spark (Scala)** seçeneğini belirleyin.
+    a. **HDInsight**  >  **HDInsight 'ta HDInsight Spark (Scala)** seçeneğini belirleyin.
 
     b. **İleri**’yi seçin.
 1. Sonraki **Yeni proje** iletişim kutusunda, aşağıdakileri yapın ve ardından **son**' u seçin:
@@ -115,7 +114,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     a. **Dosya** menüsünden **Proje Yapısı**’nı seçin.
 
-    b. **Proje yapısı** iletişim kutusunda, oluşturulan varsayılan yapıtı görüntülemek Için **yapıtlar** ' ı seçin. Ayrıca, artı işaretini (**+**) seçerek kendi yapıtlarınızı oluşturabilirsiniz.
+    b. **Proje yapısı** iletişim kutusunda, oluşturulan varsayılan yapıtı görüntülemek Için **yapıtlar** ' ı seçin. Ayrıca, artı işaretini () seçerek kendi yapıtlarınızı oluşturabilirsiniz **+** .
 
    ![IntelliJ fıkır yapıları jar oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
 
@@ -123,7 +122,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     a. Proje ağacındaki proje adına sağ tıklayın ve ardından **Modül ayarlarını aç**' ı seçin.
 
-    b. **Proje yapısı** Iletişim kutusunda **Kitaplıklar**' ı seçin, (**+**) sembolünü seçin ve **Maven**' ı seçin.
+    b. **Proje yapısı** Iletişim kutusunda **Kitaplıklar**' ı seçin, ( **+** ) sembolünü seçin ve **Maven**' ı seçin.
 
     ![IntelliJ fıkır yükleme kitaplığı](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -132,24 +131,24 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
 
-1. `core-site.xml` Küme baş düğümünü kopyalayıp `yarn-site.xml` projeye ekleyin. Dosyaları kopyalamak için aşağıdaki komutları kullanın. [Cygwin](https://cygwin.com/install.html) 'yi, dosyaları küme baş düğümlerinden kopyalamak `scp` için aşağıdaki komutları çalıştırmak üzere kullanabilirsiniz:
+1. `yarn-site.xml` `core-site.xml` Küme baş düğümünü kopyalayıp projeye ekleyin. Dosyaları kopyalamak için aşağıdaki komutları kullanın. [Cygwin](https://cygwin.com/install.html) 'yi, `scp` dosyaları küme baş düğümlerinden kopyalamak için aşağıdaki komutları çalıştırmak üzere kullanabilirsiniz:
 
     ```bash
     scp <ssh user name>@<headnode IP address or host name>://etc/hadoop/conf/core-site.xml .
     ```
 
-    Konak dosyası için küme baş düğüm IP adresini ve ana bilgisayar adlarını masaüstünde zaten ekledik, bu `scp` komutları aşağıdaki şekilde kullanabilirsiniz:
+    Konak dosyası için küme baş düğüm IP adresini ve ana bilgisayar adlarını masaüstünde zaten ekledik, `scp` Bu komutları aşağıdaki şekilde kullanabilirsiniz:
 
     ```bash
     scp sshuser@nitinp:/etc/hadoop/conf/core-site.xml .
     scp sshuser@nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
-    Bu dosyaları projenize eklemek için, bunları proje ağacınızdaki **/src** klasörü altına kopyalayın, örneğin `<your project directory>\src`.
+    Bu dosyaları projenize eklemek için, bunları proje ağacınızdaki **/src** klasörü altına kopyalayın, örneğin `<your project directory>\src` .
 
-1. Aşağıdaki değişiklikleri `core-site.xml` yapmak için dosyayı güncelleştirin:
+1. `core-site.xml`Aşağıdaki değişiklikleri yapmak için dosyayı güncelleştirin:
 
-   a. Şifrelenen anahtarı değiştirin. `core-site.xml` Dosya, kümeyle ilişkili depolama hesabına şifreli anahtarı içerir. Projeye eklediğiniz `core-site.xml` dosyada, şifrelenen anahtarı varsayılan depolama hesabıyla ilişkili gerçek depolama anahtarıyla değiştirin. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+   a. Şifrelenen anahtarı değiştirin. `core-site.xml`Dosya, kümeyle ilişkili depolama hesabına şifreli anahtarı içerir. `core-site.xml`Projeye eklediğiniz dosyada, şifrelenen anahtarı varsayılan depolama hesabıyla ilişkili gerçek depolama anahtarıyla değiştirin. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
     ```xml
     <property>
@@ -158,7 +157,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
     </property>
     ```
 
-   b. Aşağıdaki girdileri öğesinden `core-site.xml`kaldırın:
+   b. Aşağıdaki girdileri öğesinden kaldırın `core-site.xml` :
 
     ```xml
     <property>
@@ -187,7 +186,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ fıkır yeni Scala sınıfı oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
-1. `MyClusterAppMain.scala` Dosyasında aşağıdaki kodu yapıştırın. Bu kod Spark bağlamını oluşturur ve `executeJob` `SparkSample` nesnesinden bir yöntem açar.
+1. `MyClusterAppMain.scala`Dosyasında aşağıdaki kodu yapıştırın. Bu kod Spark bağlamını oluşturur ve `executeJob` nesnesinden bir yöntem açar `SparkSample` .
 
     ```scala
     import org.apache.spark.{SparkConf, SparkContext}
@@ -205,7 +204,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
     }
     ```
 
-1. Adlı `*SparkSample`yeni bir Scala nesnesi eklemek için 8 ve 9. adımları yineleyin. Bu sınıfa aşağıdaki kodu ekleyin. Bu kod HVAC. csv dosyasından verileri okur (tüm HDInsight Spark kümelerinde kullanılabilir). CSV dosyasında yedinci sütununda yalnızca bir basamağı olan satırları alır ve sonra çıktıyı varsayılan depolama kapsayıcısının altına **/hvacout** öğesine yazar.
+1. Adlı yeni bir Scala nesnesi eklemek için 8 ve 9. adımları yineleyin `*SparkSample` . Bu sınıfa aşağıdaki kodu ekleyin. Bu kod, HVAC.csv verileri okur (tüm HDInsight Spark kümelerinde kullanılabilir). CSV dosyasında yedinci sütununda yalnızca bir basamağı olan satırları alır ve sonra çıktıyı varsayılan depolama kapsayıcısının altına **/hvacout** öğesine yazar.
 
     ```scala
     import org.apache.spark.SparkContext
@@ -226,7 +225,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
     }
     ```
 
-1. Adlı `RemoteClusterDebugging`yeni bir sınıf eklemek için 8 ve 9. adımları yineleyin. Bu sınıf, uygulamalarda hata ayıklamak için kullanılan Spark test çerçevesini uygular. `RemoteClusterDebugging` Sınıfına aşağıdaki kodu ekleyin:
+1. Adlı yeni bir sınıf eklemek için 8 ve 9. adımları yineleyin `RemoteClusterDebugging` . Bu sınıf, uygulamalarda hata ayıklamak için kullanılan Spark test çerçevesini uygular. Sınıfına aşağıdaki kodu ekleyin `RemoteClusterDebugging` :
 
     ```scala
         import org.apache.spark.{SparkConf, SparkContext}
@@ -252,10 +251,10 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
      Dikkat etmeniz gereken birkaç önemli nokta vardır:
 
-      * İçin `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`, Spark derlemesi jar 'in belirtilen yoldaki küme depolama alanı üzerinde kullanılabilir olduğundan emin olun.
-      * İçin `setJars`, yapıt jar 'in oluşturulduğu konumu belirtin. Genellikle, bu `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`.
+      * İçin `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` , Spark DERLEMESI jar 'in belirtilen yoldaki küme depolama alanı üzerinde kullanılabilir olduğundan emin olun.
+      * İçin `setJars` , YAPıT jar 'in oluşturulduğu konumu belirtin. Genellikle, bu `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar` .
 
-1. `*RemoteClusterDebugging` Sınıfında, `test` anahtar sözcüğünü sağ tıklatın ve ardından **remoteclusterdebugging yapılandırması oluştur**' u seçin.
+1. Sınıfında, `*RemoteClusterDebugging` `test` anahtar sözcüğünü sağ tıklatın ve ardından **Remoteclusterdebugging yapılandırması oluştur**' u seçin.
 
     ![IntelliJ fıkır uzak yapılandırma oluşturma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
@@ -269,7 +268,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. Adım: uygulamayı hata ayıklama modunda çalıştırma
 
-1. IntelliJ fıkır projenizde, ' nin yanında `SparkSample.scala` bir kesme noktası açın ve oluşturun `val rdd1`. Açılır menü **Için kesme noktası oluştur** menüsünde, **executejob işlevinde satır**' ı seçin.
+1. IntelliJ fıkır projenizde, ' nin `SparkSample.scala` yanında bir kesme noktası açın ve oluşturun `val rdd1` . Açılır menü **Için kesme noktası oluştur** menüsünde, **executejob işlevinde satır**' ı seçin.
 
     ![IntelliJ fıkır kesme noktası ekleme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
@@ -281,11 +280,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ fıkır hata ayıklayıcı sekmesini görüntüleme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. Bir izleme eklemek için (**+**) simgesini seçin.
+1. Bir izleme eklemek için ( **+** ) simgesini seçin.
 
     ![IntelliJ hata ayıklama-Add-Watch-değişken](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    Bu örnekte, uygulama, değişken `rdd1` oluşturulmadan önce bir sorun yaratmıştı. Bu gözcü kullanıldığında, değişkende `rdd`ilk beş satırı görebiliriz. **ENTER**' ı seçin.
+    Bu örnekte, uygulama, değişken oluşturulmadan önce bir sorun `rdd1` yaratmıştı. Bu gözcü kullanıldığında, değişkende ilk beş satırı görebiliriz `rdd` . **ENTER**' ı seçin.
 
     ![IntelliJ programı hata ayıklama modunda çalıştır](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 

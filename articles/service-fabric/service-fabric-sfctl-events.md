@@ -6,16 +6,15 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906097"
 ---
 # <a name="sfctl-events"></a>sfctl etkinlikleri
 Olayları olay deposundan al (EventStore hizmeti zaten yüklüyse).
 
-EventStore sistem hizmeti >= 6,4 çalıştıran herhangi bir SFRP kümesine bir yapılandırma yükseltmesi aracılığıyla eklenebilir. Lütfen şu URL 'yi\: denetleyin https\://docs.Microsoft.com/Azure/Service-Fabric/Service-Fabric-Diagnostics-eventstore.
+EventStore sistem hizmeti >= 6,4 çalıştıran herhangi bir SFRP kümesine bir yapılandırma yükseltmesi aracılığıyla eklenebilir. Lütfen şu URL 'yi denetleyin \: https \: //docs.Microsoft.com/Azure/Service-Fabric/Service-Fabric-Diagnostics-eventstore.
 
 ## <a name="commands"></a>Komutlar
 
@@ -38,16 +37,16 @@ Uygulamalarla ilgili tüm olayları alır.
 
 Yanıt, ApplicationEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -55,8 +54,8 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-all-nodes-list"></a>sfctl olayları All-Nodes-List
@@ -64,16 +63,16 @@ Tüm düğümlerle ilgili olayları alır.
 
 Yanıt, NodeEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -81,8 +80,8 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-all-partitions-list"></a>sfctl olayları tümü-bölümler-liste
@@ -90,16 +89,16 @@ Tüm bölümlerle ilgili olayları alır.
 
 Yanıt, PartitionEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -107,8 +106,8 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-all-services-list"></a>sfctl olayları All-Services-List
@@ -116,16 +115,16 @@ Hizmetlerle ilgili tüm olayları alır.
 
 Yanıt, ServiceEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -133,8 +132,8 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-application-list"></a>sfctl olayları uygulama-liste
@@ -142,17 +141,17 @@ Uygulamayla ilgili olayları alır.
 
 Yanıt, ApplicationEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. Bu genellikle uygulamanın ' Fabric\:' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar "\~" karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric\:/MyApp/APP1" ise, uygulama kimliği önceki sürümlerde "MyApp\~APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. Bu genellikle uygulamanın ' Fabric \: ' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric \: /MyApp/APP1" ise, uygulama kimliği \~ önceki sürümlerde "MyApp APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -160,8 +159,8 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-cluster-list"></a>sfctl olayları kümesi-liste
@@ -169,16 +168,16 @@ Kümeyle ilgili tüm olayları alır.
 
 Yanıt, ClusterEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -186,8 +185,8 @@ Yanıt, ClusterEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-node-list"></a>sfctl olayları düğüm-listesi
@@ -195,17 +194,17 @@ Düğümle ilgili olayları alır.
 
 Yanıt, NodeEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Node-Name [gerekli] | Düğümün adı. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -213,8 +212,8 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-partition-all-replicas-list"></a>sfctl olayları bölümü-tümü-çoğaltmalar-listesi
@@ -222,17 +221,17 @@ Bir bölüm için çoğaltmalarla ilgili tüm olayları alır.
 
 Yanıt, ReplicaEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -240,8 +239,8 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-partition-list"></a>sfctl olayları bölümü-liste
@@ -249,17 +248,17 @@ Bölümle ilgili olayları alır.
 
 Yanıt, PartitionEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -267,8 +266,8 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-partition-replica-list"></a>sfctl olayları bölümü-çoğaltma-listesi
@@ -276,18 +275,18 @@ Bölüm çoğaltmayla ilgili olayları alır.
 
 Yanıt, ReplicaEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
 | --çoğaltma-kimliği [gerekli] | Çoğaltmanın tanımlayıcısı. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -295,8 +294,8 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-events-service-list"></a>sfctl olayları hizmeti-liste
@@ -304,17 +303,17 @@ Hizmetle ilgili olayları alır.
 
 Yanıt, ServiceEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun bitiş saati. |
-| --hizmet kimliği [gerekli] | Hizmetin kimliği. Bu KIMLIK genellikle hizmetin ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar "\~" karakteriyle sınırlandırılmıştır. Örneğin, hizmet adı "Fabric\:/MyApp/APP1/svc1" ise, hizmet kimliği, önceki sürümlerde 6.0 + ve "MyApp\~/\~APP1/svc1" içinde "MyApp APP1 svc1" olacaktır. |
-| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH\:mm\:SSZ içindeki bir arama sorgusunun başlangıç saati. |
+| --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
+| --hizmet kimliği [gerekli] | Hizmetin kimliği. Bu KIMLIK genellikle hizmetin ' Fabric \: ' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, hizmet adı "Fabric \: /MyApp/APP1/svc1" ise, hizmet kimliği, \~ \~ önceki sürümlerde 6.0 + ve "MyApp/APP1/svc1" içinde "MyApp APP1 svc1" olacaktır. |
+| --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
 | --Events-Types-Filter | Bu, yalnızca yanıta dahil edilecek FabricEvents türlerini belirten, virgülle ayrılmış bir dizedir. |
 | --exclude-Analysis-Events | Bu parametre true ise, analiz Sısevents 'nin alınmasını devre dışı bırakır. |
 | --Skip-bağıntı-arama | Bu parametre, true ise CorrelatedEvents bilgisinin aranmasını devre dışı bırakır. Aksi halde, her FabricEvent içindeki CorrelationEvents işleme ve HasCorrelatedEvents alanı doldurulur. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -322,7 +321,7 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen \: JSON, jsonc, tablo, TSV değerleri.  Varsayılan \: JSON. |
+| --sorgu | JMESPath sorgu dizesi. \:Daha fazla bilgi ve örnek için bkz. http//jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 

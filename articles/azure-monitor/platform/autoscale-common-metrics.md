@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845571"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
@@ -22,7 +21,7 @@ Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeler
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Kaynak Yöneticisi tabanlı VM 'Ler için işlem ölçümleri
 Varsayılan olarak, Kaynak Yöneticisi tabanlı sanal makineler ve sanal makine ölçek kümeleri temel (konak düzeyi) ölçümlerini yayar. Ayrıca, bir Azure VM ve VMSS için tanılama veri toplamayı yapılandırdığınızda, Azure tanılama uzantısı da konuk işletim sistemi performans sayaçlarını (genellikle "Konuk-işletim sistemi ölçümleri" olarak bilinir) yayar.  Tüm bu ölçümleri otomatik ölçeklendirme kurallarında kullanırsınız.
 
-VMSS kaynağınız için `Get MetricDefinitions` kullanılabilen ölçümleri görüntülemek için API/Posh/CLI kullanabilirsiniz.
+`Get MetricDefinitions`VMSS kaynağınız için kullanılabilen ölçümleri görüntülemek için API/PoSH/CLI kullanabilirsiniz.
 
 VM Ölçek Kümeleri kullanıyorsanız ve belirli bir ölçümü listede görmüyorsanız, bu durumda tanılama uzantıda *devre dışı bırakılır* .
 
@@ -47,24 +46,24 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 
-| Ölçüm adı | Birim |
+| Ölçüm Adı | Birim |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Yüzde |
-| \Processor (_Total)\% ayrıcalıklı süre |Yüzde |
-| \Processor (_Total)\% Kullanıcı saati |Yüzde |
+| \Processor (_Total) \% ayrıcalıklı süre |Yüzde |
+| \Processor (_Total) \% Kullanıcı saati |Yüzde |
 | \İşlemci bilgileri (_Total) \ işlemci sıklığı |Sayı |
 | \System\Processes |Sayı |
 | \Process (_Total) \ iş parçacığı sayısı |Sayı |
 | \Process (_Total) \Tanıtıcı sayısı |Sayı |
-| \ Kullanılan\% bellek kaydedilmiş bayt sayısı |Yüzde |
+| \ \% Kullanılan bellek kaydedilmiş bayt sayısı |Yüzde |
 | \Memory\Available Bytes |Bayt |
 | \ Bellek \ kaydedilmiş baytlar |Bayt |
 | \Memory\commıt limiti |Bayt |
 | \Bellek\havuz disk belleğine alınan baytlar |Bayt |
 | \Bellek\havuz disk belleksiz baytlar |Bayt |
-| \Fizikseldisk (\% _Total) disk saati |Yüzde |
-| \Fizikseldisk (\% _Total) disk okuma zamanı |Yüzde |
-| \Fiziksel disk (_Total\% ) disk yazma zamanı |Yüzde |
+| \Fizikseldisk (_Total) \% disk saati |Yüzde |
+| \Fizikseldisk (_Total) \% disk okuma zamanı |Yüzde |
+| \Fiziksel disk (_Total) \% disk yazma zamanı |Yüzde |
 | \Fiziksel disk (_Total) \Disk aktarımı/sn |Sayaçpersaniye |
 | \Fiziksel disk (_Total) \Disk Okuma/sn |Sayaçpersaniye |
 | \Fiziksel disk (_Total) \Disk yazma/sn |Sayaçpersaniye |
@@ -74,7 +73,7 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Sayı |
 | \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Sayı |
 | \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Sayı |
-| \LogicalDisk (_Total)\% boş alan |Yüzde |
+| \LogicalDisk (_Total) \% boş alan |Yüzde |
 | \LogicalDisk (_Total) \ boş megabayt |Sayı |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Konuk işletim sistemi ölçümleri Linux VM 'Leri
@@ -88,7 +87,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 
-| Ölçüm adı | Birim |
+| Ölçüm Adı | Birim |
 | --- | --- |
 | \Bellek\kullanılabilirlik blememory |Bayt |
 | \Memory\yüztavailablememory |Yüzde |
@@ -141,7 +140,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Bu ölçümler ile uyarı verebilir veya ölçeklendirebilirsiniz.
 
-| Ölçüm adı | Birim |
+| Ölçüm Adı | Birim |
 | --- | --- |
 | Cpuyüzdesi |Yüzde |
 | MemoryPercentage |Yüzde |

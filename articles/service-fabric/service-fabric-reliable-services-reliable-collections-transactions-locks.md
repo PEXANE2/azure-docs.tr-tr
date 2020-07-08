@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938920"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları
@@ -43,7 +42,7 @@ Aşağıda, güvenilir sözlük ve kuyruk işlemleri için yalıtım düzeyi var
 | Sabit listesi, sayı |Anlık Görüntü |Anlık Görüntü |
 
 > [!NOTE]
-> Tek bir varlık Işlemleri için ortak örnekler `IReliableDictionary.TryGetValueAsync`şunlardır `IReliableQueue.TryPeekAsync`.
+> Tek bir varlık Işlemleri için ortak örnekler `IReliableDictionary.TryGetValueAsync` şunlardır `IReliableQueue.TryPeekAsync` .
 > 
 
 Hem güvenilir sözlük hem de güvenilir sıra, *yazma bilgilerinizi okumayı*destekler.
@@ -55,8 +54,8 @@ Güvenilir koleksiyonlar bölümünde tüm işlemler, her türlü katı iki aşa
 
 Güvenilir sözlük tüm tek varlık işlemleri için satır düzeyinde kilitleme kullanır.
 Güvenilir sıra, katı işlem FıFO özelliği için eşzamanlılık kapatır.
-Güvenilir sıra, `TryPeekAsync` `TryDequeueAsync` `EnqueueAsync` aynı anda ve/veya ile bir işleme izin veren işlem düzeyinde kilitleri kullanır.
-FıFO 'un, güvenilir sıranın boş olduğunu bir `TryPeekAsync` veya `TryDequeueAsync` daha fazla hizmet veriyorsa, bunların de kilitlendiğine `EnqueueAsync`göz önünde durun.
+Güvenilir sıra, `TryPeekAsync` aynı anda ve/veya ile bir işleme izin veren işlem düzeyinde kilitleri kullanır `TryDequeueAsync` `EnqueueAsync` .
+FıFO 'un, `TryPeekAsync` güvenilir sıranın boş olduğunu bir veya `TryDequeueAsync` daha fazla hizmet veriyorsa, bunların de kilitlendiğine göz önünde durun `EnqueueAsync` .
 
 Yazma işlemleri her zaman özel kilitler alır.
 Okuma işlemleri için, kilitleme birkaç etkene bağlıdır:
@@ -68,10 +67,10 @@ Güncelleştirme kilidi, birden çok işlem, olası güncelleştirmeler için ka
 
 Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
 
-| İstek \ verildi | Hiçbiri | Shared | Güncelleştirme | Özel |
+| İstek \ verildi | Hiçbiri | Shared | Güncelleştir | Özel |
 | --- |:--- |:--- |:--- |:--- |
 | Shared |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
-| Güncelleştirme |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
+| Güncelleştir |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
 | Özel |Çakışma yok |Çakışma |Çakışma |Çakışma |
 
 Güvenilir koleksiyonlar API 'Lerinde zaman aşımı bağımsız değişkeni, kilitlenme algılama için kullanılır.

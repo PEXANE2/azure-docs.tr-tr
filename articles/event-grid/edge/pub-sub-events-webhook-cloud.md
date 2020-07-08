@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844607"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Öğretici: bulutta olaylara abone olma
@@ -67,7 +66,7 @@ Yeni işlevinizde, sağ üst köşedeki **işlev URL 'Sini al** ' ı seçin, var
 
 Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir. Konu, yayımcıların olayları gönderebileceği bir uç nokta anlamına gelir.
 
-1. Aşağıdaki içeriğe sahip Topic2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte topic2.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
          {
@@ -110,7 +109,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içeriğe sahip subscription2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte subscription2.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         {
@@ -159,7 +158,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 ## <a name="publish-an-event"></a>Olay yayımlama
 
-1. Aşağıdaki içeriğe sahip EVENT2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte event2.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         [

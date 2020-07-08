@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963861"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
@@ -23,13 +22,13 @@ Azure Backup ilkesi oluşturmak veya güncelleştirmek için aşağıdaki *PUT* 
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` Ve `{vaultName}` URI 'de sağlanır. Ek bilgiler istek gövdesinde verilmiştir.
+`{policyName}`Ve `{vaultName}` URI 'de sağlanır. Ek bilgiler istek gövdesinde verilmiştir.
 
 ## <a name="create-the-request-body"></a>İstek gövdesini oluşturma
 
 Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Adı  |Gerekli  |Tür  |Açıklama  |
+|Name  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
 |etiketler     |         | Nesne        |  Kaynak etiketleri       |
@@ -137,10 +136,10 @@ Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](https
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve ardından bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |    [Koruma PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  Tamam       |
-|202 kabul edildi     |         |     Accepted    |
+|202 kabul edildi     |         |     Kabul edildi    |
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 

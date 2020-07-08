@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76766263"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler özel düzenleme durumu (Azure Işlevleri)
@@ -24,7 +23,7 @@ ms.locfileid: "76766263"
 
 İstemciler, durum bitiş noktasını yoklayabilirler ve geçerli yürütme aşamasını görselleştirtiren bir ilerleme Kullanıcı arabirimi görüntüleyebilir. Aşağıdaki örnek ilerleme paylaşımını gösterir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -85,7 +84,7 @@ module.exports = async function(context, name) {
 
 Daha sonra istemci, düzenleme çıktısını yalnızca `CustomStatus` alan "Londra" olarak ayarlandığında alır:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -156,7 +155,7 @@ module.exports = async function(context, req) {
 
 Farklı bir ilginç senaryo, benzersiz özelliklere veya etkileşimlere göre özelleştirilmiş çıktı döndürerek kullanıcıları bölümleyerek. Özel düzenleme durumunun yardımıyla, istemci tarafı kodu genel kalır. Aşağıdaki örnekte gösterildiği gibi, tüm ana değişiklikler sunucu tarafında gerçekleşir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -233,7 +232,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Orchestrator, istemcilere özel durum aracılığıyla benzersiz yönergeler verebilir. Özel durum yönergeleri Orchestration kodundaki adımlara eşlenir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -294,7 +293,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Aşağıdaki örnekte, önce özel durum ayarlanır;
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)

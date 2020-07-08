@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722110"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Veri bilimi projelerinin çevik geliştirmesi
@@ -39,10 +38,10 @@ TDSP sprint planlama çerçevesinde, sık kullanılan dört *iş öğesi* türü
 
 İşte iş öğesi türleri için tanımlar:
 
-- **Özellik**: bir özellik proje katılımını karşılık gelir. Bir istemciye sahip farklı görevlendirmeler farklı özelliklerdir ve projenin farklı aşamalarını farklı özellikler olarak düşünmek en iyisidir. Özelliklerinizi adlandırmak için * \<clientname>-\<EngagementName>* gibi bir şema seçerseniz, proje bağlamını kolayca tanıyabilir ve adların kendilerini kolayca ayırt edebilirsiniz.
+- **Özellik**: bir özellik proje katılımını karşılık gelir. Bir istemciye sahip farklı görevlendirmeler farklı özelliklerdir ve projenin farklı aşamalarını farklı özellikler olarak düşünmek en iyisidir. *\<ClientName>-\<EngagementName>* Özelliklerinizi adlandırmak için gibi bir şema seçerseniz, proje bağlamını kolayca tanıyabilir ve doğrudan adların kendilerini ayırt edebilirsiniz.
   
 - **Kullanıcı hikayesi**: Kullanıcı hikayeleri, bir özelliği uçtan uca tamamlayabilmeniz için gereken iş öğeleridir. Kullanıcı hikayeleri örnekleri şunları içerir:
-  - Verileri alma 
+  - Veri al 
   - Verileri inceleme 
   - Özellik Oluştur
   - Modelleri oluşturma
@@ -72,7 +71,7 @@ Azure Boards sprint planlama hakkında daha fazla bilgi için bkz. [bir sprint '
 
 Projeniz ve proje kod deponuz oluşturulduktan sonra, projenize yönelik işi göstermek için biriktirme listesine bir özellik ekleyebilirsiniz.
 
-1. Proje sayfanızda, sol gezinti bölmesinde **panolar** > **biriktirme** listeleri ' ni seçin. 
+1. Proje sayfanızda, sol gezinti bölmesinde **panolar**  >  **biriktirme** listeleri ' ni seçin. 
    
 1. **Kapsam** sekmesinde, üstteki çubukta iş öğesi türü **hikayeler**Ise, açılan ve **Özellikler**' i seçin. Ardından **Yeni Iş öğesi** ' ni seçin.
    
@@ -96,7 +95,7 @@ Projeniz ve proje kod deponuz oluşturulduktan sonra, projenize yönelik işi g�
 
 Bir özelliğe yeni bir kullanıcı hikayesi eklemek için:
 
-1. **Kapsam** sekmesinde, özelliğin solundaki ' ı **+** seçin. 
+1. **Kapsam** sekmesinde, özelliğin solundaki ' ı seçin **+** . 
    
    ![Özelliğin altına yeni bir kullanıcı hikayesi ekleyin](./media/agile-development/4-sprint-add-story.png)
    
@@ -112,7 +111,7 @@ Bir özelliğe yeni bir kullanıcı hikayesi eklemek için:
 
 Görevler, her kullanıcı hikayesini tamamlaması için gereken belirli ayrıntılı adımlardır. Kullanıcı hikayesinin tüm görevleri tamamlandıktan sonra, Kullanıcı hikayesi de tamamlanmalıdır. 
 
-Bir kullanıcı hikayesine bir görev eklemek için, Kullanıcı hikayesi öğesinin **+** yanındaki ' ı seçin ve **görev**' i seçin. Başlığı ve görevdeki diğer bilgileri girin.
+Bir kullanıcı hikayesine bir görev eklemek için, **+** Kullanıcı hikayesi öğesinin yanındaki ' ı seçin ve **görev**' i seçin. Başlığı ve görevdeki diğer bilgileri girin.
 
 ![Kullanıcı hikayesine görev ekleme](./media/agile-development/7-sprint-add-task.png)
 
@@ -152,7 +151,7 @@ Veri bilimcileri, özellikleri, kullanıcı hikayelerini ve Işleri TDSP yaşam 
    1. **Ad**' ın altında, **Epic** ile *TDSP projelerini*değiştirin. 
    1. **Bu kapsam düzeyindeki iş öğesi türleri**altında **yeni iş öğesi türü**' nü seçin, *TDSP projesi*girin ve **Ekle**' yi seçin. 
    1. **Varsayılan iş öğesi türü**altında, açılır ve **TDSP projesi**' ni seçin. 
-   1. **Kaydet**’i seçin.
+   1. **Kaydet**'i seçin.
    
    ![Portföy biriktirme listesi düzeyini ayarla](./media/agile-development/13-rename.png)  
    
@@ -183,7 +182,7 @@ TDSP projelerini oluşturmak ve TDSP yaşam döngüsü aşamasına karşılık g
    
    ![TDSP projesi oluşturma](./media/agile-development/15-newproject.png)
    
-1. Yeni oluşturulan projede, sol gezinti bölmesinde **panolar** > **biriktirme** listeleri ' ni seçin.
+1. Yeni oluşturulan projede, sol gezinti bölmesinde **panolar**  >  **biriktirme** listeleri ' ni seçin.
    
 1. TDSP projelerini görünür yapmak için **Ekip ayarlarını yapılandır** simgesini seçin. **Ayarlar** ekranında, **TDSP projeleri** onay kutusunu seçin ve ardından **Kaydet ve Kapat**' ı seçin.
    
@@ -195,13 +194,13 @@ TDSP projelerini oluşturmak ve TDSP yaşam döngüsü aşamasına karşılık g
    
    ![Veri bilimi projesi iş öğesi oluştur](./media/agile-development/17-dsworkitems0.png)
    
-1. TDSP projesinin altına bir iş öğesi eklemek için projenin **+** yanındaki öğesini seçin ve ardından oluşturulacak iş öğesi türünü seçin. 
+1. TDSP projesinin altına bir iş öğesi eklemek için projenin yanındaki öğesini seçin **+** ve ardından oluşturulacak iş öğesi türünü seçin. 
    
    ![Veri bilimi iş öğesi türünü seçin](./media/agile-development/17-dsworkitems1.png)
    
 1. Yeni iş öğesindeki ayrıntıları doldurup **kaydet & kapat**' ı seçin.
    
-1. Yeni TDSP aşamaları **+** , alt aşamalar ve görevler eklemek için iş öğelerinin yanındaki sembolleri seçerken devam edin. 
+1. **+** Yenı TDSP aşamaları, alt aşamalar ve görevler eklemek için iş öğelerinin yanındaki sembolleri seçerken devam edin. 
    
 Veri bilimi proje iş öğelerinin **biriktirme** listesi görünümünde nasıl görünmeli bir örnek aşağıda verilmiştir:
 

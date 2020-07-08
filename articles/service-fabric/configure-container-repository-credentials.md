@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934987"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntülerini indirmek için uygulamanızın depo kimlik bilgilerini yapılandırma
 
-Uygulama bildiriminizde `RepositoryCredentials` `ContainerHostPolicies` bölümüne ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın. Kapsayıcının kayıt defteri için hesap ve parolayı (aşağıdaki örnekte*myregistry.azurecr.io* ) ekleyerek hizmetin kapsayıcı görüntüsünü depodan indirmesini sağlar.
+`RepositoryCredentials`Uygulama bildiriminizde bölümüne ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın `ContainerHostPolicies` . Kapsayıcının kayıt defteri için hesap ve parolayı (aşağıdaki örnekte*myregistry.azurecr.io* ) ekleyerek hizmetin kapsayıcı görüntüsünü depodan indirmesini sağlar.
 
 ```xml
 <ServiceManifestImport>
@@ -35,7 +34,7 @@ Sertifikalar ve şifreleme semantiği hakkında daha fazla bilgi için bkz. [giz
 
 Service Fabric, uygulamalar tarafından varsayılan depo kimlik bilgileri olarak kullanılabilecek küme genelinde kimlik bilgilerini yapılandırmanızı sağlar.
 
-Bu özellik `UseDefaultRepositoryCredentials` , ApplicationManifest. `ContainerHostPolicies` XML içine `true` veya `false` değeri ile özniteliği eklenerek etkinleştirilebilir veya devre dışı bırakılabilir.
+Bu özellik, `UseDefaultRepositoryCredentials` `ContainerHostPolicies` bir veya değeri ile ApplicationManifest.xml içine özniteliği eklenerek etkinleştirilebilir veya devre dışı bırakılabilir `true` `false` .
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +48,14 @@ Bu özellik `UseDefaultRepositoryCredentials` , ApplicationManifest. `ContainerH
 </ServiceManifestImport>
 ```
 
-Service Fabric daha sonra, `Hosting` bölümünün altındaki clustermanifest içinde belirtilenebilir varsayılan depo kimlik bilgilerini kullanır.  `UseDefaultRepositoryCredentials` İse `true`, Service Fabric clustermanifest öğesinden aşağıdaki değerleri okur:
+Service Fabric daha sonra, bölümünün altındaki ClusterManifest içinde belirtilenebilir varsayılan depo kimlik bilgilerini kullanır `Hosting` .  `UseDefaultRepositoryCredentials`İse `true` , Service Fabric clustermanifest öğesinden aşağıdaki değerleri okur:
 
 * DefaultContainerRepositoryAccountName (dize)
 * Defaultcontainerdepotorpassword (dize)
 * Idefaultcontainerdepotorypasswordencrypted (bool)
 * Defaultcontainerdepotorypasswordtype (dize)
 
-ClusterManifestTemplate. JSON dosyasındaki `Hosting` bölümünün içine eklenebilecekleri bir örnek aşağıda verilmiştir. Bölüm `Hosting` , küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Daha fazla bilgi için bkz. [azure Service Fabric küme ayarlarını değiştirme](service-fabric-cluster-fabric-settings.md) ve [Azure Service Fabric uygulama gizli dizilerini yönetme](service-fabric-application-secret-management.md)
+İşte ClusterManifestTemplate.jsdosyadaki bölümün içine eklenebilecekleri bir örnek aşağıda verilmiştir `Hosting` . `Hosting`Bölüm, küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Daha fazla bilgi için bkz. [azure Service Fabric küme ayarlarını değiştirme](service-fabric-cluster-fabric-settings.md) ve [Azure Service Fabric uygulama gizli dizilerini yönetme](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -101,7 +100,7 @@ Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirte�
 
     ![ACR 'ye VM sorumlusu ekleme](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Sonra, uygulama bildiriminizde değişiklik yapın. `ContainerHostPolicies` Bölümünde özniteliğini `‘UseTokenAuthenticationCredentials=”true”`ekleyin.
+3. Sonra, uygulama bildiriminizde değişiklik yapın. `ContainerHostPolicies`Bölümünde özniteliğini ekleyin `‘UseTokenAuthenticationCredentials=”true”` .
 
     ```xml
       <ServiceManifestImport>
@@ -116,7 +115,7 @@ Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirte�
     ```
 
     > [!NOTE]
-    > True olarak `UseDefaultRepositoryCredentials` `UseTokenAuthenticationCredentials` ayarlanan bayrak, dağıtım sırasında hataya neden olur.
+    > True `UseDefaultRepositoryCredentials` olarak ayarlanan bayrak, `UseTokenAuthenticationCredentials` dağıtım sırasında hataya neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

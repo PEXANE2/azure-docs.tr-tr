@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76838267"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
@@ -62,7 +61,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 
 | Görüntü üyesi       | Açıklama                             |
 |--------------------|-----------------------------------------|
-| veri               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
+| veriler               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
 | genişlik              | Normalleştirilmiş resmin piksel cinsinden genişliği. |
 | yükseklik             | Normalleştirilmiş resmin piksel cinsinden yüksekliği. |
 | originalWidth      | Normalleştirme yapmadan önce resmin orijinal genişliği. |
@@ -91,7 +90,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 
 Resimleri giriş olarak alan iki yerleşik Bilişsel Beceri vardır: [OCR](cognitive-search-skill-ocr.md) ve [görüntü analizi](cognitive-search-skill-image-analysis.md). 
 
-Şu anda bu yetenekler yalnızca belge çözme adımından oluşturulan görüntülerle çalışır. Bu nedenle, desteklenen tek giriş `"/document/normalized_images"`.
+Şu anda bu yetenekler yalnızca belge çözme adımından oluşturulan görüntülerle çalışır. Bu nedenle, desteklenen tek giriş `"/document/normalized_images"` .
 
 ### <a name="image-analysis-skill"></a>Görüntü analizi yeteneği
 
@@ -106,7 +105,7 @@ Resimleri giriş olarak alan iki yerleşik Bilişsel Beceri vardır: [OCR](cogni
 Yaygın bir senaryo, aşağıdaki adımları gerçekleştirerek hem metin hem de görüntü kaynağı metin olan tüm dosya içeriklerini içeren tek bir dize oluşturmayı kapsar:  
 
 1. [Normalized_images Ayıkla](#get-normalized-images)
-1. Giriş olarak kullanarak `"/document/normalized_images"` OCR becerisi çalıştırma
+1. Giriş olarak kullanarak OCR becerisi çalıştırma `"/document/normalized_images"`
 1. Bu görüntülerin metin gösterimini dosyadan ayıklanan ham metinle birleştirin. Metin [birleştirme](cognitive-search-skill-textmerger.md) beceriye her iki metin öbeklerini tek bir büyük dizedeki birleştirmek için kullanabilirsiniz.
 
 Aşağıdaki örnek Beceri, belgenizin metinsel içeriğini içeren bir *merged_text* alanı oluşturur. Ayrıca, katıştırılmış görüntülerden her birinden OCRed metni de içerir. 

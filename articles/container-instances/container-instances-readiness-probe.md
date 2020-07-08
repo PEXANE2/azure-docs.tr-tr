@@ -4,10 +4,9 @@ description: Azure Container Instances içindeki kapsayıcıların istekleri yal
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935689"
 ---
 # <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
@@ -23,7 +22,7 @@ Azure Container Instances Ayrıca, sağlıksız bir kapsayıcının otomatik ola
 
 ## <a name="yaml-configuration"></a>YAML yapılandırması
 
-Örnek olarak, bir hazırlık araştırması `readiness-probe.yaml` içeren aşağıdaki kod parçacığına sahip bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüden dağıtılır. Bu Kapsayıcılı uygulama, Azure CLı ve diğer hızlı başlangıçlarla [Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md) bölümünde de gösterilmiştir.
+Örnek olarak, `readiness-probe.yaml` bir hazırlık araştırması içeren aşağıdaki kod parçacığına sahip bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüden dağıtılır. Bu Kapsayıcılı uygulama, Azure CLı ve diğer hızlı başlangıçlarla [Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md) bölümünde de gösterilmiştir.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,9 +62,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Başlat komutu
 
-Dağıtım, kapsayıcının ilk `command` kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, Web uygulamasının çalıştığı ancak kapsayıcının hazırlanmadığında bir zaman benzetimini yapar. 
+Dağıtım, `command` kapsayıcının ilk kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, Web uygulamasının çalıştığı ancak kapsayıcının hazırlanmadığında bir zaman benzetimini yapar. 
 
-İlk olarak, bir kabuk oturumu başlatır ve Web uygulamasını `node` başlatmak için bir komut çalıştırır. Ayrıca, 240 saniye boyunca uyku moduna geçmek için bir komut başlatır, sonrasında `ready` `/tmp` dizin içinde adlı bir dosya oluşturulur:
+İlk olarak, bir kabuk oturumu başlatır ve `node` Web uygulamasını başlatmak için bir komut çalıştırır. Ayrıca, 240 saniye boyunca uyku moduna geçmek için bir komut başlatır, sonrasında dizin içinde adlı bir dosya oluşturulur `ready` `/tmp` :
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,11 +72,11 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>Hazır olma komutu
 
-Bu YAML dosyası, hazırlık `readinessProbe` denetimi görevi gören `exec` bir hazır olma komutunu destekleyen bir tanımlar. Bu örnek, `ready` `/tmp` dizindeki dosyanın mevcut olması için komut testlerini hazır olarak onaylar.
+Bu YAML dosyası `readinessProbe` `exec` , hazırlık denetimi görevi gören bir hazır olma komutunu destekleyen bir tanımlar. Bu örnek, dizindeki dosyanın mevcut olması için komut testlerini hazır olarak onaylar `ready` `/tmp` .
 
-`ready` Dosya mevcut olmadığında, hazır olma komutu sıfır olmayan bir değerle çıkar; kapsayıcı çalışmaya devam eder, ancak erişilemez. Komut 0 çıkış koduyla başarıyla çıktığında, kapsayıcıya erişilmeye hazırlanın. 
+`ready`Dosya mevcut olmadığında, hazırlık komutu sıfır olmayan bir değerle çıkar; kapsayıcı çalışmaya devam eder ancak erişilemez. Komut 0 çıkış koduyla başarıyla çıktığında, kapsayıcıya erişilmeye hazırlanın. 
 
-`periodSeconds` Özelliği, hazırlık komutunun her 5 saniyede bir yürütülmesi gerektiğini belirler. Hazırlık araştırması, kapsayıcı grubunun ömrü boyunca çalışır.
+`periodSeconds`Özelliği, hazırlık komutunun her 5 saniyede bir yürütülmesi gerektiğini belirler. Hazırlık araştırması, kapsayıcı grubunun ömrü boyunca çalışır.
 
 ## <a name="example-deployment"></a>Örnek dağıtım
 
@@ -89,9 +88,9 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 ## <a name="view-readiness-checks"></a>Hazırlık denetimlerini görüntüle
 
-Bu örnekte, ilk 240 saniye boyunca, `ready` dosyanın varlığını denetlediğinde hazırlık komutu başarısız olur. Durum kodu, kapsayıcının hazırlantığına işaret eder.
+Bu örnekte, ilk 240 saniye boyunca, dosyanın varlığını denetlediğinde hazırlık komutu başarısız olur `ready` . Durum kodu, kapsayıcının hazırlantığına işaret eder.
 
-Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir. Örneğin, Portal, hazır olma komutu başarısız olduğunda `Unhealthy` , bu türdeki olayların tetiklenmesini gösterir. 
+Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir. Örneğin, Portal, `Unhealthy` hazır olma komutu başarısız olduğunda, bu türdeki olayların tetiklenmesini gösterir. 
 
 ![Portalın sağlıksız olayı][portal-unhealthy]
 
@@ -117,7 +116,7 @@ Connecting to 192.0.2.1... connected.
 HTTP request sent, awaiting response... 
 ```
 
-240 saniye sonra, hazırlık komutu başarılı olur ve kapsayıcının hazır olduğunu işaret edin. Şimdi, `wget` komutunu çalıştırdığınızda başarılı olur:
+240 saniye sonra, hazırlık komutu başarılı olur ve kapsayıcının hazır olduğunu işaret edin. Şimdi, komutunu çalıştırdığınızda başarılı olur `wget` :
 
 ```
 $ wget 192.0.2.1

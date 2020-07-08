@@ -7,15 +7,14 @@ ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988405"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Grup tarafından Yönetilen Hizmet Hesabı olarak hizmet çalıştırma
 
-Windows Server tek başına kümesinde *, bir Çalıştır ilkesi kullanarak* bir hizmeti *Grup yönetilen hizmet hesabı* (gMSA) olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar `Fabric.exe` işlemin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bir gMSA kullanarak, uygulama bildiriminde depolanan parola veya şifreli parola yoktur.  Ayrıca, bir hizmeti [Active Directory Kullanıcı veya grup](service-fabric-run-service-as-ad-user-or-group.md)olarak da çalıştırabilirsiniz.
+Windows Server tek başına kümesinde *, bir Çalıştır ilkesi kullanarak* bir hizmeti *Grup yönetilen hizmet hesabı* (gMSA) olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar işlemin altında çalıştığı hesap altında çalışır `Fabric.exe` . Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bir gMSA kullanarak, uygulama bildiriminde depolanan parola veya şifreli parola yoktur.  Ayrıca, bir hizmeti [Active Directory Kullanıcı veya grup](service-fabric-run-service-as-ad-user-or-group.md)olarak da çalıştırabilirsiniz.
 
 Aşağıdaki örnek, *svc-test $* adlı bir gMSA hesabı oluşturmayı, bu yönetilen hizmet hesabını küme düğümlerine dağıtmayı ve Kullanıcı sorumlusunu yapılandırmayı gösterir.
 
@@ -27,13 +26,13 @@ Aşağıdaki örnek, *svc-test $* adlı bir gMSA hesabı oluşturmayı, bu yöne
 - Etki alanı bir KDS kök anahtarı gerektirir.
 - Etki alanında en az bir Windows Server 2012 (veya R2) DC olması gerekir.
 
-1. Active Directory etki alanı yöneticisinin `New-ADServiceAccount` cmdlet 'ini kullanarak Grup tarafından yönetilen bir hizmet hesabı oluşturmasını ve öğesinin tüm Service Fabric küme `PrincipalsAllowedToRetrieveManagedPassword` düğümlerini içerdiğinden emin olmasını sağlayın. `AccountName`, `DnsHostName`ve `ServicePrincipalName` benzersiz olmalıdır.
+1. Active Directory etki alanı yöneticisinin cmdlet 'ini kullanarak Grup tarafından yönetilen bir hizmet hesabı oluşturmasını `New-ADServiceAccount` ve `PrincipalsAllowedToRetrieveManagedPassword` öğesinin tüm Service Fabric küme düğümlerini içerdiğinden emin olmasını sağlayın. `AccountName`, `DnsHostName` ve `ServicePrincipalName` benzersiz olmalıdır.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
-2. Service Fabric küme düğümlerinin her birinde (örneğin, `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`), gMSA 'yı yükleyip test edin.
+2. Service Fabric küme düğümlerinin her birinde (örneğin, `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$` ), gMSA 'yı yükleyip test edin.
     
     ```powershell
     Add-WindowsFeature RSAT-AD-PowerShell

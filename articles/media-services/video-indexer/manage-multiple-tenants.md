@@ -14,10 +14,9 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76990513"
 ---
 # <a name="manage-multiple-tenants"></a>Birden çok kiracıyı yönetme
@@ -34,7 +33,7 @@ Bu mimariyi kullanırken her kiracı için bir Video Indexer hesabı oluşturulu
 
 ![Kiracı başına Video Indexer hesabı](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 * Müşteriler, depolama hesaplarını paylaşmazlar (müşteri tarafından el ile yapılandırılmadığı müddetçe).
 * Müşteriler, işlem (ayrılmış birimleri) paylaşmazlar ve bir diğerinin iş sürelerini işlemeyi etkilemez.
@@ -57,7 +56,7 @@ Bu seçenekle, modelleri kiracıya göre filtreleyerek, özelleştirme modelleri
 
 [Videoları karşıya yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), her kiracı için farklı bir bölüm özniteliği belirtebilirsiniz. Bu, [Arama API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)'sinde yalıtımına izin verir. Arama API 'sindeki bölüm özniteliğini belirterek yalnızca belirtilen bölümün sonuçlarını elde edersiniz. 
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 * Kiracılar arasında içerik ve özelleştirme modelleri paylaşma özelliği.
 * Bir kiracı, diğer kiracıların performansını etkiler.
@@ -72,11 +71,11 @@ Bu mimariyi kullanırken, her kiracının kendi Azure aboneliği olur. Her Kulla
 
 ![Kiracı başına Azure aboneliği](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 * Bu, fatura ayırmayı sağlayan tek seçenektir.
 * Bu tümleştirmenin, kiracı başına Video Indexer hesabından daha fazla yönetim yükü vardır. Faturalandırma bir gereksinim değilse, bu makalede açıklanan diğer seçeneklerden birini kullanmanız önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](video-indexer-overview.md)
+[Genel Bakış](video-indexer-overview.md)

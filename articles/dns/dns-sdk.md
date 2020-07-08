@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938857"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
@@ -34,7 +33,7 @@ Genellikle, Azure kaynaklarına programlı erişim, kendi Kullanıcı kimlik bil
 3. Kaynak grubuna hizmet sorumlusu hesabına ' DNS bölgesi katılımcısı ' izinleri vermek için Azure RBAC kullanın ([nasıl yapılır](../role-based-access-control/role-assignments-portal.md).)
 4. Azure DNS SDK örnek projesi kullanıyorsanız, ' program. cs ' dosyasını aşağıdaki gibi düzenleyin:
 
-   * (Hesap kimliği olarak da bilinir `tenantId`) için doğru değerleri, `secret` (hizmet sorumlusu hesap parolası) ve `subscriptionId` adım 1 ' de kullanılan şekilde ekleyin. `clientId`
+   * `tenantId` `clientId` (Hesap kimliği olarak da bilinir) için doğru değerleri, `secret` (hizmet sorumlusu hesap parolası) ve `subscriptionId` Adım 1 ' de kullanılan şekilde ekleyin.
    * 2. adımda seçilen kaynak grubu adını girin.
    * Tercih ettiğiniz bir DNS bölgesi adı girin.
 
@@ -99,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 DNS kayıtları bir kayıt kümesi olarak yönetilir. Kayıt kümesi, bir bölge içindeki aynı ada ve kayıt türüne sahip bir kayıt kümesidir.  Kayıt kümesi adı, tam DNS adı değil, bölge adı ile ilişkilidir.
 
-Bir kayıt kümesi oluşturmak veya güncelleştirmek için, bir "kayıt kümesi" parametreler nesnesi oluşturulup öğesine `DnsManagementClient.RecordSets.CreateOrUpdateAsync`geçirilir. DNS bölgelerinde olduğu gibi, üç işlem modu vardır: zaman uyumlu (' CreateOrUpdate '), zaman uyumsuz (' CreateOrUpdateAsync ') veya HTTP yanıtına erişimi olan zaman uyumsuz (' CreateOrUpdateWithHttpMessagesAsync ').
+Bir kayıt kümesi oluşturmak veya güncelleştirmek için, bir "kayıt kümesi" parametreler nesnesi oluşturulup öğesine geçirilir `DnsManagementClient.RecordSets.CreateOrUpdateAsync` . DNS bölgelerinde olduğu gibi, üç işlem modu vardır: zaman uyumlu (' CreateOrUpdate '), zaman uyumsuz (' CreateOrUpdateAsync ') veya HTTP yanıtına erişimi olan zaman uyumsuz (' CreateOrUpdateWithHttpMessagesAsync ').
 
 DNS bölgelerinde olduğu gibi, kayıt kümelerindeki işlemler iyimser eşzamanlılık desteğini içerir.  Bu örnekte, ' IF-Match ' veya ' If-None-Match ' belirtilmemişse, kayıt kümesi her zaman oluşturulur.  Bu çağrı, bu DNS bölgesindeki aynı ada ve kayıt türüne sahip olan tüm mevcut kayıt kümesini geçersiz kılar.
 
@@ -123,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>Bölgeleri ve kayıt kümelerini al
 
-`DnsManagementClient.Zones.Get` Ve `DnsManagementClient.RecordSets.Get` yöntemleri sırasıyla tek tek bölgeleri ve kayıt kümelerini alır. Kayıt kümeleri, türü, adı ve içerdikleri bölge ve kaynak grubu tarafından tanımlanır. Bölgeler, adı ve içerdikleri kaynak grubu tarafından tanımlanır.
+`DnsManagementClient.Zones.Get`Ve `DnsManagementClient.RecordSets.Get` yöntemleri sırasıyla tek tek bölgeleri ve kayıt kümelerini alır. Kayıt kümeleri, türü, adı ve içerdikleri bölge ve kaynak grubu tarafından tanımlanır. Bölgeler, adı ve içerdikleri kaynak grubu tarafından tanımlanır.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);

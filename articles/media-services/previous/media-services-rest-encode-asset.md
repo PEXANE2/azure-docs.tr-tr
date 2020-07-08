@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774927"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard kullanarak bir varlığı kodlama
@@ -44,7 +43,7 @@ Kaynak dosyalarınızı her zaman Uyarlamalı bit hızı olan bir MP4 kümesine 
 
 Çıkış varlığınız depolama şifreli ise, varlık teslim ilkesini yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkesini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
@@ -92,16 +91,16 @@ Aşağıdaki örnekte, assetName özniteliğinin nasıl ayarlanacağı gösteril
 
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * TaskBody özellikleri, giriş sayısını veya görev tarafından kullanılan çıkış varlıklarını tanımlamak için değişmez XML kullanmalıdır. Görev makalesi XML için XML şema tanımı içerir.
-* TaskBody tanımında, ve `<inputAsset>` `<outputAsset>` için her bir Iç değerin jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
+* TaskBody tanımında, ve için her bir iç değerin `<inputAsset>` `<outputAsset>` Jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
 * Bir görevde birden fazla çıkış varlığı olabilir. Bir joi Putasset (x), bir iş içindeki görevin çıktısı olarak yalnızca bir kez kullanılabilir.
 * Jobınputasset veya Joi Putasset değerini bir görevin giriş varlığı olarak belirtebilirsiniz.
 * Görevler bir bisiklet oluşturmamalıdır.
 * Jobınputasset veya Joi Putasset 'e geçirdiğiniz değer parametresi bir varlık için dizin değerini temsil eder. Gerçek varlıklar, iş varlığı tanımındaki ınputmediavarlıklar ve Outputmediavarlıklarının gezinti özelliklerinde tanımlanmıştır.
 * Media Services OData v3 üzerinde oluşturulduğundan, ınputmediavarlıklarının ve Outputmediavarlıklarının gezinti özelliği koleksiyonlarındaki tek tek varlıklar "__metadata: URI" ad-değer çifti aracılığıyla başvurulur.
 * Inputmediavarlıkların, Media Services oluşturduğunuz bir veya daha fazla varlık ile eşlenir. Outputmediavarlıklar sistem tarafından oluşturulur. Mevcut bir varlığa başvurmazlar.
-* Outputmediavarlıklarının adı, assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı, `<outputAsset>` öğenin iç metin değerinin, iş adı değeri veya iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için "Sample" değeri ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer ayarlamadıysanız ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joi Putasset (değer) _NewJob olur.
+* Outputmediavarlıklarının adı, assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı, öğenin iç metin değerinin, `<outputAsset>` Iş adı değeri veya Iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için "Sample" değeri ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer ayarlamadıysanız ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joi Putasset (değer) _NewJob olur.
 
 ## <a name="create-a-job-with-chained-tasks"></a>Zincirleme görevlerle iş oluşturma
 Birçok uygulama senaryosunda, geliştiriciler bir dizi işleme görevi oluşturmak ister. Media Services, bir dizi zincirleme görev oluşturabilirsiniz. Her görev farklı işleme adımları gerçekleştirir ve farklı medya işlemcileri kullanabilir. Zincirli görevler bir görevden diğerine bir varlık ve varlık üzerinde doğrusal bir görev dizisi gerçekleştirerek bir görev oluşturabilir. Ancak, bir işte gerçekleştirilen görevlerin sırayla olması gerekmez. Bir zincir görevi oluşturduğunuzda, zincirleme **ITask** nesneleri tek bir **ıjob** nesnesinde oluşturulur.
@@ -144,7 +143,7 @@ Birçok uygulama senaryosunda, geliştiriciler bir dizi işleme görevi oluştur
     }
 
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 Görev zincirlemesini etkinleştirmek için:
 
 * Bir işin en az iki görevi olmalıdır.
@@ -273,7 +272,7 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

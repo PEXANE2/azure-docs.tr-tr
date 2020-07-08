@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905443"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
@@ -99,7 +98,7 @@ Logic Apps, [koşullu deyimler](../logic-apps/logic-apps-control-flow-conditiona
 
 ### <a name="enrich"></a>Zenginleştirin
 
-BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerle ilişkili ileti bağlamına özellikler eklenir. Örneğin, bir veritabanı aramadan yönlendirme için kullanılacak bir özelliği yükseltme veya bir XPath ifadesi kullanarak bir değeri ayıklama. Logic Apps, önceki eylemlerden tüm bağlamsal veri çıktılarına erişim sağlar ve bu sayede aynı davranışın çoğaltılmasını basit hale getirir. Örneğin, `Get Row` SQL bağlantı eylemini kullanarak bir SQL Server veritabanından veri döndürür ve verileri yönlendirme Için bir karar eylemi içinde kullanırsınız. Benzer şekilde, bir tetikleyiciden gelen Service Bus sıraya alınan iletilerin özellikleri, XPath iş akışı tanımlama dili ifadesi kullanılarak XPath olarak da adreslenebilir.
+BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerle ilişkili ileti bağlamına özellikler eklenir. Örneğin, bir veritabanı aramadan yönlendirme için kullanılacak bir özelliği yükseltme veya bir XPath ifadesi kullanarak bir değeri ayıklama. Logic Apps, önceki eylemlerden tüm bağlamsal veri çıktılarına erişim sağlar ve bu sayede aynı davranışın çoğaltılmasını basit hale getirir. Örneğin, `Get Row` SQL bağlantı eylemini kullanarak bir SQL Server veritabanından veri döndürür ve verileri yönlendirme için bir karar eylemi içinde kullanırsınız. Benzer şekilde, bir tetikleyiciden gelen Service Bus sıraya alınan iletilerin özellikleri, XPath iş akışı tanımlama dili ifadesi kullanılarak XPath olarak da adreslenebilir.
 
 ### <a name="run-custom-code"></a>Özel kod Çalıştır
 

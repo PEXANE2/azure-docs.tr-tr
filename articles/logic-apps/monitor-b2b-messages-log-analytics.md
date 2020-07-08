@@ -7,13 +7,12 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907987"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de Azure Izleyici günlüklerini ayarlama ve B2B iletileri için tanılama verileri toplama
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Logic Apps'te Azure İzleyici günlüklerini ayarlama ve B2B iletileri için tanılama verilerini toplama
 
 Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları AS2, x12 ve EDIOLGU gibi protokolleri kullanarak iletiler değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalıştığından emin olmak için, tümleştirme hesabınız için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayabilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bir [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs-collect-workspace.md)olayları tetikleme, çalıştırma olayları ve eylem olayları gibi çalışma zamanı verileri ve olayları hakkında verileri kaydedebilir ve kaydedebilirsiniz. İletiler için günlüğe kaydetme, şu gibi bilgiler de toplar:
 
@@ -44,7 +43,7 @@ Bu makalede, tümleştirme hesabınız için Azure Izleyici günlüğe kaydetmen
 
 Azure Izleyici günlükleri mantıksal uygulamanız için B2B iletilerini izleyebilmeniz için, **Logic Apps B2B** çözümünü Log Analytics çalışma alanınıza ekleyin.
 
-1. [Azure Portal](https://portal.azure.com)arama kutusuna girin `log analytics workspaces`ve sonra **Log Analytics çalışma alanları**' nı seçin.
+1. [Azure Portal](https://portal.azure.com)arama kutusuna girin `log analytics workspaces` ve sonra **Log Analytics çalışma alanları**' nı seçin.
 
    !["Log Analytics çalışma alanları" i seçin](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -52,7 +51,7 @@ Azure Izleyici günlükleri mantıksal uygulamanız için B2B iletilerini izleye
 
    ![Log Analytics çalışma alanınızı seçin](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. Genel Bakış bölmesinde, > **izleme çözümlerini yapılandırma** **Log Analytics kullanmaya başlama**altında, **çözümleri görüntüle**' yi seçin.
+1. Genel Bakış bölmesinde, **Get started with Log Analytics**  >  **izleme çözümlerini yapılandırma**Log Analytics kullanmaya başlama altında, **çözümleri görüntüle**' yi seçin.
 
    ![Genel Bakış bölmesinde "çözümleri görüntüle" seçeneğini belirleyin.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
@@ -60,7 +59,7 @@ Azure Izleyici günlükleri mantıksal uygulamanız için B2B iletilerini izleye
 
    ![Genel Bakış bölmesinde yeni çözüm Ekle](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. **Market** açıldıktan sonra arama kutusuna girin `logic apps b2b`ve **Logic Apps B2B**' ı seçin.
+1. **Market** açıldıktan sonra arama kutusuna girin `logic apps b2b` ve **Logic Apps B2B**' ı seçin.
 
    ![Market 'ten "Logic Apps yönetimi" ni seçin.](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
@@ -116,7 +115,7 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
 1. [Azure Portal](https://portal.azure.com) arama kutusunda, Log Analytics çalışma alanınızı bulun ve açın.
 
-1. Çalışma alanınızın menüsünde, **çalışma alanı Özeti** > **Logic Apps B2B**seçin.
+1. Çalışma alanınızın menüsünde, **çalışma alanı Özeti**  >  **Logic Apps B2B**seçin.
 
    ![Çalışma alanı Özet bölmesi](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
@@ -184,7 +183,7 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Logic App** | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal uygulama** | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | AS2 ileti durumu <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. Hiçbir MDN ayarlanmadı. <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanır ve alınır ya da MDN gönderilir. <br>Failed = geçersiz bir AS2 iletisi alındı. Hiçbir MDN ayarlanmadı. <br>Bekliyor = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanmış ve MDN bekleniyor. |
 | **ONAY** | MDN ileti durumu <br>Kabul edilen = pozitif MDN alındı veya gönderildi. <br>Bekliyor = bir MDN alınması veya gönderilmesi bekleniyor. <br>Reddedildi = negatif MDN alındı veya gönderildi. <br>Gerekli değildir = MDN sözleşmede ayarlanmadı. |
 | **Yön** | AS2 ileti yönü |
@@ -217,7 +216,7 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Logic App** | X12 eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal uygulama** | X12 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | X12 ileti durumu <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir x12 iletisi alındı veya gönderildi. <br>Bekliyor = geçerli bir x12 iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (997) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
 | **Yön** | X12 ileti yönü |
@@ -252,7 +251,7 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Logic App** | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal uygulama** | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | EDIOLGU iletisi durumu <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir EDıOLGU iletisi alındı veya gönderildi <br>Bekliyor = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (conı) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
 | **Yön** | EDIOLGU iletisi yönü |

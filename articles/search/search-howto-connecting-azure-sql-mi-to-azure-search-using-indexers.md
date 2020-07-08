@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76964898"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Bilişsel Arama Dizin oluşturucudan SQL yönetilen örneği 'ne bağlantı yapılandırma
@@ -25,7 +24,7 @@ ms.locfileid: "76964898"
    ![Ortak uç noktayı etkinleştir](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Ortak uç noktayı etkinleştir")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL yönetilen örneği genel uç noktasını etkinleştir
-Ayrıca, mevcut bir SQL yönetilen örneği üzerinde **güvenlik** > **sanal ağı** > **genel uç nokta** > **Etkinleştir**altında ortak uç noktayı etkinleştirebilirsiniz.
+Ayrıca, mevcut bir SQL yönetilen örneği üzerinde **güvenlik**  >  **sanal ağı**  >  **genel uç nokta**  >  **Etkinleştir**altında ortak uç noktayı etkinleştirebilirsiniz.
 
    ![Ortak uç noktayı etkinleştir](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Ortak uç noktayı etkinleştir")
 
@@ -36,13 +35,13 @@ Ağ güvenlik grubunun Azure hizmetlerinden gelen bağlantılara izin veren doğ
 
 > [!NOTE]
 > Dizin oluşturucular hala verileri okumak için SQL yönetilen örneğinin genel bir uç nokta ile yapılandırılmasını gerektirir.
-> Ancak, geçerli kuralı (`public_endpoint_inbound`) aşağıdaki 2 kurallarla değiştirerek bu genel uç noktaya gelen erişimi kısıtlamayı seçebilirsiniz:
+> Ancak, geçerli kuralı ( `public_endpoint_inbound` ) aşağıdaki 2 kurallarla değiştirerek bu genel uç noktaya gelen erişimi kısıtlamayı seçebilirsiniz:
 >
-> * `AzureCognitiveSearch` [Hizmet etiketiyle](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) gelen erişime izin veriliyor ("kaynak" = `AzureCognitiveSearch`, "ad" =) `cognitive_search_inbound`
+> * `AzureCognitiveSearch` [Hizmet etiketiyle](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) gelen erişime izin veriliyor ("kaynak" = `AzureCognitiveSearch` , "ad" = `cognitive_search_inbound` )
 >
-> * Arama hizmetinin IP adresinden gelen erişime izin vererek, tam etki alanı adı (ör. `<your-search-service-name>.search.windows.net`) ile ping yaparak elde edilebilir. ("kaynak" = `IP address`, "ad" = `search_service_inbound`)
+> * Arama hizmetinin IP adresinden gelen erişime izin vererek, tam etki alanı adı (ör.) ile ping yaparak elde edilebilir `<your-search-service-name>.search.windows.net` . ("kaynak" = `IP address` , "ad" = `search_service_inbound` )
 >
-> Bu 2 kuralların her biri için "PORT" = `3342`, "Protocol" = `TCP`, "DESTINATION" = `Any`, "ACTION" = olarak ayarlayın.`Allow`
+> Bu 2 kuralların her biri için "PORT" = `3342` , "Protocol" = `TCP` , "DESTINATION" = `Any` , "ACTION" = olarak ayarlayın.`Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Genel uç nokta bağlantı dizesi al
 **Genel uç nokta** için bağlantı dizesini kullandığınızdan emin olun (bağlantı noktası 1433 değil bağlantı noktası 3342).

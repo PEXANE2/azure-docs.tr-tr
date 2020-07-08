@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76757977"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM Informix veritabanı kaynaklarını yönetme
@@ -39,20 +38,20 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 1. Informix eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `informix` . Eylemler listesinden istediğiniz eylemi seçin, örneğin:
+1. Arama kutusuna `informix` filtreniz olarak yazın. Eylemler listesinden istediğiniz eylemi seçin, örneğin:
 
    ![Çalıştırılacak Informix eylemini seçin](./media/connectors-create-api-informix/select-informix-connector-action.png)
 
    Bağlayıcı, karşılık gelen veritabanı işlemlerini çalıştıran bu eylemleri sağlar:
 
-   * Tabloları al-bir `CALL` ifade kullanarak veritabanı tablolarını listeleme
-   * Satırları al-bir `SELECT *` ifade kullanarak tüm satırları oku
-   * Satırı al-bir `SELECT WHERE` ifadeyi kullanarak bir satırı okuyun
-   * Bir `INSERT` ifade kullanarak satır ekleme
-   * Bir `UPDATE` ifadeyi kullanarak bir satırı düzenleme
-   * Bir `DELETE` ifadeyi kullanarak bir satırı silme
+   * Tabloları al-bir ifade kullanarak veritabanı tablolarını listeleme `CALL`
+   * Satırları al-bir ifade kullanarak tüm satırları oku `SELECT *`
+   * Satırı al-bir ifadeyi kullanarak bir satırı okuyun `SELECT WHERE`
+   * Bir ifade kullanarak satır ekleme `INSERT`
+   * Bir ifadeyi kullanarak bir satırı düzenleme `UPDATE`
+   * Bir ifadeyi kullanarak bir satırı silme `DELETE`
 
 1. Informix veritabanınız için bağlantı ayrıntıları sağlamanız istenirse, [bağlantıyı oluşturma adımlarını](#create-connection)izleyin ve ardından sonraki adımla devam edin.
 
@@ -61,11 +60,11 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
    | Eylem | Açıklama | Özellikler ve açıklamalar |
    |--------|-------------|-----------------------------|
    | **Tabloları al** | Bir Informix çağrı ekstresi çalıştırarak veritabanı tablolarını listeleyin. | Hiçbiri |
-   | **Satırları al** | Bir Informix `SELECT *` ifadesini çalıştırarak belirtilen tablodaki tüm satırları getir. | **Tablo adı**: Istediğiniz Informix tablosunun adı <p><p>Bu eyleme başka özellikler eklemek için, **yeni parametre Ekle** listesinden bunları seçin. Daha fazla bilgi için [bağlayıcının başvuru konusuna](/connectors/informix/)bakın. |
-   | **Satırı al** | Bir Informix `SELECT WHERE` ifadesini çalıştırarak, belirtilen tablodan bir satır getirir. | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: SATıRıN benzersiz kimliği, örneğin,`9999` |
-   | **Satır ekle** | Bir Informix `INSERT` ifadesini çalıştırarak belirtilen Informix tablosuna bir satır ekleyin. | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **öğe**: eklenecek değerleri içeren satır |
-   | **Satırı Güncelleştir** | Bir Informix `UPDATE` ifadesini çalıştırarak belirtilen Informix tablosundaki bir satırı değiştirin. | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: güncelleştirilecek SATıRıN benzersiz kimliği, örneğin,`9999` <br>- **Satır**: güncelleştirilmiş değerleri içeren satır, örneğin,`102` |
-   | **Satırı Sil** | Bir Informix `DELETE` ifadesini çalıştırarak belirtilen Informix tablosundan bir satırı kaldırın. | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: silinecek SATıRıN benzersiz kimliği, örneğin,`9999` |
+   | **Satırları al** | Bir Informix ifadesini çalıştırarak belirtilen tablodaki tüm satırları getir `SELECT *` . | **Tablo adı**: Istediğiniz Informix tablosunun adı <p><p>Bu eyleme başka özellikler eklemek için, **yeni parametre Ekle** listesinden bunları seçin. Daha fazla bilgi için [bağlayıcının başvuru konusuna](/connectors/informix/)bakın. |
+   | **Satırı al** | Bir Informix ifadesini çalıştırarak, belirtilen tablodan bir satır getirir `SELECT WHERE` . | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: SATıRıN benzersiz kimliği, örneğin,`9999` |
+   | **Satır ekle** | Bir Informix ifadesini çalıştırarak belirtilen Informix tablosuna bir satır ekleyin `INSERT` . | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **öğe**: eklenecek değerleri içeren satır |
+   | **Satırı Güncelleştir** | Bir Informix ifadesini çalıştırarak belirtilen Informix tablosundaki bir satırı değiştirin `UPDATE` . | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: güncelleştirilecek SATıRıN benzersiz kimliği, örneğin,`9999` <br>- **Satır**: güncelleştirilmiş değerleri içeren satır, örneğin,`102` |
+   | **Satırı Sil** | Bir Informix ifadesini çalıştırarak belirtilen Informix tablosundan bir satırı kaldırın `DELETE` . | - **Tablo adı**: Istediğiniz Informix tablosunun adı <br>- **Satır kimliği**: silinecek SATıRıN benzersiz kimliği, örneğin,`9999` |
    ||||
 
 1. Mantıksal uygulamanızı kaydedin. Şimdi [mantıksal uygulamanızı test](#test-logic-app) edin ya da mantıksal uygulamanızı oluşturmaya devam edin.
@@ -80,9 +79,9 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
    | Özellik | JSON özelliği | Gerekli | Örnek değer | Açıklama |
    |----------|---------------|----------|---------------|-------------|
-   | Bağlantı adı | `name` | Yes | `informix-demo-connection` | Informix veritabanınıza bağlantı için kullanılacak ad |
-   | Sunucu | `server` | Yes | Una`informixdemo.cloudapp.net:9089` <br>-Şirket içi:`informixdemo:9089` | IPv4 veya IPv6 biçiminde olan TCP/IP adresi veya diğer ad, ardından iki nokta üst üste ve TCP/IP bağlantı noktası numarası |
-   | Veritabanı | `database` | Yes | `nwind` | DRDA Ilişkisel veritabanı adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix bir 128 baytlık dizeyi kabul eder. |
+   | Bağlantı adı | `name` | Evet | `informix-demo-connection` | Informix veritabanınıza bağlantı için kullanılacak ad |
+   | Sunucu | `server` | Evet | Una`informixdemo.cloudapp.net:9089` <br>-Şirket içi:`informixdemo:9089` | IPv4 veya IPv6 biçiminde olan TCP/IP adresi veya diğer ad, ardından iki nokta üst üste ve TCP/IP bağlantı noktası numarası |
+   | Veritabanı | `database` | Evet | `nwind` | DRDA Ilişkisel veritabanı adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix bir 128 baytlık dizeyi kabul eder. |
    | Kimlik Doğrulaması | `authentication` | Yalnızca şirket içi | **Temel** veya **Windows** (Kerberos) | Informix veritabanınız için gereken kimlik doğrulama türü. Bu özellik yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçtiğinizde görünür. |
    | Kullanıcı adı | `username` | Hayır | <*Veritabanı-Kullanıcı adı*> | Veritabanı için Kullanıcı adı |
    | Parola | `password` | Hayır | <*Veritabanı-parola*> | Veritabanı için bir parola |
@@ -107,7 +106,7 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 1. Mantıksal uygulama Tasarımcısı araç çubuğunda **Çalıştır**' ı seçin. Mantıksal uygulamanız çalıştıktan sonra, Bu çalıştırmaların çıkışlarını görüntüleyebilirsiniz.
 
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Genel Bakış bölmesinde, **Özet** > **çalışma geçmişi**altında en son Çalıştır ' ı seçin.
+1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Genel Bakış bölmesinde, **Özet**  >  **çalışma geçmişi**altında en son Çalıştır ' ı seçin.
 
 1. **Mantıksal uygulama çalıştırma**altında, **Çalıştır ayrıntıları**' nı seçin.
 

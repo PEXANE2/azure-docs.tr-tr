@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
 ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76771568"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
@@ -19,13 +18,13 @@ Konum SıNıRı yan tümcesi, atlamak için isteğe bağlı bir yan tümce ve so
 
 Sınır sınırı ORDER BY yan tümcesiyle birlikte kullanıldığında, sonuç kümesi, sıralı değerler üzerinde atlama ve alma işlemleri gerçekleştirerek oluşturulur. ORDER BY yan tümcesi kullanılmazsa, değerin belirleyici bir sırası oluşur.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql  
 OFFSET <offset_amount> LIMIT <limit_amount>
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
 
 - `<offset_amount>`
 
@@ -37,11 +36,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Tümce içinde `OFFSET` hem Count hem `LIMIT` de Count gereklidir. `OFFSET LIMIT` İsteğe bağlı `ORDER BY` bir yan tümce kullanılırsa, sonuç kümesi sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür.
+  `OFFSET`Tümce içinde hem Count hem de `LIMIT` Count gereklidir `OFFSET LIMIT` . İsteğe bağlı bir `ORDER BY` yan tümce kullanılırsa, sonuç kümesi sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür.
 
-  Bir sorgunun ile olan `OFFSET LIMIT` ru ücreti, kaydırılmakta olan koşulların sayısı arttıkça artacaktır. Birden fazla sonuç sayfasına sahip sorgularda, genellikle devamlılık belirteçlerini kullanmanızı öneririz. Devamlılık belirteçleri, sorgunun daha sonra sürdürülebileceği yerde bir "yer işaretidir". Kullanırsanız `OFFSET LIMIT`, "Bookmark" yoktur. Sorgunun sonraki sayfasını döndürmek isterseniz, baştan başlamanız gerekir.
+  Bir sorgunun ile olan RU ücreti, `OFFSET LIMIT` kaydırılmakta olan koşulların sayısı arttıkça artacaktır. Birden fazla sonuç sayfasına sahip sorgularda, genellikle devamlılık belirteçlerini kullanmanızı öneririz. Devamlılık belirteçleri, sorgunun daha sonra sürdürülebileceği yerde bir "yer işaretidir". Kullanırsanız `OFFSET LIMIT` , "Bookmark" yoktur. Sorgunun sonraki sayfasını döndürmek isterseniz, baştan başlamanız gerekir.
   
-  Belgeleri tamamen atlamak `OFFSET LIMIT` ve istemci kaynaklarını kaydetmek istediğinizde, bu durumlarda kullanmanız gerekir. Örneğin, 1000. sorgu sonucuna `OFFSET LIMIT` atlamak istiyorsanız ve sonuçları 1 ile 999 arasında görüntülemeniz gerekmiyorsa ' i kullanmanız gerekir. Arka uçta, `OFFSET LIMIT` atlanan olanlar da dahil olmak üzere her bir belgeyi hala yükler. Performans avantajı, gerekli olmayan belgeleri işlemeyi önleyerek istemci kaynaklarındaki tasarruf sağlar.
+  `OFFSET LIMIT`Belgeleri tamamen atlamak ve istemci kaynaklarını kaydetmek istediğinizde, bu durumlarda kullanmanız gerekir. Örneğin, `OFFSET LIMIT` 1000. sorgu sonucuna atlamak istiyorsanız ve sonuçları 1 ile 999 arasında görüntülemeniz gerekmiyorsa ' i kullanmanız gerekir. Arka uçta, `OFFSET LIMIT` Atlanan olanlar da dahil olmak üzere her bir belgeyi hala yükler. Performans avantajı, gerekli olmayan belgeleri işlemeyi önleyerek istemci kaynaklarındaki tasarruf sağlar.
 
 ## <a name="examples"></a>Örnekler
 

@@ -8,10 +8,9 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76939045"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS ile DNS bölgelerinin temsilciliği
@@ -55,11 +54,11 @@ Aşağıdaki resimde örnek bir DNS sorgusu gösterilir. Contoso.net ve partners
 2. Yerel DNS sunucusunda kayıt yoktur, dolayısıyla kendi kök ad sunucusundan istekte bulunur.
 3. Kök ad sunucusunda kayıt yoktur, ama `.net` ad sunucusunun adresini bilir ve bu adresi DNS sunucusuna sağlar
 4. Yerel DNS sunucusu, isteği `.net` ad sunucusuna gönderir.
-5. `.net` Ad sunucusu kayda sahip değil, ancak `contoso.net` ad sunucusunun adresini tanıyor. Bu durumda, Azure DNS ' de barındırılan DNS bölgesi için ad sunucusunun adresiyle yanıt verir.
-6. Yerel DNS sunucusu, isteği Azure DNS barındırılan `contoso.net` bölge için ad sunucusuna gönderir.
+5. `.net`Ad sunucusu kayda sahip değil, ancak `contoso.net` ad sunucusunun adresini tanıyor. Bu durumda, Azure DNS ' de barındırılan DNS bölgesi için ad sunucusunun adresiyle yanıt verir.
+6. Yerel DNS sunucusu, isteği Azure DNS barındırılan bölge için ad sunucusuna gönderir `contoso.net` .
 7. Bölgede `contoso.net` kayıt yoktur, ancak ad sunucusunu bilir `partners.contoso.net` ve adresle yanıt verir. Bu durumda, Azure DNS barındırılan bir DNS bölgesidir.
-8. Yerel DNS sunucusu, isteği `partners.contoso.net` bölgenin ad sunucusuna gönderir.
-9. `partners.contoso.net` Bölgenin bir kaydı vardır ve IP adresiyle yanıt verir.
+8. Yerel DNS sunucusu, isteği bölgenin ad sunucusuna gönderir `partners.contoso.net` .
+9. `partners.contoso.net`Bölgenin bir kaydı vardır ve IP adresiyle yanıt verir.
 10. Yerel DNS sunucusu, istemciye IP adresini sağlar
 11. İstemci `www.partners.contoso.net` web sitesine bağlanır.
 

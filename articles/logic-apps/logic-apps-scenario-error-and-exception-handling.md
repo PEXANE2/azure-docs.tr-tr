@@ -8,13 +8,12 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76902692"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Logic Apps için özel durum işleme ve hata günlüğü
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Mantıksal uygulamalar için özel durum işleme ve hata günlüğü
 
 Bu senaryo, özel durum işlemeyi daha iyi desteklemek için bir mantıksal uygulamayı nasıl genişletebileceğinizi açıklar. Soruyu yanıtlamak için gerçek yaşam bir kullanım durumu kullandık: "destek özel durum ve hata işleme Azure Logic Apps"
 
@@ -426,10 +425,10 @@ Açık kaynaklı Azure Logic Apps özel durum yönetim API 'SI uygulamanız bura
 * **Günlüğe kaydetme denetleyicisi** Bir Azure Cosmos DB koleksiyonuna bir günlük kaydı (belge) ekler.
 
 > [!TIP]
-> Her iki denetleyici `async Task<dynamic>` de işlemleri kullanır, bu nedenle işlemin gövdesinde Azure Cosmos DB şeması oluşturuyoruz. 
+> Her iki denetleyici de `async Task<dynamic>` işlemleri kullanır, bu nedenle işlemin gövdesinde Azure Cosmos DB şeması oluşturuyoruz. 
 > 
 
-Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. `PatientId` Bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
+Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. `PatientId`Bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
 
 [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)'dan hata denetleyicisi API 'sinin kaynak kodunu görüntüleyebilirsiniz.
 

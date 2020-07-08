@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988796"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK destekleyen tarayıcılar
@@ -40,7 +39,7 @@ Azure Haritalar Web SDK 'Sı, aşağıdaki masaüstü tarayıcılarını destekl
 
 Ayrıca, bu makalenin ilerleyen kısımlarında bulunan [eski tarayıcıları de hedefleyin](#Target-Legacy-Browsers) .
 
-## <a name="mobile"></a>Cep telefonu
+## <a name="mobile"></a>Mobil
 
 Azure Haritalar Web SDK 'Sı, aşağıdaki mobil tarayıcıları destekler:
 
@@ -57,18 +56,18 @@ Azure Haritalar Web SDK 'Sı, aşağıdaki mobil tarayıcıları destekler:
 
 ## <a name="nodejs"></a>Node.js
 
-Node. js ' de aşağıdaki Web SDK modülleri de desteklenir:
+Aşağıdaki Web SDK modülleri de Node.js desteklenir:
 
-- Hizmetler modülü ([Belgeler](how-to-use-services-module.md) | [NPM modülü](https://www.npmjs.com/package/azure-maps-rest))
+- Hizmetler modülü ([Belgeler](how-to-use-services-module.md)  |  [NPM modülü](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Hedef eski tarayıcılar
 
-WebGL 'yi desteklemeyen veya yalnızca sınırlı desteği olan eski tarayıcıları hedeflemek isteyebilirsiniz. Bu gibi durumlarda, Azure haritalar hizmetlerini, [leaflet](https://leafletjs.com/)gibi bir açık kaynaklı eşleme denetimiyle birlikte kullanmanızı öneririz. Bir örneği aşağıda verilmiştir:
+WebGL 'yi desteklemeyen veya yalnızca sınırlı desteği olan eski tarayıcıları hedeflemek isteyebilirsiniz. Bu gibi durumlarda, Azure haritalar hizmetlerini, [leaflet](https://leafletjs.com/)gibi bir açık kaynaklı eşleme denetimiyle birlikte kullanmanızı öneririz. İşte bir örnek:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure haritalar + leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>+ leaflet</a> 'e Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() tarafından bakın.
+Codepen 'da Azure Maps <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>+ leaflet</a> 'e Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) <a href='https://codepen.io'>CodePen</a>tarafından bakın.
 </iframe>
 
 

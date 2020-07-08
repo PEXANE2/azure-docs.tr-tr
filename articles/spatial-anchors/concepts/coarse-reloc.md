@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844403"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
@@ -37,7 +36,7 @@ Genel olarak, uygulamanızın GPS, WiFi veya BLE verilerine erişmek için cihaz
 
 Bir algılayıcı parmak izi sağlayıcısı oluşturup oturum bunu fark ederek başlayalım:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Create the sensor fingerprint provider
@@ -132,7 +131,7 @@ Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz se
 
 Uygulamanızın cihazın GPS konumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.GeoLocationEnabled = true;
@@ -188,7 +187,7 @@ Genel olarak, hem cihaz işletim sistemi hem de Azure uzamsal bağlantıları, b
 
 Algılayıcı parmak izi sağlayıcısını bir bağlantı oturumu dışında kullanmayı planlıyorsanız, algılayıcı tahminleri yapmadan önce bu hizmeti başlattığınızdan emin olun. Örneğin, aşağıdaki kod, cihazınızın haritadaki konumunu gerçek zamanlı olarak güncelleştirmekte olacaktır:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Game about to start, start tracking the sensors
@@ -318,7 +317,7 @@ sensorProvider.Stop();
 
 Uygulamanızın cihazın WiFi durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.WifiEnabled = true;
@@ -376,7 +375,7 @@ Azure uzamsal bağlantıları, bu sorunları azaltmak için bir oturum sırasın
 
 Uygulamanızın cihazın Bluetooth durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.BluetoothEnabled = true;
@@ -425,7 +424,7 @@ sensors.BluetoothEnabled(true);
 * Bunları, genellikle kılavuz gibi normal bir düzende dağıtın.
 * benzersiz işaret UUID 'ler listesini algılayıcı parmak izi sağlayıcısına geçirin:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.KnownBeaconProximityUuids = new[]
@@ -499,7 +498,7 @@ Azure uzamsal bağlantıları yalnızca bilinen işaret yakınlık UUID 'ler lis
 
 Sorguların algılayıcı verilerini kullanması için, "neredeyse cihaz" ölçütlerini oluşturarak başlayın:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 NearDeviceCriteria nearDeviceCriteria = new NearDeviceCriteria();
@@ -592,13 +591,13 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-`DistanceInMeters` Parametresi, içerik almak için tutturucu grafiği ne kadar keşfetmeye yönelik olduğunu denetler. Her ölçünün 2. sabitinde yer alan bağlayıcılarla bir boşluk doldurmuş olduğunuz örneği varsayalım. Ayrıca, cihazınızdaki kamera tek bir tutturucu gözlemleyerek hizmet tarafından başarıyla bulunur. En büyük olasılıkla, şu anda gözlemlediğiniz tek yer yerine, yerleştirdiğiniz tüm Tutturucuların alınması çok büyük olabilir. Yerleştirdiğiniz Tutturucuların bir grafiğe bağlı olduğu varsayıldığında, hizmet grafikteki kenarları izleyerek sizin için tüm yakın bağlantıları alabilir. Gerçekleştirilen grafik geçişinin miktarı tarafından `DistanceInMeters`denetlenir; sahip olduğunuz birine bağlı olan tüm Tutturucuların, daha yakın olduğunu size vermiş olacaksınız `DistanceInMeters`.
+`DistanceInMeters`Parametresi, içerik almak için tutturucu grafiği ne kadar keşfetmeye yönelik olduğunu denetler. Her ölçünün 2. sabitinde yer alan bağlayıcılarla bir boşluk doldurmuş olduğunuz örneği varsayalım. Ayrıca, cihazınızdaki kamera tek bir tutturucu gözlemleyerek hizmet tarafından başarıyla bulunur. En büyük olasılıkla, şu anda gözlemlediğiniz tek yer yerine, yerleştirdiğiniz tüm Tutturucuların alınması çok büyük olabilir. Yerleştirdiğiniz Tutturucuların bir grafiğe bağlı olduğu varsayıldığında, hizmet grafikteki kenarları izleyerek sizin için tüm yakın bağlantıları alabilir. Gerçekleştirilen grafik geçişi miktarı tarafından kontrol edilir `DistanceInMeters` ; Bu, bulduğunuz birine bağlı olan tüm Tutturucuların, daha yakın olduğunu size vermiş olacaksınız `DistanceInMeters` .
 
-İçin `MaxResultCount` büyük değerlerin performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanız için bir senable değere ayarlayın.
+İçin büyük değerlerin `MaxResultCount` performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanız için bir senable değere ayarlayın.
 
 Son olarak, oturuma algılayıcı tabanlı arama 'yı kullanmayı söylemeniz gerekir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -661,7 +660,7 @@ Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| YUVASı         | Yok | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
+| YUVASı         | YOK | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
 | WiFi        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
 | BLO işaretleri | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
 

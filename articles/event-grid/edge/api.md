@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841838"
 ---
 # <a name="rest-api"></a>REST API
@@ -164,7 +163,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 **Yanıt**: http 200, boş yük
 
 ## <a name="manage-event-subscriptions"></a>Olay aboneliklerini yönetme
-Bu bölümdeki örnekler kullanın `EndpointType=Webhook;`. İçin `EndpointType=EdgeHub / EndpointType=EventGrid` JSON örnekleri sonraki bölümde bulunur. 
+Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekleri `EndpointType=EdgeHub / EndpointType=EventGrid` sonraki bölümde bulunur. 
 
 ### <a name="put-event-subscription-create--update"></a>Olay aboneliği koy (oluştur/güncelleştir)
 
@@ -572,7 +571,7 @@ Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir 
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Özel şema ile konuyu ayarlama
-' De `customschema`olayların yayımlanmasını gerektirecek bir konu oluşturur.
+' De olayların yayımlanmasını gerektirecek bir konu oluşturur `customschema` .
 
 ```json
     {
@@ -585,7 +584,7 @@ Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir 
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>Bulut olay şeması ile konuyu ayarlama
-' De `cloudeventschema`olayların yayımlanmasını gerektirecek bir konu oluşturur.
+' De olayların yayımlanmasını gerektirecek bir konu oluşturur `cloudeventschema` .
 
 ```json
     {
@@ -617,13 +616,13 @@ Başka bir modüle (bir HTTP uç noktası barındıran) veya ağ/internet üzeri
 }
 ```
 
-`endpointUrl` Öznitelikteki kısıtlamalar:
+`endpointUrl`Öznitelikteki kısıtlamalar:
 - Null olmayan bir değer olmalıdır.
 - Mutlak bir URL olmalıdır.
 - Outbound__webhook__httpsOnly EventGridModule ayarlarında true olarak ayarlandıysa, yalnızca HTTPS olmalıdır.
 - Outbound__webhook__httpsOnly false olarak ayarlandıysa, HTTP veya HTTPS olabilir.
 
-`eventDeliverySchema` Özelliğindeki kısıtlamalar:
+`eventDeliverySchema`Özelliğindeki kısıtlamalar:
 - Abone olan konunun giriş şemasıyla eşleşmesi gerekir.
 - Null olabilir. Bu, konunun giriş şemasını varsayılan olarak belirler.
 
@@ -672,8 +671,8 @@ Buluta (Azure) Event Grid olayları göndermek için bu hedefi kullanın. Öncel
 EndpointUrl
 - Null olmayan bir değer olmalıdır.
 - Mutlak bir URL olmalıdır.
-- Yolun `/api/events` , Istek URL 'si yolunda tanımlanması gerekir.
-- `api-version=2018-01-01` Sorgu dizesinde olmalıdır.
+- Yolun, `/api/events` istek URL 'si yolunda tanımlanması gerekir.
+- `api-version=2018-01-01`Sorgu dizesinde olmalıdır.
 - Outbound__eventgrid__httpsOnly EventGridModule ayarlarında true olarak ayarlanırsa (varsayılan olarak true), yalnızca HTTPS olmalıdır.
 - Outbound__eventgrid__httpsOnly false olarak ayarlanırsa, HTTP veya HTTPS olabilir.
 - Outbound__eventgrid__allowInvalidHostnames false olarak ayarlandıysa (varsayılan olarak false), aşağıdaki uç noktalardan birini hedeflemelidir:
@@ -690,7 +689,7 @@ TopicName:
 
 ## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs hedef olarak ayarlama
 
-Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak `eventHub` ayarlayın ve şunları belirtin:
+Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak ayarlayın `eventHub` ve şunları belirtin:
 
 * connectionString: hedeflediğiniz belirli olay hub 'ı için, paylaşılan erişim Ilkesi aracılığıyla oluşturulmuş bağlantı dizesi.
 
@@ -712,7 +711,7 @@ Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak `eventHub`
 
 ## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus kuyruklarını hedef olarak ayarlama
 
-Service Bus bir sıraya yayımlamak için, `endpointType` öğesini olarak `serviceBusQueue` ayarlayın ve şunları belirtin:
+Service Bus bir sıraya yayımlamak için, öğesini olarak ayarlayın `endpointType` `serviceBusQueue` ve şunları belirtin:
 
 * connectionString: hedeflediğiniz belirli Service Bus kuyruğu için bağlantı dizesi, paylaşılan erişim Ilkesi aracılığıyla üretildi.
 
@@ -734,7 +733,7 @@ Service Bus bir sıraya yayımlamak için, `endpointType` öğesini olarak `serv
 
 ## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus konuları hedef olarak ayarlama
 
-Service Bus bir konuya yayımlamak için, `endpointType` öğesini olarak `serviceBusTopic` ayarlayın ve şunları belirtin:
+Service Bus bir konuya yayımlamak için, öğesini olarak ayarlayın `endpointType` `serviceBusTopic` ve şunları belirtin:
 
 * connectionString: bir paylaşılan erişim Ilkesi aracılığıyla hedeflediğiniz özel Service Bus konusu için bağlantı dizesi.
 
@@ -756,7 +755,7 @@ Service Bus bir konuya yayımlamak için, `endpointType` öğesini olarak `servi
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Depolama kuyruklarını hedef olarak ayarlama
 
-Bir depolama kuyruğuna yayımlamak için, `endpointType` öğesini olarak `storageQueue` ayarlayın ve şunları belirtin:
+Bir depolama kuyruğuna yayımlamak için, öğesini olarak ayarlayın `endpointType` `storageQueue` ve şunları belirtin:
 
 * SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
 * connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.

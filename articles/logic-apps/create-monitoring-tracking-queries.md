@@ -7,10 +7,9 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908078"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun
@@ -53,7 +52,7 @@ Belirli özellikleri veya değerleri temel alarak sonuçları bulmak veya filtre
 
 1. Boş bir sorgudan veya var olan mevcut sorgulardan başlayın.
 
-   * Mevcut sorguların mevcut olup olmadığını denetlemek için sorgu araç çubuğunda, önceki sorgu çalıştırmalarının sorgularını gösteren **örnek sorgu** > **geçmişi**' ni seçin veya önceden oluşturulmuş sorguları gösteren **sorgu Gezgini**' ni seçin.
+   * Mevcut sorguların mevcut olup olmadığını denetlemek için sorgu araç çubuğunda, **Samples queries**  >  Önceki sorgu çalıştırmalarının sorgularını gösteren örnek sorgu**geçmişi**' ni seçin veya önceden oluşturulmuş sorguları gösteren **sorgu Gezgini**' ni seçin.
 
      Örneğin, Logic Apps B2B çözümü şu önceden oluşturulmuş sorguları sağlar:
 

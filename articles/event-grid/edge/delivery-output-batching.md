@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841756"
 ---
 # <a name="output-batching"></a>Çıkışı toplu işleme
@@ -79,8 +78,8 @@ Aşağıdaki dağıtım zamanı ayarları, bir olay aboneliği oluştururken izi
 
 | Özellik Adı | Açıklama |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes` Düğme için izin verilen en büyük değer. Varsayılan `1033`.
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch` Düğme için izin verilen en büyük değer. Varsayılan `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Düğme için izin verilen en büyük değer `PreferredBatchSizeInKilobytes` . Varsayılan `1033` .
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Düğme için izin verilen en büyük değer `MaxEventsPerBatch` . Varsayılan `50` .
 
 ## <a name="configuring-runtime-default-values"></a>Çalışma zamanı varsayılan değerlerini yapılandırma
 
@@ -88,5 +87,5 @@ Aşağıdaki dağıtım zamanı ayarları, olay aboneliğinde belirtilmediğinde
 
 | Özellik Adı | Açıklama |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | Yalnızca `MaxEventsPerBatch` belirtilen en fazla teslim isteği boyutu. Varsayılan `1_058_576`.
-| `broker__defaultMaxEventsPerBatch` | Yalnızca `MaxBatchSizeInBytes` belirtildiğinde bir toplu işe eklenecek olay sayısı üst sınırı. Varsayılan `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Yalnızca belirtilen en fazla teslim isteği boyutu `MaxEventsPerBatch` . Varsayılan `1_058_576` .
+| `broker__defaultMaxEventsPerBatch` | Yalnızca belirtildiğinde bir toplu işe eklenecek olay sayısı üst sınırı `MaxBatchSizeInBytes` . Varsayılan `10` .

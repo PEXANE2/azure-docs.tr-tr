@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905294"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme x12 iletileri için şemalar oluşturma
@@ -59,21 +58,21 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, ya da `receive``send` |
+| yön | Evet | Sabit listesi | İleti akışının yönü, `receive` ya da`send` |
 | interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
 | functionalGroupControlNumber | Hayır | Dize | İşlevsel denetim numarası |
 | transactionSetControlNumber | Hayır | Dize | İşlem kümesi denetim numarası |
 | Correlationmessageıd | Hayır | Dize | {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi olan BAĞıNTı ileti kimliği |
 | messageType | Hayır | Dize | İşlem kümesi veya belge türü |
-| ımessagefailed | Yes | Boole | X12 iletisinin başarısız olup olmadığı |
-| isTechnicalAcknowledgmentExpected | Yes | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
-| isFunctionalAcknowledgmentExpected | Yes | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
-| needAk2LoopForValidMessages | Yes | Boole | AK2 döngüsünün geçerli bir ileti için gerekli olup olmadığı |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| isTechnicalAcknowledgmentExpected | Evet | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
+| isFunctionalAcknowledgmentExpected | Evet | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
+| needAk2LoopForValidMessages | Evet | Boole | AK2 döngüsünün geçerli bir ileti için gerekli olup olmadığı |
 | segmentsCount | Hayır | Tamsayı | X12 işlem kümesindeki parçaların sayısı |
 |||||
 
@@ -115,12 +114,12 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, ya da `receive``send` |
+| yön | Evet | Sabit listesi | İleti akışının yönü, `receive` ya da`send` |
 | interchangeControlNumber | Hayır | Dize | İşlevsel bildirim değişim denetimi numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel bildirim alınan gönderme tarafında doldurulur. |
 | functionalGroupControlNumber | Hayır | Dize | İşlevsel onay için işlevsel Grup denetim numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay değerinin alındığı gönderme tarafı için doldurulur |
 | ısasegment | Hayır | Dize | İletinin ISA kesimi. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay değerinin alındığı gönderme tarafı için doldurulur |
@@ -129,11 +128,11 @@ ms.locfileid: "76905294"
 | respondingFunctionalGroupId | Hayır | Dize | Bildirim içinde AK101 ile eşlenen, yanıt veren işlevsel Grup KIMLIĞI |
 | respondingtransactionSetControlNumber | Hayır | Dize | Yanıt veren işlem kümesi denetim numarası |
 | respondingTransactionSetId | Hayır | Dize | Bildirim içinde AK201 ile eşlenen yanıt veren işlem kümesi KIMLIĞI |
-| Durum | Yes | Boole | İşlem kümesi bildirimi durum kodu |
-| segmentsCount | Yes | Sabit Listesi | İzin verilen bu değerlere sahip bilgilendirme durum kodu `Accepted`: `Rejected`,, ve`AcceptedWithErrors` |
-| processingStatus | Yes | Sabit Listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received`, ve `Generated``Sent` |
+| Durum | Evet | Boole | İşlem kümesi bildirimi durum kodu |
+| segmentsCount | Evet | Sabit listesi | İzin verilen bu değerlere sahip bilgilendirme durum kodu: `Accepted` , `Rejected` , ve`AcceptedWithErrors` |
+| processingStatus | Evet | Sabit listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received` , `Generated` ve`Sent` |
 | Correlationmessageıd | Hayır | Dize | {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi olan BAĞıNTı ileti kimliği |
-| ımessagefailed | Yes | Boole | X12 iletisinin başarısız olup olmadığı |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
 | ak2Segment | Hayır | Dize | Alınan işlevsel grup içindeki bir işlem kümesi için bildirim |
 | ak3Segment | Hayır | Dize | Bir veri kesimindeki hataları raporlar |
 | ak5Segment | Hayır | Dize | AK2 segmentinde tanımlanan işlem kümesinin kabul edildiğini veya reddedildiğini ve neden olduğunu bildirir |
@@ -173,16 +172,16 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, ya da `receive``send` |
+| yön | Evet | Sabit listesi | İleti akışının yönü, `receive` ya da`send` |
 | interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
 | ısasegment | Hayır | Dize | İleti ISA segmenti |
 | isTechnicalAcknowledgmentExpected | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir  |
-| ımessagefailed | Yes | Boole | X12 iletisinin başarısız olup olmadığı |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
 | isa09 | Hayır | Dize | X12 belge değişim tarihi |
 | isa10 | Hayır | Dize | X12 belge değişim saati |
 | ısa11 | Hayır | Dize | X12 Interchange denetim standartları tanımlayıcısı |
@@ -224,18 +223,18 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, ya da `receive``send` |
+| yön | Evet | Sabit listesi | İleti akışının yönü, `receive` ya da`send` |
 | interchangeControlNumber | Hayır | Dize | İş ortaklarından alınan teknik bildirim değişim denetimi numarası |
 | ısasegment | Hayır | Dize | İş ortaklarından alınan teknik bildirim için ISA segmenti |
 | respondingInterchangeControlNumber | Hayır | Dize | İş ortaklarından alınan teknik bildirim için değişim denetim numarası |
-| ımessagefailed | Yes | Boole | X12 iletisinin başarısız olup olmadığı |
-| Durum | Yes | Sabit Listesi | Bu izin verilen değerlere sahip değişim bildirimi durum kodu `Accepted`: `Rejected`,, ve`AcceptedWithErrors` |
-| processingStatus | Yes | Sabit Listesi | İzin verilen bu değerlere sahip bildirim durumu `Received`: `Generated`,, ve`Sent` |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| Durum | Evet | Sabit listesi | Bu izin verilen değerlere sahip değişim bildirimi durum kodu: `Accepted` , `Rejected` , ve`AcceptedWithErrors` |
+| processingStatus | Evet | Sabit listesi | İzin verilen bu değerlere sahip bildirim durumu: `Received` , `Generated` , ve`Sent` |
 | ta102 | Hayır | Dize | Değişim tarihi |
 | ta103 | Hayır | Dize | Değişim saati |
 | ta105 | Hayır | Dize | Değişim notunun kodu |
@@ -277,18 +276,18 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, al veya Gönder |
+| yön | Evet | Sabit listesi | İleti akışının yönü, al veya Gönder |
 | interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
 | functionalGroupControlNumber | Hayır | Dize | İşlevsel denetim numarası |
 | gsSegment | Hayır | Dize | İleti GS segmenti |
-| isTechnicalAcknowledgmentExpected | Yes | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
-| isFunctionalAcknowledgmentExpected | Yes | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
-| ımessagefailed | Yes | Boole | X12 iletisinin başarısız olup olmadığı |
+| isTechnicalAcknowledgmentExpected | Evet | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
+| isFunctionalAcknowledgmentExpected | Evet | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
 | gs01 | Hayır | Dize | İşlevsel tanımlayıcı kodu |
 | gs02 | Hayır | Dize | Uygulama göndericisinin kodu |
 | gs03 | Hayır | Dize | Uygulama alıcısının kodu |
@@ -333,12 +332,12 @@ ms.locfileid: "76905294"
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
-| senderQualifier | Yes | Dize | İş ortağı niteleyicisi gönder |
-| Senderıdentifier | Yes | Dize | İş ortağı tanımlayıcısı gönder |
-| receiverQualifier | Yes | Dize | Alma ortağı niteleyicisi |
-| Receiverıdentifier | Yes | Dize | İş ortağı tanımlayıcısını al |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| Senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| Receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
 | agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
-| yön | Yes | Sabit Listesi | İleti akışının yönü, ya da `receive``send` |
+| yön | Evet | Sabit listesi | İleti akışının yönü, `receive` ya da`send` |
 | interchangeControlNumber | Hayır | Dize | İş ortaklarından teknik bir bildirim alındığında gönderme tarafı için de olan değişim denetim numarası |
 | functionalGroupControlNumber | Hayır | Dize | İş ortaklarından teknik bir bildirim alındığında gönderme tarafına yönelik olan teknik bildirim 'nin işlevsel Grup denetim numarası |
 | ısasegment | Hayır | Dize | Interchange Control numarasıyla aynıdır, ancak yalnızca belirli durumlarda doldurulur |
@@ -346,8 +345,8 @@ ms.locfileid: "76905294"
 | respondingfunctionalGroupControlNumber | Hayır | Dize | Özgün işlevsel grubun denetim numarası |
 | respondingFunctionalGroupId | Hayır | Dize | Bildirim işlev grubu KIMLIĞINDE AK101 eşlenir |
 | ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı |
-| Durum | Yes | Sabit Listesi | İzin verilen bu değerlere sahip bilgilendirme durum kodu `Accepted`: `Rejected`,, ve`AcceptedWithErrors` |
-| processingStatus | Yes | Sabit Listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received`, ve `Generated``Sent` |
+| Durum | Evet | Sabit listesi | İzin verilen bu değerlere sahip bilgilendirme durum kodu: `Accepted` , `Rejected` , ve`AcceptedWithErrors` |
+| processingStatus | Evet | Sabit listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received` , `Generated` ve`Sent` |
 | ak903 | Hayır | Dize | Alınan işlem kümesi sayısı |
 | ak904 | Hayır | Dize | Tanımlanan işlevsel grupta kabul edilen işlem kümesi sayısı |
 | ak9Segment | Hayır | Dize | AK1 segmentinde tanımlanan işlevsel grubun kabul edilip edilmediğini ve neden |

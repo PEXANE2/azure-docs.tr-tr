@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774438"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Windows güvenliğini kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
-Service Fabric kümesine yetkisiz erişimi engellemek için, kümeyi güvenli hale getirin. Küme üretim iş yüklerini çalıştırdığında güvenlik özellikle önemlidir. Bu makalede, *clusterConfig. JSON* dosyasındaki Windows güvenliği kullanılarak düğümden düğüme ve istemciden düğüme güvenliğin nasıl yapılandırılacağı açıklanır.  İşlem, [Windows üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)güvenlik adımını yapılandırma adımına karşılık gelir. Service Fabric Windows güvenliğini nasıl kullandığı hakkında daha fazla bilgi için bkz. [küme güvenliği senaryoları](service-fabric-cluster-security.md).
+Service Fabric kümesine yetkisiz erişimi engellemek için, kümeyi güvenli hale getirin. Küme üretim iş yüklerini çalıştırdığında güvenlik özellikle önemlidir. Bu makalede, dosyasındaki *ClusterConfig.JS* Windows güvenliği kullanılarak düğümden düğüme ve istemciden düğüme güvenliği yapılandırma açıklanmaktadır.  İşlem, [Windows üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)güvenlik adımını yapılandırma adımına karşılık gelir. Service Fabric Windows güvenliğini nasıl kullandığı hakkında daha fazla bilgi için bkz. [küme güvenliği senaryoları](service-fabric-cluster-security.md).
 
 > [!NOTE]
 > Tek bir güvenlik seçiminden diğerine küme yükseltmesi olmadığından, düğümden düğüme güvenliği dikkatlice düşünmeniz gerekir. Güvenlik seçimini değiştirmek için, tam kümeyi yeniden oluşturmanız gerekir.
@@ -21,7 +20,7 @@ Service Fabric kümesine yetkisiz erişimi engellemek için, kümeyi güvenli ha
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>GMSA kullanarak Windows güvenliğini yapılandırma  
-Microsoft. Azure. ServiceFabric. WindowsServer ile indirilen örnek *clusterConfig. gMSA. Windows. MultiMachine. JSON* yapılandırma dosyası [.\< sürüm>. zip](https://go.microsoft.com/fwlink/?LinkId=730690) tek başına küme paketi, [Grup yönetilen hizmet hesabı (gMSA)](https://technet.microsoft.com/library/hh831782.aspx)kullanarak Windows güvenliğini yapılandırmak için bir şablon içerir:  
+Yapılandırma dosyasındaki örnek *ClusterConfig.gMSA.Windows.MultiMachine.JS* , [Microsoft. Azure. Servicefabric. windowsserver ile indirilir. \<version> ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) tek başına küme paketi, [Grup yönetilen hizmet hesabı (gMSA)](https://technet.microsoft.com/library/hh831782.aspx)kullanarak Windows güvenliğini yapılandırmaya yönelik bir şablon içerir:  
 
 ```
 "security": {
@@ -52,7 +51,7 @@ Microsoft. Azure. ServiceFabric. WindowsServer ile indirilen örnek *clusterConf
 | IsAdmin |Etki alanı kullanıcısının yönetici istemci erişimi olduğunu veya Kullanıcı istemci erişimi için yanlış değerini belirtmek için true olarak ayarlayın. |
 
 > [!NOTE]
-> Clustergmsaıdentity değeri "mysfgmsa@mydomain" biçiminde olmalıdır.
+> Clustergmsaıdentity değeri "" biçiminde olmalıdır mysfgmsa@mydomain .
 
 Node [-node güvenliğine](service-fabric-cluster-security.md#node-to-node-security) , Service Fabric 'In gMSA altında çalışması gerektiğinde **Clustergmsaıdentity** ayarlanarak yapılandırılır. Düğümler arasında güven ilişkisi oluşturmak için bunların birbirleriyle uyumlu hale getirilmeleri gerekir. Bu iki farklı şekilde gerçekleştirilebilir: kümedeki tüm düğümleri içeren grup tarafından yönetilen hizmet hesabını belirtin veya kümedeki tüm düğümleri içeren etki alanı makine grubunu belirtin. [Grup yönetilen hizmet hesabı (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) yaklaşımını özellikle daha büyük kümeler (10 ' dan fazla düğüm) için veya büyümekte veya küçülebilecek kümeler için kullanmanızı önemle öneririz.  
 Bu yaklaşım, küme yöneticilerine üye eklemek ve kaldırmak için erişim hakları verilen bir etki alanı grubu oluşturulmasını gerektirmez. Bu hesaplar otomatik parola yönetimi için de kullanışlıdır. Daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları Ile çalışmaya](https://technet.microsoft.com/library/jj128431.aspx)başlama.  
@@ -77,7 +76,7 @@ Aşağıdaki örnek **güvenlik** bölümü, gMSA kullanarak Windows güvenliği
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Makine grubunu kullanarak Windows güvenliğini yapılandırma  
-Bu model kullanım dışı bırakılıyor. Bu öneri, yukarıda ayrıntılı olarak gMSA 'yı kullanmaktır. Microsoft. Azure. ServiceFabric. WindowsServer ile indirilen örnek *clusterConfig. Windows. MultiMachine. JSON* yapılandırma dosyası [.\< sürüm>. zip](https://go.microsoft.com/fwlink/?LinkId=730690) tek başına küme paketi, Windows güvenliğini yapılandırmak için bir şablon içerir.  Windows güvenliği **Özellikler** bölümünde yapılandırılır: 
+Bu model kullanım dışı bırakılıyor. Bu öneri, yukarıda ayrıntılı olarak gMSA 'yı kullanmaktır. Yapılandırma dosyasındaki örnek *ClusterConfig.Windows.MultiMachine.JS* , [Microsoft. Azure. Servicefabric. windowsserver ile indirilir. \<version> ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) tek başına küme paketi, Windows güvenliğini yapılandırmak için bir şablon içerir.  Windows güvenliği **Özellikler** bölümünde yapılandırılır: 
 
 ```
 "security": {
@@ -129,12 +128,12 @@ Aşağıdaki örnek **güvenlik** bölümünde Windows güvenliği yapılandır�
 ```
 
 > [!NOTE]
-> Service Fabric bir etki alanı denetleyicisine dağıtılmamalıdır. ClusterConfig. json ' ın bir makine grubu veya grup yönetilen hizmet hesabı (gMSA) kullanırken etki alanı denetleyicisinin IP adresini içermediğinden emin olun.
+> Service Fabric bir etki alanı denetleyicisine dağıtılmamalıdır. ClusterConfig.json 'un bir makine grubu veya grup yönetilen hizmet hesabı (gMSA) kullanırken etki alanı denetleyicisinin IP adresini içermediğinden emin olun.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-*ClusterConfig. JSON* dosyasında Windows güvenliği yapılandırıldıktan sonra, [Windows üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)' da küme oluşturma işlemini sürdürür.
+Dosyadaki *ClusterConfig.JS* Windows güvenliği yapılandırıldıktan sonra [Windows üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)' da küme oluşturma işlemini sürdürmeniz gerekir.
 
 Düğümden düğüme güvenliği, istemciden düğüme güvenliği ve rol tabanlı erişim denetimi hakkında daha fazla bilgi için bkz. [küme güvenliği senaryoları](service-fabric-cluster-security.md).
 

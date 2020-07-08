@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844726"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: olayları Event Grid buluta Iletme
@@ -34,9 +33,9 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Bulutta olay Kılavuzu konusu ve abonelik oluşturma
 
-[Bu öğreticiyi](../custom-event-quickstart-portal.md)izleyerek bulutta bir olay Kılavuzu konusu ve abonelik oluşturun. `topicURL`daha sonra kullanacağınız yeni oluşturulan konuya `sasKey` `topicName` bakın.
+[Bu öğreticiyi](../custom-event-quickstart-portal.md)izleyerek bulutta bir olay Kılavuzu konusu ve abonelik oluşturun. `topicURL` `sasKey` `topicName` Öğreticide daha sonra kullanacağınız yeni oluşturulan konuya bakın.
 
-Örneğin, Batı ABD adında `testegcloudtopic` bir konu oluşturduysanız, değerler şöyle görünür:
+Örneğin, Batı ABD adında bir konu oluşturduysanız `testegcloudtopic` , değerler şöyle görünür:
 
 * **Topicurl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**:`testegcloudtopic`
@@ -44,7 +43,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Kenarda olay kılavuzu oluşturma konusu
 
-1. Aşağıdaki içeriğe sahip Topic3. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte topic3.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         {
@@ -85,7 +84,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içeriğe sahip subscription3. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle birlikte subscription3.jsoluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
    ```json
         {
@@ -157,7 +156,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="publish-an-event-at-the-edge"></a>Bir olayı kenarda yayımlayın
 
-1. Aşağıdaki içeriğe sahip event3. JSON oluşturun. Yük hakkındaki ayrıntılar için bkz. [API belgeleri](api.md) .
+1. Aşağıdaki içerikle birlikte event3.jsoluşturun. Yük hakkındaki ayrıntılar için bkz. [API belgeleri](api.md) .
 
     ```json
         [

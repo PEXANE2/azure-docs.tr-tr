@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0182d0158144a010274799cc41991ba87120e9d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907610"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Mixpanel yapılandırma
@@ -44,12 +43,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Bir kuruluş üzerinde yönetici ayrıcalıklarına sahip bir Mixpanel hesabı
 * İstenen bir etki alanıyla Mixpanel içinde SSO etkin
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD Ile Mixpanel arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-mixpanel-to-support-provisioning-with-azure-ad"></a>2. Adım Mixpanel 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
+## <a name="step-2-configure-mixpanel-to-support-provisioning-with-azure-ad"></a>Adım 2. Mixpanel 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 1. SSO 'yu ayarlamak ve bir etki alanına yönelik bir etki alanı belirtmek için [bunu](https://help.mixpanel.com/hc/articles/360036428871-Single-Sign-On)inceleyin.
 2. Bundan sonra, kuruluş ayarlarınızın erişim güvenliği bölümünün SCıM sekmesinde bir SCıM belirteci oluşturmanız gerekir.
 ![Mixpanel belirteci](./media/mixpanel-provisioning-tutorial/mixpanelscim.png)
@@ -74,7 +73,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-mixpanel-in-azure-ad"></a>Azure AD 'de Mixpanel için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -98,7 +97,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Mixpanel olarak eşitler**' ı seçin.
 

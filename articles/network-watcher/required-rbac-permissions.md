@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840562"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Ağ Izleyicisi yeteneklerini kullanmak için gereken rol tabanlı erişim denetimi izinleri
@@ -104,7 +103,7 @@ Ağ Izleyicisi özellikleri aşağıdaki eylemleri de gerektirir:
 
 | Eylem (ler)                                                           | Açıklama                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft. Authorization/\*/Read                                     | RBAC rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
+| Microsoft. Authorization/ \* /Read                                     | RBAC rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
 | Microsoft. resources/abonelikler/resourceGroups/Read               | Bir abonelikteki tüm kaynak gruplarını listelemek için kullanılır    |
 | Microsoft. Storage/storageAccounts/Read                              | Belirtilen depolama hesabının özelliklerini almak için kullanılır   |
 | Microsoft. Storage/storageAccounts/listServiceSas/eylem, </br> Microsoft. Storage/storageAccounts/listAccountSas/eylem, <br> Microsoft. Storage/storageAccounts/listKeys/Action| [Depolama hesabına güvenli erişim](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) ve depolama hesabına yazma olanağı sağlayan paylaşılan erişim IMZALARıNı (SAS) getirmek için kullanılır |

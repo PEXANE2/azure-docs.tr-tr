@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76846479"
 ---
 # <a name="event-grid-configuration"></a>Event Grid yapılandırması
@@ -35,9 +34,9 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |
-|`inbound__clientAuth__clientCert__enabled`| Sertifika tabanlı istemci kimlik doğrulamasını açmak/devre dışı bırakmak için. Varsayılan değer true 'dur.
+|`inbound__clientAuth__clientCert__enabled`| Sertifika tabanlı istemci kimlik doğrulamasını açmak/devre dışı bırakmak için. True varsayılan değerdir.
 |`inbound__clientAuth__clientCert__source`| İstemci sertifikalarının doğrulanması için kaynak. Varsayılan değer IoT Edge.
-|`inbound__clientAuth__clientCert__allowUnknownCA`| Otomatik olarak imzalanan bir istemci sertifikasına izin verme ilkesi. Varsayılan değer true 'dur.
+|`inbound__clientAuth__clientCert__allowUnknownCA`| Otomatik olarak imzalanan bir istemci sertifikasına izin verme ilkesi. True varsayılan değerdir.
 |`inbound__clientAuth__sasKeys__enabled`| SAS anahtar tabanlı istemci kimlik doğrulamasını açmak/devre dışı bırakmak için. Varsayılan değer kapalı.
 |`inbound__clientAuth__sasKeys__key1`| Gelen istekleri doğrulamak için değerlerden biri.
 |`inbound__clientAuth__sasKeys__key2`| Gelen istekleri doğrulamak için isteğe bağlı ikinci değer.
@@ -47,7 +46,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |
-|`outbound__clientAuth__clientCert__enabled`| Giden istekler için kimlik sertifikasını ekleme/kapatma. Varsayılan değer true 'dur.
+|`outbound__clientAuth__clientCert__enabled`| Giden istekler için kimlik sertifikasını ekleme/kapatma. True varsayılan değerdir.
 |`outbound__clientAuth__clientCert__source`| Event Grid modülün giden sertifikasını alma kaynağı. Varsayılan değer IoT Edge.
 
 ## <a name="webhook-event-handlers"></a>Web kancası olay işleyicileri
@@ -57,8 +56,8 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |
 |`outbound__webhook__httpsOnly`| Yalnızca HTTPS abonelerine izin verilip verilmeyeceğini denetleyen ilke. Varsayılan değer true 'dur (yalnızca HTTPS).
-|`outbound__webhook__skipServerCertValidation`| Abonenin sertifikasının doğrulanıp doğrulanmayacağını denetleyen bayrak. Varsayılan değer true 'dur.
-|`outbound__webhook__allowUnknownCA`| Otomatik olarak imzalanan bir sertifikanın bir abone tarafından sunulup sunulmadığını denetleyen ilke. Varsayılan değer true 'dur. 
+|`outbound__webhook__skipServerCertValidation`| Abonenin sertifikasının doğrulanıp doğrulanmayacağını denetleyen bayrak. True varsayılan değerdir.
+|`outbound__webhook__allowUnknownCA`| Otomatik olarak imzalanan bir sertifikanın bir abone tarafından sunulup sunulmadığını denetleyen ilke. True varsayılan değerdir. 
 
 ## <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
 
@@ -75,10 +74,10 @@ Bu özellik hakkında genel bilgi edinmek için bkz. [teslim ve çıkış toplu 
 
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |
-| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | `ApproxBatchSizeInBytes` Düğme için izin verilen en büyük değer. Varsayılan değer `1_058_576`.
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch` Düğme için izin verilen en büyük değer. Varsayılan değer `50`.
-| `broker__defaultMaxBatchSizeInBytes` | Yalnızca `MaxEventsPerBatch` belirtilen en fazla teslim isteği boyutu. Varsayılan değer `1_058_576`.
-| `broker__defaultMaxEventsPerBatch` | Yalnızca `MaxBatchSizeInBytes` belirtildiğinde bir toplu işe eklenecek olay sayısı üst sınırı. Varsayılan değer `10`.
+| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | Düğme için izin verilen en büyük değer `ApproxBatchSizeInBytes` . Varsayılan değer `1_058_576` .
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Düğme için izin verilen en büyük değer `MaxEventsPerBatch` . Varsayılan değer `50` .
+| `broker__defaultMaxBatchSizeInBytes` | Yalnızca belirtilen en fazla teslim isteği boyutu `MaxEventsPerBatch` . Varsayılan değer `1_058_576` .
+| `broker__defaultMaxEventsPerBatch` | Yalnızca belirtildiğinde bir toplu işe eklenecek olay sayısı üst sınırı `MaxBatchSizeInBytes` . Varsayılan değer `10` .
 
 ## <a name="metrics"></a>Ölçümler
 
@@ -86,4 +85,4 @@ IoT Edge Event Grid ile ölçümleri kullanma hakkında bilgi edinmek için bkz.
 
 | Özellik Adı | Açıklama |
 | ---------------- | ------------ |
-| `metrics__reporterType` | Ölçüm enpoint için Raporlayıcı türü. Varsayılan değer `none` , ölçümleri devre dışı bırakır. Prometheus Exposition biçimindeki ölçümleri etkinleştirmeye olanak sağlamak için `prometheus` ayarı.
+| `metrics__reporterType` | Ölçüm enpoint için Raporlayıcı türü. Varsayılan değer, `none` ölçümleri devre dışı bırakır. `prometheus`Prometheus Exposition biçimindeki ölçümleri etkinleştirmeye olanak sağlamak için ayarı.

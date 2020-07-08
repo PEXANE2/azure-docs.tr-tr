@@ -4,10 +4,9 @@ description: Azure Container Instances ' de uygun olmayan kapsayıcıları yenid
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934157"
 ---
 # <a name="configure-liveness-probes"></a>Canlılık yoklaması yapılandırma
@@ -23,7 +22,7 @@ Azure Container Instances Ayrıca, trafiğin yalnızca kendisine hazır olduğu 
 
 ## <a name="yaml-deployment"></a>YAML dağıtımı
 
-Aşağıdaki kod `liveness-probe.yaml` parçacığına sahip bir dosya oluşturun. Bu dosya, sonunda sağlıksız hale gelen NGNX kapsayıcısından oluşan bir kapsayıcı grubunu tanımlar.
+`liveness-probe.yaml`Aşağıdaki kod parçacığına sahip bir dosya oluşturun. Bu dosya, sonunda sağlıksız hale gelen NGNX kapsayıcısından oluşan bir kapsayıcı grubunu tanımlar.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,9 +62,9 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Başlat komutu
 
-Dağıtım, kapsayıcının ilk `command` kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, uygun olmayan bir durum girerek kapsayıcının benzetimini yapar.
+Dağıtım, `command` kapsayıcının ilk kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, uygun olmayan bir durum girerek kapsayıcının benzetimini yapar.
 
-İlk olarak, bir bash oturumu başlatır ve `healthy` `/tmp` dizin içinde adlı bir dosya oluşturur. Daha sonra dosyayı silmeden önce 30 saniye boyunca uykuya geçer ve 10 dakikalık bir uyku moduna girer:
+İlk olarak, bir bash oturumu başlatır ve dizin içinde adlı bir dosya oluşturur `healthy` `/tmp` . Daha sonra dosyayı silmeden önce 30 saniye boyunca uykuya geçer ve 10 dakikalık bir uyku moduna girer:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
@@ -73,13 +72,13 @@ Dağıtım, kapsayıcının ilk `command` kez çalışmaya başladığı zaman �
 
 ### <a name="liveness-command"></a>Lida komutu
 
-Bu dağıtım, lietler denetimi olarak `exec` davranan bir lietler komutunu destekleyen bir `livenessProbe` tanımlar. Bu komut sıfır olmayan bir değerle çıkış alıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır ve `healthy` dosya bulunamadığına işaret edilir. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
+Bu dağıtım `livenessProbe` `exec` , lietler denetimi olarak davranan bir lietler komutunu destekleyen bir tanımlar. Bu komut sıfır olmayan bir değerle çıkış alıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır ve `healthy` Dosya bulunamadığına işaret edilir. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
 
-`periodSeconds` Özelliği, ebilmelidir komutunun her 5 saniyede bir yürütülmesi gerektiğini gösterir.
+`periodSeconds`Özelliği, ebilmelidir komutunun her 5 saniyede bir yürütülmesi gerektiğini gösterir.
 
 ## <a name="verify-liveness-output"></a>Libir çıktıyı doğrula
 
-İlk 30 saniye içinde, start komutu `healthy` tarafından oluşturulan dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu 0 döndürür, başarılı olarak sinyal verir ve yeniden başlatma gerçekleşmez.
+İlk 30 saniye içinde, `healthy` Start komutu tarafından oluşturulan dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu 0 döndürür, başarılı olarak sinyal verir ve yeniden başlatma gerçekleşmez.
 
 30 saniye sonra, `cat /tmp/healthy` komut başarısız olur, sağlıksız ve olayları sonlandırma olayları oluşmasına neden olur.
 
@@ -87,7 +86,7 @@ Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir.
 
 ![Portalın sağlıksız olayı][portal-unhealthy]
 
-Azure portal olayları görüntüleyerek, türündeki `Unhealthy` olaylar, uygun olmayan komut başarısız olduğunda tetiklenir. Sonraki olay, bir yeniden başlatmanın `Killing`başlaması için bir kapsayıcı silmeyi belirten türdür. Bu olay gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artar.
+Azure portal olayları görüntüleyerek, türündeki olaylar, uygun `Unhealthy` olmayan komut başarısız olduğunda tetiklenir. Sonraki olay, `Killing` bir yeniden başlatmanın başlaması için bir kapsayıcı silmeyi belirten türdür. Bu olay gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artar.
 
 Yeniden başlatmalar, genel IP adresleri ve düğüme özgü içerikler gibi kaynakların korunması için yerinde tamamlanır.
 
@@ -97,7 +96,7 @@ Destekleneme araştırması sürekli olarak başarısız olur ve çok fazla yeni
 
 ## <a name="liveness-probes-and-restart-policies"></a>Lizleştirme araştırmaları ve yeniden başlatma ilkeleri
 
-Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir lizleştirme araştırması ayarlarsanız, başarısız bir denetim nedeniyle kapsayıcı grubu yeniden başlatmaz. Bunun yerine kapsayıcı grubu, kapsayıcı grubunun öğesinin `Never`yeniden başlatma ilkesine uyar.
+Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir lizleştirme araştırması ayarlarsanız, başarısız bir denetim nedeniyle kapsayıcı grubu yeniden başlatmaz. Bunun yerine kapsayıcı grubu, kapsayıcı grubunun öğesinin yeniden başlatma ilkesine uyar `Never` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

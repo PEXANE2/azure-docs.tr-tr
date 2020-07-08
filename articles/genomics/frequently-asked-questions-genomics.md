@@ -10,10 +10,9 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76986045"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomiks: genel sorular
@@ -22,10 +21,10 @@ Bu makalede, Microsoft Genomiks ile ilgili olabilecek en iyi sorgular listelenme
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>GATK4 iş akışlarını Microsoft Genomiks üzerinde Nasıl yaparım? çalıştırmak istiyor musunuz?
-Microsoft Genomiks hizmetinin config. txt dosyasında, process_name belirtin `gatk4`. Düzenli faturalandırma ücretleri üzerinden faturalandırılabileceğinizi unutmayın.
+Microsoft Genomiks hizmetinin config.txt dosyasında, process_name belirtin `gatk4` . Düzenli faturalandırma ücretleri üzerinden faturalandırılabileceğinizi unutmayın.
 
 ## <a name="how-do-i-enable-output-compression"></a>Çıkış sıkıştırması etkinleştirilsin mi Nasıl yaparım??
-Çıkış sıkıştırması için isteğe bağlı bir bağımsız değişken kullanarak, çıkış VCF veya gvcf 'yi sıkıştırabilirsiniz. Bu, (bgzıp `-bgzip` çıkışı) `-tabix` ve `.gz` `.tbi` (tabx çıkışı) dosyalarını oluşturmak için, bu, VCF veya gvcf çıktısında çalıştırılan çalıştırmaya eşdeğerdir. `bgzip`VCF veya gvcf dosyasını sıkıştırır ve `tabix` sıkıştırılmış dosya için bir dizin oluşturur. Bağımsız değişkeni, varsayılan olarak VCF çıktısı için ve `false` `true` varsayılan olarak gcvf çıktısı için olarak ayarlanan bir Boole değeri. `-bz` Komut satırında kullanmak için ya `--bgzip-output` da olarak `true` belirtin (bgzip ve tabx 'i çalıştırın) veya. `false` Bu bağımsız değişkeni config. txt dosyasında kullanmak için dosya ekleyin `bgzip_output: true` `bgzip_output: false` .
+Çıkış sıkıştırması için isteğe bağlı bir bağımsız değişken kullanarak, çıkış VCF veya gvcf 'yi sıkıştırabilirsiniz. Bu, `-bgzip` `-tabix` `.gz` (bgzıp çıkışı) ve (tabx çıkışı) dosyalarını oluşturmak için, bu, VCF veya gvcf çıktısında çalıştırılan çalıştırmaya eşdeğerdir `.tbi` . `bgzip`VCF veya gvcf dosyasını sıkıştırır ve `tabix` Sıkıştırılmış dosya için bir dizin oluşturur. Bağımsız değişkeni, `false` Varsayılan olarak VCF çıktısı için ve varsayılan olarak gcvf çıktısı için olarak ayarlanan bir Boole değeri `true` . Komut satırında kullanmak için ya da olarak belirtin `-bz` `--bgzip-output` `true` (bgzip ve tabx 'i çalıştırın) veya `false` . Bu bağımsız değişkeni config.txt dosyasında kullanmak için `bgzip_output: true` `bgzip_output: false` dosya ekleyin.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomiks için SLA nedir?
 Microsoft Genomiks hizmeti 'nin iş akışı API 'SI isteklerini almak için kullanılabilir olduğu sürenin% 99,9 olacağını garanti ediyoruz. Daha fazla bilgi için bkz. [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
@@ -34,30 +33,30 @@ Microsoft Genomiks hizmeti 'nin iş akışı API 'SI isteklerini almak için kul
 Microsoft Genomiks, iş akışı başına işlenen gigabaz sayısına göre faturalandırılır. Daha fazla bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/genomics/).
 
 
-## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>`msgen` İstemci için tüm olası komutların ve bağımsız değişkenlerin listesini nerede bulabilirim?
-Çalıştırarak `msgen help`, kullanılabilir komutların ve bağımsız değişkenlerin tam listesini alabilirsiniz. Başka bir bağımsız değişken sağlanmadıysa, `submit`,, ve `list` `cancel` `status`için bir tane olmak üzere kullanılabilir yardım bölümlerinin bir listesini gösterir. Belirli bir komut hakkında yardım almak için, şunu `msgen help command`yazın; Örneğin, `msgen help submit` tüm gönderme seçeneklerini listeler.
+## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>İstemci için tüm olası komutların ve bağımsız değişkenlerin listesini nerede bulabilirim `msgen` ?
+Çalıştırarak, kullanılabilir komutların ve bağımsız değişkenlerin tam listesini alabilirsiniz `msgen help` . Başka bir bağımsız değişken sağlanmadıysa,,, ve için bir tane olmak üzere kullanılabilir yardım bölümlerinin bir listesini `submit` gösterir `list` `cancel` `status` . Belirli bir komut hakkında yardım almak için, yazın `msgen help command` ; Örneğin, `msgen help submit` tüm gönderme seçeneklerini listeler.
 
-## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>`msgen` İstemci için en sık kullanılan komutlar nelerdir?
-En sık kullanılan komutlar, `msgen` istemci için bağımsız değişkenlerdir şunları içerir: 
+## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>İstemci için en sık kullanılan komutlar nelerdir `msgen` ?
+En sık kullanılan komutlar, istemci için bağımsız değişkenlerdir `msgen` şunları içerir: 
 
  |**Komut**          |  **Alan açıklaması** |
  |:--------------------|:-------------         |
- |`list`               |Gönderdiğiniz işlerin listesini döndürür. Bağımsız değişkenler için bkz `msgen help list`..  |
- |`submit`             |Hizmetine bir iş akışı isteği gönderir. Bağımsız değişkenler için bkz `msgen help submit`..|
- |`status`             |Tarafından `--workflow-id`belirtilen iş akışının durumunu döndürür. Ayrıca `msgen help status`bkz.. |
- |`cancel`             |Tarafından `--workflow-id`belirtilen iş akışının işlenmesini iptal etmek için bir istek gönderir. Ayrıca `msgen help cancel`bkz.. |
+ |`list`               |Gönderdiğiniz işlerin listesini döndürür. Bağımsız değişkenler için bkz `msgen help list` ..  |
+ |`submit`             |Hizmetine bir iş akışı isteği gönderir. Bağımsız değişkenler için bkz `msgen help submit` ..|
+ |`status`             |Tarafından belirtilen iş akışının durumunu döndürür `--workflow-id` . Ayrıca bkz `msgen help status` .. |
+ |`cancel`             |Tarafından belirtilen iş akışının işlenmesini iptal etmek için bir istek gönderir `--workflow-id` . Ayrıca bkz `msgen help cancel` .. |
 
-## <a name="where-do-i-get-the-value-for---api-url-base"></a>Değeri nereden alabilirim `--api-url-base`?
+## <a name="where-do-i-get-the-value-for---api-url-base"></a>Değeri nereden alabilirim `--api-url-base` ?
 Azure portal gidin ve Genomiks hesap sayfanızı açın. **Yönetim** başlığı altında **erişim tuşları**' nı seçin. Burada, API URL 'SI ve erişim anahtarlarınız bulunur.
 
-## <a name="where-do-i-get-the-value-for---access-key"></a>Değeri nereden alabilirim `--access-key`?
+## <a name="where-do-i-get-the-value-for---access-key"></a>Değeri nereden alabilirim `--access-key` ?
 Azure portal gidin ve Genomiks hesap sayfanızı açın. **Yönetim** başlığı altında **erişim tuşları**' nı seçin. Burada, API URL 'SI ve erişim anahtarlarınız bulunur.
 
 ## <a name="why-do-i-need-two-access-keys"></a>Neden iki erişim anahtarına ihtiyacım var?
 Hizmetin kullanımını kesintiye uğramadan güncelleştirmek (yeniden oluşturmak) istemeniz durumunda iki erişim anahtarınız olması gerekir. Örneğin, ilk anahtarı güncelleştirmek istiyorsanız, tüm yeni iş akışlarının ikinci anahtarı kullanması gerekir. Ardından, ilk anahtarı güncelleştirmeden önce, ilk anahtarı kullanarak tüm iş akışlarının bitmesini bekleyin.
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Depolama hesabı anahtarlarımı Kaydet?
-Depolama hesabı anahtarınız, giriş dosyalarınızı okumak ve çıktı dosyalarını yazmak üzere Microsoft Genomiks hizmeti için kısa süreli erişim belirteçleri oluşturmak üzere kullanılır. Varsayılan belirteç süresi 48 saattir. Belirteç süresi, Gönder komutu `-sas/--sas-duration` seçeneğiyle değiştirilebilir; değer saat cinsinden.
+Depolama hesabı anahtarınız, giriş dosyalarınızı okumak ve çıktı dosyalarını yazmak üzere Microsoft Genomiks hizmeti için kısa süreli erişim belirteçleri oluşturmak üzere kullanılır. Varsayılan belirteç süresi 48 saattir. Belirteç süresi, `-sas/--sas-duration` Gönder komutu seçeneğiyle değiştirilebilir; değer saat cinsinden olur.
 
 ## <a name="what-genome-references-can-i-use"></a>Hangi genom başvurularını kullanabilirim?
 
@@ -75,7 +74,7 @@ Bu başvurular desteklenir:
 msgen 'i yapılandırma dosyalarını aşağıdaki biçimde anlamıştır:
 * Tüm seçenekler, anahtar-değer çiftleri olarak anahtarlardan virgülle ayrılmış değerlerle birlikte sağlanır.
   Boşluk yoksayıldı.
-* İle `#` başlayan satırlar yoksayıldı.
+* İle başlayan satırlar `#` yoksayıldı.
 * Uzun biçimdeki herhangi bir komut satırı bağımsız değişkeni, önde gelen çizgileri gerçekleştirerek ve alt çizgi içeren kelimeler arasındaki tireleri değiştirerek bir anahtara dönüştürülebilir. Bazı dönüştürme örnekleri şunlardır:
 
   |Komut satırı bağımsız değişkeni            | Yapılandırma dosyası satırı |
@@ -88,5 +87,5 @@ msgen 'i yapılandırma dosyalarını aşağıdaki biçimde anlamıştır:
 
 Microsoft Genomiks ile çalışmaya başlamak için aşağıdaki kaynakları kullanın:
 - İlk iş akışınızı Microsoft Genomiks hizmeti aracılığıyla çalıştırarak başlayın. [Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma](quickstart-run-genomics-workflow-portal.md)
-- Microsoft Genomiks hizmeti tarafından işlenmek üzere kendi verilerinizi gönderme: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md) | [Bad](quickstart-input-BAM.md) | [birden çok fastq veya Baa](quickstart-input-multiple.md) 
+- Microsoft Genomiks hizmeti tarafından işlenmek üzere kendi verilerinizi gönderme: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [Bad](quickstart-input-BAM.md)  |  [birden çok fastq veya Baa](quickstart-input-multiple.md) 
 

@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908169"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric bir kafes uygulamasını başka bir Azure bölgesine taşıma
@@ -22,7 +21,7 @@ Bu makalede, Service Fabric kafes uygulamanızın ve kaynaklarının farklı bir
 ## <a name="prerequisites"></a>Ön koşullar
 
 * İstemciler ile Service Fabric kafes uygulamanız arasında trafiği yönlendirme için bir aracı olarak kullanılacak giriş denetleyicisi (örneğin [Application Gateway](https://docs.microsoft.com/azure/application-gateway/))
-* Hedef Azure bölgesinde (`westus`, `eastus`veya `westeurope`) Service Fabric ağ (Önizleme) kullanılabilirliği
+* Hedef Azure bölgesinde ( `westus` , `eastus` veya `westeurope` ) Service Fabric ağ (Önizleme) kullanılabilirliği
 
 ## <a name="prepare"></a>Hazırlama
 

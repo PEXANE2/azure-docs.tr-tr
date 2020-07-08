@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844522"
 ---
 # <a name="security-and-authentication"></a>Güvenlik ve kimlik doğrulaması
@@ -54,7 +53,7 @@ Event Grid modülü iki tür istemci kimlik doğrulamasını destekler:
 * Paylaşılan erişim Imzası (SAS) anahtar tabanlı
 * Sertifika tabanlı
 
-Varsayılan olarak, Event Grid modülü yalnızca sertifika tabanlı kimlik doğrulamasını kabul edecek şekilde yapılandırılmıştır. Başlangıçta Event Grid modülü, IoT Edge güvenlik arka plan programından "Trustdemeti" alır ve bunu istemci sertifikasını doğrulamak için kullanır. Bu zincire çözümlenmeyecek istemci sertifikaları ile `UnAuthorized`reddedilir.
+Varsayılan olarak, Event Grid modülü yalnızca sertifika tabanlı kimlik doğrulamasını kabul edecek şekilde yapılandırılmıştır. Başlangıçta Event Grid modülü, IoT Edge güvenlik arka plan programından "Trustdemeti" alır ve bunu istemci sertifikasını doğrulamak için kullanır. Bu zincire çözümlenmeyecek istemci sertifikaları ile reddedilir `UnAuthorized` .
 
 ### <a name="certificate-based-client-authentication"></a>Sertifika tabanlı istemci kimlik doğrulaması
 
@@ -83,7 +82,7 @@ Bir istemci otomatik olarak imzalanan bir sunalıysa, varsayılan olarak Event G
 
 ### <a name="sas-key-based-client-authentication"></a>SAS anahtar tabanlı istemci kimlik doğrulaması
 
-Sertifika tabanlı kimlik doğrulamasına ek olarak, Event Grid modülü SAS anahtar tabanlı kimlik doğrulaması da yapabilir. SAS anahtarı, tüm gelen çağrıları doğrulamak için kullanması gereken Event Grid modülünde yapılandırılmış bir gizli dizi gibidir. İstemcilerin ' AEG-SAS-Key ' HTTP üstbilgisinde gizli anahtar belirtmesi gerekir. Eşleşme eşleşmezse, istek ile `UnAuthorized` reddedilir.
+Sertifika tabanlı kimlik doğrulamasına ek olarak, Event Grid modülü SAS anahtar tabanlı kimlik doğrulaması da yapabilir. SAS anahtarı, tüm gelen çağrıları doğrulamak için kullanması gereken Event Grid modülünde yapılandırılmış bir gizli dizi gibidir. İstemcilerin ' AEG-SAS-Key ' HTTP üstbilgisinde gizli anahtar belirtmesi gerekir. Eşleşme eşleşmezse, istek ile reddedilir `UnAuthorized` .
 
 SAS anahtar tabanlı kimlik doğrulamasını denetlemek için yapılandırma **inbound__clientAuth__sasKeys__enabled**.
 

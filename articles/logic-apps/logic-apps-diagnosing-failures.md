@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905022"
 ---
-# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps iş akışı hatalarının sorunlarını giderme ve tanılama
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı hatalarını giderme ve tanılama
 
 Mantıksal uygulamanız uygulamanızdaki sorunları tanılamanıza ve hata ayıklamanıza yardımcı olabilecek bilgiler oluşturur. Azure portal aracılığıyla iş akışındaki her adımı inceleyerek bir mantıksal uygulamayı tanılayabilirsiniz. Ya da çalışma zamanı hata ayıklaması için bir iş akışına bazı adımlar ekleyebilirsiniz.
 
@@ -31,7 +30,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici deneyimiyle başlar, b
 
    Tetikleyici girişleri, tetikleyicinin beklediği ve iş akışını başlatması gereken verileri içerir. Bu girişleri gözden geçirmek, tetikleyici girişlerinin doğru olup olmadığını ve koşulun karşılanıp karşılanmadığını belirlemenize yardımcı olabilir.
 
-   Örneğin, burada `feedUrl` özelliği yanlış bir RSS Akış değerine sahiptir:
+   Örneğin, `feedUrl` burada özelliği yanlış bır RSS Akış değerine sahiptir:
 
    ![Hata için tetikleyici girişlerini gözden geçirin](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 

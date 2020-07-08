@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69014443"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Veri Kataloğu için klavye kısayolları
@@ -18,7 +17,7 @@ ms.locfileid: "69014443"
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Veri Kataloğu veri kaynağı kayıt aracı için klavye kısayolları
 
 ### <a name="general-keyboard-shortcuts"></a>Genel klavye kısayolları
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Sayfadaki her denetim için sekme |Tab |
 | Bir seçenek belirtin |ENTER veya boşluk çubuğu |
@@ -27,24 +26,24 @@ ms.locfileid: "69014443"
 | Sayfa menüsünü aç |ALT + ara çubuğu |
 
 ### <a name="authentication-page"></a>Kimlik doğrulama sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Hizmette oturum aç |ALT + S |
 
 ### <a name="data-source-selection-page"></a>Veri kaynağı seçim sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Sonraki sayfaya git (etkinse) |ALT + N |
 | Odak bir kutucukta olduğunda seçili türü Değiştir |Sol, yukarı, sağ veya aşağı ok |
 
 ### <a name="data-source-connection-page"></a>Veri kaynağı bağlantı sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Önceki sayfaya git (etkinse) |ALT + P |
 | Bağlan düğmesini seçin. |ALT + C |
 
 ### <a name="connection-context-page"></a>Bağlantı bağlamı sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Kaydet düğmesi (etkinse) |ALT + R |
 | Önizlemeyi ekle onay kutusu (varsa) |ALT + P |
@@ -54,20 +53,20 @@ ms.locfileid: "69014443"
 | **Kullanılabilir nesneler** veya **nesneler** için seçili öğeleri taşıma |'NU |
 
 ### <a name="publish-progress-page"></a>Yayımla ilerleme durumu sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | İptal düğmesi |ALT + C |
 | Daha fazla nesne Kaydet düğmesi |ALT + R |
 | Portalı görüntüle düğmesi |ALT + V |
 
 ### <a name="publish-progress-page"></a>Yayımla ilerleme durumu sayfası
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Kaydet düğmesi (etkinse) |ALT + S |
 | İptal düğmesi |ALT + C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Veri Kataloğu portalı için klavye kısayolları
-| İşlem | Buna basın |
+| Çalışma | Buna basın |
 | --- | --- |
 | Gidin |SEKME ve SHIFT + TAB |
 | Bir öğeye tıklayın |BOŞLUK veya ENTER |

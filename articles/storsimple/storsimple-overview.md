@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965110"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
@@ -210,10 +209,10 @@ Desteklenen StorSimple iş yüklerinin özeti aşağıda verilmiştir.
 
 | Senaryo | İş yükü | Destekleniyor | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| İş Birliği |Dosya paylaşımı |Yes | |Tüm sürümler |
-| İş Birliği |Dağıtılmış dosya paylaşımı |Yes | |Tüm sürümler |
+| İş Birliği |Dosya paylaşımı |Evet | |Tüm sürümler |
+| İş Birliği |Dağıtılmış dosya paylaşımı |Evet | |Tüm sürümler |
 | İş Birliği |SharePoint |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
-| Arşivleme |Basit dosya arşivleme |Yes | |Tüm sürümler |
+| Arşivleme |Basit dosya arşivleme |Evet | |Tüm sürümler |
 | Sanallaştırma |Sanal makineler |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Veritabanı |SQL |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Video gözetimi |Video gözetimi |Evet* |StorSimple cihazı yalnızca bu iş yüküne ayrılmışsa desteklenir |Güncelleştirme 2 ve üzeri |
@@ -237,7 +236,7 @@ Aşağıda, StorSimple desteklenen altyapı bileşenlerinin bir listesi verilmi�
 
 | Senaryo | İş yükü | Destekleniyor | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| Genel |Express Route |Yes | |Tüm sürümler |
+| Genel |Express Route |Evet | |Tüm sürümler |
 | Genel |DataCore FC |Evet* |DataCore Sansimphony ile desteklenir |Tüm sürümler |
 | Genel |DFSR |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Tüm sürümler |
 | Genel |Dizinleme |Evet* |Katmanlı birimlerde yalnızca meta veri dizinleme desteklenir (veri yok).<br>Yerel olarak sabitlenmiş birimlerde, tam dizin oluşturma desteklenir. |Tüm sürümler |

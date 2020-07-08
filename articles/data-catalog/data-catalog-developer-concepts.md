@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68976821"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
@@ -76,7 +75,7 @@ UX daha sonra birleşiminin nasıl görüntüleneceğini seçebilir. Görüntül
 Temel kavramlar bölümünde sunulan **Azure Veri Kataloğu** nesne modeli, varlıklar veya ek açıklamalar içerebilen öğeleri içerir. Öğelerin özellikleri vardır, bu, isteğe bağlı veya gerekli olabilir. Bazı özellikler tüm öğeler için geçerlidir. Bazı özellikler tüm varlıklar için geçerlidir. Bazı özellikler yalnızca belirli varlık türlerine uygulanır.
 
 ### <a name="system-properties"></a>Sistem özellikleri
-<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>id</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>type</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
+<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>kimlik</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>tür</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
 
 ### <a name="common-properties"></a>Ortak özellikler
 Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için geçerlidir.
@@ -90,7 +89,7 @@ Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için g
 <p>
 Bu özellikler tüm kök varlık türleri için geçerlidir.
 
-<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>ad</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz kimliği (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının kimliği. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
+<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>name</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz kimliği (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının kimliği. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Ortak tekil olmayan ek açıklama özellikleri
 Bu özellikler, tekil olmayan ek açıklama türleri (varlık başına birden fazla olmasına izin verilen ek açıklamalar) için geçerlidir.
@@ -140,7 +139,7 @@ Ek açıklama türleri, kataloğun içindeki diğer türlere atanabilecek meta v
 
 <tr><td>AccessInstruction ("Accessınstructions")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>İçeriğin MIME türü.</td></tr>
-<tr><td></td><td>content</td><td>string</td><td>Bu veri varlığına erişim alma yönergeleri. İçerik bir URL, e-posta adresi veya bir dizi yönerge olabilir.</td></tr>
+<tr><td></td><td>içerik</td><td>string</td><td>Bu veri varlığına erişim alma yönergeleri. İçerik bir URL, e-posta adresi veya bir dizi yönerge olabilir.</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Veri kümesindeki satır sayısı</td></tr>
@@ -157,7 +156,7 @@ Ek açıklama türleri, kataloğun içindeki diğer türlere atanabilecek meta v
 
 <tr><td>Belgeler ("belgeler")</td><td></td><td></td><td>Belirli bir varlık kendisiyle ilişkili yalnızca bir belgeye sahip olabilir.</td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>İçeriğin MIME türü.</td></tr>
-<tr><td></td><td>content</td><td>string</td><td>Belge içeriği.</td></tr>
+<tr><td></td><td>içerik</td><td>string</td><td>Belge içeriği.</td></tr>
 
 </table>
 
@@ -172,9 +171,9 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protokol</td><td>string</td><td>Gereklidir. Veri kaynağıyla iletişim kurmak için kullanılan bir protokolü açıklar. Örneğin: SQl Server için "tds", Oracle için "Oracle" vb. Şu anda desteklenen protokollerin listesi için <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">veri kaynağı başvuru belirtimi-DSL yapısına</a> bakın.</td></tr>
-<tr><td></td><td>adres</td><td>Sözlük&lt;dizesi, nesne&gt;</td><td>Gereklidir. Adres, başvurulmakta olan veri kaynağını tanımlamak için kullanılan protokole özgü bir veri kümesidir. Belirli bir protokol kapsamındaki adres verileri, protokolü bilmeden anlamlı olduğu anlamına gelir.</td></tr>
+<tr><td></td><td>adres</td><td>Sözlük &lt; dizesi, nesne&gt;</td><td>Gereklidir. Adres, başvurulmakta olan veri kaynağını tanımlamak için kullanılan protokole özgü bir veri kümesidir. Belirli bir protokol kapsamındaki adres verileri, protokolü bilmeden anlamlı olduğu anlamına gelir.</td></tr>
 <tr><td></td><td>kimlik doğrulaması</td><td>string</td><td>İsteğe bağlı. Veri kaynağıyla iletişim kurmak için kullanılan kimlik doğrulama düzeni. Örneğin: Windows, OAuth, vb.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Sözlük&lt;dizesi, nesne&gt;</td><td>İsteğe bağlı. Bir veri kaynağına bağlanma hakkında ek bilgiler.</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Sözlük &lt; dizesi, nesne&gt;</td><td>İsteğe bağlı. Bir veri kaynağına bağlanma hakkında ek bilgiler.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Arka uç, yayımlama sırasında AAD 'ye yönelik olarak belirtilen özelliklerin doğrulanmasını gerçekleştirmez.</td></tr>
 <tr><td></td><td>'le</td><td>string</td><td>Kullanıcının benzersiz e-posta adresi. ObjectID sağlanmazsa veya "lastRegisteredBy" özelliği bağlamında, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
@@ -183,8 +182,8 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 <tr><td></td><td>lastName</td><td>string</td><td>Kullanıcının Soyadı (görüntüleme amaçları için). İsteğe bağlı. Yalnızca "lastRegisteredBy" özelliği bağlamında geçerlidir. "Roles", "Permissions" ve "experts" için güvenlik sorumlusu sağlanarak belirtilemiyor.</td></tr>
 
 <tr><td>Sütun</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>ad</td><td>string</td><td>Sütunun veya özniteliğin adı.</td></tr>
-<tr><td></td><td>type</td><td>string</td><td>sütunun veya özniteliğin veri türü. Izin verilen türler, varlığın veri sourceType bağımlıdır.  Yalnızca türlerin bir alt kümesi desteklenir.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Sütunun veya özniteliğin adı.</td></tr>
+<tr><td></td><td>tür</td><td>string</td><td>sütunun veya özniteliğin veri türü. Izin verilen türler, varlığın veri sourceType bağımlıdır.  Yalnızca türlerin bir alt kümesi desteklenir.</td></tr>
 <tr><td></td><td>'In</td><td>int</td><td>Sütun veya öznitelik için izin verilen uzunluk üst sınırı. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
 <tr><td></td><td>duyarlılık</td><td>byte</td><td>Sütun veya öznitelik için duyarlık. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
 <tr><td></td><td>IsNullable</td><td>Boole</td><td>Sütunun null değere sahip olmasına izin verilip verilmeyeceğini belirtir. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
@@ -192,8 +191,8 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>string</td><td>Sütunun adı</td></tr>
-<tr><td></td><td>type </td><td>string</td><td>Sütunun türü</td></tr>
-<tr><td></td><td>min </td><td>string</td><td>Veri kümesindeki en küçük değer</td></tr>
+<tr><td></td><td>tür </td><td>string</td><td>Sütunun türü</td></tr>
+<tr><td></td><td>dk </td><td>string</td><td>Veri kümesindeki en küçük değer</td></tr>
 <tr><td></td><td>max </td><td>string</td><td>Veri kümesindeki en büyük değer</td></tr>
 <tr><td></td><td>cin </td><td>double</td><td>Veri kümesindeki ortalama değer</td></tr>
 <tr><td></td><td>STDSAPMA </td><td>double</td><td>Veri kümesi için standart sapma</td></tr>
@@ -215,18 +214,18 @@ Desteklenen protokoller kümesi programlı olarak genişletilebilir (veri katalo
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>ad alanı</td><td>string</td><td>Protokolün ad alanı. Ad alanı 1 ile 255 karakter uzunluğunda olmalıdır ve noktayla (.) ayrılmış bir veya daha fazla boş olmayan parçalar içermelidir. Her bölüm 1 ile 255 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf ve rakam içermelidir.</td></tr>
-<tr><td></td><td>ad</td><td>string</td><td>Protokolün adı. Ad 1 ile 255 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf, rakam ve tire (-) karakteri içermelidir.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Protokolün adı. Ad 1 ile 255 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf, rakam ve tire (-) karakteri içermelidir.</td></tr>
 <tr><td></td><td>ıdentityproperties</td><td>Datasourceprotocolidentityözelliği []</td><td>Kimlik özelliklerinin listesi, en az bir tane içermesi gerekir, ancak 20 ' den fazla özellik içermemelidir. Örneğin: "sunucu", "veritabanı", "şema", "nesne", "tds" protokolünün kimlik özelliklerdir.</td></tr>
 <tr><td></td><td>ıdentitysets</td><td>DataSourceProtocolIdentitySet []</td><td>Kimlik kümelerinin listesi. Geçerli varlığın kimliğini temsil eden kimlik özelliklerinin kümelerini tanımlar. En az bir tane içermeli, 20 ' den fazla küme içermelidir. Örneğin: {"sunucu", "veritabanı", "şema" ve "nesne"}, SQL Server tablo varlığının kimliğini tanımlayan "tds" protokolü için bir kimlik kümesidir.</td></tr>
 
 <tr><td>Datasourceprotocolidentityözelliği</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>ad</td><td>string</td><td>Özelliğin adı. Ad 1 ile 100 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf ve rakam içermelidir.</td></tr>
-<tr><td></td><td>type</td><td>string</td><td>Özelliğin türü. Desteklenen değerler: "bool", Boolean "," byte "," Guid "," int "," Integer "," Long "," String "," URL "</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Özelliğin adı. Ad 1 ile 100 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf ve rakam içermelidir.</td></tr>
+<tr><td></td><td>tür</td><td>string</td><td>Özelliğin türü. Desteklenen değerler: "bool", Boolean "," byte "," Guid "," int "," Integer "," Long "," String "," URL "</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>Özelliğin değeri kullanılırken büyük/küçük harf 'in yoksayılıp sayılmayacağını gösterir. Yalnızca "String" türü olan özellikler için belirtilebilir. Varsayılan değer false 'dur.</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool []</td><td>URL 'nin yolunun her bir segmenti için büyük/küçük harf 'in yoksayılıp sayılmayacağını belirtir. Yalnızca "URL" türündeki özellikler için belirtilebilir. Varsayılan değer [false] şeklindedir.</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>ad</td><td>string</td><td>Kimlik kümesinin adı.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Kimlik kümesinin adı.</td></tr>
 <tr><td></td><td>properties</td><td>String []</td><td>Bu kimlik kümesine eklenen kimlik özelliklerinin listesi. Yinelenen öğeler içeremez. Kimlik kümesi tarafından başvurulan her bir özelliğin, protokolün "ıdentityproperties" listesinde tanımlanması gerekir.</td></tr>
 
 </table>
@@ -243,7 +242,7 @@ Azure Veri Kataloğu iki yetkilendirme mekanizması kullanır:
 ### <a name="roles"></a>Roller
 Üç rol vardır: **yönetici**, **sahip**ve **katkıda bulunan**.  Her rolün kapsamı ve hakları vardır ve bu, aşağıdaki tabloda özetlenmiştir.
 
-<table><tr><td><b>Rol</b></td><td><b>Kapsam</b></td><td><b>Haklar</b></td></tr><tr><td>Yönetici</td><td>Katalog (katalogdaki tüm varlıklar/ek açıklamalar)</td><td>ViewRoles silme oku
+<table><tr><td><b>Role</b></td><td><b>Kapsam</b></td><td><b>Haklar</b></td></tr><tr><td>Yönetici</td><td>Katalog (katalogdaki tüm varlıklar/ek açıklamalar)</td><td>ViewRoles silme oku
 
 Değişiklik sahibi ChangeVisibility ViewPermissions</td></tr><tr><td>Sahip</td><td>Her varlık (kök öğe)</td><td>ViewRoles silme oku
 
@@ -271,14 +270,14 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
 > 
 > **Sahip** rolü yalnızca bir kök öğe için geçerlidir.
 > 
-> Katalogda bir öğe oluşturulduğunda varsayılan olarak kimliği doğrulanmış **Kullanıcı olarak ayarlanır** . Öğe herkes tarafından güncelleştirilebilse, **katkıda bulunanlar** , öğe ilk yayımlandığında &lt;roller&gt; özelliğinde Everyone özel güvenlik sorumlusu **roles** olarak ayarlanmalıdır (aşağıdaki örneğe bakın). **Katkıda bulunan** değiştirilemez ve bir öğenin yaşam süresi boyunca aynı kalır (hatta **yönetici** veya **sahip** , **katkıda**bulunanı değiştirme hakkına sahip değildir). **Katkıda** bulunanı açık ayarı için desteklenen tek değer &lt;herkes&gt;: **katkıda bulunan** yalnızca bir öğeyi veya &lt;herkesi&gt;oluşturan bir kullanıcı olabilir.
+> Katalogda bir öğe oluşturulduğunda varsayılan olarak kimliği doğrulanmış **Kullanıcı olarak ayarlanır** . Öğe herkes tarafından güncelleştirilebilse, **katkıda bulunanlar** , &lt; &gt; öğe ilk yayımlandığında **Roller** özelliğinde Everyone özel güvenlik sorumlusu olarak ayarlanmalıdır (aşağıdaki örneğe bakın). **Katkıda bulunan** değiştirilemez ve bir öğenin yaşam süresi boyunca aynı kalır (hatta **yönetici** veya **sahip** , **katkıda**bulunanı değiştirme hakkına sahip değildir). **Katkıda** bulunanı açık ayarı için desteklenen tek değer &lt; Herkes &gt; : **katkıda bulunan** yalnızca bir öğeyi veya herkesi oluşturan bir kullanıcı olabilir &lt; &gt; .
 > 
 > 
 
 ### <a name="examples"></a>Örnekler
-**Bir öğeyi yayımlarken &lt;katkıda&gt; bulunan herkese ayarlayın.**
-Özel güvenlik sorumlusu &lt;herkese&gt; "00000000-0000-0000-0000-000000000201" ObjectID vardır.
-  Https **sonrası** :\//api.azuredatacatalog.com/catalogs/default/views/Tables/?api-Version=2016-03-30
+**&lt;Bir öğeyi yayımlarken katkıda bulunan herkese ayarlayın &gt; .**
+Özel güvenlik sorumlusu &lt; herkese &gt; "00000000-0000-0000-0000-000000000201" ObjectID vardır.
+  Https **sonrası** : \/ /api.azuredatacatalog.com/catalogs/default/views/Tables/?api-Version=2016-03-30
 
 > [!NOTE]
 > Bazı HTTP istemci uygulamaları, sunucudan bir 302 'e yanıt olarak istekleri otomatik olarak yeniden verebilir, ancak genellikle kimlik doğrulama üst bilgilerini istekten çıkar. Azure Veri Kataloğu 'na istek yapmak için yetkilendirme üst bilgisi gerektiğinden, Azure Veri Kataloğu tarafından belirtilen yeniden yönlendirme konumuna bir istek yeniden verilirken yetkilendirme üstbilgisinin hala sağlandığından emin olmanız gerekir. Aşağıdaki örnek kod, .NET HttpWebRequest nesnesini kullanarak gösterir.
@@ -301,7 +300,7 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
     }
 ```
 
-  **Var olan bir kök öğe için sahipleri ata ve görünürlüğü kısıtla**: **PUT** https\/:/api.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?api-Version=2016-03-30
+  **Var olan bir kök öğe için sahipleri ata ve görünürlüğü kısıtla**: **PUT** https: \/ /api.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?api-Version=2016-03-30
 
 ```json
     {

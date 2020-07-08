@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773595"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme 
@@ -38,7 +37,7 @@ Bu makale, AMS depolama şifrelemesi hakkında genel bir bakış sunar ve depola
 * İçerik anahtarını varlığa bağlayın.  
 * AssetFile varlıklarında şifrelemeyle ilgili parametreleri ayarlayın.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+## <a name="considerations"></a>Önemli noktalar 
 
 Depolama ile şifrelenmiş bir varlık sağlamak istiyorsanız, varlığın teslim ilkesini yapılandırmanız gerekir. Varlığınızın akışı için, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışa çıkarır. Daha fazla bilgi için bkz. [varlık teslim Ilkelerini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -115,7 +114,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 
     İstek gövdesi özelliği    | Açıklama
     ---|---
-    Kimlik | ContentKey KIMLIĞI, "NB: KID: UUID:\<NEW GUID>" biçimi kullanılarak oluşturulur.
+    Kimlik | ContentKey KIMLIĞI, "NB: KID: UUID:" biçiminde şu biçim kullanılarak oluşturulur \<NEW GUID> .
     ContentKeyType | İçerik anahtar türü, anahtarı tanımlayan bir tamsayıdır. Depolama şifreleme biçimi için değer 1 ' dir.
     EncryptedContentKey | 256 bitlik (32 bayt) bir değer olan yeni bir içerik anahtarı değeri oluşturacağız. Anahtar, Getprotectionkeyıd ve GetProtectionKey yöntemleri için bir HTTP GET isteği yürüterek Microsoft Azure Media Services elde ettiğimiz depolama şifreleme X. 509.440 sertifikası kullanılarak şifrelenir. Örnek olarak, aşağıdaki .NET koduna bakın: [burada](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tanımlanan **Encryptsymmetrickeydata** yöntemi.
     Protectionkeyıd | Bu, içerik anahtarımızı şifrelemek için kullanılan depolama şifrelemesi X. 509.440 sertifikası için koruma anahtarı KIMLIĞIDIR.

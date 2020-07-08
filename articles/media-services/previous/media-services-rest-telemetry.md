@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774878"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST ile Azure Media Services telemetrisini yapılandırma
@@ -34,7 +33,7 @@ Bu konuda açıklanan adımlar şunlardır:
 - Bildirim uç noktalarını alma
 - Izleme için bir bildirim uç noktası oluşturuluyor. 
 
-    Bir bildirim uç noktası oluşturmak için, EndPointType öğesini AzureTable (2) ve endPontAddress depolama tablosuna (örneğin, https:\//telemetryvalidationstore.Table.Core.Windows.net/) ayarlayın.
+    Bir bildirim uç noktası oluşturmak için, EndPointType öğesini AzureTable (2) ve endPontAddress depolama tablosuna (örneğin, https: \/ /telemetryvalidationstore.Table.Core.Windows.net/) ayarlayın.
   
 - İzleme yapılandırmasını al
 
@@ -126,7 +125,7 @@ Bu konuda açıklanan adımlar şunlardır:
     }
 
 > [!NOTE]
-> "Https:\//telemetryvalidationstore.Table.Core.Windows.net" değerini depolama hesabınızla değiştirmeyi unutmayın.
+> "Https: \/ /telemetryvalidationstore.Table.Core.Windows.net" değerini depolama hesabınızla değiştirmeyi unutmayın.
 
 ### <a name="response"></a>Yanıt
 
@@ -241,6 +240,6 @@ Telemetri bilgilerini tüketme hakkında bilgi için [Bu](media-services-telemet
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

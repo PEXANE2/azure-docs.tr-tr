@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77015006"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Azure 'da CloudSimple özel bulut sanal makinelerinizi yönetin
@@ -26,8 +25,8 @@ Aşağıdaki denetimler, seçtiğiniz sanal makinenizin **genel bakış** sayfas
 | Denetim | Açıklama |
 | ------------ | ------------- |
 | Bağlan | Belirtilen VM 'ye bağlanın.  |
-| Başlat | Belirtilen VM 'yi başlatın.  |
-| Yeniden Başlatma | Kapatın ve ardından belirtilen VM 'yi kapatın.  |
+| Başlangıç | Belirtilen VM 'yi başlatın.  |
+| Yeniden başlat | Kapatın ve ardından belirtilen VM 'yi kapatın.  |
 | Durdur | Belirli bir sanal makineyi kapatın.  |
 | Capture | Başka VM 'Ler oluşturmak için görüntü olarak kullanılabilmesi için belirtilen VM 'nin bir görüntüsünü yakalayın. Bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/classic/capture-image.md).   |
 | Taşı | Belirtilen VM 'ye taşıyın.  |
@@ -53,7 +52,7 @@ Bir VM diski eklemek için, seçilen VM için **diskler** sayfasını açın. Bi
 
    | Öğe | Açıklama |
    | ------------ | ------------- |
-   | Adı | Diski tanımlamak için bir ad girin.  |
+   | Name | Diski tanımlamak için bir ad girin.  |
    | Boyut | Kullanılabilir boyutlardan birini seçin.  |
    | SCSI denetleyicisi | Bir SCSI denetleyicisi seçin. Kullanılabilir denetleyiciler, desteklenen farklı işletim sistemleri için farklılık gösterir.  |
    | Mod | Diskin anlık görüntülere nasıl katıldığını belirler. Aşağıdaki seçeneklerden birini belirleyin: <br> -Bağımsız kalıcı: diske yazılan tüm veriler kalıcı olarak yazılmıştır.<br> -Bağımsız, kalıcı olmayan: diske yazılan değişiklikler, sanal makineyi kapattığınızda veya sıfırladığınızda atılır.  Bu mod, sanal makineyi her zaman aynı durumda yeniden başlatmanıza olanak tanır. Daha fazla bilgi için bkz. [VMware belgeleri](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
@@ -76,7 +75,7 @@ Arabirim eklemek için **ağ arabirimi Ekle**' ye tıklayın. Satır içi bir se
 
    | Denetim | Açıklama |
    | ------------ | ------------- |
-   | Adı | Arabirimi tanımlamak için bir ad girin.  |
+   | Name | Arabirimi tanımlamak için bir ad girin.  |
    | Ağ | Özel bulut vSphere 'unuzda yapılandırılmış ağlar listesinden seçin.  |
    | Bağdaştırıcı | VM için yapılandırılmış kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için bkz. [sanal makineniz için bir ağ bağdaştırıcısı seçme](https://kb.vmware.com/s/article/1001805)VMware Bilgi Bankası makalesi. |
    | Önyüklemede açma | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan olarak **etkinleştirilir**. |

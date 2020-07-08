@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845350"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
@@ -73,7 +72,7 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 - Çoklu oturum açma
 
-- Çok faktörlü kimlik doğrulaması
+- Multi-factor authentication
 
 - Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -95,7 +94,7 @@ Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesfo
 
 Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
 
-#### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
+#### <a name="multi-factor-authentication"></a>Multi-factor authentication
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
@@ -410,7 +409,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örneklere şunlar dahildir:
+Örnekler arasında şunlar yer almaktadır:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 
@@ -438,7 +437,7 @@ Güvenlik Merkezi, Azure kaynaklarınızdan, ağdan ve kötü amaçlı yazılım
 
 Bulut uygulamaları birçok hareketli parça ile karmaşıktır. İzleme, uygulamanızın sağlıklı durumda kaldığından ve çalıştığından emin olmak için veri sağlar. Ayrıca, olası sorunları veya geçmişteki sorunları gidermenize yardımcı olur.
 
-![Azure Izleyici](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Ayrıca, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
+![Azure Izleyici ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Ayrıca, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
 
 Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güvenlik ve mevzuat idare modeliyle uyumluluk sağlamak için önemlidir. Güvenlik grubu görünümü ile, yapılandırılmış ağ güvenlik grubunu ve güvenlik kurallarını ve etkin güvenlik kurallarını alabilirsiniz. Uygulanan kuralların listesi ile açık ve SS ağ güvenlik açığı olan bağlantı noktalarını belirleyebilirsiniz.
 
@@ -452,7 +451,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. Performans anormalliklerini otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. Şirket içinde veya bulutta barındırılan .NET, Node. js ve Java EE dahil olmak üzere çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps süreciyle tümleştirilir ve çeşitli geliştirme araçlarına bağlantı noktaları içerir.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. Performans anormalliklerini otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. Şirket içinde veya bulutta barındırılan .NET, Node.js ve Java EE dahil olmak üzere çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps süreciyle tümleştirilir ve çeşitli geliştirme araçlarına bağlantı noktaları içerir.
 
 Şunları izler:
 

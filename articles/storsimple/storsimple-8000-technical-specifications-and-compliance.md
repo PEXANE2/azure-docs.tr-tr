@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965282"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple cihazı için teknik belirtimler ve uyumluluk
@@ -38,7 +37,7 @@ EBOD Kasası 580 W PCM kullanır ve birincil kutu 764 W PCM kullanır. Aşağıd
 | Belirtim | 580 W PCM (EBOD) | 764 W PCM (birincil) |
 | --- | --- | --- |
 | Maksimum çıkış gücü |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Sıklık |50/60 Hz |50/60 Hz |
 | Voltaj aralığı seçimi |Otomatik Aralık: 90 – 264 V AC, 47/63 Hz |Otomatik Aralık: 90-264 V AC, 47/63 Hz |
 | En fazla inrush geçerli |20 A |20 A |
 | Güç faktörü düzeltmesi |>% 95 kabul edilen giriş gerilimi |>% 95 kabul edilen giriş gerilimi |
@@ -46,7 +45,7 @@ EBOD Kasası 580 W PCM kullanır ve birincil kutu 764 W PCM kullanır. Aşağıd
 | Çıktı |5 V bekleme gerilimi \@ 2,0 A |5 V bekleme gerilimi \@ 2,7 A |
 | + 5 V \@ 42 A |+ 5 V \@ 40 A | |
 | + 12V \@ 38 A |+ 12V \@ 38 A | |
-| Etkin takılabilir |Yes |Yes |
+| Etkin takılabilir |Evet |Evet |
 | Anahtarlar ve LED 'ler |AC açık/kapalı anahtarı ve dört durum göstergesi LED 'Leri |AC açık/kapalı anahtarı ve altı durum göstergesi LED 'Leri |
 | Kasa soğutma |Axial soğutma fanları, değişken fan hız denetimi |Axial soğutma fanları, değişken fan hız denetimi |
 
