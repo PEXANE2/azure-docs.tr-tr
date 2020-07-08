@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bfc63c6f5aca92fb7fda9e3ecf63ce4c332b12ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720920"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Depolama Gezgini kullanarak Azure Blob depolama alanına veya buradan veri taşıma
@@ -52,6 +51,6 @@ Aşağıdaki adımlar Azure Depolama Gezgini kullanarak verileri karşıya yükl
 6. Eklenen depolama hesabı artık görüntülenmelidir. Bir depolama hesabında blob kapsayıcısı oluşturmak için, bu hesaptaki **BLOB kapsayıcıları** düğümüne sağ tıklayın, **BLOB kapsayıcısı oluştur**' u seçin ve bir ad girin.
 7. Bir kapsayıcıya veri yüklemek için hedef kapsayıcıyı seçin ve **karşıya yükle** düğmesine tıklayın.
 ![Depolama hesapları](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. **Dosyalar** kutusunun sağ tarafındaki **..** . öğesine tıklayın, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve dosyaları karşıya yüklemeye başlamak için **karşıya yükle** ' ye tıklayın. ![Dosyaları karşıya yükle](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+8. **Dosyalar** kutusunun sağ tarafındaki **..** . öğesine tıklayın, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve dosyaları karşıya yüklemeye başlamak için **karşıya yükle** ' ye tıklayın. ![ Dosyaları karşıya yükle](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. Verileri indirmek için, karşılık gelen kapsayıcıda bir blobu **seçip İndir ' e tıklayın.** ![Dosyaları indirme](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

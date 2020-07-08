@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76694999"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services V2 REST API çağrıları için Postman yapılandırma  
@@ -37,13 +36,13 @@ Bu ortam ve koleksiyon, Azure Media Services REST API 'Leri ile çeşitli görev
 
 ## <a name="configure-the-environment"></a>Ortamı yapılandırma 
 
-1. AMS öğreticilerinde kullanılan ortam değişkenlerini içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **Azudüzeltici Aservices. postman_environment. JSON**). Dosyayı açın ve Postman ortamını tanımlayan kodu [Bu kod](postman-environment.md)listesinden yapıştırın. 
+1. AMS öğreticilerinde kullanılan ortam değişkenlerini içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **AzureMediaServices.postman_environment.js**). Dosyayı açın ve Postman ortamını tanımlayan kodu [Bu kod](postman-environment.md)listesinden yapıştırın. 
 2. **Postman**'ı açın.
 3. Ekranın sağ tarafında **Ortamı yönet** seçeneğini belirleyin.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-create-env.png)
 4. **Ortamı yönet** iletişim kutusunda **İçe aktar**'ı tıklatın.
-5. **Azudüzeltici Aservices. postman_environment. JSON** dosyasına gözatıp seçin.
+5. Dosyasında **AzureMediaServices.postman_environment.js** gösterin ve seçin.
 6. **AzureMedia** ortamı eklenir.
 7. İletişim kutusunu kapatın.
 8. **AzureMedia** ortamını seçin.
@@ -52,9 +51,9 @@ Bu ortam ve koleksiyon, Azure Media Services REST API 'Leri ile çeşitli görev
 
 ## <a name="configure-the-collection"></a>Koleksiyonu yapılandırma
 
-1. Media Services bir dosyayı karşıya yüklemek için gereken tüm işlemlerle **Postman** koleksiyonunu içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **Azudüzeltici Aservicesoperations. postman_collection. JSON**). Dosyayı açın ve **Postman** koleksiyonunu tanımlayan kodu [Bu kod](postman-collection.md)listesinden yapıştırın.
+1. Media Services bir dosyayı karşıya yüklemek için gereken tüm işlemlerle **Postman** koleksiyonunu içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **AzureMediaServicesOperations.postman_collection.js**). Dosyayı açın ve **Postman** koleksiyonunu tanımlayan kodu [Bu kod](postman-collection.md)listesinden yapıştırın.
 2. Koleksiyon dosyasını içe aktarmak için **İçe Aktar**'ı tıklatın.
-3. **Azudüzeltici Aservicesoperations. postman_collection. JSON** dosyasını seçin.
+3. Dosyadaki **AzureMediaServicesOperations.postman_collection.js** seçin.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-import-collection.png)
 

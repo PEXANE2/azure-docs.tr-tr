@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980639"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için dağıtım sorunları: sık sorulan sorular (SSS)
@@ -54,7 +53,7 @@ Bölgenizdeki kullanılabilir boyutları denetlemek için bkz. [Microsoft Azure:
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Aboneliğimde veya hizmetmdeki sınırlar/kotalar/kısıtlamalar nedeniyle neden bir bulut hizmeti dağıtıyor?
 Ayrılan kaynaklar bölge/veri merkezi düzeyinde hizmetiniz için izin verilen varsayılan veya en yüksek kotayı aşarsa, bulut hizmeti dağıtımı başarısız olabilir. Daha fazla bilgi için bkz. [Cloud Services sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Ayrıca, portalda aboneliğiniz için geçerli kullanım/kotayı da izleyebilirsiniz: Azure portal => abonelikler => \<uygun abonelik> => "kullanım + kota".
+Ayrıca, portalda aboneliğiniz için geçerli kullanımı/kotayı da izleyebilirsiniz: Azure portal => abonelikler => \<appropriate subscription>   => "kullanım + kota".
 
 Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure Kaynak kullanımı API 'si (Önizleme)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

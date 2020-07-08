@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153777"
 ---
 # <a name="additional-documentation"></a>Diğer belgeler
@@ -19,7 +18,7 @@ Bu makalede, avere Denetim Masası yönetim arabirimi ve ilgili konular hakkınd
 
 ## <a name="avere-cluster-documentation"></a>Avere kümesi belgeleri
 
-Ek avere kümesi belgeleri adresindeki <https://azure.github.io/Avere/>Web sitesinde bulunabilir. Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandıracağınızı anlamanıza yardımcı olabilir.
+Ek avere kümesi belgeleri adresindeki Web sitesinde bulunabilir <https://azure.github.io/Avere/> . Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandıracağınızı anlamanıza yardımcı olabilir.
 
 * [FXT kümesi oluşturma kılavuzu](<https://azure.github.io/Avere/#fxt_cluster>) , fiziksel donanım düğümlerinden oluşan kümeler için tasarlanmıştır, ancak belgedeki bazı bilgiler vFXT kümelerine de uygundur. Özellikle, yeni vFXT küme yöneticileri bu bölümleri okumayı yararlı olabilir:
   * [Destek ve Izleme ayarlarını](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) özelleştirmek, destek yükleme ayarlarını özelleştirmeyi ve uzaktan izlemeyi etkinleştirmeyi açıklar.

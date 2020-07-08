@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721787"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive sorguları kullanarak Hadoop kümesindeki veriler için özellikler oluşturma
@@ -89,14 +88,14 @@ Hive, DateTime alanlarını işlemek için bir UDF kümesiyle gelir. Hive 'de, v
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Bu Hive sorgusu, * \<Tarih Saat alanının>* varsayılan tarih saat biçiminde olduğunu varsayar.
+Bu Hive sorgusu, *\<datetime field>* varsayılan tarih saat biçiminde olduğunu varsayar.
 
 Bir DateTime alanı varsayılan biçimde değilse, DateTime alanını önce UNIX zaman damgasına dönüştürmeniz ve sonra UNIX zaman damgasını varsayılan biçimde olan bir tarih saat dizesine dönüştürmeniz gerekir. DateTime varsayılan biçimde olduğunda, kullanıcılar, özellikleri ayıklamak için gömülü tarih saat UDF 'Leri uygulayabilir.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Bu sorguda, * \<DateTime>alanının* *03/26/2015 12:04:39*gibi bir deseninin olması halinde, * \<> ' Tarih Saat alanının deseninin* olması `'MM/dd/yyyy HH:mm:ss'`gerekir. Test etmek için kullanıcılar şunları çalıştırabilir
+Bu sorguda,, *\<datetime field>* *03/26/2015 12:04:39*gibi bir model varsa, * \<pattern of the datetime field> '* olması gerekir `'MM/dd/yyyy HH:mm:ss'` . Test etmek için kullanıcılar şunları çalıştırabilir
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -112,7 +111,7 @@ Hive tablosunda boşluklarla ayrılmış bir sözcük dizesi içeren bir metin a
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>GPS koordinatları kümeleri arasında uzaklıkları hesaplama
 Bu bölümde verilen sorgu, NYC TAXI seyahat verilerine doğrudan uygulanabilir. Bu sorgunun amacı, özellikler oluşturmak için Hive içinde gömülü matematik işlevinin nasıl uygulanacağını gösterir.
 
-Bu sorguda kullanılan alanlar, toplama *\_Boylam*, *toplama\_, enlem*, alt *\_Boylam*ve *\_açılan Enlem*adlı toplama ve bırakma konumlarından oluşan GPS koordinatlarıdır. Toplama ve bırakma koordinatları arasındaki doğrudan mesafeyi hesaplayan sorgular şunlardır:
+Bu sorguda kullanılan alanlar, toplama * \_ boylam*, *toplama, \_ Enlem*, alt * \_ boylam*ve *açılan \_ Enlem*adlı toplama ve bırakma konumlarından oluşan GPS koordinatlarıdır. Toplama ve bırakma koordinatları arasındaki doğrudan mesafeyi hesaplayan sorgular şunlardır:
 
         set R=3959;
         set pi=radians(180);
@@ -130,7 +129,7 @@ Bu sorguda kullanılan alanlar, toplama *\_Boylam*, *toplama\_, enlem*, alt *\_B
         and dropoff_latitude between 30 and 90
         limit 10;
 
-İki GPS koordinatları arasındaki mesafeyi hesaplayan matematik denklemleri, Peter Lapisu tarafından yazılan <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">taşınabilir tür betikleri</a> sitesinde bulunabilir. Bu JavaScript 'te, işlev `toRad()` yalnızca Pi/180 *lat_or_lon*. Bu, Dereceyi radyana dönüştürür. Burada *lat_or_lon* Enlem veya boylam. Hive işlevi `atan2`sağlamadığından, ancak `atan`işlevi sağladığından, `atan2` işlev, <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Vikovan</a>içinde sağlanan tanımı kullanarak yukarıdaki `atan` Hive sorgusunda işlevi tarafından uygulanır.
+İki GPS koordinatları arasındaki mesafeyi hesaplayan matematik denklemleri, Peter Lapisu tarafından yazılan <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">taşınabilir tür betikleri</a> sitesinde bulunabilir. Bu JavaScript 'te, işlev `toRad()` yalnızca Pi/180 *lat_or_lon*. Bu, Dereceyi radyana dönüştürür. Burada *lat_or_lon* Enlem veya boylam. Hive işlevi sağlamadığından, ancak işlevi sağladığından, `atan2` `atan` Işlev, `atan2` `atan` <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">vikovan</a>içinde sağlanan tanımı kullanarak yukarıdaki Hive sorgusunda işlevi tarafından uygulanır.
 
 ![Çalışma alanı oluşturma](./media/create-features-hive/atan2new.png)
 

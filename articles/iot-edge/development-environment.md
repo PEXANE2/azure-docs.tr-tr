@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511102"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Geliştirme ve test ortamınızı IoT Edge için hazırlama
@@ -43,7 +42,7 @@ Başka düzenleyicilerle veya CLı ile geliştirmeyi tercih ediyorsanız, Azure 
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code uzantısı
 
-Visual Studio Code için Azure IoT Edge uzantısı, C# ' de C, C#, Java, Node. js ve Python gibi programlama dillerinde oluşturulan IoT Edge modül şablonları sağlar.
+Visual Studio Code için Azure IoT Edge uzantısı, C# ' deki Azure işlevleri ile C, C#, Java, Node.js ve Python gibi programlama dillerinde oluşturulan IoT Edge modül şablonları sağlar.
 
 Daha fazla bilgi ve indirme için bkz. [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
@@ -59,7 +58,7 @@ Bazı diller ve hizmetlerde modül şablonlarının, Visual Studio Code ile geli
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [JAVA_HOME ortam değişkenini ayarlama](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
-| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Node. js modül oluşturucuyu Azure IoT Edge](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
+| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js modül Oluşturucusu](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
 ### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 uzantısı
@@ -97,7 +96,7 @@ Daha fazla bilgi ve yüklemek için bkz. [Azure IoT EdgeHub geliştirme aracı](
 
 ### <a name="iot-edge-dev-container"></a>IoT Edge dev kapsayıcısı
 
-Azure IoT Edge dev kapsayıcısı, IoT Edge geliştirme için ihtiyaç duyduğunuz tüm bağımlılıklara sahip bir Docker kapsayıcısıdır. Bu kapsayıcı C#, Python, Node. js ve Java dahil olmak üzere geliştirme yapmak istediğiniz dili kullanmaya başlamanızı kolaylaştırır. Yüklemeniz gereken tek şey, kapsayıcıyı geliştirme makinenize çekmek için Docker veya Moby gibi bir kapsayıcı altyapısıdır.
+Azure IoT Edge dev kapsayıcısı, IoT Edge geliştirme için ihtiyaç duyduğunuz tüm bağımlılıklara sahip bir Docker kapsayıcısıdır. Bu kapsayıcı C#, Python, Node.js ve Java dahil olmak üzere, içinde geliştirme yapmak istediğiniz dili kullanmaya başlamanızı kolaylaştırır. Yüklemeniz gereken tek şey, kapsayıcıyı geliştirme makinenize çekmek için Docker veya Moby gibi bir kapsayıcı altyapısıdır.
 
 Daha fazla bilgi için bkz. [Azure IoT Edge geliştirme kapsayıcısı](https://hub.docker.com/r/microsoft/iotedgedev/).
 

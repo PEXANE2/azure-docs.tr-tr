@@ -9,10 +9,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76272088"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Sanal dizisi dağıtma-VMware 'de sağlama
@@ -95,13 +94,13 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 7. **Datastore Browser** (Veri Deposu Tarayıcısı) penceresi açılır.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Araç çubuğunda simge ' ye tıklayarak ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam**'a tıklayın.
+8. Araç çubuğunda simge ' ye tıklayarak ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) Yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam**'a tıklayın.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Yeni klasör **Datastore Browser** (Veri Deposu Tarayıcısı) penceresinin sol tarafında görünür.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Karşıya yükle simgesine ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) tıklayın ve **dosyayı karşıya yükle**' yi seçin.
+10. Karşıya yükle simgesine tıklayın ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) ve **dosyayı karşıya yükle**' yi seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. İndirdiğiniz VMDK dosyalarını bulun. İki dosya vardır. Karşıya yüklemek için dosyalardan birini seçin.
@@ -208,7 +207,7 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Sonra, ağı yapılandırın.
-7. Sanal cihazınızda `Get-HcsIpAddress` etkin olan ağ arabirimlerini listelemek için komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
+7. `Get-HcsIpAddress`Sanal cihazınızda etkin olan ağ arabirimlerini listelemek için komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıda bir örnek gösterilmiştir:

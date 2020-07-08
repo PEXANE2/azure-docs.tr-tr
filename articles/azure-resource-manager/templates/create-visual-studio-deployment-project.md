@@ -4,10 +4,9 @@ description: Azure Kaynak grubu projesi oluşturmak ve kaynakları Azure 'a dağ
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76152740"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma
@@ -20,7 +19,7 @@ Bu makalede [, Visual Studio 2019 veya sonraki bir sürümünü kullanarak Azure
 
 Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi oluşturacaksınız.
 
-1. Visual Studio 'da **Dosya**>**Yeni**>**Proje**' yi seçin.
+1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçin.
 1. **Azure Kaynak grubu** proje şablonunu ve Ileri ' **yi**seçin.
 
     ![Proje oluşturma](./media/create-visual-studio-deployment-project/create-project.png)
@@ -44,8 +43,8 @@ Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi
    | Dosya adı | Açıklama |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Azure Resource Manager’da dağıtılacak PowerShell komutlarını çalıştıran PowerShell betiği. Visual Studio, şablonunuzu dağıtmak için bu PowerShell betiğini kullanır. |
-   | Web sitesi. JSON |Azure’da dağıtmak istediğiniz altyapıyı tanımlayan Resource Manager şablonu ve dağıtım sırasında sağlayabileceğiniz parametreler. Resource Manager’ın kaynakları doğru sırayla dağıtmasını sağlamak için kaynaklarınız arasındaki bağımlılıkları da tanımlar. |
-   | Web sitesi. Parameters. JSON |Şablon tarafından gereken değerleri içeren bir parametre dosyası. Her bir dağıtımı özelleştirmek için parametre değerlerini geçirirsiniz. |
+   | Üzerinde WebSite.js |Azure’da dağıtmak istediğiniz altyapıyı tanımlayan Resource Manager şablonu ve dağıtım sırasında sağlayabileceğiniz parametreler. Resource Manager’ın kaynakları doğru sırayla dağıtmasını sağlamak için kaynaklarınız arasındaki bağımlılıkları da tanımlar. |
+   | Üzerinde WebSite.parameters.js |Şablon tarafından gereken değerleri içeren bir parametre dosyası. Her bir dağıtımı özelleştirmek için parametre değerlerini geçirirsiniz. |
 
     Tüm kaynak grubu dağıtım projeleri bu temel dosyaları içerir. Diğer projeler diğer işlevleri desteklemek için ek dosyalar içerebilir.
 
@@ -53,7 +52,7 @@ Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi
 
 Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yöneticisi şablonunu değiştirerek özelleştirebilirsiniz. Resource Manager şablonu bileşenleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager şablonları yazma](template-syntax.md).
 
-1. Şablonunuzda çalışmak için **Web sitesi. JSON**' u açın.
+1. Şablonunuzda çalışmak için **üzerindeWebSite.js**açın.
 
 1. Visual Studio düzenleyicisi, Resource Manager şablonu düzenleme konusunda size yardımcı olan araçlar sağlar. **JSON Ana Hattı** penceresi, şablonunuzda tanımlanan bileşenleri görmenizi kolaylaştırır.
 
@@ -103,7 +102,7 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
    }
    ```
 
-1. **Web sitesi. Parameters. JSON** dosyasını açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
+1. WebSite.parameters.jsdosya **üzerinde** açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
 
    ```json
    {
@@ -121,9 +120,9 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
 
 Artık projenizi bir kaynak grubuna dağıtmaya hazırsınız.
 
-Varsayılan olarak, projedeki PowerShell betiği (Deploy-AzureResourceGroup. ps1) Azurerd modülünü kullanır. AzureRM modülünü hala yüklediyseniz ve kullanmaya devam etmek istiyorsanız, bu varsayılan betiği kullanabilirsiniz. Bu komut dosyası ile çözümünüzü dağıtmak için Visual Studio arabirimini kullanabilirsiniz.
+Varsayılan olarak, projedeki PowerShell betiği (Deploy-AzureResourceGroup.ps1) Azurerd modülünü kullanır. AzureRM modülünü hala yüklediyseniz ve kullanmaya devam etmek istiyorsanız, bu varsayılan betiği kullanabilirsiniz. Bu komut dosyası ile çözümünüzü dağıtmak için Visual Studio arabirimini kullanabilirsiniz.
 
-Ancak, yeni [az modüle](/powershell/azure/new-azureps-module-az)geçiş yaptıysanız projenize yeni bir komut dosyası eklemeniz gerekir. Az Module kullanan bir betik eklemek için [Deploy-AzTemplate. ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) betiğini kopyalayın ve projenize ekleyin. Bu betiği dağıtım için kullanmak üzere, Visual Studio 'nun dağıtım arabirimini kullanmak yerine bir PowerShell konsolundan çalıştırmanız gerekir.
+Ancak, yeni [az modüle](/powershell/azure/new-azureps-module-az)geçiş yaptıysanız projenize yeni bir komut dosyası eklemeniz gerekir. Az Module kullanan bir betik eklemek için [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) betiğini kopyalayın ve projenize ekleyin. Bu betiği dağıtım için kullanmak üzere, Visual Studio 'nun dağıtım arabirimini kullanmak yerine bir PowerShell konsolundan çalıştırmanız gerekir.
 
 Her iki yaklaşım da bu makalede gösterilmektedir. Bu makale, Azurere modül betiği olarak varsayılan komut dosyası ve az Module betiği olarak yeni komut dosyası anlamına gelir.
 
@@ -139,7 +138,7 @@ Az Module betiği için bir PowerShell konsolu açın ve şunu çalıştırın:
 
 Azurerd modül betiği için Visual Studio 'Yu kullanın:
 
-1. Dağıtım projesi düğümünün kısayol menüsünde**Yeni** **Dağıt** > ' ı seçin.
+1. Dağıtım projesi düğümünün kısayol menüsünde Yeni **Dağıt**' ı seçin  >  **New**.
 
     ![Yeni dağıtım menü öğesi](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -167,7 +166,7 @@ Sonuçları kontrol edelim.
 
 Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıtılan gerçek bir kod yoktur.
 
-1. Visual Studio çözümünüze bir proje ekleyin. Çözüme sağ tıklayın ve**Yeni proje** **Ekle** > ' yi seçin.
+1. Visual Studio çözümünüze bir proje ekleyin. Çözüme sağ tıklayın ve **Add**  >  **Yeni proje**Ekle ' yi seçin.
 
     ![Proje Ekle](./media/create-visual-studio-deployment-project/add-project.png)
 
@@ -199,7 +198,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
    ![Başvuruya bakın](./media/create-visual-studio-deployment-project/see-reference.png)
 
-1. Şablonunuza (WebSite. JSON) geri dönün ve şablona bir kaynak ekleyin.
+1. Şablonunuza geri dönün (WebSite.js) ve şablona bir kaynak ekleyin.
 
     ![Kaynak Ekle](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
@@ -211,7 +210,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
 1. Şablonunuzda bazı yeni parametreler vardır. Önceki adımda eklenirler. **_ArtifactsLocation** veya **_artifactsLocationSasToken** için değer sağlamanız gerekmez, çünkü bu değerler otomatik olarak oluşturulur. Ancak, klasör ve dosya adını dağıtım paketini içeren yola ayarlamanız gerekir. Bu parametrelerin adları **PackageFolder** ve **packagefilename**ile biter. Adın ilk bölümü, eklediğiniz Web Dağıtımı kaynağının adıdır. Bu makalede, bunlar **Exampleapppackagefolder** ve **Exampleapppackagefilename**olarak adlandırılmaktadır.
 
-   **Web sitesi. Parameters. JSON** ' u açın ve bu parametreleri başvuru özelliklerinde gördüğünüz değerlere ayarlayın. **Exampleapppackagefolder** değerini klasörün adına ayarlayın. **Exampleapppackagefilename** değerini ZIP dosyasının adına ayarlayın.
+   **Website.parameters.js** açın ve bu parametreleri başvuru özelliklerinde gördüğünüz değerlere ayarlayın. **Exampleapppackagefolder** değerini klasörün adına ayarlayın. **Exampleapppackagefilename** değerini ZIP dosyasının adına ayarlayın.
 
    ```json
    {
@@ -237,7 +236,7 @@ Projeye kod eklediyseniz, dağıtımınız bu kez biraz farklı olur. Dağıtım
 
 ### <a name="az-module-script"></a>Az Module betiği
 
-Az Module betiğini kullanıyorsanız, şablonunuzda yapmanız gereken küçük bir değişiklik vardır. Bu betik, yapıt konumuna eğik çizgi ekler, ancak şablonunuz bu eğik çizgiyi beklemez. Web sitesi. json ' yı açın ve MSDeploy uzantısının özelliklerini bulun. **PackageURI**adlı bir özelliğe sahiptir. Yapıt konumuyla paket klasörü arasındaki eğik çizgiyi kaldırın.
+Az Module betiğini kullanıyorsanız, şablonunuzda yapmanız gereken küçük bir değişiklik vardır. Bu betik, yapıt konumuna eğik çizgi ekler, ancak şablonunuz bu eğik çizgiyi beklemez. Üzerinde WebSite.jsaçın ve MSDeploy uzantısının özelliklerini bulun. **PackageURI**adlı bir özelliğe sahiptir. Yapıt konumuyla paket klasörü arasındaki eğik çizgiyi kaldırın.
 
 Şu şekilde görünmelidir:
 
@@ -281,7 +280,7 @@ Azurerd modül betiği için Visual Studio 'Yu kullanın:
 
 Yalnızca Visual Studio arabirimi aracılığıyla kullanılabilir olan kaynaklarla sınırlı olmazsınız. Şablonunuza özel bir kaynak ekleyerek dağıtımınızı özelleştirebilirsiniz. Kaynak eklemeyi göstermek için dağıttığınız kaynağı yönetmek üzere bir işlem panosu eklersiniz.
 
-1. Web sitesi. json dosyasını açın ve depolama hesabı kaynağında, ancak kaynaklar bölümünün kapatılmadan `]` önce Şu JSON 'yi ekleyin.
+1. WebSite.jsdosya üzerinde açın ve depolama hesabı kaynağında, ancak kaynaklar bölümünün kapatılmadan önce aşağıdaki JSON 'u ekleyin `]` .
 
    ```json
     ,{

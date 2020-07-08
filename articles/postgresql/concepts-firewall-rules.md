@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157279"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
@@ -29,7 +28,7 @@ Internet 'ten ve Azure 'dan gelen bağlantı girişimleri, aşağıdaki diyagram
 Sunucu düzeyinde güvenlik duvarı kuralları, PostgreSQL için Azure veritabanı sunucusu üzerindeki tüm veritabanları için geçerlidir. İstek IP adresi sunucu düzeyinde güvenlik duvarı kurallarında belirtilen aralıklardan biri içindeyse, bağlantı izni verilir.
 İsteğin IP adresi sunucu düzeyinde güvenlik duvarı kurallarında belirtilen aralıklar dahilinde değilse, bağlantı isteği başarısız olur.
 Örneğin, uygulamanız PostgreSQL için JDBC sürücüsüyle bağlanıyorsa, güvenlik duvarı bağlantıyı engellediği zaman bu hatayla karşılaşabilirsiniz.
-> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Ana bilgisayar\_"123.45.67.890", Kullanıcı "AdminUser", veritabanı "PostgreSQL", SSL için pg HBA. conf girişi yok
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: \_ ana bilgisayar "123.45.67.890", Kullanıcı "AdminUser", veritabanı "PostgreSQL", SSL için pg HBA. conf girişi yok
 
 ## <a name="connecting-from-azure"></a>Azure'dan bağlanma
 Herhangi bir uygulamanın veya hizmetin giden IP adresini bulmanız ve bu IP adreslerine veya aralıklarına açıkça erişim izni vermeniz önerilir. Örneğin, bir Azure App Service giden IP adresini bulabilir veya bir sanal makineye ya da başka bir kaynağa bağlı bir genel IP kullanabilirsiniz (sanal makinenin hizmet uç noktaları üzerinden özel IP 'si ile bağlanma hakkında bilgi için aşağıya bakın). 
@@ -57,7 +56,7 @@ PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranm�
 * **Oturum açma yetkisi yok veya yanlış parola kullanıldı:** Bir oturum açma işlemi PostgreSQL için Azure veritabanı sunucusunda izinlere sahip değilse veya kullanılan parola yanlışsa, PostgreSQL için Azure veritabanı sunucusuna bağlantı reddedilir. Bir güvenlik duvarı ayarı oluşturmak, istemcilere yalnızca sunucunuza bağlanmayı denemek için bir fırsat sağlar; her istemci yine de gerekli güvenlik kimlik bilgilerini sağlamalıdır.
 
    Örneğin, bir JDBC istemcisi kullanarak aşağıdaki hata görünebilir.
-   > Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: "YourUserName" kullanıcısı için parola kimlik doğrulaması başarısız oldu
+   > java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Kullanıcı için parola kimlik doğrulaması başarısız oldu "YourUserName"
 
 * **Dinamik IP adresi:** Dinamik IP adresiyle kurulmuş bir İnternet bağlantınız varsa ve güvenlik duvarını aşmakta sorun yaşıyorsanız aşağıdaki çözümlerden birini deneyebilirsiniz:
 
@@ -65,7 +64,7 @@ PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranm�
 
    * İstemci bilgisayarlarınız yerine statik IP adresleme alın ve statik IP adresini bir güvenlik duvarı kuralı olarak ekleyin.
 
-* **Sunucunun IP 'si genel gibi görünür:** PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar, genel olarak erişilebilen bir Azure ağ geçidiyle yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için, [bağlantı mimarisi makalesini](concepts-connectivity-architecture.md)ziyaret edin. 
+* **Sunucunun IP 'si genel gibi görünür:** PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar, genel olarak erişilebilen bir Azure ağ geçidiyle yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için [bağlantı mimarisi makalesi](concepts-connectivity-architecture.md) adresini ziyaret edin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma makaleleri için bkz.:

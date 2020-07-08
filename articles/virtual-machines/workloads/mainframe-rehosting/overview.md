@@ -11,10 +11,9 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76289807"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure sanal makinelerinde Ana bilgisayar yeniden barındırma
@@ -72,7 +71,7 @@ IBM DB2 pureScale ortamı, Azure için bir veritabanı kümesi sağlar. Bu, özg
 
 Başlamak için bkz. [Azure 'Da IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Ana bilgisayar iş yüklerini Azure altyapısına hizmet olarak (IaaS) geçirdiğinizde, Azure VM 'Leri dahil olmak üzere çeşitli isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları arasından seçim yapabilirsiniz. Azure, bir dizi [Linux](/azure/virtual-machines/linux/overview) ve [Windows](/azure/virtual-machines/windows/overview) VM sunar.
 

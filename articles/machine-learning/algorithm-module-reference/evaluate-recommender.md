@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76312269"
 ---
 # <a name="evaluate-recommender"></a>Önereni Değerlendirme
@@ -65,7 +64,7 @@ Tahmin edilen derecelendirmeleri değerlendirirken, puanlanmış veri kümesi (�
 -   Üçüncü sütun karşılık gelen Kullanıcı öğesi derecelendirmelerini içerir.  
   
 > [!IMPORTANT] 
-> Değerlendirmenin başarılı olması için, sütun adlarının sırasıyla, `User` `Item`ve `Rating`, olması gerekir.  
+> Değerlendirmenin başarılı olması için, sütun adlarının `User` sırasıyla, ve, olması gerekir `Item` `Rating` .  
   
 Değerlendirin öneren, "zemin gerçeği" veri kümesindeki derecelendirmeleri, puanlanmış veri kümesinin öngörülen derecelendirmelerine göre karşılaştırır. Daha sonra ortalama mutlak hata (MAE) ve kök ortalama kare hatası (rmo) hesaplar.
 
@@ -81,7 +80,7 @@ Değerlendirin öneren, "zemin gerçeği" veri kümesindeki derecelendirmeleri, 
 Bu veri kümesini bağlanmadan önce, en ilgili öğelerin ilk olması için veri kümesini sıralamanıza önerilir.  
 
 > [!IMPORTANT] 
-> Öneren 'ın çalışmasını değerlendirmek için, sütun `User`adları, `Item 1` `Item 2` `Item 3` , vb. olmalıdır.  
+> Öneren 'ın çalışmasını değerlendirmek için, sütun adları,, vb `User` `Item 1` . olmalıdır `Item 2` `Item 3` .  
   
 Öneren değerlendir, ortalama normalleştirilmiş indirimli kümülatif kazancı (NDCG) hesaplar ve bunu çıkış veri kümesinde döndürür.  
   

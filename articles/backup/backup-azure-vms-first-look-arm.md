@@ -4,10 +4,9 @@ description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden f
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705454"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
@@ -31,7 +30,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** ' e tıklayın ve filtreye, **sanal makineler**yazın ve ardından **sanal makineler**' e tıklayın.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde **Yedekle**' ye tıklayın.
@@ -64,7 +63,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="run-a-backup-immediately"></a>Yedeklemeyi hemen Çalıştır
 
-1. Bir yedeklemeyi hemen çalıştırmak için VM **menüsünde yedekleme** > **Şimdi**yedekle ' ye tıklayın.
+1. Bir yedeklemeyi hemen çalıştırmak için VM **menüsünde Yedekleme Şimdi yedekle ' ye**tıklayın  >  **Backup now**.
 
     ![Yedeklemeyi çalıştır](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure IoT cihaz SDK 'Ları platform desteği | Microsoft Docs
-description: Açık kaynaklı cihaz SDK 'Ları, cihazları Azure IoT Hub ve cihaz sağlama hizmeti 'ne (DPS) bağlamak için C, .NET (C#), Java, Node. js ve Python 'da GitHub 'da kullanılabilir.
+description: Açık kaynaklı cihaz SDK 'Ları, cihazları Azure IoT Hub ve cihaz sağlama hizmeti 'ne (DPS) bağlamak için C, .NET (C#), Java, Node.js ve Python 'da GitHub 'da kullanılabilir.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045128"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
-Microsoft, Azure IoT Hub özellikli cihazların Universe sürekli olarak genişlemesine kadar çaba harcar. Microsoft, cihazların Azure IoT Hub ve cihaz sağlama hizmeti 'ne bağlanmasına yardımcı olmak için GitHub üzerinde açık kaynaklı cihaz SDK 'Ları yayımlar. Cihaz SDK 'Ları C, .NET (C#), Java, Node. js ve Python için kullanılabilir. Microsoft, [Microsoft SDK 'ları ve cihaz platformu desteği](#microsoft-sdks-and-device-platform-support) bölümünde bu yapılandırmanın desteklediği desteklenen yapılandırmalarda çalıştığından emin olmak için her SDK 'yı sınar.
+Microsoft, Azure IoT Hub özellikli cihazların Universe sürekli olarak genişlemesine kadar çaba harcar. Microsoft, cihazların Azure IoT Hub ve cihaz sağlama hizmeti 'ne bağlanmasına yardımcı olmak için GitHub üzerinde açık kaynaklı cihaz SDK 'Ları yayımlar. Cihaz SDK 'Ları C, .NET (C#), Java, Node.js ve Python için kullanılabilir. Microsoft, [Microsoft SDK 'ları ve cihaz platformu desteği](#microsoft-sdks-and-device-platform-support) bölümünde bu yapılandırmanın desteklediği desteklenen yapılandırmalarda çalıştığından emin olmak için her SDK 'yı sınar.
 
 Microsoft, cihaz SDK 'larının yanı sıra müşterilerin ve geliştiricilerin cihazlarını Azure IoT 'ye bağlanmasını sağlamak için çeşitli diğer hususlar sağlar:
 
@@ -30,7 +29,7 @@ Bu konuda, Microsoft SDK 'Ları ve destekledikleri platform yapılandırmaların
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>Microsoft SDK 'Ları ve cihaz platformu desteği
 
-Microsoft, GitHub 'da açık kaynaklı SDK 'Ları şu diller için yayımlar: C, .NET (C#), Node. js, Java ve Python. SDK 'lar ve bağımlılıkları bu bölümde listelenmiştir. SDK 'lar, bu bağımlılıkları karşılayan herhangi bir cihaz platformunda desteklenir.
+Microsoft, GitHub 'da açık kaynaklı SDK 'Ları şu diller için yayımlar: C, .NET (C#), Node.js, Java ve Python. SDK 'lar ve bağımlılıkları bu bölümde listelenmiştir. SDK 'lar, bu bağımlılıkları karşılayan herhangi bir cihaz platformunda desteklenir.
 
 Listelenen her SDK 'nın her biri için Microsoft:
 
@@ -78,7 +77,7 @@ Yalnızca Python sürüm 3.5.3 veya üzeri zaman uyumsuz API 'Leri destekliyorsa
 
 ### <a name="nodejs-sdk"></a>Node.js SDK'sı
 
-[Azure IoT Hub Node. js cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-node) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
+[Azure IoT Hub Node.js cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-node) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
 | İşletim Sistemi                  | Düğüm sürümü    |
 |---------------------|-----------------|
@@ -134,7 +133,7 @@ Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, dest
 
 * [Azure IoT Hub Java SDK sorunları](https://github.com/Azure/azure-iot-sdk-java/issues)
 
-* [Azure IoT Hub Node. js SDK sorunları](https://github.com/Azure/azure-iot-sdk-node/issues)
+* [Azure IoT Hub Node.js SDK sorunları](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Azure IoT Hub Python SDK sorunları](https://github.com/Azure/azure-iot-sdk-python/issues)
 

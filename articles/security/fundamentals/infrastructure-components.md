@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727208"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure Information System bileşenleri ve sınırları
@@ -47,7 +46,7 @@ Veri merkezi kümelere bölünmüştür. Kümeler, hataları FC düzeyinde yalı
 
 ### <a name="hardware-inventory"></a>Donanım envanteri
 
-FC, önyükleme yapılandırma işlemi sırasında Azure donanım ve ağ cihazlarının envanterini hazırlar. Azure üretim ortamının girildiği yeni donanım ve ağ bileşenlerinin önyükleme yapılandırma işlemini izlemesi gerekir. FC, Datacenter. xml yapılandırma dosyasında listelenen tüm envanteri yönetmekten sorumludur.
+FC, önyükleme yapılandırma işlemi sırasında Azure donanım ve ağ cihazlarının envanterini hazırlar. Azure üretim ortamının girildiği yeni donanım ve ağ bileşenlerinin önyükleme yapılandırma işlemini izlemesi gerekir. FC, datacenter.xml yapılandırma dosyasında listelenen tüm envanteri yönetmekten sorumludur.
 
 ### <a name="fc-managed-operating-system-images"></a>FC ile yönetilen işletim sistemi görüntüleri
 
@@ -97,7 +96,7 @@ Microsoft 'un çalışanları (veya yükleniciler), iç Kullanıcı olarak kabul
 | Azure dağıtım mühendisleri | İç | Müşteri verilerine erişim | Azure desteğiyle platform bileşenlerini, yazılımlarını ve zamanlanan yapılandırma değişikliklerini dağıtın ve yükseltin. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
 | Azure müşteri kesintisi desteği (kiracı) | İç | Müşteri verilerine erişim | Bireysel işlem kiracılarının ve Azure hesaplarının hata ayıklama ve tanılama sorunlarını giderme. Hataları analiz edin. Platform veya müşteri için kritik düzeltmeleri sürüyor ve destek genelinde teknik iyileştirmeleri sürüyor. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
 | Azure Live site mühendisleri (izleme mühendisleri) ve olay | İç | Müşteri verilerine erişim | Tanılama araçlarını kullanarak platform sistem durumunu tanılayın ve azaltabilirsiniz. Birim sürücüleri için düzeltme, kesintiden kaynaklanan öğeleri onarır ve geri yükleme eylemlerine yardımcı olur. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
-|Azure müşterileri | Dış | Yok | Yok | Yok |
+|Azure müşterileri | Dış | YOK | YOK | YOK |
 
 Azure, kurumsal kullanıcıların ve müşterilerin (veya kuruluş kullanıcıları adına işlem gören işlemlerin) kimliğini doğrulamak için benzersiz tanımlayıcılar kullanır. Bu, Azure ortamının bir parçası olan tüm varlıklar ve cihazlar için geçerlidir.
 

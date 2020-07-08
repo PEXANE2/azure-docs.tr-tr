@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721753"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL ve Python kullanarak SQL Server’daki verilerin özelliklerini oluşturma
@@ -63,7 +62,7 @@ Aşağıdaki örnek, bir özellik olarak kullanılabilecek bir sayısal sütun (
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Tek bir sütundan özellikler kullanıma alınıyor
 Bu bölümde, ek özellikler oluşturmak için tablodaki tek bir sütunun nasıl alınacağını gösteririz. Örnek, özellik oluşturmaya çalıştığınız tabloda bir enlem veya boylam sütununun olduğunu varsayar.
 
-Latitude/Boylam konum verilerine (StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`kaynağından alınan) ilişkin kısa bir açıklama aşağıda verilmiştir. Burada, alandan Özellikler oluşturmadan önce konum verileri hakkında anlaşılması gereken bazı yararlı noktalar verilmiştir:
+Latitude/Boylam konum verilerine (StackOverflow kaynağından alınan) ilişkin kısa bir açıklama aşağıda verilmiştir `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` . Burada, alandan Özellikler oluşturmadan önce konum verileri hakkında anlaşılması gereken bazı yararlı noktalar verilmiştir:
 
 * İşaret, dünyanın dört bir yanında Kuzey veya Güney, Doğu veya Batı olduğunu gösterir.
 * Sıfır olmayan yüzlerce basamak Boylam 'yi gösterir, enlem kullanılır.

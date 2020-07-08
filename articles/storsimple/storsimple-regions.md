@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76275120"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple için kullanılabilir bölgeler
@@ -75,7 +74,7 @@ StorSimple 8100 veya 8600 fiziksel cihaz kullanılıyorsa, cihaz aşağıdaki ü
 | 10 | Danimarka               | 25 | Kenya              | 40 | Romanya             | 55 | Ukrayna                    |
 | 11 | Mısır                 | 26 | Kuveyt             | 41 | Rusya              | 56 | Birleşik Arap Emirlikleri       |
 | 12 | Finlandiya               | 27 | Makao ÖİB          | 42 | Suudi Arabistan        | 57 | Birleşik Krallık             |
-| 13 | Fransa                | 28 | Malezya           | 43 | Singapur           | 58 | Amerika Birleşik Devletleri              |
+| 13 | Fransa                | 28 | Malezya           | 43 | Singapur           | 58 | Birleşik Devletler              |
 | 14 | Almanya               | 29 | Meksika             | 44 | Slovakya            | 59 | Vietnam                    |
 | 15 | Yunanistan                | 30 | Hollanda        | 45 | Slovenya            | 60 | Hırvatistan                    |
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76271334"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,0 sürüm notları
@@ -52,7 +51,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 | 1 |AAD tabanlı kimlik doğrulaması| Bu sürüm, AAD 'nin StorSimple Aygıt Yöneticisi kimlik doğrulamasına izin veren değişiklikler içerir.|
 | 2 |Atık toplama| Bu sorun, cihaz ve depolama hesaplarının farklı bölgelerde olduğu ve müşterinin zaman aralıklı ağ hataları bildirdiği ve bu sayede faturalandırmayı etkileyebilecek bir müşteri sitesinde bildirilmiştir. Bu sürümde, bu sorun düzeltildi. |
 | 3 |Performans| Bu sürüm, geri yükleme/bulut okuma/katmanı/katman performansı iyileştirmesinin sonucu olan değişiklikleri içerir.|
-| 4 |Güncelleştirme| Önceki sürümde, bir müşteri sitesindeki yedekleme hatalarıyla sonuçlanan güncelleştirmede bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir.|
+| 4 |Güncelleştir| Önceki sürümde, bir müşteri sitesindeki yedekleme hatalarıyla sonuçlanan güncelleştirmede bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir.|
 
 ## <a name="known-issues-in-update-10"></a>Güncelleştirme 1,0 ' de bilinen sorunlar
 

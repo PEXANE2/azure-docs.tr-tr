@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548722"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge modüllerini anlama
@@ -43,7 +42,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 IoT Edge çalışma zamanı tarafından yeni bir modül örneği oluşturulduğunda, buna karşılık gelen bir modül kimliği alır. Modül kimliği IoT Hub depolanır ve söz konusu modül örneği için tüm yerel ve bulut iletişimleri için adresleme ve güvenlik kapsamı olarak kullanılır.
 
-Bir modül örneğiyle ilişkili kimlik, örneğin çalıştığı aygıtın kimliğine ve çözümünüzde Bu modüle sağladığınız ada bağlıdır. Örneğin, bir Azure Stream Analytics kullanan bir `insight` modül çağırırsanız ve bunu adlı `Hannover01`bir cihaza dağıtırsanız, IoT Edge çalışma zamanı adlı `/devices/Hannover01/modules/insight`karşılık gelen bir modül kimliğini oluşturur.
+Bir modül örneğiyle ilişkili kimlik, örneğin çalıştığı aygıtın kimliğine ve çözümünüzde Bu modüle sağladığınız ada bağlıdır. Örneğin, bir `insight` Azure Stream Analytics kullanan bir modül çağırırsanız ve bunu adlı bir cihaza dağıtırsanız `Hannover01` , IoT Edge çalışma zamanı adlı karşılık gelen bir modül kimliğini oluşturur `/devices/Hannover01/modules/insight` .
 
 Açık olarak, bir modül görüntüsünü aynı cihaza birden çok kez dağıtmanız gerektiğinde, aynı görüntüyü farklı adlarla birden çok kez dağıtabilirsiniz.
 

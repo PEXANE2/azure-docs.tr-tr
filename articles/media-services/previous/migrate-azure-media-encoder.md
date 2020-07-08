@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513510"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
 
 Bu makalede, eski Azure Medya Kodlayıcısı (AME) medya işlemcisinden (kullanımdan kalkmakta olan) Media Encoder Standard medya işlemcisine geçiş adımları ele alınmaktadır. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
-Dosyaları AME ile kodlarken müşteriler genellikle gibi `H264 Adaptive Bitrate MP4 Set 1080p`adlandırılmış bir ön ayar dizesi kullanıyordu. Geçiş yapmak için, kodunuzun adı yerine **Media Encoder Standard** medya işlemcisini kullanacak şekilde güncelleştirilmesi gerekir ve gibi `H264 Multiple Bitrate 1080p`eşdeğer [sistem önayarlarından](media-services-mes-presets-overview.md) biridir. 
+Dosyaları AME ile kodlarken müşteriler genellikle gibi adlandırılmış bir ön ayar dizesi kullanıyordu `H264 Adaptive Bitrate MP4 Set 1080p` . Geçiş yapmak için, kodunuzun adı yerine **Media Encoder Standard** medya işlemcisini kullanacak şekilde güncelleştirilmesi gerekir ve gibi eşdeğer [sistem önayarlarından](media-services-mes-presets-overview.md) biridir `H264 Multiple Bitrate 1080p` . 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Media Encoder Standard geçiriliyor
 
@@ -67,7 +66,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 Onun şemasını kullanarak AME için kendi kodlama ön ayarını oluşturduysanız, [Media Encoder Standard için eşdeğer bir şema](media-services-mes-schema.md)vardır. Eski ayarların yeni kodlayıcıyla eşlenme hakkında sorularınız varsa, lütfen bizimle iletişime geçinmailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Bilinen farklar 
 
-Media Encoder Standard daha sağlam, güvenilir, daha iyi bir performansa sahiptir ve eski AME kodlayıcısından daha iyi kaliteli çıkış üretir. Buna ek olarak: 
+Media Encoder Standard daha sağlam, güvenilir, daha iyi bir performansa sahiptir ve eski AME kodlayıcısından daha iyi kaliteli çıkış üretir. Bunlara ek olarak: 
 
 * Media Encoder Standard, dosya adı farklı bir adlandırma kuralına sahip çıktı dosyaları üretir.
 * Media Encoder Standard, [giriş dosyası meta verilerini](media-services-input-metadata-schema.md) ve [Çıkış dosyası meta verilerini](media-services-output-metadata-schema.md)içeren dosyalar gibi yapıtlar üretir.

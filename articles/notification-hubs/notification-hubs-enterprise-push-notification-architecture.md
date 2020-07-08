@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76264042"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Kurumsal gönderim mimari kılavuzu
@@ -51,7 +50,7 @@ Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler p
 1. Mobile Uygulama
    * Bildirim alır ve görüntüler
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 1. Alıcı (Bildirim Hub 'ı aracılığıyla mobil uygulama/hizmet) ve gönderici (arka uç sistemleri) arasındaki ayırma, ek arka uç sistemlerinin en az değişiklik ile tümleştirilebilmesine izin verebilir.
 1. Ayrıca, birden çok mobil uygulama senaryosunun bir veya daha fazla arka uç sisteminden olay alabilmesini sağlar.  
@@ -234,7 +233,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 
     ![][3]
 
-    g. İşi "sürekli Çalıştır" olacak şekilde yapılandırın, böylece [Azure Portal] oturum açtığınızda aşağıdakine benzer bir şey görmeniz gerekir:
+    örneğin: İşi "sürekli Çalıştır" olacak şekilde yapılandırın, böylece [Azure Portal] oturum açtığınızda aşağıdakine benzer bir şey görmeniz gerekir:
 
     ![][4]
 
@@ -244,7 +243,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 
     b. Uygulamanızın bildirim almak için etkinleştirildiğinden emin olun.
 
-    c. Uygulamanın başlangıcında aşağıdaki Notification Hubs kayıt kodunun çağrıldığından emin olun ( `HubName` ve `DefaultListenSharedAccessSignature` değerlerini değiştirdikten sonra:
+    c. Uygulamanın başlangıcında aşağıdaki Notification Hubs kayıt kodunun çağrıldığından emin olun ( `HubName` ve değerlerini değiştirdikten sonra `DefaultListenSharedAccessSignature` :
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -291,4 +290,4 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 [Service Bus pub/Sub programlama]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/webjobs-create.md
 [Notification Hubs-Windows Universal öğreticisi]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/

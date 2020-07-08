@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721362"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
@@ -57,7 +56,7 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
    
    ![Proje oluşturma](./media/group-manager-tasks/create-project.png)
 
-**Groupcommon** Project **Özet** sayfası açılır. Sayfa URL 'si *https\//\<: ServerName>\</kuruluş-adı>/groupcommon*.
+**Groupcommon** Project **Özet** sayfası açılır. Sayfa URL 'si *https: \/ / \<servername> / \<organization-name> /groupcommon*.
 
 ![Proje özet sayfası](./media/group-manager-tasks/project-summary.png)
 
@@ -121,13 +120,13 @@ TDSP ekip depolarını içeri aktarmak için:
    
    ![Içeri aktar 'ı seçin](./media/group-manager-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL 'si**için *https:\//GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL 'si**için *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
    
    ![Microsoft TDSP ekip deposunu içeri aktar](./media/group-manager-tasks/import-repo-2.png)
    
 1. **Depo** sayfasının en üstünde aşağı açılır ve **grouputilities** deposunu seçin.
    
-1. Microsoft TDSP Team **Utilities** deposunun ( *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.git*) içeriğini **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
+1. Microsoft TDSP Team **Utilities** deposunun ( *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.git*) içeriğini **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
    
 Her iki grup deponuz artık, Microsoft TDSP ekibinin karşılık gelen deposundan *. git* diziniyle hariç tüm dosyaları içerir. 
 
@@ -215,7 +214,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, `git commit` komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 

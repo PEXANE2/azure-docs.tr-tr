@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278523"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure yay bulutu için CI/CD
@@ -25,7 +24,7 @@ Azure DevOps projenize Azure Resource Manager bir hizmet bağlantısı oluşturm
 
 ### <a name="deploy-artifacts"></a>Yapıtları dağıt
 
-Bir serisini kullanarak projelerinizi derleyebilir ve dağıtabilirsiniz `tasks`. Bu kod parçacığı ilk olarak, uygulamayı derlemek için bir Maven görevi tanımlar ve ardından Azure Spring Cloud Azure CLı uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görevdir.
+Bir serisini kullanarak projelerinizi derleyebilir ve dağıtabilirsiniz `tasks` . Bu kod parçacığı ilk olarak, uygulamayı derlemek için bir Maven görevi tanımlar ve ardından Azure Spring Cloud Azure CLı uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görevdir.
 
 ```yaml
 steps:

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710822"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Azure SignalR Hizmeti'nden Event Grid'e olayları gönderme
@@ -26,7 +25,7 @@ Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. Pow
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, farklı bir değere ayarlayın `RESOURCE_GROUP_NAME` .
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` farklı bir değere ayarlayın.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +74,7 @@ SignalR hizmeti oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir ç�
 
 Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
 
-Örnek uygulamayı dağıtmak için, Web uygulamanız `SITE_NAME` için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
+Örnek uygulamayı dağıtmak için, `SITE_NAME` Web uygulamanız için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -162,7 +161,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-Artık bir istemciyi SignalR hizmetine bağladınız. Event Grid Viewer Web uygulamanıza gidin ve bir `ClientConnectionConnected` olay görmeniz gerekir. İstemciyi sona erdirirsiniz, bir `ClientConnectionDisconnected` olay da görürsünüz.
+Artık bir istemciyi SignalR hizmetine bağladınız. Event Grid Viewer Web uygulamanıza gidin ve bir olay görmeniz gerekir `ClientConnectionConnected` . İstemciyi sona erdirirsiniz, bir olay da görürsünüz `ClientConnectionDisconnected` .
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

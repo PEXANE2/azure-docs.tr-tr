@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720529"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün müşteri kabul aşaması
@@ -44,7 +43,7 @@ Bu aşamada belirtilen iki ana görev vardır:
 
 Müşteri, sistemin kendi iş gereksinimlerini karşıladığını ve sistemin, istemci uygulaması tarafından kullanılmak üzere uygulamayı üretime dağıtmak için kabul edilebilir doğrulukla soruların yanıt verdiği doğrulaması gerekir. Tüm belgeler sonlandırılır ve gözden geçirilir. Proje, işlemlerden sorumlu varlığa devredilmiştir. Bu varlık, örneğin, bir BT veya müşteri veri bilimi ekibi ya da müşterinin üretimde sistem çalıştırmasından sorumlu bir aracı olabilir. 
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 Bu son aşamada üretilen ana yapıt, **müşterinin projenin çıkış rapordur**. Bu teknik rapor, sistemin nasıl çalışalınacağını öğrenmek için yararlı olan projenin tüm ayrıntılarını içerir. TDSP bir [Çıkış raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) şablonu sağlar. Şablonu olduğu gibi kullanabilir veya belirli istemci ihtiyaçları için özelleştirebilirsiniz. 
 
 

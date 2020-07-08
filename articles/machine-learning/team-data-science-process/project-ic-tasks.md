@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721260"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Ekip veri bilimi Işleminde bireysel katkıda bulunan görevler
@@ -55,7 +54,7 @@ Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değişti
 
 Depolarla yerel olarak çalışmak ve değişikliklerinizi paylaşılan ekibe ve proje depolarına iletmek *için, önce* depoları yerel makinenize kopyalamanız veya kopyalamanız gerekir. 
 
-1. Azure DevOps 'da, *https\//\<: sunucu adı>\</kuruluş adı>/\<takım adı>*, örneğin, **https:\//dev.Azure.com/DataScienceUnit/myTeam**gibi ekibinizin proje özet sayfasına gidin.
+1. Azure DevOps 'da, * \/ / \<server name> / \<organization name> / https \<team name> *:, örneğin, **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**için takımınızın Proje Özeti sayfasına gidin.
    
 1. Sol **Gezinti bölmesinde depo** ' ı seçin ve sayfanın üst kısmında, kopyalamak istediğiniz depoyu seçin.
    

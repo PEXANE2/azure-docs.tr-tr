@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277354"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry sistem izleme için Azure Log Analytics başlık dağıtma
@@ -183,7 +182,7 @@ Log Analytics çalışma alanını el ile oluşturduysanız, görünümleri ve u
 
 ### <a name="1-import-the-oms-view"></a>1. OMS görünümünü içeri aktarma
 
-OMS portalından **Görünüm tasarımcı** > **içeri aktarma** > **gözatmaya**gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview*' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
+OMS portalından **Görünüm tasarımcı**  >  **içeri aktarma**  >  **gözatmaya**gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview*' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
 
 Bu görünümleri özelleştirebilir veya **Görünüm Tasarımcısı**aracılığıyla yeni görünümler oluşturabilirsiniz.
 
@@ -219,7 +218,7 @@ Kafa ölçeğini genişletmek için, uygulama Yöneticisi veya CF CLı kullanara
 Loggregator, günlüğe kaydetme işlemiyle ilgili sorunları göstermek için bir **LGR** günlüğü iletisi gönderir. Günlüğe loggregator 'in ölçeğini ayarlamak için uyarıyı izleyebilirsiniz.
 Loggregator 'ın ölçeğini artırmak için, Doppler arabellek boyutunu artırın ya da CF bildiriminde ek Doppler sunucu örnekleri ekleyin. Daha fazla bilgi için bkz. [loggregator ölçeklendirme Kılavuzu](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>Güncelleştirme
+## <a name="update"></a>Güncelleştir
 
 Kafa başlığı 'nı daha yeni bir sürümle güncelleştirmek için yeni kafa başlığı sürümünü indirin, yukarıdaki "başlık dağıtma" bölümündeki adımları izleyin ve uygulamayı yeniden gönderin.
 

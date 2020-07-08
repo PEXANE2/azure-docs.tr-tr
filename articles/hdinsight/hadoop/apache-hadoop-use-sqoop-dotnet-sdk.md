@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157075"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop için .NET SDK kullanarak Apache Sqoop işleri çalıştırma
@@ -31,13 +30,13 @@ HDInsight kümesi ile Azure SQL veritabanı veya SQL Server veritabanı arasınd
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>.NET SDK ile HDInsight kümelerinde Sqoop kullanma
 
-HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. bu sayede, .NET 'ten HDInsight kümeleriyle çalışmak daha kolay olur. Bu bölümde, `hivesampletable` ' yi önkoşullardan oluşturduğunuz Azure SQL veritabanı tablosuna aktarmak Için bir C# konsol uygulaması oluşturursunuz.
+HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. bu sayede, .NET 'ten HDInsight kümeleriyle çalışmak daha kolay olur. Bu bölümde, ' yi `hivesampletable` önkoşullardan oluşturduğunuz Azure SQL veritabanı tablosuna aktarmak için bir C# konsol uygulaması oluşturursunuz.
 
-## <a name="set-up"></a>Ayarla
+## <a name="set-up"></a>Kurulum
 
 1. Visual Studio 'Yu başlatın ve bir C# konsol uygulaması oluşturun.
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu** ' na gidin ve şu komutu çalıştırın:
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' na gidin ve şu komutu çalıştırın:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -45,9 +44,9 @@ HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. bu sayede, .NET 'te
 
 ## <a name="sqoop-export"></a>Sqoop dışarı aktarma
 
-Hive 'dan SQL Server.  Bu örnek, Hive `hivesampletable` tablosundan SQL veritabanındaki `mobiledata` tabloya veri aktarır.
+Hive 'dan SQL Server.  Bu örnek, Hive `hivesampletable` TABLOSUNDAN `mobiledata` SQL veritabanındaki tabloya veri aktarır.
 
-1. Program.cs dosyasında aşağıdaki kodu kullanın. Ve `ExistingClusterName` `ExistingClusterPassword`değerlerini ayarlamak için kodu düzenleyin.
+1. Program.cs dosyasında aşağıdaki kodu kullanın. Ve değerlerini ayarlamak için kodu düzenleyin `ExistingClusterName` `ExistingClusterPassword` .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -115,9 +114,9 @@ Hive 'dan SQL Server.  Bu örnek, Hive `hivesampletable` tablosundan SQL veritab
 
 ## <a name="sqoop-import"></a>Sqoop içeri aktarma
 
-SQL Server 'den Azure depolama 'ya. Bu örnek, yukarıdaki dışa aktarmaya bağımlıdır.  Bu örnek, SQL veritabanındaki `mobiledata` tablodaki verileri kümenin varsayılan depolama hesabındaki `wasb:///tutorials/usesqoop/importeddata` dizine aktarır.
+SQL Server 'den Azure depolama 'ya. Bu örnek, yukarıdaki dışa aktarmaya bağımlıdır.  Bu örnek, `mobiledata` SQL veritabanındaki tablodaki verileri `wasb:///tutorials/usesqoop/importeddata` kümenin varsayılan depolama hesabındaki dizine aktarır.
 
-1. `//sqoop start //sqoop end` Blokta yukarıdaki kodu aşağıdaki kodla değiştirin:
+1. Blokta yukarıdaki kodu `//sqoop start //sqoop end` aşağıdaki kodla değiştirin:
 
     ```csharp
     var tableName = "mobiledata";
@@ -137,7 +136,7 @@ Linux tabanlı HDInsight aşağıdaki sınırlamaları sunar:
 
 * Toplu dışa aktarma: Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
 
-* Toplu işleme: `-batch` anahtar kullanılarak, Sqoop ekleme işlemlerini toplu olarak gerçekleştirmek yerine birden çok ekleme gerçekleştirir.
+* Toplu işleme: anahtar kullanılarak `-batch` , Sqoop ekleme işlemlerini toplu olarak gerçekleştirmek yerine birden çok ekleme gerçekleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

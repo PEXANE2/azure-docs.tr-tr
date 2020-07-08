@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513380"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API içeri aktarma kısıtlamaları ve bilinen sorunlar
@@ -50,22 +49,22 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>Openapı sürüm 3
 
--   Eğer çok `servers` belirtilmişse, API Management ilk https URL 'sini seçmeyi deneyecek. Herhangi bir HTTPs URL 'si yoksa, ilk HTTP URL 'si. HTTP URL 'Leri yoksa, sunucu URL 'SI boş olur.
+-   Eğer çok `servers` belirtilmişse, API Management Ilk https URL 'sini seçmeyi deneyecek. Herhangi bir HTTPs URL 'si yoksa, ilk HTTP URL 'si. HTTP URL 'Leri yoksa, sunucu URL 'SI boş olur.
 -   `Examples`desteklenmez, ancak `example` .
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>Openapı içeri aktarma, güncelleştirme ve dışarı aktarma mekanizmaları
 
 ### <a name="add-new-api-via-openapi-import"></a>Openapı içeri aktarma aracılığıyla yeni API ekleme
 
-Openapı belgesinde bulunan her işlem için, Azure Kaynak adı ve görünen adı ile `operationId` ve `summary` sırasıyla ayarlanan yeni bir işlem oluşturulur. `operationId`değer aşağıda açıklanan kuralların ardından normalleştirilir. `summary`değer olduğu gibi içeri aktarılır ve uzunluğu 300 karakterle sınırlıdır.
+Openapı belgesinde bulunan her işlem için, Azure Kaynak adı ve görünen adı ile ve sırasıyla ayarlanan yeni bir işlem oluşturulur `operationId` `summary` . `operationId`değer aşağıda açıklanan kuralların ardından normalleştirilir. `summary`değer olduğu gibi içeri aktarılır ve uzunluğu 300 karakterle sınırlıdır.
 
-`operationId` Belirtilmemişse (yani, yoksa `null`veya boş), Azure Kaynak adı değeri http yöntemi ve yol şablonu birleştirilerek oluşturulur. Örneğin, `get-foo`.
+`operationId`Belirtilmemişse (yani, yoksa `null` veya boş), Azure Kaynak adı değeri http yöntemi ve yol şablonu birleştirilerek oluşturulur. Örneğin, `get-foo` .
 
-`summary` Belirtilmemişse `null`(yani,, veya boş), `display name` değer olarak `operationId`ayarlanır. `operationId` Belirtilmezse, görünen ad değeri http yöntemi ve yol şablonu birleştirilerek oluşturulacaktır, örneğin, `Get - /foo`.
+Belirtilmemişse (yani,, `summary` `null` veya boş), `display name` değer olarak ayarlanır `operationId` . `operationId`Belirtilmezse, görünen ad DEĞERI http yöntemi ve yol şablonu birleştirilerek oluşturulacaktır, örneğin, `Get - /foo` .
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>Openapı içeri aktarma aracılığıyla var olan bir API 'YI güncelleştirme
 
-İçeri aktarma sırasında mevcut API, Openapı belgesinde açıklanan API ile eşleşecek şekilde değiştirilir. Openapı belgesindeki her işlem, `operationId` değeri mevcut işlemin Azure Kaynak adı ile karşılaştırılarak mevcut işlemle eşleştirilir.
+İçeri aktarma sırasında mevcut API, Openapı belgesinde açıklanan API ile eşleşecek şekilde değiştirilir. Openapı belgesindeki her işlem, `operationId` değeri mevcut Işlemin Azure Kaynak adı ile karşılaştırılarak mevcut işlemle eşleştirilir.
 
 Bir eşleşme bulunursa, mevcut işlemin özellikleri "yerinde" güncelleştirilir.
 
@@ -75,20 +74,20 @@ Tüm mevcut eşleşmeyen işlemler silinecektir.
 
 İçeri aktarmayı daha öngörülebilir hale getirmek için lütfen şu yönergeleri izleyin:
 
-- Her işlem için özelliği `operationId` belirttiğinizden emin olun.
-- İlk içeri aktarma işleminden `operationId` sonra değiştirilminden kaçının.
-- Aynı anda `operationId` hiçbir zaman DEĞIŞTIRMEYIN ve http yöntemi veya yol şablonu.
+- `operationId`Her işlem için özelliği belirttiğinizden emin olun.
+- `operationId`İlk içeri aktarma işleminden sonra değiştirilminden kaçının.
+- Aynı anda hiçbir zaman değiştirmeyin `operationId` ve http yöntemi veya yol şablonu.
 
 ### <a name="export-api-as-openapi"></a>API 'YI Openapı olarak dışarı aktar
 
-Her işlem için, Azure Kaynak adı bir `operationId`olarak verilecek ve görünen ad bir `summary`olarak verilecek.
+Her işlem için, Azure Kaynak adı bir olarak verilecek `operationId` ve görünen ad bir olarak verilecek `summary` .
 OperationId için normalleştirme kuralları
 
 - Küçük harfe Dönüştür.
-- Alfasayısal olmayan karakterlerin her dizisini tek bir çizgiyle değiştirin, örneğin, `GET-/foo/{bar}?buzz={quix}` içine `get-foo-bar-buzz-quix-`dönüştürülür.
-- Örneğin, `get-foo-bar-buzz-quix-` her iki tarafta da kesik çizgiler kırpılacak`get-foo-bar-buzz-quix`
+- Alfasayısal olmayan karakterlerin her dizisini tek bir çizgiyle değiştirin, örneğin, `GET-/foo/{bar}?buzz={quix}` içine dönüştürülür `get-foo-bar-buzz-quix-` .
+- Örneğin, her iki tarafta da kesik çizgiler `get-foo-bar-buzz-quix-` kırpılacak`get-foo-bar-buzz-quix`
 - Bir kaynak adı için en fazla dört karakter olan 76 karakter uzunluğunda olacak şekilde kısaltın.
-- Gerekirse, yinelenenleri kaldırma soneki için kalan dört karakteri kullanın `-1, -2, ..., -999`.
+- Gerekirse, yinelenenleri kaldırma soneki için kalan dört karakteri kullanın `-1, -2, ..., -999` .
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL

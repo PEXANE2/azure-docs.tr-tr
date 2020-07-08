@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263872"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java 'dan Notification Hubs kullanma
@@ -188,7 +187,7 @@ Yükleme API 'SI, kayıt yönetimi için alternatif bir mekanizmadır. Çok say�
 
 Yükleme, ihtiyacınız olan her şeyi içerir: gönderim kanalı (cihaz belirteci), Etiketler, şablonlar, ikincil kutucuklar (WNS ve APNS için). KIMLIĞI artık almak için hizmeti çağırmanız gerekmez. yalnızca GUID veya başka bir tanımlayıcı oluşturun, cihazı cihazda tutun ve anında iletme kanalı (cihaz belirteci) ile birlikte arka uca gönderin.
 
-Arka uçta yalnızca için `CreateOrUpdateInstallation`tek bir çağrı yapmanız gerekir; tam ıdempotent, bu nedenle gerekirse yeniden deneyin.
+Arka uçta yalnızca tek bir çağrı yapmanız gerekir `CreateOrUpdateInstallation` ; tamamen ıdempotent, bu nedenle gerekirse yeniden deneyin.
 
 Amazon Ille Fire için örnek olarak:
 
@@ -221,7 +220,7 @@ Yüklemeyi Sil:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`ve `Delete` ile `Get`en sonunda tutarlıdır. İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
+`CreateOrUpdate`, `Patch` ve `Delete` ile en sonunda tutarlıdır `Get` . İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
 
 Yüklemeler için gönderme akışı, kayıtlar için ile aynıdır. Belirli bir yüklemeye yönelik bildirimi hedeflemek için-yalnızca "ınstalstıd: {istenen-id}" etiketini kullanın. Bu durumda, kod şu şekilde olur:
 
@@ -294,7 +293,7 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
 
 **SAS imzası olan URI:**
 
- Bu URL, bir blob dosyasının veya blob kapsayıcısının URL 'si artı izin ve sona erme saati ile hesabın SAS anahtarı kullanılarak yapılan tüm bu işlerin imzası gibi bir dizi parametrenin URL 'sidir. Azure Storage Java SDK 'Sı, bu URI 'lerin oluşturulması dahil zengin özelliklere sahiptir. Basit alternatif olarak, imzalama algoritmasının temel ve kompakt `ImportExportE2E` uygulamasına sahip olan test sınıfına (GitHub konumundan) göz atın.
+ Bu URL, bir blob dosyasının veya blob kapsayıcısının URL 'si artı izin ve sona erme saati ile hesabın SAS anahtarı kullanılarak yapılan tüm bu işlerin imzası gibi bir dizi parametrenin URL 'sidir. Azure Storage Java SDK 'Sı, bu URI 'lerin oluşturulması dahil zengin özelliklere sahiptir. Basit alternatif olarak, `ImportExportE2E` imzalama algoritmasının temel ve kompakt uygulamasına sahip olan test sınıfına (GitHub konumundan) göz atın.
 
 ### <a name="send-notifications"></a>Bildirim gönder
 

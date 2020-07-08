@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710340"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün iş anlama aşaması
@@ -74,7 +73,7 @@ Keskin sorularınızın yanıtlarının bilinen örneklerini içeren veri kaynak
 
 Örneğin, var olan sistemlerin sorunu gidermek ve proje hedeflerine ulaşmak için ek veri türlerini toplayıp günlüğe kaydetmek gerektiğini fark edebilirsiniz. Bu durumda, dış veri kaynaklarını aramak veya sistemlerinizi yeni veri toplamak üzere güncelleştirmek isteyebilirsiniz.
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 Bu aşamada teslim edilebilirler aşağıda verilmiştir:
 
    * [Charter belgesi](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): TDSP proje yapısı tanımında standart bir şablon sağlanır. Kurucu belgesi, yaşayan bir belgedir. Projenin tamamında, yeni bulmalar yaptığınızda ve iş gereksinimleri değiştikçe şablonu güncelleştirebilirsiniz. Bu anahtar, bulma sürecinde ilerlemeniz sırasında daha fazla ayrıntı ekleyerek bu belgeyi yinelemek için kullanılır. Müşterilerin ve diğer paydaşların değişiklikleri yapmasına ve bunlara yönelik değişiklikleri açık bir şekilde iletmesinin nedenlerini koruyun.  

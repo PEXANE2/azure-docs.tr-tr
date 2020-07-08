@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981158"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak ilk sunucusuz uygulamanızı derleme
@@ -64,7 +63,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
 
    ![Visual Studio 'da yeni proje oluştur](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. Ardından **bulut** > **Azure Kaynak grubu**' nu seçin.
+1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. Ardından **bulut**  >  **Azure Kaynak grubu**' nu seçin.
 
    > [!NOTE]
    > **Bulut** kategorisi veya **Azure Kaynak grubu** projesi yoksa, Visual Studio için Azure SDK 'sını yüklediğinizden emin olun.
@@ -73,7 +72,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
 
    1. **Yeni proje oluştur** kutusunda, Visual C# veya Visual Basic Için **Azure Kaynak grubu** proje şablonunu seçin ve ardından **İleri**' yi seçin.
 
-   1. Azure Kaynak grubu için kullanmak istediğiniz adı ve diğer proje bilgilerini girin. İşiniz bittiğinde **Oluştur**’u seçin.
+   1. Azure Kaynak grubu için kullanmak istediğiniz adı ve diğer proje bilgilerini girin. İşiniz bittiğinde **Oluştur**'u seçin.
 
 1. Projenize bir ad ve konum verin ve ardından **Tamam**' ı seçin.
 
@@ -90,7 +89,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
    ![Azure hızlı başlangıç şablonunu seçin](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
    Visual Studio, kaynak grubu projeniz için bir çözüm oluşturur ve açar. 
-   Seçtiğiniz Azure hızlı başlangıç şablonu, kaynak grubu projeniz içinde azuredeploy. JSON adlı bir dağıtım şablonu oluşturur. Bu dağıtım şablonu, bir HTTP isteği tarafından tetiklenen basit bir mantıksal uygulama tanımını içerir, bir Azure işlevi çağırır ve sonucu HTTP yanıtı olarak döndürür.
+   Seçtiğiniz Azure hızlı başlangıç şablonu, kaynak grubu projeniz içinde azuredeploy.jsadlı bir dağıtım şablonu oluşturur. Bu dağıtım şablonu, bir HTTP isteği tarafından tetiklenen basit bir mantıksal uygulama tanımını içerir, bir Azure işlevi çağırır ve sonucu HTTP yanıtı olarak döndürür.
 
    ![Yeni sunucusuz çözüm](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
@@ -100,7 +99,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
 
 Mantıksal uygulamanızı Visual Studio 'daki Logic App Designer 'da açabilmek için önce Azure 'da zaten dağıtılmış bir Azure Kaynak grubunuz olması gerekir. Tasarımcı daha sonra mantıksal uygulamanızdaki kaynak ve hizmetlere bağlantılar oluşturabilir. Bu görev için, Visual Studio 'dan Azure portal çözümünüzü dağıtmak üzere aşağıdaki adımları izleyin:
 
-1. Çözüm Gezgini, kaynak projenizin kısayol menüsünden**Yeni** **Dağıt** > ' ı seçin.
+1. Çözüm Gezgini, kaynak projenizin kısayol menüsünden Yeni **Dağıt**' ı seçin  >  **New**.
 
    ![Kaynak grubu için yeni dağıtım oluştur](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -119,9 +118,9 @@ Mantıksal uygulamanızı Visual Studio 'daki Logic App Designer 'da açabilmek 
 
 Mantıksal uygulamanızı dağıtımdan sonra düzenlemek için, mantıksal uygulamanızı Visual Studio 'daki mantıksal uygulama Tasarımcısı ' nı kullanarak açın.
 
-1. Çözüm Gezgini, azuredeploy. json dosyasının kısayol menüsünde, **Logic App Designer Ile aç**' ı seçin.
+1. Çözüm Gezgini, dosyadaki azuredeploy.jskısayol menüsünde, **mantıksal uygulama Tasarımcısı Ile aç**' ı seçin.
 
-   ![Logic App Designer 'da azuredeploy. JSON açın](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+   ![Mantıksal uygulama tasarımcısında azuredeploy.jsaçın](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
    > [!TIP]
    > Visual Studio 2019 ' de bu komuta sahip değilseniz, Visual Studio için en son güncelleştirmelere sahip olup olmadığınızı kontrol edin.
@@ -140,7 +139,7 @@ JavaScript, Python, F #, PowerShell, Batch veya Bash kullanarak Işlevler projen
 
 ## <a name="deploy-functions-from-visual-studio"></a>Visual Studio 'dan işlevleri dağıtma
 
-Dağıtım şablonunuz, çözümünüzde bulunan tüm Azure işlevlerini azuredeploy. JSON dosyasındaki değişkenlerle belirtilen git deposundan dağıtır. Çözümünüzde Işlevler projenizi oluşturup yazardıysanız, söz konusu projeyi git kaynak denetimi (örneğin, GitHub veya Azure DevOps) olarak denetleyebilir ve sonra, `repo` şablonu Azure işlevinizi dağıtmaları için değişkeni güncelleştirebilirsiniz.
+Dağıtım şablonunuz, çözümünüzdeki azuredeploy.jsdosyadaki değişkenlerle belirtilen git deposundan bulunan tüm Azure işlevlerini dağıtır. Çözümünüzde Işlevler projenizi oluşturup yazardıysanız, söz konusu projeyi git kaynak denetimi (örneğin, GitHub veya Azure DevOps) olarak denetleyebilir ve sonra, `repo` şablonu Azure işlevinizi dağıtmaları için değişkeni güncelleştirebilirsiniz.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Mantıksal uygulamaları yönetme ve çalıştırma geçmişini görüntüleme
 

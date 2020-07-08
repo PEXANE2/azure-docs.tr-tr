@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024747"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
@@ -55,7 +54,7 @@ Azure Cloud Services çalışan rolleri ile uygulama oluşturmak, durum bilgisi 
 
 Service Fabric ' de durum bilgisi olan hizmetler, yalnızca veritabanları ve diğer veri depolarından değil, tüm uygulama türleri için yüksek kullanılabilirlik sağlar. Bu, doğal bir ilerleme. Uygulamalar, NoSQL veritabanlarına yönelik yüksek kullanılabilirlik için tamamen ilişkisel veritabanlarını kullanarak zaten taşınmıştır. Artık uygulamaların kendileri, güvenilirlik, tutarlılık veya kullanılabilirlikten ödün vermeden, ek performans kazançları için kendilerine ait "etkin" durum ve veri içerebilir.
 
-Mikro hizmetlerden oluşan uygulamalar oluştururken, genellikle durum bilgisiz olmayan ve durum bilgisi olan iş orta katman hizmetlerini çağıran durum bilgisiz Web Apps (ASP.NET ve Node. js gibi) birleşimine sahip olursunuz. Uygulamalar ve hizmetler, Service Fabric dağıtım komutları aracılığıyla aynı Service Fabric kümesine dağıtılır. Bu hizmetlerin her biri, ölçek, güvenilirlik ve kaynak kullanımıyla ilgili olarak bağımsızdır. Bu bağımsızlık geliştirme ve yaşam döngüsü yönetiminde çeviklik ve esneklik artar.
+Mikro hizmetlerden oluşan uygulamalar oluştururken, genellikle durum bilgisiz olmayan ve durum bilgisi olan iş orta katman hizmetlerini çağıran durum bilgisiz Web Apps (ASP.NET ve Node.js gibi) birleşimine sahip olursunuz. Uygulamalar ve hizmetler, Service Fabric dağıtım komutları aracılığıyla aynı Service Fabric kümesine dağıtılır. Bu hizmetlerin her biri, ölçek, güvenilirlik ve kaynak kullanımıyla ilgili olarak bağımsızdır. Bu bağımsızlık geliştirme ve yaşam döngüsü yönetiminde çeviklik ve esneklik artar.
 
 Durum bilgisi olan mikro hizmetler, yalnızca durum bilgisiz uygulamaların kullanılabilirlik ve gecikme süresi gereksinimlerini karşılamak için geleneksel olarak gerekli olan ek kuyruklar ve önbellekler gereksinimini kaldırdıklarından uygulama tasarımlarını basitleştirir. Durum bilgisi olan hizmetler yüksek kullanılabilirlik ve düşük gecikme süresine sahip olduğundan uygulamanızda yönetmek için daha az ayrıntı vardır.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721566"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid için özel konuya gönderi gönder
@@ -23,9 +22,9 @@ Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır
 
 ## <a name="endpoint"></a>Uç Nokta
 
-HTTP GÖNDERISINI özel bir konuya gönderirken URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01`.
+HTTP GÖNDERISINI özel bir konuya gönderirken URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01` .
 
-Örneğin, geçerli bir URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Örneğin, geçerli bir URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 
 Azure CLı ile özel bir konu için uç noktayı almak üzere şunu kullanın:
 
@@ -41,9 +40,9 @@ Azure PowerShell bir özel konu için uç noktayı almak için şunu kullanın:
 
 ## <a name="header"></a>Üst bilgi
 
-İstekte, kimlik doğrulaması için bir anahtar içeren adlı `aeg-sas-key` bir başlık değeri ekleyin.
+İstekte, `aeg-sas-key` kimlik doğrulaması için bir anahtar içeren adlı bir başlık değeri ekleyin.
 
-Örneğin, geçerli bir üst bilgi değeri `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Örneğin, geçerli bir üst bilgi değeri `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==` .
 
 Azure CLı ile özel bir konunun anahtarını almak için şunu kullanın:
 

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76119627"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak hatalı bir Azure VM sorunlarını giderme
@@ -42,13 +41,13 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 2.  Kurtarma VM 'si oluşturulduktan sonra, Uzak Masaüstü ' ni kurtarma VM 'sine.
 
-3.  Sunucu Yöneticisi, **Yönet** > **rol ve Özellik Ekle**' yi seçin.
+3.  Sunucu Yöneticisi, **Yönet**  >  **rol ve Özellik Ekle**' yi seçin.
 
 4.  **Yükleme türü** bölümünde **rol tabanlı veya özellik tabanlı yükleme**' yi seçin.
 
 5.  **Hedef sunucuyu Seç** bölümünde, kurtarma sanal makinesinin seçildiğinden emin olun.
 
-6.  **Hyper-V rolü** > **Özellik Ekle**' yi seçin.
+6.  **Hyper-V rolü**  >  **Özellik Ekle**' yi seçin.
 
 7.  **Özellikler** bölümünde **İleri ' yi** seçin.
 
@@ -60,7 +59,7 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 11. Gerekirse sunucuyu otomatik olarak yeniden başlatmak için kutuyu işaretleyin.
 
-12. **Yükle**’yi seçin.
+12. **Yükle**'yi seçin.
 
 13. Sunucunun Hyper-V rolünü yüklemesine izin verin. Bu işlem birkaç dakika sürer ve sunucu otomatik olarak yeniden başlatılır.
 
@@ -74,7 +73,7 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 4.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi**Içinde, **Hyper-v rolünü**seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
 
-5.  Hyper-V Yöneticisi 'nde, kurtarma sanal makinesine sağ tıklayın ve ardından **Yeni** > **sanal makine** > **İleri**' yi seçin.
+5.  Hyper-V Yöneticisi 'nde, kurtarma sanal makinesine sağ tıklayın ve ardından **Yeni**  >  **sanal makine**  >  **İleri**' yi seçin.
 
 6.  VM için bir ad yazın ve ardından **İleri**' yi seçin.
 

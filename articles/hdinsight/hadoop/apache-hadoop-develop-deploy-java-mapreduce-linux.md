@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76311963"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop için Java MapReduce programları geliştirme
@@ -44,13 +43,13 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    Bu komut, `artifactID` parametresi tarafından belirtilen ada sahip bir dizin oluşturur (Bu örnekte**wordcountjava** .) Bu dizin aşağıdaki öğeleri içerir:
+    Bu komut, parametresi tarafından belirtilen ada sahip bir dizin oluşturur `artifactID` (Bu örnekte**wordcountjava** .) Bu dizin aşağıdaki öğeleri içerir:
 
     * `pom.xml`-Projeyi oluşturmak için kullanılan bilgileri ve yapılandırma ayrıntılarını içeren [proje nesne modeli (pod)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) .
     * src\main\java\org\apache\hadoop\examples: uygulama kodunuzu Içerir.
     * src\test\java\org\apache\hadoop\examples: uygulamanız için testler Içerir.
 
-1. Oluşturulan örnek kodu kaldırın. Oluşturulan test ve uygulama dosyalarını `AppTest.java`silin ve `App.java` aşağıdaki komutları girerek:
+1. Oluşturulan örnek kodu kaldırın. Oluşturulan test ve uygulama dosyalarını silin `AppTest.java` ve `App.java` aşağıdaki komutları girerek:
 
     ```cmd
     cd wordcountjava
@@ -60,7 +59,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Proje nesne modelini Güncelleştir
 
-Poz. xml dosyasının tam başvurusu için bkz https://maven.apache.org/pom.html.. Aşağıdaki `pom.xml` komutu girerek açın:
+pom.xml dosyasının tam bir başvurusu için bkz https://maven.apache.org/pom.html .. `pom.xml`Aşağıdaki komutu girerek açın:
 
 ```cmd
 notepad pom.xml
@@ -68,7 +67,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Bağımlılık Ekle
 
-İçinde `pom.xml`, `<dependencies>` bölümüne aşağıdaki metni ekleyin:
+İçinde `pom.xml` , bölümüne aşağıdaki metni ekleyin `<dependencies>` :
 
 ```xml
 <dependency>
@@ -91,9 +90,9 @@ notepad pom.xml
 </dependency>
 ```
 
-Bu, gerekli &lt;kitaplıkları (ArtifactId\>içinde listelenmiştir) belirli bir sürümle (sürüm &lt;\>içinde listelenmiştir) tanımlar. Derleme zamanında, bu bağımlılıklar varsayılan Maven deposundan indirilir. [Maven depo aramasını](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) kullanarak daha fazla bilgi görüntüleyebilirsiniz.
+Bu, gerekli kitaplıkları (ArtifactId içinde &lt; listelenmiştir \> ) belirli bir sürümle (sürüm içinde listelenmiştir &lt; \> ) tanımlar. Derleme zamanında, bu bağımlılıklar varsayılan Maven deposundan indirilir. [Maven depo aramasını](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) kullanarak daha fazla bilgi görüntüleyebilirsiniz.
 
-Maven, HDInsight kümesi tarafından çalışma zamanında sağlandığı için `<scope>provided</scope>` bu bağımlılıkların uygulamayla paketlenmemelidir.
+`<scope>provided</scope>`Maven, HDInsight kümesi tarafından çalışma zamanında sağlandığı için bu bağımlılıkların uygulamayla paketlenmemelidir.
 
 > [!IMPORTANT]
 > Kullanılan sürüm, kümenizde bulunan Hadoop sürümüyle eşleşmelidir. Sürümler hakkında daha fazla bilgi için bkz. [HDInsight bileşen sürümü oluşturma](../hdinsight-component-versioning.md) belgesi.
@@ -102,7 +101,7 @@ Maven, HDInsight kümesi tarafından çalışma zamanında sağlandığı için 
 
 Maven eklentileri projenin derleme aşamalarını özelleştirmenizi sağlar. Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklemek için kullanılır.
 
-Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın. Bu metin dosyadaki `<project>...</project>` etiketlerin içinde olmalıdır, örneğin, `</dependencies>` ve. `</project>`
+Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın. Bu metin dosyadaki etiketlerin içinde olmalıdır `<project>...</project>` , örneğin, `</dependencies>` ve `</project>` .
 
 ```xml
 <build>
@@ -139,7 +138,7 @@ Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın.
 </build>
 ```
 
-Bu bölüm Apache Maven derleyicisi eklentisini ve Apache Maven gölge eklentisini yapılandırır. Derleyici eklentisi, topolojiyi derlemek için kullanılır. Gölge eklentisi, Maven tarafından oluşturulan JAR paketindeki lisans çoğaltmasını engellemek için kullanılır. Bu eklenti, HDInsight kümesinde çalışma zamanında bir "yinelenen lisans dosyaları" hatası oluşmasını engellemek için kullanılır. `ApacheLicenseResourceTransformer` Uygulama ile Maven-gölge-eklentisi kullanılması hatayı önler.
+Bu bölüm Apache Maven derleyicisi eklentisini ve Apache Maven gölge eklentisini yapılandırır. Derleyici eklentisi, topolojiyi derlemek için kullanılır. Gölge eklentisi, Maven tarafından oluşturulan JAR paketindeki lisans çoğaltmasını engellemek için kullanılır. Bu eklenti, HDInsight kümesinde çalışma zamanında bir "yinelenen lisans dosyaları" hatası oluşmasını engellemek için kullanılır. Uygulama ile Maven-gölge-eklentisi kullanılması `ApacheLicenseResourceTransformer` hatayı önler.
 
 Maven-gölge-eklentisi, uygulamanın gerektirdiği tüm bağımlılıkları içeren bir Uber jar de oluşturur.
 
@@ -147,7 +146,7 @@ Maven-gölge-eklentisi, uygulamanın gerektirdiği tüm bağımlılıkları içe
 
 ## <a name="create-the-mapreduce-application"></a>MapReduce uygulamasını oluşturma
 
-1. Yeni bir dosya `WordCount.java`oluşturmak ve açmak için aşağıdaki komutu girin. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
+1. Yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin `WordCount.java` . Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
@@ -226,11 +225,11 @@ Maven-gölge-eklentisi, uygulamanın gerektirdiği tüm bağımlılıkları içe
     }
     ```
 
-    Paket adı `org.apache.hadoop.examples` ve sınıf adı olduğuna dikkat edin `WordCount`. MapReduce işini gönderdiğinizde bu adları kullanırsınız.
+    Paket adı `org.apache.hadoop.examples` ve sınıf adı olduğuna dikkat edin `WordCount` . MapReduce işini gönderdiğinizde bu adları kullanırsınız.
 
 ## <a name="build-and-package-the-application"></a>Uygulamayı derleyin ve paketleyin
 
-`wordcountjava` Dizininden, uygulamayı IÇEREN bir jar dosyası oluşturmak için aşağıdaki komutu kullanın:
+`wordcountjava`Dizininden, uygulamayı içeren BIR jar dosyası oluşturmak için aşağıdaki komutu kullanın:
 
 ```cmd
 mvn clean package
@@ -238,22 +237,22 @@ mvn clean package
 
 Bu komut önceki tüm derleme yapılarını temizler, henüz yüklenmemiş olan bağımlılıkları indirir ve ardından uygulamayı derler ve paketleyebilir.
 
-Komut tamamlandığında, `wordcountjava/target` dizin adlı `wordcountjava-1.0-SNAPSHOT.jar`bir dosya içerir.
+Komut tamamlandığında, `wordcountjava/target` Dizin adlı bir dosya içerir `wordcountjava-1.0-SNAPSHOT.jar` .
 
 > [!NOTE]
-> `wordcountjava-1.0-SNAPSHOT.jar` Dosya, yalnızca WORDCOUNT işi değil, aynı zamanda işin çalışma zamanında gerektirdiği bağımlılıkları içeren bir uberjar dosyasıdır.
+> `wordcountjava-1.0-SNAPSHOT.jar`Dosya, yalnızca WordCount işi değil, aynı zamanda işin çalışma zamanında gerektirdiği bağımlılıkları içeren bir uberjar dosyasıdır.
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>JAR 'yi karşıya yükleme ve işleri çalıştırma (SSH)
 
-Aşağıdaki adımlar, JAR `scp` 'yi HDInsight kümesindeki Apache HBase 'in birincil baş düğümüne kopyalamak için kullanılır. Bu `ssh` komut daha sonra kümeye bağlanmak ve örneği doğrudan baş düğümde çalıştırmak için kullanılır.
+Aşağıdaki adımlar, `scp` jar 'Yi HDInsight kümesindeki Apache HBase 'in birincil baş düğümüne kopyalamak için kullanılır. Bu `ssh` komut daha sonra kümeye bağlanmak ve örneği doğrudan baş düğümde çalıştırmak için kullanılır.
 
-1. Jar 'yi kümeye yükleyin. Öğesini `CLUSTERNAME` HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
+1. Jar 'yi kümeye yükleyin. `CLUSTERNAME`Öğesini HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Kümeye bağlanın. Öğesini `CLUSTERNAME` HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
+1. Kümeye bağlanın. `CLUSTERNAME`Öğesini HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -265,7 +264,7 @@ Aşağıdaki adımlar, JAR `scp` 'yi HDInsight kümesindeki Apache HBase 'in bir
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
 
-    Bu komut WordCount MapReduce uygulamasını başlatır. Giriş dosyası `/example/data/gutenberg/davinci.txt`ve çıkış dizini `/example/data/wordcountout`. Hem giriş dosyası hem de çıkış, küme için varsayılan depolama alanına depolanır.
+    Bu komut WordCount MapReduce uygulamasını başlatır. Giriş dosyası `/example/data/gutenberg/davinci.txt` ve çıkış dizini `/example/data/wordcountout` . Hem giriş dosyası hem de çıkış, küme için varsayılan depolama alanına depolanır.
 
 1. İş tamamlandıktan sonra, sonuçları görüntülemek için aşağıdaki komutu kullanın:
 

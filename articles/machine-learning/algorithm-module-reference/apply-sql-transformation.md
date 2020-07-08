@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76314547"
 ---
 # <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
@@ -33,7 +32,7 @@ SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL dönüşümünü Uygula ' yı yapılandırma  
 
-Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, ve `t1` `t2` `t3`adlarını kullanmanız gerekir. Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
+Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, ve adlarını kullanmanız gerekir `t1` `t2` `t3` . Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
   
 Kalan parametre, SQLite sözdizimini kullanan bir SQL sorgusudur. **SQL betiği** metin kutusuna birden çok satır yazarken her bir ifadeyi sonlandırmak için noktalı virgül kullanın. Aksi takdirde, satır sonları boşluklara dönüştürülür.  
 
@@ -45,7 +44,7 @@ Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yan
 
 -   Bağlantı noktası 1 üzerinde her zaman bir giriş gereklidir.  
   
--   Boşluk veya diğer özel karakterler içeren sütun tanımlayıcıları için, `SELECT` veya `WHERE` yan tümcelerinde sütuna başvuru yaparken her zaman köşeli ayraç veya çift tırnak işareti içinde sütun tanımlayıcısını çevreler.  
+-   Boşluk veya diğer özel karakterler içeren sütun tanımlayıcıları için, `SELECT` veya yan tümcelerinde sütuna başvuru yaparken her zaman köşeli ayraç veya çift tırnak işareti içinde sütun tanımlayıcısını çevreler `WHERE` .  
   
 ### <a name="unsupported-statements"></a>Desteklenmeyen deyimler  
 
@@ -53,11 +52,11 @@ SQLite, ANSI SQL standardının çoğunu desteklese de, ticari ilişkisel verita
   
 - SQLite, en ilişkisel veritabanı sistemlerinde olduğu gibi bir sütuna bir tür atamak yerine, değerler için dinamik yazma kullanır. Kesin olarak yazılmış ve örtük tür dönüştürmeye izin veren.  
   
-- `LEFT OUTER JOIN`uygulandı, ancak değil `RIGHT OUTER JOIN` `FULL OUTER JOIN`.  
+- `LEFT OUTER JOIN`uygulandı, ancak değil `RIGHT OUTER JOIN` `FULL OUTER JOIN` .  
 
-- `ALTER TABLE` Komutuyla ve `ADD COLUMN` deyimlerini `RENAME TABLE` kullanabilirsiniz, ancak, ve `DROP COLUMN` `ALTER COLUMN` `ADD CONSTRAINT`dahil diğer yan tümceler desteklenmez.  
+- `RENAME TABLE`Komutuyla ve deyimlerini kullanabilirsiniz `ADD COLUMN` `ALTER TABLE` , ancak, ve dahil diğer yan tümceler desteklenmez `DROP COLUMN` `ALTER COLUMN` `ADD CONSTRAINT` .  
   
-- SQLite içinde bir görünüm oluşturabilirsiniz, ancak bundan sonra görünümler salt okunurdur. Bir görünümde `DELETE`, `INSERT`veya `UPDATE` ifadesini yürütemezsiniz. Ancak, bir görünümde `DELETE`, `INSERT`, veya `UPDATE` bir deneyin üzerinde başlatılan bir tetikleyici oluşturabilir ve Tetikleyicinin gövdesinde başka işlemler gerçekleştirebilirsiniz.  
+- SQLite içinde bir görünüm oluşturabilirsiniz, ancak bundan sonra görünümler salt okunurdur. `DELETE` `INSERT` Bir görünümde, veya ifadesini yürütemezsiniz `UPDATE` . Ancak, bir görünümde,, veya bir deneyin üzerinde başlatılan bir tetikleyici oluşturabilir `DELETE` `INSERT` `UPDATE` ve Tetikleyicinin gövdesinde başka işlemler gerçekleştirebilirsiniz.  
   
 
 Resmi SQLite sitesinde sağlanan desteklenmeyen işlevlerin listesine ek olarak, aşağıdaki wiki desteklenmeyen diğer özelliklerin bir listesini sağlar: [SQLite-desteklenmeyen SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  

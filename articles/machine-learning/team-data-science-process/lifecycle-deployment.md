@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720495"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün dağıtım aşaması
@@ -52,7 +51,7 @@ Bu aşamada belirtilen ana görev:
 
 Azure Machine Learning Web hizmeti ile model işlemleştirme örnekleri için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md). Üretim modeli ve dağıttığınız veri işlem hattı için telemetri ve izleme oluşturmak en iyi uygulamadır. Bu uygulama, sonraki sistem durumu raporlama ve sorun giderme konusunda yardımcı olur.  
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 
 * Sistem durumunu ve anahtar ölçümlerini görüntüleyen bir durum panosu
 * Dağıtım ayrıntıları içeren son modelleme raporu

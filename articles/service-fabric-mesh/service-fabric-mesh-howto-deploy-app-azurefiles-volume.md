@@ -7,10 +7,9 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76718829"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
@@ -34,7 +33,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 Bu makaleyi tamamlayabilmeniz için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. 
 
-Azure CLı 'yi bu makaleyle yerel olarak kullanmak için, en azından `az --version` `azure-cli (2.0.43)`döndürdüğünden emin olun.  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
+Azure CLı 'yi bu makaleyle yerel olarak kullanmak için, `az --version` en azından döndürdüğünden emin olun `azure-cli (2.0.43)` .  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
 
 Azure 'da oturum açmak ve aboneliğinizi ayarlamak için:
 
@@ -57,7 +56,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Depolama hesabı adını ve anahtarını ve dosya paylaşımının adını alın
-Depolama hesabı adı, depolama hesabı anahtarı ve dosya paylaşımının adı, `<storageAccountName>` `<storageAccountKey>`, ve `<fileShareName>` olarak, aşağıdaki bölümlerde başvurulur. 
+Depolama hesabı adı, depolama hesabı anahtarı ve dosya paylaşımının adı, `<storageAccountName>` `<storageAccountKey>` , ve olarak, `<fileShareName>` Aşağıdaki bölümlerde başvurulur. 
 
 Depolama hesaplarınızı listeleyin ve kullanmak istediğiniz dosya paylaşımının bulunduğu depolama hesabının adını alın:
 ```azurecli-interactive
@@ -81,11 +80,11 @@ Bu değerleri [Azure Portal](https://portal.azure.com)de bulabilirsiniz:
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (JSON)
 
-Önceki bir adımda bulduğunuz `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` değerleri için parametreler ekleyin. 
+`<fileShareName>` `<storageAccountName>` `<storageAccountKey>` Önceki bir adımda bulduğunuz, ve değerleri için parametreler ekleyin. 
 
-Uygulama kaynağının eşi olarak bir birim kaynağı oluşturun. Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. İçinde `azureFileParameters`, önceki adımda bulduğunuz `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` değerleri için parametreleri belirtin.
+Uygulama kaynağının eşi olarak bir birim kaynağı oluşturun. Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. İçinde, `azureFileParameters` `<fileShareName>` `<storageAccountName>` `<storageAccountKey>` önceki adımda bulduğunuz, ve değerleri için parametreleri belirtin.
 
-Birimi hizmetinize bağlamak için, hizmetinin `volumeRefs` `codePackages` öğesine bir ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
+Birimi hizmetinize bağlamak için, `volumeRefs` `codePackages` hizmetinin öğesine bir ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
 
 ```json
 {
@@ -195,7 +194,7 @@ Birimi hizmetinize bağlamak için, hizmetinin `volumeRefs` `codePackages` öğe
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (YAML)
 
-Uygulamanız için *uygulama kaynakları* dizinine yeni bir *Volume. YAML* dosyası ekleyin.  Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. `<fileShareName>`, `<storageAccountName>`ve `<storageAccountKey>` önceki bir adımda bulduğunuz değerlerdir.
+Uygulamanız için *uygulama kaynakları* dizinine yeni bir *Volume. YAML* dosyası ekleyin.  Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. `<fileShareName>`, `<storageAccountName>` ve `<storageAccountKey>` önceki bir adımda bulduğunuz değerlerdir.
 
 ```yaml
 volume:
@@ -210,7 +209,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Hizmet *kaynakları* dizinindeki *Service. YAML* dosyasını, birimi hizmetinize bağlamak için güncelleştirin.  `volumeRefs` Öğesini `codePackages` öğesine ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
+Hizmet *kaynakları* dizinindeki *Service. YAML* dosyasını, birimi hizmetinize bağlamak için güncelleştirin.  Öğesini `volumeRefs` `codePackages` öğesine ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
 
 ```yaml
 ## Service definition ##

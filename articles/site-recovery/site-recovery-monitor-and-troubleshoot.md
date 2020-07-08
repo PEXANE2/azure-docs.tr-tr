@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68717361"
 ---
 # <a name="monitor-site-recovery"></a>Site Recovery’yi izleme
@@ -46,7 +45,7 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 
 **Çoğaltılan öğelerde**, kasadaki çoğaltmanın etkin olduğu tüm makinelerin sistem durumunu izleyin.
 
-**Durumunda** | **Bilgileri**
+**Durum** | **Ayrıntılar**
 --- | ---
 Sağlam | Çoğaltma normal ilerliyor. Herhangi bir hata veya uyarı belirtiyle algılanamamış.
 Uyarı | Çoğaltmayı etkileyebilecek bir veya daha fazla uyarı belirtiyle karşılaşmış.
@@ -60,7 +59,7 @@ Uygulanamaz | Şu anda çoğaltılmasının beklenmediği sunucular. Bu, yük de
 - Çoğaltılan makinelerde, her altı ayda bir yük devretme testi çalıştırmanızı öneririz. Üretim ortamınızı kesintiye uğratmadan yük devretmenin beklenen şekilde çalıştığını denetetmenin bir yoludur. 
 - Yük devretme testi, yalnızca yük devretme ve yük devretme sonrası Temizleme başarıyla tamamlandıktan sonra başarılı olarak kabul edilir.
 
-**Durumunda** | **Bilgileri**
+**Durum** | **Ayrıntılar**
 --- | ---
 Önerilen test | Koruma etkinleştirildikten sonra yük devretme testi olmayan makineler.
 Başarıyla gerçekleştirildi | Ya da daha fazla başarılı test yük devretme makineleri.
@@ -73,7 +72,7 @@ Uygulanamaz | Yük devretme testi için şu anda uygun olmayan makineler. Örne�
 - Yapılandırma sorunları (yazılım güncelleştirme kullanılabilirliği hariç), varsayılan olarak her 12 saatte bir çalışan düzenli Doğrulayıcı işlemi tarafından algılanır. **Yapılandırma sorunları** bölüm başlığının yanındaki Yenile simgesine tıklayarak Doğrulayıcı işlemini hemen çalışacak şekilde zorlayabilirsiniz.
 - Daha fazla ayrıntı edinmek için bağlantılara tıklayın. Belirli makineleri etkileyen sorunlar için **hedef konfigürasyonlar** sütununda **ilgilenilmesi gerekiyor** ' a tıklayın. Ayrıntılar düzeltme önerilerini içerir.
 
-**Durumunda** | **Bilgileri**
+**Durum** | **Ayrıntılar**
 --- | ---
 Eksik yapılandırma | Kurtarma ağı veya kaynak grubu gibi gerekli bir ayar eksiktir.
 Eksik kaynaklar | Belirtilen bir kaynak bulunamıyor veya abonelikte kullanılamıyor. Örneğin, kaynak silinmiş veya geçirilmiş. İzlenen kaynaklar hedef kaynak grubu, hedef VNet/alt ağ, günlük/hedef depolama hesabı, hedef kullanılabilirlik kümesi, hedef IP adresi dahil edilmiştir.
@@ -107,12 +106,12 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 - Altyapı görünümündeki tüm özellikleri kullanmak için bu bileşenler için [güncelleştirme paketi 22](https://support.microsoft.com/help/4072852) ' yi çalıştırıyor olmanız gerekir.
 - Altyapı görünümünü kullanmak için ortamınızda uygun çoğaltma senaryosunu seçin. Daha fazla ayrıntı için görünümde ayrıntıya gidebilirsiniz. Aşağıdaki tabloda hangi senaryoların temsil edildiği gösterilmektedir.
 
-    **Senaryo** | **Durumunda**  | **Görünüm kullanılabilir mi?**
+    **Senaryo** | **Durum**  | **Görünüm kullanılabilir mi?**
     --- |--- | ---
     **Şirket içi siteler arasında çoğaltma** | Tüm eyaletler | Hayır 
-    **Azure bölgeleri arasında Azure VM çoğaltma**  | Çoğaltma etkin/ilk çoğaltma devam ediyor | Yes
+    **Azure bölgeleri arasında Azure VM çoğaltma**  | Çoğaltma etkin/ilk çoğaltma devam ediyor | Evet
     **Azure bölgeleri arasında Azure VM çoğaltma** | Yük devredildi/başarısız oldu | Hayır   
-    **Azure’a VMware çoğaltma** | Çoğaltma etkin/ilk çoğaltma devam ediyor | Yes     
+    **Azure’a VMware çoğaltma** | Çoğaltma etkin/ilk çoğaltma devam ediyor | Evet     
     **Azure’a VMware çoğaltma** | Yük devredildi/başarısız oldu | Hayır      
     **Azure'a Hyper-V çoğaltması** | Yük devredildi/başarısız oldu | Hayır
 

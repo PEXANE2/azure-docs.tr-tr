@@ -14,10 +14,9 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045366"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API azaltma hatalarını giderme 
@@ -28,7 +27,7 @@ Azure Işlem istekleri, hizmetin genel performansı konusunda yardımcı olmak i
 
 Azure 'un ön kapısı olarak Azure Resource Manager, tüm gelen API isteklerinin kimlik doğrulaması ve ilk sıra doğrulaması ve azaltmasından oluşur. Azure Resource Manager çağrı hızı sınırları ve ilgili tanılama yanıtı HTTP üstbilgileri [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)açıklanmıştır.
  
-Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla Istek 429 ' dir. İstek azaltma 'nın Azure Resource Manager veya CRP gibi temel bir kaynak sağlayıcısı tarafından gerçekleştirilip yapılmlamadığını anlamak için GET istekleri `x-ms-ratelimit-remaining-subscription-reads` ve `x-ms-ratelimit-remaining-subscription-writes` yanıt üst bilgilerini get istekleri için inceleyin. Kalan çağrı sayısı 0 ' a yaklaşıyorsa, aboneliğin Azure Resource Manager tarafından tanımlanan genel çağrı sınırına ulaşıldı. Tüm abonelik istemcilerine göre etkinlikler birlikte sayılır. Aksi takdirde, daraltma hedef kaynak sağlayıcısından (istek URL 'sinin `/providers/<RP>` segmenti tarafından adreslenmiş olan) geliyor. 
+Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla Istek 429 ' dir. İstek azaltma 'nın Azure Resource Manager veya CRP gibi temel bir kaynak sağlayıcısı tarafından gerçekleştirilip yapılmlamadığını anlamak için `x-ms-ratelimit-remaining-subscription-reads` get istekleri ve `x-ms-ratelimit-remaining-subscription-writes` yanıt üst bilgilerini get istekleri için inceleyin. Kalan çağrı sayısı 0 ' a yaklaşıyorsa, aboneliğin Azure Resource Manager tarafından tanımlanan genel çağrı sınırına ulaşıldı. Tüm abonelik istemcilerine göre etkinlikler birlikte sayılır. Aksi takdirde, daraltma hedef kaynak sağlayıcısından ( `/providers/<RP>` Istek URL 'sinin segmenti tarafından adreslenmiş olan) geliyor. 
 
 ## <a name="call-rate-informational-response-headers"></a>Çağrı hızı bilgilendirici yanıt üstbilgileri 
 
@@ -38,7 +37,7 @@ Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla
 | x-MS-istek ücreti               | ```<count>```                             | 1                                     | Bu HTTP isteğinin geçerli ilke sınırına doğru "ücretlendirilen" çağrı sayısı. Bu en genellikle 1 ' dir. Bir sanal makine ölçek kümesinin ölçeklendirilmesi gibi Batch istekleri birden fazla sayı ücretlendirilmesine sahip olabilir. |
 
 
-Bir API isteğinin birden fazla daraltma ilkesine tabi olabileceğini unutmayın. Her ilke için ayrı `x-ms-ratelimit-remaining-resource` bir üst bilgi olacaktır. 
+Bir API isteğinin birden fazla daraltma ilkesine tabi olabileceğini unutmayın. `x-ms-ratelimit-remaining-resource`Her ilke için ayrı bir üst bilgi olacaktır. 
 
 Sanal makine ölçek kümesi isteğini silmenin örnek bir yanıtı aşağıda verilmiştir.
 
@@ -73,9 +72,9 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-0 kalan çağrı sayısına sahip ilke, azaltma hatasının döndürüldüğü bir hata nedeniyle belirlenir. Bu durumda, `HighCostGet30Min`. Yanıt gövdesinin genel biçimi Genel Azure Resource Manager API hata biçimidir (OData ile uyumlu). Ana hata kodu `OperationNotAllowed`, bir hesaplama kaynak sağlayıcısının, azaltma hatalarını (diğer istemci hatalarının türleri arasında) raporlamak için kullandığı bir Işlem kaynağı sağlayıcısıdır. İç `message` hata (ler) i özelliği, azaltma ihlalinin ayrıntılarına sahip SERILEŞTIRILMIŞ bir JSON yapısı içerir.
+0 kalan çağrı sayısına sahip ilke, azaltma hatasının döndürüldüğü bir hata nedeniyle belirlenir. Bu durumda, `HighCostGet30Min` . Yanıt gövdesinin genel biçimi Genel Azure Resource Manager API hata biçimidir (OData ile uyumlu). Ana hata kodu, `OperationNotAllowed` bir hesaplama kaynak sağlayıcısının, azaltma hatalarını (diğer istemci hatalarının türleri arasında) raporlamak için kullandığı bir Işlem kaynağı sağlayıcısıdır. `message`İç hata (ler) i özelliği, azaltma ihlalinin ayrıntılarına sahip serileştirilmiş BIR JSON yapısı içerir.
 
-Yukarıda gösterildiği gibi, her azaltma hatası, istemcinin `Retry-After` isteği yeniden denemeden önce bekleyeceği en az saniye sayısını sağlayan üstbilgiyi içerir. 
+Yukarıda gösterildiği gibi, her azaltma hatası, `Retry-After` istemcinin isteği yeniden denemeden önce bekleyeceği en az saniye sayısını sağlayan üstbilgiyi içerir. 
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API çağrı hızı ve azaltma hatası Çözümleyicisi
 Işlem Kaynak sağlayıcısının API 'SI için bir sorun giderme özelliğinin önizleme sürümü kullanılabilir. Bu PowerShell cmdlet 'leri, işlem grubu (ilke) başına işlem ve kısıtlama ihlalleri başına API isteği hızı hakkında istatistikler sağlar:
@@ -96,7 +95,7 @@ PowerShell cmdlet 'leri, doğrudan istemciler tarafından kolayca çağrılabile
 - Zaman uyumsuz işlemleri izlerken, yeniden deneme üst bilgisi ipuçlarına uyar. 
 - İstemci kodunda belirli bir sanal makine hakkında bilgi gerekiyorsa, bu VM 'yi, kapsayan kaynak grubundaki tüm VM 'Leri veya tüm aboneliğin listesini, sonra da istemci tarafında gerekli VM 'yi seçerek doğrudan sorgulayın. 
 - İstemci kodu belirli bir Azure konumundan VM 'Lere, disklere ve anlık görüntülere ihtiyaç duyuyorsa, tüm abonelik sanal makinelerini sorgulamak ve sonra istemci tarafında konuma göre filtrelemek yerine sorgunun konum tabanlı formunu kullanın: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` kaynak sağlayıcısı bölgesel uç noktalarını hesaplamak için sorgulayın. 
--   Belirli VM 'Lerde ve sanal makine ölçek kümelerinde API kaynaklarını oluştururken veya güncelleştirirken, döndürülen zaman uyumsuz işlemi kaynak URL 'sinin kendisi üzerinde yoklama gerçekleştirenden (öğesine göre `provisioningState`) izlemek çok daha etkilidir.
+-   Belirli VM 'Lerde ve sanal makine ölçek kümelerinde API kaynaklarını oluştururken veya güncelleştirirken, döndürülen zaman uyumsuz işlemi kaynak URL 'sinin kendisi üzerinde yoklama gerçekleştirenden (öğesine göre) izlemek çok daha etkilidir `provisioningState` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

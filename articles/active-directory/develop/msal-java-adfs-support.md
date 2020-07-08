@@ -14,10 +14,9 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696223"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Java için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
@@ -32,7 +31,7 @@ Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Federasyon kullanıcısı için bir belirteci etkileşimli olarak alma
 
-Ya da veya `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` `DeviceCodeParameters`ile çağırdığınızda `AuthorizationCodeParameters` , Kullanıcı deneyimi genellikle şu şekilde olur:
+Ya da `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` veya ile çağırdığınızda `AuthorizationCodeParameters` `DeviceCodeParameters` , Kullanıcı deneyimi genellikle şu şekilde olur:
 
 1. Kullanıcı hesap KIMLIĞINI girer.
 2. Azure AD, "kuruluşunuzun sayfasına yönlendirilme" seçeneğini kısaca gösterir ve Kullanıcı kimlik sağlayıcısının oturum açma sayfasına yönlendirilir. Oturum açma sayfası genellikle kuruluşun logosu ile özelleştirilir.
@@ -44,7 +43,7 @@ Bu Federasyon senaryosunda desteklenen AD FS sürümleri şunlardır:
 
 ## <a name="acquire-a-token-via-username-and-password"></a>Kullanıcı adı ve parola aracılığıyla belirteç alma
 
-`ConfidentialClientApplication.AcquireToken()` Or veya `PublicClientApplication.AcquireToken()` `UsernamePasswordParameters`Ile `IntegratedWindowsAuthenticationParameters` kullanarak bir belirteç aldığınızda, Java için msal, Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır. Java için MSAL, kimlik sağlayıcısından bir [SAML 1,1 belirteç](reference-saml-tokens.md) belirteci alır ve bu, daha sonra JSON Web token (JWT) döndüren Azure AD 'ye sunulur.
+Or veya ile kullanarak bir belirteç `ConfidentialClientApplication.AcquireToken()` aldığınızda `PublicClientApplication.AcquireToken()` `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters` , Java için msal, Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır. Java için MSAL, kimlik sağlayıcısından bir [SAML 1,1 belirteç](reference-saml-tokens.md) belirteci alır ve bu, daha sonra JSON Web token (JWT) döndüren Azure AD 'ye sunulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

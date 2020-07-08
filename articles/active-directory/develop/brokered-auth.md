@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76697906"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
@@ -56,7 +55,7 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 ### <a name="when-a-broker-is-installed"></a>Bir aracı yüklendiğinde
 
-Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine `acquireToken()`çağrılar), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
+Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine çağrılar `acquireToken()` ), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
 Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException`bir dizi nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
 
@@ -116,9 +115,9 @@ MSAL, aracı ile iki şekilde iletişim kurar:
 - Aracı ile bağlantılı hizmet
 - Android AccountManager
 
-MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden, önce aracı ile ilişkili hizmeti kullanır. Bağlama hizmetine bağlama başarısız olursa, MSAL Android AccountManager API 'sini kullanır. MSAL yalnızca uygulamanız zaten `"READ_CONTACTS"` izin verildiyse bunu yapar.
+MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden, önce aracı ile ilişkili hizmeti kullanır. Bağlama hizmetine bağlama başarısız olursa, MSAL Android AccountManager API 'sini kullanır. MSAL yalnızca uygulamanız zaten izin verildiyse bunu yapar `"READ_CONTACTS"` .
 
-Hata kodu `MsalClientException` `"BROKER_BIND_FAILURE"`ile karşılaşırsanız, iki seçenek vardır:
+`MsalClientException`Hata kodu ile karşılaşırsanız `"BROKER_BIND_FAILURE"` , iki seçenek vardır:
 
 - Kullanıcıdan Microsoft Authenticator uygulaması ve Intune Şirket Portalı için güç iyileştirmesini devre dışı vermesini isteyin.
-- Kullanıcıdan `"READ_CONTACTS"` izin vermesini isteyin
+- Kullanıcıdan izin vermesini isteyin `"READ_CONTACTS"`

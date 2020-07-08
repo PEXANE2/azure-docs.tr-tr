@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980433"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
@@ -70,7 +69,7 @@ Ayrıca, verileriniz üzerinde özel işlem gerçekleştirebilmeniz için bir Az
 Bir işlev oluşturmadan önce, Azure aboneliğinizde bir işlev uygulaması oluşturun. Ayrıca, mantıksal uygulamanızın bir işlevi doğrudan çağırması için, işlevin bir HTTP tetikleyici bağlaması olması gerekir, örneğin, **Httptrigger** şablonunu kullanın. [Azure Portal ilk işlev uygulamanızı ve işlevinizi oluşturmayı](../azure-functions/functions-create-first-azure-function-azure-portal.md)öğrenin.
 
 Bu senaryo için, Azure işlevinizin istek gövdesi olarak Tweet metnini kullanın. İşlev kodunuzda, Tweet metninin bir anahtar sözcük mi yoksa tümcecik mi içerdiğini belirleyen mantığı tanımlayın. İşlevi senaryo için gereken şekilde basit veya karmaşık tutun.
-İşlevin sonunda, mantıksal uygulamaya bazı verilerle bir yanıt döndürün, örneğin `containsKeyword` veya karmaşık bir nesne gibi basit bir Boole değeri.
+İşlevin sonunda, mantıksal uygulamaya bazı verilerle bir yanıt döndürün, örneğin veya karmaşık bir nesne gibi basit bir Boole değeri `containsKeyword` .
 
 > [!TIP]
 > Mantıksal uygulamadaki bir işlevden karmaşık bir yanıta erişmek için **JSON Ayrıştır** eylemini kullanın.

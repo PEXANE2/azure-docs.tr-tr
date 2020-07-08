@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277182"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway ile Azure Güvenlik Merkezi arasındaki tümleştirmeye genel bakış
@@ -30,7 +29,7 @@ Web uygulaması güvenlik duvarı ile ilgili herhangi bir önerilere tıkladığ
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Mevcut bir kaynağa Web uygulaması güvenlik duvarı ekleme
 
-**Tüm hizmetler** > **güvenlik ve kimlik** > **Güvenlik Merkezi** 'ne gidin ve **Güvenlik Merkezi 'ne genel bakış ' a**, **uygulamalar**' a tıklayın. **Güvenlik Merkezi-uygulamalarda**, tabloda Güvenlik Merkezi 'nin aboneliğinizde algıladığı uygulamaların bir listesi bulunur.
+**Tüm hizmetler**  >  **güvenlik ve kimlik**  >  **Güvenlik Merkezi** 'ne gidin ve **Güvenlik Merkezi 'ne genel bakış ' a**, **uygulamalar**' a tıklayın. **Güvenlik Merkezi-uygulamalarda**, tabloda Güvenlik Merkezi 'nin aboneliğinizde algıladığı uygulamaların bir listesi bulunur.
 
 ![Web uygulamaları][3]
 
@@ -50,7 +49,7 @@ Güvenlik Merkezi aracılığıyla bir uygulama ağ geçidine Web uygulaması ek
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Mevcut bir Web uygulaması güvenlik duvarına kaynak ekleme
 
-**Tüm hizmetler** > **güvenlik ve kimlik** > **Güvenlik Merkezi** 'ne gidin ve **Güvenlik Merkezi 'ne genel bakış ' a**, **iş ortağı çözümleri**' ne tıklayın Mevcut güvenlik merkezi kullanan uygulama ağ geçitleri, **Iş ortağı çözümleri** sayfasında gösterilir.
+**Tüm hizmetler**  >  **güvenlik ve kimlik**  >  **Güvenlik Merkezi** 'ne gidin ve **Güvenlik Merkezi 'ne genel bakış ' a**, **iş ortağı çözümleri**' ne tıklayın Mevcut güvenlik merkezi kullanan uygulama ağ geçitleri, **Iş ortağı çözümleri** sayfasında gösterilir.
 
 ![iş ortağı çözümleri][7]
 
@@ -66,7 +65,7 @@ Güvenlik Merkezi, bir uygulama ağ geçidine korumalı bir kaynak olarak eklene
 
 ## <a name="security-alerts"></a>Güvenlik uyarıları
 
-Güvenlik Merkezi 'nde **algılama** > **güvenlik uyarıları**' na gidin.  Burada, uygulama ağ geçitleri için WAF uyarılarını bulabilirsiniz. Uyarılar WAF kuralına göre bölünür.
+Güvenlik Merkezi 'nde **algılama**  >  **güvenlik uyarıları**' na gidin.  Burada, uygulama ağ geçitleri için WAF uyarılarını bulabilirsiniz. Uyarılar WAF kuralına göre bölünür.
 
 ![Güvenlik uyarıları][8]
 

@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548875"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Eşitleme: Varsayılan yapılandırmayı anlama
@@ -70,7 +69,7 @@ Aşağıdaki öznitelik kuralları geçerlidir:
   1. Oturum açma ile ilgili öznitelikler (örneğin, userPrincipalName), ormandan etkin bir hesapla katkıda bulunur.
   2. Bir Exchange GAL (genel adres listesi) içinde bulunan öznitelikler, bir Exchange posta kutusuyla ormandan katkıda bulunur.
   3. Posta kutusu bulunamazsa, bu öznitelikler herhangi bir ormandan gelebilir.
-  4. Exchange ile ilgili öznitelikler (GAL 'te görünmeyen teknik öznitelikler), ormanda yer aldığı `mailNickname ISNOTNULL`ormandan katkıda bulunur.
+  4. Exchange ile ilgili öznitelikler (GAL 'te görünmeyen teknik öznitelikler), ormanda yer aldığı ormandan katkıda bulunur `mailNickname ISNOTNULL` .
   5. Bu kurallardan birine uyan birden fazla orman varsa, hangi ormanın özniteliklere katkıda bulunduğunu belirlemede kullanılan bağlayıcılar (ormanlar) oluşturma sırası (Tarih/saat) kullanılır. Bağlanan ilk orman, eşitlenecek ilk orman olacak. 
 
 ### <a name="contact-out-of-box-rules"></a>Hazır olmayan kurallara ulaşın
@@ -78,9 +77,9 @@ Bir kişi nesnesinin eşitlenmesi için aşağıdakileri karşılaması gerekir:
 
 * Kişinin posta etkin olması gerekir. Aşağıdaki kurallarla doğrulanır:
   * `IsPresent([proxyAddresses]) = True)`. ProxyAddresses özniteliği doldurulmalıdır.
-  * Birincil e-posta adresi, proxyAddresses özniteliğinde veya mail özniteliğinde bulunabilir. Öğesinin \@ varlığı, içeriğin bir e-posta adresi olduğunu doğrulamak için kullanılır. Bu iki kuralın biri doğru olarak değerlendirilmelidir.
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. "SMTP:" ile bir giriş var ve \@ varsa dizede bulunabilir mi?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Posta özniteliği doldurulmuş \@ mi, yoksa dizede mi bulunabilir?
+  * Birincil e-posta adresi, proxyAddresses özniteliğinde veya mail özniteliğinde bulunabilir. Öğesinin varlığı, \@ içeriğin bir e-posta adresi olduğunu doğrulamak için kullanılır. Bu iki kuralın biri doğru olarak değerlendirilmelidir.
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. "SMTP:" ile bir giriş var ve varsa \@ dizede bulunabilir mi?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Posta özniteliği doldurulmuş mi, yoksa \@ dizede mi bulunabilir?
 
 Aşağıdaki iletişim nesneleri Azure AD **ile eşitlenmez:**
 
@@ -106,7 +105,7 @@ Aşağıdaki Grup nesneleri Azure AD **ile eşitlenmez:**
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Herhangi bir çoğaltma kurbanı nesnesini eşitlememe.
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal dışı kurallar
-FSPs 'ler meta veri deposundaki "Any"\*() nesnesine birleştirilir. Gerçekte, bu JOIN yalnızca kullanıcılar ve güvenlik grupları için gerçekleşir. Bu yapılandırma, Azure AD 'de ormanlar arası üyeliklerin çözümlenmesini ve doğru şekilde temsil edilmesini sağlar.
+FSPs 'ler meta veri deposundaki "Any" ( \* ) nesnesine birleştirilir. Gerçekte, bu JOIN yalnızca kullanıcılar ve güvenlik grupları için gerçekleşir. Bu yapılandırma, Azure AD 'de ormanlar arası üyeliklerin çözümlenmesini ve doğru şekilde temsil edilmesini sağlar.
 
 ### <a name="computer-out-of-box-rules"></a>Bilgisayar kutudan çıkar kuralları
 Bir bilgisayar nesnesinin eşitlenmesi için aşağıdakileri karşılaması gerekir:
@@ -162,7 +161,7 @@ Kapsam Filtresi bölümü, bir eşitleme kuralının ne zaman uygulanacağını 
 
 ![Eşitleme kuralı düzenleyicisinde kapsam sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-Kapsam filtresi, iç içe olabilecek gruplara ve yan tümcelerde sahiptir. Bir eşitleme kuralının uygulanması için bir grup içindeki tüm yan tümceleri karşılamalıdır. Birden çok grup tanımlandığında kuralın uygulanabilmesi için en az bir grup karşılanması gerekir. Diğer bir deyişle, bir mantıksal veya gruplar arasında değerlendirilir ve bir grup içinde değerlendirilir. Bu yapılandırmaya bir örnek, **AAD-Group JOIN 'e**giden eşitleme kuralında bulunabilir. Örneğin, güvenlik grupları (`securityEnabled EQUAL True`) ve diğeri dağıtım grupları (`securityEnabled EQUAL False`) için bir tane olmak üzere birkaç eşitleme filtresi grubu vardır.
+Kapsam filtresi, iç içe olabilecek gruplara ve yan tümcelerde sahiptir. Bir eşitleme kuralının uygulanması için bir grup içindeki tüm yan tümceleri karşılamalıdır. Birden çok grup tanımlandığında kuralın uygulanabilmesi için en az bir grup karşılanması gerekir. Diğer bir deyişle, bir mantıksal veya gruplar arasında değerlendirilir ve bir grup içinde değerlendirilir. Bu yapılandırmaya bir örnek, **AAD-Group JOIN 'e**giden eşitleme kuralında bulunabilir. Örneğin, güvenlik grupları ( `securityEnabled EQUAL True` ) ve diğeri dağıtım grupları () için bir tane olmak üzere birkaç eşitleme filtresi grubu vardır `securityEnabled EQUAL False` .
 
 ![Eşitleme kuralı düzenleyicisinde kapsam sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
@@ -220,7 +219,7 @@ Eşitleme kuralları için öncelik, Yükleme Sihirbazı tarafından gruplar hal
 ### <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 Artık yapılandırmanın farklı eşitleme kurallarıyla nasıl çalıştığını anlayabilmek için eşitleme kuralları hakkında yeterli bilgi veriyoruz. Meta veri deposuna katkıda bulunulan bir kullanıcıya ve özniteliklere bakarsanız, kurallar aşağıdaki sırayla uygulanır:
 
-| Adı | Açıklama |
+| Name | Yorum |
 |:--- |:--- |
 | AD 'den içinde – kullanıcı katılımı |Bağlayıcı alanı nesnelerini metaverse ile birleştirme kuralı. |
 | AD 'den-kullanıcıhesabı etkin |Azure AD ve Office 365 için oturum açma için gereken öznitelikler. Etkin hesaptan bu özniteliklerin olmasını istiyoruz. |

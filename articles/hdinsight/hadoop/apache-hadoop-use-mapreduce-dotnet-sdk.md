@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/15/2020
 ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157064"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK'sını kullanarak MapReduce işlerini çalıştırma
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-HDInsight .NET SDK kullanarak MapReduce işlerini göndermeyi öğrenin. HDInsight kümeleri, bazı MapReduce örneklerine sahip bir jar dosyası ile gelir. Jar dosyası `/example/jars/hadoop-mapreduce-examples.jar`.  Örneklerden biri **WORDCOUNT**. Bir WORDCOUNT işi göndermek için bir C# konsol uygulaması geliştirirsiniz.  İş `/example/data/gutenberg/davinci.txt` dosyayı okur ve sonuçları ' a çıkarır `/example/data/davinciwordcount`.  Uygulamayı yeniden çalıştırmak istiyorsanız, çıkış klasörünü temizlemeniz gerekir.
+HDInsight .NET SDK kullanarak MapReduce işlerini göndermeyi öğrenin. HDInsight kümeleri, bazı MapReduce örneklerine sahip bir jar dosyası ile gelir. Jar dosyası `/example/jars/hadoop-mapreduce-examples.jar` .  Örneklerden biri **WORDCOUNT**. Bir WORDCOUNT işi göndermek için bir C# konsol uygulaması geliştirirsiniz.  İş `/example/data/gutenberg/davinci.txt` dosyayı okur ve sonuçları ' a çıkarır `/example/data/davinciwordcount` .  Uygulamayı yeniden çalıştırmak istiyorsanız, çıkış klasörünü temizlemeniz gerekir.
 
 > [!NOTE]  
 > Bu makaledeki adımların bir Windows istemcisinden gerçekleştirilmesi gerekir. Bir Linux, OS X veya UNIX istemcisini Hive ile çalışmak üzere kullanma hakkında bilgi için, makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
@@ -36,13 +35,13 @@ HDInsight .NET SDK 'Sı .NET istemci kitaplıklarını sağlar ve bu sayede .NET
 
 1. Visual Studio 'Yu başlatın ve bir C# konsol uygulaması oluşturun.
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu** ' na gidin ve şu komutu girin:
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' na gidin ve şu komutu girin:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Aşağıdaki kodu **program.cs**'e kopyalayın. Ardından `existingClusterName`,:, `existingClusterPassword` `defaultStorageAccountName` `defaultStorageAccountKey`,, ve `defaultStorageContainerName`değerlerini ayarlayarak kodu düzenleyin.
+1. Aşağıdaki kodu **program.cs**'e kopyalayın. Ardından,:,,, ve değerlerini ayarlayarak kodu `existingClusterName` düzenleyin `existingClusterPassword` `defaultStorageAccountName` `defaultStorageAccountKey` `defaultStorageContainerName` .
 
     ```csharp
     using System.Collections.Generic;
@@ -163,9 +162,9 @@ HDInsight .NET SDK 'Sı .NET istemci kitaplıklarını sağlar ve bu sayede .NET
 
 1. Uygulamayı çalıştırmak için **F5**'e basın.
 
-İşi yeniden çalıştırmak için, örnek olan iş çıkış klasörü adını değiştirmeniz gerekir `/example/data/davinciwordcount`.
+İşi yeniden çalıştırmak için, örnek olan iş çıkış klasörü adını değiştirmeniz gerekir `/example/data/davinciwordcount` .
 
-İş başarıyla tamamlandığında, uygulama çıkış dosyasının `part-r-00000`içeriğini yazdırır.
+İş başarıyla tamamlandığında, uygulama çıkış dosyasının içeriğini yazdırır `part-r-00000` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

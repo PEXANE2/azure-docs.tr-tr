@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720478"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün modelleme aşaması
@@ -69,7 +68,7 @@ Model eğitimi işlemi aşağıdaki adımları içerir:
 
 TDSP ile, bir temel model oluşturmak için birden çok algoritmadan ve parametre süpürmeleri aracılığıyla çalışabilecek [otomatik bir modelleme ve Raporlama Aracı](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) sağlıyoruz. Ayrıca, değişken önem dahil her modelin ve parametre birleşiminin performansını özetleyen bir temel modelleme raporu da üretir. Bu işlem, daha fazla özellik Mühendisliği için de kullanılabilir. 
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 Bu aşamada oluşturulan yapıtlar şunlardır:
 
    * [Özellik kümeleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): modelleme için geliştirilen özellikler, **veri tanımı** raporunun **özellik kümeleri** bölümünde açıklanmaktadır. Özellik oluşturmak için kodun işaretçilerini ve özelliğin nasıl oluşturulduğunu gösteren bir açıklama içerir.

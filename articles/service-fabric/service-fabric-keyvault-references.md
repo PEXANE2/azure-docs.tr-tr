@@ -4,10 +4,9 @@ description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultR
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76545492"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
@@ -24,7 +23,7 @@ Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenl
 
     Orta gizli dizi deposu (CSS) Service Fabric şifreli yerel gizli diziler önbelleğidir. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir. Bir kez getirildikten sonra KeyVaultReference, CSS 'de önbelleğe alınır.
 
-    KeyVaultReference desteği için gerekli tüm özellikleri `fabricSettings` etkinleştirmek üzere altındaki küme yapılandırmanıza aşağıda ekleyin.
+    `fabricSettings`KeyVaultReference desteği için gerekli tüm özellikleri etkinleştirmek üzere altındaki küme yapılandırmanıza aşağıda ekleyin.
 
     ```json
     "fabricSettings": 
@@ -88,16 +87,16 @@ Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kü
 ## <a name="keyvault-secret-as-application-parameter"></a>Uygulama parametresi olarak Anahtar Kasası gizli anahtarı
 Uygulamanın, Anahtar Kasası 'nda depolanan arka uç veritabanı parolasını okuması gerektiğini, Service Fabric KeyVaultReference desteğinin de kolaylaştırdığını varsayalım. Aşağıdaki örnek, `DBPassword` Service Fabric KeyVaultReference desteğini kullanarak keykasasından gizli dizi okur.
 
-- Settings. xml ' ye bir bölüm ekleyin
+- settings.xml bir bölüm ekleyin
 
-    Türü `DBPassword` `KeyVaultReference` ve değeri olan parametreyi tanımlayın`<KeyVaultURL>`
+    `DBPassword`Türü ve değeri olan parametreyi tanımlayın `KeyVaultReference``<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- İçindeki ApplicationManifest. xml dosyasındaki yeni bölüme başvurun`<ConfigPackagePolicies>`
+- İçindeki ApplicationManifest.xml yeni bölüme başvur`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -115,7 +114,7 @@ Uygulamanın, Anahtar Kasası 'nda depolanan arka uç veritabanı parolasını o
 
 - Uygulamanızda KeyVaultReference kullanma
 
-    Hizmet örneklemesi Service Fabric, uygulamanın yönetilen kimliğini kullanarak KeyVaultReference parametresini çözer. Altında `<Section  Name=dbsecrets>` listelenen her bir parametre, EnvironmentVariable SecretPath tarafından işaret edilen klasör altında bir dosya olacaktır. C# kod parçacığı altında, uygulamanızda DBPassword 'ın nasıl okunacağı gösterilmektedir.
+    Hizmet örneklemesi Service Fabric, uygulamanın yönetilen kimliğini kullanarak KeyVaultReference parametresini çözer. Altında listelenen her bir parametre, `<Section  Name=dbsecrets>` EnvironmentVariable SecretPath tarafından işaret edilen klasör altında bir dosya olacaktır. C# kod parçacığı altında, uygulamanızda DBPassword 'ın nasıl okunacağı gösterilmektedir.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");

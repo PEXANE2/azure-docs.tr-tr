@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717919"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake ile ölçeklenebilir veri bilimi: uçtan uca bir anlatım
@@ -131,7 +130,7 @@ Burada kullanılan veri kümesi, genel kullanıma açık bir veri kümesidir; [N
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Seyahat\_verilerine ve seyahat\_tarifeli havayolu katılacak benzersiz anahtar aşağıdaki üç alandan oluşur: medtalon, Hack\_lisansı ve toplama\_tarih saati. Ham CSV dosyalarına bir Azure Storage blobundan erişilebilir. Bu birleşimin U-SQL betiği, [yolculuğa katılmayı ve tarifeli havayolu tabloları](#join) bölümünde bulunur.
+Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ aşağıdaki üç alandan oluşur: medtalon, Hack \_ lisansı ve toplama \_ tarih saati. Ham CSV dosyalarına bir Azure Storage blobundan erişilebilir. Bu birleşimin U-SQL betiği, [yolculuğa katılmayı ve tarifeli havayolu tabloları](#join) bölümünde bulunur.
 
 ## <a name="process-data-with-u-sql"></a>U-SQL ile verileri işleme
 Bu bölümde gösterilen veri işleme görevleri, verileri kullanıma almak, kaliteyi, araştırmayı ve örnekleme işlemlerini içerir. Yolculuğa katılıp tarifeli havayolu tabloları da gösterilir. Son bölümde Azure portal bir U-SQL komut dosyalı işi çalıştırma gösterilmektedir. Her alt bölümünün bağlantıları şunlardır:
@@ -158,7 +157,7 @@ U-SQL ' i çalıştırmak için, Visual Studio 'yu açın, **Dosya--> New--> pro
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Veri alımı: genel Blobun verileri okuma
 
-Azure Blob 'daki verilerin konumuna **\_wasb://Container\@ad blobu\_depolama\_hesabı\_Name.blob.Core.Windows.net/BLOB_NAME** olarak başvurulur ve **ayıklayıcıları. csv ()** kullanılarak ayıklanabilir. İkab adresinde kapsayıcı\_adı\@blob\_depolama\_hesabı\_adı için aşağıdaki betiklerdeki kendi kapsayıcı adı ve depolama hesabı adınızı değiştirin. Dosya adları aynı biçimde olduğundan, tüm 12 seyahat dosyalarında okumak için **seyahat\_verileri\_\{\*\}. csv** dosyasını kullanmak mümkündür.
+Azure Blob 'daki verilerin konumuna **wasb://Container \_ ad \@ blobu \_ depolama \_ hesabı \_ Name.blob.Core.Windows.net/BLOB_NAME** olarak başvurulur ve **Extractors.Csv ()** kullanılarak ayıklanabilir. \_İkab adresinde kapsayıcı adı \@ BLOB \_ depolama \_ hesabı \_ adı için aşağıdaki betiklerdeki kendi kapsayıcı adı ve depolama hesabı adınızı değiştirin. Dosya adları aynı biçimde olduğundan, tüm 12 seyahat dosyalarında okumak için **seyahat \_ verileri \_ \{ \* \} . csv** dosyasını kullanmak mümkündür.
 
     ///Read in Trip data
     @trip0 =
@@ -181,7 +180,7 @@ Azure Blob 'daki verilerin konumuna **\_wasb://Container\@ad blobu\_depolama\_he
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile, **\@container_name. blob. Core. Windows. net/blob_storage_account_name**kullanarak kaydedebilirsiniz.
+İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile, ** \@ container_name. blob. Core. windows. net/blob_storage_account_name**kullanarak kaydedebilirsiniz.
 
     // change data types
     @trip =
@@ -569,7 +568,7 @@ Burada, bir seyahati eğimli olup olmadığını tahmin etmek için bir ikili s�
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web hizmeti API 'SI oluşturun ve Python 'da kullanın
 Derlendikten sonra makine öğrenimi modelini kullanıma almak istiyorsunuz. İkili lojistik modeli örnek olarak burada kullanılır. Yerel makinenizde scikit-öğren sürümünün 0.15.1 olduğundan emin olun (Azure Machine Learning Studio zaten en azından bu sürümde).
 
-* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar** --> **ad** --> **Yetkilendirme belirteçleri**' ne tıklayın.
+* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri**' ne tıklayın.
 
     ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Azure Machine Learning Studio (klasik), doğrudan Azure Data Lake Storage verile
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>HDInsight 'ta Hive tablosu oluşturma
-Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar** --> **Özellikler****Cluster AAD Identity** --> **ADLS Access**kümesi AAD Identity ADLS Access ' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun. --> 
+Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar**  -->  **Özellikler**  -->  **kümesi AAD Identity**  -->  **ADLS Access**' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Aşağıdaki şekilde, Hive tablosundan verileri okurken ikili sınıflandırma 
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-Deneme oluşturulduktan sonra **Web hizmeti** --> tahmine**dayalı Web hizmeti** ayarla ' ya tıklayın.
+Deneme oluşturulduktan sonra **Web hizmeti**tahmine  -->  **dayalı Web hizmeti** ayarla ' ya tıklayın.
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 

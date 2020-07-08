@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722065"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
@@ -128,7 +127,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
     
     ![Yapı ve aracı seçimleri](./media/code-test/select_agent.PNG)
 
-    e. Bu **+** derleme aşamasına yönelik bir görev eklemek için sol bölmede öğesini seçin. Tüm denetimleri tamamlaması için Python betiğini **test1.py** çalıştıracağız, bu görev Python kodunu çalıştırmak Için bir PowerShell komutu kullanıyor.
+    e. **+** Bu derleme aşamasına yönelik bir görev eklemek için sol bölmede öğesini seçin. Tüm denetimleri tamamlaması için Python betiğini **test1.py** çalıştıracağız, bu görev Python kodunu çalıştırmak Için bir PowerShell komutu kullanıyor.
     
     ![PowerShell seçiliyken "görev ekleme" bölmesi](./media/code-test/add_task_powershell.PNG)
 
@@ -138,7 +137,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
     
     ![PowerShell ayrıntıları](./media/code-test/powershell_scripts.PNG)
 
-    g. Derleme ardışık düzeni işlemini gerçekleştirmek için **& kuyruğu kaydet** ' i seçin.
+    örneğin: Derleme ardışık düzeni işlemini gerçekleştirmek için **& kuyruğu kaydet** ' i seçin.
 
     !["& kuyruğunu kaydet" düğmesi](./media/code-test/save_and_queue_build_definition.PNG)
 

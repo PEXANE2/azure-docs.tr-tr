@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721668"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Özel alanları Event Grid şemasına eşleme
@@ -47,9 +46,9 @@ Bu biçim gerekli şemayla eşleşmez, ancak Event Grid alanları şemayla eşle
 
 * **Giriş şeması** değeri şemanın türünü belirtir. Kullanılabilir seçenekler CloudEvents şeması, özel olay şeması veya Event Grid şemadır. Varsayılan değer Event Grid şemadır. Şemanız ve olay Kılavuzu şeması arasında özel eşleme oluştururken özel olay şeması kullanın. Olaylar CloudEvents şemasında olduğunda, Cloudevents şeması ' nı kullanın.
 
-* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. , `subject` `eventtype`Ve `dataversion`için varsayılan değerleri ayarlayabilirsiniz. Genellikle bu parametreyi, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa kullanırsınız. Örneğin, veri sürümünün her zaman **1,0**olarak ayarlandığını belirtebilirsiniz.
+* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. , Ve için varsayılan değerleri ayarlayabilirsiniz `subject` `eventtype` `dataversion` . Genellikle bu parametreyi, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa kullanırsınız. Örneğin, veri sürümünün her zaman **1,0**olarak ayarlandığını belirtebilirsiniz.
 
-* **Mapping Fields** değeri, şemadaki alanları Event Grid şemasına eşler. Değerleri boşlukla ayrılmış anahtar/değer çiftlerinde belirtirsiniz. Anahtar adı için Event Grid alanının adını kullanın. Değer için, alanın adını kullanın. ,, `id`,, Ve `topic` `eventtime` `subject` `eventtype` `dataversion`için anahtar adlarını kullanabilirsiniz.
+* **Mapping Fields** değeri, şemadaki alanları Event Grid şemasına eşler. Değerleri boşlukla ayrılmış anahtar/değer çiftlerinde belirtirsiniz. Anahtar adı için Event Grid alanının adını kullanın. Değer için, alanın adını kullanın. ,,,, Ve için anahtar adlarını kullanabilirsiniz `id` `topic` `eventtime` `subject` `eventtype` `dataversion` .
 
 Azure CLı ile özel bir konu oluşturmak için şunu kullanın:
 

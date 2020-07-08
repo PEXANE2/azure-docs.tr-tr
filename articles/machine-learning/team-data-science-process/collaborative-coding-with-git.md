@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721906"
 ---
 # <a name="collaborative-coding-with-git"></a>Git ile işbirliği içinde kodlama
@@ -39,7 +38,7 @@ Ayrıca, Windows veya Linux 'ta aşağıdaki git Bash komutunu kullanarak yeni b
 git checkout -b <new branch name> <base branch name>
 
 ```
-> bir \<temel dal adı belirtmezseniz, yeni dal temel alır `master`. 
+\<base branch name>' I belirtmezseniz, yeni dal temel alır `master` . 
 
 Çalışma dalınıza geçiş yapmak için aşağıdaki komutu çalıştırın: 
 
@@ -47,7 +46,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. Çalışan `git checkout master` anahtarlar, `master` dala geri döner.
+Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. Çalışan `git checkout master` anahtarlar, dala geri döner `master` .
 
 Her Kullanıcı hikayesi iş öğesi için bir git dalı oluşturmak iyi bir uygulamadır. Ardından, her görev iş öğesi için Kullanıcı hikayesi dalını temel alan bir dal oluşturabilirsiniz. Aynı proje için farklı Kullanıcı hikayeleri üzerinde çalışan birden fazla kişiye veya aynı kullanıcı hikayesine yönelik farklı görevlere sahip olduğunuzda, dalları Kullanıcı hikayesi-görev ilişkisine karşılık gelen bir hiyerarşide düzenleyin. Her bir takım üyesinin farklı bir dalda veya bir dalı paylaşırken farklı bir kodda ya da diğer yapıtlarda çalışmasını sağlayarak çakışmaları en aza indirmenize neden olabilirsiniz. 
 
@@ -61,7 +60,7 @@ Ayrıca, bir iş öğesini varolan bir dala bağlayabilirsiniz. Bir iş öğesin
 
 ## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>Dalda çalışma ve değişiklikleri yapma 
 
-Yerel makinenizin `script` dalına bir R betik dosyası eklemek gibi iş öğesi için bir değişiklik yaptıktan sonra, aşağıdaki git Bash komutlarını kullanarak yerel dalınızdan değişikliği yukarı akış çalışma dalına kaydedebilirsiniz:
+Yerel makinenizin dalına bir R betik dosyası eklemek gibi iş öğesi için bir değişiklik yaptıktan sonra, `script` aşağıdaki git Bash komutlarını kullanarak yerel dalınızdan değişikliği yukarı akış çalışma dalına kaydedebilirsiniz:
 
 ```bash
 git status
@@ -76,7 +75,7 @@ git push origin script
 
 Bir veya daha fazla işleme ve gönderim sonrasında, geçerli çalışma dalınızı temel dalına birleştirmeye hazırsanız, Azure Repos bir *çekme isteği* oluşturabilir ve gönderebilirsiniz. 
 
-Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde bulunan **Repos** > **çekme istekleri** ' ni işaret edin. Ardından **Yeni çekme isteği** düğmelerinden birini veya **çekme isteği oluştur** bağlantısını seçin.
+Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde bulunan **Repos**  >  **çekme istekleri** ' ni işaret edin. Ardından **Yeni çekme isteği** düğmelerinden birini veya **çekme isteği oluştur** bağlantısını seçin.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
@@ -98,11 +97,11 @@ Gözden geçirenler değişiklikleri onayladıktan sonra, sizin veya birleştirm
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Sol gezinmede yer alan **depoya** geri döndüğünüzde, `script` dal silindiğinden Ana dala geçtiniz görürsünüz.
+Sol gezinmede yer alan **depoya** geri döndüğünüzde, dal silindiğinden Ana dala geçtiniz görürsünüz `script` .
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Ayrıca, `script` çalışma dalını temel dalında birleştirmek ve Birleştirmeden sonra çalışma dalını silmek Için aşağıdaki git Bash komutlarını da kullanabilirsiniz:
+Ayrıca, `script` çalışma dalını temel dalında birleştirmek ve Birleştirmeden sonra çalışma dalını silmek için aşağıdaki git Bash komutlarını da kullanabilirsiniz:
 
 ```bash
 git checkout master

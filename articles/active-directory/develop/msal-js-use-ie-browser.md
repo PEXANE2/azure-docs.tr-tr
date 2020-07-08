@@ -1,7 +1,7 @@
 ---
-title: Internet Explorer sorunları (MSAL. js) | Mavisi
+title: Internet Explorer sorunları (MSAL.js) | Mavisi
 titleSuffix: Microsoft identity platform
-description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) Internet Explorer tarayıcısı ile birlikte kullanın.
+description: Internet Explorer tarayıcısı ile JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.js) kullanın.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,18 +14,17 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76695866"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında ilgili bilinen sorunlar (MSAL.js)
 
-JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), Internet Explorer 'da çalışabilecek şekilde [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) için oluşturulur. Ancak bilmemiz gereken birkaç nokta vardır.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js), Internet Explorer 'da çalıştırılabilmesi için [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) için oluşturulur. Ancak bilmemiz gereken birkaç nokta vardır.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Internet Explorer 'da uygulama çalıştırma
-Internet Explorer 'da çalışabilecek uygulamalarda MSAL. js kullanmayı düşünüyorsanız, MSAL. js betiğine başvurmadan önce Promise polyfill öğesine bir başvuru eklemeniz gerekir.
+Internet Explorer 'da çalışabilecek uygulamalarda MSAL.js kullanmayı düşünüyorsanız, MSAL.js betiğine başvurmadan önce Promise polyfill öğesine bir başvuru eklemeniz gerekir.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
@@ -39,9 +38,9 @@ Bunun nedeni, Internet Explorer 'ın yerel olarak bulunan JavaScript 'ı destekl
 Uygulamanızı üretime dağıtmak (Azure Web Apps 'te olduğu gibi) normalde ince çalışır ve bu da Son Kullanıcı açılan pencereleri kabul etmiş olarak sunulur. Internet Explorer 11 ile test ettik.
 
 ### <a name="running-locally"></a>Yerel olarak çalışıyor
-Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki noktalara dikkat etmeniz gerekir (uygulamanızı farklı *http://localhost:1234*çalıştırmak istediğinizi varsayın):
+Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki noktalara dikkat etmeniz gerekir (uygulamanızı farklı çalıştırmak istediğinizi varsayın *http://localhost:1234* ):
 
-- Internet Explorer 'Da, MSAL. js ' nin düzgün çalışmasını engelleyen "korumalı mod" adlı bir güvenlik mekanizması vardır. Belirtiler arasında, oturum açtıktan sonra, sayfa öğesine http://localhost:1234/nullyeniden yönlendirilebilir.
+- Internet Explorer 'ın, MSAL.js düzgün çalışmasını engelleyen "korumalı mod" adlı bir güvenlik mekanizması vardır. Belirtiler arasında, oturum açtıktan sonra, sayfa öğesine yeniden yönlendirilebilir http://localhost:1234/null .
 
 - Uygulamanızı yerel olarak çalıştırmak ve hatalarını ayıklamak için, bu "korumalı mod" seçeneğini devre dışı bırakmanız gerekir. Bunun için:
 
@@ -51,7 +50,7 @@ Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve 
     1. Internet Explorer 'ı yeniden başlatın.
     1. Uygulamanızı çalıştırın ve hata ayıklayın.
 
-İşiniz bittiğinde Internet Explorer güvenlik ayarlarını geri yükleyin.  **Ayarlar** -> **Internet seçenekleri** -> **Security**güvenlik -> **tüm bölgeleri varsayılan düzeye sıfırla**' yı seçin.
+İşiniz bittiğinde Internet Explorer güvenlik ayarlarını geri yükleyin.  **Ayarlar**  ->  **Internet seçenekleri**  ->  **güvenlik**  ->  **tüm bölgeleri varsayılan düzeye sıfırla**' yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Internet Explorer 'DA msal. js kullanırken bilinen sorunlar](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.
+[Internet Explorer 'da MSAL.js kullanırken bilinen sorunlar](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.

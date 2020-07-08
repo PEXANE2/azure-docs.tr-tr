@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705777"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>REST kullanarak Media Services v3 hesabına dosya yükleme
@@ -39,7 +38,7 @@ Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız ger
 
 Bu bölümde, yeni bir varlığın nasıl oluşturulacağı gösterilmektedir.
 
-1. **Varlık oluşturma veya güncelleştirme** **varlıkları** -> ' nı seçin.
+1. **Assets**  ->  **Varlık oluşturma veya güncelleştirme**varlıkları ' nı seçin.
 2. **Gönder**’e basın.
 
     ![Varlık oluşturma](./media/upload-files/postman-create-asset.png)
@@ -50,7 +49,7 @@ Yeni oluşturulan varlık hakkında bilgi ile **yanıtı** görürsünüz.
 
 Bu bölüm, oluşturulan varlık için oluşturulan bir SAS URL 'sinin nasıl alınacağını gösterir. SAS URL 'SI okuma-yazma izinleriyle oluşturulmuştur ve varlık kapsayıcısına dijital dosyaları yüklemek için kullanılabilir.
 
-1. **Varlık URL 'lerini**seçin **varlıklar** -> listesini seçin.
+1. **Assets**  ->  **Varlık URL 'lerini**seçin varlıklar listesini seçin.
 2. **Gönder**’e basın.
 
     ![Dosyayı karşıya yükleme](./media/upload-files/postman-create-sas-locator.png)
