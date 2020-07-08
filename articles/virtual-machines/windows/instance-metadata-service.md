@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 195d9f6da88639cc3b4299519e90bf682bc743d9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553079"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -24,7 +24,8 @@ Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekle
 Bu bilgiler SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Kullanılabilir verilerin tüm listesi için bkz. [metadata API 'leri](#metadata-apis).
 Instance Metadata Service hem VM hem de sanal makine ölçek kümesi örnekleri için kullanılabilir. Yalnızca [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan/yönetilen VM 'leri çalıştırmak için kullanılabilir.
 
-Azure Instance Metadata Service, iyi bilinen yönlendirilemeyen IP adresinde () bulunan bir REST uç noktasıdır `169.254.169.254` ve yalnızca VM 'nin içinden erişilebilir.
+Azure 'un ıMDS, iyi bilinen yönlendirilemeyen IP adresinde () bulunan bir REST uç noktasıdır `169.254.169.254` ve yalnızca VM 'nin içinden erişilebilir. VM ve ıDS arasındaki iletişim, Konağı hiçbir şekilde bırakmıyor.
+ISE 'yi sorgularken ve ile aynı işlem yaparken, HTTP istemcilerinizin VM içindeki Web proxy 'lerini atlaması en iyi uygulamadır `169.254.169.254` [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) .
 
 ## <a name="security"></a>Güvenlik
 
@@ -46,7 +47,7 @@ Aşağıda, bir örneğin tüm meta verilerini almaya yönelik örnek kod, belir
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
 ```
 
 **Yanıtıyla**
@@ -181,13 +182,13 @@ API | Varsayılan veri biçimi | Diğer biçimler
 Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
 > /Metadata/Instance içindeki yaprak düğümleri için `format=json` çalışmıyor. `format=text`Varsayılan biçim JSON olduğundan bu sorguların açıkça belirtilmesi gerekir.
 
-### <a name="versioning"></a>Sürüm oluşturma
+### <a name="versioning"></a>Sürüm Oluşturma
 
 Instance Metadata Service sürümlenmiş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur.
 
@@ -205,7 +206,7 @@ Sürüm belirtilmediğinde, en yeni Desteklenen sürümlerin listesiyle birlikte
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance
 ```
 
 **Yanıtıyla**
@@ -225,7 +226,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 
 Metadata Service, farklı veri kaynaklarını temsil eden birden çok API içerir.
 
-API | Description | Sunulan sürüm
+API | Açıklama | Sunulan sürüm
 ----|-------------|-----------------------
 /attested | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
 /identity | Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -236,7 +237,7 @@ API | Description | Sunulan sürüm
 
 Örnek API 'SI, sanal makine, ağ ve depolama dahil olmak üzere VM örnekleri için önemli meta verileri kullanıma sunar. Aşağıdaki kategorilere örnek/işlem aracılığıyla erişilebilir:
 
-Veriler | Description | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
@@ -271,7 +272,7 @@ Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısın
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Yanıtıyla**
@@ -289,7 +290,7 @@ Bu verileri doğrudan Instance Metadata Service aracılığıyla sorgulayabilirs
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **Yanıtıyla**
@@ -305,7 +306,7 @@ Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz b
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
 ```
 
 **Yanıtıyla**
@@ -405,7 +406,7 @@ Azure 'da [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)g
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Yanıtıyla**
@@ -427,7 +428,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 
 Ağ meta verileri, örnek API 'sinin bir parçasıdır. Aşağıdaki ağ kategorileri, örnek/ağ uç noktası üzerinden kullanılabilir.
 
-Veriler | Description | Sunulan sürüm
+Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
 IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -444,7 +445,7 @@ macAddress | VM MAC adresi | 2017-04-02
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
 ```
 
 **Yanıtıyla**
@@ -483,7 +484,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 #### <a name="sample-2-retrieving-public-ip-address"></a>Örnek 2: genel IP adresi alınıyor
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>Depolama meta verileri
@@ -495,7 +496,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 kimlik      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
@@ -505,7 +506,7 @@ sürüm | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -520,7 +521,7 @@ Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler    | Description
+Veriler    | Açıklama
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -539,7 +540,7 @@ Aşağıdaki örnek, sanal makinenin depolama bilgilerinin nasıl sorgulanalına
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
 ```
 
 **Yanıtıyla**
@@ -611,7 +612,7 @@ Etiketler, bunları bir taksonomi halinde mantıksal olarak düzenlemek için Az
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **Yanıtıyla**
@@ -625,7 +626,7 @@ Department:IT;Environment:Test;Role:WebRole
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
 ```
 
 **Yanıtıyla**
@@ -659,7 +660,7 @@ Instance Metadata Service tarafından sunulan senaryonun bir kısmı, belirtilen
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 > [!NOTE]
@@ -682,7 +683,7 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 Belge aşağıdaki alanları içerir:
 
-Veriler | Description
+Veriler | Açıklama
 -----|------------
 nonce | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Bir nonce sağlanmazsa, geçerli UTC zaman damgası kullanılır
 plan | [Azure Marketi görüntü planı](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan). Plan kimliğini (adı), ürün görüntüsünü veya teklifi (ürün) ve yayımcı kimliğini (yayımcı) içerir.
@@ -698,7 +699,7 @@ Market satıcıları, yazılımlarının yalnızca Azure 'da çalışmak üzere 
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```

@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552974"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory bir veri fabrikası kopyalama veya kopyalama
 
@@ -28,25 +28,28 @@ Bu makalede, Azure Data Factory ' de bir veri fabrikasının nasıl kopyalanaca�
 
 Veri fabrikasını kopyalamak veya klonlamak için yararlı bulabileceğiniz durumlardan bazıları şunlardır:
 
--   **Kaynakları yeniden adlandırma**. Azure, kaynakların yeniden adlandırılmasını desteklemez. Bir veri fabrikasını yeniden adlandırmak isterseniz, veri fabrikasını farklı bir adla kopyalayabilir ve ardından var olanı silebilirsiniz.
+- **Data Factory** yeni bir bölgeye taşıyın. Data Factory farklı bir bölgeye taşımak istiyorsanız, en iyi yol hedeflenen bölgede bir kopya oluşturmak ve var olanı silmek.
 
--   Hata ayıklama özellikleri yeterli olmadığında **değişiklikleri hata ayıklama** . Bazen yaptığınız değişiklikleri test etmek için, değişikliklerinizi ana birine uygulamadan önce farklı bir fabrikada test etmek isteyebilirsiniz. Çoğu senaryoda hata ayıkla ' yı kullanabilirsiniz. Ancak tetikleyicide yapılan değişiklikler; örneğin, bir tetikleyici otomatik olarak çağrıldığında veya bir zaman penceresinde, iade etmeden kolayca çalışmayabilir. Bu durumlarda, fabrikası klonlamak ve yaptığınız değişiklikleri uygulamak çok sayıda fikir sunar. Azure Data Factory öncelikle çalışma sayısına göre ücretlendirdiği için ikinci fabrika hiçbir ek ücrete neden olmaz.
+- **Data Factory yeniden adlandırılıyor**. Azure, kaynakların yeniden adlandırılmasını desteklemez. Bir veri fabrikasını yeniden adlandırmak isterseniz, veri fabrikasını farklı bir adla kopyalayabilir ve var olanı silebilirsiniz.
+
+- Hata ayıklama özellikleri yeterli olmadığında **değişiklikleri hata ayıklama** . Çoğu senaryoda [Hata Ayıkla](iterative-development-debugging.md)' yı kullanabilirsiniz. Diğer bir deyişle, kopyalanmış bir korumalı alan ortamındaki değişiklikleri test etmek daha mantıklı olur. Örneğin, parametreli ETL işlem hatlarınız, bir tetikleme zaman penceresi üzerine geldiğinde bir tetikleyici tetiklendiğinde, tek başına hata ayıklama aracılığıyla kolayca test edilemeyebilir. Bu durumlarda, denemek için bir korumalı alan ortamı klonlamak isteyebilirsiniz. Azure Data Factory, öncelikle çalışma sayısına göre ücretlendirdiğinden, ikinci bir fabrika hiçbir ek ücret vermez.
 
 ## <a name="how-to-clone-a-data-factory"></a>Veri fabrikasını kopyalama
 
-1. Azure portal Data Factory Kullanıcı arabirimi, veri fabrikanızın tüm yükünü bir Kaynak Yöneticisi şablonuna dışa aktarmanıza olanak tanır ve fabrikanızı kopyaladığınızda değiştirmek istediğiniz değerleri değiştirmenize olanak tanıyan bir parametre dosyası ile birlikte.
+1. Önkoşul olarak, ilk olarak Azure portal hedef veri fabrikanızı oluşturmanız gerekir.
 
-1. Bir önkoşul olarak, hedef veri fabrikanızı Azure portal oluşturmanız gerekir.
+1. GIT modundaysanız:
+    1. Portaldan her yayımladığınızda, fabrikanızın Kaynak Yöneticisi şablonu ADF yayımlama dalında GIT 'e kaydedilir \_
+    1. Yeni fabrikasını _aynı_ depoya bağlayın ve ADF \_ Yayımlama dalından derleyin. İşlem hatları, veri kümeleri ve tetikleyiciler gibi kaynaklar
 
-1. Kaynak fabrikasında SelfHosted bir tümleştirme çalışma zamanı varsa, bu adı hedef fabrikasında aynı adla oluşturmanız gerekir. Şirket içinde barındırılan IRS 'yi farklı fabrikalar arasında paylaştırmak istiyorsanız [burada](source-control.md#best-practices-for-git-integration)yayınlanan kalıbı kullanabilirsiniz.
+1. Live moddasınız:
+    1. Data Factory UI, veri fabrikanızın tüm yükünü bir Kaynak Yöneticisi şablon dosyasına ve bir parametre dosyasına aktarmanızı sağlar. Bu kişiler, portaldaki **ARM şablonu \ dışarı aktar Kaynak Yöneticisi şablonu** düğmesinden erişilebilir.
+    1. Parametre dosyasında uygun değişiklikleri yapabilir ve yeni fabrika için yeni değerlerle takas edebilirsiniz
+    1. Ardından, standart Kaynak Yöneticisi şablonu dağıtım yöntemleri aracılığıyla dağıtabilirsiniz.
 
-1. GIT modundaysanız, portaldan her yayımladığınızda, fabrikasının Kaynak Yöneticisi şablonu, deponun adf_publish dalında GIT 'e kaydedilir.
+1. Kaynak fabrikasında SelfHosted bir tümleştirme çalışma zamanı varsa, bu adı hedef fabrikasında aynı adla oluşturmanız gerekir. Şirket içinde barındırılan Integration Runtime farklı fabrikalar arasında paylaştırmak istiyorsanız, [burada](create-shared-self-hosted-integration-runtime-powershell.md) yayımlanan ve kendını barındıran IR 'yi paylaşma sayfasında yayımlanmış olan kalıbı kullanabilirsiniz.
 
-1. Diğer senaryolar için Kaynak Yöneticisi şablonu, portalda **Kaynak Yöneticisi şablonu dışarı aktar** düğmesine tıklanarak indirilebilir.
-
-1. Kaynak Yöneticisi şablonunu indirdikten sonra standart Kaynak Yöneticisi şablonu dağıtım yöntemleri aracılığıyla dağıtabilirsiniz.
-
-1. Güvenlik nedenleriyle, oluşturulan Kaynak Yöneticisi şablonu bağlantılı hizmetlerin parolaları gibi gizli bilgiler içermez. Sonuç olarak, bu parolaları dağıtım parametreleri olarak sağlamanız gerekir. Parametre sağlanması istenmediğinde, Azure Key Vault bağlı hizmetlerin bağlantı dizelerini ve parolalarını edinmeniz gerekir.
+1. Güvenlik nedenleriyle, oluşturulan Kaynak Yöneticisi şablonu herhangi bir gizli bilgi (örneğin, bağlı hizmetler için parolalar) içermez. Bu nedenle, kimlik bilgilerini dağıtım parametreleri olarak sağlamanız gerekir. Ayarlarınız için el ile giriş kimlik bilgisi istenmemişse, lütfen bunun yerine bağlantı dizelerini ve parolaları Azure Key Vault almayı göz önünde bulundurun. [Daha fazla göster](store-credentials-in-key-vault.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

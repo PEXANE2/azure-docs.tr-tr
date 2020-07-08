@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 09747b1ed739dc424f91b027fa741f4eb9dbc513
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553137"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama sonuçları kırpma için güvenlik filtreleri
 
@@ -32,7 +32,7 @@ Bu makalede, aşağıdaki adımları kullanarak güvenlik filtrelemeyi nasıl ge
 >[!NOTE]
 > Asıl tanımlayıcıları alma işlemi bu belgede kapsanmıyor. Bunu kimlik hizmeti sağlayıcınızdan almalısınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede bir [Azure aboneliğiniz](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure bilişsel arama hizmeti](https://docs.microsoft.com/azure/search/search-create-service-portal)ve [Azure bilişsel arama dizininiz](https://docs.microsoft.com/azure/search/search-create-index-portal)olduğunu varsaymaktadır.  
 
@@ -60,7 +60,7 @@ Güvenli dosyalar dizini olduğunu ve her dosyaya farklı bir kullanıcı kümes
 Dizininizin URL uç noktasına bir HTTP POST isteği gönderin. HTTP isteğinin gövdesi, eklenecek belgeleri içeren bir JSON nesnesidir:
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -118,7 +118,7 @@ Bu örnekte, bir POST isteği kullanılarak belgelerin nasıl aranacağı göste
 HTTP POST isteğini verme:
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```

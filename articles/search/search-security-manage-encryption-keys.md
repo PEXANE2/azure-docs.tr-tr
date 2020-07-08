@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553297"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak Azure Bilişsel Arama içeriğin geri kalanında şifreleme
 
@@ -26,7 +26,7 @@ Müşteri tarafından yönetilen anahtarlarla şifreleme, bu nesneler oluşturul
 Anahtarların tümünün aynı Key Vault olması gerekmez. Tek bir arama hizmeti, her biri farklı anahtar kasalarında depolanan kendi müşteri tarafından yönetilen şifreleme anahtarlarıyla şifrelenmiş birden çok şifrelenmiş dizini veya eş anlamlı eşlemeleri barındırabilir.  Ayrıca, aynı hizmette, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmemiş dizinler ve eş anlamlı haritalar da olabilir. 
 
 > [!IMPORTANT] 
-> Bu özellik [REST API sürüm 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) ve [.net SDK sürümü 8,0-Preview](search-dotnet-sdk-migration-version-9.md)' da kullanılabilir. Şu anda Azure portal müşterinin yönettiği şifreleme anahtarlarını yapılandırma desteği yoktur. Arama hizmeti 2019 Ocak 'tan sonra oluşturulmalıdır ve ücretsiz (paylaşılan) bir hizmet olamaz.
+> Bu özellik [REST API](https://docs.microsoft.com/rest/api/searchservice/) ve [.NET SDK 8,0-Önizleme sürümünde](search-dotnet-sdk-migration-version-9.md)kullanılabilir. Şu anda Azure portal müşterinin yönettiği şifreleme anahtarlarını yapılandırma desteği yoktur. Arama hizmeti 2019 Ocak 'tan sonra oluşturulmalıdır ve ücretsiz (paylaşılan) bir hizmet olamaz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -236,4 +236,4 @@ Portalda bir AAD uygulaması oluşturmak için:
 Azure Güvenlik mimarisi hakkında bilginiz varsa, [Azure Güvenlik belgelerini](https://docs.microsoft.com/azure/security/)gözden geçirin ve özellikle bu makalede:
 
 > [!div class="nextstepaction"]
-> [Veri şifreleme-Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [Bekleyen veri şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

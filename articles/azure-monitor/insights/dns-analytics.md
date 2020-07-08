@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552813"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS Analizi Preview çözümüyle DNS altyapınız hakkında Öngörüler toplayın
 
@@ -35,9 +35,9 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| [Windows aracıları](../platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
+| [Windows aracıları](../platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
 | [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
-| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Evet | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 | [Azure depolama hesabı](../platform/collect-azure-metrics-logs.md) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
@@ -74,7 +74,7 @@ Log Analytics çalışma alanınıza bağlanmak için Microsoft Monitoring Agent
 Operations Manager yönetim grubunuz Log Analytics çalışma alanınıza bağlıysa, bu çözümü eklediğinizde aşağıdaki yönetim paketleri Operations Manager yüklenir. Bu yönetim paketlerinin gerekli bir yapılandırması veya bakımı yoktur:
 
 - Microsoft DNS veri toplayıcı zekası paketi (Microsoft. ıntelligencepacks. DNS)
-- Microsoft System Center Advisor DNS Analizi yapılandırması (Microsoft. ıntelligencepack. DNS. Configuration)
+- Microsoft System Center Advisor DNS Analizi yapılandırma (Microsoft.IntelligencePack.Dns.Configuration)
 
 Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../platform/om-agents.md).
 
@@ -159,7 +159,7 @@ Bu sorguları, özelleştirilmiş raporlama için kendi sorgularınızı oluştu
 
 Günlük araması sayfasında, bir sorgu oluşturabilirsiniz. , Model denetimlerini kullanarak arama sonuçlarınızı filtreleyebilirsiniz. Sonuçlarınızı dönüştürmek, filtrelemek ve raporlamak için gelişmiş sorgular da oluşturabilirsiniz. Aşağıdaki sorguları kullanarak başlayın:
 
-1. **Arama sorgusu kutusunda**, çözüm tarafından yönetilen `DnsEvents` DNS SUNUCULARı tarafından oluşturulan tüm DNS olaylarını görüntülemek için yazın. Sonuçlar, arama sorguları, dinamik kayıtlar ve yapılandırma değişiklikleriyle ilgili tüm olaylar için günlük verilerini listeler.
+1. **Arama sorgusu kutusunda**, `DnsEvents` çözüm tarafından yönetilen DNS sunucuları tarafından oluşturulan tüm DNS olaylarını görüntülemek için yazın. Sonuçlar, arama sorguları, dinamik kayıtlar ve yapılandırma değişiklikleriyle ilgili tüm olaylar için günlük verilerini listeler.
 
     ![DnsEvents günlük araması](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +169,7 @@ Günlük araması sayfasında, bir sorgu oluşturabilirsiniz. , Model denetimler
 
     c. Yapılandırma değişikliklerinin günlük verilerini görüntülemek için, sol taraftaki model denetiminden **alt tür** filtresi olarak **ConfigurationChange** ' ı seçin. Seçilen zaman dilimi için tüm yapılandırma değişikliği olaylarını listeleyen bir tablo görüntülenir.
 
-1. **Arama sorgusu kutusunda**, çözüm tarafından yönetilen `DnsInventory` DNS sunucuları için tüm DNS envanteriyle ilgili verileri görüntülemek üzere yazın. Sonuçlar, DNS sunucuları, DNS bölgeleri ve kaynak kayıtları için günlük verilerini listeler.
+1. **Arama sorgusu kutusunda**, `DnsInventory` çözüm tarafından yönetilen DNS SUNUCULARı için tüm DNS envanteriyle ilgili verileri görüntülemek üzere yazın. Sonuçlar, DNS sunucuları, DNS bölgeleri ve kaynak kayıtları için günlük verilerini listeler.
 
     ![Dnsınventory günlük araması](./media/dns-analytics/log-search-dnsinventory.png)
     
@@ -179,7 +179,7 @@ Ortak sorun giderme adımları:
 
 1. Eksik DNS arama verileri-bu sorunu gidermek Için yapılandırmayı sıfırlamayı veya portalda yalnızca yapılandırma sayfasını yüklemeyi deneyin. Sıfırlamak için, bir ayarı başka bir değerle değiştirmeniz, sonra yeniden özgün değere değiştirmeniz ve yapılandırmayı kaydetmeniz yeterlidir.
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions"></a>Öneriler
 
 Geri bildirim sağlamak için [Log Analytics UserVoice sayfasını](https://aka.ms/dnsanalyticsuservoice) ziyaret ederek DNS analizi özellikleri üzerinde çalışmak üzere fikirler gönderin. 
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a4c862cd6b6f9b01c0b56c2a21e228fdfd0f6e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553344"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti için API anahtarları oluşturma ve yönetme
 
@@ -32,20 +32,20 @@ Arama hizmetinize erişmek için iki tür anahtar kullanılır: yönetici (okuma
 |Anahtar|Açıklama|Sınırlar|  
 |---------|-----------------|------------|  
 |Yönetici|Hizmeti yönetme, dizinler, Dizin oluşturucular ve veri kaynakları oluşturma ve silme gibi tüm işlemlere tam haklar verir.<br /><br /> Portalda *birincil* ve *İkincil* anahtarlar olarak adlandırılan iki yönetici anahtarı, hizmet oluşturulduğunda oluşturulur ve isteğe bağlı olarak tek tek yeniden oluşturulabilir. İki anahtara sahip olmak, hizmete devam etmek için ikinci anahtarı kullanırken bir anahtarın üzerine erişmenizi sağlar.<br /><br /> Yönetici anahtarları yalnızca HTTP istek üst bilgilerinde belirtilir. Bir URL 'ye yönetici API anahtarı yerleştirebilirsiniz.|Hizmet başına en fazla 2|  
-|Sorgu|Dizinlere ve belgelere salt okuma erişimi verir ve genellikle arama istekleri veren istemci uygulamalarına dağıtılır.<br /><br /> Sorgu anahtarları isteğe bağlı olarak oluşturulur. Bunları portalda el ile veya [yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/)aracılığıyla oluşturabilirsiniz.<br /><br /> Sorgu anahtarları, arama, öneri veya arama işlemi için bir HTTP isteği üst bilgisinde belirtilebilir. Alternatif olarak, bir URL 'ye parametre olarak bir sorgu anahtarı geçirebilirsiniz. İstemci uygulamanızın isteği nasıl formüllamasına bağlı olarak, anahtarı bir sorgu parametresi olarak geçirmek daha kolay olabilir:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|hizmet başına 50|  
+|Sorgu|Dizinlere ve belgelere salt okuma erişimi verir ve genellikle arama istekleri veren istemci uygulamalarına dağıtılır.<br /><br /> Sorgu anahtarları isteğe bağlı olarak oluşturulur. Bunları portalda el ile veya [yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/)aracılığıyla oluşturabilirsiniz.<br /><br /> Sorgu anahtarları, arama, öneri veya arama işlemi için bir HTTP isteği üst bilgisinde belirtilebilir. Alternatif olarak, bir URL 'ye parametre olarak bir sorgu anahtarı geçirebilirsiniz. İstemci uygulamanızın isteği nasıl formüllamasına bağlı olarak, anahtarı bir sorgu parametresi olarak geçirmek daha kolay olabilir:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|hizmet başına 50|  
 
  Görsel olarak, bir yönetici anahtarı veya sorgu anahtarı arasında ayrım yoktur. Her iki anahtar de 32 rasgele oluşturulan alfasayısal karakterlerden oluşan dizelerdir. Uygulamanızda hangi anahtar türünün belirtilme izini kaybederseniz, [portalda anahtar değerlerini denetleyebilir](https://portal.azure.com) veya değer ve anahtar türünü döndürmek için [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) kullanabilirsiniz.  
 
 > [!NOTE]  
->  İstek URI 'sinde bir `api-key` gibi hassas verileri geçirmek için kötü bir güvenlik uygulaması olduğu kabul edilir. Bu nedenle, Azure Bilişsel Arama sorgu dizesinde yalnızca bir `api-key` sorgu anahtarını kabul eder ve dizininizin içeriği herkese açık bir şekilde kullanılabilir olmadığı sürece bunu yapmaktan kaçınmalısınız. Genel bir kural olarak, isteğinizi istek üst bilgisi `api-key` olarak geçirmeyi öneririz.  
+>  İstek URI 'sinde bir gibi hassas verileri geçirmek için kötü bir güvenlik uygulaması olduğu kabul edilir `api-key` . Bu nedenle, Azure Bilişsel Arama sorgu dizesinde yalnızca bir sorgu anahtarını kabul eder `api-key` ve dizininizin içeriği herkese açık bir şekilde kullanılabilir olmadığı sürece bunu yapmaktan kaçınmalısınız. Genel bir kural olarak, `api-key` isteğinizi istek üst bilgisi olarak geçirmeyi öneririz.  
 
 ## <a name="find-existing-keys"></a>Mevcut anahtarları bul
 
 Portalda veya [yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/)erişim tuşları elde edebilirsiniz. Daha fazla bilgi için bkz. [yönetici ve sorgu API-anahtarlarını yönetme](search-security-api-keys.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında, yönetim ve sorgu anahtarlarını görüntülemek için **Ayarlar** >**anahtarlar** ' a tıklayın.
+3. Hizmeti seçin ve genel bakış sayfasında, **Settings**  > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar**anahtarlar** ' a tıklayın.
 
    ![Portal sayfası, ayarlar, anahtarlar bölümü](media/search-security-overview/settings-keys.png)
 
@@ -55,9 +55,9 @@ Sorgu anahtarları bir belge koleksiyonunu hedefleyen işlemler için bir dizin 
 
 İstemci uygulamalarında erişimi ve işlemleri kısıtlamak, hizmetinizdeki arama varlıklarının korunması için gereklidir. İstemci uygulamasından kaynaklanan herhangi bir sorgu için yönetici anahtarı yerine her zaman bir sorgu anahtarı kullanın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında **Ayarlar** >**anahtarlar**' a tıklayın.
+3. Hizmeti seçin ve genel bakış sayfasında **Ayarlar**  > **anahtarlar**' a tıklayın.
 4. **Sorgu anahtarlarını Yönet**' e tıklayın.
 5. Hizmetiniz için önceden oluşturulmuş olan sorgu anahtarını kullanın veya en çok 50 yeni sorgu anahtarı oluşturun. Varsayılan sorgu anahtarı adlandırılmamış, ancak yönetilebilirlik için ek sorgu anahtarları adlandırılmış olabilir.
 
@@ -72,7 +72,7 @@ Sorgu anahtarları bir belge koleksiyonunu hedefleyen işlemler için bir dizin 
 
 Bir birincil anahtarı, iş sürekliliği için ikincil anahtarı kullanarak döndürebilmeniz için her bir hizmet için iki yönetici anahtarı oluşturulur.
 
-1. **Ayarlar** >**anahtarlar** sayfasında, ikincil anahtarı kopyalayın.
+1. **Ayarlar**  > **anahtarlar** sayfasında, ikincil anahtarı kopyalayın.
 2. Tüm uygulamalar için, API anahtarı ayarlarını ikincil anahtarı kullanacak şekilde güncelleştirin.
 3. Birincil anahtarı yeniden oluşturun.
 4. Tüm uygulamaları yeni birincil anahtarı kullanacak şekilde güncelleştirin.
