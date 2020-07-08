@@ -4,10 +4,10 @@ description: Azure portal kullanarak sağlanan bir VM 'den Azure DevTest Labs ö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476606"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM’den özel görüntü oluşturma
@@ -18,7 +18,7 @@ ms.locfileid: "85476606"
 
 Sağlanan bir VM 'den özel bir görüntü oluşturabilir ve bu özel görüntüyü daha sonra aynı VM 'Ler oluşturmak için kullanabilirsiniz. Aşağıdaki adımlarda, bir VM 'den nasıl özel bir görüntü oluşturacağınız gösterilmektedir:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 

@@ -4,10 +4,10 @@ description: Bu makalede, hack maratonları çalıştırmak için kullanabilece�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445891"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Sonraki Hackathon için Azure Lab Services kullanın

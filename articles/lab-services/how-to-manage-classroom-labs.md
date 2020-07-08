@@ -4,10 +4,10 @@ description: Bir derslik Laboratuvarı oluşturma ve yapılandırma, tüm sını
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445398"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
@@ -30,7 +30,7 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
         Laboratuvar hesabı sahibi kimlik bilgilerini kullanarak oturum açtıysanız, laboratuvar için daha fazla görüntü etkinleştirme seçeneği görüntülenir. Daha fazla bilgi için bkz. [Laboratuvar oluşturma sırasında görüntüleri etkinleştirme](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     1. Sayfada gösterildiği **saat başına toplam fiyatı** gözden geçirin. 
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
 
         ![Yeni laboratuvar penceresi](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 

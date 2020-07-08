@@ -4,10 +4,10 @@ description: Bir laboratuvar hesabı oluşturmayı, tüm laboratuar hesapların�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445500"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Laboratuvar hesabı oluşturma ve yönetme
@@ -16,7 +16,7 @@ Azure Lab Services, laboratuvar hesabı, sınıf laboratuvarları gibi yönetile
 ## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturma
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar hesapları** ' nı seçin. `*` **Laboratuvar hesapları**' nın yanındaki yıldız () seçeneğini belirlerseniz, Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar hesapları** ' nı seçersiniz.
 
     ![Tüm hizmetler-> laboratuvar hesapları](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -60,7 +60,7 @@ Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nası
     ![Laboratuvar hesabı sayfası](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="view-lab-accounts"></a>Laboratuvar hesaplarını görüntüleme
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Menüden **tüm kaynaklar** ' ı seçin. 
 3. **Tür**Için **Laboratuvar hesapları** ' nı seçin. 
     Abonelik, kaynak grubu, konumlar ve etiketlere göre de filtre uygulayabilirsiniz. 

@@ -4,10 +4,10 @@ description: Bir laboratuvarda öğrenci sayısını yapılandırmayı, laboratu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445959"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
@@ -30,7 +30,7 @@ Bu bölümde, öğrencileri el ile veya bir CSV dosyası karşıya yükleyerek b
 
     ![Kullanıcıların e-posta adreslerini ekleme](./media/how-to-configure-student-usage/add-users-email-addresses.png)
 
-1. **Kaydet**’i seçin. 
+1. **Kaydet**'i seçin. 
 
     Bu liste, geçerli kullanıcıların e-posta adreslerini ve laboratuvarda kayıtlı olup olmadığını gösterir. 
 
@@ -57,7 +57,7 @@ Ayrıca, e-posta adreslerini içeren bir CSV dosyasını karşıya yükleyerek d
 
     ![CSV dosyasından e-posta adreslerine sahip "Kullanıcı Ekle" penceresi](./media/how-to-configure-student-usage/add-users-window.png)
 
-1. **Kaydet**’i seçin. 
+1. **Kaydet**'i seçin. 
 
 1. **Kullanıcılar** bölmesinde, eklenen öğrencilerin listesini görüntüleyin. 
 
