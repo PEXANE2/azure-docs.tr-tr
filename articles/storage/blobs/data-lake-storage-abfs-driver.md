@@ -9,15 +9,14 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75970269"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
 
-Azure Data Lake Storage 2. veri için birincil erişim yöntemlerinden biri [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)'ı aracılığıyla yapılır. Data Lake Storage 2., Azure Blob depolama alanı erişiminin yeni bir sürücüye, Azure blob dosya sistemi sürücüsüne veya `ABFS`uygulamasına erişmesini sağlar. ABFS Apache Hadoop bir parçasıdır ve Hadoop 'un birçok ticari dağılımlarına dahil edilmiştir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve Data Lake Storage 2. açıkça başvuran hiçbir kod olmadan Azure Blob depolama alanındaki verilere erişebilir.
+Azure Data Lake Storage 2. veri için birincil erişim yöntemlerinden biri [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)'ı aracılığıyla yapılır. Data Lake Storage 2., Azure Blob depolama alanı erişiminin yeni bir sürücüye, Azure blob dosya sistemi sürücüsüne veya uygulamasına erişmesini sağlar `ABFS` . ABFS Apache Hadoop bir parçasıdır ve Hadoop 'un birçok ticari dağılımlarına dahil edilmiştir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve Data Lake Storage 2. açıkça başvuran hiçbir kod olmadan Azure Blob depolama alanındaki verilere erişebilir.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Önceki Özellik: Windows Azure Depolama Blobu sürücüsü
 

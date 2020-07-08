@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979372"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te şemalarla XML’i doğrulama
@@ -135,7 +134,7 @@ Daha büyük şemalar eklemek için, şemanızı Azure Storage hesabınızdaki b
 1. Karşıya yüklemeyi tamamladıktan sonra, şemanız için bir paylaşılan erişim imzası (SAS) oluşturun. 
    Şemanızın kısayol menüsünde, **paylaşılan erişim Imzası al**' ı seçin.
 
-1. **Paylaşılan erişim imzası** bölmesinde **kapsayıcı düzeyinde paylaşılan erişim imzası URI** > **Oluştur**' u seçin. 
+1. **Paylaşılan erişim imzası** bölmesinde **kapsayıcı düzeyinde paylaşılan erişim imzası URI**  >  **Oluştur**' u seçin. 
    SAS URL 'SI oluşturulduktan sonra, **URL** kutusunun yanındaki **Kopyala**' yı seçin.
 
 1. **Şema ekle** bölmesinin açık olduğu Azure Portal geri dönün. **Büyük dosya**seçin.

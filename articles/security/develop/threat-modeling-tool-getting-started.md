@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728298"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool kullanmaya başlama
@@ -43,7 +42,7 @@ Threat Modeling Tool başlattığınızda resimde görüldüğü gibi birkaç ş
 
 | Bileşen                                   | Ayrıntılar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Geri bildirim, öneriler ve sorunlar düğmesi** | Tüm nesnelerin her türlü için **[MSDN forumundan](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** yararlanır. Diğer kullanıcıların ne yaptığını, geçici çözümler ve önerilerle birlikte okumaya yönelik bir fırsat sunar. Aradığınız şeyi yine de bulamıyorsanız, destek ekibimizin size yardımcı olması tmtextsupport@microsoft.com için e-posta gönderin                                                                                                                            |
+| **Geri bildirim, öneriler ve sorunlar düğmesi** | Tüm nesnelerin her türlü için **[MSDN forumundan](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** yararlanır. Diğer kullanıcıların ne yaptığını, geçici çözümler ve önerilerle birlikte okumaya yönelik bir fırsat sunar. Aradığınız şeyi yine de bulamıyorsanız, tmtextsupport@microsoft.com Destek ekibimizin size yardımcı olması için e-posta gönderin                                                                                                                            |
 | **Model oluşturma**                          | Diyagramınızı çizmeniz için boş bir tuval açar. Modeliniz için kullanmak istediğiniz şablonu seçtiğinizden emin olun                                                                                                                                                                                                                                                                                                                                                                       |
 | **Yeni modeller için şablon**                 | Model oluşturmadan önce kullanılacak şablonu seçmelisiniz. Ana şablonumuz, Azure 'a özgü Şablonlar, tehditler ve azaltmaları içeren Azure tehdit modeli şablonudur. Genel modeller için, açılan menüden SDL TM Bilgi Bankası ' nı seçin. Kendi şablonunuzu oluşturmak veya tüm kullanıcılar için yeni bir tane göndermek mı istiyorsunuz? Daha fazla bilgi edinmek için **[şablon deposu](https://github.com/Microsoft/threat-modeling-templates)** GitHub sayfamıza göz atın                              |
 | **Model açma**                            | <p>Daha önce kaydedilen tehdit modellerini açar. Son açılan modeller özelliği, en son dosyalarınızı açmanız gerekiyorsa harika. Seçimin üzerine geldiğinizde, modelleri açmak için 2 yol bulacaksınız:</p><p><ul><li>Yerel depolama kullanarak bir dosya açan klasik yoldan bu bilgisayardan aç</li><li>OneDrive 'dan aç – takımlar, OneDrive 'daki klasörleri kullanarak üretkenlik ve işbirliğinin artırılmasına yardımcı olmak için tüm tehdit modellerini tek bir konumda kaydedebilir ve paylaşabilir</li></ul></p> |
@@ -144,4 +143,4 @@ Burada sunduğumuz tehdit modelleme yaklaşımı, Microsoft 'un geçmişte yapt�
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sorularınızı, yorumlarınızı ve kaygılarınızı ile gönderin tmtextsupport@microsoft.com. Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .
+Sorularınızı, yorumlarınızı ve kaygılarınızı ile gönderin tmtextsupport@microsoft.com . Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .

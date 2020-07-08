@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 80f984643d6d8be88b381881c6fc1cb1cb5f1815
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887351"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Senaryo: BindException-adres Azure HDInsight 'ta zaten kullanılıyor
@@ -20,7 +19,7 @@ Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adı
 
 ## <a name="issue"></a>Sorun
 
-Apache HBase bölge sunucusu üzerinde yeniden başlatma işlemi tamamlanamadı. Bölge sunucusunun `region-server.log` başlayacağı `/var/log/hbase` çalışan düğümlerinde bulunan dizininde, aşağıdakine benzer bir hata iletisi görebilirsiniz:
+Apache HBase bölge sunucusu üzerinde yeniden başlatma işlemi tamamlanamadı. `region-server.log` `/var/log/hbase` Bölge sunucusunun başlayacağı çalışan düğümlerinde bulunan dizininde, aşağıdakine benzer bir hata iletisi görebilirsiniz:
 
 ```
 Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
@@ -40,9 +39,9 @@ Ağır iş yükü etkinliği sırasında Apache HBase bölge sunucuları yeniden
 
 1. Uygulamanız bölge sunucusuna bağlanmaya devam ederse, sunucu hemen kapatılmaz. 30 saniyelik zaman aşımı, kapatmadan önce sona erer.
 
-1. 30 saniye sonra, ambarı Aracısı bölge sunucusuna bir zorla-KILL (`kill -9`) komutu gönderir.
+1. 30 saniye sonra, ambarı Aracısı bölge sunucusuna bir zorla-KILL ( `kill -9` ) komutu gönderir.
 
-1. Bu ani kapatmayla kapatılmış olsa da, bölge sunucusu işlemi sonlandırısa da işlemle ilişkili bağlantı noktası yayımlanmayabilir, sonunda buna yol açar `AddressBindException`.
+1. Bu ani kapatmayla kapatılmış olsa da, bölge sunucusu işlemi sonlandırısa da işlemle ilişkili bağlantı noktası yayımlanmayabilir, sonunda buna yol açar `AddressBindException` .
 
 ## <a name="resolution"></a>Çözüm
 
@@ -61,6 +60,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

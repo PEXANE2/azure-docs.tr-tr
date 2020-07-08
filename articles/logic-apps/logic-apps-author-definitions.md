@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979388"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps mantıksal uygulama iş akışı tanımları için JSON oluşturun, düzenleyin veya genişletin
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps'te mantıksal uygulama iş akışı tanımları için JSON kodu oluşturma, düzenleme ve uzatma
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, tanımlama ve doğrulama Için [Iş akışı Tanım Dili (WDL) şeması](../logic-apps/logic-apps-workflow-definition-language.md) ile birlikte basit ve BILDIRIM temelli JavaScript nesne gösterimi (JSON) kullanır. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır.
 Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md)içinde [Azure kaynakları](../azure-resource-manager/management/overview.md) olarak Logic App tanımlarını dahil edebilirsiniz.
@@ -28,7 +27,7 @@ Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturma](
 
 ## <a name="edit-json---azure-portal"></a>JSON-Azure portal Düzenle
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> oturum açın.
+1. <a href="https://portal.azure.com" target="_blank">Azure portalında</a> oturum açın.
 
 2. Sol menüden **tüm hizmetler**' i seçin.
 Arama kutusunda, "Logic Apps" i bulun ve ardından sonuçlardan mantıksal uygulamanızı seçin.
@@ -46,7 +45,7 @@ Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource 
 
 1. Mantıksal uygulamanızı içeren Visual Studio çözümünü veya [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) projesini açın.
 
-2. Mantıksal uygulamanızın tanımını bulun ve açın. Bu, varsayılan olarak **logicapp. JSON**adlı bir [Kaynak Yöneticisi şablonunda](../azure-resource-manager/templates/overview.md)görüntülenir.
+2. Mantıksal uygulamanızın tanımını bulun ve açın, varsayılan olarak, **LogicApp.js**adlı [Kaynak Yöneticisi şablonunda](../azure-resource-manager/templates/overview.md)görünür.
 Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebilirsiniz.
 
 3. Mantıksal uygulama tanımınız ve şablonunuz için kısayol menüsünü açın.
@@ -127,18 +126,18 @@ Bu adımlar, bu örneğin içinden dış olarak çalışan bu dizeyi nasıl işl
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) Şirket adına ulaşın, bu nedenle toplam karakter sayısını alırsınız.
+1. Şirket adına ulaşın, bu [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) nedenle toplam karakter sayısını alırsınız.
 
-2. Daha kısa bir dize almak için çıkarın `5`.
+2. Daha kısa bir dize almak için çıkarın `5` .
 
-3. Şimdi bir [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)alın.
-Dizinde `5`başlatın ve dizenin geri kalanına gidin.
+3. Şimdi bir alın [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) .
+Dizinde başlatın `5` ve dizenin geri kalanına gidin.
 
 4. Bu alt dizeyi bir [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) dizeye Dönüştür.
 
-5. Artık [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) karakter içeren `+` `-` tüm karakterler.
+5. Artık karakter [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) `+` içeren tüm karakterler `-` .
 
-6. Son olarak [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) , tüm `/` karakterler `_` karakter.
+6. Son olarak, [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) tüm `/` karakterler `_` karakter.
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Liste öğelerini özellik değerlerine eşleyin, sonra haritaları parametre olarak kullanın
 
@@ -147,7 +146,7 @@ Bir özelliğin değerini temel alan farklı sonuçlar almak için, her özellik
 Örneğin, bu iş akışı bazı kategorileri parametreler olarak tanımlar ve belirli bir URL ile bu kategorilerle eşleşen bir eşleme.
 İlk olarak, iş akışı makalelerin bir listesini alır. Daha sonra iş akışı, her makale kategorisi ile eşleşen URL 'YI bulmak için Haritayı kullanır.
 
-*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) İşlevi, kategorinin bilinen tanımlanmış bir kategori ile eşleşip eşleşmediğini denetler.
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)İşlevi, kategorinin bilinen tanımlanmış bir kategori ile eşleşip eşleşmediğini denetler.
 
 *   Eşleşen bir kategori alındıktan sonra örnek köşeli ayraç kullanarak öğeyi eşlemden çeker:`parameters[...]`
 
@@ -228,19 +227,19 @@ Bir özelliğin değerini temel alan farklı sonuçlar almak için, her özellik
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. `order` Eyleminden öğesini ayıklayın `startTime`.
-2. İle `utcNow()`geçerli saati alın.
+1. `order`Eyleminden öğesini ayıklayın `startTime` .
+2. İle geçerli saati alın `utcNow()` .
 3. Bir saniye çıkar:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md)
 
-   Veya `minutes` `hours`gibi diğer zaman birimlerini kullanabilirsiniz.
+   Veya gibi diğer zaman birimlerini kullanabilirsiniz `minutes` `hours` .
 
 3. Şimdi, bu iki değeri karşılaştırabilirsiniz.
 
    İlk değer ikinci değerden küçükse, siparişin ilk yerleştirilmesi bu yana birden fazla saniye geçti.
 
-Tarihleri biçimlendirmek için dize biçimlerini kullanabilirsiniz. Örneğin, RFC1123 almak için kullanın [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md).
+Tarihleri biçimlendirmek için dize biçimlerini kullanabilirsiniz. Örneğin, RFC1123 almak için kullanın [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) .
 [Tarih biçimlendirme](../logic-apps/logic-apps-workflow-definition-language.md)hakkında daha fazla bilgi edinin.
 
 ``` json

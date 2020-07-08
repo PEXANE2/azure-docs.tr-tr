@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887317"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta Apache HBase kümesindeki bölge sunucusunda gereğinden CPU
@@ -24,19 +23,19 @@ Apache HBase bölge sunucusu işlemi, %200 CPU kadar ücretsiz olarak başlıyor
 
 ## <a name="cause"></a>Nedeni
 
-HBase kümesi v 3.4 çalıştırıyorsanız, JDK 'nin 1.7.0 _151 sürümüne yükseltilmesiyle kaynaklanan olası bir hata nedeniyle bu hatayla karşılaşabilirsiniz. Belirlediğimiz belirti, bölge sunucusu işlemi %200 CPU 'ya yakın bir şekilde başlıyor (Bunu doğrulamak için, bu `top` komutu çalıştırın. %200 ' e yakın bir işlem varsa, PID 'sini alın ve çalıştırılarak `ps -aux | grep` bölge sunucusu işlemi olduğunu onaylayın).
+HBase kümesi v 3.4 çalıştırıyorsanız, JDK 'nin 1.7.0 _151 sürümüne yükseltilmesiyle kaynaklanan olası bir hata nedeniyle bu hatayla karşılaşabilirsiniz. Belirlediğimiz belirti, bölge sunucusu işlemi %200 CPU 'ya yakın bir şekilde başlıyor (Bunu doğrulamak için, bu `top` komutu çalıştırın. %200 ' e yakın bir işlem varsa, PID 'sini alın ve çalıştırılarak bölge sunucusu işlemi olduğunu onaylayın `ps -aux | grep` ).
 
 ## <a name="resolution"></a>Çözüm
 
 1. Aşağıdaki gibi, tüm küme düğümlerine JDK 1,8 ' ü yükler:
 
-    * Betik eylemini `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`çalıştırın. Tüm düğümlerde çalıştırma seçeneğini seçtiğinizden emin olun.
+    * Betik eylemini çalıştırın `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh` . Tüm düğümlerde çalıştırma seçeneğini seçtiğinizden emin olun.
 
-    * Alternatif olarak, her bir düğümde oturum açabilir ve komutunu `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`çalıştırabilirsiniz.
+    * Alternatif olarak, her bir düğümde oturum açabilir ve komutunu çalıştırabilirsiniz `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk` .
 
-1. Ambarı Kullanıcı arabirimine gidin `https://<clusterdnsname>.azurehdinsight.net`.
+1. Ambarı Kullanıcı arabirimine gidin `https://<clusterdnsname>.azurehdinsight.net` .
 
-1. **HBase->configs >gelişmiş >gelişmiş** `hbase-env configs` ' e gidin ve değişkeni `JAVA_HOME` olarak `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`değiştirin. Yapılandırma değişikliğini kaydedin.
+1. **HBase->configs >gelişmiş >gelişmiş** `hbase-env configs` ' e gidin ve değişkeni `JAVA_HOME` olarak değiştirin `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` . Yapılandırma değişikliğini kaydedin.
 
 1. [İsteğe bağlı ancak önerilir] [Kümedeki tüm tabloları temizler](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
@@ -56,6 +55,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

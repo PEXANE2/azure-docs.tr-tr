@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894423"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta "çapraz kaynak API 'YI engelleme" nedeniyle Jupyter sunucusu 404 "bulunamadı" hatası
@@ -36,7 +35,7 @@ Bu hataya birkaç şey neden olabilir:
 
 - Kümeye erişimi kısıtlayan ağ güvenlik grubu (NSG) kurallarını yapılandırdıysanız. NSG kurallarıyla erişimi kısıtlamak, Apache ambarı ve diğer hizmetlere küme adı yerine IP adresini kullanarak doğrudan erişmenize izin verir. Ancak, Jupyter 'a erişirken, 404 "bulunamadı" hatasını görebilirsiniz.
 
-- HDInsight ağ geçidinizi standart `xxx.azurehdinsight.net`dışında ÖZELLEŞTIRILMIŞ bir DNS adı verildiyse.
+- HDInsight ağ geçidinizi standart dışında özelleştirilmiş bir DNS adı verildiyse `xxx.azurehdinsight.net` .
 
 ## <a name="resolution"></a>Çözüm
 
@@ -47,11 +46,11 @@ Bu hataya birkaç şey neden olabilir:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Şöyle olan satırı bulun `NotebookApp.allow_origin='\"https://{2}.{3}\"'` ve şu şekilde değiştirin:. `NotebookApp.allow_origin='\"*\"'`
+1. Şöyle olan satırı bulun ve şu `NotebookApp.allow_origin='\"https://{2}.{3}\"'` şekilde değiştirin: `NotebookApp.allow_origin='\"*\"'` .
 
 1. Jupyıter hizmetini ambarı 'ndan yeniden başlatın.
 
-1. Komut `ps aux | grep jupyter` istemine yazmak, HERHANGI bir URL 'nin kendisine bağlanmasına izin verdiğini göstermelidir.
+1. `ps aux | grep jupyter`Komut istemine yazmak, herhangi BIR URL 'nin kendisine bağlanmasına izin verdiğini göstermelidir.
 
 Bu, zaten yaptığımız ayardan daha az güvenlidir. Ancak, bu kümeye erişimin kısıtlandığı ve dış sunucudan bir NSG olduğu için kümeye bağlanmasına izin verilen varsayılır.
 
@@ -61,6 +60,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

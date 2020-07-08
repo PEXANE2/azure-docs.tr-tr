@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966660"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure için avere vFXT için olağanüstü durum kurtarma Kılavuzu
@@ -83,7 +82,7 @@ Başka bir hesapta veri yedeklemesi oluşturmak için bu adımları izleyin.
 
    Yedeklemeden sonra kapsayıcıyı yeniden eklediğinizde, çoğaltmayı çoğaltabilmeniz için, çekirdek filinin adını ve birleşim bilgilerini (Denetim Masası 'nda **ad alanı** sayfasında listelenir) not edin.
 
-   Çekirdek filni kaldırmak için küme Denetim Masası 'nı kullanın. [Küme Denetim Masası 'nı açın](avere-vfxt-cluster-gui.md) ve **çekirdek fili** > **Yönet çekirdek filtrelerin**' yi seçin. Yedeklemek istediğiniz depolama sistemini bulun ve **Kaldır** düğmesini kullanarak kümeden silin.
+   Çekirdek filni kaldırmak için küme Denetim Masası 'nı kullanın. [Küme Denetim Masası 'nı açın](avere-vfxt-cluster-gui.md) ve **çekirdek fili**  >  **Yönet çekirdek filtrelerin**' yi seçin. Yedeklemek istediğiniz depolama sistemini bulun ve **Kaldır** düğmesini kullanarak kümeden silin.
 
 1. Başka bir bölgedeki başka bir depolama hesabında yeni, boş bir BLOB depolama kapsayıcısı oluşturun.
 

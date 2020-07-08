@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887198"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta ' HBase hbck ' komutuyla zaman aşımları
@@ -20,21 +19,21 @@ Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adı
 
 ## <a name="issue"></a>Sorun
 
-Bölge atamalarını düzelterek `hbase hbck` komutla birlikte zaman aşımları ile karşılaşırsınız.
+Bölge atamalarını düzelterek komutla birlikte zaman aşımları ile karşılaşırsınız `hbase hbck` .
 
 ## <a name="cause"></a>Nedeni
 
-`hbck` Komutu kullandığınızda zaman aşımı sorunları için olası bir neden, "geçiş sürüyor" durumunda birkaç bölgenin uzun bir süre olması olabilir. Bu bölgeleri HBase Master Kullanıcı arabiriminde çevrimdışı olarak görebilirsiniz. Çok sayıda bölge geçişe çalıştığından HBase Master zaman aşımına uğrar ve bu bölgeleri yeniden çevrimiçi getiremeyebilirsiniz.
+Komutu kullandığınızda zaman aşımı sorunları için olası bir neden, `hbck` "geçiş sürüyor" durumunda birkaç bölgenin uzun bir süre olması olabilir. Bu bölgeleri HBase Master Kullanıcı arabiriminde çevrimdışı olarak görebilirsiniz. Çok sayıda bölge geçişe çalıştığından HBase Master zaman aşımına uğrar ve bu bölgeleri yeniden çevrimiçi getiremeyebilirsiniz.
 
 ## <a name="resolution"></a>Çözüm
 
 1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
 
-1. Apache ZooKeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
+1. `hbase zkcli`Apache ZooKeeper Shell ile bağlanmak için komutunu çalıştırın.
 
-1. Veya `rmr /hbase/regions-in-transition` `rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
+1. `rmr /hbase/regions-in-transition`Veya `rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
 
-1. Komutunu kullanarak `hbase zkcli` `exit` kabuktan çıkın.
+1. `hbase zkcli`Komutunu kullanarak kabuktan çıkın `exit` .
 
 1. Apache ambarı kullanıcı arabiriminden, etkin HBase Master hizmetini yeniden başlatın.
 
@@ -48,6 +47,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 - Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

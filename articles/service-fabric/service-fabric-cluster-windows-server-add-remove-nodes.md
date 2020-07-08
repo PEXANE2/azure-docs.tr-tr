@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934217"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server’da çalışan tek başına Service Fabric kümesine düğüm ekleme veya kaldırma
@@ -29,7 +28,7 @@ ms.locfileid: "75934217"
 
 5. PowerShell 'i yükseltilmiş ayrıcalıklarla çalıştırın ve daraltılmış paketin konumuna gidin.
 
-6. *AddNode. ps1* betiğini, eklenecek yeni düğümü açıklayan parametrelerle çalıştırın. Aşağıdaki örnek, UD1 ve FD:/DC1/R0 içine NodeType0 ve IP adresi 182.17.34.52 ile VM5 adlı yeni bir düğüm ekler. `ExistingClusterConnectionEndPoint`, var olan kümede zaten bulunan bir düğüm için, kümedeki *herhangi* BIR düğümün IP adresi olabilecek bir bağlantı uç noktasıdır. 
+6. *AddNode.ps1* betiği, eklenecek yeni düğümü açıklayan parametrelerle çalıştırın. Aşağıdaki örnek, UD1 ve FD:/DC1/R0 içine NodeType0 ve IP adresi 182.17.34.52 ile VM5 adlı yeni bir düğüm ekler. `ExistingClusterConnectionEndPoint`, var olan kümede zaten bulunan bir düğüm için, kümedeki *herhangi* BIR düğümün IP adresi olabilecek bir bağlantı uç noktasıdır. 
 
    Güvenli olmayan (prototipleme):
 
@@ -69,7 +68,7 @@ ms.locfileid: "75934217"
    Service Fabric Explorer yükseltmenin ilerlemesini izleyebilirsiniz. Alternatif olarak, [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)komutunu da çalıştırabilirsiniz.
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>GMSA kullanarak Windows güvenliği ile yapılandırılmış kümelere düğüm ekleme
-Grup yönetilen hizmet hesabı (gMSA) ile yapılandırılan kümeler için (https://technet.microsoft.com/library/hh831782.aspx)bir yapılandırma yükseltmesi kullanılarak yeni bir düğüm eklenebilir):
+Grup yönetilen hizmet hesabı (gMSA) ile yapılandırılan kümeler için (bir https://technet.microsoft.com/library/hh831782.aspx) yapılandırma yükseltmesi kullanılarak yeni bir düğüm eklenebilir):
 1. En son yapılandırma dosyasını almak ve "düğümler" bölümünde eklemek istediğiniz yeni düğüm hakkındaki ayrıntıları eklemek için mevcut düğümlerin herhangi birinde [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) komutunu çalıştırın. Yeni düğümün aynı grup tarafından yönetilen hesabın parçası olduğundan emin olun. Bu hesabın tüm makinelerde yönetici olması gerekir.
 
     ```
@@ -127,7 +126,7 @@ Bir düğüm, yapılandırma yükseltmesi kullanılarak bir kümeden aşağıdak
     Service Fabric Explorer yükseltmenin ilerlemesini izleyebilirsiniz. Alternatif olarak, [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)komutunu da çalıştırabilirsiniz.
 
 > [!NOTE]
-> Düğümlerin kaldırılması, birden çok yükseltme başlatabilir. Bazı düğümler `IsSeedNode=”true”` etiketiyle işaretlenir ve kullanılarak `Get-ServiceFabricClusterManifest`küme bildirimi sorgulanarak belirlenebilir. Çekirdek düğümlerin bu tür senaryolarda taşınması gerektiğinden, bu tür düğümlerin kaldırılması diğerlerinden daha uzun sürebilir. Küme en az 3 birincil düğüm türü düğümü korumalıdır.
+> Düğümlerin kaldırılması, birden çok yükseltme başlatabilir. Bazı düğümler `IsSeedNode=”true”` etiketiyle işaretlenir ve kullanılarak küme bildirimi sorgulanarak belirlenebilir `Get-ServiceFabricClusterManifest` . Çekirdek düğümlerin bu tür senaryolarda taşınması gerektiğinden, bu tür düğümlerin kaldırılması diğerlerinden daha uzun sürebilir. Küme en az 3 birincil düğüm türü düğümü korumalıdır.
 > 
 > 
 

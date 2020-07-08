@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966083"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için ilk işlem hattınızı oluşturma
@@ -81,7 +80,7 @@ Bu öğreticiye başlamadan önce aşağıdaki önkoşullara sahip olmanız gere
 
 1. **Azure aboneliği**: Aboneliğiniz yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Nasıl ücretsiz bir deneme hesabı edinebileceğinizi öğrenmek için [Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
 2. **Azure Depolama**: Bu öğreticide, verileri depolamak için bir Azure depolama hesabı kullanılmaktadır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın. Depolama hesabını oluşturduktan sonra **Hesap adı** ve **erişim anahtarı**' na göz önüne alın. Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
-3. Şu adreste bulunan Hive sorgu dosyasını (**HQL**) indirip gözden geçirin: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Bu sorgu, çıkış verileri oluşturmak için giriş verilerini dönüştürür.
+3. Şu adreste bulunan Hive sorgu dosyasını (**HQL**) indirip gözden geçirin: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) . Bu sorgu, çıkış verileri oluşturmak için giriş verilerini dönüştürür.
 4. Şu konumda bulunan örnek giriş dosyasını (**input. log**) indirip gözden geçirin:[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Azure Blob depolamada **adfgetstarted** adlı bir blob kapsayıcısı oluşturun.
 6. **Partitionweblogs. HQL** dosyasını **adfgetstarted** kapsayıcısındaki **betik** klasörüne yükleyin. [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)gibi araçları kullanın.

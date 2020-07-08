@@ -9,15 +9,14 @@ ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75975662"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Azure Içeri/dışarı aktarma aracı 'nı (klasik dağıtım modeli) kullanma
 
-Azure içeri/dışarı aktarma aracı (Waımportexport. exe), Azure Içeri/dışarı aktarma hizmeti için iş oluşturmak ve yönetmek üzere kullanılır ve bu sayede büyük miktarlardaki verileri Azure Blob depolama alanına veya dışına aktarmanıza olanak tanır.
+Azure içeri/dışarı aktarma aracı (WAImportExport.exe), Azure Içeri/dışarı aktarma hizmeti için iş oluşturmak ve yönetmek üzere kullanılır. böylece Azure Blob depolama alanına veya dışına büyük miktarlarda veri aktarabilirsiniz.
 
 Bu belge, Azure Içeri/dışarı aktarma aracının klasik dağıtım modeline yöneliktir. Aracın en son sürümünü kullanma hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma aracını kullanma](../storage-import-export-tool-how-to.md).
 

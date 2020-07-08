@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895311"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
@@ -111,7 +110,7 @@ Aşağıdaki bölümlerde, her bir düğümün sistem durumunun ve toplam kümen
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Ambarı Kullanıcı arabirimi panosunu kullanarak küme durumunun anlık görüntüsünü alma
 
-[Ambarı Kullanıcı arabirimi panosu](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) çalışma süresi, bellek, ağ ve CPU kullanımı, sudisk kullanımı vb. gibi küme durumuna genel bir bakış sağlar. Kaynakları bir konak düzeyinde görüntülemek için, ambarı 'nın konaklar bölümünü kullanın. Ayrıca, hizmetleri durdurup yeniden başlatabilirsiniz.
+[Ambarı Kullanıcı arabirimi panosu](#view-cluster-configuration-settings-with-the-ambari-ui) ( `https://<clustername>.azurehdinsight.net` ) çalışma süresi, bellek, ağ ve CPU kullanımı, sudisk kullanımı vb. gibi küme durumuna genel bir bakış sağlar. Kaynakları bir konak düzeyinde görüntülemek için, ambarı 'nın konaklar bölümünü kullanın. Ayrıca, hizmetleri durdurup yeniden başlatabilirsiniz.
 
 ### <a name="check-your-webhcat-service"></a>WebHCat hizmetinizi denetleyin
 
@@ -129,26 +128,26 @@ Ambarı, WebHCat hizmetinin altında çalıştığı Konakları gösteren bir uy
 
 ![Apache ambarı yeniden başlatma WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
-Bir WebHCat sunucusu hala gelmezse, hata iletileri için işlem günlüğünü kontrol edin. Daha ayrıntılı bilgi için, düğümde başvurulan `stderr` ve `stdout` dosyalarını denetleyin.
+Bir WebHCat sunucusu hala gelmezse, hata iletileri için işlem günlüğünü kontrol edin. Daha ayrıntılı bilgi için, `stderr` `stdout` düğümde başvurulan ve dosyalarını denetleyin.
 
 #### <a name="webhcat-times-out"></a>WebHCat zaman aşımına uğruyor
 
-İki dakikadan uzun sürmekte olan yanıtları geri döndürürken `502 BadGateway`an HDInsight ağ geçidi zaman aşımına uğrar. WebHCat iş durumları için YARN hizmetlerini sorgular ve YARN 'nin yanıt vermesi iki dakikadan uzun sürerse, bu istek zaman aşımına uğrar.
+İki dakikadan uzun sürmekte olan yanıtları geri döndürürken An HDInsight ağ geçidi zaman aşımına uğrar `502 BadGateway` . WebHCat iş durumları için YARN hizmetlerini sorgular ve YARN 'nin yanıt vermesi iki dakikadan uzun sürerse, bu istek zaman aşımına uğrar.
 
-Bu durumda, `/var/log/webhcat` dizinde aşağıdaki günlükleri gözden geçirin:
+Bu durumda, dizinde aşağıdaki günlükleri gözden geçirin `/var/log/webhcat` :
 
 * **webhcat. log** , sunucunun günlük yazma Log4J günlüğüne
 * **webhcat-Console. log** , başlatıldığında sunucunun stdout
 * **webhcat-Console-Error. log** , sunucu işleminin stderr 'i
 
 > [!NOTE]  
-> Her `webhcat.log` biri günlük olarak alınır ve adlı `webhcat.log.YYYY-MM-DD`dosyalar oluşturulur. Araştırmakta olduğunuz zaman aralığı için uygun dosyayı seçin.
+> Her biri `webhcat.log` günlük olarak alınır ve adlı dosyalar oluşturulur `webhcat.log.YYYY-MM-DD` . Araştırmakta olduğunuz zaman aralığı için uygun dosyayı seçin.
 
 Aşağıdaki bölümlerde, WebHCat zaman aşımları için olası bazı nedenler açıklanır.
 
 ##### <a name="webhcat-level-timeout"></a>WebHCat düzeyi zaman aşımı
 
-WebHCat yük altındayken, 10 ' dan fazla açık yuvalarla, yeni yuva bağlantıları kurmak daha uzun sürer ve bu da zaman aşımına neden olabilir. WebHCat 'e ve öğesinden ağ bağlantılarını listelemek için, geçerli etkin `netstat` headnode üzerinde kullanın:
+WebHCat yük altındayken, 10 ' dan fazla açık yuvalarla, yeni yuva bağlantıları kurmak daha uzun sürer ve bu da zaman aşımına neden olabilir. WebHCat 'e ve öğesinden ağ bağlantılarını listelemek için, `netstat` geçerli etkin headnode üzerinde kullanın:
 
 ```bash
 netstat | grep 30111
@@ -170,7 +169,7 @@ YARN düzeyinde iki zaman aşımı türü vardır:
 
 1. YARN işi göndermek zaman aşımına neden olacak kadar uzun sürebilir.
 
-    `/var/log/webhcat/webhcat.log` Günlük dosyasını açar ve "sıraya alınan iş" araması yaparsanız, yürütme zamanının çok uzun (>2000 MS) olduğu ve artan bekleme sürelerinin gösterildiği girişlerle birlikte birden fazla giriş görebilirsiniz.
+    `/var/log/webhcat/webhcat.log`Günlük dosyasını açar ve "sıraya alınan iş" araması yaparsanız, yürütme zamanının çok uzun (>2000 MS) olduğu ve artan bekleme sürelerinin gösterildiği girişlerle birlikte birden fazla giriş görebilirsiniz.
 
     Sıraya alınan işlerin süresi artmaya devam eder, çünkü yeni işlerin gönderildiği oran eski işlerin tamamlandığı hızdan daha yüksektir. YARN belleği kullanılan %100 olduğunda, *joblauncher kuyruğu* artık *varsayılan kuyruktan*kapasite ödünç alabilir. Bu nedenle, joblauncher kuyruğuna daha fazla yeni iş kabul edilemez. Bu davranış, bekleme süresinin daha uzun sürmesine neden olur ve genellikle bir çok zaman aşımı hatasına neden olur.
 
@@ -184,7 +183,7 @@ YARN düzeyinde iki zaman aşımı türü vardır:
 
     * Tüm işleri Listele: Bu, zaman alıcı bir çağrıdır. Bu çağrı YARN ResourceManager 'dan uygulamaları numaralandırır ve tamamlanan her uygulama için YARN Jobgeçmişini sunucusundan durumu alır. Daha yüksek iş sayısı ile bu çağrı zaman aşımına uğrar.
 
-    * Yedi günden eski olan işleri Listele: HDInsight YARN Jobınsıserver, tamamlanan iş bilgilerini yedi gün (`mapreduce.jobhistory.max-age-ms` değer) için koruyacak şekilde yapılandırılmıştır. Temizlenen işlerin numaralandırılması girişimi zaman aşımı ile sonuçlanır.
+    * Yedi günden eski olan işleri Listele: HDInsight YARN Jobınsıserver, tamamlanan iş bilgilerini yedi gün (değer) için koruyacak şekilde yapılandırılmıştır `mapreduce.jobhistory.max-age-ms` . Temizlenen işlerin numaralandırılması girişimi zaman aşımı ile sonuçlanır.
 
 Bu sorunları tanılamak için:
 
@@ -196,13 +195,13 @@ Bu sorunları tanılamak için:
 
 1. HTTP durum kodu 500
 
-    WebHCat 500 döndüğü çoğu durumda, hata iletisi hata hakkındaki ayrıntıları içerir. Aksi takdirde, uyarı `webhcat.log` ve hata iletilerine bakın.
+    WebHCat 500 döndüğü çoğu durumda, hata iletisi hata hakkındaki ayrıntıları içerir. Aksi takdirde, `webhcat.log` uyarı ve hata iletilerine bakın.
 
 2. İş arızaları
 
     WebHCat etkileşimlerinin başarılı olduğu, ancak işlerin başarısız olduğu durumlar olabilir.
 
-    Temptaton, iş konsolu çıkışını ' de `stderr` `statusdir`olduğu gibi toplar ve bu genellikle sorun giderme için kullanışlıdır. `stderr`Asıl sorgunun YARN uygulama tanımlayıcısını içerir.
+    Temptaton, iş konsolu çıkışını ' de olduğu gibi toplar `stderr` `statusdir` ve bu genellikle sorun giderme için kullanışlıdır. `stderr`Asıl sorgunun YARN uygulama tanımlayıcısını içerir.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. Adım: ortam yığınını ve sürümlerini gözden geçirme
 

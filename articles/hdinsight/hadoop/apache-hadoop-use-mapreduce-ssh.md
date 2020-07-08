@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934710"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight üzerinde Apache Hadoop MapReduce 'yi SSH ile kullanma
@@ -42,7 +41,7 @@ HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apa
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Bu komut, `hadoop-mapreduce-examples.jar` dosyasında `wordcount` bulunan sınıfını başlatır. `/example/data/gutenberg/davinci.txt` Belgeyi girdi olarak kullanır ve çıkış konumunda `/example/data/WordCountOutput`depolanır.
+    Bu komut `wordcount` , dosyasında bulunan sınıfını başlatır `hadoop-mapreduce-examples.jar` . `/example/data/gutenberg/davinci.txt`Belgeyi girdi olarak kullanır ve çıkış konumunda depolanır `/example/data/WordCountOutput` .
 
     > [!NOTE]
     > Bu MapReduce işi ve örnek veriler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop MapReduce kullanma](hdinsight-use-mapreduce.md).
@@ -62,7 +61,7 @@ HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apa
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Bu komut, ve `_SUCCESS` `part-r-00000`olarak iki dosya görüntüler. `part-r-00000` Dosya bu iş için çıktıyı içerir.
+    Bu komut, ve olarak iki dosya görüntüler `_SUCCESS` `part-r-00000` . `part-r-00000`Dosya bu iş için çıktıyı içerir.
 
     > [!NOTE]  
     > Bazı MapReduce işleri, sonuçları birden çok **Part-r-#** # # # # dosyasında bölebilir. Bu durumda, dosyaların sırasını göstermek için # # # # # sonekini kullanın.
@@ -73,7 +72,7 @@ HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apa
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Bu komut, **wasbs://example/Data/Gutenberg/DaVinci.txt** dosyasında yer alan sözcüklerin listesini ve her sözcüğün kaç kez oluştuğunu görüntüler. Aşağıdaki metin, dosyasında yer alan verilerin bir örneğidir:
+    Bu komut, **wasbs://example/data/gutenberg/davinci.txt** dosyasında yer alan sözcüklerin listesini ve her sözcüğün kaç kez oluştuğunu görüntüler. Aşağıdaki metin, dosyasında yer alan verilerin bir örneğidir:
 
     ```output
     wreathed        3

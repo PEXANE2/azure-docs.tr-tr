@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75977294"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
@@ -81,7 +80,7 @@ Dağıtım tamamlandıktan sonra, tıklatın ve ardından **Yönet** düğmesine
 
 ![SendGrid yönetimi](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-SendGrid sayfasında **Ayarlar** > **API anahtarları** > **API anahtarı oluştur**' a tıklayın.
+SendGrid sayfasında **Ayarlar**  >  **API anahtarları**  >  **API anahtarı oluştur**' a tıklayın.
 
 ![SendGrid önce API oluştur](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -134,13 +133,13 @@ Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 >
 
 ![Mini çözüm-örnekler](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Örnek uygulamayı komut paletinden da açabilirsiniz. Komut `Ctrl+Shift+P` paletini açmak için ( `Cmd+Shift+P`MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+Örnek uygulamayı komut paletinden da açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
 
 ### <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
 Çözüm penceresinde, bulut sağlama görevini çalıştırın:
-- Yazın `Ctrl+P` (MacOS: `Cmd+P`).
-- Sunulan `task cloud-provision` metin kutusuna girin.
+- Yazın `Ctrl+P` (MacOS: `Cmd+P` ).
+- `task cloud-provision`Sunulan metin kutusuna girin.
 
 VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama sırasında size rehberlik eder. Daha önce [Azure 'da IoT Hub dağıtma](#deploy-iot-hub-in-azure)bölümünde sağladığınız, istenen listeden tüm aynı öğeleri seçin.
 
@@ -155,7 +154,7 @@ Ardından, cihaz için kodu karşıya yükleyin.
 
 #### <a name="windows"></a>Windows
 
-1. Çalıştırmak `Ctrl+P` `task device-upload`için kullanın.
+1. `Ctrl+P`Çalıştırmak için kullanın `task device-upload` .
 
 2. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için, düğme A ' yı basılı tutun ve sıfırlama düğmesini gönderin ve serbest bırakın. Ekran, DevKit kimlik numarasını ve sözcük *yapılandırmasını*görüntüler.
 
@@ -163,7 +162,7 @@ Ardından, cihaz için kodu karşıya yükleyin.
 
 1. DevKit 'i yapılandırma moduna alın: A düğmesini basılı tutun, ardından Sıfırla düğmesini gönderin ve serbest bırakın. Ekran ' yapılandırma ' görüntüler.
 
-2. Çalıştırmak `Cmd+P` `task device-upload`için tıklayın.
+2. `Cmd+P`Çalıştırmak için tıklayın `task device-upload` .
 
 #### <a name="verify-upload-and-run-the-sample-app"></a>Örnek uygulamayı doğrulayın, karşıya yükleyin ve çalıştırın
 
@@ -182,7 +181,7 @@ DevKit yeniden başlatılır ve kodu çalıştırmaya başlar.
 
 Program ilk olarak DevKit kararlı bir manyetik alan olduğunda başlatılır.
 
-Başlatmadan `Door closed` sonra ekranda görüntülenir. Mıknatıslı alanında bir değişiklik olduğunda, durumu olarak `Door opened`değişir. Kapı durumu her değiştiğinde bir e-posta bildirimi alırsınız. (Bu e-posta iletilerinin alınması beş dakika kadar sürebilir.)
+Başlatmadan sonra `Door closed` ekranda görüntülenir. Mıknatıslı alanında bir değişiklik olduğunda, durumu olarak değişir `Door opened` . Kapı durumu her değiştiğinde bir e-posta bildirimi alırsınız. (Bu e-posta iletilerinin alınması beş dakika kadar sürebilir.)
 
 ![Manağı sensöre yakın: kapılı kapalı](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Manağı sensöre yakın: kapılı kapalı")
 

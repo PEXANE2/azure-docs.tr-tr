@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75974416"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-Security ve DevOps en iyi uygulamaları
@@ -45,13 +44,13 @@ Etki alanına katılmış HDInsight kümesini dağıtmak için aşağıdaki adı
     |Parametre |Açıklama |
     |---|---|
     |Etki alanı adı|Azure AD DS ile ilişkili etki alanı adı.|
-    |Etki alanı Kullanıcı adı|Önceki bölümde oluşturduğunuz Azure AD DS DC tarafından yönetilen etki alanındaki hizmet hesabı, örneğin: `hdiadmin@contoso.onmicrosoft.com`. Bu etki alanı kullanıcısı, bu HDInsight kümesinin Yöneticisi olacak.|
+    |Etki alanı Kullanıcı adı|Önceki bölümde oluşturduğunuz Azure AD DS DC tarafından yönetilen etki alanındaki hizmet hesabı, örneğin: `hdiadmin@contoso.onmicrosoft.com` . Bu etki alanı kullanıcısı, bu HDInsight kümesinin Yöneticisi olacak.|
     |Etki alanı parolası|Hizmet hesabının parolası.|
-    |Kurum birimi|HDInsight kümesiyle kullanmak istediğiniz OU 'nun ayırt edici adı, örneğin: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Bu OU yoksa, HDInsight kümesi hizmet hesabının ayrıcalıklarını kullanarak OU oluşturmayı dener.|
-    |LDAPS URL 'SI|Örneğin, `ldaps://contoso.onmicrosoft.com:636`.|
-    |Erişim Kullanıcı grubu|Kullanıcıları kümeyle eşitlemek istediğiniz güvenlik grupları, örneğin: `HiveUsers`. Birden çok kullanıcı grubu belirtmek istiyorsanız, bunları noktalı virgül '; ' ile ayırın. ESP kümesi oluşturulmadan önce, gruplar dizinde bulunmalıdır.|
+    |Kurum birimi|HDInsight kümesiyle kullanmak istediğiniz OU 'nun ayırt edici adı, örneğin: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` . Bu OU yoksa, HDInsight kümesi hizmet hesabının ayrıcalıklarını kullanarak OU oluşturmayı dener.|
+    |LDAPS URL 'SI|Örneğin, `ldaps://contoso.onmicrosoft.com:636` .|
+    |Erişim Kullanıcı grubu|Kullanıcıları kümeyle eşitlemek istediğiniz güvenlik grupları, örneğin: `HiveUsers` . Birden çok kullanıcı grubu belirtmek istiyorsanız, bunları noktalı virgül '; ' ile ayırın. ESP kümesi oluşturulmadan önce, gruplar dizinde bulunmalıdır.|
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Etki alanına katılmış HDInsight kümeleriyle güvenliği Apache Hadoop bir giriş](../domain-joined/hdinsight-security-overview.md)
 - [HDInsight 'ta Azure etki alanına katılmış Apache Hadoop kümeleri planlayın](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,7 +80,7 @@ Aşağıdaki denetimler kullanılarak uçtan uca kurumsal güvenlik elde edilebi
     - Microsoft tarafından yönetilen anahtarları veya müşteri tarafından yönetilen anahtarları kullanarak saydam sunucu tarafı şifreleme.
     - Istemci tarafı şifreleme, https ve TLS kullanan geçiş şifrelemesi.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure sanal ağlarına genel bakış](../../virtual-network/virtual-networks-overview.md)
 - [Azure ağ güvenlik gruplarına genel bakış](../../virtual-network/security-overview.md)
@@ -93,7 +92,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 Daha fazla bilgi için şu makaleye bakın:
 
-[Azure İzleyiciye Genel Bakış](../../azure-monitor/overview.md)
+[Azure Izleyicisine genel bakış](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Küme yükseltme
 

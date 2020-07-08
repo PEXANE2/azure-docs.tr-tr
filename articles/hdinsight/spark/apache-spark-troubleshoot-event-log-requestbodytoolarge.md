@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894392"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... HDInsight 'ta Apache Spark akış uygulama günlüğünde RequestBodyTooLarge "görüntülenir
@@ -32,13 +31,13 @@ Spark 2,3 ' de, her Spark uygulaması bir Spark olay günlüğü dosyası oluşt
 
 Bu hata için üç çözüm bulunmaktadır:
 
-* Blok boyutunu 100 MB 'a kadar artırın. Ambarı Kullanıcı arabiriminde, suconfiguration özelliğini `fs.azure.write.request.size` değiştirin (veya `Custom core-site` bölümünde oluşturun). Özelliği daha büyük bir değere ayarlayın, örneğin: 33554432. Güncelleştirilmiş yapılandırmayı kaydedin ve etkilenen bileşenleri yeniden başlatın.
+* Blok boyutunu 100 MB 'a kadar artırın. Ambarı Kullanıcı arabiriminde, suconfiguration özelliğini değiştirin `fs.azure.write.request.size` (veya `Custom core-site` bölümünde oluşturun). Özelliği daha büyük bir değere ayarlayın, örneğin: 33554432. Güncelleştirilmiş yapılandırmayı kaydedin ve etkilenen bileşenleri yeniden başlatın.
 
 * Spark akış işini düzenli aralıklarla durdurup yeniden gönderin.
 
 * Spark olay günlüklerini depolamak için, "kullanın. Depolama için, bellek kullanımı, küme ölçekleme veya Azure yükseltmeleri sırasında Spark olay verilerinin kaybedilmesine neden olabilir.
 
-    1. Ambarı Kullanıcı arabiriminde `spark.eventlog.dir` ve `spark.history.fs.logDirectory` aracılığıyla değişiklik yapın:
+    1. `spark.eventlog.dir` `spark.history.fs.logDirectory` Ambarı Kullanıcı arabiriminde ve aracılığıyla değişiklik yapın:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
@@ -62,6 +61,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

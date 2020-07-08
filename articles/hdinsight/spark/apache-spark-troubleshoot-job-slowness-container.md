@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/21/2019
 ms.openlocfilehash: e389c05a6de85287bc86eff510e137f470837e56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894337"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Azure HDInsight’ta Azure depolama kapsayıcısı birçok dosya içerdiğinde Apache Spark işleri yavaş çalışıyor
@@ -24,9 +23,9 @@ HDInsight kümesi çalıştırılırken, çok sayıda dosya/alt klasör olduğun
 
 ## <a name="cause"></a>Nedeni
 
-Bu bilinen bir Spark sorunudur. Yavaşlığın, Spark iş yürütmesi `ListBlob` sırasında `GetBlobProperties` ve işlemlerinden gelir.
+Bu bilinen bir Spark sorunudur. Yavaşlığın, `ListBlob` `GetBlobProperties` Spark iş yürütmesi sırasında ve işlemlerinden gelir.
 
-Bölümleri izlemek için Spark 'ın dizin yapısı hakkında bilgi `FileStatusCache` içeren bir bakımını vardır. Spark, bu önbelleği kullanarak yolları ayrıştırarak kullanılabilir bölümlerin farkında olabilir. Bölümleri izlemenin avantajı, Spark 'ın yalnızca verileri okurken gerekli dosyalara dokunmasına yönelik bir avantajdır. Bu bilgileri güncel tutmak için, yeni veriler yazdığınızda Spark 'ın dizin altındaki tüm dosyaları Listeve bu önbelleği güncelleştirmesi gerekir.
+Bölümleri izlemek için Spark 'ın `FileStatusCache` Dizin yapısı hakkında bilgi içeren bir bakımını vardır. Spark, bu önbelleği kullanarak yolları ayrıştırarak kullanılabilir bölümlerin farkında olabilir. Bölümleri izlemenin avantajı, Spark 'ın yalnızca verileri okurken gerekli dosyalara dokunmasına yönelik bir avantajdır. Bu bilgileri güncel tutmak için, yeni veriler yazdığınızda Spark 'ın dizin altındaki tüm dosyaları Listeve bu önbelleği güncelleştirmesi gerekir.
 
 Spark 2,1 ' de, her yazma işleminden sonra önbelleği güncelleştirmemiz gerekirken, Spark var olan bir bölüm sütununun geçerli yazma isteğinde önerilen ile eşleşip eşleşmediğini kontrol eder, bu nedenle, her yazma işlemi sırasında listeleme işlemlerine da yol açabilir.
 
@@ -34,7 +33,7 @@ Spark 2,2 ' de, ekleme moduyla veri yazarken bu performans sorunu düzeltilmelid
 
 ## <a name="resolution"></a>Çözüm
 
-Bölümlenmiş bir veri kümesi oluşturduğunuzda, Spark 'ın güncelleştirmesini listelemesini sağlayacak dosya sayısını sınırlayan bir bölümleme şeması kullanılması önemlidir `FileStatusCache`.
+Bölümlenmiş bir veri kümesi oluşturduğunuzda, Spark 'ın güncelleştirmesini listelemesini sağlayacak dosya sayısını sınırlayan bir bölümleme şeması kullanılması önemlidir `FileStatusCache` .
 
 Her nth Micro Batch için N %100 = = 0 (100 yalnızca bir örnektir), var olan verileri Spark tarafından yüklenebilen başka bir dizine taşıyın.
 
@@ -44,6 +43,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

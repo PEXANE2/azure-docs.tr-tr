@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75941584"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
@@ -43,9 +42,9 @@ Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde D
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Yes | Yes
-**VMware** | Yes | Yes
-**Fiziksel sunucu** | Yes | Yes
+**Hyper-V** | Evet | Evet
+**VMware** | Evet | Evet
+**Fiziksel sunucu** | Evet | Evet
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery kullanarak Dynamics AX uygulamasının olağanüstü durum kurtarma özelliğini etkinleştirme
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX uygulamanızı koruyun
@@ -55,11 +54,11 @@ Tüm uygulama çoğaltmasını ve kurtarmayı etkinleştirmek için, Dynamics AX
 
 Dynamics AX uygulamasının çalışması için olağanüstü durum kurtarma sitesinde Active Directory gereklidir. Müşterinin Şirket içi ortamının karmaşıklığına göre aşağıdaki iki seçeneği öneririz.
 
-**Seçenek 1**
+**1\. Seçenek**
 
 Müşterinin, tüm şirket içi site için az sayıda uygulama ve tek bir etki alanı denetleyicisi vardır ve tüm siteyi birlikte devretmek için plan yapın. Etki alanı denetleyicisi makinesini ikincil bir siteye çoğaltmak için Site Recovery çoğaltma kullanmanızı öneririz (hem siteden siteye ve siteden Azure senaryolarına yönelik senaryolar için geçerlidir).
 
-**Seçenek 2**
+**2\. Seçenek**
 
 Müşterinin çok sayıda uygulaması vardır ve bir Active Directory ormanı çalıştırıyor ve aynı anda birkaç uygulamanın yük devredebildiğini planlıyor. Olağanüstü durum kurtarma sitesinde (ikincil bir site veya Azure 'da) ek bir etki alanı denetleyicisi ayarlamanızı öneririz.
 

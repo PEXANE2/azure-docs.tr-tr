@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
 ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75897968"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Müşteri tarafından yönetilen anahtarlar (CMK) özellikli diskler ile makineleri çoğaltma
@@ -33,14 +32,14 @@ Bu örnekte, birincil Azure Bölgesi Doğu Asya ve ikincil bölge Güney Doğu A
     - **Kaynak aboneliği**: kaynak sanal makinelerinizin ait olduğu abonelik. Kurtarma Hizmetleri kasasıyla aynı Azure Active Directory kiracısındaki herhangi bir abonelik olabilir.
     - **Kaynak grubu**: kaynak sanal makinelerinizin ait olduğu kaynak grubu. Seçilen kaynak grubundaki tüm VM 'Ler, bir sonraki adımda koruma için listelenir.
 
-3. Sanal **makineler** > ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**' ı seçin.
+3. Sanal **makineler**  >  ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**' ı seçin.
 
 4. **Ayarlar**' da, aşağıdaki hedef site ayarlarını yapılandırabilirsiniz.
 
     - **Hedef konum**: kaynak sanal makine verilerinizin çoğaltılacağı konum. Site Recovery, seçilen makinenin konumuna göre uygun hedef bölgelerin bir listesini sağlar. Kurtarma Hizmetleri kasasının konumuyla aynı konumu kullanmanızı öneririz.
     - **Hedef abonelik**: olağanüstü durum kurtarma için kullanılan hedef abonelik. Varsayılan olarak, hedef abonelik, kaynak abonelikle aynı olur.
-    - **Hedef kaynak grubu**: tüm çoğaltılan sanal makinelerinizin ait olduğu kaynak grubu. Varsayılan olarak, Site Recovery hedef bölgede yeni bir kaynak grubu oluşturur. Ad, `asr` soneki alır. Azure Site Recovery tarafından oluşturulan bir kaynak grubu zaten varsa, yeniden kullanılır. Ayrıca, aşağıdaki bölümde gösterildiği gibi, özelleştirmeyi de seçebilirsiniz. Hedef kaynak grubunun konumu, kaynak sanal makinelerin barındırıldığı bölge dışında herhangi bir Azure bölgesi olabilir.
-    - **Hedef sanal ağ**: Site Recovery, varsayılan olarak hedef bölgede yeni bir sanal ağ oluşturur. Ad, `asr` soneki alır. Kaynak ağınızla eşlenir ve gelecekte herhangi bir koruma için kullanılır. Ağ eşlemesi hakkında [daha fazla bilgi edinin](site-recovery-network-mapping-azure-to-azure.md) .
+    - **Hedef kaynak grubu**: tüm çoğaltılan sanal makinelerinizin ait olduğu kaynak grubu. Varsayılan olarak, Site Recovery hedef bölgede yeni bir kaynak grubu oluşturur. Ad, soneki alır `asr` . Azure Site Recovery tarafından oluşturulan bir kaynak grubu zaten varsa, yeniden kullanılır. Ayrıca, aşağıdaki bölümde gösterildiği gibi, özelleştirmeyi de seçebilirsiniz. Hedef kaynak grubunun konumu, kaynak sanal makinelerin barındırıldığı bölge dışında herhangi bir Azure bölgesi olabilir.
+    - **Hedef sanal ağ**: Site Recovery, varsayılan olarak hedef bölgede yeni bir sanal ağ oluşturur. Ad, soneki alır `asr` . Kaynak ağınızla eşlenir ve gelecekte herhangi bir koruma için kullanılır. Ağ eşlemesi hakkında [daha fazla bilgi edinin](site-recovery-network-mapping-azure-to-azure.md) .
     - **Hedef depolama hesapları (kaynak VM 'niz yönetilen diskleri kullanmıyorsa)**: varsayılan olarak Site Recovery, kaynak VM depolama yapılandırmanızı inceleyerek yeni bir hedef depolama hesabı oluşturur. Bir depolama hesabı zaten varsa, yeniden kullanılır.
     - **Yönetilen çoğaltma diskleri (kaynak VM 'niz yönetilen diskler kullanıyorsa)**: Site Recovery, kaynak VM 'nin yönetilen diskleri ile aynı depolama türündeki (Standart veya Premium) kaynak sanal makinenin yönetilen disklerini yansıtmak için hedef bölgede yeni bir çoğaltma yönetilen disk oluşturur.
     - **Önbellek depolama hesapları**: Site Recovery, kaynak bölgede *önbellek depolaması* adlı ek bir depolama hesabı gerektirir. Kaynak VM 'lerdeki tüm değişiklikler izlenir ve önbellek depolama hesabına gönderilir. Daha sonra hedef konuma çoğaltılır.
@@ -64,7 +63,7 @@ Site Recovery varsayılan hedef ayarlarını değiştirmek için aşağıdaki ad
 
 3. Her müşteri tarafından yönetilen anahtar (CMK) tarafından etkinleştirilmiş kaynak yönetilen diskin hedef DES ' i seçmek için "depolama şifreleme ayarları" nın yanındaki **Özelleştir** ' i seçin. Seçim sırasında, DES 'in hangi hedef anahtar kasasıyla ilişkilendirildiğini de görebileceksiniz.
 
-4. **Hedef kaynağı** > oluşturma**çoğaltmasını etkinleştir**' i seçin.
+4. **Hedef kaynağı oluşturma**  >  **çoğaltmasını etkinleştir**' i seçin.
 5. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler**altında VM 'lerin sistem durumunu kontrol edebilirsiniz.
 
 ![CMK özellikli disklere sahip makine için çoğaltmayı etkinleştirme](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)

@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736314"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarını kaydetme
@@ -38,7 +37,7 @@ Bir veri kaynağını kaydettiğinizde, kayıt aracı seçtiğiniz nesnelerin ya
 Tüm nesneler için, bu yapısal meta veriler nesnenin konumunu içerir, böylece verileri keşfettiğiniz kullanıcılar bu bilgileri istedikleri istemci araçlarındaki nesneye bağlamak için kullanabilir. Diğer yapısal meta veriler, nesne adı ve türü, öznitelik/sütun adı ve veri türü içerir.
 
 ## <a name="descriptive-metadata"></a>Açıklayıcı meta veriler
-Veri kaynağından ayıklanan çekirdek yapısal meta verilere ek olarak, veri kaynağı kayıt aracı açıklayıcı meta verileri ayıklar. SQL Server Analysis Services ve SQL Server Reporting Services için bu meta veriler, bu hizmetler tarafından sunulan açıklama özelliklerinden alınmıştır. SQL Server için, MS\_Description Genişletilmiş özelliği kullanılarak girilen değerler ayıklanır. Oracle Database için veri kaynağı kayıt aracı, AÇıKLAMALAR sütununu tüm\_sekme\_açıklamaları görünümünden ayıklar.
+Veri kaynağından ayıklanan çekirdek yapısal meta verilere ek olarak, veri kaynağı kayıt aracı açıklayıcı meta verileri ayıklar. SQL Server Analysis Services ve SQL Server Reporting Services için bu meta veriler, bu hizmetler tarafından sunulan açıklama özelliklerinden alınmıştır. SQL Server için, MS \_ Description Genişletilmiş özelliği kullanılarak girilen değerler ayıklanır. Oracle Database için veri kaynağı kayıt aracı, AÇıKLAMALAR sütununu tüm \_ sekme \_ açıklamaları görünümünden ayıklar.
 
 Veri kaynağından ayıklanan açıklayıcı meta verilere ek olarak, kullanıcılar veri kaynağı kayıt aracını kullanarak açıklayıcı meta verileri girebilir. Kullanıcılar Etiketler ekleyebilir ve kayıtlı nesneler için uzmanlar tanımlayabilir. Bu açıklayıcı meta veriler, veri kataloğu hizmetine yapısal meta verilerle birlikte kopyalanır.
 

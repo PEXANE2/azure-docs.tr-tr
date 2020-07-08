@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930217"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükleyip yapılandırma
@@ -92,7 +91,7 @@ SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimpl
 ## <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimple cihazının, SharePoint sunucu grubunun ve SQL Server örneğinin aşağıdaki önkoşulları karşıladığından emin olun.
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 SharePoint için StorSimple bağdaştırıcısı, aşağıdaki donanım ve yazılımla birlikte kullanılabilir:
 
 * Desteklenen işletim sistemi – Windows Server 2008 R2 SP1, Windows Server 2012 veya Windows Server 2012 R2
@@ -170,7 +169,7 @@ SharePoint için StorSimple bağdaştırıcısını yükledikten sonra, aşağı
 ## <a name="configure-garbage-collection"></a>Çöp toplamayı yapılandırma
 Nesneler bir SharePoint sitesinden silindiğinde, otomatik olarak KÇY mağaza biriminden silinmez. Bunun yerine, zaman uyumsuz bir arka plan bakım programı dosya deposundan yalnız bırakılmış Blobları siler. Sistem yöneticileri, bu işlemi düzenli aralıklarla çalışacak şekilde zamanlayabilir veya gerektiğinde başlatabilir.
 
-Bu bakım programı (Microsoft. Data. SqlRemoteBlob. bakımcı. exe), KÇY 'yi etkinleştirdiğinizde tüm SharePoint WFE sunucularına ve uygulama sunucularına otomatik olarak yüklenir. Program şu konuma yüklendi: *önyükleme sürücüsü*: \Program Files\Microsoft SQL Remote blob Storage 10.50 olan \ bakımcı \
+Bu bakım programı (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe), KÇY 'yi etkinleştirdiğinizde tüm SharePoint WFE sunucularına ve uygulama sunucularına otomatik olarak yüklenir. Program şu konuma yüklendi: *önyükleme sürücüsü*: \Program Files\Microsoft SQL Remote blob Storage 10.50 olan \ bakımcı \
 
 Bakım programını yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [SharePoint Server 'DA KÇY 'Yi koruma 2013][8].
 
@@ -226,7 +225,7 @@ SharePoint yazılımı için StorSimple bağdaştırıcısını kaldırmadan ön
 4. **StorSimple bağdaştırıcısını Yapılandır** sayfasında, dış blob depolamadan kaldırmak istediğiniz her içerik veritabanlarının altındaki **devre dışı bırak** düğmesine tıklayın. 
 5. Nesneleri SharePoint 'ten silin ve sonra yeniden yükleyin.
 
-Alternatif olarak, SharePoint 'e dahil olan `RBS Migrate()` Microsoft PowerShell cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](https://technet.microsoft.com/library/ff628255.aspx).
+Alternatif olarak, `RBS Migrate()` SharePoint 'e dahil olan Microsoft PowerShell cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](https://technet.microsoft.com/library/ff628255.aspx).
 
 Blobları içerik veritabanına geri taşıdıktan sonra sonraki adıma gidin: [bağdaştırıcıyı kaldırın](#uninstall-the-adapter).
 

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75896132"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta kimlik doğrulama sorunları
@@ -38,7 +37,7 @@ Azure AD hata kodu 50126, `AllowCloudPasswordValidation` ilkenin kiracı tarafı
 
 ### <a name="resolution"></a>Çözüm
 
-Azure AD kiracının Şirket Yöneticisi, Azure AD 'nin ADFS ile desteklenen kullanıcılar için parola karmaları kullanmasına olanak sağlamalıdır.  `AllowCloudPasswordValidationPolicy` [HDInsight 'ta kurumsal güvenlik paketi kullanın](../domain-joined/apache-domain-joined-architecture.md)makalesinde gösterildiği gibi uygulayın.
+Azure AD kiracının Şirket Yöneticisi, Azure AD 'nin ADFS ile desteklenen kullanıcılar için parola karmaları kullanmasına olanak sağlamalıdır.  `AllowCloudPasswordValidationPolicy` [Hdınsight 'Ta kurumsal güvenlik paketi kullanın](../domain-joined/apache-domain-joined-architecture.md)makalesinde gösterildiği gibi uygulayın.
 
 ---
 
@@ -106,11 +105,11 @@ Azure portal parolayı değiştirin (Şirket içi sisteminizde) ve eşitlemenin 
 
 ### <a name="issue"></a>Sorun
 
-Hata iletisi `interaction_required`al.
+Hata iletisi Al `interaction_required` .
 
 ### <a name="cause"></a>Nedeni
 
-Kullanıcıya koşullu erişim ilkesi veya MFA uygulanıyor. Etkileşimli kimlik doğrulaması henüz desteklenmediğinden, kullanıcı veya küme MFA'dan / Koşullu erişimden muaf tutulmalıdır. Kümeyi muaf tutmayı tercih ederseniz (IP adresi tabanlı muafiyet ilkesi), bu sanal ağ için AD `ServiceEndpoints` 'nin etkinleştirildiğinden emin olun.
+Kullanıcıya koşullu erişim ilkesi veya MFA uygulanıyor. Etkileşimli kimlik doğrulaması henüz desteklenmediğinden, kullanıcı veya küme MFA'dan / Koşullu erişimden muaf tutulmalıdır. Kümeyi muaf tutmayı tercih ederseniz (IP adresi tabanlı muafiyet ilkesi), bu sanal ağ için AD 'nin etkinleştirildiğinden emin olun `ServiceEndpoints` .
 
 ### <a name="resolution"></a>Çözüm
 
@@ -148,9 +147,9 @@ Olmadığına.
 
 ### <a name="resolution"></a>Çözüm
 
-Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName`genellikle hesap ön eki olur (Bob gibi `bob@contoso.com`). Bazı kullanıcılar için farklı olabilir. Bilgilerinizi `sAMAccountName`öğrenmek için dizine gözatıp araymanıza gerek duyarsınız.
+Başarılı olması için, hesabınızı bilmeniz gerekir `sAMAccountName` (Bu, bölge olmadan kısa hesap adıdır). `sAMAccountName`genellikle hesap ön eki olur (Bob gibi `bob@contoso.com` ). Bazı kullanıcılar için farklı olabilir. Bilgilerinizi öğrenmek için dizine gözatıp araymanıza gerek duyarsınız `sAMAccountName` .
 
-Şunları bulmanın `sAMAccountName`yolları:
+Şunları bulmanın yolları `sAMAccountName` :
 
 * Yerel ambarı yöneticisini kullanarak ambarı 'nda oturum açabilirseniz, kullanıcı listesine bakın.
 
@@ -158,7 +157,7 @@ Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, 
 
 * Baş düğümden, ' yi aramak için SAMBA komutlarını kullanabilirsiniz. Bu, geçerli bir Kerberos oturumu gerektirir (başarılı kinit). net ads arama "(userPrincipalName = Bob *)"
 
-    Arama/tarama sonuçları sizi `sAMAccountName` özniteliği göstermelidir. Ayrıca,, `pwdLastSet` `userPrincipalName` vb. gibi diğer özniteliklere de bakabilirsiniz `badPasswordTime`. bu özelliklerin beklediğiniz şekilde eşleşip eşleşmeyeceğini görebilirsiniz.
+    Arama/tarama sonuçları sizi `sAMAccountName` özniteliği göstermelidir. Ayrıca,, vb. gibi diğer özniteliklere de bakabilirsiniz. `pwdLastSet` `badPasswordTime` `userPrincipalName` Bu özelliklerin beklediğiniz şekilde eşleşip eşleşmeyeceğini görebilirsiniz.
 
 ---
 
@@ -166,7 +165,7 @@ Başarılı olması için, hesabınızı `sAMAccountName` bilmeniz gerekir (Bu, 
 
 ### <a name="issue"></a>Sorun
 
-Kinit hata vererek `Preauthentication` başarısız olur.
+Kinit hata vererek başarısız olur `Preauthentication` .
 
 ### <a name="cause"></a>Nedeni
 
@@ -182,7 +181,7 @@ Kullanıcı adınızı ve parolanızı denetleyin. Ayrıca yukarıda açıklanan
 
 ### <a name="issue"></a>Sorun
 
-İş/IBir komut nedeniyle başarısız `TokenNotFoundException`oldu.
+İş/IBir komut nedeniyle başarısız oldu `TokenNotFoundException` .
 
 ### <a name="cause"></a>Nedeni
 
@@ -198,7 +197,7 @@ Kullanıcı adınızı ve parolanızı denetleyin. Ayrıca yukarıda açıklanan
 
 ### <a name="issue"></a>Sorun
 
-Kullanıcı hata iletisini `Error fetching access token`alır.
+Kullanıcı hata iletisini alır `Error fetching access token` .
 
 ### <a name="cause"></a>Nedeni
 
@@ -208,7 +207,7 @@ Bu hata, kullanıcılar ACL 'Leri kullanarak ADLS 2. erişmeyi denediğinde ve K
 
 * Azure Data Lake Storage 1. için, tarayıcı önbelleğini temizleyin ve yeniden ambarı 'nda oturum açın.
 
-* Azure Data Lake Storage 2. için, kullanıcının `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` oturum açmaya çalıştığı kullanıcı Için şunu çalıştırın
+* Azure Data Lake Storage 2. için, `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` kullanıcının oturum açmaya çalıştığı kullanıcı için şunu çalıştırın
 
 ---
 
@@ -218,6 +217,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

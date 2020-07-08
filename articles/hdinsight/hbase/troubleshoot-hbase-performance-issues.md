@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887164"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase performans sorunlarını giderme
@@ -39,7 +38,7 @@ Aşağıdaki sorulara yanıt vermek Apache Phoenix iş yükünüzü daha iyi anl
 * "Okumalarınız", taramalara çevirsin mi?
     * Öyleyse, bu taramaların özellikleri nelerdir?
     * Uygun dizin oluşturma da dahil olmak üzere bu taramalar için Phoenix tablo şemanızı iyileştirdiniz mi?
-* "Okumalarınızın `EXPLAIN` " üretmesindeki sorgu planlarını anlamak için ifadesini kullandınız mı?
+* `EXPLAIN`"Okumalarınızın" üretmesindeki sorgu planlarını anlamak için ifadesini kullandınız mı?
 * Yazmalar "büyük/veya seçer" mı?
     * Bu durumda, taramalar de yapılır. Tarama için beklenen gecikme süresi yaklaşık 100 milisaniyede ortalanır ve nokta HBase 'e göre 10 milisaniyeye kıyasla.  
 
@@ -65,17 +64,17 @@ Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şe
 
 ## <a name="server-side-configuration-tunings"></a>Sunucu tarafı yapılandırma tunları
 
-HDInsight HBase 'de, HFiles uzak depolama üzerinde depolanır. Önbellek kaçırılması durumunda, şirket içi sistemlerdeki veriler yerel olarak korunduğundan, okuma maliyeti şirket içi sistemlerden daha yüksektir. Çoğu senaryoda, HBase önbelleklerinin (blok önbelleği ve demet önbelleği) akıllı kullanımı bu sorunu aşmak için tasarlanmıştır. Sorunun atlalanamadığı durumlarda, Premium Blok Blobu hesabı kullanmak bu soruna yardımcı olabilir. Windows Azure Depolama Blobu sürücüsü, okuma modunu (sıralı olarak rastgele `fs.azure.read.request.size` ) temel alarak blok halinde veri getirmek için gibi belirli özelliklere bağımlıdır. bu nedenle, okumaların daha yüksek gecikme sürelerinin örnekleri olmaya devam edebilir. Empırical denemeleri aracılığıyla okuma isteği blok boyutunu (`fs.azure.read.request.size`) 512 KB olarak ayarlamanın yanı sıra HBase tablolarının blok boyutunu aynı boyutta olacak şekilde ayarlamaya yönelik en iyi sonucu elde ettik.
+HDInsight HBase 'de, HFiles uzak depolama üzerinde depolanır. Önbellek kaçırılması durumunda, şirket içi sistemlerdeki veriler yerel olarak korunduğundan, okuma maliyeti şirket içi sistemlerden daha yüksektir. Çoğu senaryoda, HBase önbelleklerinin (blok önbelleği ve demet önbelleği) akıllı kullanımı bu sorunu aşmak için tasarlanmıştır. Sorunun atlalanamadığı durumlarda, Premium Blok Blobu hesabı kullanmak bu soruna yardımcı olabilir. Windows Azure Depolama Blobu sürücüsü, `fs.azure.read.request.size` okuma modunu (sıralı olarak rastgele) temel alarak blok halinde veri getirmek için gibi belirli özelliklere bağımlıdır. bu nedenle, okumaların daha yüksek gecikme sürelerinin örnekleri olmaya devam edebilir. Empırical denemeleri aracılığıyla okuma isteği blok boyutunu ( `fs.azure.read.request.size` ) 512 KB olarak ayarlamanın yanı sıra HBase tablolarının blok boyutunu aynı boyutta olacak şekilde ayarlamaya yönelik en iyi sonucu elde ettik.
 
-Çoğu büyük boyutlu düğümler kümesi için HDInsight HBase, çalıştıran `bucketcache` `regionservers`sanal makineye bağlı yerel bir Premium SSD dosya olarak sağlar. Bunun yerine yığın dışı önbelleğin kullanılması bazı geliştirme sağlayabilir. Bu geçici çözüm, kullanılabilir bellek kullanımı ve muhtemelen dosya tabanlı önbellekten daha küçük olabilecek bir sınırlamaya sahiptir, bu nedenle her zaman en iyi seçim olmayabilir.
+Çoğu büyük boyutlu düğümler kümesi için HDInsight HBase, `bucketcache` çalıştıran sanal makineye bağlı yerel bir Premium SSD dosya olarak sağlar `regionservers` . Bunun yerine yığın dışı önbelleğin kullanılması bazı geliştirme sağlayabilir. Bu geçici çözüm, kullanılabilir bellek kullanımı ve muhtemelen dosya tabanlı önbellekten daha küçük olabilecek bir sınırlamaya sahiptir, bu nedenle her zaman en iyi seçim olmayabilir.
 
 Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen derecenin sağlanmasına yardımcı olmak için verilmiştir:
 
-- Boyutu `memstore` varsayılan 128 mb Ile 256 MB arasında artırın. Genellikle, bu ayar ağır yazma senaryolarında önerilir.
+- `memstore`Boyutu varsayılan 128 MB ile 256 MB arasında artırın. Genellikle, bu ayar ağır yazma senaryolarında önerilir.
 
 - Varsayılan değer olan **1** ' den **4**' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
 
-- Depolama sınırı `memstore` nedeniyle temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarı **100**olarak arttırın.
+- `memstore`Depolama sınırı nedeniyle temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarı **100**olarak arttırın.
 
 - Boşaltmaları denetlemek için aşağıdaki ayarları kullanın:
 
@@ -104,9 +103,9 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 - RPC zaman aşımları: **3 dakika**
 
    - RPC zaman aşımları HBase RPC zaman aşımı, HBase istemci tarayıcısı zaman aşımı ve Phoenix sorgu zaman aşımı içerir. 
-   - `hbase.client.scanner.caching` Parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar ile `OutOfOrderScannerException`ilgili istemci-uç hatalarına yol açar. Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
+   - `hbase.client.scanner.caching`Parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar ile ilgili istemci-uç hatalarına yol açar `OutOfOrderScannerException` . Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
 
-## <a name="other-considerations"></a>Diğer konular
+## <a name="other-considerations"></a>Diğer önemli noktalar
 
 Ayarlamayı göz önünde bulundurmanız gereken ek parametreler aşağıda verilmiştir:
 
@@ -122,6 +121,6 @@ Sorununuz çözümlenmemiş kalırsa, daha fazla destek için aşağıdaki kanal
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- İle [@AzureSupport](https://twitter.com/azuresupport)bağlanın. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
+- İle bağlanın [@AzureSupport](https://twitter.com/azuresupport) . Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
 - Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

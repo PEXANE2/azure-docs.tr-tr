@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979402"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te haritalarla XML’i dönüştürme
 
-Azure Logic Apps içindeki kurumsal tümleştirme senaryolarının biçimleri arasında XML verileri aktarmak için mantıksal uygulamanız haritaları veya daha özel olarak Genişletilebilir Stil sayfası dil dönüşümleri (XSLT) eşlemelerini kullanabilir. Eşleme, verileri bir XML belgesinden başka bir biçime dönüştürmeyi açıklayan bir XML belgesidir. 
+Mantıksal uygulamanız, Azure Logic Apps'teki kurumsal tümleştirme senaryolarında XML verilerini farklı biçimlere dönüştürmek için Genişletilebilir Stil Sayfası Dili Dönüşümleri (XSLT) eşlemelerini kullanabilir. Eşleme, XML belgesindeki verilerin başka bir biçime nasıl dönüştürüleceğini tanımlayan bir XML belgesidir. 
 
 Örneğin, YYYMMDD tarih biçimini kullanan bir müşteriden düzenli olarak B2B siparişleri veya faturalar aldığınızı varsayalım. Ancak, kuruluşunuz MMDDYYY tarih biçimini kullanır. Sipariş veya fatura ayrıntılarını müşteri etkinlik veritabanınıza depolamadan önce YYYMMDD tarih biçimini MMDDYYY biçimine dönüştüren bir harita tanımlayabilir ve kullanabilirsiniz.
 
@@ -150,7 +149,7 @@ Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** **al
 1. Karşıya yüklemeyi tamamladıktan sonra, derlemenizin paylaşılan erişim imzasını (SAS) oluşturun. 
    Derlemenin kısayol menüsünde, **paylaşılan erişim Imzası al**' ı seçin.
 
-1. **Paylaşılan erişim imzası** bölmesinde **kapsayıcı düzeyinde paylaşılan erişim imzası URI** > **Oluştur**' u seçin. 
+1. **Paylaşılan erişim imzası** bölmesinde **kapsayıcı düzeyinde paylaşılan erişim imzası URI**  >  **Oluştur**' u seçin. 
    SAS URL 'SI oluşturulduktan sonra, **URL** kutusunun yanındaki **Kopyala**' yı seçin.
 
 1. **Derleme Ekle** bölmesinin açık olduğu Azure Portal geri dönün. 

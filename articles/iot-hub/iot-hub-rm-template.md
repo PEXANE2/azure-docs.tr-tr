@@ -10,10 +10,9 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75976730"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager şablonu kullanarak IoT Hub 'ı oluşturma (.NET)
@@ -74,9 +73,9 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için bir JSON şablonu ve parametre dosyası kullanın. Ayrıca, var olan bir IoT Hub 'ında değişiklik yapmak için bir Azure Resource Manager şablonu da kullanabilirsiniz.
 
-1. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **Template. JSON** ADLı bir JSON dosyası ekleyin.
+1. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **template.js** ADLı bir JSON dosyası ekleyin.
 
-2. **Doğu ABD** bölgesine standart bir IoT Hub 'ı eklemek için, **Template. JSON** içeriğini aşağıdaki kaynak tanımıyla değiştirin. IoT Hub destekleyen bölgelerin geçerli listesi için bkz. [Azure durumu][lnk-status]:
+2. **Doğu ABD** bölgesine standart bir IoT Hub 'ı eklemek için, **template.js** içeriğini aşağıdaki kaynak tanımıyla değiştirin. IoT Hub destekleyen bölgelerin geçerli listesi için bkz. [Azure durumu][lnk-status]:
 
     ```json
     {
@@ -112,9 +111,9 @@ Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için bir JSON şablonu ve paramet
     }
     ```
 
-3. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **Parameters. JSON** ADLı bir JSON dosyası ekleyin.
+3. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **parameters.js** ADLı bir JSON dosyası ekleyin.
 
-4. **Parameters. JSON** içeriğini, yeni IoT Hub için bir adı ayarlayan aşağıdaki parametre bilgileriyle değiştirin; Örneğin, **{ınıtıals} mynewiotub**. IoT Hub adı, genel olarak benzersiz olmalıdır, bu nedenle adınızı veya adınızın baş harflerini içermesi gerekir:
+4. **parameters.js** içeriğini, yeni IoT Hub için bir adı ayarlayan aşağıdaki parametre bilgileriyle değiştirin. Örneğin, **{ınıtıals} mynewiotub**. IoT Hub adı, genel olarak benzersiz olmalıdır, bu nedenle adınızı veya adınızın baş harflerini içermesi gerekir:
 
     ```json
     {
@@ -129,7 +128,7 @@ Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için bir JSON şablonu ve paramet
 
 5. **Sunucu Gezgini**' de Azure aboneliğinize bağlanın ve Azure depolama hesabınızda **Şablonlar**adlı bir kapsayıcı oluşturun. **Özellikler** panelinde, **Şablonlar** kapsayıcısı için **Genel okuma erişimi** izinlerini **BLOB**olarak ayarlayın.
 
-6. **Sunucu Gezgini**' de, **Şablonlar** kapsayıcısına sağ tıklayıp **BLOB kapsayıcısını görüntüle**' ye tıklayın. **Blobu karşıya yükle** düğmesine tıklayın, iki dosyayı, **Parameters. JSON** ve **Templates. JSON**' ı seçin ve ardından **Aç** ' a tıklayarak JSON dosyalarını **Şablonlar** kapsayıcısına yükleyin. JSON verilerini içeren Blobların URL 'Leri şunlardır:
+6. **Sunucu Gezgini**' de, **Şablonlar** kapsayıcısına sağ tıklayıp **BLOB kapsayıcısını görüntüle**' ye tıklayın. **Blobu karşıya yükle** düğmesine tıklayın, iki dosyayı seçin, **üzerindeparameters.js** ve **templates.js**açın ve ardından **Aç** ' a tıklayarak JSON dosyalarını **Şablonlar** kapsayıcısına yükleyin. JSON verilerini içeren Blobların URL 'Leri şunlardır:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json

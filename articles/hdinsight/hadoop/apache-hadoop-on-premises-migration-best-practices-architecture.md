@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934682"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari en iyi uygulamaları
@@ -38,7 +37,7 @@ Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek fark
 
 |Araç|Tarayıcı tabanlı|Komut Satırı|REST API|SDK|
 |---|---|---|---|---|
-|[Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure portalındaki](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLı (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
@@ -103,11 +102,11 @@ Bazı HDInsight Hive meta veri deposu en iyi yöntemler şunlardır:
 - Özel meta veri deposunu düzenli olarak yedekleyin.
 - Meta veri ve HDInsight kümesini aynı bölgede saklayın.
 - Azure portal veya Azure Izleyici günlükleri gibi Azure SQL veritabanı Izleme araçlarını kullanarak performans ve kullanılabilirlik için meta veri deposunu izleyin.
-- Tablo ve `ANALYZE TABLE` sütun istatistikleri oluşturmak için komutu gereken şekilde yürütün. Örneğin, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- `ANALYZE TABLE`Tablo ve sütun istatistikleri oluşturmak için komutu gereken şekilde yürütün. Örneğin, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Farklı iş yükleri için en iyi uygulamalar
 
-- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün, sorguların bellek içi önbelleğe alınmasına izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
+- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)Ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün   , sorguların bellek içi önbelleğe alınmasına izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
 - Hive işlerinin yerine Spark işleri kullanmayı göz önünde bulundurun.
 - Impala tabanlı sorguları LLAP sorgularıyla değiştirmeyi göz önünde bulundurun.
 - MapReduce işlerini Spark işleri ile değiştirmeyi düşünün.
