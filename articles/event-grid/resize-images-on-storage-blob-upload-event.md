@@ -1,23 +1,14 @@
 ---
 title: 'Öğretici: karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirmek için Azure Event Grid kullanma'
 description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya yüklemelere tetiklenebilir. Bu hizmeti kullanarak, Azure Depolama’ya yüklenmiş görüntü dosyalarını, yeniden boyutlandırma ve diğer iyileştirmeler için Azure İşlevleri gibi diğer hizmetlere gönderebilirsiniz."
-services: event-grid, functions
-author: spelluru
-manager: jpconnoc
-editor: ''
-ms.service: event-grid
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: e46aa28d770cf561df40a0f4b40ef39a70e35687
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 07/07/2020
+ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367946"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105821"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
@@ -44,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure İşlevleri’ni kullanarak sunucusuz kod dağıtma
 > * Event Grid’de bir Blob depolama olayı aboneliği oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -278,7 +269,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     
     ![Azure portalında işlevden olay aboneliği oluşturma](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Ayar      | Önerilen değer  | Açıklama                                        |
+    | Ayar      | Önerilen değer  | Description                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
     | **Adı** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. |
     | **Konu türü** | Depolama hesapları | Depolama hesabı olay sağlayıcısını seçin. |

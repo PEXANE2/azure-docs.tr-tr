@@ -4,19 +4,19 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770552"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109629"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
 Bu makale, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)ve [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)kullanarak şirket Içi Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçişine hazırlanmanıza yardımcı olur.
 
 
-Bu öğretici, Hyper-V sanal makinelerini Azure 'a nasıl değerlendirmenizi ve geçirekullanacağınızı gösteren bir serinin ilk ilkidir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, Hyper-V sanal makinelerini Azure 'a nasıl değerlendirmenizi ve geçirekullanacağınızı gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure 'u Azure geçişi ile çalışacak şekilde hazırlayın.
@@ -74,13 +74,13 @@ Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
     ![Azure AD izinleri](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama
 
-Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ### <a name="assign-azure-account-permissions"></a>Azure hesabı izinleri atama
 
@@ -106,7 +106,7 @@ VM değerlendirmesi için Hyper-V ' y i el ile veya bir yapılandırma betiği k
 **PowerShell sürümünü doğrula** | Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler. | Hyper-V konağında PowerShell sürüm 4,0 veya üstünü kullandığınızı denetleyin.
 **Hesap oluşturma** | Sizin (betiği çalıştıran kullanıcı) Hyper-V konağında yönetim ayrıcalıklarına sahip olduğunu doğrular.<br/><br/>  Azure geçişi hizmetinin Hyper-V konağından iletişim kurmak için kullandığı yerel bir kullanıcı hesabı (yönetici değil) oluşturmanıza olanak sağlar. Bu Kullanıcı hesabı konaktaki bu gruplara eklenir:<br/><br/> -Uzaktan yönetim kullanıcıları<br/><br/> -Hyper-V yöneticileri<br/><br/>-Performans Izleyicisi kullanıcıları | Hyper-V konakları/kümesi üzerinde yönetici izinlerine sahip bir etki alanı veya yerel kullanıcı hesabı ayarlayın.<br/><br/> -Bulmaya dahil etmek istediğiniz tüm konaklar ve kümeler için tek bir hesaba sahip olmanız gerekir.<br/><br/> -Hesap bir yerel veya etki alanı hesabı olabilir. Hyper-V konakları veya kümeleri üzerinde yönetici izinlerine sahip olması önerilir.<br/><br/> Alternatif olarak, yönetici izinleri atamak istemiyorsanız, aşağıdaki izinler gerekir: uzaktan yönetim kullanıcıları; Hyper-V yöneticileri; Performans Izleyicisi kullanıcıları.
 **PowerShell uzaktan iletişimini etkinleştir** | Azure geçişi gerecinin bir WinRM bağlantısı üzerinden konakta PowerShell komutları çalıştırabilmeleri için konakta PowerShell uzaktan iletişimini mümkün bir şekilde sunar.| Ayarlamak için, her bir konakta, yönetici olarak bir PowerShell konsolu açın ve şu komutu çalıştırın:<br/><br/>``` Enable-PSRemoting -force ```
-**Hyper-V tümleştirme hizmetlerini ayarlama** | Hyper-V tümleştirme hizmetlerinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. |  Her VM 'de [Hyper-V tümleştirme hizmetlerini etkinleştirin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Windows Server 2003 çalıştırıyorsanız, [Bu yönergeleri izleyin](prepare-windows-server-2003-migration.md).
+**Hyper-V tümleştirme hizmetlerini ayarlama** | Hyper-V tümleştirme hizmetlerinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. |  Her VM 'de [Hyper-V tümleştirme hizmetlerini etkinleştirin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Windows Server 2003 çalıştırıyorsanız, [Bu yönergeleri izleyin](prepare-windows-server-2003-migration.md).
 **VM diskleri uzak SMB paylaşımlarında bulunuyorsa kimlik bilgilerini devretmek** | Betik temsilcileri kimlik bilgileri. | Kimlik bilgilerini devretmek için [CredSSP 'Yi etkinleştirin](#enable-credssp-to-delegate-credentials) .
 
 ### <a name="run-the-script"></a>Betiği çalıştırın

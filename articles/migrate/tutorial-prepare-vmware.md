@@ -4,18 +4,18 @@ description: Azure geçişi ile VMware VM 'lerinin değerlendirmesi/geçirilmesi
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771198"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109586"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
 Bu makale, [Azure geçişi](migrate-services-overview.md)'ni kullanarak şirket Içi VMware VM 'lerinin Azure 'a değerlendirmesi ve geçişine hazırlanmanıza yardımcı olur.
 
-Bu öğretici, VMware VM 'lerini nasıl değerlendirmekte ve geçirebileceğiniz gösteren bir serinin ilk ilkidir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerini nasıl değerlendirmekte ve geçirebileceğiniz gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure 'u Azure geçişi ile çalışacak şekilde hazırlayın.
@@ -64,7 +64,7 @@ Gereci kaydettirmek için, Azure hesabınızın Azure AD uygulamaları oluşturm
 Hesaba aşağıdaki şekilde izin verin:
 
 1. Kiracı veya genel yönetici olduğunuzdan emin olun. Ardından, Azure AD 'de **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' na gidin.
-2. **Uygulama kayıtları** **Evet**olarak ayarlayın. Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. **Uygulama kayıtları** **Evet**olarak ayarlayın. Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD izinleri](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ Hesaba aşağıdaki şekilde izin verin:
 
 #### <a name="method-2-assign-application-developer-role"></a>Yöntem 2: uygulama geliştirici rolü atama
 
-Alternatif olarak, kiracı/genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. Rol atama hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) .
+Alternatif olarak, kiracı/genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. Rol atama hakkında [daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) .
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Key Vault oluşturmak için izin atama
 
